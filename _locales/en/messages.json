@@ -178,6 +178,9 @@
   "clipboard.from": {
     "message": "(example for any address variable) copy mail address of original sender to clipboard."
   },
+  "clipboard.dateformat": {
+    "message": "copies the formatted date to clipboard. format string must be enclosed in double quotes. For more information on formatting syntax see also the following section: "
+  },
   "clipboard.setHeader": {
     "message": "Use clipboard contents to set the cc - (works for any textual header)."
   },
@@ -686,6 +689,12 @@
   "licenseHead": {
     "message": "New Licensing System"
   },  
+  "licenseTerms.hide" : {
+    "message": "🡇 Continue to License Selection 🡇"
+  },
+  "licenseTerms.show" : {
+    "message": "Show license terms"
+  },
   "licenseStatus.expired" : {
     "message": "SmartTemplates License has expired $countDays$ days ago.",
     "placeholders": {
@@ -858,7 +867,16 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1}I am currently working on the conversion of the SmartTemplates Addon for the new Thunderbird SuperNova UI. This will be implemented in the next major version of Thunderbird 115 in Summer 2023.{P2} {P1}You can read up on the current progress of this work here: [issue 213]{P2}"
+    "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird ($compatibleVer$). This required numerous substantial changes, and rewriting of many functions.{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
+      }
+    }
   },
   "newsSection.license": {
     "message": "As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using SmartTemplates in the future."
@@ -959,6 +977,18 @@
   "pref_defaultCharset_tip": {
     "message": "When reading the headers, fall back to this character set if it cannot be determined."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Behavior when writing or replying without selecting a template from the drop-down list."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Default Template"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Use the account template."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Use the external template last selected from the drop-down menu."
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates settings"
   },
@@ -998,6 +1028,9 @@
   "pref_groupMailContent": {
     "message": "Mail Content"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Miscellaneus"
+  },
   "pref_groupNameRules": {
     "message": "Name Rules"
   },
@@ -1013,6 +1046,9 @@
   "pref_help.tab": {
     "message": "Help"
   },
+  "pref_header.inject": {
+    "message": "Inject contents of <head> from template"
+  },  
   "pref_hideExamples": {
     "message": "Hide examples tab"
   },
@@ -1205,6 +1241,9 @@
   "resolveNamesFromCardBook.fallback": {
     "message": "Try standard address book if no contact is found"
   },
+  "resolveNamesFromCardBook.forceLowerCase": {
+    "message": "force lowercase lookup"
+  },
   "s.label": {
     "message": "Second (00 to 59)"
   },
@@ -1258,6 +1297,21 @@
   },
   "smarttemplate4_title": {
     "message": "SmartTemplates"
+  },
+  "SmartTemplateMainButton.expired": {
+    "message": "License expired!"
+  },
+  "SmartTemplateMainButton.invalid": {
+    "message": "License invalid."
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "License expires in $daysLeft$ days",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates was updated!"
@@ -1347,6 +1401,86 @@
   "st.licenseValidation.guessAddon": {
     "message": "(The key entered may be for {2})."
   },
+  "st.menu.docs": {
+    "message": "Documentation"
+  },
+  "st.menu.docs.premium": {
+    "message": "Premium features…"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variables and Commands…"
+  },
+  "st.menu.hideLabel": {
+    "message": "Hide button label"
+  },
+  "st.menu.template.default": {
+    "message": "Default Template (account)"
+  },
+  "st.menu.template.last": {
+    "message": "Last Template"
+  },
+  "st.menu.license": {
+    "message": "Check license status…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Click here to the check license status for $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menuaccess.forward": {
+    "message": "F"
+  },
+  "st.menuaccess.reply": {
+    "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "A"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },
+  "st.menuaccess.write": {
+    "message": "W"
+  },  
+  "st.menu.replyAll": {
+    "message": "Reply All"
+  },
+  "st.menu.replyList": {
+    "message": "Reply to List"
+  },
+  "st.menu.supportSite": {
+    "message": "Support Site…"
+  },
+  "st.menu.update.tooltip": {
+    "message": "Select “Latest News” from this menu to read what's new in $addonName$.\n This will reset the button to its default appearance.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },  
+  "st.notification.bodyModified": {
+    "message": "Thunderbird says you have already typed something, do you want to load the template anyway?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "This will discard anything  typed and load the account template."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "This will discard anything  typed and reload the current template [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }    
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Click Cancel to keep email contents unchanged."
+  },  
   "st.notification.donate": {
     "message": "Donate"
   },
@@ -1478,7 +1612,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "March 26th"
+    "message": "October 31st"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1695,15 +1829,6 @@
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
   },
-  "update.tooltip": {
-    "message": "Click here once to read what's new in $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },  
   "updates.changeLog": {
     "message" : "Release Notes (English)"
   },
@@ -1747,7 +1872,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} New {{%deleteForwardedBody%}} function removes the body of the original email when forwarding inline. {L2}{L1}Commands that insert contents from files can now access parent folders with {{../}}, e.g. {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Improvements in Template Manager: Show Category in the list for easier navigation. {L2} {L1} Added pricing section to licensing dialog {L2} {L1} Corrected the Number of days left in license by rounding up {L2}"
+    "message": "{L1} The address data for {{%to%}}, {{%recipient%}} and {{%from%}} will now automatically be inserted when writing a new email via the context menu 'Compose Message To'. [issue 275]{L2} {L1} Using {{%recipient%}} also works as expected when replying to own emails in a conversation and Thunderbird automatically changes the recipients. [issue 239]{L2} {L1}Convert email addresses to lower case when looking up Cardbook contacts. [issue 278]{L2} {L1}Support for extracting {{prefix}} and {{suffix}} from address book fields. [issue 267]{L2} {L1}Support for {{other.custom1}}, {{other.custom2}} etc. from address book fields. [issue 246]{L2} {L1}Removed duplicate tooltip on active SmartTemplate fields. {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

@@ -625,6 +625,12 @@
   "licenseHead": {
     "message": "Nuovo sistema di licenze"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Continua con la selezione della licenza 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Mostra i termini della licenza"
+  },
   "licenseStatus.expired": {
     "message": "La licenza SmartTemplates è scaduta $countDays$ giorni fa.",
     "placeholders": {
@@ -779,7 +785,13 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1}Attualmente sto lavorando alla conversione del componente aggiuntivo SmartTemplates per la nuova interfaccia utente di Thunderbird SuperNova. Questo sarà implementato nella prossima versione principale di Thunderbird 115 nell'estate 2023.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [numero 213]{P2}"
+    "message": "{P1}$addonName$ è ora compatibile con l'ultima versione di Thunderbird ($compatibleVer$). Ciò ha richiesto numerose modifiche sostanziali e la riscrittura di molte funzioni.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Poiché questo lavoro è esclusivamente finanziato dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare SmartTemplates in futuro."
@@ -865,6 +877,18 @@
   "pref_defaultCharset_tip": {
     "message": "Utilizza questa codifica dei caratteri se quella delle intestazioni non può essere individuata."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Comportamento durante la scrittura o la risposta senza selezionare un modello dall'elenco a discesa."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Modello predefinito"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Usa il modello di account."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Utilizza l'ultimo modello esterno selezionato dal menu a discesa."
+  },
   "pref_dialog.title": {
     "message": "Impostazioni di SmartTemplates"
   },
@@ -904,6 +928,9 @@
   "pref_groupMailContent": {
     "message": "Contenuto Mail"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Varie"
+  },
   "pref_groupNameRules": {
     "message": "Regole per il nome"
   },
@@ -912,6 +939,9 @@
   },
   "pref_help.tab": {
     "message": "Aiuto"
+  },
+  "pref_header.inject": {
+    "message": "Inietta il contenuto di <head> dal modello"
   },
   "pref_hideExamples": {
     "message": "Non visualizzare la scheda degli esempi"
@@ -1141,6 +1171,18 @@
   "smarttemplate4_button": {
     "message": "Modifica i modelli di intestazione dei messaggi…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licenza scaduta!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "La licenza scade tra $daysLeft$ giorni",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates è stato aggiornato!"
   },
@@ -1228,6 +1270,86 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(La chiave inserita potrebbe essere relativa a {2})"
+  },
+  "st.menu.docs": {
+    "message": "Documentazione"
+  },
+  "st.menu.docs.premium": {
+    "message": "Funzionalità premium…"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variabili e comandi…"
+  },
+  "st.menu.hideLabel": {
+    "message": "Nascondi etichetta del pulsante"
+  },
+  "st.menu.template.default": {
+    "message": "Modello predefinito (account)"
+  },
+  "st.menu.template.last": {
+    "message": "Ultimo modello"
+  },
+  "st.menu.license": {
+    "message": "Controlla lo stato della licenza…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Fai clic qui per controllare lo stato della licenza per $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menuaccess.forward": {
+    "message": "I"
+  },
+  "st.menuaccess.reply": {
+    "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "T"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },
+  "st.menuaccess.write": {
+    "message": "M"
+  },  
+  "st.menu.replyAll": {
+    "message": "Rispondi a tutti"
+  },
+  "st.menu.replyList": {
+    "message": "Rispondi alla lista"
+  },
+  "st.menu.supportSite": {
+    "message": "Sito di supporto…"
+  },
+  "st.menu.update.tooltip": {
+    "message": "Seleziona «Ultime notizie» da questo menu per leggere le novità di $addonName$.\n Questo riporterà il pulsante al suo aspetto predefinito.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird dice che hai già digitato qualcosa, vuoi comunque caricare il modello?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Questo eliminerà tutto ciò che è stato digitato e caricherà il modello dell'account."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Questo eliminerà tutto ciò che è stato digitato e ricaricherà il modello attuale [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Clicca su Annulla per mantenere il contenuto dell'email invariato."
   },
   "st.notification.donate": {
     "message": "Dona"
@@ -1357,8 +1479,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 marzo"
-  },
+    "message": "31 ottobre"
+  },  
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
     "placeholders": {
@@ -1565,15 +1687,6 @@
   "translatorNickname.label": {
     "message": "A35G, Luana e Lucky & Danilo Fortunato (BabelZilla)"
   },
-  "update.tooltip": {
-    "message": "Fai clic qui una volta per leggere le novità di $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
   "updates.changeLog": {
     "message" : "Note di rilascio (inglese)"
   },
@@ -1617,7 +1730,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} La nuova funzione {{%deleteForwardedBody%}} rimuove il corpo dell'email originale durante l'inoltro in linea. {L2} {L1}I comandi che inseriscono contenuti dai file ora possono accedere alle cartelle principali con {{../}}, ad es.: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Miglioramenti in Gestione modelli: mostra la categoria nell'elenco per una navigazione più semplice. {L2} {L1} Aggiunta la sezione dei prezzi alla finestra di dialogo della licenza {L2} {L1} Corretto il numero di giorni rimanenti nella licenza arrotondando per eccesso {L2}"
+    "message": "{L1} I dati degli indirizzi  {{%to%}}, {{%recipient%}} e {{%from%}} verranno ora inseriti automaticamente durante la composizione di un nuovo messaggio di posta elettronica tramite il menu contestuale 'Componi messaggio A'. [issue 275]{L2} {L1} Anche l'uso di {{%recipient%}} funziona come previsto quando si risponde ai propri messaggi di posta elettronica in una conversazione poiché Thunderbird cambia automaticamente i destinatari. [issue 239]{L2} {L1}Convertire gli indirizzi email in minuscolo durante la ricerca di contatti in Cardbook. [issue 278]{L2} {L1} Supporto per estrarre {{prefix}} e {{suffix}} dai campi della rubrica. [issue 267]{L2} {L1} Supporto per {{other.custom1}}, {{other.custom2}} ecc. dai campi della rubrica. [issue 246]{L2} {L1} Rimosso suggerimento duplicato sui campi attivi di SmartTemplate. {L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

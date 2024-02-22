@@ -462,6 +462,12 @@
       }
     }
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Lanjutkan ke Pemilihan Lisensi 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Tampilkan Ketentuan Lisensi"
+  },
   "licenseStatus.expired": {
     "message": "Lisensi SmartTemplates telah kedaluwarsa $countDays$ hari yang lalu.",
     "placeholders": {
@@ -657,6 +663,18 @@
   "pref_defaultCharset_tip": {
     "message": "Saat membaca header, kembali ke set karakter ini jika tidak dapat ditentukan."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Perilaku saat menulis atau membalas tanpa memilih template dari daftar drop-down."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Templat Bawaan"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Gunakan templat akun."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Gunakan template eksternal yang terakhir dipilih dari menu drop-down."
+  },
   "pref_dialog.title": {
     "message": "Setelan SmartTemplates"
   },
@@ -696,6 +714,9 @@
   "pref_groupMailContent": {
     "message": "Konten Email"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Lain-lain"
+  },
   "pref_groupNameRules": {
     "message": "Tata Tertib"
   },
@@ -710,6 +731,9 @@
   },
   "pref_help.tab": {
     "message": "Bantuan"
+  },
+  "pref_header.inject": {
+    "message": "Suntikkan konten <head> dari template"
   },
   "pref_hideExamples": {
     "message": "Sembunyikan tab contoh"
@@ -903,6 +927,18 @@
   "smarttemplate4_title": {
     "message": "SmartTemplate4"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Lisensi kedaluwarsa!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Lisensi berakhir dalam $daysLeft$ hari",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates telah diperbarui!"
   },
@@ -951,6 +987,26 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Lisensi yang dimasukkan mungkin untuk {2})."
+  },
+  "quickfilters.menu.license": {
+    "message": "Periksa status lisensi…"
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird mengatakan Anda telah mengetik sesuatu, apakah Anda ingin memuat template ini?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Ini akan menghapus semua yang telah Anda ketik dan memuat template akun."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Ini akan menghapus semua yang telah Anda ketik dan memuat template saat ini [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Klik Batal untuk tetap menjaga isi email tanpa perubahan."
   },
   "st.notification.donate": {
     "message": "Donasi"

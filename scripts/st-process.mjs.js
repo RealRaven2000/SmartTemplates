@@ -198,7 +198,7 @@ export class SmartTemplatesProcess {
 
   /* =============================*/
   /*  from smartTemplates-main.js */
-  async notifyComposeBodyReady (evt, isChangeTemplate, win=null)  {
+  async notifyComposeBodyReady (isChangeTemplate, win=null)  {
     
   }
 

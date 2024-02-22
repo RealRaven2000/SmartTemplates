@@ -631,6 +631,12 @@
   "licenseHead": {
     "message": "Nowy system licencjonowania"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Kontynuuj wybór licencji 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Pokaż warunki licencji"
+  },
   "licenseStatus.expired": {
     "message": "Licencja SmartTemplates wygasła $countDays$ dni temu.",
     "placeholders": {
@@ -797,7 +803,16 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}Obecnie pracuję nad konwersją dodatku SmartTemplates do nowego interfejsu użytkownika programu Thunderbird SuperNova. Zostanie to zaimplementowane w następnej głównej wersji Thunderbirda 115 latem 2023 r.{P2} {P1}O obecnym postępie prac można przeczytać tutaj: [issue 213]{P2}"
+    "message": "{P1}$addonName$ jest teraz kompatybilny z najnowszą wersją Thunderbirda ($compatibleVer$). Wymagało to wielu istotnych zmian i przepisania wielu funkcji.{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Ponieważ praca ta jest przeznaczona wyłącznie finansowane ze sprzedaży licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli chcesz używać SmartTemplates w przyszłości."
@@ -886,6 +901,18 @@
   "pref_defaultCharset_tip": {
     "message": "Jeśli nie możesz ustalić zestawu znaków, by przeczytać nagłówek wiadomości, wróć do domyślnego zestawu."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Zachowanie podczas pisania lub odpowiadania bez wybrania szablonu z rozwijanej listy."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Domyślny szablon"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Skorzystaj z szablonu konta."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Użyj szablonu zewnętrznego wybranego ostatnio z rozwijanego menu."
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates – ustawienia"
   },
@@ -925,6 +952,9 @@
   "pref_groupMailContent": {
     "message": "Treść wiadomości"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Różne"
+  },
   "pref_groupNameRules": {
     "message": "Nazwa reguły"
   },
@@ -939,6 +969,9 @@
   },
   "pref_help.tab": {
     "message": "Pomoc"
+  },
+  "pref_header.inject": {
+    "message": "Wstrzyknij zawartość <head> z szablonu"
   },
   "pref_hideExamples": {
     "message": "Ukryj kartę przykładów"
@@ -1180,6 +1213,18 @@
   "smarttemplate4_button": {
     "message": "Edycja szablonów i nagłówka…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licencja wygasła!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Licencja wygasa za $daysLeft$ dni",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates zostało zaktualizowane!"
   },
@@ -1267,6 +1312,86 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Podany klucz może być dla {2})."
+  },
+  "st.menu.docs": {
+    "message": "Dokumentacja"
+  },
+  "st.menu.docs.premium": {
+    "message": "Funkcje premium…"
+  },
+  "st.menu.docs.variables": {
+    "message": "Zmienne i polecenia…"
+  },
+  "st.menu.hideLabel": {
+    "message": "Ukryj etykietę przycisku"
+  },
+  "st.menu.template.default": {
+    "message": "Szablon domyślny (konto)"
+  },
+  "st.menu.template.last": {
+    "message": "Ostatni szablon"
+  },
+  "st.menu.license": {
+    "message": "Sprawdź stan licencji…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Kliknij tutaj, aby sprawdzić stan licencji dla $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menuaccess.forward": {
+    "message": "P"
+  },
+  "st.menuaccess.reply": {
+    "message": "O"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "W"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },  
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
+  "st.menu.replyAll": {
+    "message": "Odpowiedz wszystkim"
+  },
+  "st.menu.replyList": {
+    "message": "Odpowiedz na listę"
+  },
+  "st.menu.supportSite": {
+    "message": "Witryna wsparcia…"
+  },
+  "st.menu.update.tooltip": {
+    "message": "Wybierz „Najnowsze wiadomości” z tego menu, aby przeczytać, co nowego w $addonName$.\n Spowoduje to przywrócenie domyślnego wyglądu przycisku.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird mówi, że już coś napisałeś, czy chcesz mimo to załadować szablon?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "To odrzuci wszystko, co napisałeś, i załaduje szablon konta."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "To odrzuci wszystko, co napisałeś, i ponownie załaduje bieżący szablon [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Kliknij Anuluj, aby zachować treść e-maila bez zmian."
   },
   "st.notification.donate": {
     "message": "Dotacja"
@@ -1396,8 +1521,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 marca"
-  },
+    "message": "31 października"
+  },  
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
     "placeholders": {
@@ -1610,15 +1735,6 @@
   "tzname.label": {
     "message": "GMT, PST, EST, … "
   },
-  "update.tooltip": {
-    "message": "Kliknij tutaj raz, aby przeczytać, co nowego w $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
   "updates.changeLog": {
     "message" : "Informacje o wydaniu (angielski)"
   },
@@ -1662,7 +1778,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Nowa funkcja {{%deleteForwardedBody%}} usuwa treść oryginalnej wiadomości e-mail podczas przekazywania w tekście. {L2} {L1}Polecenia, które wstawiają zawartość z plików, mogą teraz uzyskiwać dostęp do folderów nadrzędnych za pomocą {{../}}, np.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Ulepszenia w Menedżerze szablonów: Pokaż kategorię na liście, aby ułatwić nawigację. {L2} {L1} Dodano sekcję cenową do okna dialogowego licencjonowania {L2} {L1} Poprawiono liczbę dni pozostałych licencji, zaokrąglając w górę {L2}"
+    "message": "{L1} Dane adresowe dla {{%to%}}, {{%recipient%}} i {{%from%}} zostaną teraz automatycznie wstawione podczas pisania nowej wiadomości e-mail za pomocą menu kontekstowego 'Utwórz wiadomość do'. [issue 275]{L2} {L1} Użycie {{%recipient%}} działa także zgodnie z oczekiwaniami podczas odpowiadania na własne e-maile w rozmowie, a Thunderbird automatycznie zmienia odbiorców. [issue 239]{L2} {L1}Converteer e-mailadressen naar kleine letters bij het zoeken naar Cardbook-contacten. [issue 278]{L2}  {L1} Obsługa wyciągania {{prefix}} i {{suffix}} z pól książki adresowej. [issue 267]{L2} {L1} Obsługa {{other.custom1}}, {{other.custom2}} itp. z pól książki adresowej. [issue 246]{L2} {L1} Usunięto podwójny podpowiedź na aktywnych polach SmartTemplate. {L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

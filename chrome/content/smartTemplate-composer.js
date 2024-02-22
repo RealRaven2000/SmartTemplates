@@ -1,6 +1,6 @@
 "use strict";
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 SmartTemplate4.composer = {
   load: function st4_composerLoad() {
     const Ci = Components.interfaces,
@@ -9,7 +9,7 @@ SmartTemplate4.composer = {
           prefs = SmartTemplate4.Preferences;
           
     
-    util.logHighlight("ST.composer.load","white","#8e0477a4");
+    util.logHighlightDebug("ST.composer.load","white","#8e0477a4");
     
     // NOTE: tried to remove this and replace with 
     //       WL.injectCSS("chrome://SmartTemplate4/content/skin/compose-overlay.css");
@@ -36,7 +36,7 @@ SmartTemplate4.composer = {
     // thanks to Joerg K. for pointing this one out:
     window.document.getElementById("msgcomposeWindow").addEventListener("compose-send-message", 
       function (e) { 
-        util.logHighlight("Event: compose-send-message","lightpink","#8e0477a4");
+        util.logHighlightDebug("Event: compose-send-message","lightpink","#8e0477a4");
         util.composerSendMessage(e); // pass on event in case we need it.
       }
     );
@@ -138,7 +138,7 @@ SmartTemplate4.composer = {
     );
   } ,
   
-  initSnippetMenu : function() {
+  initSnippetMenu : async function() {
     SmartTemplate4.Util.logDebug("composer.initSnippetMenu() ...");
     // load menu with templates to button-save
     const Ci = Components.interfaces,
@@ -153,14 +153,11 @@ SmartTemplate4.composer = {
       if (cN.tagName == "menuseparator" || cN.tagName == "menuitem" || cN.tagName == "menu" || cN.tagName == "menupopup")
         snippetPopup.removeChild(cN);
     }    
-    
-    fT.loadCustomMenu(false).then(
-      function smartTemplatesLoaded() {
-        let compCase = "snippets",
-            entries = fT.Entries.snippets;
-        fT.configureMenu(entries, snippetPopup, compCase, true); // build appropriate menu, PLUS the configuration option.
-      }
-    );    
+
+    await  fT.loadCustomMenu(false);
+    let compCase = "snippets",
+        entries = fT.Entries.snippets;
+    fT.configureMenu(entries, snippetPopup, compCase, true); // build appropriate menu, PlUS the configuration option.
   } , 
   
   
@@ -195,7 +192,7 @@ SmartTemplate4.composer = {
       }
     }
     else {
-      SmartTemplate4.notifyComposeBodyReady(null, true, window);
+      SmartTemplate4.notifyComposeBodyReady(true, window);
     }
     // SmartTemplate4.fileTemplates.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
   },
@@ -229,39 +226,43 @@ SmartTemplate4.composer = {
 };
 
 
-(
-function() 
-  {
-    // return; // let's do this from the background script!
-    const util = SmartTemplate4.Util,
-          logDebugOptional = util.logDebugOptional.bind(util),
-          isDebugComposer = SmartTemplate4.Preferences.isDebugOption('composer');
-    util.logHighlight("smartTemplate-composer.js", "yellow", "rgb(0,80,0)"); 
+SmartTemplate4.composer.startup  = async () => {
+  // return; // let's do this from the background script!
+  const util = SmartTemplate4.Util;
+  util.logHighlightDebug("smartTemplate-composer.js", "yellow", "rgb(0,80,0)");
+       
+  // let composer = document.getElementById("msgcomposeWindow");
+  await new Promise(resolve => {
+    if (window.composeEditorReady) {
+      resolve();
+      return;
+    }
+    window.addEventListener("compose-editor-ready", resolve, {
+      once: true,
+    });
+  });  
 
-    let txt = "unknown";
-    if (isDebugComposer) debugger;
-    try { txt = window.document.firstElementChild.getAttribute('windowtype'); }
-    catch(ex) {;}
-    
-    // get header variables early
-    if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.Appver, "102")) {
-      window.addEventListener(
-        "compose-window-init",
-        async function() {
-          util.logHighlight("Event: compose-window-init", "lightgreen", "rgb(0,80,0)");
-          SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); 
-        },
-        {capture:true}
-      );    
-    }      
-    
-    logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
-    
-    let composer = document.getElementById("msgcomposeWindow");
-    composer.addEventListener("compose-window-init", SmartTemplate4.initListener, {capture:false});
-    util.logHighlight("added compose-window-init listener", "lightgreen", "rgb(0,80,0)");
-      
-    SmartTemplate4.init();
+  SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); 
+  
+  console.log({MessageHdr: SmartTemplate4.MessageHdr});
 
-  }
-)();
+  // TO DO: also add an event handler for compose-window-send
+  
+  // util.logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
+  // tried compose-editor-ready here but that's definitely too late.
+  // let composer = document.getElementById("msgcomposeWindow");
+  // composer.addEventListener("compose-window-init", SmartTemplate4.initListener, {capture:false});
+  util.logHighlightDebug("added compose-window-init listener", "lightgreen", "rgb(0,80,0)");
+  // call this directly instead of putting it on the event as it's too late!
+  // SmartTemplate4.initListener();
+
+  SmartTemplate4.init();
+  SmartTemplate4.notifyComposeBodyReady(); 
+
+  // make sure we react to selecting a different identity
+  window.addEventListener("compose-from-changed", SmartTemplate4.loadIdentity.bind(SmartTemplate4));
+  
+  // TO DO: we need to know what else was done before / after LoadIdentity
+  // NOTE: when the identity changes, gMsgCompose.bodyModified should be false but it is true...
+};
+

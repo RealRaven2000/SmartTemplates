@@ -670,6 +670,12 @@
   "licenseHead": {
     "message": "Nieuw licentiesysteem"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Doorgaan naar licentiekeuze 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Licentievoorwaarden weergeven"
+  },
   "licenseStatus.expired": {
     "message": "SmartTemplates-licentie is $countDays$ dagen geleden verlopen.",
     "placeholders": {
@@ -800,7 +806,16 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1}Ik werk momenteel aan de conversie van de SmartTemplates-add-on voor de nieuwe Thunderbird SuperNova-gebruikersinterface. Dit zal worden geïmplementeerd in de volgende grote versie van Thunderbird 115 in de zomer van 2023.{P2} {P1}U kunt de huidige voortgang van dit werk hier lezen: [issue 213]{P2}"
+    "message": "{P1}$addonName$ is nu compatibel met de nieuwste versie van Thunderbird ($compatibleVer$). Dit vereiste talloze substantiële veranderingen en het herschrijven van veel functies.{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Aangezien dit werk exclusief gefinancierd door de verkoop van licenties, overweeg dan om een licentie te kopen of uw vorige licentie te verlengen als u in de toekomst SmartTemplates wilt gebruiken."
@@ -886,6 +901,18 @@
   "pref_defaultCharset_tip": {
     "message": "Deze tekenset gebruiken als bij lezen van de headers deze niet kan worden bepaald"
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Gedrag bij het schrijven of beantwoorden zonder een sjabloon te selecteren in de vervolgkeuzelijst."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Standaard sjabloon"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Gebruik het accountmodel."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Gebruik de laatst geselecteerde externe sjabloon in het vervolgkeuzemenu."
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates-instellingen"
   },
@@ -925,6 +952,9 @@
   "pref_groupMailContent": {
     "message": "E-mailinhoud"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Diversen"
+  },
   "pref_groupNameRules": {
     "message": "Naamregels"
   },
@@ -939,6 +969,9 @@
   },
   "pref_help.tab": {
     "message": "Hulp"
+  },
+  "pref_header.inject": {
+    "message": "Injecteer de inhoud van <head> uit het sjabloon"
   },
   "pref_hideExamples": {
     "message": "Tabblad met voorbeelden verbergen"
@@ -1177,6 +1210,18 @@
   "smarttemplate4_button": {
     "message": "Sjablonen en aanhalingskoptekst bewerken…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licentie verlopen!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Licentie verloopt over $daysLeft$ dagen",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates is bijgewerkt!"
   },
@@ -1265,6 +1310,86 @@
   "st.licenseValidation.guessAddon": {
     "message": "(De ingevoerde sleutel is mogelijk voor {2})."
   },
+  "st.menu.docs": {
+    "message": "Documentatie"
+  },
+  "st.menu.docs.premium": {
+    "message": "Premium eigenschappen…"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variabelen en opdrachten…"
+  },
+  "st.menu.hideLabel": {
+    "message": "Knoplabel verbergen"
+  },
+  "st.menu.template.default": {
+    "message": "Standaardsjabloon (account)"
+  },
+  "st.menu.template.last": {
+    "message": "Laatste sjabloon"
+  },
+  "st.menu.license": {
+    "message": "Licentiestatus controleren…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Klik hier om de licentiestatus voor $addonName$ te controleren.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menuaccess.forward": {
+    "message": "D"
+  },
+  "st.menuaccess.reply": {
+    "message": "A"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "B"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
+  "st.menu.replyAll": {
+    "message": "Allen beantwoorden"
+  },
+  "st.menu.replyList": {
+    "message": "Antwoord op lijst"
+  },
+  "st.menu.supportSite": {
+    "message": "Ondersteuningssite…"
+  },
+  "st.menu.update.tooltip": {
+    "message": "Selecteer “Laatste nieuws” in dit menu om te lezen wat er nieuw is in $addonName$.\n Hierdoor wordt de knop teruggezet naar zijn standaarduiterlijk.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird zegt dat je al iets hebt getypt, wil je toch de sjabloon laden?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Dit zal alles wat is getypt verwijderen en de accountsjabloon laden."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Dit zal alles wat is getypt verwijderen en de huidige sjabloon [$template$] opnieuw laden.",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Klik op Annuleren om de inhoud van de e-mail ongewijzigd te houden."
+  },  
   "st.notification.donate": {
     "message": "Doneren"
   },
@@ -1390,8 +1515,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 maart"
-  },
+    "message": "31 oktober"
+  },  
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
     "placeholders": {
@@ -1644,8 +1769,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Nieuwe functie {{%deleteForwardedBody%}} verwijdert de hoofdtekst van de oorspronkelijke e-mail bij inline doorsturen.{L2} {L1}Commando's die inhoud van bestanden invoegen, hebben nu toegang tot bovenliggende mappen met {{../}}, bijv.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Verbeteringen in Template Manager: Toon categorie in de lijst voor eenvoudigere navigatie. {L2} {L1} Prijssectie toegevoegd aan licentiedialoog {L2} {L1} Het aantal resterende dagen in licentie gecorrigeerd door naar boven af te ronden {L2}"
-  },
+    "message": "{L1} De adresgegevens voor {{%to%}}, {{%recipient%}} en {{%from%}} worden nu automatisch ingevoegd bij het schrijven van een nieuwe e-mail via het contextmenu 'Bericht opstellen aan'. [issue 275]{L2} {L1} Het gebruik van {{%recipient%}} werkt ook zoals verwacht bij het beantwoorden van eigen e-mails in een gesprek en Thunderbird wijzigt automatisch de ontvangers. [issue 239]{L2} {L1}Converteer e-mailadressen naar kleine letters bij het zoeken naar Cardbook-contacten. [issue 278]{L2}  {L1} Ondersteuning voor het extraheren van {{prefix}} en {{suffix}} uit adresboekvelden. [issue 267]{L2} {L1} Ondersteuning voor {{other.custom1}}, {{other.custom2}} etc. uit adresboekvelden. [issue 246]{L2} {L1} Dubbele tooltip op actieve SmartTemplate-velden verwijderd. {L2}"
+  },     
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
   },

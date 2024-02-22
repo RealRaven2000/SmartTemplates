@@ -346,7 +346,7 @@ export class Licenser {
     let AllowFallbackToSecondaryIdentiy = false;
     const getDefaultIdentity = messenger.identities ? messenger.identities.getDefault : messenger.accounts.getDefaultIdentity;
 
-    if (this.key_type == 0) {
+    if (this.key_type == 0 || this.key_type ==2) {
       // Private License - Check if secondary mode is necessarry (if not already enforced)
       if (this.ForceSecondaryIdentity) {
         AllowFallbackToSecondaryIdentiy = true;
@@ -398,10 +398,6 @@ export class Licenser {
             "Identities" : account.identities,
         });
         for (let identity of account.identities) {
-          if (this.ForceSecondaryIdentity && defaultIdentity && defaultIdentity.id == identity.id) {
-            this.logDebug("Skipping default identity!", {identity});
-            continue;
-          }          
           if (!identity.email) {
             this.logDebug("Identity has no associated email!", {identity});
             continue;

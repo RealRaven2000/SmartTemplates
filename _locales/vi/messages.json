@@ -114,6 +114,18 @@
   "renew-your-license": {
     "message": "Gia hạn giấy phép của bạn."
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Giấy phép đã hết hạn!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Giấy phép hết hạn sau $daysLeft$ ngày",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates đã được cập nhật!"
   },
@@ -131,8 +143,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "ngày 26 tháng 3"
-  },
+    "message": "31 tháng 10"
+  },  
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
     "placeholders": {
@@ -262,8 +274,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Hàm {{%deleteForwardedBody%}} mới sẽ xóa phần nội dung của email gốc khi chuyển tiếp nội tuyến. {L2} {L1} Các lệnh chèn nội dung từ tệp hiện có thể truy cập thư mục mẹ bằng {{../}}, ví dụ: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Cải tiến trong Trình quản lý Mẫu: Hiển thị Danh mục trong danh sách để điều hướng dễ dàng hơn. {L2} {L1} Đã thêm phần đặt giá vào hộp thoại cấp phép {L2} {L1} Đã sửa Số ngày còn lại trong giấy phép bằng cách làm tròn {L2}"
-  },
+    "message": "{L1} Dữ liệu địa chỉ cho {{%to%}}, {{%recipient%}} và {{%from%}} sẽ tự động được chèn khi viết một email mới thông qua menu ngữ cảnh 'Soạn tin nhắn đến'. [issue 275]{L2} {L1} Việc sử dụng {{%recipient%}} cũng hoạt động như mong đợi khi trả lời email của riêng bạn trong một cuộc trò chuyện và Thunderbird tự động thay đổi người nhận. [issue 239]{L2} {L1}Chuyển đổi địa chỉ email thành chữ thường khi tìm kiếm liên hệ trong Cardbook. [issue 278]{L2} {L1} Hỗ trợ trích xuất {{prefix}} và {{suffix}} từ các trường trong sổ địa chỉ. [issue 267]{L2} {L1} Hỗ trợ cho {{other.custom1}}, {{other.custom2}} vv. từ các trường trong sổ địa chỉ. [issue 246]{L2} {L1} Gỡ bỏ gợi ý công cụ trùng lặp trên các trường SmartTemplate hoạt động. {L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Chào mừng bạn đến với $addonName$",

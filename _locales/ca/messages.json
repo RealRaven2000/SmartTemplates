@@ -673,6 +673,12 @@
   "licenseHead": {
     "message": "Nou sistema de llicències"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Continua amb la selecció de la llicència 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Mostra els termes de la llicència"
+  },
   "licenseStatus.expired": {
     "message": "La llicència SmartTemplates ha caducat fa $countDays$ dies.",
     "placeholders": {
@@ -842,7 +848,13 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1}Actualment estic treballant en la conversió del complement SmartTemplates per a la nova interfície d'usuari de Thunderbird SuperNova. Això s'implementarà a la propera versió principal de Thunderbird 115 l'estiu de 2023.{P2} {P1}Podeu llegir el progrés actual d'aquest treball aquí: [issue 213]{P2}"
+    "message": "{P1}La majoria he completat la conversió de $addonName$ per a la nova interfície d'usuari del Thunderbird SuperNova ($compatibleVer$). A partir d'ara, podeu actualitzar Thunderbird a la nova versió 115.{P2} {P1}Per obtenir més detalls i donar comentaris sobre els canvis i el treball en curs, llegiu: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Com que aquest treball és exclusivament finançat per la venda de llicències, considereu comprar una llicència o renovar-ne l'anterior si esteu interessat a utilitzar SmartTemplates en el futur."
@@ -943,6 +955,18 @@
   "pref_defaultCharset_tip": {
     "message": "Quan llegiu les capçaleres, torneu a aquest conjunt de caràcters si no es pot determinar."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Comportament en escriure o respondre sense seleccionar una plantilla de la llista desplegable."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Plantilla per defecte"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Aplica la plantilla de compte."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Utilitzeu la plantilla externa seleccionada per darrera vegada al menú desplegable."
+  },
   "pref_dialog.title": {
     "message": "Opcions de SmartTemplates"
   },
@@ -982,6 +1006,9 @@
   "pref_groupMailContent": {
     "message": "Contingut del correu"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Diversos"
+  },
   "pref_groupNameRules": {
     "message": "Normes de nom"
   },
@@ -996,6 +1023,9 @@
   },
   "pref_help.tab": {
     "message": "Assistent"
+  },
+  "pref_header.inject": {
+    "message": "Injecteu el contingut de <head> des de la plantilla"
   },
   "pref_hideExamples": {
     "message": "Amaga la pestanya d'exemples"
@@ -1222,6 +1252,18 @@
   "smarttemplate4_button": {
     "message": "Modificar los modèls/las entèstas…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Llicència caducada!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "La llicència caduca en $daysLeft$ dies",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates s'ha actualitzat."
   },
@@ -1310,6 +1352,86 @@
   "st.licenseValidation.guessAddon": {
     "message": "(La clau introduïda pot ser per a {2})."
   },
+  "st.menu.docs": {
+    "message": "Documentació"
+  },
+  "st.menu.docs.premium": {
+    "message": "Funcions Premium…"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variables i ordres…"
+  },
+  "st.menu.hideLabel": {
+    "message": "Amaga l'etiqueta del botó"
+  },  
+  "st.menu.template.default": {
+    "message": "Plantilla predeterminada (compte)"
+  },
+  "st.menu.template.last": {
+    "message": "Última plantilla"
+  },
+  "st.menu.license": {
+    "message": "Comprova l'estat de la llicència…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Feu clic aquí per comprovar l'estat de la llicència de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menuaccess.forward": {
+    "message": "T"
+  },
+  "st.menuaccess.reply": {
+    "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "A"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },  
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
+  "st.menu.replyAll": {
+    "message": "Respondre a tots"
+  },
+  "st.menu.replyList": {
+    "message": "Respon a la llista"
+  },
+  "st.menu.supportSite": {
+    "message": "Lloc de suport…"
+  },
+  "st.menu.update.tooltip": {
+    "message": "Seleccioneu «Últimes notícies» d'aquest menú per llegir les novetats de $addonName$.\n Això restablirà el botó a la seva aparença predeterminada.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird diu que ja has escrit alguna cosa. Vols carregar la plantilla de totes maneres?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Això descartarà qualsevol cosa escrita i carregarà la plantilla del compte."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Això descartarà qualsevol cosa escrita i recarregarà la plantilla actual [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Feu clic a Cancel·la per mantenir el contingut del correu electrònic sense canvis."
+  },  
   "st.notification.donate": {
     "message": "Donar"
   },
@@ -1438,8 +1560,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 de març"
-  },
+    "message": "31 d'octubre"
+  },  
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
     "placeholders": {
@@ -1649,15 +1771,6 @@
   "tzname.label": {
     "message": "GMT, PST, EST,…"
   },
-  "update.tooltip": {
-    "message": "Feu clic aquí una vegada per llegir les novetats de $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
   "updates.changeLog": {
     "message" : "Notes de la versió (anglès)"
   },
@@ -1701,7 +1814,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} La nova funció {{%deleteForwardedBody%}} elimina el cos del correu electrònic original quan es reenvia en línia. {L2} {L1}Les ordres que insereixen contingut dels fitxers ara poden accedir a les carpetes principals amb {{../}}, p. ex.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Millores al Gestor de plantilles: Mostra la categoria a la llista per facilitar la navegació. {L2} {L1} S'ha afegit una secció de preus al quadre de diàleg de llicència {L2} {L1} S'ha corregit el nombre de dies restants en llicència arrodonint {L2}"
+    "message": "{L1} Les dades d'adreça per a {{%to%}}, {{%recipient%}} i {{%from%}} ara s'inseriran automàticament en escriure un correu electrònic nou a través del menú contextual 'Redactar missatge a'. [issue 275]{L2} {L1} L'ús de {{%recipient%}} també funciona com s'esperava quan es respon als propis correus electrònics en una conversa i Thunderbird canvia automàticament els destinataris. [issue 239]{L2} {L1}Converteix les adreces de correu electrònic a minúscules quan busques contactes del Llibre de contactes. [issue 278]{L2}  {L1} Suport per extreure {{prefix}} i {{suffix}} dels camps del llibre d'adreces. [issue 267]{L2} {L1} Suport per a {{other.custom1}}, {{other.custom2}} etc. dels camps del llibre d'adreces. [issue 246]{L2} {L1} S'ha eliminat la informació sobre eines duplicada als camps actius de SmartTemplate. {L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

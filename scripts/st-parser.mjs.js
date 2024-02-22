@@ -1424,113 +1424,6 @@ export class Parser {
         return false;
       }
       
-      // duplicate for now
-      async function matchText(regX, fromPart) {
-        try {
-          let matchPart = msg.match(regX);
-          if (matchPart) {
-            if (await Preferences.isDebugOption('parseModifier')) debugger;
-            for (let i=0; i<matchPart.length; i++) {
-              Util.logDebugOptional('parseModifier','matched variable: ' + matchPart);
-              let patternArg = matchPart[i].match(   /(\"[^"].*?\")/   ), // get argument (includes quotation marks) ? for non greedy to match first closing doublequote
-                  hdr,
-                  extractSource = '',
-                  rx = patternArg ? await Util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
-
-              hdr =	(gMsgCompose.originalMsgURI.indexOf(".eml")>0 && msgDbHdr) ?
-                new clsGetAltHeader(msgDbHdr) :
-                new classGetHeaders(gMsgCompose.originalMsgURI);
-              switch(fromPart) {
-                case 'subject':
-                  /*
-                  if (!hdr) {
-                    Util.logToConsole("matchText() - matchTextFromSubject failed - couldn't retrieve header from Uri");
-                    return "";
-                  }
-                  Util.addUsedPremiumFunction('matchTextFromSubject');
-                  let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-                      charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
-                  extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("Subject"), charset);
-                  */
-                  extractSource = composeDetails.subject;
-                  Util.logDebugOptional('parseModifier',"Extracting " + rx + " from Subject:\n" + extractSource);
-                  break;
-                case 'body':
-                  let rootEl;
-                  let html = composeDetails.body;
-                  if (html) {
-                    // clone the html
-                    rootEl = new DOMParser().parseFromString(html, "text/html").body.firstElementChild;
-                    // we may still need to remove the div.moz-cite-prefix, let's look for a blockquote
-                    if (rootEl.childNodes.length) {
-                      for (let c=0; c<rootEl.childNodes.length; c++ ) {
-                        let el = rootEl.childNodes[c];
-                        if (el.tagName && el.tagName.toLowerCase() == 'blockquote') {
-                          extractSource = el.innerText;  // quoted material
-                        }
-                      }
-                    }                    
-                    if (!extractSource)
-                      extractSource = rootEl.innerText;
-                  }
-                  else {
-                    Util.logIssue184("matchText()  - PLEASE TEST: extract body in plainText");
-                    extractSource = composeDetails.plainTextBody;  // ???
-                  }
-                  Util.addUsedPremiumFunction('matchTextFromBody');
-                  Util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
-                  break;
-                default:
-                  throw("Unknown source type:" + fromPart);
-              }
-              if (patternArg) {
-                let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ), // match group number
-                    removePat = false;
-                if (extractSource) {
-                  let result = rx.exec(extractSource); // extract Pattern from source
-                  if (result && result.length) {
-                    let group = groupArg ? parseInt(groupArg[1]) : 0;
-                    if (isNaN(group)) group = 0;
-                    // retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
-                    Util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n'
-                                  + result[group]);
-                    if (groupArg==null) { // third parameter is a replacement string
-                      // check for string arg - after second comma: %header.append.matchFromSubject(hdr,regex,"replaceText"])%
-                      let commaPos = matchPart[i].lastIndexOf(",\"");
-                      if (commaPos>0) {
-                        let thirdArg = matchPart[i].substring(commaPos), // search for end of string ")
-                            endPos = thirdArg.indexOf("\")");
-                        if (endPos>0) {
-                          let txt = thirdArg.substring(2,endPos);
-                          return txt;
-                        }
-                        else {
-                          Util.logToConsole("replaceText - last string parameter is not well formed.");
-                          return ""; // not well formed
-                        }
-                      } 
-                    }									
-                    return result[group];
-                  }
-                  else
-                    removePat = true;
-                    return "";
-                }
-                else removePat = true;
-                if(removePat) {
-                  Util.logDebug("pattern not found in " + fromPart + ":\n" + regX);
-                  return "";
-                }
-              } 
-            }
-          } // matches loop
-        }	
-        catch	(ex) {
-          Util.logException('matchText(' + regX + ', ' + fromPart +') failed:', ex);
-        }
-        return "";
-      }
-      
       // remove  (  ) from argument string
       function removeParentheses(arg) {
         return arg.substr(1,arg.length-2);
@@ -1700,7 +1593,9 @@ export class Parser {
           case "suppressQuoteHeaders":
             flags.suppressQuoteHeaders = true;
             return "";
-          case "T": // today
+          case "deleteForwardedBody":
+            SmartTemplate4.PreprocessingFlags.deleteForwardedBody = true;
+            return "";          case "T": // today
           case "X":                               // Time hh:mm:ss
             return finalize(token, await expand("%H%:%M%:%S%"));
           case "y":                               // Year 13... (2digits)
@@ -2087,45 +1982,34 @@ export class Parser {
         Util.logDebug(dbgCmdType + " - " + type + " path may be relative: " + path  +
           "\n flags.isFileTemplate = " + flags.isFileTemplate +
           "\n template path = " + currentPath || '?');
-        let pathArray = path.includes("\\") ? path.split("\\") :  path.split("/");
-        if (isFU) {
-          // if (await Preferences.isDebugOption("fileTemplates")) debugger;
-          try {
-            // on Mac systems nsIDirectoryService key may NOT be empty!
-            // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
-            if (!FileUtils.getFile("Home", pathArray, false)) {
-              Util.logDebug("Cannot find file. Trying to append to path of template.");
-            }
+        // if (await Preferences.isDebugOption("fileTemplates")) debugger;
+        try {
+          // on Mac systems nsIDirectoryService key may NOT be empty!
+          // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
+          if (!await IOUtils.exists(newPath)) { 
+            Util.logDebug("Cannot find file. Trying to append to path of template.");
           }
-          catch (ex) {
-            // new code for path of template - failed on Rob's Mac as unknown.
-            // I think this is only set when a template is opened from the submenus!
-            if (flags.isFileTemplate && currentPath) {
-              let slash = newPath.includes("/") ? "/" : "\\",
-                  pathArray = newPath.split(slash);
-              try {
-                let ff = new FileUtils.File(newPath);
-                if (!ff.exists()){
-                  Util.logDebug("Failed to find file at: " + newPath);
-                } 
-                else {
-                  Util.logDebug("%file% Converted relative path: " + newPath);
-                  path=newPath; // fix path and make absolute
-                }
+        }
+        catch (ex) {
+          // new code for path of template - failed on Rob's Mac as unknown.
+          // I think this is only set when a template is opened from the submenus!
+          if (flags.isFileTemplate && currentPath) {
+            try {
+              let ff = new FileUtils.File(newPath);
+              if (!ff.exists()){
+                Util.logDebug("Failed to find file at: " + newPath);
+              } 
+              else {
+                Util.logDebug("%file% Converted relative path: " + newPath);
+                path=newPath; // fix path and make absolute
               }
-              catch(ex) {
-                debugger;
-              }
+            }
+            catch(ex) {
+              debugger;
             }
           }
         }
-        else { // Postbox
-          let LFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
-              file = LFile.initWithPath(path);
-          if (!file.exists()) {
-            logDebug("file doesn't exist: " + path);
-          }
-        }
+
       }
       try {
         switch(type) {
@@ -2160,13 +2044,9 @@ export class Parser {
                   countRead = 0;
               // let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
               try {
-                let localFile = isFU ?   // not in Postbox
-                                new FileUtils.File(path) :
-                                Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
+                let localFile = new FileUtils.File(path),
                     str = {};
                 Util.logDebug("localFile.initWithPath(" + path + ")");
-                if (!isFU)
-                  localFile.initWithPath(path);
                 
                 fstream.init(localFile, -1, 0, 0);
                 /* sigEncoding: The character encoding you want, default is using UTF-8 here */
@@ -2235,8 +2115,7 @@ export class Parser {
         }
       }
       catch(ex) {
-        var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
-        
+                
         Util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more information if you enable debug mode.",ex );
         Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +
           "Please check Javascript error console for detailed error message.");

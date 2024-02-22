@@ -243,39 +243,114 @@ END LICENSE BLOCK
     # do not trigger "news" unless min ver changes at least.
     #
 
+  Version 3.17.1 - 16/07/2023
+    # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
+    # [issue 242] Update "# licensed days left" at midnight.
+    # [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
+
 #################################################
 
-  Version 4.0 - WIP
+  Version 4.0b1 - 10/07/2023
     # [issue 213] Compatibity with Thunderbird 115 (ESR 2023/24)
     # - new browser action button (WIP)
     # - messageServiceFromURI moved to MailServices
-    # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
+    # deprecated {OS} for file reading.
+    // OS.File.read => IOUtils.read
+    // OS.Constants.Path.profileDir -> PathUtils.profileDir
+    // OS.Path.* -> PathUtils.*
+    // OS.File.writeAtomic -> IOUtils.writeUTF8
+    // JSON.parse(CustomMenuData) -> JSON.parse(new TextDecoder().decode(CustomMenuData))
+    # b1 [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
+    # b1 [issue 243] Menu item / Option for reusing last external template (defaultTemplateMethod)
+    # b1 [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
+    # - new browser action button (WIP)
+    # - messageServiceFromURI moved to MailServices
 
+  Version 4.0b2 - 12/07/2023
+    # b2 [issue 227] Avoid error when smartTemplates.json file does not exist
 
-  Version 3.17.1 - WIP
-    # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
-    # [issue 242] Update "# licensed days left" at midnight.
+  Version 4.0b3 - 16/07/2023
+    # b3 [issue 247] Regression - saving template menus saves invalid smartTemplates.json file
+    # b3 [issue 248] %recipient% uses the original "from" address when replying
+
+  Version 4.0.2 - 25/07/2023
+    # [issue 249] composer: open snippet / change template from file directly inserts nothing
+    # If cardbook support is enabled but cardbook disabled this will also prevent fallback to std AB
+    #   (cardbook fallback throws error)
+    # fixed missing panels in Common settings if no account was selected  (e.g. when opening 
+    #       the settings from Local Folders)
+    # replace obsolete messageListener.onEndHeaders() code (which looked at the visbility of reply/forward buttons) 
+    # with an notification that reacts to the message header change API - 
+    # remove SmartTemplate4.messageListener
+    # use the onMessageDisplayed API instead
+
     
+  Version 4.1 - 09/08/2023
+    # [issue 79] Inject contents of <head> tags into composer's head section, merge body attributes
+    # Remove console error “receiving end does not exist” if Cardbook enabled but not installed
+    # Slightly improved settings layout (long template list tended to push the bottom 
+      buttons outside of the window)
+    # [issue 252] ST 4.0.2 Cannot open license website (or any external website links)
+
+  Version 4.2.1 - 25/09/2023
+    # [issue 254] Made the button above email preview less obtrusive:
+      Shortened the text for the message display action button - "SmartTemplates" 
+      Added an option to remove the label when in icon+text mode.
+    # Add "settings" item to bottom of SmartTemplates thread tools menu
+    # [issue 256] Fixed: account template not loaded when changing From address
+
+  Version 4.3.1 - 16/10/2023
+    # [issue 263] List most recent external template actions on top level of SmartTemplates menus
+    # [issue 262] Add accelerator keys for template menus (Write, Forward, Reply, Reply All and Reply to List)
+    # [issue 264] Support reading %clipboard% with "text/plain" content 
+    # [issue 265] Support <div type='cite'> for raising quote level in commands that have quote level parameters    
+    # [issue 268] Make registration screen less tall / easily resizable
+
+  Version 4.3.2 - 23/10/2023
+    # [issue 269] Regression: Insert Snippet and Change template buttons were missing the menu item "Open template file..."
+  
+  Version 4.3.3 - 08/11/2023
+    # [issue 271] Sometimes the header menu is empty - patchHeaderPane() fails - 
+                  - increased default delay for patching message 
+                  - keeping a reference to local WindowListener in message window
+    # [issue 273] Loading accounts settings doesn't work
+    # [issue 272] SmartTemplates ignored when creating an email from the Thunderbird taskbar context menu
+    #             or when clicking a mailto link on a website. This should load the template of the default account.
+
+  Version 4.4 - WIP
+    # [issue 275] Auto-Fill content for %to%, %recipient% and %from% when 
+                  clicking Contact context menu "Compose Message To" or writing new mail
+    # Add documentation for dateformat(fstring,toclipboard)
+    # Add Alias to register dialog if already set in a license
+    # [issue 239] Use correct %recipient% when replying to own email
+    # [issue 246] Support for other.custom1, other.custom2 etc. from address book fields
+    # [issue 257] Cardbook: Deferred variable (clicking on the pink "to(name)" field not pulling data from B intermittently
+    # [issue 278] failure looking up Cardbook with mixed case - forced lowercase emails
+    # [issue 267] Support for extracting prefix and suffix from address book fields
+    # [issue 276] Removed FileUtils.getFile for future compatibility (122 beta)
+    # Removed duplicate tooltip on active fields in write new mail
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
+  Version 4.x - FUTURE VERSION / WIP
+    # [issue ] Add menus in background script using API functions
+    # [issue ] 
+
+
+    # [issue 253] recreate menus using API functions
+    # New Idea: Add an account templates submenu - only for accounts with dedicated settings.
+
     # [issue 150] Remove "Nag Screens" in Composer for unlicensed users
-  
-  Version 2.x
     # [issue 27] Insert external HTML Templates from a web page URL
     # [issue 10] add %deliveryoptions% function to force Return Receipt.
-    # [issue 12] <head> section from templates should be merged into <body>
+    # The "clean up button" is not automatically installed in the composer toolbar.
     # ...
       
-  Version 2.2
-    # Known issues: The "clean up button" is not automatically installed in the composer toolbar.
-
 // investigate gMsgCompose.compFields!
 =========================
 */
 
  
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 var SmartTemplate4 = {
   // definitions for whatIsX (time of %A-Za-z%)
@@ -310,134 +385,10 @@ var SmartTemplate4 = {
     flags.modifiedHeaders = [];
   } ,
 
-  stateListener: {
-    NotifyComposeBodyReady_AllCases: function ST_NotifyComposeFieldsReady(event, composeCase) {
-      const util = SmartTemplate4.Util,
-            prefs = SmartTemplate4.Preferences,
-            msgComposeType = Components.interfaces.nsIMsgCompType;
-      let eventDelay = (gMsgCompose.type != msgComposeType.ForwardInline) 
-                     ? 10 
-                     : prefs.getMyIntPref("forwardInlineImg.delay"),
-          isNotify = false;
-      util.logDebug('NotifyComposeBodyReady');
-      isNotify = true;
-      
-      // avoid race conditions that cause concurrent / nested calling of our notifyComposeBodyReady function
-      // isLoadIdentity - use for Conversations Add-on (and others that may trigger loadidentity)
-      if (SmartTemplate4.PreprocessingFlags.NotifyComposeBodyReadyFired  
-         || SmartTemplate4.PreprocessingFlags.isLoadIdentity)   // [issue 139] duplication of template
-        isNotify = false; 
-      SmartTemplate4.PreprocessingFlags.NotifyComposeBodyReadyFired = true;
-      
-      if (isNotify) {
-        // [BUG 26434] forwarding email with embedded images removes images
-        // test delaying call for forward case
-        window.setTimeout(
-          function(){ 
-            SmartTemplate4.notifyComposeBodyReady(event); 
-          }, 
-          eventDelay);
-      }
-    },
-    
-    NotifyComposeBodyReady: function(event) { 
-      const msgComposeType = Components.interfaces.nsIMsgCompType;
-      this.NotifyComposeBodyReady_AllCases(event, null);
-    },
-
-    // neu
-    NotifyComposeBodyReadyNew: function(event) {
-      const msgComposeType = Components.interfaces.nsIMsgCompType;
-      this.NotifyComposeBodyReady_AllCases(event, msgComposeType.New);
-    },
-    
-    NotifyComposeFieldsReady: function() {},
-
-    //ende neu
-    
-    ComposeProcessDone: function(aResult) {
-      const util = SmartTemplate4.Util;
-      util.logDebug('ComposeProcessDone');
-    },
-    
-    SaveInFolderDone: function(folderURI) {
-      const util = SmartTemplate4.Util;
-      util.logDebug('SaveInFolderDone');
-    }
-  },
-
-  initListener: async function initListener(isWrapper) {
-    const util = SmartTemplate4.Util,
-          prefs = SmartTemplate4.Preferences,
-          msgComposeType = Components.interfaces.nsIMsgCompType;
-    let log = util.logDebugOptional.bind(util);
-    if (SmartTemplate4.isListenerInitialised) {
-      log('composer','Listener is initialised - early exit.');
-      return; // avoid calling 2x
-    }
-    let notifyComposeBodyReady = SmartTemplate4.notifyComposeBodyReady.bind(SmartTemplate4),
-        txtWrapper = isWrapper ? "Wrapper=true" : "compose-window-init event";
-    SmartTemplate4.isListenerInitialised = true;
-    util.logHighlight("initListener", "yellow");
-    log('composer', 'Registering State Listener [' + txtWrapper + ']...');
-    if (prefs.isDebugOption('composer')) debugger;
-    try {
-      // await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
-      if (!SmartTemplate4.Preferences.isBackgroundParser()) {
-        util.logHighlight("RegisterStateListener", "lightyellow");
-        gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
-      }
-      
-      
-      // can we overwrite part of global state listener?
-      // stateListener is defined in components/compose/content/MsgComposeCommands.js
-      if (stateListener && stateListener.NotifyComposeBodyReady) {
-        if (typeof gComposeType !== 'undefined' && !util.OrigNotify) {
-          
-          util.OrigNotify = 
-            (gComposeType == msgComposeType.New)
-            ? stateListener.NotifyComposeBodyReadyNew.bind(stateListener)
-            : stateListener.NotifyComposeBodyReady.bind(stateListener);
-            
-          let idKey = util.getIdentityKey(document);
-          stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
-            // no notification on forward w. empty template
-            util.logHighlight("NotifyComposeBodyReady (wrapped)", "lightyellow");
-            if (gComposeType !== msgComposeType.ForwardInline
-               ||
-               (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")
-                && 
-                SmartTemplate4.pref.isTemplateActive(idKey, 'fwd', false))
-            {
-              util.OrigNotify();
-            }
-            // [issue 168] non-default text+background color not set
-            if (gComposeType == msgComposeType.New) {
-              if (gMsgCompose.composeHTML) {
-                loadHTMLMsgPrefs();
-              }
-              // from MsgComposeCommands.js - add encryption support?
-              if (util.versionGreaterOrEqual(util.AppverFull, "102")) {
-                ComposeFieldsReady();
-                updateSendCommands(true);
-              } else if (util.versionGreaterOrEqual(util.AppverFull, "91") && !BondOpenPGP.isEnabled()) {
-                window.composeEditorReady = true;
-                window.dispatchEvent(new CustomEvent("compose-editor-ready"));
-              }              
-            }            
-          }
-        }
-      }
-    }
-    catch (ex) {
-      util.logException("Could not register status listener", ex);
-    }
-  },
-  
   // -------------------------------------------------------------------
   // A handler to add template message
   // -------------------------------------------------------------------
-  notifyComposeBodyReady: async function notifyComposeBodyReady(evt, isChangeTemplate, win=null)  {
+  notifyComposeBodyReady: async function notifyComposeBodyReady(isChangeTemplate, win=null)  {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util,
           Ci = Components.interfaces,
@@ -469,7 +420,6 @@ var SmartTemplate4 = {
     
     // check if a file template is active. we need to get the window from the originating event!
     let dbg = 'SmartTemplate4.notifyComposeBodyReady()',
-        stationeryTemplate = null,
         flags = this.PreprocessingFlags;
     this.initFlags(flags);
         
@@ -486,7 +436,7 @@ var SmartTemplate4 = {
       theFileTemplate = ownerWin.SmartTemplate4.fileTemplates.armedEntry;
       // to avoid event triggering while we stream the message, postpone this one!
       if (SmartTemplate4.isStreamingMsg) {
-        setTimeout(function () { SmartTemplate4.notifyComposeBodyReady(evt, isChangeTemplate, win);}, 100);
+        setTimeout(function () { SmartTemplate4.notifyComposeBodyReady(isChangeTemplate, win);}, 100);
         return;
       }      
     } else if (theQueue.length) {
@@ -504,6 +454,35 @@ var SmartTemplate4 = {
       }
       ownerWin.SmartTemplate4.fileTemplates.armedQueue = theQueue; // store depleted queue back!
       util.logDebugOptional("fileTemplates", "Found FileTemplate:", theFileTemplate, ownerWin.SmartTemplate4.fileTemplates.armedQueue);
+    }
+
+    // reuse last template for this specific composeType. [issue 243]
+    if (!theFileTemplate && prefs.getMyIntPref("defaultTemplateMethod")==2) {
+      // reuse last external template!
+      let composeType = "";
+      if (!this.smartTemplate.composeCase) {
+        composeType =  this.smartTemplate.setComposeCase(gMsgCompose.type);
+      }
+      try {
+        let setting = "fileTemplates.mru." + composeType;
+        switch(composeType) {
+          case "new":
+            theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
+            break;
+          case "rsp":
+            theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
+            break;
+          case "fwd":
+            theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
+            break;
+        }
+        if (theFileTemplate) {
+          util.logHighlight(`Found previous FileTemplate: `, "yellow", "rgb(0,80,0)", theFileTemplate);
+        }
+      }
+      catch(ex) {
+        util.logHighlight(`Could not retrieve previous file template for composeType ${composeType}`, "yellow", "rgb(0,80,0)");
+      }
     }
     
     if (theFileTemplate) {
@@ -683,34 +662,49 @@ var SmartTemplate4 = {
   // -------------------------------------------------------------------
   // A handler to switch identity
   // -------------------------------------------------------------------
-  loadIdentity: async function (startup, previousIdentity) {
+  loadIdentity: async function (options = {}) {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util;    
     let isTemplateProcessed = false;
-    SmartTemplate4.Util.logDebugOptional("functions","SmartTemplate4.loadIdentity(" + startup + ", " , previousIdentity + ")");
-    this.PreprocessingFlags.isLoadIdentity = true;
-    if (startup) {
-      // Old function call
-      this.original_LoadIdentity(startup);
+    let isChangeFromViaSmartTemplate = false;
+    if (typeof options.setFromHeader != "undefined" && options.setFromHeader) {
+      isChangeFromViaSmartTemplate = true;
     }
-    else {
+    SmartTemplate4.Util.logDebugOptional("functions","SmartTemplate4.loadIdentity()");
+    SmartTemplate4.Util.logHighlight("loadIdentity()", "yellow", "rgb(0,80,0)");
+    {
       let isBodyModified = gMsgCompose.bodyModified,
           composeType = util.getComposeType();
-      if (!previousIdentity) {
-        util.logDebug("loadIdenty called to change but without previous Identity; bailing out as something may have went wrong...");
-        this.original_LoadIdentity(false);
-        this.PreprocessingFlags.isLoadIdentity = false;
-        return;
-      }
+
       let newSig;
       // change identity on an existing message:
       // Check body modified or not
       // we can only reliable roll back the previous template and insert
       // a new one if the user did not start composing yet (otherwise danger
       // of removing newly composed content)
-      if (!isBodyModified) {
+      // note I used (!isBodyModified) but this lies in Thunderbird 115 !!
+      // LoadIdentity(), before calling compose-from-changed, sets gMsgCompose.identity, 
+      // which _always_ toggles the flag to true temporarily, so we cannot rely on it being correct.
+      let isOverrideBodyModified = false;
+      if (isBodyModified) {
+        let question = util.getBundleString("st.notification.bodyModified"),
+            detail,
+            instructions = util.getBundleString("st.notification.bodyModified.instructions");
+
+        if (window.SmartTemplate4.CurrentTemplate) {
+          let templateName = window.SmartTemplate4.CurrentTemplate.label || window.SmartTemplate4.CurrentTemplate.path;
+          detail = util.getBundleString("st.notification.bodyModified.externalTemplate", [templateName]);
+        } else {
+          detail = util.getBundleString("st.notification.bodyModified.accountTemplate");
+        }
+            
+        isOverrideBodyModified = confirm( question + "\n" + detail + "\n\n" + instructions);
+      }
+      
+      if ( !isChangeFromViaSmartTemplate &&               // don't trigger a tempalte reload in case header.set(from) was called!!
+          (!isBodyModified || isOverrideBodyModified)) {  // ask user it isBodyModified is really true...
         // [issue 51]
-        this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
+        // this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
         // Add template message - will also remove previous template and quoteHeader.
         if (window.SmartTemplate4.CurrentTemplate) {
           //[issue 64] reload the same template if it was remembered.
@@ -720,6 +714,9 @@ var SmartTemplate4 = {
             alert(text); 
           }
           else {
+            if (isOverrideBodyModified)  {
+              window.SmartTemplate4.PreprocessingFlags.identitySwitched = true
+            }
             await this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
           }
         }
@@ -748,7 +745,7 @@ var SmartTemplate4 = {
           // when Thunderbird changes identity, we cannot keep our JavaScript stuff / late resolved variables around.
           util.cleanupDeferredFields(true); // remove the fields even if they can't be resolved!
         }
-        this.original_LoadIdentity(startup);
+        // this.original_LoadIdentity(startup);
         // try replacing the (unprocessed) signature that Thunderbird has inserted.
         if (prefs.getMyBoolPref('parseSignature') && newSig ) {
           // find and replace signature node.
@@ -763,7 +760,6 @@ var SmartTemplate4 = {
         gMsgCompose.editor.resetModificationCount();
       } // for TB bug?
     }
-    this.PreprocessingFlags.isLoadIdentity = false;
     
   },
 
@@ -779,27 +775,12 @@ var SmartTemplate4 = {
   // Initialize - we only call this from the compose window
   // -------------------------------------------------------------------
   init: function init() {
-    async function smartTemplate_loadIdentity(startup){
-      let prevIdentity = gCurrentIdentity;
-      return await SmartTemplate4.loadIdentity(startup, prevIdentity);
-    }
-    
-    let isBackgroundParser = SmartTemplate4.Preferences.isBackgroundParser(); // [issue 184]
+    // let prevIdentity = gCurrentIdentity;
+    // let isBackgroundParser = SmartTemplate4.Preferences.isBackgroundParser(); // [issue 184]
 
     // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3998
-    if (typeof LoadIdentity === 'undefined') // if in main window: avoid init()
-      return;
     SmartTemplate4.Util.logDebug('SmartTemplate4.init()');
     
-    
-    if (!isBackgroundParser) {
-      this.original_LoadIdentity = LoadIdentity; // global function from MsgComposeCommands.js
-      // overwriting a global function within composer instance scope
-      // this is intentional, as we needed to replace Tb's processing
-      // with our own (?)
-      LoadIdentity = smartTemplate_loadIdentity;
-    }
-
     this.pref = new SmartTemplate4.classPref();
 
     // a class instance.
@@ -869,16 +850,17 @@ var SmartTemplate4 = {
             labelMode = 2;
           }
           else {
-            if (licenseInfo.keyType==2)
+            if (licenseInfo.keyType==2) {
               btn.label = "SmartTemplates";
-            else
+            } else {
               btn.label = "SmartTemplates Pro";
+            }
           }
         }
         else {
           btn.label = "SmartTemplates";
         }
-        btn.collapsed = !isVisible;
+        btn.setAttribute("collapsed", !isVisible);
         
         switch(labelMode) {
           case 0:
@@ -891,10 +873,12 @@ var SmartTemplate4 = {
             btn.classList.add('always');
             break;
         }
-        util.logDebugOptional("functions","SmartTemplate4Messenger btn.className = " + btn.className + " , collapsed = " + btn.collapsed);    
+        util.logDebugOptional("functions",
+          `SmartTemplate4Messenger btn.className = ${btn.className} , collapsed = ${btn.getAttribute("collapsed")}`);    
       }
-      else
+      else {
         util.logDebugOptional("functions","SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in " + doc);
+      }
     }
     catch(ex) {
       util.logException("SmartTemplate4.updateStatusBar() failed ", ex);
@@ -905,7 +889,7 @@ var SmartTemplate4 = {
   initLicensedUI: function ST_initLicensedUI() {
     SmartTemplate4.Util.logDebug("initLicensedUI()", SmartTemplate4.Util.licenseInfo);
     SmartTemplate4.updateStatusBar();
-    SmartTemplate4.updateToolbarIcon();
+    SmartTemplate4.updateNewsLabels();
   },
 
   startUp: function ST_startUp() {
@@ -918,129 +902,359 @@ var SmartTemplate4 = {
           window.SmartTemplate4.updateStatusBar("default");
     }, 2000);
     
-    gMessageListeners.push(SmartTemplate4.messageListener);
-    
     SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels"}); // initialize new-related buttons in case there was an ignored update!
     util.logDebug("startUp complete");
   } ,
   
   shutDown: function ST_shutDown(isMainWindow = false) {
-    const util = SmartTemplate4.Util;
-    if (isMainWindow) {
-      util.logDebug("removing message listeners…");
-      gMessageListeners = gMessageListeners.filter(listener => listener !== SmartTemplate4.messageListener);
-    }
-    
+    const util = SmartTemplate4.Util;    
     util.logDebug("Remove added custom UI elements …");
     let elements = Array.from(window.document.querySelectorAll('[st4uiElement]'));
     for (let element of elements) {
       element.remove();
     }
-          
-    util.logDebug("Cleanup/Downgrade toolbar buttons …");
-    let manipulatedButtons = [
-      "button-newmsg",
-      "button-reply",
-      "button-replyall",
-      "button-replylist",
-      "button-forward",
-      "hdrReplyButton",
-      "hdrReplyAllButton",
-      "hdrReplyListButton",
-      "hdrFollowupButton",
-      "hdrReplyToSenderButton",
-      "hdrForwardButton"];
-    
-    for (let btn of manipulatedButtons) {
-      window.SmartTemplate4.hackToolbarbutton.cleanupIfNeeded(window, btn);
-    }
-    
+    SmartTemplate4.fileTemplates.tabConfigured = false;
+
     util.logDebug("shutDown complete");
   } ,
   
   signatureDelimiter:  '-- <br>',
   
-  // this listener is in charge of all dynamic changes (hiding / showing buttons) in the header toolbar
-  // see: onEndHeaders.
-  messageListener : {
-    onStartHeaders() {
-      
-    },
-    onEndHeaders() {
-      const util = SmartTemplate4.Util;
-      util.logDebug("onEndHeaders");
-      let hrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton",
-                  "hdrReplyToSenderButton", "hdrForwardButton","hdrDualForwardButton"];
-                  // ,"button-reply","button-replyall", "button-replylist", "button-forward" // are these from CompactHeaders?
-      for (let b=0; b<hrBtns.length; b++) {
-        let id = hrBtns[b],
-            fakeId = id + "-ST",
-            theBtn = document.getElementById(id);
-        if(!theBtn) continue;
-        let btn = document.getElementById(fakeId); // unneeded "fake" buttons need to be hidden
-        if(!btn) continue;
-        btn.hidden = theBtn.hidden || false;
-        if (btn.hidden) {
-          util.logDebug("Hiding button: " + fakeId);
-        }
-      }
-      
-    },
-    beforeStartHeaders() {
-      return true;
-    }
-  } ,
-  
   // show news on update
   updateNewsLabels: function() {
-    const util  = SmartTemplate4.Util;
+    const util  = SmartTemplate4.Util,
+          licenseInfo = SmartTemplate4.Util.licenseInfo;
     let hasNews = SmartTemplate4.Preferences.getMyBoolPref("hasNews"),
         btn = document.getElementById("SmartTemplate4Button"),
-        btnStatus = document.getElementById("SmartTemplate4Messenger");
+        btnStatus = document.getElementById("SmartTemplate4Messenger"),
+        isVisible = false;
+    // for styling button parent background image
+    //   in  Tb115 we need to add the class to the parent <div class="live-content">!
+    function addClass(element, c) {
+      element.classList.add(c);
+      element.parentElement.classList.add(c)
+    }
+    function removeClass(element, c) {
+      element.classList.remove(c);
+      element.parentElement.classList.remove(c);
+    }    
+
     if (btn) {
+      let txt = "",
+          tooltip = "";
+
+      if (licenseInfo.licenseKey) {
+        let days = licenseInfo.licensedDaysLeft,
+            wrn = null;
+        if (licenseInfo.status == "Invalid") {
+          addClass(btn, "expired");
+          wrn = util.getBundleString("SmartTemplateMainButton.invalid");
+        } else if (licenseInfo.isExpired)  {
+          wrn = util.getBundleString("SmartTemplateMainButton.expired");
+          addClass(btn, "expired");
+          removeClass(btn, "renew");
+          tooltip = SmartTemplate4.Util.getBundleString("licenseStatus.expired", [licenseInfo.expiredDays]);
+        }
+        else if (days<15) {
+          wrn = util.getBundleString("SmartTemplateMainButton.renew", [days]);
+          removeClass(btn, "expired");
+          addClass(btn, "renew");
+          tooltip = SmartTemplate4.Util.getBundleString("st.menu.license.tooltip", ["SmartTemplates"]);          
+        }
+        else {
+          removeClass(btn, "expired");
+          removeClass(btn, "renew");
+        }
+        if (wrn) {
+          txt = wrn;
+        }
+      }
+
       if (hasNews) {
-        let txt = util.getBundleString("SmartTemplateMainButton.updated")
-        btn.classList.add("newsflash");
-        btn.label = txt;
-        btn.setAttribute("tooltiptext", util.getBundleString("update.tooltip", ["SmartTemplates"]));
+        txt = util.getBundleString("SmartTemplateMainButton.updated");
+        addClass(btn, "newsflash");
+        tooltip = util.getBundleString("st.menu.update.tooltip", ["SmartTemplates"]);
         btnStatus.classList.add("newsflash");
-        btnStatus.label = txt;
       }
       else {
-        let txt = util.getBundleString("smartTemplate4.settings.label");
-        btn.classList.remove("newsflash");
-        btn.label = txt;
-        btn.setAttribute("tooltiptext", util.getBundleString("smartTemplate4.settings.tooltip"));
+        removeClass(btn, "newsflash");
         btnStatus.classList.remove("newsflash");
-        btnStatus.label = txt;
       }
-      SmartTemplate4.updateToolbarIcon(); // renewal signal!
+      if (!txt) {
+        txt = util.getBundleString("smartTemplate4.settings.label");
+        btnStatus.classList.remove("newsflash");
+      }
+
+      // uses browser.browserAction.setTitle() 
+      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "setActionTip", text: tooltip });
+      
+      // used browser.browserAction.setLabel() 
+      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "setActionLabel", text: txt });
+
     }
   } ,
-  
-  updateToolbarIcon: function() {
-    // renewal color overrides news.
-    let btn = document.getElementById("SmartTemplate4Button");
-    if (btn) {
-      let licenseInfo = SmartTemplate4.Util.licenseInfo;
-      if (licenseInfo.licenseKey && licenseInfo.isExpired)  {
-        let wrn = SmartTemplate4.Util.getBundleString("licenseStatus.expired", [licenseInfo.expiredDays]);
-        btn.classList.add("alertExpired");
-        if (!SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
-          btn.setAttribute("tooltiptext", wrn);
-          btn.label = SmartTemplate4.Util.getBundleString("st.notification.premium.btn.renewLicense");
-        }
+
+  get XML_replyMenus() {
+    return `
+      <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic" controller="cmd_reply" accesskey="__MSG_st.menuaccess.reply__">
+        <menupopup>
+          <menuitem id="smartTemplates-reply-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-reply-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        </menupopup>
+      </menu>
+      <menu label="__MSG_st.menu.replyAll__" id="smartTemplates-reply-all-menu" class="menu-iconic" controller="cmd_replyall" accesskey="__MSG_st.menuaccess.replyAll__">
+        <menupopup>
+          <menuitem id="smartTemplates-reply-all-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-reply-all-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        </menupopup>
+      </menu>
+      <menu label="__MSG_st.menu.replyList__" id="smartTemplates-reply-list-menu" class="menu-iconic" controller="cmd_replylist" accesskey="__MSG_st.menuaccess.replyList__">
+        <menupopup>
+          <menuitem id="smartTemplates-reply-list-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-reply-list-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        </menupopup>
+      </menu>
+    `;
+  },
+
+  get XML_forwardMenus() {
+    return `
+            <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic" controller="cmd_forward"  accesskey="__MSG_st.menuaccess.forward__">
+              <menupopup>
+                <menuitem id="smartTemplates-forward-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-fwd st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-forward-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              </menupopup>
+            </menu>
+    `;
+  },
+
+  get XML_toggleLabelMenu() {
+    let isDisabled = 
+      window.SmartTemplate4.Preferences.getMyBoolPref("toolbar.hideLabel") ? `checked="true"` : "";
+    return `
+      <menuitem id="smartTemplates-toggle-label" label="__MSG_st.menu.hideLabel__" class="menuitem-iconic st-toggle-label" oncommand="window.SmartTemplate4.doCommand(this);" type="checkbox" ${isDisabled} onclick="event.stopPropagation();" />
+    `
+  },
+
+  patchUnifiedToolbar: function() {
+    // THUNDERBIRD 115
+    // fix selectors
+    let mainButton = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
+    if (mainButton) {
+      mainButton.id = "SmartTemplate4Button";
+      mainButton.setAttribute("popup", "smartTemplatesMainPopup");
+      if (mainButton.querySelector("#smartTemplatesMainPopup")) {
+        return true; // this one is already patched.
       }
-      else {
-        if (btn.classList.contains("alertExpired")) {
-          // remove expiry warning & restore label + default tip
-          btn.label = SmartTemplate4.Util.getBundleString("smartTemplate4.settings.label");
-          btn.setAttribute("tooltiptext", SmartTemplate4.Util.getBundleString("smartTemplate4.settings.tooltip"));
-          btn.classList.remove("alertExpired");
-        }
+  
+      // this method worked in quickFilters:
+      // overload the menupopup based on the id we just added:
+      // note: there is no command controller for write new
+      //       - instead the menu item calls "MsgNewMessage(null);
+      //        <button id="SmartTemplate4Button">
+      //        </button>
+
+      var XHTML_Markup = 
+  `<vbox id="titlebar">
+    <menupopup id="smartTemplatesMainPopup">
+      <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic" controller="cmd_newMessage" accesskey="__MSG_st.menuaccess.write__">
+        <menupopup>
+          <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        </menupopup>
+      </menu>
+      ${this.XML_replyMenus}
+      ${this.XML_forwardMenus}
+      <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+
+      <menu id="smartTemplates-docs" label="__MSG_st.menu.docs__" class="menu-iconic">
+        <menupopup>
+          <menuitem id="smartTemplates-support" label="__MSG_st.menu.supportSite__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-variables" label="__MSG_st.menu.docs.variables__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-premium" label="__MSG_st.menu.docs.premium__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        </menupopup>
+      </menu>
+
+      <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
+        <menupopup>
+          <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-mru-save" label="Save MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-mru-load" label="Load MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-patchHeaderTools" label="Patch Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-registration" label="License Screen" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        </menupopup>
+      </menu>
+
+    </menupopup>
+  </vbox>`; 
+      this.WL.injectElements(XHTML_Markup);
+      let theMenu = window.document.querySelector("menupopup#smartTemplatesMainPopup");
+      if (theMenu) {
+        mainButton.appendChild(theMenu);
+        return true;
+      }
+      return false;
+    }
+    return false; // no button found, we're probably in a content tab
+  },
+
+  patchHeaderPane: function(doc, message_display_action_btn) {
+    const PatchedBtnClass = "SmartTemplates_HeaderBtn"; // use this for styles & as flag for having been patched
+    const isDebug = SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus");
+    if (isDebug) {
+      SmartTemplate4.Util.logDebugOptional("fileTemplates.menus",
+        "Patching Header Pane for document", doc);
+    }
+    if (!doc) {
+      doc = this.Util.documentMessageBrowser;
+    }
+    if (!message_display_action_btn) {
+      message_display_action_btn = doc.querySelector("#smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton");
+    }
+    if (!message_display_action_btn) {
+      SmartTemplate4.Util.logDebugOptional("fileTemplates.menus","Couldn't find message display action button. aborting patchHeaderPane()");
+      return false; // button not found
+    }
+    if (message_display_action_btn.classList.contains(PatchedBtnClass)) {
+      SmartTemplate4.Util.logDebugOptional("fileTemplates.menus","Header button is already patched. aborting patchHeaderPane()", message_display_action_btn);
+      return true; // already patched
+    }
+    // data-extensionid="smarttemplate4@thunderbird.extension"
+
+    var XHTML_Markup = 
+    `<toolbarbutton id="${message_display_action_btn.id}">
+      <menupopup id="SmartTemplates_HeaderMenu">
+        ${this.XML_replyMenus}
+        ${this.XML_forwardMenus}
+        ${this.XML_toggleLabelMenu}
+        <menuseparator class="st4templateSeparator"/>
+        <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      </menupopup>
+    </toolbarbutton>
+    `; 
+    var WL = doc.ownerGlobal?.SmartTemplate4_WLM || this.WL;
+    SmartTemplate4.Util.logDebugOptional("fileTemplates.menus","window loader injecting...", {XHTML_Markup});
+    WL.injectElements(XHTML_Markup);
+    message_display_action_btn.classList.add(PatchedBtnClass);
+
+    let activePopup = message_display_action_btn.querySelector("menupopup[data-action-menu]");
+    let newPopup = message_display_action_btn.querySelector("#SmartTemplates_HeaderMenu");
+    let moveNodes = [];
+    if (newPopup) {
+      for (let e of newPopup.childNodes) {
+        moveNodes.push(e);
+      }
+      for (let m of moveNodes) {
+        activePopup.appendChild(m);
+      }
+      this.Util.logDebug("Moved elements to popup:", moveNodes);
+      return true;
+    } else {
+      this.Util.logDebug("patchHeaderPane() - didn't find #SmartTemplates_HeaderMenu, so I couldn't patch the header menu");
+    }
+
+  },
+  
+  TabEventListeners: {}, // make a map of tab event listeners
+  addTabEventListener : function() {
+    try {
+      let tabContainer = SmartTemplate4.Util.tabContainer;
+      this.TabEventListeners["TabSelect"] = function(event) { SmartTemplate4.TabListener.selectTab(event); }
+      this.TabEventListeners["TabOpen"] = function(event) { SmartTemplate4.TabListener.openTab(event); }
+      for (let key in this.TabEventListeners) {
+        tabContainer.addEventListener(key, this.TabEventListeners[key], false);
       }
     }
-  } 
+    catch (e) {
+      Services.console.logStringMessage("SmartTemplates: No tabContainer available! ", e);
+      SmartTemplate4._tabContainer = null;
+    }
+  } ,
+  removeTabEventListener: function() {
+    // this might not be necessary, as we iterate ALL event listeners when add-on shuts down 
+    // (see "undo monkey patch" in qFi-messenger.js)
+    let tabContainer = SmartTemplate4.Util.tabContainer;
+    for (let key in this.TabEventListeners) {
+      tabContainer.removeEventListener(key, this.TabEventListeners[key]);
+    }
+  },
+  TabListener: {
+    selectTab: async function(evt) {
+      const isMailPane = SmartTemplate4.Util.isTabMode (evt.detail.tabInfo, "mail");
+      if (isMailPane) {
+        const HEADERBARID = "smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton";
+        let result = await SmartTemplate4.Util.notifyTools.notifyBackground({func: "patchUnifiedToolbar"});
+        await SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"unified"});
+        let doc;
+        let currentTabMode = SmartTemplate4.Util.getTabMode(gTabmail.selectedTab);
+        switch(currentTabMode) { // there are tab modes that have no access to document3pane! e.g. contentTab
+          case "mailMessageTab":
+            doc = SmartTemplate4.Util.document3pane;
+            break;
+          case "mail3PaneTab":
+            let browser = SmartTemplate4.Util.document3pane.getElementById("messageBrowser");
+            doc = browser.contentDocument;  
+            break;
+        }        
+        if (doc) {
+          let headerButton = doc.getElementById(HEADERBARID);
+          if (SmartTemplate4.patchHeaderPane(doc, headerButton)) {
+            await SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
+          }
+        }
+      }
+    },
+    openTab: function(evt) {
+      function getTabDebugInfo(tab) {
+        return `[ mode = ${tab.mode.name}, title = ${tab.title}, tabId = ${tab.tabId} ]`;
+      }
+      let tabmail = document.getElementById("tabmail");
+      const newTabInfo = tabmail.tabInfo.find(e => e == evt.detail.tabInfo);
+      const RETRY_DELAY = 2500;
+      if (newTabInfo) {
+        const isMailPane = SmartTemplate4.Util.isTabMode (newTabInfo, "mail");
+        // patching the toolbar may be not necessary in this case (?)
+        // as I believe we cannot open a new mail in tab unless
+        // we are already on a mail / folder tab.
+        /*
+        if (isMailPane) {
+          SmartTemplate4.Util.notifyTools.notifyBackground({func: "patchUnifiedToolbar"});
+        }
+        */
+  
+        if (newTabInfo.SmartTemplates_patched) {
+          SmartTemplate4.Util.logDebug("Tab is already patched: " + getTabDebugInfo(newTabInfo));
+          return;
+        }
+        if (isMailPane) {  // let's include single message tabs, let's see what happens
+          try {
+            if (typeof newTabInfo.chromeBrowser.contentWindow.commandController == "undefined") {
+              SmartTemplate4.Util.logDebug("commandController not defined, retrying later..." + getTabDebugInfo(newTabInfo));
+              setTimeout(() => { 
+                SmartTemplate4.TabListener.openTab(evt); 
+                }, 
+                RETRY_DELAY);
+              return;
+            }
+          }
+          catch(ex) {
+            SmartTemplate4.Util.logException("Patching failed", ex);
+            return;
+          }
+  
+          newTabInfo.SmartTemplates_patched = true;
+          SmartTemplate4.Util.logDebug("new Tab patched successfully.");
+        }
+      }
+    } 
+  }
+  
+
 
 };  // Smarttemplate4
 

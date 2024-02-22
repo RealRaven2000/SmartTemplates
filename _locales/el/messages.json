@@ -673,6 +673,12 @@
   "licenseHead": {
     "message": "Νέο Σύστημα Αδειοδότησης"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Συνέχιση με την επιλογή άδειας 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Εμφάνιση όρων άδειας"
+  },
   "licenseStatus.expired": {
     "message": "Η άδεια SmartTemplates έχει λήξει $countDays$ ημέρες πριν.",
     "placeholders": {
@@ -842,7 +848,16 @@
     "message": "Τελευταία νέα"
   },
   "newsSection": {
-    "message": "{P1}Αυτήν τη στιγμή εργάζομαι στη μετατροπή του πρόσθετου SmartTemplates για το νέο Thunderbird SuperNova UI. Αυτό θα εφαρμοστεί στην επόμενη μεγάλη έκδοση του Thunderbird 115 το καλοκαίρι του 2023.{P2} {P1}Μπορείτε να διαβάσετε την τρέχουσα πρόοδο αυτής της εργασίας εδώ: [issue 213]{P2}"
+    "message": "{P1}Το $addonName$ είναι πλέον συμβατό με την πιο πρόσφατη έκδοση του Thunderbird ($compatibleVer$). Αυτό απαιτούσε πολλές ουσιαστικές αλλαγές και επανεγγραφή πολλών λειτουργιών.{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Καθώς αυτή η εργασία είναι αποκλειστικά που χρηματοδοτείται από την πώληση αδειών, σκεφτείτε να αγοράσετε μια άδεια ή να ανανεώσετε την προηγούμενη εάν ενδιαφέρεστε να χρησιμοποιήσετε τα SmartTemplates στο μέλλον."
@@ -943,6 +958,18 @@
   "pref_defaultCharset_tip": {
     "message": "Εάν δεν μπορεί να προσδιοριστεί κατά την ανάγνωση των κεφαλίδων, χρησιμοποίησε αυτό το σύνολο χαρακτήρων."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Συμπεριφορά όταν γράφετε ή απαντάτε χωρίς να επιλέξετε πρότυπο από την αναπτυσσόμενη λίστα."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Προεπιλεγμένο πρότυπο"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Χρησιμοποιήστε το πρότυπο λογαριασμού."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Χρησιμοποιήστε το εξωτερικό πρότυπο που επιλέχθηκε τελευταία από το αναπτυσσόμενο μενού."
+  },
   "pref_dialog.title": {
     "message": "Ρυθμίσεις SmartTemplates"
   },
@@ -982,6 +1009,9 @@
   "pref_groupMailContent": {
     "message": "Περιεχόμενο Μηνύματος"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Διάφορα"
+  },
   "pref_groupNameRules": {
     "message": "Κανόνες Ονομάτων"
   },
@@ -996,6 +1026,9 @@
   },
   "pref_help.tab": {
     "message": "Βοήθεια"
+  },
+  "pref_header.inject": {
+    "message": "Εισάγετε τα περιεχόμενα του <head> από το πρότυπο"
   },
   "pref_hideExamples": {
     "message": "Κρύψε την καρτέλα με τα παραδείγματα"
@@ -1214,8 +1247,8 @@
     "message": "Άλλαξε πρότυπο…"
   },
   "special-offer-expiry": {
-    "message": "26 Μαρτίου"
-  },  
+    "message": "31η Οκτωβρίου"
+  },    
   "st.fileTemplates": {
     "message": "Αρχεία Προτύπων"
   },
@@ -1231,6 +1264,86 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Το κλειδί που εισήχθη μπορεί να είναι για {2})."
   },
+  "st.menu.docs": {
+    "message": "Τεκμηρίωση"
+  },
+  "st.menu.docs.premium": {
+    "message": "Premium Χαρακτηριστικά…"
+  },
+  "st.menu.docs.variables": {
+    "message": "Μεταβλητές και εντολές…"
+  },
+  "st.menu.hideLabel": {
+    "message": "Απόκρυψη ετικέτας κουμπιού"
+  },
+  "st.menu.template.default": {
+    "message": "Προεπιλεγμένο πρότυπο (λογαριασμός)"
+  },
+  "st.menu.template.last": {
+    "message": "Τελευταίο πρότυπο"
+  },
+  "st.menu.license": {
+    "message": "Ελέγξτε την κατάσταση άδειας…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Κάντε κλικ εδώ για να ελέγξετε την κατάσταση άδειας για $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menuaccess.forward": {
+    "message": "Π"
+  },
+  "st.menuaccess.reply": {
+    "message": "Α"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "ό"
+  },
+  "st.menuaccess.replyList": {
+    "message": "λ"
+  },  
+  "st.menuaccess.write": {
+    "message": "Γ"
+  },  
+  "st.menu.replyAll": {
+    "message": "Απάντηση σε όλους"
+  },
+  "st.menu.replyList": {
+    "message": "Απάντηση στη λίστα"
+  },
+  "st.menu.supportSite": {
+    "message": "Ιστότοπος υποστήριξης…"
+  },
+  "st.menu.update.tooltip": {
+    "message": "Επιλέξτε «Τελευταίες ειδήσεις» από αυτό το μενού για να διαβάσετε τι νέο υπάρχει στο $addonName$.\n Αυτό θα επαναφέρει το κουμπί στην προεπιλεγμένη του εμφάνιση.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },  
+  "st.notification.bodyModified": {
+    "message": "Το Thunderbird λέει ότι έχετε ήδη πληκτρολογήσει κάτι. Θέλετε να φορτώσετε το πρότυπο, παρ' όλα αυτά;"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Αυτό θα απορρίψει οτιδήποτε έχετε πληκτρολογήσει και θα φορτώσει το πρότυπο του λογαριασμού."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Αυτό θα απορρίψει οτιδήποτε έχετε πληκτρολογήσει και θα επαναφέρει το τρέχον πρότυπο [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Κάντε κλικ σε Ακύρωση για να διατηρήσετε το περιεχόμενο του email χωρίς αλλαγές."
+  },  
   "st.notification.donate": {
     "message": "Δωρίστε"
   },
@@ -1346,6 +1459,6 @@
     "message": "Διαβάστε το αναλυτικό ημερολόγιο αλλαγών εδώ (μόνο στα Αγγλικά):"
   },
   "whats-new-list": {
-    "message": "{L1} Η νέα συνάρτηση {{%deleteForwardedBody%}} αφαιρεί το σώμα του αρχικού μηνύματος ηλεκτρονικού ταχυδρομείου κατά την ενσωματωμένη προώθηση. {L2} {L1}Οι εντολές που εισάγουν περιεχόμενο από αρχεία μπορούν πλέον να έχουν πρόσβαση σε γονικούς φακέλους με {{../}}, π.χ.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Βελτιώσεις στη Διαχείριση προτύπων: Εμφάνιση κατηγορίας στη λίστα για ευκολότερη πλοήγηση. {L2} {L1} Προστέθηκε ενότητα τιμολόγησης στο παράθυρο διαλόγου αδειοδότησης {L2} {L1} Διορθώθηκε ο αριθμός των ημερών που απομένουν στην άδεια στρογγυλοποιώντας {L2}"
+    "message": "{L1} Τα δεδομένα διεύθυνσης για {{%to%}}, {{%recipient%}} και {{%from%}} θα εισαχθούν τώρα αυτόματα κατά τη σύνταξη ενός νέου email μέσω του μενού περιβάλλοντος 'Σύνταξη Μηνύματος Προς'. [issue 275]{L2} {L1} Η χρήση του {{%recipient%}} λειτουργεί επίσης όπως αναμενόταν όταν απαντάτε σε δικά σας emails σε μια συζήτηση και το Thunderbird αλλάζει αυτόματα τους παραλήπτες. [issue 239]{L2} {L1} Νέα επιλογή για εξαναγκασμό μικρών πεζών γραμμάτων στην αναζήτηση επαφών Cardbook. {L2} {L1} Υποστήριξη για την εξαγωγή {{prefix}} και {{suffix}} από πεδία βιβλίου διευθύνσεων. [issue 267]{L2} {L1} Υποστήριξη για {{other.custom1}}, {{other.custom2}} κλπ. από πεδία βιβλίου διευθύνσεων. [issue 246]{L2} {L1} Αφαιρέθηκε το διπλό στιγμιότυπο στα ενεργά πεδία SmartTemplate. {L2}"
   }
 }

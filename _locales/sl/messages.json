@@ -634,6 +634,12 @@
   "licenseHead": {
     "message": "Nov sistem licenciranja"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Nadaljuj z izbiro licence 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Prikaži pogoje licence"
+  },
   "licenseStatus.expired": {
     "message": "Licenca za SmartTemplates je potekla pred $countDays$ dnevi.",
     "placeholders": {
@@ -791,7 +797,16 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}Trenutno delam na pretvorbi dodatka SmartTemplates za novi uporabniški vmesnik Thunderbird SuperNova. To bo implementirano v naslednji večji različici Thunderbird 115 poleti 2023.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [issue 213]{P2}"
+    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird ($compatibleVer$). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Ker je to delo izključno financira s prodajo licenc, razmislite o nakupu licence ali podaljšanju prejšnje, če vas zanima uporaba SmartTemplates v prihodnosti."
@@ -892,6 +907,18 @@
   "pref_defaultCharset_tip": {
     "message": "Ob branju glav uporabi ta zasilni nabor znakov, če ga ni mogoče prepoznati."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Vedenje pri pisanju ali odgovoru brez izbire predloge s spustnega seznama."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Privzeta predloga"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Uporabite predlogo računa."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Uporabite zunanjo predlogo, ki je bila nazadnje izbrana v spustnem meniju."
+  },
   "pref_dialog.title": {
     "message": "Nastavitve SmartTemplates"
   },
@@ -931,6 +958,9 @@
   "pref_groupMailContent": {
     "message": "Vsebina pošte"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Razno"
+  },
   "pref_groupNameRules": {
     "message": "Pravila za imena"
   },
@@ -945,6 +975,9 @@
   },
   "pref_help.tab": {
     "message": "Pomoč"
+  },
+  "pref_header.inject": {
+    "message": "Vnesite vsebino <head> iz predloge"
   },
   "pref_hideExamples": {
     "message": "Skrij zavihek s primeri"
@@ -1186,6 +1219,18 @@
   "smarttemplate4_button": {
     "message": "Uredi predloge / glavo navedka ..."
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licenca je potekla!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Licenca poteče čez $daysLeft$ dni",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates je bil posodobljen!"
   },
@@ -1273,6 +1318,23 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(vneseni ključ je lahko za {2})."
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird pravi, da ste že nekaj vnesli. Ali želite vseeno naložiti predlogo?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "To bo zavrglo vse, kar ste vnesli, in naložilo predlogo računa."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "To bo zavrglo vse, kar ste vnesli, in ponovno naložilo trenutno predlogo [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Kliknite Prekliči, da ohranite vsebino e-pošte nespremenjeno."
   },
   "st.notification.donate": {
     "message": "Daruj"
@@ -1405,8 +1467,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26. marec"
-  },
+    "message": "31. oktober"
+  },  
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
     "placeholders": {
@@ -1665,8 +1727,8 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Nova funkcija {{%deleteForwardedBody%}} odstrani telo izvirnega e-poštnega sporočila pri posredovanju v vrstici. {L2} {L1}Ukazi, ki vstavljajo vsebino iz datotek, lahko zdaj dostopajo do nadrejenih map z {{../}}, npr.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Izboljšave v upravitelju predlog: Prikaži kategorijo na seznamu za lažjo navigacijo. {L2} {L1} Dodan razdelek s cenami v pogovorno okno za licenciranje {L2} {L1} Popravljeno število preostalih dni v licenci z zaokroževanjem navzgor {L2}"
-  },
+    "message": "{L1} Podatki o naslovu za {{%to%}}, {{%recipient%}} in {{%from%}} bodo zdaj samodejno vstavljeni ob pisanju nove e-pošte prek kontekstnega menija 'Sestavi sporočilo za'. [issue 275]{L2} {L1} Uporaba {{%recipient%}} prav tako deluje kot pričakovano pri odgovarjanju na lastna e-poštna sporočila v pogovoru in Thunderbird samodejno spremeni prejemnike. [issue 239]{L2} {L1} Pretvori e-poštne naslove v male črke pri iskanju stikov v Cardbooku. [issue 278]{L2}  {L1} Podpora za izvleček {{prefix}} in {{suffix}} iz polj naslovnika. [issue 267]{L2} {L1} Podpora za {{other.custom1}}, {{other.custom2}} itd. iz polj naslovnika. [issue 246]{L2} {L1} Odstranjen podvojen orodni namig na aktivnih poljih SmartTemplate. {L2}"
+  }, 
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
   },

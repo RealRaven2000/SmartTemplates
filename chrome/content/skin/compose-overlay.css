@@ -63,7 +63,7 @@ smarttemplate:hover:after{
 	border-radius: 2px;
 	top: 26px;
 	color: #fff;
-	content: "%" attr(title) "%";
+	content: "%" attr(st4title) "%";
 	left: 20px;
 	padding: 5px 10px;
 	position: relative;

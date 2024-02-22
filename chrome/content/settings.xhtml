@@ -23,7 +23,7 @@
 <!-- fills full width of window -->
 <hbox id="optionsContainer" flex="1">
 
-	<vbox id="decksContainer" flex="2">
+	<vbox id="decksContainer" flex="1">
 
 		<!-- ######## Creating Identity Dropdown Box ######## -->
 		<hbox align="center" id="identityToolBar">
@@ -114,7 +114,7 @@
 						<checkbox id="use_default"
 											label="__MSG_pref_def.label__"
 											preference="extensions.smartTemplate4.common.def"
-											oncommand="SmartTemplate4.Settings.prefDeck('default.deckB', this.checked ? 1 : 0);"/>
+											oncommand="SmartTemplate4.Settings.showCommonPlaceholder(this.checked);"/>
 						<spacer flex="1" />
 					</hbox>
 
@@ -183,8 +183,8 @@
 												<spacer flex="1" />
 											</hbox>
 											<label value="__MSG_pref_quoteHeaderBox.label__"/>
-											<vbox class="indent" flex="1">
-												<vbox class="pasteFocus" flex="1">
+											<vbox class="indent headers" flex="1">
+												<vbox class="pasteFocus headers" flex="1">
 													<html:textarea 
 														id="rspheader"
 														class="templateBox quote"
@@ -202,7 +202,7 @@
 																	preference="extensions.smartTemplate4.common.rsphead"/>
 											</vbox>
 											<label value="__MSG_pref_templateBox.label__"/>
-											<vbox class="indent" flex="1">
+											<vbox class="indent template" flex="1">
 												<vbox class="pasteFocus" flex="2">
 													<html:textarea 
 														id="rspmsg"
@@ -243,9 +243,8 @@
 												<spacer flex="1" />
 											</hbox>
 											<label value="__MSG_pref_quoteHeaderBox.label__"/>
-											<vbox class="indent" flex="1">
+											<vbox class="indent headers" flex="1">
 												<vbox class="pasteFocus" flex="1">
-																	 <!-- rows="5" -->
 													<html:textarea 
 														id="fwdheader"
 														class="templateBox quote"
@@ -263,7 +262,7 @@
 																	preference="extensions.smartTemplate4.common.fwdhead"/>
 											</vbox>
 											<label value="__MSG_pref_templateBox.label__"/>
-											<vbox class="indent" flex="1">
+											<vbox class="indent template" flex="1">
 												<vbox class="pasteFocus" flex="2">
 																	 <!-- rows="5" -->
 													<html:textarea id="fwdmsg"
@@ -293,7 +292,7 @@
 							</tabpanels>
 						</tabbox>
 
-						<!-- ######## placeholder for hint: 'Use Common' to create a customized quote header for this account. ######## -->
+						<!-- ######## this is hint should be shown instead of the decks when 'Use Common' is active. ######## -->
 						<vbox id="deckB.usedef">
 							<description>__MSG_pref_def.cap__</description>
 						</vbox>
@@ -510,6 +509,7 @@
 			<preference name="extensions.smartTemplate4.names.guessFromMail" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mime.defaultFormat" type="string" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mail.suppressLink" type="bool" instantApply="true"/>
+			<preference name="extensions.smartTemplate4.header.inject" type="bool" instantApply="true"/>      
 			<preference name="extensions.smartTemplate4.silentUpdate" type="bool" instantApply="true"/>
       
       <preference name="extensions.smartTemplate4.BackgroundParser" type="bool" instantApply="true"/>
@@ -563,6 +563,22 @@
 								</hbox>
 							</vbox>
 						</groupbox>
+
+						<groupbox class="transparent" id="defaultTemplateBehaviorGrp">
+							<hbox class="groupbox-title"><label class="header">__MSG_pref_defaultTemplateMethod_title__</label></hbox>
+							<label>__MSG_pref_defaultTemplateMethod_about__</label>
+							<label for="useAccountTemplate">
+								<html:input type="radio" 
+									name="defaultTemplateBehavior" id="useAccountTemplate" value="1" 
+									onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);"
+								/>__MSG_pref_defaultTemplateMethod_select_account__</label>
+							<label for="useLastTemplate">
+								<html:input type="radio" 
+									name="defaultTemplateBehavior" id="useLastTemplate" value="2" class="standardFeature"
+									onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);"
+								/>__MSG_pref_defaultTemplateMethod_select_last__</label>
+						</groupbox>
+
 						
 						<groupbox class="transparent">
 							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupSignatures__</label></hbox>
@@ -706,21 +722,36 @@
 												 label="__MSG_resolveABRemoveMail__"
 												 tooltiptext="This will hide the mail address when using plain %cc% etc. if address book entry was found."
 												 preference="extensions.smartTemplate4.mime.resolveAB.removeEmail"/>
-										<checkbox id="chkResolveABCardBook"
+										<checkbox id="chkResolveABCardBook" class="premiumFeature"
 												label="__MSG_resolveNamesFromCardBook__"
 												preference="extensions.smartTemplate4.mime.resolveAB.CardBook"/>
-												<checkbox id="chkCardBookFallback" style="margin-left: 2em"
-												          label="__MSG_resolveNamesFromCardBook.fallback__"
-																	preference="extensions.smartTemplate4.mime.resolveAB.CardBook.fallback"/>
+										<checkbox id="chkCardBookFallback" class="premiumFeature"
+										    style="margin-left: 2em"
+												label="__MSG_resolveNamesFromCardBook.fallback__"
+												preference="extensions.smartTemplate4.mime.resolveAB.CardBook.fallback"/>
+										<checkbox id="chkCardBookLowerCase" class="premiumFeature"
+										    style="margin-left: 2em"
+												label="__MSG_resolveNamesFromCardBook.forceLowerCase__"
+												preference="extensions.smartTemplate4.mime.resolveAB.CardBook.forceLowerCase"/>
+
+												
 										
 									</vbox>
 								</hbox>
 							</vbox>								
 						</groupbox>
 						
-						<checkbox label="__MSG_suppressMailToLink__"
-						          preference="extensions.smartTemplate4.mail.suppressLink"/>
-					
+						<groupbox class="transparent">
+							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupMiscellaneus__</label></hbox>
+							<vbox>
+								<checkbox label="__MSG_suppressMailToLink__"
+									preference="extensions.smartTemplate4.mail.suppressLink"/>
+							  <checkbox label="__MSG_pref_header.inject__" class="premiumFeature"
+									preference="extensions.smartTemplate4.header.inject"/>
+		
+							</vbox>
+						</groupbox>
+
 						<spacer flex="2" />
 						<groupbox class="transparent">
 							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupTroubleShooting__</label></hbox>
@@ -840,16 +871,10 @@
 						<description id="validationInvalidAddon" class="niceFont licenseError" collapsed="true">__MSG_licenseValidation.invalidAddon__</description>
 					</vbox>
 					<separator  style="height:0.5em;" />
-					<hbox>
-						<spacer flex="1" />
-						<vbox class="btnLicenseContainer">
-							<spacer flex="1" />
-							<button id="btnLicense" 
-											label="Buy License"
-											oncommand="SmartTemplate4.Util.showLicenseDialog('licenseTab'); setTimeout( function() {window.close();}, 500 );" />
-							<spacer flex="1" />
-						</vbox>
-						<spacer flex="1" />
+					<hbox class="btnLicenseContainer">
+						<button id="btnLicense" 
+										label="Buy License"
+										oncommand="SmartTemplate4.Util.showLicenseDialog('licenseTab'); setTimeout( function() {window.close();}, 500 );" />
 					</hbox>				
 					<hbox>
 						<groupbox id="premiumConfig" >

@@ -9,8 +9,8 @@ END LICENSE BLOCK */
 
 // whether these are shown depends on the "endSale" variable in popup.js!
 const discountPro = "33%";
-const discountRenewal = "25%";
 const discountUpgrade = "33%";
+const discountRenewal = "25%";
 
   addEventListener("click", async (event) => {
     switch(event.target.id) {
@@ -60,6 +60,18 @@ const discountUpgrade = "33%";
     }
   });  
 
+  function replaceVariableCodeTags(txt) {
+    let txt2 = txt.replace(/<(.*?)>/g,"<span class='htmltag' />&lt;$1&gt;</span>");
+    // added simple <tag> support
+    return txt2.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>")
+               .replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>")
+               .replace(/\{P1\}/g,"<p>").replace(/\{P2\}/g,"</p>")
+               .replace(/\{S1\}/g,"</ul> <h3 class='section'>")  
+               .replace(/\{S2\}/g,"</h3> <ul>")
+               .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")
+               .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>"); 
+               //{S1} new section / list with title {S2}.
+  }
 
 
   addEventListener("load", async (event) => {
@@ -69,7 +81,8 @@ const discountUpgrade = "33%";
           userName = await messenger.Utilities.getUserName(),
           addonVer = manifest.version,
           appVer = browserInfo.version,
-          remindInDays = 10;
+          remindInDays = 10,
+          compatibleVer = "115.4.1"; // Thunderbird for newsSection
 
     // internal functions
     function hideSelectorItems(cId) {
@@ -92,6 +105,7 @@ const discountUpgrade = "33%";
     if (thanksInfo) {
       thanksInfo.innerText = messenger.i18n.getMessage("thanks-for-updating-intro", addonName);
     }
+
     
     let verInfo = document.getElementById('active-version-info');
     if (verInfo) {
@@ -103,16 +117,17 @@ const discountUpgrade = "33%";
         .replace("{boldEnd}","</b>");
     }
     
+    /*
     let timeAndEffort =  document.getElementById('time-and-effort');
     if (timeAndEffort) {
       timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);
     }
-    
-    
     let suggestion = document.getElementById('support-suggestion');
     if (suggestion) {
       suggestion.innerText = messenger.i18n.getMessage("support-suggestion", addonName);
     }
+    */
+    
     
     let preference = document.getElementById('support-preference');
     if (preference) {
@@ -200,22 +215,18 @@ const discountUpgrade = "33%";
     } 
     
     let whatsNewLst = document.getElementById('whatsNewList');
-    function replaceVariableCodeTags(txt) {
-      let txt2 = txt.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>");
-      return txt2.replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>")
-                 .replace(/\{P1\}/g,"<p>").replace(/\{P2\}/g,"</p>")
-                 .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")
-                 .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>");
-    }
     if (whatsNewLst) {
-      whatsNewLst.innerHTML = replaceVariableCodeTags(messenger.i18n.getMessage('whats-new-list'))
-        .replace(/\{image1\}/g,"<br><img src='snippets.png' style='width:400px;'>");
-    }
-
-    let newsSection = document.getElementById('newsDetail');
-    if (newsSection) {
-      newsSection.innerHTML = replaceVariableCodeTags(messenger.i18n.getMessage('newsSection'));
+      whatsNewLst.innerHTML = 
+      `<ul>
+      ${replaceVariableCodeTags(messenger.i18n.getMessage('whats-new-list'))}
+      </ul>`
+      ;
     }    
+
+    let newsDetail = document.getElementById('newsDetail');
+    if (newsDetail) {
+      newsDetail.innerHTML = replaceVariableCodeTags(messenger.i18n.getMessage('newsSection', [addonName, compatibleVer]));
+    } 
 
     let ongoing = document.getElementById('ongoing-work');
     if (ongoing) {

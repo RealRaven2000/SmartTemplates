@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- theme support -->
+    
+    <meta name="color-scheme" content="dark light">
+    <link rel='stylesheet' type='text/css' href="chrome://global/skin/in-content/common.css">
+    <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/preferences/preferences.css">
+    <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/shared/themeableDialog.css">
+    <link rel='stylesheet' type='text/css' href="../chrome/content/skin/settings.css">
+    <link rel='stylesheet' type='text/css' href="../chrome/content/skin/common/license.css">
+    <script type="application/javascript" src="../chrome/content/i18n.js"></script>
+    <script type="application/javascript" src="smartTemplate-settings.js"></script>
+
+    <!-- new rules for xul conversion -->
+    <link rel="stylesheet" href="../chrome/content/skin/smartTemplate-compatibility.css">
+    <title>__MSG_pref_dialog.title__</title>
+
+  </head>
+  <body>
+    <h1>__MSG_pref_dialog.title__</h1>
+
+    <prefpane id="smartTemplatePane" orient="vertical" flex="1">
+
+      <vbox id="decksContainer" flex="1">
+
+        <!-- ######## Creating Identity Dropdown Box ######## --> 
+        <hbox align="center" id="identityToolBar">
+          <label id="identityLabel"
+            class="contextConfig"
+            oncontextmenu="SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.identities');">
+              __MSG_pref_server_desc__:
+          </label>
+          <select id="msgIdentity"
+            class="identity-menulist"
+            label="__MSG_pref_server_def__"
+            flex="1"
+            oncommand="SmartTemplate4.Settings.selectIdentity(this.value);"
+            tabindex="0">
+            <option class="identity-popup-item" value="common">__MSG_pref_server_def__</option>
+          </select>
+          <hbox id="templateTools" class="inlineToolbar" mode="icons" >
+            <span class="navigateable">
+            <button id="helpTemplates"
+                class="toolbarbutton-1"
+                oncommand="SmartTemplate4.Util.showStationeryHelpPage('templateFiles');" 
+                title="__MSG_tip.fileTemplates__"></button>
+            <button id="btnSaveTemplate"
+                  class="toolbarbutton-1"
+                  title="__MSG_btnSaveTemplate.tooltip__"
+                  alt="__MSG_btnSaveTemplate.tooltip__"
+                  oncommand="SmartTemplate4.Settings.store();"></button>
+            <button id="btnLoadTemplate"
+                  class="toolbarbutton-1"
+                  title="__MSG_btnLoadTemplate.tooltip__"
+                  alt="__MSG_btnLoadTemplate.tooltip__"
+                  oncommand="SmartTemplate4.Settings.load();"></button>
+            <button id="btnYouTube"
+                  class="toolbarbutton-1"
+                  title="__MSG_btnYouTube.tooltip__"
+                  alt="__MSG_btnYouTube.tooltip__"
+                  oncommand="SmartTemplate4.Util.showYouTubePage();"></button>
+            <button id="btnAdvanced"
+                  class="toolbarbutton-1"
+                  title="__MSG_advanced.label__"
+                  alt="__MSG_advanced.label__"
+                  oncommand="SmartTemplate4.Settings.openAdvanced();"></button>
+            <button id="btnCloseAdvanced"
+                  class="toolbarbutton-1"
+                  title="__MSG_close.label__"
+                  oncommand="SmartTemplate4.Settings.closeAdvanced();"
+                  alt="__MSG_close.label__"
+                  hidden="true"></button>
+            </span>
+          </hbox>
+    
+        </hbox>
+    
+        <vbox id="decksWrapper" flex="1">
+          <deck id="account_deckA" flex="1" class="templateDeck">
+    
+            <vbox id="deckA.per_account" flex="1"> <!-- cloned element -->
+              <!-- ######## Template Preferences ######## -->
+    
+              <preferences id="templates">
+                <preference name="extensions.smartTemplate4.common.def"       type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.new"       type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.rsp"       type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.fwd"       type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.newmsg"    type="unichar" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.rspmsg"    type="unichar" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.fwdmsg"    type="unichar" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.newhtml"   type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.rsphtml"   type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.fwdhtml"   type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.newnbr"    type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.rspnbr"    type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.fwdnbr"    type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.rspheader" type="unichar" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.fwdheader" type="unichar" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.rsphead"   type="bool" instantApply="true"></preference>
+                <preference name="extensions.smartTemplate4.common.fwdhead"   type="bool" instantApply="true"></preference>
+              </preferences>
+    
+              <hbox align="center">
+                <checkbox id="use_default"
+                          label="__MSG_pref_def.label__"
+                          preference="extensions.smartTemplate4.common.def"
+                          oncommand="SmartTemplate4.Settings.showCommonPlaceholder(this.checked);"/>
+                <spacer flex="1" />
+              </hbox>
+    
+              <spacer height="5px" />
+    
+              <!-- ######## Default DeckB & Tab Creating ######## -->
+              <deck id="default.deckB" flex="1" orient="vertical">
+    
+                <div class="tabbox" id="deckB.nodef" flex="1" orient="vertical" selectedIndex="0" >
+                  <nav  id="deckB.nodef.tabs"  class="tabs actionTabs">
+                    <ul>
+                      <li><button id="newTab"     class="NewTab">__MSG_pref_new.tab__</button></li>
+                      <li><button id="respondTab" class="RespondTab">__MSG_pref_rsp.tab__</button></li>
+                      <li><button id="forwardTab" class="ForwardTab">__MSG_pref_fwd.tab__</button></li>
+                    </ul>
+                  </nav>
+    
+                  <!-- ######## Content New Message [Write] Tab ######## -->
+                  <div class="tabcontent-container" flex="1" orient="vertical">
+                    <section class="newGroup"  orient="vertical" >
+                      <groupbox flex="1" orient="vertical" class="transparent">
+                        <hbox class="groupbox-title"><label class="header">__MSG_pref_newmsg.cap__</label></hbox>
+                        <vbox flex="1" class="vfield">
+                          <hbox>
+                            <label>
+                              <input type="checkbox" id="new"
+                                preference="extensions.smartTemplate4.common.new"
+                                oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>__MSG_pref_new.label__
+                            </label>
+                            <spacer flex="1" />
+                          </hbox>
+                          <label value="__MSG_pref_templateBox.label__"/>
+                          <vbox class="indent" flex="1">
+                            <textarea id="newmsg" flex="1"
+                              class="templateBox templateWrite"
+                              multiline="true" tooltiptext="__MSG_pref_template_tip__"
+                              ondrop="SmartTemplate4.Settings.textDropped(event);"
+                              preference="extensions.smartTemplate4.common.newmsg"
+                              preference-editable="true"/>
+                            <checkbox id="newhtml"
+                                      label="__MSG_pref_html.label__"
+                                      tooltiptext="__MSG_pref_html.cap__"
+                                      preference="extensions.smartTemplate4.common.newhtml"
+                                      oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
+                            <checkbox id="newnbr"
+                                      class="indent"
+                                      label="__MSG_pref_rep_br.label__"
+                                      tooltiptext="__MSG_pref_rep_br.cap__"
+                                      preference="extensions.smartTemplate4.common.newnbr"/>
+                          </vbox>
+                        </vbox>
+                      </groupbox>
+                    </section>
+    
+                    <!-- ######## Content [Reply] Tab ######## -->
+                    <section class="replyGroup"  orient="vertical">
+                      <groupbox flex="1" class="transparent">
+                        <hbox class="groupbox-title"><label class="header">__MSG_pref_rspmsg.cap__</label></hbox>
+                        <vbox flex="1" class="vfield">
+                          <hbox>
+                            <checkbox id="rsp"
+                                      label="__MSG_pref_rsp.label__"
+                                      preference="extensions.smartTemplate4.common.rsp"
+                                      oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
+                            <spacer flex="1" />
+                          </hbox>
+                          <label value="__MSG_pref_quoteHeaderBox.label__"/>
+                          <vbox class="indent" flex="1">
+                            <vbox class="pasteFocus" flex="1">
+                              <html:textarea 
+                                id="rspheader"
+                                class="templateBox quote"
+                                multiline="true"
+                                flex="1"
+                                tooltiptext="__MSG_pref_quoteHeaderBox_tip__"
+                                preference="extensions.smartTemplate4.common.rspheader"
+                                preference-editable="true"
+                                ondrop="SmartTemplate4.Settings.textDropped(event);"
+                                onfocus="SmartTemplate4.Settings.pasteFocus(this);"/>
+                            </vbox>
+                            <checkbox id="rsphead"
+                                      label="__MSG_pref_rsphead.label__"
+                                      tooltiptext="__MSG_pref_quotehead_tip__"
+                                      preference="extensions.smartTemplate4.common.rsphead"/>
+                          </vbox>
+                          <label value="__MSG_pref_templateBox.label__"/>
+                          <vbox class="indent" flex="1">
+                            <vbox class="pasteFocus" flex="2">
+                              <html:textarea 
+                                id="rspmsg"
+                                class="templateBox template"
+                                multiline="true"
+                                flex="1"
+                                tooltiptext="__MSG_pref_templateBox_tip__"
+                                preference="extensions.smartTemplate4.common.rspmsg"
+                                preference-editable="true"
+                                ondrop="SmartTemplate4.Settings.textDropped(event);"
+                                onfocus="SmartTemplate4.Settings.pasteFocus(this);"/>
+                            </vbox>
+                          </vbox>
+                          <checkbox id="rsphtml"
+                                    label="__MSG_pref_html.label__"
+                                    tooltiptext="__MSG_pref_html.cap__"
+                                    preference="extensions.smartTemplate4.common.rsphtml"
+                                    oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
+                          <checkbox id="rspnbr"
+                                    class="indent"
+                                    label="__MSG_pref_rep_br.label__"
+                                    tooltiptext="__MSG_pref_rep_br.cap__"
+                                    preference="extensions.smartTemplate4.common.rspnbr"/>
+                        </vbox>
+                      </groupbox>
+                    </section>
+    
+                    <!-- ######## Content [Forward] Message Tab ######## -->
+                    <section class="forwardGroup"  orient="vertical">
+                      <groupbox  flex="1" class="transparent">
+                        <hbox class="groupbox-title"><label class="header">__MSG_pref_fwdmsg.cap__</label></hbox>
+                        <vbox flex="1" class="vfield">
+                          <hbox>
+                            <checkbox id="fwd"
+                                      label="__MSG_pref_fwd.label__"
+                                      preference="extensions.smartTemplate4.common.fwd"
+                                      oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
+                            <spacer flex="1" />
+                          </hbox>
+                          <label value="__MSG_pref_quoteHeaderBox.label__"/>
+                          <vbox class="indent" flex="1">
+                            <vbox class="pasteFocus" flex="1">
+                                      <!-- rows="5" -->
+                              <html:textarea 
+                                id="fwdheader"
+                                class="templateBox quote"
+                                multiline="true"
+                                flex="1"
+                                tooltiptext="__MSG_pref_quoteHeaderBox_tip__"
+                                preference="extensions.smartTemplate4.common.fwdheader"
+                                preference-editable="true"
+                                ondrop="SmartTemplate4.Settings.textDropped(event);"
+                                onfocus="SmartTemplate4.Settings.pasteFocus(this);"/>
+                            </vbox>
+                            <checkbox id="fwdhead"
+                                      label="__MSG_pref_fwdhead.label__"
+                                      tooltiptext="__MSG_pref_quotehead_tip__"
+                                      preference="extensions.smartTemplate4.common.fwdhead"/>
+                          </vbox>
+                          <label value="__MSG_pref_templateBox.label__"/>
+                          <vbox class="indent" flex="1">
+                            <vbox class="pasteFocus" flex="2">
+                                      <!-- rows="5" -->
+                              <html:textarea id="fwdmsg"
+                                class="templateBox template"
+                                multiline="true"
+                                flex="1"
+                                tooltiptext="__MSG_pref_templateBox_tip__"
+                                preference="extensions.smartTemplate4.common.fwdmsg"
+                                preference-editable="true"
+                                ondrop="SmartTemplate4.Settings.textDropped(event);"
+                                onfocus="SmartTemplate4.Settings.pasteFocus(this);"/>
+                              </vbox>
+                          </vbox>
+                          <checkbox id="fwdhtml"
+                                    label="__MSG_pref_html.label__"
+                                    tooltiptext="__MSG_pref_html.cap__"
+                                    preference="extensions.smartTemplate4.common.fwdhtml"
+                                    oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
+                          <checkbox id="fwdnbr"
+                                    class="indent"
+                                    label="__MSG_pref_rep_br.label__"
+                                    tooltiptext="__MSG_pref_rep_br.cap__"
+                                    preference="extensions.smartTemplate4.common.fwdnbr"/>
+                        </vbox>
+                      </groupbox>
+                    </section>
+                  </div>
+
+
+
+                  
+                </div>
+    
+                <!-- ######## placeholder for hint: 'Use Common' to create a customized quote header for this account. ######## -->
+                <vbox id="deckB.usedef">
+                  <description>__MSG_pref_def.cap__</description>
+                </vbox>
+                
+              </deck>
+              
+              
+            </vbox>
+            
+            <!-- ######## File Templates (replaces Stationery) ######## -->
+            <vbox id="fileTemplatesBox">
+              <div id="fileTemplatesTabs" class="tabbox" flex="1" onchange="SmartTemplate4.Settings.selectFileCase(this, event);">
+                <nav class="tabs actionTabs">
+                  <ul>
+                    <li><button id="file.newTab"      class="NewTab">__MSG_pref_new.tab__</button></li>
+                    <li><button id="file.respondTab"  class="RespondTab" >__MSG_pref_rsp.tab__</button></li>
+                    <li><button id="file.forwardTab"  class="ForwardTab" >__MSG_pref_fwd.tab__</button></li>
+                    <li><button id="file.snippetsTab" class="SnippetsTab" >Smart Snippets</button></li>
+                  </ul>
+                </nav>
+                
+                <tabpanels flex="1" 
+                          orient="vertical"
+                          onselect="SmartTemplate4.Settings.selectFileCase(this, event);"
+                          >
+                  <tabpanel class="newGroup fileTemplatePanel" id="new-fileTemplates">
+                    <groupbox flex="1" orient="vertical" class="transparent">
+                      <hbox class="groupbox-title"><label class="header">__MSG_pref_newmsg.cap__</label></hbox>
+                      <vbox flex="1" class="vfield">
+                        <label value="__MSG_fileTemplates.title__" 
+                              tooltiptext="__MSG_fileTemplates.new.tooltip__" 
+                              />
+                        <richlistbox 
+                            id="templateList.new" 
+                            flex="1"
+                            seltype="single"
+                            onselect="SmartTemplate4.fileTemplates.onSelect(this);"
+                            > <!-- note selTyope is camelCase in JS -->
+                        </richlistbox>
+                        <!-- we will move this around to the active tab -->
+                        <vbox id="fileControls">
+                          <hbox id="fileToolbarPanel">
+                            <toolbar id="fileTemplateToolbar"
+                                    class="templateList"
+                                    mode="full"
+                                    customizable="false" >
+                              <toolbarbutton
+                                  id="btnAdd"
+                                  class="toolbarbutton-1 chromeclass-toolbar-additional" 
+                                  label="__MSG_fileTemplates.add__"
+                                  oncommand="SmartTemplate4.fileTemplates.update(true);" />
+                              <toolbarbutton
+                                  id="btnUpdate"
+                                  class="toolbarbutton-1 chromeclass-toolbar-additional" 
+                                  label="__MSG_fileTemplates.update__"
+                                  oncommand="SmartTemplate4.fileTemplates.update(false);" />
+                              <toolbarbutton
+                                  id="btnRemove"
+                                  class="toolbarbutton-1 chromeclass-toolbar-additional" 
+                                  label="__MSG_fileTemplates.remove__"
+                                  oncommand="SmartTemplate4.fileTemplates.remove();" />
+                              <toolbarseparator />
+                              <toolbarbutton
+                                  id="btnUp"
+                                  class="toolbarbutton-1 chromeclass-toolbar-additional" 
+                                  label="__MSG_fileTemplates.up__"
+                                  oncommand="SmartTemplate4.fileTemplates.up();" />
+                              <toolbarbutton
+                                  id="btnDown"
+                                  class="toolbarbutton-1 chromeclass-toolbar-additional" 
+                                  label="__MSG_fileTemplates.down__"
+                                  oncommand="SmartTemplate4.fileTemplates.down();" />
+                              <spacer flex="1" />
+                            </toolbar>						
+                          </hbox>
+                          <div id="fileSettings" >
+                            <div>
+                              <div class="settingsRow">
+                                <label>__MSG_fileTemplates.file.path__</label>
+                                <html:input
+                                      type="text"
+                                      id="txtTemplatePath" 
+                                      />
+                                <toolbarbutton 
+                                        id="btnPickTemplate" 
+                                        tooltiptext="__MSG_fileTemplates.file.open__" 
+                                        oncommand="SmartTemplate4.fileTemplates.pickFileFromSettings();"
+                                        />
+                              </div>
+                            </div>
+                            <div>
+                              <div class="settingsRow">
+                                <label>__MSG_fileTemplates.file.title__</label>
+                                <html:input
+                                  type="text"
+                                  id="txtTemplateTitle" 
+                                  title="__MSG_fileTemplates.file.title.tooltip__"
+                                  onblur="SmartTemplate4.fileTemplates.onEditLabel(this);"
+                                  onfocus="SmartTemplate4.fileTemplates.updateInputGlobal(this);"
+                                  />
+                                <label>__MSG_template.category__:</label>
+                                <html:input
+                                  type="text"
+                                  id="txtTemplateCategory"
+                                  title="__MSG_template.category.tooltip__"
+                                  onblur="SmartTemplate4.fileTemplates.onEditLabel();"
+                                  onfocus="SmartTemplate4.fileTemplates.updateInputGlobal(this);"
+                                  />
+                                <toolbarbutton id="helpSnippets"
+                                  oncommand="SmartTemplate4.Util.showStationeryHelpPage('snippets');" 
+                                  label=""
+                                  tooltiptext="__MSG_template.category.tooltip__"
+                                  />
+                              </div>
+                            </div>
+                          </div>
+                          <spacer flex="1" />
+                        </vbox>
+                      </vbox>
+                    </groupbox>
+                  </tabpanel>
+    
+                  <!-- ######## Content [Reply] Tab ######## -->
+                  <tabpanel class="replyGroup fileTemplatePanel" id="rsp-fileTemplates">
+                    <groupbox flex="1" class="transparent">
+                      <hbox class="groupbox-title"><label class="header">__MSG_pref_rspmsg.cap__</label></hbox>
+                      <vbox flex="1" class="vfield">
+                        <label value="__MSG_fileTemplates.title__" 
+                              tooltiptext="__MSG_fileTemplates.rsp.tooltip__" 
+                              />										
+                        <richlistbox 
+                          id="templateList.rsp" 
+                          flex="1"
+                          onselect="SmartTemplate4.fileTemplates.onSelect(this);">
+                        </richlistbox>
+                      </vbox>
+                    </groupbox>
+                  </tabpanel>
+    
+                  <!-- ######## Content [Forward] File Tab ######## -->
+                  <tabpanel class="forwardGroup fileTemplatePanel" id="fwd-fileTemplates">
+                    <groupbox  flex="1" class="transparent">
+                      <hbox class="groupbox-title"><label class="header">__MSG_pref_fwdmsg.cap__</label></hbox>
+                      <vbox flex="1" class="vfield">
+                        <label value="__MSG_fileTemplates.title__" 
+                              tooltiptext="__MSG_fileTemplates.fwd.tooltip__" 
+                              />
+                        <richlistbox 
+                          id="templateList.fwd" 
+                          flex="1"
+                          onselect="SmartTemplate4.fileTemplates.onSelect(this);">
+                        </richlistbox>
+                      </vbox>									
+                    </groupbox>
+                  </tabpanel>
+                  
+                  <!-- ######## Content [Snippets] File Tab ######## -->
+                  <tabpanel class="snippetsGroup fileTemplatePanel" id="snippets-fileTemplates">
+                    <groupbox  flex="1" class="transparent">
+                      <hbox class="groupbox-title"><label class="header">__MSG_snippets.head__</label></hbox>
+                      <vbox flex="1" class="vfield">
+                        <label value="__MSG_snippets.label__" />
+                        <richlistbox 
+                          id="templateList.snippets" 
+                          flex="1"
+                          onselect="SmartTemplate4.fileTemplates.onSelect(this);">
+                        </richlistbox>
+                      </vbox>									
+                    </groupbox>
+                  </tabpanel>
+                                
+                </tabpanels>
+                
+                
+              </div>
+            </vbox>
+          
+          
+          
+          </deck>
+    
+        </vbox>
+    
+      </vbox>
+
+	  </prefpane>    
+  
+
+  </body>
+
+</html>

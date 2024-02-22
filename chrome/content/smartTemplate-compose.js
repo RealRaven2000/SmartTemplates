@@ -9,7 +9,6 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK 
 */
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 
 // -------------------------------------------------------------------
@@ -901,7 +900,68 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
 		return null;
 	};
-						
+
+	// [issue 243] set the composeCase and return the SmartTemplate st4composeType (new, rps, fwd)
+	function setComposeCase(composeType) {
+		const msgComposeType = Ci.nsIMsgCompType;
+		let st4composeType = "";
+		switch (composeType) {
+			case msgComposeType.Template: // new type for 1.6 - Thunderbird 52 uses this in "Edit As New" case
+				this.composeCase = 'tbtemplate'; // flags.isThunderbirdTemplate
+				st4composeType = "new"; // was "new" but there should be no processing in templates
+				break;
+			// new message -----------------------------------------
+			case msgComposeType.New:
+			case msgComposeType.NewsPost:
+			case msgComposeType.MailToUrl:
+				this.composeCase = 'new';
+				st4composeType = 'new';
+				break;
+
+			// reply message ---------------------------------------
+			case msgComposeType.Reply:
+			case msgComposeType.ReplyAll:
+			case msgComposeType.ReplyToSender:
+			case msgComposeType.ReplyToGroup:
+			case msgComposeType.ReplyToSenderAndGroup:
+			case msgComposeType.ReplyToList:
+				this.composeCase = 'reply';
+				st4composeType = 'rsp';
+				break;
+
+			// forwarding message ----------------------------------
+			case msgComposeType.ForwardAsAttachment:
+			case msgComposeType.ForwardInline:
+				this.composeCase = 'forward';
+				st4composeType = 'fwd';
+				break;
+
+			// do not process -----------------------------------
+			// (Draft:9/ReplyWithTemplate:12)
+			case msgComposeType.Draft:
+				this.composeCase = 'draft';
+				let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
+						msgDbHdr = gMsgCompose.originalMsgURI ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr) : null;
+				if(msgDbHdr) {
+					const nsMsgKey_None = 0xffffffff;
+					if (msgDbHdr.threadParent && (msgDbHdr.threadParent != nsMsgKey_None)) {
+						st4composeType = 'rsp'; // just guessing, of course it could be fwd as well
+					}
+					if (msgDbHdr.numReferences == 0)
+						st4composeType = 'new';
+				}
+				break;
+			case msgComposeType.EditAsNew: 
+				this.composeCase = 'editAsNew';
+			case msgComposeType.EditTemplate: 
+				this.composeCase = 'editTemplate';
+			default:
+				this.composeCase = "";
+				break;
+		}		
+    return st4composeType;
+	};
+
 	// -----------------------------------
 	// Add template message
 	async function insertTemplate(startup, flags, fileTemplateSource)	{
@@ -928,9 +988,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
     if (SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning) return;
     SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; // [issue 139] avoid duplicates
-    if (SmartTemplate4.PreprocessingFlags.isLoadIdentity) {
-      flags.isLoadIdentity = true; // issue 139 duplication of template
-    }
+
 		util.logDebugOptional('functions,functions.insertTemplate',
 		  `insertTemplate(startup: ${startup} , gMsgCompose.type = ${gMsgCompose.type}`, 
       flags);
@@ -1060,19 +1118,21 @@ SmartTemplate4.classSmartTemplate = function() {
 			
 			isActiveOnAccount = pref.isTemplateActive(idKey, st4composeType, false);
 			// draft + startup: do not process!
-			if (startup && composeCase=='draft')
+			if (startup && composeCase=='draft') {
 				isActiveOnAccount = false;
+			}
 			
-			if (flags.isFileTemplate)
+			if (flags.isFileTemplate) {
 				isActiveOnAccount = true;
+			}
  
 			if (isActiveOnAccount) {
 				// Message File loaded:
 				if (prefs.isDebugOption('functions.insertTemplate')) debugger;
 				
-				if (flags.isFileTemplate && fileTemplateSource && !fileTemplateSource.failed)
+				if (flags.isFileTemplate && fileTemplateSource && !fileTemplateSource.failed) {
 				  rawTemplate = fileTemplateSource.HTML || fileTemplateSource.Text;
-				else if (flags.isThunderbirdTemplate) {
+				} else if (flags.isThunderbirdTemplate) {
 					rawTemplate = editor.rootElement.innerHTML; // treat email as raw template
 				} else {
 					rawTemplate = flags.isThunderbirdTemplate ? "" : pref.getTemplate(idKey, st4composeType, "");
@@ -1154,8 +1214,9 @@ SmartTemplate4.classSmartTemplate = function() {
 						}
 						break;
 					case 'forward':
-						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
+						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment) {
 							break;
+						}
 						if (flags.suppressQuoteHeaders || pref.isDeleteHeaders(idKey, st4composeType, false)) {
 							delForwardHeader(idKey, false);
 						}
@@ -1176,46 +1237,20 @@ SmartTemplate4.classSmartTemplate = function() {
 						qd.innerHTML = quoteHeader;
 						return qd;
 					}
-					// new behavior: always replace the standard quote header [forceReplaceQuoteHeader]
-					if (true) {
-						let firstQuote = 
-						  (st4composeType=='fwd') ?
-							editor.rootElement.firstChild :
-						  editor.rootElement.getElementsByTagName('BLOCKQUOTE')[0];
-						// [Bug 26261] Quote header not inserted in plain text mode
-						if (!firstQuote) firstQuote = editor.rootElement.firstChild;
-						if (firstQuote) {
-							let quoteHd = firstQuote.parentNode.insertBefore(qdiv(), firstQuote),
-							    prev = quoteHd.previousSibling;
-							// force deleting the original quote header:
-							if (prev && prev.className && prev.className.indexOf('moz-cite-prefix')>=0) {
-								prev.parentNode.removeChild(prev); 
-							}
-						}
-					}
-					else if (flags.hasQuoteHeader) { // find insertion point injected by %quoteHeader%
-						let qnode = findChildNode(editor.rootElement, 'quoteHeader-placeholder'); // quoteHeader
-						if (qnode) {
-							if (composeCase!='new') {
-							  let quoteHd = qdiv();
-								qnode.parentNode.insertBefore(quoteHd, qnode);
-								if (quoteHeader) // guard against empty setting: we do not remove header if there is nothing defined in st4.
-									gMsgCompose.editor.deleteNode(qnode);
-								// only if followed by a blockquote, delete every element between quoteHeader and blockquote element
-								let nn = quoteHd.nextSibling,
-								    isFollowedByQuote = false;
-								while (nn) {
-									if (nn.nodeName.toLowerCase() == 'blockquote') {
-										isFollowedByQuote = true;
-										break;
-									}
-									nn = nn.nextSibling;
-								}
-								if (isFollowedByQuote)
-									while (quoteHd.nextSibling && quoteHd.nextSibling.nodeName.toLowerCase() != 'blockquote') {
-										gMsgCompose.editor.deleteNode(quoteHd.nextSibling);
-									}
-							}
+
+					// replace the standard quote header
+					let firstQuote = 
+						(st4composeType=='fwd') ?
+						editor.rootElement.firstChild :
+						editor.rootElement.getElementsByTagName('BLOCKQUOTE')[0];
+					// [Bug 26261] Quote header not inserted in plain text mode
+					if (!firstQuote) firstQuote = editor.rootElement.firstChild;
+					if (firstQuote) {
+						let quoteHd = firstQuote.parentNode.insertBefore(qdiv(), firstQuote),
+								prev = quoteHd.previousSibling;
+						// force deleting the original quote header:
+						if (prev && prev.className && prev.className.indexOf('moz-cite-prefix')>=0) {
+							prev.parentNode.removeChild(prev); 
 						}
 					}
 				}
@@ -1266,6 +1301,78 @@ SmartTemplate4.classSmartTemplate = function() {
           SmartTemplate4.sigInTemplate = false;
         }
 			}
+		}
+
+		// [issue 79]
+    // Extract <head> sections and inject into doc head.
+		// merge all <body> attributes into document body (body will be converted into an attributeless div)
+		try {
+			const isExtractHead = SmartTemplate4.Preferences.getMyBoolPref("header.inject");
+			if (isExtractHead) {
+				let testDiv = editor.document.createElement("div");
+				testDiv.id = "tempTemplate";
+				testDiv.hidden = true;
+				// replace <head> tags, because they will be removed on adding the HTML:
+				testDiv.innerHTML = template.replace("<head","<div class='smartTemplateHeader' ").replace("</head","</div")
+				                            .replace("<body","<div class='smartTemplateBody' "  ).replace("</body","</div");
+
+				// ===== merge head contents
+				let heads = testDiv.querySelectorAll("div.smartTemplateHeader");
+				if (heads.length) {
+					let docHeader = editor.document.head || editor.document.getElementsByTagName('head')[0],
+							i=0;
+					for (let head of heads) {
+						util.logDebugOptional('composer',"SmartTemplates - head tag found\n", head.outerHTML);
+						let headContent = head.innerHTML;
+						docHeader.innerHTML = docHeader.innerHTML + 
+							`\n<!--- head [${i}] from template -->\n` +
+							headContent;
+						i++;
+					}
+					let len = heads.length;
+					for (let i=len-1; i>=0; i--) {
+						let head = heads[i];
+						testDiv.removeChild(head);
+					}
+					template = testDiv.innerHTML; // extract the remaining markup
+				}
+
+				// ===== merge body attributes
+				let bodies = testDiv.querySelectorAll("div.smartTemplateBody");
+				if (bodies.length) { // gather all attributes.
+					let allAttributes = [];
+					for (let body of bodies) {
+						let atts = [...body.attributes];
+						allAttributes.push(...atts);
+						for (let a of atts) { // strip all attributes of the div, it shouldn't do anything hopefully
+							body.removeAttribute(a.name);
+						}
+					}
+					// all body attributes are dropped by composer, so there is no need to tidy up!
+					for (let a of allAttributes) {
+						let isClass = (a.name=="class");
+						if (isClass) {
+							a.value = a.value.replace("smartTemplateBody","").trim();
+						}
+						if (a.value && a.value.trim()) {
+							if (isClass) {
+								let clist = a.value.split(" ");
+								for (let cl of clist) {
+									if (cl) {
+										bodyEl.classList.add(cl);
+									}
+								}
+							} else { // note: this definitely overwrites previous attributes!
+								bodyEl.setAttribute(a.name, a.value);
+							}
+						}
+					}
+					template = testDiv.innerHTML; // extract the remaining markup again.
+				}
+				testDiv.remove();
+			}
+		} catch(ex) {
+			util.logException("Extract header from template failed", ex);
 		}
 
 		// add template message --------------------------------
@@ -1329,9 +1436,9 @@ SmartTemplate4.classSmartTemplate = function() {
           let lev = quoteNode.getAttribute('quotelevel'),
               quoteLevels = 100;
           if (lev) {
-            if (lev=="all") 
+            if (lev=="all") {
               quoteLevels = 100;
-            else {
+						} else {
               quoteLevels = parseInt(lev,10);
             }
           } 
@@ -1567,8 +1674,9 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		// moved code for moving selection to top / bottom
 		// re-find cursor
-		if (!caretContainer)
+		if (!caretContainer) {
 		  caretContainer = findChildNode(targetNode, 'st4cursor');
+		}
 		isCursor = (caretContainer != null);
 		try {
 			if (targetNode) { // usually <body>
@@ -1622,8 +1730,9 @@ SmartTemplate4.classSmartTemplate = function() {
                           , parentSrchHTML.lastIndexOf('<br', caretStartPos) 
                           , parentSrchHTML.lastIndexOf('</div', caretStartPos)
                           , parentSrchHTML.lastIndexOf('</table', caretStartPos)) + 1; // where the previous Block ends
-                    if (previousBlock==0) 
+                    if (previousBlock==0) {
 											previousBlock = caretStartPos;
+										}
 										else {
 											previousBlock = parentSrchHTML.indexOf('>', previousBlock) + 1 || caretStartPos; // find end of closing tag
 											if (previousBlock < 0) previousBlock = 0;
@@ -1679,10 +1788,11 @@ SmartTemplate4.classSmartTemplate = function() {
 									// check if we would create an empty paragraph:
 									if (space.textContent == space.parentNode.innerText 
 									    && 
-											space.parentNode.tagName.toLowerCase()=="p")
+											space.parentNode.tagName.toLowerCase()=="p") {
 										space.parentNode.innerHTML="<br>"; // avoid empty paragraph because the editor will remove it; replaces space
-									else
+									} else {
 										space.parentNode.removeChild(space);
+									}
 								}
 								window.updateCommands('style');
                 // =========== FORCE CURSOR IN <PARA> ==================================== ]]]]
@@ -1730,14 +1840,16 @@ SmartTemplate4.classSmartTemplate = function() {
 
 		await SmartTemplate4.Util.resolveDeferredBatch(gMsgCompose.editor);
 		resetDocument(gMsgCompose.editor, startup);
+		// check gMsgCompose.bodyModified `- should be false here`
 		
 		// no license => show license notification.
 		if (util.licenseInfo.status!="Valid") {
 			util.logDebugOptional('premium.licenser', 'show license popup (isValidated==false)');
 			util.popupLicenseNotification("", true, false);		// featureList = "" - standard for ALL features.
 		}
-		else
+		else {
 			util.logDebugOptional('premium.licenser', 'License is validated, no popup');
+		}
 		
 		if (SmartTemplate4.hasDeferredVars) {
       util.logDebug("Setting up listeners for deferred field variables!");
@@ -1770,11 +1882,12 @@ SmartTemplate4.classSmartTemplate = function() {
 	}; // insertTemplate
 
 	function resetDocument(editor, withUndo) {
-		gMsgCompose.editor.resetModificationCount();
+		SmartTemplate4.Util.logHighlightDebug(`resetDocument(withUndo = ${withUndo})`, "yellow", "rgb(0,80,0)");
+		editor.resetModificationCount();
 		if (withUndo) {
 			util.logDebugOptional('functions', ' resetting Undo… ' );
-			gMsgCompose.editor.enableUndo(false);
-			gMsgCompose.editor.enableUndo(true);
+			editor.enableUndo(false);
+			editor.enableUndo(true);
 		}
 	};
 	
@@ -1869,6 +1982,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	// -----------------------------------
 	// Public methods of classSmartTemplate
 	this.insertTemplate = insertTemplate;
+	this.setComposeCase = setComposeCase;
 	this.extractSignature = extractSignature;
   this.getProcessedText = getProcessedText;	
 	this.resetDocument = resetDocument;

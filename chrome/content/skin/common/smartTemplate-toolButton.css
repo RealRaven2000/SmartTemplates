@@ -9,7 +9,6 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   min-height: 24px;
 }
  
-#SmartTemplate4Button,
 #mail-toolbox > toolbar[brighttext] #SmartTemplate4Button.toolbarbutton-1
 {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon24x24.png");
@@ -21,37 +20,119 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png");
 }
 
-
-#SmartTemplate4Button.newsflash,
 #SmartTemplate4Messenger.newsflash {
-  background-color: #006EB7 !important; /* blue */
+  background-color: #0064a7 !important; /* blue */
   background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
   color: white !important;
 }
-#SmartTemplate4Button.newsflash label,
+
 #SmartTemplate4Messenger.newsflash label {
   color: rgb(255,255,255) !important;
 }
 
-#SmartTemplate4Button.newsflash:hover,
 #SmartTemplate4Messenger.newsflash:hover {
 	background-color: #ffd65e !important; /* yellow */
 	background-image: linear-gradient(to bottom, #fff65e 0%,#febf04 100%) !important;
+  color: black;
 }
-#SmartTemplate4Button.newsflash:hover label,
 #SmartTemplate4Messenger.newsflash:hover label {
   color: rgb(60,0,0) !important;
 }
-#SmartTemplate4Button.newsflash:hover image,
 #SmartTemplate4Messenger.newsflash:hover image {
   fill: rgb(60,0,0) !important;
 }
 
 /* force showing the label with news / update text */
-#SmartTemplate4Button.newsflash .toolbarbutton-text,
-#SmartTemplate4Messenger.newsflash .toolbarbutton-text,
-#SmartTemplate4Button.alertExpired .toolbarbutton-text {
+#SmartTemplate4Messenger.newsflash .toolbarbutton-text {
   display: inline-block !important;
 }
 
+
+/** POPUP MENUS **/
+
+#smartTemplates-settings {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
+  fill: currentColor;
+}
+#smartTemplates-settings-new {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
+  fill: red;
+}
+
+#smartTemplates-docs {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/docs.svg") !important;
+  stroke: currentColor;
+}
+
+#smartTemplates-tests {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/bug.svg") !important;
+  fill: rgb(123, 4, 4);
+}
+
+#smartTemplates-news {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/new.svg") !important;
+}
+
+/* reply buttons - see:
+    https://searchfox.org/comm-esr102/source/mail/themes/shared/mail/messageHeader.css#195
+    https://searchfox.org/comm-esr102/source/mail/themes/shared/mail/icons.css
+  */
+
+#smartTemplates-write-menu {
+  list-style-image: var(--icon-new-mail);
+}
+
+/* reply, reply to sender */
+#smartTemplates-reply-menu {
+  list-style-image: var(--icon-reply);
+}
+
+#smartTemplates-reply-all-menu {
+  list-style-image: var(--icon-reply-all);
+}
+
+#smartTemplates-reply-list-menu {
+  list-style-image: var(--icon-reply-list);
+}
+
+
+#smartTemplates-forward-menu {
+  list-style-image: var(--icon-forward);
+}
+
+/* future */
+#smartTemplates-replyall-menu {
+  list-style-image: var(--icon-reply-all);
+}
+#smartTemplates-replylist-menu {
+  list-style-image: var(--icon-reply-list);
+}
+
+/* test */
+#SmartTemplates-reply {
+  list-style-image: var(--icon-reply);
+}
+
+#SmartTemplates-forward {
+  list-style-image: var(--icon-forward), linear-gradient(to left bottom, red, blue);
+}
+
+/* option to hide the label, should only be shown in "icons and text" mode! */
+.message-header-buttons-only-icons .st-toggle-label,
+.message-header-buttons-only-text .st-toggle-label {
+  display: none !important;
+}
+
+/* use the class force-label-hidden on the button to force hiding the label, but only if icon is visible */
+#messageHeader:not(.message-header-buttons-only-text) .SmartTemplates_HeaderBtn.force-label-hidden .toolbarbutton-text  {
+  display: none !important;
+}
+
+menuitem.st4templatePicker {
+	list-style-image : url('chrome://smartTemplate4/content/skin/icons/template-load.png') !important;
+}
+
+menuitem.st4templateEntry:hover, menuitem.st-mru:hover {
+	list-style-image : url('chrome://smartTemplate4/content/skin/icons/icon24x24.png') !important;
+}
 

@@ -9,7 +9,7 @@
   END LICENSE BLOCK 
 */
 
-var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 var LastInput = {
@@ -74,12 +74,15 @@ SmartTemplate4.Settings = {
 		return arguments[0];
 	} ,
 
+
 	// Select Deck with identity key
 	//--------------------------------------------------------------------
-	prefDeck : function prefDeck(id, index) {
+	showCommonPlaceholder : function (isCommon) {
+		const id = "default.deckB";
 		let deck = document.getElementById(id + this.accountId);
-		if (deck)
-		  { deck.selectedIndex = index; }
+		if (deck){ 
+			deck.selectedIndex = isCommon ? 1 : 0; 
+		}
 
 		const idkey = SmartTemplate4.Util.getIdentityKey(document),
 		      branch = (idkey == "common") ? ".common" : "." + idkey;
@@ -254,10 +257,11 @@ SmartTemplate4.Settings = {
 		const PS = this.prefService;
 		switch (PS.getPrefType(prefstring)) {
 			case Components.interfaces.nsIPrefBranch.PREF_STRING:
-			  if (typeof PS.getStringPref === 'function') 
+			  if (typeof PS.getStringPref === 'function') {
 					return PS.getStringPref(prefstring);
-				else // outdated code, not used by anything modern:
+				} else { // outdated code, not used by anything modern:
 					return PS.getComplexValue(prefstring, Components.interfaces.nsISupportsString).data;
+				}
 			case Components.interfaces.nsIPrefBranch.PREF_INT:
 				return PS.getIntPref(prefstring);
 			case Components.interfaces.nsIPrefBranch.PREF_BOOL:
@@ -296,6 +300,7 @@ SmartTemplate4.Settings = {
       return;
     settings.dialogHeight = dlg.clientHeight; // remember new height
     
+		/*
     let decksWrapper = getElement('decksWrapper'),
         templateBoxes = decksWrapper.getElementsByClassName('template');
     for (let i=0; i<templateBoxes.length; i++) {
@@ -320,6 +325,7 @@ SmartTemplate4.Settings = {
       
       t.style.height = (t.parentNode.clientHeight - 25 - cbHeight) + "px";
     }
+		*/
     
   },
 
@@ -329,7 +335,7 @@ SmartTemplate4.Settings = {
 
 	// Setup default preferences and common settings
 	//--------------------------------------------------------------------
-	onLoad: async function onLoad() {
+	onLoad: async function() {
 		const util = SmartTemplate4.Util,
 					prefs = SmartTemplate4.Preferences,
 					settings = SmartTemplate4.Settings,
@@ -384,14 +390,18 @@ SmartTemplate4.Settings = {
             // [issue 121] current shown
             isSwitchCurrentIdentity = false;
           }
+					if (mode=="variables") {
+            isAdvancedPanelOpen = true; 
+					}
           if (inParams.composeType) {
             composeType = inParams.composeType;
           }
         }
       }
 
-      if (isSwitchCurrentIdentity)
+      if (isSwitchCurrentIdentity) {
         this.switchIdentity(CurId ? CurId : 'common'); // also switch if id == 0! bug lead to common account checkboxes not operating properly!
+			}
     }
     catch(ex) {
       util.logException("Settings onLoad() switching account", ex);
@@ -481,7 +491,7 @@ SmartTemplate4.Settings = {
 		
 		// wait some time so dialog can load first
 		if (prefs.getMyBoolPref('hideExamples')) { 
-			getElement('templatesTab').collapsed = true;
+			getElement('templatesTab').setAttribute("collapsed", true);
 		}
 		else {
 			window.setTimeout(function() { settings.loadTemplatesFrame(); }, 500);
@@ -503,7 +513,7 @@ SmartTemplate4.Settings = {
     settings.labelLicenseBtn(getElement("btnLicense"), "buy");
     getElement('txtLicenseKey').value = SmartTemplate4.Util.licenseInfo.licenseKey;
     if (SmartTemplate4.Util.licenseInfo.licenseKey) {
-      SmartTemplate4.Settings.validateLicenseInOptions(true); // silent=true - no sliding alert for blind people
+      await SmartTemplate4.Settings.validateLicenseInOptions(true); // silent=true - no sliding alert for blind people
     }
 		
 		if (isAdvancedPanelOpen) {
@@ -520,10 +530,15 @@ SmartTemplate4.Settings = {
 				break;
 			case 'fileTemplates': // set up file templates.
 				let idMenu = getElement("msgIdentity");
-				if (idMenu)
-					idMenu.selectedIndex = 1;
+				if (idMenu) { idMenu.selectedIndex = 1; }
 				SmartTemplate4.Settings.switchIdentity("fileTemplates", composeType);
 			  break;
+			case "variables": // Open variables tab
+				tabbox.selectedPanel = getElement('variablesFrame');
+				tabbox.selectedIndex = 0;
+			  settings.openAdvanced();  // issue 60
+        isAdvancedPanelOpen = true;
+				break
 		}
 		
 		let panels = getElement('ST4-Panels');
@@ -538,7 +553,7 @@ SmartTemplate4.Settings = {
 		this.configExtra2Button();
 		
 		// Stationery replacement :)
-		SmartTemplate4.fileTemplates.loadCustomMenu(true);
+		await SmartTemplate4.fileTemplates.loadCustomMenu(true);
     
     if (mode == 'licenseKey') {
       let txtLicense = getElement('txtLicenseKey');
@@ -546,6 +561,20 @@ SmartTemplate4.Settings = {
     }
     
     window.addEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseFromEvent);
+
+  	const defaultMethod = SmartTemplate4.Preferences.getMyIntPref("defaultTemplateMethod");
+		let selectMethod;
+		switch (defaultMethod) {
+			case 1:
+				selectMethod = getElement("useAccountTemplate");
+				break;
+			case 2:
+				selectMethod = getElement("useLastTemplate");
+				break;
+		}
+		selectMethod.checked = true;
+
+
     
     // dialog buttons are in a shadow DOM which needs to load its own css.
     // https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM
@@ -573,12 +602,12 @@ SmartTemplate4.Settings = {
   },
 	
 	toggleExamples: function toggleExamples(el) {
-		document.getElementById('templatesTab').collapsed = (el.checked);
+		document.getElementById('templatesTab').setAttribute("collapsed", (el.checked));
     if (!el.checked)
       SmartTemplate4.Settings.loadTemplatesFrame();
 	} ,
 	
-	loadTemplatesFrame: function loadTemplatesFrame() {
+	loadTemplatesFrame: function() {
     const url = "https://smarttemplates.quickfolders.org/templates.html";
     // deferred loading of templates content
     let templatesIFrame = document.getElementById("templatesIFrame");
@@ -854,7 +883,7 @@ SmartTemplate4.Settings = {
 
 	// Add identity
 	//--------------------------------------------------------------------
-	addIdentity : function addIdentity(menuvalue) {
+	addIdentity : function (menuvalue) {
 		const util = SmartTemplate4.Util,
 					prefs = SmartTemplate4.Preferences,
 					isCommon = (menuvalue == "common"),
@@ -867,8 +896,12 @@ SmartTemplate4.Settings = {
 			this.setPref1st(prefRoot);
 
 			// Clone and setup a preference window tags.
-			const el = document.getElementById("deckA.per_account"),
-				  clone = el.cloneNode(true);
+			const el = document.getElementById("deckA.per_account");
+
+			// fix painting over of decks
+			el.classList.remove("deck-selected"); 
+
+			const clone = el.cloneNode(true);
 
 			this.prefCloneAndSetup(clone, branch);
 			let appendedChild = el.parentNode.appendChild(clone);
@@ -884,7 +917,7 @@ SmartTemplate4.Settings = {
 			
 			let useCommon = 
 			  isCommon ? false : prefs.getBoolPref(prefRoot + "def"); // this.isChecked("use_default" + branch)
-			this.prefDeck("default.deckB", useCommon ? 1 : 0);
+			this.showCommonPlaceholder(useCommon);
 
 			this.disableWithCheckbox();
 			// this.accountKey = "";
@@ -937,8 +970,9 @@ SmartTemplate4.Settings = {
 			for (let j = 0; j < account.identities.length; j++) {
 				let identity = account.identities[j];
 
-				if (CurId == identity)
+				if (CurId == identity) {
 					currentId = theMenu.itemCount; // remember position
+				}
         
         // remove account name 
         let idText = "", acc = "";
@@ -951,13 +985,18 @@ SmartTemplate4.Settings = {
         let lbl = idText + acc + identity.identityName;
 				theMenu.appendItem(lbl, identity.key, "");
 				this.addIdentity(identity.key);
+				
 			}
 		}
 		// update all Preference elements - do we need to wait for another event?
 		for (let i=0; i<this.preferenceElements.length; i++ ) {
 			this.preferenceElements[i].updateElements();
 		}
-		
+		if (!CurId) {
+			let common = document.getElementById("deckA.per_account");
+			common.classList.add("deck-selected"); 
+		}
+	
 		
 		if (CurId && CurId.key && SmartTemplate4.Preferences.getMyBoolPref(CurId.key+".def")) { // use common?
 			theMenu.selectedIndex = 0;
@@ -971,7 +1010,7 @@ SmartTemplate4.Settings = {
 		
 	} ,
 
-	openAdvanced: function openAdvanced() {
+	openAdvanced: function() {
 		const prefs = SmartTemplate4.Preferences;
 		let advancedContainer = document.getElementById('advancedContainer');
 		advancedContainer.hidden = false;
@@ -988,7 +1027,7 @@ SmartTemplate4.Settings = {
 		versionBox.value = SmartTemplate4.Util.Version; // cached from addoInfo
 	} ,
 
-	closeAdvanced: function closeAdvanced() {
+	closeAdvanced: function() {
 		const prefs = SmartTemplate4.Preferences;
 		let advancedContainer = document.getElementById('advancedContainer'),
 		    wid = advancedContainer.scrollWidth;
@@ -1088,9 +1127,9 @@ SmartTemplate4.Settings = {
 			deck.selectedIndex = 1;
 			this.accountKey = "files";
 		}
-    btnSave.collapsed = (isShowTemplateSelector);
-    btnLoad.collapsed = (isShowTemplateSelector);
-    tipHelp.collapsed = (!isShowTemplateSelector);
+    btnSave.setAttribute("collapsed", (isShowTemplateSelector));
+    btnLoad.setAttribute("collapsed", (isShowTemplateSelector));
+    tipHelp.setAttribute("collapsed", (!isShowTemplateSelector));
 
 		// nothing found, then we are in common! (changed from previous behavior where common accountKey was "", now it is ".common"
 		if (!found) {
@@ -1221,10 +1260,12 @@ SmartTemplate4.Settings = {
 		let size = SmartTemplate4.Preferences.getMyIntPref("font.size");
 		
 		size = size + change;
-		if (size < 7) 
+		if (size < 7) {
 			size = 7;
-		if (size > 16) 
+		}
+		if (size > 16) {
 			size = 16;
+		}
 
 		let fs = document.getElementById('txtFontSize');
 		if (fs)
@@ -1278,7 +1319,7 @@ SmartTemplate4.Settings = {
       return menuEntry;
   },
   
-  fileAccountSettings: function fileAccountSettings(mode, jsonData, fname) {
+  fileAccountSettings: function(mode, jsonData, fname) {
     // readData: this function does the actual work of interpreting the read data
     // and setting the UI values of currently selected deck accordingly:
     function readData(data) {
@@ -1303,7 +1344,7 @@ SmartTemplate4.Settings = {
 					el.dispatchEvent(evt);
 				}
       }
-      let settings = JSON.parse(data);
+      let settings = data;
       // jsonData = the key
       // every identifier ends with id#; we need to replace the number with the current key!
       // or match the string up to .id!
@@ -1323,7 +1364,7 @@ SmartTemplate4.Settings = {
         if (isTargetIdentity) {
           // uncheck 'use common' checkbox
           document.getElementById('use_default' + targetId).checked = false;
-          SmartTemplate4.Settings.prefDeck('default.deckB', 0);
+          SmartTemplate4.Settings.showCommonPlaceholder(false);
         }
         for (let i=0; i<jsonData.textboxes.length; i++) {
           updateElement(jsonData.textboxes[i], stem, targetId);
@@ -1373,7 +1414,7 @@ SmartTemplate4.Settings = {
         if (fp.file) {
           let path = fp.file.path;
           
-					const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
+					// const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
 					
 					// Remember last path
 					let lastSlash = path.lastIndexOf("/");
@@ -1386,7 +1427,7 @@ SmartTemplate4.Settings = {
           //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           switch (mode) {
             case 'load':
-              let promiseRead = OS.File.read(path, { encoding: "utf-8" }); //  returns Uint8Array
+              let promiseRead = IOUtils.readJSON(path, { encoding: "utf-8" }); //  returns Uint8Array
               promiseRead.then(
                 function readSuccess(data) {
                   readData(data);
@@ -1398,7 +1439,7 @@ SmartTemplate4.Settings = {
               break;
             case 'save':
               // if (aResult == Ci.nsIFilePicker.returnReplace)
-              let promiseDelete = OS.File.remove(path);
+              let promiseDelete = IOUtils.remove(path);
               // defined 2 functions
               util.logDebug ('Setting up promise Delete');
               promiseDelete.then (
@@ -1407,7 +1448,7 @@ SmartTemplate4.Settings = {
                   // force appending correct file extension!
                   if (!path.toLowerCase().endsWith('.json'))
                     path += '.json';
-                  let promiseWrite = OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});
+                  let promiseWrite = IOUtils.writeUTF8(path, jsonData); // OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});
                   promiseWrite.then(
                     function saveSuccess(byteCount) {
                       util.logDebug ('successfully saved ' + byteCount + ' bytes to file');
@@ -1418,7 +1459,7 @@ SmartTemplate4.Settings = {
                   );
                 },
                 function failDelete(fileError) {
-                  util.logDebug ('OS.File.remove failed for reason:' + fileError); 
+                  util.logDebug ('IOUtils.remove failed for reason:' + fileError); 
                 }
               );
               break;
@@ -1458,7 +1499,7 @@ SmartTemplate4.Settings = {
   } ,
   
   // load a Template file (not this module!)
-  load: async function load() {
+  load: async function() {
 		const util = SmartTemplate4.Util;
     
     
@@ -1474,7 +1515,7 @@ SmartTemplate4.Settings = {
   } ,
 
   // send new key to background page for validation
-  validateNewKey: async function validateNewKey(el) {
+  validateNewKey: async function (el) {
     this.trimLicense();
     let input = document.getElementById('txtLicenseKey'),
         key = input.value;
@@ -1503,24 +1544,29 @@ SmartTemplate4.Settings = {
   // make a validation message visible but also repeat a notification for screen readers.
   showValidationMessage: function showValidationMessage(el, silent=true) {
     const util = SmartTemplate4.Util;
-    if (el.collapsed != false) {
-      el.collapsed = false;
+    if (el.getAttribute("collapsed") != false) {
+      el.setAttribute("collapsed", false);
       if (!silent)
         util.popupAlert (util.ADDON_TITLE, el.textContent);
     }
   } ,
   
-  enablePremiumConfig: function enablePremiumConfig(isEnabled) {
-		/* future function: enables premium configuration UI
-    let getElement      = document.getElementById.bind(document),
-        premiumConfig   = getElement('premiumConfig');
-    premiumConfig.disabled = !isEnabled;
-		*/
-		document.getElementById("chkResolveABCardBook").disabled = !isEnabled;
-		document.getElementById("chkCardBookFallback").disabled = !isEnabled;
-  },
+  enablePremiumConfig: function (isEnabled) {
+		/* enables Pro features */
+		for (let el of document.querySelectorAll(".premiumFeature")) {
+			el.disabled = !isEnabled;
+		}
+		this.enableStandardConfig(isEnabled);
+  } ,
+
+	enableStandardConfig: function(isEnabled) {
+		for (let el of document.querySelectorAll(".standardFeature")) {
+			el.disabled = !isEnabled;
+		}
+		document.getElementById("useLastTemplate").disabled = !isEnabled;
+	} ,
   
-  showTrialDate: function() {
+	showTrialDate: function() {
     let licenseDate = document.getElementById('licenseDate'),
         licenseDateLbl = document.getElementById('licenseDateLabel'),
         txtGracePeriod= SmartTemplate4.Util.gracePeriodText(SmartTemplate4.Util.licenseInfo.trialDays);
@@ -1569,16 +1615,16 @@ SmartTemplate4.Settings = {
         decryptedMail = SmartTemplate4.Util.licenseInfo.email, 
         decryptedDate = SmartTemplate4.Util.licenseInfo.expiryDate,
 				result = SmartTemplate4.Util.licenseInfo.status;
-		validationStandard.collapsed = true;
-    validationPassed.collapsed = true;
-    validationFailed.collapsed = true;
-    validationExpired.collapsed = true;
-		validationInvalidAddon.collapsed = true;
-    validationInvalidEmail.collapsed = true;
-    validationEmailNoMatch.collapsed = true;
-		validationDate.collapsed = false;
-		validationDateSpace.collapsed = false;
-    this.enablePremiumConfig(false);
+		validationStandard.setAttribute("collapsed", true);
+    validationPassed.setAttribute("collapsed", true);
+    validationFailed.setAttribute("collapsed", true);
+    validationExpired.setAttribute("collapsed", true);
+		validationInvalidAddon.setAttribute("collapsed", true);
+    validationInvalidEmail.setAttribute("collapsed", true);
+    validationEmailNoMatch.setAttribute("collapsed", true);
+		validationDate.setAttribute("collapsed", false);
+		validationDateSpace.setAttribute("collapsed", false);
+    this.enablePremiumConfig(false); //also disables standard features.
     try {
       let niceDate = decryptedDate;
       if (decryptedDate) {
@@ -1592,6 +1638,7 @@ SmartTemplate4.Settings = {
         case "Valid":
 					if (SmartTemplate4.Util.licenseInfo.keyType==2) { // standard license
             showValidationMessage(validationStandard, silent);
+						this.enableStandardConfig(true);
 					}
 					else {
 						showValidationMessage(validationPassed, silent);
@@ -1599,11 +1646,11 @@ SmartTemplate4.Settings = {
 					}
           licenseDate.value = niceDate;
           licenseDate.classList.add('valid'); // [issue 170]
-          licenseDateLabel.value = util.getBundleString("label.licenseValid");
+          licenseDateLabel.textContent = util.getBundleString("label.licenseValid");
           break;
         case "Invalid":
-				  validationDate.collapsed=true;
-					validationDateSpace.collapsed=true;
+				  validationDate.setAttribute("collapsed", true);
+					validationDateSpace.setAttribute("collapsed", true);
 				  let addonName = '';
 				  switch (SmartTemplate4.Util.licenseInfo.licenseKey.substr(0,2)) {
 						case 'QI':
@@ -1630,20 +1677,20 @@ SmartTemplate4.Settings = {
 					}
           break;
         case "Expired":
-          licenseDateLabel.value = util.getBundleString("st.licenseValidation.expired");
+          licenseDateLabel.textContent = util.getBundleString("st.licenseValidation.expired");
           licenseDate.value = niceDate;
           showValidationMessage(validationExpired, false); // always show
           break;
         case "MailNotConfigured":
-				  validationDate.collapsed=true;
-					validationDateSpace.collapsed=true;
+				  validationDate.setAttribute("collapsed", true);
+					validationDateSpace.setAttribute("collapsed", true);
           showValidationMessage(validationInvalidEmail, silent);
           // if mail was already replaced the string will contain [mail address] in square brackets
           validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
           break;
         case "MailDifferent":
-				  validationDate.collapsed=true;
-					validationDateSpace.collapsed=true;
+				  validationDate.setAttribute("collapsed", true);
+					validationDateSpace.setAttribute("collapsed", true);
           showValidationMessage(validationFailed, true);
           showValidationMessage(validationEmailNoMatch, silent);
           break;
@@ -1658,7 +1705,7 @@ SmartTemplate4.Settings = {
       }
 			
 			// restore original label.
-			if (!validationDate.collapsed) {
+			if (!validationDate.getAttribute("collapsed")) {
 				let licenseDateLbl = getElement('licenseDateLabel'),
 				    lTxt = licenseDateLbl.getAttribute("originalContent");
 				if (lTxt) {
@@ -1669,7 +1716,7 @@ SmartTemplate4.Settings = {
 			
 			// show support tab if license is not empty 
 			let isSupportEnabled = (SmartTemplate4.Util.licenseInfo.licenseKey) ? true : false;
-			document.getElementById('supportTab').collapsed = !(isSupportEnabled);
+			document.getElementById('supportTab').setAttribute("collapsed",  !(isSupportEnabled));
       
     }    
     catch(ex) {
@@ -1698,16 +1745,15 @@ SmartTemplate4.Settings = {
 			finalLicense = this.trimLicense();
     }
     if (finalLicense) {
-      // SmartTemplate4.Settings.validateLicenseInOptions(false);
       SmartTemplate4.Settings.validateNewKey();
     }
   } ,
   
-  validateLicenseFromEvent: function() {
-    SmartTemplate4.Settings.validateLicenseInOptions(false);
+  validateLicenseFromEvent: async function() {
+    await SmartTemplate4.Settings.validateLicenseInOptions(false);
   },
   
-  validateLicenseInOptions: function validateLicenseInOptions(silent = false) {
+  validateLicenseInOptions: async function (silent = false) {
 		function replaceCssClass(el,addedClass) {
 			try {
 				el.classList.add(addedClass);
@@ -1752,8 +1798,9 @@ SmartTemplate4.Settings = {
 							btnLicense.classList.add('upgrade'); // removes "pulsing" animation
 							settings.labelLicenseBtn(btnLicense, "upgrade");
 						}
-						else
-							btnLicense.collapsed = true;
+						else {
+							btnLicense.setAttribute("collapsed", true);
+						}
 					}
 					replaceCssClass(proTab, 'paid');
 					replaceCssClass(btnLicense, 'paid');
@@ -1762,14 +1809,14 @@ SmartTemplate4.Settings = {
 				  break;
 				case "Expired":
 					settings.labelLicenseBtn(btnLicense, "renew");
-				  btnLicense.collapsed = false;
+				  btnLicense.setAttribute("collapsed", false);
 					replaceCssClass(proTab, 'expired');
 					replaceCssClass(btnLicense, 'expired');
 					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo-pro.png");
 					break;
 				default: // no license
           settings.labelLicenseBtn(btnLicense, "buy");
-				  btnLicense.collapsed = false;
+				  btnLicense.setAttribute("collapsed", false);
 					replaceCssClass(proTab, 'free');
 					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo.png");
 					beautyTitle.classList.add('aboutLogo');
@@ -1812,11 +1859,11 @@ SmartTemplate4.Settings = {
 				let selectedPanelId = el.selectedPanel ? el.selectedPanel.id : 'unknown';
 				switch (selectedPanelId) {
 					case 'SmartTemplate4-Options-goPro':
-						donateButton.collapsed = true;
+						donateButton.setAttribute("collapsed", true);
             donateButton.setAttribute("hidden",true);
 						break;
 					default:
-						donateButton.collapsed = false;
+						donateButton.setAttribute("collapsed", false);
             donateButton.setAttribute("hidden",false);
 						if (!prefs.getStringPref('LicenseKey')) {
 							options.labelLicenseBtn(donateButton, "buy");
@@ -1827,7 +1874,7 @@ SmartTemplate4.Settings = {
 									options.labelLicenseBtn(donateButton, "renew");
 									break;
 								case "Valid":
-									donateButton.collapsed = true;
+									donateButton.setAttribute("collapsed", true);
 									break;
 								case "Invalid":
 									options.labelLicenseBtn(donateButton, "buy");
@@ -1864,7 +1911,7 @@ SmartTemplate4.Settings = {
 		switch(validStatus) {
 			case  "extend":
 				let txtExtend = util.getBundleString("st.notification.premium.btn.extendLicense");
-				btnLicense.collapsed = false
+				btnLicense.setAttribute("collapsed", false);
 				btnLicense.label = txtExtend; // text should be extend not renew
 				btnLicense.setAttribute('tooltiptext',
 					util.getBundleString("st.notification.premium.btn.extendLicense.tooltip"));
@@ -1912,8 +1959,9 @@ SmartTemplate4.Settings = {
         
 			}
       
-			if (Preferences) 
+			if (Preferences) {
 				Preferences.addAll(prefArray);
+			}
 		}							
 	},
 	
@@ -1939,9 +1987,11 @@ SmartTemplate4.Settings = {
 		// focus window?
 	},	
 
-	
+	selectDefaultTemplates: function(el) {
+		SmartTemplate4.Preferences.setMyIntPref("defaultTemplateMethod", el.value);
+	},
 
-};
+}; // Settings
 
 window.document.addEventListener('DOMContentLoaded', 
   SmartTemplate4.Settings.l10n.bind(SmartTemplate4.Settings) , 

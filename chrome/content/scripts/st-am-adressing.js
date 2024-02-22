@@ -1,6 +1,6 @@
 // Likely Obsolete for THunderbird 78 
 // Web Extensions will probably not be allowed to modify Thunderbird Options. :(
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+  
 
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-accounts.js", window, "UTF-8");

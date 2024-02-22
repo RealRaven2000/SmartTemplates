@@ -47,6 +47,39 @@ var Register = {
     window.addEventListener("SmartTemplates.BackgroundUpdate", this.updateLicenseUI.bind(this));
 		util.logDebug("Register.load() complete");
   } ,
+
+  toggleTerms: function(btn) {
+    let termsBox = document.getElementById("licenseTerms");
+    let collapsed = termsBox.getAttribute("collapsed");
+    let label;
+    if (collapsed) {
+      termsBox.removeAttribute("collapsed");
+      label = "licenseTerms.hide";
+      btn.classList.add("continue");
+    } else {
+      termsBox.setAttribute("collapsed", "true")
+      label = "licenseTerms.show";
+      btn.classList.remove("continue");
+    }
+    btn.label = SmartTemplate4.Util.getBundleString(label);
+    let form = document.querySelector("hbox.form");
+    if (form) {
+      if (collapsed) {
+        form.setAttribute("collapsed", "true")
+      } else {
+        form.removeAttribute("collapsed");
+      }
+    }
+    let buy = document.getElementById("buyBox");
+    if (buy) {
+      if (collapsed) {
+        buy.setAttribute("collapsed", "true")
+      } else {
+        buy.removeAttribute("collapsed");
+      }
+    }
+    window.sizeToContent();
+  },  
   
   updateLicenseUI: async function updateLicenseUI() {  
     const licenseInfo = SmartTemplate4.Util.licenseInfo,
@@ -55,8 +88,9 @@ var Register = {
           util = SmartTemplate4.Util;
 		// for renewals, referrer is always the old license!
     let referrerTxt = getElement('referrer');
-		if (licenseInfo.status=="Valid")
+		if (licenseInfo.status=="Valid") {
 			referrerTxt.value = licenseInfo.licenseKey;
+    }
 		
 		// Renewal Logic.
     let decryptedDate = licenseInfo.expiryDate;
@@ -66,6 +100,12 @@ var Register = {
 			}
 				
       getElement('licenseDate').value = decryptedDate; // invalid ?
+      if (decryptedDate) { // friendly date
+        let d = new Date(decryptedDate);
+        let ds = d.toLocaleDateString();
+        if (ds) { getElement('licenseDate').value = ds; }
+      }
+
 			if (licenseInfo.isExpired || licenseInfo.isValid) { // A LICENSE EXISTS ALREADY
 				// LICENSE IS EITHER EXPIRED OR UP FOR RENEWAL SOON
 				let btnProLicense = getElement('btnLicense'),
@@ -127,7 +167,7 @@ var Register = {
               
               if (!(licenseInfo.expiryDate < dateString)) { // not close to expiry yet. let's hide this path.
                 let standardRow = getElement('StandardLicenseRow');
-                standardRow.collapsed=true;
+                standardRow.setAttribute("collapsed", true);
               }
               break;
           }
@@ -141,17 +181,18 @@ var Register = {
 
 				// hide the "Enter License Key…" button + label
 				if (!licenseInfo.isExpired) {
-					getElement('haveLicense').collapsed=true;
-					getElement('btnEnterCode').collapsed=true;
+					getElement('haveLicense').setAttribute("collapsed", true);
+					getElement('btnEnterCode').setAttribute("collapsed", true);
 				}
 			}
 		}
-    else
-      getElement('licenseDate').collapsed = true;
+    else {
+      getElement('licenseDate').setAttribute("collapsed", true);
+    }
 		
 		switch(licenseInfo.status) {
 			case "Expired":
-			  getElement('licenseDateLabel').value = util.getBundleString("st.licenseValidation.expired");
+			  getElement('licenseDateLabel').textContent = util.getBundleString("st.licenseValidation.expired");
 				getElement('LicenseTerm').classList.add('expired');
 			  break;
 			case "Valid":
@@ -159,11 +200,12 @@ var Register = {
 			  break;
 			case "Empty":
       case "NotValidated":
-				getElement('licenseDateLabel').value = " ";
+				getElement('licenseDateLabel').textContent = " ";
 			  break;
 			default: // default class=register will animate the button
-				getElement('licenseDateLabel').value = licenseInfo.description + ":";
+				getElement('licenseDateLabel').textContent = licenseInfo.description + ":";
 		}
+    window.sizeToContent();
   
   },
   
@@ -208,13 +250,22 @@ var Register = {
     }
           
     // iterate accounts
+    const isAllowAlias = SmartTemplate4.Preferences.getMyBoolPref("licenser.forceSecondaryIdentity"); 
     let idSelector = getElement('mailIdentity'),
         popup = idSelector.menupopup,
         myAccounts = util.Accounts,
-        acCount = myAccounts.length;
+        acCount = myAccounts.length,
+        aliasIdentity = null;
+
     util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')…');
     for (let a=0; a < myAccounts.length; a++) { 
       let ac = myAccounts[a];
+      if (isAllowAlias && !aliasIdentity) {
+        let aliasIdentity = ac.identities.find(id => id.email == SmartTemplate4.Util.licenseInfo.email);
+        if (aliasIdentity && (aliasIdentity != ac.defaultIdentity)) {
+          appendIdentity(popup, aliasIdentity, ac);
+        }
+      }
       if (ac.defaultIdentity) {
         util.logDebugOptional('identities', ac.key + ': appending default identity…');
         appendIdentity(popup, ac.defaultIdentity, ac);
@@ -225,9 +276,8 @@ var Register = {
         let idCount = ids ? ids.length : 0;
         util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities…');
         for (let i=0; i<idCount; i++) {
-          // use ac.defaultIdentity ?
           // populate the dropdown with nsIMsgIdentity details
-          let id = util.getIdentityByIndex(ids, i);
+          let id = ids[i].QueryInterface(Ci.nsIMsgIdentity);
           if (!id) continue;
           appendIdentity(popup, id, ac);
         }
@@ -239,7 +289,7 @@ var Register = {
     // select first item
     idSelector.selectedIndex = 0;
     this.selectIdentity(idSelector);
-    if (prefs.isDebugOption('premium.licenser')) getElement('referrer').collapsed=false;    
+    if (prefs.isDebugOption('premium.licenser')) getElement('referrer').setAttribute("collapsed",false);    
   },
   
   

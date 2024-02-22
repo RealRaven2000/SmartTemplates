@@ -10,8 +10,9 @@ label.ref {
   min-width: 200px;
 	width:auto;
 }
+
 #LicenseTerm {
-  padding: 1em 1em;
+  padding: 0.8em;
 }
 
 @keyframes smartTemplatesRenew {
@@ -73,35 +74,39 @@ td {
   font-size: 10.2pt;
 	color: rgb(0, 0, 0);
 }
+
 .productcontainer {
   background-color: rgb(195,220,22);
 	margin: 12px;
 }
+
 .product:before {
   content: url('chrome://smartTemplate4/content/skin/icon32x32.png'); 
-  margin: 0.2em 0.2em 0 0;
+  margin-right: 0.3em;
   vertical-align: middle;
   display: inline-block; /* added 02.09.12 to center font in box */
 }
+
 .product {
-  background-color: #405080; /* affects text color! */
-  /*
-  background: rgba(180,180,180,0.8);
-  background: linear-gradient(to bottom, rgb(254, 204, 177) 0%, rgb(241, 116, 50) 50%, rgb(234, 85, 7) 51%, rgb(251, 149, 94) 100%); 
-  border: 2px solid #eee !important; */
+  background-color: #405080;
+  background-clip: text;
   border-radius: 2px;
   box-shadow: inset 0 0 2px 1px rgba(0,0,0,0.23);
   color: transparent;
-  background-clip: text;
-  text-shadow: 0px 1px 1px rgba(255,255,255,0.5);
-  display: inline-block;
+  display: inline-flex !important;
+  flex-direction: column;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  text-shadow: 0px 1px 1px rgba(255,255,255,0.4);
   font-family: calibri, arial, sans-serif;
-  font-size: 27pt;
+  font-size: 20pt;
   font-weight: 900;
   height: auto;
   padding: 0.3em 0.4em 0.2em 0.3em;
-  vertical-align: middle;
+  white-space: nowrap;
 }
+
+
 .para {
   margin: 0.5em 0;
 	text-align: justify;
@@ -144,4 +149,48 @@ td {
 
 #referrer[collapsed=true] {
   display: none;
+}
+
+#licenseTermSwitcher:hover {
+  outline: 2px  dashed rgba(60,60,60,0.2);
+  background: repeating-linear-gradient(
+    135deg,
+    #606dbc01,
+    #606dbc01 6px,
+    #46529812 6px,
+    #46529812 12px
+  );  
+}
+
+#toggleSwitchLicenseTerms {
+  appearance: none;
+  border-radius: 4px;
+  background-color: rgb(80,80,80) !important;
+  color: rgb(220,220,220);
+  cursor: pointer;
+  padding-inline: 4px;
+  margin-inline: auto;
+  margin-bottom: 0.8em;
+}
+
+#toggleSwitchLicenseTerms, #licenseTermSwitcher a, .link {
+  pointer-events: auto
+}
+#licenseTermSwitcher { 
+  /* remove striped background when not hovering on the toggle button */
+  pointer-events: none
+}
+
+#licenseTerms[collapsed], #buyBox[collapsed], .form[collapsed] {
+  display: none;
+}
+#licenseTermSwitcher:hover #toggleSwitchLicenseTerms {
+  background-color: rgb(40,40,40) !important;
+  color: rgb(240,240,240);
+}
+#toggleSwitchLicenseTerms.continue {
+  background-color: rgb(120,20,20) !important;
+}
+#licenseTermSwitcher:hover #toggleSwitchLicenseTerms.continue {
+  background-color: rgb(175,20,20) !important;
 }

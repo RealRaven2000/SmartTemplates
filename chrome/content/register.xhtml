@@ -20,13 +20,9 @@
 		<hbox>
 			<span class="productcontainer"><div class="product">__MSG_getSmartTemplate4__</div></span>
 			<spacer flex="1" />
-			<vbox align="center">
-				<spacer flex="1" />
-				<hbox id="LicenseTerm" class="para">
-					<label id="licenseDateLabel">__MSG_label.licenseValid__</label>
-					<label id="licenseDate" value="-" />
-				</hbox>
-				<spacer flex="1" />
+			<vbox id="LicenseTerm" class="para" align="center">
+				<label id="licenseDateLabel">__MSG_label.licenseValid__</label>
+				<label id="licenseDate" value="-" />
 			</vbox>
 			<spacer flex="1"/>
 			<vbox>
@@ -43,46 +39,55 @@
 			
 		</hbox>
 		
+
+		
 		<description class="para">__MSG_licenseTypes__</description>
 		
 		<description class="para">__MSG_intro__</description>
 
 		<description class="para">__MSG_testDriveS__</description>
 			
-		<table>
-			<tr>
-			  <td>
-					<div class="heading">__MSG_yearlyLicense.title__</div>
-					<spacer flex="1" />
-				</td>
-			  <td>
-					<description class="para">__MSG_yearlyLicense.premiumFeatures__</description>
-					<label class="para link" 
-					onclick="Register.premiumInfo(event);">__MSG_yearlyLicense.premiumFeatures.moreInfoLink__</label>
-          <description class="para" id="featureComparison">__MSG_licenseComparison__</description>
-					<description class="para">__MSG_yearlyLicense.usageTerm__ __MSG_yearlyLicense.usageTerm1__</description>
-				</td>
-			</tr>	
-			<tr>	
-				<td>
-					<div class="heading">__MSG_updates.title__</div>
-					<spacer flex="1" />
-				</td>
-			  <td>
-					<description class="para">__MSG_updatesExpiry__</description>
-				</td>
-			</tr>	
-			<tr>	
-				<td>
-					<div class="heading">__MSG_pricing.title__</div>
-					<spacer flex="1" />
-				</td>
-				<td>
-					<description class="para">__MSG_pricing.section__</description>
-					<description class="para">__MSG_pricing.section.hint__</description>
-				</td>
-			</tr>	
-		</table>
+		<vbox id="licenseTermSwitcher">
+
+			<table id="licenseTerms" collapsed="true">
+				<tr>
+					<td>
+						<div class="heading">__MSG_yearlyLicense.title__</div>
+						<spacer flex="1" />
+					</td>
+					<td>
+						<description class="para">__MSG_yearlyLicense.premiumFeatures__</description>
+						<label class="para link" 
+						onclick="Register.premiumInfo(event);">__MSG_yearlyLicense.premiumFeatures.moreInfoLink__</label>
+						<description class="para" id="featureComparison">__MSG_licenseComparison__</description>
+						<description class="para">__MSG_yearlyLicense.usageTerm__ __MSG_yearlyLicense.usageTerm1__</description>
+					</td>
+				</tr>	
+				<tr>	
+					<td>
+						<div class="heading">__MSG_updates.title__</div>
+						<spacer flex="1" />
+					</td>
+					<td>
+						<description class="para">__MSG_updatesExpiry__</description>
+					</td>
+				</tr>	
+				<tr>	
+					<td>
+						<div class="heading">__MSG_pricing.title__</div>
+						<spacer flex="1" />
+					</td>
+					<td>
+						<description class="para">__MSG_pricing.section__</description>
+						<description class="para">__MSG_pricing.section.hint__</description>
+					</td>
+				</tr>	
+			</table>
+
+			<button id="toggleSwitchLicenseTerms"
+						label="__MSG_licenseTerms.show__"
+						oncommand="Register.toggleTerms(this);" />			
+		</vbox>
 	</vbox>
 	
 	<hbox class="form">

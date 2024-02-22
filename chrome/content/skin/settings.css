@@ -11,7 +11,6 @@
 	-moz-context-properties: fill;
 	fill: currentColor;
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/help.svg");
-  -moz-image-region: rect(0px, 16px, 16px, 0px);
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
@@ -364,7 +363,6 @@ groupbox.transparent .groupbox-title {
 
 
 .pasteFocus {
-	position: absolute;
 	margin-left: 16px;
 	padding-right: 13px;
 }
@@ -396,15 +394,24 @@ groupbox.transparent .groupbox-title {
 
 .fileTemplatePanel richlistbox {
   min-height: 7em;
+	max-height: 50vh; /* avoid being cut off! */
 }
 
+vbox.headers {
+  max-height: 10em;
+}
 
+vbox.template {
+	height: 100%;
+}
 
+.template .pasteFocus {
+	height: 100%;
+}
 
 .indent .templateBox {
-  position: relative;
-  right: 12px;
-	width: 100%;
+	margin-right: 12px;
+	height: 100%;
 }
 
 .buttonIcon label {
@@ -631,15 +638,15 @@ toolbar toolbarbutton:not([hidden]) {
 /* ICON RULE TO OVERWRITE IN PRO VERSION */
 /* menuitem.cmd[tagName="qfRegister"],  */
 tab#SmartTemplate4-Pro {
-	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro.png') !important;
+	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-default.svg') !important;
 }
 
 tab#SmartTemplate4-Pro.paid {
-	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-paid.png') !important;
+	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-paid.svg') !important;
 }
 
 tab#SmartTemplate4-Pro.expired {
-	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-expired.png') !important;
+	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-expired.svg') !important;
 }
 
 /* vbox in a fieldset */
@@ -670,18 +677,17 @@ label.plain-link:hover {
 
 .templateList #btnUp {
 	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-up.png");
-	-moz-image-region: rect(0px 16px 16px 0px);
 }
 
 .templateList #btnDown {
 	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-down.png");
-	-moz-image-region: rect(0px 16px 16px 0px);
 }
 
-.templateList #btnUp[disabled="true"],
-.templateList #btnDown[disabled="true"] 
-{
-  -moz-image-region: rect(16px 16px 32px 0px) !important;
+.templateList #btnUp[disabled="true"] { 
+	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-up-off.png");
+}
+.templateList #btnDown[disabled="true"]  {
+	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-down-off.png");
 }
 
 .templateLabel {
@@ -729,4 +735,10 @@ label.plain-link:hover {
 
 #fileSettings div.settingsRow #txtTemplateCategory[type="text"] {
   flex: 1;
+}
+
+/* color problems with buttons in dark sking mode */
+button {
+  color: var(--button-text-color) !important; /* was inherit */
+  background: var(--button-background-color) !important;
 }

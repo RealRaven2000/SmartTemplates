@@ -670,6 +670,12 @@
   "licenseHead": {
     "message": "Nytt licenssystem"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Fortsätt till licensval 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Visa licensvillkor"
+  },
   "licenseStatus.expired": {
     "message": "SmartTemplates-licensen har upphört att gälla för $countDays$ dagar sedan.",
     "placeholders": {
@@ -842,7 +848,16 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}Jag arbetar för närvarande med konverteringen av SmartTemplates-tillägget för det nya Thunderbird SuperNova-gränssnittet. Detta kommer att implementeras i nästa stora version av Thunderbird 115 under sommaren 2023.{P2} {P1}Du kan läsa om den aktuella utvecklingen av detta arbete här: [issue 213]{P2}"
+    "message": "{P1}$addonName$ är nu kompatibel med den senaste versionen av Thunderbird ($compatibleVer$). Detta krävde många betydande förändringar och omskrivning av många funktioner.{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Eftersom detta arbete är exklusivt finansieras av försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda SmartTemplates i framtiden."
@@ -940,6 +955,18 @@
   "pref_defaultCharset_tip": {
     "message": "När sidhuvuden läses in, återgå till denna teckenuppsättning om den inte kan identifieras."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Beteende när du skriver eller svarar utan att välja en mall från rullgardinsmenyn."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Standardmall"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Använd kontomallen."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Använd den externa mallen som senast valdes från rullgardinsmenyn."
+  },
   "pref_dialog.title": {
     "message": "Inställningar för SmartTemplates"
   },
@@ -979,6 +1006,9 @@
   "pref_groupMailContent": {
     "message": "E-postinnehåll"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Diverse"
+  },
   "pref_groupNameRules": {
     "message": "Namnregler"
   },
@@ -993,6 +1023,9 @@
   },
   "pref_help.tab": {
     "message": "Hjälp"
+  },
+  "pref_header.inject": {
+    "message": "Injicera innehållet i <huvud> från mallen"
   },
   "pref_hideExamples": {
     "message": "Dölj flik med exempel"
@@ -1240,6 +1273,18 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licens har gått ut!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Licensen löper ut om $daysLeft$ dagar",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates uppdaterades!"
   },
@@ -1327,6 +1372,86 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Den angivna nyckeln kan vara för {2})."
+  },
+  "st.menu.docs": {
+    "message": "Dokumentation"
+  },
+  "st.menu.docs.premium": {
+    "message": "Premiumfunktioner…"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variabler och kommandon…"
+  },
+  "st.menu.hideLabel": {
+    "message": "Dölj knappetikett"
+  },
+  "st.menu.template.default": {
+    "message": "Standardmall (konto)"
+  },
+  "st.menu.template.last": {
+    "message": "Sista mallen"
+  },
+  "st.menu.license": {
+    "message": "Kontrollera licensstatus…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Klicka här för att kontrollera licensstatus för $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menuaccess.forward": {
+    "message": "F"
+  },
+  "st.menuaccess.reply": {
+    "message": "S"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "A"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },  
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
+  "st.menu.replyAll": {
+    "message": "Svara alla"
+  },
+  "st.menu.replyList": {
+    "message": "Svara på Lista"
+  },
+  "st.menu.supportSite": {
+    "message": "Supportwebbplats…"
+  },
+  "st.menu.update.tooltip": {
+    "message": "Välj ”Senaste nyheter” från den här menyn för att läsa vad som är nytt i $addonName$.\n Detta återställer knappen till dess standardutseende.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird säger att du redan har skrivit något. Vill du ändå ladda in mallen?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Detta kommer att kasta bort allt du har skrivit och ladda in kontomallen."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Detta kommer att kasta bort allt du har skrivit och ladda om den aktuella mallen [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Klicka på Avbryt för att behålla e-postinnehållet oförändrat."
   },
   "st.notification.donate": {
     "message": "Donera"
@@ -1456,8 +1581,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 mars"
-  },
+    "message": "31 oktober"
+  },  
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
     "placeholders": {
@@ -1673,15 +1798,6 @@
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
   },
-  "update.tooltip": {
-    "message": "Klicka här en gång för att läsa vad som är nytt i $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
   "updates.changeLog": {
     "message" : "Release Notes (engelska)"
   },
@@ -1725,8 +1841,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Ny {{%deleteForwardedBody%}}-funktion tar bort brödtexten i det ursprungliga e-postmeddelandet vid vidarebefordran inline. {L2} {L1} Kommandon som infogar innehåll från filer kan nu komma åt överordnade mappar med {{../}}, t.ex.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Förbättringar i mallhanteraren: Visa kategori i listan för enklare navigering. {L2} {L1} Lade till prissektion i licensdialogrutan {L2} {L1} Korrigerade antalet dagar kvar i licensen genom att avrunda uppåt {L2}"
-  },
+    "message": "{L1} Adressdata för {{%to%}}, {{%recipient%}} och {{%from%}} kommer nu automatiskt att infogas när du skriver ett nytt e-postmeddelande via snabbmenyn 'Skriv meddelande till'. [issue 275]{L2} {L1} Användningen av {{%recipient%}} fungerar också som förväntat när du svarar på dina egna e-postmeddelanden i en konversation och Thunderbird automatiskt ändrar mottagare. [issue 239]{L2} {L1}Konvertera e-postadresser till gemener när du letar efter Cardbook-kontakter. [issue 278]{L2}  {L1} Stöd för att extrahera {{prefix}} och {{suffix}} från adressboksfält. [issue 267]{L2} {L1} Stöd för {{other.custom1}}, {{other.custom2}} etc. från adressboksfält. [issue 246]{L2} {L1} Duplicerad verktygstips borttagen på aktiva SmartTemplate-fält. {L2}"
+  },  
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
   },

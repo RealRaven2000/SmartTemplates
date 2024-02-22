@@ -1,6 +1,6 @@
 /* tb 102, fix wonky menu item icons: */
 
-menuitem.menuitem-iconic .menu-iconic-left,
+/* menuitem.menuitem-iconic .menu-iconic-left, */
 [st4uiElement] .menu-iconic-left
  {
   padding-left: 0px !important;

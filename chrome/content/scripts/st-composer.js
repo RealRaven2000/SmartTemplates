@@ -1,7 +1,20 @@
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
+
+/*
+function composeWindowIsReady(composeWindow) {
+  return new Promise(resolve => {
+    if (composeWindow.composeEditorReady) {
+      resolve();
+      return;
+    }
+    composeWindow.addEventListener("compose-editor-ready", resolve, {
+      once: true,
+    });
+  });
+}
+*/
 
 //original lds this after xul!!
-
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-compose.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-overlay.js", window, "UTF-8");
@@ -17,13 +30,13 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 var mylisteners = {};
 
 async function onLoad(activatedWhileWindowOpen) {
-  window.SmartTemplate4.Util.logHighlight("st-composer.js - onLoad()", "yellow");
+  window.SmartTemplate4.Util.logHighlightDebug("st-composer.js - onLoad()", "yellow");
+
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
+  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
   
   // Version specific code / style fixes
-  if (window.SmartTemplate4.Util.versionGreaterOrEqual(window.SmartTemplate4.Util.AppverFull, "102")) {
-    WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay-102.css");
-  }
+  WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay-102.css");
 
   WL.injectElements(`
  
@@ -97,25 +110,30 @@ async function onLoad(activatedWhileWindowOpen) {
 
   window.SmartTemplate4.Util.notifyTools.enable();
   await window.SmartTemplate4.Util.init();
+
   // window.SmartTemplate4.composer.onLoad(); // TOO LATE FOR WRAPPING ComposeStartup !!!
   // possibly reload the file template dropdown from toolbar button
   window.addEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.composer.initLicensedUI.bind(window.SmartTemplate4.composer));
   // add the style sheet, buttons for cleaning and template selector
 	//	util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
+  await window.SmartTemplate4.composer.startup(); 
 	window.SmartTemplate4.composer.load();
   
-  window.SmartTemplate4.composer.initTemplateMenu(); // since this is expensive, let's not call it from ComposeStartup it can be done later.
-  window.SmartTemplate4.composer.initSnippetMenu();
+  await window.SmartTemplate4.composer.initTemplateMenu(); // since this is expensive, let's not call it from ComposeStartup it can be done later.
+  await window.SmartTemplate4.composer.initSnippetMenu();
   
   mylisteners["updateTemplateMenus"] = window.SmartTemplate4.composer.initTemplateMenu.bind(window.SmartTemplate4.composer);
-  mylisteners["updateSnippetMenus"] =  window.SmartTemplate4.composer.initSnippetMenu.bind(window.SmartTemplate4.composer);
+  mylisteners["updateSnippetMenus"] = window.SmartTemplate4.composer.initSnippetMenu.bind(window.SmartTemplate4.composer);
   for (let m in mylisteners) {
     window.addEventListener(`SmartTemplates.BackgroundUpdate.${m}` , mylisteners[m]); 
   }  
+
+
 }
 
 function onUnload(isAddOnShutDown) {
   try {
+    window.SmartTemplate4.Util.logDebug("st-composer.js - onUnload()");
     window.SmartTemplate4.Util.notifyTools.disable();
     window.removeEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.composer.initLicensedUI);
     for (let m in mylisteners) {
@@ -127,11 +145,7 @@ function onUnload(isAddOnShutDown) {
     window.document.getElementById('smarttemplate4-insertSnippet').remove();  
     window.document.getElementById('SmartTemplate4-ComposerPopupSet').remove();
     // see: SmartTemplate4.init()
-    let origLoadIdFunc = window.SmartTemplate4.original_LoadIdentity;
-    if (origLoadIdFunc && LoadIdentity!=origLoadIdFunc) {
-      // restore original LoadIdentity function
-      LoadIdentity = origLoadIdFunc;
-    }    
+  
     // deprecated test code (from 3.12.3pre***)
     if (window.SmartTemplate4.Util.versionGreaterOrEqual(window.SmartTemplate4.Util.Appver, "102")) {
       let origComposeStartup = window.SmartTemplate4.original_ComposeStartup;

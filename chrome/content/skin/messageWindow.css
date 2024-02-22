@@ -1,7 +1,89 @@
-@import url("chrome://smarttemplate4/content/skin/common/messageWindow.css");
+/** STYLES FOR THE MODELESS message window smarteTemplate-msg.xul ****/
+#titleBox {
+  background-image: url("chrome://smartTemplate4/content/skin/logo.png") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 320px;
+}
+
+#messageCanvas {
+	background-position: top right;
+	background-repeat: no-repeat;
+	background-image: url("chrome://smartTemplate4/content/skin/icons/large/ST4-icon-128.png");
+	max-width: 850px;
+	min-width: 200px;
+	min-height: 200px;
+	width: 100%;
+}
+
+/* remove default buttons, we add our own */
+.dialog-button-box {
+	display: none;
+}
+
+#ok, #cancel, #yes, #no, #countDown  {
+	font-size: 12pt;
+}
+
 
 #innerMessage {
-	background: linear-gradient(to bottom, rgba(226,226,226,0.7) 0%, rgba(219,219,219,0.7) 50%, rgba(209,209,209,0.7) 51%, rgba(254,254,254,0.7) 100%);
-	border-radius: 1em;
-	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+	font-size: 12pt;
+	min-width: 300px;
+	height: auto;
+	margin: 1em 3em 1.5em;
+	padding: 1em 2em;
+	width: 80%;
+	flex-direction: column;
+}
+
+#innerMessage p, #innerMessage br {
+	display: block;
+	line-height: 1.2em;
+}
+#innerMessage p {
+	/*! text-align: justify; */
+	color: rgb(2,2,2) !important;
+	text-shadow: 1px 1px 1px rgba(220, 220, 220, 0.7);
+	margin-bottom: 0.6em;
+	max-width: 850px;
+}
+
+#innerMessage #code {
+  background-color: #FFFFFF;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+  font-size: 10pt;
+  font-family: Consolas,monaco,monospace !important;
+  min-heigt: 50px;
+  max-height: 250px !important;
+  overflow-y: scroll;
+  text-color: rgb(40,40,40);
+}
+
+#innerMessage #code p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+#licensing {
+  display: flex;
+  justify-content: space-evenly;
+}
+#btnShowLicenser, #btnFeatureCompare {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px 8px;
+}
+
+.actionlinks {
+  background-color: darkred;
+  box-shadow: 5px 5px 5px rgba(50,50,50,0.5);
+  color: white;
+}
+
+.actionlinks:hover {
+  background-image: linear-gradient(to bottom, #6d0019 0%,#8f0222 34%,#e20425 100%);
+}
+
+.actionlinks:active {
+  background-image: linear-gradient(to bottom, #633b00 0%,#750202 34%,#ef8204 100%);
 }

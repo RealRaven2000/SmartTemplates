@@ -628,6 +628,12 @@
   "licenseHead": {
     "message": "Novo Sistema de Licenciamento"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Continuar com a seleção da licença 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Mostrar os termos da licença"
+  },
   "licenseStatus.expired": {
     "message": "A licença do SmartTemplates expirou em $countDays$ dias atrás.",
     "placeholders": {
@@ -782,7 +788,13 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1}Atualmente, estou trabalhando na conversão do complemento SmartTemplates para a nova interface do usuário Thunderbird SuperNova. Isso será implementado na próxima versão principal do Thunderbird 115 no verão de 2023.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}"
+    "message": "{P1}$addonName$ agora é compatível com a versão mais recente do Thunderbird ($compatibleVer$). Isso exigiu inúmeras mudanças substanciais e a reescrita de muitas funções.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Como este trabalho é exclusivamente financiado pela venda de licenças, considere comprar uma licença ou renovar a anterior se estiver interessado em usar SmartTemplates no futuro."
@@ -871,6 +883,18 @@
   "pref_defaultCharset_tip": {
     "message": "Ao ler cabeçalhos, retroceder a esta codificação se não puder ser determinada."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Comportamento ao escrever ou responder sem selecionar um modelo na lista suspensa."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Modelo Padrão"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Modelo padrão Use o modelo de conta."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Use o modelo externo selecionado por último no menu suspenso."
+  },
   "pref_dialog.title": {
     "message": "Opções do SmartTemplates"
   },
@@ -910,6 +934,9 @@
   "pref_groupMailContent": {
     "message": "Conteúdo do email"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Diversos"
+  },
   "pref_groupNameRules": {
     "message": "Nomear regras"
   },
@@ -924,6 +951,9 @@
   },
   "pref_help.tab": {
     "message": "Ajuda"
+  },
+  "pref_header.inject": {
+    "message": "Injetar conteúdo de <head> do modelo"
   },
   "pref_hideExamples": {
     "message": "Ocultar aba de exemplos"
@@ -1162,6 +1192,18 @@
   "smarttemplate4_button": {
     "message": "Editar modelos e cabeçalhos das mensagens anteriores…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licença expirada!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "A licença expira em $daysLeft$ dias",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates foi atualizado!"
   },
@@ -1247,8 +1289,88 @@
   "st.licenseValidation.expired": {
     "message": "Sua licença expira em:"
   },
+  "st.menu.docs": {
+    "message": "Documentação"
+  },
+  "st.menu.docs.premium": {
+    "message": "Recursos premium…"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variáveis e Comandos…"
+  },
+  "st.menu.hideLabel": {
+    "message": "Ocultar rótulo do botão"
+  },
+  "st.menu.template.default": {
+    "message": "Modelo padrão (conta)"
+  },
+  "st.menu.template.last": {
+    "message": "Modelo padrão (conta)"
+  },
+  "st.menu.license": {
+    "message": "Verifique o status da licença…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Clique aqui para verificar o status da licença de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menuaccess.forward": {
+    "message": "E"
+  },
+  "st.menuaccess.reply": {
+    "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "T"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },    
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
+  "st.menu.replyAll": {
+    "message": "Responder todos"
+  },
+  "st.menu.replyList": {
+    "message": "Responder à Lista"
+  },
+  "st.menu.supportSite": {
+    "message": "Site de suporte…"
+  },
+  "st.menu.update.tooltip": {
+    "message": "Selecione “Últimas notícias” neste menu para ler o que há de novo em $addonName$.\n Isso redefinirá o botão para sua aparência padrão.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.licenseValidation.guessAddon": {
     "message": "(A chave inserida pode ser para {2})."
+  },
+  "st.notification.bodyModified": {
+    "message": "O Thunderbird diz que você já digitou algo, você deseja carregar o modelo mesmo assim?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Isso descartará qualquer coisa digitada e carregará o modelo da conta."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Isso descartará qualquer coisa digitada e recarregará o modelo atual [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Clique em Cancelar para manter o conteúdo do e-mail inalterado."
   },
   "st.notification.donate": {
     "message": "Doar"
@@ -1378,8 +1500,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 de março"
-  },
+    "message": "31 de outubro"
+  },  
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
     "placeholders": {
@@ -1583,15 +1705,6 @@
   "translatorNickname.label": {
     "message": "Mauro José da Silva (BabelZilla)"
   },
-  "update.tooltip": {
-    "message": "Clique aqui uma vez para ler o que há de novo em $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
   "updates.changeLog": {
     "message" : "Notas de lançamento (inglês)"
   },
@@ -1631,8 +1744,8 @@
   "whats-new-intro": {
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
-  "|": {
-    "message": "{L1}Suporte usando o parâmetro {{toclipboard}} para copiar dados para a área de transferência várias vezes no mesmo modelo.{L2} {L1}Adicionado um campo de pesquisa de texto na página de variáveis.{L2} {L1}Cores aprimoradas na janela de variáveis ao usar temas escuros.{L2} {L1}Variáveis de cabeçalho reparadas com letras maiúsculas, como {{%Message-Id%}} e {{%Newsgroups%}}{L2}"
+  "whats-new-list": {
+    "message": "{L1} Os dados de endereço para {{%to%}}, {{%recipient%}} e {{%from%}} agora serão automaticamente inseridos ao escrever um novo e-mail via menu de contexto 'Compor mensagem para'. [issue 275]{L2} {L1} O uso de {{%recipient%}} também funciona como esperado ao responder a seus próprios e-mails em uma conversa e o Thunderbird altera automaticamente os destinatários. [issue 239]{L2} {L1} Converter endereços de email para minúsculas ao procurar contatos no Cardbook. [issue 278]{L2}  {L1} Suporte para extração de {{prefix}} e {{suffix}} dos campos do livro de endereços. [issue 267]{L2} {L1} Suporte para {{other.custom1}}, {{other.custom2}} etc. dos campos do livro de endereços. [issue 246]{L2} {L1} Dica de ferramenta duplicada removida nos campos ativos do SmartTemplate. {L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

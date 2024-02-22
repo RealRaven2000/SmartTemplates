@@ -1,6 +1,3 @@
-/** Main Toolbar **/
-@import url("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
-
 /* ################################################################################### */
 /* ################################ STATUSBAR OVERLAY ################################ */
 /* ################################################################################### */
@@ -173,11 +170,6 @@ notification[value="SmartTemplate4-license"] hbox.notification-inner  {
 
 menuitem.st4templateEntry[is="layout"] {
 	list-style-image : url('chrome://smartTemplate4/content/skin/icons/layout.png') !important;
-}
-
-menuitem.st4templatePicker,
-menuitem.st4templateEntry:hover {
-	list-style-image : url('chrome://smartTemplate4/content/skin/icons/template-load.png') !important;
 }
 
 menuitem.st4templateConfig {

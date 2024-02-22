@@ -1,5 +1,48 @@
 var hackToolbarbutton = {
   
+  updateMenuMRU(menuStructure, doc, reset=false) {
+    function needsConfig(menu) {
+      if (!menu) return false;
+      if (reset) return true;
+      return (!menu.getAttribute('st4configured'));
+    }    
+    let thePopup = null;
+    let notFound = [];
+    for (let item of menuStructure) {
+      // 2 new (dummy) items: mru-smartTemplates-unified & mru-smartTemplates-header
+      try {
+        thePopup = this.getMenupopupElement(doc, item.id);
+        if (!thePopup) {
+          notFound.push(item);
+        }
+        if (thePopup && needsConfig(thePopup)) {
+          if (item.id.startsWith("mru-")) {
+            SmartTemplate4.fileTemplates.configureMenu(
+              SmartTemplate4.fileTemplates.MRU_Entries,
+              thePopup, 
+              item.id,    // use this as signal for MRU processing
+              false       // no "show Configure.." menuitem
+            );
+          }
+          else {
+            SmartTemplate4.fileTemplates.configureMenu(
+              SmartTemplate4.fileTemplates.Entries[item.templates], 
+              thePopup, 
+              item.composeType
+            );
+          }
+        }            
+      } catch (ex) {
+        SmartTemplate4.Util.logException("updateMenuMRU()", ex);
+      }
+    } 
+    if (notFound.length) {
+      SmartTemplate4.Util.logDebugOptional("fileTemplates",
+        "Didn't find any of the following popup menus:", notFound);
+    }
+    return thePopup; // just for testing. 
+  }, 
+
   // enable/disable the default action of the button
   allowDefaultAction(window, buttonId, allow = true) {
     let innerButton = window.document.getElementById(`${buttonId}-inner-button`);
@@ -9,8 +52,8 @@ var hackToolbarbutton = {
   },
   
   //check if the button still contains menuitems and downgrade the button if that is not the case anymore
-  cleanupIfNeeded(window, buttonId) {
-    let button = window.document.getElementById(buttonId);
+  cleanupIfNeeded(doc, buttonId) {
+    let button = doc.getElementById(buttonId);
     if (button) {
       let popup = button.querySelector("menupopup");
       if (popup) {
@@ -37,18 +80,56 @@ var hackToolbarbutton = {
     }      
   },
   
+  // get the menupopup element to add templates submenu
+  getMenupopupElement(doc, menuId) {
+    let parentElement;
+    let isTopLevel = false;
+    switch(menuId) {
+      case "mru-smartTemplates-unified":
+        parentElement = "smartTemplatesMainPopup";
+        isTopLevel = true;
+        break;
+      case "mru-smartTemplates-header":
+        parentElement = "SmartTemplates_HeaderMenu";
+        let el = doc.querySelector("[data-extension-id='smarttemplate4@thunderbird.extension']"); 
+        isTopLevel = true;
+        return el;
+        break;
+      default: 
+        parentElement = menuId; 
+
+    }
+    let element = doc.getElementById(parentElement);
+    if (!element) {
+      return null;
+    }
+    if (isTopLevel) {
+      return element; // [issue 263] MRU list
+    } 
+
+    // check if we need to add popup
+    let popup = element.querySelector("menupopup");
+    if (!popup) {
+      popup = doc.createXULElement("menupopup");
+      popup.setAttribute("id", `${buttonId}-popup`);
+      popup.setAttribute("oncommand", "event.stopPropagation();");
+      button.appendChild(popup);
+    }  
+    return popup;
+  },
+
+
   // returns the menupopup element of the button, 
   // check if the button needs to converted beforehand and adds the menupopup element if needed first
-  getMenupopupElement(window, buttonId) {   
-    let button = window.document.getElementById(buttonId);
-    if (!button) 
+  getMenupopupElement_Btn(doc, buttonId) {   
+    let button = doc.getElementById(buttonId);
+    if (!button) {
       return null;
-
-
+    }
 
     if (!(button.hasAttribute("type") && button.getAttribute("type") == "menu-button")) {
       let origLabel = button.getAttribute("label");
-      let origCommand = button.getAttribute("command");
+      let origCommand = button.getAttribute("_command");
       
       button.setAttribute("is", "toolbarbutton-menu-button");
 
@@ -81,7 +162,7 @@ var hackToolbarbutton = {
     // check if we need to add popup
     let popup = button.querySelector("menupopup");
     if (!popup) {
-      popup = window.document.createXULElement("menupopup");
+      popup = doc.createXULElement("menupopup");
       popup.setAttribute("id", `${buttonId}-popup`);
       popup.setAttribute("oncommand", "event.stopPropagation();");
       button.appendChild(popup);
@@ -89,13 +170,13 @@ var hackToolbarbutton = {
     return popup;
   },
   
-  addMenuitem(window, buttonId, menuitemId, attributes = null) {
-    let popup = this.getMenupopupElement(window, buttonId); 
+  addMenuitem(doc, buttonId, menuitemId, attributes = null) {
+    let popup = this.getMenupopupElement(doc, buttonId); 
     if (!popup)
       return null;
     
     // add menuitem
-    let menuitem = window.document.createXULElement("menuitem");
+    let menuitem = doc.createXULElement("menuitem");
     menuitem.id = menuitemId;
     if (attributes) {
       for (let [attribute, value] of Object.entries(attributes)) {
@@ -106,12 +187,12 @@ var hackToolbarbutton = {
     return popup;
   },
 
-  removeMenuitem(window, buttonId, menuitemId) {
-    let menuitem = window.document.getElementById(menuitemId);
+  removeMenuitem(doc, buttonId, menuitemId) {
+    let menuitem = doc.getElementById(menuitemId);
     if (menuitem) {
       menuitem.remove();
     }
-    this.cleanupIfNeeded(window, buttonId);
+    this.cleanupIfNeeded(doc, buttonId);
   },
 
 }

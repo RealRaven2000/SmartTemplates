@@ -10,7 +10,6 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK
 */
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 var SmartTemplate4_TabURIregexp = {
@@ -31,6 +30,7 @@ SmartTemplate4.Util = {
 	lastTime: 0,
 	AMOHomepage:      "https://addons.thunderbird.net/thunderbird/addon/324497/",
 	PremiumFeaturesPage: "https://smarttemplates.quickfolders.org/premium.html",
+	VariablesPage:    "https://smarttemplates.quickfolders.org/variables.html",
 	SupportHomepage:  "https://smarttemplates.quickfolders.org/index.html",
 	BugPage:          "https://smarttemplates.quickfolders.org/bugs.html",
 	LicensePage:      "https://smarttemplates.quickfolders.org/contribute.html",
@@ -90,6 +90,18 @@ SmartTemplate4.Util = {
     });
     
   },
+
+  // special function for displaying the popup on the SmartTemplates toolbar button
+  showToolbarPopup: function() {
+    let button = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
+    if (!button) return;
+    const popupId = "smartTemplatesMainPopup";
+    let p = document.getElementById(popupId);
+    if (p) {
+      p.targetNode = button; 
+      p.openPopup(button,'after_start', 0, -1,true,false); // no event
+    }    
+  },  	
   
   get mainInstance() {
     return this.Mail3PaneWindow.SmartTemplate4;
@@ -101,6 +113,21 @@ SmartTemplate4.Util = {
 		this.logDebug("CurrentEditor failed!");
 		return null;
 	} ,
+
+	get tabmail() {
+		let doc = this.Mail3PaneWindow.document,
+		    tabmail = doc.getElementById("tabmail");
+		return tabmail;
+	} ,	
+
+	get tabContainer() {
+		try{
+			return this.tabmail.tabContainer;
+		}
+		catch(ex) {
+			return null;
+		}
+	} ,	
 
 	getAnonymousNodes(doc,el) {
 		let aN = [];
@@ -243,6 +270,21 @@ SmartTemplate4.Util = {
 		}
   } ,  
 
+  get document3pane() {
+    return window.gTabmail.currentTabInfo.chromeBrowser.contentDocument;
+  } ,
+
+  get documentMessageBrowser() {
+		let win = window.gTabmail.currentAboutMessage;
+		if (!win) return null;
+		if (!win.document) return null;
+		return win.document; 
+	},
+
+  get threadPane() { 
+    return this.document3pane.querySelector("#threadPane");
+  } ,	
+
 	get Mail3PaneWindow() {
 		let windowManager = Services.wm,
 		    win3pane = windowManager.getMostRecentWindow("mail:3pane");
@@ -306,43 +348,6 @@ SmartTemplate4.Util = {
     // https://developer.mozilla.org/en-US/docs/OS_TARGET
     return (Services.appinfo.OS.indexOf('Linux')>=0);
   } ,
-
-  initTabListener: function() {
-    const util = SmartTemplate4.Util;
-    try {
-      let tabMon = {
-        monitorName: "st4TabMon",
-        onTabTitleChanged() {},
-        onTabOpened(tab, aFirstTab, aOldTab)
-        {
-          if (tab.mode.name != "preferencesTab")
-            return;
-          if (util.getTabMode()=='message') {
-            util.logDebug("tabListener event:" + event);
-          }          
-        }
-      }
-      
-      if (document) {
-        let tabmail = document.getElementById("tabmail");
-        if (!tabmail) return; // we are not in a main window
-        util.logDebug("adding tablistener for tabmail.");
-        // tabmail.registerTabMonitor()
-        let tabContainer = tabmail.tabContainer || document.getElementById('tabmail-tabs');
-			  tabContainer.addEventListener("TabOpen", function tabOpened_st4(event) { 
-          let tabInfo = event.detail.tabInfo;
-          if (util.getTabMode(tabInfo)=='message') {
-            util.logDebug("tabListener event:" + event);
-            // main window.
-            SmartTemplate4.fileTemplates.initMenus(true);
-          }
-        });
-      }
-    }
-    catch(ex) {
-      util.logException("initTabListener - ", ex);
-    }
-  },
 
 	get Version() {
     if (SmartTemplate4.Util.addonInfo) {
@@ -716,11 +721,21 @@ SmartTemplate4.Util = {
 			this.logToConsole(...arguments);
 	},
 
+  logIssue213: function(txt) {
+		// Log missing items for Conversion to Thunderbird 115
+    console.log(`SmartTemplates %c[issue 213] to do: %c${txt}`, "color:red", "background: darkblue; color:white;");
+  },
+
 	// optional logging for important points in flow.
-	logHighlight: function(txt, color="white", background="rgb(80,0,0)") {
+	logHighlightDebug: function(txt, color="white", background="rgb(80,0,0)", ...args) {
 		if (SmartTemplate4.Preferences.isDebug) {
-			console.log(`SmartTemplates %c${txt}`, `color: ${color}; background: ${background}`);
+			console.log(`SmartTemplates %c${txt}`, `color: ${color}; background: ${background}`, ...args);
 		}
+	},
+
+	// forced highlight colored logging
+	logHighlight: function(txt, color="white", background="rgb(80,0,0)", ...args) {
+		console.log(`SmartTemplates %c${txt}`, `color: ${color}; background: ${background}`, ...args);
 	},
 
 	logDebugOptional: function (optionString, msg) {
@@ -751,14 +766,30 @@ SmartTemplate4.Util = {
 		return null;
 	} ,
 	
-	getTabMode: function getTabMode(tab) {
-	  if (tab.mode) {   // Tb / Sm
-			return tab.mode.name;
+	getTabMode: function getTabMode(tabInfo) {
+    // Tb 115: mailMessageTab or mail3PaneTab for mail related tabs
+	  if (tabInfo && tabInfo.mode) {   // Tb / Sm
+			return tabInfo.mode.name;
 		}
-		if (tab.type)  // Pb
-		  return tab.type;
 		return "";
 	},
+
+  // @tabInfo - tabInfo object
+  // @type - one of "folder", "message", "search", "mail" (for folders+single messages), "other"
+  isTabMode: function(tabInfo, type) {
+    if (!tabInfo) return false;
+    switch (tabInfo.mode.name) {
+      case "mail3PaneTab":
+        return (["folder","mail"].includes(type));
+      case "mailMessageTab":
+        return (["folder","message", "mail"].includes(type));
+      case "glodaSearch": case "glodaSearch-result":
+        return (["search"].includes(type));
+      default:
+        return (["other"].includes(type));
+    }
+    return false;
+  },	
 	
 	getBaseURI: function baseURI(URL) {
 		let hashPos = URL.indexOf('#'),
@@ -811,7 +842,8 @@ SmartTemplate4.Util = {
 		      util = SmartTemplate4.Util;
 		try {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
-			linkURI = util.makeUriPremium(linkURI);
+		  linkURI = 
+			  linkURI.includes("smarttemplates.") ? util.makeUriPremium(linkURI) : linkURI;
 
 			let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
 			    ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
@@ -828,19 +860,16 @@ SmartTemplate4.Util = {
 		const Cc = Components.classes,
 		      Ci = Components.interfaces,
 					util = SmartTemplate4.Util;
-		if (util.Application === 'Thunderbird') {
-			let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
-				.getService(Ci.nsIExternalProtocolService);
-			let ioservice = Cc["@mozilla.org/network/io-service;1"].
-						getService(Ci.nsIIOService);
-			service.loadURI(ioservice.newURI(util.makeUriPremium(linkURI), null, null));
-			
-			if(null !== evt)
-				evt.stopPropagation();
-		}
-		else {
-			this.openLinkInBrowserForced(linkURI);
-		}
+		let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
+			.getService(Ci.nsIExternalProtocolService);
+		let ioservice = Cc["@mozilla.org/network/io-service;1"].
+					getService(Ci.nsIIOService);
+		// only add premium info if it is one of the support pages.
+		let uri = 
+			linkURI.includes("smarttemplates.") ? util.makeUriPremium(linkURI) : linkURI;
+		service.loadURI(ioservice.newURI(uri, null, null));
+		
+		if(null !== evt) { evt.stopPropagation(); }			
 	},
 
 	// moved from options.js (then called
@@ -953,7 +982,15 @@ SmartTemplate4.Util = {
 
 	showLicensePage: function () { SmartTemplate4.Util.openURLInTab(this.LicensePage); } ,
 	showHomePage: function () { SmartTemplate4.Util.openURLInTab(this.AMOHomepage); } ,
-	showSupportPage: function () { SmartTemplate4.Util.openURLInTab(this.SupportHomepage); window.close();} ,
+	showSupportPage: function () { 
+		SmartTemplate4.Util.openLinkInBrowserForced(this.SupportHomepage); 
+	} ,
+	showVariablesPage: function () { 
+		SmartTemplate4.Util.openLinkInBrowserForced(this.VariablesPage); 
+	} ,
+	showPremiumFeatures: function () { 
+		SmartTemplate4.Util.openLinkInBrowserForced(this.PremiumFeaturesPage); 
+	} ,
 	showYouTubePage: function () { SmartTemplate4.Util.openLinkInBrowserForced(this.YouTubePage); } ,
 	showAxelAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.AxelAMOPage); } ,
 	showMarkyAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.MarkyAMOPage); } ,
@@ -966,7 +1003,6 @@ SmartTemplate4.Util = {
     SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage + urlLink); 
   } ,
 	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.BeniBelaHomepage); } ,
-	showPremiumFeatures: function () { SmartTemplate4.Util.openURLInTab(this.PremiumFeaturesPage); } ,
 	
 
 	showAboutConfig: function(clickedElement, filter) {
@@ -1028,6 +1064,18 @@ SmartTemplate4.Util = {
 			"centerscreen,titlebar",
 			{ ok: function() {  }}
 		);
+	},
+
+	setMidnightTimer: function() {
+		let today = new Date(),
+		    tomorrow = new Date(today.getFullYear(),today.getMonth(),today.getDate()+1),
+		    timeToMidnight = (tomorrow-today);
+		var timer = setTimeout(
+			function() {
+				SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
+				SmartTemplate4.Util.setMidnightTimer();
+			},
+			timeToMidnight);
 	},
 
 /**
@@ -1211,8 +1259,10 @@ SmartTemplate4.Util = {
     }
   } ,
 	
-  // @global=true returns a regular expression from a quoted string
-  // @global=false returns a string from a quoted string
+ /**
+  * @param global = true returns a regular expression from a quoted string
+  *                 false returns a string from a quoted string
+	*/
   unquotedRegex: function unquotedRegex(s, global) {
     if (s == "clipboard") { // [issue 183]
       if (!SmartTemplate4.Util.hasLicense()  || SmartTemplate4.Util.licenseInfo.keyType == 2) { 
@@ -1397,22 +1447,6 @@ SmartTemplate4.Util = {
 				null,
 				params).focus();
 	}	,
-		
-  // safe wrapper to get member from account.identities array
-  getIdentityByIndex: function getIdentityByIndex(ids, index) {
-    const Ci = Components.interfaces;
-    if (!ids) return null;
-    try {
-      // replace queryElementAt with array[index].QueryInterface!
-      if (ids[index])
-        return ids[index].QueryInterface(Ci.nsIMsgIdentity);
-      return null;
-    }
-    catch(ex) {
-      SmartTemplate4.Util.logDebug('Exception in getIdentityByIndex(ids,' + index + ') \n' + ex.toString());
-    }
-    return null;
-  } ,	
 	
 	// HTML only:
 	// headers that are currently not defined may be filled later.
@@ -1438,10 +1472,12 @@ SmartTemplate4.Util = {
 		let parensPos = field.indexOf('('),
 		    generalFunction = (parensPos==-1) ? field : field.substr(0,parensPos);	
 
+	  // instead of using title (which generates a "normal" html thumbnail)
+		// let's use a new attribute st4title + CSS
 		let tag = "<smarttemplate" +
 					 " hdr='" + generalFunction + "'" +
 					 " st4variable='" + field + "'" +
-					 " title='" + field + "'" +
+					 " st4title='" + field + "'" +
 					 newComposeClass + 
 					 ">" + defaultValue + "</smarttemplate>";
 					 
@@ -1516,15 +1552,14 @@ SmartTemplate4.Util = {
         nL.divNode.parentNode.insertBefore(nL.txtNode, nL.divNode);
       }
       // tidy up unresolved variables, if forced!
-      if (nL.resolved || forceDelete)
+      if (nL.resolved || forceDelete) {
         editor.deleteNode(nL.divNode);
+			}
 		}
 	} ,
 	
 	resolveDeferred: async function (editor, el, isReplaceField, nodeList) {
-		const util = SmartTemplate4.Util,
-		      Ci = Components.interfaces,
-		      Cc = Components.classes;
+		const util = SmartTemplate4.Util;
     // [issue 204]  if no nodeList is passed in, this means we can replace immediately   
     // if (!nodeList) nodeList = []; // create a dummy node list for now.
 		let div = el,
@@ -1623,11 +1658,17 @@ SmartTemplate4.Util = {
 						editor.deleteNode(el);
 					}
 				}
-				else
+				else {
 					el.className = "resolved";
+				}
 			}
       else {
-        nodeList.push ( { txtNode: null, divNode: el, resolved: false } );
+				if (nodeList) {
+        	nodeList.push ( { txtNode: null, divNode: el, resolved: false } );
+				} else {
+					util.logHighlight(`resolveDeferred(isReplaceField:${isReplaceField}) called without nodeList\n`,"white","red", el);
+					util.logToConsole("Did you run template variables from smart snippets menu?\nAre you composing in plaintext mode?");
+				}
       }
 		}
 	} ,
@@ -1757,7 +1798,7 @@ SmartTemplate4.Util = {
     if (!token) return false;
     return RegExp(" " + token + " ", "i").test(
        " bcc cc disposition-notification-to errors-to from mail-followup-to mail-reply-to reply-to" +
-       " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to ");
+       " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to recipient"); // ALLOW recipient FOR FRAGMENTS.
   } ,
   
 	// new function for manually formatting a time / date string in one go.
@@ -2436,9 +2477,9 @@ SmartTemplate4.Util = {
    * Installs the toolbar button with the given ID into the given
    * toolbar, if it is not already present in the document.
    *
-   * @toolbarId {string} The ID of the toolbar to install to.
-   * @id {string} The ID of the button to install.
-   * @afterId {string} The ID of the element to insert after. @optional
+   * @param {string} toolbarId The ID of the toolbar to install to.
+   * @param {string} id        The ID of the button to install.
+   * @param {string} afterId   The ID of the element to insert after. @optional
    */	
 	installButton: function installButton(toolbarId, id, afterId) {
     // if (!document.getElementById(id)) {
@@ -2714,7 +2755,6 @@ SmartTemplate4.Util = {
 	
   clickStatusIcon: function(el) {
     let isLicenseWarning = false;
-    if (event) event.stopImmediatePropagation();
     if (el.classList.contains("alert") || el.classList.contains("alertExpired")) {
       isLicenseWarning = true;
     }
@@ -2740,19 +2780,27 @@ SmartTemplate4.Util = {
 
   },
   
-  openPreferences: function(el=null) {
+  openPreferences: async function(el=null, mode="") { // open legacy preferences
     if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
       SmartTemplate4.Util.viewSplashScreen();
       SmartTemplate4.Preferences.setMyBoolPref("hasNews", false);
       SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
       return;
     }
-    if (el && el.classList && el.classList.contains("alertExpired")) {
+    if (el && el.classList && 
+			  (el.classList.contains("alertExpired") || el.classList.contains("checkLicense"))
+			 ) {
       SmartTemplate4.Util.viewLicense();
     }
     else {
-      window.openDialog("chrome://SmartTemplate4/content/settings.xhtml", "Preferences", "chrome,titlebar,toolbar,dependent,centerscreen,resizable");
-      
+			let params = {inn:{mode:mode}, out:null};			
+			
+			window.openDialog(
+				"chrome://SmartTemplate4/content/settings.xhtml", 
+				"Preferences", 
+				"chrome,titlebar,toolbar,dependent,centerscreen,resizable", 
+				SmartTemplate4,
+				params);
     }
     
   },
@@ -2790,22 +2838,21 @@ SmartTemplate4.Util = {
 		      Cc = Components.classes;
     let cp = "";
     try {
-      const flavor = "text/unicode",
-            flavorHTML = "text/html",  // "application/x-moz-nativehtml" // flavorRTF = "text/rtf",
-            xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
+      const xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
+			function testFlavors() {
+				const supportedFlavors = ["text/html","text/unicode","text/plain"]; // "text/rtf"
+				for (let flavor of supportedFlavors) {
+					if (Services.clipboard.hasDataMatchingFlavors([flavor], Services.clipboard.kGlobalClipboard))
+					  return flavor;
+				}
+				return null;
+			}
       if (!xferable) {
         SmartTemplate4.Util.logToConsole("Couldn't get the clipboard data due to an internal error (couldn't create a Transferable object).")
       }
       else {
         xferable.init(null);
-        let finalFlavor = "";
-        if (Services.clipboard.hasDataMatchingFlavors([flavorHTML], Services.clipboard.kGlobalClipboard)) {
-          finalFlavor = flavorHTML;
-        }
-        else if (Services.clipboard.hasDataMatchingFlavors([flavor], Services.clipboard.kGlobalClipboard)) {
-          finalFlavor = flavor;
-        }
-        
+        let finalFlavor = testFlavors();
         if (finalFlavor) {
           xferable.addDataFlavor(finalFlavor);
           // Get the data into our transferable.
@@ -3018,9 +3065,9 @@ SmartTemplate4.Util.firstRun =
 			// =============================================
 			// STORE CURRENT VERSION NUMBER!
 			if (prev != pureVersion && current != '?') {
-				util.logDebug ("Storing new version number " + current);
-				// STORE VERSION CODE!
-				prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+				// util.logDebug ("Storing new version number " + current);
+				// STORE VERSION CODE! (taken out!)
+				// prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
 			}
 			else {
 				util.logDebugOptional ("firstRun","No need to store current version: " + current
@@ -3029,18 +3076,6 @@ SmartTemplate4.Util.firstRun =
 					+ "\nprev!=current = " + (prev!=current).toString());
 			}
 			
-			// load the templates file and initialize the dropdown menus for write / reply / forward
-      /*
-			setTimeout(
-			  function() {
-          util.logDebug("OLD CALL TO FILETEMPLATES.INITMENUS()...")
-					SmartTemplate4.fileTemplates.initMenus(true); // force a reset of menus!!
-				}, 500
-			);
-      */
-      
-      util.initTabListener(); // need this for initialising fileTemplate menus in single message window
-
 			util.logDebugOptional ("firstRun","finally { } ends.");
 		} // end finally
 
@@ -3210,13 +3245,13 @@ SmartTemplate4.Message = {
     function startTimer(duration, label) {
       var timer = duration;
       if (duration < 0) return;
-      if (duration == 0) label.collapsed = true;
+      if (duration == 0) label.setAttribute("collapsed", true);
       let fun = setInterval(
         function () {
           timer--;
           if (timer<=0) {
             clearInterval(fun);
-            label.collapsed = true; // hide the label if it is zero!
+            labellabel.setAttribute("collapsed", true); // hide the label if it is zero!
           }
           label.value = timer.toString(); // make sure the last number shown is 1...
         }, 1000);
@@ -3394,6 +3429,8 @@ SmartTemplate4.Message = {
 
 var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
 SmartTemplate4.Util.extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
+// test:
+// console.log(`SmartTemplates %cLoading notifyTools.js`, `color: white; background: rgb(180,0,0)`);
 Services.scriptloader.loadSubScript(
   SmartTemplate4.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
   SmartTemplate4.Util,

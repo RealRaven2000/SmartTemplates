@@ -11,6 +11,7 @@ pref("extensions.smartTemplate4.statusIconLabelMode", 2); // 0 - no label; 1 - a
 pref("extensions.smartTemplate4.font.size", 9); /* 8pt .templateBox font size */
 pref("extensions.smartTemplate4.parseSignature", false);
 pref("extensions.smartTemplate4.firstLastSwap", true);
+pref("extensions.smartTemplate4.header.inject", true);
 pref("extensions.smartTemplate4.defaultCharset", "ISO-8859-1");
 pref("extensions.smartTemplate4.signature.encoding", "UTF-8");
 pref("extensions.smartTemplate4.signature.insertDashes.plaintext", false);
@@ -27,6 +28,7 @@ pref("extensions.smartTemplate4.mime.resolveAB.displayName", false);
 pref("extensions.smartTemplate4.mime.defaultFormat","name,bracketMail(angle)");
 pref("extensions.smartTemplate4.identities.showAccountName", false);
 pref("extensions.smartTemplate4.identities.showIdKey", false);
+pref("extensions.smartTemplate4.toolbar.hideLabel", false);
 pref("extensions.smartTemplate4.names.delimiter", ",");
 pref("extensions.smartTemplate4.names.capitalize", true);
 pref("extensions.smartTemplate4.names.quoteIfComma", false);
@@ -39,10 +41,18 @@ pref("extensions.smartTemplate4.xtodaylegacy", false); // old way of processing 
 pref("extensions.smartTemplate4.cleanDeferredButton.installer", false);
 pref("extensions.smartTemplate4.files.path", ""); // location of last saved / loaded json template  
 // pref("extensions.smartTemplate4.fileTemplates", false);  Test; will be removed and set to true
+pref("extensions.smartTemplate4.defaultTemplateMethod", 1); // 1 - use account template... 2 - use last template [issue 243]
 pref("extensions.smartTemplate4.vars.file.fileTemplateMethod", false); // use the template loader for %file% variables
+pref("extensions.smartTemplate4.fileTemplates.menus.delayMessagePane", 8000); // delay patching the msg header buttons
 pref("extensions.smartTemplate4.fileTemplates.path", ""); // location of external html templates "Stationery" for next menu config action 
 pref("extensions.smartTemplate4.fileTemplates.instantPath", ""); // location for path used for adhoc html template selection 
 pref("extensions.smartTemplate4.fileTemplates.sendTimeout", 200); // [issue 173] wait before pressing send button
+
+pref("extensions.smartTemplate4.fileTemplates.mru.new", ""); // (json) template data for recently used cases
+pref("extensions.smartTemplate4.fileTemplates.mru.rsp", "");
+pref("extensions.smartTemplate4.fileTemplates.mru.fwd", "");
+pref("extensions.smartTemplate4.fileTemplates.mru.max", 10); // [issue 263] max number for mru items (pro users only)
+
 pref("extensions.smartTemplate4.dateformat.hour", "numeric"); // change to "2-digit" for forcing 2digit hours in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-digit" for forcing 2digit day in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort
@@ -58,9 +68,6 @@ pref("extensions.smartTemplate4.BackgroundParser", false); // [issue 184] new ba
 
 pref("extensions.smartTemplate4.changeTemplate.button.install", true); /* add change template button automatically when installing for first time */
 pref("extensions.smartTemplate4.insertSnippet.button.install", true); /* add insert snippets button automatically when installing for first time */
-
-
-pref("extensions.smartTemplate4.stationery.forceReplaceQuoteHeader", true);
 
 /* debug settings */
 pref("extensions.smartTemplate4.debug", false);
@@ -78,6 +85,7 @@ pref("extensions.smartTemplate4.debug.replaceReservedWords", false);
 pref("extensions.smartTemplate4.debug.deleteNodes", false);
 pref("extensions.smartTemplate4.debug.composer", false);
 pref("extensions.smartTemplate4.debug.images", false);
+pref("extensions.smartTemplate4.debug.headerPane", false);
 pref("extensions.smartTemplate4.debug.settings", false);
 pref("extensions.smartTemplate4.debug.settings.prefs", false);
 pref("extensions.smartTemplate4.debug.signatures", false);

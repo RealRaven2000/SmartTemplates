@@ -1,35 +1,27 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.17">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.3">can be found here</a>
 
-<b>Enhancements</b>
-<ul>
-<li> New %deleteForwardedBody% function removes the body of the original email when forwarding inline. Can be used to process information from automated mails while removing the original information. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/236">[issue 236]</a> (function requires SmartTemplates Pro license)</li>
-<li> Insert Snippet now supports inserting contents of a CSS file as style block. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/238">[issue 238]</a></li>
-<li> Allow %file()% and %style% command to use ../ to access parent folders of a file <a href="https://github.com/RealRaven2000/SmartTemplates/issues/237">[issue 237]</a>
-
-Examples:
-
-  %file(../faq.html)%
-  %file(../../history/qf-5.16-de.html)%
-  %style(../styles/quickfolders-reminder.css)%
-
-</li>
-<li> Improvements in Template Manager: Show Category in the list for easier navigation. </li>
-<li> Added pricing section to licensing dialog <a href="https://github.com/RealRaven2000/SmartTemplates/issues/232">[issue 232]</a></li>
-</ul>
-
-<b>Bug Fixes / Maintenance</b>
+<b>Maintenance Version 4.3.3</b>
 <ul>
 <li>
-Corrected the Number of days left in license by rounding up <a href="https://github.com/RealRaven2000/SmartTemplates/issues/234">[issue 234]</a>
+  Fixed loading account settings from settings window. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/273">[issue 273]</a>
 </li>
+<li>
+  Fixed: SmartTemplates ignored when creating an email from the Thunderbird taskbar context menu or when clicking a mailto link on a website. This now loads the template of the default identity as expected.<a href="https://github.com/RealRaven2000/SmartTemplates/issues/272">[issue 272]</a>
+</li>
+<li> Added support for 120.* beta versions </li>
 </ul>
 
-<b>Miscellaneous</b>
+
+<b>Work in Progress</b>
 <ul>
-<li> Added Czech translation to licensing dialog </li>
-<li> SmartTemplates does not trigger "news" unless min ver changes at least. This way test versions can be loaded without always displaying the "News" label on the toolbar / status bar.</li>
-</ul>  
+  <li> 
+    Sometimes the header menu is empty (missing the reply / forward submenus) 
+    To alleviate the problem for now, I increased the delay for patching message 
+    an also keeping a reference to local WindowListener in message window. There will be a complete fix 
+    forthcoming very soon. See <a href="https://github.com/RealRaven2000/SmartTemplates/issues/271">[issue 271]</a> 
+  </li>
+</ul>
 

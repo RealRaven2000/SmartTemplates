@@ -673,6 +673,12 @@
   "licenseHead": {
     "message": "新的许可制度"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 继续选择许可证 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "显示许可协议条款"
+  },
   "licenseStatus.expired": {
     "message": "SmartTemplates许可已在 $countDays$ 天前过期。",
     "placeholders": {
@@ -842,7 +848,16 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}我目前正在为新的 Thunderbird SuperNova UI 转换 SmartTemplates Addon。 这将在 2023 年夏季的 Thunderbird 115 的下一个主要版本中实现。{P2} {P1}您可以在此处阅读有关这项工作的当前进度：[issue 213]{P2} "
+    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird ($compatibleVer$) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
+      }
+    }
   },
   "newsSection.license": {
     "message": "因为这项工作是独家的 通过出售许可证获得资金，如果您有兴趣在未来使用 SmartTemplates，请考虑购买许可证或更新之前的许可证."
@@ -934,6 +949,18 @@
   "pref_defaultCharset_tip": {
     "message": "阅读引用头时，如不能确定，则使用此字符集作为后备选择。"
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "未从下拉列表中选择模板的情况下撰写或回复时的行为。"
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "默认模板"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "使用帐户模板。"
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "使用最后从下拉菜单中选择的外部模板。"
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates 选项"
   },
@@ -973,6 +1000,9 @@
   "pref_groupMailContent": {
     "message": "邮件内容"
   },
+  "pref_groupMiscellaneus": {
+    "message": "杂项"
+  },
   "pref_groupNameRules": {
     "message": "规则名称"
   },
@@ -987,6 +1017,9 @@
   },
   "pref_help.tab": {
     "message": "帮助"
+  },
+  "pref_header.inject": {
+    "message": "从模板注入 <head> 的内容"
   },
   "pref_hideExamples": {
     "message": "隐藏示例选项卡"
@@ -1228,6 +1261,18 @@
   "smarttemplate4_button": {
     "message": "编辑模板 / 引用头文件…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "证件过期！"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "许可证在 $daysLeft$ 天后到期",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates 已更新！"
   },
@@ -1315,6 +1360,83 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "輸入的金鑰或許是適用在{2}"
+  },
+  "st.menu.docs": {
+    "message": "文档"
+  },
+  "st.menu.docs.premium": {
+    "message": "高级功能…"
+  },
+  "st.menu.docs.variables": {
+    "message": "变量和命令……"
+  },
+  "st.menu.hideLabel": {
+    "message": "隐藏按钮标签"
+  },
+  "st.menu.template.default": {
+    "message": "默认模板（帐户）"
+  },
+  "st.menu.template.last": {
+    "message": "最后一个模板"
+  },
+  "st.menu.license": {
+    "message": "检查许可证状态..."
+  },
+  "st.menu.license.tooltip": {
+    "message": "单击此处检查 $addonName$ 的许可证状态。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menuaccess.forward": {
+    "message": "F"
+  },
+  "st.menuaccess.reply": {
+    "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "A"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },
+  "st.menu.replyAll": {
+    "message": "全部回复"
+  },
+  "st.menu.replyList": {
+    "message": "回复清单"
+  },
+  "st.menu.supportSite": {
+    "message": "支持站点..."
+  },
+  "st.menu.update.tooltip": {
+    "message": "从此菜单中选择“最新消息”以阅读 $addonName$ 中的新内容。\n 这会将按钮重置为其默认外观。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird 表示您已经输入了一些内容，您是否仍然要加载模板？"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "这将丢弃您输入的任何内容，并加载帐户模板。"
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "这将丢弃您输入的任何内容，并重新加载当前模板 [$template$]。",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "单击取消以保持电子邮件内容不变。"
   },
   "st.notification.donate": {
     "message": "捐"
@@ -1441,8 +1563,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "3月26日"
-  },
+    "message": "10月31日"
+  },  
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
     "placeholders": {
@@ -1655,15 +1777,6 @@
   "tzname.label": {
     "message": "GMT, PST, EST, …"
   },
-  "update.tooltip": {
-    "message": "单击此处一次以阅读 $addonName$ 中的新功能。",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
   "updates.changeLog": {
     "message" : "发行说明（英文）"
   },
@@ -1707,8 +1820,8 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 新的 {{%deleteForwardedBody%}} 函数在内联转发时删除原始电子邮件的正文。 {L2} {L1} 模板管理器的改进：在列表中显示类别以便于导航。 {L2} {L1}从文件插入内容的命令现在可以使用 {{../}} 访问父文件夹，例如：{{%style(../mystyle.css)%}} [issue 237]{L2} {L1} 在许可对话框中添加了定价部分 {L2} {L1} 通过四舍五入更正了许可剩余天数 {L2}"
-  },
+    "message": "{L1} 当通过上下文菜单 '撰写邮件至' 写新电子邮件时，{{%to%}}、{{%recipient%}} 和 {{%from%}} 的地址数据现在将自动插入。[issue 275]{L2} {L1} 当回复自己在对话中的电子邮件时，{{%recipient%}} 的使用也能正常工作，并且 Thunderbird 会自动更改收件人。[issue 239]{L2} {L1}在搜索 Cardbook 联系人时，将电子邮件地址转换为小写。[issue 278]{L2}  {L1} 从地址簿字段中提取 {{prefix}} 和 {{suffix}} 的支持。[issue 267]{L2} {L1} 从地址簿字段支持 {{other.custom1}}、{{other.custom2}} 等。[issue 246]{L2} {L1} 删除了活动 SmartTemplate 字段上的重复工具提示。{L2}"
+  },   
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
   },

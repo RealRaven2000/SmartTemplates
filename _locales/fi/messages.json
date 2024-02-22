@@ -673,6 +673,12 @@
   "licenseHead": {
     "message": "Uusi lisenssijärjestelmä"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Jatka lisenssin valitsemista 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Näytä lisenssiehdot"
+  },
   "licenseStatus.expired": {
     "message": "SmartTemplates-lisenssi on vanhentunut $countDays$ päivää sitten.",
     "placeholders": {
@@ -842,7 +848,16 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1}Työstän parhaillaan SmartTemplates Addonin muuntamista uuteen Thunderbird SuperNova -käyttöliittymään. Tämä otetaan käyttöön Thunderbird 115:n seuraavassa suuressa versiossa kesällä 2023.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [numero 213]{P2}"
+    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version ($compatibleVer$) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Koska tämä työ on yksinomaan lisenssimyynnillä rahoitettuna, harkitse lisenssin ostamista tai edellisen uusimista, jos olet kiinnostunut käyttämään SmartTemplates tulevaisuudessa."
@@ -943,6 +958,18 @@
   "pref_defaultCharset_tip": {
     "message": "Luettaessa otsakkeita käytä tätä merkistöä, jos sitä ei pystytä määrittämään."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Käyttäytyminen, kun kirjoitat tai vastaat valitsematta mallia avattavasta luettelosta."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Oletusmalli"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Käytä tilimallia."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Käytä avattavasta valikosta viimeksi valittua ulkoista mallia."
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates - Asetukset"
   },
@@ -982,6 +1009,9 @@
   "pref_groupMailContent": {
     "message": "Viestin sisältö"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Sekalaista"
+  },
   "pref_groupNameRules": {
     "message": "Nimisäännöt"
   },
@@ -996,6 +1026,9 @@
   },
   "pref_help.tab": {
     "message": "Ohje"
+  },
+  "pref_header.inject": {
+    "message": "Lisää <head>:n sisältö mallista"
   },
   "pref_hideExamples": {
     "message": "Piilota esimerkit-välilehti"
@@ -1228,6 +1261,18 @@
   "smarttemplate4_button": {
     "message": "Muokkaa pohjia / lainauksen otsakkeita…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Lisenssi vanhentunut!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Lisenssi vanhenee $daysLeft$ päivän kuluttua",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates päivitettiin!"
   },
@@ -1316,6 +1361,86 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Syötetty avain saattaa olla ohjelmalle {2})"
   },
+  "st.menu.docs": {
+    "message": "Dokumentointi"
+  },
+  "st.menu.docs.premium": {
+    "message": "Premium-ominaisuudet…"
+  },
+  "st.menu.docs.variables": {
+    "message": "Muuttujat ja komennot…"
+  },
+  "st.menu.hideLabel": {
+    "message": "Piilota painikkeen teksti"
+  },
+  "st.menu.template.default": {
+    "message": "Oletusmalli (tili)"
+  },
+  "st.menu.template.last": {
+    "message": "Viimeinen malli"
+  },
+  "st.menu.license": {
+    "message": "Tarkista lisenssin tila…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Napsauta tätä tarkistaaksesi $addonName$-lisenssin tilan.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menuaccess.forward": {
+    "message": "I"
+  },
+  "st.menuaccess.reply": {
+    "message": "V"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "K"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },
+  "st.menuaccess.write": {
+    "message": "U"
+  },  
+  "st.menu.replyAll": {
+    "message": "Vastaa kaikille"
+  },
+  "st.menu.replyList": {
+    "message": "Vastaa listaan"
+  },
+  "st.menu.supportSite": {
+    "message": "Tukisivusto…"
+  },
+  "st.menu.update.tooltip": {
+    "message": "Valitse tästä valikosta Uusimmat uutiset lukeaksesi $addonName$:n uutuudet.\n Tämä palauttaa painikkeen oletusulkoasunsa.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird sanoo, että olet jo kirjoittanut jotain, haluatko ladata mallin joka tapauksessa?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Tämä hylkää kirjoitetun sisällön ja lataa tilin mallin."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Tämä hylkää kirjoitetun sisällön ja lataa nykyisen mallin [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Napsauta Peruuta säilyttääksesi sähköpostin sisällön ennallaan."
+  },  
   "st.notification.donate": {
     "message": "Lahjoita"
   },
@@ -1447,8 +1572,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26. maaliskuuta"
-  },
+    "message": "31. lokakuuta"
+  },  
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -1661,15 +1786,6 @@
   "tzname.label": {
     "message": "GMT, PST, EST, …"
   },
-  "update.tooltip": {
-    "message": "Napsauta tätä kerran lukeaksesi mitä uutta kohteessa $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
   "updates.changeLog": {
     "message" : "Julkaisutiedot (englanniksi)"
   },
@@ -1713,8 +1829,8 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Uusi {{%deleteForwardedBody%}}-toiminto poistaa alkuperäisen sähköpostin tekstiosan, kun edelleenlähetetään edelleen. {L2} {L1}Komennot, jotka lisäävät sisältöä tiedostoista, voivat nyt käyttää yläkansioita, joissa on {{../}}, esim.: {{%style(../mystyle.css)%}} [numero 237]{L2}{L1} Mallinhallinnan parannukset: Näytä luokka luettelossa navigoinnin helpottamiseksi. {L2} {L1} Lisätty hinnoitteluosa lisenssivalintaikkunaan {L2} {L1} Korjattu lisenssissä jäljellä olevien päivien lukumäärä pyöristämällä ylöspäin {L2}"
-  },
+    "message": "{L1} Osoitetiedot {{%to%}}, {{%recipient%}} ja {{%from%}} lisätään nyt automaattisesti, kun kirjoitat uutta sähköpostiviestiä käyttämällä kontekstivalikkoa 'Kirjoita viesti'. [issue 275]{L2} {L1} {{%recipient%}}:n käyttö toimii odotetusti myös vastatessasi omiin sähköposteihisi keskustelussa ja Thunderbird vaihtaa vastaanottajat automaattisesti. [issue 239]{L2} {L1}Muunna sähköpostiosoitteet pieniksi kirjaimiksi etsiessäsi Cardbook-yhteyksiä. [issue 278]{L2}  {L1} Tuki {{prefix}}:in ja {{suffix}}:n erottamiseen osoitekirjakentistä. [issue 267]{L2} {L1} Tuki {{other.custom1}}:lle, {{other.custom2}} jne. osoitekirjakentistä. [issue 246]{L2} {L1} Poistettu tuplaohje aktiivisilta SmartTemplate-kentiltä. {L2}"
+  },   
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
   },

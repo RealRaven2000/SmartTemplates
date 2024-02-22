@@ -1,6 +1,7 @@
 import {Licenser} from "./scripts/Licenser.mjs.js";
 import {SmartTemplates} from "./scripts/st-main.mjs.js";
 import {SmartTemplatesProcess} from "./scripts/st-process.mjs.js";
+import {compareVersions} from "./scripts/mozilla-version-comparator.js";
 
 
 
@@ -17,10 +18,153 @@ const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 var startupFinished = false;
 var callbacks = [];
 
-var ComposeAction = {};
+// Remove console error “receiving end does not exist”
+function logReceptionError(x) {
+  if (x.message.includes("Receiving end does not exist.")) {
+    // no need to log - CardBook is not installed or disabled.
+  } else { 
+    console.log(x); 
+  }  
+}
+
+// Helper function to walk through a menu data structure and create WebExtension
+// menu entries. 
+// TO DO: use this to recreate SmartTemplates header menus from the back-end [issue 253]
+async function addMenuEntries(entries, parentId) {
+  for (let entry of entries) {
+    let config = {
+      id: entry.id,
+      contexts: ["browser_action_menu"],
+    }
+    if (entry.separator) {
+      config.type = "separator";
+    } else {
+      config.title = entry.label || browser.i18n.getMessage(entry.id);
+    }
+    if (parentId) {
+      config.parentId = parentId;
+    }
+    if (entry.disabled) {
+      config.enabled = false;
+    }
+    await browser.menus.create(config);
+    if (entry.subEntries) {
+      await addMenuEntries(entry.subEntries, entry.id);
+    }
+  }
+}
 
 
 
+// example on building reply menus
+function get_XML_replyMenus() {
+  return `
+    <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic" controller="cmd_reply" accesskey="__MSG_st.menuaccess.reply__">
+      <menupopup>
+        <menuitem id="smartTemplates-reply-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-reply-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      </menupopup>
+    </menu>
+    <menu label="__MSG_st.menu.replyAll__" id="smartTemplates-reply-all-menu" class="menu-iconic" controller="cmd_replyall" accesskey="__MSG_st.menuaccess.replyAll__">
+      <menupopup>
+        <menuitem id="smartTemplates-reply-all-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-reply-all-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      </menupopup>
+    </menu>
+    <menu label="__MSG_st.menu.replyList__" id="smartTemplates-reply-list-menu" class="menu-iconic" controller="cmd_replylist" accesskey="__MSG_st.menuaccess.replyList__">
+      <menupopup>
+        <menuitem id="smartTemplates-reply-list-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-reply-list-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      </menupopup>
+    </menu>
+  `;
+}
+function get_XML_forwardMenus() {
+  return `
+          <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic" controller="cmd_forward"  accesskey="__MSG_st.menuaccess.forward__">
+            <menupopup>
+              <menuitem id="smartTemplates-forward-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-fwd st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-forward-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            </menupopup>
+          </menu>
+  `;
+}
+
+const replyMenus = [
+  { type:"menu", id:"smartTemplates-reply-menu", classList:"menu-iconic", 
+    label:"pref_rsp.tab", accesskey:"st.menuaccess.reply",
+    controller:"cmd_reply", 
+    popupItems: [
+      { id:"smartTemplates-reply-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru" },
+      { id:"smartTemplates-reply-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+    ]
+  }, 
+  { type:"menu", id:"smartTemplates-reply-all-menu", classList:"menu-iconic", 
+    label:"st.menu.replyAll", accesskey:"st.menuaccess.replyAll",
+    controller:"cmd_replyall", 
+    popupItems: [
+      { id:"smartTemplates-reply-all-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru" },
+      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+    ]
+  }, 
+  { type:"menu", id:"smartTemplates-reply-list-menu", classList:"menu-iconic", 
+    label:"st.menu.replyList", accesskey:"st.menuaccess.replyList",
+    controller:"cmd_replylist", 
+    popupItems: [
+      { id:"smartTemplates-reply-list-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru" },
+      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+    ]
+  }, 
+];
+
+const forwardMenus = [
+  { type:"menu", id:"smartTemplates-forward-menu", classList:"menu-iconic", 
+    label:"pref_fwd.tab", accesskey:"st.menuaccess.forward",
+    controller:"cmd_reply", 
+    popupItems: [
+      { id:"smartTemplates-forward-last", label:"st.menu.template.last", classList:"menuitem-iconicst-last-fwd st-mruu" },
+      { id:"smartTemplates-forward-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+    ]
+  }  
+];
+
+
+
+async function createHeaderMenu() {
+  let isDebug =  await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.headerPane"); 
+  let menuProps = {
+    contexts: ["message_display_action"],
+    onclick: async (event) => {    
+      if (isDebug) { console.log("SmartTemplates header context menu", event); }
+      // const menuItem = { id: TOGGLEICON_ID };   // fake menu item to pass to doCommand
+
+      // determine email of email(s) shown in preview pane:
+      // const selectedMail = event?.selectedMail || null;
+
+      messenger.NotifyTools.notifyExperiment( 
+        { 
+          event: "checkMailAction", 
+          detail: { 
+            commandItem: menuItem, 
+            selectedMail: event?.selectedMail
+          } 
+        } 
+      );
+    },
+    icons: { // list-style-image: var(--icon-reply);
+      "16": "chrome://messenger/skin/icons/new/compact/reply.svg"
+    } ,
+    enabled: true,
+    id: "smartTemplates-reply-menu",
+    title: messenger.i18n.getMessage("pref_rsp.tab")
+  } 
+  // how to retrieve a css variable (according to Arndt)
+  // getComputedStyle(document.documentElement).getPropertyValue('--icon-reply')
+  // getComputedStyle(document.documentElement).setProperty('--icon-reply', 'whatever-value')
+  let idToggle = await messenger.menus.create(menuProps); // id of menu item
+}
+
+ 
 
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
     let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
@@ -54,10 +198,21 @@ var ComposeAction = {};
               let ver = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.version","0");
               const manifest = await messenger.runtime.getManifest();
               // get pure version number / remove pre123 indicator
-              let installedVersion = manifest.version.replace(/pre*./,""); 
-              if (ver > installedVersion) {
+              let installedVersion = manifest.version.replace(/pre.*/,""); 
+              if (isDebug) console.log(`SmartTemplates Update:  old=${ver}  new=${installedVersion}`);
+              // compare versions to support beta builds
+              // we probably need to manage prerelease installs with a separate flag!
+              if (compareVersions(installedVersion,ver)>0) { 
+                if (isDebug) console.log("Setting hasNews flag!");
                 messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
               }
+              if (ver != installedVersion ) {
+                if (isDebug) console.log("Storing new version number " + manifest.version);
+                // STORE VERSION CODE!
+                // prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+                messenger.LegacyPrefs.setPref("extensions.smartTemplate4.version", installedVersion);
+              }              
+              
               messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
               messenger.NotifyTools.notifyExperiment({event: "firstRun"});
             },
@@ -89,6 +244,13 @@ function showSplash() {
   let screenH = window.screen.height,
       windowHeight = (screenH > 870) ? 870 : screenH-20;  
   messenger.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
+}
+
+function showSplashInstalled() {
+  const url = browser.runtime.getURL("popup/installed.html");
+  let screenH = window.screen.height,
+      windowHeight = (screenH > 870) ? 870 : screenH-20;  
+  messenger.windows.create({ url, type: "popup", width: 910, height: windowHeight, allowScriptsToClose : true});
 }
 
 
@@ -212,6 +374,10 @@ async function main() {
       case "splashScreen":
         showSplash();
         break;
+
+      case "splashInstalled":
+        showSplashInstalled();
+        break;
         
       case "updateLicense":
         let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
@@ -236,16 +402,32 @@ async function main() {
       case "updateTemplateMenus":
         // Broadcast main windows to run updateTemplateMenus
         messenger.NotifyTools.notifyExperiment({event: "updateTemplateMenus"});
-        break
+        break;
+
+      case "patchHeaderMenu":
+        // Broadcast about:messenger to run patch / refresh Header Menus
+        // To do rewrite with api [issue 253]
+        messenger.NotifyTools.notifyExperiment({event: "patchHeaderMenu"});
+        break;
         
       case "updateSnippetMenus":
         messenger.NotifyTools.notifyExperiment({event: "updateSnippetMenus"});
-        break
+        break;
         
       case "updateNewsLabels":
         messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
-        break
-        
+        break;
+
+      case "setActionTip":
+        // https://webextension-api.thunderbird.net/en/stable/browserAction.html#settitle-details
+        messenger.browserAction.setTitle({title:data.text});
+        break;
+
+      case "setActionLabel":
+        // https://webextension-api.thunderbird.net/en/stable/browserAction.html#setlabel-details
+        messenger.browserAction.setLabel({label:data.text});
+        break;
+          
       // refresh license info (at midnight) and update label afterwards.
       case "updateLicenseTimer":
         {
@@ -255,7 +437,6 @@ async function main() {
           messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
           // update the status bar label too:
           messenger.NotifyTools.notifyExperiment({event:"initLicensedUI"});  
-          // <== calls   updateStatusBar() and updateToolbarIcon();
         }
         break;
         
@@ -283,7 +464,9 @@ async function main() {
             queryObject.dirPrefId = data.preferredDirId;
           }
 
-          let cards = await messenger.runtime.sendMessage( CARDBOOK_APPNAME, queryObject );
+          let cards = await messenger.runtime.sendMessage( CARDBOOK_APPNAME, queryObject ).catch(
+            (x) => { logReceptionError(x); cards=null; }
+          );
           return cards;
         }
         catch(ex) {
@@ -291,6 +474,22 @@ async function main() {
           return null;
         }
         
+      case "openPrefs":
+        {
+          const settingsUrl = "/html/smartTemplate-settings.html";
+          let url = browser.runtime.getURL(settingsUrl) + "*";
+          let [oldTab] = await browser.tabs.query({url}); // dereference first 
+          if (oldTab) {
+            await browser.windows.update(oldTab.windowId, {focused:true});
+          } else {
+            // open a new tab with settings
+            browser.tabs.create ({active: true, url: browser.runtime.getURL(settingsUrl)});
+          }
+        }
+
+      case "patchUnifiedToolbar":
+        return await messenger.NotifyTools.notifyExperiment({event: "patchUnifiedToolbar"});
+        break;
     }
   });
   
@@ -325,7 +524,7 @@ async function main() {
 
   
   ); 
-   
+
   // content smarttemplate4-locales locale/
   // we still need this for explicitely setting locale for Calender localization!
   messenger.WindowListener.registerChromeUrl([ 
@@ -362,6 +561,10 @@ async function main() {
   
   messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome/content/scripts/st-messageWindow.js");  
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/st-messenger.js");
+  // inject a separate script for header pane!
+  messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/st-messagePane.js");
+
+
   messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/st-composer.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/st-customizetoolbar.js");
   
@@ -388,37 +591,38 @@ async function main() {
 
   messenger.WindowListener.startListening();
   
-  
   let browserInfo = await messenger.runtime.getBrowserInfo();
-  function getThunderbirdVersion() {
-    let parts = browserInfo.version.split(".");
-    return {
-      major: parseInt(parts[0]),
-      minor: parseInt(parts[1]),
-      revision: parts.length > 2 ? parseInt(parts[2]) : 0,
-    }
-  }  
-  let tbVer = getThunderbirdVersion();
-  
   // [issue 209] Exchange account validation
-  if (tbVer.major>=98) {
-    messenger.accounts.onCreated.addListener( async(id, account) => {
-      if (currentLicense.info.status == "MailNotConfigured") {
-        // redo license validation!
-        if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
-        currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
-        await currentLicense.validate();
-        if(currentLicense.info.status != "MailNotConfigured") {
-          if (isDebugLicenser) console.log("notify experiment code of new license status: " + currentLicense.info.status);
-          messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
-        }
-        if (isDebugLicenser) console.log("SmartTemplates license info:", currentLicense.info); // test
+  messenger.accounts.onCreated.addListener( async(id, account) => {
+    if (currentLicense.info.status == "MailNotConfigured") {
+      // redo license validation!
+      if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
+      currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
+      await currentLicense.validate();
+      if(currentLicense.info.status != "MailNotConfigured") {
+        if (isDebugLicenser) console.log("notify experiment code of new license status: " + currentLicense.info.status);
+        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
       }
-      else {
-        if (isDebugLicenser) console.log("SmartTemplates license state after adding account:", currentLicense.info)
-      }
-    });
-  }  
+      if (isDebugLicenser) console.log("SmartTemplates license info:", currentLicense.info); // test
+    }
+    else {
+      if (isDebugLicenser) console.log("SmartTemplates license state after adding account:", currentLicense.info)
+    }
+  });
+
+  /// message selection listener
+  browser.mailTabs.onSelectedMessagesChanged.addListener(
+    (tab, selectedMessages) => {
+      // selectedMessages = list - see messages member. add logic to decide whether to show:
+      // replyAll
+      // replyList
+      // redirect
+
+      /* only 1 message may be selected */
+
+    }
+  )
+  
   
 
 }
