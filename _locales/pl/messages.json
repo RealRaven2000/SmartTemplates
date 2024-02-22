@@ -1778,8 +1778,8 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Menu SmartTemplates teraz wyświetla ostatnio używane akcje zewnętrznych szablonów na najwyższym poziomie. Liczba tych akcji zależy od poziomu licencji. [issue 263]{L2} {L1} Dodano skróty klawiszowe do podmenu pisz, odpowiedz i przekaż. {L2} {L1} Wsparcie dla czytania z schowka w formacie zwykłego tekstu.{L2} {L1} Naprawiona zmienna {{%messageRaw()%}}.{L2} {S1}Elementy konserwacji w wersji 4.3.3{S2} {L1} Naprawiono okresowe problemy z brakiem pozycji w menu odpowiedzi i przekazywania w obszarze nagłówka. [issue 271]{L2} {L1} Ładowanie ustawień konta z ustawień było uszkodzone i zostało naprawione.{L2}{L1} SmartTemplates nie wczytywał domyślnego szablonu przy prawym kliknięciu na ikonę Thunderbird w pasku zadań lub na łącze 'mailto' na stronie internetowej, aby napisać nową wiadomość e-mail. [issue 272] {L2}"
-  },   
+    "message": "{L1} Dane adresowe dla {{%to%}}, {{%recipient%}} i {{%from%}} zostaną teraz automatycznie wstawione podczas pisania nowej wiadomości e-mail za pomocą menu kontekstowego 'Utwórz wiadomość do'. [issue 275]{L2} {L1} Użycie {{%recipient%}} działa także zgodnie z oczekiwaniami podczas odpowiadania na własne e-maile w rozmowie, a Thunderbird automatycznie zmienia odbiorców. [issue 239]{L2} {L1} Nowa opcja umożliwiająca wymuszenie małych liter w adresach e-mailowych podczas wyszukiwania kontaktów w Cardbook. {L2} {L1} Obsługa wyciągania {{prefix}} i {{suffix}} z pól książki adresowej. [issue 267]{L2} {L1} Obsługa {{other.custom1}}, {{other.custom2}} itp. z pól książki adresowej. [issue 246]{L2} {L1} Usunięto podwójny podpowiedź na aktywnych polach SmartTemplate. {L2}"
+  },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
   },

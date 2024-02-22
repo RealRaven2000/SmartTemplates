@@ -1796,8 +1796,8 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates菜單現在在頂層列出了最近使用的外部模板操作。這些操作的數量取決於許可證級別。[issue 263]{L2} {L1} 為寫、回覆和轉寄子菜單新增了快速鍵。{L2} {L1} 支援以純文本格式從剪貼板讀取內容。{L2} {L1} 修復了{{%messageRaw()%}}變數。{L2} {S1}版本4.3.3中的維護項目{S2} {L1} 解決了標題區域按鈕上偶爾遺失回覆和轉寄菜單項的問題。[issue 271]{L2} {L1} 從設定中載入帳戶設定出現故障，已得到修復。{L2}{L1} 在點擊Thunderbird工作列圖標或網站'mailto'連結以編寫新電子郵件時，SmartTemplates未載入預設模板。[issue 272] {L2}"
-  },   
+    "message": "{L1} 在透過內容菜單 '撰寫郵件至' 撰寫新電子郵件時，{{%to%}}、{{%recipient%}} 和 {{%from%}} 的地址資料現在將自動插入。[issue 275]{L2} {L1} 當回覆自己在對話中的電子郵件時，{{%recipient%}} 的使用也能正常工作，並且 Thunderbird 會自動更改收件人。[issue 239]{L2} {L1} 新選項在搜尋 Cardbook 聯絡人時強制使用小寫電子郵件地址。{L2} {L1} 從地址簿字段中提取 {{prefix}} 和 {{suffix}} 的支援。[issue 267]{L2} {L1} 從地址簿字段支援 {{other.custom1}}、{{other.custom2}} 等。[issue 246]{L2} {L1} 刪除了活動 SmartTemplate 欄位上的重複工具提示。{L2}"
+  },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"
   },

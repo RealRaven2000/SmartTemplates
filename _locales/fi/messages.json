@@ -1829,8 +1829,8 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates-valikot näyttävät nyt viimeksi käytetyt ulkoiset mallitoiminnot ylin tasolla. Näiden määrä riippuu lisenssitasosta. [issue 263]{L2} {L1} Lisätty pikanäppäimet kirjoita-, vastaa- ja lähetä-ali-valikoille. {L2} {L1} Tuki leiketiedoston lukemiseen muotoilemattomana tekstinä.{L2} {L1} Korjattu muuttuja {{%messageRaw()%}}.{L2}{S1}Ylläpitokohteet versiossa 4.3.3{S2} {L1} Korjattu satunnaiset ongelmat, joissa vastaa- ja lähetä-valikot puuttuivat otsikkoalueen painikkeelta. [issue 271]{L2} {L1} Tilin asetusten lataaminen asetuksista oli rikki ja on korjattu.{L2}{L1} SmartTemplates ei ladannut oletusmallia napsautettaessa hiiren oikealla painikkeella Thunderbird-kuvaketta tehtäväpalkissa tai verkkosivun 'mailto'-linkkiä kirjoittaakseen uuden sähköpostin. [issue 272] {L2}"
-  },    
+    "message": "{L1} Osoitetiedot {{%to%}}, {{%recipient%}} ja {{%from%}} lisätään nyt automaattisesti, kun kirjoitat uutta sähköpostiviestiä käyttämällä kontekstivalikkoa 'Kirjoita viesti'. [issue 275]{L2} {L1} {{%recipient%}}:n käyttö toimii odotetusti myös vastatessasi omiin sähköposteihisi keskustelussa ja Thunderbird vaihtaa vastaanottajat automaattisesti. [issue 239]{L2} {L1} Uusi vaihtoehto pakottaa sähköpostiosoitteet pienaakkosiin etsittäessä Cardbook-yhteystietoja. {L2} {L1} Tuki {{prefix}}:in ja {{suffix}}:n erottamiseen osoitekirjakentistä. [issue 267]{L2} {L1} Tuki {{other.custom1}}:lle, {{other.custom2}} jne. osoitekirjakentistä. [issue 246]{L2} {L1} Poistettu tuplaohje aktiivisilta SmartTemplate-kentiltä. {L2}"
+  },   
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
   },

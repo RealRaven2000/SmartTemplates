@@ -1814,8 +1814,8 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Menús de SmartTemplates ahora muestran las últimas acciones de plantillas externas utilizadas en el nivel superior. La cantidad de estas acciones depende del nivel de licencia. [issue 263]{L2} {L1} Se han agregado teclas de acceso rápido para los submenús de escribir, responder y reenviar. {L2} {L1} Soporte para lectura desde el portapapeles en formato de texto sin formato.{L2} {L1} Se ha corregido la variable {{%messageRaw()%}}.{L2}{S1}Elementos de mantenimiento en la versión 4.3.3{S2} {L1} Se han solucionado problemas ocasionales con la falta de elementos de menú de respuesta y reenvío en el área de la cabecera. [issue 271]{L2} {L1} La carga de la configuración de la cuenta desde la configuración estaba rota y se ha corregido.{L2}{L1} SmartTemplates no cargaba la plantilla por defecto al hacer clic con el botón derecho en el icono de Thunderbird en la barra de tareas o en un enlace 'mailto' de un sitio web para escribir un nuevo correo electrónico. [issue 272] {L2}"
-  },  
+    "message": "{L1} Les dades d'adreça per a {{%to%}}, {{%recipient%}} i {{%from%}} ara s'inseriran automàticament en escriure un correu electrònic nou a través del menú contextual 'Redactar missatge a'. [issue 275]{L2} {L1} L'ús de {{%recipient%}} també funciona com s'esperava quan es respon als propis correus electrònics en una conversa i Thunderbird canvia automàticament els destinataris. [issue 239]{L2} {L1} Nova opció per forçar els correus electrònics en minúscules quan es busquen contactes de Cardbook. {L2} {L1} Suport per extreure {{prefix}} i {{suffix}} dels camps del llibre d'adreces. [issue 267]{L2} {L1} Suport per a {{other.custom1}}, {{other.custom2}} etc. dels camps del llibre d'adreces. [issue 246]{L2} {L1} S'ha eliminat la informació sobre eines duplicada als camps actius de SmartTemplate. {L2}"
+  },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."
   },

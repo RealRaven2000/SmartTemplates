@@ -1762,8 +1762,8 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates-Menüs listen nun die zuletzt verwendeten externen Vorlagenaktionen auf oberster Ebene auf. Die Anzahl dieser Aktionen hängt von der Lizenzstufe ab. [issue 263]{L2} {L1} Es wurden Tastenkombinationen für die Untermenüs Schreiben, Antworten und Weiterleiten hinzugefügt. {L2} {L1} Unterstützung des Lesens von der Zwischenablage im Klartextformat.{L2} {L1} Die Variable {{%messageRaw()%}} wurde behoben.{L2}{S1}Wartungspunkte in Version 4.3.3{S2} {L1} Gelegentliche Probleme mit fehlenden Antworten- und Weiterleiten-Optionen im Kopfbereich wurden behoben. [issue 271]{L2} {L1} Das Laden von Kontoeinstellungen aus den Einstellungen war defekt und wurde behoben.{L2}{L1} SmartTemplates luden die Standardvorlage nicht, wenn mit der rechten Maustaste auf das Thunderbird-Symbol in der Taskleiste oder auf einen Website-'mailto'-Link geklickt wurde, um eine neue E-Mail zu verfassen. [issue 272] {L2}"
-  },      
+    "message": "{L1} Die Adressdaten für {{%to%}}, {{%recipient%}} und {{%from%}} werden nun automatisch eingefügt, wenn Sie eine neue E-Mail über das Kontextmenü 'Nachricht verfassen an' schreiben. [issue 275]{L2} {L1} Die Verwendung von {{%recipient%}} funktioniert auch wie erwartet, wenn Sie auf eigene E-Mails in einem Gespräch antworten und Thunderbird die Empfänger automatisch ändert. [issue 239]{L2} {L1} Neue Option zum Erzwingen von Kleinbuchstaben bei der Suche nach Cardbook-Kontakten. {L2} {L1} Unterstützung beim Extrahieren von {{prefix}} und {{suffix}} aus Adressbuchfeldern. [issue 267]{L2} {L1} Unterstützung für {{other.custom1}}, {{other.custom2}} usw. aus Adressbuchfeldern. [issue 246]{L2} {L1} Doppelter Tooltip auf aktiven SmartTemplate-Feldern entfernt. {L2}"
+  },    
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
   },

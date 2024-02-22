@@ -1841,8 +1841,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates-menyer visar nu de senast använda externa mallåtgärderna på toppnivån. Antalet av dessa beror på licensnivån. [issue 263]{L2} {L1} Genvägar har lagts till för skriv, svara och vidare undermenyer. {L2} {L1} Stöd för att läsa från urklipp i ren textformat.{L2} {L1} Variabeln {{%messageRaw()%}} har åtgärdats.{L2} {S1}Underhållsobjekt i version 4.3.3{S2} {L1} Åtgärdat sporadiska problem med saknade svar- och vidaremål-menyobjekt i huvudområdet. [issue 271]{L2} {L1} Inläsning av kontoinställningar från inställningar var trasig och har åtgärdats.{L2}{L1} SmartTemplates laddade inte standardmallen när högerklickades på Thunderbird-ikonen i aktivitetsfältet eller på en 'mailto'-länk på en webbplats för att skriva ett nytt e-postmeddelande. [issue 272] {L2}"
-  },     
+    "message": "{L1} Adressdata för {{%to%}}, {{%recipient%}} och {{%from%}} kommer nu automatiskt att infogas när du skriver ett nytt e-postmeddelande via snabbmenyn 'Skriv meddelande till'. [issue 275]{L2} {L1} Användningen av {{%recipient%}} fungerar också som förväntat när du svarar på dina egna e-postmeddelanden i en konversation och Thunderbird automatiskt ändrar mottagare. [issue 239]{L2} {L1} Nytt alternativ för att tvinga e-postadresser till gemener vid sökning efter Cardbook-kontakter. {L2} {L1} Stöd för att extrahera {{prefix}} och {{suffix}} från adressboksfält. [issue 267]{L2} {L1} Stöd för {{other.custom1}}, {{other.custom2}} etc. från adressboksfält. [issue 246]{L2} {L1} Duplicerad verktygstips borttagen på aktiva SmartTemplate-fält. {L2}"
+  },  
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
   },

@@ -1745,8 +1745,8 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Os menus do SmartTemplates agora listam as últimas ações de modelos externos usados no nível superior. A quantidade dessas ações depende do nível da licença. [issue 263]{L2} {L1} Foram adicionadas teclas de atalho para os submenus de escrever, responder e encaminhar. {L2} {L1} Suporte para leitura a partir da área de transferência em formato de texto simples.{L2} {L1} Corrigida a variável {{%messageRaw()%}}.{L2} {S1}Itens de Manutenção na versão 4.3.3{S2} {L1} Foram corrigidos problemas ocasionais com a falta de itens de menu de resposta e encaminhamento na área do cabeçalho. [issue 271]{L2} {L1} O carregamento de configurações de conta a partir das configurações estava quebrado e foi corrigido.{L2}{L1} O SmartTemplates não carregava o modelo padrão ao clicar com o botão direito no ícone do Thunderbird na barra de tarefas ou em um link 'mailto' em um site para escrever um novo e-mail. [issue 272] {L2}"
-  },   
+    "message": "{L1} Os dados de endereço para {{%to%}}, {{%recipient%}} e {{%from%}} agora serão automaticamente inseridos ao escrever um novo e-mail via menu de contexto 'Compor mensagem para'. [issue 275]{L2} {L1} O uso de {{%recipient%}} também funciona como esperado ao responder a seus próprios e-mails em uma conversa e o Thunderbird altera automaticamente os destinatários. [issue 239]{L2} {L1} Nova opção para forçar e-mails em minúsculas ao procurar contatos do Cardbook. {L2} {L1} Suporte para extração de {{prefix}} e {{suffix}} dos campos do livro de endereços. [issue 267]{L2} {L1} Suporte para {{other.custom1}}, {{other.custom2}} etc. dos campos do livro de endereços. [issue 246]{L2} {L1} Dica de ferramenta duplicada removida nos campos ativos do SmartTemplate. {L2}"
+  },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
   },
