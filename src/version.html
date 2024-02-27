@@ -216,7 +216,7 @@ permalink: version.html
       Version 4.* - WIP</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">111.0 - 115.*</span>
+			<span class="thunderbird">111.0 - 224.*</span>
 		</span>
   </h4>
   <ul>
@@ -243,6 +243,64 @@ permalink: version.html
 
 
 <ul id="version-history">
+
+  <a id="4.4"> &nbsp; </a>
+  <li>
+    <h4>
+      <a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+        Version 4.4 - WIP</a>
+      <br>
+      <span class="appWrapper">
+        <span class="thunderbird">111.0 - 224.*</span>
+      </span>
+    </h4>
+    <ul>
+      <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+      <li> 
+        Pro feature: Added <code>%preheader()%</code> variable for injecting preview text for 
+        mobile email clients. 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/274">[issue 274]</a>
+      </li>
+      <li> 
+        The address data for <code>%to%</code>, <code>%recipient%</code> and <code>%from%</code> will now automatically 
+        be inserted when writing a new email via the context menu 'Compose Message To'. 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/275">[issue 275]</a>
+      </li>
+      <li> 
+        Using <code>%recipient%</code> also works as expected when replying to own emails in a conversation 
+        and Thunderbird automatically changes the recipients.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/239">[issue 239]</a> 
+      </li>
+      <li>
+        Force lowercase emails when looking up Cardbook contacts. Before, the lookup
+        of contacts could fail when replying to an email with mixed case addres,
+        such as John.Doe@acmeDomain.com.
+
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/278"></a>[issue 278]
+      </li>
+      <li>
+        Support for extracting <code class="parameter">prefix</code> and <code class="parameter">suffix</code> 
+        from address book fields. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/267">[issue 267]</a>
+      </li>
+      <li>
+        Support for <code class="parameter">other.custom1</code>, <code class="parameter">other.custom2</code>
+         etc. from address book fields. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/246">[issue 246]</a>
+      </li>
+      <li>
+        Removed duplicate tooltip on active SmartTemplate fields. 
+      </li>
+      <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
+      <li>
+        Removed duplicate tooltip on active SmartTemplate fields. 
+      </li>
+      <li>
+        Removed FileUtils.getFile for future compatibility (122 beta)
+      </li>
+      <li>
+        Added documentation for <code class="inline">%dateformat(fstring,toclipboard)%</code> to the variables tab.
+      </li>
+    </ul>
+  </li> 
 
   <a id="4.3"> &nbsp; </a>
   <a id="4.3.1"> &nbsp; </a>
