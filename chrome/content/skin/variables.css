@@ -274,6 +274,11 @@ b {
   padding: 3px;
 }
 
+.monotype {
+  font-family: Consolas, 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
 /**  address book switches **/
 .help ul.contact_switches {
   margin-left: 14px;
