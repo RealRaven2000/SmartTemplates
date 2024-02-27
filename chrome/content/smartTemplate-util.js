@@ -1277,6 +1277,13 @@ SmartTemplate4.Util = {
     // allow using \n and \t for new line and tabs characters
 		return quoteLess.replace(/\\n/gi,"\n").replace(/\\t/gi,"\t");
 	} ,
+
+	unquoteParam: function(param) {
+		if (param.startsWith('"')) {
+			return param.substring(1,param.length-2);
+		}
+		return param;
+	} ,
 	
 	// see MsgComposeCommands, loadBlockedImage()
 	getFileAsDataURI : function getFileAsDataURI(aURL) {

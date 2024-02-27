@@ -107,7 +107,7 @@
     "message": "Save Account Settings…"
   },
   "btnYouTube.tooltip": {
-    "message": "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons"
+    "message": "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using SmartTemplates and other Addons"
   },
   "button.pasteLicense": {
     "message": "paste"
@@ -1133,21 +1133,6 @@
   "pref_silentUpdates_tip": {
     "message": "Don't open change log after SmartTemplates was updated."
   },
-  "pref_stationeryLink": {
-    "message": "Stationery Addon"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Get Stationery…"
-  },
-  "pref_stationerySupport": {
-    "message": "Support Stationery addon"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Supports using Stationery at the same time with SmartTemplates."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "This makes it possible to use template variables in your Stationery."
-  },
   "pref_templateBox.label": {
     "message": "Template"
   },
@@ -1160,6 +1145,15 @@
   "pref_variables.tab": {
     "message": "Variables"
   },
+  "preheader": {
+    "message": "A preview text only visible to mobile mail clients, which will be inserted at the start of the email body."
+  }, 
+  "preheader.className": {
+    "message": "[optional] You can add a CSS class to change layout."
+  },   
+  "preheader.inlineStyles": {
+    "message": "[optional] Add your own style attributes, separated by semicolon. Without this parameter, SmartTemplates will insert 'display:none' to automatically make the section invisible."
+  },   
   "premiumConfig": {
     "message": "Premium Features"
   },
@@ -1785,7 +1779,7 @@
     "message": "GMT, PST, EST, ... "
   },
   "tip.fileTemplates": {
-    "message": "Click to read full documentation about Stationery and external HTML templates on our support site…"
+    "message": "Click to read full documentation about SmartTemplates and external HTML templates on our support site…"
   },
   "to.label": {
     "message": "Original Recipient"

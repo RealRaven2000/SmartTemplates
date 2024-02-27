@@ -329,6 +329,8 @@ END LICENSE BLOCK
     # [issue 267] Support for extracting prefix and suffix from address book fields
     # [issue 276] Removed FileUtils.getFile for future compatibility (122 beta)
     # Removed duplicate tooltip on active fields in write new mail
+    # [issue 274] Add %preheader()% variable for injecting preview 
+
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -368,6 +370,7 @@ var SmartTemplate4 = {
     isStationery: false,
     isThunderbirdTemplate: false,
     isFileTemplate: false,
+    preHeader: null, // [issue 274]
     modifiedHeaders: [] // list of header vars that may have received new content; need to be updated in deferredVars
   },
   
@@ -383,6 +386,7 @@ var SmartTemplate4 = {
     flags.isThunderbirdTemplate = false;
     flags.isFileTemplate = false;
     flags.modifiedHeaders = [];
+    flags.preHeader = null;
   } ,
 
   // -------------------------------------------------------------------

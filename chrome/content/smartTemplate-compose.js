@@ -1275,6 +1275,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		    // new global settings to deal with [Bug 25084]
 		    breaksAtTop = prefs.getMyIntPref("breaksAtTop"), 
 		    bodyEl = gMsgCompose.editor.rootElement,
+				preheaderEl = null,
 				bodyContent = '';
 		
     if (!IsHTMLEditor()) {
@@ -1645,11 +1646,25 @@ SmartTemplate4.classSmartTemplate = function() {
 					}
 				}
 			}
+
+			if (SmartTemplate4.PreprocessingFlags.preHeader) { // [issue 274]
+				if (!util.hasLicense()  || util.licenseInfo.keyType == 2) {
+					util.addUsedPremiumFunction("preheader");
+				}
+
+				let span = util.mailDocument.createElement("span");
+				const preH = SmartTemplate4.PreprocessingFlags.preHeader;
+				span.textContent = preH.text;
+				span.setAttribute("style", preH.styleContent);
+				if (preH.classNames) {
+					span.setAttribute("class", preH.classNames);
+				}
+				preheaderEl = span;
+			}
 			
 			// PREMIUM FUNCTIONS
 			// issue notifications for any premium features used.
-			if (util.premiumFeatures.length)
-      {
+			if (util.premiumFeatures.length) {
         // let's reset the local license
         if (!util.hasLicense() || util.licenseInfo.keyType==2 || prefs.isDebugOption('premium.testNotification'))
           util.popupLicenseNotification(util.premiumFeatures, true, true);
@@ -1837,8 +1852,14 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
 		
 		bodyEl.setAttribute("smartTemplateInserted","true"); // guard against duplication!
-
 		await SmartTemplate4.Util.resolveDeferredBatch(gMsgCompose.editor);
+
+		if (preheaderEl) {
+			bodyEl.insertBefore(preheaderEl, bodyEl.firstChild);
+		}
+		
+
+
 		resetDocument(gMsgCompose.editor, startup);
 		// check gMsgCompose.bodyModified `- should be false here`
 		

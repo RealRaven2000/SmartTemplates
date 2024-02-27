@@ -2572,9 +2572,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 			msgDbHdr = (composeType != "new") && (gMsgCompose.originalMsgURI) ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
       if (msgDbHdr) {
         charset = (composeType != "new") ? msgDbHdr.Charset : null;
-      }
-      else
+      } else {
         charset = gMsgCompose.compFields.characterSet; // snippets
+      }
       
 			// -- this line wasn't doing anything before "msgDbHdr.folder.charset; "
       //    defaulting to folder's charset would have been probably wrong anyway
@@ -2646,7 +2646,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     "header.deleteFromSubject",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
 		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg",
-    "conditionalText", "clipboard", "toclipboard", "attachments"
+    "conditionalText", "clipboard", "toclipboard", "attachments", "preheader"
 	);
 	// new classification for time variables only
 	addTokens("reserved.time", 
@@ -3506,6 +3506,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           return parsedContent;
         case "basepath":
           return insertBasePath(removeParentheses(arg));
+        case "preheader":
+          // we do the processing after everything else to make sure we can inject the code
+          // at the top when everything else is processed.
+          SmartTemplate4.PreprocessingFlags.preHeader = createPreHeader(removeParentheses(arg));
+          return "";
 				case "identity":
 				  /////
           let idArgs = arg.substr(1,arg.length-2).split(','),
@@ -3698,6 +3703,68 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       filePath += '/';
     html = "<base href=\"" + filePath + "\">";
     return html;
+  }
+
+  // function that fixes commas in first parameter,
+  // you can now add escaped \, in the first (string) parameter
+  // of functions that take a text as param
+  // only exception: strings may not end with a "\" !
+  function combineEscapedParams(arr) {
+    let finalParams = [];
+    if (arr[0].endsWith("\\") && arr.length > 1) {
+      finalParams.push(arr[0].slice(0, -1) + arr[1]) ; // cut off the escape character!
+      for (let i=2; i<arr.length; i++) {
+        finalParams.push(arr[i]);
+      }
+      // do it again, in case there are multiple commas in the first parameter!
+      return combineEscapedParams(finalParams)
+    } else {
+      finalParams = arr;
+    }
+    return finalParams;
+  }
+
+  function createPreHeader(args) {
+    // %preheader("textContent",className,"inlineRules")%
+    let params = combineEscapedParams( args.split(","));
+    // we need to create a <span class="className" style="display:none;[inlineRules]">textContent</span>
+    // this tag must be injected into <body> as FIRST ELEMENT.
+    let textContent = params[0],
+        inLineStyles = "display:none;",  // will be overwritten if inlineRules parameter was supplied
+        classNames;
+    if (params.length>1) {
+      // optional parameters
+      if (params[1].startsWith('"')) {
+        // %preheader("textContent","inlineRules")%
+        // list of inline rules
+        inLineStyles = SmartTemplate4.Util.unquoteParam(params[1]);
+        if (params.length>2) {
+          // class names
+          classNames = params[2];
+        }
+      } else {
+        // %preheader("textContent",className)%
+        // class names
+        classNames = params[1];        
+        if (params.length>2) {
+          // %preheader("textContent",className,"inlineRules")%
+          inLineStyles = SmartTemplate4.Util.unquoteParam(params[2]);
+        }
+      }
+    }
+
+    if (!textContent) return null;  // empty preheader not allowed
+
+    let preHeader = {
+      text: SmartTemplate4.Util.unquoteParam(textContent),
+      styleContent: inLineStyles
+    }
+    if (classNames) {
+      preHeader.classNames = classNames;
+    }
+
+    // let tag=`<span style="${inLineStyles}" class=${classPart}>${textContent}</span>`;
+    return preHeader;
   }
   
   // [Bug 25871] %file()% function
