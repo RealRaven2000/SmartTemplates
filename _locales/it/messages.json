@@ -101,7 +101,7 @@
     "message": "Salva le impostazioni dell'account…"
   },
   "btnYouTube.tooltip": {
-    "message": "Visita il canale YouTube 'Thunderbird Daily' - per suggerimenti e guide per usare Stationery e altre estensioni"
+    "message": "Visita il canale YouTube 'Thunderbird Daily' - per suggerimenti e guide per usare SmartTemplates e altre estensioni"
   },
   "button.pasteLicense": {
     "message": "Incolla"
@@ -1024,21 +1024,6 @@
   "pref_silentUpdates_tip": {
     "message": "Non aprire il registro delle modifiche dopo l'aggiornamento di SmartTemplates."
   },
-  "pref_stationeryLink": {
-    "message": "Estensione Stationery"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Vai a estensione Stationery…"
-  },
-  "pref_stationerySupport": {
-    "message": "Supporta l'estensione Stationery"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Supporta l'uso dell'estensione Stationery insieme a SmartTemplates."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Permette di utilizzare le variabili dei modelli nell'estensione Stationery."
-  },
   "pref_templateBox.label": {
     "message": "Modello"
   },
@@ -1646,7 +1631,7 @@
     "message": "Forza il fuso orario specifico per le variabili di data sostituendo il parametro tz (GMT, EST, CST, PST ecc.)"
   },
   "tip.fileTemplates": {
-    "message": "Fai clic per leggere la documentazione completa su Stationery e modelli HTML esterni sul nostro sito di supporto …"
+    "message": "Fai clic per leggere la documentazione completa su SmartTemplates e modelli HTML esterni sul nostro sito di supporto …"
   },
   "to.label": {
     "message": "Nome del destinatario (predefinito)"

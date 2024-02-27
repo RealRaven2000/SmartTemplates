@@ -1063,21 +1063,6 @@
   "pref_silentUpdates_tip": {
     "message": "Dnevnika sprememb ne odpirajte po posodobitvi SmartTemplates."
   },
-  "pref_stationeryLink": {
-    "message": "Dodatek Stationary"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Dobi Stationary ..."
-  },
-  "pref_stationerySupport": {
-    "message": "Podpri dodatek Stationary"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Podpira skupno uporabo dodatka Stationary in SmartTemplates."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "To omogoča uporabo spremenljivk predlog v Dodatku Stationary."
-  },
   "pref_templateBox.label": {
     "message": "Predloga"
   },

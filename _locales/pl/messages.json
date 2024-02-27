@@ -101,7 +101,7 @@
     "message": "Zapisz ustawienia konta…"
   },
   "btnYouTube.tooltip": {
-    "message": "Odwiedź kanał Thunderbird Daily na YouTube, by poznać podpowiedzi i samouczki dotyczące korzystania ze Stationery i innych dodatków."
+    "message": "Odwiedź kanał Thunderbird Daily na YouTube, by poznać podpowiedzi i samouczki dotyczące korzystania ze SmartTemplates i innych dodatków."
   },
   "button.pasteLicense": {
     "message": "Wklej"
@@ -1056,21 +1056,6 @@
   },
   "pref_silentUpdates_tip": {
     "message": "Nie otwieraj dziennika zmian po aktualizacji SmartTemplates."
-  },
-  "pref_stationeryLink": {
-    "message": "Dodatek Stationery"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Pobierz Stationery…"
-  },
-  "pref_stationerySupport": {
-    "message": "Współpracuj z dodatkiem Stationery"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Dodatek smartTemplate4 będzie współpracował z dodatkiem Stationery."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Dzięki temu w dodatku Stationery będzie możliwość używania wzorców ze smartTemplate4."
   },
   "pref_templateBox.label": {
     "message": "Szablon"

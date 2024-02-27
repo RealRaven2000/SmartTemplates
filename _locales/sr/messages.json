@@ -1045,21 +1045,6 @@
   "pref_silentUpdates_tip": {
     "message": "Не отварајте дневник промена након што је СмартТемплате⁴ ажуриран."
   },
-  "pref_stationeryLink": {
-    "message": "Додатак Stationery"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Преузми Stationery…"
-  },
-  "pref_stationerySupport": {
-    "message": "Подршка за додатак Stationery"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Подржава коришћење додатка Stationery упоредо са SmartTemplates-ом."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Ово вам омогућава да користите променљиве шаблона у Stationery-ју."
-  },
   "pref_templateBox.label": {
     "message": "Шаблон"
   },

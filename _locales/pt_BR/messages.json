@@ -101,7 +101,7 @@
     "message": "Salvar configurações da conta…"
   },
   "btnYouTube.tooltip": {
-    "message": "Visite o canal 'Thunderbird Daily' no YouTube - para dicas e tutoriais usando o Stationery e outras complementos"
+    "message": "Visite o canal 'Thunderbird Daily' no YouTube - para dicas e tutoriais usando o SmartTemplates e outras complementos"
   },
   "button.pasteLicense": {
     "message": "colar"
@@ -1038,21 +1038,6 @@
   },
   "pref_silentUpdates_tip": {
     "message": "Não abra o log de alterações após a atualização do SmartTemplates."
-  },
-  "pref_stationeryLink": {
-    "message": "Addon Stationery"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Obter Stationery…"
-  },
-  "pref_stationerySupport": {
-    "message": "Apoie o Stationery"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Apoie usando o Stationery ao mesmo tempo com o SmartTemplates."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Isto torna possível usar variáveis de modelo em seu Stationery."
   },
   "pref_templateBox.label": {
     "message": "Modelo"

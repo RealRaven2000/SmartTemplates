@@ -813,21 +813,6 @@
   "pref_sigReplaceBR.label": {
     "message": "Ganti jeda baris tanda tangan dalam teks biasa dengan <br>"
   },
-  "pref_stationeryLink": {
-    "message": "Pengaya Peralatan"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Dapatkan Peralatan…"
-  },
-  "pref_stationerySupport": {
-    "message": "Dukungan Peralatan Pengaya"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Dukungan pengguanaan Peralatan pada saat yang sama dengan SmartTemplate4."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Ini memungkinkan untuk menggunakan variabel template di Peralatan Anda."
-  },
   "pref_templateBox_tip": {
     "message": "Dalam kotak ini,tempatkan template email Anda, mis. Halo %from(name)%, <br> Terima kasih atas pesan Anda <br> Salam, <br>%ownname%"
   },

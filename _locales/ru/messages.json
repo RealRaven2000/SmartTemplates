@@ -101,7 +101,7 @@
     "message": "Сохранить настройки учетной записи…"
   },
   "btnYouTube.tooltip": {
-    "message": "Посетите YouTube канал 'Thunderbird ежедневно' - для советов и руководств по использованию Stationery и других дополнений"
+    "message": "Посетите YouTube канал 'Thunderbird ежедневно' - для советов и руководств по использованию SmartTemplates и других дополнений"
   },
   "button.pasteLicense": {
     "message": "вставить"
@@ -1071,21 +1071,6 @@
   },
   "pref_silentUpdates_tip": {
     "message": "Не открывайте журнал изменений после обновления SmartTemplates."
-  },
-  "pref_stationeryLink": {
-    "message": "Расширение Stationery"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Загрузить расширение"
-  },
-  "pref_stationerySupport": {
-    "message": "Поддержка расширения Stationery"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Совместное использование с расширением Stationery."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Позволяет использовать переменные в шаблонах Stationery."
   },
   "pref_templateBox.label": {
     "message": "Шаблон"

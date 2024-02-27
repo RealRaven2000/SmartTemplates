@@ -101,7 +101,7 @@
     "message": "Uložit nastavení účtu…"
   },
   "btnYouTube.tooltip": {
-    "message": "Navštiv 'Thunderbird Daily' YouTube kanál - pro typy a návody jak použít Stationery a ostatní rozšížení"
+    "message": "Navštiv 'Thunderbird Daily' YouTube kanál - pro typy a návody jak použít SmartTemplates a ostatní rozšížení"
   },
   "button.pasteLicense": {
     "message": "vložit"
@@ -1104,21 +1104,6 @@
   },
   "pref_silentUpdates_tip": {
     "message": "Neotevírejte protokol změn po aktualizaci SmartTemplates."
-  },
-  "pref_stationeryLink": {
-    "message": "Stationery rozšíření"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Získat \"Stationery\"…"
-  },
-  "pref_stationerySupport": {
-    "message": "Podpora \"Stationery\" rozšíření"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Podpora používá \"Stationery\" společně s SmartTemplates."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Toto vytváří možnost použít šablonu proměných ve tvém \"Stationery\"."
   },
   "pref_templateBox.label": {
     "message": "Šablona"

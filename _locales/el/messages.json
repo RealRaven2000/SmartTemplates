@@ -1114,21 +1114,6 @@
   "pref_silentUpdates_tip": {
     "message": "Να μην ανοίγει το αρχείο καταγραφής αλλαγών μετά την ενημέρωση του SmartTemples."
   },
-  "pref_stationeryLink": {
-    "message": "Πρόσθετο Επιστολόχαρτων"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Λήψη γραφικών στοιχείων…"
-  },
-  "pref_stationerySupport": {
-    "message": "Υποστηρίξτε το Πρόσθετο γραφικών στοιχείων"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Υποστηρίζει τη χρήση γραφικών στοιχείων ταυτόχρονα με το SmartTemplates."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Αυτό καθιστά δυνατή τη χρήση μεταβλητών προτύπου στα γραφικά στοιχεία σας."
-  },
   "pref_templateBox.label": {
     "message": "Πρότυπο"
   },

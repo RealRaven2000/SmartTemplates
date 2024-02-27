@@ -101,7 +101,7 @@
     "message": "Kontoeinstellungen speichern…"
   },
   "btnYouTube.tooltip": {
-    "message": "Besuchen Sie unseren 'Thunderbird Daily' YouTube-Kanal - für gratis Tipps und Anleitungen zum Benutzen von Stationery und anderen Add-Ons."
+    "message": "Besuchen Sie unseren 'Thunderbird Daily' YouTube-Kanal - für gratis Tipps und Anleitungen zum Benutzen von SmartTemplates und anderen Add-Ons."
   },
   "button.pasteLicense": {
     "message": "einfügen"
@@ -1057,21 +1057,6 @@
   "pref_silentUpdates_tip": {
     "message": "Bei updates die Versionsgeschichte nicht anzeigen."
   },
-  "pref_stationeryLink": {
-    "message": "Stationery Erweiterung"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Stationery Installieren…"
-  },
-  "pref_stationerySupport": {
-    "message": "Das Stationery addon unterstützen"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Variablen werden auch in Stationery Templates ersetzt"
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Ermöglicht die Benutzung von SmartTemplates Variablen in den Vorlagen von Stationery."
-  },
   "pref_templateBox.label": {
     "message": "Nachrichtenvorlage"
   },
@@ -1682,7 +1667,7 @@
     "message": "GMT, PST, EST, … "
   },
   "tip.fileTemplates": {
-    "message": "Hier klicken um die vollständige Dokumentation über Stationery und externe HTML Vorlagen auf unserer Support Seite zu lesen…"
+    "message": "Hier klicken um die vollständige Dokumentation über SmartTemplates und externe HTML Vorlagen auf unserer Support Seite zu lesen…"
   },
   "to.label": {
     "message": "Empfängername (Standardformat)"

@@ -1114,21 +1114,6 @@
   "pref_silentUpdates_tip": {
     "message": "Älä avaa muutoslokea SmartTemplates: n päivityksen jälkeen."
   },
-  "pref_stationeryLink": {
-    "message": "Stationary-lisäosa"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Hanki Stationary..."
-  },
-  "pref_stationerySupport": {
-    "message": "Tue Stationary-lisäosaa"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Tukee Stationaryn samanaikaista käyttöä SmartTemplates:n kanssa."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Tämä mahdollistaa pohjamuuttujien käytön Stationaryssa."
-  },
   "pref_templateBox.label": {
     "message": "Pohja"
   },

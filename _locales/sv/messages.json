@@ -104,7 +104,7 @@
     "message": "Spara kontoinställningar..."
   },
   "btnYouTube.tooltip": {
-    "message": "Besök YouTube-kanalen \"Thunderbird Daily\" - för tips och guider om hur man använder Stationery och andra tillägg"
+    "message": "Besök YouTube-kanalen \"Thunderbird Daily\" - för tips och guider om hur man använder SmartTemplates och andra tillägg"
   },
   "button.pasteLicense": {
     "message": "klistra in"
@@ -1110,21 +1110,6 @@
   },
   "pref_silentUpdates_tip": {
     "message": "Öppna inte ändringsloggen efter att SmartTemplates har uppdaterats."
-  },
-  "pref_stationeryLink": {
-    "message": "Brevpapperstillägg"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Hämta brevpapper..."
-  },
-  "pref_stationerySupport": {
-    "message": "Stöd tillägget Stationery"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Stöd för att använda Stationery samtidigt som SmartTemplates."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Detta gör det möjligt att använda variabler i din Stationery."
   },
   "pref_templateBox.label": {
     "message": "Mall"

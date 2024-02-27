@@ -1121,21 +1121,6 @@
   "pref_silentUpdates_tip": {
     "message": "Не відкривати зміну журналу після оновлення SmartTemplates."
   },
-  "pref_stationeryLink": {
-    "message": "Додаток Stationery "
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Завантажити Stationery …"
-  },
-  "pref_stationerySupport": {
-    "message": "Додано підтримку додатку Stationery "
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Підтримка використання Stationery водночас з SmartTemplates."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Це робить можливим використання змінних з шаблонів у Вашому додатку Stationery."
-  },
   "pref_templateBox.label": {
     "message": "Шаблон"
   },
@@ -1761,7 +1746,7 @@
     "message": "GMT, PST, EST, …"
   },
   "tip.fileTemplates": {
-    "message": "Натисніть, щоб прочитати повну документацію про Stationery та зовнішні HTML шаблони на нашому сайті підтримки…"
+    "message": "Натисніть, щоб прочитати повну документацію про SmartTemplates та зовнішні HTML шаблони на нашому сайті підтримки…"
   },
   "to.label": {
     "message": "Прізвище отримувача (за замовчуванням)"

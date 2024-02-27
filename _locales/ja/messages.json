@@ -101,7 +101,7 @@
     "message": "アカウント設定を保存…"
   },
   "btnYouTube.tooltip": {
-    "message": "'Thunderbird Daily' YouTube チャネルを開きます。Stationery やそのほかのアドオンの利用法のチュートリアルを紹介しています"
+    "message": "'Thunderbird Daily' YouTube チャネルを開きます。SmartTemplates やそのほかのアドオンの利用法のチュートリアルを紹介しています"
   },
   "button.pasteLicense": {
     "message": "貼り付け"
@@ -1093,21 +1093,6 @@
   "pref_silentUpdates_tip": {
     "message": "SmartTemplates の更新後に、更新履歴を表示しません"
   },
-  "pref_stationeryLink": {
-    "message": "Stationery アドオン"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Stationery アドオンを入手します。"
-  },
-  "pref_stationerySupport": {
-    "message": "Stationery をサポートする"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Stationery アドオンと SmartTemplates の同時使用をサポートします。"
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Stationery アドオンで SmartTemplates の変数を使用できます。"
-  },
   "pref_templateBox.label": {
     "message": "テンプレート"
   },
@@ -1712,7 +1697,7 @@
     "message": "タイムゾーン (GMT, PST, EST, ... )"
   },
   "tip.fileTemplates": {
-    "message": "ここをクリックして、Stationery や外部 HTML テンプレートに関する完全なドキュメントにアクセスしてください…"
+    "message": "ここをクリックして、SmartTemplates や外部 HTML テンプレートに関する完全なドキュメントにアクセスしてください…"
   },
   "to.label": {
     "message": "受信者の名前とメールアドレス (既定)"

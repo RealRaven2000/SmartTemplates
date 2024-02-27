@@ -107,7 +107,7 @@
     "message": "Enregistrer les paramètres du compte…"
   },
   "btnYouTube.tooltip": {
-    "message": "Allez visiter la chaîne YouTube \"Thunderbird Daily\" pour des astuces et tutoriels d'utilisation de Stationery et autres modules"
+    "message": "Allez visiter la chaîne YouTube \"Thunderbird Daily\" pour des astuces et tutoriels d'utilisation de SmartTemplates et autres modules"
   },
   "button.pasteLicense": {
     "message": "coller"
@@ -1110,21 +1110,6 @@
   },
   "pref_silentUpdates_tip": {
     "message": "N'ouvrez pas le journal des modifications après la mise à jour de SmartTemplates."
-  },
-  "pref_stationeryLink": {
-    "message": "Extension Stationery"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "Obtenir Stationery..."
-  },
-  "pref_stationerySupport": {
-    "message": "Support de l'extension Stationery"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "Support de l'utilisation simultanée de Stationery et de SmartTemplates."
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "Rend possible l'utilisation de variables du modèle dans Stationery."
   },
   "pref_templateBox.label": {
     "message": "Modèle"

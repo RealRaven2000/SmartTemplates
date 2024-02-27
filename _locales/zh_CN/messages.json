@@ -104,7 +104,7 @@
     "message": "保存帐户设置…"
   },
   "btnYouTube.tooltip": {
-    "message": "访问 'Thunderbird Daily' YouTube 频道 - 使用 Stationery 和其他扩展的技巧与教程"
+    "message": "访问 'Thunderbird Daily' YouTube 频道 - 使用 SmartTemplates 和其他扩展的技巧与教程"
   },
   "button.pasteLicense": {
     "message": "贴"
@@ -1104,21 +1104,6 @@
   },
   "pref_silentUpdates_tip": {
     "message": "SmartTemplates更新後，請勿打開更改日誌。"
-  },
-  "pref_stationeryLink": {
-    "message": "附加组件 Stationery"
-  },
-  "pref_stationeryLink_tip": {
-    "message": "获得 Stationery…"
-  },
-  "pref_stationerySupport": {
-    "message": "支持附加组件 Stationery"
-  },
-  "pref_stationerySupport_tip": {
-    "message": "支持同时使用 Stationery 与 SmartTemplates。"
-  },
-  "pref_stationerySupport_tip2": {
-    "message": "让你在 Stationery 中使用模板变量是可能的。"
   },
   "pref_templateBox.label": {
     "message": "模板"
