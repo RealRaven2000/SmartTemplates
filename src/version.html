@@ -262,6 +262,30 @@ permalink: version.html
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/274">[issue 274]</a>
       </li>
       <li> 
+        <p>
+          The following functions will from now support using commas within the text parameters: 
+        </p>
+          <code class="inline">%deleteText()%</code> 
+          <code class="inline">%replaceText()%</code>
+          <code class="inline">%matchTextFromBody()%</code>
+          <code class="inline">%matchTextFromSubject()%</code>
+          <code class="inline">%deleteQuotedText()%</code>
+          <code class="inline">%replaceQuotedText()%</code>
+          <code class="inline">%file()%</code>
+          <code class="inline">%toclipboard()%</code>
+          <code class="inline">%conditionalText()%</code>
+          <code class="inline">%header.set()%</code>
+          <code class="inline">%header.prefix()%</code>
+          <code class="inline">%header.append()%</code>
+          <code class="inline">%header.delete()%</code>
+        <p>
+          All commas need to be escaped with a preceding backslash, for example:<br>
+          <code class="html">%toclipboard("All your needs\, fulfilled.")%</code>
+        </p>
+        
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/280">[issue 280]</a>
+      </li>      
+      <li> 
         The address data for <code>%to%</code>, <code>%recipient%</code> and <code>%from%</code> will now automatically 
         be inserted when writing a new email via the context menu 'Compose Message To'. 
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/275">[issue 275]</a>
