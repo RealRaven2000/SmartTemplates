@@ -181,7 +181,6 @@
            (backwards, i, end) => { return backwards ? (i>=0) : (i<end) } ; 
            i=i+delta ) {
         if (backwards && i<0 || !backwards && i>end) {
-          debugger;
           if (backwards && i<0) {
             testCollapsedMatch(chapters[0], search);
           }
