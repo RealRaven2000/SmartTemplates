@@ -1866,118 +1866,115 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
 	  try {
 			if (prefs.isDebugOption('parseModifier')) debugger;
 			let matchPart = msg.match(regX);
-			if (matchPart) {
-				for (let i=0; i<matchPart.length; i++) {
-          let isClipboardPart =  (matchPart[i].lastIndexOf(",toclipboard")>0);
-          if (isClipboardPart && !clipboardMode || !isClipboardPart && clipboardMode) {
+			if (!matchPart) {
+        return;
+      }
+      for (let i=0; i<matchPart.length; i++) {
+        let isClipboardPart =  (matchPart[i].lastIndexOf(",toclipboard")>0);
+        if (isClipboardPart && !clipboardMode || !isClipboardPart && clipboardMode) {
+          continue;
+        }
+        util.logDebugOptional('parseModifier','matched variable [' + i + ']: ' + matchPart[i]);
+        let patternArg = matchPart[i].match(   /(\"[^"].*?\")/   ), // get argument (includes quotation marks) ? non greedy
+            hdr = (composeType!="new") ? new SmartTemplate4.getHeadersWrapper(gMsgCompose.originalMsgURI) : null,
+            extractSource = '',
+            rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
+        switch(fromPart) {
+          case 'subject':
+            util.addUsedPremiumFunction('matchTextFromSubject');
+            if (!hdr) {
+              msg = msg.replace(matchPart[i], "");
+              util.logToConsole("matchText() - matchTextFromSubject failed - couldn't retrieve header from Uri [" + gMsgCompose.originalMsgURI + "] - did you REPLY to a message?");
+              extractSource = gMsgCompose.compFields.subject;
+            }
+            else {
+              let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
+                  charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
+              extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("subject"), charset);
+            }
+            util.logDebugOptional('parseModifier',"Extracting " + rx + " from Subject:\n" + extractSource);
+            break;
+          case 'body':
+            let rootEl = gMsgCompose.editor.rootElement;
+            extractSource = rootEl.innerText;
+            // util.popupLicenseNotification("matchTextFromBody", true, true);
+            util.addUsedPremiumFunction('matchTextFromBody');
+            util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
+            break;
+          default:
+            throw("Unknown source type:" + fromPart);
+        }
+        if (!patternArg) {
+          continue;
+        }
+
+        let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ); // match group number, first instance of  ... ",1  ... 
+        if (!extractSource) {
+          util.logDebug("pattern not found in " + fromPart + ":\n" + regX);
+          msg = msg.replace(matchPart[i],"");
+          continue;
+        }
+        let result = rx.exec(extractSource); // extract Pattern from body
+        if (!result || result.length==0) {       
+          // not matched, insert string from third parameter
+          let alternative = matchPart[i].match( /[0-9],\"(.*)\"/ ); // get what's between the last double quotes
+          if (alternative) {
+            // if no match found but there is a 3rd parameter, replace with this instead.
+            msg = msg.replace(matchPart[i], alternative[1].replaceAll("\\,",","));
             continue;
           }
-					if (!gMsgCompose.originalMsgURI) debugger;
-					util.logDebugOptional('parseModifier','matched variable [' + i + ']: ' + matchPart[i]);
-					let patternArg = matchPart[i].match(   /(\"[^"].*?\")/   ), // get argument (includes quotation marks) ? non greedy
-							hdr = (composeType!="new") ? new SmartTemplate4.getHeadersWrapper(gMsgCompose.originalMsgURI) : null,
-							extractSource = '',
-							rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
-					switch(fromPart) {
-						case 'subject':
-							util.addUsedPremiumFunction('matchTextFromSubject');
-							if (!hdr) {
-								msg = msg.replace(matchPart[i], "");
-								util.logToConsole("matchText() - matchTextFromSubject failed - couldn't retrieve header from Uri [" + gMsgCompose.originalMsgURI + "] - did you REPLY to a message?");
-								extractSource = gMsgCompose.compFields.subject;
-							}
-							else {
-								let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-										charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
-								extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("subject"), charset);
-							}
-							util.logDebugOptional('parseModifier',"Extracting " + rx + " from Subject:\n" + extractSource);
-							break;
-						case 'body':
-							let rootEl = gMsgCompose.editor.rootElement;
-							extractSource = rootEl.innerText;
-							// util.popupLicenseNotification("matchTextFromBody", true, true);
-							util.addUsedPremiumFunction('matchTextFromBody');
-							util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
-							break;
-						default:
-							throw("Unknown source type:" + fromPart);
-					}
-					if (patternArg) {
-						let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ), // match group number
-						    removePat = false;
-						if (extractSource) {
-							let result = rx.exec(extractSource); // extract Pattern from body
-							if (result && result.length) {
-								let group = groupArg ? parseInt(groupArg[1]) : 0,
-								    replaceGroupString = '';
-								if (isNaN(group)) group = 0;
-								if (group>result.length) {
-									util.logToConsole("Your group argument [" + group + "] is too high, do you have enough (round brackets) in your expression?");
-								}
-								else {
-									if (groupArg==null) { // [Bug 26634] third parameter is a replacement string
-										// check for string arg - after second comma: %header.append.matchFromSubject(hdr,regex,"replaceText"])%
-										let commaPos = matchPart[i].lastIndexOf(",\"");
-										if (commaPos>0) {
-											let thirdArg = matchPart[i].substring(commaPos), // search for end of string ")
-											    endPos = thirdArg.indexOf("\")");
-											if (endPos>0) {
-												replaceGroupString = thirdArg.substring(2,endPos);
-											}
-											else {
-												util.logToConsole("replaceText - last string parameter is not well formed.");
-												replaceGroupString = ""; // not well formed
-											}
-										} 
-									}
-									else {
-                    if (group>result.length-1)
-                      replaceGroupString ="";
-                    else
-                      replaceGroupString = result[group];
-                  }
-									// retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
-								}
-                if (isClipboardPart) {
-                  util.clipboardWrite(replaceGroupString); // [issue 187]
-                  if (!replaceGroupString) {
-                    msg = msg.replace(matchPart[i], ""); 
-                  } else { 
-                    msg = msg.replace(matchPart[i], `%toclipboard(${replaceGroupString})%`);// [issue 210]
-                  }
-                }
-                else {
-                  util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
-                  msg = msg.replace(matchPart[i], replaceGroupString);
-                }
-							}
-							else {       
-                // not matched, insert string from third parameter
-							  let alternative = matchPart[i].match( /[0-9],\"(.*)\"/ ); // get what's between the last double quotes
-                if (alternative && alternative!="toclipboard") {
-                  // if no match found but there is a 3rd parameter, replace with this instead.
-                  msg = msg.replace(matchPart[i], alternative[1]);
-                }
-                else {
-                  // [Bug 26512] - if matchText is used multiple times, the result is blank  
-                  if (isClipboardPart) {
-                    msg = msg.replace(matchPart[i],"%toclipboard()%"); // overwrite the clipboard with empty string!
-                  }
-                  else {
-                    msg = msg.replace(matchPart[i],"");
-                  }
-                }
-							}
-						}
-						else removePat = true;
-						if (removePat) {
-							util.logDebug("pattern not found in " + fromPart + ":\n" + regX);
-							msg = msg.replace(matchPart[i],"");
-						}
-					} 
-				}
-			} // matches loop
+          // [Bug 26512] - if matchText is used multiple times, the result is blank  
+          if (isClipboardPart) {
+            msg = msg.replace(matchPart[i],"%toclipboard()%"); // overwrite the clipboard with empty string!
+          } else {
+            msg = msg.replace(matchPart[i],"");
+          }
+          continue;
+        }
+
+        // we have a match result, continue
+        let group = groupArg ? parseInt(groupArg[1]) : 0,
+            replaceGroupString = '';
+        if (isNaN(group)) group = 0;
+        if (group>result.length) {
+          util.logToConsole("Your group argument [" + group + "] is too high, do you have enough (round brackets) in your expression?");
+        } else {
+          if (groupArg==null) { // [Bug 26634] third parameter is a replacement string
+            // check for string arg - after second comma: %header.append.matchFromSubject(hdr,regex,"replaceText"])%
+            let commaPos = matchPart[i].lastIndexOf(",\""); // search for last ," ...
+            if (commaPos>0) {
+              let thirdArg = matchPart[i].substring(commaPos), // search for end of string ... ")
+                  endPos = thirdArg.indexOf("\")");
+              if (endPos>0) {
+                replaceGroupString = thirdArg.substring(2,endPos).replaceAll("\\,",","); // [issue 280]
+              } else {
+                util.logToConsole("replaceText - last string parameter is not well formed.");
+                replaceGroupString = ""; // not well formed
+              }
+            } 
+          } else {
+            if (group>result.length-1) {
+              replaceGroupString ="";
+            } else {
+              replaceGroupString = result[group];
+            }
+          }
+          // retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
+        }
+        if (isClipboardPart) {
+          util.clipboardWrite(replaceGroupString); // [issue 187]
+          if (!replaceGroupString) {
+            msg = msg.replace(matchPart[i], ""); 
+          } else { 
+            msg = msg.replace(matchPart[i], `%toclipboard(${replaceGroupString})%`);// [issue 210]
+          }
+        } else {
+          util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
+          msg = msg.replace(matchPart[i], replaceGroupString);
+        }
+
+      } // for loop of all match expressions
+    
 		}	
 		catch	(ex) {
 			util.logException('matchText(' + regX + ', ' + fromPart +') failed:', ex);
@@ -1985,9 +1982,21 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
 	}
 	
   function parseParams(cmd, cmdParameters, functionName) {
-    let dText1, dText2,
-        theStrings = cmd.split(",");
-    
+    let rx = new RegExp(/(\([^%]*)\)%/gm),
+        ar = rx.exec(cmd),
+        paramString = (ar.length>1) ? ar[1] : "";  // get params (within)
+    // remove parentheses
+    if (paramString.length>2) {
+      paramString = paramString.substring(1);
+    }
+
+    // combine 1st parameter parts
+    let theStrings = SmartTemplate4.Util.combineEscapedParams(paramString.split(","), 0);
+    if (theStrings.length>1) {
+      theStrings = SmartTemplate4.Util.combineEscapedParams(theStrings, 1); // combine 2nd parameter parts
+    }
+
+    let dText1, dText2;
     if (theStrings.length>=2) {
       dText1 = theStrings[0].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
       dText2 = theStrings[1].match(   /\"[^)].*\"/   )
@@ -1997,17 +2006,15 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
       let errTxt = "Splitting " + functionName + "(a,b) arguments could not be parsed.",
           errDetail;
       
-      if (!dText1)
-        errDetail = "1st argument missing.";
-      else if (!dText2)
-        errDetail = "2nd argument missing.";
-      else if (dText1.length + dText2.length < 2) {
+      if (!dText1) {
+        errDetail = `1st argument missing or malformed: ${dText1}`;
+      } else if (!dText2) {
+        errDetail = `2nd argument missing or malformed: ${dText2}`;
+      } else if (dText1.length + dText2.length < 2) {
         errDetail = "arguments malformed.";
-      }
-      else if (dText1.length + dText2.length > 2) {
+      } else if (dText1.length + dText2.length > 2) {
         errDetail = "Argument contains quote marks - not supported.";
-      }
-      else {
+      } else {
         // msg = msg.replace(util.unquotedRegex(dText1[0], true), util.unquotedRegex(dText2[0]));
         // pass back results
         cmdParameters.p1 = dText1[0];
@@ -2021,12 +2028,14 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
       if(errDetail)
         util.logToConsole(errTxt
           + '\n ' + errDetail
-        + '\n Arguments have to be enclosed in double quotes.');
+          + '\n Arguments have to be enclosed in double quotes!'
+          + '\n Commas must be escaped with \\ or they will create separate parameters',
+          theStrings);
     }
     else {
       util.logDebug('Splitting ' + functionName + '(a,b) did not return >= 2 arguments. '
-        + '\n Arguments may not contain comma or double quotes.'
-        + '\n Special characters such as # must be escaped with backslash.');
+        + '\n Arguments may not contain double quotes.'
+        + '\n Special characters such as # and commas must be escaped with backslash.');
     }    
     return false;
   }
@@ -2827,32 +2836,30 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 			util.addUsedPremiumFunction('header.' + cmd);
       let targetString = '',
           modType = '',
-          argument = argString.substr(argString.indexOf(",")+1); 
+          textParamList = argString.substr(argString.indexOf(",")+1); // textParam
 			switch (matchFunction) {
 				case "": // no matchFunction, so argString is literal
           if (cmd=="deleteFromSubject") {
-            argument = argString.substr(1); // cut off opening parenthesis
+            textParamList = argString.substr(1); // cut off opening parenthesis
           }
-          argument = argument.substr(0, argument.lastIndexOf(")"));
-          let multiArgs=[];
-          if (argument.includes(",clipboard") || argument.includes("clipboard,")) {
-            multiArgs = argument.split(",");
-          } else {
-            multiArgs = [argument];
-          }
-          argument = "";
+          textParamList = textParamList.substr(0, textParamList.lastIndexOf(")"));
+
+          let multiArgs = textParamList.split(",");
+          multiArgs = util.combineEscapedParams(multiArgs,0); // fixed escaped \, by combining
+
+          // rebuild string
+          textParamList = "";
           for (let a of multiArgs) {
             // support adding multiple string arguments
             if (a=="clipboard") { // [issue 183]
               if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
-                argument = "";
                 util.addUsedPremiumFunction("clipboard");
-              }
-              else {
-                argument += util.clipboardRead();
+              } else {
+                textParamList += util.clipboardRead();
               }
             } else {
-              argument += a.replace(/^"(.*)"$/, '$1'); // remove quotes at start and end
+              // remove quotes at start and end and replace escaped commas
+              textParamList += a.replace(/^"(.*)"$/, '$1').replaceAll("\\,",","); 
             }
           }
 				  break;
@@ -2862,14 +2869,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 					
 					if (matchFunction == 'matchFromBody') {
 						// Insert replacement from body of QUOTED email!
-						argument = matchText(regX, 'body');
+						textParamList = matchText(regX, 'body');
 					}
 					else  {
 						// Insert replacement from subject line
-						argument = matchText(regX, 'subject');
+						textParamList = matchText(regX, 'subject');
 					}
 					// if our match returns nothing, then do nothing (prevent from overwriting existing headers).
-					if (argument == '') return '';
+					if (textParamList == '') return '';
 				  break;
 				default:
           util.logToConsole("invalid matchFunction: " + matchFunction);
@@ -2878,19 +2885,18 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       try {
         let isClobberHeader = false;
        
-        util.logDebug("modifyHeader(" + hdrField +", " + cmd + ", " + argument+ ")");
+        util.logDebug("modifyHeader(" + hdrField +", " + cmd + ", " + textParamList+ ")");
         if (whiteList.indexOf(hdrField)<0) {
           // not in whitelist
           if (hdrField.toLowerCase().startsWith("list") || hdrField.toLowerCase().startsWith("x-")) { // allow modification of all custom headers x-...
             isClobberHeader = true;
-          }
-          else {
+          } else {
             util.logToConsole("invalid header - no permission to modify: " + hdrField + 
               "\nSupported headers: " + whiteList.join(', '));
-            return '';
+            return "";
           }
         }
-        // get
+        // get header
         modType = 'address';
         switch (hdrField) {
           case 'subject':
@@ -2925,12 +2931,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             else modType = '';
             break;
         }
-        // modify
+        // modify header
         switch (modType) {
           case 'string': // single string
             switch (cmd) {
               case 'set':
-                targetString = argument; 
+                targetString = textParamList; 
                 break;
               case 'prefix':
                 let replyPrefix = targetString.lastIndexOf(':'),
@@ -2938,24 +2944,24 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 if (replyPrefix>0) { // caveat: won't work well if subject also contains a ':'
                   // cut off Re: Fwd: etc.
                   testSubject = targetString.substr(0, replyPrefix).trim();
-                  if (testSubject.indexOf(argument)>=0) break; // keyword is (anywhere) before colon?
+                  if (testSubject.indexOf(textParamList)>=0) break; // keyword is (anywhere) before colon?
                   // cut off string after last prefix to restore original subject
                   testSubject = targetString.substr(replyPrefix+1).trim(); // where we can check at the start...
                 }
                 // keyword is immediately after last colon, or start of original subject
-                if (testSubject.indexOf(argument)!=0)  { // avoid duplication!
-                  targetString = argument + targetString; 
+                if (testSubject.indexOf(textParamList)!=0)  { // avoid duplication!
+                  targetString = textParamList + targetString; 
                 }
                 break;
               case 'append':
                 // problem - if there are encoding breaks, will this comparison fail?
-                let argPos = targetString.toLowerCase().trim().lastIndexOf(argument.toLowerCase().trim()); // avoid duplication
-                if (argPos < 0 || argPos < targetString.length-argument.length ) 
-                  targetString = targetString + argument; 
+                let argPos = targetString.toLowerCase().trim().lastIndexOf(textParamList.toLowerCase().trim()); // avoid duplication
+                if (argPos < 0 || argPos < targetString.length-textParamList.length ) 
+                  targetString = targetString + textParamList; 
                 break;
 							case 'delete': // remove a substring, e.g. header.delete(subject,"re: | Fwd: ")
               case 'deleteFromSubject':
-							  let pattern = new RegExp(argument, "gm");
+							  let pattern = new RegExp(textParamList, "gm");
 							  targetString = targetString.replace(pattern,"").replace(/\s+/g, ' '); // remove and then collapse multiple white spaces
 							  break;
             }
@@ -2963,7 +2969,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           case 'address': // address field
             switch (cmd) {
               case 'set': // overwrite address field
-                targetString = argument.toString(); 
+                targetString = textParamList.toString(); 
                 break;
               case 'prefix':
                 // targetString = argument.toString() + ' ' + targetString; 
@@ -2971,13 +2977,13 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 break;
               case 'append': // append an address field (if not contained already)
                              // also omit in Cc if already in To and vice versa
-                if (hdrField=='cc' && ComposeFields.to.toLowerCase().indexOf(argument.toLowerCase())>=0)
+                if (hdrField=='cc' && ComposeFields.to.toLowerCase().indexOf(textParamList.toLowerCase())>=0)
                   break;
-                if (hdrField=='to' && ComposeFields.cc.toLowerCase().indexOf(argument.toLowerCase())>=0)
+                if (hdrField=='to' && ComposeFields.cc.toLowerCase().indexOf(textParamList.toLowerCase())>=0)
                   break;
                 
-                if (targetString.toLowerCase().indexOf(argument.toLowerCase())<0) {
-                  targetString = targetString + ', ' + argument; 
+                if (targetString.toLowerCase().indexOf(textParamList.toLowerCase())<0) {
+                  targetString = targetString + ', ' + textParamList; 
                 }
                 break;
             }
@@ -3014,7 +3020,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 					case 'priority':
             isDataModified = false;
 					  const validVals = ["Highest", "High", "Normal", "Low", "Lowest"];
-						let found = validVals.find(f => f.toLowerCase() == argument);
+						let found = validVals.find(f => f.toLowerCase() == textParamList);
 						if (found) {
 							try {
 								util.logDebug("Setting priority to: " + found);
@@ -3565,9 +3571,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "toclipboard":
           if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
             util.addUsedPremiumFunction("toclipboard");
-          }
-          else {
-            util.clipboardWrite(args[0].replace(/^"(.*)"$/, "$1"));
+          } else {
+            let newArgs = util.combineEscapedParams(args, 0); // support (escaped) commas in string!
+            util.clipboardWrite(newArgs[0].replace(/^"(.*)"$/, "$1"));
           }
           return "";
 
@@ -3705,28 +3711,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     return html;
   }
 
-  // function that fixes commas in first parameter,
-  // you can now add escaped \, in the first (string) parameter
-  // of functions that take a text as param
-  // only exception: strings may not end with a "\" !
-  function combineEscapedParams(arr) {
-    let finalParams = [];
-    if (arr[0].endsWith("\\") && arr.length > 1) {
-      finalParams.push(arr[0].slice(0, -1) + arr[1]) ; // cut off the escape character!
-      for (let i=2; i<arr.length; i++) {
-        finalParams.push(arr[i]);
-      }
-      // do it again, in case there are multiple commas in the first parameter!
-      return combineEscapedParams(finalParams)
-    } else {
-      finalParams = arr;
-    }
-    return finalParams;
-  }
 
   function createPreHeader(args) {
     // %preheader("textContent",className,"inlineRules")%
-    let params = combineEscapedParams( args.split(","));
+    let params = SmartTemplate4.Util.combineEscapedParams(args.split(","));
     // we need to create a <span class="className" style="display:none;[inlineRules]">textContent</span>
     // this tag must be injected into <body> as FIRST ELEMENT.
     let textContent = params[0],
@@ -3786,10 +3774,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
     let newPath = util.getPathFolder(currentPath, path);
                      
-    if (type.match( /(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/))
+    if (type.match( /(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/)) {
       type = 'image';
-    if (type.match(/(htm|html|xhtml|xml)$/)) 
+    }
+    if (type.match(/(htm|html|xhtml|xml)$/)) {
       isHTML = true;
+    }
     util.logDebug("insertFile - type detected: " + type);
     // find out whether path is relative:
     let isAbsolute = util.isFilePathAbsolute(path);
@@ -3914,12 +3904,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case 'image':
           let imgPath, alt = "", imageAttributes="";
           if (arr.length>1) {
+            arr = SmartTemplate4.Util.combineEscapedParams(arr,1); // combine comma separated parameters
             for (let i=1; i<arr.length; i++) {
               let el = arr[i];
               if (el.includes("=")) {
                 imageAttributes = imageAttributes + " " + el;
-              }
-              else {
+              } else {
                 // don't escape this as it should be pure text. We cannot accept ,'
                 alt = " alt='" + arr[1].replace("'","").replace(/\"/gm, "") + "'";
               }

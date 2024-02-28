@@ -2480,6 +2480,33 @@ SmartTemplate4.Util = {
 		return formatArray;
 	} ,
 	
+	// Repair Parameter Array (that was split using ,)
+  // that has a string parameter containing an escaped comma \,
+	//--------------------------------------------------------------------
+	// @arr = Array of parameters
+	// @paramPos = [optional] which parameter will be converted, defaults to 0 (first parameter) 
+  combineEscapedParams: function (arr, paramPos = 0) {
+    let finalParams = [];
+
+    for (let i=0; i<paramPos; i++)  {
+      finalParams.push(arr[i]);
+    }
+
+    if (arr[paramPos].endsWith("\\") && arr.length > 1) {
+      // cut off the escape character, insert comma and combine 2 params into a single string
+      finalParams.push(`${arr[paramPos].slice(0, -1)},${arr[paramPos+1]}`) ; 
+      for (let i=paramPos+2; i<arr.length; i++) {
+        finalParams.push(arr[i]);
+      }
+      // do it again, in case there are multiple commas in the first parameter!
+      return this.combineEscapedParams(finalParams, paramPos); // do it again, in case next param is also cut off unintentionally
+    } else {
+      finalParams = arr;
+    }
+    return finalParams;
+  } ,
+
+
   /**
    * Installs the toolbar button with the given ID into the given
    * toolbar, if it is not already present in the document.

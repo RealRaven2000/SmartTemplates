@@ -678,25 +678,28 @@ SmartTemplate4.Settings = {
 					editBox = headerBox;
 				}
 			}
-      if (code.includes('%file')) {
-        code = settings.getFileName(code, editBox, "file");
-        return; // cancel
-      }
-      if (code.includes('%style')) {
-        code = settings.getFileName(code, editBox, "style");
-        return; // cancel
-      }
-      if (code.includes('%basepath(')) {
-        code = settings.getFileName(code, editBox, "basepath");
-        return; // cancel
-      }
-      if (code.includes('%attach')) {
-        code = settings.getFileName(code, editBox, "attach");
-        return; // cancel
-      }
-      if (code.includes('%header.')) {
-        code = settings.getHeaderArgument(code);
-      }
+			let fname = code.match(/%(.*?)\(/)[1];  // %header.set(blabla)%
+			let baseFunction = fname.split(".")[0]; // header[.set]
+			switch (baseFunction) {
+				case "file":
+					code = settings.getFileName(code, editBox, "file");
+					return; // cancel
+				case "style":
+					code = settings.getFileName(code, editBox, "style");
+					return; // cancel
+				case "basepath": 
+					code = settings.getFileName(code, editBox, "basepath");
+					return; // cancel
+				case "attach": 
+					code = settings.getFileName(code, editBox, "attach");
+					return; // cancel
+				case "header": 
+					code = settings.getHeaderArgument(code);
+					break;
+				case "preheader":
+					code = settings.getHeaderArgument(code);
+					break;
+			}
 			
 			settings.insertAtCaret(editBox, code);
 		}
@@ -781,24 +784,39 @@ SmartTemplate4.Settings = {
       }
     }
     
-		if (fp.open)
+		if (fp.open) {
 			fp.open(fpCallback);		
+		}
     
     return true;    
   } ,
 
   // header.set(subject,"text")
   // header.set(to,"abc@de.com")
-  getHeaderArgument: function getHeaderArgument(code) {
+  getHeaderArgument: function (code) {
     let txtArg;
-    if (code.indexOf('subject')>0)  {
-      txtArg = prompt(SmartTemplate4.Util.getBundleString("prompt.text"));
-      return code.replace("text", txtArg);
-    }
-    else {
-      txtArg = prompt(SmartTemplate4.Util.getBundleString("prompt.email"));
-      return code.replace("abc@de.com", txtArg);
-    }
+		let argString = code.match(/(\([^%]*\))/gm)[0]; // what's parameters? (cc,"my text")
+		let args = argString.substr(1,argString.length-2).split(',');
+		if (args[1].startsWith("clipboard") || args[1].startsWith("toclipboard")) {
+			// no prompt!
+			return code; 
+		}
+
+		if (code.startsWith("%preheader")) {
+			txtArg = prompt(SmartTemplate4.Util.getBundleString("prompt.text")) || "";
+			// [issue 280] escape \,
+			// we omit className, inline Styles for ease of use.
+			return `%preheader("${txtArg.replaceAll(",","\\,")}")%`; 
+		} 
+
+		switch(args[0]) {
+			case "subject":
+				txtArg = prompt(SmartTemplate4.Util.getBundleString("prompt.text")) || "";
+				return code.replace("text", txtArg.replaceAll(",","\\,")); // [issue 280] escape \,
+			default:  // address param
+				txtArg = prompt(SmartTemplate4.Util.getBundleString("prompt.email")) || "";
+				return code.replace("abc@de.com", txtArg);
+		}
   } ,
   
 	// Setup cloned nodes and replace preferences strings
