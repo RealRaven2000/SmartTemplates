@@ -1554,7 +1554,9 @@ SmartTemplate4.fileTemplates = {
     // update recipients!!
     try {
       Recipients2CompFields(gMsgCompose.compFields);
-    } catch (ex) { SmartTemplate4.Util.logException("insertFileEntryInComposer() updating compFields.", ex); }
+    } catch (ex) { 
+      SmartTemplate4.Util.logException("insertFileEntryInComposer() updating compFields.", ex); 
+    }
 
     const isFormatCSS = (theFileTemplate.path.endsWith(".css"));
     if (!html) {
@@ -1570,13 +1572,14 @@ SmartTemplate4.fileTemplates = {
           // sel.getRangeAt(0).toString();
           selectedText = SmartTemplate4.smartTemplate.unpackSelection(sel);  
         }
-        if (selectedText && selectedText.length)
+        if (selectedText && selectedText.length) {
           html = html.replace("*selection*", selectedText);
-        else
+        } else {
           html = html.replace("*selection*", "%cursor%");
-      }
-      else
+        }
+      } else {
         html = html.replace("*selection*", "%cursor%");
+      }
       
       if (!SmartTemplate4.Util.hasProLicense) {
         SmartTemplate4.Util.addUsedPremiumFunction("snippetSelection");
@@ -1606,6 +1609,7 @@ SmartTemplate4.fileTemplates = {
       );
     }
     else {
+      flags.isFragment = true;
       flags.isFileTemplate = true;
       if (!flags.filePaths) flags.filePaths = [];
       SmartTemplate4.Util.logDebugOptional("fileTemplates", `insertFileEntryInComposer: Add file to template stack: ${theFileTemplate.path}`);

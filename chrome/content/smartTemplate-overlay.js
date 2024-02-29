@@ -2086,6 +2086,34 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
       return "'" + node.textContent + "'";
     return "<" + aS + ">";
   }
+
+  function replaceBody(findX, replaceX) {
+    // iterate all childNodes except for blockquotes.
+    const ELEMENT_NODE = 1, TEXT_NODE = 3;
+    let rootEl = gMsgCompose.editor.rootElement;
+    for (let i=0; i<rootEl.childNodes.length; i++) {
+      try {
+        let el = rootEl.childNodes[i];
+        switch (el?.nodeType) {
+          case ELEMENT_NODE:
+            if (el?.tagName && el.tagName.toLowerCase()=="blockquote") {
+              continue;
+            }
+            if (el.innerHTML && el.innerHTML.search(findX)>=0) {
+              el.innerHTML = el.innerHTML.replace(findX, replaceX);
+            }
+            break;
+          case TEXT_NODE:
+            if (el.textContent.search(findX)>=0) {
+              el.textContent = el.textContent.replace(findX, replaceX);
+            }
+            break;
+        }
+      } catch(ex) {
+        SmartTemplate4_streamListener.Util.logDebugOptional("functions.getProcessedText ", ex);
+      }
+    }
+  }
   
 	const util = SmartTemplate4.Util,
 	      prefs = SmartTemplate4.Preferences,
@@ -2116,7 +2144,12 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
 				msg = msg.replace(matches[i],'');
 				let dText = matches[i].match(   /(\"[^)].*\")/   ); // get argument (includes quotation marks)
 				if (dText) {
-					msg = msg.replace(util.unquotedRegex(dText[0], true), "");
+          if (SmartTemplate4.PreprocessingFlags.isFragment) {
+            // replace in body
+            replaceBody(util.unquotedRegex(dText[0], true), "");
+          } else {
+					  msg = msg.replace(util.unquotedRegex(dText[0], true), "");
+          }
 				}
 			}
 		}
@@ -2135,7 +2168,12 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         msg = msg.replace(matchesR[i], '');
         let params = {p1: null, p2: null, p3: null, p4: 0};
         if (parseParams(matchesR[i], params, 'replaceText')) {
-          msg = msg.replace(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
+          if (SmartTemplate4.PreprocessingFlags.isFragment) {
+            // replace in body
+            replaceBody(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
+          } else {
+            msg = msg.replace(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
+          }
         }
       }
     }

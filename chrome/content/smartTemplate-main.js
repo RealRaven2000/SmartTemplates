@@ -370,6 +370,7 @@ var SmartTemplate4 = {
     isStationery: false,
     isThunderbirdTemplate: false,
     isFileTemplate: false,
+    isFragment: false,
     preHeader: null, // [issue 274]
     modifiedHeaders: [] // list of header vars that may have received new content; need to be updated in deferredVars
   },
@@ -387,6 +388,7 @@ var SmartTemplate4 = {
     flags.isFileTemplate = false;
     flags.modifiedHeaders = [];
     flags.preHeader = null;
+    flags.isFragment = false;
   } ,
 
   // -------------------------------------------------------------------
