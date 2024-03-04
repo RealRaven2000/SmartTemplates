@@ -1895,7 +1895,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
             util.logDebugOptional('parseModifier',"Extracting " + rx + " from Subject:\n" + extractSource);
             break;
           case 'body':
-            let rootEl = gMsgCompose.editor.rootElement;
+            let rootEl = SmartTemplate4.composer.body;
             extractSource = rootEl.innerText;
             // util.popupLicenseNotification("matchTextFromBody", true, true);
             util.addUsedPremiumFunction('matchTextFromBody');
@@ -2087,10 +2087,10 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
     return "<" + aS + ">";
   }
 
-  function replaceBody(findX, replaceX) {
+  function replaceInBody(findX, replaceX) {
     // iterate all childNodes except for blockquotes.
     const ELEMENT_NODE = 1, TEXT_NODE = 3;
-    let rootEl = gMsgCompose.editor.rootElement;
+    let rootEl = SmartTemplate4.composer.body;
     for (let i=0; i<rootEl.childNodes.length; i++) {
       try {
         let el = rootEl.childNodes[i];
@@ -2110,7 +2110,9 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
             break;
         }
       } catch(ex) {
-        SmartTemplate4_streamListener.Util.logDebugOptional("functions.getProcessedText ", ex);
+        SmartTemplate4_streamListener.Util.logDebugOptional("parseModifier", 
+          `replaceInBody(${findX}, ${replaceX})`, 
+          ex);
       }
     }
   }
@@ -2146,7 +2148,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
 				if (dText) {
           if (SmartTemplate4.PreprocessingFlags.isFragment) {
             // replace in body
-            replaceBody(util.unquotedRegex(dText[0], true), "");
+            replaceInBody(util.unquotedRegex(dText[0], true), "");
           } else {
 					  msg = msg.replace(util.unquotedRegex(dText[0], true), "");
           }
@@ -2170,7 +2172,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         if (parseParams(matchesR[i], params, 'replaceText')) {
           if (SmartTemplate4.PreprocessingFlags.isFragment) {
             // replace in body
-            replaceBody(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
+            replaceInBody(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
           } else {
             msg = msg.replace(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
           }
@@ -2194,7 +2196,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         let theStrings = quoteMatches[i].split(","),
 				    dText = theStrings[0].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
             minQuoteLevel = (theStrings.length>1) ? parseInt(theStrings[1]) : 1,
-            rootEl = gMsgCompose.editor.rootElement;
+            rootEl = SmartTemplate4.composer.body;
         const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
         
         if (dText && dText.length) {
@@ -2247,7 +2249,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
           let minQuoteLevel = params.p3,
               s = util.unquotedRegex(params.p1, true),
               r = util.unquotedRegex(params.p2), 
-              rootEl = gMsgCompose.editor.rootElement;
+              rootEl = SmartTemplate4.composer.body;
           const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
           
           if (!isHTML) {
@@ -2297,7 +2299,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
 				    dText = theStrings[0].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
             minQuoteLevel = (theStrings.length>1) ? parseInt(theStrings[1]) : 1,
             minSize = (theStrings.length>2) ? parseInt(theStrings[2]) : 0,
-            rootEl = gMsgCompose.editor.rootElement;
+            rootEl = SmartTemplate4.composer.body;
         const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
         
         // [issue 172] treat forwarded text as "quote"
@@ -2363,7 +2365,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
               minSize = params.p4 || 0,
               s = util.unquotedRegex(params.p1),
               r = util.unquotedRegex(params.p2),
-              rootEl = gMsgCompose.editor.rootElement;
+              rootEl = SmartTemplate4.composer.body;
           const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
           
           // [issue 172] treat forwarded text as "quote"
@@ -2792,7 +2794,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 								util.logDebugOptional('parseModifier',"Extracting " + rx + " from Subject:\n" + extractSource);
 								break;
 							case 'body':
-								let rootEl = gMsgCompose.editor.rootElement;
+								let rootEl = SmartTemplate4.composer.body;
 								// we may still need to remove the div.moz-cite-prefix, let's look for a blockquote
 								if (rootEl.childNodes.length) {
 									for (let c=0; c<rootEl.childNodes.length; c++ ) {
@@ -3553,7 +3555,24 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "preheader":
           // we do the processing after everything else to make sure we can inject the code
           // at the top when everything else is processed.
-          SmartTemplate4.PreprocessingFlags.preHeader = createPreHeader(removeParentheses(arg));
+          {
+            let text = removeParentheses(arg);
+            if (text.includes("*clipboard*")) {  // %preheader("Some Preheader text: *clipboard*","color:transparent")%
+              text = text.replace(/\*clipboard\*/,util.clipboardRead()) ;
+            }
+            if (text.split(",")[0]=="clipboard" )  { // %preheader(clipboard[,styleParams][,class])%
+              text = text.replace("clipboard", `${util.clipboardRead()}`);
+            }
+
+            const preHeader = createPreHeader(text);
+            // if code runs interactively (Smart Fragment), we must inject the preheader right away!
+            if (SmartTemplate4.PreprocessingFlags.isFragment) {
+              let preheaderEl = SmartTemplate4.composer.buildPreHeaderElement(preHeader);
+              SmartTemplate4.composer.injectPreHeaderElement(preheaderEl);
+            } else {
+              SmartTemplate4.PreprocessingFlags.preHeader = preHeader;
+            }
+          }
           return "";
 				case "identity":
 				  /////

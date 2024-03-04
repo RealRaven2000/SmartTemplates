@@ -1573,7 +1573,7 @@ SmartTemplate4.fileTemplates = {
           selectedText = SmartTemplate4.smartTemplate.unpackSelection(sel);  
         }
         if (selectedText && selectedText.length) {
-          html = html.replace("*selection*", selectedText);
+          html = html.replace("*selection*", selectedText.replaceAll(",","\\,")); // escape all commas
         } else {
           html = html.replace("*selection*", "%cursor%");
         }

@@ -822,6 +822,28 @@
   "pref_variables.tab": {
     "message": "Variabel"
   },
+  "preheader": {
+    "message": "Sebuah teks pratinjau hanya terlihat untuk klien email mobile, yang akan dimasukkan di awal badan email."
+  },
+  "preheader.className": {
+    "message": "[opsional] Anda dapat menambahkan kelas CSS untuk mengubah tata letak."
+  },
+  "preheader.inlineStyles": {
+    "message": "[opsional] Tambahkan gaya atribut Anda sendiri, dipisahkan oleh titik koma. Tanpa parameter ini, SmartTemplates akan memasukkan 'display:none' secara otomatis untuk membuat bagian tersebut tidak terlihat."
+  },  
+  "preheader.text": {
+    "message": "Teks pratinjau harus berada dalam tanda kutip ganda, yang juga dapat berisi kata kunci *clipboard*. Sebagai alternatif, Anda dapat menggunakan $clipboardLiteral$ atau $selectionLiteral$ (yang terakhir hanya berfungsi ketika digunakan dari Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },  
   "premiumConfig": {
     "message": "Fitur Premium"
   },

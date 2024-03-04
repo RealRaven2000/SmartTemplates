@@ -1066,6 +1066,28 @@
   "pref_variables.tab": {
     "message": "Variabelen"
   },
+  "preheader": {
+    "message": "Een voorbeeldtekst die alleen zichtbaar is voor mobiele e-mailclients, die aan het begin van het e-maillichaam zal worden ingevoegd."
+  },
+  "preheader.className": {
+    "message": "[optioneel] U kunt een CSS-klasse toevoegen om het lay-out te wijzigen."
+  },
+  "preheader.inlineStyles": {
+    "message": "[optioneel] Voeg uw eigen stijlattributen toe, gescheiden door puntkomma. Zonder deze parameter zal SmartTemplates automatisch 'display:none' invoegen om het gedeelte onzichtbaar te maken."
+  },  
+  "preheader.text": {
+    "message": "De voorbeeldtekst moet tussen dubbele aanhalingstekens staan, die ook het sleutelwoord *clipboard* kunnen bevatten. Als alternatief kunt u $clipboardLiteral$ of $selectionLiteral$ gebruiken (de laatste werkt alleen wanneer deze wordt gebruikt vanuit een Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },  
   "premiumConfig": {
     "message": "Premium-functies"
   },

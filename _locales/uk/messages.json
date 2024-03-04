@@ -1133,6 +1133,19 @@
   "pref_variables.tab": {
     "message": "Змінні"
   },
+  "preheader.text": {
+    "message": "Текст попереднього перегляду повинен бути у подвійних лапках, які також можуть містити ключове слово *clipboard*. Як альтернативу, ви можете використовувати $clipboardLiteral$ або $selectionLiteral$ (останнє працює лише при використанні з Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },
   "premiumConfig": {
     "message": "Преміальні функції"
   },

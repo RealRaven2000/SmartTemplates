@@ -1157,6 +1157,19 @@
   "preheader.inlineStyles": {
     "message": "[optional] Add your own style attributes, separated by semicolon. Without this parameter, SmartTemplates will insert 'display:none' to automatically make the section invisible."
   },   
+  "preheader.text": {
+    "message": "The preview text must be contained within double quotes, which also may contain the *clipboard* keyword. Alternatively you can use $clipboardLiteral$ directly or $selectionLiteral$ (that last one only works when used from a Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  }, 
   "premiumConfig": {
     "message": "Premium Features"
   },

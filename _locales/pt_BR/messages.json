@@ -1051,6 +1051,28 @@
   "pref_variables.tab": {
     "message": "Variáveis"
   },
+  "preheader": {
+    "message": "Um texto de pré-visualização apenas visível para clientes de correio móvel, que será inserido no início do corpo do e-mail."
+  },
+  "preheader.className": {
+    "message": "[opcional] Você pode adicionar uma classe CSS para alterar o layout."
+  },
+  "preheader.inlineStyles": {
+    "message": "[opcional] Adicione seus próprios atributos de estilo, separados por ponto e vírgula. Sem este parâmetro, o SmartTemplates inserirá 'display:none' para tornar a seção automaticamente invisível."
+  }, 
+  "preheader.text": {
+    "message": "O texto de visualização deve ser contido entre aspas duplas, que também podem conter a palavra-chave *clipboard*. Como alternativa, você pode usar $clipboardLiteral$ ou $selectionLiteral$ (este último só funciona quando usado de um Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },  
   "premiumConfig": {
     "message": "Recursos Premium"
   },

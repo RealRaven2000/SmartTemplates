@@ -1036,6 +1036,28 @@
   "pref_variables.tab": {
     "message": "Variabili"
   },
+  "preheader": {
+    "message": "Un testo di anteprima visibile solo ai client di posta elettronica mobile, che verrà inserito all'inizio del corpo dell'email."
+  },
+  "preheader.className": {
+    "message": "[opzionale] È possibile aggiungere una classe CSS per cambiare la formattazione."
+  },
+  "preheader.inlineStyles": {
+    "message": "[opzionale] Aggiungi i tuoi attributi di stile, separati da punto e virgola. Senza questo parametro, SmartTemplates inserirà 'display:none' per rendere automaticamente la sezione invisibile."
+  },  
+  "preheader.text": {
+    "message": "Il testo di anteprima deve essere contenuto tra virgolette doppie, che possono anche contenere la parola chiave *clipboard*. In alternativa, è possibile utilizzare $clipboardLiteral$ o $selectionLiteral$ (quest'ultimo funziona solo quando viene utilizzato da un Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },  
   "premiumConfig": {
     "message": "Caratteristiche Premium"
   },

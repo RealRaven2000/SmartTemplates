@@ -60,6 +60,13 @@ SmartTemplate4.Help = {
 		                          SmartTemplate4.Listener.listen,
 		                          false,
 		                          true);
+		// additional localisation (with parameters)
+		let variablesDocument = document.getElementById("helpFrame")?.contentDocument;
+		let preheaderDesc = variablesDocument?.getElementById("preHeaderText");
+    if (preheaderDesc) {
+      preheaderDesc.textContent =
+				SmartTemplate4.Util.getBundleString("preheader.text",["clipboard", '"*selection*"']);
+    }		
 	} ,
 
 	onUnload : function() {

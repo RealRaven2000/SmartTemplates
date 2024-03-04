@@ -1123,6 +1123,28 @@
   "pref_variables.tab": {
     "message": "Variables"
   },
+  "preheader": {
+    "message": "Un texte de prévisualisation uniquement visible pour les clients de messagerie mobile, qui sera inséré au début du corps de l'email."
+  },
+  "preheader.className": {
+    "message": "[facultatif] Vous pouvez ajouter une classe CSS pour changer la mise en page."
+  },
+  "preheader.inlineStyles": {
+    "message": "[facultatif] Ajoutez vos propres attributs de style, séparés par un point-virgule. Sans ce paramètre, SmartTemplates insérera 'display:none' pour rendre automatiquement la section invisible."
+  },  
+  "preheader.text": {
+    "message": "Le texte de prévisualisation doit être contenu entre guillemets doubles, qui peuvent également contenir le mot clé *clipboard*. En alternative, vous pouvez utiliser $clipboardLiteral$ ou $selectionLiteral$ (ce dernier ne fonctionne que lorsqu'il est utilisé depuis un Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },  
   "premiumConfig": {
     "message": "Fonctionnalités Premium"
   },

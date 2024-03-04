@@ -1069,6 +1069,28 @@
   "pref_variables.tab": {
     "message": "Zmienne"
   },
+  "preheader": {
+    "message": "Tekst podglądu widoczny tylko dla mobilnych klientów poczty elektronicznej, który zostanie wstawiony na początku treści wiadomości e-mail."
+  },
+  "preheader.className": {
+    "message": "[opcjonalnie] Możesz dodać klasę CSS, aby zmienić układ."
+  },
+  "preheader.inlineStyles": {
+    "message": "[opcjonalnie] Dodaj własne style, oddzielone średnikiem. Bez tego parametru SmartTemplates automatycznie wstawi 'display:none', aby automatycznie ukryć sekcję."
+  },  
+  "preheader.text": {
+    "message": "Tekst podglądu musi być zawarty w podwójnych cudzysłowach, które mogą również zawierać słowo kluczowe *clipboard*. W alternatywie można użyć $clipboardLiteral$ lub $selectionLiteral$ (ten ostatni działa tylko wtedy, gdy jest używany z elementu Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },  
   "premiumConfig": {
     "message": "Funkcje premium"
   },

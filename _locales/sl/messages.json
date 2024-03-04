@@ -1075,6 +1075,28 @@
   "pref_variables.tab": {
     "message": "Spremenljivke"
   },
+  "preheader": {
+    "message": "Predogledni besedilo, ki je vidno le za mobilne poštne odjemalce, bo vstavljeno na začetek telesa e-pošte."
+  },
+  "preheader.className": {
+    "message": "[neobvezno] Lahko dodate CSS razred za spremembo postavitve."
+  },
+  "preheader.inlineStyles": {
+    "message": "[neobvezno] Dodajte svoje slogovne atribute, ločene s podpičjem. Brez tega parametra bo SmartTemplates samodejno vstavil 'display:none', da bo del samodejno neviden."
+  },  
+  "preheader.text": {
+    "message": "Predogled besedila mora biti v dvojnih narekovajih, ki lahko vsebujejo tudi ključno besedo *clipboard*. Kot alternativo lahko uporabite $clipboardLiteral$ ali $selectionLiteral$ (ta zadnji deluje samo, ko se uporablja iz pametnega odlomka)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },  
   "premiumConfig": {
     "message": "Lastnosti premium"
   },

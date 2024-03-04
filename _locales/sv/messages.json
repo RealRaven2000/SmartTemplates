@@ -1123,6 +1123,19 @@
   "pref_variables.tab": {
     "message": "Variabler"
   },
+  "preheader.text": {
+    "message": "Förhandsvisningstexten måste vara innesluten i dubbla citat, som också kan innehålla nyckelordet *clipboard*. Som ett alternativ kan du använda $clipboardLiteral$ eller $selectionLiteral$ (det senare fungerar bara när det används från en Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },
   "premiumConfig": {
     "message": "Premiumfunktioner"
   },

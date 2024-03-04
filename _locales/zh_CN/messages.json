@@ -1117,6 +1117,29 @@
   "pref_variables.tab": {
     "message": "变量"
   },
+  "preheader": {
+    "message": "仅在移动邮件客户端可见的预览文本，将插入到电子邮件正文的开头。"
+  },
+  "preheader.className": {
+    "message": "[可选] 您可以添加一个 CSS 类来更改布局。"
+  },
+  "preheader.inlineStyles": {
+    "message": "[可选] 添加您自己的样式属性，以分号分隔。没有这个参数，SmartTemplates 将插入 'display:none' 来自动使该部分不可见。"
+  },
+    
+  "preheader.text": {
+    "message": "预览文本必须包含在双引号内，双引号也可以包含 *clipboard* 关键字。或者您可以使用 $clipboardLiteral$ 或 $selectionLiteral$（后者仅在从智能片段使用时有效）",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },
   "premiumConfig": {
     "message": "高级功能"
   },

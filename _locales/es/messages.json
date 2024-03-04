@@ -1084,6 +1084,28 @@
   "pref_template_tip": {
     "message": "Puede cambiar el encabezado de respuesta por 'variables'. Consulte la Ayuda para más detalles."
   },
+  "preheader": {
+    "message": "Un texto de vista previa solo visible para clientes de correo móvil, que se insertará al principio del cuerpo del correo electrónico."
+  },
+  "preheader.className": {
+    "message": "[opcional] Puede agregar una clase CSS para cambiar el diseño."
+  },
+  "preheader.inlineStyles": {
+    "message": "[opcional] Agregue sus propios atributos de estilo, separados por punto y coma. Sin este parámetro, SmartTemplates insertará 'display:none' para hacer automáticamente la sección invisible."
+  },  
+  "preheader.text": {
+    "message": "El texto de vista previa debe estar contenido dentro de comillas dobles, que también pueden contener la palabra clave *clipboard*. Alternativamente, puede utilizar $clipboardLiteral$ o $selectionLiteral$ (este último solo funciona cuando se usa desde un Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },
   "premiumConfig": {
     "message": "Funcionalidades premium"
   },

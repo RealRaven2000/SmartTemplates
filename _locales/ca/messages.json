@@ -1123,6 +1123,28 @@
   "pref_variables.tab": {
     "message": "Variablas"
   },
+  "preheader": {
+    "message": "Un text de visualització prèvia només visible pels clients de correu electrònic mòbils, que s'inserirà al principi del cos del correu electrònic."
+  },
+  "preheader.className": {
+    "message": "[opcional] Podeu afegir una classe CSS per canviar la disposició."
+  },
+  "preheader.inlineStyles": {
+    "message": "[opcional] Afegiu els vostres propis atributs d'estil, separats per punt i coma. Sense aquest paràmetre, SmartTemplates inserirà 'display:none' per fer automàticament la secció invisible."
+  },  
+  "preheader.text": {
+    "message": "El text previ ha d'estar contingut dins de cometes dobles, que també poden contenir la paraula clau *clipboard*. Alternativament, podeu utilitzar $clipboardLiteral$ o $selectionLiteral$ (aquest últim només funciona quan s'utilitza des d'una Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },
   "premiumConfig": {
     "message": "Funcions premium"
   },

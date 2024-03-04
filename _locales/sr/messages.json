@@ -1057,6 +1057,19 @@
   "pref_variables.tab": {
     "message": "Променљиве"
   },
+  "preheader.text": {
+    "message": "Tekst za pregled mora biti sadržan unutar dvostrukih navodnika, koji takođe mogu sadržati ključnu reč *clipboard*. Kao alternativu, možete koristiti $clipboardLiteral$ ili $selectionLiteral$ (poslednje funkcioniše samo kada se koristi iz Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },  
   "premiumConfig": {
     "message": "Премијум могућности"
   },

@@ -1126,6 +1126,28 @@
   "pref_variables.tab": {
     "message": "Μεταβλητές"
   },
+  "preheader": {
+    "message": "Ένα προεπισκοπήσιμο κείμενο που είναι ορατό μόνο στους φορητούς πελάτες email, το οποίο θα εισαχθεί στην αρχή του σώματος του email."
+  },
+  "preheader.className": {
+    "message": "[προαιρετικό] Μπορείτε να προσθέσετε ένα CSS class για να αλλάξετε τη διάταξη."
+  },
+  "preheader.inlineStyles": {
+    "message": "[προαιρετικό] Προσθέστε τα δικά σας χαρακτηριστικά στιλ, χωρισμένα με ερωτηματικό. Χωρίς αυτή την παράμετρο, το SmartTemplates θα εισάγει αυτόματα 'display:none' για να καθιστά αόρατο το τμήμα."
+  },  
+  "preheader.text": {
+    "message": "Ο προεπισκοπήσιμος κείμενος πρέπει να περιέχεται μέσα σε διπλά εισαγωγικά, τα οποία μπορούν επίσης να περιέχουν τη λέξη-κλειδί *clipboard*. Εναλλακτικά, μπορείτε να χρησιμοποιήσετε $clipboardLiteral$ ή $selectionLiteral$ (αυτό το τελευταίο λειτουργεί μόνο όταν χρησιμοποιείται από ένα Smart Snippet)",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },
   "premiumConfig": {
     "message": "Λειτουργίες Premium"
   },

@@ -221,7 +221,36 @@ SmartTemplate4.composer = {
   // update for license changes
   initLicensedUI: function () {
    
+  },
+
+	buildPreHeaderElement: function(preHeader) {
+    const util = SmartTemplate4.Util;
+		if (!util.hasLicense()  || util.licenseInfo.keyType == 2) {
+			util.addUsedPremiumFunction("preheader");
+		}
+
+		let span = util.mailDocument.createElement("span");
+		const preH = preHeader;
+		span.textContent = preH.text;
+		span.setAttribute("style", preH.styleContent);
+		if (preH.classNames) {
+			span.setAttribute("class", preH.classNames);
+		}
+		return span;
+	},
+
+	injectPreHeaderElement: function(preheaderEl, bodyElement) {
+    if (!bodyElement) {
+      bodyElement = SmartTemplate4.composer.body;
+    }
+    bodyElement.insertBefore(preheaderEl, bodyElement.firstChild);
+	}  ,
+
+  get body() {
+    return gMsgCompose.editor.rootElement;
   }
+
+
   
 };
 

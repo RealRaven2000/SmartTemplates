@@ -1280,7 +1280,7 @@ SmartTemplate4.Util = {
 
 	unquoteParam: function(param) {
 		if (param.startsWith('"')) {
-			return param.substring(1,param.length-2);
+			return param.substring(1,param.length-1);
 		}
 		return param;
 	} ,
@@ -2956,6 +2956,7 @@ SmartTemplate4.Util = {
       return Promise.reject(error);
     }
   }, 	
+
 };  // ST4.Util
 
 

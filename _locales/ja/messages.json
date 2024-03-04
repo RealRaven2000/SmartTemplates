@@ -1105,6 +1105,28 @@
   "pref_variables.tab": {
     "message": "変数"
   },
+  "preheader": {
+    "message": "モバイルメールクライアントのみに表示されるプレビューテキストで、電子メールの本文の先頭に挿入されます。"
+  },
+  "preheader.className": {
+    "message": "[オプション] レイアウトを変更するための CSS クラスを追加できます。"
+  },
+  "preheader.inlineStyles": {
+    "message": "[オプション] セミコロンで区切られた独自のスタイル属性を追加します。このパラメーターがない場合、SmartTemplates はセクションを自動的に非表示にするために 'display:none' を挿入します。"
+  },  
+  "preheader.text": {
+    "message": "プレビューテキストは二重引用符内に含まれている必要があります。これには *clipboard* キーワードも含まれる場合があります。代替として、$clipboardLiteral$ または $selectionLiteral$ を使用することもできます（後者は Smart Snippet から使用される場合のみ機能します）",
+    "placeholders": {
+      "clipboardLiteral": {
+        "content": "$1",
+        "example": "clipboard"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
+      }
+    }
+  },  
   "premiumConfig": {
     "message": "プレミアム機能"
   },

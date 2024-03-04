@@ -111,8 +111,8 @@ SmartTemplate4.classSmartTemplate = function() {
     
 		util.logDebugOptional(
       'functions','extractSignature()\nSTART==========  extractSignature(' + Ident + ', defined type=' + signatureDefined + ', compose type=' + composeType + ')  ========');
-		let bodyEl = gMsgCompose.editor.rootElement,
-		    nodes = gMsgCompose.editor.rootElement.childNodes;
+		let bodyEl = SmartTemplate4.composer.body,
+		    nodes = bodyEl.childNodes;
 		SmartTemplate4.signature = null;
 		SmartTemplate4.sigInTemplate = false;
 
@@ -483,7 +483,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		function countLF(str) { return str.split("\n").length - 1; }
 
 		util.logDebugOptional('functions','SmartTemplate4.delReplyHeader()');
-		let rootEl = gMsgCompose.editor.rootElement,
+		let rootEl = SmartTemplate4.composer.body,
 		    pref = SmartTemplate4.pref,
 		    lines = 0;
 		if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) {
@@ -659,7 +659,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		util.logDebugOptional('functions.delForwardHeader','Retrieved Delimiter Token from mime properties: ' + origMsgDelimiter);
 
 		// Delete original headers
-		let rootEl = gMsgCompose.editor.rootElement,
+		let rootEl = SmartTemplate4.composer.body,
 		    node = rootEl.firstChild,
 		    firstNode = null,
 				skipInPlainText = !gMsgCompose.composeHTML,
@@ -730,7 +730,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	}
 
 	function delForwardedBody() {
-		let rootEl = gMsgCompose.editor.rootElement;		
+		let rootEl = SmartTemplate4.composer.body;		
 		let bdy = rootEl.querySelector("div.moz-forward-container");
 		if (bdy) {
       bdy.parentNode.removeChild(bdy);
@@ -743,8 +743,8 @@ SmartTemplate4.classSmartTemplate = function() {
 	function removePreviousTemplate()	{
 		try {
 			util.logDebugOptional('functions','SmartTemplate4.removePreviousTemplate()');
-			let curEl = gMsgCompose.editor.rootElement.firstChild,
-			    nextEl = gMsgCompose.editor.rootElement.firstChild;
+			let curEl = SmartTemplate4.composer.body.firstChild,
+			    nextEl = curEl;
 			if (nextEl && nextEl.nodeName == "PRE") {
 				nextEl = nextEl.firstChild;
 			}
@@ -766,7 +766,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 			// Restore original quote headers
 			while (orgQuoteHeaders.length > 0) {
-				gMsgCompose.editor.insertNode(orgQuoteHeaders.pop(), gMsgCompose.editor.rootElement, 0);
+				gMsgCompose.editor.insertNode(orgQuoteHeaders.pop(), SmartTemplate4.composer.body, 0);
 			}
 		}
 		catch(ex) {
@@ -1274,7 +1274,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		    templateDiv,
 		    // new global settings to deal with [Bug 25084]
 		    breaksAtTop = prefs.getMyIntPref("breaksAtTop"), 
-		    bodyEl = gMsgCompose.editor.rootElement,
+		    bodyEl = SmartTemplate4.composer.body,
 				preheaderEl = null,
 				bodyContent = '';
 		
@@ -1406,7 +1406,7 @@ SmartTemplate4.classSmartTemplate = function() {
 					for (let i = 0; i < breaksAtTop; i++)  {
 						gMsgCompose.editor.insertNode(
 						                   util.mailDocument.createElement("br"),
-						                   gMsgCompose.editor.rootElement, 0);
+						                   SmartTemplate4.composer.body, 0);
 					}
 					// the first Child should be BLOCKQUOTE (header is inserted afterwards)
 					util.logDebugOptional('composer','Reply on Top - inserting template before first root child');
@@ -1414,7 +1414,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				}
 				else {
 					for (let i = 0; i < breaksAtTop; i++) {
-						gMsgCompose.editor.rootElement.appendChild(util.mailDocument.createElement("br"));
+						SmartTemplate4.composer.body.appendChild(util.mailDocument.createElement("br"));
 					}
 					util.logDebugOptional('composer','Reply at Botton - appending template to first root child');
 					targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
@@ -1648,18 +1648,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 
 			if (SmartTemplate4.PreprocessingFlags.preHeader) { // [issue 274]
-				if (!util.hasLicense()  || util.licenseInfo.keyType == 2) {
-					util.addUsedPremiumFunction("preheader");
-				}
-
-				let span = util.mailDocument.createElement("span");
-				const preH = SmartTemplate4.PreprocessingFlags.preHeader;
-				span.textContent = preH.text;
-				span.setAttribute("style", preH.styleContent);
-				if (preH.classNames) {
-					span.setAttribute("class", preH.classNames);
-				}
-				preheaderEl = span;
+				preheaderEl = SmartTemplate4.composer.buildPreHeaderElement(SmartTemplate4.PreprocessingFlags.preHeader);
 			}
 			
 			// PREMIUM FUNCTIONS
@@ -1855,9 +1844,8 @@ SmartTemplate4.classSmartTemplate = function() {
 		await SmartTemplate4.Util.resolveDeferredBatch(gMsgCompose.editor);
 
 		if (preheaderEl) {
-			bodyEl.insertBefore(preheaderEl, bodyEl.firstChild);
+			SmartTemplate4.composer.injectPreHeaderElement(preheaderEl, bodyEl);			
 		}
-		
 
 
 		resetDocument(gMsgCompose.editor, startup);

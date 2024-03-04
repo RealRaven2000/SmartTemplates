@@ -329,7 +329,9 @@ END LICENSE BLOCK
     # [issue 267] Support for extracting prefix and suffix from address book fields
     # [issue 276] Removed FileUtils.getFile for future compatibility (122 beta)
     # Removed duplicate tooltip on active fields in write new mail
-    # [issue 274] Add %preheader()% variable for injecting preview 
+    # [issue 274] Add %preheader()% variable for injecting preview
+    # [issue 280] You can now use escaped commas within commands that search or replace strings
+    # %replaceText% and %deleteText% now work on the body of the email when used from the Smart Fragments menu
 
 
 =========================
@@ -755,7 +757,7 @@ var SmartTemplate4 = {
         // try replacing the (unprocessed) signature that Thunderbird has inserted.
         if (prefs.getMyBoolPref('parseSignature') && newSig ) {
           // find and replace signature node.
-          let sigNode = util.findChildNode(gMsgCompose.editor.rootElement, 'moz-signature');
+          let sigNode = util.findChildNode(SmartTemplate4.composer.body, 'moz-signature');
           if (sigNode) {
             sigNode.innerHTML = newSig.innerHTML;
           }
