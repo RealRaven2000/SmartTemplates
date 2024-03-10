@@ -318,9 +318,10 @@ END LICENSE BLOCK
     #             or when clicking a mailto link on a website. This should load the template of the default account.
 
   Version 4.4 - WIP
+    # [issue 274] Add %preheader()% variable for injecting preview
     # [issue 275] Auto-Fill content for %to%, %recipient% and %from% when 
                   clicking Contact context menu "Compose Message To" or writing new mail
-    # Add documentation for dateformat(fstring,toclipboard)
+    # Added documentation for dateformat(fstring,toclipboard)
     # Add Alias to register dialog if already set in a license
     # [issue 239] Use correct %recipient% when replying to own email
     # [issue 246] Support for other.custom1, other.custom2 etc. from address book fields
@@ -329,9 +330,9 @@ END LICENSE BLOCK
     # [issue 267] Support for extracting prefix and suffix from address book fields
     # [issue 276] Removed FileUtils.getFile for future compatibility (122 beta)
     # Removed duplicate tooltip on active fields in write new mail
-    # [issue 274] Add %preheader()% variable for injecting preview
     # [issue 280] You can now use escaped commas within commands that search or replace strings
     # %replaceText% and %deleteText% now work on the body of the email when used from the Smart Fragments menu
+    # Opening support sites in a tab is now using API method
 
 
 =========================
@@ -1093,6 +1094,7 @@ var SmartTemplate4 = {
           <menuitem id="smartTemplates-mru-save" label="Save MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-mru-load" label="Load MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-patchHeaderTools" label="Patch Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-headerMenuAPI" label="API Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-registration" label="License Screen" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         </menupopup>
@@ -1128,7 +1130,9 @@ var SmartTemplate4 = {
       SmartTemplate4.Util.logDebugOptional("fileTemplates.menus","Couldn't find message display action button. aborting patchHeaderPane()");
       return false; // button not found
     }
-    if (message_display_action_btn.classList.contains(PatchedBtnClass)) {
+    if (message_display_action_btn.classList.contains(PatchedBtnClass)
+        && 
+        message_display_action_btn.querySelector("menupopup[data-action-menu] #smartTemplates-reply-menu")) {
       SmartTemplate4.Util.logDebugOptional("fileTemplates.menus","Header button is already patched. aborting patchHeaderPane()", message_display_action_btn);
       return true; // already patched
     }
@@ -1136,13 +1140,13 @@ var SmartTemplate4 = {
 
     var XHTML_Markup = 
     `<toolbarbutton id="${message_display_action_btn.id}">
-      <menupopup id="SmartTemplates_HeaderMenu">
+      <menupopupX id="SmartTemplates_HeaderMenu">
         ${this.XML_replyMenus}
         ${this.XML_forwardMenus}
         ${this.XML_toggleLabelMenu}
         <menuseparator class="st4templateSeparator"/>
         <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-      </menupopup>
+      </menupopupX>
     </toolbarbutton>
     `; 
     var WL = doc.ownerGlobal?.SmartTemplate4_WLM || this.WL;

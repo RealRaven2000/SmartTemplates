@@ -107,6 +107,9 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-patchHeaderTools":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "patchHeaderMenu" });
         break;
+      case "smartTemplates-headerMenuAPI":
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "patchHeaderMenuAPI" });
+        break;
       case "smartTemplates-labelUpdate":
         SmartTemplates.Util.notifyTools.notifyBackground({func: "updateNewsLabels"});
         // update the status bar label too:
