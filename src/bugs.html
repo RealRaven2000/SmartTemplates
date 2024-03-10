@@ -14,19 +14,24 @@ permalink: bugs.html
 
 <style>
 	.github_issue {
-		color: #c9d1d9;
+		color: #c9d1d9 !important;
 		background-color: rgb(31, 111, 235);
 		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
 		font-size: 14px;
+		margin-inline: 1em;
 	}
 </style>
 
 <h2 class="page-header">SmartTemplates :: Bugs</h2>
 
+<div id="summary">
+
+</div>
+
 <div id="infoTabs">
   <div class="infoTab" id="breaking-news">
-    <h5 class="infoHeader">Bugzilla - why, and how?</h5>
-    <p class="miniquote">Bugzilla is free and open to anyone who registers with it.
+    <h5 class="infoHeader">Github - why, and how?</h5>
+    <p class="miniquote">Github is free and open to anyone who registers with it.
       The big advantage here is that many users can share bug information, or view feature requests
       or planned new features and track these, in true open source fashion. From time to time we will also
       publish patched prerelease versions by attaching them to their relevant bugs.
@@ -36,14 +41,10 @@ permalink: bugs.html
 			 to create an error log.</p>
 		<p class="miniquote">
       When submitting new bug reports, please search first whether the bug
-      is already submitted to avoid yours being marked as duplicate.<br>
-      For feature requests, submit a bug and select "enhancement" in the severity dropdown:
+      is already submitted to avoid yours being marked as duplicate.
     </p>
 	  <p>
 		   For creating an error log, please check out the <a href="support.html">troubleshooting section</a>.
-    </p>
-    <p style="text-align:center;"><!-- aligns the nested image -->
-      <img class="screenshot" src="screenshots/bugzilla-feature.png" alt="feature request">
     </p>
   </div>
 </div>
@@ -133,11 +134,12 @@ $(document).ready(function() {
   $.getJSON(urlToGetAllOpenBugs, function(allIssues) {
     $("#summary").append(
     `Found ${allIssues.length} issues - sorted by most recent changes</br>
-    Showing first ${Math.min(maxCount, allIssues.length)};`);
+    Here are the first ${Math.min(maxCount, allIssues.length)}:`);
+
     $.each(allIssues, function(i, issue) {
     	if (count > maxCount) return;
       let markup = `<tr>
-     <td class="nowrap"><a target=_blank href="${baseGithubURL}/issue${issue.number}">
+     <td class="nowrap"><a target=_blank href="${baseGithubURL}/${issue.number}">
      issue ${issue.number}</a>
      </td>
      <td>
