@@ -30,8 +30,9 @@ SmartTemplate4.Listener = {
         break;
       case "SmartTemplate4Website":
         const href = evt.target.getAttribute('href');
-        if (href)
-          SmartTemplate4.Util.openURLInTab(href);
+        if (href) {
+          SmartTemplate4.Util.openURL(href);
+				}
         break;
     }
 	}

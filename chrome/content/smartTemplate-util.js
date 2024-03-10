@@ -791,7 +791,7 @@ SmartTemplate4.Util = {
     return false;
   },	
 	
-	getBaseURI: function baseURI(URL) {
+	getBaseURI: function (URL) {
 		let hashPos = URL.indexOf('#'),
 				queryPos = URL.indexOf('?'),
 				baseURL = URL;
@@ -805,35 +805,6 @@ SmartTemplate4.Util = {
 		return baseURL;		
 	} ,
 	
-	findMailTab: function findMailTab(tabmail, URL) {
-		const util = SmartTemplate4.Util;
-		// mail: tabmail.tabInfo[n].browser		
-		let baseURL = util.getBaseURI(URL),
-				numTabs = util.getTabInfoLength(tabmail);
-		
-		for (let i = 0; i < numTabs; i++) {
-			let info = util.getTabInfoByIndex(tabmail, i);
-			if (info.browser && info.browser.currentURI) {
-				let tabUri = util.getBaseURI(info.browser.currentURI.spec);
-				if (tabUri == baseURL) {
-					tabmail.switchToTab(i);
-          try {
-            let params = {
-              triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal()
-            }
-            info.browser.loadURI(URL, params);
-          }
-          catch(ex) {
-            util.logException(ex);
-          }
-					return true;
-				}
-			}
-		}
-		return false;
-	} ,	
-	
-
 	// dedicated function for email clients which don't support tabs
 	// and for secured pages (donation page).
 	openLinkInBrowserForced: function(linkURI) {
@@ -872,70 +843,43 @@ SmartTemplate4.Util = {
 		if(null !== evt) { evt.stopPropagation(); }			
 	},
 
-	// moved from options.js (then called
-	openURL: function(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
+
+	openURLWithEvent: async function(URL,evt) {
 		const util = SmartTemplate4.Util;
-		let ioservice, iuri, eps;
-    if (util.openURLInTab(URL) && null!=evt) {
+    if (await util.openURLInTab.call(util,URL) && null!=evt) {
+			// workaround for a bug in TB3 that causes href's not be followed anymore.
       if (evt.preventDefault)  evt.preventDefault();
       if (evt.stopPropagation)	evt.stopPropagation();
     }
+	} ,
+
+
+	// moved from options.js (then called
+	openURL: async function(URL) { 
+		const util = SmartTemplate4.Util;
+		return await util.openURLInTab.call(util, URL);
 	},
 
-	openURLInTab: function (URL) {
-		const util = SmartTemplate4.Util;
+	openURLInTab: async function (URL) {
 		try {
-			if (this.Application!='Thunderbird') {
-				this.openLinkInBrowserForced(URL);
-				return true;
-			}
-			
-			let sTabMode="",
-			    tabmail;
-			URL = util.makeUriPremium(URL);
-			
-			tabmail = document.getElementById("tabmail");
-			if (!tabmail) {
-				// Try opening new tabs in an existing 3pane window
-				let mail3PaneWindow = this.Mail3PaneWindow;
-				if (mail3PaneWindow) {
-					tabmail = mail3PaneWindow.document.getElementById("tabmail");
-					mail3PaneWindow.focus();
+			URL = SmartTemplate4.Util.makeUriPremium(URL);
+
+			// use API. Look Ma, no tabmail!
+			// getBaseURI to check if we already opened the page and need to 
+			// jump to a different anchor.
+			await SmartTemplate4.Util.notifyTools.notifyBackground(
+				{ 
+					func: "openLinkInTab", 
+					URL: URL, 
+					baseURI: SmartTemplate4.Util.getBaseURI(URL)
 				}
-			}
-			// note: findMailTab will activate the tab if it is already open
-			if (tabmail) {
-				if (!util.findMailTab(tabmail, URL)) {
-					tabmail.openTab("contentTab",
-            {
-              contentPage: URL, 
-              url: URL,
-              clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);"
-            }
-          );
-				}
-			}
-			else {
-				window.openDialog("chrome://messenger/content/", 
-				  "_blank", 
-					"chrome,dialog=no,all", 
-					null,
-					{ tabType: "contentTab", 
-					  tabParams: {
-              contentPage: URL, 
-              url: URL,
-              clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);", 
-              id:"gSmartTemplate_Weblink"
-            }
-					} 
-				);
-			}
+			);
+			return true;
 		}
 		catch(e) {
-			util.logException('openURLInTab(' + URL + ')', e);
+			SmartTemplate4.Util.logException('openURLInTab(' + URL + ')', e);
 			return false;
 		}
-		return true;
 	} ,
 
 	versionGreaterOrEqual: function(a, b) {
@@ -977,11 +921,11 @@ SmartTemplate4.Util = {
 	} ,
 
 	showBugsAndFeaturesPage: function() {
-		SmartTemplate4.Util.openURLInTab(this.BugPage);
+		SmartTemplate4.Util.openURL(this.BugPage);
 	} ,
 
-	showLicensePage: function () { SmartTemplate4.Util.openURLInTab(this.LicensePage); } ,
-	showHomePage: function () { SmartTemplate4.Util.openURLInTab(this.AMOHomepage); } ,
+	showLicensePage: function () { SmartTemplate4.Util.openURL(this.LicensePage); } ,
+	showHomePage: function () { SmartTemplate4.Util.openURL(this.AMOHomepage); } ,
 	showSupportPage: function () { 
 		SmartTemplate4.Util.openLinkInBrowserForced(this.SupportHomepage); 
 	} ,
@@ -992,17 +936,17 @@ SmartTemplate4.Util = {
 		SmartTemplate4.Util.openLinkInBrowserForced(this.PremiumFeaturesPage); 
 	} ,
 	showYouTubePage: function () { SmartTemplate4.Util.openLinkInBrowserForced(this.YouTubePage); } ,
-	showAxelAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.AxelAMOPage); } ,
-	showMarkyAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.MarkyAMOPage); } ,
-	showArisAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.ArisAMOPage); } ,
-	showTool8AMOPage: function () { SmartTemplate4.Util.openURLInTab(this.Tool8AMOPage); } ,
-	showNoiaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.NoiaHomepage); } ,
-	showFlagsHomepage: function () { SmartTemplate4.Util.openURLInTab(this.FlagsHomepage); } ,
+	showAxelAMOPage: function () { SmartTemplate4.Util.openURL(this.AxelAMOPage); } ,
+	showMarkyAMOPage: function () { SmartTemplate4.Util.openURL(this.MarkyAMOPage); } ,
+	showArisAMOPage: function () { SmartTemplate4.Util.openURL(this.ArisAMOPage); } ,
+	showTool8AMOPage: function () { SmartTemplate4.Util.openURL(this.Tool8AMOPage); } ,
+	showNoiaHomepage: function () { SmartTemplate4.Util.openURL(this.NoiaHomepage); } ,
+	showFlagsHomepage: function () { SmartTemplate4.Util.openURL(this.FlagsHomepage); } ,
 	showStationeryHelpPage: function (inPageLink) { 
     let urlLink = inPageLink ? ("#" + inPageLink) : "";
-    SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage + urlLink); 
+    SmartTemplate4.Util.openURL(this.StationeryHelpPage + urlLink); 
   } ,
-	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.BeniBelaHomepage); } ,
+	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURL(this.BeniBelaHomepage); } ,
 	
 
 	showAboutConfig: function(clickedElement, filter) {
@@ -3359,7 +3303,7 @@ SmartTemplate4.Message = {
 				if (licenseBtnRow) {
 					const ST4 = SmartTemplate4.Util.mainInstance,
 								showDialog = SmartTemplate4.Util.showLicenseDialog.bind(SmartTemplate4.Util),
-								openURLInTab = ST4.Util.openURLInTab.bind(ST4.Util),
+								openURLInTab = ST4.Util.openURL.bind(ST4.Util),
 								featureCompUrl = SmartTemplate4.Util.PremiumFeaturesPage + "#featureComparison";
 					if (params.showLicenseButton) {
 						removeLicenseButtons = false;

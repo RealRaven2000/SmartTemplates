@@ -368,8 +368,8 @@ var Register = {
     oReq.send(formData);  
   } ,
 
-  premiumInfo: function premiumInfo(event) {
-    SmartTemplate4.Util.openURL(event,'https://smarttemplates.quickfolders.org/premium.html');
+  premiumInfo: function (event) {
+    SmartTemplate4.Util.openURLWithEvent('https://smarttemplates.quickfolders.org/premium.html', event);
   },
   
   sanitizeName: function sanitizeName(name) {

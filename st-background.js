@@ -132,36 +132,71 @@ const forwardMenus = [
 
 async function createHeaderMenu() {
   let isDebug =  await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.headerPane"); 
-  let menuProps = {
-    contexts: ["message_display_action"],
-    onclick: async (event) => {    
-      if (isDebug) { console.log("SmartTemplates header context menu", event); }
-      // const menuItem = { id: TOGGLEICON_ID };   // fake menu item to pass to doCommand
+  // let menuProps = {
+  //   contexts: ["message_display_action_menu"],
+  //   onclick: async (event) => {    
+  //     if (isDebug) { console.log("SmartTemplates header context menu", event); }
+  //     // const menuItem = { id: TOGGLEICON_ID };   // fake menu item to pass to doCommand
 
-      // determine email of email(s) shown in preview pane:
-      // const selectedMail = event?.selectedMail || null;
+  //     // determine email of email(s) shown in preview pane:
+  //     // const selectedMail = event?.selectedMail || null;
 
-      messenger.NotifyTools.notifyExperiment( 
-        { 
-          event: "checkMailAction", 
-          detail: { 
-            commandItem: menuItem, 
-            selectedMail: event?.selectedMail
-          } 
-        } 
-      );
-    },
-    icons: { // list-style-image: var(--icon-reply);
-      "16": "chrome://messenger/skin/icons/new/compact/reply.svg"
-    } ,
-    enabled: true,
-    id: "smartTemplates-reply-menu",
-    title: messenger.i18n.getMessage("pref_rsp.tab")
-  } 
+  //     messenger.NotifyTools.notifyExperiment( 
+  //       { 
+  //         event: "checkMailAction", 
+  //         detail: { 
+  //           commandItem: menuItem, 
+  //           selectedMail: event?.selectedMail
+  //         } 
+  //       } 
+  //     );
+  //   },
+  //   icons: { // list-style-image: var(--icon-reply);
+  //     "16": "chrome://messenger/skin/icons/new/compact/reply.svg"
+  //   } ,
+  //   enabled: true,
+  //   id: "smartTemplates-reply-menu",
+  //   title: messenger.i18n.getMessage("pref_rsp.tab")
+  // } 
   // how to retrieve a css variable (according to Arndt)
   // getComputedStyle(document.documentElement).getPropertyValue('--icon-reply')
   // getComputedStyle(document.documentElement).setProperty('--icon-reply', 'whatever-value')
-  let idToggle = await messenger.menus.create(menuProps); // id of menu item
+  // let idToggle = await messenger.menus.create(menuProps); // id of menu item
+
+  // https://webextension-api.thunderbird.net/en/latest/menus.html#create-createproperties-callback
+  if (isDebug) {
+    console.log("SmartTemplates: createHeaderMenu (through API)")
+  }
+  for (let m of [...replyMenus, ...forwardMenus]) { // iterate all popups.
+    //
+    let menuProps = {
+      contexts: ["message_display_action_menu"],
+      enabled: true,
+      // icons: ...,
+      id: m.id, // string
+      parentId: "", // string
+      title: messenger.i18n.getMessage(m.label), // we are missing m.accesskey !!
+      visible: true  // can we have a callback function here?
+
+    }
+    let idNew = await messenger.menus.create(menuProps);
+    if (m.popupItems?.length) {
+      for(let p of m.popupItems) {
+        let itemProps = {
+          contexts: ["message_display_action_menu"],
+          enabled: true,
+          // icons: ...,
+          id: p.id, // string
+          parentId: idNew, // string
+          title: messenger.i18n.getMessage(p.label),
+          visible: true  // can we have a callback function here?    
+        }
+        await messenger.menus.create(itemProps);
+      }
+    }
+  
+  }
+  // to do: add controller and accesskey attribute
 }
 
  
@@ -409,6 +444,10 @@ async function main() {
         // To do rewrite with api [issue 253]
         messenger.NotifyTools.notifyExperiment({event: "patchHeaderMenu"});
         break;
+
+      case "patchHeaderMenuAPI":
+        createHeaderMenu(); // use API to build the menu
+        break;
         
       case "updateSnippetMenus":
         messenger.NotifyTools.notifyExperiment({event: "updateSnippetMenus"});
@@ -490,6 +529,25 @@ async function main() {
       case "patchUnifiedToolbar":
         return await messenger.NotifyTools.notifyExperiment({event: "patchUnifiedToolbar"});
         break;
+
+      case "openLinkInTab":
+        // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
+        {
+          let baseURI = data.baseURI || data.URL;
+          let found = await browser.tabs.query( { url:baseURI } );
+          if (found.length) {
+            let tab = found[0]; // first result
+            await browser.tabs.update(
+              tab.id, 
+              {active:true, url: data.URL}
+            );
+            return;
+          }
+          browser.tabs.create(
+            { active:true, url: data.URL }
+          );        
+        }
+        break;        
     }
   });
   
