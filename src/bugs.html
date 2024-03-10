@@ -29,10 +29,6 @@ permalink: bugs.html
 
 <h2 class="page-header">SmartTemplates :: Bugs</h2>
 
-<p id="summary">
-...
-</p>
-
 <div id="infoTabs">
   <div class="infoTab" id="breaking-news">
     <h5 class="infoHeader">Github - why, and how?</h5>
@@ -73,6 +69,9 @@ permalink: bugs.html
 </p>
 <h4>Latest Issues on github</h4>
 
+<p id="summary">
+	Here are the most recent changes...
+</p>
 
 <table class="BZ-table">
 	<thead>
@@ -113,7 +112,7 @@ $(document).ready(function() {
   $.getJSON(urlToGetAllOpenBugs, function(allIssues) {
 		let summary=`Found ${allIssues.length} issues - sorted by most recent changes</br>
     Here are the first ${Math.min(maxCount, allIssues.length)}:`
-		
+
     $("#summary").html(summary);
 
     $.each(allIssues, function(i, issue) {
