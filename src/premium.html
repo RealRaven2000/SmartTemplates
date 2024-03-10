@@ -352,23 +352,44 @@ permalink: premium.html
 <a name="clipboard"> </a>
 <h3 class="helpchapter">Clipboard Support</h3>
 <article>
+
+  <h5>Copy Text Data to Clipboard</h5>
+  <p>
+    <code>%toclipboard("some text")%</code> 
+    Copies the literal text within the quotation marks to clipboard.
+    
+    You can use the clipboard as a placeholder variable to hold data for 
+    the commands following below.
+
+    Imporant - to include commas, they need to be escaped with a backslash like this:
+    <code class="html">\,</code>.
+  </p>
+
   <h5>Insert Data from Clipboard</h5>
-      <p>SmartTemplates Pro now supports using "clipboard" as argument for text and header manipulation functions:</p>
-      <p>
-        <b>header manipulation - examples</b>
-        <ul>
-          <li><code>%header.set(to,clipboard)%</code> - set the final recipient from the clipboard</li>
-          <li><code>%header.append(to,clipboard)%</code> - add a recipient from clipboard</li>
-          <li><code>%header.prefix(subject,clipboard)%</code> - add some subject prefix from clipboard</li>
-        </ul>
-      </p>
-      <p>
-        <b>Template text and Quote replacements</b>
-        <ul>
-          <li><code>%replaceText(regularExpression,clipboard)%</code> - overwrite placeholder text in template from clipboard</li>
-          <li><code>%replaceQuotedText(regularExpression,clipboard)%</code> - replace text in the quoted part </li>
-        </ul>
-      </p>
+  <p>
+    <code>%clipboard%</code> 
+    Use this simple command to insert clipboard contents directly into the template.
+  </p>
+
+
+  <p>
+    SmartTemplates Pro now supports using "clipboard" as argument for text and header manipulation functions:
+  </p>
+  <p>
+    <b>header manipulation - examples</b>
+    <ul>
+      <li><code>%header.set(to,clipboard)%</code> - set the final recipient from the clipboard</li>
+      <li><code>%header.append(to,clipboard)%</code> - add a recipient from clipboard</li>
+      <li><code>%header.prefix(subject,clipboard)%</code> - add some subject prefix from clipboard</li>
+    </ul>
+  </p>
+  <p>
+    <b>Template text and Quote replacements</b>
+    <ul>
+      <li><code>%replaceText(regularExpression,clipboard)%</code> - overwrite placeholder text in template from clipboard</li>
+      <li><code>%replaceQuotedText(regularExpression,clipboard)%</code> - replace text in the quoted part </li>
+    </ul>
+  </p>
   <h5>Copy Variable Results to Clipboard</h5>
       <p>
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/187">[issue 187]</a> 
