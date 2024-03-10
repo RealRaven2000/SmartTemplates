@@ -30,7 +30,7 @@ permalink: bugs.html
 <h2 class="page-header">SmartTemplates :: Bugs</h2>
 
 <p id="summary">
-
+...
 </p>
 
 <div id="infoTabs">
@@ -95,6 +95,7 @@ permalink: bugs.html
 
 
 <a id="mozdev"> &nbsp;</a>
+<br>
 <h3>Bugzilla Database at mozdev.org - deprecated!</h3>
 
 <p>This database has been shut down and readonly copies of older items have 
@@ -110,9 +111,10 @@ var maxCount = 15;
 $(document).ready(function() {
   var count = 0;
   $.getJSON(urlToGetAllOpenBugs, function(allIssues) {
-    $("#summary").html(
-    `Found ${allIssues.length} issues - sorted by most recent changes</br>
-    Here are the first ${Math.min(maxCount, allIssues.length)}:`);
+		let summary=`Found ${allIssues.length} issues - sorted by most recent changes</br>
+    Here are the first ${Math.min(maxCount, allIssues.length)}:`
+		
+    $("#summary").html(summary);
 
     $.each(allIssues, function(i, issue) {
     	if (count > maxCount) return;
