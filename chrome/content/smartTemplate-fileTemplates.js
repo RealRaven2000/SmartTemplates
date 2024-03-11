@@ -639,7 +639,7 @@ SmartTemplate4.fileTemplates = {
 					fT = SmartTemplate4.fileTemplates;
 
     const isMRUmenu = composeType.startsWith("mru-");
-    const isMainPopup = (!!msgPopup.id && msgPopup.id == "smartTemplatesMainPopup");
+    const isMainPopup = (msgPopup.getAttribute("data-action-menu") == "browserAction"); // header: "messageDisplayAction"
 
     const MAX_FREE_TEMPLATES = isMRUmenu ? 3 : 5,
           MAX_STANDARD_TEMPLATES = isMRUmenu ? 5 : 25,

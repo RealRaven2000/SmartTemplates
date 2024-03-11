@@ -82,24 +82,22 @@ var hackToolbarbutton = {
   
   // get the menupopup element to add templates submenu
   getMenupopupElement(doc, menuId) {
-    let parentElement;
+    let parentSelector;
     let isTopLevel = false;
     switch(menuId) {
       case "mru-smartTemplates-unified":
-        parentElement = "smartTemplatesMainPopup";
+        parentSelector = ".unified-toolbar-button [data-extension-id='smarttemplate4@thunderbird.extension']";
         isTopLevel = true;
         break;
       case "mru-smartTemplates-header":
-        parentElement = "SmartTemplates_HeaderMenu";
         let el = doc.querySelector("[data-extension-id='smarttemplate4@thunderbird.extension']"); 
         isTopLevel = true;
         return el;
-        break;
       default: 
-        parentElement = menuId; 
+        parentSelector = "#" + menuId; 
 
     }
-    let element = doc.getElementById(parentElement);
+    let element = doc.querySelector(parentSelector);
     if (!element) {
       return null;
     }

@@ -131,6 +131,20 @@ const forwardMenus = [
 
 
 async function createHeaderMenu() {
+  // helper function to insert accelerator key
+  function injectAccessKey(txt, accesskey=null) {
+    if (accesskey) {
+      let p = txt.indexOf(accesskey);
+      if (p>=0) {
+        // inject "&"
+        txt = txt.slice(0, p) + "&" + txt.slice(p);
+      } else {
+        txt = `&${accesskey} ${txt}`; // for non-latin languages or non-matchint translations
+      }
+    }
+    return txt;
+  }
+
   let isDebug =  await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.headerPane"); 
   // let menuProps = {
   //   contexts: ["message_display_action_menu"],
@@ -175,7 +189,7 @@ async function createHeaderMenu() {
       // icons: ...,
       id: m.id, // string
       parentId: "", // string
-      title: messenger.i18n.getMessage(m.label), // we are missing m.accesskey !!
+      title: injectAccessKey(messenger.i18n.getMessage(m.label), m?.accesskey), // we are missing m.accesskey !!
       visible: true  // can we have a callback function here?
 
     }
@@ -188,7 +202,7 @@ async function createHeaderMenu() {
           // icons: ...,
           id: p.id, // string
           parentId: idNew, // string
-          title: messenger.i18n.getMessage(p.label),
+          title: injectAccessKey(messenger.i18n.getMessage(p.label), p?.accesskey),
           visible: true  // can we have a callback function here?    
         }
         await messenger.menus.create(itemProps);

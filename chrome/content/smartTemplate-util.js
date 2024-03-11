@@ -95,8 +95,7 @@ SmartTemplate4.Util = {
   showToolbarPopup: function() {
     let button = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
     if (!button) return;
-    const popupId = "smartTemplatesMainPopup";
-    let p = document.getElementById(popupId);
+    let p = button.querySelector("menupopup[data-action-menu]");
     if (p) {
       p.targetNode = button; 
       p.openPopup(button,'after_start', 0, -1,true,false); // no event

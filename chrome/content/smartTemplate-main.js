@@ -915,7 +915,7 @@ var SmartTemplate4 = {
     util.logDebug("startUp complete");
   } ,
   
-  shutDown: function ST_shutDown(isMainWindow = false) {
+  shutDown: function (isMainWindow = false) {
     const util = SmartTemplate4.Util;    
     util.logDebug("Remove added custom UI elements …");
     let elements = Array.from(window.document.querySelectorAll('[st4uiElement]'));
@@ -1045,72 +1045,97 @@ var SmartTemplate4 = {
     `
   },
 
+  moveMenuItems: function (toolbarButton, newPopupSelector) {
+    let activePopup = toolbarButton.querySelector("menupopup[data-action-menu]");
+    let newPopup = toolbarButton.querySelector(newPopupSelector);
+
+    if (newPopup) {
+      let moveNodes = [];
+      for (let e of newPopup.childNodes) {
+        moveNodes.push(e);
+      }
+      for (let m of moveNodes) {
+        activePopup.appendChild(m);
+      }
+      SmartTemplate4.Util.logDebug("Moved elements to popup:", moveNodes);
+      newPopup.remove();
+      return true;
+    } else {
+      SmartTemplate4.Util.logDebug(`patchHeaderPane() - didn't find ${newPopupSelector}, so I couldn't patch the popup menu`);
+      console.log(toolbarButton);
+    }
+  },  
+
   patchUnifiedToolbar: function() {
     // THUNDERBIRD 115
     // fix selectors
     let mainButton = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
-    if (mainButton) {
-      mainButton.id = "SmartTemplate4Button";
-      mainButton.setAttribute("popup", "smartTemplatesMainPopup");
-      if (mainButton.querySelector("#smartTemplatesMainPopup")) {
-        return true; // this one is already patched.
-      }
-  
-      // this method worked in quickFilters:
-      // overload the menupopup based on the id we just added:
-      // note: there is no command controller for write new
-      //       - instead the menu item calls "MsgNewMessage(null);
-      //        <button id="SmartTemplate4Button">
-      //        </button>
-
-      var XHTML_Markup = 
-  `<vbox id="titlebar">
-    <menupopup id="smartTemplatesMainPopup">
-      <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-      <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic" controller="cmd_newMessage" accesskey="__MSG_st.menuaccess.write__">
-        <menupopup>
-          <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        </menupopup>
-      </menu>
-      ${this.XML_replyMenus}
-      ${this.XML_forwardMenus}
-      <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-      <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-
-      <menu id="smartTemplates-docs" label="__MSG_st.menu.docs__" class="menu-iconic">
-        <menupopup>
-          <menuitem id="smartTemplates-support" label="__MSG_st.menu.supportSite__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-variables" label="__MSG_st.menu.docs.variables__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-premium" label="__MSG_st.menu.docs.premium__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        </menupopup>
-      </menu>
-
-      <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
-        <menupopup>
-          <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-mru-save" label="Save MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-mru-load" label="Load MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-patchHeaderTools" label="Patch Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-headerMenuAPI" label="API Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-registration" label="License Screen" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        </menupopup>
-      </menu>
-
-    </menupopup>
-  </vbox>`; 
-      this.WL.injectElements(XHTML_Markup);
-      let theMenu = window.document.querySelector("menupopup#smartTemplatesMainPopup");
-      if (theMenu) {
-        mainButton.appendChild(theMenu);
-        return true;
-      }
-      return false;
+    if (!mainButton) {
+      return false; // no button found, we're probably in a content tab
     }
-    return false; // no button found, we're probably in a content tab
+
+    mainButton.id = "SmartTemplate4Button";
+    // mainButton.setAttribute("popup", "smartTemplatesMainPopup");
+
+    if (mainButton.querySelector("#smartTemplates-reply-menu")) {
+      return true; // this one is already patched.
+    }
+    
+    // this method worked in quickFilters:
+    // overload the menupopup based on the id we just added:
+    // note: there is no command controller for write new
+    //       - instead the menu item calls "MsgNewMessage(null);
+    //        <button id="SmartTemplate4Button">
+    //        </button>
+
+    var XHTML_Markup =     
+`<vbox id="titlebar">
+  <div id="smartTemplatesMainPopup" style="display:none;">
+    <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+    <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic" controller="cmd_newMessage" accesskey="__MSG_st.menuaccess.write__">
+      <menupopup>
+        <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      </menupopup>
+    </menu>
+    ${this.XML_replyMenus}
+    ${this.XML_forwardMenus}
+    <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+    <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+
+    <menu id="smartTemplates-docs" label="__MSG_st.menu.docs__" class="menu-iconic">
+      <menupopup>
+        <menuitem id="smartTemplates-support" label="__MSG_st.menu.supportSite__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-variables" label="__MSG_st.menu.docs.variables__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-premium" label="__MSG_st.menu.docs.premium__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      </menupopup>
+    </menu>
+
+    <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
+      <menupopup>
+        <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-mru-save" label="Save MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-mru-load" label="Load MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-patchHeaderTools" label="Patch Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-headerMenuAPI" label="API Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-registration" label="License Screen" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      </menupopup>
+    </menu>
+
+  </div>
+</vbox>`; 
+
+    this.WL.injectElements(XHTML_Markup);
+    let theMenu = window.document.querySelector("div#smartTemplatesMainPopup");
+    if (theMenu) {
+      mainButton.appendChild(theMenu);
+      this.moveMenuItems(mainButton, "#smartTemplatesMainPopup");
+      return true;
+    }
+    return false;
   },
 
   patchHeaderPane: function(doc, message_display_action_btn) {
@@ -1140,13 +1165,13 @@ var SmartTemplate4 = {
 
     var XHTML_Markup = 
     `<toolbarbutton id="${message_display_action_btn.id}">
-      <menupopupX id="SmartTemplates_HeaderMenu">
+      <div id="SmartTemplates_HeaderMenu" style="display:none;">
         ${this.XML_replyMenus}
         ${this.XML_forwardMenus}
         ${this.XML_toggleLabelMenu}
         <menuseparator class="st4templateSeparator"/>
         <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-      </menupopupX>
+      </div>
     </toolbarbutton>
     `; 
     var WL = doc.ownerGlobal?.SmartTemplate4_WLM || this.WL;
@@ -1154,22 +1179,7 @@ var SmartTemplate4 = {
     WL.injectElements(XHTML_Markup);
     message_display_action_btn.classList.add(PatchedBtnClass);
 
-    let activePopup = message_display_action_btn.querySelector("menupopup[data-action-menu]");
-    let newPopup = message_display_action_btn.querySelector("#SmartTemplates_HeaderMenu");
-    let moveNodes = [];
-    if (newPopup) {
-      for (let e of newPopup.childNodes) {
-        moveNodes.push(e);
-      }
-      for (let m of moveNodes) {
-        activePopup.appendChild(m);
-      }
-      this.Util.logDebug("Moved elements to popup:", moveNodes);
-      return true;
-    } else {
-      this.Util.logDebug("patchHeaderPane() - didn't find #SmartTemplates_HeaderMenu, so I couldn't patch the header menu");
-    }
-
+    SmartTemplate4.moveMenuItems(message_display_action_btn, "#SmartTemplates_HeaderMenu");
   },
   
   TabEventListeners: {}, // make a map of tab event listeners
