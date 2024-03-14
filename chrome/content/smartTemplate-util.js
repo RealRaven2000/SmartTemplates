@@ -280,6 +280,18 @@ SmartTemplate4.Util = {
 		return win.document; 
 	},
 
+	// retrieves either the main unified toolbar button or the current command button of the header pane
+	getCommandsButton: function (type) {
+		switch (type) {
+			case "unified":
+				return document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
+		  case "message_action":
+				let doc = this.documentMessageBrowser;
+			  return doc.querySelector("#smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton");
+		}
+		return null;
+	},
+
   get threadPane() { 
     return this.document3pane.querySelector("#threadPane");
   } ,	
@@ -787,8 +799,24 @@ SmartTemplate4.Util = {
       default:
         return (["other"].includes(type));
     }
-    return false;
   },	
+
+	getMessageBrowserDocument: function() {
+		// isSingleMessageWindow ? 
+		if (window.document.URL.endsWith("messageWindow.xhtml")){
+			return  window.messageBrowser.contentDocument; // about:message
+		}
+
+    let currentTabMode = gTabmail.selectedTab?.mode?.name; // SmartTemplate4.Util.getTabMode();
+    switch (currentTabMode) { // there are tab modes that have no access to document3pane! e.g. contentTab
+      case "mailMessageTab":
+        return SmartTemplate4.Util.document3pane;
+      case "mail3PaneTab":
+        let browser = SmartTemplate4.Util.document3pane.getElementById("messageBrowser");
+        return browser.contentDocument; 
+    }
+		return null;
+	},
 	
 	getBaseURI: function (URL) {
 		let hashPos = URL.indexOf('#'),

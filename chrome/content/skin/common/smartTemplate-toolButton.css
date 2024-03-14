@@ -58,6 +58,9 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
   fill: red;
 }
+#smartTemplates-headerMenuAPI, #smartTemplates-MruMenuAPI {
+  list-style-image: url("chrome://smarttemplate4/content/skin/icons/webex.png") !important;
+}
 
 #smartTemplates-docs {
 	list-style-image: url("chrome://smarttemplate4/content/skin/icons/docs.svg") !important;

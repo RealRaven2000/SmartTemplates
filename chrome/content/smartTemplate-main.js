@@ -333,16 +333,19 @@ END LICENSE BLOCK
     # [issue 280] You can now use escaped commas within commands that search or replace strings
     # %replaceText% and %deleteText% now work on the body of the email when used from the Smart Fragments menu
     # Opening support sites in a tab is now using API method
+    ---------
+    # [issue 253] WIP - recreate menus using API functions
 
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
   Version 4.x - FUTURE VERSION / WIP
-    # [issue ] Add menus in background script using API functions
+    # [issue 253] recreate menus using API functions
+    # [issue ] 
+    # [issue ] 
     # [issue ] 
 
 
-    # [issue 253] recreate menus using API functions
     # New Idea: Add an account templates submenu - only for accounts with dedicated settings.
 
     # [issue 150] Remove "Nag Screens" in Composer for unlicensed users
@@ -1011,13 +1014,13 @@ var SmartTemplate4 = {
           <menuitem id="smartTemplates-reply-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         </menupopup>
       </menu>
-      <menu label="__MSG_st.menu.replyAll__" id="smartTemplates-reply-all-menu" class="menu-iconic" controller="cmd_replyall" accesskey="__MSG_st.menuaccess.replyAll__">
+      <menu label="__MSG_st.menu.replyAll__" id="smartTemplates-reply-all-menu" class="menu-iconic" controller="cmd_replyAll" accesskey="__MSG_st.menuaccess.replyAll__">
         <menupopup>
           <menuitem id="smartTemplates-reply-all-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-reply-all-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         </menupopup>
       </menu>
-      <menu label="__MSG_st.menu.replyList__" id="smartTemplates-reply-list-menu" class="menu-iconic" controller="cmd_replylist" accesskey="__MSG_st.menuaccess.replyList__">
+      <menu label="__MSG_st.menu.replyList__" id="smartTemplates-reply-list-menu" class="menu-iconic" controller="cmd_replyList" accesskey="__MSG_st.menuaccess.replyList__">
         <menupopup>
           <menuitem id="smartTemplates-reply-list-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-reply-list-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
@@ -1114,12 +1117,13 @@ var SmartTemplate4 = {
     <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
       <menupopup>
         <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-headerMenuAPI" label="API Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-MruMenuAPI" label="Update API MRU" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-patchHeaderTools" label="Patch Header Menu (legacy)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-mru-save" label="Save MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-mru-load" label="Load MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-patchHeaderTools" label="Patch Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-headerMenuAPI" label="API Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-registration" label="License Screen" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
       </menupopup>
@@ -1180,6 +1184,27 @@ var SmartTemplate4 = {
     message_display_action_btn.classList.add(PatchedBtnClass);
 
     SmartTemplate4.moveMenuItems(message_display_action_btn, "#SmartTemplates_HeaderMenu");
+  },
+
+  // prepare the popup menu of header area.
+  clearActionMenu: function() {
+    let doc = SmartTemplate4.Util.getMessageBrowserDocument();
+    let message_display_action_btn = doc.querySelector("#smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton");
+    if (!message_display_action_btn) return;
+    let menuitems = [...message_display_action_btn.querySelector("menupopup[data-action-menu]").childNodes];
+    if (!menuitems) return;
+    // remove menus, menuitems and separators:
+    let nodes = menuitems.filter((e)=> e.tagName.startsWith("menu"));
+    for (let n of nodes) {
+      // only popups first
+      // if (!n?.id.startsWith("smartTemplates-")) continue;
+      // if (!(n.id.includes("-write") || n.id.includes("-reply") || n.id.includes("-forward"))) continue;
+      n.remove();
+    }
+  },
+
+  clearMenu_MRU: function() {
+
   },
   
   TabEventListeners: {}, // make a map of tab event listeners

@@ -108,7 +108,33 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "patchHeaderMenu" });
         break;
       case "smartTemplates-headerMenuAPI":
-        SmartTemplates.Util.notifyTools.notifyBackground({ func: "patchHeaderMenuAPI" });
+        // to test, first remove the old xul menu items:
+        SmartTemplates.clearActionMenu(); // do this via the API instead!
+        // 
+        await SmartTemplates.Util.notifyTools.notifyBackground({ 
+          func: "updateFileTemplates",
+          Entries: SmartTemplates.fileTemplates.Entries,
+          MRU_Entries: SmartTemplates.fileTemplates.MRU_Entries
+        });
+
+        await SmartTemplates.Util.notifyTools.notifyBackground({ 
+          func: "patchHeaderMenuAPI" 
+        });
+        break;
+      case "smartTemplates-MruMenuAPI":
+        await SmartTemplates.Util.notifyTools.notifyBackground({ 
+          func: "updateHeaderMenuMRU" 
+        });        
+        break;
+      case "smartTemplates-onSelectAdhoc":
+        SmartTemplates.fileTemplates.onSelectAdHoc.call(
+          SmartTemplates.fileTemplates, 
+          {
+            composeType: null,
+            controller: params.controller,
+            context: params.context
+          }
+        );
         break;
       case "smartTemplates-labelUpdate":
         SmartTemplates.Util.notifyTools.notifyBackground({func: "updateNewsLabels"});
@@ -116,12 +142,19 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Util.notifyTools.notifyBackground({func:"initLicensedUI"});  
         break;
       case "smartTemplates-toggle-label":
-        let isHidden = SmartTemplates.Preferences.getMyBoolPref("toolbar.hideLabel");
-        isHidden = !isHidden;
+        let isHidden;
+        if (params.hasOwnProperty("isHidden")) {
+          isHidden = params.isHidden;
+        } else {
+          // toggle existing state
+          isHidden = !SmartTemplates.Preferences.getMyBoolPref("toolbar.hideLabel");
+        }
         SmartTemplates.Preferences.setMyBoolPref("toolbar.hideLabel", isHidden);
-        let btn = el.parentElement.parentElement;
+        let btn = el.parentElement ? 
+          el.parentElement.parentElement : 
+          SmartTemplates.Util.getCommandsButton("message_action");
         if (btn) {
-          el.parentElement.parentElement.classList.toggle("force-label-hidden");
+          btn.classList.toggle("force-label-hidden");
         }
         break;
       case "smartTemplates-registration":
@@ -162,6 +195,19 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["updateTemplateMenus"] = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
   mylisteners["updateNewsLabels"] = window.SmartTemplate4.updateNewsLabels.bind(window.SmartTemplate4);
   mylisteners["firstRun"] = util.firstRun.init.bind(util.firstRun);
+  mylisteners["fileTemplateFromApi"] = (event) => {
+    window.SmartTemplate4.fileTemplates.composeFromAPI.call(
+      window.SmartTemplate4.fileTemplates,
+      event.detail.menuObject
+    );
+  } 
+  mylisteners["doCommand"] = (event) => {
+    window.SmartTemplate4.doCommand.call(
+      window.SmartTemplate4.doCommand,
+      {id: event.detail.cmd},
+      event.detail?.params
+    );
+  } 
   mylisteners["patchUnifiedToolbar"] = () => {
     if (window.SmartTemplate4.patchUnifiedToolbar()) {
       window.SmartTemplate4.updateNewsLabels();
@@ -185,9 +231,9 @@ async function onLoad(activatedWhileWindowOpen) {
     }; 
 
   for (let m in mylisteners) {
-    if (m == "BackgroundUpdate")
+    if (m == "BackgroundUpdate") {
       window.addEventListener("SmartTemplates.BackgroundUpdate" , mylisteners[m]);
-    else {
+    } else {
       window.addEventListener(`SmartTemplates.BackgroundUpdate.${m}` , mylisteners[m]); 
       // add more listeners here...
     }

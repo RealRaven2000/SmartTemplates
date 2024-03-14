@@ -12,26 +12,33 @@ var hackToolbarbutton = {
       // 2 new (dummy) items: mru-smartTemplates-unified & mru-smartTemplates-header
       try {
         thePopup = this.getMenupopupElement(doc, item.id);
+        if (!thePopup) { // [issue 253]
+          this.getApiPopupElement(doc, item.id);
+        }
         if (!thePopup) {
           notFound.push(item);
+          continue;
         }
-        if (thePopup && needsConfig(thePopup)) {
-          if (item.id.startsWith("mru-")) {
-            SmartTemplate4.fileTemplates.configureMenu(
-              SmartTemplate4.fileTemplates.MRU_Entries,
-              thePopup, 
-              item.id,    // use this as signal for MRU processing
-              false       // no "show Configure.." menuitem
-            );
-          }
-          else {
-            SmartTemplate4.fileTemplates.configureMenu(
-              SmartTemplate4.fileTemplates.Entries[item.templates], 
-              thePopup, 
-              item.composeType
-            );
-          }
-        }            
+
+        if (!needsConfig(thePopup)) {
+          continue;
+        }
+
+        if (item.id.startsWith("mru-")) {
+          SmartTemplate4.fileTemplates.configureMenu(
+            SmartTemplate4.fileTemplates.MRU_Entries,
+            thePopup, 
+            item.id,    // use this as signal for MRU processing
+            false       // no "show Configure.." menuitem
+          );
+        } else {
+          SmartTemplate4.fileTemplates.configureMenu(
+            SmartTemplate4.fileTemplates.Entries[item.templates], 
+            thePopup, 
+            item.composeType
+          );
+        }
+          
       } catch (ex) {
         SmartTemplate4.Util.logException("updateMenuMRU()", ex);
       }
@@ -80,10 +87,19 @@ var hackToolbarbutton = {
     }      
   },
   
+  getApiPopupElement(doc, menuId) {
+    // smarttemplate4_thunderbird_extension-menuitem-_smartTemplates-reply-menu
+    const ApiPrefix = "smarttemplate4_thunderbird_extension-menuitem-_";
+    let apiSelector = `#${ApiPrefix}${menuId}`;
+    let element = doc?.querySelector(apiSelector) || null;
+    return element;
+  },
+
   // get the menupopup element to add templates submenu
   getMenupopupElement(doc, menuId) {
     let parentSelector;
     let isTopLevel = false;
+
     switch(menuId) {
       case "mru-smartTemplates-unified":
         parentSelector = ".unified-toolbar-button [data-extension-id='smarttemplate4@thunderbird.extension']";
@@ -95,7 +111,6 @@ var hackToolbarbutton = {
         return el;
       default: 
         parentSelector = "#" + menuId; 
-
     }
     let element = doc.querySelector(parentSelector);
     if (!element) {

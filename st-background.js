@@ -16,7 +16,22 @@ const DEBUGLICENSE_STORAGE = "extensions.smartTemplate4.debug.premium.licenser";
 const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 
 var startupFinished = false;
+var MenuCounter = {
+  MRUheader: 0,
+  MRUunified: 0,
+  MRUcomposer: 0
+}
+var MenuMruPrefix = {
+  header: "",
+  unified: "",
+  composer: ""
+}
 var callbacks = [];
+
+var fileTemplates = {
+  Entries: [], 
+  MRU_Entries: []
+}; // copy of recent and configured file templates from SmartTemplate4.fileTemplates
 
 // Remove console error “receiving end does not exist”
 function logReceptionError(x) {
@@ -30,6 +45,7 @@ function logReceptionError(x) {
 // Helper function to walk through a menu data structure and create WebExtension
 // menu entries. 
 // TO DO: use this to recreate SmartTemplates header menus from the back-end [issue 253]
+// TEST TEST TEST
 async function addMenuEntries(entries, parentId) {
   for (let entry of entries) {
     let config = {
@@ -54,85 +70,135 @@ async function addMenuEntries(entries, parentId) {
   }
 }
 
+const ControllerMap = new Map([
+  ["cmd_newMessage", "new"], 
+  ["cmd_reply", "reply"],
+  ["cmd_replyAll", "reply"],
+  ["cmd_replyList", "reply"],
+  ["cmd_forward", "forward"]
+]);
 
-
-// example on building reply menus
-function get_XML_replyMenus() {
-  return `
-    <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic" controller="cmd_reply" accesskey="__MSG_st.menuaccess.reply__">
-      <menupopup>
-        <menuitem id="smartTemplates-reply-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-reply-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-      </menupopup>
-    </menu>
-    <menu label="__MSG_st.menu.replyAll__" id="smartTemplates-reply-all-menu" class="menu-iconic" controller="cmd_replyall" accesskey="__MSG_st.menuaccess.replyAll__">
-      <menupopup>
-        <menuitem id="smartTemplates-reply-all-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-reply-all-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-      </menupopup>
-    </menu>
-    <menu label="__MSG_st.menu.replyList__" id="smartTemplates-reply-list-menu" class="menu-iconic" controller="cmd_replylist" accesskey="__MSG_st.menuaccess.replyList__">
-      <menupopup>
-        <menuitem id="smartTemplates-reply-list-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-reply-list-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-      </menupopup>
-    </menu>
-  `;
-}
-function get_XML_forwardMenus() {
-  return `
-          <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic" controller="cmd_forward"  accesskey="__MSG_st.menuaccess.forward__">
-            <menupopup>
-              <menuitem id="smartTemplates-forward-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-fwd st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-              <menuitem id="smartTemplates-forward-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-            </menupopup>
-          </menu>
-  `;
-}
+const writeMenus = [
+  { type:"menu", id:"smartTemplates-write-menu", classList:"menu-iconic", 
+    label:"pref_new.tab", accesskey:"st.menuaccess.write",
+    controller:"cmd_newMessage", 
+    popupItems: [
+      { id:"smartTemplates-write-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_newMessage", ctr_type: "most-recent" },
+      { id:"smartTemplates-write-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_newMessage", ctr_type: "default" }
+    ]
+  }
+];
 
 const replyMenus = [
   { type:"menu", id:"smartTemplates-reply-menu", classList:"menu-iconic", 
     label:"pref_rsp.tab", accesskey:"st.menuaccess.reply",
     controller:"cmd_reply", 
     popupItems: [
-      { id:"smartTemplates-reply-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru" },
-      { id:"smartTemplates-reply-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+      { id:"smartTemplates-reply-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_reply", ctr_type: "most-recent" },
+      { id:"smartTemplates-reply-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_reply", ctr_type: "default" }
     ]
   }, 
   { type:"menu", id:"smartTemplates-reply-all-menu", classList:"menu-iconic", 
     label:"st.menu.replyAll", accesskey:"st.menuaccess.replyAll",
-    controller:"cmd_replyall", 
+    controller:"cmd_replyAll", 
     popupItems: [
-      { id:"smartTemplates-reply-all-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru" },
-      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+      { id:"smartTemplates-reply-all-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_replyAll", ctr_type: "most-recent" },
+      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_replyAll", ctr_type: "default" }
     ]
   }, 
   { type:"menu", id:"smartTemplates-reply-list-menu", classList:"menu-iconic", 
     label:"st.menu.replyList", accesskey:"st.menuaccess.replyList",
-    controller:"cmd_replylist", 
+    controller:"cmd_replyList", 
     popupItems: [
-      { id:"smartTemplates-reply-list-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru" },
-      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+      { id:"smartTemplates-reply-list-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_replyList", ctr_type: "most-recent" },
+      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_replyList", ctr_type: "default" }
     ]
   }, 
 ];
 
+
 const forwardMenus = [
   { type:"menu", id:"smartTemplates-forward-menu", classList:"menu-iconic", 
     label:"pref_fwd.tab", accesskey:"st.menuaccess.forward",
-    controller:"cmd_reply", 
+    controller:"cmd_forward", 
     popupItems: [
-      { id:"smartTemplates-forward-last", label:"st.menu.template.last", classList:"menuitem-iconicst-last-fwd st-mruu" },
-      { id:"smartTemplates-forward-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+      { id:"smartTemplates-forward-last", label:"st.menu.template.last", classList:"menuitem-iconicst-last-fwd st-mru", controller:"cmd_forward", ctr_type: "most-recent" },
+      { id:"smartTemplates-forward-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_forward", ctr_type: "default" }
     ]
   }  
 ];
 
+/* from root:icons.css
+--icon-new-mail: url("chrome://messenger/skin/icons/new/compact/new-mail.svg");
+--icon-reply-all: url("chrome://messenger/skin/icons/new/compact/reply-all.svg");
+--icon-reply-list: url("chrome://messenger/skin/icons/new/compact/reply-list.svg");
+--icon-reply: url("chrome://messenger/skin/icons/new/compact/reply.svg");
+--icon-forward: url("chrome://messenger/skin/icons/new/compact/forward.svg");
+*/
+function getIconOfController(controller) {
+  // replaces rules in smartTemplates-toolButton.css
+  const baseURI = //  "chrome://messenger/skin/icons/new/compact/";
+    "../chrome/content/skin/icons/thunderbird/";
+  switch(controller) {
+    case "cmd_newMessage":      
+      return baseURI + "new-mail.svg";
+    case "cmd_reply":  
+      return baseURI + "reply.svg";
+    case "cmd_replyAll":
+      return baseURI + "reply-all.svg";
+    case "cmd_replyList":
+      return baseURI + "reply-list.svg";
+    case "cmd_forward":
+      return baseURI + "forward.svg";
+  }
+  return null;
+}
+
+async function executeFileMenu(menuObject) {
+  // SmartTemplate4.doCommand(this);
+  console.log("executeFileMenu()", menuObject);
+  switch(menuObject.controller) {
+    case "cmd_newMessage":
+    case "cmd_reply":
+    case "cmd_replyAll":
+    case "cmd_replyList":
+    case "cmd_forward":
+      messenger.NotifyTools.notifyExperiment({
+        event:"fileTemplateFromApi", 
+        detail: {
+          menuObject: menuObject,
+          test: "123"
+        }
+      });
+      break;
+    default:
+  }
+}
+
+async function getTargetTemplate(controller, type, index=0) {
+  // file Template example
+  const example = {
+    cmd: "reply",
+    composeType: "rsp",
+    label: "SmartTemplate4 mail validation", 
+    path: "N:\\templates\\SmartTemplate4 mail validation.html"
+  }
+
+  if (controller.startsWith("cmd_")) {
+    let ctr = controller.substr(4);
+    switch (type) {
+      case "most-recent" :
+        return fileTemplates.MRU_Entries.find(e=>e.cmd==ctr);
+      case "default" : // account template
+        return { path: "", label: "" };
+    }
+  }
+  return `test - ${controller} [${type}] ` ;
+}
 
 
-async function createHeaderMenu() {
-  // helper function to insert accelerator key
-  function injectAccessKey(txt, accesskey=null) {
+var Menuhelper = {
+  injectAccessKey: function(txt, accesskey=null) {
     if (accesskey) {
       let p = txt.indexOf(accesskey);
       if (p>=0) {
@@ -143,9 +209,293 @@ async function createHeaderMenu() {
       }
     }
     return txt;
+  }, 
+
+  // make single key "A","B","C" or single-numeric 1,2,3,4 followed by a space.
+  getAccessKey: function (acCode) {
+    if (acCode<10) { return `&${acCode.toString()} `; }
+    if (acCode>34) { return ""; }
+    return `&${String.fromCharCode(65+acCode-10)} `; // continue with A,B,C
+  }  ,
+
+  getTemplateListForController: function (controller) {
+    switch(ControllerMap.get(controller)) {
+      case "new": 
+        return fileTemplates.Entries.templatesNew;
+      case "reply": 
+        return fileTemplates.Entries.templatesRsp;
+      case "forward": 
+        return fileTemplates.Entries.templatesFwd;
+    }
+    return [];
+  } ,
+
+  getController: function (template) {
+    if (template?.command) {
+      return template.command;
+    }
+    if (template?.cmd) {
+      return "cmd_" + template.cmd;
+    }
+    return null;
+  }, 
+
+  // get identifier for localization / label from cmd.
+  getActionId: function (cmd) {
+    switch(cmd) {
+      case "forward":
+        return "pref_fwd.tab";
+      case "reply":
+        return "pref_rsp.tab";
+      case "replyAll":
+        return "st.menu.replyAll";
+      case "replyList":
+        return "st.menu.replyList";
+      case "write":
+        return "pref_new.tab";
+    }
+    return null;
+  }
+}
+
+async function addMenus(menuArray, context) {
+  // helper function to insert accelerator key
+  let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus");
+  if (isDebug) {
+    console.log("SmartTemplates addMenus()\n", {menuArray:menuArray, context:context})
   }
 
-  let isDebug =  await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.headerPane"); 
+  for (let m of menuArray) { // iterate all popups.
+    //
+    let ak = (m?.accesskey) ? messenger.i18n.getMessage(m?.accesskey) : null ;
+    let menuProps = {
+      contexts: [context],
+      enabled: true,
+      id: m.id, // string
+      title: Menuhelper.injectAccessKey(messenger.i18n.getMessage(m.label), ak),
+      visible: true  
+    }
+    let icon = getIconOfController(m.controller);
+    if (icon) { menuProps.icons = icon; }
+    // remove old menu if necessary:
+    try {
+      // let prefix = "smarttemplate4_thunderbird_extension-menuitem-_";
+      await messenger.menus.remove(`${m.id}`);
+    } catch (ex) {
+      if (isDebug) {
+        console.log(`API menus.remove(${m?.id}) failed\n`, ex);
+      }
+    }
+
+
+
+    let popupId = await messenger.menus.create(menuProps);
+
+
+    if (m.popupItems?.length) {
+      for(let p of m.popupItems) {
+        ak = (p?.accesskey) ? messenger.i18n.getMessage(p?.accesskey) : null ;
+        let template =
+          await getTargetTemplate(p?.controller, p?.ctr_type) ;
+        if (!template) { 
+          continue;
+        }
+
+        let title;
+
+        if(template.label) {
+          title = `${messenger.i18n.getMessage(p.label)}: ${template.label}`;
+        } else {
+          title = Menuhelper.injectAccessKey(messenger.i18n.getMessage(p.label), ak);
+        }
+
+        let itemProps = {
+          contexts: [context],
+          enabled: true,
+          // icons: ...,
+          id: p.id, // string
+          parentId: popupId, // string
+          title: title,
+          visible: true,  
+          onclick: (e) => {
+            executeFileMenu( {
+              controller: p?.controller,
+              control_type: p?.ctr_type,
+              target: template // file template entry or mru entry - see fileTemplates.js
+            })
+          }
+        }
+        await messenger.menus.create(itemProps);
+      }
+      // append file templates: (either one of new, rsp or fwd ) using ControllerMap
+      let templateList = Menuhelper.getTemplateListForController(m.controller);
+      if (!templateList.length) continue;
+
+      // ========================================
+      await messenger.menus.create({
+        contexts: [context],
+        parentId: popupId,
+        type: "separator"
+      });
+
+      // we need to iterate categories (= submenus) first!
+      // then items without category!
+      // the categories get their own accelerator which is A,B,C etc.
+      let accCount = 1;
+      let CatMap = new Map(); // [category , {id: catId, akc: accCount}]
+
+      // display catecory popups on top, then items without category
+      let sortedTemplates = [
+        ...templateList.filter(e => (e.category)),
+        ...templateList.filter(e => (!e.category))
+      ];      
+      for (let t of sortedTemplates) {
+        let catId = null;
+        let catEl = null;
+        if (t.category) {
+
+          catEl = CatMap.get(t.category) || null;
+          if (!catEl) {
+            catId = await messenger.menus.create({
+              contexts: [context],
+              parentId: popupId,
+              title: t.category
+            }); 
+            catEl = {id: catId, akc: 1}
+            CatMap.set(t.category, catEl);
+          } else {
+            catId = catEl.id;
+            catEl.akc++;
+            catEl = {id: catId, akc: catEl.akc}
+            CatMap.set(t.category, catEl);
+          }
+        }
+
+        let accelKeyString;
+        if (catEl) {
+          accelKeyString = Menuhelper.getAccessKey(catEl.akc);
+        } else {
+          accelKeyString = Menuhelper.getAccessKey(accCount);
+          accCount++
+        }
+       
+        // this step is temporary until we can create submenus:
+        let title = `${accelKeyString}${t.label}`;
+        let itemProps = {
+          contexts: [context],
+          enabled: true,
+          // icons: ...,
+          parentId: catId || popupId, // string
+          title: title,
+          visible: true,  
+          onclick: (e) => {
+            executeFileMenu( {
+              controller: m.controller,
+              control_type: m?.ctr_type, // optional
+              target: t // file template entry or mru entry - see fileTemplates.js
+            })
+          }
+        }
+        await messenger.menus.create(itemProps); 
+      }
+
+      // one more ========================================
+      await messenger.menus.create({
+        contexts: [context],
+        parentId: popupId,
+        type: "separator"
+      });      
+    }
+
+    // open file adhoc
+    // ["smarttemplate4-changeTemplate","smarttemplate4-insertSnippet"].includes(parentId) || SmartTemplate4.fileTemplates.getController(msgPopup);
+    const hasOpenFileItem = m.hasOwnProperty("controller");
+    if (hasOpenFileItem) {
+      await messenger.menus.create({
+        contexts: [context],
+        enabled: true,
+        parentId: popupId,
+        id: `${m.controller}-openTemplate`,
+        title: messenger.i18n.getMessage("st.fileTemplates.openFile"),
+        onclick: (e) => {
+          // fT.onSelectAdHoc(fT, composeType, popupParent, singleParentWindow);
+          messenger.NotifyTools.notifyExperiment({
+            event: "doCommand", 
+            detail: {
+              cmd: "smartTemplates-onSelectAdhoc", // will be re-packaged as el.id
+              params: {
+                controller: m.controller,
+                context: context
+              } 
+            }
+          })
+        }
+      });
+    }
+
+    // configure menu...
+    
+  }
+}
+
+
+async function createHeaderMenu() {
+  let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus");
+  if (isDebug) {
+    console.log("SmartTemplates: createHeaderMenu (through API)")
+  }
+
+  let Context =  "message_display_action_menu";
+
+  await addMenus([...replyMenus, ...forwardMenus], Context); 
+  // Toggle Label (optional)
+  let isLabelHidden = !(await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.toolbar.hideLabel"));
+  await messenger.menus.create({
+    contexts: [Context],
+    enabled: true,
+    id: "toggleLabel",
+    title: messenger.i18n.getMessage("st.menu.hideLabel"),
+    type: "checkbox",
+    checked: isLabelHidden,
+    onclick: (e) => {
+      messenger.NotifyTools.notifyExperiment({
+        event: "doCommand", 
+        detail: {
+          cmd: "smartTemplates-toggle-label", // will be re-packaged as el.id
+          params: { isHidden: isLabelHidden}  // toggle
+        }
+      });
+    }
+  });
+
+  // SmartTemplates Settings
+  await messenger.menus.create({
+    contexts: [Context],
+    enabled: true,
+    id: "smartTemplates-settings",
+    title: messenger.i18n.getMessage("pref_dialog.title"),
+    icons: "../chrome/content/skin/icons/settings.svg",
+    onclick: (e) => {
+      messenger.NotifyTools.notifyExperiment({
+        event: "doCommand", 
+        detail: {
+          cmd: "smartTemplates-settings", // will be re-packaged as el.id
+          params: {} 
+        }
+      });
+    }
+  });
+
+  // ========================================
+  await messenger.menus.create({
+    contexts: [Context],
+    enabled: true,
+    id: "templateSeparator",
+    type: "separator"
+  });
+
+  // MRU List
+
   // let menuProps = {
   //   contexts: ["message_display_action_menu"],
   //   onclick: async (event) => {    
@@ -168,49 +518,142 @@ async function createHeaderMenu() {
   //   icons: { // list-style-image: var(--icon-reply);
   //     "16": "chrome://messenger/skin/icons/new/compact/reply.svg"
   //   } ,
-  //   enabled: true,
-  //   id: "smartTemplates-reply-menu",
-  //   title: messenger.i18n.getMessage("pref_rsp.tab")
-  // } 
+
   // how to retrieve a css variable (according to Arndt)
   // getComputedStyle(document.documentElement).getPropertyValue('--icon-reply')
   // getComputedStyle(document.documentElement).setProperty('--icon-reply', 'whatever-value')
   // let idToggle = await messenger.menus.create(menuProps); // id of menu item
 
   // https://webextension-api.thunderbird.net/en/latest/menus.html#create-createproperties-callback
+
+}
+
+
+//
+async function updateMruMenu(Context) {
+   // default is 10 but can be raised in Pro
+  let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus");
   if (isDebug) {
-    console.log("SmartTemplates: createHeaderMenu (through API)")
+    console.log(`SmartTemplates updateMruMenu(${Context})\n`);
   }
-  for (let m of [...replyMenus, ...forwardMenus]) { // iterate all popups.
-    //
-    let menuProps = {
-      contexts: ["message_display_action_menu"],
+
+  const isMRUmenu = true,
+        MAX_FREE_TEMPLATES = isMRUmenu ? 3 : 5,
+        MAX_STANDARD_TEMPLATES = isMRUmenu ? 5 : 25,
+        MAX_STANDARD_CATEGORIES = 3,
+        MAX_MRU_CEILING = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.fileTemplates.mru.max"),
+        isLicensed = currentLicense.info.status == "Valid",
+        hasProLicense = currentLicense.info.keyType != 2;
+
+  let templates, popupId;
+  let countOldMruItems = 0;
+  let oldPrefix = "";
+  switch(Context) {
+    case "browser_action_menu": // not sure whether there is an official ContextType for the unified toolbar.
+      templates = fileTemplates.MRU_Entries.filter(e => e.composeType == "new");
+      popupId = null; // top level
+      countOldMruItems = MenuCounter.MRUunified;
+      oldPrefix = MenuMruPrefix.unified;
+      break;
+    case "message_display_action_menu":
+      templates = fileTemplates.MRU_Entries.filter(e => e.composeType == "rsp" || e.composeType == "fwd");
+      countOldMruItems = MenuCounter.MRUheader;
+      oldPrefix = MenuMruPrefix.header;
+      break;
+    case "compose_action_menu":
+      templates = []; // Snippets = recents? - change template = depends on compose Case!
+      countOldMruItems = MenuCounter.MRUcomposer; // obsolete?
+      oldPrefix = MenuMruPrefix.composer;
+      break;
+  }
+
+  // starting with idx=1
+  for (let i=1; i<=countOldMruItems; i++) {
+    try {
+      let id = `${oldPrefix}mru-${i}`;
+      if (isDebug) { console.log(`removing ${id} ... `); }
+      await messenger.menus.remove(id);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
+  let accelerator = 1,
+      generatedId = null;
+
+  for (let i=0; i<templates.length; i++) {
+    if (i>MAX_MRU_CEILING) {
+      break;
+    }    
+    let theTemplate = templates[i], // 
+        isDisabled = (!isLicensed && i>=MAX_FREE_TEMPLATES),
+        hasRestrictions = isDisabled;
+
+    if (!isDisabled && !hasProLicense && i>=MAX_STANDARD_TEMPLATES) {
+      isDisabled = true;
+      hasRestrictions = true;
+    }
+
+    // get identifier for localization / label
+    let actionId = Menuhelper.getActionId(theTemplate.cmd);
+    if (!actionId) continue;
+    let accelKeyString = Menuhelper.getAccessKey(accelerator),
+        action = messenger.i18n.getMessage(actionId);
+
+    let title = `${accelKeyString}${action}: ${theTemplate.label}`;
+    let item ={
+      contexts: [Context],
       enabled: true,
       // icons: ...,
-      id: m.id, // string
-      parentId: "", // string
-      title: injectAccessKey(messenger.i18n.getMessage(m.label), m?.accesskey), // we are missing m.accesskey !!
-      visible: true  // can we have a callback function here?
-
-    }
-    let idNew = await messenger.menus.create(menuProps);
-    if (m.popupItems?.length) {
-      for(let p of m.popupItems) {
-        let itemProps = {
-          contexts: ["message_display_action_menu"],
-          enabled: true,
-          // icons: ...,
-          id: p.id, // string
-          parentId: idNew, // string
-          title: injectAccessKey(messenger.i18n.getMessage(p.label), p?.accesskey),
-          visible: true  // can we have a callback function here?    
-        }
-        await messenger.menus.create(itemProps);
+      title: title,
+      id: `mru-${accelerator}`, 
+      onclick: (e) => {
+        executeFileMenu( {
+          controller: Menuhelper.getController(theTemplate), 
+          composeType: theTemplate?.composeType, //  "rsp" "new" "fwd" - added for later?
+          target: theTemplate // file template entry or mru entry - see fileTemplates.js
+        })
       }
+    };
+    if (popupId) {
+      item.parentId = popupId;
     }
-  
+    // the return value is the same id I passed in (not prefixed by API!!)
+    // BUGGY??
+    generatedId = await messenger.menus.create(item); 
+    accelerator++; 
   }
-  // to do: add controller and accesskey attribute
+  if (!generatedId) {
+    if (isDebug) { console.log("No MRU items were generated. "); }
+    return;
+  }
+  
+  // remember how many MRU items each menu type has
+  let prefixMatch = generatedId.match("(.*_)mru-");
+  let prefix = prefixMatch?.length>1 ? prefixMatch[1] : "";
+  if (!prefix ) {
+    // API bug...
+    prefix = "smarttemplate4_thunderbird_extension-menuitem-_";
+    if (isDebug) { 
+      console.log(`Nothing was prefixed to menu.id from API generated menu item.\n Using hardcoded fallback: ${prefix}` ); 
+    }
+  }  
+  switch(Context) {
+    case "browser_action_menu":
+      MenuCounter.MRUunified = accelerator-1;
+
+      if (prefix) { MenuMruPrefix.unified = prefix; }
+      break;
+    case "message_display_action_menu": // not sure whether there is an official ContextType for the unified toolbar.
+      MenuCounter.MRUheader = accelerator-1;
+      if (prefix) { MenuMruPrefix.header = prefix; }
+      break;
+    case "compose_action_menu":
+      MenuCounter.MRUcomposer = accelerator-1; // Snippets = recents? - change template = depends on compose Case!
+      if (prefix) { MenuMruPrefix.composer = prefix; }
+      break;
+  }  
+  
 }
 
  
@@ -459,9 +902,19 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({event: "patchHeaderMenu"});
         break;
 
-      case "patchHeaderMenuAPI":
-        createHeaderMenu(); // use API to build the menu
+      case "updateFileTemplates":
+        fileTemplates.Entries = data.Entries;
+        fileTemplates.MRU_Entries = data.MRU_Entries;
         break;
+
+      case "patchHeaderMenuAPI":
+        await createHeaderMenu();                           // use API to build the menu
+        await updateMruMenu("message_display_action_menu"); // API to update MRU items
+        break;
+
+      case "updateHeaderMenuMRU":
+        await updateMruMenu("message_display_action_menu"); // API to update MRU items
+        break;        
         
       case "updateSnippetMenus":
         messenger.NotifyTools.notifyExperiment({event: "updateSnippetMenus"});

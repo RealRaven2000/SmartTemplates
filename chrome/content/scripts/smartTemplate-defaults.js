@@ -81,6 +81,7 @@ pref("extensions.smartTemplate4.debug.functions.insertTemplate", false);
 pref("extensions.smartTemplate4.debug.functions.extractSignature", false);
 pref("extensions.smartTemplate4.debug.functions.getProcessedText", false);
 pref("extensions.smartTemplate4.debug.adressbook", false);
+pref("extensions.smartTemplate4.debug.API.menus", false);
 pref("extensions.smartTemplate4.debug.replaceReservedWords", false);
 pref("extensions.smartTemplate4.debug.deleteNodes", false);
 pref("extensions.smartTemplate4.debug.composer", false);
