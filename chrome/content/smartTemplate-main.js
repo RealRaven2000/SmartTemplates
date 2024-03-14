@@ -1117,8 +1117,8 @@ var SmartTemplate4 = {
     <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
       <menupopup>
         <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-headerMenuAPI" label="API Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-MruMenuAPI" label="Update API MRU" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-headerMenuAPI" label="Create message Actions (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-MruMenuAPI" label="Update MRU (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-patchHeaderTools" label="Patch Header Menu (legacy)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
@@ -1143,6 +1143,9 @@ var SmartTemplate4 = {
   },
 
   patchHeaderPane: function(doc, message_display_action_btn) {
+    if (SmartTemplate4.fileTemplates.isAPIpatched) {
+      return false;
+    }
     const PatchedBtnClass = "SmartTemplates_HeaderBtn"; // use this for styles & as flag for having been patched
     const isDebug = SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus");
     if (isDebug) {
@@ -1247,6 +1250,9 @@ var SmartTemplate4 = {
             let browser = SmartTemplate4.Util.document3pane.getElementById("messageBrowser");
             doc = browser.contentDocument;  
             break;
+        }        
+        if (!SmartTemplate4.fileTemplates.isAPIpatched) {
+          return; // header Patch obsolete for API method
         }        
         if (doc) {
           let headerButton = doc.getElementById(HEADERBARID);

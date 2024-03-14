@@ -109,7 +109,9 @@ async function onLoad(activatedWhileWindowOpen) {
         break;
       case "smartTemplates-headerMenuAPI":
         // to test, first remove the old xul menu items:
-        SmartTemplates.clearActionMenu(); // do this via the API instead!
+        if (!SmartTemplates.fileTemplates.isAPIpatched) {
+          SmartTemplates.clearActionMenu(); // do this via the API instead!
+        }
         // 
         await SmartTemplates.Util.notifyTools.notifyBackground({ 
           func: "updateFileTemplates",
@@ -120,6 +122,7 @@ async function onLoad(activatedWhileWindowOpen) {
         await SmartTemplates.Util.notifyTools.notifyBackground({ 
           func: "patchHeaderMenuAPI" 
         });
+        SmartTemplates.fileTemplates.isAPIpatched = true;
         break;
       case "smartTemplates-MruMenuAPI":
         await SmartTemplates.Util.notifyTools.notifyBackground({ 

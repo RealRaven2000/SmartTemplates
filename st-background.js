@@ -279,7 +279,6 @@ async function addMenus(menuArray, context) {
     if (icon) { menuProps.icons = icon; }
     // remove old menu if necessary:
     try {
-      // let prefix = "smarttemplate4_thunderbird_extension-menuitem-_";
       await messenger.menus.remove(`${m.id}`);
     } catch (ex) {
       if (isDebug) {
@@ -343,6 +342,7 @@ async function addMenus(menuArray, context) {
       // the categories get their own accelerator which is A,B,C etc.
       let accCount = 1;
       let CatMap = new Map(); // [category , {id: catId, akc: accCount}]
+      let catAccelerator = 10; // A, B, C etc.
 
       // display catecory popups on top, then items without category
       let sortedTemplates = [
@@ -356,10 +356,11 @@ async function addMenus(menuArray, context) {
 
           catEl = CatMap.get(t.category) || null;
           if (!catEl) {
+            let CA = Menuhelper.getAccessKey(catAccelerator++);
             catId = await messenger.menus.create({
               contexts: [context],
               parentId: popupId,
-              title: t.category
+              title: `${CA}${t.category}`
             }); 
             catEl = {id: catId, akc: 1}
             CatMap.set(t.category, catEl);
@@ -547,30 +548,31 @@ async function updateMruMenu(Context) {
 
   let templates, popupId;
   let countOldMruItems = 0;
-  let oldPrefix = "";
+
+  // let oldPrefix = "";
   switch(Context) {
     case "browser_action_menu": // not sure whether there is an official ContextType for the unified toolbar.
       templates = fileTemplates.MRU_Entries.filter(e => e.composeType == "new");
       popupId = null; // top level
       countOldMruItems = MenuCounter.MRUunified;
-      oldPrefix = MenuMruPrefix.unified;
+      // oldPrefix = MenuMruPrefix.unified;
       break;
     case "message_display_action_menu":
       templates = fileTemplates.MRU_Entries.filter(e => e.composeType == "rsp" || e.composeType == "fwd");
       countOldMruItems = MenuCounter.MRUheader;
-      oldPrefix = MenuMruPrefix.header;
+      // oldPrefix = MenuMruPrefix.header;
       break;
     case "compose_action_menu":
       templates = []; // Snippets = recents? - change template = depends on compose Case!
       countOldMruItems = MenuCounter.MRUcomposer; // obsolete?
-      oldPrefix = MenuMruPrefix.composer;
+      // oldPrefix = MenuMruPrefix.composer;
       break;
   }
 
   // starting with idx=1
   for (let i=1; i<=countOldMruItems; i++) {
     try {
-      let id = `${oldPrefix}mru-${i}`;
+      let id = `mru-${i}`; // ${oldPrefix}
       if (isDebug) { console.log(`removing ${id} ... `); }
       await messenger.menus.remove(id);
     } catch (ex) {
@@ -629,28 +631,27 @@ async function updateMruMenu(Context) {
   }
   
   // remember how many MRU items each menu type has
-  let prefixMatch = generatedId.match("(.*_)mru-");
-  let prefix = prefixMatch?.length>1 ? prefixMatch[1] : "";
-  if (!prefix ) {
-    // API bug...
-    prefix = "smarttemplate4_thunderbird_extension-menuitem-_";
-    if (isDebug) { 
-      console.log(`Nothing was prefixed to menu.id from API generated menu item.\n Using hardcoded fallback: ${prefix}` ); 
-    }
-  }  
+  // let prefixMatch = generatedId.match("(.*_)mru-");
+  // let prefix = prefixMatch?.length>1 ? prefixMatch[1] : "";
+  // if (!prefix ) {
+  //   // API bug...
+  //   prefix = "smarttemplate4_thunderbird_extension-menuitem-_";
+  //   if (isDebug) { 
+  //     console.log(`Nothing was prefixed to menu.id from API generated menu item.\n Using hardcoded fallback: ${prefix}` ); 
+  //   }
+  // }  
   switch(Context) {
     case "browser_action_menu":
       MenuCounter.MRUunified = accelerator-1;
-
-      if (prefix) { MenuMruPrefix.unified = prefix; }
+      // if (prefix) { MenuMruPrefix.unified = prefix; }
       break;
     case "message_display_action_menu": // not sure whether there is an official ContextType for the unified toolbar.
       MenuCounter.MRUheader = accelerator-1;
-      if (prefix) { MenuMruPrefix.header = prefix; }
+      // if (prefix) { MenuMruPrefix.header = prefix; }
       break;
     case "compose_action_menu":
       MenuCounter.MRUcomposer = accelerator-1; // Snippets = recents? - change template = depends on compose Case!
-      if (prefix) { MenuMruPrefix.composer = prefix; }
+      // if (prefix) { MenuMruPrefix.composer = prefix; }
       break;
   }  
   

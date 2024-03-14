@@ -21,6 +21,7 @@ SmartTemplate4.fileTemplates = {
     snippets: []
 	},
   MRU_Entries: [], // [issue 263]
+  isAPIpatched: false,
 	armedEntry: null,
   tabConfigured: false,
 	lastError: null,
@@ -635,6 +636,17 @@ SmartTemplate4.fileTemplates = {
   * @param  showConfigureItem  switch to create "configure menu" item.
   * */
 	configureMenu: function (templatesList, msgPopup, composeType, showConfigureItem = true) {
+    if (this.isAPIpatched) {
+      if  (composeType=="mru-smartTemplates-header") {
+        return;
+      }
+      let attr = msgPopup?.parentElement?.parentElement.getAttribute("data-action-menu");
+      // we are not messing with this one!!
+      if (attr == "messageDisplayAction") {
+        return;
+      }
+    }
+
 		const util = SmartTemplate4.Util,
 					fT = SmartTemplate4.fileTemplates;
 
@@ -1016,11 +1028,24 @@ SmartTemplate4.fileTemplates = {
 	} ,
 	
   initMenusWithReset: async function() { 
-    const isSingleMessage = (window.document.URL.endsWith("messageWindow.xhtml"));
-    SmartTemplate4.Util.logHighlightDebug("initMenusWithReset()\n","white","#8e0477a4", window.document.URL, isSingleMessage);
-    await window.SmartTemplate4.fileTemplates.initMenus(true);
-    if (!isSingleMessage && window.gTabmail.currentTabInfo.mode.type == "mailTab") {
-      SmartTemplate4.fileTemplates.tabConfigured = true;
+    const isSingleMessage = (window.document.URL.endsWith("messageWindow.xhtml")),
+          isAPI = SmartTemplate4.fileTemplates.isAPIpatched;
+    SmartTemplate4.Util.logHighlightDebug("initMenusWithReset()\n","white","#8e0477a4",
+      window.document.URL, isSingleMessage, `menu patched via API: ${isAPI}`
+      );
+
+    if (isAPI) {
+      // this will also update the data!
+      await window.SmartTemplate4.Util.notifyTools.notifyBackground({ 
+        func: "smartTemplates-headerMenuAPI" 
+      });
+      // only on main toolbar item until this is converted for API!
+      await window.SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"unified"});
+    } else {
+      await window.SmartTemplate4.fileTemplates.initMenus(true);
+      if (!isSingleMessage && window.gTabmail.currentTabInfo.mode.type == "mailTab") {
+        SmartTemplate4.fileTemplates.tabConfigured = true;
+      }
     }
   },
   
@@ -1137,6 +1162,9 @@ SmartTemplate4.fileTemplates = {
       }
       
       // 4) ====  preview header area ==== //
+      if (this.isAPIpatched) {
+        return;
+      }
       let doc = SmartTemplate4.Util.getMessageBrowserDocument();
 
       if (isHackMessageHeader && doc) {
@@ -1525,12 +1553,8 @@ SmartTemplate4.fileTemplates = {
 
       if (entry.command) {
         switch(entry.command.toLowerCase()) {
-          case "cmd_replyAll":
-            cmd = "replyAll";
-            break;
-          case "cmd_replyList":
-            cmd = "replyList";
-            break;
+          case "cmd_replyall": cmd = "replyAll"; break;
+          case "cmd_replylist": cmd = "replyList"; break;
         }
       }
       let mruEntry = {
@@ -1749,17 +1773,18 @@ SmartTemplate4.fileTemplates = {
     }
 
     switch(controller) {
-      case "cmd_reply": cmd = "reply"; break;
-      case "cmd_replyAll": cmd = "replyAll"; break;
-      case "cmd_replyList": cmd = "replyList"; break;
-      case "cmd_newMessage": cmd = "write"; break;
-      case "cmd_forward": cmd = "forward"; break;
-      case "cmd_forwardInline": cmd = "forward"; break;
+      case "cmd_reply": cmd = "reply"; composeType="rsp"; break;
+      case "cmd_replyAll": cmd = "replyAll"; composeType="rsp"; break;
+      case "cmd_replyList": cmd = "replyList"; composeType="rsp"; break;
+      case "cmd_newMessage": cmd = "write"; composeType="new"; break;
+      case "cmd_forward": cmd = "forward"; composeType="fwd"; break;
+      case "cmd_forwardInline": cmd = "forward"; composeType="fwd";break;
     }
+
 
     // closure "this" (fileTemplates object) for the callback
     const theInstance = this;
-
+    
 		this.pickFile(
 		  function(localFile) {
 				const prefs = SmartTemplate4.Preferences,
@@ -2069,10 +2094,6 @@ SmartTemplate4.fileTemplates = {
               function saveSuccess(byteCount) {
                 util.logDebug (`Successfully saved ${mruArray.length} MRU items [${byteCount} bytes] to file:\n`, path);
 								fileTemplates.isModified = true;
-                /*
-                SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
-                SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateSnippetMenus" });
-                */
               },
               function saveReject(fileError) {  // IOUtils.Error
                 util.logDebug ("storeMRU error:" + fileError);
