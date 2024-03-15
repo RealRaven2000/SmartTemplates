@@ -72,10 +72,10 @@ async function addMenuEntries(entries, parentId) {
 
 const ControllerMap = new Map([
   ["cmd_newMessage", "new"], 
-  ["cmd_reply", "reply"],
-  ["cmd_replyAll", "reply"],
-  ["cmd_replyList", "reply"],
-  ["cmd_forward", "forward"]
+  ["cmd_reply", "rsp"],
+  ["cmd_replyAll", "rsp"],
+  ["cmd_replyList", "rsp"],
+  ["cmd_forward", "fwd"]
 ]);
 
 const writeMenus = [
@@ -84,7 +84,7 @@ const writeMenus = [
     controller:"cmd_newMessage", 
     popupItems: [
       { id:"smartTemplates-write-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_newMessage", ctr_type: "most-recent" },
-      { id:"smartTemplates-write-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_newMessage", ctr_type: "default" }
+      { id:"smartTemplates-write-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_newMessage", ctr_type: "account" }
     ]
   }
 ];
@@ -95,7 +95,7 @@ const replyMenus = [
     controller:"cmd_reply", 
     popupItems: [
       { id:"smartTemplates-reply-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_reply", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_reply", ctr_type: "default" }
+      { id:"smartTemplates-reply-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_reply", ctr_type: "account" }
     ]
   }, 
   { type:"menu", id:"smartTemplates-reply-all-menu", classList:"menu-iconic", 
@@ -103,7 +103,7 @@ const replyMenus = [
     controller:"cmd_replyAll", 
     popupItems: [
       { id:"smartTemplates-reply-all-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_replyAll", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_replyAll", ctr_type: "default" }
+      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_replyAll", ctr_type: "account" }
     ]
   }, 
   { type:"menu", id:"smartTemplates-reply-list-menu", classList:"menu-iconic", 
@@ -111,7 +111,7 @@ const replyMenus = [
     controller:"cmd_replyList", 
     popupItems: [
       { id:"smartTemplates-reply-list-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_replyList", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_replyList", ctr_type: "default" }
+      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_replyList", ctr_type: "account" }
     ]
   }, 
 ];
@@ -123,7 +123,7 @@ const forwardMenus = [
     controller:"cmd_forward", 
     popupItems: [
       { id:"smartTemplates-forward-last", label:"st.menu.template.last", classList:"menuitem-iconicst-last-fwd st-mru", controller:"cmd_forward", ctr_type: "most-recent" },
-      { id:"smartTemplates-forward-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_forward", ctr_type: "default" }
+      { id:"smartTemplates-forward-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_forward", ctr_type: "account" }
     ]
   }  
 ];
@@ -175,7 +175,7 @@ async function executeFileMenu(menuObject) {
   }
 }
 
-async function getTargetTemplate(controller, type, index=0) {
+async function getTargetTemplate(controller, type) {
   // file Template example
   const example = {
     cmd: "reply",
@@ -189,8 +189,12 @@ async function getTargetTemplate(controller, type, index=0) {
     switch (type) {
       case "most-recent" :
         return fileTemplates.MRU_Entries.find(e=>e.cmd==ctr);
-      case "default" : // account template
-        return { path: "", label: "" };
+      case "account" : // account template
+        return {
+          controller: controller, 
+          path: "", 
+          label: "" 
+        };
     }
   }
   return `test - ${controller} [${type}] ` ;
@@ -222,9 +226,9 @@ var Menuhelper = {
     switch(ControllerMap.get(controller)) {
       case "new": 
         return fileTemplates.Entries.templatesNew;
-      case "reply": 
+      case "rsp": 
         return fileTemplates.Entries.templatesRsp;
-      case "forward": 
+      case "fwd": 
         return fileTemplates.Entries.templatesFwd;
     }
     return [];
@@ -286,8 +290,6 @@ async function addMenus(menuArray, context) {
       }
     }
 
-
-
     let popupId = await messenger.menus.create(menuProps);
 
 
@@ -317,11 +319,30 @@ async function addMenus(menuArray, context) {
           title: title,
           visible: true,  
           onclick: (e) => {
+            // account (default) template
+            if (p?.ctr_type == "account") {
+              // account template
+              messenger.NotifyTools.notifyExperiment({
+                event: "doCommand", 
+                detail: {
+                  cmd: p.id, // will be re-packaged as el.id
+                  params: {
+                    entry: {
+                      command: m.controller,
+                      composeType: ControllerMap.get(m.controller)
+                    }
+                  } 
+                }
+              });
+              return;     
+            } 
+            // html template
             executeFileMenu( {
               controller: p?.controller,
               control_type: p?.ctr_type,
               target: template // file template entry or mru entry - see fileTemplates.js
-            })
+            });
+            
           }
         }
         await messenger.menus.create(itemProps);
@@ -429,12 +450,35 @@ async function addMenus(menuArray, context) {
                 context: context
               } 
             }
-          })
+          });
         }
       });
     }
 
     // configure menu...
+    await messenger.menus.create( 
+      {
+        contexts: [context],
+        id: `configure-${m.controller}`,
+        icons: "../chrome/content/skin/icons/settings.svg",
+        parentId: popupId,
+        title: messenger.i18n.getMessage("st.fileTemplates.configureMenu"),
+        onclick: (e) => {
+          messenger.NotifyTools.notifyExperiment({
+            event: "doCommand", 
+            detail: {
+              cmd: "smartTemplates-settings", 
+              params: {
+                mode:"fileTemplates", 
+                composeType:  ControllerMap.get(m.controller),
+                tab: -1
+              }  // toggle
+            }
+          });
+        }
+      }
+    );
+    
     
   }
 }
@@ -904,6 +948,9 @@ async function main() {
         break;
 
       case "updateFileTemplates":
+        if (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus")) {
+          console.log("SmartTemplates updateFileTemplates() [API] data\n");
+        }
         fileTemplates.Entries = data.Entries;
         fileTemplates.MRU_Entries = data.MRU_Entries;
         break;

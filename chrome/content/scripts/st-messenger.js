@@ -40,11 +40,16 @@ async function onLoad(activatedWhileWindowOpen) {
   window.SmartTemplate4.doCommand = async function (el, params={}) {
     if (!el) {
       return;
+
     }
     const SmartTemplates = window.SmartTemplate4;
+    util.logHighlightDebug("SmartTemplates.doCommand()", "lightgreen", "rgb(0,80,0)",
+      {id: el.id}, params
+    );
+
     switch (el.id) {
       case "smartTemplates-checklicense":
-        SmartTemplates.Util.openPreferences(el);
+        SmartTemplates.Util.openPreferences({element: el});
         break;
         
       /* use last template */
@@ -62,9 +67,14 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-reply-list-default":
       case "smartTemplates-reply-all-default":
       case "smartTemplates-forward-default":
-        // go up to the parent menu element (e.g. )
-        let menuParent = el.parentNode.parentNode;
-        let entry = SmartTemplates.fileTemplates.uniMenus.find(e => e.id == menuParent.id);
+        let entry;
+        if (params.entry) {
+          entry = params.entry;
+        } else {
+          // go up to the parent menu element (e.g. )
+          let menuParent = el.parentNode.parentNode;
+          entry = SmartTemplates.fileTemplates.uniMenus.find(e => e.id == menuParent.id);
+        }
         if (entry) {
           SmartTemplates.Util.logDebug("Execute command for reply with account template: " + entry.command);
           SmartTemplates.fileTemplates.fireComposeCommand(entry);
@@ -79,7 +89,11 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
         break;
       case "smartTemplates-settings":
-        SmartTemplates.Util.openPreferences(el);
+        if (params.hasOwnProperty("composeType")) {
+          SmartTemplates.Util.openPreferences(params);
+        } else {
+          SmartTemplates.Util.openPreferences({element:el});
+        }
         break;
       case "smartTemplates-settings-new":
         SmartTemplates.Util.logIssue213("Show new HTML help dialog.");
@@ -95,7 +109,7 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-variables":
         // SmartTemplates.Util.logIssue213("Show Variables Tab");
         // SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs", page: "variables" });
-        SmartTemplates.Util.openPreferences(null, "variables");
+        SmartTemplates.Util.openPreferences({element: null, mode: "variables"});
         SmartTemplates.Util.showVariablesPage();
         break;
       case "smartTemplates-premium":
@@ -110,9 +124,10 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-headerMenuAPI":
         // to test, first remove the old xul menu items:
         if (!SmartTemplates.fileTemplates.isAPIpatched) {
+          // undo the patch once
           SmartTemplates.clearActionMenu(); // do this via the API instead!
         }
-        // 
+        // update the data in background
         await SmartTemplates.Util.notifyTools.notifyBackground({ 
           func: "updateFileTemplates",
           Entries: SmartTemplates.fileTemplates.Entries,
@@ -125,6 +140,12 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.fileTemplates.isAPIpatched = true;
         break;
       case "smartTemplates-MruMenuAPI":
+        // update the data to the background first
+        await SmartTemplates.Util.notifyTools.notifyBackground({ 
+          func: "updateFileTemplates",
+          Entries: SmartTemplates.fileTemplates.Entries,
+          MRU_Entries: SmartTemplates.fileTemplates.MRU_Entries
+        });        
         await SmartTemplates.Util.notifyTools.notifyBackground({ 
           func: "updateHeaderMenuMRU" 
         });        

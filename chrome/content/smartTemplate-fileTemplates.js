@@ -638,11 +638,13 @@ SmartTemplate4.fileTemplates = {
 	configureMenu: function (templatesList, msgPopup, composeType, showConfigureItem = true) {
     if (this.isAPIpatched) {
       if  (composeType=="mru-smartTemplates-header") {
+        SmartTemplate4.Util.logDebugOptional("API.menus", `configureMenu(composeType = ${composeType}) early exit [API code]`);
         return;
       }
       let attr = msgPopup?.parentElement?.parentElement.getAttribute("data-action-menu");
       // we are not messing with this one!!
       if (attr == "messageDisplayAction") {
+        SmartTemplate4.Util.logDebugOptional("API.menus", `configureMenu(composeType = ${composeType}) early exit [API code] [data-action-menu=${attr}]`);
         return;
       }
     }
@@ -1031,8 +1033,8 @@ SmartTemplate4.fileTemplates = {
     const isSingleMessage = (window.document.URL.endsWith("messageWindow.xhtml")),
           isAPI = SmartTemplate4.fileTemplates.isAPIpatched;
     SmartTemplate4.Util.logHighlightDebug("initMenusWithReset()\n","white","#8e0477a4",
-      window.document.URL, isSingleMessage, `menu patched via API: ${isAPI}`
-      );
+      window.document.URL, `singleMessags=${isSingleMessage}  menu patched via API: ${isAPI}`
+    );
 
     if (isAPI) {
       // this will also update the data!
@@ -1269,7 +1271,7 @@ SmartTemplate4.fileTemplates = {
   }  ,
 	
 
-  composeFromAPI: function (menuEntry) {
+  composeFromAPI: async function (menuEntry) {
     let composeType;
     switch (menuEntry.controller) {
       case "cmd_newMessage":
@@ -1306,7 +1308,14 @@ SmartTemplate4.fileTemplates = {
     catch(ex) {
       SmartTemplate4.Util.logException("composeFromAPI()", ex);
     } finally {
-      window.SmartTemplate4.Util.notifyTools.notifyBackground({ 
+      // update the data to the background first
+      await SmartTemplate4.Util.notifyTools.notifyBackground({ 
+        func: "updateFileTemplates",
+        Entries: this.Entries,
+        MRU_Entries: this.MRU_Entries
+      });
+
+      SmartTemplate4.Util.notifyTools.notifyBackground({ 
         func: "updateHeaderMenuMRU" 
       });
     }

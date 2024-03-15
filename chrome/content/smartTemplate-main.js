@@ -1150,7 +1150,7 @@ var SmartTemplate4 = {
     const isDebug = SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus");
     if (isDebug) {
       SmartTemplate4.Util.logDebugOptional("fileTemplates.menus",
-        "Patching Header Pane for document", doc);
+        "Patching Header Pane for document [Legacy]", doc);
     }
     if (!doc) {
       doc = this.Util.documentMessageBrowser;
@@ -1240,6 +1240,10 @@ var SmartTemplate4 = {
         const HEADERBARID = "smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton";
         let result = await SmartTemplate4.Util.notifyTools.notifyBackground({func: "patchUnifiedToolbar"});
         await SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"unified"});
+        if (SmartTemplate4.fileTemplates.isAPIpatched) {
+          return; // header Patch obsolete for API method
+        }        
+
         let doc;
         let currentTabMode = SmartTemplate4.Util.getTabMode(gTabmail.selectedTab);
         switch(currentTabMode) { // there are tab modes that have no access to document3pane! e.g. contentTab
@@ -1250,9 +1254,6 @@ var SmartTemplate4 = {
             let browser = SmartTemplate4.Util.document3pane.getElementById("messageBrowser");
             doc = browser.contentDocument;  
             break;
-        }        
-        if (!SmartTemplate4.fileTemplates.isAPIpatched) {
-          return; // header Patch obsolete for API method
         }        
         if (doc) {
           let headerButton = doc.getElementById(HEADERBARID);
@@ -1266,6 +1267,10 @@ var SmartTemplate4 = {
       function getTabDebugInfo(tab) {
         return `[ mode = ${tab.mode.name}, title = ${tab.title}, tabId = ${tab.tabId} ]`;
       }
+
+      if (SmartTemplate4.fileTemplates.isAPIpatched) {
+        return; // header Patch obsolete for API method
+      }        
       let tabmail = document.getElementById("tabmail");
       const newTabInfo = tabmail.tabInfo.find(e => e == evt.detail.tabInfo);
       const RETRY_DELAY = 2500;

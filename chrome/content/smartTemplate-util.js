@@ -61,7 +61,7 @@ SmartTemplate4.Util = {
         if (!data.hasOwnProperty("window") || data.window.includes(window.document.location.href.toString())) {
           SmartTemplate4.Util.logDebugOptional("notifications", 
             `onBackgroundUpdates - dispatching custom event SmartTemplates.BackgroundUpdate.${data.event}\n` +
-            `into ${window.document.location.href.toString()}`);
+            `into ${window.document?.location.href.toString()}`);
           const event = new CustomEvent(`SmartTemplates.BackgroundUpdate.${data.event}`, {detail: data.detail});
           window.dispatchEvent(event); 
         }       
@@ -2769,44 +2769,47 @@ SmartTemplate4.Util = {
     }
     
     
-    let c = el.className,
-        params = {
-          inn:{ 
-            mode: isLicenseWarning ? "licenseKey" : "",
-            message: "Test!", 
-            instance: window.SmartTemplate4
-          }, out:null
-        };
-    window.openDialog('chrome://smarttemplate4/content/settings.xhtml', 
-      'Preferences', 
-      'chrome,titlebar,toolbar,centerscreen,dependent,resizable',
-      null,
-      params);
-
+    let params = {
+			mode: isLicenseWarning ? "licenseKey" : "",
+			message: "Test!", 
+			instance: window.SmartTemplate4
+		};
+		SmartTemplate4.Util.openPreferences(params);
   },
   
-  openPreferences: async function(el=null, mode="") { // open legacy preferences
+  openPreferences: async function(params) { // open legacy preferences
     if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
       SmartTemplate4.Util.viewSplashScreen();
       SmartTemplate4.Preferences.setMyBoolPref("hasNews", false);
       SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
       return;
     }
+		let win = SmartTemplate4.Util.Mail3PaneWindow;
+		let el = params?.element;
     if (el && el.classList && 
 			  (el.classList.contains("alertExpired") || el.classList.contains("checkLicense"))
 			 ) {
       SmartTemplate4.Util.viewLicense();
+			return;
     }
-    else {
-			let params = {inn:{mode:mode}, out:null};			
-			
-			window.openDialog(
-				"chrome://SmartTemplate4/content/settings.xhtml", 
-				"Preferences", 
-				"chrome,titlebar,toolbar,dependent,centerscreen,resizable", 
-				SmartTemplate4,
-				params);
-    }
+		let inParams = { 
+			mode: params.mode || "",
+			instance: win.SmartTemplate4
+		};
+		if (params.hasOwnProperty("tab")) { inParams.tab = params.tab; }
+		if (params.hasOwnProperty("message")) { inParams.message = params.message;}
+		if (params.hasOwnProperty("composeType")) { inParams.composeType = params.composeType; }
+
+		window.openDialog(
+			"chrome://SmartTemplate4/content/settings.xhtml", 
+			"Preferences", 
+			"chrome,titlebar,toolbar,dependent,centerscreen,resizable", 
+			SmartTemplate4,
+			{
+				inn: inParams, 
+				out: null
+			}
+		);
     
   },
   
