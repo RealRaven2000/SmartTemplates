@@ -194,7 +194,6 @@ SmartTemplate4.composer = {
     else {
       SmartTemplate4.notifyComposeBodyReady(true, window);
     }
-    // SmartTemplate4.fileTemplates.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
   },
   
   selectSnippetFromMenu: async function(element) {

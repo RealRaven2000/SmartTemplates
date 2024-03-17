@@ -594,11 +594,6 @@ SmartTemplate4.fileTemplates = {
   },
 
   addTemplateEvent: function (menuitem, popupParent, fT, composeType, template, singleParentWindow) {
-    if (menuitem.getAttribute("hasTemplateEvent")) {
-      // recreate menu item to throw away the old events!
-      // menuitem = SmartTemplate4.fileTemplates.createTemplateItem(composeType, theTemplate);
-    }
-
     if (!template || !template.path) {
       return;
     }
@@ -612,7 +607,7 @@ SmartTemplate4.fileTemplates = {
           + "composeType=" + composeType + "\n"
           + "template=" + template.label, 
           template);
-        fT.onItemClick(menuitem, popupParent, fT, composeType, template.path, template.label, event, singleParentWindow); 
+        fT.onItemClick(menuitem, popupParent, fT, composeType, template.path, template.label, singleParentWindow); 
         return false; 
       }, 
       {capture:true } , 
@@ -621,8 +616,6 @@ SmartTemplate4.fileTemplates = {
       (event) => { event.stopPropagation();},
       {capture:true } , 
       true);
-
-    menuitem.setAttribute("hasTemplateEvent", true); // this has an event
   },
 
 
@@ -904,7 +897,6 @@ SmartTemplate4.fileTemplates = {
           event.stopImmediatePropagation();
           util.logDebugOptional("fileTemplates", "Click event for open file Template - stopped propagation.\n"
             + "composeType=" + composeType);
-          // fT.onItemClick(menuitem, popupParent, fT, composeType, theTemplate.path, "File Template"); 
           fT.onSelectAdHoc.call(
             fT, 
             { 
@@ -1295,11 +1287,12 @@ SmartTemplate4.fileTemplates = {
       type: menuEntry.control_type
     };
     // fileTemplateInstance from the "correct" window?
-    debugger;
     try {
       window.SmartTemplate4.fileTemplates.armedEntry = entry;
 
-      this.fireComposeCommand(entry);
+      if (!this.fireComposeCommand(entry)) {
+        return;
+      }
       this.storePreviousTemplate(composeType, entry);
       // update api menus
       // we need to remove all mru- items from the top level!
@@ -1326,19 +1319,34 @@ SmartTemplate4.fileTemplates = {
   // appropriate structure in  this.uniMenus
   fireComposeCommand: function (entry) {
     // execute the command.
-    if (!entry.command) {
-      SmartTemplate4.Util.logHighlight("fireComposeCommand failed", "white", "rgb(120,0,0)", "entry.command missing!")
+    let command = entry?.command; // cmd_replyall etc.
+    if (!command) {
+      SmartTemplate4.Util.logHighlight("fireComposeCommand failed", "white", "rgb(120,0,0)", "entry.command missing!");
+      return false;
     }
-    let controller = getEnabledControllerForCommand(entry.command);
+
+    switch(entry.command) {
+      case "cmd_replyAll": command = "cmd_replyall"; break;
+      case "cmd_replyList": command = "cmd_replylist"; break;
+    }
+
+    let controller = getEnabledControllerForCommand(command);
     if (!controller) {
-      SmartTemplate4.Util.logDebug(`No controller exists for the command ${entry.command} `);
-    } else {
-      if (controller.isCommandEnabled(entry.command)) {
-        controller.doCommand(entry.command);
-      } else {
-        SmartTemplate4.Util.logToConsole(`Cannot call command ${entry.command} as it is disabled.`);
-      }
+      SmartTemplate4.Util.logDebug(`No controller exists for the command ${command} `);  
+      SmartTemplate4.Message.display(
+        SmartTemplate4.Util.getBundleString("st.fileTemplates.error.nocontroller", [command]), 
+        "centerscreen,titlebar",
+        { ok: function() {  }}
+      );
+      return false;
+    } 
+    
+    if (!controller.isCommandEnabled(command)) {
+      SmartTemplate4.Util.logToConsole(`Cannot call command ${command} as it is disabled.`);
+      return false;
     }
+    controller.doCommand(command); // execute
+    return true;
   },
 
   enterMRUitem(entry) {
@@ -1370,8 +1378,7 @@ SmartTemplate4.fileTemplates = {
   },
 
 	// origin: "new", "rsp", "fwd"
-	onItemClick: function (menuitem, menuParent, fileTemplateInstance, composeType, path, label, originalEvent, singleMwindow) {
-    
+	onItemClick: function (menuitem, menuParent, fileTemplateInstance, composeType, path, label, singleMwindow) {
     /*   START NEW CODE -  [issue 184] */
     // use a pref switch for testing API processing...
     if (SmartTemplate4.Preferences.isBackgroundParser()) {
@@ -1392,15 +1399,13 @@ SmartTemplate4.fileTemplates = {
     /* END NEW CODE  - [issue 184] */
 
     let btn = menuParent; // can be a button or a (new) menu on unifiedtoolbar button
-		const util = SmartTemplate4.Util,
-          prefs = SmartTemplate4.Preferences;
+		const util = SmartTemplate4.Util;
           
     let isSnippet = (btn && btn.id == "smarttemplate4-insertSnippet");
     if (isSnippet) {
       // overwrite with correct compose type
       composeType = util.getComposeType();
     }
-    
 
     let entry = 
 		  { 
@@ -1408,7 +1413,6 @@ SmartTemplate4.fileTemplates = {
 				path: path, 
 				label: label
 			};
-
 
     let command = SmartTemplate4.fileTemplates.getController(menuitem);
     if (command) {
@@ -1428,15 +1432,11 @@ SmartTemplate4.fileTemplates = {
       }
     }
 			
-		util.logDebug("fileTemplate_onItemClick\n" 
+		util.logDebug("fileTemplate.onItemClick\n" 
 		  + "template:" + label + "\n"
 			+ "path:" + path);
 			
-		let popup = menuitem.parentNode,
-        isSmartReplyBtn = 
-          (btn.parentElement.id == "hdrSmartReplyButton") ||
-          (btn.id == "button-forward"); // contains all "smart" buttons
-        
+		let popup = menuitem.parentNode;
     if (btn.id=="smarttemplate4-changeTemplate") {  
       // [issue 24] select different template from composer window
       SmartTemplate4.notifyComposeBodyReady(true, window);
@@ -1446,94 +1446,30 @@ SmartTemplate4.fileTemplates = {
       SmartTemplate4.fileTemplates.insertFileEntryInComposer(entry);
     }
     else if (popup.getAttribute("st4configured") 
-        || popup.getAttribute("templateCategory")  // [issue 162] reply button in main toolbar not working!
-        || isSmartReplyBtn) {
-      //    popup.getAttribute("st4nonNative") 
-			//  || btn.id=="button-newmsg"
-			//  || btn.id=="button-forward"  
-			//  || btn.id=="button-reply"
-			// we need to trigger the button.
-			// in Thunderbird 68 for some reason it is not done on the message header page buttons automatically. 
-			// Guess they have event handlers on the submenu items cmd_forwardInline and cmd_forwardAttachment
-      // we may want to control which of these 2 are triggered (inline or attach), but I guess 
-			// without specifying it will likely be the Thunderbird account defaults
+        || popup.getAttribute("templateCategory")) {
 			util.logDebugOptional("fileTemplates","firing btn.click() …");
-      if (isSmartReplyBtn) {
-        // isAlt = originalEvent.altKey, 
-        const isCtrl = originalEvent.ctrlKey, 
-              isShift = originalEvent.shiftKey;
-        let buttonNo = 0,
-            popupMenuItems = menuitem.parentElement.childNodes;
-        
-        /* select first second third or fourth button. default is the first one (usally reply all): */
-        if (prefs.isDebugOption("fileTemplates.menus")) debugger;
-        if (isShift) buttonNo = 1;
-        if (isCtrl) buttonNo = 2;
-        if (isShift && isCtrl) buttonNo = 3;
-        // find out whether to chose the top (default) command or one below.
-        let counter = 0;
-        for (let c=0; c<popupMenuItems.length; c++) {
-          if (popupMenuItems[c].tagName != "menuitem") continue;
-          if (popupMenuItems[c].getAttribute('hidden')=='true') continue;
-          if (buttonNo == counter) { 
-            let ob = popupMenuItems[c].getAttribute('observes');
-            if (ob) {
-              originalEvent.stopPropagation();
-              util.logDebugOptional("fileTemplates","triggering click event for command: " + ob);
-              return popupMenuItems[c].click();
-            }
-            
-            switch (popupMenuItems[c].id) {
-              case "hdrReplyList_ReplyListSubButton":  // first item
-              case "hdrReplyAll_ReplyAllSubButton":
-              case "hdrRelplyList_ReplyAllSubButton": // genuine typo from Tb
-              case "hdrReplyList_ReplyAllSubButton":  // in case they fix it :)
-              case "hdrReplySubButton":
-              case "hdrReplyList_ReplySubButton":
-              case "button-ForwardAsInlineMenu":
-              case "button-ForwardAsAttachmentMenu":
-                util.logDebugOptional("fileTemplates","Clicking the menu item: " + popupMenuItems[c].id);
-                return popupMenuItems[c].click();
-              default:
-                util.logDebugOptional("fileTemplates","Click direct, Smart Button id:"  + popupMenuItems[c].id);
-                return btn.click(); // or fire the standard command event? 
-            }
-          }
-          counter++;
+      if (menuParent.tagName == "menu")  {  // Tb115
+        let entry = SmartTemplate4.fileTemplates.uniMenus.find(e => e.id == menuParent.id);
+        if (entry) {
+          SmartTemplate4.fileTemplates.fireComposeCommand(entry);
         }
-      } else {
-        if (menuParent.tagName == "menu")  {  // Tb115
-          let entry = SmartTemplate4.fileTemplates.uniMenus.find(e => e.id == menuParent.id);
-          if (entry) {
-            SmartTemplate4.fileTemplates.fireComposeCommand(entry);
+      } else if (menuParent.getAttribute("type")=="menu" || menuParent.id == "SmartTemplate4Button") { 
+        // [issue 263] recent templates menu
+        let recentEntry = { command: command };
+        if (!command) {
+          switch (composeType) {
+            case "new": recentEntry.command = "cmd_newMessage"; break;
+            case "rsp": recentEntry.command = "cmd_reply"; break;
+            case "fwd": recentEntry.command = "cmd_forwardInline"; break;
           }
-        } else if (menuParent.getAttribute("type")=="menu" || menuParent.id == "SmartTemplate4Button") { 
-          // [issue 263] recent templates menu
-          let recentEntry = { command: null };
-          if (command) {
-            recentEntry.command = command;
-          } 
-          else {
-            switch (composeType) {
-              case "new":
-                recentEntry.command = "cmd_newMessage";
-                break;
-              case "rsp":
-                recentEntry.command = "cmd_reply";
-                break;
-              case "fwd":
-                recentEntry.command = "cmd_forwardInline";
-                break;
-            }
-          }
-          SmartTemplate4.fileTemplates.fireComposeCommand(recentEntry);
         }
-        else {
-          btn.click(); // or fire the standard command event? 
-        }
+        SmartTemplate4.fileTemplates.fireComposeCommand(recentEntry);
       }
-		}
-		else {
+      else {
+        // old code path???
+        btn.click(); // or fire the standard command event? 
+      }
+		} else {
 			util.logDebugOptional("fileTemplates","+======++++++======++++++======+\nNo click event fired for button id=" + btn.id);
 		}
 		// for retrieval we need to check this from composer window (by asking original window)
@@ -1543,43 +1479,45 @@ SmartTemplate4.fileTemplates = {
 		// reset is absolutely necessary to not trigger the template functionality whe the "ordinary" write buttons 
 		// are clicked.
 
+    if (isSnippet) {
+      return;
+    }
+
     // update MRU item!
     // this stores the last entry per compose case.
-    if (!isSnippet) {
-      this.storePreviousTemplate(composeType, entry); // do not update MRU yet.
-      let cmd = "";
-      switch(entry.composeType) {
-        case "rsp":
-          cmd = "reply";
-          break;
-        case "fwd":
-          cmd = "forward";
-          break;
-        case "new":
-          cmd = "write";
-          break;
-      }
-
-      if (entry.command) {
-        switch(entry.command.toLowerCase()) {
-          case "cmd_replyall": cmd = "replyAll"; break;
-          case "cmd_replylist": cmd = "replyList"; break;
-        }
-      }
-      let mruEntry = {
-        cmd: cmd,
-        label: entry.label,
-        path: entry.path,
-        composeType: entry.composeType,
-        command: entry.command
-      }      
-      
-      if (mruEntry.cmd) {
-        SmartTemplate4.fileTemplates.enterMRUitem(mruEntry);
-      }
-      // notify UI to update _after_ updating the MRU list.
-      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
+    this.storePreviousTemplate(composeType, entry); // do not update MRU yet.
+    let cmd = "";
+    switch(entry.composeType) {
+      case "rsp":
+        cmd = "reply";
+        break;
+      case "fwd":
+        cmd = "forward";
+        break;
+      case "new":
+        cmd = "write";
+        break;
     }
+
+    if (entry.command) {
+      switch(entry.command.toLowerCase()) {
+        case "cmd_replyall": cmd = "replyAll"; break;
+        case "cmd_replylist": cmd = "replyList"; break;
+      }
+    }
+    let mruEntry = {
+      cmd: cmd,
+      label: entry.label,
+      path: entry.path,
+      composeType: entry.composeType,
+      command: entry.command
+    }      
+    
+    if (mruEntry.cmd) {
+      SmartTemplate4.fileTemplates.enterMRUitem(mruEntry);
+    }
+    // notify UI to update _after_ updating the MRU list.
+    SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
 
 	} ,
 

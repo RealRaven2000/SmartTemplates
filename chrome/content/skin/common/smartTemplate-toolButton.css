@@ -122,7 +122,9 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 
 /* option to hide the label, should only be shown in "icons and text" mode! */
 .message-header-buttons-only-icons .st-toggle-label,
-.message-header-buttons-only-text .st-toggle-label {
+.message-header-buttons-only-text .st-toggle-label,
+.message-header-buttons-only-icons #smarttemplate4_thunderbird_extension-menuitem-_toggleLabel,
+.message-header-buttons-only-text #smarttemplate4_thunderbird_extension-menuitem-_toggleLabel{
   display: none !important;
 }
 

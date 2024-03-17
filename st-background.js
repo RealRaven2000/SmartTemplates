@@ -494,7 +494,7 @@ async function createHeaderMenu() {
 
   await addMenus([...replyMenus, ...forwardMenus], Context); 
   // Toggle Label (optional)
-  let isLabelHidden = !(await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.toolbar.hideLabel"));
+  let isLabelHidden = (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.toolbar.hideLabel"));
   await messenger.menus.create({
     contexts: [Context],
     enabled: true,
@@ -507,7 +507,7 @@ async function createHeaderMenu() {
         event: "doCommand", 
         detail: {
           cmd: "smartTemplates-toggle-label", // will be re-packaged as el.id
-          params: { isHidden: isLabelHidden}  // toggle
+          params: { isHidden: !isLabelHidden}  // toggle
         }
       });
     }
