@@ -21,6 +21,18 @@ SmartTemplate4.fileTemplates = {
     snippets: []
 	},
   MRU_Entries: [], // [issue 263]
+
+  ControllerMap : new Map([
+    ["cmd_newMessage", "new"], 
+    ["cmd_reply", "rsp"],
+    ["cmd_replyAll", "rsp.all"],
+    ["cmd_replyList", "rsp.list"],
+    ["cmd_forward", "fwd"]
+  ]),
+
+  getComposeTypeFull: function(cmd)  {
+    return this.ControllerMap.get(cmd);
+  },
   isAPIpatched: false,
 	armedEntry: null,
   tabConfigured: false,
@@ -63,35 +75,6 @@ SmartTemplate4.fileTemplates = {
       id : "mru-smartTemplates-unified",
     }
   ],
-  msgHdrMenus : [
-    {
-      id : "smartTemplates-reply-menu",
-      composeType : "rsp",
-      command : "cmd_reply",
-      templates : "templatesRsp"
-    },
-    {
-      id : "smartTemplates-reply-all-menu",
-      composeType : "rsp",
-      command : "cmd_replyAll",
-      templates : "templatesRsp"
-    },
-    {
-      id : "smartTemplates-reply-list-menu",
-      composeType : "rsp",
-      command : "cmd_replyList",
-      templates : "templatesRsp"
-    },
-    {
-      id : "smartTemplates-forward-menu",
-      composeType : "fwd",
-      command : "cmd_forwardInline",
-      templates : "templatesFwd"
-    },
-    {
-      id : "mru-smartTemplates-header",
-    }
-  ],
 	get entriesLength() {
 		let l = 0;
 		for (let p in this.Entries) { // walk through ids, get all arrays and sum up items
@@ -131,19 +114,12 @@ SmartTemplate4.fileTemplates = {
   },
 	
 	get optionsWindow() {
-		const util = SmartTemplate4.Util;
-          
     try {
       let windowManager = Services.wm,
           optionsWindow = windowManager.getMostRecentWindow('addon:SmartTemplate4'); 
       return optionsWindow;
     }
 		catch(ex) { ; }
-		
-    let getWindowEnumerator = 
-            (util.isLinux) ?
-            Services.wm.getXULWindowEnumerator :
-            Services.wm.getZOrderXULWindowEnumerator;
 	} , 
 	
   get ListBox() {
@@ -957,24 +933,23 @@ SmartTemplate4.fileTemplates = {
     // uses the classes st-last-rsp st-last-new st-last-fwd for adding the name of the last used templates
     let menuitem = msgPopup.querySelector(".st-mru"); // should be only one per menu!
     if (!menuitem) return;
-    let composeType = "";
-    if (menuitem.classList.contains("st-last-new")) {
-      composeType = "new";
-    } else if (menuitem.classList.contains("st-last-rsp")) {
-      composeType = "rsp";
-    } else if (menuitem.classList.contains("st-last-fwd")) {
-      composeType = "fwd";
-    } else return;
+    let controller = msgPopup.parentElement.getAttribute("controller");
+    let composeType = this.getComposeTypeFull(controller);
+    if (!composeType) return;
     let setting = "fileTemplates.mru." + composeType,
         jsonTemplate = SmartTemplate4.Preferences.getStringPref(setting, ""),
         sEmptyLabel = "(not set)";
     // {path, label, category}
     let template = jsonTemplate ? JSON.parse(jsonTemplate) : {path:"", label:sEmptyLabel, category:""};
-
     const singleParentWindow = true;
-    SmartTemplate4.fileTemplates.addTemplateEvent(menuitem, msgPopup.parentNode, SmartTemplate4.fileTemplates, composeType, template, singleParentWindow);
+    SmartTemplate4.fileTemplates.addTemplateEvent(
+      menuitem, 
+      msgPopup.parentNode, 
+      SmartTemplate4.fileTemplates, 
+      composeType.substring(0,3), 
+      template, 
+      singleParentWindow);
     menuitem.label = this.lastTemplateLabel(template);
-    
   },
 	// find menupopup in button's childNodes. If there is no menupopup, then append a new one.
 	getPopup: function (buttonName, parent = null) {
@@ -1164,48 +1139,12 @@ SmartTemplate4.fileTemplates = {
         if (SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus")) {
           console.log("initMenus", test);
         }
-        
       }
-      
       // 4) ====  preview header area ==== //
       if (this.isAPIpatched) {
         return;
       }
 
-
-// ==============================================================
-// ==============================================================
-// ==============================================================      
-//                            OBSOLETE
-// ==============================================================      
-// ==============================================================      
-// ==============================================================      
-
-      let doc = SmartTemplate4.Util.getMessageBrowserDocument();
-
-      if (isHackMessageHeader && doc) {
-        let headerToolbox = doc.getElementById('header-view-toolbox');
-        if (headerToolbox) {
-          logDebug("=============================\n"+
-                    "headerToolbox found; adding its template file menus…");
-
-          try {
-            logDebug("Resetting all menus of message header button…");
-            cleanup(doc);
-          } catch (ex) {
-            util.logException("cleaning msg hdr button:", ex);
-          }                       
-
-          let test = SmartTemplate4.hackToolbarbutton.updateMenuMRU(fileTemplates.msgHdrMenus, doc, reset);
-          if (SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus")) {
-            console.log("initMenus", test);
-          }          
-        }
-        else {
-          logDebug("headerToolbox NOT found!");
-        }
-
-      } // populate message header
     }
     catch (ex) {
       SmartTemplate4.Util.logException("loadCustomMenu", ex);
@@ -1286,24 +1225,11 @@ SmartTemplate4.fileTemplates = {
 	
 
   composeFromAPI: async function (menuEntry) {
-    let composeType;
-    switch (menuEntry.controller) {
-      case "cmd_newMessage":
-        composeType = "new";
-        break;
-      case "cmd_reply":    // fall through
-      case "cmd_replyAll": // fall through
-      case "cmd_replyList":
-        composeType = "rsp";
-        break;
-      case "cmd_forward":
-        composeType = "fwd";
-        break;
-    }
-
+    let composeType = this.getComposeTypeFull(menuEntry.controller);
+    if (!composeType) return; // error
     let entry = { 
       command: menuEntry.controller,
-      composeType: composeType, 
+      composeType: composeType.substring(0,3), 
       path: menuEntry.target.path, 
       label: menuEntry.target.label,
       type: menuEntry.control_type
@@ -1510,7 +1436,7 @@ SmartTemplate4.fileTemplates = {
 
     // update MRU item!
     // this stores the last entry per compose case.
-    this.storePreviousTemplate(composeType, entry); // do not update MRU yet.
+    this.storePreviousTemplate(this.getComposeTypeFull (entry.command), entry); // do not update MRU yet.
     let cmd = "";
     switch(entry.composeType) {
       case "rsp":
@@ -1754,13 +1680,15 @@ SmartTemplate4.fileTemplates = {
       }      
     }
 
+    let composeTypeFull = this.getComposeTypeFull(controller);
+    composeType = composeTypeFull.substring(0, 3);
     switch(controller) {
-      case "cmd_reply": cmd = "reply"; composeType="rsp"; break;
-      case "cmd_replyAll": cmd = "replyAll"; composeType="rsp"; break;
-      case "cmd_replyList": cmd = "replyList"; composeType="rsp"; break;
-      case "cmd_newMessage": cmd = "write"; composeType="new"; break;
-      case "cmd_forward": cmd = "forward"; composeType="fwd"; break;
-      case "cmd_forwardInline": cmd = "forward"; composeType="fwd";break;
+      case "cmd_reply": cmd = "reply"; break;
+      case "cmd_replyAll": cmd = "replyAll"; break;
+      case "cmd_replyList": cmd = "replyList"; break;
+      case "cmd_newMessage": cmd = "write"; break;
+      case "cmd_forward": cmd = "forward"; break;
+      case "cmd_forwardInline": cmd = "forward"; break;
     }
 
 
@@ -1807,7 +1735,7 @@ SmartTemplate4.fileTemplates = {
           if (entry) {
             SmartTemplate4.fileTemplates.fireComposeCommand(entry);
             // store MRU item and notify background
-            SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, templateEntry, true); 
+            SmartTemplate4.fileTemplates.storePreviousTemplate(composeTypeFull, templateEntry, true); 
             isStoreMRU = true;
           } else {
             switch(composeType) {
@@ -1819,11 +1747,11 @@ SmartTemplate4.fileTemplates = {
               case "new":
                 if (menuParent && menuParent.id=="smarttemplate4-changeTemplate") {
                   // store MRU item and notify background
-                  SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, templateEntry, true); 
+                  SmartTemplate4.fileTemplates.storePreviousTemplate(composeTypeFull, templateEntry, true); 
                   SmartTemplate4.notifyComposeBodyReady(true, window);
                 } else {
                   SmartTemplate4.fileTemplates.fireComposeCommand(templateEntry);
-                  SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, templateEntry, true); 
+                  SmartTemplate4.fileTemplates.storePreviousTemplate(composeTypeFull, templateEntry, true); 
                 }
                 isStoreMRU = true;
                 break;

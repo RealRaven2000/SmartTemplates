@@ -45,8 +45,8 @@ function logReceptionError(x) {
 const ControllerMap = new Map([
   ["cmd_newMessage", "new"], 
   ["cmd_reply", "rsp"],
-  ["cmd_replyAll", "rsp"],
-  ["cmd_replyList", "rsp"],
+  ["cmd_replyAll", "rsp.all"],
+  ["cmd_replyList", "rsp.list"],
   ["cmd_forward", "fwd"]
 ]);
 
@@ -162,12 +162,13 @@ async function getTargetTemplate(controller, type) {
     switch (type) {
       case "most-recent" :
         // not from MRU list but stored separately in legacy prefs
+        // ControllerMap returns the full composeType, e.g. rsp.all or rsp.list
         let jsonTemplate = 
           await messenger.LegacyPrefs.getPref(`extensions.smartTemplate4.fileTemplates.mru.${ControllerMap.get(controller)}`),
           sEmptyLabel = "(not set)";   
 
         let lastEntry = jsonTemplate ? JSON.parse(jsonTemplate) : {path:"", label:sEmptyLabel, category:""};
-        return lastEntry; // fileTemplates.MRU_Entries.find(e=>e.cmd==ctr);
+        return lastEntry;
       case "account" : // account template
         return {
           controller: controller, 
@@ -194,6 +195,10 @@ var MenuHelper = {
     return txt;
   }, 
 
+  getComposeType: function(template) {
+    return ControllerMap.get(template.controller).substring(0,3); // first three letters (new,rsp,fwd)
+  },
+
   // make single key "A","B","C" or single-numeric 1,2,3,4 followed by a space.
   getAccessKey: function (acCode) {
     if (acCode<10) { return `&${acCode.toString()} `; }
@@ -206,6 +211,8 @@ var MenuHelper = {
       case "new": 
         return fileTemplates.Entries.templatesNew;
       case "rsp": 
+      case "rsp.all": 
+      case "rsp.list": 
         return fileTemplates.Entries.templatesRsp;
       case "fwd": 
         return fileTemplates.Entries.templatesFwd;
@@ -328,7 +335,7 @@ async function addMenus(menuArray, context) {
                   params: {
                     entry: {
                       command: m.controller,
-                      composeType: ControllerMap.get(m.controller)
+                      composeType: MenuHelper.getComposeType(m)
                     }
                   } 
                 }
@@ -470,7 +477,7 @@ async function addMenus(menuArray, context) {
               cmd: "smartTemplates-settings", 
               params: {
                 mode:"fileTemplates", 
-                composeType:  ControllerMap.get(m.controller),
+                composeType: MenuHelper.getComposeType(m),
                 tab: -1
               }  // toggle
             }

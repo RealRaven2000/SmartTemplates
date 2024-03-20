@@ -105,6 +105,6 @@ async function onLoad(activatedWhileWindowOpen) {
 }
 
 function onUnload(isAddOnShutDown) {
-  window.SmartTemplate4.Util.notifyTools.removeListener(reactNotification);
+ //  window.SmartTemplate4.Util.notifyTools.removeListener(reactNotification);
 }
 
