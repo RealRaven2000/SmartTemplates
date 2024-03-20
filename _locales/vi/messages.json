@@ -274,8 +274,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Dữ liệu địa chỉ cho {{%to%}}, {{%recipient%}} và {{%from%}} sẽ tự động được chèn khi viết một email mới thông qua menu ngữ cảnh 'Soạn tin nhắn đến'. [issue 275]{L2} {L1} Việc sử dụng {{%recipient%}} cũng hoạt động như mong đợi khi trả lời email của riêng bạn trong một cuộc trò chuyện và Thunderbird tự động thay đổi người nhận. [issue 239]{L2} {L1}Chuyển đổi địa chỉ email thành chữ thường khi tìm kiếm liên hệ trong Cardbook. [issue 278]{L2} {L1} Hỗ trợ trích xuất {{prefix}} và {{suffix}} từ các trường trong sổ địa chỉ. [issue 267]{L2} {L1} Hỗ trợ cho {{other.custom1}}, {{other.custom2}} vv. từ các trường trong sổ địa chỉ. [issue 246]{L2} {L1} Gỡ bỏ gợi ý công cụ trùng lặp trên các trường SmartTemplate hoạt động. {L2}"
-  },  
+    "message": "{L1} Chức năng mới {{%preheader()%}} để thêm văn bản xem trước cho các chương trình thư di động.{L2}{L1} Dữ liệu địa chỉ cho {{%to%}}, {{%recipient%}} và {{%from%}} hiện sẽ tự động được chèn khi viết một email mới thông qua menu ngữ cảnh 'Soạn tin nhắn Tới'. [issue 275]{L2} {L1} Việc sử dụng {{%recipient%}} cũng hoạt động như mong đợi khi trả lời các email của riêng mình trong một cuộc trò chuyện và Thunderbird tự động thay đổi người nhận. [issue 239]{L2} {L1} Địa chỉ email sẽ được chuyển đổi thành chữ thường khi tìm kiếm các liên hệ trong Cardbook. [issue 278]{L2} {L1} SmartTemplates hiện có thể trích xuất {{prefix}} và {{suffix}} từ các trường sổ địa chỉ. [issue 267]{L2} {L1} SmartTemplates cũng hỗ trợ trích xuất {{other.custom1}}, {{other.custom2}} v.v. từ các trường sổ địa chỉ. [issue 246]{L2} {L1} Gợi ý công cụ lặp lại trên các trường SmartTemplate hoạt động đã được loại bỏ. {L2}{L1} Menu hành động tin nhắn đã được triển khai lại bằng cách sử dụng API tiện ích mở rộng web [issue 253]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Chào mừng bạn đến với $addonName$",

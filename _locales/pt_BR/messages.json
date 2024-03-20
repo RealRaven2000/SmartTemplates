@@ -1250,6 +1250,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "Não foi possível carregar o arquivo de modelo '{0}' do caminho: \n{1}\nO arquivo pode ter sido removido ou renomeado."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "A função $controllerName$ não está disponível neste contexto - você não pode fazer isso com o email selecionado.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
   "st.fileTemplates.openFile": {
     "message": "Abra o arquivo de modelo do SmartTemplates…"
   },
@@ -1752,7 +1761,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Os dados de endereço para {{%to%}}, {{%recipient%}} e {{%from%}} agora serão automaticamente inseridos ao escrever um novo e-mail via menu de contexto 'Compor mensagem para'. [issue 275]{L2} {L1} O uso de {{%recipient%}} também funciona como esperado ao responder a seus próprios e-mails em uma conversa e o Thunderbird altera automaticamente os destinatários. [issue 239]{L2} {L1} Converter endereços de email para minúsculas ao procurar contatos no Cardbook. [issue 278]{L2}  {L1} Suporte para extração de {{prefix}} e {{suffix}} dos campos do livro de endereços. [issue 267]{L2} {L1} Suporte para {{other.custom1}}, {{other.custom2}} etc. dos campos do livro de endereços. [issue 246]{L2} {L1} Dica de ferramenta duplicada removida nos campos ativos do SmartTemplate. {L2}"
+    "message": "{L1} Nova função {{%preheader()%}} para adicionar texto de pré-visualização para programas de correio móvel.{L2}{L1} Os dados de endereço para {{%to%}}, {{%recipient%}} e {{%from%}} agora serão automaticamente inseridos ao escrever um novo email através do menu de contexto 'Escrever Mensagem Para'. [issue 275]{L2} {L1} O uso do {{%recipient%}} agora também funciona como esperado ao responder aos próprios emails em uma conversa e o Thunderbird muda automaticamente os destinatários. [issue 239]{L2} {L1} Os endereços de email são convertidos para minúsculas ao pesquisar contatos no Cardbook. [issue 278]{L2} {L1} O SmartTemplates agora pode extrair {{prefix}} e {{suffix}} dos campos do livro de endereços. [issue 267]{L2} {L1} O SmartTemplates também suporta a extração de {{other.custom1}}, {{other.custom2}} etc. dos campos do livro de endereços. [issue 246]{L2} {L1} Dica de ferramenta duplicada nos campos ativos do SmartTemplate removida. {L2}{L1} O menu de ação de mensagens foi reimplementado usando a API de extensão web [issue 253]{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

@@ -1271,6 +1271,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "Nie można załadować szablonu pliku „{0}” ze ścieżki: \n{1}\nPlik mógł zostać usunięty lub zmieniono jego nazwę."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "Funkcja $controllerName$ nie jest dostępna w tym kontekście - nie możesz tego zrobić z wybranym e-mailem.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
   "st.fileTemplates.openFile": {
     "message": "Otwórz plik szablonu SmartTemplates…"
   },
@@ -1785,7 +1794,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Dane adresowe dla {{%to%}}, {{%recipient%}} i {{%from%}} zostaną teraz automatycznie wstawione podczas pisania nowej wiadomości e-mail za pomocą menu kontekstowego 'Utwórz wiadomość do'. [issue 275]{L2} {L1} Użycie {{%recipient%}} działa także zgodnie z oczekiwaniami podczas odpowiadania na własne e-maile w rozmowie, a Thunderbird automatycznie zmienia odbiorców. [issue 239]{L2} {L1}Converteer e-mailadressen naar kleine letters bij het zoeken naar Cardbook-contacten. [issue 278]{L2}  {L1} Obsługa wyciągania {{prefix}} i {{suffix}} z pól książki adresowej. [issue 267]{L2} {L1} Obsługa {{other.custom1}}, {{other.custom2}} itp. z pól książki adresowej. [issue 246]{L2} {L1} Usunięto podwójny podpowiedź na aktywnych polach SmartTemplate. {L2}"
+    "message": "{L1} Nowa funkcja {{%preheader()%}} umożliwia dodanie tekstu podglądu dla programów pocztowych na urządzenia mobilne.{L2}{L1} Dane adresowe dla {{%to%}}, {{%recipient%}} oraz {{%from%}} zostaną teraz automatycznie wstawione podczas pisania nowej wiadomości e-mail za pomocą menu kontekstowego 'Napisz wiadomość do'. [issue 275]{L2} {L1} Użycie {{%recipient%}} działa teraz zgodnie z oczekiwaniami także podczas odpowiadania na własne e-maile w rozmowie, a Thunderbird automatycznie zmienia adresatów. [issue 239]{L2} {L1} Adresy e-mail są konwertowane na małe litery podczas wyszukiwania kontaktów w książce adresowej Cardbook. [issue 278]{L2} {L1} SmartTemplates mogą teraz wyciągać {{prefix}} oraz {{suffix}} z pól książki adresowej. [issue 267]{L2} {L1} SmartTemplates obsługują także wyciąganie {{other.custom1}}, {{other.custom2}} itp. z pól książki adresowej. [issue 246]{L2} {L1} Usunięto zduplikowany opis narzędzia na aktywnych polach SmartTemplate. {L2}{L1} Menu akcji wiadomości zostało ponownie zaimplementowane za pomocą interfejsu API rozszerzenia internetowego [issue 253]{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

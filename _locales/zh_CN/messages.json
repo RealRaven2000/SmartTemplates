@@ -1320,6 +1320,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "无法从路径加载模板文件{0}':\n{1}\n文件可能已被删除或重命名。"
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "此上下文中无法使用函数 $controllerName$ - 无法使用所选电子邮件执行此操作。",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
   "st.fileTemplates.openFile": {
     "message": "打开 SmartTemplate 模板文件…"
   },
@@ -1828,8 +1837,8 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 当通过上下文菜单 '撰写邮件至' 写新电子邮件时，{{%to%}}、{{%recipient%}} 和 {{%from%}} 的地址数据现在将自动插入。[issue 275]{L2} {L1} 当回复自己在对话中的电子邮件时，{{%recipient%}} 的使用也能正常工作，并且 Thunderbird 会自动更改收件人。[issue 239]{L2} {L1}在搜索 Cardbook 联系人时，将电子邮件地址转换为小写。[issue 278]{L2}  {L1} 从地址簿字段中提取 {{prefix}} 和 {{suffix}} 的支持。[issue 267]{L2} {L1} 从地址簿字段支持 {{other.custom1}}、{{other.custom2}} 等。[issue 246]{L2} {L1} 删除了活动 SmartTemplate 字段上的重复工具提示。{L2}"
-  },   
+    "message": "{L1} 新增 {{%preheader()%}} 功能，用于为移动邮件程序添加预览文本。{L2}{L1} 在通过上下文菜单“撰写邮件”写新邮件时，现在会自动插入{{%to%}}、{{%recipient%}}和{{%from%}}的地址数据。[issue 275]{L2} {L1} 在回复对话中自己的邮件且 Thunderbird 自动更改收件人时，使用 {{%recipient%}} 也会按预期工作。[issue 239]{L2} {L1} 在查找 Cardbook 联系人时，电子邮件地址会转换为小写。[issue 278]{L2} {L1} SmartTemplates 现在可以从地址簿字段中提取 {{prefix}} 和 {{suffix}}。[issue 267]{L2} {L1} SmartTemplates 还支持从地址簿字段中提取 {{other.custom1}}、{{other.custom2}} 等。[issue 246]{L2} {L1} 删除了活动 SmartTemplate 字段上的重复工具提示。{L2}{L1} 使用 Web 扩展 API 重新实现了消息操作菜单 [issue 253]{L2}"
+  }, 
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
   },

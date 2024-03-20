@@ -1316,6 +1316,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "Impossible de charger le modèle de fichier '{0}' à partir du chemin: \n{1} \nLe fichier a peut-être été supprimé ou renommé."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "La fonction $controllerName$ n'est pas disponible dans ce contexte - vous ne pouvez pas le faire avec l'e-mail sélectionné.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
   "st.fileTemplates.openFile": {
     "message": "Ouvrir le fichier de modèle SmartTemplates…"
   },
@@ -1833,8 +1842,8 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Les données d'adresse pour {{%to%}}, {{%recipient%}} et {{%from%}} seront désormais automatiquement insérées lors de la rédaction d'un nouvel e-mail via le menu contextuel 'Composer un message à'. [issue 275]{L2} {L1} L'utilisation de {{%recipient%}} fonctionne également comme prévu lors de la réponse à ses propres e-mails dans une conversation et Thunderbird modifie automatiquement les destinataires. [issue 239]{L2} {L1}Convertir les adresses e-mail en minuscules lors de la recherche de contacts dans Cardbook. [issue 278]{L2}  {L1} Support de l'extraction de {{prefix}} et {{suffix}} à partir des champs du carnet d'adresses. [issue 267]{L2} {L1} Support de {{other.custom1}}, {{other.custom2}} etc. à partir des champs du carnet d'adresses. [issue 246]{L2} {L1} Suppression du tooltip en double sur les champs actifs de SmartTemplate. {L2}"
-  },    
+    "message": "{L1} Nouvelle fonction {{%preheader()%}} pour ajouter du texte de prévisualisation pour les programmes de messagerie mobile.{L2}{L1} Les données d'adresse pour {{%to%}}, {{%recipient%}} et {{%from%}} seront désormais automatiquement insérées lors de la rédaction d'un nouvel e-mail via le menu contextuel 'Composer un message à'. [issue 275]{L2} {L1} L'utilisation de {{%recipient%}} fonctionne également désormais comme prévu lorsque vous répondez à vos propres e-mails dans une conversation et Thunderbird change automatiquement les destinataires. [issue 239]{L2} {L1} Les adresses e-mail sont converties en minuscules lors de la recherche de contacts dans Cardbook. [issue 278]{L2} {L1} SmartTemplates peut désormais extraire {{prefix}} et {{suffix}} des champs du carnet d'adresses. [issue 267]{L2} {L1} SmartTemplates prend également en charge l'extraction de {{other.custom1}}, {{other.custom2}} etc. à partir des champs du carnet d'adresses. [issue 246]{L2} {L1} Suppression de l'info-bulle dupliquée sur les champs SmartTemplate actifs. {L2}{L1} Réimplémentation du menu d'actions des messages en utilisant l'API d'extension web [issue 253]{L2}"
+  }, 
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
   },

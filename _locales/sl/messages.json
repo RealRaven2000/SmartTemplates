@@ -1277,6 +1277,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "Datoteke predloge '{0}' ni mogoče naložiti s poti: \n{1} \nDatoteka je bila morda odstranjena ali preimenovana."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "Funkcija $controllerName$ ni na voljo v tem kontekstu - tega ne morete storiti s izbranim e-poštnim sporočilom.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
   "st.fileTemplates.openFile": {
     "message": "Odpri datoteko predloge SmartTemplates…"
   },
@@ -1734,7 +1743,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Podatki o naslovu za {{%to%}}, {{%recipient%}} in {{%from%}} bodo zdaj samodejno vstavljeni ob pisanju nove e-pošte prek kontekstnega menija 'Sestavi sporočilo za'. [issue 275]{L2} {L1} Uporaba {{%recipient%}} prav tako deluje kot pričakovano pri odgovarjanju na lastna e-poštna sporočila v pogovoru in Thunderbird samodejno spremeni prejemnike. [issue 239]{L2} {L1} Pretvori e-poštne naslove v male črke pri iskanju stikov v Cardbooku. [issue 278]{L2}  {L1} Podpora za izvleček {{prefix}} in {{suffix}} iz polj naslovnika. [issue 267]{L2} {L1} Podpora za {{other.custom1}}, {{other.custom2}} itd. iz polj naslovnika. [issue 246]{L2} {L1} Odstranjen podvojen orodni namig na aktivnih poljih SmartTemplate. {L2}"
+    "message": "{L1} Nova funkcija {{%preheader()%}} za dodajanje predoglednega besedila za mobilne poštne programe.{L2}{L1} Podatki o naslovu za {{%to%}}, {{%recipient%}} in {{%from%}} se bodo avtomatično vstavili pri pisanju novega e-poštnega sporočila prek kontekstnega menija 'Napiši sporočilo'. [issue 275]{L2} {L1} Uporaba {{%recipient%}} deluje tudi kot pričakovano pri odgovarjanju na lastna e-poštna sporočila v pogovoru in Thunderbird samodejno spreminja prejemnike. [issue 239]{L2} {L1} E-poštne naslove pretvori v male črke pri iskanju stikov v kartoteki Cardbook. [issue 278]{L2} {L1} SmartTemplates lahko sedaj izvlečejo {{prefix}} in {{suffix}} iz polj v adresarju. [issue 267]{L2} {L1} SmartTemplates podpirajo tudi izvlečenje {{other.custom1}}, {{other.custom2}} itd. iz polj v adresarju. [issue 246]{L2} {L1} Odstranjena je bila podvojena orodna vrstica na aktivnih poljih SmartTemplate. {L2}{L1} Meni dejanj sporočila je bil ponovno implementiran z uporabo vmesnika API za razširitve spletnega brskalnika [issue 253]{L2}"
   }, 
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

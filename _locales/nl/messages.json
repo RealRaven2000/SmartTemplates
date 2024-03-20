@@ -1268,6 +1268,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "Kon de bestandssjabloon ‘{0}’ niet laden vanuit pad:\n{1}\nHet bestand is mogelijk verplaatst of hernoemd."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "De functie $controllerName$ is niet beschikbaar in deze context - u kunt dit niet doen met de geselecteerde e-mail.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
   "st.fileTemplates.openFile": {
     "message": "SmartTemplates-bestandssjabloon openen…"
   },
@@ -1776,8 +1785,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} De adresgegevens voor {{%to%}}, {{%recipient%}} en {{%from%}} worden nu automatisch ingevoegd bij het schrijven van een nieuwe e-mail via het contextmenu 'Bericht opstellen aan'. [issue 275]{L2} {L1} Het gebruik van {{%recipient%}} werkt ook zoals verwacht bij het beantwoorden van eigen e-mails in een gesprek en Thunderbird wijzigt automatisch de ontvangers. [issue 239]{L2} {L1}Converteer e-mailadressen naar kleine letters bij het zoeken naar Cardbook-contacten. [issue 278]{L2}  {L1} Ondersteuning voor het extraheren van {{prefix}} en {{suffix}} uit adresboekvelden. [issue 267]{L2} {L1} Ondersteuning voor {{other.custom1}}, {{other.custom2}} etc. uit adresboekvelden. [issue 246]{L2} {L1} Dubbele tooltip op actieve SmartTemplate-velden verwijderd. {L2}"
-  },     
+    "message": "{L1} Nieuwe {{%preheader()%}}-functie om voorbeeldtekst toe te voegen voor mobiele mailprogramma's.{L2}{L1} De adresgegevens voor {{%to%}}, {{%recipient%}} en {{%from%}} worden nu automatisch ingevoegd bij het schrijven van een nieuw e-mailbericht via het contextmenu 'Bericht samenstellen aan'. [issue 275]{L2} {L1} Het gebruik van {{%recipient%}} werkt nu ook zoals verwacht bij het antwoorden op eigen e-mails in een gesprek en Thunderbird automatisch de ontvangers wijzigt. [issue 239]{L2} {L1} E-mailadressen worden omgezet naar kleine letters bij het opzoeken van Cardbook-contacten. [issue 278]{L2} {L1} SmartTemplates kunnen nu {{prefix}} en {{suffix}} extraheren uit adresboekvelden. [issue 267]{L2} {L1} SmartTemplates ondersteunen ook de extractie van {{other.custom1}}, {{other.custom2}} enz. uit adresboekvelden. [issue 246]{L2} {L1} Dubbele tooltip op actieve SmartTemplate-velden verwijderd. {L2}{L1} Het berichtactiemenu is opnieuw geïmplementeerd met behulp van de webextensie-API [issue 253]{L2}"
+  },    
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
   },

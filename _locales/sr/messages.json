@@ -1250,6 +1250,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "Није могуће учитати датотеку шаблона '{0}' са путање:\n{1}\nДатотека је можда уклоњена или преименована."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "Функција $controllerName$ није доступна у овом контексту - не можете то урадити са изабраном е-поштом.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
   "st.fileTemplates.openFile": {
     "message": "Отворите датотеку шаблона SmartTemplates …"
   },
@@ -1710,7 +1719,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{L1} Подаци о адреси за {{%to%}}, {{%recipient%}} и {{%from%}} сада ће се аутоматски убацивати при писању нове е-поште преко контекст менјуа 'Напиши поруку за'. [issue 275]{L2} {L1} Употреба {{%recipient%}} такође функционише као што се очекивало када одговарате на своје е-поруке у разговору и Тхундербирд аутоматски мења примаоце. [issue 239]{L2} {L1} Претворите имејл адресе у мала слова када претражујете контакте у Кардбооку. [issue 278]{L2}  {L1} Подршка за извлачење {{prefix}} и {{suffix}} из поља адресара. [issue 267]{L2} {L1} Подршка за {{other.custom1}}, {{other.custom2}} итд. из поља адресара. [issue 246]{L2} {L1} Уклоњен дуплирани тултп на активним пољима СмартТемплатеа. {L2}"
+    "message": "{L1} Nova funkcija {{%preheader()%}} za dodavanje teksta za pregled za mobilne poštanske programe.{L2}{L1} Podaci o adresi za {{%to%}}, {{%recipient%}} i {{%from%}} će sada automatski biti ubačeni prilikom pisanja novog e-mejla putem kontekstnog menija 'Napiši Poruku'. [issue 275]{L2} {L1} Korišćenje {{%recipient%}} takođe sada radi očekivano kada odgovarate na svoje e-mejlove u razgovoru i Thunderbird automatski menja primaoca. [issue 239]{L2} {L1} E-mail adrese su konvertovane u mala slova prilikom traženja kontakata u Cardbooku. [issue 278]{L2} {L1} SmartTemplates sada mogu da izdvoje {{prefix}} i {{suffix}} iz polja adresara. [issue 267]{L2} {L1} SmartTemplates takođe podržavaju izdvajanje {{other.custom1}}, {{other.custom2}} itd. iz polja adresara. [issue 246]{L2} {L1} Uklonjen je duplirani tooltip na aktivnim SmartTemplate poljima. {L2}{L1} Meni akcija poruke je ponovo implementiran koristeći web ekstenziju API [issue 253]{L2}"
   },
   "whitespace_note": {
     "message": "Имајте на уму да се бели простор може најбоље представити као \\s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити."

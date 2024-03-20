@@ -1325,6 +1325,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "No s'ha pogut carregar el fitxer de plantilla '{0}' des del camí:\n{1}\nÉs possible que el fitxer s'hagi eliminat o canviat de nom."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "La funció $controllerName$ no està disponible en aquest context; no podeu fer això amb el correu electrònic seleccionat.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },  
   "st.fileTemplates.openFile": {
     "message": "Obriu el fitxer de plantilla SmartTemplates…"
   },
@@ -1836,7 +1845,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Les dades d'adreça per a {{%to%}}, {{%recipient%}} i {{%from%}} ara s'inseriran automàticament en escriure un correu electrònic nou a través del menú contextual 'Redactar missatge a'. [issue 275]{L2} {L1} L'ús de {{%recipient%}} també funciona com s'esperava quan es respon als propis correus electrònics en una conversa i Thunderbird canvia automàticament els destinataris. [issue 239]{L2} {L1}Converteix les adreces de correu electrònic a minúscules quan busques contactes del Llibre de contactes. [issue 278]{L2}  {L1} Suport per extreure {{prefix}} i {{suffix}} dels camps del llibre d'adreces. [issue 267]{L2} {L1} Suport per a {{other.custom1}}, {{other.custom2}} etc. dels camps del llibre d'adreces. [issue 246]{L2} {L1} S'ha eliminat la informació sobre eines duplicada als camps actius de SmartTemplate. {L2}"
+    "message": "{L1} Nova funció {{%preheader()%}} per afegir text previ per a programes de correu mòbil.{L2}{L1} Les dades d'adreça per a {{%to%}}, {{%recipient%}} i {{%from%}} ara s'inseriran automàticament en escriure un correu electrònic nou a través del menú contextual 'Redactar missatge a'. [issue 275]{L2} {L1} Utilitzar {{%recipient%}} també funciona ara com s'esperava en respondre als propis correus electrònics en una conversa i Thunderbird canvia automàticament els destinataris. [issue 239]{L2} {L1}Les adreces de correu electrònic es converteixen a minúscules en buscar contactes de Cardbook. [issue 278]{L2} {L1}SmartTemplates ara pot extreure {{prefix}} i {{suffix}} dels camps del llibre d'adreces. [issue 267]{L2} {L1}SmartTemplates també suporta l'extracció de {{other.custom1}}, {{other.custom2}} etc. dels camps del llibre d'adreces. [issue 246]{L2} {L1}S'ha eliminat la informació sobre eines duplicada als camps actius de SmartTemplate. {L2}{L1}S'ha reimplementat el menú d'acció de missatge utilitzant l'API d'extensió web [issue 253]{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

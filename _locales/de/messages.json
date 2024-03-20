@@ -1271,6 +1271,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "Die Dateivorlage '{0}' konnte nicht aus dem folgenden Pfad geladen werden:\n{1}\nDie Datei wurde möglicherweise entfernt oder umbenannt."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "Die Funktion $controllerName$ ist in diesem Kontext nicht verfügbar - Sie können dies nicht mit der ausgewählten E-Mail tun.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
   "st.fileTemplates.openFile": {
     "message": "SmartTemplates Dateivorlage öffnen…"
   },
@@ -1769,8 +1778,8 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Die Adressdaten für {{%to%}}, {{%recipient%}} und {{%from%}} werden nun automatisch eingefügt, wenn Sie eine neue E-Mail über das Kontextmenü 'Nachricht verfassen an' schreiben. [issue 275]{L2} {L1} Die Verwendung von {{%recipient%}} funktioniert auch wie erwartet, wenn Sie auf eigene E-Mails in einem Gespräch antworten und Thunderbird die Empfänger automatisch ändert. [issue 239]{L1}E-Mail-Adressen werden ab jetzt vor der Suche nach Cardbook-Kontakten in Kleinbuchstaben konvertiert. [issue 278]{L2}  {L1} Unterstützung für Extraktion von {{prefix}} und {{suffix}} aus Adressbuchfeldern. [issue 267]{L2} {L1} Unterstützung für {{other.custom1}}, {{other.custom2}} usw. aus Adressbuchfeldern. [issue 246]{L2} {L1} Doppelter Tooltip auf aktiven SmartTemplate-Feldern entfernt. {L2}"
-  },    
+    "message": "{L1} Neue {{%preheader()%}}-Funktion zum Hinzufügen von Vorschautext für mobile E-Mail-Programme.{L2}{L1} Die Adressdaten für {{%to%}}, {{%recipient%}} und {{%from%}} werden jetzt automatisch eingefügt, wenn Sie eine neue E-Mail über das Kontextmenü 'Nachricht verfassen' schreiben. [issue 275]{L2} {L1} Die Verwendung von {{%recipient%}} funktioniert jetzt auch wie erwartet, wenn Sie auf eigene E-Mails in einem Gespräch antworten und Thunderbird automatisch die Empfänger ändert. [issue 239]{L2} {L1} E-Mail-Adressen werden in Kleinbuchstaben konvertiert, wenn Cardbook-Kontakte nachgeschlagen werden. [issue 278]{L2} {L1} SmartTemplates können jetzt {{prefix}} und {{suffix}} aus Adressbuchfeldern extrahieren. [issue 267]{L2} {L1} SmartTemplates unterstützt auch die Extraktion von {{other.custom1}}, {{other.custom2}} usw. aus Adressbuchfeldern. [issue 246]{L2} {L1} Doppelte QuickInfo auf aktiven SmartTemplate-Feldern entfernt. {L2}{L1} Die Nachrichtenaktionsleiste wurde unter Verwendung der Web Extension API neu implementiert [issue 253]{L2}"
+  },   
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
   },

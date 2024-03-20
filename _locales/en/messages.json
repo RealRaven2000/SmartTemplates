@@ -1362,6 +1362,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "The function  $controllerName$ is not available in this context - you cannot do that with the selected email.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }    
+  },
   "st.fileTemplates.openFile": {
     "message": "Open SmartTemplates template file…"
   },
@@ -1882,7 +1891,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} The address data for {{%to%}}, {{%recipient%}} and {{%from%}} will now automatically be inserted when writing a new email via the context menu 'Compose Message To'. [issue 275]{L2} {L1} Using {{%recipient%}} also works as expected when replying to own emails in a conversation and Thunderbird automatically changes the recipients. [issue 239]{L2} {L1}Convert email addresses to lower case when looking up Cardbook contacts. [issue 278]{L2} {L1}Support for extracting {{prefix}} and {{suffix}} from address book fields. [issue 267]{L2} {L1}Support for {{other.custom1}}, {{other.custom2}} etc. from address book fields. [issue 246]{L2} {L1}Removed duplicate tooltip on active SmartTemplate fields. {L2}"
+    "message": "{L1} New {{%preheader()%}} function to add preview text for mobile mail programs.{L2}{L1} The address data for {{%to%}}, {{%recipient%}} and {{%from%}} will now automatically be inserted when writing a new email via the context menu 'Compose Message To'. [issue 275]{L2} {L1} Using {{%recipient%}} also now works as expected when replying to own emails in a conversation and Thunderbird automatically changes the recipients. [issue 239]{L2} {L1}Email addresses are converted to lower case when looking up Cardbook contacts. [issue 278]{L2} {L1}SmartTemplates can now extract {{prefix}} and {{suffix}} from address book fields. [issue 267]{L2} {L1}SmartTemplates also supports extraction of {{other.custom1}}, {{other.custom2}} etc. from address book fields. [issue 246]{L2} {L1}Removed duplicate tooltip on active SmartTemplate fields. {L2}{L1}Reimplemented the message action menu using web extension API [issue 253]{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

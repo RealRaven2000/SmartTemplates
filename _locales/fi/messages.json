@@ -1319,6 +1319,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "Tiedostomallia '{0}' ei voitu ladata polusta: \n{1} \nTiedosto on ehkä poistettu tai nimetty uudelleen."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "Toimintoa $controllerName$ ei ole saatavilla tässä yhteydessä - et voi tehdä sitä valitulla sähköpostilla.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
   "st.fileTemplates.openFile": {
     "message": "Avaa SmartTemplates-mallitiedosto…"
   },
@@ -1836,8 +1845,8 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Osoitetiedot {{%to%}}, {{%recipient%}} ja {{%from%}} lisätään nyt automaattisesti, kun kirjoitat uutta sähköpostiviestiä käyttämällä kontekstivalikkoa 'Kirjoita viesti'. [issue 275]{L2} {L1} {{%recipient%}}:n käyttö toimii odotetusti myös vastatessasi omiin sähköposteihisi keskustelussa ja Thunderbird vaihtaa vastaanottajat automaattisesti. [issue 239]{L2} {L1}Muunna sähköpostiosoitteet pieniksi kirjaimiksi etsiessäsi Cardbook-yhteyksiä. [issue 278]{L2}  {L1} Tuki {{prefix}}:in ja {{suffix}}:n erottamiseen osoitekirjakentistä. [issue 267]{L2} {L1} Tuki {{other.custom1}}:lle, {{other.custom2}} jne. osoitekirjakentistä. [issue 246]{L2} {L1} Poistettu tuplaohje aktiivisilta SmartTemplate-kentiltä. {L2}"
-  },   
+    "message": "{L1} Uusi {{%preheader()%}}-toiminto esikatselutekstin lisäämiseksi mobiilipostiohjelmiin.{L2}{L1} Osoitetietoja {{%to%}}, {{%recipient%}} ja {{%from%}} lisätään nyt automaattisesti kirjoitettaessa uutta sähköpostia käyttämällä kontekstivalikon 'Luo viesti kohteelle' -toimintoa. [issue 275]{L2} {L1} {{%recipient%}}:n käyttö toimii nyt odotetusti myös vastatessasi omiin sähköposteihisi keskustelussa ja Thunderbird vaihtaa vastaanottajat automaattisesti. [issue 239]{L2} {L1} Sähköpostiosoitteet muunnetaan pieniksi kirjaimiksi Cardbook-yhteystietoja etsittäessä. [issue 278]{L2} {L1} SmartTemplates voi nyt poimia {{prefix}} ja {{suffix}} osoitekirjakentistä. [issue 267]{L2} {L1} SmartTemplates tukee myös {{other.custom1}}, {{other.custom2}} jne. poimimista osoitekirjakentistä. [issue 246]{L2} {L1} Poistettu päällekkäinen työkaluvihje aktiivisilta SmartTemplate-kentiltä. {L2}{L1} Viestitoimintovalikko on uudelleen toteutettu käyttäen web-laajennusrajapintaa [issue 253]{L2}"
+  },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
   },

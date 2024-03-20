@@ -1322,6 +1322,15 @@
   "st.fileTemplates.error.filePath": {
     "message": "Det gick inte att ladda filmallen '{0}' från sökvägen: \n{1} \nFilen kan ha tagits bort eller bytt namn."
   },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "Funktionen $controllerName$ är inte tillgänglig i detta sammanhang - du kan inte göra det med den valda e-posten.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
   "st.fileTemplates.openFile": {
     "message": "Öppna SmartTemplates-mallfilen…"
   },
@@ -1839,8 +1848,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Adressdata för {{%to%}}, {{%recipient%}} och {{%from%}} kommer nu automatiskt att infogas när du skriver ett nytt e-postmeddelande via snabbmenyn 'Skriv meddelande till'. [issue 275]{L2} {L1} Användningen av {{%recipient%}} fungerar också som förväntat när du svarar på dina egna e-postmeddelanden i en konversation och Thunderbird automatiskt ändrar mottagare. [issue 239]{L2} {L1}Konvertera e-postadresser till gemener när du letar efter Cardbook-kontakter. [issue 278]{L2}  {L1} Stöd för att extrahera {{prefix}} och {{suffix}} från adressboksfält. [issue 267]{L2} {L1} Stöd för {{other.custom1}}, {{other.custom2}} etc. från adressboksfält. [issue 246]{L2} {L1} Duplicerad verktygstips borttagen på aktiva SmartTemplate-fält. {L2}"
-  },  
+    "message": "{L1} Ny {{%preheader()%}}-funktion för att lägga till förhandsvisningstext för mobila e-postprogram.{L2}{L1} Adressdata för {{%to%}}, {{%recipient%}} och {{%from%}} kommer nu automatiskt att infogas när du skriver ett nytt e-postmeddelande via kontextmenyn 'Skriv meddelande till'. [issue 275]{L2} {L1} Användningen av {{%recipient%}} fungerar nu också som förväntat när du svarar på egna e-postmeddelanden i en konversation och Thunderbird automatiskt ändrar mottagare. [issue 239]{L2} {L1} E-postadresser konverteras till gemener vid sökning efter kontakter i Cardbook. [issue 278]{L2} {L1} SmartTemplates kan nu extrahera {{prefix}} och {{suffix}} från adressboksfält. [issue 267]{L2} {L1} SmartTemplates stödjer också extraktion av {{other.custom1}}, {{other.custom2}} etc. från adressboksfält. [issue 246]{L2} {L1} Dubbel tooltip på aktiva SmartTemplate-fält har tagits bort. {L2}{L1} Meddelandeåtgärds-menyn har återimplementerats med hjälp av webb-tilläggs-API [issue 253]{L2}"
+  }, 
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
   },
