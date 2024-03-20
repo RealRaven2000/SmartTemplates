@@ -118,9 +118,6 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-templatemenus":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
         break;
-      case "smartTemplates-patchHeaderTools":
-        SmartTemplates.Util.notifyTools.notifyBackground({ func: "patchHeaderMenu" });
-        break;
       case "smartTemplates-headerMenuAPI":
         // to test, first remove the old xul menu items:
         if (!SmartTemplates.fileTemplates.isAPIpatched) {
@@ -198,17 +195,34 @@ async function onLoad(activatedWhileWindowOpen) {
 
   window.SmartTemplate4.WL = WL; // we need this in patchUnifiedToolbar();
   window.SmartTemplate4.Util.notifyTools.enable();
+
   util.logDebug("Util.init...");
   await window.SmartTemplate4.Util.init();
+
   util.logDebug("startUp...");
   window.SmartTemplate4.startUp();
 
+  // read custom templates data from disc
+  await window.SmartTemplate4.fileTemplates.loadCustomMenu(false);
   await window.SmartTemplate4.fileTemplates.loadMRU();
+  await window.SmartTemplate4.Util.notifyTools.notifyBackground({ 
+    func: "updateFileTemplates",
+    Entries: window.SmartTemplate4.fileTemplates.Entries,
+    MRU_Entries: window.SmartTemplate4.fileTemplates.MRU_Entries
+  });  
+
   // The following will only work if we are currently in a mail pane (ATN update)
   // otherwise, we need to call this again in a tab listener
   if (window.SmartTemplate4.patchUnifiedToolbar()) {
     await window.SmartTemplate4.fileTemplates.initMenus(true, { toolbarType:"unified", isMessenger: true });  
   }
+
+  // [issue 253] update message action menu (API based) - default to this method from now!
+  await window.SmartTemplate4.Util.notifyTools.notifyBackground({ 
+    func: "patchHeaderMenuAPI" 
+  });
+  window.SmartTemplate4.fileTemplates.isAPIpatched = true;
+
   window.SmartTemplate4.addTabEventListener();
 
   // set up updating the label at midnight

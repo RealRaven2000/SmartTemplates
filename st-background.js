@@ -42,34 +42,6 @@ function logReceptionError(x) {
   }  
 }
 
-// Helper function to walk through a menu data structure and create WebExtension
-// menu entries. 
-// TO DO: use this to recreate SmartTemplates header menus from the back-end [issue 253]
-// TEST TEST TEST
-async function addMenuEntries(entries, parentId) {
-  for (let entry of entries) {
-    let config = {
-      id: entry.id,
-      contexts: ["browser_action_menu"],
-    }
-    if (entry.separator) {
-      config.type = "separator";
-    } else {
-      config.title = entry.label || browser.i18n.getMessage(entry.id);
-    }
-    if (parentId) {
-      config.parentId = parentId;
-    }
-    if (entry.disabled) {
-      config.enabled = false;
-    }
-    await browser.menus.create(config);
-    if (entry.subEntries) {
-      await addMenuEntries(entry.subEntries, entry.id);
-    }
-  }
-}
-
 const ControllerMap = new Map([
   ["cmd_newMessage", "new"], 
   ["cmd_reply", "rsp"],
@@ -78,13 +50,15 @@ const ControllerMap = new Map([
   ["cmd_forward", "fwd"]
 ]);
 
+// all .last    items had classList:"menuitem-iconic st-last-<CType> st-mru"
+// all .default items had classList:"menuitem-iconic"
 const writeMenus = [
   { type:"menu", id:"smartTemplates-write-menu", classList:"menu-iconic", 
     label:"pref_new.tab", accesskey:"st.menuaccess.write",
     controller:"cmd_newMessage", 
     popupItems: [
-      { id:"smartTemplates-write-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_newMessage", ctr_type: "most-recent" },
-      { id:"smartTemplates-write-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_newMessage", ctr_type: "account" }
+      { id:"smartTemplates-write-last", label:"st.menu.template.last", controller:"cmd_newMessage", ctr_type: "most-recent" },
+      { id:"smartTemplates-write-default", label:"st.menu.template.default", controller:"cmd_newMessage", ctr_type: "account" }
     ]
   }
 ];
@@ -94,24 +68,24 @@ const replyMenus = [
     label:"pref_rsp.tab", accesskey:"st.menuaccess.reply",
     controller:"cmd_reply", 
     popupItems: [
-      { id:"smartTemplates-reply-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_reply", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_reply", ctr_type: "account" }
+      { id:"smartTemplates-reply-last", label:"st.menu.template.last", controller:"cmd_reply", ctr_type: "most-recent" },
+      { id:"smartTemplates-reply-default", label:"st.menu.template.default", controller:"cmd_reply", ctr_type: "account" }
     ]
   }, 
   { type:"menu", id:"smartTemplates-reply-all-menu", classList:"menu-iconic", 
     label:"st.menu.replyAll", accesskey:"st.menuaccess.replyAll",
     controller:"cmd_replyAll", 
     popupItems: [
-      { id:"smartTemplates-reply-all-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_replyAll", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_replyAll", ctr_type: "account" }
+      { id:"smartTemplates-reply-all-last", label:"st.menu.template.last", controller:"cmd_replyAll", ctr_type: "most-recent" },
+      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", controller:"cmd_replyAll", ctr_type: "account" }
     ]
   }, 
   { type:"menu", id:"smartTemplates-reply-list-menu", classList:"menu-iconic", 
     label:"st.menu.replyList", accesskey:"st.menuaccess.replyList",
     controller:"cmd_replyList", 
     popupItems: [
-      { id:"smartTemplates-reply-list-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru", controller:"cmd_replyList", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_replyList", ctr_type: "account" }
+      { id:"smartTemplates-reply-list-last", label:"st.menu.template.last", controller:"cmd_replyList", ctr_type: "most-recent" },
+      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", controller:"cmd_replyList", ctr_type: "account" }
     ]
   }, 
 ];
@@ -122,8 +96,8 @@ const forwardMenus = [
     label:"pref_fwd.tab", accesskey:"st.menuaccess.forward",
     controller:"cmd_forward", 
     popupItems: [
-      { id:"smartTemplates-forward-last", label:"st.menu.template.last", classList:"menuitem-iconicst-last-fwd st-mru", controller:"cmd_forward", ctr_type: "most-recent" },
-      { id:"smartTemplates-forward-default", label:"st.menu.template.default", classList:"menuitem-iconic", controller:"cmd_forward", ctr_type: "account" }
+      { id:"smartTemplates-forward-last", label:"st.menu.template.last", controller:"cmd_forward", ctr_type: "most-recent" },
+      { id:"smartTemplates-forward-default", label:"st.menu.template.default", controller:"cmd_forward", ctr_type: "account" }
     ]
   }  
 ];
@@ -185,10 +159,15 @@ async function getTargetTemplate(controller, type) {
   }
 
   if (controller.startsWith("cmd_")) {
-    let ctr = controller.substr(4);
     switch (type) {
       case "most-recent" :
-        return fileTemplates.MRU_Entries.find(e=>e.cmd==ctr);
+        // not from MRU list but stored separately in legacy prefs
+        let jsonTemplate = 
+          await messenger.LegacyPrefs.getPref(`extensions.smartTemplate4.fileTemplates.mru.${ControllerMap.get(controller)}`),
+          sEmptyLabel = "(not set)";   
+
+        let lastEntry = jsonTemplate ? JSON.parse(jsonTemplate) : {path:"", label:sEmptyLabel, category:""};
+        return lastEntry; // fileTemplates.MRU_Entries.find(e=>e.cmd==ctr);
       case "account" : // account template
         return {
           controller: controller, 
@@ -201,7 +180,7 @@ async function getTargetTemplate(controller, type) {
 }
 
 
-var Menuhelper = {
+var MenuHelper = {
   injectAccessKey: function(txt, accesskey=null) {
     if (accesskey) {
       let p = txt.indexOf(accesskey);
@@ -244,6 +223,26 @@ var Menuhelper = {
     return null;
   }, 
 
+  getCmd: function (template) {
+    if (template.cmd) return template.cmd;
+
+    switch (template?.command.toLowerCase()) {
+      case "cmd_replyall": return "replyAll"; 
+      case "cmd_replylist": return "replyList"; 
+      case "cmd_reply": return "reply"; 
+      case "cmd_forward": return "forward"; 
+      case "cmd_newMessage": return "write"; 
+    } 
+
+    switch(template?.composeType) {
+      case "rsp": return "reply";
+      case "fwd": return "forward";
+      case "new": return "write";
+    }
+
+    return null;
+  },
+
   // get identifier for localization / label from cmd.
   getActionId: function (cmd) {
     switch(cmd) {
@@ -276,7 +275,7 @@ async function addMenus(menuArray, context) {
       contexts: [context],
       enabled: true,
       id: m.id, // string
-      title: Menuhelper.injectAccessKey(messenger.i18n.getMessage(m.label), ak),
+      title: MenuHelper.injectAccessKey(messenger.i18n.getMessage(m.label), ak),
       visible: true  
     }
     let icon = getIconOfController(m.controller);
@@ -297,7 +296,7 @@ async function addMenus(menuArray, context) {
       for(let p of m.popupItems) {
         ak = (p?.accesskey) ? messenger.i18n.getMessage(p?.accesskey) : null ;
         let template =
-          await getTargetTemplate(p?.controller, p?.ctr_type) ;
+          await getTargetTemplate(p?.controller, p?.ctr_type);
         if (!template) { 
           continue;
         }
@@ -307,7 +306,7 @@ async function addMenus(menuArray, context) {
         if(template.label) {
           title = `${messenger.i18n.getMessage(p.label)}: ${template.label}`;
         } else {
-          title = Menuhelper.injectAccessKey(messenger.i18n.getMessage(p.label), ak);
+          title = MenuHelper.injectAccessKey(messenger.i18n.getMessage(p.label), ak);
         }
 
         let itemProps = {
@@ -348,7 +347,7 @@ async function addMenus(menuArray, context) {
         await messenger.menus.create(itemProps);
       }
       // append file templates: (either one of new, rsp or fwd ) using ControllerMap
-      let templateList = Menuhelper.getTemplateListForController(m.controller);
+      let templateList = MenuHelper.getTemplateListForController(m.controller);
       if (!templateList.length) continue;
 
       // ========================================
@@ -377,7 +376,7 @@ async function addMenus(menuArray, context) {
 
           catEl = CatMap.get(t.category) || null;
           if (!catEl) {
-            let CA = Menuhelper.getAccessKey(catAccelerator++);
+            let CA = MenuHelper.getAccessKey(catAccelerator++);
             catId = await messenger.menus.create({
               contexts: [context],
               parentId: popupId,
@@ -395,9 +394,9 @@ async function addMenus(menuArray, context) {
 
         let accelKeyString;
         if (catEl) {
-          accelKeyString = Menuhelper.getAccessKey(catEl.akc);
+          accelKeyString = MenuHelper.getAccessKey(catEl.akc);
         } else {
-          accelKeyString = Menuhelper.getAccessKey(accCount);
+          accelKeyString = MenuHelper.getAccessKey(accCount);
           accCount++
         }
        
@@ -438,6 +437,7 @@ async function addMenus(menuArray, context) {
         enabled: true,
         parentId: popupId,
         id: `${m.controller}-openTemplate`,
+        icons: "../chrome/content/skin/icons/template-load.png",
         title: messenger.i18n.getMessage("st.fileTemplates.openFile"),
         onclick: (e) => {
           // fT.onSelectAdHoc(fT, composeType, popupParent, singleParentWindow);
@@ -495,6 +495,7 @@ async function createHeaderMenu() {
   await addMenus([...replyMenus, ...forwardMenus], Context); 
   // Toggle Label (optional)
   let isLabelHidden = (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.toolbar.hideLabel"));
+  await messenger.menus.remove("toggleLabel");
   await messenger.menus.create({
     contexts: [Context],
     enabled: true,
@@ -514,6 +515,7 @@ async function createHeaderMenu() {
   });
 
   // SmartTemplates Settings
+  await messenger.menus.remove("smartTemplates-settings");
   await messenger.menus.create({
     contexts: [Context],
     enabled: true,
@@ -532,6 +534,7 @@ async function createHeaderMenu() {
   });
 
   // ========================================
+  await messenger.menus.remove("templateSeparator");
   await messenger.menus.create({
     contexts: [Context],
     enabled: true,
@@ -632,18 +635,16 @@ async function updateMruMenu(Context) {
       break;
     }    
     let theTemplate = templates[i], // 
-        isDisabled = (!isLicensed && i>=MAX_FREE_TEMPLATES),
-        hasRestrictions = isDisabled;
+        isDisabled = (!isLicensed && i>=MAX_FREE_TEMPLATES);
 
     if (!isDisabled && !hasProLicense && i>=MAX_STANDARD_TEMPLATES) {
       isDisabled = true;
-      hasRestrictions = true;
     }
 
     // get identifier for localization / label
-    let actionId = Menuhelper.getActionId(theTemplate.cmd);
+    let actionId = MenuHelper.getActionId(MenuHelper.getCmd(theTemplate));
     if (!actionId) continue;
-    let accelKeyString = Menuhelper.getAccessKey(accelerator),
+    let accelKeyString = MenuHelper.getAccessKey(accelerator),
         action = messenger.i18n.getMessage(actionId);
 
     let title = `${accelKeyString}${action}: ${theTemplate.label}`;
@@ -655,7 +656,7 @@ async function updateMruMenu(Context) {
       id: `mru-${accelerator}`, 
       onclick: (e) => {
         executeFileMenu( {
-          controller: Menuhelper.getController(theTemplate), 
+          controller: MenuHelper.getController(theTemplate), 
           composeType: theTemplate?.composeType, //  "rsp" "new" "fwd" - added for later?
           target: theTemplate // file template entry or mru entry - see fileTemplates.js
         })
@@ -672,6 +673,40 @@ async function updateMruMenu(Context) {
   if (!generatedId) {
     if (isDebug) { console.log("No MRU items were generated. "); }
     return;
+  }
+
+  // update last items 
+  let latestMenus;
+  switch(Context) {
+    case "browser_action_menu":
+      latestMenus = [...writeMenus, ...replyMenus, ...forwardMenus];
+      break;
+    case "message_display_action_menu":
+      latestMenus = [...replyMenus, ...forwardMenus];
+      break;
+  }
+  let enableLastUpdate = true; // test
+  for (let menus of latestMenus) {
+    for (let menu of menus.popupItems.filter((e) => (e.ctr_type == "most-recent"))) {
+      let template = await getTargetTemplate(menu.controller, "most-recent"),
+          title = `${messenger.i18n.getMessage(menu.label)}: ${template.label}`;
+
+      let itemProps = {
+        contexts: [Context],
+        parentId: menus.id, 
+        title: title,
+        onclick: (e) => {
+          // html template
+          executeFileMenu( {
+            controller: menu.controller,
+            control_type: menu.ctr_type,
+            target: template // file template entry or mru entry - see fileTemplates.js
+          });
+        }
+      }
+      if (!enableLastUpdate) continue;
+      await messenger.menus.update(menu.id, itemProps);
+    }
   }
   
   // remember how many MRU items each menu type has
@@ -941,12 +976,6 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({event: "updateTemplateMenus"});
         break;
 
-      case "patchHeaderMenu":
-        // Broadcast about:messenger to run patch / refresh Header Menus
-        // To do rewrite with api [issue 253]
-        messenger.NotifyTools.notifyExperiment({event: "patchHeaderMenu"});
-        break;
-
       case "updateFileTemplates":
         if (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus")) {
           console.log("SmartTemplates updateFileTemplates() [API] data\n");
@@ -956,6 +985,9 @@ async function main() {
         break;
 
       case "patchHeaderMenuAPI":
+        if (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus")) {
+          console.log("SmartTemplates patchHeaderMenuAPI [API] data\n");
+        }        
         await createHeaderMenu();                           // use API to build the menu
         await updateMruMenu("message_display_action_menu"); // API to update MRU items
         break;
@@ -1043,7 +1075,6 @@ async function main() {
 
       case "patchUnifiedToolbar":
         return await messenger.NotifyTools.notifyExperiment({event: "patchUnifiedToolbar"});
-        break;
 
       case "openLinkInTab":
         // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo

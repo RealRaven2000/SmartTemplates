@@ -444,7 +444,7 @@ SmartTemplate4.fileTemplates = {
   makeLabel: function(entry) {
     let cat = entry.category || "";
     // use right pointing guillemet (left-pointing double angle quotation mark) as delimiter
-    let retval = cat ? (cat + " » " + entry.label) : entry.label;
+    let retval = cat ? (cat + " » " + entry?.label) : entry?.label;
     return retval;
   },
 
@@ -548,6 +548,11 @@ SmartTemplate4.fileTemplates = {
                 util.logDebug (`Successfully saved ${fileTemplates.entriesLength} bookmarks [${byteCount} bytes] to file.`);
 								fileTemplates.isModified = true;
                 SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
+                SmartTemplate4.Util.notifyTools.notifyBackground({ 
+                  func: "updateFileTemplates",
+                  Entries: fileTemplates.Entries,
+                  MRU_Entries: fileTemplates.MRU_Entries
+                });
                 SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateSnippetMenus" });
               },
               function saveReject(fileError) {  // IOUtils.Error
@@ -809,8 +814,7 @@ SmartTemplate4.fileTemplates = {
           }        
           msgPopup.appendChild(menuitem);
         }
-      }
-      else {
+      } else {
         acKey = getAccessKey(accelerator++);
         if (acKey) {
           menuitem.setAttribute("accesskey", acKey);
@@ -947,6 +951,7 @@ SmartTemplate4.fileTemplates = {
     SmartTemplate4.fileTemplates.configureMenuMRU(msgPopup); // the last used template to the menu item!
 		msgPopup.setAttribute("st4configured", true);
 	} ,
+  
 	
   configureMenuMRU: function(msgPopup) {
     // uses the classes st-last-rsp st-last-new st-last-fwd for adding the name of the last used templates
@@ -1029,10 +1034,17 @@ SmartTemplate4.fileTemplates = {
     );
 
     if (isAPI) {
-      // this will also update the data!
-      await window.SmartTemplate4.Util.notifyTools.notifyBackground({ 
-        func: "smartTemplates-headerMenuAPI" 
+      // update the data!
+      await SmartTemplate4.Util.notifyTools.notifyBackground({ 
+        func: "updateFileTemplates",
+        Entries: this.Entries,
+        MRU_Entries: this.MRU_Entries
       });
+
+      await SmartTemplate4.Util.notifyTools.notifyBackground({ 
+        func: "patchHeaderMenuAPI" 
+      });
+
       // only on main toolbar item until this is converted for API!
       await window.SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"unified"});
     } else {
@@ -1159,6 +1171,16 @@ SmartTemplate4.fileTemplates = {
       if (this.isAPIpatched) {
         return;
       }
+
+
+// ==============================================================
+// ==============================================================
+// ==============================================================      
+//                            OBSOLETE
+// ==============================================================      
+// ==============================================================      
+// ==============================================================      
+
       let doc = SmartTemplate4.Util.getMessageBrowserDocument();
 
       if (isHackMessageHeader && doc) {
@@ -1294,6 +1316,7 @@ SmartTemplate4.fileTemplates = {
         return;
       }
       this.storePreviousTemplate(composeType, entry);
+      this.enterMRUitem(entry);
       // update api menus
       // we need to remove all mru- items from the top level!
       // not sure how to do it via the API
@@ -1350,11 +1373,13 @@ SmartTemplate4.fileTemplates = {
   },
 
   enterMRUitem(entry) {
+    SmartTemplate4.Util.logDebug(`enterMRUitem(${this.makeLabel(entry)})`);
     let MAX_MRU_ITEMS = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.mru.max") * 2; // default is 10 but can be raised in Pro
     let el = SmartTemplate4.fileTemplates.MRU_Entries.find(e => 
       e.path == entry.path && 
       (e.cmd == entry.cmd ||
        e.command == entry.command));
+
     if (!entry) return false;
     
     if (el) {
@@ -1378,7 +1403,7 @@ SmartTemplate4.fileTemplates = {
   },
 
 	// origin: "new", "rsp", "fwd"
-	onItemClick: function (menuitem, menuParent, fileTemplateInstance, composeType, path, label, singleMwindow) {
+	onItemClick: async function (menuitem, menuParent, fileTemplateInstance, composeType, path, label, singleMwindow) {
     /*   START NEW CODE -  [issue 184] */
     // use a pref switch for testing API processing...
     if (SmartTemplate4.Preferences.isBackgroundParser()) {
@@ -1505,19 +1530,29 @@ SmartTemplate4.fileTemplates = {
         case "cmd_replylist": cmd = "replyList"; break;
       }
     }
-    let mruEntry = {
-      cmd: cmd,
-      label: entry.label,
-      path: entry.path,
-      composeType: entry.composeType,
-      command: entry.command
-    }      
     
-    if (mruEntry.cmd) {
-      SmartTemplate4.fileTemplates.enterMRUitem(mruEntry);
+    if (cmd) {
+      SmartTemplate4.fileTemplates.enterMRUitem({
+        cmd: cmd,
+        label: entry.label,
+        path: entry.path,
+        composeType: entry.composeType,
+        command: entry.command
+      } 
+    );
     }
     // notify UI to update _after_ updating the MRU list.
     SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
+
+    // update mru in header
+    await SmartTemplate4.Util.notifyTools.notifyBackground({ 
+      func: "updateFileTemplates",
+      Entries: this.Entries,
+      MRU_Entries: this.MRU_Entries
+    });
+    SmartTemplate4.Util.notifyTools.notifyBackground({ 
+      func: "updateHeaderMenuMRU" 
+    });    
 
 	} ,
 
@@ -2084,7 +2119,6 @@ SmartTemplate4.fileTemplates = {
         "SmartTemplate4.fileTemplates.loadMRU()", 
         "Reading the smartTemplates_mru.json file failed\n" + ex);
       // no changes to Entries array
-      // return Promise.reject("loadCustomMenu failed.");
       return false;
     }
   }

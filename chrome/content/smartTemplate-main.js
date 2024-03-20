@@ -1064,7 +1064,7 @@ var SmartTemplate4 = {
       newPopup.remove();
       return true;
     } else {
-      SmartTemplate4.Util.logDebug(`patchHeaderPane() - didn't find ${newPopupSelector}, so I couldn't patch the popup menu`);
+      SmartTemplate4.Util.logDebug(`moveMenuItems() - didn't find ${newPopupSelector}, so I couldn't patch the popup menu`);
       console.log(toolbarButton);
     }
   },  
@@ -1119,7 +1119,6 @@ var SmartTemplate4 = {
         <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-headerMenuAPI" label="Create message Actions (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-MruMenuAPI" label="Update MRU (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-patchHeaderTools" label="Patch Header Menu (legacy)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-mru-save" label="Save MRU list" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
@@ -1238,8 +1237,10 @@ var SmartTemplate4 = {
       const isMailPane = SmartTemplate4.Util.isTabMode (evt.detail.tabInfo, "mail");
       if (isMailPane) {
         const HEADERBARID = "smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton";
+        
         let result = await SmartTemplate4.Util.notifyTools.notifyBackground({func: "patchUnifiedToolbar"});
         await SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"unified"});
+
         if (SmartTemplate4.fileTemplates.isAPIpatched) {
           return; // header Patch obsolete for API method
         }        

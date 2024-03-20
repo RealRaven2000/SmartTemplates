@@ -588,10 +588,26 @@ SmartTemplate4.Settings = {
 		return true;
 	} ,
 	
-	onUnload : function() {
+	onUnload : async function() {
 		if (SmartTemplate4.fileTemplates.isModified) {
       SmartTemplate4.Util.logDebug("fileTemplates were modified - notify to update all menus...");
       SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
+			try {
+				/* FOR SOME REASONS THIS NEVER RETURNS NOR DOES IT THROW!
+				await window.SmartTemplate4.Util.notifyTools.notifyBackground({ 
+					func: "updateFileTemplates",
+					Entries: window.SmartTemplate4.fileTemplates.Entries,
+					MRU_Entries: window.SmartTemplate4.fileTemplates.MRU_Entries
+				});  
+				*/
+				await SmartTemplate4.Util.notifyTools.notifyBackground({ 
+					func: "patchHeaderMenuAPI" 
+				});				
+		  } catch (ex) {
+				SmartTemplate4.Util.logException("onUnload after calling patchHeaderMenuAPI()", ex);
+			} finally {
+
+			}
 		}
     window.removeEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseFromEvent);
 	} ,

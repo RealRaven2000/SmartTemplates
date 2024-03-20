@@ -129,7 +129,9 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 }
 
 /* use the class force-label-hidden on the button to force hiding the label, but only if icon is visible */
-#messageHeader:not(.message-header-buttons-only-text) .SmartTemplates_HeaderBtn.force-label-hidden .toolbarbutton-text  {
+#messageHeader:not(.message-header-buttons-only-text) 
+[data-extensionid="smarttemplate4@thunderbird.extension"].force-label-hidden 
+.toolbarbutton-text {
   display: none !important;
 }
 
