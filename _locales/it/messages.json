@@ -797,7 +797,7 @@
     "message": "Poiché questo lavoro è esclusivamente finanziato dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare SmartTemplates in futuro."
   },
   "ongoing-work": {
-    "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
+    "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del ESR. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1495,8 +1495,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "31 ottobre"
-  },  
+    "message": "10 aprile"
+  },    
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
     "placeholders": {

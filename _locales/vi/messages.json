@@ -97,7 +97,7 @@
     "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
   },
   "ongoing-work": {
-    "message": "Các thay đổi để chuyển $addonName$ sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản 2022 tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này.",
+    "message": "Các thay đổi để chuyển $addonName$ sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản ESR tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -143,8 +143,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "31 tháng 10"
-  },  
+    "message": "ngày 10 tháng 4"
+  },   
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
     "placeholders": {

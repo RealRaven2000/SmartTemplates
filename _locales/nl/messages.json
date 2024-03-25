@@ -827,7 +827,7 @@
     "message": "Nee"
   },
   "ongoing-work": {
-    "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
+    "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende ESR-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1531,7 +1531,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "31 oktober"
+    "message": "4月10日"
   },  
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",

@@ -869,7 +869,7 @@
     "message": "Ingen"
   },
   "ongoing-work": {
-    "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
+    "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa ESR-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1588,8 +1588,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "31 oktober"
-  },  
+    "message": "10 april"
+  },   
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
     "placeholders": {
