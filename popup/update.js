@@ -7,10 +7,8 @@ For details, please refer to license.txt in the root folder of this extension
 END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
-// whether these are shown depends on the "endSale" variable in popup.js!
-const discountPro = "33%";
-const discountUpgrade = "33%";
-const discountRenewal = "25%";
+// whether these are shown depends on the "sales_end" variable in popup.js!
+
 
   addEventListener("click", async (event) => {
     switch(event.target.id) {
@@ -81,8 +79,7 @@ const discountRenewal = "25%";
           userName = await messenger.Utilities.getUserName(),
           addonVer = manifest.version,
           appVer = browserInfo.version,
-          remindInDays = 10,
-          compatibleVer = "115.4.1"; // Thunderbird for newsSection
+          remindInDays = 10;
 
     // internal functions
     function hideSelectorItems(cId) {
@@ -143,7 +140,7 @@ const discountRenewal = "25%";
     let specialOffer = document.getElementById('specialOfferTxt');
     if (specialOffer) {
       let expiry = messenger.i18n.getMessage("special-offer-expiry");
-      // note: expiry day is set in popup.js "endSale" variable
+      // note: expiry day is set in popup.js "sales_end" variable
       specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, discountPro])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>")
@@ -156,7 +153,7 @@ const discountRenewal = "25%";
     let specialRenew = document.getElementById("specialOfferRenewTxt");
     if (specialRenew) {
       let expiry = messenger.i18n.getMessage("special-offer-expiry");
-      // note: expiry day is set in popup.js "endSale" variable
+      // note: expiry day is set in popup.js "sales_end" variable
       specialRenew.innerHTML = 
         messenger.i18n.getMessage("special-offer-renew", [expiry, discountRenewal])
           .replace(/\{boldStart\}/g,"<b>")
@@ -167,7 +164,7 @@ const discountRenewal = "25%";
     let specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
     if (specialOfferUpgrade) {
       let expiry = messenger.i18n.getMessage("special-offer-expiry");
-      // note: expiry day is set in popup.js "endSale" variable
+      // note: expiry day is set in popup.js "sales_end" variable
       specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, discountUpgrade])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>")
