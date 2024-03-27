@@ -325,7 +325,7 @@ SmartTemplate4.getHeadersAsync = async function() {
     // nsIMsgComposeParams.idl
     composeType = params.type;     
   } else {
-    composeType = window.gComposeType; // [issue 272] when creating new email from taskbar icon
+    composeType = SmartTemplate4.Util.globalComposeType; // [issue 272] when creating new email from taskbar icon
   }
 
   // issue 272 - also support clicking a mailto: link on a website!

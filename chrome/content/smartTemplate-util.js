@@ -113,6 +113,10 @@ SmartTemplate4.Util = {
 		return null;
 	} ,
 
+	get globalComposeType() {
+    return gComposeType; // global variable from Composer window, fallback only
+	},
+
 	get tabmail() {
 		let doc = this.Mail3PaneWindow.document,
 		    tabmail = doc.getElementById("tabmail");
@@ -127,6 +131,52 @@ SmartTemplate4.Util = {
 			return null;
 		}
 	} ,	
+
+	getControllerFromComposeType(composeType) {
+		const msgComposeType = Ci.nsIMsgCompType;
+		switch (composeType) {
+			case msgComposeType.Template: // new type for 1.6 - Thunderbird 52 uses this in "Edit As New" case
+				return "cmd_newMessage";
+			// new message -----------------------------------------
+			case msgComposeType.New:
+			case msgComposeType.NewsPost:
+			case msgComposeType.MailToUrl:
+				return "cmd_newMessage";
+
+			// reply message ---------------------------------------
+			case msgComposeType.Reply:
+			case msgComposeType.ReplyToSender:
+				return "cmd_reply";
+			case msgComposeType.ReplyAll:
+				return "cmd_replyAll";
+
+			case msgComposeType.ReplyToGroup:
+			case msgComposeType.ReplyToSenderAndGroup:
+			case msgComposeType.ReplyToList:
+				return "cmd_replyList";
+
+			// forwarding message ----------------------------------
+			case msgComposeType.ForwardAsAttachment:
+				return "cmd_forward";
+
+			case msgComposeType.ForwardInline:
+				return "cmd_forwardInline";
+
+			// do not process -----------------------------------
+			// (Draft:9/ReplyWithTemplate:12)
+			case msgComposeType.Draft:
+				return "cmd_newMessage";
+
+			case msgComposeType.EditAsNew: 
+				return "cmd_newMessage";
+
+			case msgComposeType.EditTemplate: 
+				return "cmd_newMessage";
+
+			default:
+				return ""; // unknown
+		}		
+	},
 
 	getAnonymousNodes(doc,el) {
 		let aN = [];
