@@ -1663,8 +1663,7 @@ SmartTemplate4.fileTemplates = {
         singleMsgWindow = params?.parentWindow; // will become obsolete with API ?
 
     // API specific parameters:
-    let controller = params?.controller,
-        context = params?.context;  // future use (API)
+    let controller = params?.controller;  // future use (API)
 
     // globals
     let cmd;
@@ -1680,15 +1679,17 @@ SmartTemplate4.fileTemplates = {
       }      
     }
 
-    let composeTypeFull = this.getComposeTypeFull(controller);
-    composeType = composeTypeFull.substring(0, 3);
-    switch(controller) {
-      case "cmd_reply": cmd = "reply"; break;
-      case "cmd_replyAll": cmd = "replyAll"; break;
-      case "cmd_replyList": cmd = "replyList"; break;
-      case "cmd_newMessage": cmd = "write"; break;
-      case "cmd_forward": cmd = "forward"; break;
-      case "cmd_forwardInline": cmd = "forward"; break;
+    let composeTypeFull = this.getComposeTypeFull(controller); // n/a when editing from draft.
+    if (composeTypeFull) {
+      composeType = composeTypeFull?.substring(0, 3);
+      switch(controller) {
+        case "cmd_reply": cmd = "reply"; break;
+        case "cmd_replyAll": cmd = "replyAll"; break;
+        case "cmd_replyList": cmd = "replyList"; break;
+        case "cmd_newMessage": cmd = "write"; break;
+        case "cmd_forward": cmd = "forward"; break;
+        case "cmd_forwardInline": cmd = "forward"; break;
+      }
     }
 
 

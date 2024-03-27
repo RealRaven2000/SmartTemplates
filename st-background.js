@@ -21,11 +21,7 @@ var MenuCounter = {
   MRUunified: 0,
   MRUcomposer: 0
 }
-var MenuMruPrefix = {
-  header: "",
-  unified: "",
-  composer: ""
-}
+
 var callbacks = [];
 
 var fileTemplates = {
@@ -101,6 +97,68 @@ const forwardMenus = [
     ]
   }  
 ];
+
+
+// a class to manage restricitons of number of supported menu items
+// use to keep count across menus with addItem / countMenuItems
+class MenuRestrictions {
+  LicenseInfo;
+  menuCount = 0;
+  Categories=[];
+  constructor(isMRU, licenseInfo) {
+    this.LicenseInfo = licenseInfo;
+    this.MAX_FREE_TEMPLATES = isMRU ? 3 : 5;
+    this.MAX_STANDARD_TEMPLATES = isMRU ? 5 : 25;
+    this.MAX_STANDARD_CATEGORIES = 3;
+  }
+  async initPrefs() {
+    this.MAX_MRU_CEILING = await messenger.LegacyPrefs.getPref("fileTemplates.mru.max");
+  }
+
+  get countMenuItems() {
+    return this.menuCount;
+  }
+
+  get maxTemplates() {
+    const isLicensed = this.LicenseInfo.status == "Valid";
+    const hasProLicense = this.LicenseInfo.keyType != 2;
+    if (isLicensed && hasProLicense) return 100000;
+    if (isLicensed && !hasProLicense) return this.MAX_STANDARD_TEMPLATES;
+    // no license
+    return this.MAX_FREE_TEMPLATES;
+  }
+
+  get maxCategories() {
+    const isLicensed = this.LicenseInfo.status == "Valid";
+    const hasProLicense = this.LicenseInfo.keyType != 2;
+    if (isLicensed && hasProLicense) return 1000;
+    return this.MAX_STANDARD_CATEGORIES;
+  }
+
+  get isCategoryMaximum() {
+    return (this.Categories.length>=this.maxCategories);
+  }
+
+  // adding a new template, also keeps track of how many categories are used in this menu
+  addTemplateMenuItem(category) {
+    this.menuCount++;
+    if (category && !this.Categories.includes(category)) {
+      this.Categories.push(category);
+    }
+  }
+
+  removeTemplateMenuItem() { // probably not used.
+    if (this.menuCount>0) {
+      this.menuCount--;
+    }
+    if (!menuCount) { 
+      // categero management = incomplete / not quite right, we would need to sanity 
+      // check each item really.... so only works correctly if we remove all items
+      this.Categories=[];
+    }
+  }
+}
+
 
 /* from root:icons.css
 --icon-new-mail: url("chrome://messenger/skin/icons/new/compact/new-mail.svg");
@@ -268,6 +326,7 @@ var MenuHelper = {
   }
 }
 
+
 async function addMenus(menuArray, context) {
   // helper function to insert accelerator key
   let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus");
@@ -276,6 +335,9 @@ async function addMenus(menuArray, context) {
   }
 
   for (let m of menuArray) { // iterate all popups.
+    let menuRestrict = new MenuRestrictions(false, currentLicense.info);  // not mru restricted
+    await menuRestrict.initPrefs(); // configurable stuff
+  
     //
     let ak = (m?.accesskey) ? messenger.i18n.getMessage(m?.accesskey) : null ;
     let menuProps = {
@@ -297,8 +359,6 @@ async function addMenus(menuArray, context) {
     }
 
     let popupId = await messenger.menus.create(menuProps);
-
-
     if (m.popupItems?.length) {
       for(let p of m.popupItems) {
         ak = (p?.accesskey) ? messenger.i18n.getMessage(p?.accesskey) : null ;
@@ -315,7 +375,7 @@ async function addMenus(menuArray, context) {
         } else {
           title = MenuHelper.injectAccessKey(messenger.i18n.getMessage(p.label), ak);
         }
-
+        
         let itemProps = {
           contexts: [context],
           enabled: true,
@@ -368,7 +428,7 @@ async function addMenus(menuArray, context) {
       // then items without category!
       // the categories get their own accelerator which is A,B,C etc.
       let accCount = 1;
-      let CatMap = new Map(); // [category , {id: catId, akc: accCount}]
+      let CatMap = new Map(); // [category.toLowerCase() , {id: catId, akc: accCount}]
       let catAccelerator = 10; // A, B, C etc.
 
       // display catecory popups on top, then items without category
@@ -376,13 +436,33 @@ async function addMenus(menuArray, context) {
         ...templateList.filter(e => (e.category)),
         ...templateList.filter(e => (!e.category))
       ];      
+
+      // check if anything had to be disabled because of license restrictions:
+      let hasRestrictions = false;
+      let parentPopupId;
+      const CategoryOverFlowId = "****other****";
       for (let t of sortedTemplates) {
         let catId = null;
         let catEl = null;
-        if (t.category) {
 
-          catEl = CatMap.get(t.category) || null;
-          if (!catEl) {
+        let isEnabled = (menuRestrict.countMenuItems <= menuRestrict.maxTemplates);
+        if (!isEnabled) {
+          hasRestrictions = true;
+        }
+
+        if (t.category) {
+          catEl = CatMap.get(t.category.toLowerCase()) || null;
+          // 0. existing category was found
+          if (catEl) { 
+            catId = catEl.id;
+            catEl.akc++;
+            catEl = {id: catId, akc: catEl.akc}
+            CatMap.set(t.category, catEl);
+          }
+
+          // 1. category is new - create one.
+          if (!catEl && !menuRestrict.isCategoryMaximum) {
+            // new category!
             let CA = MenuHelper.getAccessKey(catAccelerator++);
             catId = await messenger.menus.create({
               contexts: [context],
@@ -390,14 +470,31 @@ async function addMenus(menuArray, context) {
               title: `${CA}${t.category}`
             }); 
             catEl = {id: catId, akc: 1}
-            CatMap.set(t.category, catEl);
-          } else {
-            catId = catEl.id;
+            CatMap.set(t.category.toLowerCase(), catEl); // this may lead to category maximum.
+          }
+
+          // 2. maximum categories is reached, use "Other"
+          if (!catEl && menuRestrict.isCategoryMaximum) {
+            // does "Other" category exist?
+            catEl = CatMap.get(CategoryOverFlowId);
+            if (!catEl) {
+              // other doesn't exist, create it!
+              let CA = MenuHelper.getAccessKey(catAccelerator++);
+              catId = await messenger.menus.create({
+                contexts: [context],
+                parentId: popupId,
+                title: `${CA}${messenger.i18n.getMessage("template.category.other")}`
+              }); 
+              catEl = {id: catId, akc: 0}
+            } else {
+              catId = catEl.id;
+            }
             catEl.akc++;
-            catEl = {id: catId, akc: catEl.akc}
-            CatMap.set(t.category, catEl);
+            CatMap.set(CategoryOverFlowId, catEl);
           }
         }
+
+        parentPopupId = catId || popupId;
 
         let accelKeyString;
         if (catEl) {
@@ -411,9 +508,9 @@ async function addMenus(menuArray, context) {
         let title = `${accelKeyString}${t.label}`;
         let itemProps = {
           contexts: [context],
-          enabled: true,
+          enabled: isEnabled,
           // icons: ...,
-          parentId: catId || popupId, // string
+          parentId: parentPopupId, // string
           title: title,
           visible: true,  
           onclick: (e) => {
@@ -425,6 +522,35 @@ async function addMenus(menuArray, context) {
           }
         }
         await messenger.menus.create(itemProps); 
+        menuRestrict.addTemplateMenuItem(t?.category || null); // sum up all items {id: catId, akc: accCount}
+      }
+
+      if (hasRestrictions) {
+        // add an explanation about why some template items are disabled.
+        await messenger.menus.create({
+          contexts: [context],
+          title: messenger.i18n.getMessage("st.fileTemplates.restrictionQuestion"),
+          parentId: parentPopupId,
+          onclick: (e) => {
+            let txt = messenger.i18n.getMessage(
+              "st.fileTemplates.restrictTemplates",
+              [
+                menuRestrict.MAX_FREE_TEMPLATES.toString(), 
+                menuRestrict.MAX_STANDARD_TEMPLATES.toString()
+              ]);
+            messenger.NotifyTools.notifyExperiment({
+              event: "doCommand", 
+              detail: {
+                cmd: "smartTemplates-showMessage", // will be re-packaged as el.id
+                params: {
+                  text: txt,
+                  showLicenseButton: true,
+                  feature: "FileTemplatesRestricted"
+                } 
+              },
+            });              
+          }
+        });
       }
 
       // one more ========================================
@@ -447,7 +573,6 @@ async function addMenus(menuArray, context) {
         icons: "../chrome/content/skin/icons/template-load.png",
         title: messenger.i18n.getMessage("st.fileTemplates.openFile"),
         onclick: (e) => {
-          // fT.onSelectAdHoc(fT, composeType, popupParent, singleParentWindow);
           messenger.NotifyTools.notifyExperiment({
             event: "doCommand", 
             detail: {
@@ -490,14 +615,13 @@ async function addMenus(menuArray, context) {
   }
 }
 
-
 async function createHeaderMenu() {
   let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus");
   if (isDebug) {
     console.log("SmartTemplates: createHeaderMenu (through API)")
   }
 
-  let Context =  "message_display_action_menu";
+  let Context = "message_display_action_menu";
 
   await addMenus([...replyMenus, ...forwardMenus], Context); 
   // Toggle Label (optional)
@@ -592,16 +716,19 @@ async function updateMruMenu(Context) {
     console.log(`SmartTemplates updateMruMenu(${Context})\n`);
   }
 
-  const isMRUmenu = true,
-        MAX_FREE_TEMPLATES = isMRUmenu ? 3 : 5,
-        MAX_STANDARD_TEMPLATES = isMRUmenu ? 5 : 25,
-        MAX_STANDARD_CATEGORIES = 3,
-        MAX_MRU_CEILING = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.fileTemplates.mru.max"),
-        isLicensed = currentLicense.info.status == "Valid",
-        hasProLicense = currentLicense.info.keyType != 2;
+
+  const isMRUmenu = true;
+  const menuRestrict = new MenuRestrictions(isMRUmenu, currentLicense.info);
+  await menuRestrict.initPrefs(); // configurable stuff
+
 
   let templates, popupId;
   let countOldMruItems = 0;
+
+  let menuHasRestrictions = false; // set this if any maximum is exceeded!
+  const delimiter = "\u00BB".toString(); // »
+
+
 
   // let oldPrefix = "";
   switch(Context) {
@@ -609,17 +736,14 @@ async function updateMruMenu(Context) {
       templates = fileTemplates.MRU_Entries.filter(e => e.composeType == "new");
       popupId = null; // top level
       countOldMruItems = MenuCounter.MRUunified;
-      // oldPrefix = MenuMruPrefix.unified;
       break;
     case "message_display_action_menu":
       templates = fileTemplates.MRU_Entries.filter(e => e.composeType == "rsp" || e.composeType == "fwd");
       countOldMruItems = MenuCounter.MRUheader;
-      // oldPrefix = MenuMruPrefix.header;
       break;
     case "compose_action_menu":
       templates = []; // Snippets = recents? - change template = depends on compose Case!
       countOldMruItems = MenuCounter.MRUcomposer; // obsolete?
-      // oldPrefix = MenuMruPrefix.composer;
       break;
   }
 
@@ -638,14 +762,14 @@ async function updateMruMenu(Context) {
       generatedId = null;
 
   for (let i=0; i<templates.length; i++) {
-    if (i>MAX_MRU_CEILING) {
+    if (i>menuRestrict.MAX_MRU_CEILING) {
       break;
     }    
     let theTemplate = templates[i], // 
-        isDisabled = (!isLicensed && i>=MAX_FREE_TEMPLATES);
+        isDisabled = (i>=menuRestrict.maxTemplates);
 
-    if (!isDisabled && !hasProLicense && i>=MAX_STANDARD_TEMPLATES) {
-      isDisabled = true;
+    if (isDisabled) {
+      menuHasRestrictions = true;
     }
 
     // get identifier for localization / label
@@ -657,7 +781,7 @@ async function updateMruMenu(Context) {
     let title = `${accelKeyString}${action}: ${theTemplate.label}`;
     let item ={
       contexts: [Context],
-      enabled: true,
+      enabled: !isDisabled,
       // icons: ...,
       title: title,
       id: `mru-${accelerator}`, 
@@ -729,15 +853,12 @@ async function updateMruMenu(Context) {
   switch(Context) {
     case "browser_action_menu":
       MenuCounter.MRUunified = accelerator-1;
-      // if (prefix) { MenuMruPrefix.unified = prefix; }
       break;
     case "message_display_action_menu": // not sure whether there is an official ContextType for the unified toolbar.
       MenuCounter.MRUheader = accelerator-1;
-      // if (prefix) { MenuMruPrefix.header = prefix; }
       break;
     case "compose_action_menu":
       MenuCounter.MRUcomposer = accelerator-1; // Snippets = recents? - change template = depends on compose Case!
-      // if (prefix) { MenuMruPrefix.composer = prefix; }
       break;
   }  
   
@@ -801,8 +922,7 @@ async function updateMruMenu(Context) {
           // TypeError: currentLicense is undefined
           if (isDebug) console.log("2. update() case");
           let currentLicenseInfo = currentLicense.info;
-          let isLicensed = (currentLicenseInfo.status == "Valid"),  
-              isStandardLicense = (currentLicenseInfo.keyType == 2); 
+          let isLicensed = (currentLicenseInfo.status == "Valid"); 
           if (isLicensed) {
             // suppress update popup for users with licenses that have been recently renewed
             let gpdays = currentLicenseInfo.licensedDaysLeft; 
