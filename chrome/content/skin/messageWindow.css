@@ -42,8 +42,7 @@
 }
 #innerMessage p {
 	/*! text-align: justify; */
-	color: rgb(2,2,2) !important;
-	text-shadow: 1px 1px 1px rgba(220, 220, 220, 0.7);
+	/* color: rgb(2,2,2) !important; */ /* leave text color to theme! */
 	margin-bottom: 0.6em;
 	max-width: 850px;
 }

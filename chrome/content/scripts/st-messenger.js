@@ -157,6 +157,18 @@ async function onLoad(activatedWhileWindowOpen) {
           }
         );
         break;
+      case "smartTemplates-showMessage": // show a specific message
+        SmartTemplates.Message.display(
+          params.text, 
+          "centerscreen,titlebar,modal,dialog",
+          { 
+            showLicenseButton: params.showLicenseButton, 
+            feature: params.feature,
+            ok: function() { ; }
+          },
+          SmartTemplates.Util.Mail3PaneWindow
+        );      
+        break;
       case "smartTemplates-labelUpdate":
         SmartTemplates.Util.notifyTools.notifyBackground({func: "updateNewsLabels"});
         // update the status bar label too:
