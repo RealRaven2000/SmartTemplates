@@ -191,7 +191,10 @@ async function onLoad(activatedWhileWindowOpen) {
         }
         break;
       case "smartTemplates-registration":
-        SmartTemplates.Util.showLicenseDialog("test menu");
+        {
+          let featureName = params?.feature || "test menu";
+          SmartTemplates.Util.showLicenseDialog(featureName);
+        }
         break;
       case "smartTemplates-mru-save":
         await SmartTemplates.fileTemplates.storeMRU();

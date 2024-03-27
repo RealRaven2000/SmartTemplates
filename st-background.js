@@ -486,6 +486,26 @@ async function addMenus(menuArray, context) {
                 title: `${CA}${messenger.i18n.getMessage("template.category.other")}`
               }); 
               catEl = {id: catId, akc: 0}
+              await messenger.menus.create({
+                contexts: [context],
+                parentId: catId,
+                icons:  "../chrome/content/skin/icons/warning.svg",
+                title: messenger.i18n.getMessage(
+                  "st.fileTemplates.restrictTemplateCats", 
+                  [menuRestrict.maxCategories.toString()]),
+                onclick: (e) => {
+                  messenger.NotifyTools.notifyExperiment({
+                    event: "doCommand", 
+                    detail: {
+                      cmd: "smartTemplates-registration", // will be re-packaged as el.id
+                      params: {
+                        feature: "MAX_STANDARD_CATEGORIES"
+                      } 
+                    },
+                  });              
+                }
+
+              })
             } else {
               catId = catEl.id;
             }
@@ -529,6 +549,7 @@ async function addMenus(menuArray, context) {
         // add an explanation about why some template items are disabled.
         await messenger.menus.create({
           contexts: [context],
+          icons:  "../chrome/content/skin/icons/warning.svg",
           title: messenger.i18n.getMessage("st.fileTemplates.restrictionQuestion"),
           parentId: parentPopupId,
           onclick: (e) => {
