@@ -33,6 +33,8 @@ toolbar[brighttext="true"] #smarttemplate4-cleandeferred.toolbarbutton-1:hover {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/snippets.svg");
 }
 
-
+#smartTemplates-settings {
+	-moz-context-properties: fill !important;
+}
 
 
