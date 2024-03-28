@@ -290,17 +290,12 @@ permalink: version.html
         be inserted when writing a new email via the context menu 'Compose Message To'. 
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/275">[issue 275]</a>
       </li>
-      <li> 
-        Using <code>%recipient%</code> also works as expected when replying to own emails in a conversation 
-        and Thunderbird automatically changes the recipients.
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/239">[issue 239]</a> 
-      </li>
       <li>
         Force lowercase emails when looking up Cardbook contacts. Before, the lookup
-        of contacts could fail when replying to an email with mixed case addres,
+        of contacts could fail when replying to an email with mixed case address,
         such as John.Doe@acmeDomain.com.
 
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/278"></a>[issue 278]
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/278">[issue 278]</a>
       </li>
       <li>
         Support for extracting <code class="parameter">prefix</code> and <code class="parameter">suffix</code> 
@@ -308,11 +303,22 @@ permalink: version.html
       </li>
       <li>
         Support for <code class="parameter">other.custom1</code>, <code class="parameter">other.custom2</code>
-         etc. from address book fields. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/246">[issue 246]</a>
+        etc. from address book fields. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/246">[issue 246]</a>
       </li>
       <li>
         Removed duplicate tooltip on active SmartTemplate fields. 
       </li>
+      <li> 
+        Rewrote message action menus using extension APIs <a href="https://github.com/RealRaven2000/SmartTemplates/issues/253">[issue 253]</a>  
+      </li>
+
+
+      <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+      <li> 
+        Using <code>%recipient%</code> also works as expected when replying to own emails in a conversation 
+        and Thunderbird automatically changes the recipients.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/239">[issue 239]</a> 
+      </li>      
 
       <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
       <li>
@@ -322,7 +328,8 @@ permalink: version.html
         Removed FileUtils.getFile for future compatibility (122 beta)
       </li>
       <li>
-        Added documentation for <code class="inline">%dateformat(fstring,toclipboard)%</code> to the variables tab.
+        Added documentation for <code class="inline">&#37;dateformat(fstring,toclipboard)&#37;</code> 
+        to the variables page in settings.
       </li>
       <li>
         Opening support sites in a tab is now using API methods (requires tabs permission)
