@@ -216,7 +216,7 @@ permalink: version.html
       Version 4.* - WIP</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">111.0 - 224.*</span>
+			<span class="thunderbird">111.0 - 124.*</span>
 		</span>
   </h4>
   <ul>
@@ -251,105 +251,10 @@ permalink: version.html
         Version 4.4 - WIP</a>
       <br>
       <span class="appWrapper">
-        <span class="thunderbird">111.0 - 224.*</span>
+        <span class="thunderbird">111.0 - 124.*</span>
       </span>
     </h4>
-    <ul>
-      <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
-      <li> 
-        Pro feature: Added <code>%preheader()%</code> variable for injecting preview text for 
-        mobile email clients. 
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/274">[issue 274]</a>
-      </li>
-      <li> 
-        <p>
-          The following functions will from now support using commas within the text parameters: 
-        </p>
-          <code class="inline">%deleteText()%</code> 
-          <code class="inline">%replaceText()%</code>
-          <code class="inline">%matchTextFromBody()%</code>
-          <code class="inline">%matchTextFromSubject()%</code>
-          <code class="inline">%deleteQuotedText()%</code>
-          <code class="inline">%replaceQuotedText()%</code>
-          <code class="inline">%file()%</code>
-          <code class="inline">%toclipboard()%</code>
-          <code class="inline">%conditionalText()%</code>
-          <code class="inline">%header.set()%</code>
-          <code class="inline">%header.prefix()%</code>
-          <code class="inline">%header.append()%</code>
-          <code class="inline">%header.delete()%</code>
-        <p>
-          All commas need to be escaped with a preceding backslash, for example:<br>
-          <code class="html">%toclipboard("All your needs\, fulfilled.")%</code>
-        </p>
-        
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/280">[issue 280]</a>
-      </li>      
-      <li> 
-        The address data for <code>%to%</code>, <code>%recipient%</code> and <code>%from%</code> will now automatically 
-        be inserted when writing a new email via the context menu 'Compose Message To'. 
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/275">[issue 275]</a>
-      </li>
-      <li>
-        Force lowercase emails when looking up Cardbook contacts. Before, the lookup
-        of contacts could fail when replying to an email with mixed case address,
-        such as John.Doe@acmeDomain.com.
 
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/278">[issue 278]</a>
-      </li>
-      <li>
-        Support for extracting <code class="parameter">prefix</code> and <code class="parameter">suffix</code> 
-        from address book fields. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/267">[issue 267]</a>
-      </li>
-      <li>
-        Support for <code class="parameter">other.custom1</code>, <code class="parameter">other.custom2</code>
-        etc. from address book fields. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/246">[issue 246]</a>
-      </li>
-      <li>
-        Removed duplicate tooltip on active SmartTemplate fields. 
-      </li>
-      <li> 
-        Rewrote message action menus using extension APIs <a href="https://github.com/RealRaven2000/SmartTemplates/issues/253">[issue 253]</a>  
-      </li>
-
-
-      <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
-      <li> 
-        Using <code>%recipient%</code> also works as expected when replying to own emails in a conversation 
-        and Thunderbird automatically changes the recipients.
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/239">[issue 239]</a> 
-      </li>      
-
-      <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
-      <li>
-        Removed duplicate tooltip on active SmartTemplate fields. 
-      </li>
-      <li>
-        Removed FileUtils.getFile for future compatibility (122 beta)
-      </li>
-      <li>
-        Added documentation for <code class="inline">&#37;dateformat(fstring,toclipboard)&#37;</code> 
-        to the variables page in settings.
-      </li>
-      <li>
-        Opening support sites in a tab is now using API methods (requires tabs permission)
-      </li>
-    </ul>
-  </li> 
-
-  <a id="4.3"> &nbsp; </a>
-  <a id="4.3.1"> &nbsp; </a>
-  <a id="4.3.2"> &nbsp; </a>
-  <a id="4.3.3"> &nbsp; </a>
-  <li>
-    <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.3.2">
-        Version 4.3.3 - 08/11/2023</a>
-      <br>
-      <span class="appWrapper">
-        <span class="thunderbird">111.0 - 120.*</span>
-      </span>
-    </h4>
 
     <table class="smartTemplateProRenew bargain psa"> 
       <tr>
@@ -477,6 +382,104 @@ permalink: version.html
         </td>
       </tr>
     </table>  
+
+    <ul>
+      <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+      <li> 
+        Pro feature: Added <code>%preheader()%</code> variable for injecting preview text for 
+        mobile email clients. 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/274">[issue 274]</a>
+      </li>
+      <li> 
+        <p>
+          The following functions will from now support using commas within the text parameters: 
+        </p>
+          <code class="inline">%deleteText()%</code> 
+          <code class="inline">%replaceText()%</code>
+          <code class="inline">%matchTextFromBody()%</code>
+          <code class="inline">%matchTextFromSubject()%</code>
+          <code class="inline">%deleteQuotedText()%</code>
+          <code class="inline">%replaceQuotedText()%</code>
+          <code class="inline">%file()%</code>
+          <code class="inline">%toclipboard()%</code>
+          <code class="inline">%conditionalText()%</code>
+          <code class="inline">%header.set()%</code>
+          <code class="inline">%header.prefix()%</code>
+          <code class="inline">%header.append()%</code>
+          <code class="inline">%header.delete()%</code>
+        <p>
+          All commas need to be escaped with a preceding backslash, for example:<br>
+          <code class="html">%toclipboard("All your needs\, fulfilled.")%</code>
+        </p>
+        
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/280">[issue 280]</a>
+      </li>      
+      <li> 
+        The address data for <code>%to%</code>, <code>%recipient%</code> and <code>%from%</code> will now automatically 
+        be inserted when writing a new email via the context menu 'Compose Message To'. 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/275">[issue 275]</a>
+      </li>
+      <li>
+        Force lowercase emails when looking up Cardbook contacts. Before, the lookup
+        of contacts could fail when replying to an email with mixed case address,
+        such as John.Doe@acmeDomain.com.
+
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/278">[issue 278]</a>
+      </li>
+      <li>
+        Support for extracting <code class="parameter">prefix</code> and <code class="parameter">suffix</code> 
+        from address book fields. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/267">[issue 267]</a>
+      </li>
+      <li>
+        Support for <code class="parameter">other.custom1</code>, <code class="parameter">other.custom2</code>
+        etc. from address book fields. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/246">[issue 246]</a>
+      </li>
+      <li>
+        Removed duplicate tooltip on active SmartTemplate fields. 
+      </li>
+      <li> 
+        Rewrote message action menus using extension APIs <a href="https://github.com/RealRaven2000/SmartTemplates/issues/253">[issue 253]</a>  
+      </li>
+
+
+      <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+      <li> 
+        Using <code>%recipient%</code> also works as expected when replying to own emails in a conversation 
+        and Thunderbird automatically changes the recipients.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/239">[issue 239]</a> 
+      </li>      
+
+      <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
+      <li>
+        Removed duplicate tooltip on active SmartTemplate fields. 
+      </li>
+      <li>
+        Removed FileUtils.getFile for future compatibility (122 beta)
+      </li>
+      <li>
+        Added documentation for <code class="inline">&#37;dateformat(fstring,toclipboard)&#37;</code> 
+        to the variables page in settings.
+      </li>
+      <li>
+        Opening support sites in a tab is now using API methods (requires tabs permission)
+      </li>
+    </ul>
+  </li> 
+
+  <a id="4.3"> &nbsp; </a>
+  <a id="4.3.1"> &nbsp; </a>
+  <a id="4.3.2"> &nbsp; </a>
+  <a id="4.3.3"> &nbsp; </a>
+  <li>
+    <h4>
+      <a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.3.2">
+        Version 4.3.3 - 08/11/2023</a>
+      <br>
+      <span class="appWrapper">
+        <span class="thunderbird">111.0 - 120.*</span>
+      </span>
+    </h4>
+
     
 
 
