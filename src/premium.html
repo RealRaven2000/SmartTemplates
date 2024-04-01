@@ -109,6 +109,13 @@ permalink: premium.html
   </tr>
 
   <tr>
+    <th><a href="#preheader">Preheader function</a><br>preview for mobile mail clients</th>
+    <td><span class="check negative">✘</span></td>
+    <td><span class="check negative">✘</span></td>
+    <td><span class="check">✔</span></td>
+  </tr>  
+
+  <tr>
     <th><a href="#dateManipulation">Date Formatting function</a> <code>%dateformat()%</code></th>
     <td><span class="check negative">✘</span> trial only</td>
     <td><span class="check">✔</span></td>
@@ -183,8 +190,6 @@ permalink: premium.html
     <td><span class="check negative">✘</span></td>
     <td><span class="check">✔</span></th>
   </tr>
-  
-  
   
   <tr>
     <th><a href="#dateManipulation">Date Calculation</a><br>Offsets for time / date</th>
@@ -570,6 +575,42 @@ permalink: premium.html
     You can also use <code>%sig(none)%</code> to suppress inserting any signatures.
   </p>
 </article>
+
+<!-- #### %preheader% #### -->
+<a name="preheader"> </a>
+<h3 class="helpchapter">Preview texts for mobile Email clients</h3>
+<article>
+  <p>
+    This feature was added in SmartTemplates Pro 4.4.
+  </p>
+  <p>
+    Added <code>%preheader()%</code> variable for injecting preview text for mobile email clients. 
+    See also <a href="https://github.com/RealRaven2000/SmartTemplates/issues/274">[issue 274]</a>
+  </p>
+  <p>
+    You can add a short text only sentence that describes the content of your email. 
+    If you need to add commas within the "text", you have to escape them with a preceding
+    backwards slash, like this:
+  </p>
+  <code class="inline">%preheader("I love vanilla ice cream\, but my brother prefers chocolate.")%</code>
+  <p>
+    You can also insert the contents of the clipboard within the text
+
+  </p>
+  <p>
+    Usage:
+    <pre class="code">
+%preheader("text content")%
+%preheader("text content",className)%
+%preheader("text content","inline rules")%
+%preheader("text content",className,"inline rules")%    
+%preheader("Some text - *clipboard*")%
+%preheader(clipboard)%
+  </pre>
+  </p>
+</article>
+
+
 
 
 
