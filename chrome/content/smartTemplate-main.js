@@ -317,7 +317,7 @@ END LICENSE BLOCK
     # [issue 272] SmartTemplates ignored when creating an email from the Thunderbird taskbar context menu
     #             or when clicking a mailto link on a website. This should load the template of the default account.
 
-  Version 4.4 - WIP
+  Version 4.4 - 29/03/2024
     # [issue 274] Add %preheader()% variable for injecting preview
     # [issue 275] Auto-Fill content for %to%, %recipient% and %from% when 
                   clicking Contact context menu "Compose Message To" or writing new mail
@@ -334,7 +334,15 @@ END LICENSE BLOCK
     # %replaceText% and %deleteText% now work on the body of the email when used from the Smart Fragments menu
     # Opening support sites in a tab is now using API method
     ---------
-    # [issue 253] WIP - recreate menus using API functions
+    # [issue 253] WIP - recreate menus using API functions - converted message action button menus
+
+
+  Version 4.5 - FUTURE VERSION / WIP
+    # [issue 253] recreate menus using API functions
+    # [issue ] 
+    # [issue ] 
+    # [issue ] 
+
 
 
 =========================

@@ -132,6 +132,7 @@ SmartTemplate4.Util = {
 		}
 	} ,	
 
+	// not (yet) used:
 	getControllerFromComposeType(composeType) {
 		const msgComposeType = Ci.nsIMsgCompType;
 		switch (composeType) {

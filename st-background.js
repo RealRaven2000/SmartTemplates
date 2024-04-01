@@ -112,7 +112,7 @@ class MenuRestrictions {
     this.MAX_STANDARD_CATEGORIES = 3;
   }
   async initPrefs() {
-    this.MAX_MRU_CEILING = await messenger.LegacyPrefs.getPref("fileTemplates.mru.max");
+    this.MAX_MRU_CEILING = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.fileTemplates.mru.max");
   }
 
   get countMenuItems() {
@@ -786,12 +786,7 @@ async function updateMruMenu(Context) {
     if (i>menuRestrict.MAX_MRU_CEILING) {
       break;
     }    
-    let theTemplate = templates[i], // 
-        isDisabled = (i>=menuRestrict.maxTemplates);
-
-    if (isDisabled) {
-      menuHasRestrictions = true;
-    }
+    let theTemplate = templates[i];
 
     // get identifier for localization / label
     let actionId = MenuHelper.getActionId(MenuHelper.getCmd(theTemplate));
@@ -802,7 +797,6 @@ async function updateMruMenu(Context) {
     let title = `${accelKeyString}${action}: ${theTemplate.label}`;
     let item ={
       contexts: [Context],
-      enabled: !isDisabled,
       // icons: ...,
       title: title,
       id: `mru-${accelerator}`, 
