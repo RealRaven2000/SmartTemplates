@@ -9,7 +9,8 @@ var sales_end = new Date("2024-04-20");
 var removableItems = [
 	"smartTemplateProUser",
 	"smartTemplateFreeUser",
-	"smartTemplateProRenew"
+	"smartTemplateProRenew",
+	"salesNotes"
 ];
 var removedItems = [];
 
