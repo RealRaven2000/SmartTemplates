@@ -336,6 +336,11 @@ END LICENSE BLOCK
     ---------
     # [issue 253] WIP - recreate menus using API functions - converted message action button menus
 
+  Version 4.4.1 - 01/04/2024
+    #  [issue 283] Fixed regression caused by changes in [issue 253]
+
+  Version 4.4.2 - 10/04/2024
+    # New sale date pushed to 20th April
 
   Version 4.5 - FUTURE VERSION / WIP
     # [issue 253] recreate menus using API functions

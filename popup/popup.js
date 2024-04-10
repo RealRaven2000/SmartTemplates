@@ -64,6 +64,7 @@ function showSalesItems(isSale, licenseInfo) {
     if (isSale && isStandardUser) {
       showSelectorItems('.standardUpgradeSale');
       hide('offerStandardUpgrade');
+      showSpecialOfferItem(); // remove newsHeader and detail
     }
   }
     
