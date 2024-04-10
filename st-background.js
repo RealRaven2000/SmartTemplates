@@ -728,7 +728,6 @@ async function createHeaderMenu() {
 
 }
 
-
 //
 async function updateMruMenu(Context) {
    // default is 10 but can be raised in Pro
@@ -879,6 +878,58 @@ async function updateMruMenu(Context) {
   
 }
 
+async function updateSubMenus(messages, tab) {
+  if (messages.length!=1) {
+    return; // button not displayed, so we do not change anything.
+  }
+
+  let isReplyList = true;
+  let isReplyAll = true;
+  let isForward = true;
+  let gotReply;
+
+  // Ask the experimental code for now!
+  try {
+    // this calls the experiement code but returns nothing?
+    let results = await messenger.Utilities.getCommandsEnabled(
+      ["cmd_replylist", "cmd_replyall", "cmd_forward"],
+      tab.id
+    );
+
+    isReplyList = results[0];
+    isReplyAll = results[1];
+    isForward =  results[2];
+    gotReply = true;
+  } catch (ex) {
+    console.log(ex);
+  }
+
+  // fallback code...
+  if (!gotReply) {
+    let accounts = await messenger.accounts.list(false)
+    let msg = messages[0];
+    if (msg.recipients > 1) {
+      isReplyAll = true;
+    }
+    // if I am the sender (sender in my identities) and there is only a single recipient, we do not need replyall.
+    for (let ac of accounts) {
+      if (ac?.identities.length) {
+        if (msg.author.includes(ac.identities[0].email) || msg.recipients[0].includes(ac.identities[0].email)) {
+          // do I need to check ccList and bccList? What are the rules?
+          if (msg.recipients.length == 1) {
+            isReplyAll = false;
+            isReplyList = false;
+          }
+          break;
+        }
+      }
+    }    
+  }
+
+  await messenger.menus.update("smartTemplates-reply-list-menu", {visible: isReplyList}); 
+  await messenger.menus.update("smartTemplates-reply-all-menu", {visible: isReplyAll}); 
+  await messenger.menus.update("smartTemplates-forward-menu", {visible: isForward}); 
+}
  
 
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
@@ -1183,6 +1234,8 @@ async function main() {
         
 
       case "cardbook.getContactsFromMail":
+      {
+        let cards;
         try {
           let queryObject = {
             query: "smartTemplates.getContactsFromMail", 
@@ -1192,15 +1245,17 @@ async function main() {
             queryObject.dirPrefId = data.preferredDirId;
           }
 
-          let cards = await messenger.runtime.sendMessage( CARDBOOK_APPNAME, queryObject ).catch(
+          cards = await messenger.runtime.sendMessage( CARDBOOK_APPNAME, queryObject ).catch(
             (x) => { logReceptionError(x); cards=null; }
           );
           return cards;
         }
         catch(ex) {
           console.exception(ex);
+          console.log({cards});
           return null;
         }
+      }
         
       case "openPrefs":
         {
@@ -1266,10 +1321,8 @@ async function main() {
         );
         break;      
     }
-  }
+  }); 
 
-  
-  ); 
 
   // content smarttemplate4-locales locale/
   // we still need this for explicitely setting locale for Calender localization!
@@ -1337,7 +1390,6 @@ async function main() {
 
   messenger.WindowListener.startListening();
   
-  let browserInfo = await messenger.runtime.getBrowserInfo();
   // [issue 209] Exchange account validation
   messenger.accounts.onCreated.addListener( async(id, account) => {
     if (currentLicense.info.status == "MailNotConfigured") {
@@ -1350,21 +1402,32 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
       }
       if (isDebugLicenser) console.log("SmartTemplates license info:", currentLicense.info); // test
-    }
-    else {
+    } else {
       if (isDebugLicenser) console.log("SmartTemplates license state after adding account:", currentLicense.info)
     }
   });
 
+  
+
+  messenger.messageDisplay.onMessageDisplayed.addListener(async (tab, message) => {
+    let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+    if (isDebug) {
+      console.log(`Message displayed in tab ${tab.id}: ${message.subject}`);
+    }
+    await updateSubMenus([message], tab);
+  });
+  
+
   /// message selection listener
   browser.mailTabs.onSelectedMessagesChanged.addListener(
-    (tab, selectedMessages) => {
+    async (tab, selectedMessages) => {
       // selectedMessages = list - see messages member. add logic to decide whether to show:
       // replyAll
       // replyList
       // redirect
 
       /* only 1 message may be selected */
+      await updateSubMenus(selectedMessages.messages, tab);
 
     }
   )

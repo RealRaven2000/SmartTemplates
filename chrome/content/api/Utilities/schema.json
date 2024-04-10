@@ -44,6 +44,27 @@
         "type": "function",
         "async": true,
         "parameters": []
+      },
+
+      {
+        "name": "getCommandsEnabled",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name" : "commands",
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            },
+            "description" : "array of commands"
+          },
+          {
+            "name" : "tabId",
+            "type" : "integer",
+            "description" : "Tab Identifier"
+          }
+        ]
       }
 
    ]

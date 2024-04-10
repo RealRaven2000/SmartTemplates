@@ -53,6 +53,32 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         showXhtmlPage: function(uri) {
           let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");  
           mail3PaneWindow.openDialog(uri).focus();
+        },
+
+        getCommandsEnabled: async function(commands, tabId) {
+          // Get a real tab from a tab ID:
+          let tabObject = context.extension.tabManager.get(tabId);
+          // let realTab = tabObject.nativeTab;
+          let realTabWindow = tabObject.window;
+
+          let results = [];
+          if (realTabWindow.DefaultController.isCommandEnabled) {
+            for (let cmd of commands) {
+              let ctrl = realTabWindow.getEnabledControllerForCommand(cmd);
+              if (!ctrl) {
+                results.push(false);
+                continue;
+              }
+              results.push(ctrl.isCommandEnabled(cmd));
+            }
+          } else {
+            for (let cmd of commands) {
+              results.push(true); // default to true in case this fails
+            }      
+          }
+
+          return results;
+
         }
   
         // get may only return something, if a value is set
