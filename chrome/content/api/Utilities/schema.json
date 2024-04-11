@@ -65,6 +65,24 @@
             "description" : "Tab Identifier"
           }
         ]
+      },
+
+      {
+        "name" : "beforeSend",
+        "type" : "function",
+        "async": true,
+        "parameters": [
+          {
+            "name" : "tabId",
+            "type" : "integer",
+            "description" : "Tab Identifier"
+          },
+          {
+            "name": "composeDetails",
+            "type": "any",
+            "description": "compose details from message that is about to be sent"
+          }
+        ]
       }
 
    ]

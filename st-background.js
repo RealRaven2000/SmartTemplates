@@ -1407,6 +1407,34 @@ async function main() {
     }
   });
 
+  // [issue 284] resolve all variables automatically before send
+  messenger.compose.onBeforeSend.addListener (
+    async(tab, details) => {
+      let retVal = null;
+      let isDebug
+      try {
+        retVal = await messenger.Utilities.beforeSend(tab.id, details);
+        
+        /* OLD METHOD
+        await messenger.NotifyTools.notifyExperiment({
+          event: "beforeSend",
+          detail: {
+            tab: tab,
+            composeDetails: details
+          }
+        });
+        */
+      } catch(ex) {
+        console.log(ex);
+      } finally {
+        isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+        if (isDebug) {
+          console.log("after messenger.Utilities.beforeSend()", {returnValue: retVal, composeDetail: details, tab});
+        }
+        return retVal;
+      }
+    }
+  );
   
 
   messenger.messageDisplay.onMessageDisplayed.addListener(async (tab, message) => {

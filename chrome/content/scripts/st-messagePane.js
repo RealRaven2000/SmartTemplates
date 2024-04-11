@@ -67,39 +67,6 @@ async function onLoad(activatedWhileWindowOpen) {
       WAIT_FOR_3PANE
     );
   }
-
-  const messagePaneWindow = window;
-  // listener for notifications from background
-  reactNotification = (data) => {
-    if (data.event) {
-      if (!data.hasOwnProperty("window")) {
-        let loc;
-        try {
-          loc = messagePaneWindow.document.location ? messagePaneWindow.document.location.href.toString() : messagePaneWindow.document.URL;
-        } catch (ex) {
-          loc = "N/A";
-        }
-        messagePaneWindow.SmartTemplate4.Util.logDebugOptional("notifications", 
-        `reactNotification - event ${data.event}\n` +
-        `in ${loc}`);
-        switch(data.event) {
-          case "patchHeaderMenu":
-          case "updateTemplateMenus":
-            patchHeaderMenu(messagePaneWindow); // closure for about:message
-            break;
-        }
-      }       
-    }      
-  }
-
-  // closure both window and this WL!
-  patchHeaderMenu = async (win = window) => {
-    win.SmartTemplate4_WLM = WL;
-    if (win.SmartTemplate4.patchHeaderPane.bind(win.SmartTemplate4)) {
-      await win.SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
-    }
-  } 
-  window.SmartTemplate4.Util.notifyTools.registerListener(reactNotification);
   */
 
 }

@@ -79,6 +79,13 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
           return results;
 
+        },
+
+        beforeSend: async function(tabId, composeDetails) { // [issue 284] tidy up all fields when user hits [Send] button
+          let tabObject = context.extension.tabManager.get(tabId);
+          let realTabWindow = tabObject.window;
+          let rv = await realTabWindow.SmartTemplate4.composer.beforeSend(composeDetails);
+          return rv;
         }
   
         // get may only return something, if a value is set

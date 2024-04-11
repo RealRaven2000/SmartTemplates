@@ -336,11 +336,20 @@ END LICENSE BLOCK
     ---------
     # [issue 253] WIP - recreate menus using API functions - converted message action button menus
 
+
   Version 4.4.1 - 01/04/2024
-    #  [issue 283] Fixed regression caused by changes in [issue 253]
+    # [issue 283] Fixed regression caused by API menu changes (only 1 MRU item)
 
   Version 4.4.2 - 10/04/2024
-    # New sale date pushed to 20th April
+    # extended sale to April 20th (previous version was not reviewed in time)
+
+  Version 4.4.3 - WIP
+    # [issue 284] When sending email with unresolved from / recipient / to variables are not replaced automatically
+    # [issue 286] Update MRU menu items with changed titles from template setup (if found)
+    # [issue 285] Remove notification "load_template" is a Premium feature
+    # Some layout fixes for notifications
+
+    
 
   Version 4.5 - FUTURE VERSION / WIP
     # [issue 253] recreate menus using API functions
@@ -768,7 +777,7 @@ var SmartTemplate4 = {
       if (!isTemplateProcessed) {
         if (isBodyModified && composeType=="new") {
           // when Thunderbird changes identity, we cannot keep our JavaScript stuff / late resolved variables around.
-          util.cleanupDeferredFields(true); // remove the fields even if they can't be resolved!
+          await util.cleanupDeferredFields(true); // remove the fields even if they can't be resolved!
         }
         // this.original_LoadIdentity(startup);
         // try replacing the (unprocessed) signature that Thunderbird has inserted.

@@ -124,9 +124,11 @@ async function onLoad(activatedWhileWindowOpen) {
   
   mylisteners["updateTemplateMenus"] = window.SmartTemplate4.composer.initTemplateMenu.bind(window.SmartTemplate4.composer);
   mylisteners["updateSnippetMenus"] = window.SmartTemplate4.composer.initSnippetMenu.bind(window.SmartTemplate4.composer);
+
   for (let m in mylisteners) {
     window.addEventListener(`SmartTemplates.BackgroundUpdate.${m}` , mylisteners[m]); 
   }  
+  
 
 
 }

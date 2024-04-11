@@ -13,7 +13,7 @@ SmartTemplate4.composer = {
     
     // NOTE: tried to remove this and replace with 
     //       WL.injectCSS("chrome://SmartTemplate4/content/skin/compose-overlay.css");
-    //       in st-copmposer.js
+    //       in st-composer.js
     //       BUT IT DIDN'T WORK
     // **********>>
     
@@ -32,14 +32,17 @@ SmartTemplate4.composer = {
     }
     
     // <<**********
+
     
-    // thanks to Joerg K. for pointing this one out:
+    
+    /* legacy compose send listener
     window.document.getElementById("msgcomposeWindow").addEventListener("compose-send-message", 
-      function (e) { 
+      async (e) => { 
         util.logHighlightDebug("Event: compose-send-message","lightpink","#8e0477a4");
-        util.composerSendMessage(e); // pass on event in case we need it.
+        return await util.composerSendMessage(e); // pass on event in case we need it.
       }
     );
+    */
     
     let toolbarId = "composeToolbar2";
     
@@ -159,7 +162,38 @@ SmartTemplate4.composer = {
         entries = fT.Entries.snippets;
     fT.configureMenu(entries, snippetPopup, compCase, true); // build appropriate menu, PlUS the configuration option.
   } , 
-  
+
+  // [issue 284] event before sending the email - resolve all variables
+  beforeSend: async function(composeDetails) {
+    SmartTemplate4.Util.logDebug(`Compose Window ${composeDetails.subject} calls cleanup routine:`);
+    let legacyComposeDetails = GetComposeDetails();
+    if (legacyComposeDetails.subject != composeDetails.subject) {
+      SmartTemplate4.Util.logDebug("Subject changed? " + legacyComposeDetails.subject);
+    }
+
+    return await SmartTemplate4.Util.cleanupDeferredFields(true);      
+
+    // old code:
+    const OTHER_COMPOSER_DELAY = 500;
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    SmartTemplate4.Util.logDebug("SmartTemplates.beforeSend", eventDetail);
+    if (eventDetail.composeDetails) {
+      let legacyComposeDetails = GetComposeDetails();
+      if (legacyComposeDetails.subject != eventDetail.composeDetails.subject) {
+        // we are in the wrong composer window, let's not return yet.
+        SmartTemplate4.Util.logDebug(`Compose Window ${legacyComposeDetails.subject} not affected. Waiting...`);
+        await sleep(OTHER_COMPOSER_DELAY);
+        SmartTemplate4.Util.logDebug(`Compose Window ${legacyComposeDetails.subject} returns...`);
+        return false;
+      }
+    }
+    SmartTemplate4.Util.logDebug(`Compose Window ${eventDetail.composeDetails.subject} calls cleanup routine:`);
+    return await SmartTemplate4.Util.cleanupDeferredFields(true);
+  },
   
   selectTemplateFromMenu : function selectTemplateFromMenu(element) {
     const util = SmartTemplate4.Util;
