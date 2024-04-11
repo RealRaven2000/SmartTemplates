@@ -69,12 +69,12 @@ SmartTemplate4.Util = {
     } 
     SmartTemplate4.Util.logDebugOptional("notifications","Util.init() STARTS... in window " + window.location)
     SmartTemplate4.Util.notifyTools.registerListener(onBackgroundUpdates);
+    SmartTemplate4.Util.logDebugOptional("notifications","After notifyTools.registerListener.");
     
     // SmartTemplate4.composer.onLoad happens here!!!! (too early!!!)
     // can we register the Listener later? 
     // Or do we need it to call the following notifyBackground functions?
     
-    SmartTemplate4.Util.logDebugOptional("notifications","After notifyTools.registerListener.");
     SmartTemplate4.Util.licenseInfo = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "getLicenseInfo" });
     SmartTemplate4.Util.logDebugOptional("notifications","After notifyTools.getLicenseInfo", SmartTemplate4.Util.licenseInfo);
     SmartTemplate4.Util.platformInfo = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "getPlatformInfo" });
@@ -461,7 +461,7 @@ SmartTemplate4.Util = {
 	// was popupProFeature, now renamed to popupLicenseNotification
 	// isProFeature = true - show notification based on function used
 	//              = false - show fact that a license is needed.
-	popupLicenseNotification: function popupLicenseNotification(featureList, isRegister, isProFeature, additionalText) {
+	popupLicenseNotification: function (featureList, isRegister, isProFeature, additionalText) {
 		const util = SmartTemplate4.Util;
 		let notifyBox,
 				featureName = '',
@@ -992,7 +992,7 @@ SmartTemplate4.Util = {
 		    sPrompt = util.getBundleString("st.confirmVersionLink")+" [version {1}]";
 		sPrompt = sPrompt.replace("{1}", version);
 		if (!ask || confirm(sPrompt)) {
-			util.openURL(null, util.VersionPage + "#" + version);
+			util.openURL(util.VersionPage + "#" + version);
 			return true;
 		}
 		return false;
@@ -1514,7 +1514,9 @@ SmartTemplate4.Util = {
 	} ,
 	
 	// should be called when email is sent
-	composerSendMessage : function (evt) {
+	// [issue 284] - this is not called anymore we call cleanupDeferredFields() directly from 
+	//               experiment API via SmartTemplate4.composer.beforeSend()
+	composerSendMessage : async function (evt) {
 		const Ci = Components.interfaces,
 		      msgComposeType = Ci.nsIMsgCompType,
 					nsIMsgCompDeliverMode = Ci.nsIMsgCompDeliverMode;
@@ -1536,7 +1538,7 @@ SmartTemplate4.Util = {
 				case msgComposeType.ForwardAsAttachment:
 				case msgComposeType.ForwardInline:
 					// problem: this is now async! 
-					SmartTemplate4.Util.cleanupDeferredFields();
+					await SmartTemplate4.Util.cleanupDeferredFields();
 					break;
 				default:
 					return;
@@ -1547,7 +1549,7 @@ SmartTemplate4.Util = {
   
 	
 	
-	cleanupDeferredFields : async function cleanupDeferredFields(forceDelete) {
+	cleanupDeferredFields : async function(forceDelete) {
 		const util = SmartTemplate4.Util,
 					editor = gMsgCompose.editor;
           
@@ -1558,33 +1560,41 @@ SmartTemplate4.Util = {
       return isQuotedNode(node.parentNode); //  if node is child of a quoted parent, it is also considered to be quoted.
     };
           
-		let body = editor.rootElement,
-				treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT),
-				nodeList = [];
-        
+		try {
+			let body = editor.rootElement,
+			treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT),
+			nodeList = [];
 
-		util.logDebug('cleanupDeferredFields()');
-		while(treeWalker.nextNode()) {
-			let node = treeWalker.currentNode;
-      // omit all quoted material.
-      if (isQuotedNode(node)) continue;
-			if (node.tagName && node.tagName.toLowerCase()=='smarttemplate') {
-        // update content of late deferred variables and add to nodeList for deletion
-				await util.resolveDeferred(editor, node, true, nodeList); 
+			util.logDebug('cleanupDeferredFields()');
+			while(treeWalker.nextNode()) {
+				let node = treeWalker.currentNode;
+				// omit all quoted material.
+				if (isQuotedNode(node)) continue;
+				if (node.tagName && node.tagName.toLowerCase()=='smarttemplate') {
+					// update content of late deferred variables and add to nodeList for deletion
+					await util.resolveDeferred(editor, node, true, nodeList); 
+				}
+			}	
+
+			// replace all divs (working backwards.)
+			while (nodeList.length) {
+				let nL = nodeList.pop();
+				if (nL.resolved) {
+					nL.divNode.parentNode.insertBefore(nL.txtNode, nL.divNode);
+				}
+				// tidy up unresolved variables, if forced!
+				if (nL.resolved || forceDelete) {
+					editor.deleteNode(nL.divNode);
+				}
 			}
-		}	
-		
-		// replace all divs (working backwards.)
-		while (nodeList.length) {
-			let nL = nodeList.pop();
-      if (nL.resolved) {
-        nL.divNode.parentNode.insertBefore(nL.txtNode, nL.divNode);
-      }
-      // tidy up unresolved variables, if forced!
-      if (nL.resolved || forceDelete) {
-        editor.deleteNode(nL.divNode);
-			}
+			return true;			
+
 		}
+		catch(ex) {
+			util.logException("cleanupDeferredFields() failed", ex);
+			return false;
+		}
+
 	} ,
 	
 	resolveDeferred: async function (editor, el, isReplaceField, nodeList) {
@@ -1642,6 +1652,7 @@ SmartTemplate4.Util = {
 						}
 						
 						if (addressValue) {
+							// split seems to trigger a permature "send!"
 							let token = await SmartTemplate4.mimeDecoder.split(addressValue, charset, argList[2], true);
 							// if nothing is returned by mime decoder (e.g. empty name) we do not resolve the variable
 							if (token || isReplaceField) {
@@ -3086,7 +3097,7 @@ SmartTemplate4.Util.firstRun =
 				// on very first run, we go to the index page - welcome blablabla
 				util.logDebugOptional ("firstRun","setTimeout for content tab (index.html)");
 				window.setTimeout(function() {
-					util.openURL(null, "https://smarttemplates.quickfolders.org/index.html");
+					util.openURL("https://smarttemplates.quickfolders.org/index.html");
 				}, 1500); //Firefox 2 fix - or else tab will get closed (leave it in....)
 			}
 			else {
