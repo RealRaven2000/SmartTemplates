@@ -837,8 +837,6 @@ async function updateMruMenu(Context) {
           title = `${messenger.i18n.getMessage(menu.label)}: ${template.label}`;
 
       let itemProps = {
-        contexts: [Context],
-        parentId: menus.id, 
         title: title,
         onclick: (e) => {
           // html template
@@ -1414,16 +1412,6 @@ async function main() {
       let isDebug
       try {
         retVal = await messenger.Utilities.beforeSend(tab.id, details);
-        
-        /* OLD METHOD
-        await messenger.NotifyTools.notifyExperiment({
-          event: "beforeSend",
-          detail: {
-            tab: tab,
-            composeDetails: details
-          }
-        });
-        */
       } catch(ex) {
         console.log(ex);
       } finally {
