@@ -33,7 +33,7 @@ SmartTemplate4.composer = {
     
     // <<**********
 
-    
+
     
     /* legacy compose send listener
     window.document.getElementById("msgcomposeWindow").addEventListener("compose-send-message", 
@@ -171,27 +171,6 @@ SmartTemplate4.composer = {
       SmartTemplate4.Util.logDebug("Subject changed? " + legacyComposeDetails.subject);
     }
 
-    return await SmartTemplate4.Util.cleanupDeferredFields(true);      
-
-    // old code:
-    const OTHER_COMPOSER_DELAY = 500;
-
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    SmartTemplate4.Util.logDebug("SmartTemplates.beforeSend", eventDetail);
-    if (eventDetail.composeDetails) {
-      let legacyComposeDetails = GetComposeDetails();
-      if (legacyComposeDetails.subject != eventDetail.composeDetails.subject) {
-        // we are in the wrong composer window, let's not return yet.
-        SmartTemplate4.Util.logDebug(`Compose Window ${legacyComposeDetails.subject} not affected. Waiting...`);
-        await sleep(OTHER_COMPOSER_DELAY);
-        SmartTemplate4.Util.logDebug(`Compose Window ${legacyComposeDetails.subject} returns...`);
-        return false;
-      }
-    }
-    SmartTemplate4.Util.logDebug(`Compose Window ${eventDetail.composeDetails.subject} calls cleanup routine:`);
     return await SmartTemplate4.Util.cleanupDeferredFields(true);
   },
   
