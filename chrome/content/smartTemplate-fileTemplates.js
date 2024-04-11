@@ -1310,8 +1310,10 @@ SmartTemplate4.fileTemplates = {
     
     if (el) {
       let idx = SmartTemplate4.fileTemplates.MRU_Entries.indexOf(el);
-      if (idx==0) {
-        // no change necessary it was already here last time
+
+      if (idx>=0 && entry.label) {
+        // update label (according to menu) [issue 286]
+        SmartTemplate4.fileTemplates.MRU_Entries[idx].label = entry.label;
       }
       if (idx>0) {
         let items = SmartTemplate4.fileTemplates.MRU_Entries.splice(idx,1);
