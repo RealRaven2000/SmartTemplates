@@ -93,7 +93,7 @@
 
 #btnStdLicense, #btnLicense, #btnDomainLicense {
 	appearance: none;
-	background-color: rgb(7, 97, 48) !important;
+	background-color: rgb(67, 101, 0) !important;
 	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
   color: white !important;
 	border: 1px solid #fff;
