@@ -1422,7 +1422,8 @@ SmartTemplate4.Settings = {
           util = SmartTemplate4.Util,
 					prefs = SmartTemplate4.Preferences,
 					NSIFILE = Ci.nsIFile || Ci.nsILocalFile;
-		util.popupLicenseNotification(mode + "_template", true, true); // save_template, load_template
+		// [issue 285]
+		// util.popupLicenseNotification(mode + "_template", true, true); // save_template, load_template
 					
     let filterText; //localized text for filePicker filter menu
     
