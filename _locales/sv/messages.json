@@ -1848,8 +1848,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Ny {{%preheader()%}}-funktion för att lägga till förhandsvisningstext för mobila e-postprogram.{L2}{L1} Adressdata för {{%to%}}, {{%recipient%}} och {{%from%}} kommer nu automatiskt att infogas när du skriver ett nytt e-postmeddelande via kontextmenyn 'Skriv meddelande till'. [issue 275]{L2} {L1} Användningen av {{%recipient%}} fungerar nu också som förväntat när du svarar på egna e-postmeddelanden i en konversation och Thunderbird automatiskt ändrar mottagare. [issue 239]{L2} {L1} E-postadresser konverteras till gemener vid sökning efter kontakter i Cardbook. [issue 278]{L2} {L1} SmartTemplates kan nu extrahera {{prefix}} och {{suffix}} från adressboksfält. [issue 267]{L2} {L1} SmartTemplates stödjer också extraktion av {{other.custom1}}, {{other.custom2}} etc. från adressboksfält. [issue 246]{L2} {L1} Dubbel tooltip på aktiva SmartTemplate-fält har tagits bort. {L2}{L1} Meddelandeåtgärds-menyn har återimplementerats med hjälp av webb-tilläggs-API [issue 253]{L2}"
-  }, 
+    "message": "{S1}Underhållslösningar i 4.4.3{S2}{L1} När du skickar e-postmeddelanden med olösta variabler ersätts dessa nu automatiskt på ett tillförlitligt sätt. [issue 284]{L2} {L1} Förbättringar av nyligen använda mallposter i menyer.{L2} {S1}Huvudändringar i 4.4{S2} {L1} Ny funktion {{%preheader()%}} för att lägga till förhandsvisningstext för mobila e-postprogram.{L2}{L1} Adressuppgifter för {{%to%}}, {{%recipient%}} och {{%from%}} kommer nu automatiskt att infogas när du skriver ett nytt e-postmeddelande via snabbmenyn 'Skriv Meddelande Till'. [issue 275]{L2} {L1} Användning av {{%recipient%}} fungerar nu också som förväntat när du svarar på egna e-postmeddelanden i en konversation och Thunderbird ändrar automatiskt mottagare. [issue 239]{L2} "
+  },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
   },

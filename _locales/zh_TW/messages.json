@@ -1827,7 +1827,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 新增 {{%preheader()%}} 功能，以為行動郵件程式添加預覽文字。{L2}{L1} 在透過上下文功能表「撰寫訊息」撰寫新郵件時，現在會自動插入{{%to%}}、{{%recipient%}}和{{%from%}}的地址資料。[issue 275]{L2} {L1} 在回覆自己對話中的郵件且 Thunderbird 自動更改收件者時，使用 {{%recipient%}} 也會按預期運作。[issue 239]{L2} {L1} 搜尋 Cardbook 聯絡人時，電子郵件地址會轉換為小寫。[issue 278]{L2} {L1} SmartTemplates 現在可以從通訊錄欄位中提取 {{prefix}} 和 {{suffix}}。[issue 267]{L2} {L1} SmartTemplates 也支援從通訊錄欄位中提取 {{other.custom1}}、{{other.custom2}} 等。[issue 246]{L2} {L1} 移除了活動 SmartTemplate 欄位上的重複工具提示。{L2}{L1} 使用 Web 擴展 API 重新實作了訊息操作選單 [issue 253]{L2}"
+    "message": "{S1}4.4.3 版本維護修復{S2}{L1} 在發送包含未解析變量的電子郵件時，現在可以可靠地自動替換這些變量。[問題 284]{L2} {L1} 改進了菜單中最近使用的模板條目。{L2} {S1}4.4 版本的主要更改{S2} {L1} 新的 {{%preheader()%}} 函數，用於向移動郵件程序添加預覽文本。{L2}{L1} 當通過上下文菜單 '撰寫消息至' 寫新電子郵件時，{{%to%}}、{{%recipient%}} 和 {{%from%}} 的地址數據現在將自動插入。[問題 275]{L2} {L1} 當在對話中回覆自己的郵件並且 Thunderbird 自動更改收件人時，現在使用 {{%recipient%}} 也能正常工作。[問題 239]{L2} "
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

@@ -1743,8 +1743,9 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Nova funkcija {{%preheader()%}} za dodajanje predoglednega besedila za mobilne poštne programe.{L2}{L1} Podatki o naslovu za {{%to%}}, {{%recipient%}} in {{%from%}} se bodo avtomatično vstavili pri pisanju novega e-poštnega sporočila prek kontekstnega menija 'Napiši sporočilo'. [issue 275]{L2} {L1} Uporaba {{%recipient%}} deluje tudi kot pričakovano pri odgovarjanju na lastna e-poštna sporočila v pogovoru in Thunderbird samodejno spreminja prejemnike. [issue 239]{L2} {L1} E-poštne naslove pretvori v male črke pri iskanju stikov v kartoteki Cardbook. [issue 278]{L2} {L1} SmartTemplates lahko sedaj izvlečejo {{prefix}} in {{suffix}} iz polj v adresarju. [issue 267]{L2} {L1} SmartTemplates podpirajo tudi izvlečenje {{other.custom1}}, {{other.custom2}} itd. iz polj v adresarju. [issue 246]{L2} {L1} Odstranjena je bila podvojena orodna vrstica na aktivnih poljih SmartTemplate. {L2}{L1} Meni dejanj sporočila je bil ponovno implementiran z uporabo vmesnika API za razširitve spletnega brskalnika [issue 253]{L2}"
-  }, 
+    "message": "{S1}Одржавање исправки у 4.4.3{S2}{L1} При слању е-поште са неразрешеним променљивима, ове су сада пуздано аутоматски замењене. [issue 284]{L2} {L1} Унапређења недавно коришћених шаблона у менијима.{L2} {S1}Главне измене у 4.4{S2} {L1} Нова функција {{%preheader()%}} за додавање текста предвидљивог прегледа за мобилне поштанске програме.{L2}{L1} Подаци о адреси за {{%to%}}, {{%recipient%}} и {{%from%}} сада ће аутоматски бити уметнути при писању нове е-поште путем контекстног менија 'Састави Поруку За'. [issue 275]{L2} {L1} Употреба {{%recipient%}} сада такође ради као што је очекивано при одговарању на своја е-поштанска поруке у разговору и Thunderbird аутоматски мења примаоце. [issue 239]{L2} "
+  },
+
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
   },

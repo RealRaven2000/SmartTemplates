@@ -1842,9 +1842,9 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Nouvelle fonction {{%preheader()%}} pour ajouter du texte de prévisualisation pour les programmes de messagerie mobile.{L2}{L1} Les données d'adresse pour {{%to%}}, {{%recipient%}} et {{%from%}} seront désormais automatiquement insérées lors de la rédaction d'un nouvel e-mail via le menu contextuel 'Composer un message à'. [issue 275]{L2} {L1} L'utilisation de {{%recipient%}} fonctionne également désormais comme prévu lorsque vous répondez à vos propres e-mails dans une conversation et Thunderbird change automatiquement les destinataires. [issue 239]{L2} {L1} Les adresses e-mail sont converties en minuscules lors de la recherche de contacts dans Cardbook. [issue 278]{L2} {L1} SmartTemplates peut désormais extraire {{prefix}} et {{suffix}} des champs du carnet d'adresses. [issue 267]{L2} {L1} SmartTemplates prend également en charge l'extraction de {{other.custom1}}, {{other.custom2}} etc. à partir des champs du carnet d'adresses. [issue 246]{L2} {L1} Suppression de l'info-bulle dupliquée sur les champs SmartTemplate actifs. {L2}{L1} Réimplémentation du menu d'actions des messages en utilisant l'API d'extension web [issue 253]{L2}"
-  }, 
-  "whitespace_note": {
+    "message": "{S1}Corrections de maintenance dans 4.4.3{S2}{L1} Lors de l'envoi d'e-mails avec des variables non résolues, celles-ci sont désormais automatiquement remplacées de manière fiable. [issue 284]{L2} {L1} Améliorations des entrées de modèles récemment utilisées dans les menus.{L2} {S1}Principaux changements dans 4.4{S2} {L1} Nouvelle fonction {{%preheader()%}} pour ajouter du texte d'aperçu pour les programmes de messagerie mobiles.{L2}{L1} Les données d'adresse pour {{%to%}}, {{%recipient%}} et {{%from%}} seront désormais automatiquement insérées lors de l'écriture d'un nouvel e-mail via le menu contextuel 'Composer un message à'. [issue 275]{L2} {L1} L'utilisation de {{%recipient%}} fonctionne également désormais comme prévu lors de la réponse à ses propres e-mails dans une conversation et Thunderbird change automatiquement les destinataires. [issue 239]{L2} "
+  },
+   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
   },
   "window-title": {
