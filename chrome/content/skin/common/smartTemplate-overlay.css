@@ -74,11 +74,9 @@
 }
 
 
-/* replace notification tag for Tb 64 and later to also match xbl-notification */
-notification[value="SmartTemplate4-license"] .notification-button[accesskey],
-xbl-notification[value="SmartTemplate4-license"] .notification-button[accesskey],
-notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey],
-xbl-notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey] {
+/* replace notification Tb 115 */
+notification-message[value="SmartTemplate4-license"] .notification-button[accesskey],
+notification-message[value="SmartTemplate4-proFeature"] .notification-button[accesskey]{
 	-moz-appearance: none;
 	background-color: rgb(7, 97, 48) !important;
 	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
@@ -95,17 +93,13 @@ xbl-notification[value="SmartTemplate4-proFeature"] .notification-button[accessk
 }
 
 /* moved animation to windows specific style sheet */
-
-notification[value="SmartTemplate4-license"] .notification-button[accesskey]:hover,
-xbl-notification[value="SmartTemplate4-license"] .notification-button[accesskey]:hover,
-notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey]:hover,
-xbl-notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey]:hover {
+notification-message[value="SmartTemplate4-license"] .notification-button[accesskey]:hover,
+notification-message[value="SmartTemplate4-proFeature"] .notification-button[accesskey]:hover {
 	background: -moz-linear-gradient(top, #dbe42e 0%,#a8cc16 50%,#8fba00 51%,#b6d917 100%)  !important;
 }
 
 
-notification[value="SmartTemplate4-license"] image.messageImage,
-xbl-notification[value="SmartTemplate4-license"] image.messageImage {
+notification-message[value="SmartTemplate4-license"] image.messageImage {
 	min-width: 107px !important;
 	width: 107px !important;
 	min-height: 36px !important;
@@ -113,8 +107,7 @@ xbl-notification[value="SmartTemplate4-license"] image.messageImage {
 	background-image: none !important; /* remove attachment icon in composer */
 }
 
-notification[value="SmartTemplate4-proFeature"] image.messageImage,
-xbl-notification[value="SmartTemplate4-proFeature"] image.messageImage {
+notification-message[value="SmartTemplate4-proFeature"] image.messageImage {
 	min-width: 72px !important;
 	width: 72px !important;
 	min-height: 36px !important;
@@ -122,48 +115,35 @@ xbl-notification[value="SmartTemplate4-proFeature"] image.messageImage {
 	background-image: none !important; /* remove attachment icon in composer */
 }
 
-notification[value="SmartTemplate4-license"] .messageCloseButton,
-xbl-notification[value="SmartTemplate4-license"] .messageCloseButton,
-notification[value="SmartTemplate4-proFeature"] .messageCloseButton,
-xbl-notification[value="SmartTemplate4-proFeature"] .messageCloseButton {
+notification-message[value="SmartTemplate4-license"] .messageCloseButton,
+notification-message[value="SmartTemplate4-proFeature"] .messageCloseButton {
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius: 2px;
 	border-radius: 2px;
 	margin: 0 1em;
 }
 
-notification[value="SmartTemplate4-license"] .messageCloseButton:hover,
-xbl-notification[value="SmartTemplate4-license"] .messageCloseButton:hover,
-notification[value="SmartTemplate4-proFeature"] .messageCloseButton:hover,
-xbl-notification[value="SmartTemplate4-proFeature"] .messageCloseButton:hover {
+notification-message[value="SmartTemplate4-license"] .messageCloseButton:hover,
+notification-message[value="SmartTemplate4-proFeature"] .messageCloseButton:hover {
 	background-color: rgba(255, 255, 255, 1);
 }
 
-notification[value="SmartTemplate4-license"] description.messageText,
-xbl-notification[value="SmartTemplate4-license"] description.messageText,
-notification[value="SmartTemplate4-proFeature"] description.messageText,
-xbl-notification[value="SmartTemplate4-proFeature"] description.messageText {
+notification-message[value="SmartTemplate4-license"] description.messageText,
+notification-message[value="SmartTemplate4-proFeature"] description.messageText {
 	font-family: Consolas,monaco,monospace;
 	font-size: 10pt;
 	height: auto;
 	white-space: normal !important;
 }
 
-#mail-notification-box,
-#pbSearchThresholdNotifcationBar {
-	height: auto;
-}
-
 /* fix some accidental truncations */
-#mail-notification-box notification[value=SmartTemplate4-license],
-#pbSearchThresholdNotifcationBar notification[value=SmartTemplate4-license],
-#mail-notification-box notification[value=SmartTemplate4-proFeature],
-#pbSearchThresholdNotifcationBar notification[value=SmartTemplate4-proFeature] {
+.notificationbox-stack notification-message[value=SmartTemplate4-license],
+.notificationbox-stack notification-message[value=SmartTemplate4-proFeature] {
 	min-height: 44px;
 }
 
-notification[value="SmartTemplate4-proFeature"] hbox.notification-inner,
-notification[value="SmartTemplate4-license"] hbox.notification-inner  {
+notification-message[value="SmartTemplate4-proFeature"] hbox.notification-inner,
+notification-message[value="SmartTemplate4-license"] hbox.notification-inner  {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
