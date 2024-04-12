@@ -253,6 +253,7 @@ permalink: version.html
   <a id="4.4"> &nbsp; </a>
   <a id="4.4.1"> &nbsp; </a>
   <a id="4.4.2"> &nbsp; </a>
+  <a id="4.4.3"> &nbsp; </a>
   <li>
     <h4>
       <a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.4.2" onclick="alert('This is currently under review!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
@@ -486,13 +487,35 @@ permalink: version.html
         Opening support sites in a tab is now using API methods (requires tabs permission)
       </li>
 
-      <h5 class="inList"><span class="inListTitle">Maintenance releases</span></h5>
+      <h5 class="inList"><span class="inListTitle">Maintenance Releases</span></h5>
       <li>
         4.4.1 - Fixed regression <a href="https://github.com/RealRaven2000/SmartTemplates/issues/283">issue 283</a> 
         caused by API menu changes  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/253">[issue 253]</a>
       </li>
       <li>
         4.4.2 - Patched version to extend Sale to April 20th.
+      </li>
+      <li>
+        4.4.3 - Fixed a problem with the last used template being moved to the bottom of 
+        message actions popup menus.
+      </li>
+      <li>
+        4.4.3 - Improvement: MRU menu items will update with changed titles from template 
+        setup (if the file is found in the template menu configuration)  
+      </li>
+      <li>
+        4.4.3 - Improvement:
+        When sending email with unresolved from / recipient / to variables are 
+        now replaced automatically in a reliable fashion. (Previously there was 
+        a chance of them being sent unchanged.)
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/284">[issue 284]</a>
+      </li>
+      <li>
+        4.4.3 - Fixed opening the full version history tab from [What's New] 
+        which was broken in 4.0.
+      </li>      
+      <li>
+        Removed license notification alert when saving / loading templates.
       </li>
 
     </ul>
