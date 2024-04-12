@@ -348,12 +348,13 @@ END LICENSE BLOCK
     # [issue 286] Update MRU menu items with changed titles from template setup (if found)
     # [issue 285] Remove notification "load_template" is a Premium feature
     # Some layout fixes for notifications
+    # Version history tab filed to open since using API to open URLs (v4.4)
+    # added missing proFeature image for notification
 
-    
 
   Version 4.5 - FUTURE VERSION / WIP
-    # [issue 253] recreate menus using API functions
-    # [issue ] 
+    # [issue 253] recreate unified toolbar menu using API functions
+    # [issue 259] Convert Settings screen to HTML, and move to Tab
     # [issue ] 
     # [issue ] 
 
@@ -362,7 +363,6 @@ END LICENSE BLOCK
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
   Version 4.x - FUTURE VERSION / WIP
-    # [issue 253] recreate menus using API functions
     # [issue ] 
     # [issue ] 
     # [issue ] 
