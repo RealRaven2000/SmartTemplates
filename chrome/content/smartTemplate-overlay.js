@@ -4233,7 +4233,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
   if (prefs.isDebugOption('regularize')) debugger;
   // msg = msg.replace(/%([a-zA-Z][\w\-:=.]*)(\(.*\))*%/gm, replaceReservedWords); 
   // msg = msg.replace(/%([a-zA-Z][\w\-:=.]*)(\([^%]*\))*%/gm, replaceReservedWords); 
-  msg = await SmartTemplate4.Util.replaceAsync(msg, /%([a-zA-Z][\w\-:=.]*)(\([^%]*\))*%/gm, replaceReservedWords); 
+  // replace [^%]* with .+? to match as few as possible, should allow ( % within )
+  msg = await SmartTemplate4.Util.replaceAsync(msg, /%([a-zA-Z][\w\-:=.]*)(\(.+?\))*%/gm, replaceReservedWords); 
                     // replaced ^) with ^% for header.set.matchFromSubject
                     // added mandatory start with a letter to avoid catching  encoded numbers such as %5C
                     // [issue 49] only match strings that start with an ASCII letter. (\D only guarded against digits)
