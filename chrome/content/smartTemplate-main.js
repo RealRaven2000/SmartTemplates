@@ -10,245 +10,17 @@ END LICENSE BLOCK
 */
 
 
-/* Version History  (chronological)
+/* Version History  (chronological) starting from v4.0
 
-  == older history (pre Thunderbird 78, starting at 09/08/2011) was moved to change-log.txt ==
+  The complete change log is available at the support site here:
 
-  Version 3.0 (ESR78) - 04/11/2020
-    # [issue 69] - Make SmartTemplates compatible with Thunderbird 78 ESR
-    #            - Remove Shim Code - this was code for backwards compatibilty with older Thundebrird versions as well as SeaMonkey and Postbox support
-    #            - Remove support for SeaMonkey
-    #            - Remove Stationery references & configuration
-    #            - Rewrote filling in variables and focus method to work with new address widgets
-    #            - rewrite all template dropdowns
-    
-  Version 3.1 - 24/11/2020
-    # version bump was necessary after release 2.12.1 for my legacy Thunderbird users (Tb60 and older)    
-    # [issue 94] - SmartTemplates does not insert template when Forwarding inline based on an Email written with ST
-    # [issue 85] - fixed some dead links linking to old mozdev bugzilla bugs (these are now archived on quickfolders.org)
-    # Reenable the sandboxed string script by Benito van der Zander. Set extensions.smartTemplate4.allowScripts = true 
-    #   to get them back!
-    
-  Version 3.2 - 17/12/2020
-    # [issue 98] %header.set(to,"[addressee]")% no longer working
-    # [pr 97] %conditionalText(forwardMode,"text1","text2")% inserts text based on forwarding inline vs attached
-    #         Function added by Artem (conductor111 on github)
-    # Some minor improvements in layout for settings dialog and license screen
-    # Fixed: Reopening existing tabs on support site did not jump to in page links (such as #donate)
-    # Omit update popup for users with licenses > 40days
-    # [issue 100] Trial period should restart on license expiry
-    # Domain Licenses can now be renewed (and extended 30 days before expiry) directly from the license dialog.
-    # Fixed some errors in Serbian and Portuguese help section
-    # Fixed reminder for standard license holders using premium functions 
-    
-  Version 3.3 - 03/01/2020
-    # [issue 104] Polish locale crashes settings dialog 
-    # [issue 96]  Provide keyboard accelerators for Template picker
-    # [issue 102] Fixed: %dateformat()% fails if month name / day name variables are included and %language()% set
-    # [issue 61] %quotePlaceholder(level)% new function for including quoted mail within the template for styling
-    #             - use the quoteLevel parameter to exclude older quotes from the conversation                  
-    # [issue 108] Other Add-ons may accidentally duplicate template if they change the from address in Composer
-    # Improved Scrolling behavior if %cursor% is used.
-    # Fixed: Resolve Names from AB / Remove email address - this happened even when a "mail" or "bracketMail" parameter is specified
-    
-  Version 3.3.1 - 04/01/2020
-    # [issue 110] Maximize "Account" selector dropdown
-    # [issue 112] Tb78: current mail account is not preselected - this worked in Thunderbird 68
-    
-  Version 3.4.1 - 05/02/2021
-    # [issue 91] Improve functions %deleteQuotedText% and %replaceQuotedText% so they can  be used
-                 in plain text mode (quote level argument will be ignored)
-    # [issue 115] Erratic %datetime()% results when forcing HTML with Shift
-    # [issue 71] Added support for setting non-standard header attributes starting with "List" e.g. List-Unsubscribe
-    # Improved / fixed warning messages for users with expired licenses 
-    # [issue 82] Added a notice about soon-to-expire license in the status bar
-    # [issue 117] %header.set(from,"some@address.com")% not working in Thunderbird 78
-    # Added examples in variables window for %header.delete(subject)% and %header.set(from)% in 
-      (Modify Mail Header) section
-    # with option "Remove email address unless format parameter is specified", mail parts such as 
-      %from(...,mail)%, %from(...,bracketMail())% were removed
-   
-  Version 3.4.2 - 06/02/2021 
-    # [issue 119] XML Parsing Error settings dialog (it / sv / uk locales)
-    # Broken entities in the translations for Italian, Ukrainian and Swedish locale lead to the settings dialog not loading
-    # this is caused by google translate injecting double quotes into the strings where it shouldn't have.
-    
-  Version 3.4.3 - 08/02/2021 
-    # Open the license tab when status icon is clicked with expired license to make renewal easier.
-    
-  Version 3.4.4 - 15/02/2021
-    # [issue 120] Spanish locale broken which creates an error when options screen is displayed
-    # [issue 121] Common settings are shown even though the correct account seems to be selected!
-    
-  Version 3.5.1 - 21/05/2021
-    # [issue 125] Improved support for converting encoded characters used in address fields such as "from"
-    # [issue 126] Enabling Resolve names from Address book falsely disables advanced options
-    # [issue 127] Make SmartTemplates compatible with Thunderbird 89 - using notifyTools
-    # [issue 130] Error in localization for Traditional Chinese (zh-TW) breaks settings dialog.
-    # New localization scheme implemented
-    # Added catalan locale (transformed from occitan)
-    # fixed openTab in Tb80 (added url parameter)
-    
-  Version 3.5.3 - 27/05/2021
-    # Ongoing work Remove usage of main window instance - for premium feature messages
-    # Removed many entries (especially in new Licenser module + background pages) to keep the error console clean 
-    # - these are now dependent on debug settings and can be added according to troubleshooting requirements.
-    # Added event listener to composer windows so the template menus can be reconfigured in real time.
-    # Fixed a regression with links from the Registration dialog caused by the migration to the new licensing modul 
-    
-  Version 3.5.4 - 03/06/2021
-    # New version of WindowListener to support wrench button to access Add-on settings
+  https://smarttemplates.quickfolders.org/version.htm
 
-  Version 3.6 - 17/06/2021
-    # [issue 134] Support tab missing in version 3.5.4
-    # [issue 137] SmartTemplates doesn't auto-update to 3.5.4 (because it needs permissions?)
-    # [issue 135] Expand multiple recipients with %to(firstname)% in New Mail Template.
-    # Removed all permissions for accounts, notifications
-    
-  Version 3.7 - 20/08/2021
-    # Make SmartTemplates compatible with Thunderbird 91
-    # - removed fixIterator
-    # - replaced Array types where necessary
-    # - Fixed sliding notifications in composer and icons in all sliding notifications
-    # - Fixed about:config dialogs
-    # Removed Utilities.openLinkExternally and replaced with messenger.windows.openDefaultBrowser
-    # Fixed "Buy License" button at bottom of Settings window
-    # Fixed: [issue 143] Template Files - Toolbar buttons missing
-    # [issue 118] new variable %clipboard% to insert clipboard contents (will be inserted as HTML)
-    # Splash screen: not shown immediately on update; removed message about permissions
-    # only show standard license upgrade special offer when within the date
-
-  Version 3.8 - 21/10/2021
-    # [issue 142]/[issue 28] Add feature to insert html Smart snippets within Composer
-    # [issue 147] Add categories / folders to structure template menus
-    # [issue 151] New single variable %recipient% for final recipient to replace %to% / %from% in all templates
-    # [issue 148] Regression: Saving / Loading account templates from settings doesn't work without Pro License
-    # [issue 139] Double template inserted when replying to own email
-    # [issue 149] Fixed: If no %cursor% is entered, HTML template may be truncated / reformatted at the end
-    # [issue 153] Fixed: Recipient Names which are only 1 Character long are dropped
-    # [issue 156] Fixed: When FORWARDING, %quotePlaceholder% doesn't position forwarded mail text correctly
-    # [issue 158] Fixed: Could not switch spell checker language with %spellchecker% command
-    # Fixed displaying trial date on license tab
-    # Removed "workaround" experimental APIs (notifications, accounts)
-    # Removed obsolete "Shim" code
-
-  Version 3.9 - 09/12/2021
-    # [issue 164] Feature: Add *selection* placeholder for inserting HTML snippets (fragments)
-    # [issue 161] remove text shadow in html edit boxes for dark themes - this makes the text better readable.
-    # make sure the Snippets button is being added automatically in Composer {WIP}
-    # [issue 162] Fixed: Main toolbar - template dropdowns - items in category submenus don't trigger composer
-    # [issue 139] Fixed: Duplicate template inserted when replying to own email - Tb Conversations Add-on!
-    # [issue 155] Fixed: reply template applied twice in thunderbird 91.2.0
-    # [issue 163] Fixed: With Cardbook installed, SmartTemplates statusbar icon may not be shown
-    
-
-  Version 3.10.1 - 04/02/2021
-    # [issue 166] %recipient% should use reply-to header if present when replying
-    # [issue 150] removed nag screen which pops up after trial date is expired.
-    # [issue 154] Support pushing [Esc] to close template change confirmation
-    # [issue 167] Address Book list entries are not expanded with empty "To:" address
-    # [issue 168] Fixed: custom background and text colors ignored in composer when writing new mails
-
-  Version 3.10.2 - 07/02/2022
-    # [issue 170] UI to view license extension longer than 1 month before expiry of Pro license
-    # [issue 171] Settings Dialog: Empty Examples tab in Thunderbird 91
-    
-  Version 3.11 - 17/03/2022
-    # [issue 172] Support deleting / replacing text in text of inline forwarded mail
-    # [issue 173] Auto-Forward / Auto-Reply with template -  implement triggering template from filter (using FiltaQuilla)
-    # [issue 174] %suppressQuoteHeaders% command to suppress all quote headers
-    
-  Version 3.12.1 - 27/06/2022
-    # Compatibility changes for Thunderbird ESR 102:
-    #   Fixed notifications
-    #   Fixed id  of composer container for setting focus to email
-    #   Stabilized code when reading external signatures or including external files
-    #   [issue 189] Support multiple spellcheck languages with %spellcheck()%
-    #   Fixed menu spacings for Templates in reply / write / forward / Snippets buttons.
-    #   
-    # [issue 182] Improve *selection* placeholder in Snippets to better support non-text nodes
-    # [issue 183] Support using "clipboard" as argument for text and header manipulation functions
-    # [issue 185] Simplify Settings - Accounts dropdown and toolbar buttons
-    # [issue 187] Support transferring headers / variable results to clipboard
-    # [issue 186] Various Issues in bracketMail parameter in %to% / %from% etc.
-    # Fix xhtml attribute syntax (no spaces allowed in "attribute=value")
-    # Moved clipboard reading to Util module
-    # [issue 184] WIP: Move template processing into background script
-
-  Version 3.12.2 - 29/06/2022
-    # [issue 197] - Expand / collapse / help buttons invisible when opening settings from Add-ons Manager
-    # [issue 198] - Renew license button on lower left of settings dialog not working
-    
-  Version 3.13 - 21/08/2022
-    # [issue 199] Inserting of addresses with display name that contains comma fails with unexpected results
-    # [issue 200] bracketMail() and bracketName() cannot be used in the same format string
-    # [issue 205] After FiltaQuilla filter forwards / replies with template, the next manual reply uses same template
-    # [issue 204] "Update and replace with content" command doesn't replace the field
-    # Use compose-window-init event in 102 to attain headers at an earlier stage - to call SmartTemplate4.getHeadersAsync()
-    # toclipboard - new parameter for copying address variables to clipboard 
-    # bracketMail() / bracketName() Fixed copying angled brackets to clipboard as plain text (and not encoded)
-    # [issue 206] %datelocal% throws an error and returns a blank space.
-    # [issue 208] Improve accessibility for settings dialog
-    # [issue 209] Support license validation with Exchange accounts (from Tb 102)
-    # After updating, do not open tab with version log automatically. Old behavior can be restored on the licenses tab.
-    # Repaired icon in customize toolbar
-    
-  Version 3.14 - 26/10/2022
-    # [issue 211] accept mixed case headers such as "Newsgroups" / "Message-Id" again
-    # [issue 210] support using toclipboard parameter multiple times in the same template
-    # [issue 215] Search box in variables window
-    # Fixed text colors in Variables window when using dark themes.
-    # Known issue - [external?] template not applied when replying to a message we sent ourselves 
-    #               that used SmartTemplates - and Tb changes the recipient - 
-    #               this leads to immediate secondary loadIdentity(startup=false,...) where previous body 
-    #               already has the smartTemplateInserted attribute.
-    
-  Version 3.15 - 25/11/2022
-    # [issue 215] Improved Variables search - use Shift+F3 to search backwards; support Numpad Enter
-    # [issue 217] addressbook switches broken.
-    
-  Version 3.15.1 - 28/11/2022
-    # fixed [F3] Search again.
-    
-  Version 3.16 - 05/03/2023
-    # [issue 222] Template Categories containing space characters disrupt the template menus
-    # [issue 223] Spellchecker is not activated by %spellcheck()% command - if the option 
-                  "spellcheck as you type" is disabled in Composition settings.
-    # [issue 219] Regression: bracketName(";") parameter broken. 
-    # minimum version: 91.0
-    # compatibilty until: 110.0
-    # Removed Service wrappers for nsIWindowMediator, nsIWindowWatcher, nsIPromptService, nsIPrefBranch, nsIPrefService, 
-    #                              nsIStringBundleService, nsIXULAppInfo, nsIMsgComposeService, nsIConsoleService, nsIVersionComparator,
-    #                              nsIXULRuntime
-    # [issue 50] Add CardBook support [WIP]
-    # [issue 226] Automatically update deferred fields for headers that have been modified / set by template (header.set)
-    # use ical.js library to parse various vCard formats
-    # (see https://webextension-api.thunderbird.net/en/stable/how-to/contacts.html)
-    # Show license buttons on the "menu restrictions" dialog message
-
-  Version 3.16.1 - 21/03/2023
-    # [issue 231] Forward with Template doesn't send off mail automatically any more
-    # [issue 229] Fixed Scripts fields %{% %}% 
-    # [issue 230] %from(addressbook,nickname)% throws an error when trying to use CardBook
-
-  Version 3.17 - 04/05/2023
-    # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
-    # [issue 237] Allow %file()% command to use ../ to access parent folders of a file
-    # [issue 238] Insert Snippet: support inserting contents of a CSS file as style block
-    # [issue 233] Improvements in Template Manager: Category prefix, [TO DO: add sorting]
-    # To encourage license renewals: Show bargain section in splash screen if <=10 days to expiry
-    # [issue 232] Added pricing section to licensing dialog
-    # Added Czech translation to licensing dialog
-    # [issue 234] Correct the Number of days left in license by rounding up
-    # do not trigger "news" unless min ver changes at least.
-    #
-
-  Version 3.17.1 - 16/07/2023
-    # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
-    # [issue 242] Update "# licensed days left" at midnight.
-    # [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
+  == older history (pre Thunderbird 78, starting at 09/08/2011) was moved to change-log.txt (in the project root )==
 
 #################################################
+
+  Log below starts at 4.0 (for Thunderbird 115 and later)
 
   Version 4.0b1 - 10/07/2023
     # [issue 213] Compatibity with Thunderbird 115 (ESR 2023/24)
@@ -343,7 +115,7 @@ END LICENSE BLOCK
   Version 4.4.2 - 10/04/2024
     # extended sale to April 20th (previous version was not reviewed in time)
 
-  Version 4.4.3 - WIP
+  Version 4.4.3 - 15/04/2024
     # [issue 284] When sending email with unresolved from / recipient / to variables are not replaced automatically
     # [issue 286] Update MRU menu items with changed titles from template setup (if found)
     # [issue 285] Remove notification "load_template" is a Premium feature
@@ -353,9 +125,9 @@ END LICENSE BLOCK
 
 
   Version 4.5 - FUTURE VERSION / WIP
+    # [issue 287] Support using percent "%" sign within a text parameter, e.g. %header.set(subject,"save 25%")%
     # [issue 253] recreate unified toolbar menu using API functions
     # [issue 259] Convert Settings screen to HTML, and move to Tab
-    # [issue ] 
     # [issue ] 
 
 
