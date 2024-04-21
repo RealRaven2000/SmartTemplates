@@ -6,6 +6,10 @@
 	min-height: 525px;
 }
 
+#globalSettingsVbox label,
+#advancedSettingsVbox label {
+	line-height: 1.5em;
+}
 
 #helpTemplates, #helpSnippets {
 	-moz-context-properties: fill;
@@ -14,6 +18,7 @@
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
 #helpStationery {
   -moz-appearance: none !important; 
   background-image: url("chrome://smartTemplate4/content/skin/icons/help.svg");
@@ -105,12 +110,6 @@ button.text-link:hover {
 	color: #ffffaa !important;
 }
 
-.stationeryURL, .stationeryURL:focus {
-	-moz-appearance: none !important;
-  border: 1px solid rgb(187, 204, 238) !important;
-	color: #ffffff;
-  text-shadow: 0px 0px 3px rgba(230, 230, 255, 0.9);
-}
 
 .bugsURL:hover, .bugsURL:focus:hover {
 	text-decoration: underline;
@@ -660,7 +659,17 @@ label.plain-link:hover {
 }
 
 #fileTemplateToolbar.templateList > toolbarbutton.chromeclass-toolbar-additional {
-  display: inline-block;
+  display: flex;
+}
+
+#fileTemplateToolbar.templateList > toolbarbutton.chromeclass-toolbar-additional:hover {
+  border-radius: 6px !important;
+	border-width: 2px;
+  outline: 2px gray dotted !important;
+}
+
+#fileTemplateToolbar.templateList > toolbarbutton.chromeclass-toolbar-additional:hover image {
+	scale: 1.3;
 }
 
 .templateList #btnAdd {
@@ -689,6 +698,11 @@ label.plain-link:hover {
 .templateList #btnDown[disabled="true"]  {
 	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-down-off.png");
 }
+
+.templateList #btnEdit {
+	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/pencil-field.png");
+}
+
 
 .templateLabel {
 	min-width: 80px;
