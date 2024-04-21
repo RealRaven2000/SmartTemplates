@@ -383,6 +383,9 @@
   "fileTemplates.down": {
     "message": "Κάτω"
   },
+  "fileTemplates.edit": {
+    "message": "Επεξεργασία"
+  },
   "fileTemplates.file.open": {
     "message": "Επιλέξτε αρχείο προτύπου από το δίσκο"
   },
@@ -1162,6 +1165,18 @@
   },  
   "prompt.email": {
     "message": "Εισάγετε μια διεύθυνση email"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Παρακαλώ επιλέξτε έναν εξωτερικό επεξεργαστή για να επεξεργαστείτε τα πρότυπα HTML σας. Σας προτείνω να χρησιμοποιήσετε έναν επεξεργαστή HTML μόνο με κείμενο και επισήμανση σύνταξης, όπως το notepad++ ή το Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+      "message": "Δεν ήταν δυνατή η εύρεση του επεξεργαστή στη διαδρομή: $filePath$",
+      "placeholders": {
+          "filePath": {
+              "content": "$1",
+              "example": "C:\\notepad++"
+          }
+      }
   },
   "prompt.text": {
     "message": "Εισάγετε το κείμενο για να προσθέσετε ή να ορίσετε"

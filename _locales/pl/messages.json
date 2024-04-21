@@ -1,4 +1,7 @@
 {
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Dzień tygodnia (Pi)"
   },
@@ -171,6 +174,9 @@
   },
   "clipboard.from": {
     "message": "(przykład dla dowolnej zmiennej adresu) skopiuj adres e-mail oryginalnego nadawcy do schowka."
+  },
+  "clipboard.dateformat": {
+    "message": "kopiowanie sformatowanej daty do schowka. Łańcuch formatowania musi być umieszczony w cudzysłowiu. Aby uzyskać więcej informacji na temat składni formatowania, zobacz także następujący dział: "
   },
   "clipboard.setHeader": {
     "message": "Użyj zawartości schowka, aby ustawić cc - (działa dla dowolnego nagłówka tekstowego)."
@@ -371,8 +377,55 @@
   "fileHTML.label": {
     "message": "Plik HTML lub zwykły plik tekstowy. Zostanie zastosowane kodowanie UTF-8, jeśli zostanie pominięty opcjonalny parametr zestawu znaków.."
   },
+	"fileImage.attributes": {
+    "message": "Opcjonalna lista zestawów atrybut=wartość, takich jak 'id=obraz1,class=zrzut-ekranu'."
+	},
+
   "fileImage.label": {
     "message": "Plik obrazka (png,jpg,gif,bmp,svg). Jeśli nie naleziono obrazka, będzie wyświetlany opcjonalny parametr altText."
+  },
+  "fileTemplates.add": {
+    "message": "Dodaj"
+  },
+  "fileTemplates.down": {
+    "message": "Dół"
+  },
+
+  "fileTemplates.edit": {
+    "message": "Edytuj"
+  },
+  "fileTemplates.file.open": {
+    "message": "Wybierz plik szablonu z dysku"
+  },
+  "fileTemplates.file.path": {
+    "message": "Lokalizacja szablonu:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Tytuł:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Będzie wyświetlany w menu wyboru szablonu."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Lista zewnętrznych plików szablonów, które można uruchomić z przycisku „Przekaż dalej”."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "Lista zewnętrznych plików szablonów, które można uruchomić z przycisku „Utwórz nową wiadomość”."
+  },
+  "fileTemplates.remove": {
+    "message": "Usuń"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Lista zewnętrznych plików szablonów, które można uruchomić z przycisku „Odpowiedz”."
+  },
+  "fileTemplates.title": {
+    "message": "Pliki szablonów"
+  },
+  "fileTemplates.up": {
+    "message": "Góra"
+  },
+  "fileTemplates.update": {
+    "message": "Aktualizuj"
   },
   "firstName.label": {
     "message": "Imię:"
@@ -1106,6 +1159,18 @@
   "prompt.email": {
     "message": "Wprowadź adres wiadomości"
   },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Wybierz zewnętrzny edytor do edycji szablonów HTML. Zalecam użycie edytora HTML zwykłego tekstu z podświetlaniem składni, takiego jak notepad++ lub Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+      "message": "Nie można znaleźć Edytora na ścieżce: $filePath$",
+      "placeholders": {
+          "filePath": {
+              "content": "$1",
+              "example": "C:\\notepad++"
+          }
+      }
+  },
   "prompt.text": {
     "message": "Wprowadź tekst, aby dodać lub ustawić"
   },
@@ -1223,6 +1288,9 @@
   "SmartTemplateMainButton.expired": {
     "message": "Licencja wygasła!"
   },
+  "SmartTemplateMainButton.invalid": {
+    "message": "Licencja nieprawidłowa."
+  },  
   "SmartTemplateMainButton.renew": {
     "message": "Licencja wygasa za $daysLeft$ dni",
     "placeholders": {

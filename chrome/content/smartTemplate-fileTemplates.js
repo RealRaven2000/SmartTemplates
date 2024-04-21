@@ -148,11 +148,15 @@ SmartTemplate4.fileTemplates = {
 	},
 	
 	// adds an item to currently visible list
-  addItem: function addItem(path, label, cat="", lb) {
+  addItem: function (path, label, cat="", lb) {
     let listbox = lb || this.ListBox;
     if (listbox) {
       listbox.appendItem(label, JSON.stringify({path:path, category:cat})  );
     }
+    // make sure new item is selected and visible
+    let newIndex = listbox.itemCount-1;
+    listbox.selectedIndex = newIndex;
+    listbox.ensureIndexIsVisible(newIndex);
   },
 	
 	// delete list (only of currently selected flavor)
@@ -293,12 +297,19 @@ SmartTemplate4.fileTemplates = {
         existingEntry = null, 
         existingIndex = null;
 		
-		
+    if (!label.trim()) {
+      Services.prompt.alert(null, msgTitle, getBundleString("st.fileTemplates.wrnEnterTitle"));
+      return;
+    }
+    if (!path.trim()) {
+      Services.prompt.alert(null, msgTitle, getBundleString("st.fileTemplates.wrnEnterPath"));
+      return;
+    }
+
     // check if it exists and replace label
 		const msgTitle = getBundleString("st.fileTemplates.wrnSelectUpdateItem.caption")
     if (!isNew) {
-      let lb = FT.ListBox;      
-      existingIndex = lb.selectedIndex;
+      existingIndex = FT.ListBox.selectedIndex;
       if (existingIndex<0) {
 				let txt = getBundleString("st.fileTemplates.wrnSelectUpdateItem");
         Services.prompt.alert(null, msgTitle, txt);
@@ -309,17 +320,7 @@ SmartTemplate4.fileTemplates = {
       existingEntry.label = label;
       existingEntry.category = category || ""; 
     }
-				
-    if (!label.trim()) {
-			let txt = getBundleString("st.fileTemplates.wrnEnterTitle");
-      Services.prompt.alert(null, msgTitle, txt);
-      return;
-    }
-    if (!path.trim()) {
-			let txt = getBundleString("st.fileTemplates.wrnEnterPath");
-      Services.prompt.alert(null, msgTitle, txt);
-      return;
-    }
+
     
     // TO DO:
     // should we allow changing the URL ? (for selected item only)
@@ -332,8 +333,7 @@ SmartTemplate4.fileTemplates = {
       }
       FT.addItem(path, SmartTemplate4.fileTemplates.makeLabel(entry), category);
       FT.CurrentEntries.push(entry);
-    }
-    else {
+    } else {
       // update existing item (label)
       util.logDebug(`Updating existing item: ${existingEntry.label} [${existingEntry.path} , ${existingEntry.category} ]`);
       let lb = FT.ListBox;
@@ -367,31 +367,95 @@ SmartTemplate4.fileTemplates = {
   up: function up() {
     let listbox = this.ListBox,
         idx = listbox.selectedIndex;
-    if (idx>0) {
-      let swap = this.CurrentEntries[idx-1];
-      this.CurrentEntries[idx-1] = this.CurrentEntries[idx];
-      this.CurrentEntries[idx] = swap;
-      
-      this.repopulate(true);
-      this.saveCustomMenu();
-      listbox.selectedIndex = idx-1;
-    }
+    if (idx<=0) { return; }
+
+    let swap = this.CurrentEntries[idx-1];
+    this.CurrentEntries[idx-1] = this.CurrentEntries[idx];
+    this.CurrentEntries[idx] = swap;
+    
+    this.repopulate(true);
+    this.saveCustomMenu();
+    listbox.selectedIndex = idx-1;
   },
   
   down: function down() {
     let listbox = this.ListBox,
         idx = listbox.selectedIndex;
-    if (idx < this.CurrentEntries.length-1) {
-      let swap = this.CurrentEntries[idx+1];
-      this.CurrentEntries[idx+1] = this.CurrentEntries[idx];
-      this.CurrentEntries[idx] = swap;
-      
-      this.repopulate(true);
-      this.saveCustomMenu();
-      listbox.selectedIndex = idx+1;
-    }
+    if (idx == -1) return;
+    if (idx >= this.CurrentEntries.length-1) return;
+
+    let swap = this.CurrentEntries[idx+1];
+    this.CurrentEntries[idx+1] = this.CurrentEntries[idx];
+    this.CurrentEntries[idx] = swap;
+    
+    this.repopulate(true);
+    this.saveCustomMenu();
+    listbox.selectedIndex = idx+1;
   },
 	
+  edit: async function() {
+    const EditorPathSetting = "fileTemplates.editor.path";
+    let listbox = this.ListBox,
+        idx = listbox.selectedIndex;
+    let editorPath = SmartTemplate4.Preferences.getStringPref(EditorPathSetting),
+        wrn = SmartTemplate4.Util.getBundleString("prompt.fileTemplates.editor.setup");
+
+    if (idx<0) {
+      return;
+    }
+            
+    if (!editorPath) {
+      SmartTemplate4.Message.display(
+        wrn,
+        "centerscreen,titlebar,modal,dialog",
+        { 
+          ok: function() {  
+            SmartTemplate4.Util.showAboutConfig(null, `smartTemplate4.${EditorPathSetting}`);
+          },
+          cancel: function() { ;/* cancel NOP */ }
+        }, 
+        window
+      ); 
+      return;
+    }
+    
+    // editorPath = SmartTemplate4.Preferences.getStringPref(EditorPathSetting)
+    if (!editorPath) { return; }
+    let item = this.CurrentEntries[idx];
+
+    const Cc = Components.classes,
+          Ci = Components.interfaces,
+          NSIFILE = Ci.nsIFile || Ci.nsILocalFile;    
+
+    var file = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
+    try {
+      file.initWithPath(editorPath);
+      if (!file.exists()) {
+        throw "file doesn't exist";
+      }
+    }
+    catch(ex) {
+      SmartTemplate4.Util.logException(`file.initWithPath(${editorPath}) failed with Exception` , ex);
+      SmartTemplate4.Message.display(
+        SmartTemplate4.Util.getBundleString("prompt.fileTemplates.editor.pathError", editorPath),
+        "centerscreen,titlebar,modal,dialog",
+        { 
+          ok: function() {  
+            SmartTemplate4.Util.showAboutConfig(null, 'smartTemplate4.fileTemplates.editor.path');
+          },
+          cancel: function() { ;/* cancel NOP */ }
+        }, 
+        window
+      ); 
+      return;
+    }
+
+    
+    let theProcess = Cc["@mozilla.org/process/util;1"].createInstance(Ci.nsIProcess);
+    theProcess.init(file);
+    let parameters = [item.path];
+    theProcess.run(false, parameters, parameters.length);
+  },
 	// =====================   FILES   ===================== //	
   	
   readStringFile: async function() {
@@ -1772,7 +1836,7 @@ SmartTemplate4.fileTemplates = {
 		)
 	},
 	
-	readHTMLTemplateFile : function readHTMLTemplateFile(template) {
+	readHTMLTemplateFile : function (template) {
 		const Ci = Components.interfaces,
 					Cc = Components.classes,
 					util = SmartTemplate4.Util;	
@@ -1806,12 +1870,9 @@ SmartTemplate4.fileTemplates = {
 				
 		try {
 			// code from template-disk.jsm readHTMLTemplateFile()
-			let data = "",
-					//read file into a string so the correct identifier can be added
+			let //read file into a string so the correct identifier can be added
 					fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream),
-					cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream),
-					inStream =		Cc["@mozilla.org/scriptableinputstream;1"].createInstance(Ci.nsIScriptableInputStream),
-					countRead = 0;
+					inStream =		Cc["@mozilla.org/scriptableinputstream;1"].createInstance(Ci.nsIScriptableInputStream);
 			
 			try {
 				let isFU = FileUtils && FileUtils.File,

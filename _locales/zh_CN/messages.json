@@ -383,6 +383,9 @@
   "fileTemplates.down": {
     "message": "向下"
   },
+  "fileTemplates.edit": {
+    "message": "编辑"
+  },
   "fileTemplates.file.open": {
     "message": "从磁盘选择模板文件"
   },
@@ -1154,6 +1157,18 @@
   },
   "prompt.email": {
     "message": "请输入一个电子邮件地址"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "请选择外部编辑器以编辑您的 HTML 模板。我建议使用纯文本 HTML 编辑器，带有语法高亮，如 notepad++ 或 Visual Studio Code。"
+  },
+  "prompt.fileTemplates.editor.pathError": {
+    "message": "找不到路径上的编辑器：$filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
+      }
+    }
   },
   "prompt.text": {
     "message": "请输入要添加或设置的文本"

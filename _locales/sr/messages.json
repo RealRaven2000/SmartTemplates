@@ -368,6 +368,12 @@
   "fileImage.label": {
     "message": "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан."
   },
+  "fileTemplates.edit": {
+    "message": "Уреди"
+  },
+  "fileTemplates.file.open": {
+    "message": "Изаберите датотеку шаблона са диска"
+  },
   "firstName.label": {
     "message": "Име:"
   },
@@ -1084,6 +1090,18 @@
   },
   "prompt.email": {
     "message": "Унесите емаил адресу"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Молимо вас да изаберете спољашњи уређивач за уређивање ваших HTML шаблона. Препоручујем коришћење само текстуалног HTML уређивача са истичућим синтаксом, као што су notepad++ или Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+    "message": "Уредник на путањи није пронађен: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
+      }
+    }
   },
   "prompt.text": {
     "message": "Унесите текст који желите додати или подесити"

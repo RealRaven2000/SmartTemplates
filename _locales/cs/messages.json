@@ -380,6 +380,9 @@
   "fileTemplates.down": {
     "message": "Dolů"
   },
+  "fileTemplates.edit": {
+    "message": "Upravit"
+  },
   "fileTemplates.file.open": {
     "message": "Vyberte soubor šablony z disku"
   },
@@ -1144,6 +1147,18 @@
   },
   "prompt.email": {
     "message": "Vlož e-mail"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Prosím, vyberte externí editor pro úpravu vašich HTML šablon. Doporučuji použít pouze textový editor HTML s podporou syntaxe, jako je notepad++ nebo Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+      "message": "Editor na cestě nebyl nalezen: $filePath$",
+      "placeholders": {
+          "filePath": {
+              "content": "$1",
+              "example": "C:\\notepad++"
+          }
+      }
   },
   "prompt.text": {
     "message": "Vlož text pro přidání nebo nastavení"

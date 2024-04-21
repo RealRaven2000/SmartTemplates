@@ -396,6 +396,9 @@
   "fileTemplates.down": {
     "message": "Down"
   },
+  "fileTemplates.edit": {
+    "message": "Edit"
+  },  
   "fileTemplates.file.open": {
     "message": "Select template file from disk"
   },
@@ -1184,6 +1187,18 @@
   },  
   "prompt.email": {
     "message": "Enter an email address"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Please select an external editor to edit your html templates. I recommend using a text only HTML editor with syntax highlighting, such as notepad++ or Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+    "message": "Couldn't find Editor at path: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
+      }
+    }
   },
   "prompt.text": {
     "message": "Enter the text to add or set"

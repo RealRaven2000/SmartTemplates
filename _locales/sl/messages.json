@@ -380,6 +380,12 @@
   "firstName.label": {
     "message": "Ime:"
   },
+  "fileTemplates.edit": {
+    "message": "Uredi"
+  },
+  "fileTemplates.file.open": {
+    "message": "Izberite datoteko predloge s diska"
+  },
   "fix_var.cap": {
     "message": "Stalne spremenljivke"
   },
@@ -1111,6 +1117,18 @@
   },
   "prompt.email": {
     "message": "Vnesite e-poštni naslov"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Izberite zunanji urejevalnik za urejanje vaših HTML predlog. Priporočam uporabo urejevalnika HTML samo besedila s poudarjanjem sintakse, kot je notepad++ ali Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+    "message": "Urednika ni mogoče najti na poti: $filePath$",
+    "placeholders": {
+      "filePath": {
+          "content": "$1",
+          "example": "C:\\notepad++"
+      }
+    }
   },
   "prompt.text": {
     "message": "Vnesite besedilo za dodajanje ali nastavitev"

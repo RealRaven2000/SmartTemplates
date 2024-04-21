@@ -380,6 +380,9 @@
   "fileTemplates.down": {
     "message": "下へ"
   },
+  "fileTemplates.edit": {
+    "message": "編集"
+  },
   "fileTemplates.file.open": {
     "message": "ディスクからテンプレートファイルを選択"
   },
@@ -1132,6 +1135,18 @@
   },
   "prompt.email": {
     "message": "メールアドレスを入力してください"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "外部エディターを選択して HTML テンプレートを編集してください。notepad++ や Visual Studio Code のような、シンタックスハイライト機能を備えた純粋なテキストの HTML エディターの使用をお勧めします。"
+  },
+  "prompt.fileTemplates.editor.pathError": {
+      "message": "パスにエディターが見つかりませんでした: $filePath$",
+      "placeholders": {
+          "filePath": {
+              "content": "$1",
+              "example": "C:\\notepad++"
+          }
+      }
   },
   "prompt.text": {
     "message": "置換/追記するテキストを入力してください"

@@ -850,6 +850,18 @@
   "prompt.email": {
     "message": "Masukkan alamat email"
   },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Silakan pilih editor eksternal untuk mengedit template HTML Anda. Saya sarankan menggunakan editor HTML hanya teks dengan penyorotan sintaksis, seperti notepad++ atau Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+      "message": "Tidak dapat menemukan Editor di jalur: $filePath$",
+      "placeholders": {
+          "filePath": {
+              "content": "$1",
+              "example": "C:\\notepad++"
+          }
+      }
+  },
   "prompt.text": {
     "message": "Masukkan teks untuk ditambahkan atau disetel"
   },

@@ -374,6 +374,12 @@
   "firstName.label": {
     "message": "Nome:"
   },
+  "fileTemplates.edit": {
+    "message": "Editar"
+  },
+  "fileTemplates.file.open": {
+    "message": "Selecionar arquivo de modelo do disco"
+  },
   "fix_var.cap": {
     "message": "Variáveis básicas"
   },
@@ -1087,6 +1093,18 @@
   },
   "prompt.email": {
     "message": "Digite um endereço de email"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Por favor, selecione um editor externo para editar seus modelos HTML. Eu recomendo usar um editor HTML somente texto com destaque de sintaxe, como notepad++ ou Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+    "message": "Não foi possível encontrar o Editor no caminho: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
+      }
+    }
   },
   "prompt.text": {
     "message": "Digite o texto para adicionar ou definir"

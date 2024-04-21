@@ -383,6 +383,9 @@
   "fileTemplates.down": {
     "message": "Omlaag"
   },
+  "fileTemplates.edit": {
+    "message": "Bewerken"
+  },
   "fileTemplates.file.open": {
     "message": "Sjabloonbestand van schijf selecteren"
   },
@@ -1102,6 +1105,18 @@
   },
   "prompt.email": {
     "message": "Voer een e-mailadres in"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Selecteer een externe editor om uw HTML-templates te bewerken. Ik raad aan om een teksteditor voor HTML met alleen tekst en syntaxiskleuring te gebruiken, zoals notepad++ of Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+      "message": "Editor niet gevonden op het pad: $filePath$",
+      "placeholders": {
+          "filePath": {
+              "content": "$1",
+              "example": "C:\\notepad++"
+          }
+      }
   },
   "prompt.text": {
     "message": "Voer de toe te voegen of in te stellen tekst in"

@@ -383,6 +383,9 @@
   "fileTemplates.down": {
     "message": "A baix"
   },
+  "fileTemplates.edit": {
+    "message": "Editar"
+  },
   "fileTemplates.file.open": {
     "message": "Seleccioneu el fitxer de plantilla del disc"
   },
@@ -1159,6 +1162,18 @@
   },  
   "prompt.email": {
     "message": "Introduïu una adreça de correu electrònic"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Si us plau, selecciona un editor extern per editar les teves plantilles HTML. Et recomano utilitzar un editor HTML només de text amb ressaltat de sintaxi, com ara el notepad++ o el Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+      "message": "No s'ha pogut trobar l'editor a la ruta: $filePath$",
+      "placeholders": {
+          "filePath": {
+              "content": "$1",
+              "example": "C:\\notepad++"
+          }
+      }
   },
   "prompt.text": {
     "message": "Introduïu el text per afegir o definir"

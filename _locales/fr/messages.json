@@ -386,6 +386,9 @@
   "fileTemplates.down": {
     "message": "Descendre"
   },
+  "fileTemplates.edit": {
+    "message": "Modifier"
+  },
   "fileTemplates.file.open": {
     "message": "Sélectionnez le fichier de modèle à partir du disque"
   },
@@ -1150,6 +1153,18 @@
   },
   "prompt.email": {
     "message": "Indiquer une adresse électronique"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Veuillez sélectionner un éditeur externe pour modifier vos modèles HTML. Je recommande d'utiliser un éditeur HTML uniquement texte avec coloration syntaxique, comme notepad++ ou Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+      "message": "Impossible de trouver l'éditeur à l'emplacement suivant : $filePath$",
+      "placeholders": {
+          "filePath": {
+              "content": "$1",
+              "example": "C:\\notepad++"
+          }
+      }
   },
   "prompt.text": {
     "message": "Indiquer le texte à ajouter ou définir"

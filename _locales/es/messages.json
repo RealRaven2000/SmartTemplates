@@ -383,6 +383,9 @@
   "fileTemplates.down": {
     "message": "Abajo"
   },
+  "fileTemplates.edit": {
+    "message": "Editar"
+  },
   "fileTemplates.file.open": {
     "message": "Seleccione el archivo de plantilla del disco"
   },
@@ -1111,6 +1114,18 @@
   },
   "prompt.email": {
     "message": "Introduzca una dirección de correo"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Por favor, selecciona un editor externo para editar tus plantillas HTML. Recomiendo usar un editor de HTML solo de texto con resaltado de sintaxis, como notepad++ o Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+      "message": "No se pudo encontrar el editor en la ruta: $filePath$",
+      "placeholders": {
+          "filePath": {
+              "content": "$1",
+              "example": "C:\\notepad++"
+          }
+      }
   },
   "prompt.text": {
     "message": "Introduzca el texto a añadir o cambiar"

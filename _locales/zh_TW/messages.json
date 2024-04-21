@@ -383,6 +383,9 @@
   "fileTemplates.down": {
     "message": "下"
   },
+  "fileTemplates.edit": {
+    "message": "编辑"
+  },
   "fileTemplates.file.open": {
     "message": "從磁盤中選擇模板文件"
   },
@@ -1159,6 +1162,18 @@
   },
   "prompt.email": {
     "message": "輸入電子郵件地址"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "請選擇外部編輯器以編輯您的 HTML 範本。我建議使用僅支援純文字 HTML 的編輯器，具有語法突顯功能，如 notepad++ 或 Visual Studio Code。"
+  },
+  "prompt.fileTemplates.editor.pathError": {
+    "message": "找不到路徑上的編輯器：$filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
+      }
+    }
   },
   "prompt.text": {
     "message": "輸入要添加或設置的文本"

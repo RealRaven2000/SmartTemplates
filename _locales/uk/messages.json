@@ -390,6 +390,9 @@
   "fileTemplates.down": {
     "message": "Донизу"
   },
+  "fileTemplates.edit": {
+    "message": "Редагувати"
+  },
   "fileTemplates.file.open": {
     "message": "Виберіть файл шаблону з диска"
   },
@@ -1160,6 +1163,18 @@
   },
   "prompt.email": {
     "message": "Введіть адресу електронної пошти"
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Будь ласка, виберіть зовнішній редактор для редагування ваших HTML-шаблонів. Я рекомендую використовувати лише текстовий HTML-редактор з підсвічуванням синтаксису, такий як notepad++ або Visual Studio Code."
+  },
+  "prompt.fileTemplates.editor.pathError": {
+    "message": "Не вдалося знайти Редактора за шляхом: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
+      }
+    }
   },
   "prompt.text": {
     "message": "Введіть текст для додавання або встановлення"
