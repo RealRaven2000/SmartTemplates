@@ -548,117 +548,96 @@ SmartTemplate4.Util = {
 					regBtn = util.getBundleString("st.notification.premium.btn.getLicense");
 		}
 				
-		if (notifyBox) {
-			let notificationKey = 
-			  (isProFeature) ? "SmartTemplate4-proFeature" : "SmartTemplate4-license";
-      // let's force additional notifications for Pro features
-      if (!isProFeature && notifyBox.getNotificationWithValue(notificationKey)) {
-        // notification is already shown on screen.
-        util.logDebug('notifyBox for [' + notificationKey + '] is already displayed, no action necessary.');
-        return;
-      }
-      util.logDebug('Showing notifyBox for [' + notificationKey + ']...');
-      
-			// obsolete: button for disabling this notification in the future
-			if (true) {
-        // registration button
-        if (isRegister) {
-          nbox_buttons.push(
-						{
-							label: regBtn,
-							accessKey: hotKey,   
-							callback: function() {  
-                util.showLicenseDialog(featureName); 
-							},
-							popup: null
-						}
-          )
-        }
-        
-        // licensing buttons
-        if (!isProFeature) {
-          let donateMsg = util.getBundleString("st.notification.licensing");
-          nbox_buttons.push(
-            {
-              label: donateMsg,
-              accessKey: null, 
-              callback: function() { 
-							  const theUtil = util.mainInstance.Util;
-                theUtil.showLicensePage(); 
-								// remove this message?
-                // let item = notifyBox.getNotificationWithValue(notificationKey);
-                // notifyBox.removeNotification(item, false);
-              },
-              popup: null
-            }
-          )
-				  // remind me later checkbox?
-				}
-        
-			}
-			else {
-				// obsolete: button for disabling this notification in the future
-				let dontShow = util.getBundleString("st.notification.dontShowAgain") + ' [' + featureTitle + ']'
-				nbox_buttons.push(
-					{
-						label: dontShow,
-						accessKey: null, 
-						callback: function() { util.mainInstance.Util.disableFeatureNotification(featureName); },
-						popup: null
-					}
-				);
-			}
-			
-			if (notifyBox) {
-				let item = notifyBox.getNotificationWithValue(notificationKey);
-				if (item)
-					notifyBox.removeNotification(item, false);
-			}
+		if (!notifyBox) {
+			alert("no notification");
+			return;
+		}
+		let notificationKey = 
+			(isProFeature) ? "SmartTemplate4-proFeature" : "SmartTemplate4-license";
+		// let's force additional notifications for Pro features
+		if (!isProFeature && notifyBox.getNotificationWithValue(notificationKey)) {
+			// notification is already shown on screen.
+			util.logDebug('notifyBox for [' + notificationKey + '] is already displayed, no action necessary.');
+			return;
+		}
+		util.logDebug('Showing notifyBox for [' + notificationKey + ']...');
 		
-		  // the standard license warning will be always shown on top of the other ones [PRIORITY_WARNING_HIGH]
-			// it contains the number of free / trial days left
-      const imgSrc = isProFeature ? "chrome://smarttemplate4/content/skin/proFeature.png" : "chrome://smarttemplate4/content/skin/licensing.png";
-      
-      let newNotification;
-      if (notifyBox.shown) { // new notification format (Post Tb 99)
-        newNotification = 
-          notifyBox.appendNotification( 
-            notificationKey, // "String identifier that can uniquely identify the type of the notification."
-            {
-              priority: isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH,
-              label: theText,
-              eventCallback: null
-            },
-            nbox_buttons
-          );
-      }
-      else {
-        newNotification = 
-          notifyBox.appendNotification( 
-            theText, 
-            notificationKey, 
-            imgSrc, 
-            isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH, 
-            nbox_buttons );
-      }
+		// registration button
+		if (isRegister) {
+			nbox_buttons.push(
+				{
+					label: regBtn,
+					accessKey: hotKey,   
+					callback: function() {  
+						util.showLicenseDialog(featureName); 
+					},
+					popup: null
+				}
+			)
+		}
+		
+		// licensing buttons
+		if (!isProFeature) {
+			let donateMsg = util.getBundleString("st.notification.licensing");
+			nbox_buttons.push(
+				{
+					label: donateMsg,
+					accessKey: null, 
+					callback: function() { 
+						const theUtil = util.mainInstance.Util;
+						theUtil.showLicensePage(); 
+						// remove this message?
+						// let item = notifyBox.getNotificationWithValue(notificationKey);
+						// notifyBox.removeNotification(item, false);
+					},
+					popup: null
+				}
+			)
+			// remind me later checkbox?
+		}
 
-      // setting img was removed in Tb91  
-      if (newNotification.messageImage.tagName == "span") {
-        let container = newNotification.shadowRoot.querySelector(".container");
-        if (container) {
-          let im = document.createElement("img");
-          im.setAttribute("src", imgSrc);
-          container.insertBefore(im, newNotification.shadowRoot.querySelector(".icon"));
-        }
-      }          
+		if (notifyBox) {
+			let item = notifyBox.getNotificationWithValue(notificationKey);
+			if (item)
+				notifyBox.removeNotification(item, false);
 		}
-		else {
-			// fallback for systems that do not support notification (currently: SeaMonkey)
-			let check = {value: false},   // default the checkbox to true  
-					dontShow = util.getBundleString("st.notification.dontShowAgain") + ' [' + featureTitle + ']',
-			    result = Services.prompt.alert(null, title, theText); // , dontShow, check
-			// if (check.value==true) util.disableFeatureNotification(featureName);
+	
+		// the standard license warning will be always shown on top of the other ones [PRIORITY_WARNING_HIGH]
+		// it contains the number of free / trial days left
+		const imgSrc = isProFeature ? "chrome://smarttemplate4/content/skin/proFeature.png" : "chrome://smarttemplate4/content/skin/licensing.png";
+		
+		let newNotification;
+		if (notifyBox.shown) { // new notification format (Post Tb 99)
+			newNotification = 
+				notifyBox.appendNotification( 
+					notificationKey, // "String identifier that can uniquely identify the type of the notification."
+					{
+						priority: isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH,
+						label: theText,
+						eventCallback: null
+					},
+					nbox_buttons
+				);
+		} else {
+			newNotification = 
+				notifyBox.appendNotification( 
+					theText, 
+					notificationKey, 
+					imgSrc, 
+					isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH, 
+					nbox_buttons );
 		}
+
+		// setting img was removed in Tb91  
+		if (newNotification.messageImage.tagName == "span") {
+			let container = newNotification.shadowRoot.querySelector(".container");
+			if (container) {
+				let im = document.createElement("img");
+				im.setAttribute("src", imgSrc);
+				container.insertBefore(im, newNotification.shadowRoot.querySelector(".icon"));
+			}
+		}
+
 	},  	
 
   // replaces Util.Licenser.showDialog(featureName);
