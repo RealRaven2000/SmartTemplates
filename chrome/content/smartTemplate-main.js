@@ -125,16 +125,18 @@ END LICENSE BLOCK
 
 
   Version 4.5 - FUTURE VERSION / WIP
-    # [issue 287] Support using percent "%" sign within a text parameter, e.g. %header.set(subject,"save 25%")%
-    # [issue 253] recreate unified toolbar menu using API functions
-    # [issue 259] Convert Settings screen to HTML, and move to Tab
-    # [issue ] 
+    # [issue 287] You can now use percent "%" sign within a text parameter, e.g. %header.set(subject,"save 25%")%
+    # [issue 282] Edit Templates button
+    # [issue 288] Added text transformation parameters for search functions (capitalise / uppercase / lowercase / camelcase)
+    # Minor layout improvements in settings screen
 
 
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
   Version 4.x - FUTURE VERSION / WIP
+    # [issue 253] recreate unified toolbar menu using API functions
+    # [issue 259] Convert Settings screen to HTML, and move to Tab
     # [issue ] 
     # [issue ] 
     # [issue ] 

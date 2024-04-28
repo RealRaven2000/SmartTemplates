@@ -1862,7 +1862,7 @@ SmartTemplate4.MessageHdr = null; // will be overwritten
 SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   const clipboardMode = firstPass ? true : false;
   
-	function matchText(regX, fromPart) {
+	function matchTextParser(regX, fromPart) {
 	  try {
 			if (prefs.isDebugOption('parseModifier')) debugger;
 			let matchPart = msg.match(regX);
@@ -1884,7 +1884,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
             util.addUsedPremiumFunction('matchTextFromSubject');
             if (!hdr) {
               msg = msg.replace(matchPart[i], "");
-              util.logToConsole("matchText() - matchTextFromSubject failed - couldn't retrieve header from Uri [" + gMsgCompose.originalMsgURI + "] - did you REPLY to a message?");
+              util.logToConsole("matchTextParser() - matchTextFromSubject failed - couldn't retrieve header from Uri [" + gMsgCompose.originalMsgURI + "] - did you REPLY to a message?");
               extractSource = gMsgCompose.compFields.subject;
             }
             else {
@@ -1909,6 +1909,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         }
 
         let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ); // match group number, first instance of  ... ",1  ... 
+        let formatter = util.initFormatter(matchPart[i]);
         if (!extractSource) {
           util.logDebug("pattern not found in " + fromPart + ":\n" + regX);
           msg = msg.replace(matchPart[i],"");
@@ -1961,6 +1962,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
           }
           // retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
         }
+        replaceGroupString = util.formatString(replaceGroupString, formatter);
         if (isClipboardPart) {
           util.clipboardWrite(replaceGroupString); // [issue 187]
           if (!replaceGroupString) {
@@ -1969,7 +1971,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
             msg = msg.replace(matchPart[i], `%toclipboard(${replaceGroupString})%`);// [issue 210]
           }
         } else {
-          util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
+          util.logDebug('matchTextParser(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
           msg = msg.replace(matchPart[i], replaceGroupString);
         }
 
@@ -1977,7 +1979,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
     
 		}	
 		catch	(ex) {
-			util.logException('matchText(' + regX + ', ' + fromPart +') failed:', ex);
+			util.logException('matchTextParser(' + regX + ', ' + fromPart +') failed:', ex);
 		}
 	}
 	
@@ -2116,6 +2118,8 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
       }
     }
   }
+
+
   
 	const util = SmartTemplate4.Util,
 	      prefs = SmartTemplate4.Preferences,
@@ -2125,9 +2129,9 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   // %matchTextFromBody()% using * to generate result:
   // %matchTextFromBody(TEST *)% => returns first * match: TEST XYZ => XYZ
 	// Insert replacement from body of QUOTED email!
-	matchText(/%matchTextFromBody\(.*?\)%/g, 'body'); // [bug 26688]
+	matchTextParser(/%matchTextFromBody\(.*?\)%/g, 'body'); // [bug 26688]
 	// Insert replacement from subject line
-	matchText(/%matchTextFromSubject\(.*?\)%/g, 'subject');
+	matchTextParser(/%matchTextFromSubject\(.*?\)%/g, 'subject');
 
 	// make 2 arrays, words to delete and replacement pairs.
 	let matches = msg.match(/%deleteText\(.*\)%/g), // works on template only
@@ -2732,6 +2736,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 	
 	// Replace reserved words
 	async function replaceReservedWords(dmy, token, arg)	{
+
 	  // calling this function just for logging purposes
 		function finalize(tok, s, comment) {
 			if (s) {
@@ -2764,7 +2769,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       }
       return false;
     }
-    
+
 		// duplicate for now
 		function matchText(regX, fromPart) {
 			try {
@@ -2815,6 +2820,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 						if (patternArg) {
 							let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ), // match group number
 									removePat = false;
+
+              let formatter = util.initFormatter( matchPart[i]); // extract any formatting operations
 							if (extractSource) {
 								let result = rx.exec(extractSource); // extract Pattern from source
 								if (result && result.length) {
@@ -2838,8 +2845,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 												return ""; // not well formed
 											}
 										} 
-									}									
-									return result[group];
+									}		
+                  return util.formatString(result[group], formatter);							
 								}
 								else
 									removePat = true;
@@ -2910,8 +2917,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 					if (matchFunction == 'matchFromBody') {
 						// Insert replacement from body of QUOTED email!
 						textParamList = matchText(regX, 'body');
-					}
-					else  {
+					} else  {
 						// Insert replacement from subject line
 						textParamList = matchText(regX, 'subject');
 					}
@@ -4234,7 +4240,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
   // msg = msg.replace(/%([a-zA-Z][\w\-:=.]*)(\(.*\))*%/gm, replaceReservedWords); 
   // msg = msg.replace(/%([a-zA-Z][\w\-:=.]*)(\([^%]*\))*%/gm, replaceReservedWords); 
   // replace [^%]* with .+? to match as few as possible, should allow ( % within )
-  msg = await SmartTemplate4.Util.replaceAsync(msg, /%([a-zA-Z][\w\-:=.]*)(\(.+?\))*%/gm, replaceReservedWords); 
+  // replace  .+? in  /%([a-zA-Z][\w\-:=.]*)(\(.+?\))*%/gm  with .+ to allow arguments that contain open parentheses!!
+  //             e.g. (domainname|domain) = (\w*@){0,1}((?!:\/\/)([a-zA-Z0-9-_]+\.)*[a-zA-Z0-9][a-zA-Z0-9-_]+\.[a-zA-Z]{2,11})
+  msg = await SmartTemplate4.Util.replaceAsync(msg, /%([a-zA-Z][\w\-:=.]*)(\(.+\))*%/gm, replaceReservedWords); 
                     // replaced ^) with ^% for header.set.matchFromSubject
                     // added mandatory start with a letter to avoid catching  encoded numbers such as %5C
                     // [issue 49] only match strings that start with an ASCII letter. (\D only guarded against digits)

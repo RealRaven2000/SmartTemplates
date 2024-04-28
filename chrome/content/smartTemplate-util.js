@@ -2972,6 +2972,49 @@ SmartTemplate4.Util = {
     }
   }, 	
 
+	initFormatter: function(argString) {
+		// [issue 288]
+		let formatter = {};
+		let formatArgs = argString.split(",");
+		formatArgs.shift();
+		while  (formatArgs.length) {
+			if (formatArgs[0].startsWith("capitalize")) {
+				formatter.isCapitalize = true
+			}
+			if (formatArgs[0].startsWith("camelcase")) {
+				formatter.isCamelcase = true
+			}			
+			if (formatArgs[0].startsWith("uppercase")) {
+				formatter.isUppercase = true
+			}
+			if (formatArgs[0].startsWith("lowercase")) {
+				formatter.isLowercase = true
+			}    
+			formatArgs.shift();            
+		}
+		return formatter;
+	},
+
+  formatString: function (txt, formatter) {
+		// [issue 288]
+    if (!formatter) return txt;
+    if (formatter?.isUppercase) return txt.toUpperCase();
+    if (formatter?.isLowercase) return txt.toLowerCase();
+		if (formatter?.isCamelcase) {
+			return txt[0].toLowerCase() + txt.substr(1);
+		}
+    if (formatter?.isCapitalize) {
+      const words = txt.split(" ");
+
+      for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1).toLowerCase();
+      }
+      return words.join(" ");
+      
+    }
+    return txt;
+  }
+
 };  // ST4.Util
 
 
