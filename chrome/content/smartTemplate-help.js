@@ -65,8 +65,12 @@ SmartTemplate4.Help = {
 		let variablesDocument = document.getElementById("helpFrame")?.contentDocument;
 		let preheaderDesc = variablesDocument?.getElementById("preHeaderText");
     if (preheaderDesc) {
-      preheaderDesc.textContent =
-				SmartTemplate4.Util.getBundleString("preheader.text",["clipboard", '"*selection*"']);
+      preheaderDesc.innerHTML =
+				SmartTemplate4.Util.getBundleString("preheader.text",
+				  ["<span class='paramLiteral'>clipboard</span>", 
+					"<span class='paramLiteral'>*selection*</span>", 
+					"<span class='paramLiteral'>*clipboard*</span>"]
+				);
     }		
 	} ,
 
