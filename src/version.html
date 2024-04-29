@@ -295,6 +295,23 @@ permalink: version.html
           <li> <code class="parameter">uppercase</code> Transforms the entire match to upper case.</li>  
         </ul>
       </li>
+      <li>
+        Support <code class="parameter">selection</code> as parameter for replaceText - so we can transform 
+        selected (formatted) text from smart fragments.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/289">[issue 289]</a>
+        <p>
+          Syntax: <code>%replaceText("find","replace",selection)%</code>
+        </p>
+        <p>
+          For example, the following can be used as a smart fragment script to generate a
+          nicer menu path from a string like "Menu >> submenu >> command" into 
+          "<i>Menu » submenu » command</i>". Note that we can use HTML markup, like in any
+          smart fragment.
+        </p>
+          <pre class=code>
+&lt;i&gt;%replaceText(">>","»",selection)%&lt;/i&gt;</pre>
+        </p>
+      </li>
       <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
       <li></li>
       <li></li>
