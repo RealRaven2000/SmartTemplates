@@ -123,11 +123,11 @@
       <ul>
         <li tabindex="-1"><code>%toclipboard(<i>text</i>)%</code> = __MSG_clipboard.copy__</li>
         <li tabindex="-1"><code>%clipboard%</code> = __MSG_clipboard.insert__</li>
-        <li tabindex="-1"><code>%from(mail,<i>toclipboard</i>)%</code> = __MSG_clipboard.from__</li>
-        <li tabindex="-1"><code>%dateformat("formatString",<i>toclipboard</i>)%</code> = __MSG_clipboard.dateformat__ __MSG_var_custom.cap__</li>
-        <li tabindex="-1"><code>%header.set(cc,<i>clipboard</i>)%</code> = __MSG_clipboard.setHeader__</li>
-        <li tabindex="-1"><code>%matchTextFromSubject(regularPattern,group,<i>toclipboard</i>)%</code> = __MSG_clipboard.matchSubject__</li>
-        <li tabindex="-1"><code>%matchTextFromBody(regularPattern,group,<i>toclipboard</i>)%</code> = __MSG_clipboard.matchBody__</li>
+        <li tabindex="-1"><code>%from(mail,<span class="paramLiteral">toclipboard</span>)%</code> = __MSG_clipboard.from__</li>
+        <li tabindex="-1"><code>%dateformat("formatString",<span class="paramLiteral">toclipboard</span>)%</code> = __MSG_clipboard.dateformat__ __MSG_var_custom.cap__</li>
+        <li tabindex="-1"><code>%header.set(cc,<span class="paramLiteral">clipboard</span>)%</code> = __MSG_clipboard.setHeader__</li>
+        <li tabindex="-1"><code>%matchTextFromSubject(regularPattern,group,<span class="paramLiteral">toclipboard</span>)%</code> = __MSG_clipboard.matchSubject__</li>
+        <li tabindex="-1"><code>%matchTextFromBody(regularPattern,group,<span class="paramLiteral">toclipboard</span>)%</code> = __MSG_clipboard.matchBody__</li>
       </ul>
       <p id="clipboardNotes">__MSG_clipboard.notes__</p>
     </div>
@@ -244,7 +244,7 @@
     <div class="chapterBody" tabindex="-1">
       <p>__MSG_conditionals.note__</p>
 			<ul>
-        <li tabindex="-1"><code>%conditionalText(forwardMode,"inline text","attach text")%</code> = __MSG_conditional.forwardMode__</li>
+        <li tabindex="-1"><code>%conditionalText(<span class="paramLiteral">forwardMode</span>,"inline text","attach text")%</code> = __MSG_conditional.forwardMode__</li>
       </ul>
     </div>
     
@@ -271,21 +271,22 @@
 			<aside>__MSG_stringmanip_function.explain__ <a href="https://smarttemplates.quickfolders.org/variables.html#stringManipulation" target="_blank">[String Manipulation]</a>.</aside>
 			<ul>
 				<li tabindex="-1"><code>%deleteText("text")%</code> = __MSG_deleteText__</li>
-				<li tabindex="-1"><code>%replaceText("find","replace")%</code> = __MSG_replaceText__</li>
-				<li tabindex="-1"><code>%matchTextFromBody("Regular Expression",MatchGroup<span class="param">,textTransform</span>,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromBody__</li>
-				<li tabindex="-1"><code>%matchTextFromSubject("Regular Expression",MatchGroup<span class="param">,textTransform</span>,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromSubject__</li>
+				<li tabindex="-1"><code>%replaceText("find","replace"<span class="paramLiteral">,selection</span>)%</code> = __MSG_replaceText__</li>
+				<li tabindex="-1"><code>%matchTextFromBody("Regular Expression",<span class="param">MatchGroup</span><span class="param">,textTransform</span>,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromBody__</li>
+				<li tabindex="-1"><code>%matchTextFromSubject("Regular Expression",<span class="param">MatchGroup</span><span class="param">,textTransform</span>,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromSubject__</li>
 			</ul>
 			<aside>__MSG_stringmanip.match.comment__</aside>
       <ul>
 				<li tabindex="-1"><span class="param">altText</span> = __MSG_stringmanip.alttext__</li>
+				<li class="paramList"><span class="paramLiteral">selection</span> = __MSG_replaceText.selection__</li>
 			</ul>
 			<ul>
 			  <aside><li tabindex="-1"><span class="param">textTransform</span> = __MSG_stringmanip.textTransform__:</li></aside>
         <h4>textTransform __MSG_parameters__</h4>
-        <li class="paramList"><span class="param">lowercase</span> = __MSG_stringmanip.textTransform.lcase__</li>
-        <li class="paramList"><span class="param">uppercase</span> = __MSG_stringmanip.textTransform.ucase__</li>
-        <li class="paramList"><span class="param">capitalize</span> = __MSG_stringmanip.textTransform.capitalize__</li>
-        <li class="paramList"><span class="param">camelcase</span> = __MSG_stringmanip.textTransform.ccase__</li>
+        <li class="paramList"><span class="paramLiteral">lowercase</span> = __MSG_stringmanip.textTransform.lcase__</li>
+        <li class="paramList"><span class="paramLiteral">uppercase</span> = __MSG_stringmanip.textTransform.ucase__</li>
+        <li class="paramList"><span class="paramLiteral">capitalize</span> = __MSG_stringmanip.textTransform.capitalize__</li>
+        <li class="paramList"><span class="paramLiteral">camelcase</span> = __MSG_stringmanip.textTransform.ccase__</li>
 			</ul>
     </div>
     <div class="chapterbreak" />
@@ -328,7 +329,7 @@
 				<li tabindex="-1"><code>%dateshort%</code> = __MSG_dateshort.label__</li>
 				<li tabindex="-1"><code>%date_tz%</code> = __MSG_datetz.label__</li>
 				<li tabindex="-1"><code>%tz_name%</code> = __MSG_tzname.label__</li>
-				<li tabindex="-1"><code>%X:=timezone(tz)%</code> = __MSG_timezone.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26629" target="_blank">[Bug 26629]</a></li>
+				<li tabindex="-1"><code>%X:=timezone(<span class="param">tz</span>)%</code> = __MSG_timezone.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26629" target="_blank">[Bug 26629]</a></li>
 			</ul>
 			<aside>(__MSG_dateoffset_note.label__)</aside>
 			<ul>
