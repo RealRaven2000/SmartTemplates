@@ -3001,7 +3001,12 @@ SmartTemplate4.Util = {
     if (formatter?.isUppercase) return txt.toUpperCase();
     if (formatter?.isLowercase) return txt.toLowerCase();
 		if (formatter?.isCamelcase) {
-			return txt[0].toLowerCase() + txt.substr(1);
+      const words = txt.split(" ");
+      for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toLowerCase() + words[i].substr(1);
+      }
+      return words.join(" ");
+
 		}
     if (formatter?.isCapitalize) {
       const words = txt.split(" ");
@@ -3010,7 +3015,6 @@ SmartTemplate4.Util = {
         words[i] = words[i][0].toUpperCase() + words[i].substr(1).toLowerCase();
       }
       return words.join(" ");
-      
     }
     return txt;
   }
