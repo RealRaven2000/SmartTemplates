@@ -128,6 +128,7 @@ END LICENSE BLOCK
     # [issue 287] You can now use percent "%" sign within a text parameter, e.g. %header.set(subject,"save 25%")%
     # [issue 282] Edit Templates button
     # [issue 288] Added text transformation parameters for search functions (capitalise / uppercase / lowercase / camelcase)
+    # [issue 289] Support selection as parameter for replaceText - so we can transform selected text from smart fragments    
     # Minor layout improvements in settings screen
 
 

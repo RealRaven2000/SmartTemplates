@@ -1941,6 +1941,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
           util.logToConsole("Your group argument [" + group + "] is too high, do you have enough (round brackets) in your expression?");
         } else {
           if (groupArg==null) { // [Bug 26634] third parameter is a replacement string
+            replaceGroupString = result[group]; // default
             // check for string arg - after second comma: %header.append.matchFromSubject(hdr,regex,"replaceText"])%
             let commaPos = matchPart[i].lastIndexOf(",\""); // search for last ," ...
             if (commaPos>0) {
@@ -1987,6 +1988,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
     let rx = new RegExp(/(\([^%]*)\)%/gm),
         ar = rx.exec(cmd),
         paramString = (ar.length>1) ? ar[1] : "";  // get params (within)
+    let isSelection = false;    
     // remove parentheses
     if (paramString.length>2) {
       paramString = paramString.substring(1);
@@ -2021,10 +2023,22 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         // pass back results
         cmdParameters.p1 = dText1[0];
         cmdParameters.p2 = dText2[0];
-        if (theStrings.length>2)
-          cmdParameters.p3 = parseInt(theStrings[2]); // quote level param
-        if (theStrings.length>3)
-          cmdParameters.p4 = parseInt(theStrings[3]); // minSize (kB)
+
+        if (theStrings.length>2) {
+          if (theStrings[2] == "selection") {
+            isSelection = true;
+          } else {
+            cmdParameters.p3 = parseInt(theStrings[2]); // quote level param
+          }
+        }
+        if (theStrings.length>3) {
+          if (theStrings[3] == "selection") {
+            isSelection = true;
+          } else {
+            cmdParameters.p4 = parseInt(theStrings[3]); // minSize (kB)
+          }
+        }
+        cmdParameters.selection = true;
         return true;
       }
       if(errDetail)
@@ -2171,13 +2185,22 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
       
       for (let i=0; i<matchesR.length; i++) {
         // parse out the argument (string to delete)
-        msg = msg.replace(matchesR[i], '');
         let params = {p1: null, p2: null, p3: null, p4: 0};
         if (parseParams(matchesR[i], params, 'replaceText')) {
           if (SmartTemplate4.PreprocessingFlags.isFragment) {
             // replace in body
-            replaceInBody(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
+            if (params.selection) {
+              // replace in selection!
+              let selectionHtml = SmartTemplate4.smartTemplate.unpackSelection(gMsgCompose.editor.selection);
+              let replacedHtml = selectionHtml.replaceAll(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
+              // replace the pattern into the rest of the fragment
+              msg = msg.replace(matchesR[i],replacedHtml);
+            } else {
+              msg = msg.replace(matchesR[i], '');
+              replaceInBody(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
+            }
           } else {
+            msg = msg.replace(matchesR[i], '');
             msg = msg.replace(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
           }
         }
