@@ -272,7 +272,10 @@
 	  window.i18n.updateDocument({extension});
     let note1 = document.getElementById("clipboardNotes");
     if (note1) {
-      note1.innerHTML = note1.textContent.replace("{file}", "<code>%file()%</code>").replace("{toclip}", "<i>toclipboard</i>");
+      note1.innerHTML = 
+        note1.textContent
+        .replace("{file}", "<code>%file()%</code>")
+        .replace("{toclip}", "<span class='paramLiteral'>toclipboard</span>");
     }
     let searchBox = document.getElementById("search");
     if (searchBox) {
@@ -285,7 +288,7 @@
         let target = event.target;
         switch (event.code) {
           case "NumpadEnter": // search next
-          case "Enter": // search next
+          case "Enter": // search start - how do we prevent [OK] from catching this???
             let search = target.value;
             event.preventDefault();
             event.stopPropagation();
@@ -312,8 +315,7 @@
             if (search.value) {
               findSearchString(search.value, true, backwards);
               document.getElementById("searchHelpContent").classList.add("hidden");
-            }
-            else {
+            } else {
               search.focus();
             }
             break;
