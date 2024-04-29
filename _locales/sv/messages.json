@@ -1127,7 +1127,7 @@
     "message": "Variabler"
   },
   "preheader.text": {
-    "message": "Förhandsvisningstexten måste vara innesluten i dubbla citat, som också kan innehålla nyckelordet *clipboard*. Som ett alternativ kan du använda $clipboardLiteral$ eller $selectionLiteral$ (det senare fungerar bara när det används från en Smart Snippet)",
+    "message": "Förhandsvisningstexten måste vara innesluten i dubbla citat, som också kan innehålla nyckelordet $clipboardStarred$. Som ett alternativ kan du använda $clipboardLiteral$ eller $selectionLiteral$ (det senare fungerar bara när det används från en Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1136,6 +1136,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },
@@ -1208,6 +1212,9 @@
   "replaceText": {
     "message": "Ersätt lite text med någonting annat."
   },
+  "replaceText.selection": {
+    "message": "[Valfritt] Ersätter all matchande text inom det aktuella urvalet med ersättningstexten - fungerar endast i Smarta fragment."
+  },  
   "replacementHTML": {
     "message": "måste vara i dubbla citat - antingen en text eller en html-tagg som kommer att infogas i citat varhelst en matchning hittas."
   },
@@ -1574,6 +1581,21 @@
   "stringmanip.match.comment": {
     "message": "matchfunktion: Den första parametern (det reguljära uttrycket) måste vara inom citationstecken. Den andra parametern är det matchande gruppnumret. Använd 0 för att matcha det fullständiga uttrycket, 1 för den första gruppen, etc."
   },
+  "stringmanip.textTransform": {
+    "message": "Valfri parameter för att omvandla den hittade texten"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Kapitaliserar första bokstaven i varje ord och sätter resten av bokstäverna till små bokstäver. Användbart för namn."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Gör första bokstaven i varje ord till små bokstäver."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Omvandlar hela matchningen till små bokstäver."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Omvandlar hela matchningen till stora bokstäver."
+  },  
   "stringmanip_function.cap": {
     "message": "Strängmanipulering"
   },

@@ -1082,7 +1082,7 @@
     "message": "[optional] Fügen Sie Ihre eigenen Style-Attribute hinzu, getrennt durch Semikolon. Ohne diesen Parameter fügt SmartTemplates 'display:none' ein, um den Abschnitt automatisch unsichtbar zu machen."
   },  
   "preheader.text": {
-    "message": "Der Vorschautext muss in doppelten Anführungszeichen enthalten sein, die auch das Schlüsselwort *clipboard* enthalten können. Alternativ können Sie auch $clipboardLiteral$ oder $selectionLiteral$ verwenden (das letztere funktioniert nur, wenn es in einem Smart Snippet verwendet wird)",
+    "message": "Der Vorschautext muss in doppelten Anführungszeichen enthalten sein, die im Text das Schlüsselwort $clipboardStarred$ enthalten können. Alternativ können Sie auch $clipboardLiteral$ oder $selectionLiteral$ verwenden (das letztere funktioniert nur, wenn es in einem Smart Snippet verwendet wird)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1091,6 +1091,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },
@@ -1163,6 +1167,9 @@
   "replaceText": {
     "message": "Ersetzt Text durch einen anderen."
   },
+  "replaceText.selection": {
+    "message": "[Optional] Ersetzt alle übereinstimmenden Texte innerhalb der aktuellen Auswahl durch den Ersatztext - funktioniert nur in Smart Fragments."
+  },  
   "replacementHTML": {
     "message": "muß in doppelten Anführungszeichen sein - entweder Text oder ein HTML tag wird im Zitat eingefügt."
   },
@@ -1520,6 +1527,21 @@
   "stringmanip.match.comment": {
     "message": "match Funktionen: Der erste Parameter ist der Reguläre Ausdruck in Anführungszeichen. Der zweite Parameter ist die Nummer der Gruppierung. 0 steht für den gesamten Ausdruck, 1 für die erste Gruppierung usw."
   },
+  "stringmanip.textTransform": {
+    "message": "Optionaler Parameter zur Transformation des gefundenen Textes"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Setzt den ersten Buchstaben jedes Wortes auf Großbuchstaben und die restlichen Buchstaben auf Kleinbuchstaben. Nützlich für Namen."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Konvertiert den Anfang jedes Wortes in einen Kleinbuchstaben."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Wandelt das gesamte Ergebnis in Kleinbuchstaben um."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Wandelt das gesamte Ergebnis in Großbuchstaben um."
+  },  
   "stringmanip_function.cap": {
     "message": "Textmanipulation"
   },

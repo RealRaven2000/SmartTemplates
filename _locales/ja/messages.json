@@ -1118,7 +1118,7 @@
     "message": "[オプション] セミコロンで区切られた独自のスタイル属性を追加します。このパラメーターがない場合、SmartTemplates はセクションを自動的に非表示にするために 'display:none' を挿入します。"
   },  
   "preheader.text": {
-    "message": "プレビューテキストは二重引用符内に含まれている必要があります。これには *clipboard* キーワードも含まれる場合があります。代替として、$clipboardLiteral$ または $selectionLiteral$ を使用することもできます（後者は Smart Snippet から使用される場合のみ機能します）",
+    "message": "プレビューテキストは二重引用符内に含まれている必要があります。これには $clipboardStarred$ キーワードも含まれる場合があります。代替として、$clipboardLiteral$ または $selectionLiteral$ を使用することもできます（後者は Smart Snippet から使用される場合のみ機能します）",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1127,6 +1127,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -1190,6 +1194,9 @@
   "replaceText": {
     "message": "特定の文字列を異なる文字列に置換します"
   },
+  "replaceText.selection": {
+    "message": "[オプション] 現在の選択内のすべての一致するテキストを置換テキストで置き換えます - スマートフラグメントでのみ機能します。"
+  },  
   "replacementHTML": {
     "message": "ダブルクオートで囲まれている必要があります - 引用部でマッチするすべての場所において、テキストあるいは HTML タグで置換されます"
   },
@@ -1544,6 +1551,21 @@
   "stringmanip.match.comment": {
     "message": "一致関数: 1 つ目のパラメーター (正規表現) は、二重引用符で囲まれている必要があります。2 つめのパラメーターは、一致したグループの数を示します。0: 完全一致、1: 1 つめに一致、など。"
   },
+  "stringmanip.textTransform": {
+    "message": "見つかったテキストを変換するためのオプションパラメーター"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "各単語の最初の文字を大文字にし、残りの文字を小文字にします。名前に便利です。"
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "各単語の最初の文字を小文字にします。"
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "マッチ全体を小文字に変換します。"
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "マッチ全体を大文字に変換します。"
+  },  
   "stringmanip_function.cap": {
     "message": "文字列操作"
   },

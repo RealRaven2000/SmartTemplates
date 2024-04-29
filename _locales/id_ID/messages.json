@@ -832,7 +832,7 @@
     "message": "[opsional] Tambahkan gaya atribut Anda sendiri, dipisahkan oleh titik koma. Tanpa parameter ini, SmartTemplates akan memasukkan 'display:none' secara otomatis untuk membuat bagian tersebut tidak terlihat."
   },  
   "preheader.text": {
-    "message": "Teks pratinjau harus berada dalam tanda kutip ganda, yang juga dapat berisi kata kunci *clipboard*. Sebagai alternatif, Anda dapat menggunakan $clipboardLiteral$ atau $selectionLiteral$ (yang terakhir hanya berfungsi ketika digunakan dari Smart Snippet)",
+    "message": "Teks pratinjau harus berada dalam tanda kutip ganda, yang juga dapat berisi kata kunci $clipboardStarred$. Sebagai alternatif, Anda dapat menggunakan $clipboardLiteral$ atau $selectionLiteral$ (yang terakhir hanya berfungsi ketika digunakan dari Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -841,6 +841,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -877,6 +881,9 @@
   "replaceText": {
     "message": "Ganti beberapa teks dengan yang lain."
   },
+  "replaceText.selection": {
+    "message": "[Opsional] Mengganti semua teks yang cocok dalam seleksi saat ini dengan teks pengganti - hanya berfungsi di Fragmen Pintar."
+  },  
   "resolveABRemoveMail": {
     "message": "Hapus alamat email kecuali format batasan ditentukan"
   },
@@ -1084,6 +1091,21 @@
   "stringmanip.match.comment": {
     "message": "Fungsi pencocok: Parameter pertama (ekspresi reguler) harus berada dalam tanda kutip ganda. Parameter kedua adalah nomor grup tandingan. Gunakan 0 untuk mencocokkan ekspresi lengkap, 1 untuk grup pertama, dll."
   },
+  "stringmanip.textTransform": {
+    "message": "Parameter opsional untuk mengubah teks yang ditemukan"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Mengkapitalkan huruf pertama dari setiap kata, dan huruf kecil untuk huruf lainnya. Berguna untuk Nama."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Membuat huruf pertama dari setiap kata menjadi huruf kecil."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Mentransformasi seluruh kecocokan menjadi huruf kecil."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Mentransformasi seluruh kecocokan menjadi huruf besar."
+  },  
   "stringmanip_function.cap": {
     "message": "Manipulasi String"
   },

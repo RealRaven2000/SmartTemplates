@@ -1131,7 +1131,7 @@
   },
     
   "preheader.text": {
-    "message": "预览文本必须包含在双引号内，双引号也可以包含 *clipboard* 关键字。或者您可以使用 $clipboardLiteral$ 或 $selectionLiteral$（后者仅在从智能片段使用时有效）",
+    "message": "预览文本必须包含在双引号内，双引号也可以包含 $clipboardStarred$ 关键字。或者您可以使用 $clipboardLiteral$ 或 $selectionLiteral$（后者仅在从智能片段使用时有效）",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1140,6 +1140,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },
@@ -1212,6 +1216,9 @@
   "replaceText": {
     "message": "用其他东西替换一些文本。"
   },
+  "replaceText.selection": {
+    "message": "[可选] 用替换文本替换当前选择中的所有匹配文本 - 仅在智能片段中有效。"
+  },  
   "replacementHTML": {
     "message": "必须用双引号引起来-文本或html标记都将在找到匹配项的地方插入引号中。"
   },
@@ -1566,6 +1573,21 @@
   "stringmanip.match.comment": {
     "message": "match函数：第一个参数（正则表达式）必须在双引号内。 第二个参数是匹配组号。 使用0来匹配完整的表达式，使用1来匹配第一组，依此类推。"
   },
+  "stringmanip.textTransform": {
+    "message": "用于转换找到的文本的可选参数"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "将每个单词的第一个字母大写，其余字母小写。 适用于名称。"
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "将每个单词的第一个字母小写。"
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "将整个匹配转换为小写。"
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "将整个匹配转换为大写。"
+  },  
   "stringmanip_function.cap": {
     "message": "文本操作"
   },

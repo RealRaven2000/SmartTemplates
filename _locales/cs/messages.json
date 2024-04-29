@@ -1130,7 +1130,7 @@
     "message": "[opcional] Afegiu els vostres propis atributs d'estil, separats per punt i coma. Sense aquest paràmetre, SmartTemplates inserirà 'display:none' per fer automàticament la secció invisible."
   },  
   "preheader.text": {
-    "message": "Náhledový text musí být obsažen v uvozovkách, které mohou také obsahovat klíčové slovo *clipboard*. Alternativně můžete použít $clipboardLiteral$ nebo $selectionLiteral$ (poslední funguje pouze při použití ze Smart Snippet)",
+    "message": "Náhledový text musí být obsažen v uvozovkách, které mohou také obsahovat klíčové slovo $clipboardStarred$. Alternativně můžete použít $clipboardLiteral$ nebo $selectionLiteral$ (poslední funguje pouze při použití ze Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1139,6 +1139,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -1211,6 +1215,9 @@
   "replaceText": {
     "message": "Přepíše text něčím jiným."
   },
+  "replaceText.selection": {
+    "message": "[Volitelné] Nahradí všechny shodné texty ve stávajícím výběru textu textem náhrady - funguje pouze ve Smart Fragments."
+  },  
   "replacementHTML": {
     "message": "musí být ve dvojitých uvozovkách - buď text nebo html značka, která bude vložena do uvozovek, kdekoli bude nalezena shoda."
   },

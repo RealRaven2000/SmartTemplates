@@ -1136,7 +1136,7 @@
     "message": "[facultatif] Ajoutez vos propres attributs de style, séparés par un point-virgule. Sans ce paramètre, SmartTemplates insérera 'display:none' pour rendre automatiquement la section invisible."
   },  
   "preheader.text": {
-    "message": "Le texte de prévisualisation doit être contenu entre guillemets doubles, qui peuvent également contenir le mot clé *clipboard*. En alternative, vous pouvez utiliser $clipboardLiteral$ ou $selectionLiteral$ (ce dernier ne fonctionne que lorsqu'il est utilisé depuis un Smart Snippet)",
+    "message": "Le texte de prévisualisation doit être contenu entre guillemets doubles, qui peuvent également contenir le mot clé $clipboardStarred$. En alternative, vous pouvez utiliser $clipboardLiteral$ ou $selectionLiteral$ (ce dernier ne fonctionne que lorsqu'il est utilisé depuis un Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1145,6 +1145,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -1207,6 +1211,9 @@
   },
   "replaceText": {
     "message": "Remplacer du texte."
+  },
+  "replaceText.selection": {
+    "message": "[Optionnel] Remplace tout le texte correspondant dans la sélection actuelle par le texte de remplacement - fonctionne uniquement dans les fragments intelligents."
   },
   "replacementHTML": {
     "message": "doit être entre guillemets doubles - soit un texte, soit une balise html qui sera insérée entre guillemets partout où une correspondance sera trouvée."
@@ -1571,6 +1578,21 @@
   "stringmanip.match.comment": {
     "message": "Fonctions de correspondance : Le premier paramètre (l'expression régulière) doit être indiqué entre guillemets doubles. Le second paramètre est le numéro de groupe de correspondance. Utilisez 0 pour l'expression complète, 1 pour le premier groupe, etc."
   },
+  "stringmanip.textTransform": {
+    "message": "Paramètre optionnel pour transformer le texte trouvé"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Met en majuscule la première lettre de chaque mot, et en minuscule pour les lettres restantes. Utile pour les noms."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Met la première lettre de chaque mot en minuscule."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Transforme toute la correspondance en minuscules."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Transforme toute la correspondance en majuscules."
+  },  
   "stringmanip_function.cap": {
     "message": "Manipulation des chaînes de caractères"
   },

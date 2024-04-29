@@ -1211,6 +1211,9 @@
   "replaceText": {
     "message": "Korvaa tekstiä jollain muulla."
   },
+  "replaceText.selection": {
+    "message": "[Valinnainen] Korvaa kaiken vastaavan tekstin nykyisessä valinnassa korvaustekstillä - toimii vain Älykkäissä fragmenteissa."
+  },  
   "replacementHTML": {
     "message": "Tämän on oltava lainausmerkeissä - joko teksti tai html-tunniste, joka lisätään lainausmerkkeihin, jos vastaavuus löytyy."
   },
@@ -1574,6 +1577,21 @@
   "stringmanip.match.comment": {
     "message": "vastaavat funktiot: Ensimmäinen parametri (RegEx, säännöllinen lauseke) on oltava lainausmerkkien sisällä. Toisen parametrin on vastattava ryhmän numeroa. 0 vastaa koko lauseketta, 1 ensimmäistä ryhmää jne."
   },
+  "stringmanip.textTransform": {
+    "message": "Valinnainen parametri löydetyn tekstin muuntamiseksi"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Isot alkukirjaimet jokaiselle sanalle ja pienet kirjaimet lopuille kirjaimille. Hyödyllinen nimille."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Muuttaa jokaisen sanan ensimmäisen kirjaimen pieneksi."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Muuntaa koko löydön pieniksi kirjaimiksi."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Muuntaa koko löydön isoiksi kirjaimiksi."
+  },    
   "stringmanip_function.cap": {
     "message": "Merkkijonon manipulointi"
   },

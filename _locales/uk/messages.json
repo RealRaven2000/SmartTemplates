@@ -1137,7 +1137,7 @@
     "message": "Змінні"
   },
   "preheader.text": {
-    "message": "Текст попереднього перегляду повинен бути у подвійних лапках, які також можуть містити ключове слово *clipboard*. Як альтернативу, ви можете використовувати $clipboardLiteral$ або $selectionLiteral$ (останнє працює лише при використанні з Smart Snippet)",
+    "message": "Текст попереднього перегляду повинен бути у подвійних лапках, які також можуть містити ключове слово $clipboardStarred$. Як альтернативу, ви можете використовувати $clipboardLiteral$ або $selectionLiteral$ (останнє працює лише при використанні з Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1146,6 +1146,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },
@@ -1218,6 +1222,9 @@
   "replaceText": {
     "message": "Замінінення деякого тексту на щось інше."
   },
+  "replaceText.selection": {
+    "message": "[Опціонально] Замінює всі відповідні тексти в поточному виділенні текстом заміни - працює тільки у розумних фрагментах."
+  },  
   "replacementHTML": {
     "message": "має бути в подвійних лапках - або текстовий, або HTML-тег, який буде вставлено в лапки там, де буде знайдено відповідність."
   },
@@ -1581,6 +1588,21 @@
   "stringmanip.match.comment": {
     "message": "Функції відповідності: Перший параметр (регулярний вираз) повинен бути в межах подвійних лапок. Другий параметр - це номер групи відповідності. Використовуйте 0 для повного виразу, 1 для першої групи тощо."
   },
+  "stringmanip.textTransform": {
+    "message": "Необов'язковий параметр для перетворення знайденого тексту"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Перетворює першу літеру кожного слова у велику, а решту літер у малі. Корисно для імен."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Робить першу літеру кожного слова маленькою."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Перетворює весь збіг на малі літери."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Перетворює весь збіг на великі літери."
+  },  
   "stringmanip_function.cap": {
     "message": "Маніпуляції з рядками"
   },

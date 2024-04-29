@@ -1136,7 +1136,7 @@
     "message": "[可選] 添加您自己的樣式屬性，以分號分隔。沒有這個參數，SmartTemplates 將插入 'display:none' 來自動使該部分不可見。"
   },  
   "preheader.text": {
-    "message": "預覽文本必須包含在雙引號內，雙引號也可以包含 *clipboard* 關鍵字。或者您可以使用 $clipboardLiteral$ 或 $selectionLiteral$（後者僅在從智能片段使用時有效）",
+    "message": "預覽文本必須包含在雙引號內，雙引號也可以包含 $clipboardStarred$ 關鍵字。或者您可以使用 $clipboardLiteral$ 或 $selectionLiteral$（後者僅在從智能片段使用時有效）",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1145,6 +1145,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -1217,6 +1221,9 @@
   "replaceText": {
     "message": "用其他內容替換一些文本。"
   },
+  "replaceText.selection": {
+    "message": "[可選] 將當前選取範圍內的所有符合文字替換為替換文字 - 僅適用於智慧片段。"
+  },  
   "replacementHTML": {
     "message": "參數必須用雙引號引起來-文本或html標記都將在找到匹配項時插入引號中。"
   },
@@ -1568,6 +1575,21 @@
   "stringmanip.match.comment": {
     "message": "match函數：第一個參數（正則表達式）必須在雙引號內。 第二個參數是匹配組號。 使用0來匹配完整的表達式，使用1來匹配第一組，依此類推。"
   },
+  "stringmanip.textTransform": {
+    "message": "用於轉換找到的文本的可選參數"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "將每個單詞的第一個字母大寫，其餘字母小寫。適用於名稱。"
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "將每個單詞的第一個字母小寫。"
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "將整個匹配項轉換為小寫。"
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "將整個匹配項轉換為大寫。"
+  },  
   "stringmanip_function.cap": {
     "message": "字符串操作"
   },

@@ -1100,7 +1100,7 @@
     "message": "[opcional] Adicione seus próprios atributos de estilo, separados por ponto e vírgula. Sem este parâmetro, o SmartTemplates inserirá 'display:none' para tornar a seção automaticamente invisível."
   },  
   "preheader.text": {
-    "message": "O texto de pré-visualização deve estar contido entre aspas duplas, que também podem conter a palavra-chave *clipboard*. Como alternativa, pode usar $clipboardLiteral$ ou $selectionLiteral$ (este último só funciona quando utilizado a partir de um Smart Snippet)",
+    "message": "O texto de pré-visualização deve estar contido entre aspas duplas, que também podem conter a palavra-chave $clipboardStarred$. Como alternativa, pode usar $clipboardLiteral$ ou $selectionLiteral$ (este último só funciona quando utilizado a partir de um Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1109,6 +1109,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -1181,6 +1185,9 @@
   "replaceText": {
     "message": "Substitui algum texto por outra coisa."
   },
+  "replaceText.selection": {
+    "message": "[Opcional] Substitui todo o texto correspondente na seleção atual pelo texto de substituição - funciona apenas em Fragmentos Inteligentes."
+  },  
   "replacementHTML": {
     "message": "deve estar entre aspas duplas - um texto ou uma tag html que será inserida entre aspas sempre que uma correspondência for encontrada."
   },
@@ -1541,6 +1548,21 @@
   "stringmanip.match.comment": {
     "message": "Funções correspondentes: O primeiro parâmetro (a expressão regular) deve estar entre aspas duplas. O segundo parâmetro é o número do grupo de correspondência. Use 0 para corresponder a expressão completa, 1 para o primeiro grupo, etc."
   },
+  "stringmanip.textTransform": {
+    "message": "Parâmetro opcional para transformar o texto encontrado"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Coloca a primeira letra de cada palavra em maiúscula e minúscula para as letras restantes. Útil para Nomes."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Faz a primeira letra de cada palavra minúscula."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Transforma toda a correspondência em minúsculas."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Transforma toda a correspondência em maiúsculas."
+  },  
   "stringmanip_function.cap": {
     "message": "Manipulação de string"
   },

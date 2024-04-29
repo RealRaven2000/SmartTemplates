@@ -1046,7 +1046,7 @@
     "message": "[opzionale] Aggiungi i tuoi attributi di stile, separati da punto e virgola. Senza questo parametro, SmartTemplates inserirà 'display:none' per rendere automaticamente la sezione invisibile."
   },  
   "preheader.text": {
-    "message": "Il testo di anteprima deve essere contenuto tra virgolette doppie, che possono anche contenere la parola chiave *clipboard*. In alternativa, è possibile utilizzare $clipboardLiteral$ o $selectionLiteral$ (quest'ultimo funziona solo quando viene utilizzato da un Smart Snippet)",
+    "message": "Il testo di anteprima deve essere contenuto tra virgolette doppie, che possono anche contenere la parola chiave $clipboardStarred$. In alternativa, è possibile utilizzare $clipboardLiteral$ o $selectionLiteral$ (quest'ultimo funziona solo quando viene utilizzato da un Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1055,6 +1055,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -1118,6 +1122,9 @@
   "replaceText": {
     "message": "Sostituisce un testo con un altro."
   },
+  "replaceText.selection": {
+    "message": "[Opzionale] Sostituisce tutto il testo corrispondente nella selezione corrente con il testo di sostituzione - funziona solo nei frammenti intelligenti."
+  },  
   "replacementHTML": {
     "message": "deve essere racchiuso tra virgolette: un tag di testo o html che verrà inserito tra virgolette ogni volta che viene trovata una corrispondenza."
   },
@@ -1478,6 +1485,21 @@
   "stringmanip.match.comment": {
     "message": "Funzioni di abbinamento: il primo parametro (l'espressione regolare) deve essere racchiuso tra doppi apici. Il secondo parametro è il numero del gruppo di abbinamento. Utilizza 0 per abbinare l'espressione completa, 1 per il primo gruppo, e così via."
   },
+  "stringmanip.textTransform": {
+    "message": "Parametro opzionale per trasformare il testo trovato"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Capitalizza la prima lettera di ogni parola, e minuscole per le lettere rimanenti. Utile per i Nomi."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Rende minuscola la prima lettera di ogni parola."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Trasforma l'intera corrispondenza in minuscolo."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Trasforma l'intera corrispondenza in maiuscolo."
+  },  
   "stringmanip_function.cap": {
     "message": "Gestione stringhe di testo"
   },

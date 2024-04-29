@@ -1132,7 +1132,7 @@
     "message": "[opcjonalnie] Dodaj własne style, oddzielone średnikiem. Bez tego parametru SmartTemplates automatycznie wstawi 'display:none', aby automatycznie ukryć sekcję."
   },  
   "preheader.text": {
-    "message": "Tekst podglądu musi być zawarty w podwójnych cudzysłowach, które mogą również zawierać słowo kluczowe *clipboard*. W alternatywie można użyć $clipboardLiteral$ lub $selectionLiteral$ (ten ostatni działa tylko wtedy, gdy jest używany z elementu Smart Snippet)",
+    "message": "Tekst podglądu musi być zawarty w podwójnych cudzysłowach, które mogą również zawierać słowo kluczowe $clipboardStarred$. W alternatywie można użyć $clipboardLiteral$ lub $selectionLiteral$ (ten ostatni działa tylko wtedy, gdy jest używany z elementu Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1141,6 +1141,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -1213,6 +1217,9 @@
   "replaceText": {
     "message": "Zamiana tekstu na coś innego."
   },
+  "replaceText.selection": {
+    "message": "[Opcjonalne] Zastępuje wszystkie pasujące teksty w bieżącym zaznaczeniu tekstem zastępczym - działa tylko w inteligentnych fragmentach."
+  },  
   "replacementHTML": {
     "message": "muszą być w cudzysłowach - tag tekstowy lub html, który zostanie wstawiony w cudzysłowie wszędzie tam, gdzie znaleziono dopasowanie."
   },
@@ -1576,6 +1583,21 @@
   "stringmanip.match.comment": {
     "message": "match Functions: Pierwszy parametr (wyrażenie regularne) musi być zawarte w cudzysłowie. Drugim parametrem jest numer grupy. Użyj 0 dla całego wyrażenia, 1 dla pierwszej grupy itd."
   },
+  "stringmanip.textTransform": {
+    "message": "Opcjonalny parametr do transformacji znalezionego tekstu"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Pierwsza litera każdego słowa jest zapisywana wielką literą, a reszta liter jest zapisywana małą literą. Przydatne dla nazw."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Pierwsza litera każdego słowa jest zamieniana na małą literę."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Zamienia całe dopasowanie na małe litery."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Zamienia całe dopasowanie na duże litery."
+  },  
   "stringmanip_function.cap": {
     "message": "Manipulacja stringami"
   },

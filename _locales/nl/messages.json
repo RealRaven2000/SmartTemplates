@@ -1079,7 +1079,7 @@
     "message": "[optioneel] Voeg uw eigen stijlattributen toe, gescheiden door puntkomma. Zonder deze parameter zal SmartTemplates automatisch 'display:none' invoegen om het gedeelte onzichtbaar te maken."
   },  
   "preheader.text": {
-    "message": "De voorbeeldtekst moet tussen dubbele aanhalingstekens staan, die ook het sleutelwoord *clipboard* kunnen bevatten. Als alternatief kunt u $clipboardLiteral$ of $selectionLiteral$ gebruiken (de laatste werkt alleen wanneer deze wordt gebruikt vanuit een Smart Snippet)",
+    "message": "De voorbeeldtekst moet tussen dubbele aanhalingstekens staan, die ook het sleutelwoord $clipboardStarred$ kunnen bevatten. Als alternatief kunt u $clipboardLiteral$ of $selectionLiteral$ gebruiken (de laatste werkt alleen wanneer deze wordt gebruikt vanuit een Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1088,6 +1088,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -1160,6 +1164,9 @@
   "replaceText": {
     "message": "Tekst door iets anders vervangen"
   },
+  "replaceText.selection": {
+    "message": "[Optioneel] Vervangt alle overeenkomende tekst binnen de huidige selectie door de vervangingstekst - werkt alleen in Slimme Fragmenten."
+  },  
   "replacementHTML": {
     "message": "dient tussen dubbele aanhalingstekens te staan – een tekst of HTML-label dat tussen aanhalingstekens wordt ingevoegd als een overeenkomst wordt gevonden."
   },
@@ -1517,6 +1524,21 @@
   "stringmanip.match.comment": {
     "message": "Functies matchen: de eerste parameter (de reguliere expressie) dient tussen dubbele aanhalingstekens te staan. De tweede parameter in het te matchen groepsnummer. Gebruik 0 om de volledige expressie te matchen, 1 voor de eerste groep, enz."
   },
+  "stringmanip.textTransform": {
+    "message": "Optionele parameter voor het transformeren van de gevonden tekst"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Hoofdletters de eerste letter van elk woord, en kleine letters voor de overige letters. Handig voor Namen."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Maakt de eerste letter van elk woord in kleine letters."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Transformeert de gehele overeenkomst naar kleine letters."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Transformeert de gehele overeenkomst naar hoofdletters."
+  },  
   "stringmanip_function.cap": {
     "message": "Stringmanipulatie"
   },

@@ -1136,7 +1136,7 @@
     "message": "[opcional] Afegiu els vostres propis atributs d'estil, separats per punt i coma. Sense aquest paràmetre, SmartTemplates inserirà 'display:none' per fer automàticament la secció invisible."
   },  
   "preheader.text": {
-    "message": "El text previ ha d'estar contingut dins de cometes dobles, que també poden contenir la paraula clau *clipboard*. Alternativament, podeu utilitzar $clipboardLiteral$ o $selectionLiteral$ (aquest últim només funciona quan s'utilitza des d'una Smart Snippet)",
+    "message": "El text previ ha d'estar contingut dins de cometes dobles, que també poden contenir la paraula clau $clipboardStarred$. Alternativament, podeu utilitzar $clipboardLiteral$ o $selectionLiteral$ (aquest últim només funciona quan s'utilitza des d'una Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1145,6 +1145,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },
@@ -1217,6 +1221,9 @@
   "replaceText": {
     "message": "Substitueix algun text per una altra cosa."
   },
+  "replaceText.selection": {
+    "message": "[Opcional] Reemplaça tot el text coincident dins de la selecció actual amb el text de substitució - només funciona en Fragments Intel·ligents."
+  },  
   "replacementHTML": {
     "message": "ha d'estar entre cometes dobles: ja sigui un text o una etiqueta html que s'inserirà entre cometes sempre que es trobi una coincidència."
   },

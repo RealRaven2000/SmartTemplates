@@ -1064,7 +1064,7 @@
     "message": "Променљиве"
   },
   "preheader.text": {
-    "message": "Tekst za pregled mora biti sadržan unutar dvostrukih navodnika, koji takođe mogu sadržati ključnu reč *clipboard*. Kao alternativu, možete koristiti $clipboardLiteral$ ili $selectionLiteral$ (poslednje funkcioniše samo kada se koristi iz Smart Snippet)",
+    "message": "Tekst za pregled mora biti sadržan unutar dvostrukih navodnika, koji takođe mogu sadržati ključnu reč $clipboardStarred$. Kao alternativu, možete koristiti $clipboardLiteral$ ili $selectionLiteral$ (poslednje funkcioniše samo kada se koristi iz Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1073,6 +1073,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -1145,6 +1149,9 @@
   "replaceText": {
     "message": "Замените неки текст нечим другим."
   },
+  "replaceText.selection": {
+    "message": "[Опционо] Замењује све одговарајуће текстове у текућем избору текстом за замену - ради само у паметним фрагментима."
+  },  
   "replacementHTML": {
     "message": "мора бити у двоструким наводницима - било текст или хтмл таг који ће бити убачен у наводнике где год се подударање нађе."
   },
@@ -1445,6 +1452,21 @@
   "stringmanip.match.comment": {
     "message": "Функције подударања: Први параметар (регуларни израз) мора бити унутар двоструких наводника. Други параметар је број групе подударања. Користите 0 да се подударате са комплетним изразом, 1 за прву групу итд."
   },
+  "stringmanip.textTransform": {
+    "message": "Опционални параметар за трансформацију пронађеног текста"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Прво слово сваке речи ставља у велико слово, а остала слова у мала слова. Корисно за имена."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Поставља прво слово сваке речи у мала слова."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Трансформише целу подударност у мала слова."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Трансформише целу подударност у велика слова."
+  },  
   "stringmanip_function.cap": {
     "message": "Стринг Манипулатион"
   },

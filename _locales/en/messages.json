@@ -1161,7 +1161,7 @@
     "message": "[optional] Add your own style attributes, separated by semicolon. Without this parameter, SmartTemplates will insert 'display:none' to automatically make the section invisible."
   },   
   "preheader.text": {
-    "message": "The preview text must be contained within double quotes, which also may contain the *clipboard* keyword. Alternatively you can use $clipboardLiteral$ directly or $selectionLiteral$ (that last one only works when used from a Smart Snippet)",
+    "message": "The preview text must be contained within double quotes, which also may contain the $clipboardStarred$ keyword. Alternatively you can use $clipboardLiteral$ directly or $selectionLiteral$ (that last one only works when used from a Smart Snippet)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1170,6 +1170,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   }, 
@@ -1241,6 +1245,9 @@
   },
   "replaceText": {
     "message": "Replace some text with something else."
+  },
+  "replaceText.selection" : {
+    "message": "[Optional] Replaces all matching text within the current selection with the replament text - works in Smart Fragments only."
   },
   "replacementHTML": {
     "message": "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found."
@@ -1617,6 +1624,21 @@
   "stringmanip.match.comment": {
     "message": "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc."
   },
+  "stringmanip.textTransform": {
+    "message": "Optional parameter for transforming the found text"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Capitalizes the first letter of each word, and lowercase for the remaining letters. Useful for Names."
+  }, 
+  "stringmanip.textTransform.ccase": {
+    "message": "Make the first letter of each word lowercase."
+  }, 
+  "stringmanip.textTransform.lcase": {
+    "message": "Transform the entire match to lower case."
+  }, 
+  "stringmanip.textTransform.ucase": {
+    "message": "Transform the entire match to upper case."
+  }, 
   "stringmanip_function.cap": {
     "message": "String Manipulation"
   },

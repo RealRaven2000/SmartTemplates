@@ -1091,7 +1091,7 @@
     "message": "[neobvezno] Dodajte svoje slogovne atribute, ločene s podpičjem. Brez tega parametra bo SmartTemplates samodejno vstavil 'display:none', da bo del samodejno neviden."
   },  
   "preheader.text": {
-    "message": "Predogled besedila mora biti v dvojnih narekovajih, ki lahko vsebujejo tudi ključno besedo *clipboard*. Kot alternativo lahko uporabite $clipboardLiteral$ ali $selectionLiteral$ (ta zadnji deluje samo, ko se uporablja iz pametnega odlomka)",
+    "message": "Predogled besedila mora biti v dvojnih narekovajih, ki lahko vsebujejo tudi ključno besedo $clipboardStarred$. Kot alternativo lahko uporabite $clipboardLiteral$ ali $selectionLiteral$ (ta zadnji deluje samo, ko se uporablja iz pametnega odlomka)",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1100,6 +1100,10 @@
       "selectionLiteral": {
         "content": "$2",
         "example": "\"*selection*\""
+      },
+      "clipboardStarred" : {
+        "content": "$3",
+        "example": "*clipboard*"
       }
     }
   },  
@@ -1172,6 +1176,9 @@
   "replaceText": {
     "message": "Zamenjaj besedilo z drugim besedilom."
   },
+  "replaceText.selection": {
+    "message": "[Neobvezno] Zamenja vse ujemajoče se besedilo v trenutni izbiri z nadomestnim besedilom - deluje le v pametnih fragmentih."
+  },  
   "replacementHTML": {
     "message": "mora biti v dvojnih narekovajih - bodisi besedilu ali html oznaki, ki bo vstavljen v narekovaje, kjer koli se najde ujemanje."
   },
@@ -1472,6 +1479,21 @@
   "stringmanip.match.comment": {
     "message": "Funkcije ujemanja: prvi parameter (običajni izraz) mora biti v dvojnih narekovajih. Drugi parameter je število skupine ujemanja. Uporabite 0 za ujemanje celotnega izraza, 1 za prvo skupino itd."
   },
+  "stringmanip.textTransform": {
+    "message": "Izbirni parameter za pretvorbo najdenega besedila"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Velik začetnico vsake besede in male črke za preostala črka. Uporabno za imena."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Naredi prvo črko vsake besede male črke."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Pretvori celoten ujemanje v male črke."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Pretvori celoten ujemanje v velike črke."
+  },  
   "stringmanip_function.cap": {
     "message": "Ravnanje z nizi"
   },
