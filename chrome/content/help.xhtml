@@ -254,14 +254,15 @@
 			<aside>__MSG_header_function.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904" target="_blank">[Bug 25904]</a>.</aside>
 			<aside>__MSG_header_function.scope__ subject, from, to, cc, bcc, reply-to, list-*</aside>
 			<ul>
-				<li tabindex="-1"><code>%header.set(subject,"text")%</code> = __MSG_header.set.subject__</li>
-				<li tabindex="-1"><code>%header.prefix(subject,"text")%</code> = __MSG_header.prefix.subject__</li>
-				<li tabindex="-1"><code>%header.append(subject,"text")%</code> = __MSG_header.append.subject__</li>
-				<li tabindex="-1"><code>%header.delete(subject,"regex")%</code> = __MSG_header.delete.subject__</li>
+				<li tabindex="-1"><code>%header.set(subject,"text"<span class="param">,textTransform</span>)%</code> = __MSG_header.set.subject__</li>
+				<li tabindex="-1"><code>%header.prefix(subject,"text"<span class="param">,textTransform</span>)%</code> = __MSG_header.prefix.subject__</li>
+				<li tabindex="-1"><code>%header.append(subject,"text"<span class="param">,textTransform</span>)%</code> = __MSG_header.append.subject__</li>
+				<li tabindex="-1"><code>%header.delete(subject,"regex"<span class="param">,textTransform</span>)%</code> = __MSG_header.delete.subject__</li>
 				<li tabindex="-1"><code>%header.set(to,"abc@de.com")%</code> = __MSG_header.set.to__</li>
 				<li tabindex="-1"><code>%header.append(to,"abc@de.com")%</code> = __MSG_header.append.to__</li>
         <li tabindex="-1"><code>%header.set(from,"Postmaster &lt;pm@abc.com&gt;")%</code> = __MSG_header.set.from__</li>
 			</ul>
+			<aside><li tabindex="-1"><span class="param">textTransform</span> = __MSG_stringmanip.textTransform__ (lowercase, uppercase, capitalize, camelcase)</li></aside>
     </div>
       
 		<!-- ##### deleteText / replaceText / matchTextFromBody / matchTextFromSubject #### -->
@@ -271,11 +272,21 @@
 			<ul>
 				<li tabindex="-1"><code>%deleteText("text")%</code> = __MSG_deleteText__</li>
 				<li tabindex="-1"><code>%replaceText("find","replace")%</code> = __MSG_replaceText__</li>
-				<li tabindex="-1"><code>%matchTextFromBody("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromBody__</li>
-				<li tabindex="-1"><code>%matchTextFromSubject("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromSubject__</li>
+				<li tabindex="-1"><code>%matchTextFromBody("Regular Expression",MatchGroup<span class="param">,textTransform</span>,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromBody__</li>
+				<li tabindex="-1"><code>%matchTextFromSubject("Regular Expression",MatchGroup<span class="param">,textTransform</span>,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromSubject__</li>
 			</ul>
 			<aside>__MSG_stringmanip.match.comment__</aside>
-      <aside><span class="param">altText</span> : __MSG_stringmanip.alttext__</aside>
+      <ul>
+				<li tabindex="-1"><span class="param">altText</span> = __MSG_stringmanip.alttext__</li>
+			</ul>
+			<ul>
+			  <aside><li tabindex="-1"><span class="param">textTransform</span> = __MSG_stringmanip.textTransform__:</li></aside>
+        <h4>textTransform __MSG_parameters__</h4>
+        <li class="paramList"><span class="param">lowercase</span> = __MSG_stringmanip.textTransform.lcase__</li>
+        <li class="paramList"><span class="param">uppercase</span> = __MSG_stringmanip.textTransform.ucase__</li>
+        <li class="paramList"><span class="param">capitalize</span> = __MSG_stringmanip.textTransform.capitalize__</li>
+        <li class="paramList"><span class="param">camelcase</span> = __MSG_stringmanip.textTransform.ccase__</li>
+			</ul>
     </div>
     <div class="chapterbreak" />
 
