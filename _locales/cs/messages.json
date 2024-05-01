@@ -1575,6 +1575,21 @@
   "stringmanip.match.comment": {
     "message": "relevance Funkcí: První parametr (regulární výraz) musí být s uvozovkami. Druhý parametr je vztažený k číslu skupiny. Použíj 0 pro shodu s celým vzorem, 1 pro první skupinu atd."
   },
+  "stringmanip.textTransform": {
+    "message": "Volitelný parametr pro transformaci nalezeného textu"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Kapitalizuje první písmeno každého slova a zbytek písmen převede na malá písmena. Užitečné pro jména."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Převede první písmeno každého slova na malé písmeno."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Převede celý výskyt na malá písmena."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Převede celý výskyt na velká písmena."
+  },    
   "stringmanip_function.cap": {
     "message": "změna řetězce"
   },

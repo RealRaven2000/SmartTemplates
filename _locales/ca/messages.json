@@ -1584,6 +1584,21 @@
   "stringmanip.match.comment": {
     "message": "Funcions de coincidència: el primer paràmetre (l'expressió regular) ha d'estar entre cometes dobles. El segon paràmetre és el número del grup de concordança. Utilitzeu 0 per fer coincidir l'expressió completa, 1 per al primer grup, etc."
   },
+  "stringmanip.textTransform": {
+    "message": "Paràmetre opcional per transformar el text trobat"
+  },
+  "stringmanip.textTransform.capitalize": {
+    "message": "Capitalitza la primera lletra de cada paraula, i minúscules per a les lletres restants. Útil per als noms."
+  },
+  "stringmanip.textTransform.ccase": {
+    "message": "Converteix la primera lletra de cada paraula en minúscula."
+  },
+  "stringmanip.textTransform.lcase": {
+    "message": "Transforma tota la coincidència a minúscula."
+  },
+  "stringmanip.textTransform.ucase": {
+    "message": "Transforma tota la coincidència a majúscula."
+  },  
   "stringmanip_function.cap": {
     "message": "Manipulació de cadenes"
   },
