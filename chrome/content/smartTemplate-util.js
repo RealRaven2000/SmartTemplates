@@ -2492,6 +2492,7 @@ SmartTemplate4.Util = {
 		return formatArray;
 	} ,
 	
+
 	// Repair Parameter Array (that was split using ,)
   // that has a string parameter containing an escaped comma \,
 	//--------------------------------------------------------------------
@@ -2518,6 +2519,58 @@ SmartTemplate4.Util = {
     return finalParams;
   } ,
 
+  // take a full SmartTemplates command and extract an array of parameters
+  extractParameters: function (cmd) {
+    //  finds: (params)%  changed [^%]* to .+?
+    let rx = new RegExp(/(\(.+?)\)%/gm),
+        ar = rx.exec(cmd),
+        paramString = (ar.length>1) ? ar[1] : ""; 
+    // remove parentheses
+    if (paramString.length>2) {
+      paramString = paramString.substring(1);
+    }
+
+    // combine parameter parts. (allow \, within strings)
+    let parameters = this.combineEscapedParams(paramString.split(","), 0);
+    if (parameters.length>1) {
+      parameters = this.combineEscapedParams(parameters, 1); // combine 2nd parameter parts
+    }    
+    return parameters;
+  } ,
+
+	// for regex expressions only, 1st Parameter: if a regex parameter is split
+	// it will starts with " but doesn't finish with that "
+	combineSplitStringParam: function(params) {
+		if (params[0].startsWith('\"')) {
+			if (params[0].endsWith('\"')) return;
+			if (params.length<2) return;
+		}
+		let foundClosingPart = 0;
+		for(let i=1; i<params.length; i++) {
+			if (params[i].endsWith('\"')) {
+				foundClosingPart = i;
+			}
+		}
+		for (let i=0; i<foundClosingPart; i++) {
+			params[1] = params[0] + params[1];
+			params.shift();
+		}
+		this.logDebug("Combined parameters", {params});
+	} ,
+
+
+	// retrieve the (numeral) group argument of a pattern parameter
+	// has to always be the second parameter?
+	//    %matchTextFromBody(regularPattern,group,toclipboard)%
+	//   
+	extractMatchGroupArg: function(params) {
+		if (!params || params.length<2) {
+			return 0; // match all
+		}
+		if (isNaN(params[1])) return 0;
+		return parseInt(params[1],10);
+	} ,
+	
 
   /**
    * Installs the toolbar button with the given ID into the given

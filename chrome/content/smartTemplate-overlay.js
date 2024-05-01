@@ -1544,8 +1544,7 @@ SmartTemplate4.mimeDecoder = {
           fullName = firstName ? firstName : lastName;  // ?
         }
         if (!fullName) fullName = addressee.replace("."," "); // we might have to replace . with a space -  fall back
-      }
-      else {
+      } else {
         if (!card || (card && cardFullname && cardFullname != fullName)) { // allow a single word from AB as displayName to "survive"
           // name split / replacements; if there are no spaces lets replace '.' then '_'
           if (fullName.indexOf(' ')<0) {
@@ -1605,8 +1604,7 @@ SmartTemplate4.mimeDecoder = {
          
         if (mapLegacyCardStruct.has(key) || key.startsWith("chatname.")) {  // allow wildcard here. clunky.
           part = getCardProperty(key);
-        }
-        else switch(key) {
+        } else switch(key) {
           case 'throw':
             // throw an error
             throw("Invalid formatting string: " + key);
@@ -1862,6 +1860,13 @@ SmartTemplate4.MessageHdr = null; // will be overwritten
 SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   const clipboardMode = firstPass ? true : false;
   
+
+  // Deals with the following match functions:
+  // %matchTextFromBody("regeX"[,MatchGroup][,textTransform][,altText])%
+  // %matchTextFromSubject("regeX"[,MatchGroup][,textTransform][,altText])%
+  // -- 
+  // %matchTextFromBody("regeX",MatchGroup[,textTransform],toclipboard)%
+  // %matchTextFromSubject("regeX",MatchGroup[,textTransform],toclipboard)%
 	function matchTextParser(regX, fromPart) {
 	  try {
 			if (prefs.isDebugOption('parseModifier')) debugger;
@@ -1908,7 +1913,11 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
           continue;
         }
 
-        let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ); // match group number, first instance of  ... ",1  ... 
+        // let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ); // match group number, first instance of  ... ",1  ... 
+        let regParams = SmartTemplate4.Util.extractParameters(matchPart[i]);
+        // recombine any split regex string (first parameter)
+        SmartTemplate4.Util.combineSplitStringParam(regParams);
+        let group = SmartTemplate4.Util.extractMatchGroupArg(regParams);
         let formatter = util.initFormatter(matchPart[i]);
         if (!extractSource) {
           util.logDebug("pattern not found in " + fromPart + ":\n" + regX);
@@ -1934,13 +1943,11 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         }
 
         // we have a match result, continue
-        let group = groupArg ? parseInt(groupArg[1]) : 0,
-            replaceGroupString = '';
-        if (isNaN(group)) group = 0;
+        let replaceGroupString = '';
         if (group>result.length) {
           util.logToConsole("Your group argument [" + group + "] is too high, do you have enough (round brackets) in your expression?");
         } else {
-          if (groupArg==null) { // [Bug 26634] third parameter is a replacement string
+          if (!group) { // [Bug 26634] third parameter is a replacement string
             replaceGroupString = result[group]; // default
             // check for string arg - after second comma: %header.append.matchFromSubject(hdr,regex,"replaceText"])%
             let commaPos = matchPart[i].lastIndexOf(",\""); // search for last ," ...
@@ -1984,21 +1991,14 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
 		}
 	}
 	
+  // parse the parameters of the following replacement commands:
+  // %replaceText("find","replace"[,selection])%
+  // %replaceQuotedText(searchText,replacementHTML[,quoteLevel])%
+  // %replaceQuotedTags(selector,replacementHTML[,quoteLevel][,minSize])%
   function parseParams(cmd, cmdParameters, functionName) {
-    let rx = new RegExp(/(\([^%]*)\)%/gm),
-        ar = rx.exec(cmd),
-        paramString = (ar.length>1) ? ar[1] : "";  // get params (within)
-    let isSelection = false;    
-    // remove parentheses
-    if (paramString.length>2) {
-      paramString = paramString.substring(1);
-    }
-
-    // combine 1st parameter parts
-    let theStrings = SmartTemplate4.Util.combineEscapedParams(paramString.split(","), 0);
-    if (theStrings.length>1) {
-      theStrings = SmartTemplate4.Util.combineEscapedParams(theStrings, 1); // combine 2nd parameter parts
-    }
+    let isSelection = false;  
+    // get params (within a full command) - allows escaped commas within strings.
+    let theStrings = SmartTemplate4.Util.extractParameters(cmd);
 
     let dText1, dText2;
     if (theStrings.length>=2) {
@@ -2038,7 +2038,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
             cmdParameters.p4 = parseInt(theStrings[3]); // minSize (kB)
           }
         }
-        cmdParameters.selection = true;
+        cmdParameters.selection = isSelection;
         return true;
       }
       if(errDetail)
@@ -4263,9 +4263,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
   // msg = msg.replace(/%([a-zA-Z][\w\-:=.]*)(\(.*\))*%/gm, replaceReservedWords); 
   // msg = msg.replace(/%([a-zA-Z][\w\-:=.]*)(\([^%]*\))*%/gm, replaceReservedWords); 
   // replace [^%]* with .+? to match as few as possible, should allow ( % within )
-  // replace  .+? in  /%([a-zA-Z][\w\-:=.]*)(\(.+?\))*%/gm  with .+ to allow arguments that contain open parentheses!!
-  //             e.g. (domainname|domain) = (\w*@){0,1}((?!:\/\/)([a-zA-Z0-9-_]+\.)*[a-zA-Z0-9][a-zA-Z0-9-_]+\.[a-zA-Z]{2,11})
-  msg = await SmartTemplate4.Util.replaceAsync(msg, /%([a-zA-Z][\w\-:=.]*)(\(.+\))*%/gm, replaceReservedWords); 
+  // replace  (\(.+?\))* in  /%([a-zA-Z][\w\-:=.]*)(\(.+?\))*%/gm  with (\(.+?\))?
+  // to allow arguments that contain open parentheses without "overshooting" to the next expression
+  //                                                          e.g. %to(name)%"&lt;%to("( %",mail)%
+  // - e.g. (domainname|domain) = (\w*@){0,1}((?!:\/\/)([a-zA-Z0-9-_]+\.)*[a-zA-Z0-9][a-zA-Z0-9-_]+\.[a-zA-Z]{2,11})
+  msg = await SmartTemplate4.Util.replaceAsync(msg, /%([a-zA-Z][\w\-:=.]*)(\(.+?\))?%/gm, replaceReservedWords); 
                     // replaced ^) with ^% for header.set.matchFromSubject
                     // added mandatory start with a letter to avoid catching  encoded numbers such as %5C
                     // [issue 49] only match strings that start with an ASCII letter. (\D only guarded against digits)
