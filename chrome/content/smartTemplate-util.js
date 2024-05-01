@@ -2465,7 +2465,9 @@ SmartTemplate4.Util = {
 		return retVal.trim();
 	} ,
 	
-	splitFormatArgs: function splitFormatArgs(format)	{
+	// use this to add textFormatting modifiers ()
+	// to all previous fields!
+	splitFormatArgs: function (format)	{
     let formatArray = [];
     if (format) {
       // remove parentheses
@@ -2475,6 +2477,7 @@ SmartTemplate4.Util = {
         format = format.slice(0, -1);
       
       let fs=format.split(','); // lastname, firstname ?
+			let lastTransformed = -1;   // remember the last transformed element
       for(let i=0; i<fs.length; i++) {
         let ff = fs[i].trim();
         // if next one is a link modifier, modify previous element and continue
@@ -2486,6 +2489,20 @@ SmartTemplate4.Util = {
             formatArray[formatArray.length-1].modifier = 'linkable';
             continue;
         }
+
+				// format all previous results only!
+				// example %recipient(firstname,lastname,capitalize,mail)%
+				// this will capitalize the name portions but leave the mail alone
+				if (this.isFormatString(ff)) {
+					// if a previous element was already transformed, do not change it again.
+					// this way we can do (firstname,lowercase,lastname,uppercase)
+					for (let j = lastTransformed+1; j<formatArray.length; j++) {
+						formatArray[j].transform = ff;
+						lastTransformed = j;
+					}
+					continue;
+				}
+
         formatArray.push ({ field: ff, modifier: ''}); // modifier: linkTo
       }
     }
@@ -3042,10 +3059,18 @@ SmartTemplate4.Util = {
 			}
 			if (formatArgs[0].startsWith("lowercase")) {
 				formatter.isLowercase = true
-			}    
+			}
+			if (formatArgs[0].startsWith("default")) {
+				formatter.isDefault = true
+			}    			
 			formatArgs.shift();            
 		}
 		return formatter;
+	},
+
+	isFormatString: function(argString) {
+		if (!argString) return false;
+		return ["capitalize","camelcase","uppercase","lowercase","default"].includes(argString);
 	},
 
   formatString: function (txt, formatter) {

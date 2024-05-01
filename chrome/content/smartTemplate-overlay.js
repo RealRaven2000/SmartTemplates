@@ -967,11 +967,13 @@ SmartTemplate4.mimeDecoder = {
     let dbgText = 'addrstr.split() found [' + array.length + '] addresses \n' + 'Formats:\n';
     for (let i=0; i<formatArray.length; i++) {
       let fld = formatArray[i];
-      if (fld.field == "addressbook") 
+      if (fld.field == "addressbook") {
         isForceAB = true;
+      }
       dbgText += fld.field;
-      if (fld.modifier)  
+      if (fld.modifier)  {
         dbgText += '(' + fld.modifier + ')';
+      }
       dbgText += '\n';
     }
     util.logDebugOptional('mime.split', dbgText);
@@ -1608,7 +1610,7 @@ SmartTemplate4.mimeDecoder = {
           case 'throw':
             // throw an error
             throw("Invalid formatting string: " + key);
-            break;
+            
 					case 'initial':
 						while (addressElements.length>1) 
 							addressElements.pop();
@@ -1788,16 +1790,22 @@ SmartTemplate4.mimeDecoder = {
 									[open, close, bracketsAreOptional] = getBracketDelimiters(bracketNameParams, element);
 									let fN = fullName ? fullName : address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
 									part = fN ? fN : '';
-								}
-								else
+								} else {
 									part = "";
+                }
               }
             }
             break;
         }
+        if (element.transform && part) {
+					let fA = ["dummy", element.transform].join(",");
+					let formatter = SmartTemplate4.Util.initFormatter(fA);
+					part = SmartTemplate4.Util.formatString(part, formatter);
+        }        
         if (element.modifier =='linkTo') {
           part = "<a href=mailto:" + emailAddress + ">" + part + "</a>"; // mailto
         }
+
 
 				// make array of non-empty parts
 				if (part) {
@@ -1841,13 +1849,17 @@ SmartTemplate4.mimeDecoder = {
     if (isWriteClipboard) {
       if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
         util.addUsedPremiumFunction("clipboard");
-      }
-      else {
+      } else {
         util.logDebug("mimeDecoder.split() - copying result to clipboard:\n" + addresses);
         util.clipboardWrite(addresses);
       }
-      if (addresses) {
+      
+      const isWriteNew = gMsgCompose ? (gMsgCompose?.type==Ci.nsIMsgCompType.New) : false;
+      if (addresses && !isWriteNew) {
         addresses = "%toclipboard(" + addresses + ")%"; // [issue 210] make sure to remember clipboard value
+      }
+      if (addresses && isWriteNew) {
+        addresses = "";
       }
 
     }
@@ -3704,7 +3716,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 							
 							
 					if (util.getComposeType()=='fwd') {
-						let fmt = util.splitFormatArgs(arg); // returns array of { field: "fwd", modifier: "" }
+						let fmt = util.splitFormatArgs(arg); // returns array of { field: "fwd", modifier: ""[, transform: "capitalize"|"uppercase"|"lowercase" ...] }
 						// e.g. %to(firstname,fwd)%
 						for (let i=0; i<fmt.length; i++) {
 							if (fmt[i].field == 'fwd') {
