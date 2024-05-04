@@ -28,13 +28,26 @@ var removedItems = [];
 		return(null);
 	}
 
-	function removeClassItems(name) {
+	function removeClassItems(name, replaceItem) {
+		if (removedItems.includes(name)) { // already removed?
+			return;
+		}
 		var dbuttons = document.getElementsByClassName(name);
 		for (var i=dbuttons.length-1; i>=0; i--) {
-			// dbuttons[i].style.display='none';
-			dbuttons[i].parentNode.removeChild(dbuttons[i]);
+			if (replaceItem) {
+				var renewButton = document.createElement("a");
+				renewButton.setAttribute("href", "https://sites.fastspring.com/quickfolders/instant/smarttemplate4renew &referrer=smarttemplates-site");
+				renewButton.className = "renewButton";
+				renewButton.innerHTML = "Renew License";
+				dbuttons[i].replaceWith(renewButton); // replace anchor tag (containing donate button)
+			}
+			else {
+				dbuttons[i].parentNode.removeChild(dbuttons[i]);
+			}
 		}
+		removedItems.push(name);
 	}
+	
 	
 	document.addEventListener("DOMContentLoaded", function(event) { 
 		var user = getQueryVariable("user");
@@ -47,15 +60,18 @@ var removedItems = [];
 					for (var i=0; i<links.length; i++) {
 						var href = links[i].getAttribute("href");
 						if (href && href.indexOf("user="==-1)) {
-							if (href.indexOf("?"==-1))
+							if (href.indexOf("?"==-1)) {
 								links[i].setAttribute("href", href + "?user=" + user);
-							else
+							} else {
 								links[i].setAttribute("href", href + "&user=" + user);
 						}
 							
 					}
 				}
 			}
+			}
+			
+      // new class: QuickFoldersStdUser
 			
 			switch (user) {
         case 'std':
@@ -94,6 +110,7 @@ var removedItems = [];
 				}
 			);
 		} else {
+			// update all sales items:
 			let saleLabels = document.querySelectorAll(".saleName");
 			for (let s of saleLabels) {
 				s.textContent = sales_name; // e.g. "AUTUMN SALE"
