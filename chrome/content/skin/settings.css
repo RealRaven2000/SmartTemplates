@@ -533,6 +533,10 @@ toolbar toolbarbutton:not([hidden]) {
   fill: currentColor;
 }
 
+/* [issue 291] */
+#smartTemplatePane toolbarbutton:not([hidden]) {
+	display: flex !important;
+}
 
 #smartTemplatePane #btnSaveTemplate,
 #smartTemplatePane toolbar[brighttext] #btnSaveTemplate {
