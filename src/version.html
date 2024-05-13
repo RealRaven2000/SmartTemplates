@@ -314,9 +314,18 @@ permalink: version.html
       </li>
       <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
       <li>
-        SmartTemplates settings was missing toolbar buttons (beside account selector) 
-        when opening from Add-ons manager.
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/291">[issue 291]</a>
+        <p>
+          The settings dialog was missing important buttons (beside account selector) 
+          only when opened from Add-ons manager <a href="https://github.com/RealRaven2000/SmartTemplates/issues/291">[issue 291]</a>
+          and not via a SmartTemplates menu or the status bar:
+        </p>
+        <img class="screenshot" src="img/issue291.png" alt="tool buttons in settings"/>
+      </li>
+      <li>
+        Fixed: All trailing / leading spaces after/before text in 
+        <code class="inline">%header.set(subject," text ")%</code> were removed. 
+        From now on, preserve all spaces in any text argument.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/292">[issue 292]</a>
       </li>
       <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
       <li>
