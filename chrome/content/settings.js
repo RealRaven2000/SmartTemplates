@@ -967,9 +967,7 @@ SmartTemplate4.Settings = {
 	// Fill identities menu
 	// this also clones the deck as many times as there are identities in order to fill in 
 	// the specific templates [see addIdentity()]
-	//--------------------------------------------------------------------
-  // mod 0.3.2
-	fillIdentityListPopup : function fillIdentityListPopup() {
+	fillIdentityListPopup : function () {
 		const util = SmartTemplate4.Util;
 		// get current identity
 		util.logDebugOptional("settings","fillIdentityListPopup()");
@@ -1018,6 +1016,7 @@ SmartTemplate4.Settings = {
         }
         let lbl = idText + acc + identity.identityName;
 				theMenu.appendItem(lbl, identity.key, "");
+				// will unselect the current item? (e.g. Common)
 				this.addIdentity(identity.key);
 				
 			}
@@ -1026,20 +1025,19 @@ SmartTemplate4.Settings = {
 		for (let i=0; i<this.preferenceElements.length; i++ ) {
 			this.preferenceElements[i].updateElements();
 		}
-		if (!CurId) {
-			let common = document.getElementById("deckA.per_account");
-			common.classList.add("deck-selected"); 
-		}
-	
 		
 		if (CurId && CurId.key && SmartTemplate4.Preferences.getMyBoolPref(CurId.key+".def")) { // use common?
 			theMenu.selectedIndex = 0;
 			CurId = null; // select common
-		}
-		else {
+		} else {
 			// select the current identity from the drop down:
 			theMenu.selectedIndex = currentId;
 		}
+
+		if (!CurId) { //  [issue 290]
+			let common = document.getElementById("deckA.per_account");
+			common.classList.add("deck-selected"); 
+		}		
 		return (CurId) ? CurId.key : null;
 		
 	} ,
