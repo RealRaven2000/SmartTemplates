@@ -3078,7 +3078,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         switch (hdrField) {
           case 'subject':
 					  // replace newline characters with spaces and trim result!
-					  let subjectString = targetString.replace(new RegExp("[\t\r\n]+", 'g'), " ").trim();
+            // [issue 292] don't trim!
+					  let subjectString = targetString.replace(new RegExp("[\t\r\n]+", 'g'), " "); // .trim();
             document.getElementById("msgSubject").value = subjectString;
             ComposeFields.subject = subjectString;
             isDataModified = (subjectString.length) ? true : false;
