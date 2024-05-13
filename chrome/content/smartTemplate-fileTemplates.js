@@ -375,7 +375,10 @@ SmartTemplate4.fileTemplates = {
     
     this.repopulate(true);
     this.saveCustomMenu();
-    listbox.selectedIndex = idx-1;
+    const targetIdx = idx-1
+    listbox.selectedIndex = targetIdx;
+    // show element(s) above if possible (unless we are top of list)
+    listbox.ensureIndexIsVisible (targetIdx ? targetIdx-1 : 0);
   },
   
   down: function down() {
@@ -390,7 +393,10 @@ SmartTemplate4.fileTemplates = {
     
     this.repopulate(true);
     this.saveCustomMenu();
-    listbox.selectedIndex = idx+1;
+    const targetIdx = idx+1
+    listbox.selectedIndex = targetIdx;
+    // show element(s) below if possible (unless we are top of list)
+    listbox.ensureIndexIsVisible (targetIdx < listbox.getRowCount()-1  ? targetIdx-1 : targetIdx);
   },
 	
   edit: async function() {
