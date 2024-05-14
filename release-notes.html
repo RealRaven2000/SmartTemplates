@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.4.3">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.5">can be found here</a>
 
 
 
@@ -15,7 +15,7 @@ The full change log with screen shots <a href="https://smarttemplates.quickfolde
     preferrably it would be a HTML editor with Syntax highlighting. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/282">[issue 282]</a>
   </li>
   <li>
-    Added text transformation parameters for search functions: Use the parameters <code class="parameter">capitalise</code> / <code class="parameter">uppercase</code> / <code class="parameter">lowercase</code> / <code class="parameter">camelcase</code> after the 
+    Added text transformation parameters for search functions: Use the parameters <code class="parameter">capitalize</code> / <code class="parameter">uppercase</code> / <code class="parameter">lowercase</code> / <code class="parameter">camelcase</code> after the 
     group parameter. This can also be compared with the <code class="parameter">toclipboard</code> parameter. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/288">[issue 288]</a>
 
     Examples:
@@ -25,7 +25,7 @@ The full change log with screen shots <a href="https://smarttemplates.quickfolde
 %header.prefix.matchFromBody(subject,"Customer.*\n\-+\n(.*)\n",1,capitalize)%  
 %matchTextFromBody("Customer.*\n\-+\n(.*)\n",1,capitalize,toclipboard)%</pre>   
    <ul>
-      <li> <code class="parameter">capitalise</code> Capitalizes the first letter of each word. Useful for Names. </li>
+      <li> <code class="parameter">capitalize</code> Capitalizes the first letter of each word. Useful for Names. </li>
       <li> <code class="parameter">camelcase</code> Converts the first character of the entire string lowercase.</li>
       <li> <code class="parameter">lowercase</code> Transforms the entire match to lower case.</li>  
       <li> <code class="parameter">uppercase</code> Transforms the entire match to upper case.</li>  
@@ -42,15 +42,14 @@ The full change log with screen shots <a href="https://smarttemplates.quickfolde
 &lt;i&gt;%replaceText(">>","»",selection)%&lt;/i&gt;</pre>
 </p>
   </li>
-
 </ul>
 
 
 <b>Bug Fixes</b>
 <ul>
-  <li>  The settings dialog was missing important toolbar buttons (beside account selector) when opened from Add-ons manager. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/291">[issue 291]</a> </li>
+  <li> The settings dialog was missing important toolbar buttons (beside account selector) when opened from Add-ons manager. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/291">[issue 291]</a> </li>
   <li> All spaces after/before text in %header.set(subject," text ")% were removed. From now on, preserve all spaces in any text argument. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/292">[issue 292]</a> </li>
-
+  <li> Fixed: Opening SmartTemplates settings in "Common" can show a disabled / missing UI underneath. Only after selecting another entry from accounts the templates area became visible. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/290">[issue 290]</a> </li>  
 </ul>
 
 
