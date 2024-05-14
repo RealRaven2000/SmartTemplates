@@ -24,7 +24,7 @@ Examples:
 * Support `selection` as parameter for replaceText - so we can transform selected (formatted) text from smart fragments. \[issue #289\] Syntax: `%replaceText("find","replace",selection)%` For example, the following can be used as a smart fragment script to generate a nicer menu path from a string like "Menu >> submenu >> command" into "_Menu » submenu » command_". Note that we can use HTML markup, like in any smart fragment.
 
   ```    
-    &lt;i&gt;%replaceText(">>","»",selection)%&lt;/i&gt;
+    <i>%replaceText(">>","»",selection)%</i>;
   ```    
     
 
