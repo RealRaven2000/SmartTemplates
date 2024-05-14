@@ -1580,8 +1580,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 de abril"
-  },  
+    "message": "29 de mayo"
+  },   
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
     "placeholders": {
@@ -1831,8 +1831,8 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{S1}Correcciones de mantenimiento en 4.4.3{S2}{L1} Al enviar correos electrónicos con variables no resueltas, estas ahora se reemplazan automáticamente de manera confiable. [issue 284]{L2} {L1} Mejoras de las entradas de plantillas usadas recientemente en los menús.{L2} {S1}Cambios principales en 4.4{S2} {L1} Nueva función {{%preheader()%}} para agregar texto de vista previa para programas de correo móvil.{L2}{L1} Los datos de dirección para {{%to%}}, {{%recipient%}} y {{%from%}} ahora se insertarán automáticamente al escribir un nuevo correo electrónico a través del menú contextual 'Redactar mensaje a'. [issue 275]{L2} {L1} El uso de {{%recipient%}} ahora también funciona como se esperaba al responder a sus propios correos electrónicos en una conversación y Thunderbird cambia automáticamente los destinatarios. [issue 239]{L2} "
-  },
+    "message": "{L1} Ahora puede utilizar el signo [%] dentro de los parámetros de texto, por ejemplo {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nuevos parámetros para cambiar la capitalización del texto extraído [issue 288].{L2}{L1} Nuevo botón de edición para editar plantillas externas{L2} {L1} El nuevo parámetro {{selection}} para {{%replaceText()%}} se puede utilizar en Fragmentos Inteligentes. {L2} {S1}Errores Corregidos{S2} {L1} Al abrir el diálogo de configuración desde el Administrador de complementos, faltaban botones importantes [issue 239]{L2} {L1} Varias otras mejoras en el diálogo de configuración.{L2}"
+  },  
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."
   },

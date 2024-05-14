@@ -1568,7 +1568,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "4月20日"
+    "message": "29 mei"
   },  
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1822,8 +1822,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{S1}Onderhoudsoplossingen in 4.4.3{S2}{L1} Bij het verzenden van e-mails met onopgeloste variabelen worden deze nu automatisch betrouwbaar vervangen. [issue 284]{L2} {L1} Verbeteringen van recent gebruikte sjabloongegevens in menu's.{L2} {S1}Belangrijkste wijzigingen in 4.4{S2} {L1} Nieuwe {{%preheader()%}}-functie om voorbeeldtekst toe te voegen voor mobiele e-mailprogramma's.{L2}{L1} De adresgegevens voor {{%to%}}, {{%recipient%}} en {{%from%}} worden nu automatisch ingevoegd bij het schrijven van een nieuw e-mailbericht via het contextmenu 'Bericht opstellen naar'. [issue 275]{L2} {L1} Het gebruik van {{%recipient%}} werkt nu ook zoals verwacht bij het antwoorden op eigen e-mails in een gesprek en Thunderbird wijzigt automatisch de ontvangers. [issue 239]{L2} "
-  }, 
+    "message": "{L1} Vanaf nu kunt u het [%]-teken gebruiken binnen tekstparameters, bijvoorbeeld {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nieuwe parameters om de hoofdletter van geëxtraheerde tekst te wijzigen [issue 288].{L2}{L1} Nieuwe bewerkingsknop voor het bewerken van externe sjablonen{L2} {L1} De nieuwe {{selection}}-parameter voor {{%replaceText()%}} kan worden gebruikt in Slimme Fragmenten. {L2} {S1}Opgeloste Bugs{S2} {L1} Bij het openen van het instellingendialoogvenster vanuit de Add-ons Manager ontbraken belangrijke knoppen [issue 239]{L2} {L1} Diverse andere verbeteringen in het instellingendialoogvenster.{L2}"
+  },  
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
   },

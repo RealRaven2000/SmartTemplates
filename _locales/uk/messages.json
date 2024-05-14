@@ -1632,8 +1632,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "10 квітня"
-  },   
+    "message": "29 травня"
+  },     
   "special-offer-head": {
     "message": "Допоможіть зберегти $addon$ сумісним",
     "placeholders": {
@@ -1892,7 +1892,7 @@
     "message": "Прочитайте детальний журнал змін тут (лише англійською):"
   },
   "whats-new-list": {
-    "message": "{S1}Технічні виправлення у версії 4.4.3{S2}{L1} При відправленні електронних листів з нерозв'язаними змінними, ці тепер автоматично надійно замінюються. [issue 284]{L2} {L1} Покращення недавно використаних шаблонів в меню.{L2} {S1}Основні зміни у версії 4.4{S2} {L1} Нова функція {{%preheader()%}} для додавання тексту попереднього перегляду для мобільних поштових програм.{L2}{L1} Дані адреси для {{%to%}}, {{%recipient%}} і {{%from%}} тепер автоматично вставляться при написанні нового листа через контекстне меню 'Написати Повідомлення До'. [issue 275]{L2} {L1} Використання {{%recipient%}} тепер також працює як очікувалося при відповіді на власні листи у розмові, і Thunderbird автоматично змінює отримувачів. [issue 239]{L2} "
+    "message": "{L1} Du kan nu använda tecknet [%] inom textparametrar, till exempel {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nya parametrar för att ändra kapitalisering av extraherad text [issue 288].{L2}{L1} Ny redigeringsknapp för att redigera externa mallar{L2} {L1} Det nya {{selection}}-parametern för {{%replaceText()%}} kan användas i Smarta Fragment. {L2} {S1}Åtgärdade Fel{S2} {L1} När du öppnar inställningsdialogen från Tilläggshanteraren saknades viktiga knappar [issue 239]{L2} {L1} Diverse andra förbättringar i inställningsdialogen.{L2}"
   },  
   "whitespace_note": {
     "message": "Зверніть увагу, що пробіл може бути найкраще представлений як \\s, оскільки він також може містити розриви на рядках. Поля і подвійні лапки не можна використовувати."

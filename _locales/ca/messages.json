@@ -1628,8 +1628,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 d'abril"
-  },   
+    "message": "29 de maig"
+  },  
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
     "placeholders": {
@@ -1882,8 +1882,8 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{S1}Correccions de manteniment a la versió 4.4.3{S2}{L1} Enviar correus electrònics amb variables no resoltes, aquestes ara es substitueixen automàticament de manera fiable. [issue 284]{L2} {L1} Millores de les entrades de plantilles utilitzades recentment en els menús.{L2} {S1}Canvis principals a la versió 4.4{S2} {L1} Nova funció {{%preheader()%}} per afegir text de previsualització per a programes de correu electrònic mòbils.{L2}{L1} Les dades d'adreça per a {{%to%}}, {{%recipient%}} i {{%from%}} ara s'inserten automàticament quan s'escriu un correu electrònic nou mitjançant el menú contextual 'Redactar missatge a'. [issue 275]{L2} {L1} Utilitzar {{%recipient%}} també funciona ara com s'esperava quan es respon als propis correus electrònics en una conversa i Thunderbird canvia automàticament els destinataris. [issue 239]{L2} "
-  },
+    "message": "{L1} Ara podeu utilitzar el signe [%] dins dels paràmetres de text, per exemple {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nous paràmetres per canviar la capitalització del text extret [issue 288].{L2}{L1} Nou botó d'edició per editar plantilles externes{L2} {L1} El nou paràmetre {{selection}} per {{%replaceText()%}} es pot utilitzar a Smart Fragments. {L2} {S1}Errors Corregits{S2} {L1} En obrir el diàleg de configuració des del Gestor de complements, faltaven botons importants [issue 239]{L2} {L1} Altres millores diverses al diàleg de configuració.{L2}"
+  },  
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."
   },

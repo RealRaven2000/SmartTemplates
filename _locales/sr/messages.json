@@ -1496,8 +1496,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "10. април"
-  },  
+    "message": "29. мај"
+  },    
   "special-offer-head": {
     "message": "Помозите да $addon$ буде компатибилан",
     "placeholders": {
@@ -1759,8 +1759,8 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{S1}Održavanje ispravki u 4.4.3{S2}{L1} Pri slanju e-pošte sa nerešenim promenljivama, ove su sada pouzdano automatski zamenjene. [issue 284]{L2} {L1} Unapređenja nedavno korišćenih predložaka u menijima.{L2} {S1}Glavne promene u 4.4{S2} {L1} Nova funkcija {{%preheader()%}} za dodavanje preglednog teksta za mobilne poštanske programe.{L2}{L1} Podaci o adresi za {{%to%}}, {{%recipient%}} i {{%from%}} sada će automatski biti umetnuti prilikom pisanja novog e-poštnog poruke putem kontekstnog menija 'Sastavi Poruku Za'. [issue 275]{L2} {L1} Korišćenje {{%recipient%}} sada takođe radi kao što je očekivano prilikom odgovaranja na sopstvene e-pošte u razgovoru i Thunderbird automatski menja primaoca. [issue 239]{L2} "
-  },
+    "message": "{L1} Zdaj lahko uporabljate znak [%] znotraj besedilnih parametrov, na primer {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nove parametre za spreminjanje velikih črk izvlečenega besedila [issue 288].{L2}{L1} Nova gumb za urejanje za urejanje zunanjih predlog{L2} {L1} Novi parameter {{selection}} za {{%replaceText()%}} lahko uporabimo v Pametnih Fragmentih. {L2} {S1}Popravljeni Bugs{S2} {L1} Pri odpiranju pogovornega okna nastavitev iz Upravitelja dodatkov so manjkali pomembni gumbi [issue 239]{L2} {L1} Različne druge izboljšave v pogovornem oknu nastavitev.{L2}"
+  },  
   "whitespace_note": {
     "message": "Имајте на уму да се бели простор може најбоље представити као \\s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити."
   },

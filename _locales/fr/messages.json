@@ -1622,8 +1622,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 avril"
-  },    
+    "message": "29 mai"
+  },      
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
     "placeholders": {
@@ -1879,8 +1879,8 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{S1}Corrections de maintenance dans 4.4.3{S2}{L1} Lors de l'envoi d'e-mails avec des variables non résolues, celles-ci sont désormais automatiquement remplacées de manière fiable. [issue 284]{L2} {L1} Améliorations des entrées de modèles récemment utilisées dans les menus.{L2} {S1}Principaux changements dans 4.4{S2} {L1} Nouvelle fonction {{%preheader()%}} pour ajouter du texte d'aperçu pour les programmes de messagerie mobiles.{L2}{L1} Les données d'adresse pour {{%to%}}, {{%recipient%}} et {{%from%}} seront désormais automatiquement insérées lors de l'écriture d'un nouvel e-mail via le menu contextuel 'Composer un message à'. [issue 275]{L2} {L1} L'utilisation de {{%recipient%}} fonctionne également désormais comme prévu lors de la réponse à ses propres e-mails dans une conversation et Thunderbird change automatiquement les destinataires. [issue 239]{L2} "
-  },
+    "message": "{L1} Vous pouvez désormais utiliser le signe [%] dans les paramètres de texte, par exemple {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nouveaux paramètres pour changer la capitalisation du texte extrait [issue 288].{L2}{L1} Nouveau bouton d'édition pour éditer les modèles externes{L2} {L1} Le nouveau paramètre {{selection}} pour {{%replaceText()%}} peut être utilisé dans les Fragments Intelligents. {L2} {S1}Bogues Corrigés{S2} {L1} Lors de l'ouverture de la boîte de dialogue des paramètres depuis le Gestionnaire de modules complémentaires, des boutons importants manquaient [issue 239]{L2} {L1} Diverses autres améliorations dans la boîte de dialogue des paramètres.{L2}"
+  },  
    "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
   },

@@ -1621,8 +1621,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20. huhtikuuta"
-  },   
+    "message": "29. toukokuuta"
+  },    
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -1878,8 +1878,8 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{S1}Huoltokorjaukset versiossa 4.4.3{S2}{L1} Kun lähetät sähköposteja ratkaisemattomilla muuttujilla, nämä korvataan nyt automaattisesti luotettavasti. [issue 284]{L2} {L1} Parannuksia äskettäin käytettyihin mallimerkintöihin valikoissa.{L2} {S1}Päämuutokset versiossa 4.4{S2} {L1} Uusi {{%preheader()%}}-toiminto esikatselutekstin lisäämiseksi mobiilipostiohjelmiin.{L2}{L1} Osoitetiedot kohteelle {{%to%}}, {{%recipient%}} ja {{%from%}} lisätään nyt automaattisesti, kun kirjoitat uuden sähköpostin käyttämällä kontekstivalikkoa 'Kirjoita viesti kohteelle'. [issue 275]{L2} {L1} {{%recipient%}}:n käyttö toimii nyt myös odotetusti vastatessasi omiin sähköposteihisi keskustelussa ja Thunderbird vaihtaa vastaanottajat automaattisesti. [issue 239]{L2} "
-  },
+    "message": "{L1} Voit nyt käyttää [%]-merkkiä tekstiparametreissa, esimerkiksi {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Uudet parametrit poimitun tekstin suurennuksen muuttamiseksi [issue 288].{L2}{L1} Uusi muokkauspainike ulkoisten mallipohjien muokkaamiseksi{L2} {L1} Uusi {{selection}}-parametri {{%replaceText()%}} voidaan käyttää Älykkäissä fragmenteissa. {L2} {S1}Korjatut Virheet{S2} {L1} Kun avataan asetusten valintaikkuna Lisäosienhallinnasta, tärkeät painikkeet puuttuivat [issue 239]{L2} {L1} Erilaisia muita parannuksia asetusten valintaikkunassa.{L2}"
+  },  
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
   },

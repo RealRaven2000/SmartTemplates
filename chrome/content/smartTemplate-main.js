@@ -129,9 +129,12 @@ END LICENSE BLOCK
     # [issue 282] Added Edit Templates button
     # [issue 288] Added text transformation parameters for search functions (capitalise / uppercase / lowercase / camelcase)
     # [issue 289] Support selection as parameter for replaceText - so we can transform selected text from smart fragments    
-    # [issue 291] SmartTemplates settings is missing toolbar buttons (beside account selector) when opening from Add-ons manager
+    # [issue 290] Opening SmartTemplates settings in "Common" shows disabled UI underneath
+    # [issue 291] Settings dialog is missing toolbar buttons (beside account selector) when opened from Add-ons manager
+    # [issue 292] All spaces after/before text parameters in %header.set(subject," text ")% are trimmed away
 
     # Minor layout improvements in settings screen
+    # improved templates scrolling when moving menu items up / down
 
 
 

@@ -62,12 +62,14 @@ END LICENSE BLOCK */
     let txt2 = txt.replace(/<(.*?)>/g,"<span class='htmltag' />&lt;$1&gt;</span>");
     // added simple <tag> support
     return txt2.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>")
+               .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")
                .replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>")
                .replace(/\{P1\}/g,"<p>").replace(/\{P2\}/g,"</p>")
                .replace(/\{S1\}/g,"</ul> <h3 class='section'>")  
                .replace(/\{S2\}/g,"</h3> <ul>")
-               .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")
-               .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>"); 
+               .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>")
+               .replace(/\[(.)\]/g,"<code class='keystroke'>$1</code>")     // single keys
+               .replaceAll("''","\"");
                //{S1} new section / list with title {S2}.
   }
 

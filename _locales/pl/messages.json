@@ -1627,7 +1627,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 kwietnia"
+    "message": "29 maja"
   },  
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
@@ -1884,8 +1884,8 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{S1}Naprawy konserwacyjne w wersji 4.4.3{S2}{L1} Przy wysyłaniu e-maili z nierozwiązanymi zmiennymi, te teraz są automatycznie i niezawodnie zastępowane. [issue 284]{L2} {L1} Ulepszenia ostatnio używanych wpisów szablonów w menu.{L2} {S1}Główne zmiany w wersji 4.4{S2} {L1} Nowa funkcja {{%preheader()%}} do dodawania tekstu podglądu dla programów pocztowych na urządzenia mobilne.{L2}{L1} Dane adresowe dla {{%to%}}, {{%recipient%}} i {{%from%}} teraz będą automatycznie wstawiane podczas pisania nowej wiadomości e-mail za pomocą menu kontekstowego 'Utwórz wiadomość do'. [issue 275]{L2} {L1} Użycie {{%recipient%}} teraz działa również zgodnie z oczekiwaniami podczas odpowiadania na własne e-maile w rozmowie, a Thunderbird automatycznie zmienia odbiorców. [issue 239]{L2} "
-  },
+    "message": "{L1} Vanaf nu kunt u het [%]-teken gebruiken binnen tekstparameters, bijvoorbeeld {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nieuwe parameters om de hoofdletter van geëxtraheerde tekst te wijzigen [issue 288].{L2}{L1} Nieuwe bewerkingsknop voor het bewerken van externe sjablonen{L2} {L1} De nieuwe {{selection}}-parameter voor {{%replaceText()%}} kan worden gebruikt in Slimme Fragmenten. {L2} {S1}Opgeloste Bugs{S2} {L1} Bij het openen van het instellingendialoogvenster vanuit de Add-ons Manager ontbraken belangrijke knoppen [issue 239]{L2} {L1} Diverse andere verbeteringen in het instellingendialoogvenster.{L2}"
+  },  
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
   },

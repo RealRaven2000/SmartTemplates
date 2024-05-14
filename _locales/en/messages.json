@@ -1668,7 +1668,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "April 20th"
+    "message": "May 29th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1928,7 +1928,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{S1}Maintenance fixes in 4.4.3{S2}{L1} When sending email with unresolved variables, these are now replaced automatically in a reliable fashion. [issue 284]{L2} {L1} Improvements of recently used template entries in menus.{L2} {S1}Main changes in 4.4{S2} {L1} New {{%preheader()%}} function to add preview text for mobile mail programs.{L2}{L1} The address data for {{%to%}}, {{%recipient%}} and {{%from%}} will now automatically be inserted when writing a new email via the context menu 'Compose Message To'. [issue 275]{L2} {L1} Using {{%recipient%}} also now works as expected when replying to own emails in a conversation and Thunderbird automatically changes the recipients. [issue 239]{L2} "
+    "message": "{L1} You can from now use the [%] sign within text parameters, for example {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} New parameters for changing capitalization of extracted text [issue 288].{L2}{L1} New edit button for editing external templates{L2} {L1} The new {{selection}} parameter for {{%replaceText()%}} can be used in Smart Fragments. {L2} {S1}Fixed Bugs{S2} {L1} When opening the settings dialog from Add-ons Manager, it missed important buttons [issue 239]{L2} {L1} Various other improvements in settings dialog.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

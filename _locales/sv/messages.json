@@ -1625,8 +1625,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "10 april"
-  },   
+    "message": "29 maj"
+  },    
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
     "placeholders": {
@@ -1885,8 +1885,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{S1}Underhållslösningar i 4.4.3{S2}{L1} När du skickar e-postmeddelanden med olösta variabler ersätts dessa nu automatiskt på ett tillförlitligt sätt. [issue 284]{L2} {L1} Förbättringar av nyligen använda mallposter i menyer.{L2} {S1}Huvudändringar i 4.4{S2} {L1} Ny funktion {{%preheader()%}} för att lägga till förhandsvisningstext för mobila e-postprogram.{L2}{L1} Adressuppgifter för {{%to%}}, {{%recipient%}} och {{%from%}} kommer nu automatiskt att infogas när du skriver ett nytt e-postmeddelande via snabbmenyn 'Skriv Meddelande Till'. [issue 275]{L2} {L1} Användning av {{%recipient%}} fungerar nu också som förväntat när du svarar på egna e-postmeddelanden i en konversation och Thunderbird ändrar automatiskt mottagare. [issue 239]{L2} "
-  },
+    "message": "{L1} Du kan nu använda tecknet [%] inom textparametrar, till exempel {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nya parametrar för att ändra kapitalisering av extraherad text [issue 288].{L2}{L1} Ny redigeringsknapp för att redigera externa mallar{L2} {L1} Det nya {{selection}}-parametern för {{%replaceText()%}} kan användas i Smarta Fragment. {L2} {S1}Åtgärdade Fel{S2} {L1} När du öppnar inställningsdialogen från Tilläggshanteraren saknades viktiga knappar [issue 239]{L2} {L1} Diverse andra förbättringar i inställningsdialogen.{L2}"
+  },  
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
   },
