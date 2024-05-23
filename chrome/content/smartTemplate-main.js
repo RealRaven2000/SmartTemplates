@@ -127,7 +127,7 @@ END LICENSE BLOCK
   Version 4.5 - FUTURE VERSION / WIP
     # [issue 287] You can now use percent "%" sign within a text parameter, e.g. %header.set(subject,"save 25%")%
     # [issue 282] Added Edit Templates button
-    # [issue 288] Added text transformation parameters for search functions (capitalise / uppercase / lowercase / camelcase)
+    # [issue 288] Added text transformation parameters for search functions (capitalize / uppercase / lowercase / camelcase)
     # [issue 289] Support selection as parameter for replaceText - so we can transform selected text from smart fragments    
     # [issue 290] Opening SmartTemplates settings in "Common" shows disabled UI underneath
     # [issue 291] Settings dialog is missing toolbar buttons (beside account selector) when opened from Add-ons manager
