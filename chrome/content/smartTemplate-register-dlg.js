@@ -78,7 +78,9 @@ var Register = {
         buy.removeAttribute("collapsed");
       }
     }
-    window.sizeToContent();
+    if (window.sizeToContent) {
+      window.sizeToContent();
+    }
   },  
   
   updateLicenseUI: async function updateLicenseUI() {  
@@ -205,7 +207,9 @@ var Register = {
 			default: // default class=register will animate the button
 				getElement('licenseDateLabel').textContent = licenseInfo.description + ":";
 		}
-    window.sizeToContent();
+    if (window.sizeToContent) {
+      window.sizeToContent();
+    }
   
   },
   

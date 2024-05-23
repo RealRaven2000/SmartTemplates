@@ -23,10 +23,6 @@ SmartTemplate4.Settings = {
   dialogHeight: 0,
 	accountKey : ".common",  // default to common; .file for files
 	preferenceElements : [],
-	get isFileTemplates() {
-		// let isEnabled = SmartTemplate4.Preferences.getMyBoolPref("fileTemplates");
-		return true;
-	} ,
 	get accountId() {
 		// empty for ".common"
 		return (this.accountKey !== '.common') ? this.accountKey : ''; 
@@ -119,7 +115,6 @@ SmartTemplate4.Settings = {
 		const account = this.accountId; // "", ".id1", ".id2" ...
 		if (!el) {
 			const prefs = SmartTemplate4.Preferences,
-			      service = this.prefService,
 						branch = ((account || ".common") + ".").substr(1);  // cut off leading [.] for getting bool pref
 						
 			// initialise all checkboxes for this account according to pref settings!
@@ -402,8 +397,7 @@ SmartTemplate4.Settings = {
       if (isSwitchCurrentIdentity) {
         this.switchIdentity(CurId ? CurId : 'common'); // also switch if id == 0! bug lead to common account checkboxes not operating properly!
 			}
-    }
-    catch(ex) {
+    } catch(ex) {
       util.logException("Settings onLoad() switching account", ex);
     }
 			
@@ -424,7 +418,9 @@ SmartTemplate4.Settings = {
 				let actDropDown = getElement('msgIdentity');
 				actDropDown.style.maxWidth = "350px"; // avoid the dialog getting super wide by restricting the hbox with the selected value.
 				if (isAdvancedPanelOpen) {
-					window.sizeToContent(); // times out on - get_editable@chrome://global/content/bindings/menulist.xml:134:1
+					if (window.sizeToContent) {
+						window.sizeToContent(); // times out on - get_editable@chrome://global/content/bindings/menulist.xml:134:1
+					}
 					// shrink width
 					let deltaShrink = getElement('decksContainer').scrollWidth - window.innerWidth;
 					if (deltaShrink>40)
@@ -987,11 +983,8 @@ SmartTemplate4.Settings = {
 		let theMenu = document.getElementById("msgIdentity"),
 		    iAccounts = accounts.length;
 				
-		// (Stationery replacement) file lists: menupopup add below common?
-		if (SmartTemplate4.Settings.isFileTemplates) {
-			const label = util.getBundleString("st.fileTemplates");
-			theMenu.appendItem(label, "fileTemplates", "file templates: to replace Stationery");
-		}
+		const label = util.getBundleString("st.fileTemplates");
+		theMenu.appendItem(label, "fileTemplates", "file templates: to replace Stationery");
 				
 		for (let idx = 0; idx < iAccounts; idx++) {
 			let account = accounts[idx];

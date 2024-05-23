@@ -183,7 +183,9 @@ async function updateActions(addonName) {
   }
   
   // resize to contents if necessary...
-  window.sizeToContent(); // not supported anymore in content scripts...
+  if (window.sizeToContent) {
+    window.sizeToContent(); // not supported anymore in content scripts...
+  }
 
   let win = await browser.windows.getCurrent();
   if (win) console.log(win);
