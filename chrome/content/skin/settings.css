@@ -19,16 +19,6 @@
   padding-right: 0 !important;
 }
 
-#helpStationery {
-  -moz-appearance: none !important; 
-  background-image: url("chrome://smartTemplate4/content/skin/icons/help.svg");
-  background-repeat: no-repeat;
-  cursor: pointer;
-  margin-top: 3px;
-  width: 16px !important;
-  min-width: 22px;
-}
-
 
 /* custom buttons linking to website */
 .buttonLinks button.text-link {

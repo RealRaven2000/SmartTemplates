@@ -113,29 +113,6 @@ button.active::marker {
   stroke: white;
 }
 
-
-#QuickFolders-General {
-  list-style-image: url("ico/settings.svg");
-}
-#QuickFolders-Advanced  {
-  list-style-image: url("ico/settings.svg");
-}
-#QuickFolders-Layout {
-  list-style-image : url("ico/smiley.svg");
-}
-#QuickFolders-Help {
-	list-style-image : url("ico/help.svg") !important;
-}
-#QuickFolders-Support {
-	list-style-image : url("ico/info.svg") !important;
-}
-#QuickFolders-Pro {
-  list-style-image : url("ico/pro-expired.svg") !important;
-}
-#QuickFolders-Pro.paid {
-  list-style-image : url("ico/pro-paid.svg") !important;
-}
-
  /* Style the tab */
 .tabs {
   border-bottom: 1px solid rgba(50,50,50,0.3);
