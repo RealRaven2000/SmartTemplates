@@ -1,0 +1,369 @@
+/**** common-shared.css ****/
+
+:root {
+  --in-content-page-color: rgb(21, 20, 26);
+  --in-content-page-background: var(--background-color-canvas);
+  --in-content-text-color: var(--in-content-page-color);
+  --in-content-box-background: var(--background-color-box);
+  --in-content-box-background-odd: rgba(12, 12, 13, 0.05); /* grey 90 a05 */
+  --in-content-box-border-color: color-mix(in srgb, currentColor 41%, transparent);
+  --in-content-box-info-background: #f0f0f4;
+  --in-content-item-hover: color-mix(in srgb, var(--in-content-primary-button-background) 20%, transparent);
+  --in-content-item-hover-text: var(--in-content-page-color);
+  --in-content-item-selected: var(--in-content-primary-button-background);
+  --in-content-item-selected-text: var(--in-content-primary-button-text-color);
+  --in-content-icon-color: rgb(91,91,102);
+  --in-content-accent-color: var(--in-content-primary-button-background);
+  --in-content-accent-color-active: var(--in-content-primary-button-background-hover);
+  --in-content-border-hover: var(--grey-90-a50);
+  --in-content-border-invalid: var(--red-50);
+  --in-content-border-color: #d7d7db;
+  --in-content-warning-icon-color: #ffa436;
+  --in-content-success-icon-color: #2ac3a2;
+  --in-content-button-text-color: var(--in-content-text-color);
+  --in-content-button-text-color-hover: var(--in-content-text-color);
+  --in-content-button-text-color-active: var(--in-content-button-text-color-hover);
+  --in-content-button-background: color-mix(in srgb, currentColor 7%, transparent);
+  --in-content-button-background-hover: color-mix(in srgb, currentColor 14%, transparent);
+  --in-content-button-background-active: color-mix(in srgb, currentColor 21%, transparent);
+  --in-content-button-border-color: transparent;
+  --in-content-button-border-color-hover: transparent;
+  --in-content-button-border-color-active: var(--in-content-button-border-color-hover);
+  --in-content-primary-button-text-color: rgb(251,251,254);
+  --in-content-primary-button-text-color-hover: var(--in-content-primary-button-text-color);
+  --in-content-primary-button-text-color-active: var(--in-content-primary-button-text-color);
+  --in-content-primary-button-background: #0061e0;
+  --in-content-primary-button-background-hover: #0250bb;
+  --in-content-primary-button-background-active: #053e94;
+  --in-content-primary-button-border-color: transparent;
+  --in-content-primary-button-border-hover: transparent;
+  --in-content-primary-button-border-active: transparent;
+  --in-content-danger-button-background: #e22850;
+  --in-content-danger-button-background-hover: #c50042;
+  --in-content-danger-button-background-active: #810220;
+  --in-content-focus-outline-color: var(--focus-outline-color);
+  --in-content-focus-outline-width: var(--focus-outline-width);
+  --in-content-focus-outline-offset: var(--focus-outline-offset);
+  --in-content-focus-outline-inset: var(--focus-outline-inset);
+  --in-content-focus-outline: var(--focus-outline);
+
+  --in-content-table-background: #f8f8fa;
+  --in-content-table-border-color: var(--in-content-box-border-color);
+  --in-content-table-header-background: var(--in-content-primary-button-background);
+  --in-content-table-header-color: var(--in-content-primary-button-text-color);
+  --in-content-sidebar-width: 240px;
+
+  --dialog-warning-text-color: var(--red-60);
+
+  --blue-40: #45a1ff;
+  --blue-50: #0a84ff;
+  --blue-60: #0060df;
+  --grey-30: #d7d7db;
+  --grey-60: #4a4a4f;
+  --grey-90-a10: rgba(12, 12, 13, 0.1);
+  --grey-90-a20: rgba(12, 12, 13, 0.2);
+  --grey-90-a30: rgba(12, 12, 13, 0.3);
+  --grey-90-a50: rgba(12, 12, 13, 0.5);
+  --grey-90-a60: rgba(12, 12, 13, 0.6);
+  --green-60: #12bc00;
+  --green-70: #058b00;
+  --orange-50: #ff9400;
+  --red-40: #ff4f5e;
+  --red-50: #ff0039;
+  --red-60: #d70022;
+  --yellow-50: #ffe900;
+  --yellow-60: #d7b600;
+  --yellow-60-a30: rgba(215, 182, 0, 0.3);
+  --yellow-90: #3e2800;
+
+  --shadow-10: 0 1px 4px var(--grey-90-a10);
+  --shadow-30: 0 4px 16px var(--grey-90-a10);
+
+  --card-padding: 16px;
+  --card-shadow: var(--shadow-10);
+  --card-outline-color: var(--grey-30);
+  --card-shadow-hover: var(--card-shadow), 0 0 0 5px var(--card-outline-color);
+
+  -moz-theme: non-native;
+  accent-color: var(--in-content-accent-color);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :host(:is(.anonymous-content-host, notification-message)),
+  :root {
+    /* Keep these in sync with:
+     *
+     *  * nsXPLookAndFeel::GenericDarkColor
+     *  * The default value of browser.display.foreground_color.dark and
+     *    browser.display.background_color.dark
+     *
+     * TODO (emilio): Once color-scheme support is complete, perhaps we can
+     * just replace most of these for system colors and remove all this
+     * duplication (assuming we honor the preferred color scheme for
+     * in-content privileged pages and plain-text documents). */
+    --in-content-page-color: rgb(251,251,254);
+
+    --in-content-box-background-odd: rgba(249,249,250,0.05);
+    --in-content-box-info-background: rgba(249,249,250,0.15);
+
+    --in-content-border-color: rgba(249,249,250,0.2);
+    --in-content-border-hover: rgba(249,249,250,0.3);
+    --in-content-border-invalid: rgb(255,132,139);
+
+    --in-content-warning-icon-color: #ffbd4f;
+    --in-content-success-icon-color: #54FFBD;
+
+    --in-content-icon-color: rgb(251,251,254);
+
+    --in-content-primary-button-text-color: rgb(43,42,51);
+    --in-content-primary-button-background: rgb(0,221,255);
+    --in-content-primary-button-background-hover: rgb(128,235,255);
+    --in-content-primary-button-background-active: rgb(170,242,255);
+
+    --in-content-danger-button-background: #ff848b;
+    --in-content-danger-button-background-hover: #ffbdc5;
+    --in-content-danger-button-background-active: #ffdfe7;
+
+    --in-content-table-background: rgb(35, 34, 43);
+
+    --card-outline-color: var(--grey-60);
+
+    --dialog-warning-text-color: var(--red-40);
+
+    scrollbar-color: rgba(249,249,250,.4) rgba(20,20,25,.3);
+  }
+
+  /* For dialogs, use a different background colour. We don't do
+   * this in forced colors mode, as we should be using system colours then.
+   */
+  @media not (forced-colors) {
+    :root[dialogroot] {
+      --in-content-page-background: #42414d;
+    }
+  }
+}
+
+@media (forced-colors) {
+  :host(:is(.anonymous-content-host, notification-message)),
+  :root {
+    --in-content-page-color: CanvasText;
+
+    --in-content-box-background-odd: var(--in-content-box-background);
+    --in-content-box-border-color: -moz-DialogText;
+    --in-content-box-info-background: var(--in-content-box-background);
+
+    --in-content-item-hover: SelectedItem;
+    --in-content-item-hover-text: SelectedItemText;
+    --in-content-item-selected: SelectedItem;
+    --in-content-item-selected-text: SelectedItemText;
+    --in-content-icon-color: -moz-DialogText;
+
+    --in-content-accent-color: SelectedItem;
+    --in-content-accent-color-active: SelectedItem;
+
+    --in-content-border-hover: ThreeDShadow;
+    /* This is not great, but there is no suitable keyword for this.
+     * In theory, we shouldn't be conveying invalid state just with a colour
+     * change... */
+    --in-content-border-invalid: ThreeDShadow;
+    --in-content-border-color: var(--border-color);
+
+    --in-content-button-text-color: ButtonText;
+    --in-content-button-text-color-hover: SelectedItemText;
+    --in-content-button-text-color-active: SelectedItem;
+    --in-content-button-background: ButtonFace;
+    --in-content-button-background-hover: SelectedItem;
+    --in-content-button-background-active: SelectedItemText;
+    --in-content-button-border-color: ButtonText;
+    --in-content-button-border-color-hover: SelectedItemText;
+    --in-content-button-border-color-active: SelectedItem;
+
+    --in-content-primary-button-text-color: ButtonFace;
+    --in-content-primary-button-text-color-hover: SelectedItemText;
+    --in-content-primary-button-text-color-active: SelectedItem;
+    --in-content-primary-button-background: ButtonText;
+    --in-content-primary-button-background-hover: SelectedItem;
+    --in-content-primary-button-background-active: SelectedItemText;
+    --in-content-primary-button-border-color: ButtonFace;
+    --in-content-primary-button-border-hover: SelectedItemText;
+    --in-content-primary-button-border-active: SelectedItem;
+
+    --in-content-danger-button-background: var(--in-content-primary-button-background);
+    --in-content-danger-button-background-hover: var(--in-content-primary-button-background-hover);
+    --in-content-danger-button-background-active: var(--in-content-primary-button-background-active);
+
+    --in-content-focus-outline-color: -moz-DialogText;
+
+    --in-content-table-border-color: ThreeDDarkShadow;
+    --in-content-table-background: -moz-Dialog;
+    --in-content-table-header-background: -moz-Dialog;
+    --in-content-table-header-color: -moz-DialogText;
+
+    --dialog-warning-text-color: -moz-FieldText;
+  }
+}
+
+
+#categories {
+  appearance: none;
+  background-color: initial; /* override the background-color set on all richlistboxes in common.inc.css */
+  margin: 70px 0 0;
+  border-width: 0;
+  width: var(--in-content-sidebar-width);
+  outline: none;
+}
+
+@media print {
+  #categories {
+    display: none;
+  }
+}
+
+html|*#categories {
+  box-sizing: border-box;
+  padding: 1px;
+}
+
+#categories > .category {
+  border: 1px solid var(--in-content-primary-button-border-color);
+  border-radius: 4px;
+  min-height: 48px;
+  appearance: none;
+  color: inherit;
+  margin-inline-start: 34px;
+  padding-inline: 10px;
+  transition: background-color 150ms;
+}
+
+html|*#categories > html|*.category {
+  border: 1px solid var(--in-content-primary-button-border-color);
+  background-color: initial;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position-x: 10px;
+  background-position-y: 12px;
+  margin-inline-end: 0;
+  min-width: auto;
+  padding-inline-start: 34px;
+  text-align: start;
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+}
+
+html|*#categories > html|*.category:dir(rtl) {
+  background-position-x: right 10px;
+}
+
+#categories > .category:hover {
+  background-color: var(--in-content-button-background-hover);
+  color: var(--in-content-button-text-color-hover);
+  border-color: var(--in-content-button-border-color-hover);
+}
+
+#categories > .category:hover:active {
+  background-color: var(--in-content-button-background-active);
+  color: var(--in-content-button-text-color-active);
+  border-color: var(--in-content-button-border-color-active);
+}
+
+@media not (forced-colors) {
+  #categories > .category[selected],
+  #categories > .category.selected {
+    color: var(--in-content-accent-color);
+  }
+
+  #categories > .category[selected]:not(:hover) {
+    /* override richlistitem selected style while letting hover style above apply */
+    background-color: transparent;
+  }
+
+  #categories > .category[selected]:hover:active,
+  #categories > .category.selected:hover:active {
+    color: var(--in-content-accent-color-active);
+  }
+}
+
+@media (forced-colors) {
+  #categories > .category {
+    /* The transition causes issues with the text getting a background while
+     * transitioning and it looks weird. */
+    transition: none;
+    /* We need a true transparent but in HCM this would compute to an actual color,
+     * so select the page's background color instead: */
+    border-color: var(--in-content-page-background);
+  }
+
+  #categories > .category[selected],
+  #categories > .category.selected {
+    background-color: var(--in-content-button-background-hover);
+    color: var(--in-content-button-text-color-hover);
+    border-color: var(--in-content-button-border-color-hover);
+  }
+}
+
+#categories[keyboard-navigation="true"]:focus-visible > .category[current],
+#categories > .category:focus-visible {
+  outline: var(--in-content-focus-outline);
+  outline-offset: var(--in-content-focus-outline-inset);
+}
+
+html|*#categories[last-input-type="mouse"] > html|button.category:focus-visible {
+  outline: none;
+}
+
+.category-name {
+  font-size: 1.07em;
+  line-height: 1.4em;
+  padding-inline-start: 9px;
+  margin: 0;
+  user-select: none;
+}
+
+.category-icon {
+  width: 24px;
+  height: 24px;
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+}
+
+.category[selected] > .category-icon,
+.category.selected > .category-icon {
+  fill-opacity: 1;
+}
+
+@media (max-width: 830px) {
+  :root {
+    --in-content-sidebar-width: 118px;
+  }
+
+  html|*.category:not(.category-no-icon) > html|*.category-name,
+  .category-icon + .category-name {
+    display: none;
+  }
+
+  #categories > .category {
+    padding-inline-start: 12px; /* make category icons align center */
+    margin-inline-end: 33px;
+  }
+
+  html|*#categories > html|*.category {
+    width: 48px;
+    min-width: auto;
+    box-sizing: border-box;
+  }
+
+  html|*#categories > html|*.category,
+  /* We need to override the full-width RTL rule, so explicitly specify RTL. */
+  html|*#categories > html|*.category:dir(rtl) {
+    background-position: center;
+  }
+
+  .main-content {
+    padding-inline: 0;
+  }
+
+  .pane-container {
+    margin-inline-end: 10px;
+  }
+}

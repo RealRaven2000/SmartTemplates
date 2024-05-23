@@ -2870,6 +2870,14 @@ SmartTemplate4.Util = {
   },
 	
   clickStatusIcon: function(el) {
+		// Open HTML Settings instead - TEST
+		// extensions.smartTemplate4.settings.html = true to open new settings dlg from status button
+		if (SmartTemplate4.Preferences.getMyBoolPref("settings.html")) {
+			SmartTemplate4.Util.logIssue213("Show new HTML help dialog.");
+			SmartTemplate4.Util.notifyTools.notifyBackground({ func: "openPrefs" });
+			return;
+		}
+
     let isLicenseWarning = false;
     if (el.classList.contains("alert") || el.classList.contains("alertExpired")) {
       isLicenseWarning = true;
@@ -2878,7 +2886,6 @@ SmartTemplate4.Util = {
       SmartTemplate4.Util.openPreferences(); // will show splash screen instead.
       return;
     }
-    
     
     let params = {
 			mode: isLicenseWarning ? "licenseKey" : "",
@@ -3564,7 +3571,9 @@ SmartTemplate4.Message = {
 			alert("Exception in loadMessage:" + ex);
 			SmartTemplate4.Util.logException("Exception in loadMessage:", ex);
 		}
-		window.sizeToContent();
+		if (window.sizeToContent) {
+			window.sizeToContent();
+		}
 	} ,
 
 	unloadMessage : function (win) {

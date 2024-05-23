@@ -40,7 +40,7 @@ pref("extensions.smartTemplate4.forwardInlineImg.delay", 200); // [BUG 26434] de
 pref("extensions.smartTemplate4.xtodaylegacy", false); // old way of processing which temporarily inserted  %X:=today% on _EVERY_ new line 
 pref("extensions.smartTemplate4.cleanDeferredButton.installer", false);
 pref("extensions.smartTemplate4.files.path", ""); // location of last saved / loaded json template  
-// pref("extensions.smartTemplate4.fileTemplates", false);  Test; will be removed and set to true
+
 pref("extensions.smartTemplate4.defaultTemplateMethod", 1); // 1 - use account template... 2 - use last template [issue 243]
 pref("extensions.smartTemplate4.vars.file.fileTemplateMethod", false); // use the template loader for %file% variables
 pref("extensions.smartTemplate4.fileTemplates.editor.path",""); // [issue 282]
@@ -73,6 +73,7 @@ pref("extensions.smartTemplate4.changeTemplate.button.install", true); /* add ch
 pref("extensions.smartTemplate4.insertSnippet.button.install", true); /* add insert snippets button automatically when installing for first time */
 
 /* debug settings */
+pref("extensions.smartTemplate4.settings.html",false); // test
 pref("extensions.smartTemplate4.debug", false);
 pref("extensions.smartTemplate4.debug.default", true); // to disable standard log messages 
 pref("extensions.smartTemplate4.hideExamples", false);
