@@ -12,6 +12,8 @@
 // namespace from settings.js - renameing SmartTemplate4 to SmartTemplates
 var SmartTemplates = {};
 
+const SMARTTEMPLATES_EXTPREFIX = "extensions.smartTemplate4.";
+
 SmartTemplates.Settings = {
   isDebug: true, ///// TEST
   logDebug: function (msg) {
@@ -228,17 +230,240 @@ SmartTemplates.Settings = {
 		await this.disableWithCheckbox();
 
 		// Set account popup, duplicate DeckB to make account isntances
-		let CurId = this.fillIdentityListPopup();
-    this.logMissingFunction("implement onLoad");
+		let CurId = await this.fillIdentityListPopup();
+    logMissingFunction("implement onLoad");
     
   } ,
   onUnload: async function() {
-    this.logMissingFunction("implement onUnload");
+    logMissingFunction("implement onUnload");
   } ,
 
 
-  // ============================== Settings Object END
-}
+	// Setup cloned nodes and replace preferences strings
+	// Tb >= 63 add new Preferences handler
+	//--------------------------------------------------------------------
+	prefCloneAndSetup : function (el, branch) {
+		logMissingFunction("Implement prefCloneAndSetup()");
+		const util = SmartTemplates.Util;
+		util.logDebugOptional("settings.prefs", "prefCloneAndSetup(" + el + ", " + branch + ")");
+		// was called replaceAttr
+		// AG added .common to the preference names to make it easier to add and manipulate global/debug settings
+		function replacePrefName(_el,  key) { // replace "preference" attribute with "data-pref-name"
+			try {
+				if (_el.hasAttribute("data-pref-name")) {
+					let _attr = _el.getAttribute("data-pref-name");
+          _el.setAttribute("data-pref-name", _attr.replace(".common", key));
+				}
+			} catch(ex) {}
+		}
+
+		// was called appendAttr; this will append the key id to the setting.
+		// Note this does not include the .common part
+		function replaceAttribute(_el, _attrname, _key) {
+			try {
+				if (_el.hasAttribute(_attrname)) {
+					_el.setAttribute(_attrname, _el.getAttribute(_attrname) + _key);
+				}
+			} catch(ex) {}
+		}
+
+		let key = branch.substr(1), // cut off leading '.'
+		    deps = 0,
+		    newPrefs = [];  // to gather the new preferences
+		// iterate cloned deck.
+		// note: this would be easier to rewrite & understand using recursion
+		const ELEMENT_NODE = 1, TEXT_NODE = 3;
+		while (el) {
+			// Set id, name, prefname
+			if (el.nodeType == ELEMENT_NODE) {
+				replaceAttribute(el, "id", branch);
+				replacePrefName(el, branch); 
+				// build an array of all preference nodes which contain the preference types
+				if (el.tagName == "preference") {
+					newPrefs.push(el);
+				}
+			}
+
+			// Get next node or parent's next node
+			if (el.hasChildNodes()) {
+				el = el.firstChild;
+				deps++;
+			}
+			else {
+				while (deps > 0 && !el.nextSibling) {
+					el = el.parentNode;
+					deps--;
+				}
+				el = el.nextSibling;
+			}
+		}
+
+		// add pref type definitions to Preferences object
+		if (newPrefs.length && typeof Preferences != "undefined") {
+			for (let i=0; i<newPrefs.length; i++) {
+				let it = newPrefs[i],
+						p = { 
+							id: it.getAttribute('name').replace('.common', branch), 
+							type: it.getAttribute('type')
+						}
+            
+				let pref = Preferences.add(p);
+        
+				this.preferenceElements.push (pref);
+				util.logDebugOptional("settings.prefs", "Added Preference: " + p.id);
+			}
+		}
+		util.logDebugOptional("settings.prefs", "prefCloneAndSetup COMPLETE");
+	} ,
+
+
+	//******************************************************************************
+	// Identity
+	//******************************************************************************
+
+	// Add identity - clone a new deck
+	//--------------------------------------------------------------------
+	addIdentity : function (menuvalue) {
+		const isCommon = (menuvalue == "common"),
+		      branch = isCommon ? ".common" : "." + menuvalue; 
+
+    logMissingFunction(`implement (${menuvalue})`);
+    this.logDebug(`addIdentity() - branch: ${branch}`);
+
+		try {
+			// Add preferences, if preferences is not create.
+			let prefRoot = "extensions.smartTemplate4" + branch + ".";
+			this.setPref1st(prefRoot);
+
+			// Clone and setup a preference window tags.
+			const el = document.getElementById("deckA.per_account");
+
+			// fix painting over of decks
+			el.classList.remove("deck-selected"); 
+
+			const clone = el.cloneNode(true);
+
+			this.prefCloneAndSetup(clone, branch);
+			let appendedChild = el.parentNode.appendChild(clone);
+			let spacers = appendedChild.querySelectorAll(".tabs-left");
+			
+			if (spacers[1] && (spacers[1].previousSibling == spacers[0])) {
+				SmartTemplates.Util.logDebug("addIdentity() - removing first spacer");
+				spacers[0].remove();
+			}
+
+			// Disabled or Hidden DOM node
+			this.accountKey = branch;    // change current id for pref library
+			
+			let useCommon = 
+			  isCommon ? false : prefs.getBoolPref(prefRoot + "def"); // this.isChecked("use_default" + branch)
+			this.showCommonPlaceholder(useCommon);
+
+			this.disableWithCheckbox();
+			// this.accountKey = "";
+		} catch(ex) {
+			SmartTemplates.Util.logException("Exception in addIdentity(" + menuvalue  +")", ex);
+		} finally {
+			SmartTemplates.Util.logDebug("addIdentity COMPLETE");
+		}
+	} ,
+
+  // Fill identities menu
+	// this also clones the deck as many times as there are identities in order to fill in 
+	// the specific templates [see addIdentity()]
+	fillIdentityListPopup: async function() {
+
+    const accounts = await messenger.accounts.list(false);
+  	// this.logDebug("***fillIdentityListPopup");
+
+		let currentId = 0, CurId = null;
+		
+		// only when calling from the mail 3 pane window: 
+    /*
+    *** TO DO: 
+    ***        determine previous mail tab, current identity to preselect the correct one!
+		** if (window.opener && window.opener.GetSelectedMsgFolders) { 
+		** let folders = window.opener.GetSelectedMsgFolders();
+		** if (folders.length > 0) { // select the correct server that applies to the current folder.
+		** 	var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+		** 		[CurId] = MailUtils.getIdentityForServer(folders[0].server);
+		** }
+    */
+		
+		let theMenu = document.getElementById("msgIdentity"),
+		    iAccounts = accounts.length;
+				
+    /* 
+     ***  TO DO: 
+     ***      we will handle these via the category switch catFileTemplates instead!
+		const label = messenger.i18n.getMessage(("st.fileTemplates");
+		theMenu.appendItem(label, "fileTemplates", "file templates: to replace Stationery");
+    */
+				
+		for (let idx = 0; idx < iAccounts; idx++) {
+      // https://webextension-api.thunderbird.net/en/stable/accounts.html#accounts-mailaccount
+			let account = accounts[idx];
+
+			// if (!account.incomingServer)
+      if (!(["imap","pop","nntp"].includes(account.type))) {
+        continue;
+      }
+
+			for (let j = 0; j < account.identities?.length; j++) {
+        // https://webextension-api.thunderbird.net/en/stable/identities.html#identities-mailidentity
+				let identity = account.identities[j];
+
+				if (CurId == identity) {
+					currentId = theMenu.itemCount; // remember position
+				}
+        
+        // remove account name 
+        let idText = "", acc = "";
+        if (await getPref( "identities.showIdKey")) {
+          idText = identity.key + " - ";
+        }
+        if (await getPref("identities.showAccountName")) {
+          acc = account.incomingServer.prettyName + " - ";
+        }
+        let newOption = document.createElement("option");
+        newOption.text = idText + acc + identity.identityName;
+        newOption.value = identity.key;
+        theMenu.appendChild(newOption);
+				// theMenu.appendItem(lbl, identity.key, "");
+				// will unselect the current item? (e.g. Common)
+				this.addIdentity(identity.key);
+				
+			}
+		}
+		// update all Preference elements - do we need to wait for another event?
+		for (let i=0; i<this.preferenceElements.length; i++ ) {
+			this.preferenceElements[i].updateElements();
+		}
+		
+		if (CurId && CurId.key && await getPref(CurId.key+".def")) { // use common?
+			theMenu.selectedIndex = 0;
+			CurId = null; // select common
+		} else {
+			// select the current identity from the drop down:
+			theMenu.selectedIndex = currentId;
+		}
+
+		if (!CurId) { //  [issue 290]
+			let common = document.getElementById("deckA.per_account");
+			common.classList.add("deck-selected"); 
+		}		
+		return (CurId) ? CurId.key : null;
+		
+  
+  },
+  dummy: function() {
+
+  }
+  
+  
+  // ============================== Settings Object END  
+};
+
 
 /**********
  * UTILITY FUNCTIONS
@@ -246,16 +471,16 @@ SmartTemplates.Settings = {
 
 async function setPref(key,value) {
   let target = key;
-  if (!key.startsWith("extensions.smartTemplate4.")) {
-    target = "extensions.smartTemplate4." + key;
+  if (!key.startsWith(SMARTTEMPLATES_EXTPREFIX)) {
+    target = SMARTTEMPLATES_EXTPREFIX + key;
   }
   await messenger.LegacyPrefs.setPref(target, value);
 }
 
 async function getPref(key) {
   let target = key;
-  if (!key.startsWith("extensions.smartTemplate4.")) {
-    target = "extensions.smartTemplate4." + key;
+  if (!key.startsWith(SMARTTEMPLATES_EXTPREFIX)) {
+    target = SMARTTEMPLATES_EXTPREFIX + key;
   }  
   return await messenger.LegacyPrefs.getPref(target);
 }

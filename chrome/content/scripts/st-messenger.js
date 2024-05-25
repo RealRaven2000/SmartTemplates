@@ -254,6 +254,12 @@ async function onLoad(activatedWhileWindowOpen) {
       event.detail.menuObject
     );
   } 
+  mylisteners["showAboutConfig"] = (event) => {
+    window.SmartTemplate4.Util.showAboutConfig(null, event.detail.filter);
+  }
+    
+    
+
   mylisteners["doCommand"] = (event) => {
     window.SmartTemplate4.doCommand.call(
       window.SmartTemplate4.doCommand,

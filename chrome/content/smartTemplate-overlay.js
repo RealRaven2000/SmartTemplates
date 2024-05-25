@@ -2919,6 +2919,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       let targetString = '',
           modType = '',
           textParamList = argString.substr(argString.indexOf(",")+1); // textParam
+      let isMultiPass = false; // use this to do multiple passes with multiple parameters e.g. header.delete(subject,"1","2","3")
+      let multiArgs = [];
 			switch (matchFunction) {
 				case "": // no matchFunction, so argString is literal
           if (cmd=="deleteFromSubject") {
@@ -2926,7 +2928,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           }
           textParamList = textParamList.substr(0, textParamList.lastIndexOf(")"));
 
-          let multiArgs = textParamList.split(",");
+          multiArgs = textParamList.split(",");
           multiArgs = util.combineEscapedParams(multiArgs,0); // fixed escaped \, by combining
 
           // rebuild string
@@ -2940,8 +2942,23 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 textParamList += util.clipboardRead();
               }
             } else {
-              // remove quotes at start and end and replace escaped commas
-              textParamList += a.replace(/^"(.*)"$/, '$1').replaceAll("\\,",","); 
+              // for setting / perfixing or appending, concatenate all arguments to a single string
+              
+              switch (cmd) {
+                case "delete":
+                case "deleteFromSubject":
+                  isMultiPass = true;
+                  for (let a=0; a<multiArgs.length; a++) {
+                    // remove quotes at start and end and replace escaped commas
+                    multiArgs[a] = multiArgs[a].replace(/^"(.*)"$/, '$1').replaceAll("\\,",","); 
+                  }
+                  break;
+                default:
+                  // append sanitized params
+                  // remove quotes at start and end and replace escaped commas
+                  textParamList += a.replace(/^"(.*)"$/, '$1').replaceAll("\\,",","); 
+                  break;
+              }
             }
           }
 				  break;
@@ -2966,7 +2983,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       try {
         let isClobberHeader = false;
        
-        util.logDebug("modifyHeader(" + hdrField +", " + cmd + ", " + textParamList+ ")");
+        let dbgParamsList = textParamList;
+        if (isMultiPass) {
+          dbgParamsList = `[${multiArgs.join(", ")}]`;
+        } 
+        util.logDebug(`modifyHeader( ${hdrField}, ${cmd}, ${dbgParamsList})`);
+
         if (whiteList.indexOf(hdrField)<0) {
           // not in whitelist
           if (hdrField.toLowerCase().startsWith("list") || hdrField.toLowerCase().startsWith("x-")) { // allow modification of all custom headers x-...
@@ -3042,8 +3064,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 break;
 							case 'delete': // remove a substring, e.g. header.delete(subject,"re: | Fwd: ")
               case 'deleteFromSubject':
-							  let pattern = new RegExp(textParamList, "gm");
-							  targetString = targetString.replace(pattern,"").replace(/\s+/g, ' '); // remove and then collapse multiple white spaces
+                for (let par of multiArgs) {
+                  let pattern = new RegExp(par, "gm"); // textParamList
+                  targetString = targetString.replace(pattern,"").replace(/\s+/g, ' '); // remove and then collapse multiple white spaces
+                }
 							  break;
             }
             break;

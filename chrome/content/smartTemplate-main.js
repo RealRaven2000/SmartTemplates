@@ -124,7 +124,7 @@ END LICENSE BLOCK
     # added missing proFeature image for notification
 
 
-  Version 4.5 - FUTURE VERSION / WIP
+  Version 4.5 - 14/05/2024
     # [issue 287] You can now use percent "%" sign within a text parameter, e.g. %header.set(subject,"save 25%")%
     # [issue 282] Added Edit Templates button
     # [issue 288] Added text transformation parameters for search functions (capitalize / uppercase / lowercase / camelcase)
@@ -136,7 +136,10 @@ END LICENSE BLOCK
     # Minor layout improvements in settings screen
     # improved templates scrolling when moving menu items up / down
 
-
+  Version 4.5.1 - FUTURE VERSION / WIP
+    # Compatible with 127.*
+    # [issue 259] Convert Settings screen to HTML, and move to Tab
+    # [issue 293] Support multiple parameters for %header.delete()% and %header.deleteFromSubject()% 
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
