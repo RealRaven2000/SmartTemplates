@@ -1106,6 +1106,16 @@ async function main() {
       switch (data.command) {
         case "getLicenseInfo": 
           return currentLicense.info;
+        case "showAboutConfig":
+          // to do: create an API for this one
+          messenger.NotifyTools.notifyExperiment({
+            event: "showAboutConfig", 
+            element: null,
+            filter: data.filter,
+            readOnly: data.readOnly,
+            updateUI: data.updateUI || false
+          });
+          break;      
       }
     }
   });  
@@ -1253,6 +1263,7 @@ async function main() {
           console.log({cards});
           return null;
         }
+        break;
       }
         
       case "openPrefs":
@@ -1261,12 +1272,14 @@ async function main() {
           let url = browser.runtime.getURL(settingsUrl) + "*";
           let [oldTab] = await browser.tabs.query({url}); // dereference first 
           if (oldTab) {
-            await browser.windows.update(oldTab.windowId, {focused:true});
+            await browser.tabs.update(oldTab.id, {active:true});
+            // await browser.windows.update(oldTab.windowId, {focused:true});
           } else {
             // open a new tab with settings
             browser.tabs.create ({active: true, url: browser.runtime.getURL(settingsUrl)});
           }
         }
+        break;
 
       case "patchUnifiedToolbar":
         return await messenger.NotifyTools.notifyExperiment({event: "patchUnifiedToolbar"});
