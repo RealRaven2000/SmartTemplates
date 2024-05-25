@@ -1,3 +1,27 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hovercolor: #113e6a;
+    --hoverbackground: #ffffffcb;
+    --selectedbackground:#1d3e7dad;
+    --clickedbackground:var(--selectedbackground);
+    --selectedcolor: #FFFFFF;
+    --activecolor: #a5f7fcd9;
+    --configColor: rgba(250,40,80, 0.85);
+  }  
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --hovercolor: #ffffffcb;
+    --hoverbackground: #113e6a;
+    --selectedbackground: #1d3e7dad;
+    --clickedbackground:var(--selectedbackground);
+    --activecolor: #FFFFFF;
+    --configColor: rgb(140,0,0);
+  }
+}
+
+
 p.important {
   font-weight: bold;
   color: #ffd8a6;
@@ -770,4 +794,40 @@ label.plain-link:hover {
 button {
   color: var(--button-text-color) !important; /* was inherit */
   background: var(--button-background-color) !important;
+}
+
+/** config buttons **/
+
+button.helpLink,
+.hasConfigEvent button.configSettings {
+  -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  display: list-item inline;
+  fill: currentColor;
+  list-style-position: inside;
+  margin: 0 3px 0 auto;  
+  min-width: 24px !important;
+  padding: 3px 3px 0 3px;
+  width: 24px;
+}
+
+
+.hasConfigEvent button.configSettings {
+  list-style-image: url('../chrome/content/skin/icons/settings-simple.svg') !important;
+}
+
+button.helpLink {
+  list-style-image: url('../chrome/content/skin/icons/help.svg') !important;
+}
+
+.hasConfigEvent button.configSettings:hover {
+	fill: var(--configColor);
+	stroke: var(--configColor);
+  stroke-width: 3px;
+}
+
+.hasConfigEvent button[disabled="true"].configSettings:hover {
+	filter: grayscale(70%); /* desaturate because disabled! */
 }

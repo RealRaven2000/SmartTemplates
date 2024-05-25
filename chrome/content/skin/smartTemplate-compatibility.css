@@ -68,7 +68,7 @@ html|legend {
 }
 
 /* General elements */
-#qf-options-prefpane label {
+#mainContent label {
   line-height: 1.3em;
   font-size: 0.85em;
   display: flex;
@@ -80,10 +80,6 @@ html|legend {
 #supportgrid .button label {
   justify-content: center;
   font-size: 1.05em;
-}
-
-#QuickFolders-Options-support.active {
-  background-image: url("thunderbird-earlybird.png") !important;
 }
 
 #qf-options-header {
