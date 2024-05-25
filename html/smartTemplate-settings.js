@@ -560,6 +560,7 @@ const activateTab = (event) => {
   browser.LegacyPrefs.setPref("extensions.quickfolders.lastSelectedOptionsTab", 
     btn.getAttribute("tabNo"));
     */
+		
 }
 
 
@@ -621,18 +622,200 @@ async function loadPrefs() {
 	}  
 }
 
+// we cannot transmit the element, so removing the first parameter
+async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
+  // we put the notification listener into quickfolders-tablistener.js - should only happen in ONE main window!
+  // el - cannot be cloned! let's throw it away and get target of the event
+  messenger.runtime.sendMessage({ 
+    command: "showAboutConfig", 
+    filter: filter,
+    readOnly: readOnly,
+    updateUI: updateUI
+  });
+}
+
+function addConfigEvent(el, filterConfig) {
+	// add right-click event to containing label
+	if (!el) return;
+	let eventNode = el.parentNode.querySelector(".configSettings");
+	let eventType;
+	if (eventNode) {
+		eventType = "click";
+	} else {
+		eventNode = el.parentNode;
+		eventType = "contextmenu";
+	}
+	eventNode.addEventListener(eventType, async(event) =>  {
+		event.preventDefault();
+		event.stopPropagation();
+		await dispatchAboutConfig(filterConfig, true, true);
+		// if (null!=retVal) return retVal;
+	});
+}
+
 // add UI event listeners
 function addUIListeners() {
   // activate all tab listeners.
   for (let button of document.querySelectorAll(".actionTabs button")) {
     button.addEventListener("click", activateTab);
   }
-  
+
+	// add bool preference reactions
+	for (let chk of document.querySelectorAll("input[type=checkbox]")) {	
+		let dataPref = chk.getAttribute("data-pref-name").replace(SMARTTEMPLATES_EXTPREFIX,"");
+		// get my bool pref:
+		switch (dataPref) {
+			case "debug":
+				chk.addEventListener("change", (event) => {
+					SettingsUI.toggleBoolPreference(chk); // <== QF.Options
+				});				
+				break;
+		}
+
+		/* RIGHTCLICK HANDLERS */
+		// right-click show details from about:config
+		let filterConfig="", readOnly=true, retVal=null;
+		switch(dataPref) {
+			case "debug":
+				// + options.toggleBoolPreference(chk,true); beforehand!
+				filterConfig="smartTemplate4.debug"; retVal=false;
+				break;
+		}
+
+		if (filterConfig) {
+			addConfigEvent(chk,filterConfig);
+		}	
+	}
+
+	for (let chk of document.querySelectorAll(".settingDisabler")) {	
+		chk.addEventListener("change", (event) => {
+			// SmartTemplates.Settings.disableWithCheckbox(this)
+			disableWithCheckbox(chk); // <== QF.Options
+		});			
+	}
+	
+  // these were oncommand events - for the file templates list
+	document.getElementById("btnAdd").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.update(true)");
+	});
+	document.getElementById("btnUpdate").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.update(false)");
+	});
+	document.getElementById("btnRemove").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.remove()");
+	});
+	document.getElementById("btnUp").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.up()");
+	});
+	document.getElementById("btnDown").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.down()");
+	});
+	document.getElementById("btnEdit").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.edit()");
+	});
+	document.getElementById("helpSnippets").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.Util.showStationeryHelpPage('snippets')");
+	});
+
+	// select element
+	document.getElementById("msgIdentity").addEventListener("change", (event) => {
+		logMissingFunction("SmartTemplates.Settings.selectIdentity(this.value)");
+	});
+
+	// toolbar for the template tools
+	document.getElementById("helpTemplates").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.Util.showStationeryHelpPage('templateFiles')");
+	});
+	document.getElementById("btnSaveTemplate").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplates.Settings.store()");
+	});
+	document.getElementById("btnLoadTemplate").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplates.Settings.load()");
+	});
+	document.getElementById("btnYouTube").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.Util.showYouTubePage()");
+	});
+	document.getElementById("btnAdvanced").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplates.Settings.openAdvanced()");
+	});
+	document.getElementById("btnCloseAdvanced").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplates.Settings.closeAdvanced()");
+	});
+
+	// more checkboxes
+	document.getElementById("use_default").addEventListener("change", (event) => {
+		logMissingFunction("SmartTemplates.Settings.showCommonPlaceholder(this.checked)");
+	});
+	// file picker button
+	document.getElementById("btnPickTemplate").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.pickFileFromSettings()");
+	});	
+
+
+	// textareas:
+	// drag + drop
+  for (let textarea of document.querySelectorAll(".templateBox")) {
+		textarea.addEventListener("drop", (event) => {
+			logMissingFunction("SmartTemplates.Settings.textDropped(event)");
+		});	
+  }
+	// focus (for pasting)
+  for (let textarea of document.querySelectorAll(".pasteFocus textarea")) {
+		textarea.addEventListener("focus", (event) => {
+			logMissingFunction("SmartTemplates.Settings.pasteFocus(this)");
+		});	
+  }
+
+  // tabs for file templates (new, write, fwd, snippets)
+	document.getElementById("fileTemplatesTabs").addEventListener("change", (event) => {
+		logMissingFunction("SmartTemplates.Settings.selectFileCase(this, event)");
+	});	
+	// not sure whether this one is needed??
+	document.getElementById("fileTemplateContainer").addEventListener("change", (event) => {
+		logMissingFunction("SmartTemplates.Settings.selectFileCase(this, event)");
+	});	
+	
+	
+	// template lists
+	// .fileTemplateList richlistbox ==> select
+  for (let textarea of document.querySelectorAll(".fileTemplateList")) {
+		textarea.addEventListener("change", (event) => {
+			logMissingFunction("SmartTemplate4.fileTemplates.onSelect(this)");
+		});	
+  }
+
+  // ============================
+	// == template file details  ==
+  // ============================
+	let txtTitle = document.getElementById("txtTemplateTitle");
+	txtTitle.addEventListener("blur",(event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.onEditLabel(this)");
+	});	
+	txtTitle.addEventListener("focus",(event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.updateInputGlobal(this)");
+	});	
+
+	let txtCategory = document.getElementById("txtTemplateCategory");
+	txtCategory.addEventListener("blur",(event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.onEditLabel()");
+	});	
+	txtCategory.addEventListener("focus",(event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.updateInputGlobal(this)");
+	});	
+
+	
+
+
+
+	
+
+
+	addConfigEvent(document.getElementById("identityLabel"), "extensions.smartTemplate4.identities");
+
 
 }
 
 async function onLoad() {
-  debugger;
   i18n.updateDocument();
   // this api function can do replacements for us
   //  h1.innerText = messenger.i18n.getMessage('heading-installed', addonName);

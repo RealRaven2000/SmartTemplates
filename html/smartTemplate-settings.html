@@ -73,16 +73,15 @@
 
           <!-- ######## Creating Identity Dropdown Box ######## --> 
           <div align="center" id="identityToolBar" class="hbox">
-            <label id="identityLabel"
-              class="contextConfig"
-              oncontextmenu="SmartTemplates.Util.showAboutConfig('extensions.smartTemplate4.identities');">
-                __MSG_pref_server_desc__:
+            
+            <label id="identityLabel" class="hasConfigEvent">
+              <button class="configSettings"></button>
+              __MSG_pref_server_desc__:
             </label>
             <select id="msgIdentity"
               class="identity-menulist"
               label="__MSG_pref_server_def__"
               flex="1"
-              oncommand="SmartTemplates.Settings.selectIdentity(this.value);"
               tabindex="0">
               <option class="identity-popup-item" value="common">__MSG_pref_server_def__</option>
             </select>
@@ -90,32 +89,26 @@
               <span class="navigateable">
               <button id="helpTemplates"
                   class="iconButton"
-                  oncommand="SmartTemplate4.Util.showStationeryHelpPage('templateFiles');" 
                   title="__MSG_tip.fileTemplates__"></button>
               <button id="btnSaveTemplate"
                     class="iconButton"
                     title="__MSG_btnSaveTemplate.tooltip__"
-                    alt="__MSG_btnSaveTemplate.tooltip__"
-                    oncommand="SmartTemplates.Settings.store();"></button>
+                    alt="__MSG_btnSaveTemplate.tooltip__"></button>
               <button id="btnLoadTemplate"
                     class="iconButton"
                     title="__MSG_btnLoadTemplate.tooltip__"
-                    alt="__MSG_btnLoadTemplate.tooltip__"
-                    oncommand="SmartTemplates.Settings.load();"></button>
+                    alt="__MSG_btnLoadTemplate.tooltip__"></button>
               <button id="btnYouTube"
                     class="iconButton"
                     title="__MSG_btnYouTube.tooltip__"
-                    alt="__MSG_btnYouTube.tooltip__"
-                    oncommand="SmartTemplate4.Util.showYouTubePage();"></button>
+                    alt="__MSG_btnYouTube.tooltip__"></button>
               <button id="btnAdvanced"
                     class="iconButton"
                     title="__MSG_advanced.label__"
-                    alt="__MSG_advanced.label__"
-                    oncommand="SmartTemplates.Settings.openAdvanced();"></button>
+                    alt="__MSG_advanced.label__"></button>
               <button id="btnCloseAdvanced"
                     class="iconButton"
                     title="__MSG_close.label__"
-                    oncommand="SmartTemplates.Settings.closeAdvanced();"
                     alt="__MSG_close.label__"
                     hidden="true"></button>
               </span>
@@ -152,8 +145,7 @@
                 <div align="center" class="hbox">
                   <label>
                     <input type="checkbox" id="use_default"
-                    data-pref-name="extensions.smartTemplate4.common.def"
-                    oncommand="SmartTemplates.Settings.showCommonPlaceholder(this.checked);">
+                    data-pref-name="extensions.smartTemplate4.common.def">
                     __MSG_pref_def.label__
                   </label>
                 </div>
@@ -177,9 +169,8 @@
                           <div flex="1" class="vfield vbox">
                             <div class="hbox">
                               <label>
-                                <input type="checkbox" id="new"
-                                  data-pref-name="extensions.smartTemplate4.common.new"
-                                  oncommand="SmartTemplates.Settings.disableWithCheckbox(this);"/>__MSG_pref_new.label__
+                                <input type="checkbox" id="new" class="settingDisabler"
+                                  data-pref-name="extensions.smartTemplate4.common.new">__MSG_pref_new.label__
                               </label>
                             </div>                     
                             
@@ -188,13 +179,11 @@
                               <textarea id="newmsg" flex="1"
                                 class="templateBox templateWrite"
                                 multiline="true" tooltiptext="__MSG_pref_template_tip__"
-                                ondrop="SmartTemplates.Settings.textDropped(event);"
                                 data-pref-name="extensions.smartTemplate4.common.newmsg"
                                 preference-editable="true"></textarea>
-                              <label><input type="checkbox" id="newhtml"
-                                  title="__MSG_pref_html.cap__"
-                                  data-pref-name="extensions.smartTemplate4.common.newhtml"
-                                  oncommand="SmartTemplates.Settings.disableWithCheckbox(this);">
+                              <label><input type="checkbox" id="newhtml" class="settingDisabler"
+                                      title="__MSG_pref_html.cap__"
+                                      data-pref-name="extensions.smartTemplate4.common.newhtml">
                                   __MSG_pref_html.label__
                               </label>
                               <label><input type="checkbox" id="newnbr"
@@ -213,9 +202,8 @@
                         <div class="groupbox-title hbox"><label class="header">__MSG_pref_rspmsg.cap__</label></div>
                         <div flex="1" class="vfield vbox">
                           <div class="hbox">
-                            <label> <input type="checkbox" id="rsp"
-                                data-pref-name="extensions.smartTemplate4.common.rsp"
-                                oncommand="SmartTemplates.Settings.disableWithCheckbox(this);">
+                            <label> <input type="checkbox" id="rsp" class="settingDisabler"
+                                data-pref-name="extensions.smartTemplate4.common.rsp">
                                 __MSG_pref_rsp.label__
                             </label>
                           </div>
@@ -229,9 +217,7 @@
                                 flex="1"
                                 tooltiptext="__MSG_pref_quoteHeaderBox_tip__"
                                 data-pref-name="extensions.smartTemplate4.common.rspheader"
-                                preference-editable="true"
-                                ondrop="SmartTemplates.Settings.textDropped(event);"
-                                onfocus="SmartTemplates.Settings.pasteFocus(this);"></textarea>
+                                preference-editable="true"></textarea>
                             </div>
                             <label> <input type="checkbox" id="rsphead"
                               title="__MSG_pref_quotehead_tip__"
@@ -249,15 +235,12 @@
                                 flex="1"
                                 tooltiptext="__MSG_pref_templateBox_tip__"
                                 data-pref-name="extensions.smartTemplate4.common.rspmsg"
-                                preference-editable="true"
-                                ondrop="SmartTemplates.Settings.textDropped(event);"
-                                onfocus="SmartTemplates.Settings.pasteFocus(this);"></textarea>
+                                preference-editable="true"></textarea>
                             </div>
                           </div>
-                          <label><input type="checkbox" id="rsphtml"
+                          <label><input type="checkbox" id="rsphtml" class="settingDisabler"
                             title="__MSG_pref_html.cap__"
-                            data-pref-name="extensions.smartTemplate4.common.rsphtml"
-                            oncommand="SmartTemplates.Settings.disableWithCheckbox(this);">
+                            data-pref-name="extensions.smartTemplate4.common.rsphtml">
                             __MSG_pref_html.label__
                           </label>
                           <label><input type="checkbox" id="rspnbr"
@@ -274,9 +257,8 @@
                         <div class="groupbox-title hbox"><label class="header">__MSG_pref_fwdmsg.cap__</label></div>
                         <div flex="1" class="vfield vbox">
                           <div class="hbox">
-                            <label><input type="checkbox" id="fwd"
-                              data-pref-name="extensions.smartTemplate4.common.fwd"
-                              oncommand="SmartTemplates.Settings.disableWithCheckbox(this);">
+                            <label><input type="checkbox" id="fwd" class="settingDisabler"
+                              data-pref-name="extensions.smartTemplate4.common.fwd">
                               __MSG_pref_fwd.label__
                             </label>
                           </div>
@@ -291,9 +273,7 @@
                                 flex="1"
                                 tooltiptext="__MSG_pref_quoteHeaderBox_tip__"
                                 data-pref-name="extensions.smartTemplate4.common.fwdheader"
-                                preference-editable="true"
-                                ondrop="SmartTemplates.Settings.textDropped(event);"
-                                onfocus="SmartTemplates.Settings.pasteFocus(this);"></textarea>
+                                preference-editable="true"></textarea>
                             </div>
                             <label><input type="checkbox" id="fwdhead"
                               title="__MSG_pref_quotehead_tip__"
@@ -311,15 +291,12 @@
                                 flex="1"
                                 tooltiptext="__MSG_pref_templateBox_tip__"
                                 data-pref-name="extensions.smartTemplate4.common.fwdmsg"
-                                preference-editable="true"
-                                ondrop="SmartTemplates.Settings.textDropped(event);"
-                                onfocus="SmartTemplates.Settings.pasteFocus(this);"></textarea>
+                                preference-editable="true"></textarea>
                               </div>
                           </div>
-                          <label><input type="checkbox" id="fwdhtml"
+                          <label><input type="checkbox" id="fwdhtml" class="settingDisabler"
                             title="__MSG_pref_html.cap__"
-                            data-pref-name="extensions.smartTemplate4.common.fwdhtml"
-                            oncommand="SmartTemplates.Settings.disableWithCheckbox(this);">
+                            data-pref-name="extensions.smartTemplate4.common.fwdhtml">
                             __MSG_pref_html.label__
                           </label>
 
@@ -333,8 +310,6 @@
                       </section>
                     </div>
 
-
-
                     
                   </div>
       
@@ -344,13 +319,11 @@
                   </div>
                   
                 </deck>
-                
-                
               </div>
               
               
               <div id="fileTemplatesBox" class="vbox">
-                <div id="fileTemplatesTabs" class="tabbox" flex="1" onchange="SmartTemplates.Settings.selectFileCase(this, event);">
+                <div id="fileTemplatesTabs" class="tabbox" flex="1">
                   <nav class="tabs actionTabs">
                     <ul>
                       <li><button id="file.newTab"      class="NewTab">__MSG_pref_new.tab__</button></li>
@@ -360,20 +333,17 @@
                     </ul>
                   </nav>
                   
-                  <div class="tabcontent-container" flex="1" orient="vertical"
-                    onselect="SmartTemplates.Settings.selectFileCase(this, event);"
-                    >
+                  <div id="fileTemplateContainer" class="tabcontent-container" flex="1" orient="vertical">
                     <section class="newGroup fileTemplatePanel" id="new-fileTemplates">
                       <groupbox flex="1" orient="vertical" class="transparent">
                         <div class="groupbox-title hbox"><label class="header">__MSG_pref_newmsg.cap__</label></div>
                         <div flex="1" class="vfield vbox">
                           <label title="__MSG_fileTemplates.new.tooltip__">__MSG_fileTemplates.title__</label>
                           <richlistbox 
-                              id="templateList.new" 
-                              flex="1"
-                              seltype="single"
-                              onselect="SmartTemplate4.fileTemplates.onSelect(this);"
-                              > <!-- note selTyope is camelCase in JS -->
+                            id="templateList.new" 
+                            class="fileTemplateList"
+                            flex="1"
+                            seltype="single"> 
                           </richlistbox>
                           <!-- we will move this around to the active tab -->
                           <div id="fileControls" class="vbox">
@@ -385,29 +355,28 @@
                                 <toolbarbutton
                                     id="btnAdd"
                                     class="iconButton chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.add__"
-                                    oncommand="SmartTemplate4.fileTemplates.update(true);" />
+                                    label="__MSG_fileTemplates.add__"/>
                                 <toolbarbutton
                                     id="btnUpdate"
                                     class="iconButton chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.update__"
-                                    oncommand="SmartTemplate4.fileTemplates.update(false);" />
+                                    label="__MSG_fileTemplates.update__"/>
                                 <toolbarbutton
                                     id="btnRemove"
                                     class="iconButton chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.remove__"
-                                    oncommand="SmartTemplate4.fileTemplates.remove();" />
+                                    label="__MSG_fileTemplates.remove__"/>
                                 <toolbarseparator />
                                 <toolbarbutton
                                     id="btnUp"
                                     class="iconButton chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.up__"
-                                    oncommand="SmartTemplate4.fileTemplates.up();" />
+                                    label="__MSG_fileTemplates.up__"/>
                                 <toolbarbutton
                                     id="btnDown"
                                     class="iconButton chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.down__"
-                                    oncommand="SmartTemplate4.fileTemplates.down();" />
+                                    label="__MSG_fileTemplates.down__"/>
+                                <toolbarbutton
+                                    id="btnEdit"
+                                    class="toolbarbutton-1 chromeclass-toolbar-additional" 
+                                    label="__MSG_fileTemplates.edit__" />
                               </toolbar>						
                             </div>
                             <div id="fileSettings" >
@@ -417,9 +386,7 @@
                                   <input type="text" id="txtTemplatePath">
                                   <button class="iconButton" 
                                           id="btnPickTemplate" 
-                                          tooltiptext="__MSG_fileTemplates.file.open__" 
-                                          oncommand="SmartTemplate4.fileTemplates.pickFileFromSettings();"
-                                          ></button>
+                                          tooltiptext="__MSG_fileTemplates.file.open__"></button>
                                 </div>
                               </div>
                               <div>
@@ -429,19 +396,13 @@
                                     type="text"
                                     id="txtTemplateTitle" 
                                     title="__MSG_fileTemplates.file.title.tooltip__"
-                                    onblur="SmartTemplate4.fileTemplates.onEditLabel(this);"
-                                    onfocus="SmartTemplate4.fileTemplates.updateInputGlobal(this);"
                                     >
                                   <label>__MSG_template.category__:</label>
                                   <input
                                     type="text"
                                     id="txtTemplateCategory"
-                                    title="__MSG_template.category.tooltip__"
-                                    onblur="SmartTemplate4.fileTemplates.onEditLabel();"
-                                    onfocus="SmartTemplate4.fileTemplates.updateInputGlobal(this);"
-                                    >
+                                    title="__MSG_template.category.tooltip__">
                                   <toolbarbutton id="helpSnippets"
-                                    oncommand="SmartTemplate4.Util.showStationeryHelpPage('snippets');" 
                                     label=""
                                     tooltiptext="__MSG_template.category.tooltip__"
                                     >
@@ -462,8 +423,8 @@
                                 __MSG_fileTemplates.title__</label>
                           <richlistbox 
                             id="templateList.rsp" 
-                            flex="1"
-                            onselect="SmartTemplate4.fileTemplates.onSelect(this);">
+                            class="fileTemplateList"
+                            flex="1">
                           </richlistbox>
                         </div>
                       </groupbox>
@@ -477,8 +438,8 @@
                           <label tooltiptext="__MSG_fileTemplates.fwd.tooltip__">__MSG_fileTemplates.title__</label>
                           <richlistbox 
                             id="templateList.fwd" 
-                            flex="1"
-                            onselect="SmartTemplate4.fileTemplates.onSelect(this);">
+                            class="fileTemplateList"
+                            flex="1">
                           </richlistbox>
                         </div>									
                       </groupbox>
@@ -492,8 +453,8 @@
                           <label>__MSG_snippets.label__</label>
                           <richlistbox 
                             id="templateList.snippets" 
-                            flex="1"
-                            onselect="SmartTemplate4.fileTemplates.onSelect(this);">
+                            class="fileTemplateList"
+                            flex="1">
                           </richlistbox>
                         </div>									
                       </groupbox>
