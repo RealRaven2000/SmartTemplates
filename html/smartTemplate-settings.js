@@ -26,6 +26,18 @@ SmartTemplates.Settings = {
     let msg = "SmartTemplates Settings\n";
     console.log(msg, ...arguments);
   },
+	logException: function(aMessage, ex) {
+		let stack = '';
+		if (typeof ex.stack!='undefined') {
+			stack = ex.stack.replace("@","\n  ");
+		}
+
+		let srcName = ex.fileName ? ex.fileName : "";
+		console.warn(aMessage + "\n", 
+		  `${srcName}:${ex.lineNumber}`, 
+			`\n${ex.message}\n`, 
+			ex.stack ? ex.stack.replace("@","\n  ") : "", );
+	} ,
 
 	accountKey : ".common",  // default to common; .file for files
 	preferenceElements : [],
@@ -245,7 +257,7 @@ SmartTemplates.Settings = {
 	prefCloneAndSetup : function (el, branch) {
 		logMissingFunction("Implement prefCloneAndSetup()");
 		const util = SmartTemplates.Util;
-		util.logDebugOptional("settings.prefs", "prefCloneAndSetup(" + el + ", " + branch + ")");
+		this.logDebug("prefCloneAndSetup(" + el + ", " + branch + ")");
 		// was called replaceAttr
 		// AG added .common to the preference names to make it easier to add and manipulate global/debug settings
 		function replacePrefName(_el,  key) { // replace "preference" attribute with "data-pref-name"
@@ -310,10 +322,10 @@ SmartTemplates.Settings = {
 				let pref = Preferences.add(p);
         
 				this.preferenceElements.push (pref);
-				util.logDebugOptional("settings.prefs", "Added Preference: " + p.id);
+				this.logDebug("Added Preference: " + p.id);
 			}
 		}
-		util.logDebugOptional("settings.prefs", "prefCloneAndSetup COMPLETE");
+		this.logDebug("prefCloneAndSetup COMPLETE");
 	} ,
 
 
@@ -323,7 +335,7 @@ SmartTemplates.Settings = {
 
 	// Add identity - clone a new deck
 	//--------------------------------------------------------------------
-	addIdentity : function (menuvalue) {
+	addIdentity : async function (menuvalue) {
 		const isCommon = (menuvalue == "common"),
 		      branch = isCommon ? ".common" : "." + menuvalue; 
 
@@ -333,7 +345,7 @@ SmartTemplates.Settings = {
 		try {
 			// Add preferences, if preferences is not create.
 			let prefRoot = "extensions.smartTemplate4" + branch + ".";
-			this.setPref1st(prefRoot);
+			await this.setPref1st(prefRoot);
 
 			// Clone and setup a preference window tags.
 			const el = document.getElementById("deckA.per_account");
@@ -342,13 +354,15 @@ SmartTemplates.Settings = {
 			el.classList.remove("deck-selected"); 
 
 			const clone = el.cloneNode(true);
+			// collapse clone for now.
+			clone.classList.remove("deck-selected");
 
 			this.prefCloneAndSetup(clone, branch);
 			let appendedChild = el.parentNode.appendChild(clone);
 			let spacers = appendedChild.querySelectorAll(".tabs-left");
 			
 			if (spacers[1] && (spacers[1].previousSibling == spacers[0])) {
-				SmartTemplates.Util.logDebug("addIdentity() - removing first spacer");
+				this.logDebug("addIdentity() - removing first spacer");
 				spacers[0].remove();
 			}
 
@@ -356,15 +370,15 @@ SmartTemplates.Settings = {
 			this.accountKey = branch;    // change current id for pref library
 			
 			let useCommon = 
-			  isCommon ? false : prefs.getBoolPref(prefRoot + "def"); // this.isChecked("use_default" + branch)
+			  isCommon ? false : await getPref(prefRoot + "def"); // this.isChecked("use_default" + branch)
 			this.showCommonPlaceholder(useCommon);
 
 			this.disableWithCheckbox();
 			// this.accountKey = "";
 		} catch(ex) {
-			SmartTemplates.Util.logException("Exception in addIdentity(" + menuvalue  +")", ex);
+			this.logException("Exception in addIdentity(" + menuvalue  +")", ex);
 		} finally {
-			SmartTemplates.Util.logDebug("addIdentity COMPLETE");
+			this.logDebug("addIdentity COMPLETE");
 		}
 	} ,
 
@@ -419,19 +433,20 @@ SmartTemplates.Settings = {
         
         // remove account name 
         let idText = "", acc = "";
+				// identity.id hopefully maps to identity.key
         if (await getPref( "identities.showIdKey")) {
-          idText = identity.key + " - ";
+          idText = identity.id + " - ";
         }
         if (await getPref("identities.showAccountName")) {
-          acc = account.incomingServer.prettyName + " - ";
+          acc = account.name + " - ";  // incomingServer.prettyName doesn't exist in API
         }
         let newOption = document.createElement("option");
-        newOption.text = idText + acc + identity.identityName;
-        newOption.value = identity.key;
+        newOption.text = idText + acc + identity.name;
+        newOption.value = identity.id;
         theMenu.appendChild(newOption);
 				// theMenu.appendItem(lbl, identity.key, "");
 				// will unselect the current item? (e.g. Common)
-				this.addIdentity(identity.key);
+				await this.addIdentity(identity.id);
 				
 			}
 		}
@@ -586,7 +601,7 @@ async function loadPrefs() {
       if (element.getAttribute("type") === "checkbox") {
         element.checked = await browser.LegacyPrefs.getPref(prefName);
         if (element.checked != await browser.LegacyPrefs.getPref(prefName)) {
-          debugger;
+          // debugger;
         }
       } else if (element.getAttribute("type") === "text" ||
         element.dataset.prefType === "string"
