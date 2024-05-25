@@ -341,8 +341,9 @@ export class Licenser {
     // ******* MATCH MAIL ACCOUNT  ********
     // check mail accounts for setting
     // if not found return MailNotConfigured
-    
-    let accounts = await messenger.accounts.list();
+    this.logDebug('Retrieve account WITHOUT FOLDERS...');
+    let accounts = await messenger.accounts.list(false);
+    this.logDebug(`Found ${accounts.length} Accounts`, accounts);
     let AllowFallbackToSecondaryIdentiy = false;
     const getDefaultIdentity = messenger.identities ? messenger.identities.getDefault : messenger.accounts.getDefaultIdentity;
 
@@ -369,6 +370,7 @@ export class Licenser {
       }
     }
     
+    this.logDebug('Iterate accounts to check default Identities...');
     for (let account of accounts) {
       let defaultIdentity = await getDefaultIdentity(account.id); // [bug 1630786] permissions prevent users from updating
       if (defaultIdentity && !this.ForceSecondaryIdentity) {
