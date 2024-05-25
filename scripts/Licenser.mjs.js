@@ -83,6 +83,7 @@ export class Licenser {
     this.decryptedMail = "";
     this.GraceDate = "";
     this.TrialDays = 0 ;
+    this.lastTime = 0;
   }
   
   // public Interface - note that "description" can be consumed by the front end.
@@ -341,9 +342,9 @@ export class Licenser {
     // ******* MATCH MAIL ACCOUNT  ********
     // check mail accounts for setting
     // if not found return MailNotConfigured
-    this.logDebug('Retrieve account WITHOUT FOLDERS...');
+    this.logDebug("List accounts ...\n" + this.logTime(true));
     let accounts = await messenger.accounts.list(false);
-    this.logDebug(`Found ${accounts.length} Accounts`, accounts);
+    this.logDebug(`Found ${accounts.length} Accounts\n${this.logTime()}` , accounts);
     let AllowFallbackToSecondaryIdentiy = false;
     const getDefaultIdentity = messenger.identities ? messenger.identities.getDefault : messenger.accounts.getDefaultIdentity;
 
@@ -431,5 +432,26 @@ export class Licenser {
       log(msg, detail);
     }
   }
+
+  logTime(reset = false) {
+    let timePassed = '';
+    let end;
+    try { // AG added time logging for test
+      if (reset) {
+        this.lastTime = 0;
+      }
+      end = new Date();
+      let endTime = end.getTime();
+      if (this.lastTime === 0) {
+        this.lastTime = endTime;
+        return "[logTime init]";
+      }
+      let elapsed = new String(endTime - this.lastTime); // time in milliseconds
+      timePassed = '[' + elapsed + ' ms]	 ';
+      this.lastTime = endTime; // remember last time
+    }
+    catch(e) {;}
+    return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
+  }    
 }
 

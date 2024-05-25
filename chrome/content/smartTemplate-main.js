@@ -140,6 +140,8 @@ END LICENSE BLOCK
     # Compatible with 127.*
     # [issue 259] Convert Settings screen to HTML, and move to Tab
     # [issue 293] Support multiple parameters for %header.delete()% and %header.deleteFromSubject()% 
+    # optimize licenser (omit folders when listing accounts uising API)
+
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
