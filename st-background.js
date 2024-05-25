@@ -1110,10 +1110,12 @@ async function main() {
           // to do: create an API for this one
           messenger.NotifyTools.notifyExperiment({
             event: "showAboutConfig", 
-            element: null,
-            filter: data.filter,
-            readOnly: data.readOnly,
-            updateUI: data.updateUI || false
+            detail: {
+              element: null,
+              filter: data.filter,
+              readOnly: data.readOnly,
+              updateUI: data.updateUI || false
+            }
           });
           break;      
       }
