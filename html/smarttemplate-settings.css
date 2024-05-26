@@ -22,13 +22,51 @@
 }
 
 
-p.important {
-  font-weight: bold;
-  color: #ffd8a6;
+p.disclaimer {
   background: #5c1212;
+	bottom:0;
+	border-radius: 0.7em 0.7em 0 0;
+	opacity: 0.6;
+  color: #ffd8a6;
+  font-weight: bold;
+	font-size: 0.9em;
   padding: 0.5em;
-  margin-right: auto;
+	position: fixed;
+	left: 20px;
+	right: 20px;
+	text-align: center;
 }
+
+p.disclaimer label {
+	display: inline-block;
+	margin-inline: auto;
+	text-align: center;
+}
+
+.disclaimer .closeButton.closeButton {
+	border-radius: 0.3em;
+	background: rgba(40,40,40,0.5);
+	border: 1px rgba(240,240,240,0.4) solid;
+	padding: 0 4px 2px 4px;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 1.2em;
+	float: right;
+	margin-left:auto;
+	margin-right: 0.2em;
+}
+.disclaimer.closeButton:float {
+	background: rgba(40,40,40,0.3);
+	border: 1px rgba(240,240,240,0.6) solid;
+}
+.disclaimer label a {
+  color: white;
+}
+.disclaimer label a:hover {
+  color: yellow;
+}
+
 
 #globalSettingsVbox label,
 #advancedSettingsVbox label {
@@ -43,7 +81,7 @@ tabpanels => .tabcontent-container
 */
 
 button.iconButton {
-  background-repeat: no-repeat;
+  background-repeat: no-repeat !important;
   background-position: center center;
 	min-width: unset !important;
 }
@@ -51,9 +89,9 @@ button.iconButton {
 #helpTemplates, #helpSnippets {
 	/* -moz-context-properties: fill; */
 	fill: currentColor;
-  background-image: url("../chrome/content/skin/icons/help.svg");
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  background-image: url("../chrome/content/skin/icons/help.svg") !important;
+  /* padding-left: 0 !important;
+     padding-right: 0 !important; */
 }
 
 /* custom buttons linking to website */
@@ -288,9 +326,14 @@ groupbox.transparent .groupbox-title {
   background-image: url("../chrome/content/skin/icons/configure.png") !important;
 }
 
+/* use panes for global visibility from new left menu */
 
-#smartTemplatePane {
+.page {
   display: block;
+	visibility: collapse;
+}
+.page.pageActive {
+	visibility: visible;
 	padding: 0;
 	margin: 0;
 }
@@ -336,13 +379,21 @@ groupbox.transparent .groupbox-title {
   list-style-image: url("../chrome/content/skin/icons/snippets-icon.svg") !important;
 }
 
+
 .templateDeck > :not(.deck-selected) {
   visibility: collapse;
 }
 
-.templateDeck .deck-selected {
+.pageActive .templateDeck .deck-selected {
   visibility: visible;
 }
+
+/* do not make children visible if they are in an unselected deck */
+.pageActive .deck-selected .tabcontent-container section.active {
+  visibility: visible;
+  padding: 6px 12px;
+}
+
 
 /** right hand tabs **/
 #fieldsTab {
@@ -409,9 +460,9 @@ groupbox.transparent .groupbox-title {
   border-style: solid;
 	color: #000000;
 	/*  text-shadow: 1px 1px 1px rgba(250, 250, 250, 0.9); white shadow for dark themes */
-	min-height: 7em;
 	font-family: consolas,"courier new",monospace;
 	font-size: 9pt;
+	min-height: 3.5em;
 }
 
 .templateBox[disabled=true] {
@@ -547,46 +598,55 @@ vbox.template {
   overflow-x: hidden;
 }
 
-#templateTools toolbarbutton {
+.inlineToolbar {
+  align-items: center;
+  justify-content: center;
+	appearance: none;
+	background-image: none;
+	border: none;
+  justify-content: center;
+
+}
+
+.inlineToolbar toolbarbutton {
   -moz-user-focus: normal; /* accessibility */
   min-width: unset;
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
 
-
 /* buttons permanently invisible when opened from Add-ons Manager */
-toolbar toolbarbutton:not([hidden]) {
+.inlineToolbar  toolbarbutton:not([hidden]) {
 	display: -moz-box;
 }
 
-#smartTemplatePane toolbarbutton {
+.page toolbarbutton {
   /* Tb 102 */
   -moz-context-properties: fill;
   fill: currentColor;
 }
 
 /* [issue 291] */
-#smartTemplatePane toolbarbutton:not([hidden]) {
+.page toolbarbutton:not([hidden]) {
 	display: flex !important;
 }
 
-#smartTemplatePane #btnSaveTemplate,
-#smartTemplatePane toolbar[brighttext] #btnSaveTemplate {
+.page #btnSaveTemplate,
+.page toolbar[brighttext] #btnSaveTemplate {
 	background-image: url("../chrome/content/skin/icons/save.svg") !important;
 }
-#smartTemplatePane #btnLoadTemplate,
-#smartTemplatePane toolbar[brighttext] #btnLoadTemplate {
+.page #btnLoadTemplate,
+.page toolbar[brighttext] #btnLoadTemplate {
 	background-image: url("../chrome/content/skin/icons/open.svg") !important;
 }
 
-#smartTemplatePane #btnYouTube,
-#smartTemplatePane toolbar[brighttext] #btnYouTube {
+.page .youtube,
+.page toolbar[brighttext] .youtube {
 	background-image: url("../chrome/content/skin/icons/youtube-svgrepo-com.svg") !important;
   fill: rgb(166,0,0) !important;
 }
 
-#smartTemplatePane #btnYouTube:hover {
+.page .youtube:hover {
   fill: rgb(255,0,0) !important;
 }
 
@@ -613,12 +673,6 @@ toolbar toolbarbutton:not([hidden]) {
 	background-image: url("../chrome/content/skin/icons/left-svgrepo-com.svg") !important;
 }
 
-
-#templateTools {
-	appearance: none;
-	background-image: none;
-	border: none;
-}
 
 /* Pro  Tab */	
 @keyframes SmartTemplate4RotateY {
@@ -830,4 +884,41 @@ button.helpLink {
 
 .hasConfigEvent button[disabled="true"].configSettings:hover {
 	filter: grayscale(70%); /* desaturate because disabled! */
+}
+
+.areaQuoteParent textarea {
+	display: flex;
+	flex: 1 1 content;
+	min-height: 10vh;
+}
+
+.areaTemplateParent textarea {
+	display: flex;
+	flex: 6 1 max-content !important;
+	min-height: 30vh !important;
+}
+
+.areaQuoteParent,
+.areaTemplateParent {
+	align-items: stretch;
+	/*
+	border-radius: 1em;
+	border-color: orange;
+	border-style: dotted;
+	*/
+	flex-direction: column;
+	flex: 1 1 content;
+	min-height: 4em;
+}
+
+.areaQuoteParent {
+	height: 20vh;
+}
+
+.areaTemplateParent {
+	height: 40vh;
+}
+
+.newGroup .areaTemplateParent {
+	height: 80vh;
 }

@@ -140,11 +140,6 @@ button.active::marker {
   visibility: collapse;
 } 
 
-.tabcontent-container section.active {
-  visibility: visible;
-  padding: 6px 12px;
-}
-
 .qfTabPreview {
   line-height: unset;
   overflow: clip;
@@ -190,24 +185,4 @@ input[type=color], select {
   background-position: center center;
 }
 
-
-#smartTemplatePane #templateTools #btnSaveTemplate,
-#smartTemplatePane toolbar[brighttext] #btnSaveTemplate {
-	background-image: url("../chrome/content/skin/icons/save.svg") !important;
-}
-#smartTemplatePane #templateTools #btnLoadTemplate,
-#smartTemplatePane toolbar[brighttext] #btnLoadTemplate {
-	background-image: url("../chrome/content/skin/icons/open.svg") !important;
-}
-
-#smartTemplatePane #templateTools #btnYouTube,
-#smartTemplatePane toolbar[brighttext] #btnYouTube {
-	background-image: url("../chrome/content/skin/icons/youtube-svgrepo-com.svg") !important;
-  fill: rgb(166,0,0) !important;
-  background-position: 0;
-}
-
-#smartTemplatePane #templateTools  #btnYouTube:hover {
-  fill: rgb(255,0,0) !important;
-}
 

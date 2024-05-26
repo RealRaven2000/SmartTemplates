@@ -13,9 +13,10 @@ END LICENSE BLOCK
 
 // CIRCULAR REFERENCES remove all calls to Util!. util may import preferences.
 
+const SMARTTEMPLATES_EXTPREFIX = "extensions.smartTemplate4.";
 
 export let Preferences = {
-	Prefix: "extensions.smartTemplate4.",
+	Prefix: SMARTTEMPLATES_EXTPREFIX,
   isDebug: async function() {
     return await messenger.LegacyPrefs.getPref(this.Prefix + "debug");
   },

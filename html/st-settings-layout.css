@@ -6,7 +6,7 @@
 #preferences-stack {
   display: grid;
   position: relative;
-  height: 100vw;
+  height: 100vh;
 }
 
 #prefBox {
@@ -86,15 +86,10 @@
 
 #preferencesContainer {
   display: flex;
-  flex: 1;
-  padding: 0 28px 40px;
+  flex: 1 1 min-content;
+  padding: 0 28px 20px;
   overflow: auto;
 }
-
-.prefs-menu li {
-
-}
-
 
 .spacer[flex="1"] {
   flex: 1 !important;

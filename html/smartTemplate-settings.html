@@ -35,13 +35,13 @@
 <div id="preferences-stack" flex="1">
 
   <div class="hbox" id="prefBox" class="mainContent">
-
+     <!-- new side menu -->
     <div class="vbox" id="pref-category-box">
       <ul class="prefs-menu" id="categories">
-        <li class="category" id="catAccountTemplates" selected="true">
+        <li class="category" id="catAccountTemplates" selected="true" page="smartTemplatePane">
           <label class="category-name">Account Templates</label>
         </li>
-        <li class="category" id="catFileTemplates">
+        <li class="category" id="catFileTemplates" page="fileTemplatePane">
           <label class="category-name">File Templates</label>
         </li>
         <li class="category" id="catSettingsGeneral">
@@ -64,11 +64,168 @@
     </div>
 
     <div class="vbox" id="preferencesContainer">
-      <h1>__MSG_pref_dialog.title__</h1>
-      <prefpane id="smartTemplatePane" orient="vertical" flex="1">
-        <p class="important">This window is still work in progress. It will <i>eventually</i> replace the existing 
-          SmartTemplates settings dialog.</p>      
 
+      <prefpane id="fileTemplatePane" class="page">
+        <h2>File Templates</h2>
+        <p>
+          Tools:
+          <div id="templateTools" class="inlineToolbar hbox" mode="icons" >  
+            <span class="navigateable">
+              <button id="btnYouTube2"
+                class="iconButton youtube"
+                title="__MSG_btnYouTube.tooltip__"
+                alt="__MSG_btnYouTube.tooltip__"></button>          
+              <button id="helpTemplates"
+                class="iconButton"
+                title="__MSG_tip.fileTemplates__"></button>
+            </span>
+          </div>
+        </p>
+
+        <div id="fileTemplatesBox" class="vbox">
+          <div id="fileTemplatesTabs" class="tabbox" flex="1">
+            <nav class="tabs actionTabs">
+              <ul>
+                <li><button id="file.newTab"      class="NewTab">__MSG_pref_new.tab__</button></li>
+                <li><button id="file.respondTab"  class="RespondTab" >__MSG_pref_rsp.tab__</button></li>
+                <li><button id="file.forwardTab"  class="ForwardTab" >__MSG_pref_fwd.tab__</button></li>
+                <li><button id="file.snippetsTab" class="SnippetsTab" >Smart Snippets</button></li>
+              </ul>
+            </nav>
+            
+            <div id="fileTemplateContainer" class="tabcontent-container" flex="1" orient="vertical">
+              <section class="newGroup fileTemplatePanel vbox" id="new-fileTemplates">
+                <groupbox flex="1" orient="vertical" class="transparent">
+                  <div flex="1" class="vfield vbox">
+                    <label title="__MSG_fileTemplates.new.tooltip__">__MSG_fileTemplates.title__</label>
+                    <richlistbox 
+                      id="templateList.new" 
+                      class="fileTemplateList"
+                      flex="1"
+                      seltype="single"> 
+                    </richlistbox>
+                    <!-- we will move this around to the active tab -->
+                    <div id="fileControls" class="vbox">
+                      <div id="fileToolbarPanel" class="hbox">
+                        <toolbar id="fileTemplateToolbar"
+                                class="templateList"
+                                mode="full"
+                                customizable="false" >
+                          <toolbarbutton
+                              id="btnAdd"
+                              class="iconButton chromeclass-toolbar-additional" 
+                              label="__MSG_fileTemplates.add__">
+                          <toolbarbutton
+                              id="btnUpdate"
+                              class="iconButton chromeclass-toolbar-additional" 
+                              label="__MSG_fileTemplates.update__">
+                          <toolbarbutton
+                              id="btnRemove"
+                              class="iconButton chromeclass-toolbar-additional" 
+                              label="__MSG_fileTemplates.remove__">
+                          <toolbarseparator >
+                          <toolbarbutton
+                              id="btnUp"
+                              class="iconButton chromeclass-toolbar-additional" 
+                              label="__MSG_fileTemplates.up__">
+                          <toolbarbutton
+                              id="btnDown"
+                              class="iconButton chromeclass-toolbar-additional" 
+                              label="__MSG_fileTemplates.down__">
+                          <toolbarbutton
+                              id="btnEdit"
+                              class="toolbarbutton-1 chromeclass-toolbar-additional" 
+                              label="__MSG_fileTemplates.edit__" >
+                        </toolbar>						
+                      </div>
+                      <div id="fileSettings" >
+                        <div>
+                          <div class="settingsRow">
+                            <label>__MSG_fileTemplates.file.path__</label>
+                            <input type="text" id="txtTemplatePath">
+                            <button class="iconButton" 
+                                    id="btnPickTemplate" 
+                                    tooltiptext="__MSG_fileTemplates.file.open__"></button>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="settingsRow">
+                            <label>__MSG_fileTemplates.file.title__</label>
+                            <input
+                              type="text"
+                              id="txtTemplateTitle" 
+                              title="__MSG_fileTemplates.file.title.tooltip__"
+                              >
+                            <label>__MSG_template.category__:</label>
+                            <input
+                              type="text"
+                              id="txtTemplateCategory"
+                              title="__MSG_template.category.tooltip__">
+                            <toolbarbutton id="helpSnippets"
+                              label=""
+                              tooltiptext="__MSG_template.category.tooltip__"
+                              >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </groupbox>
+              </section>
+
+              <!-- ######## Content [Reply] Tab ######## -->
+              <section class="replyGroup fileTemplatePanel vbox" id="rsp-fileTemplates">
+                <groupbox flex="1" class="transparent">
+                  <div flex="1" class="vfield vbox">
+                    <label title="__MSG_fileTemplates.rsp.tooltip__"> 
+                          __MSG_fileTemplates.title__</label>
+                    <richlistbox 
+                      id="templateList.rsp" 
+                      class="fileTemplateList"
+                      flex="1">
+                    </richlistbox>
+                  </div>
+                </groupbox>
+              </section>
+
+              <!-- ######## Content [Forward] File Tab ######## -->
+              <section class="forwardGroup fileTemplatePanel vbox" id="fwd-fileTemplates">
+                <groupbox  flex="1" class="transparent">
+                  <div flex="1" class="vfield vbox">
+                    <label tooltiptext="__MSG_fileTemplates.fwd.tooltip__">__MSG_fileTemplates.title__</label>
+                    <richlistbox 
+                      id="templateList.fwd" 
+                      class="fileTemplateList"
+                      flex="1">
+                    </richlistbox>
+                  </div>									
+                </groupbox>
+              </section>
+              
+              <!-- ######## Content [Snippets] File Tab ######## -->
+              <section class="snippetsGroup fileTemplatePanel vbox" id="snippets-fileTemplates">
+                <groupbox  flex="1" class="transparent">
+                  <div class="groupbox-title hbox"><label class="header">__MSG_snippets.head__</label></div>
+                  <div flex="1" class="vfield vbox">
+                    <label>__MSG_snippets.label__</label>
+                    <richlistbox 
+                      id="templateList.snippets" 
+                      class="fileTemplateList"
+                      flex="1">
+                    </richlistbox>
+                  </div>									
+                </groupbox>
+              </section>
+                            
+            </div>
+            
+            
+          </div>
+        </div>        
+      </prefpane>
+
+      <prefpane id="smartTemplatePane" orient="vertical" flex="1" class="page pageActive">
+        <h2>Account Templates</h2>
         <div id="decksContainer" flex="1" class="vbox">
 
           <!-- ######## Creating Identity Dropdown Box ######## --> 
@@ -85,11 +242,8 @@
               tabindex="0">
               <option class="identity-popup-item" value="common">__MSG_pref_server_def__</option>
             </select>
-            <div id="templateTools" class="inlineToolbar hbox" mode="icons" >
+            <div id="templateTools2" class="inlineToolbar hbox" mode="icons" >
               <span class="navigateable">
-              <button id="helpTemplates"
-                  class="iconButton"
-                  title="__MSG_tip.fileTemplates__"></button>
               <button id="btnSaveTemplate"
                     class="iconButton"
                     title="__MSG_btnSaveTemplate.tooltip__"
@@ -99,9 +253,9 @@
                     title="__MSG_btnLoadTemplate.tooltip__"
                     alt="__MSG_btnLoadTemplate.tooltip__"></button>
               <button id="btnYouTube"
-                    class="iconButton"
-                    title="__MSG_btnYouTube.tooltip__"
-                    alt="__MSG_btnYouTube.tooltip__"></button>
+                  class="iconButton youtube"
+                  title="__MSG_btnYouTube.tooltip__"
+                  alt="__MSG_btnYouTube.tooltip__"></button>
               <button id="btnAdvanced"
                     class="iconButton"
                     title="__MSG_advanced.label__"
@@ -119,7 +273,7 @@
           <div id="decksWrapper" flex="1" class="vbox">
             <deck id="account_deckA" flex="1" class="templateDeck">
       
-              <div id="deckA.per_account" flex="1" class="deck-selected vbox"> <!-- cloned element -->
+              <div id="deckA.per_account" flex="1" class="accountDeck deck-selected vbox"> <!-- cloned element -->
                 <!-- ######## Template Preferences ######## -->
       
                 <preferences id="templates">
@@ -164,18 +318,17 @@
       
                     <div class="tabcontent-container" flex="1" orient="vertical">
                       <!-- ######## Content New Message [Write] Tab ######## -->
-                      <section class="newGroup active" orient="vertical" >
-                          <div class="groupbox-title hbox"><label class="header">__MSG_pref_newmsg.cap__</label></div>
+                      <section class="newGroup active vbox" orient="vertical" >
                           <div flex="1" class="vfield vbox">
                             <div class="hbox">
                               <label>
                                 <input type="checkbox" id="new" class="settingDisabler"
                                   data-pref-name="extensions.smartTemplate4.common.new">__MSG_pref_new.label__
                               </label>
-                            </div>                     
+                            </div>
                             
                             <label>__MSG_pref_templateBox.label__</label>
-                            <div class="indent vbox" flex="1">
+                            <div class="indent vbox areaTemplateParent" flex="1">
                               <textarea id="newmsg" flex="1"
                                 class="templateBox templateWrite"
                                 multiline="true" tooltiptext="__MSG_pref_template_tip__"
@@ -198,8 +351,7 @@
                       </section>
       
                       <!-- ######## Content [Reply] Tab ######## -->
-                      <section class="replyGroup"  orient="vertical">
-                        <div class="groupbox-title hbox"><label class="header">__MSG_pref_rspmsg.cap__</label></div>
+                      <section class="replyGroup vbox"  orient="vertical">
                         <div flex="1" class="vfield vbox">
                           <div class="hbox">
                             <label> <input type="checkbox" id="rsp" class="settingDisabler"
@@ -209,7 +361,7 @@
                           </div>
                           <label>__MSG_pref_quoteHeaderBox.label__</label>
                           <div class="indent vbox" flex="1">
-                            <div class="pasteFocus vbox" flex="1">
+                            <div class="pasteFocus vbox areaQuoteParent" flex="1">
                               <textarea 
                                 id="rspheader"
                                 class="templateBox quote"
@@ -227,7 +379,7 @@
                           </div>
                           <label>__MSG_pref_templateBox.label__</label>
                           <div class="indent vbox" flex="1">
-                            <div class="pasteFocus vbox" flex="2">
+                            <div class="pasteFocus vbox areaTemplateParent" flex="2">
                               <textarea 
                                 id="rspmsg"
                                 class="templateBox template"
@@ -253,8 +405,7 @@
                       </section>
       
                       <!-- ######## Content [Forward] Message Tab ######## -->
-                      <section class="forwardGroup"  orient="vertical">
-                        <div class="groupbox-title hbox"><label class="header">__MSG_pref_fwdmsg.cap__</label></div>
+                      <section class="forwardGroup vbox"  orient="vertical">
                         <div flex="1" class="vfield vbox">
                           <div class="hbox">
                             <label><input type="checkbox" id="fwd" class="settingDisabler"
@@ -264,7 +415,7 @@
                           </div>
                           <label>__MSG_pref_quoteHeaderBox.label__</label>
                           <div class="indent vox" flex="1">
-                            <div class="pasteFocus vbox" flex="1">
+                            <div class="pasteFocus vbox areaQuoteParent" flex="1">
                                       <!-- rows="5" -->
                               <textarea 
                                 id="fwdheader"
@@ -283,7 +434,7 @@
                           </div>
                           <label>__MSG_pref_templateBox.label__</label>
                           <div class="indent vbox" flex="1">
-                            <div class="pasteFocus vbox" flex="2">
+                            <div class="pasteFocus vbox areaTemplateParent" flex="2">
                                       <!-- rows="5" -->
                               <textarea id="fwdmsg"
                                 class="templateBox template"
@@ -322,149 +473,7 @@
               </div>
               
               
-              <div id="fileTemplatesBox" class="vbox">
-                <div id="fileTemplatesTabs" class="tabbox" flex="1">
-                  <nav class="tabs actionTabs">
-                    <ul>
-                      <li><button id="file.newTab"      class="NewTab">__MSG_pref_new.tab__</button></li>
-                      <li><button id="file.respondTab"  class="RespondTab" >__MSG_pref_rsp.tab__</button></li>
-                      <li><button id="file.forwardTab"  class="ForwardTab" >__MSG_pref_fwd.tab__</button></li>
-                      <li><button id="file.snippetsTab" class="SnippetsTab" >Smart Snippets</button></li>
-                    </ul>
-                  </nav>
-                  
-                  <div id="fileTemplateContainer" class="tabcontent-container" flex="1" orient="vertical">
-                    <section class="newGroup fileTemplatePanel" id="new-fileTemplates">
-                      <groupbox flex="1" orient="vertical" class="transparent">
-                        <div class="groupbox-title hbox"><label class="header">__MSG_pref_newmsg.cap__</label></div>
-                        <div flex="1" class="vfield vbox">
-                          <label title="__MSG_fileTemplates.new.tooltip__">__MSG_fileTemplates.title__</label>
-                          <richlistbox 
-                            id="templateList.new" 
-                            class="fileTemplateList"
-                            flex="1"
-                            seltype="single"> 
-                          </richlistbox>
-                          <!-- we will move this around to the active tab -->
-                          <div id="fileControls" class="vbox">
-                            <div id="fileToolbarPanel" class="hbox">
-                              <toolbar id="fileTemplateToolbar"
-                                      class="templateList"
-                                      mode="full"
-                                      customizable="false" >
-                                <toolbarbutton
-                                    id="btnAdd"
-                                    class="iconButton chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.add__"/>
-                                <toolbarbutton
-                                    id="btnUpdate"
-                                    class="iconButton chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.update__"/>
-                                <toolbarbutton
-                                    id="btnRemove"
-                                    class="iconButton chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.remove__"/>
-                                <toolbarseparator />
-                                <toolbarbutton
-                                    id="btnUp"
-                                    class="iconButton chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.up__"/>
-                                <toolbarbutton
-                                    id="btnDown"
-                                    class="iconButton chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.down__"/>
-                                <toolbarbutton
-                                    id="btnEdit"
-                                    class="toolbarbutton-1 chromeclass-toolbar-additional" 
-                                    label="__MSG_fileTemplates.edit__" />
-                              </toolbar>						
-                            </div>
-                            <div id="fileSettings" >
-                              <div>
-                                <div class="settingsRow">
-                                  <label>__MSG_fileTemplates.file.path__</label>
-                                  <input type="text" id="txtTemplatePath">
-                                  <button class="iconButton" 
-                                          id="btnPickTemplate" 
-                                          tooltiptext="__MSG_fileTemplates.file.open__"></button>
-                                </div>
-                              </div>
-                              <div>
-                                <div class="settingsRow">
-                                  <label>__MSG_fileTemplates.file.title__</label>
-                                  <input
-                                    type="text"
-                                    id="txtTemplateTitle" 
-                                    title="__MSG_fileTemplates.file.title.tooltip__"
-                                    >
-                                  <label>__MSG_template.category__:</label>
-                                  <input
-                                    type="text"
-                                    id="txtTemplateCategory"
-                                    title="__MSG_template.category.tooltip__">
-                                  <toolbarbutton id="helpSnippets"
-                                    label=""
-                                    tooltiptext="__MSG_template.category.tooltip__"
-                                    >
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </groupbox>
-                    </section>
-      
-                    <!-- ######## Content [Reply] Tab ######## -->
-                    <section class="replyGroup fileTemplatePanel" id="rsp-fileTemplates">
-                      <groupbox flex="1" class="transparent">
-                        <div class="groupbox-title hbox"><label class="header">__MSG_pref_rspmsg.cap__</label></div>
-                        <div flex="1" class="vfield vbox">
-                          <label title="__MSG_fileTemplates.rsp.tooltip__"> 
-                                __MSG_fileTemplates.title__</label>
-                          <richlistbox 
-                            id="templateList.rsp" 
-                            class="fileTemplateList"
-                            flex="1">
-                          </richlistbox>
-                        </div>
-                      </groupbox>
-                    </section>
-      
-                    <!-- ######## Content [Forward] File Tab ######## -->
-                    <section class="forwardGroup fileTemplatePanel" id="fwd-fileTemplates">
-                      <groupbox  flex="1" class="transparent">
-                        <div class="groupbox-title hbox"><label class="header">__MSG_pref_fwdmsg.cap__</label></div>
-                        <div flex="1" class="vfield vbox">
-                          <label tooltiptext="__MSG_fileTemplates.fwd.tooltip__">__MSG_fileTemplates.title__</label>
-                          <richlistbox 
-                            id="templateList.fwd" 
-                            class="fileTemplateList"
-                            flex="1">
-                          </richlistbox>
-                        </div>									
-                      </groupbox>
-                    </section>
-                    
-                    <!-- ######## Content [Snippets] File Tab ######## -->
-                    <section class="snippetsGroup fileTemplatePanel" id="snippets-fileTemplates">
-                      <groupbox  flex="1" class="transparent">
-                        <div class="groupbox-title hbox"><label class="header">__MSG_snippets.head__</label></div>
-                        <div flex="1" class="vfield vbox">
-                          <label>__MSG_snippets.label__</label>
-                          <richlistbox 
-                            id="templateList.snippets" 
-                            class="fileTemplateList"
-                            flex="1">
-                          </richlistbox>
-                        </div>									
-                      </groupbox>
-                    </section>
-                                  
-                  </div>
-                  
-                  
-                </div>
-              </div>
+
             
             
             
@@ -474,10 +483,12 @@
       
         </div>
 
-      </prefpane>    
-    
+      </prefpane>
+
     </div>
 
+    <p class="disclaimer"><label>This window is still work in progress. It will <i>eventually</i> replace the existing 
+      SmartTemplates settings dialog. <a target="_blank" href="https://github.com/RealRaven2000/SmartTemplates/issues/259">more...</a></label> <span id="closeDisclaimer" class="closeButton">x</span></p>   
   </div>
 
 </div>

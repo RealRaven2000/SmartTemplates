@@ -155,7 +155,7 @@ button.active::marker {
 } 
 
 .tabcontent-container section.active {
-  display: block;
+  display: flex;
 }
 
 .qfTabPreview {

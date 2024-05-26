@@ -87,7 +87,7 @@ export let Util = {
     let options = optionString.split(','); // allow multiple switches
     for (let i=0; i<options.length; i++) {
       let option = options[i];
-      if (Preferences.isDebugOption(option)) {
+      if (await Preferences.isDebugOption(option)) {
         this.logWithOption(...arguments);
         break; // only log once, in case multiple log switches are on
       }
