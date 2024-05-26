@@ -1,4 +1,3 @@
-"use strict";
 /* 
   BEGIN LICENSE BLOCK
 
@@ -9,17 +8,242 @@
   END LICENSE BLOCK 
 */
 
-// namespace from settings.js - renameing SmartTemplate4 to SmartTemplates
-var SmartTemplates = {};
+// namespace from settings.js - renaming SmartTemplate4 to SmartTemplates
 
-const SMARTTEMPLATES_EXTPREFIX = "extensions.smartTemplate4.";
+// import {Preferences} from "../scripts/st-prefs.mjs.js"; 
+var SmartTemplates = {};
+// SmartTemplates.Preferences = Preferences;
+// Uncaught SyntaxError: import declarations may only appear at top level of a module
+// COPIED CODE from st-prefs.mjs.js
+SmartTemplates.Preferences = {
+	Prefix: "extensions.smartTemplate4.",
+  isDebug: async function() {
+    return await messenger.LegacyPrefs.getPref(this.Prefix + "debug");
+  },
+	isDebugOption: async function(option) { // granular debugging
+		if (!await this.isDebug)
+			return false;
+		try {
+			return await this.getMyBoolPref("debug." + option);
+		}
+		catch(e) {
+      return false;
+    }
+	},  
+  isBackgroundParser: async function() {
+    return await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
+  },
+	getStringPref: async function getStringPref(p) {
+    let prefString ="",
+		    key = this.Prefix + p;
+    try {
+			prefString = await messenger.LegacyPrefs.getPref(key);
+    }
+    catch(ex) {
+      console.log("%cCould not find string pref: " + p, "color:red;", ex.message);
+    }
+    finally {
+      return prefString;
+    }
+	},  
+	setStringPref: async function setStringPref(p, v) {
+    return await messenger.LegacyPrefs.setPref(this.Prefix + p, v);
+	},
+	getIntPref: async function(p) {
+		return await messenger.LegacyPrefs.getPref(p);
+	},
+	setIntPref: async function(p, v) {
+		return await messenger.LegacyPrefs.setPref(p, v);
+	},
+	getBoolPref: async function(p) {
+		try {
+			return await messenger.LegacyPrefs.getPref(p);
+		} catch(e) {
+			let s="Err:" +e;
+			console.log("%cgetBoolPref("+p+") failed:\n" + s, "color:red;");
+			return false;
+		}
+	},
+	setBoolPref: async function(p, v) {
+		try {
+			return await messenger.LegacyPrefs.setPref(p, v);
+		} catch(e) {
+			let s="Err:" +e;
+			return false;
+		}
+	} ,  
+
+	getMyBoolPref: async function(p) {
+		return await this.getBoolPref(this.Prefix + p);
+	},
+
+	setMyBoolPref: async function(p, v) {
+		return await this.setBoolPref(this.Prefix + p, v);
+	},
+
+	getMyIntPref: async function(p) {
+		return await this.getIntPref(this.Prefix + p);
+	},
+
+	setMyIntPref: async function(p, v) {
+		return await this.setIntPref(this.Prefix + p, v);
+	},
+  
+	setMyStringPref: async function(p, v) {
+		return await messenger.LegacyPrefs.setPref(this.Prefix + p, v);
+	} ,
+
+	getMyStringPref: async function(p) {
+		return await messenger.LegacyPrefs.getPref(this.Prefix + p);
+	} ,
+  
+  // possibly move this class (or better make an instance immediately) to st-prefs.msj.js
+  // SmartTemplates.Preferences.prefs [= new classPref()] I only need a single instance??
+  // so why would I need a class
+  identityPrefs: { // was classPref() from smartTemplate.overlay.js
+      // use where ST4.pref is used! Preferences.identityPrefs
+      // rename to pref and add to SmartTemplates. import from st-prefs.msj.js as needed?
+      // all member functions have account idKey as parameters, so I don't think this object
+      // has statefulness
+    // -----------------------------------
+    // get preference
+    // returns default value if preference cannot be found.
+    getCom: async function(prefstring, defaultValue)	{
+      if (typeof defaultValue == "string") {
+        return await messenger.LegacyPrefs.getPref(prefstring, defaultValue);
+      }
+      else {
+        let v = await messenger.LegacyPrefs.getPref(prefstring);
+        if (v==null) v = defaultValue;
+        return v;
+      }
+    },
+
+    // -----------------------------------
+    // get preference(branch)
+    getWithBranch: async function(idKey, defaultValue) {
+      return await this.getCom(SmartTemplates.Preferences.Prefix + idKey, defaultValue); //
+    },
+
+    // idKey Account
+    // composeType: rsp, fwd, new
+    // def: true = common
+    // "Disable default quote header"
+    isDeleteHeaders: async function(idKey, composeType, def) {
+      // xxxhead
+      return await this.getWithIdkey(idKey, composeType + "head", def)
+    },
+
+    isReplaceNewLines: async function(idKey, composeType, def) {
+      // xxxnbr
+      return await this.getWithIdkey(idKey, composeType + "nbr", def)
+    },
+
+    isUseHtml: async function(idKey, composeType, def) {
+      // xxxhtml
+      return await this.getWithIdkey(idKey, composeType + "html", def)
+    },
+
+    getTemplate: async function(idKey, composeType, def) {
+      return await this.getWithIdkey(idKey, composeType + "msg", def);
+    },
+
+    getQuoteHeader: async function(idKey, composeType, def) {
+      return await this.getWithIdkey(idKey, composeType + "header", def);
+    },
+
+    isTemplateActive: async function(idKey, composeType, def) {
+      let isActive = await this.getWithIdkey(idKey, composeType, def);
+      if (!isActive) return false; // defaults to empty string
+      return isActive;
+    },
+
+    // whether an Identity uses the common account
+    isCommon: async function(idkey) {
+      return await this.getWithBranch(idkey + ".def", true);
+    },
+    
+
+    // -----------------------------------
+    // Get preference with identity key
+    getWithIdkey: async function(idkey, pref, def) {    
+      // fix problems in draft mode...
+      if (!pref) 
+        return ""; // draft etc.
+      // extensions.smarttemplate.id8.def means account id8 uses common values.
+      if (await this.getWithBranch(idkey + ".def", true)) { // "extensions.smartTemplate4." + "id12.def"
+        // common preference - test with .common!!!!
+        return await this.getWithBranch("common." + pref, def);
+      }
+      else {
+        // Account specific preference
+        return await this.getWithBranch(idkey + "." + pref, def);
+      }
+    }  
+    
+  } // identityPrefs
+    
+// OBSOLETE: existsCharPref, existsBoolPref, getBoolPrefSilent
+  
+}
+
+const SMARTTEMPLATES_EXTPREFIX = SmartTemplates.Preferences.Prefix;
 
 SmartTemplates.Settings = {
+  // OBSOLETE PARTS:
+  preferenceElements : [],
+
+  // USED:
+	accountKey : ".common",  // default to common; .file for files
+	get accountId() {
+		// empty for ".common"
+		return (this.accountKey !== '.common') ? this.accountKey : ''; 
+	},	
+  get currentId() {
+    let key = document.getElementById('msgIdentity').value;
+    return key;
+  },
+	
+	get currentIdSelector() {
+		let s = this.currentId;
+		return (s!="common") ? ('.'+ s) : "";
+	} ,
+  
+  get currentAccountName() {
+    let theMenu = document.getElementById("msgIdentity"),
+        menuEntry = theMenu.label,
+        end = menuEntry.indexOf(' <');
+    if (end>0) {
+      return menuEntry.substring(0, end);
+		}
+		return menuEntry;
+  },
+  
+
   isDebug: true, ///// TEST
-  logDebug: function (msg) {
+  logDebug: async function (msg) {
 	  // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
 		if (this.isDebug) {
       this.logToConsole(...arguments);
+    }
+	},
+  // first argument is the option tag
+  logWithOption: function(a) {
+    arguments[0] =  "SmartTemplates "
+      +  '{' + arguments[0].toUpperCase() + '} ' 
+			// + Util.logTime()
+      + "\n";
+    console.log(...arguments);
+  },  	
+	logDebugOptional: async function (optionString, msg) {
+    optionString = arguments[0];
+    let options = optionString.split(','); // allow multiple switches
+    for (let i=0; i<options.length; i++) {
+      let option = options[i];
+      if (await SmartTemplates.Preferences.isDebugOption(option)) {
+        this.logWithOption(...arguments);
+        break; // only log once, in case multiple log switches are on
+      }
     }
 	},
 	logToConsole: function (a) {
@@ -39,11 +263,6 @@ SmartTemplates.Settings = {
 			ex.stack ? ex.stack.replace("@","\n  ") : "", );
 	} ,
 
-	accountKey : ".common",  // default to common; .file for files
-	preferenceElements : [],
-	get accountId() {
-		return (this.accountKey !== '.common') ? this.accountKey : '';  // empty for ".common"
-	},
 	//******************************************************************************
 	// Common functions
 	//******************************************************************************
@@ -177,9 +396,9 @@ SmartTemplates.Settings = {
 	// Delete unused preferences.
 	//--------------------------------------------------------------------
 	cleanupUnusedPrefs : function() {
-		const util = SmartTemplate4.Util;
     logMissingFunction("cleanupUnusedPrefs ()");
     return;
+		const util = SmartTemplate4.Util;
     // this needs to be implemented via LegacyPrefs:
 
 		let array = this.prefService.getChildList("extensions.smartTemplate4.", {});
@@ -242,7 +461,25 @@ SmartTemplates.Settings = {
 		await this.disableWithCheckbox();
 
 		// Set account popup, duplicate DeckB to make account isntances
-		let CurId = await this.fillIdentityListPopup();
+		// let CurId = 
+		await this.fillIdentityListPopup();
+
+
+		// get inn params from querystring
+		let params = new URLSearchParams(window.location.search);
+		CurId = params.get("id");
+		let mode = params.get("mode");
+		// [issue 121] currently shown selection
+		switch(mode) {
+			case "fileTemplates":
+				break;
+		  case "variables":
+				break
+		}
+		composeType = params.get("composeType");
+
+		this.switchIdentity(CurId || 'common', composeType);
+
     logMissingFunction("implement onLoad");
     
   } ,
@@ -256,7 +493,6 @@ SmartTemplates.Settings = {
 	//--------------------------------------------------------------------
 	prefCloneAndSetup : function (el, branch) {
 		logMissingFunction("Implement prefCloneAndSetup()");
-		const util = SmartTemplates.Util;
 		this.logDebug("prefCloneAndSetup(" + el + ", " + branch + ")");
 		// was called replaceAttr
 		// AG added .common to the preference names to make it easier to add and manipulate global/debug settings
@@ -330,7 +566,7 @@ SmartTemplates.Settings = {
 
 
 	//******************************************************************************
-	// Identity
+	// Identity Functions
 	//******************************************************************************
 
 	// Add identity - clone a new deck
@@ -385,12 +621,12 @@ SmartTemplates.Settings = {
   // Fill identities menu
 	// this also clones the deck as many times as there are identities in order to fill in 
 	// the specific templates [see addIdentity()]
-	fillIdentityListPopup: async function() {
+	fillIdentityListPopup: async function(CurId = null) {
 
     const accounts = await messenger.accounts.list(false);
   	// this.logDebug("***fillIdentityListPopup");
 
-		let currentId = 0, CurId = null;
+		let currentId = 0;
 		
 		// only when calling from the mail 3 pane window: 
     /*
@@ -471,6 +707,118 @@ SmartTemplates.Settings = {
 		
   
   },
+
+
+	// Switch Identity (from account setting window)	
+	//--------------------------------------------------------------------
+	switchIdentity : function(idKey, composeType)	{
+		let wasSwitched = false;
+    composeType = composeType || null;
+		this.logDebug("switchIdentity(" + idKey + ")");
+		document.getElementById("msgIdentity").value = idKey;
+		this.selectIdentity(idKey);
+		wasSwitched = true;
+
+    // select the correct compose type tab
+		/* THIS WILL BE HANDLED SEPARATELY! 
+		if (idKey=='fileTemplates' && composeType) {
+      let fileTemplatesTabs = document.getElementById('fileTemplatesTabs'),
+          panelId = composeType + '-fileTemplates',
+          idx = 0;
+      switch (composeType) {
+        case 'new': idx = 0; break;
+        case 'rsp': idx = 1; break;
+        case 'fwd': idx = 2; break;
+        case 'snippets': idx = 3; break;
+      }
+      fileTemplatesTabs.selectedPanel = document.getElementById(panelId);
+      fileTemplatesTabs.selectedIndex = idx;
+      // attract attention to the picker button
+      document.getElementById('btnPickTemplate').classList.add('pulseRed');
+    }
+		*/
+    
+		this.logDebug("functions", "switchIdentity(" + idKey + ") COMPLETE");
+    return wasSwitched;
+
+	} ,
+
+	getCurrentDeck : function (accountId) {
+		return (accountId != ".common")
+		  ? 'deckB.nodef' + accountId
+			: 'deckB.nodef';
+	} ,
+
+	// Select identity (from xul)
+	//--------------------------------------------------------------------
+	selectIdentity : async function (idkey)	{
+		await this.logDebugOptional("identities", "selectIdentity(" + idkey +  ")");
+
+		let currentDeck = this.getCurrentDeck(this.accountId),
+		    tabbox = document.getElementById(currentDeck);
+		if (!tabbox) {
+			alert("A problem has occured\nCannot find account settings for deck: " + currentDeck); // this shouldn't happen, ever!
+		}
+		let tabIndex = tabbox.getAttribute("selectedIndex"); 
+		if (tabIndex<0) tabIndex=0;
+
+		const branch = (idkey == "common") ? ".common" : "." + idkey;
+
+		// Display identity.
+		let deck = document.getElementById("account_deckA"),
+		    idx = 0,
+		    searchDeckName = ("deckA.per_account" + branch).replace(".common",""),
+		    found = false;
+
+    let newSelected;
+		for (let el of document.querySelectorAll("#account_deckA .accountDeck")) {
+			if (el.id == searchDeckName) {
+				newSelected = el; 
+				deck.selectedIndex = idx;
+				found = true;
+			} else {
+				el.classList.remove("deck-selected");
+			}
+			idx++;
+		}
+		
+		if (found) {
+			newSelected.classList.add("deck-selected");
+		}
+
+		// nothing found, then we are in common! (changed from previous behavior where common accountKey was "", now it is ".common"
+		if (!found) {
+			deck.selectedIndex = 0; // choice for file templates will be inserted below this.
+		}
+		this.accountKey = branch;
+
+		await this.logDebugOptional("identities", "" + (searchDeckName ? "found" : "could not find") + " deck:" + searchDeckName);
+    let chkUseCommon = document.getElementById('use_default' + this.currentIdSelector);
+    if (chkUseCommon && found) {
+      chkUseCommon.checked = await getPref("extensions.smartTemplate4" + this.currentIdSelector + ".def");
+		}
+
+		//reactivate the current tab: new / respond or forward!
+		currentDeck = this.getCurrentDeck(this.accountId);
+		tabbox = document.getElementById(currentDeck);
+		if (tabbox) {
+			tabbox.selectedIndex = tabIndex; //must b set this way because it is custom element, need to call setter
+			//tabbox.setAttribute("selectedIndex",tabIndex);
+      let txtDump = '',
+          tabboxArray = tabbox.getElementsByTagName('html:textarea'); // changed from textbox
+      for (let i=0; i<tabboxArray.length; i++)
+        txtDump += tabboxArray[i].value;  // append all texts
+      // disable / enable Save button in case template is empty
+			try {
+				let disableSave = (txtDump.length===0) && (chkUseCommon.checked === true);
+				document.getElementById('btnSaveTemplate').disabled = disableSave;
+			}
+			catch (ex) {;}
+    }
+		await this.logDebugOptional("identities", "selectIdentity(" + idkey + ") COMPLETE");
+
+	} ,
+
   dummy: function() {
 
   }
@@ -567,7 +915,6 @@ const activateTab = (event) => {
 
   btn.classList.add("active");
   // get <li> <btn> index:
-  debugger;
   let idx = Array.from(btn.parentNode.parentElement.children).indexOf(btn.parentNode);
   tabContent.children[idx].classList.add("active");
   /*
@@ -734,7 +1081,7 @@ function addUIListeners() {
 
 	// select element
 	document.getElementById("msgIdentity").addEventListener("change", (event) => {
-		logMissingFunction("SmartTemplates.Settings.selectIdentity(this.value)");
+		SmartTemplates.Settings.selectIdentity(event.target.value);
 	});
 
 	// toolbar for the template tools
@@ -747,15 +1094,18 @@ function addUIListeners() {
 	document.getElementById("btnLoadTemplate").addEventListener("click", (event) => {
 		logMissingFunction("SmartTemplates.Settings.load()");
 	});
-	document.getElementById("btnYouTube").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.Util.showYouTubePage()");
-	});
+
 	document.getElementById("btnAdvanced").addEventListener("click", (event) => {
 		logMissingFunction("SmartTemplates.Settings.openAdvanced()");
 	});
 	document.getElementById("btnCloseAdvanced").addEventListener("click", (event) => {
 		logMissingFunction("SmartTemplates.Settings.closeAdvanced()");
 	});
+	for (let btn of document.querySelectorAll(".youtube")) { 
+		btn.addEventListener("click", (event) => {
+			logMissingFunction("SmartTemplate4.Util.showYouTubePage()");
+		});
+	}
 
 	// more checkboxes
 	document.getElementById("use_default").addEventListener("change", (event) => {
@@ -789,6 +1139,12 @@ function addUIListeners() {
 	document.getElementById("fileTemplateContainer").addEventListener("change", (event) => {
 		logMissingFunction("SmartTemplates.Settings.selectFileCase(this, event)");
 	});	
+
+	document.getElementById("closeDisclaimer").addEventListener("click", (event) => {
+		event.target.parentElement.remove();
+	});	
+
+	
 	
 	
 	// template lists
@@ -819,23 +1175,46 @@ function addUIListeners() {
 	});	
 
 	
-
-
-
-	
+	// ==== NEW: PAGES
+	for (let li of document.querySelectorAll("#categories li")) {
+		li.addEventListener("click",(event) => {
+			// 1 - hide other pages
+			let activePage = li.getAttribute("page") || null;
+			li.setAttribute("selected",true);
+			for (let other of document.querySelectorAll("#categories li")) {
+				if (other == li) {
+					continue;
+				}
+				let currentActive;
+				if (other.getAttribute("selected")) {
+					other.removeAttribute("selected");
+					currentActive = other.getAttribute("page");
+				}
+				if (currentActive) {
+					document.getElementById(currentActive).classList.remove("pageActive");
+				}
+			}
+			// make page visible
+			if (activePage) {
+				document.getElementById(activePage).classList.add("pageActive");
+			}
+		});
+	}
 
 
 	addConfigEvent(document.getElementById("identityLabel"), "extensions.smartTemplate4.identities");
-
-
 }
 
 async function onLoad() {
   i18n.updateDocument();
   // this api function can do replacements for us
   //  h1.innerText = messenger.i18n.getMessage('heading-installed', addonName);
-  loadPrefs();
-  SmartTemplates.Settings.onLoad();
+// this builds all elements of the dialog
+  await SmartTemplates.Settings.onLoad();
+
+	loadPrefs();
+
+	// now read data from Preferences
   addUIListeners();
 
 }

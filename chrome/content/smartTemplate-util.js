@@ -2874,7 +2874,24 @@ SmartTemplate4.Util = {
 		// extensions.smartTemplate4.settings.html = true to open new settings dlg from status button
 		if (SmartTemplate4.Preferences.getMyBoolPref("settings.html")) {
 			SmartTemplate4.Util.logIssue213("Show new HTML help dialog.");
-			SmartTemplate4.Util.notifyTools.notifyBackground({ func: "openPrefs" });
+			let CurId = null, 
+			    serverKey = null;
+
+			if (window.GetSelectedMsgFolders) { 
+				let folders = window.GetSelectedMsgFolders();
+				if (folders.length == 1) { // select the correct server that applies to the current folder.
+					var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+					[CurId] = MailUtils.getIdentityForServer(folders[0].server);
+				}
+			}
+			if (CurId) {
+				serverKey = CurId.key;
+			}
+			SmartTemplate4.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`)
+			SmartTemplate4.Util.notifyTools.notifyBackground({ 
+				func: "openPrefs", 
+				server: serverKey 
+			});
 			return;
 		}
 

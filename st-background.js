@@ -1271,14 +1271,24 @@ async function main() {
       case "openPrefs":
         {
           const settingsUrl = "/html/smartTemplate-settings.html";
+          // Add the current accountid for context?
           let url = browser.runtime.getURL(settingsUrl) + "*";
           let [oldTab] = await browser.tabs.query({url}); // dereference first 
           if (oldTab) {
             await browser.tabs.update(oldTab.id, {active:true});
             // await browser.windows.update(oldTab.windowId, {focused:true});
           } else {
+            let queryString = "";
+            if (data.server) {
+              queryString = `?id=${data.server}`;
+            }
             // open a new tab with settings
-            browser.tabs.create ({active: true, url: browser.runtime.getURL(settingsUrl)});
+            browser.tabs.create (
+              {
+                active: true, 
+                url: browser.runtime.getURL(settingsUrl + queryString)
+              }
+            );
           }
         }
         break;
