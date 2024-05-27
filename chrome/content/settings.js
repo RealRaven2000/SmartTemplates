@@ -285,8 +285,7 @@ SmartTemplate4.Settings = {
 	} ,	
   
   resizeSettings: function(evt) {
-		const util = SmartTemplate4.Util,
-          settings = SmartTemplate4.Settings,
+		const settings = SmartTemplate4.Settings,
 					getElement = window.document.getElementById.bind(window.document),
           dlg = getElement('smartTemplate_prefDialog');
     
