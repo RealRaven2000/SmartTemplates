@@ -119,6 +119,7 @@ button.active::marker {
 .tabs button {
   appearance: none;
   border-radius: 0.5em 0.5em 0 0;
+  min-width: unset;
 }
 
 /* Change background color of buttons on hover */

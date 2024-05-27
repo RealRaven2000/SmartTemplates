@@ -59,6 +59,14 @@
   list-style-image: url("../chrome/content/skin/icons/advanced.png");
 }
 
+#catVariables {
+  list-style-image: url("../chrome/content/skin/icons/variable.png");
+}
+
+#catExamples {
+  list-style-image: url("../chrome/content/skin/icons/icon16x16.png");
+}
+
 #catInfo {
   list-style-image: url("../chrome/content/skin/icons/info.png");
 }

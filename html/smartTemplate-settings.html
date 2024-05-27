@@ -11,6 +11,9 @@
     <link rel='stylesheet' type='text/css' href="../chrome/content/skin/common/license.css">
     <script type="application/javascript" src="../chrome/content/i18n.js"></script>
     <script type="application/javascript" src="smartTemplate-settings.js"></script>
+<!--
+   <script type="module" src="smartTemplate-settings.js"></script>
+   -->   
     <script type="application/javascript" src="st-settings-util.js"></script>
 
     <!-- new rules for xul conversion -->
@@ -44,19 +47,25 @@
         <li class="category" id="catFileTemplates" page="fileTemplatePane">
           <label class="category-name">File Templates</label>
         </li>
-        <li class="category" id="catSettingsGeneral">
+        <li class="category" id="catSettingsGeneral" page="globalSettingsPane">
           <label class="category-name">__MSG_pref_global.tab__</label>
         </li>
-        <li class="category" id="catSettingsAdvanced">
+        <li class="category" id="catSettingsAdvanced" page="advancedSettingsPane">
           <label class="category-name">__MSG_pref_advanced.tab__</label>
         </li>
-        <li class="category" id="catInfo">
+        <li class="category" id="catVariables" page="variablesPane">
+          <label class="category-name">__MSG_pref_variables.tab__</label>
+        </li>
+        <li class="category" id="catExamples" page="examplesPane">
+          <label class="category-name">__MSG_pref_examples.tab__</label>
+        </li>        
+        <li class="category" id="catInfo" page="infoPane">
           <label class="category-name">__MSG_about.cap__</label>
         </li>
-        <li class="category" id="catLicense">
+        <li class="category" id="catLicense" page="licensePane">
           <label class="category-name">___MSG_license-tab__</label>
         </li>
-        <li class="category" id="catSupport">
+        <li class="category" id="catSupport" page="supportPane">
           <label class="category-name">__MSG_support.tab__</label>
         </li>        
       </ul>
@@ -86,7 +95,7 @@
           <div id="fileTemplatesTabs" class="tabbox" flex="1">
             <nav class="tabs actionTabs">
               <ul>
-                <li><button id="file.newTab"      class="NewTab">__MSG_pref_new.tab__</button></li>
+                <li><button id="file.newTab"      class="NewTab active">__MSG_pref_new.tab__</button></li>
                 <li><button id="file.respondTab"  class="RespondTab" >__MSG_pref_rsp.tab__</button></li>
                 <li><button id="file.forwardTab"  class="ForwardTab" >__MSG_pref_fwd.tab__</button></li>
                 <li><button id="file.snippetsTab" class="SnippetsTab" >Smart Snippets</button></li>
@@ -94,48 +103,27 @@
             </nav>
             
             <div id="fileTemplateContainer" class="tabcontent-container" flex="1" orient="vertical">
-              <section class="newGroup fileTemplatePanel vbox" id="new-fileTemplates">
+              <section class="newGroup fileTemplatePanel vbox active" id="new-fileTemplates">
                 <groupbox flex="1" orient="vertical" class="transparent">
                   <div flex="1" class="vfield vbox">
                     <label title="__MSG_fileTemplates.new.tooltip__">__MSG_fileTemplates.title__</label>
-                    <richlistbox 
-                      id="templateList.new" 
-                      class="fileTemplateList"
-                      flex="1"
-                      seltype="single"> 
-                    </richlistbox>
+                    <select id="templateList.new" 
+                      class="fileTemplateList" flex="1" size="12"> 
+                    </select>
                     <!-- we will move this around to the active tab -->
                     <div id="fileControls" class="vbox">
                       <div id="fileToolbarPanel" class="hbox">
                         <toolbar id="fileTemplateToolbar"
-                                class="templateList"
+                                class="templateList inlineToolbar"
                                 mode="full"
                                 customizable="false" >
-                          <toolbarbutton
-                              id="btnAdd"
-                              class="iconButton chromeclass-toolbar-additional" 
-                              label="__MSG_fileTemplates.add__">
-                          <toolbarbutton
-                              id="btnUpdate"
-                              class="iconButton chromeclass-toolbar-additional" 
-                              label="__MSG_fileTemplates.update__">
-                          <toolbarbutton
-                              id="btnRemove"
-                              class="iconButton chromeclass-toolbar-additional" 
-                              label="__MSG_fileTemplates.remove__">
-                          <toolbarseparator >
-                          <toolbarbutton
-                              id="btnUp"
-                              class="iconButton chromeclass-toolbar-additional" 
-                              label="__MSG_fileTemplates.up__">
-                          <toolbarbutton
-                              id="btnDown"
-                              class="iconButton chromeclass-toolbar-additional" 
-                              label="__MSG_fileTemplates.down__">
-                          <toolbarbutton
-                              id="btnEdit"
-                              class="toolbarbutton-1 chromeclass-toolbar-additional" 
-                              label="__MSG_fileTemplates.edit__" >
+                          <button id="btnAdd" class="iconButton">__MSG_fileTemplates.add__</button>
+                          <button id="btnUpdate" class="iconButton">__MSG_fileTemplates.update__</button>
+                          <button id="btnRemove" class="iconButton">__MSG_fileTemplates.remove__</button>
+                          <span class="separator"></span>
+                          <button id="btnUp" class="iconButton">__MSG_fileTemplates.up__</button>
+                          <button id="btnDown" class="iconButton">__MSG_fileTemplates.down__</button>
+                          <button id="btnEdit" class="iconButton">__MSG_fileTemplates.edit__</button>
                         </toolbar>						
                       </div>
                       <div id="fileSettings" >
@@ -143,9 +131,9 @@
                           <div class="settingsRow">
                             <label>__MSG_fileTemplates.file.path__</label>
                             <input type="text" id="txtTemplatePath">
-                            <button class="iconButton" 
-                                    id="btnPickTemplate" 
-                                    tooltiptext="__MSG_fileTemplates.file.open__"></button>
+                            <button id="btnPickTemplate" 
+                              class="iconButton" 
+                              tooltiptext="__MSG_fileTemplates.file.open__"></button>
                           </div>
                         </div>
                         <div>
@@ -161,8 +149,8 @@
                               type="text"
                               id="txtTemplateCategory"
                               title="__MSG_template.category.tooltip__">
-                            <toolbarbutton id="helpSnippets"
-                              label=""
+                            <button id="helpSnippets"
+                              class="iconButton" label=""
                               tooltiptext="__MSG_template.category.tooltip__"
                               >
                           </div>
@@ -179,11 +167,9 @@
                   <div flex="1" class="vfield vbox">
                     <label title="__MSG_fileTemplates.rsp.tooltip__"> 
                           __MSG_fileTemplates.title__</label>
-                    <richlistbox 
-                      id="templateList.rsp" 
-                      class="fileTemplateList"
-                      flex="1">
-                    </richlistbox>
+                    <select id="templateList.rsp" 
+                      class="fileTemplateList" flex="1" size="12">
+                    </select>
                   </div>
                 </groupbox>
               </section>
@@ -193,11 +179,9 @@
                 <groupbox  flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
                     <label tooltiptext="__MSG_fileTemplates.fwd.tooltip__">__MSG_fileTemplates.title__</label>
-                    <richlistbox 
-                      id="templateList.fwd" 
-                      class="fileTemplateList"
-                      flex="1">
-                    </richlistbox>
+                    <select id="templateList.fwd" 
+                      class="fileTemplateList" flex="1" size="12">
+                    </select>
                   </div>									
                 </groupbox>
               </section>
@@ -208,11 +192,9 @@
                   <div class="groupbox-title hbox"><label class="header">__MSG_snippets.head__</label></div>
                   <div flex="1" class="vfield vbox">
                     <label>__MSG_snippets.label__</label>
-                    <richlistbox 
-                      id="templateList.snippets" 
-                      class="fileTemplateList"
-                      flex="1">
-                    </richlistbox>
+                    <select id="templateList.snippets" 
+                      class="fileTemplateList" flex="1" size="12">
+                    </select>
                   </div>									
                 </groupbox>
               </section>
@@ -222,6 +204,42 @@
             
           </div>
         </div>        
+      </prefpane>
+
+      <prefpane id="globalSettingsPane" class="page">
+        <h2>General Settings</h2>
+      </prefpane>
+
+      <prefpane id="advancedSettingsPane" class="page">
+        <h2>Advanced Settings</h2>
+      </prefpane>
+
+      <prefpane id="variablesPane" class="page">
+        <h2>__MSG_pref_variables.tab__</h2>
+        <iframe id="helpFrame"
+        src="../chrome/content/help.xhtml"
+        type="chrome"
+        flex="1"
+        minheight="300"
+        class="vbox">
+      </iframe>
+
+      </prefpane>
+
+      <prefpane id="examplesPane" class="page">
+        <h2>Examples</h2>
+      </prefpane>
+
+      <prefpane id="infoPane" class="page">
+        <h2>About SmartTemplates</h2>
+      </prefpane>
+
+      <prefpane id="licensePane" class="page">
+        <h2>Licenses</h2>
+      </prefpane>
+
+      <prefpane id="supportPane" class="page">
+        <h2>Support</h2>
       </prefpane>
 
       <prefpane id="smartTemplatePane" orient="vertical" flex="1" class="page pageActive">
@@ -471,11 +489,6 @@
                   
                 </deck>
               </div>
-              
-              
-
-            
-            
             
             </deck>
       
@@ -485,11 +498,15 @@
 
       </prefpane>
 
+
+
+
     </div>
 
-    <p class="disclaimer"><label>This window is still work in progress. It will <i>eventually</i> replace the existing 
-      SmartTemplates settings dialog. <a target="_blank" href="https://github.com/RealRaven2000/SmartTemplates/issues/259">more...</a></label> <span id="closeDisclaimer" class="closeButton">x</span></p>   
   </div>
+
+  <p class="disclaimer"><label>This window is still work in progress. It will <i>eventually</i> replace the existing 
+    SmartTemplates settings dialog. <a target="_blank" href="https://github.com/RealRaven2000/SmartTemplates/issues/259">more...</a></label> <span id="closeDisclaimer" class="closeButton">x</span></p>   
 
 </div>
 

@@ -208,7 +208,7 @@
 #categories {
   appearance: none;
   background-color: initial; /* override the background-color set on all richlistboxes in common.inc.css */
-  margin: 70px 0 0;
+  margin: 20px 0 0;
   border-width: 0;
   width: var(--in-content-sidebar-width);
   outline: none;

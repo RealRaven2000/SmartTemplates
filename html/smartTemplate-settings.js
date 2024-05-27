@@ -1,3 +1,4 @@
+
 /* 
   BEGIN LICENSE BLOCK
 
@@ -8,10 +9,14 @@
   END LICENSE BLOCK 
 */
 
-// namespace from settings.js - renaming SmartTemplate4 to SmartTemplates
 
+// we can only do this if we load this file itself as a module.
 // import {Preferences} from "../scripts/st-prefs.mjs.js"; 
+// debugger;
+
+// namespace from settings.js - renaming SmartTemplate4 to SmartTemplates
 var SmartTemplates = {};
+// console.log({Preferences});
 // SmartTemplates.Preferences = Preferences;
 // Uncaught SyntaxError: import declarations may only appear at top level of a module
 // COPIED CODE from st-prefs.mjs.js
@@ -1197,6 +1202,13 @@ function addUIListeners() {
 			// make page visible
 			if (activePage) {
 				document.getElementById(activePage).classList.add("pageActive");
+				if (activePage == "catVariables") {
+					let frame = document.getElementById("helpFrame");
+					logMissingFunction("To Do: localize help frame!")
+					// frame.height = 
+
+				}
+				
 			}
 		});
 	}

@@ -83,7 +83,7 @@ tabpanels => .tabcontent-container
 button.iconButton {
   background-repeat: no-repeat !important;
   background-position: center center;
-	min-width: unset !important;
+	min-width: unset;
 }
 
 #helpTemplates, #helpSnippets {
@@ -338,6 +338,18 @@ groupbox.transparent .groupbox-title {
 	margin: 0;
 }
 
+#variablesPane {
+  	height: 90vh;
+}
+
+#helpFrame {
+	display: flex;
+	flex: 8 8 max-content;
+	min-width: 450px;
+	height: 92vh;
+	width: 70vw;
+}
+
 /* ################################################################################### */
 /* ####################################### TABS ###################################### */
 /* ################################################################################### */
@@ -386,6 +398,24 @@ groupbox.transparent .groupbox-title {
 
 .pageActive .templateDeck .deck-selected {
   visibility: visible;
+}
+.pageActive #fileTemplateContainer.tabcontent-container section.active {
+	visibility: visible;
+}
+
+/************************ 
+ **   file templates   **
+ ***********************/
+#fileTemplateContainer .fileTemplateList {
+	background-color: aliceblue; /* test */
+}
+
+#fileToolbarPanel {
+  
+}
+
+#fileSettings #btnPickTemplate {
+	
 }
 
 /* do not make children visible if they are in an unselected deck */
@@ -764,36 +794,49 @@ label.plain-link:hover {
 #fileTemplateToolbar.templateList > toolbarbutton.chromeclass-toolbar-additional:hover image {
 	scale: 1.3;
 }
+.templateList {
+	display: flex;
+	flex-direction: row;
+}
+.templateList button {
+	padding-top: 1.4em;
+	padding-bottom: 0.2em;
+	background-position: center 3px;
+	flex: 1 1 0 !important;
+	font-size: 0.9em;
+	min-width: 5em !important;
+}
+
 
 .templateList #btnAdd {
-	list-style-image:  url("../chrome/content/skin/icons/add.png");
+	background-image:  url("../chrome/content/skin/icons/add.png");
 }
 
 .templateList #btnUpdate {
-	list-style-image:  url("../chrome/content/skin/icons/fugue-update.png");
+	background-image:  url("../chrome/content/skin/icons/fugue-update.png");
 }
 
 .templateList #btnRemove {
-	list-style-image:  url("../chrome/content/skin/icons/fugue-cross.png");
+	background-image:  url("../chrome/content/skin/icons/fugue-cross.png");
 }
 
 .templateList #btnUp {
-	list-style-image:  url("../chrome/content/skin/icons/fugue-up.png");
+	background-image: url("../chrome/content/skin/icons/fugue-up.png");
 }
 
 .templateList #btnDown {
-	list-style-image:  url("../chrome/content/skin/icons/fugue-down.png");
+	background-image:  url("../chrome/content/skin/icons/fugue-down.png");
 }
 
 .templateList #btnUp[disabled="true"] { 
-	list-style-image:  url("../chrome/content/skin/icons/fugue-up-off.png");
+	background-image:  url("../chrome/content/skin/icons/fugue-up-off.png");
 }
 .templateList #btnDown[disabled="true"]  {
-	list-style-image:  url("../chrome/content/skin/icons/fugue-down-off.png");
+	background-image:  url("../chrome/content/skin/icons/fugue-down-off.png");
 }
 
 .templateList #btnEdit {
-	list-style-image:  url("../chrome/content/skin/icons/pencil-field.png");
+	background-image:  url("../chrome/content/skin/icons/pencil-field.png");
 }
 
 
@@ -847,7 +890,7 @@ label.plain-link:hover {
 /* color problems with buttons in dark sking mode */
 button {
   color: var(--button-text-color) !important; /* was inherit */
-  background: var(--button-background-color) !important;
+  background-color: var(--button-background-color) !important;
 }
 
 /** config buttons **/
