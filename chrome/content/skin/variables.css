@@ -86,8 +86,8 @@ p#allexpander {
   fill: #0079ef; 
 	height: 16px !important;
   width: 16px;
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/help-find-in-page.svg"); 
-  background-image: url("chrome://smartTemplate4/content/skin/icons/help-find-in-page.svg");
+  list-style-image: url("icons/help-find-in-page.svg"); 
+  background-image: url("icons/help-find-in-page.svg");
   margin-right: -5px;
 	min-height: 16px;
   min-width: 16px;
@@ -317,10 +317,10 @@ table div.yes, table div.no {
 	display: list-item;
 }
 table div.yes {
-	list-style-image:  url("chrome://smartTemplate4/content/skin/icons/enabled.png");
+	list-style-image:  url("icons/enabled.png");
 }
 table div.no {
-	list-style-image:  url("chrome://smartTemplate4/content/skin/icons/disabled.png");
+	list-style-image:  url("icons/disabled.png");
 }
 
 /* #################################### TABLE FOR VARS ############################### */

@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="chrome://smarttemplate4/content/skin/settings.css" type="text/css" title="SmartTemplateSettings" ?>
-
-<?xml-stylesheet href="../content/skin/settings.css" type="text/css" title="SmartTemplateSettings" ?>
 
 <!-- #### Help Content #### -->
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -10,9 +7,11 @@
 
 	<head>
 		<title>help.xhtml</title>
+		<link rel="stylesheet" type="text/css" href="skin/settings.css" name="main"/>
+
 	</head>
 	<body style="margin: 0;">
-  
+
   <div class="help" id="helpContents" onclick="containerClick(this, event);">
     <p id="allexpander">__MSG_heading.click__ <a href="#" onclick="expandAll(event);">__MSG_heading.expandAll__</a>.</p>
     <hbox id="searchBox">
@@ -451,10 +450,10 @@
 			<table id="keywords">
 				<tbody>
 					<tr class="tr-keywords">
-						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/variable-keyword.png" />__MSG_table_keyword.label__</th>
-						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/mail-new.png" />__MSG_table_new.label__</th>
-						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/mail-reply.png" />__MSG_table_reply.label__</th>
-						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/mail-fwd.png" />__MSG_table_fwd.label__</th>
+						<th><img class="small_icon" alt="" src="skin/icons/variable-keyword.png" />__MSG_table_keyword.label__</th>
+						<th><img class="small_icon" alt="" src="skin/icons/mail-new.png" />__MSG_table_new.label__</th>
+						<th><img class="small_icon" alt="" src="skin/icons/mail-reply.png" />__MSG_table_reply.label__</th>
+						<th><img class="small_icon" alt="" src="skin/icons/mail-fwd.png" />__MSG_table_fwd.label__</th>
 					</tr>
 					<tr class="tr-keywords">
 						<td><code>%A%</code> <code>%a%</code></td>
@@ -689,7 +688,9 @@
 		</div>
     <div id="endOfHelp"> </div>
   </div>
-    
+
+	<script type="application/javascript" src="i18n.js"></script>
+  <script type="application/javascript" src="help-html.js"></script>    
   <script type="application/javascript" src="help.js"></script>
 	</body>
 </html>

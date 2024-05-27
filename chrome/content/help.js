@@ -259,24 +259,25 @@
     
   }    
     
-    
-  function init() {
-    // [mx l10n] 
-    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
-    let extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
-		Services.scriptloader.loadSubScript(
-		  extension.rootURI.resolve("chrome/content/i18n.js"),
-		  window,
-		  "UTF-8"
-		);
-	  window.i18n.updateDocument({extension});
+
+  function findOrigin() {
+    const url = new URL(document.URL);
+    const scriptParams = Object.fromEntries(url.searchParams)
+    // console.log(scriptParams);
+    return scriptParams["context"] || null;
+  }
+  
+  function fixClipboardNote() {
     let note1 = document.getElementById("clipboardNotes");
     if (note1) {
       note1.innerHTML = 
         note1.textContent
         .replace("{file}", "<code>%file()%</code>")
         .replace("{toclip}", "<span class='paramLiteral'>toclipboard</span>");
-    }
+    }    
+  }
+
+  function initSearch() {
     let searchBox = document.getElementById("search");
     if (searchBox) {
       // we are using the tabindex=-1 hack to make the list items searchable even if the user highlights text or 
@@ -303,6 +304,7 @@
         }
       }, {capture:true});
     }
+
     let container = document.getElementById("helpContents");
     if (container) {
       container.addEventListener("keydown", (event) => {
@@ -321,7 +323,8 @@
             break;
         }
       });
-    }
+    }    
+
     let helpSearch = document.getElementById("fq-variables-search-help");
     if (helpSearch) {
       // helpSearch.innerHTML = " ";
@@ -337,13 +340,37 @@
           searchHelp.classList.add("hidden");
         }
       });
-    }
+    }    
+
+    // when copying keys:
     let helpContent = document.getElementById("searchHelpContent");
     if (helpContent) {
       helpContent.innerHTML = helpContent.textContent
         .replaceAll("{{", "<span class='key'>")
         .replaceAll("}}", "</span>")
+    }    
+  }
+    
+  function init() {
+    // avoid running xul code:
+    if (findOrigin() == "html") {
+      // EARLY EXIT, let's run help-html.js instead
+      console.log("help.js early exit...");
+      return;
     }
+    // [mx l10n] 
+    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    let extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
+		Services.scriptloader.loadSubScript(
+		  extension.rootURI.resolve("chrome/content/i18n.js"),
+		  window,
+		  "UTF-8"
+		);
+	  window.i18n.updateDocument({extension});
+
+    fixClipboardNote();
+    initSearch();
+
     
   } 
   

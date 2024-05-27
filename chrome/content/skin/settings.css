@@ -1,5 +1,5 @@
-@import url("chrome://smarttemplate4/content/skin/style.css");
-@import url("chrome://smarttemplate4/content/skin/variables.css"); 
+@import url("style.css");
+@import url("variables.css"); 
 
 #smartTemplate_prefDialog {
 	min-width: 550px;
@@ -14,7 +14,7 @@
 #helpTemplates, #helpSnippets {
 	-moz-context-properties: fill;
 	fill: currentColor;
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/help.svg");
+  list-style-image: url("icons/help.svg");
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
@@ -71,7 +71,7 @@ button.text-link:hover {
 	margin-left: 0.2em;
 }
 .homePageURL, .homePageURL:focus {
-	/* list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png") !important; */
+	/* list-style-image: url("icons/icon16x16.png") !important; */
 	color: #ffffff !important;
 }
 
@@ -165,18 +165,18 @@ groupbox.transparent .groupbox-title {
 
 #globalSettings {
 	width: 100%;
-	background-image: url("chrome://smartTemplate4/content/skin/icon128x128.png");
+	background-image: url("icon128x128.png");
 	background-repeat: no-repeat;
 	background-position: 92% 2%;
 	/* background-size: 200px; */
 }
 
 #fontSmaller {
-	list-style-image: url("chrome://smartTemplate4/content/skin/icons/edit-size-down.png") !important;
+	list-style-image: url("icons/edit-size-down.png") !important;
 }
 
 #fontLarger {
-	list-style-image: url("chrome://smartTemplate4/content/skin/icons/edit-size-up.png") !important;
+	list-style-image: url("icons/edit-size-up.png") !important;
 }
 
 #lblFontSettings {
@@ -257,7 +257,7 @@ groupbox.transparent .groupbox-title {
 
 /* ################################## ICON BINDINGS ################################## */
 #SmartTemplate4AccountmanagerButton {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/configure.png") !important;
+  list-style-image: url("icons/configure.png") !important;
 }
 
 
@@ -286,17 +286,17 @@ groupbox.transparent .groupbox-title {
 
 /** left hand tabs **/
 .NewTab {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/mail-new.png") !important;
+  list-style-image: url("icons/mail-new.png") !important;
 }
 .RespondTab {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/mail-reply.png") !important;
+  list-style-image: url("icons/mail-reply.png") !important;
 }
 .ForwardTab {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/mail-fwd.png") !important;
+  list-style-image: url("icons/mail-fwd.png") !important;
 }
 
 .SnippetsTab {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/snippets.svg") !important;
+  list-style-image: url("icons/snippets.svg") !important;
 }
 .SnippetsTab .tab-icon {
   height: 16px;
@@ -305,22 +305,22 @@ groupbox.transparent .groupbox-title {
 
 /** right hand tabs **/
 #fieldsTab {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/variable.png") !important;
+  list-style-image: url("icons/variable.png") !important;
 }
 #settingsTab {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/global.png") !important;
+  list-style-image: url("icons/global.png") !important;
 }
 #advancedSettingsTab {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/advanced.png") !important;
+  list-style-image: url("icons/advanced.png") !important;
 }
 #aboutTab {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/info.png") !important;
+  list-style-image: url("icons/info.png") !important;
 }
 #templatesTab {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png") !important;
+  list-style-image: url("icons/icon16x16.png") !important;
 }
 #supportTab {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/fg-user-support.png") !important;
+  list-style-image: url("icons/fg-user-support.png") !important;
 }
 
 .newGroup, .forwardGroup , .replyGroup, .aboutGroup, .snippetsGroup {
@@ -328,25 +328,25 @@ groupbox.transparent .groupbox-title {
 	background-repeat: no-repeat;
 }
 .newGroup {
-	background-image: url("chrome://smartTemplate4/content/skin/icons/large/mail_new.png");
+	background-image: url("icons/large/mail_new.png");
 }
 
 .forwardGroup {
-	background-image: url("chrome://smartTemplate4/content/skin/icons/large/mail_forward.png");
+	background-image: url("icons/large/mail_forward.png");
 }
 
 .replyGroup {
-	background-image: url("chrome://smartTemplate4/content/skin/icons/large/mail_replay.png");
+	background-image: url("icons/large/mail_replay.png");
 }
 
 .snippetsGroup {
-  background-image: url("chrome://smartTemplate4/content/skin/icons/snippets.svg");
+  background-image: url("icons/snippets.svg");
   background-size: 48px 48px;
   background-repeat: no-repeat !important;
 }
 
 .aboutGroup {
-	background-image: url("chrome://smartTemplate4/content/skin/icons/large/ST4-icon.png");
+	background-image: url("icons/large/ST4-icon.png");
 }
 
 
@@ -357,7 +357,7 @@ groupbox.transparent .groupbox-title {
 }
 
 .pasteFocus.hasFocus {
-	background-image: url("chrome://smartTemplate4/content/skin/icons/arrow-left.png") !important;
+	background-image: url("icons/arrow-left.png") !important;
 	background-repeat: no-repeat;
 	background-position: right 5px;
 }
@@ -451,10 +451,10 @@ vbox.template {
 }
 
 #SmartTemplate4AboutLogo.aboutLogo {
-	background-image: url("chrome://smartTemplate4/content/skin/logo.png") !important;
+	background-image: url("logo.png") !important;
 }
 #SmartTemplate4AboutLogo.aboutLogoPro {
-	background-image: url("chrome://smartTemplate4/content/skin/logo-pro.png") !important;
+	background-image: url("logo-pro.png") !important;
 }
 
 /* ################################## AboutDeveloper ################################# */
@@ -530,16 +530,16 @@ toolbar toolbarbutton:not([hidden]) {
 
 #smartTemplatePane #btnSaveTemplate,
 #smartTemplatePane toolbar[brighttext] #btnSaveTemplate {
-	list-style-image: url("chrome://smarttemplate4/content/skin/icons/save.svg") !important;
+	list-style-image: url("icons/save.svg") !important;
 }
 #smartTemplatePane #btnLoadTemplate,
 #smartTemplatePane toolbar[brighttext] #btnLoadTemplate {
-	list-style-image: url("chrome://smarttemplate4/content/skin/icons/open.svg") !important;
+	list-style-image: url("icons/open.svg") !important;
 }
 
 #smartTemplatePane #btnYouTube,
 #smartTemplatePane toolbar[brighttext] #btnYouTube {
-	list-style-image: url("chrome://smarttemplate4/content/skin/icons/youtube-svgrepo-com.svg") !important;
+	list-style-image: url("icons/youtube-svgrepo-com.svg") !important;
   fill: rgb(166,0,0) !important;
 }
 
@@ -563,11 +563,11 @@ toolbar toolbarbutton:not([hidden]) {
 }
 
 #btnAdvanced {
-	list-style-image: url("chrome://smartTemplate4/content/skin/icons/three-dots-svgrepo-com.svg") !important;
+	list-style-image: url("icons/three-dots-svgrepo-com.svg") !important;
 }
 
 #btnCloseAdvanced {
-	list-style-image: url("chrome://smartTemplate4/content/skin/icons/left-svgrepo-com.svg") !important;
+	list-style-image: url("icons/left-svgrepo-com.svg") !important;
 }
 
 
@@ -631,15 +631,15 @@ toolbar toolbarbutton:not([hidden]) {
 /* ICON RULE TO OVERWRITE IN PRO VERSION */
 /* menuitem.cmd[tagName="qfRegister"],  */
 tab#SmartTemplate4-Pro {
-	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-default.svg') !important;
+	list-style-image : url('icons/pro-default.svg') !important;
 }
 
 tab#SmartTemplate4-Pro.paid {
-	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-paid.svg') !important;
+	list-style-image : url('icons/pro-paid.svg') !important;
 }
 
 tab#SmartTemplate4-Pro.expired {
-	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-expired.svg') !important;
+	list-style-image : url('icons/pro-expired.svg') !important;
 }
 
 /* vbox in a fieldset */
@@ -667,34 +667,34 @@ label.plain-link:hover {
 }
 
 .templateList #btnAdd {
-	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/add.png");
+	list-style-image:  url("icons/add.png");
 }
 
 .templateList #btnUpdate {
-	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-update.png");
+	list-style-image:  url("icons/fugue-update.png");
 }
 
 .templateList #btnRemove {
-	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-cross.png");
+	list-style-image:  url("icons/fugue-cross.png");
 }
 
 .templateList #btnUp {
-	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-up.png");
+	list-style-image:  url("icons/fugue-up.png");
 }
 
 .templateList #btnDown {
-	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-down.png");
+	list-style-image:  url("icons/fugue-down.png");
 }
 
 .templateList #btnUp[disabled="true"] { 
-	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-up-off.png");
+	list-style-image:  url("icons/fugue-up-off.png");
 }
 .templateList #btnDown[disabled="true"]  {
-	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-down-off.png");
+	list-style-image:  url("icons/fugue-down-off.png");
 }
 
 .templateList #btnEdit {
-	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/pencil-field.png");
+	list-style-image:  url("icons/pencil-field.png");
 }
 
 
@@ -703,7 +703,7 @@ label.plain-link:hover {
 }
 
 #btnPickTemplate {
-	list-style-image: url("chrome://smarttemplate4/content/skin/icons/file-load.png");
+	list-style-image: url("icons/file-load.png");
 }
 
 #txtTemplatePath {
