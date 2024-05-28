@@ -26,8 +26,20 @@ SmartTemplates.Util = {
       readOnly: readOnly,
       updateUI: updateUI
     });
-
   },
+  viewSplashScreen: function() {
+    messenger.runtime.sendMessage({ command:"showSplashMsg" });
+  },
+  showSupportPage: function() {
+    messenger.runtime.sendMessage({ command:"showHomePageMsg" });
+  },
+  showHomePage: function() {
+    messenger.runtime.sendMessage({ command:"showATNHomePageMsg" });
+  },
+  showBugsAndFeaturesPage: function() {
+    messenger.runtime.sendMessage({ command:"showIssuesPageMsg" });
+  },
+
 
   logDebug: function (msg) {
 	  // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default

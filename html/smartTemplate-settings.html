@@ -10,11 +10,11 @@
     <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/shared/themeableDialog.css">
     <link rel='stylesheet' type='text/css' href="../chrome/content/skin/common/license.css">
     <script type="application/javascript" src="../chrome/content/i18n.js"></script>
+
+    <script type="application/javascript" src="st-settings-main.js"></script>
     <script type="application/javascript" src="smartTemplate-settings.js"></script>
-<!--
-   <script type="module" src="smartTemplate-settings.js"></script>
-   -->   
     <script type="application/javascript" src="st-settings-util.js"></script>
+    <script type="application/javascript" src="st-settings-ui.js"></script>
 
     <!-- new rules for xul conversion -->
     <link rel="stylesheet" href="smarttemplate-settings.css">
@@ -63,7 +63,7 @@
           <label class="category-name">__MSG_about.cap__</label>
         </li>
         <li class="category" id="catLicense" page="licensePane">
-          <label class="category-name">___MSG_license-tab__</label>
+          <label class="category-name">__MSG_license-tab__</label>
         </li>
         <li class="category" id="catSupport" page="supportPane">
           <label class="category-name">__MSG_support.tab__</label>
@@ -76,20 +76,18 @@
 
       <prefpane id="fileTemplatePane" class="page">
         <h2>File Templates</h2>
-        <p>
-          Tools:
-          <div id="templateTools" class="inlineToolbar hbox" mode="icons" >  
-            <span class="navigateable">
-              <button id="btnYouTube2"
-                class="iconButton youtube"
-                title="__MSG_btnYouTube.tooltip__"
-                alt="__MSG_btnYouTube.tooltip__"></button>          
-              <button id="helpTemplates"
-                class="iconButton"
-                title="__MSG_tip.fileTemplates__"></button>
-            </span>
-          </div>
-        </p>
+        <div id="templateTools" class="inlineToolbar hbox" mode="icons">  
+          <label>Tools: </label>
+          <span class="navigateable">
+            <button id="btnYouTube2"
+              class="iconButton youtube"
+              title="__MSG_btnYouTube.tooltip__"
+              alt="__MSG_btnYouTube.tooltip__"></button>          
+            <button id="helpTemplates"
+              class="iconButton"
+              title="__MSG_tip.fileTemplates__"></button>
+          </span>
+        </div>
 
         <div id="fileTemplatesBox" class="vbox">
           <div id="fileTemplatesTabs" class="tabbox" flex="1">
@@ -104,7 +102,7 @@
             
             <div id="fileTemplateContainer" class="tabcontent-container" flex="1" orient="vertical">
               <section class="newGroup fileTemplatePanel vbox active" id="new-fileTemplates">
-                <groupbox flex="1" orient="vertical" class="transparent">
+                <fieldset flex="1" orient="vertical" class="transparent">
                   <div flex="1" class="vfield vbox">
                     <label title="__MSG_fileTemplates.new.tooltip__">__MSG_fileTemplates.title__</label>
                     <select id="templateList.new" 
@@ -117,13 +115,13 @@
                                 class="templateList inlineToolbar"
                                 mode="full"
                                 customizable="false" >
-                          <button id="btnAdd" class="iconButton">__MSG_fileTemplates.add__</button>
-                          <button id="btnUpdate" class="iconButton">__MSG_fileTemplates.update__</button>
-                          <button id="btnRemove" class="iconButton">__MSG_fileTemplates.remove__</button>
+                          <button id="btnAdd" class="iconButton"><span>__MSG_fileTemplates.add__</span></button>
+                          <button id="btnUpdate" class="iconButton"><span>__MSG_fileTemplates.update__</span></button>
+                          <button id="btnRemove" class="iconButton"><span>__MSG_fileTemplates.remove__</span></button>
                           <span class="separator"></span>
-                          <button id="btnUp" class="iconButton">__MSG_fileTemplates.up__</button>
-                          <button id="btnDown" class="iconButton">__MSG_fileTemplates.down__</button>
-                          <button id="btnEdit" class="iconButton">__MSG_fileTemplates.edit__</button>
+                          <button id="btnUp" class="iconButton"><span>__MSG_fileTemplates.up__</span></button>
+                          <button id="btnDown" class="iconButton"><span>__MSG_fileTemplates.down__</span></button>
+                          <button id="btnEdit" class="iconButton"><span>__MSG_fileTemplates.edit__</span></button>
                         </toolbar>						
                       </div>
                       <div id="fileSettings" >
@@ -150,20 +148,20 @@
                               id="txtTemplateCategory"
                               title="__MSG_template.category.tooltip__">
                             <button id="helpSnippets"
-                              class="iconButton" label=""
-                              tooltiptext="__MSG_template.category.tooltip__"
-                              >
+                              class="iconButton"
+                              title="__MSG_template.category.tooltip__"
+                              ></button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </groupbox>
+                </fieldset>
               </section>
 
               <!-- ######## Content [Reply] Tab ######## -->
               <section class="replyGroup fileTemplatePanel vbox" id="rsp-fileTemplates">
-                <groupbox flex="1" class="transparent">
+                <fieldset flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
                     <label title="__MSG_fileTemplates.rsp.tooltip__"> 
                           __MSG_fileTemplates.title__</label>
@@ -171,32 +169,32 @@
                       class="fileTemplateList" flex="1" size="12">
                     </select>
                   </div>
-                </groupbox>
+                </fieldset>
               </section>
 
               <!-- ######## Content [Forward] File Tab ######## -->
               <section class="forwardGroup fileTemplatePanel vbox" id="fwd-fileTemplates">
-                <groupbox  flex="1" class="transparent">
+                <fieldset  flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
                     <label tooltiptext="__MSG_fileTemplates.fwd.tooltip__">__MSG_fileTemplates.title__</label>
                     <select id="templateList.fwd" 
                       class="fileTemplateList" flex="1" size="12">
                     </select>
                   </div>									
-                </groupbox>
+                </fieldset>
               </section>
               
               <!-- ######## Content [Snippets] File Tab ######## -->
               <section class="snippetsGroup fileTemplatePanel vbox" id="snippets-fileTemplates">
-                <groupbox  flex="1" class="transparent">
-                  <div class="groupbox-title hbox"><label class="header">__MSG_snippets.head__</label></div>
+                <fieldset  flex="1" class="transparent">
+                  <legend>__MSG_snippets.head__</legend>
                   <div flex="1" class="vfield vbox">
                     <label>__MSG_snippets.label__</label>
                     <select id="templateList.snippets" 
                       class="fileTemplateList" flex="1" size="12">
                     </select>
                   </div>									
-                </groupbox>
+                </fieldset>
               </section>
                             
             </div>
@@ -207,11 +205,198 @@
       </prefpane>
 
       <prefpane id="globalSettingsPane" class="page">
-        <h2>General Settings</h2>
+        <h2>__MSG_pref_global.tab__</h2>
+
+        <fieldset class="transparent">
+          <legend>__MSG_pref_groupMailContent__</legend>
+          <div class="vbox">
+            <div class="hbox labeledBox">
+              <label class="textboxLabel" for="txtBreaks">__MSG_pref_breaksOnTop.label__</label>
+              <input type="text" 
+                    id="txtBreaks"
+                    data-pref-name="extensions.smartTemplate4.breaksAtTop"
+                    instantApply="true">
+            </div>
+            <div class="hbox labeledBox">
+              <label class="textboxLabel"
+                     value="__MSG_pref_defaultCharset.label__:">
+              <input type="text" 
+                    id="txtCharset"
+                    data-pref-name="extensions.smartTemplate4.defaultCharset"
+                    instantApply="true" 
+                    tooltiptext="__MSG_pref_defaultCharset_tip__">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="transparent" id="defaultTemplateBehaviorGrp">
+          <legend>__MSG_pref_defaultTemplateMethod_title__</legend>
+          <label>__MSG_pref_defaultTemplateMethod_about__</label>
+          <label for="useAccountTemplate">
+            <input type="radio" 
+              name="defaultTemplateBehavior" id="useAccountTemplate" value="1" 
+              onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);">__MSG_pref_defaultTemplateMethod_select_account__</label>
+          <label for="useLastTemplate">
+            <input type="radio" 
+              name="defaultTemplateBehavior" id="useLastTemplate" value="2" class="standardFeature"
+              onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);">__MSG_pref_defaultTemplateMethod_select_last__</label>
+        </fieldset>
+
+        
+        <fieldset class="transparent">
+          <legend>__MSG_pref_groupSignatures__</legend>
+          <div class="vbox">
+            <label><input type="checkbox" id="chkRemoveSig"
+              data-pref-name="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits">__MSG_pref_removeSig.label__</label>
+            <label class="hasConfigEvent"><input type="checkbox" id="chkSignature"
+                  class="contextConfig"
+                  title="__MSG_pref_parseSignature_tip__"
+                  data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_pref_parseSignature__
+              <button class="configSettings"></button>
+            </label>
+            
+              <label><input type="checkbox"
+                  data-pref-name="extensions.smartTemplate4.signature.replaceLF.plaintext.br">__MSG_pref_sigReplaceBR.label__</label>
+                
+            <div class="hbox">
+              <label><input type="checkbox" title="__MSG_pref_addSigBreakHTML.tooltip__"
+                data-pref-name="extensions.smartTemplate4.signature.insertDashes.html">__MSG_pref_addSigBreakHTML.label__</label>
+              
+              <label><input type="checkbox" title="__MSG_pref_addSigBreakPlaintext.tooltip__"
+                data-pref-name="extensions.smartTemplate4.signature.insertDashes.plaintext">__MSG_pref_addSigBreakPlaintext.label__</label>
+            </div>
+          </div>									  
+        </fieldset>
+        
+        <fieldset class="transparent">
+          <legend>__MSG_pref_groupAdvanced__</legend>
+          <div class="vbox">
+            <label><input type="checkbox" 
+                  data-pref-name="extensions.smartTemplate4.cursor.insertSpace">__MSG_pref_cursorInsertSpace__</label>
+            <label><input type="checkbox" title="__MSG_pref_forceParagraph_tip__"
+                  data-pref-name="extensions.smartTemplate4.forceParagraph">__MSG_pref_forceParagraph__</label>
+          </div>
+        </fieldset>
+      
+        <fieldset class="transparent">
+          <legend>__MSG_pref_groupUI__</legend>
+          <div class="vbox">
+            <div class="hbox">
+              <label class="hasConfigEvent"><input type="checkbox" id="chkStatusButton"
+                    class="contextConfig"
+                    data-pref-name="extensions.smartTemplate4.showStatusIcon"
+                    oncommand="SmartTemplate4.updateStatusBar(!this.checked);">__MSG_pref_showStatusIcon.label__
+                <button class="configSettings"></button>
+              </label>
+              <select id="iconType"
+                data-pref-name="extensions.smartTemplate4.statusIconLabelMode"
+                flex="5"
+                oncommand="SmartTemplate4.setStatusIconMode(this);"
+                >
+                <option value="0">__MSG_pref_StatusIcon.IconOnly__</option>
+                <option value="2">__MSG_pref_StatusIcon.IconText__</option>
+                <option value="1">__MSG_pref_StatusIcon.IconHoverText__</option>
+              </select>
+              
+            </div>
+            <div  class="hbox labeledBox">
+              <label  id="lblFontSettings">__MSG_pref_fontSettings.label__</label>
+              <button id="fontSmaller" oncommand="SmartTemplate4.Settings.fontSize(-1);"></button>
+              <span class="spacer" id="fontButtonSpacer" > </span>
+              <button id="fontLarger" oncommand="SmartTemplate4.Settings.fontSize(+1);" ></button>
+              <input type="text" id="txtFontSize"
+                data-pref-name="extensions.smartTemplate4.font.size"
+                disabled="true">
+            </div>
+          </div>
+        </fieldset>
+                                 
       </prefpane>
 
       <prefpane id="advancedSettingsPane" class="page">
-        <h2>Advanced Settings</h2>
+        <h2>__MSG_pref_advanced.tab__</h2>
+
+        <fieldset class="transparent">
+          <legend>__MSG_pref_groupNameRules__</legend>
+          <div class="vbox">
+            <label><input type="checkbox" 
+                 data-pref-name="extensions.smartTemplate4.names.capitalize">__MSG_capitalizeNames__</label>
+            <label><input type="checkbox" id="chkFirstLastSwap"
+                  title="__MSG_pref_nameSwap_tip__"
+                  data-pref-name="extensions.smartTemplate4.firstLastSwap">__MSG_pref_nameSwap__</label>
+            <label><input type="checkbox" id="chkGuessName"
+                  data-pref-name="extensions.smartTemplate4.names.guessFromMail">__MSG_guessNameFromMail__</label>
+            <div class="hbox"  align="center">
+              <label control="default_address_format">__MSG_defaultMimeFormat__</label>
+              <input type="text" id="default_address_format"
+                    size="50"
+                    data-pref-name="extensions.smartTemplate4.mime.defaultFormat"
+                    title= "__MSG_defaultMimeFormat_tip__">
+            </div>
+            <div class="hbox" align="center">
+              <label value=""
+                     control="txtNameDelimiter">__MSG_pref_addressDelimiter__</label>
+              <input type="text" id="txtNameDelimiter"
+                    style="width:2em;"
+                    title="__MSG_pref_addressDelimiter_tip__"
+                    data-pref-name="extensions.smartTemplate4.names.delimiter">
+            </div>
+            <hr>		  
+            <label><input type="checkbox" id="chkResolveAB"
+                  data-pref-name="extensions.smartTemplate4.mime.resolveAB"
+                  title="__MSG_resolveNamesFromAB_tip__"
+                  oncommand="SmartTemplate4.Settings.resolveAB_onClick(this);">__MSG_resolveNamesFromAB__</label>
+            <div class="hbox">
+              <div class="vbox">
+                <label><input type="checkbox" id="chkResolveABNick"
+                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.preferNick">__MSG_resolveNamesFromABNick__</label>
+                <label><input type="checkbox" id="chkResolveABDisplay"
+                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.displayName">__MSG_resolveNamesFromABDisplay__</label>
+                <label><input type="checkbox" id="chkResolveABRemoveMail"
+                  title="This will hide the mail address when using plain %cc% etc. if address book entry was found."
+                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.removeEmail">__MSG_resolveABRemoveMail__</label>
+                <label><input type="checkbox" id="chkResolveABCardBook" class="premiumFeature"
+                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.CardBook">__MSG_resolveNamesFromCardBook__</label>
+                <label style="margin-left: 2em"><input type="checkbox" id="chkCardBookFallback" class="premiumFeature"
+                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.CardBook.fallback">__MSG_resolveNamesFromCardBook.fallback__</label>
+                <label style="margin-left: 2em"><input type="checkbox" id="chkCardBookLowerCase" class="premiumFeature"
+                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.CardBook.forceLowerCase">__MSG_resolveNamesFromCardBook.forceLowerCase__</label>
+              </div>
+            </div>
+          </div>								
+        </fieldset>
+        
+        <fieldset class="transparent">
+          <legend>__MSG_pref_groupMiscellaneus__</legend>
+          <div class="vbox">
+            <label><input type="checkbox" 
+              data-pref-name="extensions.smartTemplate4.mail.suppressLink">__MSG_suppressMailToLink__</label>
+            <label><input type="checkbox" class="premiumFeature"
+              data-pref-name="extensions.smartTemplate4.header.inject">__MSG_pref_header.inject__</label>
+
+          </div>
+        </fieldset>
+
+        <fieldset class="transparent">
+          <legend>__MSG_pref_groupTroubleShooting__</legend>
+          <div class="hbox">
+            <label class="hasConfigEvent"><input type="checkbox" id="chkDebug"
+                  class="contextConfig"
+                  tooltiptext="__MSG_pref_debug_tip__"
+                  data-pref-name="extensions.smartTemplate4.debug">
+              __MSG_pref_debug_check__
+              <button class="configSettings"></button>
+            </label>
+            <label><input type="checkbox" id="chkHideExamples"
+                  data-pref-name="extensions.smartTemplate4.BackgroundParser"
+                  oncommand="alert('please reload SmartTemplates to effect this change!');"
+                >mx parser [issue 184]</label>
+          <label><input type="checkbox" id="chkHideExamples"
+                  data-pref-name="extensions.smartTemplate4.hideExamples"
+                  oncommand="SmartTemplate4.Settings.toggleExamples(this);"
+                >__MSG_pref_hideExamples__</label>
+          </div>
+        </fieldset>        
       </prefpane>
 
       <prefpane id="variablesPane" class="page">
@@ -226,19 +411,161 @@
       </prefpane>
 
       <prefpane id="examplesPane" class="page">
-        <h2>Examples</h2>
+        <h2>__MSG_pref_examples.tab__</h2>
+        <iframe id="templatesIFrame"
+        type="content"
+        flex="1"
+        minheight="300"
+        seamless="seamless"></iframe>
       </prefpane>
 
       <prefpane id="infoPane" class="page">
-        <h2>About SmartTemplates</h2>
+        <h2>__MSG_about.cap__</h2>
+
+        <div class="vbox" flex="1">
+          <div class="hbox aboutHeader" flex="1" align="center" > 
+            <div class="aboutLogo" id="SmartTemplate4AboutLogo" flex="1"></div>
+            <label id="versionBox">version</label>         
+          </div>
+
+          <description class="aboutContent">__MSG_about.label__</description>
+          
+          <div class="vbox aboutWrapper" flex="1">
+            <div class="vbox" id="aboutBox" class="aboutPersonnel" align="center" flex="1">
+              <description>__MSG_creator.label__: Axel Grude</description>
+              <description>__MSG_developer.label__: Axel Grude, Klaus Buecher/opto, Marky Mark DE</description>
+              <description>__MSG_localized.label__ __MSG_translatorNickname.label__</description>
+              <description>__MSG_contributor.label__:</description>
+              <description>Aris - Style Support + Bug Report,</description>
+              <description>tool8 - Development, Version 0.7.2 - 0.8.0,</description>
+              <description>Peter Macej - Development Support</description>
+            </div>
+          </div>
+
+          <div class="vbox buttonLinks">
+          <!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
+            <button id="aboutShowSplash" class="showSplash text-link">__MSG_showSplash__</button>
+            <button id="aboutSupport" class="supportURL text-link">__MSG_url.supportPage.label__</button>
+            <button id="aboutHomePage" class="homePageURL text-link">__MSG_url.homePage.label__</button>
+            <button id="aboutIssues" class="bugsURL text-link">__MSG_url.bugsAndFeaturesPage.label__</button>
+          </div>
+        </div>
+
       </prefpane>
 
       <prefpane id="licensePane" class="page">
-        <h2>Licenses</h2>
+        <h2>___MSG_license-tab__</h2>
+
+        <description>__MSG_label.insertLicense__</description>
+        <div class="hbox" id="licenseContainer" align="start">
+          <textarea id="txtLicenseKey" class="licenseKey"
+            flex="2" multiline="true" rows="5"
+            title="__MSG_label.insertLicense.tooltip__"></textarea>
+        </div>
+        <div class="hbox opposite-align">
+          <button id="btnPasteLicense"
+                  oncommand="SmartTemplate4.Settings.pasteLicense();">__MSG_button.pasteLicense__</button>
+          <button id="btnValidateLicense"
+                  oncommand="SmartTemplate4.Settings.validateNewKey(this);">__MSG_button.validateLicense__</button>
+        </div>
+        <hr class="licenseSeparator">
+        <div class="hbox" id="validationDate" align="center">
+          <label id="licenseDateLabel">__MSG_label.licenseValid__</label>
+          <label id="licenseDate">-</label>
+        </div>
+        <hr id="validationDateSpace" class="licenseSeparator">
+        <div class="vbox" id="validationResults">
+          <description id="validationPassed" class="niceFont" collapsed="true">__MSG_licenseValidation.passed__</description>
+          <description id="validationStandard" class="niceFont" collapsed="true">__MSG_licenseValidation.standard__</description>
+          <description id="validationFailed" class="niceFont licenseError" collapsed="true">__MSG_licenseValidation.failed__</description>
+          <description id="validationExpired" class="niceFont licenseWarning" collapsed="true">__MSG_licenseValidation.expired__</description>
+          <description id="validationInvalidEmail" class="niceFont licenseWarning" collapsed="true">__MSG_licenseValidation.invalidMail__</description>
+          <description id="validationEmailNoMatch" class="niceFont licenseWarning" collapsed="true">__MSG_licenseValidation.notMatchedMail__</description>
+          <description id="validationInvalidAddon" class="niceFont licenseError" collapsed="true">__MSG_licenseValidation.invalidAddon__</description>
+        </div>
+        <hr style="height:0.5em;">
+        <div class="hbox btnLicenseContainer">
+          <button id="btnLicense" 
+            oncommand="SmartTemplate4.Util.showLicenseDialog('licenseTab'); setTimeout( function() {window.close();}, 500 );">
+            Buy License</button>
+        </div>				
+        <div class="hbox">
+          <fieldset id="premiumConfig" >
+            <legend>__MSG_premiumConfig__</legend>
+            <div class="hbox">
+              <label id="lnkShowPremium" class="plain-link" 
+                title="https://smarttemplates.quickfolders.org/">__MSG_label.premiumFeaturesSite__</label>
+            </div>
+          </fieldset>
+        </div>				
+        <div class="hbox">
+          <fieldset id="updates" >
+            <legend>__MSG_updates.title__</legend>
+            <div class="hbox">
+              <label><input type="checkbox" id="chkSilentUpdates"
+                    title="__MSG_pref_silentUpdates_tip__"
+                    data-pref-name="extensions.smartTemplate4.silentUpdate"
+                    >__MSG_pref_silentUpdates__</label> 
+            </div>
+            <div class="hbox buttonLinks">
+              <button id="btnNewsSplash" class="showSplash">__MSG_updates.news__</button>
+              <button id="btnVersionInfo">__MSG_updates.changeLog__</button>
+            </div>
+          </fieldset>
+          
+        </div>        
       </prefpane>
 
       <prefpane id="supportPane" class="page">
-        <h2>Support</h2>
+        <h2>__MSG_support.tab__</h2>
+        <div class="vbox" flex="1" style="min-width:410px;">
+          <fieldset flex="1" class="transparent">
+            <legend>__MSG_support.title__</legend>
+            <div class="vbox" flex="1">
+              <div class="hbox">
+                <label class="textboxLabel">__MSG_support.type__</label>
+                <select id="supportType">
+                  <option value="">__MSG_support.type.selectOne__</option>
+                  <option value="[SmartTemplates] [Licensing]">__MSG_support.type.license__</option>
+                  <option value="[SmartTemplates] [Technical]">__MSG_support.type.tech__</option>
+                  <option value="[SmartTemplates] [HTML]">__MSG_support.type.html__</option>
+                  <option value="[SmartTemplates] [Support]">__MSG_support.type.other__</option>
+                </select>
+              </div>
+              <div class="hbox">
+                <label class="textboxLabel">__MSG_support.subject__</label>
+                <input type="text" 
+                      id="txtSupportSubject" 
+                      flex="1" 
+                      maxlength="60"
+                >
+              </div>
+              <label>__MSG_support.mail.instructions__</label>
+              <label>
+                Emails in English / German are easier to answer as these are languages I speak fluently.
+                The other ones will probably go through google translate.
+              </label>
+              <div class="hbox">
+                <button id="composeSupportMail"
+                        disabled="true"
+                        class="buttonIcon"
+                        oncommand="SmartTemplate4.Settings.sendMail('axel.grude@gmail.com');">__MSG_support.compose__</button>
+              </div>
+            </div>
+          </fieldset>
+          <div id="middleSpace" flex="1"><br><br><br>#middleSpace create space to push down!<br><br><br></div>
+          <fieldset class="transparent">
+            <legend>__MSG_support.links__</legend>
+            <div class="vbox buttonLinks">
+            <!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
+              <button id="supportPaneSupportLink" class="supportURL text-link">__MSG_url.supportPage.label__</button>
+              <button id="supportPaneHomePage" class="homePageURL text-link">__MSG_url.homePage.label__</button>
+              <button id="supportPaneIssues" class="bugsURL text-link">__MSG_url.bugsAndFeaturesPage.label__</button>
+            </div class="vbox">
+            
+          </fieldset>
+        </div>
+        
       </prefpane>
 
       <prefpane id="smartTemplatePane" orient="vertical" flex="1" class="page pageActive">
@@ -248,13 +575,12 @@
           <!-- ######## Creating Identity Dropdown Box ######## --> 
           <div align="center" id="identityToolBar" class="hbox">
             
-            <label id="identityLabel" class="hasConfigEvent">
-              <button class="configSettings"></button>
+            <label id="identityLabel" class="hasConfigEvent" for="msgIdentity">
+              <button class="configSettings leading"></button>
               __MSG_pref_server_desc__:
             </label>
             <select id="msgIdentity"
               class="identity-menulist"
-              label="__MSG_pref_server_def__"
               flex="1"
               tabindex="0">
               <option class="identity-popup-item" value="common">__MSG_pref_server_def__</option>
@@ -292,26 +618,6 @@
       
               <div id="deckA.per_account" flex="1" class="accountDeck deck-selected vbox"> <!-- cloned element -->
                 <!-- ######## Template Preferences ######## -->
-      
-                <preferences id="templates">
-                  <preference name="extensions.smartTemplate4.common.def"       type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.new"       type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.rsp"       type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.fwd"       type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.newmsg"    type="unichar" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.rspmsg"    type="unichar" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.fwdmsg"    type="unichar" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.newhtml"   type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.rsphtml"   type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.fwdhtml"   type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.newnbr"    type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.rspnbr"    type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.fwdnbr"    type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.rspheader" type="unichar" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.fwdheader" type="unichar" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.rsphead"   type="bool" instantApply="true"></preference>
-                  <preference name="extensions.smartTemplate4.common.fwdhead"   type="bool" instantApply="true"></preference>
-                </preferences>
       
                 <div align="center" class="hbox">
                   <label>
@@ -496,9 +802,6 @@
         </div>
 
       </prefpane>
-
-
-
 
     </div>
 

@@ -103,8 +103,16 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashInstalled" });
         break;
       case "smartTemplates-support":
-        SmartTemplates.Util.logIssue213("Show Support Tab");
         SmartTemplates.Util.showSupportPage();
+        break;
+      case "smartTemplates-home":
+        SmartTemplates.Util.showHomePage();
+        break;
+      case "smartTemplates-issues":
+        SmartTemplates.Util.showBugsAndFeaturesPage();
+        break;
+      case "smartTemplates-features":
+        SmartTemplates.Util.showPremiumFeatures();
         break;
       case "smartTemplates-variables":
         // SmartTemplates.Util.logIssue213("Show Variables Tab");

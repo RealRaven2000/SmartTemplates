@@ -24,4 +24,9 @@ var SettingsUI = {
     return true;
   },    
 
+  initVersionPanel: async function () {
+    const manifest = await messenger.runtime.getManifest();
+    document.getElementById("versionBox").textContent = manifest.version;
+  },  
+
 }

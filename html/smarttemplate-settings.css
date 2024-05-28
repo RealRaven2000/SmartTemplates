@@ -7,6 +7,7 @@
     --selectedcolor: #FFFFFF;
     --activecolor: #a5f7fcd9;
     --configColor: rgba(250,40,80, 0.85);
+		--grayedcolor: rgba(250,250,250,0.6);
   }  
 }
 
@@ -18,12 +19,10 @@
     --clickedbackground:var(--selectedbackground);
     --activecolor: #FFFFFF;
     --configColor: rgb(140,0,0);
+		--grayedcolor: rgba(10,10,10,0.6);
   }
 }
 
-#preferencesContainer  h2 {
-	color: color-mix(in srgb, currentColor 80%, transparent);
-}
 
 p.disclaimer {
   background: #5c1212;
@@ -87,6 +86,7 @@ button.iconButton {
   background-repeat: no-repeat !important;
   background-position: center center;
 	min-width: unset;
+	padding: 12px 12px;
 }
 
 #helpTemplates, #helpSnippets {
@@ -98,8 +98,14 @@ button.iconButton {
 }
 
 /* custom buttons linking to website */
+.buttonLinks button {
+	cursor: pointer;
+}
+
 .buttonLinks button.text-link {
 	min-width: 25em;
+	padding-block: 0.8em !important;
+	padding-inline: 1.5em !important;
 }
 
 button.text-link {
@@ -122,14 +128,12 @@ button.text-link[href] > * {
 
 button.text-link {
 	color: #ffffff !important;
-	display: inline-block;
 	border: 1px solid rgb(100,120,120);
-	text-shadow:#BBBBBB 0px 0px 2px;
+	text-shadow :#BBBBBB 0px 0px 2px;
 	padding: 1px 1px !important;
 	margin-top: 0.3em !important;
 	margin-bottom: 0.3em !important;
 	max-width: 36em;
-	vertical-align: middle !important;
 }
 
 button.text-link hbox {
@@ -156,7 +160,6 @@ button.text-link:hover {
 }
 
 .supportURL, .supportURL:focus {
-	text-decoration: underline;
 	color: #ffffff !important;
 }
 .supportURL:hover, .supportURL:focus:hover {
@@ -166,7 +169,6 @@ button.text-link:hover {
 }
 
 .bugsURL, .bugsURL:focus {
-	text-decoration: underline;
 	color: #ffffff !important;
 }
 .bugsURL:hover, .bugsURL:focus:hover {
@@ -187,6 +189,29 @@ button.supportURL:focus,
 button.bugsURL:focus {
 	border: 2px solid #666 !important;
 }
+
+
+.supportURL, .supportURL:focus {
+	background-image: linear-gradient(to bottom , rgb(100, 154, 174) 0%, rgb(79, 160, 181) 33%, rgb(43, 142, 169) 51%, rgb(47, 178, 217) 100%) !important;
+}
+.supportURL:hover, .supportURL:focus:hover {
+	background-image: linear-gradient(to bottom , rgb(149, 234, 237) 0%, rgb(71, 221, 223) 24%, rgb(9, 179, 181) 50%, rgb(44, 215, 218) 79%, rgb(88, 223, 226) 100%) !important;
+}
+.bugsURL, .bugsURL:focus {
+	background: linear-gradient(to bottom, rgba(253,52,45,1) 0%, rgba(175,7,1,1) 23%, rgba(158,5,0,1) 51%, rgba(230,12,4,1) 100%) !important;
+}
+.bugsURL:hover, .bugsURL:focus:hover {
+	background: linear-gradient(to bottom, rgba(249,185,183,1) 0%, rgba(241,22,15,1) 31%, rgba(227,8,1,1) 51%, rgba(231,111,107,1) 100%) !important;
+}
+.homePageURL, .homePageURL:focus {
+	background: linear-gradient(to bottom, rgba(166,108,182,1) 0%, rgba(156,86,170,1) 50%, rgba(121,27,135,1) 51%, rgba(179,76,190,1) 100%) !important;
+}
+.homePageURL:hover, .homePageURL:hover:focus {
+	background: linear-gradient(to bottom, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%) !important;
+}
+
+
+
 
 /*  MAIN CONTAINERS: LEFT, RIGHT
 #topOptions, #bottomOptions { 
@@ -234,6 +259,16 @@ groupbox.transparent .groupbox-title {
   background-color: transparent;
 }
  */
+
+ /****
+  REPLACEMENTS
+	groupbox                            =>   fieldset
+	hbox.groupbox-title                 =>   legend
+	hbox.groupbox-title label.header    =>   legend
+	menupopup                           =>   select
+  menuitem                            =>   option
+
+	**/
 
  #globalSettings {
 	width: 100%;
@@ -332,7 +367,8 @@ groupbox.transparent .groupbox-title {
 /* use panes for global visibility from new left menu */
 
 .page {
-  display: block;
+	display: flex; /* was block! */
+	flex-direction: column;
 	visibility: collapse;
 }
 .page.pageActive {
@@ -345,13 +381,7 @@ groupbox.transparent .groupbox-title {
   	height: 90vh;
 }
 
-#helpFrame {
-	display: flex;
-	flex: 8 8 max-content;
-	min-width: 450px;
-	height: 92vh;
-	width: 70vw;
-}
+
 
 /* ################################################################################### */
 /* ####################################### TABS ###################################### */
@@ -410,7 +440,7 @@ groupbox.transparent .groupbox-title {
  **   file templates   **
  ***********************/
 #fileTemplateContainer .fileTemplateList {
-	background-color: aliceblue; /* test */
+	/* background-color: aliceblue; test */
 }
 
 #fileToolbarPanel {
@@ -552,29 +582,45 @@ vbox.template {
 
 #versionBox {
 	border: 1px solid rgba(200,225,250,0.9);
+	cursor: pointer !important;
 	color: #EEEEEE;
-	display: inline-block;
 	padding: 0.3em 0.6em !important;
 	text-align: center;
-	vertical-align: top;
 	max-height: 2em;
-	cursor: pointer;
 }
 
 #versionBox:hover {
 	color: #FFFFFF;
 }
 
+#versionBox {
+	background: linear-gradient(to bottom, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 47%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
+	border-radius: 0.6em;
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.6), 2px 2px 3px rgba(0,0,0,0.5);
+}
+#versionBox:hover {
+	box-shadow: inset 0 0 3px rgba(0,0,0,0.7), 2px 2px 3px rgba(0,0,0,0.5);;
+}
+#versionBox:active {
+	box-shadow: inset 0 0 1px rgba(0,0,0,0.8), 2px 2px 3px rgba(0,0,0,0.5);;
+}
+
+
+
 
 /* ##################################### ABOUTLOGO ################################### */
 /* Icon Binding inside tab only over class possible! */
 
+.aboutHeader {
+	display: flex;
+}
+
 #SmartTemplate4AboutLogo {
-  background-position: center;
   background-repeat: no-repeat;
+	background-position: center left;
+	flex-grow: 2;
   min-width: 250px;
   min-height: 45px;
-  text-align: right;
 }
 
 #SmartTemplate4AboutLogo.aboutLogo {
@@ -620,6 +666,7 @@ vbox.template {
 /* ############################## SmartTemplate4AboutDesc ############################ */
 .aboutContent  {
   font-size: 9pt;
+	color: var(--grayedcolor, gray);
   display: block;
   margin-top: 0.5em;
   line-height: 1.3em;
@@ -631,9 +678,11 @@ vbox.template {
   overflow-x: hidden;
 }
 
+#templateTools.inlineToolbar {
+	justify-content: left;
+}
+
 .inlineToolbar {
-  align-items: center;
-  justify-content: center;
 	appearance: none;
 	background-image: none;
 	border: none;
@@ -804,10 +853,16 @@ label.plain-link:hover {
 .templateList button {
 	padding-top: 1.4em;
 	padding-bottom: 0.2em;
-	background-position: center 3px;
+	background-position: center 7px !important;
 	flex: 1 1 0 !important;
 	font-size: 0.9em;
+  justify-content: center;
+	min-height: 4em;
 	min-width: 5em !important;
+}
+
+.templateList button span {
+	padding-top: 0.8em;
 }
 
 
@@ -907,10 +962,14 @@ button.helpLink,
   display: list-item inline;
   fill: currentColor;
   list-style-position: inside;
-  margin: 0 3px 0 auto;  
+  margin: 0 3px 0 1em;  
   min-width: 24px !important;
   padding: 3px 3px 0 3px;
   width: 24px;
+}
+
+.hasConfigEvent button.configSettings.leading {
+	margin-left: 0 !important;
 }
 
 
@@ -968,3 +1027,14 @@ button.helpLink {
 .newGroup .areaTemplateParent {
 	height: 80vh;
 }
+
+#aboutBox {
+	border: 2px solid gray;
+	border-radius: 1em;
+}
+
+.buttonLinks {
+	justify-content: center !important;
+	align-items: center;
+}
+

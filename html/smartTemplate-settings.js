@@ -15,7 +15,7 @@
 // debugger;
 
 // namespace from settings.js - renaming SmartTemplate4 to SmartTemplates
-var SmartTemplates = {};
+// var SmartTemplates = {};
 // console.log({Preferences});
 // SmartTemplates.Preferences = Preferences;
 // Uncaught SyntaxError: import declarations may only appear at top level of a module
@@ -628,23 +628,9 @@ SmartTemplates.Settings = {
 	// the specific templates [see addIdentity()]
 	fillIdentityListPopup: async function(CurId = null) {
 
-    const accounts = await messenger.accounts.list(false);
   	// this.logDebug("***fillIdentityListPopup");
-
+    const accounts = await messenger.accounts.list(false);
 		let currentId = 0;
-		
-		// only when calling from the mail 3 pane window: 
-    /*
-    *** TO DO: 
-    ***        determine previous mail tab, current identity to preselect the correct one!
-		** if (window.opener && window.opener.GetSelectedMsgFolders) { 
-		** let folders = window.opener.GetSelectedMsgFolders();
-		** if (folders.length > 0) { // select the correct server that applies to the current folder.
-		** 	var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
-		** 		[CurId] = MailUtils.getIdentityForServer(folders[0].server);
-		** }
-    */
-		
 		let theMenu = document.getElementById("msgIdentity"),
 		    iAccounts = accounts.length;
 				
@@ -668,10 +654,12 @@ SmartTemplates.Settings = {
         // https://webextension-api.thunderbird.net/en/stable/identities.html#identities-mailidentity
 				let identity = account.identities[j];
 
+				// CurId will be transmitted when calling from any 3pane window to preselect account
 				if (CurId == identity) {
 					currentId = theMenu.itemCount; // remember position
 				}
         
+				const identityLabel = `${identity.name} <${identity.email}>`;
         // remove account name 
         let idText = "", acc = "";
 				// identity.id hopefully maps to identity.key
@@ -679,10 +667,11 @@ SmartTemplates.Settings = {
           idText = identity.id + " - ";
         }
         if (await getPref("identities.showAccountName")) {
-          acc = account.name + " - ";  // incomingServer.prettyName doesn't exist in API
+          acc = `${account.name}  - `;  // incomingServer.prettyName doesn't exist in API
         }
+
         let newOption = document.createElement("option");
-        newOption.text = idText + acc + identity.name;
+        newOption.text = idText + acc + identityLabel;
         newOption.value = identity.id;
         theMenu.appendChild(newOption);
 				// theMenu.appendItem(lbl, identity.key, "");
@@ -980,6 +969,7 @@ async function loadPrefs() {
 		} else if (element instanceof HTMLTextAreaElement) {
       element.value = await browser.LegacyPrefs.getPref(prefName);
     } else {
+			debugger;
 			console.error("Unexpected preference element", element);
 		}
     
@@ -1047,6 +1037,18 @@ function addUIListeners() {
 				// + options.toggleBoolPreference(chk,true); beforehand!
 				filterConfig="smartTemplate4.debug"; retVal=false;
 				break;
+			case "parseSignature":
+				filterConfig = "extensions.smartTemplate4.parseSignature"; retVal=false;
+				break;
+			case "showStatusIcon":
+				filterConfig = "extensions.smartTemplate4.showStatusIcon"; retVal=true;
+				/*
+					oncontextmenu=
+						SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.statusIconLabelMode'); 
+						SmartTemplate4.updateStatusBar(this.checked);
+        */
+				break;
+
 		}
 
 		if (filterConfig) {
@@ -1112,6 +1114,62 @@ function addUIListeners() {
 		});
 	}
 
+	// about page handlers
+	for (let btn of document.querySelectorAll(".buttonLinks button")) {	
+		btn.addEventListener("click", (event) => {
+			// SmartTemplates.Settings.disableWithCheckbox(this)
+			switch(btn.id) {
+				case "aboutShowSplash":
+				case "btnNewsSplash":
+					// oncommand=
+					//   SmartTemplate4.Util.viewSplashScreen()
+					//   setTimeout( function() {window.close();}, 200 );"
+					SmartTemplates.Util.viewSplashScreen();
+					break;
+				case "aboutSupport":
+				case "supportPaneSupportLink":
+					// oncommand=
+					//   SmartTemplate4.Util.showSupportPage(); 
+					//   setTimeout( function() {window.close();}, 200 );"
+					SmartTemplates.Util.showSupportPage();
+					break;
+				case "aboutHomePage":
+				case "supportPaneHomePage":
+					// oncommand=
+					//   SmartTemplate4.Util.showHomePage(); 
+					//   setTimeout( function() {window.close();}, 200 );
+					SmartTemplates.Util.showHomePage();
+					break;
+				case "aboutIssues": 
+				case "supportPaneIssues":
+					// oncommand=
+					//   SmartTemplate4.Util.showBugsAndFeaturesPage(); 
+					//   setTimeout( function() {window.close();}, 200 );
+					SmartTemplates.Util.showBugsAndFeaturesPage();
+					break;
+				case "btnVersionInfo":
+					messenger.Utilities.showVersionHistory();
+					break;
+			}
+		});			
+	}	
+
+	for (let el of document.querySelectorAll(".plain-link")) {	
+		el.addEventListener("click", (event) => {
+			switch(el.id) {
+				case "lnkShowPremium":
+					logMissingFunction("SmartTemplates.Util.showPremiumFeatures()");
+					// onclick="SmartTemplate4.Util.showPremiumFeatures();"
+					SmartTemplates.Util.showPremiumFeaturesPage();
+					break;
+			}
+
+		});
+	}
+
+	
+	
+
 	// more checkboxes
 	document.getElementById("use_default").addEventListener("change", (event) => {
 		logMissingFunction("SmartTemplates.Settings.showCommonPlaceholder(this.checked)");
@@ -1148,8 +1206,6 @@ function addUIListeners() {
 	document.getElementById("closeDisclaimer").addEventListener("click", (event) => {
 		event.target.parentElement.remove();
 	});	
-
-	
 	
 	
 	// template lists
@@ -1205,16 +1261,18 @@ function addUIListeners() {
 				if (activePage == "catVariables") {
 					let frame = document.getElementById("helpFrame");
 					logMissingFunction("To Do: localize help frame!")
-					// frame.height = 
-
 				}
-				
 			}
 		});
 	}
 
-
+  // replace SmartTemplate4.Util.showAboutConfig command handlers
 	addConfigEvent(document.getElementById("identityLabel"), "extensions.smartTemplate4.identities");
+
+	document.getElementById("versionBox").addEventListener("click", (event) => {
+		messenger.Utilities.showVersionHistory();
+	});
+	
 }
 
 async function onLoad() {
@@ -1228,6 +1286,8 @@ async function onLoad() {
 
 	// now read data from Preferences
   addUIListeners();
+
+	SettingsUI.initVersionPanel();
 
 }
 

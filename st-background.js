@@ -1117,7 +1117,34 @@ async function main() {
               updateUI: data.updateUI || false
             }
           });
-          break;      
+          break;
+        case "showSplashMsg":
+          showSplash();
+          break;
+        case "showHomePageMsg":
+          messenger.NotifyTools.notifyExperiment({
+            event: "doCommand", 
+            detail: { cmd: "smartTemplates-support" }
+          });
+          break;
+        case "showATNHomePageMsg":
+          messenger.NotifyTools.notifyExperiment({
+            event: "doCommand", 
+            detail: { cmd: "smartTemplates-home" }
+          });
+          break;
+        case "showIssuesPageMsg":
+          messenger.NotifyTools.notifyExperiment({
+            event: "doCommand", 
+            detail: { cmd: "smartTemplates-issues" }
+          });
+          break;
+        case "showPremiumFeaturePageMsg":
+          messenger.NotifyTools.notifyExperiment({
+            event: "doCommand", 
+            detail: { cmd: "smartTemplates-features" }
+          });
+          break;
       }
     }
   });  
