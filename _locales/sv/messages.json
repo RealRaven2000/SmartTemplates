@@ -1252,7 +1252,7 @@
     "message": "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Visa ändringar + nyheter (Splash Screen)."
+    "message": "Ändringar + nyheter (Splash Screen)."
   },
   "sig.label": {
     "message": "Underskrift (från TB hänsyn inställningar)"

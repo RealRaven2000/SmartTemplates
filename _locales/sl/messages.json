@@ -1216,7 +1216,7 @@
     "message": "Datum / Čas kratko (npr. 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Pokaži spremembe + novice (Začetni zaslon)."
+    "message": "Spremembe + novice (Začetni zaslon)."
   },
   "sig.label": {
     "message": "Podpis iz nastavitev računa"

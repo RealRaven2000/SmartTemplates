@@ -1255,7 +1255,7 @@
     "message": "Krátký datum / čas (např. 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Zobrazit změny + zprávy (úvodní obrazovka)."
+    "message": "Změny + zprávy (úvodní obrazovka)."
   },
   "sig.label": {
     "message": "Podpis z nastavení účtu"

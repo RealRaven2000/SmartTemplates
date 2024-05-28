@@ -1252,7 +1252,7 @@
     "message": "Date et heure courtes (ex. : 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Afficher les changements + les nouvelles (écran de démarrage)."
+    "message": "Changements + Nouvelles (écran de démarrage)."
   },
   "sig.label": {
     "message": "Signature issue des paramètres du compte"

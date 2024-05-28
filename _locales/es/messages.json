@@ -1213,7 +1213,7 @@
     "message": "Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Mostrar cambios + noticias (pantalla de bienvenida)."
+    "message": "Cambios + noticias (pantalla de bienvenida)."
   },
   "sig.label": {
     "message": "Firma de la Configuración de cuentas de TB"

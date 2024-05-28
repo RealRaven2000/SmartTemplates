@@ -1162,7 +1162,7 @@
     "message": "Data/ora abbreviata (es.: 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Mostra modifiche + notizie (Schermata iniziale)."
+    "message": "Modifiche + notizie (Schermata iniziale)."
   },
   "sig.label": {
     "message": "Firma da impostazion account"

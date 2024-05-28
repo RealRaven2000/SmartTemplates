@@ -1261,7 +1261,7 @@
     "message": "Data e ora cortas (ex. : 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Mostra canvis + notícies (pantalla de presentació)."
+    "message": "Canvis + notícies (pantalla de presentació)."
   },
   "sig.label": {
     "message": "Signatura eissida dels paramètres del compte"

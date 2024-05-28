@@ -1289,7 +1289,7 @@
     "message": "Date / Time short (e.g. 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Show changes + news (Splash Screen)."
+    "message": "Changes + news (Splash Screen)."
   },
   "sig.label": {
     "message": "Signature from Account Settings"

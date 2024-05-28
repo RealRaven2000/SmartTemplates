@@ -1204,7 +1204,7 @@
     "message": "Datum en tijd kort (bv. 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Toon wijzigingen + nieuws (Splash Screen)."
+    "message": "Wijzigingen + nieuws (Splash Screen)."
   },
   "sig.label": {
     "message": "Ondertekening uit accountinstellingen"

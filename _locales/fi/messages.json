@@ -1251,7 +1251,7 @@
     "message": "Päiväys / Aika lyhyt muotoilu (esim. 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Näytä muutokset + uutiset (aloitusnäyttö)."
+    "message": "Muutokset + uutiset (aloitusnäyttö)."
   },
   "sig.label": {
     "message": "Allekirjoitus (TB:n tilitiedoista)"

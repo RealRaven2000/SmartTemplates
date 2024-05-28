@@ -27,13 +27,12 @@
     "message": "Über SmartTemplates"
   },
   "about.label": {
-    "message": "SmartTemplates ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können."
+    "message": "SmartTemplates ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwendung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können."
   },
   "account.label": {
     "message": "Konto wählen:"
   },
   "active-version-info": {
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Es läuft jetzt {boldStart} Version $addonVer$ {boldEnd} auf Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
@@ -1207,7 +1206,7 @@
     "message": "Kurzformat Datum und Zeit (z.B. 01.01.2000 1:23:45)"
   },
   "showSplash": {
-    "message": "Änderungen + Neuigkeiten anzeigen (Splash Screen)."
+    "message": "Änderungen + Neuigkeiten (Splash Screen)."
   },
   "sig.label": {
     "message": "Signatur aus den Konten-Einstellungen"
@@ -1660,7 +1659,7 @@
     "message": "Sonstige"
   },
   "support.type.selectOne": {
-    "message": "Wählen Sie ein Thema!"
+    "message": "Bitte Supportbereich wählen"
   },
   "support.type.tech": {
     "message": "Technisch"

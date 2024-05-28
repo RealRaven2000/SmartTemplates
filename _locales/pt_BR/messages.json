@@ -1189,7 +1189,7 @@
     "message": "Data e hora curta (por exemplo, 01/01/2000 01:23:45)"
   },
   "showSplash": {
-    "message": "Mostrar mudanças + notícias (tela inicial)."
+    "message": "Mudanças + notícias (tela inicial)."
   },
   "sig.label": {
     "message": "Assinatura das configurações da conta"
