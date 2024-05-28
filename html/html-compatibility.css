@@ -68,13 +68,12 @@ html|legend {
 }
 
 /* General elements */
-#qf-options-prefpane label {
-  line-height: 1.3em;
-  font-size: 0.85em;
+prefpane label {
   display: flex;
   align-items: center;
-  justify-content: left;
   flex-direction: row;  
+
+  justify-content: left;
 }
 
 #supportgrid .button label {
@@ -169,10 +168,6 @@ input[type=color], select {
   margin-left: 0px;
 }
 
-/* where can we get these system colors from? */
-#qf-flat-toolbar {
-  background-color: var(--toolbar-bgcolor);
-}
 
 /* micro toolbars */
 .inlineToolbar .toolbarbutton-1 {

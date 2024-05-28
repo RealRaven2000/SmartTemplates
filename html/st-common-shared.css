@@ -225,17 +225,6 @@ html|*#categories {
   padding: 1px;
 }
 
-#categories > .category {
-  border: 1px solid var(--in-content-primary-button-border-color);
-  border-radius: 4px;
-  min-height: 48px;
-  appearance: none;
-  color: inherit;
-  margin-inline-start: 34px;
-  padding-inline: 10px;
-  transition: background-color 150ms;
-}
-
 html|*#categories > html|*.category {
   border: 1px solid var(--in-content-primary-button-border-color);
   background-color: initial;

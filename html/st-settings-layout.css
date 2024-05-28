@@ -31,64 +31,64 @@
   appearance: none;
   border: 1px solid var(--in-content-primary-button-border-color);
   border-radius: 4px;
+  color: inherit;
   cursor: default;
   line-height: 48px;
+  margin-inline: 12px;
   min-height: 48px;
-  color: inherit;
-  margin-inline-start: 12px;
-  padding-inline: 10px;
+  padding-inline: 34px;
+  padding-inline-end: 10px;
+  list-style-type: none;
   transition: background-color 150ms;
-  list-style-position: inside;
-  align-items: enter;
   white-space: nowrap;
 }
 
 #catAccountTemplates {
-  list-style-image: url("../chrome/content/skin/icons/settings.svg");
+  background-image: url("../chrome/content/skin/icons/settings.svg");
 }
 
 #catFileTemplates {
-  list-style-image: url("../chrome/content/skin/icons/snippets-icon.svg");
+  background-image: url("../chrome/content/skin/icons/snippets-icon.svg");
 }
 
 #catSettingsGeneral {
-  list-style-image: url("../chrome/content/skin/icons/global.png");
+  background-image: url("../chrome/content/skin/icons/global.png");
 }
 
 #catSettingsAdvanced {
-  list-style-image: url("../chrome/content/skin/icons/advanced.png");
+  background-image: url("../chrome/content/skin/icons/advanced.png");
 }
 
 #catVariables {
-  list-style-image: url("../chrome/content/skin/icons/variable.png");
+  background-image: url("../chrome/content/skin/icons/variable.png");
 }
 
 #catExamples {
-  list-style-image: url("../chrome/content/skin/icons/icon16x16.png");
+  background-image: url("../chrome/content/skin/icons/icon16x16.png");
 }
 
 #catInfo {
-  list-style-image: url("../chrome/content/skin/icons/info.png");
+  background-image: url("../chrome/content/skin/icons/info.png");
 }
 
 #catHelp {
-  list-style-image: url("../chrome/content/skin/icons/docs.svg");
+  background-image: url("../chrome/content/skin/icons/docs.svg");
 }
 
 #catSupport {
-  list-style-image: url("../chrome/content/skin/icons/fg-user-support.png");
+  background-image: url("../chrome/content/skin/icons/fg-user-support.png");
 }
 
 #catLicense {
-  list-style-image: url("../chrome/content/skin/icons/pro-default.svg") !important;
+  background-image: url("../chrome/content/skin/icons/pro-default.svg") !important;
 }
 
 #catLicense.paid {
-  list-style-image: url("../chrome/content/skin/icons/pro-paid.svg") !important;
+  background-image: url("../chrome/content/skin/icons/pro-paid.svg") !important;
 }
 
 #catLicense.expired {
-  list-style-image: url("../chrome/content/skin/icons/pro-expired.svg") !important;
+  background-image: url("../chrome/content/skin/icons/pro-expired.svg") !important;
 }
 
 

@@ -21,6 +21,9 @@
   }
 }
 
+#preferencesContainer  h2 {
+	color: color-mix(in srgb, currentColor 80%, transparent);
+}
 
 p.disclaimer {
   background: #5c1212;
