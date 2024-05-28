@@ -260,13 +260,6 @@
   }    
     
 
-  function findOrigin() {
-    const url = new URL(document.URL);
-    const scriptParams = Object.fromEntries(url.searchParams)
-    // console.log(scriptParams);
-    return scriptParams["context"] || null;
-  }
-  
   function fixClipboardNote() {
     let note1 = document.getElementById("clipboardNotes");
     if (note1) {
@@ -350,30 +343,12 @@
         .replaceAll("}}", "</span>")
     }    
   }
-    
-  function init() {
-    // avoid running xul code:
-    if (findOrigin() == "html") {
-      // EARLY EXIT, let's run help-html.js instead
-      console.log("help.js early exit...");
-      return;
-    }
-    // [mx l10n] 
-    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
-    let extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
-		Services.scriptloader.loadSubScript(
-		  extension.rootURI.resolve("chrome/content/i18n.js"),
-		  window,
-		  "UTF-8"
-		);
-	  window.i18n.updateDocument({extension});
 
-    fixClipboardNote();
-    initSearch();
-
-    
-  } 
+  function findOrigin() {
+    const url = new URL(document.URL);
+    const scriptParams = Object.fromEntries(url.searchParams)
+    // console.log(scriptParams);
+    return scriptParams["context"] || null;
+  }
   
-window.document.addEventListener('DOMContentLoaded', 
-  init, 
-  { once: true });
+    
