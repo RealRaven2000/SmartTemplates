@@ -39,6 +39,8 @@
     --in-content-primary-button-text-color: SelectedItemText;
     --in-content-primary-button-text-color-active: SelectedItemText;
   }
+  
+  --version-background: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
 }
 
 #categories {
@@ -65,3 +67,23 @@
     }
   }
 }
+
+.showSplash, .showSplash:focus {
+  color: white !important;
+  background-color: #006EB7 !important; /* blue */
+  background-image: var(--version-background) !important;
+}
+.showSplash label, .showSplash:focus label {
+  color: white;
+}
+
+.showSplash:hover, .showSplash:focus:hover {
+  color: black !important;
+	background-color: #ffd65e !important; /* yellow */
+	background-image: linear-gradient(to bottom, #fff65e 0%,#febf04 100%) !important;
+}
+
+.showSplash:hover *, .showSplash:focus:hover * {
+  color: rgb(60,0,0) !important;
+}
+

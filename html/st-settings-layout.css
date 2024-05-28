@@ -91,6 +91,10 @@
   background-image: url("../chrome/content/skin/icons/pro-expired.svg") !important;
 }
 
+/* remove unnecessary inner scrollbars */
+#prefBox {
+  overflow: hidden;
+}
 
 #preferencesContainer {
   display: flex;
@@ -98,6 +102,30 @@
   padding: 0 28px 20px;
   overflow: auto;
 }
+
+#templatesIFrame {
+	display: flex;
+	flex: 8 8 max-content;
+  height: calc(100vh - 45px);
+  width: 100%;  
+}
+
+#examplesPane {
+  overflow: hidden;
+}
+
+#preferencesContainer #templatesIFrame {
+  margin-left: -28px;
+}
+
+#helpFrame {
+	display: flex;
+	flex: 8 8 max-content;
+	min-width: 450px;
+	height: 92vh;
+	width: 70vw;
+}
+
 
 .spacer[flex="1"] {
   flex: 1 !important;
