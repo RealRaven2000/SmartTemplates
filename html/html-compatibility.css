@@ -104,13 +104,13 @@ button.active::marker {
 
  /* Style the tab */
 .tabs {
-  border-bottom: 1px solid rgba(50,50,50,0.3);
+  border-bottom: 3px solid var(--selected-item-color) !important;
 }
 
 .tabs ul {
   margin: 0;
   overflow: hidden;
-  padding-left: 1em;
+  padding-left: 1px;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -127,6 +127,7 @@ button.active::marker {
   appearance: none;
   border-radius: 0.5em 0.5em 0 0;
   min-width: unset;
+  margin-bottom: 0px;
 }
 
 /* Change background color of buttons on hover */
@@ -136,7 +137,7 @@ button.active::marker {
 
 /* Create an active/current tablink class */
 .tabs button.active {
-  background-color: #33f !important;
+  background-color: var(--selected-item-color) !important;
   color: #FFFFFF !important;
 }
 
