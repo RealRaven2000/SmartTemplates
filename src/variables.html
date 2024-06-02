@@ -650,9 +650,9 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 	</p>
 
 	<ul>
-		<li> <code>%header.set(subject,"text")%</code> = Replace subject with the text</li>
-		<li> <code>%header.prefix(subject,"text")%</code> = Prefix subject with the text</li>
-		<li> <code>%header.append(subject,"text")%</code> = Append text to subject</li>
+		<li> <code>%header.set(subject,"text"<span class="param">,textTransform</span>)%</code> = Replace subject with the text</li>
+		<li> <code>%header.prefix(subject,"text"<span class="param">,textTransform</span>)%</code> = Prefix subject with the text</li>
+		<li> <code>%header.append(subject,"text"<span class="param">,textTransform</span>)%</code> = Append text to subject</li>
     <li> <code>%header.delete(subject,<i>pattern</i>)%</code> Remove matching regular expression from text.</li>  
     <li> <code>%header.deleteFromSubject(<i>pattern</i>)%</code> (from v2.8.1) Remove matching pattern from subject.</li>  
     <li> <code>%header.set(to,<b>clipboard</b>)%</code> - (new in v3.12) set the final recipient from the clipboard</li>

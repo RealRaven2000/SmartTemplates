@@ -8,11 +8,15 @@ permalink: templates.html
 "use strict"; // use ECMAScript5 strict mode
  /* add .active class to current navbar element (jquery) */
   var jquery = false;
-   if (queryString('jquery')) {
-     jquery = true;
-     // we do not need this as the nav element is not displayed when in examples tab!
-     jQuery('#resources').find('[href^="/templates.html"]').addClass('active');
- }
+  if (queryString('jquery')) {
+    jquery = true;
+    // we do not need this as the nav element is not displayed when in examples tab!
+    jQuery('#resources').find('[href^="/templates.html"]').addClass('active');
+  }
+  var navigation = true;
+  if (queryString("nav") && queryString("nav") === "none") {
+    navigation = false; 
+  }
   /* Apply this site specific file to <head> element */
   loadStyleSheet("templates.css");
   loadStyleSheet("syntax.css");
@@ -452,5 +456,17 @@ Alternatively, you can force a different encoding by changing the configuration 
 <script type="text/javascript">
 "use strict"; // use ECMAScript5 strict mode
   collapseQA(true); // based on jQuery
+
+  function pageLoaded() {
+    if (!navigation) {
+      (document.querySelector("#project-navigation")).remove();
+      (document.querySelector(".project-name")).remove();
+      (document.querySelector("#brandsCarousel")).remove();
+      (document.querySelector("#footer")).remove();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", pageLoaded);
+
 </script>
 <!-- END TEMPLATES.HTML -->
