@@ -80,11 +80,11 @@
           <label>Tools: </label>
           <span class="navigateable">
             <button id="btnYouTube2"
-              class="iconButton youtube"
+              class="iconButton youtube category-icon"
               title="__MSG_btnYouTube.tooltip__"
               alt="__MSG_btnYouTube.tooltip__"></button>          
             <button id="helpTemplates"
-              class="iconButton"
+              class="iconButton category-icon"
               title="__MSG_tip.fileTemplates__"></button>
           </span>
         </div>
@@ -148,7 +148,7 @@
                               id="txtTemplateCategory"
                               title="__MSG_template.category.tooltip__">
                             <button id="helpSnippets"
-                              class="iconButton"
+                              class="iconButton category-icon"
                               title="__MSG_template.category.tooltip__"
                               ></button>
                           </div>
@@ -251,7 +251,7 @@
                   class="contextConfig"
                   title="__MSG_pref_parseSignature_tip__"
                   data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_pref_parseSignature__
-              <button class="configSettings"></button>
+              <button class="configSettings category-icon"></button>
             </label>
             
               <label><input type="checkbox"
@@ -285,7 +285,7 @@
                     class="contextConfig"
                     data-pref-name="extensions.smartTemplate4.showStatusIcon"
                     oncommand="SmartTemplate4.updateStatusBar(!this.checked);">__MSG_pref_showStatusIcon.label__
-                <button class="configSettings"></button>
+                <button class="configSettings category-icon"></button>
               </label>
               <select id="iconType"
                 data-pref-name="extensions.smartTemplate4.statusIconLabelMode"
@@ -384,7 +384,7 @@
                   tooltiptext="__MSG_pref_debug_tip__"
                   data-pref-name="extensions.smartTemplate4.debug">
               __MSG_pref_debug_check__
-              <button class="configSettings"></button>
+              <button class="configSettings category-icon"></button>
             </label>
             <label><input type="checkbox" id="chkHideExamples"
                   data-pref-name="extensions.smartTemplate4.BackgroundParser"
@@ -415,7 +415,9 @@
         type="content"
         flex="1"
         minheight="300"
-        seamless="seamless"></iframe>
+        seamless="seamless"
+        url="https://smarttemplates.quickfolders.org/templates.html?nav=none"
+        ></iframe>
       </prefpane>
 
       <prefpane id="infoPane" class="page">
@@ -575,7 +577,7 @@
           <div align="center" id="identityToolBar" class="hbox">
             
             <label id="identityLabel" class="hasConfigEvent" for="msgIdentity">
-              <button class="configSettings leading"></button>
+              <button class="configSettings leading category-icon"></button>
               __MSG_pref_server_desc__:
             </label>
             <select id="msgIdentity"
@@ -587,23 +589,23 @@
             <div id="templateTools2" class="inlineToolbar hbox" mode="icons" >
               <span class="navigateable">
               <button id="btnSaveTemplate"
-                    class="iconButton"
+                    class="iconButton category-icon"
                     title="__MSG_btnSaveTemplate.tooltip__"
                     alt="__MSG_btnSaveTemplate.tooltip__"></button>
               <button id="btnLoadTemplate"
-                    class="iconButton"
+                    class="iconButton category-icon"
                     title="__MSG_btnLoadTemplate.tooltip__"
                     alt="__MSG_btnLoadTemplate.tooltip__"></button>
               <button id="btnYouTube"
-                  class="iconButton youtube"
+                  class="iconButton youtube category-icon"
                   title="__MSG_btnYouTube.tooltip__"
                   alt="__MSG_btnYouTube.tooltip__"></button>
               <button id="btnAdvanced"
-                    class="iconButton"
+                    class="iconButton category-icon"
                     title="__MSG_advanced.label__"
                     alt="__MSG_advanced.label__"></button>
               <button id="btnCloseAdvanced"
-                    class="iconButton"
+                    class="iconButton category-icon"
                     title="__MSG_close.label__"
                     alt="__MSG_close.label__"
                     hidden="true"></button>

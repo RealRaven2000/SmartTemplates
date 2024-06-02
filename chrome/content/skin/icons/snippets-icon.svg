@@ -14,7 +14,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="snippets.svg">
+   sodipodi:docname="snippets.svg"
+   stroke="context-stroke"
+   fill="context-fill"
+   >
   <defs
      id="defs2">
     <rect
@@ -70,8 +73,12 @@
      transform="translate(-31.083528,-28.451453)">
     <path
        id="rect833"
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:21.984;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       fill="context-fill"
+       fill-opacity="25%"
+       style="stroke-width:21.984;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 42.075528,39.671487 V 189.56178 H 185.28977 l 0.26302,-63.30062 -86.225534,-0.53454 0.52603,-86.055133 z"
+       stroke="pink"
+       stroke-opacity="50%"
        sodipodi:nodetypes="ccccccc" />
     <rect
        style="fill:#e6ffde;fill-opacity:1;stroke:#3b70cb;stroke-width:16.435;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"

@@ -469,10 +469,10 @@ groupbox.transparent .groupbox-title {
   background-image: url("../chrome/content/skin/icons/advanced.png") !important;
 }
 #aboutTab {
-  background-image: url("../chrome/content/skin/icons/info.png") !important;
+  background-image: url("../chrome/content/skin/icons/info.svg") !important;
 }
 #templatesTab {
-  background-image: url("../chrome/content/skin/icons/icon16x16.png") !important;
+  background-image: url("../chrome/content/skin/icons/templates.svg") !important;
 }
 #supportTab {
   background-image: url("../chrome/content/skin/icons/fg-user-support.png") !important;
@@ -726,6 +726,8 @@ vbox.template {
 .page toolbar[brighttext] .youtube {
 	background-image: url("../chrome/content/skin/icons/youtube-svgrepo-com.svg") !important;
   fill: rgb(166,0,0) !important;
+	stroke: yellow;
+	background-size: 80%;
 }
 
 .page .youtube:hover {
@@ -966,7 +968,13 @@ button.helpLink,
   min-width: 24px !important;
   padding: 3px 3px 0 3px;
   width: 24px;
+	color: currentColor;
 }
+.hasConfigEvent button.configSettings::marker {
+  fill: currentColor;
+	color: currentColor;
+}
+
 
 .hasConfigEvent button.configSettings.leading {
 	margin-left: 0 !important;

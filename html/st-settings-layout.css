@@ -1,3 +1,11 @@
+:root {
+  --iconStroke: darkgray;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --iconStroke: yellow;
+  }
+}
 
 
 
@@ -44,7 +52,7 @@
 }
 
 #catAccountTemplates {
-  background-image: url("../chrome/content/skin/icons/settings.svg");
+  background-image: url("../chrome/content/skin/icons/accounts.svg");
 }
 
 #catFileTemplates {
@@ -52,23 +60,34 @@
 }
 
 #catSettingsGeneral {
-  background-image: url("../chrome/content/skin/icons/global.png");
+  background-image: url("../chrome/content/skin/icons/settings-simple.svg");
 }
 
 #catSettingsAdvanced {
-  background-image: url("../chrome/content/skin/icons/advanced.png");
+  background-image: url("../chrome/content/skin/icons/settings-advanced.svg");
 }
 
 #catVariables {
-  background-image: url("../chrome/content/skin/icons/variable.png");
+  background-image: url("../chrome/content/skin/icons/variable.svg");
+  stroke: context-stroke !important;
 }
 
+/*
+#catVariables labelsvg  {
+  stroke: white !important;
+  fill: yellow !important;
+}
+*/
+
+
+
 #catExamples {
-  background-image: url("../chrome/content/skin/icons/icon16x16.png");
+  background-image: url("../chrome/content/skin/icons/templates.svg");
+  stroke: white !important;
 }
 
 #catInfo {
-  background-image: url("../chrome/content/skin/icons/info.png");
+  background-image: url("../chrome/content/skin/icons/info-new.svg");
 }
 
 #catHelp {
@@ -76,7 +95,7 @@
 }
 
 #catSupport {
-  background-image: url("../chrome/content/skin/icons/fg-user-support.png");
+  background-image: url("../chrome/content/skin/icons/chat.svg");
 }
 
 #catLicense {

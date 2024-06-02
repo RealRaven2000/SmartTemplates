@@ -39,6 +39,9 @@ SmartTemplates.Util = {
   showBugsAndFeaturesPage: function() {
     messenger.runtime.sendMessage({ command:"showIssuesPageMsg" });
   },
+  showPremiumFeaturesPage: function() {
+    messenger.runtime.sendMessage({ command:"showPremiumFeaturePageMsg" });
+  },
 
 
   logDebug: function (msg) {
