@@ -1,4 +1,6 @@
-
+:root {
+  --selection-highlight: var(--selected-item-color,var(--selectedbackground,rgb(30,60,120)));
+}
 
 /* horizontal alignment */
 .hbox {
@@ -104,7 +106,7 @@ button.active::marker {
 
  /* Style the tab */
 .tabs {
-  border-bottom: 3px solid var(--selected-item-color) !important;
+  border-bottom: 3px solid var(--selection-highlight) !important;
 }
 
 .tabs ul {
@@ -137,7 +139,7 @@ button.active::marker {
 
 /* Create an active/current tablink class */
 .tabs button.active {
-  background-color: var(--selected-item-color) !important;
+  background-color: var(--selection-highlight) !important;
   color: #FFFFFF !important;
 }
 

@@ -33,12 +33,12 @@ select {
   justify-content: center;
 }
 
-.vbox .separator,
-.vbox .spacer {
+.vbox > .separator,
+.vbox > .spacer {
   height: 10px;
 }
 
-.hbox .spacer {
+.hbox > .spacer {
   width: 10px;
 }
 

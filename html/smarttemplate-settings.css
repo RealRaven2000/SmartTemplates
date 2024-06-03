@@ -457,27 +457,6 @@ groupbox.transparent .groupbox-title {
   padding: 6px 12px;
 }
 
-
-/** right hand tabs **/
-#fieldsTab {
-  background-image: url("../chrome/content/skin/icons/variable.png") !important;
-}
-#settingsTab {
-  background-image: url("../chrome/content/skin/icons/global.png") !important;
-}
-#advancedSettingsTab {
-  background-image: url("../chrome/content/skin/icons/advanced.png") !important;
-}
-#aboutTab {
-  background-image: url("../chrome/content/skin/icons/info.svg") !important;
-}
-#templatesTab {
-  background-image: url("../chrome/content/skin/icons/templates.svg") !important;
-}
-#supportTab {
-  background-image: url("../chrome/content/skin/icons/fg-user-support.png") !important;
-}
-
 .newGroup, .forwardGroup , .replyGroup, .aboutGroup, .snippetsGroup {
 	background-position: top right;
 	background-repeat: no-repeat;
@@ -975,7 +954,6 @@ button.helpLink,
 	color: currentColor;
 }
 
-
 .hasConfigEvent button.configSettings.leading {
 	margin-left: 0 !important;
 }
@@ -997,6 +975,14 @@ button.helpLink {
 
 .hasConfigEvent button[disabled="true"].configSettings:hover {
 	filter: grayscale(70%); /* desaturate because disabled! */
+}
+
+/* fill up remaining space */
+.hasConfigEvent > .spacer {
+	flex: 9;
+	background-color: var(--in-content-box-background);
+	border: 1px transparent;
+	align-self:  stretch;
 }
 
 .areaQuoteParent textarea {

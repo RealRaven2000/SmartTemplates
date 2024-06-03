@@ -9,8 +9,6 @@
    id="svg1"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    sodipodi:docname="variable.svg"
-   stroke="context-stroke"
-   fill="context-fill"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -65,10 +63,10 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       stroke="white"
+       stroke="var(--iconStroke)"
        stroke-width="1.3"
        fill="url(#linearGradient3)"
-       id="rect1"
+       id="gradientrect"
        width="22.006248"
        height="21.982033"
        x="1.0506294"
