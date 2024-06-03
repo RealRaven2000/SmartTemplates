@@ -252,6 +252,7 @@
                   title="__MSG_pref_parseSignature_tip__"
                   data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_pref_parseSignature__
               <button class="configSettings category-icon"></button>
+              <span class="spacer"></span>
             </label>
             
               <label><input type="checkbox"
@@ -286,6 +287,7 @@
                     data-pref-name="extensions.smartTemplate4.showStatusIcon"
                     oncommand="SmartTemplate4.updateStatusBar(!this.checked);">__MSG_pref_showStatusIcon.label__
                 <button class="configSettings category-icon"></button>
+                <span class="spacer"></span>
               </label>
               <select id="iconType"
                 data-pref-name="extensions.smartTemplate4.statusIconLabelMode"
@@ -385,6 +387,7 @@
                   data-pref-name="extensions.smartTemplate4.debug">
               __MSG_pref_debug_check__
               <button class="configSettings category-icon"></button>
+              <span class="spacer"></span>
             </label>
             <label><input type="checkbox" id="chkHideExamples"
                   data-pref-name="extensions.smartTemplate4.BackgroundParser"
@@ -411,12 +414,14 @@
 
       <prefpane id="examplesPane" class="page">
         <h2>__MSG_pref_examples.tab__</h2>
+        <!--
+ load url later: "https://smarttemplates.quickfolders.org/templates.html?nav=none"
+        -->
         <iframe id="templatesIFrame"
         type="content"
         flex="1"
         minheight="300"
         seamless="seamless"
-        url="https://smarttemplates.quickfolders.org/templates.html?nav=none"
         ></iframe>
       </prefpane>
 
@@ -455,7 +460,7 @@
       </prefpane>
 
       <prefpane id="licensePane" class="page">
-        <h2>___MSG_license-tab__</h2>
+        <h2>__MSG_license-tab__</h2>
 
         <description>__MSG_label.insertLicense__</description>
         <div class="hbox" id="licenseContainer" align="start">
