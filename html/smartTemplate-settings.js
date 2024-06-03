@@ -14,6 +14,33 @@
 // import {Preferences} from "../scripts/st-prefs.mjs.js"; 
 // debugger;
 
+var licenseInfo;
+async function initLicenseInfo() {
+	debugger;
+  licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+  document.getElementById("txtLicenseKey").value = licenseInfo.licenseKey;
+  
+  if (licenseInfo.licenseKey) {
+		await SmartTemplate4.Settings.validateLicenseInOptions(true);
+  }
+  
+  // add an event listener for changes:
+  // window.addEventListener("QuickFolders.BackgroundUpdate", validateLicenseInOptions);
+  
+  messenger.runtime.onMessage.addListener (
+    (data, sender) => {
+      if (data.msg=="updatedLicense") {
+        licenseInfo = data.licenseInfo;
+        SmartTemplates.Settings.updateLicenseOptionsUI(false); // we may have to switch off silent if we cause this
+        configureBuyButton();
+        return Promise.resolve(true); // returns a promise of "undefined"
+      }
+    }
+  );
+}
+
+
+
 // namespace from settings.js - renaming SmartTemplate4 to SmartTemplates
 // var SmartTemplates = {};
 // console.log({Preferences});
@@ -456,8 +483,30 @@ SmartTemplates.Settings = {
 		await testPref("fwdhead", false); 
 	} ,  
 
+	selectCategoryMenu: function(id) {
+		let el = document.getElementById(id);
+		if (!el.getAttribute("disabled")) {
+			el.click();
+		}
+	} ,
+
+  // [issue 170] allow license extension
+  // show the extension button if user is elligible
+  showExtensionButton: function() {
+    if (licenseInfo.status == "Valid") {
+      if (licenseInfo.keyType!=2) { // PRO +Domain
+        let btnLicense = document.getElementById("btnLicense");
+        SmartTemplates.Settings.labelLicenseBtn(btnLicense, "extend");
+      }
+      else { // standard function - go to License screen to upgrade!
+        SmartTemplates.Util.showLicenseDialog("licenseTab");  
+      }
+    }
+  },
+      	
+
   onLoad: async function() {
-    let isAdvancedPanelOpen = getPref('expandSettings'); // may be obsolete?
+    // let isAdvancedPanelOpen = getPref('expandSettings'); // may be obsolete?
     let composeType = null;
 
     this.logDebug("onLoad() …");
@@ -469,23 +518,58 @@ SmartTemplates.Settings = {
 		// let CurId = 
 		await this.fillIdentityListPopup();
 
-
 		// get inn params from querystring
 		let params = new URLSearchParams(window.location.search);
 		CurId = params.get("id");
 		let mode = params.get("mode");
-		// [issue 121] currently shown selection
-		switch(mode) {
-			case "fileTemplates":
-				break;
-		  case "variables":
-				break
-		}
 		composeType = params.get("composeType");
 
 		this.switchIdentity(CurId || 'common', composeType);
 
+		// [issue 121] currently shown selection
+		// special settings (omit selecting an identit from the accounts dropdown)
+		switch(mode) {
+			case "fileTemplates":
+				selectCategoryMenu("catFileTemplates");
+				break;
+		  case "variables":
+				selectCategoryMenu("catVariables");
+				break;
+		  case "licenseKey":
+				selectCategoryMenu("catLicense");
+				let txtLicense = getElement('txtLicenseKey');
+      	setTimeout(function() {txtLicense.focus();}, 200);
+				break;
+		}
+
+		// disable Use default (common account)
+		getElement("use_default").setAttribute("disabled", "true");
+    // [issue 170] allow premature extension
+    getElement("licenseDate").addEventListener("click", SmartTemplates.Settings.showExtensionButton);
+
+
+		// if (!util.hasLicense(false) && SmartTemplate4.Util.licenseInfo.status != "Expired") {
+    //   SmartTemplate4.Settings.showTrialDate();
+		// }
+
+		// // we could move the donate button to the bottom of the category  menu (see settings)
+		// this.configExtra2Button();
+
+    // window.addEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseFromEvent);
+
+  	const defaultMethod =  await getPref("defaultTemplateMethod");
+		switch (defaultMethod) {
+			case 1:
+				getElement("useAccountTemplate").checked = true;
+				break;
+			case 2:
+				getElement("useLastTemplate").checked = true;
+				break;
+		}
+		
     logMissingFunction("implement onLoad");
+
+
     
   } ,
   onUnload: async function() {
@@ -813,13 +897,40 @@ SmartTemplates.Settings = {
 
 	} ,
 
+	// put appropriate label on the license button and pass back the label text as well
+	labelLicenseBtn: function (btnLicense, validStatus) {
+		switch(validStatus) {
+			case  "extend":
+				let txtExtend = SmartTemplates.Util.getBundleString("st.notification.premium.btn.extendLicense");
+				btnLicense.setAttribute("collapsed", false);
+				btnLicense.label = txtExtend; // text should be extend not renew
+				btnLicense.setAttribute('tooltiptext',
+					SmartTemplates.Util.getBundleString("st.notification.premium.btn.extendLicense.tooltip"));
+				return txtExtend;
+			case "renew":
+				let txtRenew = SmartTemplates.Util.getBundleString("st.notification.premium.btn.renewLicense");
+				btnLicense.label = txtRenew;
+			  return txtRenew;
+			case "buy":
+				let buyLabel = SmartTemplates.Util.getBundleString("st.notification.premium.btn.getLicense");
+				btnLicense.label = buyLabel;
+			  return buyLabel;
+			case "upgrade":
+				let upgradeLabel = SmartTemplates.Util.getBundleString("st.notification.premium.btn.upgrade");
+				btnLicense.label = upgradeLabel;
+				btnLicense.classList.add('upgrade'); // stop flashing
+			  return upgradeLabel;
+		}
+		return "";
+	},	
+
   dummy: function() {
 
   }
   
   
   // ============================== Settings Object END  
-};
+};  // Settings
 
 
 /**********
@@ -884,6 +995,7 @@ async function savePref(event) {
 	}  
 }
 
+const getElement = window.document.getElementById.bind(window.document);
 
 function logMissingFunction(txt) {
   // Log missing items for Conversion to Thunderbird 115
@@ -1012,7 +1124,7 @@ function addConfigEvent(el, filterConfig) {
 
 // add UI event listeners
 function addUIListeners() {
-  // activate all tab listeners.
+  // activate all write/reply/forward tab listeners.
   for (let button of document.querySelectorAll(".actionTabs button")) {
     button.addEventListener("click", activateTab);
   }
@@ -1167,12 +1279,10 @@ function addUIListeners() {
 		});
 	}
 
-	
-	
-
 	// more checkboxes
 	document.getElementById("use_default").addEventListener("change", (event) => {
-		logMissingFunction("SmartTemplates.Settings.showCommonPlaceholder(this.checked)");
+		debugger;
+		SmartTemplates.Settings.showCommonPlaceholder(event.target.checked)
 	});
 	// file picker button
 	document.getElementById("btnPickTemplate").addEventListener("click", (event) => {
@@ -1272,6 +1382,9 @@ function addUIListeners() {
 	document.getElementById("versionBox").addEventListener("click", (event) => {
 		messenger.Utilities.showVersionHistory();
 	});
+
+	// load examples...
+	document.getElementById("templatesIFrame").src="https://smarttemplates.quickfolders.org/templates.html?nav=none"
 	
 }
 
@@ -1283,6 +1396,7 @@ async function onLoad() {
   await SmartTemplates.Settings.onLoad();
 
 	loadPrefs();
+	initLicenseInfo();
 
 	// now read data from Preferences
   addUIListeners();

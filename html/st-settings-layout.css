@@ -69,33 +69,31 @@
 
 #catVariables {
   background-image: url("../chrome/content/skin/icons/variable.svg");
+  stroke: blue;
+/* TEST
   stroke: context-stroke !important;
-}
-
-/*
-#catVariables labelsvg  {
-  stroke: white !important;
-  fill: yellow !important;
-}
+  stroke: white !important;  fill: yellow !important;
 */
+}
 
-
+/* test svg element styling */
+#catVariables * {
+	stroke: red !important; /* var(--iconStroke) */
+	stroke-width: 3px !important;
+	fill: linear-gradient(to bottom,  rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%)  !important; /* test */
+}
 
 #catExamples {
   background-image: url("../chrome/content/skin/icons/templates.svg");
   stroke: white !important;
 }
 
-#catInfo {
+#catInfo { /* ABOUT */
   background-image: url("../chrome/content/skin/icons/info-new.svg");
 }
 
-#catHelp {
+#catHelp { /* FUTURE TAB: DOCUMENTATION */
   background-image: url("../chrome/content/skin/icons/docs.svg");
-}
-
-#catSupport {
-  background-image: url("../chrome/content/skin/icons/chat.svg");
 }
 
 #catLicense {
@@ -108,6 +106,10 @@
 
 #catLicense.expired {
   background-image: url("../chrome/content/skin/icons/pro-expired.svg") !important;
+}
+
+#catSupport {
+  background-image: url("../chrome/content/skin/icons/chat.svg");
 }
 
 /* remove unnecessary inner scrollbars */
@@ -131,10 +133,6 @@
 
 #examplesPane {
   overflow: hidden;
-}
-
-#preferencesContainer #templatesIFrame {
-  margin-left: -28px;
 }
 
 #helpFrame {

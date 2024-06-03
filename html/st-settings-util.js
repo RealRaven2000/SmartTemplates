@@ -43,6 +43,18 @@ SmartTemplates.Util = {
     messenger.runtime.sendMessage({ command:"showPremiumFeaturePageMsg" });
   },
 
+	isDebug: async function() {
+		return await getPref("debug");
+	},
+
+  isDebugOption: async function(option) { // granular debugging
+		if (!this.isDebug)
+			return false;
+		try {
+			return getPref("debug." + option);
+		}
+		catch(e) {return false;}
+	},
 
   logDebug: function (msg) {
 	  // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
@@ -50,6 +62,49 @@ SmartTemplates.Util = {
       this.logToConsole(...arguments);
     }
 	},
+
+  /** 
+  * only logs if debug mode is set and specific debug option are active
+  * 
+  * @optionString {string}: comma delimited options
+  * @msg {string}: text to log 
+  */   
+  logDebugOptional: async function(optionString, msg) {
+    let options = optionString.split(',');
+    for (let i=0; i<options.length; i++) {
+      let option = options[i];
+      if (await this.isDebugOption(option)) {
+        this.logWithOption(...arguments);
+        break; // only log once, in case multiple log switches are on
+      }
+    }
+  },
+
+  logTime: function logTime() {
+    let timePassed = '',
+        end = new Date(),
+        endTime = end.getTime();
+    try { // AG added time logging for test
+      if (this.lastTime==0) {
+        this.lastTime = endTime;
+        return "[logTime init]"
+      }
+      let elapsed = new String(endTime - this.lastTime); // time in milliseconds
+      timePassed = '[' + elapsed + ' ms]   ';
+      this.lastTime = endTime; // remember last time
+    }
+    catch(e) {;}
+    return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
+  },
+
+  // first argument is the option tag
+  logWithOption: function logWithOption(a) {
+    arguments[0] =  "SmartTemplates "
+      +  '{' + arguments[0].toUpperCase() + '} ' 
+      + this.logTime() + "\n";
+    console.log(...arguments);
+  },  
+
 	logToConsole: function (a) {
     let msg = "SmartTemplates Settings\n";
     console.log(msg, ...arguments);
@@ -73,5 +128,30 @@ SmartTemplates.Util = {
 			console.log(`SmartTemplates %c${txt}`, `color: ${color}; background: ${background}`, ...args);
 		}
 	},  
+
+
+  getBundleString: function (id, substitions = []) { // moved from local copies in various modules.
+    // [mx-l10n]
+    let localized = browser.i18n.getMessage(id, substitions);
+    let s = "";
+    if (localized) {
+      s = localized;
+    }
+    else {
+      s = defaultText;
+      this.logToConsole ("Could not retrieve bundle string: " + id + "");
+    }
+    return s;
+  },
+  
+  openLinkInTab: function(uri) {
+    browser.tabs.create(
+      {active:true, url: uri}
+    );
+  },
+
+  showLicenseDialog: function() {
+    logMissingFunction("SmartTemplates.Util.showLicenseDialog()");
+  }
 
 }
