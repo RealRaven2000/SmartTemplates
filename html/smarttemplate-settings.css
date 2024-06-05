@@ -32,7 +32,7 @@ p.disclaimer {
   color: #ffd8a6;
   font-weight: bold;
 	font-size: 0.9em;
-  padding: 0.5em;
+  padding: 0.1em 0.5em;
 	position: fixed;
 	left: 20px;
 	right: 20px;
@@ -160,6 +160,7 @@ button.text-link:hover {
 }
 
 .supportURL, .supportURL:focus {
+	text-decoration: underline;
 	color: #ffffff !important;
 }
 .supportURL:hover, .supportURL:focus:hover {
@@ -169,6 +170,7 @@ button.text-link:hover {
 }
 
 .bugsURL, .bugsURL:focus {
+	text-decoration: underline;
 	color: #ffffff !important;
 }
 .bugsURL:hover, .bugsURL:focus:hover {
@@ -378,9 +380,16 @@ groupbox.transparent .groupbox-title {
 }
 
 #variablesPane {
-  	height: 90vh;
+  	height: 100vh;
 }
 
+#helpFrame {
+	display: flex;
+	flex: 8 8 max-content;
+	min-width: 450px;
+	height: 92vh;
+	width: 70vw;
+}
 
 
 /* ################################################################################### */
@@ -440,7 +449,7 @@ groupbox.transparent .groupbox-title {
  **   file templates   **
  ***********************/
 #fileTemplateContainer .fileTemplateList {
-	/* background-color: aliceblue; test */
+	height: calc(95vh - 20em);
 }
 
 #fileToolbarPanel {
@@ -514,6 +523,7 @@ groupbox.transparent .groupbox-title {
 /* height of flexible textboxes */
 .templateWrite.templateBox {
 	min-height: 9em;
+	height: calc(75vh - 11em) !important;
 }
 
 .fileTemplatePanel richlistbox {
@@ -563,7 +573,10 @@ vbox.template {
 	border: 1px solid rgba(200,225,250,0.9);
 	cursor: pointer !important;
 	color: #EEEEEE;
-	padding: 0.3em 0.6em !important;
+	font-size: 1.2em;
+	font-weight: 600;
+	padding-block: 0.15em !important;
+	padding-inline: 0.6em !important;
 	text-align: center;
 	max-height: 2em;
 }
@@ -573,9 +586,9 @@ vbox.template {
 }
 
 #versionBox {
-	background: linear-gradient(to bottom, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 47%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
+	background: var(--version-background);
 	border-radius: 0.6em;
-	box-shadow: inset 0 0 6px rgba(0,0,0,0.6), 2px 2px 3px rgba(0,0,0,0.5);
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.4), 2px 2px 3px rgba(0,0,0,0.2);
 }
 #versionBox:hover {
 	box-shadow: inset 0 0 3px rgba(0,0,0,0.7), 2px 2px 3px rgba(0,0,0,0.5);;
@@ -821,7 +834,8 @@ tab#SmartTemplate4-Pro.expired {
 	text-wrap: balance;
 }
 
-label.plain-link::before {
+label.plain-link::before, 
+a.plain-link::before {
   content: "🔗 ";
 }
 label.plain-link:hover {
@@ -832,12 +846,11 @@ label.plain-link:hover::before {
 	text-decoration: none;
 }
 
-
-#fileTemplateToolbar.templateList > toolbarbutton.chromeclass-toolbar-additional {
+#fileTemplateToolbar.templateList > button {
   display: flex;
 }
 
-#fileTemplateToolbar.templateList > toolbarbutton.chromeclass-toolbar-additional:hover {
+#fileTemplateToolbar.templateList > button:hover {
   border-radius: 6px !important;
 	border-width: 2px;
   outline: 2px gray dotted !important;
@@ -1006,14 +1019,14 @@ button.helpLink {
 
 .areaQuoteParent textarea {
 	display: flex;
-	flex: 1 1 content;
 	min-height: 10vh;
+	height: 15vh;
 }
 
 .areaTemplateParent textarea {
 	display: flex;
-	flex: 6 1 max-content !important;
-	min-height: 30vh !important;
+	min-height: 10vh !important;
+  height: 30vh;
 }
 
 .areaQuoteParent,

@@ -126,7 +126,6 @@
 
 #templatesIFrame {
 	display: flex;
-	flex: 8 8 max-content;
   height: calc(100vh - 45px);
   width: 100%;  
 }
@@ -137,7 +136,6 @@
 
 #helpFrame {
 	display: flex;
-	flex: 8 8 max-content;
 	min-width: 450px;
 	height: 92vh;
 	width: 70vw;

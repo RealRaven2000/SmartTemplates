@@ -1638,7 +1638,7 @@ function addUIListeners() {
 		logMissingFunction("SmartTemplate4.fileTemplates.edit()");
 	});
 	document.getElementById("helpSnippets").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.Util.showStationeryHelpPage('snippets')");
+		SmartTemplates.Util.showStationeryPage("snippets"); // contains an anchor
 	});
 
 	// command handlers for licensing
@@ -1675,7 +1675,7 @@ function addUIListeners() {
 
 	// toolbar for the template tools
 	document.getElementById("helpTemplates").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.Util.showStationeryHelpPage('templateFiles')");
+		SmartTemplates.Util.showStationeryPage("templateFiles");
 	});
 	document.getElementById("btnSaveTemplate").addEventListener("click", (event) => {
 		SmartTemplates.Settings.store();

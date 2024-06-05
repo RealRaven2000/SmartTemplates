@@ -118,6 +118,9 @@ async function onLoad(activatedWhileWindowOpen) {
         // 
         SmartTemplates.Util.showYouTubePage(params.videoId);
         break;
+      case "smartTemplates-stationery":
+        SmartTemplates.Util.showStationeryHelpPage(params.anchor);
+        break;
       case "smartTemplates-variables":
         // SmartTemplates.Util.logIssue213("Show Variables Tab");
         // SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs", page: "variables" });

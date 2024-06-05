@@ -46,10 +46,16 @@ SmartTemplates.Util = {
     messenger.runtime.sendMessage({ command:"showATNHomePage" });
   },
   showYouTubePage: function(videoId=null) {
-    debugger;
     messenger.runtime.sendMessage({ 
       command:"showYouTubePage",
       video: videoId
+    });
+  },
+  showStationeryPage: function(topic) {
+    // topic == "snippets"
+    messenger.runtime.sendMessage({ 
+      command:"showStationeryePage",
+      topic: topic
     });
   },
   showBugsAndFeaturesPage: function() {

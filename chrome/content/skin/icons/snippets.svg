@@ -72,14 +72,37 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-31.083528,-28.451453)">
+     <style>
+         #document {
+            stroke: black;
+            fill: #202020;
+         }
+         #snippet {
+            fill: #e6ffde;
+            stroke:#3b70cb;
+         }
+         @media (prefers-color-scheme: dark) {
+            #document { 
+               stroke: white; 
+               fill: #E0E0FF;
+            }
+            #snippet {
+               fill: #E0E0FF;
+               stroke: #3b70e0;
+            }
+         }       
+     </style>      
     <path
-       id="rect833"
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:21.984;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="document"
+       fill-opacity="0.1"
+       stroke-opacity="0.8"
+       style="stroke-width:20.0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
        d="M 42.075528,39.671487 V 189.56178 H 185.28977 l 0.26302,-63.30062 -86.225534,-0.53454 0.52603,-86.055133 z"
        sodipodi:nodetypes="ccccccc" />
     <rect
-       style="fill:#e6ffde;fill-opacity:1;stroke:#3b70cb;stroke-width:16.435;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect861"
+       fill-opacity="0.25"
+       style="stroke-width:16.435;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="snippet"
        width="57.464329"
        height="59.602489"
        x="130.81305"

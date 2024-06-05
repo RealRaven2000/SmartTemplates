@@ -1164,7 +1164,16 @@ async function main() {
             event: "doCommand", 
             detail: { 
               cmd: "smartTemplates-youtube",
-              videoId: data.video
+              params: { videoId: data.video }
+            }
+          });
+          break;
+        case "showStationeryePage":
+          messenger.NotifyTools.notifyExperiment({
+            event: "doCommand", 
+            detail: { 
+              cmd: "smartTemplates-stationery",
+              params: { anchor: data.topic }
             }
           });
           break;
