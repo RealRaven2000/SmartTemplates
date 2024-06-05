@@ -8,17 +8,13 @@
     <link rel='stylesheet' type='text/css' href="chrome://global/skin/in-content/common.css">
     <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/preferences/preferences.css">
     <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/shared/themeableDialog.css">
+
+    <!-- shared wth xhtml version -->   
     <link rel='stylesheet' type='text/css' href="../chrome/content/skin/common/license.css">
-    <script type="application/javascript" src="../chrome/content/i18n.js"></script>
 
-    <script type="application/javascript" src="st-settings-main.js"></script>
-    <script type="application/javascript" src="smartTemplate-settings.js"></script>
-    <script type="application/javascript" src="st-settings-util.js"></script>
-    <script type="application/javascript" src="st-settings-ui.js"></script>
-
-    <!-- new rules for xul conversion -->
-    <link rel="stylesheet" href="smarttemplate-settings.css">
+    <!-- new rules for html conversion -->
     <link rel="stylesheet" href="html-compatibility.css">
+    <link rel="stylesheet" href="smarttemplate-settings.css">
 
     <!-- some thunderbird rules -->
     <link rel="stylesheet" href="st-layout.css">
@@ -28,8 +24,19 @@
     <!-- our own rules -->
     <link rel="stylesheet" href="st-settings-layout.css">
 
-    <!-- shared wth xhtml -->   
-    <link rel='stylesheet' type='text/css' href="../chrome/content/skin/common/license.css">
+
+    <script type="application/javascript" src="../chrome/content/i18n.js"></script>
+
+    <script type="application/javascript" src="st-settings-main.js"></script>
+    <script type="module" src="../scripts/st-util.mjs.js"></script>
+    <script type="module" src="st-log.mjs"></script>
+    <script type="module" src="st-settings-ui.mjs"></script>
+    
+    <script type="module" src="st-settings-util.js"></script>
+    <script type="module" src="smartTemplate-settings.js"></script>
+
+
+
     <title>__MSG_pref_dialog.title__</title>
 
   </head>
@@ -79,7 +86,7 @@
         <div id="templateTools" class="inlineToolbar hbox" mode="icons">  
           <label>Tools: </label>
           <span class="navigateable">
-            <button id="btnYouTube2"
+            <button id="btnYouTube-filetemplates"
               class="iconButton youtube category-icon"
               title="__MSG_btnYouTube.tooltip__"
               alt="__MSG_btnYouTube.tooltip__"></button>          
@@ -232,13 +239,12 @@
           <legend>__MSG_pref_defaultTemplateMethod_title__</legend>
           <label>__MSG_pref_defaultTemplateMethod_about__</label>
           <label for="useAccountTemplate">
-            <input type="radio" 
-              name="defaultTemplateBehavior" id="useAccountTemplate" value="1" 
-              onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);">__MSG_pref_defaultTemplateMethod_select_account__</label>
+            <input type="radio" id="useAccountTemplate" name="defaultTemplateBehavior" 
+              value="1">__MSG_pref_defaultTemplateMethod_select_account__</label>
           <label for="useLastTemplate">
-            <input type="radio" 
-              name="defaultTemplateBehavior" id="useLastTemplate" value="2" class="standardFeature"
-              onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);">__MSG_pref_defaultTemplateMethod_select_last__</label>
+            <input type="radio" id="useLastTemplate" name="defaultTemplateBehavior"
+              class="standardFeature"
+              value="2">__MSG_pref_defaultTemplateMethod_select_last__</label>
         </fieldset>
 
         
@@ -469,10 +475,8 @@
             title="__MSG_label.insertLicense.tooltip__"></textarea>
         </div>
         <div class="hbox opposite-align">
-          <button id="btnPasteLicense"
-                  oncommand="SmartTemplate4.Settings.pasteLicense();">__MSG_button.pasteLicense__</button>
-          <button id="btnValidateLicense"
-                  oncommand="SmartTemplate4.Settings.validateNewKey(this);">__MSG_button.validateLicense__</button>
+          <button id="btnPasteLicense">__MSG_button.pasteLicense__</button>
+          <button id="btnValidateLicense">__MSG_button.validateLicense__</button>
         </div>
         <hr class="licenseSeparator">
         <div class="hbox" id="validationDate" align="center">
@@ -491,9 +495,7 @@
         </div>
         <hr style="height:0.5em;">
         <div class="hbox btnLicenseContainer">
-          <button id="btnLicense" 
-            oncommand="SmartTemplate4.Util.showLicenseDialog('licenseTab'); setTimeout( function() {window.close();}, 500 );">
-            Buy License</button>
+          <button id="btnLicense">Buy License</button>
         </div>				
         <div class="hbox">
           <fieldset id="premiumConfig" >
@@ -601,19 +603,14 @@
                     class="iconButton category-icon"
                     title="__MSG_btnLoadTemplate.tooltip__"
                     alt="__MSG_btnLoadTemplate.tooltip__"></button>
-              <button id="btnYouTube"
+              <button id="btnYouTube-accounts"
                   class="iconButton youtube category-icon"
                   title="__MSG_btnYouTube.tooltip__"
                   alt="__MSG_btnYouTube.tooltip__"></button>
-              <button id="btnAdvanced"
-                    class="iconButton category-icon"
-                    title="__MSG_advanced.label__"
-                    alt="__MSG_advanced.label__"></button>
-              <button id="btnCloseAdvanced"
-                    class="iconButton category-icon"
-                    title="__MSG_close.label__"
-                    alt="__MSG_close.label__"
-                    hidden="true"></button>
+              <button id="btnVariableSidePanel" 
+                  class="iconButton category-icon"
+                  title="variables pop-in"></button>
+
               </span>
             </div>
       

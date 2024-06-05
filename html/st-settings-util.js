@@ -1,4 +1,3 @@
-"use strict";
 /* 
   BEGIN LICENSE BLOCK
 
@@ -9,7 +8,17 @@
   END LICENSE BLOCK 
 */
 
+// -------------------------------------------------------
+// TO DO - REIMPLEMENT THE FOLLOWING FUNCTIONS:
+//    -   showLicenseDialog()   - go through background page, don't close tab?
+// -------------------------------------------------------
+import { Util } from "../scripts/st-util.mjs.js";
+import { logMissingFunction } from "./st-log.mjs";
+
+
 SmartTemplates.Util = {
+	ADDON_ID: "smarttemplate4@thunderbird.extension",
+  ADDON_TITLE: "SmartTemplates",
   __isDebug: false,
   get isDebug() {
     return this.__isDebug;
@@ -31,17 +40,36 @@ SmartTemplates.Util = {
     messenger.runtime.sendMessage({ command:"showSplashMsg" });
   },
   showSupportPage: function() {
-    messenger.runtime.sendMessage({ command:"showHomePageMsg" });
+    messenger.runtime.sendMessage({ command:"showHomePage" });
   },
   showHomePage: function() {
-    messenger.runtime.sendMessage({ command:"showATNHomePageMsg" });
+    messenger.runtime.sendMessage({ command:"showATNHomePage" });
+  },
+  showYouTubePage: function(videoId=null) {
+    debugger;
+    messenger.runtime.sendMessage({ 
+      command:"showYouTubePage",
+      video: videoId
+    });
   },
   showBugsAndFeaturesPage: function() {
-    messenger.runtime.sendMessage({ command:"showIssuesPageMsg" });
+    messenger.runtime.sendMessage({ command:"showIssuesPage" });
   },
   showPremiumFeaturesPage: function() {
-    messenger.runtime.sendMessage({ command:"showPremiumFeaturePageMsg" });
+    messenger.runtime.sendMessage({ command:"showPremiumFeaturePage" });
   },
+	popupAlert: function (title, text, icon) {
+		try {
+      // in legacy codem it used nsIAlertsService.showAlertNotification()
+			if (!icon) {
+				icon = "../chrome/content/skin/icon32x32.png";
+      }
+      Util.slideAlert(title, text, icon);
+		}
+		catch(e) {
+			// prevents runtime error on platforms that don't implement nsIAlertsService
+		}
+	},
 
 	isDebug: async function() {
 		return await getPref("debug");
@@ -142,6 +170,13 @@ SmartTemplates.Util = {
       this.logToConsole ("Could not retrieve bundle string: " + id + "");
     }
     return s;
+  },
+
+  gracePeriodText: function (days) {
+    let txt = (days>=0) ?
+      this.getBundleString("st.trialDays").replace("{0}", days) :
+      this.getBundleString("st.trialExpiry").replace("{0}", -days);
+    return txt;
   },
   
   openLinkInTab: function(uri) {

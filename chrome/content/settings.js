@@ -1540,7 +1540,7 @@ SmartTemplate4.Settings = {
   } ,
 
   // send new key to background page for validation
-  validateNewKey: async function (el) {
+  validateNewKey: async function () {
     this.trimLicense();
     let input = document.getElementById('txtLicenseKey'),
         key = input.value;

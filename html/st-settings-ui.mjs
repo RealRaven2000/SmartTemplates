@@ -1,4 +1,4 @@
-var SettingsUI = {
+export let SettingsUI = {
   // doing what instantApply really should provide...
   toggleBoolPreference: async function(cb, noUpdate = false) {
     const SMARTTEMPLATES_EXTPREFIX = "extensions.smartTemplate4.";

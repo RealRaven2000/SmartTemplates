@@ -52,6 +52,47 @@ function getMail(license) {
   return arr1[0].substr(pos); // split off QF- or QFD-
 }
 
+export function licenseValidationString(status) {
+  switch(status) {
+    case LicenseStates.Valid:
+      return "Valid";
+    case LicenseStates.Expired:
+      return "Expired";
+    case LicenseStates.NotValidated:
+      return "NotValidated";     
+    case LicenseStates.Invalid:
+      return "Invalid";
+    case LicenseStates.MailNotConfigured:
+      return "MailNotConfigured";
+    case LicenseStates.MailDifferent:
+      return "MailDifferent";
+    case LicenseStates.Empty:
+      return "Empty";
+    default: return "UnknownStatus";
+  }
+}
+
+// removed method from class instance. Pass in info:licenseInfo for detail!
+export function licenseValidationDescription(status, info) {
+  switch(status) {
+    case LicenseStates.Valid:
+      return `Valid until ${info?.expiryDate||"n/a"}`; 
+    case LicenseStates.Expired:
+      return `Valid but expired since ${info?.expiredDays} days`;
+    case LicenseStates.NotValidated:
+      return "Not Validated";     
+    case LicenseStates.Invalid:
+      return "Invalid";
+    case LicenseStates.MailNotConfigured:
+      return "Mail Not Configured";
+    case LicenseStates.MailDifferent:
+      return "Mail Different";
+    case LicenseStates.Empty:
+      return "Empty";
+    default: return "Unknown Status";
+  }
+}
+
 
 
 export class Licenser {
@@ -107,43 +148,11 @@ export class Licenser {
   }
   
   get ValidationStatusShortDescription() {
-    switch(this.ValidationStatus) {
-      case LicenseStates.Valid:
-        return "Valid";
-      case LicenseStates.Expired:
-        return "Expired";
-      case LicenseStates.NotValidated:
-        return "NotValidated";     
-      case LicenseStates.Invalid:
-        return "Invalid";
-      case LicenseStates.MailNotConfigured:
-        return "MailNotConfigured";
-      case LicenseStates.MailDifferent:
-        return "MailDifferent";
-      case LicenseStates.Empty:
-        return "Empty";
-      default: return "UnknownStatus";
-    }
+    return licenseValidationString(this.ValidationStatus);
   }
 
   get ValidationStatusDescription() {
-    switch(this.ValidationStatus) {
-      case LicenseStates.Valid:
-        return "Valid";
-      case LicenseStates.Expired:
-        return `Valid but expired since ${this.ExpiredDays} days`;
-      case LicenseStates.NotValidated:
-        return "Not Validated";     
-      case LicenseStates.Invalid:
-        return "Invalid";
-      case LicenseStates.MailNotConfigured:
-        return "Mail Not Configured";
-      case LicenseStates.MailDifferent:
-        return "Mail Different";
-      case LicenseStates.Empty:
-        return "Empty";
-      default: return "Unknown Status";
-    }
+    return licenseValidationDescription(this.ValidationStatus);
   }
 
   get isValid() {

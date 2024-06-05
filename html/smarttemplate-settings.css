@@ -701,6 +701,11 @@ vbox.template {
 	background-image: url("../chrome/content/skin/icons/open.svg") !important;
 }
 
+#btnVariableSidePanel {
+  background-image: url("../chrome/content/skin/icons/variable.svg") !important;
+}
+
+
 .page .youtube,
 .page toolbar[brighttext] .youtube {
 	background-image: url("../chrome/content/skin/icons/youtube-svgrepo-com.svg") !important;
@@ -809,10 +814,24 @@ tab#SmartTemplate4-Pro.expired {
 	width: 95%;
 }
 
+/* make the text nicer, filling the space */
+#validationResults description {
+	max-width: unset !important;
+	text-align: center;
+	text-wrap: balance;
+}
+
+label.plain-link::before {
+  content: "🔗 ";
+}
 label.plain-link:hover {
 	text-decoration: underline;
   cursor: pointer;
 }
+label.plain-link:hover::before {
+	text-decoration: none;
+}
+
 
 #fileTemplateToolbar.templateList > toolbarbutton.chromeclass-toolbar-additional {
   display: flex;

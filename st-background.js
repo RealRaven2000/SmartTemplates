@@ -1,4 +1,5 @@
-import {Licenser} from "./scripts/Licenser.mjs.js";
+import {Licenser, licenseValidationDescription} from "./scripts/Licenser.mjs.js";
+
 import {SmartTemplates} from "./scripts/st-main.mjs.js";
 import {SmartTemplatesProcess} from "./scripts/st-process.mjs.js";
 import {compareVersions} from "./scripts/mozilla-version-comparator.js";
@@ -1106,6 +1107,8 @@ async function main() {
       switch (data.command) {
         case "getLicenseInfo": 
           return currentLicense.info;
+        case "updateLicenseKey":
+          return await updateLicenseKey(data.key);
         case "showAboutConfig":
           // to do: create an API for this one
           messenger.NotifyTools.notifyExperiment({
@@ -1118,36 +1121,77 @@ async function main() {
             }
           });
           break;
+        case "showRegistrationDialog":
+          messenger.NotifyTools.notifyExperiment({
+            event: "doCommand", 
+            detail: {
+              cmd: "smartTemplates-registration", // will be re-packaged as el.id
+              params: {
+                feature: data.feature || ""
+              } 
+            },
+          });
+          break;
         case "showSplashMsg":
           showSplash();
           break;
-        case "showHomePageMsg":
+        case "showHomePage":
           messenger.NotifyTools.notifyExperiment({
             event: "doCommand", 
             detail: { cmd: "smartTemplates-support" }
           });
           break;
-        case "showATNHomePageMsg":
+        case "showATNHomePage":
           messenger.NotifyTools.notifyExperiment({
             event: "doCommand", 
             detail: { cmd: "smartTemplates-home" }
           });
           break;
-        case "showIssuesPageMsg":
+        case "showIssuesPage":
           messenger.NotifyTools.notifyExperiment({
             event: "doCommand", 
             detail: { cmd: "smartTemplates-issues" }
           });
           break;
-        case "showPremiumFeaturePageMsg":
+        case "showPremiumFeaturePage":
           messenger.NotifyTools.notifyExperiment({
             event: "doCommand", 
             detail: { cmd: "smartTemplates-features" }
           });
           break;
+        case "showYouTubePage":
+          messenger.NotifyTools.notifyExperiment({
+            event: "doCommand", 
+            detail: { 
+              cmd: "smartTemplates-youtube",
+              videoId: data.video
+            }
+          });
+          break;
       }
     }
   });  
+
+  async function updateLicenseKey(newLicenseKey) {
+    let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
+    isDebugLicenser = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.premium.licenser");
+    // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
+    let newLicense = new Licenser(newLicenseKey, { forceSecondaryIdentity, debug:isDebugLicenser });
+    await newLicense.validate();
+    newLicense.GraceDate = await getGraceDate();
+    newLicense.TrialDays = await getTrialDays();
+
+    // Check new license and accept if ok.
+    // You may return values here, which will be send back to the caller.
+    // return false;
+
+    // Update background license.
+    await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.LicenseKey", newLicense.info.licenseKey);
+    currentLicense = newLicense;
+    // Broadcast
+    messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info}); // part of generic onBackgroundUpdates called in Util.init()
+    return  licenseValidationDescription(newLicense.ValidationStatus, currentLicense.info);
+  }
    
   messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
     let isLog = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.notifications");
@@ -1182,23 +1226,7 @@ async function main() {
         break;
         
       case "updateLicense":
-        let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
-            isDebugLicenser = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.premium.licenser");
-        // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
-        let newLicense = new Licenser(data.key, { forceSecondaryIdentity, debug:isDebugLicenser });
-        await newLicense.validate();
-        newLicense.GraceDate = await getGraceDate();
-        newLicense.TrialDays = await getTrialDays();
-        
-        // Check new license and accept if ok.
-        // You may return values here, which will be send back to the caller.
-        // return false;
-        
-        // Update background license.
-        await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.LicenseKey", newLicense.info.licenseKey);
-        currentLicense = newLicense;
-        // Broadcast
-        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info}); // part of generic onBackgroundUpdates called in Util.init()
+        await updateLicenseKey(data.key);
         return true;
         
       case "updateTemplateMenus":

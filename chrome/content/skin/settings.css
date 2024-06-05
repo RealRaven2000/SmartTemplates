@@ -537,13 +537,13 @@ toolbar toolbarbutton:not([hidden]) {
 	list-style-image: url("icons/open.svg") !important;
 }
 
-#smartTemplatePane #btnYouTube,
-#smartTemplatePane toolbar[brighttext] #btnYouTube {
+#smartTemplatePane .youtube,
+#smartTemplatePane toolbar[brighttext] .youtube {
 	list-style-image: url("icons/youtube-svgrepo-com.svg") !important;
   fill: rgb(166,0,0) !important;
 }
 
-#smartTemplatePane #btnYouTube:hover {
+#smartTemplatePane .youtube:hover {
   fill: rgb(255,0,0) !important;
 }
 

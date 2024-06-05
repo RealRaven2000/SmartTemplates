@@ -14,14 +14,39 @@
 // import {Preferences} from "../scripts/st-prefs.mjs.js"; 
 // debugger;
 
+
+// -------------------------------------------------------
+// TO DO - REIMPLEMENT THE FOLLOWING FUNCTIONS:
+//     -   SmartTemplate4.fileTemplates.selectDefaultTemplates
+//     -   disable support menu if no license ??? search "supportTab"
+//   check currentAccountName  !!! should probably not use .label
+// -------------------------------------------------------
+
 var licenseInfo;
+
+import { SettingsUI } from "./st-settings-ui.mjs";
+import { logMissingFunction } from "./st-log.mjs";
+
+// use a global variable, similar to background script.
+var fileTemplates = {
+  Entries: [], 
+  MRU_Entries: [],
+	isModified: false  // global flag to trigger saving to back end at some stage (WIP)
+}; // copy of recent and configured file templates from SmartTemplate4.fileTemplates
+
+async function initFileTemplates(data) {
+	// let's use an experiment function to retrieve the "data" - see background page
+	fileTemplates.Entries = data.Entries;
+	fileTemplates.MRU_Entries = data.MRU_Entries;
+}
+
+
 async function initLicenseInfo() {
-	debugger;
   licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
   document.getElementById("txtLicenseKey").value = licenseInfo.licenseKey;
   
   if (licenseInfo.licenseKey) {
-		await SmartTemplate4.Settings.validateLicenseInOptions(true);
+		await SmartTemplates.Settings.validateLicenseInOptions(true);
   }
   
   // add an event listener for changes:
@@ -243,7 +268,7 @@ SmartTemplates.Settings = {
   
   get currentAccountName() {
     let theMenu = document.getElementById("msgIdentity"),
-        menuEntry = theMenu.label,
+        menuEntry = theMenu.value,
         end = menuEntry.indexOf(' <');
     if (end>0) {
       return menuEntry.substring(0, end);
@@ -490,20 +515,7 @@ SmartTemplates.Settings = {
 		}
 	} ,
 
-  // [issue 170] allow license extension
-  // show the extension button if user is elligible
-  showExtensionButton: function() {
-    if (licenseInfo.status == "Valid") {
-      if (licenseInfo.keyType!=2) { // PRO +Domain
-        let btnLicense = document.getElementById("btnLicense");
-        SmartTemplates.Settings.labelLicenseBtn(btnLicense, "extend");
-      }
-      else { // standard function - go to License screen to upgrade!
-        SmartTemplates.Util.showLicenseDialog("licenseTab");  
-      }
-    }
-  },
-      	
+
 
   onLoad: async function() {
     // let isAdvancedPanelOpen = getPref('expandSettings'); // may be obsolete?
@@ -519,9 +531,9 @@ SmartTemplates.Settings = {
 		await this.fillIdentityListPopup();
 
 		// get inn params from querystring
-		let params = new URLSearchParams(window.location.search);
-		CurId = params.get("id");
-		let mode = params.get("mode");
+		const params = new URLSearchParams(window.location.search);
+		const CurId = params.get("id");
+		const mode = params.get("mode");
 		composeType = params.get("composeType");
 
 		this.switchIdentity(CurId || 'common', composeType);
@@ -567,13 +579,13 @@ SmartTemplates.Settings = {
 				break;
 		}
 		
-    logMissingFunction("implement onLoad");
+    logMissingFunction("implement onLoad completion => remaining details...");
 
 
     
   } ,
   onUnload: async function() {
-    logMissingFunction("implement onUnload");
+    logMissingFunction("implement onUnload!");
   } ,
 
 
@@ -896,33 +908,334 @@ SmartTemplates.Settings = {
 		await this.logDebugOptional("identities", "selectIdentity(" + idkey + ") COMPLETE");
 
 	} ,
+	/** LICENSE INTERFACE */
 
 	// put appropriate label on the license button and pass back the label text as well
-	labelLicenseBtn: function (btnLicense, validStatus) {
+	labelLicenseBtn: function(btnLicense, validStatus) {
 		switch(validStatus) {
 			case  "extend":
 				let txtExtend = SmartTemplates.Util.getBundleString("st.notification.premium.btn.extendLicense");
 				btnLicense.setAttribute("collapsed", false);
-				btnLicense.label = txtExtend; // text should be extend not renew
+				btnLicense.textContent = txtExtend; // text should be extend not renew
 				btnLicense.setAttribute('tooltiptext',
 					SmartTemplates.Util.getBundleString("st.notification.premium.btn.extendLicense.tooltip"));
 				return txtExtend;
 			case "renew":
 				let txtRenew = SmartTemplates.Util.getBundleString("st.notification.premium.btn.renewLicense");
-				btnLicense.label = txtRenew;
+				btnLicense.textContent = txtRenew;
 			  return txtRenew;
 			case "buy":
 				let buyLabel = SmartTemplates.Util.getBundleString("st.notification.premium.btn.getLicense");
-				btnLicense.label = buyLabel;
+				btnLicense.textContent = buyLabel;
 			  return buyLabel;
 			case "upgrade":
 				let upgradeLabel = SmartTemplates.Util.getBundleString("st.notification.premium.btn.upgrade");
-				btnLicense.label = upgradeLabel;
+				btnLicense.textContent = upgradeLabel;
 				btnLicense.classList.add('upgrade'); // stop flashing
 			  return upgradeLabel;
 		}
 		return "";
-	},	
+	} ,
+	
+  // this function is called on load and from validateLicenseInOptions
+  // was decryptLicense
+  updateLicenseOptionsUI: async function (silent = false) {
+    let getElement = document.getElementById.bind(document),
+        validationPassed       = getElement('validationPassed'),
+        validationStandard     = getElement('validationStandard'),
+        validationFailed       = getElement('validationFailed'),
+				validationInvalidAddon = getElement('validationInvalidAddon'),
+        validationExpired      = getElement('validationExpired'),
+        validationInvalidEmail = getElement('validationInvalidEmail'),
+        validationEmailNoMatch = getElement('validationEmailNoMatch'),
+				validationDate         = getElement('validationDate'),
+				validationDateSpace    = getElement('validationDateSpace'),
+        licenseDate            = getElement('licenseDate'),
+        licenseDateLabel       = getElement('licenseDateLabel'),
+        decryptedMail = licenseInfo.email, 
+        decryptedDate = licenseInfo.expiryDate,
+				result = licenseInfo.status;
+		validationStandard.setAttribute("collapsed", true);
+    validationPassed.setAttribute("collapsed", true);
+    validationFailed.setAttribute("collapsed", true);
+    validationExpired.setAttribute("collapsed", true);
+		validationInvalidAddon.setAttribute("collapsed", true);
+    validationInvalidEmail.setAttribute("collapsed", true);
+    validationEmailNoMatch.setAttribute("collapsed", true);
+		validationDate.setAttribute("collapsed", false);
+		validationDateSpace.setAttribute("collapsed", false);
+    this.enablePremiumConfig(false); //also disables standard features.
+    try {
+      let niceDate = decryptedDate;
+      if (decryptedDate) {
+        try { 
+          let d = new Date(decryptedDate);
+          niceDate =d.toLocaleDateString();
+        }
+        catch(ex) { niceDate = decryptedDate; }
+      }
+      switch(result) {
+        case "Valid":
+					if (licenseInfo.keyType==2) { // standard license
+            this.showValidationMessage(validationStandard, silent);
+						this.enableStandardConfig(true);
+					}
+					else {
+						this.showValidationMessage(validationPassed, silent);
+						this.enablePremiumConfig(true);
+					}
+          licenseDate.textContent = niceDate;
+          licenseDate.classList.add('valid'); // [issue 170]
+          licenseDateLabel.textContent = SmartTemplates.Util.getBundleString("label.licenseValid");
+          break;
+        case "Invalid":
+				  validationDate.setAttribute("collapsed", true);
+					validationDateSpace.setAttribute("collapsed", true);
+				  let addonName = '';
+				  switch (licenseInfo.licenseKey.substr(0,2)) {
+						case 'QI':
+						case 'Q2': // quickfilters standard
+							addonName = 'quickFilters';
+						  break;
+						case 'QF':
+						case 'Q1': // QuickFolders standard
+							addonName = 'QuickFolders';
+						  break;
+						case 'ST':
+						case 'S1':
+						default: 
+							this.showValidationMessage(validationFailed, silent);
+					}
+					if (addonName) {
+						let txt = validationInvalidAddon.textContent;
+						txt = txt.replace('{0}','SmartTemplates').replace('{1}','ST'); // keys for {0} start with {1}
+						if (txt.indexOf(addonName) < 0) {
+							txt += " " + SmartTemplates.Util.getBundleString("st.licenseValidation.guessAddon").replace('{2}',addonName);
+						}
+						validationInvalidAddon.textContent = txt;
+						this.showValidationMessage(validationInvalidAddon, silent);
+					}
+          break;
+        case "Expired":
+          licenseDateLabel.textContent = SmartTemplates.Util.getBundleString("st.licenseValidation.expired");
+          licenseDate.textContent = niceDate;
+          this.showValidationMessage(validationExpired, false); // always show
+          break;
+        case "MailNotConfigured":
+				  validationDate.setAttribute("collapsed", true);
+					validationDateSpace.setAttribute("collapsed", true);
+          this.showValidationMessage(validationInvalidEmail, silent);
+          // if mail was already replaced the string will contain [mail address] in square brackets
+          validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
+          break;
+        case "MailDifferent":
+				  validationDate.setAttribute("collapsed", true);
+					validationDateSpace.setAttribute("collapsed", true);
+          this.showValidationMessage(validationFailed, true);
+          this.showValidationMessage(validationEmailNoMatch, silent);
+          break;
+        case "Empty":
+          SmartTemplate4.Settings.showTrialDate();
+				  // validationDate.collapsed=true;
+					// validationDateSpace.collapsed=true;
+          break;
+        default:
+          window.alert(null,SmartTemplates.Util.ADDON_TITLE,'Unknown license status: ' + result);
+          break;
+      }
+			
+			// restore original label.
+			if (!validationDate.getAttribute("collapsed")) {
+				let licenseDateLbl = getElement('licenseDateLabel'),
+				    lTxt = licenseDateLbl.getAttribute("originalContent");
+				if (lTxt) {
+					licenseDateLbl.textContent = lTxt;
+					licenseDateLbl.classList.remove('important');
+				}
+			}
+			
+			// show support tab if license is not empty 
+			// let isSupportEnabled = (licenseInfo.licenseKey) ? true : false;
+			// document.getElementById('supportTab').setAttribute("collapsed",  !(isSupportEnabled));
+      
+    } catch(ex) {
+      SmartTemplates.Util.logException("Error in SmartTemplate4.Settings.updateLicenseOptionsUI():\n", ex);
+    }
+		return result;
+  } ,	
+
+  pasteLicense: async function () {
+		// see https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API#examples
+		let finalLicense = "";
+		const clipText = await navigator.clipboard.readText();
+    if (clipText) {
+			let txtBox = document.getElementById('txtLicenseKey');
+			txtBox.value = clipText;
+			finalLicense = this.trimLicense();
+    }
+    if (finalLicense) {
+      SmartTemplates.Settings.validateNewKey();
+    }
+  } ,	
+
+  validateLicenseFromEvent: async function() {
+    await SmartTemplates.Settings.validateLicenseInOptions(false);
+  },
+  
+  validateLicenseInOptions: async function (silent = false) {
+		function replaceCssClass(el,addedClass) {
+			try {
+				el.classList.add(addedClass);
+				if (addedClass!='paid')	el.classList.remove('paid');
+				if (addedClass!='expired') el.classList.remove('expired');
+				if (addedClass!='free')	el.classList.remove('free');
+			} catch(ex) {
+				SmartTemplates.Util.logException("replaceCssClass(" + el + "):\n", ex);
+			}
+		}
+    let getElement = document.getElementById.bind(document),
+        btnLicense = getElement("btnLicense"),
+				proTab = getElement("catLicense"),
+				beautyTitle = getElement("SmartTemplate4AboutLogo");
+        
+    // old call to decryptLicense was here
+    // 1 - sanitize License
+    // 2 - validate license
+    try {      
+      // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
+      this.updateLicenseOptionsUI(silent);  // async! // was settings.decryptLicense
+			switch(licenseInfo.status) {
+				case "Valid":
+					let today = new Date(),
+					    later = new Date(today.setDate(today.getDate()+32)), // pretend it's a month later:
+							dateString = later.toISOString().substr(0, 10);
+					// if we were a month ahead would this be expired?
+					if (licenseInfo.expiryDate < dateString) {
+						this.labelLicenseBtn(btnLicense, "extend");
+					}
+					else {
+						if (licenseInfo.keyType==2) { // standard license
+							btnLicense.classList.add('upgrade'); // removes "pulsing" animation
+							this.labelLicenseBtn(btnLicense, "upgrade");
+						}
+						else {
+							btnLicense.setAttribute("collapsed", true);
+						}
+					}
+					replaceCssClass(proTab, 'paid');
+					replaceCssClass(btnLicense, 'paid');
+					beautyTitle.classList.remove('aboutLogo');
+					beautyTitle.classList.add('aboutLogoPro');
+				  break;
+				case "Expired":
+					this.labelLicenseBtn(btnLicense, "renew");
+				  btnLicense.setAttribute("collapsed", false);
+					replaceCssClass(proTab, 'expired');
+					replaceCssClass(btnLicense, 'expired');
+					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo-pro.png");
+					break;
+				default: // no license
+					this.labelLicenseBtn(btnLicense, "buy");
+				  btnLicense.setAttribute("collapsed", false);
+					replaceCssClass(proTab, 'free');
+					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo.png");
+					beautyTitle.classList.add('aboutLogo');
+					beautyTitle.classList.remove('aboutLogoPro');
+			}
+			SmartTemplates.Util.logDebug('validateLicense - license status = ' + licenseInfo.status);
+			// make sure to refresh the file template menus!
+			fileTemplates.isModified = true; 
+    } catch(ex) {
+      SmartTemplates.Util.logException("Error in SmartTemplate4.Settings.validateLicenseInOptions():\n", ex);
+    }
+  } ,
+
+	// reads new license key from textarea and
+  // sends the key to background page for validation
+  validateNewKey: async function () {
+    this.trimLicense();
+    let input = document.getElementById('txtLicenseKey'),
+        key = input.value;
+    // The background script will validate the new key and send a broadcast to all consumers on sucess.
+    // let rv = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateLicense", key: key });
+		const result = await messenger.runtime.sendMessage({ 
+			command: "updateLicenseKey", 
+			key: key
+		});
+		SmartTemplates.Util.logDebug(`validateNewKey() returned ${result}`);
+		// now retrieve licenseInfo from background!
+		licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+		this.logDebug(licenseInfo);
+		await this.validateLicenseInOptions();
+  },	
+
+  trimLicense: function() {
+    let txtBox = document.getElementById('txtLicenseKey'),
+        strLicense = txtBox.value.toString();
+    SmartTemplates.Util.logDebug('trimLicense() : ' + strLicense);
+    // Remove line breaks and extra spaces:
+		let trimmedLicense =  
+		  strLicense.replace(/\r?\n|\r/g, ' ') // replace line breaks with spaces
+				.replace(/\s\s+/g, ' ')            // collapse multiple spaces
+        .replace('\[at\]','@')
+				.trim();
+    txtBox.value = trimmedLicense;
+    SmartTemplates.Util.logDebug('trimLicense() result : ' + trimmedLicense);
+    return trimmedLicense;
+  } ,	
+
+  // make a validation message visible but also repeat a notification for screen readers.
+  showValidationMessage: function (el, silent=true) {
+    if (el.getAttribute("collapsed") != false) {
+      el.setAttribute("collapsed", false);
+      if (!silent) {
+        SmartTemplates.Util.popupAlert (SmartTemplates.Util.ADDON_TITLE, el.textContent);
+			}
+    }
+  } ,	
+
+  enablePremiumConfig: function (isEnabled) {
+		/* enables Pro features */
+		for (let el of document.querySelectorAll(".premiumFeature")) {
+			el.disabled = !isEnabled;
+		}
+		this.enableStandardConfig(isEnabled);
+  } ,
+
+	enableStandardConfig: function(isEnabled) {
+		for (let el of document.querySelectorAll(".standardFeature")) {
+			el.disabled = !isEnabled;
+		}
+		document.getElementById("useLastTemplate").disabled = !isEnabled;
+	} ,	
+
+	showTrialDate: function() {
+    let licenseDate = document.getElementById('licenseDate'),
+        licenseDateLbl = document.getElementById('licenseDateLabel'),
+        txtGracePeriod= SmartTemplates.Util.gracePeriodText(licenseInfo.trialDays);
+        
+    if (!licenseDateLbl.getAttribute("originalContent")) { // save original label!
+      licenseDateLbl.setAttribute("originalContent", licenseDateLbl.textContent);
+    }
+    licenseDateLbl.textContent = txtGracePeriod;
+    licenseDateLbl.classList.add('important');
+    licenseDate.classList.remove('valid'); // [issue 170]
+    licenseDate.textContent = "";
+  },	
+
+  // [issue 170] allow license extension
+  // show the extension button if user is elligible
+  showExtensionButton: function() {
+    if (licenseInfo.status == "Valid") {
+      if (licenseInfo.keyType!=2) { // PRO +Domain
+        let btnLicense = document.getElementById("btnLicense");
+        SmartTemplates.Settings.labelLicenseBtn(btnLicense, "extend");
+      } else { // standard function - go to License screen to upgrade!
+        SmartTemplates.Util.showLicenseDialog("licenseTab");  
+      }
+    }
+  },
+	
 
   dummy: function() {
 
@@ -930,6 +1243,7 @@ SmartTemplates.Settings = {
   
   
   // ============================== Settings Object END  
+
 };  // Settings
 
 
@@ -996,11 +1310,6 @@ async function savePref(event) {
 }
 
 const getElement = window.document.getElementById.bind(window.document);
-
-function logMissingFunction(txt) {
-  // Log missing items for Conversion to Thunderbird 115
-  console.log(`SmartTemplates %c[issue 213] to do: %c${txt}`, "color:red", "background: darkblue; color:white;");
-}
 
 /********** 
  * UI FUNCTIONS
@@ -1091,7 +1400,6 @@ async function loadPrefs() {
 	}  
 }
 
-// we cannot transmit the element, so removing the first parameter
 async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
   // we put the notification listener into quickfolders-tablistener.js - should only happen in ONE main window!
   // el - cannot be cloned! let's throw it away and get target of the event
@@ -1102,6 +1410,14 @@ async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
     updateUI: updateUI
   });
 }
+
+async function showRegistrationDlg(feature) {
+	messenger.runtime.sendMessage({ 
+    command: "showRegistrationDialog", 
+    feature: feature
+  });
+}
+
 
 function addConfigEvent(el, filterConfig) {
 	// add right-click event to containing label
@@ -1175,6 +1491,15 @@ function addUIListeners() {
 		});			
 	}
 	
+  // radio button handlers
+	document.getElementById("useAccountTemplate").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.selectDefaultTemplates(target)");
+	});
+	document.getElementById("useLastTemplate").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.fileTemplates.selectDefaultTemplates(target)");
+	});	
+	
+
   // these were oncommand events - for the file templates list
 	document.getElementById("btnAdd").addEventListener("click", (event) => {
 		logMissingFunction("SmartTemplate4.fileTemplates.update(true)");
@@ -1198,6 +1523,21 @@ function addUIListeners() {
 		logMissingFunction("SmartTemplate4.Util.showStationeryHelpPage('snippets')");
 	});
 
+	// command handlers for licensing
+	document.getElementById("btnPasteLicense").addEventListener("click", (event) => {
+		SmartTemplates.Settings.pasteLicense();
+	});
+	document.getElementById("btnValidateLicense").addEventListener("click", (event) => {
+		SmartTemplates.Settings.validateNewKey(event.target);
+	});
+	document.getElementById("btnLicense").addEventListener("click", (event) => {
+		// oncommand="
+	  //    SmartTemplate4.Util.showLicenseDialog('licenseTab'); 
+		//    setTimeout( function() {window.close();}, 500 );"
+		showRegistrationDlg("licenseTab"); // do we need to close the settings tab??
+	});
+
+	
 	// select element
 	document.getElementById("msgIdentity").addEventListener("change", (event) => {
 		SmartTemplates.Settings.selectIdentity(event.target.value);
@@ -1214,15 +1554,24 @@ function addUIListeners() {
 		logMissingFunction("SmartTemplates.Settings.load()");
 	});
 
-	document.getElementById("btnAdvanced").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplates.Settings.openAdvanced()");
-	});
-	document.getElementById("btnCloseAdvanced").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplates.Settings.closeAdvanced()");
-	});
+	// document.getElementById("btnAdvanced").addEventListener("click", (event) => {
+	// 	logMissingFunction("SmartTemplates.Settings.openAdvanced()");
+	// });
+	// document.getElementById("btnCloseAdvanced").addEventListener("click", (event) => {
+	// 	logMissingFunction("SmartTemplates.Settings.closeAdvanced()");
+	// });
 	for (let btn of document.querySelectorAll(".youtube")) { 
+		let video=null;
+		switch(btn.id) {
+			case "btnYouTube-accounts":
+				video = "list";
+				break;
+			case "btnYouTube-filetemplates":
+				video = "stationery";
+				break;
+		}
 		btn.addEventListener("click", (event) => {
-			logMissingFunction("SmartTemplate4.Util.showYouTubePage()");
+			SmartTemplates.Util.showYouTubePage(video);
 		});
 	}
 

@@ -992,7 +992,21 @@ SmartTemplate4.Util = {
 	showPremiumFeatures: function () { 
 		SmartTemplate4.Util.openLinkInBrowserForced(this.PremiumFeaturesPage); 
 	} ,
-	showYouTubePage: function () { SmartTemplate4.Util.openLinkInBrowserForced(this.YouTubePage); } ,
+	showYouTubePage: function (videoId) { 
+		switch(videoId) {
+			case "overview":
+				SmartTemplate4.Util.openLinkInBrowserForced("https://youtu.be/Rk-T465fkEw?si=Rpa3NXIKXNnMptyx"); 
+				break;
+			case "stationery":
+				SmartTemplate4.Util.openLinkInBrowserForced("https://youtu.be/HhnA3RbOgIw?si=xJS0duvw6ZSFPDgF"); 
+				break;
+			case "list":
+				SmartTemplate4.Util.openLinkInBrowserForced("https://youtube.com/playlist?list=PLApv7QYQO9nQ2Jn9zmfh4-RS87h6Qu3wW&si=KbHmxgyYk1Se86Gl"); 
+				break;
+			default:
+				SmartTemplate4.Util.openLinkInBrowserForced(this.YouTubePage); 
+		}
+	} ,
 	showAxelAMOPage: function () { SmartTemplate4.Util.openURL(this.AxelAMOPage); } ,
 	showMarkyAMOPage: function () { SmartTemplate4.Util.openURL(this.MarkyAMOPage); } ,
 	showArisAMOPage: function () { SmartTemplate4.Util.openURL(this.ArisAMOPage); } ,
