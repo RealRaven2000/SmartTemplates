@@ -290,16 +290,13 @@
             <div class="hbox">
               <label class="hasConfigEvent"><input type="checkbox" id="chkStatusButton"
                     class="contextConfig"
-                    data-pref-name="extensions.smartTemplate4.showStatusIcon"
-                    oncommand="SmartTemplate4.updateStatusBar(!this.checked);">__MSG_pref_showStatusIcon.label__
+                    data-pref-name="extensions.smartTemplate4.showStatusIcon">__MSG_pref_showStatusIcon.label__
                 <button class="configSettings category-icon"></button>
                 <span class="spacer"></span>
               </label>
               <select id="iconType"
                 data-pref-name="extensions.smartTemplate4.statusIconLabelMode"
-                flex="5"
-                oncommand="SmartTemplate4.setStatusIconMode(this);"
-                >
+                flex="5">
                 <option value="0">__MSG_pref_StatusIcon.IconOnly__</option>
                 <option value="2">__MSG_pref_StatusIcon.IconText__</option>
                 <option value="1">__MSG_pref_StatusIcon.IconHoverText__</option>
@@ -308,9 +305,9 @@
             </div>
             <div  class="hbox labeledBox">
               <label  id="lblFontSettings">__MSG_pref_fontSettings.label__</label>
-              <button id="fontSmaller" oncommand="SmartTemplate4.Settings.fontSize(-1);"></button>
+              <button id="fontSmaller"></button>
               <span class="spacer" id="fontButtonSpacer" > </span>
-              <button id="fontLarger" oncommand="SmartTemplate4.Settings.fontSize(+1);" ></button>
+              <button id="fontLarger"></button>
               <input type="text" id="txtFontSize"
                 data-pref-name="extensions.smartTemplate4.font.size"
                 disabled="true">
@@ -351,8 +348,7 @@
             <hr>		  
             <label><input type="checkbox" id="chkResolveAB"
                   data-pref-name="extensions.smartTemplate4.mime.resolveAB"
-                  title="__MSG_resolveNamesFromAB_tip__"
-                  oncommand="SmartTemplate4.Settings.resolveAB_onClick(this);">__MSG_resolveNamesFromAB__</label>
+                  title="__MSG_resolveNamesFromAB_tip__">__MSG_resolveNamesFromAB__</label>
             <div class="hbox">
               <div class="vbox">
                 <label><input type="checkbox" id="chkResolveABNick"
@@ -395,14 +391,10 @@
               <button class="configSettings category-icon"></button>
               <span class="spacer"></span>
             </label>
-            <label><input type="checkbox" id="chkHideExamples"
-                  data-pref-name="extensions.smartTemplate4.BackgroundParser"
-                  oncommand="alert('please reload SmartTemplates to effect this change!');"
-                >mx parser [issue 184]</label>
+            <label><input type="checkbox" id="chkBackgroundParser"
+                  data-pref-name="extensions.smartTemplate4.BackgroundParser">mx parser [issue 184]</label>
           <label><input type="checkbox" id="chkHideExamples"
-                  data-pref-name="extensions.smartTemplate4.hideExamples"
-                  oncommand="SmartTemplate4.Settings.toggleExamples(this);"
-                >__MSG_pref_hideExamples__</label>
+                  data-pref-name="extensions.smartTemplate4.hideExamples">__MSG_pref_hideExamples__</label>
           </div>
         </fieldset>        
       </prefpane>
@@ -526,7 +518,7 @@
 
       <prefpane id="supportPane" class="page">
         <h2>__MSG_support.tab__</h2>
-        <div class="vbox" flex="1" style="min-width:410px;">
+        <div class="vbox" flex="1" style="min-width:410px;align-content: space-between;">
           <fieldset flex="1" class="transparent">
             <legend>__MSG_support.title__</legend>
             <div class="vbox" flex="1">
@@ -556,8 +548,7 @@
               <div class="hbox">
                 <button id="composeSupportMail"
                         disabled="true"
-                        class="buttonIcon"
-                        oncommand="SmartTemplate4.Settings.sendMail('axel.grude@gmail.com');">__MSG_support.compose__</button>
+                        class="buttonIcon">__MSG_support.compose__</button>
               </div>
             </div>
           </fieldset>

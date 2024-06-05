@@ -17,8 +17,21 @@
 
 // -------------------------------------------------------
 // TO DO - REIMPLEMENT THE FOLLOWING FUNCTIONS:
-//     -   SmartTemplate4.fileTemplates.selectDefaultTemplates
-//     -   disable support menu if no license ??? search "supportTab"
+//     -    SmartTemplates.Settings.selectDefaultTemplates
+//     -    cleanupUnusedPrefs() - extend LegacyPrefs to remove branches!
+//     -    disable support menu if no license ??? search "supportTab"
+//     -    toggleExamples() + loadTemplatesFrame() to hide examples tab
+//     -    onCodeWord() receiver for events from help.xhtml
+//     -    getFileName() to retrieve a file from dialog - via experiment?
+//     -    getHeaderArgument()
+//     -    selectFileCase()
+//     -    insertAtCaret()
+//     -    fontSize()
+//     -		resolveAB_onClick()
+//     - 		updateStatusBar()
+//     -    setStatusIconMode() - backend function!
+//     Account json save / load
+//     -		fileAccountSettings()  
 //   check currentAccountName  !!! should probably not use .label
 // -------------------------------------------------------
 
@@ -556,7 +569,7 @@ SmartTemplates.Settings = {
 
 		// disable Use default (common account)
 		getElement("use_default").setAttribute("disabled", "true");
-    // [issue 170] allow premature extension
+    // [issue 170] support license date extension
     getElement("licenseDate").addEventListener("click", SmartTemplates.Settings.showExtensionButton);
 
 
@@ -908,7 +921,152 @@ SmartTemplates.Settings = {
 		await this.logDebugOptional("identities", "selectIdentity(" + idkey + ") COMPLETE");
 
 	} ,
+	
+	
+  resolveAB_onClick: function(el) {
+    // if it was already checked we are now unchecking it...
+    let nickBox = document.getElementById('chkResolveABNick'),
+		    displayNameBox = document.getElementById('chkResolveABDisplay'),
+        replaceMail = document.getElementById('chkResolveABRemoveMail');
+    setTimeout(
+      function() {
+        let isResolveAB = el.checked;
+        if (!isResolveAB) {
+          nickBox.checked = false;
+        }
+        displayNameBox.disabled = !isResolveAB;
+        nickBox.disabled = !isResolveAB;
+        replaceMail.disabled = !isResolveAB;
+      }
+    );
+  } ,
+
+	fileAccountSettings: function(mode, jsonData, fname) {
+	  logMissingFunction("fileAccountSettings()");
+	} ,
+
+  store: async function() {
+		// let's get all the settings from the key and then put them in a json structure:
+    let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
+        tabbox = document.getElementById(currentDeck),
+        txt = tabbox.getElementsByTagName('html:textarea'), // changed from textbox
+        chk = tabbox.getElementsByTagName('checkbox'),
+        entry = {};
+        
+        // anonymize by truncating id# ?
+    for (let i=0; i<txt.length; i++) {
+      let t = txt[i];
+      entry[t.id] = t.value;
+    }
+    for (let i=0; i<chk.length; i++) {
+      let c = chk[i];
+      entry[c.id] = c.checked ? true : false;
+    }
+    let json = JSON.stringify(entry, null, '  '); // prettified with indentation
+    this.fileAccountSettings('save', json, this.currentAccountName);
+  } ,
+  
+  // load a Template file (not this module!)
+  load: async function() {
+    let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
+        tabbox = document.getElementById(currentDeck),
+        txt = tabbox.getElementsByTagName('html:textarea'), // changed from textbox
+        chk = tabbox.getElementsByTagName('checkbox');
+		this.fileAccountSettings('load', {
+			key: this.currentId, 
+			textboxes: txt, 
+			checkboxes: chk
+		});
+  } ,
+  	
+	
 	/** LICENSE INTERFACE */
+
+	// reads new license key from textarea and
+  // sends the key to background page for validation
+  validateNewKey: async function () {
+    this.trimLicense();
+    let input = document.getElementById('txtLicenseKey'),
+        key = input.value;
+    // The background script will validate the new key and send a broadcast to all consumers on sucess.
+    // let rv = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateLicense", key: key });
+		const result = await messenger.runtime.sendMessage({ 
+			command: "updateLicenseKey", 
+			key: key
+		});
+		SmartTemplates.Util.logDebug(`validateNewKey() returned ${result}`);
+		// now retrieve licenseInfo from background!
+		licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+		this.logDebug(licenseInfo);
+		await this.validateLicenseInOptions();
+  } ,	
+
+  trimLicense: function() {
+    let txtBox = document.getElementById('txtLicenseKey'),
+        strLicense = txtBox.value.toString();
+    SmartTemplates.Util.logDebug('trimLicense() : ' + strLicense);
+    // Remove line breaks and extra spaces:
+		let trimmedLicense =  
+		  strLicense.replace(/\r?\n|\r/g, ' ') // replace line breaks with spaces
+				.replace(/\s\s+/g, ' ')            // collapse multiple spaces
+        .replace('\[at\]','@')
+				.trim();
+    txtBox.value = trimmedLicense;
+    SmartTemplates.Util.logDebug('trimLicense() result : ' + trimmedLicense);
+    return trimmedLicense;
+  } ,	
+
+  // make a validation message visible but also repeat a notification for screen readers.
+  showValidationMessage: function (el, silent=true) {
+    if (el.getAttribute("collapsed") != false) {
+      el.setAttribute("collapsed", false);
+      if (!silent) {
+        SmartTemplates.Util.popupAlert (SmartTemplates.Util.ADDON_TITLE, el.textContent);
+			}
+    }
+  } ,		
+
+  enablePremiumConfig: function (isEnabled) {
+		/* enables Pro features */
+		for (let el of document.querySelectorAll(".premiumFeature")) {
+			el.disabled = !isEnabled;
+		}
+		this.enableStandardConfig(isEnabled);
+  } ,
+
+	enableStandardConfig: function(isEnabled) {
+		for (let el of document.querySelectorAll(".standardFeature")) {
+			el.disabled = !isEnabled;
+		}
+		document.getElementById("useLastTemplate").disabled = !isEnabled;
+	} ,	
+
+	showTrialDate: function() {
+    let licenseDate = document.getElementById('licenseDate'),
+        licenseDateLbl = document.getElementById('licenseDateLabel'),
+        txtGracePeriod= SmartTemplates.Util.gracePeriodText(licenseInfo.trialDays);
+        
+    if (!licenseDateLbl.getAttribute("originalContent")) { // save original label!
+      licenseDateLbl.setAttribute("originalContent", licenseDateLbl.textContent);
+    }
+    licenseDateLbl.textContent = txtGracePeriod;
+    licenseDateLbl.classList.add('important');
+    licenseDate.classList.remove('valid'); // [issue 170]
+    licenseDate.textContent = "";
+  },	
+
+  // [issue 170] allow license extension
+  // show the extension button if user is elligible
+  showExtensionButton: function() {
+    if (licenseInfo.status == "Valid") {
+      if (licenseInfo.keyType!=2) { // PRO +Domain
+        let btnLicense = document.getElementById("btnLicense");
+        SmartTemplates.Settings.labelLicenseBtn(btnLicense, "extend");
+      } else { // standard function - go to License screen to upgrade!
+        SmartTemplates.Util.showLicenseDialog("licenseTab");  
+      }
+    }
+  } ,
 
 	// put appropriate label on the license button and pass back the label text as well
 	labelLicenseBtn: function(btnLicense, validStatus) {
@@ -937,6 +1095,7 @@ SmartTemplates.Settings = {
 		return "";
 	} ,
 	
+
   // this function is called on load and from validateLicenseInOptions
   // was decryptLicense
   updateLicenseOptionsUI: async function (silent = false) {
@@ -1150,92 +1309,34 @@ SmartTemplates.Settings = {
     }
   } ,
 
-	// reads new license key from textarea and
-  // sends the key to background page for validation
-  validateNewKey: async function () {
-    this.trimLicense();
-    let input = document.getElementById('txtLicenseKey'),
-        key = input.value;
-    // The background script will validate the new key and send a broadcast to all consumers on sucess.
-    // let rv = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateLicense", key: key });
-		const result = await messenger.runtime.sendMessage({ 
-			command: "updateLicenseKey", 
-			key: key
-		});
-		SmartTemplates.Util.logDebug(`validateNewKey() returned ${result}`);
-		// now retrieve licenseInfo from background!
-		licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
-		this.logDebug(licenseInfo);
-		await this.validateLicenseInOptions();
-  },	
-
-  trimLicense: function() {
-    let txtBox = document.getElementById('txtLicenseKey'),
-        strLicense = txtBox.value.toString();
-    SmartTemplates.Util.logDebug('trimLicense() : ' + strLicense);
-    // Remove line breaks and extra spaces:
-		let trimmedLicense =  
-		  strLicense.replace(/\r?\n|\r/g, ' ') // replace line breaks with spaces
-				.replace(/\s\s+/g, ' ')            // collapse multiple spaces
-        .replace('\[at\]','@')
-				.trim();
-    txtBox.value = trimmedLicense;
-    SmartTemplates.Util.logDebug('trimLicense() result : ' + trimmedLicense);
-    return trimmedLicense;
-  } ,	
-
-  // make a validation message visible but also repeat a notification for screen readers.
-  showValidationMessage: function (el, silent=true) {
-    if (el.getAttribute("collapsed") != false) {
-      el.setAttribute("collapsed", false);
-      if (!silent) {
-        SmartTemplates.Util.popupAlert (SmartTemplates.Util.ADDON_TITLE, el.textContent);
-			}
-    }
-  } ,	
-
-  enablePremiumConfig: function (isEnabled) {
-		/* enables Pro features */
-		for (let el of document.querySelectorAll(".premiumFeature")) {
-			el.disabled = !isEnabled;
-		}
-		this.enableStandardConfig(isEnabled);
-  } ,
-
-	enableStandardConfig: function(isEnabled) {
-		for (let el of document.querySelectorAll(".standardFeature")) {
-			el.disabled = !isEnabled;
-		}
-		document.getElementById("useLastTemplate").disabled = !isEnabled;
-	} ,	
-
-	showTrialDate: function() {
-    let licenseDate = document.getElementById('licenseDate'),
-        licenseDateLbl = document.getElementById('licenseDateLabel'),
-        txtGracePeriod= SmartTemplates.Util.gracePeriodText(licenseInfo.trialDays);
-        
-    if (!licenseDateLbl.getAttribute("originalContent")) { // save original label!
-      licenseDateLbl.setAttribute("originalContent", licenseDateLbl.textContent);
-    }
-    licenseDateLbl.textContent = txtGracePeriod;
-    licenseDateLbl.classList.add('important');
-    licenseDate.classList.remove('valid'); // [issue 170]
-    licenseDate.textContent = "";
-  },	
-
-  // [issue 170] allow license extension
-  // show the extension button if user is elligible
-  showExtensionButton: function() {
-    if (licenseInfo.status == "Valid") {
-      if (licenseInfo.keyType!=2) { // PRO +Domain
-        let btnLicense = document.getElementById("btnLicense");
-        SmartTemplates.Settings.labelLicenseBtn(btnLicense, "extend");
-      } else { // standard function - go to License screen to upgrade!
-        SmartTemplates.Util.showLicenseDialog("licenseTab");  
-      }
-    }
-  },
+	setSupportMode: function (elem) {
+		const btnSupport = document.getElementById('composeSupportMail');
+		// force user to select a topic.
+		let topic = elem.value;
+		btnSupport.disabled = (topic) ? false : true;
+	} ,
 	
+	sendMail: function (mailto) {
+    const subjectTxt = document.getElementById('txtSupportSubject'),
+		    	supportType = document.getElementById('supportType').value,
+					version = document.getElementById('versionBox').textContent,
+		    	subjectline = supportType + " (" + version + ") " + subjectTxt.value,
+		    	sURL="mailto:" + mailto + "?subject=" + encodeURI(subjectline);
+		logMissingFunction(`sendMail() \n ${sURL}`);
+		return;
+/*		, // urlencode
+		    // make the URI
+		let ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService),
+		    aURI = ioService.newURI(sURL, null, null);
+		// open new message
+		MailServices.compose.OpenComposeWindowWithURI (null, aURI);
+*/
+	},	
+
+	selectDefaultTemplates: function(el) {
+		SmartTemplate4.Preferences.setMyIntPref("defaultTemplateMethod", el.value);
+	},	
+
 
   dummy: function() {
 
@@ -1448,21 +1549,14 @@ function addUIListeners() {
 	// add bool preference reactions
 	for (let chk of document.querySelectorAll("input[type=checkbox]")) {	
 		let dataPref = chk.getAttribute("data-pref-name").replace(SMARTTEMPLATES_EXTPREFIX,"");
+		// right-click show details from about:config
+		let filterConfig="", readOnly=true, retVal=null;
 		// get my bool pref:
 		switch (dataPref) {
 			case "debug":
 				chk.addEventListener("change", (event) => {
 					SettingsUI.toggleBoolPreference(chk); // <== QF.Options
 				});				
-				break;
-		}
-
-		/* RIGHTCLICK HANDLERS */
-		// right-click show details from about:config
-		let filterConfig="", readOnly=true, retVal=null;
-		switch(dataPref) {
-			case "debug":
-				// + options.toggleBoolPreference(chk,true); beforehand!
 				filterConfig="smartTemplate4.debug"; retVal=false;
 				break;
 			case "parseSignature":
@@ -1476,9 +1570,33 @@ function addUIListeners() {
 						SmartTemplate4.updateStatusBar(this.checked);
         */
 				break;
-
 		}
 
+		switch(chk.id) {
+			case "chkResolveAB":
+				chk.addEventListener("click", (event) => {
+					SmartTemplates.Settings.resolveAB_onClick(chk);
+				});
+				break;
+			case "chkBackgroundParser":
+				chk.addEventListener("click", (event) => {
+					alert('The mx parser is experimental\nPlease reload SmartTemplates to effect this change!');
+				});
+				break;
+			case "chkHideExamples":
+				// oncommand="SmartTemplate4.Settings.toggleExamples(chk);"
+				chk.addEventListener("click", (event) => {
+					logMissingFunction("SmartTemplate4.Settings.toggleExamples()");
+				});
+				break;
+			case "chkStatusButton":
+				chk.addEventListener("click", (event) => {
+					logMissingFunction("SmartTemplate4.updateStatusBar(!chk.checked);");
+				});
+				break;
+		}
+
+		/* RIGHTCLICK HANDLERS */
 		if (filterConfig) {
 			addConfigEvent(chk,filterConfig);
 		}	
@@ -1538,20 +1656,32 @@ function addUIListeners() {
 	});
 
 	
-	// select element
+	// select elements
 	document.getElementById("msgIdentity").addEventListener("change", (event) => {
 		SmartTemplates.Settings.selectIdentity(event.target.value);
 	});
+	document.getElementById("iconType").addEventListener("change", (event) => {
+		// go through background => legacy code for the UI update at least.
+		// avoid passing element itself, change parameter to select.value!
+		logMissingFunction("SmartTemplate4.setStatusIconMode(event.target)");
+	});
+	document.getElementById("fontSmaller").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.Settings.fontSize(-1);");
+	});
+	document.getElementById("fontLarger").addEventListener("click", (event) => {
+		logMissingFunction("SmartTemplate4.Settings.fontSize(+1);");
+	});
+
 
 	// toolbar for the template tools
 	document.getElementById("helpTemplates").addEventListener("click", (event) => {
 		logMissingFunction("SmartTemplate4.Util.showStationeryHelpPage('templateFiles')");
 	});
 	document.getElementById("btnSaveTemplate").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplates.Settings.store()");
+		SmartTemplates.Settings.store();
 	});
 	document.getElementById("btnLoadTemplate").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplates.Settings.load()");
+		SmartTemplates.Settings.load();
 	});
 
 	// document.getElementById("btnAdvanced").addEventListener("click", (event) => {
@@ -1692,8 +1822,20 @@ function addUIListeners() {
 	});	
 	txtCategory.addEventListener("focus",(event) => {
 		logMissingFunction("SmartTemplate4.fileTemplates.updateInputGlobal(this)");
-	});	
+	});
+	
+	// =========== SUPPORT PAGE
+	document.getElementById("supportType").addEventListener("change", (event) => {
+		// SmartTemplate4.Settings.setSupportMode(this);
+		SmartTemplates.Settings.setSupportMode(event.target);
+	});		
 
+
+	document.getElementById("composeSupportMail").addEventListener("click", (event) => {
+		const SUPPORT_MAIL = "axel.grude@gmail.com";
+		SmartTemplates.Settings.sendMail(SUPPORT_MAIL);
+	});	
+	
 	
 	// ==== NEW: PAGES
 	for (let li of document.querySelectorAll("#categories li")) {

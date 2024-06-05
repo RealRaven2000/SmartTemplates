@@ -1501,10 +1501,8 @@ SmartTemplate4.Settings = {
     
   store: function store() {
       // let's get all the settings from the key and then put them in a json structure:
-    const util = SmartTemplate4.Util,
-          settings = SmartTemplate4.Settings;
-    let key = this.currentId,
-        currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
+    const settings = SmartTemplate4.Settings;
+    let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
         tabbox = document.getElementById(currentDeck),
         txt = tabbox.getElementsByTagName('html:textarea'), // changed from textbox
         chk = tabbox.getElementsByTagName('checkbox'),
@@ -1525,9 +1523,6 @@ SmartTemplate4.Settings = {
   
   // load a Template file (not this module!)
   load: async function() {
-		const util = SmartTemplate4.Util;
-    
-    
     let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
         tabbox = document.getElementById(currentDeck),
         txt = tabbox.getElementsByTagName('html:textarea'), // changed from textbox
@@ -1618,7 +1613,37 @@ SmartTemplate4.Settings = {
       }
     }
   },
-      
+
+	// put appropriate label on the license button and pass back the label text as well
+	labelLicenseBtn: function labelLicenseBtn(btnLicense, validStatus) {
+		const prefs = SmartTemplate4.Preferences,
+		      util = SmartTemplate4.Util;
+					
+		switch(validStatus) {
+			case  "extend":
+				let txtExtend = util.getBundleString("st.notification.premium.btn.extendLicense");
+				btnLicense.setAttribute("collapsed", false);
+				btnLicense.label = txtExtend; // text should be extend not renew
+				btnLicense.setAttribute('tooltiptext',
+					util.getBundleString("st.notification.premium.btn.extendLicense.tooltip"));
+				return txtExtend;
+			case "renew":
+				let txtRenew = util.getBundleString("st.notification.premium.btn.renewLicense");
+				btnLicense.label = txtRenew;
+			  return txtRenew;
+			case "buy":
+				let buyLabel = util.getBundleString("st.notification.premium.btn.getLicense");
+				btnLicense.label = buyLabel;
+			  return buyLabel;
+			case "upgrade":
+				let upgradeLabel = util.getBundleString("st.notification.premium.btn.upgrade");
+				btnLicense.label = upgradeLabel;
+				btnLicense.classList.add('upgrade'); // stop flashing
+			  return upgradeLabel;
+		}
+		return "";
+	},
+	      
   // this function is called on load and from validateLicenseInOptions
   // was decryptLicense
   updateLicenseOptionsUI: async function updateLicenseOptionsUI(silent = false) {
@@ -1928,36 +1953,6 @@ SmartTemplate4.Settings = {
 	
 
 
-	// put appropriate label on the license button and pass back the label text as well
-	labelLicenseBtn: function labelLicenseBtn(btnLicense, validStatus) {
-		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util;
-					
-		switch(validStatus) {
-			case  "extend":
-				let txtExtend = util.getBundleString("st.notification.premium.btn.extendLicense");
-				btnLicense.setAttribute("collapsed", false);
-				btnLicense.label = txtExtend; // text should be extend not renew
-				btnLicense.setAttribute('tooltiptext',
-					util.getBundleString("st.notification.premium.btn.extendLicense.tooltip"));
-				return txtExtend;
-			case "renew":
-				let txtRenew = util.getBundleString("st.notification.premium.btn.renewLicense");
-				btnLicense.label = txtRenew;
-			  return txtRenew;
-			case "buy":
-				let buyLabel = util.getBundleString("st.notification.premium.btn.getLicense");
-				btnLicense.label = buyLabel;
-			  return buyLabel;
-			case "upgrade":
-				let upgradeLabel = util.getBundleString("st.notification.premium.btn.upgrade");
-				btnLicense.label = upgradeLabel;
-				btnLicense.classList.add('upgrade'); // stop flashing
-			  return upgradeLabel;
-		}
-		return "";
-	},
-	
 	// Tb 63 compatibility.
 	loadPreferences: function st4_loadPreferences() {
 		const util = SmartTemplate4.Util;
