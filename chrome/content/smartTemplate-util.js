@@ -2884,6 +2884,10 @@ SmartTemplate4.Util = {
   },
 	
   clickStatusIcon: function(el) {
+    let isLicenseWarning = false;
+    if (el.classList.contains("alert") || el.classList.contains("alertExpired")) {
+      isLicenseWarning = true;
+    }		
 		// Open HTML Settings instead - TEST
 		// extensions.smartTemplate4.settings.html = true to open new settings dlg from status button
 		if (SmartTemplate4.Preferences.getMyBoolPref("settings.html")) {
@@ -2901,18 +2905,20 @@ SmartTemplate4.Util = {
 			if (CurId) {
 				serverKey = CurId.key;
 			}
-			SmartTemplate4.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`)
-			SmartTemplate4.Util.notifyTools.notifyBackground({ 
+			let prefsObject = {
 				func: "openPrefs", 
 				server: serverKey 
-			});
+			}
+			if (isLicenseWarning) {
+				prefsObject.page = "licenseKey"
+			}
+			SmartTemplate4.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`)
+			SmartTemplate4.Util.notifyTools.notifyBackground(prefsObject);
 			return;
 		}
 
-    let isLicenseWarning = false;
-    if (el.classList.contains("alert") || el.classList.contains("alertExpired")) {
-      isLicenseWarning = true;
-    }
+		// legacy dialog
+
     if (el.classList.contains("newsflash")) {
       SmartTemplate4.Util.openPreferences(); // will show splash screen instead.
       return;
@@ -2920,7 +2926,6 @@ SmartTemplate4.Util = {
     
     let params = {
 			mode: isLicenseWarning ? "licenseKey" : "",
-			message: "Test!", 
 			instance: window.SmartTemplate4
 		};
 		SmartTemplate4.Util.openPreferences(params);

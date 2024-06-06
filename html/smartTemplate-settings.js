@@ -383,12 +383,20 @@ SmartTemplates.Settings = {
 
 	// Select Deck with identity key
 	//--------------------------------------------------------------------
-	showCommonPlaceholder : function (isCommon) {
+	showCommonPlaceholder : function (isCommon, accountId = this.accountId) {
 		const id = "default.deckB";
-		let deck = document.getElementById(id + this.accountId);
+		let deck = document.getElementById(id + accountId);
 		if (deck){ 
 			deck.selectedIndex = isCommon ? 1 : 0; 
+			if (isCommon) {
+				deck.querySelector(".tabbox").classList.remove("deck-selected");
+				deck.querySelector(".placeholder").classList.add("deck-selected");
+			} else {
+				deck.querySelector(".tabbox").classList.add("deck-selected");
+				deck.querySelector(".placeholder").classList.remove("deck-selected");
+			}			
 		}
+
 	} ,  
 
 	// Return checkbox is checked or not
@@ -420,6 +428,7 @@ SmartTemplates.Settings = {
 	//--------------------------------------------------------------------
 	disableWithCheckbox : async function (el) {
 		// change this to reading prefs instead! called during addidentity!!
+		if (el) { debugger; }
 		
 		const account = this.accountId; // "", ".id1", ".id2" ...
 		if (!el) {
@@ -524,7 +533,8 @@ SmartTemplates.Settings = {
 	selectCategoryMenu: function(id) {
 		let el = document.getElementById(id);
 		if (!el.getAttribute("disabled")) {
-			el.click();
+			let evt = new Event( "click", { bubbles: true } )
+			el.dispatchEvent(evt);
 		}
 	} ,
 
@@ -546,26 +556,9 @@ SmartTemplates.Settings = {
 		// get inn params from querystring
 		const params = new URLSearchParams(window.location.search);
 		const CurId = params.get("id");
-		const mode = params.get("mode");
 		composeType = params.get("composeType");
 
 		this.switchIdentity(CurId || 'common', composeType);
-
-		// [issue 121] currently shown selection
-		// special settings (omit selecting an identit from the accounts dropdown)
-		switch(mode) {
-			case "fileTemplates":
-				selectCategoryMenu("catFileTemplates");
-				break;
-		  case "variables":
-				selectCategoryMenu("catVariables");
-				break;
-		  case "licenseKey":
-				selectCategoryMenu("catLicense");
-				let txtLicense = getElement('txtLicenseKey');
-      	setTimeout(function() {txtLicense.focus();}, 200);
-				break;
-		}
 
 		// disable Use default (common account)
 		getElement("use_default").setAttribute("disabled", "true");
@@ -721,10 +714,9 @@ SmartTemplates.Settings = {
 			
 			let useCommon = 
 			  isCommon ? false : await getPref(prefRoot + "def"); // this.isChecked("use_default" + branch)
-			this.showCommonPlaceholder(useCommon);
+			this.showCommonPlaceholder(useCommon, this.accountId);
 
 			this.disableWithCheckbox();
-			// this.accountKey = "";
 		} catch(ex) {
 			this.logException("Exception in addIdentity(" + menuvalue  +")", ex);
 		} finally {
@@ -736,26 +728,28 @@ SmartTemplates.Settings = {
 	// this also clones the deck as many times as there are identities in order to fill in 
 	// the specific templates [see addIdentity()]
 	fillIdentityListPopup: async function(CurId = null) {
-
   	// this.logDebug("***fillIdentityListPopup");
     const accounts = await messenger.accounts.list(false);
 		let currentId = 0;
 		let theMenu = document.getElementById("msgIdentity"),
 		    iAccounts = accounts.length;
 				
+		const useCommonPlaceHolder = document.getElementById("commonPlaceholder"),
+		      useCommonCmd = SmartTemplates.Util.getBundleString("pref_def.label");
+		useCommonPlaceHolder.textContent = SmartTemplates.Util.getBundleString("pref_def.cap", useCommonCmd);;
+
     /* 
      ***  TO DO: 
      ***      we will handle these via the category switch catFileTemplates instead!
 		const label = messenger.i18n.getMessage(("st.fileTemplates");
 		theMenu.appendItem(label, "fileTemplates", "file templates: to replace Stationery");
     */
-				
 		for (let idx = 0; idx < iAccounts; idx++) {
       // https://webextension-api.thunderbird.net/en/stable/accounts.html#accounts-mailaccount
 			let account = accounts[idx];
 
 			// if (!account.incomingServer)
-      if (!(["imap","pop","nntp"].includes(account.type))) {
+      if (!(["imap","pop3","nntp"].includes(account.type))) {
         continue;
       }
 
@@ -802,10 +796,23 @@ SmartTemplates.Settings = {
 			theMenu.selectedIndex = currentId;
 		}
 
+		const common = document.getElementById("deckA.per_account");
+
 		if (!CurId) { //  [issue 290]
-			let common = document.getElementById("deckA.per_account");
 			common.classList.add("deck-selected"); 
 		}		
+
+		// hide use common checkbox on first account, and add explanation
+		const common1st = common.querySelector(".commonContainer label");
+		common1st.style.visibility="hidden";
+		const commonContainer = common.querySelector(".commonContainer");
+		const commonExplainer = document.createElement("label");
+		commonExplainer.id = "commonSettingsExplainer";
+		commonExplainer.textContent = 
+			SmartTemplates.Util.getBundleString("pref_def.explainer", SmartTemplates.Util.getBundleString("pref_def.label"));
+		commonContainer.appendChild(commonExplainer);
+
+		
 		return (CurId) ? CurId.key : null;
 		
   
@@ -1349,7 +1356,7 @@ SmartTemplates.Settings = {
 
 
 /**********
- * UTILITY FUNCTIONS
+ * UTILITY FUNCTIONS (global scope)
  */
 
 async function setPref(key,value) {
@@ -1604,8 +1611,7 @@ function addUIListeners() {
 
 	for (let chk of document.querySelectorAll(".settingDisabler")) {	
 		chk.addEventListener("change", (event) => {
-			// SmartTemplates.Settings.disableWithCheckbox(this)
-			disableWithCheckbox(chk); // <== QF.Options
+			SmartTemplates.Settings.disableWithCheckbox(chk); // <== QF.Options
 		});			
 	}
 	
@@ -1759,10 +1765,11 @@ function addUIListeners() {
 	}
 
 	// more checkboxes
-	document.getElementById("use_default").addEventListener("change", (event) => {
-		debugger;
-		SmartTemplates.Settings.showCommonPlaceholder(event.target.checked)
-	});
+	for (let el of document.querySelectorAll(".commonSwitch")) {
+		el.addEventListener("change", (event) => {
+			SmartTemplates.Settings.showCommonPlaceholder(el.checked);
+		});
+	}
 	// file picker button
 	document.getElementById("btnPickTemplate").addEventListener("click", (event) => {
 		logMissingFunction("SmartTemplate4.fileTemplates.pickFileFromSettings()");
@@ -1892,6 +1899,24 @@ async function onLoad() {
 	// now read data from Preferences
   addUIListeners();
 
+	// [issue 121] currently shown selection
+	// special settings (omit selecting an identit from the accounts dropdown)
+	const params = new URLSearchParams(window.location.search);
+	const mode = params.get("mode");
+
+	switch(mode) {
+		case "fileTemplates":
+			SmartTemplates.Settings.selectCategoryMenu("catFileTemplates");
+			break;
+		case "variables":
+			SmartTemplates.Settings.selectCategoryMenu("catVariables");
+			break;
+		case "licenseKey":
+			SmartTemplates.Settings.selectCategoryMenu("catLicense");
+			let txtLicense = getElement('txtLicenseKey');
+			setTimeout(function() {txtLicense.focus();}, 200);
+			break;
+	}
 	SettingsUI.initVersionPanel();
 
 }

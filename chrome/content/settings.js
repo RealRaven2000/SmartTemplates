@@ -969,6 +969,11 @@ SmartTemplate4.Settings = {
 		const accounts = MailServices.accounts.accounts;
 		let currentId = 0,
 		    CurId = null;
+
+		const useCommonPlaceHolder = document.getElementById("commonPlaceholder"),
+		useCommonCmd = util.getBundleString("pref_def.label");
+		useCommonPlaceHolder.textContent = util.getBundleString("pref_def.cap", useCommonCmd);;
+
 		
 		// only when calling from the mail 3 pane window: 
 		if (window.opener && window.opener.GetSelectedMsgFolders) { 

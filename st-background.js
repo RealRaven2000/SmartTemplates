@@ -1343,8 +1343,15 @@ async function main() {
             // await browser.windows.update(oldTab.windowId, {focused:true});
           } else {
             let queryString = "";
+            let searchParams = new URLSearchParams()
             if (data.server) {
-              queryString = `?id=${data.server}`;
+              searchParams.append("id", data.server);
+            }
+            if (data.page) {
+              searchParams.append("mode", data.page);
+            }
+            if (searchParams.size) {
+              queryString = "?" + searchParams.toString();
             }
             // open a new tab with settings
             browser.tabs.create (

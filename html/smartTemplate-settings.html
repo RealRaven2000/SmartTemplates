@@ -609,25 +609,19 @@
       
           <div id="decksWrapper" flex="1" class="vbox">
             <deck id="account_deckA" flex="1" class="templateDeck">
-      
-              <div id="deckA.per_account" flex="1" class="accountDeck deck-selected vbox"> <!-- cloned element -->
-                <!-- ######## Template Preferences ######## -->
-      
-                <div align="center" class="hbox">
-                  <label>
-                    <input type="checkbox" id="use_default"
+              <div id="deckA.per_account" flex="1" class="accountDeck deck-selected vbox"> 
+                <div align="center" class="hbox commonContainer">
+                  <label class="commonSetting">
+                    <input type="checkbox" id="use_default" class="commonSwitch"
                     data-pref-name="extensions.smartTemplate4.common.def">
                     __MSG_pref_def.label__
                   </label>
                 </div>
-      
-                <!-- ######## Default DeckB & Tab Creating ######## -->
-                <deck id="default.deckB" flex="1" orient="vertical">
-      
-                  <div id="deckB.nodef" class="tabbox" flex="1" orient="vertical" selectedIndex="0" >
-                    <nav  id="deckB.nodef.tabs"  class="tabs actionTabs">
+                <deck id="default.deckB" flex="1" orient="vertical" class="settingsDeck">
+                  <div id="deckB.nodef" class="tabbox deck-selected" flex="1" orient="vertical" selectedIndex="0" >
+                    <nav  id="deckB.nodef.tabs" class="tabs actionTabs">
                       <ul>
-                        <li><button id="newTab"     class="NewTab active">__MSG_pref_new.tab__</button></li>
+                        <li><button id="newTab" class="NewTab active">__MSG_pref_new.tab__</button></li>
                         <li><button id="respondTab" class="RespondTab">__MSG_pref_rsp.tab__</button></li>
                         <li><button id="forwardTab" class="ForwardTab">__MSG_pref_fwd.tab__</button></li>
                       </ul>
@@ -780,12 +774,9 @@
 
                     
                   </div>
-      
-                  <!-- ######## placeholder for hint: 'Use Common' to create a customized quote header for this account. ######## -->
-                  <div id="deckB.usedef" class="vbox">
-                    <description>__MSG_pref_def.cap__</description>
+                  <div id="deckB.usedef" class="vbox placeholder">
+                    <description id="commonPlaceholder">__MSG_pref_def.cap__</description>
                   </div>
-                  
                 </deck>
               </div>
             

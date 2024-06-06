@@ -49,7 +49,14 @@ async function onLoad(activatedWhileWindowOpen) {
 
     switch (el.id) {
       case "smartTemplates-checklicense":
-        SmartTemplates.Util.openPreferences({element: el});
+        if (SmartTemplates.Preferences.getMyBoolPref("settings.html")) {
+          SmartTemplates.Util.notifyTools.notifyBackground({ 
+            func: "openPrefs", 
+            page: "licenseKey"
+          });
+        } else {
+          SmartTemplates.Util.openPreferences({element: el});
+        }
         break;
         
       /* use last template */
@@ -123,8 +130,11 @@ async function onLoad(activatedWhileWindowOpen) {
         break;
       case "smartTemplates-variables":
         // SmartTemplates.Util.logIssue213("Show Variables Tab");
-        // SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs", page: "variables" });
-        SmartTemplates.Util.openPreferences({element: null, mode: "variables"});
+        if (SmartTemplates.Preferences.getMyBoolPref("settings.html")) {
+          SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs", page: "variables" });
+        } else {
+          SmartTemplates.Util.openPreferences({element: null, mode: "variables"});
+        }
         SmartTemplates.Util.showVariablesPage();
         break;
       case "smartTemplates-premium":
