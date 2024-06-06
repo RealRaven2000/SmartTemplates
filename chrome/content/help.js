@@ -55,21 +55,21 @@
             customEvent.initEvent("SmartTemplate4CodeWord", true, false);
             break;
           case 'span': case 'lbl':
-            if (isAddressConfig)
+            if (isAddressConfig) {
               customEvent.initEvent("SmartTemplate4CAD", true, false);
+            }              
             break;
           default:
             customEvent.initEvent("SmartTemplate4Website", true, false);
             break;
         }
-          
         element.dispatchEvent(customEvent);
       }
     }
   }
   
-  function expandAll(evt) {
-    if (isDebugLegacyOption()) {
+  async function expandAll(evt) {
+    if (await isDebugLegacyOption()) {
       console.log("Expanding all chapters...");
       debugger;
     }
@@ -84,8 +84,7 @@
   // Accordion:
   var mychapters = Array.from(document.getElementsByClassName('chapterBody'));
   mychapters.forEach(function(el) {
-    var hd = el.previousElementSibling,
-        xalert = window.alert.bind(window);
+    var hd = el.previousElementSibling;
     
     /* alert("adding event listener: " + el.tagName + " "  + el.textContent);  */
     hd.addEventListener('click', 
@@ -94,14 +93,16 @@
         if (isCollapsed) {
           // collapse all other chapters
           Array.from(document.getElementsByClassName('chapterBody')).forEach(
-            function(x) {
-              if (x!=el)
+            (x) => {
+              if (x!=el) {
                 x.classList.add('collapsed');
+                x.previousElementSibling.classList.remove('expanded');
+              }
             }
           )
           el.classList.remove('collapsed'); // uncollapse chapter below this heading
           window.setTimeout( function() { hd.scrollIntoView(true); }, 150 );
-          
+          hd.classList.add('expanded');
         }
         else {
           el.classList.add('collapsed');
@@ -109,26 +110,27 @@
           if (sel && el.contains(sel.focusNode)) {
             sel.removeAllRanges();
           }
+          hd.classList.remove('expanded');
         }
       }
     );
     el.classList.add('collapsed');
   });
   
-  function isDebugLegacyOption() {
-    let isDebug = Services.prefs.getBoolPref("extensions.smartTemplate4.debug.variables.search"); 
+  async function isDebugLegacyOption() {
+    const isDebug =  await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.variables.search")
     return isDebug;
   }
   
   // [issue 215] search box for variables tab
-  function findSearchString(text, repeat, backwards=false) {
+  async function findSearchString(text, repeat, backwards=false) {
     let caseSensitive = false, 
         wraparound = true, 
         wholeword = false,
         frames = false,
         dlg = false,
         search = text.toLocaleLowerCase(),
-        isDebug = isDebugLegacyOption();
+        isDebug = await isDebugLegacyOption();
         
     let sel = window.getSelection();
     let chapters = Array.from(document.getElementsByClassName('chapterBody'));
@@ -275,8 +277,8 @@
     if (searchBox) {
       // we are using the tabindex=-1 hack to make the list items searchable even if the user highlights text or 
       // clicks into the help contents. Note that contentEditable doesn't work here.
-      searchBox.addEventListener("keydown", (event) => {
-        if (isDebugLegacyOption()) {
+      searchBox.addEventListener("keydown", async (event) => {
+        if (await isDebugLegacyOption()) {
           console.log("searchbox caught:", event);
         }
         let target = event.target;
@@ -300,7 +302,7 @@
 
     let container = document.getElementById("helpContents");
     if (container) {
-      container.addEventListener("keydown", (event) => {
+      container.addEventListener("keydown", async (event) => {
         switch (event.code) {
           case "F3":
             event.preventDefault();
@@ -308,7 +310,7 @@
             let backwards = (event.shiftKey);
             let search = document.getElementById("search");
             if (search.value) {
-              findSearchString(search.value, true, backwards);
+              await findSearchString(search.value, true, backwards);
               document.getElementById("searchHelpContent").classList.add("hidden");
             } else {
               search.focus();

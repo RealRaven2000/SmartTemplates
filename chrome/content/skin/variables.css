@@ -21,8 +21,7 @@
 }
 
 .help ul {
-	margin-bottom: 1.8em;
-	margin-top: 0.2em;
+	margin-block: 0.2em;
 	padding-left: 0;
 }
 .help ul li {
@@ -108,19 +107,27 @@ p#allexpander {
 
 
 /* ################################ CHAPTER (HEADLINES)  ############################# */
+#helpContents {
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
 h1.helpchapter {
-  background-image: linear-gradient(to bottom, rgba(90,90,90,1) 0%, rgba(40,40,40,1) 100%);
-  border-radius: 0;
+  background-image: linear-gradient(to bottom, rgb(36, 80, 190) 0%, rgb(20, 57, 105) 100%);
+  border-block: 1px solid #808080;
+  border-radius: 0.25em;
+  cursor: pointer;
+  display: flex;
   font-size: 12pt;
   font-weight: bold;
-  text-align: center;
+  font-family: 'Poppins',Roboto,Helvetica !important;
   color: #ffffff; /* #ffffff for TT DeepDark Theme */
-  text-shadow: #000000 1px 1px 1px; /* #000000 for TT DeepDark Theme */
-  border-top: 1px solid #808080;
-  border-bottom: 1px solid #808080;
-  cursor: pointer;
-  padding: 4px 0px;
+  padding: 4px 0.5em;
   margin: 7px 0;
+  text-align: left;
+  width: fit-content;
 }
 
 #helpContents h4 {
@@ -130,6 +137,10 @@ h1.helpchapter {
 	color: rgb(180,180,180) !important;
   max-width: 80%;
   width: 150px;
+}
+
+h1.helpchapter.expanded {
+  background-image: linear-gradient(to bottom, rgb(44, 129, 18) 0%, rgb(14, 83, 105) 100%);
 }
 
 
@@ -387,4 +398,11 @@ table div.no {
 #helpContents *::selection {
   color: yellow;
   background-color: rgb(128,0,0);
+}
+
+.chapterBody {
+  margin-left: 1.5em;
+}
+#helpContents > h1 {
+  margin-left: 0.5em;
 }
