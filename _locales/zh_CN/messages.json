@@ -941,8 +941,22 @@
     "message": "右击打开高级调试选项"
   },
   "pref_def.cap": {
-    "message": "如果您想要为这个帐户创建自定义的引用头，请取消选中“使用通用”"
-  },
+    "message": "停用 “$pref_def$” 以为此帐户创建特定的模板设置。",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "使用通用"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "以下设置在没有特定身份模板时应用，或在为该身份选择 “$pref_def$” 时应用。",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "使用通用"
   },

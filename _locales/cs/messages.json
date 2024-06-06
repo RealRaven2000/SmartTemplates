@@ -941,8 +941,22 @@
     "message": "Pravé-tlačítko pro rozšiřené volby ladění."
   },
   "pref_def.cap": {
-    "message": "Pokud si chcete přizpůsobit řádek uvození citace, zrušte volbu 'Použij společné'."
+    "message": "Deaktivujte '$pref_def$' pro vytvoření specifických nastavení šablony pro tento účet.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Použít společné"
+      }
+    }
   },
+  "pref_def.explainer": {
+    "message": "Nastavení níže se použije, když neexistuje žádná specifická šablona pro identitu nebo pokud je pro tuto identitu vybráno '$pref_def$'.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Použij společné"
   },

@@ -902,8 +902,22 @@
     "message": "Desno kliknite za napredne razhroščevalne možnosti"
   },
   "pref_def.cap": {
-    "message": "Odznačite 'Uporabi splošno' za ustvarjanje glave navedka po meri za ta račun,"
-  },
+    "message": "Deaktivirajte '$pref_def$', da ustvarite posebne nastavitve predloge za ta račun.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Uporabi Skupno"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "Spodnje nastavitve se uporabijo, kadar za identiteto ne obstaja posebna predloga ali če je za to identiteto izbrano '$pref_def$'.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Uporabi splošno"
   },

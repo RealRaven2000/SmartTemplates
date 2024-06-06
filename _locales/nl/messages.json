@@ -893,8 +893,22 @@
     "message": "Klik met de rechtermuisknop voor geavanceerde foutopsporingsopties"
   },
   "pref_def.cap": {
-    "message": "Vink ‘Algemeen gebruiken’ uit als u een aangepaste aanhalingskoptekst voor deze account wilt instellen."
-  },
+    "message": "Deactiveer ‘$pref_def$’ om specifieke sjablooninstellingen voor dit account te maken.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Gebruik Gemeenschappelijk"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "De onderstaande instellingen worden toegepast wanneer er geen specifieke sjabloon bestaat voor een identiteit of als  ‘$pref_def$’ is geselecteerd voor die identiteit.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Algemeen gebruiken"
   },

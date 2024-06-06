@@ -947,8 +947,22 @@
     "message": "Högerklicka för avancerade felsökningsalternativ"
   },
   "pref_def.cap": {
-    "message": "Avmarkera \"Använd allmänna inställningar\" om du vill ändra inställningarna för det här kontot."
-  },
+    "message": "Inaktivera '$pref_def$' för att skapa specifika mallinställningar för detta konto.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Använd Gemensam"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "Inställningarna nedan används när ingen specifik mall finns för en identitet eller om '$pref_def$' är valt för den identiteten.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Använd allmänna inställningar"
   },

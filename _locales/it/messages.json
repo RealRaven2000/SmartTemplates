@@ -866,8 +866,22 @@
     "message": "Fare clic con il tasto destro per le impostazioni di debug avanzate"
   },
   "pref_def.cap": {
-    "message": "Deselezionare 'Utilizza la cartella di posta in arrivo globale' per creare un'intestazione personalizzata per questo account"
-  },
+    "message": "Disattiva '$pref_def$' per creare impostazioni di modello specifiche per questo account.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Usa Comune"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "Le impostazioni seguenti vengono applicate quando non esiste un modello specifico per un'identità o se '$pref_def$' è selezionato per tale identità.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Utilizza la cartella di posta in arrivo globale"
   },

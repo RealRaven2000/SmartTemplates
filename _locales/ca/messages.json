@@ -947,8 +947,22 @@
     "message": "Clic drech per las opcions avançadas de desbugatge"
   },
   "pref_def.cap": {
-    "message": "Desactivar « Utilizar las opcions globalas » per crear una entèsta personalizada per aqueste compte."
+    "message": "Desactiva « $pref_def$ » per crear configuracions específiques de plantilla per a aquest compte.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Utilitza Comú"
+      }
+    }
   },
+  "pref_def.explainer": {
+    "message": "La configuració següent s'aplica quan no existeix cap plantilla específica per a una identitat o si es selecciona « $pref_def$ » per a aquesta identitat.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Utilizar las opcions globalas"
   },

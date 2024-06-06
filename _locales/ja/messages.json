@@ -929,8 +929,22 @@
     "message": "右クリックで詳細なデバッグオプションを表示します。"
   },
   "pref_def.cap": {
-    "message": "差出人ごとの設定を行う場合は「共通設定を使う」のチェックを外してください。"
+    "message": "このアカウントの特定のテンプレート設定を作成するには、「$pref_def$」 を無効にしてください。",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "共通を使用"
+      }
+    }
   },
+  "pref_def.explainer": {
+    "message": "以下の設定は、特定のテンプレートがアイデンティティに存在しない場合、またはそのアイデンティティに「$pref_def$」が選択されている場合に適用されます。",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "共通設定を使う"
   },

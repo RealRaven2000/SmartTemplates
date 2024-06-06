@@ -911,8 +911,22 @@
     "message": "Haga clic derecho para opciones avanzadas de depuración"
   },
   "pref_def.cap": {
-    "message": "Deseleccione 'Usar común' para crear un encabezado de cita personalizado para esta cuenta."
-  },
+    "message": "Desactiva '$pref_def$' para crear configuraciones específicas de plantilla para esta cuenta.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Usar Común"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "Los ajustes siguientes se aplican cuando no existe una plantilla específica para una identidad o si se selecciona '$pref_def$' para esa identidad.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Usar común"
   },

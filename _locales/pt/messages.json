@@ -911,8 +911,22 @@
     "message": "Clique com o botão direito do mouse para opções avançadas e de depuração"
   },
   "pref_def.cap": {
-    "message": "Para fazer configurações específicas nesta conta, desmarque a opção 'Usar configuração global'."
-  },
+    "message": "Desative '$pref_def$' para criar configurações de modelo específicas para esta conta.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Usar Comum"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "As configurações abaixo são aplicadas quando não existe um modelo específico para uma identidade ou se '$pref_def$' for selecionado para essa identidade.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Usar configuração global"
   },

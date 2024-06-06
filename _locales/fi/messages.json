@@ -950,8 +950,22 @@
     "message": "Oikea napsautus avaa debug-tilan lisäasetukset"
   },
   "pref_def.cap": {
-    "message": "Poista valinta kohdasta \"Käytä oletusta\", käyttääksesi muokattuja otsakkeita tällä tilillä."
-  },
+    "message": "Poista '$pref_def$' käytöstä luodaksesi tälle tilille erityisiä malliasetuksia.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Käytä Yleistä"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "Alla olevat asetukset otetaan käyttöön, kun identiteetille ei ole olemassa erityistä mallia tai jos tälle identiteetille on valittu '$pref_def$'.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Käytä oletusta"
   },

@@ -972,7 +972,22 @@
     "message": "Right-click for advanced debug options"
   },
   "pref_def.cap": {
-    "message": "Uncheck 'Use Common' to create a customized quote header for this account."
+    "message": "Deactivate '$pref_def$' to create specific template settings for this account.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Use Common"
+      }
+    }
+  },
+  "pref_def.explainer": {
+    "message": "The settings below are applied when no specific template exists for an identity or if '$pref_def$' is selected for that identity.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Use Common"
+      }
+    }    
   },
   "pref_def.label": {
     "message": "Use Common"

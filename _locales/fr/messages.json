@@ -947,8 +947,22 @@
     "message": "Clic droit pour les options avancées de débogage"
   },
   "pref_def.cap": {
-    "message": "Désactiver « Utiliser les options globales » afin de créer un entête personnalisé pour ce compte."
-  },
+    "message": "Désactivez '$pref_def$' pour créer des paramètres de modèle spécifiques pour ce compte.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Utiliser Commun"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "Les paramètres ci-dessous sont appliqués lorsqu'aucun modèle spécifique n'existe pour une identité ou si « $pref_def$ » est sélectionné pour cette identité.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Utiliser les options globales"
   },

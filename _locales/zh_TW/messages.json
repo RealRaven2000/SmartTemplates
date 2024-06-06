@@ -947,8 +947,22 @@
     "message": "點右鍵使用進階的除錯選項"
   },
   "pref_def.cap": {
-    "message": "這個帳號未勾選'使用常見的'來建立自訂引用表頭."
-  },
+    "message": "停用 '$pref_def$' 以為此帳戶創建特定的模板設置。",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "使用通用"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "當沒有特定模板存在於身份時，或為該身份選擇 '$pref_def$' 時，會應用以下設置。",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "使用常見的"
   },

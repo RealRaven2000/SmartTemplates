@@ -892,8 +892,22 @@
     "message": "Rechts-klick für weitere Debug Optionen"
   },
   "pref_def.cap": {
-    "message": "Deaktivieren Sie 'Allgemein verwenden', wenn Sie die Einstellungen für dieses Konto einzeln anpassen wollen"
+    "message": "Deaktivieren Sie '$pref_def$', um spezifische Vorlageneinstellungen für dieses Konto zu nutzen.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Gemeinsam verwenden"
+      }
+    }
   },
+  "pref_def.explainer": {
+    "message": "Die untenstehenden Einstellungen werden angewendet, wenn keine spezifische Vorlage für eine Identität existiert oder wenn '$pref_def$' für diese Identität aktiv ist.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Allgemein verwenden"
   },

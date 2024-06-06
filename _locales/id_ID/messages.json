@@ -652,8 +652,22 @@
     "message": "Klik-kanan untuk opsi debug lanjutan"
   },
   "pref_def.cap": {
-    "message": "Hapus centang 'Gunakan Umum' untuk membuat kutipan tajuk yang disesuaikan untuk akun ini."
-  },
+    "message": "Nonaktifkan '$pref_def$' untuk membuat pengaturan template khusus untuk akun ini.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Gunakan Umum"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "Pengaturan di bawah ini diterapkan ketika tidak ada templat khusus untuk identitas atau jika '$pref_def$' dipilih untuk identitas tersebut.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Gunakan Umum"
   },

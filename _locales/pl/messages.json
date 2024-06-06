@@ -943,8 +943,22 @@
     "message": "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych"
   },
   "pref_def.cap": {
-    "message": "Odznacz „Użyj dla wszystkich kont”, jeśli chcesz skonfigurować szablon dla tego konta."
-  },
+    "message": "Dezaktywuj „$pref_def$”, aby utworzyć specyficzne ustawienia szablonu dla tego konta.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Użyj Wspólnego"
+      }
+    }
+  },  
+  "pref_def.explainer": {
+    "message": "De onderstaande instellingen worden toegepast wanneer er geen specifieke sjabloon bestaat voor een identiteit of als „$pref_def$” is geselecteerd voor die identiteit.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }    
+  },  
   "pref_def.label": {
     "message": "Użyj dla wszystkich kont"
   },
