@@ -51,6 +51,21 @@
   white-space: nowrap;
 }
 
+/*smaller menus (hidden labels) */
+@media (max-width: 830px) {
+  #categories > .category {
+    margin-inline: 8px;
+    padding-inline: 5px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #categories > .category {
+    margin-inline: 0px !important;
+    padding-inline: 2px !important;
+  }
+}
+
 #catAccountTemplates {
   background-image: url("../chrome/content/skin/icons/accounts.svg");
 }
@@ -120,9 +135,53 @@
 #preferencesContainer {
   display: flex;
   flex: 1 1 min-content;
-  padding: 0 28px 20px;
+  padding-block: 0 20px;
+  padding-inline: 28px;
   overflow: auto;
 }
+
+@media only screen and (max-width: 1024px)  {
+  #preferencesContainer {
+    padding-inline: 12px;
+  }
+}
+
+@media only screen and (max-width: 800px)  {
+  #preferencesContainer {
+    padding-inline: 2px;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+  #identityLabel {
+    width: 24px;
+    color: transparent;
+  }
+  #btnYouTube-accounts {
+   display: none;
+  }  
+  #default_address_format {
+    width: 60% !important;
+  }
+}
+
+@media only screen and (max-width: 760px)  {
+  #btnVariableSidePanel {
+   display: none;
+  }
+}
+
+@media only screen and (max-height: 600px)  {
+  #preferencesContainer h2 {
+    margin-block: 2px;
+    text-align: center;
+    font-size: 1.1em;
+  }
+  fieldset {
+    margin-block: 0;
+  }
+
+}
+
+  
 
 #templatesIFrame {
 	display: flex;
@@ -138,7 +197,7 @@
 	display: flex;
 	min-width: 450px;
 	height: 92vh;
-	width: 70vw;
+	width: 100%;
 }
 
 

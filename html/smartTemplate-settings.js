@@ -803,8 +803,9 @@ SmartTemplates.Settings = {
 		}		
 
 		// hide use common checkbox on first account, and add explanation
+		debugger;
 		const common1st = common.querySelector(".commonContainer label");
-		common1st.style.visibility="hidden";
+		common1st.style.display="none";
 		const commonContainer = common.querySelector(".commonContainer");
 		const commonExplainer = document.createElement("label");
 		commonExplainer.id = "commonSettingsExplainer";

@@ -745,8 +745,7 @@ var SmartTemplate4 = {
           licenseInfo = SmartTemplate4.Util.licenseInfo;
     let hasNews = SmartTemplate4.Preferences.getMyBoolPref("hasNews"),
         btn = document.getElementById("SmartTemplate4Button"),
-        btnStatus = document.getElementById("SmartTemplate4Messenger"),
-        isVisible = false;
+        btnStatus = document.getElementById("SmartTemplate4Messenger");
     // for styling button parent background image
     //   in  Tb115 we need to add the class to the parent <div class="live-content">!
     function addClass(element, c) {
