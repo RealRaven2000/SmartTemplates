@@ -1,5 +1,6 @@
 :root {
-  --selection-highlight: var(--selected-item-color,var(--selectedbackground,rgb(30,60,120)));
+  --selection-highlight: var(--button-primary-background-color,var(--selected-item-color,var(--selectedbackground,rgb(30,60,120))));
+  --selection-highlight-text: var(--button-primary-text-color,var(--selected-item-text-color,#FFF));  
 }
 
 /* horizontal alignment */
@@ -140,7 +141,8 @@ button.active::marker {
 /* Create an active/current tablink class */
 .tabs button.active {
   background-color: var(--selection-highlight) !important;
-  color: #FFFFFF !important;
+  border-bottom-color: var(--selection-highlight);
+  color:  var(--selection-highlight-text) !important;
 }
 
 /* Style the tab content */

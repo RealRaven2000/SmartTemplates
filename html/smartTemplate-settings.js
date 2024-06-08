@@ -24,7 +24,6 @@
 //     -    onCodeWord() receiver for events from help.xhtml
 //     -    getFileName() to retrieve a file from dialog - via experiment?
 //     -    getHeaderArgument()
-//     -    selectFileCase()
 //     -    insertAtCaret()
 //     -    fontSize()
 //     -		resolveAB_onClick()
@@ -930,7 +929,41 @@ SmartTemplates.Settings = {
 
 	} ,
 	
-	
+	// move the file buttons to the correct field
+  selectFileCase : function (section) {
+		function moveFileControls(select) {
+			debugger;
+			let fc = document.getElementById('fileControls'),
+			    selectInput = document.getElementById(select);
+			// move to the correct panel (if it's not already there)
+			if (selectInput.parentNode.lastChild != fc) {
+				selectInput.parentNode.appendChild(fc);
+			}
+		}
+		if (!section) {
+			return;
+			// section = document.getElementById('fileTemplatesTabs');
+		}
+		
+		// TO DO:  replace tabbox!!
+
+		SmartTemplates.Util.logDebug(`Selected [${section.id}] ${section.id}`, section); 
+		switch (section.id) {
+			case "new-fileTemplates":
+				moveFileControls('templateList.new');
+				break;
+			case "rsp-fileTemplates":
+				moveFileControls('templateList.rsp');
+				break;
+			case "fwd-fileTemplates":
+				moveFileControls('templateList.fwd');
+				break;
+			case "snippets-fileTemplates":
+				moveFileControls('templateList.snippets');
+				break;
+		}
+	},
+
   resolveAB_onClick: function(el) {
     // if it was already checked we are now unchecking it...
     let nickBox = document.getElementById('chkResolveABNick'),
@@ -1383,37 +1416,28 @@ async function savePref(event) {
 	if (target instanceof HTMLInputElement) {
 		if (target.getAttribute("type") === "checkbox") {
 			await browser.LegacyPrefs.setPref(prefName, target.checked);
-		} 
-    else if (target.getAttribute("type") === "text" ||
+		} else if (target.getAttribute("type") === "text" ||
 			target.dataset.prefType === "string") {
 			await browser.LegacyPrefs.setPref(prefName, target.value);
-		} 
-    else if (target.getAttribute("type") === "number") {
+		} else if (target.getAttribute("type") === "number") {
 			await browser.LegacyPrefs.setPref(prefName, parseInt(target.value, 10));
-		} 
-    else if (target.getAttribute("type") === "radio" && target.checked) {
+		} else if (target.getAttribute("type") === "radio" && target.checked) {
       await browser.LegacyPrefs.setPref(prefName, target.value);
-    }    
-    else if (target.getAttribute("type") === "color") {
+    } else if (target.getAttribute("type") === "color") {
       await browser.LegacyPrefs.setPref(prefName, target.value);
-    }    
-    else {
+    } else {
 			console.error("Received change event for input element with unexpected type", event);
 		}
-	} 
-  else if (target instanceof HTMLSelectElement) {
+	} else if (target instanceof HTMLSelectElement) {
 		if (target.dataset.prefType === "string") {
 			await browser.LegacyPrefs.setPref(prefName, target.value);
-		} 
-    else {
+		} else {
       let v = isNaN(target.value) ? target.value : parseInt(target.value, 10);
 			await browser.LegacyPrefs.setPref(prefName, v);
 		}
-	} 
-  else if (element instanceof HTMLTextAreaElement) {
+	} else if (element instanceof HTMLTextAreaElement) {
     await browser.LegacyPrefs.setPref(prefName, target.value);
-  }  
-  else {
+  } else {
 		console.error("Received change event for unexpected element", event);
 	}  
 }
@@ -1440,13 +1464,18 @@ const activateTab = (event) => {
   btn.classList.add("active");
   // get <li> <btn> index:
   let idx = Array.from(btn.parentNode.parentElement.children).indexOf(btn.parentNode);
-  tabContent.children[idx].classList.add("active");
+	const section = tabContent.children[idx];
+  section.classList.add("active");
+	if (section.classList.contains("fileTemplatePanel")) {
+		// move toolbar
+		SmartTemplates.Settings.selectFileCase(section);
+	}
+
   /*
-  // store last selected tab ??
-  browser.LegacyPrefs.setPref("extensions.quickfolders.lastSelectedOptionsTab", 
-    btn.getAttribute("tabNo"));
-    */
-		
+		// store last selected tab ??
+		browser.LegacyPrefs.setPref("extensions.quickfolders.lastSelectedOptionsTab", 
+			btn.getAttribute("tabNo"));
+	*/
 }
 
 
@@ -1790,15 +1819,6 @@ function addUIListeners() {
 			logMissingFunction("SmartTemplates.Settings.pasteFocus(this)");
 		});	
   }
-
-  // tabs for file templates (new, write, fwd, snippets)
-	document.getElementById("fileTemplatesTabs").addEventListener("change", (event) => {
-		logMissingFunction("SmartTemplates.Settings.selectFileCase(this, event)");
-	});	
-	// not sure whether this one is needed??
-	document.getElementById("fileTemplateContainer").addEventListener("change", (event) => {
-		logMissingFunction("SmartTemplates.Settings.selectFileCase(this, event)");
-	});	
 
 	document.getElementById("closeDisclaimer").addEventListener("click", (event) => {
 		event.target.parentElement.remove();
