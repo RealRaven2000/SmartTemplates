@@ -1,0 +1,92 @@
+/* Sidebar footer links */
+
+.sidebar-footer-list {
+  list-style-type: none;
+  margin-block: 0 36px;
+  margin-inline: 34px 0;
+  padding: 0;
+}
+
+.sidebar-footer-link {
+  height: 36px;
+  cursor: default;
+  border: 1px solid var(--in-content-button-border-color);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+
+@media (forced-colors) {
+  .sidebar-footer-link {
+    /* We need a true transparent but in HCM this would compute to an actual color,
+     * so select the page's background color instead: */
+    border-color: var(--in-content-page-background);
+  }
+}
+
+.sidebar-footer-link,
+.sidebar-footer-link:visited {
+  /* Override link style for :hover and :hover:active states */
+  text-decoration: none !important;
+  color: inherit;
+}
+
+xul|*.sidebar-footer-link {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-footer-link:hover {
+  background-color: var(--in-content-button-background-hover);
+  color: var(--in-content-button-text-color-hover);
+  border-color: var(--in-content-button-border-color-hover);
+}
+
+.sidebar-footer-link:hover:active:not([disabled]) {
+  background-color: var(--in-content-button-background-active);
+  color: var(--in-content-button-text-color-active);
+  border-color: var(--in-content-button-border-color-active);
+}
+
+.sidebar-footer-link:focus-visible {
+  outline: var(--in-content-focus-outline);
+  outline-offset: var(--in-content-focus-outline-inset);
+}
+
+.sidebar-footer-icon {
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+  width: 16px;
+  height: 16px;
+  margin: 10px;
+  margin-inline-start: 13px;
+}
+
+.sidebar-footer-label {
+  font-size: .9em;
+  margin: 0 4px;
+  user-select: none;
+}
+
+@media (max-width: 830px) {
+  .sidebar-footer-list {
+    margin-inline-start: 40px;
+    align-items: flex-start;
+  }
+
+  .sidebar-footer-link {
+    width: 36px;
+    height: 36px;
+    padding-inline-start: 0;
+    margin-inline-start: 1px;
+  }
+
+  .sidebar-footer-icon {
+    margin-inline-start: 10px;
+  }
+
+  .sidebar-footer-label {
+    display: none;
+  }
+}

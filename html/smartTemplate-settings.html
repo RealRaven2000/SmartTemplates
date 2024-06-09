@@ -48,7 +48,7 @@
   <div class="hbox" id="prefBox" class="mainContent">
      <!-- new side menu -->
     <div class="vbox" id="pref-category-box">
-      <ul class="prefs-menu" id="categories">
+      <ul id="categories" class="prefs-menu categories" >
         <li class="category" id="catAccountTemplates" selected="true" page="smartTemplatePane">
           <label class="category-name">Account Templates</label>
         </li>
@@ -78,6 +78,11 @@
         </li>        
       </ul>
       <div class="spacer" flex="1"></div>
+      <div class="sidebar-footer-list">
+        <ul id="sidebarcategories" class="categories sidebarcategories" >
+          <li class="category" id="catLegacyPrefs"><label class="category-name">Legacy Preferences</label></li>
+        </ul>
+      </div>
     </div>
 
     <div class="vbox" id="preferencesContainer">

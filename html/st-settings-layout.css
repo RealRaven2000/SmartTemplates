@@ -35,7 +35,8 @@
   stroke: currentColor;
 }
 
-#categories > .category {
+#categories > .category,
+#sidebarcategories > .category  {
   appearance: none;
   border: 1px solid var(--in-content-primary-button-border-color);
   border-radius: 4px;
@@ -44,8 +45,7 @@
   line-height: 48px;
   margin-inline: 12px;
   min-height: 48px;
-  padding-inline: 34px;
-  padding-inline-end: 10px;
+  padding-inline: 34px 10px;
   list-style-type: none;
   transition: background-color 150ms;
   white-space: nowrap;
@@ -53,14 +53,16 @@
 
 /*smaller menus (hidden labels) */
 @media (max-width: 830px) {
-  #categories > .category {
+  #categories > .category,
+  #sidebarcategories > .category {
     margin-inline: 8px;
     padding-inline: 5px !important;
   }
 }
 
 @media (max-width: 600px) {
-  #categories > .category {
+  #categories > .category,
+  #sidebarcategories > .category {
     margin-inline: 0px !important;
     padding-inline: 2px !important;
   }
@@ -126,6 +128,19 @@
 #catSupport {
   background-image: url("../chrome/content/skin/icons/chat.svg");
 }
+
+/*** .sidebar-footer-list  - minor items at the bottom ***/
+#catLegacyPrefs {
+  background-image: url("../chrome/content/skin/icon32x32.png");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+.sidebar-footer-list #sidebarcategories {
+  box-sizing: border-box;
+  padding: 1px;
+}
+
 
 /* remove unnecessary inner scrollbars */
 #prefBox {

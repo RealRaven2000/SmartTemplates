@@ -83,6 +83,14 @@
             "description": "compose details from message that is about to be sent"
           }
         ]
+      },
+      
+      {
+        "name" : "readTemplateMenus",
+        "type" : "function",
+        "description": "read json file of all external templates, replaces fileTemplates.readStringFile()",
+        "async": true,
+        "parameters": []
       }
 
    ]

@@ -43,7 +43,7 @@
   --version-background: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
 }
 
-#categories {
+#categories, #sidebarcategories {
   & > .category {
     margin-inline: 6px;
     border-color: transparent !important;

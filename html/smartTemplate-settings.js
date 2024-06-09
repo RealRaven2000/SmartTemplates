@@ -18,17 +18,22 @@
 // -------------------------------------------------------
 // TO DO - REIMPLEMENT THE FOLLOWING FUNCTIONS:
 //     -    SmartTemplates.Settings.selectDefaultTemplates
-//     -    cleanupUnusedPrefs() - extend LegacyPrefs to remove branches!
-//     -    disable support menu if no license ??? search "supportTab"
-//     -    toggleExamples() + loadTemplatesFrame() to hide examples tab
-//     -    onCodeWord() receiver for events from help.xhtml
+//  FILE TEMPLATES!
+//     -    SmartTemplate4.fileTemplates.loadCustomMenu()  - fills the listboxes
+//          templateList.new  templateList.rsp and templateList.fwd
 //     -    getFileName() to retrieve a file from dialog - via experiment?
 //     -    getHeaderArgument()
+//  Editing / Managing (Account) Templates
 //     -    insertAtCaret()
+//     -    onCodeWord() receiver for events from help.xhtml
+//     -    cleanupUnusedPrefs() - extend LegacyPrefs to remove branches!
+//  UI
 //     -    fontSize()
 //     -		resolveAB_onClick()
 //     - 		updateStatusBar()
-//     -    setStatusIconMode() - backend function!
+//     -    setStatusIconMode() - call backend function!
+//     -    disable support menu if no license ??? search "supportTab"
+//     -    toggleExamples() + loadTemplatesFrame() to hide examples tab
 //     Account json save / load
 //     -		fileAccountSettings()  
 //   check currentAccountName  !!! should probably not use .label
@@ -39,11 +44,288 @@ var licenseInfo;
 import { SettingsUI } from "./st-settings-ui.mjs";
 import { logMissingFunction } from "./st-log.mjs";
 
+// global variable for updating file templates
+var LastInput = {
+  id: null,
+  value: "",
+  selectedIndex: null,
+  listbox: null
+}
+
+
 // use a global variable, similar to background script.
 var fileTemplates = {
-  Entries: [], 
-  MRU_Entries: [],
-	isModified: false  // global flag to trigger saving to back end at some stage (WIP)
+	Entries: {
+		templatesNew : [],
+		templatesRsp : [],
+		templatesFwd : [],
+    snippets: []
+	},
+	isModified: false,  // global flag to trigger saving to back end at some stage (WIP)
+
+	get activeFileList() {  //  was ListBox()
+		const container = document.querySelector("#fileTemplateContainer section.active");
+		if(!container) return null;
+		const select = container.querySelector(".fileTemplateList");
+		return select;
+	},
+
+	get CurrentEntries() {
+		try {
+			const activeSection = document.querySelector("#fileTemplateContainer section.active");
+			switch(activeSection.id) {
+				case "new-fileTemplates":
+					return this.Entries.templatesNew;
+				case "rsp-fileTemplates":
+					return this.Entries.templatesRsp;
+				case "fwd-fileTemplates":
+					return this.Entries.templatesFwd;
+        case "snippets-fileTemplates":
+					return this.Entries.snippets;
+			}
+		} catch(ex){;}
+		return [];
+	},	
+
+	// delete list (only of currently selected flavor)
+  clearList: function(onlyUI) {
+    if (!onlyUI) {
+      SmartTemplates.Settings.logDebug ('clearList() - empty templateFile list'); 
+			let entries = this.CurrentEntries;
+			if (entries) {
+				while (entries.length) { entries.pop();}
+			}
+    }
+		SmartTemplates.Settings.logDebug ('clearList() - empty listbox'); 
+		let theList = this.activeFileList;
+		if (theList) {
+			while(theList.lastElementChild) {
+				theList.removeChild(theList.lastElementChild);
+			}
+		}
+  },
+
+  // repopulates richlistbox and rebuilds menu!
+  repopulate: function(isRichList) {
+    // richlistbox
+    if (isRichList) {
+      this.clearList(true);
+      for (let i=0; i<this.CurrentEntries.length; i++) {
+        let entry = this.CurrentEntries[i],
+            cat = entry.category || "";
+        this.addItem(entry.path, fileTemplates.makeLabel(entry), cat, 0, i);
+        // populate the Entries array; fallback to browser bookmark type if undefined
+      }
+    }
+  },
+		
+
+	// label was changed, auto update the list!
+  onEditLabel: async function(txt, forceIndex=null) {
+    SmartTemplates.Settings.logDebug("onEditLabel", txt);
+    // check if one is selected and we just changed it]
+		debugger;
+    let path = document.getElementById('txtTemplatePath').value,
+        label = document.getElementById('txtTemplateTitle').value.trim(),
+        category = document.getElementById('txtTemplateCategory').value.trim(),
+        listbox = this.activeFileList,
+        idx = forceIndex || listbox.selectedIndex;
+
+		SmartTemplates.Settings.logDebugOptional("fileTemplates","onEdit();");
+    if (idx ==-1) return;
+    const e = this.CurrentEntries[idx];
+    // check if path matches
+		if (e.path != document.getElementById("txtTemplatePath").value)
+			return; // this is not a match. Let's not change the label
+		
+		if (e.label == label && e.category == category) {
+			return;
+		}
+		
+		// change label in list then save & reload.
+    if (txt) {
+      e.label = txt.value;
+    }
+    e.category = category;
+
+    if (forceIndex) {
+      let item = listbox.getItemAtIndex(forceIndex);
+      let v = JSON.parse(item.value),
+          p = v.path,
+          c = v.category || "";
+      switch(LastInput.id) {
+        case "txtTemplateCategory":
+          c = document.getElementById("txtTemplateCategory").value; // update with new value
+          item.value = JSON.stringify({path:p, category:c});
+          break;
+        case "txtTemplateTitle":
+          let txt = document.getElementById("txtTemplateTitle").value;
+          e.label = txt;
+          item.firstChild.value = fileTemplates.makeLabel(e); // txt; 
+          break;
+      }
+      await this.saveCustomMenu();
+      return;
+    }
+    await this.saveCustomMenu();
+		debugger;
+    this.repopulate(true); // rebuild menu
+		listbox.selectedIndex = idx; // reselect item
+  } , 	
+
+  updateInputGlobal: function(input) {
+    LastInput.id = input.id;
+    LastInput.value = input.value;
+    let listbox = this.activeFileList,
+        idx = listbox.selectedIndex;
+    LastInput.listbox = listbox; // remember this listbox. we only update if clicking a different item in the same.
+    LastInput.selectedIndex = idx;
+  },
+  
+
+	onSelect: async function (select)  {
+    SmartTemplates.Settings.logDebug("onSelect", select);
+    if (LastInput.listbox == select) {
+      if (LastInput.value != document.getElementById(LastInput.id).value) {
+        // let lastListItem = select.getItemAtIndex(LastInput.selectedIndex);
+        await this.onEditLabel(null, LastInput.selectedIndex);
+      }
+    }
+		let richlistitem = select.selectedOptions[0]; // can be multiple items
+		if (richlistitem) {
+      let p, 
+          c = "", 
+          v = richlistitem.value;
+      try {
+        v = JSON.parse(richlistitem.value);
+        p = v.path;
+        c = v.category || "";
+      }
+      catch(ex) {
+        p = v;
+      }
+			document.getElementById('txtTemplatePath').value = p;
+			document.getElementById('txtTemplateCategory').value = c;
+			document.getElementById('txtTemplateTitle').value = fileTemplates.sanitizeLabel(richlistitem.label, c);
+		}
+	} ,
+
+
+	onDragOver: function (event) {
+		event.preventDefault();
+    return false;
+
+	},
+	onDragEnter: function (event) {
+		this.classList.add('over');
+	},
+	onDragLeave: function (event) {
+		this.classList.remove('over');
+	},
+	onDragStart: function (event) {
+		this.style.opacity = '0.4';
+		event.dataTransfer.effectAllowed = "copy";
+		event.dataTransfer.setData("text/plain", this.value);
+	},
+	onDrop: function(event) {
+		let dataString = event.dataTransfer.getData('text/plain');
+		const data = JSON.parse(dataString);
+		let option = event.target; 
+		const target = JSON.parse(option.value);
+		console.log(`dropped[${data.position}]:\npath=${data.path}\nvategory=${data.category} `);
+		console.log(`target[${target.position}]:\npath=${target.path}\nvategory=${target.category}`);
+		return false;
+	},
+	onDragEnd: function (event,option) {
+		option.style.opacity = '1';
+		const pId = `#${option.parentElement.id} option`;
+		const items = document.querySelectorAll(pId);
+    items.forEach(function (item) {
+      item.classList.remove('over');
+    });
+	},
+
+
+	// adds an item to currently visible list
+	addItem: function (path, label, cat, sel, pos) {
+		const select = sel || this.activeFileList; 
+		if (!select) { return false; }
+		if (!cat) { cat="" };
+		const option = document.createElement("option");
+		option.value = JSON.stringify({path:path, category:cat, position:pos});
+		option.text = label
+		option.setAttribute("draggable",true);
+		option.addEventListener("drop", async (event) => {
+			event.stopPropagation();
+			event.preventDefault();
+			fileTemplates.onDrop(event);
+		});
+		option.addEventListener("dragstart", fileTemplates.onDragStart);
+		option.addEventListener("dragover", fileTemplates.onDragOver);
+		option.addEventListener("dragenter", fileTemplates.onDragEnter);
+		option.addEventListener("dragleave", fileTemplates.onDragLeave);
+		option.addEventListener("dragend", (event) => {
+			fileTemplates.onDragEnd(event,option);
+		});
+		select.add(option);
+
+		// make sure new item is selected and visible
+		let newIndex = select.length-1;
+		select.selectedIndex = newIndex;
+		// select.ensureIndexIsVisible(newIndex);
+	},
+
+	fillEntries: function(Entries,T,selectId) {
+		const select = document.getElementById(selectId);
+		if (!select) { console.log(`fillEntries fails - can't find select input ${selectId}`); return false }
+		if (!Entries) { console.log("missing Entries param"); return false };
+		while (T.length) { T.pop(); }
+		for (let i = select.options.length - 1 ; i >= 0 ; i--) {
+			select.remove(i);
+		}
+		for (let i=0; i<Entries.length; i++) {
+			let entry = Entries[i],
+					c = entry.category || "";
+			// populate the options list(s)
+			let theLabel = this.makeLabel(entry);
+			this.addItem(entry.path, theLabel, c, select, i);
+			// populate the Entries array from read data
+			T.push({ path:entry.path, label:entry.label, category:entry.category || "" });
+		}
+	}	,
+
+  makeLabel: function(entry) {
+    let cat = entry.category || "";
+    // use right pointing guillemet (left-pointing double angle quotation mark) as delimiter
+    let retval = cat ? (cat + " » " + entry?.label) : entry?.label;
+    return retval;
+  },
+
+  sanitizeLabel: function(lbl, c) {
+    if (!c) return lbl;
+    return lbl.replace(c + " » ", "");
+  },
+	
+	loadCustomMenu: async function() {
+		// replaces setting.js onLoad {
+		// 	SmartTemplate4.fileTemplates.loadCustomMenu(true);
+		// }
+		// moved SmartTemplate4.fileTemplates.readStringFile() to experiment
+		// This reads the menus directly from File!
+		let data = await messenger.Utilities.readTemplateMenus();
+		logMissingFunction("fileTemplates.loadCustomMenu()...");
+		SmartTemplates.Settings.logDebug("after reading smartTemplates.json:", data);
+		this.fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, 'templateList.new');
+		this.fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, 'templateList.rsp');
+		this.fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd,  'templateList.fwd');
+		this.fillEntries(data.snippets, fileTemplates.Entries.snippets, 'templateList.snippets');
+	} ,
+
+  // save to file
+  saveCustomMenu: async function ()  {
+		logMissingFunction("saveCustomMenu");
+	}
+
 }; // copy of recent and configured file templates from SmartTemplate4.fileTemplates
 
 async function initFileTemplates(data) {
@@ -51,7 +333,6 @@ async function initFileTemplates(data) {
 	fileTemplates.Entries = data.Entries;
 	fileTemplates.MRU_Entries = data.MRU_Entries;
 }
-
 
 async function initLicenseInfo() {
   licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
@@ -585,6 +866,7 @@ SmartTemplates.Settings = {
 		}
 		
     logMissingFunction("implement onLoad completion => remaining details...");
+		await fileTemplates.loadCustomMenu(true);
 
 
     
@@ -802,7 +1084,6 @@ SmartTemplates.Settings = {
 		}		
 
 		// hide use common checkbox on first account, and add explanation
-		debugger;
 		const common1st = common.querySelector(".commonContainer label");
 		common1st.style.display="none";
 		const commonContainer = common.querySelector(".commonContainer");
@@ -932,7 +1213,6 @@ SmartTemplates.Settings = {
 	// move the file buttons to the correct field
   selectFileCase : function (section) {
 		function moveFileControls(select) {
-			debugger;
 			let fc = document.getElementById('fileControls'),
 			    selectInput = document.getElementById(select);
 			// move to the correct panel (if it's not already there)
@@ -1838,19 +2118,25 @@ function addUIListeners() {
   // ============================
 	let txtTitle = document.getElementById("txtTemplateTitle");
 	txtTitle.addEventListener("blur",(event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.onEditLabel(this)");
+		fileTemplates.onEditLabel(txtTitle);
 	});	
 	txtTitle.addEventListener("focus",(event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.updateInputGlobal(this)");
+		fileTemplates.updateInputGlobal(txtTitle);
 	});	
 
 	let txtCategory = document.getElementById("txtTemplateCategory");
 	txtCategory.addEventListener("blur",(event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.onEditLabel()");
+		fileTemplates.onEditLabel(txtCategory);
 	});	
 	txtCategory.addEventListener("focus",(event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.updateInputGlobal(this)");
+		fileTemplates.updateInputGlobal(txtCategory);
 	});
+	for (let select of document.querySelectorAll("#fileTemplateContainer select.fileTemplateList")) {
+		select.addEventListener("change", (evt) => {
+		  fileTemplates.onSelect(select);
+		})
+	};
+	
 	
 	// =========== SUPPORT PAGE
 	document.getElementById("supportType").addEventListener("change", (event) => {
@@ -1894,6 +2180,13 @@ function addUIListeners() {
 			}
 		});
 	}
+	document.getElementById("catLegacyPrefs").addEventListener("click", async (event) => {
+		messenger.runtime.sendMessage({ command: "showLegacyPreferences" });		
+		// close this tab
+		let mytab = await browser.tabs.getCurrent();
+		browser.tabs.remove(mytab.id);
+	});		
+	
 
   // replace SmartTemplate4.Util.showAboutConfig command handlers
 	addConfigEvent(document.getElementById("identityLabel"), "extensions.smartTemplate4.identities");

@@ -259,6 +259,7 @@ SmartTemplate4.fileTemplates = {
     SmartTemplate4.Util.logDebug("checkModifications", evt);
   } ,
   
+  // uses global variables LastInput from settings.js!
 	onSelect: async function(rlb) {
     SmartTemplate4.Util.logDebug("onSelect", rlb);
     if (LastInput.listbox == rlb) {
@@ -508,7 +509,7 @@ SmartTemplate4.fileTemplates = {
 
     try {
       let fileTemplates = this; // closure this
-      let CustomMenuData = await this.readStringFile();
+      let data = await this.readStringFile();
       {
         // populate the templates list
         util.logDebug ("loadCustomMenu() - Success"); 
@@ -533,10 +534,8 @@ SmartTemplate4.fileTemplates = {
             // populate the Entries array from read data
             T.push({ path:entry.path, label:entry.label, category:entry.category || "" });
           }
-          
         }
         
-        let data = CustomMenuData; // JSON.parse(new TextDecoder().decode(CustomMenuData));
         fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, fromOptions ? fileTemplates.RichList('new') : null);
         fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, fromOptions ? fileTemplates.RichList('rsp') : null);
         fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd, fromOptions ? fileTemplates.RichList('fwd') : null);

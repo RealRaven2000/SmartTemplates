@@ -86,9 +86,30 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           let realTabWindow = tabObject.window;
           let rv = await realTabWindow.SmartTemplate4.composer.beforeSend(composeDetails);
           return rv;
+        },
+
+        readTemplateMenus: async function() { // replaces SmartTemplate4.fileTemplates.readStringFile()
+          let profileDir = PathUtils.profileDir,
+          path = PathUtils.join(profileDir, "extensions", "smartTemplates.json"),
+          isExist = await IOUtils.exists(path);
+          if (!isExist) { // [issue 227] default smartTemplates.json data
+            let defaultContent = `{
+              "templatesNew": [
+              ],
+              "templatesRsp": [
+              ],
+              "templatesFwd": [
+              ],
+              "snippets": [
+              ]
+            }
+            `;
+            return JSON.parse(defaultContent);
+          }
+          let promise = IOUtils.readJSON(path, { encoding: "utf-8" }); // Read the complete file as an json object
+      
+          return promise;        
         }
-  
-        // get may only return something, if a value is set
       }
     }
   };

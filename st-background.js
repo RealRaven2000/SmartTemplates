@@ -239,6 +239,15 @@ async function getTargetTemplate(controller, type) {
   return `test - ${controller} [${type}] ` ;
 }
 
+function openLegacyPrefs() {
+  messenger.NotifyTools.notifyExperiment({
+    event: "doCommand", 
+    detail: {
+      cmd: "smartTemplates-settings", // will be re-packaged as el.id
+      params: {} 
+    }
+  });
+}
 
 var MenuHelper = {
   injectAccessKey: function(txt, accesskey=null) {
@@ -1176,6 +1185,9 @@ async function main() {
               params: { anchor: data.topic }
             }
           });
+          break;
+        case "showLegacyPreferences":
+          openLegacyPrefs();
           break;
       }
     }
