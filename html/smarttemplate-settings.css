@@ -453,9 +453,15 @@ groupbox.transparent .groupbox-title {
 	background-repeat: no-repeat;
 	background-size: 64px;
 }
-#fileTemplateContainer select option.over {
-	border: 3px dotted #666;
+#fileTemplateContainer select option.overTop {
+	border: 2px dotted #666;
+	border-top: 3px solid #666;
 }
+#fileTemplateContainer select option.overBottom {
+	border: 2px dotted #666;
+	border-bottom: 3px solid #666;
+}
+
 
 
 #new-fileTemplates select {
@@ -913,6 +919,7 @@ label.plain-link:hover::before {
 
 .templateList button span {
 	padding-top: 0.8em;
+	text-wrap: nowrap;
 }
 
 
@@ -946,7 +953,9 @@ label.plain-link:hover::before {
 .templateList #btnEdit {
 	background-image:  url("../chrome/content/skin/icons/pencil-field.png");
 }
-
+.templateList #btnPushUI {
+	background-image:  url("../chrome/content/skin/icons/menu-arrow.png");
+}
 
 .templateLabel {
 	min-width: 80px;

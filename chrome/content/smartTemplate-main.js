@@ -136,8 +136,8 @@ END LICENSE BLOCK
     # Minor layout improvements in settings screen
     # improved templates scrolling when moving menu items up / down
 
-  Version 4.5.1 - FUTURE VERSION / WIP
-    # Compatible with 127.*
+  Version 4.6 - FUTURE VERSION / WIP
+    # Will be Compatible with 128.*
     # [issue 259] Convert Settings screen to HTML, and move to Tab
     # [issue 293] Support multiple parameters for %header.delete()% and %header.deleteFromSubject()% 
     # optimize licenser (omit folders when listing accounts uising API)

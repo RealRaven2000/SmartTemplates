@@ -210,17 +210,44 @@ var fileTemplates = {
 		}
 	} ,
 
+  dropFiles: function(event) {
+		if (event.dataTransfer.files.length == 0) {
+			return false;
+		}
+		const option = event.target,
+		      target = JSON.parse(option.value);
 
+		logMissingFunction("fileTemplates.dropFiles");
+		console.log(event.dataTransfer.files);
+		console.log(`target[${target.position}]:\npath=${target.path}\nvategory=${target.category}`);
+		// we cannot determine the path, but we could send a message to the backgrouound page tp:
+		// - look for the file in the last location (or a root folder for templates)
+		// - when a file of matching name is found: 
+		//   > display the file open dialog and prepopulate it with path and file name!
+		alert("Sorry, at the moment dropping files is not supported - as we are not allowed to see the folder location from a web extension. We will find a workaround in the future!");
+		return true;
+	},
 	onDragOver: function (event) {
 		event.preventDefault();
     return false;
-
 	},
 	onDragEnter: function (event) {
-		this.classList.add('over');
+		let dataString = event.dataTransfer.getData('text/plain');
+		if (!dataString) return;
+		const data = JSON.parse(dataString);
+		const option = event.target; 
+		const target = JSON.parse(option.value);		
+		if (data.position<target.position) {
+			// drag below target!
+			this.classList.add('overBottom');
+		} else {
+			// drag above target
+			this.classList.add('overTop');
+		}
 	},
 	onDragLeave: function (event) {
-		this.classList.remove('over');
+		this.classList.remove('overTop');
+		this.classList.remove('overBottom');
 	},
 	onDragStart: function (event) {
 		this.style.opacity = '0.4';
@@ -229,20 +256,35 @@ var fileTemplates = {
 	},
 	onDrop: function(event) {
 		let dataString = event.dataTransfer.getData('text/plain');
+		if (!dataString && event.dataTransfer.files) {
+			if (fileTemplates.dropFiles(event)) {
+				return false;
+			}
+		}
+		if (!dataString) return false; // could not read
 		const data = JSON.parse(dataString);
-		let option = event.target; 
+		const option = event.target; 
 		const target = JSON.parse(option.value);
-		console.log(`dropped[${data.position}]:\npath=${data.path}\nvategory=${data.category} `);
-		console.log(`target[${target.position}]:\npath=${target.path}\nvategory=${target.category}`);
-		return false;
+		console.log(`dropped[${data.position}]:\npath=${data.path}\ncategory=${data.category} `);
+		console.log(`target[${target.position}]:\npath=${target.path}\ncategory=${target.category}`);
+		option.classList.remove('overTop');
+		option.classList.remove('overBottom');
+		// move the item in the datastructure:
+		array_move(fileTemplates.CurrentEntries, data.position, target.position);
+		// refresh list on screen:
+		fileTemplates.repopulate(true);
+		this.activeFileList.selectedIndex = target.position;
+		return true;
 	},
 	onDragEnd: function (event,option) {
+		if (!option.parentElement) { return; }
 		option.style.opacity = '1';
 		const pId = `#${option.parentElement.id} option`;
 		const items = document.querySelectorAll(pId);
     items.forEach(function (item) {
-      item.classList.remove('over');
-    });
+			this.classList.remove('overTop');
+			this.classList.remove('overBottom');
+		});
 	},
 
 
@@ -1722,6 +1764,24 @@ async function savePref(event) {
 	}  
 }
 
+function array_move(arr, old_index, new_index) {
+	while (old_index < 0) {
+		old_index += arr.length;
+	}
+	while (new_index < 0) {
+		new_index += arr.length;
+	}
+	if (new_index >= arr.length) {
+		var k = new_index - arr.length + 1;
+		while (k--) {
+			arr.push(undefined);
+		}
+	}
+	arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+	return arr; // for testing purposes
+};
+	
+
 const getElement = window.document.getElementById.bind(window.document);
 
 /********** 
@@ -1953,6 +2013,10 @@ function addUIListeners() {
 	document.getElementById("btnEdit").addEventListener("click", (event) => {
 		logMissingFunction("SmartTemplate4.fileTemplates.edit()");
 	});
+	document.getElementById("btnPushUI").addEventListener("click", (event) => {
+		logMissingFunction("update backend data + UI!");
+	});	
+	
 	document.getElementById("helpSnippets").addEventListener("click", (event) => {
 		SmartTemplates.Util.showStationeryPage("snippets"); // contains an anchor
 	});
