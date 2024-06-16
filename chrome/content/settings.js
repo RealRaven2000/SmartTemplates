@@ -752,10 +752,11 @@ SmartTemplate4.Settings = {
     
     
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
-    if (fileType=='folder')
-      fp.init(window, "", fp.modeGetFolder);
-    else
-      fp.init(window, "", fp.modeOpen); // second parameter: prompt
+    if (fileType=='folder') {
+      fp.init(SmartTemplate4.Util.getFileInitArg(window), "", fp.modeGetFolder);
+		} else {
+      fp.init(SmartTemplate4.Util.getFileInitArg(window), "", fp.modeOpen); // second parameter: prompt
+		}
     switch (fileType) {
       case 'folder':
         filterText = util.getBundleString("fpFolder");
@@ -1431,7 +1432,7 @@ SmartTemplate4.Settings = {
 			defaultPath.initWithPath(prefs.getStringPref('files.path'))
 			fp.displayDirectory = defaultPath; // nsILocalFile
 		}    
-		fp.init(window, "", fileOpenMode); // second parameter: prompt
+		fp.init(SmartTemplate4.Util.getFileInitArg(window), "", fileOpenMode); // second parameter: prompt
     filterText = util.getBundleString("fpJsonFile");
     fp.appendFilter(filterText, "*.json");
     fp.defaultExtension = 'json';

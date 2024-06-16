@@ -121,6 +121,14 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           // opens external editor to edit template in background.
           // there is no need to update anything in Thunderbird as path remains the same!
           win.SmartTemplate4.fileTemplates.edit(item);
+        },
+
+        // Get file path of existing html template / css file.
+        // itemParams: template menu item from listbox {path, label, filter}
+        // should return path and name (label) of the file
+        openFileExternal: async function(itemParams) {
+          let result = await win.SmartTemplate4.fileTemplates.openTemplateFileExternal(itemParams);
+          return result;
         }
       }
     }

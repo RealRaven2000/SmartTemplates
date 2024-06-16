@@ -113,9 +113,22 @@
         "async": true,
         "parameters": [
           {
-            "name": "tiem",
+            "name": "item",
             "type": "any",
             "description": "template menu item from listbox {path, label, category}"
+          }
+        ]
+      },
+      {
+        "name": "openFileExternal",
+        "type": "function",
+        "description": "Get file path of existing html template / css file.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "item",
+            "type": "any",
+            "description": "template menu item from listbox {path, label, filter}"
           }
         ]
       }

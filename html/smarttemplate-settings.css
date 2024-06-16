@@ -349,7 +349,8 @@ groupbox.transparent .groupbox-title {
 
 /* this label will be shown on the common account settings instead of the [x] Common checkbox */
 #commonSettingsExplainer {
-	text-wrap: balance;
+	white-space: normal;
+	white-space: normal balance;
   font-size: 0.9em;
 }
 
@@ -879,7 +880,8 @@ tab#SmartTemplate4-Pro.expired {
 #validationResults description {
 	max-width: unset !important;
 	text-align: center;
-	text-wrap: balance;
+	white-space: normal;
+	white-space: normal balance;
 }
 
 label.plain-link::before, 
@@ -924,7 +926,7 @@ label.plain-link:hover::before {
 
 .templateList button span {
 	padding-top: 0.8em;
-	text-wrap: nowrap;
+	white-space: nowrap;
 }
 
 

@@ -205,6 +205,13 @@ SmartTemplate4.Util = {
 		return null;
   } ,
 
+	getFileInitArg: function(win) {
+		if (!win) return null;
+		if (this.versionGreaterOrEqual(this.AppverFull, "125")) {    
+			return win.browsingContext;
+		}
+		return win;
+	},
 
   /* premiumFeatures: array of premium function used during getProcessedText calls.
    * this gathers all into a single consolidated notification.	

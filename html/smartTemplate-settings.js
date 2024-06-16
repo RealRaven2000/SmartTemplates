@@ -302,6 +302,22 @@ var fileTemplates = {
 		const item = fileTemplates.CurrentEntries[this.activeFileList.selectedIndex];
 		messenger.Utilities.editTemplateExternal(item);
 	},
+	openFilePicker: async function() {
+		logMissingFunction("SmartTemplate4.fileTemplates.pickFileFromSettings()");
+		debugger;
+		let result = await messenger.Utilities.openFileExternal(
+			{
+				path: "",
+				filter: "*.html;*.css"
+			}
+		);
+		console.log("Returned file info", result)
+		debugger;
+		if (result.path) {
+			document.getElementById('txtTemplatePath').value = result.path;
+			document.getElementById('txtTemplateTitle').value = result.name;
+		}
+	},
   dropFiles: function(event) {
 		if (event.dataTransfer.files.length == 0) {
 			return false;
@@ -2114,6 +2130,7 @@ function addUIListeners() {
 		SmartTemplates.Settings.logDebug("Sending entries data to experiment...");
 		messenger.Utilities.updateTemplates(fileTemplates.Entries);
 	});	
+
 	
 	document.getElementById("helpSnippets").addEventListener("click", (event) => {
 		SmartTemplates.Util.showStationeryPage("snippets"); // contains an anchor
@@ -2244,7 +2261,7 @@ function addUIListeners() {
 	}
 	// file picker button
 	document.getElementById("btnPickTemplate").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.pickFileFromSettings()");
+		fileTemplates.openFilePicker();
 	});	
 
 

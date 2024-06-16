@@ -144,7 +144,7 @@ SmartTemplate4.fileTemplates = {
   },
 	
 	RichList: function (flavour) {
-		return this.document.getElementById('templateList.' + flavour)
+		return this.document.getElementById("templateList_" + flavour)
 	},
 	
 	// adds an item to currently visible list
@@ -1240,7 +1240,7 @@ SmartTemplate4.fileTemplates = {
       document.getElementById('btnPickTemplate') : null;
     if (el) el.classList.remove('pulseRed'); // remove animation. we've found the button!
 		this.pickFile(
-		  function(localFile) {
+		  async function(localFile) {
 				const prefs = SmartTemplate4.Preferences;
 				if (localFile) {
 					document.getElementById('txtTemplatePath').value = localFile.path;
@@ -1250,14 +1250,14 @@ SmartTemplate4.fileTemplates = {
 					document.getElementById('txtTemplateTitle').value = name;
 					prefs.setStringPref('fileTemplates.path',localFile.parent.path); // store folder as default for next time.
 				}
-			}
-		),
-    'fileTemplates.path'
+			},
+      "fileTemplates.path"
+		);
 	} ,
 	
   // @initialPathPref: defaults to the path setting from menu configuration (ST4 prefs dialog)
   //                   but can be overwritten for remembering a path when open file is selected from reply menu
-	pickFile: function fileTemplates_pickFile(lastCallback, initialPathPref='fileTemplates.path') {
+	pickFile: function (lastCallback, initialPathPref='fileTemplates.path') {
     const Cc = Components.classes,
           Ci = Components.interfaces,
           util = SmartTemplate4.Util,
@@ -1271,14 +1271,22 @@ SmartTemplate4.fileTemplates = {
 		if (prefs.getStringPref(initialPathPref)) {
       try {
         let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-        defaultPath.initWithPath(prefs.getStringPref(initialPathPref))
-        fp.displayDirectory = defaultPath; // nsILocalFile
+        defaultPath.initWithPath(prefs.getStringPref(initialPathPref));
+        if (!defaultPath.exists()) {
+          defaultPath.initWithPath(PathUtils.profileDir);
+        } 
+        if (defaultPath.exists()) {
+          fp.displayDirectory = defaultPath; // nsILocalFile
+        }
       } catch (ex) {
         util.logException("Failed to open path: " + defaultPath, ex);
       }
 		} 
 		
-		fp.init(window, "", fp.modeOpen);
+
+    // [bug 1882701]
+    let winarg = SmartTemplate4.Util.getFileInitArg(window);  // Tb 125
+		fp.init(winarg, "", fp.modeOpen);
 
     fp.appendFilter(util.getBundleString("fpFilterHtmlTemplate"), "*.html; *.htm");
     fp.appendFilter(util.getBundleString("fpFilterStyleSheet"), "*.css");
@@ -1305,6 +1313,40 @@ SmartTemplate4.fileTemplates = {
     
     return true;    
   }  ,
+
+  // Get file path of existing html template / css file.
+  // itemParams: template menu item from listbox {path, label, filter}
+  // should return path of the file
+  openTemplateFileExternal:  async function(itemParams) {
+    let resolver; //placeholder for resolver callback, outside of promise
+    let newPromise = new Promise(inner_res => {
+        resolver = inner_res; //assign resolver callback as value to outside @res
+    });
+    // we can call resolver (from a callback) to resolve the promise.
+    let returnedItem = {
+      path:"", 
+      name:""
+    }
+    this.pickFile(
+		  async function(localFile) {
+        // this will be execute _after_ file picker
+				if (localFile) {
+          returnedItem.path = localFile.path;
+					// document.getElementById('txtTemplatePath').value = localFile.path;
+					// we could potentially parse the file 
+					// and find the <title> tag!
+					let name = localFile.leafName.replace(".html","").replace(".htm","").replace(".css","");
+					// document.getElementById('txtTemplateTitle').value = name;
+          returnedItem.name = name;
+					SmartTemplate4.Preferences.setStringPref('fileTemplates.path', localFile.parent.path); // store folder as default for next time.
+				}
+        resolver();
+      },
+      "fileTemplates.instantPath"
+    );
+    await newPromise;
+    return returnedItem;
+  },
 	
 
   composeFromAPI: async function (menuEntry) {
