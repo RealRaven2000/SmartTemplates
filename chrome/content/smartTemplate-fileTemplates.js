@@ -216,9 +216,7 @@ SmartTemplate4.fileTemplates = {
 		}
 		
 		// change label in list then save & reload.
-    if (txt) {
-      e.label = txt.value;
-    }
+    e.label = label; // txt.value;
     e.category = category;
 
     if (forceIndex) {
@@ -400,16 +398,22 @@ SmartTemplate4.fileTemplates = {
     listbox.ensureIndexIsVisible (targetIdx < listbox.getRowCount()-1  ? targetIdx-1 : targetIdx);
   },
 	
-  edit: async function() {
-    const EditorPathSetting = "fileTemplates.editor.path";
-    let listbox = this.ListBox,
-        idx = listbox.selectedIndex;
-    let editorPath = SmartTemplate4.Preferences.getStringPref(EditorPathSetting),
-        wrn = SmartTemplate4.Util.getBundleString("prompt.fileTemplates.editor.setup");
 
+  editLegacy: async function() {
+    const idx = this.ListBox.selectedIndex;
     if (idx<0) {
       return;
     }
+    const item = this.CurrentEntries[idx];
+    if (item) {
+      this.edit(item);
+    }
+  }, 
+  
+  edit: async function(item) {
+    const EditorPathSetting = "fileTemplates.editor.path";
+    let editorPath = SmartTemplate4.Preferences.getStringPref(EditorPathSetting),
+        wrn = SmartTemplate4.Util.getBundleString("prompt.fileTemplates.editor.setup");
             
     if (!editorPath) {
       SmartTemplate4.Message.display(
@@ -428,7 +432,6 @@ SmartTemplate4.fileTemplates = {
     
     // editorPath = SmartTemplate4.Preferences.getStringPref(EditorPathSetting)
     if (!editorPath) { return; }
-    let item = this.CurrentEntries[idx];
 
     const Cc = Components.classes,
           Ci = Components.interfaces,
@@ -618,6 +621,17 @@ SmartTemplate4.fileTemplates = {
       util.logException("SmartTemplate4.fileTemplates.saveCustomMenu()", ex);
     }
         
+  },
+
+  // use this function to transmit menus from old dialog
+  updateTemplatesDataFromBackEnd: async function(entries) {
+    console.log("Experiment received Entries / original entries:", entries, this.Entries);
+    // copy new data:
+		this.Entries.templatesNew = entries.templatesNew;
+		this.Entries.templatesRsp = entries.templatesRsp;
+		this.Entries.templatesFwd = entries.templatesFwd;
+		this.Entries.snippets = entries.snippets;
+    this.saveCustomMenu();
   },
 
   createTemplateItem: function (doc, composeType, theTemplate) {

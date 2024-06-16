@@ -508,6 +508,11 @@ groupbox.transparent .groupbox-title {
 	height: calc(95vh - 22em);
 }
 
+#fileTemplateContainer #templateList_snippets {
+	/* extra space for label on top */
+	height: calc(95vh - 24.1em);
+}
+
 select.fileTemplateList {
 	font-size: 12px;
 	font: menu;

@@ -1209,16 +1209,16 @@ SmartTemplate4.Settings = {
 		util.logDebug(`Selected [${el.selectedIndex}] ${el.id}`, el); // tabbox value
 		switch (el.selectedIndex) {
 			case 0:
-				moveFileControls('templateList.new');
+				moveFileControls('templateList_new');
 				break;
 			case 1:
-				moveFileControls('templateList.rsp');
+				moveFileControls('templateList_rsp');
 				break;
 			case 2:
-				moveFileControls('templateList.fwd');
+				moveFileControls('templateList_fwd');
 				break;
 			case 3:
-				moveFileControls('templateList.snippets');
+				moveFileControls('templateList_snippets');
 				break;
 			default:
 		}

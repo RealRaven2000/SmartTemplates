@@ -109,6 +109,18 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           let promise = IOUtils.readJSON(path, { encoding: "utf-8" }); // Read the complete file as an json object
       
           return promise;        
+        },
+
+        updateTemplates: async function(entries) {
+          this.logDebug("SmartTemplates Experiment - sending Entries...");
+          win.SmartTemplate4.fileTemplates.updateTemplatesDataFromBackEnd(entries);
+        },
+
+        // item: {path, label, category}
+        editTemplateExternal: async function(item) {
+          // opens external editor to edit template in background.
+          // there is no need to update anything in Thunderbird as path remains the same!
+          win.SmartTemplate4.fileTemplates.edit(item);
         }
       }
     }

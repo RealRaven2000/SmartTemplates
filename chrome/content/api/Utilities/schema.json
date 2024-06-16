@@ -91,6 +91,33 @@
         "description": "read json file of all external templates, replaces fileTemplates.readStringFile()",
         "async": true,
         "parameters": []
+      },
+
+      {
+        "name":"updateTemplates",
+        "type" : "function",
+        "description": "transmit json data for all external template menus, updates experiment",
+        "async": true,
+        "parameters": [
+          {
+            "name": "entries",
+            "type": "any",
+            "description": "Entries: templatesNew, templatesRsp, templatesFwd, snippets"
+          }
+        ]
+      },
+      {
+        "name": "editTemplateExternal",
+        "type": "function",
+        "description": "open external HTML editor to edit existing template.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "tiem",
+            "type": "any",
+            "description": "template menu item from listbox {path, label, category}"
+          }
+        ]
       }
 
    ]

@@ -13,14 +13,12 @@
 // we can only do this if we load this file itself as a module.
 // import {Preferences} from "../scripts/st-prefs.mjs.js"; 
 // debugger;
-
+// listbox.getItemAtIndex() ==> listbox.item()
 
 // -------------------------------------------------------
 // TO DO - REIMPLEMENT THE FOLLOWING FUNCTIONS:
 //     -    SmartTemplates.Settings.selectDefaultTemplates
 //  FILE TEMPLATES!
-//     -    SmartTemplate4.fileTemplates.loadCustomMenu()  - fills the listboxes
-//          templateList.new  templateList.rsp and templateList.fwd
 //     -    getFileName() to retrieve a file from dialog - via experiment?
 //     -    getHeaderArgument()
 //  Editing / Managing (Account) Templates
@@ -124,7 +122,6 @@ var fileTemplates = {
   onEditLabel: async function(txt, forceIndex=null) {
     SmartTemplates.Settings.logDebug("onEditLabel", txt);
     // check if one is selected and we just changed it]
-		debugger;
     let path = document.getElementById('txtTemplatePath').value,
         label = document.getElementById('txtTemplateTitle').value.trim(),
         category = document.getElementById('txtTemplateCategory').value.trim(),
@@ -143,13 +140,11 @@ var fileTemplates = {
 		}
 		
 		// change label in list then save & reload.
-    if (txt) {
-      e.label = txt.value;
-    }
+		e.label = label;
     e.category = category;
 
     if (forceIndex) {
-      let item = listbox.getItemAtIndex(forceIndex);
+      let item = listbox.item(forceIndex);
       let v = JSON.parse(item.value),
           p = v.path,
           c = v.category || "";
@@ -182,22 +177,21 @@ var fileTemplates = {
     LastInput.selectedIndex = idx;
   },
   
-
 	onSelect: async function (select)  {
     SmartTemplates.Settings.logDebug("onSelect", select);
     if (LastInput.listbox == select) {
       if (LastInput.value != document.getElementById(LastInput.id).value) {
-        // let lastListItem = select.getItemAtIndex(LastInput.selectedIndex);
+        // let lastListItem = select.item(LastInput.selectedIndex);
         await this.onEditLabel(null, LastInput.selectedIndex);
       }
     }
-		let richlistitem = select.selectedOptions[0]; // can be multiple items
-		if (richlistitem) {
+		let listItem = select.selectedOptions[0]; // can be multiple items
+		if (listItem) {
       let p, 
           c = "", 
-          v = richlistitem.value;
+          v = listItem.value;
       try {
-        v = JSON.parse(richlistitem.value);
+        v = JSON.parse(listItem.value);
         p = v.path;
         c = v.category || "";
       }
@@ -206,10 +200,108 @@ var fileTemplates = {
       }
 			document.getElementById('txtTemplatePath').value = p;
 			document.getElementById('txtTemplateCategory').value = c;
-			document.getElementById('txtTemplateTitle').value = fileTemplates.sanitizeLabel(richlistitem.label, c);
+			document.getElementById('txtTemplateTitle').value = fileTemplates.sanitizeLabel(listItem.label, c);
 		}
 	} ,
 
+	// was SmartTemplate4.fileTemplates.update()
+	updateEntry: async function(isNew = false) {
+    const path = document.getElementById('txtTemplatePath').value,
+          label = document.getElementById('txtTemplateTitle').value,
+          category = document.getElementById('txtTemplateCategory').value;
+		
+
+		if (!label.trim()) {
+			alert(getBundleString("st.fileTemplates.wrnEnterTitle"));
+			return;
+		}
+		if (!path.trim()) {
+			alert(getBundleString("st.fileTemplates.wrnEnterPath"));
+			return;
+		}
+
+		let existingEntry, selectedIndex, targetIndex = 0;
+		if (!isNew) { // update case
+			selectedIndex = this.activeFileList.selectedIndex;
+      if (selectedIndex<0) {
+				alert(getBundleString("st.fileTemplates.wrnSelectUpdateItem"));
+        return;
+      }
+      existingEntry = this.CurrentEntries[selectedIndex];
+      existingEntry.path = path;
+      existingEntry.label = label;
+      existingEntry.category = category || ""; 
+		}
+		debugger;
+
+		if (!this.activeFileList.selectedOptions) {
+			debugger;
+		} else {
+			if (this.activeFileList.selectedOptions.length) {
+				targetIndex = selectedIndex;
+			}
+		}
+    if (!existingEntry) {
+      let entry = {
+        path: path, 
+        label: label, 
+        category: category
+      }
+      this.addItem(path, fileTemplates.makeLabel(entry), category, this.activeFileList, targetIndex);
+			if (targetIndex == null || targetIndex<0) { // append at end
+      	this.CurrentEntries.push(entry);
+			} else {
+				// insert new item at position!
+				this.CurrentEntries.splice(targetIndex, 0, entry);
+			}
+    } else {
+      // update existing item (label)
+      SmartTemplates.Settings.logDebug(`Updating existing item: ${existingEntry.label} [${existingEntry.path} , ${existingEntry.category} ]`);
+      // this.activeFileList.ensureIndexIsVisible(targetIndex);
+      this.CurrentEntries[selectedIndex].label = label;
+      this.activeFileList.item(selectedIndex).label = fileTemplates.makeLabel(this.CurrentEntries[selectedIndex]); 
+      // update path!
+      this.activeFileList.item(selectedIndex).value = JSON.stringify({path:path, category:category, position: selectedIndex});
+    }
+
+		logMissingFunction(`SmartTemplate4.fileTemplates.update(${isNew})`);
+	},
+	addEntry: async function() {
+		this.updateEntry(true);
+	},
+	removeEntry: async function() {
+		let currentPos = fileTemplates.activeFileList.selectedIndex;
+		if (currentPos<0) return;
+		fileTemplates.CurrentEntries.splice(currentPos, 1);
+		fileTemplates.activeFileList.remove(currentPos);
+		fileTemplates.selectedIndex = currentPos;
+		fileTemplates.repopulate(true);
+	},
+	moveEntryUp: async function() {
+		let currentPos = fileTemplates.activeFileList.selectedIndex;
+		if (currentPos<=0) return;
+		// move the item in the datastructure:
+		array_move(fileTemplates.CurrentEntries, currentPos, currentPos-1);
+		// refresh list on screen:
+		fileTemplates.repopulate(true);
+		this.activeFileList.selectedIndex = currentPos-1;
+	},
+	moveEntryDown: async function() {
+		logMissingFunction("SmartTemplate4.fileTemplates.moveEntryDown()");
+		let currentPos = fileTemplates.activeFileList.selectedIndex;
+		if (currentPos<0) return;
+		if (currentPos+1>=fileTemplates.activeFileList.length) return;
+		// move the item in the datastructure:
+		array_move(fileTemplates.CurrentEntries, currentPos, currentPos+1);
+		// refresh list on screen:
+		fileTemplates.repopulate(true);
+		this.activeFileList.selectedIndex = currentPos+1;
+	},
+	editEntry: async function() {
+		if (this.activeFileList.selectedIndex<0) return;
+		const item = fileTemplates.CurrentEntries[this.activeFileList.selectedIndex];
+		messenger.Utilities.editTemplateExternal(item);
+	},
   dropFiles: function(event) {
 		if (event.dataTransfer.files.length == 0) {
 			return false;
@@ -357,10 +449,10 @@ var fileTemplates = {
 		let data = await messenger.Utilities.readTemplateMenus();
 		logMissingFunction("fileTemplates.loadCustomMenu()...");
 		SmartTemplates.Settings.logDebug("after reading smartTemplates.json:", data);
-		this.fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, 'templateList.new');
-		this.fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, 'templateList.rsp');
-		this.fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd,  'templateList.fwd');
-		this.fillEntries(data.snippets, fileTemplates.Entries.snippets, 'templateList.snippets');
+		this.fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, 'templateList_new');
+		this.fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, 'templateList_rsp');
+		this.fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd,  'templateList_fwd');
+		this.fillEntries(data.snippets, fileTemplates.Entries.snippets, 'templateList_snippets');
 	} ,
 
   // save to file
@@ -1272,16 +1364,16 @@ SmartTemplates.Settings = {
 		SmartTemplates.Util.logDebug(`Selected [${section.id}] ${section.id}`, section); 
 		switch (section.id) {
 			case "new-fileTemplates":
-				moveFileControls('templateList.new');
+				moveFileControls('templateList_new');
 				break;
 			case "rsp-fileTemplates":
-				moveFileControls('templateList.rsp');
+				moveFileControls('templateList_rsp');
 				break;
 			case "fwd-fileTemplates":
-				moveFileControls('templateList.fwd');
+				moveFileControls('templateList_fwd');
 				break;
 			case "snippets-fileTemplates":
-				moveFileControls('templateList.snippets');
+				moveFileControls('templateList_snippets');
 				break;
 		}
 	},
@@ -1697,6 +1789,7 @@ SmartTemplates.Settings = {
 	},	
 
 	selectDefaultTemplates: function(el) {
+		logMissingFunction("SmartTemplate4.fileTemplates.selectDefaultTemplates(target)");
 		SmartTemplate4.Preferences.setMyIntPref("defaultTemplateMethod", el.value);
 	},	
 
@@ -1781,6 +1874,10 @@ function array_move(arr, old_index, new_index) {
 	return arr; // for testing purposes
 };
 	
+
+function getBundleString() {
+	SmartTemplates.Util.getBundleString(...arguments);
+}
 
 const getElement = window.document.getElementById.bind(window.document);
 
@@ -1987,34 +2084,35 @@ function addUIListeners() {
 	
   // radio button handlers
 	document.getElementById("useAccountTemplate").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.selectDefaultTemplates(target)");
+		fileTemplates.selectDefaultTemplates(event.target);
 	});
 	document.getElementById("useLastTemplate").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.selectDefaultTemplates(target)");
+		fileTemplates.selectDefaultTemplates(event.target);
 	});	
 	
 
   // these were oncommand events - for the file templates list
 	document.getElementById("btnAdd").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.update(true)");
+		fileTemplates.addEntry();
 	});
 	document.getElementById("btnUpdate").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.update(false)");
+		fileTemplates.updateEntry();
 	});
 	document.getElementById("btnRemove").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.remove()");
+		fileTemplates.removeEntry(event.target);
 	});
 	document.getElementById("btnUp").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.up()");
+		fileTemplates.moveEntryUp(event.target);
 	});
 	document.getElementById("btnDown").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.down()");
+		fileTemplates.moveEntryDown(event.target);
 	});
 	document.getElementById("btnEdit").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.fileTemplates.edit()");
+		fileTemplates.editEntry();
 	});
 	document.getElementById("btnPushUI").addEventListener("click", (event) => {
-		logMissingFunction("update backend data + UI!");
+		SmartTemplates.Settings.logDebug("Sending entries data to experiment...");
+		messenger.Utilities.updateTemplates(fileTemplates.Entries);
 	});	
 	
 	document.getElementById("helpSnippets").addEventListener("click", (event) => {
