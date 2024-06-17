@@ -988,13 +988,25 @@ SmartTemplate4.fileTemplates = {
       menuitem.addEventListener("command", 
         function(event) { 
           event.stopImmediatePropagation();
-          let win = SmartTemplate4.Util.Mail3PaneWindow,
-              params = {inn:{mode:"fileTemplates",tab:-1, message: "", instance: win.SmartTemplate4, composeType: composeType}, out:null};
+          const win = SmartTemplate4.Util.Mail3PaneWindow;
+          win.SmartTemplate4.doCommand(
+            {
+              id:"smartTemplates-settings"
+            },
+            {
+              composeType: composeType,
+              mode: "fileTemplates",
+              option: "disableLicensePage"
+            }
+          );
+          /* LEGACY SETTINGS
+          const params = {inn:{mode:"fileTemplates",tab:-1, message: "", instance: win.SmartTemplate4, composeType: composeType}, out:null};
           win.openDialog('chrome://smarttemplate4/content/settings.xhtml', 
             'Preferences', 
             'chrome,titlebar,toolbar,centerscreen,dependent,resizable',
             null,
             params);
+            */
           return false; 
         }, 
         { capture:true } , 

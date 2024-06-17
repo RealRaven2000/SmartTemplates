@@ -244,7 +244,7 @@ function openLegacyPrefs() {
     event: "doCommand", 
     detail: {
       cmd: "smartTemplates-settings", // will be re-packaged as el.id
-      params: {} 
+      params: { option:"legacy" } 
     }
   });
 }
@@ -1361,6 +1361,9 @@ async function main() {
             }
             if (data.page) {
               searchParams.append("mode", data.page);
+            }
+            if (data.composeType) {
+              searchParams.append("composeType", data.composeType);
             }
             if (searchParams.size) {
               queryString = "?" + searchParams.toString();

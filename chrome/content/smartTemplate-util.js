@@ -206,6 +206,7 @@ SmartTemplate4.Util = {
   } ,
 
 	getFileInitArg: function(win) {
+		// [bug 1882701] nsIFilePicker.init() first parameter changed from Tb125
 		if (!win) return null;
 		if (this.versionGreaterOrEqual(this.AppverFull, "125")) {    
 			return win.browsingContext;
@@ -1465,10 +1466,19 @@ SmartTemplate4.Util = {
 		}
 	} ,
   
-	viewLicense: function viewLicense() {
+	viewLicense: function() {
+		if (SmartTemplates.Preferences.getMyBoolPref("settings.html")) { // new prefs
+			let prefsObject = {
+				func: "openPrefs", 
+				page: "licenseKey"
+			}
+			SmartTemplates.Util.notifyTools.notifyBackground(prefsObject);
+			return;
+		}
+		// legacy..
 		let win = SmartTemplate4.Util.Mail3PaneWindow,
-        params = {inn:{mode:"licenseKey", message: "", instance: win.SmartTemplate4}, out:null};
-		// open options and open the last tab!
+		params = {inn:{mode:"licenseKey", message: "", instance: win.SmartTemplate4}, out:null};
+    // open options and open the last tab!
 		// first param = identity (not set, unimportant)
 		// second param = mode to open correct setting 
     win.openDialog('chrome://smarttemplate4/content/settings.xhtml',
@@ -2889,6 +2899,23 @@ SmartTemplate4.Util = {
     }); 
     return text;    
   },
+
+	currentServerInfo: function() {
+		let currentServerId = null, 
+		serverKey = null;
+
+		if (window.GetSelectedMsgFolders) { 
+			let folders = window.GetSelectedMsgFolders();
+			if (folders.length == 1) { // select the correct server that applies to the current folder.
+				var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+				[currentServerId] = MailUtils.getIdentityForServer(folders[0].server);
+			}
+		}
+		if (currentServerId) {
+			serverKey = currentServerId.key;
+		}
+		return serverKey;
+	},
 	
   clickStatusIcon: function(el) {
     let isLicenseWarning = false;
@@ -2899,19 +2926,7 @@ SmartTemplate4.Util = {
 		// extensions.smartTemplate4.settings.html = true to open new settings dlg from status button
 		if (SmartTemplate4.Preferences.getMyBoolPref("settings.html")) {
 			SmartTemplate4.Util.logIssue213("Show new HTML help dialog.");
-			let CurId = null, 
-			    serverKey = null;
-
-			if (window.GetSelectedMsgFolders) { 
-				let folders = window.GetSelectedMsgFolders();
-				if (folders.length == 1) { // select the correct server that applies to the current folder.
-					var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
-					[CurId] = MailUtils.getIdentityForServer(folders[0].server);
-				}
-			}
-			if (CurId) {
-				serverKey = CurId.key;
-			}
+			let serverKey = this.currentServerInfo();
 			let prefsObject = {
 				func: "openPrefs", 
 				server: serverKey 

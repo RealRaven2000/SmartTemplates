@@ -310,7 +310,7 @@
               </select>
               
             </div>
-            <div  class="hbox labeledBox">
+            <div  class="hbox labeledBox" id="grpFontSettings">
               <label  id="lblFontSettings">__MSG_pref_fontSettings.label__</label>
               <button id="fontSmaller"></button>
               <span class="spacer" id="fontButtonSpacer" > </span>
@@ -399,8 +399,8 @@
               <span class="spacer"></span>
             </label>
             <label><input type="checkbox" id="chkBackgroundParser"
-                  data-pref-name="extensions.smartTemplate4.BackgroundParser">mx parser [issue 184]</label>
-          <label><input type="checkbox" id="chkHideExamples"
+                  data-pref-name="extensions.smartTemplate4.BackgroundParser">API compliant parser [issue 184]</label>
+            <label id="grpHideExamples"><input type="checkbox" id="chkHideExamples"
                   data-pref-name="extensions.smartTemplate4.hideExamples">__MSG_pref_hideExamples__</label>
           </div>
         </fieldset>        
@@ -628,9 +628,9 @@
                   <div id="deckB.nodef" class="tabbox deck-selected" flex="1" orient="vertical" selectedIndex="0" >
                     <nav  id="deckB.nodef.tabs" class="tabs actionTabs">
                       <ul>
-                        <li><button id="newTab" class="NewTab active">__MSG_pref_new.tab__</button></li>
-                        <li><button id="respondTab" class="RespondTab">__MSG_pref_rsp.tab__</button></li>
-                        <li><button id="forwardTab" class="ForwardTab">__MSG_pref_fwd.tab__</button></li>
+                        <li><button id="newTab" class="NewTab active" composeType="new">__MSG_pref_new.tab__</button></li>
+                        <li><button id="respondTab" class="RespondTab" composeType="rsp">__MSG_pref_rsp.tab__</button></li>
+                        <li><button id="forwardTab" class="ForwardTab"  composeType="fwd">__MSG_pref_fwd.tab__</button></li>
                       </ul>
                     </nav>
       

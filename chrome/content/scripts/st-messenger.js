@@ -96,6 +96,36 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
         break;
       case "smartTemplates-settings":
+        // this will be always true once legacy settings are retired.
+        let modernApiSettings = SmartTemplates.Preferences.getMyBoolPref("settings.html");
+        if (params.option && params.option.includes("legacy"))  {
+          modernApiSettings = false;
+        }
+
+        if (modernApiSettings) { // new prefs
+          const serverKey =  SmartTemplates.Util.currentServerInfo();
+          let prefsObject = {
+            func: "openPrefs", 
+            server: serverKey
+          }
+          let isLicenseWarning = false;
+          if (SmartTemplates.Util.licenseInfo.isExpired)  {
+            isLicenseWarning=true;
+          }
+          if (isLicenseWarning) {
+            prefsObject.page = "licenseKey";
+          }
+          if (params.option && params.option.includes("disableLicensePage")) {
+            isLicenseWarning = false;
+          }
+          if (params.composeType) {
+            prefsObject.composeType = params.composeType;
+          }
+          SmartTemplates.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`)
+          SmartTemplates.Util.notifyTools.notifyBackground(prefsObject);
+          return;
+        }
+        // legacy prefs
         if (params.hasOwnProperty("composeType")) {
           SmartTemplates.Util.openPreferences(params);
         } else {
@@ -103,7 +133,6 @@ async function onLoad(activatedWhileWindowOpen) {
         }
         break;
       case "smartTemplates-settings-new":
-        SmartTemplates.Util.logIssue213("Show new HTML help dialog.");
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs" });
         break;
       case "smartTemplates-installed":

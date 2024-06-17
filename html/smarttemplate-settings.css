@@ -764,8 +764,19 @@ vbox.template {
 }
 
 #btnVariableSidePanel {
+	display: none;
   background-image: url("../chrome/content/skin/icons/variable.svg") !important;
 }
+
+/****************************************/
+/* HTML CONVERSION - TO IMPLEMENT LATER */
+/****************************************/
+#grpFontSettings,
+#grpHideExamples,
+#btnVariableSidePanel {
+	display: none; 
+}
+
 
 
 .page .youtube,

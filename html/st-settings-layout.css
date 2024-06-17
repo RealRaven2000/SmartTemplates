@@ -140,6 +140,11 @@
   box-sizing: border-box;
   padding: 1px;
 }
+#sidebarcategories > .category:hover {
+  background-color: var(--in-content-button-background-hover);
+  color: var(--in-content-button-text-color-hover);
+  border-color: var(--in-content-button-border-color-hover);
+}
 
 
 /* remove unnecessary inner scrollbars */

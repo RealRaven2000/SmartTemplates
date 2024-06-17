@@ -19,11 +19,10 @@
 // TO DO - REIMPLEMENT THE FOLLOWING FUNCTIONS:
 //     -    SmartTemplates.Settings.selectDefaultTemplates
 //  FILE TEMPLATES!
-//     -    getFileName() to retrieve a file from dialog - via experiment?
-//     -    getHeaderArgument()
 //  Editing / Managing (Account) Templates
 //     -    insertAtCaret()
 //     -    onCodeWord() receiver for events from help.xhtml
+//     -    getHeaderArgument()
 //     -    cleanupUnusedPrefs() - extend LegacyPrefs to remove branches!
 //  UI
 //     -    fontSize()
@@ -692,6 +691,7 @@ const SMARTTEMPLATES_EXTPREFIX = SmartTemplates.Preferences.Prefix;
 SmartTemplates.Settings = {
   // OBSOLETE PARTS:
   preferenceElements : [],
+	__currentComposeType: "",
 
   // USED:
 	accountKey : ".common",  // default to common; .file for files
@@ -718,6 +718,14 @@ SmartTemplates.Settings = {
 		}
 		return menuEntry;
   },
+
+	get currentComposeType() {
+		return this.__currentComposeType;
+	},
+
+	set currentComposeType(t) {
+		this.__currentComposeType = t;
+	},
   
 
   isDebug: true, ///// TEST
@@ -988,7 +996,7 @@ SmartTemplates.Settings = {
 		const CurId = params.get("id");
 		composeType = params.get("composeType");
 
-		this.switchIdentity(CurId || 'common', composeType);
+		await this.switchIdentity(CurId || 'common', composeType);
 
 		// disable Use default (common account)
 		getElement("use_default").setAttribute("disabled", "true");
@@ -1017,9 +1025,6 @@ SmartTemplates.Settings = {
 		
     logMissingFunction("implement onLoad completion => remaining details...");
 		await fileTemplates.loadCustomMenu(true);
-
-
-    
   } ,
   onUnload: async function() {
     logMissingFunction("implement onUnload!");
@@ -1252,36 +1257,18 @@ SmartTemplates.Settings = {
 
 	// Switch Identity (from account setting window)	
 	//--------------------------------------------------------------------
-	switchIdentity : function(idKey, composeType)	{
+	switchIdentity : async function(idKey, composeType)	{
 		let wasSwitched = false;
     composeType = composeType || null;
+ 		// remember so we can set it when switching identities		
+		SmartTemplates.Settings.currentComposeType = composeType;
 		this.logDebug("switchIdentity(" + idKey + ")");
 		document.getElementById("msgIdentity").value = idKey;
-		this.selectIdentity(idKey);
+		await this.selectIdentity(idKey);
 		wasSwitched = true;
 
-    // select the correct compose type tab
-		/* THIS WILL BE HANDLED SEPARATELY! 
-		if (idKey=='fileTemplates' && composeType) {
-      let fileTemplatesTabs = document.getElementById('fileTemplatesTabs'),
-          panelId = composeType + '-fileTemplates',
-          idx = 0;
-      switch (composeType) {
-        case 'new': idx = 0; break;
-        case 'rsp': idx = 1; break;
-        case 'fwd': idx = 2; break;
-        case 'snippets': idx = 3; break;
-      }
-      fileTemplatesTabs.selectedPanel = document.getElementById(panelId);
-      fileTemplatesTabs.selectedIndex = idx;
-      // attract attention to the picker button
-      document.getElementById('btnPickTemplate').classList.add('pulseRed');
-    }
-		*/
-    
 		this.logDebug("functions", "switchIdentity(" + idKey + ") COMPLETE");
     return wasSwitched;
-
 	} ,
 
 	getCurrentDeck : function (accountId) {
@@ -1292,7 +1279,7 @@ SmartTemplates.Settings = {
 
 	// Select identity (from xul)
 	//--------------------------------------------------------------------
-	selectIdentity : async function (idkey)	{
+	selectIdentity : async function (idkey, fromClickEvent = false)	{
 		await this.logDebugOptional("identities", "selectIdentity(" + idkey +  ")");
 
 		let currentDeck = this.getCurrentDeck(this.accountId),
@@ -1356,6 +1343,12 @@ SmartTemplates.Settings = {
 			}
 			catch (ex) {;}
     }
+		// select composeCase!
+		if (fromClickEvent && SmartTemplates.Settings.currentComposeType) {
+			// user dropped down to another account,
+			// let's select the same compose type
+			selectComposeType(SmartTemplates.Settings.currentComposeType, idkey);
+		}
 		await this.logDebugOptional("identities", "selectIdentity(" + idkey + ") COMPLETE");
 
 	} ,
@@ -1915,6 +1908,10 @@ const activateTab = (event) => {
   });
 
   btn.classList.add("active");
+	const cType = btn.getAttribute("composeType");
+	if (cType) { // remember new composeType.
+		SmartTemplates.Settings.currentComposeType = cType;
+	}
   // get <li> <btn> index:
   let idx = Array.from(btn.parentNode.parentElement.children).indexOf(btn.parentNode);
 	const section = tabContent.children[idx];
@@ -2153,7 +2150,7 @@ function addUIListeners() {
 	
 	// select elements
 	document.getElementById("msgIdentity").addEventListener("change", (event) => {
-		SmartTemplates.Settings.selectIdentity(event.target.value);
+		SmartTemplates.Settings.selectIdentity(event.target.value, true);
 	});
 	document.getElementById("iconType").addEventListener("change", (event) => {
 		// go through background => legacy code for the UI update at least.
@@ -2379,6 +2376,41 @@ function addUIListeners() {
 	
 }
 
+function selectComposeType(forceType=null, forceKey = null) {
+	const params = new URLSearchParams(window.location.search);
+	const composeType = forceType || params.get("composeType");
+	const idKey = forceKey || params.get("id") || "common";
+	debugger;
+
+	// select the correct compose type tab
+	let btnSelector;
+	switch (composeType) {
+		case 'new': 
+			btnSelector=".NewTab";
+			break;
+		case 'rsp': 
+			btnSelector=".RespondTab";
+			break;
+		case 'fwd': 
+			btnSelector=".ForwardTab";
+			break;
+		default:
+			return;
+	}
+	SmartTemplates.Settings.currentComposeType;
+	if (btnSelector) {
+		const idSelector = idKey ? "." + idKey : "";
+		const currentDeck = SmartTemplates.Settings.getCurrentDeck(idSelector);
+		if (!currentDeck) {
+			return;
+		}
+		const tab = document.getElementById(currentDeck).querySelector(btnSelector);
+		if (tab) {
+			tab.click();
+		}
+	}
+}
+
 async function onLoad() {
   i18n.updateDocument();
   // this api function can do replacements for us
@@ -2391,6 +2423,7 @@ async function onLoad() {
 
 	// now read data from Preferences
   addUIListeners();
+	selectComposeType();
 
 	// [issue 121] currently shown selection
 	// special settings (omit selecting an identit from the accounts dropdown)
