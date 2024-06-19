@@ -34,6 +34,7 @@
     <script type="module" src="st-settings-ui.mjs"></script>
     
     <script type="module" src="st-settings-util.js"></script>
+    <script type="module" src="st-help.js"></script>
     <script type="module" src="smartTemplate-settings.js"></script>
 
 
@@ -441,7 +442,7 @@
 
           <description class="aboutContent">__MSG_about.label__</description>
           
-          <div class="vbox aboutWrapper" flex="1">
+          <div class="aboutWrapper" flex="1">
             <div class="vbox" id="aboutBox" class="aboutPersonnel" align="center" flex="1">
               <description>__MSG_creator.label__: Axel Grude</description>
               <description>__MSG_developer.label__: Axel Grude, Klaus Buecher/opto, Marky Mark DE</description>
@@ -492,7 +493,6 @@
           <description id="validationEmailNoMatch" class="niceFont licenseWarning" collapsed="true">__MSG_licenseValidation.notMatchedMail__</description>
           <description id="validationInvalidAddon" class="niceFont licenseError" collapsed="true">__MSG_licenseValidation.invalidAddon__</description>
         </div>
-        <hr style="height:0.5em;">
         <div class="hbox btnLicenseContainer">
           <button id="btnLicense">Buy License</button>
         </div>				
@@ -525,7 +525,7 @@
 
       <prefpane id="supportPane" class="page">
         <h2>__MSG_support.tab__</h2>
-        <div class="vbox" flex="1" style="min-width:410px;align-content: space-between;">
+        <div class="vbox" id="supportPaneContent">
           <fieldset flex="1" class="transparent">
             <legend>__MSG_support.title__</legend>
             <div class="vbox" flex="1">
@@ -559,7 +559,7 @@
               </div>
             </div>
           </fieldset>
-          <div id="middleSpace" flex="1"><br><br><br>#middleSpace create space to push down!<br><br><br></div>
+          <div id="middleSpace" flex="4">middleSpace create space to push down!</div>
           <fieldset class="transparent">
             <legend>__MSG_support.links__</legend>
             <div class="vbox buttonLinks">

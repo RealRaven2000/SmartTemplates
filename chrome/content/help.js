@@ -52,7 +52,11 @@
         
         switch(code.tagName) {
           case 'code':
-            customEvent.initEvent("SmartTemplate4CodeWord", true, false);
+            customEvent = new CustomEvent("SmartTemplate4CodeWord",
+              {bubbles:true, cancelable:false}
+            );
+            // window.parent.document.dispatchEvent(customEvent);
+            // customEvent.initEvent("SmartTemplate4CodeWord", true, false);
             break;
           case 'span': case 'lbl':
             if (isAddressConfig) {
@@ -63,6 +67,7 @@
             customEvent.initEvent("SmartTemplate4Website", true, false);
             break;
         }
+        // window.parent.document.dispatchEvent(customEvent);
         element.dispatchEvent(customEvent);
       }
     }
@@ -101,7 +106,28 @@
             }
           )
           el.classList.remove('collapsed'); // uncollapse chapter below this heading
-          window.setTimeout( function() { hd.scrollIntoView(true); }, 150 );
+          window.setTimeout( function() { 
+            const options = {
+              behavior:"smooth",
+              block: "start"
+            }
+            debugger;
+            hd.scrollIntoView(options); 
+            let customEvent = new CustomEvent("SmartTemplate4ScrollVariables", 
+              {bubbles:true}
+            );
+            // document.dispatchEvent(customEvent);
+            const parentDoc = window.parent.document;
+            parentDoc.dispatchEvent(customEvent);
+            setTimeout( 
+              (x) => {
+                window.parent.document.dispatchEvent(customEvent)},
+              250
+            )
+            
+            // send message to container to scroll itself to top:
+            // document.getElementById("variablesPane").scrollIntoView({block:"start"})
+          }, 150);
           hd.classList.add('expanded');
         }
         else {

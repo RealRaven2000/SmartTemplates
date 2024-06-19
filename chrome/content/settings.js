@@ -648,7 +648,7 @@ SmartTemplate4.Settings = {
     }
 	} ,
 
-	onCodeWord : function onCodeWord(code, className) {
+	onCodeWord : function (code, className) {
     const util = SmartTemplate4.Util,
           settings = SmartTemplate4.Settings;
 		util.logDebugOptional("events","Preferences window retrieved code variable: " + code);

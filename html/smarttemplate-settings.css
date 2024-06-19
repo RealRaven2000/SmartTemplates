@@ -213,54 +213,24 @@ button.bugsURL:focus {
 }
 
 
-
-
-/*  MAIN CONTAINERS: LEFT, RIGHT
-#topOptions, #bottomOptions { 
-  height: 5px ; 
-}
-#bottomOptions { 
-  bottom: 0; 
-}
-#optionsContainer {
-	-moz-box-align: stretch;
-	height: 100%;
+#middleSpace {
+	color: rgba(10,10,10,0.4);
+	text-align: center;
+	font-style: italic;
+	flex-grow: 1;
+	align-content: center;
 }
 
-#decksContainer {
-	height: 99%;
-	-moz-box-align: stretch;
-}
-#decksWrapper { 
-	height: 99%; 
-	-moz-box-align: stretch;
+
+@media only screen and (max-height: 475px)  {
+	#middleSpace {
+		display: none;
+	}
 }
 
-#advancedContainer {
-	height: auto;
+.disclaimer {
+	display: none;
 }
-#rightPane {
-	margin-left: 1em;
-	margin-right: 1em;
-}
-
-#account_deckA, .templateDeck {
-	min-width: 400px;
-}
-
-#account_deckA {
-	max-width: 1000px;
-}
-
-groupbox.transparent {
-  background-image: none;
-  background-color: transparent !important;
-}
-
-groupbox.transparent .groupbox-title {
-  background-color: transparent;
-}
- */
 
  /****
   REPLACEMENTS
@@ -387,9 +357,12 @@ groupbox.transparent .groupbox-title {
 }
 
 #variablesPane {
-  	height: 100vh;
+	height: 100vh;
+	flex-shrink: 0 !important;
 }
-
+#examplesPane {
+	flex-shrink: 0 !important;
+}
 #helpFrame {
 	display: flex;
 	flex: 8 8 max-content;
@@ -691,8 +664,7 @@ vbox.template {
 
 .aboutWrapper {
 	text-align: center;
-	padding: 0.5em;
-	width:100%;
+	padding: 1em 3em;
 }
 
 .aboutPersonnel {

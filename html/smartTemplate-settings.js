@@ -162,7 +162,6 @@ var fileTemplates = {
       return;
     }
     await this.saveCustomMenu();
-		debugger;
     this.repopulate(true); // rebuild menu
 		listbox.selectedIndex = idx; // reselect item
   } , 	
@@ -1118,7 +1117,6 @@ SmartTemplates.Settings = {
 		const isCommon = (menuvalue == "common"),
 		      branch = isCommon ? ".common" : "." + menuvalue; 
 
-    logMissingFunction(`implement (${menuvalue})`);
     this.logDebug(`addIdentity() - branch: ${branch}`);
 
 		try {
@@ -1797,9 +1795,8 @@ SmartTemplates.Settings = {
 */
 	},	
 
-	selectDefaultTemplates: function(el) {
-		logMissingFunction("SmartTemplate4.fileTemplates.selectDefaultTemplates(target)");
-		SmartTemplate4.Preferences.setMyIntPref("defaultTemplateMethod", el.value);
+	selectDefaultTemplates: async function(el) {
+  	await SmartTemplates.Preferences.setMyIntPref("defaultTemplateMethod", parseInt(el.value,10));
 	},	
 
 
@@ -2097,10 +2094,10 @@ function addUIListeners() {
 	
   // radio button handlers
 	document.getElementById("useAccountTemplate").addEventListener("click", (event) => {
-		fileTemplates.selectDefaultTemplates(event.target);
+		SmartTemplates.Settings.selectDefaultTemplates(event.target);
 	});
 	document.getElementById("useLastTemplate").addEventListener("click", (event) => {
-		fileTemplates.selectDefaultTemplates(event.target);
+		SmartTemplates.Settings.selectDefaultTemplates(event.target);
 	});	
 	
 
@@ -2380,7 +2377,6 @@ function selectComposeType(forceType=null, forceKey = null) {
 	const params = new URLSearchParams(window.location.search);
 	const composeType = forceType || params.get("composeType");
 	const idKey = forceKey || params.get("id") || "common";
-	debugger;
 
 	// select the correct compose type tab
 	let btnSelector;
@@ -2423,6 +2419,7 @@ async function onLoad() {
 
 	// now read data from Preferences
   addUIListeners();
+	SmartTemplates.Help.onLoad(); // event listeners for help frame
 	selectComposeType();
 
 	// [issue 121] currently shown selection

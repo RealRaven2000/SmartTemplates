@@ -51,6 +51,10 @@
   white-space: nowrap;
 }
 
+#sidebarcategories > .category  {
+  margin-inline: 0;
+}
+
 /*smaller menus (hidden labels) */
 @media (max-width: 830px) {
   #categories > .category,
@@ -132,7 +136,7 @@
 /*** .sidebar-footer-list  - minor items at the bottom ***/
 #catLegacyPrefs {
   background-image: url("../chrome/content/skin/icon32x32.png");
-  background-position: left;
+  background-position: left center;
   background-repeat: no-repeat;
   background-size: 20px;
 }
@@ -157,7 +161,22 @@
   flex: 1 1 min-content;
   padding-block: 0 20px;
   padding-inline: 28px;
-  overflow: auto;
+  overflow-x: clip;
+  overflow-y: hidden;
+}
+
+#licensePane {
+  height: 100vh;
+  display: flex;
+}
+
+div.btnLicenseContainer {
+  flex-grow: 1;
+  align-content: center center;
+}
+
+div.btnLicenseContainer #btnLicense {
+  max-height: 3em;
 }
 
 @media only screen and (max-width: 1024px)  {
@@ -188,8 +207,16 @@
    display: none;
   }
 }
+@media only screen and (max-width: 760px)  {
+  #msgIdentity {
+    width:40vw;
+  }
+}
 
 @media only screen and (max-height: 600px)  {
+  #categories {
+    margin-top: 30px;
+  }
   #preferencesContainer h2 {
     margin-block: 2px;
     text-align: center;
@@ -198,9 +225,45 @@
   fieldset {
     margin-block: 0;
   }
-
+  .buttonLinks button.text-link {
+    padding-block: 0.6em !important
+  }
+  .btnLicenseContainer {
+    height: 24px;
+  }
 }
 
+@media only screen and (max-height: 480px)  {
+  #categories {
+    margin-top: 5px;
+  }
+  #categories > .category {
+    line-height: 36px;
+    min-height: 36px;
+    background-position-y: 6px;
+  }
+  #preferencesContainer {
+    overflow-y: scroll;
+  }
+  .buttonLinks button.text-link {
+    padding-block: 0.3em !important
+  }  
+  #infoPane h2 {display:none}
+  .btnLicenseContainer {
+    height: 12px;
+  }
+}
+
+#supportPane {
+  height: 100vh;
+}
+
+#supportPaneContent {
+  display: flex;
+  min-width: 410px;
+  align-content: space-between;
+  flex-grow: 2;
+}
   
 
 #templatesIFrame {

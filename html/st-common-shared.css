@@ -2,8 +2,8 @@
 
 .sidebar-footer-list {
   list-style-type: none;
-  margin-block: 0 6px;
-  margin-inline: 10px 0;
+  margin-block: 0;
+  margin-inline: 10px;
   padding: 0;
 }
 
@@ -32,7 +32,7 @@
   color: inherit;
 }
 
-xul|*.sidebar-footer-link {
+*.sidebar-footer-link {
   display: flex;
   align-items: center;
 }
@@ -79,6 +79,10 @@ xul|*.sidebar-footer-link {
 
   .sidebar-footer-icon {
     margin-inline-start: 10px;
+  }
+
+  #sidebar-footer-list .category {
+    background-position: center;
   }
 
   .sidebar-footer-label {
