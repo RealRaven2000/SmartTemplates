@@ -47,8 +47,27 @@
   min-height: 48px;
   padding-inline: 34px 10px;
   list-style-type: none;
-  transition: background-color 150ms;
+  transition: 
+    background-color 150ms,
+    line-height 350ms ease-in-out,
+    min-height 350ms ease-in-out;
   white-space: nowrap;
+}
+#categories{
+  transition: margin 350ms ease-in-out;
+}
+#categories > .category {
+  transition: margin 250ms ease-in-out;
+}
+fieldset {
+  transition: margin 250ms ease-in-out;
+}
+
+#preferencesContainer {
+  transition: padding 250ms ease-in-out;
+}
+#pref-category-box {
+  transition: width 250ms ease-in-out;
 }
 
 #sidebarcategories > .category  {
