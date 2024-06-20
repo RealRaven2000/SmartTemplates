@@ -1784,7 +1784,12 @@ SmartTemplates.Settings = {
 					version = document.getElementById('versionBox').textContent,
 		    	subjectline = supportType + " (" + version + ") " + subjectTxt.value,
 		    	sURL="mailto:" + mailto + "?subject=" + encodeURI(subjectline);
-		logMissingFunction(`sendMail() \n ${sURL}`);
+		// logMissingFunction(`sendMail() \n ${sURL}`); 
+		messenger.compose.beginNew({
+			to: mailto,
+			subject: subjectline
+		});
+
 		return;
 /*		, // urlencode
 		    // make the URI

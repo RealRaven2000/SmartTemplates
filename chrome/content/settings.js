@@ -1998,7 +1998,7 @@ SmartTemplate4.Settings = {
 		btnSupport.disabled = (topic) ? false : true;
 	} ,
 	
-	sendMail: function sendMail(mailto) {
+	sendMail: function (mailto) {
     const util = SmartTemplate4.Util;
     let subjectTxt = document.getElementById('txtSupportSubject'),
 		    supportType = document.getElementById('supportType').value,

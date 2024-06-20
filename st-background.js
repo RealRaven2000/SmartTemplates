@@ -1350,24 +1350,34 @@ async function main() {
           // Add the current accountid for context?
           let url = browser.runtime.getURL(settingsUrl) + "*";
           let [oldTab] = await browser.tabs.query({url}); // dereference first 
+          let queryString = "";
+          let searchParams = new URLSearchParams()
+          if (data.server) {
+            searchParams.append("id", data.server);
+          }
+          if (data.page) {
+            searchParams.append("mode", data.page);
+          }
+          if (data.composeType) {
+            searchParams.append("composeType", data.composeType);
+          }
+          if (searchParams.size) {
+            queryString = "?" + searchParams.toString();
+          }
+
           if (oldTab) {
-            await browser.tabs.update(oldTab.id, {active:true});
+            await browser.tabs.update(
+              oldTab.id, 
+              {
+                active:true,
+                url: browser.runtime.getURL(settingsUrl + queryString)
+              }
+            );
+            // TO DO
+            const txt = "Select a specific page after activating existing Settings Tab."
+            console.log(`%c[issue 259] to do: \n%c${txt}\n`, "color:red", "background: darkblue; color:yellow;", data);
             // await browser.windows.update(oldTab.windowId, {focused:true});
           } else {
-            let queryString = "";
-            let searchParams = new URLSearchParams()
-            if (data.server) {
-              searchParams.append("id", data.server);
-            }
-            if (data.page) {
-              searchParams.append("mode", data.page);
-            }
-            if (data.composeType) {
-              searchParams.append("composeType", data.composeType);
-            }
-            if (searchParams.size) {
-              queryString = "?" + searchParams.toString();
-            }
             // open a new tab with settings
             browser.tabs.create (
               {

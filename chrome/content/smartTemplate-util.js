@@ -1417,13 +1417,11 @@ SmartTemplate4.Util = {
 	
 	get hasStandardLicense() {
     let result = (SmartTemplate4.Util.licenseInfo.keyType==2);
-    SmartTemplate4.Util.logDebugOptional("premium.licenser", "util.hasStandardLicense = " + result);
     return result; // standard license - true 
 	}, 
   
   get hasProLicense() {
     let result = (SmartTemplate4.Util.licenseInfo.keyType==1 || SmartTemplate4.Util.licenseInfo.keyType==0);
-    SmartTemplate4.Util.logDebugOptional("premium.licenser", "util.hasProLicense = " + result);
     return result; // premium / domain license - true 
   },
 	
@@ -1467,12 +1465,12 @@ SmartTemplate4.Util = {
 	} ,
   
 	viewLicense: function() {
-		if (SmartTemplates.Preferences.getMyBoolPref("settings.html")) { // new prefs
+		if (SmartTemplate4.Preferences.getMyBoolPref("settings.html")) { // new prefs
 			let prefsObject = {
 				func: "openPrefs", 
 				page: "licenseKey"
 			}
-			SmartTemplates.Util.notifyTools.notifyBackground(prefsObject);
+			SmartTemplate4.Util.notifyTools.notifyBackground(prefsObject);
 			return;
 		}
 		// legacy..

@@ -677,6 +677,32 @@
                                 __MSG_pref_rsp.label__
                             </label>
                           </div>
+                          <label>__MSG_pref_templateBox.label__</label>
+                          <div class="indent vbox" flex="1">
+                            <div class="pasteFocus vbox areaTemplateParent" flex="2">
+                              <textarea 
+                                id="rspmsg"
+                                class="templateBox template"
+                                multiline="true"
+                                flex="1"
+                                tooltiptext="__MSG_pref_templateBox_tip__"
+                                data-pref-name="extensions.smartTemplate4.common.rspmsg"
+                                preference-editable="true"></textarea>
+                            </div>
+                          </div>
+
+                          <label><input type="checkbox" id="rsphtml" class="settingDisabler"
+                            title="__MSG_pref_html.cap__"
+                            data-pref-name="extensions.smartTemplate4.common.rsphtml">
+                            __MSG_pref_html.label__
+                          </label>
+                          <label><input type="checkbox" id="rspnbr"
+                            class="indent"
+                            title="__MSG_pref_rep_br.cap__"
+                            data-pref-name="extensions.smartTemplate4.common.rspnbr">
+                            __MSG_pref_rep_br.label__
+                          </label>
+
                           <label>__MSG_pref_quoteHeaderBox.label__</label>
                           <div class="indent vbox" flex="1">
                             <div class="pasteFocus vbox areaQuoteParent" flex="1">
@@ -695,30 +721,7 @@
                               __MSG_pref_rsphead.label__
                             </label>
                           </div>
-                          <label>__MSG_pref_templateBox.label__</label>
-                          <div class="indent vbox" flex="1">
-                            <div class="pasteFocus vbox areaTemplateParent" flex="2">
-                              <textarea 
-                                id="rspmsg"
-                                class="templateBox template"
-                                multiline="true"
-                                flex="1"
-                                tooltiptext="__MSG_pref_templateBox_tip__"
-                                data-pref-name="extensions.smartTemplate4.common.rspmsg"
-                                preference-editable="true"></textarea>
-                            </div>
-                          </div>
-                          <label><input type="checkbox" id="rsphtml" class="settingDisabler"
-                            title="__MSG_pref_html.cap__"
-                            data-pref-name="extensions.smartTemplate4.common.rsphtml">
-                            __MSG_pref_html.label__
-                          </label>
-                          <label><input type="checkbox" id="rspnbr"
-                            class="indent"
-                            title="__MSG_pref_rep_br.cap__"
-                            data-pref-name="extensions.smartTemplate4.common.rspnbr">
-                            __MSG_pref_rep_br.label__
-                          </label>
+
                         </vbox>
                       </section>
       
@@ -731,25 +734,7 @@
                               __MSG_pref_fwd.label__
                             </label>
                           </div>
-                          <label>__MSG_pref_quoteHeaderBox.label__</label>
-                          <div class="indent vox" flex="1">
-                            <div class="pasteFocus vbox areaQuoteParent" flex="1">
-                                      <!-- rows="5" -->
-                              <textarea 
-                                id="fwdheader"
-                                class="templateBox quote"
-                                multiline="true"
-                                flex="1"
-                                tooltiptext="__MSG_pref_quoteHeaderBox_tip__"
-                                data-pref-name="extensions.smartTemplate4.common.fwdheader"
-                                preference-editable="true"></textarea>
-                            </div>
-                            <label><input type="checkbox" id="fwdhead"
-                              title="__MSG_pref_quotehead_tip__"
-                              data-pref-name="extensions.smartTemplate4.common.fwdhead">
-                              __MSG_pref_fwdhead.label__
-                            </label>
-                          </div>
+
                           <label>__MSG_pref_templateBox.label__</label>
                           <div class="indent vbox" flex="1">
                             <div class="pasteFocus vbox areaTemplateParent" flex="2">
@@ -775,6 +760,27 @@
                             data-pref-name="extensions.smartTemplate4.common.fwdnbr">
                             __MSG_pref_rep_br.label__
                           </label>
+
+                          <label>__MSG_pref_quoteHeaderBox.label__</label>
+                          <div class="indent vox" flex="1">
+                            <div class="pasteFocus vbox areaQuoteParent" flex="1">
+                                      <!-- rows="5" -->
+                              <textarea 
+                                id="fwdheader"
+                                class="templateBox quote"
+                                multiline="true"
+                                flex="1"
+                                tooltiptext="__MSG_pref_quoteHeaderBox_tip__"
+                                data-pref-name="extensions.smartTemplate4.common.fwdheader"
+                                preference-editable="true"></textarea>
+                            </div>
+                            <label><input type="checkbox" id="fwdhead"
+                              title="__MSG_pref_quotehead_tip__"
+                              data-pref-name="extensions.smartTemplate4.common.fwdhead">
+                              __MSG_pref_fwdhead.label__
+                            </label>
+                          </div>
+
                         </div>
                       </section>
                     </div>
