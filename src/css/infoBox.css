@@ -21,7 +21,7 @@
   border-left: 1px solid #26558B;
   border-bottom: 1px solid #26558B;
   max-width: 22em;
-  margin: 0px 10px 10px 25px;
+  margin: 0px 10px 10px 10px;
   padding: 0px 10px 5px 10px;
   -webkit-border-radius: 6px 6px 0px 0px; /* Safari / Chrome (Webkit) */
   border-radius: 6px 6px 0px 0px; /* CSS3 = IE9 / Firefox 4+ */
@@ -87,7 +87,7 @@
 }
 
 .infoTab ul {
-  padding-left: 30px; /* bis 16.06.15: 0 doch dann ist checkmark icon außerhalb infobox*/
+  padding-left: 30px; /* bis 16.06.15: 0 doch dann ist checkmark icon auï¿½erhalb infobox*/
 }
 
 .infoTab ul li {
