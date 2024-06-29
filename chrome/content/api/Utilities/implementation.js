@@ -1,4 +1,7 @@
 /* eslint-disable object-shorthand */
+const { setTimeout, clearTimeout } = ChromeUtils.importESModule(
+  "resource://gre/modules/Timer.sys.mjs"
+);
 
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
 var Services = globalThis.Services || ChromeUtils.import(
@@ -21,8 +24,11 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
     };
 
     return {
+    
       Utilities: {
-
+        collapseTimeout: null, // timeout id for gathering save timeouts
+        UPDATE_INTERVAL: 2000,
+  
         logDebug (text) {
           win.SmartTemplate4.Util.logDebug(text);
         },
@@ -111,9 +117,21 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           return promise;        
         },
 
-        updateTemplates: async function(entries) {
-          this.logDebug("SmartTemplates Experiment - sending Entries...");
-          win.SmartTemplate4.fileTemplates.updateTemplatesDataFromBackEnd(entries);
+        updateTemplates: async function(entries, immediate = false) {
+          if (this.collapseTimeout) {
+            clearTimeout(this.collapseTimeout);
+          }
+
+          if (immediate) {
+            this.logDebug("SmartTemplates Experiment - sending fileTemplate Entries...");
+            win.SmartTemplate4.fileTemplates.updateTemplatesDataFromBackEnd(entries);
+            return;
+          }
+
+          this.collapseTimeout = setTimeout(() => {
+            this.logDebug("SmartTemplates Experiment - sending fileTemplate Entries...");
+            win.SmartTemplate4.fileTemplates.updateTemplatesDataFromBackEnd(entries);
+          }, this.UPDATE_INTERVAL);
         },
 
         // item: {path, label, category}

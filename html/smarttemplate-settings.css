@@ -69,10 +69,13 @@ p.disclaimer label {
   color: yellow;
 }
 
-
 #globalSettingsVbox label,
 #advancedSettingsVbox label {
 	line-height: 1.5em;
+}
+
+prefpane h2 {
+	padding-inline: 0.3em;
 }
 
 /* REPLACEMENTS 
@@ -85,9 +88,24 @@ tabpanels => .tabcontent-container
 button.iconButton {
   background-repeat: no-repeat !important;
   background-position: center center;
-	min-width: unset;
-	padding: 12px 12px;
+  min-width: unset;
 }
+
+button.iconLabelButton {
+  background-repeat: no-repeat !important;
+  background-position: 4px center;
+	padding: 3px 3px;
+}
+
+button.iconLabelButton span {
+	margin-left: 20px;
+	font-size: 0.85em;
+}
+
+button.iconLabelButton.youtube span {
+	margin-left: 24px;
+}
+
 
 #helpTemplates, #helpSnippets {
 	/* -moz-context-properties: fill; */
@@ -715,6 +733,11 @@ vbox.template {
 	display: -moz-box;
 }
 
+label .flag {
+	font-size: 1.5em;
+	margin-inline: 0.3em;
+}
+
 .page toolbarbutton {
   /* Tb 102 */
   -moz-context-properties: fill;
@@ -749,7 +772,10 @@ vbox.template {
 	display: none; 
 }
 
-
+#txtNameDelimiter {
+	text-align: center;
+	width: 2em;
+}
 
 .page .youtube,
 .page toolbar[brighttext] .youtube {
@@ -757,6 +783,12 @@ vbox.template {
   fill: rgb(166,0,0) !important;
 	stroke: yellow;
 	background-size: 80%;
+}
+
+.youtube.iconLabelButton {
+	background-size: 20px;
+	fill: rgb(166,0,0) !important;
+	
 }
 
 .page .youtube:hover {
@@ -900,11 +932,10 @@ label.plain-link:hover::before {
 	padding-top: 1.4em;
 	padding-bottom: 0.2em;
 	background-position: center 7px !important;
-	flex: 1 1 0 !important;
+	flex: 3 1 0 !important;
 	font-size: 0.9em;
   justify-content: center;
 	min-height: 4em;
-	min-width: 5em !important;
 }
 
 .templateList button span {
@@ -983,7 +1014,7 @@ label.plain-link:hover::before {
 #fileSettings div.settingsRow {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 }
 
 #fileSettings div.settingsRow input[type="text"] {

@@ -141,7 +141,7 @@ END LICENSE BLOCK
     # [issue 259] Convert Settings screen to HTML, and move to Tab
     # [issue 293] Support multiple parameters for %header.delete()% and %header.deleteFromSubject()% 
     # optimize licenser (omit folders when listing accounts uising API)
-    # [issue 295] nsIFilePicker.init() first parameter changed from Tb125! [bug 1882701]
+    # [issue 295] Fix file picker which behaves differently from Thunderbird 125 [bug 1882701]
 
 
 =========================

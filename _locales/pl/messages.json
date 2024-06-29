@@ -418,7 +418,7 @@
   "fileTemplates.rsp.tooltip": {
     "message": "Lista zewnętrznych plików szablonów, które można uruchomić z przycisku „Odpowiedz”."
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "Pliki szablonów"
   },
   "fileTemplates.up": {

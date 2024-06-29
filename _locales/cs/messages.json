@@ -404,7 +404,7 @@
   "fileTemplates.rsp.tooltip": {
     "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Odpovědět'."
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "Soubory šablon"
   },
   "fileTemplates.up": {

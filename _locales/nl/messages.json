@@ -410,7 +410,7 @@
   "fileTemplates.rsp.tooltip": {
     "message": "Lijst van externe sjabloonbestanden die kunnen worden gestart vanaf de knop ‘Beantwoorden’."
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "Sjabloonbestanden"
   },
   "fileTemplates.up": {

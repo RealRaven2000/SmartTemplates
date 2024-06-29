@@ -103,6 +103,12 @@
             "name": "entries",
             "type": "any",
             "description": "Entries: templatesNew, templatesRsp, templatesFwd, snippets"
+          },
+          {
+            "name": "immediate",
+            "type": "boolean",
+            "optional": true,
+            "description": "immediately update backend with file templates"
           }
         ]
       },

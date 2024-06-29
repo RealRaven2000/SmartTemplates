@@ -413,7 +413,7 @@
   "fileTemplates.rsp.tooltip": {
     "message": "Liste des fichiers modèles externes pouvant être lancés à partir du bouton 'Répondre'."
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "Fichiers modèles"
   },
   "fileTemplates.up": {

@@ -410,7 +410,7 @@
   "fileTemplates.rsp.tooltip": {
     "message": "List of external template files that can be launched from the 'Reply' button."
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "Template Files"
   },
   "fileTemplates.up": {

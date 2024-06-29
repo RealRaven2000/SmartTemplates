@@ -734,7 +734,7 @@ label.plain-link:hover {
 #fileSettings div.settingsRow {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 }
 
 #fileSettings div.settingsRow input[type="text"] {

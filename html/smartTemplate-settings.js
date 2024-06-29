@@ -60,6 +60,7 @@ var fileTemplates = {
 	},
 	isModified: false,  // global flag to trigger saving to back end at some stage (WIP)
 
+
 	get activeFileList() {  //  was ListBox()
 		const container = document.querySelector("#fileTemplateContainer section.active");
 		if(!container) return null;
@@ -230,7 +231,6 @@ var fileTemplates = {
       existingEntry.label = label;
       existingEntry.category = category || ""; 
 		}
-		debugger;
 
 		if (!this.activeFileList.selectedOptions) {
 			debugger;
@@ -261,8 +261,8 @@ var fileTemplates = {
       // update path!
       this.activeFileList.item(selectedIndex).value = JSON.stringify({path:path, category:category, position: selectedIndex});
     }
-
-		logMissingFunction(`SmartTemplate4.fileTemplates.update(${isNew})`);
+		// update backend
+		messenger.Utilities.updateTemplates(fileTemplates.Entries);
 	},
 	addEntry: async function() {
 		this.updateEntry(true);
@@ -273,6 +273,8 @@ var fileTemplates = {
 		fileTemplates.CurrentEntries.splice(currentPos, 1);
 		fileTemplates.activeFileList.remove(currentPos);
 		fileTemplates.selectedIndex = currentPos;
+		// update backend
+		messenger.Utilities.updateTemplates(fileTemplates.Entries);
 		fileTemplates.repopulate(true);
 	},
 	moveEntryUp: async function() {
@@ -280,6 +282,8 @@ var fileTemplates = {
 		if (currentPos<=0) return;
 		// move the item in the datastructure:
 		array_move(fileTemplates.CurrentEntries, currentPos, currentPos-1);
+		// update backend
+		messenger.Utilities.updateTemplates(fileTemplates.Entries);
 		// refresh list on screen:
 		fileTemplates.repopulate(true);
 		this.activeFileList.selectedIndex = currentPos-1;
@@ -291,6 +295,8 @@ var fileTemplates = {
 		if (currentPos+1>=fileTemplates.activeFileList.length) return;
 		// move the item in the datastructure:
 		array_move(fileTemplates.CurrentEntries, currentPos, currentPos+1);
+		// update backend
+		messenger.Utilities.updateTemplates(fileTemplates.Entries);
 		// refresh list on screen:
 		fileTemplates.repopulate(true);
 		this.activeFileList.selectedIndex = currentPos+1;
@@ -377,6 +383,8 @@ var fileTemplates = {
 		option.classList.remove('overBottom');
 		// move the item in the datastructure:
 		array_move(fileTemplates.CurrentEntries, data.position, target.position);
+		// update backend
+		messenger.Utilities.updateTemplates(fileTemplates.Entries);
 		// refresh list on screen:
 		fileTemplates.repopulate(true);
 		this.activeFileList.selectedIndex = target.position;
@@ -2460,5 +2468,8 @@ addEventListener("load", async (event) => {
 });  
 
 addEventListener("unload", async (event) => {
+	console.log("settings - UNLOAD!");
   SmartTemplates.Settings.onUnload();
+
 });  
+

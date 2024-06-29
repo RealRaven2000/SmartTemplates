@@ -407,7 +407,7 @@
   "fileTemplates.remove": {
     "message": "Radera"
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "Mallfiler"
   },
   "fileTemplates.up": {

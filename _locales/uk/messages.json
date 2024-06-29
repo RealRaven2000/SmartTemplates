@@ -417,7 +417,7 @@
   "fileTemplates.rsp.tooltip": {
     "message": "Список зовнішніх файлів шаблонів, які можуть бути запущені з кнопки 'Відповісти'."
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "Файли шаблонів"
   },
   "fileTemplates.up": {

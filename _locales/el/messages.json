@@ -410,7 +410,7 @@
   "fileTemplates.rsp.tooltip": {
     "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Απάντηση'."
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "Αρχεία Προτύπων"
   },
   "fileTemplates.up": {

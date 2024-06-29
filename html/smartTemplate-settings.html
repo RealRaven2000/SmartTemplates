@@ -51,10 +51,10 @@
     <div class="vbox" id="pref-category-box">
       <ul id="categories" class="prefs-menu categories" >
         <li class="category" id="catAccountTemplates" selected="true" page="smartTemplatePane">
-          <label class="category-name">Account Templates</label>
+          <label class="category-name">__MSG_account.templates__</label>
         </li>
         <li class="category" id="catFileTemplates" page="fileTemplatePane">
-          <label class="category-name">File Templates</label>
+          <label class="category-name">__MSG_fileTemplates.menu__</label>
         </li>
         <li class="category" id="catSettingsGeneral" page="globalSettingsPane">
           <label class="category-name">__MSG_pref_global.tab__</label>
@@ -81,7 +81,7 @@
       <div class="spacer" flex="1"></div>
       <div class="sidebar-footer-list">
         <ul id="sidebarcategories" class="categories sidebarcategories" >
-          <li class="category" id="catLegacyPrefs"><label class="category-name">Legacy Preferences</label></li>
+          <li class="category" id="catLegacyPrefs"><label class="category-name">__MSG_preferences_legacy__</label></li>
         </ul>
       </div>
     </div>
@@ -89,17 +89,17 @@
     <div class="vbox" id="preferencesContainer">
 
       <prefpane id="fileTemplatePane" class="page">
-        <h2>File Templates</h2>
+        <h2>__MSG_fileTemplates.menu__</h2>
         <div id="templateTools" class="inlineToolbar hbox" mode="icons">  
-          <label>Tools: </label>
+          <label><span class="flag">🇬🇧</span> Documentation: </label>
           <span class="navigateable">
-            <button id="btnYouTube-filetemplates"
-              class="iconButton youtube category-icon"
-              title="__MSG_btnYouTube.tooltip__"
-              alt="__MSG_btnYouTube.tooltip__"></button>          
             <button id="helpTemplates"
-              class="iconButton category-icon"
-              title="__MSG_tip.fileTemplates__"></button>
+              class="iconLabelButton"
+              title="__MSG_tip.fileTemplates__"><span>How to use external Templates</span></button>
+            <button id="btnYouTube-filetemplates"
+              class="iconLabelButton youtube"
+              title="__MSG_btnYouTube.tooltip__"
+              alt="__MSG_btnYouTube.tooltip__"><span>Video about file templates</span></button>          
           </span>
         </div>
 
@@ -118,7 +118,7 @@
               <section class="newGroup fileTemplatePanel vbox active" id="new-fileTemplates">
                 <fieldset flex="1" orient="vertical" class="transparent">
                   <div flex="1" class="vfield vbox">
-                    <label title="__MSG_fileTemplates.new.tooltip__">__MSG_fileTemplates.title__</label>
+                    <label title="__MSG_fileTemplates.new.tooltip__">__MSG_fileTemplates.listHead__</label>
                     <select id="templateList_new" 
                       class="fileTemplateList" flex="1" size="12"> 
                     </select>
@@ -179,7 +179,7 @@
                 <fieldset flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
                     <label title="__MSG_fileTemplates.rsp.tooltip__"> 
-                          __MSG_fileTemplates.title__</label>
+                          __MSG_fileTemplates.listHead__</label>
                     <select id="templateList_rsp" 
                       class="fileTemplateList" flex="1" size="12">
                     </select>
@@ -191,7 +191,7 @@
               <section class="forwardGroup fileTemplatePanel vbox" id="fwd-fileTemplates">
                 <fieldset  flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
-                    <label tooltiptext="__MSG_fileTemplates.fwd.tooltip__">__MSG_fileTemplates.title__</label>
+                    <label tooltiptext="__MSG_fileTemplates.fwd.tooltip__">__MSG_fileTemplates.listHead__</label>
                     <select id="templateList_fwd" 
                       class="fileTemplateList" flex="1" size="12">
                     </select>
@@ -349,7 +349,6 @@
               <label value=""
                      control="txtNameDelimiter">__MSG_pref_addressDelimiter__</label>
               <input type="text" id="txtNameDelimiter"
-                    style="width:2em;"
                     title="__MSG_pref_addressDelimiter_tip__"
                     data-pref-name="extensions.smartTemplate4.names.delimiter">
             </div>
@@ -575,7 +574,7 @@
       </prefpane>
 
       <prefpane id="smartTemplatePane" orient="vertical" flex="1" class="page pageActive">
-        <h2>Account Templates</h2>
+        <h2>__MSG_account.templates__</h2>
         <div id="decksContainer" flex="1" class="vbox">
 
           <!-- ######## Creating Identity Dropdown Box ######## --> 

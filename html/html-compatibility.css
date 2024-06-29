@@ -85,6 +85,8 @@ prefpane label {
   align-items: center;
   flex-direction: row;  
   justify-content: left;
+  line-height: 1.4em;
+  margin-block-end: 0.3em;
 }
 
 #supportgrid .button label {

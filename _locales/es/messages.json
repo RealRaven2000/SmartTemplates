@@ -410,7 +410,7 @@
   "fileTemplates.rsp.tooltip": {
     "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Responder'."
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "Archivos de plantilla"
   },
   "fileTemplates.up": {

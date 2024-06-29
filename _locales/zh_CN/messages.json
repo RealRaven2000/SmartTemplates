@@ -410,7 +410,7 @@
   "fileTemplates.rsp.tooltip": {
     "message": "可以从“回复”按钮启动的外部模板文件列表。"
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "模板文件"
   },
   "fileTemplates.up": {

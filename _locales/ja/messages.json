@@ -407,7 +407,7 @@
   "fileTemplates.rsp.tooltip": {
     "message": "「返信」ボタンから適用できる外部テンプレートファイルの一覧"
   },
-  "fileTemplates.title": {
+  "fileTemplates.listHead": {
     "message": "テンプレートファイル"
   },
   "fileTemplates.up": {
