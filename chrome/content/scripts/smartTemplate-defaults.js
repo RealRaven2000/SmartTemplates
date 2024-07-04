@@ -73,7 +73,7 @@ pref("extensions.smartTemplate4.changeTemplate.button.install", true); /* add ch
 pref("extensions.smartTemplate4.insertSnippet.button.install", true); /* add insert snippets button automatically when installing for first time */
 
 /* debug settings */
-pref("extensions.smartTemplate4.settings.html",false); // test
+pref("extensions.smartTemplate4.settings.html",true); // test
 pref("extensions.smartTemplate4.debug", false);
 pref("extensions.smartTemplate4.debug.default", true); // to disable standard log messages 
 pref("extensions.smartTemplate4.hideExamples", false);

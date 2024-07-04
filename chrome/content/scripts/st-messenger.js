@@ -95,11 +95,13 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Preferences.setMyBoolPref("hasNews", false);
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
         break;
+      case "smartTemplates-settings-legacy": // fall-through
       case "smartTemplates-settings":
         // this will be always true once legacy settings are retired.
         let modernApiSettings = SmartTemplates.Preferences.getMyBoolPref("settings.html");
-        if (params.option && params.option.includes("legacy"))  {
-          modernApiSettings = false;
+        if (params.option && params.option.includes("legacy") || el.id == "smartTemplates-settings-legacy")  {
+          // force legacy
+          modernApiSettings = false; 
         }
 
         if (modernApiSettings) { // new prefs
@@ -132,6 +134,7 @@ async function onLoad(activatedWhileWindowOpen) {
           SmartTemplates.Util.openPreferences({element:el});
         }
         break;
+
       case "smartTemplates-settings-new":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs" });
         break;
