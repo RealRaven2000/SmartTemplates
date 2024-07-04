@@ -32,6 +32,9 @@
   "account.label": {
     "message": "アカウント選択:"
   },
+  "account.templates": {
+    "message": "アカウントテンプレート"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Thunderbird $appVer$ 上で {boldStart} バージョン $addonVer$ {boldEnd} を実行しています。",
@@ -398,6 +401,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "「転送」ボタンから適用できる外部テンプレートファイルの一覧"
   },
+  "fileTemplates.listHead": {
+    "message": "テンプレートメニューの項目"
+  },
+  "fileTemplates.menu": {
+    "message": "テンプレートファイル"
+  },
   "fileTemplates.new.tooltip": {
     "message": "「新規メッセージ作成」ボタンから適用できる外部テンプレートファイルの一覧"
   },
@@ -406,9 +415,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "「返信」ボタンから適用できる外部テンプレートファイルの一覧"
-  },
-  "fileTemplates.listHead": {
-    "message": "テンプレートファイル"
   },
   "fileTemplates.up": {
     "message": "上へ"
@@ -1121,6 +1127,9 @@
   },
   "pref_variables.tab": {
     "message": "変数"
+  },
+  "preferences_legacy": {
+    "message": "設定 (旧バージョン)"
   },
   "preheader": {
     "message": "モバイルメールクライアントのみに表示されるプレビューテキストで、電子メールの本文の先頭に挿入されます。"

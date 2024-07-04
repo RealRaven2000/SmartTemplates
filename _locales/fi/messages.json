@@ -35,6 +35,9 @@
   "account.label": {
     "message": "Valitse tili:"
   },
+  "account.templates": {
+    "message": "Tilin mallipohjat"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Vous exécutez maintenant {boldStart} version $addonVer$ {boldEnd} sur Thunderbird $appVer$.",
@@ -401,6 +404,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "List of external template files that can be launched from the 'Forward' button."
   },
+  "fileTemplates.listHead": {
+    "message": "Mallivalikon kohteet"
+  },
+  "fileTemplates.menu": {
+    "message": "Template Files"
+  },
   "fileTemplates.new.tooltip": {
     "message": "List of external template files that can be launched from the 'Create new Message' button."
   },
@@ -409,9 +418,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.listHead": {
-    "message": "Template Files"
   },
   "fileTemplates.up": {
     "message": "Up"
@@ -1142,6 +1148,9 @@
   },
   "pref_variables.tab": {
     "message": "Muuttujat"
+  },
+  "preferences_legacy": {
+    "message": "Asetukset (vanha versio)"
   },
   "preheader": {
     "message": "Esikatseluteksti, joka näkyy vain mobiilisähköpostiasiakkaille ja joka lisätään sähköpostin rungon alkuun."

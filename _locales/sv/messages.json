@@ -35,6 +35,9 @@
   "account.label": {
     "message": "Välj konto:"
   },
+  "account.templates": {
+    "message": "Kontomallar"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Du kör nu {boldStart} version $addonVer$ {boldEnd} på Thunderbird $appVer$.",
@@ -401,14 +404,17 @@
   "fileTemplates.fwd.tooltip": {
     "message": "Lista över externa mallfiler som kan startas från knappen \"Vidare\"."
   },
+  "fileTemplates.listHead": {
+    "message": "Mallmenyobjekt"
+  },
+  "fileTemplates.menu": {
+    "message": "Mallfiler"
+  },
   "fileTemplates.new.tooltip": {
     "message": "Lista över externa mallfiler som kan startas från knappen \"Skapa nytt meddelande\"."
   },
   "fileTemplates.remove": {
     "message": "Radera"
-  },
-  "fileTemplates.listHead": {
-    "message": "Mallfiler"
   },
   "fileTemplates.up": {
     "message": "Upp"
@@ -1139,6 +1145,18 @@
   },
   "pref_variables.tab": {
     "message": "Variabler"
+  },
+  "preferences_legacy": {
+    "message": "Inställningar (äldre version)"
+  },
+  "preheader": {
+    "message": "En förhandsvisningstext som endast syns i mobila e-postklienter och som kommer att infogas i början av e-postens kroppstext."
+  },
+  "preheader.className": {
+    "message": "[valfritt] Du kan lägga till en CSS-klass för att ändra layouten."
+  },
+  "preheader.inlineStyles": {
+    "message": "[valfritt] Lägg till dina egna stilattribut, separerade med semikolon. Utan denna parameter kommer SmartTemplates automatiskt infoga 'display:none' för att göra avsnittet osynligt."
   },
   "preheader.text": {
     "message": "Förhandsvisningstexten måste vara innesluten i dubbla citat, som också kan innehålla nyckelordet $clipboardStarred$. Som ett alternativ kan du använda $clipboardLiteral$ eller $selectionLiteral$ (det senare fungerar bara när det används från en Smart Snippet)",

@@ -35,6 +35,9 @@
   "account.label": {
     "message": "Seleccionar cuenta:"
   },
+  "account.templates": {
+    "message": "Plantillas de cuenta"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Ahora está ejecutando la versión de {boldStart} $addonVer$ {boldEnd} en Thunderbird $appVer$.",
@@ -401,6 +404,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Adelante'."
   },
+  "fileTemplates.listHead": {
+    "message": "Entradas del menú de plantillas"
+  },
+  "fileTemplates.menu": {
+    "message": "Archivos de plantilla"
+  },
   "fileTemplates.new.tooltip": {
     "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Crear nuevo mensaje'."
   },
@@ -409,9 +418,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Responder'."
-  },
-  "fileTemplates.listHead": {
-    "message": "Archivos de plantilla"
   },
   "fileTemplates.up": {
     "message": "Arriba"
@@ -1100,6 +1106,9 @@
   },
   "pref_template_tip": {
     "message": "Puede cambiar el encabezado de respuesta por 'variables'. Consulte la Ayuda para más detalles."
+  },
+  "preferences_legacy": {
+    "message": "Configuración (versión antigua)"
   },
   "preheader": {
     "message": "Un texto de vista previa solo visible para clientes de correo móvil, que se insertará al principio del cuerpo del correo electrónico."

@@ -35,6 +35,9 @@
   "account.label": {
     "message": "Wybierz konto:"
   },
+  "account.templates": {
+    "message": "Szablony konta"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Używasz teraz {boldStart} wersji $addonVer$ {boldEnd} na Thunderbird $appVer$.",
@@ -409,6 +412,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "Lista zewnętrznych plików szablonów, które można uruchomić z przycisku „Przekaż dalej”."
   },
+  "fileTemplates.listHead": {
+    "message": "Elementy menu szablonów"
+  },
+  "fileTemplates.menu": {
+    "message": "Pliki szablonów"
+  },
   "fileTemplates.new.tooltip": {
     "message": "Lista zewnętrznych plików szablonów, które można uruchomić z przycisku „Utwórz nową wiadomość”."
   },
@@ -417,9 +426,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "Lista zewnętrznych plików szablonów, które można uruchomić z przycisku „Odpowiedz”."
-  },
-  "fileTemplates.listHead": {
-    "message": "Pliki szablonów"
   },
   "fileTemplates.up": {
     "message": "Góra"
@@ -1135,6 +1141,9 @@
   },
   "pref_variables.tab": {
     "message": "Zmienne"
+  },
+  "preferences_legacy": {
+    "message": "Ustawienia (starsza wersja)"
   },
   "preheader": {
     "message": "Tekst podglądu widoczny tylko dla mobilnych klientów poczty elektronicznej, który zostanie wstawiony na początku treści wiadomości e-mail."

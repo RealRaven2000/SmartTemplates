@@ -35,6 +35,9 @@
   "account.label": {
     "message": "Izberite račun:"
   },
+  "account.templates": {
+    "message": "Predloge računa"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Zdaj izvajate {boldStart} različico $addonVer$ {boldEnd} na Thunderbird $appVer$.",
@@ -380,11 +383,50 @@
   "firstName.label": {
     "message": "Ime:"
   },
+  "fileTemplates.add": {
+    "message": "Dodaj"
+  },
+  "fileTemplates.down": {
+    "message": "Dol"
+  },
   "fileTemplates.edit": {
     "message": "Uredi"
-  },
+  },  
   "fileTemplates.file.open": {
-    "message": "Izberite datoteko predloge s diska"
+    "message": "Izberite datoteko predloge z diska"
+  },
+  "fileTemplates.file.path": {
+    "message": "Lokacija predloge:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Naslov:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "To bo prikazano v meniju za izbiro predloge."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete z gumbom 'Posreduj'."
+  },
+  "fileTemplates.listHead": {
+    "message": "Vnosi v meniju predloge"
+  },
+  "fileTemplates.menu": {
+    "message": "Datoteke predlog"
+  },  
+  "fileTemplates.new.tooltip": {
+    "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete z gumbom 'Ustvari novo sporočilo'."
+  },
+  "fileTemplates.remove": {
+    "message": "Odstrani"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete z gumbom 'Odgovori'."
+  },
+  "fileTemplates.up": {
+    "message": "Gor"
+  },
+  "fileTemplates.update": {
+    "message": "Posodobi"
   },
   "fix_var.cap": {
     "message": "Stalne spremenljivke"
@@ -1094,6 +1136,9 @@
   },
   "pref_variables.tab": {
     "message": "Spremenljivke"
+  },
+  "preferences_legacy": {
+    "message": "Nastavitve (stara različica)"
   },
   "preheader": {
     "message": "Predogledni besedilo, ki je vidno le za mobilne poštne odjemalce, bo vstavljeno na začetek telesa e-pošte."

@@ -35,6 +35,9 @@
   "account.label": {
     "message": "Selecteer account:"
   },
+  "account.templates": {
+    "message": "Accountsjablonen"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "U voert nu {boldStart} versie $addonVer$ {boldEnd} uit op Thunderbird $appVer$.",
@@ -401,6 +404,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "Lijst van externe sjabloonbestanden die kunnen worden gestart vanaf de knop ‘Doorsturen’."
   },
+  "fileTemplates.listHead": {
+    "message": "Sjabloonmenu-items"
+  },
+  "fileTemplates.menu": {
+    "message": "Sjabloonbestanden"
+  },
   "fileTemplates.new.tooltip": {
     "message": "Lijst van externe sjabloonbestanden die kunnen worden gestart vanaf de knop ‘Nieuw bericht opstellen’."
   },
@@ -409,9 +418,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "Lijst van externe sjabloonbestanden die kunnen worden gestart vanaf de knop ‘Beantwoorden’."
-  },
-  "fileTemplates.listHead": {
-    "message": "Sjabloonbestanden"
   },
   "fileTemplates.up": {
     "message": "Omhoog"
@@ -1082,6 +1088,9 @@
   },
   "pref_variables.tab": {
     "message": "Variabelen"
+  },
+  "preferences_legacy": {
+    "message": "Instellingen (oude versie)"
   },
   "preheader": {
     "message": "Een voorbeeldtekst die alleen zichtbaar is voor mobiele e-mailclients, die aan het begin van het e-maillichaam zal worden ingevoegd."

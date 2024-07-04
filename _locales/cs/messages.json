@@ -32,6 +32,9 @@
   "account.label": {
     "message": "Vyberte účet:"
   },
+  "account.templates": {
+    "message": "Šablony účtu"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Nyní používáte {boldStart} verzi $addonVer$ {boldEnd} na Thunderbirdu $appVer$.",
@@ -395,6 +398,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Vpřed'."
   },
+  "fileTemplates.listHead": {
+    "message": "Položky nabídky šablon"
+  },
+  "fileTemplates.menu": {
+    "message": "Soubory šablon"
+  },
   "fileTemplates.new.tooltip": {
     "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Vytvořit novou zprávu'."
   },
@@ -403,9 +412,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Odpovědět'."
-  },
-  "fileTemplates.listHead": {
-    "message": "Soubory šablon"
   },
   "fileTemplates.up": {
     "message": "Nahoru"
@@ -1133,6 +1139,9 @@
   },
   "pref_variables.tab": {
     "message": "Proměnné"
+  },
+  "preferences_legacy": {
+    "message": "Nastavení (stará verze)"
   },
   "preheader": {
     "message": "Un text de visualització prèvia només visible pels clients de correu electrònic mòbils, que s'inserirà al principi del cos del correu electrònic."

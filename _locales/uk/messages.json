@@ -38,6 +38,9 @@
   "account.label": {
     "message": "Виберіть обліковий запис:"
   },
+  "account.templates": {
+    "message": "Шаблони облікового запису"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Тепер Ви використовуєте {boldStart} версію $addonVer$ {boldEnd} на Thunderbird $appVer$.",
@@ -408,6 +411,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "Список зовнішніх файлів шаблонів, які можуть бути запущені з кнопки 'вперед'."
   },
+  "fileTemplates.listHead": {
+    "message": "Елементи меню шаблонів"
+  },
+  "fileTemplates.menu": {
+    "message": "Файли шаблонів"
+  },
   "fileTemplates.new.tooltip": {
     "message": "Список зовнішніх файлів шаблонів, які можуть бути запущені із кнопки 'Створити нове повідомлення'."
   },
@@ -416,9 +425,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "Список зовнішніх файлів шаблонів, які можуть бути запущені з кнопки 'Відповісти'."
-  },
-  "fileTemplates.listHead": {
-    "message": "Файли шаблонів"
   },
   "fileTemplates.up": {
     "message": "Вгору"
@@ -1149,6 +1155,18 @@
   },
   "pref_variables.tab": {
     "message": "Змінні"
+  },
+  "preferences_legacy": {
+    "message": "Налаштування (стара версія)"
+  },
+  "preheader": {
+    "message": "Текст попереднього перегляду, який видно лише на мобільних поштових клієнтах і буде вставлений в початок тіла електронного листа."
+  },
+  "preheader.className": {
+    "message": "[необов'язково] Ви можете додати CSS-клас для зміни макету."
+  },
+  "preheader.inlineStyles": {
+    "message": "[необов'язково] Додайте власні стильові атрибути, розділені крапкою з комою. Без цього параметра SmartTemplates автоматично вставить 'display:none', щоб зробити розділ невидимим."
   },
   "preheader.text": {
     "message": "Текст попереднього перегляду повинен бути у подвійних лапках, які також можуть містити ключове слово $clipboardStarred$. Як альтернативу, ви можете використовувати $clipboardLiteral$ або $selectionLiteral$ (останнє працює лише при використанні з Smart Snippet)",

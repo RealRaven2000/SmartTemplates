@@ -32,6 +32,9 @@
   "account.label": {
     "message": "Учётная запись:"
   },
+  "account.templates": {
+    "message": "Шаблоны учетной записи"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Теперь вы используете {boldStart} версию $addonVer$ {boldEnd} на Thunderbird $appVer$.",
@@ -374,11 +377,50 @@
   "fileImage.label": {
     "message": "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText."
   },
+  "fileTemplates.add": {
+    "message": "Добавить"
+  },
+  "fileTemplates.down": {
+    "message": "Вниз"
+  },
   "fileTemplates.edit": {
     "message": "Редактировать"
-  },
+  },  
   "fileTemplates.file.open": {
     "message": "Выбрать файл шаблона с диска"
+  },
+  "fileTemplates.file.path": {
+    "message": "Расположение шаблона:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Название:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Это будет отображаться в меню выбора шаблона."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Список внешних файлов шаблонов, которые можно запускать с кнопки 'Переслать'."
+  },
+  "fileTemplates.listHead": {
+    "message": "Пункты меню шаблонов"
+  },
+  "fileTemplates.menu": {
+    "message": "Файлы шаблонов"
+  },  
+  "fileTemplates.new.tooltip": {
+    "message": "Список внешних файлов шаблонов, которые можно запускать с кнопки 'Создать новое сообщение'."
+  },
+  "fileTemplates.remove": {
+    "message": "Удалить"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Список внешних файлов шаблонов, которые можно запускать с кнопки 'Ответить'."
+  },
+  "fileTemplates.up": {
+    "message": "Вверх"
+  },
+  "fileTemplates.update": {
+    "message": "Обновить"
   },
   "firstName.label": {
     "message": "Имя:"
@@ -1103,6 +1145,9 @@
   },
   "pref_variables.tab": {
     "message": "Переменные"
+  },
+  "preferences_legacy": {
+    "message": "Настройки (устаревшая версия)"
   },
   "preheader": {
     "message": "Текст предварительного просмотра, видимый только для мобильных почтовых клиентов, который будет вставлен в начале тела электронного письма."

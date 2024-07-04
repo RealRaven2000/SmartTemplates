@@ -35,6 +35,9 @@
   "account.label": {
     "message": "选择账户："
   },
+  "account.templates": {
+    "message": "账户模板"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "您现在在Thunderbird $appVer$上运行{boldStart}版本 $addonVer$ {boldEnd}。",
@@ -401,6 +404,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "可以从“转发”按钮启动的外部模板文件列表。"
   },
+  "fileTemplates.listHead": {
+    "message": "模板菜单条目"
+  },
+  "fileTemplates.menu": {
+    "message": "模板文件"
+  },
   "fileTemplates.new.tooltip": {
     "message": "可以从“创建新消息”按钮启动的外部模板文件列表。"
   },
@@ -409,9 +418,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "可以从“回复”按钮启动的外部模板文件列表。"
-  },
-  "fileTemplates.listHead": {
-    "message": "模板文件"
   },
   "fileTemplates.up": {
     "message": "上移"
@@ -1133,6 +1139,9 @@
   },
   "pref_variables.tab": {
     "message": "变量"
+  },
+  "preferences_legacy": {
+    "message": "设置（旧版本）"
   },
   "preheader": {
     "message": "仅在移动邮件客户端可见的预览文本，将插入到电子邮件正文的开头。"

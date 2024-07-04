@@ -32,6 +32,9 @@
   "account.label": {
     "message": "Selecione a conta:"
   },
+  "account.templates": {
+    "message": "Szablony konta"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Agora você está executando a versão {boldStart} $addonVer$ {boldEnd} no Thunderbird $appVer$.",
@@ -386,11 +389,20 @@
   "fileTemplates.file.open": {
     "message": "Selecionar arquivo de modelo do disco"
   },
+  "fileTemplates.file.path": {
+    "message": "Localização do modelo:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Título:"
+  },
   "fileTemplates.file.title.tooltip": {
     "message": "Isso será exibido no menu de seleção de modelos."
   },
   "fileTemplates.fwd.tooltip": {
     "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir do botão 'Avançar'."
+  },  
+  "fileTemplates.listHead": {
+    "message": "Entradas do menu de modelos"
   },
   "fileTemplates.new.tooltip": {
     "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir do botão 'Criar nova mensagem'."
@@ -1103,6 +1115,9 @@
   },
   "pref_variables.tab": {
     "message": "Variáveis"
+  },
+  "preferences_legacy": {
+    "message": "Configurações (versão legada)"
   },
   "preheader": {
     "message": "Um texto de pré-visualização apenas visível para clientes de correio móvel, que será inserido no início do corpo do e-mail."

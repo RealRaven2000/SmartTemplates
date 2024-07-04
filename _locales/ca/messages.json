@@ -35,6 +35,9 @@
   "account.label": {
     "message": "Seleccioneu un compte:"
   },
+  "account.templates": {
+    "message": "Plantilles del compte"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Ara esteu executant la versió {boldStart} $addonVer$ {boldEnd} a Thunderbird $appVer$.",
@@ -401,6 +404,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "Llista de fitxers de plantilla externs que es poden iniciar des del botó 'Reenvia'."
   },
+  "fileTemplates.listHead": {
+    "message": "Entrades del menú de plantilles"
+  },
+  "fileTemplates.menu": {
+    "message": "Arxius de plantilla"
+  },
   "fileTemplates.new.tooltip": {
     "message": "Llista de fitxers de plantilla externs que es poden iniciar des del botó 'Crea un missatge nou'"
   },
@@ -409,9 +418,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "Llista de fitxers de plantilla externs que es poden iniciar des del botó 'Respon'."
-  },
-  "fileTemplates.listHead": {
-    "message": "Arxius de plantilla"
   },
   "fileTemplates.up": {
     "message": "Amunt"
@@ -1139,6 +1145,9 @@
   },
   "pref_variables.tab": {
     "message": "Variablas"
+  },
+  "preferences_legacy": {
+    "message": "Configuració (versió antiga)"
   },
   "preheader": {
     "message": "Un text de visualització prèvia només visible pels clients de correu electrònic mòbils, que s'inserirà al principi del cos del correu electrònic."

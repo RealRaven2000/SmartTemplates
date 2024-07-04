@@ -32,6 +32,9 @@
   "account.label": {
     "message": "Konto wählen:"
   },
+  "account.templates": {
+    "message": "Konto Vorlagen"
+  },  
   "active-version-info": {
     "message": "Es läuft jetzt {boldStart} Version $addonVer$ {boldEnd} auf Thunderbird $appVer$.",
     "placeholders": {
@@ -394,6 +397,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "Liste von externen Dateien die beim 'Weiterleiten' genutzt werden können."
   },
+  "fileTemplates.listHead": {
+    "message": "Menüpunkte mit Vorlagen"
+  },
+  "fileTemplates.menu": {
+    "message": "Vorlagedateien"
+  },
   "fileTemplates.new.tooltip": {
     "message": "Liste von externen Dateien die vom 'Neue Nachricht schreiben' Knopf aufgerufen werden können."
   },
@@ -402,9 +411,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "Liste von externen Dateien die beim 'Antworten' genutzt werden können."
-  },
-  "fileTemplates.title": {
-    "message": "Vorlagen (HTML Dateien)"
   },
   "fileTemplates.up": {
     "message": "Nach oben"
@@ -1084,6 +1090,9 @@
   },
   "pref_variables.tab": {
     "message": "Variablen"
+  },
+  "preferences_legacy": {
+    "message": "Einstellungen (Legacy)"
   },
   "preheader": {
     "message": "Ein Vorschautext, der nur für mobile E-Mail-Clients sichtbar ist und am Anfang des E-Mail-Körpers eingefügt wird."

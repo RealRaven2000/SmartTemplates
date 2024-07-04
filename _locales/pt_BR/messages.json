@@ -32,6 +32,9 @@
   "account.label": {
     "message": "Selecione a conta:"
   },
+  "account.templates": {
+    "message": "Modelos de conta"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Agora você está executando a versão {boldStart} $addonVer$ {boldEnd} no Thunderbird $appVer$.",
@@ -371,14 +374,53 @@
   "fileImage.label": {
     "message": "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O texto alternativoé exibido se a imagem não pode ser localizada."
   },
-  "firstName.label": {
-    "message": "Nome:"
+  "fileTemplates.add": {
+    "message": "Adicionar"
+  },
+  "fileTemplates.down": {
+    "message": "Baixa"
   },
   "fileTemplates.edit": {
     "message": "Editar"
   },
   "fileTemplates.file.open": {
     "message": "Selecionar arquivo de modelo do disco"
+  },
+  "fileTemplates.file.path": {
+    "message": "Localização do modelo:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Título:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Isso será exibido no menu de seleção de modelos."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Lista de arquivos de modelo externos que podem ser lançados a partir do botão 'Encaminhar'."
+  },
+  "fileTemplates.listHead": {
+    "message": "Entradas do menu de modelos"
+  },
+  "fileTemplates.menu": {
+    "message": "Arquivos de Modelo"
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "Lista de arquivos de modelo externos que podem ser lançados a partir do botão 'Criar nova mensagem'."
+  },
+  "fileTemplates.remove": {
+    "message": "Remover"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Lista de arquivos de modelos externos que podem ser iniciados a partir do botão 'Responder'."
+  },
+  "fileTemplates.up": {
+    "message": "Acima"
+  },
+  "fileTemplates.update": {
+    "message": "Atualizar"
+  },  
+  "firstName.label": {
+    "message": "Nome:"
   },
   "fix_var.cap": {
     "message": "Variáveis básicas"
@@ -1070,6 +1112,9 @@
   },
   "pref_variables.tab": {
     "message": "Variáveis"
+  },
+  "preferences_legacy": {
+    "message": "Configurações (versão legada)"
   },
   "preheader": {
     "message": "Um texto de pré-visualização apenas visível para clientes de correio móvel, que será inserido no início do corpo do e-mail."

@@ -35,6 +35,9 @@
   "account.label": {
     "message": "Επιλέξτε λογαριασμό:"
   },
+  "account.templates": {
+    "message": "Πρότυπα λογαριασμού"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Εκτελείτε την {boldStart} έκδοση $addonVer$ {boldEnd} στο Thunderbird $appVer$.",
@@ -401,6 +404,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Προώθηση'."
   },
+  "fileTemplates.listHead": {
+    "message": "Εγγραφές μενού προτύπων"
+  },
+  "fileTemplates.menu": {
+    "message": "Αρχεία Προτύπων"
+  },
   "fileTemplates.new.tooltip": {
     "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Δημιουργία νέου μηνύματος'."
   },
@@ -409,9 +418,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Απάντηση'."
-  },
-  "fileTemplates.listHead": {
-    "message": "Αρχεία Προτύπων"
   },
   "fileTemplates.up": {
     "message": "Πάνω"
@@ -1142,6 +1148,9 @@
   },
   "pref_variables.tab": {
     "message": "Μεταβλητές"
+  },
+  "preferences_legacy": {
+    "message": "Ρυθμίσεις (παλαιότερη έκδοση)"
   },
   "preheader": {
     "message": "Ένα προεπισκοπήσιμο κείμενο που είναι ορατό μόνο στους φορητούς πελάτες email, το οποίο θα εισαχθεί στην αρχή του σώματος του email."

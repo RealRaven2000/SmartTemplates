@@ -38,6 +38,9 @@
   "account.label": {
     "message": "Choix du compte :"
   },
+  "account.templates": {
+    "message": "Modèles de compte"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Vous exécutez maintenant {boldStart} version $addonVer$ {boldEnd} sur Thunderbird $appVer$.",
@@ -404,6 +407,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "Liste des fichiers modèles externes pouvant être lancés à partir du bouton 'Suivant'."
   },
+  "fileTemplates.listHead": {
+    "message": "Entrées du menu des modèles"
+  },
+  "fileTemplates.menu": {
+    "message": "Fichiers modèles"
+  },
   "fileTemplates.new.tooltip": {
     "message": "Liste des fichiers modèles externes pouvant être lancés à partir du bouton 'Créer un nouveau message'."
   },
@@ -412,9 +421,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "Liste des fichiers modèles externes pouvant être lancés à partir du bouton 'Répondre'."
-  },
-  "fileTemplates.listHead": {
-    "message": "Fichiers modèles"
   },
   "fileTemplates.up": {
     "message": "Monter"
@@ -1139,6 +1145,9 @@
   },
   "pref_variables.tab": {
     "message": "Variables"
+  },
+  "preferences_legacy": {
+    "message": "Paramètres (version ancienne)"
   },
   "preheader": {
     "message": "Un texte de prévisualisation uniquement visible pour les clients de messagerie mobile, qui sera inséré au début du corps de l'email."

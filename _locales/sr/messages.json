@@ -35,6 +35,9 @@
   "account.label": {
     "message": "Изаберите налог:"
   },
+  "account.templates": {
+    "message": "Шаблони налога"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Сада покрећете {boldStart} верзију $addonVer$ {boldEnd} на Thunderbird $appVer$.",
@@ -368,11 +371,50 @@
   "fileImage.label": {
     "message": "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан."
   },
+  "fileTemplates.add": {
+    "message": "Додај"
+  },
+  "fileTemplates.down": {
+    "message": "Доле"
+  },
   "fileTemplates.edit": {
     "message": "Уреди"
-  },
+  },  
   "fileTemplates.file.open": {
-    "message": "Изаберите датотеку шаблона са диска"
+    "message": "Изабери датотеку шаблона са диска"
+  },
+  "fileTemplates.file.path": {
+    "message": "Локација шаблона:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Наслов:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Ово ће бити приказано у менију за избор шаблона."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Списак екстерних датотека шаблона који се могу покренути са дугмета 'Проследи'."
+  },
+  "fileTemplates.listHead": {
+    "message": "Ставке менија шаблона"
+  },
+  "fileTemplates.menu": {
+    "message": "Датотеке шаблона"
+  },  
+  "fileTemplates.new.tooltip": {
+    "message": "Списак екстерних датотека шаблона који се могу покренути са дугмета 'Креирај нову поруку'."
+  },
+  "fileTemplates.remove": {
+    "message": "Уклони"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Списак екстерних датотека шаблона који се могу покренути са дугмета 'Одговори'."
+  },
+  "fileTemplates.up": {
+    "message": "Горе"
+  },
+  "fileTemplates.update": {
+    "message": "Ажурирај"
   },
   "firstName.label": {
     "message": "Име:"
@@ -1077,8 +1119,20 @@
   "pref_variables.tab": {
     "message": "Променљиве"
   },
+  "preferences_legacy": {
+    "message": "Подешавања (старија верзија)"
+  },
+  "preheader": {
+    "message": "Прегледни текст видљив само мобилним поштанским клијентима, који ће бити уметнут на почетку тела е-поште."
+  },
+  "preheader.className": {
+    "message": "[опционо] Можете додати CSS класу за промену распореда."
+  },
+  "preheader.inlineStyles": {
+    "message": "[опционо] Додајте своје стилске атрибуте, раздвојене тачком са зарезом. Без овог параметра, SmartTemplates ће уметнути 'display:none' да би аутоматски направио одељак невидљивим."
+  },
   "preheader.text": {
-    "message": "Tekst za pregled mora biti sadržan unutar dvostrukih navodnika, koji takođe mogu sadržati ključnu reč $clipboardStarred$. Kao alternativu, možete koristiti $clipboardLiteral$ ili $selectionLiteral$ (poslednje funkcioniše samo kada se koristi iz Smart Snippet)",
+    "message": "Прегледни текст мора бити унутар дуплих навода, који такође могу садржавати кључну реч $clipboardStarred$. Алтернативно, можете користити $clipboardLiteral$ директно или $selectionLiteral$ (овај последњи ради само када се користи из Smart Snippet).",
     "placeholders": {
       "clipboardLiteral": {
         "content": "$1",
@@ -1088,12 +1142,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "Премијум могућности"
   },

@@ -272,8 +272,50 @@
   "fileHTML.label": {
     "message": "HTML atau berkas teks biasa. Diasumsikan UTF-8 ketika menghilangkan opsi parameter charset."
   },
-  "fileImage.label": {
-    "message": "Berkas gambar (png,jpg,gif,bmp,svg). AltText opsional ditampilkan jika gambar tidak dapat ditemukan."
+  "fileTemplates.add": {
+    "message": "Tambah"
+  },
+  "fileTemplates.down": {
+    "message": "Turun"
+  },
+  "fileTemplates.edit": {
+    "message": "Edit"
+  },  
+  "fileTemplates.file.open": {
+    "message": "Pilih file template dari disk"
+  },
+  "fileTemplates.file.path": {
+    "message": "Lokasi template:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Judul:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Ini akan ditampilkan di menu pemilihan template."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Daftar file template eksternal yang dapat diluncurkan dari tombol 'Teruskan'."
+  },
+  "fileTemplates.listHead": {
+    "message": "Entri menu template"
+  },
+  "fileTemplates.menu": {
+    "message": "File Template"
+  },  
+  "fileTemplates.new.tooltip": {
+    "message": "Daftar file template eksternal yang dapat diluncurkan dari tombol 'Buat Pesan Baru'."
+  },
+  "fileTemplates.remove": {
+    "message": "Hapus"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Daftar file template eksternal yang dapat diluncurkan dari tombol 'Balas'."
+  },
+  "fileTemplates.up": {
+    "message": "Naik"
+  },
+  "fileTemplates.update": {
+    "message": "Perbarui"
   },
   "firstName.label": {
     "message": "Nama Depan:"
@@ -835,6 +877,9 @@
   },
   "pref_variables.tab": {
     "message": "Variabel"
+  },
+  "preferences_legacy": {
+    "message": "Pengaturan (versi lama)"
   },
   "preheader": {
     "message": "Sebuah teks pratinjau hanya terlihat untuk klien email mobile, yang akan dimasukkan di awal badan email."

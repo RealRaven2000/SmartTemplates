@@ -32,6 +32,9 @@
   "account.label": {
     "message": "Seleziona un account:"
   },
+  "account.templates": {
+    "message": "Modelli di account"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Stai ora eseguendo la {boldStart} versione $addonVer$ {boldEnd} su Thunderbird $appVer$.",
@@ -367,6 +370,51 @@
   },
   "fileImage.label": {
     "message": "File di immagine (png,jpg,gif,bmp,svg). Visualizza opzionalmente l'etichetta altText se l'immagine non viene trovata."
+  },
+  "fileTemplates.add": {
+    "message": "Aggiungi"
+  },
+  "fileTemplates.down": {
+    "message": "Giù"
+  },
+  "fileTemplates.edit": {
+    "message": "Modifica"
+  },  
+  "fileTemplates.file.open": {
+    "message": "Seleziona file del modello dal disco"
+  },
+  "fileTemplates.file.path": {
+    "message": "Posizione del modello:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Titolo:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Questo sarà visualizzato nel menu di selezione del modello."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Elenco di file esterni di modelli che possono essere avviati dal pulsante 'Inoltra'."
+  },
+  "fileTemplates.listHead": {
+    "message": "Voci di menu del modello"
+  },
+  "fileTemplates.menu": {
+    "message": "File dei modelli"
+  },  
+  "fileTemplates.new.tooltip": {
+    "message": "Elenco di file esterni di modelli che possono essere avviati dal pulsante 'Crea nuovo messaggio'."
+  },
+  "fileTemplates.remove": {
+    "message": "Rimuovi"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Elenco di file esterni di modelli che possono essere avviati dal pulsante 'Rispondi'."
+  },
+  "fileTemplates.up": {
+    "message": "Su"
+  },
+  "fileTemplates.update": {
+    "message": "Aggiorna"
   },
   "firstName.label": {
     "message": "Nome:"
@@ -1049,6 +1097,9 @@
   },
   "pref_variables.tab": {
     "message": "Variabili"
+  },
+  "preferences_legacy": {
+    "message": "Impostazioni (versione legacy)"
   },
   "preheader": {
     "message": "Un testo di anteprima visibile solo ai client di posta elettronica mobile, che verrà inserito all'inizio del corpo dell'email."

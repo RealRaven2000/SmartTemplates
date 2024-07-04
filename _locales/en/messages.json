@@ -38,6 +38,9 @@
   "account.label": {
     "message": "Select account:"
   },
+  "account.templates": {
+    "message": "Account templates"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
@@ -414,6 +417,12 @@
   "fileTemplates.fwd.tooltip": {
     "message": "List of external template files that can be launched from the 'Forward' button."
   },
+  "fileTemplates.listHead": {
+    "message": "Template menu entries"
+  },
+  "fileTemplates.menu": {
+    "message": "Template Files"
+  },  
   "fileTemplates.new.tooltip": {
     "message": "List of external template files that can be launched from the 'Create new Message' button."
   },
@@ -422,9 +431,6 @@
   },
   "fileTemplates.rsp.tooltip": {
     "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
   },
   "fileTemplates.up": {
     "message": "Up"
@@ -1165,6 +1171,9 @@
   },
   "pref_variables.tab": {
     "message": "Variables"
+  },
+  "preferences_legacy": {
+    "message": "Settings (legacy version)"
   },
   "preheader": {
     "message": "A preview text only visible to mobile mail clients, which will be inserted at the start of the email body."
