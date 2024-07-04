@@ -137,6 +137,30 @@
             "description": "template menu item from listbox {path, label, filter}"
           }
         ]
+      },
+      {
+        "name": "fileAccountSettings",
+        "type": "function",
+        "description": "reads / writes account settings",
+        "async": "true",
+        "parameters": [
+          {
+            "name": "mode",
+            "type": "string",
+            "description": "'load' or 'save'"
+          },
+          {
+            "name": "jsonData",
+            "type": "string",
+            "description": "data to store or account key when loading"
+          },
+          {
+            "name": "fname",
+            "type": "string",
+            "optional": true,
+            "description": "saving only: stem of file name"
+          }
+        ]        
       }
 
    ]

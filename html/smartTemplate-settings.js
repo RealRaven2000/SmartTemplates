@@ -289,7 +289,6 @@ var fileTemplates = {
 		this.activeFileList.selectedIndex = currentPos-1;
 	},
 	moveEntryDown: async function() {
-		logMissingFunction("SmartTemplate4.fileTemplates.moveEntryDown()");
 		let currentPos = fileTemplates.activeFileList.selectedIndex;
 		if (currentPos<0) return;
 		if (currentPos+1>=fileTemplates.activeFileList.length) return;
@@ -307,8 +306,6 @@ var fileTemplates = {
 		messenger.Utilities.editTemplateExternal(item);
 	},
 	openFilePicker: async function() {
-		logMissingFunction("SmartTemplate4.fileTemplates.pickFileFromSettings()");
-		debugger;
 		let result = await messenger.Utilities.openFileExternal(
 			{
 				path: "",
@@ -316,7 +313,6 @@ var fileTemplates = {
 			}
 		);
 		console.log("Returned file info", result)
-		debugger;
 		if (result.path) {
 			document.getElementById('txtTemplatePath').value = result.path;
 			document.getElementById('txtTemplateTitle').value = result.name;
@@ -469,7 +465,6 @@ var fileTemplates = {
 		// moved SmartTemplate4.fileTemplates.readStringFile() to experiment
 		// This reads the menus directly from File!
 		let data = await messenger.Utilities.readTemplateMenus();
-		logMissingFunction("fileTemplates.loadCustomMenu()...");
 		SmartTemplates.Settings.logDebug("after reading smartTemplates.json:", data);
 		this.fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, 'templateList_new');
 		this.fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, 'templateList_rsp');
@@ -716,9 +711,9 @@ SmartTemplates.Settings = {
 		return (s!="common") ? ('.'+ s) : "";
 	} ,
   
-  get currentAccountName() {
+  get currentAccountLabel() {
     let theMenu = document.getElementById("msgIdentity"),
-        menuEntry = theMenu.value,
+        menuEntry = theMenu.selectedOptions[0].label,
         end = menuEntry.indexOf(' <');
     if (end>0) {
       return menuEntry.substring(0, end);
@@ -830,7 +825,7 @@ SmartTemplates.Settings = {
 	//--------------------------------------------------------------------
 	showCommonPlaceholder : function (isCommon, accountId = this.accountId) {
 		const id = "default.deckB";
-		let deck = document.getElementById(id + accountId);
+		const deck = document.getElementById(id + accountId);
 		if (deck){ 
 			deck.selectedIndex = isCommon ? 1 : 0; 
 			if (isCommon) {
@@ -873,8 +868,6 @@ SmartTemplates.Settings = {
 	//--------------------------------------------------------------------
 	disableWithCheckbox : async function (el) {
 		// change this to reading prefs instead! called during addidentity!!
-		if (el) { debugger; }
-		
 		const account = this.accountId; // "", ".id1", ".id2" ...
 		if (!el) {
 			const branch = ((account || ".common") + ".").substring(1);  // cut off leading [.] for getting bool pref
@@ -889,31 +882,31 @@ SmartTemplates.Settings = {
 			if (this.prefDisable(await getPref(branch + "fwd"), account, "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead", "fwdheader")) {
 				this.prefDisable(await getPref(branch + "fwdhtml"), account, "fwdnbr");
 			}
-		}
-		else {
-			let ids = (el.id).split('.'); 
-			switch (ids[0]) { // eg "new" or "new.id1"
-				case "new":
-				  this.prefDisable(this.isChecked("new" + account), account, "newmsg", "newhtml", "newnbr");
+			return;
+		} 
+
+		let ids = (el.id).split('.'); 
+		switch (ids[0]) { // eg "new" or "new.id1"
+			case "new":
+				this.prefDisable(this.isChecked("new" + account), account, "newmsg", "newhtml", "newnbr");
 				// fall through
-				case "newhtml":
-					this.prefDisable(this.isChecked("newhtml" + account), account, "newnbr");
-					break;
-				// ======================
-				case "rsp":
-					this.prefDisable(this.isChecked("rsp" + account), account, "rspmsg", "rsphtml", "rspnbr", "rsphead", "rspheader");
+			case "newhtml":
+				this.prefDisable(this.isChecked("newhtml" + account), account, "newnbr");
+				break;
+			// ======================
+			case "rsp":
+				this.prefDisable(this.isChecked("rsp" + account), account, "rspmsg", "rsphtml", "rspnbr", "rsphead", "rspheader");
 				// fall through
-				case "rsphtml":					
-					this.prefDisable(this.isChecked("rsphtml" + account), account, "rspnbr");
-				  break;
-				// ======================
-				case "fwd":
-					this.prefDisable(this.isChecked("fwd" + account), account, "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead", "fwdheader");
+			case "rsphtml":					
+				this.prefDisable(this.isChecked("rsphtml" + account), account, "rspnbr");
+				break;
+			// ======================
+			case "fwd":
+				this.prefDisable(this.isChecked("fwd" + account), account, "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead", "fwdheader");
 				// fall through
-				case "fwdhtml":
-					this.prefDisable(this.isChecked("fwdhtml" + account), account, "fwdnbr");
-					break;
-			}
+			case "fwdhtml":
+				this.prefDisable(this.isChecked("fwdhtml" + account), account, "fwdnbr");
+				break;
 		}
 	},  
 
@@ -1042,7 +1035,6 @@ SmartTemplates.Settings = {
 	// Tb >= 63 add new Preferences handler
 	//--------------------------------------------------------------------
 	prefCloneAndSetup : function (el, branch) {
-		logMissingFunction("Implement prefCloneAndSetup()");
 		this.logDebug("prefCloneAndSetup(" + el + ", " + branch + ")");
 		// was called replaceAttr
 		// AG added .common to the preference names to make it easier to add and manipulate global/debug settings
@@ -1299,15 +1291,16 @@ SmartTemplates.Settings = {
 		const branch = (idkey == "common") ? ".common" : "." + idkey;
 
 		// Display identity.
-		let deck = document.getElementById("account_deckA"),
-		    idx = 0,
-		    searchDeckName = ("deckA.per_account" + branch).replace(".common",""),
-		    found = false;
+		let idx = 0,
+				found = false,
+				justSelected;
+		const deck = document.getElementById("account_deckA"),
+		    	searchDeckName = ("deckA.per_account" + branch).replace(".common","");
+		    
 
-    let newSelected;
 		for (let el of document.querySelectorAll("#account_deckA .accountDeck")) {
 			if (el.id == searchDeckName) {
-				newSelected = el; 
+				justSelected = el; 
 				deck.selectedIndex = idx;
 				found = true;
 			} else {
@@ -1317,7 +1310,7 @@ SmartTemplates.Settings = {
 		}
 		
 		if (found) {
-			newSelected.classList.add("deck-selected");
+			justSelected.classList.add("deck-selected");
 		}
 
 		// nothing found, then we are in common! (changed from previous behavior where common accountKey was "", now it is ".common"
@@ -1338,14 +1331,19 @@ SmartTemplates.Settings = {
 		if (tabbox) {
 			tabbox.selectedIndex = tabIndex; //must b set this way because it is custom element, need to call setter
 			//tabbox.setAttribute("selectedIndex",tabIndex);
-      let txtDump = '',
-          tabboxArray = tabbox.getElementsByTagName('html:textarea'); // changed from textbox
-      for (let i=0; i<tabboxArray.length; i++)
+      let txtDump = '';
+      const tabboxArray = tabbox.getElementsByTagName('textarea'); // changed from textbox
+      for (let i=0; i<tabboxArray.length; i++) {
         txtDump += tabboxArray[i].value;  // append all texts
+			}
       // disable / enable Save button in case template is empty
 			try {
-				let disableSave = (txtDump.length===0) && (chkUseCommon.checked === true);
-				document.getElementById('btnSaveTemplate').disabled = disableSave;
+				let disableSave = (this.currentId!="common") && (txtDump.length===0) && (chkUseCommon.checked === true);
+				if (disableSave) {
+					document.getElementById('btnSaveTemplate').setAttribute("disabled", true);	
+				} else {
+					document.getElementById('btnSaveTemplate').removeAttribute("disabled");
+				}
 			}
 			catch (ex) {;}
     }
@@ -1411,19 +1409,20 @@ SmartTemplates.Settings = {
     );
   } ,
 
-	fileAccountSettings: function(mode, jsonData, fname) {
-	  logMissingFunction("fileAccountSettings()");
+	fileAccountSettings: async function(mode, jsonData, fname="") {
+		let result = await messenger.Utilities.fileAccountSettings(mode, jsonData, fname);
+		return result;
 	} ,
 
-  store: async function() {
+  storeAccount: async function() {
 		// let's get all the settings from the key and then put them in a json structure:
-    let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
-        tabbox = document.getElementById(currentDeck),
-        txt = tabbox.getElementsByTagName('html:textarea'), // changed from textbox
-        chk = tabbox.getElementsByTagName('checkbox'),
-        entry = {};
-        
-        // anonymize by truncating id# ?
+    const currentDeck = this.getCurrentDeck(SmartTemplates.Settings.accountId),
+					tabbox = document.getElementById(currentDeck),
+					txt = tabbox.getElementsByTagName('textarea'), // changed from textbox
+					chk = tabbox.querySelectorAll('input[type=checkbox]'),
+					entry = {};
+				
+		// anonymize by truncating id# ?
     for (let i=0; i<txt.length; i++) {
       let t = txt[i];
       entry[t.id] = t.value;
@@ -1433,20 +1432,84 @@ SmartTemplates.Settings = {
       entry[c.id] = c.checked ? true : false;
     }
     let json = JSON.stringify(entry, null, '  '); // prettified with indentation
-    this.fileAccountSettings('save', json, this.currentAccountName);
+    await this.fileAccountSettings('save', json, this.currentAccountLabel);
   } ,
   
   // load a Template file (not this module!)
-  load: async function() {
-    let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
-        tabbox = document.getElementById(currentDeck),
-        txt = tabbox.getElementsByTagName('html:textarea'), // changed from textbox
-        chk = tabbox.getElementsByTagName('checkbox');
-		this.fileAccountSettings('load', {
-			key: this.currentId, 
-			textboxes: txt, 
-			checkboxes: chk
-		});
+  loadAccount: async function() {
+		function isOrStartsWith(el, s) {
+			return (el.id == s || el.id.startsWith(s + "."));
+		}
+		
+		function updateElement(settings, el, stem, targetId) {
+			// id target is common, append .id#, otherwise replace the .id#
+			let oldId = targetId ? el.id.replace(targetId, stem) : el.id + stem;
+			// set element value (text / checkbox) from json data
+			switch (el.tagName.toLowerCase()) {
+				case "input":
+					if (el.getAttribute("type") == "checkbox") {
+						el.checked = settings[oldId];
+					}
+					break;
+				case "textarea"	:
+					el.value = settings[oldId];
+					break;
+				default:
+					return;
+			}
+			// force preference update
+			const evt = new Event("change", {bubbles:true, cancelable:false})
+			el.dispatchEvent(evt);
+		}
+
+		let data = await this.fileAccountSettings('load', JSON.stringify({ key: this.currentId }));
+		if (!data) {
+			return;
+		}
+		console.log("Successfully read json data", data);
+    const currentDeck = this.getCurrentDeck(SmartTemplates.Settings.accountId),
+					tabbox = document.getElementById(currentDeck),
+					textAreas = tabbox.getElementsByTagName('textarea'), // html collection
+					checkboxes = tabbox.querySelectorAll('input[type=checkbox]'); // nodelist
+
+
+		// jsonData = the key
+		// every identifier ends with id#; we need to replace the number with the current key!
+		// or match the string up to .id!
+		// we need to read one keyname of one (the first) json member
+		// e.g "newmsg.id1"
+		let sourceId = Object.keys(data)[0];
+		if (sourceId) {
+			// cut off variable before .id1
+			// find out if specific identity or common
+			// and only then append identity extension
+			// data.key has target identity and this can be "common"
+			let isSrcIdentity = (sourceId.indexOf('.id') > 0),
+					stem = isSrcIdentity ? sourceId.substr(sourceId.lastIndexOf('.')) : '', // use empty key for common case
+					isTargetIdentity = ((data.key && data.key!='common') || data.key==''),
+					targetId = isTargetIdentity ? ('.' + data.key) : '';
+			if (isTargetIdentity) {
+				// uncheck 'use common' checkbox
+				document.getElementById('use_default' + targetId).checked = false;
+				SmartTemplates.Settings.showCommonPlaceholder(false);
+			} else {
+				targetId = SmartTemplates.Settings.accountId;
+			}
+			for (let i=0; i<textAreas.length; i++) {
+				updateElement(data, textAreas[i], stem, targetId);
+				// check use_default
+			}
+			for (let i=0; i<checkboxes.length; i++) {
+				// e.g newmsg.id1
+				let el = checkboxes[i];
+				updateElement(data, el, stem, targetId);
+				// update enable / disable textboxes from checkbox data.
+				if (isOrStartsWith(el, "new") || isOrStartsWith(el, "newhtml") ||
+						isOrStartsWith(el, "rsp") || isOrStartsWith(el, "rsphtml") ||
+						isOrStartsWith(el, "fwd") || isOrStartsWith(el, "fwdhtml"))
+						SmartTemplates.Settings.disableWithCheckbox(el);
+			}
+		}                  
   } ,
   	
 	
@@ -1792,7 +1855,6 @@ SmartTemplates.Settings = {
 					version = document.getElementById('versionBox').textContent,
 		    	subjectline = supportType + " (" + version + ") " + subjectTxt.value,
 		    	sURL="mailto:" + mailto + "?subject=" + encodeURI(subjectline);
-		// logMissingFunction(`sendMail() \n ${sURL}`); 
 		messenger.compose.beginNew({
 			to: mailto,
 			subject: subjectline
@@ -2180,10 +2242,10 @@ function addUIListeners() {
 		SmartTemplates.Util.showStationeryPage("templateFiles");
 	});
 	document.getElementById("btnSaveTemplate").addEventListener("click", (event) => {
-		SmartTemplates.Settings.store();
+		SmartTemplates.Settings.storeAccount();
 	});
 	document.getElementById("btnLoadTemplate").addEventListener("click", (event) => {
-		SmartTemplates.Settings.load();
+		SmartTemplates.Settings.loadAccount();
 	});
 
 	// document.getElementById("btnAdvanced").addEventListener("click", (event) => {
@@ -2251,8 +2313,6 @@ function addUIListeners() {
 		el.addEventListener("click", (event) => {
 			switch(el.id) {
 				case "lnkShowPremium":
-					logMissingFunction("SmartTemplates.Util.showPremiumFeatures()");
-					// onclick="SmartTemplate4.Util.showPremiumFeatures();"
 					SmartTemplates.Util.showPremiumFeaturesPage();
 					break;
 			}

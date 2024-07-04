@@ -1349,7 +1349,7 @@ SmartTemplate4.Settings = {
       return menuEntry;
   },
   
-  fileAccountSettings: function(mode, jsonData, fname) {
+  fileAccountSettings: function(mode, jsonData, fname="") {
     // readData: this function does the actual work of interpreting the read data
     // and setting the UI values of currently selected deck accordingly:
     function readData(data) {

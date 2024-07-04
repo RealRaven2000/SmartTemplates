@@ -15,13 +15,6 @@ var win = Services.wm.getMostRecentWindow("mail:3pane");
 
 var Utilities = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {    
-    
-    const PrefTypes = {
-      [Services.prefs.PREF_STRING] : "string",
-      [Services.prefs.PREF_INT] : "number",
-      [Services.prefs.PREF_BOOL] : "boolean",
-      [Services.prefs.PREF_INVALID] : "invalid"
-    };
 
     return {
     
@@ -39,8 +32,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         getUserName : function () {
-          const util = win.SmartTemplate4.Util;
-          let Accounts = util.Accounts; 
+          let Accounts = win.SmartTemplate4.Util.Accounts; 
           for (let account of Accounts) {
             if (account.defaultIdentity) 
             { 
@@ -53,7 +45,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
         showVersionHistory: function() {
           const util = win.SmartTemplate4.Util;
-          util.showVersionHistory(false); // no prompt before showing
+          win.SmartTemplate4.Util.showVersionHistory(false); // no prompt before showing
         },
         
         showXhtmlPage: function(uri) {
@@ -147,7 +139,94 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         openFileExternal: async function(itemParams) {
           let result = await win.SmartTemplate4.fileTemplates.openTemplateFileExternal(itemParams);
           return result;
-        }
+        },
+
+        fileAccountSettings: async function(mode, jsonData, fname="") {
+
+          function rememberPath(path) {
+            // Remember last path
+            let lastSlash = path.lastIndexOf("/");
+            if (lastSlash < 0) lastSlash = path.lastIndexOf("\\");
+            let lastPath = path.substr(0, lastSlash);
+            win.SmartTemplate4.Util.logDebug("Storing Path: " + lastPath);
+            win.SmartTemplate4.Preferences.setStringPref('files.path', lastPath);            
+          }
+          const Cc = Components.classes,
+                Ci = Components.interfaces,
+                NSIFILE = Ci.nsIFile || Ci.nsILocalFile;
+          // [issue 285]
+          // util.popupLicenseNotification(mode + "_template", true, true); // save_template, load_template
+                
+          let filterText; //localized text for filePicker filter menu
+          
+          let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker),
+              fileOpenMode = (mode=='load') ? fp.modeOpen : fp.modeSave;
+              
+          // "Remember save location"
+          if (win.SmartTemplate4.Preferences.getStringPref('files.path')) {
+            let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
+            defaultPath.initWithPath(win.SmartTemplate4.Preferences.getStringPref('files.path'))
+            fp.displayDirectory = defaultPath; // nsILocalFile
+          }    
+          fp.init(win.SmartTemplate4.Util.getFileInitArg(win), "", fileOpenMode); // second parameter: prompt
+          filterText = win.SmartTemplate4.Util.getBundleString("fpJsonFile");
+          fp.appendFilter(filterText, "*.json");
+          fp.defaultExtension = 'json';
+          if (mode == 'save') {
+            fp.defaultString = fname + '.json';
+          }
+          // ************************************************************ END PREP
+          const logDebug = this.logDebug;
+          let load = async function(fp) {
+            const path = fp.file.path;
+            let data = await IOUtils.readJSON(path, { encoding: "utf-8" });
+            return data;
+          }
+          
+          let save = async function(fp, jsonData) {
+            logDebug("attempting to save file", fp, jsonData);
+            let path = fp.file.path;
+            // force appending correct file extension!
+            if (!path.toLowerCase().endsWith('.json')) {
+              path += '.json';
+            }
+            let isDelete = await IOUtils.remove(path);
+            try {
+              let countBytes = await IOUtils.writeUTF8(path, jsonData); 
+              win.SmartTemplate4.Util.logDebug (
+                `Successfully saved account data (${countBytes} bytes) to:\n${path}`);
+              return true;
+            }
+            catch(ex) {
+              // console.log(path, jsonData);
+              win.SmartTemplate4.Util.logException("Couldn't write data to file!", ex);
+              return false;
+            }
+          }
+
+          let result = await new Promise(resolve => { fp.open(resolve); } );
+          // if (fp.open) {
+          //   fp.open(fpCallback);		
+          // }
+          if (result != Ci.nsIFilePicker.returnOK && result != Ci.nsIFilePicker.returnReplace) {
+            return false; // cancelled
+          }
+          if (!fp.file) {
+            return false; // cancelled
+          }
+          const path = fp.file.path;
+          rememberPath(path);
+
+          // passing the promise as callback
+          switch(mode) {
+            case "load":
+              return await load(fp)
+              
+            case "save":
+              return await save(fp, jsonData);
+          }          
+          throw new Error(`fileAccountSettings() unsupported mode: ${mode}`);
+        } 
       }
     }
   };

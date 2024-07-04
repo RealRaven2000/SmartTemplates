@@ -779,6 +779,7 @@ label .flag {
 
 .page .youtube,
 .page toolbar[brighttext] .youtube {
+	-moz-context-properties: fill, fill-opacity !important; /* make sure fill works */
 	background-image: url("../chrome/content/skin/icons/youtube-svgrepo-com.svg") !important;
   fill: rgb(166,0,0) !important;
 	stroke: yellow;
@@ -786,12 +787,14 @@ label .flag {
 }
 
 .youtube.iconLabelButton {
+	-moz-context-properties: fill, fill-opacity !important; /* make sure fill works */
 	background-size: 20px;
 	fill: rgb(166,0,0) !important;
 	
 }
 
 .page .youtube:hover {
+	-moz-context-properties: fill, fill-opacity !important;
   fill: rgb(255,0,0) !important;
 }
 

@@ -539,6 +539,7 @@ toolbar toolbarbutton:not([hidden]) {
 
 #smartTemplatePane .youtube,
 #smartTemplatePane toolbar[brighttext] .youtube {
+	/* for red background color */
 	list-style-image: url("icons/youtube-svgrepo-com.svg") !important;
   fill: rgb(166,0,0) !important;
 }
