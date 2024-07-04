@@ -1931,7 +1931,7 @@ async function savePref(event) {
       let v = isNaN(target.value) ? target.value : parseInt(target.value, 10);
 			await browser.LegacyPrefs.setPref(prefName, v);
 		}
-	} else if (element instanceof HTMLTextAreaElement) {
+	} else if (target instanceof HTMLTextAreaElement) {
     await browser.LegacyPrefs.setPref(prefName, target.value);
   } else {
 		console.error("Received change event for unexpected element", event);
@@ -2487,7 +2487,7 @@ async function onLoad() {
 // this builds all elements of the dialog
   await SmartTemplates.Settings.onLoad();
 
-	loadPrefs();
+	loadPrefs(); 
 	initLicenseInfo();
 
 	// now read data from Preferences
