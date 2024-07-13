@@ -520,17 +520,18 @@ select.fileTemplateList {
 .newGroup, .forwardGroup , .replyGroup, .aboutGroup, .snippetsGroup {
 	background-position: top right;
 	background-repeat: no-repeat;
+	background-size: 46px;
 }
 .templateDeck .newGroup {
-	background-image: url("../chrome/content/skin/icons/large/mail_new.png");
+	background-image: url("../chrome/content/skin/icons/thunderbird/new-msg.svg");
 }
 
 .templateDeck .forwardGroup {
-	background-image: url("../chrome/content/skin/icons/large/mail_forward.png");
+	background-image: url("../chrome/content/skin/icons/thunderbird/forward.svg");
 }
 
 .templateDeck .replyGroup {
-	background-image: url("../chrome/content/skin/icons/large/mail_replay.png");
+	background-image: url("../chrome/content/skin/icons/thunderbird/reply.svg");
 }
 /*
 .snippetsGroup {

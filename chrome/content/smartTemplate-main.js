@@ -137,11 +137,11 @@ END LICENSE BLOCK
     # improved templates scrolling when moving menu items up / down
 
   Version 4.6 - FUTURE VERSION / WIP
-    # Will be Compatible with 128.*
-    # [issue 259] Convert Settings screen to HTML, and move to Tab
-    # [issue 293] Support multiple parameters for %header.delete()% and %header.deleteFromSubject()% 
-    # optimize licenser (omit folders when listing accounts uising API)
+    # Made Add-on compatible with 128.*
+    # [issue 259] Converted Settings screen to HTML, and move to Tab
     # [issue 295] Fix file picker which behaves differently from Thunderbird 125 [bug 1882701]
+    # [issue 293] The variables %header.delete()% and %header.deleteFromSubject()%  now support multiple parameters. 
+    # The licenser now performs faster (it omit folders when using the API function to iterate the mail accounts)
 
 
 =========================
@@ -924,7 +924,6 @@ var SmartTemplate4 = {
     <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
       <menupopup>
         <menuitem id="smartTemplates-settings-legacy" label="__MSG_preferences_legacy__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-headerMenuAPI" label="Create message Actions (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-MruMenuAPI" label="Update MRU (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>

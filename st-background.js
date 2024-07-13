@@ -1471,8 +1471,6 @@ async function main() {
       ["locale", "smarttemplate4", "zh-TW", "chrome/locale/zh-TW/"],
   ]);
 
-  messenger.WindowListener.registerOptionsPage("chrome://smarttemplate4/content/settings.xhtml"); 
-  
   //attention: each target window (like messenger.xhtml) can appear only once
   // this is different from chrome.manifest
   // xhtml for Tb78

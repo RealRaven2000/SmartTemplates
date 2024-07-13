@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "SmartTemplates",
 	"description": "__MSG_extensionDescription__",
-  "version": "4.6pre75",
+  "version": "4.6pre81",
   "default_locale": "en",
   "developer": {
 	  "name": "Axel Grude (author)",
@@ -86,5 +86,9 @@
   "icons": {
     "32": "chrome/content/skin/icon32x32.png",
     "64": "chrome/content/skin/icon64x64.png"
-  }	
+  },
+  "options_ui": {
+    "page": "html/smartTemplate-settings.html",
+    "open_in_tab": true  
+  }
 }
