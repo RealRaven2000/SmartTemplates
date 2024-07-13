@@ -1902,7 +1902,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Vous pouvez désormais utiliser le signe [%] dans les paramètres de texte, par exemple {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nouveaux paramètres pour changer la capitalisation du texte extrait [issue 288].{L2}{L1} Nouveau bouton d'édition pour éditer les modèles externes{L2} {L1} Le nouveau paramètre {{selection}} pour {{%replaceText()%}} peut être utilisé dans les Fragments Intelligents. {L2} {S1}Bogues Corrigés{S2} {L1} Lors de l'ouverture de la boîte de dialogue des paramètres depuis le Gestionnaire de modules complémentaires, des boutons importants manquaient [issue 239]{L2} {L1} Diverses autres améliorations dans la boîte de dialogue des paramètres.{L2}"
+    "message": "{L1} L'écran des paramètres a été converti en HTML, qui est maintenant affiché dans son propre onglet Thunderbird. [issue 259]{L2} {L1} SmartTemplates est maintenant compatible avec Thunderbird 128.{L2}{L1} Correction de la boîte de dialogue d'ouverture de fichier qui était cassée dans Thunderbird 125.{L2} {L1} Les variables %header.delete()% et %header.deleteFromSubject()% prennent désormais en charge plusieurs paramètres. [issue 293]{L2} {L1} Le module de licence est maintenant plus rapide (utilisant la fonction API pour itérer les comptes de messagerie, tous les dossiers ne sont plus traités).{L2}"
   },  
    "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

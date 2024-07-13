@@ -274,8 +274,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Bây giờ bạn có thể sử dụng dấu [%] trong các tham số văn bản, ví dụ như {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Các tham số mới để thay đổi việc viết hoa của văn bản được trích xuất [issue 288].{L2}{L1} Nút chỉnh sửa mới để chỉnh sửa các mẫu ngoại vi{L2} {L1} Tham số {{selection}} mới cho {{%replaceText()%}} có thể được sử dụng trong các Fragment Thông minh. {L2} {S1}Sửa Lỗi{S2} {L1} Khi mở hộp thoại cài đặt từ Trình quản lý Tiện ích bổ sung, các nút quan trọng bị thiếu [issue 239]{L2} {L1} Các cải tiến khác trong hộp thoại cài đặt.{L2}"
-  },  
+    "message": "{L1} Màn hình cài đặt đã được chuyển đổi sang HTML và hiện được hiển thị trong tab Thunderbird riêng. [issue 259]{L2} {L1} SmartTemplates hiện tương thích với Thunderbird 128.{L2}{L1} Đã sửa hộp thoại mở tệp bị lỗi trong Thunderbird 125.{L2} {L1} Các biến %header.delete()% và %header.deleteFromSubject()% hiện hỗ trợ nhiều tham số. [issue 293]{L2} {L1} Mô-đun giấy phép hiện hoạt động nhanh hơn (sử dụng chức năng API để lặp lại các tài khoản thư, tất cả các thư mục không còn được xử lý nữa).{L2}"
+  }, 
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Chào mừng bạn đến với $addonName$",

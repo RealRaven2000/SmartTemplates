@@ -1860,7 +1860,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Agora você pode usar o sinal [%] dentro de parâmetros de texto, por exemplo {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Novos parâmetros para mudar a capitalização do texto extraído [issue 288].{L2}{L1} Novo botão de edição para editar modelos externos{L2} {L1} O novo parâmetro {{selection}} para {{%replaceText()%}} pode ser usado em Fragmentos Inteligentes. {L2} {S1}Erros Corrigidos{S2} {L1} Ao abrir a caixa de diálogo de configurações a partir do Gerenciador de Complementos, faltavam botões importantes [issue 239]{L2} {L1} Diversas outras melhorias na caixa de diálogo de configurações.{L2}"
+    "message": "{L1} A tela de configurações foi convertida para HTML e agora é exibida em sua própria guia do Thunderbird. [issue 259]{L2} {L1} O SmartTemplates agora é compatível com o Thunderbird 128.{L2}{L1} Corrigida a caixa de diálogo de abertura de arquivo que estava quebrada no Thunderbird 125.{L2} {L1} As variáveis %header.delete()% e %header.deleteFromSubject()% agora suportam vários parâmetros. [issue 293]{L2} {L1} O módulo de licença agora funciona mais rápido (usando a função API para iterar as contas de e-mail, todas as pastas não são mais processadas).{L2}"
   },  
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

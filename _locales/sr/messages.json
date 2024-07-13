@@ -1827,8 +1827,8 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{L1} Zdaj lahko uporabljate znak [%] znotraj besedilnih parametrov, na primer {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nove parametre za spreminjanje velikih črk izvlečenega besedila [issue 288].{L2}{L1} Nova gumb za urejanje za urejanje zunanjih predlog{L2} {L1} Novi parameter {{selection}} za {{%replaceText()%}} lahko uporabimo v Pametnih Fragmentih. {L2} {S1}Popravljeni Bugs{S2} {L1} Pri odpiranju pogovornega okna nastavitev iz Upravitelja dodatkov so manjkali pomembni gumbi [issue 239]{L2} {L1} Različne druge izboljšave v pogovornem oknu nastavitev.{L2}"
-  },  
+    "message": "{L1} Екран за подешавања је претворен у HTML који се сада приказује на својој Thunderbird картици. [issue 259]{L2} {L1} SmartTemplates је сада компатибилан са Thunderbird 128.{L2}{L1} Поправљен дијалог за отварање датотеке који је био покварен у Thunderbird 125.{L2} {L1} Променљиве %header.delete()% и %header.deleteFromSubject% сада подржавају више параметара. [issue 293]{L2} {L1} Лиценцни модул сада ради брже (користећи API функцију за итерацију налога е-поште, сви фолдери више нису обрађени).{L2}"
+  },
   "whitespace_note": {
     "message": "Имајте на уму да се бели простор може најбоље представити као \\s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити."
   },

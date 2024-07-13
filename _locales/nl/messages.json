@@ -1845,8 +1845,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Vanaf nu kunt u het [%]-teken gebruiken binnen tekstparameters, bijvoorbeeld {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nieuwe parameters om de hoofdletter van geëxtraheerde tekst te wijzigen [issue 288].{L2}{L1} Nieuwe bewerkingsknop voor het bewerken van externe sjablonen{L2} {L1} De nieuwe {{selection}}-parameter voor {{%replaceText()%}} kan worden gebruikt in Slimme Fragmenten. {L2} {S1}Opgeloste Bugs{S2} {L1} Bij het openen van het instellingendialoogvenster vanuit de Add-ons Manager ontbraken belangrijke knoppen [issue 239]{L2} {L1} Diverse andere verbeteringen in het instellingendialoogvenster.{L2}"
-  },  
+    "message": "{L1} Het instellingen scherm is omgezet naar HTML en wordt nu weergegeven in een eigen Thunderbird-tabblad. [issue 259]{L2} {L1} SmartTemplates is nu compatibel met Thunderbird 128.{L2}{L1} Het bestandsdialoogvenster dat kapot was in Thunderbird 125 is gerepareerd.{L2} {L1} De variabelen %header.delete()% en %header.deleteFromSubject()% ondersteunen nu meerdere parameters. [issue 293]{L2} {L1} De licentiemodule werkt nu sneller (door de API-functie te gebruiken om de e-mailaccounts te doorlopen, worden alle mappen niet meer verwerkt).{L2}"
+  }, 
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
   },

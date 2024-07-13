@@ -1893,8 +1893,8 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Nyní můžete používat značku [%] uvnitř textových parametrů, například {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nové parametry pro změnu velkých písmen extrahovaného textu [issue 288].{L2}{L1} Nové tlačítko úprav pro úpravu externích šablon{L2} {L1} Nový parametr {{selection}} pro {{%replaceText()%}} může být použit v chytrých fragmentech. {L2} {S1}Opravené Chyby{S2} {L1} Při otevírání dialogu nastavení z Správce doplňků chyběly důležité tlačítka [issue 239]{L2} {L1} Různé další vylepšení v dialogu nastavení.{L2}"
-  },  
+    "message": "{L1} Nastavení bylo převedeno do HTML, které se nyní zobrazuje na vlastní záložce Thunderbirdu. [issue 259]{L2} {L1} SmartTemplates je nyní kompatibilní s Thunderbirdem 128.{L2}{L1} Opraven dialog pro otevření souboru, který byl v Thunderbirdu 125 nefunkční.{L2} {L1} Proměnné %header.delete()% a %header.deleteFromSubject()% nyní podporují více parametrů. [issue 293]{L2} {L1} Licenční modul nyní funguje rychleji (použitím API funkce pro iteraci poštovních účtů, všechny složky již nejsou zpracovávány).{L2}"
+  }, 
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
   },

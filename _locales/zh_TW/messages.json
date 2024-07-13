@@ -1887,7 +1887,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 現在您可以在文本參數中使用 [%] 符號，例如 {{%header.prefix(subject,''10 %'')%}}。[issue 287]{L2} {L1} 用於更改提取文本的大寫形式的新參數 [issue 288]。{L2}{L1} 用於編輯外部模板的新編輯按鈕{L2} {L1} 新的 {{selection}} 參數用於 {{%replaceText()%}} 可以在智能片段中使用。{L2} {S1}已修復的錯誤{S2} {L1} 從附加元件管理員開啟設置對話方塊時，重要按鈕遺失 [issue 239]{L2} {L1} 設置對話方塊中的其他改進。{L2}"
+    "message": "{L1} 設定畫面已轉換為HTML，現在顯示在其自己的Thunderbird標籤中。 [issue 259]{L2} {L1} SmartTemplates現在與Thunderbird 128兼容。{L2}{L1} 修復了Thunderbird 125中損壞的文件打開對話框。{L2} {L1} 變數 %header.delete()% 和 %header.deleteFromSubject()% 現在支持多個參數。 [issue 293]{L2} {L1} 許可證模塊現在執行得更快（使用API功能迭代郵件帳戶，不再處理所有文件夾）。{L2}"
   },  
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

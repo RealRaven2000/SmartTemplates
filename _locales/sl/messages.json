@@ -1842,8 +1842,9 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Zdaj lahko uporabljate znak [%] znotraj besedilnih parametrov, na primer {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nove parametre za spreminjanje velikih črk izvlečenega besedila [issue 288].{L2}{L1} Nova gumb za urejanje za urejanje zunanjih predlog{L2} {L1} Novi parameter {{selection}} za {{%replaceText()%}} lahko uporabimo v Pametnih Fragmentih. {L2} {S1}Popravljeni Bugs{S2} {L1} Pri odpiranju pogovornega okna nastavitev iz Upravitelja dodatkov so manjkali pomembni gumbi [issue 239]{L2} {L1} Različne druge izboljšave v pogovornem oknu nastavitev.{L2}"
+    "message": "{L1} Zaslon nastavitev je bil pretvorjen v HTML, ki se zdaj prikaže na lastnem zavihku Thunderbirda. [issue 259]{L2} {L1} SmartTemplates je zdaj združljiv z Thunderbird 128.{L2}{L1} Popravljeno pogovorno okno za odpiranje datotek, ki je bilo pokvarjeno v Thunderbird 125.{L2} {L1} Spremenljivki %header.delete()% in %header.deleteFromSubject()% zdaj podpirata več parametrov. [issue 293]{L2} {L1} Licenčni modul zdaj deluje hitreje (z uporabo funkcije API za iteracijo poštnih računov, vse mape se ne obdelujejo več).{L2}"
   },
+
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
   },

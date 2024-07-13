@@ -7,49 +7,23 @@ The full change log with screen shots <a href="https://smarttemplates.quickfolde
 
 <b>Enhancements</b>
 <ul>
-  <li>
-    You can now use percent "%" sign within a text parameter, e.g. <code>%header.set(subject,"save 25%")%</code> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/287">[issue 287]</a>
-  </li>
-  <li>
-    Added a button for editing external templates. You can set up any external editor,
-    preferrably it would be a HTML editor with Syntax highlighting. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/282">[issue 282]</a>
-  </li>
-  <li>
-    Added text transformation parameters for search functions: Use the parameters <code class="parameter">capitalize</code> / <code class="parameter">uppercase</code> / <code class="parameter">lowercase</code> / <code class="parameter">camelcase</code> after the 
-    group parameter. This can also be compared with the <code class="parameter">toclipboard</code> parameter. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/288">[issue 288]</a>
+  <li> SmartTemplates is now compatible with Thunderbird 128.</li>
+  <li> The settings screen was converted to HTML which is now displayed in its own Thunderbird tab. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/295">[issue 295]</a></li> 
+  <li> The variables %header.delete()% and %header.deleteFromSubject()%  now support multiple parameters <a href="https://github.com/RealRaven2000/SmartTemplates/issues/293">[issue 293]</a>.
+    
+    For example:
+    
+    %header.delete(subject,"Fwd: ","Order: QUI[0-9\-]* -")%
+    %header.deleteFromSubject("re:","AW:","fwd")%
 
-    Examples:
-<pre class=code>
-%matchTextFromSubject("Customer.*\n\-+\n(.*)\n",1,uppercase)%
-%matchTextFromBody("Customer.*\n\-+\n(.*)\n",1,lowercase)%
-%header.prefix.matchFromBody(subject,"Customer.*\n\-+\n(.*)\n",1,capitalize)%  
-%matchTextFromBody("Customer.*\n\-+\n(.*)\n",1,capitalize,toclipboard)%</pre>   
-   <ul>
-      <li> <code class="parameter">capitalize</code> Capitalizes the first letter of each word. Useful for Names. </li>
-      <li> <code class="parameter">camelcase</code> Converts the first character of the entire string lowercase.</li>
-      <li> <code class="parameter">lowercase</code> Transforms the entire match to lower case.</li>  
-      <li> <code class="parameter">uppercase</code> Transforms the entire match to upper case.</li>  
-    </ul>
-  </li>
-  <li>
-    Support <code class="parameter">selection</code> as parameter for replaceText - so we can transform selected (formatted) text from smart fragments.<a href="https://github.com/RealRaven2000/SmartTemplates/issues/289">[issue 289]</a>
-
-    Syntax: <code>%replaceText("find","replace",selection)%</code>
-
-    For example, the following can be used as a smart fragment script to generate a nicer breadcrumb trail from a string like "Menu >> submenu >> command" into "<i>Menu » submenu » command</i>". Note that we can use HTML markup, like in any smart fragment.
-
-<pre class=code>
-&lt;i&gt;%replaceText(">>","»",selection)%&lt;/i&gt;</pre>
-</p>
-  </li>
+  </li> 
+  <li> The license module now performs faster (using the API function to iterate the mail accounts, all folders are no longer processed).</li>
 </ul>
 
 
 <b>Bug Fixes</b>
 <ul>
-  <li> The settings dialog was missing important toolbar buttons (beside account selector) when opened from Add-ons manager. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/291">[issue 291]</a> </li>
-  <li> All spaces after/before text in %header.set(subject," text ")% were removed. From now on, preserve all spaces in any text argument. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/292">[issue 292]</a> </li>
-  <li> Fixed: Opening SmartTemplates settings in "Common" can show a disabled / missing UI underneath. Only after selecting another entry from accounts the templates area became visible. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/290">[issue 290]</a> </li>  
+  <li> Fixed file open dialog which was broken in Thunderbird 125.</li> 
 </ul>
 
 

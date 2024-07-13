@@ -1952,7 +1952,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} You can from now use the [%] sign within text parameters, for example {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} New parameters for changing capitalization of extracted text [issue 288].{L2}{L1} New edit button for editing external templates{L2} {L1} The new {{selection}} parameter for {{%replaceText()%}} can be used in Smart Fragments. {L2} {S1}Fixed Bugs{S2} {L1} When opening the settings dialog from Add-ons Manager, it missed important buttons [issue 239]{L2} {L1} Various other improvements in settings dialog.{L2}"
+    "message": "{L1} The settings screen was converted to HTML which is now displayed in its own Thunderbird tab. [issue 259]{L2} {L1} SmartTemplates is now compatible with Thunderbird 128.{L2}{L1} Fixed file open dialog which was broken in Thunderbird 125 .{L2} {L1} The variables %header.delete()% and %header.deleteFromSubject()%  now support multiple parameters. [issue 293]{L2} {L1}  The license module now performs faster (using the API function to iterate the mail accounts, all folders are no longer processed).{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

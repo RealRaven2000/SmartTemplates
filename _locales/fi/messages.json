@@ -1901,8 +1901,8 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Voit nyt käyttää [%]-merkkiä tekstiparametreissa, esimerkiksi {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Uudet parametrit poimitun tekstin suurennuksen muuttamiseksi [issue 288].{L2}{L1} Uusi muokkauspainike ulkoisten mallipohjien muokkaamiseksi{L2} {L1} Uusi {{selection}}-parametri {{%replaceText()%}} voidaan käyttää Älykkäissä fragmenteissa. {L2} {S1}Korjatut Virheet{S2} {L1} Kun avataan asetusten valintaikkuna Lisäosienhallinnasta, tärkeät painikkeet puuttuivat [issue 239]{L2} {L1} Erilaisia muita parannuksia asetusten valintaikkunassa.{L2}"
-  },  
+    "message": "{L1} Asetusnäyttö muunnettiin HTML-muotoon, joka nyt näytetään omassa Thunderbird-välilehdessään. [issue 259]{L2} {L1} SmartTemplates on nyt yhteensopiva Thunderbird 128:n kanssa.{L2}{L1} Korjattu tiedoston avausikkuna, joka ei toiminut Thunderbird 125:ssä.{L2} {L1} Muuttujat %header.delete()% ja %header.deleteFromSubject()% tukevat nyt useita parametreja. [issue 293]{L2} {L1} Lisenssimoduuli toimii nyt nopeammin (käyttäen API-toimintoa postitilien iterointiin, kaikkia kansioita ei enää käsitellä).{L2}"
+  }, 
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
   },

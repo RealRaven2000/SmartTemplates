@@ -1837,8 +1837,8 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Ab jetzt können Sie das [%]-Zeichen innerhalb von Textparametern verwenden, zum Beispiel {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Neue Parameter zur Änderung der Großschreibung extrahierten Texts [issue 288].{L2}{L1} Neuer Bearbeiten-Button zum Bearbeiten externer Vorlagen{L2} {L1} Der neue {{selection}}-Parameter für {{%replaceText()%}} kann in Smart-Fragmenten verwendet werden. {L2} {S1}Behobene Fehler{S2} {L1} Beim Öffnen des Einstellungsdialogs im Add-ons-Manager fehlten wichtige Schaltflächen [issue 239]{L2} {L1} Diverse weitere Verbesserungen im Einstellungsdialog.{L2}"
-  },   
+    "message": "{L1} Der Einstellungsbildschirm wurde in HTML konvertiert und wird nun in einem eigenen Thunderbird-Tab angezeigt. [issue 259]{L2} {L1} SmartTemplates ist jetzt kompatibel mit Thunderbird 128.{L2}{L1} Der Datei-Öffnen-Dialog, der in Thunderbird 125 nicht funktionierte, wurde behoben.{L2} {L1} Die Variablen %header.delete()% und %header.deleteFromSubject()% unterstützen jetzt mehrere Parameter. [issue 293]{L2} {L1} Das Lizenzmodul arbeitet jetzt schneller (unter Verwendung der API-Funktion zum Iterieren der E-Mail-Konten, alle Ordner werden nicht mehr verarbeitet).{L2}"
+  }, 
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
   },

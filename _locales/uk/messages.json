@@ -1924,8 +1924,8 @@
     "message": "Прочитайте детальний журнал змін тут (лише англійською):"
   },
   "whats-new-list": {
-    "message": "{L1} Du kan nu använda tecknet [%] inom textparametrar, till exempel {{%header.prefix(subject,''10 %'')%}}. [issue 287]{L2} {L1} Nya parametrar för att ändra kapitalisering av extraherad text [issue 288].{L2}{L1} Ny redigeringsknapp för att redigera externa mallar{L2} {L1} Det nya {{selection}}-parametern för {{%replaceText()%}} kan användas i Smarta Fragment. {L2} {S1}Åtgärdade Fel{S2} {L1} När du öppnar inställningsdialogen från Tilläggshanteraren saknades viktiga knappar [issue 239]{L2} {L1} Diverse andra förbättringar i inställningsdialogen.{L2}"
-  },  
+    "message": "{L1} Màn hình cài đặt đã được chuyển đổi sang HTML và hiện được hiển thị trong tab Thunderbird riêng. [issue 259]{L2} {L1} SmartTemplates hiện tương thích với Thunderbird 128.{L2}{L1} Đã sửa hộp thoại mở tệp bị lỗi trong Thunderbird 125.{L2} {L1} Các biến %header.delete()% và %header.deleteFromSubject()% hiện hỗ trợ nhiều tham số. [issue 293]{L2} {L1} Mô-đun giấy phép hiện hoạt động nhanh hơn (sử dụng chức năng API để lặp lại các tài khoản thư, tất cả các thư mục không còn được xử lý nữa).{L2}"
+  }, 
   "whitespace_note": {
     "message": "Зверніть увагу, що пробіл може бути найкраще представлений як \\s, оскільки він також може містити розриви на рядках. Поля і подвійні лапки не можна використовувати."
   },
