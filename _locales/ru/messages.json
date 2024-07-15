@@ -1654,8 +1654,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "29 мая"
-  },   
+    "message": "31 июля"
+  },  
   "special-offer-head": {
     "message": "Помогите сохранить совместимость с $addon$",
     "placeholders": {

@@ -1642,8 +1642,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "29. května"
-  },     
+    "message": "31. července"
+  }, 
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
     "placeholders": {
