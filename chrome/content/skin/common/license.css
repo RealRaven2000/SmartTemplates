@@ -15,12 +15,9 @@
 
 /* validation notification */
 .niceFont, 
-.niceFont description, 
-.niceFont button,
-.niceFont button label
-{
-  font-family: cambria, Georgia, serif;
-  font-size: 10.2pt;
+.niceFont * {
+  font-family: Sitka Text, cambria, Georgia, serif;
+  font-size: 1.2rem;
 }
 
 
@@ -179,17 +176,15 @@
 }
 
 .licenseKey {
-  font-size: 10pt;
+  font-size: 11pt;
 	font-family: Consolas, Courier, monospace;
 }
 
 #txtLicenseKey {
   display: block;
+	margin-right: 4px;
 	height: 6.6em !important;
   min-width: 420px;  /* avoid "shrinking" too much in licenseKey only mode */
-	/*! max-width: 420px; */ 
-	width: 96%;
-	position: relative;
-  right: 8px !important;
-  left: 4px !important;
+	width: 100%;
 }
+

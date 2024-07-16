@@ -288,6 +288,12 @@ div.btnLicenseContainer #btnLicense {
   .btnLicenseContainer {
     height: 24px;
   }
+  .aboutContent  {
+    font-size: 1.1em;
+  }
+  .niceFont, .niceFont * {
+    font-size: 1.0rem !important;
+  }  
 }
 
 @media only screen and (max-height: 480px)  {
@@ -312,6 +318,9 @@ div.btnLicenseContainer #btnLicense {
   .templateList button {
     padding-inline: 2px;
   }    
+  .aboutContent  {
+    font-size: 1.0em;
+  }  
 }
 
 #supportPane {

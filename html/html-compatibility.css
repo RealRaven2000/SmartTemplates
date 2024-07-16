@@ -26,8 +26,13 @@ select {
 
 #btnPasteLicense,
 #btnValidateLicense {
-  font-size: 0.85em;
+  font-size: 1em;
 }
+
+#supportPaneContent .vbox>* {
+	margin-block-end: 1em !important;
+}
+
 
 /* vertical alignment */
 .vbox {
