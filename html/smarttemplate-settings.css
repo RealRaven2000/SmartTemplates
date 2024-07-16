@@ -8,6 +8,8 @@
     --activecolor: #a5f7fcd9;
     --configColor: rgba(250,40,80, 0.85);
 		--grayedcolor: rgba(250,250,250,0.6);
+		--focusbackcolor: rgb(81, 5, 16);
+		--focuscolor: lightpink;
   }  
 }
 
@@ -20,6 +22,8 @@
     --activecolor: #FFFFFF;
     --configColor: rgb(140,0,0);
 		--grayedcolor: rgba(10,10,10,0.6);
+		--focusbackcolor: lightpink;
+		--focuscolor: rgb(137, 11, 11);
   }
 }
 
@@ -339,7 +343,7 @@ button.bugsURL:focus {
 #commonSettingsExplainer {
 	white-space: normal;
 	white-space: normal balance;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 /* ################################################################################### */
@@ -559,7 +563,7 @@ select.fileTemplateList {
 .templateBox {
   border-style: solid;
 	font-family: consolas,"courier new",monospace;
-	font-size: 9pt;
+	font-size: 1.1rem;
 }
 
 /* height of flexible textboxes */
@@ -697,7 +701,7 @@ vbox.template {
 }
 /* ############################## SmartTemplate4AboutDesc ############################ */
 .aboutContent  {
-  font-size: 9pt;
+  font-size: 1.2em;
 	color: var(--grayedcolor, gray);
   display: block;
   margin-top: 0.5em;
@@ -990,13 +994,11 @@ label.plain-link:hover::before {
 	background-image: url("../chrome/content/skin/icons/file-load.png");
 }
 
-#txtTemplatePath {
-	min-width: 160px;
+#txtTemplatePath,  #txtTemplateTitle {
+	min-width: 8em;
 }
-
-#txtTemplateTitle
-{
-	min-width: 200px;
+#txtTemplateCategory { 
+	min-width: 6em;
 }
 
 #txtSupportSubject {
@@ -1019,6 +1021,23 @@ label.plain-link:hover::before {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.highlight button {
+	background-size: 22px;
+}
+.highlight button span {
+	margin-left: 24px;
+}
+
+.templateFilePicker.highlight {
+	background-color: var(--focusbackcolor);
+}
+
+/* focus user on which button to pick */
+.templateFilePicker.highlight button * {
+	color: var(--focuscolor);
+	font-weight: bold;
 }
 
 #fileSettings div.settingsRow input[type="text"] {
