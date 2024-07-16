@@ -395,6 +395,9 @@
   "fileTemplates.file.title": {
     "message": "タイトル:"
   },
+  "fileTemplates.file.picker": {
+    "message": "テンプレートファイルを選択…"
+  },
   "fileTemplates.file.title.tooltip": {
     "message": "このタイトルはテンプレートの選択メニューに表示されます。"
   },
@@ -1384,7 +1387,7 @@
     "message": "ドロップダウンメニューからテンプレートを選択してください。"
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "正しいパスを選択してください！"
+    "message": "html / テキストとSmartTemplates変数を含むファイルを選択してください。このファイルは処理され、新しいメニュー項目が選択されたときに挿入されます。メニュー項目を作成した後でも、[編集]をクリックしてテンプレートファイルを必要に応じて変更できます。"
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "タイトルを入力してください！"

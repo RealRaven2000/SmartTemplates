@@ -395,6 +395,9 @@
   "fileTemplates.file.path": {
     "message": "Ubicación de la plantilla:"
   },
+  "fileTemplates.file.picker": {
+    "message": "Seleccionar archivo de plantilla…"
+  },
   "fileTemplates.file.title": {
     "message": "Título:"
   },
@@ -1363,7 +1366,7 @@
     "message": "Seleccione una plantilla del menú desplegable."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Por favor, seleccione una ruta válida!"
+    "message": "Seleccione un archivo que contenga el html / texto y sus variables de SmartTemplates. Este archivo se procesará e insertará cuando se seleccione el nuevo elemento del menú. Aún puede modificar el archivo de plantilla según sus necesidades después de crear el elemento del menú haciendo clic en Editar."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Por favor ingrese un título!"

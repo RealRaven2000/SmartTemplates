@@ -395,6 +395,9 @@
   "fileTemplates.file.path": {
     "message": "模板位置："
   },
+  "fileTemplates.file.picker": {
+    "message": "選擇範本文件…"
+  },
   "fileTemplates.file.title": {
     "message": "標題："
   },
@@ -1408,7 +1411,7 @@
     "message": "請從下拉菜單中選擇一個模板。"
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "請選擇有效路徑！"
+    "message": "請選擇包含html / 文字和SmartTemplates變量的文件。選擇新菜單項時，將處理並插入此文件。創建菜單項後，您仍然可以單擊“編輯”根據需要修改模板文件。"
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "請輸入標題！"

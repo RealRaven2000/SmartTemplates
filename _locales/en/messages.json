@@ -408,6 +408,9 @@
   "fileTemplates.file.path": {
     "message": "Template location:"
   },
+  "fileTemplates.file.picker": {
+    "message": "Select template file…"
+  },
   "fileTemplates.file.title": {
     "message": "Title:"
   },
@@ -1449,7 +1452,7 @@
     "message": "Please select a template from the dropdown menu."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Please select a valid path!"
+    "message": "Please select a file that contains the html / text and your SmartTemplates variables. This file will be processed and inserted when the new menu item is selected. You can still modify the template file to your needs after creating the menu item by clicking Edit."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Please enter a title!"

@@ -386,6 +386,9 @@
   "fileTemplates.file.path": {
     "message": "Posizione del modello:"
   },
+  "fileTemplates.file.picker": {
+    "message": "Seleziona il file del modello…"
+  },
   "fileTemplates.file.title": {
     "message": "Titolo:"
   },
@@ -1354,7 +1357,7 @@
     "message": "Seleziona un modello dal menu a discesa."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Seleziona un percorso valido!"
+    "message": "Seleziona un file che contenga l'html / testo e le tue variabili SmartTemplates. Questo file verrà elaborato e inserito quando verrà selezionato il nuovo elemento del menu. Puoi ancora modificare il file del modello in base alle tue esigenze dopo aver creato l'elemento del menu facendo clic su Modifica."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Per favore, inserisci un titolo!"

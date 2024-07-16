@@ -395,6 +395,9 @@
   "fileTemplates.file.path": {
     "message": "Placering av mall:"
   },
+  "fileTemplates.file.picker": {
+    "message": "Välj mallfil…"
+  },
   "fileTemplates.file.title": {
     "message": "Titel:"
   },
@@ -1417,7 +1420,7 @@
     "message": "Välj en mall från rullgardinsmenyn."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Välj en giltig sökväg!"
+    "message": "Välj en fil som innehåller HTML / text och dina SmartTemplates-variabler. Denna fil kommer att bearbetas och infogas när det nya menyobjektet väljs. Du kan fortfarande ändra mallfilen efter dina behov efter att ha skapat menyobjektet genom att klicka på Redigera."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Ange en titel!"

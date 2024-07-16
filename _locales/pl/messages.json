@@ -403,6 +403,9 @@
   "fileTemplates.file.path": {
     "message": "Lokalizacja szablonu:"
   },
+  "fileTemplates.file.picker": {
+    "message": "Wybierz plik szablonu…"
+  },
   "fileTemplates.file.title": {
     "message": "Tytuł:"
   },
@@ -1410,7 +1413,7 @@
     "message": "Wybierz szablon z menu rozwijanego."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Wybierz prawidłową ścieżkę!"
+    "message": "Wybierz plik zawierający html / tekst i zmienne SmartTemplates. Ten plik zostanie przetworzony i wstawiony po wybraniu nowej pozycji menu. Nadal możesz modyfikować plik szablonu zgodnie ze swoimi potrzebami po utworzeniu elementu menu, klikając Edytuj."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Proszę podać tytuł!"

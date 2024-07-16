@@ -398,6 +398,9 @@
   "fileTemplates.file.path": {
     "message": "Lokacija predloge:"
   },
+  "fileTemplates.file.picker": {
+    "message": "Izberite datoteko predloge…"
+  },
   "fileTemplates.file.title": {
     "message": "Naslov:"
   },
@@ -1402,7 +1405,7 @@
     "message": "Izberite predlogo v spustnem meniju."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Izberite veljavno pot!"
+    "message": "Izberite datoteko, ki vsebuje html / besedilo in vaše spremenljivke SmartTemplates. Ta datoteka bo obdelana in vstavljena, ko bo izbran nov element menija. Po ustvarjanju elementa menija lahko še vedno spremenite datoteko predloge glede na vaše potrebe s klikom na Uredi."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Vnesite naslov!"

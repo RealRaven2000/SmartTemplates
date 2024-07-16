@@ -388,6 +388,9 @@
   "fileTemplates.file.path": {
     "message": "Template Pfad:"
   },
+  "fileTemplates.file.picker": {
+    "message": "Vorlagendatei auswählen…"
+  },
   "fileTemplates.file.title": {
     "message": "Titel:"
   },
@@ -1356,7 +1359,7 @@
     "message": "Bitte wählen Sie eine Vorlage aus dem Dropdown-Menü."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Bitte wählen Sie einen gültigen Pfad!"
+    "message": "Bitte wählen Sie eine Datei aus, die das HTML / den Text und Ihre SmartTemplates-Variablen enthält. Diese Datei wird verarbeitet und eingefügt, wenn das neue Menüelement ausgewählt wird. Sie können die Vorlagendatei nach dem Erstellen des Menüelements noch nach Bedarf ändern, indem Sie auf Bearbeiten klicken."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Bitte Title eingeben!"

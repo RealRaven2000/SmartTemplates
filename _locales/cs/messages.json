@@ -389,6 +389,9 @@
   "fileTemplates.file.open": {
     "message": "Vyberte soubor šablony z disku"
   },
+  "fileTemplates.file.picker": {
+    "message": "Vyberte soubor šablony…"
+  },
   "fileTemplates.file.title": {
     "message": "Titul:"
   },
@@ -1405,7 +1408,7 @@
     "message": "Vyberte šablonu z rozbalovací nabídky."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Vyberte prosím platnou cestu!"
+    "message": "Vyberte soubor, který obsahuje html / text a vaše proměnné SmartTemplates. Tento soubor bude zpracován a vložen po výběru nové položky nabídky. Soubor šablony můžete stále upravit podle svých potřeb po vytvoření položky nabídky kliknutím na Upravit."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Zadejte název!"

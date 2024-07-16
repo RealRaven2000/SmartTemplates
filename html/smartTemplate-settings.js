@@ -209,13 +209,15 @@ var fileTemplates = {
           label = document.getElementById('txtTemplateTitle').value,
           category = document.getElementById('txtTemplateCategory').value;
 		
-
-		if (!label.trim()) {
-			alert(getBundleString("st.fileTemplates.wrnEnterTitle"));
+		if (!path.trim()) {
+			alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnEnterPath"));
+			const pickRow = document.querySelector(".templateFilePicker");
+			pickRow.classList.add("highlight");
 			return;
 		}
-		if (!path.trim()) {
-			alert(getBundleString("st.fileTemplates.wrnEnterPath"));
+			
+		if (!label.trim()) {
+			alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnEnterTitle"));
 			return;
 		}
 
@@ -223,7 +225,7 @@ var fileTemplates = {
 		if (!isNew) { // update case
 			selectedIndex = this.activeFileList.selectedIndex;
       if (selectedIndex<0) {
-				alert(getBundleString("st.fileTemplates.wrnSelectUpdateItem"));
+				alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnSelectUpdateItem"));
         return;
       }
       existingEntry = this.CurrentEntries[selectedIndex];
@@ -306,6 +308,7 @@ var fileTemplates = {
 		messenger.Utilities.editTemplateExternal(item);
 	},
 	openFilePicker: async function() {
+
 		let result = await messenger.Utilities.openFileExternal(
 			{
 				path: "",
@@ -314,6 +317,8 @@ var fileTemplates = {
 		);
 		console.log("Returned file info", result)
 		if (result.path) {
+			const pickRow = document.querySelector(".templateFilePicker");
+			pickRow.classList.remove("highlight");
 			document.getElementById('txtTemplatePath').value = result.path;
 			document.getElementById('txtTemplateTitle').value = result.name;
 		}
@@ -2454,6 +2459,10 @@ function selectComposeType(forceType=null, forceKey = null) {
 	// select the correct compose type tab
 	let btnSelector;
 	switch (composeType) {
+		case 'snippets': 
+			const tab = document.querySelector(".SnippetsTab"); // it's a unique element
+			tab.click();
+			return;
 		case 'new': 
 			btnSelector=".NewTab";
 			break;
@@ -2466,7 +2475,6 @@ function selectComposeType(forceType=null, forceKey = null) {
 		default:
 			return;
 	}
-	SmartTemplates.Settings.currentComposeType;
 	if (btnSelector) {
 		const idSelector = idKey ? "." + idKey : "";
 		const currentDeck = SmartTemplates.Settings.getCurrentDeck(idSelector);
@@ -2493,12 +2501,13 @@ async function onLoad() {
 	// now read data from Preferences
   addUIListeners();
 	SmartTemplates.Help.onLoad(); // event listeners for help frame
-	selectComposeType();
 
 	// [issue 121] currently shown selection
 	// special settings (omit selecting an identit from the accounts dropdown)
+
 	const params = new URLSearchParams(window.location.search);
-	const mode = params.get("mode");
+	const mode = params.get("mode") || 
+	      (params.get("composeType") == "snippets" ? "fileTemplates" : null);
 
 	switch(mode) {
 		case "fileTemplates":
@@ -2513,6 +2522,8 @@ async function onLoad() {
 			setTimeout(function() {txtLicense.focus();}, 200);
 			break;
 	}
+	selectComposeType();
+	
 	SettingsUI.initVersionPanel();
 
 }

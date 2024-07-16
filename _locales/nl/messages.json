@@ -395,6 +395,9 @@
   "fileTemplates.file.path": {
     "message": "Sjabloonlocatie:"
   },
+  "fileTemplates.file.picker": {
+    "message": "Selecteer sjabloonbestand…"
+  },
   "fileTemplates.file.title": {
     "message": "Titel"
   },
@@ -1354,7 +1357,7 @@
     "message": "Selecteer een sjabloon in het vervolgkeuzemenu."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Selecteer een geldig pad!"
+    "message": "Selecteer een bestand dat de html / tekst en uw SmartTemplates-variabelen bevat. Dit bestand wordt verwerkt en ingevoegd wanneer het nieuwe menu-item is geselecteerd. U kunt het sjabloonbestand nog steeds naar uw wensen aanpassen nadat u het menu-item hebt gemaakt door op Bewerken te klikken."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Voer een titel in!"

@@ -395,6 +395,9 @@
   "fileTemplates.file.path": {
     "message": "Ubicació de la plantilla:"
   },
+  "fileTemplates.file.picker": {
+    "message": "Selecciona el fitxer de plantilla…"
+  },
   "fileTemplates.file.title": {
     "message": "Títol:"
   },
@@ -1411,7 +1414,7 @@
     "message": "Seleccioneu una plantilla al menú desplegable."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Seleccioneu un camí vàlid."
+    "message": "Seleccioneu un fitxer que contingui el codi html / text i les variables SmartTemplates. Aquest fitxer es processarà i s'inserirà quan es selecciona el nou element del menú. Encara podeu modificar el fitxer de plantilla segons les vostres necessitats després de crear l'element del menú fent clic a Edita."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Introduïu un títol."

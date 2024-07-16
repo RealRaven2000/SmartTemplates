@@ -395,6 +395,9 @@
   "fileTemplates.file.path": {
     "message": "Template location:"
   },
+  "fileTemplates.file.picker": {
+    "message": "Valitse mallipohjatiedosto…"
+  },
   "fileTemplates.file.title": {
     "message": "Title:"
   },
@@ -1401,7 +1404,7 @@
     "message": "Valitse malli avattavasta valikosta."
   },
   "st.fileTemplates.wrnEnterPath": {
-    "message": "Valitse oikea polku!"
+    "message": "Valitse tiedosto, joka sisältää HTML / teksti ja SmartTemplates-muuttujasi. Tämä tiedosto käsitellään ja lisätään, kun uusi valikkokohta valitaan. Voit edelleen muokata mallipohjatiedostoa tarpeidesi mukaan uuden valikkokohdan luomisen jälkeen napsauttamalla Muokkaa."
   },
   "st.fileTemplates.wrnEnterTitle": {
     "message": "Anna otsikko!"
