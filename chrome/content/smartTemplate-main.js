@@ -136,22 +136,27 @@ END LICENSE BLOCK
     # Minor layout improvements in settings screen
     # improved templates scrolling when moving menu items up / down
 
-  Version 4.6 - FUTURE VERSION / WIP
+  Version 4.6 - 14/07/2024
     # Made Add-on compatible with 128.*
     # [issue 259] Converted Settings screen to HTML, and move to Tab
     # [issue 295] Fix file picker which behaves differently from Thunderbird 125 [bug 1882701]
     # [issue 293] The variables %header.delete()% and %header.deleteFromSubject()%  now support multiple parameters. 
     # The licenser now performs faster (it omit folders when using the API function to iterate the mail accounts)
 
+  Version 4.6.1 - WIP
+    # [issue 297] Snippets - Configure menu items - should open "template files" page in settings (new settings dialog)
+    # [issue 298] File Templates - Clicking [Add] when no file is opened 
+               should display a instructions (not "undefined")
+    # [issue 299] Larger fonts and minor layout improvements in settings dialog.
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
-  Version 4.x - FUTURE VERSION / WIP
+  Version 4.x - WIP
+    # [issue ] 
+    # [issue ] 
+    # [issue ] 
     # [issue 253] recreate unified toolbar menu using API functions
     # [issue 259] Convert Settings screen to HTML, and move to Tab
-    # [issue ] 
-    # [issue ] 
-    # [issue ] 
 
 
     # New Idea: Add an account templates submenu - only for accounts with dedicated settings.
