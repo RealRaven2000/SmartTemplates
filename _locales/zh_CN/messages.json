@@ -27,7 +27,7 @@
     "message": "关于SmartTemplates"
   },
   "about.label": {
-    "message": "SmartTemplates 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个帐户或全局设置（普通帐户）。"
+    "message": "SmartTemplates 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个账户或全局设置（普通账户）。"
   },
   "accept_button": {
     "message": "确定"
@@ -98,10 +98,10 @@
     "message": "我想提供一次捐款。"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "加载帐户设置…"
+    "message": "加载账户设置…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "保存帐户设置…"
+    "message": "保存账户设置…"
   },
   "btnYouTube.tooltip": {
     "message": "访问 'Thunderbird Daily' YouTube 频道 - 使用 Stationery 和其他扩展的技巧与教程"
@@ -363,7 +363,7 @@
     "message": "通过自动插入各种邮件头来创建自定义回复的有效方法。 可以为每个邮件标识创建模板，还支持外部html文件和样式表。"
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
-    "message": "SmartTemplates 扩展能为每个账号自定义引用头文件"
+    "message": "SmartTemplates 扩展能为每个账户自定义引用头文件"
   },
   "file.label": {
     "message": "文件"
@@ -569,16 +569,16 @@
     "message": "设置和模板导出/导入"
   },
   "im-ex_note1.label": {
-    "message": "您可以导出和导入与您的每个账号相关的设置和模板。"
+    "message": "您可以导出和导入与您的每个账户相关的设置和模板。"
   },
   "im-ex_note2.label": {
-    "message": "首先从 SmartTemplates 的设置下拉框中选择您想要导出的账号。"
+    "message": "首先从 SmartTemplates 的设置下拉框中选择您想要导出的账户。"
   },
   "im-ex_note3.label": {
     "message": "接下来从菜单栏中选择'工具' ⇒ '导出' ⇒ '设置和模板'，将文件（xxx.st4）保存到您的电脑中。"
   },
   "im-ex_note4.label": {
-    "message": "想要导入一个文件，首先从 SmartTemplates 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择'工具' ⇒ '导入' ⇒ '设置和模板'"
+    "message": "想要导入一个文件，首先从 SmartTemplates 的设置下拉框中选择您想要导入的账户。下一步，从菜单栏中选择'工具' ⇒ '导入' ⇒ '设置和模板'"
   },
   "im-ex_note5.label": {
     "message": "选择您想要导入的SmartTemplates文件（xxx.st4）。"
@@ -710,7 +710,7 @@
     "message": "您输入的许可证密钥可能适用于其他附加组件。 {0}的许可证密钥以{1}开头。"
   },
   "licenseValidation.invalidMail": {
-    "message": "绑定到许可证密钥[{1}]的电子邮件地址当前未在任何邮件帐户中列出。 请从支持选项卡与我联系以获取帮助。"
+    "message": "绑定到许可证密钥[{1}]的电子邮件地址当前未在任何邮件账户中列出。 请从支持选项卡与我联系以获取帮助。"
   },
   "licenseValidation.notMatchedMail": {
     "message": "加密电子邮件地址与可读邮件地址不匹配。"
@@ -938,7 +938,7 @@
     "message": "右击打开高级调试选项"
   },
   "pref_def.cap": {
-    "message": "如果您想要为这个帐户创建自定义的引用头，请取消选中“使用通用”"
+    "message": "如果您想要为这个账户创建自定义的引用头，请取消选中“使用通用”"
   },
   "pref_def.label": {
     "message": "使用通用"
@@ -956,7 +956,7 @@
     "message": "默认模板"
   },
   "pref_defaultTemplateMethod_select_account": {
-    "message": "使用帐户模板。"
+    "message": "使用账户模板。"
   },
   "pref_defaultTemplateMethod_select_last": {
     "message": "使用最后从下拉菜单中选择的外部模板。"
@@ -1091,7 +1091,7 @@
     "message": "通用"
   },
   "pref_server_desc": {
-    "message": "帐户"
+    "message": "账户"
   },
   "pref_showStatusIcon.label": {
     "message": "在状态栏显示按钮"
@@ -1160,7 +1160,7 @@
     "message": "[可选，数字]：从哪个最低报价水平开始"
   },
   "quotePlaceholder": {
-    "message": "这会将引用的部分移入模板文本本身。 帐户模板中的报价标题部分将移至引用的顶部。"
+    "message": "这会将引用的部分移入模板文本本身。 账户模板中的报价标题部分将移至引用的顶部。"
   },
   "quotePlaceholder.level": {
     "message": "[可选，数字]最高引文级别，用于从对话中删除较旧的引号。"
@@ -1229,10 +1229,10 @@
     "message": "显示更改 + 新闻（启动画面）。"
   },
   "sig.label": {
-    "message": "Siganture 签名（来自TB帐户设置"
+    "message": "Siganture 签名（来自TB账户设置"
   },
   "sig2.label": {
-    "message": "Siganture 签名（来自TB帐户设置，但没有'--'"
+    "message": "Siganture 签名（来自TB账户设置，但没有'--'"
   },
   "smartTemplate4.changeTemplate.label": {
     "message": "变更范本…"
@@ -1374,7 +1374,7 @@
     "message": "隐藏按钮标签"
   },
   "st.menu.template.default": {
-    "message": "默认模板（帐户）"
+    "message": "默认模板（账户）"
   },
   "st.menu.template.last": {
     "message": "最后一个模板"
@@ -1425,7 +1425,7 @@
     "message": "Thunderbird 表示您已经输入了一些内容，您是否仍然要加载模板？"
   },
   "st.notification.bodyModified.accountTemplate": {
-    "message": "这将丢弃您输入的任何内容，并加载帐户模板。"
+    "message": "这将丢弃您输入的任何内容，并加载账户模板。"
   },
   "st.notification.bodyModified.externalTemplate": {
     "message": "这将丢弃您输入的任何内容，并重新加载当前模板 [$template$]。",
@@ -1667,7 +1667,7 @@
     "message": "禁止邮件客户端添加链接到电子邮件地址。"
   },
   "suppressQuoteHdr": {
-    "message": "无论帐户设置如何，都完全删除报价标题。"
+    "message": "无论账户设置如何，都完全删除报价标题。"
   },
   "table.cap": {
     "message": "变量的使用情况"
