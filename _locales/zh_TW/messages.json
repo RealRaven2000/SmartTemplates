@@ -27,16 +27,16 @@
     "message": "有關 SmartTemplates"
   },
   "about.label": {
-    "message": "SmartTemplates 提供簡單的方法,讓您在使用樣板時可以自訂 Thunderbird 的預設引用表頭.單一樣板可以建立給每個帳號或是通用樣板來使用."
+    "message": "SmartTemplates 提供簡單的方法，讓您在使用樣板時可以自訂 Thunderbird 的預設引用表頭.單一樣板可以建立給每個賬戶或是通用樣板來使用."
   },
   "accept_button": {
     "message": "確定"
   },
   "account.label": {
-    "message": "选择帐户："
+    "message": "选择賬戶："
   },
   "account.templates": {
-    "message": "帳戶範本"
+    "message": "賬戶範本"
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
@@ -101,10 +101,10 @@
     "message": "我想提供一次捐款。"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "加載帳戶設置…"
+    "message": "加載賬戶設置…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "保存帳戶設置…"
+    "message": "保存賬戶設置…"
   },
   "btnYouTube.tooltip": {
     "message": "訪問“Thunderbird Daily”YouTube 頻道 - 獲取使用文具和其他插件的提示和教程"
@@ -366,7 +366,7 @@
     "message": "通過自動插入各種郵件頭來創建自定義回复的有效方法。 可以為每個郵件標識創建模板，還支持外部html文件和样式表。"
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
-    "message": "SmartTemplates 可以自訂每個帳號的'引用表頭'."
+    "message": "SmartTemplates 可以自訂每個賬戶的'引用表頭'."
   },
   "file.label": {
     "message": "檔案"
@@ -581,16 +581,16 @@
     "message": "設定及樣板的匯出/匯入"
   },
   "im-ex_note1.label": {
-    "message": "您可以匯出及匯入設定和關聯每一個帳號的樣板."
+    "message": "您可以匯出及匯入設定和關聯每一個賬戶的樣板."
   },
   "im-ex_note2.label": {
-    "message": "第一,選擇您想要匯出從SmartTemplates設定下拉視窗的帳號."
+    "message": "第一,選擇您想要匯出從SmartTemplates設定下拉視窗的賬戶."
   },
   "im-ex_note3.label": {
     "message": "下一步,從選單列點選'檔案' ⇒ '匯出' ⇒ '設定及樣板'然後儲存檔案 (xxx.st4) 到您的電腦."
   },
   "im-ex_note4.label": {
-    "message": "要匯入檔案,選擇一個您想要從 SmartTemplates 設定下拉視窗匯入的帳號.下一步,從選單列點選 '檔案' ⇒ '設定及樣板'."
+    "message": "要匯入檔案,選擇一個您想要從 SmartTemplates 設定下拉視窗匯入的賬戶.下一步,從選單列點選 '檔案' ⇒ '設定及樣板'."
   },
   "im-ex_note5.label": {
     "message": "選擇您想匯入的 SmartTemplates 檔案 (xxx.st4)."
@@ -722,7 +722,7 @@
     "message": "您輸入的許可證密鑰可能用於其他附件。 {0}的許可證密鑰以{1}開頭。"
   },
   "licenseValidation.invalidMail": {
-    "message": "當前未在任何郵件帳戶中列出與許可證密鑰[{1}]綁定的電子郵件地址。 請從“支持”標籤與我聯繫以獲取幫助。"
+    "message": "當前未在任何郵件賬戶中列出與許可證密鑰[{1}]綁定的電子郵件地址。 請從“支持”標籤與我聯繫以獲取幫助。"
   },
   "licenseValidation.notMatchedMail": {
     "message": "加密的電子郵件地址不可讀。"
@@ -956,7 +956,7 @@
     "message": "點右鍵使用進階的除錯選項"
   },
   "pref_def.cap": {
-    "message": "停用 '$pref_def$' 以為此帳戶創建特定的模板設置。",
+    "message": "停用 '$pref_def$' 以為此賬戶創建特定的模板設置。",
     "placeholders": {
       "pref_def": {
         "content": "$1",
@@ -988,7 +988,7 @@
     "message": "默認模板"
   },
   "pref_defaultTemplateMethod_select_account": {
-    "message": "使用帳戶模板。"
+    "message": "使用賬戶模板。"
   },
   "pref_defaultTemplateMethod_select_last": {
     "message": "使用最後從下拉菜單中選擇的外部模板。"
@@ -1123,7 +1123,7 @@
     "message": "常見"
   },
   "pref_server_desc": {
-    "message": "帳號"
+    "message": "賬戶"
   },
   "pref_showStatusIcon.label": {
     "message": "在狀態列顯示按鈕"
@@ -1218,7 +1218,7 @@
     "message": "[可選，數字]：從哪個最低報價水平開始"
   },
   "quotePlaceholder": {
-    "message": "這會將引用的部分移入模板文本本身。 帳戶模板中的報價標題部分將移至引用的頂部。"
+    "message": "這會將引用的部分移入模板文本本身。 賬戶模板中的報價標題部分將移至引用的頂部。"
   },
   "quotePlaceholder.level": {
     "message": "[可選，數字]最高引文級別，用於從對話中刪除較舊的引號。"
@@ -1287,10 +1287,10 @@
     "message": "顯示更改 + 新聞（啟動畫面）。"
   },
   "sig.label": {
-    "message": "從帳號設定的簽名檔"
+    "message": "從賬戶設定的簽名檔"
   },
   "sig2.label": {
-    "message": "從帳號設定的簽名檔但不要 '--'"
+    "message": "從賬戶設定的簽名檔但不要 '--'"
   },
   "smartTemplate4.changeTemplate.label": {
     "message": "變更範本…"
@@ -1441,7 +1441,7 @@
     "message": "隱藏按鈕標籤"
   },
   "st.menu.template.default": {
-    "message": "默認模板（帳戶）"
+    "message": "默認模板（賬戶）"
   },
   "st.menu.template.last": {
     "message": "最後一個模板"
@@ -1492,7 +1492,7 @@
     "message": "Thunderbird 說您已經輸入了一些內容，您是否仍然要載入模板？"
   },
   "st.notification.bodyModified.accountTemplate": {
-    "message": "這將捨棄您輸入的任何內容，並載入帳戶模板。"
+    "message": "這將捨棄您輸入的任何內容，並載入賬戶模板。"
   },
   "st.notification.bodyModified.externalTemplate": {
     "message": "這將捨棄您輸入的任何內容，並重新載入當前模板 [$template$]。",
@@ -1749,7 +1749,7 @@
     "message": "禁止郵件客戶端添加指向電子郵件地址的鏈接。"
   },
   "suppressQuoteHdr": {
-    "message": "無論帳戶設置如何，都完全刪除報價標題。"
+    "message": "無論賬戶設置如何，都完全刪除報價標題。"
   },
   "table.cap": {
     "message": "變數使用方法"
@@ -1890,7 +1890,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 設定畫面已轉換為HTML，現在顯示在其自己的Thunderbird標籤中。 [issue 259]{L2} {L1} SmartTemplates現在與Thunderbird 128兼容。{L2}{L1} 修復了Thunderbird 125中損壞的文件打開對話框。{L2} {L1} 變數 %header.delete()% 和 %header.deleteFromSubject()% 現在支持多個參數。 [issue 293]{L2} {L1} 許可證模塊現在執行得更快（使用API功能迭代郵件帳戶，不再處理所有文件夾）。{L2}"
+    "message": "{L1} 設定畫面已轉換為HTML，現在顯示在其自己的Thunderbird標籤中。 [issue 259]{L2} {L1} SmartTemplates現在與Thunderbird 128兼容。{L2}{L1} 修復了Thunderbird 125中損壞的文件打開對話框。{L2} {L1} 變數 %header.delete()% 和 %header.deleteFromSubject()% 現在支持多個參數。 [issue 293]{L2} {L1} 許可證模塊現在執行得更快（使用API功能迭代郵件賬戶，不再處理所有文件夾）。{L2}"
   },  
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"
