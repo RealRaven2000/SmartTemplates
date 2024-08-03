@@ -762,6 +762,10 @@ label .flag {
 .page toolbar[brighttext] #btnLoadTemplate {
 	background-image: url("../chrome/content/skin/icons/open.svg") !important;
 }
+.page #btnRefreshAccounts,
+.page toolbar[brighttext] #btnRefreshAccounts {
+	background-image: url("../chrome/content/skin/icons/thunderbird/synchronize.svg") !important;
+}
 
 #btnVariableSidePanel {
 	display: none;

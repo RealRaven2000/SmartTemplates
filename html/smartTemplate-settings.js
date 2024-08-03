@@ -552,7 +552,7 @@ SmartTemplates.Preferences = {
       return prefString;
     }
 	},  
-	setStringPref: async function setStringPref(p, v) {
+	setStringPref: async function (p, v) {
     return await messenger.LegacyPrefs.setPref(this.Prefix + p, v);
 	},
 	getIntPref: async function(p) {
@@ -785,7 +785,7 @@ SmartTemplates.Settings = {
 	// Disable DOM node with identity key
 	//--------------------------------------------------------------------
 	// @arg[0] = enabled
-	// @arg[1] = accouint id ("", ".id1", ".id2" etc..)
+	// @arg[1] = account id ("", ".id1", ".id2" etc..)
 	// @arg[2..n] = which options to disable / enable
 	prefDisable : function () {
 		const enable = arguments[0],
@@ -946,11 +946,19 @@ SmartTemplates.Settings = {
 	//--------------------------------------------------------------------
 	setPref1st : async function (prefbranch) {
     async function testPref(key, defaultValue) {
+			let testResult;
+			const dummy="****N/A(this is an impossible test result to check existence of user default)***"
       const targetKey =  prefbranch + key;
       try {
-        await getPref(targetKey);
+				let testResult = await getPref(targetKey, dummy);
+				if (testResult == dummy) {
+					debugger;
+					await createPref(targetKey, defaultValue);
+				}
       } catch (ex) {
-        await setPref(targetKey,defaultValue);
+				debugger; // there is no default config setting... create one!
+				// [issue ]
+        await createPref(targetKey,defaultValue);
       }
     }
 
@@ -986,7 +994,6 @@ SmartTemplates.Settings = {
   onLoad: async function() {
     // let isAdvancedPanelOpen = getPref('expandSettings'); // may be obsolete?
     let composeType = null;
-
     this.logDebug("onLoad() …");
 		// Check and set common preference
 		await this.setPref1st("extensions.smartTemplate4.");
@@ -1136,21 +1143,19 @@ SmartTemplates.Settings = {
 			el.classList.remove("deck-selected"); 
 
 			const clone = el.cloneNode(true);
+			let commonExplainer = clone.querySelector("#commonSettingsExplainer");
+			if (commonExplainer) {
+				commonExplainer.remove();
+			}
+			
 			// collapse clone for now.
 			clone.classList.remove("deck-selected");
 
 			this.prefCloneAndSetup(clone, branch);
 			let appendedChild = el.parentNode.appendChild(clone);
-			let spacers = appendedChild.querySelectorAll(".tabs-left");
-			
-			if (spacers[1] && (spacers[1].previousSibling == spacers[0])) {
-				this.logDebug("addIdentity() - removing first spacer");
-				spacers[0].remove();
-			}
 
 			// Disabled or Hidden DOM node
 			this.accountKey = branch;    // change current id for pref library
-			
 			let useCommon = 
 			  isCommon ? false : await getPref(prefRoot + "def"); // this.isChecked("use_default" + branch)
 			this.showCommonPlaceholder(useCommon, this.accountId);
@@ -1163,19 +1168,67 @@ SmartTemplates.Settings = {
 		}
 	} ,
 
+	// remove a deck (for refreshing the dropdown!)
+	// id = {common, id1, id2 ...}
+	removeIdentity: async function(id) {
+		const idSelector = `.${id}`;
+		const deck = document.getElementById(`deckA.per_account${idSelector}`);
+		if (deck) {
+			deck.remove();
+		}
+	},
+	// updates the identities dropwdown...
+	refreshIdentities: async function() {
+		// remember currently selected identity 
+		const currentId = this.currentId;
+		//  async iteration!
+		for await (const option of document.querySelectorAll('#msgIdentity option')) {
+			const id = option.value;
+			if ("common" == id) {
+				// keep common!
+				continue;
+			} 
+			await this.removeIdentity(id);
+			document.getElementById("msgIdentity").removeChild(option);
+		}
+		if (await SmartTemplates.Preferences.isDebugOption("settings")) {
+			debugger;
+		}
+		
+		await this.fillIdentityListPopup(currentId, false);
+		await loadPrefs("#account_deckA");  // reinitialise all decks from data store
+		// add event listeners to the tabs
+		for (let button of document.querySelectorAll(".accountDeck:not(:first-child) .actionTabs button")) {
+			button.addEventListener("click", activateTab);
+		}
+		for (let el of document.querySelectorAll(".accountDeck:not(:first-child) .commonSwitch")) {
+			el.removeAttribute("disabled");
+			el.addEventListener("change", (event) => {
+				SmartTemplates.Settings.showCommonPlaceholder(el.checked);
+			});
+		}
+
+		await this.switchIdentity(currentId || 'common', this.currentComposeType);
+	} ,
   // Fill identities menu
 	// this also clones the deck as many times as there are identities in order to fill in 
 	// the specific templates [see addIdentity()]
-	fillIdentityListPopup: async function(CurId = null) {
+	fillIdentityListPopup: async function(CurId = null, isInitial = true) {
   	// this.logDebug("***fillIdentityListPopup");
     const accounts = await messenger.accounts.list(false);
 		let currentId = 0;
-		let theMenu = document.getElementById("msgIdentity"),
-		    iAccounts = accounts.length;
+		const theMenu = document.getElementById("msgIdentity"),
+		    	iAccounts = accounts.length;
 				
 		const useCommonPlaceHolder = document.getElementById("commonPlaceholder"),
 		      useCommonCmd = SmartTemplates.Util.getBundleString("pref_def.label");
-		useCommonPlaceHolder.textContent = SmartTemplates.Util.getBundleString("pref_def.cap", useCommonCmd);;
+		useCommonPlaceHolder.textContent = SmartTemplates.Util.getBundleString("pref_def.cap", useCommonCmd);
+
+		const common = document.getElementById("deckA.per_account");
+		const common1st = common.querySelector(".commonContainer label");
+		if (!isInitial) {
+			common1st.style.display=""; // reset if we re-fill the accounts dropdown, so that clones are visible!
+		}
 
     /* 
      ***  TO DO: 
@@ -1189,7 +1242,10 @@ SmartTemplates.Settings = {
 
 			// if (!account.incomingServer)
       if (!(["imap","pop3","nntp"].includes(account.type))) {
-        continue;
+				// let's allow for owl and "extension:*" once that is implemented!
+				if (!account.type || account.type=="local") {
+        	continue;
+				}
       }
 
 			for (let j = 0; j < account.identities?.length; j++) {
@@ -1235,32 +1291,35 @@ SmartTemplates.Settings = {
 			theMenu.selectedIndex = currentId;
 		}
 
-		const common = document.getElementById("deckA.per_account");
-
 		if (!CurId) { //  [issue 290]
 			common.classList.add("deck-selected"); 
 		}		
 
-		// hide use common checkbox on first account, and add explanation
-		const common1st = common.querySelector(".commonContainer label");
-		common1st.style.display="none";
-		const commonContainer = common.querySelector(".commonContainer");
-		const commonExplainer = document.createElement("label");
-		commonExplainer.id = "commonSettingsExplainer";
-		commonExplainer.textContent = 
-			SmartTemplates.Util.getBundleString("pref_def.explainer", SmartTemplates.Util.getBundleString("pref_def.label"));
-		commonContainer.appendChild(commonExplainer);
+    // we only refresh the dropdown contents, early exit
+		// if (!isInitial) { return (CurId) ? CurId.key : null; } 
 
+		// hide use common checkbox on first account, and add explanation
+		common1st.style.display="none";
+		if (isInitial) {
+			const commonContainer = common.querySelector(".commonContainer");
+			const commonExplainer = document.createElement("label");
+			commonExplainer.id = "commonSettingsExplainer";
+			commonExplainer.textContent = 
+				SmartTemplates.Util.getBundleString("pref_def.explainer", SmartTemplates.Util.getBundleString("pref_def.label"));
+			commonContainer.appendChild(commonExplainer);
+		}
 		
 		return (CurId) ? CurId.key : null;
-		
-  
-  },
+	},
 
 
 	// Switch Identity (from account setting window)	
 	//--------------------------------------------------------------------
 	switchIdentity : async function(idKey, composeType)	{
+		if (await SmartTemplates.Preferences.isDebugOption("settings")) {
+			debugger;
+		}
+
 		let wasSwitched = false;
     composeType = composeType || null;
  		// remember so we can set it when switching identities		
@@ -1902,12 +1961,20 @@ async function setPref(key,value) {
   await messenger.LegacyPrefs.setPref(target, value);
 }
 
-async function getPref(key) {
+async function createPref(key,value) {
+  let target = key;
+  if (!key.startsWith(SMARTTEMPLATES_EXTPREFIX)) {
+    target = SMARTTEMPLATES_EXTPREFIX + key;
+  }
+  await messenger.LegacyPrefs.createPref(target, value);
+}
+
+async function getPref(key, defaultVal=null) {
   let target = key;
   if (!key.startsWith(SMARTTEMPLATES_EXTPREFIX)) {
     target = SMARTTEMPLATES_EXTPREFIX + key;
   }  
-  return await messenger.LegacyPrefs.getPref(target);
+  return await messenger.LegacyPrefs.getPref(target, defaultVal);
 }
 
 async function savePref(event) {
@@ -2014,10 +2081,11 @@ const activateTab = (event) => {
  ***/
 
 
-async function loadPrefs() {
-  console.log("loadPrefs");
+async function loadPrefs(parentSelector = "") {
+  console.log(`loadPrefs(${parentSelector})`);
   // use LegacyPrefs
-	const prefElements = Array.from(document.querySelectorAll("[data-pref-name]"));
+	const dataSelector = parentSelector ? `${parentSelector} [data-pref-name]` : "[data-pref-name]";
+	const prefElements = Array.from(document.querySelectorAll(dataSelector));
 	for (let element of prefElements) {
 		let prefName = element.dataset.prefName;
 		if (!prefName) {
@@ -2252,6 +2320,10 @@ function addUIListeners() {
 	document.getElementById("btnLoadTemplate").addEventListener("click", (event) => {
 		SmartTemplates.Settings.loadAccount();
 	});
+	document.getElementById("btnRefreshAccounts").addEventListener("click", (event) => {
+		SmartTemplates.Settings.refreshIdentities();
+	});
+	
 
 	// document.getElementById("btnAdvanced").addEventListener("click", (event) => {
 	// 	logMissingFunction("SmartTemplates.Settings.openAdvanced()");
