@@ -665,12 +665,14 @@ async function createHeaderMenu() {
     title: messenger.i18n.getMessage("st.menu.hideLabel"),
     type: "checkbox",
     checked: isLabelHidden,
-    onclick: (e) => {
+    onclick: async (e) => {
+      // [issue 304] needs to be updated!
+      var isHidden = (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.toolbar.hideLabel"));
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand", 
         detail: {
           cmd: "smartTemplates-toggle-label", // will be re-packaged as el.id
-          params: { isHidden: !isLabelHidden}  // toggle
+          params: { isHidden: !isHidden}  // toggle
         }
       });
     }
