@@ -935,12 +935,6 @@ SmartTemplate4.Settings = {
 
 			this.prefCloneAndSetup(clone, branch);
 			let appendedChild = el.parentNode.appendChild(clone);
-			let spacers = appendedChild.querySelectorAll(".tabs-left");
-			
-			if (spacers[1] && (spacers[1].previousSibling == spacers[0])) {
-				util.logDebug("addIdentity() - removing first spacer");
-				spacers[0].remove();
-			}
 
 			// Disabled or Hidden DOM node
 			this.accountKey = branch;    // change current id for pref library

@@ -144,9 +144,7 @@ SmartTemplate4.composer = {
   initSnippetMenu : async function() {
     SmartTemplate4.Util.logDebug("composer.initSnippetMenu() ...");
     // load menu with templates to button-save
-    const Ci = Components.interfaces,
-          fT = SmartTemplate4.fileTemplates,
-          prefs = SmartTemplate4.Preferences;
+    const fT = SmartTemplate4.fileTemplates;
     let snippetPopup = window.document.getElementById('button-SnippetPopup');
     if (!snippetPopup) return;
     // clear previous menu (in case we haven't added the button to the toolbar)
