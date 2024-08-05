@@ -666,7 +666,7 @@ async function createHeaderMenu() {
     type: "checkbox",
     checked: isLabelHidden,
     onclick: async (e) => {
-      // [issue 304] needs to be updated!
+      // [issue 304] action button needs to be updated!
       var isHidden = (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.toolbar.hideLabel"));
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand", 
