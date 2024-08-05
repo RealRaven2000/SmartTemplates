@@ -1923,7 +1923,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Inställningsskärmen har konverterats till HTML och visas nu i sin egen Thunderbird-flik. [issue 259]{L2} {L1} SmartTemplates är nu kompatibel med Thunderbird 128.{L2}{L1} Fixat filöppningsdialog som var trasig i Thunderbird 125.{L2} {L1} Variablerna %header.delete()% och %header.deleteFromSubject()% stöder nu flera parametrar. [issue 293]{L2} {L1} Licensmodulen fungerar nu snabbare (genom att använda API-funktionen för att iterera e-postkonton, bearbetas alla mappar inte längre).{L2}"
+    "message": "{L1} Kontomallar - nya identiteter kunde inte läggas till i den nya versionen av inställningsdialogrutan. [issue 300] {L2}{L1} Uppdateringsknapp tillagd för kontonas rullgardinsmeny. [issue 307] {L2}{L1} Förbättrade kinesiska översättningar för termen 'konton' - tack till Y.D.X. [issue 302] {L2}{L1} Att klicka på {{Dölj knappetikett}} i menyområdet för knappfältet fungerar igen. [issue 304] {L2}{L1} i Tb128 - popup för begränsade funktioner: meddelande leder till undantag + ikon visas inte. [issue 308] {L2} "
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

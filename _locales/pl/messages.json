@@ -1913,7 +1913,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Ekran ustawień został przekształcony na HTML, który teraz jest wyświetlany na własnej karcie Thunderbirda. [issue 259]{L2} {L1} SmartTemplates jest teraz kompatybilny z Thunderbird 128.{L2}{L1} Naprawiono okno dialogowe otwierania plików, które nie działało w Thunderbird 125.{L2} {L1} Zmienne %header.delete()% i %header.deleteFromSubject()% teraz obsługują wiele parametrów. [issue 293]{L2} {L1} Moduł licencyjny teraz działa szybciej (używając funkcji API do iteracji kont pocztowych, wszystkie foldery nie są już przetwarzane).{L2}"
+    "message": "{L1} Szablony kont - nie można było dodać nowych tożsamości w nowej wersji okna ustawień. [issue 300] {L2}{L1} Dodano przycisk odświeżania do listy rozwijanej kont. [issue 307] {L2}{L1} Ulepszone chińskie tłumaczenia dla terminu 'konta' - dzięki Y.D.X. [issue 302] {L2}{L1} Kliknięcie na {{Ukryj etykietę przycisku}} w menu przycisku obszaru nagłówka znów działa. [issue 304] {L2}{L1} w Tb128 - wyskakujące okno dla ograniczonych funkcji: powiadomienie prowadzi do wyjątku + ikona nie jest wyświetlana. [issue 308] {L2} "
   }, 
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

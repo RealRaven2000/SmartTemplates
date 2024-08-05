@@ -1843,8 +1843,8 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Der Einstellungsbildschirm wurde in HTML konvertiert und wird nun in einem eigenen Thunderbird-Tab angezeigt. [issue 259]{L2} {L1} SmartTemplates ist jetzt kompatibel mit Thunderbird 128.{L2}{L1} Der Datei-Öffnen-Dialog, der in Thunderbird 125 nicht funktionierte, wurde behoben.{L2} {L1} Die Variablen %header.delete()% und %header.deleteFromSubject()% unterstützen jetzt mehrere Parameter. [issue 293]{L2} {L1} Das Lizenzmodul arbeitet jetzt schneller (unter Verwendung der API-Funktion zum Iterieren der E-Mail-Konten, alle Ordner werden nicht mehr verarbeitet).{L2}"
-  }, 
+    "message": "{L1} Kontovorlagen - neue Identitäten konnten in der neuen Version des Einstellungsdialogs nicht hinzugefügt werden. [issue 300] {L2}{L1} Aktualisierungsschaltfläche für das Konto-Dropdown hinzugefügt. [issue 307] {L2}{L1} Verbesserte chinesische Übersetzungen für den Begriff 'Konto' - danke an Y.D.X. [issue 302] {L2}{L1} Das Klicken auf {{Schaltflächenbeschriftung ausblenden}} im Header-Bereich-Menü funktioniert wieder. [issue 304] {L2}{L1} in Tb128 - Popup für eingeschränkte Funktionen: Benachrichtigung führt zu einer Ausnahme + Symbol wird nicht angezeigt. [issue 308] {L2} "
+  },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
   },

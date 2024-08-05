@@ -1911,8 +1911,8 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} La pantalla de configuració es va convertir a HTML, que ara es mostra en la seva pròpia pestanya de Thunderbird. [issue 259]{L2} {L1} SmartTemplates ara és compatible amb Thunderbird 128.{L2}{L1} Es va arreglar el diàleg d'obertura de fitxers que estava trencat en Thunderbird 125.{L2} {L1} Les variables %header.delete()% i %header.deleteFromSubject()% ara admeten múltiples paràmetres. [issue 293]{L2} {L1} El mòdul de llicència ara funciona més ràpid (utilitzant la funció API per iterar els comptes de correu, ja no es processen totes les carpetes).{L2}"
-  },  
+    "message": "{L1} Plantilles de compte - no es podien afegir noves identitats en la nova versió del diàleg de configuració. [issue 300] {L2}{L1} Afegit botó de refresc per al desplegable de comptes. [issue 307] {L2}{L1} Millorades les traduccions xineses per al terme 'comptes' - gràcies a Y.D.X. [issue 302] {L2}{L1} Fer clic a {{Amaga l'etiqueta del botó}} al menú del botó de l'àrea de capçalera torna a funcionar. [issue 304] {L2}{L1} en Tb128 - finestra emergent per a funcions restringides: la notificació condueix a una excepció + icona no es mostra. [issue 308] {L2} "
+  }, 
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."
   },

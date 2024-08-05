@@ -1851,7 +1851,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} La schermata delle impostazioni è stata convertita in HTML che ora viene visualizzata nella sua scheda Thunderbird. [issue 259]{L2} {L1} SmartTemplates è ora compatibile con Thunderbird 128.{L2}{L1} Corretta la finestra di dialogo di apertura dei file che era danneggiata in Thunderbird 125.{L2} {L1} Le variabili %header.delete()% e %header.deleteFromSubject()% ora supportano più parametri. [issue 293]{L2} {L1} Il modulo di licenza ora funziona più velocemente (utilizzando la funzione API per iterare gli account di posta, tutte le cartelle non vengono più elaborate).{L2}"
+    "message": "{L1} Modelli di account - nuove identità non potevano essere aggiunte nella nuova versione della finestra delle impostazioni. [issue 300] {L2}{L1} Aggiunto pulsante Aggiorna per il menu a discesa degli account. [issue 307] {L2}{L1} Migliorate le traduzioni cinesi per il termine 'account' - grazie a Y.D.X. [issue 302] {L2}{L1} Fare clic su {{Nascondi etichetta del pulsante}} nel menu del pulsante dell'area intestazione funziona di nuovo. [issue 304] {L2}{L1} in Tb128 - popup per funzionalità ristrette: la notifica porta a un'eccezione + l'icona non viene visualizzata. [issue 308] {L2} "
   }, 
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

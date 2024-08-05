@@ -1851,8 +1851,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Het instellingen scherm is omgezet naar HTML en wordt nu weergegeven in een eigen Thunderbird-tabblad. [issue 259]{L2} {L1} SmartTemplates is nu compatibel met Thunderbird 128.{L2}{L1} Het bestandsdialoogvenster dat kapot was in Thunderbird 125 is gerepareerd.{L2} {L1} De variabelen %header.delete()% en %header.deleteFromSubject()% ondersteunen nu meerdere parameters. [issue 293]{L2} {L1} De licentiemodule werkt nu sneller (door de API-functie te gebruiken om de e-mailaccounts te doorlopen, worden alle mappen niet meer verwerkt).{L2}"
-  }, 
+    "message": "{L1} Accountsjablonen - nieuwe identiteiten konden niet worden toegevoegd in de nieuwe versie van het instellingenvenster. [issue 300] {L2}{L1} Vernieuwknop toegevoegd voor het accounts-dropdownmenu. [issue 307] {L2}{L1} Verbeterde Chinese vertalingen voor de term 'accounts' - dank aan Y.D.X. [issue 302] {L2}{L1} Klikken op {{Knoplabel verbergen}} in het koptekstgedeelteknopmenu werkt weer. [issue 304] {L2}{L1} in Tb128 - pop-up voor beperkte functies: melding leidt tot uitzondering + pictogram niet weergegeven. [issue 308] {L2} "
+  },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
   },

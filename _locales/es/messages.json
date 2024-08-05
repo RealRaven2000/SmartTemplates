@@ -1860,7 +1860,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} La pantalla de configuración se convirtió a HTML, que ahora se muestra en su propia pestaña de Thunderbird. [issue 259]{L2} {L1} SmartTemplates ahora es compatible con Thunderbird 128.{L2}{L1} Se corrigió el cuadro de diálogo de apertura de archivos que estaba roto en Thunderbird 125.{L2} {L1} Las variables %header.delete()% y %header.deleteFromSubject()% ahora admiten múltiples parámetros. [issue 293]{L2} {L1} El módulo de licencia ahora funciona más rápido (usando la función API para iterar las cuentas de correo, todas las carpetas ya no se procesan).{L2}"
+    "message": "{L1} Plantillas de cuenta: no se pudieron agregar nuevas identidades en la nueva versión del cuadro de diálogo de configuración. [issue 300] {L2}{L1} Botón de actualización agregado para el menú desplegable de cuentas. [issue 307] {L2}{L1} Mejora de las traducciones chinas para el término 'cuentas' - gracias a Y.D.X. [issue 302] {L2}{L1} Hacer clic en {{Ocultar etiqueta del botón}} en el menú del botón del área del encabezado vuelve a funcionar. [issue 304] {L2}{L1} en Tb128 - ventana emergente para funciones restringidas: la notificación conduce a una excepción + el icono no se muestra. [issue 308] {L2} "
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

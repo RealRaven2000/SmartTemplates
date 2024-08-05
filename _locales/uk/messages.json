@@ -1930,8 +1930,8 @@
     "message": "Прочитайте детальний журнал змін тут (лише англійською):"
   },
   "whats-new-list": {
-    "message": "{L1} Màn hình cài đặt đã được chuyển đổi sang HTML và hiện được hiển thị trong tab Thunderbird riêng. [issue 259]{L2} {L1} SmartTemplates hiện tương thích với Thunderbird 128.{L2}{L1} Đã sửa hộp thoại mở tệp bị lỗi trong Thunderbird 125.{L2} {L1} Các biến %header.delete()% và %header.deleteFromSubject()% hiện hỗ trợ nhiều tham số. [issue 293]{L2} {L1} Mô-đun giấy phép hiện hoạt động nhanh hơn (sử dụng chức năng API để lặp lại các tài khoản thư, tất cả các thư mục không còn được xử lý nữa).{L2}"
-  }, 
+    "message": "{L1} Шаблони облікових записів - нові ідентифікатори не вдалося додати в нову версію діалогового вікна налаштувань. [issue 300] {L2}{L1} Додано кнопку оновлення для випадаючого списку облікових записів. [issue 307] {L2}{L1} Покращено китайські переклади для терміна 'облікові записи' - дякуємо Y.D.X. [issue 302] {L2}{L1} Натискання на {{Сховати мітку кнопки}} у меню кнопки в області заголовка знову працює. [issue 304] {L2}{L1} у Tb128 - спливаюче вікно для обмежених функцій: сповіщення призводить до винятку + значок не відображається. [issue 308] {L2} "
+  },
   "whitespace_note": {
     "message": "Зверніть увагу, що пробіл може бути найкраще представлений як \\s, оскільки він також може містити розриви на рядках. Поля і подвійні лапки не можна використовувати."
   },

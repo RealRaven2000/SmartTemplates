@@ -1872,7 +1872,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} A tela de configurações foi convertida para HTML e agora é exibida em sua própria guia do Thunderbird. [issue 259]{L2} {L1} O SmartTemplates agora é compatível com o Thunderbird 128.{L2}{L1} Corrigida a caixa de diálogo de abertura de arquivo que estava quebrada no Thunderbird 125.{L2} {L1} As variáveis %header.delete()% e %header.deleteFromSubject()% agora suportam vários parâmetros. [issue 293]{L2} {L1} O módulo de licença agora funciona mais rápido (usando a função API para iterar as contas de e-mail, todas as pastas não são mais processadas).{L2}"
+    "message": "{L1} Modelos de conta - novas identidades não puderam ser adicionadas na nova versão da caixa de diálogo de configurações. [issue 300] {L2}{L1} Adicionado botão Atualizar para o menu suspenso de contas. [issue 307] {L2}{L1} Melhorias nas traduções chinesas para o termo 'contas' - obrigado a Y.D.X. [issue 302] {L2}{L1} Clicar em {{Ocultar rótulo do botão}} no menu do botão da área do cabeçalho funciona novamente. [issue 304] {L2}{L1} no Tb128 - pop-up para recursos restritos: a notificação leva a uma exceção + ícone não exibido. [issue 308] {L2} "
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

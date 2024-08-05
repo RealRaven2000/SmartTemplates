@@ -274,8 +274,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Màn hình cài đặt đã được chuyển đổi sang HTML và hiện được hiển thị trong tab Thunderbird riêng. [issue 259]{L2} {L1} SmartTemplates hiện tương thích với Thunderbird 128.{L2}{L1} Đã sửa hộp thoại mở tệp bị lỗi trong Thunderbird 125.{L2} {L1} Các biến %header.delete()% và %header.deleteFromSubject()% hiện hỗ trợ nhiều tham số. [issue 293]{L2} {L1} Mô-đun giấy phép hiện hoạt động nhanh hơn (sử dụng chức năng API để lặp lại các tài khoản thư, tất cả các thư mục không còn được xử lý nữa).{L2}"
-  }, 
+    "message": "{L1} Mẫu tài khoản - không thể thêm nhận dạng mới trong phiên bản mới của hộp thoại cài đặt. [issue 300] {L2}{L1} Đã thêm nút Làm mới cho menu thả xuống tài khoản. [issue 307] {L2}{L1} Cải thiện bản dịch tiếng Trung cho thuật ngữ 'tài khoản' - cảm ơn Y.D.X. [issue 302] {L2}{L1} Nhấp vào {{Hide Button Label}} trong menu nút khu vực tiêu đề lại hoạt động. [issue 304] {L2}{L1} trong Tb128 - cửa sổ bật lên cho các tính năng bị hạn chế: thông báo dẫn đến ngoại lệ + biểu tượng không được hiển thị. [issue 308] {L2} "
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Chào mừng bạn đến với $addonName$",

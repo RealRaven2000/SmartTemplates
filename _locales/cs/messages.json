@@ -1899,8 +1899,8 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Nastavení bylo převedeno do HTML, které se nyní zobrazuje na vlastní záložce Thunderbirdu. [issue 259]{L2} {L1} SmartTemplates je nyní kompatibilní s Thunderbirdem 128.{L2}{L1} Opraven dialog pro otevření souboru, který byl v Thunderbirdu 125 nefunkční.{L2} {L1} Proměnné %header.delete()% a %header.deleteFromSubject()% nyní podporují více parametrů. [issue 293]{L2} {L1} Licenční modul nyní funguje rychleji (použitím API funkce pro iteraci poštovních účtů, všechny složky již nejsou zpracovávány).{L2}"
-  }, 
+    "message": "{L1} Šablony účtů - nové identity nebylo možné přidat v nové verzi nastavení dialogu. [issue 300] {L2}{L1} Přidáno tlačítko Obnovit pro rozbalovací seznam účtů. [issue 307] {L2}{L1} Vylepšené čínské překlady pro termín 'účty' - díky Y.D.X. [issue 302] {L2}{L1} Kliknutí na {{Skrýt popisek tlačítka}} v nabídce tlačítka v záhlaví opět funguje. [issue 304] {L2}{L1} v Tb128 - vyskakovací okno pro omezené funkce: oznámení vede k výjimce + ikona se nezobrazuje. [issue 308] {L2} "
+  },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
   },

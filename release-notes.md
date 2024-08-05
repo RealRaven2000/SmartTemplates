@@ -2,8 +2,8 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 **Enhancements**
 
-*   New Settings - Account Templates - cannot create fresh Account settings. \[issue #300\]
-*   Improved Chinese translations for term "accounts" - thanks to Y.D.X. \[issue #302\]
+*  Account Templates - new Identities could not be added in the new version of the settings dialog. \[issue #300\]
+*   Improved Chinese translations for term "account" - thanks to Y.D.X. \[issue #302\]
 *   Added Refresh button for accounts dropdown. \[issue #307\]
 
 **Bug Fixes** 

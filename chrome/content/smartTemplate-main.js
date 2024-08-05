@@ -150,7 +150,7 @@ END LICENSE BLOCK
     # [issue 299] Larger fonts and minor layout improvements in settings dialog.
 
   Version 4.7 - WIP
-    # [issue 300] New Settings - Account Templates - cannot create fresh Account settings
+    # [issue 300] Account Templates - new Identities could not be added in the new version of the settings dialog.
     # [issue 302] Improved Chinese translations for term "accounts" - thanks to Y.D.X.
     # [issue 304] Fixed: Clicking on Hide Button Label in header menu doesn't work as expected
     # [issue 307] Added Refresh button for accounts dropdown

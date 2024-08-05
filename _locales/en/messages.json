@@ -1958,7 +1958,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} The settings screen was converted to HTML which is now displayed in its own Thunderbird tab. [issue 259]{L2} {L1} SmartTemplates is now compatible with Thunderbird 128.{L2}{L1} Fixed file open dialog which was broken in Thunderbird 125 .{L2} {L1} The variables %header.delete()% and %header.deleteFromSubject()%  now support multiple parameters. [issue 293]{L2} {L1}  The license module now performs faster (using the API function to iterate the mail accounts, all folders are no longer processed).{L2}"
+    "message": "{L1} Account Templates - new Identities could not be added in the new version of the settings dialog. [issue 300] {L2}{L1} Added Refresh button for accounts dropdown. [issue 307] {L2}{L1} Improved Chinese translations for term 'accounts' - thanks to Y.D.X. [issue 302] {L2}{L1} Clicking on {{Hide Button Label}} in header area button menu works again. [issue 304] {L2}{L1} in Tb128 - popup for restricted features: notification leads to exception + icon not displayed. [issue 308] {L2} "
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."
