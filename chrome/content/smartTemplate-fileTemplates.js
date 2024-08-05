@@ -1401,6 +1401,34 @@ SmartTemplate4.fileTemplates = {
 
   },
 
+  investigateFollowupHeaderBtn: function(command) {
+    const currentInfo = SmartTemplate4.Util.tabmail?.currentTabInfo;
+    if (!currentInfo) {
+      return null;
+    }
+    if (currentInfo.mode.name==="mailMessageTab" ) {
+      let ctlButtonId;
+      // future extension: should we support hdrFollowupButton ?
+      switch(command) {
+        case "cmd_reply":
+          ctlButtonId = "hdrReplyButton";
+          break;
+        case "cmd_replyall":
+          ctlButtonId = "hdrReplyAllButton";
+          break;
+        case "cmd_replylist":
+          ctlButtonId = "hdrReplyListButton";
+          break;
+        case "cmd_forward":
+          ctlButtonId = "hdrForwardButton";
+          break;
+        default :return null; // not applicable
+      }
+      return currentInfo.chromeBrowser.contentDocument.getElementById(ctlButtonId)
+    }
+    return null;
+  },
+
   // executes new, reply or forward, based on the 
   // appropriate structure in  this.uniMenus
   fireComposeCommand: function (entry) {
@@ -1418,6 +1446,18 @@ SmartTemplate4.fileTemplates = {
 
     let controller = getEnabledControllerForCommand(command);
     if (!controller) {
+      // [issue 309] - not sure this should ever happen but it does
+      // usually with mail in tab restored from a session
+
+      let btn = this.investigateFollowupHeaderBtn(command);
+      if (btn && !btn.getAttribute("hidden") && !btn.getAttribute("disabled"))  {
+        btn.click();
+        return true;
+      }
+      if (btn) {
+        SmartTemplate4.Util.logToConsole(`the button ${btn.id} is either disabled or hidden, so no alternative follow up method is possible`)
+      }
+
       SmartTemplate4.Util.logDebug(`No controller exists for the command ${command} `);  
       SmartTemplate4.Message.display(
         SmartTemplate4.Util.getBundleString("st.fileTemplates.error.nocontroller", [command]), 
