@@ -5,7 +5,7 @@
 /* ################################## ICON BINDINGS ################################## */
 /* @import url("chrome://messenger/skin/shared/messenger.css"); for --toolbarbutton-border-radius */
 #SmartTemplate4Messenger {
-	-moz-appearance: none;
+	appearance: none;
 	border: 1px solid transparent;
 	border-radius: 2px; /* var(--toolbarbutton-border-radius, 3px); from messenger.css - 2px win 3px osx */
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png") !important;
@@ -77,7 +77,7 @@
 /* replace notification Tb 115 */
 notification-message[value="SmartTemplate4-license"] .notification-button[accesskey],
 notification-message[value="SmartTemplate4-proFeature"] .notification-button[accesskey]{
-	-moz-appearance: none;
+	appearance: none;
 	background-color: rgb(7, 97, 48) !important;
 	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
 	border: 1px solid white;
@@ -88,8 +88,6 @@ notification-message[value="SmartTemplate4-proFeature"] .notification-button[acc
 	font-weight: bold;
 	transition-property: box-shadow, margin;
 	transition-duration: 0.75s, 0.2s;
-	height: 135% !important;
-	width: 135% !important;
 }
 
 /* moved animation to windows specific style sheet */
