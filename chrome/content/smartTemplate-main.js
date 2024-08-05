@@ -143,11 +143,21 @@ END LICENSE BLOCK
     # [issue 293] The variables %header.delete()% and %header.deleteFromSubject()%  now support multiple parameters. 
     # The licenser now performs faster (it omit folders when using the API function to iterate the mail accounts)
 
-  Version 4.6.1 - WIP
+  Version 4.6.1 - 16/07/2024
     # [issue 297] Snippets - Configure menu items - should open "template files" page in settings (new settings dialog)
     # [issue 298] File Templates - Clicking [Add] when no file is opened 
                should display a instructions (not "undefined")
     # [issue 299] Larger fonts and minor layout improvements in settings dialog.
+
+  Version 4.7 - WIP
+    # [issue 300] New Settings - Account Templates - cannot create fresh Account settings
+    # [issue 302] Improved Chinese translations for term "accounts" - thanks to Y.D.X.
+    # [issue 304] Fixed: Clicking on Hide Button Label in header menu doesn't work as expected
+    # [issue 307] Added Refresh button for accounts dropdown
+    # [issue 308] in Tb128 - popup for restricted features: notification leads to exception + icon not displayed 
+    # Removed vendor prefix from -moz-appearance
+    # [issue 309] Reply with template from tab displays "cmd_reply not available in this context"
+
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

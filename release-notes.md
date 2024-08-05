@@ -1,19 +1,17 @@
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.6.1) 
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.7) 
 
+**Enhancements**
 
-**Enhancements (4.6)**
+*   New Settings - Account Templates - cannot create fresh Account settings. \[issue #300\]
+*   Improved Chinese translations for term "accounts" - thanks to Y.D.X. \[issue #302\]
+*   Added Refresh button for accounts dropdown. \[issue #307\]
 
-*   SmartTemplates is now compatible with Thunderbird 128.
-*   The settings screen was converted to HTML which is now displayed in its own Thunderbird tab. \[issue #259\]
-*   The variables %header.delete()% and %header.deleteFromSubject()% now support multiple parameters. \[issue #293\]
-*   The license module now performs faster (using the API function to iterate the mail accounts, all folders are no longer processed).
+**Bug Fixes** 
 
-**Bug Fixes (4.6)**
+*   Fixed: Clicking on Hide Button Label in header area button menu didn't work as expected. \[issue #304\]
+*   in Tb128 - popup for restricted features: notification leads to exception + icon not displayed. \[issue #308\]
 
-*   Fixed file open dialog which was broken in Thunderbird 125.
+**Miscellaneous**
 
-**Maintenance Version 4.6.1**
-
-* Snippets - Configure menu items - should open "template files" page in settings (new settings dialog) [issue #297]
-* File Templates - Clicking `Add` when no file is opened  should display a instructions (not "undefined"). [issue #298]
-* Larger fonts and minor layout improvements in settings dialog. [issue #299]
+*   Removed vendor prefix from -moz-appearance
+*   Reply with template from tab displays "cmd\_reply not available in this context". \[issue #309\]

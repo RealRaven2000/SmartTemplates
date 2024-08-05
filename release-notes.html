@@ -1,35 +1,31 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.6">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.7">can be found here</a>
 
 
 <b>Enhancements</b>
 <ul>
-  <li> SmartTemplates is now compatible with Thunderbird 128.</li>
-  <li> The settings screen was converted to HTML which is now displayed in its own Thunderbird tab. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/295">[issue 295]</a></li> 
-  <li> The variables %header.delete()% and %header.deleteFromSubject()%  now support multiple parameters <a href="https://github.com/RealRaven2000/SmartTemplates/issues/293">[issue 293]</a>.
-    
-    For example:
-    
-    %header.delete(subject,"Fwd: ","Order: QUI[0-9\-]* -")%
-    %header.deleteFromSubject("re:","AW:","fwd")%
-
-  </li> 
-  <li> The license module now performs faster (using the API function to iterate the mail accounts, all folders are no longer processed).</li>
+  <li> New Settings - Account Templates - cannot create fresh Account settings. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/300">[issue 300]</a> </li>
+  <li> Improved chinese translations for term "accounts" - thanks to Y.D.X. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/302">[issue 302]</a> </li>
+  <li> Added Refresh button for accounts dropdown. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/307">[issue 307]</a> </li>
 </ul>
 
 
 <b>Bug Fixes</b>
 <ul>
-  <li> Fixed file open dialog which was broken in Thunderbird 125.</li> 
+  <li> Fixed: Clicking on Hide Button Label in header menu doesn't work as expected. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/304">[issue 304]</a> </li>
+  <li> in Tb128 - popup for restricted features: notification leads to exception + icon not displayed. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/308">[issue 308]</a> </li>  
 </ul>
 
-<b>Maintenance Version 4.6.1</b>
+<b>Miscellaneous</b>
 <ul>
-  <li> Snippets - Configure menu items - should open "template files" page in settings (new settings dialog)<a href="https://github.com/RealRaven2000/SmartTemplates/issues/297">[issue 297]</a></li>
-  <li> File Templates - Clicking [Add] when no file is opened  should display a instructions (not "undefined"). <a href="https://github.com/RealRaven2000/SmartTemplates/issues/298">[issue 298]</a></li>
-  <li> Larger fonts and minor layout improvements in settings dialog. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/299">[issue 299]</a></li>
+  <li>
+    Removed vendor prefix from -moz-appearance
+  </li>
+  <li>
+    Reply with template from tab displays "cmd_reply not available in this context". <a href="https://github.com/RealRaven2000/SmartTemplates/issues/309">[issue 309]</a>
+  </li>
 </ul>
 
 
