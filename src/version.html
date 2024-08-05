@@ -220,7 +220,7 @@ permalink: version.html
       Version 4.* - Work in Progress</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">111.0 - 124.*</span>
+			<span class="thunderbird">111.0 - 129.*</span>
 		</span>
   </h4>
   <ul>
@@ -256,27 +256,51 @@ permalink: version.html
         Version 4.7 - Work in Progress</a>
       <br>
       <span class="appWrapper">
-        <span class="thunderbird">111.0 - 124.*</span>
+        <span class="thunderbird">111.0 - 129.*</span>
       </span>
     </h4>
     <ul>
       <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
       <li>
-        New Settings - Account Templates - cannot create fresh Account settings. 
+        <p>
+          New Settings dialog: In Account Templates one could not create Account settings
+          for any new identity. 
+        </p>
+        <p>
+          The API used to write legacy settings to the global configuration database
+          wasn't able to create any entries without default, which affects any Identities
+          created by the user, including the default identity of a new mail account.
+        </p>
+        <p>
+          This means such settings (template and quotes) could not be modified and saved unless the identity existed before the conversion of SmartTemplates settings to 
+          be web extension compatible.
+        </p>
+        This problem is now patched and back to work as expected.
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/300">[issue 300]</a>
       </li>
       <li>
-        Improved Chinese translations for term "accounts" - thanks to Y.D.X. 
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/302">[issue 302]</a>
+        <p>
+          Added Refresh button for accounts dropdown. This way new identities can 
+          be created or the settings of the label display can be change without 
+          having to close and reopen SmartTemplates settings to see the changes
+          reflected.
+        </p>
+        <img class="screenshot" src="img/accounts-refresh.png" />
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/307">[issue 307]</a>
       </li>
       <li>
-        Added Refresh button for accounts dropdown. 
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/307">[issue 307]</a>
+        Improved Chinese translations for term "account" - thanks to Y.D.X. 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/302">[issue 302]</a>
       </li>
 
       <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
       <li>
-        Fixed: Clicking on Hide Button Label in header area button menu didn't work as expected. 
+        <p>
+          Fixed: Clicking on Hide Button Label in header area button menu didn't work as expected. 
+          This function was introduced in Thunderbird 115 to conserve screen space
+          in the mail header area with the configuration icon+text:
+        </p>
+        <img class="screenshot" src="hide-button-label.png" />
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/304">[issue 304]</a>
       </li>
       <li>
