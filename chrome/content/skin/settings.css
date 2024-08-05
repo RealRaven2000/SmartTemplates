@@ -26,7 +26,7 @@
 }
 
 button.text-link {
-	-moz-appearance: none !important;
+	appearance: none !important;
 	color: #ffffff !important;
 }
 
@@ -185,7 +185,7 @@ groupbox.transparent .groupbox-title {
 }
 
 #fontSmaller, #fontLarger {
-  -moz-appearance: none;
+  appearance: none;
   background-image: linear-gradient(to top, #E9E9E9 30%, #FAFAFA 50%); /* taken from silvermel */
 	box-shadow: #333 0px 0px 3px;
 	margin-top: 5px;
@@ -575,7 +575,7 @@ toolbar toolbarbutton:not([hidden]) {
 #templateTools {
 	background-image: none;
 	border: none;
-	-moz-appearance: none;
+	appearance: none;
 }
 
 /* Pro  Tab */	

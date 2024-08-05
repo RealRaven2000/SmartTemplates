@@ -1,7 +1,7 @@
 /* ############################     CONTRIBUTE BUTTON      ############################# */
 
 button[dlgtype=extra2] {
-	-moz-appearance: none;
+	appearance: none;
   background-color: rgb(120,0,0) !important;
   background-image: linear-gradient(to bottom, #720001 0%, #bf0003 100%) !important;
 	border: 1px solid #fff;

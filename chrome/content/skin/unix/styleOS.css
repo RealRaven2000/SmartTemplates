@@ -3,7 +3,7 @@
 .NewTab,.RespondTab,.ForwardTab,
 #fieldsTab, #settingsTab, #aboutTab, #templatesTab, #advancedSettingsTab  {
   cursor: pointer;
-  -moz-appearance: none !important;
+  appearance: none !important;
 }
 
 /* make sure button icons are visible */
