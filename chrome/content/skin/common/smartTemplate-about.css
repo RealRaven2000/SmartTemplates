@@ -1,5 +1,5 @@
 window.dialog {
-  -moz-appearance: none;
+  appearance: none;
   padding: 4px;
   /* background-image: url(chrome://smarttemplate4/content/skin/SmartTemplate4-watermark.png); */
 }
