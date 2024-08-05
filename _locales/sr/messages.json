@@ -1407,6 +1407,69 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Унети кључ може бити за {2})."
   },
+  "st.menu.docs": {
+    "message": "Документација"
+  },
+  "st.menu.docs.premium": {
+      "message": "Премиум функције…"
+  },
+  "st.menu.docs.variables": {
+      "message": "Променљиве и команде…"
+  },
+  "st.menu.hideLabel": {
+      "message": "Сакриј ознаку дугмета"
+  },
+  "st.menu.template.default": {
+      "message": "Подразумевана шаблон (рачун)"
+  },
+  "st.menu.template.last": {
+      "message": "Последњи шаблон"
+  },
+  "st.menu.license": {
+      "message": "Провери статус лиценце…"
+  },
+  "st.menu.license.tooltip": {
+      "message": "Кликните овде да проверите статус лиценце за $addonName$.",
+      "placeholders": {
+        "addonName": {
+          "content": "$1",
+          "example": "SmartTemplates"
+        }
+      }
+  },
+  "st.menuaccess.forward": {
+      "message": "F"
+  },
+  "st.menuaccess.reply": {
+      "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+      "message": "A"
+  },
+  "st.menuaccess.replyList": {
+      "message": "L"
+  },
+  "st.menuaccess.write": {
+      "message": "W"
+  },
+  "st.menu.replyAll": {
+      "message": "Одговори свима"
+  },
+  "st.menu.replyList": {
+      "message": "Одговори листи"
+  },
+  "st.menu.supportSite": {
+      "message": "Сајт подршке…"
+  },
+  "st.menu.update.tooltip": {
+      "message": "Изаберите “Најновије вести” из овог менија да бисте прочитали шта је ново у $addonName$.\n Ово ће ресетовати дугме на подразумевани изглед.",
+      "placeholders": {
+        "addonName": {
+          "content": "$1",
+          "example": "SmartTemplates"
+        }
+      }
+  },
   "st.notification.bodyModified": {
     "message": "Тандерберд вам каже да сте већ нешто унели, желите ли ипак учитати шаблон?"
   },
@@ -1833,7 +1896,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{L1} Екран за подешавања је претворен у HTML који се сада приказује на својој Thunderbird картици. [issue 259]{L2} {L1} SmartTemplates је сада компатибилан са Thunderbird 128.{L2}{L1} Поправљен дијалог за отварање датотеке који је био покварен у Thunderbird 125.{L2} {L1} Променљиве %header.delete()% и %header.deleteFromSubject% сада подржавају више параметара. [issue 293]{L2} {L1} Лиценцни модул сада ради брже (користећи API функцију за итерацију налога е-поште, сви фолдери више нису обрађени).{L2}"
+    "message": "{L1} Шаблони налога - нови идентитети нису могли бити додати у новој верзији дијалога подешавања. [issue 300] {L2}{L1} Додат тастер за освежавање за падајући мени налога. [issue 307] {L2}{L1} Побољшани кинески преводи за термин 'налози' - захваљујући Y.D.X. [issue 302] {L2}{L1} Клик на {{Сакриј ознаку дугмета}} у менију дугмета у области заглавља поново ради. [issue 304] {L2}{L1} у Tb128 - попуп за ограничене функције: обавештење доводи до изузетка + икона није приказана. [issue 308] {L2} "
   },
   "whitespace_note": {
     "message": "Имајте на уму да се бели простор може најбоље представити као \\s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити."

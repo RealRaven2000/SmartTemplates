@@ -1425,6 +1425,69 @@
   "st.licenseValidation.guessAddon": {
     "message": "(vneseni ključ je lahko za {2})."
   },
+  "st.menu.docs": {
+    "message": "Dokumentacija"
+  },
+  "st.menu.docs.premium": {
+      "message": "Premijske funkcije…"
+  },
+  "st.menu.docs.variables": {
+      "message": "Spremenljivke in ukazi…"
+  },
+  "st.menu.hideLabel": {
+      "message": "Skrij oznako gumba"
+  },
+  "st.menu.template.default": {
+      "message": "Privzeti predloga (račun)"
+  },
+  "st.menu.template.last": {
+      "message": "Zadnja predloga"
+  },
+  "st.menu.license": {
+      "message": "Preveri status licence…"
+  },
+  "st.menu.license.tooltip": {
+      "message": "Kliknite tukaj za preverjanje statusa licence za $addonName$.",
+      "placeholders": {
+        "addonName": {
+          "content": "$1",
+          "example": "SmartTemplates"
+        }
+      }
+  },
+  "st.menuaccess.forward": {
+      "message": "F"
+  },
+  "st.menuaccess.reply": {
+      "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+      "message": "A"
+  },
+  "st.menuaccess.replyList": {
+      "message": "L"
+  },
+  "st.menuaccess.write": {
+      "message": "W"
+  },
+  "st.menu.replyAll": {
+      "message": "Odgovori vsem"
+  },
+  "st.menu.replyList": {
+      "message": "Odgovori seznamu"
+  },
+  "st.menu.supportSite": {
+      "message": "Podporna stran…"
+  },
+  "st.menu.update.tooltip": {
+      "message": "Izberite “Najnovejše novice” iz tega menija, da preberete, kaj je novega v $addonName$.\n To bo ponastavilo gumb na privzeti izgled.",
+      "placeholders": {
+        "addonName": {
+          "content": "$1",
+          "example": "SmartTemplates"
+        }
+      }
+  },
   "st.notification.bodyModified": {
     "message": "Thunderbird pravi, da ste že nekaj vnesli. Ali želite vseeno naložiti predlogo?"
   },
@@ -1848,9 +1911,8 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Zaslon nastavitev je bil pretvorjen v HTML, ki se zdaj prikaže na lastnem zavihku Thunderbirda. [issue 259]{L2} {L1} SmartTemplates je zdaj združljiv z Thunderbird 128.{L2}{L1} Popravljeno pogovorno okno za odpiranje datotek, ki je bilo pokvarjeno v Thunderbird 125.{L2} {L1} Spremenljivki %header.delete()% in %header.deleteFromSubject()% zdaj podpirata več parametrov. [issue 293]{L2} {L1} Licenčni modul zdaj deluje hitreje (z uporabo funkcije API za iteracijo poštnih računov, vse mape se ne obdelujejo več).{L2}"
+    "message": "{L1} Predloge računov - novih identitet ni bilo mogoče dodati v novi različici pogovornega okna nastavitev. [issue 300] {L2}{L1} Dodan gumb za osvežitev za spustni seznam računov. [issue 307] {L2}{L1} Izboljšani kitajski prevodi za izraz 'računi' - hvala Y.D.X. [issue 302] {L2}{L1} Klik na {{Skrij oznako gumba}} v meniju gumba na območju glave spet deluje. [issue 304] {L2}{L1} v Tb128 - pojavno okno za omejene funkcije: obvestilo vodi do izjeme + ikona ni prikazana. [issue 308] {L2} "
   },
-
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
   },
