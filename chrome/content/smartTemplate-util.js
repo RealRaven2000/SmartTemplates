@@ -469,7 +469,7 @@ SmartTemplate4.Util = {
 	// was popupProFeature, now renamed to popupLicenseNotification
 	// isProFeature = true - show notification based on function used
 	//              = false - show fact that a license is needed.
-	popupLicenseNotification: function (featureList, isRegister, isProFeature, additionalText) {
+	popupLicenseNotification: async function (featureList, isRegister, isProFeature, additionalText) {
 		const util = SmartTemplate4.Util;
 		let notifyBox,
 				featureName = '',
@@ -617,7 +617,7 @@ SmartTemplate4.Util = {
 		let newNotification;
 		if (notifyBox.shown) { // new notification format (Post Tb 99)
 			newNotification = 
-				notifyBox.appendNotification( 
+				await notifyBox.appendNotification( 
 					notificationKey, // "String identifier that can uniquely identify the type of the notification."
 					{
 						priority: isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH,
@@ -628,7 +628,7 @@ SmartTemplate4.Util = {
 				);
 		} else {
 			newNotification = 
-				notifyBox.appendNotification( 
+				await notifyBox.appendNotification( 
 					theText, 
 					notificationKey, 
 					imgSrc, 
@@ -636,9 +636,19 @@ SmartTemplate4.Util = {
 					nbox_buttons );
 		}
 
+		let containerSelector; // 
+		switch (newNotification?.messageImage?.tagName) {
+			case "span":
+				containerSelector = ".container";  // Tb 115
+				break;
+			case "img":
+				containerSelector = ".icon-container";  // Tb 128
+				break;
+		}
+
 		// setting img was removed in Tb91  
-		if (newNotification.messageImage.tagName == "span") {
-			let container = newNotification.shadowRoot.querySelector(".container");
+		if (containerSelector) {
+			let container = newNotification.shadowRoot.querySelector(containerSelector);
 			if (container) {
 				let im = document.createElement("img");
 				im.setAttribute("src", imgSrc);
@@ -649,7 +659,7 @@ SmartTemplate4.Util = {
 	},  	
 
   // replaces Util.Licenser.showDialog(featureName);
-  showLicenseDialog: function showLicenseDialog(featureName) {
+  showLicenseDialog: function(featureName) {
 		let params = {inn:{referrer:featureName, instance: SmartTemplate4}, out:null};
 		SmartTemplate4.Util.Mail3PaneWindow.openDialog(
       "chrome://SmartTemplate4/content/register.xhtml",
