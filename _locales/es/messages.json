@@ -103,6 +103,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Carrega la configuració del compte…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Actualizar lista de cuentas"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Guardar la configuración de la cuenta…"
   },

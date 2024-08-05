@@ -44,6 +44,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Muat Pengaturan Akun…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Perbarui daftar akun"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Simpan Pengaturan Akun…"
   },

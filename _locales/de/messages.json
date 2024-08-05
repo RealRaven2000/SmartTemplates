@@ -99,6 +99,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Kontoeinstellungen laden…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Kontenliste aktualisieren"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Kontoeinstellungen speichern…"
   },

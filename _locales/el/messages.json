@@ -103,6 +103,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Φόρτωσε ρυθμίσεις λογαριασμού…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Ενημέρωση λίστας λογαριασμών"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Αποθήκευσε ρυθμίσεις λογαριασμού…"
   },

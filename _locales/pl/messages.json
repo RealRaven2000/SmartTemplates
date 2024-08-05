@@ -103,6 +103,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Załaduj ustawienia konta…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Zaktualizuj listę kont"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Zapisz ustawienia konta…"
   },

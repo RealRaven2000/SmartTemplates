@@ -106,6 +106,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Завантажити налаштування облікового запису…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "更新帳戶列表"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Зберегти налаштування облікового запису…"
   },

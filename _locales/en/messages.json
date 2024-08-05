@@ -106,6 +106,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Load Account Settings…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Update accounts list"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Save Account Settings…"
   },

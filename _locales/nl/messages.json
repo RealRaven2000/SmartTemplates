@@ -103,6 +103,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Accountinstellingen laden…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Accountlijst bijwerken"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Accountinstellingen opslaan…"
   },

@@ -103,6 +103,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Учитај подешавања налога…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Освежи списак налога"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Сачувај подешавања налога…"
   },

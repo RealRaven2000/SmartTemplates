@@ -103,6 +103,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Ladda kontoinställningar..."
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Uppdatera kontolistan"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Spara kontoinställningar..."
   },

@@ -100,6 +100,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "アカウント設定の読み込み…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "アカウントリストを更新"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "アカウント設定を保存…"
   },

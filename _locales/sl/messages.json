@@ -103,6 +103,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Naloži nastavitve računa…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Posodobi seznam računov"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Shrani nastavitve računa…"
   },

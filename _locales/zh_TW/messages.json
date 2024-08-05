@@ -103,6 +103,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "加載賬戶設置…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "更新帳戶列表"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "保存賬戶設置…"
   },

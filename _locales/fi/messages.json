@@ -103,6 +103,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Lataa tilin asetukset…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Päivitä tililuettelo"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Tallenna tilin asetukset…"
   },

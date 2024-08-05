@@ -106,6 +106,9 @@
   "btnLoadTemplate.tooltip": {
     "message": "Charger les paramètres du compte…"
   },
+  "btnRefreshAccounts.tooltip": {
+    "message": "Mettre à jour la liste des comptes"
+  },
   "btnSaveTemplate.tooltip": {
     "message": "Enregistrer les paramètres du compte…"
   },
