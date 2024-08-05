@@ -2,9 +2,9 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 **Enhancements**
 
-*  Account Templates - new Identities could not be added in the new version of the settings dialog. \[issue #300\]
-*   Improved Chinese translations for term "account" - thanks to Y.D.X. \[issue #302\]
+*  New Settings dialog: In Account Templates one could not create Account settings for any new identity. The API used to write legacy settings to the global configuration database wasn't able to create any entries without default, which affects any Identities created by the user, including the default identity of a new mail account. This problem is now patched and back to work as expected. \[issue #300\]
 *   Added Refresh button for accounts dropdown. \[issue #307\]
+*   Improved Chinese translations for term "account" - thanks to Y.D.X. \[issue #302\]
 
 **Bug Fixes** 
 
@@ -13,5 +13,5 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 **Miscellaneous**
 
-*   Removed vendor prefix from -moz-appearance
+*   Removed vendor prefix from `-moz-appearance`
 *   Reply with template from tab displays "cmd\_reply not available in this context". \[issue #309\]
