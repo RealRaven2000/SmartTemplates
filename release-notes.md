@@ -15,3 +15,6 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 *   Removed vendor prefix from `-moz-appearance`
 *   Reply with template from tab displays "cmd\_reply not available in this context". \[issue #309\]
+
+**Known Issues**
+* Owl accounts can currently not be license validated in Tb128. We are currently await a fix by Thunderbird core.
