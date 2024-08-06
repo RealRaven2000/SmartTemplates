@@ -6,16 +6,6 @@ The full change log with screen shots <a href="https://smarttemplates.quickfolde
 
 <b>Enhancements</b>
 <ul>
-  <li> Account Templates - new Identities could not be added in the new version of the settings dialog. 
-    
-  The API used to write legacy settings to the global configuration database
-  wasn't able to create any entries without default, which affects any Identities
-  created by the user, including the default identity of a new mail account.
-
-  This means such settings (template and quotes) could not be modified and saved unless the identity existed before the conversion of SmartTemplates settings to 
-  be web extension compatible. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/300">[issue 300]</a> 
-
-  This problem is now patched and back to work as expected.</li>
   <li> Improved chinese translations for term "account" - thanks to Y.D.X. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/302">[issue 302]</a> </li>
   <li> Added Refresh button for accounts dropdown. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/307">[issue 307]</a> </li>
 </ul>
@@ -23,6 +13,16 @@ The full change log with screen shots <a href="https://smarttemplates.quickfolde
 
 <b>Bug Fixes</b>
 <ul>
+  <li> Account Templates - new Identities could not be added in the new version of the settings dialog. 
+    
+    The API used to write legacy settings to the global configuration database
+    wasn't able to create any entries without default, which affects any Identities
+    created by the user, including the default identity of a new mail account.
+  
+    This means such settings (template and quotes) could not be modified and saved unless the identity existed before the conversion of SmartTemplates settings to 
+    be web extension compatible. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/300">[issue 300]</a> 
+  
+    This problem is now patched and back to work as expected.</li>
   <li> Fixed: Clicking on Hide Button Label in header menu doesn't work as expected. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/304">[issue 304]</a> </li>
   <li> in Tb128 - popup for restricted features: notification leads to exception + icon not displayed. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/308">[issue 308]</a> </li>  
 </ul>
