@@ -39,30 +39,25 @@
      inkscape:groupmode="layer"
      id="layer1">
      <style>
-        path {
-         stroke: black;
-         fill: #202020;
-        }
-        #text1 {
-            stroke: black;
-            fill: black;
-        }
+        :root {
+            --basiccolor: rgb(20,20,20);
+            --iconStroke: var(--basiccolor);
+            --icon-fill: #A0A0C0;
+            --fill-opacity: 0.9;
+        } 
         @media (prefers-color-scheme: dark) {
-            path { 
-               stroke: white; 
-               fill: #E0E0FF;
-            }
-            #text1 {
-               stroke: white;
-               fill: white;
-            }
+         :root { 
+            --basiccolor: rgb(251,251,254);
+            --iconStroke: var(--basiccolor);
+            --icon-fill: #6060A0;
+            --fill-opacity: 0.8;
+         }
         }        
      </style>
     <path
        id="path1"
-       stroke="var(--in-content-page-color,blue)"
+       style="stroke:var(--basiccolor),blue);fill-opacity:var(--fill-opacity); fill:var(--iconStroke);"
        stroke-width="3.1"
-       fill-opacity="0.1"
        sodipodi:type="arc"
        sodipodi:cx="16.117786"
        sodipodi:cy="15.882758"
@@ -76,7 +71,7 @@
        transform="matrix(0.99997335,0.00730085,-0.00738854,0.9999727,0,0)" />
     <text
        xml:space="preserve"
-       style="font-weight:bold;font-size:38.4537px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';fill-opacity:0;stroke-width:0.382533;stroke-opacity:1"
+       style="font-weight:bold;font-size:38.4537px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';fill:var(--icon-fill);color:var(--icon-fill);fill-opacity:var(--fill-opacity);stroke-width:0.382533;stroke-opacity:1"
        x="10.525616"
        y="25.492279"
        id="text1"

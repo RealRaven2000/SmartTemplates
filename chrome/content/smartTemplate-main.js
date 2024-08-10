@@ -149,7 +149,7 @@ END LICENSE BLOCK
                should display a instructions (not "undefined")
     # [issue 299] Larger fonts and minor layout improvements in settings dialog.
 
-  Version 4.7 - WIP
+  Version 4.7 - 06/08/2024
     # [issue 300] Account Templates - new Identities could not be added in the new version of the settings dialog.
     # [issue 302] Improved Chinese translations for term "accounts" - thanks to Y.D.X.
     # [issue 304] Fixed: Clicking on Hide Button Label in header menu doesn't work as expected
@@ -157,6 +157,10 @@ END LICENSE BLOCK
     # [issue 308] in Tb128 - popup for restricted features: notification leads to exception + icon not displayed 
     # Removed vendor prefix from -moz-appearance
     # [issue 309] Reply with template from tab displays "cmd_reply not available in this context"
+
+
+  Version 4.7.1 - WIP
+    # [issue 310] improve icons theme support by eliminating 'context' attributes from svg images.
 
 
 =========================

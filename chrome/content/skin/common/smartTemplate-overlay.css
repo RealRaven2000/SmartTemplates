@@ -151,7 +151,7 @@ menuitem.st4templateEntry[is="layout"] {
 }
 
 menuitem.st4templateConfig {
-	list-style-image : url('chrome://smartTemplate4/content/skin/icons/settings.png') !important;
+	list-style-image : url('chrome://smartTemplate4/content/skin/icons/settings-simple.svg') !important;
 }
 
 
