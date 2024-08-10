@@ -248,6 +248,9 @@ permalink: version.html
 
 <ul id="version-history">
 
+<!-- LATEST RELEASE ON ATN -->
+<a id="latest"> </a>
+<a id="head"> </a>
 
   <a id="4.7"> &nbsp; </a>
   <li>
@@ -317,21 +320,17 @@ permalink: version.html
 
       <h5 class="inList"><span class="inListTitle">Known issue</span></h5>
       <li>
-        Exchange accounts that use Owl protocol can currently not be license validated in Tb128. We are currently await a fix by Thunderbird core. See <a href="https://github.com/RealRaven2000/SmartTemplates/issues/303">[issue 303]</a>
+        Currently the verification of SmartTemplates licenses fails when the license is bound to an 
+        exchange account when it is accessed using Owl. This is due to a bug in 
+        the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> 
+        Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
+        which the Thunderbird team is working on and is planned to land in one of the next 
+        versions of ESR128.  
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/303">[issue 303]</a>
       </li>
       
     </ul>
   </li> 
-
-
-
-
-
-<!-- LATEST RELEASE ON ATN -->
-<a id="latest"> </a>
-<a id="head"> </a>
-
-
 
   <a id="4.6"> &nbsp; </a>
   <a id="4.6.1"> &nbsp; </a>
