@@ -2026,7 +2026,9 @@ window.addEventListener('unload',
   { once: true });
     
     
-window.addEventListener("keypress", async (event) => {
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event
+// keypress is deprecated. let's use keydown instead
+window.addEventListener("keydown", async (event) => {
   // [issue 208] solve some accessibility problems
   //  we are adding cursor navigation to tabs and tabstops to toolbar buttons.
   let target = event.target;
@@ -2044,7 +2046,7 @@ window.addEventListener("keypress", async (event) => {
           // focus_event = new FocusEvent("focus", {  }); // set relatedTarget ?
           // panels.dispatchEvent(focus_event);
           // emit Shift + Tab
-          keyevent = new KeyboardEvent("keypress", {key:"Tab", shiftKey:true});
+          keyevent = new KeyboardEvent("keydown", {key:"Tab", shiftKey:true});
           setTimeout(function() {target.dispatchEvent(keyevent);},10)
         }
         break;
@@ -2055,7 +2057,7 @@ window.addEventListener("keypress", async (event) => {
           // focus_event = new FocusEvent("focus", {  });// set relatedTarget ?
           // panels.dispatchEvent(focus_event);
           // emit Tab key
-          keyevent = new KeyboardEvent("keypress", {key:"Tab", shiftKey:false})
+          keyevent = new KeyboardEvent("keydown", {key:"Tab", shiftKey:false})
           setTimeout(function() {target.dispatchEvent(keyevent);},10)
         }
         break;

@@ -3506,7 +3506,7 @@ SmartTemplate4.Message = {
     }    
 
     if (!MSG.boundKeyListener) {
-      window.addEventListener("keypress", this.keyListen = function(e) {
+      window.addEventListener("keydown", this.keyListen = function(e) {
         MSG.windowKeyPress(e,'down');
       }, true);
       window.addEventListener("keyup", function(e) {
