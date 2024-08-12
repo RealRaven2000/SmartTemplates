@@ -23,12 +23,12 @@
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="22.627417"
-     inkscape:cx="16.99266"
-     inkscape:cy="15.77732"
-     inkscape:window-width="1477"
+     inkscape:zoom="5.6568543"
+     inkscape:cx="22.892582"
+     inkscape:cy="40.12831"
+     inkscape:window-width="1764"
      inkscape:window-height="1278"
-     inkscape:window-x="744"
+     inkscape:window-x="457"
      inkscape:window-y="1494"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
@@ -38,25 +38,28 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-     <style>
+    <style
+       id="style1">
         :root {
             --basiccolor: rgb(20,20,20);
             --iconStroke: var(--basiccolor);
-            --icon-fill: #A0A0C0;
-            --fill-opacity: 0.9;
+            --icon-fill: #BBB;
+            --fill-opacity: 0.8;
+            --font-fill: rgb(251,251,254);
         } 
         @media (prefers-color-scheme: dark) {
          :root { 
             --basiccolor: rgb(251,251,254);
             --iconStroke: var(--basiccolor);
-            --icon-fill: #6060A0;
+            --icon-fill: #606060;
             --fill-opacity: 0.8;
+            --font-fill: rgb(20,20,20);
          }
         }        
      </style>
     <path
        id="path1"
-       style="stroke:var(--basiccolor),blue);fill-opacity:var(--fill-opacity); fill:var(--iconStroke);"
+       style="stroke:var(--iconStroke);fill-opacity:var(--fill-opacity);fill:var(--icon-fill);stroke-width:2px;"
        stroke-width="3.1"
        sodipodi:type="arc"
        sodipodi:cx="16.117786"
@@ -69,18 +72,11 @@
        sodipodi:arc-type="arc"
        d="M 30.580331,15.882758 A 14.462544,14.462557 0 0 1 16.149246,30.345281 14.462544,14.462557 0 0 1 1.6553788,15.945677 14.462544,14.462557 0 0 1 16.023408,1.4205092 14.462544,14.462557 0 0 1 30.579783,15.756921"
        transform="matrix(0.99997335,0.00730085,-0.00738854,0.9999727,0,0)" />
-    <text
-       xml:space="preserve"
-       style="font-weight:bold;font-size:38.4537px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';fill:var(--icon-fill);color:var(--icon-fill);fill-opacity:var(--fill-opacity);stroke-width:0.382533;stroke-opacity:1"
-       x="10.525616"
-       y="25.492279"
+    <path
+       style="fill:var(--iconStroke);font-weight:bold;font-size:26.0558px;font-family:Georgia;-inkscape-font-specification:'Georgia, Bold';stroke-width:0.259201;"
+       d="m 20.444434,25.586515 h -8.040657 v -0.928746 q 0.330787,-0.02544 0.648851,-0.06361 0.318064,-0.03817 0.54707,-0.127226 0.407121,-0.15267 0.572515,-0.432567 0.165393,-0.292619 0.165393,-0.763353 v -7.404529 q 0,-0.44529 -0.203561,-0.776076 -0.203561,-0.343509 -0.508902,-0.54707 Q 13.396137,14.390664 12.925402,14.250716 12.46739,14.110768 12.085713,14.0726 v -0.928747 l 6.234054,-0.330786 0.190838,0.190838 v 10.101712 q 0,0.445289 0.190839,0.763353 0.190838,0.305341 0.54707,0.458012 0.254451,0.114503 0.559792,0.203561 0.305341,0.08906 0.636128,0.127226 z M 18.58694,8.2329458 q 0,0.9669145 -0.75063,1.6539326 -0.737909,0.6742956 -1.755713,0.6742956 -1.030528,0 -1.781159,-0.6742956 -0.737908,-0.6870181 -0.737908,-1.6539326 0,-0.9669144 0.737908,-1.6539325 0.750631,-0.6870182 1.781159,-0.6870182 1.030527,0 1.768435,0.6870182 0.737908,0.6870181 0.737908,1.6539325 z"
        id="text1"
-       transform="scale(1.0397268,0.9617911)"><tspan
-         sodipodi:role="line"
-         id="tspan1"
-         x="10.525616"
-         y="25.492279"
-         fill-opacity="1"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Poor Richard';-inkscape-font-specification:'Poor Richard';stroke-width:0.382533;stroke-opacity:1">i</tspan></text>
+       transform="scale(0.98370243,1.0165676)"
+       aria-label="i" />
   </g>
 </svg>
