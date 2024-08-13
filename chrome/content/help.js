@@ -3,13 +3,6 @@
     var code = evt.target;
     
     if (code && code.classList.contains("helpchapter")) {
-      /*  
-      // not needed
-        var newClick = new MouseEvent('click', { view: window, bubbles: false, cancelable: true })
-        window.setTimeout( function clickHelpChapter() {
-          code.dispatchEvent(newClick);
-        }, 25);
-      */
       return;
     }
     

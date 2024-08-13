@@ -164,6 +164,7 @@ END LICENSE BLOCK
     # Removed font dependence in icons (converted all texts to path)
     # use keydown instead of deprecated keypress events
     # [issue 311] Template functions don't work when writing a new message in a newsgroup account
+    # [issue 312] "expand all" inside new settings variables page doesn't work 
 
 
 =========================
