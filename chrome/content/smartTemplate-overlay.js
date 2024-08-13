@@ -330,6 +330,9 @@ SmartTemplate4.getHeadersAsync = async function() {
 
   // issue 272 - also support clicking a mailto: link on a website!
   let isNewMail = (composeType == Ci.nsIMsgCompType.New || composeType == Ci.nsIMsgCompType.MailToUrl);
+  if (!params.originalMsgURI && Ci.nsIMsgCompType.NewsPost) {
+    isNewMail = true;    
+  }
 
   // gComposeType = params.type;
   let mimeMsg;

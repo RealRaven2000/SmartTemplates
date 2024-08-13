@@ -161,6 +161,9 @@ END LICENSE BLOCK
 
   Version 4.7.1 - WIP
     # [issue 310] improve icons theme support by eliminating 'context' attributes from svg images.
+    # Removed font dependence in icons (converted all texts to path)
+    # use keydown instead of deprecated keypress events
+    # [issue 311] Template functions don't work when writing a new message in a newsgroup account
 
 
 =========================
