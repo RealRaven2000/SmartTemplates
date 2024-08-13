@@ -248,6 +248,42 @@ permalink: version.html
 
 <ul id="version-history">
 
+  <a id="4.7.1"> &nbsp; </a>
+  <li>
+    <h4>
+      <a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+        Version 4.7.1 - Work in Progress</a>
+      <br>
+      <span class="appWrapper">
+        <span class="thunderbird">111.0 - 129.*</span>
+      </span>
+    </h4>
+    <ul>
+      <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+      <li>
+        <p>
+
+          Improved icon layout for dark themes.
+          Improve icons theme support by eliminating 'context' attributes from svg images.
+          Removed font dependence in icons (converted all texts to path).
+          <a href="https://github.com/RealRaven2000/SmartTemplates/issues/310">[issue 310]</a>
+        </p>
+        <img class="screenshot" src="img/st-icons=themed.png" />
+
+
+      </li>
+      <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+      <li>
+        Fixed: Template functions don't work when writing a new message in a 
+        newsgroup account
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/31!">[issue 311]</a>
+      </li>
+      <li>
+        Use keydown instead of deprecated keypress events.
+      </li>
+    </ul>
+  </li> 
+
 <!-- LATEST RELEASE ON ATN -->
 <a id="latest"> </a>
 <a id="head"> </a>
@@ -269,7 +305,8 @@ permalink: version.html
           Added Refresh button for accounts dropdown. This way new identities can 
           be created or the settings of the label display can be change without 
           having to close and reopen SmartTemplates settings to see the changes
-          reflected. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/307">[issue 307]</a>
+          reflected. 
+          <a href="https://github.com/RealRaven2000/SmartTemplates/issues/307">[issue 307]</a>
         </p>
         <img class="screenshot" src="img/accounts-refresh.png" />
 
