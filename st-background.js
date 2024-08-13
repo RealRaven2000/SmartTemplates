@@ -1191,6 +1191,14 @@ async function main() {
         case "showLegacyPreferences":
           openLegacyPrefs();
           break;
+        case "updateStatusbarIcon":
+          messenger.NotifyTools.notifyExperiment({
+            event: "doCommand", 
+            detail: { 
+              cmd: "smartTemplates-updatestatusbar"
+            }
+          });          
+          break;
       }
     }
   });  
@@ -1294,7 +1302,7 @@ async function main() {
         // https://webextension-api.thunderbird.net/en/stable/browserAction.html#setlabel-details
         messenger.browserAction.setLabel({label:data.text});
         break;
-          
+
       // refresh license info (at midnight) and update label afterwards.
       case "updateLicenseTimer":
         {
@@ -1412,6 +1420,7 @@ async function main() {
           );        
         }
         break;        
+  
     }
   });
   

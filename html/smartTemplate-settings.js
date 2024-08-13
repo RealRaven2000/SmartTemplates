@@ -27,8 +27,6 @@
 //  UI
 //     -    fontSize()
 //     -		resolveAB_onClick()
-//     - 		updateStatusBar()
-//     -    setStatusIconMode() - call backend function!
 //     -    disable support menu if no license ??? search "supportTab"
 //     -    toggleExamples() + loadTemplatesFrame() to hide examples tab
 //     Account json save / load
@@ -1938,6 +1936,18 @@ SmartTemplates.Settings = {
   	await SmartTemplates.Preferences.setMyIntPref("defaultTemplateMethod", parseInt(el.value,10));
 	},	
 
+	updateStatusBar: async function(showStatus) {
+		await setPref("showStatusIcon", showStatus);
+		messenger.runtime.sendMessage({ 
+			command: "updateStatusbarIcon"
+		});
+	},
+
+	setStatusIconMode: async function(element) {
+		const mode = parseInt(element.value);
+		await setPref("statusIconLabelMode", mode);
+		this.updateStatusBar(document.getElementById("chkStatusButton").checked);
+	},
 
   dummy: function() {
 
@@ -2196,11 +2206,6 @@ function addUIListeners() {
 				break;
 			case "showStatusIcon":
 				filterConfig = "extensions.smartTemplate4.showStatusIcon"; retVal=true;
-				/*
-					oncontextmenu=
-						SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.statusIconLabelMode'); 
-						SmartTemplate4.updateStatusBar(this.checked);
-        */
 				break;
 		}
 
@@ -2223,7 +2228,7 @@ function addUIListeners() {
 				break;
 			case "chkStatusButton":
 				chk.addEventListener("click", (event) => {
-					logMissingFunction("SmartTemplate4.updateStatusBar(!chk.checked);");
+					SmartTemplates.Settings.updateStatusBar(!event.target.checked);
 				});
 				break;
 		}
@@ -2300,7 +2305,7 @@ function addUIListeners() {
 	document.getElementById("iconType").addEventListener("change", (event) => {
 		// go through background => legacy code for the UI update at least.
 		// avoid passing element itself, change parameter to select.value!
-		logMissingFunction("SmartTemplate4.setStatusIconMode(event.target)");
+		SmartTemplates.Settings.setStatusIconMode(event.target);
 	});
 	document.getElementById("fontSmaller").addEventListener("click", (event) => {
 		logMissingFunction("SmartTemplate4.Settings.fontSize(-1);");

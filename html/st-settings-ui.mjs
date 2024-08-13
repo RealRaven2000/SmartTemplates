@@ -8,7 +8,7 @@ export let SettingsUI = {
     //  pref = document.getElementById(prefString);
     
     if (prefString) {
-      await LegacyPrefs.setBoolPref(prefString, cb.checked);  
+      await messenger.LegacyPrefs.setBoolPref(prefString, cb.checked);  
     }
     
     if (noUpdate) return true;

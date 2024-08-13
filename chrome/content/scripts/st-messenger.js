@@ -260,6 +260,9 @@ async function onLoad(activatedWhileWindowOpen) {
         await SmartTemplates.fileTemplates.loadMRU();
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
         break;
+      case "smartTemplates-updatestatusbar":
+        SmartTemplates.updateStatusBar();
+        break;
       default:
         console.log("Unknown SmartTemplates command", el.id || "id: N/A", el);
     }

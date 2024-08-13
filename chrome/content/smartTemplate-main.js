@@ -160,11 +160,13 @@ END LICENSE BLOCK
 
 
   Version 4.7.1 - WIP
+    # Added compatibility with Thunderbird 130
     # [issue 310] improve icons theme support by eliminating 'context' attributes from svg images.
     # Removed font dependence in icons (converted all texts to path)
     # use keydown instead of deprecated keypress events
     # [issue 311] Template functions don't work when writing a new message in a newsgroup account
     # [issue 312] "expand all" inside new settings variables page doesn't work 
+    # [issue 313] Implemented settings for statusbar icon in new settings tab
 
 
 =========================
@@ -656,7 +658,7 @@ var SmartTemplate4 = {
     }
   } ,
   
-  updateStatusBar: function updateStatusBar(show) {
+  updateStatusBar: function (show) {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util,
           licenseInfo = SmartTemplate4.Util.licenseInfo;
