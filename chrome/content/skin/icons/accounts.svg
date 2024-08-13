@@ -48,16 +48,16 @@
    --person-stroke: #11eaff;
    }
    @media (prefers-color-scheme: dark) {
-   :root { 
-      --basiccolor: rgb(251,251,254);
-      --iconStroke: var(--basiccolor);
-      --icon-fill: #606060;
-      --icon-opacity: 0.8;
-      --stroke-opacity: 0.8;
-      --person-fill: #88BBEE;
-      --person-stroke: var(--basiccolor);
-      --text-fill: #666;
-   }
+      :root { 
+         --basiccolor: rgb(251,251,254);
+         --iconStroke: var(--basiccolor);
+         --icon-fill: #606060;
+         --icon-opacity: 0.8;
+         --stroke-opacity: 0.8;
+         --person-fill: #12376d;
+         --person-stroke: var(--basiccolor);
+         --text-fill: #666;
+      }
    }    
    </style>          
   <g

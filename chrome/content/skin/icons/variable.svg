@@ -35,15 +35,37 @@
      inkscape:current-layer="layer1" />
   <defs
      id="defs1">
+    <style>
+      :root {
+        --basiccolor: rgb(20,20,20);
+        --iconStroke: var(--basiccolor);
+        --icon-fill: #A0A0A0;
+        --stroke-opacity: 0.9;
+        --text-fill: #161;
+        --gradient1: #00d115;
+        --gradient2: #f6ff3e;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { 
+          --basiccolor: rgb(251,251,254);
+          --iconStroke: var(--basiccolor);
+          --icon-fill: #606060;
+          --stroke-opacity: 0.8;
+          --text-fill: var(--basiccolor);
+          --gradient1: #235e23;
+          --gradient2: #f6ff3e;
+        }
+      }        
+    </style>     
     <linearGradient
        id="linearGradient2"
        inkscape:collect="always">
       <stop
-         style="stop-color:#00d115;stop-opacity:1;"
+         style="stop-color:var(--gradient1);stop-opacity:1;"
          offset="0"
          id="stop2" />
       <stop
-         style="stop-color:#f6ff3e;stop-opacity:1;"
+         style="stop-color:var(--gradient2);stop-opacity:1;"
          offset="1"
          id="stop3" />
     </linearGradient>
@@ -62,24 +84,6 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <style>
-    :root {
-      --basiccolor: rgb(20,20,20);
-      --iconStroke: var(--basiccolor);
-      --icon-fill: #A0A0A0;
-      --stroke-opacity: 0.9;
-      --text-fill: #161;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root { 
-        --basiccolor: rgb(251,251,254);
-        --iconStroke: var(--basiccolor);
-        --icon-fill: #606060;
-        --stroke-opacity: 0.8;
-        --text-fill: var(--basiccolor);
-      }
-    }    
-    </style>     
     <rect
       style="stroke:var(--text-fill);fill:url(#linearGradient3);stroke-width:3px;"
       id="gradientrect"
