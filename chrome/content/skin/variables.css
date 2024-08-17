@@ -31,12 +31,26 @@
 
 /* IN PAGE SEARCH FACILITY */
 
-p#allexpander {
+p#allexpander, p#collapseAll {
   margin: 2px 0;
+}
+
+.help #findprevious {
+  background-image: url("icons/find-previous.svg");
+}
+.help #findnext {
+  background-image: url("icons/find-next.svg");
+}
+
+.help #searchBox toolbarbutton {
+  width: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .help #searchBox {
   cursor: pointer;
+  display: flex;
   position: fixed;
   min-width: 9em;
   top: 1px;
@@ -79,15 +93,15 @@ p#allexpander {
 
 #searchBox #fq-variables-search-help.popupButton {
   -moz-context-properties: fill;
-	background-size: 16px 16px !important;
+	background-size: 20px 20px !important;
 	border-style: none !important;
   display: inline-block;
   fill: #0079ef; 
-	height: 16px !important;
-  width: 16px;
+	height: 20px !important;
+  width: 20px;
   list-style-image: url("icons/help-find-in-page.svg"); 
   background-image: url("icons/help-find-in-page.svg");
-  margin-right: -5px;
+  margin-right: -1px;
 	min-height: 16px;
   min-width: 16px;
 	padding-top: 0;
@@ -147,6 +161,10 @@ h1.helpchapter.expanded {
 .help ul.chapterBody {
   margin-top: 3px;
   margin-bottom: 3px;
+}
+
+.collapsible.collapsed {
+  display: none !important;
 }
 
 .chapterBody {
