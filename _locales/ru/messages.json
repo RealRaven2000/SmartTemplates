@@ -544,6 +544,9 @@
   "heading.click": {
     "message": "Щелкните заголовок или"
   },
+  "heading.collapseAll": {
+    "message": "Свернуть все главы"
+  },
   "heading.expandAll": {
     "message": "развернуть все записи"
   },

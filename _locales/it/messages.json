@@ -538,6 +538,9 @@
   "heading.click": {
     "message": "Fare clic su un'intestazione o su"
   },
+  "heading.collapseAll": {
+    "message": "Comprimi tutti i capitoli"
+  },
   "heading.expandAll": {
     "message": "espandere tutte le voci"
   },

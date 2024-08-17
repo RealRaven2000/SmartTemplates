@@ -554,6 +554,9 @@
   "heading.click": {
     "message": "Клацніть заголовок або"
   },
+  "heading.collapseAll": {
+    "message": "Згорнути всі розділи"
+  },
   "heading.expandAll": {
     "message": "розгорнути всі записи"
   },

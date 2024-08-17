@@ -540,6 +540,9 @@
   "heading.click": {
     "message": "Klicken Sie auf eine Überschrift oder"
   },
+  "heading.collapseAll": {
+    "message": "Alle Kapitel einklappen"
+  },
   "heading.expandAll": {
     "message": "alle erweitern"
   },

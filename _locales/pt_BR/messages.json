@@ -541,6 +541,9 @@
   "heading.click": {
     "message": "Clique em um título ou"
   },
+  "heading.collapseAll": {
+    "message": "Recolher todos os capítulos"
+  },
   "heading.expandAll": {
     "message": "expandir todas as entradas"
   },

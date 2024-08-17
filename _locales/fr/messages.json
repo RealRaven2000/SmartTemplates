@@ -550,6 +550,9 @@
   "heading.click": {
     "message": "Cliquez sur un en-tête ou sur"
   },
+  "heading.collapseAll": {
+    "message": "Réduire tous les chapitres"
+  },
   "heading.expandAll": {
     "message": "développer toutes les entrées"
   },

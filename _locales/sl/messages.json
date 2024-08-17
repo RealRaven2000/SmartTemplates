@@ -547,6 +547,9 @@
   "heading.click": {
     "message": "Kliknite naslov ali"
   },
+  "heading.collapseAll": {
+    "message": "Strni vsa poglavja"
+  },
   "heading.expandAll": {
     "message": "razširi vse vnose"
   },

@@ -547,6 +547,9 @@
   "heading.click": {
     "message": "点击标题或"
   },
+  "heading.collapseAll": {
+    "message": "折叠所有章节"
+  },
   "heading.expandAll": {
     "message": "展开所有条目"
   },

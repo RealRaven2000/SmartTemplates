@@ -547,6 +547,9 @@
   "heading.click": {
     "message": "Haga clic en un encabezado o"
   },
+  "heading.collapseAll": {
+    "message": "Colapsar todos los capítulos"
+  },
   "heading.expandAll": {
     "message": "expandir todas las entradas"
   },

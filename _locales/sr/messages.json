@@ -538,6 +538,9 @@
   "heading.click": {
     "message": "Кликните наслов или"
   },
+  "heading.collapseAll": {
+    "message": "Скупи сва поглавља"
+  },
   "heading.expandAll": {
     "message": "проширите све уносе"
   },

@@ -563,6 +563,9 @@
   "heading.click": {
     "message": "Click a heading or"
   },
+  "heading.collapseAll": {
+    "message": "Collapse all chapters"
+  },
   "heading.expandAll": {
     "message": "Expand All"
   },

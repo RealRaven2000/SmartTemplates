@@ -547,6 +547,9 @@
   "heading.click": {
     "message": "Klik op een kop of"
   },
+  "heading.collapseAll": {
+    "message": "Alle hoofdstukken samenvouwen"
+  },
   "heading.expandAll": {
     "message": "vouw alle vermeldingen uit"
   },

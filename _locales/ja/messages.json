@@ -544,6 +544,9 @@
   "heading.click": {
     "message": "見出しまたは [x] をクリックします"
   },
+  "heading.collapseAll": {
+    "message": "すべての章を折りたたむ"
+  },
   "heading.expandAll": {
     "message": "すべてのエントリを展開します"
   },

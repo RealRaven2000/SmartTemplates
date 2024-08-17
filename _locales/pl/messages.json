@@ -555,6 +555,9 @@
   "heading.click": {
     "message": "Kliknij nagłówek lub"
   },
+  "heading.collapseAll": {
+    "message": "Zwiń wszystkie rozdziały"
+  },
   "heading.expandAll": {
     "message": "rozwiń wszystkie wpisy"
   },

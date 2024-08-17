@@ -547,6 +547,9 @@
   "heading.click": {
     "message": "Κάντε κλικ σε μια επικεφαλίδα ή"
   },
+  "heading.collapseAll": {
+    "message": "Σύμπτυξη όλων των κεφαλαίων"
+  },
   "heading.expandAll": {
     "message": "Αναπτύξτε Όλα"
   },

@@ -547,6 +547,9 @@
   "heading.click": {
     "message": "Napsauta otsikkoa tai"
   },
+  "heading.collapseAll": {
+    "message": "Kutista kaikki luvut"
+  },
   "heading.expandAll": {
     "message": "laajenna kaikki merkinnät"
   },

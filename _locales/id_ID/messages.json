@@ -410,6 +410,9 @@
   "heading.click": {
     "message": "Klik sebuah tajuk atau"
   },
+  "heading.collapseAll": {
+    "message": "Tutup semua bab"
+  },
   "heading.expandAll": {
     "message": "luaskan semua entri"
   },

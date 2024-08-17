@@ -544,6 +544,9 @@
   "heading.click": {
     "message": "Klicka på en rubrik eller"
   },
+  "heading.collapseAll": {
+    "message": "Minimera alla kapitel"
+  },
   "heading.expandAll": {
     "message": "expandera alla sektioner"
   },

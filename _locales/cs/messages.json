@@ -541,6 +541,9 @@
   "heading.click": {
     "message": "Klikněte na nadpis nebo"
   },
+  "heading.collapseAll": {
+    "message": "Sbalit všechny kapitoly"
+  },
   "heading.expandAll": {
     "message": "rozbalte všechny položky"
   },

@@ -547,6 +547,9 @@
   "heading.click": {
     "message": "Feu clic a un encapçalament o"
   },
+  "heading.collapseAll": {
+    "message": "Contraure tots els capítols"
+  },
   "heading.expandAll": {
     "message": "Desplega-ho tot"
   },
