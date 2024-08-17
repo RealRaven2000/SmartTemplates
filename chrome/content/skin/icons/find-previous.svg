@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="context-fill" fill-opacity="context-fill-opacity" viewBox="0 0 16 16">
+  <style>
+    :root {
+      --basiccolor: rgb(20,20,20);
+      --iconStroke: var(--basiccolor);
+      --icon-fill: #A0A0A0;
+      --fillopacity: 0.9;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { 
+        --basiccolor: rgb(251,251,254);
+        --iconStroke: var(--basiccolor);
+        --icon-fill: #606060;
+        --fillopacity: 0.8;
+      }
+    }        
+  </style>
+  <path 
+    style="fill:var(--icon-fill);fill-opacity:var(--fillopacity);"
+    d="M13 11a1 1 0 0 1-.707-.293L8 6.414l-4.293 4.293a1 1 0 0 1-1.414-1.414l5-5a1 1 0 0 1 1.414 0l5 5A1 1 0 0 1 13 11z"/>
+
+</svg>
