@@ -7,6 +7,10 @@ function initXHTML() {
     console.log("help.js early exit...");
     return;
   }
+  isDebugLegacyOption = function () {
+    const isDebug = true;
+    return isDebug;
+  }
   // [mx l10n] 
   var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
   let extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");

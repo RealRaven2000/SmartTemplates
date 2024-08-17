@@ -1,4 +1,8 @@
 
+  var LastFoundNode;
+  var LastSelection;
+  var isDebugLegacyOption;
+
   function containerClick(el, evt) {
     var code = evt.target;
     
@@ -37,8 +41,9 @@
             break;
         }
 
-        if (!exists)
+        if (!exists) {
           document.documentElement.appendChild(element);
+        }
 
         // make a new custom event
         var customEvent = document.createEvent("Events");
@@ -67,10 +72,6 @@
   }
   
   async function expandAll(evt) {
-    if (await isDebugLegacyOption()) {
-      console.log("Expanding all chapters...");
-      debugger;
-    }
     evt.preventDefault();
     evt.stopPropagation();
     var allchapters = Array.from(document.getElementsByClassName('chapterBody'));
@@ -78,6 +79,14 @@
       el.classList.remove('collapsed');
     });
   }    
+  async function collapseAll(evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    var allchapters = Array.from(document.getElementsByClassName('chapterBody'));
+    allchapters.forEach(function(el) {
+      el.classList.add('collapsed');
+    });
+  }
   
   // Accordion:
   var mychapters = Array.from(document.getElementsByClassName('chapterBody'));
@@ -122,10 +131,9 @@
             // document.getElementById("variablesPane").scrollIntoView({block:"start"})
           }, 150);
           hd.classList.add('expanded');
-        }
-        else {
+        } else {
           el.classList.add('collapsed');
-          let sel=window.getSelection();
+          let sel = window.getSelection();
           if (sel && el.contains(sel.focusNode)) {
             sel.removeAllRanges();
           }
@@ -136,34 +144,62 @@
     el.classList.add('collapsed');
   });
   
-  async function isDebugLegacyOption() {
-    const isDebug =  await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.variables.search")
-    return isDebug;
+  function cloneSelection(sel) {
+    if (!sel) return null;
+    let result = {
+      anchorOffset: sel.anchorOffset,
+      direction: sel.direction,
+      focusNode: sel.focusNode,
+      focusOffset: sel.focusOffset,
+      isCollapsed: sel.isCollapsed,
+      rangeCount: sel.rangeCount
+    }
+    // ​type: sel.type
+    return result;
+  }
+  function reSelectRange(sel, focusNode, text) {
+    if (!sel) { 
+      return;
+    }
+    const range = document.createRange();
+    range.setStart(focusNode, sel.anchorOffset);
+    range.setEnd(focusNode, sel.anchorOffset + text.length);
+    window.getSelection().addRange(range);
   }
   
   // [issue 215] search box for variables tab
   async function findSearchString(text, repeat, backwards=false) {
-    let caseSensitive = false, 
+    const caseSensitive = false, 
         wraparound = true, 
         wholeword = false,
-        frames = false,
+        frames = true, // test
         dlg = false,
-        search = text.toLocaleLowerCase(),
+        searchText = text.toLocaleLowerCase(),
         isDebug = await isDebugLegacyOption();
         
-    let sel = window.getSelection();
+    if (isDebug && repeat) { debugger; }
+    let focusNode;
+    
+    if (!repeat) {
+      let sel = window.getSelection();
+      LastSelection = cloneSelection(sel);
+      focusNode = sel?.focusNode || null;
+    } else {
+      // set selection again (in case find next / previous were clicked)
+      reSelectRange(LastSelection, LastFoundNode, text);
+      focusNode = LastFoundNode;
+    }
     let chapters = Array.from(document.getElementsByClassName('chapterBody'));
     let c;
-    if (sel && sel.focusNode) {
-      let here = sel.focusNode.parentNode;
+    if (focusNode) {
+      let here = focusNode.parentNode;
       c = here;
       if (here.tagName=="h1") {
         // find next chapter.
         while(c && !c.classList.contains("chapterBody")) {
           c = backwards ? c.previousElementSibling : c.nextElementSibling;
         }
-      }
-      else {
+      } else {
         while(c && ((!c.classList) || (c.classList && !c.classList.contains("chapterBody")))) {
           c = c.parentNode;
           if (!c || c.id == "#helpContents") { 
@@ -173,8 +209,7 @@
           }
         }
       }
-    }
-    else {
+    } else {
        //  search from top / end
       c = backwards ? chapters[chapters.length-1] : chapters[0];
     }
@@ -188,8 +223,8 @@
           end = backwards ? 0 : chapters.length;
       
       let delta = backwards ? (-1) : 1;
-      function testCollapsedMatch(el, search) {
-        if (el.classList.contains("collapsed") && el.textContent.toLocaleLowerCase().includes(search)) {
+      function testCollapsedMatch(el, searchString) {
+        if (el.classList.contains("collapsed") && el.textContent.toLocaleLowerCase().includes(searchString)) {
           if (isDebug) { console.log("Found string in collapsed chapter: ", el); }
           // open chapter with match
           el.classList.remove("collapsed");
@@ -203,7 +238,7 @@
            i=i+delta ) {
         if (backwards && i<0 || !backwards && i>end) {
           if (backwards && i<0) {
-            testCollapsedMatch(chapters[0], search);
+            testCollapsedMatch(chapters[0], searchText);
           }
           break;
         }
@@ -212,15 +247,15 @@
         if (currentChapter === c || found) {
           found = true;
           // find next chapter which contains the search string and expand it.
-          if (testCollapsedMatch(c, search)) {
+          if (testCollapsedMatch(c, searchText)) {
             foundInChapter = true;
           } else {
             c = currentChapter;
             // if we are already on a search result in a uncollapsed chapter
             // check if there are still matches further down in current expanded chapter:
-            if (sel && c && c.classList && c.classList.contains("chapterBody") && !c.classList.contains("collapsed")) {
+            if (focusNode && c && c.classList && c.classList.contains("chapterBody") && !c.classList.contains("collapsed")) {
               let where = backwards ? "before" : "after";
-              let nextFocus = sel.focusNode ? sel.focusNode.parentNode : null;
+              let nextFocus = focusNode ? focusNode.parentNode : null;
               if (nextFocus && (nextFocus.id=="searchBox" || nextFocus.id=="allexpander")) {
                 nextFocus = document.getElementById(backwards ? "endOfHelp" : "startHeading");
               }
@@ -232,7 +267,7 @@
                 }
               }
               else {
-                if (isDebug) { console.log(`Check ${where} selection in expanded chapter:`, sel); }
+                if (isDebug) { console.log(`Check ${where} selection in expanded chapter:`, focusNode); }
               }
               let listItem = nextFocus;
               const listElements = ["li","aside","p"]; // "code" ?
@@ -249,7 +284,7 @@
                 // check following siblings
                 let sib = backwards ? listItem.previousSibling : listItem.nextSibling;
                 while(sib) {
-                  if (sib.textContent.toLocaleLowerCase().includes(search)) {
+                  if (sib.textContent.toLocaleLowerCase().includes(searchText)) {
                     foundInChapter = true;
                     if (isDebug) {
                       console.log(`Found search string in node ${sib.tagName}\n` + sib.textContent);
@@ -270,14 +305,21 @@
     }
     if (isDebug) { console.log("After loop: invoke window.find() ... "); }
       
-    let isFound = window.find(search,
+    let isFound = window.find(searchText,
                 caseSensitive, 
                 backwards, 
                 wraparound, 
                 wholeword,
                 frames,
                 dlg);
-    
+
+    if (isFound) {
+      // remember selection
+      LastSelection = cloneSelection(window.getSelection());
+      LastFoundNode = window.getSelection()?.focusNode;
+    } else { // keep last selection, so we can search backwards?
+      reSelectRange(LastSelection, LastFoundNode, text);
+    }
   }    
     
 
@@ -292,7 +334,7 @@
   }
 
   function initSearch() {
-    let searchBox = document.getElementById("search");
+    const searchBox = document.getElementById("search");
     if (searchBox) {
       // we are using the tabindex=-1 hack to make the list items searchable even if the user highlights text or 
       // clicks into the help contents. Note that contentEditable doesn't work here.
@@ -308,15 +350,46 @@
             event.preventDefault();
             event.stopPropagation();
             findSearchString(search);
+            document.getElementById("findnext").style.display="inline-block";
+            document.getElementById("findprevious").style.display="inline-block";
             break;
           case "Escape":
             event.preventDefault();
             event.stopPropagation();
             target.blur();
             document.getElementById("searchHelpContent").classList.add("hidden");
+            document.getElementById("findnext").style.display="none";
+            document.getElementById("findprevious").style.display="none";
             break;
         }
       }, {capture:true});
+    }
+
+    const searchHelpContent = document.getElementById("searchHelpContent");
+    async function findRepeat(backwards) {
+      if (!searchBox.value) {
+        searchBox.focus();
+        return;
+      }
+      await findSearchString(searchBox.value, true, backwards);
+      searchHelpContent.classList.add("hidden");
+    }
+
+    const findprevious = document.getElementById("findprevious");
+    if (findprevious) {
+      findprevious.addEventListener("mouseup",
+        async (evt) => {
+          findRepeat(true); 
+        }
+      );
+    }
+    const findnext = document.getElementById("findnext");
+    if (findnext) {
+      findnext.addEventListener("mouseup",
+        async (evt) => {
+          findRepeat(false);
+        }
+      );
     }
 
     let container = document.getElementById("helpContents");

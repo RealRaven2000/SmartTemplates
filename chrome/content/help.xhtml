@@ -13,10 +13,13 @@
 	<body style="margin: 0;">
 
   <div class="help" id="helpContents" onclick="containerClick(this, event);">
-    <p id="allexpander">__MSG_heading.click__ <a href="#" onclick="expandAll(event);">__MSG_heading.expandAll__</a>.</p>
+    <p id="allexpander" class="collapsible">__MSG_heading.click__ <a href="#" onclick="expandAll(event);">__MSG_heading.expandAll__</a>.</p>
+    <p id="collapseAll" class="collapsible collapsed"><a href="#" onclick="collapseAll(event);">__MSG_heading.collapseAll__</a>.</p>
     <hbox id="searchBox">
       <toolbarbutton id="fq-variables-search-help" class="popupButton" label=""/> 
       <html:input  id="search" required="true" />
+			<toolbarbutton id="findprevious" style="display: none;"></toolbarbutton>
+			<toolbarbutton id="findnext" style="display: none;"></toolbarbutton>
     </hbox>
     <div id="searchHelpContent" class="hidden">__MSG_variable.search__</div>
 		<!-- ##### Fix Variables #### -->
