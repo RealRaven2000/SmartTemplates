@@ -1861,10 +1861,11 @@ SmartTemplate4.Util = {
   
 	// new function for manually formatting a time / date string in one go.
   // make additional parameters possible (enclose format string with "" to append 2nd parameter)
-	dateFormat: function dateFormat(time, argument, timezone) {
+	dateFormat: function (time, argument, timezone) {
 		const util = SmartTemplate4.Util;
     let timeFormat,
         isClipboard = false;
+		let formatter;
     if (argument.startsWith("\"")) {
       let closeQuote = argument.lastIndexOf("\"");
       timeFormat = argument.substring(1,closeQuote);
@@ -1873,9 +1874,17 @@ SmartTemplate4.Util = {
         if (args.includes("toclipboard")) {
           isClipboard = true;
         }
+				// find out if there is a transformation character
+				// and remove it
+				for (let i = 0; i<args.length; i++) {
+					if (util.isFormatString(args[i])) {
+						formatter = util.initFormatter(args.join(","));
+						args = args.splice(i, 1);
+						break;
+					}
+				}
       }
-    }
-    else {
+    } else {
       timeFormat = argument;
     }
     
@@ -1949,6 +1958,10 @@ SmartTemplate4.Util = {
 					.replace('##p1', hour < 12 ? "a.m." : "p.m.")
 					.replace('##p2', hour < 12 ? "A.M." : "P.M.")
 					.replace('##p', hour < 12 ? "AM" : "PM")
+
+			if (formatter) {
+				timeString = util.formatString(timeString, formatter);
+			}
 					
 					
 			util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
