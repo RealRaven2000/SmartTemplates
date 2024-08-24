@@ -159,16 +159,17 @@ END LICENSE BLOCK
     # [issue 309] Reply with template from tab displays "cmd_reply not available in this context"
 
 
-  Version 4.7.1 - WIP
+  Version 4.8 - WIP
     # Added compatibility with Thunderbird 130
     # [issue 317] Support text transformation parameters with %dateformat()%
     # [issue 310] improve icons theme support by eliminating 'context' attributes from svg images.
     # Removed font dependence in icons (converted all texts to path)
     # use keydown instead of deprecated keypress events
+    # [issue 313] Implemented settings for statusbar icon in new settings tab
     # [issue 311] Template functions don't work when writing a new message in a newsgroup account
     # [issue 312] "expand all" inside new settings variables page doesn't work 
-    # [issue 313] Implemented settings for statusbar icon in new settings tab
     # [issue 315] F3 to repeat searching for a search text doesn't work in new variable page
+    # [issue 318] "Configure Menu item..." not working as expected.
 
 
 =========================
