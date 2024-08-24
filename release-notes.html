@@ -6,47 +6,31 @@ The full change log with screen shots <a href="https://smarttemplates.quickfolde
 
 <b>Enhancements</b>
 <ul>
-  <li> Improved chinese translations for term "account" - thanks to Y.D.X. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/302">[issue 302]</a> </li>
-  <li> Added Refresh button for accounts dropdown. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/307">[issue 307]</a> </li>
+  <li> Improved icon layout for dark themes and removed font dependencies for icons with text.Removed font dependence in icons (converted all texts to path). <a href="https://github.com/RealRaven2000/SmartTemplates/issues/310">[issue 310]</a> </li>
+  <li> Added function to collapse all chapters in Variables page. This is made visible after clicking on "expand all".<a href="https://github.com/RealRaven2000/SmartTemplates/issues/314">[issue 314]</a> </li>
+  <li> Implemented the command "configure menu items…" so that it opens the correct page in the new Settings dialog.</li>
+  <li> Implemented display settings for statusbar icon in new settings tab  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/313">[issue 313]</a> </li>
 </ul>
 
 
 <b>Bug Fixes</b>
 <ul>
-  <li> Account Templates - new Identities could not be added in the new version of the settings dialog. 
-    
-    The API used to write legacy settings to the global configuration database
-    wasn't able to create any entries without default, which affects any Identities
-    created by the user, including the default identity of a new mail account.
-  
-    This means such settings (template and quotes) could not be modified and saved unless the identity existed before the conversion of SmartTemplates settings to 
-    be web extension compatible. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/300">[issue 300]</a> 
-  
-    This problem is now patched and back to work as expected.</li>
-  <li> Fixed: Clicking on Hide Button Label in header menu doesn't work as expected. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/304">[issue 304]</a> </li>
-  <li> in Tb128 - popup for restricted features: notification leads to exception + icon not displayed. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/308">[issue 308]</a> </li>  
+  <li> Fixed: Template functions don't work when writing a new message in a newsgroup account <a href="https://github.com/RealRaven2000/SmartTemplates/issues/311">[issue 311]</a>  </li>
+  <li> Fixed: "expand all" inside new settings variables page didn't work. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/312">[issue 312]</a>  </li>
 </ul>
 
 <b>Miscellaneous</b>
 <ul>
-  <li>
-    Removed vendor prefix from -moz-appearance
-  </li>
-  <li>
-    Reply with template from tab displays "cmd_reply not available in this context". <a href="https://github.com/RealRaven2000/SmartTemplates/issues/309">[issue 309]</a>
-  </li>
+  <li> Use keydown instead of deprecated keypress events. </li>
 </ul>
 
 <b>Known Issues</b>
 <ul>
-  <li>
-    Currently the verification of SmartTemplates licenses fails when the license is bound to an 
+  <li> Currently the verification of SmartTemplates licenses fails when the license is bound to an 
   exchange account when it is accessed using Owl. This is due to a bug in 
-  the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> 
-  Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
+  the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
   which the Thunderbird team is working on and is planned to land in one of the next 
-  versions of ESR128.  
-  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/303">[issue 303]</a>
+  versions of ESR128. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/303">[issue 303]</a>
   </li>
 </ul>
 

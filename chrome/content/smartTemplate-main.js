@@ -168,8 +168,9 @@ END LICENSE BLOCK
     # [issue 313] Implemented settings for statusbar icon in new settings tab
     # [issue 311] Template functions don't work when writing a new message in a newsgroup account
     # [issue 312] "expand all" inside new settings variables page doesn't work 
-    # [issue 315] F3 to repeat searching for a search text doesn't work in new variable page
+    # [issue 314] convert "expand all" in variables page into toggle
     # [issue 318] "Configure Menu item..." not working as expected.
+    # [issue 315] WIP: F3 to repeat searching for a search text doesn't work in new variable page
 
 
 =========================

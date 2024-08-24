@@ -2,19 +2,19 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 **Enhancements**
 
-*   Added Refresh button for accounts dropdown. \[issue #307\]
-*   Improved Chinese translations for term "account" - thanks to Y.D.X. \[issue #302\]
+*   Improved icon layout for dark themes and removed font dependencies for icons with text. [issue #310]
+*   Added function to collapse all chapters in Variables page. \[issue #314\]
+*   Implemented the command "configure menu items…" so to open the correct page in the new Settings dialog. \[issue #318\]
+*   Implemented display settings for statusbar icon in new settings tab \[issue #313\]
 
 **Bug Fixes** 
 
-*  New Settings dialog: In Account Templates one could not create Account settings for any new identity. The API used to write legacy settings to the global configuration database wasn't able to create any entries without default, which affects any Identities created by the user, including the default identity of a new mail account. This problem is now patched and back to work as expected. \[issue #300\]
-*   Fixed: Clicking on Hide Button Label in header area button menu didn't work as expected. \[issue #304\]
-*   in Tb128 - popup for restricted features: notification leads to exception + icon not displayed. \[issue #308\]
+*   Fixed: Template functions don't work when writing a new message in a newsgroup account. \[issue #311\]
+*   Fixed: "expand all" inside new settings variables page \[issue #312\]
 
 **Miscellaneous**
 
-*   Removed vendor prefix from `-moz-appearance`
-*   Reply with template from tab displays "cmd\_reply not available in this context". \[issue #309\]
+*   keyboard shortcut handler - Use `keydown` instead of deprecated `keypress` events.
 
 **Known Issues**
-* Owl accounts can currently not be license validated in Tb128. We are currently await a fix by Thunderbird core.
+* Currently the verification of SmartTemplates licenses fails when the license is bound to an  exchange account when it is accessed using Owl. This is due to a bug in the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - which the Thunderbird team is working on and is planned to land in one of the next   versions of ESR128. [issue #303]
