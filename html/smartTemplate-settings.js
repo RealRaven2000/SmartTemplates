@@ -2528,11 +2528,13 @@ function addUIListeners() {
 	
 }
 
-function selectComposeType(forceType=null, forceKey = null) {
+async function selectComposeType(forceType=null, forceKey = null) {
 	const params = new URLSearchParams(window.location.search);
 	const composeType = forceType || params.get("composeType");
 	const idKey = forceKey || params.get("id") || "common";
-
+	if (await SmartTemplates.Preferences.isDebugOption("settings")) {
+		debugger;
+	}
 	// select the correct compose type tab
 	let btnSelector;
 	switch (composeType) {
@@ -2552,16 +2554,21 @@ function selectComposeType(forceType=null, forceKey = null) {
 		default:
 			return;
 	}
-	if (btnSelector) {
-		const idSelector = idKey ? "." + idKey : "";
-		const currentDeck = SmartTemplates.Settings.getCurrentDeck(idSelector);
-		if (!currentDeck) {
-			return;
-		}
+	if (!btnSelector) {
+		return;
+	}
+	const idSelector = idKey ? "." + idKey : "";
+	const currentDeck = SmartTemplates.Settings.getCurrentDeck(idSelector);
+	if (currentDeck) {
 		const tab = document.getElementById(currentDeck).querySelector(btnSelector);
 		if (tab) {
 			tab.click();
 		}
+	}
+	// [issue 318]
+	const tabFT = document.getElementById("fileTemplatesTabs")?.querySelector(btnSelector);
+	if (tabFT) {
+		tabFT.click();
 	}
 }
 

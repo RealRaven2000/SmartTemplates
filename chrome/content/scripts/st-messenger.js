@@ -114,6 +114,9 @@ async function onLoad(activatedWhileWindowOpen) {
           if (SmartTemplates.Util.licenseInfo.isExpired)  {
             isLicenseWarning=true;
           }
+          if (params.mode) {
+            prefsObject.page = params.mode;
+          }
           if (isLicenseWarning) {
             prefsObject.page = "licenseKey";
           }
