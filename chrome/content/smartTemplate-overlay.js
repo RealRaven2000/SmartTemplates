@@ -161,7 +161,6 @@ function async_driver(val) {
 
 // We use this as a display consumer
 // nsIStreamListener
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm") ;
 var { MsgHdrToMimeMessage } = ChromeUtils.import( "resource:///modules/gloda/MimeMessage.jsm" );
   
 // not used (yet)
@@ -173,11 +172,7 @@ var SmartTemplate4_streamListener =
   QueryInterface:
 	  function () {
 			const Ci = Components.interfaces;
-			if (ChromeUtils.generateQI) // Tb 68
-				return ChromeUtils.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]);
-			if (XPCOMUtils.generateQI)
-				return XPCOMUtils.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]);
-			return null;
+      return ChromeUtils.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]);
 		},
 
   // nsIRequestObserver interfaces
