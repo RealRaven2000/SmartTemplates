@@ -216,7 +216,9 @@ permalink: version.html
 <a id="4.*"> &nbsp; </a>
 <li>
   <h4>
-		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+		<a href="#contact" 
+      href1="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.*"
+      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
       Version 4.* - Work in Progress</a>
 		<br>
 		<span class="appWrapper">
@@ -249,27 +251,47 @@ permalink: version.html
 <ul id="version-history">
 
   <a id="4.7.1"> &nbsp; </a>
+  <a id="4.8"> &nbsp; </a>
   <li>
     <h4>
-      <a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
-        Version 4.7.1 - Work in Progress</a>
+      <a href="#contact" 
+        href1="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.7"
+        onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+        Version 4.8 - Work in Progress</a>
       <br>
       <span class="appWrapper">
-        <span class="thunderbird">111.0 - 129.*</span>
+        <span class="thunderbird">111.0 - 130.*</span>
       </span>
     </h4>
     <ul>
       <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
       <li>
         <p>
-
-          Improved icon layout for dark themes.
-          Improve icons theme support by eliminating 'context' attributes from svg images.
+          Improved icon layout for dark themes:
+          Improved icon theme support by eliminating 'context' attributes from svg images.
           Removed font dependence in icons (converted all texts to path).
           <a href="https://github.com/RealRaven2000/SmartTemplates/issues/310">[issue 310]</a>
         </p>
         <img class="screenshot" src="img/st-icons=themed.png" />
       </li>
+      <li>
+        Added function to collapse all chapters in Variables page.
+        This is made visible after clicking on "expand all".
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/314">[issue 314]</a>
+      </li>
+      <li>
+        Implemented the command "configure menu items…" so that it
+        opens the correct page in the new Settings dialog.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/318">[issue 318]</a>
+      </li>
+      <li>
+        <p>
+          Implemented display settings for statusbar icon in new settings tab 
+          <a href="https://github.com/RealRaven2000/SmartTemplates/issues/313">[issue 313]</a>:
+        </p>
+        <img class="screenshot" src="img/status-button-display.png">
+      </li>
+
       <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
       <li>
         Fixed: Template functions don't work when writing a new message in a 
@@ -277,11 +299,11 @@ permalink: version.html
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/311">[issue 311]</a>
       </li>
       <li>
-        Use keydown instead of deprecated keypress events.
+        Fixed: "expand all" inside new settings variables page didn't work.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/312">[issue 312]</a>
       </li>
       <li>
-        In new settings, variables page, the command 'Expand all' was not working.
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/312">[issue 312]</a>
+        Use keydown instead of deprecated keypress events.
       </li>
     </ul>
   </li> 
