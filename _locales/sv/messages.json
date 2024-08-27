@@ -1908,7 +1908,7 @@
     "message": "Supportsida"
   },
   "variable.search": {
-    "message": "Ange en sökterm och tryck på {{Enter}}. Tryck på {{F3}} för att upprepa sökningen."
+    "message": "Ange en sökterm och tryck på {{Enter}}. Tryck på {{F4}} för att upprepa sökningen."
   },
   "var_custom.cap": {
     "message": "Variabler för anpassat datumformat"
@@ -1929,7 +1929,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Kontomallar - nya identiteter kunde inte läggas till i den nya versionen av inställningsdialogrutan. [issue 300] {L2}{L1} Uppdateringsknapp tillagd för kontonas rullgardinsmeny. [issue 307] {L2}{L1} Förbättrade kinesiska översättningar för termen 'konton' - tack till Y.D.X. [issue 302] {L2}{L1} Att klicka på {{Dölj knappetikett}} i menyområdet för knappfältet fungerar igen. [issue 304] {L2}{L1} i Tb128 - popup för begränsade funktioner: meddelande leder till undantag + ikon visas inte. [issue 308] {L2} "
+    "message": "{L1} Ikonlayouterna har förbättrats för mörka teman och alla teckensnittsberoenden för ikoner som innehåller text har tagits bort. [issue 310] {L2}{L1} Flera förbättringar på den nya Variabler-sidan: Funktion för att komprimera alla kapitel har lagts till och att expandera alla kapitel har åtgärdats. Sökfältet är fortfarande under utveckling. [issue 314] {L2}{L1} Kommandot 'konfigurera menyalternativ...' öppnar nu mallfilssidan i den nya inställningsdialogrutan. {L2}{L1} Mallfunktioner fungerar nu också när du skriver ett nytt meddelande i ett nyhetsgruppkonto. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

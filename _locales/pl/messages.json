@@ -1895,7 +1895,7 @@
     "message": "Strona pomocy"
   },
   "variable.search": {
-    "message": "Wprowadź wyszukiwane hasło i naciśnij {{Enter}}. Naciśnij {{F3}}, aby powtórzyć wyszukiwanie."
+    "message": "Wprowadź wyszukiwane hasło i naciśnij {{Enter}}. Naciśnij {{F4}}, aby powtórzyć wyszukiwanie."
   },
   "var_custom.cap": {
     "message": "Zmienne dla dostosowania formatu daty"
@@ -1916,8 +1916,8 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Szablony kont - nie można było dodać nowych tożsamości w nowej wersji okna ustawień. [issue 300] {L2}{L1} Dodano przycisk odświeżania do listy rozwijanej kont. [issue 307] {L2}{L1} Ulepszone chińskie tłumaczenia dla terminu 'konta' - dzięki Y.D.X. [issue 302] {L2}{L1} Kliknięcie na {{Ukryj etykietę przycisku}} w menu przycisku obszaru nagłówka znów działa. [issue 304] {L2}{L1} w Tb128 - wyskakujące okno dla ograniczonych funkcji: powiadomienie prowadzi do wyjątku + ikona nie jest wyświetlana. [issue 308] {L2} "
-  }, 
+    "message": "{L1} Układ ikon został ulepszony dla ciemnych motywów, a wszelkie zależności czcionek dla ikon zawierających tekst zostały usunięte. [issue 310] {L2}{L1} Wiele ulepszeń na nowej stronie Zmiennych: Dodano funkcję zwijania wszystkich rozdziałów i naprawiono rozwijanie wszystkich rozdziałów. Pole wyszukiwania jest nadal w fazie rozwoju. [issue 314] {L2}{L1} Polecenie 'konfiguruj elementy menu...' otwiera teraz stronę plików szablonów w nowym oknie dialogowym Ustawienia. {L2}{L1} Funkcje szablonów działają teraz również podczas pisania nowej wiadomości na koncie grupy dyskusyjnej. {L2}"
+  },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
   },

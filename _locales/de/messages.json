@@ -1829,7 +1829,7 @@
     "message": "Support Homepage"
   },
   "variable.search": {
-    "message": "Einen Suchbegriff eingeben und dann {{Enter}} drücken. Drücken Sie {{F3}}, um die Suche zu wiederholen."
+    "message": "Einen Suchbegriff eingeben und dann {{Enter}} drücken. Drücken Sie {{F4}}, um die Suche zu wiederholen."
   },
   "var_custom.cap": {
     "message": "Variablen für angepasstes Datumsformat"
@@ -1850,7 +1850,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Kontovorlagen - neue Identitäten konnten in der neuen Version des Einstellungsdialogs nicht hinzugefügt werden. [issue 300] {L2}{L1} Aktualisierungsschaltfläche für das Konto-Dropdown hinzugefügt. [issue 307] {L2}{L1} Verbesserte chinesische Übersetzungen für den Begriff 'Konto' - danke an Y.D.X. [issue 302] {L2}{L1} Das Klicken auf {{Schaltflächenbeschriftung ausblenden}} im Header-Bereich-Menü funktioniert wieder. [issue 304] {L2}{L1} in Tb128 - Popup für eingeschränkte Funktionen: Benachrichtigung führt zu einer Ausnahme + Symbol wird nicht angezeigt. [issue 308] {L2} "
+    "message": "{L1} Die Symbollayouts wurden für dunkle Designs verbessert und alle Schriftabhängigkeiten für Symbole, die Text enthalten, wurden entfernt. [issue 310] {L2}{L1} Mehrere Verbesserungen auf der neuen Variablen-Seite: Funktion zum Einklappen aller Kapitel hinzugefügt und Fehler beim Erweitern aller Kapitel behoben. Das Suchfeld ist noch in Arbeit. [issue 314] {L2}{L1} Der Befehl 'Menüelemente konfigurieren...' öffnet jetzt die Vorlagendateiseite im neuen Einstellungsdialog. {L2}{L1} Vorlagenfunktionen funktionieren jetzt auch beim Schreiben einer neuen Nachricht in einem Newsgroup-Konto. {L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

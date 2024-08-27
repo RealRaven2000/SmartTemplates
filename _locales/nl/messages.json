@@ -1836,7 +1836,7 @@
     "message": "Ondersteuningspagina"
   },
   "variable.search": {
-    "message": "Voer een zoekterm in en druk op {{Enter}}. Druk op {{F3}} om het zoeken te herhalen."
+    "message": "Voer een zoekterm in en druk op {{Enter}}. Druk op {{F4}} om het zoeken te herhalen."
   },
   "var_custom.cap": {
     "message": "Variabelen voor aangepaste datumopmaak"
@@ -1857,7 +1857,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Accountsjablonen - nieuwe identiteiten konden niet worden toegevoegd in de nieuwe versie van het instellingenvenster. [issue 300] {L2}{L1} Vernieuwknop toegevoegd voor het accounts-dropdownmenu. [issue 307] {L2}{L1} Verbeterde Chinese vertalingen voor de term 'accounts' - dank aan Y.D.X. [issue 302] {L2}{L1} Klikken op {{Knoplabel verbergen}} in het koptekstgedeelteknopmenu werkt weer. [issue 304] {L2}{L1} in Tb128 - pop-up voor beperkte functies: melding leidt tot uitzondering + pictogram niet weergegeven. [issue 308] {L2} "
+    "message": "{L1} Pictogramindelingen zijn verbeterd voor donkere thema's en afhankelijkheden van lettertypen voor pictogrammen die tekst bevatten, zijn verwijderd. [issue 310] {L2}{L1} Verschillende verbeteringen op de nieuwe Variabelen-pagina: Functie toegevoegd om alle hoofdstukken in te klappen en het uitvouwen van alle hoofdstukken is gecorrigeerd. Het zoekvak is nog in ontwikkeling. [issue 314] {L2}{L1} De opdracht 'menu-items configureren...' opent nu de sjabloonbestandenpagina in het nieuwe instellingenvenster. {L2}{L1} Sjabloonfuncties werken nu ook bij het schrijven van een nieuw bericht in een nieuwsgroepaccount. {L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

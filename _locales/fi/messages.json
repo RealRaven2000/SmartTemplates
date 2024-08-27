@@ -1892,7 +1892,7 @@
     "message": "Tuen kotisivu"
   },
   "variable.search": {
-    "message": "Kirjoita hakutermi ja paina {{Enter}}. Toista haku painamalla {{F3}}."
+    "message": "Kirjoita hakutermi ja paina {{Enter}}. Toista haku painamalla {{F4}}."
   },
   "var_custom.cap": {
     "message": "Muuttujat muokatulle päiväyksen muotoilulle"
@@ -1913,7 +1913,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Tilimallit - uusia identiteettejä ei voitu lisätä asetusten valintaikkunan uudessa versiossa. [issue 300] {L2}{L1} Päivityspainike lisätty tilien avattavaan valikkoon. [issue 307] {L2}{L1} Parannetut kiinalaiset käännökset termille 'tilit' - kiitos Y.D.X.:lle. [issue 302] {L2}{L1} Klikkaaminen {{Piilota painikkeen teksti}} otsikkoalueen painikkeiden valikossa toimii jälleen. [issue 304] {L2}{L1} Tb128:ssa - rajoitettujen ominaisuuksien ponnahdusikkuna: ilmoitus johtaa poikkeukseen + kuvaketta ei näytetä. [issue 308] {L2} "
+    "message": "{L1} Kuvakkeiden ulkoasuja on parannettu tummia teemoja varten, ja kuvakkeiden, jotka sisältävät tekstiä, fonttiriippuvuudet on poistettu. [issue 310] {L2}{L1} Useita parannuksia uudelle Muuttujat-sivulle: Lisätty toiminto kaikkien lukujen sulkemiseksi ja korjattu kaikkien lukujen laajentaminen. Hakukenttä on vielä työn alla. [issue 314] {L2}{L1} Komento 'määritä valikkokohteet...' avaa nyt mallipohjatiedostosivun uudessa Asetukset-valintaikkunassa. {L2}{L1} Mallipohjatoiminnot toimivat nyt myös kirjoitettaessa uutta viestiä uutisryhmätilissä. {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

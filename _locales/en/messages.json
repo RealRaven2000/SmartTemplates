@@ -1280,7 +1280,7 @@
     "message": "Replace some text with something else."
   },
   "replaceText.selection" : {
-    "message": "[Optional] Replaces all matching text within the current selection with the replament text - works in Smart Fragments only."
+    "message": "[Optional] Replaces all matching text within the current selection with the replacement text - works in Smart Fragments only."
   },
   "replacementHTML": {
     "message": "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found."
@@ -1940,7 +1940,7 @@
     "message": "Support Page"
   },
   "variable.search": {
-    "message": "Enter a search term and press {{Enter}}. Press {{F3}} to repeat search. {{Shift}} + {{F3}} searches backwards."
+    "message": "Enter a search term and press {{Enter}}. Press {{F4}} to repeat search. {{Shift}} + {{F4}} searches backwards."
   },
   "var_custom.cap": {
     "message": "Variables for customized 'Date format'"
@@ -1961,7 +1961,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Account Templates - new Identities could not be added in the new version of the settings dialog. [issue 300] {L2}{L1} Added Refresh button for accounts dropdown. [issue 307] {L2}{L1} Improved Chinese translations for term 'accounts' - thanks to Y.D.X. [issue 302] {L2}{L1} Clicking on {{Hide Button Label}} in header area button menu works again. [issue 304] {L2}{L1} in Tb128 - popup for restricted features: notification leads to exception + icon not displayed. [issue 308] {L2} "
+    "message": "{L1} Icon layouts were improved for dark themes and any font dependencies for icons containing text were removed. [issue 310] {L2}{L1} Multiple improvements on new Variables page: Added function to collapse all chapters and fixed expand all chapters. The search box is still a work in progress. [issue 314] {L2}{L1} The command 'configure menu items…' now opens the template files page in the new Settings dialog. {L2}{L1} Template functions now work also when writing a new message in a newsgroup account. {L2} "
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

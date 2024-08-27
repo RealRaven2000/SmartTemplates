@@ -1845,7 +1845,7 @@
     "message": "Ayudar al sitio web"
   },
   "variable.search": {
-    "message": "Ingrese un término de búsqueda y presione {{Enter}}. Pulse {{F3}} para repetir la búsqueda."
+    "message": "Ingrese un término de búsqueda y presione {{Enter}}. Pulse {{F4}} para repetir la búsqueda."
   },
   "var_custom.cap": {
     "message": "Variables para formatos de fecha personalizados"
@@ -1866,7 +1866,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Plantillas de cuenta: no se pudieron agregar nuevas identidades en la nueva versión del cuadro de diálogo de configuración. [issue 300] {L2}{L1} Botón de actualización agregado para el menú desplegable de cuentas. [issue 307] {L2}{L1} Mejora de las traducciones chinas para el término 'cuentas' - gracias a Y.D.X. [issue 302] {L2}{L1} Hacer clic en {{Ocultar etiqueta del botón}} en el menú del botón del área del encabezado vuelve a funcionar. [issue 304] {L2}{L1} en Tb128 - ventana emergente para funciones restringidas: la notificación conduce a una excepción + el icono no se muestra. [issue 308] {L2} "
+    "message": "{L1} Se mejoraron los diseños de íconos para temas oscuros y se eliminaron las dependencias de fuentes para íconos que contienen texto. [issue 310] {L2}{L1} Varias mejoras en la nueva página de Variables: Se agregó la función para colapsar todos los capítulos y se corrigió la expansión de todos los capítulos. El cuadro de búsqueda todavía está en desarrollo. [issue 314] {L2}{L1} El comando 'configurar elementos del menú...' ahora abre la página de archivos de plantillas en el nuevo cuadro de diálogo Configuración. {L2}{L1} Las funciones de plantillas ahora también funcionan al escribir un nuevo mensaje en una cuenta de grupo de noticias. {L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

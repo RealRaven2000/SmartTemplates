@@ -1881,7 +1881,7 @@
     "message": "Подршка"
   },
   "variable.search": {
-    "message": "Унесите термин за претрагу и притисните {{Enter}}. Притисните {{F3}} да поновите претрагу."
+    "message": "Унесите термин за претрагу и притисните {{Enter}}. Притисните {{F4}} да поновите претрагу."
   },
   "var_custom.cap": {
     "message": "Променљиве за прилагођени формат датума"
@@ -1902,7 +1902,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{L1} Шаблони налога - нови идентитети нису могли бити додати у новој верзији дијалога подешавања. [issue 300] {L2}{L1} Додат тастер за освежавање за падајући мени налога. [issue 307] {L2}{L1} Побољшани кинески преводи за термин 'налози' - захваљујући Y.D.X. [issue 302] {L2}{L1} Клик на {{Сакриј ознаку дугмета}} у менију дугмета у области заглавља поново ради. [issue 304] {L2}{L1} у Tb128 - попуп за ограничене функције: обавештење доводи до изузетка + икона није приказана. [issue 308] {L2} "
+    "message": "{L1} Rasporedi ikona su poboljšani za tamne teme i sve zavisnosti od fonta za ikone koje sadrže tekst su uklonjene. [issue 310] {L2}{L1} Višestruka poboljšanja na novoj stranici sa promenljivama: Dodata je funkcija za sažimanje svih poglavlja i ispravljeno proširenje svih poglavlja. Polje za pretragu je još uvek u izradi. [issue 314] {L2}{L1} Komanda 'konfiguriši stavke menija...' sada otvara stranicu sa datotekama šablona u novom dijalogu sa podešavanjima. {L2}{L1} Funkcije šablona sada rade i kada se piše nova poruka na nalogu diskusione grupe. {L2}"
   },
   "whitespace_note": {
     "message": "Имајте на уму да се бели простор може најбоље представити као \\s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити."

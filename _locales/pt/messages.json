@@ -1860,7 +1860,7 @@
     "message": "Página de suporte"
   },
   "variable.search": {
-    "message": "Digite um termo de pesquisa e pressione {{Enter}}. Pressione {{F3}} para repetir a pesquisa."
+    "message": "Digite um termo de pesquisa e pressione {{Enter}}. Pressione {{F4}} para repetir a pesquisa."
   },
   "var_custom.cap": {
     "message": "Variáveis para data e hora personalizáveis "
@@ -1878,7 +1878,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Modelos de conta - novas identidades não puderam ser adicionadas na nova versão da caixa de diálogo de configurações. [issue 300] {L2}{L1} Adicionado botão Atualizar para o menu suspenso de contas. [issue 307] {L2}{L1} Melhorias nas traduções chinesas para o termo 'contas' - obrigado a Y.D.X. [issue 302] {L2}{L1} Clicar em {{Ocultar rótulo do botão}} no menu do botão da área do cabeçalho funciona novamente. [issue 304] {L2}{L1} no Tb128 - pop-up para recursos restritos: a notificação leva a uma exceção + ícone não exibido. [issue 308] {L2} "
+    "message": "{L1} Os layouts de ícones foram melhorados para temas escuros e todas as dependências de fontes para ícones que contêm texto foram removidas. [issue 310] {L2}{L1} Várias melhorias na nova página de Variáveis: função para recolher todos os capítulos adicionada e corrigida a expansão de todos os capítulos. A caixa de pesquisa ainda está em desenvolvimento. [issue 314] {L2}{L1} O comando 'configurar itens do menu...' agora abre a página de arquivos de modelo na nova caixa de diálogo Configurações. {L2}{L1} As funções de modelo agora também funcionam ao escrever uma nova mensagem em uma conta de grupo de notícias. {L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

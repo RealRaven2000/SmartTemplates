@@ -1896,7 +1896,7 @@
     "message": "Pagina d'ajuda"
   },
   "variable.search": {
-    "message": "Introduïu un terme de cerca i premeu {{Retorn}}. Premeu {{F3}} per repetir la cerca."
+    "message": "Introduïu un terme de cerca i premeu {{Retorn}}. Premeu {{F4}} per repetir la cerca."
   },
   "var_custom.cap": {
     "message": "Variablas per personalizar lo format de data "
@@ -1917,7 +1917,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Plantilles de compte - no es podien afegir noves identitats en la nova versió del diàleg de configuració. [issue 300] {L2}{L1} Afegit botó de refresc per al desplegable de comptes. [issue 307] {L2}{L1} Millorades les traduccions xineses per al terme 'comptes' - gràcies a Y.D.X. [issue 302] {L2}{L1} Fer clic a {{Amaga l'etiqueta del botó}} al menú del botó de l'àrea de capçalera torna a funcionar. [issue 304] {L2}{L1} en Tb128 - finestra emergent per a funcions restringides: la notificació condueix a una excepció + icona no es mostra. [issue 308] {L2} "
+    "message": "{L1} S'han millorat els dissenys d'icones per a temes foscos i s'han eliminat les dependències de fonts per a icones que contenen text. [issue 310] {L2}{L1} Diverses millores a la nova pàgina de Variables: Afegida funció per col·lapsar tots els capítols i s'ha corregit l'expansió de tots els capítols. El quadre de cerca encara està en desenvolupament. [issue 314] {L2}{L1} L'ordre 'configura els elements del menú...' ara obre la pàgina de fitxers de plantilles al nou diàleg de Configuració. {L2}{L1} Les funcions de la plantilla també funcionen quan es redacta un nou missatge en un compte de grup de notícies. {L2}"
   }, 
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

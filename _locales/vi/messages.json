@@ -274,7 +274,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Mẫu tài khoản - không thể thêm nhận dạng mới trong phiên bản mới của hộp thoại cài đặt. [issue 300] {L2}{L1} Đã thêm nút Làm mới cho menu thả xuống tài khoản. [issue 307] {L2}{L1} Cải thiện bản dịch tiếng Trung cho thuật ngữ 'tài khoản' - cảm ơn Y.D.X. [issue 302] {L2}{L1} Nhấp vào {{Hide Button Label}} trong menu nút khu vực tiêu đề lại hoạt động. [issue 304] {L2}{L1} trong Tb128 - cửa sổ bật lên cho các tính năng bị hạn chế: thông báo dẫn đến ngoại lệ + biểu tượng không được hiển thị. [issue 308] {L2} "
+    "message": "{L1} Các bố cục biểu tượng đã được cải thiện cho chủ đề tối và các phông chữ phụ thuộc cho các biểu tượng có chứa văn bản đã bị loại bỏ. [issue 310] {L2}{L1} Nhiều cải tiến trên trang Biến mới: Đã thêm chức năng thu gọn tất cả các chương và sửa lỗi mở rộng tất cả các chương. Hộp tìm kiếm vẫn đang được phát triển. [issue 314] {L2}{L1} Lệnh 'định cấu hình các mục menu...' bây giờ mở trang tệp mẫu trong hộp thoại Cài đặt mới. {L2}{L1} Các chức năng mẫu bây giờ cũng hoạt động khi viết tin nhắn mới trong tài khoản nhóm tin. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

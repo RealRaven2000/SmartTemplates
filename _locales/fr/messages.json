@@ -1893,7 +1893,7 @@
     "message": "Page d'aide"
   },
   "variable.search": {
-    "message": "Saisissez un terme de recherche et appuyez sur {{Entrée}}. Appuyez sur {{F3}} pour répéter la recherche."
+    "message": "Saisissez un terme de recherche et appuyez sur {{Entrée}}. Appuyez sur {{F4}} pour répéter la recherche."
   },
   "var_custom.cap": {
     "message": "Variables pour personnaliser le format de date"
@@ -1914,7 +1914,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Modèles de compte - de nouvelles identités ne pouvaient pas être ajoutées dans la nouvelle version de la boîte de dialogue des paramètres. [issue 300] {L2}{L1} Bouton de rafraîchissement ajouté pour le menu déroulant des comptes. [issue 307] {L2}{L1} Amélioration des traductions chinoises pour le terme 'comptes' - merci à Y.D.X. [issue 302] {L2}{L1} Cliquer sur {{Masquer l'étiquette du bouton}} dans le menu des boutons de la zone d'en-tête fonctionne à nouveau. [issue 304] {L2}{L1} dans Tb128 - popup pour les fonctionnalités restreintes : la notification entraîne une exception + l'icône ne s'affiche pas. [issue 308] {L2} "
+    "message": "{L1} Les mises en page des icônes ont été améliorées pour les thèmes sombres et toutes les dépendances de polices pour les icônes contenant du texte ont été supprimées. [issue 310] {L2}{L1} Plusieurs améliorations sur la nouvelle page des Variables : ajout de la fonction permettant de réduire tous les chapitres et correction de l'expansion de tous les chapitres. La boîte de recherche est encore en cours de développement. [issue 314] {L2}{L1} La commande 'configurer les éléments de menu...' ouvre désormais la page des fichiers de modèles dans la nouvelle boîte de dialogue Paramètres. {L2}{L1} Les fonctions de modèles fonctionnent désormais également lors de la rédaction d'un nouveau message dans un compte de groupe de discussion. {L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
