@@ -185,7 +185,7 @@
     "message": "(example for any address variable) copy mail address of original sender to clipboard."
   },
   "clipboard.dateformat": {
-    "message": "copies the formatted date to clipboard. format string must be enclosed in double quotes. For more information on formatting syntax see also the following section: "
+    "message": "copies the formatted date to clipboard. The format string must be enclosed in double quotes. For more information on formatting syntax see also the following section: "
   },
   "clipboard.setHeader": {
     "message": "Use clipboard contents to set the cc - (works for any textual header)."

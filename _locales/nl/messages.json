@@ -181,6 +181,9 @@
   "clipboard.from": {
     "message": "(voorbeeld voor elke adresvariabele) kopieer het e-mailadres van de oorspronkelijke afzender naar het klembord."
   },
+  "clipboard.dateformat": {
+      "message": "kopieert de opgemaakte datum naar het klembord. De formaatstring moet tussen dubbele aanhalingstekens staan. Voor meer informatie over de opmaaksyntaxis zie ook de volgende sectie: "
+  },
   "clipboard.setHeader": {
     "message": "Gebruik de inhoud van het klembord om de cc in te stellen - (werkt voor elke tekstuele kop)."
   },

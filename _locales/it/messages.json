@@ -178,6 +178,9 @@
   "clipboard.from": {
     "message": "(esempio per qualsiasi variabile di indirizzo) copia l'indirizzo e-mail del mittente originale negli appunti."
   },
+  "clipboard.dateformat": {
+    "message": "copia la data formattata negli appunti. La stringa di formato deve essere racchiusa tra virgolette doppie. Per ulteriori informazioni sulla sintassi di formattazione, vedere anche la sezione seguente: "
+  },
   "clipboard.setHeader": {
     "message": "Usa il contenuto degli appunti per impostare cc - (funziona per qualsiasi intestazione testuale)."
   },

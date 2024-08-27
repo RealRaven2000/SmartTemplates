@@ -181,6 +181,9 @@
   "clipboard.from": {
     "message": "(primer za katero koli spremenljivko naslova) kopirajte poštni naslov prvotnega pošiljatelja v odložišče."
   },
+  "clipboard.dateformat": {
+    "message": "kopira oblikovan datum v odložišče. Niz oblike mora biti v narekovajih. Za več informacij o sintaksi oblikovanja glejte tudi naslednji razdelek: "
+  },
   "clipboard.setHeader": {
     "message": "Uporabite vsebino odložišča, da nastavite cc - (deluje za katero koli besedilno glavo)."
   },

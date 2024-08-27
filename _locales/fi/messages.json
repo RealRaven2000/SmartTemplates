@@ -181,6 +181,9 @@
   "clipboard.from": {
     "message": "(esimerkki mistä tahansa osoitemuuttujasta) kopioi alkuperäisen lähettäjän sähköpostiosoite leikepöydälle."
   },
+  "clipboard.dateformat": {
+      "message": "kopioi muotoillun päivämäärän leikepöydälle. Muotoilumerkkijonon on oltava lainausmerkeissä. Lisätietoja muotoilusyntaksista on seuraavassa osiossa: "
+  },
   "clipboard.setHeader": {
     "message": "Käytä leikepöydän sisältöä asettaaksesi cc - (toimii kaikissa tekstiotsikoissa)."
   },

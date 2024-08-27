@@ -181,6 +181,9 @@
   "clipboard.from": {
     "message": "（任何地址变量的示例）将原始发件人的邮件地址复制到剪贴板。"
   },
+  "clipboard.dateformat": {
+    "message": "将格式化的日期复制到剪贴板。格式字符串必须用双引号括起来。有关格式化语法的更多信息，请参见以下部分："
+  },
   "clipboard.setHeader": {
     "message": "使用剪贴板内容设置抄送 - （适用于任何文本标题）。"
   },

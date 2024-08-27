@@ -181,6 +181,9 @@
   "clipboard.from": {
     "message": "(ejemplo para cualquier variable de dirección) copie la dirección de correo del remitente original al portapapeles."
   },
+  "clipboard.dateformat": {
+    "message": "copia la fecha formateada al portapapeles. La cadena de formato debe estar entre comillas dobles. Para más información sobre la sintaxis de formato, consulte también la siguiente sección: "
+  },
   "clipboard.setHeader": {
     "message": "Use el contenido del portapapeles para establecer el cc - (funciona para cualquier encabezado de texto)."
   },

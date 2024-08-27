@@ -110,6 +110,9 @@
   "clipboard.from": {
     "message": "(contoh untuk variabel alamat apa pun) salin alamat email pengirim asli ke clipboard."
   },
+  "clipboard.dateformat": {
+      "message": "menyalin tanggal yang diformat ke papan klip. String format harus diapit dengan tanda kutip ganda. Untuk informasi lebih lanjut tentang sintaks pemformatan, lihat juga bagian berikut: "
+  },
   "clipboard.setHeader": {
     "message": "Gunakan konten clipboard untuk mengatur cc - (berfungsi untuk header tekstual apa pun)."
   },

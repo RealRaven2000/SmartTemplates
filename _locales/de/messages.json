@@ -177,6 +177,10 @@
   "clipboard.from": {
     "message": "(Beispiel für beliebige Adressvariable) Mailadresse des ursprünglichen Absenders in die Zwischenablage kopieren."
   },
+  "clipboard.dateformat": {
+      "message": "kopiert das formatierte Datum in die Zwischenablage. Der Formatstring muss in Anführungszeichen stehen. Weitere Informationen zur Formatierungssyntax finden Sie auch im folgenden Abschnitt: "
+  },
+
   "clipboard.setHeader": {
     "message": "Verwendet den Inhalt der Zwischenablage, um den cc zu setzen - (funktioniert für jeden Textheader)."
   },

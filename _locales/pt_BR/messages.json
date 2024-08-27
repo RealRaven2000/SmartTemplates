@@ -178,6 +178,9 @@
   "clipboard.from": {
     "message": "(exemplo para qualquer variável de endereço) copie o endereço de e-mail do remetente original para a área de transferência."
   },
+  "clipboard.dateformat": {
+    "message": "copia a data formatada para a área de transferência. A string de formato deve estar entre aspas duplas. Para mais informações sobre a sintaxe de formatação, veja também a seção a seguir: "
+  },
   "clipboard.setHeader": {
     "message": "Use o conteúdo da área de transferência para definir o cc - (funciona para qualquer cabeçalho textual)."
   },

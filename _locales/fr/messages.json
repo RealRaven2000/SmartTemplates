@@ -184,6 +184,9 @@
   "clipboard.from": {
     "message": "(exemple pour toute variable d'adresse) copier l'adresse e-mail de l'expéditeur d'origine dans le presse-papiers."
   },
+  "clipboard.dateformat": {
+      "message": "copie la date formatée dans le presse-papiers. La chaîne de format doit être entre guillemets. Pour plus d'informations sur la syntaxe de formatage, consultez également la section suivante : "
+  },
   "clipboard.setHeader": {
     "message": "Utilisez le contenu du presse-papiers pour définir le cc - (fonctionne pour n'importe quel en-tête textuel).board."
   },

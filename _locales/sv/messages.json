@@ -181,6 +181,9 @@
   "clipboard.from": {
     "message": "(exempel för valfri adressvariabel) kopiera e-postadressen för den ursprungliga avsändaren till urklipp."
   },
+  "clipboard.dateformat": {
+    "message": "kopierar det formaterade datumet till urklipp. Formateringssträngen måste vara omsluten med dubbla citattecken. För mer information om formateringssyntax, se även följande avsnitt: "
+  },
   "clipboard.setHeader": {
     "message": "Använd urklippsinnehåll för att ställa in cc - (fungerar för alla textrubriker)."
   },

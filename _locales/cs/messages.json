@@ -178,6 +178,9 @@
   "clipboard.from": {
     "message": "(příklad pro libovolnou proměnnou adresy) zkopírujte poštovní adresu původního odesílatele do schránky."
   },
+  "clipboard.dateformat": {
+      "message": "zkopíruje formátované datum do schránky. Řetězec formátu musí být uzavřen do dvojitých uvozovek. Další informace o syntaxi formátování najdete také v následující části: "
+  },
   "clipboard.setHeader": {
     "message": "Pomocí obsahu schránky nastavte desku cc - (funguje pro jakékoli textové záhlaví)."
   },

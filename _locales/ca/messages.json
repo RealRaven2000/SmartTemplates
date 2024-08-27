@@ -181,6 +181,9 @@
   "clipboard.from": {
     "message": "(exemple per a qualsevol variable d'adreça) copieu l'adreça de correu del remitent original al porta-retalls."
   },
+  "clipboard.dateformat": {
+    "message": "copia la data formatada al porta-retalls. La cadena de format ha d'estar entre cometes dobles. Per obtenir més informació sobre la sintaxi de format, consulteu també la secció següent: "
+  },
   "clipboard.setHeader": {
     "message": "Utilitzeu el contingut del porta-retalls per configurar el cc - (funciona per a qualsevol capçalera textual)."
   },
