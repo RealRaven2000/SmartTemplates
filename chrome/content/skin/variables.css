@@ -53,9 +53,9 @@ p#allexpander, p#collapseAll {
   display: flex;
   position: fixed;
   min-width: 9em;
-  top: 1px;
-  right: 3px;
-	opacity: 0.7;
+  top: 6px;
+  right: 6px;
+	opacity: 0.9;
 }
 
 .help #searchHelpContent {
@@ -71,6 +71,10 @@ p#allexpander, p#collapseAll {
 
 .help #searchHelpContent.hidden {
   visibility: hidden;
+}
+.help *.searchFocus {
+  outline: dotted rgba(250,30,180,0.9) 1px  !important;
+  background-color:rgba(255, 141, 141, 0.2) !important;
 }
 
 #searchHelpContent .key {
