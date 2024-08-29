@@ -43,7 +43,7 @@ SmartTemplates.Help = {
 	onBodyClick : function onClick (element, evt) {
 		SmartTemplates.Util.logDebug("Help.onBodyClick (" + element.tagName + ") ");
 	},
-  onLoad: function () {
+  onLoad: async function () {
 		// custom event listener for clicking code words
 		document.addEventListener("SmartTemplate4CodeWord",
       SmartTemplates.Listener.listen,
