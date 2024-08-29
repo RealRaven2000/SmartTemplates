@@ -1189,9 +1189,6 @@ SmartTemplates.Settings = {
 			await this.removeIdentity(id);
 			document.getElementById("msgIdentity").removeChild(option);
 		}
-		if (await SmartTemplates.Preferences.isDebugOption("settings")) {
-			debugger;
-		}
 		
 		await this.fillIdentityListPopup(currentId, false);
 		await loadPrefs("#account_deckA");  // reinitialise all decks from data store
@@ -1314,10 +1311,6 @@ SmartTemplates.Settings = {
 	// Switch Identity (from account setting window)	
 	//--------------------------------------------------------------------
 	switchIdentity : async function(idKey, composeType)	{
-		if (await SmartTemplates.Preferences.isDebugOption("settings")) {
-			debugger;
-		}
-
 		let wasSwitched = false;
     composeType = composeType || null;
  		// remember so we can set it when switching identities		
@@ -2532,9 +2525,6 @@ async function selectComposeType(forceType=null, forceKey = null) {
 	const params = new URLSearchParams(window.location.search);
 	const composeType = forceType || params.get("composeType");
 	const idKey = forceKey || params.get("id") || "common";
-	if (await SmartTemplates.Preferences.isDebugOption("settings")) {
-		debugger;
-	}
 	// select the correct compose type tab
 	let btnSelector;
 	switch (composeType) {
@@ -2627,4 +2617,15 @@ addEventListener("unload", async (event) => {
   SmartTemplates.Settings.onUnload();
 
 });  
+
+addEventListener("keydown", (event) => {
+	console.log(event);
+	if (event.code == "F4") {
+		// forward event to help
+		console.log("smartTemplate-settings.html keydown", event);
+		event.preventDefault();
+		event.stopPropagation();
+		debugger;
+	}
+});
 
