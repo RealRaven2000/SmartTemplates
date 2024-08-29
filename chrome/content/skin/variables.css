@@ -61,12 +61,12 @@ p#allexpander, p#collapseAll {
 .help #searchHelpContent {
   background-color: white;
   border: 1px solid rgba(80,80,80,.8);
-  box-shadow: 3px 3px 2px rgba(80,80,80,.8);
+  box-shadow: 3px 3px 2px rgba(80,80,80,.6);
   padding: 2px 5px;
   opacity: 0.83;
   position: fixed;
-  top: 20px;
-  right: 3px;
+  top: 25px;
+  right: 6px;
 }
 
 .help #searchHelpContent.hidden {
