@@ -170,213 +170,210 @@
     if (!range) { return; }
     range.setStart(focusNode, sel.anchorOffset);
     range.setEnd(focusNode, sel.anchorOffset + text.length);
-    window.getSelection().addRange(range);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
   }
   
-  // [issue 215] search box for variables tab
-  async function findSearchString(text, repeat, backwards=false) {
-    const caseSensitive = false, 
-        wraparound = true, 
-        wholeword = false,
-        frames = true, // test
-        dlg = false,
-        searchText = text.toLocaleLowerCase(),
-        isDebug = await isDebugLegacyOption();
-
-    if (isDebug) { showActiveElement("findSearchString"); }
-
-    function highlightContainer(el, on = true) {
-      if (!el) return null;
-      let highlight = el.classList  ? el : el.parentNode;
-      if (!highlight) return null;
-      if (!highlight.classList) return null;
-
-      if (on) {
-        highlight.classList.add("searchFocus");
-      } else {
-        highlight.classList.remove("searchFocus");
+  // determine parentChapter of any element
+  function parentChapterOf(el) {
+    if (!el) return null;
+    if (el?.tagName=="h1") { return el; }
+    let p = el?.parentNode;
+    while (p) {
+      if (p.nodeType==1 && p.classList.contains("chapterBody")) {
+        return p;
       }
-      return highlight;
+      p = p?.parentNode;
     }
-        
-    let focusNode;
-    if (!repeat) {
-      let sel = window.getSelection();
-      LastSelection = cloneSelection(sel);
-      focusNode = sel?.focusNode || null;
-    } else {
-      // set selection again (in case find next / previous were clicked)
-      reSelectRange(LastSelection, LastFoundNode, text);
-      focusNode = LastFoundNode;
-    }
-    let chapters = Array.from(document.getElementsByClassName('chapterBody'));
-    let c;
-    if (focusNode) {
-      let here = focusNode.parentNode;
-      c = here;
-      if (here.tagName=="h1") {
-        // find next chapter.
-        while(c && !c.classList.contains("chapterBody")) {
-          c = backwards ? c.previousElementSibling : c.nextElementSibling;
-        }
-      } else {
-        while(c && ((!c.classList) || (c.classList && !c.classList.contains("chapterBody")))) {
-          c = c.parentNode;
-          if (!c || c.id == "#helpContents") { 
-            // top level!
-            c = backwards ? chapters[chapters.length-1] : chapters[0];
-            break;
-          }
-        }
-      }
-    } else {
-       //  search from top / end
-      c = backwards ? chapters[chapters.length-1] : chapters[0];
-    }
-    // get next chapter
-    if (c) {
-      let found = false,
-          foundInChapter = false,
-          currentChapter = null;
-          
-      let start = backwards ? (chapters.length-1) : 0,
-          end = backwards ? 0 : chapters.length;
-      
-      let delta = backwards ? (-1) : 1;
-      function testCollapsedMatch(el, searchString) {
-        if (el.classList.contains("collapsed") && el.textContent.toLocaleLowerCase().includes(searchString)) {
-          if (isDebug) { console.log("Found string in collapsed chapter: ", el); }
-          // open chapter with match
-          el.classList.remove("collapsed");
-          return true;
-        }
-        return false;
-      }
-      
-      for (let i=start; 
-           (backwards, i, end) => { return backwards ? (i>=0) : (i<end) } ; 
-           i=i+delta ) {
-        if (backwards && i<0 || !backwards && i>end) {
-          if (backwards && i<0) {
-            testCollapsedMatch(chapters[0], searchText);
-          }
-          break;
-        }
-        // let previousChapter = currentChapter; 
-        currentChapter = chapters[i];
-        if (isDebug) { 
-          const txtChapter = currentChapter?.previousElementSibling?.textContent || currentChapter?.textContent?.substring(0,50) + "...";
-          console.log(`Search  chapter[${i}]: ${txtChapter} ...`); 
-        }
-        if (currentChapter === c || found) {
-          found = true;
-          // find next chapter which contains the search string and expand it.
-          if (testCollapsedMatch(c, searchText)) {
-            foundInChapter = true;
-            if (isDebug) { console.log(`Found '${searchText}' in Chapter`);}
-          } else {
-            c = currentChapter;
-            // if we are already on a search result in a uncollapsed chapter
-            // check if there are still matches further down / up in current chapter:
-            if (focusNode && c && c.classList && c.classList.contains("chapterBody") && !c.classList.contains("collapsed")) {
-              let where = backwards ? "before" : "after";
-              let nextFocus = focusNode ? focusNode.parentNode : null;
-              if (nextFocus && (nextFocus.id=="searchBox" || nextFocus.id=="allexpander")) {
-                nextFocus = document.getElementById(backwards ? "endOfHelp" : "startHeading");
-              } else if (!c.contains(nextFocus)) {
-                // we moved on to a following / previous chapter
-                nextFocus = c.firstElementChild;
-                if (nextFocus && nextFocus.tagName=="ul") {
-                  nextFocus = nextFocus.firstElementChild;
-                }
-              } else {
-                if (isDebug) { console.log(`Check ${where} selection in expanded chapter:`, focusNode); }
-              }
-              let listItem = nextFocus;
-              const listElements = ["li","aside","p","code"]; // "code" ?
-              while (listItem && (listItem.nodeType==3 || !listElements.includes(listItem.tagName))) {  
-                listItem = listItem.parentNode;
-                if (listItem.tagName == "div" && listItem.classList.contains("chapterBody")) {
-                  break;
-                }
-                if (listItem.id =="helpContents") {
-                  break;
-                }
-              }
-              if (listItem) {
-                // check following siblings
-                let sib = backwards ? listItem.previousElementSibling : listItem.nextElementSibling;
-                while(sib) {
-                  if (sib.textContent.toLocaleLowerCase().includes(searchText)) {
-                    foundInChapter = true;
-                    if (isDebug) {
-                      console.log(`Found search string in node ${sib.tagName}\n ${sib?.textContent?.substring(0,50)}...`);
-                    }
-                    break;
-                  }
-                  highlightContainer(sib, false);
-                  sib = backwards ? sib.previousElementSibling : sib.nextElementSibling;
-                  highlightContainer(sib);
-                }
-              }
-            }
-          }
-        }
-        if (foundInChapter) break;
-      }
-    }
-    if (isDebug) { console.log("After loop: invoke window.find() ... "); }
-    // if (backwards) debugger;
+    return null; // empty list
+  }
 
-    let isFound = window.find(searchText,
-                caseSensitive, 
-                backwards, 
-                wraparound, 
-                wholeword,
-                frames,
-                dlg);
-
-    if (isFound) {
-      // remember selection
-      // what if same thing is found?
-      if (backwards && LastSelection?.focusNode == window.getSelection()?.focusNode) {
-        // repeat search
-        if (isDebug) {
-          console.log({last: LastSelection?.focusNode, current: window.getSelection()?.focusNode});
-        }
-        isFound = window.find(searchText, caseSensitive, backwards, wraparound, wholeword, frames, dlg);
-      }
-
-      LastSelection = cloneSelection(window.getSelection());
-      LastFoundNode = window.getSelection()?.focusNode;
-      if (LastFoundNode) {
-        // LastFoundNode.parentElement?.focus();
-        if (isDebug) { console.log("LastFoundNode:", LastFoundNode); }
-        for (let nd=LastFoundNode; (nd) ; nd=nd.parentElement) {
-          if (nd.scrollIntoView) {
-            if (isDebug) { console.log("scrollIntoView:", nd); }
-            nd.scrollIntoView({behavior:"smooth", block: "nearest"});
-            break;
-          }
-        }
-        for (let node=LastFoundNode; node?.tagName != "body"; node=node.parentElement) {
-          if (!node.getAttribute) {
+  function serialize(listItem) {
+    //flatten an entry
+    let list = [];
+    if (!listItem.childNodes.length) {
+      list.push(listItem);
+    }
+    for (let node of listItem.childNodes) {
+      switch(node.nodeType) {
+        case 3:
+          if (node.nodeName=="br") continue;
+          if (!node.textContent.trim()) continue;
+          if (/^\s*$/.test(node.textContent)) { // empty!
             continue;
           }
-          if (node.getAttribute("tabindex")) {
-            if (isDebug) { console.log("focusing on:", node); }
-            node.focus();
-            reSelectRange(LastSelection, LastFoundNode, text);
-            break;
-          }
+          list.push(node);
+          break;
+        case 1:
+          list.push(...serialize(node));
+      }
+    }
+    if(typeof list == "undefined") {
+      debugger;
+      console.log(list);
+    }
+
+    return list;
+  }
+
+  function flattenList(ul) {
+    let list=[];
+    for (let li of ul.children) {
+      if (li.classList.contains("chapterbreak")) {
+        continue;
+      }
+      for (let child of li.childNodes) {
+        switch (child.nodeType) {
+          case 3:
+            if (child.textContent.trim()) {
+              list.push(child);
+            }
+            continue;
+          case 1:
+            if (child.nodeName=="br") continue;
+            if (child?.style?.display=="none") continue; // hidden
+            if (["aside","li","p","div","code","span"].includes(child.nodeName)) {
+              list.push(...serialize(child));
+            }
+          default:
         }
       }
-    } else { // keep last selection, so we can search backwards?
-      if (isDebug) {console.log("reSelectRange(LastFoundNode)")};
-      reSelectRange(LastSelection, LastFoundNode, text);
     }
-  }    
-    
+    if(typeof list == "undefined") {
+      debugger;
+      console.log(list);
+    }
+    return list;
+  }
+
+  function flattenChapter(chapter) {
+    let contentElements=[];
+    let chapterElements=[];
+    for (let child of chapter.children) {
+      chapterElements.push(child);
+    }
+    for (let el of chapterElements) {
+      switch(el?.tagName) {
+        case "aside": // fall-through
+        case "p":
+          contentElements.push(...serialize(el));
+          break;
+        case "ul":
+          contentElements.push(...flattenList(el));
+          break;
+      }
+    }
+    return contentElements;
+  }
+
+  function flattenDocument() {
+    const headings = Array.from(document.getElementsByClassName('helpchapter'));
+    const chapters = Array.from(document.getElementsByClassName('chapterBody'));
+    const containers = [];
+    for (let i=0; i<headings.length; i++) {
+      containers.push(headings[i]);
+      containers.push(chapters[i]);
+    }
+    // create array of searchable contents
+    const contents=[];
+    for (let el of containers ) {
+      if (el.tagName=="h1") {
+        contents.push(el.childNodes[0]);
+      }
+      if (el.classList.contains("chapterBody")) {
+        contents.push(...flattenChapter(el));
+      }
+    }
+    return contents;
+  }
+
+  async function findSearchText(searchText, repeat, backwards=false) {
+    function expandChapterOf(element) {
+      const containerChapter = parentChapterOf(element);
+      if (!containerChapter) {
+        return;
+      }
+      if (!containerChapter.classList) {
+        debugger;
+        console.log("invalid container chapter", {element, containerChapter})
+        return;
+      }
+      
+      if (containerChapter.classList && containerChapter.classList.contains("collapsed")) {
+        containerChapter.classList.remove("collapsed");
+      } else {
+        debugger;
+      }
+    }
+    function selectRange(element, pos, text) {
+      if (element.parentElement.scrollIntoView) {
+        element.parentElement.scrollIntoView({   block: "nearest",   inline: "nearest"});
+      }
+      let selection = window.getSelection();
+      let range = document.createRange();
+      range.setStart(element, pos);
+      range.setEnd(element, pos + text.length);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      return cloneSelection(selection);       
+    }
+
+    // make all searches case insensitive for ease of use
+    const text = searchText.toLocaleLowerCase();
+    const allNodes = flattenDocument();
+    // make a list of nodes containing the search text
+    const foundElements = allNodes.filter(
+      e => (e.nodeType==1 && e.textContent.toLocaleLowerCase().includes(text))
+           || 
+           (e.nodeType==3 && e.nodeValue.toLocaleLowerCase().includes(text)));
+    if (!foundElements.length) { 
+      return false;
+    }
+    console.log(foundElements);
+
+    let foundElement;
+    if(!repeat) {
+      foundElement = (backwards) ? foundElements[foundElements.length-1] : foundElements[0];
+      const textContent = (foundElement.nodeValue || foundElement.textContent).toLocaleLowerCase();
+      const startPos = textContent.indexOf(text);
+      console.log({repeat, foundElement, startPos, backwards}, textContent.substring(0,50));
+      if(startPos == -1) {
+        console.log("text not found - should not happen");
+        return false;
+      }
+
+      // Do we need to expand the chapter?
+      expandChapterOf(foundElement);
+      // remember selection
+      LastSelection = selectRange(foundElement, startPos, text);
+      return (foundElements.length>0);
+    }
+
+    let idx = foundElements.findIndex(e => e == LastSelection.focusNode);
+    let nextIdx = backwards ? idx-1 : idx+1;
+    if (nextIdx >= foundElements.length) {
+      nextIdx = 0;
+    }
+    if(nextIdx < 0) {
+      nextIdx = foundElements.length-1;
+    }
+      
+    let nextElement = foundElements[nextIdx];
+    const textContent = (nextElement.nodeValue || nextElement.textContent).toLocaleLowerCase();
+    const startPos = textContent.indexOf(text); // what if twice?
+    if(startPos == -1) {
+      console.log("text not found - should not happen");
+      return false;
+    }
+    console.log({repeat, nextIdx, startPos, backwards, nextElement});
+
+    // Do we need to expand the chapter?
+    expandChapterOf(nextElement);
+    // remember selection
+    LastSelection = selectRange(nextElement, startPos, text);
+    return (foundElements.length>0);
+  }
 
   function fixClipboardNote() {
     let note1 = document.getElementById("clipboardNotes");
@@ -388,7 +385,7 @@
     }    
   }
 
-  function initSearch() {
+  async function initSearch() {
     const searchBox = document.getElementById("search");
     if (searchBox) {
       // we are using the tabindex=-1 hack to make the list items searchable even if the user highlights text or 
@@ -402,7 +399,7 @@
             let search = target.value;
             event.preventDefault();
             event.stopPropagation();
-            findSearchString(search);
+            await findSearchText(search);
             document.getElementById("findnext").style.display="inline-block";
             document.getElementById("findprevious").style.display="inline-block";
             break;
@@ -424,7 +421,7 @@
         searchBox.focus();
         return;
       }
-      await findSearchString(searchBox.value, true, backwards);
+      await findSearchText(searchBox.value, true, backwards);
       searchHelpContent.classList.add("hidden");
     }
 
@@ -458,7 +455,7 @@
             let search = document.getElementById("search");
             if (search.value) {
               // event.originalTarget.ownerDocument.body.focus();
-              let isFound = await findSearchString(search.value, true, backwards);
+              let isFound = await findSearchText(search.value, true, backwards);
               document.getElementById("searchHelpContent").classList.add("hidden");
               if (isFound) {
                 let el = LastSelection.focusNode;
@@ -477,12 +474,6 @@
                     break;
                   }
                 }
-                // anchorOffset: sel.anchorOffset,
-                // direction: sel.direction,
-                // focusNode: sel.focusNode,
-                // focusOffset: sel.focusOffset,
-                // isCollapsed: sel.isCollapsed,
-                // rangeCount: sel.rangeCount                
               }
               // fix lost focus problem
               // event.originalTarget.ownerDocument.body.focus();

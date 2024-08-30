@@ -130,6 +130,7 @@ p#allexpander, p#collapseAll {
   display: flex;
   flex-direction: column;
   justify-content: start;
+  scroll-margin-top: 2em;
 }
 
 h1.helpchapter {
