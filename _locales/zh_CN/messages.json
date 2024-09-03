@@ -655,6 +655,15 @@
   "lastName.label": {
     "message": "姓氏"
   },
+  "license-discount": {
+    "message": "立即节省 $discount$",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "感谢您最近延长许可证或捐赠。 当您帮助将来对该插件进行验证时，只需关闭此窗口即可。"
@@ -966,15 +975,15 @@
         "example": "使用通用"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "以下设置在没有特定身份模板时应用，或在为该身份选择 “$pref_def$” 时应用。",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "使用通用"
   },
@@ -1135,7 +1144,7 @@
     "message": "用 <br> 替换纯文本签名中的换行符"
   },
   "pref_silentUpdates": {
-    "message":  "不要打开带有版本历史记录的选项卡"
+    "message": "不要打开带有版本历史记录的选项卡"
   },
   "pref_silentUpdates_tip": {
     "message": "SmartTemplates更新後，請勿打開更改日誌。"
@@ -1164,7 +1173,7 @@
   "preheader.inlineStyles": {
     "message": "[可选] 添加您自己的样式属性，以分号分隔。没有这个参数，SmartTemplates 将插入 'display:none' 来自动使该部分不可见。"
   },
-    
+
   "preheader.text": {
     "message": "预览文本必须包含在双引号内，双引号也可以包含 $clipboardStarred$ 关键字。或者您可以使用 $clipboardLiteral$ 或 $selectionLiteral$（后者仅在从智能片段使用时有效）",
     "placeholders": {
@@ -1176,7 +1185,7 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
@@ -1190,7 +1199,7 @@
   },
   "pricing.section.hint": {
     "message": "注意：价格因许可证型号、国家/地区、增值税税率、当前折扣或已购买的许可证而异。"
-  },  
+  },
   "pricing.title": {
     "message": "价钱"
   },
@@ -1253,7 +1262,7 @@
   },
   "replaceText.selection": {
     "message": "[可选] 用替换文本替换当前选择中的所有匹配文本 - 仅在智能片段中有效。"
-  },  
+  },
   "replacementHTML": {
     "message": "必须用双引号引起来-文本或html标记都将在找到匹配项的地方插入引号中。"
   },
@@ -1339,7 +1348,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates 已更新！"
+    "message": "SmartTemplates 已更新."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶阅读新闻！"
   },
   "snippets.head": {
     "message": "智能片段"
@@ -1622,7 +1634,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "将整个匹配转换为大写。"
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "文本操作"
   },
@@ -1867,10 +1879,10 @@
     "message": "GMT, PST, EST, …"
   },
   "updates.changeLog": {
-    "message" : "发行说明（英文）"
+    "message": "发行说明（英文）"
   },
   "updates.news": {
-    "message" : "最新消息"
+    "message": "最新消息"
   },
   "updates.title": {
     "message": "更新"

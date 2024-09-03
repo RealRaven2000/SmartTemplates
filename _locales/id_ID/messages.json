@@ -111,7 +111,7 @@
     "message": "(contoh untuk variabel alamat apa pun) salin alamat email pengirim asli ke clipboard."
   },
   "clipboard.dateformat": {
-      "message": "menyalin tanggal yang diformat ke papan klip. String format harus diapit dengan tanda kutip ganda. Untuk informasi lebih lanjut tentang sintaks pemformatan, lihat juga bagian berikut: "
+    "message": "menyalin tanggal yang diformat ke papan klip. String format harus diapit dengan tanda kutip ganda. Untuk informasi lebih lanjut tentang sintaks pemformatan, lihat juga bagian berikut: "
   },
   "clipboard.setHeader": {
     "message": "Gunakan konten clipboard untuk mengatur cc - (berfungsi untuk header tekstual apa pun)."
@@ -286,7 +286,7 @@
   },
   "fileTemplates.edit": {
     "message": "Edit"
-  },  
+  },
   "fileTemplates.file.open": {
     "message": "Pilih file template dari disk"
   },
@@ -310,7 +310,7 @@
   },
   "fileTemplates.menu": {
     "message": "File Template"
-  },  
+  },
   "fileTemplates.new.tooltip": {
     "message": "Daftar file template eksternal yang dapat diluncurkan dari tombol 'Buat Pesan Baru'."
   },
@@ -493,6 +493,15 @@
   },
   "lastName.label": {
     "message": "Nama Belakang:"
+  },
+  "license-discount": {
+    "message": "Hemat $discount$ sekarang",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
   },
   "license-standard-special-offer": {
     "message": "{boldStart} $username$ yang terhormat{boldEnd}, Anda sekarang dapat meningkatkan ke SmartTemplates Pro dengan {boldStart} $discount$ lebih murah{boldEnd} - sambil juga memperpanjang lisensi Anda selama setahun penuh. Perubahan besar lainnya di Thunderbird akan segera hadir dan saya butuh {boldStart} bantuan Anda {boldEnd} untuk mengikutinya!",
@@ -713,15 +722,15 @@
         "example": "Gunakan Umum"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "Pengaturan di bawah ini diterapkan ketika tidak ada templat khusus untuk identitas atau jika '$pref_def$' dipilih untuk identitas tersebut.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Gunakan Umum"
   },
@@ -901,7 +910,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[opsional] Tambahkan gaya atribut Anda sendiri, dipisahkan oleh titik koma. Tanpa parameter ini, SmartTemplates akan memasukkan 'display:none' secara otomatis untuk membuat bagian tersebut tidak terlihat."
-  },  
+  },
   "preheader.text": {
     "message": "Teks pratinjau harus berada dalam tanda kutip ganda, yang juga dapat berisi kata kunci $clipboardStarred$. Sebagai alternatif, Anda dapat menggunakan $clipboardLiteral$ atau $selectionLiteral$ (yang terakhir hanya berfungsi ketika digunakan dari Smart Snippet)",
     "placeholders": {
@@ -913,12 +922,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "Fitur Premium"
   },
@@ -929,13 +938,13 @@
     "message": "Silakan pilih editor eksternal untuk mengedit template HTML Anda. Saya sarankan menggunakan editor HTML hanya teks dengan penyorotan sintaksis, seperti notepad++ atau Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "Tidak dapat menemukan Editor di jalur: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "Tidak dapat menemukan Editor di jalur: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Masukkan teks untuk ditambahkan atau disetel"
@@ -954,7 +963,7 @@
   },
   "replaceText.selection": {
     "message": "[Opsional] Mengganti semua teks yang cocok dalam seleksi saat ini dengan teks pengganti - hanya berfungsi di Fragmen Pintar."
-  },  
+  },
   "resolveABRemoveMail": {
     "message": "Hapus alamat email kecuali format batasan ditentukan"
   },
@@ -1037,7 +1046,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates telah diperbarui!"
+    "message": "SmartTemplates diperbarui."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Baca berita!"
   },
   "snippets.head": {
     "message": "Cuplikan Cerdas"
@@ -1179,7 +1191,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Mentransformasi seluruh kecocokan menjadi huruf besar."
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "Manipulasi String"
   },
@@ -1270,10 +1282,10 @@
     "message": "GMT, PST, EST, …"
   },
   "updates.changeLog": {
-    "message" : "Catatan Rilis (Bahasa Inggris)"
+    "message": "Catatan Rilis (Bahasa Inggris)"
   },
   "updates.news": {
-    "message" : "Berita Terbaru"
+    "message": "Berita Terbaru"
   },
   "updates.title": {
     "message": "Pembaruan"

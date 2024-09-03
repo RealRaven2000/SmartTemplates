@@ -79,6 +79,15 @@
       }
     }
   },
+  "license-discount": {
+    "message": "Tiết kiệm $discount$ ngay bây giờ",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Cảm ơn bạn đã gia hạn giấy phép gần đây hoặc nếu bạn đã đóng góp. Vì bạn đã giúp chứng minh Tiện ích bổ sung này trong tương lai, bạn có thể chỉ cần đóng cửa sổ này."
@@ -127,7 +136,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates đã được cập nhật!"
+    "message": "SmartTemplates đã được cập nhật."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Đọc tin tức!"
   },
   "special-offer-content": {
     "message": "Nâng cấp các tính năng của bạn và tiết kiệm {boldStart} $reduction$ {boldEnd} bằng cách mua giấy phép {linkStartPro}SmartTemplates Pro{linkEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}. Hoặc chọn các chức năng tiêu chuẩn với {linkStart}Giấy phép Tiêu chuẩn{linkEnd} mới.",
@@ -144,7 +156,7 @@
   },
   "special-offer-expiry": {
     "message": "31 tháng 7"
-  },     
+  },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
     "placeholders": {
@@ -256,10 +268,10 @@
     "message": "bản dịch do google cung cấp"
   },
   "updates.changeLog": {
-    "message" : "Ghi chú phát hành (tiếng Anh)"
+    "message": "Ghi chú phát hành (tiếng Anh)"
   },
   "updates.news": {
-    "message" : "Tin mới nhất"
+    "message": "Tin mới nhất"
   },
   "updates.title": {
     "message": "Cập nhật"

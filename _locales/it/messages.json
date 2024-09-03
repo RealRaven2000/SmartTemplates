@@ -385,7 +385,7 @@
   },
   "fileTemplates.edit": {
     "message": "Modifica"
-  },  
+  },
   "fileTemplates.file.open": {
     "message": "Seleziona file del modello dal disco"
   },
@@ -409,7 +409,7 @@
   },
   "fileTemplates.menu": {
     "message": "File dei modelli"
-  },  
+  },
   "fileTemplates.new.tooltip": {
     "message": "Elenco di file esterni di modelli che possono essere avviati dal pulsante 'Crea nuovo messaggio'."
   },
@@ -645,6 +645,15 @@
   },
   "lastName.label": {
     "message": "Cognome:"
+  },
+  "license-discount": {
+    "message": "Risparmia $discount$ ora",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -933,15 +942,15 @@
         "example": "Usa Comune"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "Le impostazioni seguenti vengono applicate quando non esiste un modello specifico per un'identità o se '$pref_def$' è selezionato per tale identità.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Utilizza la cartella di posta in arrivo globale"
   },
@@ -1121,7 +1130,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[opzionale] Aggiungi i tuoi attributi di stile, separati da punto e virgola. Senza questo parametro, SmartTemplates inserirà 'display:none' per rendere automaticamente la sezione invisibile."
-  },  
+  },
   "preheader.text": {
     "message": "Il testo di anteprima deve essere contenuto tra virgolette doppie, che possono anche contenere la parola chiave $clipboardStarred$. In alternativa, è possibile utilizzare $clipboardLiteral$ o $selectionLiteral$ (quest'ultimo funziona solo quando viene utilizzato da un Smart Snippet)",
     "placeholders": {
@@ -1133,12 +1142,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "Caratteristiche Premium"
   },
@@ -1149,13 +1158,13 @@
     "message": "Seleziona un editor esterno per modificare i tuoi modelli HTML. Ti consiglio di utilizzare un editor HTML solo testo con evidenziazione della sintassi, come notepad++ o Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "Impossibile trovare l'Editor nel percorso: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "Impossibile trovare l'Editor nel percorso: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Inserire il testo da aggiungere o impostare"
@@ -1201,7 +1210,7 @@
   },
   "replaceText.selection": {
     "message": "[Opzionale] Sostituisce tutto il testo corrispondente nella selezione corrente con il testo di sostituzione - funziona solo nei frammenti intelligenti."
-  },  
+  },
   "replacementHTML": {
     "message": "deve essere racchiuso tra virgolette: un tag di testo o html che verrà inserito tra virgolette ogni volta che viene trovata una corrispondenza."
   },
@@ -1287,7 +1296,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates è stato aggiornato!"
+    "message": "SmartTemplates aggiornato."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Leggi le novità!"
   },
   "snippets.head": {
     "message": "Frammenti intelligenti"
@@ -1427,7 +1439,7 @@
   },
   "st.menuaccess.write": {
     "message": "M"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Rispondi a tutti"
   },
@@ -1576,7 +1588,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Trasforma l'intera corrispondenza in maiuscolo."
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "Gestione stringhe di testo"
   },
@@ -1607,7 +1619,7 @@
   },
   "special-offer-expiry": {
     "message": "31 luglio"
-  },      
+  },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
     "placeholders": {
@@ -1815,10 +1827,10 @@
     "message": "A35G, Luana e Lucky & Danilo Fortunato (BabelZilla)"
   },
   "updates.changeLog": {
-    "message" : "Note di rilascio (inglese)"
+    "message": "Note di rilascio (inglese)"
   },
   "updates.news": {
-    "message" : "Ultime notizie"
+    "message": "Ultime notizie"
   },
   "updates.title": {
     "message": "Aggiornamenti"

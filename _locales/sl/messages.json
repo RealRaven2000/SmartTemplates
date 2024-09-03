@@ -397,7 +397,7 @@
   },
   "fileTemplates.edit": {
     "message": "Uredi"
-  },  
+  },
   "fileTemplates.file.open": {
     "message": "Izberite datoteko predloge z diska"
   },
@@ -421,7 +421,7 @@
   },
   "fileTemplates.menu": {
     "message": "Datoteke predlog"
-  },  
+  },
   "fileTemplates.new.tooltip": {
     "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete z gumbom 'Ustvari novo sporočilo'."
   },
@@ -654,6 +654,15 @@
   },
   "lastName.label": {
     "message": "Priimek:"
+  },
+  "license-discount": {
+    "message": "Prihranite $discount$ zdaj",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -963,15 +972,15 @@
         "example": "Uporabi Skupno"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "Spodnje nastavitve se uporabijo, kadar za identiteto ne obstaja posebna predloga ali če je za to identiteto izbrano '$pref_def$'.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Uporabi splošno"
   },
@@ -1160,7 +1169,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[neobvezno] Dodajte svoje slogovne atribute, ločene s podpičjem. Brez tega parametra bo SmartTemplates samodejno vstavil 'display:none', da bo del samodejno neviden."
-  },  
+  },
   "preheader.text": {
     "message": "Predogled besedila mora biti v dvojnih narekovajih, ki lahko vsebujejo tudi ključno besedo $clipboardStarred$. Kot alternativo lahko uporabite $clipboardLiteral$ ali $selectionLiteral$ (ta zadnji deluje samo, ko se uporablja iz pametnega odlomka)",
     "placeholders": {
@@ -1172,12 +1181,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "Lastnosti premium"
   },
@@ -1186,7 +1195,7 @@
   },
   "pricing.section.hint": {
     "message": "Opomba: Cena se razlikuje glede na model licence, državo, stopnjo DDV, trenutne popuste ali že kupljene licence."
-  },  
+  },
   "pricing.title": {
     "message": "Cenitev"
   },
@@ -1200,8 +1209,8 @@
     "message": "Urednika ni mogoče najti na poti: $filePath$",
     "placeholders": {
       "filePath": {
-          "content": "$1",
-          "example": "C:\\notepad++"
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
     }
   },
@@ -1249,7 +1258,7 @@
   },
   "replaceText.selection": {
     "message": "[Neobvezno] Zamenja vse ujemajoče se besedilo v trenutni izbiri z nadomestnim besedilom - deluje le v pametnih fragmentih."
-  },  
+  },
   "replacementHTML": {
     "message": "mora biti v dvojnih narekovajih - bodisi besedilu ali html oznaki, ki bo vstavljen v narekovaje, kjer koli se najde ujemanje."
   },
@@ -1335,7 +1344,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates je bil posodobljen!"
+    "message": "SmartTemplates posodobljen."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Preberite novice!"
   },
   "snippets.head": {
     "message": "Pametni izrezki"
@@ -1435,64 +1447,64 @@
     "message": "Dokumentacija"
   },
   "st.menu.docs.premium": {
-      "message": "Premijske funkcije…"
+    "message": "Premijske funkcije…"
   },
   "st.menu.docs.variables": {
-      "message": "Spremenljivke in ukazi…"
+    "message": "Spremenljivke in ukazi…"
   },
   "st.menu.hideLabel": {
-      "message": "Skrij oznako gumba"
+    "message": "Skrij oznako gumba"
   },
   "st.menu.template.default": {
-      "message": "Privzeti predloga (račun)"
+    "message": "Privzeti predloga (račun)"
   },
   "st.menu.template.last": {
-      "message": "Zadnja predloga"
+    "message": "Zadnja predloga"
   },
   "st.menu.license": {
-      "message": "Preveri status licence…"
+    "message": "Preveri status licence…"
   },
   "st.menu.license.tooltip": {
-      "message": "Kliknite tukaj za preverjanje statusa licence za $addonName$.",
-      "placeholders": {
-        "addonName": {
-          "content": "$1",
-          "example": "SmartTemplates"
-        }
+    "message": "Kliknite tukaj za preverjanje statusa licence za $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
       }
+    }
   },
   "st.menuaccess.forward": {
-      "message": "F"
+    "message": "F"
   },
   "st.menuaccess.reply": {
-      "message": "R"
+    "message": "R"
   },
   "st.menuaccess.replyAll": {
-      "message": "A"
+    "message": "A"
   },
   "st.menuaccess.replyList": {
-      "message": "L"
+    "message": "L"
   },
   "st.menuaccess.write": {
-      "message": "W"
+    "message": "W"
   },
   "st.menu.replyAll": {
-      "message": "Odgovori vsem"
+    "message": "Odgovori vsem"
   },
   "st.menu.replyList": {
-      "message": "Odgovori seznamu"
+    "message": "Odgovori seznamu"
   },
   "st.menu.supportSite": {
-      "message": "Podporna stran…"
+    "message": "Podporna stran…"
   },
   "st.menu.update.tooltip": {
-      "message": "Izberite “Najnovejše novice” iz tega menija, da preberete, kaj je novega v $addonName$.\n To bo ponastavilo gumb na privzeti izgled.",
-      "placeholders": {
-        "addonName": {
-          "content": "$1",
-          "example": "SmartTemplates"
-        }
+    "message": "Izberite “Najnovejše novice” iz tega menija, da preberete, kaj je novega v $addonName$.\n To bo ponastavilo gumb na privzeti izgled.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
       }
+    }
   },
   "st.notification.bodyModified": {
     "message": "Thunderbird pravi, da ste že nekaj vnesli. Ali želite vseeno naložiti predlogo?"
@@ -1627,7 +1639,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Pretvori celoten ujemanje v velike črke."
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "Ravnanje z nizi"
   },
@@ -1658,7 +1670,7 @@
   },
   "special-offer-expiry": {
     "message": "31. julij"
-  },    
+  },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
     "placeholders": {
@@ -1875,10 +1887,10 @@
     }
   },
   "updates.changeLog": {
-    "message" : "Opombe ob izdaji (angleščina)"
+    "message": "Opombe ob izdaji (angleščina)"
   },
   "updates.news": {
-    "message" : "Zadnje novice"
+    "message": "Zadnje novice"
   },
   "updates.title": {
     "message": "Posodobitve"

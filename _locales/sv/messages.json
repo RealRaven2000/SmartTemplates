@@ -652,6 +652,15 @@
   "lastName.label": {
     "message": "Efternamn:"
   },
+  "license-discount": {
+    "message": "Spara $discount$ nu",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Tack för att du nyligen förlängde din licens eller om du har donerat. Eftersom du har hjälpt till att framtida bevisa detta tillägg kan du helt enkelt stänga det här fönstret."
@@ -972,15 +981,15 @@
         "example": "Använd Gemensam"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "Inställningarna nedan används när ingen specifik mall finns för en identitet eller om '$pref_def$' är valt för den identiteten.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Använd allmänna inställningar"
   },
@@ -1181,7 +1190,7 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
@@ -1195,7 +1204,7 @@
   },
   "pricing.section.hint": {
     "message": "Obs: Priset varierar beroende på licensmodell, land, momssats, aktuella rabatter eller redan köpta licenser."
-  },  
+  },
   "pricing.title": {
     "message": "Prissättning"
   },
@@ -1258,7 +1267,7 @@
   },
   "replaceText.selection": {
     "message": "[Valfritt] Ersätter all matchande text inom det aktuella urvalet med ersättningstexten - fungerar endast i Smarta fragment."
-  },  
+  },
   "replacementHTML": {
     "message": "måste vara i dubbla citat - antingen en text eller en html-tagg som kommer att infogas i citat varhelst en matchning hittas."
   },
@@ -1350,7 +1359,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates uppdaterades!"
+    "message": "SmartTemplates uppdaterad."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Läs nyheterna!"
   },
   "snippets.head": {
     "message": "Smarta utdrag"
@@ -1487,10 +1499,10 @@
   },
   "st.menuaccess.replyList": {
     "message": "L"
-  },  
+  },
   "st.menuaccess.write": {
     "message": "N"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Svara alla"
   },
@@ -1639,7 +1651,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Omvandlar hela matchningen till stora bokstäver."
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "Strängmanipulering"
   },
@@ -1670,7 +1682,7 @@
   },
   "special-offer-expiry": {
     "message": "31 juli"
-  },    
+  },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
     "placeholders": {
@@ -1887,10 +1899,10 @@
     "message": "GMT, PST, EST, ... "
   },
   "updates.changeLog": {
-    "message" : "Release Notes (engelska)"
+    "message": "Release Notes (engelska)"
   },
   "updates.news": {
-    "message" : "Senaste nytt"
+    "message": "Senaste nytt"
   },
   "updates.title": {
     "message": "Uppdateringar"

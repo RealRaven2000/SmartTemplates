@@ -1,4 +1,22 @@
 "use strict";
+// name space these contents
+/// not possible even with ChromeUtils.importESModule()
+/* import * as SmartTemplates_Discounts from "../../popup/sales.js";   */
+// Next Sale End Date  COPIED from sales.js until we find a better way
+var SmartTemplates_Discounts = {
+  sales_end: new Date("2024-09-21"),
+  discountRate : {
+    discountPro: "33%",
+    discountUpgrade: "33%",
+    discountRenewal: "25%"
+  }
+}
+
+
+
+// used in update.js
+
+
 /* 
 BEGIN LICENSE BLOCK
 
@@ -194,8 +212,6 @@ END LICENSE BLOCK
 // investigate gMsgCompose.compFields!
 =========================
 */
-
- 
 
 var SmartTemplate4 = {
   // definitions for whatIsX (time of %A-Za-z%)
@@ -787,59 +803,73 @@ var SmartTemplate4 = {
       element.parentElement.classList.remove(c);
     }    
 
-    if (btn) {
-      let txt = "",
-          tooltip = "";
-
-      if (licenseInfo.licenseKey) {
-        let days = licenseInfo.licensedDaysLeft,
-            wrn = null;
-        if (licenseInfo.status == "Invalid") {
-          addClass(btn, "expired");
-          wrn = util.getBundleString("SmartTemplateMainButton.invalid");
-        } else if (licenseInfo.isExpired)  {
-          wrn = util.getBundleString("SmartTemplateMainButton.expired");
-          addClass(btn, "expired");
-          removeClass(btn, "renew");
-          tooltip = SmartTemplate4.Util.getBundleString("licenseStatus.expired", [licenseInfo.expiredDays]);
-        }
-        else if (days<15) {
-          wrn = util.getBundleString("SmartTemplateMainButton.renew", [days]);
-          removeClass(btn, "expired");
-          addClass(btn, "renew");
-          tooltip = SmartTemplate4.Util.getBundleString("st.menu.license.tooltip", ["SmartTemplates"]);          
-        }
-        else {
-          removeClass(btn, "expired");
-          removeClass(btn, "renew");
-        }
-        if (wrn) {
-          txt = wrn;
-        }
-      }
-
-      if (hasNews) {
-        txt = util.getBundleString("SmartTemplateMainButton.updated");
-        addClass(btn, "newsflash");
-        tooltip = util.getBundleString("st.menu.update.tooltip", ["SmartTemplates"]);
-        btnStatus.classList.add("newsflash");
-      }
-      else {
-        removeClass(btn, "newsflash");
-        btnStatus.classList.remove("newsflash");
-      }
-      if (!txt) {
-        txt = util.getBundleString("smartTemplate4.settings.label");
-        btnStatus.classList.remove("newsflash");
-      }
-
-      // uses browser.browserAction.setTitle() 
-      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "setActionTip", text: tooltip });
-      
-      // used browser.browserAction.setLabel() 
-      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "setActionLabel", text: txt });
-
+    if (!btn) {
+      return;
     }
+    let txt = "",
+        tooltip = "";
+
+    if (licenseInfo.licenseKey) {
+      let days = licenseInfo.licensedDaysLeft,
+          wrn = null;
+      if (licenseInfo.status == "Invalid") {
+        addClass(btn, "expired");
+        wrn = util.getBundleString("SmartTemplateMainButton.invalid");
+      } else if (licenseInfo.isExpired)  {
+        wrn = util.getBundleString("SmartTemplateMainButton.expired");
+        addClass(btn, "expired");
+        removeClass(btn, "renew");
+        tooltip = SmartTemplate4.Util.getBundleString("licenseStatus.expired", [licenseInfo.expiredDays]);
+      } else if (days<15) {
+        wrn = util.getBundleString("SmartTemplateMainButton.renew", [days]);
+        removeClass(btn, "expired");
+        addClass(btn, "renew");
+        tooltip = SmartTemplate4.Util.getBundleString("st.menu.license.tooltip", ["SmartTemplates"]);          
+      } else {
+        removeClass(btn, "expired");
+        removeClass(btn, "renew");
+      }
+      if (wrn) {
+        txt = wrn + util.salesLabel(licenseInfo);
+      }
+    }
+
+    if (hasNews) {
+      txt = util.getBundleString("SmartTemplateMainButton.updated");
+      addClass(btn, "newsflash");
+      tooltip = util.getBundleString("st.menu.update.tooltip", ["SmartTemplates"]);
+      btnStatus.classList.add("newsflash");
+      // add clarity - what to do. read news (resets button) or check out the sale
+      if (util.isSale) {
+        txt += util.salesLabel(licenseInfo);
+      } else {
+        txt += util.getBundleString("SmartTemplateMainButton.updated.read");
+      }
+    } else {
+      removeClass(btn, "newsflash");
+      btnStatus.classList.remove("newsflash");
+    }
+    if (!txt) {
+      txt = util.getBundleString("smartTemplate4.settings.label");
+      btnStatus.classList.remove("newsflash");
+    }
+    let newsMenu = document.getElementById("smartTemplates-news");
+    newsMenu.classList.remove("checkLicense");
+    if (util.isSale) {
+      const salesNotificationTxt = util.salesLabel(licenseInfo),
+            menuDefaultTxt = util.getBundleString("newsHead");
+      if (!licenseInfo.licenseKey || !licenseInfo.isValid) {
+        newsMenu.label = menuDefaultTxt + " " + salesNotificationTxt;
+        newsMenu.classList.add("checkLicense");
+      }
+    }
+
+    // uses browser.browserAction.setTitle() 
+    SmartTemplate4.Util.notifyTools.notifyBackground({ func: "setActionTip", text: tooltip });
+    
+    // used browser.browserAction.setLabel() 
+    SmartTemplate4.Util.notifyTools.notifyBackground({ func: "setActionLabel", text: txt });
+
   } ,
 
   get XML_replyMenus() {
@@ -953,6 +983,8 @@ var SmartTemplate4 = {
     <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
       <menupopup>
         <menuitem id="smartTemplates-settings-legacy" label="__MSG_preferences_legacy__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-setNewsFlag" label="Set News Flag!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuseparator class="st4templateSeparator"/>
         <menuitem id="smartTemplates-headerMenuAPI" label="Create message Actions (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-MruMenuAPI" label="Update MRU (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>

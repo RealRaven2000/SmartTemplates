@@ -34,7 +34,7 @@
   },
   "account.templates": {
     "message": "Konto Vorlagen"
-  },  
+  },
   "active-version-info": {
     "message": "Es läuft jetzt {boldStart} Version $addonVer$ {boldEnd} auf Thunderbird $appVer$.",
     "placeholders": {
@@ -178,7 +178,7 @@
     "message": "(Beispiel für beliebige Adressvariable) Mailadresse des ursprünglichen Absenders in die Zwischenablage kopieren."
   },
   "clipboard.dateformat": {
-      "message": "kopiert das formatierte Datum in die Zwischenablage. Der Formatstring muss in Anführungszeichen stehen. Weitere Informationen zur Formatierungssyntax finden Sie auch im folgenden Abschnitt: "
+    "message": "kopiert das formatierte Datum in die Zwischenablage. Der Formatstring muss in Anführungszeichen stehen. Weitere Informationen zur Formatierungssyntax finden Sie auch im folgenden Abschnitt: "
   },
 
   "clipboard.setHeader": {
@@ -649,6 +649,15 @@
   "lastName.label": {
     "message": "Nachname:"
   },
+  "license-discount": {
+    "message": "Jetzt $discount$ sparen",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Vielen Dank, dass Sie kürzlich Ihre Lizenz verlängert haben oder gespendet haben. Da Sie zur Zukunftssicherung dieses Add-ons beigetragen haben, können Sie dieses Fenster einfach schließen."
@@ -925,8 +934,8 @@
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Allgemein verwenden"
   },
@@ -1115,7 +1124,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[optional] Fügen Sie Ihre eigenen Style-Attribute hinzu, getrennt durch Semikolon. Ohne diesen Parameter fügt SmartTemplates 'display:none' ein, um den Abschnitt automatisch unsichtbar zu machen."
-  },  
+  },
   "preheader.text": {
     "message": "Der Vorschautext muss in doppelten Anführungszeichen enthalten sein, die im Text das Schlüsselwort $clipboardStarred$ enthalten können. Alternativ können Sie auch $clipboardLiteral$ oder $selectionLiteral$ verwenden (das letztere funktioniert nur, wenn es in einem Smart Snippet verwendet wird)",
     "placeholders": {
@@ -1127,7 +1136,7 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
@@ -1141,10 +1150,10 @@
   },
   "pricing.section.hint": {
     "message": "Hinweis: Der Preis variiert je nach Lizenzmodell, Land, Mehrwertsteuersatz, aktuellen Rabatten oder bereits gekauften Lizenzen."
-  },  
+  },
   "pricing.title": {
     "message": "Preise"
-  },  
+  },
   "prompt.email": {
     "message": "Email-Adresse eingeben"
   },
@@ -1152,13 +1161,13 @@
     "message": "Bitte wählen Sie einen externen Editor aus, um Ihre HTML-Vorlagen zu bearbeiten. Ich empfehle die Verwendung eines reinen Text-HTML-Editors mit Syntaxhervorhebung, wie z.B. Notepad++ oder Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "Editor konnte unter dem Pfad nicht gefunden werden: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "Editor konnte unter dem Pfad nicht gefunden werden: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Text eingeben"
@@ -1204,7 +1213,7 @@
   },
   "replaceText.selection": {
     "message": "[Optional] Ersetzt alle übereinstimmenden Texte innerhalb der aktuellen Auswahl durch den Ersatztext - funktioniert nur in Smart Fragments."
-  },  
+  },
   "replacementHTML": {
     "message": "muß in doppelten Anführungszeichen sein - entweder Text oder ein HTML tag wird im Zitat eingefügt."
   },
@@ -1290,7 +1299,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates wurde aktualisiert!"
+    "message": "SmartTemplates aktualisiert."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Neuigkeiten lesen!"
   },
   "snippets.head": {
     "message": "Intelligente Fragmente"
@@ -1427,10 +1439,10 @@
   },
   "st.menuaccess.replyList": {
     "message": "L"
-  },  
+  },
   "st.menuaccess.write": {
     "message": "V"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Allen antworten"
   },
@@ -1448,7 +1460,7 @@
         "example": "SmartTemplates"
       }
     }
-  },  
+  },
   "st.notification.bodyModified": {
     "message": "Thunderbird meldet, Sie hätten bereits etwas eingetippt. Die Vorlage trotzdem laden?"
   },
@@ -1465,7 +1477,7 @@
   },
   "st.notification.bodyModified.instructions": {
     "message": "Klicken Sie auf „Abbrechen“, um den E-Mail-Inhalt unverändert zu lassen."
-  },  
+  },
   "st.notification.donate": {
     "message": "Spenden"
   },
@@ -1576,7 +1588,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Wandelt das gesamte Ergebnis in Großbuchstaben um."
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "Textmanipulation"
   },
@@ -1607,7 +1619,7 @@
   },
   "special-offer-expiry": {
     "message": "31. Juli"
-  },   
+  },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
     "placeholders": {
@@ -1811,10 +1823,10 @@
     "message": "GMT, PST, EST, … "
   },
   "updates.changeLog": {
-    "message" : "Versionsgeschichte (Englisch)"
+    "message": "Versionsgeschichte (Englisch)"
   },
   "updates.news": {
-    "message" : "Neueste Änderungen"
+    "message": "Neueste Änderungen"
   },
   "updates.title": {
     "message": "Aktualisierung"

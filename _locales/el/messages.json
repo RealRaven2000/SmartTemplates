@@ -1,4 +1,7 @@
 {
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Ημέρα της Εβδομάδας (Παρ.)"
   },
@@ -182,7 +185,7 @@
     "message": "(παράδειγμα για οποιαδήποτε μεταβλητή διεύθυνσης) αντιγράψτε τη διεύθυνση αλληλογραφίας του αρχικού αποστολέα στο πρόχειρο."
   },
   "clipboard.dateformat": {
-      "message": "αντιγράφει την μορφοποιημένη ημερομηνία στο πρόχειρο. Η συμβολοσειρά μορφοποίησης πρέπει να είναι εντός διπλών εισαγωγικών. Για περισσότερες πληροφορίες σχετικά με τη σύνταξη μορφοποίησης, δείτε επίσης την ακόλουθη ενότητα: "
+    "message": "αντιγράφει την μορφοποιημένη ημερομηνία στο πρόχειρο. Η συμβολοσειρά μορφοποίησης πρέπει να είναι εντός διπλών εισαγωγικών. Για περισσότερες πληροφορίες σχετικά με τη σύνταξη μορφοποίησης, δείτε επίσης την ακόλουθη ενότητα: "
   },
   "clipboard.setHeader": {
     "message": "Χρησιμοποιήστε τα περιεχόμενα του προχείρου για να ορίσετε το cc - (λειτουργεί για οποιαδήποτε κεφαλίδα κειμένου)."
@@ -383,6 +386,9 @@
   "fileHTML.label": {
     "message": "HTML ή απλό αρχείο κειμένου. Χρησιμοποιείται το UTF- 8 όταν παραλείπεται η προαιρετική παράμετρος συνόλου χαρακτήρων."
   },
+  "fileImage.attributes": {
+    "message": "Προαιρετική λίστα από σύνολα attribute=value, όπως 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Αρχείο εικόνας (png,jpg,gif,bmp,svg). Το προαιρετικό altText εμφανίζεται αν η εικόνα δεν μπορεί να βρεθεί."
   },
@@ -445,6 +451,9 @@
   },
   "fix_vartz_note.label": {
     "message": "Μπορεί να συνδυαστεί με %X:=sent%"
+  },
+  "fpFilterStyleSheet": {
+    "message": "Φύλλο Στυλ"
   },
   "fpFilterHtmlTemplate": {
     "message": "Πρότυπο HTML"
@@ -654,6 +663,15 @@
   },
   "lastName.label": {
     "message": "Επώνυμο:"
+  },
+  "license-discount": {
+    "message": "Εξοικονομήστε $discount$ τώρα",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -922,6 +940,9 @@
   "parameters": {
     "message": "Παράμετροι"
   },
+  "parameter.escapeCommas": {
+    "message": "Για να εμφανίσετε κόμματα μέσα σε αυτό το κείμενο, χρησιμοποιήστε backslash για να τα διαφύγετε όπως αυτό:"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Κείμενο σε αιώρηση"
   },
@@ -975,15 +996,15 @@
         "example": "Χρήση Κοινών"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "Οι παρακάτω ρυθμίσεις εφαρμόζονται όταν δεν υπάρχει συγκεκριμένο πρότυπο για μια ταυτότητα ή αν επιλεγεί το «$pref_def$» για αυτή την ταυτότητα.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Χρησιμοποίησε το Κοινό"
   },
@@ -1172,7 +1193,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[προαιρετικό] Προσθέστε τα δικά σας χαρακτηριστικά στιλ, χωρισμένα με ερωτηματικό. Χωρίς αυτή την παράμετρο, το SmartTemplates θα εισάγει αυτόματα 'display:none' για να καθιστά αόρατο το τμήμα."
-  },  
+  },
   "preheader.text": {
     "message": "Ο προεπισκοπήσιμος κείμενος πρέπει να περιέχεται μέσα σε διπλά εισαγωγικά, τα οποία μπορούν επίσης να περιέχουν τη λέξη-κλειδί $clipboardStarred$. Εναλλακτικά, μπορείτε να χρησιμοποιήσετε $clipboardLiteral$ ή $selectionLiteral$ (αυτό το τελευταίο λειτουργεί μόνο όταν χρησιμοποιείται από ένα Smart Snippet)",
     "placeholders": {
@@ -1184,7 +1205,7 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
@@ -1198,10 +1219,10 @@
   },
   "pricing.section.hint": {
     "message": "Σημείωση: Η τιμή ποικίλλει ανάλογα με το μοντέλο άδειας, τη χώρα, τον συντελεστή ΦΠΑ, τις τρέχουσες εκπτώσεις ή τις άδειες που έχουν ήδη αγοραστεί."
-  },  
+  },
   "pricing.title": {
     "message": "Τιμολόγηση"
-  },  
+  },
   "prompt.email": {
     "message": "Εισάγετε μια διεύθυνση email"
   },
@@ -1209,13 +1230,13 @@
     "message": "Παρακαλώ επιλέξτε έναν εξωτερικό επεξεργαστή για να επεξεργαστείτε τα πρότυπα HTML σας. Σας προτείνω να χρησιμοποιήσετε έναν επεξεργαστή HTML μόνο με κείμενο και επισήμανση σύνταξης, όπως το notepad++ ή το Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "Δεν ήταν δυνατή η εύρεση του επεξεργαστή στη διαδρομή: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "Δεν ήταν δυνατή η εύρεση του επεξεργαστή στη διαδρομή: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Εισάγετε το κείμενο για να προσθέσετε ή να ορίσετε"
@@ -1261,7 +1282,7 @@
   },
   "replaceText.selection": {
     "message": "[Προαιρετικό] Αντικαθιστά όλα τα ταίριασμα κειμένου μέσα στην τρέχουσα επιλογή με το κείμενο αντικατάστασης - λειτουργεί μόνο στα Έξυπνα Αποσπάσματα."
-  },  
+  },
   "replacementHTML": {
     "message": "πρέπει να είναι σε διπλά εισαγωγικά - είτε ένα κείμενο, είτε μια ετικέτα html που θα εισαχθεί με εισαγωγικά όπου βρεθεί μια αντιστοίχιση."
   },
@@ -1282,6 +1303,9 @@
   },
   "resolveNamesFromCardBook": {
     "message": "Υποστήριξη CardBook (pro χαρακτηριστικό γνώρισμα)"
+  },
+  "resolveNamesFromCardBook.forceLowerCase": {
+    "message": "υποχρεωτική αναζήτηση με πεζούς χαρακτήρες"
   },
   "resolveNamesFromCardBook.fallback": {
     "message": "Χρησιμοποιήστε το προεπιλεγμένο βιβλίο διευθύνσεων εάν δεν βρεθεί επαφή"
@@ -1310,11 +1334,132 @@
   "smartTemplate4.changeTemplate.label": {
     "message": "Άλλαξε πρότυπο…"
   },
-  "special-offer-expiry": {
-    "message": "31 Ιουλίου"
-  },   
+  "smartTemplate4.changeTemplate.tooltip": {
+    "message": "Φορτώστε ένα διαφορετικό πρότυπο - χρησιμοποιήστε το πριν την επεξεργασία του Email!"
+  },
+  "smartTemplate4.cleandeferred.label": {
+    "message": "Καθαρισμός!"
+  },
+  "smartTemplate4.cleandeferred.tooltip": {
+    "message": "Καθαρίστε όλες τις μεταβλητές του SmartTemplate"
+  },
+  "smartTemplate4.deferredcontext.cleanup": {
+    "message": "Αντικατάσταση μεταβλητής με περιεχόμενο"
+  },
+  "smartTemplate4.deferredcontext.delete": {
+    "message": "Αφαίρεση μεταβλητής SmartTemplates"
+  },
+  "smartTemplate4.deferredcontext.update": {
+    "message": "Ενημέρωση περιεχομένου SmartTemplates"
+  },
+  "smartTemplate4.settings.label": {
+    "message": "SmartTemplates"
+  },
+  "smartTemplate4.settings.tooltip": {
+    "message": "Ρυθμίσεις SmartTemplates"
+  },
+  "smarttemplate4_button": {
+    "message": "Επεξεργασία προτύπων / επικεφαλίδα παράθεσης..."
+  },
+  "smarttemplate4_title": {
+    "message": "SmartTemplates"
+  },
+  "SmartTemplateMainButton.expired": {
+    "message": "Η άδεια έχει λήξει!"
+  },
+  "SmartTemplateMainButton.invalid": {
+    "message": "Η άδεια είναι άκυρη."
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Η άδεια λήγει σε $daysLeft$ ημέρες",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
+  "SmartTemplateMainButton.updated": {
+    "message": "Το SmartTemplates ενημερώθηκε."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Διαβάστε τα νέα!"
+  },
+  "snippets.head": {
+    "message": "Έξυπνα Σκορπίσματα"
+  },
+  "snippets.label": {
+    "message": "Αποσπάσματα HTML για εισαγωγή στο Συντάκτη"
+  },
+  "spec_form.cap": {
+    "message": "Διακόπτες Πεδίου Διεύθυνσης"
+  },
+  "spec_var.cap": {
+    "message": "Ειδικές Επικεφαλίδες Email"
+  },
+  "specform_note.label": {
+    "message": "Τμήματα μέσα σε διπλές αγκύλες [[Cc: %cc(name)%]] θα εμφανίζονται μόνο αν η μεταβλητή %cc(name)% μπορεί να αντικατασταθεί!"
+  },
+  "spellcheck.label": {
+    "message": "Ορίζει τη γλώσσα του ελέγχου ορθογραφίας. Παράδειγμα τιμών: (en, de-DE, es-ES, ru) - σημειώστε ότι το λεξικό πρέπει να είναι εγκατεστημένο."
+  },
+  "st.confirmVersionLink": {
+    "message": "Να εμφανιστεί το ιστορικό αλλαγών για το SmartTemplates;"
+  },
+  "st.fileFunction.notExists": {
+    "message": "Η συνάρτηση {0} δεν μπόρεσε να βρει ή να αποκτήσει πρόσβαση στο αρχείο. Ελέγξτε τη διαδρομή παρακάτω:"
+  },
   "st.fileTemplates": {
     "message": "Αρχεία Προτύπων"
+  },
+  "st.fileTemplates.configureMenu": {
+    "message": "Διαμόρφωση στοιχείων μενού…"
+  },
+  "st.fileTemplates.error.charSet": {
+    "message": "Προβλήματα μετατροπής προτύπου HTML από charset [{1}]\nΧρησιμοποιώντας ακατέργαστα δεδομένα κειμένου αντί.\nΑν αυτό έχει ως αποτέλεσμα ακατάστατους χαρακτήρες, δοκιμάστε να προσθέσετε μια ρητή 'meta charset"
+  },
+  "st.fileTemplates.error.filePath": {
+    "message": "Δεν ήταν δυνατό να φορτωθεί το αρχείο προτύπου '{0}' από τη διαδρομή:\n{1}\nΤο αρχείο μπορεί να έχει αφαιρεθεί ή μετονομαστεί."
+  },
+  "st.fileTemplates.error.nocontroller": {
+    "message": "Η συνάρτηση $controllerName$ δεν είναι διαθέσιμη σε αυτό το πλαίσιο - δεν μπορείτε να το κάνετε με το επιλεγμένο email.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
+  },
+  "st.fileTemplates.openFile": {
+    "message": "Άνοιγμα αρχείου προτύπου SmartTemplates…"
+  },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Γιατί κάποια πρότυπα σε αυτό το μενού είναι απενεργοποιημένα;"
+  },
+  "st.fileTemplates.restrictTemplates": {
+    "message": "Ο αριθμός των προτύπων ανά μενού είναι περιορισμένος. Μπορείτε να διαμορφώσετε έως και $max_free$ στοιχεία μενού χωρίς άδεια και $max_std$ στοιχεία μενού με άδεια SmartTemplates Standard! Το SmartTemplates Pro δεν έχει περιορισμούς.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Για να διαμορφώσετε περισσότερες από $max_Cats$ Κατηγορίες, παρακαλώ αποκτήστε μια άδεια SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
+    "message": "Παρακαλώ επιλέξτε ένα πρότυπο από το αναπτυσσόμενο μενού."
   },
   "st.fileTemplates.wrnEnterPath": {
     "message": "Επιλέξτε ένα αρχείο που περιέχει το html / κείμενο και τις μεταβλητές SmartTemplates σας. Αυτό το αρχείο θα επεξεργαστεί και θα εισαχθεί όταν επιλεγεί το νέο στοιχείο μενού. Μπορείτε ακόμα να τροποποιήσετε το αρχείο προτύπου σύμφωνα με τις ανάγκες σας μετά τη δημιουργία του στοιχείου μενού κάνοντας κλικ στην Επεξεργασία."
@@ -1372,10 +1517,10 @@
   },
   "st.menuaccess.replyList": {
     "message": "λ"
-  },  
+  },
   "st.menuaccess.write": {
     "message": "Γ"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Απάντηση σε όλους"
   },
@@ -1393,7 +1538,7 @@
         "example": "SmartTemplates"
       }
     }
-  },  
+  },
   "st.notification.bodyModified": {
     "message": "Το Thunderbird λέει ότι έχετε ήδη πληκτρολογήσει κάτι. Θέλετε να φορτώσετε το πρότυπο, παρ' όλα αυτά;"
   },
@@ -1410,7 +1555,7 @@
   },
   "st.notification.bodyModified.instructions": {
     "message": "Κάντε κλικ σε Ακύρωση για να διατηρήσετε το περιεχόμενο του email χωρίς αλλαγές."
-  },  
+  },
   "st.notification.donate": {
     "message": "Δωρίστε"
   },
@@ -1521,15 +1666,285 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Μετατρέπει ολόκληρη την αντιστοίχιση σε κεφαλαίους χαρακτήρες."
-  },  
+  },
+  "stringmanip_function.cap": {
+    "message": "Χειρισμός Κειμένου"
+  },
+  "stringmanip_function.explain": {
+    "message": "Αυτές οι λειτουργίες μπορούν να χρησιμοποιηθούν για τη διαγραφή ή την αντικατάσταση κειμένου μέσα στο πρότυπο Email ή την επικεφαλίδα παράθεσης."
+  },
+  "sub.label": {
+    "message": "θέμα απαντημένου / προωθημένου email"
+  },
+  "sub2.label": {
+    "message": "θέμα του τρέχοντος μηνύματος που συντάσσεται"
+  },
+  "sub_var.cap": {
+    "message": "Θέμα"
+  },
+  "special-offer-content": {
+    "message": "Αναβαθμίστε τις δυνατότητές σας και εξοικονομήστε {boldStart}$reduction${boldEnd} αγοράζοντας μια άδεια {linkStartPro}SmartTemplates Pro{linkEnd}! Αυτή η ειδική προσφορά θα είναι διαθέσιμη μέχρι {boldStart}$expirydate${boldEnd}. Ή επιλέξτε τις τυπικές λειτουργίες με τη νέα {linkStart}Τυπική Άδεια{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "22 Αυγούστου"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "31 Ιουλίου"
+  },
+  "special-offer-head": {
+    "message": "Βοηθήστε να διατηρηθεί το $addon$ συμβατό",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart}Αγαπητέ {name}{boldEnd}, παρακαλούμε υποστηρίξτε το $addon$ αποκτώντας μια άδεια.",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Ανανεώστε την άδειά σας τώρα και εξοικονομήστε {boldStart}$reduction${boldEnd}! Αυτή η ειδική προσφορά θα είναι διαθέσιμη μέχρι {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "11 Σεπτεμβρίου"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Αναβαθμίστε τώρα από το SmartTemplates Standard στο Pro και εξοικονομήστε {boldStart}$reduction${boldEnd}! Αυτή η ειδική προσφορά θα είναι διαθέσιμη μέχρι {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "11 Σεπτεμβρίου"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "support-preference": {
+    "message": "Αυτός είναι ο προτιμώμενος τρόπος υποστήριξης του $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Για να παραμείνει το $addonName$ λειτουργικό και ζωντανό, παρακαλούμε κάντε του μια ζωτική χάρη:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "support.compose": {
+    "message": "Γράψτε στο support…"
+  },
+  "support.links": {
+    "message": "Σύνδεσμοι Υποστήριξης"
+  },
+  "support.mail.instructions": {
+    "message": "Κάντε κλικ στο κουμπί παρακάτω για να ανοίξετε ένα νέο Email στο support. Εάν έχετε τεχνικά προβλήματα, σκεφτείτε να προσθέσετε ένα στιγμιότυπο οθόνης."
+  },
+  "support.subject": {
+    "message": "Θέμα:"
+  },
+  "support.tab": {
+    "message": "Υποστήριξη"
+  },
+  "support.title": {
+    "message": "Μήνυμα προς την Υποστήριξη"
+  },
+  "support.type": {
+    "message": "Τύπος:"
+  },
+  "support.type.html": {
+    "message": "Βοήθεια με HTML / CSS"
+  },
+  "support.type.license": {
+    "message": "Σχετικά με την Άδεια Χρήσης"
+  },
+  "support.type.other": {
+    "message": "Άλλο"
+  },
+  "support.type.selectOne": {
+    "message": "Επιλέξτε ένα θέμα!"
+  },
+  "support.type.tech": {
+    "message": "Τεχνικό"
+  },
+  "suppressMailToLink": {
+    "message": "Αποτροπή των ταχυδρομικών προγραμμάτων από την προσθήκη συνδέσμων σε διευθύνσεις Email."
+  },
+  "suppressQuoteHdr": {
+    "message": "Αφαιρεί πλήρως την επικεφαλίδα παράθεσης ανεξαρτήτως των ρυθμίσεων του λογαριασμού."
+  },
+  "tab.gopro": {
+    "message": "SmartTemplates Pro"
+  },
+  "table.cap": {
+    "message": "Χρήση μεταβλητών"
+  },
+  "table_fwd.label": {
+    "message": "Προώθηση"
+  },
+  "table_keyword.label": {
+    "message": "Μεταβλητή"
+  },
+  "table_new.label": {
+    "message": "Σύνταξη"
+  },
+  "table_note.label": {
+    "message": "Η λανθασμένη χρήση των μεταβλητών θα δημιουργήσει μηνύματα σφάλματος στην 'Κονσόλα Σφαλμάτων'!"
+  },
+  "table_reply.label": {
+    "message": "Απάντηση"
+  },
+  "testDriveS": {
+    "message": "Μπορείτε να δοκιμάσετε τις premium δυνατότητες με την τυπική άδεια, αλλά ενδέχεται να είναι ελαφρώς περιορισμένες."
+  },
+  "template.category": {
+    "message": "Κατηγορία"
+  },
+  "template.category.other": {
+    "message": "Άλλα"
+  },
+  "template.category.tooltip": {
+    "message": "Δημιουργεί ένα υπομενού για την ομαδοποίηση προτύπων"
+  },
+  "thanks-for-installing-intro": {
+    "message": "Ευχαριστούμε που εγκαταστήσατε το $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "thanks-for-updating-intro": {
+    "message": "Ευχαριστούμε που ενημερώσατε το $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "time-and-effort": {
+    "message": "Το $addonName$ θα ξαναγραφεί σε μεγάλο βαθμό για να παραμείνει συμβατό με το Thunderbird. Αυτό είναι απαραίτητο, καθώς οι αλλαγές από τη Mozilla απαιτούν τα πρόσθετα να γίνουν εγγενείς επεκτάσεις αλληλογραφίας, οι οποίες είναι πολύ διαφορετικές εσωτερικά. Μόνο μέσω της άδειας χρήσης σας μπορούν να χρηματοδοτηθούν οι πολλές απαραίτητες ώρες ανάπτυξης.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "timezone.explain": {
+    "message": "Υποχρεώστε μια συγκεκριμένη ζώνη ώρας για τις μεταβλητές ημερομηνίας αντικαθιστώντας την παράμετρο tz (GMT, EST, CST, PST κλπ.)"
+  },
+  "timezonename.label": {
+    "message": "GMT, PST, EST, ..."
+  },
+  "tip.fileTemplates": {
+    "message": "Κάντε κλικ για να διαβάσετε την πλήρη τεκμηρίωση σχετικά με το SmartTemplates και τα εξωτερικά πρότυπα HTML στον ιστότοπο υποστήριξής μας…"
+  },
+  "to.label": {
+    "message": "Αρχικός Παραλήπτης"
+  },
+  "to_note.label": {
+    "message": "Όταν το όνομα δεν είναι διαθέσιμο, θα εμφανίζεται η διεύθυνση email"
+  },
+  "to_var.cap": {
+    "message": "Παραλήπτης (Προς, παραλήπτης)"
+  },
+  "tofirstname.label": {
+    "message": "Όνομα παραλήπτη"
+  },
+  "tofwd.label": {
+    "message": "Χρησιμοποιήστε το fwd για να προσθέσετε τον παραλήπτη με δυνατότητα κλικ στα προωθημένα emails"
+  },
+  "tokenError": {
+    "message": "Η παρακάτω μεταβλητή προκάλεσε σφάλμα: $token$\nΠαρακαλούμε ελέγξτε το πρότυπό σας για συντακτικά λάθη. Όλες οι μεταβλητές τεκμηριώνονται στο παράθυρο ρυθμίσεων.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
+  "tomail.label": {
+    "message": "Διεύθυνση email του αρχικού παραλήπτη"
+  },
+  "toname.label": {
+    "message": "Όνομα παραλήπτη"
+  },
+  "tools.label": {
+    "message": "Εργαλεία"
+  },
+  "translated-by-google": {
+    "description": "αποποίηση ευθυνών.",
+    "message": "μεταφράσεις παρέχονται από την google"
+  },
+  "translatorNickname.label": {
+    "message": "Aris-T (AMO)"
+  },
+  "tzname.label": {
+    "message": "GMT, PST, EST, ..."
+  },
   "updates.changeLog": {
-    "message" : "Σημειώσεις Έκδοσης (Αγγλικά)"
+    "message": "Σημειώσεις Έκδοσης (Αγγλικά)"
   },
   "updates.news": {
-    "message" : "Τελευταία νέα"
+    "message": "Τελευταία νέα"
   },
   "updates.title": {
     "message": "Ενημερώσεις"
+  },
+  "updatesExpiry": {
+    "message": "Το SmartTemplates θα ενημερώνεται αυτόματα μέσω του addons.thunderbird.net όπως συνήθως. Μετά τη λήξη του έτους, μπορείτε να ανανεώσετε την άδεια ή να συνεχίσετε να δοκιμάζετε τις premium δυνατότητες με τους ίδιους όρους όπως οι τυπικοί χρήστες. Οι αποκλειστικές δυνατότητες 'Premium Exclusive' θα απαιτούν ένα έγκυρο κλειδί εγγραφής."
+  },
+  "url.bugsAndFeaturesPage.label": {
+    "message": "Αναφορές Σφαλμάτων / Αιτήματα Δυνατοτήτων"
+  },
+  "url.homePage.label": {
+    "message": "Αρχική Σελίδα Πρόσθετου"
+  },
+  "url.supportPage.label": {
+    "message": "Σελίδα Υποστήριξης"
+  },
+  "variable.search": {
+    "message": "Εισάγετε έναν όρο αναζήτησης και πατήστε {{Enter}}. Πατήστε {{F4}} για να επαναλάβετε την αναζήτηση. {{Shift}} + {{F4}} αναζητά προς τα πίσω."
+  },
+  "var_custom.cap": {
+    "message": "Μεταβλητές για εξατομικευμένη 'Μορφή Ημερομηνίας'"
+  },
+  "var_xsent.cap": {
+    "message": "Ο Τροποποιητής %X:=sent%"
+  },
+  "vouchers.title": {
+    "message": "Κουπόνια"
   },
   "whats-new-btn": {
     "message": "Τι νέο υπάρχει;"
@@ -1542,7 +1957,66 @@
   },
   "whats-new-list": {
     "message": "{L1} Οι διατάξεις εικονιδίων βελτιώθηκαν για τα σκοτεινά θέματα και αφαιρέθηκαν όλες οι εξαρτήσεις γραμματοσειράς για εικονίδια που περιέχουν κείμενο. [issue 310] {L2}{L1} Πολλαπλές βελτιώσεις στη νέα σελίδα Μεταβλητών: Προστέθηκε η λειτουργία σύμπτυξης όλων των κεφαλαίων και διορθώθηκε η επέκταση όλων των κεφαλαίων. Το πλαίσιο αναζήτησης βρίσκεται ακόμη σε εξέλιξη. [issue 314] {L2}{L1} Η εντολή 'διαμόρφωση στοιχείων μενού...' ανοίγει τώρα τη σελίδα αρχείων προτύπων στο νέο παράθυρο διαλόγου Ρυθμίσεων. {L2}{L1} Οι λειτουργίες προτύπων λειτουργούν τώρα και κατά τη σύνταξη ενός νέου μηνύματος σε λογαριασμό ομάδας συζητήσεων. {L2}"
+  },
+  "whitespace_note": {
+    "message": "Σημειώστε ότι τα κενά μπορούν να αναπαριστούνται καλύτερα ως \\s επειδή μπορεί επίσης να περιλαμβάνουν αλλαγές γραμμής. Οι κόμματα και τα διπλά εισαγωγικά δεν μπορούν να χρησιμοποιηθούν."
+  },
+  "window-title": {
+    "description": "τίτλος σελίδας. Το πρώτο placeholder θα αντικατασταθεί με το όνομα του πρόσθετου",
+    "message": "Καλώς ήρθατε στο $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "xmail.label": {
+    "message": "X-Mailer"
+  },
+  "xsent_long.cap": {
+    "message": "Παράδειγμα για μια μεγάλη αλυσίδα"
+  },
+  "xsent_long.label": {
+    "message": "%X:=sent%%d%/%m%/%Y% στις %H%:%M% η ώρα"
+  },
+  "xsent_long_result.label": {
+    "message": "Αποτέλεσμα: Κυριακή, 20/12/2011 στις 16:24 η ώρα"
+  },
+  "xsent_note.label": {
+    "message": "Από προεπιλογή, οι μεταβλητές ημερομηνίας/ώρας θα αρχικοποιούνται πάντα με τις τρέχουσες τιμές (τρέχουσες = η ώρα που δημιουργείτε το email). Όταν συνδυάζονται με %X:=sent%, οι μεταβλητές ημερομηνίας/ώρας θα ανακλούν την ημερομηνία/ώρα του αρχικού μηνύματος."
+  },
+  "xsent_short.cap": {
+    "message": "Παράδειγμα για μια σύντομη αλυσίδα"
+  },
+  "xsent_short.label": {
+    "message": "%X:=sent% %datelocal%"
+  },
+  "xsent_short_note.label": {
+    "message": "Οι παρακάτω μεταβλητές μπορούν να χρησιμοποιηθούν και στις δύο παραλλαγές"
+  },
+  "xsent_short_result.label": {
+    "message": "Αποτέλεσμα: Κυριακή, 20/12/2011 08:54:21"
+  },
+  "y.up.label": {
+    "message": "Έτος (1970)"
+  },
+  "yearlyLicense.premiumFeatures": {
+    "message": "Το SmartTemplates Pro σας δίνει πλήρη απεριόριστη πρόσβαση στις premium δυνατότητες."
+  },
+  "yearlyLicense.premiumFeatures.moreInfoLink": {
+    "message": "Περισσότερα για τις premium δυνατότητες."
+  },
+  "yearlyLicense.title": {
+    "message": "Ετήσια Άδεια"
+  },
+  "yearlyLicense.usageTerm": {
+    "message": "Η άδεια είναι για προσωπική χρήση και συνδέεται με τη διεύθυνση email σας. Μπορείτε να την εγκαταστήσετε σε πολλούς πελάτες email, αρκεί να είναι διαμορφωμένοι για να χρησιμοποιούν τη licensed διεύθυνση, επίσης."
+  },
+  "yearlyLicense.usageTerm1": {
+    "message": "Οποιεσδήποτε επιπλέον διευθύνσεις email δεν αποτελούν πρόβλημα - δεν απαιτούν ξεχωριστή άδεια. Σε περίπτωση ερωτήσεων, μπορείτε να με βρείτε μέσω της καρτέλας υποστήριξης."
+  },
+  "yes_button": {
+    "message": "Ναι"
   }
-
-
 }

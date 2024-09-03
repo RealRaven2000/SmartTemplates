@@ -101,7 +101,7 @@
     "message": "Načíst nastavení účtu…"
   },
   "btnRefreshAccounts.tooltip": {
-  "message": "Aktualizovat seznam účtů"
+    "message": "Aktualizovat seznam účtů"
   },
   "btnSaveTemplate.tooltip": {
     "message": "Uložit nastavení účtu…"
@@ -179,7 +179,7 @@
     "message": "(příklad pro libovolnou proměnnou adresy) zkopírujte poštovní adresu původního odesílatele do schránky."
   },
   "clipboard.dateformat": {
-      "message": "zkopíruje formátované datum do schránky. Řetězec formátu musí být uzavřen do dvojitých uvozovek. Další informace o syntaxi formátování najdete také v následující části: "
+    "message": "zkopíruje formátované datum do schránky. Řetězec formátu musí být uzavřen do dvojitých uvozovek. Další informace o syntaxi formátování najdete také v následující části: "
   },
   "clipboard.setHeader": {
     "message": "Pomocí obsahu schránky nastavte desku cc - (funguje pro jakékoli textové záhlaví)."
@@ -646,6 +646,15 @@
   "lastName.label": {
     "message": "Příjmení:"
   },
+  "license-discount": {
+    "message": "Ušetřete $discount$ nyní",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Děkujeme, že jste nedávno prodloužili licenci nebo jste darovali. Jelikož jste pomohli doložit tento doplněk do budoucna, můžete toto okno jednoduše zavřít."
@@ -973,8 +982,8 @@
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Použij společné"
   },
@@ -1163,7 +1172,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[opcional] Afegiu els vostres propis atributs d'estil, separats per punt i coma. Sense aquest paràmetre, SmartTemplates inserirà 'display:none' per fer automàticament la secció invisible."
-  },  
+  },
   "preheader.text": {
     "message": "Náhledový text musí být obsažen v uvozovkách, které mohou také obsahovat klíčové slovo $clipboardStarred$. Alternativně můžete použít $clipboardLiteral$ nebo $selectionLiteral$ (poslední funguje pouze při použití ze Smart Snippet)",
     "placeholders": {
@@ -1175,12 +1184,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "Šifrovaná e-mailová adresa neodpovídá čitelné adrese."
   },
@@ -1191,13 +1200,13 @@
     "message": "Prosím, vyberte externí editor pro úpravu vašich HTML šablon. Doporučuji použít pouze textový editor HTML s podporou syntaxe, jako je notepad++ nebo Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "Editor na cestě nebyl nalezen: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "Editor na cestě nebyl nalezen: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Vlož text pro přidání nebo nastavení"
@@ -1252,7 +1261,7 @@
   },
   "replaceText.selection": {
     "message": "[Volitelné] Nahradí všechny shodné texty ve stávajícím výběru textu textem náhrady - funguje pouze ve Smart Fragments."
-  },  
+  },
   "replacementHTML": {
     "message": "musí být ve dvojitých uvozovkách - buď text nebo html značka, která bude vložena do uvozovek, kdekoli bude nalezena shoda."
   },
@@ -1338,10 +1347,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates byl aktualizován!"
+    "message": "SmartTemplates byl aktualizován."
   },
-  "snippets.head": {
-    "message": "Chytré úryvky"
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Přečtěte si novinky!"
   },
   "snippets.label": {
     "message": "Fragmenty HTML pro vkládání do Composeru"
@@ -1384,7 +1393,7 @@
         "example": "cmd_replyList"
       }
     }
-  },  
+  },
   "st.fileTemplates.openFile": {
     "message": "Otevřít soubor šablony SmartTemplates…"
   },
@@ -1475,10 +1484,10 @@
   },
   "st.menuaccess.replyList": {
     "message": "S"
-  },  
+  },
   "st.menuaccess.write": {
     "message": "Z"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Odpovědět všem"
   },
@@ -1496,7 +1505,7 @@
         "example": "SmartTemplates"
       }
     }
-  },  
+  },
   "st.notification.bodyModified": {
     "message": "Thunderbird říká, že jste již něco napsali. Chcete přesto načíst šablonu?"
   },
@@ -1513,7 +1522,7 @@
   },
   "st.notification.bodyModified.instructions": {
     "message": "Klikněte na Zrušit pro zachování obsahu e-mailu beze změn."
-  } ,
+  },
   "st.notification.donate": {
     "message": "Darovat"
   },
@@ -1624,7 +1633,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Převede celý výskyt na velká písmena."
-  },    
+  },
   "stringmanip_function.cap": {
     "message": "změna řetězce"
   },
@@ -1655,7 +1664,7 @@
   },
   "special-offer-expiry": {
     "message": "31. července"
-  }, 
+  },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
     "placeholders": {
@@ -1863,10 +1872,10 @@
     "message": "Zkratka čas. zóny GMT, PST, EST, ... "
   },
   "updates.changeLog": {
-    "message" : "Poznámky k vydání (anglicky)"
+    "message": "Poznámky k vydání (anglicky)"
   },
   "updates.news": {
-    "message" : "Poslední zprávy"
+    "message": "Poslední zprávy"
   },
   "updates.title": {
     "message": "Aktualizace"

@@ -179,7 +179,7 @@
     "message": "(exemplo para qualquer variável de endereço) copie o endereço de e-mail do remetente original para a área de transferência."
   },
   "clipboard.dateformat": {
-      "message": "copia a data formatada para a área de transferência. A string de formato deve estar entre aspas duplas. Para mais informações sobre a sintaxe de formatação, consulte a seção seguinte: "
+    "message": "copia a data formatada para a área de transferência. A string de formato deve estar entre aspas duplas. Para mais informações sobre a sintaxe de formatação, consulte a seção seguinte: "
   },
   "clipboard.setHeader": {
     "message": "Use o conteúdo da área de transferência para definir o cc - (funciona para qualquer cabeçalho textual)."
@@ -409,7 +409,7 @@
   },
   "fileTemplates.fwd.tooltip": {
     "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir do botão 'Avançar'."
-  },  
+  },
   "fileTemplates.listHead": {
     "message": "Entradas do menu de modelos"
   },
@@ -546,7 +546,7 @@
   },
   "heading.collapseAll": {
     "message": "Colapsar todos os capítulos"
-  },  
+  },
   "heading.expandAll": {
     "message": "expandir todas as entradas"
   },
@@ -648,6 +648,15 @@
   },
   "lastName.label": {
     "message": "Sobrenome:"
+  },
+  "license-discount": {
+    "message": "Poupe $discount$ agora",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -942,15 +951,15 @@
         "example": "Usar Comum"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "As configurações abaixo são aplicadas quando não existe um modelo específico para uma identidade ou se '$pref_def$' for selecionado para essa identidade.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Usar configuração global"
   },
@@ -1139,7 +1148,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[opcional] Adicione seus próprios atributos de estilo, separados por ponto e vírgula. Sem este parâmetro, o SmartTemplates inserirá 'display:none' para tornar a seção automaticamente invisível."
-  },  
+  },
   "preheader.text": {
     "message": "O texto de pré-visualização deve estar contido entre aspas duplas, que também podem conter a palavra-chave $clipboardStarred$. Como alternativa, pode usar $clipboardLiteral$ ou $selectionLiteral$ (este último só funciona quando utilizado a partir de um Smart Snippet)",
     "placeholders": {
@@ -1151,12 +1160,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "Recursos Premium"
   },
@@ -1165,7 +1174,7 @@
   },
   "pricing.section.hint": {
     "message": "Nota: O preço varia consoante o modelo de licença, país, taxa de IVA, descontos em vigor ou licenças já adquiridas."
-  },  
+  },
   "pricing.title": {
     "message": "Preços"
   },
@@ -1228,7 +1237,7 @@
   },
   "replaceText.selection": {
     "message": "[Opcional] Substitui todo o texto correspondente na seleção atual pelo texto de substituição - funciona apenas em Fragmentos Inteligentes."
-  },  
+  },
   "replacementHTML": {
     "message": "deve estar entre aspas duplas - um texto ou uma tag html que será inserida entre aspas sempre que uma correspondência for encontrada."
   },
@@ -1314,7 +1323,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates foi atualizado!"
+    "message": "SmartTemplates atualizado."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Leia as novidades!"
   },
   "snippets.head": {
     "message": "Snippets inteligentes"
@@ -1451,10 +1463,10 @@
   },
   "st.menuaccess.replyList": {
     "message": "L"
-  },    
+  },
   "st.menuaccess.write": {
     "message": "N"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Responder todos"
   },
@@ -1603,7 +1615,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Transforma toda a correspondência em maiúsculas."
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "Manipulação de string"
   },
@@ -1634,7 +1646,7 @@
   },
   "special-offer-expiry": {
     "message": "31 de julho"
-  },    
+  },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
     "placeholders": {
@@ -1839,10 +1851,10 @@
     "message": "Mauro José da Silva (BabelZilla)"
   },
   "updates.changeLog": {
-    "message" : "Notas de lançamento (inglês)"
+    "message": "Notas de lançamento (inglês)"
   },
   "updates.news": {
-    "message" : "Últimas notícias"
+    "message": "Últimas notícias"
   },
   "updates.title": {
     "message": "Atualizações"

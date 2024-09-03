@@ -3181,6 +3181,44 @@ SmartTemplate4.Util = {
       return words.join(" ");
     }
     return txt;
+  },
+
+	get isSale() {
+    const currentTime = new Date();
+    const isSale = (currentTime <= SmartTemplates_Discounts.sales_end);
+		return isSale;
+	},
+
+	saleDiscount: function(licenseInfo) {
+    let SALE_DISCOUNT;
+		if (!licenseInfo.licenseKey) {
+			return SmartTemplates_Discounts.discountRate.discountPro;
+		}
+    switch(licenseInfo?.keyType) {    
+      case 0: // Pro
+        SALE_DISCOUNT = SmartTemplates_Discounts.discountRate.discountRenewal;
+        break;
+      case 1: // Domain
+        SALE_DISCOUNT = "";
+        break;
+      case 2: // Standard
+        SALE_DISCOUNT = SmartTemplates_Discounts.discountRate.discountUpgrade;
+        break;
+      default:
+        SALE_DISCOUNT = SmartTemplates_Discounts.discountRate.discountPro;
+    }
+    if (!SALE_DISCOUNT) { return ""; }
+		return SALE_DISCOUNT;
+	},
+
+  salesLabel: function(licenseInfo) {
+    if (!SmartTemplate4.Util.isSale) { return ""; }
+    if (licenseInfo?.isValid) { return ""; }
+    const SALE_DISCOUNT = SmartTemplate4.Util.saleDiscount(licenseInfo);
+    if (!SALE_DISCOUNT) { return ""; }
+    const BULLET = "☀️"; // this could become seasonal (?)
+		const SALE_TEXT = `${BULLET}${SmartTemplate4.Util.getBundleString("license-discount", SALE_DISCOUNT)}`;
+    return SALE_TEXT;
   }
 
 };  // ST4.Util

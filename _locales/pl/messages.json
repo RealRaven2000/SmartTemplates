@@ -383,9 +383,9 @@
   "fileHTML.label": {
     "message": "Plik HTML lub zwykły plik tekstowy. Zostanie zastosowane kodowanie UTF-8, jeśli zostanie pominięty opcjonalny parametr zestawu znaków.."
   },
-	"fileImage.attributes": {
+  "fileImage.attributes": {
     "message": "Opcjonalna lista zestawów atrybut=wartość, takich jak 'id=obraz1,class=zrzut-ekranu'."
-	},
+  },
 
   "fileImage.label": {
     "message": "Plik obrazka (png,jpg,gif,bmp,svg). Jeśli nie naleziono obrazka, będzie wyświetlany opcjonalny parametr altText."
@@ -659,6 +659,15 @@
   },
   "lastName.label": {
     "message": "Nazwisko:"
+  },
+  "license-discount": {
+    "message": "Zaoszczędź $discount$ teraz",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -965,15 +974,15 @@
         "example": "Użyj Wspólnego"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "De onderstaande instellingen worden toegepast wanneer er geen specifieke sjabloon bestaat voor een identiteit of als „$pref_def$” is geselecteerd voor die identiteit.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Użyj dla wszystkich kont"
   },
@@ -1162,7 +1171,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[opcjonalnie] Dodaj własne style, oddzielone średnikiem. Bez tego parametru SmartTemplates automatycznie wstawi 'display:none', aby automatycznie ukryć sekcję."
-  },  
+  },
   "preheader.text": {
     "message": "Tekst podglądu musi być zawarty w podwójnych cudzysłowach, które mogą również zawierać słowo kluczowe $clipboardStarred$. W alternatywie można użyć $clipboardLiteral$ lub $selectionLiteral$ (ten ostatni działa tylko wtedy, gdy jest używany z elementu Smart Snippet)",
     "placeholders": {
@@ -1174,12 +1183,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "Funkcje premium"
   },
@@ -1188,7 +1197,7 @@
   },
   "pricing.section.hint": {
     "message": "Uwaga: Cena różni się w zależności od modelu licencji, kraju, stawki VAT, aktualnych rabatów lub już zakupionych licencji."
-  },  
+  },
   "pricing.title": {
     "message": "cennik"
   },
@@ -1199,13 +1208,13 @@
     "message": "Wybierz zewnętrzny edytor do edycji szablonów HTML. Zalecam użycie edytora HTML zwykłego tekstu z podświetlaniem składni, takiego jak notepad++ lub Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "Nie można znaleźć Edytora na ścieżce: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "Nie można znaleźć Edytora na ścieżce: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Wprowadź tekst, aby dodać lub ustawić"
@@ -1251,7 +1260,7 @@
   },
   "replaceText.selection": {
     "message": "[Opcjonalne] Zastępuje wszystkie pasujące teksty w bieżącym zaznaczeniu tekstem zastępczym - działa tylko w inteligentnych fragmentach."
-  },  
+  },
   "replacementHTML": {
     "message": "muszą być w cudzysłowach - tag tekstowy lub html, który zostanie wstawiony w cudzysłowie wszędzie tam, gdzie znaleziono dopasowanie."
   },
@@ -1329,7 +1338,7 @@
   },
   "SmartTemplateMainButton.invalid": {
     "message": "Licencja nieprawidłowa."
-  },  
+  },
   "SmartTemplateMainButton.renew": {
     "message": "Licencja wygasa za $daysLeft$ dni",
     "placeholders": {
@@ -1340,7 +1349,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates zostało zaktualizowane!"
+    "message": "SmartTemplates zaktualizowany."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Przeczytaj nowości!"
   },
   "snippets.head": {
     "message": "Inteligentne fragmenty"
@@ -1477,10 +1489,10 @@
   },
   "st.menuaccess.replyList": {
     "message": "L"
-  },  
+  },
   "st.menuaccess.write": {
     "message": "N"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Odpowiedz wszystkim"
   },
@@ -1629,7 +1641,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Zamienia całe dopasowanie na duże litery."
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "Manipulacja stringami"
   },
@@ -1660,7 +1672,7 @@
   },
   "special-offer-expiry": {
     "message": "31 lipca"
-  }, 
+  },
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
     "placeholders": {
@@ -1874,10 +1886,10 @@
     "message": "GMT, PST, EST, … "
   },
   "updates.changeLog": {
-    "message" : "Informacje o wydaniu (angielski)"
+    "message": "Informacje o wydaniu (angielski)"
   },
   "updates.news": {
-    "message" : "Najnowsze wiadomości"
+    "message": "Najnowsze wiadomości"
   },
   "updates.title": {
     "message": "Aktualizacje"

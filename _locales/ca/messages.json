@@ -655,6 +655,15 @@
   "lastName.label": {
     "message": "Cognom:"
   },
+  "license-discount": {
+    "message": "Estalvia $discount$ ara",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Gràcies per ampliar recentment la llicència o si heu donat. Com heu ajudat a provar aquest complement en un futur, només podeu tancar aquesta finestra."
@@ -979,8 +988,8 @@
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Utilizar las opcions globalas"
   },
@@ -1169,7 +1178,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[opcional] Afegiu els vostres propis atributs d'estil, separats per punt i coma. Sense aquest paràmetre, SmartTemplates inserirà 'display:none' per fer automàticament la secció invisible."
-  },  
+  },
   "preheader.text": {
     "message": "El text previ ha d'estar contingut dins de cometes dobles, que també poden contenir la paraula clau $clipboardStarred$. Alternativament, podeu utilitzar $clipboardLiteral$ o $selectionLiteral$ (aquest últim només funciona quan s'utilitza des d'una Smart Snippet)",
     "placeholders": {
@@ -1181,7 +1190,7 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
@@ -1195,10 +1204,10 @@
   },
   "pricing.section.hint": {
     "message": "Nota: El preu varia en funció del model de llicència, país, tipus d'IVA, descomptes actuals o llicències ja adquirides."
-  },  
+  },
   "pricing.title": {
     "message": "Preus"
-  },  
+  },
   "prompt.email": {
     "message": "Introduïu una adreça de correu electrònic"
   },
@@ -1206,13 +1215,13 @@
     "message": "Si us plau, selecciona un editor extern per editar les teves plantilles HTML. Et recomano utilitzar un editor HTML només de text amb ressaltat de sintaxi, com ara el notepad++ o el Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "No s'ha pogut trobar l'editor a la ruta: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "No s'ha pogut trobar l'editor a la ruta: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Introduïu el text per afegir o definir"
@@ -1258,7 +1267,7 @@
   },
   "replaceText.selection": {
     "message": "[Opcional] Reemplaça tot el text coincident dins de la selecció actual amb el text de substitució - només funciona en Fragments Intel·ligents."
-  },  
+  },
   "replacementHTML": {
     "message": "ha d'estar entre cometes dobles: ja sigui un text o una etiqueta html que s'inserirà entre cometes sempre que es trobi una coincidència."
   },
@@ -1344,7 +1353,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates s'ha actualitzat."
+    "message": "SmartTemplates actualitzat."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Llegeix les novetats!"
   },
   "snippets.head": {
     "message": "Fragments intelligents"
@@ -1390,7 +1402,7 @@
         "example": "cmd_replyList"
       }
     }
-  },  
+  },
   "st.fileTemplates.openFile": {
     "message": "Obriu el fitxer de plantilla SmartTemplates…"
   },
@@ -1451,7 +1463,7 @@
   },
   "st.menu.hideLabel": {
     "message": "Amaga l'etiqueta del botó"
-  },  
+  },
   "st.menu.template.default": {
     "message": "Plantilla predeterminada (compte)"
   },
@@ -1481,10 +1493,10 @@
   },
   "st.menuaccess.replyList": {
     "message": "L"
-  },  
+  },
   "st.menuaccess.write": {
     "message": "N"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Respondre a tots"
   },
@@ -1519,7 +1531,7 @@
   },
   "st.notification.bodyModified.instructions": {
     "message": "Feu clic a Cancel·la per mantenir el contingut del correu electrònic sense canvis."
-  },  
+  },
   "st.notification.donate": {
     "message": "Donar"
   },
@@ -1633,7 +1645,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Transforma tota la coincidència a majúscula."
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "Manipulació de cadenes"
   },
@@ -1875,10 +1887,10 @@
     "message": "GMT, PST, EST,…"
   },
   "updates.changeLog": {
-    "message" : "Notes de la versió (anglès)"
+    "message": "Notes de la versió (anglès)"
   },
   "updates.news": {
-    "message" : "Últimes notícies"
+    "message": "Últimes notícies"
   },
   "updates.title": {
     "message": "Actualitzacions"
@@ -1918,7 +1930,7 @@
   },
   "whats-new-list": {
     "message": "{L1} S'han millorat els dissenys d'icones per a temes foscos i s'han eliminat les dependències de fonts per a icones que contenen text. [issue 310] {L2}{L1} Diverses millores a la nova pàgina de Variables: Afegida funció per col·lapsar tots els capítols i s'ha corregit l'expansió de tots els capítols. El quadre de cerca encara està en desenvolupament. [issue 314] {L2}{L1} L'ordre 'configura els elements del menú...' ara obre la pàgina de fitxers de plantilles al nou diàleg de Configuració. {L2}{L1} Les funcions de la plantilla també funcionen quan es redacta un nou missatge en un compte de grup de notícies. {L2}"
-  }, 
+  },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."
   },

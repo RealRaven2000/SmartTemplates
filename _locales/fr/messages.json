@@ -185,7 +185,7 @@
     "message": "(exemple pour toute variable d'adresse) copier l'adresse e-mail de l'expéditeur d'origine dans le presse-papiers."
   },
   "clipboard.dateformat": {
-      "message": "copie la date formatée dans le presse-papiers. La chaîne de format doit être entre guillemets. Pour plus d'informations sur la syntaxe de formatage, consultez également la section suivante : "
+    "message": "copie la date formatée dans le presse-papiers. La chaîne de format doit être entre guillemets. Pour plus d'informations sur la syntaxe de formatage, consultez également la section suivante : "
   },
   "clipboard.setHeader": {
     "message": "Utilisez le contenu du presse-papiers pour définir le cc - (fonctionne pour n'importe quel en-tête textuel).board."
@@ -658,6 +658,15 @@
   "lastName.label": {
     "message": "Nom :"
   },
+  "license-discount": {
+    "message": "Économisez $discount$ maintenant",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Merci d'avoir récemment prolongé votre licence ou si vous avez fait un don. Comme vous avez contribué à la pérennité de cet add-on, vous pouvez simplement fermer cette fenêtre."
@@ -972,15 +981,15 @@
         "example": "Utiliser Commun"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "Les paramètres ci-dessous sont appliqués lorsqu'aucun modèle spécifique n'existe pour une identité ou si « $pref_def$ » est sélectionné pour cette identité.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Utiliser les options globales"
   },
@@ -1169,7 +1178,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[facultatif] Ajoutez vos propres attributs de style, séparés par un point-virgule. Sans ce paramètre, SmartTemplates insérera 'display:none' pour rendre automatiquement la section invisible."
-  },  
+  },
   "preheader.text": {
     "message": "Le texte de prévisualisation doit être contenu entre guillemets doubles, qui peuvent également contenir le mot clé $clipboardStarred$. En alternative, vous pouvez utiliser $clipboardLiteral$ ou $selectionLiteral$ (ce dernier ne fonctionne que lorsqu'il est utilisé depuis un Smart Snippet)",
     "placeholders": {
@@ -1181,12 +1190,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "Fonctionnalités Premium"
   },
@@ -1197,13 +1206,13 @@
     "message": "Veuillez sélectionner un éditeur externe pour modifier vos modèles HTML. Je recommande d'utiliser un éditeur HTML uniquement texte avec coloration syntaxique, comme notepad++ ou Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "Impossible de trouver l'éditeur à l'emplacement suivant : $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "Impossible de trouver l'éditeur à l'emplacement suivant : $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Indiquer le texte à ajouter ou définir"
@@ -1335,7 +1344,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates a été mis à jour "
+    "message": "SmartTemplates mis à jour."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Lisez les nouvelles!"
   },
   "snippets.head": {
     "message": "Extraits intelligents"
@@ -1475,7 +1487,7 @@
   },
   "st.menuaccess.write": {
     "message": "N"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Répondre à tous"
   },
@@ -1627,7 +1639,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Transforme toute la correspondance en majuscules."
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "Manipulation des chaînes de caractères"
   },
@@ -1658,7 +1670,7 @@
   },
   "special-offer-expiry": {
     "message": "31 juillet"
-  },      
+  },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
     "placeholders": {
@@ -1872,10 +1884,10 @@
     "message": "GMT, PST, EST,…"
   },
   "updates.changeLog": {
-    "message" : "Notes de version (anglais)"
+    "message": "Notes de version (anglais)"
   },
   "updates.news": {
-    "message" : "Dernières nouvelles"
+    "message": "Dernières nouvelles"
   },
   "updates.title": {
     "message": "Mises à jour"

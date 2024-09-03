@@ -668,6 +668,15 @@
   "lastName.label": {
     "message": "Last Name:"
   },
+  "license-discount": {
+    "message": "Save $discount$ now",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
@@ -1379,7 +1388,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates was updated!"
+    "message": "SmartTemplates updated."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Read news!"
   },
   "snippets.head": {
     "message": "Smart Snippets"

@@ -1,5 +1,6 @@
 //original lds this after xul!!
 
+// ChromeUtils.importESModule("chrome://smarttemplate4/content/smartTemplate-main.js", { global: "contextual" });
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
 
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/scripts/hackToolbarbutton.js", window.SmartTemplate4, "UTF-8");
@@ -93,6 +94,10 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-news":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashScreen" });
         SmartTemplates.Preferences.setMyBoolPref("hasNews", false);
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
+        break;
+      case "smartTemplates-setNewsFlag":
+        SmartTemplates.Preferences.setMyBoolPref("hasNews", true);
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
         break;
       case "smartTemplates-settings-legacy": // fall-through

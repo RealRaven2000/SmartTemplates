@@ -182,7 +182,7 @@
     "message": "(voorbeeld voor elke adresvariabele) kopieer het e-mailadres van de oorspronkelijke afzender naar het klembord."
   },
   "clipboard.dateformat": {
-      "message": "kopieert de opgemaakte datum naar het klembord. De formaatstring moet tussen dubbele aanhalingstekens staan. Voor meer informatie over de opmaaksyntaxis zie ook de volgende sectie: "
+    "message": "kopieert de opgemaakte datum naar het klembord. De formaatstring moet tussen dubbele aanhalingstekens staan. Voor meer informatie over de opmaaksyntaxis zie ook de volgende sectie: "
   },
   "clipboard.setHeader": {
     "message": "Gebruik de inhoud van het klembord om de cc in te stellen - (werkt voor elke tekstuele kop)."
@@ -652,6 +652,15 @@
   "lastName.label": {
     "message": "Achternaam:"
   },
+  "license-discount": {
+    "message": "Bespaar nu $discount$",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Bedankt voor het onlangs verlengen van uw licentie of als u heeft gedoneerd. Omdat u heeft geholpen om deze add-on toekomstbestendig te maken, kunt u dit venster eenvoudig sluiten."
@@ -918,15 +927,15 @@
         "example": "Gebruik Gemeenschappelijk"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "De onderstaande instellingen worden toegepast wanneer er geen specifieke sjabloon bestaat voor een identiteit of als  ‘$pref_def$’ is geselecteerd voor die identiteit.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Algemeen gebruiken"
   },
@@ -1112,7 +1121,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[optioneel] Voeg uw eigen stijlattributen toe, gescheiden door puntkomma. Zonder deze parameter zal SmartTemplates automatisch 'display:none' invoegen om het gedeelte onzichtbaar te maken."
-  },  
+  },
   "preheader.text": {
     "message": "De voorbeeldtekst moet tussen dubbele aanhalingstekens staan, die ook het sleutelwoord $clipboardStarred$ kunnen bevatten. Als alternatief kunt u $clipboardLiteral$ of $selectionLiteral$ gebruiken (de laatste werkt alleen wanneer deze wordt gebruikt vanuit een Smart Snippet)",
     "placeholders": {
@@ -1124,12 +1133,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "Premium-functies"
   },
@@ -1138,7 +1147,7 @@
   },
   "pricing.section.hint": {
     "message": "Opmerking: de prijs varieert afhankelijk van het licentiemodel, het land, het btw-tarief, huidige kortingen of reeds gekochte licenties."
-  },  
+  },
   "pricing.title": {
     "message": "Prijzen"
   },
@@ -1149,13 +1158,13 @@
     "message": "Selecteer een externe editor om uw HTML-templates te bewerken. Ik raad aan om een teksteditor voor HTML met alleen tekst en syntaxiskleuring te gebruiken, zoals notepad++ of Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "Editor niet gevonden op het pad: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "Editor niet gevonden op het pad: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Voer de toe te voegen of in te stellen tekst in"
@@ -1201,7 +1210,7 @@
   },
   "replaceText.selection": {
     "message": "[Optioneel] Vervangt alle overeenkomende tekst binnen de huidige selectie door de vervangingstekst - werkt alleen in Slimme Fragmenten."
-  },  
+  },
   "replacementHTML": {
     "message": "dient tussen dubbele aanhalingstekens te staan – een tekst of HTML-label dat tussen aanhalingstekens wordt ingevoegd als een overeenkomst wordt gevonden."
   },
@@ -1287,7 +1296,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates is bijgewerkt!"
+    "message": "SmartTemplates bijgewerkt."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Lees het nieuws!"
   },
   "snippets.head": {
     "message": "Slimme fragmenten"
@@ -1427,7 +1439,7 @@
   },
   "st.menuaccess.write": {
     "message": "N"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Allen beantwoorden"
   },
@@ -1462,7 +1474,7 @@
   },
   "st.notification.bodyModified.instructions": {
     "message": "Klik op Annuleren om de inhoud van de e-mail ongewijzigd te houden."
-  },  
+  },
   "st.notification.donate": {
     "message": "Doneren"
   },
@@ -1573,7 +1585,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Transformeert de gehele overeenkomst naar hoofdletters."
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "Stringmanipulatie"
   },
@@ -1818,14 +1830,14 @@
     "message": "SmartTemplates Pro wordt zoals gewoonlijk automatisch bijgewerkt via addons.thunderbird.net. Na het verstrijken van het jaar kunt u de licentie vernieuwen of de premiumfuncties blijven gebruiken onder dezelfde voorwaarden als gratis gebruikers. Functies exclusief voor premium vereisen een geldige licentiesleutel."
   },
   "updates.changeLog": {
-    "message" : "Release-opmerkingen (Engels)"
+    "message": "Release-opmerkingen (Engels)"
   },
   "updates.news": {
-    "message" : "Laatste nieuws"
+    "message": "Laatste nieuws"
   },
   "updates.title": {
     "message": "Updates"
-  },  
+  },
   "url.bugsAndFeaturesPage.label": {
     "message": "Bugrapporten / Functieaanvragen"
   },

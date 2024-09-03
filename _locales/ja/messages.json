@@ -179,7 +179,7 @@
     "message": "(任意のアドレス変数の例) 元の送信者のメールアドレスをクリップボードにコピーします。"
   },
   "clipboard.dateformat": {
-      "message": "フォーマットされた日付をクリップボードにコピーします。フォーマット文字列は二重引用符で囲む必要があります。フォーマットの構文に関する詳細は、次のセクションを参照してください。"
+    "message": "フォーマットされた日付をクリップボードにコピーします。フォーマット文字列は二重引用符で囲む必要があります。フォーマットの構文に関する詳細は、次のセクションを参照してください。"
   },
   "clipboard.setHeader": {
     "message": "クリップボードの内容を使用して cc - を設定します (任意のテキスト ヘッダーで機能します)。"
@@ -652,6 +652,15 @@
   "lastName.label": {
     "message": "姓:"
   },
+  "license-discount": {
+    "message": "今すぐ $discount$ 節約",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "最近ライセンスを延長するか、寄付していただきありがとうございます。このアドオンの将来に貢献いただけましたので、このウィンドウを閉じてください。"
@@ -864,7 +873,7 @@
   },
   "newsHead": {
     "message": "最新ニュース"
-  },  
+  },
   "newsSection": {
     "message": "{P1}$addonName$ は、Thunderbird の最新バージョン (115.2.3) と互換性があります。 これには、多数の大幅な変更と多くの関数の書き直しが必要でした。{P2} ",
     "placeholders": {
@@ -876,7 +885,7 @@
         "content": "$2"
       }
     }
-  },  
+  },
   "newsSection.license": {
     "message": "この作業はライセンスの販売によってのみ賄われているため、将来 SmartTemplates を使用することに興味がある場合は、ライセンスを購入するか、以前のライセンスを更新することを検討してください。"
   },
@@ -961,8 +970,8 @@
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "共通設定を使う"
   },
@@ -1151,7 +1160,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[オプション] セミコロンで区切られた独自のスタイル属性を追加します。このパラメーターがない場合、SmartTemplates はセクションを自動的に非表示にするために 'display:none' を挿入します。"
-  },  
+  },
   "preheader.text": {
     "message": "プレビューテキストは二重引用符内に含まれている必要があります。これには $clipboardStarred$ キーワードも含まれる場合があります。代替として、$clipboardLiteral$ または $selectionLiteral$ を使用することもできます（後者は Smart Snippet から使用される場合のみ機能します）",
     "placeholders": {
@@ -1163,12 +1172,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "プレミアム機能"
   },
@@ -1179,13 +1188,13 @@
     "message": "外部エディターを選択して HTML テンプレートを編集してください。notepad++ や Visual Studio Code のような、シンタックスハイライト機能を備えた純粋なテキストの HTML エディターの使用をお勧めします。"
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "パスにエディターが見つかりませんでした: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "パスにエディターが見つかりませんでした: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "置換/追記するテキストを入力してください"
@@ -1231,7 +1240,7 @@
   },
   "replaceText.selection": {
     "message": "[オプション] 現在の選択内のすべての一致するテキストを置換テキストで置き換えます - スマートフラグメントでのみ機能します。"
-  },  
+  },
   "replacementHTML": {
     "message": "ダブルクオートで囲まれている必要があります - 引用部でマッチするすべての場所において、テキストあるいは HTML タグで置換されます"
   },
@@ -1317,7 +1326,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates が更新されました！"
+    "message": "SmartTemplatesが更新されました。"
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶ニュースを読む！"
   },
   "snippets.head": {
     "message": "スマートスニペット"
@@ -1600,7 +1612,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "マッチ全体を大文字に変換します。"
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "文字列操作"
   },
@@ -1631,7 +1643,7 @@
   },
   "special-offer-expiry": {
     "message": "7月31日"
-  },  
+  },
   "special-offer-head": {
     "message": "$addon$ の互換性を維持するのに役立ちます",
     "placeholders": {
@@ -1845,10 +1857,10 @@
     "message": "タイムゾーン (GMT, PST, EST, ... )"
   },
   "updates.changeLog": {
-    "message" : "リリースノート (英語)"
+    "message": "リリースノート (英語)"
   },
   "updates.news": {
-    "message" : "最新ニュース"
+    "message": "最新ニュース"
   },
   "updates.title": {
     "message": "更新について"

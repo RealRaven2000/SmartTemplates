@@ -655,6 +655,15 @@
   "lastName.label": {
     "message": "姓："
   },
+  "license-discount": {
+    "message": "立即節省 $discount$",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "感謝您最近延長許可證或捐贈。 當您幫助將來對該插件進行驗證時，只需關閉此窗口即可。"
@@ -972,15 +981,15 @@
         "example": "使用通用"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "當沒有特定模板存在於身份時，或為該身份選擇 '$pref_def$' 時，會應用以下設置。",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "使用常見的"
   },
@@ -1169,7 +1178,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[可選] 添加您自己的樣式屬性，以分號分隔。沒有這個參數，SmartTemplates 將插入 'display:none' 來自動使該部分不可見。"
-  },  
+  },
   "preheader.text": {
     "message": "預覽文本必須包含在雙引號內，雙引號也可以包含 $clipboardStarred$ 關鍵字。或者您可以使用 $clipboardLiteral$ 或 $selectionLiteral$（後者僅在從智能片段使用時有效）",
     "placeholders": {
@@ -1181,12 +1190,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  },  
+  },
   "premiumConfig": {
     "message": "高級功能"
   },
@@ -1195,7 +1204,7 @@
   },
   "pricing.section.hint": {
     "message": "注意：價格因許可證型號、國家/地區、增值稅稅率、當前折扣或已購買的許可證而異。"
-  },  
+  },
   "pricing.title": {
     "message": "價錢"
   },
@@ -1258,7 +1267,7 @@
   },
   "replaceText.selection": {
     "message": "[可選] 將當前選取範圍內的所有符合文字替換為替換文字 - 僅適用於智慧片段。"
-  },  
+  },
   "replacementHTML": {
     "message": "參數必須用雙引號引起來-文本或html標記都將在找到匹配項時插入引號中。"
   },
@@ -1341,7 +1350,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "智能模板已更新！"
+    "message": "SmartTemplates 已更新."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶閱讀新聞！"
   },
   "snippets.head": {
     "message": "智能片段"
@@ -1478,7 +1490,7 @@
   },
   "st.menuaccess.replyList": {
     "message": "L"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "全部回复"
   },
@@ -1624,7 +1636,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "將整個匹配項轉換為大寫。"
-  },  
+  },
   "stringmanip_function.cap": {
     "message": "字符串操作"
   },
@@ -1857,10 +1869,10 @@
     "message": "谷歌提供的翻譯"
   },
   "updates.changeLog": {
-    "message" : "發行說明（英文）"
+    "message": "發行說明（英文）"
   },
   "updates.news": {
-    "message" : "最新消息"
+    "message": "最新消息"
   },
   "updates.title": {
     "message": "更新"

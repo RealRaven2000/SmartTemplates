@@ -8,7 +8,7 @@ END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
 // whether these are shown depends on the "sales_end" variable in popup.js!
-
+//  import {discountRate, compatibleVer} from "./sales.js";
 
   addEventListener("click", async (event) => {
     switch(event.target.id) {
@@ -143,7 +143,7 @@ END LICENSE BLOCK */
     if (specialOffer) {
       let expiry = messenger.i18n.getMessage("special-offer-expiry");
       // note: expiry day is set in popup.js "sales_end" variable
-      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, discountPro])
+      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, discountRate.discountPro])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>")
           .replace(/\{linkStart\}/, "<a id='stdLink'>")
@@ -157,7 +157,7 @@ END LICENSE BLOCK */
       let expiry = messenger.i18n.getMessage("special-offer-expiry");
       // note: expiry day is set in popup.js "sales_end" variable
       specialRenew.innerHTML = 
-        messenger.i18n.getMessage("special-offer-renew", [expiry, discountRenewal])
+        messenger.i18n.getMessage("special-offer-renew", [expiry, discountRate.discountRenewal])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>");
     }
@@ -167,7 +167,7 @@ END LICENSE BLOCK */
     if (specialOfferUpgrade) {
       let expiry = messenger.i18n.getMessage("special-offer-expiry");
       // note: expiry day is set in popup.js "sales_end" variable
-      specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, discountUpgrade])
+      specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, discountRate.discountUpgrade])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>")
           .replace(/\{linkStart\}/, "<a id='stdLink'>")
@@ -201,7 +201,7 @@ END LICENSE BLOCK */
     //
     let specialOfferStandard = document.getElementById('specialOfferStandard');
     if (specialOfferStandard) {
-      specialOfferStandard.innerHTML =  messenger.i18n.getMessage('license-standard-special-offer', [userName,discountUpgrade])
+      specialOfferStandard.innerHTML =  messenger.i18n.getMessage('license-standard-special-offer', [userName,discountRate.discountUpgrade])
         .replace(/\{boldStart\}/g,"<b>")
         .replace(/\{boldEnd\}/g,"</b>");
     }

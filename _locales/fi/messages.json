@@ -182,7 +182,7 @@
     "message": "(esimerkki mistä tahansa osoitemuuttujasta) kopioi alkuperäisen lähettäjän sähköpostiosoite leikepöydälle."
   },
   "clipboard.dateformat": {
-      "message": "kopioi muotoillun päivämäärän leikepöydälle. Muotoilumerkkijonon on oltava lainausmerkeissä. Lisätietoja muotoilusyntaksista on seuraavassa osiossa: "
+    "message": "kopioi muotoillun päivämäärän leikepöydälle. Muotoilumerkkijonon on oltava lainausmerkeissä. Lisätietoja muotoilusyntaksista on seuraavassa osiossa: "
   },
   "clipboard.setHeader": {
     "message": "Käytä leikepöydän sisältöä asettaaksesi cc - (toimii kaikissa tekstiotsikoissa)."
@@ -655,6 +655,15 @@
   "lastName.label": {
     "message": "Sukunimi:"
   },
+  "license-discount": {
+    "message": "Säästä $discount$ nyt",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Kiitos, että lisenssit äskettäin tai olet lahjoittanut. Koska olet auttanut todistamaan tämän lisäosan tulevaisuudessa, voit yksinkertaisesti sulkea tämän ikkunan."
@@ -975,15 +984,15 @@
         "example": "Käytä Yleistä"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "Alla olevat asetukset otetaan käyttöön, kun identiteetille ei ole olemassa erityistä mallia tai jos tälle identiteetille on valittu '$pref_def$'.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Käytä oletusta"
   },
@@ -1172,7 +1181,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[valinnainen] Lisää omat tyylisi, erotettuina puolipisteellä. Ilman tätä parametria SmartTemplates lisää 'display:none', jotta osa olisi automaattisesti näkymätön."
-  },  
+  },
   "preheader.text": {
     "message": "Esikatselutekstin on oltava kaksoislainausmerkkien sisällä, jotka voivat myös sisältää avainsanan *leikepöytä*. Vaihtoehtoisesti voit käyttää $clipboardLiteral$ tai $selectionLiteral$ (jälkimmäinen toimii vain, kun sitä käytetään Smart Snippetistä)",
     "placeholders": {
@@ -1196,13 +1205,13 @@
     "message": "Valitse ulkoinen editori muokataksesi HTML-malliasi. Suosittelen käyttämään vain tekstiä tukevaa HTML-editoria, kuten notepad++ tai Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "Editoria ei löytynyt polusta: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "Editoria ei löytynyt polusta: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Syötä teksti lisättäväksi tai asettavaksi"
@@ -1248,7 +1257,7 @@
   },
   "replaceText.selection": {
     "message": "[Valinnainen] Korvaa kaiken vastaavan tekstin nykyisessä valinnassa korvaustekstillä - toimii vain Älykkäissä fragmenteissa."
-  },  
+  },
   "replacementHTML": {
     "message": "Tämän on oltava lainausmerkeissä - joko teksti tai html-tunniste, joka lisätään lainausmerkkeihin, jos vastaavuus löytyy."
   },
@@ -1334,7 +1343,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates päivitettiin!"
+    "message": "SmartTemplates päivitetty."
+  },
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶Lue uutiset!"
   },
   "snippets.head": {
     "message": "Älykkäät katkelmat"
@@ -1474,7 +1486,7 @@
   },
   "st.menuaccess.write": {
     "message": "U"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Vastaa kaikille"
   },
@@ -1509,7 +1521,7 @@
   },
   "st.notification.bodyModified.instructions": {
     "message": "Napsauta Peruuta säilyttääksesi sähköpostin sisällön ennallaan."
-  },  
+  },
   "st.notification.donate": {
     "message": "Lahjoita"
   },
@@ -1626,7 +1638,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Muuntaa koko löydön isoiksi kirjaimiksi."
-  },    
+  },
   "stringmanip_function.cap": {
     "message": "Merkkijonon manipulointi"
   },
@@ -1657,7 +1669,7 @@
   },
   "special-offer-expiry": {
     "message": "31. heinäkuuta"
-  },    
+  },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -1871,10 +1883,10 @@
     "message": "GMT, PST, EST, …"
   },
   "updates.changeLog": {
-    "message" : "Julkaisutiedot (englanniksi)"
+    "message": "Julkaisutiedot (englanniksi)"
   },
   "updates.news": {
-    "message" : "Uusimmat uutiset"
+    "message": "Uusimmat uutiset"
   },
   "updates.title": {
     "message": "Päivitykset"
