@@ -1,5 +1,5 @@
 // used in popup.js 
-const sales_end = new Date("2024-09-21"); // Next Sale End Date (replaces endSale in popup.js)
+const sales_end = new Date("2024-09-22"); // Next Sale End Date (replaces endSale in popup.js)
 
 
 // used in update.js
