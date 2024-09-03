@@ -7,6 +7,7 @@ The full change log with screen shots [can be found here](https://smarttemplates
 *   Implemented the command "configure menu items…" so to open the correct page in the new Settings dialog. \[issue #318\]
 *   Implemented display settings for statusbar icon in new settings tab \[issue #313\]
 *   Implemented search in Variables page on new settings page. Repeat search now with `F4` and `Shift`+`F4` \[issue #315\]
+*   Completed Greek translations (provided by chat GPT)
 
 **Bug Fixes** 
 
