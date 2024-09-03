@@ -4,7 +4,7 @@
 /* import * as SmartTemplates_Discounts from "../../popup/sales.js";   */
 // Next Sale End Date  COPIED from sales.js until we find a better way
 var SmartTemplates_Discounts = {
-  sales_end: new Date("2024-09-21"),
+  sales_end: new Date("2024-09-22"),
   discountRate : {
     discountPro: "33%",
     discountUpgrade: "33%",
@@ -704,8 +704,7 @@ var SmartTemplate4 = {
           if (licenseInfo.isExpired)  {
             wrn =  util.getBundleString("licenseStatus.expired", [licenseInfo.expiredDays]);
             btn.classList.add("alertExpired");
-          }
-          else if (days<15) {
+          } else if (days<15) {
             wrn = util.getBundleString("licenseStatus.willExpire", [days]);
             btn.classList.add("alert");
           }
@@ -840,7 +839,9 @@ var SmartTemplate4 = {
       tooltip = util.getBundleString("st.menu.update.tooltip", ["SmartTemplates"]);
       btnStatus.classList.add("newsflash");
       // add clarity - what to do. read news (resets button) or check out the sale
-      if (util.isSale) {
+      // Show if a sale is active, but only for anyone who is not a Pro / Domain user with valid license
+      // otherwise we show the standard "read news!"
+      if (util.isSale && !(licenseInfo?.status == "Valid" && licenseInfo.keyType != 2)) {
         txt += util.salesLabel(licenseInfo);
       } else {
         txt += util.getBundleString("SmartTemplateMainButton.updated.read");
@@ -984,7 +985,7 @@ var SmartTemplate4 = {
       <menupopup>
         <menuitem id="smartTemplates-settings-legacy" label="__MSG_preferences_legacy__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-setNewsFlag" label="Set News Flag!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuseparator class="st4templateSeparator"/>
+        <menuseparator class="st4templateSeparator"></menuseparator>
         <menuitem id="smartTemplates-headerMenuAPI" label="Create message Actions (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-MruMenuAPI" label="Update MRU (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
