@@ -377,6 +377,9 @@
   "fileHTML.label": {
     "message": "Arquivo HTML ou texto simples. UTF-8 é assumido ao omitir o parâmetro opcional 'charset'."
   },
+  "fileImage.attributes": {
+    "message": "Lista opcional de pares atributo=valor, como 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O texto alternativoé exibido se a imagem não pode ser localizada."
   },
@@ -892,6 +895,9 @@
   "paste.label": {
     "message": "Colar"
   },
+  "parameter.escapeCommas": {
+    "message": "Para exibir vírgulas dentro deste texto, escape-as com uma barra invertida assim:"
+  },
   "parameters": {
     "message": "Parâmetros"
   },
@@ -1256,6 +1262,9 @@
   "resolveNamesFromCardBook.fallback": {
     "message": "Use o catálogo de endereços padrão se nenhum contato for encontrado"
   },
+  "resolveNamesFromCardBook.forceLowerCase": {
+    "message": "forçar busca em minúsculas"
+  },
   "s.label": {
     "message": "Segundo (00 a 59)"
   },
@@ -1306,6 +1315,9 @@
   },
   "SmartTemplateMainButton.expired": {
     "message": "Licença expirada!"
+  },
+  "SmartTemplateMainButton.invalid": {
+    "message": "Licença inválida."
   },
   "SmartTemplateMainButton.renew": {
     "message": "A licença expira em $daysLeft$ dias",
@@ -1801,6 +1813,12 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "timezone.explain": {
+    "message": "Forçar um fuso horário específico para variáveis de data substituindo o parâmetro tz (GMT, EST, CST, PST, etc.)"
+  },
+  "timezonename.label": {
+    "message": "GMT, PST, EST, ... "
   },
   "tip.fileTemplates": {
     "message": "Clique para ler a documentação completa sobre papel de carta e modelos HTML externos em nosso site de suporte…"

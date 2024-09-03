@@ -380,6 +380,9 @@
   "fileHTML.label": {
     "message": "HTML nebo text soubor. UTF-8 je předpokládano pokud je vynechan volitelný parametr znakové sady."
   },
+  "fileImage.attributes": {
+    "message": "Volitelný seznam atribut=hodnota, například 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Obrázkový soubor(png, jpg, gif, bmp, svg). Volitelný 'altText' je zobrazen pokud obrázek nemůže být nalezen."
   },

@@ -383,6 +383,9 @@
   "fileHTML.label": {
     "message": "HTML 或纯文本文件。省略可选的字符集参数时，将假定 UTF-8。"
   },
+  "fileImage.attributes": {
+    "message": "可选的属性=值对列表，例如 'id=image1,class=screenshot'。"
+  },
   "fileImage.label": {
     "message": "图像文件 (png,jpg,gif,bmp,svg)。如果图像不能找到，将显示可选的 altText。"
   },

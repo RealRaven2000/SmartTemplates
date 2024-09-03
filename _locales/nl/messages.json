@@ -383,6 +383,9 @@
   "fileHTML.label": {
     "message": "HTML of platte tekst. Bij ontbreken van een optionele tekensetparameter wordt UTF-8 aangenomen."
   },
+  "fileImage.attributes": {
+    "message": "Optionele lijst van attribuut=waarde-paren, zoals 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Afbeeldingesbestand (png, jpg, gif, bmp, svg). De optionele altText wordt weergegeven als het bestand niet kan worden gevonden."
   },

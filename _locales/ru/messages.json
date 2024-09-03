@@ -380,6 +380,9 @@
   "fileHTML.label": {
     "message": "HTML или текстовый файл. Если кодировка не указана, будет использована UTF-8."
   },
+  "fileImage.attributes": {
+    "message": "Необязательный список пар атрибут=значение, например 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText."
   },

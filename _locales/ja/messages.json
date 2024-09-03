@@ -380,6 +380,9 @@
   "fileHTML.label": {
     "message": "HTML ファイルあるいはプレーンテキストファイル。文字エンコーディングが指定されない場合は、UTF-8 と仮定します。"
   },
+  "fileImage.attributes": {
+    "message": "Optionele lijst van attribuut=waarde-paren, zoals 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "画像ファイル (png,jpg,gif,bmp,svg)。画像が見つからない場合は、altText を代わりに表示します。"
   },

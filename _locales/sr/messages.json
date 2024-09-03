@@ -374,6 +374,9 @@
   "fileHTML.label": {
     "message": "HTML или обична текстуална датотека. Ако не наведете кодирање, користиће се UTF-8."
   },
+  "fileImage.attributes": {
+    "message": "Опционални списак атрибут=вредност парова, као што је 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан."
   },

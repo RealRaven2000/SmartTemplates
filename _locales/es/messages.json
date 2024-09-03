@@ -383,6 +383,9 @@
   "fileHTML.label": {
     "message": "Archivo HTML o de texto. Si se omite el parámetro opcional de juego de caracteres se supone qie es UTF-8."
   },
+  "fileImage.attributes": {
+    "message": "Lista opcional de pares atributo=valor, como 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen."
   },

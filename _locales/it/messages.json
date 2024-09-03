@@ -374,6 +374,9 @@
   "fileHTML.label": {
     "message": "File HTML o in testo semplice. Utilizza UTF-8 se il parametro opzionale della codifica dei caratteri è omesso."
   },
+  "fileImage.attributes": {
+    "message": "Elenco facoltativo di coppie attributo=valore, come 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "File di immagine (png,jpg,gif,bmp,svg). Visualizza opzionalmente l'etichetta altText se l'immagine non viene trovata."
   },

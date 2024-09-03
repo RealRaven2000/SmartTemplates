@@ -383,6 +383,9 @@
   "fileHTML.label": {
     "message": "HTML- tai pelkkä teksti -tiedosto. Käytetään UTF-8:a, jos valinnainen merkistökoodaus parametri jätetään huomoimatta."
   },
+  "fileImage.attributes": {
+    "message": "Valinnainen lista attribuutti=arvo -pareista, kuten 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Kuvatiedosto (png, jpg, gif,bmp, svg). Näytetään valinnainen altText, jos kuvaa ei löydetä."
   },

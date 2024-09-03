@@ -383,6 +383,9 @@
   "fileHTML.label": {
     "message": "Fitxer HTML o text sense format. S'assumeix UTF-8 quan s'omet el paràmetre de conjunt de caràcters opcional."
   },
+  "fileImage.attributes": {
+    "message": "Volitelný seznam atribut=hodnota, například 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Fitxer d'imatge (png, jpg, gif, bmp, svg). L'altText opcional es mostra si no es pot trobar la imatge."
   },

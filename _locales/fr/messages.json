@@ -386,6 +386,9 @@
   "fileHTML.label": {
     "message": "Fichier HTML ou texte brut. L'encodage est fixé à UTF-8 si le paramètre d'encodage facultatif n'a pas été précisé."
   },
+  "fileImage.attributes": {
+    "message": "Liste optionnelle de paires attribut=valeur, comme 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable."
   },

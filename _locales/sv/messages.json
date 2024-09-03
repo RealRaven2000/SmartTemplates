@@ -1,4 +1,7 @@
 {
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Veckodag (Fre.)"
   },
@@ -383,6 +386,9 @@
   "fileHTML.label": {
     "message": "Fil med HTML eller vanlig text. UTF-8 antas när den valfria teckenkodningsparametern utesluts."
   },
+  "fileImage.attributes": {
+    "message": "Valfri lista med attribut=värde-par, som 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas."
   },
@@ -425,6 +431,9 @@
   "fileTemplates.remove": {
     "message": "Radera"
   },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Lista över externa mallfiler som kan startas från knappen 'Svara'."
+  },
   "fileTemplates.up": {
     "message": "Upp"
   },
@@ -442,6 +451,9 @@
   },
   "fix_vartz_note.label": {
     "message": "Kan kombineras med %X:=sent%"
+  },
+  "fpFilterStyleSheet": {
+    "message": "Stilmall"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML-mall"
@@ -1348,6 +1360,9 @@
   },
   "SmartTemplateMainButton.expired": {
     "message": "Licens har gått ut!"
+  },
+  "SmartTemplateMainButton.invalid": {
+    "message": "Licensen är ogiltig."
   },
   "SmartTemplateMainButton.renew": {
     "message": "Licensen löper ut om $daysLeft$ dagar",

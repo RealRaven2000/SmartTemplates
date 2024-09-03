@@ -377,6 +377,9 @@
   "fileHTML.label": {
     "message": "HTML or Textdatei. Bei weglassen des optionalen Charset Parameters wird UTF-8 verwendet."
   },
+  "fileImage.attributes": {
+    "message": "Optionale Liste von Attribut=Wert-Paaren, wie 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Bilddatei (png,jpg,gif,bmp,svg). Der optionale altText wird angezeigt falls das Bild nicht zu finden ist."
   },
@@ -1862,7 +1865,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Die Symbollayouts wurden für dunkle Designs verbessert und alle Schriftabhängigkeiten für Symbole, die Text enthalten, wurden entfernt. [issue 310] {L2}{L1} Mehrere Verbesserungen auf der neuen Variablen-Seite: Funktion zum Einklappen aller Kapitel hinzugefügt und Fehler beim Erweitern aller Kapitel behoben. Das Suchfeld ist noch in Arbeit. [issue 314] {L2}{L1} Der Befehl 'Menüelemente konfigurieren...' öffnet jetzt die Vorlagendateiseite im neuen Einstellungsdialog. {L2}{L1} Vorlagenfunktionen funktionieren jetzt auch beim Schreiben einer neuen Nachricht in einem Newsgroup-Konto. {L2}"
+    "message": "{L1} Die Symbole wurden für dunkle Themes verbessert und alle Schriftabhängigkeiten für Symbole mit Text wurden entfernt. [issue 310] {L2}{L1} Mehrere Verbesserungen auf der neuen Variablen-Seite: Funktion zum Einklappen aller Kapitel hinzugefügt und Fehler beim Erweitern aller Kapitel behoben. Das Suchfeld ist noch in Arbeit. [issue 314] {L2}{L1} Der Befehl 'Menüelemente konfigurieren...' öffnet jetzt die Vorlagendateiseite im neuen Einstellungsdialog. {L2}{L1} Vorlagenfunktionen funktionieren jetzt auch beim Schreiben einer neuen Nachricht in einem Newsgroup-Konto. {L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
