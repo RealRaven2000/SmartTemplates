@@ -655,6 +655,15 @@
   "lastName.label": {
     "message": "Apellidos:"
   },
+  "license-discount": {
+    "message": "Ahorra $discount$ ahora",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Gracias por extender su licencia recientemente o si ha donado. Como ha ayudado a preparar este complemento para el futuro, simplemente puede cerrar esta ventana."
@@ -936,15 +945,15 @@
         "example": "Usar Común"
       }
     }
-  },  
+  },
   "pref_def.explainer": {
     "message": "Los ajustes siguientes se aplican cuando no existe una plantilla específica para una identidad o si se selecciona '$pref_def$' para esa identidad.",
     "placeholders": {
       "pref_def": {
         "content": "$1"
       }
-    }    
-  },  
+    }
+  },
   "pref_def.label": {
     "message": "Usar común"
   },
@@ -1130,7 +1139,7 @@
   },
   "preheader.inlineStyles": {
     "message": "[opcional] Agregue sus propios atributos de estilo, separados por punto y coma. Sin este parámetro, SmartTemplates insertará 'display:none' para hacer automáticamente la sección invisible."
-  },  
+  },
   "preheader.text": {
     "message": "El texto de vista previa debe estar contenido dentro de comillas dobles, que también pueden contener la palabra clave $clipboardStarred$. Alternativamente, puede utilizar $clipboardLiteral$ o $selectionLiteral$ (este último solo funciona cuando se usa desde un Smart Snippet)",
     "placeholders": {
@@ -1142,7 +1151,7 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
@@ -1158,13 +1167,13 @@
     "message": "Por favor, selecciona un editor externo para editar tus plantillas HTML. Recomiendo usar un editor de HTML solo de texto con resaltado de sintaxis, como notepad++ o Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
-      "message": "No se pudo encontrar el editor en la ruta: $filePath$",
-      "placeholders": {
-          "filePath": {
-              "content": "$1",
-              "example": "C:\\notepad++"
-          }
+    "message": "No se pudo encontrar el editor en la ruta: $filePath$",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
       }
+    }
   },
   "prompt.text": {
     "message": "Introduzca el texto a añadir o cambiar"
@@ -1210,7 +1219,7 @@
   },
   "replaceText.selection": {
     "message": "[Opcional] Reemplaza todo el texto coincidente dentro de la selección actual con el texto de reemplazo: funciona solo en Fragmentos Inteligentes."
-  },  
+  },
   "replacementHTML": {
     "message": "debe estar entre comillas dobles, ya sea un texto o una etiqueta html que se insertará entre comillas donde se encuentre una coincidencia."
   },
@@ -1296,10 +1305,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "¡SmartTemplates fue actualizado!"
+    "message": "SmartTemplates actualizado."
   },
-  "snippets.head": {
-    "message": "Fragmentos inteligentes"
+  "SmartTemplateMainButton.updated.read": {
+    "message": "🔶¡Lee las novedades!"
   },
   "snippets.label": {
     "message": "Fragmentos HTML para insertar en Composer"
@@ -1436,7 +1445,7 @@
   },
   "st.menuaccess.write": {
     "message": "R"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Responder a todos"
   },
@@ -1588,7 +1597,7 @@
   },
   "stringmanip.textTransform.ucase": {
     "message": "Transforma toda la coincidencia a mayúscula."
-  },  
+  },
   "stringmanip_function.explain": {
     "message": "Estas funciones pueden usarse para borrar o reemplazar texto de la plantilla del correo o del encabezado de cita."
   },
@@ -1616,7 +1625,7 @@
   },
   "special-offer-expiry": {
     "message": "31 de julio"
-  },   
+  },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
     "placeholders": {
@@ -1824,10 +1833,10 @@
     "message": "GMT, PST, EST, …"
   },
   "updates.changeLog": {
-    "message" : "Notas de la versión (inglés)"
+    "message": "Notas de la versión (inglés)"
   },
   "updates.news": {
-    "message" : "Últimas noticias"
+    "message": "Últimas noticias"
   },
   "updates.title": {
     "message": "Actualizaciones"
