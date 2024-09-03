@@ -8,6 +8,8 @@ END LICENSE BLOCK */
 
 /* shared module for installation popups */
 
+// import { sales_end } from "./sales.js";
+
 function hide(id) {
   let el = document.getElementById(id);
   if (el) {

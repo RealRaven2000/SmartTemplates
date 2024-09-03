@@ -2,7 +2,7 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 **Enhancements**
 
-*   Improved icon layout for dark themes and removed font dependencies for icons with text. [issue #310]
+*   Improved icon designs for dark themes and clearer texts independent of installed fonts for icons with text. Removed font dependence in icons (converted all texts to path). [issue #310]
 *   Added function to collapse all chapters in Variables page. \[issue #314\]
 *   Implemented the command "configure menu items…" so to open the correct page in the new Settings dialog. \[issue #318\]
 *   Implemented display settings for statusbar icon in new settings tab \[issue #313\]
