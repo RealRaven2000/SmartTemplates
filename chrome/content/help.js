@@ -210,7 +210,7 @@
       }
     }
     if(typeof list == "undefined") {
-      debugger;
+      // debugger;
       console.log(list);
     }
 
@@ -241,7 +241,7 @@
       }
     }
     if(typeof list == "undefined") {
-      debugger;
+      // debugger;
       console.log(list);
     }
     return list;
@@ -295,16 +295,14 @@
         return;
       }
       if (!containerChapter.classList) {
-        debugger;
+        // debugger;
         console.log("invalid container chapter", {element, containerChapter})
         return;
       }
       
       if (containerChapter.classList && containerChapter.classList.contains("collapsed")) {
         containerChapter.classList.remove("collapsed");
-      } else {
-        debugger;
-      }
+      } 
     }
     function selectRange(element, pos, text) {
       if (element.parentElement.scrollIntoView) {
@@ -330,14 +328,14 @@
     if (!foundElements.length) { 
       return false;
     }
-    console.log(foundElements);
+    // console.log(foundElements);
 
     let foundElement;
     if(!repeat) {
       foundElement = (backwards) ? foundElements[foundElements.length-1] : foundElements[0];
       const textContent = (foundElement.nodeValue || foundElement.textContent).toLocaleLowerCase();
       const startPos = textContent.indexOf(text);
-      console.log({repeat, foundElement, startPos, backwards}, textContent.substring(0,50));
+      // console.log({repeat, foundElement, startPos, backwards}, textContent.substring(0,50));
       if(startPos == -1) {
         console.log("text not found - should not happen");
         return false;
@@ -366,7 +364,7 @@
       console.log("text not found - should not happen");
       return false;
     }
-    console.log({repeat, nextIdx, startPos, backwards, nextElement});
+    // console.log({repeat, nextIdx, startPos, backwards, nextElement});
 
     // Do we need to expand the chapter?
     expandChapterOf(nextElement);
@@ -493,7 +491,7 @@
       // QuickFolders.Interface.quickMoveHelp(this);
       helpSearch.addEventListener("click", (event) => {
         // show / hide tooltip
-        console.log("clicked on help");
+        // console.log("clicked on help");
         let searchHelp = document.getElementById("searchHelpContent");
         if (searchHelp.classList.contains("hidden")) {
           searchHelp.classList.remove("hidden");
