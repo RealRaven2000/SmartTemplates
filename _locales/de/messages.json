@@ -963,8 +963,14 @@
   "pref_dialog.title": {
     "message": "SmartTemplates Einstellungen"
   },
+  "pref_examples.fromSupport": {
+    "message": "(von der englischen Support-Seite)"
+  },
   "pref_examples.tab": {
-    "message": "Beispiele (nur online)"
+    "message": "Beispiele"
+  },
+  "pref_examples.openBrowser": {
+    "message": "im Browser öffnen"
   },
   "pref_examples.tooltip": {
     "message": "Zeigt Beispielvorlagen von https://smarttemplates.quickfolders.org/templates.html. Nur im online Modus sichtbar."

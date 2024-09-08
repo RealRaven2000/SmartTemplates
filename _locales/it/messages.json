@@ -978,8 +978,14 @@
   "pref_dialog.title": {
     "message": "Impostazioni di SmartTemplates"
   },
+  "pref_examples.fromSupport": {
+    "message": "(dal sito di supporto in inglese)"
+  },
   "pref_examples.tab": {
-    "message": "Esempi (solo su Internet)"
+    "message": "Esempi"
+  },
+  "pref_examples.openBrowser": {
+    "message": "apri nel browser"
   },
   "pref_examples.tooltip": {
     "message": "Visualizza modelli di esempio su https://smarttemplates.quickfolders.orgrs.org/templates.html. Disponibili solo su Internet."

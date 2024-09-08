@@ -1008,8 +1008,14 @@
   "pref_dialog.title": {
     "message": "Nastavitve SmartTemplates"
   },
+  "pref_examples.fromSupport": {
+    "message": "(z angleškega spletnega mesta za podporo)"
+  },
   "pref_examples.tab": {
-    "message": "Primeri (samo v povezanem načinu)"
+    "message": "Primeri"
+  },
+  "pref_examples.openBrowser": {
+    "message": "odpri v brskalniku"
   },
   "pref_examples.tooltip": {
     "message": "Prikaži primere predlog iz https://smarttemplates.quickfolders.org/templates.html. Na voljo samo v povezanem načinu."

@@ -755,8 +755,14 @@
   "pref_dialog.title": {
     "message": "Setelan SmartTemplates"
   },
+  "pref_examples.fromSupport": {
+    "message": "(dari situs dukungan berbahasa Inggris)"
+  },
   "pref_examples.tab": {
-    "message": "Contoh (butuh koneksi internet)"
+    "message": "Contoh"
+  },
+  "pref_examples.openBrowser": {
+    "message": "buka di browser"
   },
   "pref_examples.tooltip": {
     "message": "Tampilkan contoh template dari https://smarttemplates.quickfolders.org/templates.html. Hanya tersedia dalam mode online."

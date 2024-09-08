@@ -996,8 +996,14 @@
   "pref_dialog.title": {
     "message": "Поставке SmartTemplates-а"
   },
+  "pref_examples.fromSupport": {
+    "message": "(са енглеског сајта за подршку)"
+  },
   "pref_examples.tab": {
-    "message": "Примери (само на мрежи)"
+    "message": "Примери"
+  },
+  "pref_examples.openBrowser": {
+    "message": "отвори у прегледачу"
   },
   "pref_examples.tooltip": {
     "message": "Прикажите примере шаблона са https://smarttemplates.quickfolders.org/templates.html. Доступно само док сте повезани на интернет."

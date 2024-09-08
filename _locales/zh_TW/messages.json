@@ -1017,8 +1017,14 @@
   "pref_dialog.title": {
     "message": "SmartTemplates 設定"
   },
+  "pref_examples.fromSupport": {
+    "message": "（來自英文支援網站）"
+  },
   "pref_examples.tab": {
-    "message": "示例(僅限在線)"
+    "message": "範例"
+  },
+  "pref_examples.openBrowser": {
+    "message": "在瀏覽器中打開"
   },
   "pref_examples.tooltip": {
     "message": "顯示來自 https://smarttemplates.quickfolders.org/templates.html 的示例模板。 僅在在線模式下可用"

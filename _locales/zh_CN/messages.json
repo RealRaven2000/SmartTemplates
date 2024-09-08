@@ -1011,8 +1011,14 @@
   "pref_dialog.title": {
     "message": "SmartTemplates 选项"
   },
+  "pref_examples.fromSupport": {
+    "message": "（来自英文支持网站）"
+  },
   "pref_examples.tab": {
-    "message": "示例（联网可用）"
+    "message": "示例"
+  },
+  "pref_examples.openBrowser": {
+    "message": "在浏览器中打开"
   },
   "pref_examples.tooltip": {
     "message": "显示来自 https://smarttemplates.quickfolders.org/templates.html 的示例模板，仅联机模式可用。"

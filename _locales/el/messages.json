@@ -1029,8 +1029,14 @@
   "pref_dialog.title": {
     "message": "Ρυθμίσεις SmartTemplates"
   },
+  "pref_examples.fromSupport": {
+    "message": " (από τον αγγλικό ιστότοπο υποστήριξης)"
+  },
   "pref_examples.tab": {
-    "message": "Παραδείγματα (μόνο online)"
+    "message": "Παραδείγματα"
+  },
+  "pref_examples.openBrowser": {
+    "message": "άνοιγμα σε πρόγραμμα περιήγησης"
   },
   "pref_examples.tooltip": {
     "message": "Εμφάνισε παραδείγματα προτύπων από τη διεύθυνση https://smarttemplates.quickfolders.org/templates.html. Διατίθεται μόνο σε λειτουργία online."

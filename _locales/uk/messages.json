@@ -1024,8 +1024,14 @@
   "pref_dialog.title": {
     "message": "SmartTemplates налаштування"
   },
+  "pref_examples.fromSupport": {
+    "message": "(з англомовного сайту підтримки)"
+  },
   "pref_examples.tab": {
-    "message": "Приклади (тільки через мережу)"
+    "message": "Приклади"
+  },
+  "pref_examples.openBrowser": {
+    "message": "відкрити в браузері"
   },
   "pref_examples.tooltip": {
     "message": "Показати приклади шаблонів з https://smarttemplates.quickfolders.org/templates.html. Тільки якщо доступна мережа."

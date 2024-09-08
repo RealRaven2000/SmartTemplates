@@ -999,8 +999,14 @@
   "pref_dialog.title": {
     "message": "SmartTemplates 設定"
   },
+  "pref_examples.fromSupport": {
+    "message": "（英語のサポートサイトから）"
+  },
   "pref_examples.tab": {
-    "message": "テンプレート例 (オンラインのみ)"
+    "message": "例"
+  },
+  "pref_examples.openBrowser": {
+    "message": "ブラウザで開く"
   },
   "pref_examples.tooltip": {
     "message": "テンプレートの例を https://smarttemplates.quickfolders.org/templates.html より表示します。オンラインである必要があります。"

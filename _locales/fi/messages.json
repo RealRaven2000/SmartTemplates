@@ -1020,8 +1020,14 @@
   "pref_dialog.title": {
     "message": "SmartTemplates - Asetukset"
   },
+  "pref_examples.fromSupport": {
+    "message": "(englanninkielisestä tukisivustosta)"
+  },
   "pref_examples.tab": {
     "message": "Esimerkkejä"
+  },
+  "pref_examples.openBrowser": {
+    "message": "avaa selaimessa"
   },
   "pref_examples.tooltip": {
     "message": "Näyttää esimerkkipohjia sivulla https://smarttemplates.quickfolders.org/templates.html. Vaatii Internet-yhteyden."

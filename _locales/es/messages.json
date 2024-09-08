@@ -981,8 +981,14 @@
   "pref_dialog.title": {
     "message": "Opciones de SmartTemplates"
   },
+  "pref_examples.fromSupport": {
+    "message": "(del sitio de soporte en inglés)"
+  },
   "pref_examples.tab": {
-    "message": "Ejemplos (sólo online)"
+    "message": "Ejemplos"
+  },
+  "pref_examples.openBrowser": {
+    "message": "abrir en navegador"
   },
   "pref_examples.tooltip": {
     "message": "Mostrar plantillas de ejemplo desde https://smarttemplates.quickfolders.org/templates.html. Sólo disponible estando online."

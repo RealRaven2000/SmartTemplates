@@ -404,7 +404,7 @@
   },
   "fileTemplates.edit": {
     "message": "Edit"
-  },  
+  },
   "fileTemplates.file.open": {
     "message": "Select template file from disk"
   },
@@ -428,7 +428,7 @@
   },
   "fileTemplates.menu": {
     "message": "Template Files"
-  },  
+  },
   "fileTemplates.new.tooltip": {
     "message": "List of external template files that can be launched from the 'Create new Message' button."
   },
@@ -688,7 +688,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart}Dear $username${boldEnd}, you can now upgrade to SmartTemplates Pro for {boldStart}$discount$ less{boldEnd} - while also extending your license by a full year. More big changes on Thunderbird are coming and I need {boldStart}your help{boldEnd} to keep up!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -710,19 +710,19 @@
   "license-tab": {
     "message": "Licenses"
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
   },
   "licenseHead": {
     "message": "New Licensing System"
-  },  
-  "licenseTerms.hide" : {
+  },
+  "licenseTerms.hide": {
     "message": "🡇 Continue to License Selection 🡇"
   },
-  "licenseTerms.show" : {
+  "licenseTerms.show": {
     "message": "Show license terms"
   },
-  "licenseStatus.expired" : {
+  "licenseStatus.expired": {
     "message": "SmartTemplates License has expired $countDays$ days ago.",
     "placeholders": {
       "countDays": {
@@ -731,7 +731,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "SmartTemplates License will expire in $countDays$ days!",
     "placeholders": {
       "countDays": {
@@ -739,7 +739,7 @@
         "example": "10"
       }
     }
-  },  
+  },
   "licenseTypes": {
     "message": "SmartTemplates offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. Because changes that potentially break extension functionality are rolled out annually, the license will also be valid for 1 year."
   },
@@ -892,7 +892,7 @@
   },
   "newsHead": {
     "message": "Latest News"
-  },  
+  },
   "newsSection": {
     "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird ($compatibleVer$). This required numerous substantial changes, and rewriting of many functions.{P2}",
     "placeholders": {
@@ -949,7 +949,7 @@
   },
   "parameter.escapeCommas": {
     "message": "To display commas within this text, escape them with a backslash like this:"
-  },  
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text on Hover"
   },
@@ -1011,7 +1011,7 @@
         "content": "$1",
         "example": "Use Common"
       }
-    }    
+    }
   },
   "pref_def.label": {
     "message": "Use Common"
@@ -1037,8 +1037,14 @@
   "pref_dialog.title": {
     "message": "SmartTemplates settings"
   },
+  "pref_examples.fromSupport": {
+    "message": "(from the English support site)"
+  },
   "pref_examples.tab": {
-    "message": "Examples (online only)"
+    "message": "Examples"
+  },
+  "pref_examples.openBrowser": {
+    "message": "open in browser"
   },
   "pref_examples.tooltip": {
     "message": "Show example templates from https://smarttemplates.quickfolders.org/templates.html. Only available in online mode."
@@ -1093,7 +1099,7 @@
   },
   "pref_header.inject": {
     "message": "Inject contents of <head> from template"
-  },  
+  },
   "pref_hideExamples": {
     "message": "Hide examples tab"
   },
@@ -1195,13 +1201,13 @@
   },
   "preheader": {
     "message": "A preview text only visible to mobile mail clients, which will be inserted at the start of the email body."
-  }, 
+  },
   "preheader.className": {
     "message": "[optional] You can add a CSS class to change layout."
-  },   
+  },
   "preheader.inlineStyles": {
     "message": "[optional] Add your own style attributes, separated by semicolon. Without this parameter, SmartTemplates will insert 'display:none' to automatically make the section invisible."
-  },   
+  },
   "preheader.text": {
     "message": "The preview text must be contained within double quotes, which also may contain the $clipboardStarred$ keyword. Alternatively you can use $clipboardLiteral$ directly or $selectionLiteral$ (that last one only works when used from a Smart Snippet)",
     "placeholders": {
@@ -1213,12 +1219,12 @@
         "content": "$2",
         "example": "\"*selection*\""
       },
-      "clipboardStarred" : {
+      "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
       }
     }
-  }, 
+  },
   "premiumConfig": {
     "message": "Premium Features"
   },
@@ -1227,10 +1233,10 @@
   },
   "pricing.section.hint": {
     "message": "Note: The price varies depending on the license model, country, VAT rate, current discounts or licenses already purchased."
-  },  
+  },
   "pricing.title": {
     "message": "Pricing"
-  },  
+  },
   "prompt.email": {
     "message": "Enter an email address"
   },
@@ -1288,7 +1294,7 @@
   "replaceText": {
     "message": "Replace some text with something else."
   },
-  "replaceText.selection" : {
+  "replaceText.selection": {
     "message": "[Optional] Replaces all matching text within the current selection with the replacement text - works in Smart Fragments only."
   },
   "replacementHTML": {
@@ -1436,14 +1442,14 @@
         "content": "$1",
         "example": "cmd_replyList"
       }
-    }    
+    }
   },
   "st.fileTemplates.openFile": {
     "message": "Open SmartTemplates template file…"
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Why are some templates in this menu disabled?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "The number of templates per menu is restricted. You can configure up to $max_free$ menu items without a license, and $max_std$ menu items with a SmartTemplates Standard license! SmartTemplates Pro is unrestricted.",
     "placeholders": {
@@ -1464,7 +1470,7 @@
         "content": "$1",
         "example": "3"
       }
-    }    
+    }
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Please select a template from the dropdown menu."
@@ -1531,7 +1537,7 @@
   },
   "st.menuaccess.write": {
     "message": "W"
-  },  
+  },
   "st.menu.replyAll": {
     "message": "Reply All"
   },
@@ -1549,7 +1555,7 @@
         "example": "SmartTemplates"
       }
     }
-  },  
+  },
   "st.notification.bodyModified": {
     "message": "Thunderbird says you have already typed something, do you want to load the template anyway?"
   },
@@ -1562,11 +1568,11 @@
       "template": {
         "content": "$1"
       }
-    }    
+    }
   },
   "st.notification.bodyModified.instructions": {
     "message": "Click Cancel to keep email contents unchanged."
-  },  
+  },
   "st.notification.donate": {
     "message": "Donate"
   },
@@ -1674,16 +1680,16 @@
   },
   "stringmanip.textTransform.capitalize": {
     "message": "Capitalizes the first letter of each word, and lowercase for the remaining letters. Useful for Names."
-  }, 
+  },
   "stringmanip.textTransform.ccase": {
     "message": "Make the first letter of each word lowercase."
-  }, 
+  },
   "stringmanip.textTransform.lcase": {
     "message": "Transform the entire match to lower case."
-  }, 
+  },
   "stringmanip.textTransform.ucase": {
     "message": "Transform the entire match to upper case."
-  }, 
+  },
   "stringmanip_function.cap": {
     "message": "String Manipulation"
   },
@@ -1745,7 +1751,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Upgrade now from SmartTemplates Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1758,7 +1764,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "support-preference": {
     "message": "This is the preferred way of supporting $addonName$.",
     "placeholders": {
@@ -1931,10 +1937,10 @@
     "message": "GMT, PST, EST, ... "
   },
   "updates.changeLog": {
-    "message" : "Release Notes (English)"
+    "message": "Release Notes (English)"
   },
   "updates.news": {
-    "message" : "Latest News"
+    "message": "Latest News"
   },
   "updates.title": {
     "message": "Updates"
@@ -2018,7 +2024,7 @@
   "y.up.label": {
     "message": "Year (1970)"
   },
- "yearlyLicense.premiumFeatures": {
+  "yearlyLicense.premiumFeatures": {
     "message": "SmartTemplates Pro gives you full unrestricted access to the premium features."
   },
   "yearlyLicense.premiumFeatures.moreInfoLink": {

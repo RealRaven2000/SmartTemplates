@@ -1007,8 +1007,14 @@
   "pref_dialog.title": {
     "message": "SmartTemplates – ustawienia"
   },
+  "pref_examples.fromSupport": {
+    "message": "(z angielskiej strony wsparcia)"
+  },
   "pref_examples.tab": {
-    "message": "Przykłady (tylko online)"
+    "message": "Przykłady"
+  },
+  "pref_examples.openBrowser": {
+    "message": "otwórz w przeglądarce"
   },
   "pref_examples.tooltip": {
     "message": "Wyświetla przykładowe szablony z witryny https://smarttemplates.quickfolders.org/templates.html. Dostępne tylko w trybie online."

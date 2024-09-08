@@ -1017,8 +1017,14 @@
   "pref_dialog.title": {
     "message": "Opcions de SmartTemplates"
   },
+  "pref_examples.fromSupport": {
+    "message": ""
+  },
   "pref_examples.tab": {
-    "message": "Exemples (només en línia)"
+    "message": "Exemples (del lloc de suport en anglès)"
+  },
+  "pref_examples.openBrowser": {
+    "message": "obre al navegador"
   },
   "pref_examples.tooltip": {
     "message": "Mostra plantilles d'exemple de https://smarttemplates.quickfolders.org/templates.html. Només disponible en mode en línia."

@@ -1017,8 +1017,14 @@
   "pref_dialog.title": {
     "message": "Настройки SmartTemplates"
   },
+  "pref_examples.fromSupport": {
+    "message": "(с англоязычного сайта поддержки)"
+  },
   "pref_examples.tab": {
-    "message": "Примеры (только при наличии подключения к Интернету)"
+    "message": "Примеры "
+  },
+  "pref_examples.openBrowser": {
+    "message": "открыть в браузере"
   },
   "pref_examples.tooltip": {
     "message": "Показывать примеры с https://smarttemplates.quickfolders.org/templates.html. Доступно только при наличии подключения к Интернету. "

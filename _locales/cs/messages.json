@@ -1011,8 +1011,14 @@
   "pref_dialog.title": {
     "message": "Nastavení SmartTemplates"
   },
+  "pref_examples.fromSupport": {
+    "message": "(z anglického podpůrného webu)"
+  },
   "pref_examples.tab": {
-    "message": "Příklady (pouze on-line)"
+    "message": "Příklady"
+  },
+  "pref_examples.openBrowser": {
+    "message": "otevřít v prohlížeči"
   },
   "pref_examples.tooltip": {
     "message": "Zobraz příklady šablon z https://smarttemplates.quickfolders.org/templates.html. Dostupné pouze v on-line módu."

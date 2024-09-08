@@ -1026,8 +1026,14 @@
   "pref_dialog.title": {
     "message": "Inställningar för SmartTemplates"
   },
+  "pref_examples.fromSupport": {
+    "message": "(från den engelska supportsidan)"
+  },
   "pref_examples.tab": {
-    "message": "Exempel (endast online)"
+    "message": "Exempel"
+  },
+  "pref_examples.openBrowser": {
+    "message": "öppna i webbläsaren"
   },
   "pref_examples.tooltip": {
     "message": "Visa exempelmallar från https://smarttemplates.quickfolders.org/templates.html. Endast tillgängligt i onlineläget."
