@@ -286,7 +286,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Các bố cục biểu tượng đã được cải thiện cho chủ đề tối và các phông chữ phụ thuộc cho các biểu tượng có chứa văn bản đã bị loại bỏ. [issue 310] {L2}{L1} Nhiều cải tiến trên trang Biến mới: Đã thêm chức năng thu gọn tất cả các chương và sửa lỗi mở rộng tất cả các chương. Hộp tìm kiếm vẫn đang được phát triển. [issue 314] {L2}{L1} Lệnh 'định cấu hình các mục menu...' bây giờ mở trang tệp mẫu trong hộp thoại Cài đặt mới. {L2}{L1} Các chức năng mẫu bây giờ cũng hoạt động khi viết tin nhắn mới trong tài khoản nhóm tin. {L2}"
+    "message": "{L1}Phiên bản bảo trì 8.4.1 khắc phục các sự cố cuộn khác nhau trên trang biến mới và làm cho nó tương thích với các chủ đề tối [issue 319].{L2}{L1} Bố cục biểu tượng đã được cải thiện cho các chủ đề tối và tất cả các phụ thuộc phông chữ cho các biểu tượng chứa văn bản đã bị xóa. [issue 310]{L2}{L1} Nhiều cải tiến trên trang Biến mới: Đã thêm chức năng thu gọn tất cả các chương và khắc phục mở rộng tất cả các chương. Hộp tìm kiếm vẫn đang trong quá trình phát triển. [issue 314]{L2}{L1} Lệnh 'cấu hình các mục menu...' hiện mở trang tệp mẫu trong hộp thoại Cài đặt mới.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

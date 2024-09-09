@@ -1979,7 +1979,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Icon layouts were improved for dark themes and any font dependencies for icons containing text were removed. [issue 310] {L2}{L1} Multiple improvements on new Variables page: Added function to collapse all chapters and fixed expand all chapters. The search box is still a work in progress. [issue 314] {L2}{L1} The command 'configure menu items…' now opens the template files page in the new Settings dialog. {L2}{L1} Template functions now work also when writing a new message in a newsgroup account. {L2} "
+    "message": "{L1}Maintenance version 8.4.1 fixes various scrolling issues on the new variables page and makes it compatible with dark themes [issue 319].{L2}{L1} Icon layouts were improved for dark themes and any font dependencies for icons containing text were removed. [issue 310]{L2}{L1} Multiple improvements on new Variables page: Added function to collapse all chapters and fixed expand all chapters. The search box is still a work in progress. [issue 314]{L2}{L1} The command 'configure menu items…' now opens the template files page in the new Settings dialog.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

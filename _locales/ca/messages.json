@@ -1938,7 +1938,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} S'han millorat els dissenys d'icones per a temes foscos i s'han eliminat les dependències de fonts per a icones que contenen text. [issue 310] {L2}{L1} Diverses millores a la nova pàgina de Variables: Afegida funció per col·lapsar tots els capítols i s'ha corregit l'expansió de tots els capítols. El quadre de cerca encara està en desenvolupament. [issue 314] {L2}{L1} L'ordre 'configura els elements del menú...' ara obre la pàgina de fitxers de plantilles al nou diàleg de Configuració. {L2}{L1} Les funcions de la plantilla també funcionen quan es redacta un nou missatge en un compte de grup de notícies. {L2}"
+    "message": "{L1}La versió de manteniment 8.4.1 corregeix diversos problemes de desplaçament a la nova pàgina de variables i la fa compatible amb temes foscos [issue 319].{L2}{L1} Els dissenys d'icones s'han millorat per a temes foscos i s'han eliminat totes les dependències de fonts per a icones que contenen text. [issue 310]{L2}{L1} Diverses millores a la nova pàgina de variables: S'ha afegit una funció per plegar tots els capítols i s'ha corregit l'expansió de tots els capítols. La caixa de cerca encara està en desenvolupament. [issue 314]{L2}{L1} La comanda 'configura els elements del menú...' ara obre la pàgina d'arxius de plantilles al nou diàleg de configuració.{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

@@ -1934,7 +1934,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Kuvakkeiden ulkoasuja on parannettu tummia teemoja varten, ja kuvakkeiden, jotka sisältävät tekstiä, fonttiriippuvuudet on poistettu. [issue 310] {L2}{L1} Useita parannuksia uudelle Muuttujat-sivulle: Lisätty toiminto kaikkien lukujen sulkemiseksi ja korjattu kaikkien lukujen laajentaminen. Hakukenttä on vielä työn alla. [issue 314] {L2}{L1} Komento 'määritä valikkokohteet...' avaa nyt mallipohjatiedostosivun uudessa Asetukset-valintaikkunassa. {L2}{L1} Mallipohjatoiminnot toimivat nyt myös kirjoitettaessa uutta viestiä uutisryhmätilissä. {L2}"
+    "message": "{L1}Huoltoversio 8.4.1 korjaa erilaisia vieritysongelmia uudella muuttujasivulla ja tekee siitä yhteensopivan tummien teemojen kanssa [issue 319].{L2}{L1} Kuvakeasetteluja on parannettu tummille teemoille ja kaikki fonttiriippuvuudet kuvakkeissa, jotka sisältävät tekstiä, on poistettu. [issue 310]{L2}{L1} Useita parannuksia uudelle muuttujasivulle: Lisättiin toiminto kaikkien lukujen tiivistämiseksi ja korjattiin kaikkien lukujen laajennus. Hakukenttä on edelleen työn alla. [issue 314]{L2}{L1} Komento 'määritä valikkokohteet...' avaa nyt malliprosessisivun uudessa asetukset-valintaikkunassa.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

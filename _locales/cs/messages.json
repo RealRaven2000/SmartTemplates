@@ -1923,7 +1923,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Byly vylepšeny rozvržení ikon pro tmavé motivy a byly odstraněny závislosti na písmech u ikon obsahujících text. [issue 310] {L2}{L1} Několik vylepšení na nové stránce Proměnných: Přidána funkce pro sbalení všech kapitol a opraveno rozbalení všech kapitol. Vyhledávací pole je stále ve vývoji. [issue 314] {L2}{L1} Příkaz 'konfigurovat položky nabídky...' nyní otevírá stránku souborů šablon v novém dialogu Nastavení. {L2}{L1} Funkce šablon nyní fungují také při psaní nové zprávy na účtu diskusní skupiny. {L2}"
+    "message": "{L1}Údržbová verze 8.4.1 opravuje různé problémy s posouváním na nové stránce proměnných a činí ji kompatibilní s tmavými motivy [issue 319].{L2}{L1} Rozvržení ikon bylo vylepšeno pro tmavé motivy a byly odstraněny závislosti na písmech pro ikony obsahující text. [issue 310]{L2}{L1} Několik vylepšení na nové stránce proměnných: Přidána funkce pro sbalení všech kapitol a opravena funkce pro rozbalení všech kapitol. Vyhledávací pole je stále ve vývoji. [issue 314]{L2}{L1} Příkaz 'nastavit položky nabídky...' nyní otevírá stránku šablon v novém dialogu nastavení.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

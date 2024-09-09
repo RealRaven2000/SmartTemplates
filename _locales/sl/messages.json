@@ -1938,7 +1938,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Postavitve ikon so bile izboljšane za temne teme in vse odvisnosti pisave za ikone, ki vsebujejo besedilo, so bile odstranjene. [issue 310] {L2}{L1} Več izboljšav na novi strani Spremenljivke: Dodana funkcija za strnitev vseh poglavij in odpravljena razširitev vseh poglavij. Iskalno polje je še v izdelavi. [issue 314] {L2}{L1} Ukaz 'konfiguriraj menijske elemente...' zdaj odpre stran s predlogami v novem pogovornem oknu z nastavitvami. {L2}{L1} Funkcije predlog zdaj delujejo tudi pri pisanju novega sporočila v računu v novičarski skupini. {L2}"
+    "message": "{L1}Vzdrževalna različica 8.4.1 odpravlja različne težave s pomikanjem na novi strani spremenljivk in jo naredi združljivo s temnimi temami [issue 319].{L2}{L1} Postavitve ikon so bile izboljšane za temne teme in vse odvisnosti pisav za ikone, ki vsebujejo besedilo, so bile odstranjene. [issue 310]{L2}{L1} Več izboljšav na novi strani spremenljivk: Dodana funkcija za strnitev vseh poglavij in popravljeno razširjanje vseh poglavij. Iskalno polje je še vedno v pripravi. [issue 314]{L2}{L1} Ukaz 'nastavi elemente menija...' zdaj odpre stran predlog v novem pogovornem oknu nastavitev.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

@@ -1934,7 +1934,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Układ ikon został ulepszony dla ciemnych motywów, a wszelkie zależności czcionek dla ikon zawierających tekst zostały usunięte. [issue 310] {L2}{L1} Wiele ulepszeń na nowej stronie Zmiennych: Dodano funkcję zwijania wszystkich rozdziałów i naprawiono rozwijanie wszystkich rozdziałów. Pole wyszukiwania jest nadal w fazie rozwoju. [issue 314] {L2}{L1} Polecenie 'konfiguruj elementy menu...' otwiera teraz stronę plików szablonów w nowym oknie dialogowym Ustawienia. {L2}{L1} Funkcje szablonów działają teraz również podczas pisania nowej wiadomości na koncie grupy dyskusyjnej. {L2}"
+    "message": "{L1}Wersja konserwacyjna 8.4.1 naprawia różne problemy z przewijaniem na nowej stronie zmiennych i sprawia, że jest ona kompatybilna z ciemnymi motywami [issue 319].{L2}{L1} Ulepszono układy ikon dla ciemnych motywów i usunięto wszystkie zależności od czcionek dla ikon zawierających tekst. [issue 310]{L2}{L1} Wiele ulepszeń na nowej stronie zmiennych: Dodano funkcję zwijania wszystkich rozdziałów i naprawiono funkcję rozwijania wszystkich rozdziałów. Pole wyszukiwania jest nadal w trakcie opracowywania. [issue 314]{L2}{L1} Polecenie 'konfiguruj elementy menu...' teraz otwiera stronę plików szablonów w nowym oknie dialogowym ustawień.{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

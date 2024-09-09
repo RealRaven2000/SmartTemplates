@@ -1962,7 +1962,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Ikonlayouterna har förbättrats för mörka teman och alla teckensnittsberoenden för ikoner som innehåller text har tagits bort. [issue 310] {L2}{L1} Flera förbättringar på den nya Variabler-sidan: Funktion för att komprimera alla kapitel har lagts till och att expandera alla kapitel har åtgärdats. Sökfältet är fortfarande under utveckling. [issue 314] {L2}{L1} Kommandot 'konfigurera menyalternativ...' öppnar nu mallfilssidan i den nya inställningsdialogrutan. {L2}{L1} Mallfunktioner fungerar nu också när du skriver ett nytt meddelande i ett nyhetsgruppkonto. {L2}"
+    "message": "{L1}Underhållsversion 8.4.1 åtgärdar olika problem med rullning på den nya variabelsidan och gör den kompatibel med mörka teman [issue 319].{L2}{L1} Ikonlayouter har förbättrats för mörka teman och alla teckensnittsberoenden för ikoner som innehåller text har tagits bort. [issue 310]{L2}{L1} Flera förbättringar på den nya variabelsidan: Funktionen för att komprimera alla kapitel har lagts till och funktionen för att expandera alla kapitel har åtgärdats. Sökrutan är fortfarande under utveckling. [issue 314]{L2}{L1} Kommandot 'konfigurera menyalternativ...' öppnar nu mallfilsidan i den nya inställningsdialogen.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

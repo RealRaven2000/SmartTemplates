@@ -1923,7 +1923,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{L1} Rasporedi ikona su poboljšani za tamne teme i sve zavisnosti od fonta za ikone koje sadrže tekst su uklonjene. [issue 310] {L2}{L1} Višestruka poboljšanja na novoj stranici sa promenljivama: Dodata je funkcija za sažimanje svih poglavlja i ispravljeno proširenje svih poglavlja. Polje za pretragu je još uvek u izradi. [issue 314] {L2}{L1} Komanda 'konfiguriši stavke menija...' sada otvara stranicu sa datotekama šablona u novom dijalogu sa podešavanjima. {L2}{L1} Funkcije šablona sada rade i kada se piše nova poruka na nalogu diskusione grupe. {L2}"
+    "message": "{L1}Верзија одржавања 8.4.1 исправља разне проблеме са померањем на новој страници варијабли и чини је компатибилном са тамним темама [issue 319].{L2}{L1} Распореди икона су побољшани за тамне теме и уклоњене су све зависности од фонта за иконе које садрже текст. [issue 310]{L2}{L1} Више побољшања на новој страници варијабли: Додата је функција за склапање свих поглавља и исправљена функција за ширење свих поглавља. Поље за претрагу је још увек у изради. [issue 314]{L2}{L1} Команда 'конфигуриши ставке менија...' сада отвара страницу са предлозима у новом дијалогу за подешавања.{L2}"
   },
   "whitespace_note": {
     "message": "Имајте на уму да се бели простор може најбоље представити као \\s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити."
