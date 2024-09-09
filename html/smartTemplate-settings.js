@@ -2494,10 +2494,14 @@ function addUIListeners() {
 			// make page visible
 			if (activePage) {
 				document.getElementById(activePage).classList.add("pageActive");
-				if (activePage == "catVariables") {
-					let frame = document.getElementById("helpFrame");
-					logMissingFunction("To Do: localize help frame!")
-				}
+				if (activePage == "variablesPane") {
+					// we need to get some sendmessage stuff going later for a flyout version
+					/* dark theme support ? */
+          const frame = document.getElementById("helpFrame");
+          const helpDocument = frame.contentWindow.document;
+          const r = helpDocument.querySelector(":root");
+          // r.style.setProperty("color-scheme", "dark");
+        }
 			}
 		});
 	}

@@ -24,6 +24,14 @@ async function initHTML() {
     collapser.classList.add('collapsed');
     expander.classList.remove('collapsed');
   });
+
+  helpContents = document.getElementById("helpContents");
+  if (!helpContents) return;
+  helpContents.addEventListener("click",
+    (evt) => {
+      containerClick(helpContents, evt);
+    }
+  );
   
 }
 

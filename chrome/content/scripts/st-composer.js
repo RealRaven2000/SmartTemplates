@@ -25,6 +25,16 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 
 // this script will call initListener in order to be ready for NotifyComposeBodyReady:
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-composer.js", window, "UTF-8");
+
+/*
+  This is a test - on how to convert to modules, the main problem is "window"
+var { SmartTemplates } = ChromeUtils.importESModule(
+  "chrome://smarttemplate4/content/modules/SmartTemplates.sys.mjs"
+);
+window.SmartTemplate4 = SmartTemplates.SmartTemplate4;
+*/
+
+
 /**/
 
 var mylisteners = {};
