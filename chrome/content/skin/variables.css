@@ -8,17 +8,56 @@
   font-family: Calibri, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
 }
 
-.help {
-  font-size: 9pt;
-  display: block;
-  background: rgb(250,250,250);
-	color: rgba(20,20,20,0.9);
-	border-left: #ccc 1px;
-	border-right: #ccc 1px;
-	font-size: 10pt;
-	min-height: 950px;
- /* padding: 5px 10px; */
+/* test
+:root {
+  color-scheme: light !important; 
 }
+*/
+
+/* we can only use the light-dark() css function from Tb120 forward */
+@media (prefers-color-scheme: light) {
+  .help {
+    background-color: var(--color-white) !important;
+    color: rgba(20,20,20,0.9);
+  }
+  :root {
+    --color-param: rgba(0, 0, 45, 0.8);
+    --paramlist-param: rgb(230,230,230);    
+    --contact-switch-color: rgb(128,0,0);
+    --anchor-color: rgb(0,60,120);
+    --color-config-label: rgba(80,40,40,0.8); 
+	  --h4-background: rgb(60,60,60);
+	  --h4-color: rgb(180,180,180);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .help {
+    background-color:  rgb(43, 42, 51);
+    color:  rgb(251, 251, 254);
+  }
+  :root {
+    --color-param: rgba(251, 251, 254, 0.8);  
+    --paramlist-param: rgb(80, 80, 80);    
+    --contact-switch-color: rgb(225, 130, 100);
+    --anchor-color: rgb(110, 190, 240);
+    --color-config-label: rgba(180,80,140,0.8); 
+	  --h4-background: rgb(180,180,180);
+	  --h4-color: rgb(60,60,60);
+  }
+}
+
+
+.help {
+  border-left: #ccc 1px;
+	border-right: #ccc 1px;
+	display: block;
+  font-size: 9pt;
+  font-size: 10pt;
+	min-height: 950px;
+}
+
+
 
 .help ul {
 	margin-block: 0.2em;
@@ -76,6 +115,13 @@ p#allexpander, p#collapseAll {
   outline: dotted rgba(250,30,180,0.9) 1px  !important;
   background-color:rgba(255, 141, 141, 0.2) !important;
 }
+
+@media (prefers-color-scheme: dark) {
+  .help #searchHelpContent {
+    background-color: black !important;
+  }
+}
+
 
 #searchHelpContent .key {
   background-color: rgb(50,50,50,0.85);
@@ -152,8 +198,8 @@ h1.helpchapter {
 #helpContents h4 {
 	margin: 0 0 !important;
   padding: 5px;
-	background-color: rgb(60,60,60);
-	color: rgb(180,180,180) !important;
+	background-color:  var(--h4-background);
+	color:  var(--h4-color) !important;
   max-width: 80%;
   width: 150px;
 }
@@ -218,7 +264,7 @@ h1.helpchapter.expanded {
   border: 1px solid rgba(40,40,40,0.9);
 }
 .config_default lbl {
-  color: rgba(40,40,40,0.8);
+  color: var(--color-config-label);
   font-size: 0.625em;
   vertical-align: text-top;
 }
@@ -226,7 +272,7 @@ h1.helpchapter.expanded {
 /** anchor tags */
 #helpContents a[href] {
 	font-weight: bold;
-	color: rgb(0,60,120);
+	color:  var(--anchor-color);
 }
 #helpContents a[href]:hover {
 	text-decoration: underline;
@@ -266,6 +312,7 @@ b {
 /* note: code looks best in a fixed width font - MS standard nowadays is consolas! */
 #keywords code, code {
   background: linear-gradient(to bottom,  rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
+  color: rgb(30,30,44) !important;
   border-radius: 0.3em;
   border: 1px solid #bbb;
   margin: 2px 4px 2px 0px;
@@ -291,9 +338,14 @@ b {
 
 /** variable parameters  **/
 .param, .paramLiteral {
-  color: rgb(0,0,45);
+  color: var(--color-param) ;
   font-family: Consolas, monaco, monospace;
 }
+code .paramLiteral, code .param {
+  color: rgb(150,90,10) !important;
+}
+
+
 .param {
   font-size: 0.9em;
   font-style: italic;
@@ -310,7 +362,7 @@ b {
   margin: 5px 0;
 }
 .paramList .param {
-  background-color: rgb(230,230,230);
+  background-color: var(--paramlist-param);
   padding: 3px;
 }
 
@@ -332,7 +384,7 @@ b {
   font-size: 10pt;
   font-weight: bold;
 	margin: 5px 0 0 15px !important;
-	color:  rgb(128,0,0) !important;
+	color: var(--contact-switch-color) !important;
 }
 .help ul.contact_switches li a.cardbook {
   font-weight: normal;
@@ -408,7 +460,7 @@ table div.no {
 /* #### help frame  #### */
 #helpFrame {
 	min-height: 300px;
-	height: auto;
+	height: 100%;
 	margin-left: -5px;
 	margin-right: -5px;
 }
