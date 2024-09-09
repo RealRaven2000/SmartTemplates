@@ -34,6 +34,10 @@
               element.removeAttribute("codeWord");
               element.setAttribute("class", code.className);
             }
+            let wrnDefault = document.getElementById("wrnDefaultFormat");
+            if (wrnDefault) {
+              alert(wrnDefault.textContent);
+            }
             break;
           case 'a':
           default: // probably anchor
@@ -306,7 +310,12 @@
     }
     function selectRange(element, pos, text) {
       if (element.parentElement.scrollIntoView) {
-        element.parentElement.scrollIntoView({   block: "nearest",   inline: "nearest"});
+        const options = {
+          behavior: "smooth",
+          block: "center",
+          inline: "nearest"
+        };        
+        element.parentElement.scrollIntoView(options);
       }
       let selection = window.getSelection();
       let range = document.createRange();
@@ -397,7 +406,11 @@
             let search = target.value;
             event.preventDefault();
             event.stopPropagation();
-            await findSearchText(search);
+            const found = await findSearchText(search);
+            if (found) {
+              // make sure first match is shown as selected:
+              searchBox.blur();
+            }
             document.getElementById("findnext").style.display="inline-block";
             document.getElementById("findprevious").style.display="inline-block";
             break;
