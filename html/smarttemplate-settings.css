@@ -78,7 +78,7 @@ p.disclaimer label {
 	line-height: 1.5em;
 }
 
-prefpane h2 {
+.prefpane h2 {
 	padding-inline: 0.3em;
 }
 
@@ -385,12 +385,16 @@ button.bugsURL:focus {
 #examplesPane {
 	flex-shrink: 0 !important;
 }
+
+h2 a.headerLink {
+	font-size: 0.8em;
+	cursor: pointer;
+	margin-left: 5rem;
+}
+
 #helpFrame {
-	display: flex;
 	flex: 8 8 max-content;
-	min-width: 450px;
-	height: 92vh;
-	width: 70vw;
+	height: 100%;
 }
 
 

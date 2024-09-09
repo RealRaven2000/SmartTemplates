@@ -58,7 +58,7 @@ select {
   align-items: center;
 }
 
-prefpane h2 {
+.prefpane h2 {
   color: color-mix(in srgb, currentColor 60%, transparent);
 }
 
@@ -85,7 +85,7 @@ html|legend {
 }
 
 /* General elements */
-prefpane label {
+.prefpane label {
   display: flex;
   align-items: center;
   flex-direction: row;  

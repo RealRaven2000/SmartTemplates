@@ -88,7 +88,7 @@
 
     <div class="vbox" id="preferencesContainer">
 
-      <prefpane id="fileTemplatePane" class="page">
+      <div id="fileTemplatePane" class="page prefpane">
         <h2>__MSG_fileTemplates.menu__</h2>
         <div id="templateTools" class="inlineToolbar hbox" mode="icons">  
           <label><span class="flag">🇬🇧</span> Documentation: </label>
@@ -219,9 +219,9 @@
             
           </div>
         </div>        
-      </prefpane>
+      </div>
 
-      <prefpane id="globalSettingsPane" class="page">
+      <div id="globalSettingsPane" class="page prefpane">
         <h2>__MSG_pref_global.tab__</h2>
 
         <fieldset class="transparent">
@@ -313,7 +313,7 @@
               </select>
               
             </div>
-            <div  class="hbox labeledBox" id="grpFontSettings">
+            <div class="hbox labeledBox" id="grpFontSettings">
               <label  id="lblFontSettings">__MSG_pref_fontSettings.label__</label>
               <button id="fontSmaller"></button>
               <span class="spacer" id="fontButtonSpacer" > </span>
@@ -325,9 +325,9 @@
           </div>
         </fieldset>
                                  
-      </prefpane>
+      </div>
 
-      <prefpane id="advancedSettingsPane" class="page">
+      <div id="advancedSettingsPane" class="page prefpane">
         <h2>__MSG_pref_advanced.tab__</h2>
 
         <fieldset class="transparent">
@@ -406,22 +406,18 @@
                   data-pref-name="extensions.smartTemplate4.hideExamples">__MSG_pref_hideExamples__</label>
           </div>
         </fieldset>        
-      </prefpane>
+      </div>
 
-      <prefpane id="variablesPane" class="page">
-        <h2>__MSG_pref_variables.tab__</h2>
+      <div id="variablesPane" class="page prefpane">
         <iframe id="helpFrame"
-          src="../chrome/content/help.xhtml?context=html"
-          flex="1"
-          minheight="300"
-          class="vbox">
+          src="../chrome/content/help.xhtml?context=html">
         </iframe>
-      </prefpane>
+      </div>
 
-      <prefpane id="examplesPane" class="page">
-        <h2>__MSG_pref_examples.tab__</h2>
+      <div id="examplesPane" class="page prefpane">
+        <h2>__MSG_pref_examples.tab__ __MSG_pref_examples.fromSupport__<a class="headerLink" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_pref_examples.openBrowser__</a> </h2>
         <!--
- load url later: "https://smarttemplates.quickfolders.org/templates.html?nav=none"
+ load url later: https://smarttemplates.quickfolders.org/templates.html
         -->
         <iframe id="templatesIFrame"
         type="content"
@@ -429,9 +425,9 @@
         minheight="300"
         seamless="seamless"
         ></iframe>
-      </prefpane>
+      </div>
 
-      <prefpane id="infoPane" class="page">
+      <div id="infoPane" class="page prefpane">
         <h2>__MSG_about.cap__</h2>
 
         <div class="vbox" flex="1">
@@ -463,9 +459,9 @@
           </div>
         </div>
 
-      </prefpane>
+      </div>
 
-      <prefpane id="licensePane" class="page">
+      <div id="licensePane" class="page prefpane">
         <h2>__MSG_license-tab__</h2>
 
         <description>__MSG_label.insertLicense__</description>
@@ -521,9 +517,9 @@
           </fieldset>
           
         </div>        
-      </prefpane>
+      </div>
 
-      <prefpane id="supportPane" class="page">
+      <div id="supportPane" class="page prefpane">
         <h2>__MSG_support.tab__</h2>
         <div class="vbox" id="supportPaneContent">
           <fieldset flex="1" class="transparent">
@@ -572,9 +568,9 @@
           </fieldset>
         </div>
         
-      </prefpane>
+      </div>
 
-      <prefpane id="smartTemplatePane" orient="vertical" flex="1" class="page pageActive">
+      <div id="smartTemplatePane" orient="vertical" flex="1" class="page pageActive">
         <h2>__MSG_account.templates__</h2>
         <div id="decksContainer" flex="1" class="vbox">
 
@@ -803,7 +799,7 @@
       
         </div>
 
-      </prefpane>
+      </div>
 
     </div>
 

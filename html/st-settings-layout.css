@@ -244,7 +244,7 @@ div.btnLicenseContainer #btnLicense {
     margin-inline: 8px;
     padding-inline: 5px !important;
   }
-  prefpane {
+  .prefpane {
     font-size: 0.95em;
   }
 }
@@ -346,10 +346,13 @@ div.btnLicenseContainer #btnLicense {
 }
 
 #helpFrame {
-	display: flex;
-	min-width: 450px;
-	height: 92vh;
-	width: 100%;
+  border: none;
+  display: block;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100vw - 20em);
 }
 
 
