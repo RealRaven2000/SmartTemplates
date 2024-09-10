@@ -75,11 +75,13 @@ function togglePopup(vis, back, pop, target) {
                     var img = new Image();
                     var soc = $( this ).attr( 'src' );
                     try {
-                        $( img ).load(
-                            function () {
-                                loadImgs++;
-                            }
-                        ).attr( "src" , soc );
+                        let target = 
+                            $( img ).load(
+                                function () {
+                                    loadImgs++;
+                                }
+                            );
+                        target.setAttribute("src", soc);
                     }
                     catch(ex) {
                         console.log(`Problem in imageScroller(), src=${soc}`,ex);
