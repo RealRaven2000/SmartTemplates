@@ -44,21 +44,34 @@ SmartTemplates.Help = {
 		SmartTemplates.Util.logDebug("Help.onBodyClick (" + element.tagName + ") ");
 	},
   onLoad: async function () {
-		// custom event listener for clicking code words
-		document.addEventListener("SmartTemplate4CodeWord",
+    // custom event listener for clicking code words
+    document.addEventListener(
+      "SmartTemplate4CodeWord",
       SmartTemplates.Listener.listen,
       false,
-      true); // The last value is a Mozilla-specific value to indicate untrusted content is allowed to trigger the event
-		// custom event listener for scrolling
-		document.addEventListener("SmartTemplate4ScrollVariables",
+      true
+    ); // The last value is a Mozilla-specific value to indicate untrusted content is allowed to trigger the event
+    // custom event listener for scrolling
+    document.addEventListener(
+      "SmartTemplate4ScrollVariables",
       (evt) => {
         // scroll variables back to top
         debugger;
-        document.getElementById("variablesPane").scrollIntoView({block:"start"});
-      }, 
+        document.getElementById("variablesPane").scrollIntoView({ block: "start" });
+      },
       false,
-      true);
+      true
+    );
 
+    const variablesDocument = document.getElementById("helpFrame")?.contentDocument;
+    const preheaderDesc = variablesDocument?.getElementById("preHeaderText");
+    if (preheaderDesc) {
+      preheaderDesc.innerHTML = SmartTemplates.Util.getBundleString("preheader.text", [
+        "<span class='paramLiteral'>clipboard</span>",
+        "<span class='paramLiteral'>*selection*</span>",
+        "<span class='paramLiteral'>*clipboard*</span>",
+      ]);
+    }
   }
 
 }
