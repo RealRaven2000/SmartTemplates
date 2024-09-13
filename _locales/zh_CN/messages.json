@@ -925,6 +925,9 @@
   "parameters": {
     "message": "参量"
   },
+  "parameter.escapeCommas": {
+    "message": "要在此文本中显示逗号，请在其前面添加反斜杠，如下所示："
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "悬停时显示文字"
   },

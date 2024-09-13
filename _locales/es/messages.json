@@ -895,6 +895,9 @@
   "parameters": {
     "message": "Parámetros"
   },
+  "parameter.escapeCommas": {
+    "message": "Para mostrar comas dentro de este texto, añádeles una barra invertida como esta:"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Texto con el paso de ratón"
   },

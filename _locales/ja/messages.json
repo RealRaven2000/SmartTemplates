@@ -913,6 +913,9 @@
   "parameters": {
     "message": "パラメーター"
   },
+  "parameter.escapeCommas": {
+    "message": "このテキスト内でコンマを表示するには、前にバックスラッシュを追加します:"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "マウスオーバーでテキスト表示"
   },

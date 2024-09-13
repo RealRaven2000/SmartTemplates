@@ -669,6 +669,9 @@
   "paste.label": {
     "message": "Tempel"
   },
+  "parameter.escapeCommas": {
+    "message": "Untuk menampilkan koma dalam teks ini, tambahkan garis miring terbalik di depannya seperti ini:"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Teks Hover"
   },

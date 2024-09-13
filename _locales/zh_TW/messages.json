@@ -931,6 +931,9 @@
   "parameters": {
     "message": "參量"
   },
+  "parameter.escapeCommas": {
+    "message": "要在此文字中顯示逗號，請在前面加上反斜線，如下所示："
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "懸停時顯示文本"
   },

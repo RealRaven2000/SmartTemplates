@@ -895,11 +895,11 @@
   "paste.label": {
     "message": "Colar"
   },
-  "parameter.escapeCommas": {
-    "message": "Para exibir vírgulas dentro deste texto, escape-as com uma barra invertida assim:"
-  },
   "parameters": {
     "message": "Parâmetros"
+  },
+  "parameter.escapeCommas": {
+    "message": "Para exibir vírgulas neste texto, prefixe-as com uma barra invertida da seguinte forma:"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Texto ao passar o cursor"

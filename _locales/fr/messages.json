@@ -931,6 +931,9 @@
   "parameters": {
     "message": "Paramètres"
   },
+  "parameter.escapeCommas": {
+    "message": "Pour afficher des virgules dans ce texte, préfixez-les avec une barre oblique inverse comme ceci :"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Texte au survol"
   },

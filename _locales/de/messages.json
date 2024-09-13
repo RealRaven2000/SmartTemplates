@@ -877,6 +877,9 @@
   "parameters": {
     "message": "Parameter"
   },
+  "parameter.escapeCommas": {
+    "message": "Um in diesem Text Kommas anzuzeigen, setzen Sie davor einen Backslash, wie im folgenden Beispiel:"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text nur unter Mauszeiger"
   },

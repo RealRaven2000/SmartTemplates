@@ -931,6 +931,9 @@
   "parameters": {
     "message": "параметры"
   },
+  "parameter.escapeCommas": {
+    "message": "Чтобы отобразить запятые в этом тексте, поставьте перед ними обратную косую черту вот так:"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Текст под мышкой"
   },

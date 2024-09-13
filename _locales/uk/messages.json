@@ -938,6 +938,9 @@
   "parameters": {
     "message": "Параметри"
   },
+  "parameter.escapeCommas": {
+    "message": "Щоб відобразити коми в цьому тексті, додайте перед ними зворотну скісну риску ось так:"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Текст при наведенні"
   },

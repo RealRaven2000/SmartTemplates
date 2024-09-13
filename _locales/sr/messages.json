@@ -916,6 +916,9 @@
   "parameters": {
     "message": "Параметри"
   },
+  "parameter.escapeCommas": {
+    "message": "Да бисте приказали зарезе у овом тексту, ставите испред њих косу црту на следећи начин:"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Текст при задржавању курсора"
   },

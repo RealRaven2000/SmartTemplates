@@ -925,6 +925,9 @@
   "parameters": {
     "message": "Parametry"
   },
+  "parameter.escapeCommas": {
+    "message": "Pro zobrazení čárek v tomto textu je uvoďte zpětným lomítkem takto:"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text nad"
   },
