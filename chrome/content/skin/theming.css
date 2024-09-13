@@ -1,0 +1,30 @@
+/* theme aware color variables for settings screen and help iFrame  */
+/* we can only use the light-dark() css function from Tb120 forward */
+@media (prefers-color-scheme: light) {
+  :root {
+    --variables-background:  var(--color-gray-10,#fff) !important;
+    --variables-color: rgba(20,20,20,0.9);
+    --color-param: rgba(0, 0, 45, 0.8);
+    --paramlist-param: rgb(230,230,230);    
+    --contact-switch-color: rgb(128,0,0);
+    --anchor-color: rgb(0,60,120);
+    --color-config-label: rgba(80,40,40,0.8); 
+	  --h4-background: rgb(60,60,60);
+	  --h4-color: rgb(180,180,180);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --variables-background: rgb(43, 42, 51);
+    --variables-color: rgb(251, 251, 254);
+    --color-param: rgba(251, 251, 254, 0.8);  
+    --paramlist-param: rgb(80, 80, 80);    
+    --contact-switch-color: rgb(225, 130, 100);
+    --anchor-color: rgb(110, 190, 240);
+    --color-config-label: rgba(180,80,140,0.8); 
+	  --h4-background: rgb(180,180,180);
+	  --h4-color: rgb(60,60,60);
+  }
+}
+

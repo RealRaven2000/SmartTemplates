@@ -1,3 +1,5 @@
+@import url("../chrome/content/skin/theming.css");
+
 @media (prefers-color-scheme: dark) {
   :root {
     --hovercolor: #113e6a;
@@ -27,6 +29,10 @@
   }
 }
 
+#variablesPane.page {
+  background-color:  var(--variables-background);
+  color:  var(--variables-color);
+}
 
 p.disclaimer {
   background: #5c1212;

@@ -1,3 +1,5 @@
+@import url("theming.css"); /* color variables */
+
 /* ################################################################################### */
 /* ################################ Help Iframe CONTENT ############################## */
 /* ################################################################################### */
@@ -14,41 +16,9 @@
 }
 */
 
-/* we can only use the light-dark() css function from Tb120 forward */
-@media (prefers-color-scheme: light) {
-  .help {
-    background-color: var(--color-white) !important;
-    color: rgba(20,20,20,0.9);
-  }
-  :root {
-    --color-param: rgba(0, 0, 45, 0.8);
-    --paramlist-param: rgb(230,230,230);    
-    --contact-switch-color: rgb(128,0,0);
-    --anchor-color: rgb(0,60,120);
-    --color-config-label: rgba(80,40,40,0.8); 
-	  --h4-background: rgb(60,60,60);
-	  --h4-color: rgb(180,180,180);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .help {
-    background-color:  rgb(43, 42, 51);
-    color:  rgb(251, 251, 254);
-  }
-  :root {
-    --color-param: rgba(251, 251, 254, 0.8);  
-    --paramlist-param: rgb(80, 80, 80);    
-    --contact-switch-color: rgb(225, 130, 100);
-    --anchor-color: rgb(110, 190, 240);
-    --color-config-label: rgba(180,80,140,0.8); 
-	  --h4-background: rgb(180,180,180);
-	  --h4-color: rgb(60,60,60);
-  }
-}
-
-
 .help {
+  background-color:  var(--variables-background);
+  color:  var(--variables-color);
   border-left: #ccc 1px;
 	border-right: #ccc 1px;
 	display: block;
@@ -56,8 +26,6 @@
   font-size: 10pt;
 	min-height: 950px;
 }
-
-
 
 .help ul {
 	margin-block: 0.2em;
@@ -193,6 +161,11 @@ h1.helpchapter {
   margin: 7px 0;
   text-align: left;
   width: fit-content;
+}
+
+/* Variables Header */
+#helpContents h2 {
+  margin-left: 0.5em;
 }
 
 #helpContents h4 {
