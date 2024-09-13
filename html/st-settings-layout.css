@@ -1,5 +1,6 @@
 :root {
   --iconStroke: darkgray;
+  --category-menu-width-default: 18em;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -24,7 +25,7 @@
 .pref-category-box {
   background-color: var(--in-content-categories-background);
   border-inline-end: 1px solid var(--in-content-categories-border);
-  width: 18em;
+  width: var(--category-menu-width-default);
 }
 
 /* Temporary styles for the supernova icons */
@@ -54,6 +55,17 @@
     min-height 350ms ease-in-out;
   white-space: nowrap;
 }
+#helpFrame {
+  border: none;
+  display: block;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100vw - 0.5em - var(--category-menu-width-default));
+}
+
+
 #categories{
   transition: margin 350ms ease-in-out;
 }
@@ -70,6 +82,7 @@ fieldset {
 #pref-category-box {
   transition: width 250ms ease-in-out;
 }
+
 
 #sidebarcategories > .category  {
   margin-inline: 0;
@@ -247,6 +260,9 @@ div.btnLicenseContainer #btnLicense {
   .prefpane {
     font-size: 0.95em;
   }
+  #helpFrame {
+    width: calc(100vw - 66px) !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -259,11 +275,14 @@ div.btnLicenseContainer #btnLicense {
     padding-inline: 6px;
     min-width: 4em;
     overflow: hidden;
-  }  
-  
+  }
   button.iconLabelButton span {
     max-width: 0;
   }
+  #helpFrame {
+    width: calc(100vw - 50px) !important;
+  }
+  
   fieldset {
     margin-block: 0;
   }  
@@ -296,6 +315,13 @@ div.btnLicenseContainer #btnLicense {
   }  
 }
 
+/* workaround for double scrollbar in examples tab */
+@media only screen and (max-height: 530px)  {
+  #preferencesContainer {
+    overflow-y: auto; /* was scroll */
+  }
+}
+
 @media only screen and (max-height: 480px)  {
   #categories {
     margin-top: 5px;
@@ -304,9 +330,6 @@ div.btnLicenseContainer #btnLicense {
     line-height: 36px;
     min-height: 36px;
     background-position-y: 6px;
-  }
-  #preferencesContainer {
-    overflow-y: scroll;
   }
   .buttonLinks button.text-link {
     padding-block: 0.3em !important
@@ -343,16 +366,6 @@ div.btnLicenseContainer #btnLicense {
 
 #examplesPane {
   overflow: hidden;
-}
-
-#helpFrame {
-  border: none;
-  display: block;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: calc(100vw - 20em);
 }
 
 
