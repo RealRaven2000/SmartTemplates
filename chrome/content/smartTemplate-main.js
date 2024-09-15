@@ -177,7 +177,7 @@ END LICENSE BLOCK
     # [issue 309] Reply with template from tab displays "cmd_reply not available in this context"
 
 
-  Version 4.8 - WIP
+  Version 4.8 - 03/09/2024
     # Added compatibility with Thunderbird 130
     # [issue 317] Support text transformation parameters with %dateformat()%
     # [issue 310] improve icons theme support by eliminating 'context' attributes from svg images.
@@ -189,6 +189,15 @@ END LICENSE BLOCK
     # [issue 314] convert "expand all" in variables page into toggle
     # [issue 318] "Configure Menu item..." not working as expected.
     # [issue 315] WIP: F4 to repeat searching for a search text doesn't work in new variable page
+
+  Version 4.8.1 - 09/09/2024
+    # [issue 319] Fixed search highlighting and scrolling in variables tab.
+    # Improved headline for Examples tab and added jump to support side.
+    # Variables page now support dark mode.
+
+  Version 4.8.2 - WIP
+    # [issue 321] - missing text in explanation of the %preHeader% parameter headerText 
+    # [issue 320] - %tags% = WIP
 
 
 =========================

@@ -1,4 +1,4 @@
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.8) 
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.8.1) 
 
 **Maintenance  Items 4.8.1**
 
