@@ -298,6 +298,8 @@ SmartTemplate4.getHeadersAsync = async function() {
   var headers;
   let gBodyFromArgs = false;
   let composeType;
+  const tags = [];
+
 
   if (window.arguments && window.arguments[0]) {
     try {
@@ -337,6 +339,13 @@ SmartTemplate4.getHeadersAsync = async function() {
     
     // get message body.
     mimeMsg = await getMimeMessage(msgHdr);
+
+    if (mimeMsg) try {
+      tags.push(...SmartTemplate4.Util.getMessageTags(msgHdr));
+      // replace all $labelN with standard tags:
+    } catch(ex) {
+      SmartTemplate4.Util.logException("getHeadersAsync() failed reading tags", ex);
+    }
     
     if (!mimeMsg) {
       if (!msgHdr) return ""; 
@@ -363,6 +372,7 @@ SmartTemplate4.getHeadersAsync = async function() {
     // return new Map(Object.entries(headers).map([k,e] => [k,e[0]])); 
     // SmartTemplate4.Util.logDebugOptional('mime','allHeaders: \n' +  headers.allHeaders);
     let theMap = new Map(Object.entries(headers).map( ([k,e]) => [k.toLowerCase(),e.join(",")]) );
+    theMap.set("tags", tags); //specific to SmartTemplates
 
     // support messageRaw()
     let bodyContent = "";
@@ -2726,6 +2736,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 		"ownname", "ownmail", "mailTo",
     "deleteText", "replaceText", "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",
     "matchTextFromSubject", "matchTextFromBody", "suppressQuoteHeaders", "deleteForwardedBody",
+    "tags","tags.add","tags.remove", // [issue 320]
 		"cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "internal-javascript-ref",
 		"messageRaw", "file", "style", "attach", "basepath",//depends on the original message, but not on any header
 		"header.set", "header.append", "header.prefix, header.delete",
@@ -3700,33 +3711,68 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
 				default:
           // [Bug 25904]
-          if (token.indexOf('header')==0) {
-            let modHdr = args.length ? args[0].toLowerCase() : ''; // cut off "("
+          if (token.startsWith("header")) {
+            let modHdr = args.length ? args[0].toLowerCase() : ""; // cut off "("
             if (modHdr.startsWith("list")) modHdr = args[0]; // add case back.
-            if (args.length<2 && token!="header.deleteFromSubject") {
-              util.logToConsole("header modification - second parameter missing in command: %" + token + "%");
-              return '';
+            if (args.length < 2 && token != "header.deleteFromSubject") {
+              util.logToConsole(
+                "header modification - second parameter missing in command: %" + token + "%"
+              );
+              return "";
             }
-						let toks = token.split("."),
-						    matchFunction = toks.length>2 ? toks[2] : ""; // matchFromSubject | matchFromBody
+            let toks = token.split("."),
+              matchFunction = toks.length > 2 ? toks[2] : ""; // matchFromSubject | matchFromBody
             switch (toks[1]) {
               case "set": // header.set
-                return await modifyHeader(modHdr, 'set', arg, matchFunction);
+                return await modifyHeader(modHdr, "set", arg, matchFunction);
               case "append":
-                return await modifyHeader(modHdr, 'append', arg, matchFunction);
+                return await modifyHeader(modHdr, "append", arg, matchFunction);
               case "prefix":
-                return await modifyHeader(modHdr, 'prefix', arg, matchFunction);
+                return await modifyHeader(modHdr, "prefix", arg, matchFunction);
               case "delete":
-                await modifyHeader(modHdr, 'delete', arg, ''); // no match function - this works within the same header (e.g. subject)
-								return '';
+                await modifyHeader(modHdr, "delete", arg, ""); // no match function - this works within the same header (e.g. subject)
+                return "";
               case "deleteFromSubject":
-								if (prefs.isDebugOption('parseModifier')) debugger;
-                await modifyHeader('subject', toks[1], arg, ''); // no match function - this works within the same header (e.g. subject)
-								return '';
-              default: 
+                if (prefs.isDebugOption("parseModifier")) debugger;
+                await modifyHeader("subject", toks[1], arg, ""); // no match function - this works within the same header (e.g. subject)
+                return "";
+              default:
                 util.logToConsole("invalid header command: " + token);
-                return '';
+                return "";
             }
+          }
+          if (token.startsWith("tags")) { // [issue 320]
+            // test.
+            // const messageid = SmartTemplate4.MessageHdr.get("message-id");
+            debugger;
+            const tags = SmartTemplate4.MessageHdr.get("tags");
+            const tagLabels = tags.map((t) => t.label);
+            const tagColors = tags.map((t) => t.color);
+            switch (token) {
+              case "tags":
+                const resultsPlainText = tagLabels.join(", ");
+                let results;
+                if (args.includes("toclipboard")) {
+                  util.clipboardWrite(resultsPlainText);
+                  return "";
+                }
+                if (args.includes("color")) {
+                  const labelAtoms = [];
+                  for (let t of tags) {
+                    const labelObject = `<span style="color:${t.color}; border: 1px solid ${t.color};border-radius: 0.2em; padding: 0.05em 0.1em;">${t.label}</span>`;
+                    labelAtoms.push(labelObject);
+                  }
+                  results = labelAtoms.join(", ");
+                } else {
+                  results = resultsPlainText;
+                }
+                return results;
+              case "tags.add":
+                return "";
+              case "tags.remove":
+                return "";
+            }
+
           }
 					let isStripQuote = util.isAddressHeader(token),
               theHeader,
@@ -3734,8 +3780,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
           if(originalToken=="recipient" && gMsgCompose.compFields && gMsgCompose.compFields.to) {
             theHeader = gMsgCompose.compFields.to;
-          } 
-          else { theHeader = hdr.get(token.toLowerCase()); }  // [issue 211] Newsgroups / Message-Id etc.
+          } else { 
+            theHeader = hdr.get(token.toLowerCase()); 
+          }  // [issue 211] Newsgroups / Message-Id etc.
 							
 							
 					if (util.getComposeType()=='fwd') {

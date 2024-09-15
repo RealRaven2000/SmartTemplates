@@ -3219,7 +3219,30 @@ SmartTemplate4.Util = {
     const BULLET = "☀️"; // this could become seasonal (?)
 		const SALE_TEXT = `${BULLET}${SmartTemplate4.Util.getBundleString("license-discount", SALE_DISCOUNT)}`;
     return SALE_TEXT;
-  }
+  },
+
+	getMessageTags: function(msgHdr) {
+		if (!msgHdr) return [];
+		const tags = [];
+		const msgKeyArray = msgHdr.getStringProperty("keywords")?.split(" ");
+		// Get the list of known tags. -https://searchfox.org/comm-esr128/source/mail/base/content/msgHdrView.js#3176
+		const tagsArray = MailServices.tags.getAllTags().filter((t) => t.tag);
+		const tagKeys = {};
+
+		for (const tagInfo of tagsArray) {
+			tagKeys[tagInfo.key] = true;
+		}
+		// Only use tags that match our saved tags.
+		const msgKeys = msgKeyArray.filter((k) => k in tagKeys);
+		for (let k of msgKeys) {
+			tags.push({
+        label: MailServices.tags.getTagForKey(k),
+        color: MailServices.tags.getColorForKey(k),
+      });
+		}
+		return tags;
+	}
+
 
 };  // ST4.Util
 
