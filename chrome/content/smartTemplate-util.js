@@ -22,6 +22,11 @@ var SmartTemplate4_TabURIregexp = {
 SmartTemplate4.Util = {
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
+	get isESM() {
+		var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+		const ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+		return ESM;
+	},
 	mAppver: null,
 	mAppName: null,
 	mHost: null,
@@ -3241,8 +3246,25 @@ SmartTemplate4.Util = {
       });
 		}
 		return tags;
-	}
+	} ,
 
+	parseValueArgument: function(paramString) {
+		// parses an argument of the format
+		// arg=value  or arg="value"
+		if (!paramString) return "";
+		if (paramString.includes("=")) {
+			let parts = paramString.split("=");
+			if (parts[1].startsWith("\"")) {
+				let result = parts[1].substring(1);
+				if (result.endsWith("\"")) {
+					return result.substring(0, result.length-1);
+				}
+				return result;
+			}
+			return parts[1];
+		}
+		return paramString;
+	}
 
 };  // ST4.Util
 
@@ -3751,8 +3773,11 @@ SmartTemplate4.Message = {
 };  // ST4.Message
 
 
-var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
-SmartTemplate4.Util.extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
+var { ExtensionParent } = SmartTemplate4.Util.isESM
+  ? ChromeUtils.importESModule("resource://gre/modules/ExtensionParent.sys.mjs")
+  : ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+
+	SmartTemplate4.Util.extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
 // test:
 // console.log(`SmartTemplates %cLoading notifyTools.js`, `color: white; background: rgb(180,0,0)`);
 Services.scriptloader.loadSubScript(
