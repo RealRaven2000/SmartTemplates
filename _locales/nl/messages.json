@@ -262,47 +262,47 @@
   "datetz.label": {
     "message": "Tijdzone (+0100, +0200, …)"
   },
-  "day.1.name": {
-    "message": "Zondag"
+"day.1.name": {
+    "message": "zondag"
   },
   "day.1.short": {
-    "message": "Zon"
+    "message": "zo"
   },
   "day.2.name": {
-    "message": "Maandag"
+    "message": "maandag"
   },
   "day.2.short": {
-    "message": "Maa"
+    "message": "ma"
   },
   "day.3.name": {
-    "message": "Dinsdag"
+    "message": "dinsdag"
   },
   "day.3.short": {
-    "message": "Din"
+    "message": "di"
   },
   "day.4.name": {
-    "message": "Woensdag"
+    "message": "woensdag"
   },
   "day.4.short": {
-    "message": "Woe"
+    "message": "wo"
   },
   "day.5.name": {
-    "message": "Donderdag"
+    "message": "donderdag"
   },
   "day.5.short": {
-    "message": "Don"
+    "message": "do"
   },
   "day.6.name": {
-    "message": "Vrijdag"
+    "message": "vrijdag"
   },
   "day.6.short": {
-    "message": "Vrij"
+    "message": "vr"
   },
   "day.7.name": {
-    "message": "Zaterdag"
+    "message": "zaterdag"
   },
   "day.7.short": {
-    "message": "Zat"
+    "message": "za"
   },
   "defaultMimeFormat": {
     "message": "Standaard adresnotatie:"
@@ -797,37 +797,76 @@
     "message": "De grootte kan niet altijd worden vastgesteld, helemaal als Thunderbird de afbeelding nog laadt, vaak door de grootte ervan - in dit geval wordt de tag toch verwijderd."
   },
   "month.1.name": {
-    "message": "Januari"
+    "message": "januari"
+  },
+  "month.1.short": {
+    "message": "jan"
   },
   "month.10.name": {
-    "message": "Oktober"
+    "message": "oktober"
   },
   "month.10.short": {
-    "message": "Okt"
+    "message": "okt"
+  },
+  "month.11.name": {
+    "message": "november"
+  },
+  "month.11.short": {
+    "message": "nov"
+  },
+  "month.12.name": {
+    "message": "december"
+  },
+  "month.12.short": {
+    "message": "dec"
   },
   "month.2.name": {
-    "message": "Februari"
+    "message": "februari"
+  },
+  "month.2.short": {
+    "message": "feb"
   },
   "month.3.name": {
-    "message": "Maart"
+    "message": "maart"
   },
   "month.3.short": {
-    "message": "Mrt"
+    "message": "mrt"
+  },
+  "month.4.name": {
+    "message": "april"
+  },
+  "month.4.short": {
+    "message": "apr"
   },
   "month.5.name": {
-    "message": "Mei"
+    "message": "mei"
   },
   "month.5.short": {
-    "message": "Mei"
+    "message": "mei"
   },
   "month.6.name": {
-    "message": "Juni"
+    "message": "juni"
+  },
+  "month.6.short": {
+    "message": "jun"
   },
   "month.7.name": {
-    "message": "Juli"
+    "message": "juli"
+  },
+  "month.7.short": {
+    "message": "jul"
   },
   "month.8.name": {
-    "message": "Augustus"
+    "message": "augustus"
+  },
+  "month.8.short": {
+    "message": "aug"
+  },
+  "month.9.name": {
+    "message": "september"
+  },
+  "month.9.short": {
+    "message": "sep"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla biedt alleen een basisplatform om onze software aan u, de eindgebruikers, te leveren. Als we onze gebruikers om betaling of ondersteuning moeten vragen, kunnen we dit niet doen vanaf addons.thunderbird.net - het is geen 'app store' met ingebouwde paywalls of licentiebeheer zoals iTunes of Google Play."
