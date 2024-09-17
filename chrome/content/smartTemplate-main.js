@@ -197,7 +197,10 @@ END LICENSE BLOCK
 
   Version 4.8.2 - WIP
     # [issue 321] - missing text in explanation of the %preHeader% parameter headerText 
+    # [issue 322] SmartTemplates ignored when creating an email from the Thunderbird taskbar context menu
+    # [issue 323] Spell Dutch months and days with lowercase letters
     # [issue 320] - %tags% = WIP
+    # [issue 324] Make SmartTemplates compatible with new ESM modules (jsm will be removed in the next ESR)
 
 
 =========================
@@ -467,10 +470,11 @@ var SmartTemplate4 = {
         // root.setAttribute("smartTemplateInserted","true"); <== moved into the insertTemplate function!
         // window.smartTemplateInserted = true;
         this.smartTemplate.resetDocument(editor, true);
-        if (isChangeTemplate)
+        if (isChangeTemplate) {
           util.logDebugOptional('functions', 'Change Template: insertTemplate() complete.');
-        else
+        } else {
           util.logDebugOptional('functions', 'insertTemplate(startup) complete.');
+        }
       }
       else {
         util.logDebug('smartTemplateInserted is already set');
@@ -479,13 +483,7 @@ var SmartTemplate4 = {
       //set focus to editor
       
       let FocusElement, FocusId;
-      var { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
-      var messageEditorID;
-      if (parseInt(AppConstants.MOZ_APP_VERSION, 10) < 100) {
-        messageEditorID = "content-frame";
-      } else {
-        messageEditorID = "messageEditor";
-      }
+      const messageEditorID = "messageEditor";
       
       
       // if we load a template ST4 processing will have been done before the template was saved.
