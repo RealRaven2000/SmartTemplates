@@ -1979,7 +1979,11 @@ SmartTemplate4.fileTemplates = {
 			}
 		}						
 					
-		const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
+    var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+    const ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+		const { FileUtils } = ESM
+      ? ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs")
+      : ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
 				
 		try {
 			// code from template-disk.jsm readHTMLTemplateFile()

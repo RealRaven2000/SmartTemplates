@@ -12,12 +12,17 @@
  */
 
 // Import some things we need.
-var { ExtensionCommon } = ChromeUtils.import(
-  "resource://gre/modules/ExtensionCommon.jsm"
-);
-var { ExtensionSupport } = ChromeUtils.import(
-  "resource:///modules/ExtensionSupport.jsm"
-);
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+
+var { ExtensionCommon } = ESM
+  ? ChromeUtils.importESModule("resource://gre/modules/ExtensionCommon.sys.mjs")
+  : ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
+
+var { ExtensionSupport } = ESM 
+  ? ChromeUtils.importESModule("resource:///modules/ExtensionSupport.sys.mjs")
+  : ChromeUtils.import("resource:///modules/ExtensionSupport.jsm");
+
 var Services = globalThis.Services || 
   ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
 

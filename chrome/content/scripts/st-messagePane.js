@@ -1,4 +1,9 @@
-var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+
+var { MailServices } = SmartTemplates_ESM
+  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+  : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 /* obsolete
 let patchHeaderMenu; 
@@ -12,23 +17,28 @@ async function onLoad(activatedWhileWindowOpen) {
       window.SmartTemplate4 = window.parent.parent.SmartTemplate4;
       break;
     case "about:message":
-      window.SmartTemplate4 = window.parent.SmartTemplate4; 
+      window.SmartTemplate4 = window.parent.SmartTemplate4;
       break;
     default: // also messenger
       if (window.document.URL == "about:message") {
-        window.SmartTemplate4 = window.parent.SmartTemplate4; 
+        window.SmartTemplate4 = window.parent.SmartTemplate4;
       }
   }
 
   window.SmartTemplate4_WLM = WL; // keep a reference to the correct WindowListener. [issue 271]
-                                  // it can only patch stuff in its own window!
-  const WAIT_FOR_3PANE = window.SmartTemplate4.Preferences.getMyIntPref("fileTemplates.menus.delayMessagePane");
-  window.SmartTemplate4.Util.logDebug(`============INJECT==========\nst-messagePane.js onLoad(${activatedWhileWindowOpen})`);
+  // it can only patch stuff in its own window!
+  const WAIT_FOR_3PANE = window.SmartTemplate4.Preferences.getMyIntPref(
+    "fileTemplates.menus.delayMessagePane"
+  );
+  window.SmartTemplate4.Util.logDebug(
+    `============INJECT==========\nst-messagePane.js onLoad(${activatedWhileWindowOpen})`
+  );
 
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
 
   const contentDoc = window.document;
-  const HEADERSELECTOR = '[data-extensionid="smarttemplate4@thunderbird.extension"].message-header-view-button';
+  const HEADERSELECTOR =
+    '[data-extensionid="smarttemplate4@thunderbird.extension"].message-header-view-button';
   // [data-extensionid="smarttemplate4@thunderbird.extension"].message-header-view-button
   let headerButton = contentDoc.querySelector(HEADERSELECTOR); //  getElementById(HEADERBARID);
   if (!headerButton) return;
@@ -68,10 +78,8 @@ async function onLoad(activatedWhileWindowOpen) {
     );
   }
   */
-
 }
 
 function onUnload(isAddOnShutDown) {
- //  window.SmartTemplate4.Util.notifyTools.removeListener(reactNotification);
+  //  window.SmartTemplate4.Util.notifyTools.removeListener(reactNotification);
 }
-

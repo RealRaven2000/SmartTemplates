@@ -3,7 +3,21 @@ const { setTimeout, clearTimeout } = ChromeUtils.importESModule(
   "resource://gre/modules/Timer.sys.mjs"
 );
 
-var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
+
+var { AppConstants } = ChromeUtils.importESModule(
+  "resource://gre/modules/AppConstants.sys.mjs"
+);
+var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+
+var { ExtensionCommon } = SmartTemplates_ESM 
+  ? ChromeUtils.importESModule("resource://gre/modules/ExtensionCommon.sys.mjs")
+  : ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
+
+var { MailServices } = SmartTemplates_ESM
+  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+  : ChromeUtils.import("resource:///modules/MailServices.jsm");
+
+
 var Services = globalThis.Services || ChromeUtils.import(
 	"resource://gre/modules/Services.jsm"
 	).Services;

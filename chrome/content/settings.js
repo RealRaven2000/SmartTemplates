@@ -9,8 +9,12 @@
   END LICENSE BLOCK 
 */
 
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+var { MailServices } = ESM
+  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+  : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
-var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 var LastInput = {
   id: null,
@@ -625,21 +629,20 @@ SmartTemplate4.Settings = {
     let browser = document.getElementById("templatesBrowser");
     let isNewRemoteContent = false;
     
-    if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "91")) {
-      // with fission enabled (Tb91 defaults browser.tabs.remote.autostart = true)
-      var { MailE10SUtils } = ChromeUtils.import(
-        "resource:///modules/MailE10SUtils.jsm"
-      );
-      if (browser && MailE10SUtils && MailE10SUtils.loadURI) {
-        browser.setAttribute("remote", "true");
-        MailE10SUtils.loadURI(
-          browser,
-          url
-        );
-        isNewRemoteContent = true;
-        if (templatesIFrame) templatesIFrame.parentNode.removeChild(templatesIFrame);
-      }
-    }
+		// with fission enabled (Tb91 defaults browser.tabs.remote.autostart = true)
+		var { MailE10SUtils } = ChromeUtils.import(
+			"resource:///modules/MailE10SUtils.jsm"
+		);
+		if (browser && MailE10SUtils && MailE10SUtils.loadURI) {
+			browser.setAttribute("remote", "true");
+			MailE10SUtils.loadURI(
+				browser,
+				url
+			);
+			isNewRemoteContent = true;
+			if (templatesIFrame) templatesIFrame.parentNode.removeChild(templatesIFrame);
+		}
+		
     if (!isNewRemoteContent) {
       if (!templatesIFrame.getAttribute("src"))
         templatesIFrame.setAttribute("src", url);
