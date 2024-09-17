@@ -9,8 +9,18 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK 
 */
 
-var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+var { MailServices } = SmartTemplates_ESM
+  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+  : ChromeUtils.import("resource:///modules/MailServices.jsm");
+
 var { VCardProperties }  = ChromeUtils.import( "resource:///modules/VCardUtils.jsm");
+// We use this as a display consumer
+// nsIStreamListener
+var { MsgHdrToMimeMessage } = SmartTemplates_ESM
+  ? ChromeUtils.importESModule("resource:///modules/gloda/MimeMessage.sys.mjs")
+  : ChromeUtils.import( "resource:///modules/gloda/MimeMessage.jsm" );
 
 
 //******************************************************************************
@@ -159,9 +169,6 @@ function async_driver(val) {
 }
 */
 
-// We use this as a display consumer
-// nsIStreamListener
-var { MsgHdrToMimeMessage } = ChromeUtils.import( "resource:///modules/gloda/MimeMessage.jsm" );
   
 // not used (yet)
 var SmartTemplate4_streamListener =
@@ -327,7 +334,7 @@ SmartTemplate4.getHeadersAsync = async function() {
 
   // issue 272 - also support clicking a mailto: link on a website!
   let isNewMail = (composeType == Ci.nsIMsgCompType.New || composeType == Ci.nsIMsgCompType.MailToUrl);
-  if (!params.originalMsgURI && Ci.nsIMsgCompType.NewsPost) {
+  if (!params?.originalMsgURI && Ci.nsIMsgCompType.NewsPost) {
     isNewMail = true;    
   }
 
@@ -3750,21 +3757,39 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             const tagColors = tags.map((t) => t.color);
             switch (token) {
               case "tags":
-                const resultsPlainText = tagLabels.join(", ");
                 let results;
-                if (args.includes("toclipboard")) {
-                  util.clipboardWrite(resultsPlainText);
-                  return "";
-                }
-                if (args.includes("color")) {
-                  const labelAtoms = [];
-                  for (let t of tags) {
-                    const labelObject = `<span style="color:${t.color}; border: 1px solid ${t.color};border-radius: 0.2em; padding: 0.05em 0.1em;">${t.label}</span>`;
-                    labelAtoms.push(labelObject);
+                let formatString = "", delimiter = ", ";
+                for (let f of args) {
+                  // format = "some string containing one or multiple of $label$ amd $color$ "
+                  if (f.startsWith("format")) {
+                    formatString = util.parseValueArgument(f);
                   }
-                  results = labelAtoms.join(", ");
-                } else {
-                  results = resultsPlainText;
+                  if (f.startsWith("delimiter")) {
+                    delimiter = util.parseValueArgument(f);
+                  }
+                  if (f=="color") { // a handy formatting preset
+                    formatString = `<span style="color:$color$; border: 1px solid $color$;border-radius: 0.2em; padding: 0.05em 0.1em;">$label$</span>`;
+                  }
+                }
+                if (!formatString) {
+                  formatString = "$label$";
+                }
+
+                const labelAtoms = [];
+                for (let t of tags) {
+                  const tagPart = formatString.replaceAll(
+                    "$color$",
+                    t.color
+                  ).replaceAll(
+                    "$label$", 
+                    t.label
+                  );
+                  labelAtoms.push(tagPart);
+                }
+                results = labelAtoms.join(delimiter); // concat a string
+                if (args.includes("toclipboard")) {
+                  util.clipboardWrite(results);
+                  return "";
                 }
                 return results;
               case "tags.add":
@@ -3926,7 +3951,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
   // [Bug 25871] %file()% function
   async function insertFileLink(txt, composeType) {
     util.logDebug("insertFileLink " + txt);
-    const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
+    var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+    var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+
+		const { FileUtils } = ESM
+      ? ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs")
+      : ChromeUtils.import("resource://gre/modules/FileUtils.jsm");    
     // isFU = true; // FileUtils.File exists
 								
     // determine file type:
@@ -4122,7 +4152,13 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 		    composerWin = Services.wm.getMostRecentWindow("msgcompose") || window,
 		    attachments=[];
 		try {			
-			let FileUtils = Cu.import("resource://gre/modules/FileUtils.jsm").FileUtils;
+      const { AppConstants } = ChromeUtils.importESModule(
+        "resource://gre/modules/AppConstants.sys.mjs"
+      );
+      const ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+      const { FileUtils } = ESM
+        ? ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs")
+        : ChromeUtils.import("resource://gre/modules/FileUtils.jsm");    
 			
 			if (!FileUtils) {
 				alert("No FileUtils in this platform - %attach% is not supported. Are you on an old version of " + util.Application + "?");
