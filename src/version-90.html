@@ -422,7 +422,7 @@ permalink: version-90.html
     <li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/98">[issue 98]</a> - Fixed: %header.set(to,"[addressee]")% no longer working.</li>
     <li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/100">[issue 100]</a> - Trial period should restart on license expiry.</li>
     <li>Fixed some errors in Serbian, Slovenian and Portuguese help sections.</li>
-    <li>Fixed reminder for premium functions - this notification should be shown if a Standard User uses functions reserved for SmartTemplates Pro Users</li>
+    <li>Fixed reminder for Pro functions - this notification should be shown if a Standard User uses functions reserved for SmartTemplates Pro Users</li>
   </ul>
 </li> 
 
@@ -1306,7 +1306,7 @@ Sender: %from%
   <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
   <ul>
     <li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/31">[issue 31]</a> 
-      New premium variables to remove text / tags from quoted parts.
+      New Pro variables to remove text / tags from quoted parts.
       <p>
         <code>%deleteQuotedText("<i>searchText</i>",<i>quoteLevel</i>)%</code> Deletes quoted Text <br>
         <code>%replaceQuotedText("<i>searchText</i>","<i>replacementHTML</i>",<i>quoteLevel</i>)%</code> Replaces quoted text <br>
@@ -1476,7 +1476,7 @@ Sender: %from%
       
       </p>
     </li>
-    <li>Premium function: Added an optional 3rd parameter to 
+    <li>Pro function: Added an optional 3rd parameter to 
        <code>%matchTextFromBody(<i>regular Expression</i>,<i>group #</i>,<i>"<b>alternative text</b>"</i>)%</code>.<br>
        If the quoted email has no match, then the alternative text will be inserted instead.
     </li>
@@ -1996,7 +1996,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 	    caused by its changes to the preferences system</i>
 	<ul>
 		<li>(licensed users only) Added support tab. </li>
-		<li>Added the premium feature <a href="premium.html#deferredVariables">'deferred variables in "Write" template'</a> (such as %to%) to standard features. Important: this only works in HTML mode - plain text is not supported.</li>
+		<li>Added the Pro feature <a href="premium.html#deferredVariables">'deferred variables in "Write" template'</a> (such as %to%) to standard features. Important: this only works in HTML mode - plain text is not supported.</li>
 		<li>Improved panel sizing on Preferences dialog. </li>
 		<li>ESR - Eliminated deprecated getCharPref / setCharPref functions</li>
 		<li>Fixed regression caused by ESR work for Thunderbird 68 <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26657" target="_blank">[Bug 26657]</a>, 
@@ -2031,7 +2031,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		</li>	
 		<li>
 		  <p><a name="24993" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=24993" target="_blank">[Bug 24993]</a> 
-			   <span class="premium">Premium Feature</span>
+			   <span class="premium">Pro Feature</span>
 			   Added support for using the following fields when composing a *new* Email:</p>
 			<ul>
 			  <li><code class="inline">%subject%</code></li>
@@ -2055,7 +2055,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		<li>
       <p>
 		   <a name="26588" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26588" target="_blank">[Bug 26588]</a>
-			   <code class="deferable">%dateformat%</code> <span class="premium">Premium Feature</span> Function for inserting / updating current time.
+			   <code class="deferable">%dateformat%</code> <span class="premium">Pro Feature</span> Function for inserting / updating current time.
 			</p>
 			<p>
 			  The format variables are taken from the regular formats such as %Y% for 4-digit
@@ -2111,7 +2111,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		
 		<li>
       <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26307" target="_blank">[Bug 26307]</a>
-      <span class="premium">Premium Feature</span>
+      <span class="premium">Pro Feature</span>
       Improved switch for adding (subtracting) days from date fields:<br>
       <code>%X:=calculated(d,h:mm)%</code> where <i>d</i> = is the number of days to add. <i>h</i> = number of hours and <i>mm</i> number of minutes.
       Note this needs to be reset using
@@ -2240,7 +2240,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		    New "unmodified field" option for %To()%, %CC()% and %From()%
 		    <code>%from(<i>initial</i>)%</code> New <i>initial</i> keyword to avoid any changes of header; just displays the header as received.</li>
 		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26307" target="_blank">[Bug 26307]</a>
-		    <span class="premium">Premium Feature</span>
+		    <span class="premium">Pro Feature</span>
 				New switch for adding (subtracting) days from date fields:<br>
 				<code>%X:=calculated(n)%</code> where n = is the number of days to add. Note this needs to be reset using
 				<code>%X:=calculated(0)%</code> to unapply it to the rest of the Email.
@@ -2248,7 +2248,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 				<hr>
     <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26411" target="_blank">Bug 26411</a>
 				New: Expanded functions for manipulation of headers, based on 
-		    <a href="http://www.regular-expressions.info/quickstart.html" target="_blank">Regular Expressions</a>.<span class="premium">Premium Feature</span></li>
+		    <a href="http://www.regular-expressions.info/quickstart.html" target="_blank">Regular Expressions</a>.<span class="premium">Pro Feature</span></li>
     <li><code>%header.set.matchFromSubject(<i>hdr,regex,group</i>)%</code> Set the header if a matching regular expression is found in subject line.</li>
     <li><code>%header.append.matchFromSubject(<i>hdr,regex,group</i>)%</code> Append text to header / recipient if a matching regular expression is found in subject line.</li>
     <li><code>%header.prefix.matchFromSubject(<i>hdr,regex,group</i>)%</code> Prefix text to header if a matching regular expression is found in subject line.</li>
@@ -2331,10 +2331,10 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 				<iframe class="youtube"  src="https://www.youtube.com/embed/u72yHAPNkZE" frameborder="0" allowfullscreen></iframe></li>	
 		<li>Added Postbox 5.0 compatibility</li>
 	  <li>Fixed: mailto links are missing signature</li>
-		<li>Extended <code>%matchTextFromBody( )%</code> function. <span class="premium">Premium Feature</span><br>
+		<li>Extended <code>%matchTextFromBody( )%</code> function. <span class="premium">Pro Feature</span><br>
 		   <code class="inline">%matchTextFromBody("Regular Expression",MatchGroup)%</code> finds a pattern in the quoted Email and inserts it at function location. The first parameter must be the regular expression within double quotes. The second parameter is a number which denotes the "match group". Match groups are usually designated with round parentheses (). Use 0 to match the complete expression, 1 for the first group etc.
 		</li>
-		<li>New <code>%matchTextFromSubject( )%</code> function <span class="premium">Premium Feature</span><br>
+		<li>New <code>%matchTextFromSubject( )%</code> function <span class="premium">Pro Feature</span><br>
 		    Same as above, but searches the Subject line for the pattern. Parameters are also the same, first the pattern, second the match group number. See the <a href="http://smarttemplate4.mozdev.org/variables.html#stringManipulation">variables page</a> for a detailed explanation and examples.
 		</li>
   </ul>
@@ -2517,7 +2517,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
        bracketMail(square)  =  [mail@domain.com]
        bracketMail(;)        =  mail@domain.com</pre>
     </li>
-    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25871">[Bug 25871]</a> Added <code>%file()%</code> <span class="premium">Premium Feature</span>- insert html, text or image from file (for customized signatures)
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25871">[Bug 25871]</a> Added <code>%file()%</code> <span class="premium">Pro Feature</span>- insert html, text or image from file (for customized signatures)
           use a local file path in order to insert a file from the computer you are sending from.
           You can also use it to insert an image file. To insert the correct file path / name, simply click 
           on the %file% link in the "Variables" window.<br>
@@ -2562,7 +2562,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
     <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25089" target="_blank">[Bug 25089]</a> (reopened) default quote header wasn't removed anymore in Tb 31.0</li>
     <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25816" target="_blank">[Bug 25816]</a> Missing names in reply caused by different Encodings - the Mime decoder fails when multiple addresses with varying encodings are contained </li>
     <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25089" target="_blank">[Bug 25089]</a> Default forward quote not hidden </li>
-    <li> variable <code>%matchTextFromBody()%</code> to find and replace pattern <span class="premium">Premium Feature</span><br>
+    <li> variable <code>%matchTextFromBody()%</code> to find and replace pattern <span class="premium">Pro Feature</span><br>
          e.g. <code class="inline">%matchTextFromBody(TEST *)%</code> will retrieve '123' from 'TEST 123' </li>
   </ul>
 </li> 
@@ -2648,7 +2648,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
     </li>
     <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=24990" target="_blank">[FR 24990]</a>  Added <code>%cursor%</code> variable</li>
     <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25083" target="_blank">[FR 25083]</a> New option "Correct Lastname, Firstname" to swap firstname to the front. </li>
-    <li> <code>%deleteText()%</code> and <code>%replaceText()%</code> functions - <span class="premium">Premium Feature</span></li>
+    <li> <code>%deleteText()%</code> and <code>%replaceText()%</code> functions - <span class="premium">Pro Feature</span></li>
     <li> Replacement of variables in Signature</li>
     <li> Added <a href="http://www.postbox-inc.com/index.php" target="_blank" title="Visit Postbox Website">Postbox</a> support</li>
     <li> Mailto link support for the main header fields that hold email address data: 
