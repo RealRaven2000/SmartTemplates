@@ -2575,6 +2575,7 @@ SmartTemplate4.Util = {
   combineEscapedParams: function (arr, paramPos = 0) {
     let finalParams = [];
 
+		paramPos = Math.min(paramPos, arr.length-1); // avoid overflow
     for (let i=0; i<paramPos; i++)  {
       finalParams.push(arr[i]);
     }
@@ -3254,14 +3255,18 @@ SmartTemplate4.Util = {
 		if (!paramString) return "";
 		if (paramString.includes("=")) {
 			let parts = paramString.split("=");
-			if (parts[1].startsWith("\"")) {
-				let result = parts[1].substring(1);
-				if (result.endsWith("\"")) {
-					return result.substring(0, result.length-1);
-				}
-				return result;
+			let paramArg = parts[1];
+			for (let i=2; i<parts.length; i++) { // join and append the rest
+				paramArg = `${paramArg}=${parts[i]}`;
 			}
-			return parts[1];
+			if (paramArg.startsWith('"')) {
+        let result = paramArg.substring(1);
+        if (result.endsWith('"')) {
+          return result.substring(0, result.length - 1);
+        }
+        return result;
+      }
+			return paramArg;
 		}
 		return paramString;
 	}

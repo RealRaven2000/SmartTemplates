@@ -3759,7 +3759,13 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               case "tags":
                 let results;
                 let formatString = "", delimiter = ", ";
-                for (let f of args) {
+                let newArgs = args;
+                for (let i=0; i<args.length; i++) {
+                  if (args[i].startsWith("delimiter") || args[i].startsWith("format")) {
+                    newArgs = util.combineEscapedParams(newArgs, i); // fix escaped comma in argument
+                  }
+                }
+                for (let f of newArgs) {
                   // format = "some string containing one or multiple of $label$ amd $color$ "
                   if (f.startsWith("format")) {
                     formatString = util.parseValueArgument(f);
@@ -3767,7 +3773,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                   if (f.startsWith("delimiter")) {
                     delimiter = util.parseValueArgument(f);
                   }
-                  if (f=="color") { // a handy formatting preset
+                  if (f == "color") {
+                    // a handy formatting preset
                     formatString = `<span style="color:$color$; border: 1px solid $color$;border-radius: 0.2em; padding: 0.05em 0.1em;">$label$</span>`;
                   }
                 }
@@ -3787,7 +3794,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                   labelAtoms.push(tagPart);
                 }
                 results = labelAtoms.join(delimiter); // concat a string
-                if (args.includes("toclipboard")) {
+                if (newArgs.includes("toclipboard")) {
                   util.clipboardWrite(results);
                   return "";
                 }
