@@ -58,11 +58,15 @@
     padding: 0px 6px !important;
     border-radius: 0;
   }
+  
+  pre.code, .paramLiteral {
+    font-family: Consolas, 'Courier New', Geneva, sans-serif;
+    font-size: 10pt !important;
+  }
+
   pre.code { 
     background-color: #ffffff;
     color: #303030;
-    font-family: Consolas, 'Courier New', Geneva, sans-serif;
-    font-size: 10pt !important;
     padding: 1em;
     box-shadow: inset 4px 4px 10px #000000;
   }
@@ -71,7 +75,7 @@
     background-color: rgba(172,172,172,0.2);
     border: 1px rgba(20,20,20,0.3) solid !important;
     border-radius: 3px;
-    color: rgb(230,230,230) !important;
+    color: rgb(20,20,20,0.3);
     font-style: normal !important;
     font-weight: 500 !important;
     padding-inline: 2px;  
