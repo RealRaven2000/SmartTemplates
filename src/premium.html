@@ -9,7 +9,7 @@ permalink: premium.html
   markActiveNavigation("premium.html");
   /* Apply this site specific file to <head> element */
   loadStyleSheet("premium.css?v=2");
-  loadStyleSheet("syntax.css");
+  loadStyleSheet("syntax.css?v=2");
 </script>
 
 <style>
@@ -339,9 +339,9 @@ permalink: premium.html
 			<code>%X:=calculated(0)%</code> to reset it for the rest of the Email.
 			</p>
       <p>
-        Wrap the format strings in double quotes, and add the parameter <code class="parameter">toclipboard</code> to force copying 
+        Wrap the format strings in double quotes, and add the parameter <span class="paramLiteral">toclipboard</span> to force copying 
         the date to clipboard instead of inserting it into the email. Use the additional 
-        parameter <code class="parameter">current</code> to always enforce current time (without that, it will 
+        parameter <span class="paramLiteral">current</span> to always enforce current time (without that, it will 
         interpret it as the timestamp of the replied to / forwarded original mail) - easier
         than having to insert the cumbersome <code class="inline">%x:=today%</code> at the start of the line.
         <br>
@@ -401,7 +401,7 @@ permalink: premium.html
         SmartTemplates Pro: Support transferring headers / variable results to clipboard
       </p>
       <p>
-        Use the parameter <code class="parameter">toclipboard</code> to transfer header contents such as email addresses to 
+        Use the parameter <span class="paramLiteral">toclipboard</span> to transfer header contents such as email addresses to 
         the clipboard: <code>%from(mail,toclipboard)%</code>
       </p>
       <p>
@@ -413,9 +413,9 @@ permalink: premium.html
       </p>
       <p>
         You can use it for copying the date with dateformat as well:
-        Wrap the format strings in double quotes, and add the parameter <code class="parameter">toclipboard</code> to force copying 
+        Wrap the format strings in double quotes, and add the parameter <span class="paramLiteral">toclipboard</span> to force copying 
         the date to clipboard instead of inserting it into the email. Use the additional 
-        parameter <code class="parameter">current</code> to always enforce current time (without that, it will 
+        parameter <span class="paramLiteral">current</span> to always enforce current time (without that, it will 
         interpret it as the timestamp of the replied to / forwarded original mail) - easier
         than having to insert the cumbersome <code class="inline">%x:=today%</code> at the start of the line.
         <br>
@@ -632,35 +632,39 @@ permalink: premium.html
   </p>
 
 <p>
-  <code class="parameter">color</code>  - a preset with a colorful label 
+  <span class="paramLiteral">color</span>  - a preset with a colorful label 
     (using the color of the label for font and border)<br>
-  <code class="parameter">color-filled</code> - another preset with a colored label 
+  <span class="paramLiteral">color-filled</span> - another preset with a colored label 
     (using the color of the label for background, with white font)<br>
-  <code class="parameter">filled</code> - tags with white font, filled with dark color <br>
-  <code class="parameter">dark-filled</code> - tags with black font, filled with white color 
+  <span class="paramLiteral">filled</span> - tags with white font, filled with dark color <br>
+  <span class="paramLiteral">dark-filled</span> - tags with black font, filled with white color 
     - useful for dark backgrounds.<br>
-  <code class="parameter">size=fontSizeValue</code>  - font size, <em>fontSizeValue</em> is either a 
+  <span class="paramLiteral">size=fontSizeValue</span>  - font size, <em>fontSizeValue</em> is either a 
     simple decimal numeric value such as 0.8, 1.0, 1.2 etc. and will be multiplied with the 
     standard size unit of 1em, or a full value of number+unit, eg 100px, 0.6em, 14pt etc.<br>
-  <code class="parameter">delimiter=&quot;delimitString&quot;</code> - <em>delimitString</em> 
-    = what to put in between the tags. Commas within here need to be prefixed with a backslash like this: <code>\,</code>. 
-    If this is not given as parameters it defaults to <code>, </code>  (a single comma followed by a single space)<br>
-  <code class="parameter">format=&quot;formatString&quot;</code> - how to format each tag label<br>
-  <code class="parameter">toclipboard</code> copies the result to the clipboard instead of inserting it<br>
-  <code class="parameter">uppercase</code> - converts label texts to uppercase<br>
-  <code class="parameter">lowercase</code> - convert label texts to lowercase<br>
-  <code class="parameter">capitalize </code>- capitalizes all label texts to (first letter of each word 
+  <span class="paramLiteral">delimiter=&quot;delimitString&quot;</span> - <em>delimitString</em> 
+    = what to put in between the tags. Commas within here need to be prefixed with a backslash like this: <span class="paramLiteral">\,</span>. 
+    If this is not given as parameters it defaults to <code>, </span>  (a single comma followed by a single space)<br>
+  <span class="paramLiteral">format=&quot;formatString&quot;</span> - how to format each tag label<br>
+  <span class="paramLiteral">toclipboard</span> copies the result to the clipboard instead of inserting it<br>
+  <span class="paramLiteral">uppercase</span> - converts label texts to uppercase<br>
+  <span class="paramLiteral">lowercase</span> - convert label texts to lowercase<br>
+  <span class="paramLiteral">capitalize </span>- capitalizes all label texts to (first letter of each word 
     in uppercase, the rest in lowercase)<br>
-  <code class="parameter">camelcase</code> - only converts the first letter to lowercase, 
+  <span class="paramLiteral">camelcase</span> - only converts the first letter to lowercase, 
     leaves any internal mixed case intact.
 </p>
 
 <h4>Examples</h4>
+<p>
+  Similar to address fields, <code>%tags%</code> also supports using the double square bracket Syntax: 
+  This will hide the contents of the complete contents of the line if no tags are retrieved from the email.
+</p>
 <pre class="code">
-[[ %tags%<br>]]
-[[ %tags(color)%<br>]]
-[[ %tags(color-filled,uppercase,delimiter=" ",size=1.1)%<br>]]
-[[ %tags(filled,lowercase,delimiter=" - ")%<br>]]  
+[[ %tags% &gt;br&lt;]]
+[[ %tags(color)% &gt;br&lt;]]
+[[ %tags(color-filled,uppercase,delimiter=" ",size=1.1)% &gt;br&lt;]]
+[[ %tags(filled,lowercase,delimiter=" - ")% &gt;br&lt;]]  
 </pre>
 
 
@@ -671,8 +675,8 @@ permalink: premium.html
     Make sure to enclose it in double quotes and prefix any commas within with a backslash: <code>\,</code>:
 </p>
 <p>
-   <code class="parameter">$label$</code> placeholder for the tag text <br>
-   <code class="parameter">$color$</code> 6 digit hex value of the mail tag's color
+   <span class="paramLiteral">$label$</span> placeholder for the tag text <br>
+   <span class="paramLiteral">$color$</span> 6 digit hex value of the mail tag's color
 </p>
 <h4>Example</h4>
 <pre class="code">

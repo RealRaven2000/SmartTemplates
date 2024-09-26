@@ -12,7 +12,7 @@ permalink: version.html
   loadStyleSheet('infoBox.css?v=2');
   loadStyleSheet('myProjects.css');
 	loadStyleSheet('smarttemplate-pro.css');
-	loadStyleSheet('syntax.css');
+	loadStyleSheet('syntax.css?v=2');
   loadScriptFile('window.js');
 </script>
 
@@ -716,9 +716,9 @@ permalink: version.html
       <li>
         <p>
           Added text transformation parameters for search functions:
-          Use the parameters <code class="parameter">capitalize</code> / <code class="parameter">uppercase</code> / 
-          <code class="parameter">lowercase</code> / <code class="parameter">camelcase</code> after the 
-          group parameter. This can also be compared with the <code class="parameter">toclipboard</code> parameter.
+          Use the parameters <span class="paramLiteral">capitalize</span> / <span class="paramLiteral">uppercase</span> / 
+          <span class="paramLiteral">lowercase</span> / <span class="paramLiteral">camelcase</span> after the 
+          group parameter. This can also be compared with the <span class="paramLiteral">toclipboard</span> parameter.
           <a href="https://github.com/RealRaven2000/SmartTemplates/issues/288">[issue 288]</a>
         </p>
         <p>
@@ -730,14 +730,14 @@ permalink: version.html
 %matchTextFromBody("Customer.*\n\-+\n(.*)\n",1,capitalize,toclipboard)%</pre>   
         </p>
         <ul>
-          <li> <code class="parameter">capitalize</code> Capitalizes the first letter of each word. Useful for Names. </li>
-          <li> <code class="parameter">camelcase</code> Converts the first character of the entire string lowercase.</li>
-          <li> <code class="parameter">lowercase</code> Transforms the entire match to lower case.</li>  
-          <li> <code class="parameter">uppercase</code> Transforms the entire match to upper case.</li>  
+          <li> <span class="paramLiteral">capitalize</span> Capitalizes the first letter of each word. Useful for Names. </li>
+          <li> <span class="paramLiteral">camelcase</span> Converts the first character of the entire string lowercase.</li>
+          <li> <span class="paramLiteral">lowercase</span> Transforms the entire match to lower case.</li>  
+          <li> <span class="paramLiteral">uppercase</span> Transforms the entire match to upper case.</li>  
         </ul>
       </li>
       <li>
-        Support <code class="parameter">selection</code> as parameter for replaceText - so we can transform 
+        Support <span class="paramLiteral">selection</span> as parameter for replaceText - so we can transform 
         selected (formatted) text from smart fragments.
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/289">[issue 289]</a>
         <p>
@@ -850,11 +850,11 @@ permalink: version.html
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/278">[issue 278]</a>
       </li>
       <li>
-        Support for extracting <code class="parameter">prefix</code> and <code class="parameter">suffix</code> 
+        Support for extracting <span class="paramLiteral">prefix</span> and <span class="paramLiteral">suffix</span> 
         from address book fields. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/267">[issue 267]</a>
       </li>
       <li>
-        Support for <code class="parameter">other.custom1</code>, <code class="parameter">other.custom2</code>
+        Support for <span class="paramLiteral">other.custom1</span>, <span class="paramLiteral">other.custom2</span>
         etc. from address book fields. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/246">[issue 246]</a>
       </li>
       <li>
@@ -1726,7 +1726,7 @@ src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainS
       Improvement of colors in variables window when using dark themes.
     </li> 
     <li>
-      Support using <code class="parameter">toclipboard</code> parameter to copy data to clipboard multiple times in the same template.
+      Support using <span class="paramLiteral">toclipboard</span> parameter to copy data to clipboard multiple times in the same template.
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/210">[issue 210]</a>
     </li> 
   </ul>
@@ -1766,12 +1766,12 @@ src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainS
       <code class="inline">%clipboard%</code> or <code class="inline">%header.prefix(subject,clipboard)%</code>.
     </li>
     <li>
-      New <code class="parameter">toclipboard</code> parameter for address fields such 
+      New <span class="paramLiteral">toclipboard</span> parameter for address fields such 
       as <code>%from(name)%</code> to copy extracted address parts to clipboard.
     </li>
     <li>
-      Improved the parameters <code class="parameter">bracketMail</code> and 
-      <code class="parameter">bracketName</code> for using with clipboard. 
+      Improved the parameters <span class="paramLiteral">bracketMail</span> and 
+      <span class="paramLiteral">bracketName</span> for using with clipboard. 
       These now do not encode the &lt; and &gt; signs anymore.
     </li>
     <li>
@@ -2000,7 +2000,7 @@ src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainS
           when the user clicks to update the field.
         </li>
         <li>
-          Using multiple <code class="parameter">bracketMail</code> functions could lead to 
+          Using multiple <span class="paramLiteral">bracketMail</span> functions could lead to 
           only the last <code class="inline">[[ optional section ]]</code> to be removed as expected.
           See related <a href="https://github.com/RealRaven2000/SmartTemplates/issues/192">[issue 192]</a>
         </li>
