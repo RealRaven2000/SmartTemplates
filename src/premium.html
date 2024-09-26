@@ -221,7 +221,7 @@ permalink: premium.html
     the currently highlighted text in the Email. This can be used to wrap / decorate text or build other
     HTML containers around information you have already inserted in the Email.
   </p>
-</p>
+</article>
 
 <!-- ##### String Functions #### -->
 <a name="stringManipulation"> </a>
@@ -339,9 +339,9 @@ permalink: premium.html
 			<code>%X:=calculated(0)%</code> to reset it for the rest of the Email.
 			</p>
       <p>
-        Wrap the format strings in double quotes, and add the parameter <tt>toclipboard</tt> to force copying 
+        Wrap the format strings in double quotes, and add the parameter <code class="parameter">toclipboard</code> to force copying 
         the date to clipboard instead of inserting it into the email. Use the additional 
-        parameter <tt>current</tt> to always enforce current time (without that, it will 
+        parameter <code class="parameter">current</code> to always enforce current time (without that, it will 
         interpret it as the timestamp of the replied to / forwarded original mail) - easier
         than having to insert the cumbersome <code class="inline">%x:=today%</code> at the start of the line.
         <br>
@@ -401,7 +401,7 @@ permalink: premium.html
         SmartTemplates Pro: Support transferring headers / variable results to clipboard
       </p>
       <p>
-        Use the parameter <tt>toclipboard</tt> to transfer header contents such as email addresses to 
+        Use the parameter <code class="parameter">toclipboard</code> to transfer header contents such as email addresses to 
         the clipboard: <code>%from(mail,toclipboard)%</code>
       </p>
       <p>
@@ -413,9 +413,9 @@ permalink: premium.html
       </p>
       <p>
         You can use it for copying the date with dateformat as well:
-        Wrap the format strings in double quotes, and add the parameter <tt>toclipboard</tt> to force copying 
+        Wrap the format strings in double quotes, and add the parameter <code class="parameter">toclipboard</code> to force copying 
         the date to clipboard instead of inserting it into the email. Use the additional 
-        parameter <tt>current</tt> to always enforce current time (without that, it will 
+        parameter <code class="parameter">current</code> to always enforce current time (without that, it will 
         interpret it as the timestamp of the replied to / forwarded original mail) - easier
         than having to insert the cumbersome <code class="inline">%x:=today%</code> at the start of the line.
         <br>
@@ -609,6 +609,51 @@ permalink: premium.html
   </pre>
   </p>
 </article>
+
+<!-- #### %tags% #### -->
+<a name="tags"> </a>
+<h3 class="helpchapter">Insert Mail Tags (Work in Progress)</h3>
+<article>
+  <p>
+    The variable <code>%tags%</code> can insert the mail tags of the replied / 
+    forwarded mail into the email text. 
+    To try out, get the Latest version: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/320">[issue 320]</a>
+  </p>
+<pre class="code">
+%tags%
+%tags(<i>optional parameters</i>)%
+</pre>
+  
+  <h4>Optional parameters</h4>
+  <p>
+    A comma delimited list of parameters can be added to change the behavior:
+  </p>
+
+<p>
+  <code class="parameter">color</code>  - a preset with a colorful label (using the color of the label for font and border)<br>
+  <code class="parameter">color-filled</code> - another preset with a colored label (using the color of the label for background, with white font)<br>
+  <code class="parameter">filled</code> - tags with white font, filled with dark color <br>
+  <code class="parameter">dark-filled</code> - tags with black font, filled with white color - useful for dark backgrounds.<br>
+  <code class="parameter">size=fontSizeValue</code>  - font size, <em>fontSizeValue</em> is either a simple decimal numeric such as 0.8, 1.0, 1.2 etc. and will be multiplied with the standard size of em, or a full value of number+unit, eg 100px, 0.6em, 14pt etc.<br>
+  <code class="parameter">delimiter=&quot;delimitString&quot;</code> - <em>delimitString</em> = what to put in between the tags. commas need to be prefixed with a backslash <code>\</code>. If this is not given as parameters it defaults to ,  (a single comma followed by a single space)<br>
+  <code class="parameter">format=&quot;formatString&quot;</code> - how to format each tag label<br>
+  <code class="parameter">toclipboard</code> copies the result to the clipboard instead of inserting it<br>
+  <code class="parameter">uppercase</code> - converts label texts to uppercase<br>
+  <code class="parameter">lowercase</code> - convert label texts to lowercase<br>
+  <code class="parameter">capitalize </code>- capitalizes all label texts to (first letter each word in uppercase, the rest in lowercase)<br>
+  <code class="parameter">camelcase</code> - only converts the first letter to lowercase, leaves any internal mixed case intact
+</p>
+
+<p>
+  <em>formatString</em> 
+    this is designed as either plain text or html snippet and can contain single 
+    or multiple instances of the placeholders <code>$label$</code> and <code>$color$</code>. 
+    Make sure to enclose it in double quotes and escape any commas within <code>\,</code>:
+</p>
+<p>
+   <code class="parameter">$label$</code> placeholder for the tag text <br>
+   <code class="parameter">$color$</code> 6 digit hex value of the mail tag's color
+</p>
 
 
 
