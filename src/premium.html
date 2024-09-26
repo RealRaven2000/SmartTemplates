@@ -116,6 +116,13 @@ permalink: premium.html
   </tr>  
 
   <tr>
+    <th><a href="#tags">Mail Tags</a></th>
+    <td><span class="check negative">✘</span></td>
+    <td><span class="check negative">✘</span></td>
+    <td><span class="check">✔</span></td>
+  </tr>    
+
+  <tr>
     <th><a href="#dateManipulation">Date Formatting function</a> <code>%dateformat()%</code></th>
     <td><span class="check negative">✘</span> trial only</td>
     <td><span class="check">✔</span></td>
@@ -644,7 +651,7 @@ permalink: premium.html
     standard size unit of 1em, or a full value of number+unit, eg 100px, 0.6em, 14pt etc.<br>
   <span class="paramLiteral">delimiter=&quot;delimitString&quot;</span> - <em>delimitString</em> 
     = what to put in between the tags. Commas within here need to be prefixed with a backslash like this: <span class="paramLiteral">\,</span>. 
-    If this is not given as parameters it defaults to <span class="paramLiteral">, </span>  (a single comma followed by a single space)<br>
+    If this is not given as parameters it defaults to <span class="paramLiteral">, </span> (a single comma followed by a single space)<br>
   <span class="paramLiteral">format=&quot;formatString&quot;</span> - how to format each tag label<br>
   <span class="paramLiteral">toclipboard</span> copies the result to the clipboard instead of inserting it<br>
   <span class="paramLiteral">uppercase</span> - converts label texts to uppercase<br>
@@ -661,18 +668,19 @@ permalink: premium.html
   This will hide the contents of the complete contents of the line if no tags are retrieved from the email.
 </p>
 <pre class="code">
-[[ %tags% &gt;br&lt;]]
-[[ %tags(color)% &gt;br&lt;]]
-[[ %tags(color-filled,uppercase,delimiter=" ",size=1.1)% &gt;br&lt;]]
-[[ %tags(filled,lowercase,delimiter=" - ")% &gt;br&lt;]]  
+[[ %tags% &lt;br&gt;]]
+[[ %tags(color)% &lt;br&gt;]]
+[[ %tags(color-filled,uppercase,delimiter=" ",size=1.1)% &lt;br&gt;]]
+[[ %tags(filled,lowercase,delimiter=" - ")% &lt;br&gt;]]  
 </pre>
 
 
 <p>
   <em>formatString</em> 
     This is designed as either plain text or html snippet and can contain single 
-    or multiple instances of the placeholders <code>$label$</code> and <code>$color$</code>. 
-    Make sure to enclose it in double quotes and prefix any commas within with a backslash: <code>\,</code>:
+    or multiple instances of the placeholders <span class="paramLiteral">$label$</span> 
+    and <span class="paramLiteral">$color$</span>. 
+    Make sure to enclose it in double quotes and prefix any commas within with a backslash: <span class="paramLiteral">\,</span>:
 </p>
 <p>
    <span class="paramLiteral">$label$</span> placeholder for the tag text <br>
