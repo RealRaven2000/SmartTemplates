@@ -361,6 +361,9 @@
   "ex_brack.label": {
     "message": "Ejemplo: Para: ÁGUEDA | Cc: BENIGNO"
   },
+  "examples": {
+    "message": "Ejemplos"
+  },
   "export.label": {
     "message": "Exportar"
   },

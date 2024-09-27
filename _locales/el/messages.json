@@ -364,6 +364,9 @@
   "ex_brack.label": {
     "message": "Παράδειγμα: To: John | Cc: Alison"
   },
+  "examples": {
+    "message": "Παραδείγματα"
+  },
   "export.label": {
     "message": "Εξάγαγε"
   },

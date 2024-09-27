@@ -361,6 +361,9 @@
   "ex_brack.label": {
     "message": "例子: To: Li | Cc: Wu"
   },
+  "examples": {
+    "message": "示例"
+  },
   "export.label": {
     "message": "导出"
   },

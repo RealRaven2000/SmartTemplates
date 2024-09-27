@@ -358,6 +358,9 @@
   "ex_brack.label": {
     "message": "例: To: John | Cc: Alison"
   },
+  "examples": {
+    "message": "例"
+  },
   "export.label": {
     "message": "エクスポート"
   },

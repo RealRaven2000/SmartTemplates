@@ -358,6 +358,78 @@
 					<span class="paramLiteral">camelcase</span> = __MSG_stringmanip.textTransform__ 
 					</li>
 			  </aside>
+
+				<h4>__MSG_examples__</h4>
+				<table class="codeTable">
+					<tr>
+						<td>%tags%</td>
+						<td>Important, To Do, all new Taggy, Custom-1</td>
+					</tr>
+					<tr>
+						<td>%tags(color)%</td>
+						<td><span
+style="color:#FF0000; border:1px solid #FF0000; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">Important</span>,
+<span
+style="color:#3333FF; border:1px solid #3333FF; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">To
+  Do</span>, <span
+style="color:#0c6283; border:1px solid #0c6283; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">all
+  new Taggy</span>, <span
+style="color:#e18700; border:1px solid #e18700; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">Custom-1</span></td>
+					</tr>
+					<tr>
+						<td>%tags(color-filled,uppercase,delimiter=" ",size=1.1)%</td>
+						<td><span
+style="background-color:#FF0000; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:1.1em">IMPORTANT</span>
+<span
+style="background-color:#3333FF; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:1.1em">TO
+  DO</span> <span
+style="background-color:#0c6283; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:1.1em">ALL
+  NEW TAGGY</span> <span
+style="background-color:#e18700; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:1.1em">CUSTOM-1</span></td>
+					</tr>					
+					<tr>
+						<td>%tags(filled,lowercase,delimiter=" - ")%</td>
+						<td><span
+style="background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">important</span>
+- <span
+style="background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">to
+  do</span> - <span
+style="background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">all
+  new taggy</span> - <span
+style="background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">custom-1</span></td>
+					</tr>					
+					<tr>
+						<td>%tags(dark-filled)%</td>
+						<td>
+							<div style="width:50%; background-color:#333; color:white; padding:0.5em; margin-block:0.2em;"> 
+<span
+style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">Important</span>,
+<span
+style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">To
+    Do</span>, 
+<span
+style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">all
+    new Taggy</span>, 
+<span
+style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">Custom-1</span>
+</div>
+						</td>
+					</tr>					
+					<tr>
+						<td colspan="2">%tags(format="&lt;span style='background-color:$color$; color:white; border-radius:0.7em; padding-inline:0.5em'&gt; #$label$ &lt;/span&gt;")%</td>
+					</tr>					
+					<tr>
+						<td colspan="2"><span
+style="background-color:#FF0000;color:white;border-radius:0.7em;padding-inline:0.5em">#Important</span>,
+<span
+style="background-color:#3333FF;color:white;border-radius:0.7em;padding-inline:0.5em">#To
+  Do</span>, <span
+style="background-color:#0c6283;color:white;border-radius:0.7em;padding-inline:0.5em">#all
+  new Taggy</span>, <span
+style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0.5em">#Custom-1</span></td>
+					</tr>					
+				</table>
+
 			</ul>
     </div>
 

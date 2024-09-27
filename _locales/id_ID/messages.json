@@ -266,6 +266,9 @@
   "ex_brack.label": {
     "message": "Contoh: Untuk: Fred | Cc: Jane"
   },
+  "examples": {
+    "message": "Contoh"
+  },
   "export.label": {
     "message": "Ekspor"
   },

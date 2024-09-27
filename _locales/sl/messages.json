@@ -361,6 +361,9 @@
   "ex_brack.label": {
     "message": "Primer: Za: Jože | Kp: Jure"
   },
+  "examples": {
+    "message": "Primeri"
+  },
   "export.label": {
     "message": "Izvozi"
   },

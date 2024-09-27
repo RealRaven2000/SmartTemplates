@@ -355,6 +355,9 @@
   "ex_brack.label": {
     "message": "Esempio: A: Gianni | Cc: Zola"
   },
+  "examples": {
+    "message": "Esempi"
+  },
   "export.label": {
     "message": "Esporta"
   },

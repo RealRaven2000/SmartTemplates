@@ -358,6 +358,9 @@
   "ex_brack.label": {
     "message": "Пример: To: Адриан | Cc: Алёша"
   },
+  "examples": {
+    "message": "Примеры"
+  },
   "export.label": {
     "message": "Экспорт"
   },

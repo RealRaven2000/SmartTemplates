@@ -361,6 +361,9 @@
   "ex_brack.label": {
     "message": "Esim: To: AKSELI | Cc: JAAKOB"
   },
+  "examples": {
+    "message": "Esimerkit"
+  },
   "export.label": {
     "message": "Vie"
   },

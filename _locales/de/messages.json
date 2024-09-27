@@ -355,6 +355,9 @@
   "ex_brack.label": {
     "message": "Beispiel: An: Friedrich | Cc: Eva"
   },
+  "examples": {
+    "message": "Beispiele"
+  },
   "export.label": {
     "message": "Exportieren"
   },
@@ -1755,7 +1758,7 @@
     "message": "Kopiert die Ergebnisse in die Zwischenablage anstatt sie in die E-Mail einzufügen."
   },
   "tags.delimiter": {
-    "message": "Eine Zeichenkette, die zwischen den aufgelisteten Tags platziert wird. Wird nur angezeigt, wenn es 2 oder mehr Tags gibt. Um ein Komma zu verwenden, müssen Sie es mit einem Rückstrich wie folgt voranstellen: "
+    "message": "Eine Zeichenkette, die zwischen den aufgelisteten Tags platziert wird. Wird nur angezeigt, wenn es 2 oder mehr Tags gibt. Um ein Komma zu verwenden, müssen einen Rückstrich voranstellen, wie folgt: "
   },
   "tags.fontSize": {
     "message": "Ändert die Schriftgröße des Labels. Entweder ein einfacher dezimaler Zahlenwert wie 0.8, 1.0, 1.2 oder ein vollständiger CSS-Wert mit Einheit wie 100px, 0.6em, 14pt."

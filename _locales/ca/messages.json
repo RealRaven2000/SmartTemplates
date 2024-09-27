@@ -361,6 +361,9 @@
   "ex_brack.label": {
     "message": "Exemple : Per : ANAÏS | Còpia a : ESTÈVE"
   },
+  "examples": {
+    "message": "Exemples"
+  },
   "export.label": {
     "message": "Exportacion"
   },

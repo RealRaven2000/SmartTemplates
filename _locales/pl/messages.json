@@ -361,6 +361,9 @@
   "ex_brack.label": {
     "message": "Przykład: Do: Jakub | Kopia: Zuzanna"
   },
+  "examples": {
+    "message": "Przykłady"
+  },
   "export.label": {
     "message": "Eksportuj"
   },

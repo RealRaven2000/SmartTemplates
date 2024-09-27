@@ -361,6 +361,9 @@
   "ex_brack.label": {
     "message": "Voorbeeld: Aan: Pieter | Cc: Sanne"
   },
+  "examples": {
+    "message": "Voorbeelden"
+  },
   "export.label": {
     "message": "Exporteren"
   },

@@ -358,6 +358,9 @@
   "ex_brack.label": {
     "message": "Příklad: To: BEDŘICH | Cc: LUBOŠ"
   },
+  "examples": {
+    "message": "Příklady"
+  },
   "export.label": {
     "message": "Vývozní"
   },

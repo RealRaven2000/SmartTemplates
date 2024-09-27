@@ -358,6 +358,9 @@
   "ex_brack.label": {
     "message": "Exemplo: Para: ADÃO | Cc: ALBERTINA"
   },
+  "examples": {
+    "message": "Exemplos"
+  },
   "export.label": {
     "message": "Exportar"
   },

@@ -352,6 +352,9 @@
   "ex_brack.label": {
     "message": "Пример: „За: Анђелка | CC: Илинка“"
   },
+  "examples": {
+    "message": "Примери"
+  },
   "export.label": {
     "message": "Извези"
   },

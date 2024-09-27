@@ -361,6 +361,9 @@
   "ex_brack.label": {
     "message": "例如: 到:晨 | 副本:芳"
   },
+  "examples": {
+    "message": "範例"
+  },
   "export.label": {
     "message": "匯出"
   },

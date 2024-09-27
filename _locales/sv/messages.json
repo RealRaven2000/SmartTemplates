@@ -364,6 +364,9 @@
   "ex_brack.label": {
     "message": "Exempelvis: To: ALFHILD | Cc: HENRIKA"
   },
+  "examples": {
+    "message": "Exempel"
+  },
   "export.label": {
     "message": "Exportera"
   },
