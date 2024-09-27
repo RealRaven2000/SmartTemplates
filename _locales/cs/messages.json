@@ -1799,6 +1799,50 @@
   "table_reply.label": {
     "message": "Odpovědět"
   },
+  "tags.cap": {
+    "message": "Poštovní štítky"
+  },
+  "tags.clipboard": {
+    "message": "Zkopíruje výsledky do schránky místo vložení do e-mailu."
+  },
+  "tags.delimiter": {
+    "message": "Řetězec, který se vloží mezi uvedené štítky. Zobrazuje se pouze s 2 nebo více štítky. Chcete-li použít čárku, musíte ji předřadit zpětným lomítkem, například takto: "
+  },
+  "tags.fontSize": {
+    "message": "Změní velikost písma štítku. Může být jednoduchá desetinná hodnota, jako je 0.8, 1.0, 1.2 nebo plná hodnota css s jednotkou, jako je 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Vlastní html úryvek pro formátování každého štítku. Použijte $label$ a $color$ k vložení textu nebo (hexadecimální) barvy štítku.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Tato proměnná může vložit poštovní štítky odpovědí a přeposlaných e-mailů do textu e-mailu."
+  },
+  "tags.params": {
+    "message": "Do výstupu lze přidat seznam parametrů oddělených čárkami."
+  },
+  "tags.plaintext": {
+    "message": "Vloží seznam poštovních štítků v prostém textu, oddělených čárkami."
+  },
+  "tags.presets": {
+    "message": "Přednastavení rozvržení"
+  },
+  "tags.presets.intro": {
+    "message": "Seznam předpřipravených stylů pro grafické zobrazení štítků."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Užitečné přednastavení pro použití na tmavém pozadí."
+  },
+  "tags.transform": {
+    "message": "Volitelné parametry pro transformaci textu štítku."
+  },
   "testDriveS": {
     "message": "Můžete otestovat prémiové funkce se standardní licencí, ale mohou být mírně omezeny."
   },

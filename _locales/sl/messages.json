@@ -1805,6 +1805,50 @@
   "table_reply.label": {
     "message": "Odgovori"
   },
+  "tags.cap": {
+    "message": "E-poštne oznake"
+  },
+  "tags.clipboard": {
+    "message": "Kopira rezultate v odložišče namesto, da bi jih vstavilo v e-pošto."
+  },
+  "tags.delimiter": {
+    "message": "Niz za vstavljanje med naštetimi oznakami. Prikazano samo z 2 ali več oznakami. Če želite uporabiti vejico, jo morate pred njo vnesti z obratno poševnico, kot sledi: "
+  },
+  "tags.fontSize": {
+    "message": "Spremeni velikost pisave oznake. To je lahko enostavna decimalna vrednost, kot je 0.8, 1.0, 1.2, ali polna CSS vrednost z enoto, kot je 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Prilagojen HTML odlomek za oblikovanje vsake oznake. Uporabite $label$ in $color$ za vstavitev besedila ali (šestnajstiške) barvne vrednosti oznake.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Ta spremenljivka lahko vstavi oznake e-pošte odgovora in poslane pošte v besedilo e-pošte."
+  },
+  "tags.params": {
+    "message": "Doda se lahko seznam parametrov, ločenih z vejicami, da spremenite rezultat."
+  },
+  "tags.plaintext": {
+    "message": "Vstavi seznam e-poštnih oznak kot običajno besedilo, ločeno z vejicami."
+  },
+  "tags.presets": {
+    "message": "Prednastavitve postavitve"
+  },
+  "tags.presets.intro": {
+    "message": "Seznam vnaprej ustvarjenih stilov za prikaz oznak na grafičen način."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Koristna prednastavitev za uporabo na temnih ozadjih."
+  },
+  "tags.transform": {
+    "message": "Neobvezni parametri za preoblikovanje besedila oznake."
+  },
   "testDriveS": {
     "message": "Preskusno vožnjo lahko opravite s standardno licenco, vendar so lahko rahlo omejeni."
   },

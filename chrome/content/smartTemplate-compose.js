@@ -1718,7 +1718,7 @@ SmartTemplate4.classSmartTemplate = function() {
 								
 								let scrollFlags = selCtrl.SCROLL_FOR_CARET_MOVE | selCtrl.SCROLL_OVERFLOW_HIDDEN,
 										cursorParent = caretContainer.parentNode; // usually a <p>
-                // =========== FORCE CURSOR IN <PARA> ==================================== [[[[
+                // =========== FORCE CURSOR IN <PARA> ==================================== >>>>
 								if (prefs.getMyBoolPref('forceParagraph') && cursorParent.tagName=='DIV' || cursorParent.tagName=='BODY') {
 									try {
 										// refind the caret Container.
@@ -1799,7 +1799,7 @@ SmartTemplate4.classSmartTemplate = function() {
 									}
 								}
 								window.updateCommands('style');
-                // =========== FORCE CURSOR IN <PARA> ==================================== ]]]]
+                // =========== FORCE CURSOR IN <PARA> ==================================== <<<<
 							}
 							catch (ex) {
 								util.logException("forceParagraph failed.", ex);

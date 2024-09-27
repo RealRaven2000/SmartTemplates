@@ -1781,6 +1781,50 @@
   "table_reply.label": {
     "message": "Responder"
   },
+  "tags.cap": {
+    "message": "Tags de Email"
+  },
+  "tags.clipboard": {
+    "message": "Copia os resultados para a área de transferência em vez de inseri-los no email."
+  },
+  "tags.delimiter": {
+    "message": "Uma string para colocar entre as tags listadas. Apenas mostrado com 2 ou mais tags. Para usar uma vírgula, você deve precedê-la com uma barra invertida assim: "
+  },
+  "tags.fontSize": {
+    "message": "Altera o tamanho da fonte do rótulo. Pode ser um valor numérico decimal simples como 0.8, 1.0, 1.2 ou um valor CSS completo com unidade, como 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Fragmento HTML personalizado para formatar cada tag. Use $label$ e $color$ para inserir o texto ou o valor da cor (hexadecimal) de uma tag.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Esta variável pode inserir as tags de email da resposta e do email encaminhado no texto do email."
+  },
+  "tags.params": {
+    "message": "Uma lista separada por vírgulas de parâmetros pode ser adicionada para modificar a saída."
+  },
+  "tags.plaintext": {
+    "message": "Insere a lista de tags de email em texto simples, separadas por vírgulas."
+  },
+  "tags.presets": {
+    "message": "Predefinições de layout"
+  },
+  "tags.presets.intro": {
+    "message": "Uma lista de estilos pré-criados para exibir tags de forma gráfica."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Uma predefinição útil para uso em fundos escuros."
+  },
+  "tags.transform": {
+    "message": "Parâmetros opcionais para transformar o texto da tag."
+  },
   "testDriveS": {
     "message": "Você pode testar os recursos premium com a licença padrão, mas eles podem ser um pouco restritos."
   },

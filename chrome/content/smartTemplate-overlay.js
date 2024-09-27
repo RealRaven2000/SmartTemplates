@@ -1815,7 +1815,7 @@ SmartTemplate4.mimeDecoder = {
         if (element.transform && part) {
 					let fA = ["dummy", element.transform].join(",");
 					let formatter = SmartTemplate4.Util.initFormatter(fA);
-					part = SmartTemplate4.Util.formatString(part, formatter);
+					part = SmartTemplate4.Util.transformString(part, formatter);
         }        
         if (element.modifier =='linkTo') {
           part = "<a href=mailto:" + emailAddress + ">" + part + "</a>"; // mailto
@@ -1997,7 +1997,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
           }
           // retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
         }
-        replaceGroupString = util.formatString(replaceGroupString, formatter);
+        replaceGroupString = util.transformString(replaceGroupString, formatter);
         if (isClipboardPart) {
           util.clipboardWrite(replaceGroupString); // [issue 187]
           if (!replaceGroupString) {
@@ -2564,13 +2564,25 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             }
           }
         }
+        if (isReserved) try { // take care of special [[ optional Parts ]] which are not address headers
+                              // this uses a basic form such as %tags% without parameters to see whether 
+                              // data is returned. If no data is returned, return an empty string.
+          switch(reservedWord) {
+            case "tags":
+              const res = hdr.get(reservedWord);
+              if (composeType!='new' && res.length==0) { // no tags defined. But allow resolving later with new mails
+                str = "";
+              }
+          }
+        } catch(ex) {
+          ;
+        }
 				let s = (isReserved) ? str
 					      : (addressHdr != "") ? str : ""; // check if header exists / is empty. this is for [[optional parts]]
 				if (!el) {
 					// util.logDebug('Removing non-reserved word: %' +  reservedWord + '%');
           util.logToConsole('Ignore unknown variable: %' +  reservedWord + '%')
-        }
-				else { // it's a reserved word, likely a header
+        } else { // it's a reserved word, likely a header
 					if (prefs.isDebugOption("tokens.deferred")) debugger;
 					if (typeof s =='undefined' || (s=="" && composeType=='new') || paramArray.includes("fwd")) {
 						// if we are writing a NEW mail, we should insert some placeholders for resolving later.
@@ -2580,9 +2592,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 						// use pink fields for new emails for the New Mail case - this var can not be used in...
 						if (!isReserved && util.checkIsURLencoded(str)) { // unknown header? make sure it is not an URL encoded thing
 							s = str;
-						}
-						else
+						} else {
 							s = await util.wrapDeferredHeader(str, el, gMsgCompose.composeHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
+            }
 						util.logDebugOptional("tokens.deferred",'classifyReservedWord - wrapped missing header:\n' + s);
 					}
 				}
@@ -2897,7 +2909,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 											}
 										} 
 									}		
-                  return util.formatString(result[group], formatter);							
+                  return util.transformString(result[group], formatter);							
 								}
 								else
 									removePat = true;
@@ -3751,54 +3763,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           if (token.startsWith("tags")) { // [issue 320]
             // test.
             // const messageid = SmartTemplate4.MessageHdr.get("message-id");
-            debugger;
             const tags = SmartTemplate4.MessageHdr.get("tags");
-            const tagLabels = tags.map((t) => t.label);
-            const tagColors = tags.map((t) => t.color);
             switch (token) {
               case "tags":
-                let results;
-                let formatString = "", delimiter = ", ";
-                let newArgs = args;
-                for (let i=0; i<args.length; i++) {
-                  if (args[i].startsWith("delimiter") || args[i].startsWith("format")) {
-                    newArgs = util.combineEscapedParams(newArgs, i); // fix escaped comma in argument
-                  }
-                }
-                for (let f of newArgs) {
-                  // format = "some string containing one or multiple of $label$ amd $color$ "
-                  if (f.startsWith("format")) {
-                    formatString = util.parseValueArgument(f);
-                  }
-                  if (f.startsWith("delimiter")) {
-                    delimiter = util.parseValueArgument(f);
-                  }
-                  if (f == "color") {
-                    // a handy formatting preset
-                    formatString = `<span style="color:$color$; border: 1px solid $color$;border-radius: 0.2em; padding: 0.05em 0.1em;">$label$</span>`;
-                  }
-                }
-                if (!formatString) {
-                  formatString = "$label$";
-                }
-
-                const labelAtoms = [];
-                for (let t of tags) {
-                  const tagPart = formatString.replaceAll(
-                    "$color$",
-                    t.color
-                  ).replaceAll(
-                    "$label$", 
-                    t.label
-                  );
-                  labelAtoms.push(tagPart);
-                }
-                results = labelAtoms.join(delimiter); // concat a string
-                if (newArgs.includes("toclipboard")) {
-                  util.clipboardWrite(results);
-                  return "";
-                }
-                return results;
+                return util.tagsFormatter(args, tags);
               case "tags.add":
                 return "";
               case "tags.remove":

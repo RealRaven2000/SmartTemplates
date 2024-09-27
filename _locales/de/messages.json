@@ -1748,6 +1748,50 @@
   "table_reply.label": {
     "message": "Antworten"
   },
+  "tags.cap": {
+    "message": "Mail-Tags"
+  },
+  "tags.clipboard": {
+    "message": "Kopiert die Ergebnisse in die Zwischenablage anstatt sie in die E-Mail einzufügen."
+  },
+  "tags.delimiter": {
+    "message": "Eine Zeichenkette, die zwischen den aufgelisteten Tags platziert wird. Wird nur angezeigt, wenn es 2 oder mehr Tags gibt. Um ein Komma zu verwenden, müssen Sie es mit einem Rückstrich wie folgt voranstellen: "
+  },
+  "tags.fontSize": {
+    "message": "Ändert die Schriftgröße des Labels. Entweder ein einfacher dezimaler Zahlenwert wie 0.8, 1.0, 1.2 oder ein vollständiger CSS-Wert mit Einheit wie 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Benutzerdefiniertes HTML-Snippet zum Formatieren jedes Tags. Verwenden Sie $label$ und $color$, um den Text oder den (hexadezimalen) Farbwert eines Tags einzufügen.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Diese Variable kann die Mail-Tags (Schlagworte) der beantworteten und weitergeleiteten E-Mails in den E-Mail-Text einfügen."
+  },
+  "tags.params": {
+    "message": "Eine durch Kommas getrennte Liste von Parametern kann hinzugefügt werden, um die Ausgabe zu ändern."
+  },
+  "tags.plaintext": {
+    "message": "Fügt die Liste der Mail-Tags im Klartext ein, getrennt durch Kommas."
+  },
+  "tags.presets": {
+    "message": "Layout-Voreinstellungen"
+  },
+  "tags.presets.intro": {
+    "message": "Eine Liste vordefinierter Stile zur grafischen Darstellung von Tags."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Eine nützliche Voreinstellung für die Verwendung auf dunklen Hintergründen."
+  },
+  "tags.transform": {
+    "message": "Optionale Parameter zum Transformieren des Tag-Textes."
+  },
   "testDriveS": {
     "message": "Premium Funktionen können in der Standardlizenz getestet werden, in manchen Fällen mit eingeschränktem Funktionsumfang."
   },

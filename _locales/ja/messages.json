@@ -1778,6 +1778,50 @@
   "table_reply.label": {
     "message": "返信"
   },
+  "tags.cap": {
+    "message": "メールタグ"
+  },
+  "tags.clipboard": {
+    "message": "結果をメールに挿入する代わりにクリップボードにコピーします。"
+  },
+  "tags.delimiter": {
+    "message": "リストされたタグの間に挿入される文字列。タグが2つ以上の場合のみ表示されます。カンマを使用するには、次のようにバックスラッシュを前に付ける必要があります: "
+  },
+  "tags.fontSize": {
+    "message": "ラベルのフォントサイズを変更します。 0.8、1.0、1.2などの単純な小数値、または100px、0.6em、14ptなどの単位を含む完全なCSS値を使用します。"
+  },
+  "tags.formatString": {
+    "message": "各タグをフォーマットするためのカスタムHTMLスニペット。タグのテキストやカラー値（16進数）を挿入するには、$label$と$color$を使用します。",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "この変数は、返信や転送されたメールのタグをメール本文に挿入できます。"
+  },
+  "tags.params": {
+    "message": "カンマ区切りのパラメータのリストを追加して出力を変更できます。"
+  },
+  "tags.plaintext": {
+    "message": "カンマで区切られたプレーンテキストのメールタグリストを挿入します。"
+  },
+  "tags.presets": {
+    "message": "レイアウトのプリセット"
+  },
+  "tags.presets.intro": {
+    "message": "タグをグラフィカルに表示するための事前作成されたスタイルのリスト。"
+  },
+  "tags.preset.darkFilled": {
+    "message": "ダーク背景で使用するための便利なプリセットです。"
+  },
+  "tags.transform": {
+    "message": "タグテキストを変換するためのオプションのパラメータ。"
+  },
   "testDriveS": {
     "message": "Standard ライセンスでは、プレミアム機能を試しに使うことができますが、一部の機能が制限されています。"
   },

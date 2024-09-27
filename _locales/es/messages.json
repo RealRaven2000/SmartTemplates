@@ -1757,6 +1757,50 @@
   "table_reply.label": {
     "message": "Responder"
   },
+  "tags.cap": {
+    "message": "Etiquetas de correo"
+  },
+  "tags.clipboard": {
+    "message": "Copia los resultados en el portapapeles en lugar de insertarlos en el correo electrónico."
+  },
+  "tags.delimiter": {
+    "message": "Una cadena para colocar entre las etiquetas listadas. Solo se muestra con 2 o más etiquetas. Para usar una coma, debes anteponerle una barra invertida de esta forma: "
+  },
+  "tags.fontSize": {
+    "message": "Cambia el tamaño de la fuente de la etiqueta. Puede ser un valor decimal simple como 0.8, 1.0, 1.2 o un valor css completo con unidad como 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Fragmento html personalizado para dar formato a cada etiqueta. Usa $label$ y $color$ para insertar el texto o el valor de color (hexadecimal) de una etiqueta.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Esta variable puede insertar las etiquetas de correo del mensaje respondido o reenviado en el texto del correo."
+  },
+  "tags.params": {
+    "message": "Se puede agregar una lista de parámetros delimitados por comas para modificar la salida."
+  },
+  "tags.plaintext": {
+    "message": "Inserta la lista de etiquetas de correo en texto plano, separadas por comas."
+  },
+  "tags.presets": {
+    "message": "Preajustes de diseño"
+  },
+  "tags.presets.intro": {
+    "message": "Una lista de estilos pre-creados para mostrar las etiquetas de manera gráfica."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Un preajuste útil para usar en fondos oscuros."
+  },
+  "tags.transform": {
+    "message": "Parámetros opcionales para transformar el texto de la etiqueta."
+  },
   "testDriveS": {
     "message": "Puede probar las funciones premium con la licencia estándar, pero pueden estar ligeramente restringidas."
   },

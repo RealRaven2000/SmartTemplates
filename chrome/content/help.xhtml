@@ -289,6 +289,7 @@
 				<li class="paramList"><span class="paramLiteral">selection</span> = __MSG_replaceText.selection__</li>
 			</ul>
 			<ul>
+				<a name="textTransform"> </a>
 			  <aside><li tabindex="-1"><span class="param">textTransform</span> = __MSG_stringmanip.textTransform__:</li></aside>
         <h4>textTransform __MSG_parameters__</h4>
         <li class="paramList"><span class="paramLiteral">lowercase</span> = __MSG_stringmanip.textTransform.lcase__</li>
@@ -325,6 +326,39 @@
 				<li><code>%deleteForwardedBody%</code> __MSG_deleteForwardedBody__</li>
         
       </ul>
+    </div>
+
+		<h1 class="helpchapter">__MSG_tags.cap__</h1>
+    <div class="chapterBody" tabindex="-1">
+			<ul>
+        <aside>__MSG_tags.intro__ <a href="https://smarttemplates.quickfolders.org/premium.html#tags" target="_blank">Read Docs</a>.</aside>
+
+				<code>%tags%</code>__MSG_tags.plaintext__<br/>
+				<code>%tags(<span class="param">optional parameters</span>)%</code>__MSG_tags.params__<br/>
+
+				<h4>__MSG_tags.presets__</h4>
+
+        <li class="paramList"><span class="paramLiteral">color</span> </li>
+        <li class="paramList"><span class="paramLiteral">color-filled</span> </li>
+        <li class="paramList"><span class="paramLiteral">filled</span> </li>
+        <li class="paramList"><span class="paramLiteral">dark-filled</span> __MSG_tags.preset.darkFilled__ </li>
+
+				<h4>__MSG_parameters__</h4>
+        <li class="paramList"><span class="paramLiteral">size=<i>fontSizeValue</i></span> __MSG_tags.fontSize__ </li>
+        <li class="paramList"><span class="paramLiteral">delimiter="<i>delimiterString</i>"</span> __MSG_tags.delimiter__ 
+					<span class="paramLiteral">\,</span></li>
+				<li class="paramList"><span class="paramLiteral">format="<i>formatString</i>"</span>
+					<span id="tagFormatString">__MSG_tags.formatString__</span>  </li>
+        <li class="paramList"><span class="paramLiteral">toclipboard</span> __MSG_tags.clipboard__</li>
+
+				<aside><li tabindex="-1">
+					<span class="paramLiteral">lowercase</span>
+					<span class="paramLiteral">uppercase</span>
+					<span class="paramLiteral">capitalize</span>
+					<span class="paramLiteral">camelcase</span> = __MSG_stringmanip.textTransform__ 
+					</li>
+			  </aside>
+			</ul>
     </div>
 
 			
@@ -632,6 +666,12 @@
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
+					<tr class="tr-keywords">
+						<td><code class="noWrite">%tags%</code></td>
+						<td><div class="no"></div></td>
+						<td><div class="yes"></div></td>
+						<td><div class="yes"></div></td>
+					</tr>					
 					<tr class="tr-keywords">
 						<td><code>%T%</code></td>
 						<td><div class="yes"></div></td>

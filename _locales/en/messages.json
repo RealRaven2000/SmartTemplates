@@ -1846,6 +1846,50 @@
   "table_reply.label": {
     "message": "Reply"
   },
+  "tags.cap": {
+    "message": "Mail Tags"
+  },
+  "tags.clipboard": {
+    "message": "Copies the results to the clipboard instead of inserting it into the email."
+  },
+  "tags.delimiter": {
+    "message": "A string to place between the listed tags. Only shown with 2 or more tags. To use a comma you must prefix it with a backslash like this: "
+  },
+  "tags.fontSize": {
+    "message": "Changes the font size of the label. Either a simple decimal numeric value such as 0.8, 1.0, 1.2 or a full css value with unit such as 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "custom html snippet to format each tag. Use $label$ and $color$ to insert the text or (hexadecimal) color value of a tag.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "This variable can insert the mail tags of the replied and forwarded mail into the email text. "
+  },
+  "tags.params": {
+    "message": "A comma delimited list of parameters can be added to modify the output."
+  },
+  "tags.plaintext": {
+    "message": "inserts the list of mail tags in plain text, separated by commas."
+  },
+  "tags.presets": {
+    "message": "Layout presets"
+  },
+  "tags.presets.intro": {
+    "message": "A list of pre-created styles to display tags in a graphical manner."
+  },
+  "tags.preset.darkFilled": {
+    "message": "A useful preset for use on dark backgrounds"
+  },
+  "tags.transform": {
+    "message": "Optional parameters for transforming the text of the tag."
+  },
   "testDriveS": {
     "message": "You can test drive the premium features with the standard license, but they may be slightly restricted."
   },

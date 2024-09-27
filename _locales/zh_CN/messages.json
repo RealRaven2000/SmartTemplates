@@ -1800,6 +1800,50 @@
   "table_reply.label": {
     "message": "回复"
   },
+  "tags.cap": {
+    "message": "邮件标签"
+  },
+  "tags.clipboard": {
+    "message": "将结果复制到剪贴板而不是插入到电子邮件中。"
+  },
+  "tags.delimiter": {
+    "message": "放置在列出标签之间的字符串。仅当有 2 个或更多标签时才显示。要使用逗号，必须在其前面加反斜杠，如下所示："
+  },
+  "tags.fontSize": {
+    "message": "更改标签的字体大小。可以是简单的小数值，例如 0.8、1.0、1.2 或带有单位的完整 CSS 值，例如 100px、0.6em、14pt。"
+  },
+  "tags.formatString": {
+    "message": "用于格式化每个标签的自定义 HTML 代码片段。使用 $label$ 和 $color$ 来插入标签的文本或（十六进制）颜色值。",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "此变量可以将回复邮件和转发邮件的标签插入到电子邮件文本中。"
+  },
+  "tags.params": {
+    "message": "可以添加逗号分隔的参数列表以修改输出。"
+  },
+  "tags.plaintext": {
+    "message": "以纯文本形式插入邮件标签列表，用逗号分隔。"
+  },
+  "tags.presets": {
+    "message": "布局预设"
+  },
+  "tags.presets.intro": {
+    "message": "预创建样式列表，以图形方式显示标签。"
+  },
+  "tags.preset.darkFilled": {
+    "message": "适用于深色背景的有用预设。"
+  },
+  "tags.transform": {
+    "message": "用于转换标签文本的可选参数。"
+  },
   "testDriveS": {
     "message": "您可以使用标准许可证测试高级功能，但可能会受到轻微限制。"
   },

@@ -1811,6 +1811,50 @@
   "table_reply.label": {
     "message": "Respondre"
   },
+  "tags.cap": {
+    "message": "Etiquetes de correu"
+  },
+  "tags.clipboard": {
+    "message": "Copia els resultats al porta-retalls en lloc d'inserir-los al correu electrònic."
+  },
+  "tags.delimiter": {
+    "message": "Una cadena per posar entre les etiquetes llistades. Només es mostra amb 2 o més etiquetes. Per utilitzar una coma, cal prefixar-la amb una barra invertida com aquesta: "
+  },
+  "tags.fontSize": {
+    "message": "Canvia la mida de la font de l'etiqueta. Pot ser un valor numèric decimal simple com 0.8, 1.0, 1.2 o un valor css complet amb unitat com 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Fragment html personalitzat per formatar cada etiqueta. Utilitza $label$ i $color$ per inserir el text o el valor de color (hexadecimal) d'una etiqueta.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Aquesta variable pot inserir les etiquetes de correu del correu electrònic respost o reenviat al text del correu electrònic."
+  },
+  "tags.params": {
+    "message": "Es pot afegir una llista de paràmetres delimitats per comes per modificar la sortida."
+  },
+  "tags.plaintext": {
+    "message": "Insereix la llista d'etiquetes de correu en text pla, separades per comes."
+  },
+  "tags.presets": {
+    "message": "Presentacions de disseny"
+  },
+  "tags.presets.intro": {
+    "message": "Una llista d'estils predefinits per mostrar etiquetes d'una manera gràfica."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Un estil predefinit útil per a fons foscos."
+  },
+  "tags.transform": {
+    "message": "Paràmetres opcionals per transformar el text de l'etiqueta."
+  },
   "testDriveS": {
     "message": "Podeu provar les funcions premium amb la llicència estàndard, però pot ser que estiguin lleugerament restringides."
   },

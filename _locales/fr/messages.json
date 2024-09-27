@@ -1805,6 +1805,50 @@
   "table_reply.label": {
     "message": "Répondre"
   },
+  "tags.cap": {
+    "message": "Étiquettes de courrier"
+  },
+  "tags.clipboard": {
+    "message": "Copie les résultats dans le presse-papiers au lieu de les insérer dans l'e-mail."
+  },
+  "tags.delimiter": {
+    "message": "Une chaîne à placer entre les étiquettes listées. Affichée uniquement avec 2 ou plusieurs étiquettes. Pour utiliser une virgule, vous devez la précéder d'une barre oblique inversée, comme ceci : "
+  },
+  "tags.fontSize": {
+    "message": "Modifie la taille de la police de l'étiquette. Soit une simple valeur décimale comme 0.8, 1.0, 1.2 ou une valeur CSS complète avec unité comme 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Fragment HTML personnalisé pour formater chaque étiquette. Utilisez $label$ et $color$ pour insérer le texte ou la valeur de couleur (hexadécimale) d'une étiquette.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Cette variable peut insérer les étiquettes de courrier des messages répondus et transférés dans le texte de l'e-mail."
+  },
+  "tags.params": {
+    "message": "Une liste de paramètres séparés par des virgules peut être ajoutée pour modifier la sortie."
+  },
+  "tags.plaintext": {
+    "message": "Insère la liste des étiquettes de courrier en texte brut, séparées par des virgules."
+  },
+  "tags.presets": {
+    "message": "Préréglages de mise en page"
+  },
+  "tags.presets.intro": {
+    "message": "Une liste de styles pré-créés pour afficher les étiquettes de manière graphique."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Un préréglage utile pour une utilisation sur des arrière-plans sombres."
+  },
+  "tags.transform": {
+    "message": "Paramètres optionnels pour transformer le texte de l'étiquette."
+  },
   "testDriveS": {
     "message": "Vous pouvez tester les fonctionnalités premium avec la licence standard, mais elles peuvent être légèrement limitées."
   },

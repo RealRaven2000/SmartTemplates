@@ -1802,6 +1802,50 @@
   "table_reply.label": {
     "message": "回覆"
   },
+  "tags.cap": {
+    "message": "郵件標籤"
+  },
+  "tags.clipboard": {
+    "message": "將結果複製到剪貼板而不是插入到電子郵件中。"
+  },
+  "tags.delimiter": {
+    "message": "放置在列出標籤之間的字串。僅當有 2 個或更多標籤時才顯示。要使用逗號，必須在其前面加反斜槓，如下所示："
+  },
+  "tags.fontSize": {
+    "message": "更改標籤的字體大小。可以是簡單的小數值，例如 0.8、1.0、1.2 或帶有單位的完整 CSS 值，例如 100px、0.6em、14pt。"
+  },
+  "tags.formatString": {
+    "message": "用於格式化每個標籤的自訂 HTML 代碼片段。使用 $label$ 和 $color$ 來插入標籤的文字或（十六進位）顏色值。",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "此變數可以將回覆郵件和轉寄郵件的標籤插入到電子郵件文字中。"
+  },
+  "tags.params": {
+    "message": "可以添加逗號分隔的參數列表以修改輸出。"
+  },
+  "tags.plaintext": {
+    "message": "以純文字形式插入郵件標籤列表，用逗號分隔。"
+  },
+  "tags.presets": {
+    "message": "佈局預設"
+  },
+  "tags.presets.intro": {
+    "message": "預創建樣式列表，以圖形方式顯示標籤。"
+  },
+  "tags.preset.darkFilled": {
+    "message": "適用於深色背景的有用預設。"
+  },
+  "tags.transform": {
+    "message": "用於轉換標籤文字的可選參數。"
+  },
   "testDriveS": {
     "message": "您可以使用標准許可證測試高級功能，但可能會受到輕微限制。"
   },

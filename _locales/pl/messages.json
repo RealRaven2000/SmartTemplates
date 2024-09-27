@@ -1801,6 +1801,51 @@
   "table_reply.label": {
     "message": "Odpowiedz"
   },
+  "tags.cap": {
+    "message": "Tagi poczty"
+  },
+  "tags.clipboard": {
+    "message": "Kopiuje wyniki do schowka zamiast wstawiać je do wiadomości e-mail."
+  },
+  "tags.delimiter": {
+    "message": "Ciąg znaków umieszczany pomiędzy wylistowanymi tagami. Pokazywany tylko w przypadku 2 lub więcej tagów. Aby użyć przecinka, musisz poprzedzić go ukośnikiem wstecznym, w ten sposób: "
+  },
+  "tags.fontSize": {
+    "message": "Zmienia rozmiar czcionki etykiety. Może to być prosta dziesiętna wartość, taka jak 0,8, 1,0, 1,2, lub pełna wartość CSS z jednostką, np. 100px, 0,6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Własny fragment HTML do formatowania każdego taga. Użyj $label$ i $color$, aby wstawić tekst lub (szesnastkową) wartość koloru taga.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Ta zmienna może wstawić tagi wiadomości odpowiedzi i przekazanej wiadomości do tekstu e-maila."
+  },
+  "tags.params": {
+    "message": "Można dodać listę parametrów oddzielonych przecinkami, aby zmodyfikować wynik."
+  },
+  "tags.plaintext": {
+    "message": "Wstawia listę tagów wiadomości w formacie zwykłego tekstu, oddzielone przecinkami."
+  },
+  "tags.presets": {
+    "message": "Ustawienia układu"
+  },
+  "tags.presets.intro": {
+    "message": "Lista wstępnie utworzonych stylów do graficznego wyświetlania tagów."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Przydatne ustawienie do użycia na ciemnych tłach."
+  },
+  "tags.transform": {
+    "message": "Opcjonalne parametry do przekształcania tekstu taga."
+  },
+
   "testDriveS": {
     "message": "Możesz przetestować funkcje premium za pomocą standardowej licencji, ale mogą one być nieco ograniczone."
   },

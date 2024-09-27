@@ -1240,6 +1240,42 @@
   "table_reply.label": {
     "message": "Balas"
   },
+  "tags.cap": {
+    "message": "Label Surat"
+  },
+  "tags.clipboard": {
+    "message": "Menyalin hasil ke papan klip daripada memasukkannya ke dalam email."
+  },
+  "tags.delimiter": {
+    "message": "Sebuah string untuk ditempatkan di antara label yang tercantum. Hanya ditampilkan dengan 2 atau lebih label. Untuk menggunakan koma, Anda harus menambahkannya dengan garis miring terbalik seperti ini: "
+  },
+  "tags.fontSize": {
+    "message": "Mengubah ukuran font label. Bisa berupa nilai desimal sederhana seperti 0.8, 1.0, 1.2 atau nilai css penuh dengan satuan seperti 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Potongan html khusus untuk memformat setiap label. Gunakan $label$ dan $color$ untuk memasukkan teks atau nilai warna (heksadesimal) label."
+  },
+  "tags.intro": {
+    "message": "Variabel ini dapat memasukkan label surat dari email yang dibalas dan diteruskan ke dalam teks email."
+  },
+  "tags.params": {
+    "message": "Daftar parameter yang dipisahkan koma dapat ditambahkan untuk memodifikasi hasil keluaran."
+  },
+  "tags.plaintext": {
+    "message": "Menyisipkan daftar label surat dalam teks biasa, dipisahkan dengan koma."
+  },
+  "tags.presets": {
+    "message": "Prasetel Tata Letak"
+  },
+  "tags.presets.intro": {
+    "message": "Daftar gaya yang sudah dibuat sebelumnya untuk menampilkan label secara grafis."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Prasetel berguna untuk digunakan pada latar belakang gelap."
+  },
+  "tags.transform": {
+    "message": "Parameter opsional untuk mengubah teks label."
+  },
   "template.category": {
     "message": "Kategori"
   },

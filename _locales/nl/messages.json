@@ -262,7 +262,7 @@
   "datetz.label": {
     "message": "Tijdzone (+0100, +0200, …)"
   },
-"day.1.name": {
+  "day.1.name": {
     "message": "zondag"
   },
   "day.1.short": {
@@ -1786,6 +1786,50 @@
   },
   "table_reply.label": {
     "message": "Beantwoorden"
+  },
+  "tags.cap": {
+    "message": "Mailtags"
+  },
+  "tags.clipboard": {
+    "message": "Kopieert de resultaten naar het klembord in plaats van ze in de e-mail in te voegen."
+  },
+  "tags.delimiter": {
+    "message": "Een tekenreeks om tussen de opgesomde tags te plaatsen. Alleen weergegeven bij 2 of meer tags. Om een komma te gebruiken, moet u er een backslash voor zetten, zoals dit: "
+  },
+  "tags.fontSize": {
+    "message": "Wijzigt de lettergrootte van het label. Dit kan een eenvoudige decimale waarde zijn, zoals 0.8, 1.0, 1.2, of een volledige CSS-waarde met een eenheid zoals 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Aangepast HTML-fragment om elke tag op te maken. Gebruik $label$ en $color$ om de tekst of (hexadecimale) kleurwaarde van een tag in te voegen.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Deze variabele kan de mailtags van het antwoord of doorgestuurde mail invoegen in de e-mailtekst."
+  },
+  "tags.params": {
+    "message": "Een door komma's gescheiden lijst met parameters kan worden toegevoegd om de uitvoer te wijzigen."
+  },
+  "tags.plaintext": {
+    "message": "Voegt de lijst met mailtags in platte tekst in, gescheiden door komma's."
+  },
+  "tags.presets": {
+    "message": "Lay-outvoorkeuren"
+  },
+  "tags.presets.intro": {
+    "message": "Een lijst met vooraf gemaakte stijlen om tags op een grafische manier weer te geven."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Een nuttige preset voor gebruik op donkere achtergronden."
+  },
+  "tags.transform": {
+    "message": "Optionele parameters voor het transformeren van de tekst van de tag."
   },
   "testDriveS": {
     "message": "U kunt de premiumfuncties met een standaardlicentie uitproberen, maar ze zijn mogelijk enigszins beperkt."

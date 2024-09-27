@@ -1754,6 +1754,50 @@
   "table_reply.label": {
     "message": "Risposta"
   },
+  "tags.cap": {
+    "message": "Etichette Email"
+  },
+  "tags.clipboard": {
+    "message": "Copia i risultati negli appunti invece di inserirli nell'email."
+  },
+  "tags.delimiter": {
+    "message": "Una stringa da posizionare tra le etichette elencate. Visualizzata solo con 2 o più etichette. Per usare una virgola, devi anteporre una barra inversa come segue: "
+  },
+  "tags.fontSize": {
+    "message": "Modifica la dimensione del carattere dell'etichetta. Può essere un valore numerico decimale semplice come 0.8, 1.0, 1.2 o un valore css completo con unità come 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Frammento HTML personalizzato per formattare ogni etichetta. Usa $label$ e $color$ per inserire il testo o il valore del colore (esadecimale) di un'etichetta.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Questa variabile può inserire le etichette delle email risposte e inoltrate nel testo dell'email."
+  },
+  "tags.params": {
+    "message": "Può essere aggiunto un elenco di parametri separati da virgole per modificare l'output."
+  },
+  "tags.plaintext": {
+    "message": "Inserisce l'elenco delle etichette delle email come testo normale, separate da virgole."
+  },
+  "tags.presets": {
+    "message": "Preimpostazioni di layout"
+  },
+  "tags.presets.intro": {
+    "message": "Un elenco di stili pre-creati per visualizzare le etichette in modo grafico."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Una preimpostazione utile per l'uso su sfondi scuri."
+  },
+  "tags.transform": {
+    "message": "Parametri opzionali per trasformare il testo dell'etichetta."
+  },
   "testDriveS": {
     "message": "È possibile testare le caratteristiche 'Premium' sottoscrivendo la licenza 'standard', con delle piccole restrizioni."
   },

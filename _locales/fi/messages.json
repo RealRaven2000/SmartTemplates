@@ -1804,6 +1804,42 @@
   "table_reply.label": {
     "message": "Vastaa"
   },
+  "tags.cap": {
+    "message": "Sähköpostin tunnisteet"
+  },
+  "tags.clipboard": {
+    "message": "Kopioi tulokset leikepöydälle sen sijaan, että liittäisi ne sähköpostiin."
+  },
+  "tags.delimiter": {
+    "message": "Merkkijono, joka asetetaan lueteltujen tunnisteiden väliin. Näytetään vain kahden tai useamman tunnisteen kanssa. Jos haluat käyttää pilkkua, sinun on lisättävä sen eteen kenoviiva, kuten näin: "
+  },
+  "tags.fontSize": {
+    "message": "Muuttaa tunnisteen fonttikokoa. Voi olla yksinkertainen desimaaliarvo, kuten 0.8, 1.0, 1.2, tai täydellinen CSS-arvo yksikköineen, kuten 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Mukautettu html-katkelma kunkin tunnisteen muotoiluun. Käytä $label$ ja $color$ lisätäksesi tunnisteen tekstin tai (heksadesimaalisen) värin."
+  },
+  "tags.intro": {
+    "message": "Tämä muuttuja voi lisätä vastatun ja edelleenlähetetyn sähköpostin tunnisteet sähköpostin tekstiin."
+  },
+  "tags.params": {
+    "message": "Voit lisätä pilkuilla erotellun parametriluettelon muokataksesi ulostuloa."
+  },
+  "tags.plaintext": {
+    "message": "Lisää tunnisteiden luettelon pelkkänä tekstinä, pilkuilla erotettuna."
+  },
+  "tags.presets": {
+    "message": "Asettelun esiasetukset"
+  },
+  "tags.presets.intro": {
+    "message": "Lista valmiiksi luotuja tyylejä tunnisteiden graafiseen esittämiseen."
+  },
+  "tags.preset.darkFilled": {
+    "message": "Hyödyllinen esiasetus käytettäväksi tummilla taustoilla."
+  },
+  "tags.transform": {
+    "message": "Valinnaiset parametrit tunnisteen tekstin muuntamiseksi."
+  },
   "testDriveS": {
     "message": "Voit testata premium-ominaisuuksia tavallisella lisenssillä, mutta ne voivat olla hieman rajoitettuja."
   },

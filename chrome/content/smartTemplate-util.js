@@ -1882,7 +1882,7 @@ SmartTemplate4.Util = {
 				// find out if there is a transformation character
 				// and remove it
 				for (let i = 0; i<args.length; i++) {
-					if (util.isFormatString(args[i])) {
+					if (util.isTransformString(args[i])) {
 						formatter = util.initFormatter(args.join(","));
 						args = args.splice(i, 1);
 						break;
@@ -1965,7 +1965,7 @@ SmartTemplate4.Util = {
 					.replace('##p', hour < 12 ? "AM" : "PM")
 
 			if (formatter) {
-				timeString = util.formatString(timeString, formatter);
+				timeString = util.transformString(timeString, formatter);
 			}
 					
 					
@@ -2550,7 +2550,7 @@ SmartTemplate4.Util = {
 				// format all previous results only!
 				// example %recipient(firstname,lastname,capitalize,mail)%
 				// this will capitalize the name portions but leave the mail alone
-				if (this.isFormatString(ff)) {
+				if (this.isTransformString(ff)) {
 					// if a previous element was already transformed, do not change it again.
 					// this way we can do (firstname,lowercase,lastname,uppercase)
 					for (let j = lastTransformed+1; j<formatArray.length; j++) {
@@ -3112,18 +3112,16 @@ SmartTemplate4.Util = {
   replaceAsync: async function(string, searchValue, replacer) {
     try {
 			if (typeof replacer === "function") {
-				let  values = [];
+				const values = [];
 				string.replace(searchValue, function () {
 					values.push(arguments); // store the regexp split
 					return ""; // this is a fake pass, we do not replace anything here
 				});
-				let resolvedValues = [];
+				const resolvedValues = [];
 				for (let args of values) {
 					resolvedValues.push(await replacer(...args));
 				}
-				return string.replace(searchValue, function () {
-					return resolvedValues.shift();
-				});
+				return string.replace(searchValue, () => resolvedValues.shift());
 			} else { // if a string is passed.
         return Promise.resolve(
           String.prototype.replace.call(string, searchValue, replacer)
@@ -3160,12 +3158,12 @@ SmartTemplate4.Util = {
 		return formatter;
 	},
 
-	isFormatString: function(argString) {
+	isTransformString: function(argString) {
 		if (!argString) return false;
 		return ["capitalize","camelcase","uppercase","lowercase","default"].includes(argString);
 	},
 
-  formatString: function (txt, formatter) {
+  transformString: function (txt, formatter) {
 		// [issue 288]
     if (!formatter) return txt;
     if (formatter?.isUppercase) return txt.toUpperCase();
@@ -3191,7 +3189,8 @@ SmartTemplate4.Util = {
 
 	get isSale() {
     const currentTime = new Date();
-    const isSale = (currentTime <= SmartTemplates_Discounts.sales_end);
+		const endDate = new Date(SmartTemplates_Discounts.sales_end.getTime() + 86400000);		
+    const isSale = currentTime < endDate;
 		return isSale;
 	},
 
@@ -3269,6 +3268,100 @@ SmartTemplate4.Util = {
 			return paramArg;
 		}
 		return paramString;
+	} ,
+
+	tagsFormatter: function(args, tags) {
+		function parseFormatPreset(f) {
+			const isPreset = ["color", "color-filled", "filled", "dark-filled"].includes(f);
+			if (!isPreset) return "";
+			SmartTemplate4.Util.logDebug(`tagsFormatter() detected formatting preset: ${f}`)
+			switch (f) {
+        case "color":
+          return "color:$color$; border:1px solid $color$; border-radius:0.2em; padding:0.05em 0.2em;";
+        case "color-filled":
+          return "background-color:$color$; color:white; border-radius:0.2em; padding:0.05em 0.2em;";
+        case "filled": // should probably use the current text color. but what if we have dark background?
+          return "background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em;";
+        case "dark-filled": // with dark backgrounds, let's fill with white
+          return "background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em;";
+      }
+			return "";
+		}
+		let formatter, results;
+		let formatString = "", styleRules = "", delimiter = ", ";
+		let newArgs = args;
+		let isExplicitSize = false;
+		let isFormatPreset = false;
+		this.logHighlightDebug("tagsFormatter()", "yellow", "darkblue", args);
+		const tagLabels = tags.map((t) => t.label);
+    const tagColors = tags.map((t) => t.color);
+		for (let i = 0; i < args.length; i++) {
+			if (args[i].startsWith("delimiter") || args[i].startsWith("format")) {
+				newArgs = this.combineEscapedParams(newArgs, i); // fix escaped comma in argument
+			}
+		}
+
+		for (let f of newArgs) {
+			// format = "some string containing one or multiple of $label$ amd $color$ "
+			if (f.startsWith("format")) {
+				formatString = this.parseValueArgument(f);
+			}
+			if (f.startsWith("delimiter")) {
+				delimiter = this.parseValueArgument(f);
+			}
+			if (f.startsWith("size")) { // font-size
+				isExplicitSize = true;
+				let sizeArg = this.parseValueArgument(f);
+				let reg = new RegExp(/^[\d\.]+$/); // test for decimal numbers only (not followed by any units)
+				let effectiveSize = sizeArg;
+				if (reg.test(sizeArg.trim())) { // if no unit is given, we assume an em factor.
+					effectiveSize = `${sizeArg}em`;
+				} 
+				this.logDebug(`tagsFormatter() detected size param: ${effectiveSize}`);
+				styleRules += ` font-size:${effectiveSize}`;
+			}
+			// formatting presets
+			const pF = parseFormatPreset(f);
+			if (pF) {
+        isFormatPreset = true;
+				styleRules += pF;
+			}
+		}
+		if (styleRules && isFormatPreset && !isExplicitSize) {
+			//set a smaller default size for "styled" presets
+      styleRules += ` font-size:0.8em`;
+    }
+		if (!formatString) {
+			if (!styleRules) {
+				formatString = "$label$";
+			} else {
+				formatString = `<span style='${styleRules}'>$label$</span>`;
+			}
+		}
+
+		for (let i = 0; i < args.length; i++) {
+			if (this.isTransformString(args[i])) {
+				this.logDebug(`tagsFormatter() detected text transformation param: ${args[i]}`);
+				formatter = this.initFormatter(args.join(","));
+				args = args.splice(i, 1);
+				break;
+			}
+		}
+
+		const labelAtoms = [];
+		for (let t of tags) {
+			const lbl = formatter ? this.transformString(t.label, formatter) : t.label;
+			const tagPart = formatString
+				.replaceAll("$color$", t.color)
+				.replaceAll("$label$", lbl);
+			labelAtoms.push(tagPart);
+		}
+		results = labelAtoms.join(delimiter); // concat a string
+		if (newArgs.includes("toclipboard")) {
+			this.clipboardWrite(results);
+			return "";
+		}
+		return results;
 	}
 
 };  // ST4.Util

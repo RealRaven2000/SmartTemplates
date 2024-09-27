@@ -1832,6 +1832,50 @@
   "table_reply.label": {
     "message": "Svara"
   },
+  "tags.cap": {
+    "message": "E-posttaggar"
+  },
+  "tags.clipboard": {
+    "message": "Kopierar resultaten till urklipp istället för att infoga dem i e-postmeddelandet."
+  },
+  "tags.delimiter": {
+    "message": "En sträng att placera mellan de listade taggarna. Visas endast med 2 eller fler taggar. För att använda ett kommatecken måste du föregå det med ett omvänt snedstreck så här: "
+  },
+  "tags.fontSize": {
+    "message": "Ändrar storleken på etikettens teckensnitt. Antingen ett enkelt decimalt numeriskt värde som 0.8, 1.0, 1.2 eller ett fullständigt CSS-värde med enhet, såsom 100px, 0.6em, 14pt."
+  },
+  "tags.formatString": {
+    "message": "Anpassat HTML-fragment för att formatera varje tagg. Använd $label$ och $color$ för att infoga texten eller (hexadecimalt) färgvärde för en tagg.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
+  },
+  "tags.intro": {
+    "message": "Den här variabeln kan infoga e-posttaggar från det besvarade eller vidarebefordrade e-postmeddelandet i e-posttexten."
+  },
+  "tags.params": {
+    "message": "En kommaseparerad lista med parametrar kan läggas till för att ändra utdata."
+  },
+  "tags.plaintext": {
+    "message": "Infogar listan över e-posttaggar i oformaterad text, separerade med kommatecken."
+  },
+  "tags.presets": {
+    "message": "Layoutförinställningar"
+  },
+  "tags.presets.intro": {
+    "message": "En lista med förskapade stilar för att visa taggar på ett grafiskt sätt."
+  },
+  "tags.preset.darkFilled": {
+    "message": "En användbar förinställning för användning på mörka bakgrunder."
+  },
+  "tags.transform": {
+    "message": "Valfria parametrar för att omvandla taggens text."
+  },
   "testDriveS": {
     "message": "Du kan provköra premiumfunktionerna med standardlicensen, men de kan vara något begränsade."
   },
