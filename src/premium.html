@@ -690,9 +690,6 @@ permalink: premium.html
 [[ %tags(filled,lowercase,delimiter=" - ")% &lt;br&gt;]]  
 </pre>
 
-
-
-
 <p>
   <em>formatString</em> 
     This is designed as either plain text or html snippet and can contain single 
@@ -704,9 +701,9 @@ permalink: premium.html
    <span class="paramLiteral">$label$</span> placeholder for the tag text <br>
    <span class="paramLiteral">$color$</span> 6 digit hex value of the mail tag's color
 </p>
-<h4>Example</h4>
 
-<table class="codeTable"></table>
+
+<table class="codeTable">
   <tr>
     <td>%tags%</td>
     <td>Important, To Do, all new Taggy, Custom-1</td>
@@ -762,7 +759,7 @@ style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 
     </td>
   </tr>					
   <tr>
-    <td colspan="2">%tags(format="&lt;span style='background-color:$color$; color:white; border-radius:0.7em; padding-inline:0.5em'&gt; ↦$label$ &lt;/span&gt;")%</td>
+    <td colspan="2">%tags(format="&lt;span style='background-color:$color$; color:white; border-radius:0.7em; padding-inline:1em'&gt; ↦$label$ &lt;/span&gt;")%</td>
   </tr>					
   <tr>
     <td colspan="2"><span
@@ -772,13 +769,9 @@ style="background-color:#3333FF;color:white;border-radius:0.7em;padding-inline:0
 Do</span>, <span
 style="background-color:#0c6283;color:white;border-radius:0.7em;padding-inline:0.5em">↦all
 new Taggy</span>, <span
-style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0.5em">↦Custom-1</span></td>
+style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:1em">↦Custom-1</span></td>
   </tr>					
 </table>
-
-  
-
-
 
 
 
