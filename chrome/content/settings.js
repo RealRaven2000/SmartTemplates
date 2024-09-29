@@ -623,7 +623,7 @@ SmartTemplate4.Settings = {
 	} ,
 	
 	loadTemplatesFrame: function() {
-    const url = "https://smarttemplates.quickfolders.org/templates.html";
+    const url = "https://smarttemplates.quickfolders.org/templates.html?nav=none";
     // deferred loading of templates content
     let templatesIFrame = document.getElementById("templatesIFrame");
     let browser = document.getElementById("templatesBrowser");
