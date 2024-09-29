@@ -74,3 +74,38 @@ article h4 {
   font-weight : bold;
   text-shadow: 1px 1px 1px rgb(0,0,0);
 }
+
+/** variable parameters  **/
+.codeTable tr > td:first-child,
+.param, .paramLiteral {
+  color: var(--color-param) ;
+  font-family: Consolas, monaco, monospace;
+}
+code .paramLiteral, code .param {
+  color: rgb(150,90,10) !important;
+}
+
+.codeTable {
+  border-collapse: collapse;
+  margin-right: 1em;
+  border: solid 1px rgba(40,40,40,0.5);
+}
+.codeTable tr {
+  border-bottom: dotted 1px rgba(40,40,40,0.4);
+}
+.codeTable tr {
+  padding: 0.5em 1em;
+}
+.codeTable tr > td:first-child {
+  font-size: 10pt;
+  line-break: strict;
+  border-right: dotted 1px rgba(40,40,40,0.3);
+}
+.codeTable td {
+  padding-left: 1em;
+}
+
+
+.codeTable tr > td:not(:first-child) {
+  font-size: 0.9em;
+}
