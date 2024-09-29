@@ -50,28 +50,44 @@
         }
 
         // make a new custom event
-        var customEvent = document.createEvent("Events");
+
+        // for web ext we need to do runtim message instead.
         
         switch(code.tagName) {
           case 'code':
-            customEvent = new CustomEvent("SmartTemplate4CodeWord",
-              {bubbles:true, cancelable:false}
-            );
+            if (!browser) {
+              const customEvent = new CustomEvent("SmartTemplate4CodeWord",
+                {bubbles:true, cancelable:false}
+              );
+            }
+
+            if (browser) {
+              var dispatch = "SmartTemplate4CodeWord";
+              browser.runtime.sendMessage(dispatch);
+              return;
+            }
+
+
             // window.parent.document.dispatchEvent(customEvent);
             // customEvent.initEvent("SmartTemplate4CodeWord", true, false);
             break;
           case 'span': case 'lbl':
             if (isAddressConfig) {
+              const customEvent = document.createEvent("Events");
               customEvent.initEvent("SmartTemplate4CAD", true, false);
             }              
             break;
           default:
-            customEvent.initEvent("SmartTemplate4Website", true, false);
+            {
+              const customEvent = document.createEvent("Events");
+              customEvent.initEvent("SmartTemplate4Website", true, false);
+            }
             break;
         }
         // window.parent.document.dispatchEvent(customEvent);
         element.dispatchEvent(customEvent);
       }
+
     }
   }
   

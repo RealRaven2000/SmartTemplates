@@ -45,23 +45,15 @@ SmartTemplates.Help = {
 	},
   onLoad: async function () {
     // custom event listener for clicking code words
-    document.addEventListener(
-      "SmartTemplate4CodeWord",
-      SmartTemplates.Listener.listen,
-      false,
-      true
-    ); // The last value is a Mozilla-specific value to indicate untrusted content is allowed to trigger the event
-    // custom event listener for scrolling
-    document.addEventListener(
-      "SmartTemplate4ScrollVariables",
-      (evt) => {
-        // scroll variables back to top
-        debugger;
-        document.getElementById("variablesPane").scrollIntoView({ block: "start" });
-      },
-      false,
-      true
-    );
+    browser.runtime.onMessage.addListener(
+      (message, sender) => {
+        switch(message) {
+          case "SmartTemplate4CodeWord":
+            console.log(`Received ${message} from:`, {sender});
+            break;
+        }
+      }
+    )
 
     const variablesDocument = document.getElementById("helpFrame")?.contentDocument;
     const preheaderDesc = variablesDocument?.getElementById("preHeaderText");
