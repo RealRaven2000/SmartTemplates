@@ -442,14 +442,6 @@ table div.no {
   font-size: 13pt !important;
   text-shadow: #000000 1px 1px 1px;
 }
-
-
-/* right hand panels widths */
-#rightPane tabpanel , #aboutPanel {
-  min-width: 420px;
-  max-width: 460px;
-}
- 
  
 .contextConfig:hover {
   background-color: pink;
