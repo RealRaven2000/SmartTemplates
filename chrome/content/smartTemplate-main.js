@@ -195,11 +195,13 @@ END LICENSE BLOCK
     # Improved headline for Examples tab and added jump to support side.
     # Variables page now support dark mode.
 
-  Version 4.8.2 - WIP
+  Version 4.9 - WIP
+    # [issue 320] - %tags% = new variable to insert tags in Email
     # [issue 321] - missing text in explanation of the %preHeader% parameter headerText 
-    # [issue 322] SmartTemplates ignored when creating an email from the Thunderbird taskbar context menu
+    # Added link to open Examples Page in browser.
+    # [issue 322] SmartTemplates ignored when creating an email from the Thunderbird taskbar 
+                  context menu (see also issue 272)
     # [issue 323] Spell Dutch months and days with lowercase letters
-    # [issue 320] - %tags% = WIP
     # [issue 324] Make SmartTemplates compatible with new ESM modules (jsm will be removed in the next ESR)
 
 
@@ -210,8 +212,6 @@ END LICENSE BLOCK
     # [issue ] 
     # [issue ] 
     # [issue 253] recreate unified toolbar menu using API functions
-    # [issue 259] Convert Settings screen to HTML, and move to Tab
-
 
     # New Idea: Add an account templates submenu - only for accounts with dedicated settings.
 
