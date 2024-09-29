@@ -154,6 +154,14 @@ function showSalesItems(isSale, licenseInfo) {
 }
 
 
+function isSale() {
+  const currentTime = new Date();
+  // sales_end is currently defined in sales.js
+  const endDate = new Date(sales_end.getTime() + 86400000);
+  const isSale = currentTime < endDate;
+  return isSale;
+}
+
 async function updateActions(addonName) {
   let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
   
@@ -169,12 +177,9 @@ async function updateActions(addonName) {
     hide('standardLicense');
   }
   
-  let currentTime = new Date();
-  let isSale = (currentTime <= sales_end);
-
   hideSelectorItems('.donations');
   
-  let isActionList = showSalesItems(isSale, licenseInfo);
+  let isActionList = showSalesItems(isSale(), licenseInfo);
   if (!isActionList) {
     hide('actionBox');
   } 
