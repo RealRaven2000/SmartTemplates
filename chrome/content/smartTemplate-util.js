@@ -3277,13 +3277,13 @@ SmartTemplate4.Util = {
 			SmartTemplate4.Util.logDebug(`tagsFormatter() detected formatting preset: ${f}`)
 			switch (f) {
         case "color":
-          return "color:$color$; border:1px solid $color$; border-radius:0.2em; padding:0.05em 0.2em;";
+          return "color:$color$; border:1px solid $color$; border-radius:0.2em; padding:0.05em 0.2em; white-space: nowrap;";
         case "color-filled":
-          return "background-color:$color$; color:white; border-radius:0.2em; padding:0.05em 0.2em;";
+          return "background-color:$color$; color:white; border-radius:0.2em; padding:0.05em 0.2em; white-space: nowrap;";
         case "filled": // should probably use the current text color. but what if we have dark background?
-          return "background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em;";
+          return "background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em; white-space: nowrap;";
         case "dark-filled": // with dark backgrounds, let's fill with white
-          return "background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em;";
+          return "background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; white-space: nowrap;";
       }
 			return "";
 		}

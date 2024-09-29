@@ -8,6 +8,11 @@
 	<head>
 		<title>help.xhtml</title>
 		<link rel="stylesheet" type="text/css" href="skin/variables.css" name="main"/>
+		<style>
+			.st-tag {
+				white-space: no-wrap;
+			}
+		</style>
 
 	</head>
 	<body style="margin: 0;">
@@ -334,7 +339,7 @@
         <aside>__MSG_tags.intro__ <a href="https://smarttemplates.quickfolders.org/premium.html#tags" target="_blank">Read Docs</a>.</aside>
 
 				<code>%tags%</code>__MSG_tags.plaintext__<br/>
-				<code>%tags(<span class="param">optional parameters</span>)%</code>__MSG_tags.params__<br/>
+				<code>%tags(<span class="param">__MSG_params.optional__</span>)%</code>__MSG_tags.params__<br/>
 
 				<h4>__MSG_tags.presets__</h4>
 
@@ -369,48 +374,50 @@
 						<td>%tags(color)%</td>
 						<td><span
 style="color:#FF0000; border:1px solid #FF0000; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">Important</span>,
-<span
+<span class="st-tag"
 style="color:#3333FF; border:1px solid #3333FF; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">To
-  Do</span>, <span
+  Do</span>, 
+<span class="st-tag"
 style="color:#0c6283; border:1px solid #0c6283; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">all
-  new Taggy</span>, <span
+  new Taggy</span>, <span class="st-tag"
 style="color:#e18700; border:1px solid #e18700; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">Custom-1</span></td>
 					</tr>
 					<tr>
 						<td>%tags(color-filled,uppercase,delimiter=" ",size=1.1)%</td>
-						<td><span
+						<td><span class="st-tag"
 style="background-color:#FF0000; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:1.1em">IMPORTANT</span>
-<span
+<span class="st-tag"
 style="background-color:#3333FF; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:1.1em">TO
-  DO</span> <span
+  DO</span> <span class="st-tag"
 style="background-color:#0c6283; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:1.1em">ALL
-  NEW TAGGY</span> <span
+  NEW TAGGY</span> <span class="st-tag"
 style="background-color:#e18700; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:1.1em">CUSTOM-1</span></td>
 					</tr>					
 					<tr>
 						<td>%tags(filled,lowercase,delimiter=" - ")%</td>
-						<td><span
+						<td><span class="st-tag"
 style="background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">important</span>
-- <span
+- <span class="st-tag"
 style="background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">to
-  do</span> - <span
+  do</span> - 
+	<span class="st-tag"
 style="background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">all
-  new taggy</span> - <span
+  new taggy</span> - <span class="st-tag"
 style="background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">custom-1</span></td>
 					</tr>					
 					<tr>
 						<td>%tags(dark-filled)%</td>
 						<td>
 							<div style="width:50%; background-color:#333; color:white; padding:0.5em; margin-block:0.2em;"> 
-<span
+<span class="st-tag"
 style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">Important</span>,
-<span
+<span class="st-tag"
 style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">To
     Do</span>, 
-<span
+<span class="st-tag"
 style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">all
     new Taggy</span>, 
-<span
+<span class="st-tag"
 style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">Custom-1</span>
 </div>
 						</td>

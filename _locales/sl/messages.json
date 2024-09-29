@@ -928,6 +928,9 @@
   "parameter.escapeCommas": {
     "message": "Za prikaz vejic v tem besedilu postavite pred njih obrnjeno poševnico, kot sledi:"
   },
+  "params.optional": {
+    "message": "neobvezni parametri"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Besedilo ob prehodu z miško"
   },

@@ -937,6 +937,9 @@
   "parameter.escapeCommas": {
     "message": "Per mostrar comes dins d'aquest text, prefixeu-les amb una barra invertida com aquesta:"
   },
+  "params.optional": {
+    "message": "paràmetres opcionals"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text al passar el cursor"
   },

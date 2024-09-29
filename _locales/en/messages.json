@@ -953,6 +953,9 @@
   "parameter.escapeCommas": {
     "message": "To display commas within this text, prefix them with a backslash like this:"
   },
+  "params.optional": {
+    "message": "optional parameters"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text on Hover"
   },

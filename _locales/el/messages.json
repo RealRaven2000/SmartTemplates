@@ -946,6 +946,9 @@
   "parameter.escapeCommas": {
     "message": "Για να εμφανίσετε κόμματα μέσα σε αυτό το κείμενο, προθέστε ανάστροφη κάθετο, όπως αυτή:"
   },
+  "params.optional": {
+    "message": "προαιρετικές παράμετροι"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Κείμενο σε αιώρηση"
   },

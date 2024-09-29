@@ -924,6 +924,9 @@
   "parameters": {
     "message": "Parametry"
   },
+  "params.optional": {
+    "message": "opcjonalne parametry"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Tekst po wskazaniu kursorem"
   },

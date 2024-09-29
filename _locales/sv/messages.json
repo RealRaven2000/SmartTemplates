@@ -946,6 +946,9 @@
   "parameter.escapeCommas": {
     "message": "För att visa kommatecken i denna text, placera ett omvänt snedstreck före dem så här:"
   },
+  "params.optional": {
+    "message": "valfria parametrar"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text vid hovring"
   },

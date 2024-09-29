@@ -883,6 +883,9 @@
   "parameter.escapeCommas": {
     "message": "Um in diesem Text Kommas anzuzeigen, setzen Sie davor einen Backslash, wie im folgenden Beispiel:"
   },
+  "params.optional": {
+    "message": "optionale Parameter"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text nur unter Mauszeiger"
   },
@@ -1752,7 +1755,7 @@
     "message": "Antworten"
   },
   "tags.cap": {
-    "message": "Mail-Tags"
+    "message": "Tags (Schlagwörter)"
   },
   "tags.clipboard": {
     "message": "Kopiert die Ergebnisse in die Zwischenablage anstatt sie in die E-Mail einzufügen."

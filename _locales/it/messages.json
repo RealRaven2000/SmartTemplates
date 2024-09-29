@@ -898,6 +898,9 @@
   "parameter.escapeCommas": {
     "message": "Per visualizzare le virgole in questo testo, aggiungi una barra rovesciata prima di esse come questa:"
   },
+  "params.optional": {
+    "message": "parametri opzionali"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Testo al passaggio del mouse"
   },

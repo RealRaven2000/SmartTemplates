@@ -904,6 +904,9 @@
   "parameter.escapeCommas": {
     "message": "Para exibir vírgulas neste texto, prefixe-as com uma barra invertida da seguinte forma:"
   },
+  "params.optional": {
+    "message": "parâmetros opcionais"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Texto ao passar o cursor"
   },

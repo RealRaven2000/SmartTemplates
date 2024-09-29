@@ -922,6 +922,9 @@
   "parameter.escapeCommas": {
     "message": "Om komma's in deze tekst weer te geven, zet er een backslash voor zoals dit:"
   },
+  "params.optional": {
+    "message": "optionele parameters"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Tekst bij aanwijzen"
   },

@@ -940,6 +940,9 @@
   "parameter.escapeCommas": {
     "message": "Näyttääksesi pilkut tässä tekstissä, lisää niiden eteen kenoviiva näin:"
   },
+  "params.optional": {
+    "message": "valinnaiset parametrit"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Teksti hiirellä kohdistettaessa"
   },

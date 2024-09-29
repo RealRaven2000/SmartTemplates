@@ -675,6 +675,9 @@
   "parameter.escapeCommas": {
     "message": "Untuk menampilkan koma dalam teks ini, tambahkan garis miring terbalik di depannya seperti ini:"
   },
+  "params.optional": {
+    "message": "parameter opsional"
+  },
   "pref_StatusIcon.IconHoverText": {
     "message": "Teks Hover"
   },
