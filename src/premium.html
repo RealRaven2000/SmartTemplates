@@ -33,6 +33,18 @@ permalink: premium.html
   .st-tag {
     white-space: no-wrap;
   }
+  .codeTable tr {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+  }
+  tr.dark {
+    background: #333;
+    color: white;
+  }
+  .codeTable tr.dark > td:first-child {
+    color: white;
+  }
+
 </style>
 
 <h2 class="page-header">SmartTemplates Pro :: Pro Features</h2>
@@ -734,10 +746,9 @@ style="background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0
 new taggy</span> - <span class="st-tag"
 style="background-color:#333; color:white; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">custom-1</span></td>
   </tr>					
-  <tr>
+  <tr class="dark">
     <td>%tags(dark-filled)%</td>
     <td>
-      <div style="width:50%; background-color:#333; color:white; padding:0.5em; margin-block:0.2em;"> 
 <span class="st-tag"
 style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">Important</span>,
 <span class="st-tag"
@@ -748,7 +759,6 @@ style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 
 new Taggy</span>, 
 <span class="st-tag"
 style="background-color: white; color:#333; border-radius:0.2em; padding:0.05em 0.2em; font-size:0.8em">Custom-1</span>
-</div>
     </td>
   </tr>					
   <tr>
