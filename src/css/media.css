@@ -96,6 +96,7 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
     padding: 0;
   }
   div.code_block,
+  div.preview,
   pre.code_block,
   pre.code_block.bad_example {
     margin-left: 10px !important;

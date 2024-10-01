@@ -76,7 +76,7 @@ permalink: templates.html
 	  var h5 = element.parentNode,
 		    tmp = $("<textarea>"),
 				title =  h5.textContent.substring(0,h5.textContent.length-5),
-				txt = $(h5.nextElementSibling).text().trim(); // div.code_block contents
+				txt = h5.parentNode.querySelector(".code_block").textContent.trim(); // div.code_block contents
 				
 		$("body").append(tmp);
 		tmp.val(txt).select();
