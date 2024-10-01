@@ -61,7 +61,6 @@ table#mozdev-date {
   background: -ms-linear-gradient(top,  rgba(149,234,237,1) 0%,rgba(71,221,223,1) 24%,rgba(9,179,181,1) 50%,rgba(44,215,218,1) 79%,rgba(88,223,226,1) 100%);
   background: linear-gradient(top,  rgba(149,234,237,1) 0%,rgba(71,221,223,1) 24%,rgba(9,179,181,1) 50%,rgba(44,215,218,1) 79%,rgba(88,223,226,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#95eaed', endColorstr='#58dfe2',GradientType=0 );
-  behavior: url(js/PIE.js); /* CSS3 Fix for IE 6-8 */
   padding: 0.3em 0em 0.3em 0em; /* added 08.09.12 */
   width: 100%; /* added 20.09.12 */
 }
@@ -459,14 +458,11 @@ a[href]:focus {
   border-color: black;
   border-radius: 10px; /* CSS3 = IE9 / Firefox 4+ */
   border-width: 1px;
-  color:black;
-  display:block;
+  color: black;
   font-size:10pt;
   overflow: auto; /* OLD scroll */
   margin-left: 30px;
   max-height: 220px;
-  width: 75%;
-  behavior: url(js/PIE.js); /* CSS3 Fix for IE 6-8 */
   font-family: Consolas, 'Courier New', Geneva, sans-serif;
 }
 .code_block {

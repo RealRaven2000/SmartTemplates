@@ -34,7 +34,7 @@ permalink: templates.html
 		border-radius: 3px;
 		color: rgb(80,80,80,0.6);
 		cursor: pointer;
-	  /*float: right; */
+	  float: right;
 		font-size: 8pt;
 		height: 10px;
 		margin-right: 5px;
@@ -50,6 +50,8 @@ permalink: templates.html
   .previewHeader {
     display: block;
     font-weight: bold;
+    text-decoration: underline darkred;
+    text-decoration-thickness: 2px;
   }
 
   
@@ -60,17 +62,6 @@ permalink: templates.html
   }
   .container > * {
     width: 50%;
-  }
-
-  /* vertical line */
-  .container .code_block:not(:last-child)::after {
-    display: block;
-    width: 1px;
-    height: 80%;
-    background-color: black;
-    position: absolute;
-    right: 0;
-    top: 1em;    
   }
 
   /* graphical preview */
@@ -122,7 +113,7 @@ permalink: templates.html
           </div>
           <div class="preview">
             <span class="previewHeader">Preview</span>
-            <div style="display:inline-block; border: 1px gray solid; padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;"></div>
+            <div style="display:inline-block; border: 1px gray solid; padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;">
               <b>From:</b> John Doe &lt;johndoe@example.com&gt; <br>
               <b>Sent:</b> %X:=sent% %A%, %B% %d%, %Y% %l%:%M%%p(3)% <br>
               <b>To:</b> %to(name)%<br>
@@ -130,6 +121,7 @@ permalink: templates.html
               <b>Subject:</b> %subject% <br>
             </div>
           </div>
+
         </div>
       </div>
     </li>
