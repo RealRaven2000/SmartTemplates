@@ -34,7 +34,7 @@ permalink: templates.html
 		border-radius: 3px;
 		color: rgb(80,80,80,0.6);
 		cursor: pointer;
-	  float: right;
+	  /*float: right; */
 		font-size: 8pt;
 		height: 10px;
 		margin-right: 5px;
@@ -47,6 +47,37 @@ permalink: templates.html
 	  background-color: rgb(80,80,80,0.6);
 		color: #eeeeee;
 	}
+  .previewHeader {
+    display: block;
+    font-weight: bold;
+  }
+
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .container > * {
+    width: 50%;
+  }
+
+  /* vertical line */
+  .container .code_block:not(:last-child)::after {
+    display: block;
+    width: 1px;
+    height: 80%;
+    background-color: black;
+    position: absolute;
+    right: 0;
+    top: 1em;    
+  }
+
+  /* graphical preview */
+  .container .preview {
+    font-style: normal;
+
+  }
 </style>
 
 <script type="text/javascript">
@@ -54,7 +85,7 @@ permalink: templates.html
 	  var h5 = element.parentNode,
 		    tmp = $("<textarea>"),
 				title =  h5.textContent.substring(0,h5.textContent.length-5),
-				txt = $(h5.nextElementSibling).text().trim(); // blockquote contents
+				txt = $(h5.nextElementSibling).text().trim(); // div.code_block contents
 				
 		$("body").append(tmp);
 		tmp.val(txt).select();
@@ -79,15 +110,27 @@ permalink: templates.html
           <em>TIP:</em> This template is acceptable for Reply and Forward
         </p>
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
-&lt;div style="border: 1px gray solid; padding: 5px; margin: 5px 0px; max-width: 850px;"&gt;<br>
+        <div class="container">
+          <div class="code_block">
+&lt;div style="display:inline-block; border: 1px gray solid; padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;"&gt;<br>
 &nbsp;&nbsp;&lt;b&gt;From:&lt;/b&gt; <code>%from(name,bracketMail(angle))%</code> &lt;br&gt;<br>
 &nbsp;&nbsp;&lt;b&gt;Sent:&lt;/b&gt; <code>%X:=sent%</code> <code>%A%</code>, <code>%B%</code> <code>%d%</code>, <code>%Y%</code> <code>%l%</code>:<code>%M%</code><code>%p(3)%</code> &lt;br&gt;<br>
 &nbsp;&nbsp;&lt;b&gt;To:&lt;/b&gt; <code>%to(name)%</code>&lt;br&gt;<br>
 &nbsp;&nbsp;<span class="important">[[</span> &lt;b&gt;Cc:&lt;/b&gt; <code>%cc(name)%</code> &lt;br&gt;<span class="important">]]</span><br>
 &nbsp;&nbsp;&lt;b&gt;Subject:&lt;/b&gt; <code>%subject%</code> &lt;br&gt;<br>
 &lt;/div&gt;<br>
-          </blockquote>
+          </div>
+          <div class="preview">
+            <span class="previewHeader">Preview</span>
+            <div style="display:inline-block; border: 1px gray solid; padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;"></div>
+              <b>From:</b> John Doe &lt;johndoe@example.com&gt; <br>
+              <b>Sent:</b> %X:=sent% %A%, %B% %d%, %Y% %l%:%M%%p(3)% <br>
+              <b>To:</b> %to(name)%<br>
+              <b>Cc:</b> %cc(name)% <br>
+              <b>Subject:</b> %subject% <br>
+            </div>
+          </div>
+        </div>
       </div>
     </li>
 
@@ -101,10 +144,10 @@ permalink: templates.html
           <em>TIP:</em> This template is intended for New messages but is also valid for Reply and Forward
         </p>
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 &lt;br&gt; &lt;br&gt;<br>
 <code>%sig(html)% or %sig(text)%</code> &lt;br&gt;<br>
-          </blockquote>
+          </div>
       </div>
     </li>
 
@@ -118,13 +161,13 @@ permalink: templates.html
           <em>TIP:</em> This template is intended for New messages but is also valid for Reply and Forward
         </p>
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 &lt;p&gt;Dear <code>%cursor%</code>,&lt;/p&gt;<br>
 &lt;p&gt;&lt;/p&gt;<br>
 &lt;p&gt;Yours sincerely, &lt;br&gt;<br>
 &amp;nbsp;&amp;nbsp;<code>%identity(name)%</code>&lt;/p&gt;<br>
 <code>%sig(html)% or %sig(text)%</code> 
-          </blockquote>
+          </div>
       </div>
     </li>
 
@@ -138,7 +181,7 @@ permalink: templates.html
           <em>TIP:</em> This template is intended for New messages but is also valid for Reply and Forward
         </p>
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 &lt;div id="my_message" style="color:red; font-style:italic;"&gt;<br>
 &nbsp;&nbsp;&lt;p&gt;Hello,&lt;/p&gt;<br>
 &nbsp;&nbsp;&lt;p&gt;<code>%cursor%</code>&lt;/p&gt;<br>
@@ -146,7 +189,7 @@ permalink: templates.html
 &nbsp;&nbsp;&lt;&amp;nbsp;&amp;nbsp;<code>%identity(name)%</code>&lt;/p&gt;<br>
 &lt;/div&gt;
 <code>%sig(html)% or %sig(text)%</code> <br>
-          </blockquote>
+          </div>
       </div>
     </li>
 
@@ -160,7 +203,7 @@ permalink: templates.html
           <em>TIP:</em> This template is acceptable for Reply and Forward
         </p>
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 &lt;style&gt;<br>
 .qhLabel {<br>
 &nbsp;&nbsp;font-family:  "Arial Black";<br>
@@ -172,7 +215,7 @@ permalink: templates.html
 &lt;span class="qhLabel"&gt;From: &lt;/span&gt;<code>%from%</code> &lt;br&gt;<br>
 &lt;span class="qhLabel"&gt;To: &lt;/span&gt;<code>%to%</code> &lt;br&gt;<br>
 <span class="important">[[</span> &lt;span class="qhLabel"&gt;Cc: &lt;/span&gt;<code>%cc%</code><span class="important">]]</span> <br>
-          </blockquote>
+          </div>
       </div>
     </li>
 
@@ -186,7 +229,7 @@ permalink: templates.html
           <em>TIP:</em> This template is acceptable for Reply and Forward
         </p>
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 &lt;style&gt;<br>
 #myQuoteHeader b {<br>
 &nbsp;&nbsp;min-width: 18px;<br>
@@ -201,14 +244,14 @@ permalink: templates.html
 &nbsp;&nbsp;&lt;b&gt;Subject:&lt;/b&gt; <code>%subject%</code> &lt;br&gt;<br>
 &lt;/div&gt;<br>
 &lt;br&gt; &lt;br&gt;<br>
-          </blockquote>
+          </div>
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 &lt;p&gt;Dear <code>%from(name)%</code>,&lt;/p&gt;<br>
 &lt;p&gt;<code>%cursor%</code>&lt;/p&gt;<br>
 &lt;p&gt;Thank you, &lt;/p&gt;<br>
 <code>%sig(html)% or %sig(text)%</code> &lt;br&gt;<br>
-          </blockquote>
+          </div>
       </div>
     </li>
 
@@ -222,7 +265,7 @@ permalink: templates.html
           <em>TIP:</em> This template is acceptable for Reply and Forward
         </p>
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 &lt;style&gt;<br>
 #creativeQH b {<br>
 &nbsp;&nbsp;min-width: 28px;<br>
@@ -236,7 +279,7 @@ permalink: templates.html
 &lt;b&gt;Gesendet / Sent:&lt;/b&gt; <code>%X:=sent%</code><code>%A%</code>, <code>%d%</code>.<code>%m%</code>.<code>%Y%</code> <code>%H%</code>:<code>%M%</code> <code>%date_tz%</code> &lt;br&gt;<br>
 &lt;b&gt;Betreff / Subject:&lt;/b&gt; <code>%subject%</code><br>
 &lt;/div&gt;
-          </blockquote>
+          </div>
       </div>
     </li>
 
@@ -250,7 +293,7 @@ permalink: templates.html
           <em>TIP:</em> This template is acceptable for Reply and Forward
         </p>
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 &lt;br&gt;&lt;br&gt;<br>
 &lt;div style="FONT-FAMILY: Verdana, 'Segoe UI', Arial, sans-serif; PADDING-BOTTOM: 1px; COLOR: #000000; FONT-SIZE: 9pt; PADDING-TOP: 1px; background-color: #ffffff"&gt;<br>
 &lt;hr style="BACKGROUND-COLOR: #808080; HEIGHT: 1px; COLOR: #808080" noshade="noshade"&gt;<br>
@@ -262,9 +305,9 @@ permalink: templates.html
 &lt;br&gt;<br>
 &lt;b&gt;Betreff / Subject:&lt;/b&gt;  <code>%subject%</code><br>
 &lt;/div>
-          </blockquote>
+          </div>
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 &lt;br&gt;&lt;br&gt;<br>
 &lt;div id="main" style="background-color:#6699cc; margin-left:auto; margin-right:auto; width:80%; padding:15px; -webkit-border-radius:10px; -moz-border-radius: 10px; border-radius: 10px; -moz-box-shadow: 0 0 30px 9px #999; -webkit-box-shadow: 0 0 30px 9px #999;"&gt;<br>
 &lt;img style="float:left; margin-left: 15px; margin-right:15px;" id="icon" alt="icon" src="https://static-cdn.addons.mozilla.net/en-US/firefox/images/addon_icon/324497-64.png" width="64" height="64" /&gt;<br>
@@ -285,7 +328,7 @@ permalink: templates.html
 http://smarttemplate4.mozdev.org/smarttemplate4/&lt;/a&gt;<br>
 &lt;/div&gt; <br>
 &lt;/div&gt; <br>
-          </blockquote>
+          </div>
         </div>
     </li>
 
@@ -299,7 +342,7 @@ http://smarttemplate4.mozdev.org/smarttemplate4/&lt;/a&gt;<br>
           <em>TIP:</em> This template is acceptable for Reply and Forward
         </p>
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 &lt;br&gt;<br>
 &lt;br&gt;<br>
 &lt;br&gt;<br>
@@ -312,7 +355,7 @@ FONT-SIZE: 9pt; PADDING-TOP: 1px; background-color: #ffffff"&gt;<br>
 &lt;b&gt;To:&lt;/b&gt; <code>%to(mail)%</code> <span class="important">[[</span>&lt;b&gt;Cc:&lt;/b&gt; <code>%cc(mail)%</code><span class="important">]]</span><br>
 &lt;b&gt;Subject:&lt;/b&gt; <code>%subject%</code><br>
 &lt;/div&gt;
-          </blockquote>
+          </div>
       </div>
     </li>
 
@@ -326,16 +369,16 @@ FONT-SIZE: 9pt; PADDING-TOP: 1px; background-color: #ffffff"&gt;<br>
           <em>TIP:</em> This template is intended for Reply
         </p>
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 ------ Original Message ------<br>
 Subject: <code>%subject%</code><br>
 Date: <code>%date%</code><br>
 To: <code>%to%</code><span class="important">[[</span>, <code>%cc%</code><span class="important">]]</span><br>
 From: <code>%from%</code>
-          </blockquote>
+          </div>
 
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
-          <blockquote class="code_block">
+          <div class="code_block">
 Dear <code>%from%</code>
 <br><br>
 <code>%cursor%</code>
@@ -343,7 +386,7 @@ Dear <code>%from%</code>
 Thanks for your email.
 <br>
 <br>
-          </blockquote>
+          </div>
       </div>
     </li>
   </ul>

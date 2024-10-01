@@ -102,7 +102,7 @@ code .paramLiteral, code .param {
   border-right: dotted 1px rgba(40,40,40,0.3);
 }
 .codeTable td {
-  padding-left: 1em;
+  padding: 0.5em 0.6em;
 }
 
 

@@ -95,7 +95,7 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
     font-size: 10pt;
     padding: 0;
   }
-  blockquote.code_block,
+  div.code_block,
   pre.code_block,
   pre.code_block.bad_example {
     margin-left: 10px !important;
@@ -146,7 +146,7 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
     min-width: 510px;
   }
   /* template example boxes */
-  blockquote.code_block {
+  div.code_block {
     margin-left: 10px !important;
     margin-right: 10px !important;
     width: auto;
@@ -284,7 +284,7 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
     font-size: 12pt;
     padding: 0;
   }
-  blockquote.code_block,
+  div.code_block,
   pre.code_block,
   pre.code_block.bad_example {
     margin-left: 10px !important;
@@ -324,7 +324,7 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
     padding: 0;
   }
   /* template example boxes */
-  blockquote.code_block {
+  div.code_block {
     margin-left: 10px !important;
     margin-right: 10px !important;
     width: auto;
@@ -359,7 +359,7 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
     min-width: 500px;
   }
   /* template example boxes */
-  blockquote.code_block {
+  div.code_block {
     margin-left: 10px !important;
     margin-right: 10px !important;
     width: auto;
