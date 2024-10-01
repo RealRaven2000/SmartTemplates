@@ -115,13 +115,12 @@ permalink: templates.html
             <span class="previewHeader">Preview</span>
             <div style="display:inline-block; border: 1px gray solid; padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;">
               <b>From:</b> John Doe &lt;johndoe@example.com&gt; <br>
-              <b>Sent:</b> %X:=sent% %A%, %B% %d%, %Y% %l%:%M%%p(3)% <br>
-              <b>To:</b> %to(name)%<br>
-              <b>Cc:</b> %cc(name)% <br>
-              <b>Subject:</b> %subject% <br>
+              <b>Sent:</b> Tuesday, October 01, 2024 2:37PM  <br>
+              <b>To:</b> Axel Grude<br>
+              <b>Cc:</b> Jane Doe <br>
+              <b>Subject:</b> SmartTemplate - test email <br>
             </div>
           </div>
-
         </div>
       </div>
     </li>
@@ -154,11 +153,11 @@ permalink: templates.html
         </p>
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
           <div class="code_block">
-&lt;p&gt;Dear <code>%cursor%</code>,&lt;/p&gt;<br>
+&lt;p&gt;Dear <code>%recipient(name)%</code>,&lt;/p&gt;<br>
 &lt;p&gt;&lt;/p&gt;<br>
 &lt;p&gt;Yours sincerely, &lt;br&gt;<br>
 &amp;nbsp;&amp;nbsp;<code>%identity(name)%</code>&lt;/p&gt;<br>
-<code>%sig(html)% or %sig(text)%</code> 
+<code>%sig%</code> 
           </div>
       </div>
     </li>
@@ -174,7 +173,7 @@ permalink: templates.html
         </p>
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
           <div class="code_block">
-&lt;div id="my_message" style="color:red; font-style:italic;"&gt;<br>
+&lt;div id="my_message" style="color:red; font-style:italic; font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif; "&gt;<br>
 &nbsp;&nbsp;&lt;p&gt;Hello,&lt;/p&gt;<br>
 &nbsp;&nbsp;&lt;p&gt;<code>%cursor%</code>&lt;/p&gt;<br>
 &nbsp;&nbsp;&lt;p&gt;Thank you, &lt;br&gt;<br>
@@ -188,17 +187,17 @@ permalink: templates.html
     <li>
       <img class="collapseDown" src="/img/collapseDown.png" alt="">
       <p class="question">
-        A quote header with style labels
+        A quote header with styled labels
       </p><br>
       <div style="display: none;" class="answer">
         <p class="tip">
-          <em>TIP:</em> This template is acceptable for Reply and Forward
+          <em>TIP:</em> quote headers are useful for Reply and Forward
         </p>
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
           <div class="code_block">
 &lt;style&gt;<br>
 .qhLabel {<br>
-&nbsp;&nbsp;font-family:  "Arial Black";<br>
+&nbsp;&nbsp;font-family:  Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;<br>
 &nbsp;&nbsp;min-width: 18px;<br>
 }<br>
 &lt;/style&gt;<br>
@@ -208,6 +207,26 @@ permalink: templates.html
 &lt;span class="qhLabel"&gt;To: &lt;/span&gt;<code>%to%</code> &lt;br&gt;<br>
 <span class="important">[[</span> &lt;span class="qhLabel"&gt;Cc: &lt;/span&gt;<code>%cc%</code><span class="important">]]</span> <br>
           </div>
+  
+          <div class="preview">
+            <style>
+            .qhLabel {
+              display: inline-block;
+              font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+              min-width: 4.5em;
+            }
+            </style>
+            <span class="previewHeader">Preview</span>
+            <div style="display:inline-block; border: 1px gray solid; padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;">
+              <span class="qhLabel">Subject:</span>SmartTemplate - test email  <br>
+              <span class="qhLabel">Sent:</span> Tue, 1 Oct 2024 14:37:24 +0100 <br>
+              <span class="qhLabel">From:</span> John Doe &lt;johndoe@example.com&gt; <br>
+              <span class="qhLabel">To:</span> Axel &lt;axel@example.com&gt;<br>
+              <span class="qhLabel">Cc:</span> Jane &lt;jane@example.com&gt; <br>
+            </div>
+          </div>  
+
+
       </div>
     </li>
 

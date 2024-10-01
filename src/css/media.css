@@ -147,11 +147,12 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
     min-width: 510px;
   }
   /* template example boxes */
+  div.preview,
   div.code_block {
     margin-left: 10px !important;
     margin-right: 10px !important;
     width: auto;
-    min-width: 470px;
+    min-width: 400px;
   }
 }
 
@@ -287,11 +288,11 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
   }
   div.code_block,
   pre.code_block,
+  div.preview,
   pre.code_block.bad_example {
     margin-left: 10px !important;
     margin-right: 10px !important;
     width: auto;
-    min-width: 500px;
   }
   .screenshot.query {
     margin-left: 10px;
@@ -325,11 +326,12 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
     padding: 0;
   }
   /* template example boxes */
+  div.preview,
   div.code_block {
     margin-left: 10px !important;
     margin-right: 10px !important;
     width: auto;
-    min-width: 380px !important;
+    min-width: 350px !important;
   }
 }
 /* range width of 360px to 500px (outside of portrait mode and inside examples tab size */
