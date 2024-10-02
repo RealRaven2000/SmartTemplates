@@ -459,11 +459,12 @@ a[href]:focus {
   border-radius: 10px; /* CSS3 = IE9 / Firefox 4+ */
   border-width: 1px;
   color: black;
+  font-family: Consolas, 'Courier New', Geneva, sans-serif;
   font-size:10pt;
   overflow: auto; /* OLD scroll */
+  line-height: 1.3em;
   margin-left: 30px;
   max-height: 220px;
-  font-family: Consolas, 'Courier New', Geneva, sans-serif;
 }
 .preview {
   margin-left: 30px;
