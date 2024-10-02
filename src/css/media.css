@@ -151,8 +151,8 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
   div.code_block {
     margin-left: 10px !important;
     margin-right: 10px !important;
-    width: auto;
-    min-width: 400px;
+    /*! width: auto; */
+    /*! min-width: 400px; */
   }
 }
 
@@ -275,8 +275,6 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
 }
 
 
-
-/* max width of 1680px -> MY MONITOR */
 @media only screen and (max-width: 1680px) {
   h5.templateBlock {
     margin-left: 10px !important;
@@ -291,8 +289,7 @@ http://pieroxy.net/blog/pages/css-media-queries/test-features.html
   div.preview,
   pre.code_block.bad_example {
     margin-left: 10px !important;
-    margin-right: 10px !important;
-    width: auto;
+    flex-grow: 1;
   }
   .screenshot.query {
     margin-left: 10px;

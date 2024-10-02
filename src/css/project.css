@@ -465,6 +465,9 @@ a[href]:focus {
   max-height: 220px;
   font-family: Consolas, 'Courier New', Geneva, sans-serif;
 }
+.preview {
+  margin-left: 30px;
+}
 .code_block {
   padding: 10px;
 }

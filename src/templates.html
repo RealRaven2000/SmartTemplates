@@ -60,14 +60,10 @@ permalink: templates.html
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .container > * {
-    width: 50%;
-  }
 
   /* graphical preview */
   .container .preview {
     font-style: normal;
-
   }
 </style>
 
@@ -103,7 +99,8 @@ permalink: templates.html
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
         <div class="container">
           <div class="code_block">
-&lt;div style="display:inline-block; border: 1px gray solid; padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;"&gt;<br>
+&lt;div style="display:inline-block; border: 1px gray solid; <br>
+padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;"&gt;<br>
 &nbsp;&nbsp;&lt;b&gt;From:&lt;/b&gt; <code>%from(name,bracketMail(angle))%</code> &lt;br&gt;<br>
 &nbsp;&nbsp;&lt;b&gt;Sent:&lt;/b&gt; <code>%X:=sent%</code> <code>%A%</code>, <code>%B%</code> <code>%d%</code>, <code>%Y%</code> <code>%l%</code>:<code>%M%</code><code>%p(3)%</code> &lt;br&gt;<br>
 &nbsp;&nbsp;&lt;b&gt;To:&lt;/b&gt; <code>%to(name)%</code>&lt;br&gt;<br>
@@ -173,7 +170,10 @@ permalink: templates.html
         </p>
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
           <div class="code_block">
-&lt;div id="my_message" style="color:red; font-style:italic; font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif; "&gt;<br>
+&lt;div id="my_message" 
+style="font-family: ui-rounded, 'Hiragino Maru Gothic ProN',<br>
+Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold',<br>
+Calibri, source-sans-pro, sans-serif; color: #5E1F00; "&gt;<br>
 &nbsp;&nbsp;&lt;p&gt;Hello,&lt;/p&gt;<br>
 &nbsp;&nbsp;&lt;p&gt;<code>%cursor%</code>&lt;/p&gt;<br>
 &nbsp;&nbsp;&lt;p&gt;Thank you, &lt;br&gt;<br>
@@ -201,11 +201,11 @@ permalink: templates.html
 &nbsp;&nbsp;min-width: 18px;<br>
 }<br>
 &lt;/style&gt;<br>
-&lt;span class="qhLabel"&gt;Subject: &lt;/span&gt;<code>%subject%</code> &lt;br&gt;<br>
-&lt;span class="qhLabel"&gt;Sent: &lt;/span&gt;<code>%date%</code> &lt;br&gt;<br>
-&lt;span class="qhLabel"&gt;From: &lt;/span&gt;<code>%from%</code> &lt;br&gt;<br>
-&lt;span class="qhLabel"&gt;To: &lt;/span&gt;<code>%to%</code> &lt;br&gt;<br>
-<span class="important">[[</span> &lt;span class="qhLabel"&gt;Cc: &lt;/span&gt;<code>%cc%</code><span class="important">]]</span> <br>
+&lt;span class="qhLabel"&gt;Subject: &lt;/span&gt; <code>%subject%</code> &lt;br&gt;<br>
+&lt;span class="qhLabel"&gt;Sent: &lt;/span&gt; <code>%date%</code> &lt;br&gt;<br>
+&lt;span class="qhLabel"&gt;From: &lt;/span&gt; <code>%from%</code> &lt;br&gt;<br>
+&lt;span class="qhLabel"&gt;To: &lt;/span&gt; <code>%to%</code> &lt;br&gt;<br>
+<span class="important">[[</span> &lt;span class="qhLabel"&gt;Cc: &lt;/span&gt; <code>%cc%</code><span class="important">]]</span> <br>
           </div>
   
           <div class="preview">
@@ -218,7 +218,7 @@ permalink: templates.html
             </style>
             <span class="previewHeader">Preview</span>
             <div style="display:inline-block; border: 1px gray solid; padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;">
-              <span class="qhLabel">Subject:</span>SmartTemplate - test email  <br>
+              <span class="qhLabel">Subject:</span> SmartTemplate - test email  <br>
               <span class="qhLabel">Sent:</span> Tue, 1 Oct 2024 14:37:24 +0100 <br>
               <span class="qhLabel">From:</span> John Doe &lt;johndoe@example.com&gt; <br>
               <span class="qhLabel">To:</span> Axel &lt;axel@example.com&gt;<br>
