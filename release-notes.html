@@ -1,49 +1,24 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.8.1">can be found here</a>
-
-<b>Maintenance version 4.8.1</b>
-<ul>
-  <li>New settings page: Fixed search highlighting and scrolling in variables tab. This also fixes weird scrollbar issues when expanding chapters. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/319">[issue 319]</a></li>
-  <li>Variables page now supports dark mode.</li>
-  <li>Improved headline for Examples tab and added jump to support side.</li>
-  <li> Thunderbird 128.2 fixed the verification of SmartTemplates licenses bound to 
-    an exchange account when it is accessed using Owl - due to a bug in their accounts API. 
-    See also [issue #303] and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1909005">bug 1909005</a>
-  </li>
-</ul>
-
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.9">can be found here</a>
 
 <b>Enhancements</b>
 <ul>
-  <li> Improved icon designs for dark themes and clearer texts independent of installed fonts for icons with text. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/310">[issue 310]</a> </li>
-  <li> Added function to collapse all chapters in Variables page. This is made visible after clicking on "expand all".<a href="https://github.com/RealRaven2000/SmartTemplates/issues/314">[issue 314]</a> </li>
-  <li> Implemented the command "configure menu items…" so that it opens the correct page in the new Settings dialog.</li>
-  <li> Implemented display settings for statusbar icon in new settings tab  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/313">[issue 313]</a> </li>
-  <li> Implemented search in Variables page on new settings page. Repeat search now with F4 and Shift+F4  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/315">[issue 315]</a> </li>
-  <li> Completed Greek translations (provided by chat GPT) </li>
+  <li> Added %tags% variable to insert tags in Email. This is a SmartTemplates Pro feature.  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/320">[issue 320]</a> Full documentation of this feature is available at <a href="https://smarttemplates.quickfolders.org/premium.html#tags">the support website</a> </li>
+  <li> Variables Page: added missing text in explanation of the %preHeader% parameter . </li>
+  <li> Examples Page: added link to open Examples Page in browser. </li>
+  <li> Fixed spelling in Dutch months and days - these now start with lowercase letters. </li>
 </ul>
 
 
 <b>Bug Fixes</b>
 <ul>
-  <li> Fixed: Template functions don't work when writing a new message in a newsgroup account <a href="https://github.com/RealRaven2000/SmartTemplates/issues/311">[issue 311]</a>  </li>
-  <li> Fixed: "expand all" inside new settings variables page didn't work. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/312">[issue 312]</a>  </li>
+  <li> FFixed: SmartTemplates ignored when creating an email from the Thunderbird taskbar context menu <a href="https://github.com/RealRaven2000/SmartTemplates/issues/322">[issue 322]</a>. See also <a href="https://github.com/RealRaven2000/SmartTemplates/issues/272">[issue 272]</a>.</li>
 </ul>
 
 <b>Miscellaneous</b>
 <ul>
-  <li> Use keydown instead of deprecated keypress events. </li>
-</ul>
-
-<b>Known Issues</b>
-<ul>
-  <li> Currently the verification of SmartTemplates licenses fails when the license is bound to an 
-  exchange account when it is accessed using Owl. This is due to a bug in 
-  the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
-  which the Thunderbird team is working on and is planned to land in one of the next 
-  versions of ESR128. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/303">[issue 303]</a>
-  </li>
+  <li> Make SmartTemplates compatible with new ESM modules (jsm will be removed in the next ESR)<a href="https://github.com/RealRaven2000/SmartTemplates/issues/324">[issue 324]</a>.</li>
 </ul>
 
