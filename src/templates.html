@@ -240,7 +240,6 @@ Calibri, source-sans-pro, sans-serif; color: #5E1F00; "&gt;<br>
         </p>
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
           <div class="code_block">
-            <pre>
 &lt;style&gt;<br>
 #myQuoteHeader {
 &nbsp; background-color: rgba(220,220,240,0.4); <br>
@@ -260,16 +259,13 @@ Calibri, source-sans-pro, sans-serif; color: #5E1F00; "&gt;<br>
 &lt;/style&gt;<br>
 <br>
 &lt;div id="myQuoteHeader"&gt;<br>
-&nbsp;&nbsp;&lt;b&gt;To:     &lt;/b&gt; "%to(name)%"&lt;%to(mail)%&gt; <br>
-&nbsp;&nbsp;&lt;b&gt;From:   &lt;/b&gt; "%from(name)%"&lt;%from(mail)%&gt;<br>
-[[;&lt;b&gt;CC:    &lt;/b&gt; "%cc(name)%" %cc(mail)% <br>]]
-&nbsp;&nbsp;&lt;b&gt;Sent:   &lt;/b&gt; %X:=sent%%A%, %dateshort% %H%:%M% %tz_name% %date_tz%  <br>
-&nbsp;&nbsp;&lt;b&gt;Subject:&lt;/b&gt; %subject%
-</pre>
-</div>
-</blockquote>
-
+&nbsp;&nbsp;&lt;b&gt;To:     &lt;/b&gt; <code>%to(name,bracketMail())%</code>&gt; <br>
+&nbsp;&nbsp;&lt;b&gt;From:   &lt;/b&gt; <code>%from(name,bracketMail())</code>%&gt;<br>
+[[;&lt;b&gt;CC:    &lt;/b&gt; <code>%cc(name,bracketMail())%</code> <br>]]
+&nbsp;&nbsp;&lt;b&gt;Sent:   &lt;/b&gt; <code>%X:=sent%</code><code>%A%</code>, <code>%dateshort%</code> <code>%H%</code>:<code>%M%</code> <code>%tz_name%</code> <code>%date_tz%</code>  <br>
+&nbsp;&nbsp;&lt;b&gt;Subject:&lt;/b&gt; </ode>%subject%</code>
           </div>
+
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
           <div class="code_block">
 &lt;p&gt;Dear <code>%from(name)%</code>,&lt;/p&gt;<br>
