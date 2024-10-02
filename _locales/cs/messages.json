@@ -1173,6 +1173,9 @@
   "pref_templateBox_tip": {
     "message": "Do tohoto pole napište šablonu zprávy, např.: Dobrý den %from(name)%, <br> Díky za Vaši zprávu <br> S pozdravem, <br>%ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "otevřete stránku s příklady v prohlížeči"
+  },
   "pref_template_tip": {
     "message": "Můžeš rozšířit šablonu proměnými. Klikni na rozšířené / proměné pro více informací. "
   },

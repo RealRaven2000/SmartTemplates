@@ -1196,6 +1196,9 @@
   "pref_templateBox_tip": {
     "message": "In this box, put your mail template e.g. Hello %from(name)%, <br> Thanks for your message <br> regards, <br>%ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "open examples page in browser"
+  },
   "pref_template_tip": {
     "message": "You can enhance the template with 'variables'. Click advanced / variables for more information."
   },

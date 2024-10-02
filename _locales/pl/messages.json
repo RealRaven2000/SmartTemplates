@@ -1166,6 +1166,9 @@
   "pref_templateBox_tip": {
     "message": "W tym polu podaj swój szablon, np.  Witaj %from(name).%<br> Dziękuję za Twoją wiadomość.<br> Pozdrowienia %ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "otwórz stronę z przykładami w przeglądarce"
+  },
   "pref_template_tip": {
     "message": "Możesz zmienić nagłówek za pomocą słów kluczowych 'zmienne'. Zobacz pomoc."
   },

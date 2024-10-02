@@ -1170,6 +1170,9 @@
   "pref_templateBox_tip": {
     "message": "V to polje vstavite svojo poštno predlogo npr. Hello %from(name)%, <br> Hvala za vaše sporočilo <br> Lep pozdrav, <br>%ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "odprite stran z primeri v brskalniku"
+  },
   "pref_template_tip": {
     "message": "Predlogo lahko izboljšate s 'spremenljivkami'. Kliknite napredno / spremenljivke za več podrobnosti."
   },

@@ -1188,6 +1188,9 @@
   "pref_templateBox_tip": {
     "message": "Skriv din e-postmall i detta fält, t.ex. Hej %from(name)%, <br> tack för ditt meddelande <br> hälsningar, <br>%ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "öppna exempel sida i webbläsaren"
+  },
   "pref_template_tip": {
     "message": "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information."
   },

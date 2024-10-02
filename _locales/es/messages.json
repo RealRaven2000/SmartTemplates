@@ -1143,6 +1143,9 @@
   "pref_templateBox_tip": {
     "message": "Escriba su plantilla aquí, como: Hola %from(name)%<br> Gracias por tu mensaje<br> un saludo, %ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "abrir la página de ejemplos en el navegador"
+  },
   "pref_template_tip": {
     "message": "Puede cambiar el encabezado de respuesta por 'variables'. Consulte la Ayuda para más detalles."
   },

@@ -908,6 +908,9 @@
   "pref_templateBox_tip": {
     "message": "Dalam kotak ini,tempatkan template email Anda, mis. Halo %from(name)%, <br> Terima kasih atas pesan Anda <br> Salam, <br>%ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "buka halaman contoh di browser"
+  },
   "pref_template_tip": {
     "message": "Anda dapat meningkatkan template dengan 'variabel'. Klik lanjutan / variabel untuk informasi lebih lanjut."
   },

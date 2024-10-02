@@ -1125,6 +1125,9 @@
   "pref_templateBox_tip": {
     "message": "In diese Box kommt die Nachrichtenvorlage z.b. Hallo %from(name)%<br> Danke für Ihre Nachricht<br> Gruß, <br>%ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "Beispielseite im Browser öffnen"
+  },
   "pref_template_tip": {
     "message": "Sie können auch Schlüsselwörter 'Variablen' verwenden. Für Details klicken Sie Mehr / Variablen."
   },

@@ -1197,6 +1197,9 @@
   "preheader.inlineStyles": {
     "message": "[可選] 添加您自己的樣式屬性，以分號分隔。沒有這個參數，SmartTemplates 將插入 'display:none' 來自動使該部分不可見。"
   },
+  "pref_templates.openBrowser": {
+    "message": "在瀏覽器中打開範例頁面"
+  },
   "preheader.text": {
     "message": "預覽文本必須包含在雙引號內，雙引號也可以包含 $clipboardStarred$ 關鍵字。或者您可以使用 $clipboardLiteral$ 或 $selectionLiteral$（後者僅在從智能片段使用時有效）",
     "placeholders": {

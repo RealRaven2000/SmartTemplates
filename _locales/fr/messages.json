@@ -1179,6 +1179,9 @@
   "pref_templateBox_tip": {
     "message": "Écrivez votre modèle dans cette boîte, ex. : Salut %from(name)%<br> Merci pour ton message<br> salutations, %ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "ouvrir la page d'exemples dans le navigateur"
+  },
   "pref_template_tip": {
     "message": "Vous pouvez modifier un entête avec des variables. Voir l'aide pour davantage d'informations."
   },

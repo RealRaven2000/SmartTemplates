@@ -1179,6 +1179,9 @@
   "pref_templateBox_tip": {
     "message": "Напишите свой шаблон, к примеру Привет %from(name)%<br> Спасибо за сообщение <br> Всего наилучшего, %ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "открыть страницу примеров в браузере"
+  },
   "pref_template_tip": {
     "message": "Вы можете использовать переменные, описанные в справке."
   },

@@ -1146,6 +1146,9 @@
   "pref_templateBox_tip": {
     "message": "Escreva seu modelo nest caixa ex.: Olá %de(nome)%, <br> Obrigado pela sua mensagem <br> cumprimentos, <br>%próprio nome%"
   },
+  "pref_templates.openBrowser": {
+    "message": "abrir a página de exemplos no navegador"
+  },
   "pref_template_tip": {
     "message": "Você pode alterar o cabeçalho da mensagem anterior usando variáveis. Veja a ajuda para mais detalhes."
   },

@@ -1131,6 +1131,9 @@
   "pref_templateBox_tip": {
     "message": "Inserire il modello in questa area di testo, ad esempio Ciao %from(name)%, <br> grazie per il tuo messaggio <br> saluti, <br>%ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "apri la pagina degli esempi nel browser"
+  },
   "pref_template_tip": {
     "message": "È possibile modificare l'intestazione utilizzando molteplici variabili. Consultare i contenuti guida per ulteriori informazioni"
   },

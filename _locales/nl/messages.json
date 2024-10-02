@@ -1161,6 +1161,9 @@
   "pref_templateBox_tip": {
     "message": "Schrijf uw sjabloon in dit veld, bv. Hallo %from(name)%,<br> Bedankt voor uw bericht<br> Met vriendelijke groet, %ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "open de voorbeeldpagina in de browser"
+  },
   "pref_template_tip": {
     "message": "U kunt de aanhalingskoptekst wijzigen met ‘variabelen’. Klik op Geavanceerd / Variabelen voor meer informatie."
   },

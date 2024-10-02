@@ -1161,6 +1161,9 @@
   "pref_templateBox_tip": {
     "message": "メッセージのテンプレートを入力してください。例：こんにちは、%from(name)% さん。<br>メッセージありがとうございました。<br>敬具 %ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "ブラウザでサンプルページを開く"
+  },
   "pref_template_tip": {
     "message": "変数による引用ヘッダーのカスタマイズができます。詳細はヘルプを参照してください。"
   },

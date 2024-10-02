@@ -1179,6 +1179,9 @@
   "pref_templateBox_tip": {
     "message": "Escrivètz vòstre modèl dins aquesta bóstia, ex. : Adieu %from(name)%<br> Mercé per ton messatge<br> salutacions, %ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "obre la pàgina d'exemples al navegador"
+  },
   "pref_template_tip": {
     "message": "Podètz modificar una entèsta amb de variablas. Veire l'ajuda per mai d'informacions."
   },

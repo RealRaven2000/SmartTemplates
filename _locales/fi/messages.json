@@ -1182,6 +1182,9 @@
   "pref_templateBox_tip": {
     "message": "Kirjoita pohjasi tähän tekstilaatikkoon esim. Hei %from(name)%<br> Kiitos viestistäsi toivoien, %ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "avaa esimerkkisivu selaimessa"
+  },
   "pref_template_tip": {
     "message": "Voit muuttaa lainauksen otsaketta muuttujilla. Ohjeessa lisätietoa."
   },

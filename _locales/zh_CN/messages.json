@@ -1173,6 +1173,9 @@
   "pref_templateBox_tip": {
     "message": "在此框中写下您的模板，例如： Hello %from(name)%<br> Thanks for your message<br> regards, %ownname%"
   },
+  "pref_templates.openBrowser": {
+    "message": "mở trang ví dụ trong trình duyệt"
+  },
   "pref_template_tip": {
     "message": "您可以通过关键词'变量'更改引用头文件。更多信息请查看帮助。"
   },
