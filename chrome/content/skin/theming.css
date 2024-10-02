@@ -11,6 +11,8 @@
     --color-config-label: rgba(80,40,40,0.8); 
 	  --h4-background: rgb(60,60,60);
 	  --h4-color: rgb(180,180,180);
+    --table-border: solid 1px rgba(40,40,40,0.5);
+    --table-lines: dotted 1px rgba(40,40,40,0.4);
   }
 }
 
@@ -25,6 +27,8 @@
     --color-config-label: rgba(180,80,140,0.8); 
 	  --h4-background: rgb(180,180,180);
 	  --h4-color: rgb(60,60,60);
+    --table-border: solid 1px rgba(240,240,240,0.5);
+    --table-lines: dotted 1px rgba(240,240,240,0.4);
   }
 }
 
