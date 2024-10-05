@@ -144,9 +144,14 @@ padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;"&gt;<br>
       </p><br>
       <div style="display: none;" class="answer">
         <p class="tip">
-          <em>TIP:</em> This template is intended for New messages but is also valid for Reply and Forward
+          <em>TIP:</em> This template is intended for writing new messages but is also valid for reply and forward.
+          When in a new email, certains fields (such as from, identity and subject) cannot usually be determined
+          directly after opening composer. Instead they will show as interactive fields that can be updated with 
+          a single click. To completely remove the interactive field either send of the mail or click the 
+          button 
         </p>
         <h5 class="templateBlock">template<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
+        <div class="container">
           <div class="code_block">
 &lt;p&gt;Dear <code>%recipient(name)%</code>,&lt;/p&gt;<br>
 &lt;p&gt;<code>%cursor%</code>&lt;/p&gt;<br>
@@ -154,6 +159,15 @@ padding: 0.5em 2em 0.5em 0.5em; margin: 0.5em 0px;"&gt;<br>
 &amp;nbsp;&amp;nbsp;<code>%identity(name)%</code>&lt;/p&gt;<br>
 <code>%sig%</code> 
           </div>
+
+          <div class="preview">
+            <span class="previewHeader">Preview</span>
+            <p>
+              <img src="img/write-new-template.png">
+            </p>
+          </div>
+
+        </div>
       </div>
     </li>
 
@@ -192,6 +206,7 @@ Calibri, source-sans-pro, sans-serif; color: #5E1F00; "&gt;<br>
           <em>TIP:</em> quote headers are useful for Reply and Forward
         </p>
         <h5 class="templateBlock">quote header<div class="copy" onclick="copyToClipboard(this);">copy!</div></h5>
+        <div class="container">
           <div class="code_block">
 &lt;style&gt;<br>
 .qhLabel {<br>
@@ -224,6 +239,7 @@ Calibri, source-sans-pro, sans-serif; color: #5E1F00; "&gt;<br>
               <span class="qhLabel">Cc:</span> Jane &lt;jane@example.com&gt; <br>
             </div>
           </div>  
+        </div>
 
 
       </div>
