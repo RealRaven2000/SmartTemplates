@@ -1913,7 +1913,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
             rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
         switch(fromPart) {
           case 'subject':
-            util.addUsedPremiumFunction('matchTextFromSubject');
+            util.addUsedPremiumFunction("matchTextFromSubject");
             if (!hdr) {
               msg = msg.replace(matchPart[i], "");
               util.logToConsole("matchTextParser() - matchTextFromSubject failed - couldn't retrieve header from Uri [" + gMsgCompose.originalMsgURI + "] - did you REPLY to a message?");
@@ -1930,7 +1930,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
             let rootEl = SmartTemplate4.composer.body;
             extractSource = rootEl.innerText;
             // util.popupLicenseNotification("matchTextFromBody", true, true);
-            util.addUsedPremiumFunction('matchTextFromBody');
+            util.addUsedPremiumFunction("matchTextFromBody");
             util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
             break;
           default:
@@ -2185,7 +2185,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   /* delete text in template / signature itself */
 	if (!firstPass && matches) {
 		try {
-			util.addUsedPremiumFunction('deleteText');
+			util.addUsedPremiumFunction("deleteText");
 			for (let i=0; i<matches.length; i++) {
 				// parse out the argument (string to delete)
 				msg = msg.replace(matches[i],'');
@@ -2208,7 +2208,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   /* replace texts in template / signature itself */
 	if (!firstPass && matchesR) { // replacements in place
     try {
-      util.addUsedPremiumFunction('replaceText');
+      util.addUsedPremiumFunction("replaceText");
       
       for (let i=0; i<matchesR.length; i++) {
         // parse out the argument (string to delete)
@@ -2241,7 +2241,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   /* Remove quoted texts */
   if (quoteMatches) {
 		try {
-      util.addUsedPremiumFunction('deleteQuotedText');
+      util.addUsedPremiumFunction("deleteQuotedText");
       const isHTML = IsHTMLEditor();
 
 			for (let i=0; i<quoteMatches.length; i++) {
@@ -2291,7 +2291,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   /* Replace quoted text */
 	if (quoteMatchesR) { // replacements in quote
     try {
-      util.addUsedPremiumFunction('replaceQuotedText');
+      util.addUsedPremiumFunction("replaceQuotedText");
       const isHTML = IsHTMLEditor(); 
       
       for (let i=0; i<quoteMatchesR.length; i++) {
@@ -2345,7 +2345,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   /* Remove quoted tags */
   if (quoteTags) {
 		try {
-      util.addUsedPremiumFunction('deleteQuotedTags');
+      util.addUsedPremiumFunction("deleteQuotedTags");
 			for (let i=0; i<quoteTags.length; i++) {
 				// parse out the argument (string to delete)
 				msg = msg.replace(quoteTags[i],'');  // remove from template
@@ -2409,12 +2409,12 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   /* Replace quoted tags */  
   if (quoteTagsR) {
 		try {
-      util.addUsedPremiumFunction('replaceQuotedTags');
+      util.addUsedPremiumFunction("replaceQuotedTags");
       for (let i=0; i<quoteTagsR.length; i++) {
         let params = {p1: null, p2: null, p3: 1};        
         // parse out the argument (string to delete)
         msg = msg.replace(quoteTagsR[i],''); // remove from template
-        if (parseParams(quoteTagsR[i], params, 'replaceQuotedTags')) {
+        if (parseParams(quoteTagsR[i], params, "replaceQuotedTags")) {
           let minQuoteLevel = params.p3,
               minSize = params.p4 || 0,
               s = util.unquotedRegex(params.p1),
@@ -2855,7 +2855,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 									util.logToConsole("matchText() - matchTextFromSubject failed - couldn't retrieve header from Uri");
 									return "";
 								}
-								util.addUsedPremiumFunction('matchTextFromSubject');
+								util.addUsedPremiumFunction("matchTextFromSubject");
 								let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 										charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
 								extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("subject"), charset);
@@ -2874,7 +2874,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 								}
 								if (!extractSource)
 								  extractSource = rootEl.innerText;
-								util.addUsedPremiumFunction('matchTextFromBody');
+								util.addUsedPremiumFunction("matchTextFromBody");
 								util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
 								break;
 							default:
@@ -2943,7 +2943,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       let whatWasModified = "", isDataModified = false;
 						
 			if (prefs.isDebugOption('headers')) debugger;			
-			util.addUsedPremiumFunction('header.' + cmd);
+			util.addUsedPremiumFunction("header." + cmd);
       let targetString = '',
           modType = '',
           textParamList = argString.substr(argString.indexOf(",")+1); // textParam
@@ -3606,7 +3606,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             return bodyContent.substring(0, length); 
           }
 				case "attach":
-					util.addUsedPremiumFunction('attach');
+					util.addUsedPremiumFunction("attach");
           attachFile(arg);
 					return "";
         case "file":
@@ -3711,7 +3711,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           }
           break;
         case "conditionalText":
-          util.addUsedPremiumFunction('conditionalText');
+          util.addUsedPremiumFunction("conditionalText");
           return insertConditionalText(arg);
         case "clipboard":
           if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
@@ -3763,6 +3763,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           if (token.startsWith("tags")) { // [issue 320]
             // test.
             // const messageid = SmartTemplate4.MessageHdr.get("message-id");
+            if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
+              util.addUsedPremiumFunction("tags");
+              return "";
+            }            
             const tags = SmartTemplate4.MessageHdr.get("tags");
             switch (token) {
               case "tags":

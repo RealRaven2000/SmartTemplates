@@ -817,7 +817,7 @@ export class Parser {
           // ComposeFields = gMsgCompose.compFields;
               
         if (await Preferences.isDebugOption('headers')) debugger;			
-        Util.addUsedPremiumFunction('header.' + cmd);
+        Util.addUsedPremiumFunction("header." + cmd);
         let targetString = '',
             modType = '',
             argument = argString.substr(argString.indexOf(",")+1); 
@@ -1147,7 +1147,7 @@ export class Parser {
     }
 
     function getNewsgroup() {
-      Util.logDebugOptional('regularize', 'getNewsgroup()');
+      Util.logDebugOptional("regularize", "getNewsgroup()");
       let acctKey = msgDbHdr.accountKey;
       //const account = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).getAccount(acctKey);
       //dump ("acctKey:"+ acctKey);
@@ -1758,7 +1758,7 @@ export class Parser {
           case "messageRaw": //returns the arg-th first characters of the content of the original message
             return hdr.content(arg?/\((.*)\)/.exec(arg)[1]*1:2048);
           case "attach":
-            Util.addUsedPremiumFunction('attach');
+            Util.addUsedPremiumFunction("attach");
             attachFile(arg);
             return "";
           case "file":
@@ -1833,7 +1833,7 @@ export class Parser {
             }
             break;
           case "conditionalText":
-            Util.addUsedPremiumFunction('conditionalText');
+            Util.addUsedPremiumFunction("conditionalText");
             return insertConditionalText(arg);
           case "clipboard":
             Util.logIssue184("Restrict clipboard to Pro Users!");

@@ -378,7 +378,7 @@ export let Util = {
     if (!offsets) { throw new Error("dateFormat() needs new offsets parameter!");}
 		Util.logDebugOptional('timeStrings','dateFormat(' + time + ', ' + timeFormat + ', ' + timezone  +')\n' + 
 		  'Forced Timezone[' + offsets.whatIsTimezone + ']= ' + Util.getTimezoneOffset(offsets.whatIsTimezone));
-		this.addUsedPremiumFunction('dateFormat');
+		this.addUsedPremiumFunction("dateFormat");
 		if (!timezone) timezone=0;
 		try {
 			let tm = new Date();

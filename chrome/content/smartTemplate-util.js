@@ -223,7 +223,7 @@ SmartTemplate4.Util = {
    * this gathers all into a single consolidated notification.	
 	 */
 	premiumFeatures: new Array(),  // only the array in the main instance Util will be used
-	addUsedPremiumFunction: function addUsedPremiumFunction(f) {
+	addUsedPremiumFunction: function (f) {
 		if (!SmartTemplate4.Util.premiumFeatures.some(e => e == f))
 			SmartTemplate4.Util.premiumFeatures.push(f);
 	},
@@ -1895,7 +1895,7 @@ SmartTemplate4.Util = {
     
 		util.logDebugOptional('timeStrings','dateFormat(' + time + ', ' + timeFormat + ', ' + timezone  +')\n' + 
 		  'Forced Timezone[' + SmartTemplate4.whatIsTimezone + ']= ' + util.getTimezoneOffset(SmartTemplate4.whatIsTimezone));
-		util.addUsedPremiumFunction('dateFormat');
+		util.addUsedPremiumFunction("dateFormat");
 		if (!timezone) timezone=0;
 		try {
 			let tm = new Date();
