@@ -2929,7 +2929,52 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 			}
 			return "";
 		}
-		
+
+    // 2 helpers for modifyHeader - uses ComposeFields
+    function getModType(hdrField, ComposeFields) {
+      switch (hdrField) {
+        case "subject":
+          return "string";
+        case "recipient":
+        case "to":
+        case "cc":
+        case "bcc":
+        case "from":
+        case "reply-to":
+          return "address";
+        case "message-id":
+          return "string";
+        default:
+          if (isClobberHeader) {
+            return "string";
+          }
+          return ""; // no know type
+      }
+    }
+    function getDefaultString(hdrField, ComposeFields, clobberHeader) {
+      switch (hdrField) {
+        case "subject":
+          return ComposeFields.subject;
+        case "recipient":
+        case "to":
+          return ComposeFields.to;
+        case "cc":
+          return ComposeFields.cc;
+        case "bcc":
+          return ComposeFields.bcc;
+        case "from":
+          return ComposeFields.from;
+        case "reply-to":
+          return ComposeFields.replyTo;
+        case "message-id":
+          return ComposeFields.messageId;
+        default:
+          if (clobberHeader) {
+            return gMsgCompose.compFields.getHeader(hdrField) || "";
+          }
+          return "";
+      }
+    }		
 		// modify a number of headers with either a string literal 
 		// or a regex match (depending on matchFunction argument)
 		// hdr: "subject" | "to" | "from" | "cc" | "bcc" | "reply-to"
@@ -2940,12 +2985,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       const whiteList = ["subject","to","from","cc","bcc","reply-to","priority","message-id"],
             ComposeFields = gMsgCompose.compFields;
 
+      // get header
+      const modType = getModType(hdrField, ComposeFields);
+
       let whatWasModified = "", isDataModified = false;
 						
 			if (prefs.isDebugOption('headers')) debugger;			
 			util.addUsedPremiumFunction("header." + cmd);
       let targetString = '',
-          modType = '',
           textParamList = argString.substr(argString.indexOf(",")+1); // textParam
       let isMultiPass = false; // use this to do multiple passes with multiple parameters e.g. header.delete(subject,"1","2","3")
       let multiArgs = [];
@@ -2970,7 +3017,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 textParamList += util.clipboardRead();
               }
             } else {
-              // for setting / perfixing or appending, concatenate all arguments to a single string
+              // for setting / prefixing or appending, concatenate all arguments to a single string
               
               switch (cmd) {
                 case "delete":
@@ -2984,7 +3031,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 default:
                   // append sanitized params
                   // remove quotes at start and end and replace escaped commas
-                  textParamList += a.replace(/^"(.*)"$/, '$1').replaceAll("\\,",","); 
+                  let nextArg = a.replace(/^"(.*)"$/, '$1').replaceAll("\\,",","); 
+                  if (modType == "address") {
+                    // [issue 327] support multiple address parameters
+                    const optionalComma = textParamList.length ? "," : "";
+                    textParamList += optionalComma + nextArg;
+                  } else {
+                    textParamList += nextArg; // for ordinary strings, just concat all arguments without delimiter.
+                  }
                   break;
               }
             }
@@ -3027,41 +3081,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             return "";
           }
         }
-        // get header
-        modType = 'address';
-        switch (hdrField) {
-          case 'subject':
-            targetString = ComposeFields.subject;
-            modType = 'string';
-            break;
-          case 'recipient':
-          case 'to':
-            targetString = ComposeFields.to;
-            break;
-          case 'cc':
-            targetString = ComposeFields.cc;
-            break;
-          case 'bcc':
-            targetString = ComposeFields.bcc;
-            break;
-          case 'from':
-            targetString = ComposeFields.from;
-            break;
-          case 'reply-to':
-            targetString = ComposeFields.replyTo;
-            break;
-          case "message-id":
-            modType = 'string';
-            targetString = ComposeFields.messageId;
-            break;
-          default:
-            if (isClobberHeader) {
-              modType = 'string';
-              targetString = gMsgCompose.compFields.getHeader(hdrField) || "";
-            }
-            else modType = '';
-            break;
-        }
+        targetString = getDefaultString(hdrField, ComposeFields, isClobberHeader);
+
         // modify header
         switch (modType) {
           case 'string': // single string
@@ -3203,8 +3224,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           
           if (!idKey) {
             util.logToConsole("Couldn't find an identity from the email address: <" + fromAddress + ">");
-          }
-          else {
+          } else {
             let curId = identityList.selectedItem.getAttribute('identitykey'),
                 currentHeader = MailServices.headerParser.parseEncodedHeader(identityList.selectedItem.getAttribute('value'))[0];
             
@@ -3227,8 +3247,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 					// there is a problem with dark themes - when editing the from address the text remains black.
 					// identityList.setAttribute("editable", "false");
 					// identityList.removeAttribute("editable");
+          return ""; // finally will clean up before returning
 				}
-        else if (modType == 'address') {
+        if (modType == 'address') {
           // [issue 22] we need to prep the addressing widget to avoid inserting an empty line on top
           // rebuild all addresses - for this we need to remove all [dummy] rows
           // except for the very first one.
@@ -3241,19 +3262,20 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               adContainer.removeChild(pill);
             }
           }
-          
           CompFields2Recipients(ComposeFields);
-        }
-        if (whatWasModified && isDataModified ) {
-          // remember to update these elements when editor is ready.
-          util.storeModifiedHeaders(SmartTemplate4.PreprocessingFlags, whatWasModified); 
         }
       }
       catch(ex) {
         util.logException('modifyHeader()', ex);
       }
-      return ''; // consume
-    }  // modifyHeader()
+      finally {
+        if (whatWasModified && isDataModified) {
+          // remember to update these elements when editor is ready.
+          util.storeModifiedHeaders(SmartTemplate4.PreprocessingFlags, whatWasModified);
+        }
+      }
+      return ""; // consume
+    }  // modifyHeader() ENDS
     
     // remove  (  ) from argument string
     function removeParentheses(arg) {

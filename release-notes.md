@@ -6,6 +6,8 @@ The full change log with screen shots [can be found here](https://smarttemplates
 *   Variables Page: added missing text in explanation of the %preHeader% parameter  
 *   Examples Page: added link to open Examples Page in browser.
 *   Fixed spelling in Dutch months and days - these now start with lowercase letters
+*   Support for multiple address parameters in header.set / header.append [issue #327]
+
 
 
 **Bug Fixes** 

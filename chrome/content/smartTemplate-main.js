@@ -196,8 +196,9 @@ END LICENSE BLOCK
     # Variables page now support dark mode.
 
   Version 4.9 - WIP
-    # [issue 320] - %tags% = new variable to insert tags in Email
-    # [issue 321] - missing text in explanation of the %preHeader% parameter headerText 
+    # [issue 320] %tags% = new variable to insert tags in Email
+    # [issue 321] missing text in explanation of the %preHeader% parameter headerText 
+    # [issue 327] support multiple address parameters in header.set / header.append
     # Added link to open Examples Page in browser.
     # [issue 322] SmartTemplates ignored when creating an email from the Thunderbird taskbar 
                   context menu (see also issue 272)
