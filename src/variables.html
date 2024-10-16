@@ -587,9 +587,9 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 	</p>
 </article>
 
-<!-- ##### Quote Manipulation #### -->
+<!-- ##### Quote Modification #### -->
 <a name="quoteManipulation"> </a>
-<h3 class="helpchapter">Quote Manipulation (Pro Function)</h3>
+<h3 class="helpchapter">Quote Modification (Pro Function)</h3>
 <article>
   <ul>
     <li>
@@ -609,8 +609,9 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
         <code>%replaceQuotedTags("<i>selector</i>","<i>replacementHTML</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote<br>
         <i>searchText</i> - must be in double quotes - the searchText argument must be a regular expression. 
         Note that whitespace can be best represented as \s because it can also contain line breaks. 
-        Commas and double quote characters cannot be used.<br>
+        Double quote characters and commas cannot be used.  <br>
         <i>replacementHTML</i> - must be in double quotes - text or a html tag which will be inserted in page.
+        To insert a comma in the text parameter, prefix it with a backslash like this: <span class="paramLiteral">\,</span>
         <i>quoteLevel</i> - optional, (number) which minimal quote level to start from
         <br>
         <i>selector</i> -  what you would use to address the tag in css. simplest case "img", or "p" but attribute selectors 

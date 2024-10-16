@@ -198,7 +198,7 @@ permalink: premium.html
   </tr>
   
   <tr>
-    <th><a href="#quoteManipulation">Quote Manipulation</a><br>
+    <th><a href="#quoteManipulation">Quote Modification</a><br>
     Remove text, images etc. based on quote level.<br>
     Clean and shrink long reply threads.</th>
     <td><span class="check negative">✘</span></td>
@@ -275,7 +275,7 @@ permalink: premium.html
 </article>
 
 <a name="quoteManipulation"> </a>
-<h3 class="helpchapter">Quote Manipulation</h3>
+<h3 class="helpchapter">Quote Modification</h3>
 <article>
   <p>
   <a href="https://github.com/RealRaven2000/SmartTemplates/issues/31">[issue 31]</a> 
@@ -297,8 +297,11 @@ permalink: premium.html
           Deletes tags from the quote<br>
         <i>searchText</i> - must be in double quotes - the searchText argument must be a regular expression. 
         Note that whitespace can be best represented as \s because it can also contain line breaks. 
-        Commas and double quote characters cannot be used.<br>
-        <i>replacementHTML</i> - must be in double quotes - text or a html tag which will be inserted in page.
+        Double quote characters cannot be used. 
+        <i>replacementHTML</i> - must be in double quotes - text or a html tag which will be inserted in page. 
+        To use a Comma within the string parameter, prefix it with a 
+        backslash like this: <code class="html">\,</code> - see 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/280">[issue 280]</a><br>
         <i>quoteLevel</i> - optional, (number) which minimal quote level to start from
         <br>
         <i>selector</i> -  what you would use to address the tag in css. simplest case "img", or "p" but attribute selectors 
