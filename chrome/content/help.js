@@ -253,7 +253,10 @@
           case 1:
             if (child.nodeName=="br") continue;
             if (child?.style?.display=="none") continue; // hidden
-            if (["aside","li","p","div","code","span"].includes(child.nodeName)) {
+            if (child.nodeName=="tr") {
+              list.push(...flattenList(child));
+            }
+            if (["aside","li","p","div","code","span","th","td"].includes(child.nodeName)) {
               list.push(...serialize(child));
             }
           default:
@@ -274,11 +277,12 @@
       chapterElements.push(child);
     }
     for (let el of chapterElements) {
-      switch(el?.tagName) {
+      switch (el?.tagName) {
         case "aside": // fall-through
         case "p":
           contentElements.push(...serialize(el));
           break;
+        case "table":
         case "ul":
           contentElements.push(...flattenList(el));
           break;
@@ -347,9 +351,10 @@
     const allNodes = flattenDocument();
     // make a list of nodes containing the search text
     const foundElements = allNodes.filter(
-      e => (e.nodeType==1 && e.textContent.toLocaleLowerCase().includes(text))
-           || 
-           (e.nodeType==3 && e.nodeValue.toLocaleLowerCase().includes(text)));
+      (e) =>
+        (e.nodeType == 1 && e.textContent.toLocaleLowerCase().replace(/\s+/g, " ").includes(text)) ||
+        (e.nodeType == 3 && e.nodeValue.toLocaleLowerCase().replace(/\s+/g, " ").includes(text))
+    );
     if (!foundElements.length) { 
       return false;
     }

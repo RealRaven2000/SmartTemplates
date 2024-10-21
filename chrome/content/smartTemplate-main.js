@@ -204,6 +204,8 @@ END LICENSE BLOCK
                   context menu (see also issue 272)
     # [issue 323] Spell Dutch months and days with lowercase letters
     # [issue 324] Make SmartTemplates compatible with new ESM modules (jsm will be removed in the next ESR)
+    # [issue 328] Text search should include contents contained in tables. Also improved whitespace collapsing.
+
 
 
 =========================

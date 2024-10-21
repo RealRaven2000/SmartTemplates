@@ -35,7 +35,7 @@
     <div id="searchHelpContent" class="hidden">__MSG_variable.search__</div>
 		<!-- ##### Fix Variables #### -->
 		<h1 class="helpchapter" id="startHeading">__MSG_fix_var.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="fixedVariables" tabindex="-1">
 			<ul>
 				<li tabindex="-1"><code>%identity(name)%</code> = __MSG_ownname.label__ (<code class="deprecated">%ownname%</code>)</li>
 				<li tabindex="-1"><code>%identity(mail)%</code> = __MSG_ownmail.label__ (<code class="deprecated">%ownmail%</code>)</li>
@@ -89,7 +89,7 @@
 
 		<!-- ##### "To" Variables #### -->
 		<h1 class="helpchapter">__MSG_to_var.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="recipient" tabindex="-1">
 			<aside>(__MSG_to_note.label__)</aside>
 			<ul>
 				<li tabindex="-1"><code class="deferable">%recipient%</code> = __MSG_recipient.label__</li>
@@ -104,7 +104,7 @@
 			
 			<!-- ##### "From" Variables #### -->
     <h1 class="helpchapter">__MSG_from_var.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="sender" tabindex="-1">
 			<aside>(__MSG_from_note.label__)</aside>
 			<ul>
 				<li tabindex="-1"><code class="deferable">%from%</code> = __MSG_from.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
@@ -121,7 +121,7 @@
     
 		<!-- ##### "CC" Variables #### -->
 		<h1 class="helpchapter">__MSG_cc_var.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="recipient_cc" tabindex="-1">
 			<aside>(__MSG_cc_note.label__)</aside>
 			<ul>
 				<li tabindex="-1"><code class="deferable">%cc%</code> = __MSG_cc.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
@@ -132,7 +132,7 @@
     </div>
 
 		<h1 class="helpchapter">__MSG_clipboardFunctions__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="clipboard" tabindex="-1">
       <ul>
         <li tabindex="-1"><code>%toclipboard(<i>text</i>)%</code> = __MSG_clipboard.copy__</li>
         <li tabindex="-1"><code>%clipboard%</code> = __MSG_clipboard.insert__</li>
@@ -147,7 +147,7 @@
    
     <!-- ##### AB switches #### -->  
 		<h1 class="helpchapter">__MSG_ab_fields__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="abfields" tabindex="-1">
 
       <aside>__MSG_ab_fields.desc__ <code>%from(<b>addressbook</b>,firstname,workphone)%</code></aside>
       
@@ -219,7 +219,7 @@
       
 		<!-- ##### Special Formatting "{Brackets}" NEW "[[Brackets]]" #### -->
 		<h1 class="helpchapter">__MSG_spec_form.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="abswitches" tabindex="-1">
 			<aside>__MSG_specform_note.label__
 				<br /><b>__MSG_ex_brack.label__</b><br />
 			</aside>
@@ -234,7 +234,7 @@
     
 		<!-- ##### Subject Variables #### -->
 		<h1 class="helpchapter">__MSG_sub_var.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="subject" tabindex="-1">
 			<ul>
 				<li tabindex="-1"><code class="deferable">%subject%</code> = __MSG_sub.label__</li>
 				<li tabindex="-1"><code class="deferable">%subject(2)%</code> = __MSG_sub2.label__</li>
@@ -243,7 +243,7 @@
     
 		<!-- ##### Special Variables (Message-Headerkeys) #### -->
 		<h1 class="helpchapter">__MSG_spec_var.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="special" tabindex="-1">
 			<ul>
 				<li tabindex="-1"><code class="noWrite">%Message-ID%</code> = __MSG_messid.label__</li>
 				<li tabindex="-1"><code class="noWrite">%Newsgroups%</code> = __MSG_newsgr.label__</li>
@@ -254,7 +254,7 @@
     
 		<!-- ##### conditional text #### -->
     <h1 class="helpchapter">__MSG_conditionals.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="conditional" tabindex="-1">
       <p>__MSG_conditionals.note__</p>
 			<ul>
         <li tabindex="-1"><code>%conditionalText(<span class="paramLiteral">forwardMode</span>,"inline text","attach text")%</code> = __MSG_conditional.forwardMode__</li>
@@ -263,7 +263,7 @@
     
 		<!-- ##### mail header manipulation #### -->
 		<h1 class="helpchapter">__MSG_header_function.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="header_modify" tabindex="-1">
 			<aside>__MSG_header_function.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904" target="_blank">[Bug 25904]</a>.</aside>
 			<aside>__MSG_header_function.scope__ subject, from, to, cc, bcc, reply-to, list-*</aside>
 			<ul>
@@ -280,7 +280,7 @@
       
 		<!-- ##### deleteText / replaceText / matchTextFromBody / matchTextFromSubject #### -->
 		<h1 class="helpchapter">__MSG_stringmanip_function.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="strings" tabindex="-1">
 			<aside>__MSG_stringmanip_function.explain__ <a href="https://smarttemplates.quickfolders.org/variables.html#stringManipulation" target="_blank">[String Manipulation]</a>.</aside>
 			<ul>
 				<li tabindex="-1"><code>%deleteText("text")%</code> = __MSG_deleteText__</li>
@@ -306,7 +306,7 @@
     <div class="chapterbreak" />
 
 		<h1 class="helpchapter">__MSG_quote_changers.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="quotes" tabindex="-1">
       <ul>
         <aside>__MSG_quote_changers.desc__ <a href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation" target="_blank">Read Docs</a>.</aside>
         <code>%quotePlaceholder(<span class="param">quoteLevel</span>)</code> __MSG_quotePlaceholder__<br/>
@@ -334,7 +334,7 @@
     </div>
 
 		<h1 class="helpchapter">__MSG_tags.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="tags" tabindex="-1">
 			<ul>
         <aside>__MSG_tags.intro__ <a href="https://smarttemplates.quickfolders.org/premium.html#tags" target="_blank">Read Docs</a>.</aside>
 
@@ -443,7 +443,7 @@ style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0
 			
 		<!-- ##### Fix Variables for Date/Timezone #### -->
 		<h1 class="helpchapter">__MSG_fix_vartz.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="datefixed" tabindex="-1">
 			<aside>(__MSG_fix_vartz_note.label__)</aside>
 			<ul>
 				<li tabindex="-1"><code>%datelocal%</code> = __MSG_datelocal.label__</li>
@@ -461,7 +461,7 @@ style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0
 			
 		<!-- ##### Custom Variables #### -->
 		<h1 class="helpchapter">__MSG_var_custom.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="dateformat" tabindex="-1">
 			<aside>(__MSG_customdf_note.label__)</aside>
 			<ul>
 				<li tabindex="-1"><code>%A%</code> = __MSG_a.up.label__</li>
@@ -524,7 +524,7 @@ style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0
 
 		<!-- ##### X:=Sent Variable #### -->
 		<h1 class="helpchapter">__MSG_var_xsent.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="xsent" tabindex="-1">
 			<aside>__MSG_xsent_note.label__</aside>
 			<ul>
 				<li tabindex="-1"><code class="noWrite">%X:=sent%</code></li>
@@ -534,7 +534,7 @@ style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0
     
 		<!-- ##### Longstring Description #### -->
 		<h1 class="helpchapter">__MSG_xsent_long.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="long" tabindex="-1">
 			<ul>
 				<li tabindex="-1"><code class="noWrite">%X:=sent% %A%, %d%.%m%.%Y% %H%:%M% %date_tz%</code>
 				    <br />__MSG_xsent_long_result.label__</li>
@@ -544,7 +544,7 @@ style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0
     
 		<!-- ##### Shortstring Description #### -->
 		<h1 class="helpchapter">__MSG_xsent_short.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="short" tabindex="-1">
 			<ul>
 				<li tabindex="-1"><code class="noWrite">%X:=sent% %datelocal%</code>
 				    <br />__MSG_xsent_short_result.label__</li>
@@ -560,13 +560,13 @@ style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0
     
 		<!-- ##### HTML -> UTF-8 Note #### -->
 		<h1 class="helpchapter">__MSG_html_note.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="htmlnote" tabindex="-1">
 			<aside>__MSG_html_note.label__</aside>
     </div>
     
 		<!-- ##### Variable Table Note #### -->
 		<h1 class="helpchapter">__MSG_table.cap__</h1>
-    <div class="chapterBody" tabindex="-1">
+    <div class="chapterBody" name="usage" tabindex="-1">
 			<aside>__MSG_table_note.label__</aside>
 			<!-- ##### Variable Table #### -->
 			<table id="keywords">
