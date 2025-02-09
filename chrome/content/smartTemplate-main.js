@@ -228,7 +228,9 @@ END LICENSE BLOCK
 
   Version 4.10.2 - WIP
     # [issue 356] new %dateformat.current()%
+    #             avoid wrapping variables when called from Sandbox script
     # Added more contextual parameters for sandbox: "$priority", "$cc", "$bcc"
+    # [issue 357] new functions composer.composeCase and composer.composeType
 
 
 

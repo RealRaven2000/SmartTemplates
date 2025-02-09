@@ -757,14 +757,13 @@ SmartTemplate4.Util = {
     // we may need to splice in formatting, but arguments is not an Array:
     let args = Array.from(arguments);
 
-    args[0] =
-      `SmartTemplates {${args[0].toUpperCase()}} ${SmartTemplate4.Util.logTime()}\n`;
+    args[0] = `SmartTemplates {${args[0].toUpperCase()}} ${SmartTemplate4.Util.logTime()}\n`;
     if (isReplacement) {
       // highlight first argument
-			// Formatting token is only parsed in FIRST parameter! so we need to concat.
-			// after %c tokens like %s are falsely converted, so we escape % by doubling
-      args[0] = args[0] + "%c" + args[1].replace("%","%%"); // highlight the first passed string argument
-			args[1] = "color: black; background: lightgreen;"; // overwrite the second param with formatting
+      // Formatting token is only parsed in FIRST parameter! so we need to concat.
+      // after %c tokens like %s are falsely converted, so we escape % by doubling
+      args[0] = args[0] + "%c" + args[1].replace("%", "%%"); // highlight the first passed string argument
+      args[1] = "color: black; background: lightgreen;"; // overwrite the second param with formatting
     }
     console.log(...args);
   },
@@ -777,7 +776,7 @@ SmartTemplate4.Util = {
   logWarning: function (a) {
     let msg = "SmartTemplates " + SmartTemplate4.Util.logTime() + "\n";
     console.warn(msg, ...arguments);
-	},
+  },
 
   // flags
   // errorFlag		  0x0 	Error messages. A pseudo-flag for the default, error case.
@@ -1443,9 +1442,9 @@ SmartTemplate4.Util = {
         "images",
         "stream read. Adding data, including encoded filename part: " + encodedFileName
       );
-      return (
-        `data:${contentType}${(filename ? ";filename=" + encodedFileName : "")};base64,${encoded}`
-      );
+      return `data:${contentType}${
+        filename ? ";filename=" + encodedFileName : ""
+      };base64,${encoded}`;
     } catch (ex) {
       util.logWarning("could not decode file: " + filename + "\n" + ex.toString());
       return aURL;
@@ -1537,11 +1536,7 @@ SmartTemplate4.Util = {
       }
       // make sure we can sanitize all pages for our premium users!
       // [issue 68] After update to 2.11, SmartTemplates always displays nonlicensed support site
-      if (
-        uType &&
-        !URL.includes("user=") &&
-        URL.indexOf("smarttemplates.quickfolders.org") > 0
-      ) {
+      if (uType && !URL.includes("user=") && URL.indexOf("smarttemplates.quickfolders.org") > 0) {
         // remove #NAMED anchors
         let x = URL.indexOf("#"),
           anchor = "";
@@ -1550,7 +1545,7 @@ SmartTemplate4.Util = {
           URL = URL.substr(0, x);
         }
         if (URL.includes("?")) URL = URL + "&user=" + uType;
-        else URL = URL + "?user=" + uType; 
+        else URL = URL + "?user=" + uType;
         URL = URL + anchor;
       }
     } catch (ex) {
@@ -1994,8 +1989,8 @@ SmartTemplate4.Util = {
     util.logDebugOptional(
       "timeStrings",
       `dateFormat(${time}, ${timeFormat}, ${timezone})\n` +
-			`Forced Timezone[${SmartTemplate4.whatIsTimezone}]= ` +
-			util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)
+        `Forced Timezone[${SmartTemplate4.whatIsTimezone}]= ` +
+        util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)
     );
     util.addUsedPremiumFunction("dateFormat");
     if (!timezone) timezone = 0;
@@ -2172,7 +2167,7 @@ SmartTemplate4.Util = {
         util.logDebug(
           "Adding timezone offsets:\n" +
             `  UTC Offset: ${nativeUtcOffset / 60}\n` +
-						`  Forced Timezone[${forceTimeZone}]: ${forceHours}`
+            `  Forced Timezone[${forceTimeZone}]: ${forceHours}`
         );
       }
       tm.setTime(time / 1000 + timezone * 60 * 1000);
@@ -2783,10 +2778,7 @@ SmartTemplate4.Util = {
     let timeString = tm.toTimeString(),
       timeZone = timeString.match(/\(.*?\)/),
       retVal = "";
-    util.logDebugOptional(
-      "timeZones",
-      ` timeString = ${timeString}\n timeZone = ${timeZone}`
-    );
+    util.logDebugOptional("timeZones", ` timeString = ${timeString}\n timeZone = ${timeZone}`);
     if (timeZone && timeZone.length > 0) {
       // remove enclosing brackets and split
       let words = timeZone[0].substr(1, timeZone[0].length - 2).split(" ");
@@ -3046,7 +3038,8 @@ SmartTemplate4.Util = {
             ` from https://ftp.mozilla.org/pub/thunderbird/releases/${util.AppverFull}/yourOS/xpi`;
           let errorText =
             `Invalid %language% id: ${forcedLocale}\n` +
-            requiredLocaleTxt + "\n" +
+            requiredLocaleTxt +
+            "\n" +
             "Available Locales on your system: " +
             listLocales.substring(0, listLocales.length - 2);
           util.logToConsole(errorText);
@@ -3745,7 +3738,9 @@ SmartTemplate4.Util = {
       if (rootEl.childNodes.length) {
         for (let c = 0; c < rootEl.childNodes.length; c++) {
           let el = rootEl.childNodes[c];
-          if (!el.tagName) { continue; }
+          if (!el.tagName) {
+            continue;
+          }
           // reply
           if (el.tagName.toLowerCase() == "blockquote") {
             extractSource = el.innerText; // quoted material
@@ -3761,13 +3756,13 @@ SmartTemplate4.Util = {
               }
               if (!startProcess) continue;
               if (f?.tagName) {
-                if (["meta","style","img"].includes(f.tagName.toLowerCase())) continue;
+                if (["meta", "style", "img"].includes(f.tagName.toLowerCase())) continue;
               }
               switch (f.nodeType) {
-                case 1: /* element */
+                case 1 /* element */:
                   extractSource += f?.innerText || "";
                   break;
-                case 3: /* text node - let's omit these as they are all whitespace? */
+                case 3 /* text node - let's omit these as they are all whitespace? */:
                   // extractSource += f.textContent;
                   break;
               }
@@ -3775,15 +3770,39 @@ SmartTemplate4.Util = {
           }
         }
       }
-      if (!extractSource) extractSource = rootEl.innerText;    
+      if (!extractSource) extractSource = rootEl.innerText;
       return extractSource;
     } catch (ex) {
       SmartTemplate4.Util.logError("getBodyComposer failed: ", ex);
       return "";
     }
-  }
-  
+  },
 
+  // extract constant values from an idl, such as Ci.nsIMsgCompType
+  getNumericProperties: function (idlType) {
+    const numericProps = {};
+
+    // Iterate over all properties of Ci.nsIMsgCompType
+    for (let prop in idlType) {
+      // Check if the property value is a number
+      if (typeof idlType[prop] === "number") {
+        numericProps[prop] = idlType[prop];
+      }
+    }
+
+    return numericProps;
+  },
+
+  // extract constant symbaol from an idl, such as Ci.nsIMsgCompType.ForwardAsAttachment
+  getNumericProperty: function (idl, value) {
+    const numericProps = this.getNumericProperties(idl);
+    const reverseLookup = Object.entries(numericProps).reduce((acc, [key, value]) => {
+      acc[value] = key;
+      return acc;
+    }, {});
+
+    return reverseLookup[value] || value.toString();
+  },
 };  // ST4.Util
 
 

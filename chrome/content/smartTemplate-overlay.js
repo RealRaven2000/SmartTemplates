@@ -2240,7 +2240,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     "header.deleteFromSubject",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
 		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg",
-    "conditionalText", "clipboard", "toclipboard", "attachments", "preheader", "abortComposer"
+    "conditionalText", "clipboard", "toclipboard", "attachments", "preheader", "abortComposer",
+    "composer.composeCase", "composer.composeType"
 	);
 	// new classification for time variables only
 	addTokens("reserved.time", 
@@ -3369,7 +3370,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             util.clipboardWrite(newArgs[0].replace(/^"(.*)"$/, "$1"));
           }
           return "";
-
+        case "composer.composeCase": // "new" | "rsp" | "fwd"
+          return SmartTemplate4.smartTemplate.setComposeCase(gMsgCompose.type);
+        case "composer.composeType":
+          return SmartTemplate4.Util.getNumericProperty(Ci.nsIMsgCompType, gMsgCompose.type);
         default:
           // [Bug 25904]
           if (token.startsWith("header")) {
@@ -3881,6 +3885,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
   function removeEmptyString(str) {
     // Deal with <span class=st4optional args="' + arg + '" empty="true" />
     if (!str) return "";
+    if (typeof str != "string") return "";
     if (
       str.startsWith("<span class=st4optional") &&
       str.includes("empty")
@@ -4021,6 +4026,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                         return arg; // Directly returns the contextual parameter
                       }
 
+                      if (JSON.stringify(arg) === "{}") { // empty object
+                        // write variable.sub instead of variable.sub() !
+                        return ""; // otherwise it will return [object Object]
+                      }
+
                       // Otherwise, rewrap non-contextual arguments in double quotes:
                       return `"${arg}"`;
                     })
@@ -4076,9 +4086,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         if (prefs.isDebugOption("sandbox")) debugger;
         x = await Cu.evalInSandbox("(" + script + ")", sandbox); //todo: need to check if await is safe here
         //prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
-        if (x.toString === String.prototype.toString) {
+        if (x && x.toString === String.prototype.toString) {
           x = x.toString();
         } else {
+          console.log("Unexpected result after Cu.evalInSandbox: ", x)
           x = "security violation";
         }
       } catch (ex) {
@@ -4090,13 +4101,26 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           // Optionally pass the error to the user (or log it for debugging)
           alert(
             "ReferenceError in Sandboxed SmartTemplates script: It seems a variable was mistyped. Please check your input:\n" +
-            ex
+              ex
           );
-        } else {
-          // Handle other types of errors if necessary
-          console.log("An unexpected error occurred:", ex);
+        } else if (
+          (ex instanceof TypeError || ex.name == "TypeError")  &&
+          (ex.message.includes("can't convert") || ex.message.includes("to primitive type"))
+        ) {
+          x =
+            "<b>SANDBOX ERROR:</b> <br>" +
+            "<pre>Possible missing 'await' when accessing a SmartTemplates variable.\n" +
+            "Make sure all SmartTemplates variables that return a function are awaited.\n" +
+            "Example: Instead of `dateformat_received()`, use `await dateformat_received()`.</pre>";
+        } 
+        if (!x) {
+          x =
+            "<b>SANDBOX ERROR:</b><br>" +
+            "<pre>" +
+            ex.toString().replaceAll("\n", "<br>") +
+            "</pre>";
         }
-        x = "ERR: " + ex;
+        
       }
       javascriptResults.push(x);
       return "%internal-javascript-ref(" + (javascriptResults.length - 1) + ")%"; //todo: safety checks (currently the sandbox is useless)
