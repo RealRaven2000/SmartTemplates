@@ -2190,7 +2190,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     "name", "firstName", "lastName","displayName", "fullname", "fn",  "nickname",
     "prefix", "suffix", "chatname", "mail", "additionalmail",
     "workphone", "homephone", "fax", "pager", "mobile",
-    "addressbook", "clipboard", "toclipboard"
+    "addressbook", "clipboard", "toclipboard",
+    "priority", "cc", "bcc"
   ]
   ContextualParams.push(
     "private.address1",
@@ -2245,7 +2246,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 	addTokens("reserved.time", 
 		"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
 		"datelocal", "dateshort", "dateformat", "date_tz", "tz_name", "cwIso", "dateformat.received",
-		"X:=today", "X:=calculated", "X:=timezone");
+		"dateformat.current", "X:=today", "X:=calculated", "X:=timezone");
 
   addTokens("reserved.optional", "identity"); // non-headers but support [[ optional syntax ]] (remove part if empty)
 
@@ -2275,7 +2276,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 	*/
 	
 	// Replace reserved words
-	async function replaceReservedWords(dmy, token, arg)	{
+	async function replaceReservedWords(dmy, token, arg, options = {isEval : false})	{
     // calling this function just for logging purposes
     function finalize(tok, s, comment) {
       if (s) {
@@ -2927,6 +2928,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           return "%" + token + arg + "%";
         case "dateformat.received":
           SmartTemplate4.whatIsX = SmartTemplate4.XisSent; // force sent format (for sandbox)
+        case "dateformat.current": // fall-through
+          if (token != "dateformat.received") {
+            SmartTemplate4.whatIsX = SmartTemplate4.XisToday; // force current format (for sandbox)
+          }
         case "dateformat": // fall-through
           if (debugTimeStrings) debugger;
           tm = new Date();
@@ -2943,7 +2948,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           if (arg.includes("toclipboard")) {
             token = ""; // no deferred variable, just remove the variable silently
           } else {
-            if (dateFormatSent) {
+            if (dateFormatSent || options.isEval) {
               token = defaultTime;
             } else {
               token = await util.wrapDeferredHeader(
@@ -3480,12 +3485,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
             if (util.checkIsURLencoded(dmy)) return dmy; // this is HTML: we won't escape it.
 
-            token = await util.wrapDeferredHeader(
-              token + arg,
-              isStripQuote ? "" : "??",
-              gMsgCompose.composeHTML,
-              util.getComposeType() == "new"
-            );
+            if (!options.isEval) {
+              token = await util.wrapDeferredHeader(
+                token + arg,
+                isStripQuote ? "" : "??",
+                gMsgCompose.composeHTML,
+                util.getComposeType() == "new"
+              );
+            }
             return token; // should recipient be restored here?
           }
           // <----  early exit for non existent headers, e.g. "from" in Write case
@@ -3535,7 +3542,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         ex
       );
       if (util.checkIsURLencoded(dmy)) return dmy;
-      token = await util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
+      if (!options.isEval) {
+        token = await util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
+      }
       return token;
     }
 
@@ -3931,7 +3940,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         sandbox.variable = async function (name, arg) {
           arg = arg || "";
           if (prefs.isDebugOption("sandbox")) debugger;
-          let retVariable = await replaceReservedWords("", name, arg || "");
+          let retVariable = await replaceReservedWords("", name, arg || "", { isEval: true });
           // await SmartTemplate4.Util.replaceAsync(str, /%([\w-]+)%/gm, replaceReservedWords)
           const retVal = removeEmptyString(retVariable);
           util.logDebugOptional(
@@ -4034,7 +4043,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 );
               }
                 
-              let sbVal = removeEmptyString(await replaceReservedWords("", origName, finalArgs));
+              let sbVal = removeEmptyString(
+                await replaceReservedWords("", origName, finalArgs, { isEval: true })
+              );
               return sbVal;
             };
           })(name);

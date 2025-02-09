@@ -223,8 +223,12 @@ END LICENSE BLOCK
     # [issue 353] new %dateformat.received()% to retrieve date of original mail
     # made compatible with Tb 135.*
 
-  Version 4.10.1 - 28/01/2025 ?
+  Version 4.10.1 - 28/01/2025 
     # [issue 354] Regression in 4.10: automatic forwarding with FiltaQuilla fails
+
+  Version 4.10.2 - WIP
+    # [issue 356] new %dateformat.current()%
+    # Added more contextual parameters for sandbox: "$priority", "$cc", "$bcc"
 
 
 
