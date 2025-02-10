@@ -241,6 +241,9 @@
   "dateformat.explain": {
     "message": "A maioria das variáveis de tempo acima podem ser usadas na string de parâmetro omitindo '%'. Veja também:"
   },
+  "dateformat.received": {
+    "message": "Função para inserir o horário do e-mail de origem."
+  },
   "datelocal.label": {
     "message": "Data e hora (formato local)"
   },
@@ -1365,7 +1368,7 @@
     "message": "Variáveis especiais"
   },
   "specform_note.label": {
-    "message": "A frase entre parênteses abaulados [[Cc: %cc(name)%]] somente será exibida, se a variável %cc(name)% não for vazia!"
+    "message": "A frase entre parênteses abaulados {[[Cc: %cc(name)%]]} somente será exibida, se a variável {%cc(name)%} não for vazia!"
   },
   "spellcheck.label": {
     "message": "Define o idioma da verificação ortográfica. Valores de exemplo: (en, de-DE, es-ES, ru) - o dicionário deve estar instalado."

@@ -5,6 +5,7 @@
     --variables-background:  var(--color-gray-10,#fff) !important;
     --variables-color: rgba(20,20,20,0.9);
     --color-param: rgba(0, 0, 45, 0.8);
+    --color-example:rgba(2, 92, 95, 0.8);
     --paramlist-param: rgb(230,230,230);    
     --contact-switch-color: rgb(128,0,0);
     --anchor-color: rgb(0,60,120);
@@ -21,6 +22,7 @@
     --variables-background: rgb(43, 42, 51);
     --variables-color: rgb(251, 251, 254);
     --color-param: rgba(251, 251, 254, 0.8);  
+    --color-example:rgba(1, 236, 244, 0.8);
     --paramlist-param: rgb(80, 80, 80);    
     --contact-switch-color: rgb(225, 130, 100);
     --anchor-color: rgb(110, 190, 240);

@@ -250,6 +250,9 @@
   "dateformat.label": {
     "message": "Fonction pour insérer l'horaire actuel (champ cliquable)."
   },
+  "dateformat.received": {
+    "message": "Fonction pour insérer l'heure du mail d'origine."
+  },
   "datelocal.label": {
     "message": "Date et heure (format local)"
   },
@@ -1386,7 +1389,7 @@
     "message": "Variables Spéciales"
   },
   "specform_note.label": {
-    "message": "La phrase [[Cc: %cc(name)%]] ne s'affichera que si la variable %cc(name)% peut être remplacée !"
+    "message": "La phrase {[[Cc: %cc(name)%]]} ne s'affichera que si la variable {%cc(name)%} peut être remplacée !"
   },
   "spellcheck.label": {
     "message": "Définit la langue de vérification orthographique. Exemples de valeurs: (en, de-DE, es-ES, fr) - notez que le dictionnaire doit être installé."

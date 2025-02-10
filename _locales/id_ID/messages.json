@@ -173,6 +173,9 @@
   "dateformat.label": {
     "message": "Fungsi untuk memasukkan waktu terkini (bidang yang dapat diklik)"
   },
+  "dateformat.received": {
+    "message": "Fungsi untuk memasukkan waktu email asal."
+  },
   "datelocal.label": {
     "message": "Tanggal / Waktu (format lokal)"
   },
@@ -1082,7 +1085,7 @@
     "message": "Khusus"
   },
   "specform_note.label": {
-    "message": "Bagian dalam kurung ganda  [[Cc: %cc(name)%]] hanya akan ditampilkan jika variabel %cc(name)% bisa diganti!"
+    "message": "Bagian dalam kurung ganda  {[[Cc: %cc(name)%]]} hanya akan ditampilkan jika variabel {%cc(name)%} bisa diganti!"
   },
   "st.confirmVersionLink": {
     "message": "Menampilkan log perubahan untuk SmartTemplates?"

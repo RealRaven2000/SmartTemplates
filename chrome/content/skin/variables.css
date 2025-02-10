@@ -319,6 +319,12 @@ code .paramLiteral, code .param {
   color: rgb(150,90,10) !important;
 }
 
+.codeExample {
+  color: var(--color-example) ;
+  font-family: Consolas, monaco, monospace;
+  font-weight: bold;
+}
+
 .codeTable {
   border-collapse: collapse;
   margin-right: 1em;

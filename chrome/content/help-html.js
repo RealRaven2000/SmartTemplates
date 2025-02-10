@@ -79,8 +79,8 @@ async function initHTML() {
     if (!reg.test(text)) continue; // Skip if no placeholders found
     replacePlaceholdersWithSpans(
       p,
-      ["{attribute=value}", "{imagePath}"],
-      ["paramLiteral", "paramLiteral"]
+      ["{attribute=value}", "{imagePath}", "%file(images/test.jpg)%", "{[[Cc: %cc(name)%]]}", "{%cc(name)%}"], 
+      ["paramLiteral", "paramLiteral", "codeExample", "codeExample", "codeExample"]
     );
   }
     

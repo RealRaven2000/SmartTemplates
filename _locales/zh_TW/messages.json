@@ -247,6 +247,9 @@
   "dateformat.label": {
     "message": "插入當前時間的功能（可單擊字段）。"
   },
+  "dateformat.received": {
+    "message": "插入原始郵件時間的功能。"
+  },
   "datelocal.label": {
     "message": "日期/時間 (本地格式)"
   },
@@ -1392,7 +1395,7 @@
     "message": "特殊"
   },
   "specform_note.label": {
-    "message": "假如變數 %cc(name)% 可以被置換時,將會顯示插入兩個中括號的 [[Cc: %cc(name)%]]!"
+    "message": "假如變數 {%cc(name)%} 可以被置換時,將會顯示插入兩個中括號的 {[[Cc: %cc(name)%]]}!"
   },
   "spellcheck.label": {
     "message": "設置拼寫檢查語言。 示例值：(en, de-DE, es-ES, ru) - 注意必須安裝字典。"

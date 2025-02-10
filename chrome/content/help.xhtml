@@ -43,7 +43,8 @@
 				<li tabindex="-1"><code>%identity(addressbook,<i>fieldId</i>)%</code> = __MSG_identity_ab__<br/>
         <span class="param">fieldId</span> : __MSG_identity_ab.field__
         </li>
-        <aside><b>__MSG_identity_ab.example__</b><br/> __MSG_identity_ab.phoneno__: %identity(addressbook,workphone)%</aside>
+        <aside><b>__MSG_identity_ab.example__</b><br/>
+					<span class="codeExample">__MSG_identity_ab.phoneno__: %identity(addressbook,workphone)%</span></aside>
         
         <div class="chapterbreak" />
 				<li tabindex="-1"><code class="deferable">%date%</code> = __MSG_date.label__</li>
@@ -78,7 +79,7 @@
         <div class="chapterbreak" />
 				<li tabindex="-1"><code>%preheader("headerText",<i>className</i>,<i>"inlineStyles"</i>)%</code> =
 					__MSG_preheader__  
-					__MSG_parameter.escapeCommas__ <span class="monotype">\,</span>
+					__MSG_parameter.escapeCommas__ <span class="codeExample">\,</span>
 			  </li>
 				<h4>__MSG_parameters__</h4>
 				<li class="paramList"><span class="param">headerText</span> : 
@@ -221,7 +222,7 @@
 		<!-- ##### Special Formatting "{Brackets}" NEW "[[Brackets]]" #### -->
 		<h1 class="helpchapter">__MSG_spec_form.cap__</h1>
     <div class="chapterBody" name="abswitches" tabindex="-1">
-			<aside>__MSG_specform_note.label__
+			<aside class="containsParams">__MSG_specform_note.label__
 				<br /><b>__MSG_ex_brack.label__</b><br />
 			</aside>
 			<aside>__MSG_brack_with_var.label__:
@@ -485,6 +486,8 @@ style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0
 				<li tabindex="-1"><code class="noWrite">%p(2)%</code> = __MSG_p2.label__</li>
 				<li tabindex="-1"><code class="deferable">%dateformat()%</code> = __MSG_dateformat.label__
 					<aside>__MSG_dateformat.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26588" target="_blank">[Bug 26588]</a>.</aside>
+				</li>
+				<li tabindex="-1"><code class="noWrite">%dateformat.received()%</code> = 	__MSG_dateformat.received__
 					<aside><b>__MSG_dateformat.example__</b></aside>
           <table class="date_examples">
             <tr>

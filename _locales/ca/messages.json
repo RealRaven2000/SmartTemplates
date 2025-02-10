@@ -247,6 +247,9 @@
   "dateformat.label": {
     "message": "Funció per inserir l’hora actual (camp on es pot fer clic)."
   },
+  "dateformat.received": {
+    "message": "Funció per inserir l'hora del correu d'origen."
+  },
   "datelocal.label": {
     "message": "Data e ora (format local)"
   },
@@ -1395,7 +1398,7 @@
     "message": "Variablas Especialas"
   },
   "specform_note.label": {
-    "message": "La frasa [[Cc: %cc(name)%]] s'aficharà pas que se la variabla %cc(name)% pòt èsser remplaçada !"
+    "message": "La frasa {[[Cc: %cc(name)%]]} s'aficharà pas que se la variabla {%cc(name)%} pòt èsser remplaçada !"
   },
   "spellcheck.label": {
     "message": "Estableix l'idioma de correcció ortogràfica. Valors d’exemple: (en, de-DE, es-ES, ru): tingueu en compte que s’ha d’instal·lar el diccionari."

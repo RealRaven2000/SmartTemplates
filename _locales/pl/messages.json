@@ -247,6 +247,9 @@
   "dateformat.label": {
     "message": "Funkcja wstawiania aktualnego czasu (pole klikalne)."
   },
+  "dateformat.received": {
+    "message": "Funkcja do wstawiania godziny oryginalnego maila."
+  },
   "datelocal.label": {
     "message": "Data i czas (lokalny format)"
   },
@@ -1384,7 +1387,7 @@
     "message": "Zmienne specjalne"
   },
   "specform_note.label": {
-    "message": "Fraza w nawiasach klamrowych [[Cc: %cc(name)%]] będzie wyświetlana tylko, jeśli zmienna %cc(name)% może być zamieniana!"
+    "message": "Fraza w nawiasach klamrowych {[[Cc: %cc(name)%]]} będzie wyświetlana tylko, jeśli zmienna {%cc(name)%} może być zamieniana!"
   },
   "spellcheck.label": {
     "message": "Ustawia język sprawdzania pisowni. Przykładowe wartości: (en, de-DE, es-ES, pl) - zwróć uwagę, że słownik musi być zainstalowany."

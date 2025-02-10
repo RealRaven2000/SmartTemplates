@@ -244,6 +244,9 @@
   "dateformat.label": {
     "message": "Funkce pro vložení aktuálního času (pole, na které lze kliknout)."
   },
+  "dateformat.received": {
+    "message": "Funkce pro vložení času původního e-mailu."
+  },
   "datelocal.label": {
     "message": "Datum / čas (formát dle nastavení locale)"
   },
@@ -1386,7 +1389,7 @@
     "message": "Speciální"
   },
   "specform_note.label": {
-    "message": "Sekce mezi dvojtými závorkami [[Cc: %cc(name)%]] bude zobrazena pokud promněná %cc(name)% může být nahrazena!"
+    "message": "Sekce mezi dvojtými závorkami {[[Cc: %cc(name)%]]} bude zobrazena pokud promněná {%cc(name)%} může být nahrazena!"
   },
   "spellcheck.label": {
     "message": "Nastaví jazyk kontroly pravopisu. Příklad hodnot: (en, de-DE, es-ES, ru) - pamatujte, že slovník musí být nainstalován."

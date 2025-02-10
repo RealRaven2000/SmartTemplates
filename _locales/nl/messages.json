@@ -247,6 +247,9 @@
   "dateformat.label": {
     "message": "Functie voor het invoegen van de huidige tijd (aanklikbaar veld)."
   },
+  "dateformat.received": {
+    "message": "Functie om de tijd van de oorspronkelijke e-mail in te voegen."
+  },
   "datelocal.label": {
     "message": "Datum en tijd (lokale opmaak)"
   },
@@ -1377,7 +1380,7 @@
     "message": "Speciale variabelen"
   },
   "specform_note.label": {
-    "message": "De zin tussen dubbele accolades [[Cc: %cc(name)%]] wordt alleen weergegeven als de variabele %cc(name)% kan worden vervangen!"
+    "message": "De zin tussen dubbele accolades {[[Cc: %cc(name)%]]} wordt alleen weergegeven als de variabele {%cc(name)%} kan worden vervangen!"
   },
   "spellcheck.label": {
     "message": "Stelt de taal voor spellingcontrole in. Voorbeeldwaarden: (en, de-DE, es-ES, ru) – hiervoor moet het woordenboek zijn geïnstalleerd."

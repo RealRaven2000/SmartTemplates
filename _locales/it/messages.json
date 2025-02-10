@@ -244,6 +244,9 @@
   "dateformat.label": {
     "message": "Funzione per l'inserimento del tempo corrente (campo cliccabile)."
   },
+  "dateformat.received": {
+    "message": "Funzione per inserire l'orario dell'email di origine."
+  },
   "datelocal.label": {
     "message": "Data/ora (formato locale)"
   },
@@ -1338,7 +1341,7 @@
     "message": "Variabili speciali"
   },
   "specform_note.label": {
-    "message": "Verrà visualizzata la frase [[Cc: %cc(name)%]] solo se è possibile sostituire la variabile %cc(name)%!"
+    "message": "Verrà visualizzata la frase {[[Cc: %cc(name)%]]} solo se è possibile sostituire la variabile %cc(name)%!"
   },
   "spellcheck.label": {
     "message": "Imposta la lingua per il controllo ortografico. Valori di esempio: (en, de-DE, es-ES, it) - nota che il dizionario deve essere installato."

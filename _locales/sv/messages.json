@@ -250,6 +250,9 @@
   "dateformat.label": {
     "message": "Funktion för att infoga nuvarande tid (klickbart fält)."
   },
+  "dateformat.received": {
+    "message": "Funktion för att infoga tiden för ursprungligt mejl."
+  },
   "datelocal.label": {
     "message": "Datum och tid (lokalt format)"
   },
@@ -1413,7 +1416,7 @@
     "message": "Specialvariabler"
   },
   "specform_note.label": {
-    "message": "Frasen i välvda Konsoler [[Cc: %cc(name)%]] kommer endast visas om variabeln %cc(name)% kan ersättas!"
+    "message": "Frasen i välvda Konsoler {[[Cc: %cc(name)%]]} kommer endast visas om variabeln {%cc(name)%} kan ersättas!"
   },
   "spellcheck.label": {
     "message": "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad."

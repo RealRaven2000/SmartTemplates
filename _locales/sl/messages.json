@@ -247,6 +247,9 @@
   "dateformat.label": {
     "message": "Funkcija za vstavljanje trenutnega časa (polje, ki ga je mogoče klikniti)."
   },
+  "dateformat.received": {
+    "message": "Funkcija za vstavljanje časa izvirnega e-poštnega sporočila."
+  },
   "datelocal.label": {
     "message": "Datum / Čas (oblika trenutnega jezika)"
   },
@@ -1386,7 +1389,7 @@
     "message": "Posebno"
   },
   "specform_note.label": {
-    "message": "Odseki z dvojnimi oglatimi oklepaji [[Cc: %cc(name)%]] bodo prikazani samo, če se spremenljivko %cc(name)% lahko nadomesti!"
+    "message": "Odseki z dvojnimi oglatimi oklepaji {[[Cc: %cc(name)%]]} bodo prikazani samo, če se spremenljivko {%cc(name)%} lahko nadomesti!"
   },
   "spellcheck.label": {
     "message": "Nastavi jezik za preverjanje črkovanja. Primer vrednosti: (en, de-DE, es-ES, ru) - upoštevajte, da mora biti slovar nameščen."

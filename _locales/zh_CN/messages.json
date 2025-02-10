@@ -247,6 +247,9 @@
   "dateformat.label": {
     "message": "插入当前时间的功能（可单击字段）。"
   },
+  "dateformat.received": {
+    "message": "插入原始邮件时间的功能。"
+  },
   "datelocal.label": {
     "message": "日期和时间（本地格式）"
   },
@@ -1390,7 +1393,7 @@
     "message": "特殊变量"
   },
   "specform_note.label": {
-    "message": "在弧面括号内的短语 [[Cc: %cc(name)%]] 将只显示，如果变量 %cc(name)% 可以更换!"
+    "message": "在弧面括号内的短语 {[[Cc: %cc(name)%]]} 将只显示，如果变量 {%cc(name)%} 可以更换!"
   },
   "spellcheck.label": {
     "message": "设置拼写检查语言。示例值：(en, de-DE, es-ES, ru) - 注意必须安装字典。"

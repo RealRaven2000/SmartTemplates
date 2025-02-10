@@ -250,6 +250,9 @@
   "dateformat.label": {
     "message": "Function for inserting current time (clickable field)."
   },
+  "dateformat.received": {
+    "message": "Function for inserting time of origin mail."
+  },
   "datelocal.label": {
     "message": "Date / Time (locale format)"
   },
@@ -1424,7 +1427,7 @@
     "message": "Special Mail Headers"
   },
   "specform_note.label": {
-    "message": "Sections within double brackets [[Cc: %cc(name)%]] will only be displayed if the variable %cc(name)% can be replaced!"
+    "message": "Sections within double brackets {[[Cc: %cc(name)%]]} will only be displayed if the variable {%cc(name)%} can be replaced!"
   },
   "spellcheck.label": {
     "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."

@@ -244,6 +244,9 @@
   "dateformat.label": {
     "message": "現在の時刻を挿入する関数 (クリック可能な領域)"
   },
+  "dateformat.received": {
+    "message": "元のメールの時間を挿入するための機能。"
+  },
   "datelocal.label": {
     "message": "日時 (OS の形式)"
   },
@@ -1368,7 +1371,7 @@
     "message": "特殊"
   },
   "specform_note.label": {
-    "message": "括弧 [[Cc: %cc(name)%]] 内のテンプレートは、その中の変数 %cc(name)% が利用可能である時のみ有効となります。"
+    "message": "括弧 {[[Cc: %cc(name)%]]} 内のテンプレートは、その中の変数 {%cc(name)%} が利用可能である時のみ有効となります。"
   },
   "spellcheck.label": {
     "message": "スペルチェックの言語を指定してください。例：(en, de-DE, es-ES, ru) - スペルチェック辞書をインストールする必要があります。"

@@ -244,6 +244,9 @@
   "dateformat.explain": {
     "message": "La mayoría de las variables de tiempo anteriores se pueden utilizar en la cadena de parámetros omitiendo '%'. Ver también:"
   },
+  "dateformat.received": {
+    "message": "Función para insertar la hora del correo de origen."
+  },
   "dateformat.label": {
     "message": "Función para insertar la hora actual (campo en el que se puede hacer clic)."
   },
@@ -1344,7 +1347,7 @@
     "message": "Especiales"
   },
   "specform_note.label": {
-    "message": "Sólo se mostrará la frase [[Cc: %cc(name)%]] si se puede sustituir la variable %cc(name)%"
+    "message": "Sólo se mostrará la frase {[[Cc: %cc(name)%]]} si se puede sustituir la variable %cc(name)%"
   },
   "spellcheck.label": {
     "message": "Establece el lenguaje de corrección ortográfica. Valores de ejemplo: (en, de-DE, es-ES, ru): tenga en cuenta que el diccionario debe estar instalado."

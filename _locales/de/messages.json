@@ -244,6 +244,9 @@
   "dateformat.label": {
     "message": "Funktion um die aktuelle Zeit einzufügen (klickbares Feld)."
   },
+  "dateformat.received": {
+    "message": "Funktion zum Einfügen der Uhrzeit der Ursprungs-E-Mail."
+  },
   "datelocal.label": {
     "message": "Datum und Zeit (Lokales Format)"
   },
@@ -584,7 +587,7 @@
     "message": "Beispiel"
   },
   "identity_ab.field": {
-    "message": "Informationen zu möglichen zusätzlichen Feldwerten finden Sie im nachfolgenden Kapitel 'Adressbuchfelder'."
+    "message": "Informationen zu möglichen zusätzlichen Feldwerten finden Sie im nachfolgenden Kapitel 'Felder für Adressbuch'."
   },
   "identity_ab.phoneno": {
     "message": "Telefon-Nr"
@@ -1341,7 +1344,7 @@
     "message": "Spezialheader"
   },
   "specform_note.label": {
-    "message": "Der Satz in der Doppelklammer [[Cc: %cc(name)%]] wird nur dann gezeigt, wenn die Variable %cc(name)% ersetzt werden konnte!"
+    "message": "Der Satz in der Doppelklammer {[[Cc: %cc(name)%]]} wird nur dann gezeigt, wenn die Variable {%cc(name)%} ersetzt werden konnte!"
   },
   "spellcheck.label": {
     "message": "Setzt die Sprache der Rechtschreibprüfung. Beispiele: (en, de-DE, es-ES, ru) - das entsprechende Wörterbuch muss installiert sein."

@@ -247,6 +247,9 @@
   "dateformat.label": {
     "message": "Toiminto nykyisen ajan lisäämiseksi (napsautettava kenttä)."
   },
+  "dateformat.received": {
+    "message": "Toiminto alkuperäisen sähköpostin ajan lisäämiseen."
+  },
   "datelocal.label": {
     "message": "Päiväys / Aika (paikallinen muotoilu)"
   },
@@ -1385,7 +1388,7 @@
     "message": "Erikoismuuttujat"
   },
   "specform_note.label": {
-    "message": "Lauseke tuplahakasulkeiden sisällä [[Cc: %cc(name)%]] näytetään vain, jos %cc(name)% voidaan korvata!"
+    "message": "Lauseke tuplahakasulkeiden sisällä {[[Cc: %cc(name)%]]} näytetään vain, jos {%cc(name)%} voidaan korvata!"
   },
   "spellcheck.label": {
     "message": "Asettaa oikeinkirjoituksen kielen. Esimerkkiarvot: (en, de-DE, es-ES, ru, fi) - Huomaa, että sanakirja on asennettava."
