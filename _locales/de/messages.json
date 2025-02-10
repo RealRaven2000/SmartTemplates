@@ -380,11 +380,14 @@
   "fileHTML.label": {
     "message": "HTML or Textdatei. Bei weglassen des optionalen Charset Parameters wird UTF-8 verwendet."
   },
+  "fileImage.altText": {
+    "message": "(optional) Dieser Text wird angezeigt, wenn das Bild fehlt."
+  },
   "fileImage.attributes": {
-    "message": "Optionale Liste von Attribut=Wert-Paaren, wie 'id=image1,class=screenshot'."
+    "message": "(optional) Liste von {attribute=value} Sätzen, wie zum Beispiel 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Bilddatei (png,jpg,gif,bmp,svg). Der optionale altText wird angezeigt falls das Bild nicht zu finden ist."
+    "message": "Fügt ein Bild ein (png, jpg, gif, bmp, svg). {imagePath} kann relativ zum Speicherort der Vorlage sein: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Hinzufügen"

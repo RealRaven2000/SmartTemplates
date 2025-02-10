@@ -386,11 +386,14 @@
   "fileHTML.label": {
     "message": "HTML of platte tekst. Bij ontbreken van een optionele tekensetparameter wordt UTF-8 aangenomen."
   },
+  "fileImage.altText": {
+    "message": "(optioneel) Deze tekst wordt weergegeven als de afbeelding ontbreekt."
+  },
   "fileImage.attributes": {
-    "message": "Optionele lijst van attribuut=waarde-paren, zoals 'id=image1,class=screenshot'."
+    "message": "(optioneel) Lijst van {attribute=value} sets, zoals 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Afbeeldingesbestand (png, jpg, gif, bmp, svg). De optionele altText wordt weergegeven als het bestand niet kan worden gevonden."
+    "message": "Voegt een afbeelding in (png, jpg, gif, bmp, svg). {imagePath} kan relatief zijn ten opzichte van de locatie van de sjabloon: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Toevoegen"

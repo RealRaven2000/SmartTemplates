@@ -386,11 +386,14 @@
   "fileHTML.label": {
     "message": "Fitxer HTML o text sense format. S'assumeix UTF-8 quan s'omet el paràmetre de conjunt de caràcters opcional."
   },
+  "fileImage.altText": {
+    "message": "(opcional) Aquest text es mostra si falta la imatge."
+  },
   "fileImage.attributes": {
-    "message": "Volitelný seznam atribut=hodnota, například 'id=image1,class=screenshot'."
+    "message": "(opcional) Llista de conjunts {attribute=value}, com 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Fitxer d'imatge (png, jpg, gif, bmp, svg). L'altText opcional es mostra si no es pot trobar la imatge."
+    "message": "Insereix una imatge (png, jpg, gif, bmp, svg). {imagePath} pot ser relatiu a la ubicació de la plantilla: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Afegeix"

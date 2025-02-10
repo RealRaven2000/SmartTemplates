@@ -386,11 +386,14 @@
   "fileHTML.label": {
     "message": "Datoteka HTML ali z golim besedilom. Med izpustitvijo parametra za izbirni znak je predpostavljeno UTF-8."
   },
+  "fileImage.altText": {
+    "message": "(neobvezno) Ta besedilo se prikaže, če slika manjka."
+  },
   "fileImage.attributes": {
-    "message": "Neobvezni seznam parov atribut=vredu, kot je 'id=image1,class=screenshot'."
+    "message": "(neobvezno) Seznam nizov {attribute=value}, kot je 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Slikovna datoteka (png, jpg, gif, bmp, svg). Če slike ni mogoče najti, je prikazano izbirno besedilo altText."
+    "message": "Vstavi sliko (png, jpg, gif, bmp, svg). {imagePath} je lahko relativna na lokacijo predloge: %file(images/test.jpg)%"
   },
   "firstName.label": {
     "message": "Ime:"

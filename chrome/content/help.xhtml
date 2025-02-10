@@ -56,10 +56,11 @@
 				<li tabindex="-1"><code>%sig%</code><code>%sig(html)%</code><code>%sig(text)%</code> = __MSG_sig.label__</li>
 				<li tabindex="-1"><code>%sig(2)%</code> = __MSG_sig2.label__</li>
         <div class="chapterbreak" />
+
 				<li tabindex="-1"><code>%file(filePath,encoding)%</code> = __MSG_fileHTML.label__</li>
-				<li tabindex="-1"><code>%file(imagePath,altText,attributeList)%</code> = __MSG_fileImage.label__<br/>
-        <span class="param">attributeList</span> : __MSG_fileImage.attributes__
-        </li>
+				<li tabindex="-1" class="containsParams"><code>%file(imagePath,"altText",attributeList)%</code> = __MSG_fileImage.label__</li>
+        <li class="paramList"><span class="param">altText</span> : __MSG_fileImage.altText__</li>
+        <li class="paramList containsParams"><span class="param">attributeList</span> : __MSG_fileImage.attributes__</li>
 				<li tabindex="-1"><code>%style(styleSheetPath)%</code> = __MSG_fileCSS.label__</li>
 				<li tabindex="-1"><code>%attach(filePath)%</code> = __MSG_attach.label__</li>
         

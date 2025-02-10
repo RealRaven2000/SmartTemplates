@@ -380,11 +380,14 @@
   "fileHTML.label": {
     "message": "Arquivo HTML ou texto simples. UTF-8 é assumido ao omitir o parâmetro opcional 'charset'."
   },
+  "fileImage.altText": {
+    "message": "(opcional) Este texto é exibido se a imagem estiver ausente."
+  },
   "fileImage.attributes": {
-    "message": "Lista opcional de pares atributo=valor, como 'id=image1,class=screenshot'."
+    "message": "(opcional) Lista de conjuntos {attribute=value}, como 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O texto alternativoé exibido se a imagem não pode ser localizada."
+    "message": "Insere uma imagem (png, jpg, gif, bmp, svg). {imagePath} pode ser relativo à localização do modelo: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Adicionar"

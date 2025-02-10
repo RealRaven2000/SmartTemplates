@@ -383,11 +383,14 @@
   "fileHTML.label": {
     "message": "HTML ファイルあるいはプレーンテキストファイル。文字エンコーディングが指定されない場合は、UTF-8 と仮定します。"
   },
+  "fileImage.altText": {
+    "message": "(オプション) 画像が欠落している場合に表示されるテキスト。"
+  },
   "fileImage.attributes": {
-    "message": "Optionele lijst van attribuut=waarde-paren, zoals 'id=image1,class=screenshot'."
+    "message": "(オプション) {attribute=value} セットのリスト、例えば 'class=screenshot,style=width:500px;color:red;'。"
   },
   "fileImage.label": {
-    "message": "画像ファイル (png,jpg,gif,bmp,svg)。画像が見つからない場合は、altText を代わりに表示します。"
+    "message": "画像を挿入します (png, jpg, gif, bmp, svg)。 {imagePath} はテンプレートの場所に対して相対的である場合があります: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "追加"

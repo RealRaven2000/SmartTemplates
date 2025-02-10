@@ -389,11 +389,14 @@
   "fileHTML.label": {
     "message": "Fichier HTML ou texte brut. L'encodage est fixé à UTF-8 si le paramètre d'encodage facultatif n'a pas été précisé."
   },
+  "fileImage.altText": {
+    "message": "(facultatif) Ce texte s'affiche si l'image est manquante."
+  },
   "fileImage.attributes": {
-    "message": "Liste optionnelle de paires attribut=valeur, comme 'id=image1,class=screenshot'."
+    "message": "(facultatif) Liste de jeux {attribute=value}, comme 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable."
+    "message": "Insère une image (png, jpg, gif, bmp, svg). {imagePath} peut être relatif à l'emplacement du modèle : %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Ajouter"

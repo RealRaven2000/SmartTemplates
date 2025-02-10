@@ -389,11 +389,14 @@
   "fileHTML.label": {
     "message": "HTML ή απλό αρχείο κειμένου. Χρησιμοποιείται το UTF- 8 όταν παραλείπεται η προαιρετική παράμετρος συνόλου χαρακτήρων."
   },
+  "fileImage.altText": {
+    "message": "(προαιρετικό) Αυτό το κείμενο εμφανίζεται εάν η εικόνα λείπει."
+  },
   "fileImage.attributes": {
-    "message": "Προαιρετική λίστα από σύνολα attribute=value, όπως 'id=image1,class=screenshot'."
+    "message": "(προαιρετικό) Λίστα με σύνολα {attribute=value}, όπως 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Αρχείο εικόνας (png,jpg,gif,bmp,svg). Το προαιρετικό altText εμφανίζεται αν η εικόνα δεν μπορεί να βρεθεί."
+    "message": "Εισάγει μια εικόνα (png, jpg, gif, bmp, svg). {imagePath} μπορεί να είναι σχετικό με την τοποθεσία του προτύπου: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Πρόσθεσε"

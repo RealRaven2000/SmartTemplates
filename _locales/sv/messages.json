@@ -389,11 +389,14 @@
   "fileHTML.label": {
     "message": "Fil med HTML eller vanlig text. UTF-8 antas när den valfria teckenkodningsparametern utesluts."
   },
+  "fileImage.altText": {
+    "message": "(valfritt) Den här texten visas om bilden saknas."
+  },
   "fileImage.attributes": {
-    "message": "Valfri lista med attribut=värde-par, som 'id=image1,class=screenshot'."
+    "message": "(valfritt) Lista över {attribute=value} uppsättningar, som 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas."
+    "message": "Infogar en bild (png, jpg, gif, bmp, svg). {imagePath} kan vara relativ till platsen för mallen: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Addera"

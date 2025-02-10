@@ -383,11 +383,14 @@
   "fileHTML.label": {
     "message": "HTML nebo text soubor. UTF-8 je předpokládano pokud je vynechan volitelný parametr znakové sady."
   },
+  "fileImage.altText": {
+    "message": "(volitelné) Tento text se zobrazí, pokud obrázek chybí."
+  },
   "fileImage.attributes": {
-    "message": "Volitelný seznam atribut=hodnota, například 'id=image1,class=screenshot'."
+    "message": "(volitelné) Seznam {attribute=value} sad, například 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Obrázkový soubor(png, jpg, gif, bmp, svg). Volitelný 'altText' je zobrazen pokud obrázek nemůže být nalezen."
+    "message": "Vloží obrázek (png, jpg, gif, bmp, svg). {imagePath} může být relativní k umístění šablony: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Přidat"

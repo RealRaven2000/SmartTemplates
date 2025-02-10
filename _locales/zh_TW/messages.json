@@ -386,11 +386,14 @@
   "fileHTML.label": {
     "message": "HTML或純文本文件。 省略可選的charset參數時，假定使用UTF-8。"
   },
+  "fileImage.altText": {
+    "message": "(選擇性) 當圖像缺失時，顯示此文字。"
+  },
   "fileImage.attributes": {
-    "message": "可選的屬性=值對列表，例如 'id=image1,class=screenshot'。"
+    "message": "(選擇性) {attribute=value} 集合列表，例如 'class=screenshot,style=width:500px;color:red;'。"
   },
   "fileImage.label": {
-    "message": "圖片文件（png，jpg，gif，bmp，svg）。 如果找不到圖像，則顯示可選的altText。"
+    "message": "插入圖像 (png, jpg, gif, bmp, svg)。 {imagePath} 可以相對於模板的位置：%file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "添加"

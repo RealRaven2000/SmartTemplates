@@ -383,11 +383,14 @@
   "fileHTML.label": {
     "message": "HTML или текстовый файл. Если кодировка не указана, будет использована UTF-8."
   },
+  "fileImage.altText": {
+    "message": "(опционально) Этот текст отображается, если изображение отсутствует."
+  },
   "fileImage.attributes": {
-    "message": "Необязательный список пар атрибут=значение, например 'id=image1,class=screenshot'."
+    "message": "(опционально) Список наборов {attribute=value}, например 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText."
+    "message": "Вставляет изображение (png, jpg, gif, bmp, svg). {imagePath} может быть относительно расположения шаблона: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Добавить"

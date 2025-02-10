@@ -386,12 +386,14 @@
   "fileHTML.label": {
     "message": "Plik HTML lub zwykły plik tekstowy. Zostanie zastosowane kodowanie UTF-8, jeśli zostanie pominięty opcjonalny parametr zestawu znaków.."
   },
-  "fileImage.attributes": {
-    "message": "Opcjonalna lista zestawów atrybut=wartość, takich jak 'id=obraz1,class=zrzut-ekranu'."
+  "fileImage.altText": {
+    "message": "(opcjonalnie) Ten tekst jest wyświetlany, jeśli obrazek jest brakujący."
   },
-
+  "fileImage.attributes": {
+    "message": "(opcjonalnie) Lista zestawów {attribute=value}, takich jak 'class=screenshot,style=width:500px;color:red;'."
+  },
   "fileImage.label": {
-    "message": "Plik obrazka (png,jpg,gif,bmp,svg). Jeśli nie naleziono obrazka, będzie wyświetlany opcjonalny parametr altText."
+    "message": "Wstawia obraz (png, jpg, gif, bmp, svg). {imagePath} może być względny do lokalizacji szablonu: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Dodaj"

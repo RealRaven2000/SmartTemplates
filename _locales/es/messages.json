@@ -386,11 +386,14 @@
   "fileHTML.label": {
     "message": "Archivo HTML o de texto. Si se omite el parámetro opcional de juego de caracteres se supone qie es UTF-8."
   },
+  "fileImage.altText": {
+    "message": "(opcional) Este texto se muestra si falta la imagen."
+  },
   "fileImage.attributes": {
-    "message": "Lista opcional de pares atributo=valor, como 'id=image1,class=screenshot'."
+    "message": "(opcional) Lista de conjuntos {attribute=value}, como 'class=screenshot,style=width:500px;color:red;'."
   },
   "fileImage.label": {
-    "message": "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen."
+    "message": "Inserta una imagen (png, jpg, gif, bmp, svg). {imagePath} puede ser relativo a la ubicación de la plantilla: %file(images/test.jpg)%"
   },
   "fileTemplates.add": {
     "message": "Agregar"
