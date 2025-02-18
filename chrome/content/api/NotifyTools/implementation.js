@@ -28,12 +28,9 @@
 (function (exports) {
 
   // Get various parts of the WebExtension framework that we need.
-  var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-  var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-
-  var { ExtensionCommon } = ESM
-    ? ChromeUtils.importESModule("resource://gre/modules/ExtensionCommon.sys.mjs")
-    : ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
+  var { ExtensionCommon } = ChromeUtils.importESModule(
+    "resource://gre/modules/ExtensionCommon.sys.mjs"
+  );
   var Services = globalThis.Services || 
     ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
 

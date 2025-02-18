@@ -10,8 +10,8 @@
 */
 
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-var { MailServices } = ESM
+var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+var { MailServices } = SmartTemplates_ESM
   ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
   : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
@@ -630,9 +630,9 @@ SmartTemplate4.Settings = {
     let isNewRemoteContent = false;
     
 		// with fission enabled (Tb91 defaults browser.tabs.remote.autostart = true)
-		var { MailE10SUtils } = ChromeUtils.import(
-			"resource:///modules/MailE10SUtils.jsm"
-		);
+		var { MailE10SUtils } = SmartTemplates_ESM
+		  ? ChromeUtils.importESModule("resource:///modules/MailE10SUtils.sys.mjs")
+			: ChromeUtils.import("resource:///modules/MailE10SUtils.jsm");
 		if (browser && MailE10SUtils && MailE10SUtils.loadURI) {
 			browser.setAttribute("remote", "true");
 			MailE10SUtils.loadURI(
@@ -977,7 +977,10 @@ SmartTemplate4.Settings = {
 		if (window.opener && window.opener.GetSelectedMsgFolders) { 
 			let folders = window.opener.GetSelectedMsgFolders();
 			if (folders.length > 0) { // select the correct server that applies to the current folder.
-				var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+				var { MailUtils } = SmartTemplates_ESM
+					? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
+					: ChromeUtils.import("resource:///modules/MailUtils.jsm");
+
 				[CurId] = MailUtils.getIdentityForServer(folders[0].server);
 			}
 		}

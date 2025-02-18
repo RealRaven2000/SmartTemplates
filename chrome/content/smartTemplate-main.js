@@ -227,6 +227,8 @@ END LICENSE BLOCK
     # [issue 354] Regression in 4.10: automatic forwarding with FiltaQuilla fails
 
   Version 4.10.2 - WIP
+    # made compatible with Tb 136.*
+    # [issue 358] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
     # [issue 356] new %dateformat.current()%
     #             avoid wrapping variables when called from Sandbox script
     # Added more contextual parameters for sandbox: "$priority", "$cc", "$bcc"

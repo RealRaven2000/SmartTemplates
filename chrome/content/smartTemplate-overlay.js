@@ -15,7 +15,9 @@ var { MailServices } = SmartTemplates_ESM
   ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
   : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
-var { VCardProperties }  = ChromeUtils.import( "resource:///modules/VCardUtils.jsm");
+var { VCardProperties } = SmartTemplates_ESM
+  ? ChromeUtils.importESModule("resource:///modules/VCardUtils.sys.mjs")
+  : ChromeUtils.import("resource:///modules/VCardUtils.jsm");
 // We use this as a display consumer
 // nsIStreamListener
 var { MsgHdrToMimeMessage } = SmartTemplates_ESM
@@ -3621,10 +3623,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
   // [Bug 25871] %file()% function
   async function insertFileLink(txt, composeType) {
     util.logDebug("insertFileLink " + txt);
-    var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-    var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-
-		const { FileUtils } = ESM
+		const { FileUtils } = SmartTemplates_ESM
       ? ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs")
       : ChromeUtils.import("resource://gre/modules/FileUtils.jsm");    
     // isFU = true; // FileUtils.File exists
@@ -3821,11 +3820,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 		    composerWin = Services.wm.getMostRecentWindow("msgcompose") || window,
 		    attachments=[];
 		try {			
-      const { AppConstants } = ChromeUtils.importESModule(
-        "resource://gre/modules/AppConstants.sys.mjs"
-      );
-      const ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-      const { FileUtils } = ESM
+      const { FileUtils } = SmartTemplates_ESM
         ? ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs")
         : ChromeUtils.import("resource://gre/modules/FileUtils.jsm");    
 			

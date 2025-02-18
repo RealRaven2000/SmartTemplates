@@ -10,7 +10,10 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK
 */
 
-var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+var { MailServices } = SmartTemplates_ESM
+  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+  : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 var SmartTemplate4_TabURIregexp = {
 	get _thunderbirdRegExp() {
@@ -3233,7 +3236,10 @@ SmartTemplate4.Util = {
       let folders = window.GetSelectedMsgFolders();
       if (folders.length == 1) {
         // select the correct server that applies to the current folder.
-        var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+				var { MailUtils } = SmartTemplates_ESM
+          ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
+          : ChromeUtils.import("resource:///modules/MailUtils.jsm");
+
         [currentServerId] = MailUtils.getIdentityForServer(folders[0].server);
       }
     }
@@ -3338,7 +3344,7 @@ SmartTemplate4.Util = {
   },
 
   get Accounts() {
-    var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); // replace account-manager
+    // replace account-manager
     let acMgr = MailServices.accounts,
       aAccounts = [];
 

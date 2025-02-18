@@ -15,10 +15,9 @@
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
 var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 
-var { ExtensionCommon } = ESM
-  ? ChromeUtils.importESModule("resource://gre/modules/ExtensionCommon.sys.mjs")
-  : ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-
+var { ExtensionCommon } = ChromeUtils.importESModule(
+  "resource://gre/modules/ExtensionCommon.sys.mjs"
+);
 var { ExtensionSupport } = ESM 
   ? ChromeUtils.importESModule("resource:///modules/ExtensionSupport.sys.mjs")
   : ChromeUtils.import("resource:///modules/ExtensionSupport.jsm");
@@ -1152,16 +1151,18 @@ var WindowListener_102 = class extends ExtensionCommon.ExtensionAPI {
       }
     }
 
-    // Unload JSMs of this add-on
-    const rootURI = this.extension.rootURI.spec;
-    for (let module of Cu.loadedModules) {
-      if (
-        module.startsWith(rootURI) ||
-        (module.startsWith("chrome://") &&
-          chromeUrls.find((s) => module.startsWith(s)))
-      ) {
-        this.log("Unloading: " + module);
-        Cu.unload(module);
+    
+    if (!ESM) {
+      // Unload JSMs of this add-on
+      const rootURI = this.extension.rootURI.spec;
+      for (let module of Cu.loadedModules) {
+        if (
+          module.startsWith(rootURI) ||
+          (module.startsWith("chrome://") && chromeUrls.find((s) => module.startsWith(s)))
+        ) {
+          this.log("Unloading: " + module);
+          Cu.unload(module);
+        }
       }
     }
 
@@ -2136,16 +2137,18 @@ var WindowListener_115 = class extends ExtensionCommon.ExtensionAPI {
       }
     }
 
-    // Unload JSMs of this add-on
-    const rootURI = this.extension.rootURI.spec;
-    for (let module of Cu.loadedModules) {
-      if (
-        module.startsWith(rootURI) ||
-        (module.startsWith("chrome://") &&
-          chromeUrls.find((s) => module.startsWith(s)))
-      ) {
-        this.log("Unloading: " + module);
-        Cu.unload(module);
+    if (!ESM) {
+      // Unload JSMs of this add-on
+      const rootURI = this.extension.rootURI.spec;
+      for (let module of Cu.loadedModules) {
+        if (
+          module.startsWith(rootURI) ||
+          (module.startsWith("chrome://") &&
+            chromeUrls.find((s) => module.startsWith(s)))
+        ) {
+          this.log("Unloading: " + module);
+          Cu.unload(module);
+        }
       }
     }
 

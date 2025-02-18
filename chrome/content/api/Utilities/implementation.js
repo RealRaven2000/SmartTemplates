@@ -9,10 +9,9 @@ var { AppConstants } = ChromeUtils.importESModule(
 );
 var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 
-var { ExtensionCommon } = SmartTemplates_ESM 
-  ? ChromeUtils.importESModule("resource://gre/modules/ExtensionCommon.sys.mjs")
-  : ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-
+var { ExtensionCommon } = ChromeUtils.importESModule(
+  "resource://gre/modules/ExtensionCommon.sys.mjs"
+);
 var { MailServices } = SmartTemplates_ESM
   ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
   : ChromeUtils.import("resource:///modules/MailServices.jsm");

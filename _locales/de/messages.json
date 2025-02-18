@@ -1718,6 +1718,9 @@
   "support.subject": {
     "message": "Betreff:"
   },
+  "support.tab": {
+    "message": "Support"
+  },
   "support.title": {
     "message": "Email an Support"
   },
