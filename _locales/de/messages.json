@@ -892,52 +892,52 @@
   "params.optional": {
     "message": "optionale Parameter"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Text nur unter Mauszeiger"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Nur Icon"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Icon mit Text"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "Über"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "-- Trennzeichen in HTML e-Mails"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Immer Signaturtrenner '--' vor der Signatur einfügen (in HTML e-Mails)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "-- Trennzeichen in Text e-Mails"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Immer Signaturtrenner '--' vor der Signatur einfügen (in Text e-Mails)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Trenne mehrere Korrespondenten mit:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Trennzeichen zwischen mehreren Briefpartnern. Outlook benutzt Semikolon (;) Die Voreinstellung in Thunderbird ist Komma (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Erweiterte Einstellungen"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Zeilenumbrüche am Anfang der Vorlagen:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Leerzeichen einfügen um %cursor% hervorzuheben"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Debug Modus"
   },
-  "pref_debug_tip": {
-    "message": "Rechts-klick für weitere Debug Optionen"
+  "debug.tip": {
+    "message": "Protokolliert SmartTemplates-Aktivitäten in der Fehlerkonsole. Weitere Protokolleinträge für verschiedene Funktionen können mit dem Einstellungsrädchen umgeschaltet werden."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Deaktivieren Sie '$pref_def$', um spezifische Vorlageneinstellungen für dieses Konto zu nutzen.",
     "placeholders": {
       "pref_def": {
@@ -946,7 +946,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Die untenstehenden Einstellungen werden angewendet, wenn keine spezifische Vorlage für eine Identität existiert oder wenn '$pref_def$' für diese Identität aktiv ist.",
     "placeholders": {
       "pref_def": {
@@ -954,190 +954,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Allgemein verwenden"
   },
-  "pref_defaultCharset.label": {
-    "message": "Charset Standardwert"
+  "defaultCharset": {
+    "message": "Fallback-Zeichensatz"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Beim Einlesen der Header benutzt SmartTemplate diesen character set wenn er nicht ermittelt werden kann"
+  "defaultCharset.tip": {
+    "message": "Wenn der Zeichensatz der ursprünglichen E-Mail nicht bestimmt werden kann, wird dieser als Fallback zum Decodieren von Headern und Inhalt verwendet."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Verhalten beim Schreiben oder Antworten ohne Auswahl einer Vorlage aus der Dropdown-Liste."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Standardvorlage"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Die Kontovorlage anwenden."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Die zuletzt aus dem Dropdown-Menü ausgewählte externe Vorlage verwenden."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "SmartTemplates Einstellungen"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(von der englischen Support-Seite)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Beispiele"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "im Browser öffnen"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Zeigt Beispielvorlagen von https://smarttemplates.quickfolders.org/templates.html. Nur im online Modus sichtbar."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Schriftgröße innerhalb der Vorlagenboxen"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Anfangs Absatz einfügen"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Stellt sicher dass der Cursor in einem Absatz beginnt. Wir empfehlen ebenfalls in Thunderbird Einstellungen unter 'Verfassen' die Option bei Druck von [Return] einen neuen Absatz einzufügen."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Folgende Einstellungen für weitergeleitete Nachrichten anwenden"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Weiterleiten"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Standard Thunderbird Kopfzeilen deaktivieren"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Weiterleiten"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Globale Einstellungen"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Erweiterte Funktionen"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Mailinhalt"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Verschiedenes"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Namensregeln"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Signaturen"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Fehlerdiagnose"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Benutzeroberfläche"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Hilfe"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Inhalt von <head> aus der Vorlage einfügen"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Beispiele nicht anzeigen"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Für \", &, <, > bitte HTML (UTF-8) Zeichen verwenden. Details siehe Hilfe."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "HTML Tags verwenden (z.B. <b>fett</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Tausche Reihenfolge Nachname, Vorname"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Folgende Vorlage bei neuen Nachrichten hinzufügen"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Verfassen"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Verfassen"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Begrüßungsbildschirm auslassen"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Informationsdialog ausblenden, der beim Aktualisieren neue Funktionen und Fehlerbehebungen anzeigt."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Signatur verarbeiten"
   },
-  "pref_parseSignature_tip": {
-    "message": "Variablen in Signaturtext einfügen"
+  "parseSignature.tip": {
+    "message": "SmartTemplates Variablen in Signaturtext ersetzen"
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Kopfzeilen"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "In diese Box kommen die Kopfzeilen z.b. Am %date% schrieb %from(name)%:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Standard Thunderbird Kopfzeilen deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld"
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Signatur bei Identitätswechsel ersetzen"
   },
-  "pref_rep_br.cap": {
-    "message": "Wenn Ihre Vorlage Zeilenumbrüche enthält und diese nicht durch <br> ersetzt werden, sollte diese Option aktiviert werden."
+  "replacebr.tooltip": {
+    "message": "Aktivieren Sie diese Option, um Zeilenumbrüche im Template automatisch in <br>-Tags zu konvertieren. Im HTML-Modus ist es besser, <br>-Tags manuell hinzuzufügen oder <p> für Absätze zu verwenden, anstatt sich auf diese Option zu verlassen."
   },
-  "pref_rep_br.label": {
-    "message": "Ersetze Zeilenumbrüche durch <br>"
+  "replacebr.label": {
+    "message": "Zeilenumbrüche mit <br> ersetzen"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Folgende Einstellungen beim Antworten verwenden"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Antworten"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Standard Thunderbird Kopfzeilen deaktivieren"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Antworten"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Allgemein"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Konto"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Button in der Statuszeile anzeigen"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Zeilenumbrüche in Text-Signatur durch <br> ersetzen"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Seite mit Versionsverlauf nicht anzeigen"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Bei updates die Versionsgeschichte nicht anzeigen."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Nachrichtenvorlage"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "In diese Box kommt die Nachrichtenvorlage z.b. Hallo %from(name)%<br> Danke für Ihre Nachricht<br> Gruß, <br>%ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "Beispielseite im Browser öffnen"
   },
-  "pref_template_tip": {
-    "message": "Sie können auch Schlüsselwörter 'Variablen' verwenden. Für Details klicken Sie Mehr / Variablen."
+  "templateBox.tip": {
+    "message": "Sie können die Vorlage mit Variablen erweitern. Öffnen Sie die Variablen-Seite für weitere Informationen."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Variablen"
   },
   "preferences_legacy": {
@@ -1246,6 +1246,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Email Adresse entfernen wenn kein Formatparameter angegeben ist"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Dies wird die E-Mail-Adresse ausblenden, wenn %cc% usw. verwendet wird, falls ein Eintrag im Adressbuch gefunden wurde."
   },
   "resolveNamesFromAB": {
     "message": "Namen aus dem Adressbuch ermitteln"

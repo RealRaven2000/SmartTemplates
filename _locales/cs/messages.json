@@ -940,52 +940,52 @@
   "params.optional": {
     "message": "volitelné parametry"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Text nad"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Jen ikona"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Ikona a Text"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "O programu"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Přidej -- do HTML e-mailu"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Vždy přidej -- oddělovač před podpis (v HTML e-mailu)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Přidej -- i textovém e-mailu"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Vždy přidej -- oddělovač před podpis (v textovém e-mailu)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Oddělit více adres s:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Oddělovač mezi adresama. Outlook používá středník(;) Výchozí pro Thunderbird je čárka (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Rozšířené nastavení"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Počet prázdných řádků nahoře:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Vlož mezeru pro zvýraznění %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Ladicí mód"
   },
-  "pref_debug_tip": {
-    "message": "Pravé-tlačítko pro rozšiřené volby ladění."
+  "debug.tip": {
+    "message": "Zaznamenává aktivity SmartTemplates v konzole chyb. Další záznamy pro různé funkce lze přepínat pomocí kola nastavení."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Deaktivujte '$pref_def$' pro vytvoření specifických nastavení šablony pro tento účet.",
     "placeholders": {
       "pref_def": {
@@ -994,7 +994,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Nastavení níže se použije, když neexistuje žádná specifická šablona pro identitu nebo pokud je pro tuto identitu vybráno '$pref_def$'.",
     "placeholders": {
       "pref_def": {
@@ -1002,190 +1002,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Použij společné"
   },
-  "pref_defaultCharset.label": {
-    "message": "Výchozí znakové sada"
+  "defaultCharset": {
+    "message": "Záložní znaková sada"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Když je načítana hlavička, použij tuto znakovou sadu, pokud nemůže být rozpoznána."
+  "defaultCharset.tip": {
+    "message": "Pokud nelze určit znakový set původního e-mailu, bude tento použit jako záložní pro dekódování hlaviček a obsahu."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Chování při psaní nebo odpovídání bez výběru šablony z rozevíracího seznamu."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Výchozí šablona"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Použije šablonu účtu."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Použijte externí šablonu naposledy vybranou z rozbalovací nabídky."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Nastavení SmartTemplates"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(z anglického podpůrného webu)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Příklady"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "otevřít v prohlížeči"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Zobraz příklady šablon z https://smarttemplates.quickfolders.org/templates.html. Dostupné pouze v on-line módu."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Písmo editoru šablony"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Vynucený mód odstavce"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Ujistise, že kurzoj je na zažátku odstavce. Také doporučujeme Thunderbird Composition volbu pro vytváření nových odstavců a stisknutí [Enter] klávesy."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Na přeposílanou zprávu použijte následující nastavení"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Přeposlat"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Zakázat implicitní uvození citace v Thunderbirdu"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Předat"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Globální nastavení"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Rozšířené funkce"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Obsah e-mailu"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Různé"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Jméno role"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Podpisy"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Řešení problému"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Uživatelské rozhraní"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Nápověda"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Vložit obsah <head> ze šablony"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Skrýt záložku s příklady"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Použij únikové znaky pro  \" , & , < , > , mezeru. Pro více detailů se podívejte do nápovědy."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Použij HTML (např. <b>bold</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Správné Příjmení, Jméno"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Zaměň pořadí 'Příjmění, Jméno'"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Zvolit následující šablonu pro psaní nové zprávy"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Zapsat"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Zapsat"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Vynechat úvodní obrazovku"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Skrýt informační dialog, který při aktualizaci zobrazuje nové funkce a opravy chyb."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Proces podpisu"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Nahraď proměnné v podpisu"
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Uvození citace"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "Do tohoto pole napište, co chcete vkládat před citovaný text - např. Dne %date% %from(name)% napsal(a):"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Vypnout standardní záhlaví. Prosím, vlož vlastní záhlaví to pole nad. "
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Změň podpis pokud měníš identitu"
   },
-  "pref_rep_br.cap": {
-    "message": "Poznámka: Mezera nebude vložena do HTML tagu použitím <br> ."
+  "replacebr.tooltip": {
+    "message": "Povolte tuto možnost pro automatickou konverzi zalomení řádků v šabloně na značky <br>. V režimu HTML je lepší ručně přidávat značky <br> nebo používat <p> pro odstavce, než se spoléhat na tuto možnost."
   },
-  "pref_rep_br.label": {
-    "message": "Nahraď konece řádků <br>"
+  "replacebr.label": {
+    "message": "Nahradit zalomení řádku s <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Na zprávu s odpovědí použijte následující nastavení"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Odpovědět"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Použít namísto implicitního uvození citace"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Odpovědět"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Společné"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Účet"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Zobraz tlačítko v řádku statusu"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Nahraď oddělovače řádků za <br> v textovém podpisu "
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Neotevírejte kartu s historií verzí"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Neotevírejte protokol změn po aktualizaci SmartTemplates."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Šablona"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Do tohoto pole napište šablonu zprávy, např.: Dobrý den %from(name)%, <br> Díky za Vaši zprávu <br> S pozdravem, <br>%ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "otevřete stránku s příklady v prohlížeči"
   },
-  "pref_template_tip": {
-    "message": "Můžeš rozšířit šablonu proměnými. Klikni na rozšířené / proměné pro více informací. "
+  "templateBox.tip": {
+    "message": "Template lze vylepšit o proměnné. Otevřete stránku Proměnné pro více informací."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Proměnné"
   },
   "preferences_legacy": {
@@ -1294,6 +1294,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Smaž e-mailovou adresu pokud formátovací parametr je uveden"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Toto skryje e-mailovou adresu při použití %cc% atd., pokud byla nalezena položka v adresáři."
   },
   "resolveNamesFromAB": {
     "message": "Získej jméno z adresáře"

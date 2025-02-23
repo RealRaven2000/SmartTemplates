@@ -946,52 +946,52 @@
   "params.optional": {
     "message": "paràmetres opcionals"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Text al passar el cursor"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Només icona"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Icona I Text"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "A prepaus"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Afegeix -- al correu HTML"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Afegiu sempre el delimitador -- abans de la signatura (en els correus HTML)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Afegeix -- al correu de text sense format"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Afegiu sempre el delimitador -- abans de la signatura (en els correus de text sense format)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Delimiteu diversos corresponsals amb:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Delimitador entre múltiples corresponsals. Outlook utilitza punt i coma (;) El valor predeterminat per a Thunderbird és Coma (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Configuració avançada"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Nombre de retorns a la linha en naut :"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Insereix espai per ressaltar %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Mòde desbugatge"
   },
-  "pref_debug_tip": {
-    "message": "Clic drech per las opcions avançadas de desbugatge"
+  "debug.tip": {
+    "message": "Registra les activitats de SmartTemplates a la Consola d'Errors. Les entrades de registre addicionals per a diverses funcions es poden activar/desactivar amb la roda d'ajustaments."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Desactiva « $pref_def$ » per crear configuracions específiques de plantilla per a aquest compte.",
     "placeholders": {
       "pref_def": {
@@ -1000,7 +1000,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "La configuració següent s'aplica quan no existeix cap plantilla específica per a una identitat o si es selecciona « $pref_def$ » per a aquesta identitat.",
     "placeholders": {
       "pref_def": {
@@ -1008,190 +1008,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Utilizar las opcions globalas"
   },
-  "pref_defaultCharset.label": {
-    "message": "Conjunt de caràcters per defecte"
+  "defaultCharset": {
+    "message": "Conjunt de caràcters de substitució"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Quan llegiu les capçaleres, torneu a aquest conjunt de caràcters si no es pot determinar."
+  "defaultCharset.tip": {
+    "message": "Si no es pot determinar el conjunt de caràcters del correu original, s'utilitzarà com a substitució per decodificar els encapçalaments i el contingut."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Comportament en escriure o respondre sense seleccionar una plantilla de la llista desplegable."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Plantilla per defecte"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Aplica la plantilla de compte."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Utilitzeu la plantilla externa seleccionada per darrera vegada al menú desplegable."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Opcions de SmartTemplates"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": ""
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Exemples (del lloc de suport en anglès)"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "obre al navegador"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Mostra plantilles d'exemple de https://smarttemplates.quickfolders.org/templates.html. Només disponible en mode en línia."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Poliça de l'editor de gabarit"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Força el mode de paràgraf"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Assegureu-vos que la posició del cursor comença en un paràgraf. També recomanem l'opció de composició del Thunderbird per crear un paràgraf nou en prémer la tecla [Retorn]."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Apliqueu la configuració següent al missatge reenviat"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Transferir"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Desactivar l'entèsta per defaut de Thunderbird"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Messatges transferits"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Paramètres generals"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Funcions avançades"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Contingut del correu"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Diversos"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Normes de nom"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Signatures"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Resolució de problemes"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Interfície d'usuari"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Assistent"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Injecteu el contingut de <head> des de la plantilla"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Amaga la pestanya d'exemples"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Utilizar de caractèrs d'escapament per  \" , & , < , > , espaci. Veire l'ajuda per mai d'informacions."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Utilizar HTML (per ex., <b>gras</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Cognom, nom correctes"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Canvia \"Cognoms, Nom\" a \"Nom Cognoms\""
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Aplicar lo modèl seguent pels messatges novèls"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Novèl"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Messatges novèls"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Omet la pantalla de presentació"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Amaga el quadre de diàleg d'informació que mostra noves funcions i correccions d'errors quan s'actualitza."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Processament de la signatura"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Substitueix les variables a la signatura."
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Títol de citacion"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "Escrivètz vòstra entèsta dins aquesta bóstia, ex. : Lo %date% a escrich %from(name)% :"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Desactiva l'entèsta per defaut. Mercé d'indicar vòstra entèsta dins la zòna de tèxte."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Suprimir la signatura al moment del cambiament de compte de mail"
   },
-  "pref_rep_br.cap": {
-    "message": "Remarca : cap d'espaci serà pas apondut dins la balisa HTML en utilizant <br> un còp."
+  "replacebr.tooltip": {
+    "message": "Activeu aquesta opció per convertir automàticament els salt de línia del template a etiquetes <br>. En mode HTML, és millor afegir manualment les etiquetes <br> o utilitzar <p> per als paràgrafs en lloc de confiar en aquesta opció."
   },
-  "pref_rep_br.label": {
-    "message": "Remplaçatz los sauts de linha per <br>"
+  "replacebr.label": {
+    "message": "Substituir salt de línia amb <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Apliqueu la configuració següent al missatge contestat"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Respondre"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Utilizar al luòc de l'entèsta per defaut"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Responsas"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Opcions globalas"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Compte"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Afichar un boton dins la barra dels moduls"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Substitueix els salts de línia per la signatura de text pla per <br>"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "No obriu la pestanya amb l'historial de versions"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "No obriu el registre de canvis després que s'hagi actualitzat SmartTemplates."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Modèl"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Escrivètz vòstre modèl dins aquesta bóstia, ex. : Adieu %from(name)%<br> Mercé per ton messatge<br> salutacions, %ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "obre la pàgina d'exemples al navegador"
   },
-  "pref_template_tip": {
-    "message": "Podètz modificar una entèsta amb de variablas. Veire l'ajuda per mai d'informacions."
+  "templateBox.tip": {
+    "message": "Pots millorar el template amb variables. Obre la pàgina de Variables per a més informació."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Variablas"
   },
   "preferences_legacy": {
@@ -1300,6 +1300,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Elimineu l'adreça de correu electrònic tret que s'especifiqui un paràmetre de format"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Això amagarà l'adreça de correu quan s'utilitzi %cc% en pla, si es troba una entrada al llibre d'adreces."
   },
   "resolveNamesFromAB": {
     "message": "Resoleu noms de llibretes d'adreces"

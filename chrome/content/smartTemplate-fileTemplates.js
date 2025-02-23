@@ -882,10 +882,10 @@ SmartTemplate4.fileTemplates = {
           let actionId="";
           switch(theTemplate.cmd) {
             case "forward":
-              actionId = "pref_fwd.tab";
+              actionId = "fwd.tab";
               break;
             case "reply":
-              actionId = "pref_rsp.tab";
+              actionId = "rsp.tab";
               break;
             case "replyAll":
               actionId = "st.menu.replyAll";
@@ -894,7 +894,7 @@ SmartTemplate4.fileTemplates = {
               actionId = "st.menu.replyList";
               break;
             case "write":
-              actionId = "pref_new.tab";
+              actionId = "new.tab";
               break;
             default: continue;
           }

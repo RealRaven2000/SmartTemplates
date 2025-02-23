@@ -955,52 +955,52 @@
   "params.optional": {
     "message": "valfria parametrar"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Text vid hovring"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Endast ikon"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Ikon och text"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "Ca"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Lägg till -- i e-post med HTML"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Lägg alltid till avgränsaren -- innan signaturen (i e-post med HTML)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Lägg till -- i e-post med vanlig text"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Lägg alltid till avgränsaren -- innan signaturen (i e-post med vanlig text)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Avgränsa flera korrespondenter med:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Avgränsare mellan flera korrespondenter. Outlook använder semikolon (;) Standard för Thunderbird är komma (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Avancerade inställningar"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Antal radbrytningar i början:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Infoga mellanslag för att markera %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Felsökningsläge"
   },
-  "pref_debug_tip": {
-    "message": "Högerklicka för avancerade felsökningsalternativ"
+  "debug.tip": {
+    "message": "Loggar SmartTemplates-aktiviteter i Felkonsolen. Ytterligare loggposter för olika funktioner kan aktiveras/inaktiveras med inställningshjulet."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Inaktivera '$pref_def$' för att skapa specifika mallinställningar för detta konto.",
     "placeholders": {
       "pref_def": {
@@ -1009,7 +1009,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Inställningarna nedan används när ingen specifik mall finns för en identitet eller om '$pref_def$' är valt för den identiteten.",
     "placeholders": {
       "pref_def": {
@@ -1017,190 +1017,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Använd allmänna inställningar"
   },
-  "pref_defaultCharset.label": {
-    "message": "Standardteckenkodning"
+  "defaultCharset": {
+    "message": "Fallback-teckenuppsättning"
   },
-  "pref_defaultCharset_tip": {
-    "message": "När sidhuvuden läses in, återgå till denna teckenuppsättning om den inte kan identifieras."
+  "defaultCharset.tip": {
+    "message": "Om teckenuppsättningen för det ursprungliga e-postmeddelandet inte kan bestämmas kommer denna att användas som fallback för att avkoda rubriker och innehåll."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Beteende när du skriver eller svarar utan att välja en mall från rullgardinsmenyn."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Standardmall"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Använd kontomallen."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Använd den externa mallen som senast valdes från rullgardinsmenyn."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Inställningar för SmartTemplates"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(från den engelska supportsidan)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Exempel"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "öppna i webbläsaren"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Visa exempelmallar från https://smarttemplates.quickfolders.org/templates.html. Endast tillgängligt i onlineläget."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Typsnitt för mallredigerare"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Tvinga paragrafläge"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Ser till att pekarpositionen börjar i en paragraf. Vi rekommendera även Thunderbirds skrivalternativ för att skapa en ny paragraf med [Enter]."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Tillämpa följande inställningar på det vidarebefordrade meddelandet"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Framåt"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Använd istället för standardcitathuvudet"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Vidarebefordrat meddelande"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Globala inställningar"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Avancerade funktioner"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "E-postinnehåll"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Diverse"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Namnregler"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Signaturer"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Felsökning"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Användargränssnitt"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Hjälp"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Injicera innehållet i <huvud> från mallen"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Dölj flik med exempel"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Använd undantagstecken för \" , & , < , > och blanksteg. Se Hjälp för närmare detaljer."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Använd HTML (t.ex. <b>fetstil</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Korrigera Efternamn, Förnamn"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Ändrar \"Efternamn, Förnamn\" till \"Förnamn Efternamn\""
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Tillämpa följande mall på det nya meddelandet"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Nytt"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Nytt meddelande"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Utelämna stänkskärmen"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Dölj informationsdialogruta som visar nya funktioner och buggfixar när du uppdaterar."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Bearbeta signatur"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Ersätt variabler i signaturen."
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Citationssidhuvud"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "I detta fält skriver du vad som bär visas innan den citerade delen (ursprungliga e-posten) - d.v.s. Den %date% skrev %from(name)%:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Inaktivera standardcitathuvudet. Formulera ditt citathuvud i textrutan."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Ersätt signaturen när e-postidentiteten ändras"
   },
-  "pref_rep_br.cap": {
-    "message": "Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med <br>."
+  "replacebr.tooltip": {
+    "message": "Aktivera det här alternativet för att automatiskt konvertera radbrytningar i mallen till <br>-taggar. I HTML-läge är det bättre att manuellt lägga till <br>-taggar eller använda <p> för stycken istället för att förlita sig på det här alternativet."
   },
-  "pref_rep_br.label": {
-    "message": "Ersätt ny rad med <br>"
+  "replacebr.label": {
+    "message": "Ersätt radbrytningar med <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Använd följande inställningar på det besvarade meddelandet"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Svara"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Använd istället för standardcitathuvudet"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Svarsmeddelande"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Allmänna inställningar"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Konto"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Visa knapp i statusfältet"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Ersätt radbrytningar i signaturer med vanlig text med <br>"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Öppna inte fliken med versionshistorik"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Öppna inte ändringsloggen efter att SmartTemplates har uppdaterats."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Mall"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Skriv din e-postmall i detta fält, t.ex. Hej %from(name)%, <br> tack för ditt meddelande <br> hälsningar, <br>%ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "öppna exempel sida i webbläsaren"
   },
-  "pref_template_tip": {
-    "message": "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information."
+  "templateBox.tip": {
+    "message": "Du kan förbättra mallen med variabler. Öppna sidan Variabler för mer information."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Variabler"
   },
   "preferences_legacy": {
@@ -1309,6 +1309,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Ta bort e-postadresser om formatparametern anges"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Detta kommer att dölja e-postadressen när du använder %cc% etc., om en post hittas i adressboken."
   },
   "resolveNamesFromAB": {
     "message": "Lös namn från adressböcker"

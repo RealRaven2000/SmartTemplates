@@ -962,52 +962,52 @@
   "params.optional": {
     "message": "optional parameters"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Text on Hover"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Icon Only"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Icon And Text"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "About"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Add -- in HTML mail"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Always add the -- delimiter before the Signature (in HTML mails)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Add -- in plain text mail"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Always add the -- delimiter before the Signature (in plain text mails)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Delimit multiple correspondents with:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Advanced Settings"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Number of line breaks at top:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Insert Space to highlight %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Debug mode"
   },
-  "pref_debug_tip": {
-    "message": "Right-click for advanced debug options"
+  "debug.tip": {
+    "message": "Log SmartTemplates activities in Error Console. Additional log entries for various functions can be toggled with the settings wheel."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Deactivate '$pref_def$' to create specific template settings for this account.",
     "placeholders": {
       "pref_def": {
@@ -1016,7 +1016,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "The settings below are applied when no specific template exists for an identity or if '$pref_def$' is selected for that identity.",
     "placeholders": {
       "pref_def": {
@@ -1025,190 +1025,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Use Common"
   },
-  "pref_defaultCharset.label": {
-    "message": "Default charset"
+  "defaultCharset": {
+    "message": "Fallback Character Set"
   },
-  "pref_defaultCharset_tip": {
-    "message": "When reading the headers, fall back to this character set if it cannot be determined."
+  "defaultCharset.tip": {
+    "message": "If the original email's character set cannot be determined, this will be used as a fallback for decoding headers and content."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Behavior when writing or replying without selecting a template from the drop-down list."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Default Template"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Use the account template."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Use the external template last selected from the drop-down menu."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "SmartTemplates settings"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(from the English support site)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Examples"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "open in browser"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Show example templates from https://smarttemplates.quickfolders.org/templates.html. Only available in online mode."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Template Editor Font"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Force Paragraph Mode"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Apply the following settings to the forwarded message"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Forward"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Disable default Thunderbird quote header"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Forward"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Global Settings"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Advanced Functions"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Mail Content"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Miscellaneus"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Name Rules"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Signatures"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Troubleshooting"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "User Interface"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Help"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Inject contents of <head> from template"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Hide examples tab"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Use escape characters for  \" , & , < , > , space. See \"help\" for more details."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Use HTML (e.g., <b> bold </b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Correct LastName, FirstName"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Changes 'LastName, FirstName' to 'First Last'"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Apply the following template to the new message"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Write"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Write"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Omit Splash Screen"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Hide information dialog that displays new features and bug fixes when updating."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Process signature"
   },
-  "pref_parseSignature_tip": {
-    "message": "Replace variables in signature."
+  "parseSignature.tip": {
+    "message": "Replace SmartTemplates variables in signature."
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Quote Header"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "In this box, write what should be displayed before the quoted part (original mail) - e.g. On %date%, %from(name)% wrote:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Disable default quote header. Please place your own header in the textbox above."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Replace signature when changing email identity"
   },
-  "pref_rep_br.cap": {
-    "message": "NOTE: No space will be inserted into the HTML tag by using <br> once."
+  "replacebr.tooltip": {
+    "message": "Enable this option to automatically convert line breaks in the template to <br> tags. In HTML mode, it’s better to manually add <br> tags or use <p> for paragraphs instead of relying on this option."
   },
-  "pref_rep_br.label": {
+  "replacebr.label": {
     "message": "Replace line breaks with <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Apply the following settings to the replied message"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Reply"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Use instead of default quote header"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Reply"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Common"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Account"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Display button in status bar"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Replace line breaks in plain text signature with <br>"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Do not open tab with version history"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Don't open change log after SmartTemplates was updated."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Template"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "In this box, put your mail template e.g. Hello %from(name)%, <br> Thanks for your message <br> regards, <br>%ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "open examples page in browser"
   },
-  "pref_template_tip": {
-    "message": "You can enhance the template with 'variables'. Click advanced / variables for more information."
+  "templateBox.tip": {
+    "message": "You can enhance the template with variables. Open the Variables page for more information."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Variables"
   },
   "preferences_legacy": {
@@ -1317,6 +1317,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Remove email address unless format parameter is specified"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "This will hide the mail address when using plain %cc% etc. if address book entry was found."
   },
   "resolveNamesFromAB": {
     "message": "Resolve names from address books"

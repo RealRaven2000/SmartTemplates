@@ -907,52 +907,52 @@
   "params.optional": {
     "message": "parametri opzionali"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Testo al passaggio del mouse"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Icone"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Icone e testo"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "Informazioni su"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Aggiungi -- nei messaggi HTML"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Aggiungi sempre il delimitatore -- prima della firma (nei messaggi HTML)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Aggiungi -- nei messaggi di testo semplice"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Aggiungi sempre il delimitatore -- prima della firma (nei messaggi di testo semplice)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Usa il carattere seguente per separare più destinatari:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Carattere da usare per delimitare più destinatari. Outlook usa il punto e virgola (;). Il carattere predefinito per Thunderbird è la virgola (,)."
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Impostazioni avanzate"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Numero di linee vuote nella testata:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Inserisci uno spazio per evidenziare il %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Modalità debug"
   },
-  "pref_debug_tip": {
-    "message": "Fare clic con il tasto destro per le impostazioni di debug avanzate"
+  "debug.tip": {
+    "message": "Registra le attività di SmartTemplates nella Console degli Errori. Voci di registro aggiuntive per diverse funzioni possono essere attivate/disattivate con la ruota delle impostazioni."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Disattiva '$pref_def$' per creare impostazioni di modello specifiche per questo account.",
     "placeholders": {
       "pref_def": {
@@ -961,7 +961,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Le impostazioni seguenti vengono applicate quando non esiste un modello specifico per un'identità o se '$pref_def$' è selezionato per tale identità.",
     "placeholders": {
       "pref_def": {
@@ -969,181 +969,181 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Utilizza la cartella di posta in arrivo globale"
   },
-  "pref_defaultCharset.label": {
-    "message": "Codifica dei caratteri predefinita"
+  "defaultCharset": {
+    "message": "Set di caratteri di fallback"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Utilizza questa codifica dei caratteri se quella delle intestazioni non può essere individuata."
+  "defaultCharset.tip": {
+    "message": "Se non è possibile determinare il set di caratteri dell'email originale, questo verrà utilizzato come fallback per decodificare le intestazioni e il contenuto."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Comportamento durante la scrittura o la risposta senza selezionare un modello dall'elenco a discesa."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Modello predefinito"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Usa il modello di account."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Utilizza l'ultimo modello esterno selezionato dal menu a discesa."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Impostazioni di SmartTemplates"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(dal sito di supporto in inglese)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Esempi"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "apri nel browser"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Visualizza modelli di esempio su https://smarttemplates.quickfolders.orgrs.org/templates.html. Disponibili solo su Internet."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Carattere editor modello"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Imposta la modalità Paragrafo"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Controlla che il cursore si posizioni all'inizio di un paragrafo. Si consiglia l'opzione Composizione di Thunderbird per creare un nuovo paragrafo premendo il tasto Invio."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Applicare le seguenti impostazioni al messaggio inoltrato"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Messaggi da inoltrare"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Disabilita l'intestazione predefinita di Thunderbird"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Messaggi da inoltrare"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Impostazioni globali"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Funzioni avanzate"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Contenuto Mail"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Varie"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Regole per il nome"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Risoluzione dei problemi"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Aiuto"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Inietta il contenuto di <head> dal modello"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Non visualizzare la scheda degli esempi"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Utilizza i caratteri escape per \", &, <, > e per lo spazio. Consultare i contenuti guida per ulteriori informazioni"
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Utilizza il codice HTML (es.: <b>bold</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Sostituisci Cognome, Nome"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Sostituisci 'Cognome, Nome' con 'Nome Cognome'"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Applica il seguente modello di intestazione personalizzata per i messaggi nuovi"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Messaggi nuovi"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Messaggi nuovi"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Ometti schermata iniziale"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Nascondi la finestra di dialogo delle informazioni che mostra nuove funzionalità e correzioni di bug durante l'aggiornamento."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Elabora firma"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Sostituisci le variabili nella firma."
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Intestazione"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "Inserire l'intestazione in questa area di testo, ad esempio Il %date% %from(name)% ha scritto:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Attivando l'opzione non verrà utilizzata l'intestazione predefinita. Formulare l'intestazione personalizzata all'interno dell'area di testo qui sopra"
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Sostituisci la firma quando cambia l'identità dell'account"
   },
-  "pref_rep_br.cap": {
-    "message": "Attivando l'opzione verrà sostituito con <br>, ad eccezione dei casi in cui segue il codice HTML contenente <br>"
+  "replacebr.tooltip": {
+    "message": "Attiva questa opzione per convertire automaticamente le interruzioni di riga nel template in tag <br>. In modalità HTML, è meglio aggiungere manualmente i tag <br> o usare <p> per i paragrafi invece di fare affidamento su questa opzione."
   },
-  "pref_rep_br.label": {
-    "message": "Sostituisci il ritorno a capo con <br>"
+  "replacebr.label": {
+    "message": "Sostituire le interruzioni di riga con <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Applicare le seguenti impostazioni al messaggio con risposta"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Messaggi in risposta"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Utilizza l'intestazione personalizzata invece di quella predefinita"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Messaggi in risposta"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Utilizza posta in arrivo globale"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Visualizza il pulsante nella barra di stato"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Sostituisci le interruzioni di riga con <br> nelle firme in testo semplice"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Non aprire la scheda con la cronologia delle versioni"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Non aprire il registro delle modifiche dopo l'aggiornamento di SmartTemplates."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Modello"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Inserire il modello in questa area di testo, ad esempio Ciao %from(name)%, <br> grazie per il tuo messaggio <br> saluti, <br>%ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "apri la pagina degli esempi nel browser"
   },
-  "pref_template_tip": {
-    "message": "È possibile modificare l'intestazione utilizzando molteplici variabili. Consultare i contenuti guida per ulteriori informazioni"
+  "templateBox.tip": {
+    "message": "Puoi migliorare il template con le variabili. Apri la pagina Variabili per maggiori informazioni."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Variabili"
   },
   "preferences_legacy": {
@@ -1243,6 +1243,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Rimuovi l'indirizzo email a meno che sia specificato il parametro di formato"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Questo nasconderà l'indirizzo e-mail quando si utilizza %cc% ecc., se viene trovata una voce nella rubrica."
   },
   "resolveNamesFromAB": {
     "message": "Individua i nomi nella rubrica"

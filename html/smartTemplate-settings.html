@@ -39,7 +39,7 @@
 
 
 
-    <title>__MSG_pref_dialog.title__</title>
+    <title>__MSG_preferences.title__</title>
 
   </head>
   <body>
@@ -57,16 +57,16 @@
           <label class="category-name">__MSG_fileTemplates.menu__</label>
         </li>
         <li class="category" id="catSettingsGeneral" page="globalSettingsPane">
-          <label class="category-name">__MSG_pref_global.tab__</label>
+          <label class="category-name">__MSG_global.tab__</label>
         </li>
         <li class="category" id="catSettingsAdvanced" page="advancedSettingsPane">
-          <label class="category-name">__MSG_pref_advanced.tab__</label>
+          <label class="category-name">__MSG_advanced.tab__</label>
         </li>
         <li class="category" id="catVariables" page="variablesPane">
-          <label class="category-name">__MSG_pref_variables.tab__</label>
+          <label class="category-name">__MSG_variables.tab__</label>
         </li>
         <li class="category" id="catExamples" page="examplesPane">
-          <label class="category-name">__MSG_pref_examples.tab__</label>
+          <label class="category-name">__MSG_examples.tab__</label>
         </li>        
         <li class="category" id="catInfo" page="infoPane">
           <label class="category-name">__MSG_about.cap__</label>
@@ -107,9 +107,9 @@
           <div id="fileTemplatesTabs" class="tabbox" flex="1">
             <nav class="tabs actionTabs">
               <ul>
-                <li><button id="file.newTab"      class="NewTab active">__MSG_pref_new.tab__</button></li>
-                <li><button id="file.respondTab"  class="RespondTab" >__MSG_pref_rsp.tab__</button></li>
-                <li><button id="file.forwardTab"  class="ForwardTab" >__MSG_pref_fwd.tab__</button></li>
+                <li><button id="file.newTab"      class="NewTab active">__MSG_new.tab__</button></li>
+                <li><button id="file.respondTab"  class="RespondTab" >__MSG_rsp.tab__</button></li>
+                <li><button id="file.forwardTab"  class="ForwardTab" >__MSG_fwd.tab__</button></li>
                 <li><button id="file.snippetsTab" class="SnippetsTab" >Smart Snippets</button></li>
               </ul>
             </nav>
@@ -118,7 +118,9 @@
               <section class="newGroup fileTemplatePanel vbox active" id="new-fileTemplates">
                 <fieldset flex="1" orient="vertical" class="transparent">
                   <div flex="1" class="vfield vbox">
-                    <label title="__MSG_fileTemplates.new.tooltip__">__MSG_fileTemplates.listHead__</label>
+                    <label>__MSG_fileTemplates.listHead__
+                      <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.new.tooltip__"></button>
+                    </label>
                     <select id="templateList_new" 
                       class="fileTemplateList" flex="1" size="12"> 
                     </select>
@@ -180,8 +182,9 @@
               <section class="replyGroup fileTemplatePanel vbox" id="rsp-fileTemplates">
                 <fieldset flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
-                    <label title="__MSG_fileTemplates.rsp.tooltip__"> 
-                          __MSG_fileTemplates.listHead__</label>
+                    <label>__MSG_fileTemplates.listHead__
+                      <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.rsp.tooltip__"></button>
+                    </label>
                     <select id="templateList_rsp" 
                       class="fileTemplateList" flex="1" size="12">
                     </select>
@@ -193,7 +196,11 @@
               <section class="forwardGroup fileTemplatePanel vbox" id="fwd-fileTemplates">
                 <fieldset  flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
-                    <label tooltiptext="__MSG_fileTemplates.fwd.tooltip__">__MSG_fileTemplates.listHead__</label>
+                    <label>__MSG_fileTemplates.listHead__
+                      <button
+                        class="toolTipButton"
+                        clickyTooltip="__MSG_fileTemplates.fwd.tooltip__"></button>
+                    </label>
                     <select id="templateList_fwd" 
                       class="fileTemplateList" flex="1" size="12">
                     </select>
@@ -222,99 +229,105 @@
       </div>
 
       <div id="globalSettingsPane" class="page prefpane">
-        <h2>__MSG_pref_global.tab__</h2>
+        <h2>__MSG_global.tab__</h2>
 
         <fieldset class="transparent">
-          <legend>__MSG_pref_groupMailContent__</legend>
+          <legend>__MSG_grpMailContent__</legend>
           <div class="vbox">
             <div class="hbox labeledBox">
-              <label class="textboxLabel" for="txtBreaks">__MSG_pref_breaksOnTop.label__</label>
+              <label class="textboxLabel" for="txtBreaks">__MSG_lineBreaksOnTop__</label>
               <input type="text" 
                     id="txtBreaks"
                     data-pref-name="extensions.smartTemplate4.breaksAtTop"
                     instantApply="true">
             </div>
             <div class="hbox labeledBox">
-              <label class="textboxLabel">__MSG_pref_defaultCharset.label__:</label>
+              <label class="textboxLabel">__MSG_defaultCharset__:</label>
               <input type="text" 
                     id="txtCharset"
                     data-pref-name="extensions.smartTemplate4.defaultCharset"
-                    instantApply="true" 
-                    tooltiptext="__MSG_pref_defaultCharset_tip__">
+                    instantApply="true">
+              <button
+                class="toolTipButton"
+                clickyTooltip="__MSG_defaultCharset.tip__"></button>
             </div>
           </div>
         </fieldset>
 
         <fieldset class="transparent" id="defaultTemplateBehaviorGrp">
-          <legend>__MSG_pref_defaultTemplateMethod_title__</legend>
-          <label>__MSG_pref_defaultTemplateMethod_about__</label>
+          <legend>__MSG_defaultTemplate__</legend>
+          <label>__MSG_defaultTemplate.behavior__</label>
           <label for="useAccountTemplate">
             <input type="radio" id="useAccountTemplate" name="defaultTemplateBehavior" 
-              value="1">__MSG_pref_defaultTemplateMethod_select_account__</label>
+              value="1">__MSG_defaultTemplate.useAccount__</label>
           <label for="useLastTemplate">
             <input type="radio" id="useLastTemplate" name="defaultTemplateBehavior"
               class="standardFeature"
-              value="2">__MSG_pref_defaultTemplateMethod_select_last__</label>
+              value="2">__MSG_defaultTemplate.useLastTemplate__</label>
         </fieldset>
 
         
         <fieldset class="transparent">
-          <legend>__MSG_pref_groupSignatures__</legend>
+          <legend>__MSG_grpSignatures__</legend>
           <div class="vbox">
             <label><input type="checkbox" id="chkRemoveSig"
-              data-pref-name="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits">__MSG_pref_removeSig.label__</label>
-            <label class="hasConfigEvent"><input type="checkbox" id="chkSignature"
-                  class="contextConfig"
-                  title="__MSG_pref_parseSignature_tip__"
-                  data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_pref_parseSignature__
+              data-pref-name="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits">__MSG_replaceSignature__</label>
+            <label class="hasConfigEvent">
+              <input type="checkbox" id="chkSignature" class="contextConfig"
+                data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_parseSignature__
               <button class="configSettings category-icon"></button>
+              <button
+                class="toolTipButton"
+                clickyTooltip="__MSG_parseSignature.tip__"></button>
               <span class="spacer"></span>
             </label>
             
               <label><input type="checkbox"
-                  data-pref-name="extensions.smartTemplate4.signature.replaceLF.plaintext.br">__MSG_pref_sigReplaceBR.label__</label>
+                  data-pref-name="extensions.smartTemplate4.signature.replaceLF.plaintext.br">__MSG_replaceBRinSignature.label__</label>
                 
             <div class="hbox">
-              <label><input type="checkbox" title="__MSG_pref_addSigBreakHTML.tooltip__"
-                data-pref-name="extensions.smartTemplate4.signature.insertDashes.html">__MSG_pref_addSigBreakHTML.label__</label>
+              <label><input type="checkbox" title="__MSG_addSigBreakHTML.tip__"
+                data-pref-name="extensions.smartTemplate4.signature.insertDashes.html">__MSG_addSigBreakHTML__</label>
               
-              <label><input type="checkbox" title="__MSG_pref_addSigBreakPlaintext.tooltip__"
-                data-pref-name="extensions.smartTemplate4.signature.insertDashes.plaintext">__MSG_pref_addSigBreakPlaintext.label__</label>
+              <label><input type="checkbox" title="__MSG_addSigBreakPlaintext.tip__"
+                data-pref-name="extensions.smartTemplate4.signature.insertDashes.plaintext">__MSG_addSigBreakPlaintext__</label>
             </div>
           </div>									  
         </fieldset>
         
         <fieldset class="transparent">
-          <legend>__MSG_pref_groupAdvanced__</legend>
+          <legend>__MSG_grpAdvanced__</legend>
           <div class="vbox">
             <label><input type="checkbox" 
-                  data-pref-name="extensions.smartTemplate4.cursor.insertSpace">__MSG_pref_cursorInsertSpace__</label>
-            <label><input type="checkbox" title="__MSG_pref_forceParagraph_tip__"
-                  data-pref-name="extensions.smartTemplate4.forceParagraph">__MSG_pref_forceParagraph__</label>
+                  data-pref-name="extensions.smartTemplate4.cursor.insertSpace">__MSG_insertCursor__</label>
+            <label><input type="checkbox" 
+                  data-pref-name="extensions.smartTemplate4.forceParagraph">__MSG_forceParagraphs__
+              <button class="toolTipButton" clickyTooltip="__MSG_forceParagraphs.tip__"></button>                
+            </label>
           </div>
         </fieldset>
       
         <fieldset class="transparent">
-          <legend>__MSG_pref_groupUI__</legend>
+          <legend>__MSG_grpUI__</legend>
           <div class="vbox">
             <div class="hbox">
               <label class="hasConfigEvent"><input type="checkbox" id="chkStatusButton"
                     class="contextConfig"
-                    data-pref-name="extensions.smartTemplate4.showStatusIcon">__MSG_pref_showStatusIcon.label__
+                    data-pref-name="extensions.smartTemplate4.showStatusIcon">__MSG_displayStatusIcon__
                 <button class="configSettings category-icon"></button>
                 <span class="spacer"></span>
               </label>
               <select id="iconType"
                 data-pref-name="extensions.smartTemplate4.statusIconLabelMode"
                 flex="5">
-                <option value="0">__MSG_pref_StatusIcon.IconOnly__</option>
-                <option value="2">__MSG_pref_StatusIcon.IconText__</option>
-                <option value="1">__MSG_pref_StatusIcon.IconHoverText__</option>
+                <option value="0">__MSG_statusIcon.IconOnly__</option>
+                <option value="2">__MSG_statusIcon.IconText__</option>
+                <option value="1">__MSG_statusIcon.IconHoverText__</option>
               </select>
               
             </div>
             <div class="hbox labeledBox" id="grpFontSettings">
-              <label  id="lblFontSettings">__MSG_pref_fontSettings.label__</label>
+              <label  id="lblFontSettings">__MSG_fontSettings__</label>
               <button id="fontSmaller"></button>
               <span class="spacer" id="fontButtonSpacer" > </span>
               <button id="fontLarger"></button>
@@ -328,36 +341,37 @@
       </div>
 
       <div id="advancedSettingsPane" class="page prefpane">
-        <h2>__MSG_pref_advanced.tab__</h2>
+        <h2>__MSG_advanced.tab__</h2>
 
         <fieldset class="transparent">
-          <legend>__MSG_pref_groupNameRules__</legend>
+          <legend>__MSG_grpNameRules__</legend>
           <div class="vbox">
             <label><input type="checkbox" 
                  data-pref-name="extensions.smartTemplate4.names.capitalize">__MSG_capitalizeNames__</label>
             <label><input type="checkbox" id="chkFirstLastSwap"
-                  title="__MSG_pref_nameSwap_tip__"
-                  data-pref-name="extensions.smartTemplate4.firstLastSwap">__MSG_pref_nameSwap__</label>
+                  data-pref-name="extensions.smartTemplate4.firstLastSwap">__MSG_names.swap__
+              <button class="toolTipButton" clickyTooltip="__MSG_names.swap.tip__"></button>
+            </label>
             <label><input type="checkbox" id="chkGuessName"
                   data-pref-name="extensions.smartTemplate4.names.guessFromMail">__MSG_guessNameFromMail__</label>
-            <div class="hbox"  align="center">
+            <div class="hbox" align="center">
               <label control="default_address_format">__MSG_defaultMimeFormat__</label>
-              <input type="text" id="default_address_format"
-                    size="50"
-                    data-pref-name="extensions.smartTemplate4.mime.defaultFormat"
-                    title= "__MSG_defaultMimeFormat_tip__">
+              <input type="text" id="default_address_format" size="50"
+                data-pref-name="extensions.smartTemplate4.mime.defaultFormat">
+              <button class="toolTipButton" clickyTooltip="__MSG_defaultMimeFormat_tip__"></button>
             </div>
             <div class="hbox" align="center">
               <label value=""
-                     control="txtNameDelimiter">__MSG_pref_addressDelimiter__</label>
+                     control="txtNameDelimiter">__MSG_addressDelimiter__</label>
               <input type="text" id="txtNameDelimiter"
-                    title="__MSG_pref_addressDelimiter_tip__"
                     data-pref-name="extensions.smartTemplate4.names.delimiter">
+              <button class="toolTipButton" clickyTooltip="__MSG_addressDelimiter.tip__"></button>
             </div>
             <hr>		  
             <label><input type="checkbox" id="chkResolveAB"
-                  data-pref-name="extensions.smartTemplate4.mime.resolveAB"
-                  title="__MSG_resolveNamesFromAB_tip__">__MSG_resolveNamesFromAB__</label>
+              data-pref-name="extensions.smartTemplate4.mime.resolveAB">__MSG_resolveNamesFromAB__
+              <button class="toolTipButton" clickyTooltip="__MSG_resolveNamesFromAB_tip__"></button>
+            </label>
             <div class="hbox">
               <div class="vbox">
                 <label><input type="checkbox" id="chkResolveABNick"
@@ -365,8 +379,9 @@
                 <label><input type="checkbox" id="chkResolveABDisplay"
                   data-pref-name="extensions.smartTemplate4.mime.resolveAB.displayName">__MSG_resolveNamesFromABDisplay__</label>
                 <label><input type="checkbox" id="chkResolveABRemoveMail"
-                  title="This will hide the mail address when using plain %cc% etc. if address book entry was found."
-                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.removeEmail">__MSG_resolveABRemoveMail__</label>
+                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.removeEmail">__MSG_resolveABRemoveMail__
+                  <button class="toolTipButton" clickyTooltip="__MSG_resolveABRemoveMail.tip__"></button>
+                </label>
                 <label><input type="checkbox" id="chkResolveABCardBook" class="premiumFeature"
                   data-pref-name="extensions.smartTemplate4.mime.resolveAB.CardBook">__MSG_resolveNamesFromCardBook__</label>
                 <label style="margin-left: 2em"><input type="checkbox" id="chkCardBookFallback" class="premiumFeature"
@@ -379,31 +394,30 @@
         </fieldset>
         
         <fieldset class="transparent">
-          <legend>__MSG_pref_groupMiscellaneus__</legend>
+          <legend>__MSG_grpMiscellaneus__</legend>
           <div class="vbox">
             <label><input type="checkbox" 
               data-pref-name="extensions.smartTemplate4.mail.suppressLink">__MSG_suppressMailToLink__</label>
             <label><input type="checkbox" class="premiumFeature"
-              data-pref-name="extensions.smartTemplate4.header.inject">__MSG_pref_header.inject__</label>
+              data-pref-name="extensions.smartTemplate4.header.inject">__MSG_header.inject__</label>
 
           </div>
         </fieldset>
 
         <fieldset class="transparent">
-          <legend>__MSG_pref_groupTroubleShooting__</legend>
+          <legend>__MSG_grpTroubleShooting__</legend>
           <div class="hbox">
             <label class="hasConfigEvent"><input type="checkbox" id="chkDebug"
-                  class="contextConfig"
-                  tooltiptext="__MSG_pref_debug_tip__"
-                  data-pref-name="extensions.smartTemplate4.debug">
-              __MSG_pref_debug_check__
+                class="contextConfig" data-pref-name="extensions.smartTemplate4.debug">
+              __MSG_debug.mode__
               <button class="configSettings category-icon"></button>
               <span class="spacer"></span>
+              <button class="toolTipButton" clickyTooltip="__MSG_debug.tip__"></button>
             </label>
             <label><input type="checkbox" id="chkBackgroundParser"
                   data-pref-name="extensions.smartTemplate4.BackgroundParser">API compliant parser [issue 184]</label>
             <label id="grpHideExamples"><input type="checkbox" id="chkHideExamples"
-                  data-pref-name="extensions.smartTemplate4.hideExamples">__MSG_pref_hideExamples__</label>
+                  data-pref-name="extensions.smartTemplate4.hideExamples">__MSG_hideExamplesPage__</label>
           </div>
         </fieldset>        
       </div>
@@ -415,7 +429,7 @@
       </div>
 
       <div id="examplesPane" class="page prefpane">
-        <h2>__MSG_pref_examples.tab__ __MSG_pref_examples.fromSupport__<a class="headerLink" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_pref_examples.openBrowser__</a></h2>
+        <h2>__MSG_examples.tab__ __MSG_examples.supportSite__<a class="headerLink" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_openInBrowser__</a></h2>
         <!--
  load url later: https://smarttemplates.quickfolders.org/templates.html
         -->
@@ -505,10 +519,13 @@
           <fieldset id="updates" >
             <legend>__MSG_updates.title__</legend>
             <div class="hbox">
-              <label><input type="checkbox" id="chkSilentUpdates"
-                    title="__MSG_pref_silentUpdates_tip__"
-                    data-pref-name="extensions.smartTemplate4.silentUpdate"
-                    >__MSG_pref_silentUpdates__</label> 
+              <label><input type="checkbox" id="chkSilentUpdates" 
+                data-pref-name="extensions.smartTemplate4.silentUpdate">__MSG_silentUpdates__
+              <button
+                class="toolTipButton"
+                clickyTooltip="__MSG_silentUpdates.tip__"></button>
+              </label> 
+                    
             </div>
             <div class="hbox buttonLinks">
               <button id="btnNewsSplash" class="showSplash">__MSG_updates.news__</button>
@@ -572,7 +589,7 @@
       </div>
 
       <div id="smartTemplatePane" orient="vertical" flex="1" class="page prefpane pageActive">
-        <h2>__MSG_account.templates__ <a class="headerLink" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_pref_templates.openBrowser__</a></h2>
+        <h2>__MSG_account.templates__ <a class="headerLink" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_examples.openBrowser__</a></h2>
         <div id="decksContainer" flex="1" class="vbox">
 
           <!-- ######## Creating Identity Dropdown Box ######## --> 
@@ -580,13 +597,13 @@
             
             <label id="identityLabel" class="hasConfigEvent" for="msgIdentity">
               <button class="configSettings leading category-icon"></button>
-              __MSG_pref_server_desc__:
+              __MSG_account__:
             </label>
             <select id="msgIdentity"
               class="identity-menulist"
               flex="1"
               tabindex="0">
-              <option class="identity-popup-item" value="common">__MSG_pref_server_def__</option>
+              <option class="identity-popup-item" value="common">__MSG_account.common__</option>
             </select>
             <div id="templateTools2" class="inlineToolbar hbox" mode="icons" >
               <span class="navigateable">
@@ -622,50 +639,51 @@
                   <label class="commonSetting">
                     <input type="checkbox" id="use_default" class="commonSwitch"
                     data-pref-name="extensions.smartTemplate4.common.def">
-                    __MSG_pref_def.label__
+                    __MSG_common.use__
                   </label>
                 </div>
                 <deck id="default.deckB" flex="1" orient="vertical" class="settingsDeck">
                   <div id="deckB.nodef" class="tabbox deck-selected" flex="1" orient="vertical" selectedIndex="0" >
                     <nav  id="deckB.nodef.tabs" class="tabs actionTabs">
                       <ul>
-                        <li><button id="newTab" class="NewTab active" composeType="new">__MSG_pref_new.tab__</button></li>
-                        <li><button id="respondTab" class="RespondTab" composeType="rsp">__MSG_pref_rsp.tab__</button></li>
-                        <li><button id="forwardTab" class="ForwardTab"  composeType="fwd">__MSG_pref_fwd.tab__</button></li>
+                        <li><button id="newTab" class="NewTab active" composeType="new">__MSG_new.tab__</button></li>
+                        <li><button id="respondTab" class="RespondTab" composeType="rsp">__MSG_rsp.tab__</button></li>
+                        <li><button id="forwardTab" class="ForwardTab"  composeType="fwd">__MSG_fwd.tab__</button></li>
                       </ul>
                     </nav>
       
                     <div class="tabcontent-container" flex="1" orient="vertical">
                       <!-- ######## Content New Message [Write] Tab ######## -->
                       <section class="newGroup active vbox" orient="vertical" >
-                          <div flex="1" class="vfield vbox">
-                            <div class="hbox">
-                              <label>
-                                <input type="checkbox" id="new" class="settingDisabler"
-                                  data-pref-name="extensions.smartTemplate4.common.new">__MSG_pref_new.label__
-                              </label>
-                            </div>
-                            
-                            <label>__MSG_pref_templateBox.label__</label>
-                            <div class="indent vbox areaTemplateParent" flex="1">
-                              <textarea id="newmsg" flex="1"
-                                class="templateBox templateWrite"
-                                multiline="true" tooltiptext="__MSG_pref_template_tip__"
-                                data-pref-name="extensions.smartTemplate4.common.newmsg"
-                                preference-editable="true"></textarea>
-                              <label><input type="checkbox" id="newhtml" class="settingDisabler"
-                                      title="__MSG_pref_html.cap__"
-                                      data-pref-name="extensions.smartTemplate4.common.newhtml">
-                                  __MSG_pref_html.label__
-                              </label>
-                              <label><input type="checkbox" id="newnbr"
-                                  class="indent"
-                                  title="__MSG_pref_rep_br.cap__"
-                                  data-pref-name="extensions.smartTemplate4.common.newnbr">
-                                  __MSG_pref_rep_br.label__
-                                </label>
-                            </div>
-                          </vbox>
+                        <div flex="1" class="vfield vbox">
+                          <div class="hbox">
+                            <label>
+                              <input type="checkbox" id="new" class="settingDisabler"
+                                data-pref-name="extensions.smartTemplate4.common.new">__MSG_new.label__
+                              <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
+                            </label>
+                          </div>
+                          
+                          <label>__MSG_template__</label>
+                          <div class="indent vbox areaTemplateParent" flex="1">
+                            <textarea id="newmsg" flex="1"
+                              class="templateBox templateWrite"
+                              multiline="true" 
+                              data-pref-name="extensions.smartTemplate4.common.newmsg"
+                              preference-editable="true"></textarea>
+                            <button class="toolTipButton" clickyTooltip="__MSG_template.tip__"></button>                                
+                            <label><input type="checkbox" id="newhtml" class="settingDisabler"
+                                    title="__MSG_useHTML.tip__"
+                                    data-pref-name="extensions.smartTemplate4.common.newhtml">
+                                __MSG_useHTML__
+                            </label>
+                            <label><input type="checkbox" id="newnbr" class="indent"
+                                data-pref-name="extensions.smartTemplate4.common.newnbr">
+                                __MSG_replacebr.label__
+                              <button class="toolTipButton" clickyTooltip="__MSG_replacebr.tooltip__"></button>
+                            </label>
+                          </div>
+                        </vbox>
                         
                       </section>
       
@@ -675,10 +693,11 @@
                           <div class="hbox">
                             <label> <input type="checkbox" id="rsp" class="settingDisabler"
                                 data-pref-name="extensions.smartTemplate4.common.rsp">
-                                __MSG_pref_rsp.label__
+                                __MSG_rsp.label__
+                              <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
                             </label>
                           </div>
-                          <label>__MSG_pref_templateBox.label__</label>
+                          <label>__MSG_template__</label>
                           <div class="indent vbox" flex="1">
                             <div class="pasteFocus vbox areaTemplateParent" flex="2">
                               <textarea 
@@ -686,25 +705,25 @@
                                 class="templateBox template"
                                 multiline="true"
                                 flex="1"
-                                tooltiptext="__MSG_pref_templateBox_tip__"
                                 data-pref-name="extensions.smartTemplate4.common.rspmsg"
                                 preference-editable="true"></textarea>
+                              <button class="toolTipButton" clickyTooltip="__MSG_template.tip__"></button>
                             </div>
                           </div>
 
                           <label><input type="checkbox" id="rsphtml" class="settingDisabler"
-                            title="__MSG_pref_html.cap__"
+                            title="__MSG_useHTML.tip__"
                             data-pref-name="extensions.smartTemplate4.common.rsphtml">
-                            __MSG_pref_html.label__
+                            __MSG_useHTML__
                           </label>
                           <label><input type="checkbox" id="rspnbr"
                             class="indent"
-                            title="__MSG_pref_rep_br.cap__"
                             data-pref-name="extensions.smartTemplate4.common.rspnbr">
-                            __MSG_pref_rep_br.label__
+                            __MSG_replacebr.label__
+                            <button class="toolTipButton" clickyTooltip="__MSG_replacebr.tooltip__"></button>
                           </label>
 
-                          <label>__MSG_pref_quoteHeaderBox.label__</label>
+                          <label>__MSG_quoteHeaderBox.label__</label>
                           <div class="indent vbox" flex="1">
                             <div class="pasteFocus vbox areaQuoteParent" flex="1">
                               <textarea 
@@ -712,18 +731,17 @@
                                 class="templateBox quote"
                                 multiline="true"
                                 flex="1"
-                                tooltiptext="__MSG_pref_quoteHeaderBox_tip__"
                                 data-pref-name="extensions.smartTemplate4.common.rspheader"
                                 preference-editable="true"></textarea>
+                              <button class="toolTipButton" clickyTooltip="__MSG_quoteHeaderBox.tip__"></button>
                             </div>
                             <label> <input type="checkbox" id="rsphead"
-                              title="__MSG_pref_quotehead_tip__"
                               data-pref-name="extensions.smartTemplate4.common.rsphead">
-                              __MSG_pref_rsphead.label__
+                              __MSG_rsphead.label__
+                              <button class="toolTipButton" clickyTooltip="__MSG_quoteHeader.replace.tip__"></button>
                             </label>
                           </div>
-
-                        </vbox>
+                        </div>
                       </section>
       
                       <!-- ######## Content [Forward] Message Tab ######## -->
@@ -732,53 +750,53 @@
                           <div class="hbox">
                             <label><input type="checkbox" id="fwd" class="settingDisabler"
                               data-pref-name="extensions.smartTemplate4.common.fwd">
-                              __MSG_pref_fwd.label__
+                              __MSG_fwd.label__
+                              <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
                             </label>
                           </div>
 
-                          <label>__MSG_pref_templateBox.label__</label>
+                          <label>__MSG_template__</label>
                           <div class="indent vbox" flex="1">
                             <div class="pasteFocus vbox areaTemplateParent" flex="2">
-                                      <!-- rows="5" -->
                               <textarea id="fwdmsg"
                                 class="templateBox template"
                                 multiline="true"
                                 flex="1"
-                                tooltiptext="__MSG_pref_templateBox_tip__"
                                 data-pref-name="extensions.smartTemplate4.common.fwdmsg"
                                 preference-editable="true"></textarea>
-                              </div>
+                              <button class="toolTipButton" clickyTooltip="__MSG_template.tip__"></button>
+                            </div>
                           </div>
                           <label><input type="checkbox" id="fwdhtml" class="settingDisabler"
-                            title="__MSG_pref_html.cap__"
+                            title="__MSG_useHTML.tip__"
                             data-pref-name="extensions.smartTemplate4.common.fwdhtml">
-                            __MSG_pref_html.label__
+                            __MSG_useHTML__
                           </label>
 
                           <label><input type="checkbox" id="fwdnbr"
                             class="indent"
-                            title="__MSG_pref_rep_br.cap__"
+                            title="__MSG_replacebr.tooltip__"
                             data-pref-name="extensions.smartTemplate4.common.fwdnbr">
-                            __MSG_pref_rep_br.label__
+                            __MSG_replacebr.label__
+                            <button class="toolTipButton" clickyTooltip="__MSG_replacebr.tooltip__"></button>
                           </label>
 
-                          <label>__MSG_pref_quoteHeaderBox.label__</label>
-                          <div class="indent vox" flex="1">
+                          <label>__MSG_quoteHeaderBox.label__</label>
+                          <div class="indent vbox" flex="1">
                             <div class="pasteFocus vbox areaQuoteParent" flex="1">
-                                      <!-- rows="5" -->
                               <textarea 
                                 id="fwdheader"
                                 class="templateBox quote"
                                 multiline="true"
                                 flex="1"
-                                tooltiptext="__MSG_pref_quoteHeaderBox_tip__"
                                 data-pref-name="extensions.smartTemplate4.common.fwdheader"
                                 preference-editable="true"></textarea>
+                              <button class="toolTipButton" clickyTooltip="__MSG_quoteHeaderBox.tip__"></button>
                             </div>
-                            <label><input type="checkbox" id="fwdhead"
-                              title="__MSG_pref_quotehead_tip__"
+                            <label> <input type="checkbox" id="fwdhead"
                               data-pref-name="extensions.smartTemplate4.common.fwdhead">
-                              __MSG_pref_fwdhead.label__
+                              __MSG_fwdhead.label__
+                              <button class="toolTipButton" clickyTooltip="__MSG_quoteHeader.replace.tip__"></button>
                             </label>
                           </div>
 
@@ -789,7 +807,7 @@
                     
                   </div>
                   <div id="deckB.usedef" class="vbox placeholder">
-                    <description id="commonPlaceholder">__MSG_pref_def.cap__</description>
+                    <description id="commonPlaceholder">__MSG_common.use.title__</description>
                   </div>
                 </deck>
               </div>

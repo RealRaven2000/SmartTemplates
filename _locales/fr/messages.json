@@ -946,52 +946,52 @@
   "params.optional": {
     "message": "paramètres facultatifs"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Texte au survol"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Icône seulement"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Icône et texte"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "À propos"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Ajouter -- dans le courriels HTML"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Ajoute toujours le séparateur -- avant la signature (dans les courriels HTML)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Ajouter -- dans les courriels au format texte"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Ajoute toujours le séparateur -- avant la signature (dans les courriels HTML)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Énumérer plusieurs correspondants en utilisant :"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Délimiteur entre plusieurs correspondants. Outlook utilise des points-virgules (;), pour Thunderbird, par défaut, ce sont des virgules (,)."
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Paramètres avancés"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Nombre de retours à la ligne en haut :"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Insérer un espace pour mettre en évidence le %curseur%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Mode débogage"
   },
-  "pref_debug_tip": {
-    "message": "Clic droit pour les options avancées de débogage"
+  "debug.tip": {
+    "message": "Enregistre les activités de SmartTemplates dans la console d’erreurs. Les entrées de journal supplémentaires pour diverses fonctions peuvent être activées/désactivées avec la roue des paramètres."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Désactivez '$pref_def$' pour créer des paramètres de modèle spécifiques pour ce compte.",
     "placeholders": {
       "pref_def": {
@@ -1000,7 +1000,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Les paramètres ci-dessous sont appliqués lorsqu'aucun modèle spécifique n'existe pour une identité ou si « $pref_def$ » est sélectionné pour cette identité.",
     "placeholders": {
       "pref_def": {
@@ -1008,190 +1008,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Utiliser les options globales"
   },
-  "pref_defaultCharset.label": {
-    "message": "Encodage par défaut"
+  "defaultCharset": {
+    "message": "Jeu de caractères de secours"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Lors de la lecture des en-têtes, se rabattre sur ce jeu de caractères s'il n'est pas possible de déterminer l'encodage."
+  "defaultCharset.tip": {
+    "message": "Si le jeu de caractères de l'e-mail d'origine ne peut pas être déterminé, celui-ci sera utilisé en secours pour décoder les en-têtes et le contenu."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Comportement lors de la rédaction ou de la réponse sans sélectionner de modèle dans la liste déroulante."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Modèle par défaut"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Utilisez le modèle de compte."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Utilisez le dernier modèle externe sélectionné dans le menu déroulant."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Options de SmartTemplates"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(du site d'assistance en anglais)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Exemples"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "ouvrir dans le navigateur"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Afficher des exemples de modèles de https://smarttemplates.quickfolders.org/templates.html. Uniquement disponible en mode en ligne"
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Police de l'éditeur de gabarit"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Forcer le mode paragraphe"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "S'assurer que le curseur se situe dans un paragraphe. Nous demandons également la création d'un nouveau paragraphe lorsque l'on appuie sur la touche [Entrée] à l'option de composition Thunderbird."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Appliquer les paramètres suivants au message transféré"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Transférer"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Désactiver l'entête par défaut de Thunderbird"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Messages transférés"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Paramètres généraux"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Fonctions avancées"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Contenu du courriel"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Divers"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Règles pour nom"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Signatures"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Dépannage"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Interface utilisateur"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Assistant"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Injecter le contenu de <head> à partir du modèle"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Masquer l'onglet d'exemples"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Utiliser des caractères d'échappement pour  \" , & , < , > , espace. Voir l'aide pour davantage d'informations."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Utiliser HTML (par ex., <b>gras</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Corriger l'affichage \"nom, prénom\""
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Change \"nom, prénom\" en \"prénom, nom\""
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Appliquer le modèle suivant pour les nouveaux messages"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Nouveau"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Nouveaux messages"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Omettre l'écran de démarrage"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Masquer la boîte de dialogue d'informations qui affiche les nouvelles fonctionnalités et les corrections de bugs lors de la mise à jour."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Traitement de la signature"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Remplacer des variables dans la signature."
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Titre de citation"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "Écrivez votre en-tête dans cette boîte, ex. : Le %date%, %from(name)% a écrit :"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Désactive l'entête par défaut. Merci d'indiquer votre entête dans la zone de texte."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Supprimer la signature lors du changement de compte courriel"
   },
-  "pref_rep_br.cap": {
-    "message": "Remarque : aucun espace ne sera ajouté dans la balise HTML en utilisant <br> une fois."
+  "replacebr.tooltip": {
+    "message": "Activez cette option pour convertir automatiquement les sauts de ligne du modèle en balises <br>. En mode HTML, il est préférable d'ajouter manuellement les balises <br> ou d'utiliser <p> pour les paragraphes au lieu de compter sur cette option."
   },
-  "pref_rep_br.label": {
-    "message": "Remplacez les sauts de ligne par <br>"
+  "replacebr.label": {
+    "message": "Remplacer les sauts de ligne par <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Appliquer les paramètres suivants au message répondu"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Répondre"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Utiliser à la place de l'entête par défaut"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Réponses"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Options globales"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Compte"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Afficher un bouton dans la barre des modules"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Remplacer les retours à la ligne dans les signatures en texte brut par des <br>"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Ne pas ouvrir l'onglet avec l'historique des versions"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "N'ouvrez pas le journal des modifications après la mise à jour de SmartTemplates."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Modèle"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Écrivez votre modèle dans cette boîte, ex. : Salut %from(name)%<br> Merci pour ton message<br> salutations, %ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "ouvrir la page d'exemples dans le navigateur"
   },
-  "pref_template_tip": {
-    "message": "Vous pouvez modifier un entête avec des variables. Voir l'aide pour davantage d'informations."
+  "templateBox.tip": {
+    "message": "Vous pouvez améliorer le modèle avec des variables. Ouvrez la page Variables pour plus d'informations."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Variables"
   },
   "preferences_legacy": {
@@ -1291,6 +1291,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Supprimer l'adresse électronique tant que le paramètre de format n'est pas spécifié"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Cela masquera l'adresse e-mail lors de l'utilisation de %cc% etc., si une entrée est trouvée dans le carnet d'adresses."
   },
   "resolveNamesFromAB": {
     "message": "Résoudre les noms à partir du carnet d'adresses"

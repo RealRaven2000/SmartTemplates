@@ -937,52 +937,52 @@
   "params.optional": {
     "message": "neobvezni parametri"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Besedilo ob prehodu z miško"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Samo ikona"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Ikona in besedilo"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "O dodatku"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Dodaj - - v pošto HTML"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Vedno dodaj ločilo - - pred podpis (v poštah HTML)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Dodaj - - v pošto z golim besedilom"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Vedno dodaj ločilo - - pred podpis (v poštah z golim besedilom)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Loči dopisnike s/z:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Ločilo med dopisniki. Outlook uporablja podpičje (;). Privzeto za Thunderbird je vejica (,)."
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Napredne nastavitve"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Število prelomov vrstic na vrhu:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Vstavi presledek za označitev %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Razhroščevalni način"
   },
-  "pref_debug_tip": {
-    "message": "Desno kliknite za napredne razhroščevalne možnosti"
+  "debug.tip": {
+    "message": "Zabeleži aktivnosti SmartTemplates v konzoli napak. Dodatni vnosi dnevnika za različne funkcije so na voljo za vklop/izklop z nastavitvenim kolesom."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Deaktivirajte '$pref_def$', da ustvarite posebne nastavitve predloge za ta račun.",
     "placeholders": {
       "pref_def": {
@@ -991,7 +991,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Spodnje nastavitve se uporabijo, kadar za identiteto ne obstaja posebna predloga ali če je za to identiteto izbrano '$pref_def$'.",
     "placeholders": {
       "pref_def": {
@@ -999,190 +999,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Uporabi splošno"
   },
-  "pref_defaultCharset.label": {
-    "message": "Privzeti nabor znakov"
+  "defaultCharset": {
+    "message": "Nadomestni nabor znakov"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Ob branju glav uporabi ta zasilni nabor znakov, če ga ni mogoče prepoznati."
+  "defaultCharset.tip": {
+    "message": "Če nabor znakov izvirnega e-poštnega sporočila ni določen, bo ta uporabljen kot nadomestni za dekodiranje glave in vsebine."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Vedenje pri pisanju ali odgovoru brez izbire predloge s spustnega seznama."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Privzeta predloga"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Uporabite predlogo računa."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Uporabite zunanjo predlogo, ki je bila nazadnje izbrana v spustnem meniju."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Nastavitve SmartTemplates"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(z angleškega spletnega mesta za podporo)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Primeri"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "odpri v brskalniku"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Prikaži primere predlog iz https://smarttemplates.quickfolders.org/templates.html. Na voljo samo v povezanem načinu."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Pisava urejevalnika predlog"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Vsili odstavkovni način"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Zagotovi, da se položaj kazalca začne v novem odstavku. Priporočamo tudi, da možnost sestavljanja v Thunderbirdu nastavite na ustvarjanje novega odstavka ob pritisku na tipko [Enter]."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Za posredovano sporočilo uporabite naslednje nastavitve"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Posreduj"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Onemogoči privzeto Thunderbirdovo glavo navedka"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Posreduj"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Splošne nastavitve"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Napredne možnosti"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Vsebina pošte"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Razno"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Pravila za imena"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Podpisi"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Reševanje težav"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Uporabniški vmesnik"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Pomoč"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Vnesite vsebino <head> iz predloge"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Skrij zavihek s primeri"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Uporabi ubežne znake za  \" , & , < , > , presledek. Glejte \"Pomoč\" za več podorbnosti."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Uporabi HTML (npr., <b>bold</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Pravilni priimek, ime"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Spremeni 'priimek, ime' v 'ime priimek'"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Uveljavi naslednjo predlogo za novo sporočilo"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Sestavi"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Sestavi"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Izpustite začetni zaslon"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Skrij pogovorno okno z informacijami, ki pri posodobitvi prikaže nove funkcije in popravke napak."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Podpis opravila"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Nadomesti spremenljivke v podpisu."
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Glava navedka"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "V to polje napišite, kaj naj bo prikazano pred navedenim delom (izvirno sporočilo) - npr. %date%, %from(name)% je napisal:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Onemogoči privzeto glavo navedka. Umestite svojo glavo v zgornje besedilno polje."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Nadomesti podpis ob spremembi e-poštne identitete"
   },
-  "pref_rep_br.cap": {
-    "message": "OPOMBA: presledek ne bo vstavljen v oznako HTML ob enkratni uporabi <br>."
+  "replacebr.tooltip": {
+    "message": "Omogočite to možnost za samodejno pretvorbo prelomov vrstic v predlogi v oznake <br>. V načinu HTML je bolje ročno dodati oznake <br> ali uporabiti <p> za odstavke, namesto da bi se zanašali na to možnost."
   },
-  "pref_rep_br.label": {
-    "message": "Nadomesti prelome vrstic z <br>"
+  "replacebr.label": {
+    "message": "Zamenjaj prelome vrstic z <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Za odgovorjeno sporočilo uporabite naslednje nastavitve"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Odgovori"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Uporabi namesto privzete glave navedka"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Odgovori"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Splošno"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Račun"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Prikaži gumb v vrstici stanja"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Nadomesti prelome vrstic v podpisu z golim besedilom s <br>"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Ne odpri zavihka z zgodovino različic"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Dnevnika sprememb ne odpirajte po posodobitvi SmartTemplates."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Predloga"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "V to polje vstavite svojo poštno predlogo npr. Hello %from(name)%, <br> Hvala za vaše sporočilo <br> Lep pozdrav, <br>%ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "odprite stran z primeri v brskalniku"
   },
-  "pref_template_tip": {
-    "message": "Predlogo lahko izboljšate s 'spremenljivkami'. Kliknite napredno / spremenljivke za več podrobnosti."
+  "templateBox.tip": {
+    "message": "Sablon lahko izboljšate z uporabo spremenljivk. Odprite stran Spremenljivke za več informacij."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Spremenljivke"
   },
   "preferences_legacy": {
@@ -1291,6 +1291,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Odstrani e-poštni naslov, razen če je določen parameter oblike"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "To bo skrilo e-poštni naslov, ko boste uporabili %cc% itd., če bo v knjigi naslovov najdena vnos."
   },
   "resolveNamesFromAB": {
     "message": "Razreši imena iz imenika"

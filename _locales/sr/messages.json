@@ -928,46 +928,46 @@
   "params.optional": {
     "message": "опциона параметри"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Текст при задржавању курсора"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Само икона"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Икона и текст"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "О додатку"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Додај „--“ у HTML е-поруку"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Увек додајте граничник „--“ пре потписа (у HTML е-порукама)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Додај „--“ у обичну е-поруку"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Увек додајте граничник „--“ пре потписа (у обичним е-порукама)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Напредне поставке"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Број прелома на врху:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Убаци размак ради истицања %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Отклањање грешака"
   },
-  "pref_debug_tip": {
-    "message": "Притисните десним тастером миша за напредније опције отклањања грешака."
+  "debug.tip": {
+    "message": "Записује активности SmartTemplates у конзоли грешака. Додатни уноси у дневник за различите функције могу се укључити/искључити помоћу точка подешавања."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Деактивирајте „$pref_def$“ да бисте направили одређена подешавања шаблона за овај налог.",
     "placeholders": {
       "pref_def": {
@@ -976,7 +976,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Доле наведена подешавања се примењују када не постоји одређени шаблон за идентитет или ако је „$pref_def$“ изабран за тај идентитет.",
     "placeholders": {
       "pref_def": {
@@ -984,184 +984,184 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Користи подразумевано"
   },
-  "pref_defaultCharset.label": {
-    "message": "Подразумевано кодирање"
+  "defaultCharset": {
+    "message": "Резервни скуп карактера"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Приликом читања заглавља, врати се на овај скуп знакова, уколико не може да се одреди."
+  "defaultCharset.tip": {
+    "message": "Ако скуп карактера изворне е-поште не може да се одреди, овај ће се користити као резервни за декодирање заглавља и садржаја."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Понашање при писању или одговарању без избора шаблона са падајуће листе."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Подразумевани шаблон"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Користите шаблон налога."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Користите спољни шаблон који је последњи изабран из падајућег менија."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Поставке SmartTemplates-а"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(са енглеског сајта за подршку)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Примери"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "отвори у прегледачу"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Прикажите примере шаблона са https://smarttemplates.quickfolders.org/templates.html. Доступно само док сте повезани на интернет."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Фонт у уређивачу шаблона"
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Примените следећа подешавања на прослеђену поруку"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Проследи"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Онемогући подразумевано заглавље цитирања Thunderbird-а"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Проследи"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Глобалне поставке"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Напредне функције"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Садржај е-поруке"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Мисцелланеус"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Правила за именовање"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Потписи"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Решавање проблема"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Корисничко окружење"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Помоћ"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Убаците садржај <head> из шаблона"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Сакриј картицу са примерима"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Користите командне знакове за \", &, <, > и space. За више информација, погледајте помоћ."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Користи HTML (нпр. <b>bold</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Исправи LastName, FirstName"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Мења „LastName, FirstName“ у „First Last“"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Примени следећи шаблон на нову поруку"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Састави"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Састави"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Изоставите почетни екран"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Сакриј дијалог са информацијама који приказује нове функције и исправке грешака приликом ажурирања."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Обради потпис"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Замените променљиве у потпису."
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Заглавље цитирања"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "У овом пољу напишите шта желите да прикажете пре цитираног дела тј. оригиналне поруке. На пример: %date%, %from(name)% wrote:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Онемогућите подразумевано заглавље цитирања. Поставите сопствено заглавље у горње поље."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Замени потпис при промени идентитета е-поште"
   },
-  "pref_rep_br.cap": {
-    "message": "Напомена: Размак неће бити уметнут у HTML ознаку коришћењем <br>."
+  "replacebr.tooltip": {
+    "message": "Омогућите ову опцију за аутоматско претварање прекида редова у шаблону у <br> ознаке. У HTML режиму, боље је ручно додати <br> ознаке или користити <p> за параграфе, уместо да се ослоните на ову опцију."
   },
-  "pref_rep_br.label": {
-    "message": "Замени преломе са <br>"
+  "replacebr.label": {
+    "message": "Замените прекиде редова са <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Примените следећа подешавања на поруку на коју сте одговорили"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Одговори"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Користи уместо подразумеваног заглавља цитата"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Одговори"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Уобичајено"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Налог"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Прикажи дугме у статусној траци"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Замени нови ред у текстуалном потпису са <br>"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Не отварајте картицу са историјом верзија"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Не отварајте дневник промена након што је СмартТемплате⁴ ажуриран."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Шаблон"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "У ово поље ставите шаблон поруке, нпр. „Здраво, %from(name)%, <br> Хвала вам на поруци <br> Срдачан поздрав, <br>%ownname%“"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "отворите страницу примера у прегледачу"
   },
-  "pref_template_tip": {
-    "message": "Заглавље цитата можете да промените „променљивим“. Погледајте помоћ за више информација."
+  "templateBox.tip": {
+    "message": "Можете побољшати шаблон са променљивим. Отворите страницу Променљиве за више информација."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Променљиве"
   },
   "preferences_legacy": {
@@ -1270,6 +1270,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Уклони е-адресу ако формат није наведен"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Ово ће сакрити имејл адресу када се користе %cc% итд., ако је пронађен унос у адресару."
   },
   "resolveNamesFromAB": {
     "message": "Разреши имена из адресара"

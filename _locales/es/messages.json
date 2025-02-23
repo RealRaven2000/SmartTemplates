@@ -910,52 +910,52 @@
   "params.optional": {
     "message": "parámetros opcionales"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Texto con el paso de ratón"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Sólo icono"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Icono y texto"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "Acerca de"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Añadir -- en correo HTML"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Añadir siempre el delimitador -- antes de la firma (in correos HTML)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Añadir -- en correo de texto plano"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Añadir siempre el delimitador -- antes de la firma (en correos de texto plano)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Delimitar corresponsales múltiples con:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Delimitador entre corresponsales múltiples. Outlook utiliza el punto y coma (;), mientras que Thunderbird usa por defecto la coma (,)."
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Predisposiciones avanzadas"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Saltos de línea en la parte superior:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Insertar espacio para resaltar el %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Modo depuración"
   },
-  "pref_debug_tip": {
-    "message": "Haga clic derecho para opciones avanzadas de depuración"
+  "debug.tip": {
+    "message": "Registra las actividades de SmartTemplates en la Consola de Errores. Las entradas de registro adicionales para diversas funciones se pueden activar/desactivar con la rueda de configuración."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Desactiva '$pref_def$' para crear configuraciones específicas de plantilla para esta cuenta.",
     "placeholders": {
       "pref_def": {
@@ -964,7 +964,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Los ajustes siguientes se aplican cuando no existe una plantilla específica para una identidad o si se selecciona '$pref_def$' para esa identidad.",
     "placeholders": {
       "pref_def": {
@@ -972,188 +972,188 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Usar común"
   },
-  "pref_defaultCharset.label": {
-    "message": "Juego caracteres por defecto"
+  "defaultCharset": {
+    "message": "Conjunto de caracteres de respaldo"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Al leer los encabezados, restaurar este juego de caracteres si no se puede determinar cuál usar."
+  "defaultCharset.tip": {
+    "message": "Si no se puede determinar el conjunto de caracteres del correo original, se utilizará este como respaldo para decodificar los encabezados y el contenido."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Comportamiento al escribir o responder sin seleccionar una plantilla de la lista desplegable."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Plantilla predeterminada"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Utilice la plantilla de cuenta."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Utilice la última plantilla externa seleccionada en el menú desplegable."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Opciones de SmartTemplates"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(del sitio de soporte en inglés)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Ejemplos"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "abrir en navegador"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Mostrar plantillas de ejemplo desde https://smarttemplates.quickfolders.org/templates.html. Sólo disponible estando online."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Fuente del editor de plantillas"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Forzar modo párrafo"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Garantiza que la posición del cursor se inicia dentro de un párrafo. También recomendamos seleccionar en Opciones - Redacción de Thunderbird la opción crear un nuevo párrafo al presionar la tecla [Intro]."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Aplicar la siguiente configuración al mensaje reenviado"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Reenviar"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Desactivar el encabezado de respuesta predeterminado de Thunderbird"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Reenviar"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Predisposiciones globales"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Funciones avanzadas"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Contenido del correo"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Varios"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Reglas para nombres"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Firmas"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Resolución de problemas"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Interfaz de usuario"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Ayuda"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Inyectar contenido de <head> desde la plantilla"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Ocultar pestaña de ejemplos"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Usar caracteres de escape para \" , & , < , > , espacio. Consulte la Ayuda para más detalles."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Usar HTML (p.ej. <b>bold</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Corregir Apellido, Nombre"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Camiba 'Apellido, Nombre' a 'Nombre Apellido'"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Aplicar esta plantilla al nuevo mensaje"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Redactar"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Redactar"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Omitir pantalla de bienvenida"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Ocultar diálogo de información que muestra nuevas funciones y correcciones de errores al actualizar."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Procesar firma"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Reemplazar variables en firma"
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Encabezado de cita"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "Escriba aquí su encabezado de cita, por ejemplo: El %date% %from(name)% escribió:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Desactivar el encabezado estándar de respuesta. Por favor configure su encabezado de respuesta en el cuadro de texto."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Cambiar firma al cambiar la identidad del correo"
   },
-  "pref_rep_br.cap": {
-    "message": "NOTA: No se insertará un espacio en la etiqueta HTML si se usa <br> una vez."
+  "replacebr.tooltip": {
+    "message": "Active esta opción para convertir automáticamente los saltos de línea del template en etiquetas <br>. En modo HTML, es mejor agregar manualmente las etiquetas <br> o usar <p> para los párrafos en lugar de depender de esta opción."
   },
-  "pref_rep_br.label": {
-    "message": "Sustituir salto de línea por <br>"
+  "replacebr.label": {
+    "message": "Reemplazar saltos de línea con <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Aplique la siguiente configuración al mensaje respondido"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Responder"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Usar en vez del encabezado de cita estándar"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Responder"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Común"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Cuenta"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Mostrar botón en barra de estado"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Reemplazar salto de línea por <br> en la firma de texto simple"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "No abrir página con historial de versiones"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "No abra el registro de cambios después de actualizar SmartTemplates."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Plantilla"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Escriba su plantilla aquí, como: Hola %from(name)%<br> Gracias por tu mensaje<br> un saludo, %ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "abrir la página de ejemplos en el navegador"
   },
-  "pref_template_tip": {
-    "message": "Puede cambiar el encabezado de respuesta por 'variables'. Consulte la Ayuda para más detalles."
+  "templateBox.tip": {
+    "message": "Puedes mejorar el template con variables. Abre la página de Variables para más información."
   },
   "preferences_legacy": {
     "message": "Configuración (versión antigua)"
@@ -1252,6 +1252,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Eliminar dirección de correo si no está especificado el parámetro de formato"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Esto ocultará la dirección de correo al usar %cc% etc., si se encuentra una entrada en la libreta de direcciones."
   },
   "resolveNamesFromAB": {
     "message": "Resolver nombres a partir de la agenda"

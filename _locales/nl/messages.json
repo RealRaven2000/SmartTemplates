@@ -931,52 +931,52 @@
   "params.optional": {
     "message": "optionele parameters"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Tekst bij aanwijzen"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Alleen pictogram"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Pictogram en tekst"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "Over"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "‘--’ toevoegen in HTML-berichten"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Het scheidingsteken -- altijd toevoegen voor de ondertekening (in HTML-berichten)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "‘--’ toevoegen in plattetekstberichten"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Het scheidingsteken -- altijd toevoegen voor de ondertekening (in plattetekstberichten)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Meerdere geadresseerden scheiden door:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Scheidingsteken tussen meerdere geadresseerden. Outlook gebruikt puntkomma (;) Standaard voor Thunderbird is komma (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Geavanceerde instellingen"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Aantal regeleinden aan de bovenkant:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Spatie invoegen om %cursor% te accentueren"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Foutopsporingsmodus"
   },
-  "pref_debug_tip": {
-    "message": "Klik met de rechtermuisknop voor geavanceerde foutopsporingsopties"
+  "debug.tip": {
+    "message": "Log SmartTemplates-activiteiten in de Foutconsole. Extra logboekvermeldingen voor verschillende functies kunnen worden in- of uitgeschakeld met het instellingenwiel."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Deactiveer ‘$pref_def$’ om specifieke sjablooninstellingen voor dit account te maken.",
     "placeholders": {
       "pref_def": {
@@ -985,7 +985,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "De onderstaande instellingen worden toegepast wanneer er geen specifieke sjabloon bestaat voor een identiteit of als  ‘$pref_def$’ is geselecteerd voor die identiteit.",
     "placeholders": {
       "pref_def": {
@@ -993,187 +993,187 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Algemeen gebruiken"
   },
-  "pref_defaultCharset.label": {
-    "message": "Standaardtekenset"
+  "defaultCharset": {
+    "message": "Fallback-tekenreeks"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Deze tekenset gebruiken als bij lezen van de headers deze niet kan worden bepaald"
+  "defaultCharset.tip": {
+    "message": "Als de tekenreeks van de oorspronkelijke e-mail niet kan worden bepaald, wordt deze gebruikt als fallback voor het decoderen van kopteksten en inhoud."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Gedrag bij het schrijven of beantwoorden zonder een sjabloon te selecteren in de vervolgkeuzelijst."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Standaard sjabloon"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Gebruik het accountmodel."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Gebruik de laatst geselecteerde externe sjabloon in het vervolgkeuzemenu."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "SmartTemplates-instellingen"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(van de Engelse ondersteuningssite)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Voorbeelden"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "openen in browser"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Voorbeeldsjablonen van https://smarttemplates.quickfolders.org/templates.html weergeven. Alleen beschikbaar in online-modus."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Sjabloonbewerkingslettertype"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Alineamodus afdwingen"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Zorgt ervoor dat de cursorpositie met een alinea begint. Het gebruik van de optie voor het maken van een nieuwe alinea bij indrukken van de Enter-toets voor Opstellen in Thunderbird wordt ook aanbevolen."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Pas de volgende instellingen toe op het doorgestuurde bericht:"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Doorsturen"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Gebruiken in plaats van standaard aanhalingskoptekst"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Doorgestuurd bericht"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Globale instellingen"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Geavanceerde functies"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "E-mailinhoud"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Diversen"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Naamregels"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Ondertekeningen"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Probleemoplossing"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Gebruikersinterface"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Hulp"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Injecteer de inhoud van <head> uit het sjabloon"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Tabblad met voorbeelden verbergen"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Escape-tekens gebruiken voor \", &, <, > en spatie. Lees de hulptekst voor details."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "HTML gebruiken (bv. <b>vet</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Achternaam, Voornaam corrigeren"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Volgende sjabloon toepassen op het nieuwe bericht"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Nieuw"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Nieuw bericht"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Splash-scherm weglaten"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Dialoogvenster met informatie verbergen dat nieuwe functies en bugfixes weergeeft tijdens het updaten."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Ondertekening verwerken"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Variabelen in ondertekening vervangen"
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Aanhalingstekst"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "Schrijf uw aanhalingstekst in dit veld, bv. Op %date% schreef %from(name)%:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Standaard aanhalingskoptekst uitschakelen. Schrijf uw aanhalingskoptekst in het tekstveld."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Ondertekening vervangen bij wijzigen van e-mailidentiteit"
   },
-  "pref_rep_br.cap": {
-    "message": "OPMERKING: er wordt in het HTML-label geen spatie ingevoegd door eenmalig <br> te gebruiken."
+  "replacebr.tooltip": {
+    "message": "Schakel deze optie in om automatisch lijnonderbrekingen in de sjabloon om te zetten naar <br>-tags. In HTML-modus is het beter om <br>-tags handmatig toe te voegen of <p> te gebruiken voor alinea's in plaats van op deze optie te vertrouwen."
   },
-  "pref_rep_br.label": {
-    "message": "Regelafbrekingen vervangen door <br>"
+  "replacebr.label": {
+    "message": "Vervang lijnonderbrekingen door <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Pas de volgende instellingen toe op het beantwoorde bericht"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Antwoorden"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Gebruiken in plaats van standaard aanhalingskoptekst"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Antwoordbericht"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Algemeen"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Knop weergeven in statusbalk"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Regelafbrekingen in ondertekening in platte tekst vervangen door <br>"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Tabblad met versiegeschiedenis niet openen"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Geen wijzigingslijst openen nadat SmartTemplates is bijgewerkt"
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Sjabloon"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Schrijf uw sjabloon in dit veld, bv. Hallo %from(name)%,<br> Bedankt voor uw bericht<br> Met vriendelijke groet, %ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "open de voorbeeldpagina in de browser"
   },
-  "pref_template_tip": {
-    "message": "U kunt de aanhalingskoptekst wijzigen met ‘variabelen’. Klik op Geavanceerd / Variabelen voor meer informatie."
+  "templateBox.tip": {
+    "message": "Je kunt de template verbeteren met variabelen. Open de pagina Variabelen voor meer informatie."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Variabelen"
   },
   "preferences_legacy": {
@@ -1282,6 +1282,9 @@
   },
   "resolveABRemoveMail": {
     "message": "E-mailadres verwijderen, tenzij opmaakparameter is opgegeven"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Dit verbergt het e-mailadres bij het gebruik van %cc% enz., als er een adresboekvermelding wordt gevonden."
   },
   "resolveNamesFromAB": {
     "message": "Namen uit adresboeken omzetten"

@@ -955,52 +955,52 @@
   "params.optional": {
     "message": "προαιρετικές παράμετροι"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Κείμενο σε αιώρηση"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Μόνο Εικονίδιο"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Εικονίδιο και Κείμενο"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "Σχετικά"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Πρόσθεσε -- σε HTML email"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Να προσθέτεις πάντα τον οριοθέτη -- πριν από την Υπογραφή (σε μηνύματα HTML)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Πρόσθεσε -- σε μηνύματα απλού κειμένου"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Να προσθέτεις πάντα τον οριοθέτη -- πριν την Υπογραφή (σε μηνύματα απλού κειμένου)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Να οριοθετείς πολλούς ανταποκριτές με:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Οριοθέτης μεταξύ πολλαπλών ανταποκριτών. Το Outlook χρησιμοποιεί ερωτηματικό (;) Η προεπιλογή για το Thunderbird είναι κόμμα (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Προχωρημένες Ρυθμίσεις"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Πλήθος κενών γραμμών στην κορυφή:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Εισαγάγετε Διάστημα για να επισημάνετε %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Λειτουργία Αποσφαλμάτωσης"
   },
-  "pref_debug_tip": {
-    "message": "Πατήστε δεξί κλίκ για προχωρημένες επιλογές αποσφαλμάτωσης"
+  "debug.tip": {
+    "message": "Καταγράφει τις δραστηριότητες του SmartTemplates στην Κονσόλα Σφαλμάτων. Επιπλέον καταχωρήσεις καταγραφής για διάφορες λειτουργίες μπορούν να ενεργοποιηθούν/απενεργοποιηθούν με τον τροχό ρυθμίσεων."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Απενεργοποιήστε το  «$pref_def$» για να δημιουργήσετε συγκεκριμένες ρυθμίσεις προτύπου για αυτόν τον λογαριασμό.",
     "placeholders": {
       "pref_def": {
@@ -1009,7 +1009,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Οι παρακάτω ρυθμίσεις εφαρμόζονται όταν δεν υπάρχει συγκεκριμένο πρότυπο για μια ταυτότητα ή αν επιλεγεί το «$pref_def$» για αυτή την ταυτότητα.",
     "placeholders": {
       "pref_def": {
@@ -1017,190 +1017,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Χρησιμοποίησε το Κοινό"
   },
-  "pref_defaultCharset.label": {
-    "message": "Προεπιλεγμένο σύνολο χαρακτήρων"
+  "defaultCharset": {
+    "message": "Εναλλακτικό Σετ Χαρακτήρων"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Εάν δεν μπορεί να προσδιοριστεί κατά την ανάγνωση των κεφαλίδων, χρησιμοποίησε αυτό το σύνολο χαρακτήρων."
+  "defaultCharset.tip": {
+    "message": "Εάν δεν μπορεί να προσδιοριστεί το σύνολο χαρακτήρων του αρχικού μηνύματος, θα χρησιμοποιηθεί αυτό ως εναλλακτική για την αποκωδικοποίηση των κεφαλίδων και του περιεχομένου."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Συμπεριφορά όταν γράφετε ή απαντάτε χωρίς να επιλέξετε πρότυπο από την αναπτυσσόμενη λίστα."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Προεπιλεγμένο πρότυπο"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Χρησιμοποιήστε το πρότυπο λογαριασμού."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Χρησιμοποιήστε το εξωτερικό πρότυπο που επιλέχθηκε τελευταία από το αναπτυσσόμενο μενού."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Ρυθμίσεις SmartTemplates"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": " (από τον αγγλικό ιστότοπο υποστήριξης)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Παραδείγματα"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "άνοιγμα σε πρόγραμμα περιήγησης"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Εμφάνισε παραδείγματα προτύπων από τη διεύθυνση https://smarttemplates.quickfolders.org/templates.html. Διατίθεται μόνο σε λειτουργία online."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Γραμματοσειρά Επεξεργασίας Προτύπων"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Υποχρεωτική Λειτουργία Παραγράφου"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Βεβαιωθείτε ότι η θέση του δρομέα ξεκινά σε μια παράγραφο. Συνιστούμε επίσης την επιλογή Σύνθεση Thunderbird για να δημιουργήσετε μια νέα παράγραφο πατώντας το πλήκτρο [Enter]."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Εφάρμοσε τις ακόλουθες ρυθμίσεις στο προωθημένο μήνυμα"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Προώθησε"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Απενεργοποίησε την προεπιλεγμένη κεφαλίδα παράθεσης του Thunderbird"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Προώθησε"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Γενικές Ρυθμίσεις"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Προχωρημένες Λειτουργίες"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Περιεχόμενο Μηνύματος"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Διάφορα"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Κανόνες Ονομάτων"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Υπογραφές"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Αντιμετώπιση Προβλημάτων"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Διεπαφή Χρήστη"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Βοήθεια"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Εισάγετε τα περιεχόμενα του <head> από το πρότυπο"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Κρύψε την καρτέλα με τα παραδείγματα"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Χρησιμοποιήστε χαρακτήρες διαφυγής για \" , & , < , > , κενό. Δείτε \"βοήθεια\" για περισσότερες λεπτομέρειες."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Χρησιμοποιήστε HTML (π.χ., <b> έντονο </b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Διόρθωσε Επώνυμο, Όνομα"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Αλλάζει το 'Επώνυμο, Όνομα' σε 'Όνομα Επώνυμο'"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Εφαρμογή του παρακάτω προτύπου στο νέο μήνυμα"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Γράψε"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Γράψε"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Παράλειψη Οθόνης Εκκίνησης"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Απόκρυψη, κατά την ενημέρωση, του διαλόγου πληροφοριών που εμφανίζει νέες λειτουργίες και διορθώσεις σφαλμάτων."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Επεξεργασία υπογραφής"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Αντικατάστησε τις μεταβλητές στην υπογραφή."
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Κεφαλίδα Παράθεσης"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "Σε αυτό το πλαίσιο, γράψτε τι πρέπει να εμφανίζεται πριν από το παρατιθέμενο τμήμα (πρωτότυπο μήνυμα) - π.χ. Στις %date%, ο/η %from(name)% έγραψε:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Απενεργοποιήστε την προεπιλεγμένη κεφαλίδα παράθεσης. Τοποθετήστε τη δική σας κεφαλίδα στο πλαίσιο κειμένου παραπάνω."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Αντικατάστησε την υπογραφή κατά την αλλαγή ταυτότητας email"
   },
-  "pref_rep_br.cap": {
-    "message": "ΣΗΜΕΙΩΣΗ: Δεν θα εισαχθεί κενό διάστημα στην ετικέτα HTML χρησιμοποιώντας <br> μία φορά."
+  "replacebr.tooltip": {
+    "message": "Ενεργοποιήστε αυτήν την επιλογή για να μετατρέπετε αυτόματα τα διαλείμματα γραμμής του προτύπου σε ετικέτες <br>. Στη λειτουργία HTML, είναι καλύτερο να προσθέσετε χειροκίνητα τις ετικέτες <br> ή να χρησιμοποιήσετε το <p> για παραγράφους αντί να εξαρτάστε από αυτήν την επιλογή."
   },
-  "pref_rep_br.label": {
-    "message": "Αντικατάστησε τις αλλαγές γραμμής με <br>"
+  "replacebr.label": {
+    "message": "Αντικατάσταση διαλείμματος γραμμής με <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Εφάρμοσε τις ακόλουθες ρυθμίσεις στο μήνυμα που απαντήθηκε"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Απάντησε"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Χρήση αντί της προεπιλεγμένης κεφαλίδας παράθεσης"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Απάντησε"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Κοινό"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Λογαριασμός"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Εμφάνιση κουμπιού στη γραμμή κατάστασης"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Αντικατάστησε τις αλλαγές γραμμής στην υπογραφή απλού κειμένου με <br>"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Μην ανοίγετε καρτέλα με ιστορικό εκδόσεων"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Να μην ανοίγει το αρχείο καταγραφής αλλαγών μετά την ενημέρωση του SmartTemples."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Πρότυπο"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Σε αυτό το πλαίσιο, βάλτε το πρότυπο email σας π.χ. Γεια σας %from(name)%, <br> Ευχαριστούμε για το μήνυμά σας <br> με εκτίμηση, <br>%ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "ανοίξτε τη σελίδα παραδειγμάτων στο πρόγραμμα περιήγησης"
   },
-  "pref_template_tip": {
-    "message": "Μπορείτε να βελτιώσετε το πρότυπο με 'μεταβλητές'. Επιλέξτε Προχωρημένα / Μεταβλητές για περισσότερες πληροφορίες."
+  "templateBox.tip": {
+    "message": "Μπορείτε να ενισχύσετε το πρότυπο με μεταβλητές. Ανοίξτε τη σελίδα Μεταβλητές για περισσότερες πληροφορίες."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Μεταβλητές"
   },
   "preferences_legacy": {
@@ -1309,6 +1309,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Αφαίρεσε τη διεύθυνση email εκτός εάν έχει καθοριστεί η παράμετρος μορφής"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Αυτό θα αποκρύψει τη διεύθυνση email όταν χρησιμοποιείτε το %cc% κ.λπ. εάν βρεθεί καταχώρηση στο βιβλίο διευθύνσεων."
   },
   "resolveNamesFromAB": {
     "message": "Προσδιόρισε ονόματα από βιβλία διευθύνσεων"

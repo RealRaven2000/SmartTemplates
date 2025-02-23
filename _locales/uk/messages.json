@@ -950,52 +950,52 @@
   "params.optional": {
     "message": "необов'язкові параметри"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Текст при наведенні"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Значки тільки"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Значки та текст"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "Про"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Додати -- до пошти у форматі HTML"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Завжди додати розділювач -- перед підписом (у пошті формату HTML)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Додати розділювач -- у пошті "
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Завжди додати розділювач -- перед підписом (у пошті)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Розділити декілька кореспондентів за допомогою:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Розділ між кількома кореспондентами. Outlook використовує крапку з комою (;) За умовчанням для Thunderbird це кома (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Додаткові налаштування"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Кількість переносів рядків з початку"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Вставити пробіл, щоб виділити %курсор%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Налагоджувальний режим"
   },
-  "pref_debug_tip": {
-    "message": "Клацніть правою кнопкою миші для виклику додаткових опцій відладки"
+  "debug.tip": {
+    "message": "Записує активність SmartTemplates в консолі помилок. Додаткові записи журналу для різних функцій можна ввімкнути/вимкнути за допомогою колеса налаштувань."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Деактивуйте '$pref_def$', щоб створити конкретні налаштування шаблону для цього облікового запису.",
     "placeholders": {
       "pref_def": {
@@ -1004,7 +1004,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Наведені нижче налаштування застосовуються, якщо для ідентифікатора не існує конкретного шаблону або якщо для цього ідентифікатора вибрано '$pref_def$'.",
     "placeholders": {
       "pref_def": {
@@ -1012,190 +1012,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Використовувати загальні"
   },
-  "pref_defaultCharset.label": {
-    "message": "кодова сторінка по замовчуванні "
+  "defaultCharset": {
+    "message": "Резервний набір символів"
   },
-  "pref_defaultCharset_tip": {
-    "message": "При читанні заголовків, повернутися до цього кодування, якщо вони не можуть бути визначенні."
+  "defaultCharset.tip": {
+    "message": "Якщо набір символів оригінального листа не можна визначити, цей буде використовуватися як резервний для декодування заголовків і вмісту."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Поведінка під час написання або відповіді без вибору шаблону зі спадного списку."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Шаблон за замовчуванням"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Використовуйте шаблон облікового запису."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Використовуйте останній зовнішній шаблон, вибраний у спадному меню."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "SmartTemplates налаштування"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(з англомовного сайту підтримки)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Приклади"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "відкрити в браузері"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Показати приклади шаблонів з https://smarttemplates.quickfolders.org/templates.html. Тільки якщо доступна мережа."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Шрифт редактора шаблонів"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Увімкнути режим абревіатури"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Переконайтеся, що позиція курсора починається з абзацу. Ми також рекомендуємо опцію Thunderbird Composition, щоб створити новий абзац, натиснувши клавішу [Enter]."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Застосуйте наступні налаштування до пересланого повідомлення"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Переслати"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Заборонити Thunderbird заголовк по-замовчуванню"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Переадресувати"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Глобальні налаштування"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Додаткові функції"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "l зміст"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Різне"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Назва правил"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Підписи"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Пошук і усунення несправностей"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Інтерфейс користувача "
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Допомога"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Вставте вміст <head> із шаблону"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Сховати закладку з прикладами"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Використовувати escape символи для ' , & , < , > , space. Дивіться 'допомогу' для детальної інформації."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Використовувати HTML (напр., <b>bold</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Змінювати Прізвище, Ім'я"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Змінювати \"Прізвище, Ім'я\" на Ім'я"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Застосувати наступний шаблон до нового повідомлення"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Запис"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Записати"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Опустити заставку"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Приховати інформаційне діалогове вікно, яке відображає нові функції та виправлення помилок під час оновлення."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Підписання"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Заміна змінних у підпису"
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Цитата заголовка"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "Напишіть цитату заголовка в цій графі, наприклад, Від %from(name)% написано було %date%:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Відключення заголовку за замовчуванням. Будь ласка, сформуйте свій заголовок всередині текстового поля."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Заміняти підпис коли змінюються данні поштового аканту"
   },
-  "pref_rep_br.cap": {
-    "message": "ПРИМІТКА: No space буде вставлено до HTML тегів у разі разового використання <br> ."
+  "replacebr.tooltip": {
+    "message": "Увімкніть цю опцію для автоматичного перетворення розривів рядків у шаблоні на теги <br>. У HTML-режимі краще вручну додавати теги <br> або використовувати <p> для абзаців, замість того, щоб покладатися на цю опцію."
   },
-  "pref_rep_br.label": {
-    "message": "Замінити позначення нового рядку символом <br>"
+  "replacebr.label": {
+    "message": "Заміна розривів рядків на <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Застосуйте наведені нижче налаштування до повідомлення з відповіддю"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Відповідь"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Використовувати замість заголовку по-замовчуванню"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Відповідь"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Загальні"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Запис"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Показувати кнопку у статусному рядку"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Замінити розриви рядків у підпису з форматом простого тексту з <br>"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Не відкривати вкладку з історією версій"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Не відкривати зміну журналу після оновлення SmartTemplates."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Шаблон"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Напишіть Ваш шаблон в цій графі, наприклад, Добрий день, %from(name)%<br>Дякую Вам за Ваше повідомлення<br> з повагою, %ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "відкрити сторінку прикладів у браузері"
   },
-  "pref_template_tip": {
-    "message": "Ви можете змінити заголовки з 'змінним'. Див. довідку для отримання додаткової інформації."
+  "templateBox.tip": {
+    "message": "Ви можете покращити шаблон за допомогою змінних. Відкрийте сторінку Змінні для додаткової інформації."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Змінні"
   },
   "preferences_legacy": {
@@ -1304,6 +1304,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Видалити адреса електронної пошти, якщо не вказано параметр формату"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Це приховає електронну адресу при використанні %cc% тощо, якщо в адресній книзі знайдено запис."
   },
   "resolveNamesFromAB": {
     "message": "Розпізнавати імена використовуючи адресну книгу"

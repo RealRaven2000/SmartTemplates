@@ -681,52 +681,52 @@
   "params.optional": {
     "message": "parameter opsional"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Teks Hover"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Hanya Ikon"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Ikon dan Teks"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "Tentang"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Tambahkan - di email HTML"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Selalu tambahkan - pemisah sebelum Tanda Tangan (dalam surat HTML)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Tambahkan - dalam pesan teks biasa"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Selalu tambahkan - pemisah sebelum Tanda Tangan (dalam pesan teks biasa)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Batasi beberapa koresponden dengan:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Batasi antara beberapa koresponden. Outlook menggunakan titik koma (;) Standar untuk Thunderbird adalah Koma (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Setelan Lanjutan"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Jumlah jeda baris di atas:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Sisipkan Ruang untuk menyorot %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Mode Debug"
   },
-  "pref_debug_tip": {
-    "message": "Klik-kanan untuk opsi debug lanjutan"
+  "debug.tip": {
+    "message": "Mencatat aktivitas SmartTemplates di Konsol Kesalahan. Entri log tambahan untuk berbagai fungsi dapat diaktifkan/dinonaktifkan dengan roda pengaturan."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Nonaktifkan '$pref_def$' untuk membuat pengaturan template khusus untuk akun ini.",
     "placeholders": {
       "pref_def": {
@@ -735,7 +735,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Pengaturan di bawah ini diterapkan ketika tidak ada templat khusus untuk identitas atau jika '$pref_def$' dipilih untuk identitas tersebut.",
     "placeholders": {
       "pref_def": {
@@ -743,181 +743,181 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Gunakan Umum"
   },
-  "pref_defaultCharset.label": {
-    "message": "Charset standar"
+  "defaultCharset": {
+    "message": "Set Karakter Cadangan"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Saat membaca header, kembali ke set karakter ini jika tidak dapat ditentukan."
+  "defaultCharset.tip": {
+    "message": "Jika set karakter email asli tidak dapat ditentukan, ini akan digunakan sebagai cadangan untuk mendekode header dan konten."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Perilaku saat menulis atau membalas tanpa memilih template dari daftar drop-down."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Templat Bawaan"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Gunakan templat akun."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Gunakan template eksternal yang terakhir dipilih dari menu drop-down."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Setelan SmartTemplates"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(dari situs dukungan berbahasa Inggris)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Contoh"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "buka di browser"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Tampilkan contoh template dari https://smarttemplates.quickfolders.org/templates.html. Hanya tersedia dalam mode online."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Editor Huruf Template"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Paksa Mode Paragraf"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Memastikan bahwa posisi kursor dimulai dalam paragraf. Kami juga merekomendasikan opsi Komposisi Thunderbird untuk membuat paragraf baru saat menekan tombol [Enter]."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Terapkan pengaturan berikut ke pesan yang diteruskan"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Teruskan"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Nonaktifkan kutipan header Thunderbird standar"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Teruskan"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Setelan Umum"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Fungsi Lanjutan"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Konten Email"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Lain-lain"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Tata Tertib"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Tanda Tangan"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Penyelesaian masalah"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Antarmuka pengguna"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Bantuan"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Suntikkan konten <head> dari template"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Sembunyikan tab contoh"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Gunakan karakter escape untuk \" , & , < , > , spasi. Lihat \"help\" untuk lebih jelasnya."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Gunakan HTML (mis., <b>bold</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Koreksi LastName, FirstName"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Ubah 'LastName, FirstName' menjadi 'First Last"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Terapkan template berikut untuk pesan baru"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Tulis"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Tulis"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Abaikan Layar Percikan"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Sembunyikan dialog informasi yang menampilkan fitur baru dan perbaikan bug saat memperbarui."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Proses Tanda tangan"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Ganti variabel dalam tanda tangan."
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Kutipan Tajuk"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "Dalam kotak ini, tulis apa yang harus ditampilkan sebelum bagian yang dikutip (surat asli) - mis. Pada %date%, %from(name)% menulis:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Nonaktifkan kutipan header standar. Silakan tempatkan header anda di kotak teks di atas."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Ganti tanda tangan saat mengubah identitas email"
   },
-  "pref_rep_br.cap": {
-    "message": "CATATAN: Tidak ada ruang yang akan dimasukkan ke dalam tag HTML dengan menggunakan <br> satu kali."
+  "replacebr.tooltip": {
+    "message": "Aktifkan opsi ini untuk secara otomatis mengonversi pemutusan baris dalam template menjadi tag <br>. Dalam mode HTML, lebih baik menambahkan tag <br> secara manual atau menggunakan <p> untuk paragraf daripada bergantung pada opsi ini."
   },
-  "pref_rep_br.label": {
-    "message": "Ganti jeda baris dengan <br>"
+  "replacebr.label": {
+    "message": "Ganti pemutusan baris dengan <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Terapkan pengaturan berikut ke pesan yang dibalas"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Balas"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Gunakan daripada kutipan header standar"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Balas"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Umum"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Akun"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Tampilkan tombol di bilah status"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Ganti jeda baris tanda tangan dalam teks biasa dengan <br>"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Dalam kotak ini,tempatkan template email Anda, mis. Halo %from(name)%, <br> Terima kasih atas pesan Anda <br> Salam, <br>%ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "buka halaman contoh di browser"
   },
-  "pref_template_tip": {
-    "message": "Anda dapat meningkatkan template dengan 'variabel'. Klik lanjutan / variabel untuk informasi lebih lanjut."
+  "templateBox.tip": {
+    "message": "Anda dapat meningkatkan template dengan variabel. Buka halaman Variabel untuk informasi lebih lanjut."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Variabel"
   },
   "preferences_legacy": {
@@ -987,6 +987,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Hapus alamat email kecuali format batasan ditentukan"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Ini akan menyembunyikan alamat email saat menggunakan %cc% dll, jika entri buku alamat ditemukan."
   },
   "resolveNamesFromAB": {
     "message": "Pilih nama dari buku alamat"

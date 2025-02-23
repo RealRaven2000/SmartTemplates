@@ -946,52 +946,52 @@
   "params.optional": {
     "message": "необязательные параметры"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Текст под мышкой"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Только значок"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Значок  и текст"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "О"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Вставка -- в HTML сообщение"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Всегда добавлять разделитель -- перед подписью (в письмах в формате HTML)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Вставка -- в обычнoe сообщение"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Всегда добавлять разделитель -- перед подписью (в обычных текстовых письмах)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Разделитель в списке корреспондентов:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Разделитель между несколькими корреспондентами. Outlook использует точку с запятой (;), Thunderbird  стандартно запятую (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Дополнительные параметры"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Количество переводов строк в начале:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Вставлять пробел для подчеркивания %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Режим отладки"
   },
-  "pref_debug_tip": {
-    "message": "Для настроек режима отладки нажмите правую кнопку мыши"
+  "debug.tip": {
+    "message": "Записывает действия SmartTemplates в консоль ошибок. Дополнительные записи журналов для различных функций можно включать/выключать с помощью колесика настроек."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Деактивируйте '$pref_def$', чтобы создать конкретные настройки шаблона для этой учетной записи.",
     "placeholders": {
       "pref_def": {
@@ -1000,7 +1000,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "Настройки ниже применяются, если для идентификатора не существует определенного шаблона или если для этого идентификатора выбрано '$pref_def$'.",
     "placeholders": {
       "pref_def": {
@@ -1008,190 +1008,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Использовать общие настройки"
   },
-  "pref_defaultCharset.label": {
-    "message": "Стандартная кодировка"
+  "defaultCharset": {
+    "message": "Резервный набор символов"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Использовать эту кодировку при чтении заголовков, если кодировка не определяется."
+  "defaultCharset.tip": {
+    "message": "Если набор символов исходного письма не может быть определен, будет использоваться этот набор для декодирования заголовков и содержания."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Поведение при написании или ответе без выбора шаблона из выпадающего списка."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Шаблон по умолчанию"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Используйте шаблон учетной записи."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Используйте внешний шаблон, выбранный последним из раскрывающегося меню."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "Настройки SmartTemplates"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(с англоязычного сайта поддержки)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Примеры "
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "открыть в браузере"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Показывать примеры с https://smarttemplates.quickfolders.org/templates.html. Доступно только при наличии подключения к Интернету. "
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Шрифт редактора шаблонов"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Принудительный режим абзаца"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Курсор всегда устанавливается в пределах абзаца. Мы рекомендуем использовать настройку составления в Thunderbird, для создания нового абзаца при нажатии клавиши [Ввод]"
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Примените следующие настройки к переадресованному сообщению"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Переслать"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Отключить стандартный заголовок цитат"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Переслать"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Общие настройки"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Дополнительные функции"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Содержимое сообщения"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Разное"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Правила для имен"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Подпись"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Решение проблем"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Интерфейс пользователя"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Справка"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Вставить содержимое <head> из шаблона"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Спрятать вкладку с примерами"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "В данном случае шаблон используется как HTML-код. К примеру, новые строки, если не содержат <br>, не переносятся (если не включена опция ниже). Также могут использоваться HTML-символы:  \" , & , < , > , пробел. Если отключено, все HTML-теги будут отображаться в сообщении в виде обычного текста. См. в справке."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Шаблон в формате HTML (например < b >жирный < /b >)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Исправить фамилию, имя"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Меняет 'фамилия, имя' на 'имя, фамилия'"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Использовать следующий шаблон при создании нового сообщения"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Создать"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Создать"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Пропустить заставку"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Скрыть информационный диалог, в котором отображаются новые функции и исправления ошибок при обновлении."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Обрабатывать подпись"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Заменять переменные в подписи"
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Заголовок цитат"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "Напишите свой заголовок цитат, к примеру %from(name)% писал %date%:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Отключить стандартный заголовок цитат. Пожалуйста создайте свой заголовок цитат."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Стирать подпись при смене адреса электронной почты"
   },
-  "pref_rep_br.cap": {
-    "message": "Внимание: при одноразовом использовании <br> пробелы не будут вставлены."
+  "replacebr.tooltip": {
+    "message": "Включите эту опцию для автоматического преобразования разрывов строк в шаблоне в теги <br>. В HTML-режиме лучше вручную добавлять теги <br> или использовать <p> для абзацев, вместо того чтобы полагаться на эту опцию."
   },
-  "pref_rep_br.label": {
-    "message": "Заменять новые строки (в тексте шаблона) HTML-тегом <br> (в сообщении). См. в справке."
+  "replacebr.label": {
+    "message": "Заменить разрывы строк на <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Примените следующие настройки к ответному сообщению"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Ответить"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Использовать вместо стандартного заголовка цитат"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Ответить"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Общие настройки"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Учётная запись"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Кнопка в строке состояния"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "<br> вместо перевода строк в текстовой подписи"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Не открывать вкладку с историей версий"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Не открывайте журнал изменений после обновления SmartTemplates."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Шаблон"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "Напишите свой шаблон, к примеру Привет %from(name)%<br> Спасибо за сообщение <br> Всего наилучшего, %ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "открыть страницу примеров в браузере"
   },
-  "pref_template_tip": {
-    "message": "Вы можете использовать переменные, описанные в справке."
+  "templateBox.tip": {
+    "message": "Вы можете улучшить шаблон с помощью переменных. Откройте страницу Переменные для получения дополнительной информации."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Переменные"
   },
   "preferences_legacy": {
@@ -1300,6 +1300,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Скрыть адрес если он не используется как параметр в шаблоне"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "Это скроет адрес электронной почты при использовании %cc% и т. д., если найдено соответствующее письмо в адресной книге."
   },
   "resolveNamesFromAB": {
     "message": "Брать имена из адресных книг"

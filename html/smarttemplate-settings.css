@@ -1069,10 +1069,7 @@ button {
 }
 
 /** config buttons **/
-
-button.helpLink,
 .hasConfigEvent button.configSettings {
-  -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;
@@ -1097,10 +1094,6 @@ button.helpLink,
 
 .hasConfigEvent button.configSettings {
   list-style-image: url('../chrome/content/skin/icons/settings-simple.svg') !important;
-}
-
-button.helpLink {
-  list-style-image: url('../chrome/content/skin/icons/help.svg') !important;
 }
 
 .hasConfigEvent button.configSettings:hover {
@@ -1136,11 +1129,6 @@ button.helpLink {
 .areaQuoteParent,
 .areaTemplateParent {
 	align-items: stretch;
-	/*
-	border-radius: 1em;
-	border-color: orange;
-	border-style: dotted;
-	*/
 	flex-direction: column;
 	flex: 1 1 content;
 	min-height: 4em;
@@ -1168,3 +1156,52 @@ button.helpLink {
 	align-items: center;
 }
 
+/* developed from filtaquilla's .helpLink */
+button.toolTipButton {
+  appearance: none !important;
+  background-image: url('../chrome/content/skin/icons/help.svg') !important;
+  background-repeat: no-repeat;
+	background-position: 2px;
+  cursor: pointer;
+  margin-block: 1px !important;
+	min-width: unset;
+  width: 22px;
+	height: 22px !important;
+}
+
+button.toolTipButton .tooltip {
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+  font-size: 0.9em;
+  line-height: 20px;
+  max-width: 25em;
+  opacity: 0;
+  padding: 5px;
+  position: fixed;
+	text-align: left;
+  transition: opacity 0.3s, visibility 0s;
+  visibility: hidden;
+	z-index: 1000;
+}
+
+button.toolTipButton:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.areaQuoteParent,
+.areaTemplateParent {
+  position: relative;
+}
+
+.areaQuoteParent > .toolTipButton,
+.areaTemplateParent > .toolTipButton {
+	position: absolute;
+  right: 14px;
+  top: 2px;
+}
+
+.newGroup .areaTemplateParent .toolTipButton {
+	right: 2px;
+}

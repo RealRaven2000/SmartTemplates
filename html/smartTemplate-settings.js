@@ -1216,8 +1216,8 @@ SmartTemplates.Settings = {
 		    	iAccounts = accounts.length;
 				
 		const useCommonPlaceHolder = document.getElementById("commonPlaceholder"),
-		      useCommonCmd = SmartTemplates.Util.getBundleString("pref_def.label");
-		useCommonPlaceHolder.textContent = SmartTemplates.Util.getBundleString("pref_def.cap", useCommonCmd);
+		      useCommonCmd = SmartTemplates.Util.getBundleString("common.use");
+		useCommonPlaceHolder.textContent = SmartTemplates.Util.getBundleString("common.use.title", useCommonCmd);
 
 		const common = document.getElementById("deckA.per_account");
 		const common1st = common.querySelector(".commonContainer label");
@@ -1300,7 +1300,7 @@ SmartTemplates.Settings = {
 			const commonExplainer = document.createElement("label");
 			commonExplainer.id = "commonSettingsExplainer";
 			commonExplainer.textContent = 
-				SmartTemplates.Util.getBundleString("pref_def.explainer", SmartTemplates.Util.getBundleString("pref_def.label"));
+				SmartTemplates.Util.getBundleString("common.use.tip", SmartTemplates.Util.getBundleString("common.use"));
 			commonContainer.appendChild(commonExplainer);
 		}
 		
@@ -2174,8 +2174,89 @@ function addConfigEvent(el, filterConfig) {
 	});
 }
 
+/**** FLOATING TOOLTIPS ===> **** */
+// Function to update the tooltip's position
+function updateTooltipPosition(e, el, tip) {
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const buttonRect = el.getBoundingClientRect();
+  const VERTICAL_OFFSET = 18;
+  const HORIZONTAL_OFFSET = 15;
+
+  // Ensure tooltip width and height are calculated correctly before positioning
+  tip.style.visibility = "hidden"; // Temporarily hide to measure
+  tip.style.opacity = 0;
+  const tipWidth = tip.offsetWidth;
+  const tipHeight = tip.offsetHeight;
+  tip.style.visibility = "visible"; // Show after calculation
+  tip.style.opacity = 1;
+
+  let left, top;
+
+  // Position the tooltip below and to the right of the button, with added vertical space
+  if (buttonRect.right + tipWidth > viewportWidth - 20) {
+    // If the tooltip would go off the screen to the right, right-align it
+    left = Math.max(10, viewportWidth - tipWidth - 10) + "px";
+    top = buttonRect.bottom + VERTICAL_OFFSET + "px"; 
+  } else {
+    left = buttonRect.right + HORIZONTAL_OFFSET + "px"; // Position slightly to the right of the button
+    top = buttonRect.bottom + VERTICAL_OFFSET + "px"; 
+  }
+
+  // Prevent tooltip from going off the screen vertically
+  if (parseInt(top) + tipHeight > viewportHeight - 10) {
+    top = viewportHeight - tipHeight - 10 + "px";
+  }
+
+  // Apply the final position
+  tip.style.left = left;
+  tip.style.top = top;
+}
+
+// Function to show the tooltip
+function showTooltip(evt, el) {
+  let tip = el.querySelector(".tooltip"); // Reuse existing tooltip if it exists
+
+  // If no tooltip exists, create a new one
+  if (!tip) {
+    const txt = el.getAttribute("clickyTooltip");
+    if (!txt) return;
+
+    tip = document.createElement("div");
+    tip.classList.add("tooltip");
+    tip.innerText = txt;
+    el.appendChild(tip); // Append tooltip to button
+  }
+
+  tip.style.visibility = "visible"; // Make tooltip visible
+  tip.style.opacity = 1; // Fade in effect
+
+  updateTooltipPosition(evt, el, tip); // Position immediately on click
+
+  el.addEventListener("mousemove", (e) => updateTooltipPosition(e, el, tip));
+  el.addEventListener("mouseleave", () => hideTooltip(tip));
+}
+
+// Function to hide the tooltip (just make it invisible)
+function hideTooltip(tip) {
+  tip.style.visibility = "hidden"; // Make the tooltip invisible
+  tip.style.opacity = 0; // Hide with fade effect
+}
+
+
+/**** <=== FLOATING TOOLTIPS **** */
+
 // add UI event listeners
 function addUIListeners() {
+  for (let button of document.querySelectorAll(".toolTipButton")) {
+    button.addEventListener("click", (evt) => {
+      const el = evt?.target;
+      if (!el) return;
+
+      showTooltip(evt, el); // Show tooltip on click
+    });
+  }
+
   // activate all write/reply/forward tab listeners.
   for (let button of document.querySelectorAll(".actionTabs button")) {
     button.addEventListener("click", activateTab);

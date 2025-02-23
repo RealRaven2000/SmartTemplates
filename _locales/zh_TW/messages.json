@@ -946,52 +946,52 @@
   "params.optional": {
     "message": "可選參數"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "懸停時顯示文本"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "僅圖標"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "圖標和文本"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "關於"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "在 HTML 郵件中添加 --"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "始終在簽名前添加 -- 分隔符(在 HTML 郵件中)"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "添加 -- 在純文本郵件中"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "始終在簽名前添加 -- 分隔符(在純文本郵件中)"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "用以下方式分隔多個通訊員："
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "多個通訊者之間的分隔符。 Outlook 使用分號 (;) Thunderbird 的默認值為逗號 (,)"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "高級設置"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "從頭算起的換行數:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "插入空格以突出顯示 %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "除錯模式"
   },
-  "pref_debug_tip": {
-    "message": "點右鍵使用進階的除錯選項"
+  "debug.tip": {
+    "message": "在錯誤控制台記錄SmartTemplates的活動。可以通過設置輪切換啟用/禁用各種功能的附加日誌條目。"
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "停用 '$pref_def$' 以為此賬戶創建特定的模板設置。",
     "placeholders": {
       "pref_def": {
@@ -1000,7 +1000,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "當沒有特定模板存在於身份時，或為該身份選擇 '$pref_def$' 時，會應用以下設置。",
     "placeholders": {
       "pref_def": {
@@ -1008,187 +1008,187 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "使用常見的"
   },
-  "pref_defaultCharset.label": {
-    "message": "默認字符集"
+  "defaultCharset": {
+    "message": "備用字元集"
   },
-  "pref_defaultCharset_tip": {
-    "message": "讀取標題時，如果無法確定，請回退到此字符集。"
+  "defaultCharset.tip": {
+    "message": "如果無法確定原始電子郵件的字元集，則將使用此字元集作為備用來解碼標題和內容。"
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "未從下拉列表中選擇模板的情況下撰寫或回复時的行為。"
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "默認模板"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "使用賬戶模板。"
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "使用最後從下拉菜單中選擇的外部模板。"
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "SmartTemplates 設定"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "（來自英文支援網站）"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "範例"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "在瀏覽器中打開"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "顯示來自 https://smarttemplates.quickfolders.org/templates.html 的示例模板。 僅在在線模式下可用"
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "樣板字體編輯器"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "強制段落模式"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "確保光標位置從段落開始。 我們還推薦使用 Thunderbird 組合選項來在按下 [Enter] 鍵時創建一個新段落。"
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "將以下設置應用於轉發的消息"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "轉寄"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "停用Thunderbird預設的引用表頭"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "轉寄"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "全域設定"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "高級功能"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "郵件內容"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "雜項"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "命名規則"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "簽名"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "故障排除"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "用戶界面"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "求助"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "從模板注入 <head> 的內容"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "隱藏示例選項卡"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "使用 ESC 字元來做 \" , & , < , > , space. 請查看 \"求助\" 來取得更完整資訊."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "使用HTML (例如.,<b>bold</b>)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "正確的姓，名"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "將“姓氏，名字”更改為“姓氏”"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "套用以下的樣板到新的郵件"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "編寫"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "編寫"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "省略啟動畫面"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "隱藏信息對話框，在更新時顯示新功能和錯誤修復。"
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "進程簽名"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "替換簽名中的變量。"
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "引用表頭"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "將引用表頭寫在這個對話框,例如.在%date% wrote %from(name)%:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "停用預設的引用表頭.請插入您的預設表頭到文字方塊."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "當改變電子郵件身份時置換簽名檔"
   },
-  "pref_rep_br.cap": {
-    "message": "提醒: 當使用了 <br> 後將沒有空間再插入到 HTML 標籤中."
+  "replacebr.tooltip": {
+    "message": "啟用此選項將自動將模板中的換行符轉換為 <br> 標籤。在 HTML 模式下，最好手動添加 <br> 標籤或使用 <p> 來表示段落，而不是依賴此選項。"
   },
-  "pref_rep_br.label": {
-    "message": "用 <br> 來取代換行"
+  "replacebr.label": {
+    "message": "用 <br> 替換換行符"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "將以下設置應用於回复的消息"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "回覆"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "使用預設的引用表頭來代替"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "回覆"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "常見"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "賬戶"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "在狀態列顯示按鈕"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "用 <br> 替換純文本簽名中的換行符"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "不要打開帶有版本歷史記錄的選項卡"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "更新 SmartTemplates 後不要打開更改日誌。"
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "樣板"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "將樣板寫在這個對話框,例如.您好 %from(name)%, <br> 感謝您的郵件 <br> regards, <br>%ownname%"
   },
-  "pref_template_tip": {
-    "message": "您可以用'變數'來變更引用表頭.請用求助取得更多資訊."
+  "templateBox.tip": {
+    "message": "您可以透過變數來增強模板。請打開變數頁面以獲取更多資訊。"
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "變數"
   },
   "preferences_legacy": {
@@ -1203,7 +1203,7 @@
   "preheader.inlineStyles": {
     "message": "[可選] 添加您自己的樣式屬性，以分號分隔。沒有這個參數，SmartTemplates 將插入 'display:none' 來自動使該部分不可見。"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "在瀏覽器中打開範例頁面"
   },
   "preheader.text": {
@@ -1300,6 +1300,9 @@
   },
   "resolveABRemoveMail": {
     "message": "除非指定格式參數，否則刪除電子郵件地址"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "如果在地址簿中找到條目，使用 %cc% 等時將隱藏郵件地址。"
   },
   "resolveNamesFromAB": {
     "message": "解析地址簿中的名稱"

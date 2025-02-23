@@ -932,52 +932,52 @@
   "params.optional": {
     "message": "opcjonalne parametry"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "Tekst po wskazaniu kursorem"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "Ikony"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "Ikony i tekst"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "Informacje"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "Dodawaj w formacie HTML"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "Zawsze dodawaj separator przed podpisem"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "Dodawaj w formacie tekstowym"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "Zawsze dodawaj separator przed podpisem"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "Oddzielaj wielu korespondentów za pomocą:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "Separator pomiędzy wieloma korespondentami.W Outlooku jest to średnik (;), a w Thunderbirdzie przecinek (,)."
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "Ustawienia zaawansowane"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "Liczba wierszy odstępu na górze:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "Wstaw spacje do wyróżnienia %cursor%"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "Tryb debugowania"
   },
-  "pref_debug_tip": {
-    "message": "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych"
+  "debug.tip": {
+    "message": "Rejestruje działania SmartTemplates w Konsoli Błędów. Dodatkowe wpisy dziennika dla różnych funkcji można włączać/wyłączać za pomocą koła ustawień."
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "Dezaktywuj „$pref_def$”, aby utworzyć specyficzne ustawienia szablonu dla tego konta.",
     "placeholders": {
       "pref_def": {
@@ -986,7 +986,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "De onderstaande instellingen worden toegepast wanneer er geen specifieke sjabloon bestaat voor een identiteit of als „$pref_def$” is geselecteerd voor die identiteit.",
     "placeholders": {
       "pref_def": {
@@ -994,190 +994,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "Użyj dla wszystkich kont"
   },
-  "pref_defaultCharset.label": {
-    "message": "Domyślny zestaw znaków"
+  "defaultCharset": {
+    "message": "Zapasowy zestaw znaków"
   },
-  "pref_defaultCharset_tip": {
-    "message": "Jeśli nie możesz ustalić zestawu znaków, by przeczytać nagłówek wiadomości, wróć do domyślnego zestawu."
+  "defaultCharset.tip": {
+    "message": "Jeśli zestaw znaków oryginalnego e-maila nie może zostać określony, zostanie użyty ten zestaw jako zapasowy do dekodowania nagłówków i treści."
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "Zachowanie podczas pisania lub odpowiadania bez wybrania szablonu z rozwijanej listy."
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "Domyślny szablon"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "Skorzystaj z szablonu konta."
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "Użyj szablonu zewnętrznego wybranego ostatnio z rozwijanego menu."
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "SmartTemplates – ustawienia"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "(z angielskiej strony wsparcia)"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "Przykłady"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "otwórz w przeglądarce"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "Wyświetla przykładowe szablony z witryny https://smarttemplates.quickfolders.org/templates.html. Dostępne tylko w trybie online."
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "Czcionka"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "Stosuj tryb akapitu"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "Zapewnia ustawienie kursora na początku akapitu. Zaleca się stosować w oknie komponowania wiadomości tworzenie nowych akapitów po naciśnięciu klawisza Enter."
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "Zastosuj następujące ustawienia do przekazywanej wiadomości"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "Przekazywanie"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "Użyj zamiast standardowego nagłówka"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "Przekazywanie wiadomości"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "Ustawienia ogólne"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "Funkcje zaawansowane"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "Treść wiadomości"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "Różne"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "Nazwa reguły"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "Sygnaturki"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "Rozwiązywanie problemów"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "Interfejs użytkownika"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "Pomoc"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "Wstrzyknij zawartość <head> z szablonu"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "Ukryj kartę przykładów"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "Używaj odwróconego ukośnika przed znakami: \" , & , < , > oraz spacją. Zobacz pomoc."
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "Użyj HTML, np. <b>bold</b>"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "Zamieniaj nazwisko i imię miejscami"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko."
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "Stosuj poniższy szablon dla nowych wiadomości"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "Nowa wiadomość"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "Nowa wiadomość"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "Pomiń ekran powitalny"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "Ukryj okno informacyjne, które wyświetla nowe funkcje i poprawki błędów podczas aktualizacji."
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "Przetwórz podpis"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "Zamień zmienne w podpisie"
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "Nagłówek cytatu"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "W tym polu podaj swój nagłówek cytatu, np. Dnia %date% %from(name)% napisał:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "Wyłącz standardowy nagłówek. Utwórz swój nagłówek w polu tekstowym."
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "Usuwaj podpis, gdy jest zmieniana tożsamość"
   },
-  "pref_rep_br.cap": {
-    "message": "Uwaga! Nowy wiersz nie zostanie zamieniony, jeśli jest poprzedzony znacznikiem HTML z <br>."
+  "replacebr.tooltip": {
+    "message": "Włącz tę opcję, aby automatycznie zamieniać łamanie linii w szablonie na tagi <br>. W trybie HTML lepiej ręcznie dodać tagi <br> lub użyć <p> do akapitów zamiast polegać na tej opcji."
   },
-  "pref_rep_br.label": {
-    "message": "Zamieniaj nowy wiersz znakiem <br>"
+  "replacebr.label": {
+    "message": "Zamień łamanie linii na <br>"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "Zastosuj następujące ustawienia do odpowiedzi na wiadomość"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "Odpowiedź"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "Użyj zamiast standardowego nagłówka"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "Odpowiedź na wiadomość"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "Dla wszystkich kont"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "Konta"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "Wyświetlaj przycisk na pasku stanu"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "Zamień w podpisie tekstowym podziały wiersza na <br>"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "Nie otwieraj karty z historią wersji"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "Nie otwieraj dziennika zmian po aktualizacji SmartTemplates."
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "Szablon"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "W tym polu podaj swój szablon, np.  Witaj %from(name).%<br> Dziękuję za Twoją wiadomość.<br> Pozdrowienia %ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "otwórz stronę z przykładami w przeglądarce"
   },
-  "pref_template_tip": {
-    "message": "Możesz zmienić nagłówek za pomocą słów kluczowych 'zmienne'. Zobacz pomoc."
+  "templateBox.tip": {
+    "message": "Możesz ulepszyć szablon za pomocą zmiennych. Otwórz stronę Zmienne, aby uzyskać więcej informacji."
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "Zmienne"
   },
   "preferences_legacy": {
@@ -1286,6 +1286,9 @@
   },
   "resolveABRemoveMail": {
     "message": "Usuń adres e-mail, jeśli nie jest określony format"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "To ukryje adres e-mail przy użyciu %cc% itp., jeśli zostanie znaleziona pozycja w książce adresowej."
   },
   "resolveNamesFromAB": {
     "message": "Rozpoznaj nazwy z książki adresowej"

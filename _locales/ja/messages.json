@@ -928,52 +928,52 @@
   "params.optional": {
     "message": "オプションパラメーター"
   },
-  "pref_StatusIcon.IconHoverText": {
+  "statusIcon.IconHoverText": {
     "message": "マウスオーバーでテキスト表示"
   },
-  "pref_StatusIcon.IconOnly": {
+  "statusIcon.IconOnly": {
     "message": "アイコンのみ"
   },
-  "pref_StatusIcon.IconText": {
+  "statusIcon.IconText": {
     "message": "アイコンとテキスト"
   },
-  "pref_about.tab": {
+  "about.tab": {
     "message": "SmartTemplates について"
   },
-  "pref_addSigBreakHTML.label": {
+  "addSigBreakHTML": {
     "message": "-- を追加する (HTML メール)"
   },
-  "pref_addSigBreakHTML.tooltip": {
+  "addSigBreakHTML.tip": {
     "message": "署名の冒頭に -- を区切りとして常に追加します (HTML 形式の場合)。"
   },
-  "pref_addSigBreakPlaintext.label": {
+  "addSigBreakPlaintext": {
     "message": "-- を追加する (テキストメール)"
   },
-  "pref_addSigBreakPlaintext.tooltip": {
+  "addSigBreakPlaintext.tip": {
     "message": "署名の冒頭に -- を区切りとして常に追加します (プレーンテキスト形式の場合)。"
   },
-  "pref_addressDelimiter": {
+  "addressDelimiter": {
     "message": "複数の通信相手の区切りに以下を使用する:"
   },
-  "pref_addressDelimiter_tip": {
+  "addressDelimiter.tip": {
     "message": "複数の通信相手の区切りに使用するデリミタを指定します。Outlook ではセミコロン (;) を、Thunderbird の既定ではカンマ (,) を使用します"
   },
-  "pref_advanced.tab": {
+  "advanced.tab": {
     "message": "詳細設定"
   },
-  "pref_breaksOnTop.label": {
+  "lineBreaksOnTop": {
     "message": "ヘッダー上部の改行の数:"
   },
-  "pref_cursorInsertSpace": {
+  "insertCursor": {
     "message": "ハイライト表示された %cursor% にスペースを挿入する"
   },
-  "pref_debug_check": {
+  "debug.mode": {
     "message": "デバッグモード"
   },
-  "pref_debug_tip": {
-    "message": "右クリックで詳細なデバッグオプションを表示します。"
+  "debug.tip": {
+    "message": "SmartTemplatesのアクティビティをエラーコンソールに記録します。さまざまな機能の追加ログエントリは、設定ホイールで切り替えることができます。"
   },
-  "pref_def.cap": {
+  "common.use.title": {
     "message": "このアカウントの特定のテンプレート設定を作成するには、「$pref_def$」 を無効にしてください。",
     "placeholders": {
       "pref_def": {
@@ -982,7 +982,7 @@
       }
     }
   },
-  "pref_def.explainer": {
+  "common.use.tip": {
     "message": "以下の設定は、特定のテンプレートがアイデンティティに存在しない場合、またはそのアイデンティティに「$pref_def$」が選択されている場合に適用されます。",
     "placeholders": {
       "pref_def": {
@@ -990,190 +990,190 @@
       }
     }
   },
-  "pref_def.label": {
+  "common.use": {
     "message": "共通設定を使う"
   },
-  "pref_defaultCharset.label": {
-    "message": "既定の文字エンコーディング"
+  "defaultCharset": {
+    "message": "フォールバック文字セット"
   },
-  "pref_defaultCharset_tip": {
-    "message": "ヘッダーの文字エンコーディングが判別できない場合には、この文字エンコーディングにフォールバックします。"
+  "defaultCharset.tip": {
+    "message": "元のメールの文字セットが判別できない場合、これがヘッダーとコンテンツのデコード用のフォールバックとして使用されます。"
   },
-  "pref_defaultTemplateMethod_about": {
+  "defaultTemplate.behavior": {
     "message": "ドロップダウン リストからテンプレートを選択せずに書き込みまたは返信するときの動作。"
   },
-  "pref_defaultTemplateMethod_title": {
+  "defaultTemplate": {
     "message": "デフォルトのテンプレート"
   },
-  "pref_defaultTemplateMethod_select_account": {
+  "defaultTemplate.useAccount": {
     "message": "アカウント テンプレートを使用します。"
   },
-  "pref_defaultTemplateMethod_select_last": {
+  "defaultTemplate.useLastTemplate": {
     "message": "ドロップダウン メニューから最後に選択した外部テンプレートを使用します。"
   },
-  "pref_dialog.title": {
+  "preferences.title": {
     "message": "SmartTemplates 設定"
   },
-  "pref_examples.fromSupport": {
+  "examples.supportSite": {
     "message": "（英語のサポートサイトから）"
   },
-  "pref_examples.tab": {
+  "examples.tab": {
     "message": "例"
   },
-  "pref_examples.openBrowser": {
+  "openInBrowser": {
     "message": "ブラウザで開く"
   },
-  "pref_examples.tooltip": {
+  "examples.tooltip": {
     "message": "テンプレートの例を https://smarttemplates.quickfolders.org/templates.html より表示します。オンラインである必要があります。"
   },
-  "pref_fontSettings.label": {
+  "fontSettings": {
     "message": "テンプレートエディターのフォントサイズ"
   },
-  "pref_forceParagraph": {
+  "forceParagraphs": {
     "message": "強制的に段落モードを使用する"
   },
-  "pref_forceParagraph_tip": {
+  "forceParagraphs.tip": {
     "message": "カーソルの位置から段落を開始します。Thunderbird の編集オプションのうち「段落書式の使用中は Enter キーで新しい段落を作成する」を有効にすることを推奨します"
   },
-  "pref_fwd.label": {
+  "fwd.label": {
     "message": "転送されるメッセージに次の設定を適用します"
   },
-  "pref_fwd.tab": {
+  "fwd.tab": {
     "message": "転送"
   },
-  "pref_fwdhead.label": {
+  "fwdhead.label": {
     "message": "既定の転送ヘッダーの代わりに使用する"
   },
-  "pref_fwdmsg.cap": {
+  "fwdmsg.cap": {
     "message": "転送メッセージ作成の設定"
   },
-  "pref_global.tab": {
+  "global.tab": {
     "message": "グローバル設定"
   },
-  "pref_groupAdvanced": {
+  "grpAdvanced": {
     "message": "追加機能"
   },
-  "pref_groupMailContent": {
+  "grpMailContent": {
     "message": "メールクライアント"
   },
-  "pref_groupMiscellaneus": {
+  "grpMiscellaneus": {
     "message": "その他"
   },
-  "pref_groupNameRules": {
+  "grpNameRules": {
     "message": "名前のルール"
   },
-  "pref_groupSignatures": {
+  "grpSignatures": {
     "message": "署名"
   },
-  "pref_groupTroubleShooting": {
+  "grpTroubleShooting": {
     "message": "トラブルシューティング"
   },
-  "pref_groupUI": {
+  "grpUI": {
     "message": "ユーザーインターフェイス"
   },
-  "pref_help.tab": {
+  "help.tab": {
     "message": "ヘルプ"
   },
-  "pref_header.inject": {
+  "header.inject": {
     "message": "テンプレートから <head> の内容を挿入する"
   },
-  "pref_hideExamples": {
+  "hideExamplesPage": {
     "message": "テンプレート例のタブを隠す"
   },
-  "pref_html.cap": {
+  "useHTML.tip": {
     "message": "\" , & , < , > , space はエスケープしてください。詳細はヘルプを参照してください。"
   },
-  "pref_html.label": {
+  "useHTML": {
     "message": "HTML として挿入する (<b>bold</b> など)"
   },
-  "pref_nameSwap": {
+  "names.swap": {
     "message": "'姓, 名' 形式の表記を修正する"
   },
-  "pref_nameSwap_tip": {
+  "names.swap.tip": {
     "message": "'姓, 名' 形式の表記を '名 姓' 形式の表記に修正します。"
   },
-  "pref_new.label": {
+  "new.label": {
     "message": "新規メッセージに以下のテンプレートを適用する"
   },
-  "pref_new.tab": {
+  "new.tab": {
     "message": "新規"
   },
-  "pref_newmsg.cap": {
+  "newmsg.cap": {
     "message": "新規メッセージ作成の設定"
   },
-  "pref_noSplash": {
+  "splashScreen.disable": {
     "message": "スプラッシュ画面を省略"
   },
-  "pref_noSplash_tip": {
+  "splashScreen.tip": {
     "message": "更新時に新機能とバグ修正を表示する情報ダイアログを非表示にします。"
   },
-  "pref_parseSignature": {
+  "parseSignature": {
     "message": "署名での変数の使用を許可する"
   },
-  "pref_parseSignature_tip": {
+  "parseSignature.tip": {
     "message": "アカウント設定で設定した署名の中で SmartTemplates の変数を利用可能にします。"
   },
-  "pref_quoteHeaderBox.label": {
+  "quoteHeaderBox.label": {
     "message": "引用ヘッダー"
   },
-  "pref_quoteHeaderBox_tip": {
+  "quoteHeaderBox.tip": {
     "message": "引用部冒頭のヘッダーを入力してください。例：On %date% wrote %from(name)%:"
   },
-  "pref_quotehead_tip": {
+  "quoteHeader.replace.tip": {
     "message": "既定の引用ヘッダーを無効にします。テキストボックスで好きな引用ヘッダーを入力してください。"
   },
-  "pref_removeSig.label": {
+  "replaceSignature": {
     "message": "差出人を変更したときに署名を削除する"
   },
-  "pref_rep_br.cap": {
-    "message": "注：HTML タグに続く改行は <br> に変換されません。"
+  "replacebr.tooltip": {
+    "message": "このオプションを有効にすると、テンプレート内の改行を自動的に <br> タグに変換できます。HTML モードでは、このオプションに頼らず、<br> タグを手動で追加するか、<p> タグを使用する方が良いです。"
   },
-  "pref_rep_br.label": {
-    "message": "改行を <br> に変換する"
+  "replacebr.label": {
+    "message": "改行を <br> に置き換える"
   },
-  "pref_rsp.label": {
+  "rsp.label": {
     "message": "返信されたメッセージに次の設定を適用します"
   },
-  "pref_rsp.tab": {
+  "rsp.tab": {
     "message": "返信"
   },
-  "pref_rsphead.label": {
+  "rsphead.label": {
     "message": "既定の返信ヘッダーの代わりに使用する"
   },
-  "pref_rspmsg.cap": {
+  "rspmsg.cap": {
     "message": "返信メッセージ作成の設定"
   },
-  "pref_server_def": {
+  "account.common": {
     "message": "共通設定"
   },
-  "pref_server_desc": {
+  "account": {
     "message": "差出人:"
   },
-  "pref_showStatusIcon.label": {
+  "displayStatusIcon": {
     "message": "ステータスバーにアイコンを表示する"
   },
-  "pref_sigReplaceBR.label": {
+  "replaceBRinSignature.label": {
     "message": "プレーンテキスト形式の署名に含まれる改行を <br> で置換する"
   },
-  "pref_silentUpdates": {
+  "silentUpdates": {
     "message": "バージョン履歴のあるタブを開かない"
   },
-  "pref_silentUpdates_tip": {
+  "silentUpdates.tip": {
     "message": "SmartTemplates の更新後に、更新履歴を表示しません"
   },
-  "pref_templateBox.label": {
+  "template": {
     "message": "テンプレート"
   },
-  "pref_templateBox_tip": {
+  "template.tip": {
     "message": "メッセージのテンプレートを入力してください。例：こんにちは、%from(name)% さん。<br>メッセージありがとうございました。<br>敬具 %ownname%"
   },
-  "pref_templates.openBrowser": {
+  "examples.openBrowser": {
     "message": "ブラウザでサンプルページを開く"
   },
-  "pref_template_tip": {
-    "message": "変数による引用ヘッダーのカスタマイズができます。詳細はヘルプを参照してください。"
+  "templateBox.tip": {
+    "message": "テンプレートを変数で強化できます。詳細は「変数」ページを開いてください。"
   },
-  "pref_variables.tab": {
+  "variables.tab": {
     "message": "変数"
   },
   "preferences_legacy": {
@@ -1273,6 +1273,9 @@
   },
   "resolveABRemoveMail": {
     "message": "フォーマットで指定されない限りメールアドレスを除去する"
+  },
+  "resolveABRemoveMail.tip": {
+    "message": "これにより、アドレス帳のエントリが見つかった場合に、%cc% などを使用したときにメールアドレスが隠れます。"
   },
   "resolveNamesFromAB": {
     "message": "アドレス帳から名前を取得する"

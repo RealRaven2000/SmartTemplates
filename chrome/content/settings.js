@@ -969,8 +969,8 @@ SmartTemplate4.Settings = {
 		    CurId = null;
 
 		const useCommonPlaceHolder = document.getElementById("commonPlaceholder"),
-		useCommonCmd = util.getBundleString("pref_def.label");
-		useCommonPlaceHolder.textContent = util.getBundleString("pref_def.cap", useCommonCmd);;
+		useCommonCmd = util.getBundleString("common.use");
+		useCommonPlaceHolder.textContent = util.getBundleString("common.use.title", useCommonCmd);;
 
 		
 		// only when calling from the mail 3 pane window: 

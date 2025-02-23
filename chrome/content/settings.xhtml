@@ -11,7 +11,7 @@
 <dialog id="smartTemplate_prefDialog"
 				xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 				xmlns:html="http://www.w3.org/1999/xhtml"
-				title="__MSG_pref_dialog.title__ (__MSG_localename.label__)"
+				title="__MSG_preferences.title__ (__MSG_localename.label__)"
 				buttons="extra2,accept"
 				defaultButton=""
 				windowtype="addon:SmartTemplate4">
@@ -27,19 +27,19 @@
 
 		<!-- ######## Creating Identity Dropdown Box ######## -->
 		<hbox align="center" id="identityToolBar">
-			<label value="__MSG_pref_server_desc__:" 
+			<label value="__MSG_account__:" 
           id="identityLabel"
           class="contextConfig"
           oncontextmenu="SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.identities');"
           />
 			<menulist id="msgIdentity"
 			          class="identity-menulist"
-			          label="__MSG_pref_server_def__"
+			          label="__MSG_account.common__"
 			          flex="1"
 			          oncommand="SmartTemplate4.Settings.selectIdentity(this.value);"
                 tabindex="0">
 				<menupopup id="msgIdentityPopup">
-					<menuitem class="identity-popup-item" label="__MSG_pref_server_def__" value="common"/>
+					<menuitem class="identity-popup-item" label="__MSG_account.common__" value="common"/>
 				</menupopup>
 			</menulist>
 			<toolbar id="templateTools" 
@@ -112,7 +112,7 @@
 
 					<hbox align="center">
 						<checkbox id="use_default"
-											label="__MSG_pref_def.label__"
+											label="__MSG_common.use__"
 											preference="extensions.smartTemplate4.common.def"
 											oncommand="SmartTemplate4.Settings.showCommonPlaceholder(this.checked);"/>
 						<spacer flex="1" />
@@ -126,45 +126,45 @@
 						<tabbox id="deckB.nodef" flex="1" orient="vertical" selectedIndex="0" >
 
 							<tabs id="deckB.nodef.tabs"  class="actionTabs">
-								<tab id="newTab"     label="__MSG_pref_new.tab__" class="NewTab"/>
-								<tab id="respondTab" label="__MSG_pref_rsp.tab__" class="RespondTab" />
-								<tab id="forwardTab" label="__MSG_pref_fwd.tab__" class="ForwardTab" />
+								<tab id="newTab"     label="__MSG_new.tab__" class="NewTab"/>
+								<tab id="respondTab" label="__MSG_rsp.tab__" class="RespondTab" />
+								<tab id="forwardTab" label="__MSG_fwd.tab__" class="ForwardTab" />
 							</tabs>
 
 							<!-- ######## Content New Message [Write] Tab ######## -->
 							<tabpanels flex="1" orient="vertical">
 								<tabpanel class="newGroup">
 									<groupbox flex="1" orient="vertical" class="transparent">
-										<hbox class="groupbox-title"><label class="header">__MSG_pref_newmsg.cap__</label></hbox>
+										<hbox class="groupbox-title"><label class="header">__MSG_newmsg.cap__</label></hbox>
 										<vbox flex="1" class="vfield">
 											<hbox>
 												<checkbox id="new"
-												          label="__MSG_pref_new.label__"
+												          label="__MSG_new.label__"
 												          preference="extensions.smartTemplate4.common.new"
 												          oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 												<spacer flex="1" />
 											</hbox>
-											<label value="__MSG_pref_templateBox.label__"/>
+											<label value="__MSG_template__"/>
 											<vbox class="indent" flex="1">
 												<html:textarea 
 													id="newmsg"
 													flex="1"
 													class="templateBox templateWrite"
 													multiline="true"
-													tooltiptext="__MSG_pref_template_tip__"
+													tooltiptext="__MSG_templateBox.tip__"
 													ondrop="SmartTemplate4.Settings.textDropped(event);"
 													preference="extensions.smartTemplate4.common.newmsg"
 													preference-editable="true"/>
 												<checkbox id="newhtml"
-												          label="__MSG_pref_html.label__"
-												          tooltiptext="__MSG_pref_html.cap__"
-												          preference="extensions.smartTemplate4.common.newhtml"
-												          oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
+													label="__MSG_useHTML__"
+													tooltiptext="__MSG_useHTML.tip__"
+													preference="extensions.smartTemplate4.common.newhtml"
+													oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 												<checkbox id="newnbr"
-												          class="indent"
-												          label="__MSG_pref_rep_br.label__"
-												          tooltiptext="__MSG_pref_rep_br.cap__"
-												          preference="extensions.smartTemplate4.common.newnbr"/>
+													class="indent"
+													label="__MSG_replacebr.label__"
+													tooltiptext="__MSG_replacebr.tooltip__"
+													preference="extensions.smartTemplate4.common.newnbr"/>
 											</vbox>
 										</vbox>
 									</groupbox>
@@ -173,16 +173,16 @@
 								<!-- ######## Content [Reply] Tab ######## -->
 								<tabpanel class="replyGroup">
 									<groupbox flex="1" class="transparent">
-										<hbox class="groupbox-title"><label class="header">__MSG_pref_rspmsg.cap__</label></hbox>
+										<hbox class="groupbox-title"><label class="header">__MSG_rspmsg.cap__</label></hbox>
 										<vbox flex="1" class="vfield">
 											<hbox>
 												<checkbox id="rsp"
-																	label="__MSG_pref_rsp.label__"
+																	label="__MSG_rsp.label__"
 																	preference="extensions.smartTemplate4.common.rsp"
 																	oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 												<spacer flex="1" />
 											</hbox>
-											<label value="__MSG_pref_quoteHeaderBox.label__"/>
+											<label value="__MSG_quoteHeaderBox.label__"/>
 											<vbox class="indent headers" flex="1">
 												<vbox class="pasteFocus headers" flex="1">
 													<html:textarea 
@@ -190,18 +190,18 @@
 														class="templateBox quote"
 														multiline="true"
 														flex="1"
-														tooltiptext="__MSG_pref_quoteHeaderBox_tip__"
+														tooltiptext="__MSG_quoteHeaderBox.tip__"
 														preference="extensions.smartTemplate4.common.rspheader"
 														preference-editable="true"
 														ondrop="SmartTemplate4.Settings.textDropped(event);"
 														onfocus="SmartTemplate4.Settings.pasteFocus(this);"/>
 												</vbox>
 												<checkbox id="rsphead"
-																	label="__MSG_pref_rsphead.label__"
-																	tooltiptext="__MSG_pref_quotehead_tip__"
+																	label="__MSG_rsphead.label__"
+																	tooltiptext="__MSG_quoteHeader.replace.tip__"
 																	preference="extensions.smartTemplate4.common.rsphead"/>
 											</vbox>
-											<label value="__MSG_pref_templateBox.label__"/>
+											<label value="__MSG_template__"/>
 											<vbox class="indent template" flex="1">
 												<vbox class="pasteFocus" flex="2">
 													<html:textarea 
@@ -209,7 +209,7 @@
 														class="templateBox template"
 														multiline="true"
 														flex="1"
-														tooltiptext="__MSG_pref_templateBox_tip__"
+														tooltiptext="__MSG_template.tip__"
 														preference="extensions.smartTemplate4.common.rspmsg"
 														preference-editable="true"
 														ondrop="SmartTemplate4.Settings.textDropped(event);"
@@ -217,14 +217,14 @@
 												</vbox>
 											</vbox>
 											<checkbox id="rsphtml"
-																label="__MSG_pref_html.label__"
-																tooltiptext="__MSG_pref_html.cap__"
+																label="__MSG_useHTML__"
+																tooltiptext="__MSG_useHTML.tip__"
 																preference="extensions.smartTemplate4.common.rsphtml"
 																oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 											<checkbox id="rspnbr"
 																class="indent"
-																label="__MSG_pref_rep_br.label__"
-																tooltiptext="__MSG_pref_rep_br.cap__"
+																label="__MSG_replacebr.label__"
+																tooltiptext="__MSG_replacebr.tooltip__"
 																preference="extensions.smartTemplate4.common.rspnbr"/>
 										</vbox>
 									</groupbox>
@@ -233,15 +233,15 @@
 								<!-- ######## Content [Forward] Message Tab ######## -->
 								<tabpanel class="forwardGroup">
 									<groupbox  flex="1" class="transparent">
-										<hbox class="groupbox-title"><label class="header">__MSG_pref_fwdmsg.cap__</label></hbox>
+										<hbox class="groupbox-title"><label class="header">__MSG_fwdmsg.cap__</label></hbox>
 										<vbox flex="1" class="vfield">
 											<hbox>
 												<checkbox id="fwd"
-																	label="__MSG_pref_fwd.label__"
+																	label="__MSG_fwd.label__"
 																	preference="extensions.smartTemplate4.common.fwd"
 																	oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 											</hbox>
-											<label value="__MSG_pref_quoteHeaderBox.label__"/>
+											<label value="__MSG_quoteHeaderBox.label__"/>
 											<vbox class="indent headers" flex="1">
 												<vbox class="pasteFocus" flex="1">
 													<html:textarea 
@@ -249,26 +249,25 @@
 														class="templateBox quote"
 														multiline="true"
 														flex="1"
-														tooltiptext="__MSG_pref_quoteHeaderBox_tip__"
+														tooltiptext="__MSG_quoteHeaderBox.tip__"
 														preference="extensions.smartTemplate4.common.fwdheader"
 														preference-editable="true"
 														ondrop="SmartTemplate4.Settings.textDropped(event);"
 														onfocus="SmartTemplate4.Settings.pasteFocus(this);"/>
 												</vbox>
 												<checkbox id="fwdhead"
-																	label="__MSG_pref_fwdhead.label__"
-																	tooltiptext="__MSG_pref_quotehead_tip__"
+																	label="__MSG_fwdhead.label__"
+																	tooltiptext="__MSG_quoteHeader.replace.tip__"
 																	preference="extensions.smartTemplate4.common.fwdhead"/>
 											</vbox>
-											<label value="__MSG_pref_templateBox.label__"/>
+											<label value="__MSG_template__"/>
 											<vbox class="indent template" flex="1">
 												<vbox class="pasteFocus" flex="2">
-																	 <!-- rows="5" -->
 													<html:textarea id="fwdmsg"
 														class="templateBox template"
 														multiline="true"
 														flex="1"
-														tooltiptext="__MSG_pref_templateBox_tip__"
+														tooltiptext="__MSG_template.tip__"
 														preference="extensions.smartTemplate4.common.fwdmsg"
 														preference-editable="true"
 														ondrop="SmartTemplate4.Settings.textDropped(event);"
@@ -276,14 +275,14 @@
 													</vbox>
 											</vbox>
 											<checkbox id="fwdhtml"
-																label="__MSG_pref_html.label__"
-																tooltiptext="__MSG_pref_html.cap__"
+																label="__MSG_useHTML__"
+																tooltiptext="__MSG_useHTML.tip__"
 																preference="extensions.smartTemplate4.common.fwdhtml"
 																oncommand="SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 											<checkbox id="fwdnbr"
 																class="indent"
-																label="__MSG_pref_rep_br.label__"
-																tooltiptext="__MSG_pref_rep_br.cap__"
+																label="__MSG_replacebr.label__"
+																tooltiptext="__MSG_replacebr.tooltip__"
 																preference="extensions.smartTemplate4.common.fwdnbr"/>
 										</vbox>
 									</groupbox>
@@ -293,7 +292,7 @@
 
 						<!-- ######## this is hint should be shown instead of the decks when 'Use Common' is active. ######## -->
 						<vbox id="deckB.usedef">
-							<description id="commonPlaceholder">__MSG_pref_def.cap__</description>
+							<description id="commonPlaceholder">__MSG_common.use.title__</description>
 						</vbox>
 						
 					</deck>
@@ -308,9 +307,9 @@
 									onchange="SmartTemplate4.Settings.selectFileCase(this, event);"
 					>
 						<tabs class="actionTabs">
-							<tab id="file.newTab"      label="__MSG_pref_new.tab__" class="NewTab"/>
-							<tab id="file.respondTab"  label="__MSG_pref_rsp.tab__" class="RespondTab" />
-							<tab id="file.forwardTab"  label="__MSG_pref_fwd.tab__" class="ForwardTab" />
+							<tab id="file.newTab"      label="__MSG_new.tab__" class="NewTab"/>
+							<tab id="file.respondTab"  label="__MSG_rsp.tab__" class="RespondTab" />
+							<tab id="file.forwardTab"  label="__MSG_fwd.tab__" class="ForwardTab" />
               <tab id="file.snippetsTab" label="Smart Snippets" class="SnippetsTab" />
 						</tabs>
 						
@@ -320,7 +319,7 @@
 											 >
 							<tabpanel class="newGroup fileTemplatePanel" id="new-fileTemplates">
 								<groupbox flex="1" orient="vertical" class="transparent">
-									<hbox class="groupbox-title"><label class="header">__MSG_pref_newmsg.cap__</label></hbox>
+									<hbox class="groupbox-title"><label class="header">__MSG_newmsg.cap__</label></hbox>
 									<vbox flex="1" class="vfield">
 										<label value="__MSG_fileTemplates.listHead__" 
 										       tooltiptext="__MSG_fileTemplates.new.tooltip__" 
@@ -423,7 +422,7 @@
 							<!-- ######## Content [Reply] Tab ######## -->
 							<tabpanel class="replyGroup fileTemplatePanel" id="rsp-fileTemplates">
 								<groupbox flex="1" class="transparent">
-									<hbox class="groupbox-title"><label class="header">__MSG_pref_rspmsg.cap__</label></hbox>
+									<hbox class="groupbox-title"><label class="header">__MSG_rspmsg.cap__</label></hbox>
 									<vbox flex="1" class="vfield">
 										<label value="__MSG_fileTemplates.listHead__" 
 										       tooltiptext="__MSG_fileTemplates.rsp.tooltip__" 
@@ -440,7 +439,7 @@
 							<!-- ######## Content [Forward] File Tab ######## -->
 							<tabpanel class="forwardGroup fileTemplatePanel" id="fwd-fileTemplates">
 								<groupbox  flex="1" class="transparent">
-									<hbox class="groupbox-title"><label class="header">__MSG_pref_fwdmsg.cap__</label></hbox>
+									<hbox class="groupbox-title"><label class="header">__MSG_fwdmsg.cap__</label></hbox>
 									<vbox flex="1" class="vfield">
 										<label value="__MSG_fileTemplates.listHead__" 
 										       tooltiptext="__MSG_fileTemplates.fwd.tooltip__" 
@@ -522,11 +521,11 @@
 		<tabbox id="rightPane" flex="1">
 
 			<tabs class="actionTabs" id="advancedTabs">
-				<tab id="fieldsTab"    label="__MSG_pref_variables.tab__" />
-				<tab id="settingsTab"  label="__MSG_pref_global.tab__" />
-				<tab id="advancedSettingsTab"  label="__MSG_pref_advanced.tab__" />
-				<tab id="templatesTab" label="__MSG_pref_examples.tab__" 
-				     tooltiptext="__MSG_pref_examples.tooltip__" />
+				<tab id="fieldsTab"    label="__MSG_variables.tab__" />
+				<tab id="settingsTab"  label="__MSG_global.tab__" />
+				<tab id="advancedSettingsTab"  label="__MSG_advanced.tab__" />
+				<tab id="templatesTab" label="__MSG_examples.tab__" 
+				     tooltiptext="__MSG_examples.tooltip__" />
 				<tab id="aboutTab"  label="__MSG_about.cap__" /> 
 				<tab id="SmartTemplate4-Pro" label="__MSG_license-tab__"  class="free" />
 				<tab id="supportTab" label="__MSG_support.tab__" collapsed="true" /> 
@@ -544,11 +543,11 @@
 				<tabpanel flex="1" id="globalSettings">
 					<vbox flex="1" id="globalSettingsVbox">
 						<groupbox class="transparent">
-							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupMailContent__</label></hbox>
+							<hbox class="groupbox-title"><label class="header">__MSG_grpMailContent__</label></hbox>
 							<vbox>
 								<hbox class="labeledBox">
 									<label   class="textboxLabel"
-											 value="__MSG_pref_breaksOnTop.label__" />
+											 value="__MSG_lineBreaksOnTop__" />
 									<html:input
                         type="text" 
                         id="txtBreaks"
@@ -557,81 +556,81 @@
 								</hbox>
 								<hbox class="labeledBox">
 									<label class="textboxLabel"
-											   value="__MSG_pref_defaultCharset.label__:" />
+											   value="__MSG_defaultCharset__:" />
 									<html:input
                         type="text" 
                         id="txtCharset"
 											  preference="extensions.smartTemplate4.defaultCharset"
 											  instantApply="true" 
-											  tooltiptext="__MSG_pref_defaultCharset_tip__"/>
+											  tooltiptext="__MSG_defaultCharset.tip__"/>
 								</hbox>
 							</vbox>
 						</groupbox>
 
 						<groupbox class="transparent" id="defaultTemplateBehaviorGrp">
-							<hbox class="groupbox-title"><label class="header">__MSG_pref_defaultTemplateMethod_title__</label></hbox>
-							<label>__MSG_pref_defaultTemplateMethod_about__</label>
+							<hbox class="groupbox-title"><label class="header">__MSG_defaultTemplate__</label></hbox>
+							<label>__MSG_defaultTemplate.behavior__</label>
 							<label for="useAccountTemplate">
 								<html:input type="radio" 
 									name="defaultTemplateBehavior" id="useAccountTemplate" value="1" 
 									onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);"
-								/>__MSG_pref_defaultTemplateMethod_select_account__</label>
+								/>__MSG_defaultTemplate.useAccount__</label>
 							<label for="useLastTemplate">
 								<html:input type="radio" 
 									name="defaultTemplateBehavior" id="useLastTemplate" value="2" class="standardFeature"
 									onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);"
-								/>__MSG_pref_defaultTemplateMethod_select_last__</label>
+								/>__MSG_defaultTemplate.useLastTemplate__</label>
 						</groupbox>
 
 						
 						<groupbox class="transparent">
-							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupSignatures__</label></hbox>
+							<hbox class="groupbox-title"><label class="header">__MSG_grpSignatures__</label></hbox>
 							<vbox>
 								<checkbox id="chkRemoveSig"
-											label="__MSG_pref_removeSig.label__"
+											label="__MSG_replaceSignature__"
 											preference ="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits"/>
 								<checkbox id="chkSignature"
                       class="contextConfig"
-											label="__MSG_pref_parseSignature__"
-											tooltiptext="__MSG_pref_parseSignature_tip__"
+											label="__MSG_parseSignature__"
+											tooltiptext="__MSG_parseSignature.tip__"
 											oncontextmenu="SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.signature');return false;"
 											preference="extensions.smartTemplate4.parseSignature"/>
 								
-								<checkbox label="__MSG_pref_sigReplaceBR.label__"
+								<checkbox label="__MSG_replaceBRinSignature.label__"
 											preference="extensions.smartTemplate4.signature.replaceLF.plaintext.br"/>
 									  
 								<hbox>
-									<checkbox label="__MSG_pref_addSigBreakHTML.label__"
-												tooltiptext="__MSG_pref_addSigBreakHTML.tooltip__"
+									<checkbox label="__MSG_addSigBreakHTML__"
+												tooltiptext="__MSG_addSigBreakHTML.tip__"
 												preference="extensions.smartTemplate4.signature.insertDashes.html"/>
 									<spacer flex="1" />
-									<checkbox label="__MSG_pref_addSigBreakPlaintext.label__"
-												tooltiptext="__MSG_pref_addSigBreakPlaintext.tooltip__"
+									<checkbox label="__MSG_addSigBreakPlaintext__"
+												tooltiptext="__MSG_addSigBreakPlaintext.tip__"
 												preference="extensions.smartTemplate4.signature.insertDashes.plaintext"/>
 								</hbox>
 							</vbox>									  
 						</groupbox>
 						
 						<groupbox class="transparent">
-							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupAdvanced__</label></hbox>
+							<hbox class="groupbox-title"><label class="header">__MSG_grpAdvanced__</label></hbox>
 							<vbox>
 								<checkbox 
-											label="__MSG_pref_cursorInsertSpace__"
+											label="__MSG_insertCursor__"
 											preference="extensions.smartTemplate4.cursor.insertSpace"/>
 								<checkbox 
 											preference="extensions.smartTemplate4.forceParagraph"
-											label="__MSG_pref_forceParagraph__"
-											tooltiptext="__MSG_pref_forceParagraph_tip__"/>
+											label="__MSG_forceParagraphs__"
+											tooltiptext="__MSG_forceParagraphs.tip__"/>
 							</vbox>
 						</groupbox>
 					
 						<groupbox class="transparent">
-							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupUI__</label></hbox>
+							<hbox class="groupbox-title"><label class="header">__MSG_grpUI__</label></hbox>
 							<vbox>
 								<hbox>
 									<checkbox id="chkStatusButton"
                         class="contextConfig"
-												label="__MSG_pref_showStatusIcon.label__"
+												label="__MSG_displayStatusIcon__"
 												preference="extensions.smartTemplate4.showStatusIcon"
 												oncontextmenu="SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.statusIconLabelMode'); SmartTemplate4.updateStatusBar(this.checked);"
 												oncommand="SmartTemplate4.updateStatusBar(!this.checked);"/>
@@ -642,9 +641,9 @@
 												preference="extensions.smartTemplate4.statusIconLabelMode"
 												oncommand="SmartTemplate4.setStatusIconMode(this);">
 										<menupopup>
-											<menuitem label="__MSG_pref_StatusIcon.IconOnly__" value="0"/>
-											<menuitem label="__MSG_pref_StatusIcon.IconText__" value="2"/>
-											<menuitem label="__MSG_pref_StatusIcon.IconHoverText__" value="1"/>
+											<menuitem label="__MSG_statusIcon.IconOnly__" value="0"/>
+											<menuitem label="__MSG_statusIcon.IconText__" value="2"/>
+											<menuitem label="__MSG_statusIcon.IconHoverText__" value="1"/>
 										</menupopup>
 									</menulist>
 									
@@ -652,7 +651,7 @@
 								<spacer />
 								<hbox class="labeledBox">
 									<label  id="lblFontSettings"
-											value="__MSG_pref_fontSettings.label__" />
+											value="__MSG_fontSettings__" />
 									<toolbarbutton id="fontSmaller"
 											oncommand="SmartTemplate4.Settings.fontSize(-1);" 
 											label="" />
@@ -676,13 +675,13 @@
 				<tabpanel flex="1" id="advancedFrame">
 					<vbox flex="1" id="advancedSettingsVbox">
 						<groupbox class="transparent">
-							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupNameRules__</label></hbox>
+							<hbox class="groupbox-title"><label class="header">__MSG_grpNameRules__</label></hbox>
 							<vbox>
 								<checkbox label="__MSG_capitalizeNames__"
 										 preference="extensions.smartTemplate4.names.capitalize"/>
 								<checkbox id="chkFirstLastSwap"
-											label="__MSG_pref_nameSwap__"
-											tooltiptext="__MSG_pref_nameSwap_tip__"
+											label="__MSG_names.swap__"
+											tooltiptext="__MSG_names.swap.tip__"
 											preference="extensions.smartTemplate4.firstLastSwap"/>
 								<checkbox id="chkGuessName"
 											label="__MSG_guessNameFromMail__"
@@ -698,13 +697,13 @@
                         tooltiptext= "__MSG_defaultMimeFormat_tip__"/>
 								</hbox>
 								<hbox  align="center">
-									<label value="__MSG_pref_addressDelimiter__"
+									<label value="__MSG_addressDelimiter__"
 												 control="txtNameDelimiter"/>
 									<html:input
                         type="text" 
                         id="txtNameDelimiter"
                         style="width:2em;"
-                        tooltiptext="__MSG_pref_addressDelimiter_tip__"
+                        tooltiptext="__MSG_addressDelimiter.tip__"
                         preference="extensions.smartTemplate4.names.delimiter"/>
 								</hbox>
 								<separator />		  
@@ -746,11 +745,11 @@
 						</groupbox>
 						
 						<groupbox class="transparent">
-							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupMiscellaneus__</label></hbox>
+							<hbox class="groupbox-title"><label class="header">__MSG_grpMiscellaneus__</label></hbox>
 							<vbox>
 								<checkbox label="__MSG_suppressMailToLink__"
 									preference="extensions.smartTemplate4.mail.suppressLink"/>
-							  <checkbox label="__MSG_pref_header.inject__" class="premiumFeature"
+							  <checkbox label="__MSG_header.inject__" class="premiumFeature"
 									preference="extensions.smartTemplate4.header.inject"/>
 		
 							</vbox>
@@ -758,12 +757,12 @@
 
 						<spacer flex="2" />
 						<groupbox class="transparent">
-							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupTroubleShooting__</label></hbox>
+							<hbox class="groupbox-title"><label class="header">__MSG_grpTroubleShooting__</label></hbox>
 							<hbox>
 								<checkbox id="chkDebug"
-										  label="__MSG_pref_debug_check__"
+										  label="__MSG_debug.mode__"
                       class="contextConfig"
-										  tooltiptext="__MSG_pref_debug_tip__"
+										  tooltiptext="__MSG_debug.tip__"
 										  oncontextmenu="SmartTemplate4.Util.showAboutConfig(this, 'smartTemplate4.debug');return false;"
 										  preference="extensions.smartTemplate4.debug"/>
 								<spacer   flex="1"/>
@@ -773,7 +772,7 @@
                       oncommand="alert('please reload SmartTemplates to effect this change!');"
 										/>
 								<checkbox id="chkHideExamples"
-										  label="__MSG_pref_hideExamples__"
+										  label="__MSG_hideExamplesPage__"
 										  preference="extensions.smartTemplate4.hideExamples"
 										  oncommand="SmartTemplate4.Settings.toggleExamples(this);"
 										/>
@@ -895,8 +894,8 @@
 							<hbox class="groupbox-title"><label class="header">__MSG_updates.title__</label></hbox>
               <hbox>
                 <checkbox id="chkSilentUpdates"
-                      label="__MSG_pref_silentUpdates__"
-                      tooltiptext="__MSG_pref_silentUpdates_tip__"
+                      label="__MSG_silentUpdates__"
+                      tooltiptext="__MSG_silentUpdates.tip__"
                       preference="extensions.smartTemplate4.silentUpdate"
                       /> 
                       

@@ -51,7 +51,7 @@ const ControllerMap = new Map([
 // all .default items had classList:"menuitem-iconic"
 const writeMenus = [
   { type:"menu", id:"smartTemplates-write-menu", classList:"menu-iconic", 
-    label:"pref_new.tab", accesskey:"st.menuaccess.write",
+    label:"new.tab", accesskey:"st.menuaccess.write",
     controller:"cmd_newMessage", 
     popupItems: [
       { id:"smartTemplates-write-last", label:"st.menu.template.last", controller:"cmd_newMessage", ctr_type: "most-recent" },
@@ -62,7 +62,7 @@ const writeMenus = [
 
 const replyMenus = [
   { type:"menu", id:"smartTemplates-reply-menu", classList:"menu-iconic", 
-    label:"pref_rsp.tab", accesskey:"st.menuaccess.reply",
+    label:"rsp.tab", accesskey:"st.menuaccess.reply",
     controller:"cmd_reply", 
     popupItems: [
       { id:"smartTemplates-reply-last", label:"st.menu.template.last", controller:"cmd_reply", ctr_type: "most-recent" },
@@ -90,7 +90,7 @@ const replyMenus = [
 
 const forwardMenus = [
   { type:"menu", id:"smartTemplates-forward-menu", classList:"menu-iconic", 
-    label:"pref_fwd.tab", accesskey:"st.menuaccess.forward",
+    label:"fwd.tab", accesskey:"st.menuaccess.forward",
     controller:"cmd_forward", 
     popupItems: [
       { id:"smartTemplates-forward-last", label:"st.menu.template.last", controller:"cmd_forward", ctr_type: "most-recent" },
@@ -322,15 +322,15 @@ var MenuHelper = {
   getActionId: function (cmd) {
     switch(cmd) {
       case "forward":
-        return "pref_fwd.tab";
+        return "fwd.tab";
       case "reply":
-        return "pref_rsp.tab";
+        return "rsp.tab";
       case "replyAll":
         return "st.menu.replyAll";
       case "replyList":
         return "st.menu.replyList";
       case "write":
-        return "pref_new.tab";
+        return "new.tab";
     }
     return null;
   }
@@ -684,7 +684,7 @@ async function createHeaderMenu() {
     contexts: [Context],
     enabled: true,
     id: "smartTemplates-settings",
-    title: messenger.i18n.getMessage("pref_dialog.title"),
+    title: messenger.i18n.getMessage("preferences.title"),
     icons: "../chrome/content/skin/icons/settings.svg",
     onclick: (e) => {
       messenger.NotifyTools.notifyExperiment({

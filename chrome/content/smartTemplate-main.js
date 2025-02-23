@@ -233,6 +233,7 @@ END LICENSE BLOCK
     #             avoid wrapping variables when called from Sandbox script
     # Added more contextual parameters for sandbox: "$priority", "$cc", "$bcc"
     # [issue 357] new functions composer.composeCase and composer.composeType
+    # [issue 338] Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text)
 
 
 
@@ -981,7 +982,7 @@ var SmartTemplate4 = {
 
   get XML_replyMenus() {
     return `
-      <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic" controller="cmd_reply" accesskey="__MSG_st.menuaccess.reply__">
+      <menu label="__MSG_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic" controller="cmd_reply" accesskey="__MSG_st.menuaccess.reply__">
         <menupopup>
           <menuitem id="smartTemplates-reply-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-reply-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
@@ -1004,7 +1005,7 @@ var SmartTemplate4 = {
 
   get XML_forwardMenus() {
     return `
-            <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic" controller="cmd_forward"  accesskey="__MSG_st.menuaccess.forward__">
+            <menu label="__MSG_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic" controller="cmd_forward"  accesskey="__MSG_st.menuaccess.forward__">
               <menupopup>
                 <menuitem id="smartTemplates-forward-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-fwd st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
                 <menuitem id="smartTemplates-forward-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
@@ -1072,7 +1073,7 @@ var SmartTemplate4 = {
     var XHTML_Markup = `<vbox id="titlebar">
   <div id="smartTemplatesMainPopup" style="display:none;">
     <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-    <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic" controller="cmd_newMessage" accesskey="__MSG_st.menuaccess.write__">
+    <menu label="__MSG_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic" controller="cmd_newMessage" accesskey="__MSG_st.menuaccess.write__">
       <menupopup>
         <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
@@ -1081,7 +1082,7 @@ var SmartTemplate4 = {
     ${this.XML_replyMenus}
     ${this.XML_forwardMenus}
     <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-    <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+    <menuitem id="smartTemplates-settings" label="__MSG_preferences.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
 
     <menu id="smartTemplates-docs" label="__MSG_st.menu.docs__" class="menu-iconic">
       <menupopup>
@@ -1169,7 +1170,7 @@ var SmartTemplate4 = {
         ${this.XML_forwardMenus}
         ${this.XML_toggleLabelMenu}
         <menuseparator class="st4templateSeparator"/>
-        <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-settings" label="__MSG_preferences.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
       </div>
     </toolbarbutton>
     `;
