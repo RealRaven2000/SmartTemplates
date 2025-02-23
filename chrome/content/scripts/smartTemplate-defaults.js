@@ -12,7 +12,7 @@ pref("extensions.smartTemplate4.font.size", 9); /* 8pt .templateBox font size */
 pref("extensions.smartTemplate4.parseSignature", false);
 pref("extensions.smartTemplate4.firstLastSwap", true);
 pref("extensions.smartTemplate4.header.inject", true);
-pref("extensions.smartTemplate4.defaultCharset", "ISO-8859-1");
+pref("extensions.smartTemplate4.defaultCharset", "UTF-8"); // avoid mojibake (garbled text)
 pref("extensions.smartTemplate4.signature.encoding", "UTF-8");
 pref("extensions.smartTemplate4.signature.insertDashes.plaintext", false);
 pref("extensions.smartTemplate4.signature.insertDashes.html", false);
