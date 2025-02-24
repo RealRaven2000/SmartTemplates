@@ -60,6 +60,9 @@ function replacePlaceholdersWithSpans(element, placeholders, classNames) {
   element.appendChild(fragment);
 }
 
+function isVisible(el) {
+  return el && !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+}
 
 async function initHTML() {
   console.log("help-html.js init()");
@@ -109,6 +112,81 @@ async function initHTML() {
   helpContents.addEventListener("click", (evt) => {
     containerClick(helpContents, evt);
   });
+
+  let chapterHeads = document.querySelectorAll("h1.helpchapter");
+  let chapterCount = 1;
+  for (const heading of chapterHeads) {
+    heading.setAttribute("tabIndex", chapterCount++);
+    heading.setAttribute("aria-expanded","false");
+  }
+
+  // make chapter contents keyboard friendly
+  const navigableItems = document.querySelectorAll(".cursorNavigate");
+  const items = Array.from(navigableItems);
+
+  navigableItems.forEach((item) => {
+    item.setAttribute("tabIndex", -1); // focus-able, but only through code / cursor keys:
+    item.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") {
+        let index = items.indexOf(item);
+        const currentChapter = item.closest(".chapterBody");
+        let next = items[index + 1];
+        // check for chapter boundaries!
+        if (next && next.closest(".chapterBody") !== currentChapter) {
+          next = null; // No valid next item in this chapter
+        }
+
+        while (next && (!isVisible(next) || next.closest(".chapterBody") !== currentChapter)) {
+          next = items[++index];
+        }
+
+        if (next) {
+          e.preventDefault(); // Prevent page scrolling
+          next.focus();
+          return;
+        }
+
+        e.preventDefault(); // Prevent page scrolling
+        // goto next chapter heading
+        let p = item.parentNode;
+        while (p && !p.classList?.contains("chapterBody")) {
+          p = p.parentNode;
+        }
+        if (!p) return;
+        let n = p.nextElementSibling;
+        while (n && !n.classList?.contains("helpchapter")) {
+          n = n.nextElementSibling;
+        }
+        if (!n) return;
+        n.focus();
+      } else if (e.key === "ArrowUp") {
+        let index = items.indexOf(item);
+        const currentChapter = item.closest(".chapterBody");
+        let prev = items[index - 1];
+
+        // Skip invisible items and prevent crossing chapters
+        while (prev && (!isVisible(prev) || prev.closest(".chapterBody") !== currentChapter)) {
+          prev = items[--index];
+        }
+
+        if (prev) {
+          e.preventDefault();
+          prev.focus();
+          return;
+        }
+
+        // Move to previous chapter heading
+        let prevChapter = currentChapter?.previousElementSibling;
+        while (prevChapter && !prevChapter.classList.contains("helpchapter")) {
+          prevChapter = prevChapter.previousElementSibling;
+        }
+        if (prevChapter) {
+          e.preventDefault();
+          prevChapter.focus();
+        }
+      }
+    });
+  });  
 }
 
 

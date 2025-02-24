@@ -23,6 +23,12 @@ function initXHTML() {
   );
   window.i18n.updateDocument({extension});
 
+  var myheadings = Array.from(document.getElementsByClassName("helpchapter"));
+  myheadings.forEach((el) => {
+    // for purpose of search / focus()
+    el.setAttribute("tabindex", -1);
+  });  
+
   fixClipboardNote();
   initSearch();
 } 

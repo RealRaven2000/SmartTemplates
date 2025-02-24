@@ -539,15 +539,16 @@ SmartTemplate4.classSmartTemplate = function() {
 
 	// helper function to find a child node of the passed class Name
 	function findChildNode(node, className) {
-    const util = SmartTemplate4.Util;
-    return util.findChildNode(node, className);
+    return SmartTemplate4.Util.findChildNode(node, className);
 	};
 	
 	// if can't find in child node, search direct parent
 	function findChildNodeOrParent(node, className) {
-		let f = findChildNode(node, className);
-		return f ? f : findChildNode(node.parentNode, className);
-	};
+		return (
+			findChildNode(node, className) ||
+			(node?.parentNode?.classList?.contains(className) ? node.parentNode : null)
+		);
+	}
 
 	function testSmartTemplateToken(template, token) {
 		if(!template)
@@ -1669,8 +1670,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			// if we have a template we simply insert it at the bottom of the template
 			if (templateDiv) {
 				templateDiv.appendChild(cursor);
-			}
-			else if (!theIdentity.replyOnTop) {
+			} else if (!theIdentity.replyOnTop) {
 				// reply on bottom, insert cursor straight after the quote (before the signature)
 				bodyEl.appendChild(cursor);
 			}
@@ -1691,15 +1691,16 @@ SmartTemplate4.classSmartTemplate = function() {
         if (!isCursor) { // if a cursor is set, let's not move to the end / top at all, leave it to the selection controller.
           try {
             selCtrl.completeMove(forward, false); // forward, extend
-          }
-          catch(ex) {
-            util.logException("editor.selectionController completeMove(forward = " + forward + ") failed", ex);
+          } catch(ex) {
+            util.logException(`editor.selectionController completeMove(forward = $forward$) failed`, ex);
           }
           try {
             selCtrl.completeScroll(forward);
-          }
-          catch(ex) {
-            util.logException("editor.selectionController completeScroll(forward = " + forward + ") failed", ex);
+          } catch(ex) {
+            util.logException(
+              `editor.selectionController completeScroll(forward = $forward$) failed`,
+              ex
+            );
           }
         }
 				
@@ -1709,116 +1710,120 @@ SmartTemplate4.classSmartTemplate = function() {
 					// collapse selection and move cursor - problem: stationery sets cursor to the top!
 					if (isCursor) {
 						// look for a child div with lass = 'st4cursor'
-						if (!caretContainer)
-							caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret'); // from (old) stationery
-							
 						if (isDebugComposer) debugger;
 						if (caretContainer && caretContainer.outerHTML) {
 							try {
-								
-								let scrollFlags = selCtrl.SCROLL_FOR_CARET_MOVE | selCtrl.SCROLL_OVERFLOW_HIDDEN,
-										cursorParent = caretContainer.parentNode; // usually a <p>
+                let scrollFlags = selCtrl.SCROLL_FOR_CARET_MOVE | selCtrl.SCROLL_OVERFLOW_HIDDEN,
+                  cursorParent = caretContainer.parentNode; // usually a <p>
                 // =========== FORCE CURSOR IN <PARA> ==================================== >>>>
-								if (prefs.getMyBoolPref('forceParagraph') && cursorParent.tagName=='DIV' || cursorParent.tagName=='BODY') {
-									try {
-										// refind the caret Container.
-										// wrap internals in <p>
-										let parentSrchHTML = cursorParent.innerHTML.toLowerCase(),
-												caretStartPos = cursorParent.innerHTML.indexOf(caretContainer.outerHTML),
-												caretEndPos = caretStartPos + caretContainer.outerHTML.length,
-												para = doc.createElement('P'),
-												nextBlock = parentSrchHTML.indexOf('<p', caretEndPos), // offset at the end of caret
-                        // [issue 149] table rows / cells were removed if last element
-												previousBlock = Math.max(
-                            parentSrchHTML.lastIndexOf('</p', caretStartPos) 
-                          , parentSrchHTML.lastIndexOf('<br', caretStartPos) 
-                          , parentSrchHTML.lastIndexOf('</div', caretStartPos)
-                          , parentSrchHTML.lastIndexOf('</table', caretStartPos)) + 1; // where the previous Block ends
-                    if (previousBlock==0) {
-											previousBlock = caretStartPos;
-										}
-										else {
-											previousBlock = parentSrchHTML.indexOf('>', previousBlock) + 1 || caretStartPos; // find end of closing tag
-											if (previousBlock < 0) previousBlock = 0;
-										}
-										
-										if (nextBlock<0) {
-											// find next block level element or line break
-											nextBlock = parentSrchHTML.indexOf('<br', caretEndPos);
-											if (nextBlock<0)
-												nextBlock = parentSrchHTML.indexOf('<div', caretEndPos);
-											if (nextBlock<0)
-												nextBlock = cursorParent.innerHTML.length-1;
-										}
-										if (nextBlock<caretEndPos)
-											nextBlock = caretEndPos; // if no suitable element follows, we are cutting the paragraph short here
-										
-										// If THunderbird has inserted the empty <p><br><p> here let's cut that out:
-										let startNextBlock =
-											(parentSrchHTML.substr(nextBlock).indexOf("<p><br></p>") == 0) ? nextBlock+11 : nextBlock;
-										
-										if (isDebugComposer) debugger;
-										let leftHTML = cursorParent.innerHTML.substring(0, previousBlock),
-												rightHTML = cursorParent.innerHTML.substring(startNextBlock),
-												midHTML = cursorParent.innerHTML.substring(previousBlock, nextBlock);
-										para.innerHTML = midHTML; // caretContainer.outerHTML +"<br>" visibility hack for the resulting empty <p>
-										
-										cursorParent.innerHTML = leftHTML + para.outerHTML + rightHTML;
-										caretContainer = findChildNode(theParent, 'st4cursor');
-										if (!caretContainer)
-											caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret');
-										
-										theParent = caretContainer.parentNode;
-									}
-									catch (ex) {
-										util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
-									}
-								}
-								
-								let space = gMsgCompose.editor.document.createTextNode('\u00a0');
-								if (caretContainer) {
-									caretContainer.parentNode.insertBefore(space, caretContainer); 
-									caretContainer.parentNode.removeChild(caretContainer);
-								}
-								editor.selection.selectAllChildren(space);
-								if (prefs.getMyBoolPref('cursor.insertSpace')) {
-									editor.selection.collapseToStart(); // 
-									editor.selection.modify('extend', 'forward','character');
-									selCtrl.scrollSelectionIntoView(selCtrl.SELECTION_NORMAL, selCtrl.SELECTION_WHOLE_SELECTION, scrollFlags);
-									selCtrl.setDisplaySelection(selCtrl.SELECTION_ATTENTION);
-								}
-								else {
-									editor.selection.collapseToStart(); 
-									// check if we would create an empty paragraph:
-									if (space.textContent == space.parentNode.innerText 
-									    && 
-											space.parentNode.tagName.toLowerCase()=="p") {
-										space.parentNode.innerHTML="<br>"; // avoid empty paragraph because the editor will remove it; replaces space
-									} else {
-										space.parentNode.removeChild(space);
-									}
-								}
-								window.updateCommands('style');
+                if (
+                  (prefs.getMyBoolPref("forceParagraph") && cursorParent.tagName == "DIV") ||
+                  cursorParent.tagName == "BODY"
+                ) {
+                  try {
+                    // refind the caret Container.
+                    // wrap internals in <p>
+                    let parentSrchHTML = cursorParent.innerHTML.toLowerCase(),
+                      caretStartPos = cursorParent.innerHTML.indexOf(caretContainer.outerHTML),
+                      caretEndPos = caretStartPos + caretContainer.outerHTML.length,
+                      para = doc.createElement("P"),
+                      nextBlock = parentSrchHTML.indexOf("<p", caretEndPos), // offset at the end of caret
+                      // [issue 149] table rows / cells were removed if last element
+                      previousBlock =
+                        Math.max(
+                          parentSrchHTML.lastIndexOf("</p", caretStartPos),
+                          parentSrchHTML.lastIndexOf("<br", caretStartPos),
+                          parentSrchHTML.lastIndexOf("</div", caretStartPos),
+                          parentSrchHTML.lastIndexOf("</table", caretStartPos)
+                        ) + 1; // where the previous Block ends
+                    if (previousBlock == 0) {
+                      previousBlock = caretStartPos;
+                    } else {
+                      previousBlock =
+                        parentSrchHTML.indexOf(">", previousBlock) + 1 || caretStartPos; // find end of closing tag
+                      if (previousBlock < 0) previousBlock = 0;
+                    }
+
+                    if (nextBlock < 0) {
+                      // find next block level element or line break
+                      nextBlock = parentSrchHTML.indexOf("<br", caretEndPos);
+                      if (nextBlock < 0) nextBlock = parentSrchHTML.indexOf("<div", caretEndPos);
+                      if (nextBlock < 0) nextBlock = cursorParent.innerHTML.length - 1;
+                    }
+                    if (nextBlock < caretEndPos) nextBlock = caretEndPos; // if no suitable element follows, we are cutting the paragraph short here
+
+                    // If Thunderbird has inserted the empty <p><br><p> here let's cut that out:
+                    let startNextBlock =
+                      parentSrchHTML.substr(nextBlock).indexOf("<p><br></p>") == 0
+                        ? nextBlock + 11
+                        : nextBlock;
+
+                    if (isDebugComposer) debugger;
+                    let leftHTML = cursorParent.innerHTML.substring(0, previousBlock),
+                      rightHTML = cursorParent.innerHTML.substring(startNextBlock),
+                      midHTML = cursorParent.innerHTML.substring(previousBlock, nextBlock);
+                    para.innerHTML = midHTML; // caretContainer.outerHTML +"<br>" visibility hack for the resulting empty <p>
+
+                    cursorParent.innerHTML = leftHTML + para.outerHTML + rightHTML;
+                    caretContainer = findChildNode(theParent, "st4cursor");
+
+                    theParent = caretContainer.parentNode;
+                  } catch (ex) {
+                    util.logException("forceParagraph failed \n", ex, {editor});
+                  }
+                }
+
+                let space = gMsgCompose.editor.document.createTextNode("\u00a0"); // '\u00a0' crashes with JAWS
+                if (caretContainer) {
+                  const parent = caretContainer.parentNode;
+                  parent.insertBefore(space, caretContainer);
+                  parent.removeChild(caretContainer);
+
+                  // If the parent is a <p> (paragraph), add a <br> to ensure the paragraph remains non-empty
+                  if (parent.tagName.toLowerCase() === "p" && space.textContent === " ") {
+                    const br = gMsgCompose.editor.document.createElement("br");
+                    parent.appendChild(br); // Ensure the paragraph stays visible
+                  }
+                }
+                editor.selection.selectAllChildren(space);
+                if (prefs.getMyBoolPref("cursor.insertSpace")) {
+                  editor.selection.collapseToStart(); //
+                  editor.selection.modify("extend", "forward", "character");
+                  selCtrl.scrollSelectionIntoView(
+                    selCtrl.SELECTION_NORMAL,
+                    selCtrl.SELECTION_WHOLE_SELECTION,
+                    scrollFlags
+                  );
+                  selCtrl.setDisplaySelection(selCtrl.SELECTION_ATTENTION);
+                } else {
+                  editor.selection.collapseToStart();
+                  // check if we would create an empty paragraph:
+                  if (
+                    space.textContent == space.parentNode.innerText &&
+                    space.parentNode.tagName.toLowerCase() == "p"
+                  ) {
+                    space.parentNode.innerHTML = "<br>"; // avoid empty paragraph because the editor will remove it; replaces space
+                  } else {
+                    space.parentNode.removeChild(space);
+                  }
+                }
+                window.updateCommands("style");
                 // =========== FORCE CURSOR IN <PARA> ==================================== <<<<
-							}
-							catch (ex) {
-								util.logException("forceParagraph failed.", ex);
+              } catch (ex) {
+								util.logException("caretContainer processing failed.", ex);
 							}
 						}
-					} 
-					else { // no cursor
+					}  else { // no cursor
 						if (isReplyOnTop) {
 							if (editor.selection.collapseToStart)
 								editor.selection.collapseToStart();
 							else
 								editor.selection.collapse(theParent, nodeOffset+1); 
-						}
-						else {
+						} else {
 						  // if we reply below we must be above the signature.
 							if (editor.selection.collapseToEnd) {
 								editor.selection.collapseToEnd();
-              }
-							else {
+              } else {
 								editor.selection.collapse(theParent, nodeOffset+1); 
               }
 						}

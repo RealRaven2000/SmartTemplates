@@ -803,20 +803,19 @@ SmartTemplate4.Util = {
     Services.console.logMessage(scriptError);
   },
 
-  logException: function (aMessage, ex) {
+  logException: function (aMessage, ex, ...options) {
     let stack = "";
     if (typeof ex.stack != "undefined") {
       stack = ex.stack.replace("@", "\n  ");
     }
 
-    let srcName = ex.fileName ? ex.fileName : "";
-    console.warn(
-      aMessage + "\n",
-      `${srcName}:${ex.lineNumber}`,
-      `\n${ex.message}\n`,
-      ex.stack ? ex.stack.replace("@", "\n  ") : ""
-    );
-    // this.logError(aMessage + "\n" + ex.message, srcName, stack, ex.lineNumber, 0, 0x1); // use warning flag, as this is an exception we caught ourselves
+    // Log the warning message with formatted details
+    console.warn(`${aMessage}\n${srcName}:${ex.lineNumber}\n${ex.message}\n${stack}`);
+
+    // Log the detailed objects (optional, if any)
+    if (options.length > 0) {
+      console.log("Error Detail:", ...options);
+    }
   },
 
   logDebug: function (msg) {
@@ -3198,14 +3197,8 @@ SmartTemplate4.Util = {
   },
 
   // helper function to find a child node of the passed class Name
-  findChildNode: function findChildNode(node, className) {
-    while (node) {
-      if (node && node.className == className) return node;
-      let n = this.findChildNode(node.firstChild, className);
-      if (n) return n;
-      node = node.nextSibling;
-    }
-    return null;
+  findChildNode: function (node, className) {
+    return node?.querySelector(`.${className}`) || null;
   },
 
   removeHtmlEntities: function removeHtmlEntities(input) {
@@ -3236,7 +3229,7 @@ SmartTemplate4.Util = {
       let folders = window.GetSelectedMsgFolders();
       if (folders.length == 1) {
         // select the correct server that applies to the current folder.
-				var { MailUtils } = SmartTemplates_ESM
+        var { MailUtils } = SmartTemplates_ESM
           ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
           : ChromeUtils.import("resource:///modules/MailUtils.jsm");
 

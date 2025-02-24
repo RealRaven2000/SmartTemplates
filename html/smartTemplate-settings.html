@@ -50,31 +50,31 @@
      <!-- new side menu -->
     <div class="vbox" id="pref-category-box">
       <ul id="categories" class="prefs-menu categories" >
-        <li class="category" id="catAccountTemplates" selected="true" page="smartTemplatePane">
+        <li class="category" id="catAccountTemplates" selected="true" page="smartTemplatePane" tabindex="0">
           <label class="category-name">__MSG_account.templates__</label>
         </li>
-        <li class="category" id="catFileTemplates" page="fileTemplatePane">
+        <li class="category" id="catFileTemplates" page="fileTemplatePane" tabindex="0">
           <label class="category-name">__MSG_fileTemplates.menu__</label>
         </li>
-        <li class="category" id="catSettingsGeneral" page="globalSettingsPane">
+        <li class="category" id="catSettingsGeneral" page="globalSettingsPane" tabindex="0">
           <label class="category-name">__MSG_global.tab__</label>
         </li>
-        <li class="category" id="catSettingsAdvanced" page="advancedSettingsPane">
+        <li class="category" id="catSettingsAdvanced" page="advancedSettingsPane" tabindex="0">
           <label class="category-name">__MSG_advanced.tab__</label>
         </li>
-        <li class="category" id="catVariables" page="variablesPane">
+        <li class="category" id="catVariables" page="variablesPane" tabindex="0">
           <label class="category-name">__MSG_variables.tab__</label>
         </li>
-        <li class="category" id="catExamples" page="examplesPane">
+        <li class="category" id="catExamples" page="examplesPane" tabindex="0">
           <label class="category-name">__MSG_examples.tab__</label>
         </li>        
-        <li class="category" id="catInfo" page="infoPane">
+        <li class="category" id="catInfo" page="infoPane" tabindex="0">
           <label class="category-name">__MSG_about.cap__</label>
         </li>
-        <li class="category" id="catLicense" page="licensePane">
+        <li class="category" id="catLicense" page="licensePane" tabindex="0">
           <label class="category-name">__MSG_license-tab__</label>
         </li>
-        <li class="category" id="catSupport" page="supportPane">
+        <li class="category" id="catSupport" page="supportPane" tabindex="0">
           <label class="category-name">__MSG_support.tab__</label>
         </li>        
       </ul>
@@ -424,7 +424,8 @@
 
       <div id="variablesPane" class="page prefpane">
         <iframe id="helpFrame"
-          src="../chrome/content/help.xhtml?context=html">
+          src="../chrome/content/variables.html?context=html"
+          tabindex="0">
         </iframe>
       </div>
 

@@ -13,8 +13,8 @@
     if (typeof code !='undefined') {
       var classList = code.classList,
           isAddressConfig = ((classList && classList.contains('config_default')) || (code.parentElement && code.parentElement.classList.contains('config_default')));
-          
-      if (code.tagName == 'code' || code.tagName == 'a' || isAddressConfig) {
+      const tagName = code.tagName?.toLowerCase();
+      if (tagName == 'code' || tagName == 'a' || isAddressConfig) {
         var exists = true,
             element = document.getElementById('ST4Dispatcher');
         if (!element) {
@@ -23,7 +23,7 @@
           element.id = 'ST4Dispatcher';
         }
 
-        switch(code.tagName) {
+        switch(tagName) {
           case 'code':
             /* this used to use innerHTML unnecessarily */
             element.setAttribute("codeWord", code.innerText); // now, add the payload
@@ -53,7 +53,7 @@
 
         // for web ext we need to do runtim message instead.
         
-        switch(code.tagName) {
+        switch(tagName) {
           case 'code':
             if (!browser) {
               const customEvent = new CustomEvent("SmartTemplate4CodeWord",
@@ -109,63 +109,40 @@
   }
   
   // Accordion:
-  var mychapters = Array.from(document.getElementsByClassName('chapterBody'));
+  const toggleCollapseExpand = (hd, el) => {
+    var isCollapsed = el.classList.contains("collapsed");
+    if (isCollapsed) {
+      Array.from(document.getElementsByClassName("chapterBody")).forEach((x) => {
+        if (x !== el) {
+          x.classList.add("collapsed");
+          x.previousElementSibling.classList.remove("expanded");
+        }
+      });
+      el.classList.remove("collapsed");
+      hd.scrollIntoView({ behavior: "smooth", block: "start" });
+      hd.classList.add("expanded");
+      hd.setAttribute("aria-expanded", "true");
+    } else {
+      el.classList.add("collapsed");
+      hd.classList.remove("expanded");
+      hd.setAttribute("aria-expanded", "false");
+    }
+  };
+
+
+  var mychapters = Array.from(document.getElementsByClassName("chapterBody"));
   mychapters.forEach(function(el) {
     var hd = el.previousElementSibling;
-    
-    /* alert("adding event listener: " + el.tagName + " "  + el.textContent);  */
-    hd.addEventListener('click', 
-      function(e) { 
-        var isCollapsed = el.classList.contains('collapsed');
-        if (isCollapsed) {
-          // collapse all other chapters
-          Array.from(document.getElementsByClassName('chapterBody')).forEach(
-            (x) => {
-              if (x!=el) {
-                x.classList.add('collapsed');
-                x.previousElementSibling.classList.remove('expanded');
-              }
-            }
-          )
-          el.classList.remove('collapsed'); // uncollapse chapter below this heading
-          window.setTimeout( function() { 
-            const options = {
-              behavior:"smooth",
-              block: "start"
-            }
-            hd.scrollIntoView(options); 
 
-            if (isContextXML()) {
-              // send message to container to scroll itself to top:
-              /* OBSOLETE in HTML view */
-              let customEvent = new CustomEvent("SmartTemplate4ScrollVariables", {bubbles:true} );
-              // document.dispatchEvent(customEvent);
-              const parentDoc = window.parent.document;
-              parentDoc.dispatchEvent(customEvent);
-              setTimeout( 
-                (x) => {
-                  window.parent.document.dispatchEvent(customEvent)},
-                250
-              );
-            }
-          }, 150);
-          hd.classList.add('expanded');
-        } else {
-          el.classList.add('collapsed');
-          let sel = window.getSelection();
-          if (sel && el.contains(sel.focusNode)) {
-            sel.removeAllRanges();
-          }
-          hd.classList.remove('expanded');
-        }
+    /* alert("adding event listener: " + el.tagName + " "  + el.textContent);  */
+    // Usage
+    hd.addEventListener("click", () => toggleCollapseExpand(hd, el));
+    hd.addEventListener("keydown", (e) => { // accessibility
+      if (e.key === "Enter") {
+        toggleCollapseExpand(hd, el);
       }
-    );
-    el.classList.add('collapsed');
-  });
-  
-  var myheadings = Array.from(document.getElementsByClassName('helpchapter'));
-  myheadings.forEach((el) => { // for purpose of search / focus()
-    el.setAttribute("tabindex",-1);
+    });
+    el.classList.add("collapsed");
   });
   
 
@@ -198,7 +175,7 @@
   // determine parentChapter of any element
   function parentChapterOf(el) {
     if (!el) return null;
-    if (el?.tagName=="h1") { return el; }
+    if (el.tagName?.toLowerCase()=="h1") { return el; }
     let p = el?.parentNode;
     while (p) {
       if (p.nodeType==1 && p.classList.contains("chapterBody")) {
@@ -277,7 +254,8 @@
       chapterElements.push(child);
     }
     for (let el of chapterElements) {
-      switch (el?.tagName) {
+      const tag = el.tagName?.toLowerCase();
+      switch (tag) {
         case "aside": // fall-through
         case "p":
           contentElements.push(...serialize(el));
@@ -302,7 +280,8 @@
     // create array of searchable contents
     const contents=[];
     for (let el of containers ) {
-      if (el.tagName=="h1") {
+      const tag = el.tagName?.toLowerCase();
+      if (tag == "h1") {
         contents.push(el.childNodes[0]);
       }
       if (el.classList.contains("chapterBody")) {
@@ -413,6 +392,17 @@
     }    
   }
 
+  function findNextChapterBody(el) {
+    let sibling = el.nextElementSibling;
+    while (sibling) {
+      if (sibling.classList.contains("chapterBody")) {
+        return sibling;
+      }
+      sibling = sibling.nextElementSibling;
+    }
+    return null; // No more chapterBody elements
+  }
+
   async function initSearch() {
     const searchBox = document.getElementById("search");
     if (searchBox) {
@@ -420,13 +410,16 @@
       // clicks into the help contents. Note that contentEditable doesn't work here.
       searchBox.addEventListener("keydown", async (event) => {
         // if (await isDebugLegacyOption()) { console.log("searchbox keydown:", event); }
+        const noShenanigans = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        }
         let target = event.target;
         switch (event.code) {
           case "NumpadEnter": // search next
           case "Enter": // search start - how do we prevent [OK] from catching this???
             let search = target.value;
-            event.preventDefault();
-            event.stopPropagation();
+            noShenanigans(event);
             const found = await findSearchText(search);
             if (found) {
               // make sure first match is shown as selected:
@@ -436,12 +429,21 @@
             document.getElementById("findprevious").style.display="inline-block";
             break;
           case "Escape":
-            event.preventDefault();
-            event.stopPropagation();
+            noShenanigans(event);
             target.blur();
             document.getElementById("searchHelpContent").classList.add("hidden");
             document.getElementById("findnext").style.display="none";
             document.getElementById("findprevious").style.display="none";
+            break;
+          case "Tab":
+            noShenanigans(event);
+            // console.log(getEventListeners(searchBox).blur); // chrome only
+            searchBox.blur();
+            const hFirst = document.querySelector("#startHeading");
+            setTimeout(() => {
+              hFirst.focus();
+              console.log("Focus check!", document.activeElement, hFirst);
+            }, 30);
             break;
         }
       }, {capture:true});
@@ -478,41 +480,70 @@
     let container = document.getElementById("helpContents");
     if (container) {
       container.addEventListener("keydown", async (event) => {
-        if (isDebug) console.log("helpContents frame", event);
+        if (isDebug) {
+          const targ = event.target;
+          const txt =
+            targ?.tagName == "H1"
+              ? targ.textContent
+              : `${targ.tagName} ${targ.getAttribute("Name")}`;
+          console.log("helpContents frame", txt, event);
+        }
         switch (event.code) {
           case "F4":
             event.preventDefault();
             event.stopPropagation();
             let backwards = (event.shiftKey);
             let search = document.getElementById("search");
-            if (search.value) {
-              // event.originalTarget.ownerDocument.body.focus();
-              let isFound = await findSearchText(search.value, true, backwards);
-              document.getElementById("searchHelpContent").classList.add("hidden");
-              if (isFound) {
-                let el = LastSelection.focusNode;
-                while (el = el.parentElement) {
-                  if (!el.classList) continue;
-                  if (el.classList.contains("chapterBody")) {
-                    el.focus();
-                    break;
-                  }
-                  if (el.classList.contains("helpchapter")) {
-                    if (backwards) {
-                      el.previousElementSibling.focus();
-                    } else {
-                      el.nextElementSibling.focus();
-                    }
-                    break;
-                  }
-                }
-              }
+            if (!search.value) {
               // fix lost focus problem
               // event.originalTarget.ownerDocument.body.focus();
               // search.focus();
-            } else {
               search.focus();
+              return;
             }
+            // event.originalTarget.ownerDocument.body.focus();
+            let isFound = await findSearchText(search.value, true, backwards);
+            document.getElementById("searchHelpContent").classList.add("hidden");
+            if (isFound) {
+              let el = LastSelection.focusNode;
+              while (el = el.parentElement) {
+                if (!el.classList) continue;
+                if (el.classList.contains("chapterBody") || el.classList.contains("cursorNavigate")) {
+                  el.focus();
+                  break;
+                }
+                if (el.classList.contains("helpchapter")) {
+                  if (backwards) {
+                    el.previousElementSibling.focus();
+                  } else {
+                    el.nextElementSibling.focus();
+                  }
+                  break;
+                }
+              }
+            }
+            break;
+          case "ArrowDown":
+            if (event.target?.classList.contains("helpchapter")) {
+              // go to first chapter next sibling element and focus first .cursorNavigate child
+              const nextChapterBody = findNextChapterBody(event.target);
+              if (!nextChapterBody) break;
+              const firstCursorNavigate = nextChapterBody?.querySelector(".cursorNavigate");
+              if (!firstCursorNavigate) break;
+              if (isDebug) {
+                console.log("Focusing 1st found .cursorNavigate element:", firstCursorNavigate.textContent);
+              }
+              firstCursorNavigate.focus();
+            }
+            break;
+          case "KeyF": // CTRL+F for find
+            if (event.metaKey) break;
+            if (event.altKey) break;
+            if (!event.ctrlKey) break;
+            event.preventDefault();
+            event.stopPropagation();
+            const srch = document.getElementById("search");
+            srch.focus();
             break;
         }
       });

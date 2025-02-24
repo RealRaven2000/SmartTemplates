@@ -2225,6 +2225,7 @@ function showTooltip(evt, el) {
     tip = document.createElement("div");
     tip.classList.add("tooltip");
     tip.innerText = txt;
+    tip.setAttribute("aria-live", "assertive"); // Ensure screen reader announces it
     el.appendChild(tip); // Append tooltip to button
   }
 
@@ -2249,12 +2250,17 @@ function hideTooltip(tip) {
 // add UI event listeners
 function addUIListeners() {
   for (let button of document.querySelectorAll(".toolTipButton")) {
+    button.setAttribute("aria-label", "More info"); // screenreader support
     button.addEventListener("click", (evt) => {
       const el = evt?.target;
       if (!el) return;
-
       showTooltip(evt, el); // Show tooltip on click
     });
+    button.addEventListener("keyup", (evt) => {
+      if (evt.key === "Enter" || evt.key === " ") {
+        showTooltip(evt, evt.target);
+      }
+    }); // Show tooltip on Enter
   }
 
   // activate all write/reply/forward tab listeners.
@@ -2262,348 +2268,413 @@ function addUIListeners() {
     button.addEventListener("click", activateTab);
   }
 
-	// add bool preference reactions
-	for (let chk of document.querySelectorAll("input[type=checkbox]")) {	
-		let dataPref = chk.getAttribute("data-pref-name").replace(SMARTTEMPLATES_EXTPREFIX,"");
-		// right-click show details from about:config
-		let filterConfig="", readOnly=true, retVal=null;
-		// get my bool pref:
-		switch (dataPref) {
-			case "debug":
-				chk.addEventListener("change", (event) => {
-					SettingsUI.toggleBoolPreference(chk); // <== QF.Options
-				});				
-				filterConfig="smartTemplate4.debug"; retVal=false;
-				break;
-			case "parseSignature":
-				filterConfig = "extensions.smartTemplate4.parseSignature"; retVal=false;
-				break;
-			case "showStatusIcon":
-				filterConfig = "extensions.smartTemplate4.showStatusIcon"; retVal=true;
-				break;
-		}
+  // add bool preference reactions
+  for (let chk of document.querySelectorAll("input[type=checkbox]")) {
+    let dataPref = chk.getAttribute("data-pref-name").replace(SMARTTEMPLATES_EXTPREFIX, "");
+    // right-click show details from about:config
+    let filterConfig = "",
+      readOnly = true,
+      retVal = null;
+    // get my bool pref:
+    switch (dataPref) {
+      case "debug":
+        chk.addEventListener("change", (event) => {
+          SettingsUI.toggleBoolPreference(chk); // <== QF.Options
+        });
+        filterConfig = "smartTemplate4.debug";
+        retVal = false;
+        break;
+      case "parseSignature":
+        filterConfig = "extensions.smartTemplate4.parseSignature";
+        retVal = false;
+        break;
+      case "showStatusIcon":
+        filterConfig = "extensions.smartTemplate4.showStatusIcon";
+        retVal = true;
+        break;
+    }
 
-		switch(chk.id) {
-			case "chkResolveAB":
-				chk.addEventListener("click", (event) => {
-					SmartTemplates.Settings.resolveAB_onClick(chk);
-				});
-				break;
-			case "chkBackgroundParser":
-				chk.addEventListener("click", (event) => {
-					alert('The mx parser is experimental\nPlease reload SmartTemplates to effect this change!');
-				});
-				break;
-			case "chkHideExamples":
-				// oncommand="SmartTemplate4.Settings.toggleExamples(chk);"
-				chk.addEventListener("click", (event) => {
-					logMissingFunction("SmartTemplate4.Settings.toggleExamples()");
-				});
-				break;
-			case "chkStatusButton":
-				chk.addEventListener("click", (event) => {
-					SmartTemplates.Settings.updateStatusBar(!event.target.checked);
-				});
-				break;
-		}
+    switch (chk.id) {
+      case "chkResolveAB":
+        chk.addEventListener("click", (event) => {
+          SmartTemplates.Settings.resolveAB_onClick(chk);
+        });
+        break;
+      case "chkBackgroundParser":
+        chk.addEventListener("click", (event) => {
+          alert(
+            "The mx parser is experimental\nPlease reload SmartTemplates to effect this change!"
+          );
+        });
+        break;
+      case "chkHideExamples":
+        // oncommand="SmartTemplate4.Settings.toggleExamples(chk);"
+        chk.addEventListener("click", (event) => {
+          logMissingFunction("SmartTemplate4.Settings.toggleExamples()");
+        });
+        break;
+      case "chkStatusButton":
+        chk.addEventListener("click", (event) => {
+          SmartTemplates.Settings.updateStatusBar(!event.target.checked);
+        });
+        break;
+    }
 
-		/* RIGHTCLICK HANDLERS */
-		if (filterConfig) {
-			addConfigEvent(chk,filterConfig);
-		}	
-	}
+    /* RIGHTCLICK HANDLERS */
+    if (filterConfig) {
+      addConfigEvent(chk, filterConfig);
+    }
+  }
 
-	for (let chk of document.querySelectorAll(".settingDisabler")) {	
-		chk.addEventListener("change", (event) => {
-			SmartTemplates.Settings.disableWithCheckbox(chk); // <== QF.Options
-		});			
-	}
-	
+  for (let chk of document.querySelectorAll(".settingDisabler")) {
+    chk.addEventListener("change", (event) => {
+      SmartTemplates.Settings.disableWithCheckbox(chk); // <== QF.Options
+    });
+  }
+
   // radio button handlers
-	document.getElementById("useAccountTemplate").addEventListener("click", (event) => {
-		SmartTemplates.Settings.selectDefaultTemplates(event.target);
-	});
-	document.getElementById("useLastTemplate").addEventListener("click", (event) => {
-		SmartTemplates.Settings.selectDefaultTemplates(event.target);
-	});	
-	
+  document.getElementById("useAccountTemplate").addEventListener("click", (event) => {
+    SmartTemplates.Settings.selectDefaultTemplates(event.target);
+  });
+  document.getElementById("useLastTemplate").addEventListener("click", (event) => {
+    SmartTemplates.Settings.selectDefaultTemplates(event.target);
+  });
 
   // these were oncommand events - for the file templates list
-	document.getElementById("btnAdd").addEventListener("click", (event) => {
-		fileTemplates.addEntry();
-	});
-	document.getElementById("btnUpdate").addEventListener("click", (event) => {
-		fileTemplates.updateEntry();
-	});
-	document.getElementById("btnRemove").addEventListener("click", (event) => {
-		fileTemplates.removeEntry(event.target);
-	});
-	document.getElementById("btnUp").addEventListener("click", (event) => {
-		fileTemplates.moveEntryUp(event.target);
-	});
-	document.getElementById("btnDown").addEventListener("click", (event) => {
-		fileTemplates.moveEntryDown(event.target);
-	});
-	document.getElementById("btnEdit").addEventListener("click", (event) => {
-		fileTemplates.editEntry();
-	});
-	document.getElementById("btnPushUI").addEventListener("click", (event) => {
-		SmartTemplates.Settings.logDebug("Sending entries data to experiment...");
-		messenger.Utilities.updateTemplates(fileTemplates.Entries);
-	});	
+  document.getElementById("btnAdd").addEventListener("click", (event) => {
+    fileTemplates.addEntry();
+  });
+  document.getElementById("btnUpdate").addEventListener("click", (event) => {
+    fileTemplates.updateEntry();
+  });
+  document.getElementById("btnRemove").addEventListener("click", (event) => {
+    fileTemplates.removeEntry(event.target);
+  });
+  document.getElementById("btnUp").addEventListener("click", (event) => {
+    fileTemplates.moveEntryUp(event.target);
+  });
+  document.getElementById("btnDown").addEventListener("click", (event) => {
+    fileTemplates.moveEntryDown(event.target);
+  });
+  document.getElementById("btnEdit").addEventListener("click", (event) => {
+    fileTemplates.editEntry();
+  });
+  document.getElementById("btnPushUI").addEventListener("click", (event) => {
+    SmartTemplates.Settings.logDebug("Sending entries data to experiment...");
+    messenger.Utilities.updateTemplates(fileTemplates.Entries);
+  });
 
-	
-	document.getElementById("helpSnippets").addEventListener("click", (event) => {
-		SmartTemplates.Util.showStationeryPage("snippets"); // contains an anchor
-	});
+  document.getElementById("helpSnippets").addEventListener("click", (event) => {
+    SmartTemplates.Util.showStationeryPage("snippets"); // contains an anchor
+  });
 
-	// command handlers for licensing
-	document.getElementById("btnPasteLicense").addEventListener("click", (event) => {
-		SmartTemplates.Settings.pasteLicense();
-	});
-	document.getElementById("btnValidateLicense").addEventListener("click", (event) => {
-		SmartTemplates.Settings.validateNewKey(event.target);
-	});
-	document.getElementById("btnLicense").addEventListener("click", (event) => {
-		// oncommand="
-	  //    SmartTemplate4.Util.showLicenseDialog('licenseTab'); 
-		//    setTimeout( function() {window.close();}, 500 );"
-		showRegistrationDlg("licenseTab"); // do we need to close the settings tab??
-	});
+  // command handlers for licensing
+  document.getElementById("btnPasteLicense").addEventListener("click", (event) => {
+    SmartTemplates.Settings.pasteLicense();
+  });
+  document.getElementById("btnValidateLicense").addEventListener("click", (event) => {
+    SmartTemplates.Settings.validateNewKey(event.target);
+  });
+  document.getElementById("btnLicense").addEventListener("click", (event) => {
+    // oncommand="
+    //    SmartTemplate4.Util.showLicenseDialog('licenseTab');
+    //    setTimeout( function() {window.close();}, 500 );"
+    showRegistrationDlg("licenseTab"); // do we need to close the settings tab??
+  });
 
-	
-	// select elements
-	document.getElementById("msgIdentity").addEventListener("change", (event) => {
-		SmartTemplates.Settings.selectIdentity(event.target.value, true);
-	});
-	document.getElementById("iconType").addEventListener("change", (event) => {
-		// go through background => legacy code for the UI update at least.
-		// avoid passing element itself, change parameter to select.value!
-		SmartTemplates.Settings.setStatusIconMode(event.target);
-	});
-	document.getElementById("fontSmaller").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.Settings.fontSize(-1);");
-	});
-	document.getElementById("fontLarger").addEventListener("click", (event) => {
-		logMissingFunction("SmartTemplate4.Settings.fontSize(+1);");
-	});
+  // select elements
+  document.getElementById("msgIdentity").addEventListener("change", (event) => {
+    SmartTemplates.Settings.selectIdentity(event.target.value, true);
+  });
+  document.getElementById("iconType").addEventListener("change", (event) => {
+    // go through background => legacy code for the UI update at least.
+    // avoid passing element itself, change parameter to select.value!
+    SmartTemplates.Settings.setStatusIconMode(event.target);
+  });
+  document.getElementById("fontSmaller").addEventListener("click", (event) => {
+    logMissingFunction("SmartTemplate4.Settings.fontSize(-1);");
+  });
+  document.getElementById("fontLarger").addEventListener("click", (event) => {
+    logMissingFunction("SmartTemplate4.Settings.fontSize(+1);");
+  });
 
+  // toolbar for the template tools
+  document.getElementById("helpTemplates").addEventListener("click", (event) => {
+    SmartTemplates.Util.showStationeryPage("templateFiles");
+  });
+  document.getElementById("btnSaveTemplate").addEventListener("click", (event) => {
+    SmartTemplates.Settings.storeAccount();
+  });
+  document.getElementById("btnLoadTemplate").addEventListener("click", (event) => {
+    SmartTemplates.Settings.loadAccount();
+  });
+  document.getElementById("btnRefreshAccounts").addEventListener("click", (event) => {
+    SmartTemplates.Settings.refreshIdentities();
+  });
 
-	// toolbar for the template tools
-	document.getElementById("helpTemplates").addEventListener("click", (event) => {
-		SmartTemplates.Util.showStationeryPage("templateFiles");
-	});
-	document.getElementById("btnSaveTemplate").addEventListener("click", (event) => {
-		SmartTemplates.Settings.storeAccount();
-	});
-	document.getElementById("btnLoadTemplate").addEventListener("click", (event) => {
-		SmartTemplates.Settings.loadAccount();
-	});
-	document.getElementById("btnRefreshAccounts").addEventListener("click", (event) => {
-		SmartTemplates.Settings.refreshIdentities();
-	});
-	
+  // document.getElementById("btnAdvanced").addEventListener("click", (event) => {
+  // 	logMissingFunction("SmartTemplates.Settings.openAdvanced()");
+  // });
+  // document.getElementById("btnCloseAdvanced").addEventListener("click", (event) => {
+  // 	logMissingFunction("SmartTemplates.Settings.closeAdvanced()");
+  // });
+  for (let btn of document.querySelectorAll(".youtube")) {
+    let video = null;
+    switch (btn.id) {
+      case "btnYouTube-accounts":
+        video = "list";
+        break;
+      case "btnYouTube-filetemplates":
+        video = "stationery";
+        break;
+    }
+    btn.addEventListener("click", (event) => {
+      SmartTemplates.Util.showYouTubePage(video);
+    });
+  }
 
-	// document.getElementById("btnAdvanced").addEventListener("click", (event) => {
-	// 	logMissingFunction("SmartTemplates.Settings.openAdvanced()");
-	// });
-	// document.getElementById("btnCloseAdvanced").addEventListener("click", (event) => {
-	// 	logMissingFunction("SmartTemplates.Settings.closeAdvanced()");
-	// });
-	for (let btn of document.querySelectorAll(".youtube")) { 
-		let video=null;
-		switch(btn.id) {
-			case "btnYouTube-accounts":
-				video = "list";
-				break;
-			case "btnYouTube-filetemplates":
-				video = "stationery";
-				break;
-		}
-		btn.addEventListener("click", (event) => {
-			SmartTemplates.Util.showYouTubePage(video);
-		});
-	}
+  // about page handlers
+  for (let btn of document.querySelectorAll(".buttonLinks button")) {
+    btn.addEventListener("click", (event) => {
+      // SmartTemplates.Settings.disableWithCheckbox(this)
+      switch (btn.id) {
+        case "aboutShowSplash":
+        case "btnNewsSplash":
+          // oncommand=
+          //   SmartTemplate4.Util.viewSplashScreen()
+          //   setTimeout( function() {window.close();}, 200 );"
+          SmartTemplates.Util.viewSplashScreen();
+          break;
+        case "aboutSupport":
+        case "supportPaneSupportLink":
+          // oncommand=
+          //   SmartTemplate4.Util.showSupportPage();
+          //   setTimeout( function() {window.close();}, 200 );"
+          SmartTemplates.Util.showSupportPage();
+          break;
+        case "aboutHomePage":
+        case "supportPaneHomePage":
+          // oncommand=
+          //   SmartTemplate4.Util.showHomePage();
+          //   setTimeout( function() {window.close();}, 200 );
+          SmartTemplates.Util.showHomePage();
+          break;
+        case "aboutIssues":
+        case "supportPaneIssues":
+          // oncommand=
+          //   SmartTemplate4.Util.showBugsAndFeaturesPage();
+          //   setTimeout( function() {window.close();}, 200 );
+          SmartTemplates.Util.showBugsAndFeaturesPage();
+          break;
+        case "btnVersionInfo":
+          messenger.Utilities.showVersionHistory();
+          break;
+      }
+    });
+  }
 
-	// about page handlers
-	for (let btn of document.querySelectorAll(".buttonLinks button")) {	
-		btn.addEventListener("click", (event) => {
-			// SmartTemplates.Settings.disableWithCheckbox(this)
-			switch(btn.id) {
-				case "aboutShowSplash":
-				case "btnNewsSplash":
-					// oncommand=
-					//   SmartTemplate4.Util.viewSplashScreen()
-					//   setTimeout( function() {window.close();}, 200 );"
-					SmartTemplates.Util.viewSplashScreen();
-					break;
-				case "aboutSupport":
-				case "supportPaneSupportLink":
-					// oncommand=
-					//   SmartTemplate4.Util.showSupportPage(); 
-					//   setTimeout( function() {window.close();}, 200 );"
-					SmartTemplates.Util.showSupportPage();
-					break;
-				case "aboutHomePage":
-				case "supportPaneHomePage":
-					// oncommand=
-					//   SmartTemplate4.Util.showHomePage(); 
-					//   setTimeout( function() {window.close();}, 200 );
-					SmartTemplates.Util.showHomePage();
-					break;
-				case "aboutIssues": 
-				case "supportPaneIssues":
-					// oncommand=
-					//   SmartTemplate4.Util.showBugsAndFeaturesPage(); 
-					//   setTimeout( function() {window.close();}, 200 );
-					SmartTemplates.Util.showBugsAndFeaturesPage();
-					break;
-				case "btnVersionInfo":
-					messenger.Utilities.showVersionHistory();
-					break;
-			}
-		});			
-	}	
+  for (let el of document.querySelectorAll(".plain-link")) {
+    el.addEventListener("click", (event) => {
+      switch (el.id) {
+        case "lnkShowPremium":
+          SmartTemplates.Util.showPremiumFeaturesPage();
+          break;
+      }
+    });
+  }
 
-	for (let el of document.querySelectorAll(".plain-link")) {	
-		el.addEventListener("click", (event) => {
-			switch(el.id) {
-				case "lnkShowPremium":
-					SmartTemplates.Util.showPremiumFeaturesPage();
-					break;
-			}
+  // more checkboxes
+  for (let el of document.querySelectorAll(".commonSwitch")) {
+    el.addEventListener("change", (event) => {
+      SmartTemplates.Settings.showCommonPlaceholder(el.checked);
+    });
+  }
+  // file picker button
+  document.getElementById("btnPickTemplate").addEventListener("click", (event) => {
+    fileTemplates.openFilePicker();
+  });
 
-		});
-	}
-
-	// more checkboxes
-	for (let el of document.querySelectorAll(".commonSwitch")) {
-		el.addEventListener("change", (event) => {
-			SmartTemplates.Settings.showCommonPlaceholder(el.checked);
-		});
-	}
-	// file picker button
-	document.getElementById("btnPickTemplate").addEventListener("click", (event) => {
-		fileTemplates.openFilePicker();
-	});	
-
-
-	// textareas:
-	// drag + drop
+  // textareas:
+  // drag + drop
   for (let textarea of document.querySelectorAll(".templateBox")) {
-		textarea.addEventListener("drop", (event) => {
-			logMissingFunction("SmartTemplates.Settings.textDropped(event)");
-		});	
+    textarea.addEventListener("drop", (event) => {
+      logMissingFunction("SmartTemplates.Settings.textDropped(event)");
+    });
   }
-	// focus (for pasting)
+  // focus (for pasting)
   for (let textarea of document.querySelectorAll(".pasteFocus textarea")) {
-		textarea.addEventListener("focus", (event) => {
-			logMissingFunction("SmartTemplates.Settings.pasteFocus(this)");
-		});	
+    textarea.addEventListener("focus", (event) => {
+      logMissingFunction("SmartTemplates.Settings.pasteFocus(this)");
+    });
   }
 
-	document.getElementById("closeDisclaimer").addEventListener("click", (event) => {
-		event.target.parentElement.remove();
-	});	
-	
-	
-	// template lists
-	// .fileTemplateList richlistbox ==> select
+  document.getElementById("closeDisclaimer").addEventListener("click", (event) => {
+    event.target.parentElement.remove();
+  });
+
+  // template lists
+  // .fileTemplateList richlistbox ==> select
   for (let textarea of document.querySelectorAll(".fileTemplateList")) {
-		textarea.addEventListener("change", (event) => {
-			logMissingFunction("SmartTemplate4.fileTemplates.onSelect(this)");
-		});	
+    textarea.addEventListener("change", (event) => {
+      logMissingFunction("SmartTemplate4.fileTemplates.onSelect(this)");
+    });
   }
 
   // ============================
-	// == template file details  ==
+  // == template file details  ==
   // ============================
-	let txtTitle = document.getElementById("txtTemplateTitle");
-	txtTitle.addEventListener("blur",(event) => {
-		fileTemplates.onEditLabel(txtTitle);
-	});	
-	txtTitle.addEventListener("focus",(event) => {
-		fileTemplates.updateInputGlobal(txtTitle);
-	});	
+  let txtTitle = document.getElementById("txtTemplateTitle");
+  txtTitle.addEventListener("blur", (event) => {
+    fileTemplates.onEditLabel(txtTitle);
+  });
+  txtTitle.addEventListener("focus", (event) => {
+    fileTemplates.updateInputGlobal(txtTitle);
+  });
 
-	let txtCategory = document.getElementById("txtTemplateCategory");
-	txtCategory.addEventListener("blur",(event) => {
-		fileTemplates.onEditLabel(txtCategory);
-	});	
-	txtCategory.addEventListener("focus",(event) => {
-		fileTemplates.updateInputGlobal(txtCategory);
-	});
-	for (let select of document.querySelectorAll("#fileTemplateContainer select.fileTemplateList")) {
-		select.addEventListener("change", (evt) => {
-		  fileTemplates.onSelect(select);
-		})
-	};
-	
-	
-	// =========== SUPPORT PAGE
-	document.getElementById("supportType").addEventListener("change", (event) => {
-		// SmartTemplate4.Settings.setSupportMode(this);
-		SmartTemplates.Settings.setSupportMode(event.target);
-	});		
+  let txtCategory = document.getElementById("txtTemplateCategory");
+  txtCategory.addEventListener("blur", (event) => {
+    fileTemplates.onEditLabel(txtCategory);
+  });
+  txtCategory.addEventListener("focus", (event) => {
+    fileTemplates.updateInputGlobal(txtCategory);
+  });
+  for (let select of document.querySelectorAll("#fileTemplateContainer select.fileTemplateList")) {
+    select.addEventListener("change", (evt) => {
+      fileTemplates.onSelect(select);
+    });
+  }
 
+  // =========== SUPPORT PAGE
+  document.getElementById("supportType").addEventListener("change", (event) => {
+    // SmartTemplate4.Settings.setSupportMode(this);
+    SmartTemplates.Settings.setSupportMode(event.target);
+  });
 
-	document.getElementById("composeSupportMail").addEventListener("click", (event) => {
-		const SUPPORT_MAIL = "axel.grude@gmail.com";
-		SmartTemplates.Settings.sendMail(SUPPORT_MAIL);
-	});	
-	
-	
-	// ==== NEW: PAGES
-	for (let li of document.querySelectorAll("#categories li")) {
-		li.addEventListener("click",(event) => {
-			// 1 - hide other pages
-			let activePage = li.getAttribute("page") || null;
-			li.setAttribute("selected",true);
-			for (let other of document.querySelectorAll("#categories li")) {
-				if (other == li) {
-					continue;
-				}
-				let currentActive;
-				if (other.getAttribute("selected")) {
-					other.removeAttribute("selected");
-					currentActive = other.getAttribute("page");
-				}
-				if (currentActive) {
-					document.getElementById(currentActive).classList.remove("pageActive");
+  document.getElementById("composeSupportMail").addEventListener("click", (event) => {
+    const SUPPORT_MAIL = "axel.grude@gmail.com";
+    SmartTemplates.Settings.sendMail(SUPPORT_MAIL);
+  });
+
+  function activateTab(li) {
+    let activePage = li.getAttribute("page") || null;
+    li.setAttribute("selected", true);
+    // 1 - hide other pages
+
+    // Remove "selected" attribute from other tabs
+    for (let other of document.querySelectorAll("#categories li")) {
+      if (other === li) continue;
+
+      let currentActive;
+      if (other.getAttribute("selected")) {
+        other.removeAttribute("selected");
+        currentActive = other.getAttribute("page");
+      }
+
+      // Hide other page content
+      if (currentActive) {
+        document.getElementById(currentActive).classList.remove("pageActive");
+      }
+    }
+
+    // Show the content of the active page
+    if (activePage) {
+      document.getElementById(activePage).classList.add("pageActive");
+      if (activePage == "variablesPane") {
+        // we need to get some sendmessage stuff going later for a flyout version
+        /* dark theme support ? */
+        const frame = document.getElementById("helpFrame");
+        const helpDocument = frame.contentWindow.document;
+        const r = helpDocument.querySelector(":root");
+        // r.style.setProperty("color-scheme", "dark");
+      }
+    }
+  }
+
+  // ==== NEW: PAGES
+  for (let li of document.querySelectorAll("#categories li")) {
+    li.addEventListener("click", (event) => {
+      activateTab(li);
+    });
+    // Accessibility improvements
+
+    li.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        // Select tab on Enter/Space key
+        event.preventDefault();
+        activateTab(li);
+        return;
+      }
+
+      // Move to the next tab on ArrowRight
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        const nextTab =
+          li.nextElementSibling || document.querySelector("#categories li:first-child");
+        nextTab.focus(); // Focus next tab
+        event.preventDefault();
+      }
+
+      // Move to the previous tab on ArrowLeft
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        const prevTab =
+          li.previousElementSibling || document.querySelector("#categories li:last-child");
+        prevTab.focus(); // Focus previous tab
+        event.preventDefault();
+      }
+
+			// Handle Tab key to focus on the content page
+			if (event.key === "Tab" && !event.shiftKey) {
+				event.preventDefault(); // Prevent the default tabbing behavior between <li>s
+
+				const pageId = li.getAttribute("page");
+				const activePageContent = document.getElementById(pageId);
+				if (activePageContent) {
+					// Focus the first element inside the active page content
+					const firstFocusableElement = activePageContent.querySelector("input, button, [tabindex]:not([tabindex='-1']), a[href]");
+					if (firstFocusableElement) {
+						firstFocusableElement.focus(); // Focus the first element in the page
+					}
+
+					// Add a listener for Shift + Tab to focus back to the <li> when exiting the page content
+					firstFocusableElement.addEventListener("keydown", function onTab(event) {
+						if (event.key === "Tab" && event.shiftKey) {
+							event.preventDefault(); // Prevent default behavior of Shift + Tab
+
+							li.focus(); // Focus back on the selected <li>
+						}
+					});
 				}
 			}
-			// make page visible
-			if (activePage) {
-				document.getElementById(activePage).classList.add("pageActive");
-				if (activePage == "variablesPane") {
-					// we need to get some sendmessage stuff going later for a flyout version
-					/* dark theme support ? */
-          const frame = document.getElementById("helpFrame");
-          const helpDocument = frame.contentWindow.document;
-          const r = helpDocument.querySelector(":root");
-          // r.style.setProperty("color-scheme", "dark");
-        }
+
+			// Handle Shift + Tab to focus back to the selected <li>
+			if (event.key === "Tab" && event.shiftKey) {
+				event.preventDefault(); // Prevent the default tabbing behavior
+
+				const selectedLi = document.querySelector("#categories li[selected]");
+				if (selectedLi) {
+					selectedLi.focus(); // Move focus back to the selected <li>
+				}
 			}
-		});
-	}
-	document.getElementById("catLegacyPrefs").addEventListener("click", async (event) => {
-		messenger.runtime.sendMessage({ command: "showLegacyPreferences" });		
-		// close this tab
-		let mytab = await browser.tabs.getCurrent();
-		browser.tabs.remove(mytab.id);
-	});		
-	
+    });
+  }
+
+
+  document.getElementById("catLegacyPrefs").addEventListener("click", async (event) => {
+    messenger.runtime.sendMessage({ command: "showLegacyPreferences" });
+    // close this tab
+    let mytab = await browser.tabs.getCurrent();
+    browser.tabs.remove(mytab.id);
+  });
 
   // replace SmartTemplate4.Util.showAboutConfig command handlers
-	addConfigEvent(document.getElementById("identityLabel"), "extensions.smartTemplate4.identities");
+  addConfigEvent(document.getElementById("identityLabel"), "extensions.smartTemplate4.identities");
 
-	document.getElementById("versionBox").addEventListener("click", (event) => {
-		messenger.Utilities.showVersionHistory();
-	});
+  document.getElementById("versionBox").addEventListener("click", (event) => {
+    messenger.Utilities.showVersionHistory();
+  });
 
-	// load examples...
-	document.getElementById("templatesIFrame").src="https://smarttemplates.quickfolders.org/templates.html?nav=none"
-	
+  // load examples...
+  document.getElementById("templatesIFrame").src =
+    "https://smarttemplates.quickfolders.org/templates.html?nav=none";
 }
 
 async function selectComposeType(forceType=null, forceKey = null) {

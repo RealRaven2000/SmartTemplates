@@ -42,6 +42,13 @@ p#allexpander, p#collapseAll {
   margin: 2px 0;
 }
 
+.help #findprevious,
+.help #findnext {
+  display: inline-flex;
+  align-items: center;
+  height: fit-content;
+}
+
 .help #findprevious {
   background-image: url("icons/find-previous.svg");
 }
@@ -49,20 +56,31 @@ p#allexpander, p#collapseAll {
   background-image: url("icons/find-next.svg");
 }
 
-.help #searchBox toolbarbutton {
-  width: 20px;
+.help #searchBox button {
+  border: none;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
+  background-color: transparent;
+  height: 20px;
+  width: 20px;
+  overflow: hidden; /* Hide overflowing text */
+  text-indent: 200px; /* Move text beyond button width */
+  white-space: nowrap;
 }
 
 .help #searchBox {
+  position: fixed;
+  align-items: flex-start; /* Prevents vertical stretching */
+  background: transparent;
   cursor: pointer;
   display: flex;
-  position: fixed;
+  height: fit-content;
   min-width: 9em;
   top: 6px;
   right: 6px;
-	opacity: 0.9;
+  opacity: 0.9;
+  min-height: unset;
+  border: 1px solid lightyellow;
 }
 
 .help #searchHelpContent {
@@ -84,6 +102,12 @@ p#allexpander, p#collapseAll {
   background-color:rgba(255, 141, 141, 0.2) !important;
 }
 
+.hbox {
+  display: flex;
+  flex-direction: row;
+}
+
+
 @media (prefers-color-scheme: dark) {
   .help #searchHelpContent {
     background-color: black !important;
@@ -100,8 +124,11 @@ p#allexpander, p#collapseAll {
 }
 
 #searchBox #search {
-	max-width: 8em;
+  display: flex;
+  flex-direction: row;
 	font-size: 0.9em;
+  height: fit-content !important;
+	max-width: 12em;
 }
 #searchBox #search:invalid  {
   background-image: url("chrome://global/skin/icons/search-textbox.svg");
@@ -163,6 +190,13 @@ h1.helpchapter {
   width: fit-content;
 }
 
+h1.helpchapter:focus {
+  outline: 2px dashed #f22a2a !important;
+}
+.cursorNavigate:focus:first-child {
+  border: 1px dashed pink !important;
+}
+
 /* Variables Header */
 #helpContents h2 {
   margin-left: 0.5em;
@@ -192,9 +226,10 @@ h1.helpchapter.expanded {
 }
 
 .chapterBody {
-  height: auto;
+  display: flex;
   max-height: 1500px;
   transition: max-height 0.4s ease-in;
+  flex-direction: column;
 }
 
 .chapterBody.collapsed {
