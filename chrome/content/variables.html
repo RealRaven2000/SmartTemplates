@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
 		<title>help.html</title>
+		<link rel="stylesheet" type="text/css" href="skin/theming-frame.css" name="main">
 		<link rel="stylesheet" type="text/css" href="skin/variables.css" name="main">
 		<style>
 			.st-tag {
@@ -17,16 +18,11 @@
 
   <div class="help" id="helpContents" onclick="containerClick(this, event);">
 		<h2>__MSG_variables.tab__</h2>
-		<div id="wrnDefaultFormat" style="visibility: collapse;">
-			Jumping to the '__MSG_standardformat.config__' settings is still work in progress. 
-			To set this manually, please click __MSG_advanced.tab__ and enter the default 
-			in the section '__MSG_grpNameRules__'.
-		</div>
     <p id="allexpander" class="collapsible">__MSG_heading.click__ <a href="#" onclick="expandAll(event);">__MSG_heading.expandAll__</a>.</p>
     <p id="collapseAll" class="collapsible collapsed"><a href="#" onclick="collapseAll(event);">__MSG_heading.collapseAll__</a>.</p>
     <div id="searchBox" class="help hbox">
       <button id="fq-variables-search-help" class="popupButton" aria-label="Help"></button>
-      <input type="text" id="search" />
+      <input type="text" id="search" role="searchbox"/>
       <button id="findprevious" style="display: none;">Previous</button>
       <button id="findnext" style="display: none;">Next</button>
     </div>
@@ -93,7 +89,7 @@
 			<aside>(__MSG_to_note.label__)</aside>
 			<ul>
 				<li class="cursorNavigate"><code class="deferable">%recipient%</code> = __MSG_recipient.label__</li>
-				<li class="cursorNavigate"><code class="deferable">%to%</code> = __MSG_to.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
+				<li class="cursorNavigate"><code class="deferable">%to%</code> = __MSG_to.label__ <button class="config_default">__MSG_standardformat.config__</button></li>
 				<li class="cursorNavigate"><code class="deferable">%to(firstname)%</code> = __MSG_tofirstname.label__</li>
 				<li class="cursorNavigate"><code class="deferable">%to(name)%</code> = __MSG_toname.label__</li>
 				<li class="cursorNavigate"><code class="deferable">%to(mail)%</code> = __MSG_tomail.label__</li>
@@ -107,7 +103,7 @@
     <div class="chapterBody" name="sender" tabindex="-1">
 			<aside>(__MSG_from_note.label__)</aside>
 			<ul>
-				<li class="cursorNavigate"><code class="deferable">%from%</code> = __MSG_from.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
+				<li class="cursorNavigate"><code class="deferable">%from%</code> = __MSG_from.label__ <button class="config_default">__MSG_standardformat.config__</button></li>
 				<li class="cursorNavigate"><code class="deferable">%from(firstname)%</code> = __MSG_fromfirstname.label__</li>
 				<li class="cursorNavigate"><code class="deferable">%from(name)%</code> = __MSG_fromname.label__</li>
 				<li class="cursorNavigate"><code class="deferable">%from(mail)%</code> = __MSG_frommail.label__</li>
@@ -124,7 +120,7 @@
     <div class="chapterBody" name="recipient_cc" tabindex="-1">
 			<aside>(__MSG_cc_note.label__)</aside>
 			<ul>
-				<li class="cursorNavigate"><code class="deferable">%cc%</code> = __MSG_cc.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
+				<li class="cursorNavigate"><code class="deferable">%cc%</code> = __MSG_cc.label__ <button class="config_default">__MSG_standardformat.config__</button></li>
 				<li class="cursorNavigate"><code class="deferable">%cc(firstname)%</code> = __MSG_ccfirstname.label__</li>
 				<li class="cursorNavigate"><code class="deferable">%cc(name)%</code> = __MSG_ccname.label__</li>
 				<li class="cursorNavigate"><code class="deferable">%cc(name,bracketMail())%</code> = __MSG_ccname.label__ &lt;__MSG_ccmail.label__&gt;</li>

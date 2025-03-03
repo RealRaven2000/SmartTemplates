@@ -9,36 +9,6 @@
   END LICENSE BLOCK 
 */
 
-SmartTemplates.Listener = {
-	listen: function(evt) {
-    const getElement = window.document.getElementById.bind(window.document);
-    switch (evt.type) {
-      case "SmartTemplate4CodeWord":
-        const code = evt.target.getAttribute('codeWord'),
-              className = evt.target.className;
-        // window.onCodeWord(code, className); // was window.opener.onCodeWord when help was in its own window
-        // copy to clipboard instead!
-        navigator.clipboard.write(code);
-        break;
-      case "SmartTemplate4CAD":
-        const tabbox = getElement('rightPane'),
-              txtDefaultFormat = getElement('default_address_format');
-				tabbox.selectedPanel = getElement('advancedSettingsTab');
-				tabbox.selectedIndex = 2;
-        
-        txtDefaultFormat.classList.add('highlighted');
-        txtDefaultFormat.focus();
-        break;
-      case "SmartTemplate4Website":
-        const href = evt.target.getAttribute('href');
-        if (href) {
-          SmartTemplates.Util.openLinkInTab(href);
-				}
-        break;
-    }
-	}
-}
-
 SmartTemplates.Help = {
 	onBodyClick : function onClick (element, evt) {
 		SmartTemplates.Util.logDebug("Help.onBodyClick (" + element.tagName + ") ");
@@ -47,11 +17,29 @@ SmartTemplates.Help = {
     // custom event listener for clicking code words
     browser.runtime.onMessage.addListener(
       (message, sender) => {
-        switch(message) {
+        switch (message.msg) {
           case "SmartTemplate4CodeWord":
-            console.log(`Received ${message} from:`, {sender});
-            break;
+            console.log(`st-help: Received ${message.msg} from:`, { sender });
+            navigator.clipboard.write(message.code); // copy element to clipboard!
+            return true;
+          case "SmartTemplate4CAD": // default address book settings
+            // open advanced page
+            SmartTemplates.Settings.selectCategoryMenu("catSettingsAdvanced");
+            // highlight & focus settings input
+            const txtDefaultFormat = document.getElementById("default_address_format");
+            txtDefaultFormat.classList.add("highlighted");
+            txtDefaultFormat.focus();
+            console.log(`st-help: Received ${message.msg} for ${message.code} from:`, { sender });
+            return true;
+          case "SmartTemplate4Website":
+            console.log(`st-help: Received ${message.msg} from:`, { sender });
+            const href = message.href;
+            if (href) {
+              SmartTemplates.Util.openLinkInTab(href);
+            }
+            return true;
         }
+        return false;
       }
     )
 

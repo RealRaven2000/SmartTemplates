@@ -1633,8 +1633,24 @@ async function main() {
     }
   )
   
-  
+  async function focusSettings(tabId) {
+    const tab = await browser.tabs.get(tabId);
+    const url = browser.runtime.getURL("html/smartTemplate-settings.html");
+    if (tab.url && tab.url.startsWith(url)) {
+      console.log("SmartTemplates options tab detected. Now focusing the navigation element!");
+      await messenger.Utilities.focusDocument(tabId);
+    }
+  }
 
+  browser.tabs.onUpdated.addListener((tabId, changeInfo) => {
+    if (changeInfo.status === "complete") {
+      focusSettings(tabId);
+    }
+  });
+
+  browser.tabs.onActivated.addListener((activeInfo) => {
+    focusSettings(activeInfo.tabId);
+  });
 }
 
 main();
