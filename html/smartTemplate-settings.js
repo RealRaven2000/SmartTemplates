@@ -985,6 +985,7 @@ SmartTemplates.Settings = {
 			let evt = new Event( "click", { bubbles: true } )
 			el.dispatchEvent(evt);
 		}
+		return el;
 	} ,
 
 
@@ -1194,7 +1195,7 @@ SmartTemplates.Settings = {
 		await loadPrefs("#account_deckA");  // reinitialise all decks from data store
 		// add event listeners to the tabs
 		for (let button of document.querySelectorAll(".accountDeck:not(:first-child) .actionTabs button")) {
-			button.addEventListener("click", activateTab);
+			button.addEventListener("click", activateTabEvent);
 		}
 		for (let el of document.querySelectorAll(".accountDeck:not(:first-child) .commonSwitch")) {
 			el.removeAttribute("disabled");
@@ -2041,7 +2042,7 @@ const getElement = window.document.getElementById.bind(window.document);
  * UI FUNCTIONS
  ***/
 // add event listeners for tabs
-const activateTab = (event) => {
+const activateTabEvent = (event) => {
   const btn = event.target,
         tabbox = btn.closest(".tabbox"),
         tabContent = tabbox.querySelector(".tabcontent-container");
@@ -2052,9 +2053,12 @@ const activateTab = (event) => {
   });
   Array.from(tabs).forEach(button => {
     button.classList.remove("active");
+		button.parentElement.removeAttribute("aria-selected"); // li
   });
 
   btn.classList.add("active");
+	btn.parentElement.setAttribute("aria-selected", true); // li
+
 	const cType = btn.getAttribute("composeType");
 	if (cType) { // remember new composeType.
 		SmartTemplates.Settings.currentComposeType = cType;
@@ -2176,70 +2180,89 @@ function addConfigEvent(el, filterConfig) {
 
 /**** FLOATING TOOLTIPS ===> **** */
 // Function to update the tooltip's position
-function updateTooltipPosition(e, el, tip) {
+async function updateTooltipPosition(e, el, tip) {
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
   const buttonRect = el.getBoundingClientRect();
   const VERTICAL_OFFSET = 18;
   const HORIZONTAL_OFFSET = 15;
 
-  // Ensure tooltip width and height are calculated correctly before positioning
-  tip.style.visibility = "hidden"; // Temporarily hide to measure
+  // Temporarily place tooltip off-screen to get accurate width/height
+  tip.style.left = "1px";
+  tip.style.top = "1px";
+  tip.style.visibility = "hidden";
   tip.style.opacity = 0;
+
+  // Force reflow to measure size
   const tipWidth = tip.offsetWidth;
   const tipHeight = tip.offsetHeight;
-  tip.style.visibility = "visible"; // Show after calculation
+
+  // Log calculated values for debugging:
+	if (await SmartTemplates.Preferences.isDebug) {
+		console.log("Button Rect:", buttonRect);
+		console.log("Tooltip Size:", { tipWidth, tipHeight });
+		console.log("Viewport Size:", { viewportWidth, viewportHeight });
+	}
+
+  // Calculate tooltip position
+  let left = buttonRect.right + HORIZONTAL_OFFSET;
+  let top = buttonRect.bottom + VERTICAL_OFFSET;
+
+  // Adjust if tooltip overflows right edge
+  if (left + tipWidth > viewportWidth - 20) {
+    left = Math.max(10, viewportWidth - tipWidth - 10);
+  }
+
+  // Prevent tooltip from going off-screen at the bottom
+  if (top + tipHeight > viewportHeight - 10) {
+    top = viewportHeight - tipHeight - 10;
+  }
+
+  // Apply the correct position
+  tip.style.left = `${left}px`;
+  tip.style.top = `${top}px`;
+  tip.style.visibility = "visible";
   tip.style.opacity = 1;
-
-  let left, top;
-
-  // Position the tooltip below and to the right of the button, with added vertical space
-  if (buttonRect.right + tipWidth > viewportWidth - 20) {
-    // If the tooltip would go off the screen to the right, right-align it
-    left = Math.max(10, viewportWidth - tipWidth - 10) + "px";
-    top = buttonRect.bottom + VERTICAL_OFFSET + "px"; 
-  } else {
-    left = buttonRect.right + HORIZONTAL_OFFSET + "px"; // Position slightly to the right of the button
-    top = buttonRect.bottom + VERTICAL_OFFSET + "px"; 
-  }
-
-  // Prevent tooltip from going off the screen vertically
-  if (parseInt(top) + tipHeight > viewportHeight - 10) {
-    top = viewportHeight - tipHeight - 10 + "px";
-  }
-
-  // Apply the final position
-  tip.style.left = left;
-  tip.style.top = top;
 }
 
 // Function to show the tooltip
-function showTooltip(evt, el) {
+async function showTooltip(evt, el) {
   let tip = el.querySelector(".tooltip"); // Reuse existing tooltip if it exists
 
   // If no tooltip exists, create a new one
   if (!tip) {
-    const txt = el.getAttribute("clickyTooltip");
-    if (!txt) return;
-
     tip = document.createElement("div");
     tip.classList.add("tooltip");
-    tip.innerText = txt;
-    tip.setAttribute("aria-live", "assertive"); // Ensure screen reader announces it
-    el.appendChild(tip); // Append tooltip to button
+    // Set aria-live and role for screen reader announcement
+    tip.setAttribute("aria-live", "assertive");
+		tip.setAttribute("role", "alert"); // status =  Less urgent than alert, for some reason it is not read.
+    el.appendChild(tip);
   }
 
-  tip.style.visibility = "visible"; // Make tooltip visible
-  tip.style.opacity = 1; // Fade in effect
+  // Force screen reader to detect change by clearing & re-adding text
+  const txt = el.getAttribute("clickyTooltip");
+  if (!txt) return;
+  tip.innerText = ""; // Clear existing text first
+  tip.style.visibility = "visible"; // Ensure visibility before setting text
+  tip.style.opacity = 1; // Ensure it's not faded out
 
-  updateTooltipPosition(evt, el, tip); // Position immediately on click
+  setTimeout(async () => {
 
-  el.addEventListener("mousemove", (e) => updateTooltipPosition(e, el, tip));
-  el.addEventListener("mouseleave", () => hideTooltip(tip));
+    // Set the tooltip text (forces the aria-live announcement)
+    tip.innerText = txt;
+
+    // Wait for position to be updated before continuing
+    await updateTooltipPosition(evt, el, tip);
+
+    // Listen for mouse move and leave events
+    el.addEventListener("mousemove", (e) => updateTooltipPosition(e, el, tip));
+    el.addEventListener("mouseleave", () => hideTooltip(tip));
+  }, 160); // Small delay to trigger the text update
 }
 
 // Function to hide the tooltip (just make it invisible)
 function hideTooltip(tip) {
+	if (!tip) return;
   tip.style.visibility = "hidden"; // Make the tooltip invisible
   tip.style.opacity = 0; // Hide with fade effect
 }
@@ -2251,21 +2274,24 @@ function hideTooltip(tip) {
 function addUIListeners() {
   for (let button of document.querySelectorAll(".toolTipButton")) {
     button.setAttribute("aria-label", "More info"); // screenreader support
-    button.addEventListener("click", (evt) => {
+    button.addEventListener("click", async (evt) => {
       const el = evt?.target;
       if (!el) return;
-      showTooltip(evt, el); // Show tooltip on click
+      await showTooltip(evt, el); // Show tooltip on click
+      // el.setAttribute("aria-expanded", "true"); // Indicate tooltip is visible
     });
-    button.addEventListener("keyup", (evt) => {
-      if (evt.key === "Enter" || evt.key === " ") {
-        showTooltip(evt, evt.target);
-      }
-    }); // Show tooltip on Enter
+		button.addEventListener("blur", async (evt) => {
+			const el = evt?.target;
+			if (!el) return;
+
+			hideTooltip(el.querySelector(".tooltip"));
+			// el.setAttribute("aria-expanded", "false"); // Indicate tooltip is hidden
+		});		
   }
 
   // activate all write/reply/forward tab listeners.
   for (let button of document.querySelectorAll(".actionTabs button")) {
-    button.addEventListener("click", activateTab);
+    button.addEventListener("click", activateTabEvent);
   }
 
   // add bool preference reactions
@@ -2555,9 +2581,19 @@ function addUIListeners() {
     SmartTemplates.Settings.sendMail(SUPPORT_MAIL);
   });
 
+	document
+    .querySelector("#categories")
+    .setAttribute("aria-label", SmartTemplates.Util.getBundleString("aria.settings.nav"));
   function activateTab(li) {
     let activePage = li.getAttribute("page") || null;
     li.setAttribute("selected", true);
+    li.setAttribute("aria-checked", true);
+		li.setAttribute(
+      "aria-label",
+      `${li.querySelector(".category-name").textContent} - ${SmartTemplates.Util.getBundleString(
+        "aria.settings.nav.selected"
+      )}`
+    );
     // 1 - hide other pages
 
     // Remove "selected" attribute from other tabs
@@ -2567,6 +2603,8 @@ function addUIListeners() {
       let currentActive;
       if (other.getAttribute("selected")) {
         other.removeAttribute("selected");
+        other.removeAttribute("aria-checked");
+				other.removeAttribute("aria-label");
         currentActive = other.getAttribute("page");
       }
 
@@ -2739,22 +2777,30 @@ async function onLoad() {
 	const mode = params.get("mode") || 
 	      (params.get("composeType") == "snippets" ? "fileTemplates" : null);
 
+	let selectedElement = null; // a11y
 	switch(mode) {
 		case "fileTemplates":
-			SmartTemplates.Settings.selectCategoryMenu("catFileTemplates");
+			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catFileTemplates");
 			break;
 		case "variables":
-			SmartTemplates.Settings.selectCategoryMenu("catVariables");
+			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catVariables");
 			break;
 		case "licenseKey":
-			SmartTemplates.Settings.selectCategoryMenu("catLicense");
+			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catLicense");
 			let txtLicense = getElement('txtLicenseKey');
 			setTimeout(function() {txtLicense.focus();}, 200);
+			break;
+		default:
+			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catAccountTemplates");
 			break;
 	}
 	selectComposeType();
 	
 	SettingsUI.initVersionPanel();
+	if (selectedElement) {
+		// set focus to the document pane?
+		setTimeout(() => { selectedElement.focus(); }, 250);
+	}
 
 }
 

@@ -239,7 +239,12 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
               return await save(fp, jsonData);
           }          
           throw new Error(`fileAccountSettings() unsupported mode: ${mode}`);
-        } 
+        },
+
+        focusDocument: async function (tabId) {
+          this.logDebug("Accessibility: Focus current tab document...", tabId);
+          win.gTabmail.currentTabInfo.browser.focus();
+        }
       }
     }
   };

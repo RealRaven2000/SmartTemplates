@@ -57,6 +57,18 @@
   "any.label": {
     "message": "Beliebige Kopfzeile"
   },
+  "aria.settings.nav": {
+    "message": "Einstellungen Menü  - verwenden Sie die Pfeiltasten zum Navigieren."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Seite ausgewählt."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- drücken Sie Enter, um den Abschnitt aufzuklappen."
+  },
+  "aria.configSettings": {
+    "message": "Erweiterte Konfiguration - für zusätzliche Einstellungen."
+  },
   "attach.label": {
     "message": "Datei als Anhang anfügen"
   },

@@ -64,6 +64,18 @@
   "any.label": {
     "message": "Any Header-line"
   },
+  "aria.settings.nav": {
+    "message": "Settings Pages - use arrow keys to navigate."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Page selected."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- press Enter to open the section."
+  },
+  "aria.configSettings": {
+    "message": "Advanced configuration - for additional settings."
+  },
   "attach.label": {
     "message": "Add file as attachment"
   },
@@ -2041,7 +2053,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Accessibility Enhancement: Make Settings dialog keyboard navigateable [issue 361] {L2}{L1} Made compatible with Thunderbirdx 136.* [issue 331].{L2} {L1} New function: {{%dateformat.current()%}} [issue 356]{L2} {L1} Improvements in Sandboxed JavaScript, more contextual parameters such as $priority and new functions {composer_composeType()} and {composer_composeType()} [issue 357] {L2}{L1} Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text) [issue 338]{L2}"
+    "message": "{L1} Accessibility Enhancement: Make Settings dialog keyboard navigateable [issue 361] {L2}{L1} Made compatible with Thunderbird 136.* [issue 331].{L2} {L1} New function: {{%dateformat.current()%}} [issue 356]{L2} {L1} Improvements in Sandboxed JavaScript, more contextual parameters such as $priority and new functions {composer_composeType()} and {composer_composeType()} [issue 357] {L2}{L1} Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

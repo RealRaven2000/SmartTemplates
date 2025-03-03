@@ -172,7 +172,7 @@ SmartTemplates.Util = {
       s = localized;
     }
     else {
-      s = defaultText;
+      s = id;
       this.logToConsole ("Could not retrieve bundle string: " + id + "");
     }
     return s;

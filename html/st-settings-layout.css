@@ -55,6 +55,9 @@
     min-height 350ms ease-in-out;
   white-space: nowrap;
 }
+#categories > .category a {
+  color: inherit;
+}
 #helpFrame {
   border: none;
   display: block;
@@ -293,7 +296,7 @@ div.btnLicenseContainer #btnLicense {
   #categories {
     margin-top: 30px;
   }
-  #preferencesContainer h2 {
+  #preferencesContainer h1 {
     margin-block: 2px;
     text-align: center;
     font-size: 1.1em;
@@ -334,7 +337,7 @@ div.btnLicenseContainer #btnLicense {
   .buttonLinks button.text-link {
     padding-block: 0.3em !important
   }  
-  #infoPane h2 {display:none}
+  #infoPane h1 {display:none}
   .btnLicenseContainer {
     height: 12px;
   }

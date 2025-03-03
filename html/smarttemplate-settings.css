@@ -11,7 +11,7 @@
     --configColor: rgba(250,40,80, 0.85);
 		--grayedcolor: rgba(250,250,250,0.6);
 		--focusbackcolor: rgb(81, 5, 16);
-		--focuscolor: lightpink;
+		--focuscolor: #ffb4c0; /* lightpink */
   }  
 }
 
@@ -24,7 +24,7 @@
     --activecolor: #FFFFFF;
     --configColor: rgb(140,0,0);
 		--grayedcolor: rgba(10,10,10,0.6);
-		--focusbackcolor: lightpink;
+		--focusbackcolor: #ffb4c0; /* lightpink */
 		--focuscolor: rgb(137, 11, 11);
   }
 }
@@ -86,6 +86,14 @@ p.disclaimer label {
 
 .prefpane h2 {
 	padding-inline: 0.3em;
+}
+
+.prefpane h1 {
+	padding-inline: 0.3em;
+	/* from browser styles h2 */
+	font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xlarge);
+	margin-block: 0.8em; 
 }
 
 /* REPLACEMENTS 
@@ -392,7 +400,7 @@ button.bugsURL:focus {
 	flex-shrink: 0 !important;
 }
 
-h2 a.headerLink {
+h1 a.headerLink {
 	font-size: 0.8em;
 	cursor: pointer;
 	margin-left: 5rem;
@@ -822,8 +830,8 @@ label .flag {
   display: flex;
   flex-direction: row;
   /* fix vertical alignment problems: */
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
 }
 
 #msgIdentity {
@@ -1062,7 +1070,7 @@ label.plain-link:hover::before {
   flex: 1;
 }
 
-/* color problems with buttons in dark sking mode */
+/* color problems with buttons in dark skin mode */
 button {
   color: var(--button-text-color) !important; /* was inherit */
   background-color: var(--button-background-color) !important;
@@ -1072,15 +1080,14 @@ button {
 .hasConfigEvent button.configSettings {
   background-color: transparent;
   border-color: transparent;
+	color: currentColor;
   cursor: pointer;
   display: list-item inline;
   fill: currentColor;
   list-style-position: inside;
-  margin: 0 3px 0 1em;  
   min-width: 24px !important;
   padding: 3px 3px 0 3px;
   width: 24px;
-	color: currentColor;
 }
 .hasConfigEvent button.configSettings::marker {
   fill: currentColor;
@@ -1159,9 +1166,11 @@ button {
 /* developed from filtaquilla's .helpLink */
 button.toolTipButton {
   appearance: none !important;
-  background-image: url('../chrome/content/skin/icons/help.svg') !important;
+  background-image: url('../chrome/content/skin/icons/tooltip.svg') !important;
   background-repeat: no-repeat;
 	background-position: 2px;
+	background-color: transparent !important;
+	border: none !important;
   cursor: pointer;
   margin-block: 1px !important;
 	min-width: unset;
@@ -1170,9 +1179,11 @@ button.toolTipButton {
 }
 
 button.toolTipButton .tooltip {
-  background: white;
+  background-color:  var(--variables-background);
   border: 1px solid #ccc;
+	border-radius: 4px;
   box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+  color:  var(--variables-color);	
   font-size: 0.9em;
   line-height: 20px;
   max-width: 25em;
@@ -1205,3 +1216,16 @@ button.toolTipButton:hover .tooltip {
 .newGroup .areaTemplateParent .toolTipButton {
 	right: 2px;
 }
+
+/* highlight a textbox */
+.highlighted *, .highlighted {
+  background-color: var(--focusbackcolor) !important;
+  color: var(--focuscolor) !important;
+}
+#default_address_format.highlighted {	 
+  border-style: solid !important;
+	border-color: color-mix(in srgb, var(--focuscolor) 70%, transparent) !important;
+	border-width: 1px;
+}
+
+

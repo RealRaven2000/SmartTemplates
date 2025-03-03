@@ -47,37 +47,40 @@
 <div id="preferences-stack" flex="1">
 
   <div class="hbox" id="prefBox" class="mainContent">
-     <!-- new side menu -->
     <div class="vbox" id="pref-category-box">
-      <ul id="categories" class="prefs-menu categories" >
-        <li class="category" id="catAccountTemplates" selected="true" page="smartTemplatePane" tabindex="0">
-          <label class="category-name">__MSG_account.templates__</label>
-        </li>
-        <li class="category" id="catFileTemplates" page="fileTemplatePane" tabindex="0">
-          <label class="category-name">__MSG_fileTemplates.menu__</label>
-        </li>
-        <li class="category" id="catSettingsGeneral" page="globalSettingsPane" tabindex="0">
-          <label class="category-name">__MSG_global.tab__</label>
-        </li>
-        <li class="category" id="catSettingsAdvanced" page="advancedSettingsPane" tabindex="0">
-          <label class="category-name">__MSG_advanced.tab__</label>
-        </li>
-        <li class="category" id="catVariables" page="variablesPane" tabindex="0">
-          <label class="category-name">__MSG_variables.tab__</label>
-        </li>
-        <li class="category" id="catExamples" page="examplesPane" tabindex="0">
-          <label class="category-name">__MSG_examples.tab__</label>
-        </li>        
-        <li class="category" id="catInfo" page="infoPane" tabindex="0">
-          <label class="category-name">__MSG_about.cap__</label>
-        </li>
-        <li class="category" id="catLicense" page="licensePane" tabindex="0">
-          <label class="category-name">__MSG_license-tab__</label>
-        </li>
-        <li class="category" id="catSupport" page="supportPane" tabindex="0">
-          <label class="category-name">__MSG_support.tab__</label>
-        </li>        
-      </ul>
+      <nav>
+        <ul id="categories" class="prefs-menu categories" >
+          <li class="category" id="catAccountTemplates" selected="true" aria-checked="true" page="smartTemplatePane" tabindex="0"
+            >
+            <a class="category-name">__MSG_account.templates__</a>
+          </li>
+          <li class="category" id="catFileTemplates" page="fileTemplatePane" tabindex="0">
+            <a class="category-name">__MSG_fileTemplates.menu__</a>
+          </li>
+          <li class="category" id="catSettingsGeneral" page="globalSettingsPane" tabindex="0">
+            <a class="category-name">__MSG_global.tab__</a>
+          </li>
+          <li class="category" id="catSettingsAdvanced" page="advancedSettingsPane" tabindex="0">
+            <a class="category-name">__MSG_advanced.tab__</a>
+          </li>
+          <li class="category" id="catVariables" page="variablesPane" tabindex="0">
+            <a class="category-name">__MSG_variables.tab__</a>
+          </li>
+          <li class="category" id="catExamples" page="examplesPane" tabindex="0">
+            <a class="category-name">__MSG_examples.tab__</a>
+          </li>        
+          <li class="category" id="catInfo" page="infoPane" tabindex="0">
+            <a class="category-name">__MSG_about.cap__</a>
+          </li>
+          <li class="category" id="catLicense" page="licensePane" tabindex="0">
+            <a class="category-name">__MSG_license-tab__</a>
+          </li>
+          <li class="category" id="catSupport" page="supportPane" tabindex="0">
+            <a class="category-name">__MSG_support.tab__</a>
+          </li>        
+        </ul>
+      </nav>
+
       <div class="spacer" flex="1"></div>
       <div class="sidebar-footer-list">
         <ul id="sidebarcategories" class="categories sidebarcategories" >
@@ -89,7 +92,7 @@
     <div class="vbox" id="preferencesContainer">
 
       <div id="fileTemplatePane" class="page prefpane">
-        <h2>__MSG_fileTemplates.menu__</h2>
+        <h1>__MSG_fileTemplates.menu__</h1>
         <div id="templateTools" class="inlineToolbar hbox" mode="icons">  
           <label><span class="flag">🇬🇧</span> Documentation: </label>
           <span class="navigateable">
@@ -106,11 +109,11 @@
         <div id="fileTemplatesBox" class="vbox">
           <div id="fileTemplatesTabs" class="tabbox" flex="1">
             <nav class="tabs actionTabs">
-              <ul>
-                <li><button id="file.newTab"      class="NewTab active">__MSG_new.tab__</button></li>
-                <li><button id="file.respondTab"  class="RespondTab" >__MSG_rsp.tab__</button></li>
-                <li><button id="file.forwardTab"  class="ForwardTab" >__MSG_fwd.tab__</button></li>
-                <li><button id="file.snippetsTab" class="SnippetsTab" >Smart Snippets</button></li>
+              <ul role="tablist">
+                <li role="tab" aria-selected=true><button id="file.newTab" class="NewTab active">__MSG_new.tab__</button></li>
+                <li role="tab"><button id="file.respondTab"  class="RespondTab">__MSG_rsp.tab__</button></li>
+                <li role="tab"><button id="file.forwardTab"  class="ForwardTab">__MSG_fwd.tab__</button></li>
+                <li role="tab"><button id="file.snippetsTab" class="SnippetsTab">__MSG_snippets.head__</button></li>
               </ul>
             </nav>
             
@@ -118,9 +121,10 @@
               <section class="newGroup fileTemplatePanel vbox active" id="new-fileTemplates">
                 <fieldset flex="1" orient="vertical" class="transparent">
                   <div flex="1" class="vfield vbox">
-                    <label>__MSG_fileTemplates.listHead__
+                    <!-- use tabindex to force screenreader to read the heading -->
+                    <legend><h2 tabindex="0">__MSG_fileTemplates.listHead__</h2>
                       <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.new.tooltip__"></button>
-                    </label>
+                    </legend>
                     <select id="templateList_new" 
                       class="fileTemplateList" flex="1" size="12"> 
                     </select>
@@ -144,8 +148,8 @@
                       <div id="fileSettings" >
                         <div>
                           <div class="settingsRow templateFilePicker">
-                            <label>__MSG_fileTemplates.file.path__</label>
-                            <input type="text" id="txtTemplatePath">
+                            <label for="txtTemplatePath">__MSG_fileTemplates.file.path__</label>
+                            <input type="text" id="txtTemplatePath" autocomplete="off">
                             <button id="btnPickTemplate" 
                               class="iconLabelButton" 
                               title="__MSG_fileTemplates.file.open__">
@@ -155,16 +159,18 @@
                         </div>
                         <div>
                           <div class="settingsRow">
-                            <label>__MSG_fileTemplates.file.title__</label>
+                            <label for="txtTemplateTitle">__MSG_fileTemplates.file.title__</label>
                             <input
                               type="text"
                               id="txtTemplateTitle" 
+                              autocomplete="off"
                               title="__MSG_fileTemplates.file.title.tooltip__"
                               >
-                            <label>__MSG_template.category__:</label>
+                            <label for="txtTemplateCategory">__MSG_template.category__:</label>
                             <input
                               type="text"
                               id="txtTemplateCategory"
+                              autocomplete="off"
                               title="__MSG_template.category.tooltip__">
                             <button id="helpSnippets"
                               class="iconButton category-icon"
@@ -182,9 +188,9 @@
               <section class="replyGroup fileTemplatePanel vbox" id="rsp-fileTemplates">
                 <fieldset flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
-                    <label>__MSG_fileTemplates.listHead__
+                    <legend><h2 tabindex="0">__MSG_fileTemplates.listHead__</h2>
                       <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.rsp.tooltip__"></button>
-                    </label>
+                    </legend>
                     <select id="templateList_rsp" 
                       class="fileTemplateList" flex="1" size="12">
                     </select>
@@ -196,11 +202,9 @@
               <section class="forwardGroup fileTemplatePanel vbox" id="fwd-fileTemplates">
                 <fieldset  flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
-                    <label>__MSG_fileTemplates.listHead__
-                      <button
-                        class="toolTipButton"
-                        clickyTooltip="__MSG_fileTemplates.fwd.tooltip__"></button>
-                    </label>
+                    <legend><h2 tabindex="0">__MSG_fileTemplates.listHead__</h2>
+                      <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.fwd.tooltip__"></button>
+                    </legend>
                     <select id="templateList_fwd" 
                       class="fileTemplateList" flex="1" size="12">
                     </select>
@@ -211,7 +215,7 @@
               <!-- ######## Content [Snippets] File Tab ######## -->
               <section class="snippetsGroup fileTemplatePanel vbox" id="snippets-fileTemplates">
                 <fieldset  flex="1" class="transparent">
-                  <legend>__MSG_snippets.head__</legend>
+                  <legend><h2 tabindex="0">__MSG_snippets.head__</h2></legend>
                   <div flex="1" class="vfield vbox">
                     <label>__MSG_snippets.label__</label>
                     <select id="templateList_snippets" 
@@ -229,7 +233,7 @@
       </div>
 
       <div id="globalSettingsPane" class="page prefpane">
-        <h2>__MSG_global.tab__</h2>
+        <h1>__MSG_global.tab__</h1>
 
         <fieldset class="transparent">
           <legend>__MSG_grpMailContent__</legend>
@@ -238,13 +242,15 @@
               <label class="textboxLabel" for="txtBreaks">__MSG_lineBreaksOnTop__</label>
               <input type="text" 
                     id="txtBreaks"
+                    autocomplete="off"
                     data-pref-name="extensions.smartTemplate4.breaksAtTop"
                     instantApply="true">
             </div>
             <div class="hbox labeledBox">
-              <label class="textboxLabel">__MSG_defaultCharset__:</label>
+              <label class="textboxLabel" for="txtCharset">__MSG_defaultCharset__:</label>
               <input type="text" 
                     id="txtCharset"
+                    autocomplete="off"
                     data-pref-name="extensions.smartTemplate4.defaultCharset"
                     instantApply="true">
               <button
@@ -331,7 +337,7 @@
               <button id="fontSmaller"></button>
               <span class="spacer" id="fontButtonSpacer" > </span>
               <button id="fontLarger"></button>
-              <input type="text" id="txtFontSize"
+              <input type="text" id="txtFontSize" autocomplete="off"
                 data-pref-name="extensions.smartTemplate4.font.size"
                 disabled="true">
             </div>
@@ -341,7 +347,7 @@
       </div>
 
       <div id="advancedSettingsPane" class="page prefpane">
-        <h2>__MSG_advanced.tab__</h2>
+        <h1>__MSG_advanced.tab__</h1>
 
         <fieldset class="transparent">
           <legend>__MSG_grpNameRules__</legend>
@@ -356,14 +362,14 @@
                   data-pref-name="extensions.smartTemplate4.names.guessFromMail">__MSG_guessNameFromMail__</label>
             <div class="hbox" align="center">
               <label control="default_address_format">__MSG_defaultMimeFormat__</label>
-              <input type="text" id="default_address_format" size="50"
+              <input type="text" id="default_address_format" size="50" autocomplete="off"
                 data-pref-name="extensions.smartTemplate4.mime.defaultFormat">
               <button class="toolTipButton" clickyTooltip="__MSG_defaultMimeFormat_tip__"></button>
             </div>
             <div class="hbox" align="center">
               <label value=""
                      control="txtNameDelimiter">__MSG_addressDelimiter__</label>
-              <input type="text" id="txtNameDelimiter"
+              <input type="text" id="txtNameDelimiter" autocomplete="off"
                     data-pref-name="extensions.smartTemplate4.names.delimiter">
               <button class="toolTipButton" clickyTooltip="__MSG_addressDelimiter.tip__"></button>
             </div>
@@ -430,7 +436,7 @@
       </div>
 
       <div id="examplesPane" class="page prefpane">
-        <h2>__MSG_examples.tab__ __MSG_examples.supportSite__<a class="headerLink" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_openInBrowser__</a></h2>
+        <h1>__MSG_examples.tab__ __MSG_examples.supportSite__<a class="headerLink" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_openInBrowser__</a></h1>
         <!--
  load url later: https://smarttemplates.quickfolders.org/templates.html
         -->
@@ -443,7 +449,7 @@
       </div>
 
       <div id="infoPane" class="page prefpane">
-        <h2>__MSG_about.cap__</h2>
+        <h1>__MSG_about.cap__</h1>
 
         <div class="vbox" flex="1">
           <div class="hbox aboutHeader" flex="1" align="center" > 
@@ -477,17 +483,17 @@
       </div>
 
       <div id="licensePane" class="page prefpane">
-        <h2>__MSG_license-tab__</h2>
+        <h1>__MSG_license-tab__</h1>
 
         <description>__MSG_label.insertLicense__</description>
         <div class="hbox" id="licenseContainer" align="start">
           <textarea id="txtLicenseKey" class="licenseKey"
             flex="2" multiline="true" rows="5"
-            title="__MSG_label.insertLicense.tooltip__"></textarea>
+            title="__MSG_label.insertLicense.tooltip__" tabindex="0"></textarea>
         </div>
         <div class="hbox opposite-align">
-          <button id="btnPasteLicense">__MSG_button.pasteLicense__</button>
           <button id="btnValidateLicense">__MSG_button.validateLicense__</button>
+          <button id="btnPasteLicense">__MSG_button.pasteLicense__</button>
         </div>
         <hr class="licenseSeparator">
         <div class="hbox" id="validationDate" align="center">
@@ -539,7 +545,7 @@
       
 
       <div id="supportPane" class="page prefpane">
-        <h2>__MSG_support.tab__</h2>
+        <h1>__MSG_support.tab__</h1>
         <div class="vbox" id="supportPaneContent">
           <fieldset flex="1" class="transparent">
             <legend>__MSG_support.title__</legend>
@@ -557,9 +563,10 @@
               <div class="hbox">
                 <label class="textboxLabel">__MSG_support.subject__</label>
                 <input type="text" 
-                      id="txtSupportSubject" 
-                      flex="1" 
-                      maxlength="60"
+                  autocomplete="off"
+                  id="txtSupportSubject" 
+                  flex="1" 
+                  maxlength="60"
                 >
               </div>
               <label>__MSG_support.mail.instructions__</label>
@@ -590,22 +597,25 @@
       </div>
 
       <div id="smartTemplatePane" orient="vertical" flex="1" class="page prefpane pageActive">
-        <h2>__MSG_account.templates__ <a class="headerLink" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_examples.openBrowser__</a></h2>
+        <h1>__MSG_account.templates__ <a class="headerLink" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_examples.openBrowser__</a></h1>
         <div id="decksContainer" flex="1" class="vbox">
 
           <!-- ######## Creating Identity Dropdown Box ######## --> 
           <div align="center" id="identityToolBar" class="hbox">
             
-            <label id="identityLabel" class="hasConfigEvent" for="msgIdentity">
-              <button class="configSettings leading category-icon"></button>
-              __MSG_account__:
-            </label>
-            <select id="msgIdentity"
-              class="identity-menulist"
-              flex="1"
-              tabindex="0">
-              <option class="identity-popup-item" value="common">__MSG_account.common__</option>
-            </select>
+            <span class="hasConfigEvent hbox">
+              <label id="identityLabel" for="msgIdentity">
+                __MSG_account__:
+              </label>
+              <select id="msgIdentity"
+                class="identity-menulist"
+                flex="1"
+                tabindex="0">
+                <option class="identity-popup-item" value="common">__MSG_account.common__</option>
+              </select>
+              <button class="configSettings leading" aria-label="__MSG_aria.configSettings__"></button>
+            </span>
+
             <div id="templateTools2" class="inlineToolbar hbox" mode="icons" >
               <span class="navigateable">
               <button id="btnRefreshAccounts"
@@ -646,10 +656,10 @@
                 <deck id="default.deckB" flex="1" orient="vertical" class="settingsDeck">
                   <div id="deckB.nodef" class="tabbox deck-selected" flex="1" orient="vertical" selectedIndex="0" >
                     <nav  id="deckB.nodef.tabs" class="tabs actionTabs">
-                      <ul>
-                        <li><button id="newTab" class="NewTab active" composeType="new">__MSG_new.tab__</button></li>
-                        <li><button id="respondTab" class="RespondTab" composeType="rsp">__MSG_rsp.tab__</button></li>
-                        <li><button id="forwardTab" class="ForwardTab"  composeType="fwd">__MSG_fwd.tab__</button></li>
+                      <ul role="tablist">
+                        <li role="tab" aria-selected=true ><button id="newTab" class="NewTab active" composeType="new">__MSG_new.tab__</button></li>
+                        <li role="tab"><button id="respondTab" class="RespondTab" composeType="rsp" >__MSG_rsp.tab__</button></li>
+                        <li role="tab"><button id="forwardTab" class="ForwardTab"  composeType="fwd" >__MSG_fwd.tab__</button></li>
                       </ul>
                     </nav>
       
@@ -661,8 +671,8 @@
                             <label>
                               <input type="checkbox" id="new" class="settingDisabler"
                                 data-pref-name="extensions.smartTemplate4.common.new">__MSG_new.label__
-                              <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
                             </label>
+                            <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
                           </div>
                           
                           <label>__MSG_template__</label>
@@ -678,11 +688,13 @@
                                     data-pref-name="extensions.smartTemplate4.common.newhtml">
                                 __MSG_useHTML__
                             </label>
-                            <label><input type="checkbox" id="newnbr" class="indent"
-                                data-pref-name="extensions.smartTemplate4.common.newnbr">
-                                __MSG_replacebr.label__
+                            <div class="hbox">
+                              <label><input type="checkbox" id="newnbr" class="indent"
+                                  data-pref-name="extensions.smartTemplate4.common.newnbr">
+                                  __MSG_replacebr.label__
+                              </label>
                               <button class="toolTipButton" clickyTooltip="__MSG_replacebr.tooltip__"></button>
-                            </label>
+                            </div>
                           </div>
                         </vbox>
                         
@@ -695,8 +707,8 @@
                             <label> <input type="checkbox" id="rsp" class="settingDisabler"
                                 data-pref-name="extensions.smartTemplate4.common.rsp">
                                 __MSG_rsp.label__
-                              <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
                             </label>
+                            <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
                           </div>
                           <label>__MSG_template__</label>
                           <div class="indent vbox" flex="1">
@@ -736,11 +748,13 @@
                                 preference-editable="true"></textarea>
                               <button class="toolTipButton" clickyTooltip="__MSG_quoteHeaderBox.tip__"></button>
                             </div>
-                            <label> <input type="checkbox" id="rsphead"
-                              data-pref-name="extensions.smartTemplate4.common.rsphead">
-                              __MSG_rsphead.label__
+                            <div class="hbox">
+                              <label> <input type="checkbox" id="rsphead"
+                                data-pref-name="extensions.smartTemplate4.common.rsphead">
+                                __MSG_rsphead.label__
+                              </label>
                               <button class="toolTipButton" clickyTooltip="__MSG_quoteHeader.replace.tip__"></button>
-                            </label>
+                            </div>
                           </div>
                         </div>
                       </section>
@@ -752,8 +766,8 @@
                             <label><input type="checkbox" id="fwd" class="settingDisabler"
                               data-pref-name="extensions.smartTemplate4.common.fwd">
                               __MSG_fwd.label__
-                              <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
                             </label>
+                            <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
                           </div>
 
                           <label>__MSG_template__</label>
@@ -774,13 +788,15 @@
                             __MSG_useHTML__
                           </label>
 
-                          <label><input type="checkbox" id="fwdnbr"
-                            class="indent"
-                            title="__MSG_replacebr.tooltip__"
-                            data-pref-name="extensions.smartTemplate4.common.fwdnbr">
-                            __MSG_replacebr.label__
+                          <div class="hbox">
+                            <label><input type="checkbox" id="fwdnbr"
+                              class="indent"
+                              title="__MSG_replacebr.tooltip__"
+                              data-pref-name="extensions.smartTemplate4.common.fwdnbr">
+                              __MSG_replacebr.label__
+                            </label>
                             <button class="toolTipButton" clickyTooltip="__MSG_replacebr.tooltip__"></button>
-                          </label>
+                          </div>
 
                           <label>__MSG_quoteHeaderBox.label__</label>
                           <div class="indent vbox" flex="1">
@@ -794,11 +810,13 @@
                                 preference-editable="true"></textarea>
                               <button class="toolTipButton" clickyTooltip="__MSG_quoteHeaderBox.tip__"></button>
                             </div>
-                            <label> <input type="checkbox" id="fwdhead"
-                              data-pref-name="extensions.smartTemplate4.common.fwdhead">
-                              __MSG_fwdhead.label__
+                            <div class="hbox">
+                              <label> <input type="checkbox" id="fwdhead"
+                                data-pref-name="extensions.smartTemplate4.common.fwdhead">
+                                __MSG_fwdhead.label__
+                              </label>
                               <button class="toolTipButton" clickyTooltip="__MSG_quoteHeader.replace.tip__"></button>
-                            </label>
+                            </div>
                           </div>
 
                         </div>

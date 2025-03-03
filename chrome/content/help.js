@@ -4,90 +4,55 @@
   var isDebugLegacyOption;
 
   function containerClick(el, evt) {
-    var code = evt.target;
-    
-    if (code && code.classList.contains("helpchapter")) {
+    const element = evt.target;
+    if (!element) return;
+    // clicked a heading. none of our business
+    if (element && element.classList.contains("helpchapter")) {
       return;
     }
-    
-    if (typeof code !='undefined') {
-      var classList = code.classList,
-          isAddressConfig = ((classList && classList.contains('config_default')) || (code.parentElement && code.parentElement.classList.contains('config_default')));
-      const tagName = code.tagName?.toLowerCase();
-      if (tagName == 'code' || tagName == 'a' || isAddressConfig) {
-        var exists = true,
-            element = document.getElementById('ST4Dispatcher');
-        if (!element) {
-          exists = false;
-          element = document.createElement("CodeEventDispatcher");
-          element.id = 'ST4Dispatcher';
-        }
 
-        switch(tagName) {
-          case 'code':
-            /* this used to use innerHTML unnecessarily */
-            element.setAttribute("codeWord", code.innerText); // now, add the payload
-            element.setAttribute("class", code.className);    // class="noWrite" = cannot be used in new mail!!
-            break;
-          case 'span': case 'lbl':
-            if (isAddressConfig) {
-              element.removeAttribute("codeWord");
-              element.setAttribute("class", code.className);
-            }
-            let wrnDefault = document.getElementById("wrnDefaultFormat");
-            if (wrnDefault) {
-              alert(wrnDefault.textContent);
-            }
-            break;
-          case 'a':
-          default: // probably anchor
-            element.setAttribute("href", code.getAttribute('href'));
-            break;
-        }
-
-        if (!exists) {
-          document.documentElement.appendChild(element);
-        }
-
-        // make a new custom event
-
-        // for web ext we need to do runtim message instead.
-        
-        switch(tagName) {
-          case 'code':
-            if (!browser) {
-              const customEvent = new CustomEvent("SmartTemplate4CodeWord",
-                {bubbles:true, cancelable:false}
-              );
-            }
-
-            if (browser) {
-              var dispatch = "SmartTemplate4CodeWord";
-              browser.runtime.sendMessage(dispatch);
-              return;
-            }
-
-
-            // window.parent.document.dispatchEvent(customEvent);
-            // customEvent.initEvent("SmartTemplate4CodeWord", true, false);
-            break;
-          case 'span': case 'lbl':
-            if (isAddressConfig) {
-              const customEvent = document.createEvent("Events");
-              customEvent.initEvent("SmartTemplate4CAD", true, false);
-            }              
-            break;
-          default:
-            {
-              const customEvent = document.createEvent("Events");
-              customEvent.initEvent("SmartTemplate4Website", true, false);
-            }
-            break;
-        }
-        // window.parent.document.dispatchEvent(customEvent);
-        element.dispatchEvent(customEvent);
+    const classList = element.classList,
+      isAddressConfig =
+        (classList && classList.contains("config_default")) ||
+        (element.parentElement && element.parentElement.classList.contains("config_default"));
+    const tagName = element.tagName?.toLowerCase();
+    if (tagName == "code" || tagName == "a" || isAddressConfig) {
+      switch (tagName) {
+        case "code":
+          if (browser) {
+            var dispatch = {
+              msg: "SmartTemplate4CodeWord",
+              code: element.innerText,
+              class: element.className,
+            };
+            browser.runtime.sendMessage(dispatch);
+            return;
+          }
+          break;
+        case "button":
+        case "span":
+        case "lbl":
+          if (browser) {
+            var dispatch = {
+              msg: "SmartTemplate4CAD",
+              code: element.closest("code")?.innerText,
+            };
+            browser.runtime.sendMessage(dispatch);
+            return;
+          }
+          break;
+        default:
+          if (browser) {
+            var dispatch = {
+              msg: "SmartTemplate4Website",
+              href: element.getAttribute("href"),
+            };
+            browser.runtime.sendMessage(dispatch);
+            return;
+          }
+          break;
       }
-
+      // window.parent.document.dispatchEvent(customEvent);
     }
   }
   
@@ -119,9 +84,12 @@
         }
       });
       el.classList.remove("collapsed");
-      hd.scrollIntoView({ behavior: "smooth", block: "start" });
+      // hd.scrollIntoView({ behavior: "smooth", block: "start" });
       hd.classList.add("expanded");
       hd.setAttribute("aria-expanded", "true");
+      setTimeout(() => {
+        hd.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
     } else {
       el.classList.add("collapsed");
       hd.classList.remove("expanded");

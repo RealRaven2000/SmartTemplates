@@ -260,21 +260,22 @@ h1.helpchapter.expanded {
 
 /* style the gear emoji to go to standard address format settings... */
 .config_default {
-  cursor: pointer;
-  border: 1px solid rgba(50,50,50,0.5);
+  background-image: url('icons/settings-simple.svg') !important;
+  background-repeat: no-repeat;
+  background-origin: initial;
+  background-position: 3px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: 1px solid var(--button-border-color);
   border-radius: 3px;
-  font-size: 1.6em;
-  text-shadow: 0 0 0 rgba(109,140,200,0.9);
-  vertical-align: middle;
+  cursor: pointer;
+  font-size: 0.9em;
+  padding-left: 22px;
+  padding-block: 0.3em;
 }
 .config_default:hover {
   background-color: rgba(80,80,80,0.15);
   border: 1px solid rgba(40,40,40,0.9);
-}
-.config_default lbl {
-  color: var(--color-config-label);
-  font-size: 0.625em;
-  vertical-align: text-top;
 }
 
 /** anchor tags */

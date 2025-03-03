@@ -161,6 +161,18 @@
             "description": "saving only: stem of file name"
           }
         ]        
+      },
+      {
+        "name": "focusDocument",
+        "type": "function",
+        "description": "accessibility: focus settings document",
+        "parameters": [
+          {
+            "name": "tabInfo",
+            "type": "any",
+            "description": "tab info (may not be useful)"
+          }
+        ]
       }
 
    ]
