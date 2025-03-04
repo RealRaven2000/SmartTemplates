@@ -76,6 +76,9 @@
   "aria.configSettings": {
     "message": "Advanced configuration - for additional settings."
   },
+  "aria.moreInfo": {
+    "message": "More info"
+  },
   "attach.label": {
     "message": "Add file as attachment"
   },
@@ -1925,6 +1928,9 @@
   },
   "template.category": {
     "message": "Category"
+  },
+  "template.category.docs": {
+    "message": "Visit the support site to read about Categories (English)"
   },
   "template.category.other": {
     "message": "Others"

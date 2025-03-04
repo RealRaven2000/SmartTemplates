@@ -69,6 +69,9 @@
   "aria.configSettings": {
     "message": "Erweiterte Konfiguration - für zusätzliche Einstellungen."
   },
+  "aria.moreInfo": {
+    "message": "Weitere Infos"
+  },
   "attach.label": {
     "message": "Datei als Anhang anfügen"
   },
@@ -417,7 +420,7 @@
     "message": "Lokale Datei öffnen"
   },
   "fileTemplates.file.path": {
-    "message": "Template Pfad:"
+    "message": "Pfad der Vorlage:"
   },
   "fileTemplates.file.picker": {
     "message": "Vorlagendatei auswählen…"
@@ -426,7 +429,7 @@
     "message": "Titel:"
   },
   "fileTemplates.file.title.tooltip": {
-    "message": "Wird im Template Menü angezeigt."
+    "message": "Wird im Vorlagen-Menü angezeigt."
   },
   "fileTemplates.fwd.tooltip": {
     "message": "Liste von externen Dateien die beim 'Weiterleiten' genutzt werden können."
@@ -1102,7 +1105,7 @@
     "message": "Signatur bei Identitätswechsel ersetzen"
   },
   "replacebr.tooltip": {
-    "message": "Aktivieren Sie diese Option, um Zeilenumbrüche im Template automatisch in <br>-Tags zu konvertieren. Im HTML-Modus ist es besser, <br>-Tags manuell hinzuzufügen oder <p> für Absätze zu verwenden, anstatt sich auf diese Option zu verlassen."
+    "message": "Aktivieren Sie diese Option, um Zeilenumbrüche in ihrer Vorlage automatisch in <br>-Tags zu konvertieren. Im HTML-Modus ist es besser, <br>-Tags manuell hinzuzufügen oder <p> für Absätze zu verwenden, anstatt sich auf diese Option zu verlassen."
   },
   "replacebr.label": {
     "message": "Zeilenumbrüche mit <br> ersetzen"
@@ -1830,6 +1833,9 @@
   },
   "template.category": {
     "message": "Kategorie"
+  },
+  "template.category.docs": {
+    "message": "Besuchen Sie die Support-Seite, um mehr über Kategorien zu erfahren (Englisch)"
   },
   "template.category.other": {
     "message": "Sonstige"

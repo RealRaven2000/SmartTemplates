@@ -2272,8 +2272,9 @@ function hideTooltip(tip) {
 
 // add UI event listeners
 function addUIListeners() {
+	const lblMore = SmartTemplates.Util.getBundleString("aria.moreInfo");
   for (let button of document.querySelectorAll(".toolTipButton")) {
-    button.setAttribute("aria-label", "More info"); // screenreader support
+    button.setAttribute("aria-label", lblMore); // screenreader support
     button.addEventListener("click", async (evt) => {
       const el = evt?.target;
       if (!el) return;

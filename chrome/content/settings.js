@@ -1572,8 +1572,10 @@ SmartTemplate4.Settings = {
     const util = SmartTemplate4.Util;
     if (el.getAttribute("collapsed") != false) {
       el.setAttribute("collapsed", false);
-      if (!silent)
+      if (!silent) {
         util.popupAlert (util.ADDON_TITLE, el.textContent);
+			}
+			el.setAttribute("area-hidden","false");
     }
   } ,
   
@@ -1650,11 +1652,20 @@ SmartTemplate4.Settings = {
 		return "";
 	},
 	      
-  // this function is called on load and from validateLicenseInOptions
+
+	// this function is called on load and from validateLicenseInOptions
   // was decryptLicense
   updateLicenseOptionsUI: async function updateLicenseOptionsUI(silent = false) {
 		const util = SmartTemplate4.Util,
-          showValidationMessage = SmartTemplate4.Settings.showValidationMessage;
+      showValidationMessage = SmartTemplate4.Settings.showValidationMessage;
+
+		function deactivate(el, collapsed) {
+			el.setAttribute("collapsed", collapsed);
+			el.setAttribute(
+				"area-hidden",
+				collapsed ? true : false
+			);
+		}
 					
     let getElement = document.getElementById.bind(document),
         validationPassed       = getElement('validationPassed'),
@@ -1671,13 +1682,13 @@ SmartTemplate4.Settings = {
         decryptedMail = SmartTemplate4.Util.licenseInfo.email, 
         decryptedDate = SmartTemplate4.Util.licenseInfo.expiryDate,
 				result = SmartTemplate4.Util.licenseInfo.status;
-		validationStandard.setAttribute("collapsed", true);
-    validationPassed.setAttribute("collapsed", true);
-    validationFailed.setAttribute("collapsed", true);
-    validationExpired.setAttribute("collapsed", true);
-		validationInvalidAddon.setAttribute("collapsed", true);
-    validationInvalidEmail.setAttribute("collapsed", true);
-    validationEmailNoMatch.setAttribute("collapsed", true);
+		deactivate(validationStandard, true);
+		deactivate(validationPassed, true);
+    deactivate(validationFailed, true);
+    deactivate(validationExpired, true);
+		deactivate(validationInvalidAddon, true);
+    deactivate(validationInvalidEmail, true);
+    deactivate(validationEmailNoMatch, true);
 		validationDate.setAttribute("collapsed", false);
 		validationDateSpace.setAttribute("collapsed", false);
     this.enablePremiumConfig(false); //also disables standard features.

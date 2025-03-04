@@ -174,7 +174,7 @@
                               title="__MSG_template.category.tooltip__">
                             <button id="helpSnippets"
                               class="iconButton category-icon"
-                              title="__MSG_template.category.tooltip__"
+                              title="__MSG_template.category.docs__"
                               ></button>
                           </div>
                         </div>
@@ -281,7 +281,7 @@
             <label class="hasConfigEvent">
               <input type="checkbox" id="chkSignature" class="contextConfig"
                 data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_parseSignature__
-              <button class="configSettings category-icon"></button>
+              <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
               <button
                 class="toolTipButton"
                 clickyTooltip="__MSG_parseSignature.tip__"></button>
@@ -317,12 +317,14 @@
           <legend>__MSG_grpUI__</legend>
           <div class="vbox">
             <div class="hbox">
-              <label class="hasConfigEvent"><input type="checkbox" id="chkStatusButton"
-                    class="contextConfig"
-                    data-pref-name="extensions.smartTemplate4.showStatusIcon">__MSG_displayStatusIcon__
-                <button class="configSettings category-icon"></button>
+              <span class="hasConfigEvent hbox">
+                <label><input type="checkbox" id="chkStatusButton"
+                      class="contextConfig"
+                      data-pref-name="extensions.smartTemplate4.showStatusIcon">__MSG_displayStatusIcon__
+                </label>  
                 <span class="spacer"></span>
-              </label>
+                <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
+              </span>
               <select id="iconType"
                 data-pref-name="extensions.smartTemplate4.statusIconLabelMode"
                 flex="5">
@@ -361,14 +363,14 @@
             <label><input type="checkbox" id="chkGuessName"
                   data-pref-name="extensions.smartTemplate4.names.guessFromMail">__MSG_guessNameFromMail__</label>
             <div class="hbox" align="center">
-              <label control="default_address_format">__MSG_defaultMimeFormat__</label>
+              <label for="default_address_format">__MSG_defaultMimeFormat__</label>
               <input type="text" id="default_address_format" size="50" autocomplete="off"
                 data-pref-name="extensions.smartTemplate4.mime.defaultFormat">
               <button class="toolTipButton" clickyTooltip="__MSG_defaultMimeFormat_tip__"></button>
             </div>
             <div class="hbox" align="center">
               <label value=""
-                     control="txtNameDelimiter">__MSG_addressDelimiter__</label>
+                     for="txtNameDelimiter">__MSG_addressDelimiter__</label>
               <input type="text" id="txtNameDelimiter" autocomplete="off"
                     data-pref-name="extensions.smartTemplate4.names.delimiter">
               <button class="toolTipButton" clickyTooltip="__MSG_addressDelimiter.tip__"></button>
@@ -413,13 +415,15 @@
         <fieldset class="transparent">
           <legend>__MSG_grpTroubleShooting__</legend>
           <div class="hbox">
-            <label class="hasConfigEvent"><input type="checkbox" id="chkDebug"
-                class="contextConfig" data-pref-name="extensions.smartTemplate4.debug">
-              __MSG_debug.mode__
-              <button class="configSettings category-icon"></button>
+            <div class="hasConfigEvent hbox">
+              <label><input type="checkbox" id="chkDebug"
+                  class="contextConfig" data-pref-name="extensions.smartTemplate4.debug">
+                __MSG_debug.mode__
+              </label>
               <span class="spacer"></span>
-              <button class="toolTipButton" clickyTooltip="__MSG_debug.tip__"></button>
-            </label>
+              <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
+              <button class="toolTipButton" clickyTooltip="__MSG_debug.tip__"></button>           
+            </div>
             <label><input type="checkbox" id="chkBackgroundParser"
                   data-pref-name="extensions.smartTemplate4.BackgroundParser">API compliant parser [issue 184]</label>
             <label id="grpHideExamples"><input type="checkbox" id="chkHideExamples"
@@ -498,10 +502,10 @@
         <hr class="licenseSeparator">
         <div class="hbox" id="validationDate" align="center">
           <label id="licenseDateLabel">__MSG_label.licenseValid__</label>
-          <label id="licenseDate">-</label>
+          <label id="licenseDate" aria-labelledby="licenseDateLabel" aria-live="polite" role="text">-</label>
         </div>
         <hr id="validationDateSpace" class="licenseSeparator">
-        <div class="vbox" id="validationResults">
+        <div class="vbox" id="validationResults"  aria-live="assertice" role="text">
           <description id="validationPassed" class="niceFont" collapsed="true">__MSG_licenseValidation.passed__</description>
           <description id="validationStandard" class="niceFont" collapsed="true">__MSG_licenseValidation.standard__</description>
           <description id="validationFailed" class="niceFont licenseError" collapsed="true">__MSG_licenseValidation.failed__</description>
