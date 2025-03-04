@@ -2244,7 +2244,7 @@ async function showTooltip(evt, el) {
   if (!txt) return;
   tip.innerText = ""; // Clear existing text first
   tip.style.visibility = "visible"; // Ensure visibility before setting text
-  tip.style.opacity = 1; // Ensure it's not faded out
+  tip.style.opacity = 0.05; // Ensure it's not faded out - we will set this to 1 in updateTooltipPosition!
 
   setTimeout(async () => {
 
