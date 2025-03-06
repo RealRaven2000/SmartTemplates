@@ -1551,8 +1551,6 @@ async function main() {
   messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/st-customizetoolbar.js");
   
   /* add a background script to the settings window - needed for browser element! */
-  messenger.WindowListener.registerWindow("chrome://smarttemplate4/content/settings.xhtml", "chrome/content/scripts/st-settings.js");  
-  
   
   /*
   TbSync "As manipulating Thunderbirds own preference page is probably not going to be possible with 

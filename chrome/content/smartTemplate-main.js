@@ -236,6 +236,7 @@ END LICENSE BLOCK
     # Added more contextual parameters for sandbox: "$priority", "$cc", "$bcc"
     # [issue 357] new functions composer.composeCase and composer.composeType
     # [issue 338] Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text)
+    # [issue 363] Retire legacy settings dialog
 
 
 
@@ -1095,7 +1096,6 @@ var SmartTemplate4 = {
 
     <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
       <menupopup>
-        <menuitem id="smartTemplates-settings-legacy" label="__MSG_preferences_legacy__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-setNewsFlag" label="Set News Flag!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuseparator class="st4templateSeparator"></menuseparator>
         <menuitem id="smartTemplates-headerMenuAPI" label="Create message Actions (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>

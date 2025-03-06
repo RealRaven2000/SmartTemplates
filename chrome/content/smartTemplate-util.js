@@ -1557,33 +1557,13 @@ SmartTemplate4.Util = {
   },
 
   viewLicense: function () {
-    if (SmartTemplate4.Preferences.getMyBoolPref("settings.html")) {
-      // new prefs
-      let prefsObject = {
-        func: "openPrefs",
-        page: "licenseKey",
-      };
-      SmartTemplate4.Util.notifyTools.notifyBackground(prefsObject);
-      return;
-    }
-    // legacy..
-    let win = SmartTemplate4.Util.Mail3PaneWindow,
-      params = {
-        inn: { mode: "licenseKey", message: "", instance: win.SmartTemplate4 },
-        out: null,
-      };
-    // open options and open the last tab!
-    // first param = identity (not set, unimportant)
-    // second param = mode to open correct setting
-    win
-      .openDialog(
-        "chrome://smarttemplate4/content/settings.xhtml",
-        "Preferences",
-        "chrome,titlebar,centerscreen,dependent,resizable,alwaysRaised ",
-        null,
-        params
-      )
-      .focus();
+    // new prefs
+    let prefsObject = {
+      func: "openPrefs",
+      page: "licenseKey",
+    };
+    SmartTemplate4.Util.notifyTools.notifyBackground(prefsObject);
+    return;
   },
 
   // HTML only:
@@ -3247,79 +3227,18 @@ SmartTemplate4.Util = {
     if (el.classList.contains("alert") || el.classList.contains("alertExpired")) {
       isLicenseWarning = true;
     }
-    // Open HTML Settings instead - TEST
-    // extensions.smartTemplate4.settings.html = true to open new settings dlg from status button
-    if (SmartTemplate4.Preferences.getMyBoolPref("settings.html")) {
-      SmartTemplate4.Util.logIssue213("Show new HTML help dialog.");
-      let serverKey = this.currentServerInfo();
-      let prefsObject = {
-        func: "openPrefs",
-        server: serverKey,
-      };
-      if (isLicenseWarning) {
-        prefsObject.page = "licenseKey";
-      }
-      SmartTemplate4.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`);
-      SmartTemplate4.Util.notifyTools.notifyBackground(prefsObject);
-      return;
-    }
-
-    // legacy dialog
-
-    if (el.classList.contains("newsflash")) {
-      SmartTemplate4.Util.openPreferences(); // will show splash screen instead.
-      return;
-    }
-
-    let params = {
-      mode: isLicenseWarning ? "licenseKey" : "",
-      instance: window.SmartTemplate4,
+    SmartTemplate4.Util.logIssue213("Show new HTML help dialog.");
+    let serverKey = this.currentServerInfo();
+    let prefsObject = {
+      func: "openPrefs",
+      server: serverKey,
     };
-    SmartTemplate4.Util.openPreferences(params);
-  },
-
-  openPreferences: async function (params) {
-    // open legacy preferences
-    if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
-      SmartTemplate4.Util.viewSplashScreen();
-      SmartTemplate4.Preferences.setMyBoolPref("hasNews", false);
-      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" });
-      return;
+    if (isLicenseWarning) {
+      prefsObject.page = "licenseKey";
     }
-    let win = SmartTemplate4.Util.Mail3PaneWindow;
-    let el = params?.element;
-    if (
-      el &&
-      el.classList &&
-      (el.classList.contains("alertExpired") || el.classList.contains("checkLicense"))
-    ) {
-      SmartTemplate4.Util.viewLicense();
-      return;
-    }
-    let inParams = {
-      mode: params.mode || "",
-      instance: win.SmartTemplate4,
-    };
-    if (params.hasOwnProperty("tab")) {
-      inParams.tab = params.tab;
-    }
-    if (params.hasOwnProperty("message")) {
-      inParams.message = params.message;
-    }
-    if (params.hasOwnProperty("composeType")) {
-      inParams.composeType = params.composeType;
-    }
-
-    window.openDialog(
-      "chrome://SmartTemplate4/content/settings.xhtml",
-      "Preferences",
-      "chrome,titlebar,toolbar,dependent,centerscreen,resizable",
-      SmartTemplate4,
-      {
-        inn: inParams,
-        out: null,
-      }
-    );
+    SmartTemplate4.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`);
+    SmartTemplate4.Util.notifyTools.notifyBackground(prefsObject);
+    return;
   },
 
   viewSplashScreen: function () {

@@ -50,14 +50,10 @@ async function onLoad(activatedWhileWindowOpen) {
 
     switch (el.id) {
       case "smartTemplates-checklicense":
-        if (SmartTemplates.Preferences.getMyBoolPref("settings.html")) {
-          SmartTemplates.Util.notifyTools.notifyBackground({ 
-            func: "openPrefs", 
-            page: "licenseKey"
-          });
-        } else {
-          SmartTemplates.Util.openPreferences({element: el});
-        }
+        SmartTemplates.Util.notifyTools.notifyBackground({ 
+          func: "openPrefs", 
+          page: "licenseKey"
+        });
         break;
         
       /* use last template */
@@ -102,47 +98,30 @@ async function onLoad(activatedWhileWindowOpen) {
         break;
       case "smartTemplates-settings-legacy": // fall-through
       case "smartTemplates-settings":
-        // this will be always true once legacy settings are retired.
-        let modernApiSettings = SmartTemplates.Preferences.getMyBoolPref("settings.html");
-        if (params.option && params.option.includes("legacy") || el.id == "smartTemplates-settings-legacy")  {
-          // force legacy
-          modernApiSettings = false; 
+        const serverKey =  SmartTemplates.Util.currentServerInfo();
+        let prefsObject = {
+          func: "openPrefs", 
+          server: serverKey
         }
-
-        if (modernApiSettings) { // new prefs
-          const serverKey =  SmartTemplates.Util.currentServerInfo();
-          let prefsObject = {
-            func: "openPrefs", 
-            server: serverKey
-          }
-          let isLicenseWarning = false;
-          if (SmartTemplates.Util.licenseInfo.isExpired)  {
-            isLicenseWarning=true;
-          }
-          if (params.mode) {
-            prefsObject.page = params.mode;
-          }
-          if (isLicenseWarning) {
-            prefsObject.page = "licenseKey";
-          }
-          if (params.option && params.option.includes("disableLicensePage")) {
-            isLicenseWarning = false;
-          }
-          if (params.composeType) {
-            prefsObject.composeType = params.composeType;
-          }
-          SmartTemplates.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`)
-          SmartTemplates.Util.notifyTools.notifyBackground(prefsObject);
-          return;
+        let isLicenseWarning = false;
+        if (SmartTemplates.Util.licenseInfo.isExpired)  {
+          isLicenseWarning=true;
         }
-        // legacy prefs
-        if (params.hasOwnProperty("composeType")) {
-          SmartTemplates.Util.openPreferences(params);
-        } else {
-          SmartTemplates.Util.openPreferences({element:el});
+        if (params.mode) {
+          prefsObject.page = params.mode;
         }
-        break;
-
+        if (isLicenseWarning) {
+          prefsObject.page = "licenseKey";
+        }
+        if (params.option && params.option.includes("disableLicensePage")) {
+          isLicenseWarning = false;
+        }
+        if (params.composeType) {
+          prefsObject.composeType = params.composeType;
+        }
+        SmartTemplates.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`)
+        SmartTemplates.Util.notifyTools.notifyBackground(prefsObject);
+        return;
       case "smartTemplates-settings-new":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs" });
         break;
@@ -169,13 +148,8 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Util.showStationeryHelpPage(params.anchor);
         break;
       case "smartTemplates-variables":
-        // SmartTemplates.Util.logIssue213("Show Variables Tab");
-        if (SmartTemplates.Preferences.getMyBoolPref("settings.html")) {
-          SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs", page: "variables" });
-        } else {
-          SmartTemplates.Util.openPreferences({element: null, mode: "variables"});
-        }
-        SmartTemplates.Util.showVariablesPage();
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs", page: "variables" });
+        // SmartTemplates.Util.showVariablesPage();
         break;
       case "smartTemplates-premium":
         SmartTemplates.Util.showPremiumFeatures();

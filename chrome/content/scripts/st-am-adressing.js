@@ -1,9 +1,7 @@
 // Likely Obsolete for THunderbird 78 
 // Web Extensions will probably not be allowed to modify Thunderbird Options. :(
   
-
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-accounts.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-accounts.css");
