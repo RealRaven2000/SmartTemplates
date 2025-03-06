@@ -84,7 +84,7 @@
       <div class="spacer" flex="1"></div>
       <div class="sidebar-footer-list">
         <ul id="sidebarcategories" class="categories sidebarcategories" >
-          <li class="category" id="catLegacyPrefs"><label class="category-name">__MSG_preferences_legacy__</label></li>
+<!-- RETIRED:         <li class="category" id="catLegacyPrefs"><label class="category-name">__MSG_preferences_legacy__</label></li> -->
         </ul>
       </div>
     </div>
@@ -123,7 +123,7 @@
                   <div flex="1" class="vfield vbox">
                     <!-- use tabindex to force screenreader to read the heading -->
                     <legend><h2 tabindex="0">__MSG_fileTemplates.listHead__</h2>
-                      <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.new.tooltip__"></button>
+                      <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.tooltips.new__"></button>
                     </legend>
                     <select id="templateList_new" 
                       class="fileTemplateList" flex="1" size="12"> 
@@ -189,7 +189,7 @@
                 <fieldset flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
                     <legend><h2 tabindex="0">__MSG_fileTemplates.listHead__</h2>
-                      <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.rsp.tooltip__"></button>
+                      <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.tooltips.rsp__"></button>
                     </legend>
                     <select id="templateList_rsp" 
                       class="fileTemplateList" flex="1" size="12">
@@ -203,7 +203,7 @@
                 <fieldset  flex="1" class="transparent">
                   <div flex="1" class="vfield vbox">
                     <legend><h2 tabindex="0">__MSG_fileTemplates.listHead__</h2>
-                      <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.fwd.tooltip__"></button>
+                      <button class="toolTipButton" clickyTooltip="__MSG_fileTemplates.tooltips.fwd__"></button>
                     </legend>
                     <select id="templateList_fwd" 
                       class="fileTemplateList" flex="1" size="12">
@@ -260,9 +260,9 @@
           </div>
         </fieldset>
 
-        <fieldset class="transparent" id="defaultTemplateBehaviorGrp">
-          <legend>__MSG_defaultTemplate__</legend>
-          <label>__MSG_defaultTemplate.behavior__</label>
+        <fieldset class="transparent" id="defaultTemplateBehaviorGrp" aria-labelledby="defaultTemplateLegend defaultTemplateBehaviorDesc">
+          <legend id="defaultTemplateLegend">__MSG_defaultTemplate__</legend>
+          <label id="defaultTemplateBehaviorDesc">__MSG_defaultTemplate.behavior__</label>
           <label for="useAccountTemplate">
             <input type="radio" id="useAccountTemplate" name="defaultTemplateBehavior" 
               value="1">__MSG_defaultTemplate.useAccount__</label>
@@ -278,15 +278,17 @@
           <div class="vbox">
             <label><input type="checkbox" id="chkRemoveSig"
               data-pref-name="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits">__MSG_replaceSignature__</label>
-            <label class="hasConfigEvent">
-              <input type="checkbox" id="chkSignature" class="contextConfig"
-                data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_parseSignature__
-              <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
-              <button
-                class="toolTipButton"
-                clickyTooltip="__MSG_parseSignature.tip__"></button>
-              <span class="spacer"></span>
-            </label>
+            <span class="hasConfigEvent hbox">
+              <label>
+                <input type="checkbox" id="chkSignature" class="contextConfig"
+                  data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_parseSignature__
+                </label>
+                <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
+                <button
+                  class="toolTipButton"
+                  clickyTooltip="__MSG_parseSignature.tip__"></button>
+                <span class="spacer"></span>
+            </span>
             
               <label><input type="checkbox"
                   data-pref-name="extensions.smartTemplate4.signature.replaceLF.plaintext.br">__MSG_replaceBRinSignature.label__</label>
@@ -489,9 +491,9 @@
       <div id="licensePane" class="page prefpane">
         <h1>__MSG_license-tab__</h1>
 
-        <description>__MSG_label.insertLicense__</description>
+        <description id="licenseKeyDescription">__MSG_label.insertLicense__</description>
         <div class="hbox" id="licenseContainer" align="start">
-          <textarea id="txtLicenseKey" class="licenseKey"
+          <textarea id="txtLicenseKey" class="licenseKey" aria-labelledby="licenseKeyDescription"
             flex="2" multiline="true" rows="5"
             title="__MSG_label.insertLicense.tooltip__" tabindex="0"></textarea>
         </div>
@@ -501,11 +503,12 @@
         </div>
         <hr class="licenseSeparator">
         <div class="hbox" id="validationDate" align="center">
-          <label id="licenseDateLabel">__MSG_label.licenseValid__</label>
-          <label id="licenseDate" aria-labelledby="licenseDateLabel" aria-live="polite" role="text">-</label>
+          <label id="licenseDateLabel" for="licenseDate">__MSG_label.licenseValid__</label>
+          <input type="text" id="licenseDate" readonly aria-readonly="true" tabindex="0" 
+            aria-describedby="licenseDateLabel" role="representation">
         </div>
         <hr id="validationDateSpace" class="licenseSeparator">
-        <div class="vbox" id="validationResults"  aria-live="assertice" role="text">
+        <div class="vbox" id="validationResults"  aria-live="assertive" role="region" tabindex="0">
           <description id="validationPassed" class="niceFont" collapsed="true">__MSG_licenseValidation.passed__</description>
           <description id="validationStandard" class="niceFont" collapsed="true">__MSG_licenseValidation.standard__</description>
           <description id="validationFailed" class="niceFont licenseError" collapsed="true">__MSG_licenseValidation.failed__</description>
@@ -521,7 +524,7 @@
           <fieldset id="premiumConfig" >
             <legend>__MSG_premiumConfig__</legend>
             <div class="hbox">
-              <label id="lnkShowPremium" class="plain-link" 
+              <label id="lnkShowPremium" class="plain-link" tabindex="0" role="link"
                 title="https://smarttemplates.quickfolders.org/">__MSG_label.premiumFeaturesSite__</label>
             </div>
           </fieldset>
@@ -532,11 +535,10 @@
             <div class="hbox">
               <label><input type="checkbox" id="chkSilentUpdates" 
                 data-pref-name="extensions.smartTemplate4.silentUpdate">__MSG_silentUpdates__
+              </label>
               <button
                 class="toolTipButton"
                 clickyTooltip="__MSG_silentUpdates.tip__"></button>
-              </label> 
-                    
             </div>
             <div class="hbox buttonLinks">
               <button id="btnNewsSplash" class="showSplash">__MSG_updates.news__</button>
@@ -683,6 +685,7 @@
                           <div class="indent vbox areaTemplateParent" flex="1">
                             <textarea id="newmsg" flex="1"
                               class="templateBox templateWrite"
+                              aria-label="__MSG_template__ - __MSG_new.tab__:"
                               multiline="true" 
                               data-pref-name="extensions.smartTemplate4.common.newmsg"
                               preference-editable="true"></textarea>
@@ -720,6 +723,7 @@
                               <textarea 
                                 id="rspmsg"
                                 class="templateBox template"
+                                aria-label="__MSG_template__ - __MSG_rsp.tab__:"
                                 multiline="true"
                                 flex="1"
                                 data-pref-name="extensions.smartTemplate4.common.rspmsg"
@@ -746,6 +750,7 @@
                               <textarea 
                                 id="rspheader"
                                 class="templateBox quote"
+                                aria-label="__MSG_template__ - __MSG_fwd.tab__:"
                                 multiline="true"
                                 flex="1"
                                 data-pref-name="extensions.smartTemplate4.common.rspheader"

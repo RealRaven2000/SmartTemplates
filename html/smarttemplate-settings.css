@@ -1076,6 +1076,8 @@ button {
   background-color: var(--button-background-color) !important;
 }
 
+
+
 /** config buttons **/
 .hasConfigEvent button.configSettings {
   background-color: transparent;
@@ -1119,6 +1121,11 @@ button {
 	background-color: var(--in-content-box-background);
 	border: 1px transparent;
 	align-self:  stretch;
+}
+
+/* pink box "hugs" contents */
+.hbox.hasConfigEvent {
+	width: max-content; 
 }
 
 .areaQuoteParent textarea {
@@ -1166,6 +1173,7 @@ button {
 /* developed from filtaquilla's .helpLink */
 button.toolTipButton {
   appearance: none !important;
+	align-self: center;
   background-image: url('../chrome/content/skin/icons/tooltip.svg') !important;
   background-repeat: no-repeat;
 	background-position: 2px;

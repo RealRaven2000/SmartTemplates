@@ -1641,7 +1641,7 @@ SmartTemplates.Settings = {
     licenseDateLbl.textContent = txtGracePeriod;
     licenseDateLbl.classList.add('important');
     licenseDate.classList.remove('valid'); // [issue 170]
-    licenseDate.textContent = "";
+    licenseDate.value = "";
   },	
 
   // [issue 170] allow license extension
@@ -1732,7 +1732,7 @@ SmartTemplates.Settings = {
 						this.showValidationMessage(validationPassed, silent);
 						this.enablePremiumConfig(true);
 					}
-          licenseDate.textContent = niceDate;
+          licenseDate.value = niceDate;
           licenseDate.classList.add('valid'); // [issue 170]
           licenseDateLabel.textContent = SmartTemplates.Util.getBundleString("label.licenseValid");
           break;
@@ -1766,7 +1766,7 @@ SmartTemplates.Settings = {
           break;
         case "Expired":
           licenseDateLabel.textContent = SmartTemplates.Util.getBundleString("st.licenseValidation.expired");
-          licenseDate.textContent = niceDate;
+          licenseDate.value = niceDate;
           this.showValidationMessage(validationExpired, false); // always show
           break;
         case "MailNotConfigured":
@@ -2697,12 +2697,14 @@ function addUIListeners() {
   }
 
 
+	/*
   document.getElementById("catLegacyPrefs").addEventListener("click", async (event) => {
     messenger.runtime.sendMessage({ command: "showLegacyPreferences" });
     // close this tab
     let mytab = await browser.tabs.getCurrent();
     browser.tabs.remove(mytab.id);
   });
+	*/
 
   // replace SmartTemplate4.Util.showAboutConfig command handlers
   addConfigEvent(document.getElementById("identityLabel"), "extensions.smartTemplate4.identities");

@@ -51,6 +51,13 @@
   color: rgb(0,120,0);
 }
 
+#licenseDate[readonly] {
+	appearance: none;
+  border: none;
+  background: transparent; 
+
+}
+
 /* [issue 170] allow license extension by clicking on valid date */
 #licenseDate.valid {
   cursor: pointer;
