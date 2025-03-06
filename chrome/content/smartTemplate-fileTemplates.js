@@ -257,7 +257,6 @@ SmartTemplate4.fileTemplates = {
     SmartTemplate4.Util.logDebug("checkModifications", evt);
   } ,
   
-  // uses global variables LastInput from settings.js!
 	onSelect: async function(rlb) {
     SmartTemplate4.Util.logDebug("onSelect", rlb);
     if (LastInput.listbox == rlb) {
@@ -999,14 +998,6 @@ SmartTemplate4.fileTemplates = {
               option: "disableLicensePage"
             }
           );
-          /* LEGACY SETTINGS
-          const params = {inn:{mode:"fileTemplates",tab:-1, message: "", instance: win.SmartTemplate4, composeType: composeType}, out:null};
-          win.openDialog('chrome://smarttemplate4/content/settings.xhtml', 
-            'Preferences', 
-            'chrome,titlebar,toolbar,centerscreen,dependent,resizable',
-            null,
-            params);
-            */
           return false; 
         }, 
         { capture:true } , 
