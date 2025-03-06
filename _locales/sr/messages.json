@@ -410,23 +410,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Ово ће бити приказано у менију за избор шаблона."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Списак екстерних датотека шаблона који се могу покренути са дугмета 'Проследи'."
-  },
   "fileTemplates.listHead": {
     "message": "Ставке менија шаблона"
   },
   "fileTemplates.menu": {
     "message": "Датотеке шаблона"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Списак екстерних датотека шаблона који се могу покренути са дугмета 'Креирај нову поруку'."
-  },
   "fileTemplates.remove": {
     "message": "Уклони"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Списак екстерних датотека шаблона који се могу покренути са дугмета 'Одговори'."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Списак спољних шаблонских фајлова који се могу покренути из менија шаблона 'Проследи' у SmartTemplates."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Списак спољних шаблонских фајлова који се могу покренути из менија шаблона 'Напиши' у SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Списак спољних шаблонских фајлова који се могу покренути из менија шаблона 'Одговори' у SmartTemplates."
   },
   "fileTemplates.up": {
     "message": "Горе"
@@ -1163,9 +1163,6 @@
   },
   "variables.tab": {
     "message": "Променљиве"
-  },
-  "preferences_legacy": {
-    "message": "Подешавања (старија верзија)"
   },
   "preheader": {
     "message": "Прегледни текст видљив само мобилним поштанским клијентима, који ће бити уметнут на почетку тела е-поште."

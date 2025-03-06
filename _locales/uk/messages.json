@@ -423,23 +423,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Це буде показано в меню вибору шаблону."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Список зовнішніх файлів шаблонів, які можуть бути запущені з кнопки 'вперед'."
-  },
   "fileTemplates.listHead": {
     "message": "Елементи меню шаблонів"
   },
   "fileTemplates.menu": {
     "message": "Файли шаблонів"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Список зовнішніх файлів шаблонів, які можуть бути запущені із кнопки 'Створити нове повідомлення'."
-  },
   "fileTemplates.remove": {
     "message": "Видалити"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Список зовнішніх файлів шаблонів, які можуть бути запущені з кнопки 'Відповісти'."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Список зовнішніх файлів шаблонів, які можна запустити з меню шаблонів 'Переслати' в SmartTemplates."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Список зовнішніх файлів шаблонів, які можна запустити з меню шаблонів 'Написати' в SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Список зовнішніх файлів шаблонів, які можна запустити з меню шаблонів 'Відповісти' в SmartTemplates."
   },
   "fileTemplates.up": {
     "message": "Вгору"
@@ -1197,9 +1197,6 @@
   },
   "variables.tab": {
     "message": "Змінні"
-  },
-  "preferences_legacy": {
-    "message": "Налаштування (стара версія)"
   },
   "preheader": {
     "message": "Текст попереднього перегляду, який видно лише на мобільних поштових клієнтах і буде вставлений в початок тіла електронного листа."

@@ -422,23 +422,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "This will be displayed in the template selection menu."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
   "fileTemplates.listHead": {
     "message": "Mallivalikon kohteet"
   },
   "fileTemplates.menu": {
     "message": "Template Files"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
   "fileTemplates.remove": {
     "message": "Remove"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Luettelo ulkoisista mallipohjatiedostoista, jotka voidaan avata SmartTemplatesin 'Välitä' mallipohjavalikosta."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Luettelo ulkoisista mallipohjatiedostoista, jotka voidaan avata SmartTemplatesin 'Kirjoita' mallipohjavalikosta."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Luettelo ulkoisista mallipohjatiedostoista, jotka voidaan avata SmartTemplatesin 'Vastaa' mallipohjavalikosta."
   },
   "fileTemplates.up": {
     "message": "Up"
@@ -1196,9 +1196,6 @@
   },
   "variables.tab": {
     "message": "Muuttujat"
-  },
-  "preferences_legacy": {
-    "message": "Asetukset (vanha versio)"
   },
   "preheader": {
     "message": "Esikatseluteksti, joka näkyy vain mobiilisähköpostiasiakkaille ja joka lisätään sähköpostin rungon alkuun."

@@ -423,23 +423,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Będzie wyświetlany w menu wyboru szablonu."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Lista zewnętrznych plików szablonów, które można uruchomić z przycisku „Przekaż dalej”."
-  },
   "fileTemplates.listHead": {
     "message": "Elementy menu szablonów"
   },
   "fileTemplates.menu": {
     "message": "Pliki szablonów"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Lista zewnętrznych plików szablonów, które można uruchomić z przycisku „Utwórz nową wiadomość”."
-  },
   "fileTemplates.remove": {
     "message": "Usuń"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Lista zewnętrznych plików szablonów, które można uruchomić z przycisku „Odpowiedz”."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Lista zewnętrznych plików szablonów, które mogą zostać uruchomione z menu szablonów 'Prześlij dalej' SmartTemplates."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Lista zewnętrznych plików szablonów, które mogą zostać uruchomione z menu szablonów 'Pisanie' SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Lista zewnętrznych plików szablonów, które mogą zostać uruchomione z menu szablonów 'Odpowiedz' SmartTemplates."
   },
   "fileTemplates.up": {
     "message": "Góra"
@@ -1179,9 +1179,6 @@
   },
   "variables.tab": {
     "message": "Zmienne"
-  },
-  "preferences_legacy": {
-    "message": "Ustawienia (starsza wersja)"
   },
   "preheader": {
     "message": "Tekst podglądu widoczny tylko dla mobilnych klientów poczty elektronicznej, który zostanie wstawiony na początku treści wiadomości e-mail."

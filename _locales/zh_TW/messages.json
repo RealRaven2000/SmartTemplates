@@ -422,23 +422,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "這將顯示在模板選擇菜單中。"
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "可以從“轉發”按鈕啟動的外部模板文件列表。"
-  },
   "fileTemplates.listHead": {
     "message": "範本選單條目"
   },
   "fileTemplates.menu": {
     "message": "模板文件"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "可以從“創建新消息”按鈕啟動的外部模板文件列表。"
-  },
   "fileTemplates.remove": {
     "message": "消除"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "可以從“回复”按鈕啟動的外部模板文件列表。"
+  "fileTemplates.tooltips.fwd": {
+    "message": "可以從SmartTemplates的‘轉發’模板選單中啟動的外部模板檔案清單。"
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "可以從SmartTemplates的‘寫信’模板選單中啟動的外部模板檔案清單。"
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "可以從SmartTemplates的‘回覆’模板選單中啟動的外部模板檔案清單。"
   },
   "fileTemplates.up": {
     "message": "向上"
@@ -1190,9 +1190,6 @@
   },
   "variables.tab": {
     "message": "變數"
-  },
-  "preferences_legacy": {
-    "message": "設置（舊版本）"
   },
   "preheader": {
     "message": "僅在移動郵件客戶端可見的預覽文本，將插入到電子郵件正文的開頭。"

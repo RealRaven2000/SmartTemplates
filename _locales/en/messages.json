@@ -444,23 +444,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "This will be displayed in the template selection menu."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
   "fileTemplates.listHead": {
     "message": "Template menu entries"
   },
   "fileTemplates.menu": {
     "message": "Template Files"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
   "fileTemplates.remove": {
     "message": "Remove"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
+  "fileTemplates.tooltips.fwd": {
+    "message": "List of external template files that can be launched from the SmartTemplates 'Forward' template menus."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "List of external template files that can be launched from the SmartTemplates 'Write' template menu."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "List of external template files that can be launched from the SmartTemplates 'Reply' template menus."
   },
   "fileTemplates.up": {
     "message": "Up"
@@ -1225,9 +1225,6 @@
   },
   "variables.tab": {
     "message": "Variables"
-  },
-  "preferences_legacy": {
-    "message": "Settings (legacy version)"
   },
   "preheader": {
     "message": "A preview text only visible to mobile mail clients, which will be inserted at the start of the email body."

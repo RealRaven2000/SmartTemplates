@@ -422,23 +422,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Dit wordt in het sjabloonselectiemenu weergegeven."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Lijst van externe sjabloonbestanden die kunnen worden gestart vanaf de knop ‘Doorsturen’."
-  },
   "fileTemplates.listHead": {
     "message": "Sjabloonmenu-items"
   },
   "fileTemplates.menu": {
     "message": "Sjabloonbestanden"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Lijst van externe sjabloonbestanden die kunnen worden gestart vanaf de knop ‘Nieuw bericht opstellen’."
-  },
   "fileTemplates.remove": {
     "message": "Verwijderen"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Lijst van externe sjabloonbestanden die kunnen worden gestart vanaf de knop ‘Beantwoorden’."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Lijst van externe sjabloonbestanden die gestart kunnen worden vanuit de 'Doorstuur' sjabloonmenu's van SmartTemplates."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Lijst van externe sjabloonbestanden die gestart kunnen worden vanuit het 'Schrijf' sjabloonmenu van SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Lijst van externe sjabloonbestanden die gestart kunnen worden vanuit de 'Beantwoord' sjabloonmenu's van SmartTemplates."
   },
   "fileTemplates.up": {
     "message": "Omhoog"
@@ -1175,9 +1175,6 @@
   },
   "variables.tab": {
     "message": "Variabelen"
-  },
-  "preferences_legacy": {
-    "message": "Instellingen (oude versie)"
   },
   "preheader": {
     "message": "Een voorbeeldtekst die alleen zichtbaar is voor mobiele e-mailclients, die aan het begin van het e-maillichaam zal worden ingevoegd."

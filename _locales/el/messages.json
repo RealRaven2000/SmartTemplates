@@ -425,7 +425,7 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Αυτό θα εμφανίζεται στο μενού επιλογής προτύπου."
   },
-  "fileTemplates.fwd.tooltip": {
+  "fileTemplates.tooltips.fwd": {
     "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Προώθηση'."
   },
   "fileTemplates.listHead": {
@@ -434,13 +434,13 @@
   "fileTemplates.menu": {
     "message": "Αρχεία Προτύπων"
   },
-  "fileTemplates.new.tooltip": {
+  "fileTemplates.tooltips.new": {
     "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Δημιουργία νέου μηνύματος'."
   },
   "fileTemplates.remove": {
     "message": "Αφαιρέστε"
   },
-  "fileTemplates.rsp.tooltip": {
+  "fileTemplates.tooltips.rsp": {
     "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Απάντηση'."
   },
   "fileTemplates.up": {
@@ -1202,9 +1202,6 @@
   },
   "variables.tab": {
     "message": "Μεταβλητές"
-  },
-  "preferences_legacy": {
-    "message": "Ρυθμίσεις (παλαιότερη έκδοση)"
   },
   "preheader": {
     "message": "Ένα προεπισκοπήσιμο κείμενο που είναι ορατό μόνο στους φορητούς πελάτες email, το οποίο θα εισαχθεί στην αρχή του σώματος του email."

@@ -425,23 +425,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "To bo prikazano v meniju za izbiro predloge."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete z gumbom 'Posreduj'."
-  },
   "fileTemplates.listHead": {
     "message": "Vnosi v meniju predloge"
   },
   "fileTemplates.menu": {
     "message": "Datoteke predlog"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete z gumbom 'Ustvari novo sporočilo'."
-  },
   "fileTemplates.remove": {
     "message": "Odstrani"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete z gumbom 'Odgovori'."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete iz menijev predlog 'Posreduj naprej' v SmartTemplates."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete iz menija predlog 'Napiši' v SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete iz menijev predlog 'Odgovori' v SmartTemplates."
   },
   "fileTemplates.up": {
     "message": "Gor"
@@ -1184,9 +1184,6 @@
   },
   "variables.tab": {
     "message": "Spremenljivke"
-  },
-  "preferences_legacy": {
-    "message": "Nastavitve (stara različica)"
   },
   "preheader": {
     "message": "Predogledni besedilo, ki je vidno le za mobilne poštne odjemalce, bo vstavljeno na začetek telesa e-pošte."

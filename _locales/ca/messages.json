@@ -422,24 +422,25 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Es mostrarà al menú de selecció de plantilles."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Llista de fitxers de plantilla externs que es poden iniciar des del botó 'Reenvia'."
-  },
   "fileTemplates.listHead": {
     "message": "Entrades del menú de plantilles"
   },
   "fileTemplates.menu": {
     "message": "Arxius de plantilla"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Llista de fitxers de plantilla externs que es poden iniciar des del botó 'Crea un missatge nou'"
-  },
   "fileTemplates.remove": {
     "message": "Elimina"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Llista de fitxers de plantilla externs que es poden iniciar des del botó 'Respon'."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Llista de fitxers de plantilles externes que es poden obrir des dels menús de plantilles 'Reenviar' de SmartTemplates."
   },
+  "fileTemplates.tooltips.new": {
+    "message": "Llista de fitxers de plantilles externes que es poden obrir des del menú de plantilles 'Escriure' de SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Llista de fitxers de plantilles externes que es poden obrir des dels menús de plantilles 'Respondr' de SmartTemplates."
+  },
+
   "fileTemplates.up": {
     "message": "Amunt"
   },
@@ -1193,9 +1194,6 @@
   },
   "variables.tab": {
     "message": "Variablas"
-  },
-  "preferences_legacy": {
-    "message": "Configuració (versió antiga)"
   },
   "preheader": {
     "message": "Un text de visualització prèvia només visible pels clients de correu electrònic mòbils, que s'inserirà al principi del cos del correu electrònic."

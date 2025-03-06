@@ -425,23 +425,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Detta kommer att visas i mallvalsmenyn."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Lista över externa mallfiler som kan startas från knappen \"Vidare\"."
-  },
   "fileTemplates.listHead": {
     "message": "Mallmenyobjekt"
   },
   "fileTemplates.menu": {
     "message": "Mallfiler"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Lista över externa mallfiler som kan startas från knappen \"Skapa nytt meddelande\"."
-  },
   "fileTemplates.remove": {
     "message": "Radera"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Lista över externa mallfiler som kan startas från knappen 'Svara'."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Lista över externa mallfiler som kan startas från SmartTemplates 'Vidarebefordra' mallmenyer."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Lista över externa mallfiler som kan startas från SmartTemplates 'Skriv' mallmeny."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Lista över externa mallfiler som kan startas från SmartTemplates 'Svara' mallmenyer."
   },
   "fileTemplates.up": {
     "message": "Upp"
@@ -1202,9 +1202,6 @@
   },
   "variables.tab": {
     "message": "Variabler"
-  },
-  "preferences_legacy": {
-    "message": "Inställningar (äldre version)"
   },
   "preheader": {
     "message": "En förhandsvisningstext som endast syns i mobila e-postklienter och som kommer att infogas i början av e-postens kroppstext."

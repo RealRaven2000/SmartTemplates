@@ -419,20 +419,20 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Isso será exibido no menu de seleção de modelos."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir do botão 'Avançar'."
-  },
   "fileTemplates.listHead": {
     "message": "Entradas do menu de modelos"
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir do botão 'Criar nova mensagem'."
   },
   "fileTemplates.remove": {
     "message": "Remover"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Lista de arquivos de modelos externos que podem ser iniciados a partir do botão 'Responder'."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir dos menus de modelo 'Encaminhar' do SmartTemplates."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir do menu de modelo 'Escrever' do SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir dos menus de modelo 'Responder' do SmartTemplates."
   },
   "fileTemplates.up": {
     "message": "Acima"
@@ -1160,9 +1160,6 @@
   },
   "variables.tab": {
     "message": "Variáveis"
-  },
-  "preferences_legacy": {
-    "message": "Configurações (versão legada)"
   },
   "preheader": {
     "message": "Um texto de pré-visualização apenas visível para clientes de correio móvel, que será inserido no início do corpo do e-mail."

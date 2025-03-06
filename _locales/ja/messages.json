@@ -419,24 +419,25 @@
   "fileTemplates.file.title.tooltip": {
     "message": "このタイトルはテンプレートの選択メニューに表示されます。"
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "「転送」ボタンから適用できる外部テンプレートファイルの一覧"
-  },
   "fileTemplates.listHead": {
     "message": "テンプレートメニューの項目"
   },
   "fileTemplates.menu": {
     "message": "テンプレートファイル"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "「新規メッセージ作成」ボタンから適用できる外部テンプレートファイルの一覧"
-  },
   "fileTemplates.remove": {
     "message": "除去"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "「返信」ボタンから適用できる外部テンプレートファイルの一覧"
+  "fileTemplates.tooltips.fwd": {
+    "message": "SmartTemplatesの「転送」テンプレートメニューから起動できる外部テンプレートファイルの一覧。"
   },
+  "fileTemplates.tooltips.new": {
+    "message": "SmartTemplatesの「新規作成」テンプレートメニューから起動できる外部テンプレートファイルの一覧。"
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "SmartTemplatesの「返信」テンプレートメニューから起動できる外部テンプレートファイルの一覧。"
+  },
+
   "fileTemplates.up": {
     "message": "上へ"
   },
@@ -1175,9 +1176,6 @@
   },
   "variables.tab": {
     "message": "変数"
-  },
-  "preferences_legacy": {
-    "message": "設定 (旧バージョン)"
   },
   "preheader": {
     "message": "モバイルメールクライアントのみに表示されるプレビューテキストで、電子メールの本文の先頭に挿入されます。"

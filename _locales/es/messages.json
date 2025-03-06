@@ -422,23 +422,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Esto se mostrará en el menú de selección de plantilla."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Adelante'."
-  },
   "fileTemplates.listHead": {
     "message": "Entradas del menú de plantillas"
   },
   "fileTemplates.menu": {
     "message": "Archivos de plantilla"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Crear nuevo mensaje'."
-  },
   "fileTemplates.remove": {
     "message": "Remover"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Responder'."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Lista de archivos de plantillas externas que se pueden abrir desde los menús de plantillas 'Reenviar' de SmartTemplates."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Lista de archivos de plantillas externas que se pueden abrir desde el menú de plantillas 'Escribir' de SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Lista de archivos de plantillas externas que se pueden abrir desde los menús de plantillas 'Responder' de SmartTemplates."
   },
   "fileTemplates.up": {
     "message": "Arriba"
@@ -1154,9 +1154,6 @@
   },
   "templateBox.tip": {
     "message": "Puedes mejorar el template con variables. Abre la página de Variables para más información."
-  },
-  "preferences_legacy": {
-    "message": "Configuración (versión antigua)"
   },
   "preheader": {
     "message": "Un texto de vista previa solo visible para clientes de correo móvil, que se insertará al principio del cuerpo del correo electrónico."

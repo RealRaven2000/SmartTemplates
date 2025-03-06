@@ -413,23 +413,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Questo sarà visualizzato nel menu di selezione del modello."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Elenco di file esterni di modelli che possono essere avviati dal pulsante 'Inoltra'."
-  },
   "fileTemplates.listHead": {
     "message": "Voci di menu del modello"
   },
   "fileTemplates.menu": {
     "message": "File dei modelli"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Elenco di file esterni di modelli che possono essere avviati dal pulsante 'Crea nuovo messaggio'."
-  },
   "fileTemplates.remove": {
     "message": "Rimuovi"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Elenco di file esterni di modelli che possono essere avviati dal pulsante 'Rispondi'."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Elenco dei file di template esterni che possono essere avviati dai menu 'Inoltra' dei template di SmartTemplates."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Elenco dei file di template esterni che possono essere avviati dal menu 'Scrivi' dei template di SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Elenco dei file di template esterni che possono essere avviati dai menu 'Rispondi' dei template di SmartTemplates."
   },
   "fileTemplates.up": {
     "message": "Su"
@@ -1145,9 +1145,6 @@
   },
   "variables.tab": {
     "message": "Variabili"
-  },
-  "preferences_legacy": {
-    "message": "Impostazioni (versione legacy)"
   },
   "preheader": {
     "message": "Un testo di anteprima visibile solo ai client di posta elettronica mobile, che verrà inserito all'inizio del corpo dell'email."

@@ -308,23 +308,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Ini akan ditampilkan di menu pemilihan template."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Daftar file template eksternal yang dapat diluncurkan dari tombol 'Teruskan'."
-  },
   "fileTemplates.listHead": {
     "message": "Entri menu template"
   },
   "fileTemplates.menu": {
     "message": "File Template"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Daftar file template eksternal yang dapat diluncurkan dari tombol 'Buat Pesan Baru'."
-  },
   "fileTemplates.remove": {
     "message": "Hapus"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Daftar file template eksternal yang dapat diluncurkan dari tombol 'Balas'."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Daftar file template eksternal yang dapat diluncurkan dari menu template 'Teruskan' SmartTemplates."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Daftar file template eksternal yang dapat diluncurkan dari menu template 'Tulis' SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Daftar file template eksternal yang dapat diluncurkan dari menu template 'Balas' SmartTemplates."
   },
   "fileTemplates.up": {
     "message": "Naik"
@@ -919,9 +919,6 @@
   },
   "variables.tab": {
     "message": "Variabel"
-  },
-  "preferences_legacy": {
-    "message": "Pengaturan (versi lama)"
   },
   "preheader": {
     "message": "Sebuah teks pratinjau hanya terlihat untuk klien email mobile, yang akan dimasukkan di awal badan email."

@@ -416,23 +416,23 @@
   "fileTemplates.file.title.tooltip": {
     "message": "To se zobrazí v nabídce výběru šablony."
   },
-  "fileTemplates.fwd.tooltip": {
-    "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Vpřed'."
-  },
   "fileTemplates.listHead": {
     "message": "Položky nabídky šablon"
   },
   "fileTemplates.menu": {
     "message": "Soubory šablon"
   },
-  "fileTemplates.new.tooltip": {
-    "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Vytvořit novou zprávu'."
-  },
   "fileTemplates.remove": {
     "message": "Odstranit"
   },
-  "fileTemplates.rsp.tooltip": {
-    "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Odpovědět'."
+  "fileTemplates.tooltips.fwd": {
+    "message": "Seznam externích šablonových souborů, které lze spustit z nabídky šablon 'Přeposlat' v SmartTemplates."
+  },
+  "fileTemplates.tooltips.new": {
+    "message": "Seznam externích šablonových souborů, které lze spustit z nabídky šablon 'Napsat' v SmartTemplates."
+  },
+  "fileTemplates.tooltips.rsp": {
+    "message": "Seznam externích šablonových souborů, které lze spustit z nabídky šablon 'Odpovědět' v SmartTemplates."
   },
   "fileTemplates.up": {
     "message": "Nahoru"
@@ -1187,9 +1187,6 @@
   },
   "variables.tab": {
     "message": "Proměnné"
-  },
-  "preferences_legacy": {
-    "message": "Nastavení (stará verze)"
   },
   "preheader": {
     "message": "Un text de visualització prèvia només visible pels clients de correu electrònic mòbils, que s'inserirà al principi del cos del correu electrònic."
