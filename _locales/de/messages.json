@@ -1933,6 +1933,9 @@
   "url.supportPage.label": {
     "message": "Support Homepage"
   },
+  "urls.linkDescription": {
+    "message": "Diese Schaltflächen öffnen externe Webseiten. Bitte beachten Sie, dass diese Seiten nur auf Englisch verfügbar sind. Sie können den {{linkStart}}Google Übersetzungsdienst{{linkEnd}} nutzen, um sie in Ihre Sprache zu übersetzen."
+  },
   "variable.search": {
     "message": "Einen Suchbegriff eingeben und dann {{Enter}} drücken. Drücken Sie {{F4}}, um die Suche zu wiederholen."
   },

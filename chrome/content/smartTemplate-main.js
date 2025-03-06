@@ -229,7 +229,7 @@ END LICENSE BLOCK
 
   Version 4.11 - WIP
     # made compatible with Tb 136.*
-    # [issue 361] Enhancement: Make Settings dialog more accessible (keyboard / screenreader friendly)
+    # [issue 361] Enhancement: Make Settings dialog accessible (keyboard / screenreader friendly)
     # [issue 358] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
     # [issue 356] new %dateformat.current()%
     #             avoid wrapping variables when called from Sandbox script

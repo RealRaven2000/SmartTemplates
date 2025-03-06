@@ -1362,6 +1362,9 @@
   "url.supportPage.label": {
     "message": "Halaman Dukungan"
   },
+  "urls.linkDescription": {
+    "message": "Tombol ini membuka halaman web eksternal. Harap diperhatikan bahwa halaman ini hanya tersedia dalam bahasa Inggris. Anda dapat menggunakan {{linkStart}}Layanan Terjemahan Google{{linkEnd}} untuk menerjemahkannya ke dalam bahasa Anda."
+  },
   "variable.search": {
     "message": "Masukkan istilah penelusuran dan tekan {{Enter}}. Tekan {{F4}} untuk mengulang pencarian."
   },

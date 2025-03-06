@@ -2034,6 +2034,9 @@
   "url.supportPage.label": {
     "message": "Support Page"
   },
+  "urls.linkDescription": {
+    "message": "These buttons open external web pages. Please note that these pages are only available in English. You can use the {{linkStart}}Google Translate Service{{linkEnd}} to have them translated to your native language."
+  },
   "variable.search": {
     "message": "Enter a search term and press {{Enter}}. Press {{F4}} to repeat search. {{Shift}} + {{F4}} searches backwards."
   },

@@ -454,37 +454,50 @@
         ></iframe>
       </div>
 
-      <div id="infoPane" class="page prefpane">
-        <h1>__MSG_about.cap__</h1>
+      <div id="infoPane" class="page prefpane" role="region" aria-labelledby="aboutHeader">
+        <h1 id="aboutHeader" aria-live="polite">__MSG_about.cap__</h1>
 
-        <div class="vbox" flex="1">
+        <div class="vbox" flex="1" role="region">
           <div class="hbox aboutHeader" flex="1" align="center" > 
             <div class="aboutLogo" id="SmartTemplate4AboutLogo" flex="1"></div>
-            <label id="versionBox">version</label>         
+            <label id="versionBox" tabindex="0">version</label>         
           </div>
 
-          <description class="aboutContent">__MSG_about.label__</description>
+          <div id="versionAnnouncement" role="status" aria-live="assertive" style="position: absolute; height: 1px; width: 1px; margin: -1px; padding: 0; border: none; overflow: hidden;"></div>
+
+          <div id="aboutContentWrapper" role="region" aria-labelledby="aboutHeader">
+            <p class="aboutContent" id="aboutContent" tabindex="0">
+              __MSG_about.label__
+            </p>
+          </div>
+
+
           
           <div class="aboutWrapper" flex="1">
             <div class="vbox" id="aboutBox" class="aboutPersonnel" align="center" flex="1">
               <description>__MSG_creator.label__: Axel Grude</description>
-              <description>__MSG_developer.label__: Axel Grude, Klaus Buecher/opto, Marky Mark DE</description>
+              <description>__MSG_developer.label__: Axel Grude, Marky Mark DE</description>
               <description>__MSG_localized.label__ __MSG_translatorNickname.label__</description>
               <description>__MSG_contributor.label__:</description>
+              <description>Conversion to Tb78: Klaus Buecher / Opto</description>
               <description>Aris - Style Support + Bug Report,</description>
               <description>tool8 - Development, Version 0.7.2 - 0.8.0,</description>
               <description>Peter Macej - Development Support</description>
             </div>
           </div>
 
-          <div class="vbox buttonLinks">
+          <div class="vbox buttonLinks" role="group" aria-labelledby="aboutButtons">
           <!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
-            <button id="aboutShowSplash" class="showSplash text-link">__MSG_showSplash__</button>
-            <button id="aboutSupport" class="supportURL text-link">__MSG_url.supportPage.label__</button>
-            <button id="aboutHomePage" class="homePageURL text-link">__MSG_url.homePage.label__</button>
-            <button id="aboutIssues" class="bugsURL text-link">__MSG_url.bugsAndFeaturesPage.label__</button>
+            <button id="aboutShowSplash" tabindex="0" class="showSplash text-link">__MSG_showSplash__</button>
+            <button id="aboutSupport" class="supportURL text-link" aria-describedby="buttonDescriptionWebPage">__MSG_url.supportPage.label__</button>
+            <button id="aboutHomePage" class="homePageURL text-link" aria-describedby="buttonDescriptionWebPage">__MSG_url.homePage.label__</button>
+            <button id="aboutIssues" class="bugsURL text-link" aria-describedby="buttonDescriptionWebPage">__MSG_url.bugsAndFeaturesPage.label__</button>
           </div>
         </div>
+
+        <p id="externalPagesNote" class="note" role="contentinfo" aria-live="polite" tabindex="0">
+          __MSG_urls.linkDescription__
+        </p>
 
       </div>
 

@@ -1960,6 +1960,9 @@
   "url.supportPage.label": {
     "message": "支援網頁"
   },
+  "urls.linkDescription": {
+    "message": "这些按钮会打开外部网页。请注意，这些页面仅提供英文版本。您可以使用{{linkStart}}Google 翻译服务{{linkEnd}}将其翻译成您的母语。"
+  },
   "variable.search": {
     "message": "輸入搜索詞並按 {{Enter}}。 按 {{F4}} 重複搜索。"
   },

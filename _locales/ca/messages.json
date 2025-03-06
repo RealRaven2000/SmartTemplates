@@ -1979,6 +1979,9 @@
   "url.supportPage.label": {
     "message": "Pagina d'ajuda"
   },
+  "urls.linkDescription": {
+    "message": "Aquests botons obren pàgines web externes. Tingueu en compte que aquestes pàgines només estan disponibles en anglès. Podeu utilitzar el {{linkStart}}servei de traducció de Google{{linkEnd}} per traduir-les al vostre idioma."
+  },
   "variable.search": {
     "message": "Introduïu un terme de cerca i premeu {{Retorn}}. Premeu {{F4}} per repetir la cerca."
   },

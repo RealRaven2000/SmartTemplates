@@ -1924,6 +1924,9 @@
   "url.supportPage.label": {
     "message": "Ayudar al sitio web"
   },
+  "urls.linkDescription": {
+    "message": "Estos botones abren páginas web externas. Tenga en cuenta que estas páginas solo están disponibles en inglés. Puede utilizar el {{linkStart}}servicio de traducción de Google{{linkEnd}} para traducirlas a su idioma."
+  },
   "variable.search": {
     "message": "Ingrese un término de búsqueda y presione {{Enter}}. Pulse {{F4}} para repetir la búsqueda."
   },

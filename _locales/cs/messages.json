@@ -1963,6 +1963,9 @@
   "url.supportPage.label": {
     "message": "Stránka podpory"
   },
+  "urls.linkDescription": {
+    "message": "Tato tlačítka otevírají externí webové stránky. Upozorňujeme, že tyto stránky jsou dostupné pouze v angličtině. Můžete použít {{linkStart}}Google Překladač{{linkEnd}}, abyste si je přeložili do svého jazyka."
+  },
   "variable.search": {
     "message": "Zadejte hledaný výraz a stiskněte {{Enter}}. Stiskněte {{F4}} pro opakování hledání."
   },

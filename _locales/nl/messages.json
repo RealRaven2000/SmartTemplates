@@ -1957,6 +1957,9 @@
   "url.supportPage.label": {
     "message": "Ondersteuningspagina"
   },
+  "urls.linkDescription": {
+    "message": "Deze knoppen openen externe webpagina's. Houd er rekening mee dat deze pagina's alleen in het Engels beschikbaar zijn. U kunt de {{linkStart}}Google Translate-service{{linkEnd}} gebruiken om ze in uw eigen taal te vertalen."
+  },
   "variable.search": {
     "message": "Voer een zoekterm in en druk op {{Enter}}. Druk op {{F4}} om het zoeken te herhalen."
   },

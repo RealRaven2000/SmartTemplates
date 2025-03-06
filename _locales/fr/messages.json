@@ -1975,6 +1975,9 @@
   "url.supportPage.label": {
     "message": "Page d'aide"
   },
+  "urls.linkDescription": {
+    "message": "Ces boutons ouvrent des pages web externes. Veuillez noter que ces pages ne sont disponibles qu'en anglais. Vous pouvez utiliser le {{linkStart}}service de traduction Google{{linkEnd}} pour les traduire dans votre langue."
+  },
   "variable.search": {
     "message": "Saisissez un terme de recherche et appuyez sur {{Entrée}}. Appuyez sur {{F4}} pour répéter la recherche."
   },

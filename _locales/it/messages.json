@@ -1918,6 +1918,9 @@
   "url.supportPage.label": {
     "message": "Pagina supporto"
   },
+  "urls.linkDescription": {
+    "message": "Questi pulsanti aprono pagine web esterne. Si noti che queste pagine sono disponibili solo in inglese. È possibile utilizzare il {{linkStart}}servizio di traduzione di Google{{linkEnd}} per tradurle nella propria lingua."
+  },
   "variable.search": {
     "message": "Inserisci un termine di ricerca e premi {{Invio}}. Premi {{F4}} per ripetere la ricerca."
   },

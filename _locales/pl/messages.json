@@ -1971,6 +1971,9 @@
   "url.supportPage.label": {
     "message": "Strona pomocy"
   },
+  "urls.linkDescription": {
+    "message": "Te przyciski otwierają zewnętrzne strony internetowe. Należy pamiętać, że te strony są dostępne tylko w języku angielskim. Możesz użyć {{linkStart}}usługi Google Translate{{linkEnd}}, aby je przetłumaczyć na swój język."
+  },
   "variable.search": {
     "message": "Wprowadź wyszukiwane hasło i naciśnij {{Enter}}. Naciśnij {{F4}}, aby powtórzyć wyszukiwanie."
   },

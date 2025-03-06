@@ -1978,6 +1978,9 @@
   "url.supportPage.label": {
     "message": "Stran za podporo"
   },
+  "urls.linkDescription": {
+    "message": "Ti gumbi odprejo zunanje spletne strani. Upoštevajte, da so te strani na voljo samo v angleščini. Za prevod v svoj jezik lahko uporabite {{linkStart}}Googlov prevajalnik{{linkEnd}}."
+  },
   "variable.search": {
     "message": "Vnesite iskalni izraz in pritisnite {{Enter}}. Pritisnite {{F4}} za ponovitev iskanja."
   },

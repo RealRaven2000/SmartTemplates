@@ -2002,6 +2002,9 @@
   "url.supportPage.label": {
     "message": "Supportsida"
   },
+  "urls.linkDescription": {
+    "message": "Dessa knappar öppnar externa webbsidor. Observera att dessa sidor endast är tillgängliga på engelska. Du kan använda {{linkStart}}Google Översättningstjänst{{linkEnd}} för att översätta dem till ditt språk."
+  },
   "variable.search": {
     "message": "Ange en sökterm och tryck på {{Enter}}. Tryck på {{F4}} för att upprepa sökningen."
   },

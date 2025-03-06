@@ -988,7 +988,46 @@ SmartTemplates.Settings = {
 		return el;
 	} ,
 
+  patchAbout: function() {
+		/* create note on external pages with a link to translation services */
+		const message = browser.i18n.getMessage("urls.linkDescription"),
+		  // Use a regular expression to capture the part of the string that needs to be a link
+		  linkLabelPattern = /{{linkStart}}(.*?){{linkEnd}}/,
+		  match = message.match(linkLabelPattern);
+		if (!match) {
+			return;
+		}
+		
+		const linkLabel = match[1]; // The text between the {{linkStart}} and {{linkEnd}}
 
+		// Find the positions for before and after the link
+		const linkStartIndex = message.indexOf(match[0]),
+		  linkEndIndex = linkStartIndex + match[0].length;
+
+		// Create a reference to the note element
+		const noteElement = document.getElementById("externalPagesNote");
+		if (noteElement) {
+			// Clear the children of the note element (avoid innerHTML)
+			noteElement.textContent = ""; // Clear existing content
+
+			// Create the text nodes for the parts before and after the link
+			const beforeText = message.slice(0, linkStartIndex),
+			  afterText = message.slice(linkEndIndex),
+			  userLocale = browser.i18n.getUILanguage(),
+			  translateUrl = `https://translate.google.com/?sl=en&tl=${userLocale.split('-')[0]}&op=websites`;
+
+			// Create the <a> tag for the link
+			const link = document.createElement("a");
+			link.href = translateUrl;
+			link.target = "_blank";
+			link.textContent = linkLabel;
+
+			// Append everything to the note element
+			noteElement.appendChild(document.createTextNode(beforeText)); // Before link
+			noteElement.appendChild(link); // The link itself
+			noteElement.appendChild(document.createTextNode(afterText)); // After link
+		}	
+	} ,
 
   onLoad: async function() {
     // let isAdvancedPanelOpen = getPref('expandSettings'); // may be obsolete?
@@ -1008,6 +1047,7 @@ SmartTemplates.Settings = {
 		composeType = params.get("composeType");
 
 		await this.switchIdentity(CurId || 'common', composeType);
+		this.patchAbout();
 
 		// disable Use default (common account)
 		getElement("use_default").setAttribute("disabled", "true");
@@ -1906,11 +1946,11 @@ SmartTemplates.Settings = {
 	} ,
 	
 	sendMail: function (mailto) {
-    const subjectTxt = document.getElementById('txtSupportSubject'),
-		    	supportType = document.getElementById('supportType').value,
-					version = document.getElementById('versionBox').textContent,
-		    	subjectline = supportType + " (" + version + ") " + subjectTxt.value,
-		    	sURL="mailto:" + mailto + "?subject=" + encodeURI(subjectline);
+		const subjectTxt = document.getElementById('txtSupportSubject'),
+			supportType = document.getElementById('supportType').value,
+			version = document.getElementById('versionBox').textContent,
+			subjectline = supportType + " (" + version + ") " + subjectTxt.value;
+		// sURL ="mailto:" + mailto + "?subject=" + encodeURI(subjectline);
 		messenger.compose.beginNew({
 			to: mailto,
 			subject: subjectline
@@ -2696,19 +2736,21 @@ function addUIListeners() {
     });
   }
 
-
-	/*
-  document.getElementById("catLegacyPrefs").addEventListener("click", async (event) => {
-    messenger.runtime.sendMessage({ command: "showLegacyPreferences" });
-    // close this tab
-    let mytab = await browser.tabs.getCurrent();
-    browser.tabs.remove(mytab.id);
-  });
-	*/
-
   // replace SmartTemplate4.Util.showAboutConfig command handlers
   addConfigEvent(document.getElementById("identityLabel"), "extensions.smartTemplate4.identities");
 
+	document.getElementById('versionBox').addEventListener('focus', function(event) {
+		var version = event.target.textContent.trim();
+		// Update the live region to trigger the screen reader announcement
+		document.getElementById('versionAnnouncement').textContent = 
+		  "SmartTemplates is version " + version;
+	});
+
+	// Ensure aboutContent is read when focused
+	document.getElementById('aboutContent').addEventListener('focus', function(event) {
+		event.target.setAttribute("aria-live", "polite");
+	});
+	
   document.getElementById("versionBox").addEventListener("click", (event) => {
     messenger.Utilities.showVersionHistory();
   });
@@ -2805,16 +2847,19 @@ async function onLoad() {
 		setTimeout(() => { selectedElement.focus(); }, 250);
 	}
 
+	browser.runtime.onMessage.addListener((msg, sender) => {
+		// check on the msg
+		if (!msg?.command) return;
+		if (msg.command == "focusSettingsTab") {
+      SmartTemplates.Settings.selectCategoryMenu("catFileTemplates").focus();
+    }
+	});
 }
 
 
 
 addEventListener("load", async (event) => {
-  const manifest = await messenger.runtime.getManifest(),
-        browserInfo = await messenger.runtime.getBrowserInfo(),
-        addonVer = manifest.version;
   onLoad();
-
 });  
 
 addEventListener("unload", async (event) => {

@@ -1948,6 +1948,9 @@
   "url.supportPage.label": {
     "message": "Página de suporte"
   },
+  "urls.linkDescription": {
+    "message": "Esses botões abrem páginas da web externas. Observe que essas páginas estão disponíveis apenas em inglês. Você pode usar o {{linkStart}}serviço de tradução do Google{{linkEnd}} para traduzi-las para o seu idioma."
+  },
   "variable.search": {
     "message": "Digite um termo de pesquisa e pressione {{Enter}}. Pressione {{F4}} para repetir a pesquisa."
   },

@@ -1966,6 +1966,9 @@
   "url.supportPage.label": {
     "message": "Tuen kotisivu"
   },
+  "urls.linkDescription": {
+    "message": "Nämä painikkeet avaavat ulkoisia verkkosivuja. Huomaa, että nämä sivut ovat saatavilla vain englanniksi. Voit käyttää {{linkStart}}Google Kääntäjä -palvelua{{linkEnd}} niiden kääntämiseen omalle kielellesi."
+  },
   "variable.search": {
     "message": "Kirjoita hakutermi ja paina {{Enter}}. Toista haku painamalla {{F4}}."
   },
