@@ -928,41 +928,21 @@ SmartTemplate4.Util = {
   // dedicated function for email clients which don't support tabs
   // and for secured pages (donation page).
   openLinkInBrowserForced: function (linkURI) {
-    const Ci = Components.interfaces,
-      Cc = Components.classes,
-      util = SmartTemplate4.Util;
-    try {
-      this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
-      linkURI = linkURI.includes("smarttemplates.") ? util.makeUriPremium(linkURI) : linkURI;
-
-      let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(
-          Ci.nsIExternalProtocolService
-        ),
-        ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
-        uri = ioservice.newURI(linkURI, null, null);
-      service.loadURI(uri);
-    } catch (e) {
-      this.logDebug("openLinkInBrowserForced (" + linkURI + ") " + e.toString());
-    }
+    SmartTemplate4.Util.notifyTools.notifyBackground({
+      func: "openBrowserLink",
+      url: linkURI,
+    });
   },
 
   // moved from options.js
   // use this to follow a href that did not trigger the browser to open (from a XUL file)
   openLinkInBrowser: function (evt, linkURI) {
-    const Cc = Components.classes,
-      Ci = Components.interfaces,
-      util = SmartTemplate4.Util;
-    let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(
-      Ci.nsIExternalProtocolService
-    );
-    let ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
-    // only add premium info if it is one of the support pages.
-    let uri = linkURI.includes("smarttemplates.") ? util.makeUriPremium(linkURI) : linkURI;
-    service.loadURI(ioservice.newURI(uri, null, null));
+    SmartTemplate4.Util.notifyTools.notifyBackground({
+      func: "openBrowserLink",
+      url: linkURI,
+    });
 
-    if (null !== evt) {
-      evt.stopPropagation();
-    }
+    evt?.stopPropagation();
   },
 
   openURLWithEvent: async function (URL, evt) {

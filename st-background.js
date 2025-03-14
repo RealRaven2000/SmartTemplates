@@ -1358,8 +1358,7 @@ async function main() {
         return ICAL.parse(dataString);
       }
 
-      case "cardbook.getContactsFromSearch":
-      {
+      case "cardbook.getContactsFromSearch": {
         let cards;
         try {
           let queryObject = {
@@ -1367,7 +1366,7 @@ async function main() {
             string: data.text, // new object
             field: data.field, // default "fn" = display name, or  "nickname" or "firstname" or whatever CardBook fields
             term: data?.operator || "Is", // default "Contains", might also be "Is", "Isnt" and others Thunderbird usual terms
-            case: data?.case || "dig" // default "dig", possibilities ["dig", "ignoreCaseIgnoreDiacriticLabel"], ["ig", "ignoreCaseMatchDiacriticLabel"], ["dg", "matchCaseIgnoreDiacriticLabel"], ["g", "matchCaseMatchDiacriticLabel"]
+            case: data?.case || "dig", // default "dig", possibilities ["dig", "ignoreCaseIgnoreDiacriticLabel"], ["ig", "ignoreCaseMatchDiacriticLabel"], ["dg", "matchCaseIgnoreDiacriticLabel"], ["g", "matchCaseMatchDiacriticLabel"]
           };
           if (data.preferredDirId) {
             queryObject.dirPrefId = data.preferredDirId;
@@ -1407,13 +1406,11 @@ async function main() {
           return null;
         }
       }
-      
 
       case "getContactsFromSearch": {
         let cards;
         return null;
       }
-        
 
       case "openPrefs":
         {
@@ -1476,6 +1473,11 @@ async function main() {
           browser.tabs.create({ active: true, url: data.URL });
         }
         break;
+        
+      case "openBrowserLink": {
+        messenger.windows.openDefaultBrowser(data.url);
+        return;
+      }
     }
   });
   
