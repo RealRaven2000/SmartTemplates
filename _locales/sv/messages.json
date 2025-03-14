@@ -64,6 +64,21 @@
   "any.label": {
     "message": "Alla Header-line"
   },
+  "aria.settings.nav": {
+    "message": "Inställningssidor - tryck på Enter för att gå in på sidan."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Sidan vald."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- tryck på Enter för att öppna sektionen."
+  },
+  "aria.configSettings": {
+    "message": "Avancerade inställningar - för ytterligare inställningar."
+  },
+  "aria.moreInfo": {
+    "message": "Mer information"
+  },
   "attach.label": {
     "message": "Lägg till bifogad fil"
   },

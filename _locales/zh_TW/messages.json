@@ -61,6 +61,21 @@
   "any.label": {
     "message": "任何 Header-line"
   },
+  "aria.settings.nav": {
+    "message": "設定頁面 - 按 Enter 鍵進入頁面。"
+  },
+  "aria.settings.nav.selected": {
+    "message": "頁面已選擇。"
+  },
+  "aria.accordion.header.expand": {
+    "message": "- 按 Enter 鍵打開該部分。"
+  },
+  "aria.configSettings": {
+    "message": "進階設定 - 用於其他設定。"
+  },
+  "aria.moreInfo": {
+    "message": "更多資訊"
+  },
   "attach.label": {
     "message": "將文件添加為附件"
   },

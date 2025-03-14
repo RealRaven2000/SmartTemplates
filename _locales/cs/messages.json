@@ -58,6 +58,21 @@
   "any.label": {
     "message": "Jakákoliv řádka hlavičky"
   },
+  "aria.settings.nav": {
+    "message": "Stránky nastavení - stiskněte Enter pro vstup na stránku."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Stránka vybrána."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- stiskněte Enter pro otevření sekce."
+  },
+  "aria.configSettings": {
+    "message": "Pokročilé nastavení - pro další nastavení."
+  },
+  "aria.moreInfo": {
+    "message": "Více informací"
+  },
   "attach.label": {
     "message": "Přidat soubor jako přílohu"
   },

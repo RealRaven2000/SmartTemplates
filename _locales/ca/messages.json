@@ -61,6 +61,21 @@
   "any.label": {
     "message": "Quina entèsta que siá"
   },
+  "aria.settings.nav": {
+    "message": "Pàgines de configuració - prem Enter per accedir a la pàgina."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Pàgina seleccionada."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- premeu Enter per obrir la secció."
+  },
+  "aria.configSettings": {
+    "message": "Configuració avançada - per a configuracions addicionals."
+  },
+  "aria.moreInfo": {
+    "message": "Més informació"
+  },
   "attach.label": {
     "message": "Afegeix un fitxer com a fitxer adjunt"
   },

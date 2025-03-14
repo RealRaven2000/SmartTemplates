@@ -65,7 +65,7 @@
     "message": "Any Header-line"
   },
   "aria.settings.nav": {
-    "message": "Settings Pages - use arrow keys to navigate."
+    "message": "Settings Pages - press Enter to jump into page."
   },
   "aria.settings.nav.selected": {
     "message": "Page selected."

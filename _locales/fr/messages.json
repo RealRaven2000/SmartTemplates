@@ -64,6 +64,21 @@
   "any.label": {
     "message": "N'importe quel entête"
   },
+  "aria.settings.nav": {
+    "message": "Pages des paramètres - appuyez sur Entrée pour accéder à la page."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Page sélectionnée."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- appuyez sur Entrée pour ouvrir la section."
+  },
+  "aria.configSettings": {
+    "message": "Paramètres avancés - pour des paramètres supplémentaires."
+  },
+  "aria.moreInfo": {
+    "message": "Plus d'infos"
+  },
   "attach.label": {
     "message": "Ajouter comme fichier joint"
   },

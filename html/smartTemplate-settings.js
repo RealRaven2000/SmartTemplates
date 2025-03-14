@@ -1671,9 +1671,9 @@ SmartTemplates.Settings = {
 	} ,	
 
 	showTrialDate: function() {
-    let licenseDate = document.getElementById('licenseDate'),
-        licenseDateLbl = document.getElementById('licenseDateLabel'),
-        txtGracePeriod= SmartTemplates.Util.gracePeriodText(licenseInfo.trialDays);
+    const licenseDate = document.getElementById('licenseDate'),
+			licenseDateLbl = document.getElementById('licenseDateLabel'),
+			txtGracePeriod= SmartTemplates.Util.gracePeriodText(licenseInfo.trialDays);
         
     if (!licenseDateLbl.getAttribute("originalContent")) { // save original label!
       licenseDateLbl.setAttribute("originalContent", licenseDateLbl.textContent);
@@ -2672,15 +2672,29 @@ function addUIListeners() {
   // ==== NEW: PAGES
   for (let li of document.querySelectorAll("#categories li")) {
     li.addEventListener("click", (event) => {
-      activateTab(li);
+			// Prevent the click handler if the Enter/Space key was pressed
+			if (event.detail !== 0) { // not a mouse event
+				activateTab(li);
+			}
     });
+
     // Accessibility improvements
+		const anchor = li.querySelector("a");
+		if (!anchor) { return; }
 
     li.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         // Select tab on Enter/Space key
         event.preventDefault();
         activateTab(li);
+				const pageId = li.getAttribute("page");
+				const activePageContent = document.getElementById(pageId);
+				if (!activePageContent) { return; }
+				// Focus the first element inside the active page content
+				const firstFocusableElement = activePageContent.querySelector("input, button, [tabindex]:not([tabindex='-1']), a[href]");
+				if (firstFocusableElement) {
+					firstFocusableElement.focus(); // Focus the first element in the page
+				}
         return;
       }
 
@@ -2701,6 +2715,7 @@ function addUIListeners() {
       }
 
 			// Handle Tab key to focus on the content page
+			/*
 			if (event.key === "Tab" && !event.shiftKey) {
 				event.preventDefault(); // Prevent the default tabbing behavior between <li>s
 
@@ -2733,6 +2748,8 @@ function addUIListeners() {
 					selectedLi.focus(); // Move focus back to the selected <li>
 				}
 			}
+			*/
+
     });
   }
 
@@ -2832,7 +2849,7 @@ async function onLoad() {
 			break;
 		case "licenseKey":
 			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catLicense");
-			let txtLicense = getElement('txtLicenseKey');
+			const txtLicense = getElement('txtLicenseKey');
 			setTimeout(function() {txtLicense.focus();}, 200);
 			break;
 		default:

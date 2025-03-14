@@ -61,6 +61,21 @@
   "any.label": {
     "message": "Elke headerregel"
   },
+  "aria.settings.nav": {
+    "message": "Instellingenpagina's - druk op Enter om de pagina te openen."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Pagina geselecteerd."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- druk op Enter om het gedeelte te openen."
+  },
+  "aria.configSettings": {
+    "message": "Geavanceerde configuratie - voor aanvullende instellingen."
+  },
+  "aria.moreInfo": {
+    "message": "Meer info"
+  },
   "attach.label": {
     "message": "Bestand als bijlage toevoegen"
   },

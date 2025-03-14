@@ -61,6 +61,21 @@
   "any.label": {
     "message": "Rozwiń okno dialogowe"
   },
+  "aria.settings.nav": {
+    "message": "Strony ustawień - naciśnij Enter, aby wejść na stronę."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Strona wybrana."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- naciśnij Enter, aby otworzyć sekcję."
+  },
+  "aria.configSettings": {
+    "message": "Zaawansowane ustawienia - dla dodatkowych opcji."
+  },
+  "aria.moreInfo": {
+    "message": "Więcej informacji"
+  },
   "attach.label": {
     "message": "Dodaj plik jako załącznik"
   },

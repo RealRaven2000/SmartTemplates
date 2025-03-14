@@ -58,6 +58,21 @@
   "any.label": {
     "message": "Любой заголовок строки"
   },
+  "aria.settings.nav": {
+    "message": "Страницы настроек - нажмите Enter, чтобы войти на страницу."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Страница выбрана."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- нажмите Enter, чтобы открыть раздел."
+  },
+  "aria.configSettings": {
+    "message": "Расширенная настройка - для дополнительных настроек."
+  },
+  "aria.moreInfo": {
+    "message": "Дополнительная информация"
+  },
   "attach.label": {
     "message": "Добавить файл как вложение"
   },

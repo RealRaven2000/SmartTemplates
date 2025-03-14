@@ -149,7 +149,7 @@
                         <div>
                           <div class="settingsRow templateFilePicker">
                             <label for="txtTemplatePath">__MSG_fileTemplates.file.path__</label>
-                            <input type="text" id="txtTemplatePath" autocomplete="off">
+                            <input id="txtTemplatePath" type="text" autocomplete="off">
                             <button id="btnPickTemplate" 
                               class="iconLabelButton" 
                               title="__MSG_fileTemplates.file.open__">
@@ -161,15 +161,15 @@
                           <div class="settingsRow">
                             <label for="txtTemplateTitle">__MSG_fileTemplates.file.title__</label>
                             <input
-                              type="text"
                               id="txtTemplateTitle" 
+                              type="text"
                               autocomplete="off"
                               title="__MSG_fileTemplates.file.title.tooltip__"
                               >
                             <label for="txtTemplateCategory">__MSG_template.category__:</label>
                             <input
-                              type="text"
                               id="txtTemplateCategory"
+                              type="text"
                               autocomplete="off"
                               title="__MSG_template.category.tooltip__">
                             <button id="helpSnippets"
@@ -240,19 +240,19 @@
           <div class="vbox">
             <div class="hbox labeledBox">
               <label class="textboxLabel" for="txtBreaks">__MSG_lineBreaksOnTop__</label>
-              <input type="text" 
-                    id="txtBreaks"
-                    autocomplete="off"
-                    data-pref-name="extensions.smartTemplate4.breaksAtTop"
-                    instantApply="true">
+              <input id="txtBreaks"
+                type="text"
+                autocomplete="off"
+                data-pref-name="extensions.smartTemplate4.breaksAtTop"
+                instantApply="true">
             </div>
             <div class="hbox labeledBox">
               <label class="textboxLabel" for="txtCharset">__MSG_defaultCharset__:</label>
-              <input type="text" 
-                    id="txtCharset"
-                    autocomplete="off"
-                    data-pref-name="extensions.smartTemplate4.defaultCharset"
-                    instantApply="true">
+              <input id="txtCharset"
+                type="text"
+                autocomplete="off"
+                data-pref-name="extensions.smartTemplate4.defaultCharset"
+                instantApply="true">
               <button
                 class="toolTipButton"
                 clickyTooltip="__MSG_defaultCharset.tip__"></button>
@@ -341,7 +341,8 @@
               <button id="fontSmaller"></button>
               <span class="spacer" id="fontButtonSpacer" > </span>
               <button id="fontLarger"></button>
-              <input type="text" id="txtFontSize" autocomplete="off"
+              <input id="txtFontSize" 
+                type="text" autocomplete="off"
                 data-pref-name="extensions.smartTemplate4.font.size"
                 disabled="true">
             </div>
@@ -366,14 +367,14 @@
                   data-pref-name="extensions.smartTemplate4.names.guessFromMail">__MSG_guessNameFromMail__</label>
             <div class="hbox" align="center">
               <label for="default_address_format">__MSG_defaultMimeFormat__</label>
-              <input type="text" id="default_address_format" size="50" autocomplete="off"
+              <input id="default_address_format" type="text" size="50" autocomplete="off"
                 data-pref-name="extensions.smartTemplate4.mime.defaultFormat">
               <button class="toolTipButton" clickyTooltip="__MSG_defaultMimeFormat_tip__"></button>
             </div>
             <div class="hbox" align="center">
               <label value=""
                      for="txtNameDelimiter">__MSG_addressDelimiter__</label>
-              <input type="text" id="txtNameDelimiter" autocomplete="off"
+              <input id="txtNameDelimiter" type="text" autocomplete="off"
                     data-pref-name="extensions.smartTemplate4.names.delimiter">
               <button class="toolTipButton" clickyTooltip="__MSG_addressDelimiter.tip__"></button>
             </div>
@@ -517,7 +518,7 @@
         <hr class="licenseSeparator">
         <div class="hbox" id="validationDate" align="center">
           <label id="licenseDateLabel" for="licenseDate">__MSG_label.licenseValid__</label>
-          <input type="text" id="licenseDate" readonly aria-readonly="true" tabindex="0" 
+          <input id="licenseDate" type="text" autocomplete="off" readonly aria-readonly="true" tabindex="0" 
             aria-describedby="licenseDateLabel" role="representation">
         </div>
         <hr id="validationDateSpace" class="licenseSeparator">

@@ -58,6 +58,21 @@
   "any.label": {
     "message": "Qualsiasi Header-line"
   },
+  "aria.settings.nav": {
+    "message": "Pagine delle impostazioni - premi Invio per entrare nella pagina."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Pagina selezionata."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- premi Enter per aprire la sezione."
+  },
+  "aria.configSettings": {
+    "message": "Configurazione avanzata - per impostazioni aggiuntive."
+  },
+  "aria.moreInfo": {
+    "message": "Maggiori informazioni"
+  },
   "attach.label": {
     "message": "Aggiungi un file come allegato"
   },

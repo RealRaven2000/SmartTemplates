@@ -61,6 +61,21 @@
   "any.label": {
     "message": "Katerakoli vrstica glave"
   },
+  "aria.settings.nav": {
+    "message": "Strani nastavitev - pritisnite Enter za vstop na stran."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Izbrana stran."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- pritisnite Enter za odprtje razdelka."
+  },
+  "aria.configSettings": {
+    "message": "Napredne nastavitve - za dodatne nastavitve."
+  },
+  "aria.moreInfo": {
+    "message": "Več informacij"
+  },
   "attach.label": {
     "message": "Dodaj datoteko kot prilogo"
   },

@@ -61,6 +61,21 @@
   "any.label": {
     "message": "任何标题行"
   },
+  "aria.settings.nav": {
+    "message": "设置页面 - 按 Enter 键进入页面。"
+  },
+  "aria.settings.nav.selected": {
+    "message": "页面已选择。"
+  },
+  "aria.accordion.header.expand": {
+    "message": "- 按 Enter 键打开该部分。"
+  },
+  "aria.configSettings": {
+    "message": "高级配置 - 用于其他设置。"
+  },
+  "aria.moreInfo": {
+    "message": "更多信息"
+  },
   "attach.label": {
     "message": "添加文件作为附件"
   },

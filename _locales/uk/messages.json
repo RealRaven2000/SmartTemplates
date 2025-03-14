@@ -64,6 +64,21 @@
   "any.label": {
     "message": "любий рядок з заголовка"
   },
+  "aria.settings.nav": {
+    "message": "Сторінки налаштувань - натисніть Enter, щоб перейти на сторінку."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Сторінка вибрана."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- натисніть Enter, щоб відкрити розділ."
+  },
+  "aria.configSettings": {
+    "message": "Розширене налаштування - для додаткових налаштувань."
+  },
+  "aria.moreInfo": {
+    "message": "Додаткова інформація"
+  },
   "attach.label": {
     "message": "Додати файл як вкладення"
   },

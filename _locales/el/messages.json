@@ -64,6 +64,21 @@
   "any.label": {
     "message": "Οποιαδήποτε Γραμμή Κεφαλίδας"
   },
+  "aria.settings.nav": {
+    "message": "Σελίδες ρυθμίσεων - πατήστε Enter για είσοδο στη σελίδα."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Επιλεγμένη σελίδα."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- πατήστε Enter για να ανοίξετε το τμήμα."
+  },
+  "aria.configSettings": {
+    "message": "Προχωρημένες ρυθμίσεις - για επιπλέον ρυθμίσεις."
+  },
+  "aria.moreInfo": {
+    "message": "Περισσότερες πληροφορίες"
+  },
   "attach.label": {
     "message": "Προσθήκη αρχείου ως συνημμένου"
   },

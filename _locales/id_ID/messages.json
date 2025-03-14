@@ -29,6 +29,21 @@
   "any.label": {
     "message": "Setiap Baris Tajuk"
   },
+  "aria.settings.nav": {
+    "message": "Halaman Pengaturan - tekan Enter untuk masuk ke halaman."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Halaman dipilih."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- tekan Enter untuk membuka bagian."
+  },
+  "aria.configSettings": {
+    "message": "Pengaturan lanjutan - untuk pengaturan tambahan."
+  },
+  "aria.moreInfo": {
+    "message": "Lebih banyak info"
+  },
   "attach.label": {
     "message": "Tambah berkas lampiran"
   },

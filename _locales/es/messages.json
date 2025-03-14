@@ -61,6 +61,21 @@
   "any.label": {
     "message": "Cualquier cabecera de línea"
   },
+  "aria.settings.nav": {
+    "message": "Páginas de configuración - presiona Enter para entrar en la página."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Página seleccionada."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- presiona Enter para abrir la sección."
+  },
+  "aria.configSettings": {
+    "message": "Configuración avanzada - para configuraciones adicionales."
+  },
+  "aria.moreInfo": {
+    "message": "Más información"
+  },
   "attach.label": {
     "message": "Añadir archivo como adjunto"
   },

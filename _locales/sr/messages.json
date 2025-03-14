@@ -61,6 +61,21 @@
   "any.label": {
     "message": "Било који ред заглавља"
   },
+  "aria.settings.nav": {
+    "message": "Странице подешавања - притисните Enter за улазак на страницу."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Страна изабрана."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- притисните Enter да отворите секцију."
+  },
+  "aria.configSettings": {
+    "message": "Напредна подешавања - за додатна подешавања."
+  },
+  "aria.moreInfo": {
+    "message": "Више информација"
+  },
   "attach.label": {
     "message": "Додајте датотеку као прилог"
   },

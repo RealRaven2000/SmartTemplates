@@ -58,6 +58,21 @@
   "any.label": {
     "message": "任意のヘッダー行"
   },
+  "aria.settings.nav": {
+    "message": "設定ページ - Enterキーを押してページに入る。"
+  },
+  "aria.settings.nav.selected": {
+    "message": "ページが選択されました。"
+  },
+  "aria.accordion.header.expand": {
+    "message": "- Enter キーでセクションを開きます。"
+  },
+  "aria.configSettings": {
+    "message": "詳細設定 - 追加の設定を行うにはこちら。"
+  },
+  "aria.moreInfo": {
+    "message": "詳細情報"
+  },
   "attach.label": {
     "message": "添付ファイルとして追加する"
   },

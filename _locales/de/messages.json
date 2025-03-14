@@ -58,7 +58,7 @@
     "message": "Beliebige Kopfzeile"
   },
   "aria.settings.nav": {
-    "message": "Einstellungen Menü  - verwenden Sie die Pfeiltasten zum Navigieren."
+    "message": "Einstellungsseiten - drücken Sie Enter, um die Seite zu betreten."
   },
   "aria.settings.nav.selected": {
     "message": "Seite ausgewählt."
