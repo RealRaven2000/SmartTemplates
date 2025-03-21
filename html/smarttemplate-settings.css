@@ -652,6 +652,7 @@ vbox.template {
 	background: var(--version-background);
 	border-radius: 0.6em;
 	box-shadow: inset 0 0 6px rgba(0,0,0,0.4), 2px 2px 3px rgba(0,0,0,0.2);
+	margin-left: auto;
 }
 #versionBox:hover {
 	box-shadow: inset 0 0 3px rgba(0,0,0,0.7), 2px 2px 3px rgba(0,0,0,0.5);;
@@ -670,21 +671,37 @@ vbox.template {
 	display: flex;
 }
 
+
+
 #SmartTemplate4AboutLogo {
+	cursor: pointer;
   background-repeat: no-repeat;
 	background-position: center left;
-	flex-grow: 2;
-  min-width: 250px;
   min-height: 45px;
 }
-
 #SmartTemplate4AboutLogo.aboutLogo {
 	background-image: url("../chrome/content/skin/logo.png") !important;
 }
+
 #SmartTemplate4AboutLogo.aboutLogoPro {
 	background-image: url("../chrome/content/skin/logo-pro.png") !important;
+	background-clip: padding-box;
+	background-position: left center;
+	background-size: 271px;
+	overflow: hidden;
+	flex-shrink: 0; /* Prevent shrinking */
+	max-width: none !important;
+	width: 271px;
+  transition: width 0.3s ease, background-size 0.3s ease; /* Add smooth transition */
 }
 
+#SmartTemplate4AboutLogo.standard {
+	width: 210px !important;
+}
+
+#SmartTemplate4AboutLogo.aboutLogoPro:hover {
+  width: 271px !important; /* Expand to show full "Pro" text on hover */
+}
 /* ################################## AboutDeveloper ################################# */
 
 
@@ -699,6 +716,7 @@ vbox.template {
 }
 
 .aboutHeader {
+	display: flex;
 	text-align: center;
 	width:100%;
 }

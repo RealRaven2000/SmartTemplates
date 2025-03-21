@@ -1661,6 +1661,7 @@ SmartTemplates.Settings = {
 			el.disabled = !isEnabled;
 		}
 		this.enableStandardConfig(isEnabled);
+		if (isEnabled) document.getElementById("SmartTemplate4AboutLogo").classList.remove("standard");
   } ,
 
 	enableStandardConfig: function(isEnabled) {
@@ -1728,21 +1729,22 @@ SmartTemplates.Settings = {
   // this function is called on load and from validateLicenseInOptions
   // was decryptLicense
   updateLicenseOptionsUI: async function (silent = false) {
-    let getElement = document.getElementById.bind(document),
-        validationPassed       = getElement('validationPassed'),
-        validationStandard     = getElement('validationStandard'),
-        validationFailed       = getElement('validationFailed'),
-				validationInvalidAddon = getElement('validationInvalidAddon'),
-        validationExpired      = getElement('validationExpired'),
-        validationInvalidEmail = getElement('validationInvalidEmail'),
-        validationEmailNoMatch = getElement('validationEmailNoMatch'),
-				validationDate         = getElement('validationDate'),
-				validationDateSpace    = getElement('validationDateSpace'),
-        licenseDate            = getElement('licenseDate'),
-        licenseDateLabel       = getElement('licenseDateLabel'),
-        decryptedMail = licenseInfo.email, 
-        decryptedDate = licenseInfo.expiryDate,
-				result = licenseInfo.status;
+    const getElement = document.getElementById.bind(document),
+      validationPassed = getElement("validationPassed"),
+      validationStandard = getElement("validationStandard"),
+      validationFailed = getElement("validationFailed"),
+      validationInvalidAddon = getElement("validationInvalidAddon"),
+      validationExpired = getElement("validationExpired"),
+      validationInvalidEmail = getElement("validationInvalidEmail"),
+      validationEmailNoMatch = getElement("validationEmailNoMatch"),
+      validationDate = getElement("validationDate"),
+      validationDateSpace = getElement("validationDateSpace"),
+      licenseDate = getElement("licenseDate"),
+      licenseDateLabel = getElement("licenseDateLabel"),
+      logo = getElement("SmartTemplate4AboutLogo"),
+      decryptedMail = licenseInfo.email,
+      decryptedDate = licenseInfo.expiryDate,
+      result = licenseInfo.status;
 		validationStandard.setAttribute("collapsed", true);
     validationPassed.setAttribute("collapsed", true);
     validationFailed.setAttribute("collapsed", true);
@@ -1767,8 +1769,9 @@ SmartTemplates.Settings = {
 					if (licenseInfo.keyType==2) { // standard license
             this.showValidationMessage(validationStandard, silent);
 						this.enableStandardConfig(true);
-					}
-					else {
+						logo.classList.add("standard");
+
+					} else {
 						this.showValidationMessage(validationPassed, silent);
 						this.enablePremiumConfig(true);
 					}
@@ -1777,6 +1780,7 @@ SmartTemplates.Settings = {
           licenseDateLabel.textContent = SmartTemplates.Util.getBundleString("label.licenseValid");
           break;
         case "Invalid":
+					logo.classList.add("standard");
 				  validationDate.setAttribute("collapsed", true);
 					validationDateSpace.setAttribute("collapsed", true);
 				  let addonName = '';
@@ -1805,6 +1809,7 @@ SmartTemplates.Settings = {
 					}
           break;
         case "Expired":
+					logo.classList.add("standard");
           licenseDateLabel.textContent = SmartTemplates.Util.getBundleString("st.licenseValidation.expired");
           licenseDate.value = niceDate;
           this.showValidationMessage(validationExpired, false); // always show
@@ -1881,10 +1886,10 @@ SmartTemplates.Settings = {
 				SmartTemplates.Util.logException("replaceCssClass(" + el + "):\n", ex);
 			}
 		}
-    let getElement = document.getElementById.bind(document),
-        btnLicense = getElement("btnLicense"),
-				proTab = getElement("catLicense"),
-				beautyTitle = getElement("SmartTemplate4AboutLogo");
+    const getElement = document.getElementById.bind(document),
+			btnLicense = getElement("btnLicense"),
+			proTab = getElement("catLicense"),
+			logo = getElement("SmartTemplate4AboutLogo");
         
     // old call to decryptLicense was here
     // 1 - sanitize License
@@ -1894,41 +1899,39 @@ SmartTemplates.Settings = {
       this.updateLicenseOptionsUI(silent);  // async! // was settings.decryptLicense
 			switch(licenseInfo.status) {
 				case "Valid":
-					let today = new Date(),
-					    later = new Date(today.setDate(today.getDate()+32)), // pretend it's a month later:
-							dateString = later.toISOString().substr(0, 10);
+					const today = new Date(),
+						later = new Date(today.setDate(today.getDate()+32)), // pretend it's a month later:
+						dateString = later.toISOString().substr(0, 10);
 					// if we were a month ahead would this be expired?
 					if (licenseInfo.expiryDate < dateString) {
 						this.labelLicenseBtn(btnLicense, "extend");
-					}
-					else {
+					} else {
 						if (licenseInfo.keyType==2) { // standard license
 							btnLicense.classList.add('upgrade'); // removes "pulsing" animation
 							this.labelLicenseBtn(btnLicense, "upgrade");
-						}
-						else {
+						} else {
 							btnLicense.setAttribute("collapsed", true);
 						}
 					}
 					replaceCssClass(proTab, 'paid');
 					replaceCssClass(btnLicense, 'paid');
-					beautyTitle.classList.remove('aboutLogo');
-					beautyTitle.classList.add('aboutLogoPro');
+					logo.classList.remove('aboutLogo');
+					logo.classList.add('aboutLogoPro');
 				  break;
 				case "Expired":
 					this.labelLicenseBtn(btnLicense, "renew");
 				  btnLicense.setAttribute("collapsed", false);
 					replaceCssClass(proTab, 'expired');
 					replaceCssClass(btnLicense, 'expired');
-					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo-pro.png");
+					logo.setAttribute('src', "chrome://smarttemplate4/content/skin/logo-pro.png");
 					break;
 				default: // no license
 					this.labelLicenseBtn(btnLicense, "buy");
 				  btnLicense.setAttribute("collapsed", false);
 					replaceCssClass(proTab, 'free');
-					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo.png");
-					beautyTitle.classList.add('aboutLogo');
-					beautyTitle.classList.remove('aboutLogoPro');
+					logo.setAttribute('src', "chrome://smarttemplate4/content/skin/logo.png");
+					logo.classList.add('aboutLogo');
+					logo.classList.remove('aboutLogoPro');
 			}
 			SmartTemplates.Util.logDebug('validateLicense - license status = ' + licenseInfo.status);
 			// make sure to refresh the file template menus!
