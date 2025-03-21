@@ -237,6 +237,7 @@ END LICENSE BLOCK
     # [issue 357] new functions composer.composeCase and composer.composeType
     # [issue 338] Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text)
     # [issue 363] Retire legacy settings dialog
+    # removed inline event handlers (these will be deprecated in 137)
 
 
 
