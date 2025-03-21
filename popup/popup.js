@@ -63,10 +63,14 @@ function showSalesItems(isSale, licenseInfo) {
     hideSelectorItems('.donations');
     hide('register');
     
-    if (isSale && isStandardUser) {
-      showSelectorItems('.standardUpgradeSale');
-      hide('offerStandardUpgrade');
-      showSpecialOfferItem(); // remove newsHeader and detail
+    if (isStandardUser) {
+      if (isSale) {
+        showSelectorItems('.standardUpgradeSale');
+        showSpecialOfferItem(); // remove newsHeader and detail
+      } else {
+        hide("offerStandardUpgrade");
+        show("upgrade");
+      }
     }
   }
     

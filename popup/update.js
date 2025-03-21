@@ -11,30 +11,49 @@ END LICENSE BLOCK */
 //  import {discountRate, compatibleVer} from "./sales.js";
 
   addEventListener("click", async (event) => {
-    switch(event.target.id) {
-      case "register":    // fall-through
+    if (
+      event.target.id.startsWith("extend") ||
+      event.target.id.startsWith("renew") ||
+      event.target.id == "upgrade"
+    ) {
+      messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
+      window.close();
+    }    
+    switch (event.target.id) {
+      case "register": // fall-through
       case "bargainIcon":
         if (event.target.classList.contains("upgrade")) {
-          let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
-          messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?referrer=" + licenseInfo.licenseKey);
-        }
-        else {
-          messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update");
+          let licenseInfo = await messenger.runtime.sendMessage({ command: "getLicenseInfo" });
+          messenger.windows.openDefaultBrowser(
+            "http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?" +
+              `contact_email=${licenseInfo.email}` +
+              `&referrer=${licenseInfo.licenseKey}`
+          );
+        } else {
+          messenger.windows.openDefaultBrowser(
+            "https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update"
+          );
         }
         break;
-	    case "bargainRenewIcon":
-	    case "bargainUpgradeIcon":
-	      messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
-	      window.close(); 
-	      break;
+      case "bargainRenewIcon":
+      case "bargainUpgradeIcon":
+        messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
+        window.close();
+        break;
       case "stdLink":
-        messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/smarttemplatestandard?referrer=splashScreen-standard");
+        messenger.windows.openDefaultBrowser(
+          "https://sites.fastspring.com/quickfolders/product/smarttemplatestandard?referrer=splashScreen-standard"
+        );
         break;
       case "proLink":
-        messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=splashScreen-standard");
+        messenger.windows.openDefaultBrowser(
+          "https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=splashScreen-standard"
+        );
         break;
       case "compLink":
-        messenger.windows.openDefaultBrowser("https://smarttemplates.quickfolders.org/premium.html#featureComparison");
+        messenger.windows.openDefaultBrowser(
+          "https://smarttemplates.quickfolders.org/premium.html#featureComparison"
+        );
         break;
       case "whatsNew":
         messenger.Utilities.showVersionHistory();
@@ -48,29 +67,33 @@ END LICENSE BLOCK */
       }
     }    
     
-  
-    if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew") || event.target.id=="upgrade") {
-      messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
-      window.close(); // not allowed by content script!
-    }
+
     if (event.target.id.startsWith("donate")) {
       messenger.windows.openDefaultBrowser("https://smarttemplates.quickfolders.org/contribute.html#donate");
     }
   });  
 
-  function replaceVariableCodeTags(txt) {
-    let txt2 = txt.replace(/<(.*?)>/g,"<span class='htmltag' />&lt;$1&gt;</span>");
+  function formatAll(txt) {
+    let localizedMsg = txt.replace(/<(.*?)>/g,"<span class='htmltag' />&lt;$1&gt;</span>");
     // added simple <tag> support
-    return txt2.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>")
-               .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")
-               .replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>")
-               .replace(/\{P1\}/g,"<p>").replace(/\{P2\}/g,"</p>")
-               .replace(/\{S1\}/g,"</ul> <h3 class='section'>")  
-               .replace(/\{S2\}/g,"</h3> <ul>")
-               .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1 href='#'>[issue $1]</a>")
-               .replace(/\[(.)\]/g,"<code class='keystroke'>$1</code>")     // single keys
-               .replaceAll("''","\"");
-               //{S1} new section / list with title {S2}.
+    return localizedMsg
+      .replace(/\{boldStart\}/g, "<b>")
+      .replace(/\{boldEnd\}/g, "</b>")
+      .replace(/\{hr\}/g, "<hr>")
+      .replace(/\{italicStart\}/g, "<i>")
+      .replace(/\{italicEnd\}/g, "</i>")
+      .replace(/\{\{(%.*?%)\}\}/g, "<code>$1</code>")
+      .replace(/\{\{(.*?)\}\}/g, "<code param>$1</code>")
+      .replace(/\{L1\}/g, "<li>")
+      .replace(/\{L2\}/g, "</li>")
+      .replace(/\{P1\}/g, "<p>")
+      .replace(/\{P2\}/g, "</p>")
+      .replace(/\{S1\}/g, "</ul> <h3 class='section'>")
+      .replace(/\{S2\}/g, "</h3> <ul>")
+      .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1 href='#'>[issue $1]</a>")
+      .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys
+      .replaceAll("''", '"');
+      //{S1} new section / list with title {S2}.
   }
 
 
@@ -217,14 +240,14 @@ END LICENSE BLOCK */
     if (whatsNewLst) {
       whatsNewLst.innerHTML = 
       `<ul>
-      ${replaceVariableCodeTags(messenger.i18n.getMessage('whats-new-list'))}
+      ${formatAll(messenger.i18n.getMessage('whats-new-list'))}
       </ul>`
       ;
     }    
 
     let newsDetail = document.getElementById('newsDetail');
     if (newsDetail) {
-      newsDetail.innerHTML = replaceVariableCodeTags(messenger.i18n.getMessage('newsSection', [addonName, compatibleVer]));
+      newsDetail.innerHTML = formatAll(messenger.i18n.getMessage('newsSection', [addonName, compatibleVer]));
     } 
 
     let ongoing = document.getElementById('ongoing-work');
