@@ -902,7 +902,7 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ is nu compatibel met de nieuwste versie van Thunderbird ($compatibleVer$). Dit vereiste talloze substantiële veranderingen en het herschrijven van veel functies.{P2}",
+    "message": "{P1} De nieuwste versie van $addonName$ is nu compatibel met Thunderbird ($compatibleVer$) en is begonnen aan de verbetering van de toegankelijkheid voor toetsenbord en schermlezers – de eerste stap was het aanpassen van alle instellingenpagina's, met verdere verbeteringen binnenkort! Raadpleeg de volledige changelog via de onderstaande link voor gedetailleerde documentatie. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -914,7 +914,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Aangezien dit werk exclusief gefinancierd door de verkoop van licenties, overweeg dan om een licentie te kopen of uw vorige licentie te verlengen als u in de toekomst SmartTemplates wilt gebruiken."
+    "message": "Aangezien al het werk aan SmartTemplates en de gratis ondersteuning uitsluitend wordt gefinancierd door licentieverkopen, overweeg dan een licentie aan te schaffen of uw huidige licentie te verlengen."
   },
   "newsgr.label": {
     "message": "Nieuwsgroepen"
@@ -923,11 +923,10 @@
     "message": "Nee"
   },
   "ongoing-work": {
-    "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende ESR-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
+    "message": "Om $addonName$ gesynchroniseerd te houden met de maandelijkse releases van Thunderbird, moeten we constant op zoek naar fouten en aangepaste versies uploaden. Help ons alstublieft hiermee, zodra je de functionaliteit hebt geprobeerd en zeker weet dat het je productiviteit verbetert!",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1251,7 +1250,7 @@
     "message": "Koop een licentie."
   },
   "purchase-heading": {
-    "message": "Een licentie kopen!"
+    "message": "Ondersteuning via een licentie"
   },
   "quoteLevel": {
     "message": "[optioneel, numeriek]: vanaf welk minimaal aanhalingsniveau moet worden begonnen"
@@ -1752,7 +1751,7 @@
     }
   },
   "support-suggestion": {
-    "message": "Zodat $addonName$ functioneel en levend blijft, doe het alsjeblieft een belangrijke gunst:",
+    "message": "Om $addonName$ functioneel en up-to-date te houden, overweeg om het te ondersteunen:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1997,7 +1996,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 Een probleem opgelost waarbij FiltaQuilla niet meer via een sjabloon doorstuurde [issue 354] {L2}{L1} Nieuwe functionaliteit om CSS-stijlsecties te verwijderen bij het invoegen van het geciteerde gedeelte van de oorspronkelijke e-mail {{%quotePlaceHolder(nostyles)%}} [issue 331].{L2} {L1} Opgelost: Algemene accountinstellingen werden niet gegenereerd door het nieuwe instellingen-tabblad. Dit probleem treft voornamelijk gebruikers die SmartTemplates onlangs hebben geïnstalleerd en geen instellingen hadden van oudere versies. [issue 340]{L2} {L1} Verbeterde hoofdlettergebruik voor dubbele achternamen (zoals Tyler-Smith). [issue 343]{L2}{L1} Komma's in het klembord veroorzaken geen problemen meer bij {{%header.set(…,clipboard)%}} en {{%matchTextFromBody(…,toclipboard)%}}. [issue 344]{L2}{L1} Opgelost: {{*selection*}} knipte inhoud af in tekstknooppunten. [issue 351]{L2}{L1} Nieuwe functie {{%dateformat.received()%}} {L2}{L1} Talrijke fouten in sandbox-scripts zijn opgelost, inclusief {{messageRaw()}}, ondersteuning voor meerdere parameters, samengestelde variabelen (met underscores) en gereserveerde parameters (met het voorvoegsel {{$}}). Meer details over scripts zijn beschikbaar op de ondersteuningssite.{L2}{L1} Thunderbird-compatibiliteit verhoogd tot versie 135.{L2}"
+    "message": "{P1}{boldStart}Toegankelijkheidswijzigingen{boldEnd}{P2} {P1}Ik ben hard aan het werk om SmartTemplates volledig toegankelijk te maken voor toetsenbordgebruikers en schermlezers.{P2}{L1} Toegankelijkheidsverbetering: Instellingen dialoog venster navigeerbaar maken met het toetsenbord [issue 361] {L2}{L1} Compatibel met Thunderbird 137.* [issue 331].{L2} {L1} Nieuwe functie: {{%dateformat.current()%}} [issue 356]{L2} {L1} Verbeteringen in Sandboxed JavaScript, meer contextuele parameters zoals $priority en nieuwe functies {{composer_composeType()}} en {{composer_composeType()}} [issue 357] {L2}{L1} Stel de fallback charset in op UTF-8 om mojibake (onleesbare tekst) te voorkomen [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

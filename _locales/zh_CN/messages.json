@@ -905,7 +905,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird ($compatibleVer$) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2}",
+    "message": "{P1} 最新版本的 $addonName$ 现已兼容 Thunderbird ($compatibleVer$)，并开始改进对键盘和屏幕阅读器的无障碍支持 —— 第一步是修改所有设置页面，后续还会有更多改进！ 详细文档请查看下方链接中的完整更改日志。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -917,7 +917,7 @@
     }
   },
   "newsSection.license": {
-    "message": "因为这项工作是独家的 通过出售许可证获得资金，如果您有兴趣在未来使用 SmartTemplates，请考虑购买许可证或更新之前的许可证."
+    "message": "由于SmartTemplates的所有工作和免费支持完全通过许可证销售资助，请考虑购买许可证或续订当前许可证。"
   },
   "newsgr.label": {
     "message": "新闻组"
@@ -926,11 +926,10 @@
     "message": "否"
   },
   "ongoing-work": {
-    "message": "将 $addonName$ 转换为新编程模型的更改花费了数周时间，而且成本很高。 下一个ESR版本将有更多更改。 有了这样复杂的附加组件，昂贵的工作就变得不可避免。 请帮助我们。",
+    "message": "为了保持 $addonName$ 与 Thunderbird 每月的发布版本同步，我们必须不断检查错误并上传适配版本。请在您试用功能并确定它能提高您的生产力后帮助我们！",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1264,7 +1263,7 @@
     "message": "购买许可证。"
   },
   "purchase-heading": {
-    "message": "购买许可证！"
+    "message": "通过许可证支持"
   },
   "quoteLevel": {
     "message": "[可选，数字]：从哪个最低报价水平开始"
@@ -1762,7 +1761,7 @@
     }
   },
   "support-suggestion": {
-    "message": "为了使$addonName$保持功能性和活跃性，请务必这样做：",
+    "message": "为了保持 $addonName$ 的功能和更新，请考虑支持它：",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2010,7 +2009,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 修复了 FiltaQuilla 无法通过模板转发的问题 [issue 354] {L2}{L1} 新增 {{%preheader()%}} 功能，用于为移动邮件程序添加预览文本。{L2}{L1} 在通过上下文菜单“撰写邮件”写新邮件时，现在会自动插入{{%to%}}、{{%recipient%}}和{{%from%}}的地址数据。[issue 275]{L2} {L1} 在回复对话中自己的邮件且 Thunderbird 自动更改收件人时，使用 {{%recipient%}} 也会按预期工作。[issue 239]{L2} {L1} 在查找 Cardbook 联系人时，电子邮件地址会转换为小写。[issue 278]{L2} {L1} SmartTemplates 现在可以从地址簿字段中提取 {{prefix}} 和 {{suffix}}。[issue 267]{L2} {L1} SmartTemplates 还支持从地址簿字段中提取 {{other.custom1}}、{{other.custom2}} 等。[issue 246]{L2} {L1} 删除了活动 SmartTemplate 字段上的重复工具提示。{L2}{L1} 使用 Web 扩展 API 重新实现了消息操作菜单 [issue 253]{L2}"
+    "message": "{P1}{boldStart}可访问性变更{boldEnd}{P2} {P1}我目前正在努力使SmartTemplates完全支持键盘和屏幕阅读器用户的访问{P2}{L1} 可访问性增强：使设置对话框可以用键盘导航 [issue 361] {L2}{L1} 与 Thunderbird 137.* 兼容 [issue 331].{L2} {L1} 新功能：{{%dateformat.current()%}} [issue 356]{L2} {L1} 在沙箱 JavaScript 中进行改进，添加更多上下文参数，如 $priority 和新函数 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357] {L2}{L1} 将回退字符集设置为 UTF-8 以避免 mojibake（乱码） [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

@@ -902,7 +902,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ 現在與最新版本的 Thunderbird ($compatibleVer$) 兼容。 這需要進行大量實質性更改，並重寫許多函數。{P2}",
+    "message": "{P1} 最新版本的 $addonName$ 現已相容於 Thunderbird ($compatibleVer$)，並開始改進鍵盤與螢幕閱讀器的無障礙支援——第一步是修改所有設定頁面，後續還會有更多改進！ 詳細文件請查看下方連結中的完整變更日誌。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -914,7 +914,7 @@
     }
   },
   "newsSection.license": {
-    "message": "因為這項工作是獨家的 通過出售許可證獲得資金，如果您有興趣在未來使用 SmartTemplates，請考慮購買許可證或更新之前的許可證"
+    "message": "由於SmartTemplates的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
   },
   "newsgr.label": {
     "message": "新聞群組"
@@ -923,11 +923,10 @@
     "message": "否"
   },
   "ongoing-work": {
-    "message": "將 $addonName$ 轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個ESR版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。",
+    "message": "為了保持 $addonName$ 與 Thunderbird 每月的發行版本同步，我們必須不斷檢查錯誤並上傳調整版本。請在您試用功能並確定它能提高您的生產力後協助我們！",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1269,7 +1268,7 @@
     "message": "購買許可證。"
   },
   "purchase-heading": {
-    "message": "購買許可證！"
+    "message": "通过许可证支持"
   },
   "quoteLevel": {
     "message": "[可選，數字]：從哪個最低報價水平開始"
@@ -1764,7 +1763,7 @@
     }
   },
   "support-suggestion": {
-    "message": "為了使$addonName$保持功能性和活躍性，請務必這樣做：",
+    "message": "為了保持 $addonName$ 的功能和更新，請考慮支持它：",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2000,7 +1999,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 修復了 FiltaQuilla 無法透過範本轉寄的問題 [issue 354] {L2}{L1} 新功能：在插入原始電子郵件的引用部分時刪除 CSS 樣式部分 {{%quotePlaceHolder(nostyles)%}} [issue 331].{L2} {L1} 修復：新設定分頁無法生成通用帳戶設定。此問題主要影響最近安裝了 SmartTemplates 且無舊版設定的使用者。 [issue 340]{L2} {L1} 改進了連字符姓名（如 Tyler-Smith）的大小寫處理。 [issue 343]{L2}{L1} 剪貼簿中的逗號不再導致 {{%header.set(…,clipboard)%}} 和 {{%matchTextFromBody(…,toclipboard)%}} 的問題。 [issue 344]{L2}{L1} 修復：{{*selection*}} 截斷了文字節點中的內容。 [issue 351]{L2}{L1} 新功能 {{%dateformat.received()%}} {L2}{L1} 修復了沙盒腳本中的許多錯誤，包括 {{messageRaw()}}, 支援多個參數、複合變數（帶下劃線）和保留參數（帶 {{$}} 前綴）。更多有關腳本的詳細資訊可在支援網站上找到。{L2}{L1} Thunderbird 相容性已提升至版本 135。{L2}"
+    "message": "{P1}{boldStart}可及性變更{boldEnd}{P2} {P1}我目前正努力使 SmartTemplates 完全支援鍵盤和螢幕讀取器使用者的可及性{P2}{L1} 可及性增強：使設定對話框可用鍵盤導航 [issue 361] {L2}{L1} 與 Thunderbird 137.* 相容 [issue 331].{L2} {L1} 新功能：{{%dateformat.current()%}} [issue 356]{L2} {L1} 在沙箱 JavaScript 中進行改進，添加更多上下文參數，如 $priority 和新函數 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357] {L2}{L1} 將回退字元集設定為 UTF-8 以避免 mojibake（亂碼） [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

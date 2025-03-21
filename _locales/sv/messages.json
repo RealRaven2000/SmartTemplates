@@ -914,7 +914,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ är nu kompatibel med den senaste versionen av Thunderbird ($compatibleVer$). Detta krävde många betydande förändringar och omskrivning av många funktioner.{P2}",
+    "message": "{P1} Den senaste versionen av $addonName$ är nu kompatibel med Thunderbird ($compatibleVer$) och har påbörjat sin resa mot bättre tillgänglighet för tangentbord och skärmläsare – det första steget var att uppdatera alla inställningssidor, och fler förbättringar kommer snart! För detaljerad dokumentation, se den fullständiga ändringsloggen via länken nedan. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -926,7 +926,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Eftersom detta arbete är exklusivt finansieras av försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda SmartTemplates i framtiden."
+    "message": "Eftersom allt arbete med SmartTemplates och gratis support finansieras uteslutande genom licensförsäljning, överväg att köpa en licens eller förnya din nuvarande."
   },
   "newsgr.label": {
     "message": "Diskussionsgrupper"
@@ -935,11 +935,10 @@
     "message": "Ingen"
   },
   "ongoing-work": {
-    "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa ESR-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
+    "message": "För att hålla $addonName$ synkroniserad med Thunderbirds månatliga utgåvor måste vi ständigt kontrollera fel och ladda upp anpassade versioner. Hjälp oss gärna med detta när du har testat funktionaliteten och är säker på att den förbättrar din produktivitet!",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1278,7 +1277,7 @@
     "message": "Köp en licens."
   },
   "purchase-heading": {
-    "message": "Att köpa en licens!"
+    "message": "Stöd genom en licens"
   },
   "quoteLevel": {
     "message": "[valfritt, numeriskt]: vilken lägsta offertnivå att börja med"
@@ -1791,7 +1790,7 @@
     }
   },
   "support-suggestion": {
-    "message": "Så att $addonName$ förblir funktionellt och vid liv, gör det en viktig tjänst:",
+    "message": "För att hålla $addonName$ funktionellt och uppdaterat, överväg att stödja det:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2042,7 +2041,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 Ett problem åtgärdades där FiltaQuilla inte längre vidarebefordrade via mall [issue 354] {L2}{L1} Ny funktion för att ta bort CSS-stilsektioner vid infogning av den citerade delen av det ursprungliga e-postmeddelandet {{%quotePlaceHolder(nostyles)%}} [issue 331].{L2} {L1} Fixat: Allmänna kontoinställningar genererades inte av den nya inställningsfliken. Detta problem påverkar främst användare som nyligen har installerat SmartTemplates och inte hade inställningar från tidigare versioner. [issue 340]{L2} {L1} Förbättrad användning av versaler för dubbelnamn (som Tyler-Smith). [issue 343]{L2}{L1} Kommatecken i urklipp orsakar inte längre problem med {{%header.set(…,clipboard)%}} och {{%matchTextFromBody(…,toclipboard)%}}. [issue 344]{L2}{L1} Fixat: {{*selection*}} klippte av innehållet i textnoder. [issue 351]{L2}{L1} Ny funktion {{%dateformat.received()%}} {L2}{L1} Flera fel i sandlådeskript har rättats, inklusive {{messageRaw()}}, stöd för flera parametrar, sammansatta variabler (med understreck) och reserverade parametrar (med prefix {{$}}). Mer information om skript finns på supportsidan.{L2}{L1} Thunderbird-kompatibilitet har höjts till version 135.{L2}"
+    "message": "{P1}{boldStart}Tillgänglighetsändringar{boldEnd}{P2} {P1}Jag arbetar för närvarande hårt för att göra SmartTemplates helt tillgängligt för tangentbordsanvändare och skärmläsare.{P2}{L1} Tillgänglighetsförbättring: Gör inställningsdialogen navigerbar med tangentbord [issue 361] {L2}{L1} Kompatibel med Thunderbird 137.* [issue 331].{L2} {L1} Ny funktion: {{%dateformat.current()%}} [issue 356]{L2} {L1} Förbättringar i Sandboxed JavaScript, fler kontextuella parametrar som $priority och nya funktioner {{composer_composeType()}} och {{composer_composeType()}} [issue 357] {L2}{L1} Ställ in fallback-teckenuppsättningen till UTF-8 för att undvika mojibake (oläsbar text) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

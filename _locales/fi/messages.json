@@ -890,7 +890,7 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version ($compatibleVer$) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2}",
+    "message": "{P1} Uusin versio $addonName$-lisäosasta on nyt yhteensopiva Thunderbirdin ($compatibleVer$) kanssa ja on aloittanut matkansa kohti parempaa saavutettavuutta näppäimistölle ja ruudunlukijoille – ensimmäinen askel oli kaikkien asetusivujen muokkaaminen, ja lisää parannuksia on tulossa pian! Yksityiskohtaisen dokumentaation löydät alla olevan linkin kautta täydellisestä muutoslokista. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -902,7 +902,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Koska tämä työ on yksinomaan lisenssimyynnillä rahoitettuna, harkitse lisenssin ostamista tai edellisen uusimista, jos olet kiinnostunut käyttämään SmartTemplates tulevaisuudessa."
+    "message": "Koska kaikki työ SmartTempaltessin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."
   },
   "newsgr.label": {
     "message": "Uutisryhmät"
@@ -911,11 +911,10 @@
     "message": "Ei"
   },
   "ongoing-work": {
-    "message": "Muutokset $addonName$ muuntamiseksi uudeksi ohjelmointimalliksi kesti viikkoja ja olivat kalliita. Seuraavaa versiota ESR on paljon enemmän. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä.",
+    "message": "Pysyäksemme $addonName$ yhteensopivana Thunderbirdin kuukausittaisiin julkaisuihin, meidän on jatkuvasti tarkistettava virheitä ja ladattava mukautettuja versioita. Autathan meitä tässä, kun olet kokeillut toimintoa ja olet varma, että se parantaa myös tuottavuuttasi!",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1244,7 +1243,7 @@
     "message": "Osta lisenssi."
   },
   "purchase-heading": {
-    "message": "Lisenssin ostaminen!"
+    "message": "Tukeminen lisenssillä"
   },
   "quoteLevel": {
     "message": "on oltava lainausmerkeissä - joko teksti tai html-tunniste, joka lisätään lainausmerkkeihin, jos vastaavuus löytyy."
@@ -1751,7 +1750,7 @@
     }
   },
   "support-suggestion": {
-    "message": "Jotta $addonName$ pysyisi toiminnassa ja elossa, tee se elintärkeäksi palvelukseksi:",
+    "message": "Jotta $addonName$ pysyy toimivana ja ajan tasalla, harkitse sen tukemista:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1991,7 +1990,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 Korjattu ongelma, jossa FiltaQuilla ei enää välittänyt mallin kautta [issue 354] {L2}{L1} Uusi toiminto CSS-tyylien poistamiseen alkuperäisen sähköpostin lainatun osan lisäämisen yhteydessä {{%quotePlaceHolder(nostyles)%}} [issue 331].{L2} {L1} Korjattu: Yleisiä tiliasetuksia ei luotu uuden asetussivun avulla. Tämä virhe vaikuttaa lähinnä käyttäjiin, jotka ovat äskettäin asentaneet SmartTemplatesin eivätkä ole aiempien versioiden asetuksia. [issue 340]{L2} {L1} Parannettu isojen alkukirjainten käyttö kaksoisnimissä (esimerkiksi Tyler-Smith). [issue 343]{L2}{L1} Pilkut leikepöydällä eivät enää aiheuta ongelmia {{%header.set(…,clipboard)%}} ja {{%matchTextFromBody(…,toclipboard)%}} kanssa. [issue 344]{L2}{L1} Korjattu: {{*selection*}} katkaisi sisältöä tekstisolmuissa. [issue 351]{L2}{L1} Uusi toiminto {{%dateformat.received()%}} {L2}{L1} Useita korjauksia sandbox-skripteihin, mukaan lukien {{messageRaw()}}, tuki useille parametreille, yhdistetyt muuttujat (alaviivoilla) ja varatut parametrit (etuliitteellä {{$}}). Lisätietoja skripteistä löytyy tukisivustolta.{L2}{L1} Thunderbird-yhteensopivuus nostettu versioon 135 asti.{L2}"
+    "message": "{P1}{boldStart}Saavutettavuusmuutokset{boldEnd}{P2} {P1}Työskentelen parhaillani SmartTemplatesin täyden saavutettavuuden varmistamiseksi näppäimistölle ja ruudunlukuohjelmille.{P2}{L1} Saavutettavuusparannus: Asetusvalikon tekeminen näppäimistöllä navigoitavaksi [issue 361] {L2}{L1} Yhteensopiva Thunderbird 137.* kanssa [issue 331].{L2} {L1} Uusi toiminto: {{%dateformat.current()%}} [issue 356]{L2} {L1} Parannuksia hiekassa toimivassa JavaScriptissä, lisää kontekstiparametreja kuten $priority ja uusia toimintoja {{composer_composeType()}} ja {{composer_composeType()}} [issue 357] {L2}{L1} Aseta varaherkkyysmerkintä UTF-8:ksi mojibaken (hämmentyneen tekstin) estämiseksi [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

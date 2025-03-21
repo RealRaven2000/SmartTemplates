@@ -106,11 +106,10 @@
     "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
   },
   "ongoing-work": {
-    "message": "Các thay đổi để chuyển $addonName$ sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản ESR tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này.",
+    "message": "Để giữ $addonName$ đồng bộ với các phiên bản phát hành hàng tháng của Thunderbird, chúng tôi phải liên tục kiểm tra lỗi và tải lên các phiên bản điều chỉnh. Vui lòng giúp chúng tôi khi bạn đã thử nghiệm tính năng và chắc chắn rằng nó cải thiện năng suất của bạn!",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -118,7 +117,7 @@
     "message": "Mua giấy phép."
   },
   "purchase-heading": {
-    "message": "Mua Giấy phép!"
+    "message": "Hỗ trợ qua giấy phép"
   },
   "renew-your-license": {
     "message": "Gia hạn giấy phép của bạn."
@@ -211,7 +210,7 @@
     }
   },
   "support-suggestion": {
-    "message": "Để $addonName$ vẫn hoạt động và tồn tại, hãy làm điều đó một cách quan trọng:",
+    "message": "Để giữ cho $addonName$ hoạt động và cập nhật, vui lòng cân nhắc hỗ trợ:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -286,7 +285,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 Đã sửa lỗi khiến FiltaQuilla không còn chuyển tiếp qua mẫu nữa [issue 354] {L2}{L1} Thêm tính năng loại bỏ các phần CSS khi chèn phần được trích dẫn của email gốc {{%quotePlaceHolder(nostyles)%}} [issue 331].{L2} {L1} Sửa lỗi: Các cài đặt chung của tài khoản không được tạo bởi tab cài đặt mới. Lỗi này chủ yếu ảnh hưởng đến người dùng vừa mới cài đặt SmartTemplates và không có cài đặt từ các phiên bản cũ. [issue 340]{L2} {L1} Cải thiện viết hoa đối với các tên kép (ví dụ: Tyler-Smith). [issue 343]{L2}{L1} Dấu phẩy trong clipboard không còn gây sự cố với {{%header.set(…,clipboard)%}} và {{%matchTextFromBody(…,toclipboard)%}} nữa. [issue 344]{L2}{L1} Sửa lỗi: {{*selection*}} đã cắt bớt nội dung trong các nút văn bản. [issue 351]{L2}{L1} Tính năng mới {{%dateformat.received()%}} {L2}{L1} Đã sửa nhiều lỗi trong các tập lệnh sandbox bao gồm {{messageRaw()}}, hỗ trợ nhiều tham số, các biến kết hợp (sử dụng dấu gạch dưới) và các tham số dành riêng (với tiền tố {{$}}). Thông tin chi tiết về tập lệnh có sẵn trên trang hỗ trợ.{L2}{L1} Tăng khả năng tương thích với Thunderbird lên phiên bản 135.{L2}"
+    "message": "{P1}{boldStart}Thay đổi về khả năng tiếp cận{boldEnd}{P2} {P1}Hiện tại tôi đang làm việc chăm chỉ để làm cho SmartTemplates hoàn toàn có thể truy cập được cho người dùng bàn phím và các phần mềm đọc màn hình.{P2}{L1} Cải tiến khả năng tiếp cận: Làm cho hộp thoại Cài đặt có thể điều hướng bằng bàn phím [issue 361] {L2}{L1} Tương thích với Thunderbird 137.* [issue 331].{L2} {L1} Chức năng mới: {{%dateformat.current()%}} [issue 356]{L2} {L1} Cải tiến trong JavaScript Sandboxed, thêm các tham số ngữ cảnh như $priority và các chức năng mới {{composer_composeType()}} và {{composer_composeType()}} [issue 357] {L2}{L1} Đặt charset dự phòng thành UTF-8 để tránh mojibake (văn bản bị lỗi) [issue 338]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

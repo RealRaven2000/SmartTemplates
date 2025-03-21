@@ -918,7 +918,7 @@
     "message": "Latest News"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird ($compatibleVer$). This required numerous substantial changes, and rewriting of many functions.{P2}",
+    "message": "{P1} The latest edition of $addonName$ is now compatible with Thunderbird ($compatibleVer$) and has begun its journey toward improved accessibility for keyboard and screen readers - the first step was modifying all pages of the settings pages, with more work to follow soon! For detailed documentation, please check the full change log in the link below. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -930,7 +930,7 @@
     }
   },
   "newsSection.license": {
-    "message": "As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using SmartTemplates in the future."
+    "message": "As all work on SmartTemplates and free support are funded exclusively by license sales, please consider buying a license or renewing your current one."
   },
   "newsgr.label": {
     "message": "Newsgroups"
@@ -939,11 +939,10 @@
     "message": "No"
   },
   "ongoing-work": {
-    "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next ESR version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
+    "message": "To keep $addonName$ in sync with the monthly releases of Thunderbird, we have to constantly check for breakages and upload adapted versions. Please help us with this, once you have tried out the functionality and you are sure that it improves your productivity as well!",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1286,7 +1285,7 @@
     "message": "Purchase a license."
   },
   "purchase-heading": {
-    "message": "Buying a License!"
+    "message": "Supporting through a License"
   },
   "quoteLevel": {
     "message": "[optional, numeric]:  which minimal quote level to start from"
@@ -1805,7 +1804,7 @@
     }
   },
   "support-suggestion": {
-    "message": "So that $addonName$ stays functional and alive, please do it a vital favor:",
+    "message": "To keep $addonName$ functional and up to date, please consider supporting it:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2059,7 +2058,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Accessibility Changes{boldEnd}{P2} {P1}I am currnetly working hard to make SmartTemplates fully accessible to keyboard and screen readers.{P2}{L1} Accessibility Enhancement: Make Settings dialog keyboard navigateable [issue 361] {L2}{L1} Made compatible with Thunderbird 136.* [issue 331].{L2} {L1} New function: {{%dateformat.current()%}} [issue 356]{L2} {L1} Improvements in Sandboxed JavaScript, more contextual parameters such as $priority and new functions {composer_composeType()} and {composer_composeType()} [issue 357] {L2}{L1} Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text) [issue 338]{L2}"
+    "message": "{P1}{boldStart}Accessibility Changes{boldEnd}{P2} {P1}I am currently working hard to make SmartTemplates fully accessible to keyboard and screen readers.{P2}{L1} Accessibility Enhancement: Make Settings dialog keyboard navigateable [issue 361] {L2}{L1} Made compatible with Thunderbird 137.* [issue 331].{L2} {L1} New function: {{%dateformat.current()%}} [issue 356]{L2} {L1} Improvements in Sandboxed JavaScript, more contextual parameters such as $priority and new functions {{composer_composeType()}} and {{composer_composeType()}} [issue 357] {L2}{L1} Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

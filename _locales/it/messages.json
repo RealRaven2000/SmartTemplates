@@ -881,23 +881,25 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ è ora compatibile con l'ultima versione di Thunderbird ($compatibleVer$). Ciò ha richiesto numerose modifiche sostanziali e la riscrittura di molte funzioni.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [issue 213]{P2}",
+    "message": "{P1} L'ultima versione di $addonName$ è ora compatibile con Thunderbird ($compatibleVer$) e ha iniziato il suo percorso verso una migliore accessibilità per tastiera e screen reader; il primo passo è stata la modifica di tutte le pagine delle impostazioni, con ulteriori miglioramenti in arrivo! Per una documentazione dettagliata, consulta il registro completo delle modifiche nel link sottostante. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
       }
     }
   },
   "newsSection.license": {
-    "message": "Poiché questo lavoro è esclusivamente finanziato dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare SmartTemplates in futuro."
+    "message": "Poiché tutto il lavoro su SmartTemplates e il supporto gratuito sono finanziati esclusivamente dalle vendite di licenze, si prega di considerare l'acquisto di una licenza o il rinnovo della licenza attuale."
   },
   "ongoing-work": {
-    "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del ESR. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
+    "message": "Per mantenere $addonName$ sincronizzato con le versioni mensili di Thunderbird, dobbiamo costantemente controllare la presenza di errori e caricare versioni adattate. Per favore, aiutaci con questo, una volta che avrai provato la funzionalità e sarai sicuro che migliora anche la tua produttività!",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1212,7 +1214,7 @@
     "message": "Acquista una licenza."
   },
   "purchase-heading": {
-    "message": "Acquisto di una licenza!"
+    "message": "Supporto tramite una licenza"
   },
   "quoteLevel": {
     "message": "[opzionale, numerico]: da quale livello minimo di preventivo iniziare"
@@ -1716,7 +1718,7 @@
     }
   },
   "support-suggestion": {
-    "message": "Affinché $addonName$ rimanga funzionante e attivo, ti preghiamo di fare un favore fondamentale:",
+    "message": "Per mantenere $addonName$ funzionante e aggiornato, considera di supportarlo:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1958,7 +1960,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 Risolto un problema per cui FiltaQuilla non inoltrava più tramite modello [issue 354] {L2}{L1} Nuova funzionalità per rimuovere le sezioni di stile CSS durante l'inserimento della parte citata dell'e-mail originale {{%quotePlaceHolder(nostyles)%}} [issue 331].{L2} {L1} Risolto: Le impostazioni comuni degli account non venivano generate dalla nuova scheda delle impostazioni. Questo problema riguarda principalmente gli utenti che hanno installato di recente SmartTemplates e non avevano impostazioni dalle versioni precedenti. [issue 340]{L2} {L1} Migliorata la capitalizzazione per i nomi composti (ad esempio Tyler-Smith). [issue 343]{L2}{L1} Le virgole negli appunti non causano più problemi con {{%header.set(…,clipboard)%}} e {{%matchTextFromBody(…,toclipboard)%}}. [issue 344]{L2}{L1} Risolto: {{*selection*}} tagliava il contenuto nei nodi di testo. [issue 351]{L2}{L1} Nuova funzione {{%dateformat.received()%}} {L2}{L1} Numerosi errori nei script sandbox sono stati corretti, inclusi {{messageRaw()}}, il supporto per parametri multipli, le variabili composite (con underscore) e i parametri riservati (con il prefisso {{$}}). Maggiori dettagli sugli script sono disponibili sul sito di supporto.{L2}{L1} Compatibilità con Thunderbird estesa fino alla versione 135.{L2}"
+    "message": "{P1}{boldStart}Modifiche all'accessibilità{boldEnd}{P2} {P1}Sto lavorando duramente per rendere SmartTemplates completamente accessibile tramite tastiera e lettori di schermo.{P2}{L1} Miglioramento dell'accessibilità: Rendi la finestra di dialogo Impostazioni navigabile tramite tastiera [issue 361] {L2}{L1} Compatibile con Thunderbird 137.* [issue 331].{L2} {L1} Nuova funzione: {{%dateformat.current()%}} [issue 356]{L2} {L1} Miglioramenti nel JavaScript sandboxed, più parametri contestuali come $priority e nuove funzioni {{composer_composeType()}} e {{composer_composeType()}} [issue 357] {L2}{L1} Imposta il fallback charset su UTF-8 per evitare il mojibake (testo distorto) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

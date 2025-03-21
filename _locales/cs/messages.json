@@ -896,7 +896,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ je nyní kompatibilní s nejnovější verzí Thunderbirdu ($compatibleVer$). To si vyžádalo řadu podstatných změn a přepsání mnoha funkcí.{P2}",
+    "message": "{P1} Nejnovější verze $addonName$ je nyní kompatibilní s Thunderbirdem ($compatibleVer$) a zahájila cestu ke zlepšení přístupnosti pro klávesnici a čtečky obrazovky – prvním krokem byla úprava všech stránek nastavení, další vylepšení budou brzy následovat! Podrobnou dokumentaci najdete v úplném seznamu změn na odkazu níže. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -908,7 +908,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Protože tato práce je výhradně financované z prodeje licencí, zvažte prosím nákup licence nebo obnovení předchozí, pokud máte zájem používat SmartTemplates v budoucnu."
+    "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat SmartTemplates v budoucnu."
   },
   "newsgr.label": {
     "message": "Mailová skupina"
@@ -917,11 +917,10 @@
     "message": "Ne"
   },
   "ongoing-work": {
-    "message": "Změny převodu $addonName$ na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi ESR  existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím.",
+    "message": "Abychom udrželi $addonName$ v souladu s měsíčními verzemi Thunderbirdu, musíme neustále kontrolovat chyby a nahrávat upravené verze. Prosím, pomozte nám s tím, jakmile vyzkoušíte funkčnost a budete si jisti, že zlepšuje vaši produktivitu!",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1263,7 +1262,7 @@
     "message": "Kupte si licenci."
   },
   "purchase-heading": {
-    "message": "Nákup licence!"
+    "message": "Podpora prostřednictvím licence"
   },
   "quoteLevel": {
     "message": "[nepovinné, číselné]: od které minimální úrovně nabídky začít"
@@ -1761,7 +1760,7 @@
     }
   },
   "support-suggestion": {
-    "message": "Aby $addonName$ zůstalo funkční a živé, udělejte to zásadní laskavost:",
+    "message": "Aby $addonName$ zůstal funkční a aktuální, zvažte jeho podporu:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2003,7 +2002,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 Opraven problém, kdy FiltaQuilla přestala přeposílat přes šablonu [issue 354] {L2}{L1} Nová funkce pro odstranění sekcí CSS stylů při vkládání citované původní e-mailové zprávy {{%quotePlaceHolder(nostyles)%}} [issue 331].{L2} {L1} Opraveno: Obecná nastavení účtů nebyla generována novou záložkou nastavení. Tento problém se týká především uživatelů, kteří si nedávno nainstalovali SmartTemplates a neměli nastavení ze starších verzí. [issue 340]{L2} {L1} Vylepšená kapitalizace pro dvojitá příjmení (například Tyler-Smith). [issue 343]{L2}{L1} Čárky ve schránce již nezpůsobují problémy u {{%header.set(…,clipboard)%}} a {{%matchTextFromBody(…,toclipboard)%}}. [issue 344]{L2}{L1} Opraveno: {{*selection*}} odstraňovalo obsah v textových uzlech. [issue 351]{L2}{L1} Nová funkce {{%dateformat.received()%}} {L2}{L1} Opraveno mnoho chyb v sandboxových skriptech, včetně {{messageRaw()}}, podpory více parametrů, složených proměnných (s podtržítky) a rezervovaných parametrů (s předponou {{$}}). Další podrobnosti o skriptech naleznete na stránce podpory.{L2}{L1} Kompatibilita s Thunderbirdem zvýšena na verzi 135.{L2}"
+    "message": "{P1}{boldStart}Změny přístupnosti{boldEnd}{P2} {P1}Aktuálně se intenzivně pracuje na tom, aby byl SmartTemplates plně přístupný pro klávesnici a čtečky obrazovky.{P2}{L1} Vylepšení přístupnosti: Umožnit navigaci v dialogu Nastavení pomocí klávesnice [issue 361] {L2}{L1} Kompatibilita s Thunderbird 137.* [issue 331].{L2} {L1} Nová funkce: {{%dateformat.current()%}} [issue 356]{L2} {L1} Vylepšení v pískovišťové JavaScriptu, více kontextových parametrů jako $priority a nové funkce {{composer_composeType()}} a {{composer_composeType()}} [issue 357] {L2}{L1} Nastavení záložní kódování na UTF-8 pro zabránění mojibake (znečistěný text) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

@@ -893,7 +893,7 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird ($compatibleVer$). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2}",
+    "message": "{P1} Najnovejša različica $addonName$ je zdaj združljiva s Thunderbirdom ($compatibleVer$) in je začela pot do boljše dostopnosti za tipkovnice in bralnike zaslona – prvi korak je bila posodobitev vseh strani nastavitev, kmalu pa sledijo še dodatne izboljšave! Za podrobno dokumentacijo preverite celoten dnevnik sprememb na spodnji povezavi. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -905,7 +905,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Ker je to delo izključno financira s prodajo licenc, razmislite o nakupu licence ali podaljšanju prejšnje, če vas zanima uporaba SmartTemplates v prihodnosti."
+    "message": "Ker je vsa dela na SmartTemplates in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
   },
   "newsgr.label": {
     "message": "Novičarske skupine"
@@ -914,11 +914,10 @@
     "message": "Ne"
   },
   "ongoing-work": {
-    "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta ESR je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",
+    "message": "Da ohranimo $addonName$ v usklajenosti z mesečnimi izdaje Thunderbirda, moramo nenehno preverjati napake in nalagati prilagojene različice. Prosimo, pomagajte nam pri tem, ko boste preizkusili funkcionalnost in se prepričali, da izboljša vašo produktivnost!",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1260,7 +1259,7 @@
     "message": "Nakup licence."
   },
   "purchase-heading": {
-    "message": "Nakup licence!"
+    "message": "Podpora preko licence"
   },
   "quoteLevel": {
     "message": "[izbirno, numerično]: od katere najnižje ravni ponudbe naj se začne"
@@ -1767,7 +1766,7 @@
     }
   },
   "support-suggestion": {
-    "message": "Da bo $addonName$ ostal funkcionalen in živ, storite to zelo pomembno:",
+    "message": "Da bo $addonName$ ostal funkcionalen in posodobljen, razmislite o njegovi podpori:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2018,7 +2017,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 Odpravljena težava, pri kateri FiltaQuilla ni več posredovala prek predloge [issue 354] {L2}{L1} Ny funktion för att ta bort CSS-stilsektioner vid infogning av den citerade delen av det ursprungliga e-postmeddelandet {{%quotePlaceHolder(nostyles)%}} [issue 331].{L2} {L1} Fixat: Allmänna kontoinställningar genererades inte av den nya inställningsfliken. Detta problem påverkar främst användare som nyligen har installerat SmartTemplates och inte hade inställningar från tidigare versioner. [issue 340]{L2} {L1} Förbättrad användning av versaler för dubbelnamn (som Tyler-Smith). [issue 343]{L2}{L1} Kommatecken i urklipp orsakar inte längre problem med {{%header.set(…,clipboard)%}} och {{%matchTextFromBody(…,toclipboard)%}}. [issue 344]{L2}{L1} Fixat: {{*selection*}} klippte av innehållet i textnoder. [issue 351]{L2}{L1} Ny funktion {{%dateformat.received()%}} {L2}{L1} Flera fel i sandlådeskript har rättats, inklusive {{messageRaw()}}, stöd för flera parametrar, sammansatta variabler (med understreck) och reserverade parametrar (med prefix {{$}}). Mer information om skript finns på supportsidan.{L2}{L1} Thunderbird-kompatibilitet har höjts till version 135.{L2}"
+    "message": "{P1}{boldStart}Spremembe dostopnosti{boldEnd}{P2} {P1}Trdo delam, da bi SmartTemplates postali popolnoma dostopni za uporabnike tipkovnice in bralnike zaslona.{P2}{L1} Izboljšava dostopnosti: Omogočena navigacija po nastavitvah s tipkovnico [issue 361] {L2}{L1} Združljivo z Thunderbird 137.* [issue 331].{L2} {L1} Nova funkcija: {{%dateformat.current()%}} [issue 356]{L2} {L1} Izboljšave v Sandboxed JavaScript, več kontekstualnih parametrov, kot je $priority in nove funkcije {{composer_composeType()}} in {{composer_composeType()}} [issue 357] {L2}{L1} Nastavite privzeti niz znakov na UTF-8, da preprečite mojibake (neberljiv tekst) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

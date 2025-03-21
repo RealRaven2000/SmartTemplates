@@ -903,7 +903,7 @@
     "message": "最新ニュース"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ は、Thunderbird の最新バージョン (115.2.3) と互換性があります。 これには、多数の大幅な変更と多くの関数の書き直しが必要でした。{P2} ",
+    "message": "{P1} $addonName$ の最新バージョンは Thunderbird ($compatibleVer$) に対応し、キーボードやスクリーンリーダーのアクセシビリティ向上への取り組みを開始しました。最初のステップとして、設定ページ全体が変更され、今後さらに改善が予定されています！ 詳細なドキュメントについては、以下のリンクから完全な変更履歴をご確認ください。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -915,14 +915,13 @@
     }
   },
   "newsSection.license": {
-    "message": "この作業はライセンスの販売によってのみ賄われているため、将来 SmartTemplates を使用することに興味がある場合は、ライセンスを購入するか、以前のライセンスを更新することを検討してください。"
+    "message": "SmartTemplates のすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
   },
   "ongoing-work": {
-    "message": "$addonName$ を新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。次の ESR バージョンにはさらに多くの変更があります。このような複雑なアドオンでは、コストのかかる作業が避けられなくなります。私たちを支援してください。",
+    "message": "$addonName$ を Thunderbird の月次リリースと同期させるためには、常に不具合をチェックして修正されたバージョンをアップロードする必要があります。機能を試して、あなたの生産性が向上することを確認したら、ぜひ私たちを手伝ってください！",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1243,7 +1242,7 @@
     "message": "ライセンスを購入する。"
   },
   "purchase-heading": {
-    "message": "ライセンスを購入しています！"
+    "message": "ライセンスによるサポート"
   },
   "quoteLevel": {
     "message": "[オプション, 数値]: 開始する引用レベルの最小値"
@@ -1741,7 +1740,7 @@
     }
   },
   "support-suggestion": {
-    "message": "$addonName$ が機能し、存続できるように、重要なお願いがあります。",
+    "message": "$addonName$ を機能的で最新の状態に保つために、ご支援をご検討ください:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1989,7 +1988,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 FiltaQuilla がテンプレートを使用して転送しなくなった問題を修正しました [issue 354] {L2}{L1} 元のメールの引用部分を挿入する際にCSSスタイルセクションを削除する新機能 {{%quotePlaceHolder(nostyles)%}} を追加しました [issue 331].{L2} {L1} 修正済み: 共通アカウント設定が新しい設定タブによって生成されていませんでした。この問題は、最近SmartTemplatesをインストールし、以前のバージョンの設定がないユーザーに主に影響します。 [issue 340]{L2} {L1} ハイフンを含む名前（例: Tyler-Smith）の大文字小文字変換を改善しました。 [issue 343]{L2}{L1} クリップボード内のカンマが {{%header.set(…,clipboard)%}} および {{%matchTextFromBody(…,toclipboard)%}} で問題を引き起こさなくなりました。 [issue 344]{L2}{L1} 修正済み: {{*selection*}} がテキストノード内の内容を切り捨てていました。 [issue 351]{L2}{L1} 新機能 {{%dateformat.received()%}} {L2}{L1} サンドボックススクリプトにおいて、多数の修正が行われました。これには、{{messageRaw()}}, 複数のパラメータサポート, 複合変数 (アンダースコア付き), および予約パラメータ ({{$}}プレフィックス付き) が含まれます。スクリプトの詳細はサポートサイトをご参照ください。{L2}{L1} Thunderbird の互換性がバージョン135まで拡張されました。{L2}"
+    "message": "{P1}{boldStart}アクセシビリティの変更{boldEnd}{P2} {P1}現在、SmartTemplatesをキーボードおよびスクリーンリーダーに完全に対応させるために一生懸命取り組んでいます。{P2}{L1} アクセシビリティの改善: 設定ダイアログをキーボードで操作可能に [issue 361] {L2}{L1} Thunderbird 137.* に対応 [issue 331].{L2} {L1} 新機能: {{%dateformat.current()%}} [issue 356]{L2} {L1} サンドボックス化されたJavaScriptの改善、$priorityのようなコンテキストパラメータと、新しい関数 {{composer_composeType()}} および {{composer_composeType()}} [issue 357] {L2}{L1} UTF-8にフォールバック文字セットを設定して、mojibake（文字化け）を防止 [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

@@ -906,16 +906,19 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1}La majoria he completat la conversió de $addonName$ per a la nova interfície d'usuari del Thunderbird SuperNova ($compatibleVer$). A partir d'ara, podeu actualitzar Thunderbird a la nova versió 115.{P2} {P1}Per obtenir més detalls i donar comentaris sobre els canvis i el treball en curs, llegiu: [issue 213]{P2}",
+    "message": "{P1} L'última edició de $addonName$ ara és compatible amb Thunderbird ($compatibleVer$) i ha començat el seu camí cap a una millor accessibilitat per a teclats i lectors de pantalla; el primer pas ha estat modificar totes les pàgines de configuració, amb més millores properament! Per a documentació detallada, consulteu el registre complet de canvis en l'enllaç següent. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
       }
     }
   },
   "newsSection.license": {
-    "message": "Com que aquest treball és exclusivament finançat per la venda de llicències, considereu comprar una llicència o renovar-ne l'anterior si esteu interessat a utilitzar SmartTemplates en el futur."
+    "message": "Vzhledem k tomu, že veškerá práce na SmartTemplates a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
   },
   "newsgr.label": {
     "message": "Grups de notícies"
@@ -924,11 +927,10 @@
     "message": "Non"
   },
   "ongoing-work": {
-    "message": "Les modificacions per convertir $addonName$ al nou model de programació van trigar setmanes i van ser costoses. Hi ha molts més canvis per a la propera versió ESR . Amb un complement complex com aquest, es fa inevitable un treball car. Ajudeu-nos amb això.",
+    "message": "Per mantenir $addonName$ sincronitzat amb les actualitzacions mensuals de Thunderbird, hem de comprovar constantment que no hi hagi errors i pujar versions adaptades. Si us plau, ajuda'ns amb això un cop hagis provat la funcionalitat i estiguis segur que millora la teva productivitat!",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1270,7 +1272,7 @@
     "message": "Compreu una llicència."
   },
   "purchase-heading": {
-    "message": "Comprant una llicència"
+    "message": "Suportant mitjançant una llicència"
   },
   "quoteLevel": {
     "message": "[opcional, numèric]: el nivell de cotització mínim per començar"
@@ -1774,7 +1776,7 @@
     }
   },
   "support-suggestion": {
-    "message": "Perquè $addonName$ es mantingui viu i funcional, faci un favor vital:",
+    "message": "Per mantenir $addonName$ funcional i actualitzat, si us plau, considereu donar-li suport:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2019,7 +2021,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 S'ha solucionat un problema amb FiltaQuilla que ja no reenviava mitjançant una plantilla [issue 354] {L2}{L1} Nova funcionalitat per eliminar seccions d'estils CSS quan s'insereix la part citada del correu original {{%quotePlaceHolder(nostyles)%}} [issue 331].{L2} {L1} Solucionat: Els ajustos comuns del compte no es generaven a la nova pestanya de configuració. Aquest error afecta principalment els usuaris que han instal·lat recentment SmartTemplates i no tenien configuracions d'anteriors versions. [issue 340]{L2} {L1} Millora en la capitalització de noms compostos (com ara Tyler-Smith). [issue 343]{L2}{L1} Les comes al porta-retalls ja no causen problemes a {{%header.set(…,clipboard)%}} i {{%matchTextFromBody(…,toclipboard)%}}. [issue 344]{L2}{L1} Solucionat: {{*selection*}} tallava contingut en nodes de text. [issue 351]{L2}{L1} Nova funció {{%dateformat.received()%}} {L2}{L1} S'han solucionat nombrosos errors en els scripts sandbox, incloent {{messageRaw()}}, suport per a múltiples paràmetres, variables compostes (amb guions baixos) i paràmetres reservats (amb el prefix {{$}}). Podeu trobar més detalls sobre els scripts al lloc web de suport.{L2}{L1} Compatibilitat amb Thunderbird augmentada fins a la versió 135.{L2}"
+    "message": "{P1}{boldStart}Canvis d'accessibilitat{boldEnd}{P2} {P1}Estic treballant activament per fer que SmartTemplates sigui completament accessible per al teclat i lectors de pantalla.{P2}{L1} Millora d'accessibilitat: Feu el quadre de diàleg de configuració navegable amb el teclat [issue 361] {L2}{L1} Fet compatible amb Thunderbird 137.* [issue 331].{L2} {L1} Nova funció: {{%dateformat.current()%}} [issue 356]{L2} {L1} Millores en JavaScript en sandbox, més paràmetres contextuals com $priority i noves funcions {{composer_composeType()}} i {{composer_composeType()}} [issue 357] {L2}{L1} Configurar la codificació de caràcters de recuperació a UTF-8 per evitar el mojibake (text distorsionat) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

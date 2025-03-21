@@ -881,7 +881,7 @@
     "message": "Últimas noticias"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ ahora es compatible con la última versión de Thunderbird ($compatibleVer$). Esto requirió numerosos cambios sustanciales y la reescritura de muchas funciones.{P2}",
+    "message": "{P1} La última edición de $addonName$ ahora es compatible con Thunderbird ($compatibleVer$) y ha comenzado su camino hacia una mejor accesibilidad para teclados y lectores de pantalla; el primer paso fue modificar todas las páginas de configuración, con más mejoras próximamente. Para obtener documentación detallada, consulte el registro completo de cambios en el enlace a continuación. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -899,11 +899,10 @@
     "message": "Grupos de noticias"
   },
   "ongoing-work": {
-    "message": "Las modificaciones para convertir $addonName$ al nuevo modelo de programación tomaron semanas y resultaron costosas. Hay muchos más cambios para la próxima versión ESR. Con un complemento complejo como este, el trabajo costoso se vuelve inevitable. Ayúdanos con esto.",
+    "message": "Para mantener $addonName$ sincronizado con las actualizaciones mensuales de Thunderbird, tenemos que estar revisando constantemente si hay fallos y subir versiones adaptadas. ¡Por favor ayúdanos con esto una vez que hayas probado la funcionalidad y estés seguro de que mejora tu productividad!",
     "placeholders": {
       "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
+        "content": "$1"
       }
     }
   },
@@ -1221,7 +1220,7 @@
     "message": "Compra una licencia."
   },
   "purchase-heading": {
-    "message": "Comprar una licencia"
+    "message": "Apoyo mediante una licencia"
   },
   "quoteLevel": {
     "message": "[opcional, numérico]: desde qué nivel mínimo de presupuesto comenzar"
@@ -1722,7 +1721,7 @@
     }
   },
   "support-suggestion": {
-    "message": "Para que $addonName$ permanezca funcional y vivo, hágalo un favor vital:",
+    "message": "Para mantener $addonName$ funcional y actualizado, considere apoyarlo:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1964,7 +1963,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} 4.10.1 Se corrigió un problema con FiltaQuilla que ya no reenviaba mediante plantilla [issue 354] {L2}{L1} Nueva funcionalidad para eliminar secciones de estilo CSS al insertar la parte citada del correo original {{%quotePlaceHolder(nostyles)%}} [issue 331].{L2} {L1} Corregido: La configuración común de cuentas no se generaba en la nueva pestaña de configuración. Este error afecta principalmente a los usuarios que instalaron recientemente SmartTemplates y no tenían configuraciones de versiones anteriores. [issue 340]{L2} {L1} Mejora en la capitalización de nombres compuestos (como Tyler-Smith). [issue 343]{L2}{L1} Las comas en el portapapeles ya no causan problemas en {{%header.set(…,clipboard)%}} y {{%matchTextFromBody(…,toclipboard)%}}. [issue 344]{L2}{L1} Corregido: {{*selection*}} recortaba contenido en nodos de texto. [issue 351]{L2}{L1} Nueva función {{%dateformat.received()%}} {L2}{L1} Se corrigieron numerosos errores en los scripts sandbox, incluyendo {{messageRaw()}}, soporte para múltiples parámetros, variables compuestas (con guiones bajos) y parámetros reservados (con el prefijo {{$}}). Más detalles sobre los scripts están disponibles en el sitio de soporte.{L2}{L1} Compatibilidad con Thunderbird ampliada hasta la versión 135.{L2}"
+    "message": "{P1}{boldStart}Cambios de accesibilidad{boldEnd}{P2} {P1}Actualmente estoy trabajando duro para hacer que SmartTemplates sea completamente accesible para el teclado y los lectores de pantalla.{P2}{L1} Mejora de accesibilidad: Hacer que el cuadro de diálogo de configuración sea navegable con el teclado [issue 361] {L2}{L1} Compatible con Thunderbird 137.* [issue 331].{L2} {L1} Nueva función: {{%dateformat.current()%}} [issue 356]{L2} {L1} Mejoras en JavaScript en un entorno aislado, más parámetros contextuales como $priority y nuevas funciones {{composer_composeType()}} y {{composer_composeType()}} [issue 357] {L2}{L1} Configurar la codificación de caracteres de reserva en UTF-8 para evitar el mojibake (texto distorsionado) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."
