@@ -10,4 +10,4 @@ const discountRate = {
 }
 
 // => to localize update special-offer-expiry in messages.json!
-const compatibleVer = "135.*"; // Thunderbird for newsSection
+const compatibleVer = "136.*"; // Thunderbird for newsSection

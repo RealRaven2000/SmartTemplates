@@ -2059,7 +2059,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Accessibility Enhancement: Make Settings dialog keyboard navigateable [issue 361] {L2}{L1} Made compatible with Thunderbird 136.* [issue 331].{L2} {L1} New function: {{%dateformat.current()%}} [issue 356]{L2} {L1} Improvements in Sandboxed JavaScript, more contextual parameters such as $priority and new functions {composer_composeType()} and {composer_composeType()} [issue 357] {L2}{L1} Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text) [issue 338]{L2}"
+    "message": "{P1}{boldStart}Accessibility Changes{boldEnd}{P2} {P1}I am currnetly working hard to make SmartTemplates fully accessible to keyboard and screen readers.{P2}{L1} Accessibility Enhancement: Make Settings dialog keyboard navigateable [issue 361] {L2}{L1} Made compatible with Thunderbird 136.* [issue 331].{L2} {L1} New function: {{%dateformat.current()%}} [issue 356]{L2} {L1} Improvements in Sandboxed JavaScript, more contextual parameters such as $priority and new functions {composer_composeType()} and {composer_composeType()} [issue 357] {L2}{L1} Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."
