@@ -228,7 +228,7 @@ END LICENSE BLOCK
     # [issue 354] Regression in 4.10: automatic forwarding with FiltaQuilla fails
 
   Version 4.11 - WIP
-    # made compatible with Tb 136.*
+    # made compatible with Tb 137.*
     # [issue 361] Enhancement: Make Settings dialog accessible (keyboard / screenreader friendly)
     # [issue 358] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
     # [issue 356] new %dateformat.current()%
