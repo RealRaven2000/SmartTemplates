@@ -323,6 +323,7 @@ div.btnLicenseContainer #btnLicense {
   #preferencesContainer {
     overflow-y: auto; /* was scroll */
   }
+  #devLegacy, #conversion78 { display: none; }
 }
 
 @media only screen and (max-height: 480px)  {
