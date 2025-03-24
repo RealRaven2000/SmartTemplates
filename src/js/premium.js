@@ -5,7 +5,6 @@ var sales_end_lbl = "February 10th";  // .saleEnd
 var sales_end = new Date("2025-02-10");
 
 /* functions that remove elements depending on the user type (from user=pro querystring ) */
-
 var removableItems = [
 	"smartTemplateProUser",
 	"smartTemplateFreeUser",
@@ -49,40 +48,39 @@ var removedItems = [];
 	}
 	
 	
-	document.addEventListener("DOMContentLoaded", function(event) { 
+	document.addEventListener("DOMContentLoaded", async function(event) { 
 		var user = getQueryVariable("user");
 		if (typeof user!='undefined') {
 			// propagate user type to all internal links
 			if (user) {
-				var navMenu = document.getElementsByClassName('navigation-list');
+				const navMenu = document.getElementsByClassName('navigation-list');
 				if (navMenu.length) {
-					var links = navMenu[0].children;
+					const links = navMenu[0].children;
 					for (var i=0; i<links.length; i++) {
 						var href = links[i].getAttribute("href");
-						if (href && href.indexOf("user="==-1)) {
-							if (href.indexOf("?"==-1)) {
-								links[i].setAttribute("href", href + "?user=" + user);
-							} else {
-								links[i].setAttribute("href", href + "&user=" + user);
+						if (!href) continue;
+						if (href.includes("user")) continue;
+						if (href.includes("?")) {
+							links[i].setAttribute("href", href + "&user=" + user);
+						} else {
+							links[i].setAttribute("href", href + "?user=" + user);
 						}
-							
 					}
 				}
 			}
-			}
 			
       // new class: QuickFoldersStdUser
-			
 			switch (user) {
         case 'std':
 				case 'pro':
         case 'stdRenew':
 				  removeClassItems('shilling');
 					removeClassItems('donateButton');
-          if (user == 'pro')
+          if (user == 'pro') {
             removeClassItems('smartTemplateStdUser');
-          else 
+					} else {
             removeClassItems('smartTemplateProUser');
+					}
 					removeClassItems('smartTemplateFreeUser');
 				  removeClassItems('smartTemplateProRenew');
 					break;
@@ -96,7 +94,6 @@ var removedItems = [];
 				  removeClassItems('smartTemplateProRenew');
 				  removeClassItems('smartTemplateProUser');
 			}
-			
 		}
 		
 		// remove sales stuff
@@ -109,22 +106,22 @@ var removedItems = [];
 					}
 				}
 			);
-		} else {
-			// update all sales items:
-			let saleLabels = document.querySelectorAll(".saleName");
-			for (let s of saleLabels) {
-				s.textContent = sales_name; // e.g. "AUTUMN SALE"
-			}
-			let saleStarts =  document.querySelectorAll(".saleStart");
-			for (let s of saleStarts) {
-				s.textContent = sales_start_lbl; // e.g. "September 25th"
-			}			
-			let saleEnds =  document.querySelectorAll(".saleEnd");
-			for (let s of saleEnds) {
-				s.textContent = sales_end_lbl; // e.g. "October 9th"
-			}			
-		}
+			return;
+		} 
 
+		// update all sales items:
+		let saleLabels = document.querySelectorAll(".saleName");
+		for (let s of saleLabels) {
+			s.textContent = sales_name; // e.g. "AUTUMN SALE"
+		}
+		let saleStarts =  document.querySelectorAll(".saleStart");
+		for (let s of saleStarts) {
+			s.textContent = sales_start_lbl; // e.g. "September 25th"
+		}			
+		let saleEnds =  document.querySelectorAll(".saleEnd");
+		for (let s of saleEnds) {
+			s.textContent = sales_end_lbl; // e.g. "October 9th"
+		}			
 	});
 	
 	
