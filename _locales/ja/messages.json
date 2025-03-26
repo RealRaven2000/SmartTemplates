@@ -70,6 +70,9 @@
   "aria.configSettings": {
     "message": "詳細設定 - 追加の設定を行うにはこちら。"
   },
+  "aria.escape": {
+    "message": "Escキーを押してこのウィンドウを閉じてください"
+  },
   "aria.moreInfo": {
     "message": "詳細情報"
   },

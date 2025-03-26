@@ -61,6 +61,24 @@
   "any.label": {
     "message": "Mikä tahansa otsakerivi"
   },
+  "aria.settings.nav": {
+    "message": "Asetussivut - paina Enter siirtyäksesi sivulle."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Sivu valittu."
+  },
+  "aria.accordion.header.expand": {
+    "message": "- paina Enter avataksesi osion."
+  },
+  "aria.configSettings": {
+    "message": "Lisäasetukset - lisäasetuksia varten."
+  },
+  "aria.escape": {
+    "message": "Paina Esc sulkeaksesi tämän ikkunan"
+  },
+  "aria.moreInfo": {
+    "message": "Lisätietoja"
+  },
   "attach.label": {
     "message": "Lisää tiedosto liitteenä"
   },
@@ -457,6 +475,9 @@
   },
   "fix_vartz_note.label": {
     "message": "Voidaan yhdistää %X:=sent% kanssa"
+  },
+  "fpFilterStyleSheet": {
+    "message": "Tyylitiedosto"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML-malli"
@@ -1206,20 +1227,30 @@
     "message": "[valinnainen] Lisää omat tyylisi, erotettuina puolipisteellä. Ilman tätä parametria SmartTemplates lisää 'display:none', jotta osa olisi automaattisesti näkymätön."
   },
   "preheader.text": {
-    "message": "Esikatselutekstin on oltava kaksoislainausmerkkien sisällä, jotka voivat myös sisältää avainsanan *leikepöytä*. Vaihtoehtoisesti voit käyttää $clipboardLiteral$ tai $selectionLiteral$ (jälkimmäinen toimii vain, kun sitä käytetään Smart Snippetistä)",
+    "message": "Esikatselutekstin on oltava kaksoislainausmerkeissä, ja se voi myös sisältää avainsanan $clipboardStarred$. Vaihtoehtoisesti voit käyttää suoraan $clipboardLiteral$ tai $selectionLiteral$ (viimeinen toimii vain Smart Snippetin kautta käytettynä).",
     "placeholders": {
       "clipboardLiteral": {
-        "content": "$1",
-        "example": "clipboard"
+        "content": "$1"
       },
       "selectionLiteral": {
-        "content": "$2",
-        "example": "\"*selection*\""
+        "content": "$2"
+      },
+      "clipboardStarred": {
+        "content": "$3"
       }
     }
   },
   "premiumConfig": {
     "message": "Maksulliset lisätoiminnot"
+  },
+  "pricing.section": {
+    "message": "Löytääksesi hintasi, valitse ensin jokin seuraavista vaihtoehdoista. Tämä avaa erillisen selainikkunan, jossa voit suorittaa ostoksen verkkokaupassa."
+  },
+  "pricing.section.hint": {
+    "message": "Huom: Hinta vaihtelee lisenssimallin, maan, ALV-kannan, nykyisten alennusten tai jo ostettujen lisenssien mukaan."
+  },
+  "pricing.title": {
+    "message": "Hinnoittelu"
   },
   "prompt.email": {
     "message": "Syötä sähköpostiosoite"
@@ -1831,7 +1862,15 @@
     "message": "Muuttaa tunnisteen fonttikokoa. Voi olla yksinkertainen desimaaliarvo, kuten 0.8, 1.0, 1.2, tai täydellinen CSS-arvo yksikköineen, kuten 100px, 0.6em, 14pt."
   },
   "tags.formatString": {
-    "message": "Mukautettu html-katkelma kunkin tunnisteen muotoiluun. Käytä $label$ ja $color$ lisätäksesi tunnisteen tekstin tai (heksadesimaalisen) värin."
+    "message": "Mukautettu html-katkelma kunkin tunnisteen muotoiluun. Käytä $label$ ja $color$ lisätäksesi tunnisteen tekstin tai (heksadesimaalisen) värin.",
+    "placeholders": {
+      "label": {
+        "content": "$label$"
+      },
+      "color": {
+        "content": "$color$"
+      }
+    }
   },
   "tags.intro": {
     "message": "Tämä muuttuja voi lisätä vastatun ja edelleenlähetetyn sähköpostin tunnisteet sähköpostin tekstiin."
@@ -1859,6 +1898,9 @@
   },
   "template.category": {
     "message": "Kategoria"
+  },
+  "template.category.docs": {
+    "message": "Vieraile tukisivustolla lukeaksesi kategorioista (englanniksi)"
   },
   "template.category.other": {
     "message": "Muut"

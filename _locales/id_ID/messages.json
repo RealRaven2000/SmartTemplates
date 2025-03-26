@@ -41,6 +41,9 @@
   "aria.configSettings": {
     "message": "Pengaturan lanjutan - untuk pengaturan tambahan."
   },
+  "aria.escape": {
+    "message": "Tekan Esc untuk menutup jendela ini"
+  },
   "aria.moreInfo": {
     "message": "Lebih banyak info"
   },

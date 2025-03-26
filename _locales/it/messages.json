@@ -70,6 +70,9 @@
   "aria.configSettings": {
     "message": "Configurazione avanzata - per impostazioni aggiuntive."
   },
+  "aria.escape": {
+    "message": "Premi Esc per chiudere questa finestra"
+  },
   "aria.moreInfo": {
     "message": "Maggiori informazioni"
   },

@@ -73,6 +73,9 @@
   "aria.configSettings": {
     "message": "Напредна подешавања - за додатна подешавања."
   },
+  "aria.escape": {
+    "message": "Притисните Esc да затворите овај прозор"
+  },
   "aria.moreInfo": {
     "message": "Више информација"
   },

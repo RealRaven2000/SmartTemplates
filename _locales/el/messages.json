@@ -76,6 +76,9 @@
   "aria.configSettings": {
     "message": "Προχωρημένες ρυθμίσεις - για επιπλέον ρυθμίσεις."
   },
+  "aria.escape": {
+    "message": "Πατήστε Escape για να κλείσετε αυτό το παράθυρο"
+  },
   "aria.moreInfo": {
     "message": "Περισσότερες πληροφορίες"
   },

@@ -76,6 +76,9 @@
   "aria.configSettings": {
     "message": "Avancerade inställningar - för ytterligare inställningar."
   },
+  "aria.escape": {
+    "message": "Tryck på Esc för att stänga detta fönster"
+  },
   "aria.moreInfo": {
     "message": "Mer information"
   },

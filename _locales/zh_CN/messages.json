@@ -73,6 +73,9 @@
   "aria.configSettings": {
     "message": "高级配置 - 用于其他设置。"
   },
+  "aria.escape": {
+    "message": "按 Esc 关闭此窗口"
+  },
   "aria.moreInfo": {
     "message": "更多信息"
   },

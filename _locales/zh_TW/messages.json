@@ -73,6 +73,9 @@
   "aria.configSettings": {
     "message": "進階設定 - 用於其他設定。"
   },
+  "aria.escape": {
+    "message": "按 Esc 鍵關閉此視窗"
+  },
   "aria.moreInfo": {
     "message": "更多資訊"
   },

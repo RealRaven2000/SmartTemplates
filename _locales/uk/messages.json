@@ -76,6 +76,9 @@
   "aria.configSettings": {
     "message": "Розширене налаштування - для додаткових налаштувань."
   },
+  "aria.escape": {
+    "message": "Натисніть Esc, щоб закрити це вікно"
+  },
   "aria.moreInfo": {
     "message": "Додаткова інформація"
   },

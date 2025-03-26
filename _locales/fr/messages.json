@@ -76,6 +76,9 @@
   "aria.configSettings": {
     "message": "Paramètres avancés - pour des paramètres supplémentaires."
   },
+  "aria.escape": {
+    "message": "Appuyez sur Échap pour fermer cette fenêtre"
+  },
   "aria.moreInfo": {
     "message": "Plus d'infos"
   },

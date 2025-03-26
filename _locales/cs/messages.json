@@ -70,6 +70,9 @@
   "aria.configSettings": {
     "message": "Pokročilé nastavení - pro další nastavení."
   },
+  "aria.escape": {
+    "message": "Stiskněte Esc pro zavření tohoto okna"
+  },
   "aria.moreInfo": {
     "message": "Více informací"
   },

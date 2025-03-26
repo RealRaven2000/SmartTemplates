@@ -76,6 +76,9 @@
   "aria.configSettings": {
     "message": "Advanced configuration - for additional settings."
   },
+  "aria.escape": {
+    "message": "Press Escape to close this window"
+  },
   "aria.moreInfo": {
     "message": "More info"
   },
@@ -110,7 +113,7 @@
     "message": "I want to renew my license"
   },
   "btn-upgrade-to-pro": {
-    "message": "I want to Upgrade my License"
+    "message": "I want to upgrade my license"
   },
   "btn-want-a-license": {
     "message": "I want to buy a license"

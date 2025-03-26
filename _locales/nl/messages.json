@@ -73,6 +73,9 @@
   "aria.configSettings": {
     "message": "Geavanceerde configuratie - voor aanvullende instellingen."
   },
+  "aria.escape": {
+    "message": "Druk op Esc om dit venster te sluiten"
+  },
   "aria.moreInfo": {
     "message": "Meer info"
   },
