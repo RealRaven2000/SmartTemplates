@@ -4083,16 +4083,15 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         //prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
         if (
           x === null ||
-          x === undefined ||
           typeof x === "number" ||
           x instanceof Date ||
           x === 0 ||
           x === ""
         ) {
-          x = x.toString();
+          x = x?.toString() || "";
         } else {
           console.log("Unexpected result after Cu.evalInSandbox: ", x);
-          x = "security violation - see error console";
+          x = "eval Problem - see error console";
         }
       } catch (ex) {
         if (ex instanceof ReferenceError) {
