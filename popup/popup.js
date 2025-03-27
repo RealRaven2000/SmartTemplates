@@ -10,41 +10,52 @@ END LICENSE BLOCK */
 
 // import { sales_end } from "./sales.js";
 
+async function getSalesEnd() {
+  const overrideSale = await messenger.LegacyPrefs.getPref(
+    "extensions.smartTemplate4.debug.saleDate"
+  );
+  if (overrideSale) {
+    return new Date(overrideSale);
+  }
+  // sales_end is currently defined in sales.js
+  return new Date(sales_end.getTime() + 86400000);
+}	
+
+
 function hide(id) {
   let el = document.getElementById(id);
-  if (el) {
-    el.setAttribute('collapsed',true);
-    return el;
-  }
-  return null;
+  if (!el) return null;
+  el.hidden = true; // Use property instead of setAttribute
+  return el;
 }
+
 function hideSelectorItems(cId) {
   let elements = document.querySelectorAll(cId);
   for (let el of elements) {
-    el.setAttribute('collapsed',true);
+    el.hidden = true; 
   }
 }
+
 function show(id) {
   let el = document.getElementById(id);
-  if (el) {
-    el.setAttribute('collapsed',false);
-    return el;
-  }
-  return null;
+  if (!el) return null;
+  el.hidden = false; // Use property instead of removeAttribute
+  return el;
 }
+
 function showSelectorItems(cId) {
   let elements = document.querySelectorAll(cId);
   for (let el of elements) {
-    el.setAttribute('collapsed',false);
+    el.hidden = false; // Use property instead of removeAttribute
   }
 }
+
 
 function showSpecialOfferItem(id) {
   show(id);  // 'specialOfferRenew'
   hide('newsHead');
   hide('newsDetail');
   hide('news-license');
-
 }
 
 function showSalesItems(isSale, licenseInfo) {
@@ -157,21 +168,42 @@ function showSalesItems(isSale, licenseInfo) {
  
 }
 
+function formatAll(txt) {
+  let localizedMsg = txt.replace(/<(.*?)>/g, "<span class='htmltag' />&lt;$1&gt;</span>");
+  // added simple <tag> support
+  return localizedMsg
+    .replace(/\{boldStart\}/g, "<b>")
+    .replace(/\{boldEnd\}/g, "</b>")
+    .replace(/\{hr\}/g, "<hr>")
+    .replace(/\{italicStart\}/g, "<i>")
+    .replace(/\{italicEnd\}/g, "</i>")
+    .replace(/\{\{(%.*?%)\}\}/g, "<code>$1</code>")
+    .replace(/\{\{(.*?)\}\}/g, "<code param>$1</code>")
+    .replace(/\{L1\}/g, "<li>")
+    .replace(/\{L2\}/g, "</li>")
+    .replace(/\{P1\}/g, "<p>")
+    .replace(/\{P2\}/g, "</p>")
+    .replace(/\{S1\}/g, "</ul> <h3 class='section'>")
+    .replace(/\{S2\}/g, "</h3> <ul>")
+    .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1 href='#'>[issue $1]</a>")
+    .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys
+    .replaceAll("''", '"');
+  //{S1} new section / list with title {S2}.
+}
 
-function isSale() {
+
+async function isSale() {
   const currentTime = new Date();
-  // sales_end is currently defined in sales.js
-  const endDate = new Date(sales_end.getTime() + 86400000);
+  const endDate = await getSalesEnd(); // uses sales_end
   const isSale = currentTime < endDate;
   return isSale;
 }
 
 async function updateActions(addonName) {
-  let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+  let licenseInfo = await messenger.runtime.sendMessage({command: "getLicenseInfo"});
   
   // LICENSING FLOW
   let isStandardUser = (licenseInfo.keyType == 2);
-        
 
   // renew-your-license - already collapsed
   // renewLicenseListItem - already collapsed
@@ -183,7 +215,7 @@ async function updateActions(addonName) {
   
   hideSelectorItems('.donations');
   
-  let isActionList = showSalesItems(isSale(), licenseInfo);
+  let isActionList = showSalesItems(await isSale(), licenseInfo);
   if (!isActionList) {
     hide('actionBox');
   } 
@@ -212,4 +244,37 @@ async function updateActions(addonName) {
     {height: newHeight}
   );
   
+}
+
+// Updates the element's content without triggering announcements by screen readers
+function ariaPoliteUpdate(el, text, isHtml = false) {
+  if (!el) return;
+  
+  // Temporarily set the aria-live attribute to "polite"
+  el.setAttribute("aria-live", "polite");
+
+  // Update content based on whether it's HTML or plain text
+  if (isHtml) {
+    el.innerHTML = text;
+  } else {
+    el.innerText = text;
+  }
+
+  // Remove the aria-live attribute after the update
+  el.removeAttribute("aria-live");
+}
+
+function addAriaHint() {
+  const splashHint = document.getElementById("splash-hint");
+  // Temporarily remove aria-hidden to make the hint accessible for screen readers
+  splashHint.removeAttribute("aria-hidden");
+
+  setTimeout(() => {
+    splashHint.textContent = `${browser.i18n.getMessage("aria.escape")}`;
+
+    // Optionally, re-hide it after a brief time if it's not meant to stay visible
+    setTimeout(() => {
+      splashHint.setAttribute("aria-hidden", "true");
+    }, 3000); // Adjust delay time as needed
+  }, 300); // Slight delay to let the title be read first
 }

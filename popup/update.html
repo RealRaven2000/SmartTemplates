@@ -3,7 +3,7 @@
   <head>
   	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  	<title id="window-title">__MSG_window-title__</title>
+  	<title id="window-title" aria-hidden="true">__MSG_window-title__</title>
   	<link rel="stylesheet" href="popup.css" type="text/css">
 		<script type="application/javascript" src="sales.js"></script>
     <script type="application/javascript" src="popup.js"></script>
@@ -13,7 +13,9 @@
     
   </head>
   <body>
-    <div id="innerwrapper">
+    <div id="innerwrapper" aria-describedby="splash-hint" aria-labelledby="heading-installed">
+      <!-- Accessibility: -->
+      <p id="splash-hint" aria-hidden="true" aria-live="assertive" class="visually-hidden ">__Msg_aria.escape__</p>
       <h1 id="heading-updated"> __MSG_heading-updated__</h1>
       <p>
         <span id="thanks-for-updating-intro">__MSG_thanks-for-updating-intro__</span>
@@ -25,7 +27,7 @@
         <div id="newsDetail">__MSG_newsSection__</div>
         <p id="news-license">__MSG_newsSection.license__</p>
 
-        <div id="specialOffer" class="specialOffer" collapsed="true">
+        <div id="specialOffer" class="specialOffer" hidden>
           <img id="bargainIcon" class="bargainIcon" src="bargain33.png" />
           <p class="specialOfferIntro">__MSG_special-offer-intro__</p>
           <p id="specialOfferTxt">__MSG_special-offer-content__</p>
@@ -38,12 +40,12 @@
           <p id="offerStandardUpgrade">__MSG_license-is-standard__</p>
           <p class="actionlinks">
             <a id="upgrade" href="#">__MSG_btn-upgrade-to-pro__</a>
-            <a id="renewstandard" href="#" collapsed="true">__MSG_btn-renew-license__</a>
+            <a id="renewstandard" href="#" hidden>__MSG_btn-renew-license__</a>
           </p>        
           <p class="featureComparison">__MSG_licenseComparison__</p>
         </div>
         
-        <div id="specialOfferRenew" class="specialOffer" collapsed="true">
+        <div id="specialOfferRenew" class="specialOffer" hidden>
 	        <img id="bargainRenewIcon" class="bargainIcon" src="bargain25new.png" />
 	        <p class="specialOfferIntro">__MSG_special-offer-intro__</p>
 	        <p id="specialOfferRenewTxt">__MSG_special-offer-renew__</p>
@@ -78,8 +80,8 @@
         <div id="actionBox">       
           <ul class="actions">
             <li id="purchaseLicenseListItem"> __MSG_purchase-a-license__ </li>
-            <li id="renewLicenseListItem" collapsed="true"> __MSG_renew-your-license__ </li>
-            <li id="extendLicenseListItem" collapsed="true"> __MSG_extend-your-license__ </li>
+            <li id="renewLicenseListItem" hidden> __MSG_renew-your-license__ </li>
+            <li id="extendLicenseListItem" hidden> __MSG_extend-your-license__ </li>
             <li class="donations"> __MSG_donate__</li>
           </ul>
         </div>
@@ -96,9 +98,9 @@
         
       <p class="actionlinks">
         <a id="register" href="#">__MSG_btn-want-a-license__</a>
-        <a id="extend" collapsed="true" href="#">__MSG_btn-extend-license__</a>
-        <a id="upgrade" collapsed="true" href="#">__MSG_btn-upgrade-to-pro__</a>
-        <a id="renew" collapsed="true" href="#">__MSG_btn-renew-license__</a>
+        <a id="extend" hidden href="#">__MSG_btn-extend-license__</a>
+        <a id="upgrade" hidden href="#">__MSG_btn-upgrade-to-pro__</a>
+        <a id="renew" hidden href="#">__MSG_btn-renew-license__</a>
       </p>  
         
       <div  class="donations">        

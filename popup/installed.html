@@ -2,68 +2,83 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-    <title id="window-title">__MSG_window-title__</title>
+    <!-- stop multiple re-reading of title? -->
+    <title id="window-title" aria-hidden="true">__MSG_window-title__</title>
     <link rel="stylesheet" href="popup.css" type="text/css">
+  </head>
+  <body>
+    <div id="innerwrapper" aria-describedby="splash-hint" aria-labelledby="heading-installed">
+      <h1 id="heading-installed">__MSG_heading-installed__</h1>
+      <p>
+        <span id="thanks-for-installing-intro">__MSG_thanks-for-installing-intro__</span>
+        <span id="active-version-info">__MSG_active-version-info__</span>
+      </p>
+      <!-- Accessibility: -->
+      <p id="splash-hint" aria-live="assertive" aria-hidden="true" class="visually-hidden ">__MSG_aria.escape__</p>
+
+      <p id="licenseExtended">
+        __MSG_license-is-extended__
+      </p>
+      
+      <div id="newsSection" class="importantInfo announcement">
+        <h2 id="newsHead">__MSG_newsHead__</h2>
+        <div id="newsDetail">__MSG_newsSection__</div>
+        <p>
+          __MSG_whats-new-intro__
+          <span class="actionlinks"><a id="whatsNew" href="#">__MSG_whats-new-btn__</a></span>
+        </p>
+      </div>  
+
+      <p id="support-suggestion">
+        __MSG_support-suggestion__
+      </p>
+
+
+      <ul class="actions">
+        <li id="purchaseLicenseListItem" > __MSG_purchase-a-license__ </li>
+        <li id="renewLicenseListItem" hidden> __MSG_renew-your-license__ </li>
+        <li id="extendLicenseListItem" hidden> __MSG_extend-your-license__ </li>
+      </ul>
+        
+      <h2>__MSG_purchase-heading__</h2>
+    
+      <p>
+        <span id="support-preference">__MSG_support-preference__</span>
+      </p>
+      <p>
+        <span id="ongoing-work">__MSG_ongoing-work__</span>
+      </p>
+        
+      <p class="actionlinks">
+        <a id="register" href="#">__MSG_btn-want-a-license__</a>
+        <a id="extend" href="#" hidden>__MSG_btn-extend-license__</a>
+        <a id="upgrade" href="#" hidden>__MSG_btn-upgrade-to-pro__</a>
+        <a id="renew" href="#" hidden>__MSG_btn-renew-license__</a>
+      </p>  
+      
+        
+      <h2>__MSG_donate-heading__</h2>
+      
+      <p>
+        __MSG_cost-of-independence__
+        __MSG_mozillas-basic-platform__
+      </p>
+      
+      <p> __MSG_addon-authors-struggle__ </p>
+        
+      <p class="actionlinks">
+        <a id="donate" href="#">__MSG_btn-want-to-donate__</a>
+      </p>
+    
+
+    </div>
+
     <script type="application/javascript" src="sales.js"></script>
     <script type="application/javascript" src="popup.js"></script>
     <script type="application/javascript" src="animation.js"></script>
     <script type="application/javascript" src="installed.js"></script>
     <script type="application/javascript" src="../chrome/content/i18n.js"></script>
-  
-  </head>
-  <body>
-    <div id="innerwrapper">
-      <h1 id="heading-installed">__MSG_heading-installed__</h1>
-        <p>
-          <span id="thanks-for-installing-intro">__MSG_thanks-for-installing-intro__</span>
-          <span id="active-version-info">__MSG_active-version-info__</span>
-        </p>
-        
-        <p id="licenseExtended">
-          __MSG_license-is-extended__
-        </p>
-        
-        <p id="support-suggestion">
-          __MSG_support-suggestion__
-        </p>
-        <ul class="actions">
-          <li id="purchaseLicenseListItem" > __MSG_purchase-a-license__ </li>
-          <li id="renewLicenseListItem" collapsed="true"> __MSG_renew-your-license__ </li>
-          <li id="extendLicenseListItem" collapsed="true"> __MSG_extend-your-license__ </li>
-        </ul>
-          
-        <h2>__MSG_purchase-heading__</h2>
-      
-        <p>
-          <span id="support-preference">__MSG_support-preference__</span>
-        </p>
-        <p>
-          <span id="ongoing-work">__MSG_ongoing-work__</span>
-        </p>
-          
-        <p class="actionlinks">
-          <a id="register" href="#">__MSG_btn-want-a-license__</a>
-          <a id="extend" href="#" collapsed="true">__MSG_btn-extend-license__</a>
-          <a id="upgrade" href="#" collapsed="true">__MSG_btn-upgrade-to-pro__</a>
-          <a id="renew" href="#" collapsed="true">__MSG_btn-renew-license__</a>
-        </p>  
-       
-          
-        <h2>__MSG_donate-heading__</h2>
-        
-        <p>
-          __MSG_cost-of-independence__
-          __MSG_mozillas-basic-platform__
-        </p>
-        
-        <p> __MSG_addon-authors-struggle__ </p>
-          
-        <p class="actionlinks">
-          <a id="donate" href="#">__MSG_btn-want-to-donate__</a>
-        </p>
-    
 
-    </div>
+
   </body>
 </html>

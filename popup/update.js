@@ -73,72 +73,42 @@ END LICENSE BLOCK */
     }
   });  
 
-  function formatAll(txt) {
-    let localizedMsg = txt.replace(/<(.*?)>/g,"<span class='htmltag' />&lt;$1&gt;</span>");
-    // added simple <tag> support
-    return localizedMsg
-      .replace(/\{boldStart\}/g, "<b>")
-      .replace(/\{boldEnd\}/g, "</b>")
-      .replace(/\{hr\}/g, "<hr>")
-      .replace(/\{italicStart\}/g, "<i>")
-      .replace(/\{italicEnd\}/g, "</i>")
-      .replace(/\{\{(%.*?%)\}\}/g, "<code>$1</code>")
-      .replace(/\{\{(.*?)\}\}/g, "<code param>$1</code>")
-      .replace(/\{L1\}/g, "<li>")
-      .replace(/\{L2\}/g, "</li>")
-      .replace(/\{P1\}/g, "<p>")
-      .replace(/\{P2\}/g, "</p>")
-      .replace(/\{S1\}/g, "</ul> <h3 class='section'>")
-      .replace(/\{S2\}/g, "</h3> <ul>")
-      .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1 href='#'>[issue $1]</a>")
-      .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys
-      .replaceAll("''", '"');
-      //{S1} new section / list with title {S2}.
-  }
-
+  window.addEventListener("keydown", (event) => {
+    if (event.key == "Escape") {
+      window.close();
+    }
+  });
 
   addEventListener("load", async (event) => {
     const manifest = await messenger.runtime.getManifest(),
-          browserInfo = await messenger.runtime.getBrowserInfo(),
-          addonName = manifest.name,
-          userName = await messenger.Utilities.getUserName(),
-          addonVer = manifest.version,
-          appVer = browserInfo.version,
-          remindInDays = 10;
+      browserInfo = await messenger.runtime.getBrowserInfo(),
+      addonName = manifest.name,
+      userName = await messenger.Utilities.getUserName(),
+      addonVer = manifest.version,
+      appVer = browserInfo.version,
+      remindInDays = 10;
+    const expiry = messenger.i18n.getMessage("special-offer-expiry");
 
-    // internal functions
-    function hideSelectorItems(cId) {
-      let elements = document.querySelectorAll(cId);
-      for (let el of elements) {
-        el.setAttribute('collapsed',true);
-      }	    
-    }
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
     i18n.updateDocument();
-    
-    let h1 = document.getElementById("heading-updated");
-    if (h1) {
-      // this api function can do replacements for us
-      h1.innerText = messenger.i18n.getMessage("heading-updated", addonName);
-    }
-    
-    let thanksInfo = document.getElementById('thanks-for-updating-intro');
-    if (thanksInfo) {
-      thanksInfo.innerText = messenger.i18n.getMessage("thanks-for-updating-intro", addonName);
-    }
 
+    const h1 = document.getElementById("heading-updated");
+    ariaPoliteUpdate(h1, messenger.i18n.getMessage("heading-updated", addonName));
+
+    const thanksInfo = document.getElementById("thanks-for-updating-intro");
+    ariaPoliteUpdate(thanksInfo, messenger.i18n.getMessage("thanks-for-updating-intro", addonName));
+
+    const verInfo = document.getElementById("active-version-info");
+    ariaPoliteUpdate(verInfo, 
+      messenger.i18n
+        .getMessage("active-version-info", [addonVer, appVer])
+        .replace("{boldStart}", "<b class='versionnumber'>")
+        .replace("{boldEnd}", "</b>"),
+      true
+    );
     
-    let verInfo = document.getElementById('active-version-info');
-    if (verInfo) {
-      // use the i18n API      
-      // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.
-      // for multiple replacements, pass an array
-      verInfo.innerHTML = messenger.i18n.getMessage("active-version-info", [addonVer, appVer])
-        .replace("{boldStart}","<b class='versionnumber'>")
-        .replace("{boldEnd}","</b>");
-    }
-    
+
     /*
     let timeAndEffort =  document.getElementById('time-and-effort');
     if (timeAndEffort) {
@@ -149,120 +119,116 @@ END LICENSE BLOCK */
       suggestion.innerText = messenger.i18n.getMessage("support-suggestion", addonName);
     }
     */
+
+    const preference = document.getElementById("support-preference");
+    ariaPoliteUpdate(preference, messenger.i18n.getMessage("support-preference", addonName));
+
+    const remind = document.getElementById("label-remind-me");
+    ariaPoliteUpdate(remind, messenger.i18n.getMessage("label-remind-me", remindInDays));
+
+    const specialOffer = document.getElementById("specialOfferTxt");
+    ariaPoliteUpdate(specialOffer,
+      messenger.i18n
+        .getMessage("special-offer-content", [expiry, discountRate.discountPro])
+        .replace(/\{boldStart\}/g, "<b>")
+        .replace(/\{boldEnd\}/g, "</b>")
+        .replace(/\{linkStart\}/, "<a id='stdLink'>")
+        .replace(/\{linkEnd\}/g, "</a>")
+        .replace(/\{linkStartPro\}/, "<a id='proLink'>"),
+      true
+    );
     
-    
-    let preference = document.getElementById('support-preference');
-    if (preference) {
-      preference.innerText = messenger.i18n.getMessage("support-preference", addonName);
-    }
-    
-    let remind = document.getElementById('label-remind-me');
-    if (remind) {
-      remind.innerText = messenger.i18n.getMessage("label-remind-me", remindInDays);
-      
-    }
-    
-    let specialOffer = document.getElementById('specialOfferTxt');
-    if (specialOffer) {
-      let expiry = messenger.i18n.getMessage("special-offer-expiry");
+
+    const specialRenew = document.getElementById("specialOfferRenewTxt");
+    ariaPoliteUpdate(specialRenew,
       // note: expiry day is set in popup.js "sales_end" variable
-      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, discountRate.discountPro])
-          .replace(/\{boldStart\}/g,"<b>")
-          .replace(/\{boldEnd\}/g,"</b>")
-          .replace(/\{linkStart\}/, "<a id='stdLink'>")
-          .replace(/\{linkEnd\}/g, "</a>")
-          .replace(/\{linkStartPro\}/, "<a id='proLink'>");
-          
-    }
+       messenger.i18n
+        .getMessage("special-offer-renew", [expiry, discountRate.discountRenewal])
+        .replace(/\{boldStart\}/g, "<b>")
+        .replace(/\{boldEnd\}/g, "</b>"),
+      true
+    );
     
-    let specialRenew = document.getElementById("specialOfferRenewTxt");
-    if (specialRenew) {
-      let expiry = messenger.i18n.getMessage("special-offer-expiry");
+
+    const specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
+    ariaPoliteUpdate(specialOfferUpgrade,
       // note: expiry day is set in popup.js "sales_end" variable
-      specialRenew.innerHTML = 
-        messenger.i18n.getMessage("special-offer-renew", [expiry, discountRate.discountRenewal])
-          .replace(/\{boldStart\}/g,"<b>")
-          .replace(/\{boldEnd\}/g,"</b>");
-    }
-        
-    
-    let specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
-    if (specialOfferUpgrade) {
-      let expiry = messenger.i18n.getMessage("special-offer-expiry");
-      // note: expiry day is set in popup.js "sales_end" variable
-      specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, discountRate.discountUpgrade])
-          .replace(/\{boldStart\}/g,"<b>")
-          .replace(/\{boldEnd\}/g,"</b>")
-          .replace(/\{linkStart\}/, "<a id='stdLink'>")
-          .replace(/\{linkEnd\}/, "</a>");
-    }
-    
+      messenger.i18n
+        .getMessage("special-offer-upgrade", [expiry, discountRate.discountUpgrade])
+        .replace(/\{boldStart\}/g, "<b>")
+        .replace(/\{boldEnd\}/g, "</b>")
+        .replace(/\{linkStart\}/, "<a id='stdLink'>")
+        .replace(/\{linkEnd\}/, "</a>"),
+      true
+    );
     
     let elementsC = document.querySelectorAll(".featureComparison"),
-        txtComp = messenger.i18n.getMessage("licenseComparison")
-          .replace(/\{linkStart\}/, "<a id='compLink'>")
-          .replace(/\{linkEnd\}/, "</a>");
+      txtComp = messenger.i18n
+        .getMessage("licenseComparison")
+        .replace(/\{linkStart\}/, "<a id='compLink'>")
+        .replace(/\{linkEnd\}/, "</a>");
     for (let el of elementsC) {
       el.innerHTML = txtComp;
     }
-    
+
     // let elements = document.querySelectorAll(".specialOfferHead"),
     //     txtHead = messenger.i18n.getMessage("special-offer-head", addonName);
     // for (let el of elements) {
     //   el.textContent = txtHead;
-    // }    
-          
+    // }
+
     let elementsSI = document.querySelectorAll(".specialOfferIntro"),
-        txtSI = messenger.i18n.getMessage('special-offer-intro', addonName)
-                .replace(/\{boldStart\}/g,"<b>")
-                .replace(/\{boldEnd\}/g,"</b>")
-                .replace("{name}", userName);
+      txtSI = messenger.i18n
+        .getMessage("special-offer-intro", addonName)
+        .replace(/\{boldStart\}/g, "<b>")
+        .replace(/\{boldEnd\}/g, "</b>")
+        .replace("{name}", userName);
     for (let el of elementsSI) {
       el.innerHTML = txtSI;
     }
 
     //
-    let specialOfferStandard = document.getElementById('specialOfferStandard');
-    if (specialOfferStandard) {
-      specialOfferStandard.innerHTML =  messenger.i18n.getMessage('license-standard-special-offer', [userName,discountRate.discountUpgrade])
-        .replace(/\{boldStart\}/g,"<b>")
-        .replace(/\{boldEnd\}/g,"</b>");
-    }
-    let specialOfferTerms = document.getElementById('specialOfferTerms');
-    if (specialOfferTerms) {
-      let expiry = messenger.i18n.getMessage("special-offer-expiry");
-      specialOfferTerms.innerHTML =  messenger.i18n.getMessage('license-standard-special-terms', [expiry])
-        .replace(/\{boldStart\}/g,"<b>")
-        .replace(/\{boldEnd\}/g,"</b>");
-    } 
+    const specialOfferStandard = document.getElementById("specialOfferStandard");
+    ariaPoliteUpdate(specialOfferStandard, 
+      messenger.i18n
+        .getMessage("license-standard-special-offer", [userName, discountRate.discountUpgrade])
+        .replace(/\{boldStart\}/g, "<b>")
+        .replace(/\{boldEnd\}/g, "</b>"),
+      true);
     
-    let whatsNewLst = document.getElementById('whatsNewList');
-    if (whatsNewLst) {
-      whatsNewLst.innerHTML = 
-      `<ul>
-      ${formatAll(messenger.i18n.getMessage('whats-new-list'))}
-      </ul>`
-      ;
-    }    
+    const specialOfferTerms = document.getElementById("specialOfferTerms");
+    ariaPoliteUpdate(specialOfferTerms,
+      messenger.i18n
+        .getMessage("license-standard-special-terms", [expiry])
+        .replace(/\{boldStart\}/g, "<b>")
+        .replace(/\{boldEnd\}/g, "</b>"),
+      true
+    );
 
-    let newsDetail = document.getElementById('newsDetail');
-    if (newsDetail) {
-      newsDetail.innerHTML = formatAll(messenger.i18n.getMessage('newsSection', [addonName, compatibleVer]));
-    } 
-
-    let ongoing = document.getElementById('ongoing-work');
-    if (ongoing) {
-      ongoing.innerText = messenger.i18n.getMessage("ongoing-work", addonName);
-      
-    }
+    const whatsNewLst = document.getElementById("whatsNewList");
+    ariaPoliteUpdate(whatsNewLst,
+      `<ul>${formatAll(messenger.i18n.getMessage("whats-new-list"))}</ul>`,
+    true);
     
-    let title = document.getElementById('window-title');
-    title.innerText = messenger.i18n.getMessage("window-title", addonName);
-           
+
+    const newsDetail = document.getElementById("newsDetail");
+    ariaPoliteUpdate(newsDetail,
+      formatAll(
+        messenger.i18n.getMessage("newsSection", [addonName, compatibleVer])
+      ),
+      true
+    );
+
+    const ongoing = document.getElementById("ongoing-work");
+    ariaPoliteUpdate(ongoing, messenger.i18n.getMessage("ongoing-work", addonName));
+
+    const title = document.getElementById("window-title");
+    ariaPoliteUpdate(title, messenger.i18n.getMessage("window-title", addonName));
+
     updateActions(addonName);
 
-    // addAnimation('body');
-
+    //  you can close the window using ESC
+    addAriaHint();
   });  
 
   addEventListener("unload", async (event) => {

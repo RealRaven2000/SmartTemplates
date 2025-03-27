@@ -22,65 +22,79 @@ addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("donate")) {
 	  messenger.windows.openDefaultBrowser("https://smarttemplates.quickfolders.org/contribute.html#donate");
 	}
+  if (event.target.id == "whatsNew") {
+    messenger.Utilities.showVersionHistory();
+  }
 });  
 
+window.addEventListener("keydown", (event) => {
+  if (event.key == "Escape") {
+    window.close();
+  }
+});
 
 
-  addEventListener("load", async (event) => {
-    const manifest = await messenger.runtime.getManifest(),
-          browserInfo = await messenger.runtime.getBrowserInfo(),
-          addonName = manifest.name, 
-          addonVer = manifest.version,
-          appVer = browserInfo.version;
+addEventListener("load", async (event) => {
+  const manifest = await messenger.runtime.getManifest(),
+    browserInfo = await messenger.runtime.getBrowserInfo(),
+    addonName = manifest.name, 
+    addonVer = manifest.version,
+    appVer = browserInfo.version;
 
-    // force replacement for __MSG_xx__ entities
-    // using John's helper method (which calls i18n API)
-    i18n.updateDocument();
+  // force replacement for __MSG_xx__ entities
+  // using John's helper method (which calls i18n API)
+  i18n.updateDocument();
 
-    let h1 = document.getElementById('heading-installed');
-    if (h1) {
-      // this api function can do replacements for us
-      h1.innerText = messenger.i18n.getMessage('heading-installed', addonName);
-    }
-    
-    let thanksInfo = document.getElementById('thanks-for-installing-intro');
-    if (thanksInfo) {
-      thanksInfo.innerText = messenger.i18n.getMessage("thanks-for-installing-intro", addonName);
-    }
-    
-    let verInfo = document.getElementById('active-version-info');
-    if (verInfo) {
-      // use the i18n API      
-      // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.
-      // for multiple replacements, pass an array
-      verInfo.innerHTML = messenger.i18n.getMessage("active-version-info", [addonVer, appVer])
-        .replace("{boldStart}","<b class='versionnumber'>")
-        .replace("{boldEnd}","</b>");
-    }    
-    
-    let suggestion = document.getElementById('support-suggestion');
-    if (suggestion) {
-      suggestion.innerText = messenger.i18n.getMessage("support-suggestion", addonName);
-    }
-    
-    let preference = document.getElementById('support-preference');
-    if (preference) {
-      preference.innerText = messenger.i18n.getMessage("support-preference", addonName);
-    }
+  const h1 = document.getElementById("heading-installed");
+  ariaPoliteUpdate(h1, messenger.i18n.getMessage('heading-installed', addonName));
+  
+  const thanksInfo = document.getElementById('thanks-for-installing-intro');
+  ariaPoliteUpdate(thanksInfo, messenger.i18n.getMessage("thanks-for-installing-intro", addonName));
+  
+  const verInfo = document.getElementById("active-version-info");
+  // HTML replacement
+  ariaPoliteUpdate(verInfo,
+    messenger.i18n.getMessage("active-version-info", [addonVer, appVer])
+      .replace("{boldStart}","<b class='versionnumber'>")
+      .replace("{boldEnd}","</b>"),
+    true
+  );   
+  
+  const suggestion = document.getElementById("support-suggestion");
+  ariaPoliteUpdate(suggestion, messenger.i18n.getMessage("support-suggestion", addonName));
+  
+  const preference = document.getElementById("support-preference");
+  ariaPoliteUpdate(preference, messenger.i18n.getMessage("support-preference", addonName));
+  
 
-    let ongoing = document.getElementById('ongoing-work');
-    if (ongoing) {
-      ongoing.innerText = messenger.i18n.getMessage("ongoing-work", addonName);
-    }
+  const ongoing = document.getElementById("ongoing-work");
+  ariaPoliteUpdate(ongoing, messenger.i18n.getMessage("ongoing-work", addonName));
+  
+  const title = document.getElementById("window-title");
+  ariaPoliteUpdate(title, messenger.i18n.getMessage("window-title", addonName));
+  
+  updateActions(addonName);
 
-    let title = document.getElementById('window-title');
-    if (title)
-      title.innerText = messenger.i18n.getMessage("window-title", addonName);
-    
-    updateActions(addonName);
+  const newsDetail = document.getElementById("newsDetail");
+  ariaPoliteUpdate(newsDetail,
+    formatAll(
+      messenger.i18n.getMessage("newsSection", [addonName, compatibleVer])
+    ),
+    true
+  );
+  
+  setTimeout(
+    () => {
+      show("newsHead");
+      show("newsDetail");
+      show("newsSection");
+    },
+    150
+  );
 
-    // addAnimation('body');
-  });  
+  //  you can close the window using ESC
+  addAriaHint(); 
+});  
   
 
 
