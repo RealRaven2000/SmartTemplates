@@ -3439,7 +3439,10 @@ SmartTemplate4.Util = {
 
   get isSale() {
     const currentTime = new Date();
-    const endDate = new Date(SmartTemplates_Discounts.sales_end.getTime() + 86400000);
+    const override = SmartTemplate4.Preferences.getStringPref("debug.saleDate");
+    const endDate = override ? 
+      new Date(override) : 
+      new Date(SmartTemplates_Discounts.sales_end.getTime() + 86400000);
     const isSale = currentTime < endDate;
     return isSale;
   },
