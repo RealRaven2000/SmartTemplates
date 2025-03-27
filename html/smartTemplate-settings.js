@@ -2205,7 +2205,8 @@ async function showRegistrationDlg(feature) {
 function addConfigEvent(el, filterConfig) {
 	// add right-click event to containing label
 	if (!el) return;
-	let eventNode = el.parentNode.querySelector(".configSettings");
+  // Use closest to find the nearest .configSettings button, or fallback to parent if not found
+  let eventNode = el.closest(".hasConfigEvent").querySelector(".configSettings");
 	let eventType;
 	if (eventNode) {
 		eventType = "click";
