@@ -151,12 +151,11 @@ canvas[collapsed=true]
   background-color: rgba(6, 6, 112, 0.9); 
   background-image: linear-gradient(55deg, rgba(6, 6, 112, 0.9) 0%, rgba(115, 3, 85, 0.9) 100%);
   margin-bottom: 1.2em;
+  padding-bottom: 1em;
 }
 #newsDetail {
   background-color: transparent;
 }
-
-
 
 
 .importantInfo,
@@ -175,6 +174,10 @@ canvas[collapsed=true]
   margin-top: 16px;
 }
 
+#newsSection div {
+  color: rgba(240,240,255,0.9);  
+}
+
 /* in between heading in list */
 .importantInfo h3 {
   margin-block: 13px;
@@ -184,16 +187,15 @@ canvas[collapsed=true]
 
 .specialOffer .bargainIcon {
   animation: border-pulsate 3s ease infinite;  
-  background: rgba(60, 60, 90, 0.7);
   cursor: pointer;
   float: right;
   position: relative;
   right: -3em;
   top: -3em;
   transition: transform 0.5s ease;
-  border: 10px solid rgba(60, 60, 90, 0.6);
+  border: 3px solid rgba(60, 60, 90, 0.6);
   background-color: rgba(60, 60, 90, 0.6);
-  border-radius: 85px;
+  border-radius: 29px;
   margin-left: -85px; /* avoid pushing the text to the left! */
   z-index: 10000;
 }
@@ -300,4 +302,16 @@ h2 {
 
 h3 {
   font-size: 16pt;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
