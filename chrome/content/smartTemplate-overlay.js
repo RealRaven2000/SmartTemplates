@@ -4081,11 +4081,18 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         if (prefs.isDebugOption("sandbox")) debugger;
         x = await Cu.evalInSandbox("(" + script + ")", sandbox); //todo: need to check if await is safe here
         //prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
-        if (x && x.toString === String.prototype.toString) {
+        if (
+          x === null ||
+          x === undefined ||
+          typeof x === "number" ||
+          x instanceof Date ||
+          x === 0 ||
+          x === ""
+        ) {
           x = x.toString();
         } else {
-          console.log("Unexpected result after Cu.evalInSandbox: ", x)
-          x = "security violation";
+          console.log("Unexpected result after Cu.evalInSandbox: ", x);
+          x = "security violation - see error console";
         }
       } catch (ex) {
         if (ex instanceof ReferenceError) {
