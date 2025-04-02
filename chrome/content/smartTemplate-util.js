@@ -810,7 +810,7 @@ SmartTemplate4.Util = {
     }
 
     // Log the warning message with formatted details
-    console.warn(`${aMessage}\n${srcName}:${ex.lineNumber}\n${ex.message}\n${stack}`);
+    console.warn(`${aMessage}\n:${ex.lineNumber}\n${ex.message}\n${stack}`);
 
     // Log the detailed objects (optional, if any)
     if (options.length > 0) {
