@@ -2870,10 +2870,11 @@ async function onLoad() {
 
 	browser.runtime.onMessage.addListener((msg, sender) => {
 		// check on the msg
-		if (!msg?.command) return;
-		if (msg.command == "focusSettingsTab") {
+		if (msg?.command == "focusSettingsTab") {
       SmartTemplates.Settings.selectCategoryMenu("catFileTemplates").focus();
+			return Promise.resolve();
     }
+		return false;
 	});
 }
 

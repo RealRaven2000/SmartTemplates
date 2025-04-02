@@ -1639,7 +1639,10 @@ async function main() {
     if (tab.url && tab.url.startsWith(url)) {
       console.log("SmartTemplates options tab detected. Now focusing the navigation element!");
       await messenger.Utilities.focusDocument(tabId);
-      messenger.runtime.sendMessage({command:"focusSettingsTab"});
+      setTimeout(
+        () => messenger.runtime.sendMessage({command:"focusSettingsTab"}),
+        250
+      );
     }
   }
 
