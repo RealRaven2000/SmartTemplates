@@ -3951,7 +3951,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         };
         // eventually, "new Function()" will be deprecated. Don't exactly know when.
         var implicitNull = {},
-          stringFunctionHack = new Function(),
+          stringFunctionHack = {},
           // overloading our strings using sandbox
           props = [
             "charAt",
@@ -3983,10 +3983,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             "count",
             "includes",
           ];
+        
         for (let i = 0; i < props.length; i++) {
           let s = props[i];
           stringFunctionHack[s] = sandbox.String.prototype[s];
         }
+
         stringFunctionHack.valueOf = function () {
           return this(implicitNull);
         };
@@ -4000,36 +4002,20 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             return async function (...args) {
               if (prefs.isDebugOption("sandbox")) debugger;
 
-              const processedArgs =
-                args.length > 0
-                  ? args.map((arg) => {
-                      if (arg === undefined || arg === null) {
-                        util.logDebugOptional(
-                          "sandbox",
-                          `sandbox[${aname}] undefined or null parameter`
-                        );
-                        return ""; // Handle undefined or null args
-                      }
+              const processedArgs = args.map((arg) => {
+                if (arg === undefined || arg === null) {
+                  util.logDebugOptional("sandbox", `sandbox[${aname}] undefined or null parameter`);
+                  return "";
+                }
 
-                      // Handle numeric arguments, which should not be wrapped in quotes
-                      if (typeof arg === "number" && !isNaN(arg)) {
-                        return arg; // Return the number as is
-                      }
+                if (arg && JSON.stringify(arg) === "{}") {
+                  return ""; // Handle empty objects
+                }
 
-                      // If it's a contextual header (e.g., $from, $to), leave it as is
-                      if (sandbox.contextualHeaders[arg]) {
-                        return arg; // Directly returns the contextual parameter
-                      }
-
-                      if (JSON.stringify(arg) === "{}") { // empty object
-                        // write variable.sub instead of variable.sub() !
-                        return ""; // otherwise it will return [object Object]
-                      }
-
-                      // Otherwise, rewrap non-contextual arguments in double quotes:
-                      return `"${arg}"`;
-                    })
-                  : [];
+                return typeof arg === "number" && !isNaN(arg)
+                  ? arg
+                  : sandbox.contextualHeaders[arg] || `"${arg}"`;
+              });
 
 
               // Handle the case %%name(arg)%% and return the same as %name(arg)%
@@ -4047,7 +4033,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                   `              %${origName}${finalArgs}%`
                 );
               }
-                
+
               let sbVal = removeEmptyString(
                 await replaceReservedWords("", origName, finalArgs, { isEval: true })
               );
@@ -4057,7 +4043,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
           // Complex hack so that sandbox[name] is a function that can be called with
           // (sandbox[name]) and (sandbox[name](...))
-          sandbox[transposedName].__proto__ = stringFunctionHack;
+          // sandbox[transposedName].__proto__ = stringFunctionHack;
+
+          // Use Object.assign instead of prototype manipulation
+          Object.assign(sandbox[transposedName], stringFunctionHack);
+
           // does not work:( sandbox[name].__defineGetter__("length", (function(aname){return function(){return sandbox[aname].toString().length}})(name));
         } // for
       } // (!sandbox)
@@ -4083,6 +4073,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         //prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
         if (
           x === null ||
+          typeof x === "string" ||
           typeof x === "number" ||
           x instanceof Date ||
           x === 0 ||
@@ -4130,11 +4121,18 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     //process javascript insertions first, so the javascript source is not broken by the remaining processing
     //but cannot insert result now, or it would be double html escaped, so insert them later
     if (SmartTemplate4.Preferences.getMyBoolPref("sandbox")) {
-      msg = await SmartTemplate4.Util.replaceAsync(
-        msg,
-        /%\{%((.|\n|\r)*?)%\}%/gm,
-        replaceJavascript
-      ); // also remove all newlines and unnecessary white spaces
+      try {
+        msg = await SmartTemplate4.Util.replaceAsync(
+          msg,
+          /%\{%((.|\n|\r)*?)%\}%/gm,
+          replaceJavascript
+        ); // also remove all newlines and unnecessary white spaces
+      } catch(ex) {
+        SmartTemplate4.Util.logException("replaceJavascript()", ex);
+        if (ex.toString().split(" ").includes("CSP")) {
+          SmartTemplate4.Util.logHighlight("Content-Security-Policy violation.");
+        }
+      }
     }
   }
 	
