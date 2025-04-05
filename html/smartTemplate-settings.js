@@ -829,17 +829,37 @@ SmartTemplates.Settings = {
 	showCommonPlaceholder : function (isCommon, accountId = this.accountId) {
 		const id = "default.deckB";
 		const deck = document.getElementById(id + accountId);
-		if (deck){ 
-			deck.selectedIndex = isCommon ? 1 : 0; 
-			if (isCommon) {
-				deck.querySelector(".tabbox").classList.remove("deck-selected");
-				deck.querySelector(".placeholder").classList.add("deck-selected");
-			} else {
-				deck.querySelector(".tabbox").classList.add("deck-selected");
-				deck.querySelector(".placeholder").classList.remove("deck-selected");
-			}			
-		}
+		if (!deck) return;
 
+		deck.selectedIndex = isCommon ? 1 : 0; 
+
+		const tabbox = deck.querySelector(".tabbox");
+		const placeholder = deck.querySelector(".placeholder");
+		const checkbox = document.getElementById(`use_default.${accountId}`);
+		const description = document.getElementById(`commonPlaceholder.${accountId}`);
+
+		// common deck
+		if (isCommon) {
+      tabbox.classList.remove("deck-selected");
+      placeholder.classList.add("deck-selected");
+      // Ensure screen reader reads the description
+      if (checkbox && description) {
+        checkbox.setAttribute("aria-describedby", `commonPlaceholder.${accountId}`);
+        description.removeAttribute("aria-hidden");
+      }
+			return;
+    } 
+
+		// identity decks 
+		tabbox.classList.add("deck-selected");
+		placeholder.classList.remove("deck-selected");
+
+		// Hide from screen reader
+		if (checkbox && description) {
+			checkbox.removeAttribute("aria-describedby");
+			description.setAttribute("aria-hidden", "true");
+		}
+		
 	} ,  
 
 	// Return checkbox is checked or not
@@ -1239,6 +1259,8 @@ SmartTemplates.Settings = {
 		}
 		for (let el of document.querySelectorAll(".accountDeck:not(:first-child) .commonSwitch")) {
 			el.removeAttribute("disabled");
+			// Ensure correct initial state +GPT!!
+			// SmartTemplates.Settings.showCommonPlaceholder(el.checked, el.dataset.accountId);	
 			el.addEventListener("change", (event) => {
 				SmartTemplates.Settings.showCommonPlaceholder(el.checked);
 			});
@@ -2579,9 +2601,6 @@ function addUIListeners() {
     });
   }
 
-  document.getElementById("closeDisclaimer").addEventListener("click", (event) => {
-    event.target.parentElement.remove();
-  });
 
   // template lists
   // .fileTemplateList richlistbox ==> select
@@ -2629,7 +2648,9 @@ function addUIListeners() {
 	document
     .querySelector("#categories")
     .setAttribute("aria-label", SmartTemplates.Util.getBundleString("aria.settings.nav"));
-  function activateTab(li) {
+
+
+  function activateTab(li, focusTab = false) {
     let activePage = li.getAttribute("page") || null;
     li.setAttribute("selected", true);
     li.setAttribute("aria-checked", true);
@@ -2662,6 +2683,22 @@ function addUIListeners() {
     // Show the content of the active page
     if (activePage) {
       document.getElementById(activePage).classList.add("pageActive");
+
+			// If the user triggered a focus, find the first focusable element (like <h1>)
+			if (focusTab) {
+				const pageId = li.getAttribute("page");
+				const activePageContent = document.getElementById(pageId);
+				if (!activePageContent) { return; }
+				// Focus the first element inside the active page content
+				const firstFocusableElement = activePageContent.querySelector(
+          'h1, [tabindex]:not([tabindex="-1"]), button, input, select, textarea'
+        );
+				if (firstFocusableElement) {
+					firstFocusableElement.focus();
+				}
+			}			
+
+			
       if (activePage == "variablesPane") {
         // we need to get some sendmessage stuff going later for a flyout version
         /* dark theme support ? */
@@ -2675,30 +2712,23 @@ function addUIListeners() {
 
   // ==== NEW: PAGES
   for (let li of document.querySelectorAll("#categories li")) {
-    li.addEventListener("click", (event) => {
+    // Accessibility improvements
+		const anchor = li.querySelector("a");
+		if (!anchor) { return; }    
+		
+		li.addEventListener("click", (event) => {
 			// Prevent the click handler if the Enter/Space key was pressed
 			if (event.detail !== 0) { // not a mouse event
 				activateTab(li);
 			}
     });
 
-    // Accessibility improvements
-		const anchor = li.querySelector("a");
-		if (!anchor) { return; }
-
     li.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         // Select tab on Enter/Space key
         event.preventDefault();
-        activateTab(li);
-				const pageId = li.getAttribute("page");
-				const activePageContent = document.getElementById(pageId);
-				if (!activePageContent) { return; }
-				// Focus the first element inside the active page content
-				const firstFocusableElement = activePageContent.querySelector("input, button, [tabindex]:not([tabindex='-1']), a[href]");
-				if (firstFocusableElement) {
-					firstFocusableElement.focus(); // Focus the first element in the page
-				}
+				event.stopPropagation();
+        activateTab(li, true);
         return;
       }
 
@@ -2717,44 +2747,23 @@ function addUIListeners() {
         prevTab.focus(); // Focus previous tab
         event.preventDefault();
       }
-
-			// Handle Tab key to focus on the content page
-			/*
-			if (event.key === "Tab" && !event.shiftKey) {
-				event.preventDefault(); // Prevent the default tabbing behavior between <li>s
-
-				const pageId = li.getAttribute("page");
-				const activePageContent = document.getElementById(pageId);
-				if (activePageContent) {
-					// Focus the first element inside the active page content
-					const firstFocusableElement = activePageContent.querySelector("input, button, [tabindex]:not([tabindex='-1']), a[href]");
-					if (firstFocusableElement) {
-						firstFocusableElement.focus(); // Focus the first element in the page
-					}
-
-					// Add a listener for Shift + Tab to focus back to the <li> when exiting the page content
-					firstFocusableElement.addEventListener("keydown", function onTab(event) {
-						if (event.key === "Tab" && event.shiftKey) {
-							event.preventDefault(); // Prevent default behavior of Shift + Tab
-
-							li.focus(); // Focus back on the selected <li>
-						}
-					});
-				}
-			}
-
-			// Handle Shift + Tab to focus back to the selected <li>
-			if (event.key === "Tab" && event.shiftKey) {
-				event.preventDefault(); // Prevent the default tabbing behavior
-
-				const selectedLi = document.querySelector("#categories li[selected]");
-				if (selectedLi) {
-					selectedLi.focus(); // Move focus back to the selected <li>
-				}
-			}
-			*/
-
     });
+
+		// Handle keyboard selection on the <a> - the anchor tag will get focused by screenreaders.
+		anchor.addEventListener("keydown", (event) => {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				event.stopPropagation(); // Prevent bubbling up to the <li>
+				activateTab(li, true);
+			}
+		});
+
+		// Handle Enter key on <a> because browsers (screen readers?) convert Enter to click
+		anchor.addEventListener("click", (event) => {
+			// apparently this event is only triggered by Enter from the screenreaders.
+			event.stopPropagation(); // Prevent double event
+			activateTab(li, true);
+		});		
   }
 
   // replace SmartTemplate4.Util.showAboutConfig command handlers
@@ -2871,7 +2880,19 @@ async function onLoad() {
 	browser.runtime.onMessage.addListener((msg, sender) => {
 		// check on the msg
 		if (msg?.command == "focusSettingsTab") {
-      SmartTemplates.Settings.selectCategoryMenu("catFileTemplates").focus();
+			const tabs = document.getElementById("categories").querySelectorAll(".category"); 
+			let isSelected = false;
+			for (let t of tabs) {
+        if (t.getAttribute("selected")) {
+					// select previously selected tab
+          SmartTemplates.Settings.selectCategoryMenu(t.id).focus();
+					isSelected = true;
+          break;
+        }
+      }
+			if (!isSelected) { // if nothing was preselected, let's go to file templates.
+				SmartTemplates.Settings.selectCategoryMenu("catFileTemplates").focus();
+			}
 			return Promise.resolve();
     }
 		return false;
@@ -2900,4 +2921,3 @@ addEventListener("keydown", (event) => {
 		debugger;
 	}
 });
-
