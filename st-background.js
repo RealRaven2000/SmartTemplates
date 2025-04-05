@@ -1048,24 +1048,41 @@ async function updateSubMenus(messages, tab) {
   });
 
 
-function showSplash() {
+async function showSplash() {
   const url = browser.runtime.getURL("popup/update.html");
-  browser.tabs.create({
-    active: true,
-    url: url,
-  });
+  const tabs = await messenger.tabs.query({});
+  const existingTab = tabs.find((tab) => tab.url === url);
+
+  if (existingTab) {
+    // Activate the tab if it exists
+    messenger.tabs.update(existingTab.id, { active: true });
+  } else {
+    // Otherwise, open it
+    messenger.tabs.create({ active: true, url });
+  }
   return;
   let screenH = window.screen.height,
-      windowHeight = (screenH > 870) ? 870 : screenH-20;  
-  messenger.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
+    windowHeight = screenH > 870 ? 870 : screenH - 20;
+  messenger.windows.create({
+    url,
+    type: "popup",
+    width: 1000,
+    height: windowHeight,
+    allowScriptsToClose: true,
+  });
 }
 
-function showSplashInstalled() {
+async function showSplashInstalled() {
   const url = browser.runtime.getURL("popup/installed.html");
-  browser.tabs.create({
-    active: true,
-    url: url
-  });
+  const tabs = await messenger.tabs.query({});
+  const existingTab = tabs.find((tab) => tab.url === url);
+  if (existingTab) {
+    // Activate the tab if it exists
+    messenger.tabs.update(existingTab.id, { active: true });
+  } else {
+    // Otherwise, open it
+    messenger.tabs.create({ active: true, url });
+  }  
   return;  
   let screenH = window.screen.height,
       windowHeight = (screenH > 870) ? 870 : screenH-20;  

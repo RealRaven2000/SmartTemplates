@@ -1,5 +1,5 @@
 // used in popup.js 
-const sales_end = new Date("2025-04-10"); // Next Sale End Date (replaces endSale in popup.js)
+const sales_end = new Date("2025-04-20"); // Next Sale End Date (replaces endSale in popup.js)
 
 // used in update.js
 const discountRate = {
@@ -9,4 +9,4 @@ const discountRate = {
 }
 
 // => to localize update special-offer-expiry in messages.json!
-const compatibleVer = "136.*"; // Thunderbird for newsSection
+const compatibleVer = "138.*"; // Thunderbird for newsSection

@@ -237,12 +237,13 @@ async function updateActions(addonName) {
       newHeight = Math.round(r.height) + 80,
       maxHeight = window.screen.availHeight;
       
-  if (newHeight>maxHeight) {
-    newHeight = maxHeight-15;
+  const isPopup = (window.opener != null);
+  if (isPopup) {
+    if (newHeight > maxHeight) {
+      newHeight = maxHeight - 15;
+    }
+    browser.windows.update(win.id, { height: newHeight });
   }
-  browser.windows.update(win.id, 
-    {height: newHeight}
-  );
   
 }
 
