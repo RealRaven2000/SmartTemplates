@@ -972,7 +972,11 @@ async function updateSubMenus(messages, tab) {
       case "install":
         {
           const url = browser.runtime.getURL("popup/installed.html");
-          await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
+          await messenger.tabs.create({
+            url : url,
+            active: true,
+          });
+          // await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
           messenger.NotifyTools.notifyExperiment({event: "firstRun"});
         }
         break;
@@ -1045,8 +1049,12 @@ async function updateSubMenus(messages, tab) {
 
 
 function showSplash() {
-  // alternatively display this info in a tab with browser.tabs.create(...)  
   const url = browser.runtime.getURL("popup/update.html");
+  browser.tabs.create({
+    active: true,
+    url: url,
+  });
+  return;
   let screenH = window.screen.height,
       windowHeight = (screenH > 870) ? 870 : screenH-20;  
   messenger.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
@@ -1054,6 +1062,11 @@ function showSplash() {
 
 function showSplashInstalled() {
   const url = browser.runtime.getURL("popup/installed.html");
+  browser.tabs.create({
+    active: true,
+    url: url
+  });
+  return;  
   let screenH = window.screen.height,
       windowHeight = (screenH > 870) ? 870 : screenH-20;  
   messenger.windows.create({ url, type: "popup", width: 910, height: windowHeight, allowScriptsToClose : true});
