@@ -253,7 +253,7 @@ permalink: version.html
   <h4>
 		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.11"
       onclick="alert('This version currently awaits review!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
-      Version 4.11 - Awaiting Review</a>
+      Version 4.11 - 07/04/2025</a>
 		<br>
 		<span class="appWrapper">
 			<span class="thunderbird">115.0 - 138.*</span>
@@ -397,14 +397,22 @@ permalink: version.html
   <ul>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li> 
-      Made SmartTemplates compatible with Thunderbird 137.*
+      Made SmartTemplates compatible with Thunderbird 138.*
     </li>
     <li> 
       Enhancement: Made Settings dialog accessible (keyboard / screenreader friendly) 
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/361">[issue 361]</a>
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/361">[issue 361]</a>.
+      <p>
+        This was a big amount of work that tries to make everything accessible to the keyboard
+        and the settings accessible to blind people. I built about 350 preview versions but 
+        I am sure there will be more changes, to make it better accessible.
+      </p>
+      You can now keyboard navigate the menu on the left to access all pages
+      of the settings tab. The older xhtml based settings dialog was finally
+      retired.
     </li>
     <li> 
-      New `%dateformat.current()%` 
+      New <code>%dateformat.current()%</code>
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/356">[issue 356]</a>#
     </li>
     <li> 
@@ -412,7 +420,8 @@ permalink: version.html
       "$priority", "$cc", "$bcc"; avoid wrapping variables when called from Sandbox script. 
     </li>
     <li> 
-      Sandbox Script: new functions `composer_composeCase()` and `composer_composeType()`. 
+      Sandbox Script: new functions <code class="html">composer_composeCase()</code> 
+      and <code class="html">composer_composeType()</code>. 
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/357">[issue 357]</a>
     </li>
     <li> 
@@ -432,6 +441,15 @@ permalink: version.html
     <li> 
       Removed inline event handlers (these will be deprecated in 137)
     </li>
+
+    <h5 class="inList"><span class="inListTitle">Known issues</span></h5>
+    <li>
+      Regression: change template in composer not working in Thunderbird 115.
+      For a quick fix version or to add feedback anbout this, please see: 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/367">[issue 367]</a>
+    </li>
+
+
   </ul>
 </li>   
 
