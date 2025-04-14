@@ -3692,14 +3692,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "html":
         case "txt":
         case "css":
-          if (!isAbsolute) {
-            path = newPath;
-          }
           //try our new method
           if (prefs.getMyBoolPref("vars.file.fileTemplateMethod")) {
             let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate({
               composeType: composeType,
-              path: path,
+              path: newPath,
               label: "data inserted from " + (type == "css") ? "%style%" : "%file%",
             });
             if (!tmpTemplate.failed) {
@@ -3723,9 +3720,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               countRead = 0;
             // let sigFile = Ident.signature.QueryInterface(Ci.nsIFile);
             try {
-              let localFile = new FileUtils.File(path),
+              let localFile = new FileUtils.File(newPath),
                 str = {};
-              util.logDebug("localFile.initWithPath(" + path + ")");
+              util.logDebug(`localFile.initWithPath(${newPath})`);
               fstream.init(localFile, -1, 0, 0);
 
               /* sigEncoding: The character encoding you want, default is using UTF-8 here */
@@ -3768,9 +3765,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             }
             util.logDebugOptional(
               "fileTemplates",
-              `insertFileLink: Add file to template stack: ${path}\ntype: ${type}`
+              `insertFileLink: Add file to template stack: ${newPath}\ntype: ${type}`
             );
-            flags.filePaths.push(path);
+            flags.filePaths.push(newPath);
           }
           break;
         case "image":

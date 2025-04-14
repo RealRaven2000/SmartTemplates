@@ -243,6 +243,7 @@ END LICENSE BLOCK
   Version 4.11.1 - WIP
     # [issue 333] Templates do not work with "mailto"
     # [issue 370] Using absolute path in template file may lead missing images
+    # Stability fix - when checking for sig variable without active template ST can fail
 
 
 =========================

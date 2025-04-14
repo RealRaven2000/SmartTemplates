@@ -1091,7 +1091,7 @@ SmartTemplate4.fileTemplates = {
     const isSingleMessage = (window.document.URL.endsWith("messageWindow.xhtml")),
           isAPI = SmartTemplate4.fileTemplates.isAPIpatched;
     SmartTemplate4.Util.logHighlightDebug("initMenusWithReset()\n","white","#8e0477a4",
-      window.document.URL, `singleMessags=${isSingleMessage}  menu patched via API: ${isAPI}`
+      window.document.URL, `singleMessage=${isSingleMessage}  menu patched via API: ${isAPI}`
     );
 
     if (isAPI) {

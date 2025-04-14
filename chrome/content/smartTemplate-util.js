@@ -1437,6 +1437,11 @@ SmartTemplate4.Util = {
     if (!path) return false;
     // Guard for data URIs
     if (path.startsWith("data:")) return true;
+    // Guard for scheme-based absolute paths: http(s), ftp, file, data, etc.
+    if (/^[a-z][a-z0-9+\-.]*:\/\//i.test(path)) {
+      return true;
+    }
+
     path = path.trim();
 
     // relative path: ../ or ..\
