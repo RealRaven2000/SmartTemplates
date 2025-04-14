@@ -1433,56 +1433,65 @@ SmartTemplate4.Util = {
     }
   },
 
-  isFilePathAbsolute: function isFilePathAbsolute(path) {
+  isFilePathAbsolute: function (path) {
     if (!path) return false;
+    // Guard for data URIs
+    if (path.startsWith("data:")) return true;
+    path = path.trim();
+
+    // relative path: ../ or ..\
+    if (path.startsWith("..")) {
+      return false;
+    }
 
     // check for user folder / drive letter or double slash
+    // linux: /home/
+    // Mac: /Users/
     return (
-      path.toLowerCase().startsWith("/user") ||
-      /([a-zA-Z]:)/.test(path) ||
-      path.startsWith("\\") ||
+      // Windows drive letter
+      /^[a-zA-Z]:[\\/]/.test(path) ||
+      // Windows UNC path
+      path.startsWith("\\\\") ||
+      // Unix-style absolute path (macOS, Linux)
       path.startsWith("/")
     );
   },
 
   // retrieve the folder path of a full file location (e.g. C:\user\myTemplate.html)
   // filePath - name of file or relative path of file to append or empty
-  getPathFolder: function getPathFolder(path, filePath) {
-    let slash = path.includes("/") ? "/" : "\\",
+  getPathFolder: function (path, filePath) {
+    const slash = path.includes("/") ? "/" : "\\",
       noSlash = slash == "/" ? "\\" : "/",
-      fPart = path.lastIndexOf(slash),
-      newPath = "",
+      fPart = path.lastIndexOf(slash);
+
+    let newPath = (fPart>=0) ? path.substr(0, fPart) : "",
+      jumpUp = 0,
       appendedPath = "";
 
     // [issue 237] allow navigating to parent folders.
-    let jumpUp = 0;
-    if (fPart) {
-      newPath = path.substr(0, fPart);
-    }
-    while (filePath.startsWith("../")) {
-      filePath = filePath.replace("../", "");
-      jumpUp++;
-    }
-    while (filePath.startsWith("..\\")) {
-      filePath = filePath.replace("..\\", "");
+    while (filePath.startsWith("../") || filePath.startsWith("..\\")) {
+      filePath = filePath.replace(/^(\.\.\/|\.\.\\)/, "");
       jumpUp++;
     }
 
+    // Go up jumpUp directories
     let pA = newPath.split(slash);
-    while (jumpUp > 0) {
+    while (jumpUp-- > 0) {
       pA.pop();
-      jumpUp--;
     }
     newPath = pA.join(slash);
 
-    if (fPart) {
+    if (fPart > 0 && !newPath.endsWith(slash)) {
       newPath = newPath + slash;
     }
 
-    // issue 77 - %file()% path truncated at front by 1 letter on Mac OS
+    // 🔧 issue 77 - %file()% path truncated at front by 1 letter on Mac OS
     if (filePath && newPath) {
       let slashUnifiedFilePath = filePath.replace(noSlash, slash);
       appendedPath = slashUnifiedFilePath.substr(slashUnifiedFilePath[0] == slash ? 1 : 0); // strip leading slash
+      if (this.isFilePathAbsolute(appendedPath)) {
+        return appendedPath;
+      }
     }
     return newPath + appendedPath;
   },
@@ -3158,6 +3167,7 @@ SmartTemplate4.Util = {
 
   // helper function to find a child node of the passed class Name
   findChildNode: function (node, className) {
+    if (!node) return null; // [issue 367]
     return node?.querySelector(`.${className}`) || null;
   },
 
