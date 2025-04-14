@@ -315,7 +315,8 @@ SmartTemplate4.getHeadersAsync = async function() {
         params = window.arguments[0];
         gBodyFromArgs = params.composeFields && params.composeFields.body;
       } else {
-        params = handleMailtoArgs(window.arguments[0]);
+        const uri = Services.io.newURI(window.arguments[0]);
+        params = MailServices.compose.getParamsForMailto(uri); // handleMailtoArgs was removed (Tb 128)
       }
     } catch (ex) {
       dump("ERROR with parameters: " + ex + "\n");
@@ -323,7 +324,7 @@ SmartTemplate4.getHeadersAsync = async function() {
     // if still no dice, try and see if the params is an old fashioned list of string attributes
     // XXX can we get rid of this yet?
     if (!params) {
-      SmartTemplate4.logToConsole("THUNDERBIRD 102 - not supported - old composer window arguments ");
+      SmartTemplate4.Util.logToConsole("THUNDERBIRD 102 - not supported - old composer window arguments ");
       args = GetArgs(window.arguments[0]);
       return null;
     }
@@ -2453,7 +2454,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             return "";
         }
       } catch (ex) {
-        SmartTemplate4.logToConsole(`Cannot determine default string for unknown header '${hdrField}'`);
+        SmartTemplate4.Util.logToConsole(`Cannot determine default string for unknown header '${hdrField}'`);
         return "";
       }
     }
@@ -3649,8 +3650,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     }
     util.logDebug("insertFile - type detected: " + type);
     // find out whether path is relative:
-    let isAbsolute = util.isFilePathAbsolute(path);
-    if (type=='image' || type=='css' && !isAbsolute) {
+    let isAbsolute = util.isFilePathAbsolute(newPath);
+    if ((type=='image' || type=='css') && !isAbsolute) {
       let dbgCmdType = (type=="css") ? "%style%" : "%file%";
       util.logDebug(dbgCmdType + " - " + type + " path may be relative: " + path  +
         "\n flags.isFileTemplate = " + flags.isFileTemplate +
@@ -3661,7 +3662,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         // let pathParts = path.includes("\\") ? path.split("\\") :  path.split("/");
         // (!FileUtils.getFile("Home", pathParts, false))
         if (!await IOUtils.exists(newPath)) {  
-          util.logDebug("Cannot find file. Trying to append to path of template.");
+          util.logDebug(`Cannot find file: ${newPath}\n Trying to append to path of template.`);
         }
       }
       catch (ex) {
@@ -3686,23 +3687,21 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       }
     }
     try {
-      switch(type) {
-        case 'htm':
-        case 'html':
-        case 'txt':
-        case 'css':
+      switch (type) {
+        case "htm":
+        case "html":
+        case "txt":
+        case "css":
           if (!isAbsolute) {
             path = newPath;
           }
           //try our new method
           if (prefs.getMyBoolPref("vars.file.fileTemplateMethod")) {
-            let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate(
-              {
-                composeType: composeType, 
-                path: path, 
-                label: "data inserted from " + (type=='css') ? "%style%" : "%file%"
-              }
-            );
+            let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate({
+              composeType: composeType,
+              path: path,
+              label: "data inserted from " + (type == "css") ? "%style%" : "%file%",
+            });
             if (!tmpTemplate.failed) {
               html = tmpTemplate.HTML;
               if (!html) {
@@ -3714,19 +3713,23 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             // OLD Method
             // find / load file and expand?
             let data = "",
-                //read file into a string so the correct identifier can be added
-                fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream),
-                cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream),
-                countRead = 0;
-            // let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
+              //read file into a string so the correct identifier can be added
+              fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(
+                Ci.nsIFileInputStream
+              ),
+              cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(
+                Ci.nsIConverterInputStream
+              ),
+              countRead = 0;
+            // let sigFile = Ident.signature.QueryInterface(Ci.nsIFile);
             try {
               let localFile = new FileUtils.File(path),
-                  str = {};
+                str = {};
               util.logDebug("localFile.initWithPath(" + path + ")");
               fstream.init(localFile, -1, 0, 0);
 
               /* sigEncoding: The character encoding you want, default is using UTF-8 here */
-              let encoding = (arr.length>1) ? arr[1] : 'UTF-8';
+              let encoding = arr.length > 1 ? arr[1] : "UTF-8";
               util.logDebug("initializing stream with " + encoding + " encoding…");
               cstream.init(fstream, encoding, 0, 0);
               let read = 0;
@@ -3737,67 +3740,73 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               } while (read != 0);
               cstream.close(); // this closes fstream
               html = data.toString();
-            }
-            catch (ex) {
+            } catch (ex) {
               util.logException("insertFileLink() - read " + countRead + " characters.", ex);
               if (countRead) {
                 html = data.toString();
+              } else {
+                html =
+                  "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'> Error reading file: " +
+                  path +
+                  "<br>" +
+                  "Please check error console for detail</div>";
               }
-              else {
-                html = "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'> Error reading file: " + path + "<br>"
-                       + "Please check error console for detail</div>";
-              }
-            }					
+            }
           }
           // if we compose in html and file is txt we need to replace all line breaks with <br>
-          if (type=='txt') {
-            html = html.replace(/(?:\r\n|\r|\n)/g, '<br>');
+          if (type == "txt") {
+            html = html.replace(/(?:\r\n|\r|\n)/g, "<br>");
           }
-          if (type=='css') {
-            
-          }
-          else {
+          if (type == "css") {
+          } else {
             flags.isFileTemplate = true;
             // prepare for using relative paths from here...
             // assume we are within a template, to make matching subsequent relative paths possible.
             // should work for using %file(template.html)% in a SmartTemplate.
             if (!flags.filePaths) {
-              flags.filePaths = [];     // make an array so we can nest %file% statements to make fragments
+              flags.filePaths = []; // make an array so we can nest %file% statements to make fragments
             }
-            util.logDebugOptional("fileTemplates", `insertFileLink: Add file to template stack: ${path}\ntype: ${type}`);
+            util.logDebugOptional(
+              "fileTemplates",
+              `insertFileLink: Add file to template stack: ${path}\ntype: ${type}`
+            );
             flags.filePaths.push(path);
           }
           break;
-        case 'image':
-          let imgPath, alt = "", imageAttributes="";
-          if (arr.length>1) {
-            arr = SmartTemplate4.Util.combineEscapedParams(arr,1); // combine comma separated parameters
-            for (let i=1; i<arr.length; i++) {
+        case "image":
+          let imgPath,
+            alt = "",
+            imageAttributes = "";
+          if (arr.length > 1) {
+            arr = SmartTemplate4.Util.combineEscapedParams(arr, 1); // combine comma separated parameters
+            for (let i = 1; i < arr.length; i++) {
               let el = arr[i];
               if (el.includes("=")) {
                 imageAttributes = imageAttributes + " " + el;
               } else {
                 // don't escape this as it should be pure text. We cannot accept ,'
-                alt = " alt='" + arr[1].replace("'","").replace(/\"/gm, "") + "'";
+                alt = " alt='" + arr[1].replace("'", "").replace(/\"/gm, "") + "'";
               }
             }
           }
-          if (!isAbsolute && currentPath) {
-            //
-            util.logDebug("insert image - adding relative path " + path + "\nto " + currentPath);
-            let lastSlash = currentPath.lastIndexOf("\\");
-            if (lastSlash<0) lastSlash = currentPath.lastIndexOf("/");
-            path = currentPath.substr(0, lastSlash + (path.startsWith('/') ? 0 : 1)) + path;
-          }
-          imgPath = "file:///" + path.replace(/\\/gm,'/');
+
+          imgPath = "file:///" + newPath.replace(/\\/gm, "/").replaceAll(" ", "%20");
           // change to data URL
-          imgPath = util.getFileAsDataURI(imgPath)
+          imgPath = util.getFileAsDataURI(imgPath);
+          // Create the image tag with the data URI and attributes
           html = "<img src='" + imgPath + "'" + alt + imageAttributes + " >";
           break;
         default:
-          alert(`Unsupported file type in %file()%.\nFilepath: '${path}' \nYou can see more detail in error console.`);
-          util.logHighlight("\nError in loading file due to unknown type.", "yellow", "rgb(80,0,0)",`\npath: ${path}\ntype: ${type}`);
-          html='';
+          alert(
+            `Unsupported file type in %file()%.\nFilepath: '${path}' \nYou can see more detail in error console.`
+          );
+          util.logHighlight(
+            "\nError in loading file due to unknown type.",
+            "yellow",
+            "rgb(80,0,0)",
+            `\npath: ${path}\ntype: ${type}`
+          );
+          html = "";
           break;
       }
     } catch(ex) {
