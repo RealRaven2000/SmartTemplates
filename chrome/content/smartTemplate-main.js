@@ -227,7 +227,7 @@ END LICENSE BLOCK
   Version 4.10.1 - 28/01/2025 
     # [issue 354] Regression in 4.10: automatic forwarding with FiltaQuilla fails
 
-  Version 4.11 - WIP
+  Version 4.11 - 05/04/2025
     # made compatible with Tb 137.*
     # [issue 361] Enhancement: Make Settings dialog accessible (keyboard / screenreader friendly)
     # [issue 358] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
@@ -240,6 +240,9 @@ END LICENSE BLOCK
     # [issue 366] Sandbox scripts fail in Thunderbird 137
     # removed inline event handlers (these will be deprecated in 137)
 
+  Version 4.11.1 - WIP
+    # [issue 333] Templates do not work with "mailto"
+    # [issue 370] Using absolute path in template file may lead missing images
 
 
 =========================
