@@ -562,6 +562,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	};
 	
 	function testSignatureVar(template) {
+		if (!template) { return ""; }
 		let reg = /%(sig)(\([^)]+\))*%/gm,
 		    match = template.toLowerCase().match(reg);
     util.logDebugOptional('functions','testSignatureVar() match = ' + match);
@@ -1282,8 +1283,7 @@ SmartTemplate4.classSmartTemplate = function() {
           bodyEl.innerHTML = '';
           bodyContent = '';
           util.logDebugOptional('composer','msgComposeType.MailToUrl - injecting mailto content:\n' + bodyEl.innerHTML);
-        }
-        else {
+        } else {
           bodyEl.innerHTML = '';
           util.logDebugOptional('composer','msgComposeType.MailToUrl - clearing template and setting to:\n' + bodyContent);
           template = bodyContent; // clear template
@@ -1302,8 +1302,9 @@ SmartTemplate4.classSmartTemplate = function() {
 				testDiv.id = "tempTemplate";
 				testDiv.hidden = true;
 				// replace <head> tags, because they will be removed on adding the HTML:
-				testDiv.innerHTML = template.replace("<head","<div class='smartTemplateHeader' ").replace("</head","</div")
-				                            .replace("<body","<div class='smartTemplateBody' "  ).replace("</body","</div");
+				testDiv.innerHTML = template ?
+				  template.replace("<head","<div class='smartTemplateHeader' ").replace("</head","</div")
+				                            .replace("<body","<div class='smartTemplateBody' "  ).replace("</body","</div") : "";
 
 				// ===== merge head contents
 				let heads = testDiv.querySelectorAll("div.smartTemplateHeader");
@@ -1387,7 +1388,7 @@ SmartTemplate4.classSmartTemplate = function() {
 					templateDiv.style.border = "1px solid #FFE070";
 				} */
         util.logDebugOptional('composer','Setting template Div innerHTML…\n' + template);
-        templateDiv.innerHTML = template;
+        templateDiv.innerHTML = template || "";
 				if (theIdentity.replyOnTop) {
 					// this is where we lose the default "paragraph" style
 					editor.beginningOfDocument();
@@ -1505,7 +1506,7 @@ SmartTemplate4.classSmartTemplate = function() {
           "centerscreen,titlebar",
           { ok: function() {
             let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
-            oClipBoard.copyString(template); },
+            oClipBoard.copyString(template || ""); },
             cancel: function() { ;/* cancel NOP */ }
           }, 
           gMsgCompose.editor.document.defaultView
