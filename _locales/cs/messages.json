@@ -686,8 +686,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "Děkujeme, že jste nedávno prodloužili licenci nebo jste darovali. Jelikož jste pomohli doložit tento doplněk do budoucna, můžete toto okno jednoduše zavřít."
+    "message": "Děkujeme, že udržujete svou licenci aktuální. Protože jste přispěli k zajištění budoucnosti tohoto doplňku, můžete tuto kartu bezpečně zavřít."
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -2005,7 +2004,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Změny přístupnosti{boldEnd}{P2} {P1}Aktuálně se intenzivně pracuje na tom, aby byl SmartTemplates plně přístupný pro klávesnici a čtečky obrazovky.{P2}{L1} Vylepšení přístupnosti: Umožnit navigaci v dialogu Nastavení pomocí klávesnice [issue 361] {L2}{L1} Kompatibilita s Thunderbird 137.* [issue 331].{L2} {L1} Nová funkce: {{%dateformat.current()%}} [issue 356]{L2} {L1} Vylepšení v pískovišťové JavaScriptu, více kontextových parametrů jako $priority a nové funkce {{composer_composeType()}} a {{composer_composeType()}} [issue 357] {L2}{L1} Nastavení záložní kódování na UTF-8 pro zabránění mojibake (znečistěný text) [issue 338]{L2}"
+    "message": "{headStart}Údržbová verze 4.11.1{headEnd}{L1}Opravený problém s šablonami, které nefungovaly při následování 'mailto' odkazů z webových stránek. [issue 333]{L2}{L1}Absolutní cesty pro obrázky vložené pomocí {{%file%}} nyní fungují spolehlivě [issue 370]{L2}{headStart}Verze 4.11 - Zaměření na přístupnost{headEnd}{L1}Vylepšení přístupnosti: Dialog nastavení je nyní plně ovladatelný klávesnicí a kompatibilní s čtečkami obrazovky [issue 361]{L2}{L1}Nová funkce: {{%dateformat.current()%}} [issue 356]{L2}{L1}Vylepšení sandboxovaného JavaScriptu a přidání kontextových parametrů, jako je {{$priority}}, a nové funkce {{composer_composeType()}} a {{composer_composeType()}} [issue 357]{L2}{L1}Nastavení fallback znakové sady na UTF-8 pro zamezení mojibake (znečištěného textu) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

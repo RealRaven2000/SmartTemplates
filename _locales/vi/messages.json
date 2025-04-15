@@ -89,8 +89,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "Cảm ơn bạn đã gia hạn giấy phép gần đây hoặc nếu bạn đã đóng góp. Vì bạn đã giúp chứng minh Tiện ích bổ sung này trong tương lai, bạn có thể chỉ cần đóng cửa sổ này."
+    "message": "Cảm ơn bạn đã duy trì giấy phép của bạn luôn cập nhật. Vì bạn đã đóng góp vào việc bảo đảm tương lai cho tiện ích này, bạn có thể đóng tab này một cách an toàn."
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -285,7 +284,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Thay đổi về khả năng tiếp cận{boldEnd}{P2} {P1}Hiện tại tôi đang làm việc chăm chỉ để làm cho SmartTemplates hoàn toàn có thể truy cập được cho người dùng bàn phím và các phần mềm đọc màn hình.{P2}{L1} Cải tiến khả năng tiếp cận: Làm cho hộp thoại Cài đặt có thể điều hướng bằng bàn phím [issue 361] {L2}{L1} Tương thích với Thunderbird 137.* [issue 331].{L2} {L1} Chức năng mới: {{%dateformat.current()%}} [issue 356]{L2} {L1} Cải tiến trong JavaScript Sandboxed, thêm các tham số ngữ cảnh như $priority và các chức năng mới {{composer_composeType()}} và {{composer_composeType()}} [issue 357] {L2}{L1} Đặt charset dự phòng thành UTF-8 để tránh mojibake (văn bản bị lỗi) [issue 338]{L2}"
+    "message": "{headStart}Phát hành bảo trì 4.11.1{headEnd}{L1}Đã sửa lỗi khiến mẫu không hoạt động khi theo liên kết 'mailto' từ trang web. [issue 333]{L2}{L1}Đường dẫn tuyệt đối cho hình ảnh được chèn bằng {{%file%}} hiện hoạt động đáng tin cậy [issue 370]{L2}{headStart}Phát hành 4.11 – Tập trung vào khả năng truy cập{headEnd}{L1}Cải tiến khả năng truy cập: Hộp thoại cài đặt giờ đây có thể điều hướng hoàn toàn bằng bàn phím và tương thích với trình đọc màn hình [issue 361]{L2}{L1}Chức năng mới: {{%dateformat.current()%}} [issue 356]{L2}{L1}Cải tiến JavaScript bị cách ly và thêm các tham số ngữ cảnh như {{$priority}} cùng các hàm mới {{composer_composeType()}} và {{composer_composeType()}} [issue 357]{L2}{L1}Đặt bảng mã mặc định thành UTF-8 để tránh lỗi mojibake (văn bản bị méo) [issue 338]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

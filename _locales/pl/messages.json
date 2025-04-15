@@ -696,8 +696,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "Dziękujemy za niedawne przedłużenie licencji lub przekazanie darowizny. Ponieważ pomogłeś w przygotowaniu tego dodatku w przyszłości, możesz po prostu zamknąć to okno."
+    "message": "Dziękujemy za utrzymywanie licencji na bieżąco. Ponieważ przyczyniłeś się do zapewnienia przyszłości tej wtyczki, możesz bezpiecznie zamknąć tę kartę."
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -2013,7 +2012,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Zmiany w dostępności{boldEnd}{P2} {P1}Obecnie ciężko pracuję, aby SmartTemplates były w pełni dostępne dla użytkowników klawiatury i czytników ekranu.{P2}{L1} Ulepszenie dostępności: Umożliwienie nawigacji w oknie ustawień za pomocą klawiatury [issue 361] {L2}{L1} Kompatybilne z Thunderbird 137.* [issue 331].{L2} {L1} Nowa funkcja: {{%dateformat.current()%}} [issue 356]{L2} {L1} Ulepszenia w Sandboxed JavaScript, więcej kontekstowych parametrów, takich jak $priority oraz nowe funkcje {{composer_composeType()}} i {{composer_composeType()}} [issue 357] {L2}{L1} Ustawienie domyślnego zestawu znaków na UTF-8, aby uniknąć mojibake (nieczytelny tekst) [issue 338]{L2}"
+    "message": "{headStart}Wydanie konserwacyjne 4.11.1{headEnd}{L1}Naprawiono błąd powodujący, że szablony nie działały po kliknięciu linków 'mailto' na stronach internetowych. [issue 333]{L2}{L1}Bezwzględne ścieżki do obrazów używających {{%file%}} działają teraz niezawodnie [issue 370]{L2}{headStart}Wydanie 4.11 – Skoncentrowane na dostępności{headEnd}{L1}Ulepszenie dostępności: Uczyniono okno dialogowe ustawień w pełni nawigowalne za pomocą klawiatury i zgodne z czytnikami ekranu [issue 361]{L2}{L1}Nowa funkcja: {{%dateformat.current()%}} [issue 356]{L2}{L1}Ulepszenia w sandboxowanym JavaScript oraz dodano kontekstowe parametry, takie jak {{$priority}} i nowe funkcje {{composer_composeType()}} oraz {{composer_composeType()}} [issue 357]{L2}{L1}Ustawiono domyślne kodowanie znaków na UTF-8, aby uniknąć mojibake (zniekształconego tekstu) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

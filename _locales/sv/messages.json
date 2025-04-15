@@ -701,8 +701,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "Tack för att du nyligen förlängde din licens eller om du har donerat. Eftersom du har hjälpt till att framtida bevisa detta tillägg kan du helt enkelt stänga det här fönstret."
+    "message": "Tack för att du håller din licens uppdaterad. Eftersom du har bidragit till att säkra framtiden för detta tillägg kan du tryggt stänga denna flik."
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -2044,7 +2043,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Tillgänglighetsändringar{boldEnd}{P2} {P1}Jag arbetar för närvarande hårt för att göra SmartTemplates helt tillgängligt för tangentbordsanvändare och skärmläsare.{P2}{L1} Tillgänglighetsförbättring: Gör inställningsdialogen navigerbar med tangentbord [issue 361] {L2}{L1} Kompatibel med Thunderbird 137.* [issue 331].{L2} {L1} Ny funktion: {{%dateformat.current()%}} [issue 356]{L2} {L1} Förbättringar i Sandboxed JavaScript, fler kontextuella parametrar som $priority och nya funktioner {{composer_composeType()}} och {{composer_composeType()}} [issue 357] {L2}{L1} Ställ in fallback-teckenuppsättningen till UTF-8 för att undvika mojibake (oläsbar text) [issue 338]{L2}"
+    "message": "{headStart}Underhållsutgåva 4.11.1{headEnd}{L1}Korrigerade fel där mallar inte fungerade när man följde 'mailto'-länkar från webbsidor. [issue 333]{L2}{L1}Absoluta sökvägar till bilder som inkluderas med {{%file%}} fungerar nu pålitligt [issue 370]{L2}{headStart}Utgåva 4.11 – Fokus på tillgänglighet{headEnd}{L1}Tillgänglighetsförbättring: Inställningsdialogen är nu helt tangentbordsnavigerbar och kompatibel med skärmläsare [issue 361]{L2}{L1}Ny funktion: {{%dateformat.current()%}} [issue 356]{L2}{L1}Förbättringar i sandboxat JavaScript och tillagda kontextuella parametrar som {{$priority}} samt nya funktioner {{composer_composeType()}} och {{composer_composeType()}} [issue 357]{L2}{L1}Standardteckenuppsättningen är nu UTF-8 för att undvika mojibake (förvrängd text) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

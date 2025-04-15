@@ -172,6 +172,8 @@ function formatAll(txt) {
   let localizedMsg = txt.replace(/<(.*?)>/g, "<span class='htmltag' />&lt;$1&gt;</span>");
   // added simple <tag> support
   return localizedMsg
+    .replace(/\{headStart\}/g, "<h3>")
+    .replace(/\{headEnd\}/g, "</h3>")
     .replace(/\{boldStart\}/g, "<b>")
     .replace(/\{boldEnd\}/g, "</b>")
     .replace(/\{hr\}/g, "<hr>")

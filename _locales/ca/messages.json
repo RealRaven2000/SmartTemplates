@@ -696,8 +696,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "Gràcies per ampliar recentment la llicència o si heu donat. Com heu ajudat a provar aquest complement en un futur, només podeu tancar aquesta finestra."
+    "message": "Gràcies per mantenir la vostra llicència actualitzada. Com que heu contribuït a garantir el futur d'aquest complement, podeu tancar aquesta pestanya amb seguretat."
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -2024,7 +2023,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Canvis d'accessibilitat{boldEnd}{P2} {P1}Estic treballant activament per fer que SmartTemplates sigui completament accessible per al teclat i lectors de pantalla.{P2}{L1} Millora d'accessibilitat: Feu el quadre de diàleg de configuració navegable amb el teclat [issue 361] {L2}{L1} Fet compatible amb Thunderbird 137.* [issue 331].{L2} {L1} Nova funció: {{%dateformat.current()%}} [issue 356]{L2} {L1} Millores en JavaScript en sandbox, més paràmetres contextuals com $priority i noves funcions {{composer_composeType()}} i {{composer_composeType()}} [issue 357] {L2}{L1} Configurar la codificació de caràcters de recuperació a UTF-8 per evitar el mojibake (text distorsionat) [issue 338]{L2}"
+    "message": "{headStart}Versió de manteniment 4.11.1{headEnd}{L1}S'ha corregit el problema que feia que les plantilles no funcionessin en seguir enllaços 'mailto' des de pàgines web. [issue 333]{L2}{L1}Els camins absoluts per a imatges incloses mitjançant {{%file%}} ara funcionen de manera fiable [issue 370]{L2}{headStart}Versió 4.11 - Enfocament en Accessibilitat{headEnd}{L1}Millora de l'accessibilitat: el quadre de diàleg de configuració ara és totalment navegable amb el teclat i compatible amb lectors de pantalla [issue 361]{L2}{L1}Nova funció: {{%dateformat.current()%}} [issue 356]{L2}{L1}Millores a JavaScript sandboxed i afegida paràmetres contextuals com {{$priority}} i noves funcions {{composer_composeType()}} i {{composer_composeType()}} [issue 357]{L2}{L1}S'ha establert la codificació de caràcters de fallback a UTF-8 per evitar el mojibake (text distorsionat) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

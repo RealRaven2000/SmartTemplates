@@ -689,8 +689,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "Obrigado por estender recentemente sua licença ou se você fez uma doação. Como você ajudou a preparar este complemento para o futuro, basta fechar esta janela."
+    "message": "Obrigado por manter sua licença atualizada. Como você contribuiu para garantir o futuro deste complemento, pode fechar esta aba com segurança."
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -1990,7 +1989,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Alterações de Acessibilidade{boldEnd}{P2} {P1}Estou trabalhando arduamente para tornar o SmartTemplates totalmente acessível a usuários de teclado e leitores de tela.{P2}{L1} Melhoria de Acessibilidade: Tornar a caixa de diálogo de Configurações navegável por teclado [issue 361] {L2}{L1} Compatível com Thunderbird 137.* [issue 331].{L2} {L1} Nova função: {{%dateformat.current()%}} [issue 356]{L2} {L1} Melhorias no JavaScript Sandboxed, mais parâmetros contextuais como $priority e novas funções {{composer_composeType()}} e {{composer_composeType()}} [issue 357] {L2}{L1} Definir o charset de fallback para UTF-8 para evitar mojibake (texto embaralhado) [issue 338]{L2}"
+    "message": "{headStart}Versão de Manutenção 4.11.1{headEnd}{L1}Corrigido o erro em que os modelos não funcionavam ao seguir links 'mailto' de páginas web. [issue 333]{L2}{L1}Caminhos absolutos para imagens incluídas usando {{%file%}} agora funcionam de forma confiável [issue 370]{L2}{headStart}Versão 4.11 - Foco em Acessibilidade{headEnd}{L1}Aprimoramento de Acessibilidade: Caixa de diálogo de configurações agora totalmente navegável por teclado e compatível com leitores de tela [issue 361]{L2}{L1}Nova função: {{%dateformat.current()%}} [issue 356]{L2}{L1}Melhorias no JavaScript em sandbox e adição de parâmetros contextuais como {{$priority}} e novas funções {{composer_composeType()}} e {{composer_composeType()}} [issue 357]{L2}{L1}Definido charset padrão como UTF-8 para evitar mojibake (texto distorcido) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

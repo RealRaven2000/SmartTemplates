@@ -698,8 +698,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "Merci d'avoir récemment prolongé votre licence ou si vous avez fait un don. Comme vous avez contribué à la pérennité de cet add-on, vous pouvez simplement fermer cette fenêtre."
+    "message": "Merci de maintenir votre licence à jour. Étant donné que vous avez contribué à sécuriser l'avenir de cette extension, vous pouvez fermer cet onglet en toute sécurité."
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -2017,7 +2016,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Modifications d'accessibilité{boldEnd}{P2} {P1}Je travaille actuellement d'arrache-pied pour rendre SmartTemplates entièrement accessible via le clavier et les lecteurs d'écran.{P2}{L1} Amélioration de l'accessibilité : Rendre la boîte de dialogue Paramètres navigable au clavier [issue 361] {L2}{L1} Compatible avec Thunderbird 137.* [issue 331].{L2} {L1} Nouvelle fonction : {{%dateformat.current()%}} [issue 356]{L2} {L1} Améliorations de JavaScript dans un environnement isolé, plus de paramètres contextuels comme $priority et nouvelles fonctions {{composer_composeType()}} et {{composer_composeType()}} [issue 357] {L2}{L1} Définir le jeu de caractères de secours sur UTF-8 pour éviter le mojibake (texte illisible) [issue 338]{L2}"
+    "message": "{headStart}Version de maintenance 4.11.1{headEnd}{L1>Correction du bug avec les modèles qui ne fonctionnaient pas lorsqu'on suivait des liens 'mailto' depuis des pages web. [issue 333]{L2}{L1>Les chemins absolus pour les images incluses avec {{%file%}} fonctionnent désormais de manière fiable [issue 370]{L2}{headStart}Version 4.11 - Focus sur l'accessibilité{headEnd}{L1>Amélioration de l'accessibilité : la boîte de dialogue des paramètres est désormais entièrement navigable au clavier et compatible avec les lecteurs d'écran [issue 361]{L2}{L1}Nouvelle fonction : {{%dateformat.current()%}} [issue 356]{L2}{L1}Améliorations dans JavaScript sandboxed et ajout de paramètres contextuels tels que {{$priority}} et de nouvelles fonctions {{composer_composeType()}} et {{composer_composeType()}} [issue 357]{L2}{L1}Définition de la charset de secours en UTF-8 pour éviter le mojibake (texte déformé) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

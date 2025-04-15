@@ -686,8 +686,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "Grazie per aver recentemente esteso la tua licenza o se hai donato. Poiché hai contribuito a rendere questo componente aggiuntivo a prova di futuro, puoi semplicemente chiudere questa finestra."
+    "message": "Grazie per mantenere la tua licenza aggiornata. Poiché hai contribuito a garantire il futuro di questa estensione, puoi chiudere questa scheda in sicurezza."
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -1963,7 +1962,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Modifiche all'accessibilità{boldEnd}{P2} {P1}Sto lavorando duramente per rendere SmartTemplates completamente accessibile tramite tastiera e lettori di schermo.{P2}{L1} Miglioramento dell'accessibilità: Rendi la finestra di dialogo Impostazioni navigabile tramite tastiera [issue 361] {L2}{L1} Compatibile con Thunderbird 137.* [issue 331].{L2} {L1} Nuova funzione: {{%dateformat.current()%}} [issue 356]{L2} {L1} Miglioramenti nel JavaScript sandboxed, più parametri contestuali come $priority e nuove funzioni {{composer_composeType()}} e {{composer_composeType()}} [issue 357] {L2}{L1} Imposta il fallback charset su UTF-8 per evitare il mojibake (testo distorto) [issue 338]{L2}"
+    "message": "{headStart}Release di manutenzione 4.11.1{headEnd}{L1>Corretto il bug che impediva il funzionamento dei modelli quando si seguivano i link 'mailto' dalle pagine web. [issue 333]{L2}{L1>I percorsi assoluti per le immagini inclusi utilizzando {{%file%}} ora funzionano in modo affidabile [issue 370]{L2}{headStart}Release 4.11 - Focus sull'accessibilità{headEnd}{L1>Miglioramento dell'accessibilità: la finestra di dialogo Impostazioni è ora completamente navigabile tramite tastiera e compatibile con i lettori di schermo [issue 361]{L2}{L1}Nuova funzione: {{%dateformat.current()%}} [issue 356]{L2}{L1}Miglioramenti nel JavaScript sandboxed e aggiunta di parametri contestuali come {{$priority}} e nuove funzioni {{composer_composeType()}} e {{composer_composeType()}} [issue 357]{L2}{L1}Impostato il fallback della codifica dei caratteri su UTF-8 per evitare il mojibake (testo distorto) [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

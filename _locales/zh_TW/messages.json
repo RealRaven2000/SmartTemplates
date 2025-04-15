@@ -695,8 +695,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "感謝您最近延長許可證或捐贈。 當您幫助將來對該插件進行驗證時，只需關閉此窗口即可。"
+    "message": "感謝您保持您的許可證更新。由於您為確保此插件的未來做出了貢獻，您可以安全地關閉此標籤頁。"
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -2002,7 +2001,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}可及性變更{boldEnd}{P2} {P1}我目前正努力使 SmartTemplates 完全支援鍵盤和螢幕讀取器使用者的可及性{P2}{L1} 可及性增強：使設定對話框可用鍵盤導航 [issue 361] {L2}{L1} 與 Thunderbird 137.* 相容 [issue 331].{L2} {L1} 新功能：{{%dateformat.current()%}} [issue 356]{L2} {L1} 在沙箱 JavaScript 中進行改進，添加更多上下文參數，如 $priority 和新函數 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357] {L2}{L1} 將回退字元集設定為 UTF-8 以避免 mojibake（亂碼） [issue 338]{L2}"
+    "message": "{headStart}維護版本 4.11.1{headEnd}{L1}修復從網頁中點擊 'mailto' 連結時模板無法正常運作的問題。 [issue 333]{L2}{L1}透過 {{%file%}} 插入的圖像絕對路徑現在能可靠運作 [issue 370]{L2}{headStart}版本 4.11 - 無障礙功能強化{headEnd}{L1}無障礙改進：設定對話框現在可完全使用鍵盤操作，並支援螢幕閱讀器 [issue 361]{L2}{L1}新增功能：{{%dateformat.current()%}} [issue 356]{L2}{L1}改進沙盒 JavaScript，加入如 {{$priority}} 等情境參數與新函數 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357]{L2}{L1}將預設字元集設為 UTF-8，以避免 mojibake（亂碼）問題 [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

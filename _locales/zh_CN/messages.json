@@ -695,8 +695,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "感谢您最近延长许可证或捐赠。 当您帮助将来对该插件进行验证时，只需关闭此窗口即可。"
+    "message": "感谢您保持您的许可证最新。由于您为确保此插件的未来做出了贡献，您可以安全地关闭此标签页。"
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -2012,7 +2011,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}可访问性变更{boldEnd}{P2} {P1}我目前正在努力使SmartTemplates完全支持键盘和屏幕阅读器用户的访问{P2}{L1} 可访问性增强：使设置对话框可以用键盘导航 [issue 361] {L2}{L1} 与 Thunderbird 137.* 兼容 [issue 331].{L2} {L1} 新功能：{{%dateformat.current()%}} [issue 356]{L2} {L1} 在沙箱 JavaScript 中进行改进，添加更多上下文参数，如 $priority 和新函数 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357] {L2}{L1} 将回退字符集设置为 UTF-8 以避免 mojibake（乱码） [issue 338]{L2}"
+    "message": "{headStart}维护版本 4.11.1{headEnd}{L1}修复了从网页跟随 'mailto' 链接时模板无法正常工作的问题。 [issue 333]{L2}{L1}通过 {{%file%}} 插入的图像绝对路径现在能可靠地工作 [issue 370]{L2}{headStart}版本 4.11 - 可访问性优化{headEnd}{L1}可访问性增强：设置对话框现在完全支持键盘导航，并兼容屏幕阅读器 [issue 361]{L2}{L1}新增功能：{{%dateformat.current()%}} [issue 356]{L2}{L1}改进了沙箱 JavaScript，新增了如 {{$priority}} 等上下文参数以及新函数 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357]{L2}{L1}将默认字符集设置为 UTF-8，以避免 mojibake（乱码）问题 [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

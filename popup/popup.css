@@ -303,6 +303,8 @@ h2 {
 
 h3 {
   font-size: 16pt;
+  text-align: left !important;
+  color: rgb(113, 220, 250) !important;
 }
 
 .visually-hidden {

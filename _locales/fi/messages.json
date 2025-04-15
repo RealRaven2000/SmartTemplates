@@ -698,8 +698,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "Kiitos, että lisenssit äskettäin tai olet lahjoittanut. Koska olet auttanut todistamaan tämän lisäosan tulevaisuudessa, voit yksinkertaisesti sulkea tämän ikkunan."
+    "message": "Kiitos, että pidät lisenssisi ajan tasalla. Koska olet myötävaikuttanut tämän lisäosan tulevaisuuden turvaamiseen, voit turvallisesti sulkea tämän välilehden."
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -2032,7 +2031,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Saavutettavuusmuutokset{boldEnd}{P2} {P1}Työskentelen parhaillani SmartTemplatesin täyden saavutettavuuden varmistamiseksi näppäimistölle ja ruudunlukuohjelmille.{P2}{L1} Saavutettavuusparannus: Asetusvalikon tekeminen näppäimistöllä navigoitavaksi [issue 361] {L2}{L1} Yhteensopiva Thunderbird 137.* kanssa [issue 331].{L2} {L1} Uusi toiminto: {{%dateformat.current()%}} [issue 356]{L2} {L1} Parannuksia hiekassa toimivassa JavaScriptissä, lisää kontekstiparametreja kuten $priority ja uusia toimintoja {{composer_composeType()}} ja {{composer_composeType()}} [issue 357] {L2}{L1} Aseta varaherkkyysmerkintä UTF-8:ksi mojibaken (hämmentyneen tekstin) estämiseksi [issue 338]{L2}"
+    "message": "{headStart}Ylläpitopäivitys 4.11.1{headEnd}{L1>Korjattu virhe, jossa mallit eivät toimineet 'mailto' -linkkien seuraamisessa verkkosivuilta. [issue 333]{L2}{L1}Absoluuttiset polut kuville, jotka sisältyvät {{%file%}}-muodossa, toimivat nyt luotettavasti [issue 370]{L2}{headStart}Versio 4.11 - Käytettävyyteen keskittyminen{headEnd}{L1>Käytettävyyden parannus: Asetusdialogi on nyt täysin näppäimistönavigoitavissa ja ruudunlukuohjelmien kanssa yhteensopiva [issue 361]{L2}{L1}Uusi toiminto: {{%dateformat.current()%}} [issue 356]{L2}{L1}Parannuksia sandboxed JavaScriptissä ja kontekstuaalisia parametrejä kuten {{$priority}} ja uusia toimintoja {{composer_composeType()}} ja {{composer_composeType()}} [issue 357]{L2}{L1}Fallback-merkistökoodaukseksi asetettu UTF-8 mojibake (tahraantunut teksti) välttämiseksi [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

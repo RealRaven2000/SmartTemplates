@@ -689,8 +689,7 @@
     }
   },
   "license-is-extended": {
-    "description": "Shown if license expires more than a year from now",
-    "message": "Vielen Dank, dass Sie kürzlich Ihre Lizenz verlängert haben oder gespendet haben. Da Sie zur Zukunftssicherung dieses Add-ons beigetragen haben, können Sie dieses Fenster einfach schließen."
+    "message": "Vielen Dank, dass Sie Ihre Lizenz aktuell halten. Da Sie zur Zukunftssicherung dieses Add-ons beigetragen haben, können Sie diesen Tab bedenkenlos schließen."
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
@@ -1959,7 +1958,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Änderungen zur Barrierefreiheits{boldEnd}{P2} {P1}Ich arbeite derzeit intensiv daran, SmartTemplates vollständig für Tastatur und Bildschirmleser zugänglich zu machen.{P2}{L1} Barrierefreiheitsverbesserung: Einstellungen-Dialog mit der Tastatur navigierbar machen [issue 361] {L2}{L1} Kompatibel mit Thunderbird 137.* [issue 331].{L2} {L1} Neue Funktion: {{%dateformat.current()%}} [issue 356]{L2} {L1} Verbesserungen in Sandbox-JavaScript, mehr kontextuelle Parameter wie $priority und neue Funktionen {{composer_composeType()}} und {{composer_composeType()}} [issue 357] {L2}{L1} Fallback-Zeichensatz auf UTF-8 setzen, um Mojibake (verzerrten Text) zu vermeiden [issue 338]{L2}"
+    "message": "{headStart}Wartungsversion 4.11.1{headEnd}{L1}Vorlagen funktionieren ab jetzt wieder mit 'mailto'-Links von Webseiten. [issue 333]{L2}{L1} Unterstützt Bilder, die über {{%file%}} mit absolutem Pfad eingefügt werden. [issue 370]{L2}{headStart}Version 4.11 - Fokus auf Barrierefreiheit{headEnd}{L1}Verbesserung der Barrierefreiheit: Einstellungsdialog jetzt vollständig mit der Tastatur navigierbar und mit Bildschirmlesern kompatibel [issue 361]{L2}{L1}Neue Funktion: {{%dateformat.current()%}} [issue 356]{L2}{L1}Verbesserungen in Sandbox-JavaScript und Hinzufügung kontextabhängiger Parameter wie {{$priority}} sowie neue Funktionen {{composer_composeType()}} und {{composer_composeType()}} [issue 357]{L2}{L1}Fallback-Zeichenkodierung auf UTF-8 gesetzt, um Mojibake (verzerrten Text) zu vermeiden [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
