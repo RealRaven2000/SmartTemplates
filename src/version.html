@@ -250,6 +250,7 @@ permalink: version.html
 
 <a id="4.11"> &nbsp; </a>
 <a id="4.11.1"> &nbsp; </a>
+<a id="4.11.2"> &nbsp; </a>
 <li>
   <h4>
 		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.11"
@@ -396,15 +397,16 @@ permalink: version.html
   <a name="newfeatures"> </a>
       
   <ul>
-    <h5 class="inlist">Maintenance Release 4.11.1</h5>
+    <h5 class="inlist">Maintenance Release 4.11.2</h5>
     <ul>
+      <li>
+        Absolute paths for images included using &#37;file&#37; now work reliably.  
+        Version 4.11.1 still had a regression that only affected files directly included in account templates.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/370">[issue 370]</a>
+      </li>   
       <li>
         Corrected bug with templates not working when following 'mailto' links from web pages.
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/333">[issue 333]</a>
-      </li>
-      <li>
-        Absolute paths for images included using {{%file%}} are now working reliably.
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/370">[issue 370]</a>
       </li>
     </ul>
 
