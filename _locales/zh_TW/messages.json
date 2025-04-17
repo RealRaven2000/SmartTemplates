@@ -2001,7 +2001,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{headStart}維護版本 4.11.1{headEnd}{L1}修復從網頁中點擊 'mailto' 連結時模板無法正常運作的問題。 [issue 333]{L2}{L1}透過 {{%file%}} 插入的圖像絕對路徑現在能可靠運作 [issue 370]{L2}{headStart}版本 4.11 - 無障礙功能強化{headEnd}{L1}無障礙改進：設定對話框現在可完全使用鍵盤操作，並支援螢幕閱讀器 [issue 361]{L2}{L1}新增功能：{{%dateformat.current()%}} [issue 356]{L2}{L1}改進沙盒 JavaScript，加入如 {{$priority}} 等情境參數與新函數 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357]{L2}{L1}將預設字元集設為 UTF-8，以避免 mojibake（亂碼）問題 [issue 338]{L2}"
+    "message": "{headStart}維護版本 4.11.2{headEnd}{L1}修復從網頁中點擊 'mailto' 連結時模板無法正常運作的問題。 [issue 333]{L2}{L1}透過 {{%file%}} 插入的圖像絕對路徑現在能可靠運作 [issue 370]{L2}{headStart}版本 4.11 - 無障礙功能強化{headEnd}{L1}無障礙改進：設定對話框現在可完全使用鍵盤操作，並支援螢幕閱讀器 [issue 361]{L2}{L1}新增功能：{{%dateformat.current()%}} [issue 356]{L2}{L1}改進沙盒 JavaScript，加入如 {{$priority}} 等情境參數與新函數 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357]{L2}{L1}將預設字元集設為 UTF-8，以避免 mojibake（亂碼）問題 [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

@@ -2011,7 +2011,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{headStart}维护版本 4.11.1{headEnd}{L1}修复了从网页跟随 'mailto' 链接时模板无法正常工作的问题。 [issue 333]{L2}{L1}通过 {{%file%}} 插入的图像绝对路径现在能可靠地工作 [issue 370]{L2}{headStart}版本 4.11 - 可访问性优化{headEnd}{L1}可访问性增强：设置对话框现在完全支持键盘导航，并兼容屏幕阅读器 [issue 361]{L2}{L1}新增功能：{{%dateformat.current()%}} [issue 356]{L2}{L1}改进了沙箱 JavaScript，新增了如 {{$priority}} 等上下文参数以及新函数 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357]{L2}{L1}将默认字符集设置为 UTF-8，以避免 mojibake（乱码）问题 [issue 338]{L2}"
+    "message": "{headStart}维护版本 4.11.2{headEnd}{L1}修复了从网页跟随 'mailto' 链接时模板无法正常工作的问题。 [issue 333]{L2}{L1}通过 {{%file%}} 插入的图像绝对路径现在能可靠地工作 [issue 370]{L2}{headStart}版本 4.11 - 可访问性优化{headEnd}{L1}可访问性增强：设置对话框现在完全支持键盘导航，并兼容屏幕阅读器 [issue 361]{L2}{L1}新增功能：{{%dateformat.current()%}} [issue 356]{L2}{L1}改进了沙箱 JavaScript，新增了如 {{$priority}} 等上下文参数以及新函数 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357]{L2}{L1}将默认字符集设置为 UTF-8，以避免 mojibake（乱码）问题 [issue 338]{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

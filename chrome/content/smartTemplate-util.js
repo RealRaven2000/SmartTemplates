@@ -1465,6 +1465,10 @@ SmartTemplate4.Util = {
   // retrieve the folder path of a full file location (e.g. C:\user\myTemplate.html)
   // filePath - name of file or relative path of file to append or empty
   getPathFolder: function (path, filePath) {
+    // [issue 370] Check if 'path' is absolute, if so, return it directly
+    if (SmartTemplate4.Util.isFilePathAbsolute(filePath)) {
+      return filePath;
+    }    
     const slash = path.includes("/") ? "/" : "\\",
       noSlash = slash == "/" ? "\\" : "/",
       fPart = path.lastIndexOf(slash);

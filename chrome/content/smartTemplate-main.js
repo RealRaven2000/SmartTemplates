@@ -240,10 +240,13 @@ END LICENSE BLOCK
     # [issue 366] Sandbox scripts fail in Thunderbird 137
     # removed inline event handlers (these will be deprecated in 137)
 
-  Version 4.11.1 - WIP
+  Version 4.11.1 - 15/04/2025
     # [issue 333] Templates do not work with "mailto"
     # [issue 370] Using absolute path in template file may lead missing images
     # Stability fix - when checking for sig variable without active template ST can fail
+
+  Version 4.11.2 - WIP
+    # [issue 370] Regression in 4.11.1 absolute paths in account templates failed.
 
 
 =========================
