@@ -1,9 +1,10 @@
 The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.11) 
 
 
-**Maintenance Release 4.11.1**
+**Maintenance Release 4.11.2**
+*   Made SmartTemplates compatible with Tb 138.*
 *   Corrected bug with templates not working when following 'mailto' links from web pages.[issue #333]
-*   Absolute paths for images included using {{%file%}} are now working reliably. [issue #370]
+*   Absolute paths for images included using {{%file%}} are now working reliably. Version 4.11.1 still had a regression that only affected files directly included in account templates. [issue #370]
 
 
 **Enhancements**
@@ -16,6 +17,5 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 **Miscellaneous**
 
-*   Made SmartTemplates compatible with Tb 136.*
 *   Thunderbird 136 retires ChromeUtils.import - replace with importESModule [issue #358]
 
