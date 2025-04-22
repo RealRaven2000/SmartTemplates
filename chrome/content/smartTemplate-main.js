@@ -245,9 +245,11 @@ END LICENSE BLOCK
     # [issue 370] Using absolute path in template file may lead missing images
     # Stability fix - when checking for sig variable without active template ST can fail
 
-  Version 4.11.2 - WIP
+  Version 4.11.2 - 17/04/2025
     # [issue 370] Regression in 4.11.1 absolute paths in account templates failed.
 
+  Version 4.11.3 - 
+    # [issue 372] sandbox script: Contextual parameters in sandbox (such as $subject) broken
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

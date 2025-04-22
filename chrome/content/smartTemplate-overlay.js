@@ -4018,9 +4018,23 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                   return ""; // Handle empty objects
                 }
 
-                return typeof arg === "number" && !isNaN(arg)
-                  ? arg
-                  : sandbox.contextualHeaders[arg] || `"${arg}"`;
+                // allow double-quoted string args through untouched
+                if (typeof arg === "string" && /^".*"$/.test(arg)) {
+                  return arg;
+                }
+
+                // If it's a known contextual header, strip the $
+                if (typeof arg === "string" && sandbox.contextualHeaders["$" + arg]) {
+                  return arg; // returns the unwrapped 'subject', 'to', etc.
+                }
+
+                // Numbers pass through as-is
+                if (typeof arg === "number" && !isNaN(arg)) {
+                  return arg;
+                }
+
+                // Fallback: quote anything else (bare words, single-quoted strings, etc.)
+                return `"${arg}"`;
               });
 
 
@@ -4065,8 +4079,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         // Replace "." with "_" for the transformed key name, then prefix $ to avoid overwriting functions.
         // The value to be stored in the sandbox as a string
         const parameter = `$${key.replaceAll(".", "_")}`;
-        // Add the contextual header to the accumulator with the original key and transformed value
-        acc[key] = parameter;
+        // Add the cparameterontextual header to the accumulator with the original key and transformed value
+        acc[parameter] = key;             // flip direction: $subject → subject
         // Set the original contextual parameter in the sandbox with the transformed name (paramName)
         sandbox[parameter] = key;
         return acc;

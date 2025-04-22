@@ -6,4 +6,4 @@ powershell -Command "(gc -en UTF8 manifest.json) -replace 'pre%oldRev%', 'pre%sm
 echo %smartTemplateRev% > revision.txt
 move smartTemplate-*.xpi "..\..\..\Test Versions\4.11\"
 powershell -Command "Start-Sleep -m 1000"
-rename smartTemplateWeb.zip smartTemplate-fx-4.11.2pre%smartTemplateRev%.xpi
+rename smartTemplateWeb.zip smartTemplate-fx-4.11.3pre%smartTemplateRev%.xpi
