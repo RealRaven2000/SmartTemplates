@@ -815,9 +815,16 @@ SmartTemplate4.classSmartTemplate = function() {
                        (flags.filePaths.length ? flags.filePaths[flags.filePaths.length-1] : "") : 
                        ""; // top of stack
         
-		regular = regular.replace(Irex,   // /file:\/\/\/[^\"\'\>]*/g
-		  function(match, g1, g2, g3) {
-				// util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
+    regular = regular.replace(Irex,   // /file:\/\/\/[^\"\'\>]*/g
+      function(match, g1, g2, g3) {
+        if (g2 && g2.startsWith(" ")) {
+          // [issue 373]  for: src=" data..."
+          g2 = g2.trim();
+          if (g2.startsWith("data:")) {
+            return g1 + g2 + g3;
+          }
+        }				
+        // util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
         if (!util.isFilePathAbsolute(g2)) {
           if (currentPath) {
             let newP = util.getPathFolder(currentPath, g2);
@@ -844,7 +851,7 @@ SmartTemplate4.classSmartTemplate = function() {
           }
         }
         return match;
-			}
+      }
 		);
     
 
