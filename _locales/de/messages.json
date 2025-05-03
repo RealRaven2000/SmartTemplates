@@ -1958,8 +1958,9 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{headStart}Wartungsversion 4.11.2{headEnd}{L1}Vorlagen funktionieren ab jetzt wieder mit 'mailto'-Links von Webseiten. [issue 333]{L2}{L1} Unterstützt Bilder, die über {{%file%}} mit absolutem Pfad eingefügt werden. [issue 370]{L2}{headStart}Version 4.11 - Fokus auf Barrierefreiheit{headEnd}{L1}Verbesserung der Barrierefreiheit: Einstellungsdialog jetzt vollständig mit der Tastatur navigierbar und mit Bildschirmlesern kompatibel [issue 361]{L2}{L1}Neue Funktion: {{%dateformat.current()%}} [issue 356]{L2}{L1}Verbesserungen in Sandbox-JavaScript und Hinzufügung kontextabhängiger Parameter wie {{$priority}} sowie neue Funktionen {{composer_composeType()}} und {{composer_composeType()}} [issue 357]{L2}{L1}Fallback-Zeichenkodierung auf UTF-8 gesetzt, um Mojibake (verzerrten Text) zu vermeiden [issue 338]{L2}"
+    "message": "{headStart}Wartungs-Release 4.11.3{headEnd}{L1} SmartTemplates ist jetzt mit Thunderbird 139 kompatibel – künftig soll die Kompatibilität mit dem monatlichen Release-Zyklus gewährleistet bleiben. Vielen Dank für den Kauf einer Lizenz, um die zukünftige Kompatibilität sicherzustellen!{L2}{L1} Behobene Regression: Kontextbezogene Parameter in der Sandbox (wie {{$subject}}) funktionierten nicht. [issue 273]{L2}{headStart}Release 4.11 – Fokus auf Barrierefreiheit {headEnd}{L1}Barrierefreiheit verbessert: Der Einstellungsdialog ist jetzt vollständig mit der Tastatur bedienbar und für Screenreader optimiert. [issue 361]{L2}{L1}Neue Funktion: {{%dateformat.current()%}} [issue 356]{L2}{L1}Verbesserungen bei sandboxed JavaScript und neue Kontextparameter wie {{$priority}} sowie neue Funktionen {{composer_composeType()}} und {{composer_composeType()}} hinzugefügt [issue 357]{L2}{L1}Standard-Zeichensatz auf UTF-8 gesetzt, um Mojibake (verstümmelter Text) zu vermeiden [issue 338]{L2}"
   },
+
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
   },
