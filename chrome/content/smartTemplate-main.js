@@ -249,7 +249,9 @@ END LICENSE BLOCK
     # [issue 370] Regression in 4.11.1 absolute paths in account templates failed.
 
   Version 4.11.3 - 
-    # [issue 372] sandbox script: Contextual parameters in sandbox (such as $subject) broken
+    # Compatibility with Thunderbird 139
+    # [issue 372] Fix in sandbox script: Contextual parameters in sandbox (such as $subject) broken
+    # [issue 373] Stability: images with encoded data path did not load if src attribute started with space
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

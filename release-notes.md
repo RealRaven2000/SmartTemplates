@@ -1,7 +1,16 @@
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.11) 
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.11.3) 
+
+
+
+**Maintenance Release 4.11.3**
+
+*   SmartTemplates is now compatible with Thunderbird 139 - going forward it aims to stay compatible with the current monthly release cycle. Thankfully this work is covered by license sales.
+*   Fix in sandbox script: Contextual parameters in sandbox (such as $subject) was broken. [issue #372]
+*   Stability: images with encoded data path did not load if src attribute started with space. [issue #373]
 
 
 **Maintenance Release 4.11.2**
+
 *   Made SmartTemplates compatible with Tb 138.*
 *   Corrected bug with templates not working when following 'mailto' links from web pages.[issue #333]
 *   Absolute paths for images included using {{%file%}} are now working reliably. Version 4.11.1 still had a regression that only affected files directly included in account templates. [issue #370]
