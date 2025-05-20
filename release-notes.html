@@ -1,38 +1,19 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.11.3">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.11.4">can be found here</a>
 
 
-<b>Maintenance Release 4.11.3</b>
+<b>Maintenance Release 4.11.4</b>
 <ul>
 <li> SmartTemplates is now compatible with Thunderbird 139 - going forward it aims to stay compatible with the current monthly release cycle.</li>
-<li> Fix in sandbox script: Contextual parameters in sandbox (such as $subject) was broken. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/372">[issue 372]</a></li>
-<li> Stability: images with encoded data path did not load if src attribute started with space. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/373">[issue 373]</a> </li>
+<li> Fixed: Renewal of any License opens wrong product (New License) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/375">[issue 375]</a></li>
 </ul>
 
-<b>Maintenance Release 4.11.1</b>
+<b>Miscellaneous</b>
 <ul>
-<li> Corrected bug with templates not working when following 'mailto' links from web pages. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/333">[issue 333]</a></li>
-<li> Absolute paths for images included using {{%file%}} are now working reliably. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/370">[issue 370]</a></li>
-</ul>
-
-<b>4.11 - Enhancements</b>
-<ul>
-  <li> Made SmartTemplates compatible with Thunderbird 138.*</li>
-  <li> Enhancement: Made Settings dialog accessible (keyboard / screenreader friendly) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/361">[issue 361]</a></li>
-  <li> New `%dateformat.current()%` <a href="https://github.com/RealRaven2000/SmartTemplates/issues/356">[issue 356]</a></li>
-  <li> Sandbox enhancements: Added more contextual parameters for sandbox: "$priority", "$cc", "$bcc"; avoid wrapping variables when called from Sandbox script. </li>
-  <li> Sandbox Script: new functions `composer_composeCase()` and `composer_composeType()`. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/357">[issue 357]</a></li>
-  <li> Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text). <a href="https://github.com/RealRaven2000/SmartTemplates/issues/338">[issue 338]</a></li>
-</ul>
-
-
-<b>4.11 - Miscellaneous</b>
-<ul>
-  <li> Thunderbird 136 retires ChromeUtils.import - replace with importESModule <a href="https://github.com/RealRaven2000/SmartTemplates/issues/358">[issue 358]</a></li>
-  <li> Retired legacy settings dialog <a href="https://github.com/RealRaven2000/SmartTemplates/issues/363">[issue 363]</a></li>
-  <li> Removed inline event handlers (these will be deprecated in 137)</li>
-</li>
+  <li> guard against nsIFile.initWithPath() throwing </li>
+  <li> removed all references to deprecated Ci.nsILocalFile </li>
+  <li> license validation: optimized use of getDefaultIdentity </li>
 </ul>
 

@@ -2,29 +2,16 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 
 
-**Maintenance Release 4.11.3**
+**Maintenance Release 4.11.4**
 
 *   SmartTemplates is now compatible with Thunderbird 139 - going forward it aims to stay compatible with the current monthly release cycle. Thankfully this work is covered by license sales.
-*   Fix in sandbox script: Contextual parameters in sandbox (such as $subject) was broken. [issue #372]
-*   Stability: images with encoded data path did not load if src attribute started with space. [issue #373]
+*   Fixed: Renewal of any License opens wrong product (New License) [issue #375]
 
 
-**Maintenance Release 4.11.2**
-
-*   Made SmartTemplates compatible with Tb 138.*
-*   Corrected bug with templates not working when following 'mailto' links from web pages.[issue #333]
-*   Absolute paths for images included using {{%file%}} are now working reliably. Version 4.11.1 still had a regression that only affected files directly included in account templates. [issue #370]
-
-
-**Enhancements**
-
-*   Enhancement: Make Settings dialog more accessible (keyboard / screenreader friendly) [issue #361]
-*   New `%dateformat.current()%` [issue #356]
-*   Sandbox enhancements: Added more contextual parameters for sandbox: `$priority`, `$cc`, `$bcc`; avoid wrapping variables when called from Sandbox script.
-*   Sandbox Script: new functions `composer_composeCase()` and `composer_composeType()`. [issue #357]
-*   Set Fallback charset setting to UTF-8 to avoid mojibake (garbled text). [issue #338]
 
 **Miscellaneous**
 
-*   Thunderbird 136 retires ChromeUtils.import - replace with importESModule [issue #358]
+*   guard against `nsIFile.initWithPath()` throwing
+*   removed all references to deprecated `Ci.nsILocalFile`
+*   license validation: optimized use of `getDefaultIdentity()`
 

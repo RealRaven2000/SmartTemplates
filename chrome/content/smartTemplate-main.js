@@ -4,7 +4,7 @@
 /* import * as SmartTemplates_Discounts from "../../popup/sales.js";   */
 // Next Sale End Date  COPIED from sales.js until we find a better way
 var SmartTemplates_Discounts = {
-  sales_end: new Date("2024-11-29"),
+  sales_end: new Date("2025-06-06"),
   discountRate: {
     discountPro: "33%",
     discountUpgrade: "33%",
@@ -248,10 +248,18 @@ END LICENSE BLOCK
   Version 4.11.2 - 17/04/2025
     # [issue 370] Regression in 4.11.1 absolute paths in account templates failed.
 
-  Version 4.11.3 - 
-    # Compatibility with Thunderbird 139
+  Version 4.11.3 - 05/05/2025
+    # Compatibility with Thunderbird 138
     # [issue 372] Fix in sandbox script: Contextual parameters in sandbox (such as $subject) broken
     # [issue 373] Stability: images with encoded data path did not load if src attribute started with space
+
+  Version 4.11.4 - WIP
+    # Compatibility with Thunderbird 139
+    # [issue 375] Renewal of any License opens wrong product (New License)
+    # guard against nsIFile.initWithPath() throwing 
+    # removed all references to deprecated Ci.nsILocalFile
+    # license validation: optimized use of getDefaultIdentity
+
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
