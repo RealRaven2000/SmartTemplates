@@ -165,8 +165,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             win.SmartTemplate4.Preferences.setStringPref('files.path', lastPath);            
           }
           const Cc = Components.classes,
-                Ci = Components.interfaces,
-                NSIFILE = Ci.nsIFile || Ci.nsILocalFile;
+            Ci = Components.interfaces;
           // [issue 285]
           // util.popupLicenseNotification(mode + "_template", true, true); // save_template, load_template
                 
@@ -177,9 +176,14 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
               
           // "Remember save location"
           if (win.SmartTemplate4.Preferences.getStringPref('files.path')) {
-            let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-            defaultPath.initWithPath(win.SmartTemplate4.Preferences.getStringPref('files.path'))
-            fp.displayDirectory = defaultPath; // nsILocalFile
+            let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+            const prefPath = win.SmartTemplate4.Preferences.getStringPref("files.path");
+            try {
+              defaultPath.initWithPath(prefPath);
+              fp.displayDirectory = defaultPath;
+            } catch(ex) {
+              win.SmartTemplate4.Util.logException(`initializing Path ${prefPath} failed:`, ex);
+            }
           }    
           fp.init(win.SmartTemplate4.Util.getFileInitArg(win), "", fileOpenMode); // second parameter: prompt
           filterText = win.SmartTemplate4.Util.getBundleString("fpJsonFile");

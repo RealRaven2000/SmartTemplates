@@ -433,15 +433,18 @@ SmartTemplate4.fileTemplates = {
     if (!editorPath) { return; }
 
     const Cc = Components.classes,
-          Ci = Components.interfaces,
-          NSIFILE = Ci.nsIFile || Ci.nsILocalFile;    
+      Ci = Components.interfaces;    
 
-    var file = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
+    var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
     try {
-      file.initWithPath(editorPath);
+      try {
+        file.initWithPath(editorPath);
+      } catch (ex) {
+        SmartTemplate4.Util.logException(`initializing Path ${editorPath} failed:`, ex);
+      }
       if (!file.exists()) {
         throw "file doesn't exist";
-      }
+      } 
     }
     catch(ex) {
       SmartTemplate4.Util.logException(`file.initWithPath(${editorPath}) failed with Exception` , ex);
@@ -1262,24 +1265,26 @@ SmartTemplate4.fileTemplates = {
   //                   but can be overwritten for remembering a path when open file is selected from reply menu
 	pickFile: function (lastCallback, initialPathPref='fileTemplates.path') {
     const Cc = Components.classes,
-          Ci = Components.interfaces,
-          util = SmartTemplate4.Util,
-					prefs = SmartTemplate4.Preferences,
-					NSIFILE = Ci.nsIFile || Ci.nsILocalFile;
-		
+      Ci = Components.interfaces,
+      util = SmartTemplate4.Util,
+      prefs = SmartTemplate4.Preferences;
 		
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
-				
 		// set default path
 		if (prefs.getStringPref(initialPathPref)) {
+      let defaultPath; 
       try {
-        let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-        defaultPath.initWithPath(prefs.getStringPref(initialPathPref));
-        if (!defaultPath.exists()) {
-          defaultPath.initWithPath(PathUtils.profileDir);
+        defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+        try {
+          defaultPath.initWithPath(prefs.getStringPref(initialPathPref));
+        } catch (x) {
+          util.logException(`initializing Path ${prefs.getStringPref(initialPathPref)} failed:`, x);
+        }
+        if (!defaultPath.path || !defaultPath.exists()) {
+          defaultPath.initWithPath(PathUtils.profileDir); // this one is hopefully legal
         } 
         if (defaultPath.exists()) {
-          fp.displayDirectory = defaultPath; // nsILocalFile
+          fp.displayDirectory = defaultPath; 
         }
       } catch (ex) {
         util.logException("Failed to open path: " + defaultPath, ex);
@@ -1299,7 +1304,6 @@ SmartTemplate4.fileTemplates = {
     let fpCallback = function fpCallback_FilePicker(aResult) {
       if (aResult == Ci.nsIFilePicker.returnOK) {
         if (fp.file) {
-          //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           try {
 						// execut the last callback:
 						lastCallback(fp.file);
