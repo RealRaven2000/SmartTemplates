@@ -904,8 +904,8 @@
   "newsHead": {
     "message": "最新ニュース"
   },
-  "newsSection": {
-    "message": "{P1} $addonName$ の最新バージョンは Thunderbird ($compatibleVer$) に対応し、キーボードやスクリーンリーダーのアクセシビリティ向上への取り組みを開始しました。最初のステップとして、設定ページ全体が変更され、今後さらに改善が予定されています！ 詳細なドキュメントについては、以下のリンクから完全な変更履歴をご確認ください。{P2}",
+  "newsSection.intro": {
+    "message": "{P1}$addonName$ の最新バージョンは、Thunderbird ($compatibleVer$) に対応しています。{P2}{P1}私たちは、6月に予定されている次の主要な ESR（延長サポート版）である Thunderbird 140 に向けて準備を進めています。$addonName$ は、今後も月次リリースサイクルを継続し、互換性と安定性を確保していきます。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -915,6 +915,9 @@
         "content": "$2"
       }
     }
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}重要:{boldEnd} このアップデートでは、「ライセンスを更新」ボタンが割引更新ではなく正規価格の製品ページに遷移してしまうバグを修正しました。もし影響を受けた場合、特に SmartTemplates Pro を更新するつもりが誤って Standard ライセンスを購入された場合は、{support licensing}サポートにご連絡ください{supportEnd} — Pro への無料アップグレードをご提供いたします。お手数ですが、最後に使用したライセンスキーまたは注文番号をご記載ください。ありがとうございます！ [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "SmartTemplates のすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
@@ -1686,7 +1689,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "4月20日"
+    "message": "6月6日"
   },
   "special-offer-head": {
     "message": "$addon$ の互換性を維持するのに役立ちます",
@@ -1990,7 +1993,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{headStart}メンテナンスリリース 4.11.3{headEnd}{L1} SmartTemplates は Thunderbird 139 に対応しました。今後は毎月のリリースサイクルに対応していく予定です。将来の互換性を確保するためにライセンスを購入していただき、ありがとうございます！{L2}{L1} 回帰バグ修正：サンドボックス内のコンテキストパラメータ（{{$subject}}など）が機能していませんでした。 [issue 273]{L2}{headStart}リリース 4.11 – アクセシビリティの強化 {headEnd}{L1}アクセシビリティの向上：設定ダイアログが完全にキーボード操作可能になり、スクリーンリーダーに対応しました。 [issue 361]{L2}{L1}新しい関数：{{%dateformat.current()%}} [issue 356]{L2}{L1}サンドボックス化された JavaScript の改善、{{$priority}} などのコンテキストパラメータおよび新しい関数 {{composer_composeType()}} と {{composer_composeType()}} を追加 [issue 357]{L2}{L1}文字化けを防ぐため、フォールバックの文字コードを UTF-8 に設定 [issue 338]{L2}"
+    "message": "{headStart}緊急メンテナンスアップデート 4.11.4 – ライセンスバグの修正{headEnd}{L1}'ライセンスを更新'をクリックすると、更新割引が適用されず、通常価格の製品ページに遷移するバグを修正しました。この問題は、ライセンスの更新を試みたSmartTemplates Proユーザーに影響しました。 [issue 375]{L2}{L1}影響を受けた場合は、上記のセクションで返金 / 無料アップグレードの詳細とサポートをご確認ください。 {L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

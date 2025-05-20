@@ -10,6 +10,34 @@ END LICENSE BLOCK */
 
 // import { sales_end } from "./sales.js";
 
+function moveImportantMessageTo(targetId) {
+  const newsImportant = document.getElementById("newsImportant");
+  const target = document.getElementById(targetId);
+  if (!newsImportant || !target) return;
+  if (!newsImportant.textContent.trim()) return;
+
+  // Try specialOfferTerms inside target, fallback to specialOfferRenewTxt or insert at end
+  let insertAfter =
+    target.querySelector("#specialOfferTerms") || target.querySelector("#specialOfferRenewTxt");
+
+  if (insertAfter) {
+    insertAfter.insertAdjacentElement("afterend", newsImportant);
+  } else {
+    target.appendChild(newsImportant);
+  }
+  // Make it visible in case it isn't:
+  newsImportant.hidden = false;
+}
+
+function openSupportForm(topic) {
+  const msg = {
+    command: "openPrefs",
+    page: "supportEmail"
+  };
+  if (topic) msg.topic = topic;
+  messenger.runtime.sendMessage(msg);
+}
+
 async function getSalesEnd() {
   const overrideSale = await messenger.LegacyPrefs.getPref(
     "extensions.smartTemplate4.debug.saleDate"
@@ -50,33 +78,44 @@ function showSelectorItems(cId) {
   }
 }
 
+function hideAllOfferSections() {
+  hide("specialOffer");
+  hide("standardLicense");
+  hide("specialOfferRenew");
+}
 
-function showSpecialOfferItem(id) {
-  show(id);  // 'specialOfferRenew'
-  hide('newsHead');
-  hide('newsDetail');
-  hide('news-license');
+function showSpecialOfferItem(targetId) {
+  hide("newsHead");
+  hide("newsIntro");
+  // hide("newsImportant"); - will be moved
+  hide("news-license");
+  moveImportantMessageTo(targetId);
+  show(targetId); // 'specialOfferRenew'
 }
 
 function showSalesItems(isSale, licenseInfo) {
-  const isStandardUser = (licenseInfo.keyType == 2);
-  const isProUser = (licenseInfo.keyType == 0 || licenseInfo.keyType == 1);
+  const isStandardUser = licenseInfo.keyType == 2;
+  const isProUser = licenseInfo.keyType == 0 || licenseInfo.keyType == 1;
   let isActionList = true;
 
-  if (!isSale) { 
-    hide('specialOffer');
-    hideSelectorItems('.standardUpgradeSale');
+  // Always reset offer sections first
+  hideAllOfferSections();
+  hideSelectorItems(".standardUpgradeSale");
+
+  if (!isSale) {
+    // No special offer active: hide special offer related UI only
+    hideSelectorItems(".standardUpgradeSale");
   }
 
   // isValid, isExpired
   if (licenseInfo.isValid || licenseInfo.isExpired) {
-    hide('purchaseLicenseListItem');
-    hideSelectorItems('.donations');
-    hide('register');
-    
+    hide("purchaseLicenseListItem");
+    hideSelectorItems(".donations");
+    hide("register");
+
     if (isStandardUser) {
       if (isSale) {
-        showSelectorItems('.standardUpgradeSale');
+        showSelectorItems(".standardUpgradeSale");
         showSpecialOfferItem(); // remove newsHeader and detail
       } else {
         hide("offerStandardUpgrade");
@@ -84,92 +123,95 @@ function showSalesItems(isSale, licenseInfo) {
       }
     }
   }
-    
+
   // License Renewal
-  if (licenseInfo.isExpired) { 
-    hide('extendLicenseListItem');
-    hide('extend');
+  if (licenseInfo.isExpired) {
+    hide("extendLicenseListItem");
+    hide("extend");
     if (isProUser && isSale) {
-      showSpecialOfferItem('specialOfferRenew');
+      showSpecialOfferItem("specialOfferRenew");
     }
     if (isStandardUser && isSale) {
       // this contains a button to upgrade
       showSpecialOfferItem("standardLicense");
-    }    
-    show('renewLicenseListItem');
-    show('renew');
+    }
+    show("renewLicenseListItem");
+    show("renew");
 
-    hide('purchaseHeader');
-    hide('whyPurchase');
-    hide('support-suggestion');
+    hide("purchaseHeader");
+    hide("whyPurchase");
+    hide("support-suggestion");
     isActionList = false;
     return isActionList;
-  }  
+  }
 
   // isValid, isExpired
-  if (licenseInfo.isValid || licenseInfo.isExpired) {
-
-    hide('renewLicenseListItem');
-    hide('renew');
+  if (licenseInfo.isValid) {
+    hide("renewLicenseListItem");
+    hide("renew");
 
     if (isStandardUser) {
-      show('standardLicense'); 
-      hide('purchaseHeader');
-      hide('whyPurchase');
+      show("standardLicense");
+      hide("purchaseHeader");
+      hide("whyPurchase");
 
-      if (isSale && 
-          (licenseInfo.isExpired || licenseInfo.licensedDaysLeft<=10)
-      ) {
+      if (isSale && (licenseInfo.licensedDaysLeft <= 10)) {
         // this contains a button to upgrade
         showSpecialOfferItem("standardLicense");
         show("renewstandard");
-      }  
+      }
       isActionList = false;
-      return isActionList;
-    } 
-
-    // Pro users from here:
-
-    if (licenseInfo.isValid && licenseInfo.licensedDaysLeft<=10) {
-      showSpecialOfferItem('specialOfferRenew');
-      hide('purchaseSection');
-    }  
-
-    // License extension (with minimal time)
-    let gpdays = licenseInfo.licensedDaysLeft;
-    if (gpdays<40) { // they may have seen this popup. Only show extend License section if it is < 40 days away
-      show('extendLicenseListItem');
-      show('extend');
       return isActionList;
     }
 
-    hide('news-license');
-    hide('newsSection');
-    show('licenseExtended');
+    // Pro users from here:
+    if (licenseInfo.isValid && licenseInfo.licensedDaysLeft <= 10) {
+      showSpecialOfferItem("specialOfferRenew");
+      hide("purchaseSection");
+    }
+
+    // License extension (with minimal time)
+    let gpdays = licenseInfo.licensedDaysLeft;
+    if (gpdays < 40) {
+      // they may have seen this popup. Only show extend License section if it is < 40 days away
+      show("extendLicenseListItem");
+      show("extend");
+      return isActionList;
+    }
+
+    hide("news-license");
+    hide("newsSection");
+    show("licenseExtended");
     // hide('time-and-effort');
-    hide('purchaseHeader');
-    hide('whyPurchase');
-    hide('extendLicenseListItem');
-    hide('extend');
+    hide("purchaseHeader");
+    hide("whyPurchase");
+    hide("extendLicenseListItem");
+    hide("extend");
     isActionList = false;
     return isActionList;
-  } 
+  }
 
   // invalid license / no license
-  if (!licenseInfo.isValid && isSale) { 
-    showSpecialOfferItem('specialOffer');
-    hideSelectorItems('.donations');
-    hide('whyPurchase');
+  if (isSale && (isStandardUser || !licenseInfo.isValid)) {
+    showSpecialOfferItem("specialOffer");
+    hideSelectorItems(".donations");
+    hide("whyPurchase");
     isActionList = false;
   }
 
   // Pro license, about to expire
   return isActionList;
- 
 }
 
 function formatAll(txt) {
-  let localizedMsg = txt.replace(/<(.*?)>/g, "<span class='htmltag' />&lt;$1&gt;</span>");
+  let localizedMsg = txt
+    .replace(/<(.*?)>/g, "<span class='htmltag'>&lt;$1&gt;</span>")
+    .replace(
+      /\{support(?: ([\w\-]+))?\}/g,
+      (dummy, topic) => `<a class='contactsupport' data-topic='${topic || ""}' href='#'>`
+    )
+    .replace(/\{supportEnd\}/g, "</a>");
+
   // added simple <tag> support
   return localizedMsg
     .replace(/\{headStart\}/g, "<h3>")
@@ -187,9 +229,9 @@ function formatAll(txt) {
     .replace(/\{P2\}/g, "</p>")
     .replace(/\{S1\}/g, "</ul> <h3 class='section'>")
     .replace(/\{S2\}/g, "</h3> <ul>")
-    .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1 href='#'>[issue $1]</a>")
-    .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys
-    .replaceAll("''", '"');
+    .replace(/\[issue (\d*)\]/g, "<a class='issue' no='$1' href='#'>[issue $1]</a>")
+    .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>"); // single keys
+    // DANGEROUS .replaceAll("''", '"');
   //{S1} new section / list with title {S2}.
 }
 

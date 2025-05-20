@@ -903,8 +903,8 @@
   "newsHead": {
     "message": "最新消息"
   },
-  "newsSection": {
-    "message": "{P1} 最新版本的 $addonName$ 現已相容於 Thunderbird ($compatibleVer$)，並開始改進鍵盤與螢幕閱讀器的無障礙支援——第一步是修改所有設定頁面，後續還會有更多改進！ 詳細文件請查看下方連結中的完整變更日誌。{P2}",
+  "newsSection.intro": {
+    "message": "{P1}$addonName$ 的最新版本現在已相容於 Thunderbird ($compatibleVer$)。{P2}{P1}我們正準備迎接 Thunderbird 140，這是預計於六月推出的下一個主要 ESR（延長支援版本）。$addonName$ 將繼續維持每月發布週期，以確保持續的相容性與穩定性。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -914,6 +914,9 @@
         "content": "$2"
       }
     }
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}重要:{boldEnd} 本次更新修復了「續約授權」按鈕導向原價產品頁面而非折扣續約的問題。若您受到影響，特別是不小心購買了 SmartTemplates Standard 授權而非續約 Pro，請{support licensing}聯絡客服{supportEnd} — 我們將很樂意提供免費升級至 Pro。請務必提供您最近的授權金鑰或訂單編號，感謝您！ [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "由於SmartTemplates的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
@@ -1709,7 +1712,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "4月20日"
+    "message": "6月6日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -2001,7 +2004,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{headStart}維護版本 4.11.3{headEnd}{L1} SmartTemplates 現在支援 Thunderbird 139 —— 未來將持續與每月發佈週期保持相容。感謝您購買授權來確保未來的相容性！{L2}{L1} 修復了在沙盒中，像 {{$subject}} 這樣的上下文參數無法使用的問題。 [issue 273]{L2}{headStart}版本 4.11 —— 專注於無障礙功能{headEnd}{L1}無障礙功能改善：設定對話框現可完全以鍵盤操作，並支援螢幕閱讀器 [issue 361]{L2}{L1}新增功能：{{%dateformat.current()%}} [issue 356]{L2}{L1}改進了沙盒 JavaScript，新增上下文參數如 {{$priority}}，以及新函數 {{composer_composeType()}} 和 {{composer_composeType()}} [issue 357]{L2}{L1}將預設字元集設定為 UTF-8，以避免亂碼（mojibake） [issue 338]{L2}"
+    "message": "{headStart}緊急維護更新 4.11.4 – 授權錯誤修正{headEnd}{L1}修正了點擊「續訂授權」時跳轉到全價產品頁面而未套用續訂折扣的錯誤。此問題影響嘗試續訂授權的 SmartTemplates Pro 使用者。 [issue 375]{L2}{L1}如果您受到影響，請查看上述部分以獲取退款／免費升級及支援的詳細資訊。 {L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

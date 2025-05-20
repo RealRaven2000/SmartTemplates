@@ -2636,7 +2636,6 @@ function addUIListeners() {
 
   // =========== SUPPORT PAGE
   document.getElementById("supportType").addEventListener("change", (event) => {
-    // SmartTemplate4.Settings.setSupportMode(this);
     SmartTemplates.Settings.setSupportMode(event.target);
   });
 
@@ -2843,7 +2842,7 @@ async function onLoad() {
 
 	// now read data from Preferences
   addUIListeners();
-	SmartTemplates.Help.onLoad(); // event listeners for help frame
+	await SmartTemplates.Help.onLoad(); // event listeners for help frame
 
 	// [issue 121] currently shown selection
 	// special settings (omit selecting an identit from the accounts dropdown)
@@ -2851,6 +2850,18 @@ async function onLoad() {
 	const params = new URLSearchParams(window.location.search);
 	const mode = params.get("mode") || 
 	      (params.get("composeType") == "snippets" ? "fileTemplates" : null);
+
+	const topic = params.get("topic");
+	if (topic) {
+		const dropdown = document.getElementById("supportType");
+		for (let option of dropdown.options) {
+			if (option.getAttribute("topic") === topic.toLowerCase()) {
+				dropdown.value = option.value;
+				SmartTemplates.Settings.setSupportMode(dropdown);
+				break;
+			}
+		}
+	}		
 
 	let selectedElement = null; // a11y
 	switch(mode) {
@@ -2863,7 +2874,12 @@ async function onLoad() {
 		case "licenseKey":
 			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catLicense");
 			const txtLicense = getElement('txtLicenseKey');
-			setTimeout(function() {txtLicense.focus();}, 200);
+			if (txtLicense) {
+				setTimeout(() => txtLicense.focus(), 200);
+			}
+			break;
+		case "supportEmail":
+			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catSupport");
 			break;
 		default:
 			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catAccountTemplates");

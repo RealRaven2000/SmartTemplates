@@ -153,9 +153,6 @@ canvas[collapsed=true]
   margin-bottom: 1.2em;
   padding-bottom: 1em;
 }
-#newsDetail {
-  background-color: transparent;
-}
 
 
 .importantInfo,
@@ -244,7 +241,7 @@ code.keystroke {
 }
 
 
-body, body * {
+body {
   background-color: white;
   color: rgb(20,15,05);
 }

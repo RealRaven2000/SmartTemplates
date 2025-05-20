@@ -107,18 +107,7 @@ END LICENSE BLOCK */
         .replace("{boldEnd}", "</b>"),
       true
     );
-    
 
-    /*
-    let timeAndEffort =  document.getElementById('time-and-effort');
-    if (timeAndEffort) {
-      timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);
-    }
-    let suggestion = document.getElementById('support-suggestion');
-    if (suggestion) {
-      suggestion.innerText = messenger.i18n.getMessage("support-suggestion", addonName);
-    }
-    */
 
     const preference = document.getElementById("support-preference");
     ariaPoliteUpdate(preference, messenger.i18n.getMessage("support-preference", addonName));
@@ -210,14 +199,14 @@ END LICENSE BLOCK */
       `<ul>${formatAll(messenger.i18n.getMessage("whats-new-list"))}</ul>`,
     true);
     
+    const introText = messenger.i18n.getMessage("newsSection.intro", [addonName, compatibleVer]);
+    const importantText = messenger.i18n.getMessage("newsSection.important");
 
-    const newsDetail = document.getElementById("newsDetail");
-    ariaPoliteUpdate(newsDetail,
-      formatAll(
-        messenger.i18n.getMessage("newsSection", [addonName, compatibleVer])
-      ),
-      true
-    );
+    const newsIntro = document.getElementById("newsIntro");
+    ariaPoliteUpdate(newsIntro, formatAll(introText), true);
+
+    const newsImportant = document.getElementById("newsImportant");
+    ariaPoliteUpdate(newsImportant, formatAll(importantText), true);  
 
     const ongoing = document.getElementById("ongoing-work");
     ariaPoliteUpdate(ongoing, messenger.i18n.getMessage("ongoing-work", addonName));
@@ -225,7 +214,17 @@ END LICENSE BLOCK */
     const title = document.getElementById("window-title");
     ariaPoliteUpdate(title, messenger.i18n.getMessage("window-title", addonName));
 
+
     updateActions(addonName);
+
+    const innerWrapper = document.getElementById("innerwrapper");
+    innerWrapper.querySelectorAll("a.contactsupport").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const topic = link.dataset.topic || null;
+        openSupportForm(topic);
+      });
+    });    
 
     //  you can close the window using ESC
     addAriaHint();

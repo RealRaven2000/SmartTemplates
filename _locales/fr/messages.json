@@ -909,8 +909,8 @@
   "newsHead": {
     "message": "Dernières nouvelles"
   },
-  "newsSection": {
-    "message": "{P1} La dernière version de $addonName$ est maintenant compatible avec Thunderbird ($compatibleVer$) et a entamé son chemin vers une meilleure accessibilité pour les claviers et les lecteurs d’écran – la première étape a été de modifier toutes les pages des paramètres, avec d'autres améliorations à venir bientôt ! Pour une documentation détaillée, consultez le journal complet des modifications via le lien ci-dessous. {P2}",
+  "newsSection.intro": {
+    "message": "{P1}La dernière version de $addonName$ est maintenant compatible avec Thunderbird ($compatibleVer$).{P2}{P1}Nous nous préparons pour Thunderbird 140, la prochaine version ESR (Extended Support Release), prévue pour juin. $addonName$ continuera de suivre le cycle de publication mensuel afin d'assurer une compatibilité et une stabilité continues.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -920,6 +920,9 @@
         "content": "$2"
       }
     }
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Important :{boldEnd} Cette mise à jour corrige un bug où le bouton « Renouveler la licence » menait à la page produit au tarif plein au lieu de proposer le tarif réduit de renouvellement. Si vous avez été affecté, et en particulier si vous avez accidentellement acheté une licence SmartTemplates Standard au lieu de renouveler Pro, veuillez {support licensing}contacter le support{supportEnd} — nous serons heureux de vous fournir une mise à niveau gratuite vers Pro. Merci d'inclure votre dernière clé de licence ou numéro de commande ! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Étant donné que tout le travail sur SmartTemplates et le support gratuit sont financés exclusivement par les ventes de licences, veuillez envisager d'acheter une licence ou de renouveler la vôtre."
@@ -1712,7 +1715,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 avril"
+    "message": "6 juin"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -2016,7 +2019,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{headStart}Version de maintenance 4.11.3{headEnd}{L1} SmartTemplates est maintenant compatible avec Thunderbird 139 – à l’avenir, l’objectif est de rester en phase avec le cycle de publication mensuel. Merci d’avoir acheté une licence pour assurer la compatibilité future !{L2}{L1} Régression corrigée : les paramètres contextuels dans le bac à sable (comme {{$subject}}) ne fonctionnaient pas. [issue 273]{L2}{headStart}Version 4.11 – Accent sur l’accessibilité {headEnd}{L1}Amélioration de l’accessibilité : la fenêtre des paramètres est désormais entièrement navigable au clavier et compatible avec les lecteurs d’écran. [issue 361]{L2}{L1}Nouvelle fonction : {{%dateformat.current()%}} [issue 356]{L2}{L1}Améliorations du JavaScript en bac à sable et ajout de paramètres contextuels tels que {{$priority}} ainsi que des nouvelles fonctions {{composer_composeType()}} et {{composer_composeType()}} [issue 357]{L2}{L1}Jeu de caractères de secours défini sur UTF-8 pour éviter les textes illisibles (mojibake) [issue 338]{L2}"
+    "message": "{headStart}Mise à jour de maintenance urgente 4.11.4 – Correction d'un bug de licence{headEnd}{L1}Correction d'un bug où cliquer sur 'Renouveler la licence' menait à la page produit au prix complet au lieu d'appliquer la remise de renouvellement. Cela affectait les utilisateurs de SmartTemplates Pro tentant de renouveler leur licence. [issue 375]{L2}{L1}Si vous avez été affecté, veuillez consulter la section ci-dessus pour les détails sur les remboursements / mises à niveau gratuites et le support. {L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

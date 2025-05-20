@@ -894,8 +894,8 @@
   "newsHead": {
     "message": "Zadnje novice"
   },
-  "newsSection": {
-    "message": "{P1} Najnovejša različica $addonName$ je zdaj združljiva s Thunderbirdom ($compatibleVer$) in je začela pot do boljše dostopnosti za tipkovnice in bralnike zaslona – prvi korak je bila posodobitev vseh strani nastavitev, kmalu pa sledijo še dodatne izboljšave! Za podrobno dokumentacijo preverite celoten dnevnik sprememb na spodnji povezavi. {P2}",
+  "newsSection.intro": {
+    "message": "{P1}Najnovejša različica $addonName$ je zdaj združljiva s Thunderbirdom ($compatibleVer$).{P2}{P1}Pripravljamo se na Thunderbird 140, naslednjo glavno izdajo ESR (Extended Support Release), ki je predvidena za junij. $addonName$ bo še naprej sledil mesečnemu ciklu izdaj za zagotavljanje združljivosti in stabilnosti.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -905,6 +905,9 @@
         "content": "$2"
       }
     }
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Pomembno:{boldEnd} Ta posodobitev odpravlja napako, kjer je gumb »Obnovi licenco« vodil na stran z redno ceno namesto s popustom za obnovitev. Če ste bili prizadeti — še posebej, če ste po pomoti kupili licenco SmartTemplates Standard namesto obnove Pro — vas prosimo, da {support licensing}stopite v stik s podporo{supportEnd}; z veseljem vam bomo brezplačno nadgradili na Pro. Hvala, če lahko priložite svoj zadnji licenčni ključ ali številko naročila! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Ker je vsa dela na SmartTemplates in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
@@ -1712,7 +1715,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20. april"
+    "message": "6. junija"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
@@ -2019,7 +2022,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{headStart}Vzdrževalna izdaja 4.11.3{headEnd}{L1} SmartTemplates je zdaj združljiv s Thunderbirdom 139 – v prihodnje si prizadeva za skladnost z mesečnim ciklom izdaj. Hvala za nakup licence in podporo prihodnji združljivosti!{L2}{L1} Odpravljena regresija s kontekstualnimi parametri v peskovniku (npr. {{$subject}}), ki niso več delovali. [issue 273]{L2}{headStart}Izdaja 4.11 – Poudarek na dostopnosti{headEnd}{L1}Izboljšana dostopnost: pogovorno okno nastavitev je zdaj popolnoma uporabno s tipkovnico in združljivo z bralniki zaslona [issue 361]{L2}{L1}Nova funkcija: {{%dateformat.current()%}} [issue 356]{L2}{L1}Izboljšave v JavaScript-u v peskovniku ter novi kontekstni parametri, kot je {{$priority}}, in funkciji {{composer_composeType()}} ter {{composer_composeType()}} [issue 357]{L2}{L1}Privzeta kodna tabela nastavljena na UTF-8 za preprečitev prikaza zmešnjave znakov (mojibake) [issue 338]{L2}"
+    "message": "{headStart}Nujna vzdrževalna posodobitev 4.11.4 – Popravek napake z licenco{headEnd}{L1}Odpravili smo napako, kjer je klik na 'Podaljšaj licenco' vodil na stran izdelka s polno ceno namesto uporabe popusta za podaljšanje. To je prizadelo uporabnike SmartTemplates Pro, ki so poskušali podaljšati svojo licenco. [issue 375]{L2}{L1}Če ste bili prizadeti, preverite zgornji razdelek za informacije o vračilu denarja / brezplačnih nadgradnjah in podpori. {L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

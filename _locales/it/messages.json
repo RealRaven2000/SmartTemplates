@@ -882,8 +882,8 @@
   "newsHead": {
     "message": "Ultime notizie"
   },
-  "newsSection": {
-    "message": "{P1} L'ultima versione di $addonName$ è ora compatibile con Thunderbird ($compatibleVer$) e ha iniziato il suo percorso verso una migliore accessibilità per tastiera e screen reader; il primo passo è stata la modifica di tutte le pagine delle impostazioni, con ulteriori miglioramenti in arrivo! Per una documentazione dettagliata, consulta il registro completo delle modifiche nel link sottostante. {P2}",
+  "newsSection.intro": {
+    "message": "{P1}L'ultima versione di $addonName$ è ora compatibile con Thunderbird ($compatibleVer$).{P2}{P1}Ci stiamo preparando per Thunderbird 140, la prossima versione principale ESR (Extended Support Release), prevista per giugno. $addonName$ continuerà a seguire il ciclo di rilascio mensile per garantire compatibilità e stabilità continue.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -893,6 +893,9 @@
         "content": "$2"
       }
     }
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Importante:{boldEnd} Questo aggiornamento corregge un bug per cui il pulsante 'Rinnova licenza' reindirizzava alla pagina del prodotto a prezzo pieno invece di offrire il rinnovo scontato. Se sei stato interessato, e in particolare se hai acquistato per errore una licenza SmartTemplates Standard invece di rinnovare la Pro, ti preghiamo di {support licensing}contattare il supporto{supportEnd} — saremo felici di offrirti un aggiornamento gratuito a Pro. Grazie in anticipo per includere la tua ultima chiave di licenza o numero d'ordine! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Poiché tutto il lavoro su SmartTemplates e il supporto gratuito sono finanziati esclusivamente dalle vendite di licenze, si prega di considerare l'acquisto di una licenza o il rinnovo della licenza attuale."
@@ -1664,7 +1667,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 aprile"
+    "message": "6 giugno"
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
@@ -1962,7 +1965,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{headStart}Versione di manutenzione 4.11.3{headEnd}{L1} SmartTemplates è ora compatibile con Thunderbird 139 – l'obiettivo è mantenere la compatibilità con il ciclo di rilascio mensile. Grazie per aver acquistato una licenza per garantire la compatibilità futura!{L2}{L1} Corretto un problema di regressione: i parametri contestuali nel sandbox (come {{$subject}}) non funzionavano. [issue 273]{L2}{headStart}Versione 4.11 – Focus sull’accessibilità {headEnd}{L1}Miglioramento dell’accessibilità: la finestra delle impostazioni è ora completamente navigabile da tastiera e compatibile con gli screen reader. [issue 361]{L2}{L1}Nuova funzione: {{%dateformat.current()%}} [issue 356]{L2}{L1}Miglioramenti nel JavaScript sandbox e aggiunta di parametri contestuali come {{$priority}} e nuove funzioni {{composer_composeType()}} e {{composer_composeType()}} [issue 357]{L2}{L1}Set di caratteri predefinito impostato su UTF-8 per evitare caratteri illeggibili (mojibake) [issue 338]{L2}"
+    "message": "{headStart}Aggiornamento di manutenzione urgente 4.11.4 – Correzione bug di licenza{headEnd}{L1}Corretto un bug per cui cliccando su 'Rinnova licenza' si veniva reindirizzati alla pagina del prodotto a prezzo pieno invece di applicare lo sconto per il rinnovo. Questo ha interessato gli utenti di SmartTemplates Pro che tentavano di rinnovare la loro licenza. [issue 375]{L2}{L1}Se sei stato coinvolto, controlla la sezione sopra per dettagli su rimborsi / aggiornamenti gratuiti e supporto. {L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

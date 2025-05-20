@@ -8,7 +8,7 @@ import {compareVersions} from "./scripts/mozilla-version-comparator.js";
 
 var stProcess = new SmartTemplatesProcess(); // use stProcess.composer
 console.log(SmartTemplates, stProcess);
-SmartTemplates.Util.log("test", "test2");
+SmartTemplates.Util.log("SmartTemplates Background started");
 
 var currentLicense;
 const GRACEPERIOD_DAYS = 28;
@@ -953,97 +953,101 @@ async function updateSubMenus(messages, tab) {
  
 
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
-    let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
-    // Wait until the main startup routine has finished!
-    await new Promise((resolve) => {
-      if (startupFinished) {
-        if (isDebug) console.log("SmartTemplates - startup code finished.");
-        resolve();
-        // Looks like we missed the one sent by main()
+    try {
+      let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+      // Wait until the main startup routine has finished!
+      await new Promise((resolve) => {
+        if (startupFinished) {
+          if (isDebug) console.log("SmartTemplates - startup code finished.");
+          resolve();
+          // Looks like we missed the one sent by main()
+        }
+        callbacks.push(resolve);
+      });
+      if (isDebug) {
+        console.log("SmartTemplates Startup has finished\n"
+          + "currentLicense", currentLicense);
       }
-      callbacks.push(resolve);
-    });
-    if (isDebug) {
-      console.log("SmartTemplates Startup has finished\n"
-        + "currentLicense", currentLicense);
-    }
-    
-    switch (reason) {
-      case "install":
-        {
-          const url = browser.runtime.getURL("popup/installed.html");
-          await messenger.tabs.create({
-            url : url,
-            active: true,
-          });
-          // await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
-          messenger.NotifyTools.notifyExperiment({event: "firstRun"});
-        }
-        break;
-      // see below
-      case "update":
-        {
-          
-          (async () => {
-            // compare versions to support beta builds
-            // we probably need to manage prerelease installs with a separate flag!
-            // Define a Map of silent update rules with wildcards
-            const silentUpdateMap = new Map([
-              ["4.10", ["4.10.1"]], // Silent updates for [issue 354]
-            ]);
-            
-            // Function to check if an update is silent
-            function isSilentUpdate(fromVersion, toVersion) {
-              const patterns = silentUpdateMap.get(fromVersion);
-              if (!patterns) return false; // No silent updates defined for this `fromVersion`
-
-              // Check if `toVersion` matches any pattern in the list
-              return patterns.some((pattern) => versionMatches(toVersion, pattern));
-            }
-
-            const origVer = await messenger.LegacyPrefs.getPref(
-              "extensions.smartTemplate4.version",
-              "0"
-            );
-            const manifest = await messenger.runtime.getManifest();
-            // get pure version number / remove pre123 indicator
-            let installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
-            if (isDebug) {
-              console.log(`SmartTemplates Update:  old=${origVer}  new=${installedVersion}`);
-            }
-
-            const isUpgrade = versionGreater(installedVersion, origVer),
-              isSilent = isSilentUpdate(origVer, installedVersion);
-
-            if (isUpgrade && !isSilent) {
-              if (isDebug) console.log("Setting hasNews flag!");
-              messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
-            }
-            if (origVer != installedVersion) {
-              if (isDebug) console.log("Storing new version number " + manifest.version);
-              // STORE VERSION CODE!
-              // prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
-              messenger.LegacyPrefs.setPref("extensions.smartTemplate4.version", installedVersion);
-            }
-
-            messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
-            messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
-          })();
-          
-          // TypeError: currentLicense is undefined
-          if (isDebug) console.log("2. update() case");
-          let currentLicenseInfo = currentLicense.info;
-          let isLicensed = (currentLicenseInfo.status == "Valid"); 
-          if (isLicensed) {
-            // suppress update popup for users with licenses that have been recently renewed
-            let gpdays = currentLicenseInfo.licensedDaysLeft; 
-            if (isDebug) console.log("Licensed - " + gpdays  + " Days left.");
+      
+      switch (reason) {
+        case "install":
+          {
+            const url = browser.runtime.getURL("popup/installed.html");
+            await messenger.tabs.create({
+              url : url,
+              active: true,
+            });
+            // await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
+            messenger.NotifyTools.notifyExperiment({event: "firstRun"});
           }
-        }
-        break;
-      default:
-        messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
-      // see below
+          break;
+        // see below
+        case "update":
+          {
+            
+            (async () => {
+              // compare versions to support beta builds
+              // we probably need to manage prerelease installs with a separate flag!
+              // Define a Map of silent update rules with wildcards
+              const silentUpdateMap = new Map([
+                ["4.10", ["4.10.1"]], // Silent updates for [issue 354]
+              ]);
+              
+              // Function to check if an update is silent
+              function isSilentUpdate(fromVersion, toVersion) {
+                const patterns = silentUpdateMap.get(fromVersion);
+                if (!patterns) return false; // No silent updates defined for this `fromVersion`
+
+                // Check if `toVersion` matches any pattern in the list
+                return patterns.some((pattern) => versionMatches(toVersion, pattern));
+              }
+
+              const origVer = await messenger.LegacyPrefs.getPref(
+                "extensions.smartTemplate4.version",
+                "0"
+              );
+              const manifest = await messenger.runtime.getManifest();
+              // get pure version number / remove pre123 indicator
+              let installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
+              if (isDebug) {
+                console.log(`SmartTemplates Update:  old=${origVer}  new=${installedVersion}`);
+              }
+
+              const isUpgrade = versionGreater(installedVersion, origVer),
+                isSilent = isSilentUpdate(origVer, installedVersion);
+
+              if (isUpgrade && !isSilent) {
+                if (isDebug) console.log("Setting hasNews flag!");
+                messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
+              }
+              if (origVer != installedVersion) {
+                if (isDebug) console.log("Storing new version number " + manifest.version);
+                // STORE VERSION CODE!
+                // prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+                messenger.LegacyPrefs.setPref("extensions.smartTemplate4.version", installedVersion);
+              }
+
+              messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
+              messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
+            })();
+            
+            // TypeError: currentLicense is undefined
+            if (isDebug) console.log("2. update() case");
+            let currentLicenseInfo = currentLicense.info;
+            let isLicensed = (currentLicenseInfo.status == "Valid"); 
+            if (isLicensed) {
+              // suppress update popup for users with licenses that have been recently renewed
+              let gpdays = currentLicenseInfo.licensedDaysLeft; 
+              if (isDebug) console.log("Licensed - " + gpdays  + " Days left.");
+            }
+          }
+          break;
+        default:
+          messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
+        // see below
+      }
+    } catch (ex) {
+      console.error("Error in onInstalled listener:", ex);
     }
   });
 
@@ -1061,15 +1065,6 @@ async function showSplash() {
     messenger.tabs.create({ active: true, url });
   }
   return;
-  let screenH = window.screen.height,
-    windowHeight = screenH > 870 ? 870 : screenH - 20;
-  messenger.windows.create({
-    url,
-    type: "popup",
-    width: 1000,
-    height: windowHeight,
-    allowScriptsToClose: true,
-  });
 }
 
 async function showSplashInstalled() {
@@ -1084,11 +1079,7 @@ async function showSplashInstalled() {
     messenger.tabs.create({ active: true, url });
   }  
   return;  
-  let screenH = window.screen.height,
-      windowHeight = (screenH > 870) ? 870 : screenH-20;  
-  messenger.windows.create({ url, type: "popup", width: 910, height: windowHeight, allowScriptsToClose : true});
 }
-
 
 async function main() {
   
@@ -1147,7 +1138,44 @@ async function main() {
     return (period-days); // returns number of days left, or -days since trial expired if past period
   }
 
-  
+  async function openPrefs(data) {
+    const settingsUrl = "/html/smartTemplate-settings.html";
+    let url = browser.runtime.getURL(settingsUrl) + "*";
+    let [oldTab] = await browser.tabs.query({ url }); // dereference first
+    let queryString = "";
+    let searchParams = new URLSearchParams();
+    if (data.server) searchParams.append("id", data.server);
+    if (data.page) searchParams.append("mode", data.page);
+    if (data.topic) {
+      searchParams.append("topic", data.topic);
+    }
+    if (data.composeType) {
+      searchParams.append("composeType", data.composeType);
+    }
+    if (searchParams.toString()) queryString = "?" + searchParams.toString();
+    if (oldTab) {
+      await browser.tabs.update(oldTab.id, {
+        active: true,
+        url: browser.runtime.getURL(settingsUrl + queryString),
+      });
+      // TO DO
+      const txt = "Select a specific page after activating existing Settings Tab.";
+      console.log(
+        `%c[issue 259] to do: \n%c${txt}\n`,
+        "color:red",
+        "background: darkblue; color:yellow;",
+        data
+      );
+      // await browser.windows.update(oldTab.windowId, {focused:true});
+    } else {
+      // open a new tab with settings
+      browser.tabs.create({
+        active: true,
+        url: browser.runtime.getURL(settingsUrl + queryString),
+      });
+    }
+  }
+
   /* There is a general race condition between onInstall and our main() startup:
    * - onInstall needs to be registered upfront (otherwise we might miss it)
    * - but onInstall needs to wait with its execution until our main function has
@@ -1158,9 +1186,9 @@ async function main() {
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
    
   let key = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.LicenseKey"),
-      forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
-      isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug"),
-      isDebugLicenser = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.premium.licenser");
+    forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
+    isDebugAddon = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug"),
+    isDebugLicenser = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.premium.licenser");
 
   currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser});
   await currentLicense.validate();
@@ -1169,38 +1197,42 @@ async function main() {
   
   // All important stuff has been done.
   // resolve all promises on the stack
-  if (isDebug) console.log("Finished setting up license startup code");
+  if (isDebugAddon) console.log("ST main(): Finished setting up license startup code");
   callbacks.forEach(callback => callback());
   startupFinished = true;
-  
-  
-  messenger.runtime.onMessage.addListener(async (data, sender) => {
-    if (data.command) {
+
+  if (isDebugAddon) console.log("ST main(): Adding message listeners....");
+  try {
+    messenger.runtime.onMessage.addListener(async (data, sender) => {
+      console.log("SmartTemplates background listener: ", data);
+      if (!data?.command) {
+        return;
+      }
       switch (data.command) {
-        case "getLicenseInfo": 
+        case "getLicenseInfo":
           return currentLicense.info;
         case "updateLicenseKey":
           return await updateLicenseKey(data.key);
         case "showAboutConfig":
           // to do: create an API for this one
           messenger.NotifyTools.notifyExperiment({
-            event: "showAboutConfig", 
+            event: "showAboutConfig",
             detail: {
               element: null,
               filter: data.filter,
               readOnly: data.readOnly,
-              updateUI: data.updateUI || false
-            }
+              updateUI: data.updateUI || false,
+            },
           });
           break;
         case "showRegistrationDialog":
           messenger.NotifyTools.notifyExperiment({
-            event: "doCommand", 
+            event: "doCommand",
             detail: {
               cmd: "smartTemplates-registration", // will be re-packaged as el.id
               params: {
-                feature: data.feature || ""
-              } 
+                feature: data.feature || "",
+              },
             },
           });
           break;
@@ -1209,60 +1241,64 @@ async function main() {
           break;
         case "showHomePage":
           messenger.NotifyTools.notifyExperiment({
-            event: "doCommand", 
-            detail: { cmd: "smartTemplates-support" }
+            event: "doCommand",
+            detail: { cmd: "smartTemplates-support" },
           });
           break;
         case "showATNHomePage":
           messenger.NotifyTools.notifyExperiment({
-            event: "doCommand", 
-            detail: { cmd: "smartTemplates-home" }
+            event: "doCommand",
+            detail: { cmd: "smartTemplates-home" },
           });
           break;
         case "showIssuesPage":
           messenger.NotifyTools.notifyExperiment({
-            event: "doCommand", 
-            detail: { cmd: "smartTemplates-issues" }
+            event: "doCommand",
+            detail: { cmd: "smartTemplates-issues" },
           });
           break;
         case "showPremiumFeaturePage":
           messenger.NotifyTools.notifyExperiment({
-            event: "doCommand", 
-            detail: { cmd: "smartTemplates-features" }
+            event: "doCommand",
+            detail: { cmd: "smartTemplates-features" },
           });
           break;
         case "showYouTubePage":
           messenger.NotifyTools.notifyExperiment({
-            event: "doCommand", 
-            detail: { 
+            event: "doCommand",
+            detail: {
               cmd: "smartTemplates-youtube",
-              params: { videoId: data.video }
-            }
+              params: { videoId: data.video },
+            },
           });
           break;
         case "showStationeryePage":
           messenger.NotifyTools.notifyExperiment({
-            event: "doCommand", 
-            detail: { 
+            event: "doCommand",
+            detail: {
               cmd: "smartTemplates-stationery",
-              params: { anchor: data.topic }
-            }
+              params: { anchor: data.topic },
+            },
           });
-          break;
-        case "showLegacyPreferences":
-          openLegacyPrefs();
           break;
         case "updateStatusbarIcon":
           messenger.NotifyTools.notifyExperiment({
-            event: "doCommand", 
-            detail: { 
-              cmd: "smartTemplates-updatestatusbar"
-            }
-          });          
+            event: "doCommand",
+            detail: {
+              cmd: "smartTemplates-updatestatusbar",
+            },
+          });
           break;
+        case "openPrefs": {
+          await openPrefs(data);
+        }
       }
-    }
-  });  
+    });
+    if (isDebugAddon) console.log("ST main(): After adding message listener.");
+  } catch (e) {
+    console.error("Error adding listener:", e);
+  }
+
 
   async function updateLicenseKey(newLicenseKey) {
     let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
@@ -1443,49 +1479,7 @@ async function main() {
       }
 
       case "openPrefs":
-        {
-          const settingsUrl = "/html/smartTemplate-settings.html";
-          // Add the current accountid for context?
-          let url = browser.runtime.getURL(settingsUrl) + "*";
-          let [oldTab] = await browser.tabs.query({ url }); // dereference first
-          let queryString = "";
-          let searchParams = new URLSearchParams();
-          if (data.server) {
-            searchParams.append("id", data.server);
-          }
-          if (data.page) {
-            searchParams.append("mode", data.page);
-          }
-          if (data.composeType) {
-            searchParams.append("composeType", data.composeType);
-          }
-          if (searchParams.size) {
-            queryString = "?" + searchParams.toString();
-          }
-
-          if (oldTab) {
-            await browser.tabs.update(oldTab.id, {
-              active: true,
-              url: browser.runtime.getURL(settingsUrl + queryString),
-            });
-            // TO DO
-            const txt = "Select a specific page after activating existing Settings Tab.";
-            console.log(
-              `%c[issue 259] to do: \n%c${txt}\n`,
-              "color:red",
-              "background: darkblue; color:yellow;",
-              data
-            );
-            // await browser.windows.update(oldTab.windowId, {focused:true});
-          } else {
-            // open a new tab with settings
-            browser.tabs.create({
-              active: true,
-              url: browser.runtime.getURL(settingsUrl + queryString),
-            });
-          }
-        }
-        break;
+        return await openPrefs(data);
 
       case "patchUnifiedToolbar":
         return await messenger.NotifyTools.notifyExperiment({ event: "patchUnifiedToolbar" });

@@ -348,12 +348,14 @@ var Register = {
     }
   },
 
-  goPro: function (license_type, isRenew = false) {
-    const productDetail = "https://sites.fastspring.com/quickfolders/product/smarttemplate4",
-      util = SmartTemplate4.Util,
+  goPro: function (license_type, isRenew = null) {
+    const util = SmartTemplate4.Util,
       prefs = SmartTemplate4.Preferences;
     // redirect to registration site; pass in the feature that brought user here
     // short order process
+    if (!isRenew && SmartTemplate4.Util.licenseInfo.isExpired) {
+      isRenew = true;
+    }
     let shortOrder,
       addQuery = "",
       featureName = document.getElementById("referrer").value; // hidden field

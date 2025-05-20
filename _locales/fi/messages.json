@@ -909,8 +909,8 @@
   "newsHead": {
     "message": "Uusimmat uutiset"
   },
-  "newsSection": {
-    "message": "{P1} Uusin versio $addonName$-lisäosasta on nyt yhteensopiva Thunderbirdin ($compatibleVer$) kanssa ja on aloittanut matkansa kohti parempaa saavutettavuutta näppäimistölle ja ruudunlukijoille – ensimmäinen askel oli kaikkien asetusivujen muokkaaminen, ja lisää parannuksia on tulossa pian! Yksityiskohtaisen dokumentaation löydät alla olevan linkin kautta täydellisestä muutoslokista. {P2}",
+  "newsSection.intro": {
+    "message": "{P1}Uusin versio $addonName$-laajennuksesta on nyt yhteensopiva Thunderbirdin version ($compatibleVer$) kanssa.{P2}{P1}Valmistaudumme Thunderbird 140 -versioon, joka on seuraava merkittävä ESR-julkaisu (Extended Support Release) ja jonka odotetaan ilmestyvän kesäkuussa. $addonName$ jatkaa kuukausittaista julkaisusykliä varmistaakseen jatkuvan yhteensopivuuden ja vakauden.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -920,6 +920,9 @@
         "content": "$2"
       }
     }
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Tärkeää:{boldEnd} Tämä päivitys korjaa virheen, jossa 'Uusi lisenssi' -painike johti täysihintaiseen tuotesivuun sen sijaan, että olisi tarjonnut alennetun uusintahinnan. Jos tämä vaikutti sinuun, erityisesti jos ostit vahingossa SmartTemplates Standard -lisenssin etkä uusinut Pro-versiota, ole hyvä ja {support licensing}ota yhteyttä tukeen{supportEnd} — tarjoamme mielellämme ilmaisen päivityksen Pro-versioon. Kiitos, jos liität mukaan viimeisimmän lisenssiavaimesi tai tilausnumerosi! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Koska kaikki työ SmartTempaltessin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."
@@ -1724,7 +1727,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20. huhtikuuta"
+    "message": "6. kesäkuuta"
   },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
@@ -2031,7 +2034,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{headStart}Ylläpitopäivitys 4.11.3{headEnd}{L1} SmartTemplates on nyt yhteensopiva Thunderbird 139:n kanssa – jatkossa se pyrkii pysymään yhteensopivana kuukausittaisen julkaisusyklin kanssa. Kiitos lisenssin ostamisesta – se auttaa varmistamaan yhteensopivuuden jatkossakin!{L2}{L1} Korjattu: kontekstuaaliset parametrit hiekkalaatikossa (kuten {{$subject}}) eivät toimineet. [issue 273]{L2}{headStart}Versio 4.11 – Painopiste saavutettavuudessa {headEnd}{L1}Saavutettavuuden parannus: Asetusikkuna on nyt täysin näppäimistöohjattava ja ruudunlukijoiden kanssa yhteensopiva. [issue 361]{L2}{L1}Uusi toiminto: {{%dateformat.current()%}} [issue 356]{L2}{L1}Parannuksia hiekkalaatikossa ajettavaan JavaScriptiin ja uusia kontekstuaalisia parametreja, kuten {{$priority}}, sekä uudet funktiot {{composer_composeType()}} ja {{composer_composeType()}} [issue 357]{L2}{L1}Varakoodaukseksi asetettu UTF-8 estämään tekstin vääristymät (mojibake) [issue 338]{L2}"
+    "message": "{headStart}Kiireellinen huoltopäivitys 4.11.4 – Lisenssivirheen korjaus{headEnd}{L1}Korjattu virhe, jossa 'Uusi lisenssi' -painike johti täyden hinnan tuotesivulle sen sijaan, että olisi soveltanut uusimisalennusta. Tämä vaikutti SmartTemplates Pro -käyttäjiin, jotka yrittivät uusia lisenssinsä. [issue 375]{L2}{L1}Jos tämä vaikutti sinuun, tarkista yllä oleva osio saadaksesi tietoa hyvityksistä / ilmaisista päivityksistä ja tuesta. {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

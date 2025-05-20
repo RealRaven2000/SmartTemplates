@@ -903,8 +903,8 @@
   "newsHead": {
     "message": "Laatste nieuws"
   },
-  "newsSection": {
-    "message": "{P1} De nieuwste versie van $addonName$ is nu compatibel met Thunderbird ($compatibleVer$) en is begonnen aan de verbetering van de toegankelijkheid voor toetsenbord en schermlezers – de eerste stap was het aanpassen van alle instellingenpagina's, met verdere verbeteringen binnenkort! Raadpleeg de volledige changelog via de onderstaande link voor gedetailleerde documentatie. {P2}",
+  "newsSection.intro": {
+    "message": "{P1}De nieuwste versie van $addonName$ is nu compatibel met Thunderbird ($compatibleVer$).{P2}{P1}We bereiden ons voor op Thunderbird 140, de volgende grote ESR-release (Extended Support Release), die in juni wordt verwacht. $addonName$ blijft de maandelijkse releasecyclus volgen om compatibiliteit en stabiliteit te waarborgen.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -914,6 +914,9 @@
         "content": "$2"
       }
     }
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Belangrijk:{boldEnd} Deze update lost een fout op waarbij de knop 'Licentie verlengen' leidde naar de productpagina met de volledige prijs in plaats van het aanbieden van de verlengingskorting. Als je hierdoor bent getroffen, en vooral als je per ongeluk een SmartTemplates Standard-licentie hebt gekocht in plaats van Pro te verlengen, {support licensing}neem dan contact op met de ondersteuning{supportEnd} — we geven je graag een gratis upgrade naar Pro. Bedankt als je je laatste licentiesleutel of bestelnummer meestuurt! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Aangezien al het werk aan SmartTemplates en de gratis ondersteuning uitsluitend wordt gefinancierd door licentieverkopen, overweeg dan een licentie aan te schaffen of uw huidige licentie te verlengen."
@@ -1697,7 +1700,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 april"
+    "message": "6 juni"
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1998,7 +2001,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{headStart}Onderhoudsuitgave 4.11.3{headEnd}{L1} SmartTemplates is nu compatibel met Thunderbird 139 – het doel is om in de toekomst compatibel te blijven met de maandelijkse releasecyclus. Bedankt voor het kopen van een licentie om toekomstige compatibiliteit te garanderen!{L2}{L1} Regressie verholpen: contextuele parameters in de sandbox (zoals {{$subject}}) werkten niet. [issue 273]{L2}{headStart}Versie 4.11 – Focus op toegankelijkheid {headEnd}{L1}Toegankelijkheidsverbetering: het instellingenvenster is nu volledig navigeerbaar met het toetsenbord en schermlezer-vriendelijk. [issue 361]{L2}{L1}Nieuwe functie: {{%dateformat.current()%}} [issue 356]{L2}{L1}Verbeteringen in sandboxed JavaScript en nieuwe contextuele parameters zoals {{$priority}} en functies {{composer_composeType()}} en {{composer_composeType()}} toegevoegd [issue 357]{L2}{L1}Fallback-tekencodering ingesteld op UTF-8 om verminkte tekst (mojibake) te voorkomen [issue 338]{L2}"
+    "message": "{headStart}Dringende onderhoudsupdate 4.11.4 – Licentiebug opgelost{headEnd}{L1}Een bug is opgelost waarbij klikken op 'Licentie verlengen' leidde naar de productpagina met volledige prijs in plaats van de verlengingskorting toe te passen. Dit trof SmartTemplates Pro-gebruikers die hun licentie probeerden te verlengen. [issue 375]{L2}{L1}Als u bent getroffen, raadpleeg dan het bovenstaande gedeelte voor details over terugbetalingen / gratis upgrades en ondersteuning. {L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

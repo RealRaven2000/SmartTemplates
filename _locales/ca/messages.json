@@ -907,8 +907,8 @@
   "newsHead": {
     "message": "Últimes notícies"
   },
-  "newsSection": {
-    "message": "{P1} L'última edició de $addonName$ ara és compatible amb Thunderbird ($compatibleVer$) i ha començat el seu camí cap a una millor accessibilitat per a teclats i lectors de pantalla; el primer pas ha estat modificar totes les pàgines de configuració, amb més millores properament! Per a documentació detallada, consulteu el registre complet de canvis en l'enllaç següent. {P2}",
+  "newsSection.intro": {
+    "message": "{P1}La darrera versió de $addonName$ ja és compatible amb Thunderbird ($compatibleVer$).{P2}{P1}Ens estem preparant per a Thunderbird 140, la propera versió ESR (Alliberament amb Suport Estès), prevista per al juny. $addonName$ continuarà seguint el cicle de llançaments mensuals per garantir la compatibilitat i estabilitat contínues.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -918,6 +918,9 @@
         "content": "$2"
       }
     }
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Important:{boldEnd} Aquesta actualització corregeix un error pel qual el botó 'Renova la llicència' dirigia a la pàgina del producte a preu complet en lloc d’oferir el descompte de renovació. Si us heu vist afectats, i especialment si heu comprat per error una llicència SmartTemplates Estàndard en lloc de renovar la Pro, si us plau, {support licensing}contacteu amb el suport tècnic{supportEnd} — estarem encantats de proporcionar-vos una actualització gratuïta a Pro. Gràcies per incloure la vostra última clau de llicència o número de comanda! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že veškerá práce na SmartTemplates a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
@@ -1722,7 +1725,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 d’abril"
+    "message": "6 de juny"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
@@ -2023,7 +2026,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{headStart}Údržbová verze 4.11.3{headEnd}{L1} SmartTemplates je nyní kompatibilní s Thunderbirdem 139 – do budoucna si klade za cíl zůstat kompatibilní s aktuálním měsíčním cyklem vydávání. Děkujeme, že jste si zakoupili licenci, čímž pomáháte zajistit budoucí kompatibilitu!{L2}{L1} Opraven regresní problém: kontextové parametry v sandboxu (například {{$subject}}) nefungovaly. [issue 273]{L2}{headStart}Verze 4.11 – Důraz na přístupnost {headEnd}{L1}Vylepšení přístupnosti: dialogové okno nastavení je nyní plně ovladatelné z klávesnice a kompatibilní s čtečkami obrazovky. [issue 361]{L2}{L1}Nová funkce: {{%dateformat.current()%}} [issue 356]{L2}{L1}Vylepšení v sandboxovaném JavaScriptu a přidání kontextových parametrů jako {{$priority}} a nových funkcí {{composer_composeType()}} a {{composer_composeType()}} [issue 357]{L2}{L1}Výchozí znakovou sadu nastavit na UTF-8, aby se předešlo zkomolenému textu (mojibake) [issue 338]{L2}"
+    "message": "{headStart}Llançament d'emergència 4.11.4 – Correcció d'error de llicència{headEnd}{L1}S'ha corregit un error on en fer clic a 'Renova la llicència' s'obria la pàgina de producte amb el preu complet en lloc d'aplicar el descompte per renovació. Això afectava els usuaris de SmartTemplates Pro que intentaven renovar la seva llicència. [issue 375]{L2}{L1}Si us heu vist afectats, comproveu la secció anterior per obtenir detalls sobre reemborsaments o actualitzacions gratuïtes i suport. {L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

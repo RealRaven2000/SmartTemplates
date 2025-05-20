@@ -897,8 +897,8 @@
   "newsHead": {
     "message": "Poslední zprávy"
   },
-  "newsSection": {
-    "message": "{P1} Nejnovější verze $addonName$ je nyní kompatibilní s Thunderbirdem ($compatibleVer$) a zahájila cestu ke zlepšení přístupnosti pro klávesnici a čtečky obrazovky – prvním krokem byla úprava všech stránek nastavení, další vylepšení budou brzy následovat! Podrobnou dokumentaci najdete v úplném seznamu změn na odkazu níže. {P2}",
+  "newsSection.intro": {
+    "message": "{P1}Nejnovější verze $addonName$ je nyní kompatibilní s Thunderbirdem ($compatibleVer$).{P2}{P1}Připravujeme se na Thunderbird 140, další hlavní ESR verzi (Extended Support Release), která se očekává v červnu. $addonName$ bude i nadále sledovat měsíční cyklus vydávání, aby byla zajištěna kompatibilita a stabilita.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -908,6 +908,9 @@
         "content": "$2"
       }
     }
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Důležité:{boldEnd} Tato aktualizace opravuje chybu, kdy tlačítko 'Obnovit licenci' vedlo na stránku s plnou cenou produktu místo nabídky zvýhodněného obnovení. Pokud jste byli postiženi, a zejména pokud jste omylem zakoupili licenci SmartTemplates Standard namísto obnovení Pro, prosím {support licensing}kontaktujte podporu{supportEnd} — rádi vám zdarma poskytneme upgrade na verzi Pro. Děkujeme, pokud připojíte svůj poslední licenční klíč nebo číslo objednávky! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat SmartTemplates v budoucnu."
@@ -1706,7 +1709,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20. dubna"
+    "message": "6. června"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
@@ -2004,7 +2007,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{headStart}Údržbová verze 4.11.3{headEnd}{L1} SmartTemplates je nyní kompatibilní s Thunderbirdem 139 – do budoucna si klade za cíl zůstat kompatibilní s aktuálním měsíčním cyklem vydávání. Děkujeme, že jste si zakoupili licenci, čímž pomáháte zajistit budoucí kompatibilitu!{L2}{L1} Opraven regresní problém: kontextové parametry v sandboxu (například {{$subject}}) nefungovaly. [issue 273]{L2}{headStart}Verze 4.11 – Důraz na přístupnost {headEnd}{L1}Vylepšení přístupnosti: dialogové okno nastavení je nyní plně ovladatelné z klávesnice a kompatibilní s čtečkami obrazovky. [issue 361]{L2}{L1}Nová funkce: {{%dateformat.current()%}} [issue 356]{L2}{L1}Vylepšení v sandboxovaném JavaScriptu a přidání kontextových parametrů jako {{$priority}} a nových funkcí {{composer_composeType()}} a {{composer_composeType()}} [issue 357]{L2}{L1}Výchozí znakovou sadu nastavit na UTF-8, aby se předešlo zkomolenému textu (mojibake) [issue 338]{L2}"
+    "message": "{headStart}Nouzové vydání 4.11.4 – Oprava chyby s licencí{headEnd}{L1}Byla opravena chyba, kdy kliknutí na 'Obnovit licenci' vedlo na stránku s plnou cenou místo použití slevy pro obnovu. Tato chyba ovlivnila uživatele SmartTemplates Pro, kteří se pokoušeli licenci obnovit. [issue 375]{L2}{L1}Pokud jste byli ovlivněni, podívejte se prosím výše na informace o vrácení peněz / bezplatném upgradu a podpoře. {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

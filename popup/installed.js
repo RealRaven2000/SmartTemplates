@@ -75,18 +75,32 @@ addEventListener("load", async (event) => {
   
   updateActions(addonName);
 
-  const newsDetail = document.getElementById("newsDetail");
-  ariaPoliteUpdate(newsDetail,
-    formatAll(
-      messenger.i18n.getMessage("newsSection", [addonName, compatibleVer])
-    ),
+  ariaPoliteUpdate(
+    document.getElementById("newsIntro"),
+    formatAll(messenger.i18n.getMessage("newsSection.intro", [addonName, compatibleVer])),
     true
   );
+
+  ariaPoliteUpdate(
+    document.getElementById("newsImportant"),
+    formatAll(messenger.i18n.getMessage("newsSection.important")),
+    true
+  );
+
+  const innerWrapper = document.getElementById("innerwrapper");
+  innerWrapper.querySelectorAll("a.contactsupport").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+        const topic = link.dataset.topic || null;
+        openSupportForm(topic);
+    });
+  });
   
   setTimeout(
     () => {
       show("newsHead");
-      show("newsDetail");
+      show("newsIntro");
+      show("newsImportant");
       show("newsSection");
     },
     150
