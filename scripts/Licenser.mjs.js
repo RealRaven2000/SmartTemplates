@@ -355,7 +355,6 @@ export class Licenser {
     let accounts = await messenger.accounts.list(false);
     this.logDebug(`Found ${accounts.length} Accounts\n${this.logTime()}` , accounts);
     let AllowFallbackToSecondaryIdentiy = false;
-    const getDefaultIdentity = messenger.identities ? messenger.identities.getDefault : messenger.accounts.getDefaultIdentity;
 
     if (this.key_type == 0 || this.key_type ==2) {
       // Private License - Check if secondary mode is necessarry (if not already enforced)
@@ -364,7 +363,7 @@ export class Licenser {
       } else {
         let hasDefaultIdentity = false;
         for (let account of accounts) {
-          let defaultIdentity = await getDefaultIdentity(account.id); // [bug 1630786] permissions prevent users from updating
+          let defaultIdentity = await messenger.identities.getDefault(account.id); // [bug 1630786] permissions prevent users from updating
           if (defaultIdentity) {
             hasDefaultIdentity = true;
             break;
@@ -382,7 +381,7 @@ export class Licenser {
     
     this.logDebug('Iterate accounts to check default Identities...');
     for (let account of accounts) {
-      let defaultIdentity = await getDefaultIdentity(account.id); // [bug 1630786] permissions prevent users from updating
+      let defaultIdentity = await messenger.identities.getDefault(account.id); // [bug 1630786] permissions prevent users from updating
       if (defaultIdentity && !this.ForceSecondaryIdentity) {
 
         this.logDebug("premium.licenser", {
