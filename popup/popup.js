@@ -180,7 +180,7 @@ function showSalesItems(isSale, licenseInfo) {
     }
 
     hide("news-license");
-    hide("newsSection");
+    // hide("newsSection");
     show("licenseExtended");
     // hide('time-and-effort');
     hide("purchaseHeader");
