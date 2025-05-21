@@ -1116,31 +1116,33 @@ export class Parser {
   // added composeDetails for header retrieval
   // added offsets to avoid side FX
   // added flags to avoid side FX
-  async regularize(msg, composeType, composeDetails, ignoreHTML, isDraftLike, offsets, flags) { 
+  async regularize(msg, composeType, composeDetails, ignoreHTML, isDraftLike, offsets, flags) {
     let that = this;
     // [issue 184] deal with global side effects: time offsets!
     // replace SmartTemplate4.signature
     let mailIdentity = await messenger.identities.get(composeDetails.identityId),
-        signature = mailIdentity.signature,
-        signatureIsPlainText = mailIdentity.signatureIsPlainText;
-          
+      signature = mailIdentity.signature,
+      signatureIsPlainText = mailIdentity.signatureIsPlainText;
+
     // make sure to use the licenser from main window, to save time.
     // [issue 150] removed nag screen
     async function getSubject(current) {
       if (await Preferences.isDebugOption("tokens.deferred")) debugger;
-      Util.logDebugOptional('regularize', 'getSubject(' + current + ')');
+      Util.logDebugOptional("regularize", "getSubject(" + current + ")");
       let subject = "";
-      if (current){
+      if (current) {
         subject = composeDetails.subject; //  document.getElementById("msgSubject").value;
         return escapeHtml(subject); //escapeHtml for non UTF8 chars in %subject% but this don't work in this place for the whole subject, only on %subject(2)%
-      }
-      else {
+      } else {
         subject = composeDetails.subject; // mime.decode(hdr.get("Subject"), charset);
-        if (composeDetails.type=="new" && !subject) {
+        if (composeDetails.type == "new" && !subject) {
           // gMsgCompose.composeHTML
-          const isHTMLMode = !composeDetails.isPlainText; 
+          const isHTMLMode = !composeDetails.isPlainText;
           subject = await Util.wrapDeferredHeader("subject", subject, isHTMLMode);
-          Util.logDebugOptional("tokens.deferred",'regularize - wrapped missing header:\n' + subject);
+          Util.logDebugOptional(
+            "tokens.deferred",
+            "regularize - wrapped missing header:\n" + subject
+          );
         }
         return subject;
       }
@@ -1149,9 +1151,6 @@ export class Parser {
     function getNewsgroup() {
       Util.logDebugOptional("regularize", "getNewsgroup()");
       let acctKey = msgDbHdr.accountKey;
-      //const account = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).getAccount(acctKey);
-      //dump ("acctKey:"+ acctKey);
-      //return account.incomingServer.prettyName;
       return acctKey;
     }
 
@@ -1163,56 +1162,73 @@ export class Parser {
       // reserved words : these are words about which we know are not headers!
       async function classifyReservedWord(str, reservedWord, param) {
         try {
-          let removeParentheses = (arg) => {return arg ? arg.substr(1,arg.length-2) : ""},
-              paramArray = removeParentheses(param).split(',');
-          if (str!="%X:=today%") {
-            Util.logDebugOptional("regularize","regularize.classifyReservedWord(" + str + ", " +  reservedWord + ", " + param || "" + ")");
+          let removeParentheses = (arg) => {
+              return arg ? arg.substr(1, arg.length - 2) : "";
+            },
+            paramArray = removeParentheses(param).split(",");
+          if (str != "%X:=today%") {
+            Util.logDebugOptional(
+              "regularize",
+              "regularize.classifyReservedWord(" + str + ", " + reservedWord + ", " + param ||
+                "" + ")"
+            );
           }
-          let el = (typeof TokenMap[reservedWord]=='undefined') ? '' : TokenMap[reservedWord],
-              isReserved = (el && el.startsWith("reserved")),
-              isAddress = Util.isAddressHeader(el),
-              addressHdr = isReserved ? "" : hdr.get(el ? el : reservedWord);
-              
+          let el = typeof TokenMap[reservedWord] == "undefined" ? "" : TokenMap[reservedWord],
+            isReserved = el && el.startsWith("reserved"),
+            isAddress = Util.isAddressHeader(el),
+            addressHdr = isReserved ? "" : hdr.get(el ? el : reservedWord);
+
           if (isAddress && !isReserved) {
             // if the header can be found, check if it has parameters and would evaluate to be empty?
-            if (addressHdr && param && param.length>2) {  // includes parameters e.g. (firstname)
-              Util.logDebugOptional("regularize","check whether " + reservedWord + " " + param + " returns content...");
+            if (addressHdr && param && param.length > 2) {
+              // includes parameters e.g. (firstname)
+              Util.logDebugOptional(
+                "regularize",
+                "check whether " + reservedWord + " " + param + " returns content..."
+              );
               // cannot determine charset currently
               let charset = null, // gMsgCompose.compFields.characterSet,
-                  headerValue = await mime.split(addressHdr, charset, param);
+                headerValue = await mime.split(addressHdr, charset, param);
               if (!headerValue) {
-                Util.logDebugOptional("regularize","This %" + reservedWord + "% variable returned nothing.");
+                Util.logDebugOptional(
+                  "regularize",
+                  "This %" + reservedWord + "% variable returned nothing."
+                );
                 addressHdr = "";
               }
             }
           }
-          let s = (isReserved) ? str
-                  : (addressHdr != "") ? str : ""; // check if header exists / is empty. this is for [[optional parts]]
+          let s = isReserved ? str : addressHdr != "" ? str : ""; // check if header exists / is empty. this is for [[optional parts]]
           if (!el) {
-            Util.logToConsole(`Discarding unknown variable: %${reservedWord}%`)
-          }
-          else { // it's a reserved word, likely a header
-            if (typeof s =='undefined' || (s=="" && composeType=='new') || paramArray.includes("fwd")) {
+            Util.logToConsole(`Discarding unknown variable: %${reservedWord}%`);
+          } else {
+            // it's a reserved word, likely a header
+            if (
+              typeof s == "undefined" ||
+              (s == "" && composeType == "new") ||
+              paramArray.includes("fwd")
+            ) {
               // if we are writing a NEW mail, we should insert some placeholders for resolving later.
               // do this also when using the "fwd" modifier as the initial address string may be empty or wrong.
               // wrap into <smarttemplate > for later deferral (works only in HTML)
               // [issue 153] the same probem also applies when forwarding and using the "fwd" switch.
               // use pink fields for new emails for the New Mail case - this var can not be used in...
-              if (!isReserved && Util.checkIsURLencoded(str)) { // unknown header? make sure it is not an URL encoded thing
+              if (!isReserved && Util.checkIsURLencoded(str)) {
+                // unknown header? make sure it is not an URL encoded thing
                 s = str;
-              }
-              else {
+              } else {
                 let isHTML = !composeDetails.isPlainText;
-                if (isHTML)
-                  flags.hasDeferredVars = true;  // SmartTemplate4.hasDeferredVars
-                s = await Util.wrapDeferredHeader(str, el, isHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
+                if (isHTML) flags.hasDeferredVars = true; // SmartTemplate4.hasDeferredVars
+                s = await Util.wrapDeferredHeader(str, el, isHTML, composeType == "new"); // let's put in the reserved word as placeholder for simple deletion
               }
-              Util.logDebugOptional("tokens.deferred",'classifyReservedWord - wrapped missing header:\n' + s);
+              Util.logDebugOptional(
+                "tokens.deferred",
+                "classifyReservedWord - wrapped missing header:\n" + s
+              );
             }
           }
           return s;
-        } 
-        catch (ex) {
+        } catch (ex) {
           // let's implement later resolving of variables for premium users:
           // throws "hdr is null"
           Util.logException(`classifyReservedWord (${reservedWord})`, ex);
@@ -1230,17 +1246,21 @@ export class Parser {
         // also removes optional [[ CC ]] parts.
         // this replaces empty cc
         // problem if string contains ( or ) it won't work
-        let isOptionalAB = (strInBrackets.includes("%identity") && strInBrackets.includes('addressbook'));
+        let isOptionalAB =
+          strInBrackets.includes("%identity") && strInBrackets.includes("addressbook");
 
         // next: if it doesn't contain %, delete the string
         // preserve square brackets for all genuinely optional stuff
         // Util.isAddressHeader(token) ?
-        if (isOptionalAB)
-          return str.replace(/^[^%]*$/, "");
-        let generalFunction = await Util.replaceAsync(strInBrackets, /%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
+        if (isOptionalAB) return str.replace(/^[^%]*$/, "");
+        let generalFunction = await Util.replaceAsync(
+          strInBrackets,
+          /%([\w-:=]+)(\([^)]+\))*%/gm,
+          classifyReservedWord
+        );
         return generalFunction.replace(/^[^%]*$/, "");
       }
-      
+
       /* [issue 184] TO DO LATER
       if ((composeType != "new") && (composeType != "snippets") && !gMsgCompose.originalMsgURI)  {
         util.popupAlert (util.ADDON_TITLE, "Missing message URI - SmartTemplates cannot process this message! composeType=" + composeType);
@@ -1253,116 +1273,75 @@ export class Parser {
       // [AG] First Step: use the checkReservedWords function to process any "broken out" parts that are embedded in {  .. } pairs
       // aString = aString.replace(/{([^{}]+)}/gm, checkReservedWords);
       // removes [[ double brackets ]]  !!
-      aString = await Util.replaceAsync(aString,/\[\[([^\[\]]+)\]\]/gm, checkReservedWords);
+      aString = await Util.replaceAsync(aString, /\[\[([^\[\]]+)\]\]/gm, checkReservedWords);
 
       // [AG] Second Step: use classifyReservedWord to categorize reserved words (variables) into one of the 6 classes: reserved, To, Cc, Date, From, Subject
-      return await Util.replaceAsync(aString,/%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
+      return await Util.replaceAsync(aString, /%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
     }
 
     that.regularize.headersDump = "";
-    Util.logDebugOptional("regularize","Parser.regularize(" + msg +")  STARTS...");
+    Util.logDebugOptional("regularize", "Parser.regularize(" + msg + ")  STARTS...");
     // var parent = SmartTemplate4;
     let idkey = composeDetails.identityId; // Util.getIdentityKey(document),
-    let identity = mailIdentity; // = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).getIdentity(idkey),
-/*    let accounts = await messenger.accounts.list(false); // omit folders
-    for (let account of accounts) {
-      let id = account.identities.find(m => m.id == idkey);
-      if (id) {
-        identity =id;
-        break;
-      }
-    } */
+    let identity = mailIdentity;
     let mime = that.mimeDecoder;
     await mime.init();
 
     // THIS FAILS IF MAIL IS OPENED FROM EML FILE:
     let msgDbHdr = null,
-        charset,
-        hdr = {};
-        
-/*  OMIT HEADER KRAMPF [issue 184]
-        
-    if (gMsgCompose.originalMsgURI.indexOf(".eml")>0) { 
-      let messageWindow = Services.wm.getMostRecentWindow("mail:messageWindow"),
-          messageHeaderSink = messageWindow.messageHeaderSink;
-      charset = gMsgCompose.compFields.characterSet;
-      // with .eml file, use gExpandedHeaderView[hdrName] collection?
-      // see also messagepane-loaded event in msgHeaderView
-      // see also gMessageDisplay.displayExternalMessage
-      // messenger.msgHdrFromURI(sourceUri)
-      // messageHeaderSink.dummyMsgHeader  (has author, recipients, subject, deliveredTo, messageId)
-      // messageHeaderSink.dummyMsgHeader.__proto__  has more fields, such as flags, datee, ccList, accountKey, listPost, mime2DecodedSubject() getter...)
-      msgDbHdr =  messageHeaderSink.dummyMsgHeader;
-      try {
-        hdr = (composeType != "new") ? new this.clsGetAltHeader(msgDbHdr) : null;
-      }
-      catch(ex) {
-        Util.logException('fatal error - clsGetAltHeader() failed', ex);
-      }
-    }
-    else {
-      try {
-        msgDbHdr = (composeType != "new") && (gMsgCompose.originalMsgURI) ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
-        if (msgDbHdr) {
-          charset = (composeType != "new") ? msgDbHdr.Charset : null;
-        }
-        else
-          charset = gMsgCompose.compFields.characterSet; // snippets
-        
-        // -- this line wasn't doing anything before "msgDbHdr.folder.charset; "
-        //    defaulting to folder's charset would have been probably wrong anyway
-        if (!charset && msgDbHdr) {
-          charset = gMsgCompose.compFields.characterSet; // 
-        }
-      }
-      catch (ex) {
-        Util.logException('messenger.msgHdrFromURI failed:', ex);
-        // doesn't return a header but throws!
-        charset = gMsgCompose.compFields.characterSet;
-      }
-      try {
-        hdr = (composeType != "new") && (gMsgCompose.originalMsgURI) ? 
-          new this.classGetHeaders(gMsgCompose.originalMsgURI) : 
-          new this.clsGetAltHeader(gMsgCompose.compFields);
-      }
-      catch(ex) {
-        Util.logException('fatal error - classGetHeaders() failed', ex);
-      }
-    }
-    // append composeType to hdr class.
-    if(hdr) {
-      hdr.composeType = composeType;
-    }
-    
-**/     // HEADER KRAMPF
-    
+      charset,
+      hdr = {};
+
+    /*  OMIT HEADER KRAMPF [issue 184]
+    I will never convert this. WRITE SHIT FROM SCRATCH.
+
+    What you can do to improve or future-proof this snippet:
+      1. Isolate all legacy XPCOM and window-hunting code into one or two well-named functions or 
+        classes, so if/when you do fully migrate, it’s obvious what to replace.
+      2. Minimize direct global accesses like gMsgCompose — pass what you need explicitly if possible, 
+        so the function becomes easier to test and less coupled.
+      3. Log precisely when each fallback or branch triggers to detect if .eml support 
+        or messageHeaderSink use is still actually needed.
+      4. Add a TODO comment to revisit this once WebExtension APIs can be used here 
+        (e.g., after TB moves more compose internals to WebExtension context).
+      
+      **/
+
+    // TO DO: retrieve all headers in the hdr object.
+    // not sure how to yet
+
     let originalMsg = null;
     // not ComposeDetails.relatedMessageId was implemented in Thunderbird 95!!!
     // so it won't work in ESR 91
-    if (typeof composeDetails.relatedMessageId != "undefined" ) {
+    if (typeof composeDetails.relatedMessageId != "undefined") {
       originalMsg = await messenger.messages.getFull(composeDetails.relatedMessageId);
     }
 
-    hdr.get = (h) => { 
-      return that.getAPIheader(composeDetails, h, originalMsg); 
-    }; 
+    hdr.get = (h) => {
+      return that.getAPIheader(composeDetails, h, originalMsg);
+    };
 
-    if (await Preferences.isDebugOption('regularize')) debugger;
-    let date = (composeType != "new") && msgDbHdr ? msgDbHdr.date : null;
+    if (await Preferences.isDebugOption("regularize")) debugger;
+    let date = composeType != "new" && msgDbHdr ? msgDbHdr.date : null;
     if (composeType != "new" && msgDbHdr) {
       // for Reply/Forward message
-      let tz = new function(date) {
+      let tz = new (function (date) {
         this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
-        this.h = this.str.replace(/(.).*/, "$11") * (this.str.substr(1,1) * 10 + this.str.substr(2,1) * 1);
-        this.m = this.str.replace(/(.).*/, "$11") * (this.str.substr(3,1) * 10 + this.str.substr(4,1) * 1);
-      } (hdr ? hdr.get("date") : msgDbHdr.date);
+        this.h =
+          this.str.replace(/(.).*/, "$11") *
+          (this.str.substr(1, 1) * 10 + this.str.substr(2, 1) * 1);
+        this.m =
+          this.str.replace(/(.).*/, "$11") *
+          (this.str.substr(3, 1) * 10 + this.str.substr(4, 1) * 1);
+      })(hdr ? hdr.get("date") : msgDbHdr.date);
     }
     // TokenMap["headerName"] = mail Header
     // TokenMap["reserved"] = ST4 function
     var TokenMap = {};
     // building a hash table?
     // addTokens("header", "reserved word",,,)
-    function addTokens() { // build a map
+    function addTokens() {
+      // build a map
       for (let i = 1; i < arguments.length; i++) {
         TokenMap[arguments[i]] = arguments[0]; // set the type of each token: reserved, To, Cc, Date, From, Subject
       }
@@ -1370,24 +1349,82 @@ export class Parser {
     // Reserved words that do not depend on the original message.
     // identity(name) is the new ownname
     // identity(mail) is the new ownmail
-    addTokens("reserved", 
-      "dbg1", "sig", "newsgroup", 
-      "ownname", "ownmail", "mailTo",
-      "deleteText", "replaceText", "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",
-      "matchTextFromSubject", "matchTextFromBody", "suppressQuoteHeaders", "deleteForwardedBody",
-      "cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "internal-javascript-ref",
-      "messageRaw", "file", "style", "attach", "basepath",//depends on the original message, but not on any header
-      "header.set", "header.append", "header.prefix, header.delete",
+    addTokens(
+      "reserved",
+      "dbg1",
+      "sig",
+      "newsgroup",
+      "ownname",
+      "ownmail",
+      "mailTo",
+      "deleteText",
+      "replaceText",
+      "deleteQuotedText",
+      "replaceQuotedText",
+      "deleteQuotedTags",
+      "replaceQuotedTags",
+      "matchTextFromSubject",
+      "matchTextFromBody",
+      "suppressQuoteHeaders",
+      "deleteForwardedBody",
+      "cursor",
+      "quotePlaceholder",
+      "language",
+      "spellcheck",
+      "quoteHeader",
+      "internal-javascript-ref",
+      "messageRaw",
+      "file",
+      "style",
+      "attach",
+      "basepath", //depends on the original message, but not on any header
+      "header.set",
+      "header.append",
+      "header.prefix, header.delete",
       "header.deleteFromSubject",
-      "header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
-      "header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg",
-      "conditionalText", "clipboard", "attachments"
+      "header.set.matchFromSubject",
+      "header.append.matchFromSubject",
+      "header.prefix.matchFromSubject",
+      "header.set.matchFromBody",
+      "header.append.matchFromBody",
+      "header.prefix.matchFromBody",
+      "logMsg",
+      "conditionalText",
+      "clipboard",
+      "attachments"
     );
     // new classification for time variables only
-    addTokens("reserved.time", 
-      "Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-      "datelocal", "dateshort", "dateformat", "date_tz", "tz_name", "cwIso",
-      "X:=today", "X:=calculated", "X:=timezone");
+    addTokens(
+      "reserved.time",
+      "Y",
+      "y",
+      "m",
+      "n",
+      "d",
+      "e",
+      "H",
+      "k",
+      "I",
+      "l",
+      "M",
+      "S",
+      "T",
+      "X",
+      "A",
+      "a",
+      "B",
+      "b",
+      "p",
+      "datelocal",
+      "dateshort",
+      "dateformat",
+      "date_tz",
+      "tz_name",
+      "cwIso",
+      "X:=today",
+      "X:=calculated",
+      "X:=timezone"
+    );
 
     addTokens("reserved.optional", "identity"); // non-headers but support [[ optional syntax ]] (remove part if empty)
 
@@ -1397,162 +1434,194 @@ export class Parser {
     addTokens("Date", "X:=sent");
     addTokens("From", "from", "fromname", "frommail");
     addTokens("Subject", "subject");
-    
+
     // Replace reserved words
-    async function replaceReservedWords(dmy, token, arg)	{
+    async function replaceReservedWords(dmy, token, arg) {
       // calling this function just for logging purposes
       function finalize(tok, s, comment) {
         if (s) {
           let text = "replaceReservedWords( %" + tok + "% ) = " + s;
           if (comment) {
-            text += '\n' + comment;
+            text += "\n" + comment;
           }
-          Util.logDebugOptional ('replaceReservedWords', text);
-        };
+          Util.logDebugOptional("replaceReservedWords", text);
+        }
         return s;
-      } 
-      
+      }
+
       function testHTML(token, arg) {
-        if ((token.indexOf('</a>')>=0)    // does token contain HTML link or encoded < >?
-          ||
-          (token.indexOf('&lt;')>=0)
-          ||
-          (token.indexOf('&gt;')>=0)
-          ||
-          (arg && Util.isFormatLink(arg) || arg=='(mail)'))
+        if (
+          token.indexOf("</a>") >= 0 || // does token contain HTML link or encoded < >?
+          token.indexOf("&lt;") >= 0 ||
+          token.indexOf("&gt;") >= 0 ||
+          (arg && Util.isFormatLink(arg)) ||
+          arg == "(mail)"
+        )
           return true;
         return false;
       }
-      
+
       // remove  (  ) from argument string
       function removeParentheses(arg) {
-        return arg.substr(1,arg.length-2);
+        return arg.substr(1, arg.length - 2);
       }
 
       let originalToken = token;
-      
+
       let tm = new Date(),
-          d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); },
-          // str.replace(/%([\w-]+)%/gm, replaceReservedWords)
-          expand = async function(str) { 
-            return await Util.replaceAsync(str, /%([\w-]+)%/gm, replaceReservedWords);  
-          };
+        d02 = function (val) {
+          return ("0" + val).replace(/.(..)/, "$1");
+        },
+        // str.replace(/%([\w-]+)%/gm, replaceReservedWords)
+        expand = async function (str) {
+          return await Util.replaceAsync(str, /%([\w-]+)%/gm, replaceReservedWords);
+        };
       if (!that.calendar.isInitialized) {
         await that.calendar.init(null); // default locale
       }
       let cal = that.calendar;
-        
-      // expensive calculations, only necessary if we deal with tokens that do time 
-      if (typeof TokenMap[token]!='undefined' && (TokenMap[token] == 'reserved.time')) {
+
+      // expensive calculations, only necessary if we deal with tokens that do time
+      if (typeof TokenMap[token] != "undefined" && TokenMap[token] == "reserved.time") {
         // what if we go over date boundary? (23:59)
         let nativeUtcOffset = tm.getTimezoneOffset(), // UTC offset for current time, in minutes
-            msOffset = (offsets.whatIsHourOffset ? offsets.whatIsHourOffset*60*60*1000 : 0)
-                       + (offsets.whatIsMinuteOffset ?  offsets.whatIsMinuteOffset*60*1000 : 0),
-            dayOffset = offsets.whatIsDateOffset;
-            
+          msOffset =
+            (offsets.whatIsHourOffset ? offsets.whatIsHourOffset * 60 * 60 * 1000 : 0) +
+            (offsets.whatIsMinuteOffset ? offsets.whatIsMinuteOffset * 60 * 1000 : 0),
+          dayOffset = offsets.whatIsDateOffset;
+
         if (offsets.whatIsTimezone) {
           let forcedTz = Util.getTimezoneOffset(offsets.whatIsTimezone);
-          msOffset = msOffset + forcedTz*60*60*1000 + nativeUtcOffset*60*1000;
-          Util.logDebug("Adding timezone offsets:\n" +
-            "UTC Offset: " + nativeUtcOffset/(60) + " hour\n" +
-            "Forced Timezone Offset: " + forcedTz + " hours\n" +
-            "Total Offset = " + msOffset + " ms will be added to time");
+          msOffset = msOffset + forcedTz * 60 * 60 * 1000 + nativeUtcOffset * 60 * 1000;
+          Util.logDebug(
+            "Adding timezone offsets:\n" +
+              "UTC Offset: " +
+              nativeUtcOffset / 60 +
+              " hour\n" +
+              "Forced Timezone Offset: " +
+              forcedTz +
+              " hours\n" +
+              "Total Offset = " +
+              msOffset +
+              " ms will be added to time"
+          );
         }
-        
+
         // date is sent date when replying!
         // in new mails or if offset is applied we use dateshort
-        if (msOffset || dayOffset || (composeType=='new')) {
-          if (token=="date") 
-            token = "dateshort";
+        if (msOffset || dayOffset || composeType == "new") {
+          if (token == "date") token = "dateshort";
         }
-        
+
         if (offsets.whatIsX == offsets.XisSent && !date) {
-          // 
-          alert( "There is no sent date. You cannot use the X:=Sent switch in this case!");
+          //
+          alert("There is no sent date. You cannot use the X:=Sent switch in this case!");
           offsets.whatIsX = offsets.XisToday;
         }
-        
+
         // Set %A-Za-z% to time of original message was sent.
-        if (offsets.whatIsX == offsets.XisSent)  {
-          tm.setTime((date / 1000) + msOffset);
-        }
-        else
-          tm.setTime(tm.getTime() + msOffset);
-        
+        if (offsets.whatIsX == offsets.XisSent) {
+          tm.setTime(date / 1000 + msOffset);
+        } else tm.setTime(tm.getTime() + msOffset);
+
         // note: date variable comes from header!
         if (dayOffset) {
           tm.setDate(tm.getDate() + dayOffset);
         }
       }
-      
 
-      let debugTimeStrings = (await Preferences.isDebugOption('timeStrings'));
-      if (!arg) arg='';
+      let debugTimeStrings = await Preferences.isDebugOption("timeStrings");
+      if (!arg) arg = "";
       try {
         // for backward compatibility
         switch (token) {
-          case "fromname":  token = "from"; arg = "(name)";   break;
-          case "frommail":  token = "from"; arg = "(mail)";   break;
-          case "toname":    token = "to";   arg = "(name)";   break;
-          case "tomail":    token = "to";   arg = "(mail)";   break;
-          case "ccname":    token = "cc";   arg = "(name)";   break;
-          case "ccmail":    token = "cc";   arg = "(mail)";   break;
+          case "fromname":
+            token = "from";
+            arg = "(name)";
+            break;
+          case "frommail":
+            token = "from";
+            arg = "(mail)";
+            break;
+          case "toname":
+            token = "to";
+            arg = "(name)";
+            break;
+          case "tomail":
+            token = "to";
+            arg = "(mail)";
+            break;
+          case "ccname":
+            token = "cc";
+            arg = "(name)";
+            break;
+          case "ccmail":
+            token = "cc";
+            arg = "(mail)";
+            break;
           // [issue 151] universal placeholder for target recipient
-          case "recipient":   
+          case "recipient":
             {
-              switch(composeType) {
+              switch (composeType) {
                 case "new":
                   token = "to";
                   break;
                 case "rsp":
-                  let isReplyTo = (hdr && hdr.get("reply-to") != "");
+                  let isReplyTo = hdr && hdr.get("reply-to") != "";
                   token = isReplyTo ? "reply-to" : "from";
                   break;
                 case "fwd":
                   token = "to";
                   // make sure to add / append "fwd" switch:
-                  if (!arg)
-                    arg = "(fwd)";
+                  if (!arg) arg = "(fwd)";
                   else {
-                    arg = arg.substr(0,arg.length-1) + ",fwd)";
+                    arg = arg.substr(0, arg.length - 1) + ",fwd)";
                   }
                   break;
               }
-              
             }
             break;
         }
 
-        if (await Preferences.isDebugOption('tokens') && token != "X:=today") debugger;
-        let isUTC = offsets.whatIsUtc, params;
-        switch(token) {
-          case "deleteText":            // return unchanged
-          case "replaceText":           // return unchanged
-          case "deleteQuotedText":      // return unchanged
-          case "deleteQuotedTags":      // return unchanged
-          case "replaceQuotedText":     // return unchanged
-          case "replaceQuotedTags":     // return unchanged
-          case "matchTextFromSubject":  // return unchanged
-          case "matchTextFromBody":     // return unchanged
-            return '%' + token + arg + '%';
+        if ((await Preferences.isDebugOption("tokens")) && token != "X:=today") debugger;
+        let isUTC = offsets.whatIsUtc,
+          params;
+        switch (token) {
+          case "deleteText": // return unchanged
+          case "replaceText": // return unchanged
+          case "deleteQuotedText": // return unchanged
+          case "deleteQuotedTags": // return unchanged
+          case "replaceQuotedText": // return unchanged
+          case "replaceQuotedTags": // return unchanged
+          case "matchTextFromSubject": // return unchanged
+          case "matchTextFromBody": // return unchanged
+            return "%" + token + arg + "%";
           case "dateformat":
             if (debugTimeStrings) debugger;
             tm = new Date();
-            const dateFormatSent = (offsets.whatIsX == offsets.XisSent && date);
-            if (dateFormatSent)
-              tm.setTime((date / 1000));
-            // [issue 115] Erratic %datetime()% results when forcing HTML with Shift 
+            const dateFormatSent = offsets.whatIsX == offsets.XisSent && date;
+            if (dateFormatSent) tm.setTime(date / 1000);
+            // [issue 115] Erratic %datetime()% results when forcing HTML with Shift
             arg = Util.removeHtmlEntities(arg);
             // we may have to pass in an initialized Calendar to this function!
             // if (!that.calendar.initialized) {
             //   await that.calendar.init(null); // default language
             // }
-            let defaultTime = Util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0, offsets); // dateFormat will add offsets itself
-            if (dateFormatSent)
-              token = defaultTime;
+            let defaultTime = Util.dateFormat(
+              tm.getTime() * 1000,
+              removeParentheses(arg),
+              0,
+              offsets
+            ); // dateFormat will add offsets itself
+            if (dateFormatSent) token = defaultTime;
             else
-              token = await Util.wrapDeferredHeader(token + arg, defaultTime, !composeDetails.isPlainText, (composeType=='new'));
-            return token; 
+              token = await Util.wrapDeferredHeader(
+                token + arg,
+                defaultTime,
+                !composeDetails.isPlainText,
+                composeType == "new"
+              );
+            return token;
           case "datelocal":
           case "dateshort":
             if (debugTimeStrings) debugger;
@@ -1560,8 +1629,7 @@ export class Parser {
               tm = new Date(); // undo offset for this case.
               token = await Util.prTime2Str(tm.getTime() * 1000, token, 0, offsets); // [issue 184] to do: pass offsets
               return finalize(token, escapeHtml(token));
-            }
-            else {
+            } else {
               token = await Util.prTime2Str(date, token, 0, offsets); // [issue 184] to do: pass offsets
               return finalize(token, escapeHtml(token));
             }
@@ -1576,82 +1644,96 @@ export class Parser {
           case "ownmail": // own email address
             token = identity.email;
             break;
-          case "attachments":  // e.g. attachments(list)  <ul><li> .. <li> .. <li>  </ul>
-                               // attachments(lines)
-                               // API: messages.listAttachments(messageId)
+          case "attachments": // e.g. attachments(list)  <ul><li> .. <li> .. <li>  </ul>
+            // attachments(lines)
+            // API: messages.listAttachments(messageId)
             return "list of attachment names...";
-          // for Common (new/reply/forward) message          
-          case "quoteHeader":  // is this useful when Stationery does not exist?
-            return "<span class=\"quoteHeader-placeholder\"></span>";
-          case "quotePlaceholder":  
+          // for Common (new/reply/forward) message
+          case "quoteHeader": // is this useful when Stationery does not exist?
+            return '<span class="quoteHeader-placeholder"></span>';
+          case "quotePlaceholder":
             // move  the quote up to level n. use "all"
             let maxQuoteLevel = removeParentheses(arg),
-                levelAtt = maxQuoteLevel ? (" quotelevel=" + maxQuoteLevel) : "";
-            return "<blockquote type=\"cite\" class='SmartTemplate'" + levelAtt + ">\n"
-                 + "</blockquote>";
+              levelAtt = maxQuoteLevel ? " quotelevel=" + maxQuoteLevel : "";
+            return (
+              "<blockquote type=\"cite\" class='SmartTemplate'" + levelAtt + ">\n" + "</blockquote>"
+            );
             break;
           case "suppressQuoteHeaders":
             flags.suppressQuoteHeaders = true;
             return "";
           case "deleteForwardedBody":
             SmartTemplate4.PreprocessingFlags.deleteForwardedBody = true;
-            return "";          case "T": // today
-          case "X":                               // Time hh:mm:ss
+            return "";
+          case "T": // today
+          case "X": // Time hh:mm:ss
             return finalize(token, await expand("%H%:%M%:%S%"));
-          case "y":                               // Year 13... (2digits)
-          case "Y":                               // Year 1970...
+          case "y": // Year 13... (2digits)
+          case "Y": // Year 1970...
             if (debugTimeStrings) debugger;
             let year = isUTC ? tm.getUTCFullYear().toString() : tm.getFullYear().toString();
-            if (token=="y")
-              return finalize(token, "" + year.slice(year.length-2), "tm.getFullYear.slice(len-2)");
+            if (token == "y")
+              return finalize(
+                token,
+                "" + year.slice(year.length - 2),
+                "tm.getFullYear.slice(len-2)"
+              );
             return finalize(token, "" + year, "tm.getFullYear");
-          case "n":                               // Month 1..12
-          case "m":                               // Month 01..12
-          case "B": 
+          case "n": // Month 1..12
+          case "m": // Month 01..12
+          case "B":
           case "b":
             if (debugTimeStrings) debugger;
             let month = isUTC ? tm.getUTCMonth() : tm.getMonth();
-            switch(token) {
+            switch (token) {
               case "n":
-                return finalize(token, "" + (month+1), "tm.getMonth()+1");
+                return finalize(token, "" + (month + 1), "tm.getMonth()+1");
               case "m":
-                return finalize(token, d02(month+1), "d02(tm.getMonth()+1)");
+                return finalize(token, d02(month + 1), "d02(tm.getMonth()+1)");
               case "B":
-                return finalize(token, cal.monthName(month), "cal.monthName(" + month +")");   // locale month
+                return finalize(token, cal.monthName(month), "cal.monthName(" + month + ")"); // locale month
               case "b":
-                return finalize(token, cal.shortMonthName(month), "cal.shortMonthName(" + month +")");   // locale month (short)
+                return finalize(
+                  token,
+                  cal.shortMonthName(month),
+                  "cal.shortMonthName(" + month + ")"
+                ); // locale month (short)
             }
             break;
-          case "e":                               // Day of month 1..31
-          case "d":                               // Day of month 01..31
+          case "e": // Day of month 1..31
+          case "d": // Day of month 01..31
             if (debugTimeStrings) debugger;
             let day = isUTC ? tm.getUTCDate() : tm.getDate();
-            switch(token) {
+            switch (token) {
               case "e":
                 return finalize(token, "" + day, "tm.getDate(" + day + ")");
               case "d":
                 return finalize(token, d02(day), "d02(" + day + ")");
             }
             break;
-          case "A":                               // name of day 
+          case "A": // name of day
           case "a":
             if (debugTimeStrings) debugger;
             let weekday = tm.getDay();
-            switch(token) {
+            switch (token) {
               case "A":
-                return finalize(token, cal.dayName(weekday), "cal.dayName(" + weekday + ")");       // locale day of week
+                return finalize(token, cal.dayName(weekday), "cal.dayName(" + weekday + ")"); // locale day of week
               case "a":
-                return finalize(token, cal.shortDayName(weekday), "cal.shortDayName(" + weekday + ")");  // locale day of week(short)
+                return finalize(
+                  token,
+                  cal.shortDayName(weekday),
+                  "cal.shortDayName(" + weekday + ")"
+                ); // locale day of week(short)
             }
             break;
-          case "k":                               // Hour 0..23
-          case "H":                               // Hour 00..23
-          case "l":                               // Hour 1..12
-          case "I":                               // Hour 01..12
+          case "k": // Hour 0..23
+          case "H": // Hour 00..23
+          case "l": // Hour 1..12
+          case "I": // Hour 01..12
           case "p":
             if (debugTimeStrings) debugger;
             let hour = isUTC ? tm.getUTCHours() : tm.getHours();
-            switch(token) {
+            switch (token) {
               case "k":
                 return finalize(token, "" + hour, "tm.getHours()");
               case "H":
@@ -1668,36 +1750,47 @@ export class Parser {
                     return finalize(token + "(2)", hour < 12 ? "A.M." : "P.M."); // locale am or pm
                   case "(3)":
                   default:
-                    return finalize(token, hour < 12 ? "AM" : "PM");     // locale am or pm
+                    return finalize(token, hour < 12 ? "AM" : "PM"); // locale am or pm
                 }
             }
             break;
-          case "M":                               // Minutes 00..59
+          case "M": // Minutes 00..59
             if (debugTimeStrings) debugger;
             let minute = isUTC ? tm.getUTCMinutes() : tm.getMinutes();
             return finalize(token, d02(minute), "d02(tm.getMinutes())");
-          case "S":                               // Seconds 00..59
+          case "S": // Seconds 00..59
             return finalize(token, d02(tm.getSeconds()), "d02(tm.getSeconds())");
-          case "tz_name":                         // time zone name (abbreviated) tz_name(1) = long form
+          case "tz_name": // time zone name (abbreviated) tz_name(1) = long form
             if (isUTC) return "(UTC)";
-            return finalize(token, Util.getTimeZoneAbbrev(tm, (arg=="(1)")), "getTimeZoneAbbrev(tm, " + (arg=="(1)") + ")");
+            return finalize(
+              token,
+              Util.getTimeZoneAbbrev(tm, arg == "(1)"),
+              "getTimeZoneAbbrev(tm, " + (arg == "(1)") + ")"
+            );
           case "sig":
-            if (arg && arg.indexOf('none')>=0) return "";
-            let isRemoveDashes = arg ? (arg=="(2)") : false;
-            
+            if (arg && arg.indexOf("none") >= 0) return "";
+            let isRemoveDashes = arg ? arg == "(2)" : false;
+
             // BIG FAT SIDE EFFECT!
-            let GlobalFlags = { sigInTemplate : null }; // [issue 184] this probabaly needs to be read outside - add to composers Map?
+            let GlobalFlags = { sigInTemplate: null }; // [issue 184] this probabaly needs to be read outside - add to composers Map?
             let rawsig = Util.getSignatureInner(signature, isRemoveDashes, GlobalFlags),
-                retVal = await that.getProcessedText(rawsig, idkey, true, flags) || ""; // [issue 184] Parser recursion
-                
-            Util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = ' + isRemoveDashes +')');
-            Util.logDebugOptional ('signatures', 'replaceReservedWords sig' + arg + ' returns:\n' + retVal);
+              retVal = (await that.getProcessedText(rawsig, idkey, true, flags)) || ""; // [issue 184] Parser recursion
+
+            Util.logDebugOptional(
+              "replaceReservedWords",
+              "replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = " +
+                isRemoveDashes +
+                ")"
+            );
+            Util.logDebugOptional(
+              "signatures",
+              "replaceReservedWords sig" + arg + " returns:\n" + retVal
+            );
             return retVal;
           case "subject":
-            let current = (arg=="(2)"),
-                ret = await getSubject(current);
-            if (!current)
-              ret = escapeHtml(ret);
+            let current = arg == "(2)",
+              ret = await getSubject(current);
+            if (!current) ret = escapeHtml(ret);
             return finalize(token, ret);
           case "newsgroup":
             return finalize(token, getNewsgroup());
@@ -1711,18 +1804,21 @@ export class Parser {
             return "";
           case "logMsg": // For testing purposes - add a comment line to email and error console
             Util.logToConsole(removeParentheses(arg));
-            return removeParentheses(arg)+"<br>"; // insert into email
+            return removeParentheses(arg) + "<br>"; // insert into email
           case "dbg1":
             return finalize(token, cal.list());
           case "cwIso": // ISO calendar week [Bug 25012]
-            let offset = parseInt(arg.substr(1,1)); // (0) .. (6) weekoffset: 0-Sunday 1-Monday
+            let offset = parseInt(arg.substr(1, 1)); // (0) .. (6) weekoffset: 0-Sunday 1-Monday
             return finalize(token, "" + Util.getIsoWeek(tm, offset));
           // Change time of %A-Za-z%
           case "X:=sent":
             if (debugTimeStrings) debugger;
             offsets.whatIsX = offsets.XisSent;
-            offsets.whatIsUtc = (arg && arg=='(UTC)');
-            Util.logDebugOptional ('replaceReservedWords', "Switch: Time = SENT - UTC = " + offsets.whatIsUtc);
+            offsets.whatIsUtc = arg && arg == "(UTC)";
+            Util.logDebugOptional(
+              "replaceReservedWords",
+              "Switch: Time = SENT - UTC = " + offsets.whatIsUtc
+            );
             return "";
           case "X:=today":
             if (debugTimeStrings) debugger;
@@ -1730,33 +1826,42 @@ export class Parser {
             offsets.whatIsUtc = false;
             //Util.logDebugOptional ('replaceReservedWords', "Switch: Time = NOW");
             return "";
-          case "X:=calculated":  // calculated(numberOfDays)
+          case "X:=calculated": // calculated(numberOfDays)
             if (debugTimeStrings) debugger;
-            params = removeParentheses(arg).split(',');
-            let dateOffset = (params.length>0) ? parseInt(params[0] || "0" ) : 0,
-                tOffset = (params.length>1) ? params[1] : "00:00";
-            let hm = tOffset.split(':'),
-                hourOffset = parseInt(hm[0]),
-                minOffset = (hm.length>1) ? parseInt(hm[1]) : 0; // reset wit calculated(0)
+            params = removeParentheses(arg).split(",");
+            let dateOffset = params.length > 0 ? parseInt(params[0] || "0") : 0,
+              tOffset = params.length > 1 ? params[1] : "00:00";
+            let hm = tOffset.split(":"),
+              hourOffset = parseInt(hm[0]),
+              minOffset = hm.length > 1 ? parseInt(hm[1]) : 0; // reset wit calculated(0)
             offsets.whatIsDateOffset = dateOffset;
             offsets.whatIsHourOffset = hourOffset;
             offsets.whatIsMinuteOffset = minOffset;
-            
-            Util.logDebugOptional ('timeStrings', "Setting date offset to " + dateOffset + " days, " + hourOffset + ":" + minOffset + " hours.");
+
+            Util.logDebugOptional(
+              "timeStrings",
+              "Setting date offset to " +
+                dateOffset +
+                " days, " +
+                hourOffset +
+                ":" +
+                minOffset +
+                " hours."
+            );
             return "";
           case "X:=timezone":
             if (debugTimeStrings) debugger;
-            params = removeParentheses(arg).split(',');
+            params = removeParentheses(arg).split(",");
             offsets.whatIsTimezone = params[0];
             return "";
           case "cursor":
-            Util.logDebugOptional ('replaceReservedWords', "%Cursor% found");
-            return '<span class="st4cursor">&nbsp;</span>'; 
+            Util.logDebugOptional("replaceReservedWords", "%Cursor% found");
+            return '<span class="st4cursor">&nbsp;</span>';
           case "internal-javascript-ref":
             return javascriptResults[/\((.*)\)/.exec(arg)[1]];
           // any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
           case "messageRaw": //returns the arg-th first characters of the content of the original message
-            return hdr.content(arg?/\((.*)\)/.exec(arg)[1]*1:2048);
+            return hdr.content(arg ? /\((.*)\)/.exec(arg)[1] * 1 : 2048);
           case "attach":
             Util.addUsedPremiumFunction("attach");
             attachFile(arg);
@@ -1767,65 +1872,65 @@ export class Parser {
             // do not process images that are returned - insertFileLink will already turn them into a DataURI
             // we are using pathArray to keep track of "where we are" in terms of relative paths
             let pathArray = flags.filePaths || [],
-                pL = pathArray.length,
-                // Next Step: if it's html file, this step can put a new path on the filePath stack.
-                // if it contains file(img) then these may be relative to the parent path
-                // and they will be resolved during this function call using the new stack
-                // recursively:
-                fileContents = await insertFileLink(arg, composeType), 
-                parsedContent;
-            if (token=='style') {
+              pL = pathArray.length,
+              // Next Step: if it's html file, this step can put a new path on the filePath stack.
+              // if it contains file(img) then these may be relative to the parent path
+              // and they will be resolved during this function call using the new stack
+              // recursively:
+              fileContents = await insertFileLink(arg, composeType),
+              parsedContent;
+            if (token == "style") {
               parsedContent = "<style type='text/css'>\n" + fileContents + "\n</style>\n";
-            }
-            else if (fileContents.startsWith("<img")) {
+            } else if (fileContents.startsWith("<img")) {
               parsedContent = fileContents;
-            }
-            else {
+            } else {
               // internally, we may have used another relative (sub)path
               // allow nested %file%  variables + relative paths
               parsedContent = await that.getProcessedText(fileContents, idkey, true, flags); // [issue 184] Parser recursion
             }
             // if a path was added in the meantime, we can now pop it off the stack.
-            if (pL<pathArray.length) pathArray.pop(); 
+            if (pL < pathArray.length) pathArray.pop();
             return parsedContent;
           case "basepath":
             return insertBasePath(removeParentheses(arg));
           case "identity":
             /////
-            let idArgs = arg.substr(1,arg.length-2).split(','),
-                isAB = idArgs && idArgs.includes("addressbook");
-            if ((identity.name || isAB) && identity.email ) {  // identity.fullName [issue 184]
-              
-              let fullId = 
-                (isAB) ? identity.email :
-                identity.name + ' <' + identity.email + '>';  // identity.fullName [issue 184]
+            let idArgs = arg.substr(1, arg.length - 2).split(","),
+              isAB = idArgs && idArgs.includes("addressbook");
+            if ((identity.name || isAB) && identity.email) {
+              // identity.fullName [issue 184]
+
+              let fullId = isAB ? identity.email : identity.name + " <" + identity.email + ">"; // identity.fullName [issue 184]
               // we need the split to support (name,link) etc.
               token = await mime.split(fullId, charset, arg, true); // disable charsets decoding!
-              
-              if(isAB && !token) { 
-                // let's put in a placeholder so we can delete superfluous [[ lines ]] 
+
+              if (isAB && !token) {
+                // let's put in a placeholder so we can delete superfluous [[ lines ]]
                 // in regularize() after running replaceReservedWords
                 Util.logDebug("AB info[" + identity.email + "] not found: " + arg);
-                token='<span class=st4optional args="' + arg + '" empty="true" />'; // we may need to delete commas from arg.
+                token = '<span class=st4optional args="' + arg + '" empty="true" />'; // we may need to delete commas from arg.
                 return token; // we need this to be HTML
               }
-              
+
               // avoid double escaping
-              if (testHTML(token, arg))
-                return token;
-            }
-            else {
-              logDebug("Problem with identity:\n" +
-                       "fullName = " + identity.name +"\n" +  // // identity.fullName [issue 184]
-                       "email = " + identity.email);
+              if (testHTML(token, arg)) return token;
+            } else {
+              logDebug(
+                "Problem with identity:\n" +
+                  "fullName = " +
+                  identity.name +
+                  "\n" + // // identity.fullName [issue 184]
+                  "email = " +
+                  identity.email
+              );
               return "identity - undefined";
             }
             break;
-          case "mailto": 
+          case "mailto":
             if (arg) {
               let param = removeParentheses(arg);
-              switch(param) {
-                case 'body':
+              switch (param) {
+                case "body":
                   return "<span class='mailToBody'/>"; // placeholder for mailto body content
                 default:
                   return "";
@@ -1841,216 +1946,242 @@ export class Parser {
 
           default:
             // [Bug 25904]
-            if (token.indexOf('header')==0) {
+            if (token.indexOf("header") == 0) {
               let args = arg.split(","),
-                  modHdr = args.length ? args[0].toLowerCase().substr(1) : ''; // cut off "("
-                  
+                modHdr = args.length ? args[0].toLowerCase().substr(1) : ""; // cut off "("
+
               if (modHdr.startsWith("list")) modHdr = args[0].substr(1); // add case back.
-              if (args.length<2 && token!="header.deleteFromSubject") {
-                Util.logToConsole("header modification - second parameter missing in command: %" + token + "%");
-                return '';
+              if (args.length < 2 && token != "header.deleteFromSubject") {
+                Util.logToConsole(
+                  "header modification - second parameter missing in command: %" + token + "%"
+                );
+                return "";
               }
               let toks = token.split("."),
-                  matchFunction = toks.length>2 ? toks[2] : ""; // matchFromSubject | matchFromBody
+                matchFunction = toks.length > 2 ? toks[2] : ""; // matchFromSubject | matchFromBody
               switch (toks[1]) {
                 case "set": // header.set
-                  return await Parser.modifyHeader(modHdr, "set", arg, matchFunction, composeDetails);
+                  return await Parser.modifyHeader(
+                    modHdr,
+                    "set",
+                    arg,
+                    matchFunction,
+                    composeDetails
+                  );
                 case "append":
-                  return await Parser.modifyHeader(modHdr, "append", arg, matchFunction, composeDetails);
+                  return await Parser.modifyHeader(
+                    modHdr,
+                    "append",
+                    arg,
+                    matchFunction,
+                    composeDetails
+                  );
                 case "prefix":
-                  return await Parser.modifyHeader(modHdr, "prefix", arg, matchFunction, composeDetails);
+                  return await Parser.modifyHeader(
+                    modHdr,
+                    "prefix",
+                    arg,
+                    matchFunction,
+                    composeDetails
+                  );
                 case "delete":
                   await Parser.modifyHeader(modHdr, "delete", arg, "", composeDetails); // no match function - this works within the same header (e.g. subject)
-                  return '';
+                  return "";
                 case "deleteFromSubject":
                   if (await Preferences.isDebugOption("parseModifier")) debugger;
                   await Parser.modifyHeader("subject", toks[1], arg, "", composeDetails); // no match function - this works within the same header (e.g. subject)
                   return "";
-                default: 
+                default:
                   Util.logToConsole("invalid header command: " + token);
                   return "";
               }
             }
             let isStripQuote = Util.isAddressHeader(token),
-                theHeader = hdr.get(token),
-                isFwdArg = false;
-                
-            if (composeType=='fwd') {
+              theHeader = hdr.get(token),
+              isFwdArg = false;
+
+            if (composeType == "fwd") {
               let fmt = Util.splitFormatArgs(arg); // returns array of { field: "fwd", modifier: "" }
               // e.g. %to(firstname,fwd)%
-              for (let i=0; i<fmt.length; i++) {
-                if (fmt[i].field == 'fwd') {
+              for (let i = 0; i < fmt.length; i++) {
+                if (fmt[i].field == "fwd") {
                   isFwdArg = true;
                   break;
                 }
               }
-            } 
-            
+            }
+
             // wrap variables that can't be resolved at the moment
             if (typeof theHeader == "undefined" || isFwdArg) {
-              if (!arg) arg='';
-              
-              if (Util.checkIsURLencoded(dmy))
-                return dmy; // this is HTML: we won't escape it.
-                
-              token = await Util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), !composeDetails.isPlainText, (composeType=='new'));
-              return token; 
+              if (!arg) arg = "";
+
+              if (Util.checkIsURLencoded(dmy)) return dmy; // this is HTML: we won't escape it.
+
+              token = await Util.wrapDeferredHeader(
+                token + arg,
+                isStripQuote ? "" : "??",
+                !composeDetails.isPlainText,
+                composeType == "new"
+              );
+              return token;
             }
             // <----  early exit for non existent headers, e.g. "from" in Write case
             else {
               // make sure empty header stays empty for this special case
-              if (!theHeader && RegExp(" " + token + " ", "i").test(" Bcc Cc "))
-                return '';
+              if (!theHeader && RegExp(" " + token + " ", "i").test(" Bcc Cc ")) return "";
             }
-            if (token=="date" && isUTC) {
+            if (token == "date" && isUTC) {
               if (debugTimeStrings) debugger;
               try {
                 let x = new Date(theHeader);
                 theHeader = x.toUTCString();
-              }
-              catch(ex) {
-                Util.logException('Cannot convert date to UTC: ' + token, ex);
+              } catch (ex) {
+                Util.logException("Cannot convert date to UTC: " + token, ex);
               }
             }
-            let headerValue = isStripQuote ?
-                await mime.split(theHeader, charset, arg) :
-                mime.decode(theHeader, charset);
+            let headerValue = isStripQuote
+              ? await mime.split(theHeader, charset, arg)
+              : mime.decode(theHeader, charset);
             if (!headerValue && Util.isAddressHeader(token)) {
               let newTok = '<span class=st4optional args="' + arg + '" empty="true" />';
               return newTok;
             }
             // allow HTML as to(link) etc. builds a href with mailto
-            if (testHTML(headerValue, arg)) // avoid double escaping
+            if (testHTML(headerValue, arg))
+              // avoid double escaping
               return headerValue;
             token = headerValue;
             break;
         }
-      }
-      catch(ex) {
-        Util.logException('replaceReservedWords(dmy, ' + token + ', ' + arg +') failed - unknown token?', ex);
+      } catch (ex) {
+        Util.logException(
+          "replaceReservedWords(dmy, " + token + ", " + arg + ") failed - unknown token?",
+          ex
+        );
         Util.logIssue184("replaceReservedWords - (exception)");
-        if (Util.checkIsURLencoded(dmy))
-          return dmy;
+        if (Util.checkIsURLencoded(dmy)) return dmy;
         token = await Util.wrapDeferredHeader(token + arg, "??", !composeDetails.isPlainText);
         return token;
       }
       return escapeHtml(token);
     } // end of replaceReservedWords  (longest add-on function written ever)
-    
-    // insert a <base> tag as starting point for relative <img> paths 
+
+    // insert a <base> tag as starting point for relative <img> paths
     function insertBasePath(arg) {
-      let filePath, html; 
+      let filePath, html;
       if (arg) {
-        filePath = "file:///" + arg.replace(/\\/gm,'/');
-      }
-      else {
+        filePath = "file:///" + arg.replace(/\\/gm, "/");
+      } else {
         filePath = ""; // get path from last %file% location!
       }
-      if (!filePath.endsWith('/'))
-        filePath += '/';
-      html = "<base href=\"" + filePath + "\">";
+      if (!filePath.endsWith("/")) filePath += "/";
+      html = '<base href="' + filePath + '">';
       return html;
     }
-    
+
     // [Bug 25871] %file()% function
     async function insertFileLink(txt, composeType) {
       Util.logDebug("insertFileLink " + txt);
       Util.logIssue184(`insertFileLink(${txt}, ${composeType})`);
       //const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm'),
       //      isFU = FileUtils && FileUtils.File;
-                  
+
       // determine file type:
       let html = "",
-          arr = txt.substr(1,txt.length-2).split(','),  // strip parentheses and get optional params
-          path = arr[0].replace(/"/g, ''),  // strip quotes
-          type = path.toLowerCase().substr(path.lastIndexOf('.')+1),
-          isHTML = false,
-          currentPath = flags.filePaths ? 
-                       (flags.filePaths.length ? flags.filePaths[flags.filePaths.length-1] : "") : 
-                       ""; // top of stack
+        arr = txt.substr(1, txt.length - 2).split(","), // strip parentheses and get optional params
+        path = arr[0].replace(/"/g, ""), // strip quotes
+        type = path.toLowerCase().substr(path.lastIndexOf(".") + 1),
+        isHTML = false,
+        currentPath = flags.filePaths
+          ? flags.filePaths.length
+            ? flags.filePaths[flags.filePaths.length - 1]
+            : ""
+          : ""; // top of stack
       let newPath = Util.getPathFolder(currentPath, path);
-                       
-      if (type.match( /(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/))
-        type = 'image';
-      if (type.match(/(htm|html|xhtml|xml)$/)) 
-        isHTML = true;
+
+      if (type.match(/(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/)) type = "image";
+      if (type.match(/(htm|html|xhtml|xml)$/)) isHTML = true;
       Util.logDebug("insertFile - type detected: " + type);
       // find out whether path is relative:
       let isAbsolute = Util.isFilePathAbsolute(path);
-      if (type=='image' || type=='css' && !isAbsolute) {
-        let dbgCmdType = (type=="css") ? "%style%" : "%file%";
-        Util.logDebug(dbgCmdType + " - " + type + " path may be relative: " + path  +
-          "\n flags.isFileTemplate = " + flags.isFileTemplate +
-          "\n template path = " + currentPath || '?');
+      if (type == "image" || (type == "css" && !isAbsolute)) {
+        let dbgCmdType = type == "css" ? "%style%" : "%file%";
+        Util.logDebug(
+          dbgCmdType +
+            " - " +
+            type +
+            " path may be relative: " +
+            path +
+            "\n flags.isFileTemplate = " +
+            flags.isFileTemplate +
+            "\n template path = " +
+            currentPath || "?"
+        );
         // if (await Preferences.isDebugOption("fileTemplates")) debugger;
         try {
           // on Mac systems nsIDirectoryService key may NOT be empty!
           // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
-          if (!await IOUtils.exists(newPath)) { 
+          if (!(await IOUtils.exists(newPath))) {
             Util.logDebug("Cannot find file. Trying to append to path of template.");
           }
-        }
-        catch (ex) {
+        } catch (ex) {
           // new code for path of template - failed on Rob's Mac as unknown.
           // I think this is only set when a template is opened from the submenus!
           if (flags.isFileTemplate && currentPath) {
             try {
               let ff = new FileUtils.File(newPath);
-              if (!ff.exists()){
+              if (!ff.exists()) {
                 Util.logDebug("Failed to find file at: " + newPath);
-              } 
-              else {
+              } else {
                 Util.logDebug("%file% Converted relative path: " + newPath);
-                path=newPath; // fix path and make absolute
+                path = newPath; // fix path and make absolute
               }
-            }
-            catch(ex) {
+            } catch (ex) {
               debugger;
             }
           }
         }
-
       }
       try {
-        switch(type) {
-          case 'htm':
-          case 'html':
-          case 'txt':
-          case 'css':
-            if (!isAbsolute) 
-              path = newPath;
+        switch (type) {
+          case "htm":
+          case "html":
+          case "txt":
+          case "css":
+            if (!isAbsolute) path = newPath;
             //try our new method
             if (await Preferences.getMyBoolPref("vars.file.fileTemplateMethod")) {
-              let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate(
-                {
-                  composeType: composeType, 
-                  path: path, 
-                  label: "data inserted from " + (type=='css') ? "%style%" : "%file%"
-                }
-              );
+              let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate({
+                composeType: composeType,
+                path: path,
+                label: "data inserted from " + (type == "css") ? "%style%" : "%file%",
+              });
               if (!tmpTemplate.failed) {
                 html = tmpTemplate.HTML;
-                if (!html)
-                  html = tmpTemplate.Text;
+                if (!html) html = tmpTemplate.Text;
               }
             }
             if (!html) {
               // OLD Method
               // find / load file and expand?
               let data = "",
-                  //read file into a string so the correct identifier can be added
-                  fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream),
-                  cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream),
-                  countRead = 0;
-              // let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
+                //read file into a string so the correct identifier can be added
+                fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(
+                  Ci.nsIFileInputStream
+                ),
+                cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(
+                  Ci.nsIConverterInputStream
+                ),
+                countRead = 0;
+              // let sigFile = Ident.signature.QueryInterface(Ci.nsIFile);
               try {
                 let localFile = new FileUtils.File(path),
-                    str = {};
+                  str = {};
                 Util.logDebug("localFile.initWithPath(" + path + ")");
-                
+
                 fstream.init(localFile, -1, 0, 0);
                 /* sigEncoding: The character encoding you want, default is using UTF-8 here */
-                let encoding = (arr.length>1) ? arr[1] : 'UTF-8';
+                let encoding = arr.length > 1 ? arr[1] : "UTF-8";
                 Util.logDebug("initializing stream with " + encoding + " encoding…");
                 cstream.init(fstream, encoding, 0, 0);
                 let read = 0;
@@ -2061,111 +2192,126 @@ export class Parser {
                 } while (read != 0);
                 cstream.close(); // this closes fstream
                 html = data.toString();
-              }
-              catch (ex) {
+              } catch (ex) {
                 Util.logException("insertFileLink() - read " + countRead + " characters.", ex);
                 if (countRead) {
                   html = data.toString();
-                }
-                else
-                  html = "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'> Error reading file: " + path + "<br>"
-                         + "Please check error console for detail</div>";
-              }					
+                } else
+                  html =
+                    "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'> Error reading file: " +
+                    path +
+                    "<br>" +
+                    "Please check error console for detail</div>";
+              }
             }
             // if we compose in html and file is txt we need to replace all line breaks with <br>
-            if (type=='txt') {
-              html = html.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            if (type == "txt") {
+              html = html.replace(/(?:\r\n|\r|\n)/g, "<br>");
             }
-            if (type=='css') {
-              
-            }
-            else {
+            if (type == "css") {
+            } else {
               flags.isFileTemplate = true;
               // prepare for using relative paths from here...
               // assume we are within a template, to make matching subsequent relative paths possible.
               // should work for using %file(template.html)% in a SmartTemplate.
               if (!flags.filePaths) {
-                flags.filePaths = [];     // make an array so we can nest %file% statements to make fragments
+                flags.filePaths = []; // make an array so we can nest %file% statements to make fragments
               }
-              Util.logDebugOptional("fileTemplates", `insertFileLink: Add file to template stack: ${path}`);
+              Util.logDebugOptional(
+                "fileTemplates",
+                `insertFileLink: Add file to template stack: ${path}`
+              );
               flags.filePaths.push(path);
             }
             break;
-          case 'image':
-            let alt = (arr.length>1) ? 
-                      (" alt='" + arr[1].replace("'","").replace(/\"/gm, "") + "'") :    // don't escape this as it should be pure text. We cannot accept ,'
-                      "",
-                filePath;
+          case "image":
+            let alt =
+                arr.length > 1
+                  ? " alt='" + arr[1].replace("'", "").replace(/\"/gm, "") + "'" // don't escape this as it should be pure text. We cannot accept ,'
+                  : "",
+              filePath;
             if (!isAbsolute && currentPath) {
               //
               Util.logDebug("insert image - adding relative path " + path + "\nto " + currentPath);
               let lastSlash = currentPath.lastIndexOf("\\");
-              if (lastSlash<0) lastSlash = currentPath.lastIndexOf("/");
-              path = currentPath.substr(0, lastSlash + (path.startsWith('/') ? 0 : 1)) + path;
+              if (lastSlash < 0) lastSlash = currentPath.lastIndexOf("/");
+              path = currentPath.substr(0, lastSlash + (path.startsWith("/") ? 0 : 1)) + path;
             }
-            filePath = "file:///" + path.replace(/\\/gm,'/');
+            filePath = "file:///" + path.replace(/\\/gm, "/");
             // change to data URL
-            filePath = await Util.getFileAsDataURI(filePath)
+            filePath = await Util.getFileAsDataURI(filePath);
             html = "<img src='" + filePath + "'" + alt + " >";
             break;
           default:
-            alert('unsupported file type in %file()%: ' + type + '.');
-            html='';
+            alert("unsupported file type in %file()%: " + type + ".");
+            html = "";
             break;
         }
-      }
-      catch(ex) {
-                
-        Util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more information if you enable debug mode.",ex );
-        Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +
-          "Please check Javascript error console for detailed error message.");
+      } catch (ex) {
+        Util.logException(
+          "FAILED: insertFileLink(" +
+            txt +
+            ") \n You may get more information if you enable debug mode.",
+          ex
+        );
+        Services.prompt.alert(
+          null,
+          "SmartTemplates",
+          "Something went wrong trying to read a file: " +
+            txt +
+            "\n" +
+            "Please check Javascript error console for detailed error message."
+        );
       }
       return html;
-    } 
-    
+    }
+
     // [Bug 26552] find the file and add it to the attachments pane
     function attachFile(args) {
-      let arr = args.substr(1,args.length-2).split(','),  // strip parentheses and get optional params
-          pathUri = arr[0],
-          attachments=[];
-      try {			
+      let arr = args.substr(1, args.length - 2).split(","), // strip parentheses and get optional params
+        pathUri = arr[0],
+        attachments = [];
+      try {
         Util.logIssue184(`attachFile() - ${pathUri}`);
-      }
-      catch(ex) {
+      } catch (ex) {
         Util.logException("attachFile(" + pathUri + ")", ex);
       }
     }
-    
+
     function insertConditionalText(rawArgs) {
       if (rawArgs === null || rawArgs.length == 0) {
         return "";
       }
       // get arguments such as: (forwardMode,"text1","text2"), args[1] - is a "switching" parameter
-      let args = rawArgs.match( /\( *(\w+) *\,.*?\)/ );
+      let args = rawArgs.match(/\( *(\w+) *\,.*?\)/);
       if (!args) {
         return "";
       }
-      const patternArgs = [...args[0].matchAll( /\"(.*?)\"/g )]; // get arguments (excludes quotation marks) ? non greedy
-      if (!patternArgs)
-        return "";
+      const patternArgs = [...args[0].matchAll(/\"(.*?)\"/g)]; // get arguments (excludes quotation marks) ? non greedy
+      if (!patternArgs) return "";
 
-      switch(args[1]) {
-        case 'forwardMode':    
-          if (composeType!='fwd')
-            return "";
-          return Util.isComposeTypeIsForwardInline() ? patternArgs[0][1] : (patternArgs.length > 1 ? patternArgs[1][1] : "");
+      switch (args[1]) {
+        case "forwardMode":
+          if (composeType != "fwd") return "";
+          return Util.isComposeTypeIsForwardInline()
+            ? patternArgs[0][1]
+            : patternArgs.length > 1
+            ? patternArgs[1][1]
+            : "";
         default:
           return "";
       }
     }
-    
+
     // sandboxing strings still works in 68.1.2, not sure when they will deprecate it...
-    let supportEval = await Preferences.getMyBoolPref('allowScripts'), // disabled and hidden by default.
-        sandbox,
-        javascriptResults = [];
-        
-    if (supportEval) { Util.logIssue184("supportEval - replaceJavascript omitted"); }
-/* OMIT JAVASCRIPT PART FOR NOW
+    let supportEval = await Preferences.getMyBoolPref("allowScripts"), // disabled and hidden by default.
+      sandbox,
+      javascriptResults = [];
+
+    if (supportEval) {
+      Util.logIssue184("supportEval - replaceJavascript omitted");
+    }
+    /* OMIT JAVASCRIPT PART FOR NOW
     if (supportEval) {
       // [Bug 25676]	Turing Complete Templates - Benito van der Zander
       // https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25676
@@ -2269,9 +2415,9 @@ export class Parser {
     }
  
 */
- 
+
     /*  deprecating bs code. */
-    if (await Preferences.getMyBoolPref('xtodaylegacy')) {
+    if (await Preferences.getMyBoolPref("xtodaylegacy")) {
       //Now do this chaotical stuff:
       //Reset X to Today after each newline character
       //except for lines ending in { or }; breaks the omission of non-existent CC?
@@ -2282,63 +2428,59 @@ export class Parser {
       msg = msg.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
       msg = msg.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
     }
-    
-    
+
     // ignoreHTML, e,g with signature, lets not do html processing
     if (!ignoreHTML) {
       // for Draft, let's just assume html for the moment.
       if (isDraftLike) {
         msg = msg.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
-        if (await Preferences.identityPrefs.isReplaceNewLines(idkey, composeType, false))   // [Bug 25571] let's default to NOT replacing newlines. Common seems to not save the setting!
-        { 
-            msg = msg.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); 
+        if (await Preferences.identityPrefs.isReplaceNewLines(idkey, composeType, false)) {
+          // [Bug 25571] let's default to NOT replacing newlines. Common seems to not save the setting!
+          msg = msg.replace(/>\n/gm, ">").replace(/\n/gm, "<br>");
         }
         //else
         //	{ msg = msg.replace(/\n/gm, ""); }
-      }
-      else {
+      } else {
         msg = escapeHtml(msg);
-        // Preserve all spaces of plaintext template, if compose is HTML 
+        // Preserve all spaces of plaintext template, if compose is HTML
         // - this should be a global option because it is ugly.
         // imho it shouldn't do this!
-        if (!composeDetails.isPlainText)
-          { msg = msg.replace(/ /gm, "&nbsp;"); }
+        if (!composeDetails.isPlainText) {
+          msg = msg.replace(/ /gm, "&nbsp;");
+        }
       }
     }
     // replace round brackets of bracketMail() with {} - using the second (=inner) match group
     // this makes it possible to nest functions!
     // [Bug 26100] bracketMail wasn't working in optional [[ cc ]] block.
-    msg = msg.replace(/%(.*)(bracketMail\(([^)]*))\)/gm, "%$1bracketMail\{$3\}")
-    msg = msg.replace(/%(.*)(bracketName\(([^)]*))\)/gm, "%$1bracketName\{$3\}");
+    msg = msg.replace(/%(.*)(bracketMail\(([^)]*))\)/gm, "%$1bracketMail{$3}");
+    msg = msg.replace(/%(.*)(bracketName\(([^)]*))\)/gm, "%$1bracketName{$3}");
     // AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
-    msg = await simplify(msg);	
-    if (await Preferences.isDebugOption('regularize')) debugger;
-    msg = // msg.replace(/%([a-zA-Z][\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords); 
+    msg = await simplify(msg);
+    if (await Preferences.isDebugOption("regularize")) debugger;
+    msg = // msg.replace(/%([a-zA-Z][\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords);
       await Util.replaceAsync(msg, /%([a-zA-Z][\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords);
-      // added . for header.set / header.append / header.prefix
-      // replaced ^) with ^% for header.set.matchFromSubject
-      // added mandatory start with a letter to avoid catching  encoded numbers such as %5C
-      // [issue 49] only match strings that start with an ASCII letter. (\D only guarded against digits)
-    
+    // added . for header.set / header.append / header.prefix
+    // replaced ^) with ^% for header.set.matchFromSubject
+    // added mandatory start with a letter to avoid catching  encoded numbers such as %5C
+    // [issue 49] only match strings that start with an ASCII letter. (\D only guarded against digits)
+
     // nuke optional stuff wrapped in double brackets [[ %identity(addressbook,..)% ]]
-    msg = msg.replace(/\[\[[^\[]+class=st4optional[^\]]+\]\]/gm, '') ;
+    msg = msg.replace(/\[\[[^\[]+class=st4optional[^\]]+\]\]/gm, "");
     // nuke remaining double brackets.
-    msg = msg.replace(/\[\[([^\[\]]+)\]\]/gm, '$1') ;
-      
-      
+    msg = msg.replace(/\[\[([^\[\]]+)\]\]/gm, "$1");
+
     if (supportEval) {
       try {
-        if (sandbox && Cu.nukeSandbox) 
-          Cu.nukeSandbox(sandbox);  
-      }
-      catch (ex) {
+        if (sandbox && Cu.nukeSandbox) Cu.nukeSandbox(sandbox);
+      } catch (ex) {
         Util.logException("Sandbox not nuked.", ex);
       }
     }
 
-    // dump out all headers that were retrieved during regularize  
-    Util.logDebugOptional('headers', that.regularize.headersDump);
-    Util.logDebugOptional('regularize',"Parser.regularize(" + msg + ")  ...ENDS");
+    // dump out all headers that were retrieved during regularize
+    Util.logDebugOptional("headers", that.regularize.headersDump);
+    Util.logDebugOptional("regularize", "Parser.regularize(" + msg + ")  ...ENDS");
     return msg;
   } // regularize
 
