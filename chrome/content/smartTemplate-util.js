@@ -3254,17 +3254,6 @@ SmartTemplate4.Util = {
     }, timeToMidnight);
   },
 
-  get Accounts() {
-    // replace account-manager
-    let acMgr = MailServices.accounts,
-      aAccounts = [];
-
-    for (let ac of acMgr.accounts) {
-      aAccounts.push(ac);
-    }
-    return aAccounts;
-  },
-
   /*
    * args: [] optional string array of preferred flavors, see:
    * https://github.com/RealRaven2000/SmartTemplates/issues/330#issuecomment-2439671613

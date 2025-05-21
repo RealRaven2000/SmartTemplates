@@ -45,10 +45,8 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         getUserName : function () {
-          let Accounts = win.SmartTemplate4.Util.Accounts; 
-          for (let account of Accounts) {
-            if (account.defaultIdentity) 
-            { 
+          for (let account of MailServices.accounts.accounts) {
+            if (account.defaultIdentity) {
               let name = account.defaultIdentity.fullName;
               if (name) return name;
             }
@@ -57,7 +55,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         showVersionHistory: function() {
-          const util = win.SmartTemplate4.Util;
           win.SmartTemplate4.Util.showVersionHistory(false); // no prompt before showing
         },
         

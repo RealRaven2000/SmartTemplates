@@ -306,12 +306,12 @@ var Register = {
     );
     const idSelector = getElement("mailIdentity"),
       popup = idSelector.menupopup,
-      myAccounts = util.Accounts,
+      myAccounts = MailServices.accounts.accounts,
       acCount = myAccounts.length;
     let aliasIdentity = null;
 
     util.logDebugOptional("identities", `iterating accounts: (${acCount})…`);
-    for (let a = 0; a < myAccounts.length; a++) {
+    for (let a = 0; a < acCount; a++) {
       const ac = myAccounts[a];
       if (isAllowAlias && !aliasIdentity) {
         aliasIdentity = ac.identities.find(
