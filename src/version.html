@@ -248,23 +248,17 @@ permalink: version.html
 <ul id="version-history">
 
 
-<a id="4.11"> &nbsp; </a>
-<a id="4.11.1"> &nbsp; </a>
-<a id="4.11.2"> &nbsp; </a>
-<a id="4.11.3"> &nbsp; </a>
+  <a id="4.11.4"> &nbsp; </a>
 <li>
   <h4>
-		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.11.3">
-      Version 4.11.3 - 05/03/2025</a>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.11.4"
+      onclick="alert('This is currently awaitin review!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 4.11.4 - 21/05/2025 - Awaiting Review</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">115.0 - 139.*</span>
+			<span class="thunderbird">111.0 - 139.*</span>
 		</span>
   </h4>
-
-  <!-- 
-<p><a href="#newfeatures" class="bargain">Jump to latest features in 4.10</a></p>
-  -->
 
   <table class="smartTemplateProRenew bargain psa"> 
     <tr>
@@ -393,6 +387,55 @@ permalink: version.html
       </td>
     </tr>
   </table>  
+
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li> 
+      SmartTemplates is now compatible with Thunderbird 139 - 
+      going forward it aims to stay compatible with the current monthly release cycle.
+    </li>
+    <li> 
+      <b>Important Fix</b>:
+      Renewal of any License opens wrong product (New License) 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/375">[issue 375]</a>
+      <p>
+        This update fixes a bug where the 'Renew License' button led to the full-price 
+        product page instead of offering the discounted renewal. If you were affected, 
+        and especially if you accidentally purchased a SmartTemplates Standard license 
+        instead of renewing Pro, please contact support — 
+        we are happy to supply a free upgrade to Pro. Thanks in advance for including 
+        your last license key or order number!
+      </p>
+    
+    
+    </li>
+
+    <h5 class="inList"><span class="inListTitle">Miscellaneus</span></h5>
+    <li> guard against nsIFile.initWithPath() throwing </li>
+    <li> removed all references to deprecated Ci.nsILocalFile </li>
+    <li> license validation: optimized use of getDefaultIdentity </li>
+  </ul>
+</li> 
+
+
+<a id="4.11"> &nbsp; </a>
+<a id="4.11.1"> &nbsp; </a>
+<a id="4.11.2"> &nbsp; </a>
+<a id="4.11.3"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.11.3">
+      Version 4.11.3 - 05/03/2025</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">115.0 - 139.*</span>
+		</span>
+  </h4>
+
+  <!-- 
+<p><a href="#newfeatures" class="bargain">Jump to latest features in 4.10</a></p>
+  -->
+
 
   <a name="newfeatures"> </a>
       
