@@ -17,8 +17,7 @@
   background-image: url("../chrome/content/skin/logo.png") !important;
   background-position: center;
   background-repeat: no-repeat;
-  width: 320px;
-  height: 80px;
+  height: 55px;
   color: transparent; /* test: rgba(80, 5, 5, 0.1); */
   font-size: large;
 }
@@ -78,7 +77,6 @@
 	min-width: 300px;
 	height: auto;
 	margin: 1em 3em 1.5em;
-	padding: 1em 2em;
 	width: 80%;
 	flex-direction: column;
 }

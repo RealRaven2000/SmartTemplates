@@ -1322,9 +1322,10 @@ async function main() {
   }
 
   // this will replace SmartTemplate4.Message [issue 378]
-  const showSmartTemplatesMessage = async (message, features) => {
+  const showSmartTemplatesMessage = async (messageId, features, message="") => {
     const url = new URL(browser.runtime.getURL("/html/smartTemplate-message.html")); 
-    url.searchParams.set("msg", message);
+    if (message) url.searchParams.set("msg", message);
+    if (messageId) url.searchParams.set("msgId", messageId);
     url.searchParams.set("features", features.join(","));
 
     const createData = {
@@ -1543,8 +1544,9 @@ async function main() {
       }
       case "stmessage": { // [issue 378]
         const message = data.msg;
+        const messageId = data.msgId;
         const features = data.features || ["ok"]; // minimum: an ok button
-        return showSmartTemplatesMessage(message, features);
+        return showSmartTemplatesMessage(messageId, features, message);
       }
     }
   });

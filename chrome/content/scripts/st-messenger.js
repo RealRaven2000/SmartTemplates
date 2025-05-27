@@ -134,10 +134,11 @@ async function onLoad(activatedWhileWindowOpen) {
         break;
       case "smartTemplates-message": {
           // replacer for SmartTemplate4.Message
-          let wrn = "This is a simple test message";
+          let txt = "This is a simple test message";
           const result = await SmartTemplates.Util.notifyTools.notifyBackground({
             func: "stmessage",
-            msg: wrn,
+            msgId: "newsMsgEsr140",
+            msg: txt,
             features: ["ok", "cancel"],
           });
           switch (result) {

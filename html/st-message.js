@@ -26,17 +26,28 @@ function showButtons(buttonList) {
 	}
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", async () => {
   const params = getQueryParams();
-  const message = params.msg || "No message provided";
   const features = (params.features || "ok").split(","); // fallback to "ok"
-	// find all features relating to buttons:
-	const buttonsList = features.filter((b) => ["ok", "cancel", "yes", "no", "licenser"].includes(b));
+  // find all features relating to buttons:
+  const buttonsList = features.filter((b) => ["ok", "cancel", "yes", "no", "licenser"].includes(b));
+  let message = "";
+  if (params.msgId) {
+    message = messenger.i18n.getMessage(params.msgId);
+  } else if (params.msg) {
+    message = params.msg;
+  } else {
+    message = messenger.i18n.getMessage("msgPlaceholder");
+  }	
 
   // Set message text
-  document.getElementById("innerMessage").textContent = message;
-	i18n.updateDocument();
-
+	try {
+		document.getElementById("innerMessage").innerHTML = formatAll(message);
+	} catch (ex) {
+		document.getElementById("innerMessage").textContent = message;
+	}
+  
+  i18n.updateDocument();
   showButtons(buttonsList);
 
   // Show buttons according to features
@@ -50,19 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Setup button handlers:
   buttons.ok?.addEventListener("click", () => {
     messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "ok" });
-    window.close();
   });
   buttons.cancel?.addEventListener("click", () => {
     messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "cancel" });
-    window.close();
   });
   buttons.yes?.addEventListener("click", () => {
     messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "yes" });
-    window.close();
   });
   buttons.no?.addEventListener("click", () => {
     messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "no" });
-    window.close();
   });
 
   // Optionally handle ESC key as cancel
@@ -71,6 +78,5 @@ document.addEventListener("DOMContentLoaded", () => {
       buttons.cancel.click();
     }
   });
-		
 });
 

@@ -212,8 +212,11 @@ function formatAll(txt) {
     )
     .replace(/\{supportEnd\}/g, "</a>");
 
+  let salesEnd = messenger.i18n.getMessage("special-offer-expiry");    
+
   // added simple <tag> support
   return localizedMsg
+    .replace(/\{salesEnd\}/g, salesEnd)
     .replace(/\{headStart\}/g, "<h3>")
     .replace(/\{headEnd\}/g, "</h3>")
     .replace(/\{boldStart\}/g, "<b>")
