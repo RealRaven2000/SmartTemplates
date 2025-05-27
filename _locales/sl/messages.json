@@ -2022,7 +2022,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{headStart}Nujna vzdrževalna posodobitev 4.11.4 – Popravek napake z licenco{headEnd}{L1}Odpravili smo napako, kjer je klik na 'Podaljšaj licenco' vodil na stran izdelka s polno ceno namesto uporabe popusta za podaljšanje. To je prizadelo uporabnike SmartTemplates Pro, ki so poskušali podaljšati svojo licenco. [issue 375]{L2}{L1}Če ste bili prizadeti, preverite zgornji razdelek za informacije o vračilu denarja / brezplačnih nadgradnjah in podpori. {L2}"
+    "message": "{headStart}Nujna vzdrževalna posodobitev 4.12 – Popravek napake pri licenci{headEnd}{L1}Popravljena je bila napaka, zaradi katere sta gumba 'Obnovi licenco' in 'Razširi licenco' nepravilno odprla stran izdelka po polni ceni namesto z uporabo popusta za obnovitev. Napaka je prizadela uporabnike SmartTemplates Pro, ki so želeli obnoviti ali razširiti svojo licenco. [issue 375] [issue 377]{L2}{L1}Če vas je napaka prizadela, si oglejte zgornji razdelek za podrobnosti o povračilu / brezplačni nadgradnji in podpori. {L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

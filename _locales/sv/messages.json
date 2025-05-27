@@ -2046,7 +2046,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{headStart}Brådskande underhållsuppdatering 4.11.4 – Licensfel åtgärdat{headEnd}{L1}Fixade en bugg där klick på 'Förnya licens' ledde till produktsidan med fullpris istället för att applicera förnyelserabatten. Detta påverkade SmartTemplates Pro-användare som försökte förnya sin licens. [issue 375]{L2}{L1}Om du påverkades, vänligen se ovanstående avsnitt för information om återbetalning / gratis uppgradering och support. {L2}"
+    "message": "{headStart}Akut underhållsuppdatering 4.12 – Licensbugg åtgärdad{headEnd}{L1}En bugg har åtgärdats där knapparna ”Förnya licens” och ”Förläng licens” felaktigt öppnade produktsidan med fullpris istället för att använda rabatten för förnyelse. Detta påverkade SmartTemplates Pro-användare som försökte förnya eller förlänga sin licens. [issue 375] [issue 377]{L2}{L1}Om du påverkades, se avsnittet ovan för information om återbetalning / gratis uppgradering och support. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

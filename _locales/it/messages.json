@@ -1965,7 +1965,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{headStart}Aggiornamento di manutenzione urgente 4.11.4 – Correzione bug di licenza{headEnd}{L1}Corretto un bug per cui cliccando su 'Rinnova licenza' si veniva reindirizzati alla pagina del prodotto a prezzo pieno invece di applicare lo sconto per il rinnovo. Questo ha interessato gli utenti di SmartTemplates Pro che tentavano di rinnovare la loro licenza. [issue 375]{L2}{L1}Se sei stato coinvolto, controlla la sezione sopra per dettagli su rimborsi / aggiornamenti gratuiti e supporto. {L2}"
+    "message": "{headStart}Aggiornamento urgente di manutenzione 4.12 – Correzione bug licenza{headEnd}{L1}Corretto un bug per cui i pulsanti 'Rinnova licenza' e 'Estendi licenza' aprivano erroneamente la pagina del prodotto a prezzo pieno invece di applicare lo sconto per rinnovo. Il problema ha interessato gli utenti di SmartTemplates Pro che cercavano di rinnovare o estendere la propria licenza. [issue 375] [issue 377]{L2}{L1}Se sei stato interessato, consulta la sezione sopra per informazioni su rimborsi / aggiornamenti gratuiti e supporto. {L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

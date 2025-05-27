@@ -2015,7 +2015,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{headStart}Pilna aktualizacja konserwacyjna 4.11.4 – Poprawka błędu licencji{headEnd}{L1}Naprawiono błąd, w którym kliknięcie 'Odnowienie licencji' prowadziło do strony produktu z pełną ceną zamiast zastosować zniżkę za odnowienie. Dotyczyło to użytkowników SmartTemplates Pro próbujących odnowić swoją licencję. [issue 375]{L2}{L1}Jeśli zostałeś dotknięty, sprawdź powyższą sekcję dotyczącą zwrotów / bezpłatnych aktualizacji i wsparcia. {L2}"
+    "message": "{headStart}Pilna aktualizacja konserwacyjna 4.12 – Poprawka błędu licencji{headEnd}{L1}Naprawiono błąd, przez który przyciski 'Odnów licencję' i 'Przedłuż licencję' otwierały stronę produktu w pełnej cenie, zamiast zastosować zniżkę za odnowienie. Problem dotyczył użytkowników SmartTemplates Pro próbujących odnowić lub przedłużyć licencję. [issue 375] [issue 377]{L2}{L1}Jeśli problem Cię dotknął, zapoznaj się z sekcją powyżej zawierającą informacje o zwrotach / darmowych aktualizacjach i wsparciu. {L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

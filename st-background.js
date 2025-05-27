@@ -1320,6 +1320,45 @@ async function main() {
     messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info}); // part of generic onBackgroundUpdates called in Util.init()
     return  licenseValidationDescription(newLicense.ValidationStatus, currentLicense.info);
   }
+
+  // this will replace SmartTemplate4.Message [issue 378]
+  const showSmartTemplatesMessage = async (message, features) => {
+    const url = new URL(browser.runtime.getURL("/html/smartTemplate-message.html")); 
+    url.searchParams.set("msg", message);
+    url.searchParams.set("features", features.join(","));
+
+    const createData = {
+      type: "popup",
+      url: url.toString(),
+      allowScriptsToClose: true,
+      titlePreface: "SmartTemplates",
+      width: 750,
+      height: 400,
+    };
+
+    const winRet = await messenger.windows.create(createData);
+    console.log(` new ST Message: Tab = ${winRet.tabs[0].id}`);
+    const tabId = winRet.tabs[0].id;  
+    // set up to wait for a button press. using promises/ ...
+    // we need to return "ok" when ok is pushed
+    // we need to return "cancel" (provided the feature is requested) when "cancel" button or ESC key is pushed
+    return new Promise((resolve) => {
+      const listener = (message, sender) => {
+        if (sender.tab && sender.tab.id === tabId && message.context === "smartTemplate-message") {
+          browser.runtime.onMessage.removeListener(listener);
+          resolve(message.result);
+
+          // Close the popup window
+          if (winRet.id) {
+            messenger.windows.remove(winRet.id);
+          }
+        }
+      };
+
+      browser.runtime.onMessage.addListener(listener);
+    });
+
+  }
    
   messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
     let isLog = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.notifications");
@@ -1501,6 +1540,11 @@ async function main() {
       case "openBrowserLink": {
         messenger.windows.openDefaultBrowser(data.url);
         return;
+      }
+      case "stmessage": { // [issue 378]
+        const message = data.msg;
+        const features = data.features || ["ok"]; // minimum: an ok button
+        return showSmartTemplatesMessage(message, features);
       }
     }
   });

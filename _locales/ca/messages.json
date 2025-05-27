@@ -2026,7 +2026,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{headStart}Llançament d'emergència 4.11.4 – Correcció d'error de llicència{headEnd}{L1}S'ha corregit un error on en fer clic a 'Renova la llicència' s'obria la pàgina de producte amb el preu complet en lloc d'aplicar el descompte per renovació. Això afectava els usuaris de SmartTemplates Pro que intentaven renovar la seva llicència. [issue 375]{L2}{L1}Si us heu vist afectats, comproveu la secció anterior per obtenir detalls sobre reemborsaments o actualitzacions gratuïtes i suport. {L2}"
+    "message": "{headStart}Actualització urgent de manteniment 4.12 – Correcció d'error de llicència{headEnd}{L1}S'ha corregit un error que feia que els botons 'Renova la llicència' i 'Amplia la llicència' obrissin incorrectament la pàgina del producte a preu complet en lloc d'aplicar el descompte per renovació. Això afectava els usuaris de SmartTemplates Pro que intentaven renovar o ampliar la seva llicència. [issue 375] [issue 377]{L2}{L1}Si us heu vist afectat, consulteu la secció anterior per obtenir informació sobre reemborsaments / actualitzacions gratuïtes i suport. {L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

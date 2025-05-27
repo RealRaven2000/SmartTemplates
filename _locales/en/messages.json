@@ -2064,7 +2064,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{headStart}Urgent Maintenance Update 4.11.4 – Licensing Bug Fix{headEnd}{L1}Fixed a bug where clicking 'Renew License' led to the full-price product page instead of applying the renewal discount. This affected SmartTemplates Pro users attempting to renew their license. [issue 375]{L2}{L1}If you were affected, please check the section above for refund / free upgrade details and support. {L2}"
+    "message": "{headStart}Urgent Maintenance Update 4.12 – Licensing Bug Fix{headEnd}{L1}Fixed a bug where the 'Renew License' and 'Extend License' buttons incorrectly opened the full-price product page instead of applying the renewal discount. This affected SmartTemplates Pro users trying to renew or extend their license. [issue 375] [issue 377]{L2}{L1}If you were affected, please check the section above for refund / free upgrade details and support. {L2}{L1} SmartTemplates is now compatible with ESR 140!{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

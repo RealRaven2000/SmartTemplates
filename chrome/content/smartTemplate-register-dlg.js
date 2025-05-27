@@ -348,6 +348,7 @@ var Register = {
     }
   },
 
+  // use license_type = 3 for upgrade from Std to Pro
   goPro: function (license_type, isRenew = null) {
     const util = SmartTemplate4.Util,
       prefs = SmartTemplate4.Preferences;
@@ -356,6 +357,12 @@ var Register = {
     if (!isRenew && SmartTemplate4.Util.licenseInfo.isExpired) {
       isRenew = true;
     }
+    const isExtend =
+      !isRenew &&
+      license_type != 3 &&
+      SmartTemplate4.Util.licenseInfo.isValid &&
+      license_type == SmartTemplate4.Util.licenseInfo.keyType;
+
     let shortOrder,
       addQuery = "",
       featureName = document.getElementById("referrer").value; // hidden field
@@ -364,7 +371,7 @@ var Register = {
     }
     switch (license_type) {
       case 0: // pro license
-        if (isRenew) {
+        if (isRenew || isExtend) {
           // RENEWAL
           shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplate4renew";
         } // NEW
@@ -372,7 +379,7 @@ var Register = {
         break;
 
       case 1: // domain license
-        if (isRenew) {
+        if (isRenew || isExtend) {
           // RENEWAL
           shortOrder =
             "https://sites.fastspring.com/quickfolders/product/smarttemplatesdomainrenewal";
@@ -381,7 +388,7 @@ var Register = {
         break;
 
       case 2: // standard license
-        if (isRenew) {
+        if (isRenew || isExtend) {
           // RENEWAL
           shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplateStdrenew"; // product to be created
         } // NEW

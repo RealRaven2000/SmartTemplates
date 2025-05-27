@@ -1992,7 +1992,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{headStart}Atualização urgente de manutenção 4.11.4 – Correção de bug na licença{headEnd}{L1}Corrigido um bug onde clicar em 'Renovar Licença' levava para a página do produto com preço cheio, em vez de aplicar o desconto para renovação. Isso afetou os usuários do SmartTemplates Pro que tentaram renovar a licença. [issue 375]{L2}{L1}Se você foi afetado, por favor, confira a seção acima para detalhes sobre reembolso / atualização gratuita e suporte. {L2}"
+    "message": "{headStart}Atualização urgente de manutenção 4.12 – Correção de bug de licenciamento{headEnd}{L1}Corrigimos um erro em que os botões 'Renovar Licença' e 'Estender Licença' abriam incorretamente a página do produto com preço cheio, em vez de aplicar o desconto de renovação. Isso afetava usuários do SmartTemplates Pro que tentavam renovar ou estender sua licença. [issue 375] [issue 377]{L2}{L1}Se você foi afetado, consulte a seção acima para detalhes sobre reembolsos / upgrades gratuitos e suporte. {L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

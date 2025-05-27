@@ -1968,7 +1968,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{headStart}Actualización urgente de mantenimiento 4.11.4 – Corrección de error de licencia{headEnd}{L1}Se corrigió un error donde al hacer clic en 'Renovar licencia' se dirigía a la página del producto con el precio completo en lugar de aplicar el descuento por renovación. Esto afectó a usuarios de SmartTemplates Pro que intentaban renovar su licencia. [issue 375]{L2}{L1}Si te viste afectado, consulta la sección anterior para detalles sobre reembolsos / actualizaciones gratuitas y soporte. {L2}"
+    "message": "{headStart}Actualización urgente de mantenimiento 4.12 – Corrección de error en licencias{headEnd}{L1}Se corrigió un error por el cual los botones 'Renovar licencia' y 'Ampliar licencia' abrían incorrectamente la página de producto con precio completo en lugar de aplicar el descuento por renovación. Esto afectaba a los usuarios de SmartTemplates Pro que intentaban renovar o ampliar su licencia. [issue 375] [issue 377]{L2}{L1}Si resultó afectado, consulte la sección anterior para detalles sobre reembolsos / actualizaciones gratuitas y soporte. {L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

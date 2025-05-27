@@ -2034,7 +2034,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{headStart}Kiireellinen huoltopäivitys 4.11.4 – Lisenssivirheen korjaus{headEnd}{L1}Korjattu virhe, jossa 'Uusi lisenssi' -painike johti täyden hinnan tuotesivulle sen sijaan, että olisi soveltanut uusimisalennusta. Tämä vaikutti SmartTemplates Pro -käyttäjiin, jotka yrittivät uusia lisenssinsä. [issue 375]{L2}{L1}Jos tämä vaikutti sinuun, tarkista yllä oleva osio saadaksesi tietoa hyvityksistä / ilmaisista päivityksistä ja tuesta. {L2}"
+    "message": "{headStart}Kiireellinen ylläpitopäivitys 4.12 – Lisenssivirheen korjaus{headEnd}{L1}Korjattiin virhe, jossa 'Uusi lisenssi' ja 'Laajenna lisenssi' -painikkeet ohjasivat väärin täyden hinnan tuotesivulle sen sijaan, että olisivat käyttäneet uusintahintaa. Tämä vaikutti SmartTemplates Pro -käyttäjiin, jotka yrittivät uusia tai laajentaa lisenssinsä. [issue 375] [issue 377]{L2}{L1}Jos ongelma vaikutti sinuun, katso lisätietoja hyvityksistä / ilmaisista päivityksistä ja tuesta yllä olevasta osiosta. {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

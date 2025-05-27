@@ -2001,7 +2001,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{headStart}Dringende onderhoudsupdate 4.11.4 – Licentiebug opgelost{headEnd}{L1}Een bug is opgelost waarbij klikken op 'Licentie verlengen' leidde naar de productpagina met volledige prijs in plaats van de verlengingskorting toe te passen. Dit trof SmartTemplates Pro-gebruikers die hun licentie probeerden te verlengen. [issue 375]{L2}{L1}Als u bent getroffen, raadpleeg dan het bovenstaande gedeelte voor details over terugbetalingen / gratis upgrades en ondersteuning. {L2}"
+    "message": "{headStart}Dringende onderhoudsupdate 4.12 – Licentiefout opgelost{headEnd}{L1}Er is een fout opgelost waarbij de knoppen 'Licentie verlengen' en 'Licentie uitbreiden' ten onrechte de productpagina met de volledige prijs openden in plaats van de verlengingskorting toe te passen. Dit trof SmartTemplates Pro-gebruikers die hun licentie wilden vernieuwen of uitbreiden. [issue 375] [issue 377]{L2}{L1}Als je hierdoor bent getroffen, raadpleeg dan het bovenstaande gedeelte voor informatie over terugbetalingen / gratis upgrades en ondersteuning. {L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

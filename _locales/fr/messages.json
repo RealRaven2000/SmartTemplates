@@ -2019,7 +2019,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{headStart}Mise à jour de maintenance urgente 4.11.4 – Correction d'un bug de licence{headEnd}{L1}Correction d'un bug où cliquer sur 'Renouveler la licence' menait à la page produit au prix complet au lieu d'appliquer la remise de renouvellement. Cela affectait les utilisateurs de SmartTemplates Pro tentant de renouveler leur licence. [issue 375]{L2}{L1}Si vous avez été affecté, veuillez consulter la section ci-dessus pour les détails sur les remboursements / mises à niveau gratuites et le support. {L2}"
+    "message": "{headStart}Mise à jour de maintenance urgente 4.12 – Correction de bug de licence{headEnd}{L1}Correction d’un bug où les boutons 'Renouveler la licence' et 'Prolonger la licence' ouvraient la page produit au tarif plein au lieu d’appliquer la remise de renouvellement. Cela affectait les utilisateurs de SmartTemplates Pro essayant de renouveler ou prolonger leur licence. [issue 375] [issue 377]{L2}{L1}Si vous avez été affecté, veuillez consulter la section ci-dessus pour plus d’informations sur les remboursements / mises à jour gratuites et le support. {L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

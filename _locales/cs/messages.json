@@ -2007,7 +2007,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{headStart}Nouzové vydání 4.11.4 – Oprava chyby s licencí{headEnd}{L1}Byla opravena chyba, kdy kliknutí na 'Obnovit licenci' vedlo na stránku s plnou cenou místo použití slevy pro obnovu. Tato chyba ovlivnila uživatele SmartTemplates Pro, kteří se pokoušeli licenci obnovit. [issue 375]{L2}{L1}Pokud jste byli ovlivněni, podívejte se prosím výše na informace o vrácení peněz / bezplatném upgradu a podpoře. {L2}"
+    "message": "{headStart}Naléhavá údržbová aktualizace 4.12 – Oprava chyby licencování{headEnd}{L1}Byla opravena chyba, kvůli které tlačítka 'Obnovit licenci' a 'Prodložit licenci' nesprávně otevírala stránku produktu s plnou cenou místo uplatnění slevy za obnovení. To postihlo uživatele SmartTemplates Pro, kteří se snažili obnovit nebo prodloužit licenci. [issue 375] [issue 377]{L2}{L1}Pokud jste byli postiženi, přečtěte si prosím výše uvedenou část ohledně vrácení peněz / bezplatného upgradu a podpory. {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

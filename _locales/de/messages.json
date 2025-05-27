@@ -1961,7 +1961,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{headStart}Dringendes Wartungsupdate 4.11.4 – Fehler bei Lizenzverlängerung behoben{headEnd}{L1}Ein Fehler wurde behoben, bei dem der Klick auf „Lizenz verlängern“ zur regulären Produktseite führte, anstatt den Rabatt für die Verlängerung anzuwenden. Dies betraf SmartTemplates Pro-Nutzer, die ihre Lizenz verlängern wollten. [issue 375]{L2}{L1}Wenn Sie betroffen waren, lesen Sie bitte den obigen Abschnitt zu Rückerstattung / kostenlosem Upgrade und Support. {L2}"
+    "message": "{headStart}Dringendes Wartungsupdate 4.12 – Lizenzierungsfehler behoben{headEnd}{L1}Es wurde ein Fehler behoben, durch den die Schaltflächen 'Lizenz erneuern' und 'Lizenz verlängern' fälschlicherweise die Produktseite zum vollen Preis öffneten, anstatt den Verlängerungsrabatt anzuwenden. Betroffen waren Nutzer von SmartTemplates Pro, die ihre Lizenz erneuern oder verlängern wollten. [issue 375] [issue 377]{L2}{L1}Falls Sie betroffen waren, lesen Sie bitte den obigen Abschnitt mit Informationen zu Rückerstattung / kostenlosem Upgrade und Support. {L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
