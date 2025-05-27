@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartTemplates Message</title>
+  <link rel="stylesheet" href="st-message.css">
+  <link rel="stylesheet" href="popup/popup.css" type="text/css">
+  <script type="application/javascript" src="popup/sales.js"></script>
+  <script type="application/javascript" src="popup/popup.js"></script>
+  <script type="application/javascript" src="st-message.js"></script>
+  <script type="application/javascript" src="../chrome/content/i18n.js"></script>
+</head>
+<body>
+  <div id="messageCanvas">
+    <h1 id="titleBox" aria-label="SmartTemplates">SmartTemplates</h1>
+    <div class="messageContents">
+      <div id="innerMessage">This is a message</div>
+    </div>
+    <div id="commands">
+      <button id="ok">__MSG_accept_button__</button>
+      <button id="yes" hidden>__MSG_yes_button__</button>
+      <button id="no" hidden>__MSG_no_button__</button>
+      <button id="cancel" hidden>__MSG_cancel_button__</button>
+      <!-- <span id="licensing" hidden> use .licensing instead -->
+      <button id="btnShowLicenser" class="actionlinks licensing" hidden>__MSG_message.licenseScreen__</button>
+      <button id="btnFeatureCompare" class="actionlinks licensing" hidden>__MSG_message.features__</button>
+      <!-- obsolete.
+      <label id="countDown"></label>
+      -->
+    </div>
+  </div>
+</body>
+</html>

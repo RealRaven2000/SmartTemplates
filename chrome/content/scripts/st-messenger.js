@@ -50,19 +50,19 @@ async function onLoad(activatedWhileWindowOpen) {
 
     switch (el.id) {
       case "smartTemplates-checklicense":
-        SmartTemplates.Util.notifyTools.notifyBackground({ 
-          func: "openPrefs", 
-          page: "licenseKey"
+        SmartTemplates.Util.notifyTools.notifyBackground({
+          func: "openPrefs",
+          page: "licenseKey",
         });
         break;
-        
+
       /* use last template */
       case "smartTemplates-write-last":
       case "smartTemplates-reply-last":
       case "smartTemplates-reply-list-last":
       case "smartTemplates-reply-all-last":
       case "smartTemplates-forward-last":
-        // handled by event handler on menu item... 
+        // handled by event handler on menu item...
         break;
 
       /* use account template / reset */
@@ -77,35 +77,39 @@ async function onLoad(activatedWhileWindowOpen) {
         } else {
           // go up to the parent menu element (e.g. )
           let menuParent = el.parentNode.parentNode;
-          entry = SmartTemplates.fileTemplates.uniMenus.find(e => e.id == menuParent.id);
+          entry = SmartTemplates.fileTemplates.uniMenus.find((e) => e.id == menuParent.id);
         }
         if (entry) {
-          SmartTemplates.Util.logDebug("Execute command for reply with account template: " + entry.command);
+          SmartTemplates.Util.logDebug(
+            "Execute command for reply with account template: " + entry.command
+          );
           SmartTemplates.fileTemplates.fireComposeCommand(entry);
         } else {
-          SmartTemplates.Util.logDebug(`couldn't find an entry in fileTemplates.uniMenus for ${el.id}`);
+          SmartTemplates.Util.logDebug(
+            `couldn't find an entry in fileTemplates.uniMenus for ${el.id}`
+          );
         }
         break;
-        
+
       case "smartTemplates-news":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashScreen" });
         SmartTemplates.Preferences.setMyBoolPref("hasNews", false);
-        SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" });
         break;
       case "smartTemplates-setNewsFlag":
         SmartTemplates.Preferences.setMyBoolPref("hasNews", true);
-        SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" });
         break;
       case "smartTemplates-settings-legacy": // fall-through
       case "smartTemplates-settings":
-        const serverKey =  SmartTemplates.Util.currentServerInfo();
+        const serverKey = SmartTemplates.Util.currentServerInfo();
         let prefsObject = {
-          func: "openPrefs", 
-          server: serverKey
-        }
+          func: "openPrefs",
+          server: serverKey,
+        };
         let isLicenseWarning = false;
-        if (SmartTemplates.Util.licenseInfo.isExpired)  {
-          isLicenseWarning=true;
+        if (SmartTemplates.Util.licenseInfo.isExpired) {
+          isLicenseWarning = true;
         }
         if (params.mode) {
           prefsObject.page = params.mode;
@@ -119,7 +123,7 @@ async function onLoad(activatedWhileWindowOpen) {
         if (params.composeType) {
           prefsObject.composeType = params.composeType;
         }
-        SmartTemplates.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`)
+        SmartTemplates.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`);
         SmartTemplates.Util.notifyTools.notifyBackground(prefsObject);
         return;
       case "smartTemplates-settings-new":
@@ -127,6 +131,41 @@ async function onLoad(activatedWhileWindowOpen) {
         break;
       case "smartTemplates-installed":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashInstalled" });
+        break;
+      case "smartTemplates-message": {
+          // replacer for SmartTemplate4.Message
+          let wrn = "This is a simple test message";
+          const result = await SmartTemplates.Util.notifyTools.notifyBackground({
+            func: "stmessage",
+            msg: wrn,
+            features: ["ok", "cancel"],
+          });
+          switch (result) {
+            case "ok":
+              Services.prompt.alert(window, "SmartTemplates Message", "Ok button pressed");
+              break;
+            case "cancel":
+              Services.prompt.alert(window, "SmartTemplates Message", "Window cancelled");
+              break;
+          }
+        } 
+        break;
+      case "smartTemplates-message-legacy": // test legacy messages
+        // old version
+        SmartTemplates.Message.display(
+          "Legacy test message",
+          "centerscreen,titlebar,modal,dialog",
+          {
+            ok: function () {
+              // get last composer window and bring to foreground
+              Services.prompt.alert(window, "SmartTemplates Message", "Ok button pressed");
+            },
+            cancel: function () {
+              Services.prompt.alert(window, "SmartTemplates Message", "Window cancelled");
+            },
+          },
+          window
+        );
         break;
       case "smartTemplates-support":
         SmartTemplates.Util.showSupportPage();
@@ -141,7 +180,7 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Util.showPremiumFeatures();
         break;
       case "smartTemplates-youtube":
-        // 
+        //
         SmartTemplates.Util.showYouTubePage(params.videoId);
         break;
       case "smartTemplates-stationery":
@@ -153,7 +192,7 @@ async function onLoad(activatedWhileWindowOpen) {
         break;
       case "smartTemplates-premium":
         SmartTemplates.Util.showPremiumFeatures();
-        break
+        break;
       case "smartTemplates-templatemenus":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
         break;
@@ -164,54 +203,51 @@ async function onLoad(activatedWhileWindowOpen) {
           SmartTemplates.clearActionMenu(); // do this via the API instead!
         }
         // update the data in background
-        await SmartTemplates.Util.notifyTools.notifyBackground({ 
+        await SmartTemplates.Util.notifyTools.notifyBackground({
           func: "updateFileTemplates",
           Entries: SmartTemplates.fileTemplates.Entries,
-          MRU_Entries: SmartTemplates.fileTemplates.MRU_Entries
+          MRU_Entries: SmartTemplates.fileTemplates.MRU_Entries,
         });
 
-        await SmartTemplates.Util.notifyTools.notifyBackground({ 
-          func: "patchHeaderMenuAPI" 
+        await SmartTemplates.Util.notifyTools.notifyBackground({
+          func: "patchHeaderMenuAPI",
         });
         SmartTemplates.fileTemplates.isAPIpatched = true;
         break;
       case "smartTemplates-MruMenuAPI":
         // update the data to the background first
-        await SmartTemplates.Util.notifyTools.notifyBackground({ 
+        await SmartTemplates.Util.notifyTools.notifyBackground({
           func: "updateFileTemplates",
           Entries: SmartTemplates.fileTemplates.Entries,
-          MRU_Entries: SmartTemplates.fileTemplates.MRU_Entries
-        });        
-        await SmartTemplates.Util.notifyTools.notifyBackground({ 
-          func: "updateHeaderMenuMRU" 
-        });        
+          MRU_Entries: SmartTemplates.fileTemplates.MRU_Entries,
+        });
+        await SmartTemplates.Util.notifyTools.notifyBackground({
+          func: "updateHeaderMenuMRU",
+        });
         break;
       case "smartTemplates-onSelectAdhoc":
-        SmartTemplates.fileTemplates.onSelectAdHoc.call(
-          SmartTemplates.fileTemplates, 
-          {
-            composeType: null,
-            controller: params.controller,
-            context: params.context
-          }
-        );
+        SmartTemplates.fileTemplates.onSelectAdHoc.call(SmartTemplates.fileTemplates, {
+          composeType: null,
+          controller: params.controller,
+          context: params.context,
+        });
         break;
       case "smartTemplates-showMessage": // show a specific message
         SmartTemplates.Message.display(
-          params.text, 
+          params.text,
           "centerscreen,titlebar,modal,dialog",
-          { 
-            showLicenseButton: params.showLicenseButton, 
+          {
+            showLicenseButton: params.showLicenseButton,
             feature: params.feature,
-            ok: function() { ; }
+            ok: function () {},
           },
           SmartTemplates.Util.Mail3PaneWindow
-        );      
+        );
         break;
       case "smartTemplates-labelUpdate":
-        SmartTemplates.Util.notifyTools.notifyBackground({func: "updateNewsLabels"});
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" });
         // update the status bar label too:
-        SmartTemplates.Util.notifyTools.notifyBackground({func:"initLicensedUI"});  
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "initLicensedUI" });
         break;
       case "smartTemplates-toggle-label":
         let isHidden;
@@ -222,9 +258,9 @@ async function onLoad(activatedWhileWindowOpen) {
           isHidden = !SmartTemplates.Preferences.getMyBoolPref("toolbar.hideLabel");
         }
         SmartTemplates.Preferences.setMyBoolPref("toolbar.hideLabel", isHidden);
-        let btn = el.parentElement ? 
-          el.parentElement.parentElement : 
-          SmartTemplates.Util.getCommandsButton("message_action");
+        let btn = el.parentElement
+          ? el.parentElement.parentElement
+          : SmartTemplates.Util.getCommandsButton("message_action");
         if (btn) {
           btn.classList.toggle("force-label-hidden");
         }
