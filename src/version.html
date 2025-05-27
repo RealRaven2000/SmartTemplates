@@ -221,7 +221,7 @@ permalink: version.html
       Version 4.* - Work in Progress</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">111.0 - 132.*</span>
+			<span class="thunderbird">115.0 - 140.*</span>
 		</span>
   </h4>
   <ul>
@@ -243,6 +243,37 @@ permalink: version.html
       - Miscellaneous
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
+
+<a id="4.12"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.12"
+      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 4.12 - Work in Progress</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">115.0 - 140.*</span>
+		</span>
+  </h4>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li>
+      Official Thunderbird 140 ESR compatibility
+    </li>
+    <li>
+      Convert SmartTemplate4.Message() into a html window for forward compatibility.
+      This will be part of the modernization efforts which remove old
+      (xul based) techniques such as xhtml code from tthe Add-on.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/378">[issue 378]</a>
+    </li>
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li>
+      Fixed: Extending of any License opens wrong product (New License)
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/377">[issue 377]</a>
+    </li>
+    <li></li>
+  </ul>
+</li> 
 
 
 <ul id="version-history">
@@ -486,6 +517,11 @@ permalink: version.html
     <li> 
       New <code>%dateformat.current()%</code>
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/356">[issue 356]</a>#
+    </li>
+    <li>
+      Fixed a general sandbox failure in Thunderbird 137, due to <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP">
+      CSP violations</a>.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/366">[issue 366]</a>
     </li>
     <li> 
       Sandbox enhancements: Added more contextual parameters for sandbox: 
