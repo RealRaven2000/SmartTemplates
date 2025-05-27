@@ -1,20 +1,28 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.11.4">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.12">can be found here</a>
 
 Important: This update fixes a bug where the 'Renew License' button led to the full-price product page instead of offering the discounted renewal. If you were affected, and especially if you accidentally purchased a SmartTemplates Standard license instead of renewing Pro, please {support licensing}contact support{supportEnd} — we are happy to supply a free upgrade to Pro. Thanks in advance for including your last license key or order number!
 
-<b>Maintenance Release 4.11.4</b>
+<b>Maintenance Release 4.12</b>
 <ul>
-<li> SmartTemplates is now compatible with Thunderbird 139 - going forward it aims to stay compatible with the current monthly release cycle.</li>
-<li> Fixed: Renewal of any License opens wrong product (New License) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/375">[issue 375]</a></li>
+  <li>
+    Official Thunderbird 140 ESR compatibility
+  </li>
+  <li>
+    Convert SmartTemplate4.Message() into a html window for forward compatibility.
+    This will be part of the modernization efforts which remove old
+    (xul based) techniques such as xhtml code from tthe Add-on.
+    <a href="https://github.com/RealRaven2000/SmartTemplates/issues/378">[issue 378]</a>
+  </li>
 </ul>
 
 <b>Miscellaneous</b>
 <ul>
-  <li> guard against nsIFile.initWithPath() throwing </li>
-  <li> removed all references to deprecated Ci.nsILocalFile </li>
-  <li> license validation: optimized use of getDefaultIdentity </li>
+  <li>
+    Fixed: Extending of any License opens wrong product (New License)
+    <a href="https://github.com/RealRaven2000/SmartTemplates/issues/377">[issue 377]</a>
+  </li>
 </ul>
 

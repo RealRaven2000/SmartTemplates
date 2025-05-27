@@ -253,13 +253,17 @@ END LICENSE BLOCK
     # [issue 372] Fix in sandbox script: Contextual parameters in sandbox (such as $subject) broken
     # [issue 373] Stability: images with encoded data path did not load if src attribute started with space
 
-  Version 4.11.4 - WIP
+  Version 4.11.4 - 21/05/2026
     # Compatibility with Thunderbird 139
     # [issue 375] Renewal of any License opens wrong product (New License)
     # guard against nsIFile.initWithPath() throwing 
     # removed all references to deprecated Ci.nsILocalFile
     # license validation: optimized use of getDefaultIdentity
 
+  Version 4.12 - WIP
+    # Official Thunderbird 140 ESR compatibility
+    # [issue 378] Convert SmartTemplate4.Message() into a html window
+    # [issue 377] Extending of any License opens wrong product (New License)
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -1117,6 +1121,8 @@ var SmartTemplate4 = {
 
     <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
       <menupopup>
+        <menuitem id="smartTemplates-message" label="Test Message class" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-message-legacy" label="Test Message class (legacy)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-setNewsFlag" label="Set News Flag!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-registration" label="License Screen" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
