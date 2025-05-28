@@ -40,10 +40,11 @@ permalink: snippets.html
   </p>
 </section>
 
-<section>
+<section class="examples">
   <p><b>THIS SECTION IS WORK IN PROGRESS</b></p>
 
-  <h2>Image frames</h2>
+  <a name="screenshots"> </a>
+  <h3>Image frames</h3>
   <p> 
     Click on an inline image in your email and select this snippet to 
     put it into a nice rounded border frame with a block shadow.
@@ -68,7 +69,8 @@ permalink: snippets.html
   
 
 
-  <h2>Remove quoted images</h2>
+  <a name="quotedimages"> </a>
+  <h3>Remove quoted images</h3>
   <p> Designed to make long email threads more lightweight.</p>
   
   <pre class="code_block html">
@@ -86,7 +88,8 @@ permalink: snippets.html
   %replaceQuotedTags(&quot;img&quot;,&quot;&lt;div&gt;&lt;span class=&#39;snipped&#39; title=&quot;image was automatically removed using SmartTemplates Pro in order to conserve mailbox space: &amp;#10; .&quot;&gt;IMAGE SNIPPED&lt;/span&gt;&lt;/div&gt;&quot;,2)%
   </pre>
       
-  <h2>Clean Style Rules</h2>
+  <a name="cleanstyles"> </a>
+  <h3>Clean Style Rules</h3>
   <p> 
     Remove all global styles from quoted emails. When we reply to emails,
     and these are quoted or forwarded inline, 
@@ -99,9 +102,10 @@ permalink: snippets.html
     %replaceQuotedTags(&quot;style&quot;,&quot;&lt;!--style block removed--&gt;&quot;)%
   </pre>
 
-  <h2>Create breadcrumb trail</h2>
+  <a name="breadcrumbs"> </a>
+  <h3>Create breadcrumb trail</h3>
   <p>
-    Create a breadcrumb trail from text, highlight a string with double %gt; like: 
+    Create a breadcrumb trail from text, highlight a string with double &gt; like: 
     "Menu 1 &gt;&gt; Submenu &gt;&gt; Command" and this will do some 
     nice replacements to generate a formated breadcrumb trail:
   </p>
@@ -111,7 +115,8 @@ style=&quot;font-family:&#39;Roboto Condensed&#39;, &#39;Arial Narrow&#39;, &#39
   </pre>
   
 
-  <h2>Scrub Subject line</h2>
+  <a name="scrubsubject"> </a>
+  <h3>Scrub Subject line</h3>
   <p> This one removes prefixes such as "Fwd:", "Re: " etc. from the subject line. </p>
   
   <pre class="code_block html">
@@ -119,7 +124,8 @@ style=&quot;font-family:&#39;Roboto Condensed&#39;, &#39;Arial Narrow&#39;, &#39
   </pre>  
 
   <!--
-  <h2>Title</h2>
+  <a name="anchor"> </a>
+  <h3>Title</h3>
   <p> Description</p>
   
   <pre class="code_block html">
