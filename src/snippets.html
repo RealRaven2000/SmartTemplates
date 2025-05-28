@@ -43,6 +43,31 @@ permalink: snippets.html
 <section>
   <p><b>THIS SECTION IS WORK IN PROGRESS</b></p>
 
+  <h2>Image frames</h2>
+  <p> 
+    Click on an inline image in your email and select this snippet to 
+    put it into a nice rounded border frame with a block shadow.
+    I use this one daily in support when I send screen shots to
+    my users.
+  </p> 
+  <p> 
+    You can still resize the image manually afterwards.
+    For furter styling you can modify the CSS 
+    class <span class="codeLine">screenshot-inline</span> as part of your main templates.
+  </p>
+  <pre class="code_block html">
+    &lt;style&gt;
+      .screenshot-inline, .screenshot-inline &gt; img {
+        border-radius:7px;
+      }
+    &lt;/style&gt;
+    &lt;div class=&quot;screenshot-inline&quot; 
+    style=&quot;border: 1px solid rgba(80, 80, 80, 0.3); box-shadow: rgba(80, 80, 80, 0.3) 5px 5px 5px; width:max-content;
+    margin-bottom:0.8em;&quot;&gt;*selection*&lt;/div&gt;
+  </pre>
+  
+
+
   <h2>Remove quoted images</h2>
   <p> Designed to make long email threads more lightweight.</p>
   
@@ -61,6 +86,45 @@ permalink: snippets.html
   %replaceQuotedTags(&quot;img&quot;,&quot;&lt;div&gt;&lt;span class=&#39;snipped&#39; title=&quot;image was automatically removed using SmartTemplates Pro in order to conserve mailbox space: &amp;#10; .&quot;&gt;IMAGE SNIPPED&lt;/span&gt;&lt;/div&gt;&quot;,2)%
   </pre>
       
+  <h2>Remove quoted images</h2>
+  <p> 
+    Remove all global styles from quoted emails. 
+    Since style rules that affect tags like body, p or html will also affect our own emails
+    this can always have bad side effects which may affect the style of our own email, so
+    removing these is good practice.
+  </p>
+
+  <pre class="code_block html">
+    %replaceQuotedTags(&quot;style&quot;,&quot;&lt;!--style block removed--&gt;&quot;)%
+  </pre>
+
+  <h2>Create breadcrumb trail</h2>
+  <p>
+    Create a breadcrumb trail from text, highlight a string with double %gt; like: 
+    "Menu 1 &gt;&gt; Submenu &gt;&gt; Command" and this will do some 
+    nice replacements to generate a formated breadcrumb trail:
+  </p>
+  <pre class="code_block html">
+    &lt;span
+style=&quot;font-family:&#39;Roboto Condensed&#39;, &#39;Arial Narrow&#39;, &#39;Helvetica Neue&#39;, Arial, sans-serif; font-size: 0.93em ;font-stretch: condensed; font-weight: bold;&quot;&gt;%replaceText(&quot;&gt;&gt;&quot;,&quot;&lt;b style=&#39;color:#7B1616&#39;&gt;»&lt;/b&gt;&quot;,selection)%&lt;/span&gt;
+  </pre>
+  
+
+  <h2>Scrub Subject line</h2>
+  <p> This one removes prefixes such as "Fwd:", "Re: " etc. from the subject line. </p>
+  
+  <pre class="code_block html">
+    %header.delete(subject,&quot;^(Re: |Fwd: |AW: )*&quot;)%
+  </pre>  
+
+  <!--
+  <h2>Title</h2>
+  <p> Description</p>
+  
+  <pre class="code_block html">
+  </pre>
+  -->
+
 
 </section>
 
