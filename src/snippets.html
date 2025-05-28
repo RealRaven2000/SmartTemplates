@@ -1,0 +1,66 @@
+---
+layout: base.njk
+title: Smart Snippets
+permalink: snippets.html
+---
+
+
+
+<h2 class="page-header">SmartTemplates :: Snippets</h2>
+
+
+<section id="snippets-intro">
+  <h1>SmartTemplates Pro Snippets Library</h1>
+  <p>
+    Welcome to the <strong>SmartTemplates Pro Snippets Library</strong> — a curated collection 
+    of handy, ready-to-use macros and HTML snippets designed to enhance your email templating 
+    and quoting experience. These snippets showcase practical ways to clean, trim, and 
+    customize your quoted content and templates, helping you save mailbox space, improve 
+    readability, and streamline your workflow.
+  </p>
+  <p>
+    Whether you want to remove unwanted styles, replace large inline images with placeholders, 
+    or fine-tune quote levels for neat conversations, these examples offer a starting point 
+    to tailor SmartTemplates to your needs.
+  </p>
+  <p>
+    Feel free to explore, adapt, and combine them to fit your personal style or organizational requirements.
+  </p>
+
+  <h2>Disclaimer</h2>
+  <p>
+    Please note that some snippets use <strong>SmartTemplates Pro</strong> features. 
+    While many of these macros will function without a Pro license, they may occasionally 
+    display a notification bar prompting you to upgrade to the Pro version. This is 
+    part of the licensing mechanism and helps support ongoing development.
+  </p>
+  <p>
+    Before deploying any snippet in critical workflows, we recommend testing it thoroughly 
+    to ensure it behaves as expected in your environment.
+  </p>
+</section>
+
+<section>
+  <p><b>THIS SECTION IS WORK IN PROGRESS</b></p>
+
+  <h2>Remove quoted images</h2>
+  <p> Designed to make long email threads more lightweight.</p>
+  
+  <pre class="code_block html">
+  &lt;head&gt;
+    &lt;style&gt;
+      .snipped { 
+        border: 1px solid rgba(90,90,90,0.2);
+        background: linear-gradient(to bottom, #fdeff4 0%,#fdb9bd 51%,#fea2a3 59%,#ff999e 100%);
+        padding: 0.5em 1em; 
+        border-radius: 3px;
+        box-shadow: rgba(80, 80, 80, 0.3) 5px 5px 5px; 
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  %replaceQuotedTags(&quot;img&quot;,&quot;&lt;div&gt;&lt;span class=&#39;snipped&#39; title=&quot;image was automatically removed using SmartTemplates Pro in order to conserve mailbox space: &amp;#10; .&quot;&gt;IMAGE SNIPPED&lt;/span&gt;&lt;/div&gt;&quot;,2)%
+  </pre>
+      
+
+</section>
+
