@@ -16,14 +16,16 @@ const GRACEDATE_STORAGE = "extensions.smartTemplate4.license.gracePeriodDate";
 const DEBUGLICENSE_STORAGE = "extensions.smartTemplate4.debug.premium.licenser";
 const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 
-var startupFinished = false;
+let startupDoneResolve;
+export const startupDone = new Promise((resolve) => {
+  startupDoneResolve = resolve;
+});
+
 var MenuCounter = {
   MRUheader: 0,
   MRUunified: 0,
   MRUcomposer: 0
 }
-
-var callbacks = [];
 
 var fileTemplates = {
   Entries: [], 
@@ -950,41 +952,116 @@ async function updateSubMenus(messages, tab) {
   await messenger.menus.update("smartTemplates-reply-all-menu", {visible: isReplyAll}); 
   await messenger.menus.update("smartTemplates-forward-menu", {visible: isForward}); 
 }
+
+// this will replace SmartTemplate4.Message [issue 378]
+const showSmartTemplatesMessage = async (
+  messageIds,
+  features,
+  message = "",
+  stfeature = null
+) => {
+  const url = new URL(browser.runtime.getURL("/html/smartTemplate-message.html"));
+  if (message) url.searchParams.set("msg", message);
+  if (messageIds) url.searchParams.set("msgId", messageIds);
+  if (stfeature) url.searchParams.set("stfeature", stfeature);
+  url.searchParams.set("features", features.join(","));
+
+  const createData = {
+    type: "popup",
+    url: url.toString(),
+    allowScriptsToClose: true,
+    titlePreface: "SmartTemplates",
+    width: 800,
+    height: 580,
+  };
+
+  const winRet = await messenger.windows.create(createData);
+  console.log(` new ST Message: Tab = ${winRet.tabs[0].id}`);
+  const tabId = winRet.tabs[0].id;
+  // set up to wait for a button press. using promises/ ...
+  // we need to return "ok" when ok is pushed
+  // we need to return "cancel" (provided the feature is requested) when "cancel" button or ESC key is pushed
+  return new Promise((resolve) => {
+    const listener = (message, sender) => {
+      if (sender.tab && sender.tab.id === tabId && message.context === "smartTemplate-message") {
+        browser.runtime.onMessage.removeListener(listener);
+        resolve(message.result);
+
+        // Close the popup window
+        if (winRet.id) {
+          messenger.windows.remove(winRet.id);
+        }
+      }
+    };
+
+    browser.runtime.onMessage.addListener(listener);
+  });
+};
+
+async function displayUpdateMessage() {
+  // [issue 378]
+  const messageIds = "newsMsgEsr140",
+    licenseInfo = currentLicense?.info,
+    features = ["ok", "licensing", "featurecomp"],
+    hasProLicense = [0, 1].includes(licenseInfo?.keyType); // 0 Pro or none depending on status, 2 std
+
+  // reflects last addon version installed with a msg.
+  let lastMessage = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.lastUpdateMessage") || "0";
+
+  if (compareVersions(lastMessage, "4.12") >= 0) {
+    return;
+  }
+  messenger.LegacyPrefs.setPref("extensions.smartTemplate4.lastUpdateMessage", "4.12");
+  let licenseMsgId,
+    testStatus = licenseInfo?.status;
+  debugger;
+  switch (testStatus) {
+    case "Expired":
+      licenseMsgId = hasProLicense ? "newsMsg.license.expired" : "newsMsg.license.standard";
+      break;
+    case "Valid":
+      licenseMsgId = hasProLicense ? "newsMsg.license.valid" : "newsMsg.license.standard";
+      if (hasProLicense) {
+        // remove unnecessary buttons
+        features = features.filter((f) => f != "featurecomp" && f != "licensing");
+      }
+      break;
+    default:
+      licenseMsgId = "newsMsg.license.none";
+  }
+  const transmitIds = messageIds ? `${messageIds},${licenseMsgId}` : licenseMsgId;
+  return showSmartTemplatesMessage(transmitIds, features);
+}
+
  
 
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
     try {
       let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
-      // Wait until the main startup routine has finished!
-      await new Promise((resolve) => {
-        if (startupFinished) {
-          if (isDebug) console.log("SmartTemplates - startup code finished.");
-          resolve();
-          // Looks like we missed the one sent by main()
-        }
-        callbacks.push(resolve);
-      });
+      // Wait for startup to finish
+      await startupDone; // promise
+      if (isDebug) console.log("SmartTemplates - startup code finished.");
+
       if (isDebug) {
-        console.log("SmartTemplates Startup has finished\n"
-          + "currentLicense", currentLicense);
+        console.log(`SmartTemplates Startup has finished\ncurrentLicense`, currentLicense);
       }
-      
+
       switch (reason) {
         case "install":
           {
             const url = browser.runtime.getURL("popup/installed.html");
             await messenger.tabs.create({
-              url : url,
+              url: url,
               active: true,
             });
             // await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
-            messenger.NotifyTools.notifyExperiment({event: "firstRun"});
+            messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
+            displayUpdateMessage();
           }
           break;
         // see below
         case "update":
           {
-            
             (async () => {
               // compare versions to support beta builds
               // we probably need to manage prerelease installs with a separate flag!
@@ -992,7 +1069,7 @@ async function updateSubMenus(messages, tab) {
               const silentUpdateMap = new Map([
                 ["4.10", ["4.10.1"]], // Silent updates for [issue 354]
               ]);
-              
+
               // Function to check if an update is silent
               function isSilentUpdate(fromVersion, toVersion) {
                 const patterns = silentUpdateMap.get(fromVersion);
@@ -1024,26 +1101,30 @@ async function updateSubMenus(messages, tab) {
                 if (isDebug) console.log("Storing new version number " + manifest.version);
                 // STORE VERSION CODE!
                 // prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
-                messenger.LegacyPrefs.setPref("extensions.smartTemplate4.version", installedVersion);
+                messenger.LegacyPrefs.setPref(
+                  "extensions.smartTemplate4.version",
+                  installedVersion
+                );
               }
 
               messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
               messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
             })();
-            
+
             // TypeError: currentLicense is undefined
             if (isDebug) console.log("2. update() case");
             let currentLicenseInfo = currentLicense.info;
-            let isLicensed = (currentLicenseInfo.status == "Valid"); 
+            let isLicensed = currentLicenseInfo.status == "Valid";
             if (isLicensed) {
               // suppress update popup for users with licenses that have been recently renewed
-              let gpdays = currentLicenseInfo.licensedDaysLeft; 
-              if (isDebug) console.log("Licensed - " + gpdays  + " Days left.");
+              let gpdays = currentLicenseInfo.licensedDaysLeft;
+              if (isDebug) console.log("Licensed - " + gpdays + " Days left.");
             }
+            displayUpdateMessage();
           }
           break;
         default:
-          messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
+          messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
         // see below
       }
     } catch (ex) {
@@ -1082,60 +1163,60 @@ async function showSplashInstalled() {
 }
 
 async function main() {
-  
   // we need these helper functions for calculating an extension to License.info
   async function getGraceDate() {
-    let graceDate = "", isResetDate = false, isDebug = false;
+    let graceDate = "",
+      isResetDate = false,
+      isDebug = false;
     try {
       graceDate = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);
-      isDebug =  await messenger.LegacyPrefs.getPref(DEBUGLICENSE_STORAGE);
-    }
-    catch(ex) { 
-      isResetDate = true; 
-    }
-    let today = new Date().toISOString().substr(0, 10); // e.g. "2019-07-18"
-    if (!graceDate || graceDate>today) {
-      graceDate = today; // cannot be in the future
+      isDebug = await messenger.LegacyPrefs.getPref(DEBUGLICENSE_STORAGE);
+    } catch (ex) {
       isResetDate = true;
     }
-    else {
+    let today = new Date().toISOString().substr(0, 10); // e.g. "2019-07-18"
+    if (!graceDate || graceDate > today) {
+      graceDate = today; // cannot be in the future
+      isResetDate = true;
+    } else {
       // if a license exists & is expired long ago, use the last day of expiration date.
       if (currentLicense.info.status == "Expired") {
         if (graceDate < currentLicense.info.expiryDate) {
-          if (isDebug) console.log("Extending graceDate from {0} to {1}".replace("{0}",graceDate).replace("{1}", currentLicense.info.expiryDate)); 
+          if (isDebug)
+            console.log(
+              "Extending graceDate from {0} to {1}"
+                .replace("{0}", graceDate)
+                .replace("{1}", currentLicense.info.expiryDate)
+            );
           graceDate = currentLicense.info.expiryDate;
           isResetDate = true;
         }
       }
     }
-    if (isResetDate)
-      await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, graceDate);
-    if (isDebug) console.log("Returning Grace Period Date: " + graceDate); 
+    if (isResetDate) await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, graceDate);
+    if (isDebug) console.log("Returning Grace Period Date: " + graceDate);
     return graceDate;
   }
-  
+
   async function getTrialDays() {
     let graceDate; // actually the install date for 2.1 or later.
     const period = GRACEPERIOD_DAYS,
-          SINGLE_DAY = 1000*60*60*24; 
+      SINGLE_DAY = 1000 * 60 * 60 * 24;
     try {
       if (currentLicense.info.status == "Expired") {
         // [issue 100] Trial period should restart on license expiry
         graceDate = currentLicense.info.expiryDate;
-      }
-      else
-        graceDate = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);
+      } else graceDate = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);
       if (!graceDate) graceDate = getGraceDate(); // create the date
-    }
-    catch(ex) { 
+    } catch (ex) {
       // if it's not there, set it now!
-      graceDate = getGraceDate(); 
+      graceDate = getGraceDate();
     }
-    let today = (new Date()),
-        installDate = new Date(graceDate),
-        days = Math.floor( (today.getTime() - installDate.getTime()) / SINGLE_DAY);
+    let today = new Date(),
+      installDate = new Date(graceDate),
+      days = Math.floor((today.getTime() - installDate.getTime()) / SINGLE_DAY);
     // later.setDate(later.getDate()-period);
-    return (period-days); // returns number of days left, or -days since trial expired if past period
+    return period - days; // returns number of days left, or -days since trial expired if past period
   }
 
   async function openPrefs(data) {
@@ -1184,22 +1265,25 @@ async function main() {
    */
 
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
-   
-  let key = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.LicenseKey"),
-    forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
-    isDebugAddon = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug"),
-    isDebugLicenser = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.premium.licenser");
 
-  currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser});
+  let key = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.LicenseKey"),
+    forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(
+      "extensions.smartTemplate4.licenser.forceSecondaryIdentity"
+    ),
+    isDebugAddon = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug"),
+    isDebugLicenser = await messenger.LegacyPrefs.getPref(
+      "extensions.smartTemplate4.debug.premium.licenser"
+    );
+
+  currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
   await currentLicense.validate();
   currentLicense.GraceDate = await getGraceDate();
   currentLicense.TrialDays = await getTrialDays();
-  
+
   // All important stuff has been done.
   // resolve all promises on the stack
   if (isDebugAddon) console.log("ST main(): Finished setting up license startup code");
-  callbacks.forEach(callback => callback());
-  startupFinished = true;
+  startupDoneResolve(); // <— this triggers everything that waits
 
   if (isDebugAddon) console.log("ST main(): Adding message listeners....");
   try {
@@ -1299,12 +1383,18 @@ async function main() {
     console.error("Error adding listener:", e);
   }
 
-
   async function updateLicenseKey(newLicenseKey) {
-    let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
-    isDebugLicenser = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.premium.licenser");
+    let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(
+        "extensions.smartTemplate4.licenser.forceSecondaryIdentity"
+      ),
+      isDebugLicenser = await messenger.LegacyPrefs.getPref(
+        "extensions.smartTemplate4.debug.premium.licenser"
+      );
     // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
-    let newLicense = new Licenser(newLicenseKey, { forceSecondaryIdentity, debug:isDebugLicenser });
+    let newLicense = new Licenser(newLicenseKey, {
+      forceSecondaryIdentity,
+      debug: isDebugLicenser,
+    });
     await newLicense.validate();
     newLicense.GraceDate = await getGraceDate();
     newLicense.TrialDays = await getTrialDays();
@@ -1314,60 +1404,30 @@ async function main() {
     // return false;
 
     // Update background license.
-    await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.LicenseKey", newLicense.info.licenseKey);
+    await messenger.LegacyPrefs.setPref(
+      "extensions.smartTemplate4.LicenseKey",
+      newLicense.info.licenseKey
+    );
     currentLicense = newLicense;
     // Broadcast
-    messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info}); // part of generic onBackgroundUpdates called in Util.init()
-    return  licenseValidationDescription(newLicense.ValidationStatus, currentLicense.info);
+    messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info }); // part of generic onBackgroundUpdates called in Util.init()
+    return licenseValidationDescription(newLicense.ValidationStatus, currentLicense.info);
   }
 
-  // this will replace SmartTemplate4.Message [issue 378]
-  const showSmartTemplatesMessage = async (messageIds, features, message="", stfeature=null) => {
-    const url = new URL(browser.runtime.getURL("/html/smartTemplate-message.html")); 
-    if (message) url.searchParams.set("msg", message);
-    if (messageIds) url.searchParams.set("msgId", messageIds);
-    if (stfeature) url.searchParams.set("stfeature", stfeature);
-    url.searchParams.set("features", features.join(","));
 
-    const createData = {
-      type: "popup",
-      url: url.toString(),
-      allowScriptsToClose: true,
-      titlePreface: "SmartTemplates",
-      width: 800,
-      height: 580,
-    };
 
-    const winRet = await messenger.windows.create(createData);
-    console.log(` new ST Message: Tab = ${winRet.tabs[0].id}`);
-    const tabId = winRet.tabs[0].id;  
-    // set up to wait for a button press. using promises/ ...
-    // we need to return "ok" when ok is pushed
-    // we need to return "cancel" (provided the feature is requested) when "cancel" button or ESC key is pushed
-    return new Promise((resolve) => {
-      const listener = (message, sender) => {
-        if (sender.tab && sender.tab.id === tabId && message.context === "smartTemplate-message") {
-          browser.runtime.onMessage.removeListener(listener);
-          resolve(message.result);
-
-          // Close the popup window
-          if (winRet.id) {
-            messenger.windows.remove(winRet.id);
-          }
-        }
-      };
-
-      browser.runtime.onMessage.addListener(listener);
-    });
-
-  }
-   
   messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
-    let isLog = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.notifications");
+    let isLog = await messenger.LegacyPrefs.getPref(
+      "extensions.smartTemplate4.debug.notifications"
+    );
     if (isLog && data.func) {
-      console.log ("=========================\n" +
-                   "BACKGROUND LISTENER received: " + data.func + "\n" +
-                   "=========================");
+      console.log(
+        "=========================\n" +
+          "BACKGROUND LISTENER received: " +
+          data.func +
+          "\n" +
+          "========================="
+      );
     }
     switch (data.func) {
       case "getLicenseInfo":
@@ -1538,12 +1598,13 @@ async function main() {
           browser.tabs.create({ active: true, url: data.URL });
         }
         break;
-        
+
       case "openBrowserLink": {
         messenger.windows.openDefaultBrowser(data.url);
         return;
       }
-      case "stmessage": { // [issue 378]
+      case "stmessage": {
+        // [issue 378]
         const message = data.msg,
           messageIds = data.msgIds,
           stfeature = data.stfeature || null,
@@ -1560,7 +1621,7 @@ async function main() {
             break;
           case "Valid":
             licenseMsgId = hasProLicense ? "newsMsg.license.valid" : "newsMsg.license.standard";
-            if (hasProLicense) { 
+            if (hasProLicense) {
               // remove unnecessary buttons
               features = features.filter((f) => f != "featurecomp" && f != "licensing");
             }
@@ -1573,80 +1634,95 @@ async function main() {
       }
     }
   });
-  
-  
-  browser.runtime.onMessageExternal.addListener( async  (message, sender) =>  
-  {
+
+  browser.runtime.onMessageExternal.addListener(async (message, sender) => {
     // { command: "forwardMessageWithTemplate", messageHeader: msgKey, templateURL: data.fileURL }
     let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
-    switch(message.command) {
+    switch (message.command) {
       case "forwardMessageWithTemplate":
-        messenger.NotifyTools.notifyExperiment(
-            {event: "forwardWithTemplate", 
-             detail : { messageHeader: message.messageHeader, templateURL: message.templateURL} }
-        ).then(
-          (data) => {
-            if (isDebug) console.log (`SmartTemplates forwarded '${message.messageHeader.subject}' successfully.`);
-            return true;
-          }
-        );
+        messenger.NotifyTools.notifyExperiment({
+          event: "forwardWithTemplate",
+          detail: { messageHeader: message.messageHeader, templateURL: message.templateURL },
+        }).then((data) => {
+          if (isDebug)
+            console.log(
+              `SmartTemplates forwarded '${message.messageHeader.subject}' successfully.`
+            );
+          return true;
+        });
         break;
       case "replyMessageWithTemplate":
-        messenger.NotifyTools.notifyExperiment(
-          {event: "replyWithTemplate", detail : { messageHeader: message.messageHeader, templateURL: message.templateURL} }).then(
-          (data) => {
-            if (isDebug) console.log (`SmartTemplates replied to '${message.messageHeader.subject}' successfully.`);
-            return true;
-          }
-        );
-        break;      
+        messenger.NotifyTools.notifyExperiment({
+          event: "replyWithTemplate",
+          detail: { messageHeader: message.messageHeader, templateURL: message.templateURL },
+        }).then((data) => {
+          if (isDebug)
+            console.log(
+              `SmartTemplates replied to '${message.messageHeader.subject}' successfully.`
+            );
+          return true;
+        });
+        break;
     }
-  }); 
-
+  });
 
   // content smarttemplate4-locales locale/
   // we still need this for explicitely setting locale for Calender localization!
-  messenger.WindowListener.registerChromeUrl([ 
-      ["content",  "smarttemplate4", "chrome/content/"],
-      ["resource", "smarttemplate4", "chrome/content/"],
-      ["content", "smarttemplate4-locales", "chrome/locale/"],
-      ["locale", "smarttemplate4", "en", "chrome/locale/en/"],
-      ["locale", "smarttemplate4", "ca", "chrome/locale/ca/"],
-      ["locale", "smarttemplate4", "cs", "chrome/locale/cs/"],
-      ["locale", "smarttemplate4", "de", "chrome/locale/de/"],
-      ["locale", "smarttemplate4", "es", "chrome/locale/es/"],
-      ["locale", "smarttemplate4", "fi", "chrome/locale/fi/"],
-      ["locale", "smarttemplate4", "fr", "chrome/locale/fr/"],
-      ["locale", "smarttemplate4", "id-ID", "chrome/locale/id-ID/"],
-      ["locale", "smarttemplate4", "it", "chrome/locale/it/"],
-      ["locale", "smarttemplate4", "ja", "chrome/locale/ja/"],
-      ["locale", "smarttemplate4", "nl", "chrome/locale/nl/"],
-      ["locale", "smarttemplate4", "pl", "chrome/locale/pl/"],
-      ["locale", "smarttemplate4", "pt-BR", "chrome/locale/pt-BR/"],
-      ["locale", "smarttemplate4", "ru", "chrome/locale/ru/"],
-      ["locale", "smarttemplate4", "sl", "chrome/locale/sl/"],
-      ["locale", "smarttemplate4", "sr", "chrome/locale/sr/"],
-      ["locale", "smarttemplate4", "sv", "chrome/locale/sv/"],
-      ["locale", "smarttemplate4", "uk", "chrome/locale/uk/"],
-      ["locale", "smarttemplate4", "zh-CN", "chrome/locale/zh-CN/"],
-      ["locale", "smarttemplate4", "zh-TW", "chrome/locale/zh-TW/"],
+  messenger.WindowListener.registerChromeUrl([
+    ["content", "smarttemplate4", "chrome/content/"],
+    ["resource", "smarttemplate4", "chrome/content/"],
+    ["content", "smarttemplate4-locales", "chrome/locale/"],
+    ["locale", "smarttemplate4", "en", "chrome/locale/en/"],
+    ["locale", "smarttemplate4", "ca", "chrome/locale/ca/"],
+    ["locale", "smarttemplate4", "cs", "chrome/locale/cs/"],
+    ["locale", "smarttemplate4", "de", "chrome/locale/de/"],
+    ["locale", "smarttemplate4", "es", "chrome/locale/es/"],
+    ["locale", "smarttemplate4", "fi", "chrome/locale/fi/"],
+    ["locale", "smarttemplate4", "fr", "chrome/locale/fr/"],
+    ["locale", "smarttemplate4", "id-ID", "chrome/locale/id-ID/"],
+    ["locale", "smarttemplate4", "it", "chrome/locale/it/"],
+    ["locale", "smarttemplate4", "ja", "chrome/locale/ja/"],
+    ["locale", "smarttemplate4", "nl", "chrome/locale/nl/"],
+    ["locale", "smarttemplate4", "pl", "chrome/locale/pl/"],
+    ["locale", "smarttemplate4", "pt-BR", "chrome/locale/pt-BR/"],
+    ["locale", "smarttemplate4", "ru", "chrome/locale/ru/"],
+    ["locale", "smarttemplate4", "sl", "chrome/locale/sl/"],
+    ["locale", "smarttemplate4", "sr", "chrome/locale/sr/"],
+    ["locale", "smarttemplate4", "sv", "chrome/locale/sv/"],
+    ["locale", "smarttemplate4", "uk", "chrome/locale/uk/"],
+    ["locale", "smarttemplate4", "zh-CN", "chrome/locale/zh-CN/"],
+    ["locale", "smarttemplate4", "zh-TW", "chrome/locale/zh-TW/"],
   ]);
 
   //attention: each target window (like messenger.xhtml) can appear only once
   // this is different from chrome.manifest
   // xhtml for Tb78
-  
-  messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome/content/scripts/st-messageWindow.js");  
-  messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/st-messenger.js");
+
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messageWindow.xhtml",
+    "chrome/content/scripts/st-messageWindow.js"
+  );
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messenger.xhtml",
+    "chrome/content/scripts/st-messenger.js"
+  );
   // inject a separate script for header pane!
-  messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/st-messagePane.js");
+  messenger.WindowListener.registerWindow(
+    "about:message",
+    "chrome/content/scripts/st-messagePane.js"
+  );
 
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messengercompose/messengercompose.xhtml",
+    "chrome/content/scripts/st-composer.js"
+  );
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/customizeToolbar.xhtml",
+    "chrome/content/scripts/st-customizetoolbar.js"
+  );
 
-  messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/st-composer.js");
-  messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/st-customizetoolbar.js");
-  
   /* add a background script to the settings window - needed for browser element! */
-  
+
   /*
   TbSync "As manipulating Thunderbirds own preference page is probably not going to be possible with 
           WebExtensions, I also did not add support for that into the WL. 
@@ -1657,51 +1733,56 @@ async function main() {
     messenger.WindowListener.registerWindow("chrome://messenger/content/am-identity-edit.xhtml", "chrome/content/scripts/st-am-adressing.js");
   */
 
- /*
-  * Start listening for opened windows. Whenever a window is opened, the registered
-  * JS file is loaded. To prevent namespace collisions, the files are loaded into
-  * an object inside the global window. The name of that object can be specified via
-  * the parameter of startListening(). This object also contains an extension member.
-  */
+  /*
+   * Start listening for opened windows. Whenever a window is opened, the registered
+   * JS file is loaded. To prevent namespace collisions, the files are loaded into
+   * an object inside the global window. The name of that object can be specified via
+   * the parameter of startListening(). This object also contains an extension member.
+   */
 
   messenger.WindowListener.startListening();
-  
+
   // [issue 209] Exchange account validation
-  messenger.accounts.onCreated.addListener( async(id, account) => {
+  messenger.accounts.onCreated.addListener(async (id, account) => {
     if (currentLicense.info.status == "MailNotConfigured") {
       // redo license validation!
       if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
       currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
       await currentLicense.validate();
-      if(currentLicense.info.status != "MailNotConfigured") {
-        if (isDebugLicenser) console.log("notify experiment code of new license status: " + currentLicense.info.status);
-        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+      if (currentLicense.info.status != "MailNotConfigured") {
+        if (isDebugLicenser)
+          console.log(
+            "notify experiment code of new license status: " + currentLicense.info.status
+          );
+        messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
       }
       if (isDebugLicenser) console.log("SmartTemplates license info:", currentLicense.info); // test
     } else {
-      if (isDebugLicenser) console.log("SmartTemplates license state after adding account:", currentLicense.info)
+      if (isDebugLicenser)
+        console.log("SmartTemplates license state after adding account:", currentLicense.info);
     }
   });
 
   // [issue 284] resolve all variables automatically before send
-  messenger.compose.onBeforeSend.addListener (
-    async(tab, details) => {
-      let retVal = null;
-      let isDebug
-      try {
-        retVal = await messenger.Utilities.beforeSend(tab.id, details);
-      } catch(ex) {
-        console.log(ex);
-      } finally {
-        isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
-        if (isDebug) {
-          console.log("after messenger.Utilities.beforeSend()", {returnValue: retVal, composeDetail: details, tab});
-        }
-        return retVal;
+  messenger.compose.onBeforeSend.addListener(async (tab, details) => {
+    let retVal = null;
+    let isDebug;
+    try {
+      retVal = await messenger.Utilities.beforeSend(tab.id, details);
+    } catch (ex) {
+      console.log(ex);
+    } finally {
+      isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+      if (isDebug) {
+        console.log("after messenger.Utilities.beforeSend()", {
+          returnValue: retVal,
+          composeDetail: details,
+          tab,
+        });
       }
+      return retVal;
     }
-  );
-  
+  });
 
   messenger.messageDisplay.onMessageDisplayed.addListener(async (tab, message) => {
     let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
@@ -1710,32 +1791,25 @@ async function main() {
     }
     await updateSubMenus([message], tab);
   });
-  
 
   /// message selection listener
-  browser.mailTabs.onSelectedMessagesChanged.addListener(
-    async (tab, selectedMessages) => {
-      // selectedMessages = list - see messages member. add logic to decide whether to show:
-      // replyAll
-      // replyList
-      // redirect
+  browser.mailTabs.onSelectedMessagesChanged.addListener(async (tab, selectedMessages) => {
+    // selectedMessages = list - see messages member. add logic to decide whether to show:
+    // replyAll
+    // replyList
+    // redirect
 
-      /* only 1 message may be selected */
-      await updateSubMenus(selectedMessages.messages, tab);
+    /* only 1 message may be selected */
+    await updateSubMenus(selectedMessages.messages, tab);
+  });
 
-    }
-  )
-  
   async function focusSettings(tabId) {
     const tab = await browser.tabs.get(tabId);
     const url = browser.runtime.getURL("html/smartTemplate-settings.html");
     if (tab.url && tab.url.startsWith(url)) {
       console.log("SmartTemplates options tab detected. Now focusing the navigation element!");
       await messenger.Utilities.focusDocument(tabId);
-      setTimeout(
-        () => messenger.runtime.sendMessage({command:"focusSettingsTab"}),
-        250
-      );
+      setTimeout(() => messenger.runtime.sendMessage({ command: "focusSettingsTab" }), 250);
     }
   }
 
@@ -1748,8 +1822,6 @@ async function main() {
   browser.tabs.onActivated.addListener((activeInfo) => {
     focusSettings(activeInfo.tabId);
   });
-
-
 }
 
 main();

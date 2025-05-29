@@ -71,6 +71,7 @@ pref("extensions.smartTemplate4.BackgroundParser", false); // [issue 184] new ba
 
 pref("extensions.smartTemplate4.changeTemplate.button.install", true); /* add change template button automatically when installing for first time */
 pref("extensions.smartTemplate4.insertSnippet.button.install", true); /* add insert snippets button automatically when installing for first time */
+pref("extensions.smartTemplate4.lastUpdateMessage", "0");
 
 /* debug settings */
 pref("extensions.smartTemplate4.debug", false);
