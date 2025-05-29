@@ -1334,8 +1334,8 @@ async function main() {
       url: url.toString(),
       allowScriptsToClose: true,
       titlePreface: "SmartTemplates",
-      width: 750,
-      height: 480,
+      width: 800,
+      height: 580,
     };
 
     const winRet = await messenger.windows.create(createData);

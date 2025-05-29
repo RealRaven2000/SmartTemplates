@@ -909,6 +909,21 @@
   "newsHead": {
     "message": "Dernières nouvelles"
   },
+  "newsMsgEsr140": {
+    "message": "{P1} Nous sommes ravis d'annoncer que SmartTemplates est entièrement compatible avec Thunderbird 140, la prochaine version à support étendu (ESR). Cela signifie une fiabilité continue et une tranquillité d'esprit tout au long du prochain cycle de support.{P2}{P1} Thunderbird {ARelease}adopte également un modèle de publication mensuel{A2}, et SmartTemplates continue de prendre en charge les utilisateurs qui préfèrent rester à jour ainsi que ceux qui restent sur la voie ESR.{P2}{P1} Nous surveillons en permanence les changements de Thunderbird pour garantir que SmartTemplates reste compatible et fiable, quelle que soit la voie de publication que vous choisissez.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Toutes les nouvelles fonctionnalités, les corrections de bugs et la compatibilité à long terme sont rendues possibles grâce à votre soutien.{P2}{P1 class=specialOffer} Pour aider à maintenir le développement de SmartTemplates, vous pouvez renouveler votre licence à prix réduit jusqu'au {salesEnd}.{P2}{P1 class=bottomhint}🡇 Choisissez une des options ci-dessous pour en savoir plus 🡇{P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Vous pouvez également soutenir la compatibilité future en achetant une licence.{P2}{P1}Toutes les nouvelles fonctionnalités, les corrections de bugs et la compatibilité à long terme sont rendues possibles grâce à votre soutien.{P2}{P1 class=specialOffer}Pour soutenir le développement de SmartTemplates, vous pouvez obtenir une licence Standard ou Pro à prix réduit jusqu'au {salesEnd}.{P2}{P1 class=bottomhint}🡇 Choisissez une des options ci-dessous pour en savoir plus 🡇{P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Merci de soutenir SmartTemplates avec une licence Standard.{P2}{P1} Que votre licence soit expirée ou toujours active, vous pouvez passer à la version Pro dès maintenant à un tarif avantageux jusqu'au {salesEnd}. Une mise à niveau après expiration vous accorde une année complète d'utilisation à partir de la date d'achat.{P2}{P1 class=bottomhint}🡇 Choisissez une des options ci-dessous pour en savoir plus 🡇{P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Merci de soutenir SmartTemplates avec une licence Pro — cela rend possibles toutes les nouvelles fonctionnalités, les corrections de bugs et la compatibilité à long terme.{P2}"
+  },
   "newsSection.intro": {
     "message": "{P1}La dernière version de $addonName$ est maintenant compatible avec Thunderbird ($compatibleVer$).{P2}{P1}Nous nous préparons pour Thunderbird 140, la prochaine version ESR (Extended Support Release), prévue pour juin. $addonName$ continuera de suivre le cycle de publication mensuel afin d'assurer une compatibilité et une stabilité continues.{P2}",
     "placeholders": {

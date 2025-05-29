@@ -897,6 +897,21 @@
   "newsHead": {
     "message": "Poslední zprávy"
   },
+  "newsMsgEsr140": {
+    "message": "{P1} S potěšením oznamujeme, že SmartTemplates je plně kompatibilní s Thunderbirdem 140, další verzí s rozšířenou podporou (ESR). To znamená spolehlivost a klid po celou dobu dalšího hlavního cyklu podpory.{P2}{P1} Thunderbird také {ARelease}přechází na měsíční model vydávání{A2} a SmartTemplates nadále podporuje uživatele, kteří dávají přednost těmto verzím, stejně jako ty, kteří zůstávají u ESR.{P2}{P1} Průběžně sledujeme změny v Thunderbirdu, abychom zajistili, že SmartTemplates zůstane kompatibilní a spolehlivý bez ohledu na zvolenou verzi.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Všechny nové funkce, opravy chyb a dlouhodobá kompatibilita jsou možné díky vaší podpoře.{P2}{P1 class=specialOffer} Pro udržení vývoje SmartTemplates můžete obnovit svou licenci se slevou do {salesEnd}.{P2}{P1 class=bottomhint}🡇 Vyberte jednu z níže uvedených možností pro více informací 🡇{P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} I vy nyní můžete podpořit budoucí kompatibilitu prostřednictvím licence.{P2}{P1} Všechny nové funkce, opravy chyb a dlouhodobá kompatibilita jsou možné díky vaší podpoře.{P2}{P1 class=specialOffer} Pro udržení vývoje SmartTemplates si můžete pořídit Standardní nebo Pro licenci se slevou do {salesEnd}.{P2}{P1 class=bottomhint}🡇 Vyberte jednu z níže uvedených možností pro více informací 🡇{P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Děkujeme, že podporujete SmartTemplates prostřednictvím Standardní licence.{P2}{P1} Ať už vaše licence vypršela nebo je stále aktivní, můžete nyní upgradovat na Pro se skvělou slevou do {salesEnd}. Upgrade po vypršení platnosti vám poskytne plný rok používání od data nákupu.{P2}{P1 class=bottomhint}🡇 Vyberte jednu z níže uvedených možností pro více informací 🡇{P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Děkujeme, že podporujete SmartTemplates prostřednictvím Pro licence — to umožňuje všechny nové funkce, opravy chyb a dlouhodobou kompatibilitu.{P2}"
+  }, 
   "newsSection.intro": {
     "message": "{P1}Nejnovější verze $addonName$ je nyní kompatibilní s Thunderbirdem ($compatibleVer$).{P2}{P1}Připravujeme se na Thunderbird 140, další hlavní ESR verzi (Extended Support Release), která se očekává v červnu. $addonName$ bude i nadále sledovat měsíční cyklus vydávání, aby byla zajištěna kompatibilita a stabilita.{P2}",
     "placeholders": {

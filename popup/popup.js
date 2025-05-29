@@ -232,6 +232,11 @@ function formatAll(txt) {
       // attrs will be undefined if no class specified
       return attrs ? `<p ${attrs}>` : "<p>";
     })
+    .replace(
+      /\{ARelease\}/g,
+      "<a href='https://blog.thunderbird.net/2025/03/thunderbird-release-channel-update/'>"
+    )
+    .replace(/\{A2\}/g, "</a>")
     .replace(/\{P2\}/g, "</p>")
     .replace(/\{S1\}/g, "</ul> <h3 class='section'>")
     .replace(/\{S2\}/g, "</h3> <ul>")
