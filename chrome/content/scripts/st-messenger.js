@@ -137,18 +137,11 @@ async function onLoad(activatedWhileWindowOpen) {
           let txt = "This is a simple test message";
           const result = await SmartTemplates.Util.notifyTools.notifyBackground({
             func: "stmessage",
-            msgId: "newsMsgEsr140",
+            msgIds: "newsMsgEsr140",
             msg: txt,
-            features: ["ok", "cancel"],
+            features: ["ok", "licensing", "featurecomp"],
           });
-          switch (result) {
-            case "ok":
-              Services.prompt.alert(window, "SmartTemplates Message", "Ok button pressed");
-              break;
-            case "cancel":
-              Services.prompt.alert(window, "SmartTemplates Message", "Window cancelled");
-              break;
-          }
+          SmartTemplates.Util.logToConsole(`stmessage returned [${result}]`);
         } 
         break;
       case "smartTemplates-message-legacy": // test legacy messages

@@ -1322,10 +1322,11 @@ async function main() {
   }
 
   // this will replace SmartTemplate4.Message [issue 378]
-  const showSmartTemplatesMessage = async (messageId, features, message="") => {
+  const showSmartTemplatesMessage = async (messageIds, features, message="", stfeature=null) => {
     const url = new URL(browser.runtime.getURL("/html/smartTemplate-message.html")); 
     if (message) url.searchParams.set("msg", message);
-    if (messageId) url.searchParams.set("msgId", messageId);
+    if (messageIds) url.searchParams.set("msgId", messageIds);
+    if (stfeature) url.searchParams.set("stfeature", stfeature);
     url.searchParams.set("features", features.join(","));
 
     const createData = {
@@ -1334,7 +1335,7 @@ async function main() {
       allowScriptsToClose: true,
       titlePreface: "SmartTemplates",
       width: 750,
-      height: 400,
+      height: 480,
     };
 
     const winRet = await messenger.windows.create(createData);
@@ -1543,10 +1544,32 @@ async function main() {
         return;
       }
       case "stmessage": { // [issue 378]
-        const message = data.msg;
-        const messageId = data.msgId;
-        const features = data.features || ["ok"]; // minimum: an ok button
-        return showSmartTemplatesMessage(messageId, features, message);
+        const message = data.msg,
+          messageIds = data.msgIds,
+          stfeature = data.stfeature || null,
+          licenseInfo = currentLicense?.info,
+          hasProLicense = [0, 1].includes(licenseInfo?.keyType); // 0 Pro or none depending on status, 2 std
+
+        let licenseMsgId,
+          features = data.features || ["ok"], // minimum: an ok button. make array mutable
+          testStatus = licenseInfo?.status;
+        debugger;
+        switch (testStatus) {
+          case "Expired":
+            licenseMsgId = hasProLicense ? "newsMsg.license.expired" : "newsMsg.license.standard";
+            break;
+          case "Valid":
+            licenseMsgId = hasProLicense ? "newsMsg.license.valid" : "newsMsg.license.standard";
+            if (hasProLicense) { 
+              // remove unnecessary buttons
+              features = features.filter((f) => f != "featurecomp" && f != "licensing");
+            }
+            break;
+          default:
+            licenseMsgId = "newsMsg.license.none";
+        }
+        const transmitIds = messageIds ? `${messageIds},${licenseMsgId}` : licenseMsgId;
+        return showSmartTemplatesMessage(transmitIds, features, message, stfeature);
       }
     }
   });

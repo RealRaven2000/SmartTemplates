@@ -228,7 +228,10 @@ function formatAll(txt) {
     .replace(/\{\{(.*?)\}\}/g, "<code param>$1</code>")
     .replace(/\{L1\}/g, "<li>")
     .replace(/\{L2\}/g, "</li>")
-    .replace(/\{P1\}/g, "<p>")
+    .replace(/\{P1(?:\s+([^}]+))?\}/g, (_, attrs) => {
+      // attrs will be undefined if no class specified
+      return attrs ? `<p ${attrs}>` : "<p>";
+    })
     .replace(/\{P2\}/g, "</p>")
     .replace(/\{S1\}/g, "</ul> <h3 class='section'>")
     .replace(/\{S2\}/g, "</h3> <ul>")
@@ -236,6 +239,49 @@ function formatAll(txt) {
     .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>"); // single keys
     // DANGEROUS .replaceAll("''", '"');
   //{S1} new section / list with title {S2}.
+}
+
+async function insertLocalizedMessage(element, rawMessage) {
+  try {
+    const html = formatAll(rawMessage); // Expand custom tags into HTML
+    const fragment = parseHTMLFragment(html); // Safely parse into a DocumentFragment
+    element.textContent = ""; // Clear existing content
+
+    if (!(await isSale())) {
+      const salesElements = fragment.querySelectorAll(".specialOffer");
+      for (const e of salesElements) {
+        e.remove(); // Safely remove element from fragment
+      }
+    }
+        
+    element.appendChild(fragment); // Inject parsed content
+  } catch (ex) {
+    console.error("Failed to parse localized message:", ex);
+    element.textContent = rawMessage; // Fallback: insert raw text only
+  }
+}
+
+// replace unsafe innerHTML injections
+// note: this will add closing tags and other markup ,e.g. <tr> or <table>
+function parseHTMLFragment(htmlString) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlString, "text/html");
+
+  // Spread childNodes to an array to avoid live list mutation issues
+  const nodes = [...doc.body.childNodes];
+  const fragment = document.createDocumentFragment();
+  // appendChild moves nodes from doc.body to fragment (not cloned)
+  nodes.forEach((node) => fragment.appendChild(node));
+  return fragment;
+}
+
+// copy a html structure into [multiple] elements
+function updateWithSafeHtml(selector, htmlString) {
+  const elements = document.querySelectorAll(selector);
+  for (const el of elements) {
+    el.textContent = "";
+    el.appendChild(parseHTMLFragment(htmlString));
+  }
 }
 
 
@@ -303,7 +349,9 @@ function ariaPoliteUpdate(el, text, isHtml = false) {
 
   // Update content based on whether it's HTML or plain text
   if (isHtml) {
-    el.innerHTML = text;
+    el.textContent = ""; // clear existing
+    const fragment = parseHTMLFragment(text);
+    el.appendChild(fragment);
   } else {
     el.innerText = text;
   }

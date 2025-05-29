@@ -20,20 +20,34 @@ function showButtons(buttonList) {
     if (!el) return;
 		el.hidden = !buttons.includes(id);
   });
-	if (!buttons.includes("licensing")) {
-		document.getElementById("btnShowLicenser").hidden = true;
-		document.getElementById("btnFeatureCompare").hidden = true;
+	if (buttons.includes("licensing")) {
+		document.getElementById("btnShowLicenser").hidden = false;
 	}
+	if (buttons.includes("featurecomp")) {
+		document.getElementById("btnFeatureCompare").hidden = false;
+	}
+
 }
 
 window.addEventListener("load", async () => {
   const params = getQueryParams();
   const features = (params.features || "ok").split(","); // fallback to "ok"
+	const feature = params.addonfeature || null;
   // find all features relating to buttons:
-  const buttonsList = features.filter((b) => ["ok", "cancel", "yes", "no", "licenser"].includes(b));
+  const buttonsList = features.filter((b) =>
+    ["ok", "cancel", "yes", "no", "licensing", "featurecomp"].includes(b)
+  );
   let message = "";
   if (params.msgId) {
-    message = messenger.i18n.getMessage(params.msgId);
+    // allow multiple ids as a comma separated string of localized message ids
+    const ids =
+      typeof params.msgId === "string" && params.msgId.includes(",")
+        ? params.msgId.split(",").map((s) => s.trim())
+        : [params.msgId];
+
+    for (const id of ids) {
+      message += messenger.i18n.getMessage(id); // Each returns HTML with <p> or {P1}{P2} as needed
+    }
   } else if (params.msg) {
     message = params.msg;
   } else {
@@ -41,11 +55,9 @@ window.addEventListener("load", async () => {
   }	
 
   // Set message text
-	try {
-		document.getElementById("innerMessage").innerHTML = formatAll(message);
-	} catch (ex) {
-		document.getElementById("innerMessage").textContent = message;
-	}
+  const messageContainer = document.getElementById("innerMessage");
+  // generate HTML markup
+  await insertLocalizedMessage(messageContainer, message);
   
   i18n.updateDocument();
   showButtons(buttonsList);
@@ -56,6 +68,8 @@ window.addEventListener("load", async () => {
     yes: document.getElementById("yes"),
     no: document.getElementById("no"),
     cancel: document.getElementById("cancel"),
+    features: document.getElementById("btnFeatureCompare"),
+    showLicense: document.getElementById("btnShowLicenser"),
   };
 
   // Setup button handlers:
@@ -71,6 +85,25 @@ window.addEventListener("load", async () => {
   buttons.no?.addEventListener("click", () => {
     messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "no" });
   });
+	buttons.features?.addEventListener("click", async () => {
+		// open url
+		const dataUrl = "https://smarttemplates.quickfolders.org/premium.html#featureComparison";
+		let found = await messenger.tabs.query({ url: dataUrl });
+		if (found.length) {
+			let tab = found[0]; // first result
+			await messenger.tabs.update(tab.id, { active: true, url: dataUrl });
+			return;
+		}
+		messenger.tabs.create({ active: true, url: dataUrl });
+  });
+  buttons.showLicense?.addEventListener("click", () => {
+		messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "cancel" });
+		messenger.runtime.sendMessage({
+      command: "showRegistrationDialog",
+      feature: feature,
+    });
+  });	
+	
 
   // Optionally handle ESC key as cancel
   window.addEventListener("keydown", (e) => {
