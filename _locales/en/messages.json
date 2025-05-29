@@ -821,7 +821,7 @@
   "menu.template_import.label": {
     "message": "Import Template"
   },
-  "msgPlaceholder" : {
+  "msgPlaceholder": {
     "message": "Message missing."
   },
   "message_default_title": {
@@ -924,8 +924,20 @@
     "message": "Latest News"
   },
   "newsMsgEsr140": {
-    "message": "{P1} We're excited to announce that SmartTemplates is fully compatible with Thunderbird 140, the next Extended Support Release (ESR). This means ongoing reliability and peace of mind through the next major support cycle.{P2}{P1} You can now too support future compatibity though a license during this sale - and do it for cheaper until {salesEnd}. {P2}"
-  }, 
+    "message": "{P1} We're excited to announce that SmartTemplates is fully compatible with Thunderbird 140, the next Extended Support Release (ESR). This means ongoing reliability and peace of mind through the next major support cycle.{P2}{P1} Thunderbird is also {ARelease}moving to a monthly release model{A2}, and SmartTemplates continues to support users who prefer staying up-to-date with these versions as well as those who stick with the ESR track.{P2}{P1} We continuously monitor Thunderbird changes to ensure SmartTemplates remains compatible and reliable, regardless of the release track you choose."
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} All new features, bug fixes, and long-term compatibility are made possible through your support.{P2}{P1 class=specialOffer} To help sustain SmartTemplates development, you can renew your license at a discount until {salesEnd}.{P2}{P1 class=bottomhint}🡇 Choose one of the options below to learn more 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} You too can now support future compatibility though a license.{P2}{P1}All new features, bug fixes, and long-term compatibility are made possible through your support.{P2}{P1 class=specialOffer}To help sustain SmartTemplates development, you can get a Standard or Pro license at a discount until {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Choose one of the options below to learn more 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Thank you for supporting SmartTemplates with a Standard license.{P2}{P1} Whether your license has expired or is still active, you can upgrade to Pro now at a great discount until {salesEnd}. Upgrading after expiration grants you a full year of usage starting from your purchase date.{P2}{P1 class=bottomhint} 🡇 Choose one of the options below to learn more 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Thank you for supporting SmartTemplates through a Pro license — this makes all new features, bug fixes, and long-term compatibility possible.{P2}"
+  },
   "newsSection.intro": {
     "message": "{P1}The latest version of $addonName$ is now compatible with Thunderbird ($compatibleVer$).{P2}{P1}We are preparing for Thunderbird 140, the next major ESR (Extended Support Release), expected in June. $addonName$ will continue to follow the monthly release cycle to ensure ongoing compatibility and stability.{P2}",
     "placeholders": {
@@ -940,7 +952,7 @@
   },
   "newsSection.important": {
     "message": "{P1}{boldStart}Important:{boldEnd} This update fixes a bug where the 'Renew License' button led to the full-price product page instead of offering the discounted renewal. If you were affected, and especially if you accidentally purchased a SmartTemplates Standard license instead of renewing Pro, please {support licensing}contact support{supportEnd} — we are happy to supply a free upgrade to Pro. Thanks in advance for including your last license key or order number! [issue 375]{P2}"
-  },  
+  },
   "newsSection.license": {
     "message": "As all work on SmartTemplates and free support are funded exclusively by license sales, please consider buying a license or renewing your current one."
   },

@@ -906,6 +906,21 @@
   "newsHead": {
     "message": "最新消息"
   },
+  "newsMsgEsr140": {
+    "message": "{P1} 我们很高兴宣布，SmartTemplates 已完全兼容 Thunderbird 140，这是下一个扩展支持版本（ESR）。这意味着在下一个主要支持周期中将持续提供可靠性和安心保障。{P2}{P1} Thunderbird 也正在{ARelease}转向每月发布模式{A2}，SmartTemplates 继续支持那些希望保持最新版本的用户，以及那些坚持使用 ESR 路线的用户。{P2}{P1} 我们持续监控 Thunderbird 的更新变化，确保无论您选择哪个发布路线，SmartTemplates 都能保持兼容和稳定。"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} 所有新功能、错误修复和长期兼容性都得益于您的支持。{P2}{P1 class=specialOffer} 为了支持 SmartTemplates 的开发，您可以在 {salesEnd} 之前以优惠价格续订许可证。{P2}{P1 class=bottomhint}🡇 选择下面的选项了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} 您现在也可以通过购买许可证支持未来的兼容性。{P2}{P1} 所有新功能、错误修复和长期兼容性都得益于您的支持。{P2}{P1 class=specialOffer} 为了支持 SmartTemplates 的开发，您可以在 {salesEnd} 之前以优惠价格购买标准版或专业版许可证。{P2}{P1 class=bottomhint} 🡇 选择下面的选项了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} 感谢您通过标准版许可证支持 SmartTemplates。{P2}{P1} 无论您的许可证是否已过期，您都可以在 {salesEnd} 之前以优惠价格升级到专业版。过期后升级可从购买日期起获得一整年的使用权限。{P2}{P1 class=bottomhint} 🡇 选择下面的选项了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} 感谢您通过专业版许可证支持 SmartTemplates —— 这使所有新功能、错误修复和长期兼容性成为可能。{P2}"
+  },
   "newsSection.intro": {
     "message": "{P1}$addonName$ 的最新版本现已兼容 Thunderbird ($compatibleVer$)。{P2}{P1}我们正在为 Thunderbird 140 做准备，这是下一版主要的 ESR（扩展支持版本），预计将于六月发布。$addonName$ 将继续采用每月发布周期，以确保持续的兼容性和稳定性。{P2}",
     "placeholders": {
