@@ -465,22 +465,20 @@ var SmartTemplate4 = {
       );
 
       // composer context:
-      fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
+      fileTemplateSource = await SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
       if (fileTemplateSource.failed) {
-        let text = util.getBundleString("st.fileTemplates.error.filePath");
+        let text = util
+          .getBundleString("st.fileTemplates.error.filePath")
+          .replace("{0}", theFileTemplate.label)
+          .replace("{1}", theFileTemplate.path);
 
-        SmartTemplate4.Message.display(
-          text.replace("{0}", theFileTemplate.label).replace("{1}", theFileTemplate.path),
-          "centerscreen,titlebar,modal,dialog",
-          {
-            ok: function () {
-              // get last composer window and bring to foreground
-              let composerWin = Services.wm.getMostRecentWindow("msgcompose");
-              if (composerWin) composerWin.focus();
-            },
-          },
-          ownerWin
-        );
+        await SmartTemplate4.Util.showSmartTemplatesMessage({
+          msg: text,
+          features: ["ok"],
+        });
+
+        let composerWin = Services.wm.getMostRecentWindow("msgcompose");
+        if (composerWin) composerWin.focus();
       } else {
         flags.isFileTemplate = true; // !!! new Stationery substitution
         if (!flags.filePaths) flags.filePaths = [];
@@ -542,27 +540,22 @@ var SmartTemplate4 = {
           (gMsgCompose.type == msgComposeType.ForwardInline ||
             gMsgCompose.type == msgComposeType.ForwardAsAttachment) &&
           root.getAttribute("smartTemplateInserted")
-        )
+        ) {
           isChangeTemplate = true;
+        }
 
         // if insertTemplate throws, we avoid calling it again
         let isStartup = isChangeTemplate ? false : !flags.isThunderbirdTemplate;
         if (isChangeTemplate && gMsgCompose.bodyModified) {
-          let cancelled = false,
-            w1 = util.getBundleString("st.notification.editedChangeWarning"),
-            q1 = util.getBundleString("st.notification.editedChangeChallenge");
-          SmartTemplate4.Message.display(
-            w1.replace("{0}", fileTemplateSource.label) + "\n" + q1,
-            "centerscreen,titlebar,modal,dialog",
-            {
-              ok: function () {},
-              cancel: function () {
-                cancelled = true;
-              },
-            },
-            win
-          );
-          if (cancelled) {
+          let w1 = util.getBundleString("st.notification.editedChangeWarning");
+          let q1 = util.getBundleString("st.notification.editedChangeChallenge");
+
+          const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
+            msg: w1.replace("{0}", fileTemplateSource.label) + "\n" + q1,
+            features: ["ok", "cancel"],
+          });
+
+          if (result === "cancel") {
             let popped = flags.filePaths.pop();
             util.logDebugOptional(
               "fileTemplates",
@@ -690,7 +683,7 @@ var SmartTemplate4 = {
         // Add template message - will also remove previous template and quoteHeader.
         if (window.SmartTemplate4.CurrentTemplate) {
           //[issue 64] reload the same template if it was remembered.
-          let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(
+          let fileTemplateSource = await SmartTemplate4.fileTemplates.retrieveTemplate(
             window.SmartTemplate4.CurrentTemplate
           );
           if (fileTemplateSource.failed) {
@@ -1122,7 +1115,8 @@ var SmartTemplate4 = {
     <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
       <menupopup>
         <menuitem id="smartTemplates-message" label="Test Message class" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-message-legacy" label="Test Message class (legacy)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-showMessage" label="Test Message class (legacy)" class="menuitem-iconic" 
+          oncommand="window.SmartTemplate4.doCommand(this,{text:'Legacy test message',showLicenseButton:true,feature:'pro feature'});"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-setNewsFlag" label="Set News Flag!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-registration" label="License Screen" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>

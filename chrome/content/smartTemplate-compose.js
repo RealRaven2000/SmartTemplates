@@ -1501,23 +1501,24 @@ SmartTemplate4.classSmartTemplate = function() {
             });
           }
         }
-        
 			}
 			catch (ex) {
-				let errorText = 'Could not insert Template as HTML; please check for syntax errors.'
-				      + '\n' + 'this might be caused by html comments <!-- or unclosed tag brackets <...>'
-				      + '\n' + ex
-				      + '\n' + 'Copy template contents to clipboard?';
-							
-				SmartTemplate4.Message.display(errorText,
-          "centerscreen,titlebar",
-          { ok: function() {
-            let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
-            oClipBoard.copyString(template || ""); },
-            cancel: function() { ;/* cancel NOP */ }
-          }, 
-          gMsgCompose.editor.document.defaultView
-				);
+				let errorText =
+          "{P1}Could not insert Template as HTML; please check for syntax errors.{br}" +
+          "This might be caused by html comments <!-- or unclosed tag brackets <...>{P2}" +
+          `{pre}${ex}{preEnd}` +           
+          "{br}Copy template contents to clipboard?";
+				
+				let result = await SmartTemplate4.Util.showSmartTemplatesMessage({
+					msg: errorText,
+					features: ["ok", "cancel"],
+				});
+				if (result === "ok") {
+          let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(
+            Ci.nsIClipboardHelper
+          );
+          oClipBoard.copyString(template || "");
+        } 
 			}
 		}
 		

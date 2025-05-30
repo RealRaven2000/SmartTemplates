@@ -8,11 +8,6 @@
   END LICENSE BLOCK 
 */
 
-// Helper to get query parameters
-function getQueryParams() {
-  return Object.fromEntries(new URLSearchParams(window.location.search));
-}
-
 function showButtons(buttonList) {
   const buttons = buttonList.map((s) => s.trim());
   ["ok", "yes", "no", "cancel"].forEach((id) => {
@@ -26,18 +21,40 @@ function showButtons(buttonList) {
 	if (buttons.includes("featurecomp")) {
 		document.getElementById("btnFeatureCompare").hidden = false;
 	}
+}
 
+
+// Helper to get query parameters
+function getQueryParams() {
+  return Object.fromEntries(new URLSearchParams(window.location.search));
+}
+
+// helper to marshall a formatted message without using 
+// queryParameter directly!
+async function getStoredMessage(key, hasMessage) {
+  if (!hasMessage) return "";
+  try {
+    const result = await browser.storage.local.get(key);
+    await browser.storage.local.remove(key);
+    if (result && typeof result === "object" && key in result) {
+      return result[key] || "";
+    }
+    return `We seem to be missing a stored message in ${key}`;
+  } catch (e) {
+    console.error("Failed to get or remove message from storage", e);
+    return "getStoredMessage failed!";
+  }
 }
 
 window.addEventListener("load", async () => {
+  const MESSAGE_STORAGE_KEY = "SmartTemplate_Message_Key";
   const params = getQueryParams();
   const features = (params.features || "ok").split(","); // fallback to "ok"
-	const feature = params.addonfeature || null;
-  // find all features relating to buttons:
-  const buttonsList = features.filter((b) =>
-    ["ok", "cancel", "yes", "no", "licensing", "featurecomp"].includes(b)
-  );
-  let message = "";
+
+  /**** Passed Message or message id(s) to retrieve from l10n ****/
+  // retrieve an arbitrary message text from storagem
+  // but only if the queryparameter msg_storage was set!
+  let message = await getStoredMessage(MESSAGE_STORAGE_KEY, !!params.msg_storage);
   if (params.msgId) {
     // allow multiple ids as a comma separated string of localized message ids
     const ids =
@@ -48,11 +65,19 @@ window.addEventListener("load", async () => {
     for (const id of ids) {
       message += messenger.i18n.getMessage(id); // Each returns HTML with <p> or {P1}{P2} as needed
     }
-  } else if (params.msg) {
-    message = params.msg;
-  } else {
+  }
+  // we need to display _something_
+  if (!message) {
     message = messenger.i18n.getMessage("msgPlaceholder");
   }	
+
+  // future use:
+	const st_features = params.addonfeatures || null;
+
+  // find all features relating to buttons:
+  const buttonsList = features.filter((b) =>
+    ["ok", "cancel", "yes", "no", "licensing", "featurecomp"].includes(b)
+  );
 
   // Set message text
   const messageContainer = document.getElementById("innerMessage");
@@ -74,16 +99,16 @@ window.addEventListener("load", async () => {
 
   // Setup button handlers:
   buttons.ok?.addEventListener("click", () => {
-    messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "ok" });
+    messenger.runtime.sendMessage({ command: "smartTemplate-message", result: "ok" });
   });
   buttons.cancel?.addEventListener("click", () => {
-    messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "cancel" });
+    messenger.runtime.sendMessage({ command: "smartTemplate-message", result: "cancel" });
   });
   buttons.yes?.addEventListener("click", () => {
-    messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "yes" });
+    messenger.runtime.sendMessage({ command: "smartTemplate-message", result: "yes" });
   });
   buttons.no?.addEventListener("click", () => {
-    messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "no" });
+    messenger.runtime.sendMessage({ command: "smartTemplate-message", result: "no" });
   });
 	buttons.features?.addEventListener("click", async () => {
 		// open url
@@ -96,20 +121,28 @@ window.addEventListener("load", async () => {
 		}
 		messenger.tabs.create({ active: true, url: dataUrl });
   });
-  buttons.showLicense?.addEventListener("click", () => {
-		messenger.runtime.sendMessage({ context: "smartTemplate-message", result: "cancel" });
-		messenger.runtime.sendMessage({
+  buttons.showLicense?.addEventListener("click", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const features = params.get("addonfeatures");
+  
+    await browser.runtime.sendMessage({
       command: "showRegistrationDialog",
-      feature: feature,
+      addonfeatures: features || "",
     });
   });	
 	
-
-  // Optionally handle ESC key as cancel
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && buttons.cancel && !buttons.cancel.hidden) {
-      buttons.cancel.click();
+  // always allow hitting ESC to cancel
+  window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      event.stopPropagation();
+      messenger.runtime.sendMessage({ command: "smartTemplate-message", result: "cancel" })
+        .finally(() => {
+          // Delay close slightly to let browser finalize message
+          setTimeout(() => window.close(), 150);
+        });
     }
   });
+
 });
 

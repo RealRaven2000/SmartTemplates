@@ -1118,7 +1118,7 @@ SmartTemplate4.Util = {
     });
   },
 
-  displayNotAllowedMessage: function (reservedWord) {
+  displayNotAllowedMessage: async function (reservedWord) {
     // wrap variable in % but only if necessary
     let decoratedWord =
       (reservedWord[0] != "%" ? "%" : "") +
@@ -1131,15 +1131,22 @@ SmartTemplate4.Util = {
     let ErrorString1 = SmartTemplate4.Util.getBundleString("contextError");
     let errorText = ErrorString1.replace("{1}", decoratedWord);
 
-    SmartTemplate4.Message.display(errorText, "centerscreen,titlebar", { ok: function () {} });
+    await SmartTemplate4.Util.showSmartTemplatesMessage({
+      msg: errorText,
+      features: ["ok"],
+    });
     this.logDebug(errorText);
   },
 
-  displayInvalidToken: function (reservedWord, params) {
+  displayInvalidToken: async function (reservedWord, params) {
     let theToken = `%${reservedWord + params}%`;
     console.warn("SmartTemplates - invalid token: " + theToken);
     let errorText = SmartTemplate4.Util.getBundleString("tokenError", theToken);
-    SmartTemplate4.Message.display(errorText, "centerscreen,titlebar", { ok: function () {} });
+    await SmartTemplate4.Util.showSmartTemplatesMessage({
+      msg: errorText,
+      features: ["ok"],
+    });
+
   },
 
   setMidnightTimer: function () {
@@ -3165,12 +3172,10 @@ SmartTemplate4.Util = {
       }
     } catch (ex) {
       let msg = util.getBundleString("st.notification.spellcheck.error");
-      SmartTemplate4.Message.display(
-        msg + "\n" + ex,
-        "centerscreen,titlebar,modal,dialog",
-        { ok: function () {} },
-        window
-      );
+      await SmartTemplate4.Util.showSmartTemplatesMessage({
+        msg: msg + "\n" + ex,
+        features: ["ok"],
+      });
     }
   },
 
@@ -3712,6 +3717,29 @@ SmartTemplate4.Util = {
 
     return reverseLookup[value] || value.toString();
   },
+
+  // replacement for SmartTempaltes4.Message.display
+  showSmartTemplatesMessage: async function({
+    msg = "",
+    msgIds = "",
+    features = ["ok"],
+    addonfeatures = []
+  } = {}) {
+    try {
+      const result = await SmartTemplate4.Util.notifyTools.notifyBackground({
+        func: "stmessage",
+        msg,
+        msgIds,
+        features,
+        addonfeatures
+      });
+      return result; // "ok", "cancel", "licensing", etc.
+    } catch (ex) {
+      console.error("showSmartTemplatesMessage failed:", ex);
+      return null;
+    }    
+  },
+
 };  // ST4.Util
 
 

@@ -172,8 +172,8 @@ SmartTemplate4.composer = {
     return await SmartTemplate4.Util.cleanupDeferredFields(true);
   },
   
-  selectTemplateFromMenu : function selectTemplateFromMenu(element) {
-    const util = SmartTemplate4.Util;
+  // LIKELY OBSOLETE!
+  selectTemplateFromMenu : async function (element) {
     let isHandled = false;
     if (!SmartTemplate4.fileTemplates.armedEntry || !SmartTemplate4.fileTemplates.armedEntry.path) {
       if (element && element.id == "smarttemplate4-changeTemplate") {
@@ -184,22 +184,19 @@ SmartTemplate4.composer = {
         }
       }
       if (!isHandled) {
-        let wrn = util.getBundleString("st.fileTemplates.selectFromMenu");
-        SmartTemplate4.Message.display(
-          wrn,
-          "centerscreen,titlebar,modal,dialog",
-          { ok: function() {  
-                  // get last composer window and bring to foreground
-                  let composerWin = Services.wm.getMostRecentWindow("msgcompose");
-                  if (composerWin) {
-                    // refresh the template menu
-                    SmartTemplate4.composer.initTemplateMenu(); // make sure there are some menu items now.
-                    composerWin.focus();
-                  }
-                }
-          }, 
-          window
-        );
+        const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
+          msgIds: "st.fileTemplates.selectFromMenu",  // pass a string or an array of message IDs
+          features: ["ok"],                           // buttons to display
+          addonfeatures: []                           // optional addon features array
+        });
+  
+        if (result === "ok") {
+          let composerWin = Services.wm.getMostRecentWindow("msgcompose");
+          if (composerWin) {
+            SmartTemplate4.composer.initTemplateMenu();
+            composerWin.focus();
+          }
+        }
       }
     }
     else {

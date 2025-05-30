@@ -571,17 +571,7 @@ async function addMenus(menuArray, context) {
                 menuRestrict.MAX_FREE_TEMPLATES.toString(), 
                 menuRestrict.MAX_STANDARD_TEMPLATES.toString()
               ]);
-            messenger.NotifyTools.notifyExperiment({
-              event: "doCommand", 
-              detail: {
-                cmd: "smartTemplates-showMessage", // will be re-packaged as el.id
-                params: {
-                  text: txt,
-                  showLicenseButton: true,
-                  feature: "FileTemplatesRestricted"
-                } 
-              },
-            });              
+            showSmartTemplatesMessage(null, ["ok", "licensing"], txt, "FileTemplatesRestricted");     
           }
         });
       }
@@ -954,16 +944,28 @@ async function updateSubMenus(messages, tab) {
 }
 
 // this will replace SmartTemplate4.Message [issue 378]
+const MESSAGE_STORAGE_KEY = "SmartTemplate_Message_Key";
 const showSmartTemplatesMessage = async (
   messageIds,
   features,
   message = "",
-  stfeature = null
+  smartTemplatesFeatures = null
 ) => {
   const url = new URL(browser.runtime.getURL("/html/smartTemplate-message.html"));
-  if (message) url.searchParams.set("msg", message);
+  if (message) {
+    // Store message globally
+    await browser.storage.local.set({ [MESSAGE_STORAGE_KEY]: message });
+    url.searchParams.set("msg_storage", "true");
+  } 
   if (messageIds) url.searchParams.set("msgId", messageIds);
-  if (stfeature) url.searchParams.set("stfeature", stfeature);
+  if (smartTemplatesFeatures) {
+    url.searchParams.set(
+      "addonfeatures",
+      Array.isArray(smartTemplatesFeatures)
+        ? smartTemplatesFeatures.join(",")
+        : smartTemplatesFeatures
+    );
+  }
   url.searchParams.set("features", features.join(","));
 
   const createData = {
@@ -982,20 +984,24 @@ const showSmartTemplatesMessage = async (
   // we need to return "ok" when ok is pushed
   // we need to return "cancel" (provided the feature is requested) when "cancel" button or ESC key is pushed
   return new Promise((resolve) => {
-    const listener = (message, sender) => {
-      if (sender.tab && sender.tab.id === tabId && message.context === "smartTemplate-message") {
+    const listener = async (message, sender) => {
+      if (sender.tab && sender.tab.id === tabId && message.command === "smartTemplate-message") {
         browser.runtime.onMessage.removeListener(listener);
         resolve(message.result);
 
-        // Close the popup window
         if (winRet.id) {
-          messenger.windows.remove(winRet.id);
+          try {
+            await messenger.windows.remove(winRet.id);
+          } catch (e) {
+            // Window already closed, ignore
+          }
         }
       }
     };
 
     browser.runtime.onMessage.addListener(listener);
   });
+  
 };
 
 async function displayUpdateMessage() {
@@ -1315,7 +1321,7 @@ async function main() {
             detail: {
               cmd: "smartTemplates-registration", // will be re-packaged as el.id
               params: {
-                feature: data.feature || "",
+                feature: data.addonfeatures || "",
               },
             },
           });
@@ -1607,30 +1613,18 @@ async function main() {
         // [issue 378]
         const message = data.msg,
           messageIds = data.msgIds,
+          mode = data.mode || "standard",
           stfeature = data.stfeature || null,
-          licenseInfo = currentLicense?.info,
-          hasProLicense = [0, 1].includes(licenseInfo?.keyType); // 0 Pro or none depending on status, 2 std
+          features = data.features || ["ok"]; // minimum: an ok button. make array mutable
 
-        let licenseMsgId,
-          features = data.features || ["ok"], // minimum: an ok button. make array mutable
-          testStatus = licenseInfo?.status;
-        debugger;
-        switch (testStatus) {
-          case "Expired":
-            licenseMsgId = hasProLicense ? "newsMsg.license.expired" : "newsMsg.license.standard";
-            break;
-          case "Valid":
-            licenseMsgId = hasProLicense ? "newsMsg.license.valid" : "newsMsg.license.standard";
-            if (hasProLicense) {
-              // remove unnecessary buttons
-              features = features.filter((f) => f != "featurecomp" && f != "licensing");
-            }
-            break;
+        switch(mode) {
+          case "standard":
+            return showSmartTemplatesMessage(messageIds, features, message, stfeature);
+          case "news":
+            return displayUpdateMessage();
           default:
-            licenseMsgId = "newsMsg.license.none";
+            return "unknown";
         }
-        const transmitIds = messageIds ? `${messageIds},${licenseMsgId}` : licenseMsgId;
-        return showSmartTemplatesMessage(transmitIds, features, message, stfeature);
       }
     }
   });

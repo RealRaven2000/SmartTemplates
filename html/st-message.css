@@ -92,10 +92,6 @@ body {
 	flex-direction: column;
 }
 
-#innerMessage  > *:first-child {
-  margin-top: 0 !important;
-}
-
 #innerMessage p, #innerMessage br {
 	display: block;
 	line-height: 1.2em;
@@ -151,3 +147,11 @@ html, body {
 }
 
 
+/* use this for pringin html code */
+pre {
+  font-size: 0.85rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  white-space: pre-wrap;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}

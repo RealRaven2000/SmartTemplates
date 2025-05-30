@@ -2151,7 +2151,7 @@ export class Parser {
             if (!isAbsolute) path = newPath;
             //try our new method
             if (await Preferences.getMyBoolPref("vars.file.fileTemplateMethod")) {
-              let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate({
+              let tmpTemplate = await SmartTemplate4.fileTemplates.retrieveTemplate({
                 composeType: composeType,
                 path: path,
                 label: "data inserted from " + (type == "css") ? "%style%" : "%file%",

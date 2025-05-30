@@ -415,17 +415,15 @@ SmartTemplate4.fileTemplates = {
         wrn = SmartTemplate4.Util.getBundleString("prompt.fileTemplates.editor.setup");
             
     if (!editorPath) {
-      SmartTemplate4.Message.display(
-        wrn,
-        "centerscreen,titlebar,modal,dialog",
-        { 
-          ok: function() {  
-            SmartTemplate4.Util.showAboutConfig(null, `smartTemplate4.${EditorPathSetting}`);
-          },
-          cancel: function() { ;/* cancel NOP */ }
-        }, 
-        window
-      ); 
+      const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
+        msg: wrn,
+        features: ["ok", "cancel"],
+      });
+
+      if (result === "ok") {
+        SmartTemplate4.Util.showAboutConfig(null, `smartTemplate4.${EditorPathSetting}`);
+      }
+      // no action needed on cancel
       return;
     }
     
@@ -448,17 +446,19 @@ SmartTemplate4.fileTemplates = {
     }
     catch(ex) {
       SmartTemplate4.Util.logException(`file.initWithPath(${editorPath}) failed with Exception` , ex);
-      SmartTemplate4.Message.display(
-        SmartTemplate4.Util.getBundleString("prompt.fileTemplates.editor.pathError", editorPath),
-        "centerscreen,titlebar,modal,dialog",
-        { 
-          ok: function() {  
-            SmartTemplate4.Util.showAboutConfig(null, 'smartTemplate4.fileTemplates.editor.path');
-          },
-          cancel: function() { ;/* cancel NOP */ }
-        }, 
-        window
-      ); 
+      const message = SmartTemplate4.Util.getBundleString(
+        "prompt.fileTemplates.editor.pathError",
+        editorPath
+      );
+
+      const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
+        msg: message,
+        features: ["ok", "cancel"],
+      });
+
+      if (result === "ok") {
+        SmartTemplate4.Util.showAboutConfig(null, "smartTemplate4.fileTemplates.editor.path");
+      }
       return;
     }
 
@@ -918,23 +918,24 @@ SmartTemplate4.fileTemplates = {
       menuItem.setAttribute("st4composeType", composeType);
       menuItem.classList.add("menuItem-iconic");
       menuItem.classList.add("st4templateInfo");      
-      menuItem.addEventListener("command", 
-        function(event) { 
+      menuItem.addEventListener(
+        "command",
+        async (event) => {
           event.stopImmediatePropagation();
-          let txt = util.getBundleString("st.fileTemplates.restrictTemplates",[MAX_FREE_TEMPLATES.toString(), MAX_STANDARD_TEMPLATES.toString()]);
-          SmartTemplate4.Message.display(
-            txt, 
-            "centerscreen,titlebar,modal,dialog",
-            { 
-              showLicenseButton: true, 
-              feature: "FileTemplatesRestricted",
-              ok: function() { ; }
-            },
-            singleParentWindow || util.Mail3PaneWindow
-          );
+          const txt = util.getBundleString("st.fileTemplates.restrictTemplates", [
+            MAX_FREE_TEMPLATES.toString(),
+            MAX_STANDARD_TEMPLATES.toString(),
+          ]);
+
+          await SmartTemplate4.Util.showSmartTemplatesMessage({
+            msg: txt,
+            features: ["ok"],
+            addonfeatures: ["FileTemplatesRestricted"], // passing as array or string
+          });
+          // no need to do anything on ok, just close dialog
           return false;
-        }, 
-        {capture:true } , 
+        },
+        { capture: true },
         true
       );
       msgPopup.appendChild(menuItem);	
@@ -1454,11 +1455,11 @@ SmartTemplate4.fileTemplates = {
       }
 
       SmartTemplate4.Util.logDebug(`No controller exists for the command ${command} `);  
-      SmartTemplate4.Message.display(
-        SmartTemplate4.Util.getBundleString("st.fileTemplates.error.nocontroller", [command]), 
-        "centerscreen,titlebar",
-        { ok: function() {  }}
-      );
+      // async!
+      SmartTemplate4.Util.showSmartTemplatesMessage({
+        msg: SmartTemplate4.Util.getBundleString("st.fileTemplates.error.nocontroller", [command]),
+        features: ["ok"],
+      });
       return false;
     } 
     
@@ -1686,7 +1687,7 @@ SmartTemplate4.fileTemplates = {
 	
   insertFileEntryInComposer: async function (entry) {
     let theFileTemplate = entry;
-    let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
+    let fileTemplateSource = await SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
     let html = fileTemplateSource.HTML;
 
     // update recipients!!
@@ -1735,18 +1736,16 @@ SmartTemplate4.fileTemplates = {
     SmartTemplate4.initFlags(flags);
     if (fileTemplateSource.failed) {
       let text = SmartTemplate4.Util.getBundleString("st.fileTemplates.error.filePath");
-      SmartTemplate4.Message.display(
-        text.replace("{0}", theFileTemplate.label).replace("{1}", theFileTemplate.path),
-        "centerscreen,titlebar,modal,dialog",
-        { ok: function() {  
-                // get last composer window and bring to foreground
-                let composerWin = Services.wm.getMostRecentWindow("msgcompose");
-                if (composerWin)
-                  composerWin.focus();
-              }
-        }, 
-        ownerWin
-      );
+      await SmartTemplate4.Util.showSmartTemplatesMessage({
+        msg: text.replace("{0}", theFileTemplate.label).replace("{1}", `{P1}${theFileTemplate.path}{P2}`),
+        features: ["ok"],
+        // no direct callback support, so after awaiting, do the focus:
+      });
+
+      let composerWin = Services.wm.getMostRecentWindow("msgcompose");
+      if (composerWin) {
+        composerWin.focus();
+      }      
     } else {
       flags.isFragment = true;
       flags.isFileTemplate = true;
@@ -1954,33 +1953,29 @@ SmartTemplate4.fileTemplates = {
 		)
 	},
 	
-	readHTMLTemplateFile : function (template) {
+	readHTMLTemplateFile : async function (template) {
 		const Ci = Components.interfaces,
 					Cc = Components.classes,
 					util = SmartTemplate4.Util;	
 		// template.filePath = templateUrlToRealFilePath(template.url);
-		function toUnicode(charset, data) {
+		async function toUnicode(charset, data) {
 			let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
 			converter.charset = charset;
 			try {
 				return converter.ConvertToUnicode(data);
 			}
 			catch(ex) {
-				let parentWin = Services.wm.getMostRecentWindow("msgcompose"),
-				    errText = util.getBundleString("st.fileTemplates.error.charSet");
-				SmartTemplate4.Message.display(
-				  errText.replace("{1}", charset),
-					"centerscreen,titlebar,modal,dialog",
-				  { ok: function() {  
-					        // get last composer window and bring to foreground
-									let composerWin = Services.wm.getMostRecentWindow("msgcompose");
-									if (composerWin)
-										composerWin.focus();
-					      }
-					}, 
-					parentWin
-				);
-				return data.toString();
+        const errText = util.getBundleString("st.fileTemplates.error.charSet").replace("{1}", charset);
+      
+        await SmartTemplate4.Util.showSmartTemplatesMessage({
+          msg: errText,
+          features: ["ok"],
+        });
+      
+        const composerWin = Services.wm.getMostRecentWindow("msgcompose");
+        if (composerWin) composerWin.focus();
+      
+        return data.toString();
 			}
 		}						
 					
@@ -2077,7 +2072,7 @@ SmartTemplate4.fileTemplates = {
 						util.logDebugOptional("fileTemplates", "No charset found, defaulting to: " + charSet);
 					}
 					if (charSet) {
-						template.HTML = toUnicode(charSet, template.HTML);
+						template.HTML = await toUnicode(charSet, template.HTML);
             template.charset = charSet;
 					}
 				}
@@ -2095,7 +2090,7 @@ SmartTemplate4.fileTemplates = {
 	} ,
 	
   // retrieve a html structure from the file template
-	retrieveTemplate: function(aFileTemplateArmedEntry) {
+	retrieveTemplate: async function(aFileTemplateArmedEntry) {
 		const util = SmartTemplate4.Util;
 		let template = { 
 			Text: "", 
@@ -2105,7 +2100,7 @@ SmartTemplate4.fileTemplates = {
       failed: false,
       charset: null			
 		};
-		if (this.readHTMLTemplateFile(template)) {
+		if (await this.readHTMLTemplateFile(template)) {
 			try { 
 				// let HTMLEditor = gMsgCompose.editor.QueryInterface(Components.interfaces.nsIHTMLEditor);
 				let html = "";

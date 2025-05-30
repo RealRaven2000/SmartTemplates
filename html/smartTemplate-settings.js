@@ -2216,10 +2216,11 @@ async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
   });
 }
 
+
 async function showRegistrationDlg(feature) {
 	messenger.runtime.sendMessage({ 
     command: "showRegistrationDialog", 
-    feature: feature
+    addonfeatures: feature
   });
 }
 

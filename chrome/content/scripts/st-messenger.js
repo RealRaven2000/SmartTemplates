@@ -132,35 +132,6 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-installed":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashInstalled" });
         break;
-      case "smartTemplates-message": {
-          // replacer for SmartTemplate4.Message
-          let txt = "This is a simple test message";
-          const result = await SmartTemplates.Util.notifyTools.notifyBackground({
-            func: "stmessage",
-            msgIds: "newsMsgEsr140",
-            msg: txt,
-            features: ["ok", "licensing", "featurecomp"],
-          });
-          SmartTemplates.Util.logToConsole(`stmessage returned [${result}]`);
-        } 
-        break;
-      case "smartTemplates-message-legacy": // test legacy messages
-        // old version
-        SmartTemplates.Message.display(
-          "Legacy test message",
-          "centerscreen,titlebar,modal,dialog",
-          {
-            ok: function () {
-              // get last composer window and bring to foreground
-              Services.prompt.alert(window, "SmartTemplates Message", "Ok button pressed");
-            },
-            cancel: function () {
-              Services.prompt.alert(window, "SmartTemplates Message", "Window cancelled");
-            },
-          },
-          window
-        );
-        break;
       case "smartTemplates-support":
         SmartTemplates.Util.showSupportPage();
         break;
@@ -226,17 +197,36 @@ async function onLoad(activatedWhileWindowOpen) {
           context: params.context,
         });
         break;
-      case "smartTemplates-showMessage": // show a specific message
+      case "smartTemplates-showMessage": // show a specific message (legacy)
         SmartTemplates.Message.display(
           params.text,
           "centerscreen,titlebar,modal,dialog",
           {
             showLicenseButton: params.showLicenseButton,
             feature: params.feature,
-            ok: function () {},
+            ok: function () {
+              // get last composer window and bring to foreground
+              Services.prompt.alert(window, "SmartTemplates Message", "Ok button pressed");
+            },
+            cancel: function () {
+              Services.prompt.alert(window, "SmartTemplates Message", "Window cancelled");
+            },
           },
           SmartTemplates.Util.Mail3PaneWindow
         );
+        break;     
+      case "smartTemplates-message": // new [issue 378]
+        {
+          // replacer for SmartTemplate4.Message
+          let txt = "This is a simple test message";
+          const result = await SmartTemplates.Util.notifyTools.notifyBackground({
+            func: "stmessage",
+            msgIds: "newsMsgEsr140",
+            msg: txt,
+            features: ["ok", "licensing", "featurecomp"],
+          });
+          SmartTemplates.Util.logToConsole(`stmessage returned [${result}]`);
+        }
         break;
       case "smartTemplates-labelUpdate":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" });

@@ -2052,7 +2052,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         util.logException("classifyReservedWord(" + reservedWord + ")", ex);
         console.log(ex);
 				SmartTemplate4.Message.parentWindow = Services.wm.getMostRecentWindow("msgcompose");  // gMsgCompose.editor.document.defaultView;
-				util.displayInvalidToken(reservedWord, param || "");
+				await util.displayInvalidToken(reservedWord, param || "");
 				return "";
 			}
 		}
@@ -3694,7 +3694,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "css":
           //try our new method
           if (prefs.getMyBoolPref("vars.file.fileTemplateMethod")) {
-            let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate({
+            let tmpTemplate = await SmartTemplate4.fileTemplates.retrieveTemplate({
               composeType: composeType,
               path: newPath,
               label: "data inserted from " + (type == "css") ? "%style%" : "%file%",
