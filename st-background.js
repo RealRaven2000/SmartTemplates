@@ -571,7 +571,7 @@ async function addMenus(menuArray, context) {
                 menuRestrict.MAX_FREE_TEMPLATES.toString(), 
                 menuRestrict.MAX_STANDARD_TEMPLATES.toString()
               ]);
-            showSmartTemplatesMessage(null, ["ok", "licensing"], txt, "FileTemplatesRestricted");     
+            showSTmessage(null, ["ok", "licensing"], txt, "FileTemplatesRestricted");     
           }
         });
       }
@@ -943,9 +943,9 @@ async function updateSubMenus(messages, tab) {
   await messenger.menus.update("smartTemplates-forward-menu", {visible: isForward}); 
 }
 
-// this will replace SmartTemplate4.Message [issue 378]
+// this replaces SmartTemplate4.Message [issue 378]
 const MESSAGE_STORAGE_KEY = "SmartTemplate_Message_Key";
-const showSmartTemplatesMessage = async (
+const showSTmessage = async (
   messageIds,
   features,
   message = "",
@@ -1036,7 +1036,7 @@ async function displayUpdateMessage() {
       licenseMsgId = "newsMsg.license.none";
   }
   const transmitIds = messageIds ? `${messageIds},${licenseMsgId}` : licenseMsgId;
-  return showSmartTemplatesMessage(transmitIds, features);
+  return showSTmessage(transmitIds, features, "", "displayUpdateMessage");
 }
 
  
@@ -1614,12 +1614,12 @@ async function main() {
         const message = data.msg,
           messageIds = data.msgIds,
           mode = data.mode || "standard",
-          stfeature = data.stfeature || null,
+          referenceFeature = data.addonfeatures || null,
           features = data.features || ["ok"]; // minimum: an ok button. make array mutable
 
         switch(mode) {
           case "standard":
-            return showSmartTemplatesMessage(messageIds, features, message, stfeature);
+            return showSTmessage(messageIds, features, message, referenceFeature);
           case "news":
             return displayUpdateMessage();
           default:
