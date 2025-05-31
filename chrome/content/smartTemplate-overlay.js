@@ -2051,7 +2051,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 				// throws "hdr is null"
         util.logException("classifyReservedWord(" + reservedWord + ")", ex);
         console.log(ex);
-				SmartTemplate4.Message.parentWindow = Services.wm.getMostRecentWindow("msgcompose");  // gMsgCompose.editor.document.defaultView;
+				// SmartTemplate4.Message.parentWindow = Services.wm.getMostRecentWindow("msgcompose");  // gMsgCompose.editor.document.defaultView;
 				await util.displayInvalidToken(reservedWord, param || "");
 				return "";
 			}
