@@ -1120,7 +1120,7 @@ SmartTemplate4.Util = {
 
   displayNotAllowedMessage: async function (reservedWord) {
     // wrap variable in % but only if necessary
-    let decoratedWord =
+    const decoratedWord =
       (reservedWord[0] != "%" ? "%" : "") +
       reservedWord +
       (reservedWord[reservedWord.length - 1] != "%" ? "%" : "");
@@ -1128,8 +1128,8 @@ SmartTemplate4.Util = {
     if (SmartTemplate4.Preferences.isDebugOption("adressbook")) {
       debugger;
     }
-    let ErrorString1 = SmartTemplate4.Util.getBundleString("contextError");
-    let errorText = ErrorString1.replace("{1}", decoratedWord);
+    const ErrorString1 = SmartTemplate4.Util.getBundleString("contextError").replace(/\n/g, "{br}");
+    const errorText = ErrorString1.replace("{1}", decoratedWord);
 
     await SmartTemplate4.Util.showSmartTemplatesMessage({
       msg: errorText,
@@ -1141,7 +1141,9 @@ SmartTemplate4.Util = {
   displayInvalidToken: async function (reservedWord, params) {
     let theToken = `%${reservedWord + params}%`;
     console.warn("SmartTemplates - invalid token: " + theToken);
-    let errorText = SmartTemplate4.Util.getBundleString("tokenError", theToken);
+    let errorText = SmartTemplate4.Util.getBundleString("tokenError", theToken).replace(
+      /\n/g, "{br}"
+    );
     await SmartTemplate4.Util.showSmartTemplatesMessage({
       msg: errorText,
       features: ["ok"],
@@ -3735,7 +3737,7 @@ SmartTemplate4.Util = {
       });
       return result; // "ok", "cancel", "licensing", etc.
     } catch (ex) {
-      console.error("showSmartTemplatesMessage failed:", ex);
+      SmartTemplate4.Util.logException("showSmartTemplatesMessage failed:", ex);
       return null;
     }    
   },
@@ -4054,6 +4056,7 @@ SmartTemplate4.Message = {
   boundKeyListener: false,
   allowClose: false,
   
+  /* OBSOLETE */
 	loadMessage : async function () {
     const MSG = SmartTemplate4.Message;
     // get important state info from background!

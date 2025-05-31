@@ -469,6 +469,7 @@ var SmartTemplate4 = {
       if (fileTemplateSource.failed) {
         let text = util
           .getBundleString("st.fileTemplates.error.filePath")
+          .replace(/\n/g, "{br}")
           .replace("{0}", theFileTemplate.label)
           .replace("{1}", theFileTemplate.path);
 
@@ -551,7 +552,7 @@ var SmartTemplate4 = {
           let q1 = util.getBundleString("st.notification.editedChangeChallenge");
 
           const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
-            msg: w1.replace("{0}", fileTemplateSource.label) + "\n" + q1,
+            msg: w1.replace("{0}", fileTemplateSource.label) + "{br}" + q1,
             features: ["ok", "cancel"],
           });
 

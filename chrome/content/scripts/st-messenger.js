@@ -223,6 +223,7 @@ async function onLoad(activatedWhileWindowOpen) {
             func: "stmessage",
             msgIds: "newsMsgEsr140",
             msg: txt,
+            addonfeatures: "RefFeature",
             features: ["ok", "licensing", "featurecomp"],
           });
           SmartTemplates.Util.logToConsole(`stmessage returned [${result}]`);
@@ -251,7 +252,7 @@ async function onLoad(activatedWhileWindowOpen) {
         break;
       case "smartTemplates-registration":
         {
-          let featureName = params?.feature || "test menu";
+          let featureName = params?.feature || "";
           SmartTemplates.Util.showLicenseDialog(featureName);
         }
         break;
