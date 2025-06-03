@@ -1,7 +1,7 @@
 
 var sales_name = "EXTENDED SUMMER SALE"; // .saleName
 var sales_start_lbl = "May 2nd;" // .saleStart
-var sales_end_lbl = "June 6th";  // .saleEnd
+var sales_end_lbl = "June 13th";  // .saleEnd
 var sales_end = new Date("2025-06-13");
 
 /* functions that remove elements depending on the user type (from user=pro querystring ) */
