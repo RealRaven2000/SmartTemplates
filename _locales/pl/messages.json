@@ -932,7 +932,7 @@
     }
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Ważne:{boldEnd} Ta aktualizacja naprawia błąd, przez który przycisk „Odnów licencję” prowadził do strony produktu w pełnej cenie, zamiast oferować zniżkę na odnowienie. Jeśli zostałeś dotknięty tym problemem, a szczególnie jeśli przypadkowo kupiłeś licencję SmartTemplates Standard zamiast odnowić wersję Pro, prosimy {support licensing}skontaktuj się z pomocą techniczną{supportEnd} — z przyjemnością dostarczymy Ci bezpłatną aktualizację do wersji Pro. Z góry dziękujemy za podanie ostatniego klucza licencyjnego lub numeru zamówienia! [issue 375]{P2}"
+    "message": "{P1}{boldStart}Ważne:{boldEnd} Thunderbird przechodzi na miesięczny model wydań. SmartTemplates w pełni wspiera zarówno kanał miesięczny, jak i wersję ESR, dzięki czemu możesz pozostać produktywny — niezależnie od wybranej ścieżki.{P2}{P1} Ta aktualizacja naprawia również błąd, w którym przycisk „Odnów licencję” prowadził do strony produktu w pełnej cenie zamiast oferować odnowienie z rabatem. Jeśli zostałeś dotknięty tym problemem — szczególnie jeśli przypadkowo kupiłeś standardową licencję SmartTemplates zamiast odnowić Pro — prosimy {support licensing}skontaktuj się z pomocą techniczną{supportEnd}; z przyjemnością zaoferujemy bezpłatną aktualizację do wersji Pro. Z góry dziękujemy za dołączenie ostatniego klucza licencyjnego lub numeru zamówienia! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Ponieważ cała praca nad SmartTemplates i darmowe wsparcie są finansowane wyłącznie ze sprzedaży licencji, proszę rozważyć zakup licencji lub przedłużenie obecnej."
@@ -2030,7 +2030,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{headStart}Pilna aktualizacja konserwacyjna 4.12 – Poprawka błędu licencji{headEnd}{L1}Naprawiono błąd, przez który przyciski 'Odnów licencję' i 'Przedłuż licencję' otwierały stronę produktu w pełnej cenie, zamiast zastosować zniżkę za odnowienie. Problem dotyczył użytkowników SmartTemplates Pro próbujących odnowić lub przedłużyć licencję. [issue 375] [issue 377]{L2}{L1}Jeśli problem Cię dotknął, zapoznaj się z sekcją powyżej zawierającą informacje o zwrotach / darmowych aktualizacjach i wsparciu. {L2}"
+    "message": "{headStart}Przyszła kompatybilność Thunderbirda i harmonogram ESR{headEnd}{L1} SmartTemplates jest teraz w pełni kompatybilny z Thunderbirdem 140, przygotowując się do nadchodzącej rocznej wersji ESR Thunderbirda, spodziewanej w ciągu następnego miesiąca (czerwiec / lipiec 2025). Użytkownicy, którzy zdecydują się na comiesięczny kanał aktualizacji Thunderbirda, mogą być spokojni: SmartTemplates będzie nadal dostarczać kompatybilne, stabilne wersje co miesiąc.{L2}{L1} Zmodernizowane wewnętrzne okna dialogowe: zastąpiono starsze okna XHTML natywnymi wyskakującymi oknami Thunderbirda dla lepszego wyglądu i kompatybilności. Jest to część ciągłych działań mających na celu usunięcie przestarzałej (eksperymentalnej) technologii z dodatku [issue 378]{L2}{L1} Poprawka zarządzania licencjami: kliknięcie 'Przedłuż licencję' dla dowolnej licencji teraz poprawnie otwiera odpowiadającą stronę produktu, zamiast błędnie otwierać ekran nowej licencji. [issue 377]{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

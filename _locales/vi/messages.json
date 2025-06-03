@@ -284,7 +284,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{headStart}Cập nhật bảo trì khẩn cấp 4.12 – Sửa lỗi giấy phép{headEnd}{L1}Đã sửa lỗi khiến các nút 'Gia hạn giấy phép' và 'Mở rộng giấy phép' mở trang sản phẩm với giá gốc thay vì áp dụng chiết khấu gia hạn. Lỗi này ảnh hưởng đến người dùng SmartTemplates Pro khi cố gắng gia hạn hoặc mở rộng giấy phép. [issue 375] [issue 377]{L2}{L1}Nếu bạn bị ảnh hưởng, vui lòng kiểm tra phần bên trên để biết thông tin về hoàn tiền / nâng cấp miễn phí và hỗ trợ. {L2}"
+    "message": "{headStart}Майбутня сумісність Thunderbird та план ESR{headEnd}{L1} SmartTemplates тепер повністю сумісний із Thunderbird 140 у рамках підготовки до наступного щорічного випуску Thunderbird ESR, який очікується протягом наступного місяця (червень / липень 2025). Користувачі, які обрали щомісячний канал оновлень Thunderbird, можуть бути впевнені: SmartTemplates й надалі буде випускати сумісні та стабільні версії щомісяця.{L2}{L1} Модернізовані внутрішні діалоги: застарілі вікна на основі XHTML замінено на рідні спливаючі вікна Thunderbird для покращеного вигляду та сумісності. Це частина постійних зусиль із видалення застарілих (експериментальних) технологій із доповнення [issue 378]{L2}{L1} Виправлення керування ліцензіями: тепер при натисканні «Подовжити ліцензію» для будь-якої ліцензії відкривається відповідна сторінка продукту, а не екран нової ліцензії. [issue 377]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

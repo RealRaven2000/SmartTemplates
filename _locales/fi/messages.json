@@ -937,7 +937,7 @@
     }
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Tärkeää:{boldEnd} Tämä päivitys korjaa virheen, jossa 'Uusi lisenssi' -painike johti täysihintaiseen tuotesivuun sen sijaan, että olisi tarjonnut alennetun uusintahinnan. Jos tämä vaikutti sinuun, erityisesti jos ostit vahingossa SmartTemplates Standard -lisenssin etkä uusinut Pro-versiota, ole hyvä ja {support licensing}ota yhteyttä tukeen{supportEnd} — tarjoamme mielellämme ilmaisen päivityksen Pro-versioon. Kiitos, jos liität mukaan viimeisimmän lisenssiavaimesi tai tilausnumerosi! [issue 375]{P2}"
+    "message": "{P1}{boldStart}Tärkeää:{boldEnd} Thunderbird siirtyy kuukausittaiseen julkaisumalliin. SmartTemplates tukee täysin sekä kuukausittaista kanavaa että ESR-versiota, joten voit pysyä tuottavana — valitsitpa kumman tahansa polun.{P2}{P1} Tämä päivitys korjaa myös virheen, jossa 'Uusi lisenssi' -painike johti täyden hinnan tuotesivulle sen sijaan, että olisi tarjonnut alennetun uusinnan. Jos tämä vaikutti sinuun — erityisesti jos ostit vahingossa SmartTemplates Standard -lisenssin Pro-uusinnan sijaan — ota yhteyttä {support licensing}tukeen{supportEnd}; tarjoamme mielellämme ilmaisen päivityksen Pro-versioon. Kiitos etukäteen, kun liität mukaan viimeisimmän lisenssiavaimesi tai tilausnumerosi! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Koska kaikki työ SmartTempaltessin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."
@@ -2049,7 +2049,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{headStart}Kiireellinen ylläpitopäivitys 4.12 – Lisenssivirheen korjaus{headEnd}{L1}Korjattiin virhe, jossa 'Uusi lisenssi' ja 'Laajenna lisenssi' -painikkeet ohjasivat väärin täyden hinnan tuotesivulle sen sijaan, että olisivat käyttäneet uusintahintaa. Tämä vaikutti SmartTemplates Pro -käyttäjiin, jotka yrittivät uusia tai laajentaa lisenssinsä. [issue 375] [issue 377]{L2}{L1}Jos ongelma vaikutti sinuun, katso lisätietoja hyvityksistä / ilmaisista päivityksistä ja tuesta yllä olevasta osiosta. {L2}"
+    "message": "{headStart}Tulevaisuuden Thunderbird-yhteensopivuus ja ESR-suunnitelma{headEnd}{L1} SmartTemplates on nyt täysin yhteensopainen Thunderbird 140:n kanssa valmistauduttaessa seuraavaan vuosittaiseen Thunderbird ESR -julkaisuun, joka odotetaan seuraavan kuukauden aikana (kesäkuu / heinäkuu 2025). Käyttäjät, jotka valitsevat Thunderbirds kuukausittaisen päivityskanavan, voivat olla rauhallisin mielin: SmartTemplates jatkaa yhteensopivien ja vakaiden julkaisujen toimittamista joka kuukausi.{L2}{L1} Modernisoidut sisäiset valintaikkunat: perinteiset XHTML-ikkunat on korvattu natiiveilla Thunderbird-popup-ikkunoilla parannetun ulkonäön ja yhteensopivuuden vuoksi. Tämä on osa jatkuvaa pyrkimystä poistaa vanhentuneita (kokeellisia) teknologioita lisäosasta [issue 378]{L2}{L1} Lisenssinhallinnan korjaus: 'Laajenna lisenssi' -painikkeen napsautus avaa nyt oikein vastaavan tuotteen sivun sen sijaan, että se avaisi virheellisesti uuden lisenssin näytön. [issue 377]{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

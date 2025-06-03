@@ -931,7 +931,7 @@
     }
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Belangrijk:{boldEnd} Deze update lost een fout op waarbij de knop 'Licentie verlengen' leidde naar de productpagina met de volledige prijs in plaats van het aanbieden van de verlengingskorting. Als je hierdoor bent getroffen, en vooral als je per ongeluk een SmartTemplates Standard-licentie hebt gekocht in plaats van Pro te verlengen, {support licensing}neem dan contact op met de ondersteuning{supportEnd} — we geven je graag een gratis upgrade naar Pro. Bedankt als je je laatste licentiesleutel of bestelnummer meestuurt! [issue 375]{P2}"
+    "message": "{P1}{boldStart}Belangrijk:{boldEnd} Thunderbird stapt over op een maandelijks uitgave-model. SmartTemplates ondersteunt zowel het maandelijkse kanaal als de ESR-versie volledig, zodat je productief kunt blijven—ongeacht welk traject je kiest.{P2}{P1} Deze update lost ook een fout op waarbij de knop ‘Licentie vernieuwen’ leidde naar de productpagina tegen de volledige prijs in plaats van de gereduceerde verlenging aan te bieden. Als je hierdoor bent getroffen—vooral als je per ongeluk een SmartTemplates Standaard-licentie hebt gekocht in plaats van je Pro te verlengen—{support licensing}neem dan contact op met de ondersteuning{supportEnd}; we helpen je graag met een gratis upgrade naar Pro. Hartelijk dank alvast dat je je laatste licentiesleutel of bestelnummer bijvoegt! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Aangezien al het werk aan SmartTemplates en de gratis ondersteuning uitsluitend wordt gefinancierd door licentieverkopen, overweeg dan een licentie aan te schaffen of uw huidige licentie te verlengen."
@@ -2016,7 +2016,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{headStart}Dringende onderhoudsupdate 4.12 – Licentiefout opgelost{headEnd}{L1}Er is een fout opgelost waarbij de knoppen 'Licentie verlengen' en 'Licentie uitbreiden' ten onrechte de productpagina met de volledige prijs openden in plaats van de verlengingskorting toe te passen. Dit trof SmartTemplates Pro-gebruikers die hun licentie wilden vernieuwen of uitbreiden. [issue 375] [issue 377]{L2}{L1}Als je hierdoor bent getroffen, raadpleeg dan het bovenstaande gedeelte voor informatie over terugbetalingen / gratis upgrades en ondersteuning. {L2}"
+    "message": "{headStart}Toekomstige Thunderbird-compatibiliteit en ESR-roadmap{headEnd}{L1} SmartTemplates is nu volledig compatibel met Thunderbird 140 ter voorbereiding op de aankomende jaarlijkse Thunderbird ESR, verwacht binnen de komende maand (juni / juli 2025). Gebruikers die kiezen voor het maandelijkse updatekanaal van Thunderbird kunnen gerust zijn: SmartTemplates blijft elke maand compatibele, stabiele releases leveren.{L2}{L1} Gemoderniseerde interne dialogen: legacy XHTML-vensters zijn vervangen door native Thunderbird-popups voor verbeterde uitstraling en compatibiliteit. Dit is onderdeel van de voortdurende inspanning om legacy (experimentele) technologie uit de add-on te verwijderen [issue 378]{L2}{L1} Licentiebeheerfix: Klikken op 'Licentie verlengen' opent nu correct de bijbehorende productpagina, in plaats van foutief het nieuwe licentie-scherm te openen. [issue 377]{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

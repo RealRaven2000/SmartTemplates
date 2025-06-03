@@ -910,7 +910,7 @@
     }
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Importante:{boldEnd} Questo aggiornamento corregge un bug per cui il pulsante 'Rinnova licenza' reindirizzava alla pagina del prodotto a prezzo pieno invece di offrire il rinnovo scontato. Se sei stato interessato, e in particolare se hai acquistato per errore una licenza SmartTemplates Standard invece di rinnovare la Pro, ti preghiamo di {support licensing}contattare il supporto{supportEnd} — saremo felici di offrirti un aggiornamento gratuito a Pro. Grazie in anticipo per includere la tua ultima chiave di licenza o numero d'ordine! [issue 375]{P2}"
+    "message": "{P1}{boldStart}Importante:{boldEnd} Thunderbird sta passando a un modello di rilascio mensile. SmartTemplates supporta completamente sia il canale mensile che il percorso ESR, quindi puoi rimanere produttivo — qualunque percorso tu scelga.{P2}{P1} Questo aggiornamento corregge anche un bug in cui il pulsante 'Rinnova Licenza' portava alla pagina del prodotto a prezzo pieno invece di offrire il rinnovo scontato. Se sei stato interessato — soprattutto se hai acquistato per errore una licenza Standard di SmartTemplates invece di rinnovare la Pro — ti preghiamo di {support licensing}contattare il supporto{supportEnd}; saremo lieti di fornirti un aggiornamento gratuito a Pro. Grazie in anticipo per aver incluso la tua ultima chiave di licenza o numero d'ordine! [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "Poiché tutto il lavoro su SmartTemplates e il supporto gratuito sono finanziati esclusivamente dalle vendite di licenze, si prega di considerare l'acquisto di una licenza o il rinnovo della licenza attuale."
@@ -1980,7 +1980,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{headStart}Aggiornamento urgente di manutenzione 4.12 – Correzione bug licenza{headEnd}{L1}Corretto un bug per cui i pulsanti 'Rinnova licenza' e 'Estendi licenza' aprivano erroneamente la pagina del prodotto a prezzo pieno invece di applicare lo sconto per rinnovo. Il problema ha interessato gli utenti di SmartTemplates Pro che cercavano di rinnovare o estendere la propria licenza. [issue 375] [issue 377]{L2}{L1}Se sei stato interessato, consulta la sezione sopra per informazioni su rimborsi / aggiornamenti gratuiti e supporto. {L2}"
+    "message": "{headStart}Compatibilità futura di Thunderbird e roadmap ESR{headEnd}{L1} SmartTemplates è ora completamente compatibile con Thunderbird 140 in preparazione della prossima ESR annuale di Thunderbird, prevista per il prossimo mese (giugno / luglio 2025). Gli utenti che optano per il canale di aggiornamento mensile di Thunderbird possono stare tranquilli: SmartTemplates continuerà a fornire release compatibili e stabili ogni mese.{L2}{L1} Dialoghi interni modernizzati: le finestre XHTML legacy sono state sostituite da popup nativi di Thunderbird per un aspetto e una compatibilità migliorati. Questo fa parte dello sforzo continuo di rimuovere la tecnologia legacy (sperimentale) dall’add-on [issue 378]{L2}{L1} Correzione gestione licenze: cliccando su 'Estendi licenza' per qualsiasi licenza ora si apre correttamente la pagina del prodotto corrispondente, invece di aprire erroneamente la schermata nuova licenza. [issue 377]{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

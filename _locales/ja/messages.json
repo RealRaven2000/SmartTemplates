@@ -932,7 +932,7 @@
     }
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} このアップデートでは、「ライセンスを更新」ボタンが割引更新ではなく正規価格の製品ページに遷移してしまうバグを修正しました。もし影響を受けた場合、特に SmartTemplates Pro を更新するつもりが誤って Standard ライセンスを購入された場合は、{support licensing}サポートにご連絡ください{supportEnd} — Pro への無料アップグレードをご提供いたします。お手数ですが、最後に使用したライセンスキーまたは注文番号をご記載ください。ありがとうございます！ [issue 375]{P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbirdは月次リリースモデルへの移行を進めています。SmartTemplatesは、月次チャンネルとESRトラックの両方を完全にサポートしており、どちらのパスを選択しても生産性を維持できます。{P2}{P1} このアップデートでは、「ライセンスを更新」ボタンが割引更新を提供する代わりに定価の製品ページに誘導されるバグも修正されています。影響を受けた場合 — 特に、Proの更新の代わりに誤ってSmartTemplatesのスタンダードライセンスを購入した場合 — {support licensing}サポートにお問い合わせください{supportEnd}。Proへの無料アップグレードを喜んで提供いたします。最後のライセンスキーまたは注文番号をお知らせいただければ幸いです！ [issue 375]{P2}"
   },
   "newsSection.license": {
     "message": "SmartTemplates のすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
@@ -2008,7 +2008,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{headStart}緊急メンテナンスアップデート 4.12 – ライセンスバグ修正{headEnd}{L1}「ライセンスを更新」と「ライセンスを延長」ボタンが、更新割引を適用せずに定価の製品ページを開いてしまうバグを修正しました。この問題は、ライセンスの更新または延長を試みた SmartTemplates Pro ユーザーに影響しました。 [issue 375] [issue 377]{L2}{L1}影響を受けた方は、上記セクションの返金 / 無料アップグレードおよびサポートに関する情報をご確認ください。 {L2}"
+    "message": "{headStart}Compatibilità futura di Thunderbird e roadmap ESR{headEnd}{L1} SmartTemplates è ora completamente compatibile con Thunderbird 140 in preparazione della prossima ESR annuale di Thunderbird, prevista per il prossimo mese (giugno / luglio 2025). Gli utenti che optano per il canale di aggiornamento mensile di Thunderbird possono stare tranquilli: SmartTemplates continuerà a fornire release compatibili e stabili ogni mese.{L2}{L1} Dialoghi interni modernizzati: le finestre XHTML legacy sono state sostituite da popup nativi di Thunderbird per un aspetto e una compatibilità migliorati. Questo fa parte dello sforzo continuo di rimuovere la tecnologia legacy (sperimentale) dall’add-on [issue 378]{L2}{L1} Correzione gestione licenze: cliccando su 'Estendi licenza' per qualsiasi licenza ora si apre correttamente la pagina del prodotto corrispondente, invece di aprire erroneamente la schermata nuova licenza. [issue 377]{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"
