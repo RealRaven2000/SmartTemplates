@@ -923,16 +923,7 @@
     "message": "{P1} Gràcies per donar suport a SmartTemplates amb una llicència Pro — això fa possibles totes les noves funcions, correccions d'errors i compatibilitat a llarg termini.{P2}"
   },
   "newsSection.intro": {
-    "message": "{P1}La darrera versió de $addonName$ ja és compatible amb Thunderbird ($compatibleVer$).{P2}{P1}Ens estem preparant per a Thunderbird 140, la propera versió ESR (Alliberament amb Suport Estès), prevista per al juny. $addonName$ continuarà seguint el cicle de llançaments mensuals per garantir la compatibilitat i estabilitat contínues.{P2}",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      },
-      "compatibleVer": {
-        "content": "$2"
-      }
-    }
+    "message": "{P1}Continuem seguint el cicle de versions mensuals de Thunderbird per garantir la compatibilitat i l'estabilitat. Com sempre, aquesta feina es finança íntegrament mitjançant la venda de llicències.{P2}"
   },
   "newsSection.important": {
     "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird està fent la transició a un model de llançament mensual. SmartTemplates admet completament tant el canal mensual com el camí ESR, perquè pugueu mantenir-vos productius —sigui quin sigui el camí que trieu.{P2}{P1} Aquesta actualització també corregeix un error on el botó 'Renova la llicència' conduïa a la pàgina de producte a preu complet en lloc d'oferir la renovació amb descompte. Si us heu vist afectats —especialment si heu comprat accidentalment una llicència estàndard de SmartTemplates en lloc de renovar la Pro— si us plau, {support licensing}contacteu amb el suport{supportEnd}; estarem encantats de proporcionar-vos una actualització gratuïta a Pro. Gràcies per incloure la vostra última clau de llicència o número de comanda! [issue 375]{P2}"

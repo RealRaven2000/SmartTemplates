@@ -925,16 +925,7 @@
     "message": "{P1} Kiitos, että tuet SmartTemplatesia Pro-lisenssillä — tämä tekee mahdolliseksi kaikki uudet ominaisuudet, virhekorjaukset ja pitkäaikaisen yhteensopivuuden.{P2}"
   },
   "newsSection.intro": {
-    "message": "{P1}Uusin versio $addonName$-laajennuksesta on nyt yhteensopiva Thunderbirdin version ($compatibleVer$) kanssa.{P2}{P1}Valmistaudumme Thunderbird 140 -versioon, joka on seuraava merkittävä ESR-julkaisu (Extended Support Release) ja jonka odotetaan ilmestyvän kesäkuussa. $addonName$ jatkaa kuukausittaista julkaisusykliä varmistaakseen jatkuvan yhteensopivuuden ja vakauden.{P2}",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      },
-      "compatibleVer": {
-        "content": "$2"
-      }
-    }
+    "message": "{P1}Seuraamme edelleen Thunderbirdin kuukausittaista julkaisusykliä varmistaaksemme yhteensopivuuden ja vakauden. Kuten aina, tämä työ rahoitetaan kokonaan lisenssimyynnillä.{P2}"
   },
   "newsSection.important": {
     "message": "{P1}{boldStart}Tärkeää:{boldEnd} Thunderbird siirtyy kuukausittaiseen julkaisumalliin. SmartTemplates tukee täysin sekä kuukausittaista kanavaa että ESR-versiota, joten voit pysyä tuottavana — valitsitpa kumman tahansa polun.{P2}{P1} Tämä päivitys korjaa myös virheen, jossa 'Uusi lisenssi' -painike johti täyden hinnan tuotesivulle sen sijaan, että olisi tarjonnut alennetun uusinnan. Jos tämä vaikutti sinuun — erityisesti jos ostit vahingossa SmartTemplates Standard -lisenssin Pro-uusinnan sijaan — ota yhteyttä {support licensing}tukeen{supportEnd}; tarjoamme mielellämme ilmaisen päivityksen Pro-versioon. Kiitos etukäteen, kun liität mukaan viimeisimmän lisenssiavaimesi tai tilausnumerosi! [issue 375]{P2}"

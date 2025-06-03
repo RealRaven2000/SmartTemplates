@@ -919,16 +919,7 @@
     "message": "{P1} 感謝您透過專業版授權支持 SmartTemplates——這使得所有新功能、錯誤修正與長期相容性成為可能。{P2}"
   },
   "newsSection.intro": {
-    "message": "{P1}$addonName$ 的最新版本現在已相容於 Thunderbird ($compatibleVer$)。{P2}{P1}我們正準備迎接 Thunderbird 140，這是預計於六月推出的下一個主要 ESR（延長支援版本）。$addonName$ 將繼續維持每月發布週期，以確保持續的相容性與穩定性。{P2}",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      },
-      "compatibleVer": {
-        "content": "$2"
-      }
-    }
+    "message": "{P1}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{P2}"
   },
   "newsSection.important": {
     "message": "{P1}{boldStart}重要提示：{boldEnd} Thunderbird 正在過渡到每月發布模式。SmartTemplates 完全支援每月版本渠道與 ESR 版本，讓您無論選擇哪條路線，都能保持高效率。{P2}{P1} 此次更新亦修正了「續期授權」按鈕會導向全價產品頁面，未提供折扣續期的問題。若您受到影響——尤其是誤購了 SmartTemplates 標準授權而非續期 Pro——請 {support licensing}聯絡支援{supportEnd}；我們很樂意為您提供免費的 Pro 版升級。提前感謝您提供最後的授權密鑰或訂單號！[issue 375]{P2}"

@@ -922,16 +922,7 @@
     "message": "{P1} 感谢您通过专业版许可证支持 SmartTemplates —— 这使所有新功能、错误修复和长期兼容性成为可能。{P2}"
   },
   "newsSection.intro": {
-    "message": "{P1}$addonName$ 的最新版本现已兼容 Thunderbird ($compatibleVer$)。{P2}{P1}我们正在为 Thunderbird 140 做准备，这是下一版主要的 ESR（扩展支持版本），预计将于六月发布。$addonName$ 将继续采用每月发布周期，以确保持续的兼容性和稳定性。{P2}",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      },
-      "compatibleVer": {
-        "content": "$2"
-      }
-    }
+    "message": "{P1}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{P2}"
   },
   "newsSection.important": {
     "message": "{P1}{boldStart}重要提示：{boldEnd} Thunderbird 正在过渡到每月发布模式。SmartTemplates 完全支持每月版本渠道和 ESR 版本，让您无论选择哪条路线都能保持高效。{P2}{P1} 本次更新还修复了“续费许可证”按钮跳转到全价产品页面，而非提供折扣续费的问题。如果您受到影响——尤其是误购了 SmartTemplates 标准版许可证而非续费 Pro 版——请 {support licensing}联系支持团队{supportEnd}；我们很乐意为您提供免费的 Pro 版升级。提前感谢您提供最后一次的许可证密钥或订单号！[issue 375]{P2}"

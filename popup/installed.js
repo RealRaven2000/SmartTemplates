@@ -77,7 +77,7 @@ addEventListener("load", async (event) => {
 
   ariaPoliteUpdate(
     document.getElementById("newsIntro"),
-    formatAll(messenger.i18n.getMessage("newsSection.intro", [addonName, compatibleVer])),
+    formatAll(messenger.i18n.getMessage("newsSection.intro")),
     true
   );
 

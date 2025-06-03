@@ -910,16 +910,7 @@
     "message": "{P1} Hvala, ker podpirate SmartTemplates s Pro licenco — to omogoča vse nove funkcije, popravke in dolgoročno združljivost.{P2}"
   },
   "newsSection.intro": {
-    "message": "{P1}Najnovejša različica $addonName$ je zdaj združljiva s Thunderbirdom ($compatibleVer$).{P2}{P1}Pripravljamo se na Thunderbird 140, naslednjo glavno izdajo ESR (Extended Support Release), ki je predvidena za junij. $addonName$ bo še naprej sledil mesečnemu ciklu izdaj za zagotavljanje združljivosti in stabilnosti.{P2}",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      },
-      "compatibleVer": {
-        "content": "$2"
-      }
-    }
+    "message": "{P1}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{P2}"
   },
   "newsSection.important": {
     "message": "{P1}{boldStart}Pomembno:{boldEnd} Thunderbird prehaja na mesečni model izdaj. SmartTemplates v celoti podpira tako mesečni kanal kot ESR različico, zato lahko ostanete produktivni — ne glede na izbiro poti.{P2}{P1} Ta posodobitev prav tako odpravi napako, kjer je gumb »Podaljšaj licenco« vodil na stran izdelka s polno ceno namesto, da bi ponudil obnovitev z popustom. Če vas je to prizadelo — še posebej, če ste pomotoma kupili standardno licenco SmartTemplates namesto podaljšanja Pro — prosimo, {support licensing}kontaktirajte podporo{supportEnd}; z veseljem vam bomo zagotovili brezplačno nadgradnjo na Pro. Hvala vnaprej, da priložite svojo zadnjo licenčno ključ ali številko naročila! [issue 375]{P2}"

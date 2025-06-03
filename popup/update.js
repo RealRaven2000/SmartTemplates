@@ -198,7 +198,7 @@ END LICENSE BLOCK */
       true
     );
 
-    const introText = messenger.i18n.getMessage("newsSection.intro", [addonName, compatibleVer]);
+    const introText = messenger.i18n.getMessage("newsSection.intro");
     const importantText = messenger.i18n.getMessage("newsSection.important");
 
     const newsIntro = document.getElementById("newsIntro");

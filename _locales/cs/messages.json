@@ -913,16 +913,7 @@
     "message": "{P1} Děkujeme, že podporujete SmartTemplates prostřednictvím Pro licence — to umožňuje všechny nové funkce, opravy chyb a dlouhodobou kompatibilitu.{P2}"
   },
   "newsSection.intro": {
-    "message": "{P1}Nejnovější verze $addonName$ je nyní kompatibilní s Thunderbirdem ($compatibleVer$).{P2}{P1}Připravujeme se na Thunderbird 140, další hlavní ESR verzi (Extended Support Release), která se očekává v červnu. $addonName$ bude i nadále sledovat měsíční cyklus vydávání, aby byla zajištěna kompatibilita a stabilita.{P2}",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      },
-      "compatibleVer": {
-        "content": "$2"
-      }
-    }
+    "message": "{P1}Stále sledujeme měsíční cyklus vydávání Thunderbird, abychom zajistili kompatibilitu a stabilitu. Tato práce je jako vždy plně financována z prodeje licencí.{P2}"
   },
   "newsSection.important": {
     "message": "{P1}{boldStart}Důležité:{boldEnd} Thunderbird přechází na měsíční model vydávání. SmartTemplates plně podporuje jak měsíční kanál, tak i ESR verzi, takže můžete zůstat produktivní — bez ohledu na zvolenou cestu.{P2}{P1} Tato aktualizace také opravuje chybu, kdy tlačítko 'Obnovit licenci' vedlo na stránku s plnou cenou produktu místo nabídky zlevněné obnovy. Pokud jste byli postiženi — zejména pokud jste omylem zakoupili standardní licenci SmartTemplates místo obnovy Pro — prosím, {support licensing}kontaktujte podporu{supportEnd}; rádi vám poskytneme bezplatný upgrade na Pro. Děkujeme předem za uvedení vašeho posledního licenčního klíče nebo čísla objednávky! [issue 375]{P2}"
