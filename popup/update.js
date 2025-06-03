@@ -87,7 +87,7 @@ END LICENSE BLOCK */
       addonVer = manifest.version,
       appVer = browserInfo.version,
       remindInDays = 10;
-    const expiry = messenger.i18n.getMessage("special-offer-expiry");
+    const salesEnd = messenger.i18n.getMessage("special-offer-expiry");
 
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
@@ -119,7 +119,7 @@ END LICENSE BLOCK */
     ariaPoliteUpdate(
       specialOffer,
       messenger.i18n
-        .getMessage("special-offer-content", [expiry, discountRate.discountPro])
+        .getMessage("special-offer-content", [salesEnd, discountRate.discountPro])
         .replace(/\{boldStart\}/g, "<b>")
         .replace(/\{boldEnd\}/g, "</b>")
         .replace(/\{linkStart\}/, "<a id='stdLink'>")
@@ -133,7 +133,7 @@ END LICENSE BLOCK */
       specialRenew,
       // note: expiry day is set in popup.js "sales_end" variable
       messenger.i18n
-        .getMessage("special-offer-renew", [expiry, discountRate.discountRenewal])
+        .getMessage("special-offer-renew", [salesEnd, discountRate.discountRenewal])
         .replace(/\{boldStart\}/g, "<b>")
         .replace(/\{boldEnd\}/g, "</b>"),
       true
@@ -144,7 +144,7 @@ END LICENSE BLOCK */
       specialOfferUpgrade,
       // note: expiry day is set in popup.js "sales_end" variable
       messenger.i18n
-        .getMessage("special-offer-upgrade", [expiry, discountRate.discountUpgrade])
+        .getMessage("special-offer-upgrade", [salesEnd, discountRate.discountUpgrade])
         .replace(/\{boldStart\}/g, "<b>")
         .replace(/\{boldEnd\}/g, "</b>")
         .replace(/\{linkStart\}/, "<a id='stdLink'>")
@@ -170,11 +170,6 @@ END LICENSE BLOCK */
       .replace("{name}", userName);
     updateWithSafeHtml(".specialOfferIntro", txtSI);
 
-    for (let el of elementsSI) {
-      el.textContent = "";
-      el.appendChild(parseHTMLFragment(txtSI));
-    }
-
     //
     const specialOfferStandard = document.getElementById("specialOfferStandard");
     ariaPoliteUpdate(
@@ -190,7 +185,7 @@ END LICENSE BLOCK */
     ariaPoliteUpdate(
       specialOfferTerms,
       messenger.i18n
-        .getMessage("license-standard-special-terms", [expiry])
+        .getMessage("license-standard-special-terms", [salesEnd])
         .replace(/\{boldStart\}/g, "<b>")
         .replace(/\{boldEnd\}/g, "</b>"),
       true

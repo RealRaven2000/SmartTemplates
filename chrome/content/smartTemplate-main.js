@@ -4,7 +4,7 @@
 /* import * as SmartTemplates_Discounts from "../../popup/sales.js";   */
 // Next Sale End Date  COPIED from sales.js until we find a better way
 var SmartTemplates_Discounts = {
-  sales_end: new Date("2025-06-06"),
+  sales_end: new Date("2025-06-13"),
   discountRate: {
     discountPro: "33%",
     discountUpgrade: "33%",
@@ -1116,8 +1116,6 @@ var SmartTemplate4 = {
     <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
       <menupopup>
         <menuitem id="smartTemplates-message" label="Test Message class" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-showMessage" label="Test Message class (legacy)" class="menuitem-iconic" 
-          oncommand="window.SmartTemplate4.doCommand(this,{text:'Legacy test message',showLicenseButton:true,feature:'pro feature'});"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-setNewsFlag" label="Set News Flag!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-registration" label="License Screen" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
