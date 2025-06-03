@@ -1717,9 +1717,9 @@
     "message": "Zadeva"
   },
   "special-offer-content": {
-    "message": "Nadgradite svoje funkcije in prihranite {boldStart} $reduction$ {boldEnd} z nakupom {linkStartPro}licence SmartTemplates Pro{linkEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
+    "message": "Nadgradite svoje funkcije in prihranite {boldStart} $reduction$ {boldEnd} z nakupom {linkStartPro}licence SmartTemplates Pro{linkEnd}! Ta posebna ponudba bo na voljo do {boldStart} $salesEnd$ {boldEnd}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "August 22"
       },
@@ -1730,7 +1730,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "6. junija"
+    "message": "13. junija"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
@@ -1751,9 +1751,9 @@
     }
   },
   "special-offer-renew": {
-    "message": "Podaljšajte licenco zdaj in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}.",
+    "message": "Podaljšajte licenco zdaj in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} $salesEnd$ {boldEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },
@@ -1764,9 +1764,9 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Nadgradite zdaj iz SmartTemplates Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
+    "message": "Nadgradite zdaj iz SmartTemplates Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$salesEnd${boldEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },

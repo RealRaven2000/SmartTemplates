@@ -1666,9 +1666,9 @@
     "message": "Betreff"
   },
   "special-offer-content": {
-    "message": "Upgraden Sie Ihre Funktionen und sparen Sie {boldStart}$reduction${boldEnd}, indem Sie eine {linkStartPro}SmartTemplates Pro-Lizenz{linkEnd} kaufen! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar. Oder wählen Sie die Standardfunktionen mit der neuen {linkStart}Standardlizenz{linkEnd}.",
+    "message": "Upgraden Sie Ihre Funktionen und sparen Sie {boldStart}$reduction${boldEnd}, indem Sie eine {linkStartPro}SmartTemplates Pro-Lizenz{linkEnd} kaufen! Dieses Sonderangebot ist bis zum {boldStart}$salesEnd${boldEnd} verfügbar. Oder wählen Sie die Standardfunktionen mit der neuen {linkStart}Standardlizenz{linkEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "August 22"
       },
@@ -1679,7 +1679,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "6. Juni"
+    "message": "13. Juni"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1700,9 +1700,9 @@
     }
   },
   "special-offer-renew": {
-    "message": "Erneuern Sie jetzt Ihre Lizenz und sparen Sie {boldStart}$reduction${boldEnd}! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar.",
+    "message": "Erneuern Sie jetzt Ihre Lizenz und sparen Sie {boldStart}$reduction${boldEnd}! Dieses Sonderangebot ist bis zum {boldStart}$salesEnd${boldEnd} verfügbar.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },
@@ -1713,9 +1713,9 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Jetzt von SmartTemplates Standard auf Pro upgraden und {boldStart}$reduction${boldEnd} sparen! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar.",
+    "message": "Jetzt von SmartTemplates Standard auf Pro upgraden und {boldStart}$reduction${boldEnd} sparen! Dieses Sonderangebot ist bis zum {boldStart}$salesEnd${boldEnd} verfügbar.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },

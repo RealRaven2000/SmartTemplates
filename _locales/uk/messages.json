@@ -1730,9 +1730,9 @@
     "message": "Тема"
   },
   "special-offer-content": {
-    "message": "Оновіть Ваші функції та збережіть {boldStart}$reduction${boldEnd} придбавши {linkStartPro}SmartTemplates Pro ліцензію{linkEnd}! Ця акція буде доступна до {boldStart}$expirydate${boldEnd}. Або оберіть стандартні функції із новою стандартною {linkStart}стандартною ліцензією{linkEnd}.",
+    "message": "Оновіть Ваші функції та збережіть {boldStart}$reduction${boldEnd} придбавши {linkStartPro}SmartTemplates Pro ліцензію{linkEnd}! Ця акція буде доступна до {boldStart}$salesEnd${boldEnd}. Або оберіть стандартні функції із новою стандартною {linkStart}стандартною ліцензією{linkEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "August 22"
       },
@@ -1743,7 +1743,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "6 червня"
+    "message": "13 червня"
   },
   "special-offer-head": {
     "message": "Допоможіть зберегти $addon$ сумісним",
@@ -1764,9 +1764,9 @@
     }
   },
   "special-offer-renew": {
-    "message": "Оновіть вашу ліцензію та збережіть {boldStart}$reduction${boldEnd}! Ця акція буде доступна до {boldStart}$expirydate${boldEnd}.",
+    "message": "Оновіть вашу ліцензію та збережіть {boldStart}$reduction${boldEnd}! Ця акція буде доступна до {boldStart}$salesEnd${boldEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },
@@ -1777,9 +1777,9 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Оновлення зараз із SmartTemplates Standard to Pro і збереження {boldStart}$reduction${boldEnd}! Ця спеціальна пропозиція буде доступна до {boldStart}$expirydate${boldEnd}.",
+    "message": "Оновлення зараз із SmartTemplates Standard to Pro і збереження {boldStart}$reduction${boldEnd}! Ця спеціальна пропозиція буде доступна до {boldStart}$salesEnd${boldEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },

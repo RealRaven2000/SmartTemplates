@@ -1761,7 +1761,7 @@
   "special-offer-content": {
     "message": "Upgrade your features and save {boldStart}$reduction${boldEnd} by buying a {linkStartPro}SmartTemplates Pro license{linkEnd}! This special offer is available until {boldStart}$salesEnd${boldEnd}. Or choose the standard functions with the new {linkStart}Standard License{linkEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "August 22"
       },
@@ -1772,7 +1772,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "June 6th"
+    "message": "June 13th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1793,9 +1793,9 @@
     }
   },
   "special-offer-renew": {
-    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$salesEnd${boldEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },
@@ -1806,9 +1806,9 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Upgrade now from SmartTemplates Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "Upgrade now from SmartTemplates Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$salesEnd${boldEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },
@@ -2082,7 +2082,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{headStart}Urgent Maintenance Update 4.12 – Licensing Bug Fix{headEnd}{L1}Fixed a bug where the 'Renew License' and 'Extend License' buttons incorrectly opened the full-price product page instead of applying the renewal discount. This affected SmartTemplates Pro users trying to renew or extend their license. [issue 375] [issue 377]{L2}{L1}If you were affected, please check the section above for refund / free upgrade details and support. {L2}{L1} SmartTemplates is now compatible with ESR 140!{L2}"
+    "message": "{headStart}Future Thunderbird Compatibility and ESR Roadmap{headEnd}{L1} SmartTemplates is now fully compatible with Thunderbird 140 in preparation for the upcoming annual Thunderbird ESR, expected within the next month (June / July 2025). Users who opt into Thunderbird’s monthly update channel can rest assured: SmartTemplates will continue to deliver compatible, stable releases every month.{L2}{L1} Modernized internal dialogs: replaced legacy XHTML-based windows with native Thunderbird popups for improved appearance and compatibility. This is part of the ongoing effort of removing legacy (experimental) technology from the Add-on [issue 378]{L2}{L1} License Management Fix: Clicking 'Extend License' for any license now correctly opens the matching product page, instead of incorrectly opening the New License screen. [issue 377]{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

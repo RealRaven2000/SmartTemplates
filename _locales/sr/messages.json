@@ -1696,9 +1696,9 @@
     "message": "Наслов"
   },
   "special-offer-content": {
-    "message": "Надоградите своје функције и уштедите {boldStart} $reduction$ {boldEnd} куповином лиценце {linkStartPro}SmartTemplates Pro{linkEnd}! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
+    "message": "Надоградите своје функције и уштедите {boldStart} $reduction$ {boldEnd} куповином лиценце {linkStartPro}SmartTemplates Pro{linkEnd}! Ова посебна понуда биће доступна до {boldStart} $salesEnd$ {boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "August 22"
       },
@@ -1709,7 +1709,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "6. јун"
+    "message": "13. јун"
   },
   "special-offer-head": {
     "message": "Помозите да $addon$ буде компатибилан",
@@ -1730,9 +1730,9 @@
     }
   },
   "special-offer-renew": {
-    "message": "Обновите лиценцу сада и уштедите {boldStart}$reduction${boldEnd}! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}.",
+    "message": "Обновите лиценцу сада и уштедите {boldStart}$reduction${boldEnd}! Ова посебна понуда биће доступна до {boldStart} $salesEnd$ {boldEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },
@@ -1743,9 +1743,9 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Надоградите сада са SmartTemplates Standard на Про и уштедите {smartTemplatesRenew}$reduction${boldEnd}! Ова посебна понуда биће доступна до {smartTemplatesRenew}$expirydate${boldEnd}.",
+    "message": "Надоградите сада са SmartTemplates Standard на Про и уштедите {smartTemplatesRenew}$reduction${boldEnd}! Ова посебна понуда биће доступна до {smartTemplatesRenew}$salesEnd${boldEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },

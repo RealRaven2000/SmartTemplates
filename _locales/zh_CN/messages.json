@@ -1712,9 +1712,9 @@
     "message": "主题"
   },
   "special-offer-content": {
-    "message": "通过购买 {linkStartPro}SmartTemplates Pro{linkEnd} 许可证升级您的功能并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 选择标准功能。",
+    "message": "通过购买 {linkStartPro}SmartTemplates Pro{linkEnd} 许可证升级您的功能并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$salesEnd${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 选择标准功能。",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "August 22"
       },
@@ -1725,7 +1725,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "6月6日"
+    "message": "6月13日"
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1746,9 +1746,9 @@
     }
   },
   "special-offer-renew": {
-    "message": "立即续订您的许可证并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
+    "message": "立即续订您的许可证并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$salesEnd${boldEnd}。",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },
@@ -1759,9 +1759,9 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "立即从 SmartTemplates Standard 升级到 Pro 并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
+    "message": "立即从 SmartTemplates Standard 升级到 Pro 并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$salesEnd${boldEnd}。",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },

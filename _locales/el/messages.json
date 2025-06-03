@@ -1738,9 +1738,9 @@
     "message": "Θέμα"
   },
   "special-offer-content": {
-    "message": "Αναβαθμίστε τις δυνατότητές σας και εξοικονομήστε {boldStart}$reduction${boldEnd} αγοράζοντας μια άδεια {linkStartPro}SmartTemplates Pro{linkEnd}! Αυτή η ειδική προσφορά θα είναι διαθέσιμη μέχρι {boldStart}$expirydate${boldEnd}. Ή επιλέξτε τις τυπικές λειτουργίες με τη νέα {linkStart}Τυπική Άδεια{linkEnd}.",
+    "message": "Αναβαθμίστε τις δυνατότητές σας και εξοικονομήστε {boldStart}$reduction${boldEnd} αγοράζοντας μια άδεια {linkStartPro}SmartTemplates Pro{linkEnd}! Αυτή η ειδική προσφορά θα είναι διαθέσιμη μέχρι {boldStart}$salesEnd${boldEnd}. Ή επιλέξτε τις τυπικές λειτουργίες με τη νέα {linkStart}Τυπική Άδεια{linkEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "22 Αυγούστου"
       },
@@ -1751,7 +1751,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "6 Ιουνίου"
+    "message": "13 Ιουνίου"
   },
   "special-offer-head": {
     "message": "Βοηθήστε να διατηρηθεί το $addon$ συμβατό",
@@ -1772,9 +1772,9 @@
     }
   },
   "special-offer-renew": {
-    "message": "Ανανεώστε την άδειά σας τώρα και εξοικονομήστε {boldStart}$reduction${boldEnd}! Αυτή η ειδική προσφορά θα είναι διαθέσιμη μέχρι {boldStart}$expirydate${boldEnd}.",
+    "message": "Ανανεώστε την άδειά σας τώρα και εξοικονομήστε {boldStart}$reduction${boldEnd}! Αυτή η ειδική προσφορά θα είναι διαθέσιμη μέχρι {boldStart}$salesEnd${boldEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "11 Σεπτεμβρίου"
       },
@@ -1785,9 +1785,9 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Αναβαθμίστε τώρα από το SmartTemplates Standard στο Pro και εξοικονομήστε {boldStart}$reduction${boldEnd}! Αυτή η ειδική προσφορά θα είναι διαθέσιμη μέχρι {boldStart}$expirydate${boldEnd}.",
+    "message": "Αναβαθμίστε τώρα από το SmartTemplates Standard στο Pro και εξοικονομήστε {boldStart}$reduction${boldEnd}! Αυτή η ειδική προσφορά θα είναι διαθέσιμη μέχρι {boldStart}$salesEnd${boldEnd}.",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "11 Σεπτεμβρίου"
       },

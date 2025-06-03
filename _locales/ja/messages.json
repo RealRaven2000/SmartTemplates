@@ -1691,9 +1691,9 @@
     "message": "件名"
   },
   "special-offer-content": {
-    "message": "今 {linkStartPro}SmartTemplates Pro ライセンス{linkEnd} にアップグレードすると {boldStart}$reduction${boldEnd} の割引を受けられます！この特別オファーは {boldStart}$expirydate${boldEnd} までご利用いただけます。新しい {linkStart}Standard ライセンス{linkEnd} では標準機能のみが提供されます。",
+    "message": "今 {linkStartPro}SmartTemplates Pro ライセンス{linkEnd} にアップグレードすると {boldStart}$reduction${boldEnd} の割引を受けられます！この特別オファーは {boldStart}$salesEnd${boldEnd} までご利用いただけます。新しい {linkStart}Standard ライセンス{linkEnd} では標準機能のみが提供されます。",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "August 22"
       },
@@ -1704,7 +1704,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "6月6日"
+    "message": "6月13日"
   },
   "special-offer-head": {
     "message": "$addon$ の互換性を維持するのに役立ちます",
@@ -1725,9 +1725,9 @@
     }
   },
   "special-offer-renew": {
-    "message": "今ライセンスを更新すると、{boldStart}$reduction${boldEnd} の割引を受けられます！ この特別オファーは、{boldStart} $expirydate$ {boldEnd} までご利用いただけます。",
+    "message": "今ライセンスを更新すると、{boldStart}$reduction${boldEnd} の割引を受けられます！ この特別オファーは、{boldStart} $salesEnd$ {boldEnd} までご利用いただけます。",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },
@@ -1738,9 +1738,9 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "今すると SmartTemplates Standard ライセンスから Pro ライセンスにアップグレードすると、{boldStart} $reduction$ {boldEnd} の割引を受けられます！ この特別オファーは、{boldStart} $expirydate$ {boldEnd} までご利用いただけます。",
+    "message": "今すると SmartTemplates Standard ライセンスから Pro ライセンスにアップグレードすると、{boldStart} $reduction$ {boldEnd} の割引を受けられます！ この特別オファーは、{boldStart} $salesEnd$ {boldEnd} までご利用いただけます。",
     "placeholders": {
-      "expirydate": {
+      "salesEnd": {
         "content": "$1",
         "example": "September 11"
       },
