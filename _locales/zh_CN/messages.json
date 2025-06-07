@@ -907,7 +907,7 @@
     "message": "最新消息"
   },
   "newsMsgEsr140": {
-    "message": "{P1} 我们很高兴宣布，SmartTemplates 已完全兼容 Thunderbird 140，这是下一个扩展支持版本（ESR）。这意味着在下一个主要支持周期中将持续提供可靠性和安心保障。{P2}{P1} Thunderbird 也正在{ARelease}转向每月发布模式{A2}，SmartTemplates 继续支持那些希望保持最新版本的用户，以及那些坚持使用 ESR 路线的用户。{P2}{P1} 我们持续监控 Thunderbird 的更新变化，确保无论您选择哪个发布路线，SmartTemplates 都能保持兼容和稳定。"
+    "message": "{P1}{boldStart} 在下一次重大版本中 {boldEnd}：Thunderbird 即将提示您选择首选的更新路径 — 年度 ESR 跟踪版或更快速的每月发布版。{ARelease}了解有关新发布模型的更多信息{A2}。{U1} {L1}ESR 版本将保持在 v140，仅升级次要版本，并仅包含安全修复和错误修正，这通常更适合企业环境使用。{L2} {L1}每月发布周期将在功能开发完成后提供新功能和界面更新。请检查当前的附加组件是否支持此发布模型。为此，您可以安装 {AcompatCheck}Add‑on Compatibility Check{A2}。{L2} {U2}{P2}{P1} 我们很高兴地宣布，SmartTemplates 已完全兼容 Thunderbird 140 —— 下一代 Extended Support Release（ESR）。这意味着在下一个主要支持周期中将保持稳定可靠。{P2}{P1} SmartTemplates 当前仍然支持 Thunderbird 115 及更高版本。随着我们将在接下来的一年中添加新功能，对 Thunderbird 115 的支持可能会被放弃，转向 Thunderbird 128 及更高版本。{P2}{P1} 我们持续监控 Thunderbird 的更新，以确保 SmartTemplates 始终保持兼容和可靠，无论您选择哪条更新路径。{P2}"
   },
   "newsMsg.license.expired": {
     "message": "{P1} 所有新功能、错误修复和长期兼容性都得益于您的支持。{P2}{P1 class=specialOffer} 为了支持 SmartTemplates 的开发，您可以在 {salesEnd} 之前以优惠价格续订许可证。{P2}{P1 class=bottomhint}🡇 选择下面的选项了解更多 🡇 {P2}"

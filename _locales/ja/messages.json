@@ -905,7 +905,7 @@
     "message": "最新ニュース"
   },
   "newsMsgEsr140": {
-    "message": "{P1} SmartTemplatesがThunderbird 140、次のExtended Support Release（ESR）に完全対応したことをお知らせします。これにより、次の主要なサポートサイクルを通じて、継続的な信頼性と安心を提供します。{P2}{P1} Thunderbirdは{ARelease}月次リリースモデルに移行しています{A2}が、SmartTemplatesは最新のバージョンを利用したいユーザーと、ESRの軌道を維持するユーザーの両方を引き続きサポートします。{P2}{P1} SmartTemplatesはリリーストラックに関わらず、互換性と信頼性を維持するためにThunderbirdの変更を継続的に監視しています。{P2}"
+    "message": "{P1}{boldStart} 次回の大型リリースにて {boldEnd}：Thunderbird は、年次の ESR（延長サポート版）トラックか、より頻繁な月次リリースか、好みの更新パスを選択するよう求める予定です。{ARelease}新しいリリースモデルについて詳しくはこちら{A2}.{U1} {L1}ESR バージョンは v140 にとどまり、マイナーバージョンの更新のみが行われ、セキュリティ修正やバグ修正のみが含まれます。これは企業環境でよく選ばれます。{L2} {L1}一方、月次リリースでは、新機能やインターフェースの更新が開発され次第提供されます。現在ご利用中のアドオンがこのリリースモデルに対応しているかご確認ください。支援として、{AcompatCheck}アドオン互換性チェック{A2}をインストールすることができます。{L2} {U2}{P2}{P1} SmartTemplates は Thunderbird 140（次回の Extended Support Release、ESR）に完全対応していることをここにお知らせいたします。これにより、今後のサポートサイクルでも継続的な信頼性と安心が提供されます。{P2}{P1} 現在 SmartTemplates は Thunderbird 115 以降のユーザーを引き続きサポートしていますが、来年以降、新機能の追加に伴い、Thunderbird 115 のサポートは終了し、Thunderbird 128 以降に移行する可能性があります。{P2}{P1} Thunderbird の変更点を継続的に監視し、選択された更新パスに関係なく、SmartTemplates が常に互換性と信頼性を保てるよう努めています。{P2}"
   },
   "newsMsg.license.expired": {
     "message": "{P1} 新機能、バグ修正、長期的な互換性は、皆様のサポートによって実現しています。{P2}{P1 class=specialOffer} SmartTemplatesの開発を支援するために、{salesEnd}までに割引価格でライセンスを更新できます。{P2}{P1 class=bottomhint}🡇 詳細を知るには以下のオプションから選択してください 🡇{P2}"
