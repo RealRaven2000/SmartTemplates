@@ -1,4 +1,5 @@
 import {Licenser, licenseValidationDescription} from "./scripts/Licenser.mjs.js";
+import {ICAL} from "./scripts/Ical.js";
 
 import {SmartTemplates} from "./scripts/st-main.mjs.js";
 import {SmartTemplatesProcess} from "./scripts/st-process.mjs.js";
@@ -125,8 +126,8 @@ class MenuRestrictions {
   get maxTemplates() {
     const isLicensed = this.LicenseInfo.status == "Valid";
     const hasProLicense = this.LicenseInfo.keyType != 2;
-    if (isLicensed && hasProLicense) return 100000;
-    if (isLicensed && !hasProLicense) return this.MAX_STANDARD_TEMPLATES;
+    if (isLicensed && hasProLicense) {return 100000;}
+    if (isLicensed && !hasProLicense) {return this.MAX_STANDARD_TEMPLATES;}
     // no license
     return this.MAX_FREE_TEMPLATES;
   }
@@ -134,7 +135,7 @@ class MenuRestrictions {
   get maxCategories() {
     const isLicensed = this.LicenseInfo.status == "Valid";
     const hasProLicense = this.LicenseInfo.keyType != 2;
-    if (isLicensed && hasProLicense) return 1000;
+    if (isLicensed && hasProLicense) {return 1000;}
     return this.MAX_STANDARD_CATEGORIES;
   }
 
@@ -154,7 +155,7 @@ class MenuRestrictions {
     if (this.menuCount>0) {
       this.menuCount--;
     }
-    if (!menuCount) { 
+    if (!this.menuCount) { 
       // categero management = incomplete / not quite right, we would need to sanity 
       // check each item really.... so only works correctly if we remove all items
       this.Categories=[];
@@ -212,16 +213,10 @@ async function executeFileMenu(menuObject) {
 
 async function getTargetTemplate(controller, type) {
   // file Template example
-  const example = {
-    cmd: "reply",
-    composeType: "rsp",
-    label: "SmartTemplate4 mail validation", 
-    path: "N:\\templates\\SmartTemplate4 mail validation.html"
-  }
 
   if (controller.startsWith("cmd_")) {
     switch (type) {
-      case "most-recent" :
+      case "most-recent" :{
         // not from MRU list but stored separately in legacy prefs
         // ControllerMap returns the full composeType, e.g. rsp.all or rsp.list
         let jsonTemplate = 
@@ -230,6 +225,7 @@ async function getTargetTemplate(controller, type) {
 
         let lastEntry = jsonTemplate ? JSON.parse(jsonTemplate) : {path:"", label:sEmptyLabel, category:""};
         return lastEntry;
+        }
       case "account" : // account template
         return {
           controller: controller, 
@@ -239,16 +235,6 @@ async function getTargetTemplate(controller, type) {
     }
   }
   return `test - ${controller} [${type}] ` ;
-}
-
-function openLegacyPrefs() {
-  messenger.NotifyTools.notifyExperiment({
-    event: "doCommand", 
-    detail: {
-      cmd: "smartTemplates-settings", // will be re-packaged as el.id
-      params: { option:"legacy" } 
-    }
-  });
 }
 
 var MenuHelper = {
@@ -301,7 +287,7 @@ var MenuHelper = {
   }, 
 
   getCmd: function (template) {
-    if (template.cmd) return template.cmd;
+    if (template.cmd) {return template.cmd;}
 
     switch (template?.command.toLowerCase()) {
       case "cmd_replyall": return "replyAll"; 
@@ -396,7 +382,7 @@ async function addMenus(menuArray, context) {
           parentId: popupId, // string
           title: title,
           visible: true,  
-          onclick: (e) => {
+          onclick: (_e) => {
             // account (default) template
             if (p?.ctr_type == "account") {
               // account template
@@ -427,7 +413,7 @@ async function addMenus(menuArray, context) {
       }
       // append file templates: (either one of new, rsp or fwd ) using ControllerMap
       let templateList = MenuHelper.getTemplateListForController(m.controller);
-      if (!templateList.length) continue;
+      if (!templateList.length) {continue;}
 
       // ========================================
       await messenger.menus.create({
@@ -505,7 +491,7 @@ async function addMenus(menuArray, context) {
                 title: messenger.i18n.getMessage(
                   "st.fileTemplates.restrictTemplateCats", 
                   [menuRestrict.maxCategories.toString()]),
-                onclick: (e) => {
+                onclick: (_e) => {
                   messenger.NotifyTools.notifyExperiment({
                     event: "doCommand", 
                     detail: {
@@ -545,7 +531,7 @@ async function addMenus(menuArray, context) {
           parentId: parentPopupId, // string
           title: title,
           visible: true,  
-          onclick: (e) => {
+          onclick: (_e) => {
             executeFileMenu( {
               controller: m.controller,
               control_type: m?.ctr_type, // optional
@@ -564,7 +550,7 @@ async function addMenus(menuArray, context) {
           icons:  "../chrome/content/skin/icons/warning.svg",
           title: messenger.i18n.getMessage("st.fileTemplates.restrictionQuestion"),
           parentId: parentPopupId,
-          onclick: (e) => {
+          onclick: (_e) => {
             let txt = messenger.i18n.getMessage(
               "st.fileTemplates.restrictTemplates",
               [
@@ -586,7 +572,7 @@ async function addMenus(menuArray, context) {
 
     // open file adhoc
     // ["smarttemplate4-changeTemplate","smarttemplate4-insertSnippet"].includes(parentId) || SmartTemplate4.fileTemplates.getController(msgPopup);
-    const hasOpenFileItem = m.hasOwnProperty("controller");
+    const hasOpenFileItem = Object.prototype.hasOwnProperty.call(m, "controller");
     if (hasOpenFileItem) {
       await messenger.menus.create({
         contexts: [context],
@@ -595,7 +581,7 @@ async function addMenus(menuArray, context) {
         id: `${m.controller}-openTemplate`,
         icons: "../chrome/content/skin/icons/template-load.png",
         title: messenger.i18n.getMessage("st.fileTemplates.openFile"),
-        onclick: (e) => {
+        onclick: (_e) => {
           messenger.NotifyTools.notifyExperiment({
             event: "doCommand", 
             detail: {
@@ -618,7 +604,7 @@ async function addMenus(menuArray, context) {
         icons: "../chrome/content/skin/icons/settings.svg",
         parentId: popupId,
         title: messenger.i18n.getMessage("st.fileTemplates.configureMenu"),
-        onclick: (e) => {
+        onclick: (_e) => {
           messenger.NotifyTools.notifyExperiment({
             event: "doCommand", 
             detail: {
@@ -657,7 +643,7 @@ async function createHeaderMenu() {
     title: messenger.i18n.getMessage("st.menu.hideLabel"),
     type: "checkbox",
     checked: isLabelHidden,
-    onclick: async (e) => {
+    onclick: async (_e) => {
       // [issue 304] action button needs to be updated!
       var isHidden = (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.toolbar.hideLabel"));
       messenger.NotifyTools.notifyExperiment({
@@ -678,7 +664,7 @@ async function createHeaderMenu() {
     id: "smartTemplates-settings",
     title: messenger.i18n.getMessage("preferences.title"),
     icons: "../chrome/content/skin/icons/settings.svg",
-    onclick: (e) => {
+    onclick: (_e) => {
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand", 
         detail: {
@@ -759,11 +745,6 @@ async function updateMruMenu(Context) {
   let templates, popupId;
   let countOldMruItems = 0;
 
-  let menuHasRestrictions = false; // set this if any maximum is exceeded!
-  const delimiter = "\u00BB".toString(); // »
-
-
-
   // let oldPrefix = "";
   switch(Context) {
     case "browser_action_menu": // not sure whether there is an official ContextType for the unified toolbar.
@@ -803,7 +784,7 @@ async function updateMruMenu(Context) {
 
     // get identifier for localization / label
     let actionId = MenuHelper.getActionId(MenuHelper.getCmd(theTemplate));
-    if (!actionId) continue;
+    if (!actionId) {continue;}
     let accelKeyString = MenuHelper.getAccessKey(accelerator),
         action = messenger.i18n.getMessage(actionId);
 
@@ -813,7 +794,7 @@ async function updateMruMenu(Context) {
       // icons: ...,
       title: title,
       id: `mru-${accelerator}`, 
-      onclick: (e) => {
+      onclick: (_e) => {
         executeFileMenu( {
           controller: MenuHelper.getController(theTemplate), 
           composeType: theTemplate?.composeType, //  "rsp" "new" "fwd" - added for later?
@@ -852,7 +833,7 @@ async function updateMruMenu(Context) {
 
       let itemProps = {
         title: title,
-        onclick: (e) => {
+        onclick: (_e) => {
           // html template
           executeFileMenu( {
             controller: menu.controller,
@@ -861,7 +842,7 @@ async function updateMruMenu(Context) {
           });
         }
       }
-      if (!enableLastUpdate) continue;
+      if (!enableLastUpdate) {continue;}
       await messenger.menus.update(menu.id, itemProps);
     }
   }
@@ -957,7 +938,7 @@ const showSTmessage = async (
     await browser.storage.local.set({ [MESSAGE_STORAGE_KEY]: message });
     url.searchParams.set("msg_storage", "true");
   } 
-  if (messageIds) url.searchParams.set("msgId", messageIds);
+  if (messageIds) {url.searchParams.set("msgId", messageIds);}
   if (smartTemplatesFeatures) {
     url.searchParams.set(
       "addonfeatures",
@@ -992,7 +973,8 @@ const showSTmessage = async (
         if (winRet.id) {
           try {
             await messenger.windows.remove(winRet.id);
-          } catch (e) {
+          // eslint-disable-next-line no-unused-vars
+          } catch (_e) {
             // Window already closed, ignore
           }
         }
@@ -1004,23 +986,34 @@ const showSTmessage = async (
   
 };
 
+let retryScheduled = false; // session flag to avoid repeat re-scheduling
+const RETRY_MINUTES = 4;
 async function displayUpdateMessage() {
   // [issue 378]
   const messageIds = "newsMsgEsr140",
     licenseInfo = currentLicense?.info,
-    features = ["ok", "licensing", "featurecomp"],
+    isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug"),
     hasProLicense = [0, 1].includes(licenseInfo?.keyType); // 0 Pro or none depending on status, 2 std
+  
+  const logDebug = (...args) => {
+    if (!isDebug) {return;}
+    console.log("ST displayUpdateMessage()\n", ...args);
+  }
+
+  let features = ["ok", "licensing", "featurecomp"];
 
   // reflects last addon version installed with a msg.
   let lastMessage = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.lastUpdateMessage") || "0";
+  logDebug(`Last update message version: ${lastMessage}`);
 
   if (compareVersions(lastMessage, "4.12") >= 0) {
+    logDebug("Message already shown for 4.12 – skipping.");    
     return;
   }
-  messenger.LegacyPrefs.setPref("extensions.smartTemplate4.lastUpdateMessage", "4.12");
+  logDebug("Preparing message for version 4.12");
+  // ------ 
   let licenseMsgId,
     testStatus = licenseInfo?.status;
-  debugger;
   switch (testStatus) {
     case "Expired":
       licenseMsgId = hasProLicense ? "newsMsg.license.expired" : "newsMsg.license.standard";
@@ -1035,18 +1028,49 @@ async function displayUpdateMessage() {
     default:
       licenseMsgId = "newsMsg.license.none";
   }
+  logDebug(`Message Id: ${licenseMsgId}`);  
   const transmitIds = messageIds ? `${messageIds},${licenseMsgId}` : licenseMsgId;
-  return showSTmessage(transmitIds, features, "", "displayUpdateMessage");
+  logDebug(
+    "Calling showSTmessage(msgIds, features, msg='', 'displayUpdateMessage')",
+    transmitIds,
+    features
+  );
+
+  try {
+    const result = await showSTmessage(transmitIds, features, "", "displayUpdateMessage");
+
+    if (result) {
+      await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.lastUpdateMessage", "4.12");
+      logDebug("Message shown successfully – version flag saved.");
+    } else {
+      logDebug("Message display was cancelled or failed (no result).");
+      scheduleRetry(); // try again later
+    }
+  } catch (ex) {
+    console.error("displayUpdateMessage() failed:", ex);
+    scheduleRetry();
+  }
+
+  function scheduleRetry() {
+    if (retryScheduled) {return;}
+    retryScheduled = true;
+    logDebug("Scheduling one-time retry in 20 minutes…");
+    setTimeout(() => {
+      displayUpdateMessage().catch((e) =>
+        console.error("Retry of displayUpdateMessage() failed:", e)
+      );
+    }, RETRY_MINUTES * 60 * 1000); // 20 minutes
+  }  
 }
 
  
 
-  messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
+  messenger.runtime.onInstalled.addListener(async ({ reason, _temporary }) => {
     try {
       let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
       // Wait for startup to finish
       await startupDone; // promise
-      if (isDebug) console.log("SmartTemplates - startup code finished.");
+      if (isDebug) {console.log("SmartTemplates - startup code finished.");}
 
       if (isDebug) {
         console.log(`SmartTemplates Startup has finished\ncurrentLicense`, currentLicense);
@@ -1079,7 +1103,7 @@ async function displayUpdateMessage() {
               // Function to check if an update is silent
               function isSilentUpdate(fromVersion, toVersion) {
                 const patterns = silentUpdateMap.get(fromVersion);
-                if (!patterns) return false; // No silent updates defined for this `fromVersion`
+                if (!patterns) {return false;} // No silent updates defined for this `fromVersion`
 
                 // Check if `toVersion` matches any pattern in the list
                 return patterns.some((pattern) => versionMatches(toVersion, pattern));
@@ -1100,11 +1124,11 @@ async function displayUpdateMessage() {
                 isSilent = isSilentUpdate(origVer, installedVersion);
 
               if (isUpgrade && !isSilent) {
-                if (isDebug) console.log("Setting hasNews flag!");
+                if (isDebug) {console.log("Setting hasNews flag!");}
                 messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
               }
               if (origVer != installedVersion) {
-                if (isDebug) console.log("Storing new version number " + manifest.version);
+                if (isDebug) {console.log("Storing new version number " + manifest.version);}
                 // STORE VERSION CODE!
                 // prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
                 messenger.LegacyPrefs.setPref(
@@ -1118,13 +1142,13 @@ async function displayUpdateMessage() {
             })();
 
             // TypeError: currentLicense is undefined
-            if (isDebug) console.log("2. update() case");
+            if (isDebug) {console.log("2. update() case");}
             let currentLicenseInfo = currentLicense.info;
             let isLicensed = currentLicenseInfo.status == "Valid";
             if (isLicensed) {
               // suppress update popup for users with licenses that have been recently renewed
               let gpdays = currentLicenseInfo.licensedDaysLeft;
-              if (isDebug) console.log("Licensed - " + gpdays + " Days left.");
+              if (isDebug) {console.log("Licensed - " + gpdays + " Days left.");}
             }
             displayUpdateMessage();
           }
@@ -1177,6 +1201,7 @@ async function main() {
     try {
       graceDate = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);
       isDebug = await messenger.LegacyPrefs.getPref(DEBUGLICENSE_STORAGE);
+    // eslint-disable-next-line no-unused-vars
     } catch (ex) {
       isResetDate = true;
     }
@@ -1188,19 +1213,20 @@ async function main() {
       // if a license exists & is expired long ago, use the last day of expiration date.
       if (currentLicense.info.status == "Expired") {
         if (graceDate < currentLicense.info.expiryDate) {
-          if (isDebug)
+          if (isDebug) {
             console.log(
               "Extending graceDate from {0} to {1}"
                 .replace("{0}", graceDate)
                 .replace("{1}", currentLicense.info.expiryDate)
             );
+          }
           graceDate = currentLicense.info.expiryDate;
           isResetDate = true;
         }
       }
     }
-    if (isResetDate) await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, graceDate);
-    if (isDebug) console.log("Returning Grace Period Date: " + graceDate);
+    if (isResetDate) {await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, graceDate);}
+    if (isDebug) {console.log("Returning Grace Period Date: " + graceDate);}
     return graceDate;
   }
 
@@ -1212,9 +1238,10 @@ async function main() {
       if (currentLicense.info.status == "Expired") {
         // [issue 100] Trial period should restart on license expiry
         graceDate = currentLicense.info.expiryDate;
-      } else graceDate = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);
-      if (!graceDate) graceDate = getGraceDate(); // create the date
-    } catch (ex) {
+      } else {graceDate = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);}
+      if (!graceDate) {graceDate = getGraceDate();} // create the date
+    // eslint-disable-next-line no-unused-vars
+    } catch (_ex) {
       // if it's not there, set it now!
       graceDate = getGraceDate();
     }
@@ -1231,15 +1258,15 @@ async function main() {
     let [oldTab] = await browser.tabs.query({ url }); // dereference first
     let queryString = "";
     let searchParams = new URLSearchParams();
-    if (data.server) searchParams.append("id", data.server);
-    if (data.page) searchParams.append("mode", data.page);
+    if (data.server) {searchParams.append("id", data.server);}
+    if (data.page) {searchParams.append("mode", data.page);}
     if (data.topic) {
       searchParams.append("topic", data.topic);
     }
     if (data.composeType) {
       searchParams.append("composeType", data.composeType);
     }
-    if (searchParams.toString()) queryString = "?" + searchParams.toString();
+    if (searchParams.toString()) {queryString = "?" + searchParams.toString();}
     if (oldTab) {
       await browser.tabs.update(oldTab.id, {
         active: true,
@@ -1288,12 +1315,12 @@ async function main() {
 
   // All important stuff has been done.
   // resolve all promises on the stack
-  if (isDebugAddon) console.log("ST main(): Finished setting up license startup code");
+  if (isDebugAddon) {console.log("ST main(): Finished setting up license startup code");}
   startupDoneResolve(); // <— this triggers everything that waits
 
-  if (isDebugAddon) console.log("ST main(): Adding message listeners....");
+  if (isDebugAddon) {console.log("ST main(): Adding message listeners....");}
   try {
-    messenger.runtime.onMessage.addListener(async (data, sender) => {
+    messenger.runtime.onMessage.addListener(async (data, _sender) => {
       console.log("SmartTemplates background listener: ", data);
       if (!data?.command) {
         return;
@@ -1384,7 +1411,7 @@ async function main() {
         }
       }
     });
-    if (isDebugAddon) console.log("ST main(): After adding message listener.");
+    if (isDebugAddon) {console.log("ST main(): After adding message listener.");}
   } catch (e) {
     console.error("Error adding listener:", e);
   }
@@ -1581,7 +1608,6 @@ async function main() {
       }
 
       case "getContactsFromSearch": {
-        let cards;
         return null;
       }
 
@@ -1629,7 +1655,7 @@ async function main() {
     }
   });
 
-  browser.runtime.onMessageExternal.addListener(async (message, sender) => {
+  browser.runtime.onMessageExternal.addListener(async (message, _sender) => {
     // { command: "forwardMessageWithTemplate", messageHeader: msgKey, templateURL: data.fileURL }
     let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
     switch (message.command) {
@@ -1637,11 +1663,12 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({
           event: "forwardWithTemplate",
           detail: { messageHeader: message.messageHeader, templateURL: message.templateURL },
-        }).then((data) => {
-          if (isDebug)
+        }).then((_data) => {
+          if (isDebug) { 
             console.log(
               `SmartTemplates forwarded '${message.messageHeader.subject}' successfully.`
             );
+          }
           return true;
         });
         break;
@@ -1649,11 +1676,11 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({
           event: "replyWithTemplate",
           detail: { messageHeader: message.messageHeader, templateURL: message.templateURL },
-        }).then((data) => {
+        }).then((_data) => {
           if (isDebug)
-            console.log(
+            {console.log(
               `SmartTemplates replied to '${message.messageHeader.subject}' successfully.`
-            );
+            );}
           return true;
         });
         break;
@@ -1740,20 +1767,23 @@ async function main() {
   messenger.accounts.onCreated.addListener(async (id, account) => {
     if (currentLicense.info.status == "MailNotConfigured") {
       // redo license validation!
-      if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
+      if (isDebugLicenser) {console.log("Account added, redoing license validation", id, account);} // test
       currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
       await currentLicense.validate();
       if (currentLicense.info.status != "MailNotConfigured") {
         if (isDebugLicenser)
-          console.log(
+          {console.log(
             "notify experiment code of new license status: " + currentLicense.info.status
-          );
+          );}
         messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
       }
-      if (isDebugLicenser) console.log("SmartTemplates license info:", currentLicense.info); // test
-    } else {
-      if (isDebugLicenser)
-        console.log("SmartTemplates license state after adding account:", currentLicense.info);
+      if (isDebugLicenser) {
+        console.log("SmartTemplates license info:", currentLicense.info); // test
+      } 
+      return;
+    } 
+    if (isDebugLicenser) {
+      console.log("SmartTemplates license state after adding account:", currentLicense.info);
     }
   });
 
@@ -1774,8 +1804,8 @@ async function main() {
           tab,
         });
       }
-      return retVal;
     }
+    return retVal;
   });
 
   messenger.messageDisplay.onMessageDisplayed.addListener(async (tab, message) => {

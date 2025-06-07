@@ -99,12 +99,17 @@ export class Licenser {
   constructor(LicenseKey, options = {}) {
     // the constructor ONLY sets the Licensekey, it does not set date etc.
     this.reset();    
-    this.ForceSecondaryIdentity = options.hasOwnProperty("forceSecondaryIdentity")
+    this.ForceSecondaryIdentity = Object.prototype.hasOwnProperty.call(
+      options,
+      "forceSecondaryIdentity"
+    )
       ? options.forceSecondaryIdentity
       : false;
     this.debug = options.debug || false;
       
-    this.SettingsRoot = options.hasOwnProperty("settingsRoot") ? options.settingsRoot : ""; // Legacy Place to store trial period
+    this.SettingsRoot = Object.prototype.hasOwnProperty.call(options, "settingsRoot")
+      ? options.settingsRoot
+      : ""; // Legacy Place to store trial period
       
     this.LicenseKey = LicenseKey;
     this.key_type = crypto.getKeyType(LicenseKey);
@@ -170,13 +175,16 @@ export class Licenser {
         case 2: // standard license
           return (idMail.toLowerCase() == licenseMail);
         case 1: // domain matching 
+        {
           // only allow one *
-          if ((licenseMail.match(/\*/g)||[]).length != 1)
-              return false;
+          if ((licenseMail.match(/\*/g)||[]).length != 1) {
+            return false;
+          }
           // replace * => .*
           let r = new RegExp(licenseMail.replace("*",".*"));
           let t = r.test(idMail);
           return t;
+        }
       }
     }
     catch (ex) {
@@ -457,8 +465,8 @@ export class Licenser {
       let elapsed = new String(endTime - this.lastTime); // time in milliseconds
       timePassed = '[' + elapsed + ' ms]	 ';
       this.lastTime = endTime; // remember last time
-    }
-    catch(e) {;}
+    // eslint-disable-next-line no-unused-vars
+    } catch(_) {;}
     return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
   }    
 }
