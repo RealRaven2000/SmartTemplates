@@ -13,8 +13,8 @@ END LICENSE BLOCK */
 function moveImportantMessageTo(targetId) {
   const newsImportant = document.getElementById("newsImportant");
   const target = document.getElementById(targetId);
-  if (!newsImportant || !target) return;
-  if (!newsImportant.textContent.trim()) return;
+  if (!newsImportant || !target) {return;}
+  if (!newsImportant.textContent.trim()) {return;}
 
   // Try specialOfferTerms inside target, fallback to specialOfferRenewTxt or insert at end
   let insertAfter =
@@ -34,7 +34,7 @@ function openSupportForm(topic) {
     command: "openPrefs",
     page: "supportEmail"
   };
-  if (topic) msg.topic = topic;
+  if (topic) {msg.topic = topic;}
   messenger.runtime.sendMessage(msg);
 }
 
@@ -52,7 +52,7 @@ async function getSalesEnd() {
 
 function hide(id) {
   let el = document.getElementById(id);
-  if (!el) return null;
+  if (!el) {return null;}
   el.hidden = true; // Use property instead of setAttribute
   return el;
 }
@@ -66,7 +66,7 @@ function hideSelectorItems(cId) {
 
 function show(id) {
   let el = document.getElementById(id);
-  if (!el) return null;
+  if (!el) {return null;}
   el.hidden = false; // Use property instead of removeAttribute
   return el;
 }
@@ -207,6 +207,7 @@ function formatAll(txt) {
   let localizedMsg = txt
     .replace(/<(.*?)>/g, "<span class='htmltag'>&lt;$1&gt;</span>")
     .replace(
+      // eslint-disable-next-line no-useless-escape
       /\{support(?: ([\w\-]+))?\}/g,
       (dummy, topic) => `<a class='contactsupport' data-topic='${topic || ""}' href='#'>`
     )
@@ -228,6 +229,8 @@ function formatAll(txt) {
     .replace(/\{italicEnd\}/g, "</i>")
     .replace(/\{\{(%.*?%)\}\}/g, "<code>$1</code>")
     .replace(/\{\{(.*?)\}\}/g, "<code param>$1</code>")
+    .replace(/\{U1\}/g, "<ul>")
+    .replace(/\{U2\}/g, "</ul>")
     .replace(/\{L1\}/g, "<li>")
     .replace(/\{L2\}/g, "</li>")
     .replace(/\{P1(?:\s+([^}]+))?\}/g, (_, attrs) => {
@@ -237,6 +240,10 @@ function formatAll(txt) {
     .replace(
       /\{ARelease\}/g,
       "<a href='https://blog.thunderbird.net/2025/03/thunderbird-release-channel-update/'>"
+    )
+    .replace(
+      /\{AcompatCheck\}/g,
+      "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-info-sync-compatibility' class='native'>"
     )
     .replace(/\{A2\}/g, "</a>")
     .replace(/\{P2\}/g, "</p>")
@@ -332,7 +339,7 @@ async function updateActions(addonName) {
   }
 
   let win = await browser.windows.getCurrent();
-  if (win) console.log(win);
+  if (win) {console.log(win);}
   let wrapper = document.getElementById('innerwrapper'),
       r = wrapper.getBoundingClientRect(),
       newHeight = Math.round(r.height) + 80,
@@ -350,7 +357,7 @@ async function updateActions(addonName) {
 
 // Updates the element's content without triggering announcements by screen readers
 function ariaPoliteUpdate(el, text, isHtml = false) {
-  if (!el) return;
+  if (!el) {return;}
   
   // Temporarily set the aria-live attribute to "polite"
   el.setAttribute("aria-live", "polite");
