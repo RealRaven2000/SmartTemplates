@@ -144,5 +144,14 @@ window.addEventListener("load", async () => {
     }
   });
 
+  // make sure add-on links stay in Thunderbird!
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a.native");
+    if (link) {
+      event.preventDefault();
+      browser.tabs.create({ url: link.href });
+    }
+  });  
+
 });
 
