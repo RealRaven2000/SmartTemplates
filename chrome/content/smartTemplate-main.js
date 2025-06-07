@@ -260,10 +260,12 @@ END LICENSE BLOCK
     # removed all references to deprecated Ci.nsILocalFile
     # license validation: optimized use of getDefaultIdentity
 
-  Version 4.12 - WIP
+  Version 4.12 - 03/06/2024
     # Official Thunderbird 140 ESR compatibility
     # [issue 378] Convert SmartTemplate4.Message() into a html window
     # [issue 377] Extending of any License opens wrong product (New License)
+
+    
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
