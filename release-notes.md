@@ -1,5 +1,10 @@
 The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.11.3) 
 
+**4.12.2 Maintenance Changes**
+
+*    Fixed a problem with ESR message for Pro users and improved the instructions about new Thunderbird release train. 
+*    Added a link the to Add-on compatibility checker
+
 
 
 **Official Thunderbird 140 ESR compatibility**
