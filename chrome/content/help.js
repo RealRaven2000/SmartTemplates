@@ -1,11 +1,9 @@
 
-  var LastFoundNode;
   var LastSelection;
-  var isDebugLegacyOption;
 
-  function containerClick(el, evt) {
+  globalThis.containerClick = (el, evt) => {
     const element = evt.target;
-    if (!element) return;
+    if (!element) {return;}
     // clicked a heading. none of our business
     if (element && element.classList.contains("helpchapter")) {
       return;
@@ -20,7 +18,7 @@
       switch (tagName) {
         case "code":
           if (browser) {
-            var dispatch = {
+            const dispatch = {
               msg: "SmartTemplate4CodeWord",
               code: element.innerText,
               class: element.className,
@@ -33,7 +31,7 @@
         case "span":
         case "lbl":
           if (browser) {
-            var dispatch = {
+            const dispatch = {
               msg: "SmartTemplate4CAD",
               code: element.closest("code")?.innerText,
             };
@@ -43,7 +41,7 @@
           break;
         default:
           if (browser) {
-            var dispatch = {
+            const dispatch = {
               msg: "SmartTemplate4Website",
               href: element.getAttribute("href"),
             };
@@ -54,24 +52,24 @@
       }
       // window.parent.document.dispatchEvent(customEvent);
     }
-  }
+  };
   
-  async function expandAll(evt) {
+  globalThis.expandAll = async (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
     var allchapters = Array.from(document.getElementsByClassName('chapterBody'));
     allchapters.forEach(function(el) {
       el.classList.remove('collapsed');
     });
-  }    
-  async function collapseAll(evt) {
+  };
+  globalThis.collapseAll = (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
     var allchapters = Array.from(document.getElementsByClassName('chapterBody'));
     allchapters.forEach(function(el) {
       el.classList.add('collapsed');
     });
-  }
+  };
   
   // Accordion:
   const toggleCollapseExpand = (hd, el) => {
@@ -115,7 +113,7 @@
   
 
   function cloneSelection(sel) {
-    if (!sel) return null;
+    if (!sel) {return null;}
     let result = {
       anchorOffset: sel.anchorOffset,
       direction: sel.direction,
@@ -124,10 +122,10 @@
       isCollapsed: sel.isCollapsed,
       rangeCount: sel.rangeCount
     }
-    // ​type: sel.type
+    // type: sel.type
     return result;
   }
-  function reSelectRange(sel, focusNode, text) {
+  globalThis.reSelectRange = (sel, focusNode, text) => {
     if (!sel) { 
       return;
     }
@@ -138,11 +136,11 @@
     const selection = window.getSelection();
     selection.removeAllRanges();
     selection.addRange(range);
-  }
+  };
   
   // determine parentChapter of any element
   function parentChapterOf(el) {
-    if (!el) return null;
+    if (!el) {return null;}
     if (el.tagName?.toLowerCase()=="h1") { return el; }
     let p = el?.parentNode;
     while (p) {
@@ -163,8 +161,8 @@
     for (let node of listItem.childNodes) {
       switch(node.nodeType) {
         case 3:
-          if (node.nodeName=="br") continue;
-          if (!node.textContent.trim()) continue;
+          if (node.nodeName=="br") {continue;}
+          if (!node.textContent.trim()) {continue;}
           if (/^\s*$/.test(node.textContent)) { // empty!
             continue;
           }
@@ -196,15 +194,14 @@
             }
             continue;
           case 1:
-            if (child.nodeName=="br") continue;
-            if (child?.style?.display=="none") continue; // hidden
+            if (child.nodeName=="br") {continue;}
+            if (child?.style?.display=="none") {continue;} // hidden
             if (child.nodeName=="tr") {
               list.push(...flattenList(child));
             }
             if (["aside","li","p","div","code","span","th","td"].includes(child.nodeName)) {
               list.push(...serialize(child));
             }
-          default:
         }
       }
     }
@@ -350,7 +347,7 @@
     return (foundElements.length>0);
   }
 
-  function fixClipboardNote() {
+  globalThis.fixClipboardNote = () => {
     let note1 = document.getElementById("clipboardNotes");
     if (note1) {
       note1.innerHTML = 
@@ -358,7 +355,7 @@
         .replace("{file}", "<code>%file()%</code>")
         .replace("{toclip}", "<span class='paramLiteral'>toclipboard</span>");
     }    
-  }
+  };
 
   function findNextChapterBody(el) {
     let sibling = el.nextElementSibling;
@@ -371,7 +368,7 @@
     return null; // No more chapterBody elements
   }
 
-  async function initSearch() {
+  globalThis.initSearch = () => {
     const searchBox = document.getElementById("search");
     if (searchBox) {
       // we are using the tabindex=-1 hack to make the list items searchable even if the user highlights text or 
@@ -385,8 +382,9 @@
         let target = event.target;
         switch (event.code) {
           case "NumpadEnter": // search next
-          case "Enter": // search start - how do we prevent [OK] from catching this???
-            let search = target.value;
+          case "Enter": {
+            // search start - how do we prevent [OK] from catching this???
+            const search = target.value;
             noShenanigans(event);
             const found = await findSearchText(search);
             if (found) {
@@ -395,7 +393,7 @@
             }
             document.getElementById("findnext").style.display="inline-block";
             document.getElementById("findprevious").style.display="inline-block";
-            break;
+          } break;
           case "Escape":
             noShenanigans(event);
             target.blur();
@@ -403,16 +401,16 @@
             document.getElementById("findnext").style.display="none";
             document.getElementById("findprevious").style.display="none";
             break;
-          case "Tab":
+          case "Tab": {
+            const hFirst = document.querySelector("#startHeading");
             noShenanigans(event);
             // console.log(getEventListeners(searchBox).blur); // chrome only
             searchBox.blur();
-            const hFirst = document.querySelector("#startHeading");
             setTimeout(() => {
               hFirst.focus();
               console.log("Focus check!", document.activeElement, hFirst);
             }, 30);
-            break;
+          } break;
         }
       }, {capture:true});
     }
@@ -430,7 +428,7 @@
     const findprevious = document.getElementById("findprevious");
     if (findprevious) {
       findprevious.addEventListener("mouseup",
-        async (evt) => {
+        async (_evt) => {
           findRepeat(true); 
         }
       );
@@ -438,7 +436,7 @@
     const findnext = document.getElementById("findnext");
     if (findnext) {
       findnext.addEventListener("mouseup",
-        async (evt) => {
+        async (_evt) => {
           findRepeat(false);
         }
       );
@@ -457,7 +455,7 @@
           console.log("helpContents frame", txt, event);
         }
         switch (event.code) {
-          case "F4":
+          case "F4": {
             event.preventDefault();
             event.stopPropagation();
             let backwards = (event.shiftKey);
@@ -472,47 +470,53 @@
             // event.originalTarget.ownerDocument.body.focus();
             let isFound = await findSearchText(search.value, true, backwards);
             document.getElementById("searchHelpContent").classList.add("hidden");
-            if (isFound) {
-              let el = LastSelection.focusNode;
-              while (el = el.parentElement) {
-                if (!el.classList) continue;
-                if (el.classList.contains("chapterBody") || el.classList.contains("cursorNavigate")) {
-                  el.focus();
-                  break;
+            if (!isFound) { return; }
+            let el = LastSelection.focusNode.parentElement;
+            for (; el; el = el.parentElement) { // continue untill no parents
+              // we mean it.
+              if (!el.classList) {
+                continue;
+              }
+              if (
+                el.classList.contains("chapterBody") ||
+                el.classList.contains("cursorNavigate")
+              ) {
+                el.focus();
+                break;
+              }
+              if (el.classList.contains("helpchapter")) {
+                if (backwards) {
+                  el.previousElementSibling.focus();
+                } else {
+                  el.nextElementSibling.focus();
                 }
-                if (el.classList.contains("helpchapter")) {
-                  if (backwards) {
-                    el.previousElementSibling.focus();
-                  } else {
-                    el.nextElementSibling.focus();
-                  }
-                  break;
-                }
+                break;
               }
             }
-            break;
-          case "ArrowDown":
-            if (event.target?.classList.contains("helpchapter")) {
-              // go to first chapter next sibling element and focus first .cursorNavigate child
-              const nextChapterBody = findNextChapterBody(event.target);
-              if (!nextChapterBody) break;
-              const firstCursorNavigate = nextChapterBody?.querySelector(".cursorNavigate");
-              if (!firstCursorNavigate) break;
-              if (isDebug) {
-                console.log("Focusing 1st found .cursorNavigate element:", firstCursorNavigate.textContent);
-              }
-              firstCursorNavigate.focus();
+          } break;
+          case "ArrowDown": {
+            if (!event.target?.classList.contains("helpchapter")) {
+              break;
             }
-            break;
-          case "KeyF": // CTRL+F for find
-            if (event.metaKey) break;
-            if (event.altKey) break;
-            if (!event.ctrlKey) break;
+            // go to first chapter next sibling element and focus first .cursorNavigate child
+            const nextChapterBody = findNextChapterBody(event.target);
+            if (!nextChapterBody) {break;}
+            const firstCursorNavigate = nextChapterBody?.querySelector(".cursorNavigate");
+            if (!firstCursorNavigate) {break;}
+            if (isDebug) {
+              console.log("Focusing 1st found .cursorNavigate element:", firstCursorNavigate.textContent);
+            }
+            firstCursorNavigate.focus();
+          } break;
+          case "KeyF": { // CTRL+F for find
+            if (event.metaKey) {break;}
+            if (event.altKey) {break;}
+            if (!event.ctrlKey) {break;}
             event.preventDefault();
             event.stopPropagation();
             const srch = document.getElementById("search");
             srch.focus();
-            break;
+          } break;
         }
       });
     }    
@@ -522,7 +526,7 @@
       // helpSearch.innerHTML = " ";
       helpSearch.textContent = " ";
       // QuickFolders.Interface.quickMoveHelp(this);
-      helpSearch.addEventListener("click", (event) => {
+      helpSearch.addEventListener("click", (_event) => {
         // show / hide tooltip
         // console.log("clicked on help");
         let searchHelp = document.getElementById("searchHelpContent");
@@ -541,7 +545,7 @@
         .replaceAll("{{", "<span class='key'>")
         .replaceAll("}}", "</span>")
     }    
-  }
+  };
 
   function findOrigin() {
     const url = new URL(document.URL);
@@ -550,12 +554,12 @@
     return scriptParams["context"] || null;
   }
 
-  function isContextXML() { // helper function to see if we are in the old dialog
+  globalThis.isContextXML = () => { // helper function to see if we are in the old dialog
     return (findOrigin() != "html");
-  }
+  };
   
-  function showActiveElement(txt) {
+  globalThis.showActiveElement = (txt) => {
     const color="white", background="rgb(80,0,0)";
     console.log(`%c${txt} - Active element:`, `color: ${color}; background: ${background}`, document.activeElement, document.activeElement?.textContent.substring(0,25));
-  }
-    
+  };
+

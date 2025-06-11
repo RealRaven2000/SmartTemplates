@@ -9,18 +9,24 @@ BEGIN LICENSE BLOCK
 
 END LICENSE BLOCK
 */
+/*
+  globals
+    SmartTemplates_Discounts: readonly,
+*/
+
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
 var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 var { MailServices } = SmartTemplates_ESM
   ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
   : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
-var SmartTemplate4_TabURIregexp = {
-	get _thunderbirdRegExp() {
-		delete this._thunderbirdRegExp;
-		return this._thunderbirdRegExp = new RegExp("^https://smarttemplates.quickfolders.org");
-	}
-};
+// var SmartTemplate4_TabURIregexp = {
+// 	get _thunderbirdRegExp() {
+// 		delete this._thunderbirdRegExp;
+// 		return this._thunderbirdRegExp = new RegExp("^https://smarttemplates.quickfolders.org");
+// 	}
+// };
+var { classes: Cc, interfaces: Ci } = Components;
 
 SmartTemplate4.Util = {
   ADDON_ID: "smarttemplate4@thunderbird.extension",
@@ -72,6 +78,7 @@ SmartTemplate4.Util = {
       // Event forwarder - take event from background script and forward to windows with appropriate listeners
       if (data.event) {
         if (
+          // eslint-disable-next-line no-prototype-builtins
           !data.hasOwnProperty("window") ||
           data.window.includes(window.document.location.href.toString())
         ) {
@@ -131,7 +138,7 @@ SmartTemplate4.Util = {
   // special function for displaying the popup on the SmartTemplates toolbar button
   showToolbarPopup: function () {
     let button = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
-    if (!button) return;
+    if (!button) {return;}
     let p = button.querySelector("menupopup[data-action-menu]");
     if (p) {
       p.targetNode = button;
@@ -144,7 +151,7 @@ SmartTemplate4.Util = {
   },
 
   get CurrentEditor() {
-    if (typeof GetCurrentEditor == "function") return GetCurrentEditor();
+    if (typeof GetCurrentEditor == "function") {return GetCurrentEditor();}
     this.logDebug("CurrentEditor failed!");
     return null;
   },
@@ -162,14 +169,15 @@ SmartTemplate4.Util = {
   get tabContainer() {
     try {
       return this.tabmail.tabContainer;
-    } catch (ex) {
+    // eslint-disable-next-line no-unused-vars
+    } catch (_ex) {
       return null;
     }
   },
 
   // not (yet) used:
   getControllerFromComposeType(composeType) {
-    const msgComposeType = Ci.nsIMsgCompType;
+    const msgComposeType = Components.interfaces.nsIMsgCompType;
     switch (composeType) {
       case msgComposeType.Template: // new type for 1.6 - Thunderbird 52 uses this in "Edit As New" case
         return "cmd_newMessage";
@@ -218,7 +226,7 @@ SmartTemplate4.Util = {
     let aN = [];
     for (let i = el.childNodes.length - 1; i > 0; i--) {
       if (!el.childNodes[i].getAttribute("id") && !el.childNodes[i].getAttribute("name"))
-        aN.push(el);
+        {aN.push(el);}
     }
     return aN;
   },
@@ -229,11 +237,11 @@ SmartTemplate4.Util = {
       let child = el.childNodes[i];
       if (child.getAttribute("id"))
         // anonymous - should we add name, too?
-        continue;
-      if (child.getAttribute(attrName) == attrValue) return child;
+        {continue;}
+      if (child.getAttribute(attrName) == attrValue) {return child;}
       if (child.childElementCount) {
         let x = this.getAnonymousElementByAttribute(child, attrName, attrValue);
-        if (x) return x;
+        if (x) {return x;}
       }
     }
     return null;
@@ -241,7 +249,7 @@ SmartTemplate4.Util = {
 
   getFileInitArg: function (win) {
     // [bug 1882701] nsIFilePicker.init() first parameter changed from Tb125
-    if (!win) return null;
+    if (!win) {return null;}
     if (this.versionGreaterOrEqual(this.AppverFull, "125")) {
       return win.browsingContext;
     }
@@ -253,8 +261,9 @@ SmartTemplate4.Util = {
    */
   premiumFeatures: new Array(), // only the array in the main instance Util will be used
   addUsedPremiumFunction: function (f) {
-    if (!SmartTemplate4.Util.premiumFeatures.some((e) => e == f))
+    if (!SmartTemplate4.Util.premiumFeatures.some((e) => e == f)) {
       SmartTemplate4.Util.premiumFeatures.push(f);
+    }
   },
 
   clearUsedPremiumFunctions: function clearUsedPremiumFunctions() {
@@ -305,7 +314,7 @@ SmartTemplate4.Util = {
 
       // do not process -----------------------------------
       // (Draft:9/Template:10/ReplyWithTemplate:12)
-      case msgComposeType.Draft:
+      case msgComposeType.Draft: {
         // composeCase = 'draft';
         let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(
           Ci.nsIMessenger
@@ -318,9 +327,9 @@ SmartTemplate4.Util = {
           if (msgDbHdr.threadParent && msgDbHdr.threadParent != nsMsgKey_None) {
             st4composeType = "rsp(draft)"; // just guessing, of course it could be fwd as well
           }
-          if (msgDbHdr.numReferences == 0) st4composeType = "new(draft)";
+          if (msgDbHdr.numReferences == 0) {st4composeType = "new(draft)";}
         }
-        break;
+      }  break;
       default:
         st4composeType = "";
         break;
@@ -373,8 +382,8 @@ SmartTemplate4.Util = {
 
   get documentMessageBrowser() {
     let win = window.gTabmail.currentAboutMessage;
-    if (!win) return null;
-    if (!win.document) return null;
+    if (!win) {return null;}
+    if (!win.document) {return null;}
     return win.document;
   },
 
@@ -383,11 +392,12 @@ SmartTemplate4.Util = {
     switch (type) {
       case "unified":
         return document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
-      case "message_action":
+      case "message_action": {
         let doc = this.documentMessageBrowser;
         return doc.querySelector(
           "#smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton"
         );
+      }
     }
     return null;
   },
@@ -482,19 +492,20 @@ SmartTemplate4.Util = {
 
   getIdentityKey: function getIdentityKey(doc) {
     let selected = doc.getElementById("msgIdentity").selectedItem;
-    if (!selected) return "";
+    if (!selected) {return "";}
     let key = selected.getAttribute("identitykey"); // Tb 38.*
-    if (!key) key = selected.getAttribute("value"); // Tb 31.*
+    if (!key) {key = selected.getAttribute("value");} // Tb 31.*
     return key;
   },
 
   popupAlert: function (title, text, icon) {
     try {
-      if (!icon) icon = "chrome://smarttemplate4/content/skin/icon32x32.png";
+      if (!icon) {icon = "chrome://smarttemplate4/content/skin/icon32x32.png";}
       Components.classes["@mozilla.org/alerts-service;1"]
         .getService(Components.interfaces.nsIAlertsService)
         .showAlertNotification(icon, title, text, false, "", null);
-    } catch (e) {
+      // eslint-disable-next-line no-unused-vars
+    } catch (_e) {
       // prevents runtime error on platforms that don't implement nsIAlertsService
     }
   },
@@ -520,20 +531,21 @@ SmartTemplate4.Util = {
     }
 
     if (hasLicense) {
-      if (isProFeature && util.hasStandardLicense)
+      if (isProFeature && util.hasStandardLicense) {
         isStandardLicense = true; // popup for pro features
-      else return;
+      }
+      else {return;}
     }
 
     // show no license reminder if user has standard license, unless this is a "pro feature" warning
-    if (!isProFeature && isStandardLicense) return;
+    if (!isProFeature && isStandardLicense) {return;}
 
     if (typeof featureList == "string") {
       featureName = featureList;
     } else {
       // Array
       featureName = featureList.join("|"); // we use this in the referrer URL, but might need to concatenate.
-      if (featureList.length > 1) isList = true;
+      if (featureList.length > 1) {isList = true;}
     }
 
     util.logDebug("popupLicenseNotification(" + featureName + ")");
@@ -549,20 +561,20 @@ SmartTemplate4.Util = {
         notifyBox = util.Mail3PaneWindow.specialTabs.msgNotificationBar;
       }
     }
-    let title,
+    let // title,  // unused
       theText,
       featureTitle = "";
     if (isProFeature) {
-      title = util.getBundleString("st.notification.premium.title");
+      // title = util.getBundleString("st.notification.premium.title");
       theText = isList
         ? util.getBundleString("st.notification.premium.text.plural")
         : util.getBundleString("st.notification.premium.text");
       featureTitle = isList ? featureList.join(", ") : featureName; // nice l10n name for pro features
 
       theText = theText.replace("{1}", "'" + featureTitle + "'");
-      if (additionalText) theText = theText + "  " + additionalText;
+      if (additionalText) {theText = theText + "  " + additionalText;}
     } else {
-      title = "Licensing";
+      // title = "Licensing";
       theText = util.getBundleString("st.notification.license.text");
       let txtGracePeriod = util.gracePeriodText(util.licenseInfo.trialDays);
       theText = theText + "  " + txtGracePeriod;
@@ -581,7 +593,9 @@ SmartTemplate4.Util = {
           // standard license
           regBtn = util.getBundleString("st.notification.premium.btn.upgrade");
           hotKey = util.getBundleString("st.notification.premium.btn.upgrade.hotKey");
-        } else regBtn = util.getBundleString("st.notification.premium.btn.getLicense");
+        } else {
+          regBtn = util.getBundleString("st.notification.premium.btn.getLicense");
+        }
     }
 
     if (!notifyBox) {
@@ -631,7 +645,7 @@ SmartTemplate4.Util = {
 
     if (notifyBox) {
       let item = notifyBox.getNotificationWithValue(notificationKey);
-      if (item) notifyBox.removeNotification(item, false);
+      if (item) {notifyBox.removeNotification(item, false);}
     }
 
     // the standard license warning will be always shown on top of the other ones [PRIORITY_WARNING_HIGH]
@@ -702,7 +716,7 @@ SmartTemplate4.Util = {
             break;
           }
         }
-      } else MsgStatusFeedback.showStatusString(s);
+      } else {MsgStatusFeedback.showStatusString(s);}
     } catch (ex) {
       this.logException("showStatusMessage - ", ex);
       MsgStatusFeedback.showStatusString(s);
@@ -739,7 +753,8 @@ SmartTemplate4.Util = {
       let elapsed = new String(endTime - this.lastTime); // time in milliseconds
       timePassed = "[" + elapsed + " ms]	 ";
       this.lastTime = endTime; // remember last time
-    } catch (e) {}
+    // eslint-disable-next-line no-unused-vars
+    } catch (e) {;}
     return (
       end.getHours() +
       ":" +
@@ -754,7 +769,7 @@ SmartTemplate4.Util = {
   },
 
   // first argument is the option tag
-  logWithOption: function logWithOption(a) {
+  logWithOption: function logWithOption(_a) {
     // highlight messages with replaced word tokens
     const isReplacement = arguments[0] == "replaceReservedWords";
     // we may need to splice in formatting, but arguments is not an Array:
@@ -771,12 +786,12 @@ SmartTemplate4.Util = {
     console.log(...args);
   },
 
-  logToConsole: function (a) {
+  logToConsole: function (_a) {
     let msg = "SmartTemplates " + SmartTemplate4.Util.logTime() + "\n";
     console.log(msg, ...arguments);
   },
 
-  logWarning: function (a) {
+  logWarning: function (_a) {
     let msg = "SmartTemplates " + SmartTemplate4.Util.logTime() + "\n";
     console.warn(msg, ...arguments);
   },
@@ -818,10 +833,11 @@ SmartTemplate4.Util = {
     }
   },
 
-  logDebug: function (msg) {
+  logDebug: function (_msg) {
     // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
-    if (SmartTemplate4.Preferences.isDebug && SmartTemplate4.Preferences.isDebugOption("default"))
+    if (SmartTemplate4.Preferences.isDebug && SmartTemplate4.Preferences.isDebugOption("default")) {
       this.logToConsole(...arguments);
+    }
   },
 
   logIssue213: function (txt) {
@@ -845,7 +861,7 @@ SmartTemplate4.Util = {
     console.log(`SmartTemplates %c${txt}`, `color: ${color}; background: ${background}`, ...args);
   },
 
-  logDebugOptional: function (optionString, msg) {
+  logDebugOptional: function (optionString, _msg) {
     optionString = arguments[0];
     let options = optionString.split(","); // allow multiple switches
     for (let i = 0; i < options.length; i++) {
@@ -858,14 +874,14 @@ SmartTemplate4.Util = {
   },
 
   getTabInfoLength: function getTabInfoLength(tabmail) {
-    if (tabmail.tabInfo) return tabmail.tabInfo.length;
-    if (tabmail.tabOwners) return tabmail.tabOwners.length;
+    if (tabmail.tabInfo) {return tabmail.tabInfo.length;}
+    if (tabmail.tabOwners) {return tabmail.tabOwners.length;}
     return null;
   },
 
   getTabInfoByIndex: function getTabInfoByIndex(tabmail, idx) {
-    if (tabmail.tabInfo) return tabmail.tabInfo[idx];
-    if (tabmail.tabOwners) return tabmail.tabOwners[idx];
+    if (tabmail.tabInfo) {return tabmail.tabInfo[idx];}
+    if (tabmail.tabOwners) {return tabmail.tabOwners[idx];}
     return null;
   },
 
@@ -881,7 +897,7 @@ SmartTemplate4.Util = {
   // @tabInfo - tabInfo object
   // @type - one of "folder", "message", "search", "mail" (for folders+single messages), "other"
   isTabMode: function (tabInfo, type) {
-    if (!tabInfo) return false;
+    if (!tabInfo) {return false;}
     switch (tabInfo.mode.name) {
       case "mail3PaneTab":
         return ["folder", "mail"].includes(type);
@@ -907,9 +923,10 @@ SmartTemplate4.Util = {
     ) {
       case "mailMessageTab":
         return SmartTemplate4.Util.document3pane;
-      case "mail3PaneTab":
+      case "mail3PaneTab": {
         let browser = SmartTemplate4.Util.document3pane.getElementById("messageBrowser");
         return browser.contentDocument;
+      }
     }
     return null;
   },
@@ -919,9 +936,9 @@ SmartTemplate4.Util = {
       queryPos = URL.indexOf("?"),
       baseURL = URL;
 
-    if (hashPos > 0) baseURL = URL.substr(0, hashPos);
-    else if (queryPos > 0) baseURL = URL.substr(0, queryPos);
-    if (baseURL.endsWith("/")) return baseURL.substr(0, baseURL.length - 1); // match "x.com" with "x.com/"
+    if (hashPos > 0) {baseURL = URL.substr(0, hashPos);}
+    else if (queryPos > 0) {baseURL = URL.substr(0, queryPos);}
+    if (baseURL.endsWith("/")) {return baseURL.substr(0, baseURL.length - 1);} // match "x.com" with "x.com/"
     return baseURL;
   },
 
@@ -949,8 +966,8 @@ SmartTemplate4.Util = {
     const util = SmartTemplate4.Util;
     if ((await util.openURLInTab.call(util, URL)) && null != evt) {
       // workaround for a bug in TB3 that causes href's not be followed anymore.
-      if (evt.preventDefault) evt.preventDefault();
-      if (evt.stopPropagation) evt.stopPropagation();
+      if (evt.preventDefault) {evt.preventDefault();}
+      if (evt.stopPropagation) {evt.stopPropagation();}
     }
   },
 
@@ -1126,6 +1143,7 @@ SmartTemplate4.Util = {
       (reservedWord[reservedWord.length - 1] != "%" ? "%" : "");
 
     if (SmartTemplate4.Preferences.isDebugOption("adressbook")) {
+      // eslint-disable-next-line no-debugger
       debugger;
     }
     const ErrorString1 = SmartTemplate4.Util.getBundleString("contextError").replace(/\n/g, "{br}");
@@ -1155,8 +1173,8 @@ SmartTemplate4.Util = {
     let today = new Date(),
       tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1),
       timeToMidnight = tomorrow - today;
-    var timer = setTimeout(function () {
-      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" });
+    setTimeout(() => {
+      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateLicenseTimer" });
       SmartTemplate4.Util.setMidnightTimer();
     }, timeToMidnight);
   },
@@ -1181,7 +1199,7 @@ SmartTemplate4.Util = {
       "Util.getIsoWeek(" + tm + ", " + dowOffset + ")"
     );
 
-    dowOffset = typeof dowOffset == "int" ? dowOffset : 0; //default dowOffset to zero
+    dowOffset = typeof dowOffset == "number" ? dowOffset : 0; //default dowOffset to zero
 
     let newYear = new Date(tm.getFullYear(), 0, 1);
     let day = newYear.getDay() - dowOffset; //the day of week the year begins on
@@ -1216,9 +1234,9 @@ SmartTemplate4.Util = {
   },
 
   isFormatLink: function (format) {
-    if (!format) return false;
-    if (format.charAt(0) == "(") format = format.slice(1);
-    if (format.charAt(format.length - 1) == ")") format = format.slice(0, -1);
+    if (!format) {return false;}
+    if (format.charAt(0) == "(") {format = format.slice(1);}
+    if (format.charAt(format.length - 1) == ")") {format = format.slice(0, -1);}
 
     let fs = format.split(",");
     return fs.includes("link");
@@ -1227,10 +1245,8 @@ SmartTemplate4.Util = {
   getServerInfo: function (idKey) {
     let serverInfo = "";
     try {
-      let found = false;
       for (let account of MailServices.accounts.accounts) {
         if (account.defaultIdentity && account.defaultIdentity.key == idKey) {
-          found = true;
           let srv = account ? account.incomingServer : null;
           serverInfo = srv ? "server{?}:      " + srv.hostName + " [" + srv.type + "]" + "\n " : "";
           break;
@@ -1264,7 +1280,7 @@ SmartTemplate4.Util = {
       // [Bug 25483] when using %sig(2)% signature is missing on new mails in HTML mode
       let newSig = elem;
       if (elem.childNodes.length) {
-        if (elem.childNodes.length == 1) newSig = removeDashes(elem.firstChild);
+        if (elem.childNodes.length == 1) {newSig = removeDashes(elem.firstChild);}
         else {
           if (elem.firstChild.nodeValue == "-- ") {
             elem.removeChild(elem.firstChild); //remove '-- '
@@ -1282,7 +1298,7 @@ SmartTemplate4.Util = {
       util.logDebugOptional("regularize", "getSignatureInner(" + isRemoveDashes + ")");
       if (sig != null) {
         SmartTemplate4.sigInTemplate = true;
-        if (typeof sig === "string") return isRemoveDashes ? removeDashes(sig, true) : sig;
+        if (typeof sig === "string") {return isRemoveDashes ? removeDashes(sig, true) : sig;}
 
         if (!sig.children || sig.children.length == 0) {
           util.logDebugOptional(
@@ -1336,7 +1352,7 @@ SmartTemplate4.Util = {
         if (compositeName.length > 1) {
           let cname = "";
           for (let m = 0; m < compositeName.length; m++) {
-            if (m > 0) cname += "-";
+            if (m > 0) {cname += "-";}
             cname += compositeName[m].charAt(0).toLocaleUpperCase() + compositeName[m].substring(1);
           }
           words[i] = cname;
@@ -1364,7 +1380,7 @@ SmartTemplate4.Util = {
       return SmartTemplate4.Util.clipboardRead();
     }
     let quoteLess = s.substring(1, s.length - 1);
-    if (global) return new RegExp(quoteLess, "ig");
+    if (global) {return new RegExp(quoteLess, "ig");}
     // allow using \n and \t for new line and tabs characters
     return quoteLess.replace(/\\n/gi, "\n").replace(/\\t/gi, "\t");
   },
@@ -1379,8 +1395,6 @@ SmartTemplate4.Util = {
   // see MsgComposeCommands, loadBlockedImage()
   getFileAsDataURI: function getFileAsDataURI(aURL) {
     const util = SmartTemplate4.Util,
-      Ci = Components.interfaces,
-      Cc = Components.classes,
       MimeService = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService);
 
     let filename = aURL.substr(aURL.lastIndexOf("/") + 1);
@@ -1443,9 +1457,9 @@ SmartTemplate4.Util = {
   },
 
   isFilePathAbsolute: function (path) {
-    if (!path) return false;
+    if (!path) {return false;}
     // Guard for data URIs
-    if (path.startsWith("data:")) return true;
+    if (path.startsWith("data:")) {return true;}
     // Guard for scheme-based absolute paths: http(s), ftp, file, data, etc.
     if (/^[a-z][a-z0-9+\-.]*:\/\//i.test(path)) {
       return true;
@@ -1515,7 +1529,7 @@ SmartTemplate4.Util = {
   },
 
   // like hasPremiumLicense in QF, needs to be replaced with the notifyTools
-  hasLicense: function hasLicense(reset) {
+  hasLicense: function hasLicense(_reset) {
     // ignore reset!
     return SmartTemplate4.Util.licenseInfo.status == "Valid";
   },
@@ -1533,7 +1547,7 @@ SmartTemplate4.Util = {
 
   // appends user=pro OR user=proRenew if user has a valid / expired license
   makeUriPremium: function makeUriPremium(URL) {
-    const util = SmartTemplate4.Util,
+    const 
       isLicensed = SmartTemplate4.Util.hasLicense(),
       isExpired = SmartTemplate4.Util.licenseInfo.isExpired;
     try {
@@ -1553,12 +1567,15 @@ SmartTemplate4.Util = {
           anchor = URL.substr(x);
           URL = URL.substr(0, x);
         }
-        if (URL.includes("?")) URL = URL + "&user=" + uType;
-        else URL = URL + "?user=" + uType;
+        if (URL.includes("?")) {URL = URL + "&user=" + uType;}
+        else {URL = URL + "?user=" + uType;}
         URL = URL + anchor;
       }
-    } catch (ex) {
+    // eslint-disable-next-line no-unused-vars
+    } catch (_ex) {
+      ;
     } finally {
+      // eslint-disable-next-line no-unsafe-finally
       return URL;
     }
   },
@@ -1577,14 +1594,14 @@ SmartTemplate4.Util = {
   // headers that are currently not defined may be filled later.
   // e.g. adding a To address when writing a new email
   wrapDeferredHeader: async function wrapDeferredHeader(field, defaultValue, isHtml, isComposeNew) {
-    const prefs = SmartTemplate4.Preferences,
-      util = SmartTemplate4.Util;
-    if (prefs.isDebugOption("tokens.deferred")) debugger;
+    const prefs = SmartTemplate4.Preferences;
+    // eslint-disable-next-line no-debugger
+    if (prefs.isDebugOption("tokens.deferred")) {debugger;}
 
     let newComposeClass = isComposeNew
       ? " class='noWrite'"
       : ""; /* make field look pink for headers that are not available in New Emails */
-    if (!isHtml) return defaultValue; // not supported in plain text for now
+    if (!isHtml) {return defaultValue;} // not supported in plain text for now
 
     SmartTemplate4.hasDeferredVars = true;
 
@@ -1612,7 +1629,7 @@ SmartTemplate4.Util = {
   // should be called when email is sent
   // [issue 284] - this is not called anymore we call cleanupDeferredFields() directly from
   //               experiment API via SmartTemplate4.composer.beforeSend()
-  composerSendMessage: async function (evt) {
+  composerSendMessage: async function (_evt) {
     const Ci = Components.interfaces,
       msgComposeType = Ci.nsIMsgCompType,
       nsIMsgCompDeliverMode = Ci.nsIMsgCompDeliverMode;
@@ -1651,9 +1668,9 @@ SmartTemplate4.Util = {
       editor = gMsgCompose.editor;
 
     function isQuotedNode(node) {
-      if (!node) return false;
-      if (node.nodeName && node.nodeName.toLowerCase() == "blockquote") return true;
-      if (!node.parentNode) return false;
+      if (!node) {return false;}
+      if (node.nodeName && node.nodeName.toLowerCase() == "blockquote") {return true;}
+      if (!node.parentNode) {return false;}
       return isQuotedNode(node.parentNode); //  if node is child of a quoted parent, it is also considered to be quoted.
     }
 
@@ -1666,7 +1683,7 @@ SmartTemplate4.Util = {
       while (treeWalker.nextNode()) {
         let node = treeWalker.currentNode;
         // omit all quoted material.
-        if (isQuotedNode(node)) continue;
+        if (isQuotedNode(node)) {continue;}
         if (node.tagName && node.tagName.toLowerCase() == "smarttemplate") {
           // update content of late deferred variables and add to nodeList for deletion
           await util.resolveDeferred(editor, node, true, nodeList);
@@ -1709,30 +1726,31 @@ SmartTemplate4.Util = {
         let parensPos = st4.indexOf("("),
           generalFunction = parensPos == -1 ? st4 : st4.substr(0, parensPos),
           argList = parensPos == -1 ? "" : st4.match(/([\w-:=]+)\(([^)]+)\)*/);
-        if (!generalFunction.length) return;
+        if (!generalFunction.length) {return;}
         // util.logDebugOptional('resolveDeferred','matched variable [' + i + ']: ' + matchPart[i]);
-        let args = argList.length < 2 ? [] : argList[2].split(",");
+        // eslint-disable-next-line no-unused-vars
+        let _args = argList.length < 2 ? [] : argList[2].split(",");
 
         // 1st group: name of st4 variable, e.g. subject
-        if (generalFunction == "date") generalFunction = "dateshort";
-        if (generalFunction == "identity") generalFunction = "from";
-        if (generalFunction == "recipient") generalFunction = "to";
+        if (generalFunction == "date") {generalFunction = "dateshort";}
+        if (generalFunction == "identity") {generalFunction = "from";}
+        if (generalFunction == "recipient") {generalFunction = "to";}
 
         let composeDetails = GetComposeDetails(); // Refresh subject and address fields
         expandRecipients(); // [issue 167] - refresh lists!
 
         switch (generalFunction) {
-          case "subject":
+          case "subject": {
             let sub = composeDetails.subject; // GetMsgSubjectElement();
             if (sub) {
               el.innerText = sub;
               resolved = true;
             }
-            break;
+          }  break;
           case "from": // fall through
           case "to": // fall through
           case "cc": // fall through
-          case "bcc":
+          case "bcc": {
             let charset = null,
               addressValue;
 
@@ -1758,7 +1776,7 @@ SmartTemplate4.Util = {
               }
             }
 
-            break;
+          } break;
           case "dateformat":
             tm = new Date();
             el.innerText = util.dateFormat(tm.getTime() * 1000, argList[2], 0);
@@ -1773,10 +1791,11 @@ SmartTemplate4.Util = {
           default:
             if (composeDetails[generalFunction]) {
               el.innerText = composeDetails[generalFunction];
-            } else
+            } else {
               alert(
                 "NOT SUPPORTED: Replace deferred smartTemplate variable: %" + generalFunction + "%"
               );
+            }
             break;
         }
       }
@@ -1830,9 +1849,9 @@ SmartTemplate4.Util = {
       treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
 
     function isQuotedNode(node) {
-      if (!node) return false;
-      if (node.nodeName && node.nodeName.toLowerCase() == "blockquote") return true;
-      if (!node.parentNode) return false;
+      if (!node) {return false;}
+      if (node.nodeName && node.nodeName.toLowerCase() == "blockquote") {return true;}
+      if (!node.parentNode) {return false;}
       return isQuotedNode(node.parentNode); //  if node is child of a quoted parent, it is also considered to be quoted.
     }
 
@@ -1842,13 +1861,13 @@ SmartTemplate4.Util = {
         while (treeWalker.nextNode()) {
           let node = treeWalker.currentNode;
           // omit all quoted material.
-          if (isQuotedNode(node)) continue;
+          if (isQuotedNode(node)) {continue;}
           if (node.tagName && node.tagName.toLowerCase() == "smarttemplate") {
             let hdr = node.getAttribute("hdr"); // this is the general function
 
             // the following variables are replaced during resolveDeferred()
-            if (hdr == "identity") hdr = "from"; // perspective should always match, even when we reply / fwd!
-            if (hdr == "recipient") hdr = "to";
+            if (hdr == "identity") {hdr = "from";} // perspective should always match, even when we reply / fwd!
+            if (hdr == "recipient") {hdr = "to";}
 
             let v = node.getAttribute("st4variable");
             if (hdr && SmartTemplate4.PreprocessingFlags.modifiedHeaders.some((e) => e == hdr)) {
@@ -1871,7 +1890,6 @@ SmartTemplate4.Util = {
   setupDeferredListeners: function st4_setupDeferredListeners(editor) {
     const util = SmartTemplate4.Util;
     let body = editor.rootElement,
-      el = body,
       treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
 
     while (treeWalker.nextNode()) {
@@ -1923,7 +1941,7 @@ SmartTemplate4.Util = {
   checkIsURLencoded: function checkIsURLencoded(tok) {
     if (tok.length >= 4) {
       let t = tok.substr(0, 2); // hexcode, such as %5C
-      if (/\%[0-9a-fA-F][0-9a-fA-F]/.test(t)) {
+      if (/%[0-9a-fA-F][0-9a-fA-F]/.test(t)) {
         this.logDebug(
           "checkIsURLencoded()\n" +
             "Ignoring character sequence as not a SmartTemplate because it looks like an URL encoded sequence:\n" +
@@ -1939,7 +1957,7 @@ SmartTemplate4.Util = {
   },
 
   isAddressHeader: function isAddressHeader(token = "") {
-    if (!token) return false;
+    if (!token) {return false;}
     return RegExp(" " + token + " ", "i").test(
       " bcc cc disposition-notification-to errors-to from mail-followup-to mail-reply-to reply-to" +
         " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to recipient"
@@ -1982,7 +2000,7 @@ SmartTemplate4.Util = {
         util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)
     );
     util.addUsedPremiumFunction("dateFormat");
-    if (!timezone) timezone = 0;
+    if (!timezone) {timezone = 0;}
     try {
       let tm = new Date();
 
@@ -2074,9 +2092,7 @@ SmartTemplate4.Util = {
 
   prTime2Str: function st4_prTime2Str(time, timeType, timezone) {
     const util = SmartTemplate4.Util,
-      prefs = SmartTemplate4.Preferences,
-      Ci = Components.interfaces,
-      Cc = Components.classes;
+      prefs = SmartTemplate4.Preferences;
     function getDateFormat(field) {
       return prefs.getStringPref("dateformat." + field);
     }
@@ -2189,7 +2205,9 @@ SmartTemplate4.Util = {
           tm.getMinutes(),
           tm.getSeconds()
         );
-      } else timeString = fmt.format(tm);
+      } else {
+        timeString = fmt.format(tm);
+      }
       util.logDebugOptional("timeStrings", "Created timeString: " + timeString);
       return timeString;
     } catch (ex) {
@@ -2383,7 +2401,6 @@ SmartTemplate4.Util = {
   },
 
   getTimezoneOffset: function st4_getTimezoneOffset(zone) {
-    let offset = 0;
     // Offsets according to https://en.wikipedia.org/wiki/List_of_time_zone_abbreviations
     switch (zone) {
       case "ACDT":
@@ -2402,8 +2419,6 @@ SmartTemplate4.Util = {
         return 10;
       case "AFT":
         return 4.5;
-      case "ART":
-        return -3;
       case "AKDT":
         return -8; // Alaska Daylight
       case "AKST":
@@ -2790,7 +2805,7 @@ SmartTemplate4.Util = {
     } else {
       util.logDebugOptional("timeZones", "no timeZone match, building manual...");
       retVal = timeString.match("[A-Z]{4}");
-      if (!retVal) retVal = timeString.match("[A-Z]{3}");
+      if (!retVal) {retVal = timeString.match("[A-Z]{3}");}
       // convert to long form by using hard-coded time zones array.
       util.logDebug(
         "Cannot determine timezone string - Missed parentheses - from:\n" +
@@ -2810,8 +2825,8 @@ SmartTemplate4.Util = {
     let formatArray = [];
     if (format) {
       // remove parentheses
-      if (format.charAt(0) == "(") format = format.slice(1);
-      if (format.charAt(format.length - 1) == ")") format = format.slice(0, -1);
+      if (format.charAt(0) == "(") {format = format.slice(1);}
+      if (format.charAt(format.length - 1) == ")") {format = format.slice(0, -1);}
 
       let fs = format.split(","); // lastname, firstname ?
       let lastTransformed = -1; // remember the last transformed element
@@ -2896,8 +2911,8 @@ SmartTemplate4.Util = {
   // it will starts with " but doesn't finish with that "
   combineSplitStringParam: function (params) {
     if (params[0].startsWith('"')) {
-      if (params[0].endsWith('"')) return;
-      if (params.length < 2) return;
+      if (params[0].endsWith('"')) {return;}
+      if (params.length < 2) {return;}
     }
     let foundClosingPart = 0;
     for (let i = 1; i < params.length; i++) {
@@ -2920,7 +2935,7 @@ SmartTemplate4.Util = {
     if (!params || params.length < 2) {
       return 0; // match all
     }
-    if (isNaN(params[1])) return 0;
+    if (isNaN(params[1])) {return 0;}
     return parseInt(params[1], 10);
   },
 
@@ -2941,14 +2956,15 @@ SmartTemplate4.Util = {
     // If no afterId is given, then append the item to the toolbar
     if (afterId) {
       let elem = document.getElementById(afterId);
-      if (elem && elem.parentNode == toolbar) before = elem.nextElementSibling;
+      if (elem && elem.parentNode == toolbar) {before = elem.nextElementSibling;}
       else {
         // get last item and insert before:
         before = toolbar.childNodes[toolbar.childNodes.length - 1];
         this.logDebug("toolbar.childNodes length = " + toolbar.childNodes.length);
         // if there is a spacer, let's put element before that.
-        if (before && before.previousElementSibling.tagName == "toolbarspring")
+        if (before && before.previousElementSibling.tagName == "toolbarspring") {
           before = before.previousElementSibling;
+        }
       }
     }
     if (!before) {
@@ -2956,11 +2972,11 @@ SmartTemplate4.Util = {
     }
 
     this.logDebug("toolbar.insertItem(" + id + "," + before + ")");
-    if (before) toolbar.insertItem(id, before);
+    if (before) {toolbar.insertItem(id, before);}
 
     toolbar.setAttribute("currentset", toolbar.currentSet);
     this.logDebug("document.persist" + toolbar.id + ")");
-    if (document.persist) document.persist(toolbar.id, "currentset");
+    if (document.persist) {document.persist(toolbar.id, "currentset");}
     return true;
     // }
   },
@@ -2968,9 +2984,7 @@ SmartTemplate4.Util = {
   // -----------------------------------
   // get locale preference
   getLocalePref: function getLocalePref() {
-    const Ci = Components.interfaces,
-      Cc = Components.classes,
-      util = SmartTemplate4.Util;
+    const util = SmartTemplate4.Util;
     try {
       let locale,
         forcedLocale = SmartTemplate4.calendar.currentLocale, // check if the %language% variable was set
@@ -3002,9 +3016,9 @@ SmartTemplate4.Util = {
         while (availableLocales.hasMore()) {
           let aLocale = availableLocales.getNext();
           listLocales += aLocale.toString() + ", ";
-          if (aLocale == forcedLocale) found = true;
+          if (aLocale == forcedLocale) {found = true;}
           else {
-            if (aLocale.indexOf(forcedLocale) == 0) foundPartly = aLocale; // partly matched, e.g. forcedLocale=de, language pack = de-DE
+            if (aLocale.indexOf(forcedLocale) == 0) {foundPartly = aLocale;} // partly matched, e.g. forcedLocale=de, language pack = de-DE
           }
         }
         if (!found && foundPartly) {
@@ -3050,9 +3064,7 @@ SmartTemplate4.Util = {
 
   // isDisabled - force disabled (on retry)
   setSpellchecker: async function (languages, isDisabled) {
-    const Ci = Components.interfaces,
-      Cc = Components.classes,
-      util = SmartTemplate4.Util;
+    const util = SmartTemplate4.Util;
 
     let retry = util.retrySpellCheck || 0,
       inlineSpellChecker =
@@ -3096,7 +3108,7 @@ SmartTemplate4.Util = {
         }
       }
       if (languages == "off") {
-        if (enableInlineSpellCheck) enableInlineSpellCheck(false);
+        if (enableInlineSpellCheck) {enableInlineSpellCheck(false);}
         gSpellChecker.enabled = false; // restore disabled status if this is a global setting.
         util.logDebug("Disabled automatic spellcheck");
         return;
@@ -3183,7 +3195,7 @@ SmartTemplate4.Util = {
 
   // helper function to find a child node of the passed class Name
   findChildNode: function (node, className) {
-    if (!node) return null; // [issue 367]
+    if (!node) {return null;} // [issue 367]
     return node?.querySelector(`.${className}`) || null;
   },
 
@@ -3251,15 +3263,7 @@ SmartTemplate4.Util = {
     SmartTemplate4.Util.notifyTools.notifyBackground({ func: "splashScreen" });
   },
 
-  setMidnightTimer: function () {
-    let today = new Date(),
-      tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1),
-      timeToMidnight = tomorrow - today;
-    setTimeout(() => {
-      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateLicenseTimer" });
-      SmartTemplate4.Util.setMidnightTimer();
-    }, timeToMidnight);
-  },
+
 
   /*
    * args: [] optional string array of preferred flavors, see:
@@ -3297,8 +3301,9 @@ SmartTemplate4.Util = {
         // find first supported flavor in order of preference
         if (
           Services.clipboard.hasDataMatchingFlavors([flavor], Services.clipboard.kGlobalClipboard)
-        )
+        ) {
           return flavor;
+        }
       }
       return null;
     }
@@ -3323,6 +3328,7 @@ SmartTemplate4.Util = {
       const data = {};
       try {
         xferable.getTransferData(finalFlavor, data);
+      // eslint-disable-next-line no-unused-vars
       } catch (e) {
         // Clipboard doesn't contain data in flavor, return null.
         SmartTemplate4.Util.logDebug(`No data with flavor ${finalFlavor} in clipboard! `);
@@ -3406,15 +3412,15 @@ SmartTemplate4.Util = {
   },
 
   isTransformString: function (argString) {
-    if (!argString) return false;
+    if (!argString) {return false;}
     return ["capitalize", "camelcase", "uppercase", "lowercase", "default"].includes(argString);
   },
 
   transformString: function (txt, formatter) {
     // [issue 288]
-    if (!formatter) return txt;
-    if (formatter?.isUppercase) return txt.toUpperCase();
-    if (formatter?.isLowercase) return txt.toLowerCase();
+    if (!formatter) {return txt;}
+    if (formatter?.isUppercase) {return txt.toUpperCase();}
+    if (formatter?.isLowercase) {return txt.toLowerCase();}
     if (formatter?.isCamelcase) {
       const words = txt.split(" ");
       for (let i = 0; i < words.length; i++) {
@@ -3506,7 +3512,7 @@ SmartTemplate4.Util = {
   },
 
   getMessageTags: function (msgHdr) {
-    if (!msgHdr) return [];
+    if (!msgHdr) {return [];}
     const tags = [];
     const msgKeyArray = msgHdr.getStringProperty("keywords")?.split(" ");
     // Get the list of known tags. -https://searchfox.org/comm-esr128/source/mail/base/content/msgHdrView.js#3176
@@ -3530,7 +3536,7 @@ SmartTemplate4.Util = {
   parseValueArgument: function (paramString) {
     // parses an argument of the format
     // arg=value  or arg="value"
-    if (!paramString) return "";
+    if (!paramString) {return "";}
     if (paramString.includes("=")) {
       let parts = paramString.split("=");
       let paramArg = parts[1];
@@ -3553,7 +3559,7 @@ SmartTemplate4.Util = {
   tagsFormatter: function (args, tags) {
     function parseFormatPreset(f) {
       const isPreset = ["color", "color-filled", "filled", "dark-filled"].includes(f);
-      if (!isPreset) return "";
+      if (!isPreset) {return "";}
       SmartTemplate4.Util.logDebug(`tagsFormatter() detected formatting preset: ${f}`);
       switch (f) {
         case "color":
@@ -3575,8 +3581,6 @@ SmartTemplate4.Util = {
     let isExplicitSize = false;
     let isFormatPreset = false;
     this.logHighlightDebug("tagsFormatter()", "yellow", "darkblue", args);
-    const tagLabels = tags.map((t) => t.label);
-    const tagColors = tags.map((t) => t.color);
     for (let i = 0; i < args.length; i++) {
       if (args[i].startsWith("delimiter") || args[i].startsWith("format")) {
         newArgs = this.combineEscapedParams(newArgs, i); // fix escaped comma in argument
@@ -3595,6 +3599,7 @@ SmartTemplate4.Util = {
         // font-size
         isExplicitSize = true;
         let sizeArg = this.parseValueArgument(f);
+        // eslint-disable-next-line no-useless-escape
         let reg = new RegExp(/^[\d\.]+$/); // test for decimal numbers only (not followed by any units)
         let effectiveSize = sizeArg;
         if (reg.test(sizeArg.trim())) {
@@ -3670,9 +3675,9 @@ SmartTemplate4.Util = {
                 startProcess = true;
                 continue;
               }
-              if (!startProcess) continue;
+              if (!startProcess) {continue;}
               if (f?.tagName) {
-                if (["meta", "style", "img"].includes(f.tagName.toLowerCase())) continue;
+                if (["meta", "style", "img"].includes(f.tagName.toLowerCase())) {continue;}
               }
               switch (f.nodeType) {
                 case 1 /* element */:
@@ -3686,7 +3691,7 @@ SmartTemplate4.Util = {
           }
         }
       }
-      if (!extractSource) extractSource = rootEl.innerText;
+      if (!extractSource) {extractSource = rootEl.innerText;}
       return extractSource;
     } catch (ex) {
       SmartTemplate4.Util.logError("getBodyComposer failed: ", ex);
@@ -3774,7 +3779,8 @@ SmartTemplate4.Util.firstRun =
 		    prefBranchString = "extensions.smartTemplate4.",
 		    ssPrefs = Services.prefs.getBranch(prefBranchString);
 
-		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstRun")); } catch (e) { debugFirstRun = false; }
+		// eslint-disable-next-line no-unused-vars
+		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstRun")); } catch (_e) { debugFirstRun = false; }
 
 		util.logDebugOptional ("firstRun","SmartTemplate4.Util.firstRun.init()");
 		if (!ssPrefs) {
@@ -3795,13 +3801,15 @@ SmartTemplate4.Util.firstRun =
 			} ;
 
 			util.logDebugOptional ("firstRun","try to get setting: getBoolPref(firstRun)");
-			try { firstRun = ssPrefs.getBoolPref("firstRun"); } catch (e) { firstRun = true; }
+			// eslint-disable-next-line no-unused-vars
+			try { firstRun = ssPrefs.getBoolPref("firstRun"); } catch (_e) { firstRun = true; }
 
 
 			if (firstRun) {
 				// previous setting found? not a new installation!
-				if (prefs.existsBoolPref("extensions.smarttemplate.def"))
+				if (prefs.existsBoolPref("extensions.smarttemplate.def")) {
 					firstRun = false;
+        }
 				util.logDebugOptional ("firstRun","setting firstRun=false");
 				prefs.setMyBoolPref("firstRun", false);
 			}
@@ -3975,7 +3983,7 @@ SmartTemplate4.AB = {
       card: null,
       vCardJson: null,
     };
-    if (!searchText) return returnObj;
+    if (!searchText) {return returnObj;}
     try {
       // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
 
@@ -4049,8 +4057,8 @@ SmartTemplate4.AB = {
 			if (searchField != "mail") {
         // let's use the API instead.
         // NEW API search for nickname:
-        abFunction = "getContactsFromSearch";
-        card = await SmartTemplate4.Util.notifyTools.notifyBackground({
+        const abFunction = "getContactsFromSearch";
+        let card = await SmartTemplate4.Util.notifyTools.notifyBackground({
           func: abFunction,
           field: searchField,
           string: searchText.toLowerCase(),
@@ -4131,7 +4139,7 @@ SmartTemplate4.AB = {
 						}
 						*/
           } catch (ex) {
-            util.logDebug("Problem with Addressbook: " + addressBook.dirName + "\n" + ex);
+            SmartTemplate4.Util.logDebug("Problem with Addressbook: " + addressBook.dirName + "\n" + ex);
           }
         }
       }
@@ -4143,7 +4151,7 @@ SmartTemplate4.AB = {
   },
 
   isCardCardBook: function (card) {
-    if (!card) return false;
+    if (!card) {return false;}
     return typeof card.dirPrefId == "string";
   },
 
@@ -4152,7 +4160,7 @@ SmartTemplate4.AB = {
     try {
       if (isCardBook) {
         result = cardObj.card.tel.find((e) => e[1].includes(`TYPE=${phoneType.toUpperCase()}`));
-        if (result && result.length) return result[0].toString();
+        if (result && result.length) {return result[0].toString();}
       } else {
         // use cardObj.vCardJson
         let records = cardObj.vCardJson[1].filter((e) => e[0] == "tel" && e[1].type == phoneType);
@@ -4170,8 +4178,8 @@ SmartTemplate4.AB = {
   },
 
   getCardProperty: function (cardObj, p, defaultValue = "") {
-    if (!cardObj) return "";
-    if (!cardObj.card) return "";
+    if (!cardObj) {return "";}
+    if (!cardObj.card) {return "";}
     const card = cardObj.card;
     const isDebugAB = SmartTemplate4.Preferences.isDebugOption("adressbook");
     SmartTemplate4.Util.logDebugOptional("adressbook", `getCardProperty(${p},${defaultValue})`);
@@ -4188,7 +4196,7 @@ SmartTemplate4.AB = {
       }
       if (r) {
         let d = SmartTemplate4.mimeDecoder.decode(r);
-        if (d) return d;
+        if (d) {return d;}
       } else {
         // parse contents of vCard
         // see https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.jsm#463
@@ -4255,6 +4263,7 @@ SmartTemplate4.AB = {
                 if (isDebugAB) {
                   console.log(`${p} returned with idx=${idx}: `, r);
                 }
+              // eslint-disable-next-line no-unused-vars
               } catch (ex) {
                 r = "";
               }
@@ -4281,10 +4290,10 @@ SmartTemplate4.AB = {
                 //card.vCardProperties.entries.find( e=>e.name=="email" && e.params.type==undefined);
                 if (result) {
                   if (isCardBook) {
-                    if (result.length) return result[0].join(","); // this is still an array
+                    if (result.length) {return result[0].join(",");} // this is still an array
                     return "";
                   } else {
-                    if (result.length) return result[0][3]; //  [ "email", { }, "text", "email address" ]
+                    if (result.length) {return result[0][3];} //  [ "email", { }, "text", "email address" ]
                   }
                 }
               }
@@ -4296,7 +4305,7 @@ SmartTemplate4.AB = {
                 } else if (isvCard) {
                   // card.vCardProperties.entries.find( e=>e.name=="nickname");
                   let result = cardObj.vCardJson[1].find((e) => e[0] == "nickname"); // [ "nickname", {}, "text", "tbdaily" ]
-                  if (result && result.length) return result[3];
+                  if (result && result.length) {return result[3];}
                 }
               }
               break;
@@ -4306,7 +4315,7 @@ SmartTemplate4.AB = {
                   return card.prefixname;
                 } else if (isvCard) {
                   let result = cardObj.vCardJson[1].find((e) => e[0] == "n"); // Array(4) [ "n", {}, "text", (5) […] ]
-                  if (result && result.length) return result[3][3];
+                  if (result && result.length) {return result[3][3];}
                 }
               }
               break;
@@ -4316,7 +4325,7 @@ SmartTemplate4.AB = {
                   return card.suffixname;
                 } else if (isvCard) {
                   let result = cardObj.vCardJson[1].find((e) => e[0] == "n"); // Array(4) [ "n", {}, "text", (5) […] ]
-                  if (result && result.length) return result[3][4];
+                  if (result && result.length) {return result[3][4];}
                 }
               }
               break;
@@ -4353,31 +4362,31 @@ SmartTemplate4.AB = {
             case "workphone":
               {
                 let result = SmartTemplate4.AB.getPhoneProperty(cardObj, "work", isCardBook);
-                if (result) return result;
+                if (result) {return result;}
               }
               break;
             case "homephone":
               {
                 let result = SmartTemplate4.AB.getPhoneProperty(cardObj, "home", isCardBook);
-                if (result) return result;
+                if (result) {return result;}
               }
               break;
             case "fax":
               {
                 let result = SmartTemplate4.AB.getPhoneProperty(cardObj, "fax", isCardBook);
-                if (result) return result;
+                if (result) {return result;}
               }
               break;
             case "pager":
               {
                 let result = SmartTemplate4.AB.getPhoneProperty(cardObj, "pager", isCardBook);
-                if (result) return result;
+                if (result) {return result;}
               }
               break;
             case "mobile":
               {
                 let result = SmartTemplate4.AB.getPhoneProperty(cardObj, "cell", isCardBook);
-                if (result) return result;
+                if (result) {return result;}
               }
               break;
             case "work.organization": // "Company"
@@ -4395,6 +4404,7 @@ SmartTemplate4.AB = {
                       return ar[0];
                     }
                     return ar[3][0];
+                  // eslint-disable-next-line no-unused-vars
                   } catch (ex) {
                     return "";
                   }
@@ -4417,9 +4427,10 @@ SmartTemplate4.AB = {
                       depts = ar[3].slice(1);
                     }
                     if (depts.length) {
-                      if (depts.length == 1) return depts[0];
+                      if (depts.length == 1) {return depts[0];}
                       return depts; // .join("<br>")  ?
                     }
+                  // eslint-disable-next-line no-unused-vars
                   } catch (ex) {
                     return "";
                   }
@@ -4458,6 +4469,7 @@ SmartTemplate4.AB = {
                     if (isCardBook) {
                       return ar;
                     } // string
+                  // eslint-disable-next-line no-unused-vars
                   } catch (ex) {
                     return "";
                   }
@@ -4481,6 +4493,7 @@ SmartTemplate4.AB = {
                       notes = ar;
                     } // string
                     return notes.replaceAll("\n", "<br>");
+                  // eslint-disable-next-line no-unused-vars
                   } catch (ex) {
                     return "";
                   }

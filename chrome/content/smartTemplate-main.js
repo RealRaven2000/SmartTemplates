@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use strict";
 // name space these contents
 /// not possible even with ChromeUtils.importESModule()
@@ -437,7 +438,7 @@ var SmartTemplate4 = {
             theFileTemplate
           );
         }
-      } catch (ex) {
+      } catch (_ex) {
         util.logHighlight(
           `Could not retrieve previous file template for composeType ${composeType}`,
           "yellow",
@@ -481,10 +482,10 @@ var SmartTemplate4 = {
         });
 
         let composerWin = Services.wm.getMostRecentWindow("msgcompose");
-        if (composerWin) composerWin.focus();
+        if (composerWin) {composerWin.focus();}
       } else {
         flags.isFileTemplate = true; // !!! new Stationery substitution
-        if (!flags.filePaths) flags.filePaths = [];
+        if (!flags.filePaths) {flags.filePaths = [];}
         util.logDebugOptional(
           "fileTemplates",
           `notifyComposeBodyReady: Add file to template stack: ${theFileTemplate.path}`
@@ -498,7 +499,8 @@ var SmartTemplate4 = {
 
     // We must make sure that Thunderbird's own  NotifyComposeBodyReady has been ran FIRST!
     // https://searchfox.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#343
-    if (prefs.isDebugOption("composer")) debugger;
+    // eslint-disable-next-line no-debugger
+    if (prefs.isDebugOption("composer")) {debugger;}
 
     dbg += "\ngMsgCompose type: " + gMsgCompose.type;
     // see https://dxr.mozilla.org/comm-central/source/comm/mailnews/compose/public/nsIMsgComposeParams.idl
@@ -507,7 +509,7 @@ var SmartTemplate4 = {
       gMsgCompose.type == (msgComposeType.EditAsNew || 15) ||
       gMsgCompose.type == (msgComposeType.EditTemplate || 16)
     )
-      return; // let's do no processing in this case, so we can edit SmartTemplates variables
+      {return;} // let's do no processing in this case, so we can edit SmartTemplates variables
 
     // Tb 52 uses msgComposeType.Template for "Edit as New""
     if (
@@ -594,10 +596,10 @@ var SmartTemplate4 = {
         case "tbtemplate":
         case "new": // includes msgComposeType.Template and msgComposeType.MailToUrl
         case "forward":
-          if (gMsgCompose.type == msgComposeType.MailToUrl)
+          if (gMsgCompose.type == msgComposeType.MailToUrl) {
             // this would have the to address already set
             FocusId = messageEditorID; // Editor
-          else {
+          } else {
             FocusId = messageEditorID; // editor is fallback
             // find the "to" line
             let foundTo = false;
@@ -622,7 +624,7 @@ var SmartTemplate4 = {
       }
     } catch (ex) {
       util.logException("notifyComposeBodyReady", ex);
-      if (isInserted) root.setAttribute("smartTemplateInserted", "true");
+      if (isInserted) {root.setAttribute("smartTemplateInserted", "true");}
     }
     util.logDebugOptional("composer", "notifyComposeBodyReady() ended.");
   },
@@ -889,8 +891,10 @@ var SmartTemplate4 = {
 
     //  a hack for the status bar icon:
     window.setTimeout(function () {
-      if (window.document.URL.endsWith("messenger.xhtml"))
-        window.SmartTemplate4.updateStatusBar("default");
+      if (!window.document.URL.endsWith("messenger.xhtml")) {
+        return;
+      }
+      window.SmartTemplate4.updateStatusBar("default");
     }, 2000);
 
     SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); // initialize new-related buttons in case there was an ignored update!
@@ -1213,11 +1217,11 @@ var SmartTemplate4 = {
     let message_display_action_btn = doc.querySelector(
       "#smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton"
     );
-    if (!message_display_action_btn) return;
+    if (!message_display_action_btn) {return;}
     let menuitems = [
       ...message_display_action_btn.querySelector("menupopup[data-action-menu]").childNodes,
     ];
-    if (!menuitems) return;
+    if (!menuitems) {return;}
     // remove menus, menuitems and separators:
     let nodes = menuitems.filter((e) => e.tagName.startsWith("menu"));
     for (let n of nodes) {
@@ -1279,10 +1283,11 @@ var SmartTemplate4 = {
           case "mailMessageTab":
             doc = SmartTemplate4.Util.document3pane;
             break;
-          case "mail3PaneTab":
-            let browser = SmartTemplate4.Util.document3pane.getElementById("messageBrowser");
+          case "mail3PaneTab":{
+            const browser = SmartTemplate4.Util.document3pane.getElementById("messageBrowser");
             doc = browser.contentDocument;
             break;
+          }
         }
         if (doc) {
           let headerButton = doc.getElementById(HEADERBARID);
@@ -1355,6 +1360,7 @@ SmartTemplate4.calendar = {
     bundle: null,
     list: function list() {
       let str = "";
+      const cal = SmartTemplate4.calendar; 
       for (let i=0;i<7 ;i++){
         str+=(cal.dayName(i)  +"("+ cal.shortDayName(i) + ")/");
       } 

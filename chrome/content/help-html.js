@@ -1,5 +1,17 @@
 /* load help.js first */
 
+/* 
+  global 
+    i18n: readonly,
+    fixClipboardNote: readonly,
+    initSearch: readonly,
+    expandAll: readonly,
+    collapseAll: readonly,
+    containerClick,
+    findOrigin
+*/
+
+
 // this one was written by chatGPT. (I was lazy and ran out of time :) 
 // but at least we avoid assigning content to innerHTML!    <:)
 function replacePlaceholdersWithSpans(element, placeholders, classNames) {
@@ -66,7 +78,7 @@ function isVisible(el) {
 
 async function initHTML() {
   console.log("help-html.js init()");
-  isDebugLegacyOption = async function () {
+  const isDebugLegacyOption = async function () {
     const isDebug = await messenger.LegacyPrefs.getPref(
       "extensions.smartTemplate4.debug.variables.search"
     );
@@ -107,7 +119,7 @@ async function initHTML() {
     expander.classList.remove("collapsed");
   });
 
-  helpContents = document.getElementById("helpContents");
+  const helpContents = document.getElementById("helpContents");
   if (!helpContents) return;
   helpContents.addEventListener("click", (evt) => {
     containerClick(helpContents, evt);

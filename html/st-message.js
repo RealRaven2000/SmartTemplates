@@ -12,7 +12,7 @@ function showButtons(buttonList) {
   const buttons = buttonList.map((s) => s.trim());
   ["ok", "yes", "no", "cancel"].forEach((id) => {
     const el = document.getElementById(id);
-    if (!el) return;
+    if (!el) {return;}
 		el.hidden = !buttons.includes(id);
   });
 	if (buttons.includes("licensing")) {
@@ -32,7 +32,7 @@ function getQueryParams() {
 // helper to marshall a formatted message without using 
 // queryParameter directly!
 async function getStoredMessage(key, hasMessage) {
-  if (!hasMessage) return "";
+  if (!hasMessage) {return "";}
   try {
     const result = await browser.storage.local.get(key);
     await browser.storage.local.remove(key);
@@ -70,9 +70,6 @@ window.addEventListener("load", async () => {
   if (!message) {
     message = messenger.i18n.getMessage("msgPlaceholder");
   }	
-
-  // future use:
-	const st_features = params.addonfeatures || null;
 
   // find all features relating to buttons:
   const buttonsList = features.filter((b) =>

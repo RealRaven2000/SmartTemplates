@@ -1,4 +1,8 @@
 //original lds this after xul!!
+/*
+  globals
+    WL: readonly,
+*/
 
 // ChromeUtils.importESModule("chrome://smarttemplate4/content/smartTemplate-main.js", { global: "contextual" });
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
@@ -10,24 +14,26 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 
 var mylisteners = {};
 
+// eslint-disable-next-line no-unused-vars
 async function onLoad(activatedWhileWindowOpen) {
-  let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
+  // eslint-disable-next-line no-unused-vars
+  let _layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
   /** Main Toolbar **/
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css");
 
   const util = window.SmartTemplate4.Util;
-  
+
   // for version specific code / style fixes
   if (util.versionGreaterOrEqual(util.AppverFull, "102")) {
     WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay-102.css");
   }
-  
+
   util.logDebug("st-messenger - onLoad(" + activatedWhileWindowOpen + ")...");
 
   // status bar button
   // <!-- #### STATUSBAR BUTTON OVERLAY IN MAIN WINDOW #### -->
-  
+
   WL.injectElements(`<hbox id="status-bar">
     <toolbarbutton id="SmartTemplate4Messenger"
                    class="statusbarpanel-iconic"
@@ -38,14 +44,17 @@ async function onLoad(activatedWhileWindowOpen) {
   </hbox>
   `);
 
-  window.SmartTemplate4.doCommand = async function (el, params={}) {
+  window.SmartTemplate4.doCommand = async function (el, params = {}) {
     if (!el) {
       return;
-
     }
     const SmartTemplates = window.SmartTemplate4;
-    util.logHighlightDebug("SmartTemplates.doCommand()", "lightgreen", "rgb(0,80,0)",
-      {id: el.id}, params
+    util.logHighlightDebug(
+      "SmartTemplates.doCommand()",
+      "lightgreen",
+      "rgb(0,80,0)",
+      { id: el.id },
+      params
     );
 
     switch (el.id) {
@@ -71,23 +80,25 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-reply-list-default":
       case "smartTemplates-reply-all-default":
       case "smartTemplates-forward-default":
-        let entry;
-        if (params.entry) {
-          entry = params.entry;
-        } else {
-          // go up to the parent menu element (e.g. )
-          let menuParent = el.parentNode.parentNode;
-          entry = SmartTemplates.fileTemplates.uniMenus.find((e) => e.id == menuParent.id);
-        }
-        if (entry) {
-          SmartTemplates.Util.logDebug(
-            "Execute command for reply with account template: " + entry.command
-          );
-          SmartTemplates.fileTemplates.fireComposeCommand(entry);
-        } else {
-          SmartTemplates.Util.logDebug(
-            `couldn't find an entry in fileTemplates.uniMenus for ${el.id}`
-          );
+        {
+          let entry;
+          if (params.entry) {
+            entry = params.entry;
+          } else {
+            // go up to the parent menu element (e.g. )
+            let menuParent = el.parentNode.parentNode;
+            entry = SmartTemplates.fileTemplates.uniMenus.find((e) => e.id == menuParent.id);
+          }
+          if (entry) {
+            SmartTemplates.Util.logDebug(
+              "Execute command for reply with account template: " + entry.command
+            );
+            SmartTemplates.fileTemplates.fireComposeCommand(entry);
+          } else {
+            SmartTemplates.Util.logDebug(
+              `couldn't find an entry in fileTemplates.uniMenus for ${el.id}`
+            );
+          }
         }
         break;
 
@@ -102,29 +113,31 @@ async function onLoad(activatedWhileWindowOpen) {
         break;
       case "smartTemplates-settings-legacy": // fall-through
       case "smartTemplates-settings":
-        const serverKey = SmartTemplates.Util.currentServerInfo();
-        let prefsObject = {
-          func: "openPrefs",
-          server: serverKey,
-        };
-        let isLicenseWarning = false;
-        if (SmartTemplates.Util.licenseInfo.isExpired) {
-          isLicenseWarning = true;
+        {
+          const serverKey = SmartTemplates.Util.currentServerInfo();
+          let prefsObject = {
+            func: "openPrefs",
+            server: serverKey,
+          };
+          let isLicenseWarning = false;
+          if (SmartTemplates.Util.licenseInfo.isExpired) {
+            isLicenseWarning = true;
+          }
+          if (params.mode) {
+            prefsObject.page = params.mode;
+          }
+          if (isLicenseWarning) {
+            prefsObject.page = "licenseKey";
+          }
+          if (params.option && params.option.includes("disableLicensePage")) {
+            isLicenseWarning = false;
+          }
+          if (params.composeType) {
+            prefsObject.composeType = params.composeType;
+          }
+          SmartTemplates.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`);
+          SmartTemplates.Util.notifyTools.notifyBackground(prefsObject);
         }
-        if (params.mode) {
-          prefsObject.page = params.mode;
-        }
-        if (isLicenseWarning) {
-          prefsObject.page = "licenseKey";
-        }
-        if (params.option && params.option.includes("disableLicensePage")) {
-          isLicenseWarning = false;
-        }
-        if (params.composeType) {
-          prefsObject.composeType = params.composeType;
-        }
-        SmartTemplates.Util.logDebug(`Open new prefs tab, current server key: ${serverKey}`);
-        SmartTemplates.Util.notifyTools.notifyBackground(prefsObject);
         return;
       case "smartTemplates-settings-new":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs" });
@@ -214,7 +227,7 @@ async function onLoad(activatedWhileWindowOpen) {
           },
           SmartTemplates.Util.Mail3PaneWindow
         );
-        break;     
+        break;
       case "smartTemplates-message": // new [issue 378]
         {
           // replacer for SmartTemplate4.Message
@@ -235,19 +248,21 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "initLicensedUI" });
         break;
       case "smartTemplates-toggle-label":
-        let isHidden;
-        if (params.hasOwnProperty("isHidden")) {
-          isHidden = params.isHidden;
-        } else {
-          // toggle existing state
-          isHidden = !SmartTemplates.Preferences.getMyBoolPref("toolbar.hideLabel");
-        }
-        SmartTemplates.Preferences.setMyBoolPref("toolbar.hideLabel", isHidden);
-        let btn = el.parentElement
-          ? el.parentElement.parentElement
-          : SmartTemplates.Util.getCommandsButton("message_action");
-        if (btn) {
-          btn.classList.toggle("force-label-hidden");
+        {
+          let isHidden;
+          if (Object.prototype.hasOwnProperty.call(params, "isHidden")) {
+            isHidden = params.isHidden;
+          } else {
+            // toggle existing state
+            isHidden = !SmartTemplates.Preferences.getMyBoolPref("toolbar.hideLabel");
+          }
+          SmartTemplates.Preferences.setMyBoolPref("toolbar.hideLabel", isHidden);
+          let btn = el.parentElement
+            ? el.parentElement.parentElement
+            : SmartTemplates.Util.getCommandsButton("message_action");
+          if (btn) {
+            btn.classList.toggle("force-label-hidden");
+          }
         }
         break;
       case "smartTemplates-registration":
@@ -269,7 +284,7 @@ async function onLoad(activatedWhileWindowOpen) {
       default:
         console.log("Unknown SmartTemplates command", el.id || "id: N/A", el);
     }
-  }
+  };
 
   window.SmartTemplate4.WL = WL; // we need this in patchUnifiedToolbar();
   window.SmartTemplate4.Util.notifyTools.enable();
@@ -283,21 +298,24 @@ async function onLoad(activatedWhileWindowOpen) {
   // read custom templates data from disc
   await window.SmartTemplate4.fileTemplates.loadCustomMenu(false);
   await window.SmartTemplate4.fileTemplates.loadMRU();
-  await window.SmartTemplate4.Util.notifyTools.notifyBackground({ 
+  await window.SmartTemplate4.Util.notifyTools.notifyBackground({
     func: "updateFileTemplates",
     Entries: window.SmartTemplate4.fileTemplates.Entries,
-    MRU_Entries: window.SmartTemplate4.fileTemplates.MRU_Entries
-  });  
+    MRU_Entries: window.SmartTemplate4.fileTemplates.MRU_Entries,
+  });
 
   // The following will only work if we are currently in a mail pane (ATN update)
   // otherwise, we need to call this again in a tab listener
   if (window.SmartTemplate4.patchUnifiedToolbar()) {
-    await window.SmartTemplate4.fileTemplates.initMenus(true, { toolbarType:"unified", isMessenger: true });  
+    await window.SmartTemplate4.fileTemplates.initMenus(true, {
+      toolbarType: "unified",
+      isMessenger: true,
+    });
   }
 
   // [issue 253] update message action menu (API based) - default to this method from now!
-  await window.SmartTemplate4.Util.notifyTools.notifyBackground({ 
-    func: "patchHeaderMenuAPI" 
+  await window.SmartTemplate4.Util.notifyTools.notifyBackground({
+    func: "patchHeaderMenuAPI",
   });
   window.SmartTemplate4.fileTemplates.isAPIpatched = true;
 
@@ -305,69 +323,73 @@ async function onLoad(activatedWhileWindowOpen) {
 
   // set up updating the label at midnight
   window.SmartTemplate4.Util.setMidnightTimer();
-  
+
   // these events are repackaged in util-init() from notifications
-  mylisteners["BackgroundUpdate"] = window.SmartTemplate4.initLicensedUI.bind(window.SmartTemplate4);
-  mylisteners["updateTemplateMenus"] = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
-  mylisteners["updateNewsLabels"] = window.SmartTemplate4.updateNewsLabels.bind(window.SmartTemplate4);
+  mylisteners["BackgroundUpdate"] = window.SmartTemplate4.initLicensedUI.bind(
+    window.SmartTemplate4
+  );
+  mylisteners["updateTemplateMenus"] = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(
+    window.SmartTemplate4.fileTemplates
+  );
+  mylisteners["updateNewsLabels"] = window.SmartTemplate4.updateNewsLabels.bind(
+    window.SmartTemplate4
+  );
   mylisteners["firstRun"] = util.firstRun.init.bind(util.firstRun);
   mylisteners["fileTemplateFromApi"] = (event) => {
     window.SmartTemplate4.fileTemplates.composeFromAPI.call(
       window.SmartTemplate4.fileTemplates,
       event.detail.menuObject
     );
-  } 
+  };
   mylisteners["showAboutConfig"] = (event) => {
     window.SmartTemplate4.Util.showAboutConfig(null, event.detail.filter);
-  }
-    
-    
+  };
 
   mylisteners["doCommand"] = (event) => {
     window.SmartTemplate4.doCommand.call(
       window.SmartTemplate4.doCommand,
-      {id: event.detail.cmd},
+      { id: event.detail.cmd },
       event.detail?.params
     );
-  } 
+  };
   mylisteners["patchUnifiedToolbar"] = () => {
     if (window.SmartTemplate4.patchUnifiedToolbar()) {
       window.SmartTemplate4.updateNewsLabels();
       return "success";
     }
     return "failed";
-  }
+  };
 
-  mylisteners["forwardWithTemplate"] = 
-    (event) => {
-      window.SmartTemplate4.fileTemplates.onExternalMailProcess.call(
-        window.SmartTemplate4.fileTemplates, event.detail, "fwd"
-      ); 
-    }
+  mylisteners["forwardWithTemplate"] = (event) => {
+    window.SmartTemplate4.fileTemplates.onExternalMailProcess.call(
+      window.SmartTemplate4.fileTemplates,
+      event.detail,
+      "fwd"
+    );
+  };
 
-  mylisteners["replyWithTemplate"] = 
-    (event) => { 
-      window.SmartTemplate4.fileTemplates.onExternalMailProcess.call(
-        window.SmartTemplate4.fileTemplates, event.detail, "rsp"
-      ) 
-    }; 
+  mylisteners["replyWithTemplate"] = (event) => {
+    window.SmartTemplate4.fileTemplates.onExternalMailProcess.call(
+      window.SmartTemplate4.fileTemplates,
+      event.detail,
+      "rsp"
+    );
+  };
 
   for (let m in mylisteners) {
     if (m == "BackgroundUpdate") {
-      window.addEventListener("SmartTemplates.BackgroundUpdate" , mylisteners[m]);
+      window.addEventListener("SmartTemplates.BackgroundUpdate", mylisteners[m]);
     } else {
-      window.addEventListener(`SmartTemplates.BackgroundUpdate.${m}` , mylisteners[m]); 
+      window.addEventListener(`SmartTemplates.BackgroundUpdate.${m}`, mylisteners[m]);
       // add more listeners here...
     }
   }
 
   // initialise all menus
   window.SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
-
-
-
 }
 
+// eslint-disable-next-line no-unused-vars
 function onUnload(isAddOnShutDown) {
   const util = window.SmartTemplate4.Util;
   let isError = false;

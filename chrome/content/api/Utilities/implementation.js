@@ -48,7 +48,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           for (let account of MailServices.accounts.accounts) {
             if (account.defaultIdentity) {
               let name = account.defaultIdentity.fullName;
-              if (name) return name;
+              if (name) {return name;}
             }
           }    
           return "user"; // anonymous
@@ -80,7 +80,8 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
               results.push(ctrl.isCommandEnabled(cmd));
             }
           } else {
-            for (let cmd of commands) {
+            // eslint-disable-next-line no-unused-vars
+            for (let _cmd of commands) {
               results.push(true); // default to true in case this fails
             }      
           }
@@ -156,7 +157,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           function rememberPath(path) {
             // Remember last path
             let lastSlash = path.lastIndexOf("/");
-            if (lastSlash < 0) lastSlash = path.lastIndexOf("\\");
+            if (lastSlash < 0) {lastSlash = path.lastIndexOf("\\");}
             let lastPath = path.substr(0, lastSlash);
             win.SmartTemplate4.Util.logDebug("Storing Path: " + lastPath);
             win.SmartTemplate4.Preferences.setStringPref('files.path', lastPath);            
@@ -204,7 +205,8 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             if (!path.toLowerCase().endsWith('.json')) {
               path += '.json';
             }
-            let isDelete = await IOUtils.remove(path);
+            // eslint-disable-next-line no-unused-vars
+            let _isDelete = await IOUtils.remove(path);
             try {
               let countBytes = await IOUtils.writeUTF8(path, jsonData); 
               win.SmartTemplate4.Util.logDebug (
@@ -249,4 +251,10 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
       }
     }
   };
+}
+
+// shut up the linter's "assigned but never used":
+{
+  // eslint-disable-next-line no-unused-vars
+  void Utilities; // void references, doesn't redeclare!
 }
