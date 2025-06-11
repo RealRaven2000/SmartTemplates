@@ -1,3 +1,7 @@
+/*
+  global
+    ICAL: readonly
+*/
 import {Licenser, licenseValidationDescription} from "./scripts/Licenser.mjs.js";
 
 import {SmartTemplates} from "./scripts/st-main.mjs.js";
@@ -1005,11 +1009,11 @@ async function displayUpdateMessage() {
   let lastMessage = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.lastUpdateMessage") || "0";
   logDebug(`Last update message version: ${lastMessage}`);
 
-  if (compareVersions(lastMessage, "4.12.1") >= 0) {
+  if (compareVersions(lastMessage, "4.12.2") >= 0) {
     logDebug("Message already shown for 4.12 – skipping.");    
     return;
   }
-  logDebug("Preparing message for version 4.12.1");
+  logDebug("Preparing message for version 4.12.2");
   // ------ 
   let licenseMsgId,
     testStatus = licenseInfo?.status;
@@ -1039,7 +1043,7 @@ async function displayUpdateMessage() {
     const result = await showSTmessage(transmitIds, features, "", "displayUpdateMessage");
 
     if (result) {
-      await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.lastUpdateMessage", "4.12.1");
+      await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.lastUpdateMessage", "4.12.2");
       logDebug("Message shown successfully – version flag saved.");
     } else {
       logDebug("Message display was cancelled or failed (no result).");
@@ -1554,7 +1558,7 @@ async function main() {
         // https://webextension-api.thunderbird.net/en/stable/how-to/contacts.html
         // Get JSON representation of the vCard data (jCal).
         let dataString = data.vCard;
-        return browser.vCard.parse(dataString);
+        return ICAL.parse(dataString);
       }
 
       case "cardbook.getContactsFromSearch": {
