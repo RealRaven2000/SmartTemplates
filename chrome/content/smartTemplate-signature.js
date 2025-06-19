@@ -43,19 +43,21 @@ SmartTemplate4.Sig = {
     const util = SmartTemplate4.Util;
     try {
       this._checkIdentity();
-      if (!this.Identity.signature) return "";
+      if (!this.Identity.signature) { return "";}
       let sig = this.Identity.signature;
       if (sig) {
         try {
-          if (sig.exists() && sig.isFile()) // nsIFile.isFile
+          if (sig.exists() && sig.isFile()) {// nsIFile.isFile
             return sig.path;
+          }
         }
         catch (ex) {
+          const Cr = Components.results;
           if (Cr.NS_ERROR_FILE_NOT_FOUND == ex.result) {
             util.logException("Invalid signature path: " + sig.path, ex);
-          }
-          else
+          } else {
             util.logException("SmartTemplate4.Sig.htmlSigPath() failed.", ex);
+          }
         }
       }
     }

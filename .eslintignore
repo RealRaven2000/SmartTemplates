@@ -1,2 +1,3 @@
 # .eslintignore
 scripts/ical.js
+chrome/content/api/WindowListener/

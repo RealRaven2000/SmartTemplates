@@ -50,8 +50,10 @@ SmartTemplate4.composer = {
     if (prefs.getMyBoolPref ('changeTemplate.button.install')) {
       setTimeout (
         function st4_installChangeTemplateBtn() {
-          if (util.installButton(toolbarId, "smarttemplate4-changeTemplate", "button-save"))
-            prefs.setMyBoolPref('changeTemplate.button.install', false); // log the fact we installed it to avoid re-adding it.
+          if (util.installButton(toolbarId, "smarttemplate4-changeTemplate", "button-save")) {
+            // log the fact we installed it to avoid re-adding it.
+            prefs.setMyBoolPref("changeTemplate.button.install", false);
+          }
         }
         , 1000
       );
@@ -61,8 +63,10 @@ SmartTemplate4.composer = {
     if (!prefs.getMyBoolPref('cleanDeferredButton.installer')) {
       setTimeout (
         function st4_installCleanBtn() {
-          if (util.installButton(toolbarId, "smarttemplate4-cleandeferred", "button-save"))
-            prefs.setMyBoolPref('cleanDeferredButton.installer', true); // log the fact we installed it to avoid re-adding it.
+          if (util.installButton(toolbarId, "smarttemplate4-cleandeferred", "button-save")) {
+            // log the fact we installed it to avoid re-adding it.
+            prefs.setMyBoolPref("cleanDeferredButton.installer", true);
+          }
         }
         , 4000
       );
@@ -73,8 +77,10 @@ SmartTemplate4.composer = {
       setTimeout (
         function st4_installChangeTemplateBtn() {
           util.logDebug("Adding insert Snippet button...")
-          if (util.installButton(toolbarId, "smarttemplate4-insertSnippet", "button-save"))
-            prefs.setMyBoolPref('insertSnippet.button.install', false); // log the fact we installed it to avoid re-adding it.
+          if (util.installButton(toolbarId, "smarttemplate4-insertSnippet", "button-save")) {
+            // log the fact we installed it to avoid re-adding it.
+            prefs.setMyBoolPref("insertSnippet.button.install", false);
+          }
         }
         , 1000
       );
@@ -87,17 +93,22 @@ SmartTemplate4.composer = {
     SmartTemplate4.Util.logDebug("composer.initTemplateMenu() ...");
     // load menu with templates to button-save
     const Ci = Components.interfaces,
-          fT = SmartTemplate4.fileTemplates,
-          prefs = SmartTemplate4.Preferences;
+          fT = SmartTemplate4.fileTemplates;
     let templatePopup = window.document.getElementById('button-TemplatePopup');
-    if (!templatePopup) return;
+    if (!templatePopup) {return;}
     
     // clear previous menu (in case we haven't added the button to the toolbar)
     // the Template Menu is rebuilt if it is being clicked
     for (let j=templatePopup.childNodes.length-1; j>=0; j--) {
       let cN = templatePopup.childNodes[j];
-      if (cN.tagName == "menuseparator" || cN.tagName == "menuitem" || cN.tagName == "menu" || cN.tagName == "menupopup")
+      if (
+        cN.tagName == "menuseparator" ||
+        cN.tagName == "menuitem" ||
+        cN.tagName == "menu" ||
+        cN.tagName == "menupopup"
+      ) {
         templatePopup.removeChild(cN);
+      }
     }
     
     fT.loadCustomMenu(false).then(
@@ -134,9 +145,9 @@ SmartTemplate4.composer = {
         }
         if (compCase) {
           fT.configureMenu(entries, templatePopup, compCase, false); // build appropriate menu, minus the configuration option.
-        }
-        else
+        } else {
           templatePopup.disabled = true;
+        }
       }
     );
   } ,
@@ -146,13 +157,19 @@ SmartTemplate4.composer = {
     // load menu with templates to button-save
     const fT = SmartTemplate4.fileTemplates;
     let snippetPopup = window.document.getElementById('button-SnippetPopup');
-    if (!snippetPopup) return;
+    if (!snippetPopup) {return;}
     // clear previous menu (in case we haven't added the button to the toolbar)
     // the Template Menu is rebuilt if it is being clicked
     for (let j=snippetPopup.childNodes.length-1; j>=0; j--) {
       let cN = snippetPopup.childNodes[j];
-      if (cN.tagName == "menuseparator" || cN.tagName == "menuitem" || cN.tagName == "menu" || cN.tagName == "menupopup")
+      if (
+        cN.tagName == "menuseparator" ||
+        cN.tagName == "menuitem" ||
+        cN.tagName == "menu" ||
+        cN.tagName == "menupopup"
+      ) {
         snippetPopup.removeChild(cN);
+      }
     }    
 
     await  fT.loadCustomMenu(false);
