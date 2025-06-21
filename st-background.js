@@ -216,28 +216,37 @@ async function executeFileMenu(menuObject) {
 
 async function getTargetTemplate(controller, type) {
   // file Template example
-
+  // const example = {
+  //   cmd: "reply",
+  //   composeType: "rsp",
+  //   label: "SmartTemplate4 mail validation",
+  //   path: "N:\\templates\\SmartTemplate4 mail validation.html",
+  // };
+  
   if (controller.startsWith("cmd_")) {
     switch (type) {
-      case "most-recent" :{
+      case "most-recent": {
         // not from MRU list but stored separately in legacy prefs
         // ControllerMap returns the full composeType, e.g. rsp.all or rsp.list
-        let jsonTemplate = 
-          await messenger.LegacyPrefs.getPref(`extensions.smartTemplate4.fileTemplates.mru.${ControllerMap.get(controller)}`),
-          sEmptyLabel = "(not set)";   
+        let jsonTemplate = await messenger.LegacyPrefs.getPref(
+            `extensions.smartTemplate4.fileTemplates.mru.${ControllerMap.get(controller)}`
+          ),
+          sEmptyLabel = "(not set)";
 
-        let lastEntry = jsonTemplate ? JSON.parse(jsonTemplate) : {path:"", label:sEmptyLabel, category:""};
+        let lastEntry = jsonTemplate
+          ? JSON.parse(jsonTemplate)
+          : { path: "", label: sEmptyLabel, category: "" };
         return lastEntry;
-        }
-      case "account" : // account template
+      }
+      case "account": // account template
         return {
-          controller: controller, 
-          path: "", 
-          label: "" 
+          controller: controller,
+          path: "",
+          label: "",
         };
     }
   }
-  return `test - ${controller} [${type}] ` ;
+  return `test - ${controller} [${type}] `;
 }
 
 var MenuHelper = {
