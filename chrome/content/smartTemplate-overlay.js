@@ -35,7 +35,9 @@ var { MsgHdrToMimeMessage } = SmartTemplates_ESM
   ? ChromeUtils.importESModule("resource:///modules/gloda/MimeMessage.sys.mjs")
   : ChromeUtils.import( "resource:///modules/gloda/MimeMessage.jsm" );
 
-var { MimeParser } = ChromeUtils.importESModule("resource:///modules/MimeParser.sys.mjs");  
+var { MimeParser } = SmartTemplates_ESM
+  ? ChromeUtils.importESModule("resource:///modules/mimeParser.sys.mjs")
+  : ChromeUtils.import("resource:///modules/mimeParser.jsm");
 
 
 //******************************************************************************
