@@ -5,6 +5,11 @@ Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)
 For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
+/*
+  globals
+    sales_end,
+*/
+
 
 /* shared module for installation popups */
 
@@ -29,6 +34,7 @@ function moveImportantMessageTo(targetId) {
   newsImportant.hidden = false;
 }
 
+// eslint-disable-next-line no-unused-vars
 function openSupportForm(topic) {
   const msg = {
     command: "openPrefs",
@@ -46,7 +52,7 @@ async function getSalesEnd() {
     return new Date(overrideSale);
   }
   // sales_end is currently defined in sales.js
-  return new Date(sales_end.getTime() + 86400000);
+  return new Date(sales_end.getTime() + 86400000); 
 }	
 
 
@@ -152,6 +158,7 @@ function showSalesItems(isSale, licenseInfo) {
 
     if (isStandardUser) {
       show("standardLicense");
+      hide("renewstandard");
       hide("purchaseHeader");
       hide("whyPurchase");
 
@@ -159,7 +166,7 @@ function showSalesItems(isSale, licenseInfo) {
         // this contains a button to upgrade
         showSpecialOfferItem("standardLicense");
         show("renewstandard");
-      }
+      } 
       isActionList = false;
       return isActionList;
     }
@@ -243,7 +250,7 @@ function formatAll(txt) {
     )
     .replace(
       /\{AcompatCheck\}/g,
-      "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-info-sync-compatibility' class='native'>"
+      "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-compatibility-check/' class='native'>"
     )
     .replace(/\{A2\}/g, "</a>")
     .replace(/\{P2\}/g, "</p>")
@@ -256,6 +263,7 @@ function formatAll(txt) {
   //{S1} new section / list with title {S2}.
 }
 
+// eslint-disable-next-line no-unused-vars
 async function insertLocalizedMessage(element, rawMessage) {
   try {
     const html = formatAll(rawMessage); // Expand custom tags into HTML
@@ -291,6 +299,7 @@ function parseHTMLFragment(htmlString) {
 }
 
 // copy a html structure into [multiple] elements
+// eslint-disable-next-line no-unused-vars
 function updateWithSafeHtml(selector, htmlString) {
   const elements = document.querySelectorAll(selector);
   for (const el of elements) {
@@ -307,6 +316,7 @@ async function isSale() {
   return isSale;
 }
 
+// eslint-disable-next-line no-unused-vars
 async function updateActions(addonName) {
   let licenseInfo = await messenger.runtime.sendMessage({command: "getLicenseInfo"});
   
@@ -356,6 +366,7 @@ async function updateActions(addonName) {
 }
 
 // Updates the element's content without triggering announcements by screen readers
+// eslint-disable-next-line no-unused-vars
 function ariaPoliteUpdate(el, text, isHtml = false) {
   if (!el) {return;}
   
@@ -375,6 +386,7 @@ function ariaPoliteUpdate(el, text, isHtml = false) {
   el.removeAttribute("aria-live");
 }
 
+// eslint-disable-next-line no-unused-vars
 function addAriaHint() {
   const splashHint = document.getElementById("splash-hint");
   // Temporarily remove aria-hidden to make the hint accessible for screen readers
