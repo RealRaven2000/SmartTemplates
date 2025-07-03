@@ -2252,7 +2252,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     "name", "firstName", "lastName","displayName", "fullname", "fn",  "nickname",
     "prefix", "suffix", "chatname", "mail", "additionalmail",
     "workphone", "homephone", "fax", "pager", "mobile",
-    "addressbook", "clipboard", "toclipboard",
+    "addressbook", "clipboard", "toclipboard", "nodefer",
     "priority", "cc", "bcc"
   ]
   ContextualParams.push(
@@ -3004,7 +3004,6 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         // eslint-disable-next-line no-fallthrough
         case "dateformat": {
           // fall-through
-          // eslint-disable-next-line no-debugger
           if (debugTimeStrings) {
             // eslint-disable-next-line no-debugger
             debugger;
@@ -3019,16 +3018,16 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           }
           // [issue 115] Erratic %datetime()% results when forcing HTML with Shift
           arg = util.removeHtmlEntities(arg);
-          let defaultTime = util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0); // dateFormat will add offsets itself
+          let formattedTime = util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0); // dateFormat will add offsets itself
           if (arg.includes("toclipboard")) {
             token = ""; // no deferred variable, just remove the variable silently
           } else {
-            if (dateFormatSent || options.isEval) {
-              token = defaultTime;
+            if (dateFormatSent || options.isEval || arg.includes("nodefer")) {
+              token = formattedTime;
             } else {
               token = await util.wrapDeferredHeader(
                 token + arg,
-                defaultTime,
+                formattedTime,
                 gMsgCompose.composeHTML,
                 util.getComposeType() == "new"
               );
