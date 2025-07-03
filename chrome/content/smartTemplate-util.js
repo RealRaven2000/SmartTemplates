@@ -1989,7 +1989,12 @@ SmartTemplate4.Util = {
         }
       }
     } else {
-      timeFormat = argument;
+      // [issue 382]
+      if (argument.endsWith(",nodefer")) {
+        timeFormat = argument.substr(0, argument.indexOf(",nodefer"))
+      } else {
+        timeFormat = argument;
+      }
     }
 
     util.logDebugOptional(
@@ -2033,6 +2038,8 @@ SmartTemplate4.Util = {
 
       //numeral replacements first
       let timeString = timeFormat
+        .replace("timestamp", time) // timestamp in milliseconds [issue 381]
+        .replace("unix", Math.floor(time / 1000)) // unix timestamp [issue 381]
         .replace("Y", year)
         .replace("y", year.slice(year.length - 2))
         .replace("n", month + 1)
