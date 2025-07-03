@@ -15,6 +15,7 @@ module.exports = {
     GetComposeDetails: "readonly",
     GetCurrentEditor: "readonly",
     IOUtils: "readonly",
+    i18n: "readonly",
     PathUtils: "readonly",
     expandRecipients: "readonly",
     GetArgs: "readonly",

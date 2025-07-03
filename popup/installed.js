@@ -7,6 +7,17 @@ For details, please refer to license.txt in the root folder of this extension
 END LICENSE BLOCK */
 // Script for splash screen displayed when installing this Extension
 
+/*
+ globals
+   ariaPoliteUpdate,
+   addAriaHint,
+   formatAll,
+   i18n,
+   openSupportForm,
+   show, 
+   updateActions,
+   */
+
 addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("register")) {
 	  messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-install");
@@ -34,7 +45,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 
-addEventListener("load", async (event) => {
+addEventListener("load", async (_event) => {
   const manifest = await messenger.runtime.getManifest(),
     browserInfo = await messenger.runtime.getBrowserInfo(),
     addonName = manifest.name, 

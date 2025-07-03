@@ -21,12 +21,13 @@ export let Preferences = {
     return await messenger.LegacyPrefs.getPref(this.Prefix + "debug");
   },
 	isDebugOption: async function(option) { // granular debugging
-		if (!await this.isDebug)
+		if (!await this.isDebug()) {
 			return false;
+    }
 		try {
 			return await this.getMyBoolPref("debug." + option);
 		}
-		catch(e) {
+		catch {
       return false;
     }
 	},  
@@ -38,13 +39,10 @@ export let Preferences = {
 		    key = this.Prefix + p;
     try {
 			prefString = await messenger.LegacyPrefs.getPref(key);
-    }
-    catch(ex) {
+    } catch(ex) {
       console.log("%cCould not find string pref: " + p, "color:red;", ex.message);
     }
-    finally {
-      return prefString;
-    }
+    return prefString;
 	},  
 	setStringPref: async function setStringPref(p, v) {
     return await messenger.LegacyPrefs.setPref(this.Prefix + p, v);
@@ -67,8 +65,8 @@ export let Preferences = {
 	setBoolPref: async function(p, v) {
 		try {
 			return await messenger.LegacyPrefs.setPref(p, v);
-		} catch(e) {
-			let s="Err:" +e;
+		} catch {
+			// let s="Err:" + ex;
 			return false;
 		}
 	} ,  
@@ -114,7 +112,7 @@ export let Preferences = {
       }
       else {
         let v = await messenger.LegacyPrefs.getPref(prefstring);
-        if (v==null) v = defaultValue;
+        if (v==null) {v = defaultValue;}
         return v;
       }
     },
@@ -154,7 +152,7 @@ export let Preferences = {
 
     isTemplateActive: async function(idKey, composeType, def) {
       let isActive = await this.getWithIdkey(idKey, composeType, def);
-      if (!isActive) return false; // defaults to empty string
+      if (!isActive) {return false;} // defaults to empty string
       return isActive;
     },
 
@@ -168,8 +166,10 @@ export let Preferences = {
     // Get preference with identity key
     getWithIdkey: async function(idkey, pref, def) {    
       // fix problems in draft mode...
-      if (!pref) 
-        return ""; // draft etc.
+      if (!pref) {
+        // draft etc.
+        return "";
+      }
       // extensions.smarttemplate.id8.def means account id8 uses common values.
       if (await this.getWithBranch(idkey + ".def", true)) { // "extensions.smartTemplate4." + "id12.def"
         // common preference - test with .common!!!!
