@@ -801,12 +801,11 @@
   "menu.template_import.label": {
     "message": "Importovat šablonu"
   },
+  "message.features": { "message": "Porovnat funkce…" },
   "message.licenseScreen": {
     "message": "Zobrazit možnosti licence…"
   },
-  "message.features": {
-    "message": "Porovnat funkce…"
-  },
+  "message.linkInTab": { "message": "(Odkaz otevřen na kartě)" },
   "messid.label": {
     "message": "ID zprávy"
   },

@@ -808,12 +808,13 @@
   "menu.template_import.label": {
     "message": "テンプレートをインポートする"
   },
-  "message.licenseScreen": {
-    "message": "ライセンスオプションを表示する…"
-  },
   "message.features": {
     "message": "機能の比較…"
   },
+  "message.licenseScreen": {
+    "message": "ライセンスオプションを表示する…"
+  },
+  "message.linkInTab": { "message": "（リンクがタブで開かれました）" },
   "minSize": {
     "message": "[オプション, 数値]) - タグを消去する最小サイズ (kB 単位)。これにより、大きな画像が除去される状況でもアイコンや絵文字のような小さな画像をそのままにできます。"
   },

@@ -811,12 +811,13 @@
   "menu.template_import.label": {
     "message": "Імпорт шаблону"
   },
-  "message.licenseScreen": {
-    "message": "Показати параметри ліцензії…"
-  },
   "message.features": {
     "message": "Порівняйте функції…"
   },
+  "message.licenseScreen": {
+    "message": "Показати параметри ліцензії…"
+  },
+  "message.linkInTab": { "message": "(Посилання відкрито у вкладці)" },
   "messid.label": {
     "message": "ID Повідомлення"
   },

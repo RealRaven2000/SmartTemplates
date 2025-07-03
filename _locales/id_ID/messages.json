@@ -627,12 +627,13 @@
   "message_default_title": {
     "message": "SmartTemplate4"
   },
-  "message.licenseScreen": {
-    "message": "Tampilkan Opsi Lisensi…"
-  },
   "message.features": {
     "message": "Bandingkan Fitur…"
   },
+  "message.licenseScreen": {
+    "message": "Tampilkan Opsi Lisensi…"
+  },
+  "message.linkInTab": { "message": "(Tautan dibuka di tab)" },
   "messid.label": {
     "message": "ID Pesan"
   },

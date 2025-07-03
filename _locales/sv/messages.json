@@ -819,12 +819,13 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
-  "message.licenseScreen": {
-    "message": "Visa licensalternativ…"
-  },
   "message.features": {
     "message": "Jämför funktioner…"
   },
+  "message.licenseScreen": {
+    "message": "Visa licensalternativ…"
+  },
+  "message.linkInTab": { "message": "(Länk öppnad i flik)" },
   "messid.label": {
     "message": "Meddelande-ID"
   },

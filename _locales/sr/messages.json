@@ -798,12 +798,13 @@
   "menu.template_import.label": {
     "message": "Увези шаблон"
   },
-  "message.licenseScreen": {
-    "message": "Прикажи опције лиценце…"
-  },
   "message.features": {
     "message": "Упоредите карактеристике…"
   },
+  "message.licenseScreen": {
+    "message": "Прикажи опције лиценце…"
+  },
+  "message.linkInTab": { "message": "(Линк је отворен у картици)" },
   "messid.label": {
     "message": "ID поруке"
   },

@@ -807,12 +807,13 @@
   "menu.template_import.label": {
     "message": "Импорт шаблона"
   },
-  "message.licenseScreen": {
-    "message": "Показать параметры лицензии…"
-  },
   "message.features": {
     "message": "Сравнить функции…"
   },
+  "message.licenseScreen": {
+    "message": "Показать параметры лицензии…"
+  },
+  "message.linkInTab": { "message": "(Ссылка открыта во вкладке)" },
   "messid.label": {
     "message": "Идентификатор"
   },

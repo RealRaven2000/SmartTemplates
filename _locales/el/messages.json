@@ -816,12 +816,13 @@
   "menu.template_import.label": {
     "message": "Εισαγωγή Προτύπου"
   },
-  "message.licenseScreen": {
-    "message": "Εμφάνιση επιλογών άδειας χρήσης…"
-  },
   "message.features": {
     "message": "Σύγκριση Χαρακτηριστικών…"
   },
+  "message.licenseScreen": {
+    "message": "Εμφάνιση επιλογών άδειας χρήσης…"
+  },
+  "message.linkInTab": { "message": "(Ο σύνδεσμος άνοιξε σε καρτέλα)" },
   "messid.label": {
     "message": "ID Μηνύματος"
   },

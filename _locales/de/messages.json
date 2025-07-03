@@ -801,12 +801,13 @@
   "menu.template_import.label": {
     "message": "Einstellungen und Vorlagen importieren"
   },
-  "message.licenseScreen": {
-    "message": "Lizenzoptionen anzeigen…"
-  },
   "message.features": {
     "message": "Funktionen vergleichen…"
   },
+  "message.licenseScreen": {
+    "message": "Lizenzoptionen anzeigen…"
+  },
+  "message.linkInTab": { "message": "(Link in Tab geöffnet)" },
   "messid.label": {
     "message": "Nachrichten ID"
   },

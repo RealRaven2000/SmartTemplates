@@ -807,12 +807,13 @@
   "menu.template_import.label": {
     "message": "Sjabloon importeren"
   },
-  "message.licenseScreen": {
-    "message": "Licentie-opties weergeven…"
-  },
   "message.features": {
     "message": "Vergelijk functies…"
   },
+  "message.licenseScreen": {
+    "message": "Licentie-opties weergeven…"
+  },
+  "message.linkInTab": { "message": "(Link geopend in tabblad)" },
   "messid.label": {
     "message": "Bericht-ID"
   },

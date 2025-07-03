@@ -810,12 +810,13 @@
   "menu.template_import.label": {
     "message": "Uvozi predlogo"
   },
-  "message.licenseScreen": {
-    "message": "Pokaži možnosti licence…"
-  },
   "message.features": {
     "message": "Primerjajte funkcije…"
   },
+  "message.licenseScreen": {
+    "message": "Pokaži možnosti licence…"
+  },
+  "message.linkInTab": { "message": "(Povezava odprta v zavihku)" },
   "messid.label": {
     "message": "ID sporočila"
   },

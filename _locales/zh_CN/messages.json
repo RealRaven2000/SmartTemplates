@@ -810,12 +810,13 @@
   "menu.template_import.label": {
     "message": "导入模板"
   },
-  "message.licenseScreen": {
-    "message": "显示许可选项…"
-  },
   "message.features": {
     "message": "比较功能…"
   },
+  "message.licenseScreen": {
+    "message": "显示许可选项…"
+  },
+  "message.linkInTab": { "message": "（連結已在分頁中開啟）" },
   "messid.label": {
     "message": "消息 ID"
   },

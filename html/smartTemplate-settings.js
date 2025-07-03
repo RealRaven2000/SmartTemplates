@@ -9,6 +9,10 @@
   END LICENSE BLOCK 
 */
 
+/*
+	globals
+		SmartTemplates: readonly,
+*/
 
 // we can only do this if we load this file itself as a module.
 // import {Preferences} from "../scripts/st-prefs.mjs.js"; 
@@ -61,7 +65,7 @@ var fileTemplates = {
 
 	get activeFileList() {  //  was ListBox()
 		const container = document.querySelector("#fileTemplateContainer section.active");
-		if(!container) return null;
+		if(!container) {return null;}
 		const select = container.querySelector(".fileTemplateList");
 		return select;
 	},
@@ -79,7 +83,7 @@ var fileTemplates = {
         case "snippets-fileTemplates":
 					return this.Entries.snippets;
 			}
-		} catch(ex){;}
+		} catch {;}
 		return [];
 	},	
 
@@ -120,41 +124,47 @@ var fileTemplates = {
   onEditLabel: async function(txt, forceIndex=null) {
     SmartTemplates.Settings.logDebug("onEditLabel", txt);
     // check if one is selected and we just changed it]
-    let path = document.getElementById('txtTemplatePath').value,
-        label = document.getElementById('txtTemplateTitle').value.trim(),
-        category = document.getElementById('txtTemplateCategory').value.trim(),
-        listbox = this.activeFileList,
-        idx = forceIndex || listbox.selectedIndex;
+    // path = document.getElementById('txtTemplatePath').value,
 
-		SmartTemplates.Settings.logDebugOptional("fileTemplates","onEdit();");
-    if (idx ==-1) return;
+    let label = document.getElementById("txtTemplateTitle").value.trim(),
+      category = document.getElementById("txtTemplateCategory").value.trim(),
+      listbox = this.activeFileList,
+      idx = forceIndex || listbox.selectedIndex;
+
+    SmartTemplates.Settings.logDebugOptional("fileTemplates", "onEdit();");
+    if (idx == -1) {
+      return;
+    }
     const e = this.CurrentEntries[idx];
     // check if path matches
-		if (e.path != document.getElementById("txtTemplatePath").value)
-			return; // this is not a match. Let's not change the label
-		
-		if (e.label == label && e.category == category) {
-			return;
-		}
-		
-		// change label in list then save & reload.
-		e.label = label;
+    if (e.path != document.getElementById("txtTemplatePath").value) {
+      return; // this is not a match. Let's not change the label
+    }
+
+    if (e.label == label && e.category == category) {
+      return;
+    }
+
+    // change label in list then save & reload.
+    e.label = label;
     e.category = category;
 
     if (forceIndex) {
       let item = listbox.item(forceIndex);
       let v = JSON.parse(item.value),
-          p = v.path,
-          c = v.category || "";
-      switch(LastInput.id) {
+        p = v.path,
+        c = v.category || "";
+      switch (LastInput.id) {
         case "txtTemplateCategory":
           c = document.getElementById("txtTemplateCategory").value; // update with new value
-          item.value = JSON.stringify({path:p, category:c});
+          item.value = JSON.stringify({ path: p, category: c });
           break;
         case "txtTemplateTitle":
-          let txt = document.getElementById("txtTemplateTitle").value;
-          e.label = txt;
-          item.firstChild.value = fileTemplates.makeLabel(e); // txt; 
+          {
+            let txt = document.getElementById("txtTemplateTitle").value;
+            e.label = txt;
+            item.firstChild.value = fileTemplates.makeLabel(e); // txt;
+          }
           break;
       }
       await this.saveCustomMenu();
@@ -162,7 +172,7 @@ var fileTemplates = {
     }
     await this.saveCustomMenu();
     this.repopulate(true); // rebuild menu
-		listbox.selectedIndex = idx; // reselect item
+    listbox.selectedIndex = idx; // reselect item
   } , 	
 
   updateInputGlobal: function(input) {
@@ -191,8 +201,7 @@ var fileTemplates = {
         v = JSON.parse(listItem.value);
         p = v.path;
         c = v.category || "";
-      }
-      catch(ex) {
+      } catch {
         p = v;
       }
 			document.getElementById('txtTemplatePath').value = p;
@@ -233,6 +242,7 @@ var fileTemplates = {
 		}
 
 		if (!this.activeFileList.selectedOptions) {
+			// eslint-disable-next-line no-debugger
 			debugger;
 		} else {
 			if (this.activeFileList.selectedOptions.length) {
@@ -269,7 +279,7 @@ var fileTemplates = {
 	},
 	removeEntry: async function() {
 		let currentPos = fileTemplates.activeFileList.selectedIndex;
-		if (currentPos<0) return;
+		if (currentPos<0) {return;}
 		fileTemplates.CurrentEntries.splice(currentPos, 1);
 		fileTemplates.activeFileList.remove(currentPos);
 		fileTemplates.selectedIndex = currentPos;
@@ -279,7 +289,7 @@ var fileTemplates = {
 	},
 	moveEntryUp: async function() {
 		let currentPos = fileTemplates.activeFileList.selectedIndex;
-		if (currentPos<=0) return;
+		if (currentPos<=0) {return;}
 		// move the item in the datastructure:
 		array_move(fileTemplates.CurrentEntries, currentPos, currentPos-1);
 		// update backend
@@ -290,8 +300,8 @@ var fileTemplates = {
 	},
 	moveEntryDown: async function() {
 		let currentPos = fileTemplates.activeFileList.selectedIndex;
-		if (currentPos<0) return;
-		if (currentPos+1>=fileTemplates.activeFileList.length) return;
+		if (currentPos<0) {return;}
+		if (currentPos+1>=fileTemplates.activeFileList.length) {return;}
 		// move the item in the datastructure:
 		array_move(fileTemplates.CurrentEntries, currentPos, currentPos+1);
 		// update backend
@@ -301,7 +311,7 @@ var fileTemplates = {
 		this.activeFileList.selectedIndex = currentPos+1;
 	},
 	editEntry: async function() {
-		if (this.activeFileList.selectedIndex<0) return;
+		if (this.activeFileList.selectedIndex<0) {return;}
 		const item = fileTemplates.CurrentEntries[this.activeFileList.selectedIndex];
 		messenger.Utilities.editTemplateExternal(item);
 	},
@@ -344,7 +354,7 @@ var fileTemplates = {
 	},
 	onDragEnter: function (event) {
 		let dataString = event.dataTransfer.getData('text/plain');
-		if (!dataString) return;
+		if (!dataString) {return;}
 		const data = JSON.parse(dataString);
 		const option = event.target; 
 		const target = JSON.parse(option.value);		
@@ -356,7 +366,7 @@ var fileTemplates = {
 			this.classList.add('overTop');
 		}
 	},
-	onDragLeave: function (event) {
+	onDragLeave: function (_event) {
 		this.classList.remove('overTop');
 		this.classList.remove('overBottom');
 	},
@@ -372,7 +382,7 @@ var fileTemplates = {
 				return false;
 			}
 		}
-		if (!dataString) return false; // could not read
+		if (!dataString) {return false;} // could not read
 		const data = JSON.parse(dataString);
 		const option = event.target; 
 		const target = JSON.parse(option.value);
@@ -394,9 +404,9 @@ var fileTemplates = {
 		option.style.opacity = '1';
 		const pId = `#${option.parentElement.id} option`;
 		const items = document.querySelectorAll(pId);
-    items.forEach(function (item) {
-			this.classList.remove('overTop');
-			this.classList.remove('overBottom');
+    items.forEach((item) => {
+			item.classList.remove('overTop');
+			item.classList.remove('overBottom');
 		});
 	},
 
@@ -457,7 +467,7 @@ var fileTemplates = {
   },
 
   sanitizeLabel: function(lbl, c) {
-    if (!c) return lbl;
+    if (!c) {return lbl;}
     return lbl.replace(c + " » ", "");
   },
 	
@@ -482,12 +492,6 @@ var fileTemplates = {
 
 }; // copy of recent and configured file templates from SmartTemplate4.fileTemplates
 
-async function initFileTemplates(data) {
-	// let's use an experiment function to retrieve the "data" - see background page
-	fileTemplates.Entries = data.Entries;
-	fileTemplates.MRU_Entries = data.MRU_Entries;
-}
-
 async function initLicenseInfo() {
   licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
   document.getElementById("txtLicenseKey").value = licenseInfo.licenseKey;
@@ -500,11 +504,11 @@ async function initLicenseInfo() {
   // window.addEventListener("QuickFolders.BackgroundUpdate", validateLicenseInOptions);
   
   messenger.runtime.onMessage.addListener (
-    (data, sender) => {
+    (data, _sender) => {
       if (data.msg=="updatedLicense") {
         licenseInfo = data.licenseInfo;
         SmartTemplates.Settings.updateLicenseOptionsUI(false); // we may have to switch off silent if we cause this
-        configureBuyButton();
+        // configureBuyButton();
         return Promise.resolve(true); // returns a promise of "undefined"
       }
     }
@@ -525,12 +529,12 @@ SmartTemplates.Preferences = {
     return await messenger.LegacyPrefs.getPref(this.Prefix + "debug");
   },
 	isDebugOption: async function(option) { // granular debugging
-		if (!await this.isDebug)
+		if (!await this.isDebug()){
 			return false;
+		}
 		try {
 			return await this.getMyBoolPref("debug." + option);
-		}
-		catch(e) {
+		} catch {
       return false;
     }
 	},  
@@ -542,13 +546,10 @@ SmartTemplates.Preferences = {
 		    key = this.Prefix + p;
     try {
 			prefString = await messenger.LegacyPrefs.getPref(key);
-    }
-    catch(ex) {
+    } catch(ex) {
       console.log("%cCould not find string pref: " + p, "color:red;", ex.message);
     }
-    finally {
-      return prefString;
-    }
+		return prefString;
 	},  
 	setStringPref: async function (p, v) {
     return await messenger.LegacyPrefs.setPref(this.Prefix + p, v);
@@ -571,8 +572,7 @@ SmartTemplates.Preferences = {
 	setBoolPref: async function(p, v) {
 		try {
 			return await messenger.LegacyPrefs.setPref(p, v);
-		} catch(e) {
-			let s="Err:" +e;
+		} catch {
 			return false;
 		}
 	} ,  
@@ -618,7 +618,7 @@ SmartTemplates.Preferences = {
       }
       else {
         let v = await messenger.LegacyPrefs.getPref(prefstring);
-        if (v==null) v = defaultValue;
+        if (v==null) {v = defaultValue;}
         return v;
       }
     },
@@ -658,7 +658,7 @@ SmartTemplates.Preferences = {
 
     isTemplateActive: async function(idKey, composeType, def) {
       let isActive = await this.getWithIdkey(idKey, composeType, def);
-      if (!isActive) return false; // defaults to empty string
+      if (!isActive) {return false;} // defaults to empty string
       return isActive;
     },
 
@@ -670,16 +670,18 @@ SmartTemplates.Preferences = {
 
     // -----------------------------------
     // Get preference with identity key
-    getWithIdkey: async function(idkey, pref, def) {    
+    getWithIdkey: async function(idkey, pref, def) {
       // fix problems in draft mode...
-      if (!pref) 
-        return ""; // draft etc.
+      if (!pref) {
+        // draft etc.
+        return "";
+      } 
       // extensions.smarttemplate.id8.def means account id8 uses common values.
-      if (await this.getWithBranch(idkey + ".def", true)) { // "extensions.smartTemplate4." + "id12.def"
+      if (await this.getWithBranch(idkey + ".def", true)) {
+        // "extensions.smartTemplate4." + "id12.def"
         // common preference - test with .common!!!!
         return await this.getWithBranch("common." + pref, def);
-      }
-      else {
+      } else {
         // Account specific preference
         return await this.getWithBranch(idkey + "." + pref, def);
       }
@@ -734,42 +736,37 @@ SmartTemplates.Settings = {
   
 
   isDebug: true, ///// TEST
-  logDebug: async function (msg) {
+  logDebug: async function (...args) {
 	  // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
-		if (this.isDebug) {
-      this.logToConsole(...arguments);
+		if (await this.isDebug()) {
+      this.logToConsole(...args);
     }
 	},
   // first argument is the option tag
-  logWithOption: function(a) {
+  logWithOption: function(...args) {
     arguments[0] =  "SmartTemplates "
       +  '{' + arguments[0].toUpperCase() + '} ' 
 			// + Util.logTime()
       + "\n";
-    console.log(...arguments);
+    console.log(...args);
   },  	
-	logDebugOptional: async function (optionString, msg) {
+	logDebugOptional: async function (optionString, ...rest) {
     optionString = arguments[0];
     let options = optionString.split(','); // allow multiple switches
     for (let i=0; i<options.length; i++) {
       let option = options[i];
       if (await SmartTemplates.Preferences.isDebugOption(option)) {
-        this.logWithOption(...arguments);
+        this.logWithOption(...rest);
         break; // only log once, in case multiple log switches are on
       }
     }
 	},
-	logToConsole: function (a) {
+	logToConsole: function (...args) {
     let msg = "SmartTemplates Settings\n";
-    console.log(msg, ...arguments);
+    console.log(msg, ...args);
   },
 	logException: function(aMessage, ex) {
-		let stack = '';
-		if (typeof ex.stack!='undefined') {
-			stack = ex.stack.replace("@","\n  ");
-		}
-
-		let srcName = ex.fileName ? ex.fileName : "";
+		const srcName = ex.fileName ? ex.fileName : "";
 		console.warn(aMessage + "\n", 
 		  `${srcName}:${ex.lineNumber}`, 
 			`\n${ex.message}\n`, 
@@ -829,7 +826,7 @@ SmartTemplates.Settings = {
 	showCommonPlaceholder : function (isCommon, accountId = this.accountId) {
 		const id = "default.deckB";
 		const deck = document.getElementById(id + accountId);
-		if (!deck) return;
+		if (!deck) {return;}
 
 		deck.selectedIndex = isCommon ? 1 : 0; 
 
@@ -865,11 +862,13 @@ SmartTemplates.Settings = {
 	// Return checkbox is checked or not
 	//--------------------------------------------------------------------
 	isChecked : function(elId) {
-		let com = elId.indexOf('.common');
-		if (com>0)
-		  elId = elId.substring(0, com); // cut off .common
-		return document.getElementById(elId).checked;
-	} ,
+    let com = elId.indexOf(".common");
+    if (com > 0) {
+      // cut off .common
+      elId = elId.substring(0, com);
+    } 
+    return document.getElementById(elId).checked;
+  } ,
 
   // >>>>>>>>>>>>>>
   // REVIEW FOR DIFFERENT IMPLEMENTATION:
@@ -938,22 +937,20 @@ SmartTemplates.Settings = {
 	cleanupUnusedPrefs : function() {
     logMissingFunction("cleanupUnusedPrefs ()");
     return;
-		const util = SmartTemplate4.Util;
-    // this needs to be implemented via LegacyPrefs:
+		// const util = SmartTemplate4.Util;
+		// let array = this.prefService.getChildList("extensions.smartTemplate4.", {});
 
-		let array = this.prefService.getChildList("extensions.smartTemplate4.", {});
-
-		// AG new: preserve common and global settings!
-		for (let i in array) {
-			let branch = array[i];
-			if (document.getElementsByAttribute("name", branch).length === 0
-			    &&
-			    branch.indexOf("smartTemplate4.id") > 0 )  // AG from now on, we only delete the account specific settings "smartTemplate4.id<N>"
-			{
-				util.logDebug('deleting preference branch: ' + branch + ' …'); // ++++++ RAUS LOESCHEN
-				this.prefService.deleteBranch(branch);
-			}
-		}
+		// // AG new: preserve common and global settings!
+		// for (let i in array) {
+		// 	let branch = array[i];
+		// 	if (document.getElementsByAttribute("name", branch).length === 0
+		// 	    &&
+		// 	    branch.indexOf("smartTemplate4.id") > 0 )  // AG from now on, we only delete the account specific settings "smartTemplate4.id<N>"
+		// 	{
+		// 		util.logDebug('deleting preference branch: ' + branch + ' …'); // ++++++ RAUS LOESCHEN
+		// 		this.prefService.deleteBranch(branch);
+		// 	}
+		// }
 	} ,  
 
 	//******************************************************************************
@@ -964,16 +961,15 @@ SmartTemplates.Settings = {
 	//--------------------------------------------------------------------
 	setPref1st : async function (prefbranch) {
     async function testPref(key, defaultValue) {
-			let testResult;
 			const dummy="****N/A(this is an impossible test result to check existence of user default)***"
       const targetKey =  prefbranch + key;
       try {
-				let testResult = await getPref(targetKey, dummy);
+				const testResult = await getPref(targetKey, dummy);
 				if (testResult == dummy) {
-					debugger;
 					await createPref(targetKey, defaultValue);
 				}
-      } catch (ex) {
+      } catch {
+				// eslint-disable-next-line no-debugger
 				debugger; // there is no default config setting... create one!
 				// [issue ]
         await createPref(targetKey,defaultValue);
@@ -1115,7 +1111,7 @@ SmartTemplates.Settings = {
 					let _attr = _el.getAttribute("data-pref-name");
           _el.setAttribute("data-pref-name", _attr.replace(".common", key));
 				}
-			} catch(ex) {}
+			} catch {;}
 		}
 
 		// was called appendAttr; this will append the key id to the setting.
@@ -1125,7 +1121,7 @@ SmartTemplates.Settings = {
 				if (_el.hasAttribute(_attrname)) {
 					_el.setAttribute(_attrname, _el.getAttribute(_attrname) + _key);
 				}
-			} catch(ex) {}
+			} catch {;}
 		}
 
 		let key = branch.substr(1), // cut off leading '.'
@@ -1133,7 +1129,7 @@ SmartTemplates.Settings = {
 		    newPrefs = [];  // to gather the new preferences
 		// iterate cloned deck.
 		// note: this would be easier to rewrite & understand using recursion
-		const ELEMENT_NODE = 1, TEXT_NODE = 3;
+		const ELEMENT_NODE = 1; // TEXT_NODE = 3;
 		while (el) {
 			// Set id, name, prefname
 			if (el.nodeType == ELEMENT_NODE) {
@@ -1211,7 +1207,7 @@ SmartTemplates.Settings = {
 			clone.classList.remove("deck-selected");
 
 			this.prefCloneAndSetup(clone, branch);
-			let appendedChild = el.parentNode.appendChild(clone);
+			el.parentNode.appendChild(clone);
 
 			// Disabled or Hidden DOM node
 			this.accountKey = branch;    // change current id for pref library
@@ -1261,7 +1257,7 @@ SmartTemplates.Settings = {
 			el.removeAttribute("disabled");
 			// Ensure correct initial state +GPT!!
 			// SmartTemplates.Settings.showCommonPlaceholder(el.checked, el.dataset.accountId);	
-			el.addEventListener("change", (event) => {
+			el.addEventListener("change", (_event) => {
 				SmartTemplates.Settings.showCommonPlaceholder(el.checked);
 			});
 		}
@@ -1404,7 +1400,7 @@ SmartTemplates.Settings = {
 			alert("A problem has occured\nCannot find account settings for deck: " + currentDeck); // this shouldn't happen, ever!
 		}
 		let tabIndex = tabbox.getAttribute("selectedIndex"); 
-		if (tabIndex<0) tabIndex=0;
+		if (tabIndex<0) {tabIndex=0;}
 
 		const branch = (idkey == "common") ? ".common" : "." + idkey;
 
@@ -1463,7 +1459,7 @@ SmartTemplates.Settings = {
 					document.getElementById('btnSaveTemplate').removeAttribute("disabled");
 				}
 			}
-			catch (ex) {;}
+			catch {;}
     }
 		// select composeCase!
 		if (fromClickEvent && SmartTemplates.Settings.currentComposeType) {
@@ -1622,10 +1618,16 @@ SmartTemplates.Settings = {
 				let el = checkboxes[i];
 				updateElement(data, el, stem, targetId);
 				// update enable / disable textboxes from checkbox data.
-				if (isOrStartsWith(el, "new") || isOrStartsWith(el, "newhtml") ||
-						isOrStartsWith(el, "rsp") || isOrStartsWith(el, "rsphtml") ||
-						isOrStartsWith(el, "fwd") || isOrStartsWith(el, "fwdhtml"))
-						SmartTemplates.Settings.disableWithCheckbox(el);
+				if (
+          isOrStartsWith(el, "new") ||
+          isOrStartsWith(el, "newhtml") ||
+          isOrStartsWith(el, "rsp") ||
+          isOrStartsWith(el, "rsphtml") ||
+          isOrStartsWith(el, "fwd") ||
+          isOrStartsWith(el, "fwdhtml")
+        ) {
+          SmartTemplates.Settings.disableWithCheckbox(el);
+        }
 			}
 		}                  
   } ,
@@ -1660,7 +1662,7 @@ SmartTemplates.Settings = {
 		let trimmedLicense =  
 		  strLicense.replace(/\r?\n|\r/g, ' ') // replace line breaks with spaces
 				.replace(/\s\s+/g, ' ')            // collapse multiple spaces
-        .replace('\[at\]','@')
+        .replace('[at]','@')
 				.trim();
     txtBox.value = trimmedLicense;
     SmartTemplates.Util.logDebug('trimLicense() result : ' + trimmedLicense);
@@ -1683,7 +1685,9 @@ SmartTemplates.Settings = {
 			el.disabled = !isEnabled;
 		}
 		this.enableStandardConfig(isEnabled);
-		if (isEnabled) document.getElementById("SmartTemplate4AboutLogo").classList.remove("standard");
+		if (isEnabled) {
+			document.getElementById("SmartTemplate4AboutLogo").classList.remove("standard");
+		}
   } ,
 
 	enableStandardConfig: function(isEnabled) {
@@ -1723,26 +1727,34 @@ SmartTemplates.Settings = {
 	// put appropriate label on the license button and pass back the label text as well
 	labelLicenseBtn: function(btnLicense, validStatus) {
 		switch(validStatus) {
-			case  "extend":
-				let txtExtend = SmartTemplates.Util.getBundleString("st.notification.premium.btn.extendLicense");
+			case  "extend": {
+				const txtExtend = SmartTemplates.Util.getBundleString(
+          "st.notification.premium.btn.extendLicense"
+        );
 				btnLicense.setAttribute("collapsed", false);
 				btnLicense.textContent = txtExtend; // text should be extend not renew
 				btnLicense.setAttribute('tooltiptext',
 					SmartTemplates.Util.getBundleString("st.notification.premium.btn.extendLicense.tooltip"));
 				return txtExtend;
-			case "renew":
-				let txtRenew = SmartTemplates.Util.getBundleString("st.notification.premium.btn.renewLicense");
+			}
+			case "renew": {
+				const txtRenew = SmartTemplates.Util.getBundleString("st.notification.premium.btn.renewLicense");
 				btnLicense.textContent = txtRenew;
 			  return txtRenew;
-			case "buy":
-				let buyLabel = SmartTemplates.Util.getBundleString("st.notification.premium.btn.getLicense");
+			}
+			case "buy": {
+				const buyLabel = SmartTemplates.Util.getBundleString("st.notification.premium.btn.getLicense");
 				btnLicense.textContent = buyLabel;
 			  return buyLabel;
-			case "upgrade":
-				let upgradeLabel = SmartTemplates.Util.getBundleString("st.notification.premium.btn.upgrade");
+			}
+			case "upgrade": {
+				const upgradeLabel = SmartTemplates.Util.getBundleString(
+          "st.notification.premium.btn.upgrade"
+        );
 				btnLicense.textContent = upgradeLabel;
 				btnLicense.classList.add('upgrade'); // stop flashing
 			  return upgradeLabel;
+			}
 		}
 		return "";
 	} ,
@@ -1784,7 +1796,7 @@ SmartTemplates.Settings = {
           let d = new Date(decryptedDate);
           niceDate =d.toLocaleDateString();
         }
-        catch(ex) { niceDate = decryptedDate; }
+        catch { niceDate = decryptedDate; }
       }
       switch(result) {
         case "Valid":
@@ -1801,7 +1813,7 @@ SmartTemplates.Settings = {
           licenseDate.classList.add('valid'); // [issue 170]
           licenseDateLabel.textContent = SmartTemplates.Util.getBundleString("label.licenseValid");
           break;
-        case "Invalid":
+        case "Invalid": {
 					logo.classList.add("standard");
 				  validationDate.setAttribute("collapsed", true);
 					validationDateSpace.setAttribute("collapsed", true);
@@ -1829,7 +1841,7 @@ SmartTemplates.Settings = {
 						validationInvalidAddon.textContent = txt;
 						this.showValidationMessage(validationInvalidAddon, silent);
 					}
-          break;
+				} break;
         case "Expired":
 					logo.classList.add("standard");
           licenseDateLabel.textContent = SmartTemplates.Util.getBundleString("st.licenseValidation.expired");
@@ -1901,9 +1913,9 @@ SmartTemplates.Settings = {
 		function replaceCssClass(el,addedClass) {
 			try {
 				el.classList.add(addedClass);
-				if (addedClass!='paid')	el.classList.remove('paid');
-				if (addedClass!='expired') el.classList.remove('expired');
-				if (addedClass!='free')	el.classList.remove('free');
+				if (addedClass!='paid')	{el.classList.remove('paid');}
+				if (addedClass!='expired') {el.classList.remove('expired');}
+				if (addedClass!='free')	{el.classList.remove('free');}
 			} catch(ex) {
 				SmartTemplates.Util.logException("replaceCssClass(" + el + "):\n", ex);
 			}
@@ -1920,7 +1932,7 @@ SmartTemplates.Settings = {
       // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
       this.updateLicenseOptionsUI(silent);  // async! // was settings.decryptLicense
 			switch(licenseInfo.status) {
-				case "Valid":
+				case "Valid": {
 					const today = new Date(),
 						later = new Date(today.setDate(today.getDate()+32)), // pretend it's a month later:
 						dateString = later.toISOString().substr(0, 10);
@@ -1940,6 +1952,7 @@ SmartTemplates.Settings = {
 					logo.classList.remove('aboutLogo');
 					logo.classList.add('aboutLogoPro');
 				  break;
+				}
 				case "Expired":
 					this.labelLicenseBtn(btnLicense, "renew");
 				  btnLicense.setAttribute("collapsed", false);
@@ -2195,7 +2208,10 @@ async function loadPrefs(parentSelector = "") {
 		} else if (element instanceof HTMLTextAreaElement) {
       element.value = await browser.LegacyPrefs.getPref(prefName);
     } else {
-			debugger;
+			if (await SmartTemplates.Preferences.isDebug()) {
+				// eslint-disable-next-line no-debugger
+				debugger;
+			}
 			console.error("Unexpected preference element", element);
 		}
     
@@ -2227,7 +2243,7 @@ async function showRegistrationDlg(feature) {
 
 function addConfigEvent(el, filterConfig) {
 	// add right-click event to containing label
-	if (!el) return;
+	if (!el) {return;}
   // Use closest to find the nearest .configSettings button, or fallback to parent if not found
   let eventNode = el.closest(".hasConfigEvent").querySelector(".configSettings");
 	let eventType;
@@ -2265,7 +2281,7 @@ async function updateTooltipPosition(e, el, tip) {
   const tipHeight = tip.offsetHeight;
 
   // Log calculated values for debugging:
-	if (await SmartTemplates.Preferences.isDebug) {
+	if (await SmartTemplates.Preferences.isDebug()) {
 		console.log("Button Rect:", buttonRect);
 		console.log("Tooltip Size:", { tipWidth, tipHeight });
 		console.log("Viewport Size:", { viewportWidth, viewportHeight });
@@ -2308,7 +2324,7 @@ async function showTooltip(evt, el) {
 
   // Force screen reader to detect change by clearing & re-adding text
   const txt = el.getAttribute("clickyTooltip");
-  if (!txt) return;
+  if (!txt) {return;}
   tip.innerText = ""; // Clear existing text first
   tip.style.visibility = "visible"; // Ensure visibility before setting text
   tip.style.opacity = 0.05; // Ensure it's not faded out - we will set this to 1 in updateTooltipPosition!
@@ -2329,7 +2345,7 @@ async function showTooltip(evt, el) {
 
 // Function to hide the tooltip (just make it invisible)
 function hideTooltip(tip) {
-	if (!tip) return;
+	if (!tip) {return;}
   tip.style.visibility = "hidden"; // Make the tooltip invisible
   tip.style.opacity = 0; // Hide with fade effect
 }
@@ -2344,13 +2360,13 @@ function addUIListeners() {
     button.setAttribute("aria-label", lblMore); // screenreader support
     button.addEventListener("click", async (evt) => {
       const el = evt?.target;
-      if (!el) return;
+      if (!el) {return;}
       await showTooltip(evt, el); // Show tooltip on click
       // el.setAttribute("aria-expanded", "true"); // Indicate tooltip is visible
     });
 		button.addEventListener("blur", async (evt) => {
 			const el = evt?.target;
-			if (!el) return;
+			if (!el) {return;}
 
 			hideTooltip(el.querySelector(".tooltip"));
 			// el.setAttribute("aria-expanded", "false"); // Indicate tooltip is hidden
@@ -2366,36 +2382,31 @@ function addUIListeners() {
   for (let chk of document.querySelectorAll("input[type=checkbox]")) {
     let dataPref = chk.getAttribute("data-pref-name").replace(SMARTTEMPLATES_EXTPREFIX, "");
     // right-click show details from about:config
-    let filterConfig = "",
-      readOnly = true,
-      retVal = null;
+    let filterConfig = "";
     // get my bool pref:
     switch (dataPref) {
       case "debug":
-        chk.addEventListener("change", (event) => {
+        chk.addEventListener("change", (_event) => {
           SettingsUI.toggleBoolPreference(chk); // <== QF.Options
         });
         filterConfig = "smartTemplate4.debug";
-        retVal = false;
         break;
       case "parseSignature":
         filterConfig = "extensions.smartTemplate4.parseSignature";
-        retVal = false;
         break;
       case "showStatusIcon":
         filterConfig = "extensions.smartTemplate4.showStatusIcon";
-        retVal = true;
         break;
     }
 
     switch (chk.id) {
       case "chkResolveAB":
-        chk.addEventListener("click", (event) => {
+        chk.addEventListener("click", (_event) => {
           SmartTemplates.Settings.resolveAB_onClick(chk);
         });
         break;
       case "chkBackgroundParser":
-        chk.addEventListener("click", (event) => {
+        chk.addEventListener("click", (_event) => {
           alert(
             "The mx parser is experimental\nPlease reload SmartTemplates to effect this change!"
           );
@@ -2403,7 +2414,7 @@ function addUIListeners() {
         break;
       case "chkHideExamples":
         // oncommand="SmartTemplate4.Settings.toggleExamples(chk);"
-        chk.addEventListener("click", (event) => {
+        chk.addEventListener("click", (_event) => {
           logMissingFunction("SmartTemplate4.Settings.toggleExamples()");
         });
         break;
@@ -2421,7 +2432,7 @@ function addUIListeners() {
   }
 
   for (let chk of document.querySelectorAll(".settingDisabler")) {
-    chk.addEventListener("change", (event) => {
+    chk.addEventListener("change", (_event) => {
       SmartTemplates.Settings.disableWithCheckbox(chk); // <== QF.Options
     });
   }
@@ -2435,10 +2446,10 @@ function addUIListeners() {
   });
 
   // these were oncommand events - for the file templates list
-  document.getElementById("btnAdd").addEventListener("click", (event) => {
+  document.getElementById("btnAdd").addEventListener("click", (_event) => {
     fileTemplates.addEntry();
   });
-  document.getElementById("btnUpdate").addEventListener("click", (event) => {
+  document.getElementById("btnUpdate").addEventListener("click", (_event) => {
     fileTemplates.updateEntry();
   });
   document.getElementById("btnRemove").addEventListener("click", (event) => {
@@ -2450,26 +2461,26 @@ function addUIListeners() {
   document.getElementById("btnDown").addEventListener("click", (event) => {
     fileTemplates.moveEntryDown(event.target);
   });
-  document.getElementById("btnEdit").addEventListener("click", (event) => {
+  document.getElementById("btnEdit").addEventListener("click", (_event) => {
     fileTemplates.editEntry();
   });
-  document.getElementById("btnPushUI").addEventListener("click", (event) => {
+  document.getElementById("btnPushUI").addEventListener("click", (_event) => {
     SmartTemplates.Settings.logDebug("Sending entries data to experiment...");
     messenger.Utilities.updateTemplates(fileTemplates.Entries);
   });
 
-  document.getElementById("helpSnippets").addEventListener("click", (event) => {
+  document.getElementById("helpSnippets").addEventListener("click", (_event) => {
     SmartTemplates.Util.showStationeryPage("snippets"); // contains an anchor
   });
 
   // command handlers for licensing
-  document.getElementById("btnPasteLicense").addEventListener("click", (event) => {
+  document.getElementById("btnPasteLicense").addEventListener("click", (_event) => {
     SmartTemplates.Settings.pasteLicense();
   });
   document.getElementById("btnValidateLicense").addEventListener("click", (event) => {
     SmartTemplates.Settings.validateNewKey(event.target);
   });
-  document.getElementById("btnLicense").addEventListener("click", (event) => {
+  document.getElementById("btnLicense").addEventListener("click", (_event) => {
     // oncommand="
     //    SmartTemplate4.Util.showLicenseDialog('licenseTab');
     //    setTimeout( function() {window.close();}, 500 );"
@@ -2485,31 +2496,31 @@ function addUIListeners() {
     // avoid passing element itself, change parameter to select.value!
     SmartTemplates.Settings.setStatusIconMode(event.target);
   });
-  document.getElementById("fontSmaller").addEventListener("click", (event) => {
+  document.getElementById("fontSmaller").addEventListener("click", (_event) => {
     logMissingFunction("SmartTemplate4.Settings.fontSize(-1);");
   });
-  document.getElementById("fontLarger").addEventListener("click", (event) => {
+  document.getElementById("fontLarger").addEventListener("click", (_event) => {
     logMissingFunction("SmartTemplate4.Settings.fontSize(+1);");
   });
 
   // toolbar for the template tools
-  document.getElementById("helpTemplates").addEventListener("click", (event) => {
+  document.getElementById("helpTemplates").addEventListener("click", (_event) => {
     SmartTemplates.Util.showStationeryPage("templateFiles");
   });
-  document.getElementById("btnSaveTemplate").addEventListener("click", (event) => {
+  document.getElementById("btnSaveTemplate").addEventListener("click", (_event) => {
     SmartTemplates.Settings.storeAccount();
   });
-  document.getElementById("btnLoadTemplate").addEventListener("click", (event) => {
+  document.getElementById("btnLoadTemplate").addEventListener("click", (_event) => {
     SmartTemplates.Settings.loadAccount();
   });
-  document.getElementById("btnRefreshAccounts").addEventListener("click", (event) => {
+  document.getElementById("btnRefreshAccounts").addEventListener("click", (_event) => {
     SmartTemplates.Settings.refreshIdentities();
   });
 
-  // document.getElementById("btnAdvanced").addEventListener("click", (event) => {
+  // document.getElementById("btnAdvanced").addEventListener("click", (_event) => {
   // 	logMissingFunction("SmartTemplates.Settings.openAdvanced()");
   // });
-  // document.getElementById("btnCloseAdvanced").addEventListener("click", (event) => {
+  // document.getElementById("btnCloseAdvanced").addEventListener("click", (_event) => {
   // 	logMissingFunction("SmartTemplates.Settings.closeAdvanced()");
   // });
   for (let btn of document.querySelectorAll(".youtube")) {
@@ -2522,14 +2533,14 @@ function addUIListeners() {
         video = "stationery";
         break;
     }
-    btn.addEventListener("click", (event) => {
+    btn.addEventListener("click", (_event) => {
       SmartTemplates.Util.showYouTubePage(video);
     });
   }
 
   // about page handlers
   for (let btn of document.querySelectorAll(".buttonLinks button")) {
-    btn.addEventListener("click", (event) => {
+    btn.addEventListener("click", (_event) => {
       // SmartTemplates.Settings.disableWithCheckbox(this)
       switch (btn.id) {
         case "aboutShowSplash":
@@ -2568,7 +2579,7 @@ function addUIListeners() {
   }
 
   for (let el of document.querySelectorAll(".plain-link")) {
-    el.addEventListener("click", (event) => {
+    el.addEventListener("click", (_event) => {
       switch (el.id) {
         case "lnkShowPremium":
           SmartTemplates.Util.showPremiumFeaturesPage();
@@ -2579,25 +2590,25 @@ function addUIListeners() {
 
   // more checkboxes
   for (let el of document.querySelectorAll(".commonSwitch")) {
-    el.addEventListener("change", (event) => {
+    el.addEventListener("change", (_event) => {
       SmartTemplates.Settings.showCommonPlaceholder(el.checked);
     });
   }
   // file picker button
-  document.getElementById("btnPickTemplate").addEventListener("click", (event) => {
+  document.getElementById("btnPickTemplate").addEventListener("click", (_event) => {
     fileTemplates.openFilePicker();
   });
 
   // textareas:
   // drag + drop
   for (let textarea of document.querySelectorAll(".templateBox")) {
-    textarea.addEventListener("drop", (event) => {
+    textarea.addEventListener("drop", (_event) => {
       logMissingFunction("SmartTemplates.Settings.textDropped(event)");
     });
   }
   // focus (for pasting)
   for (let textarea of document.querySelectorAll(".pasteFocus textarea")) {
-    textarea.addEventListener("focus", (event) => {
+    textarea.addEventListener("focus", (_event) => {
       logMissingFunction("SmartTemplates.Settings.pasteFocus(this)");
     });
   }
@@ -2606,7 +2617,7 @@ function addUIListeners() {
   // template lists
   // .fileTemplateList richlistbox ==> select
   for (let textarea of document.querySelectorAll(".fileTemplateList")) {
-    textarea.addEventListener("change", (event) => {
+    textarea.addEventListener("change", (_event) => {
       logMissingFunction("SmartTemplate4.fileTemplates.onSelect(this)");
     });
   }
@@ -2615,22 +2626,22 @@ function addUIListeners() {
   // == template file details  ==
   // ============================
   let txtTitle = document.getElementById("txtTemplateTitle");
-  txtTitle.addEventListener("blur", (event) => {
+  txtTitle.addEventListener("blur", (_event) => {
     fileTemplates.onEditLabel(txtTitle);
   });
-  txtTitle.addEventListener("focus", (event) => {
+  txtTitle.addEventListener("focus", (_event) => {
     fileTemplates.updateInputGlobal(txtTitle);
   });
 
   let txtCategory = document.getElementById("txtTemplateCategory");
-  txtCategory.addEventListener("blur", (event) => {
+  txtCategory.addEventListener("blur", (_event) => {
     fileTemplates.onEditLabel(txtCategory);
   });
-  txtCategory.addEventListener("focus", (event) => {
+  txtCategory.addEventListener("focus", (_event) => {
     fileTemplates.updateInputGlobal(txtCategory);
   });
   for (let select of document.querySelectorAll("#fileTemplateContainer select.fileTemplateList")) {
-    select.addEventListener("change", (evt) => {
+    select.addEventListener("change", (_evt) => {
       fileTemplates.onSelect(select);
     });
   }
@@ -2640,7 +2651,7 @@ function addUIListeners() {
     SmartTemplates.Settings.setSupportMode(event.target);
   });
 
-  document.getElementById("composeSupportMail").addEventListener("click", (event) => {
+  document.getElementById("composeSupportMail").addEventListener("click", (_event) => {
     const SUPPORT_MAIL = "axel.grude@gmail.com";
     SmartTemplates.Settings.sendMail(SUPPORT_MAIL);
   });
@@ -2664,7 +2675,7 @@ function addUIListeners() {
 
     // Remove "selected" attribute from other tabs
     for (let other of document.querySelectorAll("#categories li")) {
-      if (other === li) continue;
+      if (other === li) {continue;}
 
       let currentActive;
       if (other.getAttribute("selected")) {
@@ -2781,7 +2792,7 @@ function addUIListeners() {
 		event.target.setAttribute("aria-live", "polite");
 	});
 	
-  document.getElementById("versionBox").addEventListener("click", (event) => {
+  document.getElementById("versionBox").addEventListener("click", (_event) => {
     messenger.Utilities.showVersionHistory();
   });
 
@@ -2797,10 +2808,11 @@ async function selectComposeType(forceType=null, forceKey = null) {
 	// select the correct compose type tab
 	let btnSelector;
 	switch (composeType) {
-		case 'snippets': 
+		case 'snippets': {
 			const tab = document.querySelector(".SnippetsTab"); // it's a unique element
 			tab.click();
 			return;
+		}
 		case 'new': 
 			btnSelector=".NewTab";
 			break;
@@ -2872,13 +2884,13 @@ async function onLoad() {
 		case "variables":
 			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catVariables");
 			break;
-		case "licenseKey":
+		case "licenseKey": {
 			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catLicense");
 			const txtLicense = getElement('txtLicenseKey');
 			if (txtLicense) {
 				setTimeout(() => txtLicense.focus(), 200);
 			}
-			break;
+		} break;
 		case "supportEmail":
 			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catSupport");
 			break;
@@ -2894,7 +2906,7 @@ async function onLoad() {
 		setTimeout(() => { selectedElement.focus(); }, 250);
 	}
 
-	browser.runtime.onMessage.addListener((msg, sender) => {
+	browser.runtime.onMessage.addListener((msg, _sender) => {
 		// check on the msg
 		if (msg?.command == "focusSettingsTab") {
 			const tabs = document.getElementById("categories").querySelectorAll(".category"); 
@@ -2918,11 +2930,11 @@ async function onLoad() {
 
 
 
-addEventListener("load", async (event) => {
+addEventListener("load", async (_event) => {
   onLoad();
 });  
 
-addEventListener("unload", async (event) => {
+addEventListener("unload", async (_event) => {
 	console.log("settings - UNLOAD!");
   SmartTemplates.Settings.onUnload();
 
@@ -2935,6 +2947,5 @@ addEventListener("keydown", (event) => {
 		console.log("smartTemplate-settings.html keydown", event);
 		event.preventDefault();
 		event.stopPropagation();
-		debugger;
 	}
 });

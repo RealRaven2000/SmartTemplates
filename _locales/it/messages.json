@@ -801,12 +801,13 @@
   "menu.template_import.label": {
     "message": "Importa modello"
   },
-  "message.licenseScreen": {
-    "message": "Mostra opzioni di licenza…"
-  },
   "message.features": {
     "message": "Confronta caratteristiche…"
   },
+  "message.licenseScreen": {
+    "message": "Mostra opzioni di licenza…"
+  },
+  "message.linkInTab": { "message": "(Collegamento aperto in una scheda)" },
   "minSize": {
     "message": "[opzionale, numerico] - numero di kByte, dimensione minima per rimuovere il tag. In questo modo puoi mantenere immagini più piccole come icone / emoji scartando immagini di grandi dimensioni."
   },

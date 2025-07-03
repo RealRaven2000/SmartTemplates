@@ -811,12 +811,13 @@
   "menu.template_import.label": {
     "message": "Importar un modèl"
   },
-  "message.licenseScreen": {
-    "message": "Mostra les opcions de llicència…"
-  },
   "message.features": {
     "message": "Compareu les funcions…"
   },
+  "message.licenseScreen": {
+    "message": "Mostra les opcions de llicència…"
+  },
+  "message.linkInTab": { "message": "(Enllaç obert en una pestanya)" },
   "messid.label": {
     "message": "ID del messatge"
   },

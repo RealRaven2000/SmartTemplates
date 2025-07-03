@@ -804,12 +804,13 @@
   "menu.template_import.label": {
     "message": "Importar modelo"
   },
-  "message.licenseScreen": {
-    "message": "Mostrar opções de licença…"
-  },
   "message.features": {
     "message": "Compare recursos…"
   },
+  "message.licenseScreen": {
+    "message": "Mostrar opções de licença…"
+  },
+  "message.linkInTab": { "message": "(Link aberto em uma aba)" },
   "messid.label": {
     "message": "Identificador da mensagem"
   },

@@ -315,3 +315,15 @@ h3 {
   white-space: nowrap;
   border: 0;
 }
+
+.link-visited {
+  color: #d2691e !important;
+}
+span.link-visited {
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+[hidden] {
+  display: none !important;
+}

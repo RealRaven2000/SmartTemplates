@@ -813,12 +813,13 @@
   "menu.template_import.label": {
     "message": "Tuo"
   },
-  "message.licenseScreen": {
-    "message": "Näytä lisenssiasetukset…"
-  },
   "message.features": {
     "message": "Vertaa ominaisuuksia…"
   },
+  "message.licenseScreen": {
+    "message": "Näytä lisenssiasetukset…"
+  },
+  "message.linkInTab": { "message": "(Linkki avattu välilehdessä)" },
   "messid.label": {
     "message": "Viestin tunnus (ID)"
   },

@@ -813,12 +813,13 @@
   "menu.template_import.label": {
     "message": "Importer un modèle"
   },
-  "message.licenseScreen": {
-    "message": "Afficher les options de licence…"
-  },
   "message.features": {
     "message": "Comparer les fonctionnalités…"
   },
+  "message.licenseScreen": {
+    "message": "Afficher les options de licence…"
+  },
+  "message.linkInTab": { "message": "(Lien ouvert dans un onglet)" },
   "messid.label": {
     "message": "ID du message"
   },

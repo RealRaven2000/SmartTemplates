@@ -811,12 +811,13 @@
   "menu.template_import.label": {
     "message": "Importuj szablon"
   },
-  "message.licenseScreen": {
-    "message": "Pokaż opcje licencji…"
-  },
   "message.features": {
     "message": "Porównaj funkcje…"
   },
+  "message.licenseScreen": {
+    "message": "Pokaż opcje licencji…"
+  },
+  "message.linkInTab": { "message": "(Link otwarty na karcie)" },
   "messid.label": {
     "message": "ID wiadomości"
   },

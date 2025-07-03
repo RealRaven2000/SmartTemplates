@@ -810,12 +810,13 @@
   "menu.template_import.label": {
     "message": "Importar plantilla"
   },
-  "message.licenseScreen": {
-    "message": "Mostrar opciones de licencia…"
-  },
   "message.features": {
     "message": "Comparar características…"
   },
+  "message.licenseScreen": {
+    "message": "Mostrar opciones de licencia…"
+  },
+  "message.linkInTab": { "message": "(Enlace abierto en una pestaña)" },
   "messid.label": {
     "message": "ID de mensaje"
   },

@@ -827,12 +827,13 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
-  "message.licenseScreen": {
-    "message": "Show License Options…"
-  },
   "message.features": {
     "message": "Compare Features…"
   },
+  "message.licenseScreen": {
+    "message": "Show License Options…"
+  },
+  "message.linkInTab": { "message": "(Link opened in tab)" },
   "messid.label": {
     "message": "Message ID"
   },

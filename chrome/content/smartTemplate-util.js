@@ -640,7 +640,6 @@ SmartTemplate4.Util = {
         },
         popup: null,
       });
-      // remind me later checkbox?
     }
 
     if (notifyBox) {

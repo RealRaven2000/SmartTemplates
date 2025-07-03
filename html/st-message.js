@@ -8,6 +8,12 @@
   END LICENSE BLOCK 
 */
 
+/*
+globals
+   insertLocalizedMessage,
+   i18n,
+*/
+
 function showButtons(buttonList) {
   const buttons = buttonList.map((s) => s.trim());
   ["ok", "yes", "no", "cancel"].forEach((id) => {
@@ -147,8 +153,17 @@ window.addEventListener("load", async () => {
     if (link) {
       event.preventDefault();
       browser.tabs.create({ url: link.href });
+      link.classList.add("link-visited"); // [issue 592]
+      // Find or create the status span next to the link
+      let status = link.nextElementSibling;
+      if (!status || !status.classList.contains("link-visited")) {
+        status = document.createElement("span");
+        status.className = "link-visited";
+        link.parentNode.insertBefore(status, link.nextSibling);
+      }
+      status.textContent = " " + messenger.i18n.getMessage("message.linkInTab");
     }
-  });  
+  });
 
 });
 
