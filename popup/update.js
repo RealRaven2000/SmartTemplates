@@ -7,6 +7,19 @@ For details, please refer to license.txt in the root folder of this extension
 END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
+/*
+  globals
+    ariaPoliteUpdate,
+    addAriaHint,
+    discountRate,
+    formatAll,
+    i18n,
+    openSupportForm,
+    updateActions,
+    updateWithSafeHtml,
+*/
+
+
 // whether these are shown depends on the "sales_end" variable in popup.js!
 //  import {discountRate, compatibleVer} from "./sales.js";
 
@@ -79,14 +92,13 @@ END LICENSE BLOCK */
     }
   });
 
-  addEventListener("load", async (event) => {
+  addEventListener("load", async (_event) => {
     const manifest = await messenger.runtime.getManifest(),
       browserInfo = await messenger.runtime.getBrowserInfo(),
       addonName = manifest.name,
       userName = await messenger.Utilities.getUserName(),
       addonVer = manifest.version,
-      appVer = browserInfo.version,
-      remindInDays = 10;
+      appVer = browserInfo.version;
     const salesEnd = messenger.i18n.getMessage("special-offer-expiry");
 
     // force replacement for __MSG_xx__ entities
@@ -111,9 +123,6 @@ END LICENSE BLOCK */
 
     const preference = document.getElementById("support-preference");
     ariaPoliteUpdate(preference, messenger.i18n.getMessage("support-preference", addonName));
-
-    const remind = document.getElementById("label-remind-me");
-    ariaPoliteUpdate(remind, messenger.i18n.getMessage("label-remind-me", remindInDays));
 
     const specialOffer = document.getElementById("specialOfferTxt");
     ariaPoliteUpdate(
@@ -226,10 +235,6 @@ END LICENSE BLOCK */
 
     //  you can close the window using ESC
     addAriaHint();
-  });  
-
-  addEventListener("unload", async (event) => {
-    let remindMe = document.getElementById("remind").checked;
   });  
 
 
