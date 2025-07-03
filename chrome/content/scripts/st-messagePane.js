@@ -1,9 +1,3 @@
-var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-
-var { MailServices } = SmartTemplates_ESM
-  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-  : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 /* obsolete
 let patchHeaderMenu; 

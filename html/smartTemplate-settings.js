@@ -738,7 +738,7 @@ SmartTemplates.Settings = {
   isDebug: true, ///// TEST
   logDebug: async function (...args) {
 	  // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
-		if (await this.isDebug()) {
+		if (this.isDebug) {
       this.logToConsole(...args);
     }
 	},
@@ -2108,11 +2108,7 @@ function array_move(arr, old_index, new_index) {
 	arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
 	return arr; // for testing purposes
 };
-	
 
-function getBundleString() {
-	SmartTemplates.Util.getBundleString(...arguments);
-}
 
 const getElement = window.document.getElementById.bind(window.document);
 
