@@ -9,6 +9,18 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK 
 */
 
+/*
+	globals
+		gCurrentIdentity,
+		SendMessage,
+*/
+
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+
+var { MailServices } = SmartTemplates_ESM
+  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+  : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 
 // -------------------------------------------------------------------
@@ -116,8 +128,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		SmartTemplate4.signature = null;
 		SmartTemplate4.sigInTemplate = false;
 
-		let pref = SmartTemplate4.pref,
-		    idKey = util.getIdentityKey(document), // util.mailDocument?
+		let idKey = util.getIdentityKey(document), // util.mailDocument?
 		    isSignatureTb = (!!htmlSigText) || Ident.attachSignature,
 		    sigNode = null,
 		    sigText;
@@ -139,16 +150,16 @@ SmartTemplate4.classSmartTemplate = function() {
 				}
 			}
 			// eliminate this if it is contained in BLOCKQUOTE
-			if (sigNode && sigNode.parentNode) {
-				if (sigNode.parentNode.nodeName) {
-					if (sigNode.parentNode.nodeName.toLowerCase() == 'blockquote')
-						isSigInBlockquote = true;
-				}
-			}
-			util.logDebugOptional('functions.extractSignature','signature node ' 
-				+ (sigNode ? 'was ' : 'not ')
-				+ 'found' 
-				+ (isSigInBlockquote ? ' in <blockquote>!' : '.'));
+			const parentNode = sigNode?.parentNode;
+			if (parentNode?.nodeName?.toLowerCase() === "blockquote") {
+        isSigInBlockquote = true;
+      }
+			util.logDebugOptional(
+        "functions.extractSignature",
+        `signature node ${sigNode ? "was" : "not"} found${
+          isSigInBlockquote ? " in <blockquote>!" : "."
+        }`
+      );
 		}
 
 		// read text from signature file...
@@ -172,10 +183,9 @@ SmartTemplate4.classSmartTemplate = function() {
             if (fileSig.toLowerCase().match("<br>|<br/>|<div.*>|<span.*>|<style.*>|<table.*>|<p.*>|<u>|<b>|<i>|<pre.*>|<img.*>")) {
               isSignatureHTML = true;
               sigType = 'HTML';
-            }
-            else
+            } else {
               sigType = 'probably not HTML';
-              
+						}
           }
         }
       }
@@ -205,10 +215,9 @@ SmartTemplate4.classSmartTemplate = function() {
         && (prefs.getMyBoolPref('signature.replaceLF.plaintext.br'))) {
       sigText = sigText.replace(/\r\n/g, '<br>');
       sigText = sigText.replace(/\n/g, '<br>');
-    }
-    else {
+    } else {
       // replace image(s) in signature with data src if necessary.
-      const Frex = new RegExp("file:\/\/\/[^\"\'\>]*", "g");
+      const Frex = new RegExp("file:///[^\"'>]*", "g");
       sigText = sigText.replace(Frex, 
         function(match) {
           util.logDebugOptional('composer', 'Replacing signature image as data url: ' + match);
@@ -259,7 +268,9 @@ SmartTemplate4.classSmartTemplate = function() {
 			for (let i = 0; i < nodes.length; i++) {
 				if (nodes[i].className && nodes[i].className == "moz-signature" ) {
 					let pBr = nodes[i].previousElementSibling;
-					let old_sig = bodyEl.removeChild(nodes[i]); // old_sig is just to check, not used
+					// old_sig is just to check, not used
+					// eslint-disable-next-line no-unused-vars
+					let old_sig = bodyEl.removeChild(nodes[i]); 
 					removed = true;
 					// old code - remove the preceding BR that TB always inserts
 					if (pBr && pBr.tagName == "BR") {
@@ -285,7 +296,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
 		// okay now for the coup de grace!!
 		if (prefs.getMyBoolPref('parseSignature') && sigText) {
-      if (!flags.filePaths) flags.filePaths=[]; // make sure we have a stack for paths!
+      if (!flags.filePaths) {flags.filePaths=[];} // make sure we have a stack for paths!
       let pathArray = flags.filePaths;
       // if this has a path - put it on the stack so we can process %file()% variables within
       if (isSignatureTb && sigPath) { // [issue 240]
@@ -359,14 +370,14 @@ SmartTemplate4.classSmartTemplate = function() {
 		let isCitation = false,
 		    match=false,
 		    cName = '';
-		if (!node) return;
-		if (!node.nodeName) return "unknown";
+		if (!node) {return;}
+		if (!node.nodeName) {return "unknown";}
 		const theNodeName = node.nodeName.toLowerCase();
 
 		let content = '';
-		if (node.innerHTML) content += '\ninnerHTML: ' + node.innerHTML;
-		if (node.nodeValue) content += '\nnodeValue: ' + node.nodeValue;
-		if (!content) content = '\nEMPTY';
+		if (node.innerHTML) {content += '\ninnerHTML: ' + node.innerHTML;}
+		if (node.nodeValue) {content += '\nnodeValue: ' + node.nodeValue;}
+		if (!content) {content = '\nEMPTY';}
 		switch(theNodeName) {
 			case 'p':
 			case 'br': // fall through
@@ -380,7 +391,8 @@ SmartTemplate4.classSmartTemplate = function() {
 				break;
 			case 'div':
 				if (node.classList.contains("moz-cite-prefix")) {
-					if (prefs.isDebugOption('composer')) debugger;
+					// eslint-disable-next-line no-debugger
+					if (prefs.isDebugOption('composer')) {debugger;}
 					cName = node.className;
 					match = true;
 					isCitation = true;
@@ -416,12 +428,14 @@ SmartTemplate4.classSmartTemplate = function() {
 			match = false;
 			switch (node.nodeType) {
 				case Node.TEXT_NODE:
-					if (node.nodeValue == '\n' || node.nodeValue == '\r')
-						match=true;
+					if (node.nodeValue == "\n" || node.nodeValue == "\r") {
+            match = true;
+          }
 					break;
 				case Node.ELEMENT_NODE:
-					if (node.nodeName && node.nodeName.toLowerCase() == 'br')
-						match = true;
+					if (node.nodeName?.toLowerCase() === "br") {
+            match = true;
+          }
 					break;
 				default:
 					match = false;
@@ -446,15 +460,17 @@ SmartTemplate4.classSmartTemplate = function() {
 	};
 
 	function isQuotedNode(node) {
-		if (!node)
-			return false;
+		if (!node) {
+      return false;
+    }
 
 // Note:  moz-cite-prefix might be the container for the headers (shown _before_ the quote)
 // 		    node.className &&
 // 		    node.className.indexOf('moz-cite-prefix')>=0
-    if (node.nodeName && node.nodeName.toLowerCase() == 'blockquote')
+    if (node.nodeName && node.nodeName.toLowerCase() == 'blockquote') {
 			return true;
-		if (!node.parentNode) return false;
+		}
+		if (!node.parentNode) {return false;}
 		// make this recursive; if the node is child of a quoted parent, it is also considered to be quoted.
 		return isQuotedNode(node.parentNode); 
 	};
@@ -468,7 +484,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	//We need to remove a few lines depending on reply_ono_top and reply_header_xxxx.
 	// [Bug 26523] added an additional option to only delete the space before the original quote header
 	function delReplyHeader(idKey, onlyHeader, onlySpace) {
-		function countLF(str) { return str.split("\n").length - 1; }
+		// function countLines(str) { return str.split("\n").length - 1; }
 
 		util.logDebugOptional('functions','SmartTemplate4.delReplyHeader()');
 		let rootEl = SmartTemplate4.composer.body,
@@ -477,7 +493,8 @@ SmartTemplate4.classSmartTemplate = function() {
 		if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) {
 			lines = 2;
 		}
-		if (prefs.getMyBoolPref('debug.functions.delReplyHeader')) debugger;
+		// eslint-disable-next-line no-debugger
+		if (prefs.getMyBoolPref('debug.functions.delReplyHeader')) {debugger;}
 
 		let node = rootEl.firstChild,
 		    elType = '',
@@ -489,8 +506,11 @@ SmartTemplate4.classSmartTemplate = function() {
 			let n = node.nextSibling;
 			// skip the forwarded part
 			// (this is either a blockquote or the previous element was a moz-cite-prefix)
-			if (skipInPlainText && elType == 'cite-prefix')
-				break;  // all following parts are in plain text, so we don't know whether they are all part of the quoted email
+			if (skipInPlainText && elType == 'cite-prefix') {
+				// all following parts are in plain text, so we don't know 
+				// whether they are all part of the quoted email
+				break; 
+			}
 			
 			if (isQuotedNode(node) || elType == 'cite-prefix' || elType == 'moz-cite-prefix') {
 				// skip element after quote header
@@ -509,8 +529,9 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 			
 			elType = deleteNodeTextOrBR(node, idKey, skipInPlainText && preserve); // 'cite-prefix'
-			if (elType == 'cite-prefix')
-				foundReplyHeader = true;
+			if (elType == "cite-prefix") {
+        foundReplyHeader = true;
+      }
 			node = n;
 		}
 
@@ -527,8 +548,9 @@ SmartTemplate4.classSmartTemplate = function() {
 				node = findChildNode(rootEl, 'moz-cite-prefix');
 				if (node) {
 					// only delete prefix if it is NOT within a blockquote
-					if (!isQuotedNode(node))
-						deleteNodeTextOrBR(node, idKey, skipInPlainText && preserve);
+					if (!isQuotedNode(node)) {
+            deleteNodeTextOrBR(node, idKey, skipInPlainText && preserve);
+          }
 				}
 			}
 				
@@ -551,8 +573,9 @@ SmartTemplate4.classSmartTemplate = function() {
 	}
 
 	function testSmartTemplateToken(template, token) {
-		if(!template)
-			return false;
+		if (!template) {
+      return false;
+    }
 		let match = template.toLowerCase().match('%' + token.toLowerCase() + '%'); 
 		return (!match ? false : true);
 	};
@@ -566,8 +589,9 @@ SmartTemplate4.classSmartTemplate = function() {
 		let reg = /%(sig)(\([^)]+\))*%/gm,
 		    match = template.toLowerCase().match(reg);
     util.logDebugOptional('functions','testSignatureVar() match = ' + match);
-		if (!match)
-			return '';
+		if (!match) {
+      return "";
+    }
 		switch (match[0]) {
 		  case "%sig%":
 				return 'auto';
@@ -621,9 +645,8 @@ SmartTemplate4.classSmartTemplate = function() {
 		    bndl = Services.strings.createBundle("chrome://messenger/locale/mime.properties");
     try {           
       origMsgDelimiter = bndl.GetStringFromID(1041);
-    }
-    catch(ex) {
-    }
+    } catch { ; }
+
 		// [Bug 25089] default forward quote can't be completely hidden
     try {
       // from Tb 31.0 we have a dedicated string for _forwarded_ messages!
@@ -684,8 +707,9 @@ SmartTemplate4.classSmartTemplate = function() {
 						}
 						util.logDebugOptional('functions.delForwardHeader','deleting node: ' + inner.nodeValue);
 						gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
-						if (inner.nodeValue == origMsgDelimiter)
+						if (inner.nodeValue == origMsgDelimiter) {
 							break;
+						}
 					}
 					inner = m;
 				}
@@ -693,8 +717,9 @@ SmartTemplate4.classSmartTemplate = function() {
 				continue;
 			}
 			
-      if (!onlyHeader)
-				deleteNodeTextOrBR(node, idKey);
+      if (!onlyHeader) {
+        deleteNodeTextOrBR(node, idKey);
+      }
 			node = n;
 		}
 
@@ -773,7 +798,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	// -----------------------------------
 	// Get processed template
 	async function getProcessedText(templateText, idKey, composeType, ignoreHTML) 	{
-		if (!templateText) return "";
+		if (!templateText) {return "";}
     const flags = SmartTemplate4.PreprocessingFlags;
 
 		util.logDebugOptional('functions.getProcessedText', 'START =============  getProcessedText()   ==========');
@@ -801,7 +826,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		// This won't work if there is no "file:\\\" portion given (relative path / current folder not supported)
 		// we can fix the Data urls for file:/// images now
 		// assume the URL is terminated by a single quote, double quote or &gt;
-    const Frex = new RegExp("file:\/\/\/[^\"\'\>]*", "g");
+    const Frex = new RegExp("file:///[^\"'>]*", "g");
 		regular = regular.replace(Frex,   // /file:\/\/\/[^\"\'\>]*/g
 		  function(match) {
 				util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
@@ -810,7 +835,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		);
     
     // find & fix relative <img> paths:
-    const Irex = new RegExp(/(<img[^>]+src=[\"'])([^"'>]+)([\"'][^>]*>)/, "g"); // make 3 groups, g2=path
+    const Irex = new RegExp(/(<img[^>]+src=["'])([^"'>]+)(["'][^>]*>)/, "g"); // make 3 groups, g2=path
     let currentPath = flags.filePaths ? 
                        (flags.filePaths.length ? flags.filePaths[flags.filePaths.length-1] : "") : 
                        ""; // top of stack
@@ -837,9 +862,9 @@ SmartTemplate4.classSmartTemplate = function() {
                 let dataUrl = util.getFileAsDataURI(filePath);
                 if (dataUrl) {
                   return g1 + dataUrl + g3;
-                }
-                else
+                } else {
                   util.logDebug("Could not resolve image path! Returning unchanged img tag.");
+                }
               }
               catch(ex) {
                 util.logException(ex, "Failed to read image file " + filePath);
@@ -881,8 +906,9 @@ SmartTemplate4.classSmartTemplate = function() {
 	function findDirectChildById(parent, id) {
 		let node = parent.firstChild;
 		while (node) {
-			if (node && node.id == id)
-				return node;
+			if (node && node.id == id) {
+        return node;
+      }
 			node = node.nextSibling;
 		}
 		return null;
@@ -891,8 +917,9 @@ SmartTemplate4.classSmartTemplate = function() {
 	function findDirectChildByClass(parent, className) {
 		let node = parent.firstChild;
 		while (node) {
-			if (node && node.className == className)
-				return node;
+			if (node && node.className == className) {
+        return node;
+      }
 			node = node.nextSibling;
 		}
 		return null;
@@ -935,7 +962,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
 			// do not process -----------------------------------
 			// (Draft:9/ReplyWithTemplate:12)
-			case msgComposeType.Draft:
+			case msgComposeType.Draft: {
 				this.composeCase = 'draft';
 				let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 						msgDbHdr = gMsgCompose.originalMsgURI ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr) : null;
@@ -944,14 +971,17 @@ SmartTemplate4.classSmartTemplate = function() {
 					if (msgDbHdr.threadParent && (msgDbHdr.threadParent != nsMsgKey_None)) {
 						st4composeType = 'rsp'; // just guessing, of course it could be fwd as well
 					}
-					if (msgDbHdr.numReferences == 0)
+					if (msgDbHdr.numReferences == 0) {
 						st4composeType = 'new';
+					}
 				}
-				break;
+			} break;
 			case msgComposeType.EditAsNew: 
 				this.composeCase = 'editAsNew';
+				break;
 			case msgComposeType.EditTemplate: 
 				this.composeCase = 'editTemplate';
+				break;
 			default:
 				this.composeCase = "";
 				break;
@@ -971,8 +1001,9 @@ SmartTemplate4.classSmartTemplate = function() {
     
     function cleanPlainTextNewLines(myHtml) {
       let lc = myHtml.toLocaleLowerCase();
-      if (lc.includes("<br") || lc.includes("<p"))
+      if (lc.includes("<br") || lc.includes("<p")) {
         return myHtml.replace(/(\r\n)+|\r+|\n+|^[ \t]+/gm,""); 
+			}
       return myHtml;
     }
     
@@ -987,7 +1018,7 @@ SmartTemplate4.classSmartTemplate = function() {
       flags.isBodyUnmodified = true; // [issue 352]
     }
 
-    if (SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning) return;
+    if (SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning) {return;}
     SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; // [issue 139] avoid duplicates
 
 		util.logDebugOptional('functions,functions.insertTemplate',
@@ -1046,7 +1077,8 @@ SmartTemplate4.classSmartTemplate = function() {
 		    composeCase = 'undefined',
 		    st4composeType = '',
 		    rawTemplate = '';
-	  if (isDebugComposer) debugger;
+	  // eslint-disable-next-line no-debugger
+	  if (isDebugComposer) {debugger;}
 		// start parser...
 		try {
 			switch (gMsgCompose.type) {
@@ -1086,7 +1118,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
 				// do not process -----------------------------------
 				// (Draft:9/ReplyWithTemplate:12)
-				case msgComposeType.Draft:
+				case msgComposeType.Draft: {
 					composeCase = 'draft';
 					let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 					    msgDbHdr = gMsgCompose.originalMsgURI ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr) : null;
@@ -1095,10 +1127,11 @@ SmartTemplate4.classSmartTemplate = function() {
 						if (msgDbHdr.threadParent && (msgDbHdr.threadParent != nsMsgKey_None)) {
 							st4composeType = 'rsp'; // just guessing, of course it could be fwd as well
 						}
-						if (msgDbHdr.numReferences == 0)
-							st4composeType = 'new';
+						if (msgDbHdr.numReferences == 0) {
+              st4composeType = "new";
+            }
 					}
-					break;
+				}	break;
 				case msgComposeType.EditAsNew: // Tb 60+
 				  // no processing should be done
 					util.logDebug("Edit As New - exit insertTemplate() without processing");
@@ -1127,7 +1160,8 @@ SmartTemplate4.classSmartTemplate = function() {
  
 			if (isActiveOnAccount) {
 				// Message File loaded:
-				if (prefs.isDebugOption('functions.insertTemplate')) debugger;
+				// eslint-disable-next-line no-debugger
+				if (prefs.isDebugOption('functions.insertTemplate')) {debugger;}
 				
 				if (flags.isFileTemplate && fileTemplateSource && !fileTemplateSource.failed) {
 				  rawTemplate = fileTemplateSource.HTML || fileTemplateSource.Text;
@@ -1144,8 +1178,7 @@ SmartTemplate4.classSmartTemplate = function() {
         try {
           // get signature and remove the one Tb has inserted
           SmartTemplate4.signature = await extractSignature(theIdentity, sigType, st4composeType);
-        }
-        catch(ex) {
+        } catch(ex) {
           SmartTemplate4.signature = "";
           util.logException("Could not extract signature - is your signature path correct?", ex);
         }
@@ -1156,8 +1189,7 @@ SmartTemplate4.classSmartTemplate = function() {
 					template = await getProcessedText(editor.rootElement.innerHTML, idKey, st4composeType, true); // ignoreHTML = true ?
 					// need to empty out the innerHTML if we insert this to avoid duplication.
 					editor.rootElement.innerHTML="";
-				}
-				else {
+				} else {
 					// main processing - note: this calls getProcessedText()
 					// for thunderbird template case, we should get the body contents AND PROCESS THEM?
 					if (flags.isFileTemplate) {
@@ -1168,8 +1200,7 @@ SmartTemplate4.classSmartTemplate = function() {
             }
             // [issue 19] switch on ignoreHTML to avoid unneccessarily replacing line breaks with <br>
 						template = await getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
-					}
-				  else {
+					} else {
 						util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
 						template = await getSmartTemplate(st4composeType, idKey);
 					}
@@ -1206,9 +1237,9 @@ SmartTemplate4.classSmartTemplate = function() {
 							if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
 								// when in stationery we only delete the quote header and not all preceding quotes!
 								delReplyHeader(idKey, false);
-							}
-							else
+							} else {
 								delReplyHeader(idKey, false, true); // remove just spaces [Bug 26523]
+							}
 						}
 						break;
 					case 'forward':
@@ -1242,7 +1273,7 @@ SmartTemplate4.classSmartTemplate = function() {
 						editor.rootElement.firstChild :
 						editor.rootElement.getElementsByTagName('BLOCKQUOTE')[0];
 					// [Bug 26261] Quote header not inserted in plain text mode
-					if (!firstQuote) firstQuote = editor.rootElement.firstChild;
+					if (!firstQuote) {firstQuote = editor.rootElement.firstChild;}
 					if (firstQuote) {
 						let quoteHd = firstQuote.parentNode.insertBefore(qdiv(), firstQuote),
 								prev = quoteHd.previousSibling;
@@ -1250,9 +1281,9 @@ SmartTemplate4.classSmartTemplate = function() {
 						if (prev && prev.className && prev.className.indexOf('moz-cite-prefix')>=0) {
 							prev.parentNode.removeChild(prev); 
 						}
-					}
-				} else { // delete all <br> before quote!
-					
+					} 
+				} else { 
+					// delete all <br> before quote!
 				}
 			} else {
 				util.logDebugOptional('functions.insertTemplate','insertTemplate - processing is not active for id ' + idKey);
@@ -1395,6 +1426,7 @@ SmartTemplate4.classSmartTemplate = function() {
 					templateDiv.style.border = "1px solid #FFE070";
 				} */
         util.logDebugOptional('composer','Setting template Div innerHTML…\n' + template);
+				// This encodes "&" in href attributes to &amp;   !
         templateDiv.innerHTML = template || "";
 				if (theIdentity.replyOnTop) {
 					// this is where we lose the default "paragraph" style
@@ -1421,10 +1453,14 @@ SmartTemplate4.classSmartTemplate = function() {
         // clean old quotes
         if (quoteNode) {
           function quoteLevel(element, level) {
-            if (!element || !element.parentNode) return level;
+            if (!element || !element.parentNode) {
+              return level;
+            }
             let p = element.parentNode;
-            if (p.tagName && p.tagName.toLowerCase() == "blockquote")
-              return quoteLevel(p, level + 1); // increase level and check grandparent
+            if (p.tagName && p.tagName.toLowerCase() == "blockquote") {
+              // increase level and check grandparent
+              return quoteLevel(p, level + 1);
+            } 
             return quoteLevel(p, level);
           }
 
@@ -1613,8 +1649,9 @@ SmartTemplate4.classSmartTemplate = function() {
 							// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
 							if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
 								// only need this in reply case (might not need it at all with breaksAtTop
-								if (composeCase == 'reply' && breaksAtTop == 0)
-									bodyEl.appendChild(doc.createElement("br"));
+								if (composeCase == "reply" && breaksAtTop == 0) {
+                  bodyEl.appendChild(doc.createElement("br"));
+                }
 								bodyEl.appendChild(theSignature);
 							}
 							else {
@@ -1650,7 +1687,8 @@ SmartTemplate4.classSmartTemplate = function() {
 					 (theSignature.innerHTML == '' || theSignature.innerHTML ==  SmartTemplate4.signatureDelimiter )) { // in %sig(2)% case, the delimiter is built in.
 					let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
 					if (sigNode) {
-						if (isDebugComposer) debugger;
+						// eslint-disable-next-line no-debugger
+						if (isDebugComposer) {debugger;}
             util.logDebugOptional ('signatures','found signature node, removing…');
 						sigNode.parentNode.removeChild(sigNode);
 					}
@@ -1665,8 +1703,13 @@ SmartTemplate4.classSmartTemplate = function() {
 			// issue notifications for any premium features used.
 			if (util.premiumFeatures.length) {
         // let's reset the local license
-        if (!util.hasLicense() || util.licenseInfo.keyType==2 || prefs.isDebugOption('premium.testNotification'))
+        if (
+          !util.hasLicense() ||
+          util.licenseInfo.keyType == 2 ||
+          prefs.isDebugOption("premium.testNotification")
+        ) {
           util.popupLicenseNotification(util.premiumFeatures, true, true);
+        }
 			}  
 			// reset the list of used premium functions for next turn
 			util.clearUsedPremiumFunctions();  // will affect main instance
@@ -1719,7 +1762,8 @@ SmartTemplate4.classSmartTemplate = function() {
 					// collapse selection and move cursor - problem: stationery sets cursor to the top!
 					if (isCursor) {
 						// look for a child div with lass = 'st4cursor'
-						if (isDebugComposer) debugger;
+						// eslint-disable-next-line no-debugger
+						if (isDebugComposer) {debugger;}
 						if (caretContainer && caretContainer.outerHTML) {
 							try {
                 let scrollFlags = selCtrl.SCROLL_FOR_CARET_MOVE | selCtrl.SCROLL_OVERFLOW_HIDDEN,
@@ -1750,16 +1794,25 @@ SmartTemplate4.classSmartTemplate = function() {
                     } else {
                       previousBlock =
                         parentSrchHTML.indexOf(">", previousBlock) + 1 || caretStartPos; // find end of closing tag
-                      if (previousBlock < 0) previousBlock = 0;
+                      if (previousBlock < 0) {
+                        previousBlock = 0;
+                      }
                     }
 
                     if (nextBlock < 0) {
                       // find next block level element or line break
                       nextBlock = parentSrchHTML.indexOf("<br", caretEndPos);
-                      if (nextBlock < 0) nextBlock = parentSrchHTML.indexOf("<div", caretEndPos);
-                      if (nextBlock < 0) nextBlock = cursorParent.innerHTML.length - 1;
+                      if (nextBlock < 0) {
+                        nextBlock = parentSrchHTML.indexOf("<div", caretEndPos);
+                      }
+                      if (nextBlock < 0) {
+                        nextBlock = cursorParent.innerHTML.length - 1;
+                      }
                     }
-                    if (nextBlock < caretEndPos) nextBlock = caretEndPos; // if no suitable element follows, we are cutting the paragraph short here
+                    if (nextBlock < caretEndPos) {
+                      // if no suitable element follows, we are cutting the paragraph short here
+                      nextBlock = caretEndPos;
+                    } 
 
                     // If Thunderbird has inserted the empty <p><br><p> here let's cut that out:
                     let startNextBlock =
@@ -1767,7 +1820,10 @@ SmartTemplate4.classSmartTemplate = function() {
                         ? nextBlock + 11
                         : nextBlock;
 
-                    if (isDebugComposer) debugger;
+                    if (isDebugComposer) {
+                      // eslint-disable-next-line no-debugger
+                      debugger;
+                    }
                     let leftHTML = cursorParent.innerHTML.substring(0, previousBlock),
                       rightHTML = cursorParent.innerHTML.substring(startNextBlock),
                       midHTML = cursorParent.innerHTML.substring(previousBlock, nextBlock);
@@ -1824,10 +1880,11 @@ SmartTemplate4.classSmartTemplate = function() {
 						}
 					}  else { // no cursor
 						if (isReplyOnTop) {
-							if (editor.selection.collapseToStart)
-								editor.selection.collapseToStart();
-							else
-								editor.selection.collapse(theParent, nodeOffset+1); 
+							if (editor.selection.collapseToStart) {
+                editor.selection.collapseToStart();
+              } else {
+                editor.selection.collapse(theParent, nodeOffset + 1);
+              } 
 						} else {
 						  // if we reply below we must be above the signature.
 							if (editor.selection.collapseToEnd) {
@@ -1964,7 +2021,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				switch (startContainer.nodeType) {
 					case 1: // ELEMENT_NODE
 						for (let i = 0; i < startContainer.childNodes.length; i++) {
-							if (i < startOffset || i > endOffset) continue;
+							if (i < startOffset || i > endOffset) {continue;}
 							const node = startContainer.childNodes[i];
 							if (node.nodeType === 1) {
 								// Handle element nodes (including <img> tags)
@@ -2004,25 +2061,26 @@ SmartTemplate4.classSmartTemplate = function() {
 						if (node.nodeType === Node.TEXT_NODE) {
 							if (!processedNodes.includes(node.parentNode)) {
 								const partialText = node.textContent.substring(0, endOffset);
-								if (isDebug) console.log("Partial text added:", partialText);
+								if (isDebug) {console.log("Partial text added:", partialText);}
 								html += partialText; // Add the remaining part of the text node
 							} else {
-								if (isDebug)
+								if (isDebug) {
                   console.log(
                     "Skipping text node inside already processed parent:",
                     node.parentNode
                   );
+                }
 							}
 						} else if (node.nodeType === Node.ELEMENT_NODE) {
 							if (node.tagName === "BR") {
-								if (isDebug) console.log("Skipping extra <br> node at endContainer.");
+								if (isDebug) {console.log("Skipping extra <br> node at endContainer.");}
 							} else {
-								if (isDebug) console.log("Element node content (outerHTML):", node.outerHTML);
+								if (isDebug) {console.log("Element node content (outerHTML):", node.outerHTML);}
 								html += node.outerHTML; // Add the last element node
 								processedNodes.push(node); // Mark this element as processed
 							}
 						}
-						if (isDebug) console.log("HTML after endContainer:", html);
+						if (isDebug) {console.log("HTML after endContainer:", html);}
 						break; // Exit the loop after processing the endContainer
 					}
 
