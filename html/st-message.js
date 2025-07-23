@@ -11,7 +11,6 @@
 /*
 globals
    insertLocalizedMessage,
-   i18n,
 */
 
 function showButtons(buttonList) {

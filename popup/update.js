@@ -13,7 +13,6 @@ END LICENSE BLOCK */
     addAriaHint,
     discountRate,
     formatAll,
-    i18n,
     openSupportForm,
     updateActions,
     updateWithSafeHtml,
