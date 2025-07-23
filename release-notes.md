@@ -1,21 +1,15 @@
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.12.2) 
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.13) 
 
-**4.12.2 Maintenance Changes**
+**Improvements**
 
-*    Fixed a problem with ESR message for Pro users and improved the instructions about new Thunderbird release train. 
-*    Added a link the to Add-on compatibility checker
-*   Rremoved changes to ical library from 4.12.1
+*    Made compatible with Thunderbird 141. 
+*    Indicate when a web page was opened in a tab in the background (by adding a label to the link) 
+*     Support for Unix style time strings to %dateformat% variable:  [issue #381]
+    `%dateformat.received(unix)%` - – Inserts the received time as a Unix timestamp (seconds since epoch = January 1, 1970).
+    `%dateformat.current(timestamp)%` - – Inserts the current time in milliseconds since the epoch.
+*   Added optional `nodefer` parameter to `%dateformat.current()%`.  [issue #382]
 
+    Normally, dynamic fields like `%subject%`, `%recipient(name)%`, or `%date.current%` are inserted as interactive placeholders (so they can update when you click or when sending the email).  
 
-
-**Official Thunderbird 140 ESR compatibility**
-
-*    SmartTemplates is now fully compatible with Thunderbird 140 in preparation for the upcoming annual Thunderbird ESR, expected within the next month (June / July 2025). Users who opt into Thunderbird’s monthly update channel can rest assured: SmartTemplates will continue to deliver compatible, stable releases every month. Thankfully this work is covered by license sales.
-*   Modernized internal dialogs: replaced legacy XHTML-based windows with native Thunderbird popups for improved appearance and compatibility. This is part of the ongoing effort of removing legacy (experimental) technology from the Add-on. [issue #378]
-
-
-
-**Bug Fixes**
-
-*   Fixed: Renewal of any License opens wrong product (New License) [issue #375]
+    These are useful when the data isn't available yet, like when composing a new message. The `nodefer` parameter disables this behavior and immediately inserts the actual value as plain text. 
 

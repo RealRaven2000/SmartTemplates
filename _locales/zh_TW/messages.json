@@ -923,7 +923,7 @@
     "message": "{P1}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要提示：{boldEnd} Thunderbird 正在過渡到每月發布模式。SmartTemplates 完全支援每月版本渠道與 ESR 版本，讓您無論選擇哪條路線，都能保持高效率。{P2}{P1} 此次更新亦修正了「續期授權」按鈕會導向全價產品頁面，未提供折扣續期的問題。若您受到影響——尤其是誤購了 SmartTemplates 標準授權而非續期 Pro——請 {support licensing}聯絡支援{supportEnd}；我們很樂意為您提供免費的 Pro 版升級。提前感謝您提供最後的授權密鑰或訂單號！[issue 375]{P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 已新增每月發行週期。 {P2}{P1} 第一個新的 141 月度更新於 2025 年 7 月 23 日發布，目前尚無 142 測試版。 我正在持續測試最新的測試版以確保相容性，如果發生破壞 SmartTemplates 核心功能的變更，可能會導致額外的維護版本。{P2}{P1} 這可能會導致關於 SmartTemplates 的混淆或相容性通知，但請放心，SmartTemplates 完全支援每月及 ESR（140.*）通道。{P2}{P1} 無論您選擇哪條路徑，都可以繼續不間斷地工作。 {P2}"
   },
   "newsSection.license": {
     "message": "由於SmartTemplates的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"

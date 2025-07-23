@@ -926,7 +926,7 @@
     "message": "{P1}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要提示：{boldEnd} Thunderbird 正在过渡到每月发布模式。SmartTemplates 完全支持每月版本渠道和 ESR 版本，让您无论选择哪条路线都能保持高效。{P2}{P1} 本次更新还修复了“续费许可证”按钮跳转到全价产品页面，而非提供折扣续费的问题。如果您受到影响——尤其是误购了 SmartTemplates 标准版许可证而非续费 Pro 版——请 {support licensing}联系支持团队{supportEnd}；我们很乐意为您提供免费的 Pro 版升级。提前感谢您提供最后一次的许可证密钥或订单号！[issue 375]{P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 已添加每月发布周期。 {P2}{P1} 第一个新的 141 月度更新于 2025 年 7 月 23 日发布，目前尚无 142 测试版。 我正在不断测试最新的测试版以确保兼容性，如果发生破坏 SmartTemplates 核心功能的更改，可能会导致额外的维护版本。{P2}{P1} 这可能会导致有关 SmartTemplates 的混淆或兼容性通知，但请放心，SmartTemplates 完全支持每月和 ESR（140.*）渠道。{P2}{P1} 无论您选择哪条路径，都可以继续无中断工作。 {P2}"
   },
   "newsSection.license": {
     "message": "由于SmartTemplates的所有工作和免费支持完全通过许可证销售资助，请考虑购买许可证或续订当前许可证。"
@@ -2021,7 +2021,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{headStart}未来的 Thunderbird 兼容性和 ESR 路线图{headEnd}{L1} SmartTemplates 现已完全兼容 Thunderbird 140，为即将在下个月（2025 年 6 月 / 7 月）发布的年度 Thunderbird ESR 做准备。选择 Thunderbird 每月更新通道的用户可以放心：SmartTemplates 将继续每月发布兼容且稳定的版本。{L2}{L1} 现代化内部对话框：用 Thunderbird 原生弹出窗口替换了基于 XHTML 的传统窗口，以改善外观和兼容性。这是持续移除插件中旧（实验性）技术的一部分。[issue 378]{L2}{L1} 许可证管理修复：点击任何许可证的“延长许可证”按钮现在会正确打开对应的产品页面，而不是错误地打开新许可证页面。[issue 377]{L2}"
+    "message": "{L1}SmartTemplates現已完全相容Thunderbird 141。{L2}{L1}您現在可以在變數{{%dateformat%}}中使用Unix時間戳。 [issue 381]{L2}{L1}使用{{%dateformat.received(unix)%}}插入接收時間，格式為Unix時間戳（自{italicStart}epoch{italicEnd}即1970年1月1日起的秒數）。{L2}{L1}使用{{%dateformat.current(timestamp)%}}插入當前時間，以毫秒為單位，自{italicStart}epoch{italicEnd}起算。{L2}{L1}新增可選參數{{nodefer}}至{{%dateformat.current()%}}，以避免互動欄位。 [issue 382]"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

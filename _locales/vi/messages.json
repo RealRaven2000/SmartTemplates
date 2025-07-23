@@ -102,6 +102,18 @@
     "message": "Hiển thị Tùy chọn Giấy phép…"
   },
   "message.linkInTab": { "message": "(Liên kết đã mở trong Tab)" },
+  "newsHead": {
+    "message": "Tin Mới Nhất"
+  },
+  "newsSection.intro": {
+    "message": "{P1}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Quan trọng:{boldEnd} Thunderbird đã thêm chu kỳ phát hành hàng tháng. {P2}{P1} Bản cập nhật hàng tháng 141 mới đầu tiên đã được phát hành vào ngày 23 tháng 7 năm 2025, và chưa có phiên bản beta 142 nào có sẵn. Tôi liên tục thử nghiệm với bản beta mới nhất để đảm bảo tương thích, điều này có thể dẫn đến các bản phát hành bảo trì bổ sung nếu có những thay đổi làm gián đoạn chức năng cốt lõi của SmartTemplates.{P2}{P1} Điều này có thể gây ra sự nhầm lẫn hoặc các thông báo tương thích về SmartTemplates, nhưng hãy yên tâm rằng SmartTemplates hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*).{P2}{P1} Bạn có thể tiếp tục làm việc mà không bị gián đoạn, bất kể bạn chọn con đường nào. {P2}"
+  },
+  "newsSection.license": {
+    "message": "Do tất cả công việc trên SmartTemplates và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ doanh số bán giấy phép, vui lòng cân nhắc mua một giấy phép hoặc gia hạn giấy phép hiện tại của bạn."
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
   },
@@ -285,7 +297,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{headStart}Майбутня сумісність Thunderbird та план ESR{headEnd}{L1} SmartTemplates тепер повністю сумісний із Thunderbird 140 у рамках підготовки до наступного щорічного випуску Thunderbird ESR, який очікується протягом наступного місяця (червень / липень 2025). Користувачі, які обрали щомісячний канал оновлень Thunderbird, можуть бути впевнені: SmartTemplates й надалі буде випускати сумісні та стабільні версії щомісяця.{L2}{L1} Модернізовані внутрішні діалоги: застарілі вікна на основі XHTML замінено на рідні спливаючі вікна Thunderbird для покращеного вигляду та сумісності. Це частина постійних зусиль із видалення застарілих (експериментальних) технологій із доповнення [issue 378]{L2}{L1} Виправлення керування ліцензіями: тепер при натисканні «Подовжити ліцензію» для будь-якої ліцензії відкривається відповідна сторінка продукту, а не екран нової ліцензії. [issue 377]{L2}"
+    "message": "{L1}SmartTemplates hiện đã tương thích hoàn toàn với Thunderbird 141.{L2}{L1}Bạn có thể sử dụng dấu thời gian Unix với biến {{%dateformat%}}. [issue 381]{L2}{L1}Sử dụng {{%dateformat.received(unix)%}} để chèn thời gian nhận dưới dạng dấu thời gian Unix (giây kể từ {italicStart}epoch{italicEnd} = ngày 1 tháng 1 năm 1970).{L2}{L1}Sử dụng {{%dateformat.current(timestamp)%}} để chèn thời gian hiện tại bằng mili giây kể từ {italicStart}epoch{italicEnd}.{L2}{L1}Đã thêm tham số tùy chọn {{nodefer}} vào {{%dateformat.current()%}} để tránh các trường tương tác. [issue 382]"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

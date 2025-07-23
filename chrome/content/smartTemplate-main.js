@@ -266,6 +266,12 @@ END LICENSE BLOCK
     # [issue 378] Convert SmartTemplate4.Message() into a html window
     # [issue 377] Extending of any License opens wrong product (New License)
 
+  Version 4.13 - WIP
+    # Made compatible with Thunderbird 141.
+    # Indicate when a web page was opened in a tab in the background (by adding a label to the link)
+    # [issue 381] Support for Unix style time strings
+    # [issue 382] Option to avoid deferred variables - during %dateformat.current()%
+                  %dateformat.current(timestamp,nodefer)%
     
 
 =========================

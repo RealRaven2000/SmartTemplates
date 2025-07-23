@@ -943,7 +943,7 @@
     "message": "{P1}We continue to follow Thunderbird’s monthly release cycle to ensure compatibility and stability. As always, this work is entirely financed by license sales.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird is transitioning to a monthly release model. SmartTemplates fully supports both the monthly channel and the ESR track, so you can stay productive—whichever path you choose.{P2}{P1} This update also fixes a bug where the 'Renew License' button led to the full-price product page instead of offering the discounted renewal. If you were affected — especially if you accidentally purchased a SmartTemplates Standard license instead of renewing Pro — please {support licensing}contact support{supportEnd}; we are happy to supply a free upgrade to Pro. Thanks in advance for including your last license key or order number! [issue 375]{P2}"
+    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird has added a monthly release cycle. {P2}{P1} The first new 141 monthly update was released on July 23, 2025, and no 142 beta is available yet. I’m constantly testing with the latest beta to ensure compatibility, which may result in additional maintenance releases, should there occur changes that break SmartTemplates core functionality.{P2}{P1} This might cause some confusion or compatibility notifications about SmartTemplates, but rest assured, SmartTemplates fully supports both the monthly and ESR (140.*) channels.{P2}{P1} You can continue working without interruption, whichever path you choose. {P2}"
   },
   "newsSection.license": {
     "message": "As all work on SmartTemplates and free support are funded exclusively by license sales, please consider buying a license or renewing your current one."
@@ -2074,7 +2074,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{headStart}Future Thunderbird Compatibility and ESR Roadmap{headEnd}{L1} SmartTemplates is now fully compatible with Thunderbird 140 in preparation for the upcoming annual Thunderbird ESR, expected within the next month (June / July 2025). Users who opt into Thunderbird’s monthly update channel can rest assured: SmartTemplates will continue to deliver compatible, stable releases every month.{L2}{L1} Modernized internal dialogs: replaced legacy XHTML-based windows with native Thunderbird popups for improved appearance and compatibility. This is part of the ongoing effort of removing legacy (experimental) technology from the Add-on [issue 378]{L2}{L1} License Management Fix: Clicking 'Extend License' for any license now correctly opens the matching product page, instead of incorrectly opening the New License screen. [issue 377]{L2}"
+    "message": "{L1}SmartTemplates is now fully compatible with Thunderbird 141.{L2}{L1}You can now use Unix timestamps with the {{%dateformat%}} variable. [issue 381]{L2}{L1}Use {{%dateformat.received(unix)%}} to insert the received time as a Unix timestamp (seconds since {italicStart}epoch{italicEnd} = January 1, 1970).{L2}{L1}Use {{%dateformat.current(timestamp)%}} to insert the current time in milliseconds since {italicStart}epoch{italicEnd}.{L2}{L1}Added optional {{nodefer}} parameter to {{%dateformat.current()%}} to avoid interactive fields. [issue 382]"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."
