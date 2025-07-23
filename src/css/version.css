@@ -229,3 +229,11 @@ span.premium, code.premium {
     margin: 0 0.3em;
     vertical-align: top;
 }
+
+.link-visited {
+  color: #d2691e !important;
+}
+span.link-visited {
+  font-weight: bold;
+  font-size: 0.8em;
+}

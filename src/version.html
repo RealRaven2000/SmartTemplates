@@ -8,7 +8,7 @@ permalink: version.html
 "use strict"; // use ECMAScript5 strict mode
   markActiveNavigation("version.html");
   /* Apply this site specific files to <head> element */
-  loadStyleSheet('version.css?v=2');
+  loadStyleSheet('version.css?v=3');
   loadStyleSheet('infoBox.css?v=2');
   loadStyleSheet('myProjects.css');
 	loadStyleSheet('smarttemplate-pro.css');
@@ -245,13 +245,51 @@ permalink: version.html
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
 
+<a id="4.13"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.13"
+      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 4.13 - Work in Progress</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">115.0 - 141.*</span>
+		</span>
+  </h4>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li>
+      Added a label after links in popup messages when they open a tab in the background (e.g. in the main Thunderbird window). 
+      This helps avoid confusion when new tabs are opened out of view. The label appears as: <span class="link-visited">(Link opened in tab)</span>.
+    </li>
+  
+    <li>
+      New support for Unix-style timestamps using the <code class="inline">%dateformat%</code> variable: 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/381">[issue 381]</a>
+      <ul>
+        <li><code>%dateformat.received(unix)%</code> – Inserts the received time as a Unix timestamp (seconds since epoch = January 1, 1970).</li>
+        <li><code>%dateformat.current(timestamp)%</code> – Inserts the current time in milliseconds since the epoch.</li>
+      </ul>
+    </li>
+  
+    <li>
+      Added optional <code class="parameter">nodefer</code> parameter to <code>%dateformat.current()%</code>.  
+      Normally, dynamic fields like <code>%subject%</code>, <code>%recipient(name)%</code>, or <code>%date.current%</code> are inserted as interactive placeholders 
+      (so they can update when you click or when sending the email).  
+      These are useful when the data isn't available yet, like when composing a new message.  
+      The <code>nodefer</code> parameter disables this behavior and immediately inserts the actual value as plain text.  
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/382">[issue 382]</a>
+    </li>
+  </ul>
+</li> 
+
+
 <a id="4.12"> &nbsp; </a>
 <a id="4.12.1"> &nbsp; </a>
 <a id="4.12.2"> &nbsp; </a>
 <li>
   <h4>
-		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.12"
-      onclick="alert('This version is currently awaitin review on thunderbird.net!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.12">
       Version 4.12 - 03/06/2025</a>
 		<br>
 		<span class="appWrapper">
