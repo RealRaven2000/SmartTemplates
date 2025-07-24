@@ -4,7 +4,8 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 *    Made compatible with Thunderbird 141. 
 *    Indicate when a web page was opened in a tab in the background (by adding a label to the link) 
-*     Support for Unix style time strings to %dateformat% variable:  [issue #381]
+*   Support for Unix style time strings to `%dateformat%` variable:  [issue #381]
+
     `%dateformat.received(unix)%` - – Inserts the received time as a Unix timestamp (seconds since epoch = January 1, 1970).
     `%dateformat.current(timestamp)%` - – Inserts the current time in milliseconds since the epoch.
 *   Added optional `nodefer` parameter to `%dateformat.current()%`.  [issue #382]
