@@ -2,7 +2,6 @@
 
 /* 
   global 
-    i18n: readonly,
     fixClipboardNote: readonly,
     initSearch: readonly,
     expandAll: readonly,
@@ -76,14 +75,14 @@ function isVisible(el) {
   return el && !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
 }
 
+async function isDebug() {
+  return await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+}
+
 async function initHTML() {
-  console.log("help-html.js init()");
-  const isDebugLegacyOption = async function () {
-    const isDebug = await messenger.LegacyPrefs.getPref(
-      "extensions.smartTemplate4.debug.variables.search"
-    );
-    return isDebug;
-  };
+  if (isDebug()) {
+    console.log("help-html.js init()");
+  }
 
   i18n.updateDocument(); // parent doc must have loaded ../chrome/content/i18n.js
   // update every text that contains params
@@ -91,7 +90,7 @@ async function initHTML() {
   const reg = /\{[^}]+\}/; // {parameter}
   for (let p of params) {
     const text = p.innerHTML; // Use innerHTML to ensure we check the full content
-    if (!reg.test(text)) continue; // Skip if no placeholders found
+    if (!reg.test(text)) {continue}; // Skip if no placeholders found
     replacePlaceholdersWithSpans(
       p,
       ["{attribute=value}", "{imagePath}", "%file(images/test.jpg)%", "{[[Cc: %cc(name)%]]}", "{%cc(name)%}"], 
@@ -108,7 +107,7 @@ async function initHTML() {
   initSearch();
   const expander = document.getElementById("allexpander");
   const collapser = document.getElementById("collapseAll");
-  expander.addEventListener("click", (evt) => {
+  expander.querySelector("a").addEventListener("click", (evt) => {
     expandAll(evt);
     collapser.classList.remove("collapsed");
     expander.classList.add("collapsed");
@@ -120,7 +119,7 @@ async function initHTML() {
   });
 
   const helpContents = document.getElementById("helpContents");
-  if (!helpContents) return;
+  if (!helpContents) {return;}
   helpContents.addEventListener("click", (evt) => {
     containerClick(helpContents, evt);
   });
@@ -164,12 +163,12 @@ async function initHTML() {
         while (p && !p.classList?.contains("chapterBody")) {
           p = p.parentNode;
         }
-        if (!p) return;
+        if (!p) {return;}
         let n = p.nextElementSibling;
         while (n && !n.classList?.contains("helpchapter")) {
           n = n.nextElementSibling;
         }
-        if (!n) return;
+        if (!n) {return;}
         n.focus();
       } else if (e.key === "ArrowUp") {
         let index = items.indexOf(item);
