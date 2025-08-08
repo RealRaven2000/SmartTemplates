@@ -1124,9 +1124,7 @@ SmartTemplates.Settings = {
 			} catch {;}
 		}
 
-		let key = branch.substr(1), // cut off leading '.'
-		    deps = 0,
-		    newPrefs = [];  // to gather the new preferences
+		let deps = 0; 
 		// iterate cloned deck.
 		// note: this would be easier to rewrite & understand using recursion
 		const ELEMENT_NODE = 1; // TEXT_NODE = 3;
@@ -1135,10 +1133,6 @@ SmartTemplates.Settings = {
 			if (el.nodeType == ELEMENT_NODE) {
 				replaceAttribute(el, "id", branch);
 				replacePrefName(el, branch); 
-				// build an array of all preference nodes which contain the preference types
-				if (el.tagName == "preference") {
-					newPrefs.push(el);
-				}
 			}
 
 			// Get next node or parent's next node
@@ -1156,20 +1150,6 @@ SmartTemplates.Settings = {
 		}
 
 		// add pref type definitions to Preferences object
-		if (newPrefs.length && typeof Preferences != "undefined") {
-			for (let i=0; i<newPrefs.length; i++) {
-				let it = newPrefs[i],
-						p = { 
-							id: it.getAttribute('name').replace('.common', branch), 
-							type: it.getAttribute('type')
-						}
-            
-				let pref = Preferences.add(p);
-        
-				this.preferenceElements.push (pref);
-				this.logDebug("Added Preference: " + p.id);
-			}
-		}
 		this.logDebug("prefCloneAndSetup COMPLETE");
 	} ,
 
