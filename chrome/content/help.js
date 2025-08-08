@@ -152,31 +152,26 @@
     return null; // empty list
   }
 
-  function serialize(listItem) {
+  function serialize(item) {
     //flatten an entry
     let list = [];
-    if (!listItem.childNodes.length) {
-      list.push(listItem);
+    if (!item.childNodes.length) {
+      list.push(item);
     }
-    for (let node of listItem.childNodes) {
+    for (let node of item.childNodes) {
       switch(node.nodeType) {
         case 3:
-          if (node.nodeName=="br") {continue;}
-          if (!node.textContent.trim()) {continue;}
+          if (!node.textContent.trim()) { continue; }
           if (/^\s*$/.test(node.textContent)) { // empty!
             continue;
           }
           list.push(node);
           break;
         case 1:
+          if (node.tagName.toLowerCase() === "br") { continue; } // skip <br>
           list.push(...serialize(node));
       }
     }
-    if(typeof list == "undefined") {
-      // debugger;
-      console.log(list);
-    }
-
     return list;
   }
 
@@ -193,15 +188,17 @@
               list.push(child);
             }
             continue;
-          case 1:
-            if (child.nodeName=="br") {continue;}
+          case 1: {
+            const tag = child.tagName.toLowerCase();
+            if (tag == "br") {continue;}
             if (child?.style?.display=="none") {continue;} // hidden
-            if (child.nodeName=="tr") {
+            if (tag == "tr") {
               list.push(...flattenList(child));
             }
-            if (["aside","li","p","div","code","span","th","td"].includes(child.nodeName)) {
+            if (["aside","li","p","div","code","span","th","td"].includes(tag)) {
               list.push(...serialize(child));
             }
+          }
         }
       }
     }
