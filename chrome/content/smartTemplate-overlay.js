@@ -1979,12 +1979,12 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
 // -------------------------------------------------------------------
 SmartTemplate4.regularize = async function regularize(msg, composeType, isStationery, ignoreHTML, isDraftLike) {
   const Ci = Components.interfaces,
-        Cc = Components.classes,
-				Cu = Components.utils,
-        util = SmartTemplate4.Util,
-        prefs = SmartTemplate4.Preferences,
-        mimeDecoder = this.mimeDecoder;
-				
+    Cc = Components.classes,
+    Cu = Components.utils,
+    util = SmartTemplate4.Util,
+    prefs = SmartTemplate4.Preferences,
+    mimeDecoder = this.mimeDecoder;
+    
 	// make sure to use the licenser from main window, to save time.
   // [issue 150] removed nag screen
 				
@@ -2644,11 +2644,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         targetString = getDefaultString(hdrField, ComposeFields, isCustomHeader);
 
         // modify header
+        const plainTextParam = textParamList.replaceAll("\\,", ",");
         switch (modType) {
           case "string": // single string
             switch (cmd) {
               case "set":
-                targetString = textParamList;
+                targetString = plainTextParam;
                 break;
               case "prefix": {
                 let replyPrefix = targetString.lastIndexOf(":"),
@@ -2657,7 +2658,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                   // caveat: won't work well if subject also contains a ':'
                   // cut off Re: Fwd: etc.
                   testSubject = targetString.substr(0, replyPrefix).trim();
-                  if (testSubject.indexOf(textParamList) >= 0) {
+                  if (testSubject.indexOf(plainTextParam) >= 0) {
                     // keyword is (anywhere) before colon?
                     break;
                   } 
@@ -2665,9 +2666,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                   testSubject = targetString.substr(replyPrefix + 1).trim(); // where we can check at the start...
                 }
                 // keyword is immediately after last colon, or start of original subject
-                if (testSubject.indexOf(textParamList) != 0) {
+                if (testSubject.indexOf(plainTextParam) != 0) {
                   // avoid duplication!
-                  targetString = textParamList + targetString;
+                  targetString = plainTextParam + targetString;
                 }
               } break;
               case "append": {
@@ -2675,9 +2676,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 let argPos = targetString
                   .toLowerCase()
                   .trim()
-                  .lastIndexOf(textParamList.toLowerCase().trim()); // avoid duplication
-                if (argPos < 0 || argPos < targetString.length - textParamList.length) {
-                  targetString = targetString + textParamList;
+                  .lastIndexOf(plainTextParam.toLowerCase().trim()); // avoid duplication
+                if (argPos < 0 || argPos < targetString.length - plainTextParam.length) {
+                  targetString = targetString + plainTextParam;
                 }
               } break;
               case "delete": // remove a substring, e.g. header.delete(subject,"re: | Fwd: ")
@@ -2692,7 +2693,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           case "address": // address field
             switch (cmd) {
               case "set": // overwrite address field
-                targetString = textParamList.toString();
+                targetString = plainTextParam.toString();
                 break;
               case "prefix":
                 // targetString = argument.toString() + ' ' + targetString;
@@ -2702,14 +2703,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 // also omit in Cc if already in To and vice versa
                 if (
                   hdrField == "cc" &&
-                  ComposeFields.to.toLowerCase().indexOf(textParamList.toLowerCase()) >= 0
+                  ComposeFields.to.toLowerCase().indexOf(plainTextParam.toLowerCase()) >= 0
                 ) {break;}
                 if (
                   hdrField == "to" &&
-                  ComposeFields.cc.toLowerCase().indexOf(textParamList.toLowerCase()) >= 0
+                  ComposeFields.cc.toLowerCase().indexOf(plainTextParam.toLowerCase()) >= 0
                 ) {break;}
 
-                if (targetString.toLowerCase().indexOf(textParamList.toLowerCase()) < 0) {
+                if (targetString.toLowerCase().indexOf(plainTextParam.toLowerCase()) < 0) {
                   targetString = targetString + ", " + textParamList;
                 }
                 break;
@@ -3762,8 +3763,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         if (!await IOUtils.exists(newPath)) {  
           util.logDebug(`Cannot find file: ${newPath}\n Trying to append to path of template.`);
         }
-      }
-      catch {
+      } catch {
         // new code for path of template - failed on Rob's Mac as unknown.
         // I think this is only set when a template is opened from the submenus!
         if (flags.isFileTemplate && currentPath) {
@@ -3778,8 +3778,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               path=newPath; // fix path and make absolute
             }
           } catch {
-            // eslint-disable-next-line no-debugger
-            debugger;
+            if (prefs.isDebug) {
+              // eslint-disable-next-line no-debugger
+              debugger;
+            }
           }
         }
       }
