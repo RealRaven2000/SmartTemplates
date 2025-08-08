@@ -254,24 +254,30 @@ END LICENSE BLOCK
     # [issue 372] Fix in sandbox script: Contextual parameters in sandbox (such as $subject) broken
     # [issue 373] Stability: images with encoded data path did not load if src attribute started with space
 
-  Version 4.11.4 - 21/05/2026
+  Version 4.11.4 - 21/05/2025
     # Compatibility with Thunderbird 139
     # [issue 375] Renewal of any License opens wrong product (New License)
     # guard against nsIFile.initWithPath() throwing 
     # removed all references to deprecated Ci.nsILocalFile
     # license validation: optimized use of getDefaultIdentity
 
-  Version 4.12 - 03/06/2024
+  Version 4.12 - 03/06/2025
     # Official Thunderbird 140 ESR compatibility
     # [issue 378] Convert SmartTemplate4.Message() into a html window
     # [issue 377] Extending of any License opens wrong product (New License)
 
-  Version 4.13 - WIP
+  Version 4.13 - 24/07/2025
     # Made compatible with Thunderbird 141.
     # Indicate when a web page was opened in a tab in the background (by adding a label to the link)
     # [issue 381] Support for Unix style time strings
     # [issue 382] Option to avoid deferred variables - during %dateformat.current()%
                   %dateformat.current(timestamp,nodefer)%
+
+  Version 4.13.1 - WIP
+    # Made compatible with Thunderbird 142.
+    # [issue 386] Issue with escaped commas from clipboard
+    # [issue 388] Variabled documentation: search terms do not find text embedded in a %variable% field
+    # Fixed a minor issue with the line "Click a heading or Expand All"
     
 
 =========================
