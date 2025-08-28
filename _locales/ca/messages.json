@@ -1641,13 +1641,16 @@
     "message": "A"
   },
   "st.notification.premium.text": {
-    "message": "{1} és una funció premium. Actualitzeu-la a una llicència SmartTemplates Pro per utilitzar-la permanentment."
+    "message": "{1} és una funció Premium. Seguirà funcionant, però actualitzar a una llicència SmartTemplates Pro eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} són funcions Premium. Actualitzeu-la a una llicència SmartTemplates Pro per utilitzar-les permanentment."
+    "message": "{1} són funcions Premium. Seguiran funcionant, però actualitzar a una llicència SmartTemplates Pro eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
   },
-  "st.notification.premium.title": {
-    "message": "Funció Premium"
+  "st.notification.standard.text": {
+    "message": "{1} és una funció amb llicència. Seguirà funcionant, però obtenir una llicència SmartTemplates eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} són funcions amb llicència. Seguiran funcionant, però obtenir una llicència SmartTemplates eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
   },
   "st.notification.spellcheck.error": {
     "message": "No es pot canviar l'idioma del corrector ortogràfic. Heu instal·lat el diccionari correcte?"

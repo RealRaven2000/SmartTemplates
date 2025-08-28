@@ -1610,13 +1610,16 @@
     "message": "A"
   },
   "st.notification.premium.text": {
-    "message": "{1} é um recurso Premium. Por favor, obtenha uma licença do SmartTemplates Pro para usá-lo permanentemente."
+    "message": "{1} é uma funcionalidade Premium. Continuará funcionando, mas atualizar para uma SmartTemplates Pro License remove estes avisos e ajuda a apoiar o complemento."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} são recursos Premium. Por favor, obtenha uma licença do SmartTemplates Pro para usá-los permanentemente."
+    "message": "{1} são funcionalidades Premium. Continuarão funcionando, mas atualizar para uma SmartTemplates Pro License remove estes avisos e ajuda a apoiar o complemento."
   },
-  "st.notification.premium.title": {
-    "message": "Recurso Premium"
+  "st.notification.standard.text": {
+    "message": "{1} é uma funcionalidade licenciada. Continuará funcionando, mas obter uma SmartTemplates License remove estes avisos e ajuda a apoiar o complemento."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} são funcionalidades licenciadas. Continuarão funcionando, mas obter uma SmartTemplates License remove estes avisos e ajuda a apoiar o complemento."
   },
   "st.notification.spellcheck.error": {
     "message": "Não é possível alternar o idioma do corretor ortográfico. Você instalou o dicionário correto?"

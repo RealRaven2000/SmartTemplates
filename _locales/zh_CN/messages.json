@@ -1626,13 +1626,16 @@
     "message": "升级到专业版"
   },
   "st.notification.premium.text": {
-    "message": "{1}是高级功能，请升级至SmartTemplate专业版许可证以永久使用。"
+    "message": "{1} 是高级功能。它将继续可用，但升级到 SmartTemplates Pro 许可证可移除此提醒并支持此插件。"
   },
   "st.notification.premium.text.plural": {
-    "message": "{1}是高级功能，请升级到SmartTemplate专业版许可证以永久使用它们。"
+    "message": "{1} 是高级功能。它们将继续可用，但升级到 SmartTemplates Pro 许可证可移除此提醒并支持此插件。"
   },
-  "st.notification.premium.title": {
-    "message": "獨特的功能"
+  "st.notification.standard.text": {
+    "message": "{1} 是授权功能。它将继续可用，但获取 SmartTemplates 许可证可移除此提醒并支持此插件。"
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} 是授权功能。它们将继续可用，但获取 SmartTemplates 许可证可移除此提醒并支持此插件。"
   },
   "st.notification.spellcheck.error": {
     "message": "无法切换拼写检查语言。您是否安装了正确的字典？"

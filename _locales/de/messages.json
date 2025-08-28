@@ -1580,13 +1580,16 @@
     "message": "Auf Pro Upgraden"
   },
   "st.notification.premium.text": {
-    "message": "{1} ist eine Premium Funktion, bitte kaufen Sie eine SmartTemplates Pro Lizenz um diese permanent zu benutzen."
+    "message": "{1} ist eine Premium-Funktion. Sie wird weiterhin funktionieren, aber ein Upgrade auf eine SmartTemplates Pro-Lizenz entfernt diese Hinweise und unterstützt die Weiterentwicklung des Add-ons."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} sind Premium Funktionen, bitte kaufen Sie eine SmartTemplates Pro Lizenz um diese permanent zu benutzen."
+    "message": "{1} sind Premium-Funktionen. Sie werden weiterhin funktionieren, aber ein Upgrade auf eine SmartTemplates Pro-Lizenz entfernt diese Hinweise und unterstützt die Weiterentwicklung des Add-ons."
   },
-  "st.notification.premium.title": {
-    "message": "Premium Funktion"
+  "st.notification.standard.text": {
+    "message": "{1} ist eine lizenzierte Funktion. Sie wird weiterhin funktionieren, aber der Erwerb einer SmartTemplates-Lizenz entfernt diese Hinweise und unterstützt die Weiterentwicklung des Add-ons."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} sind lizenzierte Funktionen. Sie werden weiterhin funktionieren, aber der Erwerb einer SmartTemplates-Lizenz entfernt diese Hinweise und unterstützt die Weiterentwicklung des Add-ons."
   },
   "st.notification.spellcheck.error": {
     "message": "Kann Sprache der Rechtschreibprüfung nicht setzen. Ist ein korrektes Wörterbuch installiert?"

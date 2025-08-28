@@ -1586,13 +1586,16 @@
     "message": "A"
   },
   "st.notification.premium.text": {
-    "message": "{1} es una funcionalidad premium, debe obtener una Licencia pro de SmartTemplates para usarla de forma permanente."
+    "message": "{1} es una función Premium. Seguirá funcionando, pero actualizar a una licencia SmartTemplates Pro eliminará estos recordatorios y ayudará a apoyar el complemento."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} son características Premium, debe obtener una Licencia SmartTemplates Pro para usarlas permanentemente."
+    "message": "{1} son funciones Premium. Seguirán funcionando, pero actualizar a una licencia SmartTemplates Pro eliminará estos recordatorios y ayudará a apoyar el complemento."
   },
-  "st.notification.premium.title": {
-    "message": "Función premium"
+  "st.notification.standard.text": {
+    "message": "{1} es una función con licencia. Seguirá funcionando, pero obtener una licencia SmartTemplates eliminará estos recordatorios y ayudará a apoyar el complemento."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} son funciones con licencia. Seguirán funcionando, pero obtener una licencia SmartTemplates eliminará estos recordatorios y ayudará a apoyar el complemento."
   },
   "st.notification.spellcheck.error": {
     "message": "No se puede cambiar el idioma del corrector ortográfico. ¿Has instalado el diccionario correcto?"

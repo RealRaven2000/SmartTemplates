@@ -1628,13 +1628,16 @@
     "message": "升級到專業版"
   },
   "st.notification.premium.text": {
-    "message": "{1}是高級功能，請升級至SmartTemplate專業版許可證以永久使用。"
+    "message": "{1} 是高級功能。它將繼續可用，但升級到 SmartTemplates Pro 許可證可移除此提醒並支持此外掛。"
   },
   "st.notification.premium.text.plural": {
-    "message": "{1}是高級功能，請升級到SmartTemplate專業版許可證以永久使用它們。"
+    "message": "{1} 是高級功能。它們將繼續可用，但升級到 SmartTemplates Pro 許可證可移除此提醒並支持此外掛。"
   },
-  "st.notification.premium.title": {
-    "message": "高級功能"
+  "st.notification.standard.text": {
+    "message": "{1} 是授權功能。它將繼續可用，但取得 SmartTemplates 許可證可移除此提醒並支持此外掛。"
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} 是授權功能。它們將繼續可用，但取得 SmartTemplates 許可證可移除此提醒並支持此外掛。"
   },
   "st.notification.spellcheck.error": {
     "message": "無法切換拼寫檢查語言。 你安裝了正確的字典嗎？"

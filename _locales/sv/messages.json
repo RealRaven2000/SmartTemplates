@@ -1655,13 +1655,16 @@
     "message": "Uppgradera till PRO"
   },
   "st.notification.premium.text": {
-    "message": "{1} är en funktion kopplad till SmartTemplates Pro. Registrera SmartTemplates för att använda den permanent."
+    "message": "{1} är en Premium-funktion. Den kommer fortsätta fungera, men uppgradering till en SmartTemplates Pro-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} är Premiumfunktioner, skaffa en Pro-licens till SmartTemplates för att använda dem permanent."
+    "message": "{1} är Premium-funktioner. De kommer fortsätta fungera, men uppgradering till en SmartTemplates Pro-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
   },
-  "st.notification.premium.title": {
-    "message": "Licensbelagd funktion"
+  "st.notification.standard.text": {
+    "message": "{1} är en licensierad funktion. Den kommer fortsätta fungera, men att skaffa en SmartTemplates-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} är licensierade funktioner. De kommer fortsätta fungera, men att skaffa en SmartTemplates-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
   },
   "st.notification.spellcheck.error": {
     "message": "Det går inte att byta språk för stavkontroll. Har du installerat rätt ordbok?"

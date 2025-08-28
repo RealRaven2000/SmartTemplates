@@ -1623,13 +1623,16 @@
     "message": "Upgradujte na Pro"
   },
   "st.notification.premium.text": {
-    "message": "{1} je prémiová funkce, prosím upgradujte na licenci SmartTemplates Pro, abyste ji mohli trvale používat."
+    "message": "{1} je prémiová funkce. Bude stále fungovat, ale upgrade na SmartTemplates Pro licenci odstraní tyto upozornění a pomůže podpořit doplněk."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} jsou prémiové funkce, upgradujte prosím na licenci SmartTemplates Pro, abyste je mohli trvale používat."
+    "message": "{1} jsou prémiové funkce. Budou stále fungovat, ale upgrade na SmartTemplates Pro licenci odstraní tato upozornění a pomůže podpořit doplněk."
   },
-  "st.notification.premium.title": {
-    "message": "Prémiové Funkce"
+  "st.notification.standard.text": {
+    "message": "{1} je licencovaná funkce. Bude stále fungovat, ale získání SmartTemplates licence odstraní tato upozornění a pomůže podpořit doplněk."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} jsou licencované funkce. Budou stále fungovat, ale získání SmartTemplates licence odstraní tato upozornění a pomůže podpořit doplněk."
   },
   "st.notification.spellcheck.error": {
     "message": "Nelze přepnout jazyk kontroly pravopisu. Nainstalovali jste správný slovník?"

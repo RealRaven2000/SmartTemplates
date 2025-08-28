@@ -1643,13 +1643,16 @@
     "message": "P"
   },
   "st.notification.premium.text": {
-    "message": "{1} on maksullinen lisätoiminto. Hanki SmartTemplates Pro lisenssi ja voit käyttää sitä pysyvästi."
+    "message": "{1} on Premium-toiminto. Se toimii edelleen, mutta päivittämällä SmartTemplates Pro -lisenssiin poistat nämä ilmoitukset ja tuet lisäosaa."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} ovat maksullisia lisätoimintoja. Hanki SmartTemplates Pro lisenssi ja voit käyttää niitä pysyvästi."
+    "message": "{1} ovat Premium-toimintoja. Ne toimivat edelleen, mutta päivittämällä SmartTemplates Pro -lisenssiin poistat nämä ilmoitukset ja tuet lisäosaa."
   },
-  "st.notification.premium.title": {
-    "message": "Maksullinen lisätoiminto"
+  "st.notification.standard.text": {
+    "message": "{1} on lisensoitu toiminto. Se toimii edelleen, mutta hankkimalla SmartTemplates-lisenssin poistat nämä ilmoitukset ja tuet lisäosaa."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} ovat lisensoituja toimintoja. Ne toimivat edelleen, mutta hankkimalla SmartTemplates-lisenssin poistat nämä ilmoitukset ja tuet lisäosaa."
   },
   "st.notification.spellcheck.error": {
     "message": "Oikeinkirjoituksen tarkistuskieltä ei voi vaihtaa. Oletko asentanut oikean sanakirjan?"

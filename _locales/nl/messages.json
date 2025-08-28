@@ -1616,13 +1616,16 @@
     "message": "Upgraden naar Pro"
   },
   "st.notification.premium.text": {
-    "message": "{1} is een Premium-functie; schaf een SmartTemplates Pro-licentie aan om deze blijvend te gebruiken."
+    "message": "{1} is een Premium-functie. Het blijft werken, maar upgraden naar een SmartTemplates Pro-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} zijn Premium-functies; schaf een SmartTemplates Pro-licentie aan om deze blijvend te gebruiken."
+    "message": "{1} zijn Premium-functies. Ze blijven werken, maar upgraden naar een SmartTemplates Pro-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
   },
-  "st.notification.premium.title": {
-    "message": "Premium-functie"
+  "st.notification.standard.text": {
+    "message": "{1} is een gelicentieerde functie. Het blijft werken, maar het verkrijgen van een SmartTemplates-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} zijn gelicentieerde functies. Ze blijven werken, maar het verkrijgen van een SmartTemplates-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
   },
   "st.notification.spellcheck.error": {
     "message": "Kan niet wisselen van spellingcontrole. Hebt u het juiste woordenboek geïnstalleerd?"

@@ -1188,13 +1188,16 @@
     "message": "Perbarui Lisensi"
   },
   "st.notification.premium.text": {
-    "message": "{1} adalah fitur Premium, dapatkan Lisensi SmartTemplates Pro untuk menggunakannya secara permanen."
+    "message": "{1} adalah fitur Premium. Fitur ini akan tetap berfungsi, tetapi meningkatkan ke SmartTemplates Pro License menghapus pemberitahuan ini dan membantu mendukung add-on."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} adalah fitur Premium, dapatkan Lisensi SmartTemplates Pro untuk menggunakannya secara permanen."
+    "message": "{1} adalah fitur-fitur Premium. Fitur-fitur ini akan tetap berfungsi, tetapi meningkatkan ke SmartTemplates Pro License menghapus pemberitahuan ini dan membantu mendukung add-on."
   },
-  "st.notification.premium.title": {
-    "message": "Fitur Premium"
+  "st.notification.standard.text": {
+    "message": "{1} adalah fitur berlisensi. Fitur ini akan tetap berfungsi, tetapi mendapatkan SmartTemplates License menghapus pemberitahuan ini dan membantu mendukung add-on."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} adalah fitur-fitur berlisensi. Fitur-fitur ini akan tetap berfungsi, tetapi mendapatkan SmartTemplates License menghapus pemberitahuan ini dan membantu mendukung add-on."
   },
   "st.prompt.switchDomainLicense": {
     "message": "Beralih ke Lisensi Domain?"

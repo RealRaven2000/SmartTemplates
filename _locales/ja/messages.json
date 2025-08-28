@@ -1605,13 +1605,16 @@
     "message": "Pro にアップグレード"
   },
   "st.notification.premium.text": {
-    "message": "{1} はプレミアム機能です。この機能を永続的に使用するには SmartTemplates Pro ライセンスを購入してください。"
+    "message": "{1} はプレミアム機能です。引き続き使用できますが、SmartTemplates Pro ライセンスにアップグレードするとこの通知が削除され、アドオンのサポートにもなります。"
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} はプレミアム機能です。これらの機能を永続的に利用するには SmartTemplates Pro ライセンスを購入してください。"
+    "message": "{1} はプレミアム機能です。引き続き使用できますが、SmartTemplates Pro ライセンスにアップグレードするとこれらの通知が削除され、アドオンのサポートにもなります。"
   },
-  "st.notification.premium.title": {
-    "message": "プレミアム機能"
+  "st.notification.standard.text": {
+    "message": "{1} はライセンス付き機能です。引き続き使用できますが、SmartTemplates ライセンスを取得するとこの通知が削除され、アドオンのサポートにもなります。"
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} はライセンス付き機能です。引き続き使用できますが、SmartTemplates ライセンスを取得するとこれらの通知が削除され、アドオンのサポートにもなります。"
   },
   "st.notification.spellcheck.error": {
     "message": "スペルチェッカーを切り替えられません。正しいスペルチェック辞書をインストールしていますか？"

@@ -1673,13 +1673,16 @@
     "message": "U"
   },
   "st.notification.premium.text": {
-    "message": "{1} is a Premium feature, please upgrade to a SmartTemplates Pro License for using it permanently."
+    "message": "{1} is a Premium feature. It will keep working, but upgrading to a SmartTemplates Pro License removes these reminders and helps support the add-on."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} are Premium features, please upgrade to a SmartTemplates Pro License for using them permanently."
+    "message": "{1} are Premium features. They will keep working, but upgrading to a SmartTemplates Pro License removes these reminders and helps support the add-on."
   },
-  "st.notification.premium.title": {
-    "message": "Premium Feature"
+  "st.notification.standard.text": {
+    "message": "{1} is a licensed feature. It will keep working, but getting a SmartTemplates License removes these reminders and helps support the add-on."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} are licensed features. They will keep working, but getting a SmartTemplates License removes these reminders and helps support the add-on."
   },
   "st.notification.spellcheck.error": {
     "message": "Cannot switch spell checker language. Have you installed the correct dictionary?"
@@ -2129,7 +2132,7 @@
     "message": "Annual License"
   },
   "yearlyLicense.usageTerm": {
-    "message": "The license is for your personal use and is tied to your email address. You can install it on multiple email clients as long as they are configured to use the licensed addres, too."
+    "message": "The license is for your personal use and is tied to your email address. You can install it on multiple email clients as long as they are configured to use the licensed address, too."
   },
   "yearlyLicense.usageTerm1": {
     "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."

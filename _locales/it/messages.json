@@ -1583,13 +1583,16 @@
     "message": "P"
   },
   "st.notification.premium.text": {
-    "message": "{1} è una caratteristica della versione Premium. Registrare SmartTemplates per poterla usare permanentemente."
+    "message": "{1} è una funzione Premium. Continuerà a funzionare, ma l'aggiornamento a una SmartTemplates Pro License rimuove questi avvisi e aiuta a supportare l'add-on."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} sono funzionalità della versione Premium. Richiedi una licenza SmartTemplates Pro per utilizzarle in permanenza."
+    "message": "{1} sono funzioni Premium. Continueranno a funzionare, ma l'aggiornamento a una SmartTemplates Pro License rimuove questi avvisi e aiuta a supportare l'add-on."
   },
-  "st.notification.premium.title": {
-    "message": "Caratteristica della versione Premium"
+  "st.notification.standard.text": {
+    "message": "{1} è una funzione con licenza. Continuerà a funzionare, ma ottenere una SmartTemplates License rimuove questi avvisi e aiuta a supportare l'add-on."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} sono funzioni con licenza. Continueranno a funzionare, ma ottenere una SmartTemplates License rimuove questi avvisi e aiuta a supportare l'add-on."
   },
   "st.notification.spellcheck.error": {
     "message": "Impossibile cambiare la lingua del controllo ortografico. Hai installato il dizionario corretto?"

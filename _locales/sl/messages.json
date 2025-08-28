@@ -1631,13 +1631,16 @@
     "message": "N"
   },
   "st.notification.premium.text": {
-    "message": "{1} je lastnost premium. Za trajno uporabo si pridobite dovoljenje za SmartTemplates Pro."
+    "message": "{1} je Premium funkcija. Še naprej bo delovala, vendar nadgradnja na SmartTemplates Pro licenco odstrani ta obvestila in podpira dodatek."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} so lastnosti premium. Za trajno uporabo si pridobite dovoljenje za SmartTemplates Pro."
+    "message": "{1} so Premium funkcije. Še naprej bodo delovale, vendar nadgradnja na SmartTemplates Pro licenco odstrani ta obvestila in podpira dodatek."
   },
-  "st.notification.premium.title": {
-    "message": "Lastnost premium"
+  "st.notification.standard.text": {
+    "message": "{1} je licencirana funkcija. Še naprej bo delovala, vendar pridobitev SmartTemplates licence odstrani ta obvestila in podpira dodatek."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} so licencirane funkcije. Še naprej bodo delovale, vendar pridobitev SmartTemplates licence odstrani ta obvestila in podpira dodatek."
   },
   "st.notification.spellcheck.error": {
     "message": "Jezika preveritelja črkovanja ni mogoče preklopiti. Ste namestili pravilen slovar?"

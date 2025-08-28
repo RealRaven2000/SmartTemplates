@@ -1610,13 +1610,16 @@
     "message": "У"
   },
   "st.notification.premium.text": {
-    "message": "{1} је доступна у премијум верзији. Региструјете SmartTemplates Pro, ако желите трајно да користите."
+    "message": "{1} је Премиум функција. Наставиће да ради, али надоградња на SmartTemplates Pro лиценцу уклања ова обавештења и помаже у подршци додатку."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} су Премиум функције, надоградите на SmartTemplates Pro лиценцу за њихово трајно коришћење."
+    "message": "{1} су Премиум функције. Наставиће да раде, али надоградња на SmartTemplates Pro лиценцу уклања ова обавештења и помаже у подршци додатку."
   },
-  "st.notification.premium.title": {
-    "message": "Премијум могућност"
+  "st.notification.standard.text": {
+    "message": "{1} је лиценцирана функција. Наставиће да ради, али добијање SmartTemplates лиценце уклања ова обавештења и помаже у подршци додатку."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} су лиценциране функције. Наставиће да раде, али добијање SmartTemplates лиценце уклања ова обавештења и помаже у подршци додатку."
   },
   "st.notification.spellcheck.error": {
     "message": "Није могуће променити језик провере правописа. Да ли сте инсталирали исправан речник?"

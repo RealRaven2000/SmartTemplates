@@ -1631,13 +1631,16 @@
     "message": "P"
   },
   "st.notification.premium.text": {
-    "message": "{1} est une fonctionnalité Premium, veuillez vous abonner à SmartTemplates pour l'utiliser de manière permanente."
+    "message": "{1} est une fonctionnalité Premium. Elle continuera de fonctionner, mais passer à une licence SmartTemplates Pro supprimera ces notifications et aidera à soutenir l'extension."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} sont des fonctionnalités premium. Veuillez obtenir une licence SmartTemplates Pro pour les utiliser de façon permanente."
+    "message": "{1} sont des fonctionnalités Premium. Elles continueront de fonctionner, mais passer à une licence SmartTemplates Pro supprimera ces notifications et aidera à soutenir l'extension."
   },
-  "st.notification.premium.title": {
-    "message": "Fonctionnalité premium"
+  "st.notification.standard.text": {
+    "message": "{1} est une fonctionnalité sous licence. Elle continuera de fonctionner, mais obtenir une licence SmartTemplates supprimera ces notifications et aidera à soutenir l'extension."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} sont des fonctionnalités sous licence. Elles continueront de fonctionner, mais obtenir une licence SmartTemplates supprimera ces notifications et aidera à soutenir l'extension."
   },
   "st.notification.spellcheck.error": {
     "message": "Impossible de changer la langue du correcteur orthographique. Avez-vous installé le bon dictionnaire?"

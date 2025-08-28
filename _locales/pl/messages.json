@@ -1626,13 +1626,16 @@
     "message": "P"
   },
   "st.notification.premium.text": {
-    "message": "{1} jest funkcją Premium. Zarejestruj SmartTemplates Pro, aby móc z niej korzystać."
+    "message": "{1} to funkcja Premium. Będzie nadal działać, ale uaktualnienie do licencji SmartTemplates Pro usunie te powiadomienia i pomoże wspierać dodatek."
   },
   "st.notification.premium.text.plural": {
-    "message": "{1} to funkcje Premium, prosimy o uaktualnienie do licencji SmartTemplates Pro, aby móc ich używać na stałe."
+    "message": "{1} to funkcje Premium. Będą nadal działać, ale uaktualnienie do licencji SmartTemplates Pro usunie te powiadomienia i pomoże wspierać dodatek."
   },
-  "st.notification.premium.title": {
-    "message": "Funkcja Premium"
+  "st.notification.standard.text": {
+    "message": "{1} to funkcja licencjonowana. Będzie nadal działać, ale uzyskanie licencji SmartTemplates usunie te powiadomienia i pomoże wspierać dodatek."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} to funkcje licencjonowane. Będą nadal działać, ale uzyskanie licencji SmartTemplates usunie te powiadomienia i pomoże wspierać dodatek."
   },
   "st.notification.spellcheck.error": {
     "message": "Nie można zmienić języka sprawdzania pisowni. Czy zainstalowałeś poprawny słownik?"
