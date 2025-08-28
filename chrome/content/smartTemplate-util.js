@@ -260,16 +260,24 @@ SmartTemplate4.Util = {
    * this gathers all into a single consolidated notification.
    */
   premiumFeatures: new Array(), // only the array in the main instance Util will be used
+  standardFeatures: new Array(), // only the array in the main instance Util will be used
+
+  addUsedStandardFunction: function (f) {
+    if (!SmartTemplate4.Util.standardFeatures.some((e) => e == f)) {
+      SmartTemplate4.Util.standardFeatures.push(f);
+    }
+  },
+
   addUsedPremiumFunction: function (f) {
     if (!SmartTemplate4.Util.premiumFeatures.some((e) => e == f)) {
       SmartTemplate4.Util.premiumFeatures.push(f);
     }
   },
 
-  clearUsedPremiumFunctions: function clearUsedPremiumFunctions() {
-    while (SmartTemplate4.Util.premiumFeatures.length) {
-      SmartTemplate4.Util.premiumFeatures.pop();
-    }
+  clearUsedPremiumFunctions: function () {
+    // resets all restricted functions 
+    SmartTemplate4.Util.premiumFeatures.length = 0;
+    SmartTemplate4.Util.standardFeatures.length = 0;
   },
 
   get mailDocument() {
@@ -512,7 +520,6 @@ SmartTemplate4.Util = {
 
   /* SmartTemplate4 Pro / licensing features */
   // default to isRegister from now = show button for buying a license.
-  // was popupProFeature, now renamed to popupLicenseNotification
   // isProFeature = true - show notification based on function used
   //              = false - show fact that a license is needed.
   popupLicenseNotification: async function (featureList, isRegister, isProFeature, additionalText) {
@@ -521,7 +528,7 @@ SmartTemplate4.Util = {
       featureName = "",
       isList = false,
       hasLicense = util.hasLicense(), // validation=false
-      isStandardLicense = false;
+      showedWarning = false;
 
     if (SmartTemplate4.Preferences.isDebugOption("premium.testNotification")) {
       util.logToConsole(
@@ -531,14 +538,14 @@ SmartTemplate4.Util = {
     }
 
     if (hasLicense) {
-      if (isProFeature && util.hasStandardLicense) {
-        isStandardLicense = true; // popup for pro features
+      if(!featureList) {
+        return;
       }
-      else {return;}
+      if (!isProFeature && featureList && util.hasStandardLicense) {
+        return; // list for standard features, but user has standard license
+      }
     }
 
-    // show no license reminder if user has standard license, unless this is a "pro feature" warning
-    if (!isProFeature && isStandardLicense) {return;}
 
     if (typeof featureList == "string") {
       featureName = featureList;
@@ -561,11 +568,9 @@ SmartTemplate4.Util = {
         notifyBox = util.Mail3PaneWindow.specialTabs.msgNotificationBar;
       }
     }
-    let // title,  // unused
-      theText,
+    let theText,
       featureTitle = "";
     if (isProFeature) {
-      // title = util.getBundleString("st.notification.premium.title");
       theText = isList
         ? util.getBundleString("st.notification.premium.text.plural")
         : util.getBundleString("st.notification.premium.text");
@@ -573,11 +578,21 @@ SmartTemplate4.Util = {
 
       theText = theText.replace("{1}", "'" + featureTitle + "'");
       if (additionalText) {theText = theText + "  " + additionalText;}
-    } else {
-      // title = "Licensing";
-      theText = util.getBundleString("st.notification.license.text");
-      let txtGracePeriod = util.gracePeriodText(util.licenseInfo.trialDays);
-      theText = theText + "  " + txtGracePeriod;
+      showedWarning = true;
+    } 
+    if (!showedWarning && !isProFeature) {
+      if (!featureList) {
+        theText = util.getBundleString("st.notification.license.text");
+        let txtGracePeriod = util.gracePeriodText(util.licenseInfo.trialDays);
+        theText = theText + "  " + txtGracePeriod;
+      } else {
+        theText = isList
+          ? util.getBundleString("st.notification.standard.text.plural")
+          : util.getBundleString("st.notification.standard.text");
+        featureTitle = isList ? featureList.join(", ") : featureName; // nice l10n name for std features
+        theText = theText.replace("{1}", "'" + featureTitle + "'");
+        if (additionalText) {theText = theText + "  " + additionalText;}
+      }
     }
 
     let regBtn,
@@ -653,10 +668,17 @@ SmartTemplate4.Util = {
       ? "chrome://smarttemplate4/content/skin/proFeature.png"
       : "chrome://smarttemplate4/content/skin/licensing.png";
 
+    let priority = notifyBox.PRIORITY_WARNING_HIGH; // expired / no license
+    if (isProFeature) {
+      priority = notifyBox.PRIORITY_INFO_HIGH; // pro feature used
+    } else if (!featureList && util.licenseInfo.trialDays > 0) {
+      priority = notifyBox.PRIORITY_INFO_MEDIUM; // trial period
+    }
+
     let newNotification = await notifyBox.appendNotification(
       notificationKey, // "String identifier that can uniquely identify the type of the notification."
       {
-        priority: isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH,
+        priority: priority,
         label: theText,
         eventCallback: null,
       },
@@ -722,7 +744,7 @@ SmartTemplate4.Util = {
     }
   },
 
-  gracePeriodText: function gracePeriodText(days) {
+  gracePeriodText: function (days) {
     let txt =
       days >= 0
         ? this.getBundleString("st.trialDays").replace("{0}", days)
@@ -2003,7 +2025,7 @@ SmartTemplate4.Util = {
         `Forced Timezone[${SmartTemplate4.whatIsTimezone}]= ` +
         util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)
     );
-    util.addUsedPremiumFunction("dateFormat");
+    util.addUsedStandardFunction("dateformat"); // [issue 391]
     if (!timezone) {timezone = 0;}
     try {
       let tm = new Date();

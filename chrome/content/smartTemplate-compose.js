@@ -487,12 +487,10 @@ SmartTemplate4.classSmartTemplate = function() {
 		// function countLines(str) { return str.split("\n").length - 1; }
 
 		util.logDebugOptional('functions','SmartTemplate4.delReplyHeader()');
-		let rootEl = SmartTemplate4.composer.body,
-		    pref = SmartTemplate4.pref,
-		    lines = 0;
-		if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) {
-			lines = 2;
-		}
+		let rootEl = SmartTemplate4.composer.body;
+		// if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) {
+		// 	lines = 2;
+		// }
 		// eslint-disable-next-line no-debugger
 		if (prefs.getMyBoolPref('debug.functions.delReplyHeader')) {debugger;}
 
@@ -620,7 +618,6 @@ SmartTemplate4.classSmartTemplate = function() {
 	function delForwardHeader(idKey, onlyHeader)	{
 		function truncateTo2BR(root) {
 			util.logDebugOptional('deleteNodes','truncateTo2BR()');
-			let node = root.firstChild;
 			// old method continues until it finds <br><br> after header table
 			let brcnt = 0;
 			while (root.firstChild && brcnt < 2) {
@@ -674,7 +671,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		// Delete original headers
 		let rootEl = SmartTemplate4.composer.body,
 		    node = rootEl.firstChild,
-		    firstNode = null,
 				skipInPlainText = !gMsgCompose.composeHTML,
         preserve = prefs.getMyBoolPref('plainText.preserveTextNodes');
 		util.logDebugOptional('functions.delForwardHeader','Running Loop to remove unnecessary whitespace..');
@@ -702,7 +698,6 @@ SmartTemplate4.classSmartTemplate = function() {
 							searchWhiteSpace = false;
 							m = inner = node.firstChild;	//restart ...
 							truncWhiteSpace = true; 		  // ...and delete EVERYTHING until delimiter
-							firstNode = inner;
 							continue;
 						}
 						util.logDebugOptional('functions.delForwardHeader','deleting node: ' + inner.nodeValue);
@@ -854,8 +849,6 @@ SmartTemplate4.classSmartTemplate = function() {
           if (currentPath) {
             let newP = util.getPathFolder(currentPath, g2);
             if (newP) {
-              let startQuote = g1 ? g1[g1.length-1] : "",  // does source start with (double / single) quote mark?  <img src=\"
-                  endQuote =   g1 ? g3[0] : "";
               util.logDebug("replacing relative img path: " + newP + "…");
               let filePath = "file:///" + newP.replace(/\\/gm,'/')
               try {
@@ -907,17 +900,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		let node = parent.firstChild;
 		while (node) {
 			if (node && node.id == id) {
-        return node;
-      }
-			node = node.nextSibling;
-		}
-		return null;
-	};
-
-	function findDirectChildByClass(parent, className) {
-		let node = parent.firstChild;
-		while (node) {
-			if (node && node.className == className) {
         return node;
       }
 			node = node.nextSibling;
@@ -1624,9 +1606,7 @@ SmartTemplate4.classSmartTemplate = function() {
 					if (!SmartTemplate4.sigInTemplate && theSignature) {
 						util.logDebugOptional('functions.insertTemplate', ' Add Signature… ' );
 		
-						let pref = SmartTemplate4.pref;
 						// add Signature and replace the BR that was removed in extractSignature
-						
 						// wrap text only signature to fix [Bug 25093]!
 						if (typeof theSignature === "string")  {
 							let sn = doc.createElement("div");
@@ -1705,12 +1685,16 @@ SmartTemplate4.classSmartTemplate = function() {
         // let's reset the local license
         if (
           !util.hasLicense() ||
-          util.licenseInfo.keyType == 2 ||
-          prefs.isDebugOption("premium.testNotification")
+          util.licenseInfo.keyType == 2 
         ) {
           util.popupLicenseNotification(util.premiumFeatures, true, true);
         }
 			}  
+			if (util.standardFeatures.length) {
+        if (!util.hasLicense()) {
+          util.popupLicenseNotification(util.standardFeatures, true, false);
+        }
+			}
 			// reset the list of used premium functions for next turn
 			util.clearUsedPremiumFunctions();  // will affect main instance
 		}
@@ -2046,7 +2030,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 
 			const walker = document.createTreeWalker(range.commonAncestorContainer, NodeFilter.SHOW_ALL, {
-				acceptNode: (node) => NodeFilter.FILTER_ACCEPT,
+				acceptNode: (_node) => NodeFilter.FILTER_ACCEPT,
 			});
 
 			const processedNodes = []; // Array to track processed nodes
@@ -2116,7 +2100,9 @@ SmartTemplate4.classSmartTemplate = function() {
 
 
 	// Helper function to process a range inside an element node
-	function processElementRange(range) {
+
+/*
+ 	function processElementRange(range) {
 		let html = "";
 		const container = range.startContainer;
 
@@ -2132,7 +2118,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
 		return html;
 			
-  }
+  } 
 	
 	// Helper function to process a range inside a text node
 	function processTextRange(range) {
@@ -2171,7 +2157,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	}	
 
 	// Helper function to process a range inside a text node
-	function unpackSelection_legacy(selection) {
+ 	function unpackSelection_legacy(selection) {
     if (!selection || selection.rangeCount === 0) {
       return ""; // No selection
     }
@@ -2201,7 +2187,8 @@ SmartTemplate4.classSmartTemplate = function() {
     }
 
     return html.trim(); // Return the combined HTML
-  }
+  } 
+*/
 
 	
 	// -----------------------------------

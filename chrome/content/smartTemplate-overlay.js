@@ -3344,7 +3344,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           return "";
         case "file":
         case "style": {
-          util.addUsedPremiumFunction(token);
+          util.addUsedStandardFunction(token); // let's add it to util.standardFeatures instead.
           // do not process images that are returned - insertFileLink will already turn them into a DataURI
           // we are using pathArray to keep track of "where we are" in terms of relative paths
           let pathArray = SmartTemplate4.PreprocessingFlags.filePaths || [],
