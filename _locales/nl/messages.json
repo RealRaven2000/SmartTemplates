@@ -1583,7 +1583,7 @@
     "message": "SmartTemplates vereist een licentie om te blijven werken. Meer info onder in het opstelvenster."
   },
   "st.notification.license.text": {
-    "message": "Van nu af aan vereist SmartTemplates ten minste een standaardlicentie. Lees meer hierover op onze licentiepagina."
+    "message": "SmartTemplates blijft normaal functioneren. Een licentie verwijdert deze melding — klik hieronder voor meer informatie."
   },
   "st.notification.licensing": {
     "message": "Meer over licenties"

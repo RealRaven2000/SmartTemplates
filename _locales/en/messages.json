@@ -1634,7 +1634,7 @@
     "message": "SmartTemplates requires a license to continue working. Read more at the bottom of the compose window."
   },
   "st.notification.license.text": {
-    "message": "From now on, SmartTemplates requires at least a standard license. Read more about this on our licensing page."
+    "message": "SmartTemplates keeps working as usual. A license removes this reminder — click below for more information."
   },
   "st.notification.licensing": {
     "message": "More about licensing"

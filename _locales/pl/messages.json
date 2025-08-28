@@ -1590,7 +1590,7 @@
     "message": "SmartTemplates wymaga licencji, aby kontynuować pracę. Przeczytaj więcej informacji na dole okna kompozycji wiadomości e-mail."
   },
   "st.notification.license.text": {
-    "message": "Od teraz SmartTemplates wymaga przynajmniej standardowej licencji. Przeczytaj więcej na ten temat na naszej stronie licencjonowania."
+    "message": "SmartTemplates działa normalnie. Licencja usuwa to powiadomienie — kliknij poniżej, aby uzyskać więcej informacji."
   },
   "st.notification.licensing": {
     "message": "Więcej o licencjonowaniu"

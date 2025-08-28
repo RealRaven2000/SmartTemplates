@@ -1547,7 +1547,7 @@
     "message": "SmartTemplates benötigt eine Lizenz um weiterhin zu funktionieren. Lesen Sie mehr dazu am unteren Rand des Email-Editors."
   },
   "st.notification.license.text": {
-    "message": "SmartTemplates benötigt mindestens eine Standard Lizenz. Lesen Sie mehr auf unserer Lizenz-Seite."
+    "message": "SmartTemplates funktioniert wie gewohnt weiter. Eine Lizenz entfernt diese Erinnerung — unten klicken für weitere Informationen."
   },
   "st.notification.licensing": {
     "message": "Mehr über Lizenzen"

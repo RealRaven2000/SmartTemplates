@@ -1593,7 +1593,7 @@
     "message": "SmartTemplates需要许可才能继续工作。 阅读电子邮件撰写窗口底部的更多信息。"
   },
   "st.notification.license.text": {
-    "message": "从现在开始，SmartTemplates至少需要一个标准许可证。 在我们的许可页面上阅读更多相关信息。"
+    "message": "SmartTemplates 照常运行。许可证可移除此提醒 — 点击下方了解更多信息。"
   },
   "st.notification.licensing": {
     "message": "更多关于许可"

@@ -1207,61 +1207,55 @@ async function showSplashInstalled() {
 async function main() {
   // we need these helper functions for calculating an extension to License.info
   async function getGraceDate() {
-    let graceDate = "",
+    let gracePeriodStart,
       isResetDate = false,
       isDebug = false;
     try {
-      graceDate = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);
+      // the following variable records the start of the trial/grace period, it is never in the future
+      gracePeriodStart = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);
       isDebug = await messenger.LegacyPrefs.getPref(DEBUGLICENSE_STORAGE);
-    // eslint-disable-next-line no-unused-vars
-    } catch (ex) {
+    } catch {
       isResetDate = true;
     }
     let today = new Date().toISOString().substr(0, 10); // e.g. "2019-07-18"
-    if (!graceDate || graceDate > today) {
-      graceDate = today; // cannot be in the future
+
+    if (!gracePeriodStart || gracePeriodStart > today) {
+      gracePeriodStart = today; // cannot be in the future
       isResetDate = true;
     } else {
-      // if a license exists & is expired long ago, use the last day of expiration date.
-      if (currentLicense.info.status == "Expired") {
-        if (graceDate < currentLicense.info.expiryDate) {
-          if (isDebug) {
-            console.log(
-              "Extending graceDate from {0} to {1}"
-                .replace("{0}", graceDate)
-                .replace("{1}", currentLicense.info.expiryDate)
-            );
+      switch (currentLicense.info.status) {
+        case "Expired":
+          // if a license exists & is expired long ago, use the last day of expiration date.
+          if (gracePeriodStart < currentLicense.info.expiryDate) {
+            // [issue 100] Trial period should restart on license expiry
+            gracePeriodStart = currentLicense.info.expiryDate;
+            isResetDate = true;
           }
-          graceDate = currentLicense.info.expiryDate;
+          break;
+        case "Valid":
+          gracePeriodStart = today; // refresh to keep trialDays positive
           isResetDate = true;
-        }
+          break;
+        // default: leave graceDate as-is
       }
     }
-    if (isResetDate) {await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, graceDate);}
-    if (isDebug) {console.log("Returning Grace Period Date: " + graceDate);}
-    return graceDate;
+    if (isResetDate) {await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, gracePeriodStart);}
+    if (isDebug) {console.log("Returning Grace Period Date: " + gracePeriodStart);}
+    return gracePeriodStart;
   }
 
   async function getTrialDays() {
-    let graceDate; // actually the install date for 2.1 or later.
     const period = GRACEPERIOD_DAYS,
       SINGLE_DAY = 1000 * 60 * 60 * 24;
-    try {
-      if (currentLicense.info.status == "Expired") {
-        // [issue 100] Trial period should restart on license expiry
-        graceDate = currentLicense.info.expiryDate;
-      } else {graceDate = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);}
-      if (!graceDate) {graceDate = getGraceDate();} // create the date
-    // eslint-disable-next-line no-unused-vars
-    } catch (_ex) {
-      // if it's not there, set it now!
-      graceDate = getGraceDate();
-    }
+
+    // always get current grace period start (updates for valid licenses)
+    let gracePeriodStart = await getGraceDate();
+
     let today = new Date(),
-      installDate = new Date(graceDate),
-      days = Math.floor((today.getTime() - installDate.getTime()) / SINGLE_DAY);
-    // later.setDate(later.getDate()-period);
-    return period - days; // returns number of days left, or -days since trial expired if past period
+      installDate = new Date(gracePeriodStart),
+      daysElapsed = Math.floor((today.getTime() - installDate.getTime()) / SINGLE_DAY);
+
+    return period - daysElapsed; // positive = days left, negative = days since trial expired
   }
 
   async function openPrefs(data) {
@@ -1441,6 +1435,9 @@ async function main() {
       debug: isDebugLicenser,
     });
     await newLicense.validate();
+    if (newLicense.isExpired) {
+      await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, newLicense.info.expiryDate);
+    }
     newLicense.GraceDate = await getGraceDate();
     newLicense.TrialDays = await getTrialDays();
 
