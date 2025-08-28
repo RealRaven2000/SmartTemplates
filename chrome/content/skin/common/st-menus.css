@@ -1,0 +1,82 @@
+/** POPUP MENUS **/
+
+#smartTemplates-settings {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
+  fill: currentColor;
+}
+#smartTemplates-settings-new {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
+  fill: red;
+}
+#smartTemplates-headerMenuAPI, #smartTemplates-MruMenuAPI {
+  list-style-image: url("chrome://smarttemplate4/content/skin/icons/webex.png") !important;
+}
+
+#smartTemplates-docs {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/docs.svg") !important;
+  stroke: currentColor;
+}
+
+#smartTemplates-tests {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/bug.svg") !important;
+  fill: rgb(123, 4, 4);
+}
+
+#smartTemplates-news {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/new.svg") !important;
+}
+
+/* reply buttons - see:
+    https://searchfox.org/comm-esr102/source/mail/themes/shared/mail/messageHeader.css#195
+    https://searchfox.org/comm-esr102/source/mail/themes/shared/mail/icons.css
+  */
+
+#smartTemplates-write-menu {
+  list-style-image: var(--icon-new-mail);
+}
+
+/* reply, reply to sender */
+#smartTemplates-reply-menu {
+  list-style-image: var(--icon-reply);
+}
+
+#smartTemplates-reply-all-menu {
+  list-style-image: var(--icon-reply-all);
+}
+
+#smartTemplates-reply-list-menu {
+  list-style-image: var(--icon-reply-list);
+}
+
+
+#smartTemplates-forward-menu {
+  list-style-image: var(--icon-forward);
+}
+
+/* future */
+#smartTemplates-replyall-menu {
+  list-style-image: var(--icon-reply-all);
+}
+#smartTemplates-replylist-menu {
+  list-style-image: var(--icon-reply-list);
+}
+
+
+/* test */
+#SmartTemplates-reply {
+  list-style-image: var(--icon-reply);
+}
+
+#SmartTemplates-forward {
+  list-style-image: var(--icon-forward), linear-gradient(to left bottom, red, blue);
+}
+
+
+menuitem.st4templatePicker {
+	list-style-image : url('chrome://smartTemplate4/content/skin/icons/template-load.png') !important;
+}
+
+menuitem.st4template_entry:hover, menuitem.st-mru:hover {
+	list-style-image : url('chrome://smartTemplate4/content/skin/icons/icon24x24.png') !important;
+}
+

@@ -4,6 +4,12 @@ let patchHeaderMenu;
 var reactNotification;
 */
 
+/* 
+  globals
+    WL: readonly,
+*/
+
+// eslint-disable-next-line no-unused-vars
 async function onLoad(activatedWhileWindowOpen) {
   // copy namespace (we are in 3pane or about:message)
   switch (window.parent.document.URL) {
@@ -21,21 +27,32 @@ async function onLoad(activatedWhileWindowOpen) {
 
   window.SmartTemplate4_WLM = WL; // keep a reference to the correct WindowListener. [issue 271]
   // it can only patch stuff in its own window!
+  /*
   const WAIT_FOR_3PANE = window.SmartTemplate4.Preferences.getMyIntPref(
     "fileTemplates.menus.delayMessagePane"
   );
+  */
   window.SmartTemplate4.Util.logDebug(
     `============INJECT==========\nst-messagePane.js onLoad(${activatedWhileWindowOpen})`
   );
 
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
+  // [issue 390] 
+  Services.scriptloader.loadSubScript(
+    "chrome://smarttemplate4/content/scripts/st-ui-polyfills.js",
+    window,
+    "UTF-8"
+  );
+
 
   const contentDoc = window.document;
   const HEADERSELECTOR =
     '[data-extensionid="smarttemplate4@thunderbird.extension"].message-header-view-button';
   // [data-extensionid="smarttemplate4@thunderbird.extension"].message-header-view-button
   let headerButton = contentDoc.querySelector(HEADERSELECTOR); //  getElementById(HEADERBARID);
-  if (!headerButton) return;
+  if (!headerButton) {
+    return;
+  }
   if (window.SmartTemplate4.Preferences.getMyBoolPref("toolbar.hideLabel")) {
     headerButton.classList.add("force-label-hidden");
   } else {
@@ -74,6 +91,7 @@ async function onLoad(activatedWhileWindowOpen) {
   */
 }
 
+// eslint-disable-next-line no-unused-vars
 function onUnload(isAddOnShutDown) {
   //  window.SmartTemplate4.Util.notifyTools.removeListener(reactNotification);
 }

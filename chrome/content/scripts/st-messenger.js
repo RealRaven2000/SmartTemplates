@@ -20,6 +20,7 @@ async function onLoad(activatedWhileWindowOpen) {
   let _layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
   /** Main Toolbar **/
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
+
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css");
 
   const util = window.SmartTemplate4.Util;
@@ -287,6 +288,13 @@ async function onLoad(activatedWhileWindowOpen) {
   };
 
   window.SmartTemplate4.WL = WL; // we need this in patchUnifiedToolbar();
+  // [issue 390] script requires WL:
+  Services.scriptloader.loadSubScript(
+    "chrome://smarttemplate4/content/scripts/st-ui-polyfills.js",
+    window,
+    "UTF-8"
+  );
+
   window.SmartTemplate4.Util.notifyTools.enable();
 
   util.logDebug("Util.init...");

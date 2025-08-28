@@ -6,6 +6,7 @@
 #smartTemplate4_settings 
 {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png") !important;
+  --menuitem-icon:  url("chrome://smartTemplate4/content/skin/icons/icon16x16.png") !important;  
 }
 /* ############################# SPACE BETWEEN LABEL&ICON ############################ */
 .buttonIcon label 

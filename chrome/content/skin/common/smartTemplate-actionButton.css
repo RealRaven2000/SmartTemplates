@@ -107,6 +107,7 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash:h
 
 #smartTemplates-checklicense {
   list-style-image: url("chrome://smarttemplate4/content/skin/icons/info.svg") !important;
+  --menuitem-icon:  url("chrome://smarttemplate4/content/skin/icons/info.svg") !important;
   fill: white;
   color: white;
 }

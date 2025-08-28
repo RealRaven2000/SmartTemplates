@@ -1,0 +1,83 @@
+/** POPUP MENUS **/
+
+/* default icon (empty) avoids placeholder square */
+.menuitem-iconic:not([--menuitem-icon]),
+menu.menu-iconic:not([--menuitem-icon]) {
+  --menuitem-icon: url("chrome://smarttemplate4/content/skin/icons/blank.svg");
+}
+
+#smartTemplates-settings {
+  --menuitem-icon: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
+}
+#smartTemplates-settings-new {
+	--menuitem-icon: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
+}
+#smartTemplates-headerMenuAPI, #smartTemplates-MruMenuAPI {
+  --menuitem-icon: url("chrome://smarttemplate4/content/skin/icons/webex.png") !important;
+}
+
+#smartTemplates-docs {
+	--menuitem-icon: url("chrome://smarttemplate4/content/skin/icons/docs.svg") !important;
+}
+
+#smartTemplates-tests {
+	--menuitem-icon: url("chrome://smarttemplate4/content/skin/icons/bug.svg") !important;
+}
+
+#smartTemplates-news {
+	--menuitem-icon: url("chrome://smarttemplate4/content/skin/icons/new.svg") !important;
+}
+
+/* reply buttons - see:
+    https://searchfox.org/comm-esr102/source/mail/themes/shared/mail/messageHeader.css#195
+    https://searchfox.org/comm-esr102/source/mail/themes/shared/mail/icons.css
+  */
+
+#smartTemplates-write-menu {
+  --menuitem-icon: var(--icon-new-mail);
+}
+
+/* reply, reply to sender */
+#smartTemplates-reply-menu {
+  --menuitem-icon: var(--icon-reply);
+}
+
+#smartTemplates-reply-all-menu {
+  --menuitem-icon: var(--icon-reply-all);
+}
+
+#smartTemplates-reply-list-menu {
+  --menuitem-icon: var(--icon-reply-list);
+}
+
+
+#smartTemplates-forward-menu {
+  --menuitem-icon: var(--icon-forward);
+}
+
+/* future */
+#smartTemplates-replyall-menu {
+  --menuitem-icon: var(--icon-reply-all);
+}
+#smartTemplates-replylist-menu {
+  --menuitem-icon: var(--icon-reply-list);
+}
+
+/* test */
+#SmartTemplates-reply {
+  --menuitem-icon: var(--icon-reply);
+}
+
+#SmartTemplates-forward {
+  --menuitem-icon: var(--icon-forward), linear-gradient(to left bottom, red, blue);
+}
+
+
+menuitem.st4templatePicker {
+	--menuitem-icon : url('chrome://smartTemplate4/content/skin/icons/template-load.png') !important;
+}
+
+menuitem.st4template_entry:hover, menuitem.st-mru:hover {
+	--menuitem-icon : url('chrome://smartTemplate4/content/skin/icons/icon24x24.png') !important;
+}
+
