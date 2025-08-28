@@ -164,8 +164,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           }
           const Cc = Components.classes,
             Ci = Components.interfaces;
-          // [issue 285]
-          // util.popupLicenseNotification(mode + "_template", true, true); // save_template, load_template
                 
           let filterText; //localized text for filePicker filter menu
           
