@@ -1604,7 +1604,7 @@
     "message": "SmartTemplates vaatii lisenssin jatkaa työtä. Lue lisää ikkunan alareunasta."
   },
   "st.notification.license.text": {
-    "message": "Tästä lähtien SmartTemplates vaatii vähintään vakioluvan. Lue lisää tästä lisenssisivuiltamme."
+    "message": "SmartTemplates toimii normaalisti. Lisenssi poistaa tämän muistutuksen — klikkaa alla lisätietoja varten."
   },
   "st.notification.licensing": {
     "message": "Lisätietoja lisensoinnista"
