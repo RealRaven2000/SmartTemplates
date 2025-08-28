@@ -1595,7 +1595,7 @@
     "message": "SmartTemplates需要許可才能繼續工作。 閱讀電子郵件撰寫窗口底部的更多信息。"
   },
   "st.notification.license.text": {
-    "message": "SmartTemplates 照常運行。授權可移除此提醒 — 點擊下方了解更多資訊。"
+    "message": "從現在開始，SmartTemplates至少需要一個標准許可證。 在我們的許可頁面上閱讀更多相關信息。"
   },
   "st.notification.licensing": {
     "message": "更多關於許可"

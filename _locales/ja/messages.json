@@ -1572,7 +1572,7 @@
     "message": "SmartTemplates の利用にはライセンスが必要です。メッセージ作成ウインドウ下部をご覧ください。"
   },
   "st.notification.license.text": {
-    "message": "SmartTemplatesは通常通り動作します。ライセンスを取得するとこの通知は表示されなくなります — 詳細は下のリンクをクリックしてください。"
+    "message": "今後、SmartTemplates では最低でも Standard ライセンスが必要となります。詳細についてはライセンスのページをご覧ください。"
   },
   "st.notification.licensing": {
     "message": "ライセンスについての詳細"

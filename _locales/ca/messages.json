@@ -1605,7 +1605,7 @@
     "message": "SmartTemplates requereix una llicència per continuar treballant. Llegiu-ne més a la part inferior de la finestra de redacció."
   },
   "st.notification.license.text": {
-    "message": "SmartTemplates continua funcionant com sempre. Una llicència elimina aquest recordatori — fes clic a continuació per a més informació."
+    "message": "A partir d’ara, SmartTemplates requereix almenys una llicència estàndard. Llegiu-ne més a la nostra pàgina de llicències."
   },
   "st.notification.licensing": {
     "message": "Més informació sobre llicències"

@@ -1166,9 +1166,6 @@
   "st.notification.donate": {
     "message": "Donasi"
   },
-  "st.notification.license.text": {
-    "message": "SmartTemplates tetap berfungsi seperti biasa. Lisensi menghapus pengingat ini — klik di bawah untuk informasi lebih lanjut."
-  },
   "st.notification.premium.btn.extendDomainLicense": {
     "message": "Perpanjang Lisensi Domain"
   },

@@ -1547,7 +1547,7 @@
     "message": "SmartTemplates richiede una licenza per continuare a funzionare. Leggi ulteriori informazioni nella parte inferiore della finestra di composizione dell'email."
   },
   "st.notification.license.text": {
-    "message": "SmartTemplates continua a funzionare normalmente. Una licenza rimuove questo promemoria — clicca qui sotto per ulteriori informazioni."
+    "message": "D'ora in poi SmartTemplates richiederà di sottoscrivere quantomeno una licenza standard. Si leggano maggiori info a questo proposito nella pagina delle licenze."
   },
   "st.notification.licensing": {
     "message": "Ulteriori informazioni sulla licenza"

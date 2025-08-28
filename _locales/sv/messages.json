@@ -1619,7 +1619,7 @@
     "message": "SmartTemplates kräver en licens för att fortsätta arbeta. Läs mer information längst ner i fönstret för e-postkomposition."
   },
   "st.notification.license.text": {
-    "message": "SmartTemplates fortsätter fungera som vanligt. En licens tar bort denna påminnelse — klicka nedan för mer information."
+    "message": "Från och med nu kräver SmartTemplates minst en standardlicens. Läs mer om detta på vår licensieringssida."
   },
   "st.notification.licensing": {
     "message": "Mer om licensiering"

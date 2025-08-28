@@ -1592,7 +1592,7 @@
     "message": "SmartTemplates zahteva licenco za nadaljevanje dela. Preberite več informacij na dnu okna za sestavo e-pošte."
   },
   "st.notification.license.text": {
-    "message": "SmartTemplates deluje kot običajno. Licenca odstrani to obvestilo — kliknite spodaj za več informacij."
+    "message": "Od zdaj naprej mora SmartTemplates zahtevati vsaj standardno licenco. Več o tem preberite na naši strani za licenciranje."
   },
   "st.notification.licensing": {
     "message": "Več o licenciranju"
