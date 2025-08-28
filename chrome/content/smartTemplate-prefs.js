@@ -18,12 +18,12 @@ SmartTemplate4.Preferences = {
 	},
 
 	isDebugOption: function(option) { // granular debugging
-		if (!this.isDebug)
+		if (!this.isDebug) {
 			return false;
+		}
 		try {
 			return this.getMyBoolPref("debug." + option);
-		}
-		catch(e) {return false;}
+		} catch {return false;}
 	},
   
   isBackgroundParser: function() {
