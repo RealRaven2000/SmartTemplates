@@ -1,11 +1,5 @@
 
 
-/* 
-  globals
-    WL: readonly,
-    ComposeStartup: writable
-*/
-
 /*
 function composeWindowIsReady(composeWindow) {
   return new Promise(resolve => {
@@ -40,22 +34,17 @@ var { SmartTemplates } = ChromeUtils.importESModule(
 window.SmartTemplate4 = SmartTemplates.SmartTemplate4;
 */
 
+
+/**/
+
 var mylisteners = {};
 
-// eslint-disable-next-line no-unused-vars
 async function onLoad(activatedWhileWindowOpen) {
   window.SmartTemplate4.Util.logHighlightDebug("st-composer.js - onLoad()", "yellow");
 
-  WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
+  let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
-  // [issue 390]
-  Services.scriptloader.loadSubScript(
-    "chrome://smarttemplate4/content/scripts/st-ui-polyfills.js",
-    window,
-    "UTF-8"
-  );
-
-
+  
   // Version specific code / style fixes
   WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay-102.css");
 
@@ -123,42 +112,37 @@ async function onLoad(activatedWhileWindowOpen) {
 	</window>
 	    
     `);
-
+    
   // WL.injectCSS("chrome://SmartTemplate4/content/skin/compose-overlay.css");    not working for editor document!
   WL.injectCSS("chrome://Smarttemplate4/content/skin/st-toolbar-overlay.css");
 
-  // tried to call initListener here but it was too late already ...
+  // tried to call initListener here but it was too late already ... 
 
   window.SmartTemplate4.Util.notifyTools.enable();
   await window.SmartTemplate4.Util.init();
 
   // window.SmartTemplate4.composer.onLoad(); // TOO LATE FOR WRAPPING ComposeStartup !!!
   // possibly reload the file template dropdown from toolbar button
-  window.addEventListener(
-    "SmartTemplates.BackgroundUpdate",
-    window.SmartTemplate4.composer.initLicensedUI.bind(window.SmartTemplate4.composer)
-  );
+  window.addEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.composer.initLicensedUI.bind(window.SmartTemplate4.composer));
   // add the style sheet, buttons for cleaning and template selector
-  //	util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
-  await window.SmartTemplate4.composer.startup();
-  window.SmartTemplate4.composer.load();
-
+	//	util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
+  await window.SmartTemplate4.composer.startup(); 
+	window.SmartTemplate4.composer.load();
+  
   await window.SmartTemplate4.composer.initTemplateMenu(); // since this is expensive, let's not call it from ComposeStartup it can be done later.
   await window.SmartTemplate4.composer.initSnippetMenu();
-
-  mylisteners["updateTemplateMenus"] = window.SmartTemplate4.composer.initTemplateMenu.bind(
-    window.SmartTemplate4.composer
-  );
-  mylisteners["updateSnippetMenus"] = window.SmartTemplate4.composer.initSnippetMenu.bind(
-    window.SmartTemplate4.composer
-  );
+  
+  mylisteners["updateTemplateMenus"] = window.SmartTemplate4.composer.initTemplateMenu.bind(window.SmartTemplate4.composer);
+  mylisteners["updateSnippetMenus"] = window.SmartTemplate4.composer.initSnippetMenu.bind(window.SmartTemplate4.composer);
 
   for (let m in mylisteners) {
-    window.addEventListener(`SmartTemplates.BackgroundUpdate.${m}`, mylisteners[m]);
-  }
+    window.addEventListener(`SmartTemplates.BackgroundUpdate.${m}` , mylisteners[m]); 
+  }  
+  
+
+
 }
 
-// eslint-disable-next-line no-unused-vars
 function onUnload(isAddOnShutDown) {
   try {
     window.SmartTemplate4.Util.logDebug("st-composer.js - onUnload()");
@@ -182,7 +166,8 @@ function onUnload(isAddOnShutDown) {
         ComposeStartup = origComposeStartup;
       }
     }
-  } catch (ex) {
-    console.warn("st-composer.js onUnload()", ex);
+  }
+  catch(ex) {
+    
   }
 }
