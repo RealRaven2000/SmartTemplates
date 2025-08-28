@@ -12,6 +12,15 @@
 // Support external HTML files that can be selected during the button press
 // write / reply and forward.
 
+/*
+  globals
+    LastInput:readonly,
+    getEnabledControllerForCommand,
+    ComposeMessage,
+    Recipients2CompFields,
+
+*/
+
 
 SmartTemplate4.fileTemplates = {
 	Entries: {
@@ -78,8 +87,10 @@ SmartTemplate4.fileTemplates = {
 	get entriesLength() {
 		let l = 0;
 		for (let p in this.Entries) { // walk through ids, get all arrays and sum up items
-		  if (Array.isArray(this.Entries[p]))
-				l += this.Entries[p].length;
+		  if (!Array.isArray(this.Entries[p])) {
+        continue;
+      }
+			l += this.Entries[p].length;
 		}
 		return l;
 	} ,
@@ -101,13 +112,13 @@ SmartTemplate4.fileTemplates = {
 					entries = this.Entries.snippets;
 					break;
 			}
-		} catch(ex){;}
+		} catch {;}
 		return entries;
 	},
   charset: "UTF-8",
   _document: null,
   get document() { // document of option window
-    if (this._document) return this._document;
+    if (this._document) {return this._document;}
 		let win = this.optionsWindow;
 		this._document = win ? win.document : null;
     return  this._document;
@@ -119,7 +130,7 @@ SmartTemplate4.fileTemplates = {
           optionsWindow = windowManager.getMostRecentWindow('addon:SmartTemplate4'); 
       return optionsWindow;
     }
-		catch(ex) { ; }
+		catch { return null; }
 	} , 
 	
   get ListBox() {
@@ -165,9 +176,9 @@ SmartTemplate4.fileTemplates = {
     if (!onlyUI) {
       util.logDebug ('clearList() - empty templateFile list'); 
 			let entries = this.CurrentEntries;
-			if (entries)
-				while (entries.length)
-					entries.pop();
+			if (entries) {
+        entries.length = 0; // will safely  discard contents
+      }
     }
     if (this.document) {  // only if options window is visible
       util.logDebug ('clearList() - empty listbox'); 
@@ -199,17 +210,19 @@ SmartTemplate4.fileTemplates = {
     const util = SmartTemplate4.Util;
     SmartTemplate4.Util.logDebug("onEditLabel", txt);
     // check if one is selected and we just changed it]
-    let path = this.document.getElementById('txtTemplatePath').value,
-        label = this.document.getElementById('txtTemplateTitle').value.trim(),
-        category = this.document.getElementById('txtTemplateCategory').value.trim(),
-        listbox = this.ListBox,
-        idx = forceIndex || listbox.selectedIndex;
+    const path = this.document.getElementById('txtTemplatePath').value,
+      label = this.document.getElementById('txtTemplateTitle').value.trim(),
+      category = this.document.getElementById('txtTemplateCategory').value.trim(),
+      listbox = this.ListBox,
+      idx = forceIndex || listbox.selectedIndex;
 		util.logDebugOptional("fileTemplates","onEdit();");
-    if (idx ==-1) return;
+    if (idx ==-1) {return;}
     let e = this.CurrentEntries[idx];
     // check if path matches
-		if (e.path != this.document.getElementById("txtTemplatePath").value)
-			return; // this is not a match. Let's not change the label
+		if (e.path != path) {
+      // this is not a match. Let's not change the label
+      return;
+    }
 		
 		if (e.label == label && e.category == category) {
 			return;
@@ -229,11 +242,12 @@ SmartTemplate4.fileTemplates = {
           c = document.getElementById("txtTemplateCategory").value; // update with new value
           item.value = JSON.stringify({path:p, category:c});
           break;
-        case "txtTemplateTitle":
+        case "txtTemplateTitle": {
           let txt = document.getElementById("txtTemplateTitle").value;
           e.label = txt;
           item.firstChild.value = SmartTemplate4.fileTemplates.makeLabel(e); // txt; 
           break;
+        }
       }
       await this.saveCustomMenu();
       return;
@@ -275,7 +289,7 @@ SmartTemplate4.fileTemplates = {
         p = v.path;
         c = v.category || "";
       }
-      catch(ex) {
+      catch {
         p = v;
       }
 			document.getElementById('txtTemplatePath').value = p;
@@ -348,16 +362,15 @@ SmartTemplate4.fileTemplates = {
   },
   
   remove: function() {
-    if (SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus")) debugger;
+    if (SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus")) {
+      // eslint-disable-next-line no-debugger
+      debugger;
+    }
     let listbox = this.ListBox,
         idx = listbox.selectedIndex;
-    if (idx<0) return;
+    if (idx<0) {return;}
     this.CurrentEntries.splice(idx, 1); // remove from array
-		if (listbox.removeItemAt) // method was removed in Tb 61
-			listbox.removeItemAt(idx);
-		else { 
-			listbox.getItemAtIndex(idx).remove();
-		}
+    listbox.getItemAtIndex(idx).remove();
     this.repopulate(false); // rebuild menu
     this.saveCustomMenu();
   },
@@ -382,8 +395,8 @@ SmartTemplate4.fileTemplates = {
   down: function down() {
     let listbox = this.ListBox,
         idx = listbox.selectedIndex;
-    if (idx == -1) return;
-    if (idx >= this.CurrentEntries.length-1) return;
+    if (idx == -1) {return;}
+    if (idx >= this.CurrentEntries.length-1) {return;}
 
     let swap = this.CurrentEntries[idx+1];
     this.CurrentEntries[idx+1] = this.CurrentEntries[idx];
@@ -501,7 +514,7 @@ SmartTemplate4.fileTemplates = {
   },
 
   sanitizeLabel: function(lbl, c) {
-    if (!c) return lbl;
+    if (!c) {return lbl;}
     return lbl.replace(c + " » ", "");
   },
 	
@@ -521,13 +534,15 @@ SmartTemplate4.fileTemplates = {
         
         function fillEntries(E,T,lb) {
           //empty list
-          while (T.length)
+          while (T.length) {
             T.pop();
-          if (lb) { 
-            while(lb.itemCount)
-              lb.removeItemAt(0);
           }
-          if (!E) return;
+          if (lb) { 
+            while (lb.itemCount) {
+              lb.removeItemAt(0);
+            }
+          }
+          if (!E) {return;}
           for (let i=0; i<E.length; i++) {
             let entry = E[i],
                 c = entry.category || "";
@@ -641,7 +656,7 @@ SmartTemplate4.fileTemplates = {
 
     menuitem.setAttribute("st4uiElement", "true");
     menuitem.setAttribute("st4composeType", composeType);
-    menuitem.classList.add("st4templateEntry");
+    menuitem.classList.add("st4template_entry");
     menuitem.classList.add("menuitem-iconic");
     if (theTemplate && theTemplate.path && theTemplate.path.endsWith(".css")) {
       menuitem.setAttribute("is","layout")
@@ -734,9 +749,8 @@ SmartTemplate4.fileTemplates = {
       if (window == singleM) { // check if current window is a single message
         singleParentWindow = window;
       }
-    }
-    catch(ex) {
-      
+    } catch {
+      //NOP
     }
 					
 		util.logDebugOptional("fileTemplates", "Add " + composeType + " templatesList: " + templatesList.length + " entries to [" + (popupParent.id || 'anonymous') + "]");
@@ -794,7 +808,7 @@ SmartTemplate4.fileTemplates = {
         let menu = doc.createXULElement("menu"),
             acCat = getAccessKey(acceleratorCat++);
         menu.classList.add("menuitem-iconic");
-        menu.classList.add("st4templateCategory");
+        menu.classList.add("st4template_category");
         menu.setAttribute("st4uiElement", "true");
         menu.setAttribute("accesskey", acCat); // A,B,C
         let lbl = acCat ? (acCat + " " + cat) : cat;
@@ -809,7 +823,7 @@ SmartTemplate4.fileTemplates = {
         if (isAddMaxCategoriesWarning) {
           let wrn = util.getBundleString("st.fileTemplates.restrictTemplateCats", [MAX_STANDARD_CATEGORIES.toString()]);
           let menuitem = doc.createXULElement("menuitem");
-          menuitem.classList.add("st4templateEntry");
+          menuitem.classList.add("st4template_entry");
           menuitem.classList.add("menuitem-iconic");
           menuitem.setAttribute("label", wrn);
           menuitem.addEventListener("command",
@@ -880,23 +894,29 @@ SmartTemplate4.fileTemplates = {
         if (acKey) {
           menuitem.setAttribute("accesskey", acKey);
         }
+        let controller; 
         if (isMRUmenu) {
           let actionId="";
           switch(theTemplate.cmd) {
             case "forward":
               actionId = "fwd.tab";
+              controller = "cmd_forward"; 
               break;
             case "reply":
               actionId = "rsp.tab";
+              controller = "cmd_reply"; 
               break;
             case "replyAll":
               actionId = "st.menu.replyAll";
+              controller = "cmd_replyAll"; 
               break;
             case "replyList":
               actionId = "st.menu.replyList";
+              controller = "cmd_replyList"; 
               break;
             case "write":
               actionId = "new.tab";
+              controller = "cmd_newMessage"; 
               break;
             default: continue;
           }
@@ -905,6 +925,9 @@ SmartTemplate4.fileTemplates = {
           // add category to label
           let catMenu = cat ? `${cat} ${delimiter} ` : "";
           newLabel = `${lblAction}: ${catMenu}${title}`;    
+        }
+        if (controller) {
+          menuitem.setAttribute("controller",controller);
         }
         msgPopup.appendChild(menuitem);
       }
@@ -1022,10 +1045,10 @@ SmartTemplate4.fileTemplates = {
   configureMenuMRU: function(msgPopup) {
     // uses the classes st-last-rsp st-last-new st-last-fwd for adding the name of the last used templates
     let menuitem = msgPopup.querySelector(".st-mru"); // should be only one per menu!
-    if (!menuitem) return;
+    if (!menuitem) {return;}
     let controller = msgPopup.parentElement.getAttribute("controller");
     let composeType = this.getComposeTypeFull(controller);
-    if (!composeType) return;
+    if (!composeType) {return;}
     let setting = "fileTemplates.mru." + composeType,
         jsonTemplate = SmartTemplate4.Preferences.getStringPref(setting, ""),
         sEmptyLabel = "(not set)";
@@ -1050,29 +1073,30 @@ SmartTemplate4.fileTemplates = {
 			if (tb.length) {
 				// iterate NodeList:
 				tb[0].childNodes.forEach( 
-				  function(cV, cI, id) { 
+				  (cV, _cI, _id) => { 
 					  if (cV.tagName=="toolbaritem") { // drill down into "smart" reply buttons - hdrSmartReplyButton item
 							cV.childNodes.forEach(
-							  function(bV, bI, id) {
+							  function(bV, _bI, _id) {
 									if (buttonName == bV.id ) {  // && !bV.getAttribute('hidden')
 										element = bV;
 									}
 								}
 							);
-						}
-						else
+						} else {
 							// make sure the button is not hidden!
 							if (buttonName == cV.id ) {  // !cV.getAttribute('hidden')
 								element = cV;
 							}
+            }
 					}
 				);
 			}
 		}
-		else
+		else {
 			element = document.getElementById(buttonName);
+    }
 		
-		if (!element) return null;
+		if (!element) {return null;}
 		const nodes = element.childNodes;
 		if (nodes.length) {
 			for (let i = 0; i < nodes.length; ++i) {
@@ -1135,7 +1159,7 @@ SmartTemplate4.fileTemplates = {
     try { 
       if (window) { loc = window.document.URL; }
     }
-    catch(ex) {;}
+    catch {;}
 
     util.logDebug(`fileTemplates.initMenus(reset=${reset}) ...\n`, options);
 
@@ -1162,8 +1186,8 @@ SmartTemplate4.fileTemplates = {
     function cleanup(doc) {
       // 0) clear all old items if they exist
       let separators = doc.getElementsByClassName("st4templateSeparator"),
-          items = doc.getElementsByClassName("st4templateEntry"),
-          categories = doc.getElementsByClassName("st4templateCategory"),
+          items = doc.getElementsByClassName("st4template_entry"),
+          categories = doc.getElementsByClassName("st4template_category"),
           pickers = doc.getElementsByClassName("st4templatePicker"),
           configurators = doc.getElementsByClassName("st4templateConfig"),
           infoitems = doc.getElementsByClassName("st4templateInfo");
@@ -1171,33 +1195,39 @@ SmartTemplate4.fileTemplates = {
       // turn these HTMLCollections into Arrays
       Array.from(separators).forEach(el => { 
         let menu = el.parentNode;
-        if (!menu.getAttribute('st4configured') || reset)
+        if (!menu.getAttribute('st4configured') || reset) {
           el.parentNode.removeChild(el); 
+        }
       });
       Array.from(items).forEach(el => { 
           let menu = el.parentNode;
-          if (!menu.getAttribute('st4configured') || reset)
+          if (!menu.getAttribute('st4configured') || reset) {
             el.parentNode.removeChild(el); 
+          }
       });
       Array.from(pickers).forEach(el => { 
           let menu = el.parentNode;
-          if (!menu.getAttribute('st4configured') || reset)
+          if (!menu.getAttribute('st4configured') || reset) {
             el.parentNode.removeChild(el); 
+          }
       });
       Array.from(configurators).forEach(el => { 
           let menu = el.parentNode;
-          if (!menu.getAttribute('st4configured') || reset)
+          if (!menu.getAttribute('st4configured') || reset) {
             el.parentNode.removeChild(el); 
+          }
       });
       Array.from(categories).forEach(el => { 
           let menu = el.parentNode;
-          if (!menu.getAttribute('st4configured') || reset)
+          if (!menu.getAttribute('st4configured') || reset) {
             el.parentNode.removeChild(el); 
+          }
       });
       Array.from(infoitems).forEach(el => { 
           let menu = el.parentNode;
-          if (!menu.getAttribute('st4configured') || reset)
+          if (!menu.getAttribute('st4configured') || reset) {
             el.parentNode.removeChild(el); 
+          }
       });    
     }
 
@@ -1210,8 +1240,8 @@ SmartTemplate4.fileTemplates = {
 
       // single sections can be disabled by explicitely specifying which section
       // should be patched, via options.toolbarType
-      let isHackUnified = !(options.toolbarType && options.toolbarType!="unified"),
-          isHackMessageHeader = !(options.toolbarType && options.toolbarType!="messageheader");
+      const isHackUnified = !(options.toolbarType && options.toolbarType!="unified");
+      // isHackMessageHeader = !(options.toolbarType && options.toolbarType!="messageheader");
 
 
       if (isHackUnified) { // unified toolbar button
@@ -1245,7 +1275,7 @@ SmartTemplate4.fileTemplates = {
 	pickFileFromSettings: function () {
     let el = document ?
       document.getElementById('btnPickTemplate') : null;
-    if (el) el.classList.remove('pulseRed'); // remove animation. we've found the button!
+    if (el) {el.classList.remove('pulseRed');} // remove animation. we've found the button!
 		this.pickFile(
 		  async function(localFile) {
 				const prefs = SmartTemplate4.Preferences;
@@ -1325,7 +1355,7 @@ SmartTemplate4.fileTemplates = {
   // Get file path of existing html template / css file.
   // itemParams: template menu item from listbox {path, label, filter}
   // should return path of the file
-  openTemplateFileExternal:  async function(itemParams) {
+  openTemplateFileExternal:  async function(_itemParams) {
     let resolver; //placeholder for resolver callback, outside of promise
     let newPromise = new Promise(inner_res => {
         resolver = inner_res; //assign resolver callback as value to outside @res
@@ -1359,7 +1389,7 @@ SmartTemplate4.fileTemplates = {
 
   composeFromAPI: async function (menuEntry) {
     let composeType = this.getComposeTypeFull(menuEntry.controller);
-    if (!composeType) return; // error
+    if (!composeType) {return;} // error
     let entry = { 
       command: menuEntry.controller,
       composeType: composeType.substring(0,3), 
@@ -1479,7 +1509,7 @@ SmartTemplate4.fileTemplates = {
       (e.cmd == entry.cmd ||
        e.command == entry.command));
 
-    if (!entry) return false;
+    if (!entry) {return false;}
     
     if (el) {
       let idx = SmartTemplate4.fileTemplates.MRU_Entries.indexOf(el);
@@ -1664,7 +1694,7 @@ SmartTemplate4.fileTemplates = {
     try { 
       previous = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
     }
-    catch(ex) {}; // using external template for the first time
+    catch { ; } // using external template for the first time
 
     if (lastTemplate) {
       // remember fileTemplates.mru.* setting for either of rsp, new, fwd
@@ -1699,7 +1729,7 @@ SmartTemplate4.fileTemplates = {
 
     const isFormatCSS = (theFileTemplate.path.endsWith(".css"));
     if (!html) {
-      html = tmpTemplate.Text;
+      html = fileTemplateSource.Text;
     }
     
     // [issue 164] - placeholder for selected text
@@ -1749,7 +1779,7 @@ SmartTemplate4.fileTemplates = {
     } else {
       flags.isFragment = true;
       flags.isFileTemplate = true;
-      if (!flags.filePaths) flags.filePaths = [];
+      if (!flags.filePaths) {flags.filePaths = [];}
       SmartTemplate4.Util.logDebugOptional(
         "fileTemplates",
         `insertFileEntryInComposer: Add file to template stack: ${theFileTemplate.path}`
@@ -1794,6 +1824,7 @@ SmartTemplate4.fileTemplates = {
   
   // [issue 173] function to trigger mailing with a template from a filter (FiltaQuilla feature issue 153)
   onExternalMailProcess: function(data, composeType) {
+    const Ci = Components.interfaces;
     // similar to onItemClick / onSelectAdHoc
     SmartTemplate4.Util.logDebug("SmartTemplates.fileTemplates.onExternalMailProcess()", "composeType: " + composeType, data);
     
@@ -1806,8 +1837,9 @@ SmartTemplate4.fileTemplates = {
     let msgHeader = data.messageHeader;
     
     // SmartTemplate4.fileTemplates.armedEntry = 
-    if (!SmartTemplate4.fileTemplates.armedQueue)
+    if (!SmartTemplate4.fileTemplates.armedQueue) {
       SmartTemplate4.fileTemplates.armedQueue = [];
+    }
 
     // simulate a reply to this message!
     let realMessage = SmartTemplate4.Util.extension.messageManager.get(msgHeader.id),
@@ -1964,7 +1996,7 @@ SmartTemplate4.fileTemplates = {
 			try {
 				return converter.ConvertToUnicode(data);
 			}
-			catch(ex) {
+			catch {
         const errText = util.getBundleString("st.fileTemplates.error.charSet").replace("{1}", charset);
       
         await SmartTemplate4.Util.showSmartTemplatesMessage({
@@ -1973,7 +2005,7 @@ SmartTemplate4.fileTemplates = {
         });
       
         const composerWin = Services.wm.getMostRecentWindow("msgcompose");
-        if (composerWin) composerWin.focus();
+        if (composerWin) {composerWin.focus();}
       
         return data.toString();
 			}
@@ -2007,9 +2039,9 @@ SmartTemplate4.fileTemplates = {
 				
 				let bomCharset = false;
 				// "a file with the first three bytes 0xEF,0xBB,0xBF is probably a UTF-8 encoded file"
-				if (bom.charCodeAt(0) == 239 && bom.charCodeAt(1) == 187 && bom.charCodeAt(2) == 191) bomCharset = 'UTF-8'; //UTF-8 BOM
-				if (bom.charCodeAt(0) == 255 && bom.charCodeAt(1) == 254) bomCharset = 'UTF-16LE';  //UTF-16 LE BOM
-				if (bom.charCodeAt(0) == 254 && bom.charCodeAt(1) == 255) bomCharset = 'UTF-16BE';  //UTF-16 BE BOM
+				if (bom.charCodeAt(0) == 239 && bom.charCodeAt(1) == 187 && bom.charCodeAt(2) == 191) {bomCharset = 'UTF-8';} //UTF-8 BOM
+				if (bom.charCodeAt(0) == 255 && bom.charCodeAt(1) == 254) {bomCharset = 'UTF-16LE';}  //UTF-16 LE BOM
+				if (bom.charCodeAt(0) == 254 && bom.charCodeAt(1) == 255) {bomCharset = 'UTF-16BE';}  //UTF-16 BE BOM
 				
 				if (bomCharset) {
 					//This is kind of Unicode encoded file, it can't be read using simple scriptableinputstream, because it contain null characters (in terms of 8-bit strings). 
@@ -2035,7 +2067,7 @@ SmartTemplate4.fileTemplates = {
 					let headEndIndex = template.HTML.indexOf('</head');
 					if (headEndIndex > -1) {
 						let headStartIndex = template.HTML.indexOf('<head');
-						if (headStartIndex<0) headStartIndex=0;
+						if (headStartIndex<0) {headStartIndex=0;}
 						head = template.HTML.substring(headStartIndex, headEndIndex);
 						util.logDebugOptional("fileTemplates","Found a <head> element - determining charset next.");
 					} else {
@@ -2080,8 +2112,8 @@ SmartTemplate4.fileTemplates = {
 				return true;
 			} catch (e) {
 				util.logException('readHTMLTemplateFile()', e);
-				try { inStream.close(); } catch (e) {}
-				try { fstream.close(); } catch (e) {}
+				try { inStream.close(); } catch {;}
+				try { fstream.close(); } catch {;}
 			}
 		} catch (e) {
 			util.logException('readHTMLTemplateFile()', e);
@@ -2101,33 +2133,33 @@ SmartTemplate4.fileTemplates = {
       charset: null			
 		};
 		if (await this.readHTMLTemplateFile(template)) {
+      let html = "";
 			try { 
 				// let HTMLEditor = gMsgCompose.editor.QueryInterface(Components.interfaces.nsIHTMLEditor);
-				let html = "";
 				if ('HTML' in template) { 
 					html = template.HTML;
         } else {
-					if ('Text' in template)
+					if ('Text' in template) {
 						html = template.Text; // Stationery.plainText2HTML()
+          }
 				}
 				// HTMLEditor.rebuildDocumentFromSource(html);
-			}
-			catch(ex) {
-				util.logDebug("fileTemplates.applyTemplate()", ex);
+			} catch(ex) {
+				util.logDebug("fileTemplates.applyTemplate()", ex, html);
 				template.failed = true;
-			}
-			finally {
+			} finally {
 				// gMsgCompose.editor.endTransaction();
 			}
 		}
-		else 
+		else {
 			template.failed = true;
+    }
 		
 		return template;
 	},
 
   getController: function(menuitem) {
-    if (!menuitem) return null;
+    if (!menuitem) {return null;}
     let p = menuitem;
     while (p && p.tagName && p.tagName.startsWith("menu")) {
       let x = p.getAttribute("controller");
