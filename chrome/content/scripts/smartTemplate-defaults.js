@@ -1,4 +1,8 @@
-/* global settings */
+/* Global Settings, stroed in legacy pref. needs migration to local storage. */
+
+/* globals
+  pref 
+  */
 pref("extensions.smartTemplate4.sandbox", false); // disable sandboxed java
 pref("extensions.smartTemplate4.firstRun", true);
 pref("extensions.smartTemplate4.deferred.autoUpdate", true);
