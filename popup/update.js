@@ -78,6 +78,15 @@ END LICENSE BLOCK */
         messenger.windows.openDefaultBrowser(`https://github.com/RealRaven2000/SmartTemplates/issues/${issueId}`);
       }
     }    
+
+    if (event.target.classList.contains("bugzilla")) {
+      let bugId = event.target.getAttribute("no");
+      if (bugId) {
+        messenger.windows.openDefaultBrowser(
+          `https://bugzilla.mozilla.org/show_bug.cgi?id=${bugId}`
+        );
+      }
+    }    
     
 
     if (event.target.id.startsWith("donate")) {
