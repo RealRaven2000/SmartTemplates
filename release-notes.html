@@ -1,23 +1,27 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.13">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.14">can be found here</a>
+
+Some users may have seen a false incompatibility warning after updating from Thunderbird to v142. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. The previous version of SmartTemplates was already fully compatible with 142. 
+
+To get this fixed I raised a bug with Thunderbird: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>.
+
 
 <b>Improvements</b>
 <ul>
-  <li>
-    Made compatible with Thunderbird 141.
-  </li>
-  <li> Indicate when a web page was opened in a tab in the background (by adding a label to the link) </li>
-  <li> Support for Unix style time strings to %dateformat% variable: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/381">[issue 381]</a> 
-    %dateformat.received(unix)% - – Inserts the received time as a Unix timestamp (seconds since epoch = January 1, 1970).
-    %dateformat.current(timestamp)% - – Inserts the current time in milliseconds since the epoch.
-  </li>
-  <li> Added optional `nodefer` parameter to `%dateformat.current()%`. 
+<li>Made compatible with Thunderbird 143. </li>
+<li>Variable documentation: Improve searching to search <code>%variable%</code>  fields <a href="https://github.com/RealRaven2000/SmartTemplates/issues/388">[issue 388]</a></li>
+<li>Added "Minimal news" mode to show for badge 🟠 for new updates instead of the 'Read the News' label - enable this in Settings » Licenses under 'Updates'. 
 
-    Normally, dynamic fields like `%subject%`, `%recipient(name)%`, or `%date.current%` are inserted as interactive placeholders (so they can update when you click or when sending the email).  
-
-    These are useful when the data isn't available yet, like when composing a new message. The `nodefer` parameter disables this behavior and immediately inserts the actual value as plain text.   <a href="https://github.com/RealRaven2000/SmartTemplates/issues/382">[issue 382]</a>
-  </li>
+This will make the work with SmartTemplates less intrusive, while still signalling news about possible important changes. As always, the badge and blue background will disappear as soon as clicking on the 'Latest news' menu entry.
+</li>
+<li>Add a warning for Standard License requirement for <code>%file%</code>, <code>%dateformat%</code>  instead of triggering premium feature warning. Also removed the message about requiring a license (st.notification.license.required) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/391">[issue 391]</a></li>
 </ul>
 
+<b>Bug Fixed</b>
+<ul>
+<li>Fixed a minor issue with the line &quot;Click a heading or Expand All&quot;</li>
+<li>Fixed a problem with escaped commas from clipboard <a href="https://github.com/RealRaven2000/SmartTemplates/issues/386">[issue 386]</a></li>
+<li>Fixed for Thunderbird 143: all menu icons of all popups broken <a href="https://github.com/RealRaven2000/SmartTemplates/issues/390">[issue 390]</a></li>
+</ul>

@@ -902,7 +902,7 @@
     "message": "{P1}Continuiamo a seguire il ciclo di rilascio mensile di Thunderbird per garantire compatibilità e stabilità. Come sempre, questo lavoro è interamente finanziato dalle vendite delle licenze.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Importante:{boldEnd} Thunderbird ha aggiunto un ciclo di rilascio mensile. {P2}{P1} Il primo nuovo aggiornamento mensile 141 è stato rilasciato il 23 luglio 2025, e non è ancora disponibile una beta per la versione 142. Sto testando costantemente con l’ultima beta per garantire la compatibilità, il che potrebbe comportare ulteriori aggiornamenti di manutenzione, qualora si verifichino modifiche che rompano le funzionalità core di SmartTemplates.{P2}{P1} Questo potrebbe causare confusione o notifiche di compatibilità su SmartTemplates, ma stai tranquillo che SmartTemplates supporta completamente sia il canale mensile che l’ESR (140.*).{P2}{P1} Puoi continuare a lavorare senza interruzioni, qualunque percorso tu scelga. {P2}"
+    "message": "{P1}{boldStart}Importante:{boldEnd} Thunderbird continua il suo ciclo di rilascio mensile. {P2}{P1} Alcuni utenti potrebbero aver visto un falso avviso di incompatibilità dopo l’aggiornamento a Thunderbird v142. Ciò è stato causato dalle informazioni di compatibilità memorizzate nella cache di Thunderbird, che a volte non si aggiornano correttamente. La versione precedente di SmartTemplates era già pienamente compatibile con la 142. Ho segnalato un bug a Thunderbird per correggere questo problema: [Bugzilla 1986027]{P2}{P1} State tranquilli, SmartTemplates supporta pienamente sia il canale mensile che quello ESR (142.*), e potete continuare a lavorare senza interruzioni. {P2}"
   },
   "newsSection.license": {
     "message": "Poiché tutto il lavoro su SmartTemplates e il supporto gratuito sono finanziati esclusivamente dalle vendite di licenze, si prega di considerare l'acquisto di una licenza o il rinnovo della licenza attuale."
@@ -1102,6 +1102,12 @@
   },
   "newmsg.cap": {
     "message": "Messaggi nuovi"
+  },
+  "news.minimal": {
+    "message": "Non mostrare l'etichetta delle novità durante l'aggiornamento"
+  },
+  "news.minimal.tip": {
+    "message": "Se selezionato, SmartTemplates non modificherà l'etichetta del pulsante. Apparirà solo un piccolo punto arancione 🟠."
   },
   "splashScreen.disable": {
     "message": "Ometti schermata iniziale"
@@ -1352,10 +1358,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates aggiornato."
+    "message": "Nuovi SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶Leggi le novità!"
+    "message": "🔶Novità…"
   },
   "snippets.head": {
     "message": "Frammenti intelligenti"
@@ -1542,9 +1548,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "Hai già digitato il testo e desideri passare al modello {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates richiede una licenza per continuare a funzionare. Leggi ulteriori informazioni nella parte inferiore della finestra di composizione dell'email."
   },
   "st.notification.license.text": {
     "message": "SmartTemplates continua a funzionare normalmente. Una licenza rimuove questo promemoria — clicca qui sotto per ulteriori informazioni."
@@ -1975,7 +1978,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates è ora completamente compatibile con Thunderbird 141.{L2}{L1}Ora puoi usare i timestamp Unix con la variabile {{%dateformat%}}. [issue 381]{L2}{L1}Usa {{%dateformat.received(unix)%}} per inserire l'ora di ricezione come timestamp Unix (secondi dall'{italicStart}epoch{italicEnd} = 1 gennaio 1970).{L2}{L1}Usa {{%dateformat.current(timestamp)%}} per inserire l'ora corrente in millisecondi dall'{italicStart}epoch{italicEnd}.{L2}{L1}Aggiunto il parametro opzionale {{nodefer}} a {{%dateformat.current()%}} per evitare campi interattivi. [issue 382]"
+    "message": "{L1}SmartTemplates è ora completamente compatibile con Thunderbird 143.{L2}{L1}Ricerca full text migliorata nella finestra Variabili. [issue 388]{L2}{L1}Il pulsante SmartTemplates può ora mostrare un badge 🟠 per i nuovi aggiornamenti invece dell'etichetta 'Leggi le novità' - attivalo in Impostazioni » Licenze sotto 'Aggiornamenti'.{L2}{L1}Gli appunti non inseriranno più virgole escape. [issue 386]{L2}{L1}Thunderbird 143 aveva rotto tutte le icone del menu, ora corretto.{L2}{L1}{{%file%}} e {{%dateformat%}} non genereranno più avvisi inutili quando si utilizza una licenza standard. [issue 391]"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

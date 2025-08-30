@@ -902,7 +902,7 @@
     "message": "{P1}Nous continuons à suivre le cycle de publication mensuel de Thunderbird afin d’assurer la compatibilité et la stabilité. Comme toujours, ce travail est entièrement financé par la vente de licences.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Importante:{boldEnd} Thunderbird ha añadido un ciclo de lanzamientos mensual. {P2}{P1} La primera nueva actualización mensual 141 se lanzó el 23 de julio de 2025, y aún no hay beta disponible para la versión 142. Estoy probando constantemente con la última beta para asegurar la compatibilidad, lo que puede resultar en lanzamientos de mantenimiento adicionales si ocurren cambios que rompan la funcionalidad central de SmartTemplates.{P2}{P1} Esto podría causar confusión o notificaciones de compatibilidad sobre SmartTemplates, pero tenga la seguridad de que SmartTemplates es totalmente compatible con ambos canales, mensual y ESR (140.*).{P2}{P1} Puede continuar trabajando sin interrupciones, elija el camino que elija. {P2}"
+    "message": "{P1}{boldStart}Importante:{boldEnd} Thunderbird continúa con su ciclo de lanzamientos mensuales. {P2}{P1} Algunos usuarios pueden haber visto una falsa advertencia de incompatibilidad después de actualizar Thunderbird a la versión 142. Esto fue causado por información de compatibilidad en caché en Thunderbird, que a veces no se actualiza correctamente. La versión anterior de SmartTemplates ya era totalmente compatible con la 142. He informado de un error a Thunderbird para que lo corrijan: [Bugzilla 1986027]{P2}{P1} Tengan la seguridad de que SmartTemplates es totalmente compatible tanto con los canales mensuales como con los ESR (142.*), y pueden seguir trabajando sin interrupciones. {P2}"
   },
   "newsSection.license": {
     "message": "Como este trabajo es exclusivamente financiado por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar SmartTemplates en el futuro."
@@ -1108,6 +1108,12 @@
   },
   "newmsg.cap": {
     "message": "Redactar"
+  },
+  "news.minimal": {
+    "message": "No mostrar la etiqueta de novedades en la actualización"
+  },
+  "news.minimal.tip": {
+    "message": "Si está activado, SmartTemplates no modificará la etiqueta del botón. Solo aparecerá un pequeño punto naranja 🟠."
   },
   "splashScreen.disable": {
     "message": "Omitir pantalla de bienvenida"
@@ -1358,10 +1364,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates actualizado."
+    "message": "Nuevos SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶¡Lee las novedades!"
+    "message": "🔶Qué hay de nuevo…"
   },
   "snippets.label": {
     "message": "Fragmentos HTML para insertar en Composer"
@@ -1545,9 +1551,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "Ya ha escrito texto y desea cambiar a la plantilla {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates requiere una licencia para continuar trabajando. Lea más información en la parte inferior de la ventana de composición del correo electrónico."
   },
   "st.notification.license.text": {
     "message": "SmartTemplates sigue funcionando como siempre. Una licencia elimina este recordatorio — haz clic abajo para más información."
@@ -1978,7 +1981,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates es ahora totalmente compatible con Thunderbird 141.{L2}{L1}Ahora puede usar marcas de tiempo Unix con la variable {{%dateformat%}}. [issue 381]{L2}{L1}Utilice {{%dateformat.received(unix)%}} para insertar la hora recibida como una marca de tiempo Unix (segundos desde la {italicStart}época{italicEnd} = 1 de enero de 1970).{L2}{L1}Utilice {{%dateformat.current(timestamp)%}} para insertar la hora actual en milisegundos desde la {italicStart}época{italicEnd}.{L2}{L1}Se agregó el parámetro opcional {{nodefer}} a {{%dateformat.current()%}} para evitar campos interactivos. [issue 382]"
+    "message": "{L1}SmartTemplates ahora es totalmente compatible con Thunderbird 143.{L2}{L1}Mejora de la búsqueda de texto completo en la ventana de Variables. [issue 388]{L2}{L1}El botón de SmartTemplates ahora puede mostrar un distintivo 🟠 para nuevas actualizaciones en lugar de la etiqueta 'Leer noticias' - actívelo en Configuración » Licencias en 'Actualizaciones'.{L2}{L1}El portapapeles ya no insertará comas escapadas. [issue 386]{L2}{L1}Thunderbird 143 rompió todos los iconos de menú, ahora solucionado.{L2}{L1}{{%file%}} y {{%dateformat%}} ya no generarán advertencias innecesarias al usar una licencia estándar. [issue 391]"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

@@ -923,7 +923,7 @@
     "message": "{P1}Wij volgen nog steeds de maandelijkse uitgiftecyclus van Thunderbird om compatibiliteit en stabiliteit te garanderen. Zoals altijd wordt dit werk volledig gefinancierd door licentieverkoop.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Belangrijk:{boldEnd} Thunderbird heeft een maandelijks uitgavemodel toegevoegd. {P2}{P1} De eerste nieuwe 141 maandelijkse update werd uitgebracht op 23 juli 2025, en er is nog geen 142 beta beschikbaar. Ik test constant met de nieuwste beta om compatibiliteit te garanderen, wat kan leiden tot extra onderhoudsupdates als er veranderingen zijn die de kernfunctionaliteit van SmartTemplates breken.{P2}{P1} Dit kan verwarring of compatibiliteitsmeldingen over SmartTemplates veroorzaken, maar wees gerust, SmartTemplates ondersteunt zowel het maandelijkse als het ESR (140.*) kanaal volledig.{P2}{P1} Je kunt zonder onderbreking blijven werken, ongeacht welke weg je kiest. {P2}"
+    "message": "{P1}{boldStart}Belangrijk:{boldEnd} Thunderbird gaat door met de maandelijkse uitgavecyclus. {P2}{P1} Sommige gebruikers hebben mogelijk een valse incompatibiliteitswaarschuwing gezien na het updaten naar Thunderbird v142. Dit werd veroorzaakt door compatibiliteitsinformatie die in de cache van Thunderbird was opgeslagen en soms niet correct werd vernieuwd. De vorige versie van SmartTemplates was al volledig compatibel met 142. Ik heb een bug ingediend bij Thunderbird om dit op te lossen: [Bugzilla 1986027]{P2}{P1} Wees gerust, SmartTemplates ondersteunt zowel het maandelijkse als het ESR-kanaal (142.*) volledig, en u kunt zonder onderbreking blijven werken. {P2}"
   },
   "newsSection.license": {
     "message": "Aangezien al het werk aan SmartTemplates en de gratis ondersteuning uitsluitend wordt gefinancierd door licentieverkopen, overweeg dan een licentie aan te schaffen of uw huidige licentie te verlengen."
@@ -1129,6 +1129,12 @@
   },
   "newmsg.cap": {
     "message": "Nieuw bericht"
+  },
+  "news.minimal": {
+    "message": "Nieuwslabel niet weergeven bij updates"
+  },
+  "news.minimal.tip": {
+    "message": "Als ingeschakeld, wijzigt SmartTemplates het knoplabel niet. Er verschijnt alleen een klein oranje punt 🟠."
   },
   "splashScreen.disable": {
     "message": "Splash-scherm weglaten"
@@ -1388,10 +1394,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates bijgewerkt."
+    "message": "Nieuwe SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶Lees het nieuws!"
+    "message": "🔶Wat is er nieuw…"
   },
   "snippets.head": {
     "message": "Slimme fragmenten"
@@ -1578,9 +1584,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "U hebt al tekst ingetypt en wilt naar sjabloon {0} wisselen"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates vereist een licentie om te blijven werken. Meer info onder in het opstelvenster."
   },
   "st.notification.license.text": {
     "message": "SmartTemplates blijft normaal functioneren. Een licentie verwijdert deze melding — klik hieronder voor meer informatie."
@@ -2011,7 +2014,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates is nu volledig compatibel met Thunderbird 141.{L2}{L1}U kunt nu Unix-timestamps gebruiken met de variabele {{%dateformat%}}. [issue 381]{L2}{L1}Gebruik {{%dateformat.received(unix)%}} om de ontvangsttijd in te voegen als een Unix-timestamp (seconden sinds {italicStart}epoch{italicEnd} = 1 januari 1970).{L2}{L1}Gebruik {{%dateformat.current(timestamp)%}} om de huidige tijd in milliseconden sinds {italicStart}epoch{italicEnd} in te voegen.{L2}{L1}Optionele parameter {{nodefer}} toegevoegd aan {{%dateformat.current()%}} om interactieve velden te vermijden. [issue 382]"
+    "message": "{L1}SmartTemplates is nu volledig compatibel met Thunderbird 143.{L2}{L1}Verbeterde fulltext-zoekfunctie in het Variabelen-venster. [issue 388]{L2}{L1}De SmartTemplates-knop kan nu een badge 🟠 voor nieuwe updates weergeven in plaats van het label 'Lees het nieuws' - schakel dit in via Instellingen » Licenties onder 'Updates'.{L2}{L1}Klembord voegt geen escaped komma's meer in. [issue 386]{L2}{L1}Thunderbird 143 had alle menu-iconen kapotgemaakt, nu opgelost.{L2}{L1}{{%file%}} en {{%dateformat%}} zullen geen onnodige waarschuwingen meer genereren bij gebruik van een standaardlicentie. [issue 391]"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

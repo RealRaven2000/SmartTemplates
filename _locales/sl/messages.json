@@ -914,7 +914,7 @@
     "message": "{P1}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Pomembno:{boldEnd} Thunderbird je dodal mesečni cikel izdaj. {P2}{P1} Prva nova 141 mesečna posodobitev je bila izdana 23. julija 2025, beta različica 142 pa še ni na voljo. Nenehno testiram najnovejšo beta različico, da zagotovim združljivost, kar lahko privede do dodatnih vzdrževalnih izdaj, če pride do sprememb, ki prekinejo osnovno funkcionalnost SmartTemplates.{P2}{P1} To lahko povzroči nekaj zmede ali obvestil o združljivosti SmartTemplates, vendar bodite prepričani, da SmartTemplates v celoti podpira tako mesečni kot ESR (140.*) kanal.{P2}{P1} Lahko nadaljujete z delom brez prekinitve, ne glede na pot, ki jo izberete. {P2}"
+    "message": "{P1}{boldStart}Pomembno:{boldEnd} Thunderbird nadaljuje s svojim mesečnim ciklom izdaj. {P2}{P1} Nekateri uporabniki so morda videli napačno opozorilo o nezdružljivosti po posodobitvi na Thunderbird v142. To je bilo povzročeno s predpomnjeno informacijo o združljivosti v Thunderbirdu, ki se včasih ne osveži pravilno. Prejšnja različica SmartTemplates je bila že popolnoma združljiva z 142. Napako sem prijavil ekipi Thunderbird, da jo odpravijo: [Bugzilla 1986027]{P2}{P1} Zagotavljamo, da SmartTemplates popolnoma podpira tako mesečne kot ESR (142.*) kanale in lahko nadaljujete z delom brez prekinitve. {P2}"
   },
   "newsSection.license": {
     "message": "Ker je vsa dela na SmartTemplates in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
@@ -1135,6 +1135,12 @@
   },
   "newmsg.cap": {
     "message": "Sestavi"
+  },
+  "news.minimal": {
+    "message": "Ne prikaži oznake novic ob posodobitvi"
+  },
+  "news.minimal.tip": {
+    "message": "Če je izbrano, SmartTemplates ne bo spremenil oznake gumba. Pojavi se le majhna oranžna pika 🟠."
   },
   "splashScreen.disable": {
     "message": "Izpustite začetni zaslon"
@@ -1397,10 +1403,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates posodobljen."
+    "message": "Nove SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶Preberite novice!"
+    "message": "🔶Novosti…"
   },
   "snippets.head": {
     "message": "Pametni izrezki"
@@ -1587,9 +1593,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "Besedilo ste že vnesli in želite spremeniti v predlogo {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates zahteva licenco za nadaljevanje dela. Preberite več informacij na dnu okna za sestavo e-pošte."
   },
   "st.notification.license.text": {
     "message": "SmartTemplates deluje kot običajno. Licenca odstrani to obvestilo — kliknite spodaj za več informacij."
@@ -2032,7 +2035,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates je zdaj popolnoma združljiv z Thunderbird 141.{L2}{L1}Zdaj lahko uporabljate unix časovne žige z spremenljivko {{%dateformat%}}. [issue 381]{L2}{L1}Uporabite {{%dateformat.received(unix)%}} za vstavljanje prejetega časa kot unix časovni žig (sekunde od {italicStart}epoh{italicEnd} = 1. januar 1970).{L2}{L1}Uporabite {{%dateformat.current(timestamp)%}} za vstavljanje trenutnega časa v milisekundah od {italicStart}epoh{italicEnd}.{L2}{L1}Dodano je neobvezno {{nodefer}} parameter za {{%dateformat.current()%}}, da se preprečijo interaktivna polja. [issue 382]"
+    "message": "{L1}SmartTemplates je zdaj popolnoma združljiv s Thunderbird 143.{L2}{L1}Izboljšano iskanje po celotnem besedilu v oknu Spremenljivk. [issue 388]{L2}{L1}Gumb SmartTemplates lahko zdaj prikazuje značko 🟠 za nove posodobitve namesto oznake 'Preberi novice' - omogočite to v Nastavitve » Licence v razdelku 'Posodobitve'.{L2}{L1}Odložišče ne bo več vstavljalo escapiranih vejic. [issue 386]{L2}{L1}Thunderbird 143 je pokvaril vse ikone menija, zdaj popravljeno.{L2}{L1}{{%file%}} in {{%dateformat%}} ne bosta več povzročala nepotrebnih opozoril pri uporabi standardne licence. [issue 391]"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

@@ -929,7 +929,7 @@
     "message": "{P1}Seuraamme edelleen Thunderbirdin kuukausittaista julkaisusykliä varmistaaksemme yhteensopivuuden ja vakauden. Kuten aina, tämä työ rahoitetaan kokonaan lisenssimyynnillä.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Tärkeää:{boldEnd} Thunderbird on ottanut käyttöön kuukausittaisen julkaisusyklin. {P2}{P1} Ensimmäinen uusi 141 kuukauden päivitys julkaistiin 23. heinäkuuta 2025, eikä 142 beta-versiota ole vielä saatavilla. Testaan jatkuvasti uusinta beta-versiota varmistaakseni yhteensopivuuden, mikä voi johtaa lisäpäivityksiin, mikäli SmartTemplatesin ydintoiminnallisuudessa tapahtuu muutoksia.{P2}{P1} Tämä saattaa aiheuttaa sekaannusta tai yhteensopivuusilmoituksia SmartTemplatesin kanssa, mutta voit olla varma, että SmartTemplates tukee täysin sekä kuukausittaista että ESR (140.*) kanavaa.{P2}{P1} Voit jatkaa työskentelyä ilman keskeytyksiä, valitsetpa minkä tahansa päivitysvaihtoehdon. {P2}"
+    "message": "{P1}{boldStart}Tärkeää:{boldEnd} Thunderbird jatkaa kuukausittaista julkaisusykliään. {P2}{P1} Jotkut käyttäjät saattoivat nähdä virheellisen yhteensopimattomuusvaroituksen päivitettyään Thunderbirdin versioon 142. Tämä johtui Thunderbirdin välimuistissa olevista yhteensopivuustiedoista, jotka eivät aina päivity oikein. SmartTemplatesin edellinen versio oli jo täysin yhteensopiva 142:n kanssa. Tein Thunderbirdille bugiraportin tämän korjaamiseksi: [Bugzilla 1986027]{P2}{P1} Voit olla varma, että SmartTemplates tukee täysin sekä kuukausi- että ESR-kanavia (142.*), ja voit jatkaa työskentelyä keskeytyksettä. {P2}"
   },
   "newsSection.license": {
     "message": "Koska kaikki työ SmartTempaltessin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."
@@ -1150,6 +1150,12 @@
   },
   "newmsg.cap": {
     "message": "Uusi viesti"
+  },
+  "news.minimal": {
+    "message": "Älä näytä uutisotsikkoa päivityksissä"
+  },
+  "news.minimal.tip": {
+    "message": "Jos valittu, SmartTemplates ei muuta painikkeen nimeä. Näkyviin tulee vain pieni oranssi piste 🟠."
   },
   "splashScreen.disable": {
     "message": "Ohita Splash-näyttö"
@@ -1409,10 +1415,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates päivitetty."
+    "message": "Uudet SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶Lue uutiset!"
+    "message": "🔶Mitä uutta…"
   },
   "snippets.head": {
     "message": "Älykkäät katkelmat"
@@ -1599,9 +1605,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "Olet jo kirjoittanut tekstiä ja haluat vaihtaa malliin {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates vaatii lisenssin jatkaa työtä. Lue lisää ikkunan alareunasta."
   },
   "st.notification.license.text": {
     "message": "SmartTemplates toimii normaalisti. Lisenssi poistaa tämän muistutuksen — klikkaa alla lisätietoja varten."
@@ -2044,7 +2047,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates on nyt täysin yhteensopiva Thunderbird 141:n kanssa.{L2}{L1}Nyt voit käyttää Unix-aikaleimoja {{%dateformat%}}-muuttujassa. [issue 381]{L2}{L1}Käytä {{%dateformat.received(unix)%}} lisätäksesi vastaanottoajan Unix-aikaleimana (sekunteina {italicStart}epochista{italicEnd} = 1. tammikuuta 1970).{L2}{L1}Käytä {{%dateformat.current(timestamp)%}} lisätäksesi nykyisen ajan millisekunteina {italicStart}epochista{italicEnd}.{L2}{L1}Lisätty valinnainen {{nodefer}}-parametri {{%dateformat.current()%}}:ään interaktiivisten kenttien välttämiseksi. [issue 382]"
+    "message": "{L1}SmartTemplates on nyt täysin yhteensopiva Thunderbird 143:n kanssa.{L2}{L1}Parannettu täyden tekstin haku Muuttujat-ikkunassa. [issue 388]{L2}{L1}SmartTemplates-painike voi nyt näyttää merkin 🟠 uusista päivityksistä 'Lue uutiset' -tekstin sijaan - ota käyttöön Asetukset » Lisenssit kohdassa 'Päivitykset'.{L2}{L1}Leikepöytä ei enää lisää escape-merkityt pilkut. [issue 386]{L2}{L1}Thunderbird 143 rikkoi kaikki valikkoikonit, nyt korjattu.{L2}{L1}{{%file%}} ja {{%dateformat%}} eivät enää aiheuta tarpeettomia varoituksia käytettäessä normaalia lisenssiä. [issue 391]"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

@@ -927,7 +927,7 @@
     "message": "{P1}Continuem seguint el cicle de versions mensuals de Thunderbird per garantir la compatibilitat i l'estabilitat. Com sempre, aquesta feina es finança íntegrament mitjançant la venda de llicències.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird ha afegit un cicle de llançaments mensual. {P2}{P1} La primera nova actualització mensual 141 es va llançar el 23 de juliol de 2025, i encara no hi ha cap beta per a la versió 142. Estic provant constantment amb la beta més recent per garantir la compatibilitat, cosa que pot provocar llançaments de manteniment addicionals si hi ha canvis que trenquin la funcionalitat principal de SmartTemplates.{P2}{P1} Això podria causar confusió o notificacions de compatibilitat sobre SmartTemplates, però tingueu la seguretat que SmartTemplates és totalment compatible amb els canals mensual i ESR (140.*).{P2}{P1} Podeu continuar treballant sense interrupcions, sigui quin sigui el camí que trieu. {P2}"
+    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continua amb el seu cicle de llançament mensual. {P2}{P1} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a la v142. Això va ser causat per informació de compatibilitat emmagatzemada en memòria cau a Thunderbird, que de vegades no s'actualitza correctament. La versió anterior de SmartTemplates ja era completament compatible amb la 142. He informat d'un error a Thunderbird perquè ho solucionin: [Bugzilla 1986027]{P2}{P1} Tingueu la seguretat que SmartTemplates és totalment compatible tant amb els canals mensuals com amb l'ESR (142.*), i podeu continuar treballant sense interrupcions. {P2}"
   },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že veškerá práce na SmartTemplates a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
@@ -1148,6 +1148,12 @@
   },
   "newmsg.cap": {
     "message": "Messatges novèls"
+  },
+  "news.minimal": {
+    "message": "No mostrar l'etiqueta de notícies a les actualitzacions"
+  },
+  "news.minimal.tip": {
+    "message": "Si està activat, SmartTemplates no modificarà l'etiqueta del botó. Només apareixerà un petit punt taronja 🟠."
   },
   "splashScreen.disable": {
     "message": "Omet la pantalla de presentació"
@@ -1410,10 +1416,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates actualitzat."
+    "message": "Nous SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶Llegeix les novetats!"
+    "message": "🔶Què hi ha de nou…"
   },
   "snippets.head": {
     "message": "Fragments intelligents"
@@ -1600,9 +1606,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "Ja heu escrit text i voleu canviar a plantilla {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates requereix una llicència per continuar treballant. Llegiu-ne més a la part inferior de la finestra de redacció."
   },
   "st.notification.license.text": {
     "message": "SmartTemplates continua funcionant com sempre. Una llicència elimina aquest recordatori — fes clic a continuació per a més informació."
@@ -2036,7 +2039,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates ja és totalment compatible amb Thunderbird 141.{L2}{L1}Ara podeu utilitzar marques de temps Unix amb la variable {{%dateformat%}}. [issue 381]{L2}{L1}Utilitzeu {{%dateformat.received(unix)%}} per inserir l'hora de recepció com un segell de temps Unix (segons des de l'{italicStart}epoch{italicEnd} = 1 de gener de 1970).{L2}{L1}Utilitzeu {{%dateformat.current(timestamp)%}} per inserir l'hora actual en mil·lisegons des de l'{italicStart}epoch{italicEnd}.{L2}{L1}S'ha afegit el paràmetre opcional {{nodefer}} a {{%dateformat.current()%}} per evitar camps interactius. [issue 382]"
+    "message": "{L1}SmartTemplates ja és totalment compatible amb Thunderbird 143.{L2}{L1}Millora de la cerca de text complet a la finestra de Variables. [issue 388]{L2}{L1}El porta-retalls ja no inserirà comes escapades. [issue 386]{L2}{L1}Thunderbird 143 havia trencat totes les icones del menú, ja solucionat.{L2}{L1}{{%file%}} i {{%dateformat%}} ja no generaran advertències innecessàries amb una llicència estàndard. [issue 391]"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

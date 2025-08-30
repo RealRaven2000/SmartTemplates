@@ -926,7 +926,7 @@
     "message": "{P1}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 已添加每月发布周期。 {P2}{P1} 第一个新的 141 月度更新于 2025 年 7 月 23 日发布，目前尚无 142 测试版。 我正在不断测试最新的测试版以确保兼容性，如果发生破坏 SmartTemplates 核心功能的更改，可能会导致额外的维护版本。{P2}{P1} 这可能会导致有关 SmartTemplates 的混淆或兼容性通知，但请放心，SmartTemplates 完全支持每月和 ESR（140.*）渠道。{P2}{P1} 无论您选择哪条路径，都可以继续无中断工作。 {P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 继续其每月发布周期。 {P2}{P1} 一些用户在更新到 Thunderbird v142 后可能看到了错误的不兼容警告。这是由于 Thunderbird 中的兼容性缓存信息有时未能正确刷新。SmartTemplates 的上一个版本已经完全兼容 142。我已向 Thunderbird 提交了 Bug 报告以解决此问题: [Bugzilla 1986027]{P2}{P1} 请放心，SmartTemplates 完全支持每月版和 ESR (142.*) 渠道，您可以继续不间断地工作。 {P2}"
   },
   "newsSection.license": {
     "message": "由于SmartTemplates的所有工作和免费支持完全通过许可证销售资助，请考虑购买许可证或续订当前许可证。"
@@ -1138,6 +1138,12 @@
   },
   "newmsg.cap": {
     "message": "新消息"
+  },
+  "news.minimal": {
+    "message": "更新时不显示新闻标签"
+  },
+  "news.minimal.tip": {
+    "message": "如果勾选，SmartTemplates 不会更改按钮标签。只会显示一个小橙色圆点 🟠。"
   },
   "splashScreen.disable": {
     "message": "省略启动画面"
@@ -1401,10 +1407,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates 已更新."
+    "message": "新版本 SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶阅读新闻！"
+    "message": "🔶更新内容…"
   },
   "snippets.head": {
     "message": "智能片段"
@@ -1588,9 +1594,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "您已经输入了文本并想要更改为模板 {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates需要许可才能继续工作。 阅读电子邮件撰写窗口底部的更多信息。"
   },
   "st.notification.license.text": {
     "message": "SmartTemplates 照常运行。许可证可移除此提醒 — 点击下方了解更多信息。"
@@ -2024,7 +2027,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates現已完全相容Thunderbird 141。{L2}{L1}您現在可以在變數{{%dateformat%}}中使用Unix時間戳。 [issue 381]{L2}{L1}使用{{%dateformat.received(unix)%}}插入接收時間，格式為Unix時間戳（自{italicStart}epoch{italicEnd}即1970年1月1日起的秒數）。{L2}{L1}使用{{%dateformat.current(timestamp)%}}插入當前時間，以毫秒為單位，自{italicStart}epoch{italicEnd}起算。{L2}{L1}新增可選參數{{nodefer}}至{{%dateformat.current()%}}，以避免互動欄位。 [issue 382]"
+    "message": "{L1}SmartTemplates 现在完全兼容 Thunderbird 143。{L2}{L1}变量窗口的全文搜索得到改进。[issue 388]{L2}{L1}SmartTemplates按钮现在可以显示一个 🟠 徽章以替代“阅读新闻”标签显示新更新 - 在设置 » 许可证的“更新”中启用此功能。{L2}{L1}剪贴板不会再插入转义逗号。[issue 386]{L2}{L1}Thunderbird 143 破坏了所有菜单图标，现在已修复。{L2}{L1}{{%file%}} 和 {{%dateformat%}} 使用标准许可时不再生成不必要的警告。[issue 391]"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

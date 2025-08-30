@@ -923,7 +923,7 @@
     "message": "{P1}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 已新增每月發行週期。 {P2}{P1} 第一個新的 141 月度更新於 2025 年 7 月 23 日發布，目前尚無 142 測試版。 我正在持續測試最新的測試版以確保相容性，如果發生破壞 SmartTemplates 核心功能的變更，可能會導致額外的維護版本。{P2}{P1} 這可能會導致關於 SmartTemplates 的混淆或相容性通知，但請放心，SmartTemplates 完全支援每月及 ESR（140.*）通道。{P2}{P1} 無論您選擇哪條路徑，都可以繼續不間斷地工作。 {P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 一些用戶在更新到 Thunderbird v142 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。SmartTemplates 之前的版本已經完全相容於 142。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{P2}{P1} 請放心，SmartTemplates 完全支援每月版和 ESR (142.*) 通道，您可以繼續不間斷地工作。 {P2}"
   },
   "newsSection.license": {
     "message": "由於SmartTemplates的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
@@ -1144,6 +1144,12 @@
   },
   "newmsg.cap": {
     "message": "編寫"
+  },
+  "news.minimal": {
+    "message": "更新時不顯示新聞標籤"
+  },
+  "news.minimal.tip": {
+    "message": "如果勾選，SmartTemplates 不會更改按鈕標籤。僅會顯示一個小橘色圓點 🟠。"
   },
   "splashScreen.disable": {
     "message": "省略啟動畫面"
@@ -1403,10 +1409,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates 已更新."
+    "message": "新版本 SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶閱讀新聞！"
+    "message": "🔶更新內容…"
   },
   "snippets.head": {
     "message": "智能片段"
@@ -1590,9 +1596,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "您已輸入文本並想更改為模板 {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates需要許可才能繼續工作。 閱讀電子郵件撰寫窗口底部的更多信息。"
   },
   "st.notification.license.text": {
     "message": "SmartTemplates 照常運行。授權可移除此提醒 — 點擊下方了解更多資訊。"
@@ -2014,7 +2017,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{headStart}未來 Thunderbird 相容性與 ESR 路線圖{headEnd}{L1} SmartTemplates 現已完全相容 Thunderbird 140，為即將在下個月（2025 年 6 月 / 7 月）發布的年度 Thunderbird ESR 做準備。選擇 Thunderbird 每月更新通道的使用者可以安心：SmartTemplates 將繼續每月提供相容且穩定的版本。{L2}{L1} 現代化內部對話框：使用 Thunderbird 原生彈出視窗取代基於 XHTML 的傳統視窗，以改善外觀與相容性。這是持續移除外掛中舊有（實驗性）技術的一部分。[issue 378]{L2}{L1} 授權管理修正：點擊任何授權的「延長授權」按鈕現在會正確開啟相應的產品頁面，而不是錯誤地開啟新授權畫面。[issue 377]{L2}"
+    "message": "{L1}SmartTemplates 現在完全相容 Thunderbird 143。{L2}{L1}變數視窗的全文搜尋已改進。[issue 388]{L2}{L1}SmartTemplates按鈕現在可以顯示一個 🟠 徽章來替代“閱讀新聞”標籤顯示新更新 - 在設定 » 授權的“更新”中啟用此功能。{L2}{L1}剪貼簿不再插入轉義逗號。[issue 386]{L2}{L1}Thunderbird 143 破壞了所有選單圖示，現已修復。{L2}{L1}{{%file%}} 和 {{%dateformat%}} 使用標準授權時不再生成不必要的警告。[issue 391]"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

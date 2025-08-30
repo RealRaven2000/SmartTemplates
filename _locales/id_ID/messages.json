@@ -873,6 +873,12 @@
   "newmsg.cap": {
     "message": "Tulis"
   },
+  "news.minimal": {
+    "message": "Jangan tampilkan label berita saat pembaruan"
+  },
+  "news.minimal.tip": {
+    "message": "Jika dicentang, SmartTemplates tidak akan mengubah label tombol. Hanya titik kecil oranye 🟠 yang akan muncul."
+  },
   "splashScreen.disable": {
     "message": "Abaikan Layar Percikan"
   },
@@ -1086,10 +1092,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates diperbarui."
+    "message": "SmartTemplates baru"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶Baca berita!"
+    "message": "🔶Apa yang baru…"
   },
   "snippets.head": {
     "message": "Cuplikan Cerdas"
@@ -1401,6 +1407,9 @@
   },
   "vouchers.title": {
     "message": "Voucher"
+  },
+  "whats-new-list": {
+    "message": "{L1}SmartTemplates kini sepenuhnya kompatibel dengan Thunderbird 143.{L2}{L1}Peningkatan pencarian teks penuh di jendela Variabel. [issue 388]{L2}{L1}Tombol SmartTemplates kini dapat menampilkan lencana 🟠 untuk pembaruan baru alih-alih label 'Baca Berita' - aktifkan ini di Pengaturan » Lisensi pada bagian 'Pembaruan'.{L2}{L1}Clipboard tidak akan menyisipkan koma escape lagi. [issue 386]{L2}{L1}Thunderbird 143 merusak semua ikon menu, sekarang diperbaiki.{L2}{L1}{{%file%}} dan {{%dateformat%}} tidak akan menghasilkan peringatan yang tidak perlu saat menggunakan lisensi standar. [issue 391]"
   },
   "xsent_long.cap": {
     "message": "Contoh untuk longstring"

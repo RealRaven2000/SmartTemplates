@@ -935,7 +935,7 @@
     "message": "{P1}Vi följer fortsatt Thunderbirds månatliga utgivningscykel för att säkerställa kompatibilitet och stabilitet. Som alltid finansieras detta arbete helt genom licensförsäljning.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Viktigt:{boldEnd} Thunderbird har lagt till en månatlig utgivningscykel. {P2}{P1} Den första nya 141 månadsuppdateringen släpptes den 23 juli 2025, och ingen 142 beta finns tillgänglig än. Jag testar ständigt med den senaste betan för att säkerställa kompatibilitet, vilket kan leda till ytterligare underhållsuppdateringar om ändringar inträffar som bryter SmartTemplates kärnfunktionalitet.{P2}{P1} Detta kan orsaka förvirring eller kompatibilitetsmeddelanden om SmartTemplates, men var säker på att SmartTemplates fullt ut stöder både den månatliga och ESR (140.*) kanalen.{P2}{P1} Du kan fortsätta arbeta utan avbrott, oavsett vilken väg du väljer. {P2}"
+    "message": "{P1}{boldStart}Важно:{boldEnd} Thunderbird наставља свој месечни циклус издања. {P2}{P1} Неки корисници су можда видели лажно упозорење о некомпатибилности након ажурирања на Thunderbird v142. Ово је узроковано кешираним информацијама о компатибилности у Thunderbirdu, које понекад не освежавају исправно. Претходна верзија SmartTemplates-а већ је била потпуно компатибилна са 142. Пријавио сам баг Thunderbird тиму да ово реше: [Bugzilla 1986027]{P2}{P1} Будите сигурни да SmartTemplates у потпуности подржава и месечне и ESR (142.*) канале и можете наставити рад без прекида. {P2}"
   },
   "newsSection.license": {
     "message": "Eftersom allt arbete med SmartTemplates och gratis support finansieras uteslutande genom licensförsäljning, överväg att köpa en licens eller förnya din nuvarande."
@@ -1153,6 +1153,12 @@
   },
   "newmsg.cap": {
     "message": "Nytt meddelande"
+  },
+  "news.minimal": {
+    "message": "Visa inte nyhetsetikett vid uppdateringar"
+  },
+  "news.minimal.tip": {
+    "message": "Om markerad ändrar SmartTemplates inte knappens etikett. Endast en liten orange prick 🟠 visas."
   },
   "splashScreen.disable": {
     "message": "Utelämna stänkskärmen"
@@ -1424,10 +1430,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates uppdaterad."
+    "message": "Nya SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶Läs nyheterna!"
+    "message": "🔶Vad är nytt…"
   },
   "snippets.head": {
     "message": "Smarta utdrag"
@@ -1614,9 +1620,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "Du har redan skrivit text och vill ändra till mall {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates kräver en licens för att fortsätta arbeta. Läs mer information längst ner i fönstret för e-postkomposition."
   },
   "st.notification.license.text": {
     "message": "SmartTemplates fortsätter fungera som vanligt. En licens tar bort denna påminnelse — klicka nedan för mer information."
@@ -2056,7 +2059,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates är nu helt kompatibelt med Thunderbird 141.{L2}{L1}Du kan nu använda Unix-tidsstämplar med variabeln {{%dateformat%}}. [issue 381]{L2}{L1}Använd {{%dateformat.received(unix)%}} för att infoga mottagningstiden som en Unix-tidsstämpel (sekunder sedan {italicStart}epoch{italicEnd} = 1 januari 1970).{L2}{L1}Använd {{%dateformat.current(timestamp)%}} för att infoga aktuell tid i millisekunder sedan {italicStart}epoch{italicEnd}.{L2}{L1}Valfri parameter {{nodefer}} har lagts till i {{%dateformat.current()%}} för att undvika interaktiva fält. [issue 382]"
+    "message": "{L1}SmartTemplates är nu helt kompatibelt med Thunderbird 143.{L2}{L1}Förbättrad fulltext-sökning i Variabler-fönstret. [issue 388]{L2}{L1}SmartTemplates-knappen kan nu visa en badge 🟠 för nya uppdateringar istället för etiketten 'Läs nyheter' - aktivera detta i Inställningar » Licenser under 'Uppdateringar'.{L2}{L1}Urklipp infogar inte längre escaped-kommatecken. [issue 386]{L2}{L1}Thunderbird 143 förstörde alla menyikoner, nu åtgärdat.{L2}{L1}{{%file%}} och {{%dateformat%}} genererar inte längre onödiga varningar vid användning av standardlicens. [issue 391]"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

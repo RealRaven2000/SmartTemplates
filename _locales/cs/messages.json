@@ -915,7 +915,7 @@
     "message": "{P1}Stále sledujeme měsíční cyklus vydávání Thunderbird, abychom zajistili kompatibilitu a stabilitu. Tato práce je jako vždy plně financována z prodeje licencí.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Důležité:{boldEnd} Thunderbird přidal měsíční cyklus vydání. {P2}{P1} První nová měsíční aktualizace 141 byla vydána 23. července 2025, a beta verze 142 zatím není dostupná. Neustále testuji s nejnovější beta verzí, abych zajistil kompatibilitu, což může vést k dalším opravám, pokud dojde ke změnám, které by narušily základní funkčnost SmartTemplates.{P2}{P1} To může způsobit zmatek nebo upozornění na kompatibilitu SmartTemplates, ale buďte ujištěni, že SmartTemplates plně podporuje jak měsíční, tak ESR (140.*) kanály.{P2}{P1} Můžete pokračovat v práci bez přerušení, ať už si vyberete jakoukoli cestu. {P2}"
+    "message": "{P1}{boldStart}Důležité:{boldEnd} Thunderbird pokračuje ve svém měsíčním cyklu vydání. {P2}{P1} Někteří uživatelé mohli po aktualizaci Thunderbirdu na verzi 142 vidět falešné varování o nekompatibilitě. Bylo to způsobeno uloženými informacemi o kompatibilitě v mezipaměti Thunderbirdu, které se někdy neaktualizují správně. Předchozí verze SmartTemplates byla již plně kompatibilní s verzí 142. Nahlásil jsem tento problém Thunderbirdu, aby to opravili: [Bugzilla 1986027]{P2}{P1} Ujišťujeme vás, že SmartTemplates plně podporuje jak měsíční, tak ESR (142.*) kanály, takže můžete pokračovat v práci bez přerušení. {P2}"
   },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat SmartTemplates v budoucnu."
@@ -1136,6 +1136,12 @@
   },
   "newmsg.cap": {
     "message": "Zapsat"
+  },
+  "news.minimal": {
+    "message": "Nezobrazovat štítek novinek při aktualizaci"
+  },
+  "news.minimal.tip": {
+    "message": "Pokud je zaškrtnuto, SmartTemplates nezmění název tlačítka. Zobrazí se pouze malý oranžový bod 🟠."
   },
   "splashScreen.disable": {
     "message": "Vynechat úvodní obrazovku"
@@ -1398,10 +1404,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates byl aktualizován."
+    "message": "Nové SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶Přečtěte si novinky!"
+    "message": "🔶Co je nového…"
   },
   "snippets.label": {
     "message": "Fragmenty HTML pro vkládání do Composeru"
@@ -1585,9 +1591,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "Už jste zadali text a chcete změnit šablonu {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates vyžaduje licenci, aby mohla pokračovat v práci. Další informace naleznete v dolní části okna kompozice e-mailu."
   },
   "st.notification.license.text": {
     "message": "SmartTemplates pokračuje v normálním provozu. Licence odstraní toto upozornění — klikněte níže pro více informací."
@@ -2015,7 +2018,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates je nyní plně kompatibilní s Thunderbird 141.{L2}{L1}Nyní můžete používat unixové časové značky s proměnnou {{%dateformat%}}. [issue 381]{L2}{L1}Použijte {{%dateformat.received(unix)%}} k vložení přijatého času jako unixového časového razítka (sekundy od {italicStart}epocha{italicEnd} = 1. ledna 1970).{L2}{L1}Použijte {{%dateformat.current(timestamp)%}} k vložení aktuálního času v milisekundách od {italicStart}epochy{italicEnd}.{L2}{L1}Byl přidán volitelný parametr {{nodefer}} k {{%dateformat.current()%}} pro zabránění interaktivním polím. [issue 382]"
+    "message": "{L1}SmartTemplates je nyní plně kompatibilní s Thunderbird 143.{L2}{L1}Vylepšené fulltextové vyhledávání ve window Proměnných. [issue 388]{L2}{L1}Tlačítko SmartTemplates nyní může zobrazovat odznak 🟠 pro nové aktualizace místo popisku 'Přečíst novinky' - povolte to v Nastavení » Licence v sekci 'Aktualizace'.{L2}{L1}Schránka už nevkládá escapované čárky. [issue 386]{L2}{L1}Thunderbird 143 poškodil všechny ikony menu, nyní opraveno.{L2}{L1}{{%file%}} a {{%dateformat%}} již nebudou generovat zbytečná varování při použití standardní licence. [issue 391]"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

@@ -924,7 +924,7 @@
     "message": "{P1}Wciąż podążamy za miesięcznym cyklem wydań Thunderbirda, aby zapewnić kompatybilność i stabilność. Jak zawsze, prace te są w całości finansowane ze sprzedaży licencji.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Ważne:{boldEnd} Thunderbird wprowadził miesięczny cykl wydań. {P2}{P1} Pierwsza nowa miesięczna aktualizacja 141 została wydana 23 lipca 2025, a beta 142 nie jest jeszcze dostępna. Stale testuję najnowszą wersję beta, aby zapewnić kompatybilność, co może skutkować dodatkowymi aktualizacjami konserwacyjnymi, jeśli nastąpią zmiany, które zepsują podstawową funkcjonalność SmartTemplates.{P2}{P1} Może to powodować pewne zamieszanie lub powiadomienia o kompatybilności dotyczące SmartTemplates, ale bądź pewny, że SmartTemplates w pełni wspiera zarówno kanał miesięczny, jak i ESR (140.*).{P2}{P1} Możesz kontynuować pracę bez przerw, niezależnie od wybranej ścieżki. {P2}"
+    "message": "{P1}{boldStart}Ważne:{boldEnd} Thunderbird kontynuuje miesięczny cykl wydawniczy. {P2}{P1} Niektórzy użytkownicy mogli zobaczyć fałszywe ostrzeżenie o niekompatybilności po aktualizacji do Thunderbird v142. Było to spowodowane pamięcią podręczną informacji o kompatybilności w Thunderbird, która czasami nie aktualizuje się poprawnie. Poprzednia wersja SmartTemplates była już w pełni kompatybilna z 142. Zgłosiłem błąd do Thunderbird w celu jego naprawy: [Bugzilla 1986027]{P2}{P1} Zapewniamy, że SmartTemplates w pełni wspiera zarówno kanały miesięczne, jak i ESR (142.*), i można kontynuować pracę bez przerw. {P2}"
   },
   "newsSection.license": {
     "message": "Ponieważ cała praca nad SmartTemplates i darmowe wsparcie są finansowane wyłącznie ze sprzedaży licencji, proszę rozważyć zakup licencji lub przedłużenie obecnej."
@@ -1130,6 +1130,12 @@
   },
   "newmsg.cap": {
     "message": "Nowa wiadomość"
+  },
+  "news.minimal": {
+    "message": "Nie wyświetlaj etykiety wiadomości podczas aktualizacji"
+  },
+  "news.minimal.tip": {
+    "message": "Jeśli zaznaczone, SmartTemplates nie zmieni nazwy przycisku. Pojawi się tylko mała pomarańczowa kropka 🟠."
   },
   "splashScreen.disable": {
     "message": "Pomiń ekran powitalny"
@@ -1395,10 +1401,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates zaktualizowany."
+    "message": "Nowe SmartTemplates"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶Przeczytaj nowości!"
+    "message": "🔶Co nowego…"
   },
   "snippets.head": {
     "message": "Inteligentne fragmenty"
@@ -1585,9 +1591,6 @@
   },
   "st.notification.editedChangeWarning": {
     "message": "Wpisałeś już tekst i chcesz przejść do szablonu {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates wymaga licencji, aby kontynuować pracę. Przeczytaj więcej informacji na dole okna kompozycji wiadomości e-mail."
   },
   "st.notification.license.text": {
     "message": "SmartTemplates działa normalnie. Licencja usuwa to powiadomienie — kliknij poniżej, aby uzyskać więcej informacji."
@@ -2025,7 +2028,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates jest teraz w pełni kompatybilny z Thunderbird 141.{L2}{L1}Możesz teraz używać znaczników czasu Unix z zmienną {{%dateformat%}}. [issue 381]{L2}{L1}Użyj {{%dateformat.received(unix)%}}, aby wstawić czas otrzymania jako znacznik czasu Unix (sekundy od {italicStart}epoch{italicEnd} = 1 stycznia 1970).{L2}{L1}Użyj {{%dateformat.current(timestamp)%}}, aby wstawić aktualny czas w milisekundach od {italicStart}epoch{italicEnd}.{L2}{L1}Dodano opcjonalny parametr {{nodefer}} do {{%dateformat.current()%}} w celu uniknięcia interaktywnych pól. [issue 382]"
+    "message": "{L1}SmartTemplates jest teraz w pełni zgodny z Thunderbird 143.{L2}{L1}Ulepszone wyszukiwanie pełnotekstowe w oknie Zmiennych. [issue 388]{L2}{L1}Przycisk SmartTemplates może teraz wyświetlać odznakę 🟠 dla nowych aktualizacji zamiast etykiety 'Przeczytaj wiadomości' - włącz to w Ustawienia » Licencje w sekcji 'Aktualizacje'.{L2}{L1}Schowek nie wstawia już escapowanych przecinków. [issue 386]{L2}{L1}Thunderbird 143 zepsuł wszystkie ikony menu, teraz naprawione.{L2}{L1}{{%file%}} i {{%dateformat%}} nie będą już generować zbędnych ostrzeżeń przy użyciu standardowej licencji. [issue 391]"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

@@ -109,7 +109,7 @@
     "message": "{P1}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Quan trọng:{boldEnd} Thunderbird đã thêm chu kỳ phát hành hàng tháng. {P2}{P1} Bản cập nhật hàng tháng 141 mới đầu tiên đã được phát hành vào ngày 23 tháng 7 năm 2025, và chưa có phiên bản beta 142 nào có sẵn. Tôi liên tục thử nghiệm với bản beta mới nhất để đảm bảo tương thích, điều này có thể dẫn đến các bản phát hành bảo trì bổ sung nếu có những thay đổi làm gián đoạn chức năng cốt lõi của SmartTemplates.{P2}{P1} Điều này có thể gây ra sự nhầm lẫn hoặc các thông báo tương thích về SmartTemplates, nhưng hãy yên tâm rằng SmartTemplates hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*).{P2}{P1} Bạn có thể tiếp tục làm việc mà không bị gián đoạn, bất kể bạn chọn con đường nào. {P2}"
+    "message": "{P1}{boldStart}Quan trọng:{boldEnd} Thunderbird tiếp tục chu kỳ phát hành hàng tháng. {P2}{P1} Một số người dùng có thể đã thấy cảnh báo không tương thích giả sau khi nâng cấp lên Thunderbird v142. Điều này do thông tin tương thích được lưu trong bộ nhớ đệm của Thunderbird, đôi khi không được làm mới đúng cách. Phiên bản SmartTemplates trước đó đã hoàn toàn tương thích với 142. Tôi đã báo lỗi này với Thunderbird để họ khắc phục: [Bugzilla 1986027]{P2}{P1} Hãy yên tâm rằng SmartTemplates hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (142.*), và bạn có thể tiếp tục làm việc mà không bị gián đoạn. {P2}"
   },
   "newsSection.license": {
     "message": "Do tất cả công việc trên SmartTemplates và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ doanh số bán giấy phép, vui lòng cân nhắc mua một giấy phép hoặc gia hạn giấy phép hiện tại của bạn."
@@ -147,10 +147,10 @@
     }
   },
   "SmartTemplateMainButton.updated": {
-    "message": "SmartTemplates đã được cập nhật."
+    "message": "SmartTemplates mới"
   },
   "SmartTemplateMainButton.updated.read": {
-    "message": "🔶Đọc tin tức!"
+    "message": "🔶Có gì mới…"
   },
   "special-offer-content": {
     "message": "Nâng cấp các tính năng của bạn và tiết kiệm {boldStart} $reduction$ {boldEnd} bằng cách mua giấy phép {linkStartPro}SmartTemplates Pro{linkEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$salesEnd${boldEnd}. Hoặc chọn các chức năng tiêu chuẩn với {linkStart}Giấy phép Tiêu chuẩn{linkEnd} mới.",
@@ -297,7 +297,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates hiện đã tương thích hoàn toàn với Thunderbird 141.{L2}{L1}Bạn có thể sử dụng dấu thời gian Unix với biến {{%dateformat%}}. [issue 381]{L2}{L1}Sử dụng {{%dateformat.received(unix)%}} để chèn thời gian nhận dưới dạng dấu thời gian Unix (giây kể từ {italicStart}epoch{italicEnd} = ngày 1 tháng 1 năm 1970).{L2}{L1}Sử dụng {{%dateformat.current(timestamp)%}} để chèn thời gian hiện tại bằng mili giây kể từ {italicStart}epoch{italicEnd}.{L2}{L1}Đã thêm tham số tùy chọn {{nodefer}} vào {{%dateformat.current()%}} để tránh các trường tương tác. [issue 382]"
+    "message": "{L1}SmartTemplates hiện đã hoàn toàn tương thích với Thunderbird 143.{L2}{L1}Cải thiện tìm kiếm toàn văn trong cửa sổ Biến. [issue 388]{L2}{L1}Nút SmartTemplates giờ có thể hiển thị huy hiệu 🟠 cho các bản cập nhật mới thay vì nhãn 'Đọc tin tức' - bật tính năng này trong Cài đặt » Giấy phép ở mục 'Cập nhật'.{L2}{L1}Bảng tạm không còn chèn dấu phẩy escape nữa. [issue 386]{L2}{L1}Thunderbird 143 làm hỏng tất cả các biểu tượng menu, đã sửa.{L2}{L1}{{%file%}} và {{%dateformat%}} sẽ không còn tạo cảnh báo không cần thiết khi sử dụng giấy phép chuẩn. [issue 391]"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
