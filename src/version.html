@@ -222,7 +222,7 @@ permalink: version.html
       Version 4.* - Work in Progress</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">115.0 - 140.*</span>
+			<span class="thunderbird">115.0 - 143.*</span>
 		</span>
   </h4>
   <ul>
@@ -245,12 +245,76 @@ permalink: version.html
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
 
+<a id="4.14"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.14"
+      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 4.14 - 30/08/2025</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">115.0 - 143.*</span>
+		</span>
+  </h4>
+  <ul>
+    <p>
+      Some users may have seen a false incompatibility warning after updating 
+      from Thunderbird to v142. This was caused by cached compatibility information 
+      in Thunderbird, which sometimes fails to refresh correctly. The previous 
+      version of SmartTemplates was already fully compatible with 142. 
+    </p>
+    <p>
+      I raised a bug with Thunderbird to fix this: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>,
+      please add your observations there if you experienced this problem.
+    </p>
+
+
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li>Made compatible with Thunderbird 143. </li>
+    <li>
+      Variable documentation: Improve searching to search <code>%variable%</code> fields 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/388">[issue 388]</a>
+    </li>
+    <li>
+      Added "Minimal news" mode to show for badge 🟠 for new updates instead of 
+      the 'Read the News' label - enable this in Settings » Licenses under 'Updates':
+      <p>
+        <img class="screenshot" src="img/settings-news-minimal.png" alt="Minimal news mode" />
+      </p>
+      This will make the work with SmartTemplates less intrusive, while still signalling
+      news about possible important changes. As always, the badge and blue background 
+      will disappear as soon as clicking on the 'Latest' news entry:
+      <p>
+        <img class="screenshot" src="img/menu-latest-news.png" alt="opening news splash" />
+      </p>
+    </li>
+    <li>
+      Add a warning for Standard License requirement for <code>%file%</code>, 
+      <code>%dateformat%</code> instead of triggering premium feature warning. 
+      Also removed the message about requiring a license (st.notification.license.required) 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/391">[issue 391]</a>
+    </li>
+
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li>
+      Fixed a minor issue with the line &quot;Click a heading or Expand All&quot;
+    </li>
+    <li>
+      Fixed a problem with escaped commas from clipboard 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/386">[issue 386]</a>
+    </li>
+    <li>
+      Fixed for Thunderbird 143: all menu icons of all popups broken 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/390">[issue 390]</a>
+    </li>
+  </ul>
+</li> 
+
 <a id="4.13"> &nbsp; </a>
 <li>
   <h4>
-		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.13"
-      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
-      Version 4.13 - Work in Progress</a>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.13">
+      Version 4.13 - 23/07/2025</a>
 		<br>
 		<span class="appWrapper">
 			<span class="thunderbird">115.0 - 141.*</span>
@@ -2828,7 +2892,7 @@ src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainS
   -->
   <li>
     <h4>
-      <a href="version-90/html">LEGACY VERSIONS</a>
+      <a href="version-90.html">LEGACY VERSIONS</a>
       <br>
     </h4>
     <p>Changes for all older versions are <a href="version-90.html"> documented here.</a></p>
