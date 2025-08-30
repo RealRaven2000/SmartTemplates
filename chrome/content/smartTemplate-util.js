@@ -3780,7 +3780,7 @@ SmartTemplate4.Util = {
 
 SmartTemplate4.Util.firstRun =
 {
-	silentUpdate: function st4_silentUpdate(previousVersion, newVersion) {
+	silentUpdate: function (previousVersion, newVersion) {
 		let p = previousVersion.toString(),
 		    n = newVersion.toString();
 		if ( p=="3.8" && (n=="3.8.999")) {
@@ -3903,8 +3903,7 @@ SmartTemplate4.Util.firstRun =
           let isSilentUpdate = prefs.getMyBoolPref("silentUpdate"); // allow this flag for all.
           if (isSilentUpdate) {
             util.logDebug("Supressing Change Log, as disabled by user.");
-          }
-          else if (!this.silentUpdate(prev,pureVersion)) {
+          } else if (!this.silentUpdate(prev,pureVersion)) {
 						util.logDebugOptional ("firstRun","open tab for version history, ST " + current);
 						window.setTimeout(function(){ util.showVersionHistory(false); }, 2200);
 					}
