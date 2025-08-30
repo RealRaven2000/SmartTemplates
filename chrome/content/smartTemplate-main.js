@@ -273,18 +273,23 @@ END LICENSE BLOCK
     # [issue 382] Option to avoid deferred variables - during %dateformat.current()%
                   %dateformat.current(timestamp,nodefer)%
 
-  Version 4.13.1 - WIP
-    # Made compatible with Thunderbird 142.
-    # [issue 386] Issue with escaped commas from clipboard
-    # [issue 388] Variabled documentation: search terms do not find text embedded in a %variable% field
+  Version 4.14 - WIP
+    # Made compatible with Thunderbird 143.
+    # [issue 388] Variable documentation: Improve searching to search %variable%  fields
+    # Added "Minimal news" mode to show for badge 🟠 for new updates instead of 
+      the 'Read the News' label
     # Fixed a minor issue with the line "Click a heading or Expand All"
+    # [issue 386] Fixed a problem with escaped commas from clipboard
+    # [issue 390] Thunderbird 143: all menu icons of all popups broken
+    # [issue 391] Add a warning for Standard License requirement for %file%, %dateformat% 
+                  instead of triggering premium feature warning. Also removed the message
+                  about requiring a license (st.notification.license.required)
     
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
   Version 4.x - WIP
     # [issue 326] Feature request: retrieve an email address from AB using name / nickname (WIP)
-    # [issue 285] remove: "load_template" is a Premium feature
     # [issue 277] "Reply All" from SmartTemplates menu behave the same as "Reply"
     # [issue 325] Add XNote++ variable.
     # [issue 253] recreate unified toolbar menu using API functions
@@ -980,21 +985,30 @@ var SmartTemplate4 = {
       }
     }
 
+
     if (hasNews) {
+      const isNewsMinimal = SmartTemplate4.Preferences.getMyBoolPref("news.minimal");
       txt = util.getBundleString("SmartTemplateMainButton.updated");
       addClass(btn, "newsflash");
       tooltip = util.getBundleString("st.menu.update.tooltip", ["SmartTemplates"]);
       btnStatus.classList.add("newsflash");
-      // add clarity - what to do. read news (resets button) or check out the sale
-      // Show if a sale is active, but only for anyone who is not a Pro / Domain user with valid license
-      // otherwise we show the standard "read news!"
-      if (util.isSale && !(licenseInfo?.status == "Valid" && licenseInfo.keyType != 2)) {
-        txt += util.salesLabel(licenseInfo);
+      if (isNewsMinimal) {
+        addClass(btn, "news-minimal");
+        txt = "SmartTemplates"; // the default
       } else {
-        txt += util.getBundleString("SmartTemplateMainButton.updated.read");
+        removeClass(btn, "news-minimal");
+        if (util.isSale && !(licenseInfo?.status == "Valid" && licenseInfo.keyType != 2)) {
+          // add clarity - what to do. read news (resets button) or check out the sale
+          // Show if a sale is active, but only for anyone who is not a Pro / Domain user with valid license
+          // otherwise we show the standard "read news!"
+          txt += util.salesLabel(licenseInfo);
+        } else {
+          txt += util.getBundleString("SmartTemplateMainButton.updated.read");
+        }
       }
     } else {
       removeClass(btn, "newsflash");
+      removeClass(btn, "news-minimal");
       btnStatus.classList.remove("newsflash");
     }
     if (!txt) {

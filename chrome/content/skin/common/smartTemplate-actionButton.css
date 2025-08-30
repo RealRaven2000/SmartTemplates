@@ -105,6 +105,30 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash:h
   display: none;
 }
 
+
+#SmartTemplate4Button.news-minimal > .button-label {
+    display: inline; /* label stays visible if needed */
+}
+
+.icons-only #SmartTemplate4Button.news-minimal.newsflash > .button-label {
+    display: none !important; /* label stays visible if needed */
+}
+
+
+/* 2. Append badge to label when toolbar is NOT icon-only */
+:not(.icons-only) #SmartTemplate4Button.news-minimal > .button-label::after {
+    content: " 🟠" !important;
+    font-size: 0.8em;
+    margin-left: 2px;
+}
+
+/* 3. Show badge as pseudo-icon when toolbar is icon-only */
+.icons-only #SmartTemplate4Button.news-minimal::after {
+  content: "🟠" !important;
+  font-size: 0.8em;
+  padding-bottom: 3px;
+}
+
 #smartTemplates-checklicense {
   list-style-image: url("chrome://smarttemplate4/content/skin/icons/info.svg") !important;
   --menuitem-icon:  url("chrome://smarttemplate4/content/skin/icons/info.svg") !important;
