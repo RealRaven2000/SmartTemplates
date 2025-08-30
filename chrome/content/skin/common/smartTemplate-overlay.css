@@ -31,6 +31,10 @@
 	width: auto !important;
 }
 
+toolbarbutton[data-extensionid="smarttemplate4@thunderbird.extension"]  menupopup.webextension-menupopup menuitem[id]  {
+	padding-inline-start: 8px !important;
+  background-color: yellow;
+}
 
 #SmartTemplate4Messenger:not(:hover):not(.always) label,
 #SmartTemplate4Messenger.labelHidden label,
