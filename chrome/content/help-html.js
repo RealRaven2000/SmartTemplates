@@ -80,7 +80,7 @@ async function isDebug() {
 }
 
 async function initHTML() {
-  if (isDebug()) {
+  if (await isDebug()) {
     console.log("help-html.js init()");
   }
 
