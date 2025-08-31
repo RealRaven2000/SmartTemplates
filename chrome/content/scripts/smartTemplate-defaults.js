@@ -65,7 +65,7 @@ pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-dig
 pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort
 pref("extensions.smartTemplate4.dateformat.year", "numeric"); // change to "2-digit" for forcing 2digit dateshort only
 pref("extensions.smartTemplate4.allowScripts", false); // prohibit running Javascript unless users know what they are doing and set this to true
-/* this is a convenience function - if I change from after or during composing, delete sig */
+/* this is a convenience function - if I change from after or during composing, delete signature */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 /* header replacement rules */
 pref("extensions.smartTemplate4.headers.unescape.quotes", true);
