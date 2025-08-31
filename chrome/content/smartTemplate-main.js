@@ -273,7 +273,7 @@ END LICENSE BLOCK
     # [issue 382] Option to avoid deferred variables - during %dateformat.current()%
                   %dateformat.current(timestamp,nodefer)%
 
-  Version 4.14 - WIP
+  Version 4.14 - 30/08/2025
     # Made compatible with Thunderbird 143.
     # [issue 388] Variable documentation: Improve searching to search %variable%  fields
     # Added "Minimal news" mode to show for badge 🟠 for new updates instead of 
@@ -284,6 +284,10 @@ END LICENSE BLOCK
     # [issue 391] Add a warning for Standard License requirement for %file%, %dateformat% 
                   instead of triggering premium feature warning. Also removed the message
                   about requiring a license (st.notification.license.required)
+
+  Version 4.14.1 - WIP
+    # [issue 394] %dateformat.current% triggers "NOT SUPPORTED: Replace deferred smartTemplate variable"
+    # [issue 393] Code Review: Remove "unsafe assignments to innerHTML"
     
 
 =========================
@@ -696,7 +700,7 @@ var SmartTemplate4 = {
       }
 
       if (
-        !isChangeFromViaSmartTemplate && // don't trigger a tempalte reload in case header.set(from) was called!!
+        !isChangeFromViaSmartTemplate && // don't trigger a template reload in case header.set(from) was called!!
         (!isBodyModified || isOverrideBodyModified)
       ) {
         // ask user it isBodyModified is really true...
@@ -733,6 +737,7 @@ var SmartTemplate4 = {
         // we do not touch smartTemplate4-quoteHeader or smartTemplate4-template
         // as the user might have edited here already!
         // however, the signature is important as it should match the from address?
+        // removeSigOnIdChangeAfterEdits is usually false, but it's suppesa to remove any signature
         if (prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
           newSig = await this.smartTemplate.extractSignature(
             gMsgCompose.identity,
@@ -755,8 +760,15 @@ var SmartTemplate4 = {
         if (prefs.getMyBoolPref("parseSignature") && newSig) {
           // find and replace signature node.
           let sigNode = util.findChildNode(SmartTemplate4.composer.body, "moz-signature");
-          if (sigNode) {
-            sigNode.innerHTML = newSig.innerHTML;
+          if (sigNode && newSig) {
+            // sigNode.innerHTML = util.sanitizeHTML(newSig.innerHTML);
+            // [issue 393] avoid innerHTML assignments 
+            sigNode.textContent = "";
+
+            // Append sanitized / cloned nodes from newSig
+            for (const child of newSig.childNodes) {
+              sigNode.appendChild(child.cloneNode(true));
+            }
           }
           gMsgCompose.bodyModified = isBodyModified; // restore body modified flag!
         }

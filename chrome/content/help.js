@@ -346,12 +346,42 @@
 
   globalThis.fixClipboardNote = () => {
     let note1 = document.getElementById("clipboardNotes");
-    if (note1) {
-      note1.innerHTML = 
-        note1.textContent
-        .replace("{file}", "<code>%file()%</code>")
-        .replace("{toclip}", "<span class='paramLiteral'>toclipboard</span>");
-    }    
+    if (!note1) {
+      return;
+    }
+    const text = note1.textContent;
+    note1.textContent = "";
+
+    // Split on placeholders, keep them in result
+    const parts = text.split(/(\{file\}|\{toclip\})/);
+
+/*  [issue 393] Original Code
+    note1.innerHTML = note1.textContent
+      .replace("{file}", "<code>%file()%</code>")
+      .replace("{toclip}", "<span class='paramLiteral'>toclipboard</span>");
+ */
+
+    for (let part of parts) {
+      switch (part) {
+        case "{file}": {
+          const codeEl = document.createElement("code");
+          codeEl.textContent = "%file()%";
+          note1.appendChild(codeEl);
+          break;
+        }
+        case "{toclip}": {
+          const spanEl = document.createElement("span");
+          spanEl.className = "paramLiteral";
+          spanEl.textContent = "toclipboard";
+          note1.appendChild(spanEl);
+          break;
+        }
+        default:
+          // Regular text
+          note1.appendChild(document.createTextNode(part));
+      }    
+    }
+
   };
 
   function findNextChapterBody(el) {
@@ -520,7 +550,6 @@
 
     let helpSearch = document.getElementById("fq-variables-search-help");
     if (helpSearch) {
-      // helpSearch.innerHTML = " ";
       helpSearch.textContent = " ";
       // QuickFolders.Interface.quickMoveHelp(this);
       helpSearch.addEventListener("click", (_event) => {
@@ -538,9 +567,26 @@
     // when copying keys:
     let helpContent = document.getElementById("searchHelpContent");
     if (helpContent) {
+      const text = helpContent.textContent;
+      helpContent.textContent = "";
+
+/* [issue 393] Original Code
       helpContent.innerHTML = helpContent.textContent
         .replaceAll("{{", "<span class='key'>")
-        .replaceAll("}}", "</span>")
+        .replaceAll("}}", "</span>");
+ */
+      const parts = text.split(/(\{\{.*?\}\})/);
+      for (let part of parts) {
+        if (part.startsWith("{{") && part.endsWith("}}")) {
+          const span = document.createElement("span");
+          span.className = "key";
+          span.textContent = part.slice(2, -2); // strip {{ }}
+          helpContent.appendChild(span);
+        } else if (part) {
+          helpContent.appendChild(document.createTextNode(part));
+        }
+      }      
+
     }    
   };
 

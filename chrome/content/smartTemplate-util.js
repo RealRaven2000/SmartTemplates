@@ -1744,11 +1744,17 @@ SmartTemplate4.Util = {
       // it's false when we click on the element (manual) so that we can refresh the content
       // multiple times
       if (!alreadyResolved || !isReplaceField) {
-        let parensPos = st4.indexOf("("),
-          generalFunction = parensPos == -1 ? st4 : st4.substr(0, parensPos),
-          argList = parensPos == -1 ? "" : st4.match(/([\w-:=]+)\(([^)]+)\)*/);
+        const argList = st4.match(/^([\w.-]+)(?:\(([^)]*)\))?/);
+        let generalFunction = argList ? argList[1] : st4;             // fallback to full string
+        // let parensPos = st4.indexOf("("),
+        //   generalFunction = parensPos == -1 ? st4 : st4.substr(0, parensPos),
+        //   argList = parensPos == -1 ? "" : st4.match(/([\w-:=]+)\(([^)]+)\)*/);
+          
         if (!generalFunction.length) {return;}
         // util.logDebugOptional('resolveDeferred','matched variable [' + i + ']: ' + matchPart[i]);
+
+        // eslint-disable-next-line no-unused-vars
+        const __args = argList && argList[2] ? argList[2].split(/\s*,\s*/) : [];
         // eslint-disable-next-line no-unused-vars
         let _args = argList.length < 2 ? [] : argList[2].split(",");
 
@@ -1792,26 +1798,31 @@ SmartTemplate4.Util = {
               );
               // if nothing is returned by mime decoder (e.g. empty name) we do not resolve the variable
               if (token || isReplaceField) {
-                el.innerHTML = token; // [issue 186] - mimeDecoder already HTML encodes?
+                // [issue 186] - mimeDecoder already HTML encodes into token?
+                // [issue 393] = don't modify innerHTML
+                // el.innerHTML = token; 
+                el.textContent = "";
+                util.insertHtmlSafely(el, token);  // <--- safe injection
                 resolved = true;
               }
             }
 
           } break;
-          case "dateformat":
+          case "dateformat": // fall through
+          case "dateformat.current": // [issue 394]
             tm = new Date();
-            el.innerText = util.dateFormat(tm.getTime() * 1000, argList[2], 0);
+            el.textContent = util.dateFormat(tm.getTime() * 1000, argList[2], 0);
             resolved = true;
             break;
           case "datelocal": // fall through
           case "dateshort":
             (tm = new Date()),
-              (el.innerText = util.prTime2Str(tm.getTime() * 1000, generalFunction, 0));
+              (el.textContent = util.prTime2Str(tm.getTime() * 1000, generalFunction, 0));
             resolved = true;
             break;
           default:
             if (composeDetails[generalFunction]) {
-              el.innerText = composeDetails[generalFunction];
+              el.textContent = composeDetails[generalFunction];
             } else {
               alert(
                 "NOT SUPPORTED: Replace deferred smartTemplate variable: %" + generalFunction + "%"
@@ -3774,6 +3785,64 @@ SmartTemplate4.Util = {
       return null;
     }    
   },
+  
+  sanitizeHTML: function(htmlString) {
+    if (!htmlString) {
+      return "";
+    }
+    const parserUtils = Cc["@mozilla.org/parserutils;1"].getService(Ci.nsIParserUtils);
+
+    const sanitizedHTML = parserUtils.sanitize(
+      htmlString,
+      parserUtils.SanitizerAllowStyle | parserUtils.SanitizerAllowImages
+    );
+
+    return sanitizedHTML;
+  
+  },
+
+  insertHtmlSafely: function(container, html) {
+    if (!container || !html) { 
+      return; 
+    }
+
+    // Create a detached document fragment
+    const ownerDoc = container.ownerDocument;
+    const frag = ownerDoc.createDocumentFragment();
+
+    if (typeof html == "object" && html.nodeType) {
+      // html is a Node → move its child nodes
+      while (html.firstChild) {
+        frag.appendChild(html.firstChild);
+      }
+      container.appendChild(frag); 
+      return true;
+    }
+    if (typeof html != "string") {
+      return false;
+    }
+
+    // Parse the HTML string into a temporary document
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+
+    // Move all child nodes from body into fragment
+    while (doc.body.firstChild) {
+      frag.appendChild(doc.body.firstChild);
+    }
+
+    // Append fragment to the container
+    container.appendChild(frag);
+
+    // Move <head> child nodes into the container's document <head>
+    if (doc.head && container.ownerDocument.head) {
+      while (doc.head.firstChild) {
+        container.ownerDocument.head.appendChild(doc.head.firstChild);
+      }
+    }    
+    return true;
+  }
+
 
 };  // ST4.Util
 
