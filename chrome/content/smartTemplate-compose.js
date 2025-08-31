@@ -108,7 +108,8 @@ SmartTemplate4.classSmartTemplate = function() {
 	//  this.modifierCurrentTime = "%X:=today%";   // scheiss drauf ...
 	// -----------------------------------
 	// Extract Signature
-	// signatureDefined - 'auto', 'text' or 'html' if the %sig% variable ist part of our template - this means signature must be deleted in any case
+	// signatureDefined - 'auto', 'text' or 'html' if the %sig% variable ist part of our template 
+	//                    - this means signature must be deleted in any case
   //                    'omit' to suppress (remove only)
 	// 1. removes signature node from the email
 	// 2. extract current Signature (should return signature from the account and not from the mail if it is defined!)
@@ -341,10 +342,10 @@ SmartTemplate4.classSmartTemplate = function() {
 								+ sigText.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>")
 								+ "</pre>";  // .replace(/ /g, '&nbsp;') - we do not need this as we wrap in pre, anyway!
 				}
-			} 
-			else {
+			} else {
 				sigText = dashesHTML + sigText;
 			}
+			// [issue 393] avoid innerHTML assignments!
 			sig.innerHTML = sigText;  // = gMsgCompose.identity.htmlSigText;
 			// TEST STUFF..
 		}
@@ -1158,7 +1159,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				// if Stationery has %sig(none)% then flags.omitSignature == true
 				sigVarDefined = (flags.hasSignature || sigType) ? true : false; 
         try {
-          // get signature and remove the one Tb has inserted
+          // get signature element and remove the one Tb has inserted
           SmartTemplate4.signature = await extractSignature(theIdentity, sigType, st4composeType);
         } catch(ex) {
           SmartTemplate4.signature = "";
@@ -1610,7 +1611,11 @@ SmartTemplate4.classSmartTemplate = function() {
 						// wrap text only signature to fix [Bug 25093]!
 						if (typeof theSignature === "string")  {
 							let sn = doc.createElement("div");
-							sn.innerHTML = theSignature;
+							// [issue 393] we need to insert the signature html "safely" to avoid script injection
+							// sn.innerHTML = theSignature;
+							if (!util.insertHtmlSafely(sn, theSignature)) {
+								console.log("insertTemplate - signature handling: insertHtmlSafely failed - we should inject it's html!", theSignature);
+							}
 							theSignature = sn;
 						}
 						
@@ -1619,13 +1624,17 @@ SmartTemplate4.classSmartTemplate = function() {
 						  // find and replace <sig>%sig%</sig> in body.
 							let sigNode;
 							if (sigNode) {
-								let isRemoveDashes = sigNode.getAttribute('removeDashes');
-								theSignature.innerHTML = util.getSignatureInner(theSignature, isRemoveDashes); // remove dashes hard coded for now
-								sigNode.parentNode.insertBefore(theSignature, sigNode);
-								sigNode.parentNode.removeChild(sigNode);
-							}
-						}
-						else { // append signature using usual methods
+                let isRemoveDashes = sigNode.getAttribute("removeDashes");
+                // remove dashes hard coded for now
+                let sigContent = util.getSignatureInner(theSignature, isRemoveDashes);
+                // [issue 393] we need to insert the signature html "safely" to avoid script injection
+                // theSignature.innerHTML = sigContent;
+								util.insertHtmlSafely(theSignature, sigContent);
+
+                sigNode.parentNode.insertBefore(theSignature, sigNode);
+                sigNode.parentNode.removeChild(sigNode);
+              }
+						} else { // append signature using usual methods
 							// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
 							if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
 								// only need this in reply case (might not need it at all with breaksAtTop
@@ -1760,62 +1769,35 @@ SmartTemplate4.classSmartTemplate = function() {
                   try {
                     // refind the caret Container.
                     // wrap internals in <p>
-                    let parentSrchHTML = cursorParent.innerHTML.toLowerCase(),
-                      caretStartPos = cursorParent.innerHTML.indexOf(caretContainer.outerHTML),
-                      caretEndPos = caretStartPos + caretContainer.outerHTML.length,
-                      para = doc.createElement("P"),
-                      nextBlock = parentSrchHTML.indexOf("<p", caretEndPos), // offset at the end of caret
-                      // [issue 149] table rows / cells were removed if last element
-                      previousBlock =
-                        Math.max(
-                          parentSrchHTML.lastIndexOf("</p", caretStartPos),
-                          parentSrchHTML.lastIndexOf("<br", caretStartPos),
-                          parentSrchHTML.lastIndexOf("</div", caretStartPos),
-                          parentSrchHTML.lastIndexOf("</table", caretStartPos)
-                        ) + 1; // where the previous Block ends
-                    if (previousBlock == 0) {
-                      previousBlock = caretStartPos;
-                    } else {
-                      previousBlock =
-                        parentSrchHTML.indexOf(">", previousBlock) + 1 || caretStartPos; // find end of closing tag
-                      if (previousBlock < 0) {
-                        previousBlock = 0;
-                      }
+                    let para = doc.createElement("p");
+                    let parent = caretContainer.parentNode;
+
+                    // Collect all siblings from the start of the paragraph until the next block
+                    // This replaces all the substring calculations
+                    let current = parent.firstChild;
+                    let movingNodes = [];
+                    while (current && current !== caretContainer) {
+                      movingNodes.push(current);
+                      current = current.nextSibling;
+                    }
+                    // Include the caretContainer itself
+                    movingNodes.push(caretContainer);
+
+                    // Move nodes into the new <p>
+                    for (let node of movingNodes) {
+                      para.appendChild(node);
                     }
 
-                    if (nextBlock < 0) {
-                      // find next block level element or line break
-                      nextBlock = parentSrchHTML.indexOf("<br", caretEndPos);
-                      if (nextBlock < 0) {
-                        nextBlock = parentSrchHTML.indexOf("<div", caretEndPos);
-                      }
-                      if (nextBlock < 0) {
-                        nextBlock = cursorParent.innerHTML.length - 1;
-                      }
+                    // Insert the new paragraph back
+                    parent.insertBefore(para, current); // current is the node after caretContainer (may be null = append)
+
+                    // Remove empty placeholders (if any remain)
+                    if (parent.textContent.trim() === "") {
+                      parent.appendChild(doc.createElement("br"));
                     }
-                    if (nextBlock < caretEndPos) {
-                      // if no suitable element follows, we are cutting the paragraph short here
-                      nextBlock = caretEndPos;
-                    } 
 
-                    // If Thunderbird has inserted the empty <p><br><p> here let's cut that out:
-                    let startNextBlock =
-                      parentSrchHTML.substr(nextBlock).indexOf("<p><br></p>") == 0
-                        ? nextBlock + 11
-                        : nextBlock;
-
-                    if (isDebugComposer) {
-                      // eslint-disable-next-line no-debugger
-                      debugger;
-                    }
-                    let leftHTML = cursorParent.innerHTML.substring(0, previousBlock),
-                      rightHTML = cursorParent.innerHTML.substring(startNextBlock),
-                      midHTML = cursorParent.innerHTML.substring(previousBlock, nextBlock);
-                    para.innerHTML = midHTML; // caretContainer.outerHTML +"<br>" visibility hack for the resulting empty <p>
-
-                    cursorParent.innerHTML = leftHTML + para.outerHTML + rightHTML;
-                    caretContainer = findChildNode(theParent, "st4cursor");
-
+                    // Re-find caretContainer
+                    caretContainer = findChildNode(para, "st4cursor");
                     theParent = caretContainer.parentNode;
                   } catch (ex) {
                     util.logException("forceParagraph failed \n", ex, {editor});
@@ -1847,12 +1829,17 @@ SmartTemplate4.classSmartTemplate = function() {
                 } else {
                   editor.selection.collapseToStart();
                   // check if we would create an empty paragraph:
+                  // If paragraph only contains the spacer, replace with <br>
+                  const parent = space.parentNode;
                   if (
-                    space.textContent == space.parentNode.innerText &&
-                    space.parentNode.tagName.toLowerCase() == "p"
+                    parent.tagName.toLowerCase() === "p" &&
+                    parent.textContent.trim() === "\u00a0"
                   ) {
-                    space.parentNode.innerHTML = "<br>"; // avoid empty paragraph because the editor will remove it; replaces space
+                    parent.textContent = ""; // remove spacer safely
+                    const br = gMsgCompose.editor.document.createElement("br");
+                    parent.appendChild(br);
                   } else {
+                    // Otherwise just remove the spacer
                     space.parentNode.removeChild(space);
                   }
                 }
@@ -1901,7 +1888,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		if (preheaderEl) {
 			SmartTemplate4.composer.injectPreHeaderElement(preheaderEl, bodyEl);			
 		}
-
 
 		resetDocument(gMsgCompose.editor, startup);
 		// check gMsgCompose.bodyModified `- should be false here`
