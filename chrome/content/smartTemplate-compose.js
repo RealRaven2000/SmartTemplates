@@ -323,33 +323,35 @@ SmartTemplate4.classSmartTemplate = function() {
 		let dashesHTML = 
 			prefs.getMyBoolPref('signature.insertDashes.html') ? SmartTemplate4.signatureDelimiter : "";
 		if (gMsgCompose.composeHTML) {
-			sig = util.mailDocument.createElement("div");
-			sig.className = 'moz-signature';
-			// if our signature is text only, we need to replace \n with <br>
-			if (!isSignatureHTML) {
-				util.logDebugOptional('functions.extractSignature', 'Replace text sig line breaks with <br>…');
-				// prettify: txt -> html
-				// first replace CRLF then LF
-				// ASCII signature
-				// check for empty signature!!
-				if (sigText.length<=1) {
-					sigText = '';
-					util.logDebugOptional('functions.extractSignature', 'no signature defined!');
-				}
-				else {
-					sigText = dashesTxt 
-								+ "<pre>"
-								+ sigText.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>")
-								+ "</pre>";  // .replace(/ /g, '&nbsp;') - we do not need this as we wrap in pre, anyway!
-				}
-			} else {
-				sigText = dashesHTML + sigText;
-			}
-			// [issue 393] avoid innerHTML assignments!
-			sig.innerHTML = sigText;  // = gMsgCompose.identity.htmlSigText;
-			// TEST STUFF..
-		}
-		else {
+      sig = util.mailDocument.createElement("div");
+      sig.className = "moz-signature";
+      // if our signature is text only, we need to replace \n with <br>
+      if (!isSignatureHTML) {
+        util.logDebugOptional(
+          "functions.extractSignature",
+          "Replace text sig line breaks with <br>…"
+        );
+        // prettify: txt -> html
+        // first replace CRLF then LF
+        // ASCII signature
+        // check for empty signature!!
+        if (sigText.length <= 1) {
+          sigText = "";
+          util.logDebugOptional("functions.extractSignature", "no signature defined!");
+        } else {
+          sigText =
+            dashesTxt +
+            "<pre>" +
+            sigText.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>") +
+            "</pre>"; // .replace(/ /g, '&nbsp;') - we do not need this as we wrap in pre, anyway!
+        }
+      } else {
+        sigText = dashesHTML + sigText;
+      }
+      // [issue 393] avoid innerHTML assignments
+      // sig.innerHTML = sigText;  // = gMsgCompose.identity.htmlSigText;
+      util.insertHtmlSafely(sig, sigText);
+    } else {
 			// createTextNode( ) returns a DOMString (16bit)
 			sig = dashesTxt + sigText;  // gMsgCompose.editor.document.createTextNode(sigText);
 		}
@@ -1246,7 +1248,9 @@ SmartTemplate4.classSmartTemplate = function() {
               // if template contains <br> or <p> let's strip out "formatting" text content line breaks.
               quoteHeader = cleanPlainTextNewLines(quoteHeader);
             }
-						qd.innerHTML = quoteHeader;
+						// [issue 393] do not use innerHTML directly
+						// qd.innerHTML = quoteHeader;
+						util.insertHtmlSafely(qd, quoteHeader);
 						return qd;
 					}
 
@@ -1301,12 +1305,15 @@ SmartTemplate4.classSmartTemplate = function() {
         const mailtoVar = "%mailto(body)%";
         if (template && rawTemplate.includes(mailtoVar)) {
           template = template.replace("<span class='mailToBody'/>", bodyEl.innerHTML);
-          bodyEl.innerHTML = '';
+          bodyEl.textContent = ""; // clear out body
           bodyContent = '';
           util.logDebugOptional('composer','msgComposeType.MailToUrl - injecting mailto content:\n' + bodyEl.innerHTML);
         } else {
-          bodyEl.innerHTML = '';
-          util.logDebugOptional('composer','msgComposeType.MailToUrl - clearing template and setting to:\n' + bodyContent);
+          bodyEl.textContent = ""; // clear out body
+          util.logDebugOptional(
+            "composer",
+            "msgComposeType.MailToUrl - clearing template and setting to:\n" + bodyContent
+          );
           template = bodyContent; // clear template
           SmartTemplate4.sigInTemplate = false;
         }
@@ -1319,69 +1326,79 @@ SmartTemplate4.classSmartTemplate = function() {
 		try {
 			const isExtractHead = SmartTemplate4.Preferences.getMyBoolPref("header.inject");
 			if (isExtractHead) {
-				let testDiv = editor.document.createElement("div");
-				testDiv.id = "tempTemplate";
-				testDiv.hidden = true;
-				// replace <head> tags, because they will be removed on adding the HTML:
-				testDiv.innerHTML = template ?
-				  template.replace("<head","<div class='smartTemplateHeader' ").replace("</head","</div")
-				                            .replace("<body","<div class='smartTemplateBody' "  ).replace("</body","</div") : "";
+        let tempDiv = editor.document.createElement("div");
+        tempDiv.id = "tempTemplate";
+        tempDiv.hidden = true;
+        // replace <head> tags, because they will be removed on adding the HTML:
+        if (template) {
+          // convert <head> and <body> tags into divs safely
+          const safeHTML = template
+            .replace(/<head\b/gi, "<div class='smartTemplateHeader'")
+            .replace(/<\/head>/gi, "</div>")
+            .replace(/<body\b/gi, "<div class='smartTemplateBody'")
+            .replace(/<\/body>/gi, "</div>");
+          util.insertHtmlSafely(tempDiv, safeHTML);
+        }
 
-				// ===== merge head contents
-				let heads = testDiv.querySelectorAll("div.smartTemplateHeader");
-				if (heads.length) {
-					let docHeader = editor.document.head || editor.document.getElementsByTagName('head')[0],
-							i=0;
-					for (let head of heads) {
-						util.logDebugOptional('composer',"SmartTemplates - head tag found\n", head.outerHTML);
-						let headContent = head.innerHTML;
-						docHeader.innerHTML = docHeader.innerHTML + 
-							`\n<!--- head [${i}] from template -->\n` +
-							headContent;
-						i++;
-					}
-					let len = heads.length;
-					for (let i=len-1; i>=0; i--) {
-						let head = heads[i];
-						testDiv.removeChild(head);
-					}
-					template = testDiv.innerHTML; // extract the remaining markup
-				}
+        // ===== merge head contents
+        let heads = tempDiv.querySelectorAll("div.smartTemplateHeader");
+        if (heads.length) {
+          let docHeader = editor.document.head || editor.document.getElementsByTagName("head")[0],
+            i = 0;
+          for (let head of heads) {
+            util.logDebugOptional("composer", "SmartTemplates - head tag found\n", head.outerHTML);
+						util.insertHtmlSafely(
+              docHeader,
+              `\n<!-- head [${i}] from template -->\n${head.innerHTML}`
+            );
+            i++;
+          }
+          let len = heads.length;
+          for (let i = len - 1; i >= 0; i--) {
+            let head = heads[i];
+            tempDiv.removeChild(head);
+          }
+          template = tempDiv.innerHTML; // extract the remaining markup
+        }
 
-				// ===== merge body attributes
-				let bodies = testDiv.querySelectorAll("div.smartTemplateBody");
-				if (bodies.length) { // gather all attributes.
-					let allAttributes = [];
-					for (let body of bodies) {
-						let atts = [...body.attributes];
-						allAttributes.push(...atts);
-						for (let a of atts) { // strip all attributes of the div, it shouldn't do anything hopefully
-							body.removeAttribute(a.name);
-						}
-					}
-					// all body attributes are dropped by composer, so there is no need to tidy up!
-					for (let a of allAttributes) {
-						let isClass = (a.name=="class");
-						if (isClass) {
-							a.value = a.value.replace("smartTemplateBody","").trim();
-						}
-						if (a.value && a.value.trim()) {
-							if (isClass) {
-								let clist = a.value.split(" ");
-								for (let cl of clist) {
-									if (cl) {
-										bodyEl.classList.add(cl);
-									}
-								}
-							} else { // note: this definitely overwrites previous attributes!
-								bodyEl.setAttribute(a.name, a.value);
-							}
-						}
-					}
-					template = testDiv.innerHTML; // extract the remaining markup again.
-				}
-				testDiv.remove();
-			}
+        // ===== merge body attributes
+        // honors user-supplied <body> attribs, overwrite existing ones by design
+        let bodies = tempDiv.querySelectorAll("div.smartTemplateBody");
+        if (bodies.length) {
+          // gather all attributes.
+          let allAttributes = [];
+          for (let body of bodies) {
+            let atts = [...body.attributes];
+            allAttributes.push(...atts);
+            for (let a of atts) {
+              // strip all attributes of the div, it shouldn't do anything hopefully
+              body.removeAttribute(a.name);
+            }
+          }
+          // all body attributes are dropped by composer, so there is no need to tidy up!
+          for (let a of allAttributes) {
+            let isClass = a.name == "class";
+            if (isClass) {
+              a.value = a.value.replace("smartTemplateBody", "").trim();
+            }
+            if (a.value && a.value.trim()) {
+              if (isClass) {
+                let clist = a.value.split(" ");
+                for (let cl of clist) {
+                  if (cl) {
+                    bodyEl.classList.add(cl);
+                  }
+                }
+              } else {
+                // note: this definitely overwrites previous attributes!
+                bodyEl.setAttribute(a.name, a.value);
+              }
+            }
+          }
+          template = tempDiv.innerHTML; // extract the remaining markup again.
+        }
+        tempDiv.remove();
+      }
 		} catch(ex) {
 			util.logException("Extract header from template failed", ex);
 		}
@@ -1394,45 +1411,56 @@ SmartTemplate4.classSmartTemplate = function() {
 			templateDiv = util.mailDocument.createElement("div");
 			// now insert quote Header separately
 			try {
-				if (flags.isThunderbirdTemplate && template.length) {
-					// remove original st4 div
-					let oldSt4Div = editor.document.getElementById("smartTemplate4-template");
-					if (oldSt4Div) {
-					  oldSt4Div.parentNode.removeChild(oldSt4Div);
-					}
-				}
-				templateDiv.id = "smartTemplate4-template";
-				/* TEST
+        if (flags.isThunderbirdTemplate && template.length) {
+          // remove original st4 div
+          let oldSt4Div = editor.document.getElementById("smartTemplate4-template");
+          if (oldSt4Div) {
+            oldSt4Div.parentNode.removeChild(oldSt4Div);
+          }
+        }
+        templateDiv.id = "smartTemplate4-template";
+        /* TEST
 				if (prefs.getMyBoolPref('debug.composer')) {
 					// color the template part for debugging.
 					templateDiv.style.backgroundColor = "#FFF4CC";
 					templateDiv.style.border = "1px solid #FFE070";
 				} */
-        util.logDebugOptional('composer','Setting template Div innerHTML…\n' + template);
-				// This encodes "&" in href attributes to &amp;   !
-        templateDiv.innerHTML = template || "";
-				if (theIdentity.replyOnTop) {
-					// this is where we lose the default "paragraph" style
-					editor.beginningOfDocument();
-					for (let i = 0; i < breaksAtTop; i++)  {
-						gMsgCompose.editor.insertNode(
-						                   util.mailDocument.createElement("br"),
-						                   SmartTemplate4.composer.body, 0);
-					}
-					// the first Child should be BLOCKQUOTE (header is inserted afterwards)
-					util.logDebugOptional('composer','Reply on Top - inserting template before first root child');
-					targetNode = editor.rootElement.insertBefore(templateDiv, editor.rootElement.firstChild); 
-				} else {
-					for (let i = 0; i < breaksAtTop; i++) {
-						SmartTemplate4.composer.body.appendChild(util.mailDocument.createElement("br"));
-					}
-					util.logDebugOptional('composer','Reply at Botton - appending template to first root child');
-					targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
-					editor.endOfDocument();
-				}
+        util.logDebugOptional("composer", "Generating template Div innerHTML…\n" + template);
+        // This encodes "&" in href attributes to &amp;   !
+
+        // [issue 393] 
+        // templateDiv.innerHTML = template || "";
+        util.insertHtmlSafely(templateDiv, template || ""); 
+        if (theIdentity.replyOnTop) {
+          // this is where we lose the default "paragraph" style
+          editor.beginningOfDocument();
+          for (let i = 0; i < breaksAtTop; i++) {
+            gMsgCompose.editor.insertNode(
+              util.mailDocument.createElement("br"),
+              SmartTemplate4.composer.body,
+              0
+            );
+          }
+          // the first Child should be BLOCKQUOTE (header is inserted afterwards)
+          util.logDebugOptional(
+            "composer",
+            "Reply on Top - inserting template before first root child"
+          );
+          targetNode = editor.rootElement.insertBefore(templateDiv, editor.rootElement.firstChild);
+        } else {
+          for (let i = 0; i < breaksAtTop; i++) {
+            SmartTemplate4.composer.body.appendChild(util.mailDocument.createElement("br"));
+          }
+          util.logDebugOptional(
+            "composer",
+            "Reply at Botton - appending template to first root child"
+          );
+          targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
+          editor.endOfDocument();
+        }
         // %quotePlaceholder(quotelevel)%
         let quoteNode = templateDiv.querySelector("blockquote[class=SmartTemplate]");
-        
+
         // clean old quotes
         if (quoteNode) {
           function quoteLevel(element, level) {
@@ -1443,7 +1471,7 @@ SmartTemplate4.classSmartTemplate = function() {
             if (p.tagName && p.tagName.toLowerCase() == "blockquote") {
               // increase level and check grandparent
               return quoteLevel(p, level + 1);
-            } 
+            }
             return quoteLevel(p, level);
           }
 
@@ -1503,9 +1531,9 @@ SmartTemplate4.classSmartTemplate = function() {
               quotePart.parentNode.insertBefore(topHeader, quotePart);
             }
           }
-					const isRemoveStyles = quoteNode.getAttribute("removestyles");
+          const isRemoveStyles = quoteNode.getAttribute("removestyles");
           // move original
-					const originalContainer = quoteNode.parentNode;
+          const originalContainer = quoteNode.parentNode;
           originalContainer.removeChild(quoteNode);
 
           // [issue 331] remove style blocks
@@ -1520,7 +1548,7 @@ SmartTemplate4.classSmartTemplate = function() {
             });
           }
         }
-			}
+      }
 			catch (ex) {
 				let errorText =
           "{P1}Could not insert Template as HTML; please check for syntax errors.{br}" +
@@ -1619,22 +1647,8 @@ SmartTemplate4.classSmartTemplate = function() {
 							theSignature = sn;
 						}
 						
-						if (sigVarDefined 
-						    && gMsgCompose.type != msgComposeType.MailToUrl) { 
-						  // find and replace <sig>%sig%</sig> in body.
-							let sigNode;
-							if (sigNode) {
-                let isRemoveDashes = sigNode.getAttribute("removeDashes");
-                // remove dashes hard coded for now
-                let sigContent = util.getSignatureInner(theSignature, isRemoveDashes);
-                // [issue 393] we need to insert the signature html "safely" to avoid script injection
-                // theSignature.innerHTML = sigContent;
-								util.insertHtmlSafely(theSignature, sigContent);
-
-                sigNode.parentNode.insertBefore(theSignature, sigNode);
-                sigNode.parentNode.removeChild(sigNode);
-              }
-						} else { // append signature using usual methods
+						if (!sigVarDefined || gMsgCompose.type == msgComposeType.MailToUrl) { 
+							 // append signature using usual methods
 							// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
 							if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
 								// only need this in reply case (might not need it at all with breaksAtTop
@@ -1642,8 +1656,7 @@ SmartTemplate4.classSmartTemplate = function() {
                   bodyEl.appendChild(doc.createElement("br"));
                 }
 								bodyEl.appendChild(theSignature);
-							}
-							else {
+							} else {
 								// reply above, before div smartTemplate4-template
 								// findChildnode non recursive						
 								templateDiv = findDirectChildById(bodyEl, 'smartTemplate4-template'); // find direct child of html element (avoid parsing quoted mail)
@@ -1655,8 +1668,7 @@ SmartTemplate4.classSmartTemplate = function() {
 								if (templateDiv.nextSibling) {
 									templateDiv.parentNode.insertBefore(theSignature, templateDiv.nextSibling);
 									templateDiv.parentNode.insertBefore(doc.createElement("br"), templateDiv.nextSibling);
-								}
-								else {
+								} else {
 									// templateDiv.parentNode.appendChild(templateDiv);
 									templateDiv.parentNode.appendChild(doc.createElement("br"));
 									templateDiv.parentNode.appendChild(theSignature);
@@ -1664,8 +1676,7 @@ SmartTemplate4.classSmartTemplate = function() {
 							}
 						}
 					}
-			  }
-			  catch(ex) {
+			  } catch(ex) {
 					util.logException("handling signature failed", ex);
 				}
 			}
@@ -1877,9 +1888,10 @@ SmartTemplate4.classSmartTemplate = function() {
 		//[] prepend mailto "body" part if missing, in case something went wrong
 		if (gMsgCompose.type == msgComposeType.MailToUrl && bodyContent) {
 			if (!bodyEl.innerHTML) {
-				bodyEl.innerHTML = bodyContent;
-				util.logDebugOptional('composer','restoring body inner HTML:\n' + bodyContent);
-			}
+        // [issue 393] avoid innerHTML assignments
+        util.insertHtmlSafely(bodyEl, bodyContent);
+        util.logDebugOptional("composer", "restoring body inner HTML:\n" + bodyContent);
+      }
 		}
 		
 		bodyEl.setAttribute("smartTemplateInserted","true"); // guard against duplication!
