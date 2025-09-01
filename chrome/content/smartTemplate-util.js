@@ -506,12 +506,13 @@ SmartTemplate4.Util = {
     return key;
   },
 
-  popupAlert: function (title, text, icon) {
+  popupAlert: function (title, text, icon, forceSound) {
     try {
       if (!icon) {icon = "chrome://smarttemplate4/content/skin/icon32x32.png";}
+      const sound = forceSound || ""; // by default silent
       Components.classes["@mozilla.org/alerts-service;1"]
         .getService(Components.interfaces.nsIAlertsService)
-        .showAlertNotification(icon, title, text, false, "", null);
+        .showAlertNotification(icon, title, text, false, "", null, sound);
       // eslint-disable-next-line no-unused-vars
     } catch (_e) {
       // prevents runtime error on platforms that don't implement nsIAlertsService
