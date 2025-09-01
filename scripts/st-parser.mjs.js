@@ -1,3 +1,4 @@
+/* eslint-disable no-control-regex */
 "use strict";
 /* 
 BEGIN LICENSE BLOCK
@@ -65,7 +66,7 @@ export class Parser {
          // not supported                  
          // #    RFC1555 ISO-8859-8 (Hebrew)
          // #    RFC1922 iso-2022-cn-ext (Chinese extended)
-        let encodedCharset = str.match(/=\?([^\?]*)\?/);
+        let encodedCharset = str.match(/=\?([^?]*)\?/);
         if (encodedCharset.length>1) {
           // matchgroup 1 is the charset! 
           charset = encodedCharset[1];
@@ -197,7 +198,7 @@ export class Parser {
           return a.replace(/.*<(\S+)>.*/g, "$1");
         }
 
-        function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1); };
+        function isLastName(format) { return (format.search(/^\(lastname[,)]/, "i") != -1); };
         // argType = Mail or Name to support bracketMail and bracketName
         function getBracketAddressArgs(format, argType) { 
 		      //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail{*} !
@@ -213,7 +214,7 @@ export class Parser {
           return '';
         };
          async function getCardFromAB(mail) { // returns ContactNode
-          if (!mail) return null;
+          if (!mail) {return null;}
           // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
           // http://mxr.mozilla.org/comm-central/source/mailnews/addrbook/public/nsIAbCard.idl
           
@@ -224,13 +225,13 @@ export class Parser {
           for (let i=0; i<that.allAddressBooks.length; i++ ) {
             // addressBook.mailingLists // array of MailingListNode)
             // alert ("Directory Name:" + addressBook.dirName);
+            let addressBook;
             try {
               // AddressBookNode 
-              let addressBook = that.allAddressBooks[i];
-              let contactNode = addressBook.contacts.find(c => c.properties.PrimaryEmail.toLowerCase() == mail.toLowerCase());  // Array of ContactNode, properties is nsIAbCard.idl
-              if (contactNode) return contactNode;
-            }
-            catch(ex) {
+              addressBook = that.allAddressBooks[i];
+              const contactNode = addressBook.contacts.find(c => c.properties.PrimaryEmail.toLowerCase() == mail.toLowerCase());  // Array of ContactNode, properties is nsIAbCard.idl
+              if (contactNode) {return contactNode;}
+            } catch(ex) {
               Util.logDebug('Problem with Addressbook: ' + addressBook.dirName + '\n' + ex) ;
             }
           }
@@ -339,7 +340,6 @@ export class Parser {
         // if (!bypassCharsetDecoder)
           // addrstr = this.decode(addrstr, charset);
         // Escape % and , characters in mail addresses
-        if (this.MimePrefs.debug) debugger;
         
         let array = [];
         if (typeof addrstr == "string") {
@@ -404,7 +404,6 @@ export class Parser {
         /** ITERATE ADDRESSES  **/
         for (let i = 0; i < array.length; i++) {
           let suppressMail = false;
-          if (this.MimePrefs.debug) debugger;
           if (i > 0) {
             addresses += nameDelim + " ";  // comma or semicolon
           }
@@ -438,7 +437,7 @@ export class Parser {
           
           // determine name part (left of email)
           addressee = address.replace(/\s*<\S+>\s*$/, "")
-                          .replace(/^\s*\"|\"\s*$/g, "");  // %to% / %to(name)%
+                          .replace(/^\s*"|"*\s*$/g, "");  // %to% / %to(name)%
                           
           if (isGuessFromAddressPart && !addressee) { // if no addressee part found we probably have only an email address.; take first part before the @
             addressee = address.slice(0, address.indexOf('@'));
@@ -727,11 +726,12 @@ export class Parser {
                 break;
               case 'addressbook':
                 part = "";          
+                break;
               case 'toclipboard':
                 isWriteClipboard = true;
                 part = "";
                 break;
-              default:
+              default: {
                 // [issue 186] allow using bracketMail / bracketName without parentheses
                 let bM = (partKeyWord.indexOf('bracketMail')==0),
                     bN = (partKeyWord.indexOf('bracketName')==0);
@@ -745,12 +745,13 @@ export class Parser {
                       [open, close, bracketsAreOptional] = getBracketDelimiters(bracketNameParams, element);
                       let fN = fullName ? fullName : address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
                       part = fN ? fN : '';
-                    }
-                    else
+                    } else {
                       part = "";
+                    }
                   }
                 }
                 break;
+              }
             }
             if (element.modifier =='linkTo') {
               part = "<a href=mailto:" + emailAddress + ">" + part + "</a>"; // mailto
@@ -816,7 +817,6 @@ export class Parser {
         const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"];
           // ComposeFields = gMsgCompose.compFields;
               
-        if (await Preferences.isDebugOption('headers')) debugger;			
         Util.addUsedPremiumFunction("header." + cmd);
         let targetString = '',
             modType = '',
@@ -1531,7 +1531,7 @@ export class Parser {
       }
 
       let debugTimeStrings = await Preferences.isDebugOption("timeStrings");
-      if (!arg) arg = "";
+      if (!arg) {arg = "";}
       try {
         // for backward compatibility
         switch (token) {
@@ -1573,7 +1573,7 @@ export class Parser {
                 case "fwd":
                   token = "to";
                   // make sure to add / append "fwd" switch:
-                  if (!arg) arg = "(fwd)";
+                  if (!arg) {arg = "(fwd)";}
                   else {
                     arg = arg.substr(0, arg.length - 1) + ",fwd)";
                   }
@@ -1596,8 +1596,8 @@ export class Parser {
           case "matchTextFromSubject": // return unchanged
           case "matchTextFromBody": // return unchanged
             return "%" + token + arg + "%";
-          case "dateformat":
-            if (debugTimeStrings) debugger;
+          case "dateformat": {
+            if (debugTimeStrings) {debugger;}
             tm = new Date();
             const dateFormatSent = offsets.whatIsX == offsets.XisSent && date;
             if (dateFormatSent) tm.setTime(date / 1000);
@@ -1614,17 +1614,18 @@ export class Parser {
               offsets
             ); // dateFormat will add offsets itself
             if (dateFormatSent) token = defaultTime;
-            else
+            else {
               token = await Util.wrapDeferredHeader(
                 token + arg,
                 defaultTime,
                 !composeDetails.isPlainText,
                 composeType == "new"
               );
+            }
             return token;
+          }
           case "datelocal":
           case "dateshort":
-            if (debugTimeStrings) debugger;
             if (offsets.whatIsX == offsets.XisToday) {
               tm = new Date(); // undo offset for this case.
               token = await Util.prTime2Str(tm.getTime() * 1000, token, 0, offsets); // [issue 184] to do: pass offsets
@@ -2472,7 +2473,7 @@ export class Parser {
 
     if (supportEval) {
       try {
-        if (sandbox && Cu.nukeSandbox) Cu.nukeSandbox(sandbox);
+        if (sandbox && Cu.nukeSandbox) {Cu.nukeSandbox(sandbox);}
       } catch (ex) {
         Util.logException("Sandbox not nuked.", ex);
       }
@@ -2490,7 +2491,7 @@ export class Parser {
     let info = this.info;
     let composeType = info.composeType;
     let composeDetails = info.composeDetails;
-    if (!templateText) return "";
+    if (!templateText) {return "";}
 
     Util.logDebugOptional('functions.getProcessedText', 'START =============  getProcessedText()   ==========');
     Util.logDebugOptional('functions.getProcessedText', 'Process Text:\n' +
@@ -2548,9 +2549,9 @@ export class Parser {
                 let dataUrl = await Util.getFileAsDataURI(filePath);
                 if (dataUrl) {
                   return g1 + dataUrl + g3;
-                }
-                else
+                } else {
                   Util.logDebug("Could not resolve image path! Returning unchanged img tag.");
+                }
               }
               catch(ex) {
                 Util.logException(ex, "Failed to read image file " + filePath);
@@ -2582,7 +2583,9 @@ export class Parser {
           manifest = await messenger.runtime.getManifest();
       cal.addonName = await manifest.name;
       cal.isInitialized = true;
-      if (forcedLocale) {currentLocale = forcedLocale;}
+      if (forcedLocale) {
+        this.currentLocale = forcedLocale;
+      }
     },
     currentLocale : null, // whatever was passed into %language()%
     bundleLocale: null,

@@ -138,7 +138,10 @@ export let Util = {
 	// headers that are currently not defined may be filled later.
 	// e.g. adding a To address when writing a new email
 	wrapDeferredHeader : async function wrapDeferredHeader(field, defaultValue, isHtml, isComposeNew) {
-		if (Preferences.isDebugOption("tokens.deferred")) debugger;
+		if (Preferences.isDebugOption("tokens.deferred")) {
+			// eslint-disable-next-line no-debugger
+			debugger;
+		}
 		
 		let newComposeClass = isComposeNew ? " class='noWrite'" : ""; /* make field look pink for headers that are not available in New Emails */
 		if (!isHtml) return defaultValue; // not supported in plain text for now
@@ -168,7 +171,7 @@ export let Util = {
 	checkIsURLencoded: function checkIsURLencoded(tok) {
 		if (tok.length>=4) {
 			let t = tok.substr(0,2); // hexcode, such as %5C
-			if (/\%[0-9a-fA-F][0-9a-fA-F]/.test(t)) {
+			if (/%[0-9a-fA-F][0-9a-fA-F]/.test(t)) {
 				this.logDebug("checkIsURLencoded()\n" +
 				  "Ignoring character sequence as not a SmartTemplate because it looks like an URL encoded sequence:\n" +
 					tok)
@@ -205,15 +208,15 @@ export let Util = {
 		function removeDashes(elem, isPlainText) {
 			// also fix removing dashes from plain text sig:
 			if (isPlainText) {
-				return elem.replace('-- \<br\>', '');
+				return elem.replace('-- <br>', '');
 			}
 		
 			// [Bug 25483] when using %sig(2)% signature is missing on new mails in HTML mode
 			let newSig = elem;
 			if (elem.childNodes.length) {
-				if (elem.childNodes.length == 1)
+				if (elem.childNodes.length == 1) {
 					newSig = removeDashes(elem.firstChild);
-				else {
+				} else {
 					if (elem.firstChild.nodeValue == "-- ") {
 						elem.removeChild(elem.firstChild); //remove '-- '
 					}
@@ -230,8 +233,9 @@ export let Util = {
 			if (sig != null) {
         global.sigInTemplate = true;  // [issue 184] convert side effect 
 				// SmartTemplate4.sigInTemplate = true;
-				if (typeof sig === "string")
+				if (typeof sig === "string") {
 					return isRemoveDashes ? removeDashes(sig, true) : sig;
+				}
 					
 				if (!sig.children || sig.children.length==0) {
 					this.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
@@ -268,7 +272,7 @@ export let Util = {
 		}
 		Util.logDebugOptional('functions', 'Util.getIsoWeek(' + tm + ', ' + dowOffset + ')');
 
-		dowOffset = typeof(dowOffset) == 'int' ? dowOffset : 0; //default dowOffset to zero
+		dowOffset = typeof dowOffset == "number" ? dowOffset : 0; //default dowOffset to zero
 
 		let newYear = new Date(tm.getFullYear(),0,1);
 		let day = newYear.getDay() - dowOffset; //the day of week the year begins on
@@ -316,7 +320,7 @@ export let Util = {
       for (let i=0; i<words.length; i++) {
         let word = words[i],
             findw = 0;
-        while ("\\\"\'\{\[\(\)".indexOf(word.charAt(findw))>=0 && findw<word.length) {
+		while ("\\\"'{[{()}".indexOf(word.charAt(findw))>=0 && findw<word.length) {
           findw++; // skip these characters, so we hit alphabetics again
         }
         
@@ -330,8 +334,9 @@ export let Util = {
         if (compositeName.length>1) {
           let cname = '';
           for (let m=0; m<compositeName.length; m++) {
-            if (m>0)
+            if (m>0) {
               cname += '-';
+						}
             cname += compositeName[m].charAt(0).toLocaleUpperCase() + compositeName[m].substring(1);
           }
           words[i] = cname;
@@ -472,7 +477,7 @@ export let Util = {
           manifest = await messenger.runtime.getManifest();
       cal.addonName = await manifest.name;
       cal.isInitialized = true;
-      if (forcedLocale) {currentLocale = forcedLocale;}
+      if (forcedLocale) {this.currentLocale = forcedLocale;}
     },
     dayName: function dayName(n){ 
       Util.logIssue184(`calendar.dayName(${n})`);
@@ -515,7 +520,7 @@ export let Util = {
   },
 
   // 1672
-  isAddressHeader: function	isAddressHeader(token='') {
+  isAddressHeader: function	(token='') {
     if (!token) return false;
     return RegExp(" " + token + " ", "i").test(
        " bcc cc disposition-notification-to errors-to from mail-followup-to mail-reply-to reply-to" +
