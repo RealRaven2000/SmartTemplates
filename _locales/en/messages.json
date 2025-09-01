@@ -1076,6 +1076,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Use the external template last selected from the drop-down menu."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Display a notification if reusing the last selected template."
+  },
   "preferences.title": {
     "message": "SmartTemplates settings"
   },
@@ -1695,6 +1698,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Dictionary '{0}' not found."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Reusing last external template: {template}{br}💾 according to global setting:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Switch to Domain License?"

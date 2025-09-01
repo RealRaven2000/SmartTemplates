@@ -1061,6 +1061,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Käytä avattavasta valikosta viimeksi valittua ulkoista mallia."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Näytä ilmoitus, jos viimeksi valittua mallia käytetään uudelleen."
+  },
   "preferences.title": {
     "message": "SmartTemplates - Asetukset"
   },
@@ -1665,6 +1668,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Sanakirjaa {0} ei löytynyt."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Viimeksi käytettyä ulkoista mallia käytetään uudelleen: {template}{br}💾 järjestelmän asetusten mukaisesti:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Vaihda toimialuelisenssiin (domain)?"

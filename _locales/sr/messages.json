@@ -1031,6 +1031,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Користите спољни шаблон који је последњи изабран из падајућег менија."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Prikazati obaveštenje ako se ponovo koristi poslednji izabrani šablon."
+  },
   "preferences.title": {
     "message": "Поставке SmartTemplates-а"
   },
@@ -1632,6 +1635,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Речник '{0}' није пронађен."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Ponovna upotreba poslednjeg eksternog šablona: {template}{br}💾 prema globalnim podešavanjima:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Прелазите на лиценцу домена?"

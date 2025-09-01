@@ -1047,6 +1047,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Použijte externí šablonu naposledy vybranou z rozbalovací nabídky."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Zobrazit oznámení, pokud se znovu používá poslední vybraná šablona."
+  },
   "preferences.title": {
     "message": "Nastavení SmartTemplates"
   },
@@ -1645,6 +1648,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Slovník '{0}' nebyl nalezen."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Znovu se používá poslední externí šablona: {template}{br}💾 podle globálního nastavení:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Přepnout na licenci domény?"

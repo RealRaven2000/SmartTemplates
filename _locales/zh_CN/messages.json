@@ -1049,6 +1049,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "使用最后从下拉菜单中选择的外部模板。"
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "如果重用上次选择的模板，则显示通知。"
+  },
   "preferences.title": {
     "message": "SmartTemplates 选项"
   },
@@ -1648,6 +1651,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "找不到字典{0}'."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "正在重用上次选择的外部模板: {template}{br}💾 根据全局设置："
   },
   "st.prompt.switchDomainLicense": {
     "message": "切换到域许可证？"

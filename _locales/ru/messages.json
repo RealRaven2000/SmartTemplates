@@ -1055,6 +1055,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Используйте внешний шаблон, выбранный последним из раскрывающегося меню."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Показывать уведомление при повторном использовании последнего выбранного шаблона."
+  },
   "preferences.title": {
     "message": "Настройки SmartTemplates"
   },
@@ -1662,6 +1665,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Словарь '{0}' не найден."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Повторное использование последнего внешнего шаблона: {template}{br}💾 согласно глобальным настройкам:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "SПерейти на доменную лицензию?"

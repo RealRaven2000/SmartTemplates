@@ -1059,6 +1059,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Використовуйте останній зовнішній шаблон, вибраний у спадному меню."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Показувати сповіщення, якщо повторно використовується останній вибраний шаблон."
+  },
   "preferences.title": {
     "message": "SmartTemplates налаштування"
   },
@@ -1666,6 +1669,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Словник '{0}' не знайдено."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Повторне використання останнього зовнішнього шаблону: {template}{br}💾 відповідно до глобальних налаштувань:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Перейти до ліцензії на домен?"

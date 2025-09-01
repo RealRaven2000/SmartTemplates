@@ -1040,6 +1040,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Gebruik de laatst geselecteerde externe sjabloon in het vervolgkeuzemenu."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Toon een melding als de laatst geselecteerde sjabloon opnieuw wordt gebruikt."
+  },
   "preferences.title": {
     "message": "SmartTemplates-instellingen"
   },
@@ -1638,6 +1641,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Woordenboek ‘{0}’ niet gevonden."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "De laatst geselecteerde externe sjabloon wordt opnieuw gebruikt: {template}{br}💾 volgens de globale instellingen:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Wisselen naar domeinlicentie?"

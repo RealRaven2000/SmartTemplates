@@ -1064,6 +1064,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Använd den externa mallen som senast valdes från rullgardinsmenyn."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Visa en avisering om den senast valda mallen återanvänds."
+  },
   "preferences.title": {
     "message": "Inställningar för SmartTemplates"
   },
@@ -1677,6 +1680,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Ordbok '{0}' hittades inte."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Återanvänder den senaste externa mallen: {template}{br}💾 enligt globala inställningar:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Byt till domänlicens?"

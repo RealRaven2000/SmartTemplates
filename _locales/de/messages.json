@@ -1001,6 +1001,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Die zuletzt aus dem Dropdown-Menü ausgewählte externe Vorlage verwenden."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Eine Benachrichtigung anzeigen, wenn die zuletzt ausgewählte Vorlage erneut verwendet wird."
+  },
   "preferences.title": {
     "message": "SmartTemplates Einstellungen"
   },
@@ -1602,6 +1605,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Wörterbuch '{0}' nicht gefunden."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Letzt externe Vorlage wird wiederverwendet: {template}{br}💾 gemäß den globalen Einstellungen:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Domänenlizenz aktivieren?"

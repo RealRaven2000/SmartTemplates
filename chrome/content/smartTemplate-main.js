@@ -288,7 +288,7 @@ END LICENSE BLOCK
   Version 4.14.1 - WIP
     # [issue 394] %dateformat.current% triggers "NOT SUPPORTED: Replace deferred smartTemplate variable"
     # [issue 393] Code Review: Remove "unsafe assignments to innerHTML"
-    
+    # [issue 395] Optional notification when reusing the last template
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -440,6 +440,7 @@ var SmartTemplate4 = {
       }
       try {
         let setting = "fileTemplates.mru." + composeType;
+        let isNotify = false;
         switch (composeType) {
           case "new":
             theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting));
@@ -457,6 +458,22 @@ var SmartTemplate4 = {
             "yellow",
             "rgb(0,80,0)",
             theFileTemplate
+          );
+          isNotify = prefs.getMyBoolPref("defaultTemplate.useLastNotify");
+        }
+        if (isNotify) {
+          const truncate = (txt, maxLen) => {
+            if (typeof txt !== "string") {return "";}
+            if (txt.length <= maxLen) {return txt;}
+            return "…" + txt.slice(txt.length - maxLen);
+          };
+          const fileName = theFileTemplate.path.split("\\").pop();
+          let truncLen = 30;
+          const msg = util.getBundleString("st.notification.usedLastTemplate");
+          util.popupAlert(
+            util.ADDON_TITLE,
+            msg.replace("{template}", theFileTemplate.label).replaceAll("{br}", "\n") +
+              `\n${truncate(fileName, truncLen)}`
           );
         }
       } catch (_ex) {

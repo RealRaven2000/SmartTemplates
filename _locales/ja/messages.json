@@ -1038,6 +1038,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "ドロップダウン メニューから最後に選択した外部テンプレートを使用します。"
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "最後に選択したテンプレートを再利用する場合に通知を表示します。"
+  },
   "preferences.title": {
     "message": "SmartTemplates 設定"
   },
@@ -1627,6 +1630,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "スペルチェック辞書 '{0}' が見つかりません。"
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "最後に選択した外部テンプレートを再利用しています: {template}{br}💾 グローバル設定による:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "ドメインライセンスに切り替えますか？"

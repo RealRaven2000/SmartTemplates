@@ -1046,6 +1046,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Uporabite zunanjo predlogo, ki je bila nazadnje izbrana v spustnem meniju."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Prikaži obvestilo, če se ponovno uporabi zadnja izbrana predloga."
+  },
   "preferences.title": {
     "message": "Nastavitve SmartTemplates"
   },
@@ -1653,6 +1656,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Slovarja '{0}' ni mogoče najti."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Ponovna uporaba zadnje zunanje predloge: {template}{br}💾 glede na globalne nastavitve:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Preklopi na domensko dovoljenje?"

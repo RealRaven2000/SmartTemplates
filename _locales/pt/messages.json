@@ -1022,6 +1022,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Use o modelo externo selecionado por último no menu suspenso."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Exibir notificação se reutilizar o último modelo selecionado."
+  },
   "preferences.title": {
     "message": "Opções do SmartTemplates"
   },
@@ -1632,6 +1635,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Dicionário '{0}' não encontrado."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Reutilizando o último modelo externo selecionado: {template}{br}💾 de acordo com as configurações globais:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Mudar para a Licença de Domínio?"

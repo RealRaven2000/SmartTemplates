@@ -1019,6 +1019,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Utilice la última plantilla externa seleccionada en el menú desplegable."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Mostrar una notificación si se reutiliza la última plantilla seleccionada."
+  },
   "preferences.title": {
     "message": "Opciones de SmartTemplates"
   },
@@ -1608,6 +1611,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Diccionario '{0}' no encontrado."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Se está reutilizando la última plantilla externa: {template}{br}💾 según la configuración global:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "¿Cambiar a Licencia de Dominio?"

@@ -266,10 +266,14 @@
           <label for="useAccountTemplate">
             <input type="radio" id="useAccountTemplate" name="defaultTemplateBehavior" 
               value="1">__MSG_defaultTemplate.useAccount__</label>
-          <label for="useLastTemplate">
-            <input type="radio" id="useLastTemplate" name="defaultTemplateBehavior"
-              class="standardFeature"
-              value="2">__MSG_defaultTemplate.useLastTemplate__</label>
+          <span class="hbox">
+            <label for="useLastTemplate">
+              <input type="radio" id="useLastTemplate" name="defaultTemplateBehavior"
+                class="standardFeature"
+                value="2">__MSG_defaultTemplate.useLastTemplate__</label>
+            <label><input type="checkbox" id="chkNotifyLastTemplate"
+              data-pref-name="extensions.smartTemplate4.defaultTemplate.useLastNotify">__MSG_defaultTemplate.useLastNotify__</label>
+          </span>
         </fieldset>
 
         

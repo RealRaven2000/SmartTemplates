@@ -1055,6 +1055,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "使用最後從下拉菜單中選擇的外部模板。"
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "如果重複使用上次選擇的範本，則顯示通知。"
+  },
   "preferences.title": {
     "message": "SmartTemplates 設定"
   },
@@ -1650,6 +1653,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "找不到字典“{0}”。"
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "正在重複使用上次選擇的外部範本: {template}{br}💾 根據全域設定："
   },
   "st.prompt.switchDomainLicense": {
     "message": "切換到域許可證？"

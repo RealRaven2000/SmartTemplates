@@ -1041,6 +1041,9 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Użyj szablonu zewnętrznego wybranego ostatnio z rozwijanego menu."
   },
+  "defaultTemplate.useLastNotify": {
+    "message": "Wyświetl powiadomienie, jeśli ponownie użyto ostatnio wybranego szablonu."
+  },
   "preferences.title": {
     "message": "SmartTemplates – ustawienia"
   },
@@ -1648,6 +1651,9 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Nie znaleziono słownika „{0}”."
+  },
+  "st.notification.usedLastTemplate": {
+    "message": "Ponowne użycie ostatniego szablonu zewnętrznego: {template}{br}💾 zgodnie z ustawieniami globalnymi:"
   },
   "st.prompt.switchDomainLicense": {
     "message": "Przełączyć do strony licencji?"
