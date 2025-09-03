@@ -977,337 +977,469 @@ SmartTemplate4.classSmartTemplate = function() {
 	// -----------------------------------
 	// Add template message
 	async function insertTemplate(startup, flags, fileTemplateSource)	{
-    
-    if (SmartTemplate4.Preferences.isBackgroundParser()) { // [issue 184] - this should never be called if this flag is set
-      alert("To do: insertTemplate() through background - [issue 184]\n"
-        +  "This used to call ComposeMessage after adding item to SmartTemplate4.fileTemplates.armedQueue.");
+    if (SmartTemplate4.Preferences.isBackgroundParser()) {
+      // [issue 184] - this should never be called if this flag is set
+      alert(
+        "To do: insertTemplate() through background - [issue 184]\n" +
+          "This used to call ComposeMessage after adding item to SmartTemplate4.fileTemplates.armedQueue."
+      );
       return;
     }
-    
-    function cleanPlainTextNewLines(myHtml) {
+
+    /**
+     * Wrap a node in a <p> if its parent is BODY or DIV
+     * @param {Node} node - the cursor node to wrap
+     */
+    const wrapInParagraph = (node) => {
+      const parent = node.parentNode;
+      if (!parent) {
+        return null;
+      }
+
+      const tag = parent.tagName;
+      if (tag !== "BODY" && tag !== "DIV") {
+        return null;
+      } // already inside a block
+
+      // Collect nodes from start until the cursor (inclusive)
+      const movingNodes = [];
+      let current = parent.firstChild;
+      while (current && current !== node) {
+        movingNodes.push(current);
+        current = current.nextSibling;
+      }
+
+      // Build the <p> inside a fragment
+      const frag = doc.createDocumentFragment();
+      const para = doc.createElement("p");
+      for (const n of movingNodes) {
+        para.appendChild(n); // moves node safely into the fragment
+      }
+      // Append the cursor last, so it never gets lost
+      para.appendChild(node);
+
+      frag.appendChild(para);
+
+      // Remember the next sibling after the last node
+      const after = para.nextSibling;
+      // Insert fragment atomically
+      if (after) {
+        parent.insertBefore(frag, after);
+      } else {
+        parent.appendChild(frag);
+      }
+      return para;
+    };
+
+		const logCaretPosition = (label) => {
+			if (!SmartTemplate4.Preferences.isDebugOption("composer.cursor")) {
+				return;
+			}
+			let caretEl = editor.document.querySelector("span._moz-caret, span#caret");
+			let what = "caret element";
+      if (!caretEl) {
+        caretEl = editor.document.querySelector("span.st4cursor");
+				what = "smartTemplates cursor";
+      }
+			
+			if (caretEl) {
+				SmartTemplate4.Util.logHighlightDebug(
+          "composer.cursor",
+          "white",
+          "#8e0477a4",
+          `${label}: found ${what} ${caretEl.outerHTML} after:`,
+					caretEl?.previousElementSibling
+        );
+			} else {
+				SmartTemplate4.Util.logHighlightDebug(
+          "composer.cursor",
+          "white",
+          "#8e0477a4",
+          `${label}: no caret / cursor found`
+        );
+			}
+		}		
+
+    const cleanPlainTextNewLines =  (myHtml) => {
       let lc = myHtml.toLocaleLowerCase();
       if (lc.includes("<br") || lc.includes("<p")) {
-        return myHtml.replace(/(\r\n)+|\r+|\n+|^[ \t]+/gm,""); 
-			}
+        return myHtml.replace(/(\r\n)+|\r+|\n+|^[ \t]+/gm, "");
+      }
       return myHtml;
     }
-    
-		let isDebugComposer = prefs.isDebugOption('composer');
-		if (!flags) {
-		  // if not passed, create an empty "flags" object, and initialise it.
-		  flags = {};
-			SmartTemplate4.initFlags(flags);
-			flags.identitySwitched = true;  // new flag
-		}
-		if (gMsgCompose?.bodyModified === false) {
+
+    let isDebugComposer = prefs.isDebugOption("composer");
+    if (!flags) {
+      // if not passed, create an empty "flags" object, and initialise it.
+      flags = {};
+      SmartTemplate4.initFlags(flags);
+      flags.identitySwitched = true; // new flag
+    }
+    if (gMsgCompose?.bodyModified === false) {
       flags.isBodyUnmodified = true; // [issue 352]
     }
 
-    if (SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning) {return;}
+    if (SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning) {
+      return;
+    }
     SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; // [issue 139] avoid duplicates
 
-		util.logDebugOptional('functions,functions.insertTemplate',
-		  `insertTemplate(startup: ${startup} , gMsgCompose.type = ${gMsgCompose.type}`, 
-      flags);
-		const msgComposeType = Ci.nsIMsgCompType,
-					ed = util.CurrentEditor,
-		      editor = ed.QueryInterface(Ci.nsIEditor);
-		let pref = SmartTemplate4.pref,
-		    // gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
-		    doc = gMsgCompose.editor.document,
-		    template = null,
-		    quoteHeader = "",
-        idKey = util.getIdentityKey(document);
-        
+    util.logDebugOptional(
+      "functions,functions.insertTemplate",
+      `insertTemplate(startup: ${startup} , gMsgCompose.type = ${gMsgCompose.type}`,
+      flags
+    );
+    const msgComposeType = Ci.nsIMsgCompType,
+      ed = util.CurrentEditor,
+      editor = ed.QueryInterface(Ci.nsIEditor);
+    let pref = SmartTemplate4.pref,
+      // gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
+      doc = gMsgCompose.editor.document,
+      template = null,
+      quoteHeader = "",
+      idKey = util.getIdentityKey(document);
+
     util.logDebugOptional("identities", "Retrieved msgIdentity key value: " + idKey);
     if (!idKey) {
       util.logDebugOptional("identities", "no key, getting from gMsgCompose.identity…");
       idKey = gMsgCompose.identity.key;
     }
-		let isActiveOnAccount = false,
-		    acctMgr = MailServices.accounts,  
-        identitySource,
-		    theIdentity = acctMgr.getIdentity(idKey);
-    
-		if (!theIdentity) {
-			theIdentity = gMsgCompose.identity;
+    let isActiveOnAccount = false,
+      acctMgr = MailServices.accounts,
+      identitySource,
+      theIdentity = acctMgr.getIdentity(idKey);
+
+    if (!theIdentity) {
+      theIdentity = gMsgCompose.identity;
       identitySource = "gMsgCompose.identity";
     } else {
       identitySource = "msgIdentity.Identity";
     }
-    util.logDebugOptional("identities", 
-                          "Retrieved identity from " + identitySource+ "\n" +
-                          "key = " + (theIdentity ? theIdentity.key : "NO IDENTITY!") + "\n" +
-                          "identityName = " + (theIdentity ? theIdentity.identityName : "NO IDENTITY!"));
-		// Switch account
-		if (startup) {
-			// Clear template
-			clearTemplate();
-		} else {
-			if (gMsgCompose.type != msgComposeType.Template) {
-				// Check identity changed or not; also check whether new template was requested from composer window
-				if (!flags.isChangeTemplate && 
-            !flags.identitySwitched && gCurrentIdentity && gCurrentIdentity.key == idKey) {
+    util.logDebugOptional(
+      "identities",
+      "Retrieved identity from " +
+        identitySource +
+        "\n" +
+        "key = " +
+        (theIdentity ? theIdentity.key : "NO IDENTITY!") +
+        "\n" +
+        "identityName = " +
+        (theIdentity ? theIdentity.identityName : "NO IDENTITY!")
+    );
+    // Switch account
+    if (startup) {
+      // Clear template
+      clearTemplate();
+    } else {
+      if (gMsgCompose.type != msgComposeType.Template) {
+        // Check identity changed or not; also check whether new template was requested from composer window
+        if (
+          !flags.isChangeTemplate &&
+          !flags.identitySwitched &&
+          gCurrentIdentity &&
+          gCurrentIdentity.key == idKey
+        ) {
           SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
-					return;
-				}
-				// Undo template messages (does _not_ remove signature!)
-				removePreviousTemplate();
-			}
-		}
+          return;
+        }
+        // Undo template messages (does _not_ remove signature!)
+        removePreviousTemplate();
+      }
+    }
 
-		// is the %sig% variable used?
-		let sigVarDefined = false,
-        sigType = null,
-		    composeCase = 'undefined',
-		    st4composeType = '',
-		    rawTemplate = '';
-	  // eslint-disable-next-line no-debugger
-	  if (isDebugComposer) {debugger;}
-		// start parser...
-		try {
-			switch (gMsgCompose.type) {
-				case msgComposeType.Template: // new type for 1.6 - Thunderbird 52 uses this in "Edit As New" case
-					composeCase = 'tbtemplate'; // flags.isThunderbirdTemplate
-					st4composeType = "new"; // was "new" but there should be no processing in templates
-					break;
-				// new message -----------------------------------------
-				//	(New:0 / NewsPost:5 / MailToUrl:11)
-				case msgComposeType.New:
-				case msgComposeType.NewsPost:
-				case msgComposeType.MailToUrl:
-					composeCase = 'new';
-					st4composeType = 'new';
-					break;
+    // is the %sig% variable used?
+    let sigVarDefined = false,
+      sigType = null,
+      composeCase = "undefined",
+      st4composeType = "",
+      rawTemplate = "";
+    if (isDebugComposer) {
+      // eslint-disable-next-line no-debugger
+      debugger;
+    }
+    // start parser...
+    try {
+      switch (gMsgCompose.type) {
+        case msgComposeType.Template: // new type for 1.6 - Thunderbird 52 uses this in "Edit As New" case
+          composeCase = "tbtemplate"; // flags.isThunderbirdTemplate
+          st4composeType = "new"; // was "new" but there should be no processing in templates
+          break;
+        // new message -----------------------------------------
+        //	(New:0 / NewsPost:5 / MailToUrl:11)
+        case msgComposeType.New:
+        case msgComposeType.NewsPost:
+        case msgComposeType.MailToUrl:
+          composeCase = "new";
+          st4composeType = "new";
+          break;
 
-				// reply message ---------------------------------------
-				// (Reply:1 / ReplyAll:2 / ReplyToSender:6 / ReplyToGroup:7 /
-				// ReplyToSenderAndGroup:8 / ReplyToList:13)
-				case msgComposeType.Reply:
-				case msgComposeType.ReplyAll:
-				case msgComposeType.ReplyToSender:
-				case msgComposeType.ReplyToGroup:
-				case msgComposeType.ReplyToSenderAndGroup:
-				case msgComposeType.ReplyToList:
-					composeCase = 'reply';
-					st4composeType = 'rsp';
-					break;
+        // reply message ---------------------------------------
+        // (Reply:1 / ReplyAll:2 / ReplyToSender:6 / ReplyToGroup:7 /
+        // ReplyToSenderAndGroup:8 / ReplyToList:13)
+        case msgComposeType.Reply:
+        case msgComposeType.ReplyAll:
+        case msgComposeType.ReplyToSender:
+        case msgComposeType.ReplyToGroup:
+        case msgComposeType.ReplyToSenderAndGroup:
+        case msgComposeType.ReplyToList:
+          composeCase = "reply";
+          st4composeType = "rsp";
+          break;
 
-				// forwarding message ----------------------------------
-				// (ForwardAsAttachment:3 / ForwardInline:4)
-				case msgComposeType.ForwardAsAttachment:
-				case msgComposeType.ForwardInline:
-					composeCase = 'forward';
-					st4composeType = 'fwd';
-					break;
+        // forwarding message ----------------------------------
+        // (ForwardAsAttachment:3 / ForwardInline:4)
+        case msgComposeType.ForwardAsAttachment:
+        case msgComposeType.ForwardInline:
+          composeCase = "forward";
+          st4composeType = "fwd";
+          break;
 
-				// do not process -----------------------------------
-				// (Draft:9/ReplyWithTemplate:12)
-				case msgComposeType.Draft: {
-					composeCase = 'draft';
-					let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-					    msgDbHdr = gMsgCompose.originalMsgURI ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr) : null;
-					if(msgDbHdr) {
-						const nsMsgKey_None = 0xffffffff;
-						if (msgDbHdr.threadParent && (msgDbHdr.threadParent != nsMsgKey_None)) {
-							st4composeType = 'rsp'; // just guessing, of course it could be fwd as well
-						}
-						if (msgDbHdr.numReferences == 0) {
-              st4composeType = "new";
+        // do not process -----------------------------------
+        // (Draft:9/ReplyWithTemplate:12)
+        case msgComposeType.Draft:
+          {
+            composeCase = "draft";
+            let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
+              msgDbHdr = gMsgCompose.originalMsgURI
+                ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr)
+                : null;
+            if (msgDbHdr) {
+              const nsMsgKey_None = 0xffffffff;
+              if (msgDbHdr.threadParent && msgDbHdr.threadParent != nsMsgKey_None) {
+                st4composeType = "rsp"; // just guessing, of course it could be fwd as well
+              }
+              if (msgDbHdr.numReferences == 0) {
+                st4composeType = "new";
+              }
             }
-					}
-				}	break;
-				case msgComposeType.EditAsNew: // Tb 60+
-				  // no processing should be done
-					util.logDebug("Edit As New - exit insertTemplate() without processing");
+          }
+          break;
+        case msgComposeType.EditAsNew: // Tb 60+
+          // no processing should be done
+          util.logDebug("Edit As New - exit insertTemplate() without processing");
           SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
-					return;
-				case msgComposeType.EditTemplate: // Tb 60+
-				  // no processing should be done
-					util.logDebug("Edit Template - exit insertTemplate() without processing");
+          return;
+        case msgComposeType.EditTemplate: // Tb 60+
+          // no processing should be done
+          util.logDebug("Edit Template - exit insertTemplate() without processing");
           SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
-					return;
-				default:
-					st4composeType = "";
-					break;
-			}
-			
-			
-			isActiveOnAccount = pref.isTemplateActive(idKey, st4composeType, false);
-			// draft + startup: do not process!
-			if (startup && composeCase=='draft') {
-				isActiveOnAccount = false;
-			}
-			
-			if (flags.isFileTemplate) {
-				isActiveOnAccount = true;
-			}
- 
-			if (isActiveOnAccount) {
-				// Message File loaded:
-				// eslint-disable-next-line no-debugger
-				if (prefs.isDebugOption('functions.insertTemplate')) {debugger;}
-				
-				if (flags.isFileTemplate && fileTemplateSource && !fileTemplateSource.failed) {
-				  rawTemplate = fileTemplateSource.HTML || fileTemplateSource.Text;
-				} else if (flags.isThunderbirdTemplate) {
-					rawTemplate = editor.rootElement.innerHTML; // treat email as raw template
-				} else {
-					rawTemplate = flags.isThunderbirdTemplate ? "" : pref.getTemplate(idKey, st4composeType, "");
-				}
-				
+          return;
+        default:
+          st4composeType = "";
+          break;
+      }
+
+      isActiveOnAccount = pref.isTemplateActive(idKey, st4composeType, false);
+      // draft + startup: do not process!
+      if (startup && composeCase == "draft") {
+        isActiveOnAccount = false;
+      }
+
+      if (flags.isFileTemplate) {
+        isActiveOnAccount = true;
+      }
+
+      if (isActiveOnAccount) {
+        // Message File loaded:
+        if (prefs.isDebugOption("functions.insertTemplate")) {
+          // eslint-disable-next-line no-debugger
+          debugger;
+        }
+
+        if (flags.isFileTemplate && fileTemplateSource && !fileTemplateSource.failed) {
+          rawTemplate = fileTemplateSource.HTML || fileTemplateSource.Text;
+        } else if (flags.isThunderbirdTemplate) {
+          rawTemplate = editor.rootElement.innerHTML; // treat email as raw template
+        } else {
+          rawTemplate = flags.isThunderbirdTemplate
+            ? ""
+            : pref.getTemplate(idKey, st4composeType, "");
+        }
+
         sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
-				
-				// if Stationery has %sig(none)% then flags.omitSignature == true
-				sigVarDefined = (flags.hasSignature || sigType) ? true : false; 
+
+        // if Stationery has %sig(none)% then flags.omitSignature == true
+        sigVarDefined = flags.hasSignature || sigType ? true : false;
         try {
           // get signature element and remove the one Tb has inserted
           SmartTemplate4.signature = await extractSignature(theIdentity, sigType, st4composeType);
-        } catch(ex) {
+        } catch (ex) {
           SmartTemplate4.signature = "";
           util.logException("Could not extract signature - is your signature path correct?", ex);
         }
-				
-				if (flags.isThunderbirdTemplate) {
-					// use innerHTML instead of outer (we do not want to replace the "body" part)
-					// if %sig% variable is in Tb Template it is going to be expanded at this step.
-					template = await getProcessedText(editor.rootElement.innerHTML, idKey, st4composeType, true); // ignoreHTML = true ?
-					// need to empty out the innerHTML if we insert this to avoid duplication.
-					editor.rootElement.innerHTML="";
-				} else {
-					// main processing - note: this calls getProcessedText()
-					// for thunderbird template case, we should get the body contents AND PROCESS THEM?
-					if (flags.isFileTemplate) {
-						util.logDebugOptional('functions.insertTemplate','processing fileTemplate(' + fileTemplateSource + ')');
-            
+
+        if (flags.isThunderbirdTemplate) {
+          // use innerHTML instead of outer (we do not want to replace the "body" part)
+          // if %sig% variable is in Tb Template it is going to be expanded at this step.
+          template = await getProcessedText(
+            editor.rootElement.innerHTML,
+            idKey,
+            st4composeType,
+            true
+          ); // ignoreHTML = true ?
+          // need to empty out the innerHTML if we insert this to avoid duplication.
+          editor.rootElement.innerHTML = "";
+        } else {
+          // main processing - note: this calls getProcessedText()
+          // for thunderbird template case, we should get the body contents AND PROCESS THEM?
+          if (flags.isFileTemplate) {
+            util.logDebugOptional(
+              "functions.insertTemplate",
+              "processing fileTemplate(" + fileTemplateSource + ")"
+            );
+
             if (rawTemplate.match(/%suppressQuoteHeaders*%/gm)) {
               flags.suppressQuoteHeaders = true;
             }
             // [issue 19] switch on ignoreHTML to avoid unneccessarily replacing line breaks with <br>
-						template = await getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
-					} else {
-						util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
-						template = await getSmartTemplate(st4composeType, idKey);
-					}
-					if (template.match(/%deleteForwardedBody%/gm)) {
-						flags.deleteForwardedBody = true;
-					}
-					
-					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
-					quoteHeader = await getQuoteHeader(st4composeType, idKey);
-				}
-        
+            template = await getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
+          } else {
+            util.logDebugOptional(
+              "functions.insertTemplate",
+              "retrieving Template: getSmartTemplate(" + st4composeType + ", " + idKey + ")"
+            );
+            template = await getSmartTemplate(st4composeType, idKey);
+          }
+          if (template.match(/%deleteForwardedBody%/gm)) {
+            flags.deleteForwardedBody = true;
+          }
+
+          util.logDebugOptional(
+            "functions.insertTemplate",
+            "retrieving quote Header: getQuoteHeader(" + st4composeType + ", " + idKey + ")"
+          );
+          quoteHeader = await getQuoteHeader(st4composeType, idKey);
+        }
+
         if (flags.suppressQuoteHeaders) {
-          util.logDebug("Suppressing Quote header, as template has demanded. (%suppressQuoteHeaders%)");
+          util.logDebug(
+            "Suppressing Quote header, as template has demanded. (%suppressQuoteHeaders%)"
+          );
           quoteHeader = "";
         }
-				if (flags.deleteForwardedBody) {
-          util.logDebug("Deleting Forwarded message body, as template has demanded. (%deleteForwardedBody%)");
-					delForwardedBody();
-				}
-				let isQuoteHeader = quoteHeader ? true : false;
-        
-				switch(composeCase) {
-					case 'new':
-					case 'tbtemplate':
-						break;
-					case 'draft':
-					  // when do we remove old headers?
-						break;
-					case 'reply':
+        if (flags.deleteForwardedBody) {
+          util.logDebug(
+            "Deleting Forwarded message body, as template has demanded. (%deleteForwardedBody%)"
+          );
+          delForwardedBody();
+        }
+        let isQuoteHeader = quoteHeader ? true : false;
+
+        switch (composeCase) {
+          case "new":
+          case "tbtemplate":
+            break;
+          case "draft":
+            // when do we remove old headers?
+            break;
+          case "reply":
             if (flags.suppressQuoteHeaders) {
               delReplyHeader(idKey, false);
             } else if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
-							// stationery has a placeholder for the original quote text.
-							if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
-								// when in stationery we only delete the quote header and not all preceding quotes!
-								delReplyHeader(idKey, false);
-							} else {
-								delReplyHeader(idKey, false, true); // remove just spaces [Bug 26523]
-							}
-						}
-						break;
-					case 'forward':
-						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment) {
-							break;
-						}
-						if (flags.suppressQuoteHeaders || pref.isDeleteHeaders(idKey, st4composeType, false)) {
-							delForwardHeader(idKey, false);
-						}
-						break;
-				}
-				
-				if (isQuoteHeader) {
+              // stationery has a placeholder for the original quote text.
+              if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
+                // when in stationery we only delete the quote header and not all preceding quotes!
+                delReplyHeader(idKey, false);
+              } else {
+                delReplyHeader(idKey, false, true); // remove just spaces [Bug 26523]
+              }
+            }
+            break;
+          case "forward":
+            if (gMsgCompose.type == msgComposeType.ForwardAsAttachment) {
+              break;
+            }
+            if (flags.suppressQuoteHeaders || pref.isDeleteHeaders(idKey, st4composeType, false)) {
+              delForwardHeader(idKey, false);
+            }
+            break;
+        }
+
+        if (isQuoteHeader) {
           // this function extracts the quoted part (when replying)
           // it should catch the "whole" email when forwarding...
-					let qdiv = function() { // closure to avoid unnecessary processing
-						let qd = util.mailDocument.createElement("div");
-						qd.id = "smartTemplate4-quoteHeader";
+          let qdiv = function () {
+            // closure to avoid unnecessary processing
+            let qd = util.mailDocument.createElement("div");
+            qd.id = "smartTemplate4-quoteHeader";
             if (!IsHTMLEditor()) {
               // [issue 54] extra line spaces in (html) quote header when replying text only.
               // if template contains <br> or <p> let's strip out "formatting" text content line breaks.
               quoteHeader = cleanPlainTextNewLines(quoteHeader);
             }
-						// [issue 393] do not use innerHTML directly
-						// qd.innerHTML = quoteHeader;
-						util.insertHtmlSafely(qd, quoteHeader);
-						return qd;
-					}
+            // [issue 393] do not use innerHTML directly
+            // qd.innerHTML = quoteHeader;
+            util.insertHtmlSafely(qd, quoteHeader);
+            return qd;
+          };
 
-					// replace the standard quote header
-					let firstQuote = 
-						(st4composeType=='fwd') ?
-						editor.rootElement.firstChild :
-						editor.rootElement.getElementsByTagName('BLOCKQUOTE')[0];
-					// [Bug 26261] Quote header not inserted in plain text mode
-					if (!firstQuote) {firstQuote = editor.rootElement.firstChild;}
-					if (firstQuote) {
-						let quoteHd = firstQuote.parentNode.insertBefore(qdiv(), firstQuote),
-								prev = quoteHd.previousSibling;
-						// force deleting the original quote header:
-						if (prev && prev.className && prev.className.indexOf('moz-cite-prefix')>=0) {
-							prev.parentNode.removeChild(prev); 
-						}
-					} 
-				} else { 
-					// delete all <br> before quote!
-				}
-			} else {
-				util.logDebugOptional('functions.insertTemplate','insertTemplate - processing is not active for id ' + idKey);
-				// remove old signature!
-				// we shouldn't do this if it is not active on account unless we inserted it just beforehand?
-				// extractSignature(theIdentity, false, st4composeType);
-			}
+          // replace the standard quote header
+          let firstQuote =
+            st4composeType == "fwd"
+              ? editor.rootElement.firstChild
+              : editor.rootElement.getElementsByTagName("BLOCKQUOTE")[0];
+          // [Bug 26261] Quote header not inserted in plain text mode
+          if (!firstQuote) {
+            firstQuote = editor.rootElement.firstChild;
+          }
+          if (firstQuote) {
+            let quoteHd = firstQuote.parentNode.insertBefore(qdiv(), firstQuote),
+              prev = quoteHd.previousSibling;
+            // force deleting the original quote header:
+            if (prev && prev.className && prev.className.indexOf("moz-cite-prefix") >= 0) {
+              prev.parentNode.removeChild(prev);
+            }
+          }
+        } else {
+          // delete all <br> before quote!
+        }
+      } else {
+        util.logDebugOptional(
+          "functions.insertTemplate",
+          "insertTemplate - processing is not active for id " + idKey
+        );
+        // remove old signature!
+        // we shouldn't do this if it is not active on account unless we inserted it just beforehand?
+        // extractSignature(theIdentity, false, st4composeType);
+      }
+    } catch (ex) {
+      util.logException(
+        "insertTemplate - exception during parsing. Continuing with inserting template!",
+        ex
+      );
+    }
 
-		}
-		catch(ex) {
-			util.logException("insertTemplate - exception during parsing. Continuing with inserting template!", ex);
-		}
-		
-		let targetNode = 0,
-		    templateDiv,
-		    // new global settings to deal with [Bug 25084]
-		    breaksAtTop = prefs.getMyIntPref("breaksAtTop"), 
-		    bodyEl = SmartTemplate4.composer.body,
-				preheaderEl = null,
-				bodyContent = '';
-		
+    let targetNode = 0,
+      templateDiv,
+      // new global settings to deal with [Bug 25084]
+      breaksAtTop = prefs.getMyIntPref("breaksAtTop"),
+      bodyEl = SmartTemplate4.composer.body,
+      preheaderEl = null,
+      bodyContent = "";
+
     if (!IsHTMLEditor()) {
       template = cleanPlainTextNewLines(template);
     }
 
-		// [Bug 26260] only remove body for mailto case if active on account
-		if (isActiveOnAccount && gMsgCompose.type == msgComposeType.MailToUrl) {
-			// back up the mailto body  (was  bodyContent = bodyEl.innerHTML;  )
+    // [Bug 26260] only remove body for mailto case if active on account
+    if (isActiveOnAccount && gMsgCompose.type == msgComposeType.MailToUrl) {
+      // back up the mailto body  (was  bodyContent = bodyEl.innerHTML;  )
       // replace newline chars, usually encoded LF or CLRF (decimal 10 / 13-10)
-      bodyContent = bodyEl.textContent.trim().replace(/\\n/gm,"<br/>").replace(/%0D%0A/gm,"<br/>").replace(/%0A/gm,"<br/>");
-			if (bodyContent) {
+      bodyContent = bodyEl.textContent
+        .trim()
+        .replace(/\\n/gm, "<br/>")
+        .replace(/%0D%0A/gm, "<br/>")
+        .replace(/%0A/gm, "<br/>");
+      if (bodyContent) {
         const mailtoVar = "%mailto(body)%";
         if (template && rawTemplate.includes(mailtoVar)) {
           template = template.replace("<span class='mailToBody'/>", bodyEl.innerHTML);
           bodyEl.textContent = ""; // clear out body
-          bodyContent = '';
-          util.logDebugOptional('composer','msgComposeType.MailToUrl - injecting mailto content:\n' + bodyEl.innerHTML);
+          bodyContent = "";
+          util.logDebugOptional(
+            "composer",
+            "msgComposeType.MailToUrl - injecting mailto content:\n" + bodyEl.innerHTML
+          );
         } else {
           bodyEl.textContent = ""; // clear out body
           util.logDebugOptional(
@@ -1317,15 +1449,15 @@ SmartTemplate4.classSmartTemplate = function() {
           template = bodyContent; // clear template
           SmartTemplate4.sigInTemplate = false;
         }
-			}
-		}
+      }
+    }
 
-		// [issue 79]
+    // [issue 79]
     // Extract <head> sections and inject into doc head.
-		// merge all <body> attributes into document body (body will be converted into an attributeless div)
-		try {
-			const isExtractHead = SmartTemplate4.Preferences.getMyBoolPref("header.inject");
-			if (isExtractHead) {
+    // merge all <body> attributes into document body (body will be converted into an attributeless div)
+    try {
+      const isExtractHead = SmartTemplate4.Preferences.getMyBoolPref("header.inject");
+      if (isExtractHead) {
         let tempDiv = editor.document.createElement("div");
         tempDiv.id = "tempTemplate";
         tempDiv.hidden = true;
@@ -1347,7 +1479,7 @@ SmartTemplate4.classSmartTemplate = function() {
             i = 0;
           for (let head of heads) {
             util.logDebugOptional("composer", "SmartTemplates - head tag found\n", head.outerHTML);
-						util.insertHtmlSafely(
+            util.insertHtmlSafely(
               docHeader,
               `\n<!-- head [${i}] from template -->\n${head.innerHTML}`
             );
@@ -1399,18 +1531,18 @@ SmartTemplate4.classSmartTemplate = function() {
         }
         tempDiv.remove();
       }
-		} catch(ex) {
-			util.logException("Extract header from template failed", ex);
-		}
+    } catch (ex) {
+      util.logException("Extract header from template failed", ex);
+    }
 
-		// add template message --------------------------------
-		// if template text is empty: still insert targetNode as we need it for the cursor!
-		// however we must honor the setting "breaks at top" as we now remove any <br> added by Tb
-		if (isActiveOnAccount)	{
-			util.logDebugOptional('composer','isActiveOnAccount: creating template Div…');
-			templateDiv = util.mailDocument.createElement("div");
-			// now insert quote Header separately
-			try {
+    // add template message --------------------------------
+    // if template text is empty: still insert targetNode as we need it for the cursor!
+    // however we must honor the setting "breaks at top" as we now remove any <br> added by Tb
+    if (isActiveOnAccount) {
+      util.logDebugOptional("composer", "isActiveOnAccount: creating template Div…");
+      templateDiv = util.mailDocument.createElement("div");
+      // now insert quote Header separately
+      try {
         if (flags.isThunderbirdTemplate && template.length) {
           // remove original st4 div
           let oldSt4Div = editor.document.getElementById("smartTemplate4-template");
@@ -1428,9 +1560,9 @@ SmartTemplate4.classSmartTemplate = function() {
         util.logDebugOptional("composer", "Generating template Div innerHTML…\n" + template);
         // This encodes "&" in href attributes to &amp;   !
 
-        // [issue 393] 
+        // [issue 393]
         // templateDiv.innerHTML = template || "";
-        util.insertHtmlSafely(templateDiv, template || ""); 
+        util.insertHtmlSafely(templateDiv, template || "");
         if (theIdentity.replyOnTop) {
           // this is where we lose the default "paragraph" style
           editor.beginningOfDocument();
@@ -1548,271 +1680,269 @@ SmartTemplate4.classSmartTemplate = function() {
             });
           }
         }
-      }
-			catch (ex) {
-				let errorText =
+      } catch (ex) {
+        let errorText =
           "{P1}Could not insert Template as HTML; please check for syntax errors.{br}" +
           "This might be caused by html comments <!-- or unclosed tag brackets <...>{P2}" +
-          `{pre}${ex}{preEnd}` +           
+          `{pre}${ex}{preEnd}` +
           "{br}Copy template contents to clipboard?";
-				
-				let result = await SmartTemplate4.Util.showSmartTemplatesMessage({
-					msg: errorText,
-					features: ["ok", "cancel"],
-				});
-				if (result === "ok") {
+
+        let result = await SmartTemplate4.Util.showSmartTemplatesMessage({
+          msg: errorText,
+          features: ["ok", "cancel"],
+        });
+        if (result === "ok") {
           let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(
             Ci.nsIClipboardHelper
           );
           oClipBoard.copyString(template || "");
-        } 
-			}
-		}
-		
-		util.logDebugOptional('composer','finding cursor node…');
-		// before we handle the sig, lets search for the cursor one time
-		// moved code for moving selection to top / bottom
-		let caretContainer = findChildNodeOrParent(targetNode, 'st4cursor'),
-		    isCursor = (caretContainer != null);
-		util.logDebugOptional('functions.insertTemplate', ' search %cursor% in template: ' + isCursor);
-		
-		// insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
-		let theSignature = SmartTemplate4.signature;
-    
+        }
+      }
+    }
+
+		logCaretPosition("Before finding cursor");
+    util.logDebugOptional("composer", "finding cursor node…");
+    // before we handle the sig, lets search for the cursor one time
+    // moved code for moving selection to top / bottom
+    let caretContainer = findChildNodeOrParent(targetNode, "st4cursor"),
+      isCursor = caretContainer != null;
+    util.logDebugOptional("functions.insertTemplate", " search %cursor% in template: " + isCursor);
+
+    // insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
+    let theSignature = SmartTemplate4.signature;
+
     if (!IsHTMLEditor()) {
       theSignature = cleanPlainTextNewLines(theSignature);
     }
-		
-		SmartTemplate4.Sig.init(theIdentity);
-		let isSignatureSetup = SmartTemplate4.Sig.isSignatureSetup,		
-		    serverInfo = util.getServerInfo(idKey), // find out server name and type (IMAP / POP3 etc.)
-		    common = SmartTemplate4.pref.isCommon(idKey) ? ' (uses Common)' : ''; // our "compact log" to assist our users more effective
-        
+
+    SmartTemplate4.Sig.init(theIdentity);
+    let isSignatureSetup = SmartTemplate4.Sig.isSignatureSetup,
+      serverInfo = util.getServerInfo(idKey), // find out server name and type (IMAP / POP3 etc.)
+      common = SmartTemplate4.pref.isCommon(idKey) ? " (uses Common)" : ""; // our "compact log" to assist our users more effective
+
     try {
-      util.logDebugOptional('functions.insertTemplate',
-               'identityName:   ' + theIdentity.identityName + '\n'
-             + 'key:            ' + theIdentity.key + common + '\n'
-             + serverInfo
-             + '------------------------------------------------\n'
-             + 'sigOnReply:     ' + theIdentity.sigOnReply + '\n'
-             + 'sigOnForward:   ' + theIdentity.sigOnForward + '\n'
-             + 'sigBottom:      ' + theIdentity.sigBottom + '\n'       // sig at the end of the quoted text when replying above
-             + 'attachSignature:' + theIdentity.attachSignature + '\n'
-             + 'htmlSigFormat:  ' + SmartTemplate4.Sig.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
-             + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
-             + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
-             + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
-             + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
-             + '%sig% type: [' + sigType + ']\n'
-             + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
-             + '------------------------------------------------\n'
-             + 'SmartTemplates version: ' + util.Version + '\n'
-             + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
-             + 'HostSystem: ' + util.HostSystem + '\n'
-             );
-    }
-    catch(ex) {
+      util.logDebugOptional(
+        "functions.insertTemplate",
+        `identityName:   ${theIdentity.identityName}\n` +
+          `key:            ${theIdentity.key}${common}\n` +
+          `${serverInfo}------------------------------------------------\n` +
+          `sigOnReply:     ${theIdentity.sigOnReply}\n` +
+          `sigOnForward:   ${theIdentity.sigOnForward}\n` +
+          `sigBottom:      ${theIdentity.sigBottom}\n` + // sig at the end of the quoted text when replying above
+          `attachSignature:${theIdentity.attachSignature}\n` +
+          `htmlSigFormat:  ${SmartTemplate4.Sig.htmlSigFormat}\n` + // Does htmlSigText contain HTML?
+          `composeHtml:    ${theIdentity.composeHtml}\n` +
+          `replyOnTop:     ${theIdentity.replyOnTop}\n` + // quoting preference
+          `SmartTemplate4.isSignatureSetup:${isSignatureSetup}\n` +
+          `SmartTemplate4.sigInTemplate: ${SmartTemplate4.sigInTemplate}\n` +
+          `%sig% type: [${sigType}]\n` +
+          `compose case, is active? : ${composeCase}, ${isActiveOnAccount}\n` +
+          `------------------------------------------------\n` +
+          `SmartTemplates version: ${util.Version}\n` +
+          `Application: ${util.Application} v${util.AppverFull}\n` +
+          `HostSystem: ${util.HostSystem}\n`
+      );
+    } catch (ex) {
       util.logException("Logging detail failed", ex);
     }
 
-		/* SIGNATURE HANDLING */
-		if (isActiveOnAccount) {  // && !sigVarDefined
-		
-      isSignatureSetup = isSignatureSetup && (sigType != 'omit') && !flags.omitSignature; // we say there is no signature if %sig(none)% is defined in [Stationery] Template
-      util.logDebugOptional ('signatures','isSignatureSetup:' + isSignatureSetup + '\n'
-         + 'sigType: ' + sigType + '\n'
-         + 'flags.omitSignature: ' + flags.omitSignature +'\n'
-         + 'sigVarDefined: ' + sigVarDefined);
-		  if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
-			    ||
-			    composeCase == 'forward' && (theIdentity.sigOnForward || sigVarDefined) && isSignatureSetup
-			    ||
-			    composeCase == 'new' && theSignature && isSignatureSetup
-					||
-					composeCase == 'tbtemplate' && theSignature && isSignatureSetup)
-			{
-				try {
-					if (!SmartTemplate4.sigInTemplate && theSignature) {
-						util.logDebugOptional('functions.insertTemplate', ' Add Signature… ' );
-		
-						// add Signature and replace the BR that was removed in extractSignature
-						// wrap text only signature to fix [Bug 25093]!
-						if (typeof theSignature === "string")  {
-							let sn = doc.createElement("div");
-							// [issue 393] we need to insert the signature html "safely" to avoid script injection
-							// sn.innerHTML = theSignature;
-							if (!util.insertHtmlSafely(sn, theSignature)) {
-								console.log("insertTemplate - signature handling: insertHtmlSafely failed - we should inject it's html!", theSignature);
-							}
-							theSignature = sn;
-						}
-						
-						if (!sigVarDefined || gMsgCompose.type == msgComposeType.MailToUrl) { 
-							 // append signature using usual methods
-							// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
-							if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
-								// only need this in reply case (might not need it at all with breaksAtTop
-								if (composeCase == "reply" && breaksAtTop == 0) {
+    /* SIGNATURE HANDLING */
+    if (isActiveOnAccount) {
+      // && !sigVarDefined
+
+      isSignatureSetup = isSignatureSetup && sigType != "omit" && !flags.omitSignature; // we say there is no signature if %sig(none)% is defined in [Stationery] Template
+      util.logDebugOptional(
+        "signatures",
+        `isSignatureSetup: ${isSignatureSetup}\n` +
+          `sigType: ${sigType}\n` +
+          `flags.omitSignature: ${flags.omitSignature}\n` +
+          `sigVarDefined: ${sigVarDefined}`
+      );
+      if (
+        (composeCase == "reply" && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup) ||
+        (composeCase == "forward" &&
+          (theIdentity.sigOnForward || sigVarDefined) &&
+          isSignatureSetup) ||
+        (composeCase == "new" && theSignature && isSignatureSetup) ||
+        (composeCase == "tbtemplate" && theSignature && isSignatureSetup)
+      ) {
+        try {
+          if (!SmartTemplate4.sigInTemplate && theSignature) {
+            util.logDebugOptional("functions.insertTemplate", " Add Signature… ");
+
+            // add Signature and replace the BR that was removed in extractSignature
+            // wrap text only signature to fix [Bug 25093]!
+            if (typeof theSignature === "string") {
+              let sn = doc.createElement("div");
+              // [issue 393] we need to insert the signature html "safely" to avoid script injection
+              // sn.innerHTML = theSignature;
+              if (!util.insertHtmlSafely(sn, theSignature)) {
+                console.log(
+                  "insertTemplate - signature handling: insertHtmlSafely failed - we should inject it's html!",
+                  theSignature
+                );
+              }
+              theSignature = sn;
+            }
+
+            if (!sigVarDefined || gMsgCompose.type == msgComposeType.MailToUrl) {
+              // append signature using usual methods
+              // if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
+              if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
+                // only need this in reply case (might not need it at all with breaksAtTop
+                if (composeCase == "reply" && breaksAtTop == 0) {
                   bodyEl.appendChild(doc.createElement("br"));
                 }
-								bodyEl.appendChild(theSignature);
-							} else {
-								// reply above, before div smartTemplate4-template
-								// findChildnode non recursive						
-								templateDiv = findDirectChildById(bodyEl, 'smartTemplate4-template'); // find direct child of html element (avoid parsing quoted mail)
-								// if we don't find this, lets take the first child div
-								if (!templateDiv) {
-									templateDiv = bodyEl.firstChild.nextSibling;
-								}
-								// insert signature after template
-								if (templateDiv.nextSibling) {
-									templateDiv.parentNode.insertBefore(theSignature, templateDiv.nextSibling);
-									templateDiv.parentNode.insertBefore(doc.createElement("br"), templateDiv.nextSibling);
-								} else {
-									// templateDiv.parentNode.appendChild(templateDiv);
-									templateDiv.parentNode.appendChild(doc.createElement("br"));
-									templateDiv.parentNode.appendChild(theSignature);
-								}
-							}
-						}
-					}
-			  } catch(ex) {
-					util.logException("handling signature failed", ex);
-				}
-			}
-			// active, but empty signature?
-			else {
-				if(flags.omitSignature
-				   && 
-					 (theSignature.innerHTML == '' || theSignature.innerHTML ==  SmartTemplate4.signatureDelimiter )) { // in %sig(2)% case, the delimiter is built in.
-					let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
-					if (sigNode) {
-						// eslint-disable-next-line no-debugger
-						if (isDebugComposer) {debugger;}
-            util.logDebugOptional ('signatures','found signature node, removing…');
-						sigNode.parentNode.removeChild(sigNode);
-					}
-				}
-			}
-
-			if (SmartTemplate4.PreprocessingFlags.preHeader) { // [issue 274]
-				preheaderEl = SmartTemplate4.composer.buildPreHeaderElement(SmartTemplate4.PreprocessingFlags.preHeader);
-			}
-			
-			// PREMIUM FUNCTIONS
-			// issue notifications for any premium features used.
-			if (util.premiumFeatures.length) {
-        // let's reset the local license
+                bodyEl.appendChild(theSignature);
+              } else {
+                // reply above, before div smartTemplate4-template
+                // findChildnode non recursive
+                templateDiv = findDirectChildById(bodyEl, "smartTemplate4-template"); // find direct child of html element (avoid parsing quoted mail)
+                // if we don't find this, lets take the first child div
+                if (!templateDiv) {
+                  templateDiv = bodyEl.firstChild.nextSibling;
+                }
+                // insert signature after template
+                if (templateDiv.nextSibling) {
+                  templateDiv.parentNode.insertBefore(theSignature, templateDiv.nextSibling);
+                  templateDiv.parentNode.insertBefore(
+                    doc.createElement("br"),
+                    templateDiv.nextSibling
+                  );
+                } else {
+                  // templateDiv.parentNode.appendChild(templateDiv);
+                  templateDiv.parentNode.appendChild(doc.createElement("br"));
+                  templateDiv.parentNode.appendChild(theSignature);
+                }
+              }
+            }
+          }
+        } catch (ex) {
+          util.logException("handling signature failed", ex);
+        }
+      }
+      // active, but empty signature?
+      else {
         if (
-          !util.hasLicense() ||
-          util.licenseInfo.keyType == 2 
+          flags.omitSignature &&
+          (theSignature.innerHTML == "" ||
+            theSignature.innerHTML == SmartTemplate4.signatureDelimiter)
         ) {
+          // in %sig(2)% case, the delimiter is built in.
+          let sigNode = findChildNode(bodyEl, "st4-signature"); // find <sig>
+          if (sigNode) {
+            if (isDebugComposer) {
+              // eslint-disable-next-line no-debugger
+              debugger;
+            }
+            util.logDebugOptional("signatures", "found signature node, removing…");
+            sigNode.parentNode.removeChild(sigNode);
+          }
+        }
+      }
+
+      if (SmartTemplate4.PreprocessingFlags.preHeader) {
+        // [issue 274]
+        preheaderEl = SmartTemplate4.composer.buildPreHeaderElement(
+          SmartTemplate4.PreprocessingFlags.preHeader
+        );
+      }
+
+      // PREMIUM FUNCTIONS
+      // issue notifications for any premium features used.
+      if (util.premiumFeatures.length) {
+        // let's reset the local license
+        if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
           util.popupLicenseNotification(util.premiumFeatures, true, true);
         }
-			}  
-			if (util.standardFeatures.length) {
+      }
+      if (util.standardFeatures.length) {
         if (!util.hasLicense()) {
           util.popupLicenseNotification(util.standardFeatures, true, false);
         }
-			}
-			// reset the list of used premium functions for next turn
-			util.clearUsedPremiumFunctions();  // will affect main instance
-		}
-		
-		// if %cursor% is not set explicitly
-		if (!isCursor) {
-			let cursor = doc.createElement("span");
-			cursor.className = "st4cursor";
-			// if we have a template we simply insert it at the bottom of the template
-			if (templateDiv) {
-				templateDiv.appendChild(cursor);
-			} else if (!theIdentity.replyOnTop) {
-				// reply on bottom, insert cursor straight after the quote (before the signature)
-				bodyEl.appendChild(cursor);
-			}
-		}
-		
-		// moved code for moving selection to top / bottom
-		// re-find cursor
-		if (!caretContainer) {
-		  caretContainer = findChildNode(targetNode, 'st4cursor');
-		}
-		isCursor = (caretContainer != null);
-		try {
-			if (targetNode) { // usually <body>
-				let selCtrl = editor.selectionController,  // Ci.nsISelectionController
-            isReplyOnTop = theIdentity.replyOnTop,
-            forward = !isReplyOnTop; // isReplyOnTop is unreliable if the identity was changed by an Add-on
-            
-        if (!isCursor) { // if a cursor is set, let's not move to the end / top at all, leave it to the selection controller.
+      }
+      // reset the list of used premium functions for next turn
+      util.clearUsedPremiumFunctions(); // will affect main instance
+    }
+
+    // if %cursor% is not set explicitly
+		// can ONLY be done if we do not incorporate the quote within the template!
+    if (!isCursor && !flags.hasQuotePlaceholder && !flags.hasQuoteHeader) {
+      let cursor = doc.createElement("span");
+      cursor.className = "st4cursor";
+      // if we have a template we simply insert it at the bottom of the template
+      if (templateDiv) {
+        templateDiv.appendChild(cursor);
+      } else if (!theIdentity.replyOnTop) {
+        // reply on bottom, insert cursor straight after the quote (before the signature)
+        bodyEl.appendChild(cursor);
+      }
+    }
+
+		logCaretPosition("before code for moving selection to top / bottom");
+    // moved code for moving selection to top / bottom
+    // re-find cursor
+    if (!caretContainer) {
+      caretContainer = findChildNode(targetNode, "st4cursor");
+    }
+    isCursor = caretContainer != null;
+    try {
+      if (targetNode) {
+        // usually <body>
+        let selCtrl = editor.selectionController, // Ci.nsISelectionController
+          isReplyOnTop = theIdentity.replyOnTop,
+          forward = !isReplyOnTop; // isReplyOnTop is unreliable if the identity was changed by an Add-on
+
+        if (!isCursor) {
+          // if a cursor is set, let's not move to the end / top at all, leave it to the selection controller.
           try {
             selCtrl.completeMove(forward, false); // forward, extend
-          } catch(ex) {
-            util.logException(`editor.selectionController completeMove(forward = $forward$) failed`, ex);
+          } catch (ex) {
+            util.logException(
+              `editor.selectionController completeMove(forward = $forward$) failed`,
+              ex
+            );
           }
           try {
             selCtrl.completeScroll(forward);
-          } catch(ex) {
+          } catch (ex) {
             util.logException(
               `editor.selectionController completeScroll(forward = $forward$) failed`,
               ex
             );
           }
         }
-				
-				let theParent = targetNode.parentNode;
-				if (theParent) {
-					let nodeOffset = Array.prototype.indexOf(theParent.childNodes, targetNode);
-					// collapse selection and move cursor - problem: stationery sets cursor to the top!
-					if (isCursor) {
-						// look for a child div with lass = 'st4cursor'
-						// eslint-disable-next-line no-debugger
-						if (isDebugComposer) {debugger;}
-						if (caretContainer && caretContainer.outerHTML) {
-							try {
-                let scrollFlags = selCtrl.SCROLL_FOR_CARET_MOVE | selCtrl.SCROLL_OVERFLOW_HIDDEN,
-                  cursorParent = caretContainer.parentNode; // usually a <p>
+
+        let theParent = targetNode.parentNode;
+        if (theParent) {
+          let nodeOffset = Array.prototype.indexOf(theParent.childNodes, targetNode);
+          // collapse selection and move cursor - problem: stationery sets cursor to the top!
+          if (isCursor) {
+            // look for a child div with lass = 'st4cursor'
+            if (isDebugComposer) {
+              // eslint-disable-next-line no-debugger
+              debugger;
+            }
+            if (caretContainer && caretContainer.outerHTML) {
+              try {
+                const scrollFlags = selCtrl.SCROLL_FOR_CARET_MOVE | selCtrl.SCROLL_OVERFLOW_HIDDEN;
+                // cursorParent = caretContainer.parentNode; // usually a <p>
                 // =========== FORCE CURSOR IN <PARA> ==================================== >>>>
-                if (
-                  (prefs.getMyBoolPref("forceParagraph") && cursorParent.tagName == "DIV") ||
-                  cursorParent.tagName == "BODY"
-                ) {
+                if (prefs.getMyBoolPref("forceParagraph")) {
                   try {
-                    // refind the caret Container.
-                    // wrap internals in <p>
-                    let para = doc.createElement("p");
-                    let parent = caretContainer.parentNode;
+                    // Apply to the cursor. will only return a paragraph
+                    // if the parent was BODY or DIV
+                    const newPara = wrapInParagraph(caretContainer);
+										logCaretPosition("After wrapInParagraph()");
 
-                    // Collect all siblings from the start of the paragraph until the next block
-                    // This replaces all the substring calculations
-                    let current = parent.firstChild;
-                    let movingNodes = [];
-                    while (current && current !== caretContainer) {
-                      movingNodes.push(current);
-                      current = current.nextSibling;
+                    // Re-find cursor inside the new paragraph
+                    if (newPara) {
+                      caretContainer = findChildNode(newPara, "st4cursor");
                     }
-                    // Include the caretContainer itself
-                    movingNodes.push(caretContainer);
-
-                    // Move nodes into the new <p>
-                    for (let node of movingNodes) {
-                      para.appendChild(node);
-                    }
-
-                    // Insert the new paragraph back
-                    parent.insertBefore(para, current); // current is the node after caretContainer (may be null = append)
-
-                    // Remove empty placeholders (if any remain)
-                    if (parent.textContent.trim() === "") {
-                      parent.appendChild(doc.createElement("br"));
-                    }
-
-                    // Re-find caretContainer
-                    caretContainer = findChildNode(para, "st4cursor");
-                    theParent = caretContainer.parentNode;
                   } catch (ex) {
-                    util.logException("forceParagraph failed \n", ex, {editor});
+                    util.logException("forceParagraph failed \n", ex, { editor });
                   }
+                  theParent = caretContainer.parentNode;
                 }
 
                 let space = gMsgCompose.editor.document.createTextNode("\u00a0"); // '\u00a0' crashes with JAWS
@@ -1857,91 +1987,97 @@ SmartTemplate4.classSmartTemplate = function() {
                 window.updateCommands("style");
                 // =========== FORCE CURSOR IN <PARA> ==================================== <<<<
               } catch (ex) {
-								util.logException("caretContainer processing failed.", ex);
-							}
-						}
-					}  else { // no cursor
-						if (isReplyOnTop) {
-							if (editor.selection.collapseToStart) {
+                util.logException("caretContainer processing failed.", ex);
+              }
+            }
+          } else {
+            // no cursor
+            if (isReplyOnTop) {
+              if (editor.selection.collapseToStart) {
                 editor.selection.collapseToStart();
               } else {
                 editor.selection.collapse(theParent, nodeOffset + 1);
-              } 
-						} else {
-						  // if we reply below we must be above the signature.
-							if (editor.selection.collapseToEnd) {
-								editor.selection.collapseToEnd();
-              } else {
-								editor.selection.collapse(theParent, nodeOffset+1); 
               }
-						}
-					}
-					/* void scrollIntoView (in short aRegion, in boolean aIsSynchronous, in int16_t aVPercent, in int16_t aHPercent); */
-					// editor.selection.scrollIntoView(space,false,10,10);
-				}
-			}
-		}
-		catch(ex) {
-			util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
-		}
-		
-		//[] prepend mailto "body" part if missing, in case something went wrong
-		if (gMsgCompose.type == msgComposeType.MailToUrl && bodyContent) {
-			if (!bodyEl.innerHTML) {
+            } else {
+              // if we reply below we must be above the signature.
+              if (editor.selection.collapseToEnd) {
+                editor.selection.collapseToEnd();
+              } else {
+                editor.selection.collapse(theParent, nodeOffset + 1);
+              }
+            }
+          }
+          /* void scrollIntoView (in short aRegion, in boolean aIsSynchronous, in int16_t aVPercent, in int16_t aHPercent); */
+          // editor.selection.scrollIntoView(space,false,10,10);
+        }
+      }
+    } catch (ex) {
+      util.logException(
+        "editor.selectionController command failed - editor = " + editor + "\n",
+        ex
+      );
+    }
+		logCaretPosition("After moving selection to top / bottom");
+
+
+    //[] prepend mailto "body" part if missing, in case something went wrong
+    if (gMsgCompose.type == msgComposeType.MailToUrl && bodyContent) {
+      if (!bodyEl.innerHTML) {
         // [issue 393] avoid innerHTML assignments
         util.insertHtmlSafely(bodyEl, bodyContent);
         util.logDebugOptional("composer", "restoring body inner HTML:\n" + bodyContent);
       }
-		}
-		
-		bodyEl.setAttribute("smartTemplateInserted","true"); // guard against duplication!
-		await SmartTemplate4.Util.resolveDeferredBatch(gMsgCompose.editor);
-
-		if (preheaderEl) {
-			SmartTemplate4.composer.injectPreHeaderElement(preheaderEl, bodyEl);			
-		}
-
-		resetDocument(gMsgCompose.editor, startup);
-		// check gMsgCompose.bodyModified `- should be false here`
-		
-		// no license => show license notification.
-		if (util.licenseInfo.status!="Valid") {
-			util.logDebugOptional('premium.licenser', 'show license popup (isValidated==false)');
-			util.popupLicenseNotification("", true, false);		// featureList = "" - standard for ALL features.
-		}
-		else {
-			util.logDebugOptional('premium.licenser', 'License is validated, no popup');
-		}
-		
-		if (SmartTemplate4.hasDeferredVars) {
-      util.logDebug("Setting up listeners for deferred field variables!");
-			util.setupDeferredListeners(gMsgCompose.editor);
-		}
-    else {
-      util.logDebug("No deferred variables so we do not setup listeners...")
     }
-		
-		util.logDebugOptional('functions.insertTemplate', ' finished. ' );
-		// remember  compose case for outside world
-		this.composeCase = composeCase;      // 'undefined', 'new', 'reply', 'forward', 'draft'
-		this.composeType = st4composeType;   // '', 'new', 'rsp', 'fwd'
-    
+
+    bodyEl.setAttribute("smartTemplateInserted", "true"); // guard against duplication!
+    await SmartTemplate4.Util.resolveDeferredBatch(gMsgCompose.editor);
+
+    if (preheaderEl) {
+      SmartTemplate4.composer.injectPreHeaderElement(preheaderEl, bodyEl);
+    }
+
+		logCaretPosition("Before calling resetDocument()");
+    resetDocument(gMsgCompose.editor, startup);
+    // check gMsgCompose.bodyModified `- should be false here`
+
+    // no license => show license notification.
+    if (util.licenseInfo.status != "Valid") {
+      util.logDebugOptional("premium.licenser", "show license popup (isValidated==false)");
+      util.popupLicenseNotification("", true, false); // featureList = "" - standard for ALL features.
+    } else {
+      util.logDebugOptional("premium.licenser", "License is validated, no popup");
+    }
+
+    if (SmartTemplate4.hasDeferredVars) {
+      util.logDebug("Setting up listeners for deferred field variables!");
+      util.setupDeferredListeners(gMsgCompose.editor);
+    } else {
+      util.logDebug("No deferred variables so we do not setup listeners...");
+    }
+
+    util.logDebugOptional("functions.insertTemplate", " finished. ");
+    // remember  compose case for outside world
+    this.composeCase = composeCase; // 'undefined', 'new', 'reply', 'forward', 'draft'
+    this.composeType = st4composeType; // '', 'new', 'rsp', 'fwd'
+
     SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false; // [issue 139] avoid template duplication!
     // [issue 173] - SmartTemplates Pro required.
     if (flags.isAutoSend) {
-      if (!util.hasLicense()  || util.licenseInfo.keyType == 2) {
+      if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
         let msg = util.getBundleString("st.notification.premium.sendByFilter");
         util.popupLicenseNotification("filterWithTemplate", true, true, msg);
-      }
-      else {
-				// make sure all variables are resolved + removed.
-				await SmartTemplate4.Util.cleanupDeferredFields(true);
+      } else {
+        // make sure all variables are resolved + removed.
+        await SmartTemplate4.Util.cleanupDeferredFields(true);
         // push send button - with timeout?
         let timeout = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.sendTimeout");
-        setTimeout(function () { SendMessage(); }, timeout);
+        setTimeout(function () {
+          SendMessage();
+        }, timeout);
       }
     }
-	}; // insertTemplate
+		logCaretPosition("after insertTemplate");
+  }; // insertTemplate
 
 	function resetDocument(editor, withUndo) {
 		SmartTemplate4.Util.logHighlightDebug(`resetDocument(withUndo = ${withUndo})`, "yellow", "rgb(0,80,0)");

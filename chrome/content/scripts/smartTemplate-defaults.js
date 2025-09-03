@@ -94,6 +94,7 @@ pref("extensions.smartTemplate4.debug.API.menus", false);
 pref("extensions.smartTemplate4.debug.replaceReservedWords", false);
 pref("extensions.smartTemplate4.debug.deleteNodes", false);
 pref("extensions.smartTemplate4.debug.composer", false);
+pref("extensions.smartTemplate4.debug.composer.cursor", false);
 pref("extensions.smartTemplate4.debug.images", false);
 pref("extensions.smartTemplate4.debug.headerPane", false);
 pref("extensions.smartTemplate4.debug.settings", false);

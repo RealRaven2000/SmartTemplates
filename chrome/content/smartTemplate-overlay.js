@@ -3070,9 +3070,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           return "list of attachment names...";
         // for Common (new/reply/forward) message
         case "quoteHeader": // is this useful when Stationery does not exist?
+          SmartTemplate4.PreprocessingFlags.hasQuoteHeader = true;
           return '<span class="quoteHeader-placeholder"></span>';
         case "quotePlaceholder":
           {
+            SmartTemplate4.PreprocessingFlags.hasQuotePlaceholder = true;
             let attributeString = "";
             const attributes = new Map();
             for (let a of args) {
