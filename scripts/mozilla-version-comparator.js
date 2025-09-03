@@ -125,8 +125,8 @@ export var compareVersions = function(version1, version2) {
   var partsOfVersion1 = version1.split('.');
   var partsOfVersion2 = version2.split('.');
 
-  if (version2=="?") return 1;
-  if (version1=="?") return -1;
+  if (version2=="?") {return 1;}
+  if (version1=="?") {return -1;}
 
   var maxLength = Math.max(partsOfVersion1.length, partsOfVersion2.length);
 
