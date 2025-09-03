@@ -102,8 +102,9 @@ async function onLoad(activatedWhileWindowOpen) {
         }
         break;
 
-      case "smartTemplates-news":
+      case "smartTemplates-news": 
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashScreen" });
+        // reset news flag:
         SmartTemplates.Preferences.setMyBoolPref("hasNews", false);
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" });
         break;

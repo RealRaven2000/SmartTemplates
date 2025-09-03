@@ -1075,6 +1075,34 @@ async function displayUpdateMessage() {
   }  
 }
 
+  // compare versions to support beta builds
+  // we probably need to manage prerelease installs with a separate flag!
+  // Define a Map of silent update rules with wildcards
+  const silentUpdateMap = new Map([
+    ["4.10", ["4.10.1"]], // Silent updates for [issue 354]
+  ]);
+
+  // Function to check if an update is silent
+  function isSilentUpdate(fromVersion, toVersion) {
+    const patterns = silentUpdateMap.get(fromVersion);
+    if (!patterns) {
+      return false;
+    } // No silent updates defined for this `fromVersion`
+
+    // Check if `toVersion` matches any pattern in the list
+    return patterns.some((pattern) => versionMatches(toVersion, pattern));
+  }
+
+  function logLicenseStatus() {
+    const licenseInfo = currentLicense?.info;
+    if (!licenseInfo) {return;}
+    if (licenseInfo.status === "Valid") {
+      console.log("Licensed - " + licenseInfo.licensedDaysLeft + " Days left.");
+    } else {
+      console.log("License status: " + licenseInfo.status);
+    }
+  }
+
  
 
   messenger.runtime.onInstalled.addListener(async ({ reason, _temporary }) => {
@@ -1082,88 +1110,89 @@ async function displayUpdateMessage() {
       let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
       // Wait for startup to finish
       await startupDone; // promise
-      if (isDebug) {console.log("SmartTemplates - startup code finished.");}
-
       if (isDebug) {
-        console.log(`SmartTemplates Startup has finished\ncurrentLicense`, currentLicense);
+        console.log(
+          "SmartTemplates Startup has finished\n" +
+            `onInstalled reason=${reason} temporary=${_temporary}\n` +
+            "currentLicense",
+          currentLicense
+        );
       }
 
       switch (reason) {
         case "install":
-          {
-            const url = browser.runtime.getURL("popup/installed.html");
-            await messenger.tabs.create({
-              url: url,
-              active: true,
-            });
-            // await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
-            messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
-            displayUpdateMessage();
-          }
+          if (isDebug) {
+            console.log("SmartTemplates install() case");
+            logLicenseStatus();
+          }            
+          await messenger.tabs.create({
+            url: browser.runtime.getURL("popup/installed.html"),
+            active: true,
+          });
+          // await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
+          messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
+          displayUpdateMessage();
           break;
         // see below
         case "update":
-          {
-            (async () => {
-              // compare versions to support beta builds
-              // we probably need to manage prerelease installs with a separate flag!
-              // Define a Map of silent update rules with wildcards
-              const silentUpdateMap = new Map([
-                ["4.10", ["4.10.1"]], // Silent updates for [issue 354]
-              ]);
+          if (isDebug) {
+            console.log("SmartTemplates update() case");
+            logLicenseStatus();
+          }
 
-              // Function to check if an update is silent
-              function isSilentUpdate(fromVersion, toVersion) {
-                const patterns = silentUpdateMap.get(fromVersion);
-                if (!patterns) {return false;} // No silent updates defined for this `fromVersion`
+          (async () => {
+            const origVer = await messenger.LegacyPrefs.getPref(
+              "extensions.smartTemplate4.version",
+              "0"
+            );
+            const manifest = await messenger.runtime.getManifest();
+            // get pure version number / remove pre123 indicator
+            let installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
+            if (isDebug) {
+              console.log(`SmartTemplates Update:  old=${origVer}  new=${installedVersion}`);
+            }
 
-                // Check if `toVersion` matches any pattern in the list
-                return patterns.some((pattern) => versionMatches(toVersion, pattern));
-              }
+            const isUpgrade = versionGreater(installedVersion, origVer);
+            const isSilent = isSilentUpdate(origVer, installedVersion);
 
-              const origVer = await messenger.LegacyPrefs.getPref(
-                "extensions.smartTemplate4.version",
-                "0"
-              );
-              const manifest = await messenger.runtime.getManifest();
-              // get pure version number / remove pre123 indicator
-              let installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
+            if (isUpgrade && !isSilent) {
               if (isDebug) {
-                console.log(`SmartTemplates Update:  old=${origVer}  new=${installedVersion}`);
+                console.log("Setting hasNews flag!");
               }
-
-              const isUpgrade = versionGreater(installedVersion, origVer),
-                isSilent = isSilentUpdate(origVer, installedVersion);
-
-              if (isUpgrade && !isSilent) {
-                if (isDebug) {console.log("Setting hasNews flag!");}
-                messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
+              // [issue 396] if hasNews is already set before update let's try to switch
+              //             to minimal news mode. (User ignores button status anyway)
+              if (
+                (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.hasNews")) &&
+                installedVersion.startsWith("4.14.1")
+              ) {
+                if (isDebug) {
+                  console.log(
+                    "Setting news.minimal flag, as news flag was already set / ignored."
+                  );
+                }
+                messenger.LegacyPrefs.setPref("extensions.smartTemplate4.news.minimal", true);
               }
-              if (origVer != installedVersion) {
-                if (isDebug) {console.log("Storing new version number " + manifest.version);}
-                // STORE VERSION CODE!
-                // prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
-                messenger.LegacyPrefs.setPref(
-                  "extensions.smartTemplate4.version",
-                  installedVersion
-                );
+              messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
+            }
+            if (origVer != installedVersion) {
+              if (isDebug) {
+                console.log("Storing new version number " + manifest.version);
               }
+              // STORE VERSION CODE!
+              // prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+              messenger.LegacyPrefs.setPref(
+                "extensions.smartTemplate4.version",
+                installedVersion
+              );
+            }
 
-              messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
-              messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
-            })();
+            messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
+            messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
 
             // TypeError: currentLicense is undefined
-            if (isDebug) {console.log("2. update() case");}
-            let currentLicenseInfo = currentLicense.info;
-            let isLicensed = currentLicenseInfo.status == "Valid";
-            if (isLicensed) {
-              // suppress update popup for users with licenses that have been recently renewed
-              let gpdays = currentLicenseInfo.licensedDaysLeft;
-              if (isDebug) {console.log("Licensed - " + gpdays + " Days left.");}
-            }
             displayUpdateMessage();
-          }
+          })();
+
           break;
         default:
           messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
