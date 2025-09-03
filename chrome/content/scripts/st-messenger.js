@@ -20,7 +20,7 @@ async function onLoad(activatedWhileWindowOpen) {
   let _layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
   /** Main Toolbar **/
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
-  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css?v=2");
+  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css?v=3");
 
   const util = window.SmartTemplate4.Util;
 

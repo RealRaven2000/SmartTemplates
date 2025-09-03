@@ -25,8 +25,34 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash {
 	border: 1px solid transparent !important;
 	background: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) padding-box,
 	            repeating-linear-gradient(-45deg, var(--lwt-text-color,black) 0, var(--lwt-text-color,black) 25%, transparent 0, transparent 50%) 0 / .6em .6em !important;
-	color: white;
+	color: orange;
+  font-weight: bold;
+  position:relative;
   animation: smarttemplates-ants 8s linear infinite !important;
+}
+
+.newsflash menuitem#smartTemplates-news::after {
+  content: "🟠";
+  font-size: 9px;        /* tweak to match toolbar badge size */
+  pointer-events: none;
+  animation: glow-orange 2.5s infinite alternate;
+}
+
+@keyframes glow-orange {
+  0% {
+    text-shadow:
+      0 0 2px #ffb84d;
+  }
+  50% {
+    text-shadow:
+      0 0 2px #ffd27f,
+      0 0 6px #ffb84d,
+      0 0 8px #ff8c00;
+  }
+  100% {
+    text-shadow:
+      0 0 2px #ffb84d;
+  }
 }
 
 /** common layout fixes for all special states **/
@@ -48,9 +74,10 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.renew butto
  */
 #smartTemplates-checklicense.marching-ants {
 	border: 1px solid transparent !important;
-	background: linear-gradient(to bottom, #ee570b 0%, #893a02 100%) padding-box,
-	            repeating-linear-gradient(-45deg, var(--lwt-text-color,black) 0, var(--lwt-text-color,black) 25%, transparent 0, transparent 50%) 0 / .6em .6em !important;
-	animation: smarttemplates-ants 8s linear infinite !important;
+	background: 
+    linear-gradient(to bottom, #ee570b 0%, #893a02 100%) padding-box,
+    repeating-linear-gradient(-45deg, var(--lwt-text-color,black) 0, var(--lwt-text-color,black) 25%, transparent 0, transparent 50%) 0 / .6em .6em padding-box !important;
+	animation: smarttemplates-ants 3s linear infinite !important;
 } 
 
 #smartTemplates-checklicense.marching-ants:hover {
@@ -58,8 +85,8 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.renew butto
 }
 
 @keyframes smarttemplates-ants { 
-  from { background-position: 0% 0% } 
-  to { background-position: 100% 100% } 
+  from { background-position: 0 0, 0 0; } 
+  to { background-position: 0 0, 4px 4px; } 
 }
 
 
@@ -86,7 +113,41 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash:h
   background-image: linear-gradient(to bottom, #02409f 0%,#004e97 100%) !important;
 }
 
-/* main icon */
+/* main icon - NEWS BADGE */
+.live-content.newsflash.news-minimal {
+  overflow: visible; /* allow the badge to overflow */
+  position: relative; /* keep positioning context if needed */
+}
+
+.live-content.news-minimal::after {
+  content: "🟠";  /* Unicode dot currently used */
+  position: absolute;
+  top: -2px;                 
+  right: -4px;               
+  font-size: 9px;
+  line-height: 1;
+  display: block;
+  pointer-events: none; /* don’t block clicks */
+}
+
+
+/** INITIAL SOLUTION: badge in label - looks bad */
+/* 2. Append badge to label when toolbar is NOT icon-only 
+:not(.icons-only) #SmartTemplate4Button.news-minimal > .button-label::after {
+    content: " 🟠" !important;
+    font-size: 0.8em;
+    margin-left: 2px;
+}*/
+
+/* 3. Show badge as pseudo-icon when toolbar is icon-only
+.icons-only #SmartTemplate4Button.news-minimal::after {
+  content: "🟠" !important;
+  font-size: 0.8em;
+  padding-bottom: 3px;
+} */
+
+
+
 #SmartTemplate4Button:not([checked="true"]):where(.expired,.renew,.newsflash) > .button-icon {
   fill: #ffffff !important;
 }
@@ -112,21 +173,6 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash:h
 
 .icons-only #SmartTemplate4Button.news-minimal.newsflash > .button-label {
     display: none !important; /* label stays visible if needed */
-}
-
-
-/* 2. Append badge to label when toolbar is NOT icon-only */
-:not(.icons-only) #SmartTemplate4Button.news-minimal > .button-label::after {
-    content: " 🟠" !important;
-    font-size: 0.8em;
-    margin-left: 2px;
-}
-
-/* 3. Show badge as pseudo-icon when toolbar is icon-only */
-.icons-only #SmartTemplate4Button.news-minimal::after {
-  content: "🟠" !important;
-  font-size: 0.8em;
-  padding-bottom: 3px;
 }
 
 #smartTemplates-checklicense {
