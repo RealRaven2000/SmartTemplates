@@ -114,12 +114,12 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash:h
 }
 
 /* main icon - NEWS BADGE */
-.live-content.newsflash.news-minimal {
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash.news-minimal {
   overflow: visible; /* allow the badge to overflow */
   position: relative; /* keep positioning context if needed */
 }
 
-.live-content.news-minimal::after {
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.news-minimal::after {
   content: "🟠";  /* Unicode dot currently used */
   position: absolute;
   top: -2px;                 
