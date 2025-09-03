@@ -289,6 +289,9 @@ END LICENSE BLOCK
     # [issue 394] %dateformat.current% triggers "NOT SUPPORTED: Replace deferred smartTemplate variable"
     # [issue 393] Code Review: Remove "unsafe assignments to innerHTML"
     # [issue 395] Optional notification when reusing the last template
+    # popupAlert: silence by default, added sound parameter for later
+    # fix cursor automatic positioning if using quotePlaceHolder in template
+    # [issue 396] Improved toolbar button signal for "Minimal News" status
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
