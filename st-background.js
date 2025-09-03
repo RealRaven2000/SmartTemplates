@@ -1170,9 +1170,9 @@ async function displayUpdateMessage() {
                     "Setting news.minimal flag, as news flag was already set / ignored."
                   );
                 }
-                messenger.LegacyPrefs.setPref("extensions.smartTemplate4.news.minimal", true);
+                await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.news.minimal", true);
               }
-              messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
+              await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
             }
             if (origVer != installedVersion) {
               if (isDebug) {
