@@ -29,7 +29,7 @@ async function onLoad(activatedWhileWindowOpen) {
   );
 
 
-  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css?v=5");
+  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css?v=6");
 
   // for version specific code / style fixes
   if (

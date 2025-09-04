@@ -126,6 +126,8 @@ pref("extensions.smartTemplate4.debug.notifications.menus", false);
 pref("extensions.smartTemplate4.debug.premium.licenser", false);
 pref("extensions.smartTemplate4.debug.premium.rsa", false);
 pref("extensions.smartTemplate4.debug.premium.testNotification", false);
+pref("extensions.smartTemplate4.debug.ui.statusbar", false);
+pref("extensions.smartTemplate4.debug.ui.mainbutton", false);
 pref("extensions.smartTemplate4.debug.variables.search", false);
 pref("extensions.smartTemplate4.debug.saleDate", ""); // test sales
 

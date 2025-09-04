@@ -25,17 +25,31 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash {
 	border: 1px solid transparent !important;
 	background: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) padding-box,
 	            repeating-linear-gradient(-45deg, var(--lwt-text-color,black) 0, var(--lwt-text-color,black) 25%, transparent 0, transparent 50%) 0 / .6em .6em !important;
-	color: orange;
+	color: white;
   font-weight: bold;
   position:relative;
   animation: smarttemplates-ants 8s linear infinite !important;
 }
 
 .newsflash menuitem#smartTemplates-news::after {
-  content: "🟠";
-  font-size: 9px;        /* tweak to match toolbar badge size */
+  content: url("../icons/badge-news.svg"); /* 🟠 */
   pointer-events: none;
-  animation: glow-orange 2.5s infinite alternate;
+  animation: coin-flip 2.5s infinite;
+  width: 1.0em !important;
+  height: 1.0em !important;
+}
+
+/* attract attention, ok for a menu item */
+@keyframes coin-flip {
+  0%, 20% {
+    transform: rotateY(0deg);
+  }
+  40%, 60% {
+    transform: rotateY(180deg);
+  }
+  80%, 100% {
+    transform: rotateY(0deg);
+  }
 }
 
 @keyframes glow-orange {
@@ -113,21 +127,22 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash:h
   background-image: linear-gradient(to bottom, #02409f 0%,#004e97 100%) !important;
 }
 
-/* main icon - NEWS BADGE */
-li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash.news-minimal {
+/* main icon - NEWS BADGE removed .newsflash.news-minimal*/
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content {
   overflow: visible; /* allow the badge to overflow */
   position: relative; /* keep positioning context if needed */
 }
 
 li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.news-minimal::after {
-  content: "🟠";  /* Unicode dot currently used */
+  content: url("../icons/badge-news.svg");  /* Unicode dot currently used "🟠" */
   position: absolute;
   top: -2px;                 
   right: -4px;               
-  font-size: 9px;
   line-height: 1;
   display: block;
   pointer-events: none; /* don’t block clicks */
+  width: 0.9em !important;
+  height: 0.9em !important;
 }
 
 
