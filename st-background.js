@@ -1130,7 +1130,7 @@ async function displayUpdateMessage() {
             active: true,
           });
           // await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
-          messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
+          notifyWhenUIReady({ event: "firstRun" });
           displayUpdateMessage();
           break;
         // see below
@@ -1186,8 +1186,8 @@ async function displayUpdateMessage() {
               );
             }
 
-            messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
-            messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
+            notifyWhenUIReady({ event: "updateNewsLabels" });
+            notifyWhenUIReady({ event: "firstRun" });
 
             // TypeError: currentLicense is undefined
             displayUpdateMessage();
@@ -1195,7 +1195,7 @@ async function displayUpdateMessage() {
 
           break;
         default:
-          messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
+          notifyWhenUIReady({ event: "updateNewsLabels" });
         // see below
       }
     } catch (ex) {
@@ -1233,6 +1233,29 @@ async function showSplashInstalled() {
   return;  
 }
 
+
+// create a "deferred" promise
+let uiResolve;
+const uiReadyPromise = new Promise((resolve) => {
+  uiResolve = resolve; // save the resolver
+});
+
+// Wrapper that supports multiple args
+async function notifyWhenUIReady(...args) {
+  try {
+    // Wait until st-messenger signals that all listeners are ready
+    await uiReadyPromise;
+
+    // Pass all args to notifyExperiment and return its promise
+    return messenger.NotifyTools.notifyExperiment(...args);
+  } catch (err) {
+    console.error("Error in notifyWhenUIReady:", err);
+    throw err; // propagate to caller
+  }
+}
+
+
+
 async function main() {
   // we need these helper functions for calculating an extension to License.info
   async function getGraceDate() {
@@ -1268,8 +1291,12 @@ async function main() {
         // default: leave graceDate as-is
       }
     }
-    if (isResetDate) {await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, gracePeriodStart);}
-    if (isDebug) {console.log("Returning Grace Period Date: " + gracePeriodStart);}
+    if (isResetDate) {
+      await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, gracePeriodStart);
+    }
+    if (isDebug) {
+      console.log("Returning Grace Period Date: " + gracePeriodStart);
+    }
     return gracePeriodStart;
   }
 
@@ -1293,15 +1320,21 @@ async function main() {
     let [oldTab] = await browser.tabs.query({ url }); // dereference first
     let queryString = "";
     let searchParams = new URLSearchParams();
-    if (data.server) {searchParams.append("id", data.server);}
-    if (data.page) {searchParams.append("mode", data.page);}
+    if (data.server) {
+      searchParams.append("id", data.server);
+    }
+    if (data.page) {
+      searchParams.append("mode", data.page);
+    }
     if (data.topic) {
       searchParams.append("topic", data.topic);
     }
     if (data.composeType) {
       searchParams.append("composeType", data.composeType);
     }
-    if (searchParams.toString()) {queryString = "?" + searchParams.toString();}
+    if (searchParams.toString()) {
+      queryString = "?" + searchParams.toString();
+    }
     if (oldTab) {
       await browser.tabs.update(oldTab.id, {
         active: true,
@@ -1350,10 +1383,14 @@ async function main() {
 
   // All important stuff has been done.
   // resolve all promises on the stack
-  if (isDebugAddon) {console.log("ST main(): Finished setting up license startup code");}
+  if (isDebugAddon) {
+    console.log("ST main(): Finished setting up license startup code");
+  }
   startupDoneResolve(); // <— this triggers everything that waits
 
-  if (isDebugAddon) {console.log("ST main(): Adding message listeners....");}
+  if (isDebugAddon) {
+    console.log("ST main(): Adding message listeners....");
+  }
   try {
     messenger.runtime.onMessage.addListener(async (data, _sender) => {
       console.log("SmartTemplates background listener: ", data);
@@ -1446,7 +1483,9 @@ async function main() {
         }
       }
     });
-    if (isDebugAddon) {console.log("ST main(): After adding message listener.");}
+    if (isDebugAddon) {
+      console.log("ST main(): After adding message listener.");
+    }
   } catch (e) {
     console.error("Error adding listener:", e);
   }
@@ -1481,11 +1520,9 @@ async function main() {
     );
     currentLicense = newLicense;
     // Broadcast
-    messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info }); // part of generic onBackgroundUpdates called in Util.init()
+    notifyWhenUIReady({ licenseInfo: currentLicense.info }); // part of generic onBackgroundUpdates called in Util.init()
     return licenseValidationDescription(newLicense.ValidationStatus, currentLicense.info);
   }
-
-
 
   messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
     let isLog = await messenger.LegacyPrefs.getPref(
@@ -1501,6 +1538,10 @@ async function main() {
       );
     }
     switch (data.func) {
+      case "UIListenersReady":
+        // makes sure all event listeners in st-messenger.js are set up and ready to receive
+        uiResolve(); // resolve the promise
+        break;
       case "getLicenseInfo":
         return currentLicense.info;
 
@@ -1531,7 +1572,7 @@ async function main() {
 
       case "updateTemplateMenus":
         // Broadcast main windows to run updateTemplateMenus
-        messenger.NotifyTools.notifyExperiment({ event: "updateTemplateMenus" });
+        notifyWhenUIReady({ event: "updateTemplateMenus" });
         break;
 
       case "updateFileTemplates":
@@ -1555,11 +1596,11 @@ async function main() {
         break;
 
       case "updateSnippetMenus":
-        messenger.NotifyTools.notifyExperiment({ event: "updateSnippetMenus" });
+        notifyWhenUIReady({ event: "updateSnippetMenus" });
         break;
 
       case "updateNewsLabels":
-        messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
+        notifyWhenUIReady({ event: "updateNewsLabels" });
         break;
 
       case "setActionTip":
@@ -1577,16 +1618,16 @@ async function main() {
         {
           await currentLicense.updateLicenseDates();
 
-          messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
-          messenger.NotifyTools.notifyExperiment({ event: "updateNewsLabels" });
+          notifyWhenUIReady({ licenseInfo: currentLicense.info });
+          notifyWhenUIReady({ event: "updateNewsLabels" });
           // update the status bar label too:
-          messenger.NotifyTools.notifyExperiment({ event: "initLicensedUI" });
+          notifyWhenUIReady({ event: "initLicensedUI" });
         }
         break;
 
       case "initLicensedUI":
         // main window update reacting to license status change
-        messenger.NotifyTools.notifyExperiment({ event: "initLicensedUI" });
+        notifyWhenUIReady({ event: "initLicensedUI" });
         break;
 
       case "parseVcard": {
@@ -1653,7 +1694,7 @@ async function main() {
         return await openPrefs(data);
 
       case "patchUnifiedToolbar":
-        return await messenger.NotifyTools.notifyExperiment({ event: "patchUnifiedToolbar" });
+        return await notifyWhenUIReady({ event: "patchUnifiedToolbar" });
 
       case "openLinkInTab":
         // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
@@ -1681,7 +1722,7 @@ async function main() {
           referenceFeature = data.addonfeatures || null,
           features = data.features || ["ok"]; // minimum: an ok button. make array mutable
 
-        switch(mode) {
+        switch (mode) {
           case "standard":
             return showSTmessage(messageIds, features, message, referenceFeature);
           case "news":
@@ -1698,11 +1739,11 @@ async function main() {
     let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
     switch (message.command) {
       case "forwardMessageWithTemplate":
-        messenger.NotifyTools.notifyExperiment({
+        notifyWhenUIReady({
           event: "forwardWithTemplate",
           detail: { messageHeader: message.messageHeader, templateURL: message.templateURL },
         }).then((_data) => {
-          if (isDebug) { 
+          if (isDebug) {
             console.log(
               `SmartTemplates forwarded '${message.messageHeader.subject}' successfully.`
             );
@@ -1711,14 +1752,15 @@ async function main() {
         });
         break;
       case "replyMessageWithTemplate":
-        messenger.NotifyTools.notifyExperiment({
+        notifyWhenUIReady({
           event: "replyWithTemplate",
           detail: { messageHeader: message.messageHeader, templateURL: message.templateURL },
         }).then((_data) => {
-          if (isDebug)
-            {console.log(
+          if (isDebug) {
+            console.log(
               `SmartTemplates replied to '${message.messageHeader.subject}' successfully.`
-            );}
+            );
+          }
           return true;
         });
         break;
@@ -1805,21 +1847,24 @@ async function main() {
   messenger.accounts.onCreated.addListener(async (id, account) => {
     if (currentLicense.info.status == "MailNotConfigured") {
       // redo license validation!
-      if (isDebugLicenser) {console.log("Account added, redoing license validation", id, account);} // test
+      if (isDebugLicenser) {
+        console.log("Account added, redoing license validation", id, account);
+      } // test
       currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
       await currentLicense.validate();
       if (currentLicense.info.status != "MailNotConfigured") {
-        if (isDebugLicenser)
-          {console.log(
+        if (isDebugLicenser) {
+          console.log(
             "notify experiment code of new license status: " + currentLicense.info.status
-          );}
-        messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
+          );
+        }
+        notifyWhenUIReady({ licenseInfo: currentLicense.info });
       }
       if (isDebugLicenser) {
         console.log("SmartTemplates license info:", currentLicense.info); // test
-      } 
+      }
       return;
-    } 
+    }
     if (isDebugLicenser) {
       console.log("SmartTemplates license state after adding account:", currentLicense.info);
     }

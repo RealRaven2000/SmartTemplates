@@ -20,7 +20,7 @@ async function onLoad(activatedWhileWindowOpen) {
   let _layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
   /** Main Toolbar **/
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
-  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css?v=5");
+  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css?v=6");
 
   const util = window.SmartTemplate4.Util;
 
@@ -384,6 +384,7 @@ async function onLoad(activatedWhileWindowOpen) {
     );
   };
 
+  let lCount=0;
   for (let m in mylisteners) {
     if (m == "BackgroundUpdate") {
       window.addEventListener("SmartTemplates.BackgroundUpdate", mylisteners[m]);
@@ -391,7 +392,11 @@ async function onLoad(activatedWhileWindowOpen) {
       window.addEventListener(`SmartTemplates.BackgroundUpdate.${m}`, mylisteners[m]);
       // add more listeners here...
     }
+    lCount++;
   }
+  window.SmartTemplate4.Util.logDebug(`Added ${lCount} listeners`, mylisteners);
+  window.SmartTemplate4.Util.notifyTools.notifyBackground({ func: "UIListenersReady" });
+
 
   // initialise all menus
   window.SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
