@@ -841,7 +841,7 @@ var SmartTemplate4 = {
     SmartTemplate4.Util.logDebug("SmartTemplate4.init() ends.");
   },
 
-  setStatusIconMode: function setStatusIconMode(elem) {
+  setStatusIconMode: function (elem) {
     try {
       this.Preferences.setMyIntPref("statusIconLabelMode", parseInt(elem.value));
       this.updateStatusBar(elem.parentNode.firstChild.checked);
@@ -853,9 +853,11 @@ var SmartTemplate4 = {
   updateStatusBar: function (show) {
     const prefs = SmartTemplate4.Preferences,
       util = SmartTemplate4.Util,
-      licenseInfo = SmartTemplate4.Util.licenseInfo;
+      licenseInfo = SmartTemplate4.Util.licenseInfo,
+      isDebugThis = prefs.isDebugOption("ui.statusbar");
     try {
-      util.logDebug(
+      util.logDebugOptional(
+        "ui.statusbar",
         "SmartTemplate4.updateStatusBar(" + show + ") ... with licenseInfo = ",
         licenseInfo
       );
@@ -863,8 +865,19 @@ var SmartTemplate4 = {
         isVisible = isDefault ? prefs.getMyBoolPref("showStatusIcon") : show,
         doc = isDefault ? document : util.Mail3PaneWindow.document,
         btn = doc.getElementById("SmartTemplate4Messenger");
+
+      if (isDebugThis) {
+        util.logHighlightDebug(
+          `Current Tab: ${gTabmail.selectedTab?.mode?.name}`,
+          "rgba(255, 238, 0, 1)",
+          "rgba(137, 47, 5, 1)",
+          gTabmail.selectedTab
+        );
+      }
+
       if (btn) {
         let labelMode = prefs.getMyIntPref("statusIconLabelMode");
+        util.logDebugOptional("ui.statusbar", `Found toolbar button; labelMode = ${labelMode}`);
         btn.classList.remove(...btn.classList); // clear classlist array
         btn.classList.add("statusbarpanel-iconic-text");
         if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
@@ -928,14 +941,20 @@ var SmartTemplate4 = {
   },
 
   // all main window elements that change depending on license status
-  initLicensedUI: function ST_initLicensedUI() {
+  initLicensedUI: function() {
     SmartTemplate4.Util.logDebug("initLicensedUI()", SmartTemplate4.Util.licenseInfo);
     SmartTemplate4.updateStatusBar();
     SmartTemplate4.updateNewsLabels();
   },
 
-  startUp: function ST_startUp() {
+  startUp: function() {
     const util = SmartTemplate4.Util;
+    util.logHighlightDebug(
+      "SmartTemplate4.startup() …",
+      "rgba(255, 238, 0, 1)",
+      "rgba(137, 47, 5, 1)"
+    );
+    
     // let v = util.VersionProxy();
 
     //  a hack for the status bar icon:
@@ -968,9 +987,15 @@ var SmartTemplate4 = {
   updateNewsLabels: function () {
     const util = SmartTemplate4.Util,
       licenseInfo = SmartTemplate4.Util.licenseInfo;
-    let hasNews = SmartTemplate4.Preferences.getMyBoolPref("hasNews"),
+    const hasNews = SmartTemplate4.Preferences.getMyBoolPref("hasNews"),
       btn = document.getElementById("SmartTemplate4Button"),
       btnStatus = document.getElementById("SmartTemplate4Messenger");
+    // util.logHighlight("updateNewsLabels()", "white", "rgb(194,10,110)");
+    util.logDebugOptional(
+      "ui.mainbutton",
+      `SmartTemplate4.updateNewsLabels() …\nhasNews = ${hasNews}`,
+      licenseInfo
+    );
     // for styling button parent background image
     //   in  Tb115 we need to add the class to the parent <div class="live-content">!
     function addClass(element, c) {
@@ -1016,7 +1041,6 @@ var SmartTemplate4 = {
         txt = wrn + util.salesLabel(licenseInfo);
       }
     }
-
 
     if (hasNews) {
       const isNewsMinimal = SmartTemplate4.Preferences.getMyBoolPref("news.minimal");
