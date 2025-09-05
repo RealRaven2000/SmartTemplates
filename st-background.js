@@ -1234,7 +1234,7 @@ async function showSplashInstalled() {
 }
 
 
-// create a "deferred" promise
+// create a "deferred" promise for all event listeners on the experimental side
 let uiResolve;
 const uiReadyPromise = new Promise((resolve) => {
   uiResolve = resolve; // save the resolver

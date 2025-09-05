@@ -6,13 +6,10 @@ Some users may have seen a false incompatibility warning after updating from Thu
 I raised a bug with Thunderbird to fix this: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>, please add your observations there if you experienced this problem.
 
 **Improvements**
-*   Made compatible with Thunderbird 143. 
-*   Variable documentation: Improve searching to search `%variable%` fields [issue #388]
-*   Added "Minimal news" mode to show for badge 🟠 for new updates instead of the 'Read the News' label - enable this in Settings » Licenses under 'Updates'. This will make the work with SmartTemplates less intrusive, while still signalling news about possible important changes. As always, the badge and blue background will disappear as soon as clicking on the 'Latest news' menu entry.
-*   Added a warning for Standard License requirement for `%file%`, `%dateformat%`  instead of triggering premium feature warning. Also removed the message about requiring a license [issue #391]
-
+*   Fixed `{{%dateformat.current%}}` triggering the warning "NOT SUPPORTED: Replace deferred smartTemplate variable" [issue #394]
+*   Further improvements to the New button badge 🟠 – to display this streamlined status, open Settings » Licenses. Under 'Updates', enable the option "$news.minimal$" [issue #396]
+*   Added optional notification when reusing the last template [issue #395]
 
 **Bug Fixed**
-*   Fixed a minor issue with the line "Click a heading or Expand All"
-*   Fixed a problem with escaped commas from clipboard [issue #386]
-*   Fixed for Thunderbird 143: all menu icons of all popups broken [issue #390]
+*   Fixed cursor automatic positioning when using `{{%quotePlaceHolder%}}` in templates
+*   Removed unsafe assignments to `{{innerHTML}}` [issue #393]

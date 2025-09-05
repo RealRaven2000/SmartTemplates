@@ -10,18 +10,13 @@ To get this fixed I raised a bug with Thunderbird: <a href="https://bugzilla.moz
 
 <b>Improvements</b>
 <ul>
-<li>Made compatible with Thunderbird 143. </li>
-<li>Variable documentation: Improve searching to search <code>%variable%</code>  fields <a href="https://github.com/RealRaven2000/SmartTemplates/issues/388">[issue 388]</a></li>
-<li>Added "Minimal news" mode to show for badge 🟠 for new updates instead of the 'Read the News' label - enable this in Settings » Licenses under 'Updates'. 
-
-This will make the work with SmartTemplates less intrusive, while still signalling news about possible important changes. As always, the badge and blue background will disappear as soon as clicking on the 'Latest news' menu entry.
-</li>
-<li>Add a warning for Standard License requirement for <code>%file%</code>, <code>%dateformat%</code>  instead of triggering premium feature warning. Also removed the message about requiring a license (st.notification.license.required) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/391">[issue 391]</a></li>
+<li>Fixed <code>{{%dateformat.current%}}</code> triggering the warning "NOT SUPPORTED: Replace deferred smartTemplate variable" <a href="https://github.com/RealRaven2000/SmartTemplates/issues/394">[issue 394]</a></li>
+<li>Further improvements to the New button badge 🟠 – to display this streamlined status, open Settings » Licenses. Under 'Updates', enable the option "$news.minimal$" <a href="https://github.com/RealRaven2000/SmartTemplates/issues/396">[issue 396]</a></li>
+<li>Added optional notification when reusing the last template <a href="https://github.com/RealRaven2000/SmartTemplates/issues/395">[issue 395]</a></li>
 </ul>
 
 <b>Bug Fixed</b>
 <ul>
-<li>Fixed a minor issue with the line &quot;Click a heading or Expand All&quot;</li>
-<li>Fixed a problem with escaped commas from clipboard <a href="https://github.com/RealRaven2000/SmartTemplates/issues/386">[issue 386]</a></li>
-<li>Fixed for Thunderbird 143: all menu icons of all popups broken <a href="https://github.com/RealRaven2000/SmartTemplates/issues/390">[issue 390]</a></li>
+<li>Fixed cursor automatic positioning when using <code>{{%quotePlaceHolder%}}</code> in templates</li>
+<li>Removed unsafe assignments to <code>{{innerHTML}}</code> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/393">[issue 393]</a></li>
 </ul>
