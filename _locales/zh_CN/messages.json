@@ -926,7 +926,7 @@
     "message": "{P1}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 继续其每月发布周期。 {P2}{P1} 一些用户在更新到 Thunderbird v142 后可能看到了错误的不兼容警告。这是由于 Thunderbird 中的兼容性缓存信息有时未能正确刷新。SmartTemplates 的上一个版本已经完全兼容 142。我已向 Thunderbird 提交了 Bug 报告以解决此问题: [Bugzilla 1986027]{P2}{P1} 请放心，SmartTemplates 完全支持每月版和 ESR (142.*) 渠道，您可以继续不间断地工作。 {P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 继续其每月发布周期。 {P2}{P1} 一些用户在更新到 Thunderbird v142 后可能看到了错误的不兼容警告。这是由于 Thunderbird 中的兼容性缓存信息有时未能正确刷新。SmartTemplates 的上一个版本已经完全兼容 142。我已向 Thunderbird 提交了 Bug 报告以解决此问题: [Bugzilla 1986027]{P2}{P1} 请放心，SmartTemplates 完全支持每月版和 ESR (140.*) 渠道，您可以继续不间断地工作。 {P2}"
   },
   "newsSection.license": {
     "message": "由于SmartTemplates的所有工作和免费支持完全通过许可证销售资助，请考虑购买许可证或续订当前许可证。"
@@ -2033,7 +2033,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates 现在完全兼容 Thunderbird 143。{L2}{L1}变量窗口的全文搜索得到改进。[issue 388]{L2}{L1}SmartTemplates按钮现在可以显示一个 🟠 徽章以替代“阅读新闻”标签显示新更新 - 在设置 » 许可证的“更新”中启用此功能。{L2}{L1}剪贴板不会再插入转义逗号。[issue 386]{L2}{L1}Thunderbird 143 破坏了所有菜单图标，现在已修复。{L2}{L1}{{%file%}} 和 {{%dateformat%}} 使用标准许可时不再生成不必要的警告。[issue 391]"
+    "message": "{L1}修复：{{%dateformat.current%}} 触发了警告 \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394]。{L2}{L1}进一步改进了新的按钮徽章 🟠 – 要显示此精简状态，请打开 设置 » 许可证。在“更新”下启用选项 \"$news.minimal$\" [issue 396]。{L2}{L1}新增了在重复使用最后一个模板时的可选通知 [issue 395]。{L2}{L1}修复了在模板中使用 {{%quotePlaceHolder%}} 时光标的自动定位问题。{L2}{L1}移除了对 {{innerHTML}} 的不安全赋值 [issue 393]。"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

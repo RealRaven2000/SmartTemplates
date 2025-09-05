@@ -943,7 +943,7 @@
     "message": "{P1}We continue to follow Thunderbird’s monthly release cycle to ensure compatibility and stability. As always, this work is entirely financed by license sales.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continues its monthly release cycle. {P2}{P1} Some users may have seen a false incompatibility warning after updating from Thunderbird to v142. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. The previous version of SmartTemplates was already fully compatible with 142. I raised a bug with Thunderbird to fix this: [Bugzilla 1986027]{P2}{P1} Rest assured, SmartTemplates fully supports both the monthly and ESR (142.*) channels, and you can continue working without interruption. {P2}"
+    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continues its monthly release cycle. {P2}{P1} Some users may have seen a false incompatibility warning after updating from Thunderbird to v142. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. The previous version of SmartTemplates was already fully compatible with 142. I raised a bug with Thunderbird to fix this: [Bugzilla 1986027]{P2}{P1} Rest assured, SmartTemplates fully supports both the monthly and ESR (140.*) channels, and you can continue working without interruption. {P2}"
   },
   "newsSection.license": {
     "message": "As all work on SmartTemplates and free support are funded exclusively by license sales, please consider buying a license or renewing your current one."
@@ -2086,7 +2086,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates is now fully compatible with Thunderbird 143.{L2}{L1}Improved full text search in Variables window. [issue 388]{L2}{L1}Clipboard won't insert escaped commas anymore [issue 386].{L2}{L1}SmartTemplates button can now display a badge 🟠 for new updates instead of the 'Read the News' label - enable this in Settings » Licenses under 'Updates'.{L2}{L1}Thunderbird 143 broke all menu icons, this is now patched.{L2}{L1}{{%file%}} and {{%dateformat%}} will not generate unnecessary warnings anymore when using a standard license. [issue 391]"
+    "message": "{L1}Fixed {{%dateformat.current%}} which triggered the warning \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Further improvements to the New button badge 🟠 – to display this streamlined status, open Settings » Licenses. Under 'Updates', enable the option \"$news.minimal$\" [issue 396].{L2}{L1}Added optional notification when reusing the last template [issue 395].{L2}{L1}Fixed cursor automatic positioning when using {{%quotePlaceHolder%}} in templates.{L2}{L1}Removed unsafe assignments to {{innerHTML}} [issue 393]."
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

@@ -935,7 +935,7 @@
     "message": "{P1}Vi följer fortsatt Thunderbirds månatliga utgivningscykel för att säkerställa kompatibilitet och stabilitet. Som alltid finansieras detta arbete helt genom licensförsäljning.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Важно:{boldEnd} Thunderbird наставља свој месечни циклус издања. {P2}{P1} Неки корисници су можда видели лажно упозорење о некомпатибилности након ажурирања на Thunderbird v142. Ово је узроковано кешираним информацијама о компатибилности у Thunderbirdu, које понекад не освежавају исправно. Претходна верзија SmartTemplates-а већ је била потпуно компатибилна са 142. Пријавио сам баг Thunderbird тиму да ово реше: [Bugzilla 1986027]{P2}{P1} Будите сигурни да SmartTemplates у потпуности подржава и месечне и ESR (142.*) канале и можете наставити рад без прекида. {P2}"
+    "message": "{P1}{boldStart}Важно:{boldEnd} Thunderbird наставља свој месечни циклус издања. {P2}{P1} Неки корисници су можда видели лажно упозорење о некомпатибилности након ажурирања на Thunderbird v142. Ово је узроковано кешираним информацијама о компатибилности у Thunderbirdu, које понекад не освежавају исправно. Претходна верзија SmartTemplates-а већ је била потпуно компатибилна са 142. Пријавио сам баг Thunderbird тиму да ово реше: [Bugzilla 1986027]{P2}{P1} Будите сигурни да SmartTemplates у потпуности подржава и месечне и ESR (140.*) канале и можете наставити рад без прекида. {P2}"
   },
   "newsSection.license": {
     "message": "Eftersom allt arbete med SmartTemplates och gratis support finansieras uteslutande genom licensförsäljning, överväg att köpa en licens eller förnya din nuvarande."
@@ -2065,7 +2065,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates är nu helt kompatibelt med Thunderbird 143.{L2}{L1}Förbättrad fulltext-sökning i Variabler-fönstret. [issue 388]{L2}{L1}SmartTemplates-knappen kan nu visa en badge 🟠 för nya uppdateringar istället för etiketten 'Läs nyheter' - aktivera detta i Inställningar » Licenser under 'Uppdateringar'.{L2}{L1}Urklipp infogar inte längre escaped-kommatecken. [issue 386]{L2}{L1}Thunderbird 143 förstörde alla menyikoner, nu åtgärdat.{L2}{L1}{{%file%}} och {{%dateformat%}} genererar inte längre onödiga varningar vid användning av standardlicens. [issue 391]"
+    "message": "{L1}Fixat: {{%dateformat.current%}} utlöste varningen \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Ytterligare förbättringar av den nya knappens märke 🟠 – för att visa denna förenklade status, öppna Inställningar » Licenser. Under 'Uppdateringar', aktivera alternativet \"$news.minimal$\" [issue 396].{L2}{L1}Lagt till valfri avisering vid återanvändning av den senaste mallen [issue 395].{L2}{L1}Fixat automatisk markörplacering vid användning av {{%quotePlaceHolder%}} i mallar.{L2}{L1}Tagit bort osäkra tilldelningar till {{innerHTML}} [issue 393]."
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

@@ -252,6 +252,7 @@ function formatAll(txt) {
       /\{AcompatCheck\}/g,
       "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-compatibility-check/' class='native'>"
     )
+    .replace("$news.minimal$", messenger.i18n.getMessage("news.minimal"))
     .replace(/\{A2\}/g, "</a>")
     .replace(/\{P2\}/g, "</p>")
     .replace(/\{br\}/g, "<br>")

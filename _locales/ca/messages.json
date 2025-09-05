@@ -927,7 +927,7 @@
     "message": "{P1}Continuem seguint el cicle de versions mensuals de Thunderbird per garantir la compatibilitat i l'estabilitat. Com sempre, aquesta feina es finança íntegrament mitjançant la venda de llicències.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continua amb el seu cicle de llançament mensual. {P2}{P1} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a la v142. Això va ser causat per informació de compatibilitat emmagatzemada en memòria cau a Thunderbird, que de vegades no s'actualitza correctament. La versió anterior de SmartTemplates ja era completament compatible amb la 142. He informat d'un error a Thunderbird perquè ho solucionin: [Bugzilla 1986027]{P2}{P1} Tingueu la seguretat que SmartTemplates és totalment compatible tant amb els canals mensuals com amb l'ESR (142.*), i podeu continuar treballant sense interrupcions. {P2}"
+    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continua amb el seu cicle de llançament mensual. {P2}{P1} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a la v142. Això va ser causat per informació de compatibilitat emmagatzemada en memòria cau a Thunderbird, que de vegades no s'actualitza correctament. La versió anterior de SmartTemplates ja era completament compatible amb la 142. He informat d'un error a Thunderbird perquè ho solucionin: [Bugzilla 1986027]{P2}{P1} Tingueu la seguretat que SmartTemplates és totalment compatible tant amb els canals mensuals com amb l'ESR (140.*), i podeu continuar treballant sense interrupcions. {P2}"
   },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že veškerá práce na SmartTemplates a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
@@ -2045,7 +2045,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates ja és totalment compatible amb Thunderbird 143.{L2}{L1}Millora de la cerca de text complet a la finestra de Variables. [issue 388]{L2}{L1}El porta-retalls ja no inserirà comes escapades. [issue 386]{L2}{L1}Thunderbird 143 havia trencat totes les icones del menú, ja solucionat.{L2}{L1}{{%file%}} i {{%dateformat%}} ja no generaran advertències innecessàries amb una llicència estàndard. [issue 391]"
+    "message": "{L1}S'ha corregit {{%dateformat.current%}} que desencadenava l'advertiment \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Més millores al nou distintiu del botó 🟠 – per mostrar aquest estat simplificat, obriu Configuració » Llicències. A 'Actualitzacions', activeu l'opció \"$news.minimal$\" [issue 396].{L2}{L1}S'ha afegit una notificació opcional en reutilitzar l'última plantilla [issue 395].{L2}{L1}S'ha corregit la posició automàtica del cursor en utilitzar {{%quotePlaceHolder%}} a les plantilles.{L2}{L1}S'han eliminat assignacions insegures a {{innerHTML}} [issue 393]."
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

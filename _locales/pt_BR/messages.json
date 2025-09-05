@@ -905,7 +905,7 @@
     "message": "{P1}Continuamos a seguir o ciclo de lançamentos mensais do Thunderbird para garantir compatibilidade e estabilidade. Como sempre, este trabalho é totalmente financiado pelas vendas de licenças.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Importante:{boldEnd} O Thunderbird continua com seu ciclo mensal de lançamentos. {P2}{P1} Alguns usuários podem ter visto um aviso falso de incompatibilidade após atualizar para o Thunderbird v142. Isso foi causado por informações de compatibilidade em cache no Thunderbird, que às vezes não são atualizadas corretamente. A versão anterior do SmartTemplates já era totalmente compatível com a 142. Eu reportei um bug ao Thunderbird para corrigir isso: [Bugzilla 1986027]{P2}{P1} Tenha certeza de que o SmartTemplates suporta totalmente tanto os canais mensais quanto o ESR (142.*), e você pode continuar trabalhando sem interrupções. {P2}"
+    "message": "{P1}{boldStart}Importante:{boldEnd} O Thunderbird continua com seu ciclo mensal de lançamentos. {P2}{P1} Alguns usuários podem ter visto um aviso falso de incompatibilidade após atualizar para o Thunderbird v142. Isso foi causado por informações de compatibilidade em cache no Thunderbird, que às vezes não são atualizadas corretamente. A versão anterior do SmartTemplates já era totalmente compatível com a 142. Eu reportei um bug ao Thunderbird para corrigir isso: [Bugzilla 1986027]{P2}{P1} Tenha certeza de que o SmartTemplates suporta totalmente tanto os canais mensais quanto o ESR (140.*), e você pode continuar trabalhando sem interrupções. {P2}"
   },
   "newsSection.license": {
     "message": "Como todo o trabalho no SmartTemplates e o suporte gratuito são financiados exclusivamente pelas vendas de licenças, considere comprar uma licença ou renovar a sua atual."
@@ -2011,7 +2011,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates agora é totalmente compatível com Thunderbird 143.{L2}{L1}Pesquisa de texto completo melhorada na janela de Variáveis. [issue 388]{L2}{L1}O botão SmartTemplates agora pode exibir um distintivo 🟠 para novas atualizações em vez do rótulo 'Ler notícias' - ative em Configurações » Licenças em 'Atualizações'.{L2}{L1}A área de transferência não insere mais vírgulas escapadas. [issue 386]{L2}{L1}Thunderbird 143 quebrou todos os ícones de menu, agora corrigido.{L2}{L1}{{%file%}} e {{%dateformat%}} não gerarão mais avisos desnecessários ao usar uma licença padrão. [issue 391]"
+    "message": "{L1}Corrigido: {{%dateformat.current%}} gerava o aviso \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Mais melhorias no novo emblema do botão 🟠 – para mostrar este estado simplificado, abra Configurações » Licenças. Em 'Atualizações', ative a opção \"$news.minimal$\" [issue 396].{L2}{L1}Adicionada notificação opcional ao reutilizar o último modelo [issue 395].{L2}{L1}Corrigido o posicionamento automático do cursor ao usar {{%quotePlaceHolder%}} nos modelos.{L2}{L1}Removidas atribuições inseguras para {{innerHTML}} [issue 393]."
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

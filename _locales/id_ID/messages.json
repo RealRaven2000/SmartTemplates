@@ -1415,7 +1415,7 @@
     "message": "Voucher"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates kini sepenuhnya kompatibel dengan Thunderbird 143.{L2}{L1}Peningkatan pencarian teks penuh di jendela Variabel. [issue 388]{L2}{L1}Tombol SmartTemplates kini dapat menampilkan lencana 🟠 untuk pembaruan baru alih-alih label 'Baca Berita' - aktifkan ini di Pengaturan » Lisensi pada bagian 'Pembaruan'.{L2}{L1}Clipboard tidak akan menyisipkan koma escape lagi. [issue 386]{L2}{L1}Thunderbird 143 merusak semua ikon menu, sekarang diperbaiki.{L2}{L1}{{%file%}} dan {{%dateformat%}} tidak akan menghasilkan peringatan yang tidak perlu saat menggunakan lisensi standar. [issue 391]"
+    "message": "{L1}Diperbaiki: {{%dateformat.current%}} memicu peringatan \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Peningkatan lebih lanjut pada lencana tombol baru 🟠 – untuk menampilkan status yang lebih sederhana ini, buka Pengaturan » Lisensi. Di bawah 'Pembaruan', aktifkan opsi \"$news.minimal$\" [issue 396].{L2}{L1}Ditambahkan notifikasi opsional saat menggunakan kembali template terakhir [issue 395].{L2}{L1}Diperbaiki posisi otomatis kursor saat menggunakan {{%quotePlaceHolder%}} di template.{L2}{L1}Penghapusan penugasan tidak aman ke {{innerHTML}} [issue 393]."
   },
   "xsent_long.cap": {
     "message": "Contoh untuk longstring"

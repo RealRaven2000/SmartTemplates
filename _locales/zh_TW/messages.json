@@ -923,7 +923,7 @@
     "message": "{P1}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 一些用戶在更新到 Thunderbird v142 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。SmartTemplates 之前的版本已經完全相容於 142。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{P2}{P1} 請放心，SmartTemplates 完全支援每月版和 ESR (142.*) 通道，您可以繼續不間斷地工作。 {P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 一些用戶在更新到 Thunderbird v142 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。SmartTemplates 之前的版本已經完全相容於 142。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{P2}{P1} 請放心，SmartTemplates 完全支援每月版和 ESR (140.*) 通道，您可以繼續不間斷地工作。 {P2}"
   },
   "newsSection.license": {
     "message": "由於SmartTemplates的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
@@ -2023,7 +2023,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates 現在完全相容 Thunderbird 143。{L2}{L1}變數視窗的全文搜尋已改進。[issue 388]{L2}{L1}SmartTemplates按鈕現在可以顯示一個 🟠 徽章來替代“閱讀新聞”標籤顯示新更新 - 在設定 » 授權的“更新”中啟用此功能。{L2}{L1}剪貼簿不再插入轉義逗號。[issue 386]{L2}{L1}Thunderbird 143 破壞了所有選單圖示，現已修復。{L2}{L1}{{%file%}} 和 {{%dateformat%}} 使用標準授權時不再生成不必要的警告。[issue 391]"
+    "message": "{L1}修正：{{%dateformat.current%}} 觸發了警告 \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394]。{L2}{L1}進一步改進新的按鈕徽章 🟠 – 若要顯示此精簡狀態，請開啟 設定 » 授權。在「更新」下啟用選項 \"$news.minimal$\" [issue 396]。{L2}{L1}新增了在重複使用最後一個範本時的可選通知 [issue 395]。{L2}{L1}修正了在範本中使用 {{%quotePlaceHolder%}} 時游標自動定位的問題。{L2}{L1}移除了對 {{innerHTML}} 的不安全指定 [issue 393]。"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

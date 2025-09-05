@@ -924,7 +924,7 @@
     "message": "{P1}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird は月次リリースサイクルを継続しています。 {P2}{P1} 一部のユーザーは Thunderbird を v142 に更新した後、誤った非互換性警告を目にしたかもしれません。これは Thunderbird にキャッシュされた互換性情報が正しく更新されないことが原因です。SmartTemplates の以前のバージョンはすでに 142 と完全に互換性がありました。この問題を修正するため Thunderbird にバグを報告しました: [Bugzilla 1986027]{P2}{P1} ご安心ください。SmartTemplates は月次チャネルと ESR (142.*) の両方を完全にサポートしており、中断することなく作業を続けられます。{P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird は月次リリースサイクルを継続しています。 {P2}{P1} 一部のユーザーは Thunderbird を v142 に更新した後、誤った非互換性警告を目にしたかもしれません。これは Thunderbird にキャッシュされた互換性情報が正しく更新されないことが原因です。SmartTemplates の以前のバージョンはすでに 142 と完全に互換性がありました。この問題を修正するため Thunderbird にバグを報告しました: [Bugzilla 1986027]{P2}{P1} ご安心ください。SmartTemplates は月次チャネルと ESR (140.*) の両方を完全にサポートしており、中断することなく作業を続けられます。{P2}"
   },
   "newsSection.license": {
     "message": "SmartTemplates のすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
@@ -2012,7 +2012,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplatesはThunderbird 143と完全に互換性があります。{L2}{L1}変数ウィンドウの全文検索が改善されました。[issue 388]{L2}{L1}SmartTemplatesボタンは、'ニュースを読む'ラベルの代わりに新しい更新用のバッジ 🟠 を表示できるようになりました - 設定 » ライセンスの「更新」で有効にしてください。{L2}{L1}クリップボードはエスケープされたカンマを挿入しなくなりました。[issue 386]{L2}{L1}Thunderbird 143で全てのメニューアイコンが壊れていましたが、修正されました。{L2}{L1}{{%file%}} と {{%dateformat%}} は標準ライセンス使用時に不要な警告を生成しなくなります。[issue 391]"
+    "message": "{L1}修正: {{%dateformat.current%}} が警告 \"NOT SUPPORTED: Replace deferred smartTemplate variable\" を引き起こしていた問題 [issue 394]。{L2}{L1}新しいボタンバッジ 🟠 のさらなる改善 – この簡素化されたステータスを表示するには、設定 » ライセンスを開きます。「更新」の下でオプション \"$news.minimal$\" を有効にしてください [issue 396]。{L2}{L1}最後に使用したテンプレートを再利用する際のオプション通知を追加しました [issue 395]。{L2}{L1}テンプレートで {{%quotePlaceHolder%}} を使用する際のカーソル自動配置を修正しました。{L2}{L1}{{innerHTML}} への安全でない代入を削除しました [issue 393]。"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

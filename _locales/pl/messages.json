@@ -924,7 +924,7 @@
     "message": "{P1}Wciąż podążamy za miesięcznym cyklem wydań Thunderbirda, aby zapewnić kompatybilność i stabilność. Jak zawsze, prace te są w całości finansowane ze sprzedaży licencji.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Ważne:{boldEnd} Thunderbird kontynuuje miesięczny cykl wydawniczy. {P2}{P1} Niektórzy użytkownicy mogli zobaczyć fałszywe ostrzeżenie o niekompatybilności po aktualizacji do Thunderbird v142. Było to spowodowane pamięcią podręczną informacji o kompatybilności w Thunderbird, która czasami nie aktualizuje się poprawnie. Poprzednia wersja SmartTemplates była już w pełni kompatybilna z 142. Zgłosiłem błąd do Thunderbird w celu jego naprawy: [Bugzilla 1986027]{P2}{P1} Zapewniamy, że SmartTemplates w pełni wspiera zarówno kanały miesięczne, jak i ESR (142.*), i można kontynuować pracę bez przerw. {P2}"
+    "message": "{P1}{boldStart}Ważne:{boldEnd} Thunderbird kontynuuje miesięczny cykl wydawniczy. {P2}{P1} Niektórzy użytkownicy mogli zobaczyć fałszywe ostrzeżenie o niekompatybilności po aktualizacji do Thunderbird v142. Było to spowodowane pamięcią podręczną informacji o kompatybilności w Thunderbird, która czasami nie aktualizuje się poprawnie. Poprzednia wersja SmartTemplates była już w pełni kompatybilna z 142. Zgłosiłem błąd do Thunderbird w celu jego naprawy: [Bugzilla 1986027]{P2}{P1} Zapewniamy, że SmartTemplates w pełni wspiera zarówno kanały miesięczne, jak i ESR (140.*), i można kontynuować pracę bez przerw. {P2}"
   },
   "newsSection.license": {
     "message": "Ponieważ cała praca nad SmartTemplates i darmowe wsparcie są finansowane wyłącznie ze sprzedaży licencji, proszę rozważyć zakup licencji lub przedłużenie obecnej."
@@ -2034,7 +2034,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates jest teraz w pełni zgodny z Thunderbird 143.{L2}{L1}Ulepszone wyszukiwanie pełnotekstowe w oknie Zmiennych. [issue 388]{L2}{L1}Przycisk SmartTemplates może teraz wyświetlać odznakę 🟠 dla nowych aktualizacji zamiast etykiety 'Przeczytaj wiadomości' - włącz to w Ustawienia » Licencje w sekcji 'Aktualizacje'.{L2}{L1}Schowek nie wstawia już escapowanych przecinków. [issue 386]{L2}{L1}Thunderbird 143 zepsuł wszystkie ikony menu, teraz naprawione.{L2}{L1}{{%file%}} i {{%dateformat%}} nie będą już generować zbędnych ostrzeżeń przy użyciu standardowej licencji. [issue 391]"
+    "message": "{L1}Naprawiono: {{%dateformat.current%}} wywoływało ostrzeżenie \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Dalsze ulepszenia nowej odznaki przycisku 🟠 – aby wyświetlić ten uproszczony status, otwórz Ustawienia » Licencje. W sekcji 'Aktualizacje' włącz opcję \"$news.minimal$\" [issue 396].{L2}{L1}Dodano opcjonalne powiadomienie podczas ponownego użycia ostatniego szablonu [issue 395].{L2}{L1}Poprawiono automatyczne ustawianie kursora przy użyciu {{%quotePlaceHolder%}} w szablonach.{L2}{L1}Usunięto niebezpieczne przypisania do {{innerHTML}} [issue 393]."
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

@@ -915,7 +915,7 @@
     "message": "{P1}Stále sledujeme měsíční cyklus vydávání Thunderbird, abychom zajistili kompatibilitu a stabilitu. Tato práce je jako vždy plně financována z prodeje licencí.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Důležité:{boldEnd} Thunderbird pokračuje ve svém měsíčním cyklu vydání. {P2}{P1} Někteří uživatelé mohli po aktualizaci Thunderbirdu na verzi 142 vidět falešné varování o nekompatibilitě. Bylo to způsobeno uloženými informacemi o kompatibilitě v mezipaměti Thunderbirdu, které se někdy neaktualizují správně. Předchozí verze SmartTemplates byla již plně kompatibilní s verzí 142. Nahlásil jsem tento problém Thunderbirdu, aby to opravili: [Bugzilla 1986027]{P2}{P1} Ujišťujeme vás, že SmartTemplates plně podporuje jak měsíční, tak ESR (142.*) kanály, takže můžete pokračovat v práci bez přerušení. {P2}"
+    "message": "{P1}{boldStart}Důležité:{boldEnd} Thunderbird pokračuje ve svém měsíčním cyklu vydání. {P2}{P1} Někteří uživatelé mohli po aktualizaci Thunderbirdu na verzi 142 vidět falešné varování o nekompatibilitě. Bylo to způsobeno uloženými informacemi o kompatibilitě v mezipaměti Thunderbirdu, které se někdy neaktualizují správně. Předchozí verze SmartTemplates byla již plně kompatibilní s verzí 142. Nahlásil jsem tento problém Thunderbirdu, aby to opravili: [Bugzilla 1986027]{P2}{P1} Ujišťujeme vás, že SmartTemplates plně podporuje jak měsíční, tak ESR (140.*) kanály, takže můžete pokračovat v práci bez přerušení. {P2}"
   },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat SmartTemplates v budoucnu."
@@ -2024,7 +2024,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates je nyní plně kompatibilní s Thunderbird 143.{L2}{L1}Vylepšené fulltextové vyhledávání ve window Proměnných. [issue 388]{L2}{L1}Tlačítko SmartTemplates nyní může zobrazovat odznak 🟠 pro nové aktualizace místo popisku 'Přečíst novinky' - povolte to v Nastavení » Licence v sekci 'Aktualizace'.{L2}{L1}Schránka už nevkládá escapované čárky. [issue 386]{L2}{L1}Thunderbird 143 poškodil všechny ikony menu, nyní opraveno.{L2}{L1}{{%file%}} a {{%dateformat%}} již nebudou generovat zbytečná varování při použití standardní licence. [issue 391]"
+    "message": "{L1}Opraveno: {{%dateformat.current%}} vyvolávalo varování \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Další vylepšení nového odznaku tlačítka 🟠 – pro zobrazení tohoto zjednodušeného stavu otevřete Nastavení » Licence. V části 'Aktualizace' povolte volbu \"$news.minimal$\" [issue 396].{L2}{L1}Přidáno volitelné upozornění při opětovném použití poslední šablony [issue 395].{L2}{L1}Opraveno automatické umístění kurzoru při použití {{%quotePlaceHolder%}} v šablonách.{L2}{L1}Odstraněna nebezpečná přiřazení k {{innerHTML}} [issue 393]."
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

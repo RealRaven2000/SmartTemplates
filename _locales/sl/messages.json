@@ -914,7 +914,7 @@
     "message": "{P1}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Pomembno:{boldEnd} Thunderbird nadaljuje s svojim mesečnim ciklom izdaj. {P2}{P1} Nekateri uporabniki so morda videli napačno opozorilo o nezdružljivosti po posodobitvi na Thunderbird v142. To je bilo povzročeno s predpomnjeno informacijo o združljivosti v Thunderbirdu, ki se včasih ne osveži pravilno. Prejšnja različica SmartTemplates je bila že popolnoma združljiva z 142. Napako sem prijavil ekipi Thunderbird, da jo odpravijo: [Bugzilla 1986027]{P2}{P1} Zagotavljamo, da SmartTemplates popolnoma podpira tako mesečne kot ESR (142.*) kanale in lahko nadaljujete z delom brez prekinitve. {P2}"
+    "message": "{P1}{boldStart}Pomembno:{boldEnd} Thunderbird nadaljuje s svojim mesečnim ciklom izdaj. {P2}{P1} Nekateri uporabniki so morda videli napačno opozorilo o nezdružljivosti po posodobitvi na Thunderbird v142. To je bilo povzročeno s predpomnjeno informacijo o združljivosti v Thunderbirdu, ki se včasih ne osveži pravilno. Prejšnja različica SmartTemplates je bila že popolnoma združljiva z 142. Napako sem prijavil ekipi Thunderbird, da jo odpravijo: [Bugzilla 1986027]{P2}{P1} Zagotavljamo, da SmartTemplates popolnoma podpira tako mesečne kot ESR (140.*) kanale in lahko nadaljujete z delom brez prekinitve. {P2}"
   },
   "newsSection.license": {
     "message": "Ker je vsa dela na SmartTemplates in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
@@ -2041,7 +2041,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates je zdaj popolnoma združljiv s Thunderbird 143.{L2}{L1}Izboljšano iskanje po celotnem besedilu v oknu Spremenljivk. [issue 388]{L2}{L1}Gumb SmartTemplates lahko zdaj prikazuje značko 🟠 za nove posodobitve namesto oznake 'Preberi novice' - omogočite to v Nastavitve » Licence v razdelku 'Posodobitve'.{L2}{L1}Odložišče ne bo več vstavljalo escapiranih vejic. [issue 386]{L2}{L1}Thunderbird 143 je pokvaril vse ikone menija, zdaj popravljeno.{L2}{L1}{{%file%}} in {{%dateformat%}} ne bosta več povzročala nepotrebnih opozoril pri uporabi standardne licence. [issue 391]"
+    "message": "{L1}Popravljeno: {{%dateformat.current%}} je sprožil opozorilo \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Dodatne izboljšave nove oznake gumba 🟠 – za prikaz tega poenostavljenega stanja odprite Nastavitve » Licence. V razdelku 'Posodobitve' omogočite možnost \"$news.minimal$\" [issue 396].{L2}{L1}Dodano neobvezno obvestilo pri ponovni uporabi zadnje predloge [issue 395].{L2}{L1}Popravljeno samodejno postavljanje kazalca pri uporabi {{%quotePlaceHolder%}} v predlogah.{L2}{L1}Odstranjene nevarne dodelitve v {{innerHTML}} [issue 393]."
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
