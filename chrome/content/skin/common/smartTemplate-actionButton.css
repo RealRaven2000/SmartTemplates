@@ -141,26 +141,9 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.news-minima
   line-height: 1;
   display: block;
   pointer-events: none; /* don’t block clicks */
-  width: 0.9em !important;
-  height: 0.9em !important;
+  width: calc(0.9em + 1px) !important;
+  width: calc(0.9em + 1px) !important;
 }
-
-
-/** INITIAL SOLUTION: badge in label - looks bad */
-/* 2. Append badge to label when toolbar is NOT icon-only 
-:not(.icons-only) #SmartTemplate4Button.news-minimal > .button-label::after {
-    content: " 🟠" !important;
-    font-size: 0.8em;
-    margin-left: 2px;
-}*/
-
-/* 3. Show badge as pseudo-icon when toolbar is icon-only
-.icons-only #SmartTemplate4Button.news-minimal::after {
-  content: "🟠" !important;
-  font-size: 0.8em;
-  padding-bottom: 3px;
-} */
-
 
 
 #SmartTemplate4Button:not([checked="true"]):where(.expired,.renew,.newsflash) > .button-icon {
