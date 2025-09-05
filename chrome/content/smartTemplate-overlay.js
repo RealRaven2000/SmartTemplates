@@ -1591,10 +1591,12 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   }
   
   function htmlToElement(doc, html) {
-    let template = doc.createElement('template');
     html = html.trim(); // Never return a text node of whitespace as the result
-    template.innerHTML = html;
-    return template.content.firstChild;
+    // Create a detached container
+    let container = doc.createElement('div');
+    SmartTemplate4.Util.insertHtmlSafely(container, html);
+
+    return container.firstElementChild;
   }
   
   function displayTag(node) {
@@ -1624,16 +1626,21 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
     // iterate all childNodes except for blockquotes.
     const ELEMENT_NODE = 1, TEXT_NODE = 3;
     let rootEl = SmartTemplate4.composer.body;
-    for (let i=0; i<rootEl.childNodes.length; i++) {
+    for (const el of rootEl.childNodes) {
       try {
-        let el = rootEl.childNodes[i];
         switch (el?.nodeType) {
           case ELEMENT_NODE:
             if (el?.tagName && el.tagName.toLowerCase()=="blockquote") {
               continue;
             }
-            if (el.innerHTML && el.innerHTML.search(findX)>=0) {
-              el.innerHTML = el.innerHTML.replace(findX, replaceX);
+            if (el.innerHTML?.search(findX) >= 0) {
+              let newHtml = el.innerHTML.replace(findX, replaceX);
+              let container = el.ownerDocument.createElement("div");
+              SmartTemplate4.Util.insertHtmlSafely(container, newHtml);
+              el.textContent = ""; // clear safely
+              while (container.firstChild) {
+                el.appendChild(container.firstChild);
+              }
             }
             break;
           case TEXT_NODE:
@@ -1764,11 +1771,21 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
             for (let i=0; i<quotes.length; i++) {
               let q = quotes.item(i),
                   lv = isHTML ? quoteLevel(q, 1) : 1;
-              if (isForwardInline) {lv=0;} // [issue 172]
+              if (isForwardInline) { lv = 0; }// [issue 172]
+
               if (lv == minQuoteLevel) {
-                // replaces everything on this level and higher (all its child blockquotes)
                 util.logDebug('%deleteQuotedText% - Removing quoted text (l=' + lv + '):\n' + s.source);
-                q.innerHTML = q.innerHTML.replace(s, "");
+
+                // Create temporary container for safe replacement
+                let container = q.ownerDocument.createElement("div");
+                let newHtml = q.innerHTML.replace(s, "");
+                SmartTemplate4.Util.insertHtmlSafely(container, newHtml);
+
+                // Clear old content and append sanitized content
+                q.textContent = "";
+                while (container.firstChild) {
+                  q.appendChild(container.firstChild);
+                }
               }
             }
           }          
@@ -1822,10 +1839,23 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
               let q = quotes.item(i),
                   lv = quoteLevel(q, 1);
               if (isForwardInline) {lv=0;} // [issue 172]
+              
               if (lv == minQuoteLevel) {
-                // replaces everything on this level and higher (all its child blockquotes)
-                util.logDebug('%replaceQuotedText% - Replacing quoted text (l=' + lv + '): ' + q.innerText + '\nWith: ' + r.source);
-                q.innerHTML = q.innerHTML.replace(s, r);
+                util.logDebug(
+                  '%replaceQuotedText% - Replacing quoted text (l=' + lv + '): ' +
+                  q.innerText + '\nWith: ' + r.source
+                );
+
+                // Create temporary container for safe replacement
+                let container = q.ownerDocument.createElement("div");
+                let newHtml = q.innerHTML.replace(s, r);
+                SmartTemplate4.Util.insertHtmlSafely(container, newHtml);
+
+                // Clear old content and append sanitized content
+                q.textContent = "";
+                while (container.firstChild) {
+                  q.appendChild(container.firstChild);
+                }
               }
             }
           }
