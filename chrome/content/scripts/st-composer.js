@@ -49,6 +49,7 @@ async function onLoad(activatedWhileWindowOpen) {
   WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
   // [issue 390]
+  window.WL = WL; // make WL available in the window for other scripts
   Services.scriptloader.loadSubScript(
     "chrome://smarttemplate4/content/scripts/st-ui-polyfills.js",
     window,
