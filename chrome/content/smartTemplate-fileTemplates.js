@@ -679,25 +679,39 @@ SmartTemplate4.fileTemplates = {
       return;
     }
 
-    menuitem.addEventListener("command", 
-      function(event) { 
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        
-        SmartTemplate4.Util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
-          + "composeType=" + composeType + "\n"
-          + "template=" + template.label, 
-          template);
-        fT.onItemClick(menuitem, popupParent, fT, composeType, template.path, template.label, singleParentWindow); 
-        return false; 
-      }, 
-      {capture:true } , 
-      true);
-    menuitem.addEventListener("click", 
-      (event) => { event.stopPropagation();},
-      {capture:true } , 
-      true);
+    // Remove old listeners if they exist
+    if (menuitem._stCommandHandler) {
+      menuitem.removeEventListener("command", menuitem._stCommandHandler, true);
+    }
+    if (menuitem._stClickHandler) {
+      menuitem.removeEventListener("click", menuitem._stClickHandler, true);
+    }
+
+    // Define new handlers and store references
+    menuitem._stCommandHandler = function(event) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      SmartTemplate4.Util.logDebugOptional(
+        "fileTemplates",
+        `Click event for fileTemplate:\ncomposeType=${composeType}\n` +
+        `template= ${template.label}`,
+        template
+      );
+
+      fT.onItemClick(menuitem, popupParent, fT, composeType, template.path, template.label, singleParentWindow);
+      return false;
+    };
+
+    menuitem._stClickHandler = (event) => {
+      event.stopPropagation();
+    };
+
+    // Attach them
+    menuitem.addEventListener("command", menuitem._stCommandHandler, true);
+    menuitem.addEventListener("click", menuitem._stClickHandler, true);
   },
+
 
 
   // =====================   UI   ===================== //	

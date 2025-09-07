@@ -1,18 +1,41 @@
+/*
+  updateMenuMRU(menuStructure, doc, reset)
+  │
+  ├─> getMenupopupElement(doc, item.id)
+  │     (finds or creates menupopup for button)
+  │
+  └─> configureMenu(templatesList, thePopup, composeType, showConfigureItem)
+      │
+      ├─ Normal Templates Path
+      │     ├─ add menu items (full list)
+      │     └─ optionally add "Configure…" item
+      │
+      └─ MRU Path (composeType starts with "mru-")
+            └─> configureMenuMRU(msgPopup)
+                  └─ adds "Last Template: …" item at top
+*/
+
+
+// eslint-disable-next-line no-unused-vars
 var hackToolbarbutton = {
-  
-  updateMenuMRU(menuStructure, doc, reset=false) {
+  updateMenuMRU(menuStructure, doc, reset = false) {
     function needsConfig(menu) {
-      if (!menu) return false;
-      if (reset) return true;
-      return (!menu.getAttribute('st4configured'));
-    }    
+      if (!menu) {
+        return false;
+      }
+      if (reset) {
+        return true;
+      }
+      return !menu.getAttribute("st4configured");
+    }
     let thePopup = null;
     let notFound = [];
     for (let item of menuStructure) {
       // 2 new (dummy) items: mru-smartTemplates-unified & mru-smartTemplates-header
       try {
         thePopup = this.getMenupopupElement(doc, item.id);
-        if (!thePopup) { // [issue 253]
+        if (!thePopup) {
+          // [issue 253]
           this.getApiPopupElement(doc, item.id);
         }
         if (!thePopup) {
@@ -27,29 +50,30 @@ var hackToolbarbutton = {
         if (item.id.startsWith("mru-")) {
           SmartTemplate4.fileTemplates.configureMenu(
             SmartTemplate4.fileTemplates.MRU_Entries,
-            thePopup, 
-            item.id,    // use this as signal for MRU processing
-            false       // no "show Configure.." menuitem
+            thePopup,
+            item.id, // use this as signal for MRU processing
+            false // no "show Configure.." menuitem
           );
         } else {
           SmartTemplate4.fileTemplates.configureMenu(
-            SmartTemplate4.fileTemplates.Entries[item.templates], 
-            thePopup, 
+            SmartTemplate4.fileTemplates.Entries[item.templates],
+            thePopup,
             item.composeType
           );
         }
-          
       } catch (ex) {
         SmartTemplate4.Util.logException("updateMenuMRU()", ex);
       }
-    } 
-    if (notFound.length) {
-      SmartTemplate4.Util.logDebugOptional("fileTemplates",
-        "Didn't find any of the following popup menus:", notFound);
     }
-    return thePopup; // just for testing. 
-  }, 
-
+    if (notFound.length) {
+      SmartTemplate4.Util.logDebugOptional(
+        "fileTemplates",
+        "Didn't find any of the following popup menus:",
+        notFound
+      );
+    }
+    return thePopup; // just for testing.
+  },
   // enable/disable the default action of the button
   allowDefaultAction(window, buttonId, allow = true) {
     let innerButton = window.document.getElementById(`${buttonId}-inner-button`);
@@ -57,7 +81,7 @@ var hackToolbarbutton = {
       innerButton.setAttribute("allowevents", allow ? "true" : "false");
     }
   },
-  
+
   //check if the button still contains menuitems and downgrade the button if that is not the case anymore
   cleanupIfNeeded(doc, buttonId) {
     let button = doc.getElementById(buttonId);
@@ -79,14 +103,14 @@ var hackToolbarbutton = {
           if (dropmarker) {
             dropmarker.remove();
           }
-          
+
           button.querySelector("label").hidden = false;
-          button.querySelector("image").hidden = false;        
+          button.querySelector("image").hidden = false;
         }
       }
-    }      
+    }
   },
-  
+
   getApiPopupElement(doc, menuId) {
     // smarttemplate4_thunderbird_extension-menuitem-_smartTemplates-reply-menu
     const ApiPrefix = "smarttemplate4_thunderbird_extension-menuitem-_";
@@ -96,45 +120,63 @@ var hackToolbarbutton = {
   },
 
   // get the menupopup element to add templates submenu
+  // get the menupopup element to add templates submenu
   getMenupopupElement(doc, menuId) {
     let parentSelector;
     let isTopLevel = false;
 
-    switch(menuId) {
+    switch (menuId) {
       case "mru-smartTemplates-unified":
-        parentSelector = ".unified-toolbar-button [data-extension-id='smarttemplate4@thunderbird.extension']";
+        parentSelector =
+          ".unified-toolbar-button [data-extension-id='smarttemplate4@thunderbird.extension']";
         isTopLevel = true;
         break;
-      case "mru-smartTemplates-header":
-        let el = doc.querySelector("[data-extension-id='smarttemplate4@thunderbird.extension']"); 
+      case "mru-smartTemplates-header": {
+        let el = doc.querySelector("[data-extension-id='smarttemplate4@thunderbird.extension']");
+        if (!el) {
+          return null;
+        }
         isTopLevel = true;
+        // ensure MRU menu item is fresh
+        let popup = el.querySelector("menupopup");
+        if (popup) {
+          SmartTemplate4.fileTemplates.configureMenuMRU(popup);
+        }
         return el;
-      default: 
-        parentSelector = "#" + menuId; 
+      }
+      default:
+        parentSelector = "#" + menuId;
     }
+
     let element = doc.querySelector(parentSelector);
     if (!element) {
       return null;
     }
+
     if (isTopLevel) {
+      // ensure MRU menu item is fresh
+      let popup = element.querySelector("menupopup");
+      if (popup) {
+        SmartTemplate4.fileTemplates.configureMenuMRU(popup);
+      }
       return element; // [issue 263] MRU list
-    } 
+    }
 
     // check if we need to add popup
     let popup = element.querySelector("menupopup");
     if (!popup) {
       popup = doc.createXULElement("menupopup");
-      popup.setAttribute("id", `${buttonId}-popup`);
+      popup.setAttribute("id", `${menuId}-popup`);
       popup.setAttribute("oncommand", "event.stopPropagation();");
-      button.appendChild(popup);
-    }  
+      element.appendChild(popup);
+    }
+
     return popup;
   },
 
-
-  // returns the menupopup element of the button, 
+  // returns the menupopup element of the button,
   // check if the button needs to converted beforehand and adds the menupopup element if needed first
-  getMenupopupElement_Btn(doc, buttonId) {   
+  getMenupopupElement_Btn(doc, buttonId) {
     let button = doc.getElementById(buttonId);
     if (!button) {
       return null;
@@ -143,34 +185,40 @@ var hackToolbarbutton = {
     if (!(button.hasAttribute("type") && button.getAttribute("type") == "menu-button")) {
       let origLabel = button.getAttribute("label");
       let origCommand = button.getAttribute("_command");
-      
+
       button.setAttribute("is", "toolbarbutton-menu-button");
 
       // fix dropdowns working in Tb110
-      let isTb110 = (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.Appver, "110"));
+      let isTb110 = SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.Appver, "110");
       let menuType = isTb110 ? "menu" : "menu-button";
       // hack the button, unless it already is:
       if (button.getAttribute("type") != menuType || !isTb110) {
         button.setAttribute("type", menuType);
         button.setAttribute("wantdropmarker", "true");
-        button.appendChild(window.MozXULElement.parseXULToFragment(
-        `<toolbarbutton
+        button.appendChild(
+          window.MozXULElement.parseXULToFragment(
+            `<toolbarbutton
               id="${buttonId}-inner-button"
               class="box-inherit toolbarbutton-menubutton-button" 
               flex="1" 
               allowevents="true"
               command="${origCommand}"
-              label="${origLabel}"/>`));    
+              label="${origLabel}"/>`
+          )
+        );
 
-        button.appendChild(window.MozXULElement.parseXULToFragment(
-        `<dropmarker 
+        button.appendChild(
+          window.MozXULElement.parseXULToFragment(
+            `<dropmarker 
               type="menu-button"
-              class="toolbarbutton-menubutton-dropmarker"/>`));
-        
+              class="toolbarbutton-menubutton-dropmarker"/>`
+          )
+        );
+
         button.querySelector("label").hidden = true;
         button.querySelector("image").hidden = true;
       }
-    } 
+    }
 
     // check if we need to add popup
     let popup = button.querySelector("menupopup");
@@ -179,15 +227,16 @@ var hackToolbarbutton = {
       popup.setAttribute("id", `${buttonId}-popup`);
       popup.setAttribute("oncommand", "event.stopPropagation();");
       button.appendChild(popup);
-    }  
+    }
     return popup;
   },
-  
+
   addMenuitem(doc, buttonId, menuitemId, attributes = null) {
-    let popup = this.getMenupopupElement(doc, buttonId); 
-    if (!popup)
+    let popup = this.getMenupopupElement(doc, buttonId);
+    if (!popup) {
       return null;
-    
+    }
+
     // add menuitem
     let menuitem = doc.createXULElement("menuitem");
     menuitem.id = menuitemId;
@@ -195,7 +244,7 @@ var hackToolbarbutton = {
       for (let [attribute, value] of Object.entries(attributes)) {
         menuitem.setAttribute(attribute, value);
       }
-    }  
+    }
     popup.appendChild(menuitem);
     return popup;
   },
@@ -207,5 +256,4 @@ var hackToolbarbutton = {
     }
     this.cleanupIfNeeded(doc, buttonId);
   },
-
-}
+};
