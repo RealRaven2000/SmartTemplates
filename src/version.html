@@ -251,11 +251,94 @@ permalink: version.html
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
 
+<a id="4.15"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.15"
+      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 4.15 - Work in Progress</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">115.0 - 143.*</span>
+		</span>
+  </h4>
+  <p>This release improves template security, refines usability, and fixes key bugs.</p>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li>
+      Streamlined the New button badge 🟠</b> for updates. 
+      Instead of forcing a full news label after each update, you now get a cleaner, 
+      less intrusive display. 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/396">[issue 396]</a>
+
+      <p>
+        Old behavior: the toolbar automatically showed <b>New SmartTemplates🔶What's new…</b> 
+        after updates, which could be visually disruptive.
+      </p>
+      <img class="screenshot" src="img/toolbar-button-withlabel.png" alt="Old label shown on update" />
+        
+      <p>
+        New behavior: the quieter status display appears as a streamlined blue button 
+        with a small orange badge 🟠. 
+      </p>
+      <img class="screenshot" src="img/toolbar-button-badge.png" alt="Sleeker new blue button with orange badge" />
+        
+      <p>
+        Access new updates via the <b>Latest News</b> item in the dropdown. 
+        Opening it shows a fully localized change log and resets the badge automatically.
+        <br>
+        <img class="screenshot" src="img/toolbar-button-newsmenu.png" alt="Dropdown with Latest News" />
+      </p>
+        
+      <p>
+        To enable this streamlined display, open <b>Settings » Licenses</b> and under 
+        <i>Updates</i> activate <b>"Do not display news label on update"</b>.
+        <br>
+        <img class="screenshot" src="img/settings-news-minimal.png" alt="Minimal news mode" />
+      </p>
+    </li>
+
+    <li>
+      Improved template safety by cleaning incoming HTML and 
+      blocking hidden scripts or unsafe code 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/393">[issue 393]</a>
+      <p>
+        This update removes anything that could secretly run code inside your emails — 
+        including scripted code, hidden interactive elements, or other unsafe content 
+        that doesn’t belong in normal message text.
+      </p>  
+      <p>
+        For you, this means stronger protection when using template snippets — whether 
+        copied from the web, shared by others, or provided on our support site. 
+        Your templates will still look and work the same, but anything suspicious 
+        gets filtered out automatically, keeping your email safer.
+      </p>
+    </li>
+
+    <li>
+      Added optional notification when reusing the last template 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/395">[issue 395]</a>
+    </li>
+
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li>
+      Fixed <code class="inline">%dateformat.current%</code> triggering the warning 
+      "NOT SUPPORTED: Replace deferred smartTemplate variable" 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/394">[issue 394]</a>
+    </li>
+    <li>
+      Fixed cursor automatic positioning when using <code class="inline">%quotePlaceHolder%</code> 
+      in templates
+    </li>
+
+  </ul>
+</li> 
+
+
 <a id="4.14"> &nbsp; </a>
 <li>
   <h4>
-		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.14"
-      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.14">
       Version 4.14 - 30/08/2025</a>
 		<br>
 		<span class="appWrapper">
