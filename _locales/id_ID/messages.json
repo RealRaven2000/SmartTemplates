@@ -1415,7 +1415,7 @@
     "message": "Voucher"
   },
   "whats-new-list": {
-    "message": "{L1}Diperbaiki: {{%dateformat.current%}} memicu peringatan \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Peningkatan lebih lanjut pada lencana tombol baru 🟠 – untuk menampilkan status yang lebih sederhana ini, buka Pengaturan » Lisensi. Di bawah 'Pembaruan', aktifkan opsi \"$news.minimal$\" [issue 396].{L2}{L1}Ditambahkan notifikasi opsional saat menggunakan kembali template terakhir [issue 395].{L2}{L1}Diperbaiki posisi otomatis kursor saat menggunakan {{%quotePlaceHolder%}} di template.{L2}{L1}Penghapusan penugasan tidak aman ke {{innerHTML}} [issue 393]."
+    "message": "{L1}Lencana tombol Baru 🟠 disederhanakan untuk pembaruan – untuk menampilkan status minimal ini, buka Pengaturan » Lisensi. Di 'Pembaruan', aktifkan opsi \"$news.minimal$\" [issue 396].{L2}{L1}Keamanan template ditingkatkan dengan membersihkan HTML masuk dan memblokir skrip tersembunyi atau kode yang tidak aman [issue 393].{L2}{L1}Ditambahkan notifikasi opsional saat menggunakan kembali template terakhir [issue 395].{L2}{L1}Diperbaiki {{%dateformat.current%}} yang memicu peringatan \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Diperbaiki penempatan kursor otomatis saat menggunakan {{%quotePlaceHolder%}} dalam template.{L2}{L1}Diperbaiki template yang dihapus tetap muncul dan aktif di item menu Template Terakhir [issue 389]."
   },
   "xsent_long.cap": {
     "message": "Contoh untuk longstring"

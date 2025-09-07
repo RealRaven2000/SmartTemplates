@@ -2012,7 +2012,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{L1}修正: {{%dateformat.current%}} が警告 \"NOT SUPPORTED: Replace deferred smartTemplate variable\" を引き起こしていた問題 [issue 394]。{L2}{L1}新しいボタンバッジ 🟠 のさらなる改善 – この簡素化されたステータスを表示するには、設定 » ライセンスを開きます。「更新」の下でオプション \"$news.minimal$\" を有効にしてください [issue 396]。{L2}{L1}最後に使用したテンプレートを再利用する際のオプション通知を追加しました [issue 395]。{L2}{L1}テンプレートで {{%quotePlaceHolder%}} を使用する際のカーソル自動配置を修正しました。{L2}{L1}{{innerHTML}} への安全でない代入を削除しました [issue 393]。"
+    "message": "{L1}新規ボタンのバッジ 🟠 を簡略化しました – この最小ステータスを表示するには、設定 » ライセンスを開き、'更新'でオプション \"$news.minimal$\" を有効にしてください [issue 396].{L2}{L1}テンプレートの安全性を向上させ、受信HTMLのクリーンアップおよび隠しスクリプトや危険なコードのブロックを行いました [issue 393].{L2}{L1}最後に使用したテンプレートを再利用する際の通知オプションを追加しました [issue 395].{L2}{L1}{{%dateformat.current%}} が \"NOT SUPPORTED: Replace deferred smartTemplate variable\" の警告を出す問題を修正しました [issue 394].{L2}{L1}{{%quotePlaceHolder%}} をテンプレートで使用した際のカーソル自動位置設定を修正しました.{L2}{L1}削除されたテンプレートが「最後のテンプレート」メニューで表示される問題を修正しました [issue 389]."
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

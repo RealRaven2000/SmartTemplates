@@ -1980,7 +1980,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Behoben: {{%dateformat.current%}} löste die Warnung \"NOT SUPPORTED: Replace deferred smartTemplate variable\" aus [issue 394].{L2}{L1}Weitere Verbesserungen am neuen Schaltflächen-Badge 🟠 – um diesen schlankeren Status anzuzeigen, öffnen Sie Einstellungen » Lizenzen. Unter 'Updates' aktivieren Sie die Option \"$news.minimal$\" [issue 396].{L2}{L1}Optionale Benachrichtigung hinzugefügt, wenn die letzte Vorlage erneut verwendet wird [issue 395].{L2}{L1}Automatische Cursor-Positionierung bei Verwendung von {{%quotePlaceHolder%}} in Vorlagen korrigiert.{L2}{L1}Unsichere Zuweisungen an {{innerHTML}} entfernt [issue 393]."
+    "message": "{L1}Die Schaltfläche „Neu“ mit Badge 🟠 wurde für Updates optimiert [issue 396].{L2}{L1}Vorlagen-Sicherheit verbessert: Eingehendes HTML wird bereinigt und versteckte Skripte oder unsicherer Code blockiert [issue 393].{L2}{L1}Optionale Benachrichtigung beim Wiederverwenden der letzten Vorlage hinzugefügt [issue 395].{L2}{L1}Behoben: {{%dateformat.current%}} löste die Warnung \"$news.minimal$\" aus [issue 394].{L2}{L1}Behoben: Automatische Cursorpositionierung beim Verwenden von {{%quotePlaceHolder%}} in Vorlagen.{L2}{L1}Behoben: Gelöschte Vorlage erschien weiterhin und wurde im Menü „Letzte Vorlage“ ausgelöst [issue 389]."
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

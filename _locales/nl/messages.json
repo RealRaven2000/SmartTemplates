@@ -2020,8 +2020,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Opgelost: {{%dateformat.current%}} veroorzaakte de waarschuwing \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Verdere verbeteringen aan het nieuwe knop-badge 🟠 – om deze gestroomlijnde status weer te geven, open Instellingen » Licenties. Onder 'Updates' schakel de optie \"$news.minimal$\" in [issue 396].{L2}{L1}Optionele melding toegevoegd bij hergebruik van de laatste sjabloon [issue 395].{L2}{L1}Automatische cursorpositionering bij gebruik van {{%quotePlaceHolder%}} in sjablonen gecorrigeerd.{L2}{L1}Onveilige toewijzingen aan {{innerHTML}} verwijderd [issue 393]."
-  },
+  "message": "{L1}Vereenvoudigde Nieuwe-knop badge 🟠 voor updates – om deze minimale status weer te geven, open Instellingen » Licenties. Schakel onder 'Updates' de optie \"$news.minimal$\" in [issue 396].{L2}{L1}Verbeterde templates-beveiliging door inkomende HTML op te schonen en verborgen scripts of onveilige code te blokkeren [issue 393].{L2}{L1}Optionele melding toegevoegd bij hergebruik van het laatste template [issue 395].{L2}{L1}Probleem opgelost waarbij {{%dateformat.current%}} de waarschuwing \"NOT SUPPORTED: Replace deferred smartTemplate variable\" veroorzaakte [issue 394].{L2}{L1}Automatisch cursorpositionering bij gebruik van {{%quotePlaceHolder%}} in templates opgelost.{L2}{L1}Verwijderde templates verschijnen niet langer en worden niet geactiveerd in het menu Laatste Template [issue 389]."
+},
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
   },

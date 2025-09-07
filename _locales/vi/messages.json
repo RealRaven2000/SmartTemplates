@@ -297,7 +297,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1}Đã sửa: {{%dateformat.current%}} gây ra cảnh báo \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Cải tiến thêm cho huy hiệu nút mới 🟠 – để hiển thị trạng thái tối giản này, hãy mở Cài đặt » Giấy phép. Trong 'Cập nhật', bật tùy chọn \"$news.minimal$\" [issue 396].{L2}{L1}Đã thêm thông báo tùy chọn khi tái sử dụng mẫu cuối cùng [issue 395].{L2}{L1}Đã sửa vị trí tự động của con trỏ khi sử dụng {{%quotePlaceHolder%}} trong mẫu.{L2}{L1}Đã xóa các gán không an toàn cho {{innerHTML}} [issue 393]."
+    "message": "{L1}Đơn giản hóa biểu tượng nút Mới 🟠 cho các bản cập nhật – để hiển thị trạng thái tối thiểu này, mở Cài đặt » Giấy phép. Trong phần 'Cập nhật', bật tùy chọn \"$news.minimal$\" [issue 396].{L2}{L1}Cải thiện bảo mật mẫu bằng cách làm sạch HTML đầu vào và chặn các script ẩn hoặc mã không an toàn [issue 393].{L2}{L1}Thêm thông báo tùy chọn khi tái sử dụng mẫu cuối cùng [issue 395].{L2}{L1}Sửa lỗi {{%dateformat.current%}} gây cảnh báo \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Sửa vị trí con trỏ tự động khi sử dụng {{%quotePlaceHolder%}} trong mẫu.{L2}{L1}Sửa lỗi các mẫu đã xóa vẫn xuất hiện và được kích hoạt trong menu Mẫu cuối cùng [issue 389]."
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

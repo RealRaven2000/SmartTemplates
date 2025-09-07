@@ -6,10 +6,11 @@ Some users may have seen a false incompatibility warning after updating from Thu
 I raised a bug with Thunderbird to fix this: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>, please add your observations there if you experienced this problem.
 
 **Improvements**
-*   Fixed `{{%dateformat.current%}}` triggering the warning "NOT SUPPORTED: Replace deferred smartTemplate variable" [issue #394]
+*   Removed unsafe assignments to `{{innerHTML}}` and added code santisation [issue #393]
 *   Further improvements to the New button badge 🟠 – to display this streamlined status, open Settings » Licenses. Under 'Updates', enable the option "$news.minimal$" [issue #396]
 *   Added optional notification when reusing the last template [issue #395]
 
 **Bug Fixed**
 *   Fixed cursor automatic positioning when using `{{%quotePlaceHolder%}}` in templates
-*   Removed unsafe assignments to `{{innerHTML}}` [issue #393]
+*   Fixed `{{%dateformat.current%}}` triggering the warning "NOT SUPPORTED: Replace deferred smartTemplate variable" [issue #394]
+*   Fixed: Deleted Template Still Appearing and Triggering in SmartTemplates _Last Template_ item [issue #389]

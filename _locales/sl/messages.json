@@ -2041,7 +2041,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Popravljeno: {{%dateformat.current%}} je sprožil opozorilo \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Dodatne izboljšave nove oznake gumba 🟠 – za prikaz tega poenostavljenega stanja odprite Nastavitve » Licence. V razdelku 'Posodobitve' omogočite možnost \"$news.minimal$\" [issue 396].{L2}{L1}Dodano neobvezno obvestilo pri ponovni uporabi zadnje predloge [issue 395].{L2}{L1}Popravljeno samodejno postavljanje kazalca pri uporabi {{%quotePlaceHolder%}} v predlogah.{L2}{L1}Odstranjene nevarne dodelitve v {{innerHTML}} [issue 393]."
+    "message": "{L1}Poenostavljena oznaka 🟠 gumba Novo za posodobitve – za prikaz minimalnega statusa odprite Nastavitve » Licence. V razdelku 'Posodobitve' omogočite možnost \"$news.minimal$\" [issue 396].{L2}{L1}Izboljšana varnost predlog z čiščenjem dohodnega HTML in blokiranjem skritih skript ali nevarne kode [issue 393].{L2}{L1}Dodano opcijsko obvestilo ob ponovni uporabi zadnje predloge [issue 395].{L2}{L1}Popravljeno {{%dateformat.current%}}, ki je sprožilo opozorilo \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Popravljena samodejna pozicija kurzorja pri uporabi {{%quotePlaceHolder%}} v predlogah.{L2}{L1}Popravljeno, da izbrisane predloge niso več prikazane in aktivirane v menijih Zadnja predloga [issue 389]."
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

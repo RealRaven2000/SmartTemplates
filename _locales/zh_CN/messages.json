@@ -2033,7 +2033,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}修复：{{%dateformat.current%}} 触发了警告 \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394]。{L2}{L1}进一步改进了新的按钮徽章 🟠 – 要显示此精简状态，请打开 设置 » 许可证。在“更新”下启用选项 \"$news.minimal$\" [issue 396]。{L2}{L1}新增了在重复使用最后一个模板时的可选通知 [issue 395]。{L2}{L1}修复了在模板中使用 {{%quotePlaceHolder%}} 时光标的自动定位问题。{L2}{L1}移除了对 {{innerHTML}} 的不安全赋值 [issue 393]。"
+    "message": "{L1}优化了“新建”按钮徽章 🟠 的显示 – 要显示此最小状态，请打开 设置 » 许可。在“更新”下启用选项 \"$news.minimal$\" [issue 396].{L2}{L1}通过清理传入的 HTML 并阻止隐藏脚本或不安全代码，提高了模板安全性 [issue 393].{L2}{L1}添加了重用最后使用模板时的可选通知 [issue 395].{L2}{L1}修复了 {{%dateformat.current%}} 触发警告 \"NOT SUPPORTED: Replace deferred smartTemplate variable\" 的问题 [issue 394].{L2}{L1}修复了使用 {{%quotePlaceHolder%}} 时光标自动定位问题.{L2}{L1}修复了已删除模板仍出现在“最后使用的模板”菜单中并被触发的问题 [issue 389]."
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
