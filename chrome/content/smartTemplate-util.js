@@ -20,6 +20,8 @@ var { MailServices } = SmartTemplates_ESM
   ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
   : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
+
+
 // var SmartTemplate4_TabURIregexp = {
 // 	get _thunderbirdRegExp() {
 // 		delete this._thunderbirdRegExp;
@@ -4128,6 +4130,27 @@ SmartTemplate4.AB = {
         isCardBookFallback = SmartTemplate4.Preferences.getMyBoolPref(
           "mime.resolveAB.CardBook.fallback"
         );
+
+      const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
+      const { AddonManager } = ChromeUtils.importESModule(
+        "resource://gre/modules/AddonManager.sys.mjs"
+      );
+      let cardBookAddon = await AddonManager.getAddonByID(CARDBOOK_APPNAME);
+      if (!cardBookAddon) {
+        SmartTemplate4.Util.logWarning(
+          "Cardbook addon can not be found!\nFalling back to standard Address Book lookup"
+        );
+        isCardBookAB = false;
+      } else {
+        if (!cardBookAddon.active) {
+          isCardBookAB = false;
+          SmartTemplate4.Util.logWarning(
+            "Cardbook addon is not active!\nFalling back to standard Address Book lookup",
+            cardBookAddon
+          );
+        }
+      }
+
       if (isCardBookAB) {
         if (
           SmartTemplate4.Util.licenseInfo.status != "Valid" ||
