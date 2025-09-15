@@ -991,45 +991,69 @@ SmartTemplate4.classSmartTemplate = function() {
      * @param {Node} node - the cursor node to wrap
      */
     const wrapInParagraph = (node) => {
-      const parent = node.parentNode;
-      if (!parent) {
+      // [issue 397]
+      if (!node || !node.parentNode) {
         return null;
       }
 
-      const tag = parent.tagName;
-      if (tag !== "BODY" && tag !== "DIV") {
-        return null;
-      } // already inside a block
+      const doc = node.ownerDocument;
+      let parent = node.parentNode;
 
-      // Collect nodes from start until the cursor (inclusive)
+      // Don't wrap if already inside a block-level element
+      let ancestor = parent;
+      while (ancestor && ancestor !== doc.body) {
+        if (["P", "LI", "TD", "TH"].includes(ancestor.tagName)) {
+          return ancestor;
+        }
+        ancestor = ancestor.parentNode;
+      }
+
+      // insert a placeholder paragraph where the new paragraph should go
+      const placeholder = doc.createElement("p");
+      placeholder.className = "st4placeholder";
+      placeholder.appendChild(doc.createElement("br")); // ensure visible height
+      parent.insertBefore(placeholder, node);
+
+      // Collect nodes from previous <br> (or start) to next <br> (or end)
       const movingNodes = [];
-      let current = parent.firstChild;
-      while (current && current !== node) {
-        movingNodes.push(current);
-        current = current.nextSibling;
+      let started = false;
+      for (const child of Array.from(parent.childNodes)) {
+        if (child === node) {
+          started = true;
+        }
+        if (started) {
+          movingNodes.push(child);
+          if (child.tagName === "BR") {
+            break;
+          }
+        }
       }
 
-      // Build the <p> inside a fragment
-      const frag = doc.createDocumentFragment();
+      if (movingNodes.length === 0) {
+        return null;
+      }
+
+      // Create <p> and append nodes
       const para = doc.createElement("p");
       for (const n of movingNodes) {
-        para.appendChild(n); // moves node safely into the fragment
+        para.appendChild(n);
       }
-      // Append the cursor last, so it never gets lost
-      para.appendChild(node);
 
-      frag.appendChild(para);
-
-      // Remember the next sibling after the last node
-      const after = para.nextSibling;
-      // Insert fragment atomically
-      if (after) {
-        parent.insertBefore(frag, after);
-      } else {
-        parent.appendChild(frag);
+      // If paragraph is empty (or contains only cursor span), append <br> for visibility
+      if (
+        para.childNodes.length === 0 ||
+        (para.childNodes.length === 1 && para.firstChild.className === "st4cursor")
+      ) {
+        const br = doc.createElement("br");
+        para.appendChild(br);
       }
+
+      // replace the placeholder with the real paragraph
+      parent.replaceChild(para, placeholder);
+
       return para;
     };
+
 
 		const logCaretPosition = (label) => {
 			if (!SmartTemplate4.Preferences.isDebugOption("composer.cursor")) {
@@ -1938,6 +1962,8 @@ SmartTemplate4.classSmartTemplate = function() {
                     // Re-find cursor inside the new paragraph
                     if (newPara) {
                       caretContainer = findChildNode(newPara, "st4cursor");
+                    } else {
+                      caretContainer = findChildNode(editor.document.body, "st4cursor");
                     }
                   } catch (ex) {
                     util.logException("forceParagraph failed \n", ex, { editor });

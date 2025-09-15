@@ -1083,8 +1083,7 @@ SmartTemplate4.mimeDecoder = {
       
       // build the part!
 			let addressElements = [],
-			    foundNonOptionalParts = false,
-			    bracketsAreOptional = false; // bracket Elements
+        bracketsAreOptional = false; // bracket Elements
           
       for (let j=0; j<formatArray.length; j++)  {
         let element = formatArray[j],
@@ -1309,9 +1308,6 @@ SmartTemplate4.mimeDecoder = {
 				// make array of non-empty parts
 				if (part) {
 					addressElements.push({part:part, optional:isOptionalPart, bracketLeft:open, bracketRight:close, bracketsOptional: bracketsAreOptional});
-					if (!isOptionalPart) {
-						foundNonOptionalParts = true;
-          }
 				}
       }
 			
@@ -1319,7 +1315,7 @@ SmartTemplate4.mimeDecoder = {
 			for (let j=0; j<addressElements.length; j++)  {
 				let aElement = addressElements[j];
 				// remove optional parts, e.g. to(name,??mail) - will only show name unless missing, in which case it shows mail
-				if (aElement.optional && foundNonOptionalParts) {
+				if (aElement.optional && addressField.length > 0) {
 					continue;
         }
         // append the next part if not empty
