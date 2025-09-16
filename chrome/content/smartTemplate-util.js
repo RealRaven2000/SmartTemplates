@@ -4142,7 +4142,7 @@ SmartTemplate4.AB = {
         );
         isCardBookAB = false;
       } else {
-        if (!cardBookAddon.isActive) { // .active <== not defined
+        if (cardBookAddon.isActive == false) { // = exclude undefined!
           isCardBookAB = false;
           SmartTemplate4.Util.logWarning(
             "Cardbook addon is not active!\nFalling back to standard Address Book lookup",
