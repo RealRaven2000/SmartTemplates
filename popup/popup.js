@@ -224,6 +224,11 @@ function formatAll(txt) {
 
   // added simple <tag> support
   return localizedMsg
+    .replace(/\{L1(?:\s+([^}]+))?\}/g, (_, attrs) => {
+      // attrs will be undefined if no class specified
+      return attrs ? `<li ${attrs}>` : "<li>";
+    })
+    .replace(/\{L2\}/g, "</li>")
     .replace(/\{salesEnd\}/g, salesEnd)
     .replace(/\{headStart\}/g, "<h3>")
     .replace(/\{headEnd\}/g, "</h3>")
@@ -238,8 +243,6 @@ function formatAll(txt) {
     .replace(/\{\{(.*?)\}\}/g, "<code param>$1</code>")
     .replace(/\{U1\}/g, "<ul>")
     .replace(/\{U2\}/g, "</ul>")
-    .replace(/\{L1\}/g, "<li>")
-    .replace(/\{L2\}/g, "</li>")
     .replace(/\{P1(?:\s+([^}]+))?\}/g, (_, attrs) => {
       // attrs will be undefined if no class specified
       return attrs ? `<p ${attrs}>` : "<p>";
