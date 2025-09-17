@@ -1,4 +1,4 @@
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.14) 
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.15.1) 
 
 
 Some users may have seen a false incompatibility warning after updating from Thunderbird to v142. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. The previous version of SmartTemplates was already fully compatible with 142. 
@@ -10,7 +10,7 @@ I raised a bug with Thunderbird to fix this: [Bugzilla 1986027](https://bugzilla
 
 **Improvements**
 *   Removed unsafe assignments to `innerHTML` and added code santisation [issue #393]
-*   Further improvements to the New button badge 🟠 – to display this streamlined status, open Settings » Licenses. Under 'Updates', enable the option "$news.minimal$" [issue #396]
+*   Further improvements to the New button badge 🟠 – to display this streamlined status, open Settings » Licenses. Under 'Updates', enable the option "Do not display news label on update" [issue #396]
 *   Added optional notification when reusing the last template [issue #395]
 
 **Bug Fixed**
