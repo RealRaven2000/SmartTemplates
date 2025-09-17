@@ -2023,7 +2023,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}優化了“新增”按鈕徽章 🟠 的顯示 – 要顯示此最小狀態，請打開 設定 » 授權。在“更新”下啟用選項 \"$news.minimal$\" [issue 396].{L2}{L1}透過清理傳入的 HTML 並阻止隱藏腳本或不安全代碼，提高模板安全性 [issue 393].{L2}{L1}新增重複使用最後模板時的選用通知 [issue 395].{L2}{L1}修復 {{%dateformat.current%}} 觸發警告 \"NOT SUPPORTED: Replace deferred smartTemplate variable\" 的問題 [issue 394].{L2}{L1}修復使用 {{%quotePlaceHolder%}} 時光標自動定位問題.{L2}{L1}修復已刪除模板仍出現在「最後使用模板」選單中並被觸發的問題 [issue 389]."
+    "message": "{L1 class=important}{boldStart}維護版本 4.15.1{boldEnd}: 修復了 {{%cursor%}} 和強制段落模式的嚴重回歸問題，可能導致模板部分內容顯示順序錯誤。[issue 397]{L2}{L1}優化了“新增”按鈕徽章 🟠 的顯示 – 要顯示此最小狀態，請打開 設定 » 授權。在“更新”下啟用選項 \"$news.minimal$\" [issue 396].{L2}{L1}透過清理傳入的 HTML 並阻止隱藏腳本或不安全代碼，提高模板安全性 [issue 393].{L2}{L1}新增重複使用最後模板時的選用通知 [issue 395].{L2}{L1}修復 {{%dateformat.current%}} 觸發警告 \"NOT SUPPORTED: Replace deferred smartTemplate variable\" 的問題 [issue 394].{L2}{L1}修復使用 {{%quotePlaceHolder%}} 時光標自動定位問題.{L2}{L1}修復已刪除模板仍出現在「最後使用模板」選單中並被觸發的問題 [issue 389]."
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

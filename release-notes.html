@@ -12,9 +12,13 @@ To get this fixed I raised a bug with Thunderbird: <a href="https://bugzilla.moz
 
 SmartTemplates now removes anything that could secretly run code in your emails, such as scripts or hidden interactive elements. Your templates still look and work the same, but unsafe parts are filtered out automatically for better security.
 
+<b>Maintenance release 4.15.1 – Hotfix</b>
+
+This release fixes a serious regression in New/Answer/Forward templates caused by <tt>%cursor%</tt> + forced paragraph mode, which could cause parts of the template to appear out of order. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/397">[issue 397]</a>
+
 <b>Improvements</b>
 <ul>
-<li>Further improvements to the New button badge 🟠 – to display this streamlined status, open Settings » Licenses. Under 'Updates', enable the option "Do not display news label on update" <a href="https://github.com/RealRaven2000/SmartTemplates/issues/396">[issue 396]</a></li>
+<li>Further improvements to the New button badge – to display this streamlined status, open Settings » Licenses. Under 'Updates', enable the option "Do not display news label on update" <a href="https://github.com/RealRaven2000/SmartTemplates/issues/396">[issue 396]</a></li>
 <li>Improved template safety by cleaning incoming HTML and blocking hidden scripts or unsafe code <a href="https://github.com/RealRaven2000/SmartTemplates/issues/393">[issue 393]</a></li>
 <li>Added optional notification when reusing the last template <a href="https://github.com/RealRaven2000/SmartTemplates/issues/395">[issue 395]</a></li>
 </ul>
