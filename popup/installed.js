@@ -12,7 +12,6 @@ END LICENSE BLOCK */
    ariaPoliteUpdate,
    addAriaHint,
    formatAll,
-   i18n,
    openSupportForm,
    show, 
    updateActions,
