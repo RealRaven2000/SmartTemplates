@@ -285,7 +285,7 @@ END LICENSE BLOCK
                   instead of triggering premium feature warning. Also removed the message
                   about requiring a license (st.notification.license.required)
 
-  Version 4.15 - WIP
+  Version 4.15 - 07/09/2025
     # [issue 394] %dateformat.current% triggers "NOT SUPPORTED: Replace deferred smartTemplate variable"
     # [issue 396] Improved toolbar button signal for "Minimal News" status
     # [issue 395] Optional notification when reusing the last template
@@ -293,6 +293,10 @@ END LICENSE BLOCK
     # fix cursor automatic positioning if using quotePlaceHolder in template
     # [issue 393] Code Review: Remove "unsafe assignments to innerHTML"
     # [issue 389] Fixed: Deleted Template Still Appearing and Triggering in "Last Template" item 
+
+  Version 4.15.1 - 17/09/2025
+    # [issue 397]  Sequence error in New/answer/forward caused by %cursor%
+
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

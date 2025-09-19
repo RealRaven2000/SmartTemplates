@@ -9,6 +9,7 @@ I raised a bug with Thunderbird to fix this: [Bugzilla 1986027](https://bugzilla
 *   Fixed a serious regression in New/Answer/Forward templates caused by `%cursor%` + forced paragraph mode, which could cause parts of the template to appear out of order [issue #397]
 
 **Improvements**
+*   4.15.2 - made compatible with Thunderbird 144.
 *   Removed unsafe assignments to `innerHTML` and added code santisation [issue #393]
 *   Further improvements to the New button badge 🟠 – to display this streamlined status, open Settings » Licenses. Under 'Updates', enable the option "Do not display news label on update" [issue #396]
 *   Added optional notification when reusing the last template [issue #395]
