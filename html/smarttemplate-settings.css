@@ -1254,4 +1254,9 @@ button.toolTipButton:hover .tooltip {
 	border-width: 1px;
 }
 
+/* direct links to issues */
+.issuelink {
+	align-self: center;
+	white-space: nowrap;
+}
 
