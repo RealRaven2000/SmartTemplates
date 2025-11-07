@@ -7,13 +7,12 @@ For details, please refer to license.txt in the root folder of this extension
 END LICENSE BLOCK */
 /*
   globals
-    sales_end,
+    SALE_END_DATE,
+    getSaleEndLabel,
 */
 
 
 /* shared module for installation popups */
-
-// import { sales_end } from "./sales.js";
 
 function moveImportantMessageTo(targetId) {
   const newsImportant = document.getElementById("newsImportant");
@@ -51,8 +50,8 @@ async function getSalesEnd() {
   if (overrideSale) {
     return new Date(overrideSale);
   }
-  // sales_end is currently defined in sales.js
-  return new Date(sales_end.getTime() + 86400000); 
+  // SALE_END_DATE is currently defined in sales.js
+  return new Date(SALE_END_DATE.getTime() + 86400000); 
 }	
 
 
@@ -220,7 +219,7 @@ function formatAll(txt) {
     )
     .replace(/\{supportEnd\}/g, "</a>");
 
-  let salesEnd = messenger.i18n.getMessage("special-offer-expiry");    
+  let salesEnd = getSaleEndLabel(); // messenger.i18n.getMessage("special-offer-expiry");    
 
   // added simple <tag> support
   return localizedMsg
@@ -316,7 +315,7 @@ function updateWithSafeHtml(selector, htmlString) {
 
 async function isSale() {
   const currentTime = new Date();
-  const endDate = await getSalesEnd(); // uses sales_end
+  const endDate = await getSalesEnd(); // uses SALE_END_DATE
   const isSale = currentTime < endDate;
   return isSale;
 }

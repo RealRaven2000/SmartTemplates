@@ -16,10 +16,11 @@ END LICENSE BLOCK */
     openSupportForm,
     updateActions,
     updateWithSafeHtml,
+    getSaleEndLabel,
 */
 
 
-// whether these are shown depends on the "sales_end" variable in popup.js!
+// whether these are shown depends on the "SALE_END_DATE" variable in popup.js!
 //  import {discountRate, compatibleVer} from "./sales.js";
 
   addEventListener("click", async (event) => {
@@ -107,7 +108,7 @@ END LICENSE BLOCK */
       userName = await messenger.Utilities.getUserName(),
       addonVer = manifest.version,
       appVer = browserInfo.version;
-    const salesEnd = messenger.i18n.getMessage("special-offer-expiry");
+    const salesEnd = getSaleEndLabel(); // messenger.i18n.getMessage("special-offer-expiry");
 
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
@@ -148,7 +149,7 @@ END LICENSE BLOCK */
     const specialRenew = document.getElementById("specialOfferRenewTxt");
     ariaPoliteUpdate(
       specialRenew,
-      // note: expiry day is set in popup.js "sales_end" variable
+      // note: expiry day is set in popup.js "SALE_END_DATE" variable
       messenger.i18n
         .getMessage("special-offer-renew", [salesEnd, discountRate.discountRenewal])
         .replace(/\{boldStart\}/g, "<b>")
@@ -159,7 +160,7 @@ END LICENSE BLOCK */
     const specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
     ariaPoliteUpdate(
       specialOfferUpgrade,
-      // note: expiry day is set in popup.js "sales_end" variable
+      // note: expiry day is set in popup.js "SALE_END_DATE" variable
       messenger.i18n
         .getMessage("special-offer-upgrade", [salesEnd, discountRate.discountUpgrade])
         .replace(/\{boldStart\}/g, "<b>")

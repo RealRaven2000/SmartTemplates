@@ -5,7 +5,7 @@
 /* import * as SmartTemplates_Discounts from "../../popup/sales.js";   */
 // Next Sale End Date  COPIED from sales.js until we find a better way
 var SmartTemplates_Discounts = {
-  sales_end: new Date("2025-06-13"),
+  SALE_END_DATE: new Date("2025-06-13"),
   discountRate: {
     discountPro: "33%",
     discountUpgrade: "33%",
@@ -296,6 +296,13 @@ END LICENSE BLOCK
 
   Version 4.15.1 - 17/09/2025
     # [issue 397]  Sequence error in New/answer/forward caused by %cursor%
+
+  Version 4.15.2 - 19/09/2025
+    # Compatible with Tb 144
+
+  Version 4.15.3 - WIP
+    # Compatible with Tb 146
+    # [issue 399] Prevent duplicate <style> elements when merging into <head>
 
 
 =========================
