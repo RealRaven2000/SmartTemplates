@@ -2188,7 +2188,11 @@ async function loadPrefs(parentSelector = "") {
 				// eslint-disable-next-line no-debugger
 				debugger;
 			}
-			console.error("Unexpected preference element", element);
+			if (!element.classList.contains("passivePref")) { 
+				// use label.passivePref for a config button without interactive UI element
+				console.error("Unexpected preference element", element);
+			}
+			continue; // no event listener!
 		}
     
     // Wire up individual event handlers
@@ -2401,11 +2405,14 @@ function addUIListeners() {
         break;
     }
 
-    /* RIGHTCLICK HANDLERS */
+    /* CONFIG HANDLERS */
     if (filterConfig) {
       addConfigEvent(chk, filterConfig);
     }
   }
+	const styleSanitiseSection = document.getElementById("styleSanitation");
+	addConfigEvent(styleSanitiseSection, "extensions.smartTemplate4.sanitizeStyles");
+	
 
   for (let chk of document.querySelectorAll(".settingDisabler")) {
     chk.addEventListener("change", (_event) => {

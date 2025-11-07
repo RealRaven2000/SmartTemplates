@@ -11,7 +11,7 @@ END LICENSE BLOCK
 */
 /*
   globals
-    SmartTemplates_Discounts: readonly,
+    SmartTemplates_Discounts: readonly
 */
 
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
@@ -140,7 +140,9 @@ SmartTemplate4.Util = {
   // special function for displaying the popup on the SmartTemplates toolbar button
   showToolbarPopup: function () {
     let button = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
-    if (!button) {return;}
+    if (!button) {
+      return;
+    }
     let p = button.querySelector("menupopup[data-action-menu]");
     if (p) {
       p.targetNode = button;
@@ -153,7 +155,9 @@ SmartTemplate4.Util = {
   },
 
   get CurrentEditor() {
-    if (typeof GetCurrentEditor == "function") {return GetCurrentEditor();}
+    if (typeof GetCurrentEditor == "function") {
+      return GetCurrentEditor().QueryInterface(Components.interfaces.nsIEditor);
+    }
     this.logDebug("CurrentEditor failed!");
     return null;
   },
@@ -171,7 +175,7 @@ SmartTemplate4.Util = {
   get tabContainer() {
     try {
       return this.tabmail.tabContainer;
-    // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line no-unused-vars
     } catch (_ex) {
       return null;
     }
@@ -227,8 +231,9 @@ SmartTemplate4.Util = {
   getAnonymousNodes(doc, el) {
     let aN = [];
     for (let i = el.childNodes.length - 1; i > 0; i--) {
-      if (!el.childNodes[i].getAttribute("id") && !el.childNodes[i].getAttribute("name"))
-        {aN.push(el);}
+      if (!el.childNodes[i].getAttribute("id") && !el.childNodes[i].getAttribute("name")) {
+        aN.push(el);
+      }
     }
     return aN;
   },
@@ -237,13 +242,18 @@ SmartTemplate4.Util = {
     //let aN = [];
     for (let i = el.childNodes.length - 1; i > 0; i--) {
       let child = el.childNodes[i];
-      if (child.getAttribute("id"))
+      if (child.getAttribute("id")) {
         // anonymous - should we add name, too?
-        {continue;}
-      if (child.getAttribute(attrName) == attrValue) {return child;}
+        continue;
+      }
+      if (child.getAttribute(attrName) == attrValue) {
+        return child;
+      }
       if (child.childElementCount) {
         let x = this.getAnonymousElementByAttribute(child, attrName, attrValue);
-        if (x) {return x;}
+        if (x) {
+          return x;
+        }
       }
     }
     return null;
@@ -251,7 +261,9 @@ SmartTemplate4.Util = {
 
   getFileInitArg: function (win) {
     // [bug 1882701] nsIFilePicker.init() first parameter changed from Tb125
-    if (!win) {return null;}
+    if (!win) {
+      return null;
+    }
     if (this.versionGreaterOrEqual(this.AppverFull, "125")) {
       return win.browsingContext;
     }
@@ -277,7 +289,7 @@ SmartTemplate4.Util = {
   },
 
   clearUsedPremiumFunctions: function () {
-    // resets all restricted functions 
+    // resets all restricted functions
     SmartTemplate4.Util.premiumFeatures.length = 0;
     SmartTemplate4.Util.standardFeatures.length = 0;
   },
@@ -324,22 +336,26 @@ SmartTemplate4.Util = {
 
       // do not process -----------------------------------
       // (Draft:9/Template:10/ReplyWithTemplate:12)
-      case msgComposeType.Draft: {
-        // composeCase = 'draft';
-        let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(
-          Ci.nsIMessenger
-        );
-        let msgDbHdr = messenger
-          .msgHdrFromURI(gMsgCompose.originalMsgURI)
-          .QueryInterface(Ci.nsIMsgDBHdr);
-        const nsMsgKey_None = 0xffffffff;
-        if (msgDbHdr) {
-          if (msgDbHdr.threadParent && msgDbHdr.threadParent != nsMsgKey_None) {
-            st4composeType = "rsp(draft)"; // just guessing, of course it could be fwd as well
+      case msgComposeType.Draft:
+        {
+          // composeCase = 'draft';
+          let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(
+            Ci.nsIMessenger
+          );
+          let msgDbHdr = messenger
+            .msgHdrFromURI(gMsgCompose.originalMsgURI)
+            .QueryInterface(Ci.nsIMsgDBHdr);
+          const nsMsgKey_None = 0xffffffff;
+          if (msgDbHdr) {
+            if (msgDbHdr.threadParent && msgDbHdr.threadParent != nsMsgKey_None) {
+              st4composeType = "rsp(draft)"; // just guessing, of course it could be fwd as well
+            }
+            if (msgDbHdr.numReferences == 0) {
+              st4composeType = "new(draft)";
+            }
           }
-          if (msgDbHdr.numReferences == 0) {st4composeType = "new(draft)";}
         }
-      }  break;
+        break;
       default:
         st4composeType = "";
         break;
@@ -392,8 +408,12 @@ SmartTemplate4.Util = {
 
   get documentMessageBrowser() {
     let win = window.gTabmail.currentAboutMessage;
-    if (!win) {return null;}
-    if (!win.document) {return null;}
+    if (!win) {
+      return null;
+    }
+    if (!win.document) {
+      return null;
+    }
     return win.document;
   },
 
@@ -502,15 +522,21 @@ SmartTemplate4.Util = {
 
   getIdentityKey: function getIdentityKey(doc) {
     let selected = doc.getElementById("msgIdentity").selectedItem;
-    if (!selected) {return "";}
+    if (!selected) {
+      return "";
+    }
     let key = selected.getAttribute("identitykey"); // Tb 38.*
-    if (!key) {key = selected.getAttribute("value");} // Tb 31.*
+    if (!key) {
+      key = selected.getAttribute("value");
+    } // Tb 31.*
     return key;
   },
 
   popupAlert: function (title, text, icon, forceSound) {
     try {
-      if (!icon) {icon = "chrome://smarttemplate4/content/skin/icon32x32.png";}
+      if (!icon) {
+        icon = "chrome://smarttemplate4/content/skin/icon32x32.png";
+      }
       const sound = forceSound || ""; // by default silent
       Components.classes["@mozilla.org/alerts-service;1"]
         .getService(Components.interfaces.nsIAlertsService)
@@ -541,7 +567,7 @@ SmartTemplate4.Util = {
     }
 
     if (hasLicense) {
-      if(!featureList) {
+      if (!featureList) {
         return;
       }
       if (!isProFeature && featureList && util.hasStandardLicense) {
@@ -549,13 +575,14 @@ SmartTemplate4.Util = {
       }
     }
 
-
     if (typeof featureList == "string") {
       featureName = featureList;
     } else {
       // Array
       featureName = featureList.join("|"); // we use this in the referrer URL, but might need to concatenate.
-      if (featureList.length > 1) {isList = true;}
+      if (featureList.length > 1) {
+        isList = true;
+      }
     }
 
     util.logDebug("popupLicenseNotification(" + featureName + ")");
@@ -580,9 +607,11 @@ SmartTemplate4.Util = {
       featureTitle = isList ? featureList.join(", ") : featureName; // nice l10n name for pro features
 
       theText = theText.replace("{1}", "'" + featureTitle + "'");
-      if (additionalText) {theText = theText + "  " + additionalText;}
+      if (additionalText) {
+        theText = theText + "  " + additionalText;
+      }
       showedWarning = true;
-    } 
+    }
     if (!showedWarning && !isProFeature) {
       if (!featureList) {
         theText = util.getBundleString("st.notification.license.text");
@@ -594,7 +623,9 @@ SmartTemplate4.Util = {
           : util.getBundleString("st.notification.standard.text");
         featureTitle = isList ? featureList.join(", ") : featureName; // nice l10n name for std features
         theText = theText.replace("{1}", "'" + featureTitle + "'");
-        if (additionalText) {theText = theText + "  " + additionalText;}
+        if (additionalText) {
+          theText = theText + "  " + additionalText;
+        }
       }
     }
 
@@ -662,7 +693,9 @@ SmartTemplate4.Util = {
 
     if (notifyBox) {
       let item = notifyBox.getNotificationWithValue(notificationKey);
-      if (item) {notifyBox.removeNotification(item, false);}
+      if (item) {
+        notifyBox.removeNotification(item, false);
+      }
     }
 
     // the standard license warning will be always shown on top of the other ones [PRIORITY_WARNING_HIGH]
@@ -740,7 +773,9 @@ SmartTemplate4.Util = {
             break;
           }
         }
-      } else {MsgStatusFeedback.showStatusString(s);}
+      } else {
+        MsgStatusFeedback.showStatusString(s);
+      }
     } catch (ex) {
       this.logException("showStatusMessage - ", ex);
       MsgStatusFeedback.showStatusString(s);
@@ -777,8 +812,8 @@ SmartTemplate4.Util = {
       let elapsed = new String(endTime - this.lastTime); // time in milliseconds
       timePassed = "[" + elapsed + " ms]	 ";
       this.lastTime = endTime; // remember last time
-    // eslint-disable-next-line no-unused-vars
-    } catch (e) {;}
+      // eslint-disable-next-line no-unused-vars
+    } catch {;}
     return (
       end.getHours() +
       ":" +
@@ -898,14 +933,22 @@ SmartTemplate4.Util = {
   },
 
   getTabInfoLength: function getTabInfoLength(tabmail) {
-    if (tabmail.tabInfo) {return tabmail.tabInfo.length;}
-    if (tabmail.tabOwners) {return tabmail.tabOwners.length;}
+    if (tabmail.tabInfo) {
+      return tabmail.tabInfo.length;
+    }
+    if (tabmail.tabOwners) {
+      return tabmail.tabOwners.length;
+    }
     return null;
   },
 
   getTabInfoByIndex: function getTabInfoByIndex(tabmail, idx) {
-    if (tabmail.tabInfo) {return tabmail.tabInfo[idx];}
-    if (tabmail.tabOwners) {return tabmail.tabOwners[idx];}
+    if (tabmail.tabInfo) {
+      return tabmail.tabInfo[idx];
+    }
+    if (tabmail.tabOwners) {
+      return tabmail.tabOwners[idx];
+    }
     return null;
   },
 
@@ -921,7 +964,9 @@ SmartTemplate4.Util = {
   // @tabInfo - tabInfo object
   // @type - one of "folder", "message", "search", "mail" (for folders+single messages), "other"
   isTabMode: function (tabInfo, type) {
-    if (!tabInfo) {return false;}
+    if (!tabInfo) {
+      return false;
+    }
     switch (tabInfo.mode.name) {
       case "mail3PaneTab":
         return ["folder", "mail"].includes(type);
@@ -960,9 +1005,14 @@ SmartTemplate4.Util = {
       queryPos = URL.indexOf("?"),
       baseURL = URL;
 
-    if (hashPos > 0) {baseURL = URL.substr(0, hashPos);}
-    else if (queryPos > 0) {baseURL = URL.substr(0, queryPos);}
-    if (baseURL.endsWith("/")) {return baseURL.substr(0, baseURL.length - 1);} // match "x.com" with "x.com/"
+    if (hashPos > 0) {
+      baseURL = URL.substr(0, hashPos);
+    } else if (queryPos > 0) {
+      baseURL = URL.substr(0, queryPos);
+    }
+    if (baseURL.endsWith("/")) {
+      return baseURL.substr(0, baseURL.length - 1);
+    } // match "x.com" with "x.com/"
     return baseURL;
   },
 
@@ -990,8 +1040,12 @@ SmartTemplate4.Util = {
     const util = SmartTemplate4.Util;
     if ((await util.openURLInTab.call(util, URL)) && null != evt) {
       // workaround for a bug in TB3 that causes href's not be followed anymore.
-      if (evt.preventDefault) {evt.preventDefault();}
-      if (evt.stopPropagation) {evt.stopPropagation();}
+      if (evt.preventDefault) {
+        evt.preventDefault();
+      }
+      if (evt.stopPropagation) {
+        evt.stopPropagation();
+      }
     }
   },
 
@@ -1140,7 +1194,7 @@ SmartTemplate4.Util = {
         win,
         uri,
         name,
-        "chrome,resizable,centerscreen,width=600px,height=350px",
+        "chrome,resizable,centerscreen,width=700px,height=400px",
         null
       );
     }
@@ -1184,13 +1238,13 @@ SmartTemplate4.Util = {
     let theToken = `%${reservedWord + params}%`;
     console.warn("SmartTemplates - invalid token: " + theToken);
     let errorText = SmartTemplate4.Util.getBundleString("tokenError", theToken).replace(
-      /\n/g, "{br}"
+      /\n/g,
+      "{br}"
     );
     await SmartTemplate4.Util.showSmartTemplatesMessage({
       msg: errorText,
       features: ["ok"],
     });
-
   },
 
   setMidnightTimer: function () {
@@ -1258,9 +1312,15 @@ SmartTemplate4.Util = {
   },
 
   isFormatLink: function (format) {
-    if (!format) {return false;}
-    if (format.charAt(0) == "(") {format = format.slice(1);}
-    if (format.charAt(format.length - 1) == ")") {format = format.slice(0, -1);}
+    if (!format) {
+      return false;
+    }
+    if (format.charAt(0) == "(") {
+      format = format.slice(1);
+    }
+    if (format.charAt(format.length - 1) == ")") {
+      format = format.slice(0, -1);
+    }
 
     let fs = format.split(",");
     return fs.includes("link");
@@ -1304,8 +1364,9 @@ SmartTemplate4.Util = {
       // [Bug 25483] when using %sig(2)% signature is missing on new mails in HTML mode
       let newSig = elem;
       if (elem.childNodes.length) {
-        if (elem.childNodes.length == 1) {newSig = removeDashes(elem.firstChild);}
-        else {
+        if (elem.childNodes.length == 1) {
+          newSig = removeDashes(elem.firstChild);
+        } else {
           if (elem.firstChild.nodeValue == "-- ") {
             elem.removeChild(elem.firstChild); //remove '-- '
           }
@@ -1322,7 +1383,9 @@ SmartTemplate4.Util = {
       util.logDebugOptional("regularize", "getSignatureInner(" + isRemoveDashes + ")");
       if (sig != null) {
         SmartTemplate4.sigInTemplate = true;
-        if (typeof sig === "string") {return isRemoveDashes ? removeDashes(sig, true) : sig;}
+        if (typeof sig === "string") {
+          return isRemoveDashes ? removeDashes(sig, true) : sig;
+        }
 
         if (!sig.children || sig.children.length == 0) {
           util.logDebugOptional(
@@ -1376,7 +1439,9 @@ SmartTemplate4.Util = {
         if (compositeName.length > 1) {
           let cname = "";
           for (let m = 0; m < compositeName.length; m++) {
-            if (m > 0) {cname += "-";}
+            if (m > 0) {
+              cname += "-";
+            }
             cname += compositeName[m].charAt(0).toLocaleUpperCase() + compositeName[m].substring(1);
           }
           words[i] = cname;
@@ -1404,7 +1469,9 @@ SmartTemplate4.Util = {
       return SmartTemplate4.Util.clipboardRead();
     }
     let quoteLess = s.substring(1, s.length - 1);
-    if (global) {return new RegExp(quoteLess, "ig");}
+    if (global) {
+      return new RegExp(quoteLess, "ig");
+    }
     // allow using \n and \t for new line and tabs characters
     return quoteLess.replace(/\\n/gi, "\n").replace(/\\t/gi, "\t");
   },
@@ -1481,9 +1548,13 @@ SmartTemplate4.Util = {
   },
 
   isFilePathAbsolute: function (path) {
-    if (!path) {return false;}
+    if (!path) {
+      return false;
+    }
     // Guard for data URIs
-    if (path.startsWith("data:")) {return true;}
+    if (path.startsWith("data:")) {
+      return true;
+    }
     // Guard for scheme-based absolute paths: http(s), ftp, file, data, etc.
     if (/^[a-z][a-z0-9+\-.]*:\/\//i.test(path)) {
       return true;
@@ -1515,12 +1586,12 @@ SmartTemplate4.Util = {
     // [issue 370] Check if 'path' is absolute, if so, return it directly
     if (SmartTemplate4.Util.isFilePathAbsolute(filePath)) {
       return filePath;
-    }    
+    }
     const slash = path.includes("/") ? "/" : "\\",
       noSlash = slash == "/" ? "\\" : "/",
       fPart = path.lastIndexOf(slash);
 
-    let newPath = (fPart>=0) ? path.substr(0, fPart) : "",
+    let newPath = fPart >= 0 ? path.substr(0, fPart) : "",
       jumpUp = 0,
       appendedPath = "";
 
@@ -1571,8 +1642,7 @@ SmartTemplate4.Util = {
 
   // appends user=pro OR user=proRenew if user has a valid / expired license
   makeUriPremium: function makeUriPremium(URL) {
-    const 
-      isLicensed = SmartTemplate4.Util.hasLicense(),
+    const isLicensed = SmartTemplate4.Util.hasLicense(),
       isExpired = SmartTemplate4.Util.licenseInfo.isExpired;
     try {
       let uType = "";
@@ -1591,12 +1661,15 @@ SmartTemplate4.Util = {
           anchor = URL.substr(x);
           URL = URL.substr(0, x);
         }
-        if (URL.includes("?")) {URL = URL + "&user=" + uType;}
-        else {URL = URL + "?user=" + uType;}
+        if (URL.includes("?")) {
+          URL = URL + "&user=" + uType;
+        } else {
+          URL = URL + "?user=" + uType;
+        }
         URL = URL + anchor;
       }
-    // eslint-disable-next-line no-unused-vars
-    } catch (_ex) {
+      // eslint-disable-next-line no-unused-vars
+    } catch { 
       ;
     } finally {
       // eslint-disable-next-line no-unsafe-finally
@@ -1619,13 +1692,17 @@ SmartTemplate4.Util = {
   // e.g. adding a To address when writing a new email
   wrapDeferredHeader: async function wrapDeferredHeader(field, defaultValue, isHtml, isComposeNew) {
     const prefs = SmartTemplate4.Preferences;
-    // eslint-disable-next-line no-debugger
-    if (prefs.isDebugOption("tokens.deferred")) {debugger;}
+    if (prefs.isDebugOption("tokens.deferred")) {
+      // eslint-disable-next-line no-debugger
+      debugger;
+    }
 
     let newComposeClass = isComposeNew
       ? " class='noWrite'"
       : ""; /* make field look pink for headers that are not available in New Emails */
-    if (!isHtml) {return defaultValue;} // not supported in plain text for now
+    if (!isHtml) {
+      return defaultValue;
+    } // not supported in plain text for now
 
     SmartTemplate4.hasDeferredVars = true;
 
@@ -1692,9 +1769,15 @@ SmartTemplate4.Util = {
       editor = gMsgCompose.editor;
 
     function isQuotedNode(node) {
-      if (!node) {return false;}
-      if (node.nodeName && node.nodeName.toLowerCase() == "blockquote") {return true;}
-      if (!node.parentNode) {return false;}
+      if (!node) {
+        return false;
+      }
+      if (node.nodeName && node.nodeName.toLowerCase() == "blockquote") {
+        return true;
+      }
+      if (!node.parentNode) {
+        return false;
+      }
       return isQuotedNode(node.parentNode); //  if node is child of a quoted parent, it is also considered to be quoted.
     }
 
@@ -1707,7 +1790,9 @@ SmartTemplate4.Util = {
       while (treeWalker.nextNode()) {
         let node = treeWalker.currentNode;
         // omit all quoted material.
-        if (isQuotedNode(node)) {continue;}
+        if (isQuotedNode(node)) {
+          continue;
+        }
         if (node.tagName && node.tagName.toLowerCase() == "smarttemplate") {
           // update content of late deferred variables and add to nodeList for deletion
           await util.resolveDeferred(editor, node, true, nodeList);
@@ -1748,12 +1833,14 @@ SmartTemplate4.Util = {
       // multiple times
       if (!alreadyResolved || !isReplaceField) {
         const argList = st4.match(/^([\w.-]+)(?:\(([^)]*)\))?/);
-        let generalFunction = argList ? argList[1] : st4;             // fallback to full string
+        let generalFunction = argList ? argList[1] : st4; // fallback to full string
         // let parensPos = st4.indexOf("("),
         //   generalFunction = parensPos == -1 ? st4 : st4.substr(0, parensPos),
         //   argList = parensPos == -1 ? "" : st4.match(/([\w-:=]+)\(([^)]+)\)*/);
-          
-        if (!generalFunction.length) {return;}
+
+        if (!generalFunction.length) {
+          return;
+        }
         // util.logDebugOptional('resolveDeferred','matched variable [' + i + ']: ' + matchPart[i]);
 
         // eslint-disable-next-line no-unused-vars
@@ -1762,55 +1849,64 @@ SmartTemplate4.Util = {
         let _args = argList.length < 2 ? [] : argList[2].split(",");
 
         // 1st group: name of st4 variable, e.g. subject
-        if (generalFunction == "date") {generalFunction = "dateshort";}
-        if (generalFunction == "identity") {generalFunction = "from";}
-        if (generalFunction == "recipient") {generalFunction = "to";}
+        if (generalFunction == "date") {
+          generalFunction = "dateshort";
+        }
+        if (generalFunction == "identity") {
+          generalFunction = "from";
+        }
+        if (generalFunction == "recipient") {
+          generalFunction = "to";
+        }
 
         let composeDetails = GetComposeDetails(); // Refresh subject and address fields
         expandRecipients(); // [issue 167] - refresh lists!
 
         switch (generalFunction) {
-          case "subject": {
-            let sub = composeDetails.subject; // GetMsgSubjectElement();
-            if (sub) {
-              el.innerText = sub;
-              resolved = true;
-            }
-          }  break;
-          case "from": // fall through
-          case "to": // fall through
-          case "cc": // fall through
-          case "bcc": {
-            let charset = null,
-              addressValue;
-
-            if (generalFunction == "from") {
-              addressValue = composeDetails[generalFunction];
-            } else {
-              // should be a comma separated string in case of multiple to / cc / bcc values
-              addressValue = composeDetails[generalFunction];
-            }
-
-            if (addressValue) {
-              // split seems to trigger a permature "send!"
-              let token = await SmartTemplate4.mimeDecoder.split(
-                addressValue,
-                charset,
-                argList[2],
-                true
-              );
-              // if nothing is returned by mime decoder (e.g. empty name) we do not resolve the variable
-              if (token || isReplaceField) {
-                // [issue 186] - mimeDecoder already HTML encodes into token?
-                // [issue 393] = don't modify innerHTML
-                // el.innerHTML = token; 
-                el.textContent = "";
-                util.insertHtmlSafely(el, token);  // <--- safe injection
+          case "subject":
+            {
+              let sub = composeDetails.subject; // GetMsgSubjectElement();
+              if (sub) {
+                el.innerText = sub;
                 resolved = true;
               }
             }
+            break;
+          case "from": // fall through
+          case "to": // fall through
+          case "cc": // fall through
+          case "bcc":
+            {
+              let charset = null,
+                addressValue;
 
-          } break;
+              if (generalFunction == "from") {
+                addressValue = composeDetails[generalFunction];
+              } else {
+                // should be a comma separated string in case of multiple to / cc / bcc values
+                addressValue = composeDetails[generalFunction];
+              }
+
+              if (addressValue) {
+                // split seems to trigger a permature "send!"
+                let token = await SmartTemplate4.mimeDecoder.split(
+                  addressValue,
+                  charset,
+                  argList[2],
+                  true
+                );
+                // if nothing is returned by mime decoder (e.g. empty name) we do not resolve the variable
+                if (token || isReplaceField) {
+                  // [issue 186] - mimeDecoder already HTML encodes into token?
+                  // [issue 393] = don't modify innerHTML
+                  // el.innerHTML = token;
+                  el.textContent = "";
+                  util.insertHtmlSafely(el, token); // <--- safe injection
+                  resolved = true;
+                }
+              }
+            }
+            break;
           case "dateformat": // fall through
           case "dateformat.current": // [issue 394]
             tm = new Date();
@@ -1884,9 +1980,15 @@ SmartTemplate4.Util = {
       treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
 
     function isQuotedNode(node) {
-      if (!node) {return false;}
-      if (node.nodeName && node.nodeName.toLowerCase() == "blockquote") {return true;}
-      if (!node.parentNode) {return false;}
+      if (!node) {
+        return false;
+      }
+      if (node.nodeName && node.nodeName.toLowerCase() == "blockquote") {
+        return true;
+      }
+      if (!node.parentNode) {
+        return false;
+      }
       return isQuotedNode(node.parentNode); //  if node is child of a quoted parent, it is also considered to be quoted.
     }
 
@@ -1896,13 +1998,19 @@ SmartTemplate4.Util = {
         while (treeWalker.nextNode()) {
           let node = treeWalker.currentNode;
           // omit all quoted material.
-          if (isQuotedNode(node)) {continue;}
+          if (isQuotedNode(node)) {
+            continue;
+          }
           if (node.tagName && node.tagName.toLowerCase() == "smarttemplate") {
             let hdr = node.getAttribute("hdr"); // this is the general function
 
             // the following variables are replaced during resolveDeferred()
-            if (hdr == "identity") {hdr = "from";} // perspective should always match, even when we reply / fwd!
-            if (hdr == "recipient") {hdr = "to";}
+            if (hdr == "identity") {
+              hdr = "from";
+            } // perspective should always match, even when we reply / fwd!
+            if (hdr == "recipient") {
+              hdr = "to";
+            }
 
             let v = node.getAttribute("st4variable");
             if (hdr && SmartTemplate4.PreprocessingFlags.modifiedHeaders.some((e) => e == hdr)) {
@@ -1992,7 +2100,9 @@ SmartTemplate4.Util = {
   },
 
   isAddressHeader: function isAddressHeader(token = "") {
-    if (!token) {return false;}
+    if (!token) {
+      return false;
+    }
     return RegExp(" " + token + " ", "i").test(
       " bcc cc disposition-notification-to errors-to from mail-followup-to mail-reply-to reply-to" +
         " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to recipient"
@@ -2027,7 +2137,7 @@ SmartTemplate4.Util = {
     } else {
       // [issue 382]
       if (argument.endsWith(",nodefer")) {
-        timeFormat = argument.substr(0, argument.indexOf(",nodefer"))
+        timeFormat = argument.substr(0, argument.indexOf(",nodefer"));
       } else {
         timeFormat = argument;
       }
@@ -2040,7 +2150,9 @@ SmartTemplate4.Util = {
         util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)
     );
     util.addUsedStandardFunction("dateformat"); // [issue 391]
-    if (!timezone) {timezone = 0;}
+    if (!timezone) {
+      timezone = 0;
+    }
     try {
       let tm = new Date();
 
@@ -2847,7 +2959,9 @@ SmartTemplate4.Util = {
     } else {
       util.logDebugOptional("timeZones", "no timeZone match, building manual...");
       retVal = timeString.match("[A-Z]{4}");
-      if (!retVal) {retVal = timeString.match("[A-Z]{3}");}
+      if (!retVal) {
+        retVal = timeString.match("[A-Z]{3}");
+      }
       // convert to long form by using hard-coded time zones array.
       util.logDebug(
         "Cannot determine timezone string - Missed parentheses - from:\n" +
@@ -2867,8 +2981,12 @@ SmartTemplate4.Util = {
     let formatArray = [];
     if (format) {
       // remove parentheses
-      if (format.charAt(0) == "(") {format = format.slice(1);}
-      if (format.charAt(format.length - 1) == ")") {format = format.slice(0, -1);}
+      if (format.charAt(0) == "(") {
+        format = format.slice(1);
+      }
+      if (format.charAt(format.length - 1) == ")") {
+        format = format.slice(0, -1);
+      }
 
       let fs = format.split(","); // lastname, firstname ?
       let lastTransformed = -1; // remember the last transformed element
@@ -2953,8 +3071,12 @@ SmartTemplate4.Util = {
   // it will starts with " but doesn't finish with that "
   combineSplitStringParam: function (params) {
     if (params[0].startsWith('"')) {
-      if (params[0].endsWith('"')) {return;}
-      if (params.length < 2) {return;}
+      if (params[0].endsWith('"')) {
+        return;
+      }
+      if (params.length < 2) {
+        return;
+      }
     }
     let foundClosingPart = 0;
     for (let i = 1; i < params.length; i++) {
@@ -2977,7 +3099,9 @@ SmartTemplate4.Util = {
     if (!params || params.length < 2) {
       return 0; // match all
     }
-    if (isNaN(params[1])) {return 0;}
+    if (isNaN(params[1])) {
+      return 0;
+    }
     return parseInt(params[1], 10);
   },
 
@@ -2998,8 +3122,9 @@ SmartTemplate4.Util = {
     // If no afterId is given, then append the item to the toolbar
     if (afterId) {
       let elem = document.getElementById(afterId);
-      if (elem && elem.parentNode == toolbar) {before = elem.nextElementSibling;}
-      else {
+      if (elem && elem.parentNode == toolbar) {
+        before = elem.nextElementSibling;
+      } else {
         // get last item and insert before:
         before = toolbar.childNodes[toolbar.childNodes.length - 1];
         this.logDebug("toolbar.childNodes length = " + toolbar.childNodes.length);
@@ -3014,11 +3139,15 @@ SmartTemplate4.Util = {
     }
 
     this.logDebug("toolbar.insertItem(" + id + "," + before + ")");
-    if (before) {toolbar.insertItem(id, before);}
+    if (before) {
+      toolbar.insertItem(id, before);
+    }
 
     toolbar.setAttribute("currentset", toolbar.currentSet);
     this.logDebug("document.persist" + toolbar.id + ")");
-    if (document.persist) {document.persist(toolbar.id, "currentset");}
+    if (document.persist) {
+      document.persist(toolbar.id, "currentset");
+    }
     return true;
     // }
   },
@@ -3058,9 +3187,12 @@ SmartTemplate4.Util = {
         while (availableLocales.hasMore()) {
           let aLocale = availableLocales.getNext();
           listLocales += aLocale.toString() + ", ";
-          if (aLocale == forcedLocale) {found = true;}
-          else {
-            if (aLocale.indexOf(forcedLocale) == 0) {foundPartly = aLocale;} // partly matched, e.g. forcedLocale=de, language pack = de-DE
+          if (aLocale == forcedLocale) {
+            found = true;
+          } else {
+            if (aLocale.indexOf(forcedLocale) == 0) {
+              foundPartly = aLocale;
+            } // partly matched, e.g. forcedLocale=de, language pack = de-DE
           }
         }
         if (!found && foundPartly) {
@@ -3150,7 +3282,9 @@ SmartTemplate4.Util = {
         }
       }
       if (languages == "off") {
-        if (enableInlineSpellCheck) {enableInlineSpellCheck(false);}
+        if (enableInlineSpellCheck) {
+          enableInlineSpellCheck(false);
+        }
         gSpellChecker.enabled = false; // restore disabled status if this is a global setting.
         util.logDebug("Disabled automatic spellcheck");
         return;
@@ -3237,7 +3371,9 @@ SmartTemplate4.Util = {
 
   // helper function to find a child node of the passed class Name
   findChildNode: function (node, className) {
-    if (!node) {return null;} // [issue 367]
+    if (!node) {
+      return null;
+    } // [issue 367]
     return node?.querySelector(`.${className}`) || null;
   },
 
@@ -3305,8 +3441,6 @@ SmartTemplate4.Util = {
     SmartTemplate4.Util.notifyTools.notifyBackground({ func: "splashScreen" });
   },
 
-
-
   /*
    * args: [] optional string array of preferred flavors, see:
    * https://github.com/RealRaven2000/SmartTemplates/issues/330#issuecomment-2439671613
@@ -3370,7 +3504,7 @@ SmartTemplate4.Util = {
       const data = {};
       try {
         xferable.getTransferData(finalFlavor, data);
-      // eslint-disable-next-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
       } catch (e) {
         // Clipboard doesn't contain data in flavor, return null.
         SmartTemplate4.Util.logDebug(`No data with flavor ${finalFlavor} in clipboard! `);
@@ -3454,15 +3588,23 @@ SmartTemplate4.Util = {
   },
 
   isTransformString: function (argString) {
-    if (!argString) {return false;}
+    if (!argString) {
+      return false;
+    }
     return ["capitalize", "camelcase", "uppercase", "lowercase", "default"].includes(argString);
   },
 
   transformString: function (txt, formatter) {
     // [issue 288]
-    if (!formatter) {return txt;}
-    if (formatter?.isUppercase) {return txt.toUpperCase();}
-    if (formatter?.isLowercase) {return txt.toLowerCase();}
+    if (!formatter) {
+      return txt;
+    }
+    if (formatter?.isUppercase) {
+      return txt.toUpperCase();
+    }
+    if (formatter?.isLowercase) {
+      return txt.toLowerCase();
+    }
     if (formatter?.isCamelcase) {
       const words = txt.split(" ");
       for (let i = 0; i < words.length; i++) {
@@ -3503,9 +3645,9 @@ SmartTemplate4.Util = {
   get isSale() {
     const currentTime = new Date();
     const override = SmartTemplate4.Preferences.getStringPref("debug.saleDate");
-    const endDate = override ? 
-      new Date(override) : 
-      new Date(SmartTemplates_Discounts.sales_end.getTime() + 86400000);
+    const endDate = override
+      ? new Date(override)
+      : new Date(SmartTemplates_Discounts.SALE_END_DATE.getTime() + 86400000);
     const isSale = currentTime < endDate;
     return isSale;
   },
@@ -3554,7 +3696,9 @@ SmartTemplate4.Util = {
   },
 
   getMessageTags: function (msgHdr) {
-    if (!msgHdr) {return [];}
+    if (!msgHdr) {
+      return [];
+    }
     const tags = [];
     const msgKeyArray = msgHdr.getStringProperty("keywords")?.split(" ");
     // Get the list of known tags. -https://searchfox.org/comm-esr128/source/mail/base/content/msgHdrView.js#3176
@@ -3578,7 +3722,9 @@ SmartTemplate4.Util = {
   parseValueArgument: function (paramString) {
     // parses an argument of the format
     // arg=value  or arg="value"
-    if (!paramString) {return "";}
+    if (!paramString) {
+      return "";
+    }
     if (paramString.includes("=")) {
       let parts = paramString.split("=");
       let paramArg = parts[1];
@@ -3601,7 +3747,9 @@ SmartTemplate4.Util = {
   tagsFormatter: function (args, tags) {
     function parseFormatPreset(f) {
       const isPreset = ["color", "color-filled", "filled", "dark-filled"].includes(f);
-      if (!isPreset) {return "";}
+      if (!isPreset) {
+        return "";
+      }
       SmartTemplate4.Util.logDebug(`tagsFormatter() detected formatting preset: ${f}`);
       switch (f) {
         case "color":
@@ -3717,9 +3865,13 @@ SmartTemplate4.Util = {
                 startProcess = true;
                 continue;
               }
-              if (!startProcess) {continue;}
+              if (!startProcess) {
+                continue;
+              }
               if (f?.tagName) {
-                if (["meta", "style", "img"].includes(f.tagName.toLowerCase())) {continue;}
+                if (["meta", "style", "img"].includes(f.tagName.toLowerCase())) {
+                  continue;
+                }
               }
               switch (f.nodeType) {
                 case 1 /* element */:
@@ -3733,7 +3885,9 @@ SmartTemplate4.Util = {
           }
         }
       }
-      if (!extractSource) {extractSource = rootEl.innerText;}
+      if (!extractSource) {
+        extractSource = rootEl.innerText;
+      }
       return extractSource;
     } catch (ex) {
       SmartTemplate4.Util.logError("getBodyComposer failed: ", ex);
@@ -3768,11 +3922,11 @@ SmartTemplate4.Util = {
   },
 
   // replacement for SmartTempaltes4.Message.display
-  showSmartTemplatesMessage: async function({
+  showSmartTemplatesMessage: async function ({
     msg = "",
     msgIds = "",
     features = ["ok"],
-    addonfeatures = []
+    addonfeatures = [],
   } = {}) {
     try {
       const result = await SmartTemplate4.Util.notifyTools.notifyBackground({
@@ -3780,16 +3934,63 @@ SmartTemplate4.Util = {
         msg,
         msgIds,
         features,
-        addonfeatures
+        addonfeatures,
       });
       return result; // "ok", "cancel", "licensing", etc.
     } catch (ex) {
       SmartTemplate4.Util.logException("showSmartTemplatesMessage failed:", ex);
       return null;
-    }    
+    }
   },
-  
-  sanitizeHTML: function(htmlString) {
+
+  /**
+   * Removes duplicate <style> blocks from a DOM fragment.
+   * Checks both the fragment and an optional existing root element.
+   *
+   * @param {DocumentFragment|HTMLElement} domFragment - The fragment to sanitize.
+   * @param {HTMLElement|DocumentFragment|null} [existingRoot=null] - Optional existing DOM to compare against.
+   * @returns {DocumentFragment|HTMLElement} The sanitized fragment.
+   *
+   * @example
+   * SmartTemplates.Util.removeDuplicateStyleBlocks(fragment, editor.document.body);
+   */
+  removeDuplicateStyleBlocks: function (domFragment, existingRoot = null) {
+    // Build a set of all existing CSS rules
+    const existingStyles = new Set();
+
+    // Collect rules from existingRoot if provided
+    if (existingRoot) {
+      const rootStyles = existingRoot.querySelectorAll("style");
+      rootStyles.forEach((style) => {
+        if (!style.sheet) {
+          return;
+        }
+        Array.from(style.sheet.cssRules).forEach((r) => existingStyles.add(r.cssText));
+      });
+    }
+
+    // Collect rules already in the fragment itself to detect duplicates within the fragment
+    const fragmentStyles = domFragment.querySelectorAll("style");
+    fragmentStyles.forEach((style) => {
+      if (!style.sheet) {
+        return;
+      }
+
+      const rules = Array.from(style.sheet.cssRules).map((r) => r.cssText);
+      const allDuplicate = rules.every((r) => existingStyles.has(r));
+
+      if (allDuplicate) {
+        style.remove(); // Remove duplicate style block
+      } else {
+        // Add new rules to the set so subsequent <style> blocks are compared
+        rules.forEach((r) => existingStyles.add(r));
+      }
+    });
+
+    return domFragment; // Return the sanitized fragment
+  },
+
+  sanitizeHTML: function (htmlString) {
     if (!htmlString) {
       return "";
     }
@@ -3801,29 +4002,41 @@ SmartTemplate4.Util = {
     );
 
     return sanitizedHTML;
-  
   },
 
-  insertHtmlSafely: function(container, html) {
-    if (!container || !html) { 
-      return; 
+  insertHtmlSafely: function (container, html) {
+    if (!container || !html) {
+      return;
     }
     // Function to recursively sanitize nodes
     // see also DOMpurify
     const sanitizeNode = (node) => {
-      if (node.nodeType !== 1) { return node; } // Only ELEMENT_NODE
+      if (node.nodeType !== 1) {
+        return node;
+      } // Only ELEMENT_NODE
 
       // Remove <script> tags
-      if (node.tagName.toLowerCase() === "script")  {return null;}
+      if (node.tagName.toLowerCase() === "script") {
+        return null;
+      }
 
       // Define dangerous inline event attributes
       const dangerousAttrs = [
-        "onclick", "onchange", "oninput", "onmouseover",
-        "onload", "onerror", "onfocus", "onblur", "onmousedown",
-        "onmouseup", "onmouseenter", "onmouseleave"
+        "onclick",
+        "onchange",
+        "oninput",
+        "onmouseover",
+        "onload",
+        "onerror",
+        "onfocus",
+        "onblur",
+        "onmousedown",
+        "onmouseup",
+        "onmouseenter",
+        "onmouseleave",
       ];
 
-      [...node.attributes].forEach(attr => {
+      [...node.attributes].forEach((attr) => {
         const name = attr.name.toLowerCase();
         const value = attr.value.trim().toLowerCase();
 
@@ -3834,13 +4047,15 @@ SmartTemplate4.Util = {
       });
 
       // Recursively sanitize child nodes
-      Array.from(node.childNodes).forEach(child => {
+      Array.from(node.childNodes).forEach((child) => {
         const sanitized = sanitizeNode(child);
-        if (!sanitized) { child.remove(); }
+        if (!sanitized) {
+          child.remove();
+        }
       });
 
       return node;
-    };  
+    };
 
     // Create a detached document fragment
     const ownerDoc = container.ownerDocument;
@@ -3851,7 +4066,7 @@ SmartTemplate4.Util = {
       while (html.firstChild) {
         frag.appendChild(html.firstChild);
       }
-      container.appendChild(frag); 
+      container.appendChild(frag);
       return true;
     }
     if (typeof html != "string") {
@@ -3864,9 +4079,13 @@ SmartTemplate4.Util = {
     const doc = parser.parseFromString(html, "text/html");
 
     // Sanitize all children of body and move to fragment
+    // note! ANY dangling head elements (style, meta etc) without parent element
+    // are automatically move into doc.head by DOMparser!
     for (const node of Array.from(doc.body.childNodes)) {
       const sanitized = sanitizeNode(node);
-      if (!sanitized) { continue; }
+      if (!sanitized) {
+        continue;
+      }
       frag.appendChild(sanitized);
     }
 
@@ -3877,13 +4096,41 @@ SmartTemplate4.Util = {
     if (doc.head && container.ownerDocument.head) {
       for (const node of Array.from(doc.head.childNodes)) {
         const sanitized = sanitizeNode(node);
-        if (!sanitized) { continue; }
+        if (!sanitized) {
+          continue;
+        }
+
+        // Deduplicate against existing head styles
+        // [issue 399]
+        if (node.tagName?.toLowerCase() === "style") {
+          let rules = [];
+          try {
+            rules = Array.from(node.sheet?.cssRules || [])
+              .filter((r) => r.type !== CSSRule.IMPORT_RULE)
+              .map((r) => r.cssText);
+          } catch (ex) {
+            console.warn("Cannot read stylesheet rules", ex);
+          }
+
+          const existingStyles = new Set(
+            Array.from(container.ownerDocument.head.querySelectorAll("style")).flatMap((s) => {
+              try {
+                return Array.from(s.sheet?.cssRules || []).map((r) => r.cssText);
+              } catch {
+                return [];
+              }
+            })
+          );
+
+          const fullDuplicate = rules.every(r => existingStyles.has(r));
+          if (fullDuplicate) { continue; }
+        }
+
         container.ownerDocument.head.appendChild(sanitized);
       }
     }
     return true;
-  }
-
+  },
 };  // ST4.Util
 
 
@@ -4131,24 +4378,11 @@ SmartTemplate4.AB = {
           "mime.resolveAB.CardBook.fallback"
         );
 
-      const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
-      const { AddonManager } = ChromeUtils.importESModule(
-        "resource://gre/modules/AddonManager.sys.mjs"
-      );
-      let cardBookAddon = await AddonManager.getAddonByID(CARDBOOK_APPNAME);
-      if (!cardBookAddon) {
-        SmartTemplate4.Util.logWarning(
-          "Cardbook addon can not be found!\nFalling back to standard Address Book lookup"
-        );
+      const isCardbookEnabled = await SmartTemplate4.Util.notifyTools.notifyBackground({
+          func: "queryCardbookAddon",
+      });
+      if (!isCardbookEnabled) {
         isCardBookAB = false;
-      } else {
-        if (cardBookAddon.isActive == false) { // = exclude undefined!
-          isCardBookAB = false;
-          SmartTemplate4.Util.logWarning(
-            "Cardbook addon is not active!\nFalling back to standard Address Book lookup",
-            cardBookAddon
-          );
-        }
       }
 
       if (isCardBookAB) {

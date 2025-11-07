@@ -1824,6 +1824,14 @@ SmartTemplate4.fileTemplates = {
         );
       }
 
+      // sanitize inserted markup: remove duplicated style blocks
+      if (SmartTemplate4.Preferences.getMyBoolPref("sanitizeStyles.removeDuplicatesInFragments")) {
+        const editor = SmartTemplate4.Util.CurrentEditor;
+        const fragContainer = editor.document.createElement("div");
+        SmartTemplate4.Util.insertHtmlSafely(fragContainer, code);
+        SmartTemplate4.Util.removeDuplicateStyleBlocks(fragContainer, editor.document.body);
+        code = fragContainer.innerHTML;
+      }
       gMsgCompose.editor.insertHTML(code);
       
       // we should probably place the cursor at the end of the inserted HTML afterwards!

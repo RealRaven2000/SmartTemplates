@@ -284,18 +284,18 @@
               data-pref-name="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits">__MSG_replaceSignature__</label>
             <span class="hasConfigEvent hbox">
               <label>
-                <input type="checkbox" id="chkSignature" class="contextConfig"
-                  data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_parseSignature__
-                </label>
-                <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
-                <button
-                  class="toolTipButton"
-                  clickyTooltip="__MSG_parseSignature.tip__"></button>
-                <span class="spacer"></span>
+              <input type="checkbox" id="chkSignature" class="contextConfig"
+                data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_parseSignature__
+              </label>
+              <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
+              <button
+                class="toolTipButton"
+                clickyTooltip="__MSG_parseSignature.tip__"></button>
+              <span class="spacer"></span>
             </span>
             
-              <label><input type="checkbox"
-                  data-pref-name="extensions.smartTemplate4.signature.replaceLF.plaintext.br">__MSG_replaceBRinSignature.label__</label>
+            <label><input type="checkbox"
+                data-pref-name="extensions.smartTemplate4.signature.replaceLF.plaintext.br">__MSG_replaceBRinSignature.label__</label>
                 
             <div class="hbox">
               <label><input type="checkbox" title="__MSG_addSigBreakHTML.tip__"
@@ -415,7 +415,13 @@
               data-pref-name="extensions.smartTemplate4.mail.suppressLink">__MSG_suppressMailToLink__</label>
             <label><input type="checkbox" class="premiumFeature"
               data-pref-name="extensions.smartTemplate4.header.inject">__MSG_header.inject__</label>
-
+            <span class="hasConfigEvent hbox">
+              <label id="styleSanitation" data-pref-name="extensions.smartTemplate4.sanitizeStyles" class="passivePref">__MSG_styleSanitizeSettings__ Sanitize inserted style rules</label>
+              <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
+              <button class="toolTipButton" clickyTooltip="__MSG_styleSanitizeSettings.tip__"></button>
+              <a href="https://github.com/RealRaven2000/SmartTemplates/issues/399#issuecomment-3503675555" 
+                class="issuelink" target="_blank">[issue 399]</a>
+            </span>
           </div>
         </fieldset>
 
@@ -620,7 +626,7 @@
               <button id="supportPaneSupportLink" class="supportURL text-link">__MSG_url.supportPage.label__</button>
               <button id="supportPaneHomePage" class="homePageURL text-link">__MSG_url.homePage.label__</button>
               <button id="supportPaneIssues" class="bugsURL text-link">__MSG_url.bugsAndFeaturesPage.label__</button>
-            </div class="vbox">
+            </div>
             
           </fieldset>
         </div>

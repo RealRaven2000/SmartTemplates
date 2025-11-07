@@ -1114,10 +1114,8 @@ SmartTemplate4.classSmartTemplate = function() {
       flags
     );
     const msgComposeType = Ci.nsIMsgCompType,
-      ed = util.CurrentEditor,
-      editor = ed.QueryInterface(Ci.nsIEditor);
+      editor = util.CurrentEditor;
     let pref = SmartTemplate4.pref,
-      // gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
       doc = gMsgCompose.editor.document,
       template = null,
       quoteHeader = "",
@@ -1499,58 +1497,68 @@ SmartTemplate4.classSmartTemplate = function() {
         // ===== merge head contents
         let heads = tempDiv.querySelectorAll("div.smartTemplateHeader");
         if (heads.length) {
-          let docHeader = editor.document.head || editor.document.getElementsByTagName("head")[0],
-            i = 0;
-          for (let head of heads) {
-            util.logDebugOptional("composer", "SmartTemplates - head tag found\n", head.outerHTML);
+          const docHeader = editor.document.head || editor.document.getElementsByTagName("head")[0];
+          const headerNodes = Array.from(heads); // snapshot the NodeList into a static array immediately
+
+          headerNodes.forEach((head, i) => {
+            util.logDebugOptional("composer", `SmartTemplates - head tag found\n${head.outerHTML}`);
             util.insertHtmlSafely(
               docHeader,
               `\n<!-- head [${i}] from template -->\n${head.innerHTML}`
             );
-            i++;
-          }
-          let len = heads.length;
-          for (let i = len - 1; i >= 0; i--) {
-            let head = heads[i];
-            tempDiv.removeChild(head);
-          }
-          template = tempDiv.innerHTML; // extract the remaining markup
+          });
+
+          // safely remove original tags – array is detached from live mutations
+          headerNodes.forEach((head) => {
+            try {
+              if (head?.isConnected) {
+                head.remove();
+              }
+            } catch{;}
+          });
+          template = tempDiv.innerHTML;
         }
 
         // ===== merge body attributes
         // honors user-supplied <body> attribs, overwrite existing ones by design
-        let bodies = tempDiv.querySelectorAll("div.smartTemplateBody");
+        const bodies = Array.from(tempDiv.querySelectorAll("div.smartTemplateBody"));
         if (bodies.length) {
           // gather all attributes.
-          let allAttributes = [];
-          for (let body of bodies) {
-            let atts = [...body.attributes];
-            allAttributes.push(...atts);
-            for (let a of atts) {
-              // strip all attributes of the div, it shouldn't do anything hopefully
+          const allAttributes = [];
+          bodies.forEach((body) => {
+            [...body.attributes].forEach((a) => {
+              allAttributes.push(a);
               body.removeAttribute(a.name);
-            }
-          }
+            });
+          });
           // all body attributes are dropped by composer, so there is no need to tidy up!
-          for (let a of allAttributes) {
-            let isClass = a.name == "class";
+          // merge attributes into the live document body
+          allAttributes.forEach((a) => {
+            const isClass = a.name === "class";
+            let value = a.value.replace("smartTemplateBody", "").trim();
+            if (!value) {return;}
+
             if (isClass) {
-              a.value = a.value.replace("smartTemplateBody", "").trim();
+              value.split(/\s+/).forEach((cl) => {
+                if (cl) {
+                  bodyEl.classList.add(cl);
+                } 
+              });
+            } else {
+              bodyEl.setAttribute(a.name, value);
             }
-            if (a.value && a.value.trim()) {
-              if (isClass) {
-                let clist = a.value.split(" ");
-                for (let cl of clist) {
-                  if (cl) {
-                    bodyEl.classList.add(cl);
-                  }
-                }
-              } else {
-                // note: this definitely overwrites previous attributes!
-                bodyEl.setAttribute(a.name, a.value);
+          });
+
+          // finally, clean up the temp markup
+          bodies.forEach((b) => {
+            try {
+              if (b.isConnected) {
+                b.remove();
               }
+            } catch (ex) {
+              util.logDebugOptional("composer", "Skipping tidy up body element due to removal error", ex);
             }
-          }
+          });
           template = tempDiv.innerHTML; // extract the remaining markup again.
         }
         tempDiv.remove();
@@ -1565,6 +1573,7 @@ SmartTemplate4.classSmartTemplate = function() {
     if (isActiveOnAccount) {
       util.logDebugOptional("composer", "isActiveOnAccount: creating template Div…");
       templateDiv = util.mailDocument.createElement("div");
+   
       // now insert quote Header separately
       try {
         if (flags.isThunderbirdTemplate && template.length) {
@@ -1584,9 +1593,14 @@ SmartTemplate4.classSmartTemplate = function() {
         util.logDebugOptional("composer", "Generating template Div innerHTML…\n" + template);
         // This encodes "&" in href attributes to &amp;   !
 
-        // [issue 393]
-        // templateDiv.innerHTML = template || "";
         util.insertHtmlSafely(templateDiv, template || "");
+        if (SmartTemplate4.Preferences.getMyBoolPref("sanitizeStyles.removeDuplicatesInTemplate")) {
+          SmartTemplate4.Util.removeDuplicateStyleBlocks(templateDiv, bodyEl);
+        }   
+        if (SmartTemplate4.Preferences.getMyBoolPref("sanitizeStyles.removeDuplicatesInHead")) {
+          SmartTemplate4.Util.removeDuplicateStyleBlocks(editor.document.head);
+        }
+
         if (theIdentity.replyOnTop) {
           // this is where we lose the default "paragraph" style
           editor.beginningOfDocument();
