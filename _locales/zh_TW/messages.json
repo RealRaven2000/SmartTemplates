@@ -29,8 +29,17 @@
   "about.label": {
     "message": "SmartTemplates 提供簡單的方法，讓您在使用樣板時可以自訂 Thunderbird 的預設引用表頭.單一樣板可以建立給每個賬戶或是通用樣板來使用."
   },
+  "about.tab": {
+    "message": "關於"
+  },
   "accept_button": {
     "message": "確定"
+  },
+  "account": {
+    "message": "賬戶"
+  },
+  "account.common": {
+    "message": "常見"
   },
   "account.label": {
     "message": "选择賬戶："
@@ -55,17 +64,32 @@
   "addon-authors-struggle": {
     "message": "為了繼續發揮作用，我們的附加組件開發人員現在需要資助修復和重寫所需的資源，以便我們的用戶可以繼續從我們提供的功能中受益。"
   },
+  "addressDelimiter": {
+    "message": "用以下方式分隔多個通訊員："
+  },
+  "addressDelimiter.tip": {
+    "message": "多個通訊者之間的分隔符。 Outlook 使用分號 (;) Thunderbird 的默認值為逗號 (,)"
+  },
+  "addSigBreakHTML": {
+    "message": "在 HTML 郵件中添加 --"
+  },
+  "addSigBreakHTML.tip": {
+    "message": "始終在簽名前添加 -- 分隔符(在 HTML 郵件中)"
+  },
+  "addSigBreakPlaintext": {
+    "message": "添加 -- 在純文本郵件中"
+  },
+  "addSigBreakPlaintext.tip": {
+    "message": "始終在簽名前添加 -- 分隔符(在純文本郵件中)"
+  },
   "advanced.label": {
     "message": "展開對話框"
   },
+  "advanced.tab": {
+    "message": "高級設置"
+  },
   "any.label": {
     "message": "任何 Header-line"
-  },
-  "aria.settings.nav": {
-    "message": "設定頁面 - 按 Enter 鍵進入頁面。"
-  },
-  "aria.settings.nav.selected": {
-    "message": "頁面已選擇。"
   },
   "aria.accordion.header.expand": {
     "message": "- 按 Enter 鍵打開該部分。"
@@ -78,6 +102,12 @@
   },
   "aria.moreInfo": {
     "message": "更多資訊"
+  },
+  "aria.settings.nav": {
+    "message": "設定頁面 - 按 Enter 鍵進入頁面。"
+  },
+  "aria.settings.nav.selected": {
+    "message": "頁面已選擇。"
   },
   "attach.label": {
     "message": "將文件添加為附件"
@@ -169,14 +199,14 @@
   "capitalizeNames": {
     "message": "大寫名稱"
   },
-  "cc.label": {
-    "message": "收件者姓名 (預設)"
-  },
   "cc_note.label": {
     "message": "當姓名無法使用時,將會顯示電子郵件地址"
   },
   "cc_var.cap": {
     "message": "收件者 (副本)"
+  },
+  "cc.label": {
+    "message": "收件者姓名 (預設)"
   },
   "ccfirstname.label": {
     "message": "收件者名字"
@@ -187,35 +217,55 @@
   "ccname.label": {
     "message": "收件者姓名"
   },
-  "clipboardFunctions": {
-    "message": "剪貼板功能"
-  },
   "clipboard.copy": {
     "message": "將文本複製到剪貼板。"
-  },
-  "clipboard.insert": {
-    "message": "在此位置插入當前剪貼板內容。"
-  },
-  "clipboard.from": {
-    "message": "（任何地址變量的示例）將原始發件人的郵件地址複製到剪貼板。"
   },
   "clipboard.dateformat": {
     "message": "將格式化的日期複製到剪貼簿。格式字串必須用雙引號括起來。有關格式語法的更多信息，請參閱以下部分："
   },
-  "clipboard.setHeader": {
-    "message": "使用剪貼板內容設置抄送 - （適用於任何文本標題）。"
+  "clipboard.from": {
+    "message": "（任何地址變量的示例）將原始發件人的郵件地址複製到剪貼板。"
   },
-  "clipboard.matchSubject": {
-    "message": "從主題中查找匹配的文本，如果找到則復製到剪貼板。"
+  "clipboard.insert": {
+    "message": "在此位置插入當前剪貼板內容。"
   },
   "clipboard.matchBody": {
     "message": "匹配原始電子郵件內容中的文本並將其複製到剪貼板（如果找到）。"
   },
+  "clipboard.matchSubject": {
+    "message": "從主題中查找匹配的文本，如果找到則復製到剪貼板。"
+  },
   "clipboard.notes": {
     "message": "如果沒有返回數據，任何使用 {toclip} 的函數都會清除剪貼板。 您可以使用剪貼板功能將數據傳輸到使用 {file} 命令加載的文本片段中。"
   },
+  "clipboard.setHeader": {
+    "message": "使用剪貼板內容設置抄送 - （適用於任何文本標題）。"
+  },
+  "clipboardFunctions": {
+    "message": "剪貼板功能"
+  },
   "close.label": {
     "message": "折疊對話框"
+  },
+  "common.use": {
+    "message": "使用常見的"
+  },
+  "common.use.tip": {
+    "message": "當沒有特定模板存在於身份時，或為該身份選擇 '$pref_def$' 時，會應用以下設置。",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }
+  },
+  "common.use.title": {
+    "message": "停用 '$pref_def$' 以為此賬戶創建特定的模板設置。",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "使用通用"
+      }
+    }
   },
   "conditional.forwardMode": {
     "message": "如果以內聯方式轉發電子郵件，則會插入第一個text參數。 當郵件作為附件轉發時，將使用第二個text參數。"
@@ -325,11 +375,38 @@
   "day.7.short": {
     "message": "六"
   },
+  "debug.mode": {
+    "message": "除錯模式"
+  },
+  "debug.tip": {
+    "message": "在錯誤控制台記錄SmartTemplates的活動。可以通過設置輪切換啟用/禁用各種功能的附加日誌條目。"
+  },
+  "defaultCharset": {
+    "message": "備用字元集"
+  },
+  "defaultCharset.tip": {
+    "message": "如果無法確定原始電子郵件的字元集，則將使用此字元集作為備用來解碼標題和內容。"
+  },
   "defaultMimeFormat": {
     "message": "默認地址格式："
   },
   "defaultMimeFormat_tip": {
     "message": "替換普通 %to% %from% %cc% 地址時使用的格式。 例如。 (firstname,lastname,??mail) 將顯示名字後跟姓氏； 如果兩者都不可用，它將顯示郵件地址。"
+  },
+  "defaultTemplate": {
+    "message": "默認模板"
+  },
+  "defaultTemplate.behavior": {
+    "message": "未從下拉列表中選擇模板的情況下撰寫或回复時的行為。"
+  },
+  "defaultTemplate.useAccount": {
+    "message": "使用賬戶模板。"
+  },
+  "defaultTemplate.useLastNotify": {
+    "message": "如果重複使用上次選擇的範本，則顯示通知。"
+  },
+  "defaultTemplate.useLastTemplate": {
+    "message": "使用最後從下拉菜單中選擇的外部模板。"
   },
   "deleteForwardedBody": {
     "message": "此函數在內聯轉發時刪除原始電子郵件的正文。 可用於在刪除原始信息的同時處理來自自動郵件的信息。"
@@ -345,6 +422,9 @@
   },
   "developer.label": {
     "message": "開發者"
+  },
+  "displayStatusIcon": {
+    "message": "在狀態列顯示按鈕"
   },
   "domainLicense.email": {
     "message": "我們將使用此電子郵件地址與您聯繫以生成您的域名許可; 請允許我們兩個工作日與我們取得聯繫。 在下一頁上輸入許可證的域名。"
@@ -384,6 +464,18 @@
   },
   "examples": {
     "message": "範例"
+  },
+  "examples.openBrowser": {
+    "message": "在瀏覽器中打開範例頁面"
+  },
+  "examples.supportSite": {
+    "message": "（來自英文支援網站）"
+  },
+  "examples.tab": {
+    "message": "範例"
+  },
+  "examples.tooltip": {
+    "message": "顯示來自 https://smarttemplates.quickfolders.org/templates.html 的示例模板。 僅在在線模式下可用"
   },
   "export.label": {
     "message": "匯出"
@@ -470,11 +562,20 @@
   "fix_var.cap": {
     "message": "固定的變數"
   },
+  "fix_vartz_note.label": {
+    "message": "可以跟 %X:=sent% 整合"
+  },
   "fix_vartz.cap": {
     "message": "'日期格式'/'時區'為固定變數"
   },
-  "fix_vartz_note.label": {
-    "message": "可以跟 %X:=sent% 整合"
+  "fontSettings": {
+    "message": "樣板字體編輯器"
+  },
+  "forceParagraphs": {
+    "message": "強制段落模式"
+  },
+  "forceParagraphs.tip": {
+    "message": "確保光標位置從段落開始。 我們還推薦使用 Thunderbird 組合選項來在按下 [Enter] 鍵時創建一個新段落。"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML 模板"
@@ -500,14 +601,14 @@
   "freeLicense": {
     "message": "如果您最近捐赠给SmartTemplate®项目或已经完成了贡献工作，例如翻译或编写补丁，您可能有资格获得免费许可证密钥。 通过SmartTemplate®选项中的支持选项卡与我联系。"
   },
-  "from.label": {
-    "message": "寄件者姓名 (預設)"
-  },
   "from_note.label": {
     "message": "當姓名無法使用時,將會顯示電子郵件地址"
   },
   "from_var.cap": {
     "message": "寄件者 (從)"
+  },
+  "from.label": {
+    "message": "寄件者姓名 (預設)"
   },
   "fromfirstname.label": {
     "message": "寄件者名字"
@@ -518,14 +619,59 @@
   "fromname.label": {
     "message": "寄件者姓名"
   },
+  "fwd.label": {
+    "message": "將以下設置應用於轉發的消息"
+  },
+  "fwd.tab": {
+    "message": "轉寄"
+  },
+  "fwdhead.label": {
+    "message": "停用Thunderbird預設的引用表頭"
+  },
+  "fwdmsg.cap": {
+    "message": "轉寄"
+  },
   "getSmartTemplate4": {
     "message": "购买SmartTemplates许可证"
+  },
+  "global.tab": {
+    "message": "全域設定"
+  },
+  "grpAdvanced": {
+    "message": "高級功能"
+  },
+  "grpMailContent": {
+    "message": "郵件內容"
+  },
+  "grpMiscellaneus": {
+    "message": "雜項"
+  },
+  "grpNameRules": {
+    "message": "命名規則"
+  },
+  "grpSignatures": {
+    "message": "簽名"
+  },
+  "grpTroubleShooting": {
+    "message": "故障排除"
+  },
+  "grpUI": {
+    "message": "用戶界面"
   },
   "guessNameFromMail": {
     "message": "如果丟失，請從電子郵件地址中猜出姓名部分"
   },
   "h.label": {
     "message": "小時,24小時制 (00到23) - 前面加零"
+  },
+  "header_function.cap": {
+    "message": "修改郵件標題"
+  },
+  "header_function.explain": {
+    "message": "這些功能可用於修改郵件頭，如下所述："
+  },
+  "header_function.scope": {
+    "message": "可以與以下標頭一起使用："
   },
   "header.append.subject": {
     "message": "將文字附加到主題"
@@ -535,6 +681,9 @@
   },
   "header.delete.subject": {
     "message": "從主題中刪除文本（正則表達式）"
+  },
+  "header.inject": {
+    "message": "從模板注入 <head> 的內容"
   },
   "header.prefix.subject": {
     "message": "在主題之前加上文字"
@@ -547,15 +696,6 @@
   },
   "header.set.to": {
     "message": "用電子郵件地址替換收件人"
-  },
-  "header_function.cap": {
-    "message": "修改郵件標題"
-  },
-  "header_function.explain": {
-    "message": "這些功能可用於修改郵件頭，如下所述："
-  },
-  "header_function.scope": {
-    "message": "可以與以下標頭一起使用："
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
@@ -586,14 +726,20 @@
   "heading.expandAll": {
     "message": "展開所有條目"
   },
-  "help.label": {
-    "message": "求助"
-  },
   "help_dialog_title": {
     "message": "SmartTemplates 求助"
   },
   "help_keyword.cap": {
     "message": "求助"
+  },
+  "help.label": {
+    "message": "求助"
+  },
+  "help.tab": {
+    "message": "求助"
+  },
+  "hideExamplesPage": {
+    "message": "隱藏示例選項卡"
   },
   "html_note.cap": {
     "message": "HTML 模板的注意事項"
@@ -616,9 +762,6 @@
   "identity_ab.phoneno": {
     "message": "電話號碼"
   },
-  "im-ex.cap": {
-    "message": "設定及樣板的匯出/匯入"
-  },
   "im-ex_note1.label": {
     "message": "您可以匯出及匯入設定和關聯每一個賬戶的樣板."
   },
@@ -637,11 +780,17 @@
   "im-ex_note6.label": {
     "message": "注意：Apple/Macintosh 平台將在標題功能區而不是 SmartTemplates 選項窗口中具有菜單欄。 這是此平台上的正常行為，無法更改。"
   },
+  "im-ex.cap": {
+    "message": "設定及樣板的匯出/匯入"
+  },
   "import.label": {
     "message": "匯入"
   },
   "insert.label": {
     "message": "插入變數"
+  },
+  "insertCursor": {
+    "message": "插入空格以突出顯示 %cursor%"
   },
   "insertSnippet.button": {
     "message": "插入片段"
@@ -704,13 +853,13 @@
   "license-standard-special-offer": {
     "message": "{boldStart}親愛的 $username${boldEnd}，您現在可以以{boldStart}$discount${boldEnd} 的價格**升級到SmartTemplates Pro，同時還可以將許可證延長一整年。 雷鳥的更多重大變化即將到來，我需要{boldStart}您的幫助{boldEnd}跟上！",
     "placeholders": {
-      "username": {
-        "content": "$1",
-        "example": "John Doe"
-      },
       "discount": {
         "content": "$2",
         "example": "50%"
+      },
+      "username": {
+        "content": "$1",
+        "example": "John Doe"
       }
     }
   },
@@ -732,12 +881,6 @@
   "licenseHead": {
     "message": "新的許可製度"
   },
-  "licenseTerms.hide": {
-    "message": "🡇 繼續選擇許可證 🡇"
-  },
-  "licenseTerms.show": {
-    "message": "顯示許可協議條款"
-  },
   "licenseStatus.expired": {
     "message": "SmartTemplates許可已在 $countDays$ 天前過期。",
     "placeholders": {
@@ -755,6 +898,12 @@
         "example": "10"
       }
     }
+  },
+  "licenseTerms.hide": {
+    "message": "🡇 繼續選擇許可證 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "顯示許可協議條款"
   },
   "licenseTypes": {
     "message": "展望未來，SmartTemplates提供兩個許可證，Standard和Pro; 這些對於跟上Thunderbird平台的變化以及為附加組件的創新和修復提供資金是必要的。 由於重大變更按年度週期推出，許可證的有效期也為1年。"
@@ -782,6 +931,9 @@
   },
   "licenseWindow.title": {
     "message": "SmartTemplates 许可证"
+  },
+  "lineBreaksOnTop": {
+    "message": "從頭算起的換行數:"
   },
   "localedate.label": {
     "message": "日期/時間(區域設置格式)"
@@ -813,7 +965,9 @@
   "message.licenseScreen": {
     "message": "顯示許可選項…"
   },
-  "message.linkInTab": { "message": "（連結已在分頁中開啟）" },
+  "message.linkInTab": {
+    "message": "（連結已在分頁中開啟）"
+  },
   "messid.label": {
     "message": "郵件 ID"
   },
@@ -901,238 +1055,6 @@
   "n.label": {
     "message": "月 (1到12)"
   },
-  "newsHead": {
-    "message": "最新消息"
-  },
-  "newsMsgEsr140": {
-    "message": "{P1}{boldStart} 在下一次重大版本中 {boldEnd}：Thunderbird 即將提示您選擇首選的更新路徑 — 年度 ESR 跟踪版或更快速的每月發布版。{ARelease}了解有關新發佈模型的詳細資訊{A2}。{U1} {L1}ESR 版本將保持在 v140，只會升級次要版本，僅包含安全修復和錯誤修正，這通常更適合企業環境使用。{L2} {L1}每月發布週期將在新功能開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發布模型。為此，您可以安裝 {AcompatCheck}Add‑on Compatibility Check{A2}。{L2} {U2}{P2}{P1} 我們很高興地宣布，SmartTemplates 已完全相容於 Thunderbird 140 —— 下一代 Extended Support Release（ESR）。這意味著在下一個主要支援週期中將保持穩定可靠。{P2}{P1} SmartTemplates 目前仍然支援 Thunderbird 115 及更高版本。在接下來的一年內，隨著我們添加新功能，對 Thunderbird 115 的支援可能會被逐步移除，改為 Thunderbird 128 及更高版本。{P2}{P1} 我們持續監控 Thunderbird 的更新，以確保 SmartTemplates 始終保持相容與可靠，無論您選擇哪條更新路徑。{P2}"
-  },
-  "newsMsg.license.expired": {
-    "message": "{P1} 所有新功能、錯誤修正與長期相容性，都得益於您的支持。{P2}{P1 class=specialOffer} 為了持續推動 SmartTemplates 的開發，您可以在 {salesEnd} 之前以折扣價續訂授權。{P2}{P1 class=bottomhint}🡇 選擇以下選項了解更多 🡇 {P2}"
-  },
-  "newsMsg.license.none": {
-    "message": "{P1} 您現在也可以透過購買授權支持未來的相容性。{P2}{P1} 所有新功能、錯誤修正與長期相容性，都得益於您的支持。{P2}{P1 class=specialOffer} 為了持續推動 SmartTemplates 的開發，您可以在 {salesEnd} 之前以折扣價購買標準或專業版授權。{P2}{P1 class=bottomhint} 🡇 選擇以下選項了解更多 🡇 {P2}"
-  },
-  "newsMsg.license.standard": {
-    "message": "{P1} 感謝您購買標準版授權來支持 SmartTemplates。{P2}{P1} 無論您的授權是否已過期，您都可以在 {salesEnd} 之前以優惠價格升級為專業版。過期後升級，將從購買日期起享有一整年的使用權。{P2}{P1 class=bottomhint} 🡇 選擇以下選項了解更多 🡇 {P2}"
-  },
-  "newsMsg.license.valid": {
-    "message": "{P1} 感謝您透過專業版授權支持 SmartTemplates——這使得所有新功能、錯誤修正與長期相容性成為可能。{P2}"
-  },
-  "newsSection.intro": {
-    "message": "{P1}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{P2}"
-  },
-  "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 一些用戶在更新到 Thunderbird v142 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。SmartTemplates 之前的版本已經完全相容於 142。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{P2}{P1} 請放心，SmartTemplates 完全支援每月版和 ESR (140.*) 通道，您可以繼續不間斷地工作。 {P2}"
-  },
-  "newsSection.license": {
-    "message": "由於SmartTemplates的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
-  },
-  "newsgr.label": {
-    "message": "新聞群組"
-  },
-  "no_button": {
-    "message": "否"
-  },
-  "ongoing-work": {
-    "message": "為了保持 $addonName$ 與 Thunderbird 每月的發行版本同步，我們必須不斷檢查錯誤並上傳調整版本。請在您試用功能並確定它能提高您的生產力後協助我們！",
-    "placeholders": {
-      "addonName": {
-        "content": "$1"
-      }
-    }
-  },
-  "ownmail.label": {
-    "message": "您的電子郵件"
-  },
-  "ownname.label": {
-    "message": "您的姓名"
-  },
-  "p.label": {
-    "message": "上午/下午"
-  },
-  "p1.label": {
-    "message": "上午."
-  },
-  "p2.label": {
-    "message": "上午."
-  },
-  "p3.label": {
-    "message": "上午"
-  },
-  "paste.label": {
-    "message": "貼上"
-  },
-  "parameters": {
-    "message": "參量"
-  },
-  "parameter.escapeCommas": {
-    "message": "要在此文字中顯示逗號，請在前面加上反斜線，如下所示："
-  },
-  "params.optional": {
-    "message": "可選參數"
-  },
-  "statusIcon.IconHoverText": {
-    "message": "懸停時顯示文本"
-  },
-  "statusIcon.IconOnly": {
-    "message": "僅圖標"
-  },
-  "statusIcon.IconText": {
-    "message": "圖標和文本"
-  },
-  "about.tab": {
-    "message": "關於"
-  },
-  "addSigBreakHTML": {
-    "message": "在 HTML 郵件中添加 --"
-  },
-  "addSigBreakHTML.tip": {
-    "message": "始終在簽名前添加 -- 分隔符(在 HTML 郵件中)"
-  },
-  "addSigBreakPlaintext": {
-    "message": "添加 -- 在純文本郵件中"
-  },
-  "addSigBreakPlaintext.tip": {
-    "message": "始終在簽名前添加 -- 分隔符(在純文本郵件中)"
-  },
-  "addressDelimiter": {
-    "message": "用以下方式分隔多個通訊員："
-  },
-  "addressDelimiter.tip": {
-    "message": "多個通訊者之間的分隔符。 Outlook 使用分號 (;) Thunderbird 的默認值為逗號 (,)"
-  },
-  "advanced.tab": {
-    "message": "高級設置"
-  },
-  "lineBreaksOnTop": {
-    "message": "從頭算起的換行數:"
-  },
-  "insertCursor": {
-    "message": "插入空格以突出顯示 %cursor%"
-  },
-  "debug.mode": {
-    "message": "除錯模式"
-  },
-  "debug.tip": {
-    "message": "在錯誤控制台記錄SmartTemplates的活動。可以通過設置輪切換啟用/禁用各種功能的附加日誌條目。"
-  },
-  "common.use.title": {
-    "message": "停用 '$pref_def$' 以為此賬戶創建特定的模板設置。",
-    "placeholders": {
-      "pref_def": {
-        "content": "$1",
-        "example": "使用通用"
-      }
-    }
-  },
-  "common.use.tip": {
-    "message": "當沒有特定模板存在於身份時，或為該身份選擇 '$pref_def$' 時，會應用以下設置。",
-    "placeholders": {
-      "pref_def": {
-        "content": "$1"
-      }
-    }
-  },
-  "common.use": {
-    "message": "使用常見的"
-  },
-  "defaultCharset": {
-    "message": "備用字元集"
-  },
-  "defaultCharset.tip": {
-    "message": "如果無法確定原始電子郵件的字元集，則將使用此字元集作為備用來解碼標題和內容。"
-  },
-  "defaultTemplate.behavior": {
-    "message": "未從下拉列表中選擇模板的情況下撰寫或回复時的行為。"
-  },
-  "defaultTemplate": {
-    "message": "默認模板"
-  },
-  "defaultTemplate.useAccount": {
-    "message": "使用賬戶模板。"
-  },
-  "defaultTemplate.useLastTemplate": {
-    "message": "使用最後從下拉菜單中選擇的外部模板。"
-  },
-  "defaultTemplate.useLastNotify": {
-    "message": "如果重複使用上次選擇的範本，則顯示通知。"
-  },
-  "preferences.title": {
-    "message": "SmartTemplates 設定"
-  },
-  "examples.supportSite": {
-    "message": "（來自英文支援網站）"
-  },
-  "examples.tab": {
-    "message": "範例"
-  },
-  "openInBrowser": {
-    "message": "在瀏覽器中打開"
-  },
-  "examples.tooltip": {
-    "message": "顯示來自 https://smarttemplates.quickfolders.org/templates.html 的示例模板。 僅在在線模式下可用"
-  },
-  "fontSettings": {
-    "message": "樣板字體編輯器"
-  },
-  "forceParagraphs": {
-    "message": "強制段落模式"
-  },
-  "forceParagraphs.tip": {
-    "message": "確保光標位置從段落開始。 我們還推薦使用 Thunderbird 組合選項來在按下 [Enter] 鍵時創建一個新段落。"
-  },
-  "fwd.label": {
-    "message": "將以下設置應用於轉發的消息"
-  },
-  "fwd.tab": {
-    "message": "轉寄"
-  },
-  "fwdhead.label": {
-    "message": "停用Thunderbird預設的引用表頭"
-  },
-  "fwdmsg.cap": {
-    "message": "轉寄"
-  },
-  "global.tab": {
-    "message": "全域設定"
-  },
-  "grpAdvanced": {
-    "message": "高級功能"
-  },
-  "grpMailContent": {
-    "message": "郵件內容"
-  },
-  "grpMiscellaneus": {
-    "message": "雜項"
-  },
-  "grpNameRules": {
-    "message": "命名規則"
-  },
-  "grpSignatures": {
-    "message": "簽名"
-  },
-  "grpTroubleShooting": {
-    "message": "故障排除"
-  },
-  "grpUI": {
-    "message": "用戶界面"
-  },
-  "help.tab": {
-    "message": "求助"
-  },
-  "header.inject": {
-    "message": "從模板注入 <head> 的內容"
-  },
-  "hideExamplesPage": {
-    "message": "隱藏示例選項卡"
-  },
-  "useHTML.tip": {
-    "message": "使用 ESC 字元來做 \" , & , < , > , space. 請查看 \"求助\" 來取得更完整資訊."
-  },
-  "useHTML": {
-    "message": "使用HTML (例如.,<b>bold</b>)"
-  },
   "names.swap": {
     "message": "正確的姓，名"
   },
@@ -1154,11 +1076,76 @@
   "news.minimal.tip": {
     "message": "如果勾選，SmartTemplates 不會更改按鈕標籤。僅會顯示一個小橘色圓點 🟠。"
   },
-  "splashScreen.disable": {
-    "message": "省略啟動畫面"
+  "newsgr.label": {
+    "message": "新聞群組"
   },
-  "splashScreen.tip": {
-    "message": "隱藏信息對話框，在更新時顯示新功能和錯誤修復。"
+  "newsHead": {
+    "message": "最新消息"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} 所有新功能、錯誤修正與長期相容性，都得益於您的支持。{P2}{P1 class=specialOffer} 為了持續推動 SmartTemplates 的開發，您可以在 {salesEnd} 之前以折扣價續訂授權。{P2}{P1 class=bottomhint}🡇 選擇以下選項了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} 您現在也可以透過購買授權支持未來的相容性。{P2}{P1} 所有新功能、錯誤修正與長期相容性，都得益於您的支持。{P2}{P1 class=specialOffer} 為了持續推動 SmartTemplates 的開發，您可以在 {salesEnd} 之前以折扣價購買標準或專業版授權。{P2}{P1 class=bottomhint} 🡇 選擇以下選項了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} 感謝您購買標準版授權來支持 SmartTemplates。{P2}{P1} 無論您的授權是否已過期，您都可以在 {salesEnd} 之前以優惠價格升級為專業版。過期後升級，將從購買日期起享有一整年的使用權。{P2}{P1 class=bottomhint} 🡇 選擇以下選項了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} 感謝您透過專業版授權支持 SmartTemplates——這使得所有新功能、錯誤修正與長期相容性成為可能。{P2}"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} 在下一次重大版本中 {boldEnd}：Thunderbird 即將提示您選擇首選的更新路徑 — 年度 ESR 跟踪版或更快速的每月發布版。{ARelease}了解有關新發佈模型的詳細資訊{A2}。{U1} {L1}ESR 版本將保持在 v140，只會升級次要版本，僅包含安全修復和錯誤修正，這通常更適合企業環境使用。{L2} {L1}每月發布週期將在新功能開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發布模型。為此，您可以安裝 {AcompatCheck}Add‑on Compatibility Check{A2}。{L2} {U2}{P2}{P1} 我們很高興地宣布，SmartTemplates 已完全相容於 Thunderbird 140 —— 下一代 Extended Support Release（ESR）。這意味著在下一個主要支援週期中將保持穩定可靠。{P2}{P1} SmartTemplates 目前仍然支援 Thunderbird 115 及更高版本。在接下來的一年內，隨著我們添加新功能，對 Thunderbird 115 的支援可能會被逐步移除，改為 Thunderbird 128 及更高版本。{P2}{P1} 我們持續監控 Thunderbird 的更新，以確保 SmartTemplates 始終保持相容與可靠，無論您選擇哪條更新路徑。{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 一些用戶在更新到 Thunderbird v142 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。SmartTemplates 之前的版本已經完全相容於 142。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{P2}{P1} 請放心，SmartTemplates 完全支援每月版和 ESR (140.*) 通道，您可以繼續不間斷地工作。 {P2}"
+  },
+  "newsSection.intro": {
+    "message": "{P1}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{P2}"
+  },
+  "newsSection.license": {
+    "message": "由於SmartTemplates的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
+  },
+  "no_button": {
+    "message": "否"
+  },
+  "ongoing-work": {
+    "message": "為了保持 $addonName$ 與 Thunderbird 每月的發行版本同步，我們必須不斷檢查錯誤並上傳調整版本。請在您試用功能並確定它能提高您的生產力後協助我們！",
+    "placeholders": {
+      "addonName": {
+        "content": "$1"
+      }
+    }
+  },
+  "openInBrowser": {
+    "message": "在瀏覽器中打開"
+  },
+  "ownmail.label": {
+    "message": "您的電子郵件"
+  },
+  "ownname.label": {
+    "message": "您的姓名"
+  },
+  "p.label": {
+    "message": "上午/下午"
+  },
+  "p1.label": {
+    "message": "上午."
+  },
+  "p2.label": {
+    "message": "上午."
+  },
+  "p3.label": {
+    "message": "上午"
+  },
+  "parameter.escapeCommas": {
+    "message": "要在此文字中顯示逗號，請在前面加上反斜線，如下所示："
+  },
+  "parameters": {
+    "message": "參量"
+  },
+  "params.optional": {
+    "message": "可選參數"
   },
   "parseSignature": {
     "message": "進程簽名"
@@ -1166,65 +1153,11 @@
   "parseSignature.tip": {
     "message": "替換簽名中的變量。"
   },
-  "quoteHeaderBox.label": {
-    "message": "引用表頭"
+  "paste.label": {
+    "message": "貼上"
   },
-  "quoteHeaderBox.tip": {
-    "message": "將引用表頭寫在這個對話框,例如.在%date% wrote %from(name)%:"
-  },
-  "quoteHeader.replace.tip": {
-    "message": "停用預設的引用表頭.請插入您的預設表頭到文字方塊."
-  },
-  "replaceSignature": {
-    "message": "當改變電子郵件身份時置換簽名檔"
-  },
-  "replacebr.tooltip": {
-    "message": "啟用此選項將自動將模板中的換行符轉換為 <br> 標籤。在 HTML 模式下，最好手動添加 <br> 標籤或使用 <p> 來表示段落，而不是依賴此選項。"
-  },
-  "replacebr.label": {
-    "message": "用 <br> 替換換行符"
-  },
-  "rsp.label": {
-    "message": "將以下設置應用於回复的消息"
-  },
-  "rsp.tab": {
-    "message": "回覆"
-  },
-  "rsphead.label": {
-    "message": "使用預設的引用表頭來代替"
-  },
-  "rspmsg.cap": {
-    "message": "回覆"
-  },
-  "account.common": {
-    "message": "常見"
-  },
-  "account": {
-    "message": "賬戶"
-  },
-  "displayStatusIcon": {
-    "message": "在狀態列顯示按鈕"
-  },
-  "replaceBRinSignature.label": {
-    "message": "用 <br> 替換純文本簽名中的換行符"
-  },
-  "silentUpdates": {
-    "message": "不要打開帶有版本歷史記錄的選項卡"
-  },
-  "silentUpdates.tip": {
-    "message": "更新 SmartTemplates 後不要打開更改日誌。"
-  },
-  "template": {
-    "message": "樣板"
-  },
-  "template.tip": {
-    "message": "將樣板寫在這個對話框,例如.您好 %from(name)%, <br> 感謝您的郵件 <br> regards, <br>%ownname%"
-  },
-  "templateBox.tip": {
-    "message": "您可以透過變數來增強模板。請打開變數頁面以獲取更多資訊。"
-  },
-  "variables.tab": {
-    "message": "變數"
+  "preferences.title": {
+    "message": "SmartTemplates 設定"
   },
   "preheader": {
     "message": "僅在移動郵件客戶端可見的預覽文本，將插入到電子郵件正文的開頭。"
@@ -1235,9 +1168,6 @@
   "preheader.inlineStyles": {
     "message": "[可選] 添加您自己的樣式屬性，以分號分隔。沒有這個參數，SmartTemplates 將插入 'display:none' 來自動使該部分不可見。"
   },
-  "examples.openBrowser": {
-    "message": "在瀏覽器中打開範例頁面"
-  },
   "preheader.text": {
     "message": "預覽文本必須包含在雙引號內，雙引號也可以包含 $clipboardStarred$ 關鍵字。或者您可以使用 $clipboardLiteral$ 或 $selectionLiteral$（後者僅在從智能片段使用時有效）",
     "placeholders": {
@@ -1245,13 +1175,13 @@
         "content": "$1",
         "example": "clipboard"
       },
-      "selectionLiteral": {
-        "content": "$2",
-        "example": "\"*selection*\""
-      },
       "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
       }
     }
   },
@@ -1270,9 +1200,6 @@
   "prompt.email": {
     "message": "輸入電子郵件地址"
   },
-  "prompt.fileTemplates.editor.setup": {
-    "message": "請選擇外部編輯器以編輯您的 HTML 範本。我建議使用僅支援純文字 HTML 的編輯器，具有語法突顯功能，如 notepad++ 或 Visual Studio Code。"
-  },
   "prompt.fileTemplates.editor.pathError": {
     "message": "找不到路徑上的編輯器：$filePath$",
     "placeholders": {
@@ -1281,6 +1208,9 @@
         "example": "C:\\notepad++"
       }
     }
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "請選擇外部編輯器以編輯您的 HTML 範本。我建議使用僅支援純文字 HTML 的編輯器，具有語法突顯功能，如 notepad++ 或 Visual Studio Code。"
   },
   "prompt.text": {
     "message": "輸入要添加或設置的文本"
@@ -1291,6 +1221,21 @@
   "purchase-heading": {
     "message": "通过许可证支持"
   },
+  "quote_changers.cap": {
+    "message": "引用文本修改"
+  },
+  "quote_changers.desc": {
+    "message": "高級變量，用於從引用的零件中刪除文本/標籤並節省空間。"
+  },
+  "quoteHeader.replace.tip": {
+    "message": "停用預設的引用表頭.請插入您的預設表頭到文字方塊."
+  },
+  "quoteHeaderBox.label": {
+    "message": "引用表頭"
+  },
+  "quoteHeaderBox.tip": {
+    "message": "將引用表頭寫在這個對話框,例如.在%date% wrote %from(name)%:"
+  },
   "quoteLevel": {
     "message": "[可選，數字]：從哪個最低報價水平開始"
   },
@@ -1299,12 +1244,6 @@
   },
   "quotePlaceholder.level": {
     "message": "[可選，數字]最高引文級別，用於從對話中刪除較舊的引號。"
-  },
-  "quote_changers.cap": {
-    "message": "引用文本修改"
-  },
-  "quote_changers.desc": {
-    "message": "高級變量，用於從引用的零件中刪除文本/標籤並節省空間。"
   },
   "recipient.label": {
     "message": "最終收件人"
@@ -1315,20 +1254,32 @@
   "renew-your-license": {
     "message": "續訂您的許可證。"
   },
+  "replacebr.label": {
+    "message": "用 <br> 替換換行符"
+  },
+  "replacebr.tooltip": {
+    "message": "啟用此選項將自動將模板中的換行符轉換為 <br> 標籤。在 HTML 模式下，最好手動添加 <br> 標籤或使用 <p> 來表示段落，而不是依賴此選項。"
+  },
+  "replaceBRinSignature.label": {
+    "message": "用 <br> 替換純文本簽名中的換行符"
+  },
+  "replacementHTML": {
+    "message": "參數必須用雙引號引起來-文本或html標記都將在找到匹配項時插入引號中。"
+  },
   "replaceQuotedTags": {
     "message": "用文本或HTML替換引文中的標籤"
   },
   "replaceQuotedText": {
     "message": "用HTML替換帶引號的文本"
   },
+  "replaceSignature": {
+    "message": "當改變電子郵件身份時置換簽名檔"
+  },
   "replaceText": {
     "message": "用其他內容替換一些文本。"
   },
   "replaceText.selection": {
     "message": "[可選] 將當前選取範圍內的所有符合文字替換為替換文字 - 僅適用於智慧片段。"
-  },
-  "replacementHTML": {
-    "message": "參數必須用雙引號引起來-文本或html標記都將在找到匹配項時插入引號中。"
   },
   "resolveABRemoveMail": {
     "message": "除非指定格式參數，否則刪除電子郵件地址"
@@ -1339,20 +1290,32 @@
   "resolveNamesFromAB": {
     "message": "解析地址簿中的名稱"
   },
+  "resolveNamesFromAB_tip": {
+    "message": "此功能不適用於某些遠程通訊簿，例如 LDAP。"
+  },
   "resolveNamesFromABDisplay": {
     "message": "如果名字缺失，使用顯示名稱"
   },
   "resolveNamesFromABNick": {
     "message": "用暱稱替換名字（如果存在）"
   },
-  "resolveNamesFromAB_tip": {
-    "message": "此功能不適用於某些遠程通訊簿，例如 LDAP。"
-  },
   "resolveNamesFromCardBook": {
     "message": "支持 CardBook（專業版功能）"
   },
   "resolveNamesFromCardBook.fallback": {
     "message": "如果找不到聯繫人，請使用標準地址簿"
+  },
+  "rsp.label": {
+    "message": "將以下設置應用於回复的消息"
+  },
+  "rsp.tab": {
+    "message": "回覆"
+  },
+  "rsphead.label": {
+    "message": "使用預設的引用表頭來代替"
+  },
+  "rspmsg.cap": {
+    "message": "回覆"
   },
   "s.label": {
     "message": "秒 (00到59)"
@@ -1371,6 +1334,15 @@
   },
   "sig2.label": {
     "message": "從賬戶設定的簽名檔但不要 '--'"
+  },
+  "silentUpdates": {
+    "message": "不要打開帶有版本歷史記錄的選項卡"
+  },
+  "silentUpdates.tip": {
+    "message": "更新 SmartTemplates 後不要打開更改日誌。"
+  },
+  "smarttemplate4_button": {
+    "message": "編輯樣板/引用表頭"
   },
   "smartTemplate4.changeTemplate.label": {
     "message": "變更範本…"
@@ -1395,9 +1367,6 @@
   },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates 設定"
-  },
-  "smarttemplate4_button": {
-    "message": "編輯樣板/引用表頭"
   },
   "SmartTemplateMainButton.expired": {
     "message": "證件過期！"
@@ -1432,8 +1401,71 @@
   "specform_note.label": {
     "message": "假如變數 {%cc(name)%} 可以被置換時,將會顯示插入兩個中括號的 {[[Cc: %cc(name)%]]}!"
   },
+  "special-offer-content": {
+    "message": "通過購買 {linkStartPro}SmartTemplates Pro{linkEnd} 許可證升級您的功能並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$salesEnd${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 選擇標準功能。",
+    "placeholders": {
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      },
+      "salesEnd": {
+        "content": "$1",
+        "example": "August 22"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "幫助保持 $addon$ 兼容",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart}親愛的{name}{boldEnd}，請通過獲得許可來支持 $addon$。",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "立即續訂您的許可證並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$salesEnd${boldEnd}。",
+    "placeholders": {
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      },
+      "salesEnd": {
+        "content": "$1",
+        "example": "September 11"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "立即從 SmartTemplates Standard 升級到 Pro 並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$salesEnd${boldEnd}。",
+    "placeholders": {
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      },
+      "salesEnd": {
+        "content": "$1",
+        "example": "September 11"
+      }
+    }
+  },
   "spellcheck.label": {
     "message": "設置拼寫檢查語言。 示例值：(en, de-DE, es-ES, ru) - 注意必須安裝字典。"
+  },
+  "splashScreen.disable": {
+    "message": "省略啟動畫面"
+  },
+  "splashScreen.tip": {
+    "message": "隱藏信息對話框，在更新時顯示新功能和錯誤修復。"
   },
   "st.confirmVersionLink": {
     "message": "要顯示SmartTemplates的更改紀錄嗎?"
@@ -1468,6 +1500,15 @@
   "st.fileTemplates.restrictionQuestion": {
     "message": "為什麼此菜單中的某些模板被禁用？"
   },
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "要配置超過 $max_Cats$ 的類別，請獲取 SmartTemplates Pro 許可證…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "每個菜單的模板數量受到限制。 您可以在沒有許可證的情況下配置最多 $max_free$ 菜單項，以及使用 SmartTemplates Standard 許可證配置 $max_std$ 菜單項！ SmartTemplates Pro 不受限制。",
     "placeholders": {
@@ -1478,15 +1519,6 @@
       "max_std": {
         "content": "$2",
         "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "要配置超過 $max_Cats$ 的類別，請獲取 SmartTemplates Pro 許可證…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
       }
     }
   },
@@ -1523,17 +1555,35 @@
   "st.menu.hideLabel": {
     "message": "隱藏按鈕標籤"
   },
+  "st.menu.license": {
+    "message": "檢查許可證狀態..."
+  },
+  "st.menu.license.tooltip": {
+    "message": "單擊此處檢查 $addonName$ 的許可證狀態。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "全部回复"
+  },
+  "st.menu.replyList": {
+    "message": "回復清單"
+  },
+  "st.menu.supportSite": {
+    "message": "支持站點…"
+  },
   "st.menu.template.default": {
     "message": "默認模板（賬戶）"
   },
   "st.menu.template.last": {
     "message": "最後一個模板"
   },
-  "st.menu.license": {
-    "message": "檢查許可證狀態..."
-  },
-  "st.menu.license.tooltip": {
-    "message": "單擊此處檢查 $addonName$ 的許可證狀態。",
+  "st.menu.update.tooltip": {
+    "message": "從此菜單中選擇“最新消息”以閱讀 $addonName$ 中的新內容。\n 這會將按鈕重置為其默認外觀。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1552,24 +1602,6 @@
   },
   "st.menuaccess.replyList": {
     "message": "L"
-  },
-  "st.menu.replyAll": {
-    "message": "全部回复"
-  },
-  "st.menu.replyList": {
-    "message": "回復清單"
-  },
-  "st.menu.supportSite": {
-    "message": "支持站點…"
-  },
-  "st.menu.update.tooltip": {
-    "message": "從此菜單中選擇“最新消息”以閱讀 $addonName$ 中的新內容。\n 這會將按鈕重置為其默認外觀。",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "st.notification.bodyModified": {
     "message": "Thunderbird 說您已經輸入了一些內容，您是否仍然要載入模板？"
@@ -1621,9 +1653,6 @@
   "st.notification.premium.btn.getLicense": {
     "message": "購買許可證"
   },
-  "st.notification.premium.sendByFilter": {
-    "message": "使用有效的 SmartTemplates Pro 許可證，現在將自動發送電子郵件。"
-  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "續訂域許可證"
   },
@@ -1633,17 +1662,14 @@
   "st.notification.premium.btn.upgrade": {
     "message": "升級到專業版"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "使用有效的 SmartTemplates Pro 許可證，現在將自動發送電子郵件。"
+  },
   "st.notification.premium.text": {
     "message": "{1} 是高級功能。它將繼續可用，但升級到 SmartTemplates Pro 許可證可移除此提醒並支持此外掛。"
   },
   "st.notification.premium.text.plural": {
     "message": "{1} 是高級功能。它們將繼續可用，但升級到 SmartTemplates Pro 許可證可移除此提醒並支持此外掛。"
-  },
-  "st.notification.standard.text": {
-    "message": "{1} 是授權功能。它將繼續可用，但取得 SmartTemplates 許可證可移除此提醒並支持此外掛。"
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} 是授權功能。它們將繼續可用，但取得 SmartTemplates 許可證可移除此提醒並支持此外掛。"
   },
   "st.notification.spellcheck.error": {
     "message": "無法切換拼寫檢查語言。 你安裝了正確的字典嗎？"
@@ -1653,6 +1679,12 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "找不到字典“{0}”。"
+  },
+  "st.notification.standard.text": {
+    "message": "{1} 是授權功能。它將繼續可用，但取得 SmartTemplates 許可證可移除此提醒並支持此外掛。"
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} 是授權功能。它們將繼續可用，但取得 SmartTemplates 許可證可移除此提醒並支持此外掛。"
   },
   "st.notification.usedLastTemplate": {
     "message": "正在重複使用上次選擇的外部範本: {template}{br}💾 根據全域設定："
@@ -1681,6 +1713,21 @@
   "standardformat.config": {
     "message": "默認格式…"
   },
+  "statusIcon.IconHoverText": {
+    "message": "懸停時顯示文本"
+  },
+  "statusIcon.IconOnly": {
+    "message": "僅圖標"
+  },
+  "statusIcon.IconText": {
+    "message": "圖標和文本"
+  },
+  "stringmanip_function.cap": {
+    "message": "字符串操作"
+  },
+  "stringmanip_function.explain": {
+    "message": "這些功能可用於刪除或替換電子郵件模板或引用標題中的文本。"
+  },
   "stringmanip.alttext": {
     "message": "[可選參數]替代文本：如果未找到匹配項，則插入替代文本。"
   },
@@ -1702,80 +1749,20 @@
   "stringmanip.textTransform.ucase": {
     "message": "將整個匹配項轉換為大寫。"
   },
-  "stringmanip_function.cap": {
-    "message": "字符串操作"
+  "styleSanitizeSettings": {
+    "message": "防止樣式重複"
   },
-  "stringmanip_function.explain": {
-    "message": "這些功能可用於刪除或替換電子郵件模板或引用標題中的文本。"
+  "styleSanitizeSettings.tip": {
+    "message": "在插入 HTML 時，自動檢測並移除內容相同的 <style> 元素。"
+  },
+  "sub_var.cap": {
+    "message": "主旨"
   },
   "sub.label": {
     "message": "回覆/轉寄郵件的主旨"
   },
   "sub2.label": {
     "message": "目前郵件的主旨"
-  },
-  "sub_var.cap": {
-    "message": "主旨"
-  },
-  "special-offer-content": {
-    "message": "通過購買 {linkStartPro}SmartTemplates Pro{linkEnd} 許可證升級您的功能並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$salesEnd${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 選擇標準功能。",
-    "placeholders": {
-      "salesEnd": {
-        "content": "$1",
-        "example": "August 22"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "30%"
-      }
-    }
-  },
-  "special-offer-expiry": {
-    "message": "6月13日"
-  },
-  "special-offer-head": {
-    "message": "幫助保持 $addon$ 兼容",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{boldStart}親愛的{name}{boldEnd}，請通過獲得許可來支持 $addon$。",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-renew": {
-    "message": "立即續訂您的許可證並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$salesEnd${boldEnd}。",
-    "placeholders": {
-      "salesEnd": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  },
-  "special-offer-upgrade": {
-    "message": "立即從 SmartTemplates Standard 升級到 Pro 並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$salesEnd${boldEnd}。",
-    "placeholders": {
-      "salesEnd": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
   },
   "support-preference": {
     "message": "這是支持$addonName$的首選方式。",
@@ -1837,9 +1824,6 @@
   "suppressQuoteHdr": {
     "message": "無論賬戶設置如何，都完全刪除報價標題。"
   },
-  "table.cap": {
-    "message": "變數使用方法"
-  },
   "table_fwd.label": {
     "message": "轉寄"
   },
@@ -1854,6 +1838,9 @@
   },
   "table_reply.label": {
     "message": "回覆"
+  },
+  "table.cap": {
+    "message": "變數使用方法"
   },
   "tags.cap": {
     "message": "郵件標籤"
@@ -1870,11 +1857,11 @@
   "tags.formatString": {
     "message": "用於格式化每個標籤的自訂 HTML 代碼片段。使用 $label$ 和 $color$ 來插入標籤的文字或（十六進位）顏色值。",
     "placeholders": {
-      "label": {
-        "content": "$label$"
-      },
       "color": {
         "content": "$color$"
+      },
+      "label": {
+        "content": "$label$"
       }
     }
   },
@@ -1887,20 +1874,20 @@
   "tags.plaintext": {
     "message": "以純文字形式插入郵件標籤列表，用逗號分隔。"
   },
+  "tags.preset.darkFilled": {
+    "message": "適用於深色背景的有用預設。"
+  },
   "tags.presets": {
     "message": "佈局預設"
   },
   "tags.presets.intro": {
     "message": "預創建樣式列表，以圖形方式顯示標籤。"
   },
-  "tags.preset.darkFilled": {
-    "message": "適用於深色背景的有用預設。"
-  },
   "tags.transform": {
     "message": "用於轉換標籤文字的可選參數。"
   },
-  "testDriveS": {
-    "message": "您可以使用標准許可證測試高級功能，但可能會受到輕微限制。"
+  "template": {
+    "message": "樣板"
   },
   "template.category": {
     "message": "類別"
@@ -1910,6 +1897,15 @@
   },
   "template.category.tooltip": {
     "message": "創建子菜單以對模板進行分組"
+  },
+  "template.tip": {
+    "message": "將樣板寫在這個對話框,例如.您好 %from(name)%, <br> 感謝您的郵件 <br> regards, <br>%ownname%"
+  },
+  "templateBox.tip": {
+    "message": "您可以透過變數來增強模板。請打開變數頁面以獲取更多資訊。"
+  },
+  "testDriveS": {
+    "message": "您可以使用標准許可證測試高級功能，但可能會受到輕微限制。"
   },
   "thanks-for-installing-intro": {
     "message": "感謝您安裝 $addonName$.",
@@ -1941,14 +1937,14 @@
   "timezone.explain": {
     "message": "通過替換tz參數為日期變量強制指定時區 (GMT, EST, CST, PST 等等)"
   },
-  "to.label": {
-    "message": "收件者姓名 (預設)"
-  },
   "to_note.label": {
     "message": "當姓名無法使用時,將會顯示電子郵件地址"
   },
   "to_var.cap": {
     "message": "收件者(到, recipient)"
+  },
+  "to.label": {
+    "message": "收件者姓名 (預設)"
   },
   "tofirstname.label": {
     "message": "收件者名字"
@@ -2001,14 +1997,23 @@
   "urls.linkDescription": {
     "message": "这些按钮会打开外部网页。请注意，这些页面仅提供英文版本。您可以使用{{linkStart}}Google 翻译服务{{linkEnd}}将其翻译成您的母语。"
   },
-  "variable.search": {
-    "message": "輸入搜索詞並按 {{Enter}}。 按 {{F4}} 重複搜索。"
+  "useHTML": {
+    "message": "使用HTML (例如.,<b>bold</b>)"
+  },
+  "useHTML.tip": {
+    "message": "使用 ESC 字元來做 \" , & , < , > , space. 請查看 \"求助\" 來取得更完整資訊."
   },
   "var_custom.cap": {
     "message": "自訂 '日期格式' 的變數"
   },
   "var_xsent.cap": {
     "message": "%X:=sent% 修改者"
+  },
+  "variable.search": {
+    "message": "輸入搜索詞並按 {{Enter}}。 按 {{F4}} 重複搜索。"
+  },
+  "variables.tab": {
+    "message": "變數"
   },
   "vouchers.title": {
     "message": "优惠券"
@@ -2038,23 +2043,23 @@
       }
     }
   },
-  "xsent_long.cap": {
-    "message": "長字串的範例"
-  },
   "xsent_long_result.label": {
     "message": "答案: 星期日, 20/12/2011 at 16:24 o'clock"
   },
+  "xsent_long.cap": {
+    "message": "長字串的範例"
+  },
   "xsent_note.label": {
     "message": "一般來說,日期/時間的變數都會設定為目前的值(目前=指當您建立這封郵件的時候).當合併了 %X:=sent%,則日期/時間變數將會對應原來郵件的日期/時間."
-  },
-  "xsent_short.cap": {
-    "message": "短字串的範例"
   },
   "xsent_short_note.label": {
     "message": "以下變量可用於兩種變體"
   },
   "xsent_short_result.label": {
     "message": "答案: 星期日, 20/12/2011 08:54:21"
+  },
+  "xsent_short.cap": {
+    "message": "短字串的範例"
   },
   "y.up.label": {
     "message": "年 (1970)"

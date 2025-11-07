@@ -32,8 +32,17 @@
   "about.label": {
     "message": "SmartTemplates permet de personnaliser aisément les en-têtes de Thunderbird en utilisant des modèles. Les modèles peuvent être créés pour chaque compte ou de manière globale (pour l'ensemble des comptes)."
   },
+  "about.tab": {
+    "message": "À propos"
+  },
   "accept_button": {
     "message": "Accepter"
+  },
+  "account": {
+    "message": "Compte"
+  },
+  "account.common": {
+    "message": "Options globales"
   },
   "account.label": {
     "message": "Choix du compte :"
@@ -58,17 +67,32 @@
   "addon-authors-struggle": {
     "message": "Pour continuer à être utiles, nous, les développeurs de modules complémentaires, devons désormais financer les ressources nécessaires pour corriger et réécrire afin que nos utilisateurs puissent continuer à bénéficier des fonctionnalités que nous fournissons."
   },
+  "addressDelimiter": {
+    "message": "Énumérer plusieurs correspondants en utilisant :"
+  },
+  "addressDelimiter.tip": {
+    "message": "Délimiteur entre plusieurs correspondants. Outlook utilise des points-virgules (;), pour Thunderbird, par défaut, ce sont des virgules (,)."
+  },
+  "addSigBreakHTML": {
+    "message": "Ajouter -- dans le courriels HTML"
+  },
+  "addSigBreakHTML.tip": {
+    "message": "Ajoute toujours le séparateur -- avant la signature (dans les courriels HTML)"
+  },
+  "addSigBreakPlaintext": {
+    "message": "Ajouter -- dans les courriels au format texte"
+  },
+  "addSigBreakPlaintext.tip": {
+    "message": "Ajoute toujours le séparateur -- avant la signature (dans les courriels HTML)"
+  },
   "advanced.label": {
     "message": "Développer la boîte de dialogue"
   },
+  "advanced.tab": {
+    "message": "Paramètres avancés"
+  },
   "any.label": {
     "message": "N'importe quel entête"
-  },
-  "aria.settings.nav": {
-    "message": "Pages des paramètres - appuyez sur Entrée pour accéder à la page."
-  },
-  "aria.settings.nav.selected": {
-    "message": "Page sélectionnée."
   },
   "aria.accordion.header.expand": {
     "message": "- appuyez sur Entrée pour ouvrir la section."
@@ -81,6 +105,12 @@
   },
   "aria.moreInfo": {
     "message": "Plus d'infos"
+  },
+  "aria.settings.nav": {
+    "message": "Pages des paramètres - appuyez sur Entrée pour accéder à la page."
+  },
+  "aria.settings.nav.selected": {
+    "message": "Page sélectionnée."
   },
   "attach.label": {
     "message": "Ajouter comme fichier joint"
@@ -172,14 +202,14 @@
   "capitalizeNames": {
     "message": "Noms en lettres capitales"
   },
-  "cc.label": {
-    "message": "Noms des destinataires en copie (Défaut)"
-  },
   "cc_note.label": {
     "message": "Quand le nom n'est pas disponible, l'adresse électronique sera affichée à la place"
   },
   "cc_var.cap": {
     "message": "Destinataires en copie (CC)"
+  },
+  "cc.label": {
+    "message": "Noms des destinataires en copie (Défaut)"
   },
   "ccfirstname.label": {
     "message": "Prénoms des destinataires en copie"
@@ -190,35 +220,55 @@
   "ccname.label": {
     "message": "Noms des destinataires en copie"
   },
-  "clipboardFunctions": {
-    "message": "Fonctions du Presse-papiers"
-  },
   "clipboard.copy": {
     "message": "copie le texte dans le presse-papiers."
-  },
-  "clipboard.insert": {
-    "message": "insère le contenu actuel du presse-papiers à cette position."
-  },
-  "clipboard.from": {
-    "message": "(exemple pour toute variable d'adresse) copier l'adresse e-mail de l'expéditeur d'origine dans le presse-papiers."
   },
   "clipboard.dateformat": {
     "message": "copie la date formatée dans le presse-papiers. La chaîne de format doit être entre guillemets. Pour plus d'informations sur la syntaxe de formatage, consultez également la section suivante : "
   },
-  "clipboard.setHeader": {
-    "message": "Utilisez le contenu du presse-papiers pour définir le cc - (fonctionne pour n'importe quel en-tête textuel).board."
+  "clipboard.from": {
+    "message": "(exemple pour toute variable d'adresse) copier l'adresse e-mail de l'expéditeur d'origine dans le presse-papiers."
   },
-  "clipboard.matchSubject": {
-    "message": "Trouve le texte correspondant du sujet et le copie dans le presse-papiers s'il est trouvé."
+  "clipboard.insert": {
+    "message": "insère le contenu actuel du presse-papiers à cette position."
   },
   "clipboard.matchBody": {
     "message": "Correspond au texte du contenu de l'e-mail d'origine et le copie dans le presse-papiers s'il est trouvé."
   },
+  "clipboard.matchSubject": {
+    "message": "Trouve le texte correspondant du sujet et le copie dans le presse-papiers s'il est trouvé."
+  },
   "clipboard.notes": {
     "message": "Toute fonction qui utilise {toclip} effacera le presse-papiers si elle ne renvoie aucune donnée. Vous pouvez utiliser les fonctions du presse-papiers pour transférer des données dans un fragment de texte chargé avec la commande {file}."
   },
+  "clipboard.setHeader": {
+    "message": "Utilisez le contenu du presse-papiers pour définir le cc - (fonctionne pour n'importe quel en-tête textuel).board."
+  },
+  "clipboardFunctions": {
+    "message": "Fonctions du Presse-papiers"
+  },
   "close.label": {
     "message": "Réduire la boîte de dialogue"
+  },
+  "common.use": {
+    "message": "Utiliser les options globales"
+  },
+  "common.use.tip": {
+    "message": "Les paramètres ci-dessous sont appliqués lorsqu'aucun modèle spécifique n'existe pour une identité ou si « $pref_def$ » est sélectionné pour cette identité.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1"
+      }
+    }
+  },
+  "common.use.title": {
+    "message": "Désactivez '$pref_def$' pour créer des paramètres de modèle spécifiques pour ce compte.",
+    "placeholders": {
+      "pref_def": {
+        "content": "$1",
+        "example": "Utiliser Commun"
+      }
+    }
   },
   "conditional.forwardMode": {
     "message": "Si l'e-mail est transféré en ligne, le premier paramètre de texte est inséré. Le deuxième paramètre de texte est utilisé lorsque le courrier est transféré en tant que pièce jointe."
@@ -328,11 +378,38 @@
   "day.7.short": {
     "message": "Sam"
   },
+  "debug.mode": {
+    "message": "Mode débogage"
+  },
+  "debug.tip": {
+    "message": "Enregistre les activités de SmartTemplates dans la console d’erreurs. Les entrées de journal supplémentaires pour diverses fonctions peuvent être activées/désactivées avec la roue des paramètres."
+  },
+  "defaultCharset": {
+    "message": "Jeu de caractères de secours"
+  },
+  "defaultCharset.tip": {
+    "message": "Si le jeu de caractères de l'e-mail d'origine ne peut pas être déterminé, celui-ci sera utilisé en secours pour décoder les en-têtes et le contenu."
+  },
   "defaultMimeFormat": {
     "message": "Format d'adresse par défaut:"
   },
   "defaultMimeFormat_tip": {
     "message": "Format à utiliser lors du remplacement des adresses %yo% %from% %cc%. Par exemple.  (firstname,lastname,??mail) affichera le prénom suivi du nom de famille; si les deux sont indisponibles, l'adresse e-mail sera affichée."
+  },
+  "defaultTemplate": {
+    "message": "Modèle par défaut"
+  },
+  "defaultTemplate.behavior": {
+    "message": "Comportement lors de la rédaction ou de la réponse sans sélectionner de modèle dans la liste déroulante."
+  },
+  "defaultTemplate.useAccount": {
+    "message": "Utilisez le modèle de compte."
+  },
+  "defaultTemplate.useLastNotify": {
+    "message": "Afficher une notification si le dernier modèle sélectionné est réutilisé."
+  },
+  "defaultTemplate.useLastTemplate": {
+    "message": "Utilisez le dernier modèle externe sélectionné dans le menu déroulant."
   },
   "deleteForwardedBody": {
     "message": "Cette fonction supprime le corps de l'e-mail d'origine lors du transfert en ligne. Peut être utilisé pour traiter les informations des e-mails automatisés tout en supprimant les informations d'origine."
@@ -348,6 +425,9 @@
   },
   "developer.label": {
     "message": "Développeur"
+  },
+  "displayStatusIcon": {
+    "message": "Afficher un bouton dans la barre des modules"
   },
   "domainLicense.email": {
     "message": "Nous vous contactons en utilisant ce courriel pour générer votre licence de domaine ; veuillez nous laisser deux jours ouvrés pour vous contacter. Indiquez le nom de domaine pour la licence dans la page suivante."
@@ -387,6 +467,18 @@
   },
   "examples": {
     "message": "Exemples"
+  },
+  "examples.openBrowser": {
+    "message": "ouvrir la page d'exemples dans le navigateur"
+  },
+  "examples.supportSite": {
+    "message": "(du site d'assistance en anglais)"
+  },
+  "examples.tab": {
+    "message": "Exemples"
+  },
+  "examples.tooltip": {
+    "message": "Afficher des exemples de modèles de https://smarttemplates.quickfolders.org/templates.html. Uniquement disponible en mode en ligne"
   },
   "export.label": {
     "message": "Exportation"
@@ -473,11 +565,20 @@
   "fix_var.cap": {
     "message": "Variables fixes"
   },
+  "fix_vartz_note.label": {
+    "message": "Peut être combinée avec %X:=sent%"
+  },
   "fix_vartz.cap": {
     "message": "Variables fixes pour le format de date et la zone horaire"
   },
-  "fix_vartz_note.label": {
-    "message": "Peut être combinée avec %X:=sent%"
+  "fontSettings": {
+    "message": "Police de l'éditeur de gabarit"
+  },
+  "forceParagraphs": {
+    "message": "Forcer le mode paragraphe"
+  },
+  "forceParagraphs.tip": {
+    "message": "S'assurer que le curseur se situe dans un paragraphe. Nous demandons également la création d'un nouveau paragraphe lorsque l'on appuie sur la touche [Entrée] à l'option de composition Thunderbird."
   },
   "fpFilterHtmlTemplate": {
     "message": "Modèle HTML"
@@ -503,14 +604,14 @@
   "freeLicense": {
     "message": "Si vous avez fait un don récemment au projet SmartTemplates ou y avez contribué en le traduisant ou en écrivant des patchs, vous pourriez être éligible à une clé de licence gratuite. Contactez-moi par l'onglet d'aide dans les options de SmartTemplates."
   },
-  "from.label": {
-    "message": "Nom de l'expéditeur (défaut)"
-  },
   "from_note.label": {
     "message": "Quand le nom n'est pas disponible, l'adresse électronique sera affichée à la place"
   },
   "from_var.cap": {
     "message": "Expéditeur (De)"
+  },
+  "from.label": {
+    "message": "Nom de l'expéditeur (défaut)"
   },
   "fromfirstname.label": {
     "message": "Prénom de l'expéditeur"
@@ -521,14 +622,59 @@
   "fromname.label": {
     "message": "Nom de l'expéditeur"
   },
+  "fwd.label": {
+    "message": "Appliquer les paramètres suivants au message transféré"
+  },
+  "fwd.tab": {
+    "message": "Transférer"
+  },
+  "fwdhead.label": {
+    "message": "Désactiver l'entête par défaut de Thunderbird"
+  },
+  "fwdmsg.cap": {
+    "message": "Messages transférés"
+  },
   "getSmartTemplate4": {
     "message": "Obtenir la licence SmartTemplates"
+  },
+  "global.tab": {
+    "message": "Paramètres généraux"
+  },
+  "grpAdvanced": {
+    "message": "Fonctions avancées"
+  },
+  "grpMailContent": {
+    "message": "Contenu du courriel"
+  },
+  "grpMiscellaneus": {
+    "message": "Divers"
+  },
+  "grpNameRules": {
+    "message": "Règles pour nom"
+  },
+  "grpSignatures": {
+    "message": "Signatures"
+  },
+  "grpTroubleShooting": {
+    "message": "Dépannage"
+  },
+  "grpUI": {
+    "message": "Interface utilisateur"
   },
   "guessNameFromMail": {
     "message": "Devinez Nom des parties de l'adresse e-mail si manquant"
   },
   "h.label": {
     "message": "Heures, format 24h (00 à 23)"
+  },
+  "header_function.cap": {
+    "message": "Modifier l'entête mail"
+  },
+  "header_function.explain": {
+    "message": "Cette fonction peut être utilisée pour modifier les entêtes de mail, comme décrit ici :"
+  },
+  "header_function.scope": {
+    "message": "Peut êre utilisé avec ces entêtes :"
   },
   "header.append.subject": {
     "message": "ajouter le texte au sujet"
@@ -538,6 +684,9 @@
   },
   "header.delete.subject": {
     "message": "supprimer le texte du sujet (expression régulière)"
+  },
+  "header.inject": {
+    "message": "Injecter le contenu de <head> à partir du modèle"
   },
   "header.prefix.subject": {
     "message": "préfixer le sujet avec le texte"
@@ -550,15 +699,6 @@
   },
   "header.set.to": {
     "message": "remplacer le destinataire par l'adresse électronique"
-  },
-  "header_function.cap": {
-    "message": "Modifier l'entête mail"
-  },
-  "header_function.explain": {
-    "message": "Cette fonction peut être utilisée pour modifier les entêtes de mail, comme décrit ici :"
-  },
-  "header_function.scope": {
-    "message": "Peut êre utilisé avec ces entêtes :"
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
@@ -589,14 +729,20 @@
   "heading.expandAll": {
     "message": "développer toutes les entrées"
   },
-  "help.label": {
-    "message": "Assistant"
-  },
   "help_dialog_title": {
     "message": "Aide de SmartTemplates"
   },
   "help_keyword.cap": {
     "message": "Aide"
+  },
+  "help.label": {
+    "message": "Assistant"
+  },
+  "help.tab": {
+    "message": "Assistant"
+  },
+  "hideExamplesPage": {
+    "message": "Masquer l'onglet d'exemples"
   },
   "html_note.cap": {
     "message": "Notes pour l'utilisation de HTML"
@@ -619,9 +765,6 @@
   "identity_ab.phoneno": {
     "message": "Numéro de téléphone"
   },
-  "im-ex.cap": {
-    "message": "Paramétrages et importation/exportation de modèles"
-  },
   "im-ex_note1.label": {
     "message": "Vous pouvez exporter et importer vos réglages et modèles associés à chaque compte."
   },
@@ -640,11 +783,17 @@
   "im-ex_note6.label": {
     "message": "REMARQUE : les plateformes Apple/Macintosh auront les options dans la barre de menu en haut au lieu de la popup d'option de SmartTemplates. Ceci est un comportement normal et ne peut pas être modifié."
   },
+  "im-ex.cap": {
+    "message": "Paramétrages et importation/exportation de modèles"
+  },
   "import.label": {
     "message": "Importation"
   },
   "insert.label": {
     "message": "Insérer une variable"
+  },
+  "insertCursor": {
+    "message": "Insérer un espace pour mettre en évidence le %curseur%"
   },
   "insertSnippet.button": {
     "message": "Insérer un extrait"
@@ -707,13 +856,13 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Cher $username$ {boldEnd}, vous pouvez désormais passer à SmartTemplates Pro pour {boldStart} $discount$ de moins {boldEnd} - tout en prolongeant votre licence d'une année complète. D'autres grands changements sur Thunderbird sont à venir et j'ai besoin de {boldStart} votre aide {boldEnd} pour suivre!",
     "placeholders": {
-      "username": {
-        "content": "$1",
-        "example": "John Doe"
-      },
       "discount": {
         "content": "$2",
         "example": "50%"
+      },
+      "username": {
+        "content": "$1",
+        "example": "John Doe"
       }
     }
   },
@@ -735,12 +884,6 @@
   "licenseHead": {
     "message": "Nouveau système de licence"
   },
-  "licenseTerms.hide": {
-    "message": "🡇 Continuer la sélection de la licence 🡇"
-  },
-  "licenseTerms.show": {
-    "message": "Afficher les termes de la licence"
-  },
   "licenseStatus.expired": {
     "message": "La licence SmartTemplates a expiré il y a $countDays$ jours.",
     "placeholders": {
@@ -758,6 +901,12 @@
         "example": "10"
       }
     }
+  },
+  "licenseTerms.hide": {
+    "message": "🡇 Continuer la sélection de la licence 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Afficher les termes de la licence"
   },
   "licenseTypes": {
     "message": "SmartTemplates propose deux licences, Standard et Pro ; ceux-ci sont nécessaires pour suivre les changements de la plate-forme Thunderbird et pour financer les innovations et les réparations de l'Add-on. Étant donné que les modifications susceptibles d'interrompre la fonctionnalité d'extension sont déployées chaque année, la licence sera également valide pendant 1 an."
@@ -785,6 +934,9 @@
   },
   "licenseWindow.title": {
     "message": "Licence SmartTemplates"
+  },
+  "lineBreaksOnTop": {
+    "message": "Nombre de retours à la ligne en haut :"
   },
   "localedate.label": {
     "message": "Date et heure (format local)"
@@ -819,7 +971,9 @@
   "message.licenseScreen": {
     "message": "Afficher les options de licence…"
   },
-  "message.linkInTab": { "message": "(Lien ouvert dans un onglet)" },
+  "message.linkInTab": {
+    "message": "(Lien ouvert dans un onglet)"
+  },
   "messid.label": {
     "message": "ID du message"
   },
@@ -907,232 +1061,6 @@
   "n.label": {
     "message": "Numéro du mois (1 à 12)"
   },
-  "newsHead": {
-    "message": "Dernières nouvelles"
-  },
-  "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Dans la prochaine grande version {boldEnd} : Thunderbird vous demandera bientôt de choisir votre voie de mise à jour préférée — soit la voie ESR annuelle, soit les versions mensuelles plus rapides. {ARelease}En savoir plus sur le nouveau modèle de publication{A2}.{U1} {L1}La version ESR restera en v140, avec uniquement des incréments mineurs et incluant uniquement des corrections de sécurité et de bugs, ce qui est souvent préférable dans les environnements d'entreprise.{L2} {L1}Le cycle de publication mensuel apportera de nouvelles fonctionnalités et mises à jour de l’interface au fur et à mesure de leur développement. Veuillez vérifier que vos modules complémentaires actuels supportent ce modèle. Pour vous aider, vous pouvez installer le {AcompatCheck}Add-on Compatibility Check{A2}.{L2} {U2}{P2}{P1} Nous sommes heureux d’annoncer que SmartTemplates est entièrement compatible avec Thunderbird 140, la prochaine version Extended Support Release (ESR). Cela signifie fiabilité continue et tranquillité d’esprit pendant le prochain cycle principal de support.{P2}{P1} SmartTemplates continue de supporter les utilisateurs de Thunderbird 115 et versions supérieures pour l’instant. Au cours de l’année à venir, à mesure que nous ajoutons de nouvelles fonctionnalités, la prise en charge de Thunderbird 115 pourrait être abandonnée au profit de Thunderbird 128 et des versions plus récentes.{P2}{P1} Nous surveillons continuellement les changements de Thunderbird pour garantir que SmartTemplates reste compatible et fiable, quelle que soit la voie de mise à jour choisie.{P2}"
-  },
-  "newsMsg.license.expired": {
-    "message": "{P1} Toutes les nouvelles fonctionnalités, les corrections de bugs et la compatibilité à long terme sont rendues possibles grâce à votre soutien.{P2}{P1 class=specialOffer} Pour aider à maintenir le développement de SmartTemplates, vous pouvez renouveler votre licence à prix réduit jusqu'au {salesEnd}.{P2}{P1 class=bottomhint}🡇 Choisissez une des options ci-dessous pour en savoir plus 🡇{P2}"
-  },
-  "newsMsg.license.none": {
-    "message": "{P1} Vous pouvez également soutenir la compatibilité future en achetant une licence.{P2}{P1}Toutes les nouvelles fonctionnalités, les corrections de bugs et la compatibilité à long terme sont rendues possibles grâce à votre soutien.{P2}{P1 class=specialOffer}Pour soutenir le développement de SmartTemplates, vous pouvez obtenir une licence Standard ou Pro à prix réduit jusqu'au {salesEnd}.{P2}{P1 class=bottomhint}🡇 Choisissez une des options ci-dessous pour en savoir plus 🡇{P2}"
-  },
-  "newsMsg.license.standard": {
-    "message": "{P1} Merci de soutenir SmartTemplates avec une licence Standard.{P2}{P1} Que votre licence soit expirée ou toujours active, vous pouvez passer à la version Pro dès maintenant à un tarif avantageux jusqu'au {salesEnd}. Une mise à niveau après expiration vous accorde une année complète d'utilisation à partir de la date d'achat.{P2}{P1 class=bottomhint}🡇 Choisissez une des options ci-dessous pour en savoir plus 🡇{P2}"
-  },
-  "newsMsg.license.valid": {
-    "message": "{P1} Merci de soutenir SmartTemplates avec une licence Pro — cela rend possibles toutes les nouvelles fonctionnalités, les corrections de bugs et la compatibilité à long terme.{P2}"
-  },
-  "newsSection.intro": {
-    "message": "{P1}Nous continuons à suivre le cycle de publication mensuel de Thunderbird afin d’assurer la compatibilité et la stabilité. Comme toujours, ce travail est entièrement financé par la vente de licences.{P2}"
-  },
-  "newsSection.important": {
-    "message": "{P1}{boldStart}Important :{boldEnd} Thunderbird poursuit son cycle de publication mensuel. {P2}{P1} Certains utilisateurs ont peut-être vu un faux avertissement d’incompatibilité après la mise à jour vers Thunderbird v142. Cela était dû aux informations de compatibilité mises en cache dans Thunderbird, qui ne se rafraîchissent pas toujours correctement. La version précédente de SmartTemplates était déjà entièrement compatible avec la 142. J’ai signalé ce problème à Thunderbird afin de le corriger : [Bugzilla 1986027]{P2}{P1} Soyez rassurés, SmartTemplates prend pleinement en charge les canaux mensuels et ESR (140.*), et vous pouvez continuer à travailler sans interruption. {P2}"
-  },
-  "newsSection.license": {
-    "message": "Étant donné que tout le travail sur SmartTemplates et le support gratuit sont financés exclusivement par les ventes de licences, veuillez envisager d'acheter une licence ou de renouveler la vôtre."
-  },
-  "newsgr.label": {
-    "message": "Groupes de discussion"
-  },
-  "no_button": {
-    "message": "Non"
-  },
-  "ongoing-work": {
-    "message": "Pour garder $addonName$ synchronisé avec les mises à jour mensuelles de Thunderbird, nous devons constamment vérifier les erreurs et télécharger des versions adaptées. Merci de nous aider une fois que vous avez testé la fonctionnalité et que vous êtes sûr qu'elle améliore votre productivité !",
-    "placeholders": {
-      "addonName": {
-        "content": "$1"
-      }
-    }
-  },
-  "ownmail.label": {
-    "message": "Votre adresse électronique"
-  },
-  "ownname.label": {
-    "message": "Votre nom"
-  },
-  "p.label": {
-    "message": "AM ou PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "paste.label": {
-    "message": "Coller"
-  },
-  "parameters": {
-    "message": "Paramètres"
-  },
-  "parameter.escapeCommas": {
-    "message": "Pour afficher des virgules dans ce texte, préfixez-les avec une barre oblique inverse comme ceci :"
-  },
-  "params.optional": {
-    "message": "paramètres facultatifs"
-  },
-  "statusIcon.IconHoverText": {
-    "message": "Texte au survol"
-  },
-  "statusIcon.IconOnly": {
-    "message": "Icône seulement"
-  },
-  "statusIcon.IconText": {
-    "message": "Icône et texte"
-  },
-  "about.tab": {
-    "message": "À propos"
-  },
-  "addSigBreakHTML": {
-    "message": "Ajouter -- dans le courriels HTML"
-  },
-  "addSigBreakHTML.tip": {
-    "message": "Ajoute toujours le séparateur -- avant la signature (dans les courriels HTML)"
-  },
-  "addSigBreakPlaintext": {
-    "message": "Ajouter -- dans les courriels au format texte"
-  },
-  "addSigBreakPlaintext.tip": {
-    "message": "Ajoute toujours le séparateur -- avant la signature (dans les courriels HTML)"
-  },
-  "addressDelimiter": {
-    "message": "Énumérer plusieurs correspondants en utilisant :"
-  },
-  "addressDelimiter.tip": {
-    "message": "Délimiteur entre plusieurs correspondants. Outlook utilise des points-virgules (;), pour Thunderbird, par défaut, ce sont des virgules (,)."
-  },
-  "advanced.tab": {
-    "message": "Paramètres avancés"
-  },
-  "lineBreaksOnTop": {
-    "message": "Nombre de retours à la ligne en haut :"
-  },
-  "insertCursor": {
-    "message": "Insérer un espace pour mettre en évidence le %curseur%"
-  },
-  "debug.mode": {
-    "message": "Mode débogage"
-  },
-  "debug.tip": {
-    "message": "Enregistre les activités de SmartTemplates dans la console d’erreurs. Les entrées de journal supplémentaires pour diverses fonctions peuvent être activées/désactivées avec la roue des paramètres."
-  },
-  "common.use.title": {
-    "message": "Désactivez '$pref_def$' pour créer des paramètres de modèle spécifiques pour ce compte.",
-    "placeholders": {
-      "pref_def": {
-        "content": "$1",
-        "example": "Utiliser Commun"
-      }
-    }
-  },
-  "common.use.tip": {
-    "message": "Les paramètres ci-dessous sont appliqués lorsqu'aucun modèle spécifique n'existe pour une identité ou si « $pref_def$ » est sélectionné pour cette identité.",
-    "placeholders": {
-      "pref_def": {
-        "content": "$1"
-      }
-    }
-  },
-  "common.use": {
-    "message": "Utiliser les options globales"
-  },
-  "defaultCharset": {
-    "message": "Jeu de caractères de secours"
-  },
-  "defaultCharset.tip": {
-    "message": "Si le jeu de caractères de l'e-mail d'origine ne peut pas être déterminé, celui-ci sera utilisé en secours pour décoder les en-têtes et le contenu."
-  },
-  "defaultTemplate.behavior": {
-    "message": "Comportement lors de la rédaction ou de la réponse sans sélectionner de modèle dans la liste déroulante."
-  },
-  "defaultTemplate": {
-    "message": "Modèle par défaut"
-  },
-  "defaultTemplate.useAccount": {
-    "message": "Utilisez le modèle de compte."
-  },
-  "defaultTemplate.useLastTemplate": {
-    "message": "Utilisez le dernier modèle externe sélectionné dans le menu déroulant."
-  },
-  "defaultTemplate.useLastNotify": {
-    "message": "Afficher une notification si le dernier modèle sélectionné est réutilisé."
-  },
-  "preferences.title": {
-    "message": "Options de SmartTemplates"
-  },
-  "examples.supportSite": {
-    "message": "(du site d'assistance en anglais)"
-  },
-  "examples.tab": {
-    "message": "Exemples"
-  },
-  "openInBrowser": {
-    "message": "ouvrir dans le navigateur"
-  },
-  "examples.tooltip": {
-    "message": "Afficher des exemples de modèles de https://smarttemplates.quickfolders.org/templates.html. Uniquement disponible en mode en ligne"
-  },
-  "fontSettings": {
-    "message": "Police de l'éditeur de gabarit"
-  },
-  "forceParagraphs": {
-    "message": "Forcer le mode paragraphe"
-  },
-  "forceParagraphs.tip": {
-    "message": "S'assurer que le curseur se situe dans un paragraphe. Nous demandons également la création d'un nouveau paragraphe lorsque l'on appuie sur la touche [Entrée] à l'option de composition Thunderbird."
-  },
-  "fwd.label": {
-    "message": "Appliquer les paramètres suivants au message transféré"
-  },
-  "fwd.tab": {
-    "message": "Transférer"
-  },
-  "fwdhead.label": {
-    "message": "Désactiver l'entête par défaut de Thunderbird"
-  },
-  "fwdmsg.cap": {
-    "message": "Messages transférés"
-  },
-  "global.tab": {
-    "message": "Paramètres généraux"
-  },
-  "grpAdvanced": {
-    "message": "Fonctions avancées"
-  },
-  "grpMailContent": {
-    "message": "Contenu du courriel"
-  },
-  "grpMiscellaneus": {
-    "message": "Divers"
-  },
-  "grpNameRules": {
-    "message": "Règles pour nom"
-  },
-  "grpSignatures": {
-    "message": "Signatures"
-  },
-  "grpTroubleShooting": {
-    "message": "Dépannage"
-  },
-  "grpUI": {
-    "message": "Interface utilisateur"
-  },
-  "help.tab": {
-    "message": "Assistant"
-  },
-  "header.inject": {
-    "message": "Injecter le contenu de <head> à partir du modèle"
-  },
-  "hideExamplesPage": {
-    "message": "Masquer l'onglet d'exemples"
-  },
-  "useHTML.tip": {
-    "message": "Utiliser des caractères d'échappement pour  \" , & , < , > , espace. Voir l'aide pour davantage d'informations."
-  },
-  "useHTML": {
-    "message": "Utiliser HTML (par ex., <b>gras</b>)"
-  },
   "names.swap": {
     "message": "Corriger l'affichage \"nom, prénom\""
   },
@@ -1154,11 +1082,70 @@
   "news.minimal.tip": {
     "message": "Si activé, SmartTemplates ne modifie pas le libellé du bouton. Seul un petit point orange 🟠 sera affiché."
   },
-  "splashScreen.disable": {
-    "message": "Omettre l'écran de démarrage"
+  "newsgr.label": {
+    "message": "Groupes de discussion"
   },
-  "splashScreen.tip": {
-    "message": "Masquer la boîte de dialogue d'informations qui affiche les nouvelles fonctionnalités et les corrections de bugs lors de la mise à jour."
+  "newsHead": {
+    "message": "Dernières nouvelles"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Toutes les nouvelles fonctionnalités, les corrections de bugs et la compatibilité à long terme sont rendues possibles grâce à votre soutien.{P2}{P1 class=specialOffer} Pour aider à maintenir le développement de SmartTemplates, vous pouvez renouveler votre licence à prix réduit jusqu'au {salesEnd}.{P2}{P1 class=bottomhint}🡇 Choisissez une des options ci-dessous pour en savoir plus 🡇{P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Vous pouvez également soutenir la compatibilité future en achetant une licence.{P2}{P1}Toutes les nouvelles fonctionnalités, les corrections de bugs et la compatibilité à long terme sont rendues possibles grâce à votre soutien.{P2}{P1 class=specialOffer}Pour soutenir le développement de SmartTemplates, vous pouvez obtenir une licence Standard ou Pro à prix réduit jusqu'au {salesEnd}.{P2}{P1 class=bottomhint}🡇 Choisissez une des options ci-dessous pour en savoir plus 🡇{P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Merci de soutenir SmartTemplates avec une licence Standard.{P2}{P1} Que votre licence soit expirée ou toujours active, vous pouvez passer à la version Pro dès maintenant à un tarif avantageux jusqu'au {salesEnd}. Une mise à niveau après expiration vous accorde une année complète d'utilisation à partir de la date d'achat.{P2}{P1 class=bottomhint}🡇 Choisissez une des options ci-dessous pour en savoir plus 🡇{P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Merci de soutenir SmartTemplates avec une licence Pro — cela rend possibles toutes les nouvelles fonctionnalités, les corrections de bugs et la compatibilité à long terme.{P2}"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Dans la prochaine grande version {boldEnd} : Thunderbird vous demandera bientôt de choisir votre voie de mise à jour préférée — soit la voie ESR annuelle, soit les versions mensuelles plus rapides. {ARelease}En savoir plus sur le nouveau modèle de publication{A2}.{U1} {L1}La version ESR restera en v140, avec uniquement des incréments mineurs et incluant uniquement des corrections de sécurité et de bugs, ce qui est souvent préférable dans les environnements d'entreprise.{L2} {L1}Le cycle de publication mensuel apportera de nouvelles fonctionnalités et mises à jour de l’interface au fur et à mesure de leur développement. Veuillez vérifier que vos modules complémentaires actuels supportent ce modèle. Pour vous aider, vous pouvez installer le {AcompatCheck}Add-on Compatibility Check{A2}.{L2} {U2}{P2}{P1} Nous sommes heureux d’annoncer que SmartTemplates est entièrement compatible avec Thunderbird 140, la prochaine version Extended Support Release (ESR). Cela signifie fiabilité continue et tranquillité d’esprit pendant le prochain cycle principal de support.{P2}{P1} SmartTemplates continue de supporter les utilisateurs de Thunderbird 115 et versions supérieures pour l’instant. Au cours de l’année à venir, à mesure que nous ajoutons de nouvelles fonctionnalités, la prise en charge de Thunderbird 115 pourrait être abandonnée au profit de Thunderbird 128 et des versions plus récentes.{P2}{P1} Nous surveillons continuellement les changements de Thunderbird pour garantir que SmartTemplates reste compatible et fiable, quelle que soit la voie de mise à jour choisie.{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Important :{boldEnd} Thunderbird poursuit son cycle de publication mensuel. {P2}{P1} Certains utilisateurs ont peut-être vu un faux avertissement d’incompatibilité après la mise à jour vers Thunderbird v142. Cela était dû aux informations de compatibilité mises en cache dans Thunderbird, qui ne se rafraîchissent pas toujours correctement. La version précédente de SmartTemplates était déjà entièrement compatible avec la 142. J’ai signalé ce problème à Thunderbird afin de le corriger : [Bugzilla 1986027]{P2}{P1} Soyez rassurés, SmartTemplates prend pleinement en charge les canaux mensuels et ESR (140.*), et vous pouvez continuer à travailler sans interruption. {P2}"
+  },
+  "newsSection.intro": {
+    "message": "{P1}Nous continuons à suivre le cycle de publication mensuel de Thunderbird afin d’assurer la compatibilité et la stabilité. Comme toujours, ce travail est entièrement financé par la vente de licences.{P2}"
+  },
+  "newsSection.license": {
+    "message": "Étant donné que tout le travail sur SmartTemplates et le support gratuit sont financés exclusivement par les ventes de licences, veuillez envisager d'acheter une licence ou de renouveler la vôtre."
+  },
+  "no_button": {
+    "message": "Non"
+  },
+  "ongoing-work": {
+    "message": "Pour garder $addonName$ synchronisé avec les mises à jour mensuelles de Thunderbird, nous devons constamment vérifier les erreurs et télécharger des versions adaptées. Merci de nous aider une fois que vous avez testé la fonctionnalité et que vous êtes sûr qu'elle améliore votre productivité !",
+    "placeholders": {
+      "addonName": {
+        "content": "$1"
+      }
+    }
+  },
+  "openInBrowser": {
+    "message": "ouvrir dans le navigateur"
+  },
+  "ownmail.label": {
+    "message": "Votre adresse électronique"
+  },
+  "ownname.label": {
+    "message": "Votre nom"
+  },
+  "p.label": {
+    "message": "AM ou PM"
+  },
+  "p1.label": {
+    "message": "a.m."
+  },
+  "parameter.escapeCommas": {
+    "message": "Pour afficher des virgules dans ce texte, préfixez-les avec une barre oblique inverse comme ceci :"
+  },
+  "parameters": {
+    "message": "Paramètres"
+  },
+  "params.optional": {
+    "message": "paramètres facultatifs"
   },
   "parseSignature": {
     "message": "Traitement de la signature"
@@ -1166,68 +1153,11 @@
   "parseSignature.tip": {
     "message": "Remplacer des variables dans la signature."
   },
-  "quoteHeaderBox.label": {
-    "message": "Titre de citation"
+  "paste.label": {
+    "message": "Coller"
   },
-  "quoteHeaderBox.tip": {
-    "message": "Écrivez votre en-tête dans cette boîte, ex. : Le %date%, %from(name)% a écrit :"
-  },
-  "quoteHeader.replace.tip": {
-    "message": "Désactive l'entête par défaut. Merci d'indiquer votre entête dans la zone de texte."
-  },
-  "replaceSignature": {
-    "message": "Supprimer la signature lors du changement de compte courriel"
-  },
-  "replacebr.tooltip": {
-    "message": "Activez cette option pour convertir automatiquement les sauts de ligne du modèle en balises <br>. En mode HTML, il est préférable d'ajouter manuellement les balises <br> ou d'utiliser <p> pour les paragraphes au lieu de compter sur cette option."
-  },
-  "replacebr.label": {
-    "message": "Remplacer les sauts de ligne par <br>"
-  },
-  "rsp.label": {
-    "message": "Appliquer les paramètres suivants au message répondu"
-  },
-  "rsp.tab": {
-    "message": "Répondre"
-  },
-  "rsphead.label": {
-    "message": "Utiliser à la place de l'entête par défaut"
-  },
-  "rspmsg.cap": {
-    "message": "Réponses"
-  },
-  "account.common": {
-    "message": "Options globales"
-  },
-  "account": {
-    "message": "Compte"
-  },
-  "displayStatusIcon": {
-    "message": "Afficher un bouton dans la barre des modules"
-  },
-  "replaceBRinSignature.label": {
-    "message": "Remplacer les retours à la ligne dans les signatures en texte brut par des <br>"
-  },
-  "silentUpdates": {
-    "message": "Ne pas ouvrir l'onglet avec l'historique des versions"
-  },
-  "silentUpdates.tip": {
-    "message": "N'ouvrez pas le journal des modifications après la mise à jour de SmartTemplates."
-  },
-  "template": {
-    "message": "Modèle"
-  },
-  "template.tip": {
-    "message": "Écrivez votre modèle dans cette boîte, ex. : Salut %from(name)%<br> Merci pour ton message<br> salutations, %ownname%"
-  },
-  "examples.openBrowser": {
-    "message": "ouvrir la page d'exemples dans le navigateur"
-  },
-  "templateBox.tip": {
-    "message": "Vous pouvez améliorer le modèle avec des variables. Ouvrez la page Variables pour plus d'informations."
-  },
-  "variables.tab": {
-    "message": "Variables"
+  "preferences.title": {
+    "message": "Options de SmartTemplates"
   },
   "preheader": {
     "message": "Un texte de prévisualisation uniquement visible pour les clients de messagerie mobile, qui sera inséré au début du corps de l'email."
@@ -1245,13 +1175,13 @@
         "content": "$1",
         "example": "clipboard"
       },
-      "selectionLiteral": {
-        "content": "$2",
-        "example": "\"*selection*\""
-      },
       "clipboardStarred": {
         "content": "$3",
         "example": "*clipboard*"
+      },
+      "selectionLiteral": {
+        "content": "$2",
+        "example": "\"*selection*\""
       }
     }
   },
@@ -1260,9 +1190,6 @@
   },
   "prompt.email": {
     "message": "Indiquer une adresse électronique"
-  },
-  "prompt.fileTemplates.editor.setup": {
-    "message": "Veuillez sélectionner un éditeur externe pour modifier vos modèles HTML. Je recommande d'utiliser un éditeur HTML uniquement texte avec coloration syntaxique, comme notepad++ ou Visual Studio Code."
   },
   "prompt.fileTemplates.editor.pathError": {
     "message": "Impossible de trouver l'éditeur à l'emplacement suivant : $filePath$",
@@ -1273,6 +1200,9 @@
       }
     }
   },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Veuillez sélectionner un éditeur externe pour modifier vos modèles HTML. Je recommande d'utiliser un éditeur HTML uniquement texte avec coloration syntaxique, comme notepad++ ou Visual Studio Code."
+  },
   "prompt.text": {
     "message": "Indiquer le texte à ajouter ou définir"
   },
@@ -1281,6 +1211,21 @@
   },
   "purchase-heading": {
     "message": "Soutien via une licence"
+  },
+  "quote_changers.cap": {
+    "message": "Modification du texte cité"
+  },
+  "quote_changers.desc": {
+    "message": "Variables premium pour supprimer le texte / les balises des pièces citées et économiser de l'espace."
+  },
+  "quoteHeader.replace.tip": {
+    "message": "Désactive l'entête par défaut. Merci d'indiquer votre entête dans la zone de texte."
+  },
+  "quoteHeaderBox.label": {
+    "message": "Titre de citation"
+  },
+  "quoteHeaderBox.tip": {
+    "message": "Écrivez votre en-tête dans cette boîte, ex. : Le %date%, %from(name)% a écrit :"
   },
   "quoteLevel": {
     "message": "[facultatif, numérique]: à partir de quel niveau de devis minimal"
@@ -1291,12 +1236,6 @@
   "quotePlaceholder.level": {
     "message": "[facultatif, numérique] Niveau de citation maximal pour supprimer les anciennes citations de la conversation."
   },
-  "quote_changers.cap": {
-    "message": "Modification du texte cité"
-  },
-  "quote_changers.desc": {
-    "message": "Variables premium pour supprimer le texte / les balises des pièces citées et économiser de l'espace."
-  },
   "recipient.label": {
     "message": "Bénéficiaire final"
   },
@@ -1306,20 +1245,32 @@
   "renew-your-license": {
     "message": "Renouvelez votre licence."
   },
+  "replacebr.label": {
+    "message": "Remplacer les sauts de ligne par <br>"
+  },
+  "replacebr.tooltip": {
+    "message": "Activez cette option pour convertir automatiquement les sauts de ligne du modèle en balises <br>. En mode HTML, il est préférable d'ajouter manuellement les balises <br> ou d'utiliser <p> pour les paragraphes au lieu de compter sur cette option."
+  },
+  "replaceBRinSignature.label": {
+    "message": "Remplacer les retours à la ligne dans les signatures en texte brut par des <br>"
+  },
+  "replacementHTML": {
+    "message": "doit être entre guillemets doubles - soit un texte, soit une balise html qui sera insérée entre guillemets partout où une correspondance sera trouvée."
+  },
   "replaceQuotedTags": {
     "message": "Remplace les balises du devis par du texte ou du HTML"
   },
   "replaceQuotedText": {
     "message": "Remplace le texte cité par HTML"
   },
+  "replaceSignature": {
+    "message": "Supprimer la signature lors du changement de compte courriel"
+  },
   "replaceText": {
     "message": "Remplacer du texte."
   },
   "replaceText.selection": {
     "message": "[Optionnel] Remplace tout le texte correspondant dans la sélection actuelle par le texte de remplacement - fonctionne uniquement dans les fragments intelligents."
-  },
-  "replacementHTML": {
-    "message": "doit être entre guillemets doubles - soit un texte, soit une balise html qui sera insérée entre guillemets partout où une correspondance sera trouvée."
   },
   "resolveABRemoveMail": {
     "message": "Supprimer l'adresse électronique tant que le paramètre de format n'est pas spécifié"
@@ -1330,20 +1281,32 @@
   "resolveNamesFromAB": {
     "message": "Résoudre les noms à partir du carnet d'adresses"
   },
+  "resolveNamesFromAB_tip": {
+    "message": "Cette option ne fonctionne pas avec certains carnets d'adresses tel que LDAP."
+  },
   "resolveNamesFromABDisplay": {
     "message": "Utiliser le nom à afficher si le prénom manque"
   },
   "resolveNamesFromABNick": {
     "message": "Remplacer le prénom si le pseudo est présent"
   },
-  "resolveNamesFromAB_tip": {
-    "message": "Cette option ne fonctionne pas avec certains carnets d'adresses tel que LDAP."
-  },
   "resolveNamesFromCardBook": {
     "message": "Prise en charge de CardBook (fonctionnalité pro)"
   },
   "resolveNamesFromCardBook.fallback": {
     "message": "Utiliser le carnet d'adresses standard si aucun contact n'est trouvé"
+  },
+  "rsp.label": {
+    "message": "Appliquer les paramètres suivants au message répondu"
+  },
+  "rsp.tab": {
+    "message": "Répondre"
+  },
+  "rsphead.label": {
+    "message": "Utiliser à la place de l'entête par défaut"
+  },
+  "rspmsg.cap": {
+    "message": "Réponses"
   },
   "s.label": {
     "message": "Secondes (00 à 59)"
@@ -1365,6 +1328,15 @@
   },
   "sig2.label": {
     "message": "Signature issue des paramètres du compte, mais sans '--'"
+  },
+  "silentUpdates": {
+    "message": "Ne pas ouvrir l'onglet avec l'historique des versions"
+  },
+  "silentUpdates.tip": {
+    "message": "N'ouvrez pas le journal des modifications après la mise à jour de SmartTemplates."
+  },
+  "smarttemplate4_button": {
+    "message": "Modifier les modèles/les entêtes…"
   },
   "smartTemplate4.changeTemplate.label": {
     "message": "Changer de modèle…"
@@ -1389,9 +1361,6 @@
   },
   "smartTemplate4.settings.tooltip": {
     "message": "Options de SmartTemplates"
-  },
-  "smarttemplate4_button": {
-    "message": "Modifier les modèles/les entêtes…"
   },
   "SmartTemplateMainButton.expired": {
     "message": "Licence expirée!"
@@ -1426,8 +1395,71 @@
   "specform_note.label": {
     "message": "La phrase {[[Cc: %cc(name)%]]} ne s'affichera que si la variable {%cc(name)%} peut être remplacée !"
   },
+  "special-offer-content": {
+    "message": "Mettez à niveau vos fonctionnalités et économisez {boldStart}$reduction${boldEnd} en achetant une {linkStartPro}licence SmartTemplates Pro{linkEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$salesEnd${boldEnd}. Ou choisissez les fonctions standard avec la nouvelle {linkStart}Licence Standard{linkEnd}.",
+    "placeholders": {
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      },
+      "salesEnd": {
+        "content": "$1",
+        "example": "August 22"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Aidez à garder $addon$ compatible",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart}Cher {name}{boldEnd}, veuillez soutenir $addon$ en obtenant une licence. ",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Renouvelez votre licence maintenant et économisez {boldStart}$reduction${boldEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$salesEnd${boldEnd}.",
+    "placeholders": {
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      },
+      "salesEnd": {
+        "content": "$1",
+        "example": "September 11"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Passez maintenant de SmartTemplates Standard à Pro et économisez {boldStart}$reduction${boldEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$salesEnd${boldEnd}.",
+    "placeholders": {
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      },
+      "salesEnd": {
+        "content": "$1",
+        "example": "September 11"
+      }
+    }
+  },
   "spellcheck.label": {
     "message": "Définit la langue de vérification orthographique. Exemples de valeurs: (en, de-DE, es-ES, fr) - notez que le dictionnaire doit être installé."
+  },
+  "splashScreen.disable": {
+    "message": "Omettre l'écran de démarrage"
+  },
+  "splashScreen.tip": {
+    "message": "Masquer la boîte de dialogue d'informations qui affiche les nouvelles fonctionnalités et les corrections de bugs lors de la mise à jour."
   },
   "st.confirmVersionLink": {
     "message": "Afficher la liste des modifications pour SmartTemplates ?"
@@ -1462,6 +1494,15 @@
   "st.fileTemplates.restrictionQuestion": {
     "message": "Pourquoi certains modèles de ce menu sont-ils désactivés ?"
   },
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Pour configurer plus de $max_Cats$ Catégories, veuillez obtenir une licence SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Le nombre de modèles par menu est limité. Vous pouvez configurer jusqu'à $max_free$ éléments de menu sans licence et $max_std$ éléments de menu avec une licence SmartTemplates Standard ! SmartTemplates Pro est illimité.",
     "placeholders": {
@@ -1472,15 +1513,6 @@
       "max_std": {
         "content": "$2",
         "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "Pour configurer plus de $max_Cats$ Catégories, veuillez obtenir une licence SmartTemplates Pro…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
       }
     }
   },
@@ -1517,17 +1549,35 @@
   "st.menu.hideLabel": {
     "message": "Masquer l'étiquette du bouton"
   },
+  "st.menu.license": {
+    "message": "Vérifier l'état de la licence…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Cliquez ici pour vérifier l'état de la licence pour $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Répondre à tous"
+  },
+  "st.menu.replyList": {
+    "message": "Répondre à la liste"
+  },
+  "st.menu.supportSite": {
+    "message": "Site d'assistance…"
+  },
   "st.menu.template.default": {
     "message": "Modèle par défaut (compte)"
   },
   "st.menu.template.last": {
     "message": "Dernier modèle"
   },
-  "st.menu.license": {
-    "message": "Vérifier l'état de la licence…"
-  },
-  "st.menu.license.tooltip": {
-    "message": "Cliquez ici pour vérifier l'état de la licence pour $addonName$.",
+  "st.menu.update.tooltip": {
+    "message": "Sélectionnez «Dernières nouvelles» dans ce menu pour lire les nouveautés de $addonName$.\n Cela réinitialisera le bouton à son apparence par défaut.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1549,24 +1599,6 @@
   },
   "st.menuaccess.write": {
     "message": "N"
-  },
-  "st.menu.replyAll": {
-    "message": "Répondre à tous"
-  },
-  "st.menu.replyList": {
-    "message": "Répondre à la liste"
-  },
-  "st.menu.supportSite": {
-    "message": "Site d'assistance…"
-  },
-  "st.menu.update.tooltip": {
-    "message": "Sélectionnez «Dernières nouvelles» dans ce menu pour lire les nouveautés de $addonName$.\n Cela réinitialisera le bouton à son apparence par défaut.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "st.notification.bodyModified": {
     "message": "Thunderbird dit que vous avez déjà saisi quelque chose, voulez-vous quand même charger le modèle ?"
@@ -1621,9 +1653,6 @@
   "st.notification.premium.btn.hotKey": {
     "message": "l"
   },
-  "st.notification.premium.sendByFilter": {
-    "message": "Avec une licence SmartTemplates Pro valide, l'e-mail serait désormais automatiquement envoyé."
-  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Renouveler la licence de domaine"
   },
@@ -1636,17 +1665,14 @@
   "st.notification.premium.btn.upgrade.hotKey": {
     "message": "P"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "Avec une licence SmartTemplates Pro valide, l'e-mail serait désormais automatiquement envoyé."
+  },
   "st.notification.premium.text": {
     "message": "{1} est une fonctionnalité Premium. Elle continuera de fonctionner, mais passer à une licence SmartTemplates Pro supprimera ces notifications et aidera à soutenir l'extension."
   },
   "st.notification.premium.text.plural": {
     "message": "{1} sont des fonctionnalités Premium. Elles continueront de fonctionner, mais passer à une licence SmartTemplates Pro supprimera ces notifications et aidera à soutenir l'extension."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} est une fonctionnalité sous licence. Elle continuera de fonctionner, mais obtenir une licence SmartTemplates supprimera ces notifications et aidera à soutenir l'extension."
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} sont des fonctionnalités sous licence. Elles continueront de fonctionner, mais obtenir une licence SmartTemplates supprimera ces notifications et aidera à soutenir l'extension."
   },
   "st.notification.spellcheck.error": {
     "message": "Impossible de changer la langue du correcteur orthographique. Avez-vous installé le bon dictionnaire?"
@@ -1656,6 +1682,12 @@
   },
   "st.notification.spellcheck.notFound": {
     "message": "Dictionnaire '{0}' introuvable."
+  },
+  "st.notification.standard.text": {
+    "message": "{1} est une fonctionnalité sous licence. Elle continuera de fonctionner, mais obtenir une licence SmartTemplates supprimera ces notifications et aidera à soutenir l'extension."
+  },
+  "st.notification.standard.text.plural": {
+    "message": "{1} sont des fonctionnalités sous licence. Elles continueront de fonctionner, mais obtenir une licence SmartTemplates supprimera ces notifications et aidera à soutenir l'extension."
   },
   "st.notification.usedLastTemplate": {
     "message": "Réutilisation du dernier modèle externe sélectionné : {template}{br}💾 selon les paramètres globaux :"
@@ -1684,6 +1716,21 @@
   "standardformat.config": {
     "message": "Format par défaut…"
   },
+  "statusIcon.IconHoverText": {
+    "message": "Texte au survol"
+  },
+  "statusIcon.IconOnly": {
+    "message": "Icône seulement"
+  },
+  "statusIcon.IconText": {
+    "message": "Icône et texte"
+  },
+  "stringmanip_function.cap": {
+    "message": "Manipulation des chaînes de caractères"
+  },
+  "stringmanip_function.explain": {
+    "message": "Ces fonctions peuvent être utilisées afin de supprimer ou remplacer du texte dans le modèle de courriel ou l'entête."
+  },
   "stringmanip.alttext": {
     "message": "[paramètre facultatif] Texte alternatif: si aucune correspondance n'est trouvée, insère le texte alternatif à la place."
   },
@@ -1705,80 +1752,20 @@
   "stringmanip.textTransform.ucase": {
     "message": "Transforme toute la correspondance en majuscules."
   },
-  "stringmanip_function.cap": {
-    "message": "Manipulation des chaînes de caractères"
+  "styleSanitizeSettings": {
+    "message": "Éviter les styles en double"
   },
-  "stringmanip_function.explain": {
-    "message": "Ces fonctions peuvent être utilisées afin de supprimer ou remplacer du texte dans le modèle de courriel ou l'entête."
+  "styleSanitizeSettings.tip": {
+    "message": "Détecte et supprime automatiquement les éléments <style> ayant un contenu identique lors de l'insertion de HTML."
+  },
+  "sub_var.cap": {
+    "message": "Sujet"
   },
   "sub.label": {
     "message": "Sujet du message de réponse ou transféré"
   },
   "sub2.label": {
     "message": "Sujet du message en cours de rédaction"
-  },
-  "sub_var.cap": {
-    "message": "Sujet"
-  },
-  "special-offer-content": {
-    "message": "Mettez à niveau vos fonctionnalités et économisez {boldStart}$reduction${boldEnd} en achetant une {linkStartPro}licence SmartTemplates Pro{linkEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$salesEnd${boldEnd}. Ou choisissez les fonctions standard avec la nouvelle {linkStart}Licence Standard{linkEnd}.",
-    "placeholders": {
-      "salesEnd": {
-        "content": "$1",
-        "example": "August 22"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "30%"
-      }
-    }
-  },
-  "special-offer-expiry": {
-    "message": "13 juin"
-  },
-  "special-offer-head": {
-    "message": "Aidez à garder $addon$ compatible",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{boldStart}Cher {name}{boldEnd}, veuillez soutenir $addon$ en obtenant une licence. ",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-renew": {
-    "message": "Renouvelez votre licence maintenant et économisez {boldStart}$reduction${boldEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$salesEnd${boldEnd}.",
-    "placeholders": {
-      "salesEnd": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  },
-  "special-offer-upgrade": {
-    "message": "Passez maintenant de SmartTemplates Standard à Pro et économisez {boldStart}$reduction${boldEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$salesEnd${boldEnd}.",
-    "placeholders": {
-      "salesEnd": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
   },
   "support-preference": {
     "message": "C'est la manière préférée de prendre en charge $addonName$.",
@@ -1840,9 +1827,6 @@
   "suppressQuoteHdr": {
     "message": "Supprime complètement l'en-tête de devis, quels que soient les paramètres du compte."
   },
-  "table.cap": {
-    "message": "Utilisation des variables"
-  },
   "table_fwd.label": {
     "message": "Transférer"
   },
@@ -1857,6 +1841,9 @@
   },
   "table_reply.label": {
     "message": "Répondre"
+  },
+  "table.cap": {
+    "message": "Utilisation des variables"
   },
   "tags.cap": {
     "message": "Étiquettes de courrier"
@@ -1873,11 +1860,11 @@
   "tags.formatString": {
     "message": "Fragment HTML personnalisé pour formater chaque étiquette. Utilisez $label$ et $color$ pour insérer le texte ou la valeur de couleur (hexadécimale) d'une étiquette.",
     "placeholders": {
-      "label": {
-        "content": "$label$"
-      },
       "color": {
         "content": "$color$"
+      },
+      "label": {
+        "content": "$label$"
       }
     }
   },
@@ -1890,20 +1877,20 @@
   "tags.plaintext": {
     "message": "Insère la liste des étiquettes de courrier en texte brut, séparées par des virgules."
   },
+  "tags.preset.darkFilled": {
+    "message": "Un préréglage utile pour une utilisation sur des arrière-plans sombres."
+  },
   "tags.presets": {
     "message": "Préréglages de mise en page"
   },
   "tags.presets.intro": {
     "message": "Une liste de styles pré-créés pour afficher les étiquettes de manière graphique."
   },
-  "tags.preset.darkFilled": {
-    "message": "Un préréglage utile pour une utilisation sur des arrière-plans sombres."
-  },
   "tags.transform": {
     "message": "Paramètres optionnels pour transformer le texte de l'étiquette."
   },
-  "testDriveS": {
-    "message": "Vous pouvez tester les fonctionnalités premium avec la licence standard, mais elles peuvent être légèrement limitées."
+  "template": {
+    "message": "Modèle"
   },
   "template.category": {
     "message": "Catégorie"
@@ -1913,6 +1900,15 @@
   },
   "template.category.tooltip": {
     "message": "Crée un sous-menu pour regrouper les modèles"
+  },
+  "template.tip": {
+    "message": "Écrivez votre modèle dans cette boîte, ex. : Salut %from(name)%<br> Merci pour ton message<br> salutations, %ownname%"
+  },
+  "templateBox.tip": {
+    "message": "Vous pouvez améliorer le modèle avec des variables. Ouvrez la page Variables pour plus d'informations."
+  },
+  "testDriveS": {
+    "message": "Vous pouvez tester les fonctionnalités premium avec la licence standard, mais elles peuvent être légèrement limitées."
   },
   "thanks-for-installing-intro": {
     "message": "Merci d'avoir installé $addonName$.",
@@ -1950,14 +1946,14 @@
   "tip.fileTemplates": {
     "message": "Cliquez pour lire la documentation complète sur la papeterie et les modèles HTML externes sur notre site de support…"
   },
-  "to.label": {
-    "message": "Noms des destinataires (défaut)"
-  },
   "to_note.label": {
     "message": "Quand le nom n'est pas disponible, l'adresse électronique sera affichée à la place"
   },
   "to_var.cap": {
     "message": "Destinataires (Pour, recipient)"
+  },
+  "to.label": {
+    "message": "Noms des destinataires (défaut)"
   },
   "tofirstname.label": {
     "message": "Prénoms des destinataires"
@@ -2016,14 +2012,23 @@
   "urls.linkDescription": {
     "message": "Ces boutons ouvrent des pages web externes. Veuillez noter que ces pages ne sont disponibles qu'en anglais. Vous pouvez utiliser le {{linkStart}}service de traduction Google{{linkEnd}} pour les traduire dans votre langue."
   },
-  "variable.search": {
-    "message": "Saisissez un terme de recherche et appuyez sur {{Entrée}}. Appuyez sur {{F4}} pour répéter la recherche."
+  "useHTML": {
+    "message": "Utiliser HTML (par ex., <b>gras</b>)"
+  },
+  "useHTML.tip": {
+    "message": "Utiliser des caractères d'échappement pour  \" , & , < , > , espace. Voir l'aide pour davantage d'informations."
   },
   "var_custom.cap": {
     "message": "Variables pour personnaliser le format de date"
   },
   "var_xsent.cap": {
     "message": "Le modificateur %X:=sent%"
+  },
+  "variable.search": {
+    "message": "Saisissez un terme de recherche et appuyez sur {{Entrée}}. Appuyez sur {{F4}} pour répéter la recherche."
+  },
+  "variables.tab": {
+    "message": "Variables"
   },
   "vouchers.title": {
     "message": "Bons"
@@ -2053,26 +2058,26 @@
       }
     }
   },
+  "xsent_long_result.label": {
+    "message": "Résultat : Dimanche, 20/12/2011 à 12:15"
+  },
   "xsent_long.cap": {
     "message": "Exemple d'un format long:"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%/%m%/%Y% à %H%:%M%"
   },
-  "xsent_long_result.label": {
-    "message": "Résultat : Dimanche, 20/12/2011 à 12:15"
-  },
   "xsent_note.label": {
     "message": "Par défaut, les variables de date et heure seront toujours initialisées avec les valeurs courantes (lors de la création du message). Combiné avec %X:=sent%, les variables de date et heure seront celles du message original."
-  },
-  "xsent_short.cap": {
-    "message": "Exemple de format court:"
   },
   "xsent_short_note.label": {
     "message": "Vous pouvez en plus utiliser ces variables avec les deux variantes :"
   },
   "xsent_short_result.label": {
     "message": "Résultat : Dimanche, 20/12/2011 08:54:21"
+  },
+  "xsent_short.cap": {
+    "message": "Exemple de format court:"
   },
   "y.up.label": {
     "message": "Année (1970)"

@@ -165,9 +165,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "Ngày 13 tháng 6"
-  },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
     "placeholders": {
