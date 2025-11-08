@@ -303,6 +303,12 @@ END LICENSE BLOCK
   Version 4.15.3 - WIP
     # Compatible with Tb 146
     # [issue 399] Prevent duplicate <style> elements when merging into <head>
+    # Use API method (browser.management.get) instead of AddonManager.getAddonByID 
+    #   to check for Cardbook installation
+    # Removed createBundle for retrieveing forward / reply quote headers
+    # [issue 400] Removed calendar string bundling and chrome/content/locale
+    
+     
 
 
 =========================
@@ -1449,80 +1455,65 @@ var SmartTemplate4 = {
 // this was classCalIDateTimeFormatter
 // replace with --  const loc = new Localization(["toolkit/intl/regionNames.ftl"], true);
 SmartTemplate4.calendar = {
-    currentLocale : null, // whatever was passed into %language()%
-    bundleLocale: null,
-    bundle: null,
-    list: function list() {
-      let str = "";
-      const cal = SmartTemplate4.calendar; 
-      for (let i=0;i<7 ;i++){
-        str+=(cal.dayName(i)  +"("+ cal.shortDayName(i) + ")/");
-      } 
-      str += "\n";
-      for (let i=0;i<12;i++){
-        str+=(cal.monthName(i)+"("+ cal.shortMonthName(i) + ")/");
-      }
-      return str;
-    },
-    
-    init: function init(forcedLocale) {
-      const util = SmartTemplate4.Util;
-
-      // validate the passed locale name for existence
-      // https://developer.mozilla.org/en-US/docs/How_to_enable_locale_switching_in_a_XULRunner_application
-      if (forcedLocale) {
-        let availableLocales = util.getAvailableLocales("smarttemplate4"), // smarttemplate4-locales
-            found = false,
-            fullMatch = false,
-            listLocales = "";
-        while (availableLocales.hasMore()) {
-          let aLocale = availableLocales.getNext();
-          listLocales += aLocale.toString() + ', ';
-          if (aLocale == forcedLocale) { // match completely, e.g/ "en" or "en-GB"
-            this.bundleLocale = aLocale;
-            fullMatch = true;
-            found = true;
-          }
-          if (!fullMatch && aLocale.indexOf(forcedLocale)==0) {  // allow en to match en-UK, en-US etc.
-            this.bundleLocale = aLocale;
-            found = true;
-          }
-        }
-        if (!found) {
-          let errorText =   "Unsupported %language% id: " + forcedLocale + "\n"
-                          + "Available in SmartTemplate4: " + listLocales.substring(0, listLocales.length-2) + "\n"
-                          + "This will affect the following variables: %A% %a% %B% %b% (week days and months) ";
-          util.logToConsole(errorText);
-          this.bundleLocale = null;
-        }
-        else {
-          util.logDebug("calendar - found extension locales: " + listLocales + "\nconfiguring " + forcedLocale);
-        }
-      }     
-      this.currentLocale = forcedLocale; // if not passed in, this will use the default locale for date translations 
-      let bundleUri = this.bundleLocale 
-        ? "chrome://smarttemplate4-locales/content/" + this.bundleLocale 
-        : "chrome://smarttemplate4/locale"; // determined by currently active Thunderbird locale
-      this.bundle = Services.strings.createBundle(bundleUri + "/calender.properties");
-    },
-    
-    // the following functions retrieve strings from our own language packs (languages supported by SmartTemplate itself)
-    // these will affect the following variables: %A% %a% %B% %b% (week days and months)
-    // OTOH: %dateshort% and %datelocal% extract their names from the language packs installed
-    dayName: function dayName(n){ 
-      return this.bundle.GetStringFromName("day." + (n + 1) + ".name");
-    },
-    
-    shortDayName: function shortDayName(n) { 
-      return this.bundle.GetStringFromName("day." + (n + 1) + ".short");
-    },
-    
-    monthName: function monthName(n){ 
-      return this.bundle.GetStringFromName("month." + (n + 1) + ".name");
-    },
-    
-    shortMonthName: function shortMonthName(n) { 
-      return this.bundle.GetStringFromName("month." + (n + 1) + ".short");
+  currentLocale: null, // whatever was passed into %language()%
+  bundleLocale: null,
+  bundle: null,
+  list: function () {
+    let str = "";
+    for (let i = 0; i < 7; i++) {
+      str += `${this.dayName(i)}(${this.shortDayName(i)})/`;
     }
+    str += "\n";
+    for (let i = 0; i < 12; i++) {
+      str += `${this.monthName(i)}(${this.shortMonthName(i)})/`;
+    }
+    return str;
+  },
+
+  init: function (forcedLocale) {
+    const util = SmartTemplate4.Util;
+    if (forcedLocale) {
+      try {
+        // Simple check: valid BCP47 locale (optional)
+        Intl.DateTimeFormat.supportedLocalesOf(forcedLocale);
+        util.logDebug("calendar - configuring locale: " + forcedLocale);
+      } catch (e) {
+        util.logToConsole(
+          "Unsupported locale id: " + forcedLocale + ". This will affect date/time formatting."
+        );
+      }
+    }
+
+    this.currentLocale = forcedLocale || Services.locale.appLocaleAsBCP47;
+  },
+
+  // the following functions retrieve strings from our own language packs (languages supported by SmartTemplate itself)
+  // these will affect the following variables: %A% %a% %B% %b% (week days and months)
+  // OTOH: %dateshort% and %datelocal% extract their names from the language packs installed
+  dayName: function (n) {
+    // n = 0..6, Sunday = 0
+    return new Intl.DateTimeFormat(this.currentLocale, { weekday: "long" }).format(
+      new Date(2025, 0, 4 + n)
+    ); // 4 Jan 2025 = Sunday
+  },
+
+  shortDayName: function (n) {
+    return new Intl.DateTimeFormat(this.currentLocale, { weekday: "short" }).format(
+      new Date(2025, 0, 4 + n)
+    );
+  },
+
+  monthName: function (n) {
+    // n = 0..11
+    return new Intl.DateTimeFormat(this.currentLocale, { month: "long" }).format(
+      new Date(2025, n, 1)
+    );
+  },
+
+  shortMonthName: function (n) {
+    return new Intl.DateTimeFormat(this.currentLocale, { month: "short" }).format(
+      new Date(2025, n, 1)
+    );
+  },
 };   // SmartTemplate4.calendar 
   

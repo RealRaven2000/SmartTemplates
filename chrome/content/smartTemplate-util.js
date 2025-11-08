@@ -1720,8 +1720,7 @@ SmartTemplate4.Util = {
     // instead of using title (which generates a "normal" html thumbnail)
     // let's use a new attribute st4title + CSS
     let tag =
-      `<smarttemplate hdr='${generalFunction}' st4variable='${field}'` +
-      ` st4title='${field}'${newComposeClass}>` +
+      `<smarttemplate hdr='${generalFunction}' st4variable='${field}' st4title='${field}'${newComposeClass}>` +
       `${defaultValue}</smarttemplate>`;
 
     return tag;
@@ -2244,7 +2243,7 @@ SmartTemplate4.Util = {
     return "";
   },
 
-  prTime2Str: function st4_prTime2Str(time, timeType, timezone) {
+  prTime2Str: function (time, timeType, timezone) {
     const util = SmartTemplate4.Util,
       prefs = SmartTemplate4.Preferences;
     function getDateFormat(field) {
@@ -2257,15 +2256,9 @@ SmartTemplate4.Util = {
     );
     try {
       let tm = new Date(),
-        isOldDateFormat = typeof Ci.nsIScriptableDateFormat !== "undefined",
         fmt;
 
-      if (isOldDateFormat) {
-        // this interface was removed in Gecko 57.0
-        fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].createInstance(
-          Ci.nsIScriptableDateFormat
-        );
-      } else {
+      {
         // alternative date formatting
         // Cu.import("resource:///modules/ToLocaleFormat.jsm");
         // new Services.intl.
@@ -2332,36 +2325,7 @@ SmartTemplate4.Util = {
       tm.setTime(time / 1000 + timezone * 60 * 1000);
 
       // Format date string
-      let dateFormat = null,
-        timeFormat = null;
-
-      let timeString;
-      if (isOldDateFormat) {
-        switch (timeType) {
-          case "datelocal":
-            dateFormat = fmt.dateFormatLong;
-            timeFormat = fmt.timeFormatSeconds;
-            break;
-          case "dateshort":
-          default:
-            dateFormat = fmt.dateFormatShort;
-            timeFormat = fmt.timeFormatSeconds;
-            break;
-        }
-        timeString = fmt.FormatDateTime(
-          SmartTemplate4.pref.getLocalePref(),
-          dateFormat,
-          timeFormat,
-          tm.getFullYear(),
-          tm.getMonth() + 1,
-          tm.getDate(),
-          tm.getHours(),
-          tm.getMinutes(),
-          tm.getSeconds()
-        );
-      } else {
-        timeString = fmt.format(tm);
-      }
+      const timeString = fmt.format(tm);
       util.logDebugOptional("timeStrings", "Created timeString: " + timeString);
       return timeString;
     } catch (ex) {
@@ -4378,9 +4342,12 @@ SmartTemplate4.AB = {
           "mime.resolveAB.CardBook.fallback"
         );
 
-      const isCardbookEnabled = await SmartTemplate4.Util.notifyTools.notifyBackground({
+      let isCardbookEnabled = false;
+      try {
+        isCardbookEnabled = await SmartTemplate4.Util.notifyTools.notifyBackground({
           func: "queryCardbookAddon",
-      });
+        });
+      } catch { ; }
       if (!isCardbookEnabled) {
         isCardBookAB = false;
       }
@@ -4534,7 +4501,6 @@ SmartTemplate4.AB = {
           }
         }
       }
-
     } catch (ex) {
       SmartTemplate4.Util.logException("getCardFromAB() function failed", ex);
     }
