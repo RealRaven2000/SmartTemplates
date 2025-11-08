@@ -932,7 +932,12 @@ SmartTemplate4.mimeDecoder = {
       // [Bug 25643] get name from Addressbook
       emailAddress = getEmailAddress(address); // get this always
       const isResolveNamesAB = isForceAB || prefs.getMyBoolPref('mime.resolveAB');
-      cardObj = await SmartTemplate4.AB.getCardFromAB(emailAddress); // also retrieve vCard structure [vCardJson]
+      try {
+        cardObj = await SmartTemplate4.AB.getCardFromAB(emailAddress); // also retrieve vCard structure [vCardJson]
+      } catch(ex) {
+        util.logException('mime.split() - getCardFromAB failed for ' + emailAddress, ex);
+        cardObj = null;
+      }
       card = cardObj ? cardObj.card : null; // defined further above as global variable of split()
           
 			
@@ -2896,7 +2901,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       };
     // function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); };
 
-    if (!SmartTemplate4.calendar.bundle) {SmartTemplate4.calendar.init(null);} // default locale
+    if (!SmartTemplate4.calendar.currentLocale) {
+      SmartTemplate4.calendar.init(null); // default locale
+    }
     let cal = SmartTemplate4.calendar;
 
     // expensive calculations, only necessary if we deal with tokens that do time
