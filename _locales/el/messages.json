@@ -152,13 +152,15 @@
     "message": "Θέλω να βοηθήσω με μια εφάπαξ δωρεά."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Φόρτωσε ρυθμίσεις λογαριασμού…"
+    "message": "Φόρτωση προτύπων (σύνταξη, απάντηση, προώθηση) για $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Ενημέρωση λίστας λογαριασμών"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Αποθήκευσε ρυθμίσεις λογαριασμού…"
+    "message": "Αποθήκευση προτύπων (δημιουργία, απάντηση, προώθηση) για $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Επισκεφθείτε στο YouTube το κανάλι 'Thunderbird Daily' για συμβουλές και εκπαιδεύσεις πάνω στη χρήση Επιστολοχάρτων και άλλων Προσθέτων"

@@ -146,13 +146,15 @@
     "message": "Chci pomoci s jednorázovým darem."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Načíst nastavení účtu…"
+    "message": "Načíst šablony (psát, odpovědět, přeposlat) pro $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Aktualizovat seznam účtů"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Uložit nastavení účtu…"
+    "message": "Uložit šablony (psaní, odpověď, přeposlání) pro $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Navštiv 'Thunderbird Daily' YouTube kanál - pro typy a návody jak použít SmartTemplates a ostatní rozšížení"

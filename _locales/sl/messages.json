@@ -149,13 +149,15 @@
     "message": "Želim pomagati z enkratno donacijo."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Naloži nastavitve računa…"
+    "message": "Naloži predloge (pisanje, odgovor, posredovanje) za $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Posodobi seznam računov"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Shrani nastavitve računa…"
+    "message": "Shrani predloge (novo, odgovor, posreduj) za $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Obiščite kanal 'Thunderbird Daily' na YouTubu za nasvete in vodnike o uporabi dodatkov Stationary in drugih"

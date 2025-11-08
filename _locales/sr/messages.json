@@ -143,13 +143,15 @@
     "message": "Желим да помогнем једнократном донацијом."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Учитај подешавања налога…"
+    "message": "Учитај шаблоне (пиши, одговори, проследи) за $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Освежи списак налога"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Сачувај подешавања налога…"
+    "message": "Sačuvaj šablone (pisanje, odgovor, prosleđivanje) za $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Посетите ИоуТубе канал 'Thunderbird Daily' - за савете и упутства за коришћење прибора и других додатака"

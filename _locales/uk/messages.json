@@ -152,13 +152,15 @@
     "message": "Я хочу допомогти зі одноразовим внеском."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Завантажити налаштування облікового запису…"
+    "message": "Завантажити шаблони (створити, відповісти, переслати) для $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "更新帳戶列表"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Зберегти налаштування облікового запису…"
+    "message": "Зберегти шаблони (створити, відповісти, переслати) для $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Відвідайте YouTube канал \"Thunderbird Daily\" - для поради та навчальні посібників з використання додатків"

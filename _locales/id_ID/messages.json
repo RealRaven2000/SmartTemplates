@@ -90,13 +90,15 @@
     "message": "Variabel berikut dapat digunakan di dalam [[...]]"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Muat Pengaturan Akun…"
+    "message": "Muat template (tulis, balas, teruskan) untuk $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Perbarui daftar akun"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Simpan Pengaturan Akun…"
+    "message": "Simpan template (tulis, balas, teruskan) untuk $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Kunjungi kanal Youtube 'Thunderbird Daily' - untuk tips dan tutorial dalam penggunaan Peralatan dan Pengaya lainnya"

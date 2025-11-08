@@ -152,13 +152,15 @@
     "message": "Jag vill hjälpa till med en engångs donation."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Ladda kontoinställningar..."
+    "message": "Ladda mallar (skriv, svara, vidarebefordra) för $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Uppdatera kontolistan"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Spara kontoinställningar..."
+    "message": "Spara mallar (ny, svara, vidarebefordra) för $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Besök YouTube-kanalen \"Thunderbird Daily\" - för tips och guider om hur man använder SmartTemplates och andra tillägg"

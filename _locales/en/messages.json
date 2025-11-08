@@ -152,13 +152,15 @@
     "message": "I want to help with a one time donation."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Load Account Settings…"
+    "message": "Load templates (write, reply, forward) for $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Update accounts list"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Save Account Settings…"
+    "message": "Save templates (write, reply, forward) for $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using SmartTemplates and other Addons"
@@ -2091,7 +2093,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1 class=important}{boldStart}Maintenance release 4.15.1{boldEnd}: fixes a serious regression with {{%cursor%}} and forced paragraph mode which could lead to parts of the template being in the wrong order.[issue 397]{L2}{L1}Streamlined the New button badge 🟠 for updates – to display this minimal status, open Settings » Licenses. Under 'Updates', enable the option \"$news.minimal$\" [issue 396].{L2}{L1}Improved template safety by cleaning incoming HTML and blocking hidden scripts or unsafe code [issue 393].{L2}{L1}Added optional notification when reusing the last template [issue 395].{L2}{L1}Fixed {{%dateformat.current%}} triggering the warning \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Fixed cursor automatic positioning when using {{%quotePlaceHolder%}} in templates.{L2}{L1}Fixed deleted template still appearing and triggering in Last Template menu items [issue 389]."
+    "message": "{L1}Compatibility with Thunderbird 146{L2}{L1}Prevent duplicate <style> elements when merging into <head>. We added some options in advanced settings / Miscellaneus [issue 399].{L2}{L1}Clarified tooltips for loading and saving account templates.{L2}{L1}Various Code improvements which remove legacy code.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

@@ -146,13 +146,15 @@
     "message": "1 回限りの寄付を行いたい"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "アカウント設定の読み込み…"
+    "message": "$identity$ のテンプレート (作成、返信、転送) を読み込む…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "アカウントリストを更新"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "アカウント設定を保存…"
+    "message": "$identity$ のテンプレート (作成、返信、転送) を保存…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "'Thunderbird Daily' YouTube チャネルを開きます。SmartTemplates やそのほかのアドオンの利用法のチュートリアルを紹介しています"

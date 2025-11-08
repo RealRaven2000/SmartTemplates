@@ -149,13 +149,16 @@
     "message": "我想提供一次捐款。"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "加载账户设置…"
+    "message": "加载 $identity$ 的模板（撰写、回复、转发）…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
+
   "btnRefreshAccounts.tooltip": {
     "message": "更新账户列表"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "保存账户设置…"
+    "message": "保存模板（写、回复、转发）用于 $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "访问 'Thunderbird Daily' YouTube 频道 - 使用 SmartTemplates 和其他扩展的技巧与教程"

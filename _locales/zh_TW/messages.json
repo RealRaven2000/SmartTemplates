@@ -149,13 +149,15 @@
     "message": "我想提供一次捐款。"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "加載賬戶設置…"
+    "message": "載入 $identity$ 的範本（撰寫、回覆、轉寄）…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "更新帳戶列表"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "保存賬戶設置…"
+    "message": "儲存範本（撰寫、回覆、轉寄）用於 $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "訪問“Thunderbird Daily”YouTube 頻道 - 獲取使用文具和其他插件的提示和教程"

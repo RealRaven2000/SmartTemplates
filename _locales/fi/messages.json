@@ -149,13 +149,15 @@
     "message": "Haluan auttaa kertalahjoituksella."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Lataa tilin asetukset…"
+    "message": "Lataa mallipohjat (kirjoitus, vastaus, edelleenlähetys) tilille $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Päivitä tililuettelo"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Tallenna tilin asetukset…"
+    "message": "Tallenna mallipohjat (kirjoita, vastaa, lähetä edelleen) tälle tilille $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Käy \"Thunderbird Daily\" -Youtube-kanavalla. jotta saat vinkkejä ja ohjeita Stationaryn ja muiden lisäosien käyttämiseen"

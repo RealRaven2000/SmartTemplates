@@ -145,13 +145,15 @@
     "message": "Ich möchte mit einer einmaligen Spende helfen."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Kontoeinstellungen laden…"
+    "message": "Vorlagen (Erstellen, Antworten, Weiterleiten) für $identity$ laden…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Kontenliste aktualisieren"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Kontoeinstellungen speichern…"
+    "message": "Vorlagen speichern (Verfassen, Antworten, Weiterleiten) für $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Besuchen Sie unseren 'Thunderbird Daily' YouTube-Kanal - für gratis Tipps und Anleitungen zum Benutzen von SmartTemplates und anderen Add-Ons."

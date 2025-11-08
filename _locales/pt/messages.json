@@ -146,13 +146,15 @@
     "message": "Eu quero ajudar com uma doação única."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Carregar configurações da conta…"
+    "message": "Carregar modelos (escrever, responder, encaminhar) para $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Atualizar lista de contas"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Salvar configurações da conta…"
+    "message": "Guardar modelos (escrever, responder, encaminhar) para $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Visite o canal 'Thunderbird Daily' no YouTube - para dicas e tutoriais usando o SmartTemplates e outras complementos"

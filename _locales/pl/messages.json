@@ -149,13 +149,15 @@
     "message": "Chcę pomóc w sprawie jednorazowej darowizny."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Załaduj ustawienia konta…"
+    "message": "Wczytaj szablony (pisanie, odpowiedź, przekazywanie) dla $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Zaktualizuj listę kont"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Zapisz ustawienia konta…"
+    "message": "Zapisz szablony (pisanie, odpowiedź, przekazywanie) dla $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Odwiedź kanał Thunderbird Daily na YouTube, by poznać podpowiedzi i samouczki dotyczące korzystania ze SmartTemplates i innych dodatków."

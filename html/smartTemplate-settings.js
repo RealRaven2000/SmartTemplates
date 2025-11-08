@@ -1447,6 +1447,21 @@ SmartTemplates.Settings = {
 			// let's select the same compose type
 			selectComposeType(SmartTemplates.Settings.currentComposeType, idkey);
 		}
+
+		// Update Save Template tooltip for the selected identity
+		const saveBtn = document.getElementById('btnSaveTemplate');
+		const loadBtn = document.getElementById('btnLoadTemplate');
+		saveBtn.title = saveBtn.alt = browser.i18n.getMessage(
+			"btnSaveTemplate.tooltip",
+			SmartTemplates.Settings.currentAccountLabel
+		);
+
+		loadBtn.title = loadBtn.alt = browser.i18n.getMessage(
+			"btnLoadTemplate.tooltip",
+			SmartTemplates.Settings.currentAccountLabel
+		);
+
+
 		await this.logDebugOptional("identities", "selectIdentity(" + idkey + ") COMPLETE");
 
 	} ,

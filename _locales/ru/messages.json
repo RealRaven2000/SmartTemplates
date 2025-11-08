@@ -146,13 +146,15 @@
     "message": "Я хочу помочь разовым пожертвованием."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Загрузить настройки учетной записи…"
+    "message": "Загрузить шаблоны (создать, ответить, переслать) для $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Обновить список учетных записей"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Сохранить настройки учетной записи…"
+    "message": "Сохранить шаблоны (создать, ответить, переслать) для $identity$…",
+    "placeholders": { "identity": { "content": "$1" } }
   },
   "btnYouTube.tooltip": {
     "message": "Посетите YouTube канал 'Thunderbird ежедневно' - для советов и руководств по использованию SmartTemplates и других дополнений"
