@@ -639,34 +639,28 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
 
 		util.logDebugOptional('functions','SmartTemplate4.delForwardHeader()');
-
-    let origMsgDelimiter = '',
-        Id,
-		    bndl = Services.strings.createBundle("chrome://messenger/locale/mime.properties");
-    try {           
-      origMsgDelimiter = bndl.GetStringFromID(1041);
-    } catch { ; }
+    let origMsgDelimiter, used;
 
 		// [Bug 25089] default forward quote can't be completely hidden
     try {
       // from Tb 31.0 we have a dedicated string for _forwarded_ messages!
-      let fwdId = 'mailnews.forward_header_originalmessage', // from Tb 31.0 onwards?
-          replyId = 'mailnews.reply_header_originalmessage'; //  [Bug 25089] Default forward quote not hidden
+      let fwdId = 'mailnews.forward_header_originalmessage', 
+        replyId = 'mailnews.reply_header_originalmessage'; 
           
       
-      Id = fwdId;
-      origMsgDelimiter = Services.prefs.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
+      used = fwdId;
+      origMsgDelimiter = Services.prefs.getComplexValue(fwdId, Ci.nsIPrefLocalizedString).data;
       // fallback to replyId if it doesn't exist.
       if (!origMsgDelimiter) {
-        Id = replyId
-        origMsgDelimiter = Services.prefs.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
+        used = replyId;
+        origMsgDelimiter = Services.prefs.getComplexValue(replyId, Ci.nsIPrefLocalizedString).data;
       }
-    }
-    catch(ex) {
-      if (!origMsgDelimiter) {
-        util.logException("Could not retrieve delimiter {" + Id + "}; attempt original method.", ex)
-        origMsgDelimiter = bndl.GetStringFromID(1041);
-      }
+    } catch(ex) {
+      util.logException(
+        "Could not retrieve forward/reply delimiter {" + used + "}, using fallback.",
+        ex
+      );
+      origMsgDelimiter = origMsgDelimiter || "--- Original Message ---"; // safe default
     }
 
 		util.logDebugOptional('functions.delForwardHeader','Retrieved Delimiter Token from mime properties: ' + origMsgDelimiter);
