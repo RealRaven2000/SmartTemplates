@@ -7,6 +7,7 @@ import {Licenser, licenseValidationDescription} from "./scripts/Licenser.mjs.js"
 import {SmartTemplates} from "./scripts/st-main.mjs.js";
 import {SmartTemplatesProcess} from "./scripts/st-process.mjs.js";
 import {compareVersions} from "./scripts/mozilla-version-comparator.js";
+// import { Util } from "./scripts/st-util.mjs.js";
 
 
 
@@ -1537,200 +1538,230 @@ async function main() {
           "========================="
       );
     }
-    switch (data.func) {
-      case "UIListenersReady":
-        // makes sure all event listeners in st-messenger.js are set up and ready to receive
-        uiResolve(); // resolve the promise
-        break;
-      case "getLicenseInfo":
-        return currentLicense.info;
+    try {
+      switch (data.func) {
+        case "UIListenersReady":
+          // makes sure all event listeners in st-messenger.js are set up and ready to receive
+          uiResolve(); // resolve the promise
+          break;
+        case "getLicenseInfo":
+          return currentLicense.info;
 
-      case "getPlatformInfo":
-        return messenger.runtime.getPlatformInfo();
+        case "getPlatformInfo":
+          return messenger.runtime.getPlatformInfo();
 
-      case "getBrowserInfo":
-        return messenger.runtime.getBrowserInfo();
+        case "getBrowserInfo":
+          return messenger.runtime.getBrowserInfo();
 
-      case "getAddonInfo":
-        return messenger.management.getSelf();
+        case "getAddonInfo":
+          return messenger.management.getSelf();
 
-      case "initKeyListeners": // might be needed
-        // messenger.NotifyTools.notifyExperiment({event: "initKeyListeners"});
-        break;
+        case "initKeyListeners": // might be needed
+          // messenger.NotifyTools.notifyExperiment({event: "initKeyListeners"});
+          break;
 
-      case "splashScreen":
-        showSplash();
-        break;
+        case "splashScreen":
+          showSplash();
+          break;
 
-      case "splashInstalled":
-        showSplashInstalled();
-        break;
+        case "splashInstalled":
+          showSplashInstalled();
+          break;
 
-      case "updateLicense":
-        await updateLicenseKey(data.key);
-        return true;
+        case "updateLicense":
+          await updateLicenseKey(data.key);
+          return true;
 
-      case "updateTemplateMenus":
-        // Broadcast main windows to run updateTemplateMenus
-        notifyWhenUIReady({ event: "updateTemplateMenus" });
-        break;
+        case "updateTemplateMenus":
+          // Broadcast main windows to run updateTemplateMenus
+          notifyWhenUIReady({ event: "updateTemplateMenus" });
+          break;
 
-      case "updateFileTemplates":
-        if (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus")) {
-          console.log("SmartTemplates updateFileTemplates() [API] data\n");
-        }
-        fileTemplates.Entries = data.Entries;
-        fileTemplates.MRU_Entries = data.MRU_Entries;
-        break;
+        case "updateFileTemplates":
+          if (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus")) {
+            console.log("SmartTemplates updateFileTemplates() [API] data\n");
+          }
+          fileTemplates.Entries = data.Entries;
+          fileTemplates.MRU_Entries = data.MRU_Entries;
+          break;
 
-      case "patchHeaderMenuAPI":
-        if (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus")) {
-          console.log("SmartTemplates patchHeaderMenuAPI [API] data\n");
-        }
-        await createHeaderMenu(); // use API to build the menu
-        await updateMruMenu("message_display_action_menu"); // API to update MRU items
-        break;
+        case "patchHeaderMenuAPI":
+          if (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus")) {
+            console.log("SmartTemplates patchHeaderMenuAPI [API] data\n");
+          }
+          await createHeaderMenu(); // use API to build the menu
+          await updateMruMenu("message_display_action_menu"); // API to update MRU items
+          break;
 
-      case "updateHeaderMenuMRU":
-        await updateMruMenu("message_display_action_menu"); // API to update MRU items
-        break;
+        case "updateHeaderMenuMRU":
+          await updateMruMenu("message_display_action_menu"); // API to update MRU items
+          break;
 
-      case "updateSnippetMenus":
-        notifyWhenUIReady({ event: "updateSnippetMenus" });
-        break;
+        case "updateSnippetMenus":
+          notifyWhenUIReady({ event: "updateSnippetMenus" });
+          break;
 
-      case "updateNewsLabels":
-        notifyWhenUIReady({ event: "updateNewsLabels" });
-        break;
-
-      case "setActionTip":
-        // https://webextension-api.thunderbird.net/en/stable/browserAction.html#settitle-details
-        messenger.browserAction.setTitle({ title: data.text });
-        break;
-
-      case "setActionLabel":
-        // https://webextension-api.thunderbird.net/en/stable/browserAction.html#setlabel-details
-        messenger.browserAction.setLabel({ label: data.text });
-        break;
-
-      // refresh license info (at midnight) and update label afterwards.
-      case "updateLicenseTimer":
-        {
-          await currentLicense.updateLicenseDates();
-
-          notifyWhenUIReady({ licenseInfo: currentLicense.info });
+        case "updateNewsLabels":
           notifyWhenUIReady({ event: "updateNewsLabels" });
-          // update the status bar label too:
+          break;
+
+        case "setActionTip":
+          // https://webextension-api.thunderbird.net/en/stable/browserAction.html#settitle-details
+          messenger.browserAction.setTitle({ title: data.text });
+          break;
+
+        case "setActionLabel":
+          // https://webextension-api.thunderbird.net/en/stable/browserAction.html#setlabel-details
+          messenger.browserAction.setLabel({ label: data.text });
+          break;
+
+        // refresh license info (at midnight) and update label afterwards.
+        case "updateLicenseTimer":
+          {
+            await currentLicense.updateLicenseDates();
+
+            notifyWhenUIReady({ licenseInfo: currentLicense.info });
+            notifyWhenUIReady({ event: "updateNewsLabels" });
+            // update the status bar label too:
+            notifyWhenUIReady({ event: "initLicensedUI" });
+          }
+          break;
+
+        case "initLicensedUI":
+          // main window update reacting to license status change
           notifyWhenUIReady({ event: "initLicensedUI" });
-        }
-        break;
+          break;
 
-      case "initLicensedUI":
-        // main window update reacting to license status change
-        notifyWhenUIReady({ event: "initLicensedUI" });
-        break;
-
-      case "parseVcard": {
-        // https://webextension-api.thunderbird.net/en/stable/how-to/contacts.html
-        // Get JSON representation of the vCard data (jCal).
-        let dataString = data.vCard;
-        return ICAL.parse(dataString);
-      }
-
-      case "cardbook.getContactsFromSearch": {
-        let cards;
-        try {
-          let queryObject = {
-            query: "smartTemplates.getContactsFromSearch",
-            string: data.text, // new object
-            field: data.field, // default "fn" = display name, or  "nickname" or "firstname" or whatever CardBook fields
-            term: data?.operator || "Is", // default "Contains", might also be "Is", "Isnt" and others Thunderbird usual terms
-            case: data?.case || "dig", // default "dig", possibilities ["dig", "ignoreCaseIgnoreDiacriticLabel"], ["ig", "ignoreCaseMatchDiacriticLabel"], ["dg", "matchCaseIgnoreDiacriticLabel"], ["g", "matchCaseMatchDiacriticLabel"]
-          };
-          if (data.preferredDirId) {
-            queryObject.dirPrefId = data.preferredDirId;
+        case "queryCardbookAddon": {
+          try {
+            if (!browser.management) {
+              SmartTemplates.Util.log("browser.management API not available.");
+              return false;
+            }
+          } catch {
+            SmartTemplates.Util.logWarning("browser.management API not available.");
+            return false;
           }
+          try {
+            const cb = await browser.management.get(CARDBOOK_APPNAME);
+            if (!cb) {
+              SmartTemplates.Util.log("Cardbook addon can not be found.");
+              return false;
+            }
+            if (!cb.enabled) {
+              SmartTemplates.Util.log(`Cardbook addon not enabled: ${cb?.disabledReason}`, cb);
+              return false;
+            }
+            return true;
+          } catch {
+            return false;
+          }
+        } 
+        case "parseVcard": {
+          // https://webextension-api.thunderbird.net/en/stable/how-to/contacts.html
+          // Get JSON representation of the vCard data (jCal).
+          let dataString = data.vCard;
+          return ICAL.parse(dataString);
+        }
 
-          cards = await messenger.runtime.sendMessage(CARDBOOK_APPNAME, queryObject).catch((x) => {
-            logReceptionError(x);
-            cards = null;
-          });
-          return cards;
-        } catch (ex) {
-          console.exception(ex);
-          console.log({ cards });
+        case "cardbook.getContactsFromSearch": {
+          let cards;
+          try {
+            let queryObject = {
+              query: "smartTemplates.getContactsFromSearch",
+              string: data.text, // new object
+              field: data.field, // default "fn" = display name, or  "nickname" or "firstname" or whatever CardBook fields
+              term: data?.operator || "Is", // default "Contains", might also be "Is", "Isnt" and others Thunderbird usual terms
+              case: data?.case || "dig", // default "dig", possibilities ["dig", "ignoreCaseIgnoreDiacriticLabel"], ["ig", "ignoreCaseMatchDiacriticLabel"], ["dg", "matchCaseIgnoreDiacriticLabel"], ["g", "matchCaseMatchDiacriticLabel"]
+            };
+            if (data.preferredDirId) {
+              queryObject.dirPrefId = data.preferredDirId;
+            }
+
+            cards = await messenger.runtime.sendMessage(CARDBOOK_APPNAME, queryObject).catch((x) => {
+              logReceptionError(x);
+              cards = null;
+            });
+            return cards;
+          } catch (ex) {
+            console.exception(ex);
+            console.log({ cards });
+            return null;
+          }
+        }
+
+        case "cardbook.getContactsFromMail": {
+          let cards;
+          try {
+            let queryObject = {
+              query: "smartTemplates.getContactsFromMail",
+              mail: data.mail,
+            };
+            if (data.preferredDirId) {
+              queryObject.dirPrefId = data.preferredDirId;
+            }
+
+            cards = await messenger.runtime.sendMessage(CARDBOOK_APPNAME, queryObject).catch((x) => {
+              logReceptionError(x);
+              cards = null;
+            });
+            return cards;
+          } catch (ex) {
+            console.exception(ex);
+            console.log({ cards });
+            return null;
+          }
+        }
+
+        case "getContactsFromSearch": {
           return null;
         }
-      }
 
-      case "cardbook.getContactsFromMail": {
-        let cards;
-        try {
-          let queryObject = {
-            query: "smartTemplates.getContactsFromMail",
-            mail: data.mail,
-          };
-          if (data.preferredDirId) {
-            queryObject.dirPrefId = data.preferredDirId;
+        case "openPrefs":
+          return await openPrefs(data);
+
+        case "patchUnifiedToolbar":
+          return await notifyWhenUIReady({ event: "patchUnifiedToolbar" });
+
+        case "openLinkInTab":
+          // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
+          {
+            let baseURI = data.baseURI || data.URL;
+            let found = await browser.tabs.query({ url: baseURI });
+            if (found.length) {
+              let tab = found[0]; // first result
+              await browser.tabs.update(tab.id, { active: true, url: data.URL });
+              return;
+            }
+            browser.tabs.create({ active: true, url: data.URL });
           }
+          break;
 
-          cards = await messenger.runtime.sendMessage(CARDBOOK_APPNAME, queryObject).catch((x) => {
-            logReceptionError(x);
-            cards = null;
-          });
-          return cards;
-        } catch (ex) {
-          console.exception(ex);
-          console.log({ cards });
-          return null;
+        case "openBrowserLink": {
+          messenger.windows.openDefaultBrowser(data.url);
+          return;
         }
-      }
+        case "stmessage": {
+          // [issue 378]
+          const message = data.msg,
+            messageIds = data.msgIds,
+            mode = data.mode || "standard",
+            referenceFeature = data.addonfeatures || null,
+            features = data.features || ["ok"]; // minimum: an ok button. make array mutable
 
-      case "getContactsFromSearch": {
-        return null;
-      }
-
-      case "openPrefs":
-        return await openPrefs(data);
-
-      case "patchUnifiedToolbar":
-        return await notifyWhenUIReady({ event: "patchUnifiedToolbar" });
-
-      case "openLinkInTab":
-        // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
-        {
-          let baseURI = data.baseURI || data.URL;
-          let found = await browser.tabs.query({ url: baseURI });
-          if (found.length) {
-            let tab = found[0]; // first result
-            await browser.tabs.update(tab.id, { active: true, url: data.URL });
-            return;
+          switch (mode) {
+            case "standard":
+              return showSTmessage(messageIds, features, message, referenceFeature);
+            case "news":
+              return displayUpdateMessage();
+            default:
+              return "unknown";
           }
-          browser.tabs.create({ active: true, url: data.URL });
         }
-        break;
-
-      case "openBrowserLink": {
-        messenger.windows.openDefaultBrowser(data.url);
-        return;
-      }
-      case "stmessage": {
-        // [issue 378]
-        const message = data.msg,
-          messageIds = data.msgIds,
-          mode = data.mode || "standard",
-          referenceFeature = data.addonfeatures || null,
-          features = data.features || ["ok"]; // minimum: an ok button. make array mutable
-
-        switch (mode) {
-          case "standard":
-            return showSTmessage(messageIds, features, message, referenceFeature);
-          case "news":
-            return displayUpdateMessage();
-          default:
-            return "unknown";
-        }
-      }
+      } 
+    } catch (ex) {
+      console.error(`Error in onNotifyBackground listener - func(${data.func})`, data, ex);
+      return undefined; // ERROR CASE!
     }
   });
 
@@ -1767,32 +1798,9 @@ async function main() {
     }
   });
 
-  // content smarttemplate4-locales locale/
-  // we still need this for explicitely setting locale for Calender localization!
   messenger.WindowListener.registerChromeUrl([
     ["content", "smarttemplate4", "chrome/content/"],
     ["resource", "smarttemplate4", "chrome/content/"],
-    ["content", "smarttemplate4-locales", "chrome/locale/"],
-    ["locale", "smarttemplate4", "en", "chrome/locale/en/"],
-    ["locale", "smarttemplate4", "ca", "chrome/locale/ca/"],
-    ["locale", "smarttemplate4", "cs", "chrome/locale/cs/"],
-    ["locale", "smarttemplate4", "de", "chrome/locale/de/"],
-    ["locale", "smarttemplate4", "es", "chrome/locale/es/"],
-    ["locale", "smarttemplate4", "fi", "chrome/locale/fi/"],
-    ["locale", "smarttemplate4", "fr", "chrome/locale/fr/"],
-    ["locale", "smarttemplate4", "id-ID", "chrome/locale/id-ID/"],
-    ["locale", "smarttemplate4", "it", "chrome/locale/it/"],
-    ["locale", "smarttemplate4", "ja", "chrome/locale/ja/"],
-    ["locale", "smarttemplate4", "nl", "chrome/locale/nl/"],
-    ["locale", "smarttemplate4", "pl", "chrome/locale/pl/"],
-    ["locale", "smarttemplate4", "pt-BR", "chrome/locale/pt-BR/"],
-    ["locale", "smarttemplate4", "ru", "chrome/locale/ru/"],
-    ["locale", "smarttemplate4", "sl", "chrome/locale/sl/"],
-    ["locale", "smarttemplate4", "sr", "chrome/locale/sr/"],
-    ["locale", "smarttemplate4", "sv", "chrome/locale/sv/"],
-    ["locale", "smarttemplate4", "uk", "chrome/locale/uk/"],
-    ["locale", "smarttemplate4", "zh-CN", "chrome/locale/zh-CN/"],
-    ["locale", "smarttemplate4", "zh-TW", "chrome/locale/zh-TW/"],
   ]);
 
   //attention: each target window (like messenger.xhtml) can appear only once
