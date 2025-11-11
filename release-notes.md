@@ -11,7 +11,7 @@ I raised a bug with Thunderbird to fix this: [Bugzilla 1986027](https://bugzilla
 *   4.16 – made SmartTemplates compatible with Thunderbird 146.
 *   Added new options to prevent duplicate `<style>` elements when merging into `<head>` [issue #399]
 *   Clarified tooltips for loading and saving account templates: "Save templates (write, reply, forward) for $identity$…"
-
+*   The news label when an update to SmartTemplates is downloaded is now disabled by default.
 **Bug Fixes**
 
 *   Brought back the status bar button which was missing in Thunderbird release (Tb 142+) [issue #401]
