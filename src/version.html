@@ -251,6 +251,83 @@ permalink: version.html
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
 
+<a id="4.16"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.16"
+      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 4.16 - Work in Progress</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">115.0 - 146.*</span>
+		</span>
+  </h4>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li>
+      Added new options to prevent duplicate <code class="html">&lt;style&gt;</code> elements 
+      when merging into <code class="html">&lt;head&gt;</code> 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/399">[issue 399]</a>
+      <p>
+        HTML injection through fragments will automatically move any &lt;style&gt; 
+        elements without parent container to the  <code class="html">&lt;head&gt; </code>
+        section of the document.
+      </p>
+      <p>
+        SmartTemplates now guards against identical style elements being inserted
+        the bahvior can be configured from the settings dialog under 
+        Advanced Settings >> Miscellanous >> Sanitize inserted style rules:
+      </p>
+      <p>
+        <img class="screenshot" src="img/sanitize-inserted-before.png" alt="Before sanitizing inserted styles" />
+      </p>
+      <p>
+        <ul>
+          <li> 
+            <code class="html">removeDuplicatesInHead</code> - any identical style elements that already 
+            exist in the &lt;head&gt; section will be removed
+          </li>
+          <li> 
+            <code class="html"><removeDuplicatesInFragments/code> - any identical style elements 
+            within an inserted fragment that are within a 
+            container (inserted inline) will not duplicated when 
+            inserting the same smart fragment again.
+          </li>
+          <li> 
+            <code class="html">removeDuplicatesInTemplate</code> - any identical style elements 
+            within a template that will lead to duplicates will also be skipped
+          </li>
+      </p>
+    </li>
+    <li>
+      Clarified tooltips for loading and saving account templates: 
+      "Save templates (write, reply, forward) for $identity$…"
+    </li>
+    <li>
+      The news label when an update to SmartTemplates is downloaded is now disabled by default.
+      To modify, see Licenses Tab under Updates.
+    </li>
+
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li>
+      Brought back the status bar button which was missing in 
+      Thunderbird release (Tb 142+) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/401">[issue 401]</a>
+    </li>
+
+    <h5 class="inList"><span class="inListTitle">Codebase Maintenance</span></h5>
+    <li> 
+      Removed calendar string bundling and chrome/content/locale 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/400">[issue 400]</a></li>
+    <li>
+      Use API method (browser.management.get) instead of 
+      <code class="html">AddonManager.getAddonByID </code>to check for Cardbook installation
+    </li>
+    <li>
+      Removed createBundle for retrieveing forward / reply quote headers
+    </li>
+  </ul>
+</li> 
+
 <a id="4.15"> &nbsp; </a>
 <a id="4.15.1"> &nbsp; </a>
 <a id="4.15.2"> &nbsp; </a>
@@ -261,7 +338,7 @@ permalink: version.html
       Version 4.15 - 07/09/2025</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">115.0 - 143.*</span>
+			<span class="thunderbird">115.0 - 144.*</span>
 		</span>
   </h4>
   <p>This release improves template security, refines usability, and fixes key bugs.</p>

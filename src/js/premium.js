@@ -1,8 +1,22 @@
 
-var sales_name = "EXTENDED SUMMER SALE"; // .saleName
-var sales_start_lbl = "May 2nd;" // .saleStart
-var sales_end_lbl = "June 13th";  // .saleEnd
-var sales_end = new Date("2025-06-13");
+const sales_name = "EXTENDED SUMMER SALE"; // .saleName
+const SALE_START_DATE = "2025-05-02";
+const SALE_END_DATE = "2025-06-13";
+
+// --- Helper to format dates ---
+function formatSaleDate(isoDate, includeYear = false) {
+  const date = new Date(isoDate);
+  const options = includeYear
+    ? { month: "long", day: "numeric", year: "numeric" }
+    : { month: "long", day: "numeric" };
+
+  // always use English for the website
+  return date.toLocaleDateString("en-US", options);
+}
+
+const sales_start_lbl = formatSaleDate(SALE_START_DATE);
+const sales_end_lbl = formatSaleDate(SALE_END_DATE);
+const sales_end = new Date(SALE_END_DATE);
 
 /* functions that remove elements depending on the user type (from user=pro querystring ) */
 var removableItems = [
@@ -21,8 +35,9 @@ var removedItems = [];
 				vars = query.split("&");
 		for (var i=0;i<vars.length;i++) {
 			var pair = vars[i].split("=");
-			if (pair[0] == variable) 
+			if (pair[0] == variable) {
 				return pair[1];
+			}
 		}
 		return(null);
 	}
@@ -48,7 +63,7 @@ var removedItems = [];
 	}
 	
 	
-	document.addEventListener("DOMContentLoaded", async function(event) { 
+	document.addEventListener("DOMContentLoaded", async function(_event) { 
 		var user = getQueryVariable("user");
 		if (typeof user!='undefined') {
 			// propagate user type to all internal links
@@ -58,8 +73,8 @@ var removedItems = [];
 					const links = navMenu[0].children;
 					for (var i=0; i<links.length; i++) {
 						var href = links[i].getAttribute("href");
-						if (!href) continue;
-						if (href.includes("user")) continue;
+						if (!href) {continue;}
+						if (href.includes("user")) {continue;}
 						if (href.includes("?")) {
 							links[i].setAttribute("href", href + "&user=" + user);
 						} else {
