@@ -300,14 +300,16 @@ END LICENSE BLOCK
   Version 4.15.2 - 19/09/2025
     # Compatible with Tb 144
 
-  Version 4.15.3 - WIP
+  Version 4.16 - WIP
     # Compatible with Tb 146
     # [issue 399] Prevent duplicate <style> elements when merging into <head>
+    # [issue 400] Removed calendar string bundling and chrome/content/locale
+    # [issue 401] Status bar button missing in Thunderbird release (Tb 142+)
     # Use API method (browser.management.get) instead of AddonManager.getAddonByID 
     #   to check for Cardbook installation
     # Removed createBundle for retrieveing forward / reply quote headers
-    # [issue 400] Removed calendar string bundling and chrome/content/locale
-    
+    # Clarified tooltips for loading and saving account templates:
+    #          "Save templates (write, reply, forward) for $identity$…"
      
 
 
@@ -928,7 +930,11 @@ var SmartTemplate4 = {
         } else {
           btn.label = "SmartTemplates";
         }
-        btn.setAttribute("collapsed", !isVisible);
+        if (isVisible) {
+          btn.removeAttribute("collapsed");
+        } else {
+          btn.setAttribute("collapsed", true);
+        }
 
         switch (labelMode) {
           case 0:

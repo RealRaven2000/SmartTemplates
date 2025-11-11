@@ -36,13 +36,22 @@ async function onLoad(activatedWhileWindowOpen) {
 
   WL.injectElements(`<hbox id="status-bar">
     <toolbarbutton id="SmartTemplate4Messenger"
-                   class="statusbarpanel-iconic"
-                   label="__MSG_smartTemplate4.settings.label__"
-                   tooltiptext="__MSG_smartTemplate4.settings.tooltip__"
-                   insertafter="totalMessageCount"
-                   oncommand="SmartTemplate4.Util.clickStatusIcon(this);"/>
-  </hbox>
+      class="statusbarpanel-iconic"
+      label="__MSG_smartTemplate4.settings.label__"
+      tooltiptext="__MSG_smartTemplate4.settings.tooltip__"/>
+    </hbox>
   `);
+
+  const statusbutton = window.document.getElementById("SmartTemplate4Messenger");
+  if (statusbutton) {
+    util.logDebug("Status bar button added.");
+    statusbutton.addEventListener("command", (event) => {
+      window.SmartTemplate4.Util.clickStatusIcon(event.target);
+    });    
+    // const statusbar = statusbutton.closest('[id="status-bar"]');
+  } else {
+    console.warn("SmartTemplates: Status bar button not found after injection!");
+  }
 
   window.SmartTemplate4.doCommand = async function (el, params = {}) {
     if (!el) {
