@@ -12,6 +12,11 @@
 
 
 /* [mx-l10n] This module handles front-end code for the licensing dialog  */
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+var { MailServices } = SmartTemplates_ESM
+  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+  : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 // removed UI function from SmartTemplate4.Licenser
 var Register = {
@@ -153,7 +158,6 @@ var Register = {
           btnStdLicense = getElement("btnStdLicense");
 
         if (licenseInfo.isExpired) {
-          let eventHandler, btnMod;
           // EXPIRED
           switch (licenseInfo.keyType) {
             case 0: // Pro
@@ -214,14 +218,16 @@ var Register = {
 
               // extText = util.getBundleString("st.notification.premium.btn.extendLicense");
               // check whether renewal is up within 30 days
-              let today = new Date(),
-                later = new Date(today.setDate(today.getDate() + 30)), // pretend it's a month later:
-                dateString = later.toISOString().substr(0, 10);
+              {
+                let today = new Date(),
+                  later = new Date(today.setDate(today.getDate() + 30)), // pretend it's a month later:
+                  dateString = later.toISOString().substr(0, 10);
 
-              if (!(licenseInfo.expiryDate < dateString)) {
-                // not close to expiry yet. let's hide this path.
-                let standardRow = getElement("StandardLicenseRow");
-                standardRow.setAttribute("collapsed", true);
+                if (!(licenseInfo.expiryDate < dateString)) {
+                  // not close to expiry yet. let's hide this path.
+                  let standardRow = getElement("StandardLicenseRow");
+                  standardRow.setAttribute("collapsed", true);
+                }
               }
               break;
           }
@@ -332,8 +338,8 @@ var Register = {
         util.logDebugOptional("identities", `${ac.key}: iterate ${idCount} identities…`);
         for (let i = 0; i < idCount; i++) {
           // populate the dropdown with nsIMsgIdentity details
-          let id = ids[i].QueryInterface(Ci.nsIMsgIdentity);
-          if (!id) continue;
+          let id = ids[i].QueryInterface(Components.interfaces.nsIMsgIdentity);
+          if (!id) {continue;}
           appendIdentity(popup, id, ac);
         }
       } else {
@@ -374,8 +380,10 @@ var Register = {
         if (isRenew || isExtend) {
           // RENEWAL
           shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplate4renew";
-        } // NEW
-        else shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplate4";
+        } else {
+          // NEW
+          shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplate4";
+        }
         break;
 
       case 1: // domain license
@@ -383,16 +391,20 @@ var Register = {
           // RENEWAL
           shortOrder =
             "https://sites.fastspring.com/quickfolders/product/smarttemplatesdomainrenewal";
-        } // NEW
-        else shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplate4domain";
+        } else {
+          // NEW
+          shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplate4domain";
+        }
         break;
 
       case 2: // standard license
         if (isRenew || isExtend) {
           // RENEWAL
           shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplateStdrenew"; // product to be created
-        } // NEW
-        else shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplatestandard";
+        } else {
+          // NEW
+          shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplatestandard";
+        }
         break;
 
       case 3: // upgrade pro to standard
@@ -417,7 +429,7 @@ var Register = {
   },
 
   /* obsolete form submission from code */
-  postForm: function(util) {
+  postForm: function() {
     let url = "https://sites.fastspring.com/quickfolders/product/smarttemplate4?action=order",
       oReq;
 
@@ -443,7 +455,7 @@ var Register = {
   sanitizeName: function sanitizeName(name) {
     // remove bracketed stuff: "fred jones (freddy)" => "fred jones"
     let x = name.replace(/ *\([^)]*\) */g, "");
-    if (x.trim) return x.trim();
+    if (x.trim) {return x.trim();}
     return x;
   },
 
