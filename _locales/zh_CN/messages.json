@@ -1104,7 +1104,7 @@
     "message": "{P1}{boldStart} 在下一次重大版本中 {boldEnd}：Thunderbird 即将提示您选择首选的更新路径 — 年度 ESR 跟踪版或更快速的每月发布版。{ARelease}了解有关新发布模型的更多信息{A2}。{U1} {L1}ESR 版本将保持在 v140，仅升级次要版本，并仅包含安全修复和错误修正，这通常更适合企业环境使用。{L2} {L1}每月发布周期将在功能开发完成后提供新功能和界面更新。请检查当前的附加组件是否支持此发布模型。为此，您可以安装 {AcompatCheck}Add‑on Compatibility Check{A2}。{L2} {U2}{P2}{P1} 我们很高兴地宣布，SmartTemplates 已完全兼容 Thunderbird 140 —— 下一代 Extended Support Release（ESR）。这意味着在下一个主要支持周期中将保持稳定可靠。{P2}{P1} SmartTemplates 当前仍然支持 Thunderbird 115 及更高版本。随着我们将在接下来的一年中添加新功能，对 Thunderbird 115 的支持可能会被放弃，转向 Thunderbird 128 及更高版本。{P2}{P1} 我们持续监控 Thunderbird 的更新，以确保 SmartTemplates 始终保持兼容和可靠，无论您选择哪条更新路径。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 继续其每月发布周期。 {P2}{P1} 一些用户在更新到 Thunderbird v142 后可能看到了错误的不兼容警告。这是由于 Thunderbird 中的兼容性缓存信息有时未能正确刷新。SmartTemplates 的上一个版本已经完全兼容 142。我已向 Thunderbird 提交了 Bug 报告以解决此问题: [Bugzilla 1986027]{P2}{P1} 请放心，SmartTemplates 完全支持每月版和 ESR (140.*) 渠道，您可以继续不间断地工作。 {P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 继续其每月发布周期。 {P2}{P1} 一些用户在更新到 Thunderbird v144 后可能看到了错误的不兼容警告。这是由于 Thunderbird 中的兼容性缓存信息有时未能正确刷新。SmartTemplates 的上一个版本已经完全兼容 144。我已向 Thunderbird 提交了 Bug 报告以解决此问题: [Bugzilla 1986027]{P2}{P1} 请放心，SmartTemplates 完全支持每月版和 ESR (140.*) 渠道，您可以继续不间断地工作。 {P2}"
   },
   "newsSection.intro": {
     "message": "{P1}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{P2}"
@@ -2040,7 +2040,8 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1 class=important}{boldStart}维护版本 4.15.1{boldEnd}: 修复了 {{%cursor%}} 和强制段落模式的严重回归问题，可能导致模板部分内容显示顺序错误。[issue 397]{L2}{L1}优化了“新建”按钮徽章 🟠 的显示 – 要显示此最小状态，请打开 设置 » 许可。在“更新”下启用选项 \"$news.minimal$\" [issue 396].{L2}{L1}通过清理传入的 HTML 并阻止隐藏脚本或不安全代码，提高了模板安全性 [issue 393].{L2}{L1}添加了重用最后使用模板时的可选通知 [issue 395].{L2}{L1}修复了 {{%dateformat.current%}} 触发警告 \"NOT SUPPORTED: Replace deferred smartTemplate variable\" 的问题 [issue 394].{L2}{L1}修复了使用 {{%quotePlaceHolder%}} 时光标自动定位问题.{L2}{L1}修复了已删除模板仍出现在“最后使用的模板”菜单中并被触发的问题 [issue 389]."
+    "description": "🇨🇳 change log",
+    "message": "{L1}兼容 Thunderbird 146。{L2}{L1}在合并到 <head> 时防止重复的 <style> 元素。要配置相关规则，请打开高级设置 / 其他 [issue 399]。{L2}{L1}已明确加载和保存帐户模板的工具提示：保存模板（撰写、回复、转发）用于身份…{L2}{L1}恢复了在 Thunderbird 142+ 版本中缺失的状态栏按钮 [issue 401]。{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

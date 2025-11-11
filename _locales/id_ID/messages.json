@@ -1422,8 +1422,10 @@
     "message": "Voucher"
   },
   "whats-new-list": {
-    "message": "{L1 class=important}{boldStart}Rilis pemeliharaan 4.15.1{boldEnd}: memperbaiki regresi serius dengan {{%cursor%}} dan mode paragraf paksa, yang dapat menyebabkan bagian dari template muncul tidak berurutan.[issue 397]{L2}{L1}Lencana tombol Baru 🟠 disederhanakan untuk pembaruan – untuk menampilkan status minimal ini, buka Pengaturan » Lisensi. Di 'Pembaruan', aktifkan opsi \"$news.minimal$\" [issue 396].{L2}{L1}Keamanan template ditingkatkan dengan membersihkan HTML masuk dan memblokir skrip tersembunyi atau kode yang tidak aman [issue 393].{L2}{L1}Ditambahkan notifikasi opsional saat menggunakan kembali template terakhir [issue 395].{L2}{L1}Diperbaiki {{%dateformat.current%}} yang memicu peringatan \"NOT SUPPORTED: Replace deferred smartTemplate variable\" [issue 394].{L2}{L1}Diperbaiki penempatan kursor otomatis saat menggunakan {{%quotePlaceHolder%}} dalam template.{L2}{L1}Diperbaiki template yang dihapus tetap muncul dan aktif di item menu Template Terakhir [issue 389]."
+    "description": "🇮🇩 change log",
+    "message": "{L1}Kompatibel dengan Thunderbird 146.{L2}{L1}Mencegah elemen <style> ganda saat digabungkan ke <head>. Untuk mengatur aturan terkait, buka Pengaturan lanjutan / Lainnya [issue 399].{L2}{L1}Tooltip diperjelas untuk memuat dan menyimpan template akun: Simpan template (tulis, balas, teruskan) untuk identitas…{L2}{L1}Tombol status bar yang hilang di versi Thunderbird 142+ telah dikembalikan [issue 401].{L2}"
   },
+
   "xsent_long_result.label": {
     "message": "Hasil: Minggu,20/12/2011 pada pukul 16:24"
   },

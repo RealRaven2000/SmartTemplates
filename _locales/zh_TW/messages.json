@@ -1100,7 +1100,7 @@
     "message": "{P1}{boldStart} 在下一次重大版本中 {boldEnd}：Thunderbird 即將提示您選擇首選的更新路徑 — 年度 ESR 跟踪版或更快速的每月發布版。{ARelease}了解有關新發佈模型的詳細資訊{A2}。{U1} {L1}ESR 版本將保持在 v140，只會升級次要版本，僅包含安全修復和錯誤修正，這通常更適合企業環境使用。{L2} {L1}每月發布週期將在新功能開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發布模型。為此，您可以安裝 {AcompatCheck}Add‑on Compatibility Check{A2}。{L2} {U2}{P2}{P1} 我們很高興地宣布，SmartTemplates 已完全相容於 Thunderbird 140 —— 下一代 Extended Support Release（ESR）。這意味著在下一個主要支援週期中將保持穩定可靠。{P2}{P1} SmartTemplates 目前仍然支援 Thunderbird 115 及更高版本。在接下來的一年內，隨著我們添加新功能，對 Thunderbird 115 的支援可能會被逐步移除，改為 Thunderbird 128 及更高版本。{P2}{P1} 我們持續監控 Thunderbird 的更新，以確保 SmartTemplates 始終保持相容與可靠，無論您選擇哪條更新路徑。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 一些用戶在更新到 Thunderbird v142 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。SmartTemplates 之前的版本已經完全相容於 142。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{P2}{P1} 請放心，SmartTemplates 完全支援每月版和 ESR (140.*) 通道，您可以繼續不間斷地工作。 {P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 一些用戶在更新到 Thunderbird v144 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。SmartTemplates 之前的版本已經完全相容於 144。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{P2}{P1} 請放心，SmartTemplates 完全支援每月版和 ESR (140.*) 通道，您可以繼續不間斷地工作。 {P2}"
   },
   "newsSection.intro": {
     "message": "{P1}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{P2}"
@@ -2030,7 +2030,8 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1 class=important}{boldStart}維護版本 4.15.1{boldEnd}: 修復了 {{%cursor%}} 和強制段落模式的嚴重回歸問題，可能導致模板部分內容顯示順序錯誤。[issue 397]{L2}{L1}優化了“新增”按鈕徽章 🟠 的顯示 – 要顯示此最小狀態，請打開 設定 » 授權。在“更新”下啟用選項 \"$news.minimal$\" [issue 396].{L2}{L1}透過清理傳入的 HTML 並阻止隱藏腳本或不安全代碼，提高模板安全性 [issue 393].{L2}{L1}新增重複使用最後模板時的選用通知 [issue 395].{L2}{L1}修復 {{%dateformat.current%}} 觸發警告 \"NOT SUPPORTED: Replace deferred smartTemplate variable\" 的問題 [issue 394].{L2}{L1}修復使用 {{%quotePlaceHolder%}} 時光標自動定位問題.{L2}{L1}修復已刪除模板仍出現在「最後使用模板」選單中並被觸發的問題 [issue 389]."
+    "description": "🇹🇼 change log",
+    "message": "{L1}相容 Thunderbird 146。{L2}{L1}在合併到 <head> 時防止重複的 <style> 元素。要配置相關規則，請打開進階設定 / 其他 [issue 399]。{L2}{L1}已明確載入和保存帳戶範本的工具提示：保存範本（撰寫、回覆、轉寄）用於身份…{L2}{L1}恢復了在 Thunderbird 142+ 版本中遺失的狀態列按鈕 [issue 401]。{L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

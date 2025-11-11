@@ -3,31 +3,28 @@
 
 <b>This release improves template security, refines usability, and fixes key bugs.</b>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.15.2">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.16">can be found here</a>
 
 Some users may have seen a false incompatibility warning after updating from Thunderbird to v142. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. The previous version of SmartTemplates was already fully compatible with 142. 
 
 To get this fixed I raised a bug with Thunderbird: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>.
 
 
-SmartTemplates now removes anything that could secretly run code in your emails, such as scripts or hidden interactive elements. Your templates still look and work the same, but unsafe parts are filtered out automatically for better security.
-
-<b>Maintenance release 4.15.1 – Hotfix</b>
-
-This release fixes a serious regression in New/Answer/Forward templates caused by <tt>%cursor%</tt> + forced paragraph mode, which could cause parts of the template to appear out of order. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/397">[issue 397]</a>
-
 <b>Improvements</b>
 <ul>
-<li>4.15.2 - compatible with Thunderbird 144.</li>
-<li>Further improvements to the New button badge – to display this streamlined status, open Settings » Licenses. Under 'Updates', enable the option "Do not display news label on update" <a href="https://github.com/RealRaven2000/SmartTemplates/issues/396">[issue 396]</a></li>
-<li>Improved template safety by cleaning incoming HTML and blocking hidden scripts or unsafe code <a href="https://github.com/RealRaven2000/SmartTemplates/issues/393">[issue 393]</a></li>
-<li>Added optional notification when reusing the last template <a href="https://github.com/RealRaven2000/SmartTemplates/issues/395">[issue 395]</a></li>
+<li>4.16 - made SmartTemplates compatible with Thunderbird 146.</li>
+<li>Added new options to prevent duplicate &lt;style&gt; elements when merging into &lt;head&gt; <a href="https://github.com/RealRaven2000/SmartTemplates/issues/399">[issue 399]</a></li>
+<li>Clarified tooltips for loading and saving account templates: "Save templates (write, reply, forward) for $identity$…"</li>
 </ul>
 
-<b>Bugs Fixed</b>
+<b>Bug Fixes</b>
 <ul>
-<li>Fixed <tt>%dateformat.current%</tt> triggering the warning "NOT SUPPORTED: Replace deferred smartTemplate variable" <a href="https://github.com/RealRaven2000/SmartTemplates/issues/394">[issue 394]</a></li>
-<li>Fixed cursor automatic positioning when using <tt>%quotePlaceHolder%</tt> in templates</li>
-<li>Fixed: Deleted Template Still Appearing and Triggering in SmartTemplates <i>Last Template</i> item
- <a href="https://github.com/RealRaven2000/SmartTemplates/issues/389">[issue 389]</a></li>
+  <li>Brought back the status bar button which was missing in Thunderbird release (Tb 142+) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/401">[issue 401]</a></li>
+</ul>
+
+<b>Codebase Improvements</b>
+<ul>
+<li> Removed calendar string bundling and chrome/content/locale <a href="https://github.com/RealRaven2000/SmartTemplates/issues/400">[issue 400]</a></li>
+<li>Use API method (browser.management.get) instead of AddonManager.getAddonByID to check for Cardbook installation</li>
+<li>Removed createBundle for retrieveing forward / reply quote headers</li>
 </ul>
