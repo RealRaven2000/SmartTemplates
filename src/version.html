@@ -270,7 +270,7 @@ permalink: version.html
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/399">[issue 399]</a>
       <p>
         HTML injection through fragments will automatically move any &lt;style&gt; 
-        elements without parent container to the <code class="html">&lt;head&gt; </code>
+        elements without parent container to the <code class="html">&lt;head&gt;</code>
         section of the document.
       </p>
       <p>
@@ -285,7 +285,7 @@ permalink: version.html
         <ul>
           <li> 
             <code class="html">removeDuplicatesInHead</code> - any identical style elements that already 
-            exist in the &lt;head&gt; section will be removed
+            exist in the <code class="html">&lt;head&gt;</code> section will be removed
           </li>
           <li> 
             <code class="html">removeDuplicatesInFragments</code> - any identical style elements 
@@ -302,11 +302,38 @@ permalink: version.html
     </li>
     <li>
       Clarified tooltips for loading and saving account templates: 
-      "Save templates (write, reply, forward) for $identity$…"
+      "Save templates (write, reply, forward) for <code class="html">$identity$</code>…"
     </li>
     <li>
       The news label when an update to SmartTemplates is downloaded is now disabled by default.
       To modify, see Licenses Tab under Updates.
+      <p>
+        <img class="screenshot" src="img/settings-news-minimal.png" 
+        alt="Hide new label on SmartTemplates button" />
+      </p>
+      <table>
+        <tr>
+          <td>No news label</td>
+          <td>Button with news label</td>
+        </tr>
+        <tr>
+          <td>
+            <img class="screenshot" src="img/toolbar-button-badge.png" 
+            alt="Hide new label on SmartTemplates button" />
+          </td>
+          <td>
+            <img class="screenshot" src="img/toolbar-button-withlabel.png" 
+            alt="Displaying the text" />
+          </td>
+        </tr>
+      </table>
+      <p>
+        The badge 🟠 will automatically be removed once the change log has been seen 
+        via "Latest News" in the dropdown menu. We feel this is better than forcing
+        a popup as soon as the update is installed. 
+      </p>
+        <img class="screenshot" src="img/latest-news.png" 
+        alt="change log via latest news menu item" />      
     </li>
 
     <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
