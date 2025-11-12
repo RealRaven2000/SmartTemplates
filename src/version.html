@@ -311,7 +311,17 @@ permalink: version.html
         <img class="screenshot" src="img/settings-news-minimal.png" 
         alt="Hide new label on SmartTemplates button" />
       </p>
-      <table>
+      <style>
+        table.images {
+          border: 1px dashed rgba(20,20,20,0.2);
+          border-collapse: collapse; /* optional, keeps borders tight */
+        }
+        table.images td + td {
+          padding-inline-start: 1rem;
+          padding-inline-end: 0.8rem;
+        }
+      </style>
+      <table class="images">
         <tr>
           <td>No news label</td>
           <td>Button with news label</td>
