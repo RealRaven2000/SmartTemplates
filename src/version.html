@@ -256,7 +256,7 @@ permalink: version.html
   <h4>
 		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.16"
       onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
-      Version 4.16 - Work in Progress</a>
+      Version 4.16 - 11/11/2025</a>
 		<br>
 		<span class="appWrapper">
 			<span class="thunderbird">115.0 - 146.*</span>
@@ -265,8 +265,8 @@ permalink: version.html
   <ul>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li>
-      Added new options to prevent duplicate <code class="html">&lt;style&gt;</code> elements 
-      when merging into <code class="html">&lt;head&gt;</code> 
+      Added a group of new options that prevent duplicate <code class="html">&lt;style&gt;</code> 
+      elements - especially when they are merged into <code class="html">&lt;head&gt;</code> 
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/399">[issue 399]</a>
       <p>
         HTML injection through fragments will automatically move any &lt;style&gt; 
@@ -275,8 +275,8 @@ permalink: version.html
       </p>
       <p>
         SmartTemplates now guards against identical style elements being inserted
-        the bahvior can be configured from the settings dialog under 
-        Advanced Settings >> Miscellanous >> Sanitize inserted style rules:
+        the behavior can be configured from the settings dialog under 
+        Advanced Settings » Miscellanous » Sanitize inserted style rules:
       </p>
       <p>
         <img class="screenshot" src="img/sanitize-inserted-before.png" alt="Before sanitizing inserted styles" />
@@ -297,6 +297,7 @@ permalink: version.html
             <code class="html">removeDuplicatesInTemplate</code> - any identical style elements 
             within a template that will lead to duplicates will also be skipped
           </li>
+        </ul>
       </p>
     </li>
     <li>
@@ -1406,7 +1407,7 @@ permalink: version.html
         </p>
         <p>
           For example, the following can be used as a smart fragment script to generate a
-          nicer breadcrumb trail from a string like "Menu >> submenu >> command" into 
+          nicer breadcrumb trail from a string like "Menu » submenu » command" into 
           "<i>Menu » submenu » command</i>". Note that we can use HTML markup, like in any
           smart fragment.
         </p>
