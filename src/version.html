@@ -270,12 +270,12 @@ permalink: version.html
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/399">[issue 399]</a>
       <p>
         HTML injection through fragments will automatically move any &lt;style&gt; 
-        elements without parent container to the  <code class="html">&lt;head&gt; </code>
+        elements without parent container to the <code class="html">&lt;head&gt; </code>
         section of the document.
       </p>
       <p>
         SmartTemplates now guards against identical style elements being inserted
-        the behavior can be configured from the settings dialog under 
+        the behavior can be configured from the SmartTemplates settings dialog under 
         Advanced Settings » Miscellanous » Sanitize inserted style rules:
       </p>
       <p>
@@ -288,7 +288,7 @@ permalink: version.html
             exist in the &lt;head&gt; section will be removed
           </li>
           <li> 
-            <code class="html"><removeDuplicatesInFragments/code> - any identical style elements 
+            <code class="html">removeDuplicatesInFragments</code> - any identical style elements 
             within an inserted fragment that are within a 
             container (inserted inline) will not duplicated when 
             inserting the same smart fragment again.
