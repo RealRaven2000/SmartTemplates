@@ -43,160 +43,109 @@ var licenseInfo;
 import { SettingsUI } from "./st-settings-ui.mjs";
 import { logMissingFunction } from "./st-log.mjs";
 
-// global variable for updating file templates
-var LastInput = {
-  id: null,
-  value: "",
-  selectedIndex: null,
-  listbox: null
-}
-
-
 // use a global variable, similar to background script.
 var fileTemplates = {
-	Entries: {
-		templatesNew : [],
-		templatesRsp : [],
-		templatesFwd : [],
-    snippets: []
-	},
-	isModified: false,  // global flag to trigger saving to back end at some stage (WIP)
+  Entries: {
+    templatesNew: [],
+    templatesRsp: [],
+    templatesFwd: [],
+    snippets: [],
+  },
+  isModified: false, // global flag to trigger saving to back end at some stage (WIP)
 
-
-	get activeFileList() {  //  was ListBox()
-		const container = document.querySelector("#fileTemplateContainer section.active");
-		if(!container) {return null;}
-		const select = container.querySelector(".fileTemplateList");
-		return select;
-	},
-
-	get CurrentEntries() {
-		try {
-			const activeSection = document.querySelector("#fileTemplateContainer section.active");
-			switch(activeSection.id) {
-				case "new-fileTemplates":
-					return this.Entries.templatesNew;
-				case "rsp-fileTemplates":
-					return this.Entries.templatesRsp;
-				case "fwd-fileTemplates":
-					return this.Entries.templatesFwd;
-        case "snippets-fileTemplates":
-					return this.Entries.snippets;
-			}
-		} catch {;}
-		return [];
-	},	
-
-	// delete list (only of currently selected flavor)
-  clearList: function(onlyUI) {
-    if (!onlyUI) {
-      SmartTemplates.Settings.logDebug ('clearList() - empty templateFile list'); 
-			let entries = this.CurrentEntries;
-			if (entries) {
-				while (entries.length) { entries.pop();}
-			}
+  get rawEntries() {
+    // Function to remove all _sortId members - these are not necessary for the UI / storage
+    let entries = this.Entries;
+    const sanitized = {};
+    for (const key in entries) {
+      if (Array.isArray(entries[key])) {
+        sanitized[key] = entries[key].map(({ _sortId, ...rest }) => ({ ...rest }));
+      } else {
+        // preserve any non-array properties (metadata, settings, etc.)
+        sanitized[key] = entries[key];
+      }
     }
-		SmartTemplates.Settings.logDebug ('clearList() - empty listbox'); 
-		let theList = this.activeFileList;
-		if (theList) {
-			while(theList.lastElementChild) {
-				theList.removeChild(theList.lastElementChild);
-			}
-		}
+    return sanitized;
+  },
+
+  get activeFileList() {
+    //  was ListBox()
+    const container = document.querySelector("#fileTemplateContainer section.active");
+    if (!container) {
+      return null;
+    }
+    const select = container.querySelector(".fileTemplateList");
+    return select;
+  },
+
+  get CurrentEntries() {
+    try {
+      const activeSection = document.querySelector("#fileTemplateContainer section.active");
+      switch (activeSection.id) {
+        case "new-fileTemplates":
+          return this.Entries.templatesNew;
+        case "rsp-fileTemplates":
+          return this.Entries.templatesRsp;
+        case "fwd-fileTemplates":
+          return this.Entries.templatesFwd;
+        case "snippets-fileTemplates":
+          return this.Entries.snippets;
+      }
+    } catch { ; }
+    return [];
+  },
+
+  // delete list (only of currently selected flavor)
+  clearList: function (onlyUI) {
+    if (!onlyUI) {
+      SmartTemplates.Settings.logDebug("clearList() - empty templateFile list");
+      let entries = this.CurrentEntries;
+      if (entries) {
+        while (entries.length) {
+          entries.pop();
+        }
+      }
+    }
+    SmartTemplates.Settings.logDebug("clearList() - empty listbox");
+    let theList = this.activeFileList;
+    if (theList) {
+      while (theList.lastElementChild) {
+        theList.removeChild(theList.lastElementChild);
+      }
+    }
   },
 
   // repopulates richlistbox and rebuilds menu!
-  repopulate: function(isRichList) {
+  repopulate: function (isRichList, startIndex = 0) {
     // richlistbox
     if (isRichList) {
-      this.clearList(true);
-      for (let i=0; i<this.CurrentEntries.length; i++) {
+			if (startIndex <= 0) {
+				this.clearList(true);
+			} else { 
+				// only remove trailing items for performance
+				const select = this.activeFileList;
+        for (let o = select.options.length - 1; o >= startIndex; o--) {
+          select.remove(o);
+        }
+			}
+      for (let i = startIndex; i < this.CurrentEntries.length; i++) {
         let entry = this.CurrentEntries[i],
-            cat = entry.category || "";
-        this.addItem(entry.path, fileTemplates.makeLabel(entry), cat, 0, i);
+          cat = entry.category || "";
+        this.addItem(entry.path, fileTemplates.makeLabel(entry), cat, null, i, entry._sortId);
         // populate the Entries array; fallback to browser bookmark type if undefined
       }
     }
   },
-		
 
-	// label was changed, auto update the list!
-  onEditLabel: async function(txt, forceIndex=null) {
-    SmartTemplates.Settings.logDebug("onEditLabel", txt);
-    // check if one is selected and we just changed it]
-    // path = document.getElementById('txtTemplatePath').value,
 
-    let label = document.getElementById("txtTemplateTitle").value.trim(),
-      category = document.getElementById("txtTemplateCategory").value.trim(),
-      listbox = this.activeFileList,
-      idx = forceIndex || listbox.selectedIndex;
 
-    SmartTemplates.Settings.logDebugOptional("fileTemplates", "onEdit();");
-    if (idx == -1) {
-      return;
-    }
-    const e = this.CurrentEntries[idx];
-    // check if path matches
-    if (e.path != document.getElementById("txtTemplatePath").value) {
-      return; // this is not a match. Let's not change the label
-    }
-
-    if (e.label == label && e.category == category) {
-      return;
-    }
-
-    // change label in list then save & reload.
-    e.label = label;
-    e.category = category;
-
-    if (forceIndex) {
-      let item = listbox.item(forceIndex);
-      let v = JSON.parse(item.value),
-        p = v.path,
-        c = v.category || "";
-      switch (LastInput.id) {
-        case "txtTemplateCategory":
-          c = document.getElementById("txtTemplateCategory").value; // update with new value
-          item.value = JSON.stringify({ path: p, category: c });
-          break;
-        case "txtTemplateTitle":
-          {
-            let txt = document.getElementById("txtTemplateTitle").value;
-            e.label = txt;
-            item.firstChild.value = fileTemplates.makeLabel(e); // txt;
-          }
-          break;
-      }
-      await this.saveCustomMenu();
-      return;
-    }
-    await this.saveCustomMenu();
-    this.repopulate(true); // rebuild menu
-    listbox.selectedIndex = idx; // reselect item
-  } , 	
-
-  updateInputGlobal: function(input) {
-    LastInput.id = input.id;
-    LastInput.value = input.value;
-    let listbox = this.activeFileList,
-        idx = listbox.selectedIndex;
-    LastInput.listbox = listbox; // remember this listbox. we only update if clicking a different item in the same.
-    LastInput.selectedIndex = idx;
-  },
-  
-	onSelect: async function (select)  {
+  onSelect: async function (select) {
     SmartTemplates.Settings.logDebug("onSelect", select);
-    if (LastInput.listbox == select) {
-      if (LastInput.value != document.getElementById(LastInput.id).value) {
-        // let lastListItem = select.item(LastInput.selectedIndex);
-        await this.onEditLabel(null, LastInput.selectedIndex);
-      }
-    }
-		let listItem = select.selectedOptions[0]; // can be multiple items
-		if (listItem) {
-      let p, 
-          c = "", 
-          v = listItem.value;
+    let listItem = select.selectedOptions[0]; // can be multiple items
+    if (listItem) {
+      let p,
+        c = "",
+        v = listItem.value;
       try {
         v = JSON.parse(listItem.value);
         p = v.path;
@@ -204,292 +153,415 @@ var fileTemplates = {
       } catch {
         p = v;
       }
-			document.getElementById('txtTemplatePath').value = p;
-			document.getElementById('txtTemplateCategory').value = c;
-			document.getElementById('txtTemplateTitle').value = fileTemplates.sanitizeLabel(listItem.label, c);
-		}
-	} ,
+      document.getElementById("txtTemplatePath").value = p;
+      document.getElementById("txtTemplateCategory").value = c;
+      document.getElementById("txtTemplateTitle").value = fileTemplates.sanitizeLabel(
+        listItem.label,
+        c
+      );
+    }
+  },
 
-	// was SmartTemplate4.fileTemplates.update()
-	updateEntry: async function(isNew = false) {
-    const path = document.getElementById('txtTemplatePath').value,
-          label = document.getElementById('txtTemplateTitle').value,
-          category = document.getElementById('txtTemplateCategory').value;
-		
-		if (!path.trim()) {
-			alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnEnterPath"));
-			const pickRow = document.querySelector(".templateFilePicker");
-			pickRow.classList.add("highlight");
-			return;
-		}
-			
-		if (!label.trim()) {
-			alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnEnterTitle"));
-			return;
-		}
+  // was SmartTemplate4.fileTemplates.update()
+  updateEntry: async function (isNew = false) {
+    const path = document.getElementById("txtTemplatePath").value,
+      label = document.getElementById("txtTemplateTitle").value,
+      category = document.getElementById("txtTemplateCategory").value;
 
-		let existingEntry, selectedIndex, targetIndex = 0;
-		if (!isNew) { // update case
-			selectedIndex = this.activeFileList.selectedIndex;
-      if (selectedIndex<0) {
-				alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnSelectUpdateItem"));
+    if (!path.trim()) {
+      alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnEnterPath"));
+      const pickRow = document.querySelector(".templateFilePicker");
+      pickRow.classList.add("highlight");
+      return;
+    }
+
+    if (!label.trim()) {
+      alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnEnterTitle"));
+      return;
+    }
+
+    let existingEntry,
+      selectedIndex,
+      targetIndex = 0;
+    if (!isNew) {
+      // update case
+      selectedIndex = this.activeFileList.selectedIndex;
+      if (selectedIndex < 0) {
+        alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnSelectUpdateItem"));
         return;
       }
       existingEntry = this.CurrentEntries[selectedIndex];
       existingEntry.path = path;
       existingEntry.label = label;
-      existingEntry.category = category || ""; 
-		}
+      existingEntry.category = category || "";
+    }
 
-		if (!this.activeFileList.selectedOptions) {
-			// eslint-disable-next-line no-debugger
-			debugger;
-		} else {
-			if (this.activeFileList.selectedOptions.length) {
-				targetIndex = selectedIndex;
-			}
-		}
+    if (isNew) {
+      if (this.activeFileList?.selectedOptions.length) {
+        targetIndex = this.activeFileList.selectedIndex + 1;
+      } else {
+        targetIndex = this.CurrentEntries.length;
+      }
+    }
+
     if (!existingEntry) {
       let entry = {
-        path: path, 
-        label: label, 
-        category: category
+        path: path,
+        label: label,
+        category: category,
+        _sortId: targetIndex >= 0 ? targetIndex + 1 : this.CurrentEntries.length + 1,
+      };
+      this.addItem(
+        path,
+        fileTemplates.makeLabel(entry),
+        category,
+        this.activeFileList,
+        targetIndex,
+        entry._sortId
+      );
+      if (targetIndex == null || targetIndex < 0) {
+        // append at end
+        this.CurrentEntries.push(entry);
+      } else {
+        // insert new item at position!
+        this.CurrentEntries.splice(targetIndex, 0, entry);
       }
-      this.addItem(path, fileTemplates.makeLabel(entry), category, this.activeFileList, targetIndex);
-			if (targetIndex == null || targetIndex<0) { // append at end
-      	this.CurrentEntries.push(entry);
-			} else {
-				// insert new item at position!
-				this.CurrentEntries.splice(targetIndex, 0, entry);
-			}
+
+      // reindex _sortId for all entries
+      this.CurrentEntries.forEach((e, i) => {
+        e._sortId = i + 1;
+      });
+      fileTemplates.repopulate(true, targetIndex);
+      this.activeFileList.selectedIndex = targetIndex;
     } else {
       // update existing item (label)
-      SmartTemplates.Settings.logDebug(`Updating existing item: ${existingEntry.label} [${existingEntry.path} , ${existingEntry.category} ]`);
+      SmartTemplates.Settings.logDebug(
+        `Updating existing item: ${existingEntry.label} [${existingEntry.path} , ${existingEntry.category} ]`
+      );
       // this.activeFileList.ensureIndexIsVisible(targetIndex);
       this.CurrentEntries[selectedIndex].label = label;
-      this.activeFileList.item(selectedIndex).label = fileTemplates.makeLabel(this.CurrentEntries[selectedIndex]); 
+      this.activeFileList.item(selectedIndex).label = fileTemplates.makeLabel(
+        this.CurrentEntries[selectedIndex]
+      );
       // update path!
-      this.activeFileList.item(selectedIndex).value = JSON.stringify({path:path, category:category, position: selectedIndex});
+      this.activeFileList.item(selectedIndex).value = JSON.stringify({
+        path: path,
+        category: category,
+        position: selectedIndex,
+      });
     }
-		// update backend
-		messenger.Utilities.updateTemplates(fileTemplates.Entries);
-	},
-	addEntry: async function() {
-		this.updateEntry(true);
-	},
-	removeEntry: async function() {
-		let currentPos = fileTemplates.activeFileList.selectedIndex;
-		if (currentPos<0) {return;}
-		fileTemplates.CurrentEntries.splice(currentPos, 1);
-		fileTemplates.activeFileList.remove(currentPos);
-		fileTemplates.selectedIndex = currentPos;
-		// update backend
-		messenger.Utilities.updateTemplates(fileTemplates.Entries);
-		fileTemplates.repopulate(true);
-	},
-	moveEntryUp: async function() {
-		let currentPos = fileTemplates.activeFileList.selectedIndex;
-		if (currentPos<=0) {return;}
-		// move the item in the datastructure:
-		array_move(fileTemplates.CurrentEntries, currentPos, currentPos-1);
-		// update backend
-		messenger.Utilities.updateTemplates(fileTemplates.Entries);
-		// refresh list on screen:
-		fileTemplates.repopulate(true);
-		this.activeFileList.selectedIndex = currentPos-1;
-	},
-	moveEntryDown: async function() {
-		let currentPos = fileTemplates.activeFileList.selectedIndex;
-		if (currentPos<0) {return;}
-		if (currentPos+1>=fileTemplates.activeFileList.length) {return;}
-		// move the item in the datastructure:
-		array_move(fileTemplates.CurrentEntries, currentPos, currentPos+1);
-		// update backend
-		messenger.Utilities.updateTemplates(fileTemplates.Entries);
-		// refresh list on screen:
-		fileTemplates.repopulate(true);
-		this.activeFileList.selectedIndex = currentPos+1;
-	},
-	editEntry: async function() {
-		if (this.activeFileList.selectedIndex<0) {return;}
-		const item = fileTemplates.CurrentEntries[this.activeFileList.selectedIndex];
-		messenger.Utilities.editTemplateExternal(item);
-	},
-	openFilePicker: async function() {
+    // update backend
+    messenger.Utilities.updateTemplates(fileTemplates.rawEntries);
+  },
+  addEntry: async function () {
+    this.updateEntry(true);
+  },
+  removeEntry: async function () {
+    let currentPos = fileTemplates.activeFileList.selectedIndex;
+    if (currentPos < 0) {
+      return;
+    }
+    fileTemplates.CurrentEntries.splice(currentPos, 1);
+    fileTemplates.activeFileList.remove(currentPos);
 
-		let result = await messenger.Utilities.openFileExternal(
-			{
-				path: "",
-				filter: "*.html;*.css"
-			}
-		);
-		console.log("Returned file info", result)
-		if (result.path) {
-			const pickRow = document.querySelector(".templateFilePicker");
-			pickRow.classList.remove("highlight");
-			document.getElementById('txtTemplatePath').value = result.path;
-			document.getElementById('txtTemplateTitle').value = result.name;
-		}
-	},
-  dropFiles: function(event) {
-		if (event.dataTransfer.files.length == 0) {
-			return false;
-		}
-		const option = event.target,
-		      target = JSON.parse(option.value);
+    // renumber _sortId starting from 1
+    fileTemplates.CurrentEntries.forEach((entry, i) => {
+      entry._sortId = i + 1;
+    });
 
-		logMissingFunction("fileTemplates.dropFiles");
-		console.log(event.dataTransfer.files);
-		console.log(`target[${target.position}]:\npath=${target.path}\nvategory=${target.category}`);
-		// we cannot determine the path, but we could send a message to the backgrouound page tp:
-		// - look for the file in the last location (or a root folder for templates)
-		// - when a file of matching name is found: 
-		//   > display the file open dialog and prepopulate it with path and file name!
-		alert("Sorry, at the moment dropping files is not supported - as we are not allowed to see the folder location from a web extension. We will find a workaround in the future!");
-		return true;
-	},
-	onDragOver: function (event) {
-		event.preventDefault();
+    // update backend
+    messenger.Utilities.updateTemplates(fileTemplates.Entries);
+    // refresh list on screen (starting from deleted position)
+    fileTemplates.repopulate(true, currentPos);
+
+    // restore selection
+    const newIndex = Math.min(currentPos, fileTemplates.CurrentEntries.length - 1);
+    fileTemplates.activeFileList.selectedIndex = newIndex;
+  },
+  moveEntryUp: async function () {
+    let currentPos = fileTemplates.activeFileList.selectedIndex;
+    if (currentPos <= 0) {
+      return;
+    }
+    // move the item in the datastructure:
+    array_move(fileTemplates.CurrentEntries, currentPos, currentPos - 1);
+    // update backend
+    messenger.Utilities.updateTemplates(fileTemplates.Entries);
+    // refresh list on screen:
+    fileTemplates.repopulate(true);
+    this.activeFileList.selectedIndex = currentPos - 1;
+  },
+  moveEntryDown: async function () {
+    let currentPos = fileTemplates.activeFileList.selectedIndex;
+    if (currentPos < 0) {
+      return;
+    }
+    if (currentPos + 1 >= fileTemplates.activeFileList.length) {
+      return;
+    }
+    // move the item in the datastructure:
+    array_move(fileTemplates.CurrentEntries, currentPos, currentPos + 1);
+    // update backend
+    messenger.Utilities.updateTemplates(fileTemplates.Entries);
+    // refresh list on screen:
+    fileTemplates.repopulate(true);
+    this.activeFileList.selectedIndex = currentPos + 1;
+  },
+  editEntry: async function () {
+    if (this.activeFileList.selectedIndex < 0) {
+      return;
+    }
+    const item = fileTemplates.CurrentEntries[this.activeFileList.selectedIndex];
+    messenger.Utilities.editTemplateExternal(item);
+  },
+  openFilePicker: async function () {
+    let result = await messenger.Utilities.openFileExternal({
+      path: "",
+      filter: "*.html;*.css",
+    });
+    console.log("Returned file info", result);
+    if (result.path) {
+      const pickRow = document.querySelector(".templateFilePicker");
+      pickRow.classList.remove("highlight");
+      document.getElementById("txtTemplatePath").value = result.path;
+      document.getElementById("txtTemplateTitle").value = result.name;
+    }
+  },
+  dropFiles: function (event) {
+    if (event.dataTransfer.files.length == 0) {
+      return false;
+    }
+    const option = event.target,
+      target = JSON.parse(option.value);
+
+    logMissingFunction("fileTemplates.dropFiles");
+    console.log(event.dataTransfer.files);
+    console.log(`target[${target.position}]:\npath=${target.path}\nvategory=${target.category}`);
+    // we cannot determine the path, but we could send a message to the backgrouound page tp:
+    // - look for the file in the last location (or a root folder for templates)
+    // - when a file of matching name is found:
+    //   > display the file open dialog and prepopulate it with path and file name!
+    alert(
+      "Sorry, at the moment dropping files is not supported - as we are not allowed to see the folder location from a web extension. We will find a workaround in the future!"
+    );
+    return true;
+  },
+  onDragOver: function (event) {
+    event.preventDefault();
     return false;
-	},
-	onDragEnter: function (event) {
-		let dataString = event.dataTransfer.getData('text/plain');
-		if (!dataString) {return;}
-		const data = JSON.parse(dataString);
-		const option = event.target; 
-		const target = JSON.parse(option.value);		
-		if (data.position<target.position) {
-			// drag below target!
-			this.classList.add('overBottom');
-		} else {
-			// drag above target
-			this.classList.add('overTop');
-		}
-	},
-	onDragLeave: function (_event) {
-		this.classList.remove('overTop');
-		this.classList.remove('overBottom');
-	},
-	onDragStart: function (event) {
-		this.style.opacity = '0.4';
-		event.dataTransfer.effectAllowed = "copy";
-		event.dataTransfer.setData("text/plain", this.value);
-	},
-	onDrop: function(event) {
-		let dataString = event.dataTransfer.getData('text/plain');
-		if (!dataString && event.dataTransfer.files) {
-			if (fileTemplates.dropFiles(event)) {
-				return false;
-			}
-		}
-		if (!dataString) {return false;} // could not read
-		const data = JSON.parse(dataString);
-		const option = event.target; 
-		const target = JSON.parse(option.value);
-		console.log(`dropped[${data.position}]:\npath=${data.path}\ncategory=${data.category} `);
-		console.log(`target[${target.position}]:\npath=${target.path}\ncategory=${target.category}`);
-		option.classList.remove('overTop');
-		option.classList.remove('overBottom');
-		// move the item in the datastructure:
-		array_move(fileTemplates.CurrentEntries, data.position, target.position);
-		// update backend
-		messenger.Utilities.updateTemplates(fileTemplates.Entries);
-		// refresh list on screen:
-		fileTemplates.repopulate(true);
-		this.activeFileList.selectedIndex = target.position;
-		return true;
-	},
-	onDragEnd: function (event,option) {
-		if (!option.parentElement) { return; }
-		option.style.opacity = '1';
-		const pId = `#${option.parentElement.id} option`;
-		const items = document.querySelectorAll(pId);
+  },
+  onDragEnter: function (event) {
+    let dataString = event.dataTransfer.getData("text/plain");
+    if (!dataString) {
+      return;
+    }
+    const data = JSON.parse(dataString);
+    const option = event.target;
+    const targetSortId = option.dataset.sortId; // read _sortId from attribute
+
+    const arr = fileTemplates.CurrentEntries;
+
+    const sourceIndex = arr.findIndex((e) => e._sortId == data.sortId);
+    const targetIndex = arr.findIndex((e) => e._sortId == targetSortId);
+
+    if (sourceIndex < targetIndex) {
+      // drag below target!
+      this.classList.add("overBottom");
+      SmartTemplates.Settings.logDebug(
+        `drag below ${this.label}: source=${sourceIndex}  target=${targetIndex}`,
+        data
+      );
+    } else {
+      // drag above target
+      this.classList.add("overTop");
+      SmartTemplates.Settings.logDebug(
+        `drag above ${this.label}: source=${sourceIndex}  target=${targetIndex}`,
+        data
+      );
+    }
+  },
+  onDragLeave: function (_event) {
+    this.classList.remove("overTop");
+    this.classList.remove("overBottom");
+  },
+  onDragStart: function (event) {
+    // this => points to event element
+    this.style.opacity = "0.4";
+    event.dataTransfer.effectAllowed = "move";
+    const optionData = JSON.parse(this.value);
+    // event.dataTransfer.setData("text/plain", this.value); // instead of transfering the plain json, add sortId!
+    // transfer _sortId instead of position
+    event.dataTransfer.setData(
+      "text/plain",
+      JSON.stringify({
+        sortId: this.getAttribute("data-sort-id") || null,
+        path: optionData.path,
+        category: optionData.category,
+      })
+    );
+  },
+  onDrop: function (event) {
+    let dataString = event.dataTransfer.getData("text/plain");
+    if (!dataString && event.dataTransfer.files) {
+      if (fileTemplates.dropFiles(event)) {
+        return false;
+      }
+    }
+    if (!dataString) {
+      return false;
+    } // could not read
+    const data = JSON.parse(dataString);
+    const option = event.target;
+    option.classList.remove("overTop");
+    option.classList.remove("overBottom");
+
+    const target = JSON.parse(option.value);
+
+    const arr = fileTemplates.CurrentEntries;
+    const sourceIndex = arr.findIndex((e) => e._sortId == data.sortId);
+    const targetSortId = option.dataset.sortId;
+    const targetIndex = arr.findIndex((e) => e._sortId == targetSortId);
+
+    if (sourceIndex < 0 || targetIndex < 0) {
+      return false;
+    }
+
+    console.log(`dropped[${sourceIndex}]:\npath=${data.path}\ncategory=${data.category} `);
+    console.log(`target[${targetIndex}]:\npath=${target.path}\ncategory=${target.category}`);
+    // move the item in the datastructure:
+    array_move(fileTemplates.CurrentEntries, sourceIndex, targetIndex);
+    // update backend
+    messenger.Utilities.updateTemplates(fileTemplates.Entries);
+    // refresh list on screen:
+    fileTemplates.repopulate(true);
+    this.activeFileList.selectedIndex = targetIndex;
+    return true;
+  },
+  onDragEnd: function (event, option) {
+    if (!option.parentElement) {
+      return;
+    }
+    option.style.opacity = "1";
+    const pId = `#${option.parentElement.id} option`;
+    const items = document.querySelectorAll(pId);
     items.forEach((item) => {
-			item.classList.remove('overTop');
-			item.classList.remove('overBottom');
-		});
-	},
+      item.classList.remove("overTop");
+      item.classList.remove("overBottom");
+    });
+  },
 
+  // adds an item to currently visible list
+  addItem: function (path, label, cat, sel, pos, sortId) {
+    const select = sel || this.activeFileList;
+    if (!select) {
+      return false;
+    }
+    if (!cat) {
+      cat = "";
+    }
+    const option = document.createElement("option");
+    option.value = JSON.stringify({ path: path, category: cat, position: pos });
+    option.text = label;
+    option.setAttribute("draggable", true);
 
-	// adds an item to currently visible list
-	addItem: function (path, label, cat, sel, pos) {
-		const select = sel || this.activeFileList; 
-		if (!select) { return false; }
-		if (!cat) { cat="" };
-		const option = document.createElement("option");
-		option.value = JSON.stringify({path:path, category:cat, position:pos});
-		option.text = label
-		option.setAttribute("draggable",true);
-		option.addEventListener("drop", async (event) => {
-			event.stopPropagation();
-			event.preventDefault();
-			fileTemplates.onDrop(event);
-		});
-		option.addEventListener("dragstart", fileTemplates.onDragStart);
-		option.addEventListener("dragover", fileTemplates.onDragOver);
-		option.addEventListener("dragenter", fileTemplates.onDragEnter);
-		option.addEventListener("dragleave", fileTemplates.onDragLeave);
-		option.addEventListener("dragend", (event) => {
-			fileTemplates.onDragEnd(event,option);
-		});
-		select.add(option);
+    if (sortId !== undefined) {
+      option.setAttribute("data-sort-id", sortId);
+    }
+    option.addEventListener("drop", async (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      fileTemplates.onDrop(event);
+    });
+    option.addEventListener("dragstart", fileTemplates.onDragStart);
+    option.addEventListener("dragover", fileTemplates.onDragOver);
+    option.addEventListener("dragenter", fileTemplates.onDragEnter);
+    option.addEventListener("dragleave", fileTemplates.onDragLeave);
+    option.addEventListener("dragend", (event) => {
+      fileTemplates.onDragEnd(event, option);
+    });
 
-		// make sure new item is selected and visible
-		let newIndex = select.length-1;
-		select.selectedIndex = newIndex;
-		// select.ensureIndexIsVisible(newIndex);
-	},
+		let newIndex = -1;
+		if (pos != null && pos >= 0 && pos < select.options.length) {
+			select.add(option, select.options[pos]); // insert at position
+			newIndex = pos;
+		} else {
+			select.add(option); // fallback: append
+			newIndex = select.options.length - 1;
+		}		
+    // make sure new item is selected and visible
+    select.selectedIndex = newIndex;
+    // select.ensureIndexIsVisible(newIndex);
+  },
 
-	fillEntries: function(Entries,T,selectId) {
-		const select = document.getElementById(selectId);
-		if (!select) { console.log(`fillEntries fails - can't find select input ${selectId}`); return false }
-		if (!Entries) { console.log("missing Entries param"); return false };
-		while (T.length) { T.pop(); }
-		for (let i = select.options.length - 1 ; i >= 0 ; i--) {
-			select.remove(i);
-		}
-		for (let i=0; i<Entries.length; i++) {
-			let entry = Entries[i],
-					c = entry.category || "";
-			// populate the options list(s)
-			let theLabel = this.makeLabel(entry);
-			this.addItem(entry.path, theLabel, c, select, i);
-			// populate the Entries array from read data
-			T.push({ path:entry.path, label:entry.label, category:entry.category || "" });
-		}
-	}	,
+  fillEntries: function (Entries, T, selectId) {
+    const select = document.getElementById(selectId);
+    if (!select) {
+      console.log(`fillEntries fails - can't find select input ${selectId}`);
+      return false;
+    }
+    if (!Entries) {
+      console.log("missing Entries param");
+      return false;
+    }
+    while (T.length) {
+      T.pop();
+    }
+    for (let i = select.options.length - 1; i >= 0; i--) {
+      select.remove(i);
+    }
+    for (let i = 0; i < Entries.length; i++) {
+      let entry = Entries[i],
+        c = entry.category || "";
 
-  makeLabel: function(entry) {
+      if (entry._sortId === undefined) {
+        entry._sortId = i + 1; // sequential numeric index
+      }
+
+      // populate the options list(s)
+      let theLabel = this.makeLabel(entry);
+      this.addItem(entry.path, theLabel, c, select, i, entry._sortId);
+      // populate the Entries array from read data
+      T.push({
+        path: entry.path,
+        label: entry.label,
+        category: entry.category || "",
+        _sortId: entry._sortId,
+      });
+    }
+  },
+
+  makeLabel: function (entry) {
     let cat = entry.category || "";
     // use right pointing guillemet (left-pointing double angle quotation mark) as delimiter
-    let retval = cat ? (cat + " » " + entry?.label) : entry?.label;
+    let retval = cat ? cat + " » " + entry?.label : entry?.label;
     return retval;
   },
 
-  sanitizeLabel: function(lbl, c) {
-    if (!c) {return lbl;}
+  sanitizeLabel: function (lbl, c) {
+    if (!c) {
+      return lbl;
+    }
     return lbl.replace(c + " » ", "");
   },
-	
-	loadCustomMenu: async function() {
-		// replaces setting.js onLoad {
-		// 	SmartTemplate4.fileTemplates.loadCustomMenu(true);
-		// }
-		// moved SmartTemplate4.fileTemplates.readStringFile() to experiment
-		// This reads the menus directly from File!
-		let data = await messenger.Utilities.readTemplateMenus();
-		SmartTemplates.Settings.logDebug("after reading smartTemplates.json:", data);
-		this.fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, 'templateList_new');
-		this.fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, 'templateList_rsp');
-		this.fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd,  'templateList_fwd');
-		this.fillEntries(data.snippets, fileTemplates.Entries.snippets, 'templateList_snippets');
-	} ,
+
+  loadCustomMenu: async function () {
+    // replaces setting.js onLoad {
+    // 	SmartTemplate4.fileTemplates.loadCustomMenu(true);
+    // }
+    // moved SmartTemplate4.fileTemplates.readStringFile() to experiment
+    // This reads the menus directly from File!
+    let data = await messenger.Utilities.readTemplateMenus();
+    SmartTemplates.Settings.logDebug("after reading smartTemplates.json:", data);
+    this.fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, "templateList_new");
+    this.fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, "templateList_rsp");
+    this.fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd, "templateList_fwd");
+    this.fillEntries(data.snippets, fileTemplates.Entries.snippets, "templateList_snippets");
+  },
 
   // save to file
-  saveCustomMenu: async function ()  {
-		logMissingFunction("saveCustomMenu");
-	}
-
+  saveCustomMenu: async function () {
+    logMissingFunction("saveCustomMenu");
+  },
 }; // copy of recent and configured file templates from SmartTemplate4.fileTemplates
 
 async function initLicenseInfo() {
@@ -2088,20 +2160,26 @@ async function savePref(event) {
 }
 
 function array_move(arr, old_index, new_index) {
-	while (old_index < 0) {
-		old_index += arr.length;
-	}
-	while (new_index < 0) {
-		new_index += arr.length;
-	}
-	if (new_index >= arr.length) {
-		var k = new_index - arr.length + 1;
-		while (k--) {
-			arr.push(undefined);
-		}
-	}
-	arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-	return arr; // for testing purposes
+  while (old_index < 0) {
+    old_index += arr.length;
+  }
+  while (new_index < 0) {
+    new_index += arr.length;
+  }
+  if (new_index >= arr.length) {
+    var k = new_index - arr.length + 1;
+    while (k--) {
+      arr.push(undefined);
+    }
+  }
+  arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+
+  // reassign _sortId sequentially after move
+  arr.forEach((e, i) => {
+    e._sortId = i + 1;
+  });
+
+  return arr; // for testing purposes
 };
 
 
@@ -2464,7 +2542,9 @@ function addUIListeners() {
   });
   document.getElementById("btnPushUI").addEventListener("click", (_event) => {
     SmartTemplates.Settings.logDebug("Sending entries data to experiment...");
-    messenger.Utilities.updateTemplates(fileTemplates.Entries);
+
+    // rawEntries this removes all _sortId members - these are not necessary for the UI / storage
+    messenger.Utilities.updateTemplates(fileTemplates.rawEntries);
   });
 
   document.getElementById("helpSnippets").addEventListener("click", (_event) => {
@@ -2623,21 +2703,6 @@ function addUIListeners() {
   // ============================
   // == template file details  ==
   // ============================
-  let txtTitle = document.getElementById("txtTemplateTitle");
-  txtTitle.addEventListener("blur", (_event) => {
-    fileTemplates.onEditLabel(txtTitle);
-  });
-  txtTitle.addEventListener("focus", (_event) => {
-    fileTemplates.updateInputGlobal(txtTitle);
-  });
-
-  let txtCategory = document.getElementById("txtTemplateCategory");
-  txtCategory.addEventListener("blur", (_event) => {
-    fileTemplates.onEditLabel(txtCategory);
-  });
-  txtCategory.addEventListener("focus", (_event) => {
-    fileTemplates.updateInputGlobal(txtCategory);
-  });
   for (let select of document.querySelectorAll("#fileTemplateContainer select.fileTemplateList")) {
     select.addEventListener("change", (_evt) => {
       fileTemplates.onSelect(select);
