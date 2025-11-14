@@ -2073,7 +2073,7 @@
   },
   "whats-new-list": {
     "description": "🇸🇪 change log",
-    "message": "{L1}Kompatibel med Thunderbird 146.{L2}{L1}Förhindra dubbletter av <style>-element vid sammanslagning i <head>. För att konfigurera relaterade regler, öppna Avancerade inställningar / Diverse [issue 399].{L2}{L1}Förtydligade tooltip för att ladda och spara kontomallar: Spara mallar (skriv, svara, vidarebefordra) för identitet…{L2}{L1}Statusfältknappen som saknades i Thunderbird 142+ har återställts [issue 401].{L2}"
+    "message": "{L1}4.16.1: Förbättrad infogning, uppdatering och omordning av template-menyalternativ. Dra & släpp fungerar nu mycket mer pålitligt och nya objekt läggs till under det aktuellt markerade elementet.{L2}{L1}Kompatibel med Thunderbird 146.{L2}{L1}Förebygg dubbletter av <style>-element vid sammanslagning i <head>. För att konfigurera relaterade regler, öppna Avancerade inställningar / Diverse [issue 399].{L2}{L1}Tydligare verktygstips för att ladda och spara konto-mallar: Spara mallar (ny, svara, vidarebefordra) för identiteter…{L2}{L1}Statusfältets knapp återställd, som saknades i Thunderbird version 142+ [issue 401].{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

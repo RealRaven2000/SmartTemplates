@@ -2028,7 +2028,7 @@
   },
   "whats-new-list": {
     "description": "🇳🇱 change log",
-    "message": "{L1}Compatibel met Thunderbird 146.{L2}{L1}Voorkom dubbele <style>-elementen bij samenvoegen in <head>. Om de bijbehorende regels te configureren, open Geavanceerde instellingen / Diversen [issue 399].{L2}{L1}Tooltip verduidelijkt voor het laden en opslaan van accountsjablonen: Sla sjablonen op (opstellen, beantwoorden, doorsturen) voor identiteit…{L2}{L1}De ontbrekende knop van de statusbalk is teruggebracht in Thunderbird-versies 142+ [issue 401].{L2}"
+    "message": "{L1}4.16.1: Verbeterd toevoegen, bijwerken en herschikken van template-menu-items. Drag & drop werkt nu veel betrouwbaarder en nieuwe items worden onder het momenteel geselecteerde element ingevoegd.{L2}{L1}Compatibel met Thunderbird 146.{L2}{L1}Dubbele <style>-elementen worden voorkomen bij samenvoegen in <head>. Om de bijbehorende regels te configureren, open Geavanceerde instellingen / Diversen [issue 399].{L2}{L1}Tooltips voor het laden en opslaan van account-templates verduidelijkt: Templates opslaan (nieuw, beantwoorden, doorsturen) voor identiteiten…{L2}{L1}De statusbalkknop is teruggebracht die ontbrak in Thunderbird-versies 142+ [issue 401].{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

@@ -2013,7 +2013,7 @@
   },
   "whats-new-list": {
     "description": "🇵🇹 change log",
-    "message": "{L1}Compatível com Thunderbird 146.{L2}{L1}Evita elementos <style> duplicados ao mesclar no <head>. Para configurar regras relacionadas, abra Configurações avançadas / Diversos [issue 399].{L2}{L1}Tooltip esclarecidos para carregar e salvar modelos de conta: Salvar modelos (escrever, responder, encaminhar) para identidade…{L2}{L1}O botão da barra de status, que estava ausente nas versões Thunderbird 142+, foi restaurado [issue 401].{L2}"
+    "message": "{L1}4.16.1: Melhorada a inserção, atualização e reorganização das entradas do menu de templates. O arrastar e soltar agora é muito mais confiável e os novos itens são inseridos abaixo do item atualmente selecionado.{L2}{L1}Compatível com Thunderbird 146.{L2}{L1}Evitar duplicação de elementos <style> ao mesclar no <head>. Para configurar regras relacionadas, abra Configurações avançadas / Diversos [issue 399].{L2}{L1}Tooltips para carregar e salvar templates de conta esclarecidos: Salvar templates (novo, responder, encaminhar) para identidades…{L2}{L1}Restaurado o botão da barra de status que estava ausente nas versões Thunderbird 142+ [issue 401].{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

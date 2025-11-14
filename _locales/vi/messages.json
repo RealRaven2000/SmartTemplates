@@ -295,7 +295,7 @@
   },
   "whats-new-list": {
     "description": "🇻🇳 change log",
-    "message": "{L1}Tương thích với Thunderbird 146.{L2}{L1}Ngăn chặn các phần tử <style> trùng lặp khi hợp nhất vào <head>. Để cấu hình các quy tắc liên quan, mở Cài đặt nâng cao / Khác [issue 399].{L2}{L1}Tooltip được làm rõ khi tải và lưu mẫu tài khoản: Lưu mẫu (soạn, trả lời, chuyển tiếp) cho danh tính…{L2}{L1}Nút thanh trạng thái bị thiếu trong các phiên bản Thunderbird 142+ đã được khôi phục [issue 401].{L2}"
+    "message": "{L1}4.16.1: Cải thiện chèn, cập nhật và sắp xếp lại các mục trong menu mẫu. Kéo & thả giờ đáng tin cậy hơn nhiều, các mục mới được chèn dưới mục đang chọn.{L2}{L1}Tương thích với Thunderbird 146.{L2}{L1}Ngăn chặn trùng lặp các phần tử <style> khi hợp nhất vào <head>. Để cấu hình các quy tắc liên quan, mở Cài đặt nâng cao / Khác [issue 399].{L2}{L1}Rõ ràng tooltip khi tải và lưu mẫu tài khoản: Lưu mẫu (mới, trả lời, chuyển tiếp) cho các tài khoản…{L2}{L1}Khôi phục nút thanh trạng thái, nút này bị thiếu trong các phiên bản Thunderbird 142+ [issue 401].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

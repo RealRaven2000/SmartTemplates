@@ -2046,7 +2046,7 @@
   },
   "whats-new-list": {
     "description": "🇫🇷 change log",
-    "message": "{L1}Compatibilité avec Thunderbird 146.{L2}{L1}Empêche les éléments <style> en double lors de la fusion dans <head>. Pour configurer les règles associées, ouvrez Paramètres avancés / Divers [issue 399].{L2}{L1}Tooltip clarifiés pour le chargement et l’enregistrement des modèles de compte : Enregistrer les modèles (rédiger, répondre, transférer) pour identité…{L2}{L1}Le bouton de la barre d’état, qui manquait dans les versions Thunderbird 142+, a été restauré [issue 401].{L2}"
+    "message": "{L1}4.16.1: Amélioration de l’insertion, de la mise à jour et du réordonnancement des entrées du menu des modèles. Le glisser-déposer est désormais beaucoup plus fiable et les nouveaux éléments sont insérés sous l’élément actuellement sélectionné.{L2}{L1}Compatibilité avec Thunderbird 146.{L2}{L1}Éviter la duplication des éléments <style> lors de la fusion dans <head>. Pour configurer les règles associées, ouvrez Paramètres avancés / Divers [issue 399].{L2}{L1}Clarification des infobulles pour le chargement et la sauvegarde des modèles de compte : Enregistrer les modèles (nouveau, réponse, transfert) pour les identités…{L2}{L1}Le bouton de la barre d’état a été rétabli, manquant dans les versions Thunderbird 142+ [issue 401].{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
