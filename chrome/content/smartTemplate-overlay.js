@@ -1601,24 +1601,21 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   }
   
   function displayTag(node) {
-    let att = node.attributes,
-        aS = node.tagName || node.nodeName;
-    if (att) {
-      for (let a=0; a< att.length; a++) {
-        if (a==0) { aS += " "; }
-        else { aS +=", "; }
-        aS = aS + att[a].name;
-        if (att[a].value != null) {
-          let val = att[a].value.toString();
-          aS = aS + ": " + val.substr(0,20);
-          if (val.length > 20) {
-            aS = aS + "…";
-          }
-        }
-      }   
-    }
-    if (aS == '#text#') {
+    const att = node.attributes;
+    let aS = node.tagName || node.nodeName;
+    if (!node || node.nodeType === Node.TEXT_NODE) {
       return `'${node.textContent}'`;
+    }
+
+    if (att) {
+      for (let a of node.attributes) {
+        aS += aS.includes(" ") ? ", " : " ";
+        aS += a.name;
+        if (a.value != null) {
+          let val = a.value.toString();
+          aS += ": " + val.substr(0, 20) + (val.length > 20 ? "…" : "");
+        }
+      } 
     }
     return `<${aS}>`;
   }
