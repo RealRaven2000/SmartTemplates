@@ -1162,7 +1162,6 @@ SmartTemplates.Settings = {
 				break;
 		}
 		
-    logMissingFunction("implement onLoad completion => remaining details...");
 		await fileTemplates.loadCustomMenu(true);
   } ,
   onUnload: async function() {

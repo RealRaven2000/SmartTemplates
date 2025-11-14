@@ -300,7 +300,7 @@ END LICENSE BLOCK
   Version 4.15.2 - 19/09/2025
     # Compatible with Tb 144
 
-  Version 4.16 - WIP
+  Version 4.16 - 11/11/2025
     # Compatible with Tb 146
     # [issue 399] Prevent duplicate <style> elements when merging into <head>
     # [issue 400] Removed calendar string bundling and chrome/content/locale
@@ -311,6 +311,8 @@ END LICENSE BLOCK
     # Clarified tooltips for loading and saving account templates:
     #          "Save templates (write, reply, forward) for $identity$…"
      
+  Version 4.16.1 - WIP
+    # [issue 402] Inconsistencies when Dragging + Editing Template Files in settings
 
 
 =========================
