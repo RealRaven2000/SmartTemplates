@@ -14,11 +14,9 @@
 
 /*
   globals
-    LastInput:readonly,
     getEnabledControllerForCommand,
     ComposeMessage,
     Recipients2CompFields,
-
 */
 
 
@@ -94,395 +92,10 @@ SmartTemplate4.fileTemplates = {
 		}
 		return l;
 	} ,
-	// entries shown on screen.
-	get CurrentEntries() {
-		let entries = null;
-		try {
-			switch(document.getElementById('fileTemplatesTabs').selectedIndex) {
-				case 0:
-					entries = this.Entries.templatesNew;
-					break;
-				case 1:
-					entries = this.Entries.templatesRsp;
-					break;
-				case 2:
-					entries = this.Entries.templatesFwd;
-					break;
-        case 3:
-					entries = this.Entries.snippets;
-					break;
-			}
-		} catch {;}
-		return entries;
-	},
+
   charset: "UTF-8",
-  _document: null,
-  get document() { // document of option window
-    if (this._document) {return this._document;}
-		let win = this.optionsWindow;
-		this._document = win ? win.document : null;
-    return  this._document;
-  },
 	
-	get optionsWindow() {
-    try {
-      let windowManager = Services.wm,
-          optionsWindow = windowManager.getMostRecentWindow('addon:SmartTemplate4'); 
-      return optionsWindow;
-    }
-		catch { return null; }
-	} , 
-	
-  get ListBox() {
-		let flavor;
-		switch(document.getElementById('fileTemplatesTabs').selectedIndex) {
-			case 0:
-			  flavor = 'new';
-				break;
-			case 1:
-			  flavor = 'rsp';
-				break;
-			case 2:
-			  flavor = 'fwd';
-				break;
-      case 3:
-			  flavor = 'snippets';
-				break;
-			default:
-				return null;
-		}
-    return this.RichList(flavor);
-  },
-	
-	RichList: function (flavour) {
-		return this.document.getElementById("templateList_" + flavour)
-	},
-	
-	// adds an item to currently visible list
-  addItem: function (path, label, cat="", lb) {
-    let listbox = lb || this.ListBox;
-    if (listbox) {
-      listbox.appendItem(label, JSON.stringify({path:path, category:cat})  );
-    }
-    // make sure new item is selected and visible
-    let newIndex = listbox.itemCount-1;
-    listbox.selectedIndex = newIndex;
-    listbox.ensureIndexIsVisible(newIndex);
-  },
-	
-	// delete list (only of currently selected flavor)
-  clearList: function clearList(onlyUI) {
-    const util = SmartTemplate4.Util;
-    if (!onlyUI) {
-      util.logDebug ('clearList() - empty templateFile list'); 
-			let entries = this.CurrentEntries;
-			if (entries) {
-        entries.length = 0; // will safely  discard contents
-      }
-    }
-    if (this.document) {  // only if options window is visible
-      util.logDebug ('clearList() - empty listbox'); 
-      let theList = this.ListBox;
-      if (theList) {
-        while(theList.lastElementChild) {
-          theList.removeChild(theList.lastElementChild);
-        }
-      }
-    }
-  },
-	
-  // repopulates richlistbox and rebuilds menu!
-  repopulate: function repopulate(isRichList) {
-    // richlistbox
-    if (isRichList) {
-      this.clearList(true);
-      for (let i=0; i<this.CurrentEntries.length; i++) {
-        let entry = this.CurrentEntries[i],
-            cat = entry.category || "";
-        this.addItem(entry.path, SmartTemplate4.fileTemplates.makeLabel(entry), cat);
-        // populate the Entries array; fallback to browser bookmark type if undefined
-      }
-    }
-  },
-	
-	// label was changed, auto update the list!
-  onEditLabel: async function(txt, forceIndex=null) {
-    const util = SmartTemplate4.Util;
-    SmartTemplate4.Util.logDebug("onEditLabel", txt);
-    // check if one is selected and we just changed it]
-    const path = this.document.getElementById('txtTemplatePath').value,
-      label = this.document.getElementById('txtTemplateTitle').value.trim(),
-      category = this.document.getElementById('txtTemplateCategory').value.trim(),
-      listbox = this.ListBox,
-      idx = forceIndex || listbox.selectedIndex;
-		util.logDebugOptional("fileTemplates","onEdit();");
-    if (idx ==-1) {return;}
-    let e = this.CurrentEntries[idx];
-    // check if path matches
-		if (e.path != path) {
-      // this is not a match. Let's not change the label
-      return;
-    }
-		
-		if (e.label == label && e.category == category) {
-			return;
-		}
-		
-		// change label in list then save & reload.
-    e.label = label; // txt.value;
-    e.category = category;
-
-    if (forceIndex) {
-      let item = listbox.getItemAtIndex(forceIndex);
-      let v = JSON.parse(item.value),
-          p = v.path,
-          c = v.category || "";
-      switch(LastInput.id) {
-        case "txtTemplateCategory":
-          c = document.getElementById("txtTemplateCategory").value; // update with new value
-          item.value = JSON.stringify({path:p, category:c});
-          break;
-        case "txtTemplateTitle": {
-          let txt = document.getElementById("txtTemplateTitle").value;
-          e.label = txt;
-          item.firstChild.value = SmartTemplate4.fileTemplates.makeLabel(e); // txt; 
-          break;
-        }
-      }
-      await this.saveCustomMenu();
-      return;
-    }
-    await this.saveCustomMenu();
-    this.repopulate(true); // rebuild menu
-		listbox.selectedIndex = idx; // reselect item
-  } , 
-  
-  updateInputGlobal: function(input) {
-    LastInput.id = input.id;
-    LastInput.value = input.value;
-    let listbox = this.ListBox,
-        idx = listbox.selectedIndex;
-    LastInput.listbox = listbox; // remember this listbox. we only update if clicking a different item in the same.
-    LastInput.selectedIndex = idx;
-  },
-  
-  checkModifications: function(evt) {
-    // debugger;
-    SmartTemplate4.Util.logDebug("checkModifications", evt);
-  } ,
-  
-	onSelect: async function(rlb) {
-    SmartTemplate4.Util.logDebug("onSelect", rlb);
-    if (LastInput.listbox == rlb) {
-      if (LastInput.value != document.getElementById(LastInput.id).value) {
-        // let lastListItem = rlb.getItemAtIndex(LastInput.selectedIndex);
-        await this.onEditLabel(null, LastInput.selectedIndex);
-      }
-    }
-		let richlistitem = rlb.getSelectedItem(0);
-		if (richlistitem) {
-      let p, 
-          c = "", 
-          v = richlistitem.value;
-      try {
-        v = JSON.parse(richlistitem.value);
-        p = v.path;
-        c = v.category || "";
-      }
-      catch {
-        p = v;
-      }
-			document.getElementById('txtTemplatePath').value = p;
-			document.getElementById('txtTemplateCategory').value = c;
-			document.getElementById('txtTemplateTitle').value = SmartTemplate4.fileTemplates.sanitizeLabel(richlistitem.label, c);
-		}
-	} ,
-	
-  update: function update(isNew) {
-    const util = SmartTemplate4.Util,
-		      getBundleString = util.getBundleString.bind(util),
-					FT = SmartTemplate4.fileTemplates;
-					
-    let path = document.getElementById('txtTemplatePath').value,
-        label = document.getElementById('txtTemplateTitle').value,
-        category = this.document.getElementById('txtTemplateCategory').value,
-        existingEntry = null, 
-        existingIndex = null;
-		
-    if (!label.trim()) {
-      Services.prompt.alert(null, msgTitle, getBundleString("st.fileTemplates.wrnEnterTitle"));
-      return;
-    }
-    if (!path.trim()) {
-      Services.prompt.alert(null, msgTitle, getBundleString("st.fileTemplates.wrnEnterPath"));
-      return;
-    }
-
-    // check if it exists and replace label
-		const msgTitle = getBundleString("st.fileTemplates.wrnSelectUpdateItem.caption")
-    if (!isNew) {
-      existingIndex = FT.ListBox.selectedIndex;
-      if (existingIndex<0) {
-				let txt = getBundleString("st.fileTemplates.wrnSelectUpdateItem");
-        Services.prompt.alert(null, msgTitle, txt);
-        return;
-      }
-      existingEntry = FT.CurrentEntries[existingIndex];
-      existingEntry.path = path;
-      existingEntry.label = label;
-      existingEntry.category = category || ""; 
-    }
-
-    
-    // TO DO:
-    // should we allow changing the URL ? (for selected item only)
-    // do a match of first n characters and display a confirmation?
-    if (!existingEntry) {
-      let entry = {
-        path:path, 
-        label:label, 
-        category:category
-      }
-      FT.addItem(path, SmartTemplate4.fileTemplates.makeLabel(entry), category);
-      FT.CurrentEntries.push(entry);
-    } else {
-      // update existing item (label)
-      util.logDebug(`Updating existing item: ${existingEntry.label} [${existingEntry.path} , ${existingEntry.category} ]`);
-      let lb = FT.ListBox;
-      lb.ensureIndexIsVisible(existingIndex);
-      FT.CurrentEntries[existingIndex].label = label;
-      // hack to update the label. IMPLEMENTATION DEPENDENT! if we change from richlist we need to rewrite this one
-      lb.getItemAtIndex(existingIndex).firstChild.value = SmartTemplate4.fileTemplates.makeLabel(FT.CurrentEntries[existingIndex]); 
-      // update path!
-      lb.getItemAtIndex(existingIndex).value = JSON.stringify({path:path, category:category});
-    }
-      
-    SmartTemplate4.fileTemplates.repopulate(false); // rebuild menu
-    SmartTemplate4.fileTemplates.saveCustomMenu();
-  },
-  
-  remove: function() {
-    if (SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus")) {
-      // eslint-disable-next-line no-debugger
-      debugger;
-    }
-    let listbox = this.ListBox,
-        idx = listbox.selectedIndex;
-    if (idx<0) {return;}
-    this.CurrentEntries.splice(idx, 1); // remove from array
-    listbox.getItemAtIndex(idx).remove();
-    this.repopulate(false); // rebuild menu
-    this.saveCustomMenu();
-  },
-  
-  up: function up() {
-    let listbox = this.ListBox,
-        idx = listbox.selectedIndex;
-    if (idx<=0) { return; }
-
-    let swap = this.CurrentEntries[idx-1];
-    this.CurrentEntries[idx-1] = this.CurrentEntries[idx];
-    this.CurrentEntries[idx] = swap;
-    
-    this.repopulate(true);
-    this.saveCustomMenu();
-    const targetIdx = idx-1
-    listbox.selectedIndex = targetIdx;
-    // show element(s) above if possible (unless we are top of list)
-    listbox.ensureIndexIsVisible (targetIdx ? targetIdx-1 : 0);
-  },
-  
-  down: function down() {
-    let listbox = this.ListBox,
-        idx = listbox.selectedIndex;
-    if (idx == -1) {return;}
-    if (idx >= this.CurrentEntries.length-1) {return;}
-
-    let swap = this.CurrentEntries[idx+1];
-    this.CurrentEntries[idx+1] = this.CurrentEntries[idx];
-    this.CurrentEntries[idx] = swap;
-    
-    this.repopulate(true);
-    this.saveCustomMenu();
-    const targetIdx = idx+1
-    listbox.selectedIndex = targetIdx;
-    // show element(s) below if possible (unless we are top of list)
-    listbox.ensureIndexIsVisible (targetIdx < listbox.getRowCount()-1  ? targetIdx-1 : targetIdx);
-  },
-	
-
-  editLegacy: async function() {
-    const idx = this.ListBox.selectedIndex;
-    if (idx<0) {
-      return;
-    }
-    const item = this.CurrentEntries[idx];
-    if (item) {
-      this.edit(item);
-    }
-  }, 
-  
-  edit: async function(item) {
-    const EditorPathSetting = "fileTemplates.editor.path";
-    let editorPath = SmartTemplate4.Preferences.getStringPref(EditorPathSetting),
-        wrn = SmartTemplate4.Util.getBundleString("prompt.fileTemplates.editor.setup");
-            
-    if (!editorPath) {
-      const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
-        msg: wrn,
-        features: ["ok", "cancel"],
-      });
-
-      if (result === "ok") {
-        SmartTemplate4.Util.showAboutConfig(null, `smartTemplate4.${EditorPathSetting}`);
-      }
-      // no action needed on cancel
-      return;
-    }
-    
-    // editorPath = SmartTemplate4.Preferences.getStringPref(EditorPathSetting)
-    if (!editorPath) { return; }
-
-    const Cc = Components.classes,
-      Ci = Components.interfaces;    
-
-    var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
-    try {
-      try {
-        file.initWithPath(editorPath);
-      } catch (ex) {
-        SmartTemplate4.Util.logException(`initializing Path ${editorPath} failed:`, ex);
-      }
-      if (!file.exists()) {
-        throw "file doesn't exist";
-      } 
-    }
-    catch(ex) {
-      SmartTemplate4.Util.logException(`file.initWithPath(${editorPath}) failed with Exception` , ex);
-      const message = SmartTemplate4.Util.getBundleString(
-        "prompt.fileTemplates.editor.pathError",
-        editorPath
-      );
-
-      const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
-        msg: message,
-        features: ["ok", "cancel"],
-      });
-
-      if (result === "ok") {
-        SmartTemplate4.Util.showAboutConfig(null, "smartTemplate4.fileTemplates.editor.path");
-      }
-      return;
-    }
-
-    
-    let theProcess = Cc["@mozilla.org/process/util;1"].createInstance(Ci.nsIProcess);
-    theProcess.init(file);
-    let parameters = [item.path];
-    theProcess.run(false, parameters, parameters.length);
-  },
 	// =====================   FILES   ===================== //	
-  	
   readStringFile: async function() {
     let profileDir = PathUtils.profileDir,
         path = PathUtils.join(profileDir, "extensions", "smartTemplates.json"),
@@ -520,54 +133,44 @@ SmartTemplate4.fileTemplates = {
 	
 
 	// load template lists from file
-  loadCustomMenu: async function(fromOptions) {
+  loadCustomMenu: async function() {
     const util = SmartTemplate4.Util;
-    fromOptions = fromOptions ? true : false;
-    util.logDebug (`loadCustomMenu(${fromOptions})...`); 
+    util.logDebug (`loadCustomMenu()...`); 
 
     try {
-      let fileTemplates = this; // closure this
-      let data = await this.readStringFile();
-      {
-        // populate the templates list
-        util.logDebug ("loadCustomMenu() - Success"); 
-        
-        function fillEntries(E,T,lb) {
-          //empty list
-          while (T.length) {
-            T.pop();
-          }
-          if (lb) { 
-            while (lb.itemCount) {
-              lb.removeItemAt(0);
-            }
-          }
-          if (!E) {return;}
-          for (let i=0; i<E.length; i++) {
-            let entry = E[i],
-                c = entry.category || "";
-            // populate the options list(s)
-            if (fromOptions) {
-              let theLabel = SmartTemplate4.fileTemplates.makeLabel(entry);
-              fileTemplates.addItem(entry.path, theLabel, c, lb);
-            }
-            // populate the Entries array from read data
-            T.push({ path:entry.path, label:entry.label, category:entry.category || "" });
-          }
+      const fileTemplates = this; // closure this
+      const data = await this.readStringFile();
+      util.logDebug ("loadCustomMenu() - data read"); 
+      
+      function fillEntries(source,target) {
+        //empty list
+        while (target.length) {
+          target.pop();
         }
-        
-        fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, fromOptions ? fileTemplates.RichList('new') : null);
-        fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, fromOptions ? fileTemplates.RichList('rsp') : null);
-        fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd, fromOptions ? fileTemplates.RichList('fwd') : null);
-        fillEntries(data.snippets, fileTemplates.Entries.snippets, fromOptions ? fileTemplates.RichList('snippets') : null);
-        // util.logDebug ('parsed ' + entries.length + ' entries'); 
+        if (!source) {
+          return;
+        }
+        // populate the Entries array from read data
+        for (let entry of source) {
+          target.push({
+            path: entry.path,
+            label: entry.label,
+            category: entry.category || "",
+          });
+        }
       }
-    }
-    catch (ex) {
-      util.logDebug ('readStringFile() - Failure: ' + ex); 
-      Services.prompt.alert(null, 
-        "SmartTemplate4.fileTemplates.loadCustomMenu()", 
-        "Reading the fileTemplates file failed\n" + ex);
+      
+      fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew);
+      fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp);
+      fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd);
+      fillEntries(data.snippets, fileTemplates.Entries.snippets);
+    } catch (ex) {
+      util.logException ('readStringFile() - Failure: ' + ex); 
+      Services.prompt.alert(
+        null,
+        "SmartTemplate4.fileTemplates.loadCustomMenu()",
+        `Reading the fileTemplates file failed\n${ex.toString()}`
+      );
       // no changes to Entries array
       return Promise.reject("loadCustomMenu failed.");
     }
@@ -1379,23 +982,21 @@ SmartTemplate4.fileTemplates = {
       path:"", 
       name:""
     }
-    this.pickFile(
-		  async function(localFile) {
-        // this will be execute _after_ file picker
-				if (localFile) {
-          returnedItem.path = localFile.path;
-					// document.getElementById('txtTemplatePath').value = localFile.path;
-					// we could potentially parse the file 
-					// and find the <title> tag!
-					let name = localFile.leafName.replace(".html","").replace(".htm","").replace(".css","");
-					// document.getElementById('txtTemplateTitle').value = name;
-          returnedItem.name = name;
-					SmartTemplate4.Preferences.setStringPref('fileTemplates.path', localFile.parent.path); // store folder as default for next time.
-				}
-        resolver();
-      },
-      "fileTemplates.instantPath"
-    );
+    this.pickFile(async function (localFile) {
+      // this will be execute _after_ file picker
+      if (localFile) {
+        returnedItem.path = localFile.path;
+        // document.getElementById('txtTemplatePath').value = localFile.path;
+        // we could potentially parse the file
+        // and find the <title> tag!
+        let name = localFile.leafName.replace(".html", "").replace(".htm", "").replace(".css", "");
+        // document.getElementById('txtTemplateTitle').value = name;
+        returnedItem.name = name;
+        // store folder as default for next time.
+        SmartTemplate4.Preferences.setStringPref("fileTemplates.path", localFile.parent.path);
+      }
+      resolver();
+    }, "fileTemplates.path");
     await newPromise;
     return returnedItem;
   },
