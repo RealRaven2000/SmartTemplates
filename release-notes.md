@@ -8,6 +8,7 @@ I raised a bug with Thunderbird to fix this: [Bugzilla 1986027](https://bugzilla
 
 **Improvements**
 
+*   4.16.1 -  Improved inserting, updating and reordering template menu entries. Drag and drop is now much more reliable and new items are inserted below the currently selected item.
 *   4.16 – made SmartTemplates compatible with Thunderbird 146.
 *   Added new options to prevent duplicate `<style>` elements when merging into `<head>` [issue #399]
 *   Clarified tooltips for loading and saving account templates: "Save templates (write, reply, forward) for $identity$…"
