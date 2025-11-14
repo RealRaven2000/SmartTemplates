@@ -400,7 +400,7 @@ var fileTemplates = {
       })
     );
   },
-  onDrop: function (event) {
+  onDrop: async function (event) {
     let dataString = event.dataTransfer.getData("text/plain");
     if (!dataString && event.dataTransfer.files) {
       if (fileTemplates.dropFiles(event)) {
@@ -425,9 +425,10 @@ var fileTemplates = {
     if (sourceIndex < 0 || targetIndex < 0) {
       return false;
     }
-
-    console.log(`dropped[${sourceIndex}]:\npath=${data.path}\ncategory=${data.category} `);
-    console.log(`target[${targetIndex}]:\npath=${target.path}\ncategory=${target.category}`);
+    if (await SmartTemplates.Preferences .isDebug()) {
+      console.log(`dropped[${sourceIndex}]:\npath=${data.path}\ncategory=${data.category} `);
+      console.log(`target[${targetIndex}]:\npath=${target.path}\ncategory=${target.category}`);
+    }
     // move the item in the datastructure:
     array_move(fileTemplates.CurrentEntries, sourceIndex, targetIndex);
     // update backend
@@ -807,10 +808,9 @@ SmartTemplates.Settings = {
 	},
   
 
-  isDebug: true, ///// TEST
   logDebug: async function (...args) {
 	  // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
-		if (this.isDebug) {
+		if (await SmartTemplates.Preferences .isDebug()) {
       this.logToConsole(...args);
     }
 	},
