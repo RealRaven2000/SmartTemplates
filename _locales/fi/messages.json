@@ -2061,7 +2061,7 @@
   },
   "whats-new-list": {
     "description": "🇫🇮 change log",
-    "message": "{L1}4.16.1: Parannettu mallivalikon kohteiden lisäämistä, päivittämistä ja uudelleenjärjestelyä. Vedä ja pudota toimii nyt paljon luotettavammin, ja uudet kohteet lisätään nykyisen valitun kohteen alapuolelle.{L2}{L1}Yhteensopivuus Thunderbird 146:n kanssa.{L2}{L1}Estetty samanlaisten <style>-elementtien lisääntyminen <head>-osioon yhdistettäessä. Konfiguroi liittyvät säännöt kohdasta Lisäasetukset / Muut [issue 399].{L2}{L1}Selvennetty työkaluvihjeitä tilimallien lataamiseen ja tallentamiseen: Tallenna mallit (uusi, vastaus, edelleenlähetys) tileille…{L2}{L1}Tilapalkin painike palautettu, joka puuttui Thunderbirdin versioissa 142+ [issue 401].{L2}"
+    "message": "{L1}4.16.2: Korjattu tuore regressio, joka aiheutti virheelliset viikkopäivien nimet [issue 403]{L2}{L1}4.16.1: Parannettu mallivalikon kohteiden lisäämistä, päivittämistä ja uudelleenjärjestelyä. Vedä ja pudota toimii nyt paljon luotettavammin, ja uudet kohteet lisätään nykyisen valitun kohteen alapuolelle.{L2}{L1}Yhteensopivuus Thunderbird 146:n kanssa.{L2}{L1}Estetty samanlaisten <style>-elementtien lisääntyminen <head>-osioon yhdistettäessä. Konfiguroi liittyvät säännöt kohdasta Lisäasetukset / Muut [issue 399].{L2}{L1}Selvennetty työkaluvihjeitä tilimallien lataamiseen ja tallentamiseen: Tallenna mallit (uusi, vastaus, edelleenlähetys) tileille…{L2}{L1}Tilapalkin painike palautettu, joka puuttui Thunderbirdin versioissa 142+ [issue 401].{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

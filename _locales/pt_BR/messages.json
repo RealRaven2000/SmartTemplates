@@ -2019,7 +2019,7 @@
   },
   "whats-new-list": {
     "description": "🇧🇷 change log",
-    "message": "{L1}4.16.1: Melhorada a inserção, atualização e reordenação das entradas do menu de templates. Arrastar e soltar agora é muito mais confiável e novos itens são inseridos abaixo do item atualmente selecionado.{L2}{L1}Compatibilidade com Thunderbird 146.{L2}{L1}Evita duplicação de elementos <style> ao mesclar no <head>. Para configurar regras relacionadas, abra Configurações avançadas / Diversos [issue 399].{L2}{L1}Tooltips para carregar e salvar templates de conta esclarecidos: Salvar templates (novo, responder, encaminhar) para identidades…{L2}{L1}Botão da barra de status restaurado, que estava ausente nas versões Thunderbird 142+ [issue 401].{L2}"
+    "message": "{L1}4.16.2: Corrigida uma regressão recente que causava nomes de dias da semana incorretos [issue 403]{L2}{L1}4.16.1: Melhorada a inserção, atualização e reordenação das entradas do menu de templates. Arrastar e soltar agora é muito mais confiável e novos itens são inseridos abaixo do item atualmente selecionado.{L2}{L1}Compatibilidade com Thunderbird 146.{L2}{L1}Evita duplicação de elementos <style> ao mesclar no <head>. Para configurar regras relacionadas, abra Configurações avançadas / Diversos [issue 399].{L2}{L1}Tooltips para carregar e salvar templates de conta esclarecidos: Salvar templates (novo, responder, encaminhar) para identidades…{L2}{L1}Botão da barra de status restaurado, que estava ausente nas versões Thunderbird 142+ [issue 401].{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

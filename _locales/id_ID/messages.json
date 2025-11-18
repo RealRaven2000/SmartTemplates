@@ -1423,7 +1423,7 @@
   },
   "whats-new-list": {
     "description": "🇮🇩 change log",
-    "message": "{L1}4.16.1: Peningkatan penyisipan, pembaruan, dan pengurutan ulang entri menu template. Drag & drop sekarang jauh lebih andal dan item baru disisipkan di bawah item yang saat ini dipilih.{L2}{L1}Kompatibilitas dengan Thunderbird 146.{L2}{L1}Mencegah duplikasi elemen <style> saat digabung ke <head>. Untuk mengonfigurasi aturan terkait, buka Pengaturan Lanjutan / Lainnya [issue 399].{L2}{L1}Tooltip untuk memuat dan menyimpan template akun diperjelas: Simpan template (baru, balas, teruskan) untuk identitas…{L2}{L1}Tombol status bar dikembalikan yang hilang di versi Thunderbird 142+ [issue 401].{L2}"
+    "message": "{L1}4.16.2: Memperbaiki regresi terbaru yang menyebabkan nama hari dalam seminggu salah [issue 403]{L2}{L1}4.16.1: Peningkatan penyisipan, pembaruan, dan pengurutan ulang entri menu template. Drag & drop sekarang jauh lebih andal dan item baru disisipkan di bawah item yang saat ini dipilih.{L2}{L1}Kompatibilitas dengan Thunderbird 146.{L2}{L1}Mencegah duplikasi elemen <style> saat digabung ke <head>. Untuk mengonfigurasi aturan terkait, buka Pengaturan Lanjutan / Lainnya [issue 399].{L2}{L1}Tooltip untuk memuat dan menyimpan template akun diperjelas: Simpan template (baru, balas, teruskan) untuk identitas…{L2}{L1}Tombol status bar dikembalikan yang hilang di versi Thunderbird 142+ [issue 401].{L2}"
   },
   "xsent_long_result.label": {
     "message": "Hasil: Minggu,20/12/2011 pada pukul 16:24"

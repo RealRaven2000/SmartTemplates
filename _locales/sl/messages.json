@@ -2049,7 +2049,7 @@
   },
   "whats-new-list": {
     "description": "🇸🇮 change log",
-    "message": "{L1}4.16.1: Izboljšano vstavljanje, posodabljanje in prerazporeditev vnosov v meniju predlog. Povleci in spusti zdaj deluje veliko bolj zanesljivo, novi vnosi pa se vstavijo pod trenutno izbranim elementom.{L2}{L1}Združljivo z Thunderbird 146.{L2}{L1}Preprečeno podvajanje elementov <style> pri združevanju v <head>. Za nastavitev ustreznih pravil odprite Napredne nastavitve / Razno [issue 399].{L2}{L1}Opravljene izboljšave tooltipov pri nalaganju in shranjevanju predlog za račune: Shranjevanje predlog (novo, odgovor, posredovanje) za identitete…{L2}{L1}Ponovno dodano gumb v statusno vrstico, ki je manjkala v različicah Thunderbird 142+ [issue 401].{L2}"
+    "message": "{L1}4.16.2: Popravljena nedavna regresija, ki je povzročala napačne imene dni v tednu [issue 403]{L2}{L1}4.16.1: Izboljšano vstavljanje, posodabljanje in prerazporeditev vnosov v meniju predlog. Povleci in spusti zdaj deluje veliko bolj zanesljivo, novi vnosi pa se vstavijo pod trenutno izbranim elementom.{L2}{L1}Združljivo z Thunderbird 146.{L2}{L1}Preprečeno podvajanje elementov <style> pri združevanju v <head>. Za nastavitev ustreznih pravil odprite Napredne nastavitve / Razno [issue 399].{L2}{L1}Opravljene izboljšave tooltipov pri nalaganju in shranjevanju predlog za račune: Shranjevanje predlog (novo, odgovor, posredovanje) za identitete…{L2}{L1}Ponovno dodano gumb v statusno vrstico, ki je manjkala v različicah Thunderbird 142+ [issue 401].{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
