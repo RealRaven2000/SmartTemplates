@@ -1498,30 +1498,30 @@ SmartTemplate4.calendar = {
   // the following functions retrieve strings from our own language packs (languages supported by SmartTemplate itself)
   // these will affect the following variables: %A% %a% %B% %b% (week days and months)
   // OTOH: %dateshort% and %datelocal% extract their names from the language packs installed
+  // n = 0..6, Sunday = 0
   dayName: function (n) {
-    // n = 0..6, Sunday = 0
     return new Intl.DateTimeFormat(this.currentLocale, { weekday: "long" }).format(
-      new Date(2025, 0, 4 + n)
-    ); // 4 Jan 2025 = Sunday
+      new Date(Date.UTC(2025, 0, 5 + n))
+    );
   },
-
+  
   shortDayName: function (n) {
     return new Intl.DateTimeFormat(this.currentLocale, { weekday: "short" }).format(
-      new Date(2025, 0, 4 + n)
+      new Date(Date.UTC(2025, 0, 5 + n))
     );
   },
-
+  
   monthName: function (n) {
-    // n = 0..11
     return new Intl.DateTimeFormat(this.currentLocale, { month: "long" }).format(
-      new Date(2025, n, 1)
+      new Date(Date.UTC(2025, n, 1))
     );
   },
-
+  
   shortMonthName: function (n) {
     return new Intl.DateTimeFormat(this.currentLocale, { month: "short" }).format(
-      new Date(2025, n, 1)
+      new Date(Date.UTC(2025, n, 1))
     );
   },
+
 };   // SmartTemplate4.calendar 
   
