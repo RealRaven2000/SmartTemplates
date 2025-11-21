@@ -2037,7 +2037,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇿 change log",
-    "message": "{L1}4.16.2: Opraven nedávný regresní bug, který způsoboval nesprávné názvy dnů v týdnu [issue 403]{L2}{L1}4.16.1: Vylepšeno vkládání, aktualizace a přeskupování položek menu šablon. Přetahování nyní funguje mnohem spolehlivěji a nové položky se vkládají pod aktuálně vybranou položku.{L2}{L1}Kompatibilita s Thunderbird 146.{L2}{L1}Zabráněno duplikaci <style> prvků při slučování do <head>. Pro konfiguraci příslušných pravidel otevřete Pokročilé nastavení / Ostatní [issue 399].{L2}{L1}Ujasněny tooltipy pro načítání a ukládání šablon účtů: Ukládání šablon (nový e-mail, odpověď, přeposlání) pro identity…{L2}{L1}Obnoven tlačítko na stavovém řádku, které chybělo v Thunderbirdu verze 142+ [issue 401].{L2}"
+    "message": "{L1}4.16.3: Opravená nefunkční editační funkce v nastavení [Issue 404]{L2}{L1}4.16.2: Opraven nedávný regresní bug, který způsoboval nesprávné názvy dnů v týdnu [issue 403]{L2}{L1}4.16.1: Vylepšeno vkládání, aktualizace a přeskupování položek menu šablon. Přetahování nyní funguje mnohem spolehlivěji a nové položky se vkládají pod aktuálně vybranou položku.{L2}{L1}Kompatibilita s Thunderbird 146.{L2}{L1}Zabráněno duplikaci <style> prvků při slučování do <head>. Pro konfiguraci příslušných pravidel otevřete Pokročilé nastavení / Ostatní [issue 399].{L2}{L1}Ujasněny tooltipy pro načítání a ukládání šablon účtů: Ukládání šablon (nový e-mail, odpověď, přeposlání) pro identity…{L2}{L1}Obnoven tlačítko na stavovém řádku, které chybělo v Thunderbirdu verze 142+ [issue 401].{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

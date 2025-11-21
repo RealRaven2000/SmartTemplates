@@ -2094,7 +2094,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{L1}4.16.2: Fixed a recent regression that  lead to incorrect week day names [issue 403]{L2}{L1}4.16.1: Impro ved inserting, updating and reordering template menu entries. Drag and drop is now much more reliable and new items are inserted below the currently selected item.{L2}{L1}Compatibility with Thunderbird 146.{L2}{L1}Prevent duplicate <style> elements when merging into <head>. To configure related rules, open advanced settings / Miscellaneous [issue 399].{L2}{L1}Clarified tooltips for loading and saving account templates: Save templates (write, reply, forward) for identity…{L2}{L1}Brought back the status bar button which was missing in Thunderbird releases 142+ [issue 401].{L2}"
+    "message": "{L1}4.16.3: Fixed broken editing function in settings [issue 404]{L2}{L1}4.16.2: Fixed a recent regression that  lead to incorrect week day names [issue 403]{L2}{L1}4.16.1: Impro ved inserting, updating and reordering template menu entries. Drag and drop is now much more reliable and new items are inserted below the currently selected item.{L2}{L1}Compatibility with Thunderbird 146.{L2}{L1}Prevent duplicate <style> elements when merging into <head>. To configure related rules, open advanced settings / Miscellaneous [issue 399].{L2}{L1}Clarified tooltips for loading and saving account templates: Save templates (write, reply, forward) for identity…{L2}{L1}Brought back the status bar button which was missing in Thunderbird releases 142+ [issue 401].{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

@@ -1081,6 +1081,7 @@ async function displayUpdateMessage() {
   // Define a Map of silent update rules with wildcards
   const silentUpdateMap = new Map([
     ["4.10", ["4.10.1"]], // Silent updates for [issue 354]
+    ["4.16.1", ["4.16.2"]]
   ]);
 
   // Function to check if an update is silent

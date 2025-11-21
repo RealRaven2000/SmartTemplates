@@ -8,6 +8,7 @@ I raised a bug with Thunderbird to fix this: [Bugzilla 1986027](https://bugzilla
 
 **Improvements**
 
+*   4.16.3 - Fixed broken editing function in settings [issue #404]
 *   4.16.2 - Fixed a regression with the wrong day name being calculated from the email date.[issue #403]
 *   4.16.1 -  Improved inserting, updating and reordering template menu entries. Drag and drop is now much more reliable and new items are inserted below the currently selected item.
 *   4.16 – made SmartTemplates compatible with Thunderbird 146.
