@@ -94,6 +94,66 @@ SmartTemplate4.fileTemplates = {
 	} ,
 
   charset: "UTF-8",
+  
+  edit: async function(item) {
+    const EditorPathSetting = "fileTemplates.editor.path";
+    let editorPath = SmartTemplate4.Preferences.getStringPref(EditorPathSetting),
+        wrn = SmartTemplate4.Util.getBundleString("prompt.fileTemplates.editor.setup");
+            
+    if (!editorPath) {
+      const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
+        msg: wrn,
+        features: ["ok", "cancel"],
+      });
+
+      if (result === "ok") {
+        SmartTemplate4.Util.showAboutConfig(null, `smartTemplate4.${EditorPathSetting}`);
+      }
+      // no action needed on cancel
+      return;
+    }
+    
+    // editorPath = SmartTemplate4.Preferences.getStringPref(EditorPathSetting)
+    if (!editorPath) { return; }
+
+    const Cc = Components.classes,
+      Ci = Components.interfaces;    
+
+    var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+    try {
+      try {
+        file.initWithPath(editorPath);
+      } catch (ex) {
+        SmartTemplate4.Util.logException(`initializing Path ${editorPath} failed:`, ex);
+      }
+      if (!file.exists()) {
+        throw "file doesn't exist";
+      } 
+    }
+    catch(ex) {
+      SmartTemplate4.Util.logException(`file.initWithPath(${editorPath}) failed with Exception` , ex);
+      const message = SmartTemplate4.Util.getBundleString(
+        "prompt.fileTemplates.editor.pathError",
+        editorPath
+      );
+
+      const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
+        msg: message,
+        features: ["ok", "cancel"],
+      });
+
+      if (result === "ok") {
+        SmartTemplate4.Util.showAboutConfig(null, "smartTemplate4.fileTemplates.editor.path");
+      }
+      return;
+    }
+
+    
+    let theProcess = Cc["@mozilla.org/process/util;1"].createInstance(Ci.nsIProcess);
+    theProcess.init(file);
+    let parameters = [item.path];
+    theProcess.run(false, parameters, parameters.length);
+  },
 	
 	// =====================   FILES   ===================== //	
   readStringFile: async function() {
