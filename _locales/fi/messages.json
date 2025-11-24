@@ -335,48 +335,6 @@
   "datetz.label": {
     "message": "Aikavyöhyke (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "sunnuntai"
-  },
-  "day.1.short": {
-    "message": "su"
-  },
-  "day.2.name": {
-    "message": "maanantai"
-  },
-  "day.2.short": {
-    "message": "ma"
-  },
-  "day.3.name": {
-    "message": "tiistai"
-  },
-  "day.3.short": {
-    "message": "ti"
-  },
-  "day.4.name": {
-    "message": "keskiviikko"
-  },
-  "day.4.short": {
-    "message": "ke"
-  },
-  "day.5.name": {
-    "message": "torstai"
-  },
-  "day.5.short": {
-    "message": "to"
-  },
-  "day.6.name": {
-    "message": "perjantai"
-  },
-  "day.6.short": {
-    "message": "pe"
-  },
-  "day.7.name": {
-    "message": "lauantai"
-  },
-  "day.7.short": {
-    "message": "la"
-  },
   "debug.mode": {
     "message": "Debug-tila"
   },
@@ -984,78 +942,6 @@
   },
   "minSize_detail": {
     "message": "Kokoa ei aina voida määrittää oikein, varsinkin jos Thunderbird lataa kuvaa edelleen, usein suuren koon takia - tässä tapauksessa tunniste poistetaan joka tapauksessa."
-  },
-  "month.1.name": {
-    "message": "tammikuu"
-  },
-  "month.1.short": {
-    "message": "tammi"
-  },
-  "month.10.name": {
-    "message": "lokakuu"
-  },
-  "month.10.short": {
-    "message": "loka"
-  },
-  "month.11.name": {
-    "message": "marraskuu"
-  },
-  "month.11.short": {
-    "message": "marras"
-  },
-  "month.12.name": {
-    "message": "joulukuu"
-  },
-  "month.12.short": {
-    "message": "joulu"
-  },
-  "month.2.name": {
-    "message": "helmikuu"
-  },
-  "month.2.short": {
-    "message": "helmi"
-  },
-  "month.3.name": {
-    "message": "maaliskuu"
-  },
-  "month.3.short": {
-    "message": "maalis"
-  },
-  "month.4.name": {
-    "message": "huhtikuu"
-  },
-  "month.4.short": {
-    "message": "huhti"
-  },
-  "month.5.name": {
-    "message": "toukokuu"
-  },
-  "month.5.short": {
-    "message": "touko"
-  },
-  "month.6.name": {
-    "message": "kesäkuu"
-  },
-  "month.6.short": {
-    "message": "kesä"
-  },
-  "month.7.name": {
-    "message": "heinäkuu"
-  },
-  "month.7.short": {
-    "message": "heinä"
-  },
-  "month.8.name": {
-    "message": "elokuu"
-  },
-  "month.8.short": {
-    "message": "elo"
-  },
-  "month.9.name": {
-    "message": "syyskuu"
-  },
-  "month.9.short": {
-    "message": "syys"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla tarjoaa vain perusalustan ohjelmistojemme toimittamiseksi sinulle, loppukäyttäjille. Jos meidän on pyydettävä käyttäjiltämme maksua tai tukea, emme voi tehdä tätä osoitteesta addons.thunderbird.net - se ei ole '' sovelluskauppa '', jossa on sisäänrakennetut paywallit tai lisenssien hallinta, kuten iTunes tai Google Play."

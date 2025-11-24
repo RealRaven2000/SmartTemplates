@@ -21,33 +21,42 @@ function escapeHtml(str) {
   return str.replace(/&/gm, "&amp;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>"); // remove quote replacements
 }
   
-export class Parser { 
+export class Parser {
   constructor(info) {
     this.info = info;
     this.InvalidReservedWords = []; // Util.displayNotAllowedMessage(reservedWord); after processing!
-    this.mimeDecoder = { // from smartTemplate.overlay.js
+    this.mimeDecoder = {
+      // from smartTemplate.overlay.js
       MimePrefs: {
         defaultCharset: null,
-        defaultFormat : null,
+        defaultFormat: null,
         debug: false,
         nameDelimiter: "",
         guessFromMail: false,
         extractNameFromParentheses: true,
         resolveAB: false,
-        resolveAB_preferNick: false
+        resolveAB_preferNick: false,
       },
       allAddressBooks: null,
-      init: async function() {
-        this.MimePrefs.defaultCharset = await Preferences.getMyStringPref ("defaultCharset");
+      init: async function () {
+        this.MimePrefs.defaultCharset = await Preferences.getMyStringPref("defaultCharset");
         this.MimePrefs.defaultFormat = await Preferences.getMyStringPref("mime.defaultFormat");
         this.MimePrefs.debug = await Preferences.isDebugOption("mime.split");
         this.MimePrefs.nameDelimiter = await Preferences.getMyStringPref("names.delimiter");
         this.MimePrefs.guessFromMail = await Preferences.getMyBoolPref("names.guessFromMail");
-        this.MimePrefs.extractNameFromParentheses = await Preferences.getMyBoolPref("names.extractNameFromParentheses");
+        this.MimePrefs.extractNameFromParentheses = await Preferences.getMyBoolPref(
+          "names.extractNameFromParentheses"
+        );
         this.MimePrefs.resolveAB = await Preferences.getMyBoolPref("mime.resolveAB");
-        this.MimePrefs.resolveAB_preferNick = await Preferences.getMyBoolPref("mime.resolveAB.preferNick");
-        this.MimePrefs.resolveAB_displayName = await Preferences.getMyBoolPref("mime.resolveAB.displayName");
-        this.MimePrefs.resolveAB_removeEmail = await Preferences.getMyBoolPref("mime.resolveAB.removeEmail");
+        this.MimePrefs.resolveAB_preferNick = await Preferences.getMyBoolPref(
+          "mime.resolveAB.preferNick"
+        );
+        this.MimePrefs.resolveAB_displayName = await Preferences.getMyBoolPref(
+          "mime.resolveAB.displayName"
+        );
+        this.MimePrefs.resolveAB_removeEmail = await Preferences.getMyBoolPref(
+          "mime.resolveAB.removeEmail"
+        );
         this.MimePrefs.firstLastSwap = await Preferences.getMyBoolPref("firstLastSwap");
         this.MimePrefs.namesCapitalize = await Preferences.getMyBoolPref("names.capitalize");
         this.MimePrefs.namesQuoteIfComma = await Preferences.getMyBoolPref("names.quoteIfComma");
@@ -60,37 +69,45 @@ export class Parser {
       // jcranmer: this is really impossible based on such short fields
       // see also: hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/cd19874b48f8/patches-newmime/parser-charsets
       //           http://encoding.spec.whatwg.org/#interface-textdecoder
-      //           
-      detectCharset: function(str, supressDefault=false) {
+      //
+      detectCharset: function (str, supressDefault = false) {
         let charset = "";
-         // not supported                  
-         // #    RFC1555 ISO-8859-8 (Hebrew)
-         // #    RFC1922 iso-2022-cn-ext (Chinese extended)
+        // not supported
+        // #    RFC1555 ISO-8859-8 (Hebrew)
+        // #    RFC1922 iso-2022-cn-ext (Chinese extended)
         let encodedCharset = str.match(/=\?([^?]*)\?/);
-        if (encodedCharset.length>1) {
-          // matchgroup 1 is the charset! 
+        if (encodedCharset.length > 1) {
+          // matchgroup 1 is the charset!
           charset = encodedCharset[1];
         }
 
-        if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) {   // RFC1468 (Japanese)
-          charset = "iso-2022-jp"; 
-        } 
-        if (str.search(/\x1b\$\)C/gi) !== -1)                    {   // RFC1557 (Korean)
-          charset = "iso-2022-kr"; 
-        } 
-        if (str.search(/~{/gi) !== -1)                           {   // RFC1842 (Chinese ASCII)
-          charset = "HZ-GB-2312"; 
+        if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) {
+          // RFC1468 (Japanese)
+          charset = "iso-2022-jp";
         }
-        if (str.search(/\x1b\$\)[AG]|\x1b\$\*H/gi) !== -1)       {   // RFC1922 (Chinese) 
-          charset = "iso-2022-cn"; 
+        if (str.search(/\x1b\$\)C/gi) !== -1) {
+          // RFC1557 (Korean)
+          charset = "iso-2022-kr";
         }
-        if (str.search(/\x1b\$\(D/gi) !== -1) {  // RFC2237 (Japanese 1)
-          charset = "iso-2022-jp-1"; 
+        if (str.search(/~{/gi) !== -1) {
+          // RFC1842 (Chinese ASCII)
+          charset = "HZ-GB-2312";
+        }
+        if (str.search(/\x1b\$\)[AG]|\x1b\$\*H/gi) !== -1) {
+          // RFC1922 (Chinese)
+          charset = "iso-2022-cn";
+        }
+        if (str.search(/\x1b\$\(D/gi) !== -1) {
+          // RFC2237 (Japanese 1)
+          charset = "iso-2022-jp-1";
         }
         if (!charset && !supressDefault) {
-          charset = this.MimePrefs.defaultCharset || "";  // should we take this from Thunderbird instead?
+          charset = this.MimePrefs.defaultCharset || ""; // should we take this from Thunderbird instead?
         }
-        Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
+        Util.logDebugOptional(
+          "mime",
+          "mimeDecoder.detectCharset guessed charset: " + charset + "..."
+        );
         return charset;
       },
 
@@ -107,44 +124,45 @@ export class Parser {
             // because getParameter stops convert at the space/line-breaks.
             // => some russian mail servers use tab character as delimiter
             //    some even use a space character between 2 encoding blocks
-            theString = theString.replace ("?= =?", "?=\n=?"); // space problem
+            theString = theString.replace("?= =?", "?=\n=?"); // space problem
             let array = theString.split(/\s*\r\n\s*|\s*\r\s*|\s*\n\s*|\s*\t\s*/g);
             // detect charset from the string and override if necessary
-            let customCharset = that.mimeDecoder.detectCharset(theString, true) || charset; 
+            let customCharset = that.mimeDecoder.detectCharset(theString, true) || charset;
             // https://searchfox.org/mozilla-central/source/netwerk/mime/nsIMIMEHeaderParam.idl
             for (let i = 0; i < array.length; i++) {
               let aHeaderVal = array[i].replace(/%/g, "%%").replace(/ /g, "-%-");
-              decodedStr += 
-                this.headerParam
-                  .getParameter(
-                    aHeaderVal,     // header string 
-                    null,           // name of a MIME header parameter
-                    customCharset,  // fallback charset
-                    true,           // aTryLocaleCharset
-                    { value: null }
-                  ).replace(/-%-/g, " ").replace(/%%/g, "%");
+              decodedStr += this.headerParam
+                .getParameter(
+                  aHeaderVal, // header string
+                  null, // name of a MIME header parameter
+                  customCharset, // fallback charset
+                  true, // aTryLocaleCharset
+                  { value: null }
+                )
+                .replace(/-%-/g, " ")
+                .replace(/%%/g, "%");
             }
-          }
-          else {
+          } else {
             Util.logDebug("Mailer has no manners, trying to decode string: " + theString);
             decodedStr = decodeURIComponent(escape(theString));
             Util.logDebug("...decoded string: " + decodedStr);
           }
-        }
-        catch(ex) {
-          Util.logDebugOptional('mime','mimeDecoder.decode(' + theString + ') failed with charset: ' + charset
-              + '...\n' + ex);
+        } catch (ex) {
+          Util.logDebugOptional(
+            "mime",
+            "mimeDecoder.decode(" + theString + ") failed with charset: " + charset + "...\n" + ex
+          );
           return theString;
         }
         return decodedStr;
-      } ,
+      },
 
       // -----------------------------------
       // Split addresses and change encoding.
       // addrstr - comma separated string of address-parts
       // charset - character set of target string (probably silly to have one for all)
       // format - list of parts for target string: name, firstName, lastName, mail, link, bracketMail(), initial
-      split: async function (addrstr, charset, format, bypassCharsetDecoder)	{
+      split: async function (addrstr, charset, format, bypassCharsetDecoder) {
         let that = this;
         // jcranmer: you want to use parseHeadersWithArray
         //           that gives you three arrays
@@ -159,80 +177,95 @@ export class Parser {
         // use https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgDBHdr
         // mime2DecodedAuthor, mime2DecodedSubject, mime2DecodedRecipients!
         let mapLegacyCardStruct = new Map([
-          ['nickname', "NickName"],
-          ['additionalmail', "SecondEmail"],
-          ['chatname', "ChatName"],
-          ['workphone', "WorkPhone"],
-          ['homephone', "HomePhone"],
-          ['fax', "FaxNumber"],
-          ['pager', "PagerNumber"],
-          ['mobile', "CellularNumber"],
-          ['private.address1', "HomeAddress"],
-          ['private.address2', "HomeAddress2"],
-          ['private.city', "HomeCity"],
-          ['private.state', "HomeState"],
-          ['private.country', "HomeCountry"],
-          ['private.zip', "HomeZipCode"],
-          ['work.title', "JobTitle"],
-          ['work.department', "Department"],
-          ['work.organization', "Company"],
-          ['work.address1', "WorkAddress"],
-          ['work.address2', "WorkAddress2"],
-          ['work.city', "WorkCity"],
-          ['work.state', "WorkState"],
-          ['work.country', "WorkCountry"],
-          ['work.zip', "WorkZipCode"],          
-          ['work.webpage', "WebPage1"],
-          ['other.custom1', "Custom1"],
-          ['other.custom2', "Custom2"],
-          ['other.custom3', "Custom3"],
-          ['other.custom4', "Custom4"],
-          ['other.custom5', "Custom5"],
-          ['other.notes', "Notes"]
-          
+          ["nickname", "NickName"],
+          ["additionalmail", "SecondEmail"],
+          ["chatname", "ChatName"],
+          ["workphone", "WorkPhone"],
+          ["homephone", "HomePhone"],
+          ["fax", "FaxNumber"],
+          ["pager", "PagerNumber"],
+          ["mobile", "CellularNumber"],
+          ["private.address1", "HomeAddress"],
+          ["private.address2", "HomeAddress2"],
+          ["private.city", "HomeCity"],
+          ["private.state", "HomeState"],
+          ["private.country", "HomeCountry"],
+          ["private.zip", "HomeZipCode"],
+          ["work.title", "JobTitle"],
+          ["work.department", "Department"],
+          ["work.organization", "Company"],
+          ["work.address1", "WorkAddress"],
+          ["work.address2", "WorkAddress2"],
+          ["work.city", "WorkCity"],
+          ["work.state", "WorkState"],
+          ["work.country", "WorkCountry"],
+          ["work.zip", "WorkZipCode"],
+          ["work.webpage", "WebPage1"],
+          ["other.custom1", "Custom1"],
+          ["other.custom2", "Custom2"],
+          ["other.custom3", "Custom3"],
+          ["other.custom4", "Custom4"],
+          ["other.custom5", "Custom5"],
+          ["other.notes", "Notes"],
         ]);
-                
-        
-        
+
         function getEmailAddress(a) {
           return a.replace(/.*<(\S+)>.*/g, "$1");
         }
 
-        function isLastName(format) { return (format.search(/^\(lastname[,)]/, "i") != -1); };
+        function isLastName(format) {
+          return format.search(/^\(lastname[,)]/, "i") != -1;
+        }
         // argType = Mail or Name to support bracketMail and bracketName
-        function getBracketAddressArgs(format, argType) { 
-		      //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail{*} !
-		      let reg = new RegExp('bracket' + argType + '\\{(.+?)\\}', 'g'), 
-              ar = reg.exec(format);
-          if (ar && ar.length>1) {
+        function getBracketAddressArgs(format, argType) {
+          //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail{*} !
+          let reg = new RegExp("bracket" + argType + "\\{(.+?)\\}", "g"),
+            ar = reg.exec(format);
+          if (ar && ar.length > 1) {
             let args = ar[1];
-            Util.logDebugOptional('regularize', 
-              'getBracketAddressArgs(' + format + ',' + argType + ') returns ' + args 
-              + '\n out of ' + ar.length + ' results.');
+            Util.logDebugOptional(
+              "regularize",
+              "getBracketAddressArgs(" +
+                format +
+                "," +
+                argType +
+                ") returns " +
+                args +
+                "\n out of " +
+                ar.length +
+                " results."
+            );
             return args;
           }
-          return '';
-        };
-         async function getCardFromAB(mail) { // returns ContactNode
-          if (!mail) {return null;}
+          return "";
+        }
+        async function getCardFromAB(mail) {
+          // returns ContactNode
+          if (!mail) {
+            return null;
+          }
           // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
           // http://mxr.mozilla.org/comm-central/source/mailnews/addrbook/public/nsIAbCard.idl
-          
+
           // CARDBOOK
           // simpleMailRedirection.contacts => can be accesed via the notifyTools
 
           // API-to-do: use API https://thunderbird-webextensions.readthedocs.io/en/latest/addressBooks.html
-          for (let i=0; i<that.allAddressBooks.length; i++ ) {
+          for (let i = 0; i < that.allAddressBooks.length; i++) {
             // addressBook.mailingLists // array of MailingListNode)
             // alert ("Directory Name:" + addressBook.dirName);
             let addressBook;
             try {
-              // AddressBookNode 
+              // AddressBookNode
               addressBook = that.allAddressBooks[i];
-              const contactNode = addressBook.contacts.find(c => c.properties.PrimaryEmail.toLowerCase() == mail.toLowerCase());  // Array of ContactNode, properties is nsIAbCard.idl
-              if (contactNode) {return contactNode;}
-            } catch(ex) {
-              Util.logDebug('Problem with Addressbook: ' + addressBook.dirName + '\n' + ex) ;
+              const contactNode = addressBook.contacts.find(
+                (c) => c.properties.PrimaryEmail.toLowerCase() == mail.toLowerCase()
+              ); // Array of ContactNode, properties is nsIAbCard.idl
+              if (contactNode) {
+                return contactNode;
+              }
+            } catch (ex) {
+              Util.logDebug("Problem with Addressbook: " + addressBook.dirName + "\n" + ex);
             }
           }
           return null;
@@ -240,9 +273,10 @@ export class Parser {
 
         // return the bracket delimiters
         function getBracketDelimiters(bracketParams, element) {
-          let del1='', del2='',
-              bracketExp = element.field,
-              isOptional = false;
+          let del1 = "",
+            del2 = "",
+            bracketExp = element.field,
+            isOptional = false;
           if (bracketExp) {
             // ??prefix make brackets optional if bracketMail / bracketName is the only element in the address.
             // e.g. ??bracketName(??round)
@@ -258,40 +292,40 @@ export class Parser {
             // the expression between brackets can also have empty delimiters; e.g. bracketMail(- ;) will prefix "- " and append nothing
             // we use ; as delimiter between the bracket expressions to avoid wrongly splitting format string elsewhere
             // (Should we allow escaped round brackets?)
-            if (bracketParams.indexOf('??')==0) {
+            if (bracketParams.indexOf("??") == 0) {
               isOptional = true;
               bracketParams = bracketParams.substring(2);
             }
-              
-            if (!bracketParams.trim())
-              bracketParams = 'angle';
-            let delimiters = bracketParams.split(';');
-            switch(delimiters.length) {
+
+            if (!bracketParams.trim()) bracketParams = "angle";
+            let delimiters = bracketParams.split(";");
+            switch (delimiters.length) {
               case 0: // error
                 break;
               case 1: // special case
-                switch(delimiters[0]) {
-                  case 'square':
-                    del1 = '[';
-                    del2 = ']';
+                switch (delimiters[0]) {
+                  case "square":
+                    del1 = "[";
+                    del2 = "]";
                     break;
-                  case 'round':
-                    del1 = '(';
-                    del2 = ')';
+                  case "round":
+                    del1 = "(";
+                    del2 = ")";
                     break;
-                  case 'angle': case 'angled':
-                    if (isWriteClipboard) { // [issue 200]
-                      del1 = '<'; 
-                      del2 = '>'; 
-                    }
-                    else {
-                      del1 = '&lt;'; // <
-                      del2 = '&gt;'; // >
+                  case "angle":
+                  case "angled":
+                    if (isWriteClipboard) {
+                      // [issue 200]
+                      del1 = "<";
+                      del2 = ">";
+                    } else {
+                      del1 = "&lt;"; // <
+                      del2 = "&gt;"; // >
                     }
                     break;
                   default:
                     del1 = delimiters[0]; // allow single delimiter, such as dash
-                    del2 = '';
+                    del2 = "";
                 }
                 break;
               default: // delimiters separated by ; 3 and more are ignored.
@@ -302,15 +336,14 @@ export class Parser {
           }
           return [del1, del2, isOptional];
         }
-        
-        if (typeof addrstr =='undefined')
-          return ""; // no address string (new emails)
-          
+
+        if (typeof addrstr == "undefined") return ""; // no address string (new emails)
+
         // fix mime encoded strings (cardbook seems to store these!)
         // [issue 125] solve encoding problems
         let isCorrectMime = true,
-            detectCharset = this.detectCharset.bind(this),
-            decode = this.decode.bind(this);
+          detectCharset = this.detectCharset.bind(this),
+          decode = this.decode.bind(this);
         function correctMime(str) {
           if (!isCorrectMime || !str) return str;
           if (!str.includes("=?")) return str;
@@ -318,79 +351,100 @@ export class Parser {
           if (cs) {
             let corrected = decode(str, cs);
             if (corrected != str) {
-              Util.logDebug("Correcting MIME encoded word from AB: " + str + "  to:" + corrected + "\nGuessed charset: " + cs);
+              Util.logDebug(
+                "Correcting MIME encoded word from AB: " +
+                  str +
+                  "  to:" +
+                  corrected +
+                  "\nGuessed charset: " +
+                  cs
+              );
               return corrected;
             }
           }
           return str;
-        }      
-        
-        //  %from% and %to% default to name followed by bracketed email address
-        if (typeof format=='undefined' || format == '') {
-          format = this.MimePrefs.defaultFormat.replace("(","{").replace(")","}") ; // 'name,bracketMail<angle>'
         }
-        
-        Util.logDebugOptional('mime.split',
-             '====================================================\n'
-           + 'mimeDecoder.split(charset decoding=' + (bypassCharsetDecoder ? 'bypassed' : 'active') + ')\n'
-           + '  addrstr: ' +  addrstr + '\n'
-           + '  charset: ' + charset + '\n'
-           + '  format: ' + format + '\n'
-           + '====================================================');
+
+        //  %from% and %to% default to name followed by bracketed email address
+        if (typeof format == "undefined" || format == "") {
+          format = this.MimePrefs.defaultFormat.replace("(", "{").replace(")", "}"); // 'name,bracketMail<angle>'
+        }
+
+        Util.logDebugOptional(
+          "mime.split",
+          "====================================================\n" +
+            "mimeDecoder.split(charset decoding=" +
+            (bypassCharsetDecoder ? "bypassed" : "active") +
+            ")\n" +
+            "  addrstr: " +
+            addrstr +
+            "\n" +
+            "  charset: " +
+            charset +
+            "\n" +
+            "  format: " +
+            format +
+            "\n" +
+            "===================================================="
+        );
         // if (!bypassCharsetDecoder)
-          // addrstr = this.decode(addrstr, charset);
+        // addrstr = this.decode(addrstr, charset);
         // Escape % and , characters in mail addresses
-        
+
         let array = [];
         if (typeof addrstr == "string") {
           /** SPLIT ADDRESSES **/
-          addrstr = addrstr.replace(/"[^"]*"/g, function(s){ return s.replace(/%/g, "%%").replace(/,/g, "-%-"); });
-          Util.logDebugOptional('mime.split', 'After escaping special chars in mail address field:\n' + addrstr);
+          addrstr = addrstr.replace(/"[^"]*"/g, function (s) {
+            return s.replace(/%/g, "%%").replace(/,/g, "-%-");
+          });
+          Util.logDebugOptional(
+            "mime.split",
+            "After escaping special chars in mail address field:\n" + addrstr
+          );
           array = addrstr.split(/\s*,\s*/);
-        }
-        else if (Array.isArray(addrstr)) {
-          for (let i=0; i<addrstr.length; i++) {
-            array.push( addrstr[i].replace(/"[^"]*"/g, (s) => { return s.replace(/%/g, "%%").replace(/,/g, "-%-"); }));
+        } else if (Array.isArray(addrstr)) {
+          for (let i = 0; i < addrstr.length; i++) {
+            array.push(
+              addrstr[i].replace(/"[^"]*"/g, (s) => {
+                return s.replace(/%/g, "%%").replace(/,/g, "-%-");
+              })
+            );
           }
         }
 
-        
-        
         /** SPLIT FORMAT PLACEHOLDERS **/
         // possible values for format are:
         // name, firstname, lastname, mail - fields (to be extended)
         // bracketMail(args) - special function (we replaced the round brackets with < > for parsing)
         // link, islinkable  - these are "modifiers" for the previous list element
         let formatArray = Util.splitFormatArgs(format),
-            isForceAB = false,
-            isWriteClipboard = formatArray.findIndex((e) => e.field=="toclipboard")>-1; // [issue 187]
+          isForceAB = false,
+          isWriteClipboard = formatArray.findIndex((e) => e.field == "toclipboard") > -1; // [issue 187]
 
-        let dbgText = 'addrstr.split() found [' + array.length + '] addresses \n' + 'Formats:\n';
-        for (let i=0; i<formatArray.length; i++) {
+        let dbgText = "addrstr.split() found [" + array.length + "] addresses \n" + "Formats:\n";
+        for (let i = 0; i < formatArray.length; i++) {
           let fld = formatArray[i];
-          if (fld.field == "addressbook") 
-            isForceAB = true;
+          if (fld.field == "addressbook") isForceAB = true;
           dbgText += fld.field;
-          if (fld.modifier)  
-            dbgText += '(' + fld.modifier + ')';
-          dbgText += '\n';
+          if (fld.modifier) dbgText += "(" + fld.modifier + ")";
+          dbgText += "\n";
         }
-        Util.logDebugOptional('mime.split', dbgText);
-        
+        Util.logDebugOptional("mime.split", dbgText);
+
         const nameDelim = this.MimePrefs.nameDelimiter, // Bug 26207
-              isGuessFromAddressPart = this.MimePrefs.guessFromMail,
-              isReplaceNameFromParens = this.MimePrefs.extractNameFromParentheses; // [Bug 26595] disable name guessing      
+          isGuessFromAddressPart = this.MimePrefs.guessFromMail,
+          isReplaceNameFromParens = this.MimePrefs.extractNameFromParentheses; // [Bug 26595] disable name guessing
         let addresses = "",
-            address,
-            bracketMailParams = getBracketAddressArgs(format, 'Mail'),
-            bracketNameParams = getBracketAddressArgs(format, 'Name'),
-            card;
+          address,
+          bracketMailParams = getBracketAddressArgs(format, "Mail"),
+          bracketNameParams = getBracketAddressArgs(format, "Name"),
+          card;
 
         // API-to-do: use API for retrieving properties
         // (probably async)
         // see https://webextension-api.thunderbird.net/en/stable/contacts.html#get-id
         function getCardProperty(p) {
-          if (!card) return '';
+          if (!card) return "";
           let legacyKey = mapLegacyCardStruct.get(p);
           let r = card.ContactProperties[legacyKey];
           if (r) {
@@ -400,61 +454,61 @@ export class Parser {
           return r;
         }
 
-
         /** ITERATE ADDRESSES  **/
         for (let i = 0; i < array.length; i++) {
           let suppressMail = false;
           if (i > 0) {
-            addresses += nameDelim + " ";  // comma or semicolon
+            addresses += nameDelim + " "; // comma or semicolon
           }
-          let addressee = '',
-              firstName, lastName,
-              fullName = '',
-              emailAddress = '',
-              addressField = array[i],
-              isFirstNameFromDisplay = false;
-              
+          let addressee = "",
+            firstName,
+            lastName,
+            fullName = "",
+            emailAddress = "",
+            addressField = array[i],
+            isFirstNameFromDisplay = false;
+
           // [Bug 25816] - missing names caused by differing encoding
           // MIME decode (moved into the loop)
           // if (!bypassCharsetDecoder) this.decode(array[i], charset);
-          addressField = correctMime(array[i]); 
-          
+          addressField = correctMime(array[i]);
+
           // Escape "," in mail addresses
-          array[i] = addressField.replace(/\r\n|\r|\n/g, "")
-                             .replace(/"[^"]*"/,
-                             function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
+          array[i] = addressField.replace(/\r\n|\r|\n/g, "").replace(/"[^"]*"/, function (s) {
+            return s.replace(/-%-/g, ",").replace(/%%/g, "%");
+          });
           // name or/and address. (wraps email into <  > )
-          address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
-          
-          
-          Util.logDebugOptional('mime.split', 'processing: ' + addressField + ' => ' + array[i] + '\n'
-                                               + 'address: ' + address);
+          address = array[i]
+            .replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>")
+            .replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
+
+          Util.logDebugOptional(
+            "mime.split",
+            "processing: " + addressField + " => " + array[i] + "\n" + "address: " + address
+          );
           // [Bug 25643] get name from Addressbook
           emailAddress = getEmailAddress(address); // get this always
           const isResolveNamesAB = isForceAB || this.MimePrefs.resolveAB;
-          card = isResolveNamesAB ? 
-            await getCardFromAB(emailAddress) : null; // ContactNode
-          
+          card = isResolveNamesAB ? await getCardFromAB(emailAddress) : null; // ContactNode
+
           // determine name part (left of email)
-          addressee = address.replace(/\s*<\S+>\s*$/, "")
-                          .replace(/^\s*"|"*\s*$/g, "");  // %to% / %to(name)%
-                          
-          if (isGuessFromAddressPart && !addressee) { // if no addressee part found we probably have only an email address.; take first part before the @
-            addressee = address.slice(0, address.indexOf('@'));
-            if (addressee.charAt('0')=='<')
-              addressee = addressee.slice(1);
+          addressee = address.replace(/\s*<\S+>\s*$/, "").replace(/^\s*"|"*\s*$/g, ""); // %to% / %to(name)%
+
+          if (isGuessFromAddressPart && !addressee) {
+            // if no addressee part found we probably have only an email address.; take first part before the @
+            addressee = address.slice(0, address.indexOf("@"));
+            if (addressee.charAt("0") == "<") addressee = addressee.slice(1);
           }
           // if somebody repeats the email address instead of a name at front, e.g. a.x@tcom, we cut the domain off anyway
-          if (addressee.indexOf('@')>0) {
-            let add_end = addressee.substring(addressee.length-1);
-            addressee = addressee.slice(0, addressee.indexOf('@')); // if we do this we may need to re-add parentheses or special characters at the end!
-          if ([')', ']', '}', '"'].indexOf(add_end) !== -1)
-            addressee += add_end; // re-add ')'
+          if (addressee.indexOf("@") > 0) {
+            let add_end = addressee.substring(addressee.length - 1);
+            addressee = addressee.slice(0, addressee.indexOf("@")); // if we do this we may need to re-add parentheses or special characters at the end!
+            if ([")", "]", "}", '"'].indexOf(add_end) !== -1) addressee += add_end; // re-add ')'
           }
           fullName = addressee;
-          
+
           // attempt filling first & last name from AB
-          firstName = (isResolveNamesAB && card) ? correctMime(card.properties.FirstName) : '';
+          firstName = isResolveNamesAB && card ? correctMime(card.properties.FirstName) : "";
           if (isResolveNamesAB && card) {
             if (this.MimePrefs.resolveAB_preferNick) {
               firstName = correctMime(card.getProperty("NickName", card.properties.FirstName));
@@ -465,286 +519,293 @@ export class Parser {
               isFirstNameFromDisplay = true;
             }
           }
-          lastName = (isResolveNamesAB && card)  ? correctMime(card.properties.LastName) : '';
-          fullName = (isResolveNamesAB && card && card.properties.DisplayName) ? correctMime(card.properties.DisplayName) : fullName;
-          
-          
-          let isNameFound = (firstName.length + lastName.length > 0); // only set if name was found in AB
+          lastName = isResolveNamesAB && card ? correctMime(card.properties.LastName) : "";
+          fullName =
+            isResolveNamesAB && card && card.properties.DisplayName
+              ? correctMime(card.properties.DisplayName)
+              : fullName;
+
+          let isNameFound = firstName.length + lastName.length > 0; // only set if name was found in AB
           if ((fullName || isNameFound) && this.MimePrefs.resolveAB_removeEmail) {
             // remove mail if name found in AB, and a name component is displayed:
-            for (let f=0; f<formatArray.length; f++) {
-              if (["name","firstname","lastname","fullname"].indexOf(formatArray[f].field)>=0) {
+            for (let f = 0; f < formatArray.length; f++) {
+              if (
+                ["name", "firstname", "lastname", "fullname"].indexOf(formatArray[f].field) >= 0
+              ) {
                 suppressMail = true;
               }
             }
-            for (let f=0; f<formatArray.length; f++) {
-              if (formatArray[f].field=='mail' || formatArray[f].field.startsWith('bracketMail')) 
+            for (let f = 0; f < formatArray.length; f++) {
+              if (formatArray[f].field == "mail" || formatArray[f].field.startsWith("bracketMail"))
                 suppressMail = false;
             }
           }
-                  
-              
+
           if (!isNameFound && this.MimePrefs.firstLastSwap) {
             // extract Name from left hand side of email address
-            
+
             let regex = /\(([^)]+)\)/,
-                nameRes = regex.exec(addressee);
+              nameRes = regex.exec(addressee);
             // (Name) extraction!
-            if (isReplaceNameFromParens && nameRes  &&  nameRes.length > 1 && !isLastName(format)) {
+            if (isReplaceNameFromParens && nameRes && nameRes.length > 1 && !isLastName(format)) {
               isNameFound = true;
-              firstName = nameRes[1];  // name or firstname will fetch the (Name) from brackets!
-            }
-            else {
-              let iComma = addressee.indexOf(', ');
-              if (iComma>0) {
+              firstName = nameRes[1]; // name or firstname will fetch the (Name) from brackets!
+            } else {
+              let iComma = addressee.indexOf(", ");
+              if (iComma > 0) {
                 firstName = addressee.substr(iComma + 2);
                 // remove parentheses part from firstnames
-                if (nameRes)
-                  firstName = (firstName.replace(nameRes[0],'')).trim();
+                if (nameRes) firstName = firstName.replace(nameRes[0], "").trim();
                 lastName = addressee.substr(0, iComma);
                 isNameFound = true;
               }
             }
           }
-          
+
           if (!fullName) {
-            if (firstName && lastName) { 
-              fullName = firstName + ' ' + lastName ; 
+            if (firstName && lastName) {
+              fullName = firstName + " " + lastName;
+            } else {
+              fullName = firstName ? firstName : lastName; // ?
             }
-            else {
-              fullName = firstName ? firstName : lastName;  // ?
-            }
-            if (!fullName) fullName = addressee.replace("."," "); // we might have to replace . with a space -  fall back
-          }
-          else {
-            if (!card || (card && card.properties.DisplayName && card.properties.DisplayName != fullName)) { // allow a single word from AB as displayName to "survive"
+            if (!fullName) fullName = addressee.replace(".", " "); // we might have to replace . with a space -  fall back
+          } else {
+            if (
+              !card ||
+              (card && card.properties.DisplayName && card.properties.DisplayName != fullName)
+            ) {
+              // allow a single word from AB as displayName to "survive"
               // name split / replacements; if there are no spaces lets replace '.' then '_'
-              if (fullName.indexOf(' ')<0) {
-                 fullName = addressee.replace('.',' ');
+              if (fullName.indexOf(" ") < 0) {
+                fullName = addressee.replace(".", " ");
               }
-              if (fullName.indexOf(' ')<0) {
-                 fullName = addressee.replace('_',' ');
+              if (fullName.indexOf(" ") < 0) {
+                fullName = addressee.replace("_", " ");
               }
               // replace double quotation marks?
             }
           }
-          
-          let names = fullName.split(' '),
-              ncount = names.length,
-              isOnlyOneName = (ncount==1) ? true : false;
+
+          let names = fullName.split(" "),
+            ncount = names.length,
+            isOnlyOneName = ncount == 1 ? true : false;
           if (!firstName) {
-            firstName = '';
-            if (isOnlyOneName)
-              firstName = names[0];  // always fill first Name!
-            else for (let n=0; n<ncount-1; n++) {
-              if (n>0) firstName += ' '; // concatenate with space between all first names
-              firstName += names[n];
-            }
+            firstName = "";
+            if (isOnlyOneName) firstName = names[0]; // always fill first Name!
+            else
+              for (let n = 0; n < ncount - 1; n++) {
+                if (n > 0) firstName += " "; // concatenate with space between all first names
+                firstName += names[n];
+              }
           }
           // [Bug 26208] ? Omitting middle names
           if (!lastName && !isOnlyOneName) {
-            lastName = ncount ? names[ncount-1] : '';
+            lastName = ncount ? names[ncount - 1] : "";
           }
           if (isFirstNameFromDisplay && firstName.endsWith(lastName)) {
             // cut off last name to avoid duplication.
-            firstName = firstName.replace(lastName,"").trim();
+            firstName = firstName.replace(lastName, "").trim();
           }
-          
+
           if (this.MimePrefs.namesCapitalize) {
             fullName = Util.toTitleCase(fullName);
             firstName = Util.toTitleCase(firstName);
             lastName = Util.toTitleCase(lastName);
           }
-          
+
           // build the part!
           let addressElements = [],
-              foundNonOptionalParts = false,
-              bracketsAreOptional = false; // bracket Elements
-              
-          for (let j=0; j<formatArray.length; j++)  {
+            foundNonOptionalParts = false,
+            bracketsAreOptional = false; // bracket Elements
+
+          for (let j = 0; j < formatArray.length; j++) {
             let element = formatArray[j],
-                part = "", open = "", close = "",
-                isOptionalPart = false,
-                partKeyWord = element.field; 
-                
-            if (partKeyWord.indexOf('??')==0) {
+              part = "",
+              open = "",
+              close = "",
+              isOptionalPart = false,
+              partKeyWord = element.field;
+
+            if (partKeyWord.indexOf("??") == 0) {
               partKeyWord = partKeyWord.substring(2);
               isOptionalPart = true;
             }
-            switch(partKeyWord.toLowerCase()) {
-              case 'initial':
-                while (addressElements.length>1) 
-                  addressElements.pop();
-                addressElements.push( {part:addrstr, optional:false, bracketLeft:'', bracketRight:'', bracketsOptional:true}  ); // return unchanged string, ignore all other parameters
+            switch (partKeyWord.toLowerCase()) {
+              case "initial":
+                while (addressElements.length > 1) addressElements.pop();
+                addressElements.push({
+                  part: addrstr,
+                  optional: false,
+                  bracketLeft: "",
+                  bracketRight: "",
+                  bracketsOptional: true,
+                }); // return unchanged string, ignore all other parameters
                 break;
-              case 'mail':
-                if (suppressMail)
-                  continue;
+              case "mail":
+                if (suppressMail) continue;
                 switch (element.modifier) {
-                  case 'linkable':
+                  case "linkable":
                     part = emailAddress;
                     break;
-                  case 'linkTo': // No special linking, anchor will be modified below like with all other parts
+                  case "linkTo": // No special linking, anchor will be modified below like with all other parts
                     part = emailAddress;
                     break;
                   default:
                     //empty anchor suppresses link; adding angle brackets as default
                     if (!isWriteClipboard && this.MimePrefs.mailSuppressLink) {
-                      part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
-                    }
-                    else {
+                      part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>";
+                    } else {
                       part = emailAddress;
                     }
                 }
                 break;
-              case 'fwd': // this is handled on the outside, so we ignore it
+              case "fwd": // this is handled on the outside, so we ignore it
                 continue;
-              case 'name':
-              case 'fullname':
-                if (fullName)
-                  part = fullName;
+              case "name":
+              case "fullname":
+                if (fullName) part = fullName;
                 else {
                   if (isGuessFromAddressPart)
                     part = address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
-                  else
-                    part = ''; // [Bug 26595]
+                  else part = ""; // [Bug 26595]
                 }
                 // [Bug 26209] wrap name if contains comma
                 if (this.MimePrefs.namesQuoteIfComma) {
-                  if (part.includes(',') || part.includes(';'))
-                    part = '"' + part + '"';
+                  if (part.includes(",") || part.includes(";")) part = '"' + part + '"';
                 }
                 break;
-              case 'firstname':
+              case "firstname":
                 part = firstName;
                 break;
-              case 'lastname':
-                if (card && card.properties.LastName)
-                  part = card.properties.LastName;
-                else if (isOnlyOneName && format.indexOf('firstname')<0) {
-                  part = firstName; // fall back to first name if lastName was 
-                                    // 'emptied' because of duplication
-                }
-                else
-                  part = lastName;
+              case "lastname":
+                if (card && card.properties.LastName) part = card.properties.LastName;
+                else if (isOnlyOneName && format.indexOf("firstname") < 0) {
+                  part = firstName; // fall back to first name if lastName was
+                  // 'emptied' because of duplication
+                } else part = lastName;
                 break;
               // [issue 24]
               // AB stuff - contact
-              case 'nickname':
+              case "nickname":
                 part = getCardProperty("NickName");
                 break;
-              case 'additionalmail':
+              case "additionalmail":
                 part = getCardProperty("SecondEmail");
                 break;
-              case 'chatname':
+              case "chatname":
                 part = getCardProperty("ChatName");
                 break;
-              case 'workphone':
+              case "workphone":
                 part = getCardProperty("WorkPhone");
                 break;
-              case 'homephone':
+              case "homephone":
                 part = getCardProperty("HomePhone");
                 break;
-              case 'fax':
+              case "fax":
                 part = getCardProperty("FaxNumber");
                 break;
-              case 'pager':
+              case "pager":
                 part = getCardProperty("PagerNumber");
                 break;
-              case 'mobile':
+              case "mobile":
                 part = getCardProperty("CellularNumber");
                 break;
               // AB stuff - private
-              case 'private.address1':
+              case "private.address1":
                 part = getCardProperty("HomeAddress");
                 break;
-              case 'private.address2':
+              case "private.address2":
                 part = getCardProperty("HomeAddress2");
                 break;
-              case 'private.city':
+              case "private.city":
                 part = getCardProperty("HomeCity");
                 break;
-              case 'private.state':
+              case "private.state":
                 part = getCardProperty("HomeState");
                 break;
-              case 'private.country':
+              case "private.country":
                 part = getCardProperty("HomeCountry");
                 break;
-              case 'private.zip':
+              case "private.zip":
                 part = getCardProperty("HomeZipCode");
                 break;
               // work
-              case 'work.title':
+              case "work.title":
                 part = getCardProperty("JobTitle");
                 break;
-              case 'work.department':
+              case "work.department":
                 part = getCardProperty("Department");
                 break;
-              case 'work.organization':
+              case "work.organization":
                 part = getCardProperty("Company");
                 break;
-              case 'work.address1':
+              case "work.address1":
                 part = getCardProperty("WorkAddress");
                 break;
-              case 'work.address2':
+              case "work.address2":
                 part = getCardProperty("WorkAddress2");
                 break;
-              case 'work.city':
+              case "work.city":
                 part = getCardProperty("WorkCity");
                 break;
-              case 'work.state':
+              case "work.state":
                 part = getCardProperty("WorkState");
                 break;
-              case 'work.country':
+              case "work.country":
                 part = getCardProperty("WorkCountry");
                 break;
-              case 'work.zip':
-                part = getCardProperty("WorkZipCode");          
+              case "work.zip":
+                part = getCardProperty("WorkZipCode");
                 break;
-              case 'work.webpage':
-                part = getCardProperty("WebPage1");          
+              case "work.webpage":
+                part = getCardProperty("WebPage1");
                 break;
-                
+
               // other
-              case 'other.custom1':
+              case "other.custom1":
                 part = getCardProperty("Custom1");
                 break;
-              case 'other.custom2':
+              case "other.custom2":
                 part = getCardProperty("Custom2");
                 break;
-              case 'other.custom3':
+              case "other.custom3":
                 part = getCardProperty("Custom3");
                 break;
-              case 'other.custom4':
+              case "other.custom4":
                 part = getCardProperty("Custom4");
                 break;
-              case 'other.custom5':
+              case "other.custom5":
                 part = getCardProperty("Custom5");
                 break;
-              case 'other.notes':
+              case "other.notes":
                 part = getCardProperty("Notes");
                 break;
-              case 'addressbook':
-                part = "";          
+              case "addressbook":
+                part = "";
                 break;
-              case 'toclipboard':
+              case "toclipboard":
                 isWriteClipboard = true;
                 part = "";
                 break;
               default: {
                 // [issue 186] allow using bracketMail / bracketName without parentheses
-                let bM = (partKeyWord.indexOf('bracketMail')==0),
-                    bN = (partKeyWord.indexOf('bracketName')==0);
+                let bM = partKeyWord.indexOf("bracketMail") == 0,
+                  bN = partKeyWord.indexOf("bracketName") == 0;
                 if (bM || bN) {
                   if (bM) {
-                    [open, close, bracketsAreOptional] = getBracketDelimiters(bracketMailParams, element);
+                    [open, close, bracketsAreOptional] = getBracketDelimiters(
+                      bracketMailParams,
+                      element
+                    );
                     part = emailAddress || ""; // adding brackets later!
-                  }
-                  else {
+                  } else {
                     if (isGuessFromAddressPart || fullName) {
-                      [open, close, bracketsAreOptional] = getBracketDelimiters(bracketNameParams, element);
+                      [open, close, bracketsAreOptional] = getBracketDelimiters(
+                        bracketNameParams,
+                        element
+                      );
                       let fN = fullName ? fullName : address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
-                      part = fN ? fN : '';
+                      part = fN ? fN : "";
                     } else {
                       part = "";
                     }
@@ -753,39 +814,44 @@ export class Parser {
                 break;
               }
             }
-            if (element.modifier =='linkTo') {
+            if (element.modifier == "linkTo") {
               part = "<a href=mailto:" + emailAddress + ">" + part + "</a>"; // mailto
             }
 
             // make array of non-empty parts
             if (part) {
-              addressElements.push({part:part, optional:isOptionalPart, bracketLeft:open, bracketRight:close, bracketsOptional: bracketsAreOptional});
-              if (!isOptionalPart) 
-                foundNonOptionalParts = true;
+              addressElements.push({
+                part: part,
+                optional: isOptionalPart,
+                bracketLeft: open,
+                bracketRight: close,
+                bracketsOptional: bracketsAreOptional,
+              });
+              if (!isOptionalPart) foundNonOptionalParts = true;
             }
           }
-          
-          addressField = ''; // reset to finalize
-          for (let j=0; j<addressElements.length; j++)  {
+
+          addressField = ""; // reset to finalize
+          for (let j = 0; j < addressElements.length; j++) {
             let aElement = addressElements[j];
             // remove optional parts, e.g. to(name,??mail) - will only show name unless missing, in which case it shows mail
-            if (aElement.optional && foundNonOptionalParts)
-              continue;
+            if (aElement.optional && foundNonOptionalParts) continue;
             // append the next part if not empty
-            if (aElement.part.length>0) {  // [issue 153]
+            if (aElement.part.length > 0) {
+              // [issue 153]
               if (addressField.length) addressField += " "; // space to append next parts
               // if there is only one element and brackets param is prefixed with ??
               // e.g. %from(name,bracketMail(??- {,}))%
               // Name - {email}
               // then hide the brackets and only show email.
-              if (addressElements.length==1 && aElement.bracketsOptional)
-                addressField += aElement.part; // omit brackets if this is the only bracketed Expression returned
-              else
-                addressField += aElement.bracketLeft + aElement.part + aElement.bracketRight;
+              if (addressElements.length == 1 && aElement.bracketsOptional)
+                addressField +=
+                  aElement.part; // omit brackets if this is the only bracketed Expression returned
+              else addressField += aElement.bracketLeft + aElement.part + aElement.bracketRight;
             }
           }
-          
-          Util.logDebugOptional('mime.split', 'adding formatted address: ' + addressField);
+
+          Util.logDebugOptional("mime.split", "adding formatted address: " + addressField);
           addresses += addressField;
         }
         if (isWriteClipboard) {
@@ -794,268 +860,284 @@ export class Parser {
           addresses = "";
         }
         return addresses;
-      } // split
-
-    }
+      }, // split
+    };
   }
 
-  classGetHeaders = function (messageURI) { // from smartTemplate.overlay.js
+  classGetHeaders = function (messageURI) {
+    // from smartTemplate.overlay.js
     Util.logIssue184(`classGetHeaders(${messageURI})`);
+  };
+
+  clsGetAltHeader = function (msgDummyHeader) {
+    // from smartTemplate.overlay.js
+    Util.logIssue184(`clsGetAltHeader(${msgDummyHeader})`);
+  };
+
+  // modify a number of headers with either a string literal
+  // or a regex match (depending on matchFunction argument)
+  // hdr: "subject" | "to" | "from" | "cc" | "bcc" | "reply-to"
+  // cmd: "set" | "prefix" | "append" | "delete" | "deleteFromSubject"
+  // argString:
+  // matchFunction: "" | "matchFromSubject" | "matchFromBody"
+  static async modifyHeader(hdr, cmd, argString, matchFunction = "", composeDetails) {
+    const whiteList = ["subject", "to", "from", "cc", "bcc", "reply-to", "priority"];
+    // ComposeFields = gMsgCompose.compFields;
+
+    Util.addUsedPremiumFunction("header." + cmd);
+    let targetString = "",
+      modType = "",
+      argument = argString.substr(argString.indexOf(",") + 1);
+    switch (matchFunction) {
+      case "": // no matchFunction, so argString is literal
+        if (cmd == "deleteFromSubject") {
+          argument = argString.substr(1); // cut off opening parenthesis
+        }
+        if (argument.startsWith('"')) {
+          // string wrapped in double quotes
+          argument = argument.substr(1, argument.lastIndexOf('"') - 1);
+        } else {
+          // literal, only remove the closing parentheses
+          argument = argument.substr(0, argument.lastIndexOf(")"));
+        }
+        // [issue 183]
+        if (argument == "clipboard") {
+          // need license check here...
+          Util.logIssue184("Restrict clipboard to Pro Users!");
+          argument = await Util.clipboardRead();
+        }
+        break;
+      case "matchFromSubject":
+      case "matchFromBody":
+        let regX = new RegExp("%header." + cmd + "." + matchFunction + "(.*)%", "g");
+
+        if (matchFunction == "matchFromBody") {
+          // Insert replacement from body of QUOTED email!
+          argument = await matchText(regX, "body");
+        } else {
+          // Insert replacement from subject line
+          argument = await matchText(regX, "subject");
+        }
+        // if our match returns nothing, then do nothing (prevent from overwriting existing headers).
+        if (argument == "") return "";
+        break;
+      default:
+        Util.logToConsole("invalid matchFunction: " + matchFunction);
+        return "";
+    }
+    try {
+      let isClobberHeader = false;
+
+      Util.logDebug("modifyHeader(" + hdr + ", " + cmd + ", " + argument + ")");
+      if (whiteList.indexOf(hdr) < 0) {
+        // not in whitelist
+        if (hdr.toLowerCase().startsWith("list")) isClobberHeader = true;
+        else {
+          Util.logToConsole(
+            "invalid header - no permission to modify: " +
+              hdr +
+              "\nSupported headers: " +
+              whiteList.join(", ")
+          );
+          return "";
+        }
+      }
+      // get
+      modType = "address";
+      switch (hdr) {
+        case "subject":
+          targetString = composeDetails.subject;
+          modType = "string";
+          break;
+        case "recipient":
+        case "to":
+          targetString = composeDetails.to;
+          break;
+        case "cc":
+          targetString = composeDetails.cc;
+          break;
+        case "bcc":
+          targetString = composeDetails.bcc;
+          break;
+        case "from":
+          targetString = composeDetails.from;
+          break;
+        case "reply-to":
+          targetString = composeDetails.replyTo;
+          break;
+        default:
+          if (isClobberHeader) {
+            debugger;
+            modType = "string";
+            targetString = gMsgCompose.compFields.getHeader(hdr) || "";
+          } else modType = "";
+          break;
+      }
+      // modify
+      switch (modType) {
+        case "string": // single string
+          switch (cmd) {
+            case "set":
+              targetString = argument;
+              break;
+            case "prefix":
+              let replyPrefix = targetString.lastIndexOf(":"),
+                testSubject = targetString;
+              if (replyPrefix > 0) {
+                // caveat: won't work well if subject also contains a ':'
+                // cut off Re: Fwd: etc.
+                testSubject = targetString.substr(0, replyPrefix).trim();
+                if (testSubject.indexOf(argument) >= 0) break; // keyword is (anywhere) before colon?
+                // cut off string after last prefix to restore original subject
+                testSubject = targetString.substr(replyPrefix + 1).trim(); // where we can check at the start...
+              }
+              // keyword is immediately after last colon, or start of original subject
+              if (testSubject.indexOf(argument) != 0) {
+                // avoid duplication!
+                targetString = argument + targetString;
+              }
+              break;
+            case "append":
+              // problem - if there are encoding breaks, will this comparison fail?
+              let argPos = targetString
+                .toLowerCase()
+                .trim()
+                .lastIndexOf(argument.toLowerCase().trim()); // avoid duplication
+              if (argPos < 0 || argPos < targetString.length - argument.length)
+                targetString = targetString + argument;
+              break;
+            case "delete": // remove a substring, e.g. header.delete(subject,"re: | Fwd: ")
+            case "deleteFromSubject":
+              let pattern = new RegExp(argument, "gm");
+              targetString = targetString.replace(pattern, "").replace(/\s+/g, " "); // remove and then collapse multiple white spaces
+              break;
+          }
+          break;
+        case "address": // address field
+          switch (cmd) {
+            case "set": // overwrite address field
+              targetString = argument.toString();
+              break;
+            case "prefix":
+              // targetString = argument.toString() + ' ' + targetString;
+              // invalid!
+              break;
+            case "append": // append an address field (if not contained already)
+              // also omit in Cc if already in To and vice versa
+              if (
+                hdr == "cc" &&
+                composeDetails.to.toLowerCase().indexOf(argument.toLowerCase()) >= 0
+              )
+                break;
+              if (
+                hdr == "to" &&
+                composeDetails.cc.toLowerCase().indexOf(argument.toLowerCase()) >= 0
+              )
+                break;
+
+              if (targetString.toLowerCase().indexOf(argument.toLowerCase()) < 0) {
+                targetString = targetString + ", " + argument;
+              }
+              break;
+          }
+          break;
+      }
+
+      // set
+      // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/NsIMsgCompFields
+      switch (hdr) {
+        case "subject":
+          // replace newline characters with spaces and trim result!
+          let subjectString = targetString.replace(new RegExp("[\t\r\n]+", "g"), " ").trim();
+          document.getElementById("msgSubject").value = subjectString;
+          composeDetails.subject = subjectString;
+          break;
+        case "to":
+          composeDetails.to = targetString;
+          break;
+        case "cc":
+          composeDetails.cc = targetString;
+          break;
+        case "bcc":
+          composeDetails.bcc = targetString;
+          break;
+        case "from":
+          composeDetails.from = targetString;
+          break;
+        case "reply-to":
+          composeDetails.replyTo = targetString;
+          break;
+        case "priority":
+          const validVals = ["Highest", "High", "Normal", "Low", "Lowest"];
+          let found = validVals.find((f) => f.toLowerCase() == argument);
+          if (found) {
+            try {
+              Util.logDebug("Setting priority to: " + found);
+              composeDetails.priority = found;
+            } catch (ex) {
+              Util.logException("set priority ", ex);
+            }
+          } else
+            Util.logDebug(
+              "Invalid Priority: '" +
+                targetString +
+                "'\n" +
+                "Must be one of [" +
+                validVals.join() +
+                "]"
+            );
+
+          break;
+        default:
+          if (isClobberHeader) {
+            if (targetString) {
+              Util.logDebug("Adding clobbered header [" + hdr + "] =" + targetString);
+              gMsgCompose.compFields.setHeader(hdr, targetString);
+            } else {
+              Util.logDebug("Deleting clobbered header [" + hdr + "]");
+              gMsgCompose.compFields.deleteHeader(hdr);
+            }
+          }
+      }
+      // try to update headers - ComposeStartup() /  ComposeFieldsReady()
+      // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#3546
+      // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#2766
+      // [issue 117] : setting from doesn't work
+      if (hdr == "from" && composeDetails.from && cmd == "set") {
+        // %header.set(from,"postmaster@hotmail.com")%
+        // %header.set(from,"<Postmaster postmaster@hotmail.com>")%
+        composeDetails.from = fromAddress;
+        // only accepts mail addresses from existing identities - aliases included
+        let idKey = util.getIdentityKeyFromMail(fromAddress);
+
+        if (!idKey) {
+          util.logToConsole(
+            "Couldn't find an identity from the email address: <" + fromAddress + ">"
+          );
+        }
+        // after processing LoadIdentity(true) may be triggered by setting messenger.compose.setComposeDetails() !!
+        // there is a problem with dark themes - when editing the from address the text remains black.
+        // identityList.setAttribute("editable", "false");
+        // identityList.removeAttribute("editable");
+      } else if (modType == "address") {
+        // [issue 22] we need to prep the addressing widget to avoid inserting an empty line on top
+        // rebuild all addresses - for this we need to remove all [dummy] rows
+        // except for the very first one.
+        // [issue 98] - %header.set(to,"[addressee]")% no longer working
+        //            - addressingWidget was retired!
+        // [mx] DON't DO ANYTHING
+        Util.logIssue184("changed address header ...");
+      }
+    } catch (ex) {
+      Util.logException("modifyHeader()", ex);
+    }
+    return ""; // consume
   }
 
-  clsGetAltHeader = function (msgDummyHeader) { // from smartTemplate.overlay.js
-    Util.logIssue184(`clsGetAltHeader(${msgDummyHeader})`);
-  }
-  
-      // modify a number of headers with either a string literal 
-      // or a regex match (depending on matchFunction argument)
-      // hdr: "subject" | "to" | "from" | "cc" | "bcc" | "reply-to"
-      // cmd: "set" | "prefix" | "append" | "delete" | "deleteFromSubject"
-      // argString: 
-      // matchFunction: "" | "matchFromSubject" | "matchFromBody" 
-  static async modifyHeader(hdr, cmd, argString, matchFunction="", composeDetails) {
-        const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"];
-          // ComposeFields = gMsgCompose.compFields;
-              
-        Util.addUsedPremiumFunction("header." + cmd);
-        let targetString = '',
-            modType = '',
-            argument = argString.substr(argString.indexOf(",")+1); 
-        switch (matchFunction) {
-          case "": // no matchFunction, so argString is literal
-            if (cmd=="deleteFromSubject") {
-              argument = argString.substr(1); // cut off opening parenthesis
-            }
-            if (argument.startsWith("\"")) { 
-              // string wrapped in double quotes
-              argument = argument.substr(1, argument.lastIndexOf("\"")-1);
-            } else { 
-              // literal, only remove the closing parentheses
-              argument = argument.substr(0, argument.lastIndexOf(")"));
-            }
-            // [issue 183]
-            if (argument=="clipboard") {
-              // need license check here...
-              Util.logIssue184("Restrict clipboard to Pro Users!");
-              argument = await Util.clipboardRead();
-            }
-            break;
-          case "matchFromSubject":
-          case "matchFromBody":
-            let regX = new RegExp("%header." + cmd + "." + matchFunction + "\(.*\)%", "g");
-            
-            if (matchFunction == 'matchFromBody') {
-              // Insert replacement from body of QUOTED email!
-              argument = await matchText(regX, 'body');
-            }
-            else  {
-              // Insert replacement from subject line
-              argument = await matchText(regX, 'subject');
-            }
-            // if our match returns nothing, then do nothing (prevent from overwriting existing headers).
-            if (argument == '') return '';
-            break;
-          default:
-            Util.logToConsole("invalid matchFunction: " + matchFunction);
-            return '';
-        }
-        try {
-          let isClobberHeader = false;
-         
-          Util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
-          if (whiteList.indexOf(hdr)<0) {
-            // not in whitelist
-            if (hdr.toLowerCase().startsWith("list"))
-              isClobberHeader = true;
-            else {
-              Util.logToConsole("invalid header - no permission to modify: " + hdr + 
-                "\nSupported headers: " + whiteList.join(', '));
-              return '';
-            }
-          }
-          // get
-          modType = 'address';
-          switch (hdr) {
-            case 'subject':
-              targetString = composeDetails.subject;
-              modType = 'string';
-              break;
-            case 'recipient':
-            case 'to':
-              targetString = composeDetails.to;
-              break;
-            case 'cc':
-              targetString = composeDetails.cc;
-              break;
-            case 'bcc':
-              targetString = composeDetails.bcc;
-              break;
-            case 'from':
-              targetString = composeDetails.from;
-              break;
-            case 'reply-to':
-              targetString = composeDetails.replyTo;
-              break;
-            default:
-              if (isClobberHeader) {
-                debugger;
-                modType = 'string';
-                targetString = gMsgCompose.compFields.getHeader(hdr) || "";
-              }
-              else modType = '';
-              break;
-          }
-          // modify
-          switch (modType) {
-            case 'string': // single string
-              switch (cmd) {
-                case 'set':
-                  targetString = argument; 
-                  break;
-                case 'prefix':
-                  let replyPrefix = targetString.lastIndexOf(':'),
-                      testSubject = targetString;
-                  if (replyPrefix>0) { // caveat: won't work well if subject also contains a ':'
-                    // cut off Re: Fwd: etc.
-                    testSubject = targetString.substr(0, replyPrefix).trim();
-                    if (testSubject.indexOf(argument)>=0) break; // keyword is (anywhere) before colon?
-                    // cut off string after last prefix to restore original subject
-                    testSubject = targetString.substr(replyPrefix+1).trim(); // where we can check at the start...
-                  }
-                  // keyword is immediately after last colon, or start of original subject
-                  if (testSubject.indexOf(argument)!=0)  { // avoid duplication!
-                    targetString = argument + targetString; 
-                  }
-                  break;
-                case 'append':
-                  // problem - if there are encoding breaks, will this comparison fail?
-                  let argPos = targetString.toLowerCase().trim().lastIndexOf(argument.toLowerCase().trim()); // avoid duplication
-                  if (argPos < 0 || argPos < targetString.length-argument.length ) 
-                    targetString = targetString + argument; 
-                  break;
-                case 'delete': // remove a substring, e.g. header.delete(subject,"re: | Fwd: ")
-                case 'deleteFromSubject':
-                  let pattern = new RegExp(argument, "gm");
-                  targetString = targetString.replace(pattern,"").replace(/\s+/g, ' '); // remove and then collapse multiple white spaces
-                  break;
-              }
-              break;
-            case 'address': // address field
-              switch (cmd) {
-                case 'set': // overwrite address field
-                  targetString = argument.toString(); 
-                  break;
-                case 'prefix':
-                  // targetString = argument.toString() + ' ' + targetString; 
-                  // invalid!
-                  break;
-                case 'append': // append an address field (if not contained already)
-                               // also omit in Cc if already in To and vice versa
-                  if (hdr=='cc' && composeDetails.to.toLowerCase().indexOf(argument.toLowerCase())>=0)
-                    break;
-                  if (hdr=='to' && composeDetails.cc.toLowerCase().indexOf(argument.toLowerCase())>=0)
-                    break;
-                  
-                  if (targetString.toLowerCase().indexOf(argument.toLowerCase())<0) {
-                    targetString = targetString + ', ' + argument; 
-                  }
-                  break;
-              }
-              break;
-          }
-          
-          // set
-          // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/NsIMsgCompFields
-          switch (hdr) {
-            case 'subject':
-              // replace newline characters with spaces and trim result!
-              let subjectString = targetString.replace(new RegExp("[\t\r\n]+", 'g'), " ").trim();
-              document.getElementById("msgSubject").value = subjectString;
-              composeDetails.subject = subjectString;
-              break;
-            case 'to':
-              composeDetails.to = targetString;
-              break;
-            case 'cc':
-              composeDetails.cc = targetString;
-              break;
-            case 'bcc':
-              composeDetails.bcc = targetString;
-              break;
-            case 'from':
-              composeDetails.from = targetString;
-              break;
-            case 'reply-to':
-              composeDetails.replyTo = targetString;
-              break;
-            case 'priority':
-              const validVals = ["Highest", "High", "Normal", "Low", "Lowest"];
-              let found = validVals.find(f => f.toLowerCase() == argument);
-              if (found) {
-                try {
-                  Util.logDebug("Setting priority to: " + found);
-                  composeDetails.priority = found;
-                }
-                catch(ex) {
-                  Util.logException('set priority ', ex);
-                }
-              }
-              else 
-                Util.logDebug("Invalid Priority: '" + targetString + "'\n" 
-                  + "Must be one of [" + validVals.join() +  "]");
-              
-              break;
-            default:
-              if (isClobberHeader) {
-                if (targetString) {
-                  Util.logDebug("Adding clobbered header [" + hdr + "] =" + targetString);
-                  gMsgCompose.compFields.setHeader(hdr, targetString);
-                }
-                else {
-                  Util.logDebug("Deleting clobbered header [" + hdr + "]");
-                  gMsgCompose.compFields.deleteHeader(hdr);
-                }
-              }
-          }
-          // try to update headers - ComposeStartup() /  ComposeFieldsReady()
-          // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#3546
-          // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#2766
-          // [issue 117] : setting from doesn't work
-          if (hdr=='from' && composeDetails.from && cmd=='set') {
-            // %header.set(from,"postmaster@hotmail.com")%
-            // %header.set(from,"<Postmaster postmaster@hotmail.com>")%
-            composeDetails.from = fromAddress;
-            // only accepts mail addresses from existing identities - aliases included
-            let idKey = util.getIdentityKeyFromMail(fromAddress); 
-            
-            if (!idKey) {
-              util.logToConsole("Couldn't find an identity from the email address: <" + fromAddress + ">");
-            }
-            // after processing LoadIdentity(true) may be triggered by setting messenger.compose.setComposeDetails() !!
-            // there is a problem with dark themes - when editing the from address the text remains black.
-            // identityList.setAttribute("editable", "false");
-            // identityList.removeAttribute("editable");
-          }
-          else if (modType == 'address') {
-            // [issue 22] we need to prep the addressing widget to avoid inserting an empty line on top
-            // rebuild all addresses - for this we need to remove all [dummy] rows
-            // except for the very first one.
-            // [issue 98] - %header.set(to,"[addressee]")% no longer working
-            //            - addressingWidget was retired!
-            // [mx] DON't DO ANYTHING
-            Util.logIssue184("changed address header ...");
-          }
-        }
-        catch(ex) {
-          Util.logException('modifyHeader()', ex);
-        }
-        return ''; // consume
-      }
-  
-  
   // hdr.get() replacement
   getAPIheader(composeDetails, hd, originalMsg) {
-    let isOriginalMsg = false, requiresOriginalMsg = false;
+    let isOriginalMsg = false,
+      requiresOriginalMsg = false;
     if (composeDetails.type != "new" && composeDetails.type != "draft") {
       // to do: implement "perspective" for reply / forward, using composeDetails.relatedMessageId
       requiresOriginalMsg = true;
@@ -1067,36 +1149,43 @@ export class Parser {
     if (isOriginalMsg) {
       if (originalMsg.headers.hasOwnProperty(hdr)) {
         return originalMsg.headers[hdr];
-      }
-      else {
+      } else {
         return [];
       }
     }
     switch (hdr) {
-      case "attachments": 
+      case "attachments":
         Util.logIssue184("getAPIheader(attachments)");
         return "";
-      case "bcc": return composeDetails.bcc;
-      case "from": return composeDetails.from;
-      case "body": return composeDetails.body;
-      case "priority": return composeDetails.priority;
-      case "plaintextbody": return composeDetails.plainTextBody;
-      
-      case "relatedmessageid": return composeDetails.relatedMessageId; // to retrieve original email! call getFull to get headers
-      
-      case "subject": return composeDetails.subject;
-      case "type": return composeDetails.type;
-      case "newsgroups": 
-        return composeDetails.newsgroups;  // string or string array
-      case "followupto": 
-        return composeDetails.followupTo;  // ComposeRecipientList
+      case "bcc":
+        return composeDetails.bcc;
+      case "from":
+        return composeDetails.from;
+      case "body":
+        return composeDetails.body;
+      case "priority":
+        return composeDetails.priority;
+      case "plaintextbody":
+        return composeDetails.plainTextBody;
+
+      case "relatedmessageid":
+        return composeDetails.relatedMessageId; // to retrieve original email! call getFull to get headers
+
+      case "subject":
+        return composeDetails.subject;
+      case "type":
+        return composeDetails.type;
+      case "newsgroups":
+        return composeDetails.newsgroups; // string or string array
+      case "followupto":
+        return composeDetails.followupTo; // ComposeRecipientList
       case "replyto":
-        return composeDetails.replyTo;  // ComposeRecipientList
+        return composeDetails.replyTo; // ComposeRecipientList
       case "to":
-        return composeDetails.to;  // ComposeRecipientList
+        return composeDetails.to; // ComposeRecipientList
     }
     if (hdr.startsWith("x-")) {
-      let x = composeDetails.customHeaders.find(x => x.name.toLowerCase() == hd.toLowerCase());
+      let x = composeDetails.customHeaders.find((x) => x.name.toLowerCase() == hd.toLowerCase());
       if (x) return x;
     }
     Util.logToConsole(`Cannot retrieve header ${hd}`);
@@ -1104,14 +1193,14 @@ export class Parser {
     return ""; // unknown
   }
 
-
-  parseModifier(msg, composeType) { // from smartTemplate.overlay.js
+  parseModifier(msg, composeType) {
+    // from smartTemplate.overlay.js
     // STUB
     Util.logIssue184(`parseModifier(msg,${composeType})`);
     return msg;
   }
 
-  // SmartTemplate4.regularize from smartTemplate.overlay.js 
+  // SmartTemplate4.regularize from smartTemplate.overlay.js
   // removed obsolete param isStationery
   // added composeDetails for header retrieval
   // added offsets to avoid side FX
@@ -1531,7 +1620,9 @@ export class Parser {
       }
 
       let debugTimeStrings = await Preferences.isDebugOption("timeStrings");
-      if (!arg) {arg = "";}
+      if (!arg) {
+        arg = "";
+      }
       try {
         // for backward compatibility
         switch (token) {
@@ -1573,8 +1664,9 @@ export class Parser {
                 case "fwd":
                   token = "to";
                   // make sure to add / append "fwd" switch:
-                  if (!arg) {arg = "(fwd)";}
-                  else {
+                  if (!arg) {
+                    arg = "(fwd)";
+                  } else {
                     arg = arg.substr(0, arg.length - 1) + ",fwd)";
                   }
                   break;
@@ -1597,10 +1689,12 @@ export class Parser {
           case "matchTextFromBody": // return unchanged
             return "%" + token + arg + "%";
           case "dateformat": {
-            if (debugTimeStrings) {debugger;}
+            if (debugTimeStrings) {
+              debugger;
+            }
             tm = new Date();
             const dateFormatSent = offsets.whatIsX == offsets.XisSent && date;
-            if (dateFormatSent) tm.setTime(date / 1000);
+            if (dateFormatSent) { tm.setTime(date / 1000); }
             // [issue 115] Erratic %datetime()% results when forcing HTML with Shift
             arg = Util.removeHtmlEntities(arg);
             // we may have to pass in an initialized Calendar to this function!
@@ -1608,12 +1702,12 @@ export class Parser {
             //   await that.calendar.init(null); // default language
             // }
             let defaultTime = Util.dateFormat(
-              tm.getTime() * 1000,
+              tm.getTime(),
               removeParentheses(arg),
               0,
               offsets
             ); // dateFormat will add offsets itself
-            if (dateFormatSent) token = defaultTime;
+            if (dateFormatSent) {token = defaultTime;}
             else {
               token = await Util.wrapDeferredHeader(
                 token + arg,
@@ -1628,16 +1722,17 @@ export class Parser {
           case "dateshort":
             if (offsets.whatIsX == offsets.XisToday) {
               tm = new Date(); // undo offset for this case.
-              token = await Util.prTime2Str(tm.getTime() * 1000, token, 0, offsets); // [issue 184] to do: pass offsets
+              token = await Util.prTime2Str(tm.getTime(), token, 0, offsets); // [issue 184] to do: pass offsets
               return finalize(token, escapeHtml(token));
             } else {
-              token = await Util.prTime2Str(date, token, 0, offsets); // [issue 184] to do: pass offsets
+              token = await Util.prTime2Str(date / 1000, token, 0, offsets); // [issue 184] to do: pass offsets
               return finalize(token, escapeHtml(token));
             }
           case "timezone":
-          case "date_tz":
+          case "date_tz": {
             let matches = tm.toString().match(/([+-][0-9]{4})/);
             return finalize(token, escapeHtml(matches[0]));
+          }
           // for Common (new/reply/forward) message
           case "ownname": // own name
             token = identity.name.replace(/\s*<.*/, "");
@@ -1652,14 +1747,14 @@ export class Parser {
           // for Common (new/reply/forward) message
           case "quoteHeader": // is this useful when Stationery does not exist?
             return '<span class="quoteHeader-placeholder"></span>';
-          case "quotePlaceholder":
+          case "quotePlaceholder": {
             // move  the quote up to level n. use "all"
             let maxQuoteLevel = removeParentheses(arg),
               levelAtt = maxQuoteLevel ? " quotelevel=" + maxQuoteLevel : "";
             return (
               "<blockquote type=\"cite\" class='SmartTemplate'" + levelAtt + ">\n" + "</blockquote>"
             );
-            break;
+          }
           case "suppressQuoteHeaders":
             flags.suppressQuoteHeaders = true;
             return "";
@@ -1671,59 +1766,62 @@ export class Parser {
             return finalize(token, await expand("%H%:%M%:%S%"));
           case "y": // Year 13... (2digits)
           case "Y": // Year 1970...
-            if (debugTimeStrings) debugger;
-            let year = isUTC ? tm.getUTCFullYear().toString() : tm.getFullYear().toString();
-            if (token == "y")
-              return finalize(
-                token,
-                "" + year.slice(year.length - 2),
-                "tm.getFullYear.slice(len-2)"
-              );
-            return finalize(token, "" + year, "tm.getFullYear");
+            {
+              if (debugTimeStrings) {debugger;}
+              let year = isUTC ? tm.getUTCFullYear().toString() : tm.getFullYear().toString();
+              if (token == "y") {
+                return finalize(
+                  token,
+                  "" + year.slice(year.length - 2),
+                  "tm.getFullYear.slice(len-2)"
+                );
+              }
+              return finalize(token, "" + year, "tm.getFullYear");
+            }
           case "n": // Month 1..12
           case "m": // Month 01..12
           case "B":
           case "b":
-            if (debugTimeStrings) debugger;
-            let month = isUTC ? tm.getUTCMonth() : tm.getMonth();
-            switch (token) {
-              case "n":
-                return finalize(token, "" + (month + 1), "tm.getMonth()+1");
-              case "m":
-                return finalize(token, d02(month + 1), "d02(tm.getMonth()+1)");
-              case "B":
-                return finalize(token, cal.monthName(month), "cal.monthName(" + month + ")"); // locale month
-              case "b":
-                return finalize(
-                  token,
-                  cal.shortMonthName(month),
-                  "cal.shortMonthName(" + month + ")"
-                ); // locale month (short)
+            {
+              let month = isUTC ? tm.getUTCMonth() : tm.getMonth();
+              switch (token) {
+                case "n":
+                  return finalize(token, "" + (month + 1), "tm.getMonth()+1");
+                case "m":
+                  return finalize(token, d02(month + 1), "d02(tm.getMonth()+1)");
+                case "B":
+                  return finalize(token, cal.monthName(tm), "cal.monthName(" + tm.toISOString() + ")");
+                case "b":
+                  return finalize(
+                    token,
+                    cal.shortMonthName(tm),
+                    "cal.shortMonthName(" + tm.toISOString() + ")"
+                  );
+              }
             }
             break;
           case "e": // Day of month 1..31
           case "d": // Day of month 01..31
-            if (debugTimeStrings) debugger;
-            let day = isUTC ? tm.getUTCDate() : tm.getDate();
-            switch (token) {
-              case "e":
-                return finalize(token, "" + day, "tm.getDate(" + day + ")");
-              case "d":
-                return finalize(token, d02(day), "d02(" + day + ")");
+            {
+              let day = isUTC ? tm.getUTCDate() : tm.getDate();
+              switch (token) {
+                case "e":
+                  return finalize(token, "" + day, "tm.getDate(" + day + ")");
+                case "d":
+                  return finalize(token, d02(day), "d02(" + day + ")");
+              }
             }
             break;
           case "A": // name of day
           case "a":
-            if (debugTimeStrings) debugger;
-            let weekday = tm.getDay();
             switch (token) {
               case "A":
-                return finalize(token, cal.dayName(weekday), "cal.dayName(" + weekday + ")"); // locale day of week
+                return finalize(token, cal.dayName(tm), "cal.dayName(" + tm.toLocaleString() + ")"); // locale day of week
               case "a":
                 return finalize(
                   token,
-                  cal.shortDayName(weekday),
-                  "cal.shortDayName(" + weekday + ")"
+                  cal.shortDayName(tm),
+                  "cal.shortDayName(" + tm.toLocaleString() + ")"
                 ); // locale day of week(short)
             }
             break;
@@ -1731,8 +1829,8 @@ export class Parser {
           case "H": // Hour 00..23
           case "l": // Hour 1..12
           case "I": // Hour 01..12
-          case "p":
-            if (debugTimeStrings) debugger;
+          case "p": {
+            if (debugTimeStrings) {debugger;}
             let hour = isUTC ? tm.getUTCHours() : tm.getHours();
             switch (token) {
               case "k":
@@ -1755,10 +1853,13 @@ export class Parser {
                 }
             }
             break;
-          case "M": // Minutes 00..59
+          }
+          case "M": {
+            // Minutes 00..59
             if (debugTimeStrings) debugger;
             let minute = isUTC ? tm.getUTCMinutes() : tm.getMinutes();
             return finalize(token, d02(minute), "d02(tm.getMinutes())");
+          }
           case "S": // Seconds 00..59
             return finalize(token, d02(tm.getSeconds()), "d02(tm.getSeconds())");
           case "tz_name": // time zone name (abbreviated) tz_name(1) = long form
@@ -1768,7 +1869,7 @@ export class Parser {
               Util.getTimeZoneAbbrev(tm, arg == "(1)"),
               "getTimeZoneAbbrev(tm, " + (arg == "(1)") + ")"
             );
-          case "sig":
+          case "sig": {
             if (arg && arg.indexOf("none") >= 0) return "";
             let isRemoveDashes = arg ? arg == "(2)" : false;
 
@@ -1788,32 +1889,36 @@ export class Parser {
               "replaceReservedWords sig" + arg + " returns:\n" + retVal
             );
             return retVal;
-          case "subject":
+          }
+          case "subject": {
             let current = arg == "(2)",
               ret = await getSubject(current);
             if (!current) ret = escapeHtml(ret);
             return finalize(token, ret);
+          }
           case "newsgroup":
             return finalize(token, getNewsgroup());
           case "language":
             that.calendar.init(removeParentheses(arg));
             return "";
-          case "spellcheck":
+          case "spellcheck": {
             // use first argument to switch dictionary language.
             let lang = removeParentheses(arg);
             Util.setSpellchecker(lang, that.info.composeTabId); // id of composetab as we need it for the API
             return "";
+          }
           case "logMsg": // For testing purposes - add a comment line to email and error console
             Util.logToConsole(removeParentheses(arg));
             return removeParentheses(arg) + "<br>"; // insert into email
           case "dbg1":
             return finalize(token, cal.list());
-          case "cwIso": // ISO calendar week [Bug 25012]
+          case "cwIso": { // ISO calendar week [Bug 25012]
             let offset = parseInt(arg.substr(1, 1)); // (0) .. (6) weekoffset: 0-Sunday 1-Monday
             return finalize(token, "" + Util.getIsoWeek(tm, offset));
+          }
           // Change time of %A-Za-z%
           case "X:=sent":
-            if (debugTimeStrings) debugger;
+            if (debugTimeStrings) {debugger;}
             offsets.whatIsX = offsets.XisSent;
             offsets.whatIsUtc = arg && arg == "(UTC)";
             Util.logDebugOptional(
@@ -1822,13 +1927,14 @@ export class Parser {
             );
             return "";
           case "X:=today":
-            if (debugTimeStrings) debugger;
+            if (debugTimeStrings) {debugger;}
             offsets.whatIsX = offsets.XisToday;
             offsets.whatIsUtc = false;
             //Util.logDebugOptional ('replaceReservedWords', "Switch: Time = NOW");
             return "";
-          case "X:=calculated": // calculated(numberOfDays)
-            if (debugTimeStrings) debugger;
+          case "X:=calculated": { 
+            // calculated(numberOfDays)
+            if (debugTimeStrings) {debugger;}
             params = removeParentheses(arg).split(",");
             let dateOffset = params.length > 0 ? parseInt(params[0] || "0") : 0,
               tOffset = params.length > 1 ? params[1] : "00:00";
@@ -1850,8 +1956,9 @@ export class Parser {
                 " hours."
             );
             return "";
+          }
           case "X:=timezone":
-            if (debugTimeStrings) debugger;
+            if (debugTimeStrings) {debugger;}
             params = removeParentheses(arg).split(",");
             offsets.whatIsTimezone = params[0];
             return "";
@@ -1868,7 +1975,7 @@ export class Parser {
             attachFile(arg);
             return "";
           case "file":
-          case "style":
+          case "style": {
             Util.addUsedPremiumFunction(token);
             // do not process images that are returned - insertFileLink will already turn them into a DataURI
             // we are using pathArray to keep track of "where we are" in terms of relative paths
@@ -1892,9 +1999,10 @@ export class Parser {
             // if a path was added in the meantime, we can now pop it off the stack.
             if (pL < pathArray.length) pathArray.pop();
             return parsedContent;
+          }
           case "basepath":
             return insertBasePath(removeParentheses(arg));
-          case "identity":
+          case "identity": {
             /////
             let idArgs = arg.substr(1, arg.length - 2).split(","),
               isAB = idArgs && idArgs.includes("addressbook");
@@ -1927,6 +2035,7 @@ export class Parser {
               return "identity - undefined";
             }
             break;
+          }
           case "mailto":
             if (arg) {
               let param = removeParentheses(arg);
@@ -2473,7 +2582,9 @@ export class Parser {
 
     if (supportEval) {
       try {
-        if (sandbox && Cu.nukeSandbox) {Cu.nukeSandbox(sandbox);}
+        if (sandbox && Cu.nukeSandbox) {
+          Cu.nukeSandbox(sandbox);
+        }
       } catch (ex) {
         Util.logException("Sandbox not nuked.", ex);
       }
@@ -2487,64 +2598,77 @@ export class Parser {
 
   // -----------------------------------
   // Get processed text from template
-  async getProcessedText(templateText, idKey, ignoreHTML, flags) 	{
+  async getProcessedText(templateText, idKey, ignoreHTML, flags) {
     let info = this.info;
     let composeType = info.composeType;
     let composeDetails = info.composeDetails;
-    if (!templateText) {return "";}
+    if (!templateText) {
+      return "";
+    }
 
-    Util.logDebugOptional('functions.getProcessedText', 'START =============  getProcessedText()   ==========');
-    Util.logDebugOptional('functions.getProcessedText', 'Process Text:\n' +
-                                         templateText + '[END]');
-    
+    Util.logDebugOptional(
+      "functions.getProcessedText",
+      "START =============  getProcessedText()   =========="
+    );
+    Util.logDebugOptional("functions.getProcessedText", "Process Text:\n" + templateText + "[END]");
+
     if (!info.offsets) {
       info.offsets = Util.defaultOffsets();
     }
     // SmartTemplates.calendar.init(); // set for default locale
-    let isDraftLike = !composeType 
-      || flags.isFileTemplate
-      || await Preferences.identityPrefs.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
-    let regular = await this.regularize(templateText, 
-        composeType, 
-        composeDetails, 
-        ignoreHTML, 
-        isDraftLike,
-        info.offsets,
-        flags);
-    
+    let isDraftLike =
+      !composeType ||
+      flags.isFileTemplate ||
+      (await Preferences.identityPrefs.isUseHtml(idKey, composeType, false)); // do not escape / convert to HTML
+    let regular = await this.regularize(
+      templateText,
+      composeType,
+      composeDetails,
+      ignoreHTML,
+      isDraftLike,
+      info.offsets,
+      flags
+    );
+
     // now that all replacements were done, lets run our global routines to replace / delete text, (such as J.B. "via Paypal")
     regular = this.parseModifier(regular, composeType); // run global replacement functions (deleteText, replaceText)
-    
+
     // [Bug 26364] Inline Images are not shown.
     // fix DataURLs from other template (Stationery)
     // This won't work if there is no "file:\\\" portion given (relative path / current folder not supported)
     // we can fix the Data urls for file:/// images now
     // assume the URL is terminated by a single quote, double quote or &gt;
-    const Frex = new RegExp("file:\/\/\/[^\"\'\>]*", "g");
-    regular = await Util.replaceAsync(regular, Frex,   // /file:\/\/\/[^\"\'\>]*/g
-      async function(match) {
-        Util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
+    const Frex = new RegExp("file:///[^\"'>]*", "g");
+    regular = await Util.replaceAsync(
+      regular,
+      Frex, // /file:\/\/\/[^\"\'\>]*/g
+      async function (match) {
+        Util.logDebugOptional("composer", "Replacing image file as data: " + match);
         return await Util.getFileAsDataURI(match); // not sure if this is possible! turn into a promise and resolve in here?
       }
     );
-    
+
     // find & fix relative <img> paths:
     const Irex = new RegExp(/(<img[^>]+src=[\"'])([^"'>]+)([\"'][^>]*>)/, "g"); // make 3 groups, g2=path
-    let currentPath = flags.filePaths ? 
-                       (flags.filePaths.length ? flags.filePaths[flags.filePaths.length-1] : "") : 
-                       ""; // top of stack
-        
-    regular = await Util.replaceAsync(regular, Irex,   // /file:\/\/\/[^\"\'\>]*/g
-      async function(match, g1, g2, g3) {
+    let currentPath = flags.filePaths
+      ? flags.filePaths.length
+        ? flags.filePaths[flags.filePaths.length - 1]
+        : ""
+      : ""; // top of stack
+
+    regular = await Util.replaceAsync(
+      regular,
+      Irex, // /file:\/\/\/[^\"\'\>]*/g
+      async function (match, g1, g2, g3) {
         // Util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
         if (!Util.isFilePathAbsolute(g2)) {
           if (currentPath) {
             let newP = Util.getPathFolder(currentPath, g2);
             if (newP) {
-              let startQuote = g1 ? g1[g1.length-1] : "",  // does source start with (double / single) quote mark?  <img src=\"
-                  endQuote =   g1 ? g3[0] : "";
+              let startQuote = g1 ? g1[g1.length - 1] : "", // does source start with (double / single) quote mark?  <img src=\"
+                endQuote = g1 ? g3[0] : "";
               Util.logDebug("replacing relative img path: " + newP + "…");
-              let filePath = "file:///" + newP.replace(/\\/gm,'/')
+              let filePath = "file:///" + newP.replace(/\\/gm, "/");
               try {
                 let dataUrl = await Util.getFileAsDataURI(filePath);
                 if (dataUrl) {
@@ -2552,80 +2676,77 @@ export class Parser {
                 } else {
                   Util.logDebug("Could not resolve image path! Returning unchanged img tag.");
                 }
-              }
-              catch(ex) {
+              } catch (ex) {
                 Util.logException(ex, "Failed to read image file " + filePath);
               }
-            }
-            else {
-              Util.logDebug("Could not convert relative path: " + g2)
+            } else {
+              Util.logDebug("Could not convert relative path: " + g2);
             }
           }
         }
         return match;
       }
     );
-    
-    Util.logDebugOptional('functions.getProcessedText','regular:\n' + regular);		
-    Util.logDebugOptional('functions.getProcessedText','=============  getProcessedText()   ========== END');
+
+    Util.logDebugOptional("functions.getProcessedText", "regular:\n" + regular);
+    Util.logDebugOptional(
+      "functions.getProcessedText",
+      "=============  getProcessedText()   ========== END"
+    );
     return regular;
   }
 
   // SmartTemplates.Calendar - from smarTempalte-main.js:921
   // Needs to be localizable with explicite locales passed.
   calendar = {
-    // TO DO!! 
+    // TO DO!!
     addonName: null,
     isInitialized: null,
-    init: async function(forcedLocale) {
+    init: async function (forcedLocale) {
       Util.logIssue184(`SmartTemplatesProcess.calender.init(${forcedLocale})`);
       let cal = this,
-          manifest = await messenger.runtime.getManifest();
+        manifest = await messenger.runtime.getManifest();
       cal.addonName = await manifest.name;
       cal.isInitialized = true;
       if (forcedLocale) {
         this.currentLocale = forcedLocale;
       }
     },
-    currentLocale : null, // whatever was passed into %language()%
+    currentLocale: null, // whatever was passed into %language()%
     bundleLocale: null,
     bundle: null,
     list: function list() {
       let str = "";
-      for (let i=0;i<7 ;i++) {
-        str+= (this.dayName(i)  +"("+ this.shortDayName(i) + ")/");
-      } 
+      for (let i = 0; i < 7; i++) {
+        str += `${this.dayName(i)}(${this.shortDayName(i)}), `;
+      }
       str += "\n";
-      for (let i=0;i<12;i++){
-        str+= (this.monthName(i)+"("+ this.shortMonthName(i) + ")/");
+      for (let i = 0; i < 12; i++) {
+        str += `${this.monthName(i)}(${this.shortMonthName(i)}), `;
       }
       return str;
-    },    
+    },
     // the following functions SHOULD retrieve strings from our own language packs (languages supported by SmartTemplate itself)
     // these will affect the following variables: %A% %a% %B% %b% (week days and months)
     // OTOH: %dateshort% and %datelocal% extract their names from the language packs installed
-    dayName: function dayName(n){ 
-      Util.logIssue184(`calendar.dayName(${n})`);
-      return messenger.i18n.getMessage(`day.${(n+1)}.name`, this.addonName);
-      // return this.bundle.GetStringFromName("day." + (n + 1) + ".name");
+    dayName: function (d) {
+      const date = d instanceof Date ? d : new Date(Date.UTC(2025, 0, 5 + d));
+      return new Intl.DateTimeFormat(this.currentLocale, { weekday: "long" }).format(date);
     },
-    
-    shortDayName: function shortDayName(n) { 
-      Util.logIssue184(`calendar.shortDayName(${n})`);
-      return messenger.i18n.getMessage(`day.${(n+1)}.short`, this.addonName);
-      // return this.bundle.GetStringFromName("day." + (n + 1) + ".short");
+
+    shortDayName: function (d) {
+      const date = d instanceof Date ? d : new Date(Date.UTC(2025, 0, 5 + d));
+      return new Intl.DateTimeFormat(this.currentLocale, { weekday: "short" }).format(date);
     },
-    
-    monthName: function monthName(n){ 
-      Util.logIssue184(`calendar.monthName(${n})`);
-      return messenger.i18n.getMessage(`month.${(n+1)}.name`, this.addonName);
-      // return this.bundle.GetStringFromName("month." + (n + 1) + ".name");
+
+    monthName: function (d) {
+      const date = d instanceof Date ? d : new Date(Date.UTC(2025, d, 1));
+      return new Intl.DateTimeFormat(this.currentLocale, { month: "long" }).format(date);
     },
-    
-    shortMonthName: function shortMonthName(n) { 
-      Util.logIssue184(`calendar.shortMonthName(${n})`);
-      return messenger.i18n.getMessage(`month.${(n+1)}.short`, this.addonName);
-      // return this.bundle.GetStringFromName("month." + (n + 1) + ".short");
-    }    
-  }
+
+    shortMonthName: function (d) {
+      const date = d instanceof Date ? d : new Date(Date.UTC(2025, d, 1));
+      return new Intl.DateTimeFormat(this.currentLocale, { month: "short" }).format(date);
+    },
+  };
 }

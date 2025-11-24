@@ -261,48 +261,6 @@
   "datetz.label": {
     "message": "Zona Waktu (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "Minggu"
-  },
-  "day.1.short": {
-    "message": "Ming"
-  },
-  "day.2.name": {
-    "message": "Senin"
-  },
-  "day.2.short": {
-    "message": "Sen"
-  },
-  "day.3.name": {
-    "message": "Selasa"
-  },
-  "day.3.short": {
-    "message": "Sel"
-  },
-  "day.4.name": {
-    "message": "Rabu"
-  },
-  "day.4.short": {
-    "message": "RAb"
-  },
-  "day.5.name": {
-    "message": "Kamis"
-  },
-  "day.5.short": {
-    "message": "Kam"
-  },
-  "day.6.name": {
-    "message": "Jum'at"
-  },
-  "day.6.short": {
-    "message": "Jum"
-  },
-  "day.7.name": {
-    "message": "Sabtu"
-  },
-  "day.7.short": {
-    "message": "Sab"
-  },
   "debug.mode": {
     "message": "Mode Debug"
   },
@@ -792,45 +750,6 @@
   },
   "messid.label": {
     "message": "ID Pesan"
-  },
-  "month.1.name": {
-    "message": "Januari"
-  },
-  "month.10.name": {
-    "message": "Oktober"
-  },
-  "month.10.short": {
-    "message": "Okt"
-  },
-  "month.12.name": {
-    "message": "Desember"
-  },
-  "month.12.short": {
-    "message": "Des"
-  },
-  "month.2.name": {
-    "message": "Februari"
-  },
-  "month.3.name": {
-    "message": "Maret"
-  },
-  "month.5.name": {
-    "message": "Mei"
-  },
-  "month.5.short": {
-    "message": "Mei"
-  },
-  "month.6.name": {
-    "message": "Juni"
-  },
-  "month.7.name": {
-    "message": "Juli"
-  },
-  "month.8.name": {
-    "message": "Agustus"
-  },
-  "month.8.short": {
-    "message": "Agus"
   },
   "n.label": {
     "message": "Bulan (1 - 12)"

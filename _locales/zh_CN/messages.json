@@ -336,48 +336,6 @@
   "datetz.label": {
     "message": "时区 (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "星期日"
-  },
-  "day.1.short": {
-    "message": "周日"
-  },
-  "day.2.name": {
-    "message": "星期一"
-  },
-  "day.2.short": {
-    "message": "周一"
-  },
-  "day.3.name": {
-    "message": "星期二"
-  },
-  "day.3.short": {
-    "message": "周二"
-  },
-  "day.4.name": {
-    "message": "星期三"
-  },
-  "day.4.short": {
-    "message": "周三"
-  },
-  "day.5.name": {
-    "message": "星期四"
-  },
-  "day.5.short": {
-    "message": "周四"
-  },
-  "day.6.name": {
-    "message": "星期五"
-  },
-  "day.6.short": {
-    "message": "周五"
-  },
-  "day.7.name": {
-    "message": "星期六"
-  },
-  "day.7.short": {
-    "message": "周六"
-  },
   "debug.mode": {
     "message": "调试模式"
   },
@@ -982,78 +940,6 @@
   },
   "minSize_detail": {
     "message": "并非总是可以确定大小，尤其是由于大尺寸而导致Thunderbird仍在加载图像的情况下-在这种情况下，无论如何都将删除标签。"
-  },
-  "month.1.name": {
-    "message": "01"
-  },
-  "month.1.short": {
-    "message": "01"
-  },
-  "month.10.name": {
-    "message": "10"
-  },
-  "month.10.short": {
-    "message": "10"
-  },
-  "month.11.name": {
-    "message": "11"
-  },
-  "month.11.short": {
-    "message": "11"
-  },
-  "month.12.name": {
-    "message": "12"
-  },
-  "month.12.short": {
-    "message": "12"
-  },
-  "month.2.name": {
-    "message": "02"
-  },
-  "month.2.short": {
-    "message": "02"
-  },
-  "month.3.name": {
-    "message": "03"
-  },
-  "month.3.short": {
-    "message": "03"
-  },
-  "month.4.name": {
-    "message": "04"
-  },
-  "month.4.short": {
-    "message": "04"
-  },
-  "month.5.name": {
-    "message": "05"
-  },
-  "month.5.short": {
-    "message": "05"
-  },
-  "month.6.name": {
-    "message": "06"
-  },
-  "month.6.short": {
-    "message": "06"
-  },
-  "month.7.name": {
-    "message": "07"
-  },
-  "month.7.short": {
-    "message": "07"
-  },
-  "month.8.name": {
-    "message": "08"
-  },
-  "month.8.short": {
-    "message": "08"
-  },
-  "month.9.name": {
-    "message": "09"
-  },
-  "month.9.short": {
-    "message": "09"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla仅提供了一个向您（最终用户）交付我们软件的基本平台。 如果我们需要向我们的用户付款或提供支持，则不能通过addons.thunderbird.net进行操作-这不是内置付费界面或许可证管理（如iTunes或Google Play）的“应用商店”。"

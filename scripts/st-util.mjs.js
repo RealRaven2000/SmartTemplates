@@ -52,7 +52,7 @@ export let Util = {
       let elapsed = new String(endTime - this.lastTime); // time in milliseconds
       timePassed = "[" + elapsed + " ms]	 ";
       this.lastTime = endTime; // remember last time
-    } catch  {;}
+    } catch {}
     return (
       end.getHours() +
       ":" +
@@ -89,8 +89,8 @@ export let Util = {
   logDebug: async function (msg) {
     // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
     if ((await Preferences.isDebug) && (await Preferences.isDebugOption("default"))) {
-			this.logToConsole(...arguments);
-		}
+      this.logToConsole(...arguments);
+    }
   },
   logDebugOptional: async function (optionString, msg) {
     optionString = arguments[0];
@@ -123,7 +123,9 @@ export let Util = {
 
   // 1269
   isFilePathAbsolute: function isFilePathAbsolute(path) {
-    if (!path) {return false;}
+    if (!path) {
+      return false;
+    }
 
     // check for user folder / drive letter or double slash
     return (
@@ -141,7 +143,9 @@ export let Util = {
       fPart = path.lastIndexOf(slash),
       newPath = "",
       appendedPath = "";
-    if (fPart) {newPath = path.substr(0, fPart) + slash;}
+    if (fPart) {
+      newPath = path.substr(0, fPart) + slash;
+    }
     // issue 77 - %file()% path truncated at front by 1 letter on Mac OS
     if (filePath && newPath) {
       let slashUnifiedFilePath = filePath.replace(noSlash, slash);
@@ -162,7 +166,9 @@ export let Util = {
     let newComposeClass = isComposeNew
       ? " class='noWrite'"
       : ""; /* make field look pink for headers that are not available in New Emails */
-    if (!isHtml) {return defaultValue;} // not supported in plain text for now
+    if (!isHtml) {
+      return defaultValue;
+    } // not supported in plain text for now
 
     if (!defaultValue) {
       //  || defaultValue=='??'
@@ -319,9 +325,15 @@ export let Util = {
 
   // 1064
   isFormatLink: function (format) {
-    if (!format) {return false;}
-    if (format.charAt(0) == "(") {format = format.slice(1);}
-    if (format.charAt(format.length - 1) == ")") {format = format.slice(0, -1);}
+    if (!format) {
+      return false;
+    }
+    if (format.charAt(0) == "(") {
+      format = format.slice(1);
+    }
+    if (format.charAt(format.length - 1) == ")") {
+      format = format.slice(0, -1);
+    }
 
     let fs = format.split(",");
     return fs.indexOf("link") != -1;
@@ -377,7 +389,9 @@ export let Util = {
       return await Util.clipboardRead();
     }
     let quoteLess = s.substring(1, s.length - 1);
-    if (global) {return new RegExp(quoteLess, "ig");}
+    if (global) {
+      return new RegExp(quoteLess, "ig");
+    }
     // allow using \n and \t for new line and tabs characters
     return quoteLess.replace(/\\n/gi, "\n").replace(/\\t/gi, "\t");
   },
@@ -392,46 +406,40 @@ export let Util = {
   // global variables / side effects
   //   util.addUsedPremiumFunction
   // added @offsets to avoid side effects
-  dateFormat: function dateFormat(time, timeFormat, timezone, offsets) {
+  dateFormat: function (time, timeFormat, timezone, offsets) {
     if (!offsets) {
       throw new Error("dateFormat() needs new offsets parameter!");
     }
     Util.logDebugOptional(
       "timeStrings",
-      "dateFormat(" +
-        time +
-        ", " +
-        timeFormat +
-        ", " +
-        timezone +
-        ")\n" +
-        "Forced Timezone[" +
-        offsets.whatIsTimezone +
-        "]= " +
-        Util.getTimezoneOffset(offsets.whatIsTimezone)
+      `dateFormat(${time}, ${timeFormat}, ${timezone})\n` +
+      `Forced Timezone[${SmartTemplate4.whatIsTimezone}]= ` +
+      Util.getTimezoneOffset(offsets.whatIsTimezone)
     );
-    this.addUsedPremiumFunction("dateFormat");
-    if (!timezone) {timezone = 0;}
+    this.addUsedStandardFunction("dateFormat");
+    if (!timezone) {
+      timezone = 0;
+    }
     try {
       let tm = new Date();
 
       if (offsets.whatIsDateOffset) {
-        time += offsets.whatIsDateOffset * 24 * 60 * 60 * 1000 * 1000; // add n days
+        time += offsets.whatIsDateOffset * 24 * 60 * 60 * 1000; // add n days
       }
       if (offsets.whatIsHourOffset || offsets.whatIsMinuteOffset) {
         time +=
-          offsets.whatIsHourOffset * 60 * 60 * 1000 * 1000 +
-          offsets.whatIsMinuteOffset * 60 * 1000 * 1000; // add m hours / n minutes
+          offsets.whatIsHourOffset * 60 * 60 * 1000  +
+          offsets.whatIsMinuteOffset * 60 * 1000; // add m hours / n minutes
       }
       if (offsets.whatIsTimezone) {
         // subtract UTC offset for timezone
         let nativeUtcOffset = tm.getTimezoneOffset(),
           forcedOffset = Util.getTimezoneOffset(offsets.whatIsTimezone) * 60; // calculate minutes
-        time = time + (nativeUtcOffset + forcedOffset) * 60 * 1000 * 1000;
+        time = time + (nativeUtcOffset + forcedOffset) * 60 * 1000;
       }
 
       // Set Time - add Timezone offset
-      tm.setTime(time / 1000 + timezone * 60 * 1000);
+      tm.setTime(time + timezone * 60 * 1000);
       let d02 = function (val) {
           return ("0" + val).replace(/.(..)/, "$1");
         },
@@ -444,6 +452,8 @@ export let Util = {
 
       //numeral replacements first
       let timeString = timeFormat
+        .replace("timestamp", time * 1000) // timestamp in μs [issue 381]
+        .replace("unix", Math.floor(time)) // unix timestamp [issue 381]
         .replace("Y", year)
         .replace("y", year.slice(year.length - 2))
         .replace("n", month + 1)
@@ -469,20 +479,20 @@ export let Util = {
         .replace("p2", "##p2")
         .replace("p", "##p");
 
+      let calendarParams = ["##B", "##b", "##A", "##a"];
+      if (calendarParams.some((par) => timeString.includes(par))) {
+        timeString = timeString
+          .replace("##B", Util.calendar.monthName(tm))
+          .replace("##b", Util.calendar.shortMonthName(tm))
+          .replace("##A", Util.calendar.dayName(tm))
+          .replace("##a", Util.calendar.shortDayName(tm));
+      }
+
       timeString = timeString
         .replace("##t", isUTC ? "UTC" : Util.getTimeZoneAbbrev(tm, false))
         .replace("##p1", hour < 12 ? "a.m." : "p.m.")
         .replace("##p2", hour < 12 ? "A.M." : "P.M.")
         .replace("##p", hour < 12 ? "AM" : "PM");
-
-      let calendarParams = ["##B", "##b", "##A", "##a"];
-      if (calendarParams.some((par) => timeString.includes(par))) {
-        timeString = timeString
-          .replace("##B", Util.calendar.monthName(month))
-          .replace("##b", Util.calendar.shortMonthName(month))
-          .replace("##A", Util.calendar.dayName(tm.getDay()))
-          .replace("##a", Util.calendar.shortDayName(tm.getDay()));
-      }
 
       Util.logDebugOptional("timeStrings", "Created timeString: " + timeString);
       return timeString;
@@ -506,28 +516,24 @@ export let Util = {
         this.currentLocale = forcedLocale;
       }
     },
-    dayName: function dayName(n) {
-      Util.logIssue184(`calendar.dayName(${n})`);
-      return messenger.i18n.getMessage(`day.${n + 1}.name`, this.addonName);
-      // return this.bundle.GetStringFromName("day." + (n + 1) + ".name");
+    dayName: function (d) {
+      const date = d instanceof Date ? d : new Date(Date.UTC(2025, 0, 5 + d));
+      return new Intl.DateTimeFormat(this.currentLocale, { weekday: "long" }).format(date);
     },
 
-    shortDayName: function shortDayName(n) {
-      Util.logIssue184(`calendar.shortDayName(${n})`);
-      return messenger.i18n.getMessage(`day.${n + 1}.short`, this.addonName);
-      // return this.bundle.GetStringFromName("day." + (n + 1) + ".short");
+    shortDayName: function (d) {
+      const date = d instanceof Date ? d : new Date(Date.UTC(2025, 0, 5 + d));
+      return new Intl.DateTimeFormat(this.currentLocale, { weekday: "short" }).format(date);
     },
 
-    monthName: function monthName(n) {
-      Util.logIssue184(`calendar.monthName(${n})`);
-      return messenger.i18n.getMessage(`month.${n + 1}.name`, this.addonName);
-      // return this.bundle.GetStringFromName("month." + (n + 1) + ".name");
+    monthName: function (d) {
+      const date = d instanceof Date ? d : new Date(Date.UTC(2025, d, 1));
+      return new Intl.DateTimeFormat(this.currentLocale, { month: "long" }).format(date);
     },
 
-    shortMonthName: function shortMonthName(n) {
-      Util.logIssue184(`calendar.shortMonthName(${n})`);
-      return messenger.i18n.getMessage(`month.${n + 1}.short`, this.addonName);
-      // return this.bundle.GetStringFromName("month." + (n + 1) + ".short");
+    shortMonthName: function (d) {
+      const date = d instanceof Date ? d : new Date(Date.UTC(2025, d, 1));
+      return new Intl.DateTimeFormat(this.currentLocale, { month: "short" }).format(date);
     },
   },
 
@@ -548,7 +554,9 @@ export let Util = {
 
   // 1672
   isAddressHeader: function (token = "") {
-    if (!token) {return false;}
+    if (!token) {
+      return false;
+    }
     return RegExp(" " + token + " ", "i").test(
       " bcc cc disposition-notification-to errors-to from mail-followup-to mail-reply-to reply-to" +
         " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to "
@@ -611,7 +619,7 @@ export let Util = {
       );
 
       if (offsets.whatIsDateOffset) {
-        time += offsets.whatIsDateOffset * 24 * 60 * 60 * 1000 * 1000; // add n days
+        time += offsets.whatIsDateOffset * 24 * 60 * 60 * 1000; // add n days
         Util.logDebugOptional(
           "timeStrings",
           "Adding " + offsets.whatIsDateOffset + " days to time"
@@ -619,8 +627,8 @@ export let Util = {
       }
       if (offsets.whatIsHourOffset || offsets.whatIsMinuteOffset) {
         time +=
-          offsets.whatIsHourOffset * 60 * 60 * 1000 * 1000 +
-          offsets.whatIsMinuteOffset * 60 * 1000 * 1000; // add n days
+          offsets.whatIsHourOffset * 60 * 60 * 1000 +
+          offsets.whatIsMinuteOffset * 60 * 1000; // add n days
         Util.logDebugOptional(
           "timeStrings",
           "Adding " + offsets.whatIsHourOffset + ":" + offsets.whatIsMinuteOffset + " hours to time"
@@ -643,7 +651,7 @@ export let Util = {
             forceHours
         );
       }
-      tm.setTime(time / 1000 + timezone * 60 * 1000);
+      tm.setTime(time + timezone * 60 * 1000);
 
       // Format date string
       let timeString = fmt.format(tm);
@@ -1250,7 +1258,9 @@ export let Util = {
     } else {
       Util.logDebugOptional("timeZones", "no timeZone match, building manual...");
       retVal = timeString.match("[A-Z]{4}");
-      if (!retVal) {retVal = timeString.match("[A-Z]{3}");}
+      if (!retVal) {
+        retVal = timeString.match("[A-Z]{3}");
+      }
       // convert to long form by using hard-coded time zones array.
       Util.logDebug(
         "Cannot determine timezone string - Missed parentheses - from:\n" +
@@ -1271,8 +1281,12 @@ export let Util = {
     let formatArray = [];
     if (format) {
       // remove parentheses
-      if (format.charAt(0) == "(") {format = format.slice(1);}
-      if (format.charAt(format.length - 1) == ")") {format = format.slice(0, -1);}
+      if (format.charAt(0) == "(") {
+        format = format.slice(1);
+      }
+      if (format.charAt(format.length - 1) == ")") {
+        format = format.slice(0, -1);
+      }
 
       let fs = format.split(","); // lastname, firstname ?
       for (let i = 0; i < fs.length; i++) {

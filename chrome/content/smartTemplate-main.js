@@ -1469,11 +1469,11 @@ SmartTemplate4.calendar = {
   list: function () {
     let str = "";
     for (let i = 0; i < 7; i++) {
-      str += `${this.dayName(i)}(${this.shortDayName(i)})/`;
+      str += `${this.dayName(i)}(${this.shortDayName(i)}), `;
     }
     str += "\n";
     for (let i = 0; i < 12; i++) {
-      str += `${this.monthName(i)}(${this.shortMonthName(i)})/`;
+      str += `${this.monthName(i)}(${this.shortMonthName(i)}), `;
     }
     return str;
   },
@@ -1498,30 +1498,25 @@ SmartTemplate4.calendar = {
   // the following functions retrieve strings from our own language packs (languages supported by SmartTemplate itself)
   // these will affect the following variables: %A% %a% %B% %b% (week days and months)
   // OTOH: %dateshort% and %datelocal% extract their names from the language packs installed
-  // n = 0..6, Sunday = 0
-  dayName: function (n) {
-    return new Intl.DateTimeFormat(this.currentLocale, { weekday: "long" }).format(
-      new Date(Date.UTC(2025, 0, 5 + n))
-    );
-  },
-  
-  shortDayName: function (n) {
-    return new Intl.DateTimeFormat(this.currentLocale, { weekday: "short" }).format(
-      new Date(Date.UTC(2025, 0, 5 + n))
-    );
-  },
-  
-  monthName: function (n) {
-    return new Intl.DateTimeFormat(this.currentLocale, { month: "long" }).format(
-      new Date(Date.UTC(2025, n, 1))
-    );
-  },
-  
-  shortMonthName: function (n) {
-    return new Intl.DateTimeFormat(this.currentLocale, { month: "short" }).format(
-      new Date(Date.UTC(2025, n, 1))
-    );
+  // d = 0..6, Sunday = 0
+  dayName: function (d) {
+    const date = d instanceof Date ? d : new Date(Date.UTC(2025, 0, 5 + d));
+    return new Intl.DateTimeFormat(this.currentLocale, { weekday: "long" }).format(date);
   },
 
+  shortDayName: function (d) {
+    const date = d instanceof Date ? d : new Date(Date.UTC(2025, 0, 5 + d));
+    return new Intl.DateTimeFormat(this.currentLocale, { weekday: "short" }).format(date);
+  },
+
+  monthName: function (d) {
+    const date = d instanceof Date ? d : new Date(Date.UTC(2025, d, 1));
+    return new Intl.DateTimeFormat(this.currentLocale, { month: "long" }).format(date);
+  },
+
+  shortMonthName: function (d) {
+    const date = d instanceof Date ? d : new Date(Date.UTC(2025, d, 1));
+    return new Intl.DateTimeFormat(this.currentLocale, { month: "short" }).format(date);
+  },
 };   // SmartTemplate4.calendar 
   

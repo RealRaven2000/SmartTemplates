@@ -335,48 +335,6 @@
   "datetz.label": {
     "message": "Časovni pas (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "Nedelja"
-  },
-  "day.1.short": {
-    "message": "Ned."
-  },
-  "day.2.name": {
-    "message": "Ponedeljek"
-  },
-  "day.2.short": {
-    "message": "Pon."
-  },
-  "day.3.name": {
-    "message": "Torek"
-  },
-  "day.3.short": {
-    "message": "Tor."
-  },
-  "day.4.name": {
-    "message": "Sreda"
-  },
-  "day.4.short": {
-    "message": "Sre."
-  },
-  "day.5.name": {
-    "message": "Četrtek"
-  },
-  "day.5.short": {
-    "message": "Čet."
-  },
-  "day.6.name": {
-    "message": "Petek"
-  },
-  "day.6.short": {
-    "message": "Pet."
-  },
-  "day.7.name": {
-    "message": "Sobota"
-  },
-  "day.7.short": {
-    "message": "Sob."
-  },
   "debug.mode": {
     "message": "Razhroščevalni način"
   },
@@ -981,66 +939,6 @@
   },
   "minSize_detail": {
     "message": "Velikosti ni vedno mogoče določiti, še posebej, če Thunderbird še vedno nalaga sliko, pogosto zaradi velike velikosti - v tem primeru bo oznaka vseeno odstranjena."
-  },
-  "month.1.name": {
-    "message": "Januar"
-  },
-  "month.1.short": {
-    "message": "Jan."
-  },
-  "month.10.name": {
-    "message": "Oktober"
-  },
-  "month.10.short": {
-    "message": "Okt."
-  },
-  "month.11.short": {
-    "message": "Nov."
-  },
-  "month.12.short": {
-    "message": "Dec."
-  },
-  "month.2.name": {
-    "message": "Februar"
-  },
-  "month.2.short": {
-    "message": "Feb."
-  },
-  "month.3.name": {
-    "message": "Marec"
-  },
-  "month.3.short": {
-    "message": "Mar."
-  },
-  "month.4.short": {
-    "message": "Apr."
-  },
-  "month.5.name": {
-    "message": "Maj"
-  },
-  "month.5.short": {
-    "message": "Maj"
-  },
-  "month.6.name": {
-    "message": "Junij"
-  },
-  "month.6.short": {
-    "message": "Jun."
-  },
-  "month.7.name": {
-    "message": "Julij"
-  },
-  "month.7.short": {
-    "message": "Jul."
-  },
-  "month.8.name": {
-    "message": "Avgust"
-  },
-  "month.8.short": {
-    "message": "Avg."
-  },
-  "month.9.short": {
-    "message": "Sep."
   },
   "mozillas-basic-platform": {
     "message": "Mozilla ponuja samo osnovno platformo za dostavo naše programske opreme vam, končnim uporabnikom. Če moramo uporabnike prositi za plačilo ali podporo, tega ne moremo storiti z addons.thunderbird.net - to ni 'trgovina z aplikacijami' z vgrajenimi plačilnimi zidovi ali upravljanjem licenc, kot sta iTunes ali google play."

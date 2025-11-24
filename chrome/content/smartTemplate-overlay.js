@@ -3049,7 +3049,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           }
           // [issue 115] Erratic %datetime()% results when forcing HTML with Shift
           arg = util.removeHtmlEntities(arg);
-          let formattedTime = util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0); // dateFormat will add offsets itself
+          let formattedTime = util.dateFormat(tm.getTime(), removeParentheses(arg), 0); // dateFormat will add offsets itself
           if (arg.includes("toclipboard")) {
             token = ""; // no deferred variable, just remove the variable silently
           } else {
@@ -3076,10 +3076,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           }
           if (SmartTemplate4.whatIsX == SmartTemplate4.XisToday) {
             tm = new Date(); // undo offset for this case.
-            token = util.prTime2Str(tm.getTime() * 1000, token, 0);
+            token = util.prTime2Str(tm.getTime(), token, 0);
             return finalize(token, SmartTemplate4.escapeHtml(token));
           } else {
-            token = util.prTime2Str(date, token, 0);
+            token = util.prTime2Str(date / 1000, token, 0);
             return finalize(token, SmartTemplate4.escapeHtml(token));
           }
         case "timezone":
@@ -3169,13 +3169,15 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             case "m":
               return finalize(token, d02(month + 1), "d02(tm.getMonth()+1)");
             case "B":
-              return finalize(token, cal.monthName(month), "cal.monthName(" + month + ")"); // locale month
+              // locale month
+              return finalize(token, cal.monthName(tm), "cal.monthName(" + tm.toISOString() + ")");
             case "b":
+              // locale month (short)
               return finalize(
                 token,
-                cal.shortMonthName(month),
-                "cal.shortMonthName(" + month + ")"
-              ); // locale month (short)
+                cal.shortMonthName(tm),
+                "cal.shortMonthName(" + tm.toISOString() + ")"
+              );
           }
         } break;
         case "e": // Day of month 1..31
@@ -3195,15 +3197,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "a": {
           // eslint-disable-next-line no-debugger
           if (debugTimeStrings) {debugger;}
-          let weekday = tm.getDay();
           switch (token) {
             case "A":
-              return finalize(token, cal.dayName(weekday), "cal.dayName(" + weekday + ")"); // locale day of week
+              return finalize(token, cal.dayName(tm), "cal.dayName(" + tm.toLocaleString() + ")"); // locale day of week
             case "a":
               return finalize(
                 token,
-                cal.shortDayName(weekday),
-                "cal.shortDayName(" + weekday + ")"
+                cal.shortDayName(tm),
+                "cal.shortDayName(" + tm.toLocaleString() + ")"
               ); // locale day of week(short)
           }
         } break;

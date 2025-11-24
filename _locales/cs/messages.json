@@ -332,48 +332,6 @@
   "datetz.label": {
     "message": "Časová zóna (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "Neděle"
-  },
-  "day.1.short": {
-    "message": "Ne"
-  },
-  "day.2.name": {
-    "message": "Pondělí"
-  },
-  "day.2.short": {
-    "message": "Po"
-  },
-  "day.3.name": {
-    "message": "Úterý"
-  },
-  "day.3.short": {
-    "message": "Út"
-  },
-  "day.4.name": {
-    "message": "Středa"
-  },
-  "day.4.short": {
-    "message": "St"
-  },
-  "day.5.name": {
-    "message": "Čtvrtek"
-  },
-  "day.5.short": {
-    "message": "Čt"
-  },
-  "day.6.name": {
-    "message": "Pátek"
-  },
-  "day.6.short": {
-    "message": "Pa"
-  },
-  "day.7.name": {
-    "message": "Sobota"
-  },
-  "day.7.short": {
-    "message": "So"
-  },
   "debug.mode": {
     "message": "Ladicí mód"
   },
@@ -972,78 +930,6 @@
   },
   "minSize_detail": {
     "message": "Není vždy možné určit velikost, zejména pokud Thunderbird stále načítá obrázek, často kvůli velké velikosti - v tomto případě bude značka stejně odstraněna."
-  },
-  "month.1.name": {
-    "message": "Leden"
-  },
-  "month.1.short": {
-    "message": "Led"
-  },
-  "month.10.name": {
-    "message": "Říjen"
-  },
-  "month.10.short": {
-    "message": "Říj"
-  },
-  "month.11.name": {
-    "message": "Listopad"
-  },
-  "month.11.short": {
-    "message": "Lis"
-  },
-  "month.12.name": {
-    "message": "Prosinec"
-  },
-  "month.12.short": {
-    "message": "Pro"
-  },
-  "month.2.name": {
-    "message": "Únor"
-  },
-  "month.2.short": {
-    "message": "Úno"
-  },
-  "month.3.name": {
-    "message": "Březen"
-  },
-  "month.3.short": {
-    "message": "Bře"
-  },
-  "month.4.name": {
-    "message": "Duben"
-  },
-  "month.4.short": {
-    "message": "Dub"
-  },
-  "month.5.name": {
-    "message": "Květen"
-  },
-  "month.5.short": {
-    "message": "Kvě"
-  },
-  "month.6.name": {
-    "message": "Červen"
-  },
-  "month.6.short": {
-    "message": "Čen"
-  },
-  "month.7.name": {
-    "message": "Červenec"
-  },
-  "month.7.short": {
-    "message": "Čec"
-  },
-  "month.8.name": {
-    "message": "Srpen"
-  },
-  "month.8.short": {
-    "message": "Srp"
-  },
-  "month.9.name": {
-    "message": "Září"
-  },
-  "month.9.short": {
-    "message": "Zář"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla poskytuje pouze základní platformu pro doručování našeho softwaru vám, koncovým uživatelům. Pokud potřebujeme požádat naše uživatele o platbu nebo podporu, nemůžeme to udělat z addons.thunderbird.net - nejedná se o „obchod s aplikacemi“ s vestavěnými paywally nebo správou licencí, jako je iTunes nebo Google Play."

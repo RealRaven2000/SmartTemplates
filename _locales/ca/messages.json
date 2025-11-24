@@ -335,48 +335,6 @@
   "datetz.label": {
     "message": "Fus orari (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "Dimenge"
-  },
-  "day.1.short": {
-    "message": "Dim"
-  },
-  "day.2.name": {
-    "message": "Diluns"
-  },
-  "day.2.short": {
-    "message": "Lun"
-  },
-  "day.3.name": {
-    "message": "Dimars"
-  },
-  "day.3.short": {
-    "message": "Mar"
-  },
-  "day.4.name": {
-    "message": "Dimècres"
-  },
-  "day.4.short": {
-    "message": "Mer"
-  },
-  "day.5.name": {
-    "message": "Dijòus"
-  },
-  "day.5.short": {
-    "message": "Jòu"
-  },
-  "day.6.name": {
-    "message": "Divendres"
-  },
-  "day.6.short": {
-    "message": "Ven"
-  },
-  "day.7.name": {
-    "message": "Dissabte"
-  },
-  "day.7.short": {
-    "message": "Sab"
-  },
   "debug.mode": {
     "message": "Mòde desbugatge"
   },
@@ -981,78 +939,6 @@
   },
   "minSize_detail": {
     "message": "No sempre és possible determinar la mida, sobretot si el Thunderbird continua carregant la imatge, sovint a causa de la mida gran, en aquest cas l’etiqueta s’eliminarà de totes maneres."
-  },
-  "month.1.name": {
-    "message": "Genièr"
-  },
-  "month.1.short": {
-    "message": "Gen"
-  },
-  "month.10.name": {
-    "message": "Octobre"
-  },
-  "month.10.short": {
-    "message": "Oct"
-  },
-  "month.11.name": {
-    "message": "Novembre"
-  },
-  "month.11.short": {
-    "message": "Nov"
-  },
-  "month.12.name": {
-    "message": "Decembre"
-  },
-  "month.12.short": {
-    "message": "Des"
-  },
-  "month.2.name": {
-    "message": "Febrièr"
-  },
-  "month.2.short": {
-    "message": "Feb"
-  },
-  "month.3.name": {
-    "message": "Març"
-  },
-  "month.3.short": {
-    "message": "Mar"
-  },
-  "month.4.name": {
-    "message": "Abril"
-  },
-  "month.4.short": {
-    "message": "Abr"
-  },
-  "month.5.name": {
-    "message": "Mai"
-  },
-  "month.5.short": {
-    "message": "Mai"
-  },
-  "month.6.name": {
-    "message": "Junh"
-  },
-  "month.6.short": {
-    "message": "Jun"
-  },
-  "month.7.name": {
-    "message": "Julhet"
-  },
-  "month.7.short": {
-    "message": "Jul"
-  },
-  "month.8.name": {
-    "message": "Agost"
-  },
-  "month.8.short": {
-    "message": "Ago"
-  },
-  "month.9.name": {
-    "message": "Setembre"
-  },
-  "month.9.short": {
-    "message": "Set"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla només proporciona una plataforma bàsica per lliurar-vos el nostre programari als vostres usuaris finals. Si hem de demanar pagament o assistència als nostres usuaris, no podem fer-ho des de addons.thunderbird.net: no és una 'botiga d'aplicacions' amb taulers de pagament integrats o gestió de llicències com iTunes o Google Play."

@@ -329,48 +329,6 @@
   "datetz.label": {
     "message": "Fuso orario (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "Domenica"
-  },
-  "day.1.short": {
-    "message": "Dom"
-  },
-  "day.2.name": {
-    "message": "Lunedì"
-  },
-  "day.2.short": {
-    "message": "Lun"
-  },
-  "day.3.name": {
-    "message": "Martedì"
-  },
-  "day.3.short": {
-    "message": "Mar"
-  },
-  "day.4.name": {
-    "message": "Mercoledì"
-  },
-  "day.4.short": {
-    "message": "Mer"
-  },
-  "day.5.name": {
-    "message": "Giovedì"
-  },
-  "day.5.short": {
-    "message": "Gio"
-  },
-  "day.6.name": {
-    "message": "Venerdì"
-  },
-  "day.6.short": {
-    "message": "Ven"
-  },
-  "day.7.name": {
-    "message": "Sabato"
-  },
-  "day.7.short": {
-    "message": "Sab"
-  },
   "debug.mode": {
     "message": "Modalità debug"
   },
@@ -960,66 +918,6 @@
   },
   "minSize_detail": {
     "message": "Non è sempre possibile determinare le dimensioni, soprattutto se Thunderbird sta ancora caricando l'immagine, spesso a causa delle grandi dimensioni - in questo caso il tag verrà rimosso comunque."
-  },
-  "month.1.name": {
-    "message": "Gennaio"
-  },
-  "month.1.short": {
-    "message": "Gen"
-  },
-  "month.10.name": {
-    "message": "Ottobre"
-  },
-  "month.10.short": {
-    "message": "Ott"
-  },
-  "month.11.name": {
-    "message": "Novembre"
-  },
-  "month.12.name": {
-    "message": "Dicembre"
-  },
-  "month.12.short": {
-    "message": "Dic"
-  },
-  "month.2.name": {
-    "message": "Febbraio"
-  },
-  "month.3.name": {
-    "message": "Marzo"
-  },
-  "month.4.name": {
-    "message": "Aprile"
-  },
-  "month.5.name": {
-    "message": "Maggio"
-  },
-  "month.5.short": {
-    "message": "Mag"
-  },
-  "month.6.name": {
-    "message": "Giugno"
-  },
-  "month.6.short": {
-    "message": "Giu"
-  },
-  "month.7.name": {
-    "message": "Luglio"
-  },
-  "month.7.short": {
-    "message": "Lug"
-  },
-  "month.8.name": {
-    "message": "Agosto"
-  },
-  "month.8.short": {
-    "message": "Ago"
-  },
-  "month.9.name": {
-    "message": "Settembre"
-  },
-  "month.9.short": {
-    "message": "Set"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla fornisce solo una piattaforma di base per fornire il nostro software a voi, utenti finali. Se abbiamo bisogno di chiedere ai nostri utenti il pagamento o il supporto non possiamo farlo da addons.thunderbird.net - non è un 'app store' con paywall integrati o gestione delle licenze come iTunes o Google Play."

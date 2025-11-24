@@ -338,48 +338,6 @@
   "datetz.label": {
     "message": "Часовий пояс (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "Неділя"
-  },
-  "day.1.short": {
-    "message": "Нед"
-  },
-  "day.2.name": {
-    "message": "Понеділок"
-  },
-  "day.2.short": {
-    "message": "Пн"
-  },
-  "day.3.name": {
-    "message": "Вівторок"
-  },
-  "day.3.short": {
-    "message": "Вт"
-  },
-  "day.4.name": {
-    "message": "Середа"
-  },
-  "day.4.short": {
-    "message": "Сер"
-  },
-  "day.5.name": {
-    "message": "Четвер"
-  },
-  "day.5.short": {
-    "message": "Чт"
-  },
-  "day.6.name": {
-    "message": "П'ятниця"
-  },
-  "day.6.short": {
-    "message": "Пт"
-  },
-  "day.7.name": {
-    "message": "Субота"
-  },
-  "day.7.short": {
-    "message": "Сб"
-  },
   "debug.mode": {
     "message": "Налагоджувальний режим"
   },
@@ -991,78 +949,6 @@
   },
   "minSize_detail": {
     "message": "Неможливо визначити розмір, особливо якщо Thunderbird все ще завантажує зображення, часто через великий розмір - в цьому випадку цей тег буде видалено без змін."
-  },
-  "month.1.name": {
-    "message": "Січень"
-  },
-  "month.1.short": {
-    "message": "Січ"
-  },
-  "month.10.name": {
-    "message": "Жовтень"
-  },
-  "month.10.short": {
-    "message": "Жовт"
-  },
-  "month.11.name": {
-    "message": "Листопад"
-  },
-  "month.11.short": {
-    "message": "Лист"
-  },
-  "month.12.name": {
-    "message": "Грудень"
-  },
-  "month.12.short": {
-    "message": "Груд"
-  },
-  "month.2.name": {
-    "message": "Лютий"
-  },
-  "month.2.short": {
-    "message": "Лют"
-  },
-  "month.3.name": {
-    "message": "Березень"
-  },
-  "month.3.short": {
-    "message": "Бер"
-  },
-  "month.4.name": {
-    "message": "Квітень"
-  },
-  "month.4.short": {
-    "message": "Квіт"
-  },
-  "month.5.name": {
-    "message": "Травень"
-  },
-  "month.5.short": {
-    "message": "Трав"
-  },
-  "month.6.name": {
-    "message": "Червень"
-  },
-  "month.6.short": {
-    "message": "Черв"
-  },
-  "month.7.name": {
-    "message": "Липень"
-  },
-  "month.7.short": {
-    "message": "Лип"
-  },
-  "month.8.name": {
-    "message": "Серпень"
-  },
-  "month.8.short": {
-    "message": "Серп"
-  },
-  "month.9.name": {
-    "message": "Вересень"
-  },
-  "month.9.short": {
-    "message": "Верес"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla надає базову платформу для доставки нашого програмного забезпечення тільки кінцевим користувачам. Якщо ми маємо попросити наших користувачів про платіж або підтримку, ми не можемо зробити це від аддонів. hunderbird.net - це не \"магазин додатків\" з побудованими в платних стінах чи в керуванні ліцензіями, на кшталт iTunes або гри в Google Play."

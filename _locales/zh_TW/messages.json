@@ -335,48 +335,6 @@
   "datetz.label": {
     "message": "時區 (+0100,+0200,...)"
   },
-  "day.1.name": {
-    "message": "星期日"
-  },
-  "day.1.short": {
-    "message": "日"
-  },
-  "day.2.name": {
-    "message": "星期一"
-  },
-  "day.2.short": {
-    "message": "一"
-  },
-  "day.3.name": {
-    "message": "星期二"
-  },
-  "day.3.short": {
-    "message": "二"
-  },
-  "day.4.name": {
-    "message": "星期三"
-  },
-  "day.4.short": {
-    "message": "三"
-  },
-  "day.5.name": {
-    "message": "星期四"
-  },
-  "day.5.short": {
-    "message": "四"
-  },
-  "day.6.name": {
-    "message": "星期五"
-  },
-  "day.6.short": {
-    "message": "五"
-  },
-  "day.7.name": {
-    "message": "星期六"
-  },
-  "day.7.short": {
-    "message": "六"
-  },
   "debug.mode": {
     "message": "除錯模式"
   },
@@ -978,78 +936,6 @@
   },
   "minSize_detail": {
     "message": "並非總是可以確定大小，特別是如果 Thunderbird 仍在加載圖像，通常是由於大尺寸 - 在這種情況下，標籤無論如何都會被刪除。"
-  },
-  "month.1.name": {
-    "message": "一月"
-  },
-  "month.1.short": {
-    "message": "一月"
-  },
-  "month.10.name": {
-    "message": "十月"
-  },
-  "month.10.short": {
-    "message": "十月"
-  },
-  "month.11.name": {
-    "message": "十一月"
-  },
-  "month.11.short": {
-    "message": "十一月"
-  },
-  "month.12.name": {
-    "message": "十二月"
-  },
-  "month.12.short": {
-    "message": "十二月"
-  },
-  "month.2.name": {
-    "message": "二月"
-  },
-  "month.2.short": {
-    "message": "二月"
-  },
-  "month.3.name": {
-    "message": "三月"
-  },
-  "month.3.short": {
-    "message": "三月"
-  },
-  "month.4.name": {
-    "message": "四月"
-  },
-  "month.4.short": {
-    "message": "四月"
-  },
-  "month.5.name": {
-    "message": "五月"
-  },
-  "month.5.short": {
-    "message": "五月"
-  },
-  "month.6.name": {
-    "message": "六月"
-  },
-  "month.6.short": {
-    "message": "六月"
-  },
-  "month.7.name": {
-    "message": "七月"
-  },
-  "month.7.short": {
-    "message": "七月"
-  },
-  "month.8.name": {
-    "message": "八月"
-  },
-  "month.8.short": {
-    "message": "八月"
-  },
-  "month.9.name": {
-    "message": "九月"
-  },
-  "month.9.short": {
-    "message": "九月"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla僅提供一個基本平台，用於向您（最終用戶）交付我們的軟件。 如果我們需要向我們的用戶付款或提供支持，則不能通過addons.thunderbird.net進行操作-這不是內置付費界面或許可證管理（如iTunes或Google Play）的“應用商店”。"

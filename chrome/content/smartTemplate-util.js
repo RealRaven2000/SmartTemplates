@@ -1909,13 +1909,13 @@ SmartTemplate4.Util = {
           case "dateformat": // fall through
           case "dateformat.current": // [issue 394]
             tm = new Date();
-            el.textContent = util.dateFormat(tm.getTime() * 1000, argList[2], 0);
+            el.textContent = util.dateFormat(tm.getTime(), argList[2], 0);
             resolved = true;
             break;
           case "datelocal": // fall through
           case "dateshort":
             (tm = new Date()),
-              (el.textContent = util.prTime2Str(tm.getTime() * 1000, generalFunction, 0));
+              (el.textContent = util.prTime2Str(tm.getTime(), generalFunction, 0));
             resolved = true;
             break;
           default:
@@ -2108,8 +2108,20 @@ SmartTemplate4.Util = {
     ); // ALLOW recipient FOR FRAGMENTS.
   },
 
-  // new function for manually formatting a time / date string in one go.
-  // make additional parameters possible (enclose format string with "" to append 2nd parameter)
+  /**
+   * Formats a timestamp into a human-readable date/time string.
+   *
+   * @param {number|Date} time - The base time to format. Can be a Unix timestamp in milliseconds or a Date object.
+   * @param {string} argument - A format string or additional modifiers, e.g. '"A, d/m/Y H:M",toclipboard'.
+   *                            Supports special switches like "current" or transformations.
+   * @param {number} [timezone=0] - Optional timezone offset in minutes. Positive values are ahead of UTC, negative are behind.
+   *                                If not provided, defaults to 0.
+   *
+   * @returns {string} The formatted date/time string according to the provided format and any active offsets or timezone adjustments.
+   * NOTES:
+   *   additional parameters possible (enclose format string with "" to append following parameter)
+   *   toclipboard - copy to clipboard
+   */  
   dateFormat: function (time, argument, timezone) {
     const util = SmartTemplate4.Util;
     let timeFormat,
@@ -2156,22 +2168,22 @@ SmartTemplate4.Util = {
       let tm = new Date();
 
       if (SmartTemplate4.whatIsDateOffset) {
-        time += SmartTemplate4.whatIsDateOffset * 24 * 60 * 60 * 1000 * 1000; // add n days
+        time += SmartTemplate4.whatIsDateOffset * 24 * 60 * 60 * 1000; // add n days
       }
       if (SmartTemplate4.whatIsHourOffset || SmartTemplate4.whatIsMinuteOffset) {
         time +=
-          SmartTemplate4.whatIsHourOffset * 60 * 60 * 1000 * 1000 +
-          SmartTemplate4.whatIsMinuteOffset * 60 * 1000 * 1000; // add m hours / n minutes
+          SmartTemplate4.whatIsHourOffset * 60 * 60 * 1000  +
+          SmartTemplate4.whatIsMinuteOffset * 60 * 1000 ; // add m hours / n minutes
       }
       if (SmartTemplate4.whatIsTimezone) {
         // subtract UTC offset for timezone
         let nativeUtcOffset = tm.getTimezoneOffset(),
           forcedOffset = util.getTimezoneOffset(SmartTemplate4.whatIsTimezone) * 60; // calculate minutes
-        time = time + (nativeUtcOffset + forcedOffset) * 60 * 1000 * 1000;
+        time = time + (nativeUtcOffset + forcedOffset) * 60 * 1000;
       }
 
       // Set Time - add Timezone offset
-      tm.setTime(time / 1000 + timezone * 60 * 1000);
+      tm.setTime(time + timezone * 60 * 1000);
       let d02 = function (val) {
           return ("0" + val).replace(/.(..)/, "$1");
         },
@@ -2185,8 +2197,8 @@ SmartTemplate4.Util = {
 
       //numeral replacements first
       let timeString = timeFormat
-        .replace("timestamp", time) // timestamp in milliseconds [issue 381]
-        .replace("unix", Math.floor(time / 1000)) // unix timestamp [issue 381]
+        .replace("timestamp", time * 1000) // timestamp in μs [issue 381]
+        .replace("unix", Math.floor(time)) // unix timestamp [issue 381]
         .replace("Y", year)
         .replace("y", year.slice(year.length - 2))
         .replace("n", month + 1)
@@ -2214,10 +2226,10 @@ SmartTemplate4.Util = {
 
       timeString = timeString
         .replace("##t", isUTC ? "UTC" : util.getTimeZoneAbbrev(tm, false))
-        .replace("##B", cal.monthName(month))
-        .replace("##b", cal.shortMonthName(month))
-        .replace("##A", cal.dayName(tm.getDay()))
-        .replace("##a", cal.shortDayName(tm.getDay()))
+        .replace("##B", cal.monthName(tm))
+        .replace("##b", cal.shortMonthName(tm))
+        .replace("##A", cal.dayName(tm))
+        .replace("##a", cal.shortDayName(tm))
         .replace("##p1", hour < 12 ? "a.m." : "p.m.")
         .replace("##p2", hour < 12 ? "A.M." : "P.M.")
         .replace("##p", hour < 12 ? "AM" : "PM");
@@ -2293,7 +2305,7 @@ SmartTemplate4.Util = {
       }
 
       if (SmartTemplate4.whatIsDateOffset) {
-        time += SmartTemplate4.whatIsDateOffset * 24 * 60 * 60 * 1000 * 1000; // add n days
+        time += SmartTemplate4.whatIsDateOffset * 24 * 60 * 60 * 1000 ; // add n days
         util.logDebugOptional(
           "timeStrings",
           `Adding ${SmartTemplate4.whatIsDateOffset} days to time`
@@ -2301,8 +2313,8 @@ SmartTemplate4.Util = {
       }
       if (SmartTemplate4.whatIsHourOffset || SmartTemplate4.whatIsMinuteOffset) {
         time +=
-          SmartTemplate4.whatIsHourOffset * 60 * 60 * 1000 * 1000 +
-          SmartTemplate4.whatIsMinuteOffset * 60 * 1000 * 1000; // add n days
+          SmartTemplate4.whatIsHourOffset * 60 * 60 * 1000  +
+          SmartTemplate4.whatIsMinuteOffset * 60 * 1000; // add n days
         util.logDebugOptional(
           "timeStrings",
           `Adding ${SmartTemplate4.whatIsHourOffset}:${SmartTemplate4.whatIsMinuteOffset}` +
@@ -2322,7 +2334,7 @@ SmartTemplate4.Util = {
             `  Forced Timezone[${forceTimeZone}]: ${forceHours}`
         );
       }
-      tm.setTime(time / 1000 + timezone * 60 * 1000);
+      tm.setTime(time + timezone * 60 * 1000);
 
       // Format date string
       const timeString = fmt.format(tm);
@@ -2334,7 +2346,7 @@ SmartTemplate4.Util = {
     return "";
   },
 
-  zoneFromShort: function st4_zoneFromShort(short) {
+  zoneFromShort: function (short) {
     let timezones = {
       ACDT: "Australian Central Daylight Time",
       ACST: "Australian Central Standard Time",
@@ -2518,7 +2530,7 @@ SmartTemplate4.Util = {
     return tz || short;
   },
 
-  getTimezoneOffset: function st4_getTimezoneOffset(zone) {
+  getTimezoneOffset: function (zone) {
     // Offsets according to https://en.wikipedia.org/wiki/List_of_time_zone_abbreviations
     switch (zone) {
       case "ACDT":

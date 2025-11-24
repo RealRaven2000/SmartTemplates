@@ -338,48 +338,6 @@
   "datetz.label": {
     "message": "Ζώνη Ώρας (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "Κυριακή"
-  },
-  "day.1.short": {
-    "message": "Κυρ"
-  },
-  "day.2.name": {
-    "message": "Δευτέρα"
-  },
-  "day.2.short": {
-    "message": "Δευ"
-  },
-  "day.3.name": {
-    "message": "Τρίτη"
-  },
-  "day.3.short": {
-    "message": "Τρί"
-  },
-  "day.4.name": {
-    "message": "Τετάρτη"
-  },
-  "day.4.short": {
-    "message": "Τετ"
-  },
-  "day.5.name": {
-    "message": "Πέμπτη"
-  },
-  "day.5.short": {
-    "message": "Πέμ"
-  },
-  "day.6.name": {
-    "message": "Παρασκευή"
-  },
-  "day.6.short": {
-    "message": "Παρ"
-  },
-  "day.7.name": {
-    "message": "Σάββατο"
-  },
-  "day.7.short": {
-    "message": "Σάβ"
-  },
   "debug.mode": {
     "message": "Λειτουργία Αποσφαλμάτωσης"
   },
@@ -984,78 +942,6 @@
   },
   "minSize_detail": {
     "message": "Δεν είναι πάντα δυνατό να προσδιοριστεί το μέγεθος, ειδικά αν το Thunderbird εξακολουθεί να φορτώνει την εικόνα, συχνά λόγω μεγάλου μεγέθους - σε αυτή την περίπτωση η ετικέτα θα αφαιρεθεί ούτως ή άλλως."
-  },
-  "month.1.name": {
-    "message": "Ιανουάριος"
-  },
-  "month.1.short": {
-    "message": "Ιαν"
-  },
-  "month.10.name": {
-    "message": "Οκτώβριος"
-  },
-  "month.10.short": {
-    "message": "Οκτ"
-  },
-  "month.11.name": {
-    "message": "Νοέμβριος"
-  },
-  "month.11.short": {
-    "message": "Νοέ"
-  },
-  "month.12.name": {
-    "message": "Δεκέμβριος"
-  },
-  "month.12.short": {
-    "message": "Δεκ"
-  },
-  "month.2.name": {
-    "message": "Φεβρουάριος"
-  },
-  "month.2.short": {
-    "message": "Φεβ"
-  },
-  "month.3.name": {
-    "message": "Μάρτιος"
-  },
-  "month.3.short": {
-    "message": "Μάρ"
-  },
-  "month.4.name": {
-    "message": "Απριλίος"
-  },
-  "month.4.short": {
-    "message": "Απρ"
-  },
-  "month.5.name": {
-    "message": "Μάιος"
-  },
-  "month.5.short": {
-    "message": "Μάιος"
-  },
-  "month.6.name": {
-    "message": "Ιούνιος"
-  },
-  "month.6.short": {
-    "message": "Ιούν"
-  },
-  "month.7.name": {
-    "message": "Ιούλιος"
-  },
-  "month.7.short": {
-    "message": "Ιούλ"
-  },
-  "month.8.name": {
-    "message": "Αύγουστος"
-  },
-  "month.8.short": {
-    "message": "Αύγ"
-  },
-  "month.9.name": {
-    "message": "Σεπτέμβριος"
-  },
-  "month.9.short": {
-    "message": "Σεπ"
   },
   "mozillas-basic-platform": {
     "message": "Η πλατφόρμα που παρέχει η Mozilla για να προσφέρουμε το λογισμικό μας σε εσάς, τους τελικούς χρήστες, διαθέτει μόνο στοιχειώδη λειτουργικότητα. Εάν χρειάζεται να ζητήσουμε από τους χρήστες μας πληρωμή ή υποστήριξη, δεν μπορούμε να το κάνουμε από το addons.thunderbird.net - δεν είναι «κατάστημα εφαρμογών» με κανάλια πληρωμών ή διαχείριση αδειών όπως το iTunes ή το Google Play."

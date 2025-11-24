@@ -332,48 +332,6 @@
   "datetz.label": {
     "message": "Часовогй пояс (+0100, +0200, ...)"
   },
-  "day.1.name": {
-    "message": "Воскресенье"
-  },
-  "day.1.short": {
-    "message": "Вс"
-  },
-  "day.2.name": {
-    "message": "Понедельник"
-  },
-  "day.2.short": {
-    "message": "Пн"
-  },
-  "day.3.name": {
-    "message": "Вторник"
-  },
-  "day.3.short": {
-    "message": "Вт"
-  },
-  "day.4.name": {
-    "message": "Среда"
-  },
-  "day.4.short": {
-    "message": "Ср"
-  },
-  "day.5.name": {
-    "message": "Четверг"
-  },
-  "day.5.short": {
-    "message": "Чт"
-  },
-  "day.6.name": {
-    "message": "Пятница"
-  },
-  "day.6.short": {
-    "message": "Пт"
-  },
-  "day.7.name": {
-    "message": "Суббота"
-  },
-  "day.7.short": {
-    "message": "Сб"
-  },
   "debug.mode": {
     "message": "Режим отладки"
   },
@@ -978,78 +936,6 @@
   },
   "minSize_detail": {
     "message": "Не всегда возможно определить размер, особенно если Thunderbird все еще загружает изображение, часто из-за большого размера - в этом случае тег будет удален в любом случае."
-  },
-  "month.1.name": {
-    "message": "Января"
-  },
-  "month.1.short": {
-    "message": "Янв"
-  },
-  "month.10.name": {
-    "message": "Октября"
-  },
-  "month.10.short": {
-    "message": "Окт"
-  },
-  "month.11.name": {
-    "message": "Ноября"
-  },
-  "month.11.short": {
-    "message": "Нояб"
-  },
-  "month.12.name": {
-    "message": "Декабря"
-  },
-  "month.12.short": {
-    "message": "Дек"
-  },
-  "month.2.name": {
-    "message": "Февраля"
-  },
-  "month.2.short": {
-    "message": "Фев"
-  },
-  "month.3.name": {
-    "message": "Марта"
-  },
-  "month.3.short": {
-    "message": "Март"
-  },
-  "month.4.name": {
-    "message": "Апреля"
-  },
-  "month.4.short": {
-    "message": "Апр"
-  },
-  "month.5.name": {
-    "message": "Мая"
-  },
-  "month.5.short": {
-    "message": "Май"
-  },
-  "month.6.name": {
-    "message": "Июня"
-  },
-  "month.6.short": {
-    "message": "Июнь"
-  },
-  "month.7.name": {
-    "message": "Июля"
-  },
-  "month.7.short": {
-    "message": "Июль"
-  },
-  "month.8.name": {
-    "message": "Августа"
-  },
-  "month.8.short": {
-    "message": "Авг"
-  },
-  "month.9.name": {
-    "message": "Сентября"
-  },
-  "month.9.short": {
-    "message": "Сен"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla предоставляет только базовую платформу для доставки нашего программного обеспечения вам, конечным пользователям. Если нам нужно запросить у наших пользователей оплату или поддержку, мы не сможем сделать это через addons.thunderbird.net - это не «магазин приложений» со встроенными платными доступом или управлением лицензиями, такими как iTunes или Google Play."

@@ -331,48 +331,6 @@
   "datetz.label": {
     "message": "Zeitzone (+0100, +0200, … )"
   },
-  "day.1.name": {
-    "message": "Sonntag"
-  },
-  "day.1.short": {
-    "message": "So"
-  },
-  "day.2.name": {
-    "message": "Montag"
-  },
-  "day.2.short": {
-    "message": "Mo"
-  },
-  "day.3.name": {
-    "message": "Dienstag"
-  },
-  "day.3.short": {
-    "message": "Di"
-  },
-  "day.4.name": {
-    "message": "Mittwoch"
-  },
-  "day.4.short": {
-    "message": "Mi"
-  },
-  "day.5.name": {
-    "message": "Donnerstag"
-  },
-  "day.5.short": {
-    "message": "Do"
-  },
-  "day.6.name": {
-    "message": "Freitag"
-  },
-  "day.6.short": {
-    "message": "Fr"
-  },
-  "day.7.name": {
-    "message": "Samstag"
-  },
-  "day.7.short": {
-    "message": "Sa"
-  },
   "debug.mode": {
     "message": "Debug Modus"
   },
@@ -971,42 +929,6 @@
   },
   "minSize_detail": {
     "message": "Es ist nicht immer möglich die richtige Grösse zu ermitteln, insbesondere wenn Thunderbird noch am laden ist, was oft bei großen Bildern passiert - in diesem Fall wird das tag trotzdem entfernt."
-  },
-  "month.1.name": {
-    "message": "Januar"
-  },
-  "month.10.name": {
-    "message": "Oktober"
-  },
-  "month.10.short": {
-    "message": "Okt"
-  },
-  "month.12.name": {
-    "message": "Dezember"
-  },
-  "month.12.short": {
-    "message": "Dez"
-  },
-  "month.2.name": {
-    "message": "Februar"
-  },
-  "month.3.name": {
-    "message": "März"
-  },
-  "month.3.short": {
-    "message": "Mär"
-  },
-  "month.5.name": {
-    "message": "Mai"
-  },
-  "month.5.short": {
-    "message": "Mai"
-  },
-  "month.6.name": {
-    "message": "Juni"
-  },
-  "month.7.name": {
-    "message": "Juli"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla bietet nur eine Basis-Plattform, um unsere Software für Sie als Endbenutzer weiterzuleiten. Wenn wir unsere Benutzer um Zahlung oder Support bitten müssen, können wir dies nicht über addons.thunderbird.net tun - es handelt sich nicht um einen App Store mit integrierten Paywalls oder Lizenzverwaltung wie iTunes oder Google Play."

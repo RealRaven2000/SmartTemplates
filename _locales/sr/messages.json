@@ -323,48 +323,6 @@
   "datetz.label": {
     "message": "Временска зона (+0100, +0200…)"
   },
-  "day.1.name": {
-    "message": "недеља"
-  },
-  "day.1.short": {
-    "message": "нед"
-  },
-  "day.2.name": {
-    "message": "понедељак"
-  },
-  "day.2.short": {
-    "message": "пон"
-  },
-  "day.3.name": {
-    "message": "уторак"
-  },
-  "day.3.short": {
-    "message": "уто"
-  },
-  "day.4.name": {
-    "message": "среда"
-  },
-  "day.4.short": {
-    "message": "сре"
-  },
-  "day.5.name": {
-    "message": "четвртак"
-  },
-  "day.5.short": {
-    "message": "чет"
-  },
-  "day.6.name": {
-    "message": "петак"
-  },
-  "day.6.short": {
-    "message": "пет"
-  },
-  "day.7.name": {
-    "message": "субота"
-  },
-  "day.7.short": {
-    "message": "суб"
-  },
   "debug.mode": {
     "message": "Отклањање грешака"
   },
@@ -957,78 +915,6 @@
   },
   "minSize_detail": {
     "message": "Није увек могуће одредити величину, посебно ако Тхундербирд још увек учитава слику, често због велике величине - у овом случају ће се тага ионако уклонити."
-  },
-  "month.1.name": {
-    "message": "јануар"
-  },
-  "month.1.short": {
-    "message": "јан"
-  },
-  "month.10.name": {
-    "message": "октобар"
-  },
-  "month.10.short": {
-    "message": "окт"
-  },
-  "month.11.name": {
-    "message": "новембар"
-  },
-  "month.11.short": {
-    "message": "нов"
-  },
-  "month.12.name": {
-    "message": "децембар"
-  },
-  "month.12.short": {
-    "message": "дец"
-  },
-  "month.2.name": {
-    "message": "фебруар"
-  },
-  "month.2.short": {
-    "message": "феб"
-  },
-  "month.3.name": {
-    "message": "март"
-  },
-  "month.3.short": {
-    "message": "мар"
-  },
-  "month.4.name": {
-    "message": "април"
-  },
-  "month.4.short": {
-    "message": "апр"
-  },
-  "month.5.name": {
-    "message": "мај"
-  },
-  "month.5.short": {
-    "message": "мај"
-  },
-  "month.6.name": {
-    "message": "јун"
-  },
-  "month.6.short": {
-    "message": "јун"
-  },
-  "month.7.name": {
-    "message": "јул"
-  },
-  "month.7.short": {
-    "message": "јул"
-  },
-  "month.8.name": {
-    "message": "август"
-  },
-  "month.8.short": {
-    "message": "авг"
-  },
-  "month.9.name": {
-    "message": "септембар"
-  },
-  "month.9.short": {
-    "message": "сеп"
   },
   "mozillas-basic-platform": {
     "message": "Мозилла пружа само основну платформу за испоруку нашег софтвера вама, крајњим корисницима. Ако треба да затражимо од наших корисника плаћање или подршку, не можемо то да урадимо са аддонс.тхундербирд.нет - то није „продавница апликација“ са уграђеним платним зидовима или управљањем лиценцама као што су иТунес или гоогле плаи."

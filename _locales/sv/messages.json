@@ -338,48 +338,6 @@
   "datetz.label": {
     "message": "Tidszon (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "söndag"
-  },
-  "day.1.short": {
-    "message": "sön"
-  },
-  "day.2.name": {
-    "message": "måndag"
-  },
-  "day.2.short": {
-    "message": "mån"
-  },
-  "day.3.name": {
-    "message": "tisdag"
-  },
-  "day.3.short": {
-    "message": "tis"
-  },
-  "day.4.name": {
-    "message": "onsdag"
-  },
-  "day.4.short": {
-    "message": "ons"
-  },
-  "day.5.name": {
-    "message": "torsdag"
-  },
-  "day.5.short": {
-    "message": "tor"
-  },
-  "day.6.name": {
-    "message": "fredag"
-  },
-  "day.6.short": {
-    "message": "fre"
-  },
-  "day.7.name": {
-    "message": "lördag"
-  },
-  "day.7.short": {
-    "message": "lör"
-  },
   "debug.mode": {
     "message": "Felsökningsläge"
   },
@@ -990,78 +948,6 @@
   },
   "minSize_detail": {
     "message": "Det är inte alltid möjligt att bestämma storleken korrekt, särskilt om Thunderbird fortfarande laddar bilden, ofta på grund av stor storlek - i detta fall kommer taggen att tas bort ändå."
-  },
-  "month.1.name": {
-    "message": "januari"
-  },
-  "month.1.short": {
-    "message": "jan"
-  },
-  "month.10.name": {
-    "message": "oktober"
-  },
-  "month.10.short": {
-    "message": "okt"
-  },
-  "month.11.name": {
-    "message": "november"
-  },
-  "month.11.short": {
-    "message": "nov"
-  },
-  "month.12.name": {
-    "message": "december"
-  },
-  "month.12.short": {
-    "message": "dec"
-  },
-  "month.2.name": {
-    "message": "februari"
-  },
-  "month.2.short": {
-    "message": "feb"
-  },
-  "month.3.name": {
-    "message": "mars"
-  },
-  "month.3.short": {
-    "message": "mar"
-  },
-  "month.4.name": {
-    "message": "april"
-  },
-  "month.4.short": {
-    "message": "apr"
-  },
-  "month.5.name": {
-    "message": "maj"
-  },
-  "month.5.short": {
-    "message": "maj"
-  },
-  "month.6.name": {
-    "message": "juni"
-  },
-  "month.6.short": {
-    "message": "jun"
-  },
-  "month.7.name": {
-    "message": "juli"
-  },
-  "month.7.short": {
-    "message": "jul"
-  },
-  "month.8.name": {
-    "message": "augusti"
-  },
-  "month.8.short": {
-    "message": "aug"
-  },
-  "month.9.name": {
-    "message": "september"
-  },
-  "month.9.short": {
-    "message": "sep"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla tillhandahåller bara en grundläggande plattform för att leverera vår programvara till dig, slutanvändarna. Om vi behöver be våra användare om betalning eller support kan vi inte göra detta från addons.thunderbird.net - det är inte en 'app store' med inbyggda betalväggar eller licenshantering som iTunes eller google play."

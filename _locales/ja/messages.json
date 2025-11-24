@@ -332,48 +332,6 @@
   "datetz.label": {
     "message": "タイムゾーン (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "日曜日"
-  },
-  "day.1.short": {
-    "message": "日"
-  },
-  "day.2.name": {
-    "message": "月曜日"
-  },
-  "day.2.short": {
-    "message": "月"
-  },
-  "day.3.name": {
-    "message": "火曜日"
-  },
-  "day.3.short": {
-    "message": "火"
-  },
-  "day.4.name": {
-    "message": "水曜日"
-  },
-  "day.4.short": {
-    "message": "水"
-  },
-  "day.5.name": {
-    "message": "木曜日"
-  },
-  "day.5.short": {
-    "message": "木"
-  },
-  "day.6.name": {
-    "message": "金曜日"
-  },
-  "day.6.short": {
-    "message": "金"
-  },
-  "day.7.name": {
-    "message": "土曜日"
-  },
-  "day.7.short": {
-    "message": "土"
-  },
   "debug.mode": {
     "message": "デバッグモード"
   },
@@ -975,78 +933,6 @@
   },
   "minSize_detail": {
     "message": "Thunderbird が画像を読み込み中の場合 (特にサイズが大きい場合) など、サイズを確定できないことがあります - その場合、無条件でタグが消去されます。"
-  },
-  "month.1.name": {
-    "message": "睦月"
-  },
-  "month.1.short": {
-    "message": "1 月"
-  },
-  "month.10.name": {
-    "message": "神無月"
-  },
-  "month.10.short": {
-    "message": "10 月"
-  },
-  "month.11.name": {
-    "message": "霜月"
-  },
-  "month.11.short": {
-    "message": "11 月"
-  },
-  "month.12.name": {
-    "message": "師走"
-  },
-  "month.12.short": {
-    "message": "12 月"
-  },
-  "month.2.name": {
-    "message": "如月"
-  },
-  "month.2.short": {
-    "message": "2 月"
-  },
-  "month.3.name": {
-    "message": "弥生"
-  },
-  "month.3.short": {
-    "message": "3 月"
-  },
-  "month.4.name": {
-    "message": "卯月"
-  },
-  "month.4.short": {
-    "message": "4 月"
-  },
-  "month.5.name": {
-    "message": "皐月"
-  },
-  "month.5.short": {
-    "message": "5 月"
-  },
-  "month.6.name": {
-    "message": "水無月"
-  },
-  "month.6.short": {
-    "message": "6 月"
-  },
-  "month.7.name": {
-    "message": "文月"
-  },
-  "month.7.short": {
-    "message": "7 月"
-  },
-  "month.8.name": {
-    "message": "葉月"
-  },
-  "month.8.short": {
-    "message": "8 月"
-  },
-  "month.9.name": {
-    "message": "長月"
-  },
-  "month.9.short": {
-    "message": "9 月"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla は、エンドユーザーであるあなたにソフトウェアを提供するための基本的なプラットフォームのみを提供します。ユーザーに支払いやサポートを依頼する必要がある場合、addons.thunderbird.net からこれを行うことはできません。これは、アプリ内決済機能や、iTunes や Google Play のようなライセンス管理が組み込まれた「アプリストア」ではありません。"

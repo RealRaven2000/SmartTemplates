@@ -335,48 +335,6 @@
   "datetz.label": {
     "message": "Strefa czasowa (+0100, +0200, … )"
   },
-  "day.1.name": {
-    "message": "Niedziela"
-  },
-  "day.1.short": {
-    "message": "Nie"
-  },
-  "day.2.name": {
-    "message": "Poniedziałek"
-  },
-  "day.2.short": {
-    "message": "Pon"
-  },
-  "day.3.name": {
-    "message": "Wtorek"
-  },
-  "day.3.short": {
-    "message": "Wt"
-  },
-  "day.4.name": {
-    "message": "Środa"
-  },
-  "day.4.short": {
-    "message": "Śr"
-  },
-  "day.5.name": {
-    "message": "Czwartek"
-  },
-  "day.5.short": {
-    "message": "Czw"
-  },
-  "day.6.name": {
-    "message": "Piątek"
-  },
-  "day.6.short": {
-    "message": "Pi"
-  },
-  "day.7.name": {
-    "message": "Sobota"
-  },
-  "day.7.short": {
-    "message": "So"
-  },
   "debug.mode": {
     "message": "Tryb debugowania"
   },
@@ -981,75 +939,6 @@
   },
   "minSize_detail": {
     "message": "Nie zawsze jest możliwe określenie rozmiaru, szczególnie jeśli Thunderbird wciąż ładuje obraz, często ze względu na duży rozmiar - w tym przypadku tag i tak zostanie usunięty."
-  },
-  "month.1.name": {
-    "message": "Styczeń"
-  },
-  "month.1.short": {
-    "message": "Sty"
-  },
-  "month.10.name": {
-    "message": "Październik"
-  },
-  "month.10.short": {
-    "message": "Paź"
-  },
-  "month.11.name": {
-    "message": "Listopad"
-  },
-  "month.11.short": {
-    "message": "List"
-  },
-  "month.12.name": {
-    "message": "Grudzień"
-  },
-  "month.12.short": {
-    "message": "Gru"
-  },
-  "month.2.name": {
-    "message": "Luty"
-  },
-  "month.2.short": {
-    "message": "Luty"
-  },
-  "month.3.name": {
-    "message": "Marzec"
-  },
-  "month.4.name": {
-    "message": "Kwiecień"
-  },
-  "month.4.short": {
-    "message": "Kwie"
-  },
-  "month.5.name": {
-    "message": "Maj"
-  },
-  "month.5.short": {
-    "message": "Maj"
-  },
-  "month.6.name": {
-    "message": "Czerwiec"
-  },
-  "month.6.short": {
-    "message": "Czer"
-  },
-  "month.7.name": {
-    "message": "Lipiec"
-  },
-  "month.7.short": {
-    "message": "Lip"
-  },
-  "month.8.name": {
-    "message": "Sierpień"
-  },
-  "month.8.short": {
-    "message": "Sier"
-  },
-  "month.9.name": {
-    "message": "Wrzesień"
-  },
-  "month.9.short": {
-    "message": "Wrze"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla zapewnia jedynie podstawową platformę do dostarczania naszego oprogramowania użytkownikom końcowym. Jeśli musimy poprosić naszych użytkowników o płatność lub wsparcie, nie możemy tego zrobić z addons.thunderbird.net - nie jest to „sklep z aplikacjami” z wbudowanymi paywallami lub zarządzaniem licencjami, jak iTunes czy Google Play."

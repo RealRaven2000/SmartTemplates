@@ -338,48 +338,6 @@
   "datetz.label": {
     "message": "Fuseau horaire (+0100, +0200, ... )"
   },
-  "day.1.name": {
-    "message": "Dimanche"
-  },
-  "day.1.short": {
-    "message": "Dim"
-  },
-  "day.2.name": {
-    "message": "Lundi"
-  },
-  "day.2.short": {
-    "message": "Lun"
-  },
-  "day.3.name": {
-    "message": "Mardi"
-  },
-  "day.3.short": {
-    "message": "Mar"
-  },
-  "day.4.name": {
-    "message": "Mercredi"
-  },
-  "day.4.short": {
-    "message": "Mer"
-  },
-  "day.5.name": {
-    "message": "Jeudi"
-  },
-  "day.5.short": {
-    "message": "Jeu"
-  },
-  "day.6.name": {
-    "message": "Vendredi"
-  },
-  "day.6.short": {
-    "message": "Ven"
-  },
-  "day.7.name": {
-    "message": "Samedi"
-  },
-  "day.7.short": {
-    "message": "Sam"
-  },
   "debug.mode": {
     "message": "Mode débogage"
   },
@@ -984,78 +942,6 @@
   },
   "minSize_detail": {
     "message": "Il n'est pas toujours possible de déterminer la taille, en particulier si Thunderbird est toujours en train de charger l'image, souvent en raison d'une grande taille - dans ce cas, la balise sera supprimée de toute façon."
-  },
-  "month.1.name": {
-    "message": "Janvier"
-  },
-  "month.1.short": {
-    "message": "Jan"
-  },
-  "month.10.name": {
-    "message": "Octobre"
-  },
-  "month.10.short": {
-    "message": "Oct"
-  },
-  "month.11.name": {
-    "message": "Novembre"
-  },
-  "month.11.short": {
-    "message": "Nov"
-  },
-  "month.12.name": {
-    "message": "Décembre"
-  },
-  "month.12.short": {
-    "message": "Déc"
-  },
-  "month.2.name": {
-    "message": "Février"
-  },
-  "month.2.short": {
-    "message": "Fév"
-  },
-  "month.3.name": {
-    "message": "Mars"
-  },
-  "month.3.short": {
-    "message": "Mar"
-  },
-  "month.4.name": {
-    "message": "Avril"
-  },
-  "month.4.short": {
-    "message": "Avr"
-  },
-  "month.5.name": {
-    "message": "Mai"
-  },
-  "month.5.short": {
-    "message": "Mai"
-  },
-  "month.6.name": {
-    "message": "Juin"
-  },
-  "month.6.short": {
-    "message": "Juin"
-  },
-  "month.7.name": {
-    "message": "Juillet"
-  },
-  "month.7.short": {
-    "message": "Juil"
-  },
-  "month.8.name": {
-    "message": "Août"
-  },
-  "month.8.short": {
-    "message": "Aoû"
-  },
-  "month.9.name": {
-    "message": "Septembre"
-  },
-  "month.9.short": {
-    "message": "Sep"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla fournit uniquement une plate-forme de base pour vous fournir nos logiciels, les utilisateurs finaux. Si nous avons besoin de demander à nos utilisateurs un paiement ou une assistance, nous ne pouvons pas le faire à partir de addons.thunderbird.net - ce n'est pas un `` magasin d'applications '' avec des paywalls intégrés ou une gestion des licences comme iTunes ou Google Play."
