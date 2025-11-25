@@ -1,9 +1,4 @@
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.16) 
-
-
-Some users may have seen a false incompatibility warning after updating from Thunderbird to v142. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. The previous version of SmartTemplates was already fully compatible with 142. 
-
-I raised a bug with Thunderbird to fix this: [Bugzilla 1986027](https://bugzilla.mozilla.org/show_bug.cgi?id=1986027), please add your observations there if you experienced this problem.
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.16.4) 
 
 
 **Improvements**
