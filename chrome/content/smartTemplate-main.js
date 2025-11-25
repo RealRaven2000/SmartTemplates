@@ -311,8 +311,21 @@ END LICENSE BLOCK
     # Clarified tooltips for loading and saving account templates:
     #          "Save templates (write, reply, forward) for $identity$…"
      
-  Version 4.16.1 - WIP
-    # [issue 402] Inconsistencies when Dragging + Editing Template Files in settings
+  Version 4.16.1 - 14/11/2025
+    # Improved inserting, updating and reordering template menu entries. 
+    # Drag and drop is now much more reliable and new items are inserted below the currently selected item.
+
+  Version 4.16.2 - 18/11/2025
+    # [issue 403] Fixed a regression with the wrong day name being calculated from the email date.
+
+  Version 4.16.3 - 21/11/2025
+    # [issue 404] Fixed broken edit template function in settings
+
+  Version 4.16.4 - 25/11/2025
+    # [issue 405] Refactored date names to not use calculations for day name / month name
+    # - use date directly instead of calculating numeral values and converting to text again
+    # - converted μs based calculation to ms
+    # - removed remaining hard coded day / month names (long & shortened forms) from language files
 
 
 =========================

@@ -8,6 +8,10 @@ I raised a bug with Thunderbird to fix this: [Bugzilla 1986027](https://bugzilla
 
 **Improvements**
 
+*   4.16.4: Improved date variables — Fixed unreliable creation of month and weekday names in localized formats.
+    - use date directly instead of calculating numeral values and converting to text again
+    - converted μs based calculation to ms
+    - removed remaining hard coded day / month names (long & shortened forms) from language files
 *   4.16.3 - Fixed broken editing function in settings [issue #404]
 *   4.16.2 - Fixed a regression with the wrong day name being calculated from the email date.[issue #403]
 *   4.16.1 -  Improved inserting, updating and reordering template menu entries. Drag and drop is now much more reliable and new items are inserted below the currently selected item.
