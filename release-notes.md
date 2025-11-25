@@ -3,7 +3,7 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 **Improvements**
 
-*   4.16.4: Improved date variables — Fixed unreliable creation of month and weekday names in localized formats.
+*   4.16.4: Improved date variables — Fixed unreliable creation of month and weekday names in localized formats. [issue #405]
     - use date directly instead of calculating numeral values and converting to text again
     - converted μs based calculation to ms
     - removed remaining hard coded day / month names (long & shortened forms) from language files
