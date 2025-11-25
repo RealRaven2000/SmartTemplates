@@ -13,6 +13,7 @@ END LICENSE BLOCK */
     addAriaHint,
     discountRate,
     formatAll,
+    hideNewsBox,
     openSupportForm,
     updateActions,
     updateWithSafeHtml,
@@ -232,6 +233,7 @@ END LICENSE BLOCK */
     ariaPoliteUpdate(title, messenger.i18n.getMessage("window-title", addonName));
 
     updateActions(addonName);
+    hideNewsBox();
 
     const innerWrapper = document.getElementById("innerwrapper");
     innerWrapper.querySelectorAll("a.contactsupport").forEach((link) => {

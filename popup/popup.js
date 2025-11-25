@@ -322,7 +322,29 @@ async function isSale() {
 
 // eslint-disable-next-line no-unused-vars
 async function updateActions(addonName) {
-  let licenseInfo = await messenger.runtime.sendMessage({command: "getLicenseInfo"});
+  let licenseInfo;
+  try {
+    // create a fallback in case background is not ready (rare occurrence)
+    licenseInfo = await messenger.runtime.sendMessage({ command: "getLicenseInfo" });
+  } catch (e) {
+    console.warn("SmartTemplates License fetch failed, using fallback:", e);
+    // fallback: pretend a valid Pro license to avoid showing too many irrelevant items
+    licenseInfo = {
+      status: 1, // valid
+      description: "Temporary fallback Pro license",
+      licensedDaysLeft: 365,
+      expiredDays: 0,
+      expiryDate: null,
+      email: "",
+      licenseKey: "",
+      decryptedPart: "",
+      keyType: 0, 
+      isValid: true,
+      isExpired: false,
+      graceDate: null,
+      trialDays: 0,
+    };    
+  }
   
   // LICENSING FLOW
   let isStandardUser = (licenseInfo.keyType == 2);
@@ -368,6 +390,12 @@ async function updateActions(addonName) {
   }
   
 }
+
+// eslint-disable-next-line no-unused-vars
+function hideNewsBox() {
+  hide("newsSection");
+}
+
 
 // Updates the element's content without triggering announcements by screen readers
 // eslint-disable-next-line no-unused-vars
