@@ -1101,6 +1101,7 @@ SmartTemplate4.classSmartTemplate = function() {
       return;
     }
     SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; // [issue 139] avoid duplicates
+    SmartTemplate4.PreprocessingFlags.isStartup = startup;
 
     util.logDebugOptional(
       "functions,functions.insertTemplate",
@@ -1147,6 +1148,7 @@ SmartTemplate4.classSmartTemplate = function() {
       // Clear template
       clearTemplate();
     } else {
+      SmartTemplate4.PreprocessingFlags.isStartup = false;
       if (gMsgCompose.type != msgComposeType.Template) {
         // Check identity changed or not; also check whether new template was requested from composer window
         if (

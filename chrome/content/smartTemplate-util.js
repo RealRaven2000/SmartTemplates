@@ -11,6 +11,7 @@ END LICENSE BLOCK
 */
 /*
   globals
+    gSpellChecker: readonly,
     SmartTemplates_Discounts: readonly
 */
 
@@ -1669,7 +1670,7 @@ SmartTemplate4.Util = {
         URL = URL + anchor;
       }
       // eslint-disable-next-line no-unused-vars
-    } catch { 
+    } catch {
       ;
     } finally {
       // eslint-disable-next-line no-unsafe-finally
@@ -1914,8 +1915,7 @@ SmartTemplate4.Util = {
             break;
           case "datelocal": // fall through
           case "dateshort":
-            (tm = new Date()),
-              (el.textContent = util.prTime2Str(tm.getTime(), generalFunction, 0));
+            (tm = new Date()), (el.textContent = util.prTime2Str(tm.getTime(), generalFunction, 0));
             resolved = true;
             break;
           default:
@@ -2121,7 +2121,7 @@ SmartTemplate4.Util = {
    * NOTES:
    *   additional parameters possible (enclose format string with "" to append following parameter)
    *   toclipboard - copy to clipboard
-   */  
+   */
   dateFormat: function (time, argument, timezone) {
     const util = SmartTemplate4.Util;
     let timeFormat,
@@ -2172,8 +2172,8 @@ SmartTemplate4.Util = {
       }
       if (SmartTemplate4.whatIsHourOffset || SmartTemplate4.whatIsMinuteOffset) {
         time +=
-          SmartTemplate4.whatIsHourOffset * 60 * 60 * 1000  +
-          SmartTemplate4.whatIsMinuteOffset * 60 * 1000 ; // add m hours / n minutes
+          SmartTemplate4.whatIsHourOffset * 60 * 60 * 1000 +
+          SmartTemplate4.whatIsMinuteOffset * 60 * 1000; // add m hours / n minutes
       }
       if (SmartTemplate4.whatIsTimezone) {
         // subtract UTC offset for timezone
@@ -2305,7 +2305,7 @@ SmartTemplate4.Util = {
       }
 
       if (SmartTemplate4.whatIsDateOffset) {
-        time += SmartTemplate4.whatIsDateOffset * 24 * 60 * 60 * 1000 ; // add n days
+        time += SmartTemplate4.whatIsDateOffset * 24 * 60 * 60 * 1000; // add n days
         util.logDebugOptional(
           "timeStrings",
           `Adding ${SmartTemplate4.whatIsDateOffset} days to time`
@@ -2313,7 +2313,7 @@ SmartTemplate4.Util = {
       }
       if (SmartTemplate4.whatIsHourOffset || SmartTemplate4.whatIsMinuteOffset) {
         time +=
-          SmartTemplate4.whatIsHourOffset * 60 * 60 * 1000  +
+          SmartTemplate4.whatIsHourOffset * 60 * 60 * 1000 +
           SmartTemplate4.whatIsMinuteOffset * 60 * 1000; // add n days
         util.logDebugOptional(
           "timeStrings",
@@ -3130,7 +3130,7 @@ SmartTemplate4.Util = {
 
   // -----------------------------------
   // get locale preference
-  getLocalePref: function getLocalePref() {
+  getLocalePref: function () {
     const util = SmartTemplate4.Util;
     try {
       let locale,
@@ -3213,127 +3213,129 @@ SmartTemplate4.Util = {
   },
 
   // isDisabled - force disabled (on retry)
+  /* The original code treats isDisabled as a snapshot of the global spellcheck setting 
+     when the function was called. It's mainly used to temporarily override the 
+     current state, then restore it later.
+     */
   setSpellchecker: async function (languages, isDisabled) {
     const util = SmartTemplate4.Util;
 
-    let retry = util.retrySpellCheck || 0,
-      inlineSpellChecker =
-        gSpellChecker.mInlineSpellChecker || GetCurrentEditor().getInlineSpellChecker(true);
-    try {
-      let spellChecker = inlineSpellChecker.spellChecker;
-      if (languages != "off") {
-        if (enableInlineSpellCheck) {
-          enableInlineSpellCheck(true);
-        } else {
-          gSpellChecker.enabled = true;
-        }
-        util.logDebug("Enabled automatic spellcheck");
-        if (languages == "on") {
-          // we're done here.
-          return;
-        }
-      }
-      if (!isDisabled) {
-        isDisabled = !gSpellChecker.enabled;
-      }
-      if (isDisabled && languages != "off") {
-        // temporarily enable
-        gSpellChecker.enabled = true;
-        spellChecker = inlineSpellChecker.spellChecker;
-      }
-      if (!spellChecker) {
-        if (retry < 5) {
-          retry++;
-          util.retrySpellCheck = retry;
-          util.logDebug("spellChecker not available, retrying later...{ attempt " + retry + " }");
-          // if spellChecker is not ready, we try again in 2 seconds.
-          setTimeout(function () {
-            SmartTemplate4.Util.setSpellchecker(languages, isDisabled); // force disabled if this is set globally.
-          }, 2000);
-          return;
-        } else {
-          let wrn = "Could not retrieve spellChecker, giving up after " + retry + " attempts.";
-          util.retrySpellCheck = 0;
-          throw wrn;
-        }
-      }
-      if (languages == "off") {
-        if (enableInlineSpellCheck) {
-          enableInlineSpellCheck(false);
-        }
-        gSpellChecker.enabled = false; // restore disabled status if this is a global setting.
-        util.logDebug("Disabled automatic spellcheck");
+    let retry = util?.retrySpellCheck || 0;
+
+    // ──────────────────────────────────────────────
+    // 1. GET SPELLCHECKER OR RETRY
+    // ──────────────────────────────────────────────
+    const inlineSpellChecker =
+      gSpellChecker.mInlineSpellChecker || GetCurrentEditor().getInlineSpellChecker(true);
+    const spellChecker = inlineSpellChecker?.spellChecker;
+
+    if (!spellChecker) {
+      if (retry < 5) {
+        util.retrySpellCheck = ++retry;
+        util.logDebug(`spellChecker not ready – retry ${retry}`);
+        setTimeout(() => SmartTemplate4.Util.setSpellchecker(languages, isDisabled), 2000);
         return;
       }
-
       util.retrySpellCheck = 0;
+      return util.showSmartTemplatesMessage({
+        msg:
+          util.getBundleString("st.notification.spellcheck.error") +
+          "\nCould not access spellChecker.",
+        features: ["ok"],
+      });
+    }
+    util.retrySpellCheck = 0;
+
+    // ──────────────────────────────────────────────
+    // 2. NORMALIZE INPUT
+    // ──────────────────────────────────────────────
+    const parts = languages.split(",").map((p) => p.trim());
+    let status = null;
+
+    // detect control word
+    if (["on", "off"].includes(parts[0].toLowerCase())) {
+      status = parts.shift().toLowerCase(); // remove control word
+    }
+
+    // remaining parts are languages (may now be 0+ items)
+    const langArray = parts; // keep original case
+    switch (status) {
+      case "off":
+        enableInlineSpellCheck?.(false);
+        gSpellChecker.enabled = false;
+        util.logDebug("Disabled automatic spellcheck");
+        break;
+      case "on": // fall-through
+      default:
+        enableInlineSpellCheck?.(true);
+        gSpellChecker.enabled = true;
+        util.logDebug("Enabled automatic spellcheck");
+        break;
+    }
+    if (langArray.length ==0) {
+      // we're done here.
+      return;
+    }
+
+    try {
       // Cc['@mozilla.org/spellchecker/engine;1'].getService(Ci.mozISpellCheckingEngine).getDictionaryList(o1, o2);
-      let dictList = spellChecker.GetDictionaryList(),
-        count = dictList.length,
-        found = false;
-      if (count == 0) {
-        let wrn = util.getBundleString("st.notification.spellcheck.noDictionary");
-        throw wrn;
+      // ──────────────────────────────────────────────
+      // 3. MATCH LANGUAGES (EXACT + PARTIAL)
+      // ──────────────────────────────────────────────
+      let dictList = spellChecker.GetDictionaryList();
+      if (!dictList?.length) {
+        throw util.getBundleString("st.notification.spellcheck.noDictionary");
       }
 
-      let langArray = languages.split(","),
-        invalidLanguages = [];
-      for (let l = 0; l < langArray.length; l++) {
-        let foundOne = false;
-        let language = langArray[l];
-        if (language.length >= 2) {
-          // exact match
-          for (let i = 0; i < dictList.length; i++) {
-            if (dictList[i] == language) {
-              foundOne = true;
-              found = true;
-              language = dictList[i];
-              break;
-            }
-          }
-          // partial match
-          if (!foundOne) {
-            for (let i = 0; i < dictList.length; i++) {
-              if (dictList[i].startsWith(language)) {
-                foundOne = true;
-                found = true;
-                language = dictList[i];
-                break;
-              }
-            }
-          }
+      const valid = [];
+      const invalidLanguages = [];
+
+      for (const req of langArray) {
+        if (!req) {
+          continue;
         }
-        if (!foundOne) {
-          invalidLanguages.push(langArray[l]);
+
+        // exact match
+        let match = dictList.find((d) => d === req);
+
+        // fallback partial match
+        if (!match) {
+          match = dictList.find((d) => d.startsWith(req));
         }
-        // write back correct entry, eliminate invalid ones.
-        langArray[l] = foundOne ? language : "";
+
+        match ? valid.push(match) : invalidLanguages.push(req);
       }
 
-      if (found) {
-        util.logDebug("Setting spellchecker / document language to: " + languages);
-        document.documentElement.setAttribute("lang", ""); // force resetting
+      // ──────────────────────────────────────────────
+      // 4. APPLY RESULTS
+      // ──────────────────────────────────────────────
+      // remember if spellchecker was originally disabled
+      const restoreDisabled = Boolean(isDisabled === true);
+      if (valid.length) {
+        util.logDebug(`Setting spellchecker / document language to: ${valid.join(", ")}`);
 
-        let passArray = langArray.filter((x) => x != ""); // remove invalid entries!
-        if (typeof gActiveDictionaries == "object") {
-          // Tb102 supports multiple spellcheck languages active at the same time
-          await ComposeChangeLanguage(passArray);
-        } else {
-          await ComposeChangeLanguage(passArray[0]); // Tb91: only 1 single language supported // not async in 91, but await does no harm either
-        }
-        if (isDisabled) {
-          // force restoring disabled status
-          gSpellChecker.enabled = false;
-          util.logDebug("Disabling automatic spellcheck according to global setting.");
-        }
+        // Force Composer to accept language change:
+        // Reset lang attribute → triggers Composer's internal behavior
+        // similar to selecting the language via the UI.
+        document.documentElement.setAttribute("lang", "");
+
+        await ComposeChangeLanguage(valid); // Since Tb102: multiple spellcheck langauges allowed
       } else {
+        // no match at all → throw error
         let wrn = util.getBundleString("st.notification.spellcheck.notFound");
-        throw wrn.replace("{0}", languages);
+        throw wrn.replace("{0}", langArray.join(", "));
       }
+
+      if (restoreDisabled) {
+        // restore original disabled state
+        // This must run *after language change* – otherwise Composer ignores it.
+        gSpellChecker.enabled = false;
+        util.logDebug("Restoring spellchecker disabled state.");
+      }
+
       if (invalidLanguages.length) {
-        console.log(
-          "%spellcheck()% didn't find the following language entries: \n" +
-            invalidLanguages.toString()
+        util.logDebug(
+          `%spellcheck%: didn't find the following language entries:\n${invalidLanguages.join(", ")}`
         );
       }
     } catch (ex) {
@@ -4098,8 +4100,10 @@ SmartTemplate4.Util = {
             })
           );
 
-          const fullDuplicate = rules.every(r => existingStyles.has(r));
-          if (fullDuplicate) { continue; }
+          const fullDuplicate = rules.every((r) => existingStyles.has(r));
+          if (fullDuplicate) {
+            continue;
+          }
         }
 
         container.ownerDocument.head.appendChild(sanitized);
