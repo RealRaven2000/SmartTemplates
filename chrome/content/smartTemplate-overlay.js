@@ -289,7 +289,7 @@ SmartTemplate4.getHeadersAsync = async function() {
   async function getMimeMessage(msgHdr) {
     // Use jsmime based MimeParser to read NNTP messages, which are not
     // supported by MsgHdrToMimeMessage. No encryption support!
-    if (msgHdr.folder.server.type == "nntp") {
+    if (msgHdr.folder && msgHdr.folder?.server?.type == "nntp") {
       try {
         let raw = await MsgHdrToRawMessage(msgHdr);
         let mimeMsg = MimeParser.extractMimeMsg(raw, {
@@ -2195,53 +2195,50 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       
 	let hdr = SmartTemplate4.MessageHdr; // created earlier, now is a Map of header arrays (one array per header)
 			
-  if (gMsgCompose.originalMsgURI.indexOf(".eml")>0) { 
-		let messageWindow = Services.wm.getMostRecentWindow("mail:messageWindow"),
-				messageHeaderSink = messageWindow.messageHeaderSink;
-		charset = gMsgCompose.compFields.characterSet;
-		// with .eml file, use gExpandedHeaderView[hdrName] collection?
-		// see also messagepane-loaded event in msgHeaderView
-		// see also gMessageDisplay.displayExternalMessage
-		// messenger.msgHdrFromURI(sourceUri)
-		// messageHeaderSink.dummyMsgHeader  (has author, recipients, subject, deliveredTo, messageId)
-		// messageHeaderSink.dummyMsgHeader.__proto__  has more fields, such as flags, datee, ccList, accountKey, listPost, mime2DecodedSubject() getter...)
-		msgDbHdr =  messageHeaderSink.dummyMsgHeader;
-		try {
-			hdr = (composeType != "new") ? new this.clsGetAltHeader(msgDbHdr) : null;
-		}
-		catch(ex) {
-			util.logException('fatal error - clsGetAltHeader() failed', ex);
-		}
-	}
-	else {
-		try {
-			msgDbHdr = (composeType != "new") && (gMsgCompose.originalMsgURI) ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
+  if (gMsgCompose.originalMsgURI.indexOf(".eml") > 0) {
+    let messageWindow = Services.wm.getMostRecentWindow("mail:messageWindow"),
+      messageHeaderSink = messageWindow.messageHeaderSink;
+    if (messageHeaderSink?.dummyMsgHeader) {
+      msgDbHdr = messageHeaderSink.dummyMsgHeader;  // removed in Tb 128
+      try {
+        hdr = composeType != "new" ? new this.clsGetAltHeader(msgDbHdr) : null;
+      } catch (ex) {
+        util.logException("fatal error - clsGetAltHeader() failed", ex);
+      }
+    }
+  } 
+  
+  if (!msgDbHdr) {
+    try {
+      msgDbHdr =
+        composeType != "new" && gMsgCompose.originalMsgURI
+          ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI)
+          : null;
       if (msgDbHdr) {
-        charset = (composeType != "new") ? msgDbHdr.Charset : null;
+        charset = composeType != "new" ? msgDbHdr.Charset : null;
       } else {
         charset = gMsgCompose.compFields.characterSet; // snippets
       }
-      
-			// -- this line wasn't doing anything before "msgDbHdr.folder.charset; "
+
+      // -- this line wasn't doing anything before "msgDbHdr.folder.charset; "
       //    defaulting to folder's charset would have been probably wrong anyway
-			if (!charset && msgDbHdr) {
-				charset = gMsgCompose.compFields.characterSet; // 
-			}
-		}
-		catch (ex) {
-			util.logException('messenger.msgHdrFromURI failed:', ex);
-			// doesn't return a header but throws!
-			charset = gMsgCompose.compFields.characterSet;
-		}
-		try {
-			hdr = (composeType != "new") && (gMsgCompose.originalMsgURI) ? 
-			  SmartTemplate4.getHeadersWrapper(gMsgCompose.originalMsgURI) : 
-				new this.clsGetAltHeader(gMsgCompose.compFields);
-		}
-		catch(ex) {
-			util.logException('fatal error - classGetHeaders() failed', ex);
-		}
-	}
+      if (!charset && msgDbHdr) {
+        charset = gMsgCompose.compFields.characterSet; //
+      }
+    } catch (ex) {
+      util.logException("messenger.msgHdrFromURI failed:", ex);
+      // doesn't return a header but throws!
+      charset = gMsgCompose.compFields.characterSet;
+    }
+    try {
+      hdr =
+        composeType != "new" && gMsgCompose.originalMsgURI
+          ? SmartTemplate4.getHeadersWrapper(gMsgCompose.originalMsgURI)
+          : new this.clsGetAltHeader(gMsgCompose.compFields);
+    } catch (ex) {
+      util.logException("fatal error - classGetHeaders() failed", ex);
+    }
+  }
 	// append composeType to hdr class.
 	if(hdr) {
 		hdr.composeType = composeType;
@@ -3295,7 +3292,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "spellcheck": {
           // use first argument to switch dictionary language.
           let lang = removeParentheses(arg);
-          util.setSpellchecker(lang);
+          if (!SmartTemplate4.PreprocessingFlags.isStartup) {
+            util.setSpellchecker(lang);
+            return "";
+          }
+          
+          setTimeout(() => {
+            util.setSpellchecker(lang);
+          }, prefs.getMyIntPref("spellcheckDelay"));
           return "";
         }
         case "logMsg": // For testing purposes - add a comment line to email and error console

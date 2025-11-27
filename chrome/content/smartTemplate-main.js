@@ -327,6 +327,11 @@ END LICENSE BLOCK
     # - converted μs based calculation to ms
     # - removed remaining hard coded day / month names (long & shortened forms) from language files
 
+  Version 4.16.5 - WIP    
+    # [issue 406] replying to an email that opened from an eml file: 
+    #   no SmartTemplates functionality works
+    # [issue 407] Intermittently, %spellcheck()% switch doesn't work when loading the template during reply
+
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
