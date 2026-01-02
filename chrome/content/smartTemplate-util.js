@@ -3002,7 +3002,7 @@ SmartTemplate4.Util = {
   //--------------------------------------------------------------------
   // @arr = Array of parameters
   // @paramPos = [optional] which parameter will be converted, defaults to 0 (first parameter)
-  combineEscapedParams: function (arr, paramPos = 0) {
+  combineEscapedParams: function (arr, paramPos = 0, fixDanglingQuotes = false) {
     let finalParams = [];
 
     paramPos = Math.min(paramPos, arr.length - 1); // avoid overflow
@@ -3010,17 +3010,29 @@ SmartTemplate4.Util = {
       finalParams.push(arr[i]);
     }
 
-    if (arr[paramPos].endsWith("\\") && arr.length > 1) {
-      // cut off the escape character, insert comma and combine 2 params into a single string
-      finalParams.push(`${arr[paramPos].slice(0, -1)},${arr[paramPos + 1]}`);
-      for (let i = paramPos + 2; i < arr.length; i++) {
-        finalParams.push(arr[i]);
+    let current = arr[paramPos];
+
+    if (fixDanglingQuotes && current.startsWith('"') && !current.endsWith('"')) {
+      // keep appending next params until we find the closing quote
+      for (let i = paramPos + 1; i < arr.length; i++) {
+        current += "," + arr[i];
+        if (arr[i].endsWith('"')) {
+          paramPos = i;
+          break;
+        }
       }
-      // do it again, in case there are multiple commas in the first parameter!
-      return this.combineEscapedParams(finalParams, paramPos); // do it again, in case next param is also cut off unintentionally
-    } else {
-      finalParams = arr;
+    } else if (current.endsWith("\\") && arr.length > 1) {
+      // handle escaped comma logic
+      current = current.slice(0, -1) + "," + arr[paramPos + 1];
+      paramPos += 1;
     }
+
+    finalParams.push(current);
+
+    for (let i = paramPos + 1; i < arr.length; i++) {
+      finalParams.push(arr[i]);
+    }
+
     return finalParams;
   },
 
