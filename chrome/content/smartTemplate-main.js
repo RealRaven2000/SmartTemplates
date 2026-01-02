@@ -327,10 +327,12 @@ END LICENSE BLOCK
     # - converted μs based calculation to ms
     # - removed remaining hard coded day / month names (long & shortened forms) from language files
 
-  Version 4.16.5 - WIP    
+  Version 4.17 - WIP    
     # [issue 406] replying to an email that opened from an eml file: 
     #   no SmartTemplates functionality works
+    # [issue 409] SmartTemplates does not reuse the correct last template for different reply types.
     # [issue 407] Intermittently, %spellcheck()% switch doesn't work when loading the template during reply
+    # [issue 408] Reply template unexpectedly removes meta info lines within quoted text
 
 
 =========================
@@ -482,18 +484,24 @@ var SmartTemplate4 = {
         composeType = this.smartTemplate.setComposeCase(gMsgCompose.type);
       }
       try {
-        let setting = "fileTemplates.mru." + composeType;
-        let isNotify = false;
-        switch (composeType) {
-          case "new":
-            theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting));
-            break;
-          case "rsp":
-            theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting));
-            break;
-          case "fwd":
-            theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting));
-            break;
+        // [issue 409] map compose types to MRU keys
+        const MRU_KEYS = {
+          [Ci.nsIMsgCompType.New]: "new",
+          [Ci.nsIMsgCompType.NewsPost]: "new",
+          [Ci.nsIMsgCompType.Reply]: "rsp",
+          [Ci.nsIMsgCompType.ReplyAll]: "rsp.all",
+          [Ci.nsIMsgCompType.ReplyToList]: "rsp.list",
+          [Ci.nsIMsgCompType.ForwardAsAttachment]: "fwd",
+          [Ci.nsIMsgCompType.ForwardInline]: "fwd",
+          [Ci.nsIMsgCompType.ReplyToSender]: "rsp", // 6
+          [Ci.nsIMsgCompType.ReplyToGroup]: "rsp", // 7
+          [Ci.nsIMsgCompType.ReplyToSenderAndGroup]: "rsp", // 8
+        };
+        const mruKey = MRU_KEYS[gMsgCompose.type];
+        const isNotify = prefs.getMyBoolPref("defaultTemplate.useLastNotify");
+        const setting = "fileTemplates.mru." + mruKey;
+        if (["new", "rsp", "fwd"].includes(composeType)) {
+          theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting));
         }
         if (theFileTemplate) {
           util.logHighlight(
@@ -502,12 +510,15 @@ var SmartTemplate4 = {
             "rgb(0,80,0)",
             theFileTemplate
           );
-          isNotify = prefs.getMyBoolPref("defaultTemplate.useLastNotify");
         }
         if (isNotify) {
           const truncate = (txt, maxLen) => {
-            if (typeof txt !== "string") {return "";}
-            if (txt.length <= maxLen) {return txt;}
+            if (typeof txt !== "string") {
+              return "";
+            }
+            if (txt.length <= maxLen) {
+              return txt;
+            }
             return "…" + txt.slice(txt.length - maxLen);
           };
           const fileName = theFileTemplate.path.split("\\").pop();
@@ -533,19 +544,14 @@ var SmartTemplate4 = {
       if (theFileTemplate.isAutoSend) {
         flags.isAutoSend = true;
       }
-
-      ownerWin.SmartTemplate4.fileTemplates.armedEntry = null;
+      // [issue 379] problem here:
+      ownerWin.SmartTemplate4.fileTemplates.armedEntryReset();
       util.logDebugOptional(
         "fileTemplates",
         "notifyComposeBodyReady: \n" +
-          "Consuming fileTemplate: " +
-          theFileTemplate.label +
-          "\n" +
-          "composeType:" +
-          theFileTemplate.composeType +
-          "\n" +
-          "path:" +
-          theFileTemplate.path
+          `Consuming fileTemplate: ${theFileTemplate.label}\n` +
+          `composeType: ${theFileTemplate.composeType}\n` +
+          `path: ${theFileTemplate.path}`
       );
 
       // composer context:
