@@ -126,8 +126,8 @@ END LICENSE BLOCK */
       verInfo,
       messenger.i18n
         .getMessage("active-version-info", [addonVer, appVer])
-        .replace("{boldStart}", "<b class='versionnumber'>")
-        .replace("{boldEnd}", "</b>"),
+        .replace("{bold}", "<b class='versionnumber'>")
+        .replace("{/bold}", "</b>"),
       true
     );
 
@@ -139,8 +139,8 @@ END LICENSE BLOCK */
       specialOffer,
       messenger.i18n
         .getMessage("special-offer-content", [salesEnd, discountRate.discountPro])
-        .replace(/\{boldStart\}/g, "<b>")
-        .replace(/\{boldEnd\}/g, "</b>")
+        .replace(/\{bold\}/g, "<b>")
+        .replace(/\{\/bold\}/g, "</b>")
         .replace(/\{linkStart\}/, "<a id='stdLink'>")
         .replace(/\{linkEnd\}/g, "</a>")
         .replace(/\{linkStartPro\}/, "<a id='proLink'>"),
@@ -153,8 +153,8 @@ END LICENSE BLOCK */
       // note: expiry day is set in popup.js "SALE_END_DATE" variable
       messenger.i18n
         .getMessage("special-offer-renew", [salesEnd, discountRate.discountRenewal])
-        .replace(/\{boldStart\}/g, "<b>")
-        .replace(/\{boldEnd\}/g, "</b>"),
+        .replace(/\{bold\}/g, "<b>")
+        .replace(/\{\/bold\}/g, "</b>"),
       true
     );
 
@@ -164,8 +164,8 @@ END LICENSE BLOCK */
       // note: expiry day is set in popup.js "SALE_END_DATE" variable
       messenger.i18n
         .getMessage("special-offer-upgrade", [salesEnd, discountRate.discountUpgrade])
-        .replace(/\{boldStart\}/g, "<b>")
-        .replace(/\{boldEnd\}/g, "</b>")
+        .replace(/\{bold\}/g, "<b>")
+        .replace(/\{\/bold\}/g, "</b>")
         .replace(/\{linkStart\}/, "<a id='stdLink'>")
         .replace(/\{linkEnd\}/, "</a>"),
       true
@@ -184,8 +184,8 @@ END LICENSE BLOCK */
     // }
     const txtSI = messenger.i18n
       .getMessage("special-offer-intro", addonName)
-      .replace(/\{boldStart\}/g, "<b>")
-      .replace(/\{boldEnd\}/g, "</b>")
+      .replace(/\{bold\}/g, "<b>")
+      .replace(/\{\/bold\}/g, "</b>")
       .replace("{name}", userName);
     updateWithSafeHtml(".specialOfferIntro", txtSI);
 
@@ -195,8 +195,8 @@ END LICENSE BLOCK */
       specialOfferStandard,
       messenger.i18n
         .getMessage("license-standard-special-offer", [userName, discountRate.discountUpgrade])
-        .replace(/\{boldStart\}/g, "<b>")
-        .replace(/\{boldEnd\}/g, "</b>"),
+        .replace(/\{bold\}/g, "<b>")
+        .replace(/\{\/bold\}/g, "</b>"),
       true
     );
 
@@ -205,8 +205,8 @@ END LICENSE BLOCK */
       specialOfferTerms,
       messenger.i18n
         .getMessage("license-standard-special-terms", [salesEnd])
-        .replace(/\{boldStart\}/g, "<b>")
-        .replace(/\{boldEnd\}/g, "</b>"),
+        .replace(/\{bold\}/g, "<b>")
+        .replace(/\{\/bold\}/g, "</b>"),
       true
     );
 

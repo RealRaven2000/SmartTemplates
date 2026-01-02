@@ -637,7 +637,7 @@
     }
   },
   "license-standard-special-offer": {
-    "message": "{boldStart} $username$ yang terhormat{boldEnd}, Anda sekarang dapat meningkatkan ke SmartTemplates Pro dengan {boldStart} $discount$ lebih murah{boldEnd} - sambil juga memperpanjang lisensi Anda selama setahun penuh. Perubahan besar lainnya di Thunderbird akan segera hadir dan saya butuh {boldStart} bantuan Anda {boldEnd} untuk mengikutinya!",
+    "message": "{bold} $username$ yang terhormat{/bold}, Anda sekarang dapat meningkatkan ke SmartTemplates Pro dengan {bold} $discount$ lebih murah{/bold} - sambil juga memperpanjang lisensi Anda selama setahun penuh. Perubahan besar lainnya di Thunderbird akan segera hadir dan saya butuh {bold} bantuan Anda {/bold} untuk mengikutinya!",
     "placeholders": {
       "discount": {
         "content": "$2",
@@ -650,7 +650,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Penawaran khusus ini tersedia dari {boldStart}hingga $expiry${boldEnd}.",
+    "message": "Penawaran khusus ini tersedia dari {bold}hingga $expiry${/bold}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
@@ -1342,7 +1342,7 @@
   },
   "whats-new-list": {
     "description": "🇮🇩 change log",
-    "message": "{L1}{boldStart}4.16.4: Variabel tanggal diperbarui{boldEnd} — Perbaikan pembuatan nama bulan dan hari yang tidak andal dalam format lokal. Add-on sekarang menggunakan metode standar untuk membuatnya di semua bahasa, menghapus kode lama, dan meningkatkan efisiensi. [issue 405]{L2}{L1}4.16.3: Fungsi edit template di pengaturan diperbaiki [issue 404]{L2}{L1}4.16.1: Peningkatan penyisipan, pembaruan, dan pengurutan ulang menu template. Drag & drop kini lebih andal dan item baru disisipkan di bawah item yang dipilih saat ini.{L2}{L1}Kompatibilitas dengan Thunderbird 146.{L2}{L1}Mencegah duplikasi elemen <style> saat digabungkan ke <head>. Untuk mengonfigurasi aturan terkait, buka Pengaturan lanjutan / Miscellaneous [issue 399].{L2}{L1}Tooltip untuk memuat dan menyimpan template akun diperjelas: Simpan template (tulis, balas, teruskan) untuk identitas…{L2}{L1}Tombol status bar yang hilang di Thunderbird 142+ dikembalikan [issue 401].{L2}"
+    "message": "{L}{bold}4.16.4: Variabel tanggal diperbarui{/bold} — Perbaikan pembuatan nama bulan dan hari yang tidak andal dalam format lokal. Add-on sekarang menggunakan metode standar untuk membuatnya di semua bahasa, menghapus kode lama, dan meningkatkan efisiensi. [issue 405]{/L}{L}4.16.3: Fungsi edit template di pengaturan diperbaiki [issue 404]{/L}{L}4.16.1: Peningkatan penyisipan, pembaruan, dan pengurutan ulang menu template. Drag & drop kini lebih andal dan item baru disisipkan di bawah item yang dipilih saat ini.{/L}{L}Kompatibilitas dengan Thunderbird 146.{/L}{L}Mencegah duplikasi elemen <style> saat digabungkan ke <head>. Untuk mengonfigurasi aturan terkait, buka Pengaturan lanjutan / Miscellaneous [issue 399].{/L}{L}Tooltip untuk memuat dan menyimpan template akun diperjelas: Simpan template (tulis, balas, teruskan) untuk identitas…{/L}{L}Tombol status bar yang hilang di Thunderbird 142+ dikembalikan [issue 401].{/L}"
   },
   "xsent_long_result.label": {
     "message": "Hasil: Minggu,20/12/2011 pada pukul 16:24"

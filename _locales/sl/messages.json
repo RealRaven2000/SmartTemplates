@@ -49,7 +49,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Zdaj izvajate {boldStart} različico $addonVer$ {boldEnd} na Thunderbird $appVer$.",
+    "message": "Zdaj izvajate {bold} različico $addonVer$ {/bold} na Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -811,7 +811,7 @@
     "message": "Kot imetnik standardne licence SmartTemplates ste zdaj upravičeni do posodobitve s popustom in podaljšanja za celo leto. Za več informacij kliknite gumb [Nadgradnja na profesionalni nivo] pod standardno licenco."
   },
   "license-standard-special-offer": {
-    "message": "{boldStart}Dragi $username$ {boldEnd}, zdaj lahko nadgradite na SmartTemplates Pro za {boldStart} $discount$ manj {boldEnd} - hkrati pa licenco podaljšate za celo leto. Prihaja še več sprememb na Thunderbirdu in za nadaljevanje potrebujem {boldStart} vašo pomoč {boldEnd}!",
+    "message": "{bold}Dragi $username$ {/bold}, zdaj lahko nadgradite na SmartTemplates Pro za {bold} $discount$ manj {/bold} - hkrati pa licenco podaljšate za celo leto. Prihaja še več sprememb na Thunderbirdu in za nadaljevanje potrebujem {bold} vašo pomoč {/bold}!",
     "placeholders": {
       "discount": {
         "content": "$2",
@@ -824,7 +824,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Ta posebna ponudba je na voljo od {boldStart} do $expiry$ {boldEnd}.",
+    "message": "Ta posebna ponudba je na voljo od {bold} do $expiry$ {/bold}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
@@ -974,25 +974,25 @@
     "message": "Zadnje novice"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} Vse nove funkcije, popravki napak in dolgoročna združljivost so mogoči zaradi vaše podpore.{P2}{P1 class=specialOffer} Da bi podprli razvoj SmartTemplates, lahko svojo licenco obnovite s popustom do {salesEnd}.{P2}{P1 class=bottomhint}🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {P2}"
+    "message": "{P} Vse nove funkcije, popravki napak in dolgoročna združljivost so mogoči zaradi vaše podpore.{/P}{P class=specialOffer} Da bi podprli razvoj SmartTemplates, lahko svojo licenco obnovite s popustom do {salesEnd}.{/P}{P class=bottomhint}🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} Tudi vi lahko podprete prihodnjo združljivost z licenco.{P2}{P1} Vse nove funkcije, popravki in dolgoročna združljivost so mogoči zaradi vaše podpore.{P2}{P1 class=specialOffer} Za podporo razvoju SmartTemplates lahko do {salesEnd} kupite Standard ali Pro licenco s popustom.{P2}{P1 class=bottomhint} 🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {P2}"
+    "message": "{P} Tudi vi lahko podprete prihodnjo združljivost z licenco.{/P}{P} Vse nove funkcije, popravki in dolgoročna združljivost so mogoči zaradi vaše podpore.{/P}{P class=specialOffer} Za podporo razvoju SmartTemplates lahko do {salesEnd} kupite Standard ali Pro licenco s popustom.{/P}{P class=bottomhint} 🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Hvala, ker podpirate SmartTemplates z Standard licenco.{P2}{P1} Ne glede na to, ali je vaša licenca potekla ali še vedno aktivna, jo lahko nadgradite na Pro po odlični ceni do {salesEnd}. Nadgradnja po poteku licence vam zagotavlja eno leto uporabe od datuma nakupa.{P2}{P1 class=bottomhint} 🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {P2}"
+    "message": "{P} Hvala, ker podpirate SmartTemplates z Standard licenco.{/P}{P} Ne glede na to, ali je vaša licenca potekla ali še vedno aktivna, jo lahko nadgradite na Pro po odlični ceni do {salesEnd}. Nadgradnja po poteku licence vam zagotavlja eno leto uporabe od datuma nakupa.{/P}{P class=bottomhint} 🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Hvala, ker podpirate SmartTemplates s Pro licenco — to omogoča vse nove funkcije, popravke in dolgoročno združljivost.{P2}"
+    "message": "{P} Hvala, ker podpirate SmartTemplates s Pro licenco — to omogoča vse nove funkcije, popravke in dolgoročno združljivost.{/P}"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} V naslednji veliki izdaji {boldEnd}: Thunderbird vas bo kmalu pozval, da izberete želeno pot posodabljanja – letni ESR ali hitrejše mesečne izdaje. {ARelease}Več o novem modelu izdaje{A2}.{U1} {L1}Različica ESR bo ostala na v140, povečevala bo le manjše številke različic in vključevala le varnostne popravke in odpravljene napake, kar je pogosto bolj primerno za poslovna okolja.{L2} {L1}Mesečni cikel izdaj bo prinašal nove funkcije in posodobitve vmesnika, ko bodo na voljo. Preverite, ali vaši trenutni dodatki podpirajo ta model izdaje. Za pomoč lahko namestite {AcompatCheck}Add-on Compatibility Check{A2}.{L2} {U2}{P2}{P1} Veseli smo, da lahko sporočimo, da je SmartTemplates popolnoma združljiv z Thunderbirdom 140, naslednjo različico z razširjeno podporo (ESR). To pomeni zanesljivost in brezskrbnost v naslednjem večjem ciklu podpore.{P2}{P1} SmartTemplates trenutno še vedno podpira uporabnike Thunderbirda 115 in novejših. V naslednjem letu bomo morda podporo za Thunderbird 115 ukinili v korist različice 128 ali novejših, ko bomo dodajali nove funkcije.{P2}{P1} Neprestano spremljamo spremembe v Thunderbirdu, da zagotovimo, da SmartTemplates ostane združljiv in zanesljiv, ne glede na izbrano pot posodobitev.{P2}"
+    "message": "{P}{bold} V naslednji veliki izdaji {/bold}: Thunderbird vas bo kmalu pozval, da izberete želeno pot posodabljanja – letni ESR ali hitrejše mesečne izdaje. {ARelease}Več o novem modelu izdaje{/A}.{U} {L}Različica ESR bo ostala na v140, povečevala bo le manjše številke različic in vključevala le varnostne popravke in odpravljene napake, kar je pogosto bolj primerno za poslovna okolja.{/L} {L}Mesečni cikel izdaj bo prinašal nove funkcije in posodobitve vmesnika, ko bodo na voljo. Preverite, ali vaši trenutni dodatki podpirajo ta model izdaje. Za pomoč lahko namestite {AcompatCheck}Add-on Compatibility Check{/A}.{/L} {/U}{/P}{P} Veseli smo, da lahko sporočimo, da je SmartTemplates popolnoma združljiv z Thunderbirdom 140, naslednjo različico z razširjeno podporo (ESR). To pomeni zanesljivost in brezskrbnost v naslednjem večjem ciklu podpore.{/P}{P} SmartTemplates trenutno še vedno podpira uporabnike Thunderbirda 115 in novejših. V naslednjem letu bomo morda podporo za Thunderbird 115 ukinili v korist različice 128 ali novejših, ko bomo dodajali nove funkcije.{/P}{P} Neprestano spremljamo spremembe v Thunderbirdu, da zagotovimo, da SmartTemplates ostane združljiv in zanesljiv, ne glede na izbrano pot posodobitev.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Pomembno:{boldEnd} Thunderbird nadaljuje s svojim mesečnim ciklom izdaj. {P2}{P1} Nekateri uporabniki so morda videli napačno opozorilo o nezdružljivosti po posodobitvi na Thunderbird v144. To je bilo povzročeno s predpomnjeno informacijo o združljivosti v Thunderbirdu, ki se včasih ne osveži pravilno. Prejšnja različica SmartTemplates je bila že popolnoma združljiva z 144. Napako sem prijavil ekipi Thunderbird, da jo odpravijo: [Bugzilla 1986027]{P2}{P1} Zagotavljamo, da SmartTemplates popolnoma podpira tako mesečne kot ESR (140.*) kanale in lahko nadaljujete z delom brez prekinitve. {P2}"
+    "message": "{P}{bold}Pomembno:{/bold} Thunderbird nadaljuje s svojim mesečnim ciklom izdaj. {/P}{P} Nekateri uporabniki so morda videli napačno opozorilo o nezdružljivosti po posodobitvi na Thunderbird v144. To je bilo povzročeno s predpomnjeno informacijo o združljivosti v Thunderbirdu, ki se včasih ne osveži pravilno. Prejšnja različica SmartTemplates je bila že popolnoma združljiva z 144. Napako sem prijavil ekipi Thunderbird, da jo odpravijo: [Bugzilla 1986027]{/P}{P} Zagotavljamo, da SmartTemplates popolnoma podpira tako mesečne kot ESR (140.*) kanale in lahko nadaljujete z delom brez prekinitve. {/P}"
   },
   "newsSection.intro": {
-    "message": "{P1}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{P2}"
+    "message": "{P}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{/P}"
   },
   "newsSection.license": {
     "message": "Ker je vsa dela na SmartTemplates in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
@@ -1296,7 +1296,7 @@
     "message": "Odseki z dvojnimi oglatimi oklepaji {[[Cc: %cc(name)%]]} bodo prikazani samo, če se spremenljivko {%cc(name)%} lahko nadomesti!"
   },
   "special-offer-content": {
-    "message": "Nadgradite svoje funkcije in prihranite {boldStart} $reduction$ {boldEnd} z nakupom {linkStartPro}licence SmartTemplates Pro{linkEnd}! Ta posebna ponudba bo na voljo do {boldStart} $salesEnd$ {boldEnd}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
+    "message": "Nadgradite svoje funkcije in prihranite {bold} $reduction$ {/bold} z nakupom {linkStartPro}licence SmartTemplates Pro{linkEnd}! Ta posebna ponudba bo na voljo do {bold} $salesEnd$ {/bold}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1318,7 +1318,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Spoštovani {name} {boldEnd}, podprite $addon$ z pridobitvijo licence.",
+    "message": "{bold} Spoštovani {name} {/bold}, podprite $addon$ z pridobitvijo licence.",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1327,7 +1327,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Podaljšajte licenco zdaj in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} $salesEnd$ {boldEnd}.",
+    "message": "Podaljšajte licenco zdaj in prihranite {bold}$reduction${/bold}! Ta posebna ponudba bo na voljo do {bold} $salesEnd$ {/bold}.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1340,7 +1340,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Nadgradite zdaj iz SmartTemplates Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$salesEnd${boldEnd}.",
+    "message": "Nadgradite zdaj iz SmartTemplates Standard na Pro in prihranite {bold}$reduction${/bold}! Ta posebna ponudba bo na voljo do {bold}$salesEnd${/bold}.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1947,7 +1947,7 @@
   },
   "whats-new-list": {
     "description": "🇸🇮 change log",
-    "message": "{L1}{boldStart}4.16.4: Izboljšane spremenljivke datumov{boldEnd} — Popravljeno nezanesljivo ustvarjanje imen mesecev in dni v tednu v lokaliziranih formatih. Dodatek zdaj uporablja standardno metodo za generiranje v vseh jezikih, odstranjuje zastarelo kodo in izboljšuje učinkovitost. [issue 405]{L2}{L1}4.16.3: Popravljena funkcija urejanja predloge v nastavitvah [issue 404]{L2}{L1}4.16.1: Izboljšano vstavljanje, posodabljanje in preurejanje vnosov v meniju predlog. Povleci in spusti je zdaj bolj zanesljivo, novi vnosi se vstavljajo pod trenutno izbranim vnosom.{L2}{L1}Združljivost s Thunderbird 146.{L2}{L1}Preprečevanje podvojenih elementov <style> pri združevanju v <head>. Za nastavitev povezanih pravil odprite Napredne nastavitve / Razno [issue 399].{L2}{L1}Poenostavljene namige za nalaganje in shranjevanje predlog računov: Shrani predloge (pisanje, odgovor, posredovanje) za identiteto…{L2}{L1}Gumb na statusni vrstici, ki je manjkala v Thunderbird 142+, je bil vrnjen [issue 401].{L2}"
+    "message": "{L}{bold}4.16.4: Izboljšane spremenljivke datumov{/bold} — Popravljeno nezanesljivo ustvarjanje imen mesecev in dni v tednu v lokaliziranih formatih. Dodatek zdaj uporablja standardno metodo za generiranje v vseh jezikih, odstranjuje zastarelo kodo in izboljšuje učinkovitost. [issue 405]{/L}{L}4.16.3: Popravljena funkcija urejanja predloge v nastavitvah [issue 404]{/L}{L}4.16.1: Izboljšano vstavljanje, posodabljanje in preurejanje vnosov v meniju predlog. Povleci in spusti je zdaj bolj zanesljivo, novi vnosi se vstavljajo pod trenutno izbranim vnosom.{/L}{L}Združljivost s Thunderbird 146.{/L}{L}Preprečevanje podvojenih elementov <style> pri združevanju v <head>. Za nastavitev povezanih pravil odprite Napredne nastavitve / Razno [issue 399].{/L}{L}Poenostavljene namige za nalaganje in shranjevanje predlog računov: Shrani predloge (pisanje, odgovor, posredovanje) za identiteto…{/L}{L}Gumb na statusni vrstici, ki je manjkala v Thunderbird 142+, je bil vrnjen [issue 401].{/L}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

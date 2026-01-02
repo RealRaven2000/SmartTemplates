@@ -46,7 +46,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Thunderbird $appVer$ 上で {boldStart} バージョン $addonVer$ {boldEnd} を実行しています。",
+    "message": "Thunderbird $appVer$ 上で {bold} バージョン $addonVer$ {/bold} を実行しています。",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -808,7 +808,7 @@
     "message": "SmartTemplates Standard ライセンスの所有者として、割引アップデートと 1 年間の延長の資格があります。詳細については、Standard ライセンスの下にある [Pro にアップグレード] ボタンをクリックしてください。"
   },
   "license-standard-special-offer": {
-    "message": "{boldStart}親愛なる $username$ さん{boldEnd} 、{boldStart}$discount$ 割引{boldEnd} かつライセンスを 1 年間延長可能な SmartTemplates Pro にアップグレードできるようになりました。Thunderbird にはさらに大きな変更が予定されており、アドオンがそれに追いつくために {boldStart}あなたの助け{boldEnd} が必要です！",
+    "message": "{bold}親愛なる $username$ さん{/bold} 、{bold}$discount$ 割引{/bold} かつライセンスを 1 年間延長可能な SmartTemplates Pro にアップグレードできるようになりました。Thunderbird にはさらに大きな変更が予定されており、アドオンがそれに追いつくために {bold}あなたの助け{/bold} が必要です！",
     "placeholders": {
       "discount": {
         "content": "$2",
@@ -821,7 +821,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "この特別オファーは、{boldStart}$expiry$ まで{boldEnd} ご利用いただけます。",
+    "message": "この特別オファーは、{bold}$expiry$ まで{/bold} ご利用いただけます。",
     "placeholders": {
       "expiry": {
         "content": "$1",
@@ -965,25 +965,25 @@
     "message": "最新ニュース"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} 新機能、バグ修正、長期的な互換性は、皆様のサポートによって実現しています。{P2}{P1 class=specialOffer} SmartTemplatesの開発を支援するために、{salesEnd}までに割引価格でライセンスを更新できます。{P2}{P1 class=bottomhint}🡇 詳細を知るには以下のオプションから選択してください 🡇{P2}"
+    "message": "{P} 新機能、バグ修正、長期的な互換性は、皆様のサポートによって実現しています。{/P}{P class=specialOffer} SmartTemplatesの開発を支援するために、{salesEnd}までに割引価格でライセンスを更新できます。{/P}{P class=bottomhint}🡇 詳細を知るには以下のオプションから選択してください 🡇{/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} 将来の互換性をサポートするために、ライセンスをご利用いただけます。{P2}{P1} 新機能、バグ修正、長期的な互換性は、皆様のサポートによって実現しています。{P2}{P1 class=specialOffer} SmartTemplatesの開発を支援するために、{salesEnd}までにStandardまたはProライセンスを割引価格でご購入いただけます。{P2}{P1 class=bottomhint}🡇 詳細を知るには以下のオプションから選択してください 🡇{P2}"
+    "message": "{P} 将来の互換性をサポートするために、ライセンスをご利用いただけます。{/P}{P} 新機能、バグ修正、長期的な互換性は、皆様のサポートによって実現しています。{/P}{P class=specialOffer} SmartTemplatesの開発を支援するために、{salesEnd}までにStandardまたはProライセンスを割引価格でご購入いただけます。{/P}{P class=bottomhint}🡇 詳細を知るには以下のオプションから選択してください 🡇{/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} StandardライセンスでSmartTemplatesをサポートしていただきありがとうございます。{P2}{P1} ライセンスが期限切れでも有効でも、{salesEnd}までの割引価格でProにアップグレードできます。期限切れ後のアップグレードでも購入日から1年間の利用が可能です。{P2}{P1 class=bottomhint}🡇 詳細を知るには以下のオプションから選択してください 🡇{P2}"
+    "message": "{P} StandardライセンスでSmartTemplatesをサポートしていただきありがとうございます。{/P}{P} ライセンスが期限切れでも有効でも、{salesEnd}までの割引価格でProにアップグレードできます。期限切れ後のアップグレードでも購入日から1年間の利用が可能です。{/P}{P class=bottomhint}🡇 詳細を知るには以下のオプションから選択してください 🡇{/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} ProライセンスでSmartTemplatesをサポートしていただきありがとうございます。これにより、新機能、バグ修正、長期的な互換性が実現可能となっています。{P2}"
+    "message": "{P} ProライセンスでSmartTemplatesをサポートしていただきありがとうございます。これにより、新機能、バグ修正、長期的な互換性が実現可能となっています。{/P}"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} 次回の大型リリースにて {boldEnd}：Thunderbird は、年次の ESR（延長サポート版）トラックか、より頻繁な月次リリースか、好みの更新パスを選択するよう求める予定です。{ARelease}新しいリリースモデルについて詳しくはこちら{A2}.{U1} {L1}ESR バージョンは v140 にとどまり、マイナーバージョンの更新のみが行われ、セキュリティ修正やバグ修正のみが含まれます。これは企業環境でよく選ばれます。{L2} {L1}一方、月次リリースでは、新機能やインターフェースの更新が開発され次第提供されます。現在ご利用中のアドオンがこのリリースモデルに対応しているかご確認ください。支援として、{AcompatCheck}アドオン互換性チェック{A2}をインストールすることができます。{L2} {U2}{P2}{P1} SmartTemplates は Thunderbird 140（次回の Extended Support Release、ESR）に完全対応していることをここにお知らせいたします。これにより、今後のサポートサイクルでも継続的な信頼性と安心が提供されます。{P2}{P1} 現在 SmartTemplates は Thunderbird 115 以降のユーザーを引き続きサポートしていますが、来年以降、新機能の追加に伴い、Thunderbird 115 のサポートは終了し、Thunderbird 128 以降に移行する可能性があります。{P2}{P1} Thunderbird の変更点を継続的に監視し、選択された更新パスに関係なく、SmartTemplates が常に互換性と信頼性を保てるよう努めています。{P2}"
+    "message": "{P}{bold} 次回の大型リリースにて {/bold}：Thunderbird は、年次の ESR（延長サポート版）トラックか、より頻繁な月次リリースか、好みの更新パスを選択するよう求める予定です。{ARelease}新しいリリースモデルについて詳しくはこちら{/A}.{U} {L}ESR バージョンは v140 にとどまり、マイナーバージョンの更新のみが行われ、セキュリティ修正やバグ修正のみが含まれます。これは企業環境でよく選ばれます。{/L} {L}一方、月次リリースでは、新機能やインターフェースの更新が開発され次第提供されます。現在ご利用中のアドオンがこのリリースモデルに対応しているかご確認ください。支援として、{AcompatCheck}アドオン互換性チェック{/A}をインストールすることができます。{/L} {/U}{/P}{P} SmartTemplates は Thunderbird 140（次回の Extended Support Release、ESR）に完全対応していることをここにお知らせいたします。これにより、今後のサポートサイクルでも継続的な信頼性と安心が提供されます。{/P}{P} 現在 SmartTemplates は Thunderbird 115 以降のユーザーを引き続きサポートしていますが、来年以降、新機能の追加に伴い、Thunderbird 115 のサポートは終了し、Thunderbird 128 以降に移行する可能性があります。{/P}{P} Thunderbird の変更点を継続的に監視し、選択された更新パスに関係なく、SmartTemplates が常に互換性と信頼性を保てるよう努めています。{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird は月次リリースサイクルを継続しています。 {P2}{P1} 一部のユーザーは Thunderbird を v144 に更新した後、誤った非互換性警告を目にしたかもしれません。これは Thunderbird にキャッシュされた互換性情報が正しく更新されないことが原因です。SmartTemplates の以前のバージョンはすでに 144 と完全に互換性がありました。この問題を修正するため Thunderbird にバグを報告しました: [Bugzilla 1986027]{P2}{P1} ご安心ください。SmartTemplates は月次チャネルと ESR (140.*) の両方を完全にサポートしており、中断することなく作業を続けられます。{P2}"
+    "message": "{P}{bold}重要:{/bold} Thunderbird は月次リリースサイクルを継続しています。 {/P}{P} 一部のユーザーは Thunderbird を v144 に更新した後、誤った非互換性警告を目にしたかもしれません。これは Thunderbird にキャッシュされた互換性情報が正しく更新されないことが原因です。SmartTemplates の以前のバージョンはすでに 144 と完全に互換性がありました。この問題を修正するため Thunderbird にバグを報告しました: [Bugzilla 1986027]{/P}{P} ご安心ください。SmartTemplates は月次チャネルと ESR (140.*) の両方を完全にサポートしており、中断することなく作業を続けられます。{/P}"
   },
   "newsSection.intro": {
-    "message": "{P1}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{P2}"
+    "message": "{P}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{/P}"
   },
   "newsSection.license": {
     "message": "SmartTemplates のすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
@@ -1266,7 +1266,7 @@
     "message": "括弧 {[[Cc: %cc(name)%]]} 内のテンプレートは、その中の変数 {%cc(name)%} が利用可能である時のみ有効となります。"
   },
   "special-offer-content": {
-    "message": "今 {linkStartPro}SmartTemplates Pro ライセンス{linkEnd} にアップグレードすると {boldStart}$reduction${boldEnd} の割引を受けられます！この特別オファーは {boldStart}$salesEnd${boldEnd} までご利用いただけます。新しい {linkStart}Standard ライセンス{linkEnd} では標準機能のみが提供されます。",
+    "message": "今 {linkStartPro}SmartTemplates Pro ライセンス{linkEnd} にアップグレードすると {bold}$reduction${/bold} の割引を受けられます！この特別オファーは {bold}$salesEnd${/bold} までご利用いただけます。新しい {linkStart}Standard ライセンス{linkEnd} では標準機能のみが提供されます。",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1288,7 +1288,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}親愛なる {name} さん{boldEnd}、ライセンスを購入して $addon$ をサポートしてください。",
+    "message": "{bold}親愛なる {name} さん{/bold}、ライセンスを購入して $addon$ をサポートしてください。",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1297,7 +1297,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "今ライセンスを更新すると、{boldStart}$reduction${boldEnd} の割引を受けられます！ この特別オファーは、{boldStart} $salesEnd$ {boldEnd} までご利用いただけます。",
+    "message": "今ライセンスを更新すると、{bold}$reduction${/bold} の割引を受けられます！ この特別オファーは、{bold} $salesEnd$ {/bold} までご利用いただけます。",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1310,7 +1310,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "今すると SmartTemplates Standard ライセンスから Pro ライセンスにアップグレードすると、{boldStart} $reduction$ {boldEnd} の割引を受けられます！ この特別オファーは、{boldStart} $salesEnd$ {boldEnd} までご利用いただけます。",
+    "message": "今すると SmartTemplates Standard ライセンスから Pro ライセンスにアップグレードすると、{bold} $reduction$ {/bold} の割引を受けられます！ この特別オファーは、{bold} $salesEnd$ {/bold} までご利用いただけます。",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1905,7 +1905,7 @@
   },
   "whats-new-list": {
     "description": "🇯🇵 change log",
-    "message": "{L1}{boldStart}4.16.4: 日付変数の改善{boldEnd} — ローカライズされた形式での月および曜日名の生成の信頼性を改善。アドオンはすべての言語で標準的な方法を使用して生成し、古いコードを削除し、効率を向上させました。 [issue 405]{L2}{L1}4.16.3: 設定でのテンプレート編集機能の不具合を修正 [issue 404]{L2}{L1}4.16.1: テンプレートメニュー項目の挿入、更新、並べ替えを改善。ドラッグ＆ドロップがより安定し、新しい項目は現在選択されている項目の下に挿入されます。{L2}{L1}Thunderbird 146との互換性。{L2}{L1}<head>への統合時に<style>要素の重複を防止。関連ルールを設定するには、高度な設定 / その他を開いてください [issue 399].{L2}{L1}アカウントテンプレートの読み込み・保存用ツールチップを明確化：テンプレートを保存（作成、返信、転送）…{L2}{L1}Thunderbird 142+で欠落していたステータスバーのボタンを復元 [issue 401].{L2}"
+    "message": "{L}{bold}4.16.4: 日付変数の改善{/bold} — ローカライズされた形式での月および曜日名の生成の信頼性を改善。アドオンはすべての言語で標準的な方法を使用して生成し、古いコードを削除し、効率を向上させました。 [issue 405]{/L}{L}4.16.3: 設定でのテンプレート編集機能の不具合を修正 [issue 404]{/L}{L}4.16.1: テンプレートメニュー項目の挿入、更新、並べ替えを改善。ドラッグ＆ドロップがより安定し、新しい項目は現在選択されている項目の下に挿入されます。{/L}{L}Thunderbird 146との互換性。{/L}{L}<head>への統合時に<style>要素の重複を防止。関連ルールを設定するには、高度な設定 / その他を開いてください [issue 399].{/L}{L}アカウントテンプレートの読み込み・保存用ツールチップを明確化：テンプレートを保存（作成、返信、転送）…{/L}{L}Thunderbird 142+で欠落していたステータスバーのボタンを復元 [issue 401].{/L}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

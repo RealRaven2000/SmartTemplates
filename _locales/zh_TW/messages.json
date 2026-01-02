@@ -49,7 +49,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "您現在在Thunderbird $appVer$ 上運行{boldStart}版本 $addonVer$ {boldEnd}。",
+    "message": "您現在在Thunderbird $appVer$ 上運行{bold}版本 $addonVer$ {/bold}。",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -811,7 +811,7 @@
     "message": "作為SmartTemplates標准許可證的持有人，您現在有資格獲得折扣更新以及全年的延期。 單擊標准許可證下方的 [升級到Pro] 按鈕以獲取更多信息。"
   },
   "license-standard-special-offer": {
-    "message": "{boldStart}親愛的 $username${boldEnd}，您現在可以以{boldStart}$discount${boldEnd} 的價格**升級到SmartTemplates Pro，同時還可以將許可證延長一整年。 雷鳥的更多重大變化即將到來，我需要{boldStart}您的幫助{boldEnd}跟上！",
+    "message": "{bold}親愛的 $username${/bold}，您現在可以以{bold}$discount${/bold} 的價格**升級到SmartTemplates Pro，同時還可以將許可證延長一整年。 雷鳥的更多重大變化即將到來，我需要{bold}您的幫助{/bold}跟上！",
     "placeholders": {
       "discount": {
         "content": "$2",
@@ -824,7 +824,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "此特別優惠適用於{boldStart}至  $expiry${boldEnd}。",
+    "message": "此特別優惠適用於{bold}至  $expiry${/bold}。",
     "placeholders": {
       "expiry": {
         "content": "$1",
@@ -971,25 +971,25 @@
     "message": "最新消息"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} 所有新功能、錯誤修正與長期相容性，都得益於您的支持。{P2}{P1 class=specialOffer} 為了持續推動 SmartTemplates 的開發，您可以在 {salesEnd} 之前以折扣價續訂授權。{P2}{P1 class=bottomhint}🡇 選擇以下選項了解更多 🡇 {P2}"
+    "message": "{P} 所有新功能、錯誤修正與長期相容性，都得益於您的支持。{/P}{P class=specialOffer} 為了持續推動 SmartTemplates 的開發，您可以在 {salesEnd} 之前以折扣價續訂授權。{/P}{P class=bottomhint}🡇 選擇以下選項了解更多 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} 您現在也可以透過購買授權支持未來的相容性。{P2}{P1} 所有新功能、錯誤修正與長期相容性，都得益於您的支持。{P2}{P1 class=specialOffer} 為了持續推動 SmartTemplates 的開發，您可以在 {salesEnd} 之前以折扣價購買標準或專業版授權。{P2}{P1 class=bottomhint} 🡇 選擇以下選項了解更多 🡇 {P2}"
+    "message": "{P} 您現在也可以透過購買授權支持未來的相容性。{/P}{P} 所有新功能、錯誤修正與長期相容性，都得益於您的支持。{/P}{P class=specialOffer} 為了持續推動 SmartTemplates 的開發，您可以在 {salesEnd} 之前以折扣價購買標準或專業版授權。{/P}{P class=bottomhint} 🡇 選擇以下選項了解更多 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} 感謝您購買標準版授權來支持 SmartTemplates。{P2}{P1} 無論您的授權是否已過期，您都可以在 {salesEnd} 之前以優惠價格升級為專業版。過期後升級，將從購買日期起享有一整年的使用權。{P2}{P1 class=bottomhint} 🡇 選擇以下選項了解更多 🡇 {P2}"
+    "message": "{P} 感謝您購買標準版授權來支持 SmartTemplates。{/P}{P} 無論您的授權是否已過期，您都可以在 {salesEnd} 之前以優惠價格升級為專業版。過期後升級，將從購買日期起享有一整年的使用權。{/P}{P class=bottomhint} 🡇 選擇以下選項了解更多 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} 感謝您透過專業版授權支持 SmartTemplates——這使得所有新功能、錯誤修正與長期相容性成為可能。{P2}"
+    "message": "{P} 感謝您透過專業版授權支持 SmartTemplates——這使得所有新功能、錯誤修正與長期相容性成為可能。{/P}"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} 在下一次重大版本中 {boldEnd}：Thunderbird 即將提示您選擇首選的更新路徑 — 年度 ESR 跟踪版或更快速的每月發布版。{ARelease}了解有關新發佈模型的詳細資訊{A2}。{U1} {L1}ESR 版本將保持在 v140，只會升級次要版本，僅包含安全修復和錯誤修正，這通常更適合企業環境使用。{L2} {L1}每月發布週期將在新功能開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發布模型。為此，您可以安裝 {AcompatCheck}Add‑on Compatibility Check{A2}。{L2} {U2}{P2}{P1} 我們很高興地宣布，SmartTemplates 已完全相容於 Thunderbird 140 —— 下一代 Extended Support Release（ESR）。這意味著在下一個主要支援週期中將保持穩定可靠。{P2}{P1} SmartTemplates 目前仍然支援 Thunderbird 115 及更高版本。在接下來的一年內，隨著我們添加新功能，對 Thunderbird 115 的支援可能會被逐步移除，改為 Thunderbird 128 及更高版本。{P2}{P1} 我們持續監控 Thunderbird 的更新，以確保 SmartTemplates 始終保持相容與可靠，無論您選擇哪條更新路徑。{P2}"
+    "message": "{P}{bold} 在下一次重大版本中 {/bold}：Thunderbird 即將提示您選擇首選的更新路徑 — 年度 ESR 跟踪版或更快速的每月發布版。{ARelease}了解有關新發佈模型的詳細資訊{/A}。{U} {L}ESR 版本將保持在 v140，只會升級次要版本，僅包含安全修復和錯誤修正，這通常更適合企業環境使用。{/L} {L}每月發布週期將在新功能開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發布模型。為此，您可以安裝 {AcompatCheck}Add‑on Compatibility Check{/A}。{/L} {/U}{/P}{P} 我們很高興地宣布，SmartTemplates 已完全相容於 Thunderbird 140 —— 下一代 Extended Support Release（ESR）。這意味著在下一個主要支援週期中將保持穩定可靠。{/P}{P} SmartTemplates 目前仍然支援 Thunderbird 115 及更高版本。在接下來的一年內，隨著我們添加新功能，對 Thunderbird 115 的支援可能會被逐步移除，改為 Thunderbird 128 及更高版本。{/P}{P} 我們持續監控 Thunderbird 的更新，以確保 SmartTemplates 始終保持相容與可靠，無論您選擇哪條更新路徑。{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 一些用戶在更新到 Thunderbird v144 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。SmartTemplates 之前的版本已經完全相容於 144。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{P2}{P1} 請放心，SmartTemplates 完全支援每月版和 ESR (140.*) 通道，您可以繼續不間斷地工作。 {P2}"
+    "message": "{P}{bold}重要:{/bold} Thunderbird 繼續其每月發布週期。 {/P}{P} 一些用戶在更新到 Thunderbird v144 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。SmartTemplates 之前的版本已經完全相容於 144。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{/P}{P} 請放心，SmartTemplates 完全支援每月版和 ESR (140.*) 通道，您可以繼續不間斷地工作。 {/P}"
   },
   "newsSection.intro": {
-    "message": "{P1}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{P2}"
+    "message": "{P}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{/P}"
   },
   "newsSection.license": {
     "message": "由於SmartTemplates的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
@@ -1290,7 +1290,7 @@
     "message": "假如變數 {%cc(name)%} 可以被置換時,將會顯示插入兩個中括號的 {[[Cc: %cc(name)%]]}!"
   },
   "special-offer-content": {
-    "message": "通過購買 {linkStartPro}SmartTemplates Pro{linkEnd} 許可證升級您的功能並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$salesEnd${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 選擇標準功能。",
+    "message": "通過購買 {linkStartPro}SmartTemplates Pro{linkEnd} 許可證升級您的功能並節省 {bold}$reduction${/bold}！ 此特別優惠將持續到 {bold}$salesEnd${/bold}。 或者使用新的 {linkStart}Standard License{linkEnd} 選擇標準功能。",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1312,7 +1312,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}親愛的{name}{boldEnd}，請通過獲得許可來支持 $addon$。",
+    "message": "{bold}親愛的{name}{/bold}，請通過獲得許可來支持 $addon$。",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1321,7 +1321,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "立即續訂您的許可證並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$salesEnd${boldEnd}。",
+    "message": "立即續訂您的許可證並節省 {bold}$reduction${/bold}！ 此特別優惠將持續到 {bold}$salesEnd${/bold}。",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1334,7 +1334,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "立即從 SmartTemplates Standard 升級到 Pro 並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$salesEnd${boldEnd}。",
+    "message": "立即從 SmartTemplates Standard 升級到 Pro 並節省 {bold}$reduction${/bold}！ 此特別優惠將持續到 {bold}$salesEnd${/bold}。",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1917,7 +1917,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L1}{boldStart}4.16.4: 改進的日期變數{boldEnd} — 修復在本地化格式中建立月份和星期名稱的不可靠問題。外掛程式現在使用標準方法在所有語言中生成，移除遺留程式碼並提高效率。 [issue 405]{L2}{L1}4.16.3: 修正設定中的模板編輯功能 [issue 404]{L2}{L1}4.16.1: 改進模板選單項目的插入、更新與重新排序。拖放功能更可靠，新項目會插入到目前選定項目下方。{L2}{L1}與 Thunderbird 146 相容。{L2}{L1}合併到 <head> 時防止重複 <style> 元素。要配置相關規則，請打開進階設定 / 其他 [issue 399]。{L2}{L1}澄清載入和儲存帳戶模板的工具提示：儲存模板（撰寫、回覆、轉寄）用於身份…{L2}{L1}恢復在 Thunderbird 142+ 版本中缺失的狀態列按鈕 [issue 401]。{L2}"
+    "message": "{L}{bold}4.16.4: 改進的日期變數{/bold} — 修復在本地化格式中建立月份和星期名稱的不可靠問題。外掛程式現在使用標準方法在所有語言中生成，移除遺留程式碼並提高效率。 [issue 405]{/L}{L}4.16.3: 修正設定中的模板編輯功能 [issue 404]{/L}{L}4.16.1: 改進模板選單項目的插入、更新與重新排序。拖放功能更可靠，新項目會插入到目前選定項目下方。{/L}{L}與 Thunderbird 146 相容。{/L}{L}合併到 <head> 時防止重複 <style> 元素。要配置相關規則，請打開進階設定 / 其他 [issue 399]。{/L}{L}澄清載入和儲存帳戶模板的工具提示：儲存模板（撰寫、回覆、轉寄）用於身份…{/L}{L}恢復在 Thunderbird 142+ 版本中缺失的狀態列按鈕 [issue 401]。{/L}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

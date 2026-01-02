@@ -4,7 +4,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Bạn hiện đang chạy phiên bản {boldStart} $addonVer$ {boldEnd} trên Thunderbird $appVer$.",
+    "message": "Bạn hiện đang chạy phiên bản {bold} $addonVer$ {/bold} trên Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -106,10 +106,10 @@
     "message": "Tin Mới Nhất"
   },
   "newsSection.intro": {
-    "message": "{P1}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{P2}"
+    "message": "{P}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Quan trọng:{boldEnd} Thunderbird tiếp tục chu kỳ phát hành hàng tháng. {P2}{P1} Một số người dùng có thể đã thấy cảnh báo không tương thích giả sau khi nâng cấp lên Thunderbird v144. Điều này do thông tin tương thích được lưu trong bộ nhớ đệm của Thunderbird, đôi khi không được làm mới đúng cách. Phiên bản SmartTemplates trước đó đã hoàn toàn tương thích với 144. Tôi đã báo lỗi này với Thunderbird để họ khắc phục: [Bugzilla 1986027]{P2}{P1} Hãy yên tâm rằng SmartTemplates hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*), và bạn có thể tiếp tục làm việc mà không bị gián đoạn. {P2}"
+    "message": "{P}{bold}Quan trọng:{/bold} Thunderbird tiếp tục chu kỳ phát hành hàng tháng. {/P}{P} Một số người dùng có thể đã thấy cảnh báo không tương thích giả sau khi nâng cấp lên Thunderbird v144. Điều này do thông tin tương thích được lưu trong bộ nhớ đệm của Thunderbird, đôi khi không được làm mới đúng cách. Phiên bản SmartTemplates trước đó đã hoàn toàn tương thích với 144. Tôi đã báo lỗi này với Thunderbird để họ khắc phục: [Bugzilla 1986027]{/P}{P} Hãy yên tâm rằng SmartTemplates hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*), và bạn có thể tiếp tục làm việc mà không bị gián đoạn. {/P}"
   },
   "newsSection.license": {
     "message": "Do tất cả công việc trên SmartTemplates và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ doanh số bán giấy phép, vui lòng cân nhắc mua một giấy phép hoặc gia hạn giấy phép hiện tại của bạn."
@@ -153,7 +153,7 @@
     "message": "🔶Có gì mới…"
   },
   "special-offer-content": {
-    "message": "Nâng cấp các tính năng của bạn và tiết kiệm {boldStart} $reduction$ {boldEnd} bằng cách mua giấy phép {linkStartPro}SmartTemplates Pro{linkEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$salesEnd${boldEnd}. Hoặc chọn các chức năng tiêu chuẩn với {linkStart}Giấy phép Tiêu chuẩn{linkEnd} mới.",
+    "message": "Nâng cấp các tính năng của bạn và tiết kiệm {bold} $reduction$ {/bold} bằng cách mua giấy phép {linkStartPro}SmartTemplates Pro{linkEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {bold}$salesEnd${/bold}. Hoặc chọn các chức năng tiêu chuẩn với {linkStart}Giấy phép Tiêu chuẩn{linkEnd} mới.",
     "placeholders": {
       "salesEnd": {
         "content": "$1",
@@ -175,7 +175,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kính gửi {name} {boldEnd}, vui lòng hỗ trợ $addon$ thông qua việc nhận giấy phép.",
+    "message": "{bold} Kính gửi {name} {/bold}, vui lòng hỗ trợ $addon$ thông qua việc nhận giấy phép.",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -184,7 +184,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Gia hạn Giấy phép của bạn ngay bây giờ và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} $salesEnd$ {boldEnd}.",
+    "message": "Gia hạn Giấy phép của bạn ngay bây giờ và tiết kiệm {bold}$reduction${/bold}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {bold} $salesEnd$ {/bold}.",
     "placeholders": {
       "salesEnd": {
         "content": "$1",
@@ -197,7 +197,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Nâng cấp ngay từ SmartTemplates Standard lên Pro và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$salesEnd${boldEnd}.",
+    "message": "Nâng cấp ngay từ SmartTemplates Standard lên Pro và tiết kiệm {bold}$reduction${/bold}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {bold}$salesEnd${/bold}.",
     "placeholders": {
       "salesEnd": {
         "content": "$1",
@@ -295,7 +295,7 @@
   },
   "whats-new-list": {
     "description": "🇻🇳 change log",
-    "message": "{L1}{boldStart}4.16.4: Biến ngày được cải thiện{boldEnd} — Sửa lỗi tạo tên tháng và ngày trong tuần không ổn định trong định dạng địa phương. Add-on hiện sử dụng phương pháp chuẩn để tạo chúng ở tất cả các ngôn ngữ, loại bỏ mã cũ và cải thiện hiệu suất. [issue 405]{L2}{L1}4.16.3: Sửa chức năng chỉnh sửa mẫu trong cài đặt [issue 404]{L2}{L1}4.16.1: Cải thiện chèn, cập nhật và sắp xếp lại mục menu mẫu. Kéo và thả giờ đáng tin cậy hơn, các mục mới được chèn dưới mục đang chọn.{L2}{L1}Tương thích với Thunderbird 146.{L2}{L1}Ngăn chặn các phần tử <style> trùng lặp khi hợp nhất vào <head>. Để cấu hình các quy tắc liên quan, mở Cài đặt nâng cao / Miscellaneous [issue 399].{L2}{L1}Các tooltip cho việc tải và lưu mẫu tài khoản được làm rõ: Lưu mẫu (viết, trả lời, chuyển tiếp) cho danh tính…{L2}{L1}Khôi phục nút thanh trạng thái bị thiếu trong các phiên bản Thunderbird 142+ [issue 401].{L2}"
+    "message": "{L}{bold}4.16.4: Biến ngày được cải thiện{/bold} — Sửa lỗi tạo tên tháng và ngày trong tuần không ổn định trong định dạng địa phương. Add-on hiện sử dụng phương pháp chuẩn để tạo chúng ở tất cả các ngôn ngữ, loại bỏ mã cũ và cải thiện hiệu suất. [issue 405]{/L}{L}4.16.3: Sửa chức năng chỉnh sửa mẫu trong cài đặt [issue 404]{/L}{L}4.16.1: Cải thiện chèn, cập nhật và sắp xếp lại mục menu mẫu. Kéo và thả giờ đáng tin cậy hơn, các mục mới được chèn dưới mục đang chọn.{/L}{L}Tương thích với Thunderbird 146.{/L}{L}Ngăn chặn các phần tử <style> trùng lặp khi hợp nhất vào <head>. Để cấu hình các quy tắc liên quan, mở Cài đặt nâng cao / Miscellaneous [issue 399].{/L}{L}Các tooltip cho việc tải và lưu mẫu tài khoản được làm rõ: Lưu mẫu (viết, trả lời, chuyển tiếp) cho danh tính…{/L}{L}Khôi phục nút thanh trạng thái bị thiếu trong các phiên bản Thunderbird 142+ [issue 401].{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

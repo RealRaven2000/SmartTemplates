@@ -217,22 +217,22 @@ function formatAll(txt) {
       /\{support(?: ([\w\-]+))?\}/g,
       (dummy, topic) => `<a class='contactsupport' data-topic='${topic || ""}' href='#'>`
     )
-    .replace(/\{supportEnd\}/g, "</a>");
+    .replace(/\{\/support\}/g, "</a>");
 
   let salesEnd = getSaleEndLabel(); // messenger.i18n.getMessage("special-offer-expiry");    
 
   // added simple <tag> support
   return localizedMsg
-    .replace(/\{L1(?:\s+([^}]+))?\}/g, (_, attrs) => {
+    .replace(/\{L(?:\s+([^}]+))?\}/g, (_, attrs) => {
       // attrs will be undefined if no class specified
       return attrs ? `<li ${attrs}>` : "<li>";
     })
-    .replace(/\{L2\}/g, "</li>")
+    .replace(/\{\/L\}/g, "</li>")
     .replace(/\{salesEnd\}/g, salesEnd)
-    .replace(/\{headStart\}/g, "<h3>")
-    .replace(/\{headEnd\}/g, "</h3>")
-    .replace(/\{boldStart\}/g, "<b>")
-    .replace(/\{boldEnd\}/g, "</b>")
+    .replace(/\{h3\}/g, "<h3>")
+    .replace(/\{\/h3\}/g, "</h3>")
+    .replace(/\{bold\}/g, "<b>")
+    .replace(/\{\/bold\}/g, "</b>")
     .replace(/\{hr\}/g, "<hr>")
     .replace(/\{pre\}/g, "<pre>")
     .replace(/\{preEnd\}/g, "</pre>")
@@ -240,9 +240,9 @@ function formatAll(txt) {
     .replace(/\{italicEnd\}/g, "</i>")
     .replace(/\{\{(%.*?%)\}\}/g, "<code>$1</code>")
     .replace(/\{\{(.*?)\}\}/g, "<code param>$1</code>")
-    .replace(/\{U1\}/g, "<ul>")
-    .replace(/\{U2\}/g, "</ul>")
-    .replace(/\{P1(?:\s+([^}]+))?\}/g, (_, attrs) => {
+    .replace(/\{U\}/g, "<ul>")
+    .replace(/\{\/U\}/g, "</ul>")
+    .replace(/\{P(?:\s+([^}]+))?\}/g, (_, attrs) => {
       // attrs will be undefined if no class specified
       return attrs ? `<p ${attrs}>` : "<p>";
     })
@@ -255,8 +255,8 @@ function formatAll(txt) {
       "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-compatibility-check/' class='native'>"
     )
     .replace("$news.minimal$", messenger.i18n.getMessage("news.minimal"))
-    .replace(/\{A2\}/g, "</a>")
-    .replace(/\{P2\}/g, "</p>")
+    .replace(/\{\/A\}/g, "</a>")
+    .replace(/\{\/P\}/g, "</p>")
     .replace(/\{br\}/g, "<br>")
     .replace(/\{S1\}/g, "</ul> <h3 class='section'>")
     .replace(/\{S2\}/g, "</h3> <ul>")

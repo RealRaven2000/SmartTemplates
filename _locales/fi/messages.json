@@ -49,7 +49,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Vous exécutez maintenant {boldStart} version $addonVer$ {boldEnd} sur Thunderbird $appVer$.",
+    "message": "Vous exécutez maintenant {bold} version $addonVer$ {/bold} sur Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -814,7 +814,7 @@
     "message": "SmartTemplates-vakiolisenssin haltijana voit nyt saada päivitetyn hinnan alennuksella ja koko vuoden jatkolla. Napsauta tavallisen käyttöoikeuden alapuolella olevaa [Päivitä Pro] painiketta saadaksesi lisätietoja."
   },
   "license-standard-special-offer": {
-    "message": "{boldStart} Hyvä $username$ {boldEnd}, voit nyt päivittää versioon SmartTemplates Pro ja {boldStart}säästää $discount${boldEnd} - samalla pidentäen käyttöoikeuttasi vuodella. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {boldStart} apuasi {boldEnd} pysyäksesi mukana!",
+    "message": "{bold} Hyvä $username$ {/bold}, voit nyt päivittää versioon SmartTemplates Pro ja {bold}säästää $discount${/bold} - samalla pidentäen käyttöoikeuttasi vuodella. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {bold} apuasi {/bold} pysyäksesi mukana!",
     "placeholders": {
       "discount": {
         "content": "$2",
@@ -827,7 +827,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Tämä erikoistarjous on saatavilla {boldStart} - $expiry$ {boldEnd}.",
+    "message": "Tämä erikoistarjous on saatavilla {bold} - $expiry$ {/bold}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
@@ -977,25 +977,25 @@
     "message": "Uusimmat uutiset"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} Kaikki uudet ominaisuudet, virhekorjaukset ja pitkäaikainen yhteensopivuus ovat mahdollisia tukesi ansiosta.{P2}{P1 class=specialOffer} SmartTemplatesin kehityksen tukemiseksi voit uusia lisenssisi alennuksella asti {salesEnd}.{P2}{P1 class=bottomhint}🡇 Valitse alta jokin vaihtoehto saadaksesi lisätietoa 🡇{P2}"
+    "message": "{P} Kaikki uudet ominaisuudet, virhekorjaukset ja pitkäaikainen yhteensopivuus ovat mahdollisia tukesi ansiosta.{/P}{P class=specialOffer} SmartTemplatesin kehityksen tukemiseksi voit uusia lisenssisi alennuksella asti {salesEnd}.{/P}{P class=bottomhint}🡇 Valitse alta jokin vaihtoehto saadaksesi lisätietoa 🡇{/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} Sinäkin voit tukea tulevaa yhteensopivuutta hankkimalla lisenssin.{P2}{P1}Kaikki uudet ominaisuudet, virhekorjaukset ja pitkäaikainen yhteensopivuus ovat mahdollisia tukesi ansiosta.{P2}{P1 class=specialOffer}SmartTemplatesin kehityksen tukemiseksi voit ostaa Standard- tai Pro-lisenssin alennettuun hintaan asti {salesEnd}.{P2}{P1 class=bottomhint}🡇 Valitse alta jokin vaihtoehto saadaksesi lisätietoa 🡇{P2}"
+    "message": "{P} Sinäkin voit tukea tulevaa yhteensopivuutta hankkimalla lisenssin.{/P}{P}Kaikki uudet ominaisuudet, virhekorjaukset ja pitkäaikainen yhteensopivuus ovat mahdollisia tukesi ansiosta.{/P}{P class=specialOffer}SmartTemplatesin kehityksen tukemiseksi voit ostaa Standard- tai Pro-lisenssin alennettuun hintaan asti {salesEnd}.{/P}{P class=bottomhint}🡇 Valitse alta jokin vaihtoehto saadaksesi lisätietoa 🡇{/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Kiitos, että tuet SmartTemplatesia Standard-lisenssillä.{P2}{P1} Olipa lisenssisi vanhentunut tai yhä voimassa, voit päivittää Pro-versioon nyt merkittävällä alennuksella asti {salesEnd}. Jos päivität vanhentuneen lisenssin, saat täyden vuoden käyttöoikeuden ostopäivästä alkaen.{P2}{P1 class=bottomhint}🡇 Valitse alta jokin vaihtoehto saadaksesi lisätietoa 🡇{P2}"
+    "message": "{P} Kiitos, että tuet SmartTemplatesia Standard-lisenssillä.{/P}{P} Olipa lisenssisi vanhentunut tai yhä voimassa, voit päivittää Pro-versioon nyt merkittävällä alennuksella asti {salesEnd}. Jos päivität vanhentuneen lisenssin, saat täyden vuoden käyttöoikeuden ostopäivästä alkaen.{/P}{P class=bottomhint}🡇 Valitse alta jokin vaihtoehto saadaksesi lisätietoa 🡇{/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Kiitos, että tuet SmartTemplatesia Pro-lisenssillä — tämä tekee mahdolliseksi kaikki uudet ominaisuudet, virhekorjaukset ja pitkäaikaisen yhteensopivuuden.{P2}"
+    "message": "{P} Kiitos, että tuet SmartTemplatesia Pro-lisenssillä — tämä tekee mahdolliseksi kaikki uudet ominaisuudet, virhekorjaukset ja pitkäaikaisen yhteensopivuuden.{/P}"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Tulevassa suuressa julkaisussa {boldEnd}: Thunderbird pyytää pian sinua valitsemaan haluamasi päivityspolun — joko vuosittaisen ESR-version tai nopeamman kuukausittaisen julkaisun. {ARelease}Lisätietoja uudesta julkaisumallista{A2}.{U1} {L1}ESR-versio pysyy v140:ssa, jossa päivitetään vain pienempiä versioita ja sisällytetään vain tietoturva- ja virhekorjauksia, mikä on usein suositeltavaa yritysympäristöissä.{L2} {L1}Kuukausittaiset julkaisut tuovat uusia ominaisuuksia ja käyttöliittymäpäivityksiä sitä mukaa kun niitä kehitetään. Tarkista, tukeeko nykyiset lisäosasi tätä julkaisumallia. Voit myös asentaa {AcompatCheck}Lisäosien yhteensopivuustarkistuksen{A2} apuna.{L2} {U2}{P2}{P1} Iloksemme voimme ilmoittaa, että SmartTemplates on täysin yhteensopiva Thunderbird 140:n kanssa, seuraavan Extended Support Release (ESR) -version kanssa. Tämä tarkoittaa jatkuvaa luotettavuutta ja mielenrauhaa seuraavan suuren tukikierron ajan.{P2}{P1} SmartTemplates tukee tällä hetkellä Thunderbird 115:tä ja uudempia versioita. Tulevan vuoden aikana, uusien ominaisuuksien lisäyksen myötä, tuki Thunderbird 115:lle voidaan lopettaa ja siirtyä Thunderbird 128:aan ja sitä uudempiin versioihin.{P2}{P1} Seuraamme jatkuvasti Thunderbirdin muutoksia varmistaaksemme, että SmartTemplates pysyy yhteensopivana ja luotettavana, riippumatta siitä, minkä päivityspolun valitset.{P2}"
+    "message": "{P}{bold} Tulevassa suuressa julkaisussa {/bold}: Thunderbird pyytää pian sinua valitsemaan haluamasi päivityspolun — joko vuosittaisen ESR-version tai nopeamman kuukausittaisen julkaisun. {ARelease}Lisätietoja uudesta julkaisumallista{/A}.{U} {L}ESR-versio pysyy v140:ssa, jossa päivitetään vain pienempiä versioita ja sisällytetään vain tietoturva- ja virhekorjauksia, mikä on usein suositeltavaa yritysympäristöissä.{/L} {L}Kuukausittaiset julkaisut tuovat uusia ominaisuuksia ja käyttöliittymäpäivityksiä sitä mukaa kun niitä kehitetään. Tarkista, tukeeko nykyiset lisäosasi tätä julkaisumallia. Voit myös asentaa {AcompatCheck}Lisäosien yhteensopivuustarkistuksen{/A} apuna.{/L} {/U}{/P}{P} Iloksemme voimme ilmoittaa, että SmartTemplates on täysin yhteensopiva Thunderbird 140:n kanssa, seuraavan Extended Support Release (ESR) -version kanssa. Tämä tarkoittaa jatkuvaa luotettavuutta ja mielenrauhaa seuraavan suuren tukikierron ajan.{/P}{P} SmartTemplates tukee tällä hetkellä Thunderbird 115:tä ja uudempia versioita. Tulevan vuoden aikana, uusien ominaisuuksien lisäyksen myötä, tuki Thunderbird 115:lle voidaan lopettaa ja siirtyä Thunderbird 128:aan ja sitä uudempiin versioihin.{/P}{P} Seuraamme jatkuvasti Thunderbirdin muutoksia varmistaaksemme, että SmartTemplates pysyy yhteensopivana ja luotettavana, riippumatta siitä, minkä päivityspolun valitset.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Tärkeää:{boldEnd} Thunderbird jatkaa kuukausittaista julkaisusykliään. {P2}{P1} Jotkut käyttäjät saattoivat nähdä virheellisen yhteensopimattomuusvaroituksen päivitettyään Thunderbirdin versioon 144. Tämä johtui Thunderbirdin välimuistissa olevista yhteensopivuustiedoista, jotka eivät aina päivity oikein. SmartTemplatesin edellinen versio oli jo täysin yhteensopiva 144:n kanssa. Tein Thunderbirdille bugiraportin tämän korjaamiseksi: [Bugzilla 1986027]{P2}{P1} Voit olla varma, että SmartTemplates tukee täysin sekä kuukausi- että ESR-kanavia (140.*), ja voit jatkaa työskentelyä keskeytyksettä. {P2}"
+    "message": "{P}{bold}Tärkeää:{/bold} Thunderbird jatkaa kuukausittaista julkaisusykliään. {/P}{P} Jotkut käyttäjät saattoivat nähdä virheellisen yhteensopimattomuusvaroituksen päivitettyään Thunderbirdin versioon 144. Tämä johtui Thunderbirdin välimuistissa olevista yhteensopivuustiedoista, jotka eivät aina päivity oikein. SmartTemplatesin edellinen versio oli jo täysin yhteensopiva 144:n kanssa. Tein Thunderbirdille bugiraportin tämän korjaamiseksi: [Bugzilla 1986027]{/P}{P} Voit olla varma, että SmartTemplates tukee täysin sekä kuukausi- että ESR-kanavia (140.*), ja voit jatkaa työskentelyä keskeytyksettä. {/P}"
   },
   "newsSection.intro": {
-    "message": "{P1}Seuraamme edelleen Thunderbirdin kuukausittaista julkaisusykliä varmistaaksemme yhteensopivuuden ja vakauden. Kuten aina, tämä työ rahoitetaan kokonaan lisenssimyynnillä.{P2}"
+    "message": "{P}Seuraamme edelleen Thunderbirdin kuukausittaista julkaisusykliä varmistaaksemme yhteensopivuuden ja vakauden. Kuten aina, tämä työ rahoitetaan kokonaan lisenssimyynnillä.{/P}"
   },
   "newsSection.license": {
     "message": "Koska kaikki työ SmartTempaltessin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."
@@ -1296,7 +1296,7 @@
     "message": "Lauseke tuplahakasulkeiden sisällä {[[Cc: %cc(name)%]]} näytetään vain, jos {%cc(name)%} voidaan korvata!"
   },
   "special-offer-content": {
-    "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}SmartTemplates Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $salesEnd$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
+    "message": "Päivitä ominaisuudet ja säästä {bold} $reduction$ {/bold} ostamalla {linkStartPro}SmartTemplates Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {bold} $salesEnd$ {/bold} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1318,7 +1318,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Hei {name} {boldEnd}, tue $addon$ hankkimalla lisenssi.",
+    "message": "{bold} Hei {name} {/bold}, tue $addon$ hankkimalla lisenssi.",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1327,7 +1327,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Uusi lisenssi nyt ja säästä {boldStart}$reduction${boldEnd}! Tämä erikoistarjous on voimassa {boldStart} $salesEnd$ {boldEnd} asti.",
+    "message": "Uusi lisenssi nyt ja säästä {bold}$reduction${/bold}! Tämä erikoistarjous on voimassa {bold} $salesEnd$ {/bold} asti.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1340,7 +1340,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Päivitä nyt SmartTemplates Standardista Pro -versioon ja säästä {boldStart}$reduction${boldEnd}! Tämä erikoistarjous on voimassa {boldStart}$salesEnd${boldEnd} asti.",
+    "message": "Päivitä nyt SmartTemplates Standardista Pro -versioon ja säästä {bold}$reduction${/bold}! Tämä erikoistarjous on voimassa {bold}$salesEnd${/bold} asti.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1947,7 +1947,7 @@
   },
   "whats-new-list": {
     "description": "🇫🇮 change log",
-    "message": "{L1}{boldStart}4.16.4: Parannetut päivämäärämuuttujat{boldEnd} — Kuukausi- ja viikonpäivän nimien luominen paikallisissa formaateissa korjattu epäluotettavuus. Laajennus käyttää nyt vakiomenetelmää niiden luomiseen kaikilla kielillä, poistaa vanhaa koodia ja parantaa tehokkuutta. [issue 405]{L2}{L1}4.16.3: Korjattu mallin muokkaustoiminto asetuksissa [issue 404]{L2}{L1}4.16.1: Mallivalikon kohteiden lisääminen, päivittäminen ja uudelleenjärjestely parannettu. Raahaa ja pudota -toiminto on nyt luotettavampi, ja uudet kohteet lisätään valitun kohteen alapuolelle.{L2}{L1}Yhteensopivuus Thunderbird 146 kanssa.{L2}{L1}Estetty päällekkäiset <style>-elementit yhdistettäessä <head>-osaan. Määrittääksesi liittyvät säännöt, avaa Lisäasetukset / Sekalaiset [issue 399].{L2}{L1}Selvennetyt työkaluvihjeet tilien mallien lataamiseen ja tallentamiseen: Tallenna mallit (kirjoitus, vastaus, edelleenlähetys) identiteetille…{L2}{L1}Palautettu tilapalkin painike, joka puuttui Thunderbird 142+ -versioista [issue 401].{L2}"
+    "message": "{L}{bold}4.16.4: Parannetut päivämäärämuuttujat{/bold} — Kuukausi- ja viikonpäivän nimien luominen paikallisissa formaateissa korjattu epäluotettavuus. Laajennus käyttää nyt vakiomenetelmää niiden luomiseen kaikilla kielillä, poistaa vanhaa koodia ja parantaa tehokkuutta. [issue 405]{/L}{L}4.16.3: Korjattu mallin muokkaustoiminto asetuksissa [issue 404]{/L}{L}4.16.1: Mallivalikon kohteiden lisääminen, päivittäminen ja uudelleenjärjestely parannettu. Raahaa ja pudota -toiminto on nyt luotettavampi, ja uudet kohteet lisätään valitun kohteen alapuolelle.{/L}{L}Yhteensopivuus Thunderbird 146 kanssa.{/L}{L}Estetty päällekkäiset <style>-elementit yhdistettäessä <head>-osaan. Määrittääksesi liittyvät säännöt, avaa Lisäasetukset / Sekalaiset [issue 399].{/L}{L}Selvennetyt työkaluvihjeet tilien mallien lataamiseen ja tallentamiseen: Tallenna mallit (kirjoitus, vastaus, edelleenlähetys) identiteetille…{/L}{L}Palautettu tilapalkin painike, joka puuttui Thunderbird 142+ -versioista [issue 401].{/L}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

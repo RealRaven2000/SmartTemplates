@@ -49,7 +49,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Ara esteu executant la versió {boldStart} $addonVer$ {boldEnd} a Thunderbird $appVer$.",
+    "message": "Ara esteu executant la versió {bold} $addonVer$ {/bold} a Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -811,7 +811,7 @@
     "message": "Com a titular d’una llicència estàndard SmartTemplates, ara podeu optar a una actualització amb descompte i una extensió de l’any complet. Feu clic al botó [Actualitza a Pro] a sota de la llicència estàndard per obtenir més informació."
   },
   "license-standard-special-offer": {
-    "message": "{boldStart} Benvolgut $userName$ {boldEnd}, ara podeu actualitzar a SmartTemplates Pro per obtenir {boldStart} $discount$ menys {boldEnd}, alhora que també amplieu la llicència un any complet. Hi haurà més canvis importants a Thunderbird i necessito {boldStart} la vostra ajuda {boldEnd} per estar al dia.",
+    "message": "{bold} Benvolgut $userName$ {/bold}, ara podeu actualitzar a SmartTemplates Pro per obtenir {bold} $discount$ menys {/bold}, alhora que també amplieu la llicència un any complet. Hi haurà més canvis importants a Thunderbird i necessito {bold} la vostra ajuda {/bold} per estar al dia.",
     "placeholders": {
       "discount": {
         "content": "$2",
@@ -824,7 +824,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Aquesta oferta especial està disponible del {boldStart} al $expiry$ {boldEnd}.",
+    "message": "Aquesta oferta especial està disponible del {bold} al $expiry$ {/bold}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
@@ -974,25 +974,25 @@
     "message": "Últimes notícies"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} Totes les noves funcions, correccions d'errors i compatibilitat a llarg termini són possibles gràcies al vostre suport.{P2}{P1 class=specialOffer} Per ajudar a sostenir el desenvolupament de SmartTemplates, podeu renovar la vostra llicència amb descompte fins al {salesEnd}.{P2}{P1 class=bottomhint}🡇 Trieu una de les opcions següents per obtenir més informació 🡇{P2}"
+    "message": "{P} Totes les noves funcions, correccions d'errors i compatibilitat a llarg termini són possibles gràcies al vostre suport.{/P}{P class=specialOffer} Per ajudar a sostenir el desenvolupament de SmartTemplates, podeu renovar la vostra llicència amb descompte fins al {salesEnd}.{/P}{P class=bottomhint}🡇 Trieu una de les opcions següents per obtenir més informació 🡇{/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} També podeu donar suport a la compatibilitat futura adquirint una llicència.{P2}{P1}Totes les noves funcions, correccions d'errors i compatibilitat a llarg termini són possibles gràcies al vostre suport.{P2}{P1 class=specialOffer}Per ajudar a sostenir el desenvolupament de SmartTemplates, podeu obtenir una llicència Estàndard o Pro amb descompte fins al {salesEnd}.{P2}{P1 class=bottomhint}🡇 Trieu una de les opcions següents per obtenir més informació 🡇{P2}"
+    "message": "{P} També podeu donar suport a la compatibilitat futura adquirint una llicència.{/P}{P}Totes les noves funcions, correccions d'errors i compatibilitat a llarg termini són possibles gràcies al vostre suport.{/P}{P class=specialOffer}Per ajudar a sostenir el desenvolupament de SmartTemplates, podeu obtenir una llicència Estàndard o Pro amb descompte fins al {salesEnd}.{/P}{P class=bottomhint}🡇 Trieu una de les opcions següents per obtenir més informació 🡇{/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Gràcies per donar suport a SmartTemplates amb una llicència Estàndard.{P2}{P1} Tant si la vostra llicència ha caducat com si encara és activa, podeu actualitzar a Pro amb un gran descompte fins al {salesEnd}. Si actualitzeu després de la caducitat, obtindreu un any complet d'ús a partir de la data de compra.{P2}{P1 class=bottomhint}🡇 Trieu una de les opcions següents per obtenir més informació 🡇{P2}"
+    "message": "{P} Gràcies per donar suport a SmartTemplates amb una llicència Estàndard.{/P}{P} Tant si la vostra llicència ha caducat com si encara és activa, podeu actualitzar a Pro amb un gran descompte fins al {salesEnd}. Si actualitzeu després de la caducitat, obtindreu un any complet d'ús a partir de la data de compra.{/P}{P class=bottomhint}🡇 Trieu una de les opcions següents per obtenir més informació 🡇{/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Gràcies per donar suport a SmartTemplates amb una llicència Pro — això fa possibles totes les noves funcions, correccions d'errors i compatibilitat a llarg termini.{P2}"
+    "message": "{P} Gràcies per donar suport a SmartTemplates amb una llicència Pro — això fa possibles totes les noves funcions, correccions d'errors i compatibilitat a llarg termini.{/P}"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Připravujeme v další velké verzi {boldEnd}: Thunderbird vás brzy požádá, abyste si vybrali preferovanou cestu aktualizace — buď roční ESR větev, nebo rychlejší měsíční vydání. {ARelease}Zjistěte více o novém modelu vydávání{A2}.{U1} {L1}Verze ESR zůstane na verzi 140, bude navyšovat minor verze a bude obsahovat pouze bezpečnostní opravy a opravy chyb, což je často preferováno v korporátním prostředí.{L2} {L1}Měsíční cyklus vydání přinese nové funkce a aktualizace rozhraní podle vývoje. Zkontrolujte, zda vaše současné doplňky tento model podporují. Pro usnadnění si můžete nainstalovat {AcompatCheck}Add-on Compatibility Check{A2}.{L2} {U2}{P2}{P1} S potěšením oznamujeme, že SmartTemplates je plně kompatibilní s Thunderbird 140, další verzí Extended Support Release (ESR). To znamená trvalou spolehlivost a klid během příštího hlavního cyklu podpory.{P2}{P1} SmartTemplates zatím pokračuje v podpoře uživatelů s Thunderbirdem 115 a novějšími verzemi. V průběhu příštího roku může podpora pro Thunderbird 115 být postupně ukončena ve prospěch Thunderbird 128 a novějších.{P2}{P1} Neustále sledujeme změny v Thunderbirdu, aby SmartTemplates zůstával kompatibilní a spolehlivý bez ohledu na vybraný způsob vydávání.{P2}"
+    "message": "{P}{bold} Připravujeme v další velké verzi {/bold}: Thunderbird vás brzy požádá, abyste si vybrali preferovanou cestu aktualizace — buď roční ESR větev, nebo rychlejší měsíční vydání. {ARelease}Zjistěte více o novém modelu vydávání{/A}.{U} {L}Verze ESR zůstane na verzi 140, bude navyšovat minor verze a bude obsahovat pouze bezpečnostní opravy a opravy chyb, což je často preferováno v korporátním prostředí.{/L} {L}Měsíční cyklus vydání přinese nové funkce a aktualizace rozhraní podle vývoje. Zkontrolujte, zda vaše současné doplňky tento model podporují. Pro usnadnění si můžete nainstalovat {AcompatCheck}Add-on Compatibility Check{/A}.{/L} {/U}{/P}{P} S potěšením oznamujeme, že SmartTemplates je plně kompatibilní s Thunderbird 140, další verzí Extended Support Release (ESR). To znamená trvalou spolehlivost a klid během příštího hlavního cyklu podpory.{/P}{P} SmartTemplates zatím pokračuje v podpoře uživatelů s Thunderbirdem 115 a novějšími verzemi. V průběhu příštího roku může podpora pro Thunderbird 115 být postupně ukončena ve prospěch Thunderbird 128 a novějších.{/P}{P} Neustále sledujeme změny v Thunderbirdu, aby SmartTemplates zůstával kompatibilní a spolehlivý bez ohledu na vybraný způsob vydávání.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continua amb el seu cicle de llançament mensual. {P2}{P1} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a la v144. Això va ser causat per informació de compatibilitat emmagatzemada en memòria cau a Thunderbird, que de vegades no s'actualitza correctament. La versió anterior de SmartTemplates ja era completament compatible amb la 144. He informat d'un error a Thunderbird perquè ho solucionin: [Bugzilla 1986027]{P2}{P1} Tingueu la seguretat que SmartTemplates és totalment compatible tant amb els canals mensuals com amb l'ESR (140.*), i podeu continuar treballant sense interrupcions. {P2}"
+    "message": "{P}{bold}Important:{/bold} Thunderbird continua amb el seu cicle de llançament mensual. {/P}{P} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a la v144. Això va ser causat per informació de compatibilitat emmagatzemada en memòria cau a Thunderbird, que de vegades no s'actualitza correctament. La versió anterior de SmartTemplates ja era completament compatible amb la 144. He informat d'un error a Thunderbird perquè ho solucionin: [Bugzilla 1986027]{/P}{P} Tingueu la seguretat que SmartTemplates és totalment compatible tant amb els canals mensuals com amb l'ESR (140.*), i podeu continuar treballant sense interrupcions. {/P}"
   },
   "newsSection.intro": {
-    "message": "{P1}Continuem seguint el cicle de versions mensuals de Thunderbird per garantir la compatibilitat i l'estabilitat. Com sempre, aquesta feina es finança íntegrament mitjançant la venda de llicències.{P2}"
+    "message": "{P}Continuem seguint el cicle de versions mensuals de Thunderbird per garantir la compatibilitat i l'estabilitat. Com sempre, aquesta feina es finança íntegrament mitjançant la venda de llicències.{/P}"
   },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že veškerá práce na SmartTemplates a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
@@ -1296,7 +1296,7 @@
     "message": "La frasa {[[Cc: %cc(name)%]]} s'aficharà pas que se la variabla {%cc(name)%} pòt èsser remplaçada !"
   },
   "special-offer-content": {
-    "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením {linkStartPro}licence SmartTemplates Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$salesEnd${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
+    "message": "Vylepšete své funkce a ušetřete {bold} $reduction$ {/bold} zakoupením {linkStartPro}licence SmartTemplates Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {bold}$salesEnd${/bold}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1318,7 +1318,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Benvolgut {name} {boldEnd}, donem suport a $addon$ mitjançant l'obtenció d'una llicència.",
+    "message": "{bold} Benvolgut {name} {/bold}, donem suport a $addon$ mitjançant l'obtenció d'una llicència.",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1327,7 +1327,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Renoveu la llicència ara i estalvieu reducció de {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart} $salesEnd$ {boldEnd}.",
+    "message": "Renoveu la llicència ara i estalvieu reducció de {bold}$reduction${/bold}. Aquesta oferta especial estarà disponible fins al dia {bold} $salesEnd$ {/bold}.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1340,7 +1340,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Actualitzeu ara de SmartTemplates Standard a Pro i estalvieu {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart}$salesEnd${boldEnd}.",
+    "message": "Actualitzeu ara de SmartTemplates Standard a Pro i estalvieu {bold}$reduction${/bold}. Aquesta oferta especial estarà disponible fins al dia {bold}$salesEnd${/bold}.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1938,7 +1938,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇦 change log",
-    "message": "{L1}{boldStart}4.16.4: Variables de dates millorades{boldEnd} — S'ha solucionat la creació poc fiable dels noms de mesos i dies de la setmana en formats localitzats. L'extensió utilitza ara un mètode estàndard per generar-los en tots els idiomes, eliminant codi obsolet i millorant l'eficiència. [issue 405]{L2}{L1}4.16.3: S'ha arreglat la funció de modificació de plantilles a la configuració [issue 404]{L2}{L1}4.16.1: Millores en la inserció, actualització i reordenació d'elements del menú de plantilles. Arrossegar i deixar anar és ara més fiable i els nous elements s'insereixen sota l'element seleccionat actual.{L2}{L1}Compatibilitat amb Thunderbird 146.{L2}{L1}Evitat duplicats d'elements <style> en fusionar amb <head>. Per configurar regles relacionades, obriu Configuració avançada / Diversos [issue 399].{L2}{L1}S'han aclarit les descripcions emergents per carregar i desar plantilles d'identitat: Desa plantilles (escriure, respondre, reenviar)…{L2}{L1}S'ha recuperat el botó de la barra d'estat que faltava a les versions Thunderbird 142+ [issue 401].{L2}"
+    "message": "{L}{bold}4.16.4: Variables de dates millorades{/bold} — S'ha solucionat la creació poc fiable dels noms de mesos i dies de la setmana en formats localitzats. L'extensió utilitza ara un mètode estàndard per generar-los en tots els idiomes, eliminant codi obsolet i millorant l'eficiència. [issue 405]{/L}{L}4.16.3: S'ha arreglat la funció de modificació de plantilles a la configuració [issue 404]{/L}{L}4.16.1: Millores en la inserció, actualització i reordenació d'elements del menú de plantilles. Arrossegar i deixar anar és ara més fiable i els nous elements s'insereixen sota l'element seleccionat actual.{/L}{L}Compatibilitat amb Thunderbird 146.{/L}{L}Evitat duplicats d'elements <style> en fusionar amb <head>. Per configurar regles relacionades, obriu Configuració avançada / Diversos [issue 399].{/L}{L}S'han aclarit les descripcions emergents per carregar i desar plantilles d'identitat: Desa plantilles (escriure, respondre, reenviar)…{/L}{L}S'ha recuperat el botó de la barra d'estat que faltava a les versions Thunderbird 142+ [issue 401].{/L}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

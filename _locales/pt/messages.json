@@ -46,7 +46,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Agora você está executando a versão {boldStart} $addonVer$ {boldEnd} no Thunderbird $appVer$.",
+    "message": "Agora você está executando a versão {bold} $addonVer$ {/bold} no Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -805,7 +805,7 @@
     "message": "Como detentor de uma licença padrão SmartTemplates, você agora tem direito a uma atualização com desconto mais uma extensão de um ano. Clique no botão [Atualize para o Pro] abaixo de sua licença padrão para obter mais informações."
   },
   "license-standard-special-offer": {
-    "message": "{boldStart} Prezado $username${boldEnd}, agora você pode atualizar para SmartTemplates Pro por {boldStart} $discount$ menos {boldEnd} - enquanto também estende sua licença por um ano inteiro. Mais grandes mudanças no Thunderbird estão chegando e eu preciso de {boldStart} sua ajuda {boldEnd} para acompanhar!",
+    "message": "{bold} Prezado $username${/bold}, agora você pode atualizar para SmartTemplates Pro por {bold} $discount$ menos {/bold} - enquanto também estende sua licença por um ano inteiro. Mais grandes mudanças no Thunderbird estão chegando e eu preciso de {bold} sua ajuda {/bold} para acompanhar!",
     "placeholders": {
       "discount": {
         "content": "$2",
@@ -818,7 +818,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Esta oferta especial está disponível de {boldStart}a $expiry${boldEnd}.",
+    "message": "Esta oferta especial está disponível de {bold}a $expiry${/bold}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
@@ -968,25 +968,25 @@
     "message": "Últimas notícias"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} Todos os novos recursos, correções de bugs e compatibilidade a longo prazo são possíveis graças ao seu apoio.{P2}{P1 class=specialOffer} Para ajudar a manter o desenvolvimento do SmartTemplates, você pode renovar sua licença com desconto até {salesEnd}.{P2}{P1 class=bottomhint}🡇 Escolha uma das opções abaixo para saber mais 🡇 {P2}"
+    "message": "{P} Todos os novos recursos, correções de bugs e compatibilidade a longo prazo são possíveis graças ao seu apoio.{/P}{P class=specialOffer} Para ajudar a manter o desenvolvimento do SmartTemplates, você pode renovar sua licença com desconto até {salesEnd}.{/P}{P class=bottomhint}🡇 Escolha uma das opções abaixo para saber mais 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} Você também pode apoiar a compatibilidade futura adquirindo uma licença.{P2}{P1} Todos os novos recursos, correções de bugs e compatibilidade a longo prazo são possíveis graças ao seu apoio.{P2}{P1 class=specialOffer} Para ajudar a manter o desenvolvimento do SmartTemplates, você pode adquirir uma licença Standard ou Pro com desconto até {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Escolha uma das opções abaixo para saber mais 🡇 {P2}"
+    "message": "{P} Você também pode apoiar a compatibilidade futura adquirindo uma licença.{/P}{P} Todos os novos recursos, correções de bugs e compatibilidade a longo prazo são possíveis graças ao seu apoio.{/P}{P class=specialOffer} Para ajudar a manter o desenvolvimento do SmartTemplates, você pode adquirir uma licença Standard ou Pro com desconto até {salesEnd}.{/P}{P class=bottomhint} 🡇 Escolha uma das opções abaixo para saber mais 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Obrigado por apoiar o SmartTemplates com uma licença Standard.{P2}{P1} Se sua licença expirou ou ainda está ativa, você pode fazer upgrade para Pro agora com um grande desconto até {salesEnd}. Fazer upgrade após a expiração concede um ano completo de uso a partir da data da compra.{P2}{P1 class=bottomhint} 🡇 Escolha uma das opções abaixo para saber mais 🡇 {P2}"
+    "message": "{P} Obrigado por apoiar o SmartTemplates com uma licença Standard.{/P}{P} Se sua licença expirou ou ainda está ativa, você pode fazer upgrade para Pro agora com um grande desconto até {salesEnd}. Fazer upgrade após a expiração concede um ano completo de uso a partir da data da compra.{/P}{P class=bottomhint} 🡇 Escolha uma das opções abaixo para saber mais 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Obrigado por apoiar o SmartTemplates com uma licença Pro — isso torna possíveis todos os novos recursos, correções de bugs e compatibilidade a longo prazo.{P2}"
+    "message": "{P} Obrigado por apoiar o SmartTemplates com uma licença Pro — isso torna possíveis todos os novos recursos, correções de bugs e compatibilidade a longo prazo.{/P}"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Em breve na próxima grande versão {boldEnd}: o Thunderbird em breve pedirá que você escolha seu caminho preferido de atualização — ou a versão anual ESR ou os lançamentos mensais mais rápidos. {ARelease}Saiba mais sobre o novo modelo de lançamento{A2}.{U1} {L1}A versão ESR permanecerá na v140, aumentando apenas os números de versão secundários e incluindo apenas correções de segurança e bugs, o que costuma ser preferido em ambientes corporativos.{L2} {L1}O ciclo de lançamento mensal fornecerá novos recursos e atualizações de interface conforme forem desenvolvidos. Verifique se seus complementos atuais suportam esse modelo de lançamento. Para isso, você pode instalar o {AcompatCheck}Add-on Compatibility Check{A2}.{L2} {U2}{P2}{P1} Temos o prazer de anunciar que o SmartTemplates é totalmente compatível com o Thunderbird 140, a próxima versão de Suporte Estendido (ESR). Isso significa confiabilidade contínua durante o próximo ciclo de suporte principal.{P2}{P1} O SmartTemplates continua oferecendo suporte para usuários do Thunderbird 115 e superior por enquanto. Ao longo do próximo ano, à medida que novos recursos forem adicionados, o suporte para o Thunderbird 115 poderá ser descontinuado em favor do Thunderbird 128 e versões mais recentes.{P2}{P1} Monitoramos continuamente as mudanças no Thunderbird para garantir que o SmartTemplates continue compatível e confiável, independentemente do caminho de atualização escolhido.{P2}"
+    "message": "{P}{bold} Em breve na próxima grande versão {/bold}: o Thunderbird em breve pedirá que você escolha seu caminho preferido de atualização — ou a versão anual ESR ou os lançamentos mensais mais rápidos. {ARelease}Saiba mais sobre o novo modelo de lançamento{/A}.{U} {L}A versão ESR permanecerá na v140, aumentando apenas os números de versão secundários e incluindo apenas correções de segurança e bugs, o que costuma ser preferido em ambientes corporativos.{/L} {L}O ciclo de lançamento mensal fornecerá novos recursos e atualizações de interface conforme forem desenvolvidos. Verifique se seus complementos atuais suportam esse modelo de lançamento. Para isso, você pode instalar o {AcompatCheck}Add-on Compatibility Check{/A}.{/L} {/U}{/P}{P} Temos o prazer de anunciar que o SmartTemplates é totalmente compatível com o Thunderbird 140, a próxima versão de Suporte Estendido (ESR). Isso significa confiabilidade contínua durante o próximo ciclo de suporte principal.{/P}{P} O SmartTemplates continua oferecendo suporte para usuários do Thunderbird 115 e superior por enquanto. Ao longo do próximo ano, à medida que novos recursos forem adicionados, o suporte para o Thunderbird 115 poderá ser descontinuado em favor do Thunderbird 128 e versões mais recentes.{/P}{P} Monitoramos continuamente as mudanças no Thunderbird para garantir que o SmartTemplates continue compatível e confiável, independentemente do caminho de atualização escolhido.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Importante:{boldEnd} O Thunderbird continua com o seu ciclo de lançamentos mensais. {P2}{P1} Alguns utilizadores poderão ter visto um aviso falso de incompatibilidade após atualizar para o Thunderbird v144. Isto foi causado por informações de compatibilidade em cache no Thunderbird, que por vezes não se atualizam corretamente. A versão anterior do SmartTemplates já era totalmente compatível com a 144. Reportei um bug ao Thunderbird para resolver isto: [Bugzilla 1986027]{P2}{P1} Tenha a certeza de que o SmartTemplates suporta totalmente tanto os canais mensais como o ESR (140.*), podendo continuar a trabalhar sem interrupções. {P2}"
+    "message": "{P}{bold}Importante:{/bold} O Thunderbird continua com o seu ciclo de lançamentos mensais. {/P}{P} Alguns utilizadores poderão ter visto um aviso falso de incompatibilidade após atualizar para o Thunderbird v144. Isto foi causado por informações de compatibilidade em cache no Thunderbird, que por vezes não se atualizam corretamente. A versão anterior do SmartTemplates já era totalmente compatível com a 144. Reportei um bug ao Thunderbird para resolver isto: [Bugzilla 1986027]{/P}{P} Tenha a certeza de que o SmartTemplates suporta totalmente tanto os canais mensais como o ESR (140.*), podendo continuar a trabalhar sem interrupções. {/P}"
   },
   "newsSection.intro": {
-    "message": "{P1}Continuamos a seguir o ciclo de lançamentos mensais do Thunderbird para garantir compatibilidade e estabilidade. Como sempre, este trabalho é totalmente financiado pelas vendas de licenças.{P2}"
+    "message": "{P}Continuamos a seguir o ciclo de lançamentos mensais do Thunderbird para garantir compatibilidade e estabilidade. Como sempre, este trabalho é totalmente financiado pelas vendas de licenças.{/P}"
   },
   "newsSection.license": {
     "message": "Como todo o trabalho no SmartTemplates e o suporte gratuito são financiados exclusivamente pelas vendas de licenças, considere comprar uma licença ou renovar a sua atual."
@@ -1281,7 +1281,7 @@
     "message": "A frase entre parênteses abaulados {[[Cc: %cc(name)%]]} somente será exibida, se a variável {%cc(name)%} não for vazia!"
   },
   "special-offer-content": {
-    "message": "Atualize seus recursos e economize {boldStart} $reduction$ {boldEnd} comprando uma {linkStartPro}licença SmartTemplates Pro{linkEnd}! Esta oferta especial estará disponível até {boldStart} $salesEnd$ {boldEnd}. Ou escolha as funções padrão com a nova {linkStart} Licença Padrão {linkEnd}.",
+    "message": "Atualize seus recursos e economize {bold} $reduction$ {/bold} comprando uma {linkStartPro}licença SmartTemplates Pro{linkEnd}! Esta oferta especial estará disponível até {bold} $salesEnd$ {/bold}. Ou escolha as funções padrão com a nova {linkStart} Licença Padrão {linkEnd}.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1303,7 +1303,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Caro {name} {boldEnd}, apoie $addon$ obtendo uma licença.",
+    "message": "{bold} Caro {name} {/bold}, apoie $addon$ obtendo uma licença.",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1312,7 +1312,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Renove sua licença agora e economize {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponível até {boldStart} $salesEnd$ {boldEnd}.",
+    "message": "Renove sua licença agora e economize {bold}$reduction${/bold}! Esta oferta especial estará disponível até {bold} $salesEnd$ {/bold}.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1325,7 +1325,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Atualize agora do SmartTemplates Standard para o Pro e economize {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponível até {boldStart}$salesEnd${boldEnd}.",
+    "message": "Atualize agora do SmartTemplates Standard para o Pro e economize {bold}$reduction${/bold}! Esta oferta especial estará disponível até {bold}$salesEnd${/bold}.",
     "placeholders": {
       "reduction": {
         "content": "$2",
@@ -1914,7 +1914,7 @@
   },
   "whats-new-list": {
     "description": "🇵🇹 change log",
-    "message": "{L1}{boldStart}4.16.4: Variáveis de data melhoradas{boldEnd} — Corrigida a criação pouco confiável de nomes de meses e dias da semana em formatos localizados. O add-on agora usa um método padrão para gerá-los em todos os idiomas, removendo código antigo e melhorando a eficiência. [issue 405]{L2}{L1}4.16.3: Função de edição de templates nas configurações corrigida [issue 404]{L2}{L1}4.16.1: Melhorias na inserção, atualização e reordenação de itens do menu de templates. Arrastar e soltar agora é mais confiável e novos itens são inseridos abaixo do item atualmente selecionado.{L2}{L1}Compatível com Thunderbird 146.{L2}{L1}Prevenção de elementos <style> duplicados ao mesclar no <head>. Para configurar regras relacionadas, abra Configurações Avançadas / Diversos [issue 399].{L2}{L1}Tooltips para carregar e salvar templates de conta esclarecidos: Salvar templates (escrever, responder, encaminhar) para identidade…{L2}{L1}Botão da barra de status ausente nas versões Thunderbird 142+ restaurado [issue 401].{L2}"
+    "message": "{L}{bold}4.16.4: Variáveis de data melhoradas{/bold} — Corrigida a criação pouco confiável de nomes de meses e dias da semana em formatos localizados. O add-on agora usa um método padrão para gerá-los em todos os idiomas, removendo código antigo e melhorando a eficiência. [issue 405]{/L}{L}4.16.3: Função de edição de templates nas configurações corrigida [issue 404]{/L}{L}4.16.1: Melhorias na inserção, atualização e reordenação de itens do menu de templates. Arrastar e soltar agora é mais confiável e novos itens são inseridos abaixo do item atualmente selecionado.{/L}{L}Compatível com Thunderbird 146.{/L}{L}Prevenção de elementos <style> duplicados ao mesclar no <head>. Para configurar regras relacionadas, abra Configurações Avançadas / Diversos [issue 399].{/L}{L}Tooltips para carregar e salvar templates de conta esclarecidos: Salvar templates (escrever, responder, encaminhar) para identidade…{/L}{L}Botão da barra de status ausente nas versões Thunderbird 142+ restaurado [issue 401].{/L}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
