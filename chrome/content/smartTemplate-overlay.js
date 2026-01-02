@@ -1601,12 +1601,11 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   }
   
   function displayTag(node) {
-    const att = node.attributes;
-    let aS = node.tagName || node.nodeName;
     if (!node || node.nodeType === Node.TEXT_NODE) {
       return `'${node.textContent}'`;
     }
-
+    const att = node.attributes;
+    let aS = node.tagName || node.nodeName;
     if (att) {
       for (let a of node.attributes) {
         aS += aS.includes(" ") ? ", " : " ";
@@ -2583,7 +2582,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           textParamList = textParamList.substr(0, textParamList.lastIndexOf(")"));
 
           multiArgs = textParamList.split(",");
-          multiArgs = util.combineEscapedParams(multiArgs, 0); // fixed escaped \, by combining
+          multiArgs = util.combineEscapedParams(multiArgs, 0, true); // fixed escaped \, by combining
+          multiArgs = multiArgs.map((a) => a.replace(/^\s+/, "")); // trim leading spaces
 
           // rebuild string
           textParamList = "";
@@ -2607,36 +2607,42 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                     multiArgs[a] = multiArgs[a].replace(/^"(.*)"$/, "$1").replaceAll("\\,", ",");
                   }
                   break;
-                default: {
-                  // append sanitized params
-                  // remove quotes at start and end and replace escaped commas
-                  let nextArg = a.replace(/^"(.*)"$/, "$1").replaceAll("\\,", ",");
-                  if (modType == "address") {
-                    // [issue 327] support multiple address parameters
-                    const optionalComma = textParamList.length ? "," : "";
-                    textParamList += optionalComma + nextArg;
-                  } else {
-                    textParamList += nextArg; // for ordinary strings, just concat all arguments without delimiter.
+                default:
+                  {
+                    // append sanitized params
+                    // remove quotes at start and end and replace escaped commas
+                    let nextArg = a.replace(/^"(.*)"$/, "$1").replaceAll("\\,", ",");
+                    if (modType == "address") {
+                      // [issue 327] support multiple address parameters
+                      const optionalComma = textParamList.length ? "," : "";
+                      textParamList += optionalComma + nextArg;
+                    } else {
+                      textParamList += nextArg; // for ordinary strings, just concat all arguments without delimiter.
+                    }
                   }
-                } break;
+                  break;
               }
             }
           }
           break;
         case "matchFromSubject":
-        case "matchFromBody": {
-          let regX = new RegExp("%header." + cmd + "." + matchFunction + "(.*)%", "g");
+        case "matchFromBody":
+          {
+            let regX = new RegExp("%header." + cmd + "." + matchFunction + "(.*)%", "g");
 
-          if (matchFunction == "matchFromBody") {
-            // Insert replacement from body of QUOTED email!
-            textParamList = matchText(regX, "body");
-          } else {
-            // Insert replacement from subject line
-            textParamList = matchText(regX, "subject");
+            if (matchFunction == "matchFromBody") {
+              // Insert replacement from body of QUOTED email!
+              textParamList = matchText(regX, "body");
+            } else {
+              // Insert replacement from subject line
+              textParamList = matchText(regX, "subject");
+            }
+            // if our match returns nothing, then do nothing (prevent from overwriting existing headers).
+            if (textParamList == "") {
+              return "";
+            }
           }
-          // if our match returns nothing, then do nothing (prevent from overwriting existing headers).
-          if (textParamList == "") {return "";}
-        } break;
+          break;
         default:
           util.logToConsole("invalid matchFunction: " + matchFunction);
           return "";
