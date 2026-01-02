@@ -100,7 +100,7 @@ async function onLoad(activatedWhileWindowOpen) {
           }
           if (entry) {
             SmartTemplates.Util.logDebug(
-              "Execute command for reply with account template: " + entry.command
+              `Execute command for reply with account template: ${entry.command}`
             );
             SmartTemplates.fileTemplates.fireComposeCommand(entry);
           } else {

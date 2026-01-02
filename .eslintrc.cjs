@@ -23,7 +23,6 @@ module.exports = {
     gComposeType: "readonly",
     gMsgCompose: "readonly",
     gTabmail: "readonly",
-    gSpellChecker: "readonly",
     enableInlineSpellCheck: "readonly",
     IsHTMLEditor: "readonly",
     MsgStatusFeedback: "readonly",

@@ -234,10 +234,8 @@ SmartTemplate4.composer = {
       if (!isHandled) {    
         SmartTemplate4.Util.popupAlert("SmartTemplates", 
           "An error occured with the selected file. Either it can't be found or there was a problem accessing it.");
-      }
-        
-    }
-    else {
+      }        
+    } else {
       await SmartTemplate4.fileTemplates.insertFileEntryInComposer(SmartTemplate4.fileTemplates.armedEntry);
     }
   },
