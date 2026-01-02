@@ -2,6 +2,7 @@ To do: add a readme or wiki, just dumping some notes here:
 
 SmartTemplates Template Flow (Simplified)
 
+```
 User Action: Reply / ReplyAll / ReplyToList / Forward / New
 │
 ├─> Menu Click: "Reply with Template" / "Insert Template"
@@ -41,3 +42,4 @@ User Action: Reply / ReplyAll / ReplyToList / Forward / New
      │    ├─ JSON.stringify(lastTemplate) → save to prefs
      │    └─ Notify background for menu update (if requested)
      └─ armedEntry.messageCount decremented if >1 (multi-message)
+```
