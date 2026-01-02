@@ -486,9 +486,8 @@ SmartTemplate4.classSmartTemplate = function() {
 	//	<BR><BR>(<- if reply_on_top=1) <#text#>..... (reply_header_xxxx) <BR><SPAN> original-message
 	//We need to remove a few lines depending on reply_ono_top and reply_header_xxxx.
 	// [Bug 26523] added an additional option to only delete the space before the original quote header
-	function delReplyHeader(idKey, onlyHeader, onlySpace) {
+	function delReplyHeader(idKey, onlySpace) {
 		// function countLines(str) { return str.split("\n").length - 1; }
-
 		util.logDebugOptional('functions','SmartTemplate4.delReplyHeader()');
 		let rootEl = SmartTemplate4.composer.body;
 		// if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) {
@@ -519,16 +518,6 @@ SmartTemplate4.classSmartTemplate = function() {
 				continue;
 			}
 			
-			if (onlyHeader) { // don't delete all previous nodes!
-				if (node.nodeName.toLowerCase()=='div' &&
-				    node.className &&
-				    node.className.indexOf('moz-cite-prefix')>=0) {
-					elType = deleteNodeTextOrBR(node, idKey, skipInPlainText && preserve); // 'cite-prefix'
-				}
-				node = n;
-				continue;
-			}
-			
 			elType = deleteNodeTextOrBR(node, idKey, skipInPlainText && preserve); // 'cite-prefix'
 			if (elType == "cite-prefix") {
         foundReplyHeader = true;
@@ -536,11 +525,19 @@ SmartTemplate4.classSmartTemplate = function() {
 			node = n;
 		}
 
-		// remove quote header elemenbt
+		// remove quote header element
 		if (!onlySpace) {
 			const quoteHeaderCls =  'moz-email-headers-table';
 			// recursive search from root element
 			let node = findChildNode(rootEl, quoteHeaderCls);
+      if (isQuotedNode(node)) {
+        // [issue 408] do not delete quote headers that are within blockquote
+        util.logDebugOptional(
+          "functions.delReplyHeader",
+          "found " + quoteHeaderCls + " but it is within a blockquote, exiting."
+        );
+        return;
+      } 
 			if (node) {
 				util.logDebugOptional('functions.delReplyHeader','found ' + quoteHeaderCls +', calling deleteHeaderNode()…');
 				deleteHeaderNode(node);
@@ -553,8 +550,7 @@ SmartTemplate4.classSmartTemplate = function() {
             deleteNodeTextOrBR(node, idKey, skipInPlainText && preserve);
           }
 				}
-			}
-				
+			}	
 		}
 
 		util.logDebugOptional('functions','SmartTemplate4.delReplyHeader() ENDS');
@@ -673,7 +669,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		util.logDebugOptional('functions.delForwardHeader','Running Loop to remove unnecessary whitespace..');
 
 		while (node) {
-			let n = node.nextSibling;
+			const n = node.nextSibling;
 
 			if (node.nodeValue && node.nodeValue == origMsgDelimiter) {
 				deleteNodeTextOrBR(node, idKey, skipInPlainText && preserve); // HTML + plain text - stop after removing "--- original message ---"
@@ -689,7 +685,8 @@ SmartTemplate4.classSmartTemplate = function() {
 				    inner = node.firstChild;
 				while (inner) {
 					let m = inner.nextSibling;
-					if (inner.nodeValue == origMsgDelimiter || truncWhiteSpace) {
+          const isFound = inner.nodeValue == origMsgDelimiter;
+					if (isFound || truncWhiteSpace) {
 						// delete all whitespace before delim
 						if (searchWhiteSpace) {
 							searchWhiteSpace = false;
@@ -1352,14 +1349,14 @@ SmartTemplate4.classSmartTemplate = function() {
             break;
           case "reply":
             if (flags.suppressQuoteHeaders) {
-              delReplyHeader(idKey, false);
+              delReplyHeader(idKey);
             } else if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
               // stationery has a placeholder for the original quote text.
               if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
                 // when in stationery we only delete the quote header and not all preceding quotes!
-                delReplyHeader(idKey, false);
+                delReplyHeader(idKey);
               } else {
-                delReplyHeader(idKey, false, true); // remove just spaces [Bug 26523]
+                delReplyHeader(idKey, true); // remove just spaces [Bug 26523]
               }
             }
             break;
