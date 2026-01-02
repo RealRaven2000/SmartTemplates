@@ -41,7 +41,36 @@ SmartTemplate4.fileTemplates = {
     return this.ControllerMap.get(cmd);
   },
   isAPIpatched: false,
+  ENTRY_TIMEOUT: 5000, 
 	armedEntry: null,
+  armedEntryReset: function() {
+    if (this.armedEntry == null) { return; }
+    if (!this.armedEntry?.messageCount || this.armedEntry.messageCount <= 1) {
+      this.armedEntry = null;
+      return;
+    }
+    if ((Date.now() - this.armedEntry.timeStamp > this.ENTRY_TIMEOUT)) {
+      this.armedEntry = null;
+      return;
+    }
+    this.armedEntry.messageCount--;
+  },
+  armEntry({ composeType, path, label, command }) {
+    // [issue 379] Allow reply to multiple selected messages.
+    const tabmail = document.getElementById("tabmail");
+    const view = tabmail?.currentTabInfo?.chromeBrowser?.contentWindow?.threadTree?.view;
+    const entry = {
+      composeType,
+      path,
+      label,
+      command,
+      messageCount: view?.numSelected || 1,
+      timeStamp: Date.now(),
+    };
+
+    this.armedEntry = entry;
+    return entry;
+  },
   tabConfigured: false,
 	lastError: null,
 	isModified: false, // set to true after editing moving / removing items
@@ -1084,8 +1113,7 @@ SmartTemplate4.fileTemplates = {
       // update api menus
       // we need to remove all mru- items from the top level!
       // not sure how to do it via the API
-    }
-    catch(ex) {
+    } catch(ex) {
       SmartTemplate4.Util.logException("composeFromAPI()", ex);
     } finally {
       // update the data to the background first
@@ -1245,20 +1273,20 @@ SmartTemplate4.fileTemplates = {
 				label: label
 			};
 
-    let command = SmartTemplate4.fileTemplates.getController(menuitem);
+    const command = SmartTemplate4.fileTemplates.getController(menuitem);
     if (command) {
       entry.command = command; // only used by "adhoc" handler, but leaving it here just in case.
     }
       
     if (!isSnippet) {
-      fileTemplateInstance.armedEntry = entry;
+      entry = fileTemplateInstance.armEntry(entry);
       // now remember the correct template for the next composer window!
       // - note: in single messafe windows this won't work as it cannot determine its "real" parent window
       //         therefore we must copy this into the most recent 3pane window to marshall this info through
       ////  originalEvent.view ? originalEvent.view.window.URL.endsWith("messageWindow.xul") : false;
-      let isSingleMessage = singleMwindow ? true : false;
+      const isSingleMessage = singleMwindow ? true : false;
       if (isSingleMessage && singleMwindow == window) {
-        let fTMain = util.Mail3PaneWindow.SmartTemplate4.fileTemplates;
+        const fTMain = util.Mail3PaneWindow.SmartTemplate4.fileTemplates;
         fTMain.armedEntry = fileTemplateInstance.armedEntry; // copy to last main window
       }
     }
@@ -1271,12 +1299,10 @@ SmartTemplate4.fileTemplates = {
     if (btn.id=="smarttemplate4-changeTemplate") {  
       // [issue 24] select different template from composer window
       SmartTemplate4.notifyComposeBodyReady(true, window);
-    }
-    else if (btn.id == "smarttemplate4-insertSnippet") {
+    } else if (btn.id == "smarttemplate4-insertSnippet") {
       // [issue 142] insert html Smart snippets within Composer at cursor
       SmartTemplate4.fileTemplates.insertFileEntryInComposer(entry);
-    }
-    else if (popup.getAttribute("st4configured") 
+    } else if (popup.getAttribute("st4configured") 
         || popup.getAttribute("templateCategory")) {
 			util.logDebugOptional("fileTemplates","firing btn.click() …");
       if (menuParent.tagName == "menu")  {  // Tb115
@@ -1284,19 +1310,24 @@ SmartTemplate4.fileTemplates = {
         if (entry) {
           SmartTemplate4.fileTemplates.fireComposeCommand(entry);
         }
-      } else if (menuParent.getAttribute("type")=="menu" || menuParent.id == "SmartTemplate4Button") { 
+      } else if (menuParent.getAttribute("type")=="menu" || menuParent.id == "SmartTemplate4Button") {
         // [issue 263] recent templates menu
         let recentEntry = { command: command };
         if (!command) {
           switch (composeType) {
-            case "new": recentEntry.command = "cmd_newMessage"; break;
-            case "rsp": recentEntry.command = "cmd_reply"; break;
-            case "fwd": recentEntry.command = "cmd_forwardInline"; break;
+            case "new":
+              recentEntry.command = "cmd_newMessage";
+              break;
+            case "rsp":
+              recentEntry.command = "cmd_reply";
+              break;
+            case "fwd":
+              recentEntry.command = "cmd_forwardInline";
+              break;
           }
         }
         SmartTemplate4.fileTemplates.fireComposeCommand(recentEntry);
-      }
-      else {
+      } else {
         // old code path???
         btn.click(); // or fire the standard command event? 
       }
@@ -1363,17 +1394,31 @@ SmartTemplate4.fileTemplates = {
 	} ,
 
   storePreviousTemplate: function(composeType, entry, updateMenus = false) {
+    const normalizeForMRU = (entry) => {
+      if (!entry) {
+        return null;
+      }
+      const e = {
+        composeType: entry.composeType,
+        path: entry.path,
+        label: entry.label
+      };
+      if (entry.command) {
+        e.command = entry.command;
+      }
+      return e;
+    };
+
     const setting = "fileTemplates.mru." + composeType;
-    let lastTemplate = JSON.stringify(entry);
+    const lastTemplate = normalizeForMRU(entry);
     let previous =  "";
     try { 
       previous = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
-    }
-    catch { ; } // using external template for the first time
+    } catch { ; } // using external template for the first time
 
     if (lastTemplate) {
       // remember fileTemplates.mru.* setting for either of rsp, new, fwd
-      SmartTemplate4.Preferences.setStringPref(setting, lastTemplate);
+      SmartTemplate4.Preferences.setStringPref(setting, JSON.stringify(lastTemplate));
     }
     if (!updateMenus) {
       return;
@@ -1383,8 +1428,7 @@ SmartTemplate4.fileTemplates = {
         && previous.path == entry.path 
         && previous.composeType == entry.composeType) {
       SmartTemplate4.Util.logDebugOptional("fileTemplates", `same composeType + template selected [${entry.composeType},${entry.label}], no need to patch last used menuitem.`);
-    }
-    else {
+    } else {
       SmartTemplate4.Util.logDebugOptional("fileTemplates", `Patching Last Template[${composeType}], to ${entry.label}.`);
       SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
     }
