@@ -14,9 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+  const track = carousel.querySelector(".brands-track");
+
   // duplicate items for seamless scrolling
   for (const el of items) {
-    carousel.appendChild(el.cloneNode(true));
+    el.setAttribute("target", "_blank");
+    el.querySelector("img").classList.add("brands");
+    track.appendChild(el.cloneNode(true));
   }
 
 });
