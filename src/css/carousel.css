@@ -38,7 +38,6 @@
   flex-wrap: nowrap;
   align-items: center;
   position: relative; /* animate with transform */
-  align-items: center;
   gap: 1.5rem;
   white-space: nowrap;
   animation: brands-scroll-right 35s linear infinite;
@@ -55,7 +54,8 @@
 }
 
 /* pause on hover (optional but nice) */
-.brands-marquee:hover .brands-track {
+#brandsCarousel:hover .brands-track,
+#brandsCarousel .brands-track:hover {
   animation-play-state: paused;
 }
 
@@ -74,12 +74,12 @@
 #brandsCarousel a[href] img {
   transition: width 0.3s ease-out, height 0.3s ease-out, margin-left 0.3s;
   height: 50px;
-  width: 50px;
+  width: auto;
 }
 
 #brandsCarousel a[href] img:hover {
   height: 70px;
-  width: 70px;
+  width: auto; 
   margin-top: 0px;
   margin-bottom: 0px;
 }
