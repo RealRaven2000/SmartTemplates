@@ -209,8 +209,44 @@ function showSalesItems(isSale, licenseInfo) {
   return isActionList;
 }
 
+/**
+ * replaceNested
+ * Replaces all `{+id}` placeholders in a string with their corresponding
+ * localized messages from `messenger.i18n.getMessage(id)`.  
+ * Supports nested placeholders by repeatedly resolving until no more changes occur,
+ * with a maximum loop limit to avoid infinite recursion.
+ *
+ * @param {string} text - The input string containing `{+id}` placeholders.
+ * @returns {string} - The string with all `{+id}` placeholders replaced.
+ */
+function replaceNested(text) {
+  let result = text;
+  const maxLoops = 5; // prevent infinite recursion
+
+  for (let i = 0; i < maxLoops; i++) {
+    let changed = false;
+
+    result = result.replace(/\{\+([\w.]+)\}/g, (_, id) => {
+      // replace is streaming results from 1st capturing group:
+      // (fullMatch, group1, index, originalString)
+      const replacement = messenger.i18n.getMessage(id) || `{+${id}}`;
+      console.log("replaceNested callback called:", { id, replacement });
+      if (replacement !== `{+${id}}`) {
+        changed = true;
+      }
+      return `{i}${replacement}{/i}`;
+    });
+
+    if (!changed) {
+      break;
+    }
+  }
+
+  return result;
+}
+
 function formatAll(txt) {
-  let localizedMsg = txt
+  let localizedMsg = replaceNested(txt)
     .replace(/<(.*?)>/g, "<span class='htmltag'>&lt;$1&gt;</span>")
     .replace(
       // eslint-disable-next-line no-useless-escape
@@ -236,8 +272,8 @@ function formatAll(txt) {
     .replace(/\{hr\}/g, "<hr>")
     .replace(/\{pre\}/g, "<pre>")
     .replace(/\{preEnd\}/g, "</pre>")
-    .replace(/\{italicStart\}/g, "<i>")
-    .replace(/\{italicEnd\}/g, "</i>")
+    .replace(/\{i\}/g, "<i>")
+    .replace(/\{\/i\}/g, "</i>")
     .replace(/\{\{(%.*?%)\}\}/g, "<code>$1</code>")
     .replace(/\{\{(.*?)\}\}/g, "<code param>$1</code>")
     .replace(/\{U\}/g, "<ul>")
