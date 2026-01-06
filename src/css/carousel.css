@@ -1,0 +1,34 @@
+.brands-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.brands-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  white-space: nowrap;
+  animation: brands-scroll-right 35s linear infinite;
+}
+
+.brands-track img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+/* pause on hover (optional but nice) */
+.brands-marquee:hover .brands-track {
+  animation-play-state: paused;
+}
+
+@keyframes brands-scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes brands-scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+

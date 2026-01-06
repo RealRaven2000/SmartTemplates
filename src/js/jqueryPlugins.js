@@ -15,7 +15,7 @@
 /*********************** Toggle Screenshots ***********************/
 /************************* by Axel Grude **************************/
 /******************************************************************/
-
+/*
 function togglePopup(vis, back, pop, target) {
   if (Environment.isMobile.any()) {
         var href = target.getAttribute('data-mobile-href');
@@ -41,13 +41,14 @@ function togglePopup(vis, back, pop, target) {
     $("#navbarTable").fadeIn();
   }
 }
+*/
 
 /******************************************************************/
 /************************* Image Scroller *************************/
 /********************* by Massimiliano Chiusso ********************/
 /******************************************************************/
 // ImageScroller v 1.1, 23/11/2009
-
+/*
 ( function( $ ) {
     $.fn.imageScroller = function ( options ) {
         return this.each( function() {
@@ -230,6 +231,7 @@ function togglePopup(vis, back, pop, target) {
         });
     };
 })(jQuery);
+*/
 
 //  Apply container id to jquery custom class imageScroller
 
@@ -238,22 +240,19 @@ function togglePopup(vis, back, pop, target) {
 //                  loading (text)
 //                  direction (left, right, top, bottom)
 
-
+/*
 $(
     function () {
         $( "#brandsCarousel" ).imageScroller( {speed:'3000', direction:'right', loading: ''} );
     }
 )
+*/
+/* we are using the codei n carousel.js now instead. */
 
-/******************************************************************/
-/************************ Subfunctions in: ************************/
-/************************* templates.html *************************/
-/************************* screenshots.html ***********************/
-/************************* faq.html *******************************/
-/******************************************************************/
 
+/*
 function collapseQA(isjQuery) {
-   /* jquery, we just leave in the document.ready */
+    // jquery, we just leave in the document.ready 
 	// we can take this out later...
     if (isjQuery) {
 		jQuery(document).ready(function(event) {
@@ -296,3 +295,4 @@ function collapseQA(isjQuery) {
   	  });		
 	}
 }
+*/
