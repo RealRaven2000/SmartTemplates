@@ -1,5 +1,4 @@
-
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
   const carousel = document.getElementById("brandsCarousel");
   if (!carousel) {
     return;
@@ -19,5 +18,5 @@
   for (const el of items) {
     carousel.appendChild(el.cloneNode(true));
   }
-})();
 
+});
