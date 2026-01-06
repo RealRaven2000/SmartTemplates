@@ -1917,7 +1917,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L}{bold}4.16.4: 改進的日期變數{/bold} — 修復在本地化格式中建立月份和星期名稱的不可靠問題。外掛程式現在使用標準方法在所有語言中生成，移除遺留程式碼並提高效率。 [issue 405]{/L}{L}4.16.3: 修正設定中的模板編輯功能 [issue 404]{/L}{L}4.16.1: 改進模板選單項目的插入、更新與重新排序。拖放功能更可靠，新項目會插入到目前選定項目下方。{/L}{L}與 Thunderbird 146 相容。{/L}{L}合併到 <head> 時防止重複 <style> 元素。要配置相關規則，請打開進階設定 / 其他 [issue 399]。{/L}{L}澄清載入和儲存帳戶模板的工具提示：儲存模板（撰寫、回覆、轉寄）用於身份…{/L}{L}恢復在 Thunderbird 142+ 版本中缺失的狀態列按鈕 [issue 401]。{/L}"
+    "message": "{L}支援使用相同的 HTML 範本回覆多封已選取的郵件。 [issue 379]{br}當選取多封郵件時，標題列的 SmartTemplates 按鈕會隱藏。請使用主工具列的 SmartTemplates 按鈕下拉選單來選擇回覆類型及相應的範本。{/L}{L}確保與 Thunderbird 148 相容。{/L}{L}已修正: 使用 '{+defaultTemplate.useLastTemplate}' 選項時，SmartTemplates 未為正確的回覆類型選擇匹配的範本（回覆、全部回覆、回覆列表） [issue 409]。{/L}{L}已修正: 回覆從 EML 檔案打開的郵件時，SmartTemplates 功能無法使用 [issue 406]{/L}{L}偶爾，{{%spellcheck()%}} 在回覆期間載入範本時無法運作 [issue 407]{/L}{L}已修正: 回覆範本意外刪除了引用郵件內舊的引用標頭細節 [issue 408]。{/L}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

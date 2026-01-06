@@ -1927,7 +1927,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L}{bold}4.16.4: 改进的日期变量{/bold} — 修复了在本地化格式中创建月份和星期名称的不可靠问题。该插件现在使用标准方法在所有语言中生成日期，移除遗留代码并提高效率。 [issue 405]{/L}{L}4.16.3: 修复了设置中模板编辑功能的错误 [issue 404]{/L}{L}4.16.1: 改进了模板菜单条目的插入、更新和重新排序。拖放现在更加可靠，新条目插入到当前选定条目下方。{/L}{L}兼容 Thunderbird 146。{/L}{L}合并到 <head> 时防止重复的 <style> 元素。要配置相关规则，请打开高级设置 / 杂项 [issue 399]。{/L}{L}澄清加载和保存账户模板的工具提示：保存模板（撰写、回复、转发）用于身份…{/L}{L}恢复了在 Thunderbird 142+ 版本中缺失的状态栏按钮 [issue 401]。{/L}"
+    "message": "{L}支持使用相同的 HTML 模板回复多个已选择的邮件。 [issue 379]{br}当选择多封邮件时，标题中的 SmartTemplates 按钮会隐藏。请使用主工具栏 SmartTemplates 按钮的下拉菜单选择回复类型和对应模板。{/L}{L}确保与 Thunderbird 148 兼容。{/L}{L}已修复: 使用 '{+defaultTemplate.useLastTemplate}' 选项时，SmartTemplates 未为正确的回复类型选择匹配模板（回复、回复全部、回复列表） [issue 409]。{/L}{L}已修复: 当回复从 EML 文件打开的邮件时，SmartTemplates 功能无法使用 [issue 406]{/L}{L}有时 {{%spellcheck()%}} 在加载模板时无法在回复中工作 [issue 407]{/L}{L}已修复: 回复模板意外删除了引用邮件中旧的引用头部详情 [issue 408]。{/L}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

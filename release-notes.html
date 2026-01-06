@@ -1,34 +1,29 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-<b>This release improves template security, refines usability, and fixes key bugs.</b>
+<b>This release extends compatibility to Tb148, and fixes key bugs.</b>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.16.3">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.17">can be found here</a>
 
-Some users may have seen a false incompatibility warning after updating from Thunderbird to v142. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. The previous version of SmartTemplates was already fully compatible with 142. 
-
-To get this fixed I raised a bug with Thunderbird: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>.
 
 <b>Improvements</b>
 <ul>
-<li>4.16.4: Improved date variables — Fixed unreliable creation of month and weekday names in localized formats. The add-on now uses a standard method to generate them across all languages, reducing legacy code and improving efficiency. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/405">[issue 405]</a></li>
-<li>4.16.3 - Fixed broken editing function in settings [issue 404] <a href="https://github.com/RealRaven2000/SmartTemplates/issues/404">[issue 404]</a></li>
-<li>4.16.2 - Fixed a regression with the wrong day name being calculated from the email date. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/403">[issue 403]</a></li>
-<li>4.16.1 -  Improved inserting, updating and reordering template menu entries. Drag and drop is now much more reliable and new items are inserted below the currently selected item.</li>
-<li>4.16 - made SmartTemplates compatible with Thunderbird 146.</li>
-<li>Added new options to prevent duplicate &lt;style&gt; elements when merging into &lt;head&gt; <a href="https://github.com/RealRaven2000/SmartTemplates/issues/399">[issue 399]</a></li>
-<li>Clarified tooltips for loading and saving account templates: "Save templates (write, reply, forward) for $identity$…"</li>
-<li>The news label when an update to SmartTemplates is downloaded is now disabled by default.</li>
+<li>Support replying to multiple selected messages using the same html template<a href="https://github.com/RealRaven2000/SmartTemplates/issues/379">[issue 379]</a>.
+When multiple emails are selected, the header SmartTemplates button is hidden. Use the dropdown menu on the main SmartTemplates toolbar button to select the reply type and the corresponding template.</li>
+<li>Set Compatibility with Thunderbird 148 - unfortunately the current review policies for Add-ons with "experimental" APIs do not allow us to remove `strict_max_version` from manifest.json</li>
 </ul>
 
 <b>Bug Fixes</b>
 <ul>
-  <li>Brought back the status bar button which was missing in Thunderbird release (Tb 142+) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/401">[issue 401]</a></li>
+<li>Fixed: When set to "Use the external template last selected from the drop-down menu." SmartTemplates did not select the matching template for correct the reply type (reply all, reply list, reply to sender) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/409">[issue 409]</a></li>
+<li>Fixed: when replying to an email that opened from an eml file no SmartTemplates functionality worked <a href="https://github.com/RealRaven2000/SmartTemplates/issues/406">[issue 406]</a></li>
+<li>Intermittently, %spellcheck()% switch didn't work when loading the template during reply <a href="https://github.com/RealRaven2000/SmartTemplates/issues/407">[issue 407]</a></li>
+<li>Fixed: Reply template unexpectedly removed meta info lines within quoted text <a href="https://github.com/RealRaven2000/SmartTemplates/issues/408">[issue 408]</a></li>
 </ul>
 
 <b>Codebase Improvements</b>
 <ul>
-<li> Removed calendar string bundling and chrome/content/locale <a href="https://github.com/RealRaven2000/SmartTemplates/issues/400">[issue 400]</a></li>
-<li>Use API method (browser.management.get) instead of AddonManager.getAddonByID to check for Cardbook installation</li>
-<li>Removed createBundle for retrieveing forward / reply quote headers</li>
+<li>Consolidated pseudo tags in localisation `{P}` `{/P}`, `{L}` `{/L}`  etc.</li>
+<li>Fixed mismatched closing `</div>` tags (was `</vbox>`)</li>
+<li>Trim leading spaces and fix dangling doublequotes in some variables  see: `combineEscapedParams()`</li>
 </ul>

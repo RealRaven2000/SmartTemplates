@@ -1,25 +1,22 @@
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.16.4) 
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.17) 
 
 
 **Improvements**
 
-*   4.16.4: Improved date variables — Fixed unreliable creation of month and weekday names in localized formats. [issue #405]
-    - use date directly instead of calculating numeral values and converting to text again
-    - converted μs based calculation to ms
-    - removed remaining hard coded day / month names (long & shortened forms) from language files
-*   4.16.3 - Fixed broken editing function in settings [issue #404]
-*   4.16.2 - Fixed a regression with the wrong day name being calculated from the email date.[issue #403]
-*   4.16.1 -  Improved inserting, updating and reordering template menu entries. Drag and drop is now much more reliable and new items are inserted below the currently selected item.
-*   4.16 – made SmartTemplates compatible with Thunderbird 146.
-*   Added new options to prevent duplicate `<style>` elements when merging into `<head>` [issue #399]
-*   Clarified tooltips for loading and saving account templates: "Save templates (write, reply, forward) for $identity$…"
-*   The news label when an update to SmartTemplates is downloaded is now disabled by default.
+*   Set Compatibility with Thunderbird 148 - unfortunately the current review policies for Add-ons with "experimental" APIs do not allow us to remove `strict_max_version` from manifest.json
+*   Support replying to multiple selected messages with same html template. [issue #379] When multiple emails are selected, the header SmartTemplates button is hidden. Use the dropdown menu on the main SmartTemplates toolbar button to select the reply type and the corresponding template.
+
+
 **Bug Fixes**
 
-*   Brought back the status bar button which was missing in Thunderbird release (Tb 142+) [issue #401]
+*   Fixed: When set to "Use the external template last selected from the drop-down menu." SmartTemplates did not select the matching template for correct the reply type (reply all, reply list, reply to sender) [issue #409]
+*   Fixed: when replying to an email that opened from an eml file: no SmartTemplates functionality works [issue #406]
+*   Intermittently, `%spellcheck()%` switch doesn't work when loading the template during reply [issue #407]
+*   Fixed: Reply template unexpectedly removed meta info lines within quoted text [issue #408]
+
 
 **Codebase Improvements**
 
-*   Removed calendar string bundling and chrome/content/locale [issue #400]
-*   Use API method (`browser.management.get`) instead of `AddonManager.getAddonByID` to check for Cardbook installation
-*   Removed `createBundle` for retrieving forward / reply quote headers
+*   Consolidated pseudo tags in localisation `{P}` `{/P}`, `{L}` `{/L}`  etc.
+*   Fixed mismatched closing `</div>` tags (was `</vbox>`)
+*   Trim leading spaces and fix dangling doublequotes in some variables  see: `combineEscapedParams()` c00739aa41c4f74a0a2b9bd0f255415b956f477f
