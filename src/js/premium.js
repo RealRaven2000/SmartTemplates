@@ -14,7 +14,8 @@ function formatSaleDate(isoDate, includeYear = false) {
   return date.toLocaleDateString("en-US", options);
 }
 
-const sales_start_lbl = formatSaleDate(SALE_START_DATE);
+let tmp_sales_start = SALE_START_DATE; // override for testing.
+const sales_start_lbl = formatSaleDate(tmp_sales_start);
 const sales_end_lbl = formatSaleDate(SALE_END_DATE);
 const sales_end = new Date(SALE_END_DATE);
 
