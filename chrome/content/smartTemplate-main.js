@@ -5,7 +5,7 @@
 /* import * as SmartTemplates_Discounts from "../../popup/sales.js";   */
 // Next Sale End Date  COPIED from sales.js until we find a better way
 var SmartTemplates_Discounts = {
-  SALE_END_DATE: new Date("2025-06-13"),
+  SALE_END_DATE: new Date("2026-01-25"),
   discountRate: {
     discountPro: "33%",
     discountUpgrade: "33%",
@@ -327,10 +327,11 @@ END LICENSE BLOCK
     # - converted μs based calculation to ms
     # - removed remaining hard coded day / month names (long & shortened forms) from language files
 
-  Version 4.17 - WIP    
+  Version 4.17 - WIP
+    # Made compatible with Thunderbird 148
+    # [issue 409] Fixed: SmartTemplates does not reuse the correct last template for different reply types.
     # [issue 406] replying to an email that opened from an eml file: 
     #   no SmartTemplates functionality works
-    # [issue 409] SmartTemplates does not reuse the correct last template for different reply types.
     # [issue 407] Intermittently, %spellcheck()% switch doesn't work when loading the template during reply
     # [issue 408] Reply template unexpectedly removes meta info lines within quoted text
 
