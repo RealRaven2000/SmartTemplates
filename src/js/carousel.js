@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  const items = Array.from(carousel.children);
+  const track = carousel.querySelector(".brands-track");
+
+  const items = Array.from(track.children);
   if (items.length === 0) {
     return;
   }
-
-  const track = carousel.querySelector(".brands-track");
 
   // duplicate items for seamless scrolling
   for (const el of items) {
