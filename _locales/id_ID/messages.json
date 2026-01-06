@@ -1216,7 +1216,15 @@
     "message": "Mengubah ukuran font label. Bisa berupa nilai desimal sederhana seperti 0.8, 1.0, 1.2 atau nilai css penuh dengan satuan seperti 100px, 0.6em, 14pt."
   },
   "tags.formatString": {
-    "message": "Potongan html khusus untuk memformat setiap label. Gunakan $label$ dan $color$ untuk memasukkan teks atau nilai warna (heksadesimal) label."
+    "message": "Potongan html khusus untuk memformat setiap label. Gunakan $label$ dan $color$ untuk memasukkan teks atau nilai warna (heksadesimal) label.",
+    "placeholders": {
+      "color": {
+        "content": "$color$"
+      },
+      "label": {
+        "content": "$label$"
+      }
+    }
   },
   "tags.intro": {
     "message": "Variabel ini dapat memasukkan label surat dari email yang dibalas dan diteruskan ke dalam teks email."
