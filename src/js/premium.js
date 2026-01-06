@@ -1,7 +1,7 @@
 
-const sales_name = "EXTENDED SUMMER SALE"; // .saleName
-const SALE_START_DATE = "2025-05-02";
-const SALE_END_DATE = "2025-06-13";
+const sales_name = "NEW YEARS SALE"; // .saleName
+const SALE_START_DATE = "2026-01-08";
+const SALE_END_DATE = "2026-01-25";
 
 // --- Helper to format dates ---
 function formatSaleDate(isoDate, includeYear = false) {
