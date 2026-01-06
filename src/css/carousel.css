@@ -44,6 +44,10 @@
   animation: brands-scroll-right 35s linear infinite;
 }
 
+#brandsCarousel:hover .brands-track {
+  animation-play-state: paused;
+}
+
 .brands-track img {
   height: 50px;
   width: auto;
@@ -97,3 +101,4 @@
   padding: 0px;
   clear: both;
 }
+
