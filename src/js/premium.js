@@ -16,6 +16,7 @@ function formatSaleDate(isoDate, includeYear = false) {
 
 let tmp_sales_start = SALE_START_DATE; // override for testing.
 const sales_start_lbl = formatSaleDate(tmp_sales_start);
+const sales_start = new Date(tmp_sales_start);
 const sales_end_lbl = formatSaleDate(SALE_END_DATE);
 const sales_end = new Date(SALE_END_DATE);
 
@@ -113,17 +114,17 @@ var removedItems = [];
 		}
 		
 		// remove sales stuff
-		if (sales_end && new Date() > sales_end) {
-			removableItems.forEach(
-				(e) => {
-					if (!removedItems.includes(e)) {
-						removeClassItems(e);
-						removedItems.push(e);
-					}
-				}
-			);
-			return;
-		} 
+		const isSaleActive = (sales_start && new Date() >= sales_start) &&
+		                     (sales_end && new Date() <= sales_end);
+		if (!isSaleActive) {
+      removableItems.forEach((e) => {
+        if (!removedItems.includes(e)) {
+          removeClassItems(e);
+          removedItems.push(e);
+        }
+      });
+      return;
+    } 
 
 		// update all sales items:
 		let saleLabels = document.querySelectorAll(".saleName");
