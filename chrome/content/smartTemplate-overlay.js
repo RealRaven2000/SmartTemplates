@@ -3777,13 +3777,13 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     let html = "",
         arr = txt.substr(1,txt.length-2).split(','),  // strip parentheses and get optional params
         path = arr[0].replace(/"/g, ''),  // strip quotes
-        type = path.toLowerCase().substr(path.lastIndexOf('.')+1),
-        flags = SmartTemplate4.PreprocessingFlags,
-        currentPath = flags.filePaths ? 
+        type = path.toLowerCase().substr(path.lastIndexOf('.')+1);
+    const flags = SmartTemplate4.PreprocessingFlags;
+    const currentPath = flags.filePaths ? 
                      (flags.filePaths.length ? flags.filePaths[flags.filePaths.length-1] : "") : 
                      ""; // top of stack
 
-    let newPath = util.getPathFolder(currentPath, path);
+    const newPath = util.getPathFolder(currentPath, path);
                      
     if (type.match( /(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/)) {
       type = 'image';
@@ -3793,7 +3793,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     }
     util.logDebug("insertFile - type detected: " + type);
     // find out whether path is relative:
-    let isAbsolute = util.isFilePathAbsolute(newPath);
+    const isAbsolute = util.isFilePathAbsolute(newPath);
     if ((type=='image' || type=='css') && !isAbsolute) {
       let dbgCmdType = (type=="css") ? "%style%" : "%file%";
       util.logDebug(dbgCmdType + " - " + type + " path may be relative: " + path  +
@@ -3810,8 +3810,6 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         // new code for path of template - failed on Rob's Mac as unknown.
         // I think this is only set when a template is opened from the submenus!
         if (flags.isFileTemplate && currentPath) {
-          // let slash = newPath.includes("/") ? "/" : "\\",
-          //     pathArray = newPath.split(slash);
           try {
             if (!await IOUtils.exists(newPath)) {
               util.logDebug("Failed to find file at: " + newPath);
@@ -3963,10 +3961,19 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 					Cc = Components.classes;
 						
 		// msgcompose was msgcomposeWindow
-    let arr = args.substr(1,args.length-2).split(','),  // strip parentheses and get optional params
-        pathUri = arr[0],
-		    composerWin = Services.wm.getMostRecentWindow("msgcompose") || window,
-		    attachments=[];
+    let arr = args.substr(1, args.length - 2).split(","), // strip parentheses and get optional params
+      path = arr[0].replace(/"/g, ""), // strip quotes
+      composerWin = Services.wm.getMostRecentWindow("msgcompose") || window,
+      attachments = [];
+
+    const flags = SmartTemplate4.PreprocessingFlags;
+    const currentPath = flags.filePaths
+      ? flags.filePaths.length
+        ? flags.filePaths[flags.filePaths.length - 1]
+        : ""
+      : "";
+    const newPath = util.getPathFolder(currentPath, path);
+
 		try {			
       const { FileUtils } = SmartTemplates_ESM
         ? ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs")
@@ -3976,16 +3983,16 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 				alert("No FileUtils in this platform - %attach% is not supported. Are you on an old version of " + util.Application + "?");
 				return;
 			}
-      let localFile = new FileUtils.File(pathUri);				
+      const localFile = new FileUtils.File(newPath);				
 			
 			if (!localFile.exists()) {
         let wrn = util.getBundleString("st.fileFunction.notExists");
-				alert(wrn.replace("{0}", "'attachFile()'") + "\n" + pathUri);
+				alert(wrn.replace("{0}", "'attachFile()'") + "\n" + newPath);
 				return;
 			}
 			
-			let contentType = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService).getTypeFromFile(localFile),
-			    attachment = Cc["@mozilla.org/messengercompose/attachment;1"].createInstance(Ci.nsIMsgAttachment);
+			const contentType = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService).getTypeFromFile(localFile),
+			  attachment = Cc["@mozilla.org/messengercompose/attachment;1"].createInstance(Ci.nsIMsgAttachment);
 			// from https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#2721
 			// if (nsFile instanceof Ci.nsIFile) {..}
 			attachment.url = "file://" + localFile.path;
@@ -3996,9 +4003,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 			composerWin.AddAttachments(attachments);
 			
 			
-		}
-		catch(ex) {
-			util.logException("attachFile(" + pathUri + ")", ex);
+		} catch(ex) {
+			util.logException(`attachFile(${arr[0]})`, ex);
 		}
 	}
   
