@@ -327,7 +327,7 @@ END LICENSE BLOCK
     # - converted μs based calculation to ms
     # - removed remaining hard coded day / month names (long & shortened forms) from language files
 
-  Version 4.17 - WIP
+  Version 4.17 - 06/01/2026
     # Made compatible with Thunderbird 148
     # [issue 409] Fixed: SmartTemplates does not reuse the correct last template for different reply types.
     # [issue 406] replying to an email that opened from an eml file: 
@@ -336,11 +336,15 @@ END LICENSE BLOCK
     # [issue 408] Reply template unexpectedly removes meta info lines within quoted text
 
 
+  Version 4.17.1 - WIP
+    # [issue 335] Support relative file paths for %attach()% 
+    # [issue 411] Enhancement: Support Mailing Lists in header functions
+
+
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
   Version 4.x - WIP
     # [issue 326] Feature request: retrieve an email address from AB using name / nickname (WIP)
-    # [issue 277] "Reply All" from SmartTemplates menu behave the same as "Reply"
     # [issue 325] Add XNote++ variable.
     # [issue 253] recreate unified toolbar menu using API functions
 
