@@ -1257,6 +1257,33 @@ async function notifyWhenUIReady(...args) {
 }
 
 
+async function findAddressBookList(listName) {
+  // [issue 411]
+  const allAddressBooks = await messenger.addressBooks.list(true);
+  for (let ab of allAddressBooks) {
+    for (const list of ab.mailingLists) {
+      if (list?.name.toLocaleLowerCase() === listName.toLocaleLowerCase()) {
+        return list;
+      }
+    }
+  }
+  return null; // not found
+}
+
+function getAddressesFromContacts(list) {
+  const contacts = list?.contacts;
+  const addresses = [];
+  for (const contact of contacts.filter(c => c.type=="contact")) {
+    if (contact?.properties.PrimaryEmail) {
+      addresses.push({ 
+        displayName: contact.properties.DisplayName || "",
+        primaryEmail: contact.properties.PrimaryEmail,
+        nickName: contact.properties.NickName || ""
+      });
+    }
+  }
+  return addresses;
+}
 
 async function main() {
   // we need these helper functions for calculating an extension to License.info
@@ -1480,9 +1507,9 @@ async function main() {
             },
           });
           break;
-        case "openPrefs": {
+        case "openPrefs":
           await openPrefs(data);
-        }
+          break;
       }
     });
     if (isDebugAddon) {
@@ -1657,7 +1684,7 @@ async function main() {
           } catch {
             return false;
           }
-        } 
+        }
         case "parseVcard": {
           // https://webextension-api.thunderbird.net/en/stable/how-to/contacts.html
           // Get JSON representation of the vCard data (jCal).
@@ -1679,10 +1706,12 @@ async function main() {
               queryObject.dirPrefId = data.preferredDirId;
             }
 
-            cards = await messenger.runtime.sendMessage(CARDBOOK_APPNAME, queryObject).catch((x) => {
-              logReceptionError(x);
-              cards = null;
-            });
+            cards = await messenger.runtime
+              .sendMessage(CARDBOOK_APPNAME, queryObject)
+              .catch((x) => {
+                logReceptionError(x);
+                cards = null;
+              });
             return cards;
           } catch (ex) {
             console.exception(ex);
@@ -1702,10 +1731,12 @@ async function main() {
               queryObject.dirPrefId = data.preferredDirId;
             }
 
-            cards = await messenger.runtime.sendMessage(CARDBOOK_APPNAME, queryObject).catch((x) => {
-              logReceptionError(x);
-              cards = null;
-            });
+            cards = await messenger.runtime
+              .sendMessage(CARDBOOK_APPNAME, queryObject)
+              .catch((x) => {
+                logReceptionError(x);
+                cards = null;
+              });
             return cards;
           } catch (ex) {
             console.exception(ex);
@@ -1716,6 +1747,16 @@ async function main() {
 
         case "getContactsFromSearch": {
           return null;
+        }
+
+        case "getMailingListByName": {
+          const l = await findAddressBookList(data.listName);
+          if (l) {
+            // turn addresses json safe and return
+            // return JSON.stringify({ addresses: getAddressesFromContacts(l) });
+            return getAddressesFromContacts(l);
+          }
+          return [];
         }
 
         case "openPrefs":

@@ -2561,7 +2561,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         ],
         ComposeFields = gMsgCompose.compFields;
 
-      // get header
+      // get modification type, e.g. "address" or "string"
       const modType = getModType(hdrField);
 
       let whatWasModified = "",
@@ -2722,9 +2722,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             }
             break;
           case "address": // address field
+          {
+            // [issue 411]: get addresses from address book list
+            const addressList = await util.getListFromAB(plainTextParam);
             switch (cmd) {
               case "set": // overwrite address field
-                targetString = plainTextParam.toString();
+                targetString = addressList;
                 break;
               case "prefix":
                 // targetString = argument.toString() + ' ' + targetString;
@@ -2742,11 +2745,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 ) {break;}
 
                 if (targetString.toLowerCase().indexOf(plainTextParam.toLowerCase()) < 0) {
-                  targetString = targetString + ", " + textParamList;
+                  targetString = targetString + ", " + addressList;
                 }
                 break;
             }
             break;
+          }
         }
 
         // set

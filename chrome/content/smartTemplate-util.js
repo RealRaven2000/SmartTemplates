@@ -814,7 +814,7 @@ SmartTemplate4.Util = {
       timePassed = "[" + elapsed + " ms]	 ";
       this.lastTime = endTime; // remember last time
       // eslint-disable-next-line no-unused-vars
-    } catch {;}
+    } catch { ; }
     return (
       end.getHours() +
       ":" +
@@ -3284,7 +3284,7 @@ SmartTemplate4.Util = {
         util.logDebug("Enabled automatic spellcheck");
         break;
     }
-    if (langArray.length ==0) {
+    if (langArray.length == 0) {
       // we're done here.
       return;
     }
@@ -3347,7 +3347,9 @@ SmartTemplate4.Util = {
 
       if (invalidLanguages.length) {
         util.logDebug(
-          `%spellcheck%: didn't find the following language entries:\n${invalidLanguages.join(", ")}`
+          `%spellcheck%: didn't find the following language entries:\n${invalidLanguages.join(
+            ", "
+          )}`
         );
       }
     } catch (ex) {
@@ -4122,6 +4124,39 @@ SmartTemplate4.Util = {
       }
     }
     return true;
+  },
+  // retrieve a list of addresses from a named list in the address book [issue 411]
+  getListFromAB: async function (addressParam) {
+    if (!addressParam || !addressParam.trim()) {
+      return "";
+    }
+    if (!addressParam.startsWith("list:")) {
+      return addressParam;
+    }
+    const listName = addressParam.substring(5).trim();
+    try {
+      // this returns a JSON string of MailingListNode.contacts
+      // array of ContactNode
+      // https://webextension-api.thunderbird.net/en/mv2/contacts.html#contacts-contact-node
+      const mailingList = await SmartTemplate4.Util.notifyTools.notifyBackground({
+        func: "getMailingListByName",
+        listName: listName,
+      });
+      if (!mailingList?.length) {
+        return addressParam;
+      }
+      let addressList = "";
+      for (const entry of mailingList) {
+        if (addressList) {
+          addressList += ", ";
+        }
+        addressList += entry?.primaryEmail || ""; // entry?.displayName ||
+      }
+      return addressList;
+    } catch (ex) {
+      SmartTemplate4.Util.logException("getListFromAB failed to get mailing list:", ex);
+      return addressParam;
+    }
   },
 };  // ST4.Util
 
