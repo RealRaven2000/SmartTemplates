@@ -940,8 +940,14 @@
   "names.swap": {
     "message": "Správné Příjmení, Jméno"
   },
+  "names.swap.name": {
+    "message": "Také ovlivnit zástupce (name)"
+  },
+  "names.swap.name.tip": {
+    "message": "Bez této možnosti se zástupce (name) nezmění, ale zástupci (firstname) a (lastname) budou stále opraveny."
+  },
   "names.swap.tip": {
-    "message": "Zaměň pořadí 'Příjmění, Jméno'"
+    "message": "Snaží se odhadnout správné části z 'Příjmení, Jméno' - to ovlivní zástupce (firstname) a (lastname)."
   },
   "new.label": {
     "message": "Zvolit následující šablonu pro psaní nové zprávy"

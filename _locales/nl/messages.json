@@ -943,8 +943,14 @@
   "names.swap": {
     "message": "Achternaam, Voornaam corrigeren"
   },
+  "names.swap.name": {
+    "message": "Ook van toepassing op (name) placeholders"
+  },
+  "names.swap.name.tip": {
+    "message": "Zonder deze optie wordt de (name) placeholder zelf niet aangepast, maar (firstname) en (lastname) placeholders worden wel gecorrigeerd."
+  },
   "names.swap.tip": {
-    "message": "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’"
+    "message": "Probeert de juiste onderdelen te raden van 'Achternaam, Voornaam' – dit beïnvloedt de (firstname) en (lastname) placeholders."
   },
   "new.label": {
     "message": "Volgende sjabloon toepassen op het nieuwe bericht"

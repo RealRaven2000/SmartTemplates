@@ -949,8 +949,14 @@
   "names.swap": {
     "message": "Cognom, nom correctes"
   },
+  "names.swap.name": {
+    "message": "També afecta els espais reservats (name)"
+  },
+  "names.swap.name.tip": {
+    "message": "Sense aquesta opció, l'espai reservat (name) no es canviarà, però els espais reservats (firstname) i (lastname) sí que seran corregits."
+  },
   "names.swap.tip": {
-    "message": "Canvia \"Cognoms, Nom\" a \"Nom Cognoms\""
+    "message": "Intenta endevinar les parts correctes de 'Cognom, Nom' - això afecta els espais reservats (firstname) i (lastname)."
   },
   "new.label": {
     "message": "Aplicar lo modèl seguent pels messatges novèls"

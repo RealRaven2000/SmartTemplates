@@ -943,8 +943,14 @@
   "names.swap": {
     "message": "Corrigir sobrenome, nome"
   },
+  "names.swap.name": {
+    "message": "Também afeta os marcadores (name)"
+  },
+  "names.swap.name.tip": {
+    "message": "Sem esta opção, o marcador (name) não será alterado, mas os marcadores (firstname) e (lastname) ainda serão corrigidos."
+  },
   "names.swap.tip": {
-    "message": "Altera 'sobrenome, nome'' para 'Primeiro Último'"
+    "message": "Tenta adivinhar as partes corretas de 'Sobrenome, Nome' – isso afeta os marcadores (firstname) e (lastname)."
   },
   "new.label": {
     "message": "Aplicar o seguinte modelo a novas mensagens"

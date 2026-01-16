@@ -949,8 +949,14 @@
   "names.swap": {
     "message": "Zamieniaj nazwisko i imię miejscami"
   },
+  "names.swap.name": {
+    "message": "Również dotyczy zastępczych (name)"
+  },
+  "names.swap.name.tip": {
+    "message": "Bez tej opcji zastępczy (name) nie zostanie zmieniony, ale zastępcze (firstname) i (lastname) będą nadal poprawiane."
+  },
   "names.swap.tip": {
-    "message": "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko."
+    "message": "Próbuje odgadnąć poprawne części z 'Nazwisko, Imię' – to wpływa na zastępcze (firstname) i (lastname)."
   },
   "new.label": {
     "message": "Stosuj poniższy szablon dla nowych wiadomości"

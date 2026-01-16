@@ -952,8 +952,14 @@
   "names.swap": {
     "message": "Korjaa LastName, FirstName"
   },
+  "names.swap.name": {
+    "message": "Vaikuttaa myös (name) paikkamerkkeihin"
+  },
+  "names.swap.name.tip": {
+    "message": "Ilman tätä asetusta (name)-paikkamerkkiä ei muuteta, mutta (firstname) ja (lastname) paikkamerkit korjataan edelleen."
+  },
   "names.swap.tip": {
-    "message": "'LastName, FirstName' muutetaan muotoon 'First Last'"
+    "message": "Yrittää arvata oikeat osat muodosta 'Sukunimi, Etunimi' – tämä vaikuttaa paikkamerkkeihin (firstname) ja (lastname)."
   },
   "new.label": {
     "message": "Käytä seuraavaa pohjaa uusille viesteille"

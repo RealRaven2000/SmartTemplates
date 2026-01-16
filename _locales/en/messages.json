@@ -668,6 +668,9 @@
   "header.set.to": {
     "message": "replace recipient with email address"
   },
+  "header.set.to.list": {
+    "message": "sets the 'to' header to email addresses of all members based on the address book list named {listName} - experimental, only supports standard address books."
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Successfully installed $addonName$",
@@ -967,8 +970,14 @@
   "names.swap": {
     "message": "Correct LastName, FirstName"
   },
+  "names.swap.name": {
+    "message": "Also affect (name) placeholders"
+  },
+  "names.swap.name.tip": {
+    "message": "Without this option, the (name) placeholder itself will not be changed, but (firstname) and (lastname) placeholders will still be corrected."
+  },
   "names.swap.tip": {
-    "message": "Changes 'LastName, FirstName' to 'First Last'"
+    "message": "Tries to guess correct parts from 'LastName, FirstName' - this affects the (firstname) and (lastname) placeholders."
   },
   "new.label": {
     "message": "Apply the following template to the new message"

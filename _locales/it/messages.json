@@ -928,8 +928,14 @@
   "names.swap": {
     "message": "Sostituisci Cognome, Nome"
   },
+  "names.swap.name": {
+    "message": "Influisce anche sui segnaposto (name)"
+  },
+  "names.swap.name.tip": {
+    "message": "Senza questa opzione, il segnaposto (name) non verrà modificato, ma i segnaposto (firstname) e (lastname) verranno comunque corretti."
+  },
   "names.swap.tip": {
-    "message": "Sostituisci 'Cognome, Nome' con 'Nome Cognome'"
+    "message": "Prova a indovinare le parti corrette da 'Cognome, Nome' – questo influisce sui segnaposto (firstname) e (lastname)."
   },
   "new.label": {
     "message": "Applica il seguente modello di intestazione personalizzata per i messaggi nuovi"

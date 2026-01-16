@@ -943,8 +943,14 @@
   "names.swap": {
     "message": "'姓, 名' 形式の表記を修正する"
   },
+  "names.swap.name": {
+    "message": "(name) プレースホルダーにも反映"
+  },
+  "names.swap.name.tip": {
+    "message": "このオプションを無効にすると、(name) プレースホルダー自体は変更されませんが、(firstname) と (lastname) のプレースホルダーは修正されます。"
+  },
   "names.swap.tip": {
-    "message": "'姓, 名' 形式の表記を '名 姓' 形式の表記に修正します。"
+    "message": "'姓, 名' から正しい部分を推測しようとします – これにより (firstname) と (lastname) のプレースホルダーに影響します。"
   },
   "new.label": {
     "message": "新規メッセージに以下のテンプレートを適用する"

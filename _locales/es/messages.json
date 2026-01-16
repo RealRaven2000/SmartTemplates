@@ -949,8 +949,14 @@
   "names.swap": {
     "message": "Corregir Apellido, Nombre"
   },
+  "names.swap.name": {
+    "message": "También afecta los marcadores (name)"
+  },
+  "names.swap.name.tip": {
+    "message": "Sin esta opción, el marcador (name) no se modificará, pero los marcadores (firstname) y (lastname) sí se corregirán."
+  },
   "names.swap.tip": {
-    "message": "Camiba 'Apellido, Nombre' a 'Nombre Apellido'"
+    "message": "Intenta adivinar las partes correctas de 'Apellido, Nombre' - esto afecta a los marcadores (firstname) y (lastname)."
   },
   "new.label": {
     "message": "Aplicar esta plantilla al nuevo mensaje"

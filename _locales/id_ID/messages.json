@@ -757,8 +757,14 @@
   "names.swap": {
     "message": "Koreksi LastName, FirstName"
   },
+  "names.swap.name": {
+    "message": "Juga memengaruhi placeholder (name)"
+  },
+  "names.swap.name.tip": {
+    "message": "Tanpa opsi ini, placeholder (name) tidak akan diubah, tetapi placeholder (firstname) dan (lastname) tetap diperbaiki."
+  },
   "names.swap.tip": {
-    "message": "Ubah 'LastName, FirstName' menjadi 'First Last"
+    "message": "Mencoba menebak bagian yang benar dari 'LastName, FirstName' – ini memengaruhi placeholder (firstname) dan (lastname)."
   },
   "new.label": {
     "message": "Terapkan template berikut untuk pesan baru"

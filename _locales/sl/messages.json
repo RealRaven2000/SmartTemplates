@@ -949,8 +949,14 @@
   "names.swap": {
     "message": "Pravilni priimek, ime"
   },
+  "names.swap.name": {
+    "message": "Vpliva tudi na nadomestke (name)"
+  },
+  "names.swap.name.tip": {
+    "message": "Brez te možnosti nadomestek (name) ne bo spremenjen, nadomestka (firstname) in (lastname) pa bosta še vedno popravljena."
+  },
   "names.swap.tip": {
-    "message": "Spremeni 'priimek, ime' v 'ime priimek'"
+    "message": "Poskuša ugotoviti pravilne dele iz 'Priimek, Ime' – to vpliva na nadomestka (firstname) in (lastname)."
   },
   "new.label": {
     "message": "Uveljavi naslednjo predlogo za novo sporočilo"

@@ -925,8 +925,14 @@
   "names.swap": {
     "message": "Исправи LastName, FirstName"
   },
+  "names.swap.name": {
+    "message": "Такође утиче на (name) плейсхолдере"
+  },
+  "names.swap.name.tip": {
+    "message": "Без ове опције, (name) плейсхолдер сам по себи неће бити промењен, али (firstname) и (lastname) плейсхолдери ће бити исправљени."
+  },
   "names.swap.tip": {
-    "message": "Мења „LastName, FirstName“ у „First Last“"
+    "message": "Покушава да погоде исправне делове из 'Презиме, Име' – ово утиче на (firstname) и (lastname) плейсхолдере."
   },
   "new.label": {
     "message": "Примени следећи шаблон на нову поруку"

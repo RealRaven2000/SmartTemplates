@@ -952,8 +952,14 @@
   "names.swap": {
     "message": "Corriger l'affichage \"nom, prénom\""
   },
+  "names.swap.name": {
+    "message": "Affecte également les espaces réservés (name)"
+  },
+  "names.swap.name.tip": {
+    "message": "Sans cette option, l'espace réservé (name) ne sera pas modifié, mais les espaces réservés (firstname) et (lastname) seront toujours corrigés."
+  },
   "names.swap.tip": {
-    "message": "Change \"nom, prénom\" en \"prénom, nom\""
+    "message": "Essaie de deviner les parties correctes à partir de 'Nom, Prénom' - cela affecte les espaces réservés (firstname) et (lastname)."
   },
   "new.label": {
     "message": "Appliquer le modèle suivant pour les nouveaux messages"

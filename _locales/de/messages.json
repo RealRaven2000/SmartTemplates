@@ -939,8 +939,14 @@
   "names.swap": {
     "message": "Tausche Reihenfolge Nachname, Vorname"
   },
+  "names.swap.name": {
+    "message": "Auch Platzhalter (name) beeinflussen"
+  },
+  "names.swap.name.tip": {
+    "message": "Ohne diese Option wird der Platzhalter (name) selbst nicht geändert, aber die Platzhalter (firstname) und (lastname) werden weiterhin korrigiert."
+  },
   "names.swap.tip": {
-    "message": "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname"
+    "message": "Versucht die korrekten Teile aus 'Nachname, Vorname' zu erraten – dies betrifft die Platzhalter (firstname) und (lastname)."
   },
   "new.label": {
     "message": "Folgende Vorlage bei neuen Nachrichten hinzufügen"

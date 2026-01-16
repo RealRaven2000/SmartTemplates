@@ -950,9 +950,16 @@
   "names.swap": {
     "message": "纠正 LastName, FirstName"
   },
-  "names.swap.tip": {
-    "message": "更改 'LastName, FirstName' 到 'First Last'"
+  "names.swap.name": {
+    "message": "也影响 (name) 占位符"
   },
+  "names.swap.name.tip": {
+    "message": "如果未启用此选项，(name) 占位符本身不会被修改，但 (firstname) 和 (lastname) 占位符仍会被纠正。"
+  },
+  "names.swap.tip": {
+    "message": "尝试从“姓, 名”中猜测正确部分——这会影响 (firstname) 和 (lastname) 占位符。"
+  },
+
   "new.label": {
     "message": "将以下模板应用于新消息"
   },

@@ -946,8 +946,14 @@
   "names.swap": {
     "message": "正確的姓，名"
   },
+  "names.swap.name": {
+    "message": "也影響 (name) 佔位符"
+  },
+  "names.swap.name.tip": {
+    "message": "未啟用此選項時，(name) 佔位符本身不會被更改，但 (firstname) 和 (lastname) 佔位符仍會被修正。"
+  },
   "names.swap.tip": {
-    "message": "將“姓氏，名字”更改為“姓氏”"
+    "message": "嘗試從「姓, 名」中猜測正確部分——這會影響 (firstname) 和 (lastname) 佔位符。"
   },
   "new.label": {
     "message": "套用以下的樣板到新的郵件"

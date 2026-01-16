@@ -958,8 +958,14 @@
   "names.swap": {
     "message": "Korrigera Efternamn, Förnamn"
   },
+  "names.swap.name": {
+    "message": "Påverkar även (name) platshållare"
+  },
+  "names.swap.name.tip": {
+    "message": "Utan detta alternativ ändras inte (name) platshållaren, men (firstname) och (lastname) platshållare korrigeras fortfarande."
+  },
   "names.swap.tip": {
-    "message": "Ändrar \"Efternamn, Förnamn\" till \"Förnamn Efternamn\""
+    "message": "Försöker gissa de korrekta delarna från 'Efternamn, Förnamn' – detta påverkar (firstname) och (lastname) platshållare."
   },
   "new.label": {
     "message": "Tillämpa följande mall på det nya meddelandet"
