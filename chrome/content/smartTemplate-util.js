@@ -1007,12 +1007,12 @@ SmartTemplate4.Util = {
       baseURL = URL;
 
     if (hashPos > 0) {
-      baseURL = URL.substr(0, hashPos);
+      baseURL = URL.substring(0, hashPos);
     } else if (queryPos > 0) {
-      baseURL = URL.substr(0, queryPos);
+      baseURL = URL.substring(0, queryPos);
     }
     if (baseURL.endsWith("/")) {
-      return baseURL.substr(0, baseURL.length - 1);
+      return baseURL.substring(0, baseURL.length - 1);
     } // match "x.com" with "x.com/"
     return baseURL;
   },
@@ -1489,7 +1489,7 @@ SmartTemplate4.Util = {
     const util = SmartTemplate4.Util,
       MimeService = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService);
 
-    let filename = aURL.substr(aURL.lastIndexOf("/") + 1);
+    let filename = aURL.substring(aURL.lastIndexOf("/") + 1);
     filename = decodeURIComponent(filename);
     util.logDebugOptional("images", "getFileAsDataURI()\nfilename=" + filename);
 
@@ -1592,7 +1592,7 @@ SmartTemplate4.Util = {
       noSlash = slash == "/" ? "\\" : "/",
       fPart = path.lastIndexOf(slash);
 
-    let newPath = fPart >= 0 ? path.substr(0, fPart) : "",
+    let newPath = fPart >= 0 ? path.substring(0, fPart) : "",
       jumpUp = 0,
       appendedPath = "";
 
@@ -1616,7 +1616,7 @@ SmartTemplate4.Util = {
     // 🔧 issue 77 - %file()% path truncated at front by 1 letter on Mac OS
     if (filePath && newPath) {
       let slashUnifiedFilePath = filePath.replace(noSlash, slash);
-      appendedPath = slashUnifiedFilePath.substr(slashUnifiedFilePath[0] == slash ? 1 : 0); // strip leading slash
+      appendedPath = slashUnifiedFilePath.substring(slashUnifiedFilePath[0] == slash ? 1 : 0); // strip leading slash
       if (this.isFilePathAbsolute(appendedPath)) {
         return appendedPath;
       }
@@ -1659,8 +1659,8 @@ SmartTemplate4.Util = {
         let x = URL.indexOf("#"),
           anchor = "";
         if (x > 0) {
-          anchor = URL.substr(x);
-          URL = URL.substr(0, x);
+          anchor = URL.substring(x);
+          URL = URL.substring(0, x);
         }
         if (URL.includes("?")) {
           URL = URL + "&user=" + uType;
@@ -1716,7 +1716,7 @@ SmartTemplate4.Util = {
     field = field.replace(/%/g, "");
 
     let parensPos = field.indexOf("("),
-      generalFunction = parensPos == -1 ? field : field.substr(0, parensPos);
+      generalFunction = parensPos == -1 ? field : field.substring(0, parensPos);
 
     // instead of using title (which generates a "normal" html thumbnail)
     // let's use a new attribute st4title + CSS
@@ -1835,7 +1835,7 @@ SmartTemplate4.Util = {
         const argList = st4.match(/^([\w.-]+)(?:\(([^)]*)\))?/);
         let generalFunction = argList ? argList[1] : st4; // fallback to full string
         // let parensPos = st4.indexOf("("),
-        //   generalFunction = parensPos == -1 ? st4 : st4.substr(0, parensPos),
+        //   generalFunction = parensPos == -1 ? st4 : st4.substring(0, parensPos),
         //   argList = parensPos == -1 ? "" : st4.match(/([\w-:=]+)\(([^)]+)\)*/);
 
         if (!generalFunction.length) {
@@ -2082,7 +2082,7 @@ SmartTemplate4.Util = {
 
   checkIsURLencoded: function checkIsURLencoded(tok) {
     if (tok.length >= 4) {
-      let t = tok.substr(0, 2); // hexcode, such as %5C
+      let t = tok.substring(0, 2); // hexcode, such as %5C
       if (/%[0-9a-fA-F][0-9a-fA-F]/.test(t)) {
         this.logDebug(
           "checkIsURLencoded()\n" +
@@ -2148,7 +2148,7 @@ SmartTemplate4.Util = {
     } else {
       // [issue 382]
       if (argument.endsWith(",nodefer")) {
-        timeFormat = argument.substr(0, argument.indexOf(",nodefer"));
+        timeFormat = argument.substring(0, argument.indexOf(",nodefer"));
       } else {
         timeFormat = argument;
       }
@@ -2915,7 +2915,7 @@ SmartTemplate4.Util = {
     util.logDebugOptional("timeZones", ` timeString = ${timeString}\n timeZone = ${timeZone}`);
     if (timeZone && timeZone.length > 0) {
       // remove enclosing brackets and split
-      let words = timeZone[0].substr(1, timeZone[0].length - 2).split(" ");
+      let words = timeZone[0].substring(1, timeZone[0].length - 1).split(" ");
       for (let i = 0; i < words.length; i++) {
         let wrd = words[i];
         if (isLongForm) {
@@ -4995,7 +4995,7 @@ SmartTemplate4.AB = {
               if (s) {
                 let n = s.indexOf(":");
                 if (n > 1) {
-                  return s.substr(n + 1);
+                  return s.substring(n + 1);
                 }
               }
             } else {

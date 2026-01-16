@@ -481,8 +481,8 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
       msgContent = msgContent + inputStream.read(2048); 
       let p = msgContent.search(/\r\n\r\n|\r\r|\n\n/); //todo: it would be faster to just search in the new block (but also needs to check the last 3 bytes)
       if (p > 0) {
-        contentCache = msgContent.substr(p + (msgContent[p] == msgContent[p+1] ? 2 : 4));
-        msgContent = msgContent.substr(0, p) + "\r\n";
+        contentCache = msgContent.substring(p + (msgContent[p] == msgContent[p + 1] ? 2 : 4));
+        msgContent = msgContent.substring(0, p) + "\r\n";
         break;
       }
       if (msgContent.length > 2048 * 32) {
@@ -535,7 +535,7 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
 	  while (inputStream.available() && contentCache.length < size) {
 	    contentCache += inputStream.read(2048);
     }
-	  if (contentCache.length > size) {return contentCache.substr(0, size);}
+	  if (contentCache.length > size) {return contentCache.substring(0, size);}
 	  else {return contentCache;}
 	};
 
@@ -553,7 +553,7 @@ SmartTemplate4.clsGetAltHeader = function(msgDummyHeader) {
 	// Get header
 	function get(header) {
 		function toCamelCase(h) {
-			return h.substr(0, 1).toLowerCase() + h.substr(1);
+			return h.substring(0, 1).toLowerCase() + h.substring(1);
 		}
     // /nsIMimeHeaders.extractHeader
 		let hdrCorrected = toCamelCase(header),
@@ -1634,7 +1634,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         aS += a.name;
         if (a.value != null) {
           let val = a.value.toString();
-          aS += ": " + val.substr(0, 20) + (val.length > 20 ? "…" : "");
+          aS += ": " + val.substring(0, 20) + (val.length > 20 ? "…" : "");
         }
       } 
     }
@@ -2072,8 +2072,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     // reserved words : these are words about which we know are not headers!
 		async function classifyReservedWord(str, reservedWord, param) {
 			try {
-        let removeParentheses = (arg) => {return arg ? arg.substr(1,arg.length-2) : ""},
-		        paramArray = removeParentheses(param).split(',');
+        const removeParentheses = (arg) => {return arg ? arg.substring(1, arg.length - 1) : "";},
+          paramArray = removeParentheses(param).split(',');
 				if (str!="%X:=today%") {
 				  util.logDebugOptional('regularize','regularize.classifyReservedWord(' + str + ', ' +  reservedWord + ', ' + param || '' + ')');
 				}
@@ -2278,11 +2278,17 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     } else {
       theDate = msgDbHdr.date;
     }
-		let tz = new function(date) {
-			this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
-			this.h = this.str.replace(/(.).*/, "$11") * (this.str.substr(1,1) * 10 + this.str.substr(2,1) * 1);
-			this.m = this.str.replace(/(.).*/, "$11") * (this.str.substr(3,1) * 10 + this.str.substr(4,1) * 1);
-		} (theDate);
+		const tz = new (function (date) {
+      this.str = ("+0000" + date).replace(/.*([+-][0-9]{4})/, "$1");
+      let sign = parseInt(this.str[0] + "1", 10); // +1 or -1
+      this.h =
+        sign *
+        (parseInt(this.str.substring(1, 2), 10) * 10 + parseInt(this.str.substring(2, 3), 10));
+      this.m =
+        sign *
+        (parseInt(this.str.substring(3, 4), 10) * 10 + parseInt(this.str.substring(4, 5), 10));
+    })(theDate);
+
     if (SmartTemplate4.Preferences.isDebug) {
       console.log(tz);
     }
@@ -2593,15 +2599,15 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       if (prefs.isDebugOption("headers")) {debugger;}
       util.addUsedPremiumFunction("header." + cmd);
       let targetString = "",
-        textParamList = argString.substr(argString.indexOf(",") + 1); // textParam
+        textParamList = argString.substring(argString.indexOf(",") + 1); // textParam
       let isMultiPass = false; // use this to do multiple passes with multiple parameters e.g. header.delete(subject,"1","2","3")
       let multiArgs = [];
       switch (matchFunction) {
         case "": // no matchFunction, so argString is literal
           if (cmd == "deleteFromSubject") {
-            textParamList = argString.substr(1); // cut off opening parenthesis
+            textParamList = argString.substring(1); // cut off opening parenthesis
           }
-          textParamList = textParamList.substr(0, textParamList.lastIndexOf(")"));
+          textParamList = textParamList.substring(0, textParamList.lastIndexOf(")"));
 
           multiArgs = textParamList.split(",");
           multiArgs = util.combineEscapedParams(multiArgs, 0, true); // fixed escaped \, by combining
@@ -2710,13 +2716,13 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 if (replyPrefix > 0) {
                   // caveat: won't work well if subject also contains a ':'
                   // cut off Re: Fwd: etc.
-                  testSubject = targetString.substr(0, replyPrefix).trim();
+                  testSubject = targetString.substring(0, replyPrefix).trim();
                   if (testSubject.indexOf(plainTextParam) >= 0) {
                     // keyword is (anywhere) before colon?
                     break;
                   } 
                   // cut off string after last prefix to restore original subject
-                  testSubject = targetString.substr(replyPrefix + 1).trim(); // where we can check at the start...
+                  testSubject = targetString.substring(replyPrefix + 1).trim(); // where we can check at the start...
                 }
                 // keyword is immediately after last colon, or start of original subject
                 if (testSubject.indexOf(plainTextParam) != 0) {
@@ -2909,7 +2915,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
     // remove  (  ) from argument string
     function removeParentheses(arg) {
-      return arg.substr(1, arg.length - 2);
+      return arg.substring(1, arg.length - 1)
     }
 
     let originalToken = token;
@@ -3032,7 +3038,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 if (!arg) {
                   arg = "(fwd)";
                 } else {
-                  arg = arg.substr(0, arg.length - 1) + ",fwd)";
+                  arg = arg.substring(0, arg.length - 1) + ",fwd)";
                 }
                 break;
             }
@@ -3341,7 +3347,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           return finalize(token, cal.list());
         case "cwIso": {
           // ISO calendar week [Bug 25012]
-          let offset = parseInt(arg.substr(1, 1)); // (0) .. (6) weekoffset: 0-Sunday 1-Monday
+          let offset = parseInt(arg.substring(1, 2)); // (0) .. (6) weekoffset: 0-Sunday 1-Monday
           return finalize(token, "" + util.getIsoWeek(tm, offset));
         }
         // Change time of %A-Za-z%
@@ -3484,7 +3490,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           return "";
         case "identity": {
           /////
-          let idArgs = arg.substr(1, arg.length - 2).split(","),
+          let idArgs = arg.substring(1, arg.length - 1).split(","),
             isAB = idArgs && idArgs.includes("addressbook");
           if ((identity.fullName || isAB) && identity.email) {
             let fullId = isAB ? identity.email : identity.fullName + " <" + identity.email + ">";
@@ -3801,9 +3807,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 								
     // determine file type:
     let html = "",
-        arr = txt.substr(1,txt.length-2).split(','),  // strip parentheses and get optional params
-        path = arr[0].replace(/"/g, ''),  // strip quotes
-        type = path.toLowerCase().substr(path.lastIndexOf('.')+1);
+      arr = txt.substring(1, txt.length - 1).split(","), // strip parentheses and get optional params
+      path = arr[0].replace(/"/g, ""), // strip quotes
+      type = path.toLowerCase().substring(path.lastIndexOf(".") + 1);
     const flags = SmartTemplate4.PreprocessingFlags;
     const currentPath = flags.filePaths ? 
                      (flags.filePaths.length ? flags.filePaths[flags.filePaths.length-1] : "") : 
@@ -3987,7 +3993,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 					Cc = Components.classes;
 						
 		// msgcompose was msgcomposeWindow
-    let arr = args.substr(1, args.length - 2).split(","), // strip parentheses and get optional params
+    let arr = args.substring(1, args.length - 1).split(","), // strip parentheses and get optional params
       path = arr[0].replace(/"/g, ""), // strip quotes
       composerWin = Services.wm.getMostRecentWindow("msgcompose") || window,
       attachments = [];

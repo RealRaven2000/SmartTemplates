@@ -1664,10 +1664,10 @@ SmartTemplates.Settings = {
 			// find out if specific identity or common
 			// and only then append identity extension
 			// data.key has target identity and this can be "common"
-			let isSrcIdentity = (sourceId.indexOf('.id') > 0),
-					stem = isSrcIdentity ? sourceId.substr(sourceId.lastIndexOf('.')) : '', // use empty key for common case
-					isTargetIdentity = ((data.key && data.key!='common') || data.key==''),
-					targetId = isTargetIdentity ? ('.' + data.key) : '';
+			let isSrcIdentity = sourceId.indexOf(".id") > 0,
+        stem = isSrcIdentity ? sourceId.substring(sourceId.lastIndexOf(".")) : "", // use empty key for common case
+        isTargetIdentity = (data.key && data.key != "common") || data.key == "",
+        targetId = isTargetIdentity ? "." + data.key : "";
 			if (isTargetIdentity) {
 				// uncheck 'use common' checkbox
 				document.getElementById('use_default' + targetId).checked = false;
@@ -1884,20 +1884,20 @@ SmartTemplates.Settings = {
 				  validationDate.setAttribute("collapsed", true);
 					validationDateSpace.setAttribute("collapsed", true);
 				  let addonName = '';
-				  switch (licenseInfo.licenseKey.substr(0,2)) {
-						case 'QI':
-						case 'Q2': // quickfilters standard
-							addonName = 'quickFilters';
-						  break;
-						case 'QF':
-						case 'Q1': // QuickFolders standard
-							addonName = 'QuickFolders';
-						  break;
-						case 'ST':
-						case 'S1':
-						default: 
-							this.showValidationMessage(validationFailed, silent);
-					}
+				  switch (licenseInfo.licenseKey.substring(0, 2)) {
+            case "QI":
+            case "Q2": // quickfilters standard
+              addonName = "quickFilters";
+              break;
+            case "QF":
+            case "Q1": // QuickFolders standard
+              addonName = "QuickFolders";
+              break;
+            case "ST":
+            case "S1":
+            default:
+              this.showValidationMessage(validationFailed, silent);
+          }
 					if (addonName) {
 						let txt = validationInvalidAddon.textContent;
 						txt = txt.replace('{0}','SmartTemplates').replace('{1}','ST'); // keys for {0} start with {1}
@@ -2000,8 +2000,8 @@ SmartTemplates.Settings = {
 			switch(licenseInfo.status) {
 				case "Valid": {
 					const today = new Date(),
-						later = new Date(today.setDate(today.getDate()+32)), // pretend it's a month later:
-						dateString = later.toISOString().substr(0, 10);
+            later = new Date(today.setDate(today.getDate() + 32)), // pretend it's a month later:
+            dateString = later.toISOString().substring(0, 10);
 					// if we were a month ahead would this be expired?
 					if (licenseInfo.expiryDate < dateString) {
 						this.labelLicenseBtn(btnLicense, "extend");

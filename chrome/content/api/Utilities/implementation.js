@@ -158,7 +158,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             // Remember last path
             let lastSlash = path.lastIndexOf("/");
             if (lastSlash < 0) {lastSlash = path.lastIndexOf("\\");}
-            let lastPath = path.substr(0, lastSlash);
+            let lastPath = path.substring(0, lastSlash);
             win.SmartTemplate4.Util.logDebug("Storing Path: " + lastPath);
             win.SmartTemplate4.Preferences.setStringPref('files.path', lastPath);            
           }

@@ -221,7 +221,7 @@ var Register = {
               {
                 let today = new Date(),
                   later = new Date(today.setDate(today.getDate() + 30)), // pretend it's a month later:
-                  dateString = later.toISOString().substr(0, 10);
+                  dateString = later.toISOString().substring(0, 10);
 
                 if (!(licenseInfo.expiryDate < dateString)) {
                   // not close to expiry yet. let's hide this path.
