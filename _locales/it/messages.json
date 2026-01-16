@@ -639,6 +639,9 @@
   "header.set.to": {
     "message": "Sostituisce il destinatario con l'indirizzo di posta elettronica"
   },
+  "header.set.to.list": {
+    "message": "imposta l'intestazione 'to' sugli indirizzi e-mail di tutti i membri della lista della rubrica denominata \"listName\" - sperimentale, supporta solo rubriche standard. Esempio: %header.set(to,list:Amici)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ installato con successo",

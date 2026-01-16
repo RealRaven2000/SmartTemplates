@@ -658,6 +658,9 @@
   "header.set.to": {
     "message": "替换回复地址"
   },
+  "header.set.to.list": {
+    "message": "将 'to' 头设置为基于名为 \"listName\" 的地址簿列表的所有成员的电子邮件地址 - 实验性功能，仅支持标准地址簿。示例: %header.set(to,list:朋友)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "成功安装 $addonName$",

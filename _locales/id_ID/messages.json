@@ -534,6 +534,9 @@
   "header.set.to": {
     "message": "ganti penerima dengan alamat email"
   },
+  "header.set.to.list": {
+    "message": "menetapkan header 'to' ke alamat email semua anggota berdasarkan daftar buku alamat bernama \"listName\" - eksperimental, hanya mendukung buku alamat standar. Contoh: %header.set(to,list:Teman)%"
+  },
   "heading.click": {
     "message": "Klik sebuah tajuk atau"
   },

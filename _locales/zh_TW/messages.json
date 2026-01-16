@@ -657,6 +657,9 @@
   "header.set.to": {
     "message": "用電子郵件地址替換收件人"
   },
+  "header.set.to.list": {
+    "message": "將 'to' 標頭設置為基於名為 \"listName\" 的地址簿列表的所有成員的電子郵件地址 - 實驗性功能，僅支援標準地址簿。範例: %header.set(to,list:朋友)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ 已成功安裝",

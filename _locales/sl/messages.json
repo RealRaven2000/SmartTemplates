@@ -657,6 +657,9 @@
   "header.set.to": {
     "message": "nadomesti prejemnika z e-poštnim naslovom"
   },
+  "header.set.to.list": {
+    "message": "nastavi glavo 'to' na e-poštne naslove vseh članov glede na seznam imenovan \"listName\" v imeniku – eksperimentalno, podpira samo standardne imenike.Primer: %header.set(to,list:Prijatelji)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Uspešno nameščen $addonName$",

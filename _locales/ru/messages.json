@@ -654,6 +654,9 @@
   "header.set.to": {
     "message": "заменить адресата сообщения"
   },
+  "header.set.to.list": {
+    "message": "устанавливает заголовок 'to' на адреса электронной почты всех участников из списка адресной книги с именем \"listName\" - экспериментально, поддерживаются только стандартные адресные книги. Пример: %header.set(to,list:Друзья)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Успешно установлено $addonName$",

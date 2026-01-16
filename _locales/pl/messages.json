@@ -657,6 +657,9 @@
   "header.set.to": {
     "message": "zamień odbiorcę z adresem wiadomości"
   },
+  "header.set.to.list": {
+    "message": "ustawia nagłówek 'to' na adresy e-mail wszystkich członków na podstawie listy książki adresowej o nazwie \"listName\" - eksperymentalne, obsługiwane są tylko standardowe książki adresowe. Przykład: %header.set(to,list:Przyjaciele)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Pomyślnie zainstalowano $addonName$",

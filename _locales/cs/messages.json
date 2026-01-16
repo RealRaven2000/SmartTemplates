@@ -651,6 +651,9 @@
   "header.set.to": {
     "message": "nahraď příjemce e-mailovou adresou"
   },
+  "header.set.to.list": {
+    "message": "nastaví hlavičku 'to' na e-mailové adresy všech členů ze seznamu adresářů s názvem \"listNamez\" – experimentální, podporuje pouze standardní adresáře. Příklad: %header.set(to,list:Přátelé)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Úspěšně nainstalován $addonName$",

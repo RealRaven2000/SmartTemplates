@@ -657,6 +657,9 @@
   "header.set.to": {
     "message": "reemplazando el receptor con la dirección de correo"
   },
+  "header.set.to.list": {
+    "message": "establece el encabezado 'to' con las direcciones de correo de todos los miembros según la lista de la libreta de direcciones llamada \"listName\" - experimental, solo admite libretas de direcciones estándar. Ejemplo: %header.set(to,list:Amigos)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ instalado correctamente",

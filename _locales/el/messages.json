@@ -660,6 +660,9 @@
   "header.set.to": {
     "message": "αντικατάστησε τον παραλήπτη με διεύθυνση email"
   },
+  "header.set.to.list": {
+    "message": "ορίζει την κεφαλίδα 'to' στις διευθύνσεις email όλων των μελών της λίστας βιβλίου διευθύνσεων με όνομα \"listName\" – πειραματικό, υποστηρίζει μόνο τα τυπικά βιβλία διευθύνσεων. %header.set(to,list:Φίλοι)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "To $addonName$ εγκαταστάθηκε με επιτυχία",

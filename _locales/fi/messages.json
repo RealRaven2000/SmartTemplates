@@ -660,6 +660,9 @@
   "header.set.to": {
     "message": "korvaa vastaanottaja sähköpostiosoitteella"
   },
+  "header.set.to.list": {
+    "message": "asettaa 'to'-otsikon kaikille jäsenille osoitteistosta nimeltä \"listName\" - kokeellinen, tukee vain standardiosoitekirjoja. Παράδειγμα: Esimerkki: %header.set(to,list:Ystävät)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Asennus $addonName$ onnistui",

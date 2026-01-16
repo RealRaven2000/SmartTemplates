@@ -50,6 +50,9 @@
     "description": "Description of the extension.",
     "message": "Một cách mạnh mẽ để tạo các thư trả lời tùy chỉnh bằng cách tự động chèn các tiêu đề thư khác nhau. Mẫu có thể được tạo cho mọi danh tính thư, cũng hỗ trợ các tệp html bên ngoài và các biểu định kiểu."
   },
+  "header.set.to.list": {
+    "message": "đặt tiêu đề 'to' tới địa chỉ email của tất cả thành viên dựa trên danh sách sổ địa chỉ có tên \"listName\" - thử nghiệm, chỉ hỗ trợ sổ địa chỉ tiêu chuẩn.Ví dụ: %header.set(to,list:Bạn bè)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Đã cài đặt thành công $addonName$",

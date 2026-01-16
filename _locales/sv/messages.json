@@ -663,6 +663,9 @@
   "header.set.to": {
     "message": "ersätt mottagare med e-postadress"
   },
+  "header.set.to.list": {
+    "message": "ställer 'to'-huvudet till e-postadresserna för alla medlemmar baserat på adressbokslistan med namnet \"listName\" - experimentell, stöder endast standardadressböcker. Exempel: %header.set(to,list:Vänner)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ installerades med framgång",

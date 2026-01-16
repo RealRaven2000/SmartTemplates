@@ -660,6 +660,9 @@
   "header.set.to": {
     "message": "remplacer le destinataire par l'adresse électronique"
   },
+  "header.set.to.list": {
+    "message": "définit l'en-tête 'to' avec les adresses e-mail de tous les membres de la liste du carnet d'adresses nommé \"listName\" - expérimental, prend en charge uniquement les carnets d'adresses standard. Exemple: %header.set(to,list:Amis)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ installé avec succès",

@@ -669,7 +669,7 @@
     "message": "replace recipient with email address"
   },
   "header.set.to.list": {
-    "message": "sets the 'to' header to email addresses of all members based on the address book list named {listName} - experimental, only supports standard address books."
+    "message": "sets the 'to' header to email addresses of all members based on the address book list named \"listName\" - experimental, only supports standard address books. Example: %header.set(to,list:Friends)%"
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",

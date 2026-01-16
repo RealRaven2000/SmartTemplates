@@ -650,6 +650,9 @@
   "header.set.to": {
     "message": "Empfänger durch Email-Adresse ersetzen"
   },
+  "header.set.to.list": {
+    "message": "setzt den 'to'-Header auf die E-Mail-Adressen aller Mitglieder der Adressbuchliste namens \"listName\" – experimentell, unterstützt nur Standard-Adressbücher. Beispiel: %header.set(to,list:Freunde)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ wurde erfolgreich installiert",

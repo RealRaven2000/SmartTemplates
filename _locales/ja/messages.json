@@ -654,6 +654,9 @@
   "header.set.to": {
     "message": "受信者をメールアドレスで置換する"
   },
+  "header.set.to.list": {
+    "message": "アドレス帳リスト \"listName\" に基づいて、全メンバーのメールアドレスで 'to' ヘッダーを設定します - 実験的機能で、標準のアドレス帳のみ対応。例: %header.set(to,list:友達)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ が正常にインストールされました",

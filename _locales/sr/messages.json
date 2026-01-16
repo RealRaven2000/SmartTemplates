@@ -633,6 +633,9 @@
   "header.set.to": {
     "message": "замените примаоца адресом е-поште"
   },
+  "header.set.to.list": {
+    "message": "поставља заглавље 'to' на е-маил адресе свих чланова на основу листе адресара под називом \"listName\" – експериментално, подржава само стандардне адресаре. Пример: %header.set(to,list:Пријатељи)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Успешно инсталиран $addonName$",

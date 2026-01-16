@@ -651,6 +651,9 @@
   "header.set.to": {
     "message": "substituir destinatário pelo endereço de email"
   },
+  "header.set.to.list": {
+    "message": "define o cabeçalho 'to' com os endereços de e-mail de todos os membros com base na lista do livro de endereços chamada \"listName\" - experimental, suporta apenas livros de endereços padrão. Exemplo: %header.set(to,list:Amigos)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Instalado com sucesso $addonName$",

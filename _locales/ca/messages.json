@@ -657,6 +657,9 @@
   "header.set.to": {
     "message": "substituïu el destinatari per l'adreça de correu electrònic"
   },
+  "header.set.to.list": {
+    "message": "estableix l'encapçalament 'to' amb les adreces de correu de tots els membres de la llista de llibres d'adreces anomenada \"listName\" - experimental, només admet llibres d'adreces estàndard. Exemple: %header.set(to,list:Amics)%"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ s'ha installat correctament",
