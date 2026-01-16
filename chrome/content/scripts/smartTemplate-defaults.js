@@ -15,6 +15,7 @@ pref("extensions.smartTemplate4.statusIconLabelMode", 2); // 0 - no label; 1 - a
 pref("extensions.smartTemplate4.font.size", 9); /* 8pt .templateBox font size */
 pref("extensions.smartTemplate4.parseSignature", false);
 pref("extensions.smartTemplate4.firstLastSwap", true);
+pref("extensions.smartTemplate4.firstLastSwap.name", false); // also apply to (name) placeholder
 pref("extensions.smartTemplate4.header.inject", true);
 pref("extensions.smartTemplate4.sanitizeStyles.removeDuplicatesInHead", true); 
 pref("extensions.smartTemplate4.sanitizeStyles.removeDuplicatesInFragments", false);

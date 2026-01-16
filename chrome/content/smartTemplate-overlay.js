@@ -886,14 +886,14 @@ SmartTemplate4.mimeDecoder = {
     util.logDebugOptional('mime.split', dbgText);
     
 		const nameDelim = prefs.getMyStringPref('names.delimiter'), // Bug 26207
-			    isGuessFromAddressPart = prefs.getMyBoolPref('names.guessFromMail'),
-					isReplaceNameFromParens = prefs.getMyBoolPref('names.extractNameFromParentheses'); // [Bug 26595] disable name guessing      
+      isGuessFromAddressPart = prefs.getMyBoolPref('names.guessFromMail'),
+      isReplaceNameFromParens = prefs.getMyBoolPref('names.extractNameFromParentheses'); // [Bug 26595] disable name guessing, default is false
 		let addresses = "",
-        address,
-        bracketMailParams = getBracketAddressArgs(format, 'Mail'),
-        bracketNameParams = getBracketAddressArgs(format, 'Name'),
-        card,
-        cardObj; // will hold card and vCard json structure if vCard could be retrieved & parsed from Thunderbird
+      address,
+      bracketMailParams = getBracketAddressArgs(format, 'Mail'),
+      bracketNameParams = getBracketAddressArgs(format, 'Name'),
+      card,
+      cardObj; // will hold card and vCard json structure if vCard could be retrieved & parsed from Thunderbird
       
     const getCardProperty = SmartTemplate4.AB.getCardProperty.bind(SmartTemplate4.AB);
 
@@ -925,7 +925,6 @@ SmartTemplate4.mimeDecoder = {
                          });
 			// name or/and address. (wraps email into <  > )
 			address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
-			
       
       util.logDebugOptional('mime.split', 'processing: ' + addressField + ' => ' + array[i] + '\n'
                                            + 'address: ' + address);
@@ -973,14 +972,18 @@ SmartTemplate4.mimeDecoder = {
         else if (card.hasOwnProperty("lastname")) {cardLastname = card.lastname;}
       }
 
+      if (cardFullname?.length > fullName.length) {
+        fullName = correctMime(cardFullname);
+        addressee = fullName;    
+      }
+
       firstName = (isResolveNamesAB && card) ? correctMime(cardFirstName) : '';
       if (isResolveNamesAB && card) {
 				if (prefs.getMyBoolPref('mime.resolveAB.preferNick')) {
           let nick = cardFirstName;
           if (card.getProperty) {
             nick = correctMime(card.getProperty("NickName", cardFirstName));
-          }
-          else if (SmartTemplate4.AB.isCardCardBook(card)) {
+          } else if (SmartTemplate4.AB.isCardCardBook(card)) {
             // cardbook
             nick = card["nickname"];
           }
@@ -993,8 +996,7 @@ SmartTemplate4.mimeDecoder = {
         }
       }
       lastName = (isResolveNamesAB && card)  ? correctMime(cardLastname) : '';
-      fullName = (isResolveNamesAB && card && cardFullname) ? correctMime(cardFullname) : fullName;
-			
+      fullName = (isResolveNamesAB && card && cardFullname) ? correctMime(cardFullname) : fullName;			
 			
 			let isNameFound = (firstName.length + lastName.length > 0); // only set if name was found in AB
 			if ((fullName || isNameFound) && prefs.getMyBoolPref('mime.resolveAB.removeEmail')) {
@@ -1008,31 +1010,51 @@ SmartTemplate4.mimeDecoder = {
 					if (formatArray[f].field=='mail' || formatArray[f].field.startsWith('bracketMail')) 
             {suppressMail = false;}
         }
-			}
-              
+			}       
 					
-      if (!isNameFound && prefs.getMyBoolPref('firstLastSwap')) {
+      if (!isNameFound && prefs.getMyBoolPref("firstLastSwap")) {
         // extract Name from left hand side of email address
 				
 				let regex = /\(([^)]+)\)/,
-				    nameRes = regex.exec(addressee);
+          nameRes = regex.exec(addressee);
 				// (Name) extraction!
-				if (isReplaceNameFromParens && nameRes  &&  nameRes.length > 1 && !isLastName(format)) {
-					isNameFound = true;
-					firstName = nameRes[1];  // name or firstname will fetch the (Name) from brackets!
-				}
-				else {
-					let iComma = addressee.indexOf(', ');
-					if (iComma>0) {
-						firstName = addressee.substr(iComma + 2);
-						if (nameRes) {
+        let outside = nameRes 
+            ? addressee.replace(nameRes[0], "").trim().split(" ")
+            : addressee.trim().split(" ");  // fallback if no parentheses
+
+        if (
+          nameRes &&
+          nameRes[1].includes(",") &&
+          outside.length <= 1
+        ) {
+          let parts = nameRes[1].split(",").map((p) => p.trim());
+          lastName = parts[0];
+          firstName = parts[1];
+          isNameFound = true;
+        } else if (
+          isReplaceNameFromParens &&
+          nameRes &&
+          nameRes.length > 1 &&
+          !isLastName(format)
+        ) {
+          isNameFound = true;
+          firstName = nameRes[1]; // name or firstname will fetch the (Name) from brackets!
+        } else {
+          let iComma = addressee.indexOf(", ");
+          if (iComma > 0) {
+            firstName = addressee.substring(iComma + 2);
+            if (nameRes) {
               // remove parentheses part from firstnames
               firstName = firstName.replace(nameRes[0], "").trim();
-            }							
-						lastName = addressee.substr(0, iComma);
+            }
+            lastName = addressee.substring(0, iComma);
             isNameFound = true;
-					}
-				}
+          }
+        }
+        // affect the (name) part too.
+        if (prefs.getMyBoolPref("firstLastSwap.name") && isNameFound) {
+          fullName = firstName + ' ' + lastName;
+        }
       }
       
       if (!fullName) {
