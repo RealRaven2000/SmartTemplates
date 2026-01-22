@@ -1298,7 +1298,7 @@ async function main() {
     } catch {
       isResetDate = true;
     }
-    let today = new Date().toISOString().substr(0, 10); // e.g. "2019-07-18"
+    let today = new Date().toISOString().substring(0, 10); // e.g. "2019-07-18"
 
     if (!gracePeriodStart || gracePeriodStart > today) {
       gracePeriodStart = today; // cannot be in the future
