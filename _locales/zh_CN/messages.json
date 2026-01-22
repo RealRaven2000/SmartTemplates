@@ -652,6 +652,9 @@
   "header.set.from": {
     "message": "设置“发件人”地址。 这仅接受身份列表中的电子邮件地址。"
   },
+  "header.set.priority": {
+    "message": "设置邮件优先级。可接受的值为：highest, high, normal, low, lowest。"
+  },
   "header.set.subject": {
     "message": "替换主题文本"
   },

@@ -644,6 +644,9 @@
   "header.set.from": {
     "message": "Legt die Absenderadresse fest. Dies akzeptiert nur E-Mail-Adressen aus der Liste der Identitäten."
   },
+  "header.set.priority": {
+    "message": "setzt die E-Mail-Priorität. Akzeptierte Werte sind: highest, high, normal, low, lowest."
+  },
   "header.set.subject": {
     "message": "Betreff durch den Text ersetzen"
   },

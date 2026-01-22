@@ -651,6 +651,9 @@
   "header.set.from": {
     "message": "設置“發件人”地址。 這僅接受身份列表中的電子郵件地址。"
   },
+  "header.set.priority": {
+    "message": "設定郵件優先順序。可接受的值為：highest, high, normal, low, lowest。"
+  },
   "header.set.subject": {
     "message": "用文本替換主題"
   },

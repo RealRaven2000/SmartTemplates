@@ -651,6 +651,9 @@
   "header.set.from": {
     "message": "defineix l'adreça 'de'. Això només accepta adreces de correu electrònic de la llista d'identitats configurades."
   },
+  "header.set.priority": {
+    "message": "estableix la prioritat del correu. Els valors acceptats són: highest, high, normal, low, lowest."
+  },
   "header.set.subject": {
     "message": "substituïu el tema pel text"
   },

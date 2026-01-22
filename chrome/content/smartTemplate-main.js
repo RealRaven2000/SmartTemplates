@@ -335,10 +335,14 @@ END LICENSE BLOCK
     # [issue 407] Intermittently, %spellcheck()% switch doesn't work when loading the template during reply
     # [issue 408] Reply template unexpectedly removes meta info lines within quoted text
 
-
   Version 4.17.1 - WIP
     # [issue 335] Support relative file paths for %attach()% 
-    # [issue 411] Enhancement: Support Mailing Lists in header functions
+    # [issue 305] Improvements for correcting "Lastname, Firstname"
+    # [issue 411] Enhancement: Adding members of a Mailing List from template
+    # [issue 412] Improve set priority (add documentation to variables window) 
+    #  - improve matching for header.set(priority) to be case insensitive and add support in variables page
+    # Avoid message about cardbook not being enabled when cardbook support is not switched on in settings
+    # removed console chatter about matched addressbook cards (use debug.adressbook switch to enable detail)
 
 
 =========================

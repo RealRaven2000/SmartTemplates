@@ -633,6 +633,9 @@
   "header.set.from": {
     "message": "imposta l'indirizzo 'da'. Questo accetta solo indirizzi e-mail dall'elenco di identità."
   },
+  "header.set.priority": {
+    "message": "imposta la priorità della posta. I valori accettati sono: highest, high, normal, low, lowest."
+  },
   "header.set.subject": {
     "message": "Sostituisce l'oggetto con il testo"
   },

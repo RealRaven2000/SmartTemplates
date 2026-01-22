@@ -662,6 +662,9 @@
   "header.set.from": {
     "message": "sets 'from' address. This only accepts mail addresses from list of identities."
   },
+  "header.set.priority": {
+    "message": "sets mail priority. Accepted values are: highest, high, normal, low, lowest."
+  },
   "header.set.subject": {
     "message": "replace subject with the text"
   },

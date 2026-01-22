@@ -651,6 +651,9 @@
   "header.set.from": {
     "message": "establece la dirección 'de'. Esto solo acepta direcciones de correo electrónico de la lista de identidades."
   },
+  "header.set.priority": {
+    "message": "ορίζει την προτεραιότητα του email. Αποδεκτές τιμές είναι: highest, high, normal, low, lowest."
+  },
   "header.set.subject": {
     "message": "reemplazando el asunto con el texto"
   },

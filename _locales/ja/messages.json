@@ -648,6 +648,9 @@
   "header.set.from": {
     "message": "'from' アドレスを設定します。これは、差出人の一覧からの電子メールアドレスのみを受け入れます。"
   },
+  "header.set.priority": {
+    "message": "メールの優先度を設定します。使用できる値: highest, high, normal, low, lowest。"
+  },
   "header.set.subject": {
     "message": "件名をテキストで置換する"
   },
