@@ -2530,6 +2530,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "from":
         case "reply-to":
           return "address";
+        case "priority":
         case "message-id":
           return "string";
         default:
@@ -2812,8 +2813,15 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             break;
           case "priority": {
             isDataModified = false;
-            const validVals = ["Highest", "High", "Normal", "Low", "Lowest"];
-            let found = validVals.find((f) => f.toLowerCase() == textParamList);
+            // Thunderbird needs this case:
+            const priorities = ["Highest", "High", "Normal", "Low", "Lowest"];
+            let found = null;
+            for (const a of multiArgs) {
+              found = priorities.find((p) => p.toLowerCase() == a.toLowerCase());
+              if (found) {
+                break;
+              }
+            }
             if (found) {
               try {
                 util.logDebug("Setting priority to: " + found);
@@ -2823,8 +2831,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 util.logException("set priority ", ex);
               }
             } else {
-              util.logDebug(
-                `Invalid Priority: '${targetString}'\n` + `Must be one of [${validVals.join()}]`
+              util.logToConsole(
+                `Invalid Priority: '${targetString}'\n` +
+                  `Must be one of [${priorities.join(", ")}]`,
               );
             }
 
