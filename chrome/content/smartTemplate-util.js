@@ -4407,9 +4407,12 @@ SmartTemplate4.AB = {
 
       let isCardbookEnabled = false;
       try {
-        isCardbookEnabled = await SmartTemplate4.Util.notifyTools.notifyBackground({
-          func: "queryCardbookAddon",
-        });
+        // omit the query if cardbook support it not enabled.
+        if (isCardBookAB) {
+          isCardbookEnabled = await SmartTemplate4.Util.notifyTools.notifyBackground({
+            func: "queryCardbookAddon",
+          });
+        }
       } catch { ; }
       if (!isCardbookEnabled) {
         isCardBookAB = false;
@@ -4510,7 +4513,7 @@ SmartTemplate4.AB = {
                   func: "parseVcard",
                   vCard: card.vCardProperties.toVCard(),
                 });
-                console.log(jCal);
+                SmartTemplate4.Util.logDebugOptional("adressbook", `matched: ${searchText}\n`, jCal);
                 returnObj.vCardJson = jCal;
                 return returnObj;
               }
