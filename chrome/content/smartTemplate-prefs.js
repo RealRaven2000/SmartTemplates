@@ -35,7 +35,6 @@ SmartTemplate4.Preferences = {
     let prefString ='',
 		    key = this.Prefix + p;
     try {
-		  const Ci = Components.interfaces, Cc = Components.classes;
 			prefString = 
 				Services.prefs.getStringPref ?
 				Services.prefs.getStringPref(key) :
@@ -44,9 +43,7 @@ SmartTemplate4.Preferences = {
     catch(ex) {
       SmartTemplate4.Util.logDebug("Could not find string pref: " + p + "\n" + ex.message);
     }
-    finally {
-      return prefString;
-    }
+		return prefString;
 	},
 	
 	setStringPref: function setStringPref(p, v) {
@@ -90,8 +87,8 @@ SmartTemplate4.Preferences = {
 	setBoolPref: function(p, v) {
 		try {
 			return Services.prefs.setBoolPref(p, v);
-		} catch(e) {
-			let s="Err:" +e;
+		} catch {
+			// let s="Err:" +e;
 			return false;
 		}
 	} ,
@@ -106,23 +103,27 @@ SmartTemplate4.Preferences = {
 
 	existsCharPref: function(pref) {
 		try {
-			if(Services.prefs.prefHasUserValue(pref))
+			if(Services.prefs.prefHasUserValue(pref)) {
 				return true;
-			if (Services.prefs.getCharPref(pref))
+			}
+			if (Services.prefs.getCharPref(pref)){
 				return true;
+			}
 		}
-		catch (e) {return false; }
+		catch {return false; }
 		return false;
 	},
 
 	existsBoolPref: function(pref) {
 		try {
-			if(Services.prefs.prefHasUserValue(pref))
+			if(Services.prefs.prefHasUserValue(pref)) {
 				return true;
-			if (Services.prefs.getBoolPref(pref))
+			}
+			if (Services.prefs.getBoolPref(pref)){
 				return true;
+			}
 		}
-		catch (e) {return false; }
+		catch {return false; }
 		return false;
 	},
 
@@ -130,7 +131,7 @@ SmartTemplate4.Preferences = {
 		try {
 			return Services.prefs.getBoolPref(pref);
 		}
-		catch(e) {
+		catch {
 			return false;
 		}
 	}
