@@ -645,8 +645,9 @@
   "header.set.from": {
     "message": "define o endereço 'de'. Isso só aceita endereços de e-mail da lista de identidades."
   },
-  "header.set.priority": {
-    "message": "define a prioridade do email. Os valores aceitos são: highest, high, normal, low, lowest."
+  "header.set.priority": { "message": "define a prioridade do email." },
+  "header.set.priority.value": {
+    "message": "Parâmetro para definir a prioridade do email. Valores possíveis: "
   },
   "header.set.subject": {
     "message": "substituir assunto pelo texto"

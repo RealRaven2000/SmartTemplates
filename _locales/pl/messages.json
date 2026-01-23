@@ -651,8 +651,9 @@
   "header.set.from": {
     "message": "ustawia adres „od”. To akceptuje tylko adresy e-mail z listy tożsamości."
   },
-  "header.set.priority": {
-    "message": "ustawia priorytet wiadomości e-mail. Dozwolone wartości to: highest, high, normal, low, lowest."
+  "header.set.priority": { "message": "ustawia priorytet wiadomości e-mail." },
+  "header.set.priority.value": {
+    "message": "Parametr do ustawiania priorytetu wiadomości e-mail. Możliwe wartości: "
   },
   "header.set.subject": {
     "message": "zamień temay z tekstem"

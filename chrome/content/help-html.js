@@ -11,18 +11,38 @@
 */
 
 
-// this one was written by chatGPT. (I was lazy and ran out of time :) 
-// but at least we avoid assigning content to innerHTML!    <:)
-function replacePlaceholdersWithSpans(element, placeholders, classNames) {
+/**
+ * Replaces placeholders in a container element with styled spans (or other semantic tags) without using innerHTML.
+ *
+ * Each placeholder in the `placeholders` array is searched for in the text nodes of the given `element`.
+ * When found, it is wrapped in a new element (default: <span>) with a class name specified in `classNames`.
+ * Optionally, you can limit wrapping to the first occurrence of each placeholder with `options.firstOnly`.
+ *
+ * @param {HTMLElement} element - The container element whose text nodes will be processed.
+ * @param {string[]} placeholders - Array of placeholder strings to wrap (e.g., ["$label$", "$color$"]).
+ * @param {string[]} classNames - Array of class names corresponding to each placeholder. Must match the length of `placeholders`.
+ * @param {Object} [options] - Optional settings.
+ * @param {boolean} [options.firstOnly=false] - If true, each placeholder is wrapped only once per container.
+ *
+ * @example
+ * // Wrap each priority value once in paramLiteral spans
+ * const priorities = ["highest", "high", "normal", "low", "lowest"];
+ * replacePlaceholdersWithSpans(priorityElement, priorities, priorities.map(() => "paramLiteral"), { firstOnly: true });
+ *
+ * @note
+ * - Existing HTML elements inside `element` (like other spans) are preserved.
+ * - Commas, spaces, and other non-placeholder text remain untouched.
+ * - Fully compatible with flattening/search algorithms that operate on text nodes.
+ */
+function replacePlaceholdersWithSpans(element, placeholders, classNames, options = {}) {
   const xhtmlNamespace = document.documentElement.namespaceURI || "http://www.w3.org/1999/xhtml";
+  const firstOnly = options.firstOnly || false;
+  const wrapped = new Set(); // Track placeholders already wrapped (for firstOnly)
 
-  // Create a new document fragment to build the new content
   const fragment = document.createDocumentFragment();
-  
-  // Loop over all child nodes of the element (text nodes and spans)
+
   Array.from(element.childNodes).forEach((node) => {
     if (node.nodeType === Node.TEXT_NODE) {
-      // Process the text node for placeholders
       let textContent = node.textContent;
       let currentIndex = 0;
 
@@ -31,8 +51,12 @@ function replacePlaceholdersWithSpans(element, placeholders, classNames) {
         let matchedPlaceholder = "";
         let matchedClassName = "";
 
-        // Find the next placeholder
         placeholders.forEach((placeholder, index) => {
+          if (firstOnly && wrapped.has(placeholder)) {
+            // skip if already wrapped. avoids partial rematching (low, lowest)
+            return;
+          }
+
           const idx = textContent.indexOf(placeholder, currentIndex);
           if (idx !== -1 && (nextPlaceholderIndex === -1 || idx < nextPlaceholderIndex)) {
             nextPlaceholderIndex = idx;
@@ -41,35 +65,35 @@ function replacePlaceholdersWithSpans(element, placeholders, classNames) {
           }
         });
 
-        // If no placeholder is found, append the rest of the text and stop
         if (nextPlaceholderIndex === -1) {
           fragment.append(document.createTextNode(textContent.slice(currentIndex)));
           break;
         }
 
-        // Append text before the next placeholder
         fragment.append(document.createTextNode(textContent.slice(currentIndex, nextPlaceholderIndex)));
 
-        // Create a span element for the placeholder
         const span = document.createElementNS(xhtmlNamespace, "span");
         span.className = matchedClassName;
-        span.textContent = matchedPlaceholder.replace(/^\{|\}$/g, ""); // Remove curly braces
+        span.textContent = matchedPlaceholder.replace(/^\{|\}$/g, ""); 
 
         fragment.append(span);
 
-        // Move index past the placeholder
+        if (firstOnly) {
+          // mark as wrapped
+          wrapped.add(matchedPlaceholder);
+        }
+
         currentIndex = nextPlaceholderIndex + matchedPlaceholder.length;
       }
     } else {
-      // If it's not a text node (like a <span>), just append it as-is
       fragment.append(node);
     }
   });
 
-  // Replace the content with the updated fragment
-  element.textContent = ""; // Clear existing content
+  element.textContent = "";
   element.appendChild(fragment);
 }
+
 
 function isVisible(el) {
   return el && !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
@@ -101,6 +125,19 @@ async function initHTML() {
 
   let fs = document.getElementById("tagFormatString");
   replacePlaceholdersWithSpans(fs, ["$label$", "$color$"], ["paramLiteral", "paramLiteral"]);
+
+  // style lists of literal parameters
+  document.querySelectorAll(".literalParamList").forEach((container) => {
+    // Only wrap text nodes, skip existing spans
+    const values = container.textContent.split(",").map((v) => v.trim());
+    replacePlaceholdersWithSpans(
+      container,
+      values,
+      values.map(() => "paramLiteral"),
+      { firstOnly: true },
+    );
+  });
+
 
   // functions from help.js
   fixClipboardNote();

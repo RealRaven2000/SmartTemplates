@@ -662,8 +662,9 @@
   "header.set.from": {
     "message": "sets 'from' address. This only accepts mail addresses from list of identities."
   },
-  "header.set.priority": {
-    "message": "sets mail priority. Accepted values are: highest, high, normal, low, lowest."
+  "header.set.priority": { "message": "sets the email priority. " },
+  "header.set.priority.value": {
+    "message": "Parameter for setting email priority. Possible values: "
   },
   "header.set.subject": {
     "message": "replace subject with the text"
@@ -1805,12 +1806,8 @@
   "tags.formatString": {
     "message": "custom html snippet to format each tag. Use $label$ and $color$ to insert the text or (hexadecimal) color value of a tag.",
     "placeholders": {
-      "color": {
-        "content": "$color$"
-      },
-      "label": {
-        "content": "$label$"
-      }
+      "color": { "content": "$color$" },
+      "label": { "content": "$label$" }
     }
   },
   "tags.intro": {

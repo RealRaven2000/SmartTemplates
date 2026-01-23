@@ -654,8 +654,9 @@
   "header.set.from": {
     "message": "asettaa 'from'-osoitteen. Tämä hyväksyy vain sähköpostiosoitteet henkilöllisyysluettelosta."
   },
-  "header.set.priority": {
-    "message": "asettaa sähköpostin prioriteetin. Hyväksytyt arvot ovat: highest, high, normal, low, lowest."
+  "header.set.priority": { "message": "asettaa sähköpostin prioriteetin." },
+  "header.set.priority.value": {
+    "message": "Parametri sähköpostin prioriteetin asettamiseen. Mahdolliset arvot: "
   },
   "header.set.subject": {
     "message": "korvaa aihe tekstillä"

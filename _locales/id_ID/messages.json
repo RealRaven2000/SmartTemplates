@@ -528,8 +528,9 @@
   "header.set.from": {
     "message": "setel alamat 'dari'. Ini hanya menerima alamat email dari daftar identitas."
   },
-  "header.set.priority": {
-    "message": "mengatur prioritas email. Nilai yang diterima adalah: highest, high, normal, low, lowest."
+  "header.set.priority": { "message": "mengatur prioritas email." },
+  "header.set.priority.value": {
+    "message": "Parameter untuk mengatur prioritas email. Nilai yang tersedia: "
   },
   "header.set.subject": {
     "message": "ganti subjek dengan teks"

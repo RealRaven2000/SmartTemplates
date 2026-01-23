@@ -657,8 +657,9 @@
   "header.set.from": {
     "message": "ställer in 'från' -adressen. Detta accepterar endast e-postadresser från listan över identiteter."
   },
-  "header.set.priority": {
-    "message": "anger e-postens prioritet. Tillåtna värden är: highest, high, normal, low, lowest."
+  "header.set.priority": { "message": "anger e-postens prioritet." },
+  "header.set.priority.value": {
+    "message": "Parameter för att ange e-postens prioritet. Möjliga värden är: "
   },
   "header.set.subject": {
     "message": "ersätt ämnet med texten"

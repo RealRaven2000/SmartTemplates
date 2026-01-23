@@ -645,8 +645,9 @@
   "header.set.from": {
     "message": "nastavuje adresu „od“. To přijímá pouze e-mailové adresy ze seznamu identit."
   },
-  "header.set.priority": {
-    "message": "nastaví prioritu e-mailu. Povolené hodnoty jsou: highest, high, normal, low, lowest."
+  "header.set.priority": { "message": "nastaví prioritu e-mailu." },
+  "header.set.priority.value": {
+    "message": "Parametr pro nastavení priority e-mailu. Možné hodnoty: "
   },
   "header.set.subject": {
     "message": "nahraď předmět tímto textem"

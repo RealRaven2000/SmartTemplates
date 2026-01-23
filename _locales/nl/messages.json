@@ -648,8 +648,9 @@
   "header.set.from": {
     "message": "sets 'van'-adres. Dit accepteert alleen e-mailadressen uit een lijst met identiteiten."
   },
-  "header.set.priority": {
-    "message": "stelt de e-mailprioriteit in. Toegestane waarden zijn: highest, high, normal, low, lowest."
+  "header.set.priority": { "message": "stelt de e-mailprioriteit in." },
+  "header.set.priority.value": {
+    "message": "Parameter voor het instellen van de e-mailprioriteit. Mogelijke waarden zijn: "
   },
   "header.set.subject": {
     "message": "onderwerp vervangen door de tekst"

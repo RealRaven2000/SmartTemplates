@@ -654,6 +654,10 @@
   "header.set.from": {
     "message": "ορίζει τη διεύθυνση 'από'. Δέχεται μόνο διευθύνσεις email από λίστα ταυτοτήτων."
   },
+  "header.set.priority": { "message": "ορίζει την προτεραιότητα του email." },
+  "header.set.priority.value": {
+    "message": "Παράμετρος για τον ορισμό της προτεραιότητας email. Πιθανές τιμές: "
+  },
   "header.set.subject": {
     "message": "αντικατάστησε το θέμα με το κείμενο"
   },

@@ -627,8 +627,9 @@
   "header.set.from": {
     "message": "поставља адресу „од“. Ово прихвата само адресе е-поште са листе идентитета."
   },
-  "header.set.priority": {
-    "message": "поставља приоритет е-поште. Дозвољене вредности су: highest, high, normal, low, lowest."
+  "header.set.priority": { "message": "поставља приоритет е-поште." },
+  "header.set.priority.value": {
+    "message": "Параметар за постављање приоритета е-поште. Могуће вредности су: "
   },
   "header.set.subject": {
     "message": "заменити предмет текстом"

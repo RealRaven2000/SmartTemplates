@@ -651,8 +651,9 @@
   "header.set.from": {
     "message": "nastavi naslov 'od'. To sprejema samo e-poštne naslove s seznama identitet."
   },
-  "header.set.priority": {
-    "message": "nastavi prednost e-pošte. Dovoljene vrednosti so: highest, high, normal, low, lowest."
+  "header.set.priority": { "message": "nastavi prednost e-pošte." },
+  "header.set.priority.value": {
+    "message": "Parameter za nastavitev prednosti e-pošte. Možne vrednosti: "
   },
   "header.set.subject": {
     "message": "nadomesti zadevo z besedilom"

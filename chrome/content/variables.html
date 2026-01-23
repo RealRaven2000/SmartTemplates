@@ -271,9 +271,10 @@
 				<li class="cursorNavigate"><code>%header.set(to,<span class="paramLiteral">list:listName</span>)%</code> = __MSG_header.set.to.list__</li>
 				<li class="cursorNavigate"><code>%header.append(to,"abc@de.com")%</code> = __MSG_header.append.to__</li>
         <li class="cursorNavigate"><code>%header.set(from,"Postmaster &lt;pm@abc.com&gt;")%</code> = __MSG_header.set.from__</li>
-				<li class="cursorNavigate"><code>%header.set(priority,highest)%</code> = __MSG_header.set.priority__</li>
+				<li class="cursorNavigate"><code>%header.set(priority,<span class="param">priorityVal</span>)%</code> = __MSG_header.set.priority__</li>
 			</ul>
-			<aside><li class="cursorNavigate"><span class="param">textTransform</span> = __MSG_stringmanip.textTransform__ (lowercase, uppercase, capitalize, camelcase)</li></aside>
+			<aside><li class="cursorNavigate"><span class="param">textTransform</span> = __MSG_stringmanip.textTransform__ (<span class="literalParamList">lowercase, uppercase, capitalize, camelcase</span>)</li></aside>
+			<aside><li class="cursorNavigate"><span class="param">priorityVal</span> = __MSG_header.set.priority.value__ (<span class="literalParamList">highest, high, normal, low, lowest</span>)</li></aside>
     </div>
       
 		<!-- ##### deleteText / replaceText / matchTextFromBody / matchTextFromSubject #### -->
