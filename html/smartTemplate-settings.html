@@ -110,10 +110,10 @@
           <div id="fileTemplatesTabs" class="tabbox" flex="1">
             <nav class="tabs actionTabs">
               <ul role="tablist">
-                <li role="tab" aria-selected=true><button id="file.newTab" class="NewTab active">__MSG_new.tab__</button></li>
-                <li role="tab"><button id="file.respondTab"  class="RespondTab">__MSG_rsp.tab__</button></li>
-                <li role="tab"><button id="file.forwardTab"  class="ForwardTab">__MSG_fwd.tab__</button></li>
-                <li role="tab"><button id="file.snippetsTab" class="SnippetsTab">__MSG_snippets.head__</button></li>
+                <li role="tab" aria-selected=true><button id="file.newTab" class="NewTab active" composeType="new">__MSG_new.tab__</button></li>
+                <li role="tab"><button id="file.respondTab"  class="RespondTab" composeType="rsp">__MSG_rsp.tab__</button></li>
+                <li role="tab"><button id="file.forwardTab"  class="ForwardTab" composeType="fwd">__MSG_fwd.tab__</button></li>
+                <li role="tab"><button id="file.snippetsTab" class="SnippetsTab" composeType="snippets">__MSG_snippets.head__</button></li>
               </ul>
             </nav>
             
@@ -132,9 +132,9 @@
                     <div id="fileControls" class="vbox">
                       <div id="fileToolbarPanel" class="hbox">
                         <toolbar id="fileTemplateToolbar"
-                                class="templateList inlineToolbar"
-                                mode="full"
-                                customizable="false" >
+                          class="templateList inlineToolbar"
+                          mode="full"
+                          customizable="false">
                           <button id="btnAdd" class="iconButton"><span>__MSG_fileTemplates.add__</span></button>
                           <button id="btnUpdate" class="iconButton"><span>__MSG_fileTemplates.update__</span></button>
                           <button id="btnRemove" class="iconButton"><span>__MSG_fileTemplates.remove__</span></button>
@@ -142,6 +142,8 @@
                           <button id="btnUp" class="iconButton"><span>__MSG_fileTemplates.up__</span></button>
                           <button id="btnDown" class="iconButton"><span>__MSG_fileTemplates.down__</span></button>
                           <button id="btnEdit" class="iconButton"><span>__MSG_fileTemplates.edit__</span></button>
+                          <button id="btnImportTemplates" class="iconButton" title="__MSG_fileTemplates.import.tooltip__">
+                            <span>__MSG_fileTemplates.import__</span></button>
                           <button id="btnPushUI" class="iconButton"><span>Refresh UI!</span></button>
                         </toolbar>						
                       </div>
