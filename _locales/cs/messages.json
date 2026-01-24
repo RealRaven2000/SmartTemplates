@@ -486,6 +486,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "To se zobrazí v nabídce výběru šablony."
   },
+  "fileTemplates.import": { "message": "Importovat nabídku…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Importovat položky šablon ze souboru JSON (seznam HTML šablon, obvykle smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Položky nabídky šablon"
   },

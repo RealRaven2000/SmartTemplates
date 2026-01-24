@@ -492,6 +492,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Będzie wyświetlany w menu wyboru szablonu."
   },
+  "fileTemplates.import": { "message": "Importuj menu…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Importuj wpisy szablonów z pliku JSON (lista szablonów HTML, zwykle smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Elementy menu szablonów"
   },

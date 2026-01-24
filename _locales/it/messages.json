@@ -480,6 +480,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Questo sarà visualizzato nel menu di selezione del modello."
   },
+  "fileTemplates.import": { "message": "Importa menu…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Importa voci dei modelli da un file JSON (elenco dei modelli HTML, normalmente smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Voci di menu del modello"
   },

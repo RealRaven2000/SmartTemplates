@@ -980,7 +980,8 @@ label.plain-link:hover::before {
 	padding-top: 1.4em;
 	padding-bottom: 0.2em;
 	background-position: center 7px !important;
-	flex: 3 1 0 !important;
+	flex: 3 1 auto !important;
+	flex-basis: auto; /* start at content width instead of 0 */
 	font-size: 0.9em;
   justify-content: center;
 	min-height: 4em;
@@ -994,22 +995,24 @@ label.plain-link:hover::before {
 
 .templateList #btnAdd {
 	background-image:  url("../chrome/content/skin/icons/add.png");
+	background-image:  url("../chrome/content/skin/icons/thunderbird/add.svg");
 }
 
 .templateList #btnUpdate {
 	background-image:  url("../chrome/content/skin/icons/fugue-update.png");
+	background-image:  url("../chrome/content/skin/icons/thunderbird/update-icon.svg");
 }
 
 .templateList #btnRemove {
-	background-image:  url("../chrome/content/skin/icons/fugue-cross.png");
+	background-image:  url("../chrome/content/skin/icons/thunderbird/delete.svg");
 }
 
 .templateList #btnUp {
-	background-image: url("../chrome/content/skin/icons/fugue-up.png");
+	background-image: url("../chrome/content/skin/icons/thunderbird/arrow-up.svg");
 }
 
 .templateList #btnDown {
-	background-image:  url("../chrome/content/skin/icons/fugue-down.png");
+	background-image:  url("../chrome/content/skin/icons/thunderbird/arrow-down.svg");
 }
 
 .templateList #btnUp[disabled="true"] { 
@@ -1020,10 +1023,13 @@ label.plain-link:hover::before {
 }
 
 .templateList #btnEdit {
-	background-image:  url("../chrome/content/skin/icons/pencil-field.png");
+	background-image:  url("../chrome/content/skin/icons/thunderbird/new-msg.svg");
 }
 .templateList #btnPushUI {
-	background-image:  url("../chrome/content/skin/icons/menu-arrow.png");
+	background-image:  url("../chrome/content/skin/icons/thunderbird/reload.svg");
+}
+.templateList #btnImportTemplates {
+	background-image:  url("../chrome/content/skin/icons/open-list.svg");
 }
 
 .templateLabel {

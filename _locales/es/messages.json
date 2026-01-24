@@ -492,6 +492,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Esto se mostrará en el menú de selección de plantilla."
   },
+  "fileTemplates.import": { "message": "Importar menú…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Importar entradas de plantillas desde un archivo JSON (lista de plantillas HTML, normalmente smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Entradas del menú de plantillas"
   },

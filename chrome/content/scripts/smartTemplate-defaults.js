@@ -54,7 +54,9 @@ pref("extensions.smartTemplate4.defaultTemplate.useLastNotify", true);  // notif
 pref("extensions.smartTemplate4.vars.file.fileTemplateMethod", false); // use the template loader for %file% variables
 pref("extensions.smartTemplate4.fileTemplates.editor.path",""); // [issue 282]
 pref("extensions.smartTemplate4.fileTemplates.menus.delayMessagePane", 8000); // delay patching the msg header buttons
-pref("extensions.smartTemplate4.fileTemplates.path", ""); // location of external html templates "Stationery" for next menu config action 
+pref("extensions.smartTemplate4.fileTemplates.path", ""); // physical location of external html templates "Stationery" for next menu config action 
+pref("extensions.smartTemplate4.fileTemplates.jsonPath.export", ""); // last export location of template list
+pref("extensions.smartTemplate4.fileTemplates.jsonPath.import", ""); // last import location
 pref("extensions.smartTemplate4.fileTemplates.instantPath", ""); // location for path used for adhoc html template selection 
 pref("extensions.smartTemplate4.fileTemplates.sendTimeout", 200); // [issue 173] wait before pressing send button
 

@@ -489,6 +489,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "このタイトルはテンプレートの選択メニューに表示されます。"
   },
+  "fileTemplates.import": { "message": "メニューをインポート…" },
+  "fileTemplates.import.tooltip": {
+    "message": "JSONファイルからテンプレートの項目をインポート（HTMLテンプレートのリスト、通常はsmartTemplates.json）。"
+  },
   "fileTemplates.listHead": {
     "message": "テンプレートメニューの項目"
   },

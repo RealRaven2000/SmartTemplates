@@ -1,7 +1,7 @@
 [
   {
     "namespace": "Utilities",
-    "functions": [ 
+    "functions": [
       {
         "name": "logDebug",
         "type": "function",
@@ -31,8 +31,8 @@
         "name": "showVersionHistory",
         "type": "function",
         "parameters": []
-      },      
-      
+      },
+
       {
         "name": "showToolbarPopup",
         "type": "function",
@@ -52,30 +52,30 @@
         "async": true,
         "parameters": [
           {
-            "name" : "commands",
-            "type" : "array",
-            "items" : {
-              "type" : "string"
+            "name": "commands",
+            "type": "array",
+            "items": {
+              "type": "string"
             },
-            "description" : "array of commands"
+            "description": "array of commands"
           },
           {
-            "name" : "tabId",
-            "type" : "integer",
-            "description" : "Tab Identifier"
+            "name": "tabId",
+            "type": "integer",
+            "description": "Tab Identifier"
           }
         ]
       },
 
       {
-        "name" : "beforeSend",
-        "type" : "function",
+        "name": "beforeSend",
+        "type": "function",
         "async": true,
         "parameters": [
           {
-            "name" : "tabId",
-            "type" : "integer",
-            "description" : "Tab Identifier"
+            "name": "tabId",
+            "type": "integer",
+            "description": "Tab Identifier"
           },
           {
             "name": "composeDetails",
@@ -84,18 +84,18 @@
           }
         ]
       },
-      
+
       {
-        "name" : "readTemplateMenus",
-        "type" : "function",
+        "name": "readTemplateMenus",
+        "type": "function",
         "description": "read json file of all external templates, replaces fileTemplates.readStringFile()",
         "async": true,
         "parameters": []
       },
 
       {
-        "name":"updateTemplates",
-        "type" : "function",
+        "name": "updateTemplates",
+        "type": "function",
         "description": "transmit json data for all external template menus, updates experiment",
         "async": true,
         "parameters": [
@@ -139,6 +139,19 @@
         ]
       },
       {
+        "name": "openTemplateList",
+        "type": "function",
+        "description": "Get json file with data.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "item",
+            "type": "any",
+            "description": "template menu item from listbox {path, label, filter}"
+          }
+        ]
+      },
+      {
         "name": "fileAccountSettings",
         "type": "function",
         "description": "reads / writes account settings",
@@ -160,7 +173,7 @@
             "optional": true,
             "description": "saving only: stem of file name"
           }
-        ]        
+        ]
       },
       {
         "name": "focusDocument",
@@ -174,7 +187,6 @@
           }
         ]
       }
-
-   ]
+    ]
   }
 ]

@@ -489,6 +489,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Это будет отображаться в меню выбора шаблона."
   },
+  "fileTemplates.import": { "message": "Импорт меню…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Импортировать записи шаблонов из JSON-файла (список HTML-шаблонов, обычно smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Пункты меню шаблонов"
   },

@@ -978,7 +978,7 @@ SmartTemplate4.fileTemplates = {
 		
 	}	,
 	
-	pickFileFromSettings: function () {
+	pickFileFromSettings: function () { // legacy settings path?
     let el = document ?
       document.getElementById('btnPickTemplate') : null;
     if (el) {el.classList.remove('pulseRed');} // remove animation. we've found the button!
@@ -1000,7 +1000,7 @@ SmartTemplate4.fileTemplates = {
 	
   // @initialPathPref: defaults to the path setting from menu configuration (ST4 prefs dialog)
   //                   but can be overwritten for remembering a path when open file is selected from reply menu
-	pickFile: function (lastCallback, initialPathPref='fileTemplates.path') {
+	pickFile: function (lastCallback, initialPathPref='fileTemplates.path', fileType="template") {
     const Cc = Components.classes,
       Ci = Components.interfaces,
       util = SmartTemplate4.Util,
@@ -1033,9 +1033,18 @@ SmartTemplate4.fileTemplates = {
     let winarg = SmartTemplate4.Util.getFileInitArg(window);  // Tb 125
 		fp.init(winarg, "", fp.modeOpen);
 
-    fp.appendFilter(util.getBundleString("fpFilterHtmlTemplate"), "*.html; *.htm");
-    fp.appendFilter(util.getBundleString("fpFilterStyleSheet"), "*.css");
-    fp.defaultExtension = 'html';
+    switch (fileType) {
+      case "template":
+        fp.appendFilter(util.getBundleString("fpFilterHtmlTemplate"), "*.html; *.htm");
+        fp.appendFilter(util.getBundleString("fpFilterStyleSheet"), "*.css");
+        fp.defaultExtension = "html";
+        break;
+      case "templateList":
+        fp.appendFilter(util.getBundleString("fpJsonTemplateList"), "*.json");
+        fp.defaultExtension = "json";
+        break;
+    }
+
 		
 		
     let fpCallback = function fpCallback_FilePicker(aResult) {
@@ -1071,25 +1080,102 @@ SmartTemplate4.fileTemplates = {
       path:"", 
       name:""
     }
-    this.pickFile(async function (localFile) {
-      // this will be execute _after_ file picker
-      if (localFile) {
-        returnedItem.path = localFile.path;
-        // document.getElementById('txtTemplatePath').value = localFile.path;
-        // we could potentially parse the file
-        // and find the <title> tag!
-        let name = localFile.leafName.replace(".html", "").replace(".htm", "").replace(".css", "");
-        // document.getElementById('txtTemplateTitle').value = name;
-        returnedItem.name = name;
-        // store folder as default for next time.
-        SmartTemplate4.Preferences.setStringPref("fileTemplates.path", localFile.parent.path);
-      }
-      resolver();
-    }, "fileTemplates.path");
+    this.pickFile(
+      async function (localFile) {
+        // this will be execute _after_ file picker
+        if (localFile) {
+          returnedItem.path = localFile.path;
+          // document.getElementById('txtTemplatePath').value = localFile.path;
+          // we could potentially parse the file
+          // and find the <title> tag!
+          let name = localFile.leafName.replace(".html", "").replace(".htm", "").replace(".css", "");
+          // document.getElementById('txtTemplateTitle').value = name;
+          returnedItem.name = name;
+          // store folder as default for next time.
+          SmartTemplate4.Preferences.setStringPref("fileTemplates.path", localFile.parent.path);
+        }
+        resolver();
+      }, 
+      "fileTemplates.path"
+    );
     await newPromise;
     return returnedItem;
   },
-	
+
+  openJsonFile: async function (params = {direction: "import"}) {
+    let resolver; //placeholder for resolver callback, outside of promise
+    let newPromise = new Promise((inner_res) => {
+      resolver = inner_res; //assign resolver callback as value to outside @res
+    });    
+    let returnedItem = {
+      path: "",
+      name: "",
+      data: []
+    };
+    SmartTemplate4.Util.logDebugOptional("fileTemplates", "openJsonFile()", params);
+
+    let settingName = "";
+    switch (params?.direction) {
+      case "import":
+        settingName = "fileTemplates.jsonPath.import";
+        break;
+      case "export":
+        settingName = "fileTemplates.jsonPath.export";
+        break;
+    }
+    
+    this.pickFile(
+      async function (localFile) {
+        // this will be execute _after_ file picker
+        if (localFile) {
+          returnedItem.path = localFile.path;
+          // document.getElementById('txtTemplateTitle').value = name;
+          returnedItem.name = localFile.leafName;
+          // store folder as default for next time.
+          SmartTemplate4.Preferences.setStringPref(settingName, localFile.parent.path);
+          console.log("openJsonFile - picked file.");
+
+          // Read the complete file as an json object
+          let data = await IOUtils.readJSON(localFile.path, { encoding: "utf-8" });
+          console.log("openJsonFile - read json data", data);
+          if (typeof data == "object") {
+            let finalData = {};
+            console.log("Read json contents:", data);
+            // now filter out the results, based on params.composeTypeFilter
+            // we can also add a "does template file exist?" verification layer here later...
+            switch (params?.composeTypeFilter) {
+              case "new":
+                finalData = data?.templatesNew;
+                returnedItem.filteredResult = "templatesNew";
+                break;
+              case "rsp":
+                finalData = data?.templatesRsp;
+                returnedItem.filteredResult = "templatesRsp";
+                break;
+              case "fwd":
+                finalData = data?.templatesFwd;
+                returnedItem.filteredResult = "templatesFwd";
+                break;
+              case "snippets":
+                finalData = data?.snippets;
+                returnedItem.filteredResult = "snippets";
+                break;
+              case "all":
+                finalData = data;
+                break;
+            }
+            // additional filtering?
+            returnedItem.data = finalData;
+          }
+        }
+        resolver();
+      },
+      settingName,
+      "templateList",
+    );
+    await newPromise;
+    return returnedItem;
+  },
 
   composeFromAPI: async function (menuEntry) {
     let composeType = this.getComposeTypeFull(menuEntry.controller);
@@ -1151,7 +1237,7 @@ SmartTemplate4.fileTemplates = {
         case "cmd_forward":
           ctlButtonId = "hdrForwardButton";
           break;
-        default :return null; // not applicable
+        default: return null; // not applicable
       }
       return currentInfo.chromeBrowser.contentDocument.getElementById(ctlButtonId)
     }

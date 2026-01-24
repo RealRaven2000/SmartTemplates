@@ -163,19 +163,26 @@ var fileTemplates = {
   },
 
   // was SmartTemplate4.fileTemplates.update()
-  updateEntry: async function (isNew = false) {
-    const path = document.getElementById("txtTemplatePath").value,
-      label = document.getElementById("txtTemplateTitle").value,
-      category = document.getElementById("txtTemplateCategory").value;
+  updateEntry: async function (isNew = false, entry) {
+    const getData = (id, e) => {
+      if (e) {
+        return e;
+      }
+      return document.getElementById(id).value;
+    }
 
-    if (!path.trim()) {
+    const path = getData("txtTemplatePath", entry?.path),
+      label = getData("txtTemplateTitle", entry?.label),
+      category = getData("txtTemplateCategory", entry?.category);
+
+    if (!path.trim() && !entry) {
       alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnEnterPath"));
       const pickRow = document.querySelector(".templateFilePicker");
       pickRow.classList.add("highlight");
       return;
     }
 
-    if (!label.trim()) {
+    if (!label.trim() && !entry) {
       alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnEnterTitle"));
       return;
     }
@@ -197,10 +204,17 @@ var fileTemplates = {
     }
 
     if (isNew) {
-      if (this.activeFileList?.selectedOptions.length) {
+      if (this.activeFileList?.selectedOptions.length || entry) {
         targetIndex = this.activeFileList.selectedIndex + 1;
       } else {
         targetIndex = this.CurrentEntries.length;
+      }
+      if (entry) {
+        // { __sortId, category, label, path }
+        // if item exists, remove it first and then append the new version:
+        if (!isNaN(entry._sortId)) {
+          targetIndex = entry._sortId;
+        }
       }
     }
 
@@ -255,6 +269,29 @@ var fileTemplates = {
   },
   addEntry: async function () {
     this.updateEntry(true);
+  },
+  importEntry: async function(entry) {
+    // entry = { __sortId, category, label, path }
+    const entries = fileTemplates.CurrentEntries;
+    const position =
+      Number.isInteger(entry?._sortId) ? (entry._sortId-1) : null;
+
+    // find existing entry
+    const existingIndex = entries.findIndex(
+      e => e.category === entry.category && e.label === entry.label
+    );      
+    // remove existing entry first
+    if (existingIndex !== -1) {
+      entries.splice(existingIndex, 1);
+    }
+
+    // insert new entry
+    if (position === null || position >= entries.length) {
+      entries.push(entry);
+    } else {
+      entries.splice(position, 0, entry);
+    }
+    // this.updateEntry(true, data);
   },
   removeEntry: async function () {
     let currentPos = fileTemplates.activeFileList.selectedIndex;
@@ -326,6 +363,45 @@ var fileTemplates = {
       document.getElementById("txtTemplatePath").value = result.path;
       document.getElementById("txtTemplateTitle").value = result.name;
     }
+  },
+  importTemplates: async function() {
+    let result = await messenger.Utilities.openTemplateList({
+      path: "",
+      filter: "*.json",
+      direction: "import",
+      composeTypeFilter: SmartTemplates.Settings.currentListType,
+    });
+
+    // composeTypeFilter = use "" or "all" for the complete file?
+    if (!result.path) {
+      return;
+    }
+    fileTemplates.activeFileList.selectedIndex = -1;
+    document.getElementById("txtTemplateTitle").value = "";
+    document.getElementById("txtTemplatePath").value = "";
+    document.getElementById("txtTemplateCategory").value = "";
+
+    // this one should return a list of templates:
+    // - html files that have invalid file path (we could use this to highlight invalid entries with red color etc)
+    // - html files that overwrite existing items?
+    // - new html files
+    // or we could look at all local data and verify it "file for file" through a call to the experimental API?
+    // messenger.Utilities.stageImportTemplates(result.path);
+    if (!result.data) {
+      return; // do nothing
+    }
+    console.log(`import ${result.data.length} entries...`);
+    for (const entry of result.data) {
+      console.log(entry);
+      // entry = { __sortId, category, label, path }
+      fileTemplates.importEntry(entry);
+    }
+    fileTemplates.CurrentEntries.forEach ((el,idx) => el._sortId = idx+1);
+    // filter out _sortId (for any other metada we need to add this to the rawEntries getter)
+    messenger.Utilities.updateTemplates(fileTemplates.rawEntries);
+
+    fileTemplates.repopulate(true, 0);
+    
   },
   dropFiles: function (event) {
     if (event.dataTransfer.files.length == 0) {
@@ -432,7 +508,7 @@ var fileTemplates = {
     // move the item in the datastructure:
     array_move(fileTemplates.CurrentEntries, sourceIndex, targetIndex);
     // update backend
-    messenger.Utilities.updateTemplates(fileTemplates.Entries);
+    messenger.Utilities.updateTemplates(fileTemplates.rawEntries);
     // refresh list on screen:
     fileTemplates.repopulate(true);
     this.activeFileList.selectedIndex = targetIndex;
@@ -797,6 +873,16 @@ SmartTemplates.Settings = {
       return menuEntry.substring(0, end);
 		}
 		return menuEntry;
+  },
+
+  get currentListType() {
+    const currentTab = document.querySelector(
+      "#fileTemplatesTabs .actionTabs ul li button.active",
+    );
+    if (currentTab) {
+      return currentTab.getAttribute("composeType");
+    }
+    return "";
   },
 
 	get currentComposeType() {
@@ -2205,10 +2291,6 @@ const activateTabEvent = (event) => {
   btn.classList.add("active");
 	btn.parentElement.setAttribute("aria-selected", true); // li
 
-	const cType = btn.getAttribute("composeType");
-	if (cType) { // remember new composeType.
-		SmartTemplates.Settings.currentComposeType = cType;
-	}
   // get <li> <btn> index:
   let idx = Array.from(btn.parentNode.parentElement.children).indexOf(btn.parentNode);
 	const section = tabContent.children[idx];
@@ -2276,7 +2358,7 @@ async function loadPrefs(parentSelector = "") {
 		} else if (element instanceof HTMLTextAreaElement) {
       element.value = await browser.LegacyPrefs.getPref(prefName);
     } else {
-			if (await SmartTemplates.Preferences.isDebug()) {
+			if (await SmartTemplates.Preferences.isDebugOption("settings")) {
 				// eslint-disable-next-line no-debugger
 				debugger;
 			}
@@ -2526,7 +2608,7 @@ function addUIListeners() {
   });
   document.getElementById("btnUpdate").addEventListener("click", (_event) => {
     fileTemplates.updateEntry();
-  });
+  });  
   document.getElementById("btnRemove").addEventListener("click", (event) => {
     fileTemplates.removeEntry(event.target);
   });
@@ -2539,6 +2621,11 @@ function addUIListeners() {
   document.getElementById("btnEdit").addEventListener("click", (_event) => {
     fileTemplates.editEntry();
   });
+  document.getElementById("btnImportTemplates").addEventListener("click", (_event) => {
+    fileTemplates.importTemplates();
+  });
+
+  
   document.getElementById("btnPushUI").addEventListener("click", (_event) => {
     SmartTemplates.Settings.logDebug("Sending entries data to experiment...");
 

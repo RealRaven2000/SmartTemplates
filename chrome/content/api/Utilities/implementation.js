@@ -152,6 +152,11 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           return result;
         },
 
+        openTemplateList: async function(itemParams) {
+          let result = await win.SmartTemplate4.fileTemplates.openJsonFile(itemParams);
+          return result;
+        },
+
         fileAccountSettings: async function(mode, jsonData, fname="") {
 
           function rememberPath(path) {

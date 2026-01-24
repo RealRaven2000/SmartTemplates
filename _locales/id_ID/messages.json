@@ -378,6 +378,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Ini akan ditampilkan di menu pemilihan template."
   },
+  "fileTemplates.import": { "message": "Impor Menu…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Impor entri template dari file JSON (daftar template HTML, biasanya smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Entri menu template"
   },

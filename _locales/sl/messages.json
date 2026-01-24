@@ -492,6 +492,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "To bo prikazano v meniju za izbiro predloge."
   },
+  "fileTemplates.import": { "message": "Uvozi meni…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Uvozi vnose predlog iz JSON-datoteke (seznam HTML-predlog, običajno smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Vnosi v meniju predloge"
   },

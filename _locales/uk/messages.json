@@ -499,6 +499,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Це буде показано в меню вибору шаблону."
   },
+  "fileTemplates.import": { "message": "Імпортувати меню…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Імпортувати записи шаблонів з JSON-файлу (список HTML-шаблонів, зазвичай smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Елементи меню шаблонів"
   },

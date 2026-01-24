@@ -489,6 +489,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Dit wordt in het sjabloonselectiemenu weergegeven."
   },
+  "fileTemplates.import": { "message": "Menu importeren…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Importeer sjabloonitems vanuit een JSON-bestand (lijst van HTML-sjablonen, meestal smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Sjabloonmenu-items"
   },

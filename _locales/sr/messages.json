@@ -474,6 +474,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Ово ће бити приказано у менију за избор шаблона."
   },
+  "fileTemplates.import": { "message": "Увези мени…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Увези уносе шаблона из JSON фајла (листу HTML шаблона, обично smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Ставке менија шаблона"
   },

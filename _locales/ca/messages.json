@@ -492,6 +492,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Es mostrarà al menú de selecció de plantilles."
   },
+  "fileTemplates.import": { "message": "Importa menú…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Importa les entrades de plantilla des d'un fitxer JSON (llista de plantilles HTML, normalment smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Entrades del menú de plantilles"
   },

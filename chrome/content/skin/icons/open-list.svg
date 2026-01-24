@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<svg
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="open-list.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      --basiccolor: rgb(20,20,20);
+      --iconStroke: var(--basiccolor);
+      --icon-fill: #A0A0A0;
+    }
+    g {
+      --linestroke: #0060df;
+    }
+    @media (prefers-color-scheme: dark) {
+      path { 
+        --basiccolor: rgb(251,251,254);
+        --iconStroke: var(--basiccolor);
+        --icon-fill: #606060;
+      }
+    }        
+  </style>
+
+  <path
+     id="path1"
+     style="fill:var(--iconStroke);fill-opacity:1;stroke-width:0.6;stroke-dasharray:none;"
+     inkscape:label="folder"
+     d="M 1.67913,1.2382812 C 0.50092363,1.2382812 0,1.6379646 0,2.8072691 V 13.450753 C 0,14.615221 0.52470119,15 1.6980334,15 H 14.434291 C 15.612497,15 16,14.620058 16,13.450753 V 5.4726562 C 16,4.3033516 15.57469,3.8660016 14.396484,3.8660016 H 8.3730469 L 6.8046875,1.8105469 C 6.4154849,1.4384065 5.8958847,1.2324654 5.3554688,1.2382812 Z M 1.5375281,2.7929688 H 5.6367188 L 6.9296875,4.4140625 H 1.5375281 Z m 6.8003625,2.6484374 c 0.0325,-0.00447 0.1025781,0.03125 0.1425782,0.03125 H 14.396484 V 13.298828 H 1.5375281 V 5.4726562 h 6.7827844 v -0.00977 c 0,-0.013232 0.00674,-0.019996 0.017578,-0.021484 z"
+     sodipodi:nodetypes="sssssssscccscccccsscccccsss" />
+  <g
+     id="g7"
+     inkscape:label="menu"
+     transform="translate(1.6207387,-0.37462831)"
+     style="display:inline">
+    <g
+       fill="none"
+       stroke-width="1.5"
+       stroke-linecap="round"
+       id="g6"
+       transform="matrix(1,0,0,0.9280427,-1.803467,0.00299626)"
+       style="stroke-width:1.3;stroke-dasharray:none; stroke:var(--linestroke);"
+       inkscape:label="cutout">
+      <path
+         id="line4"
+         d="m 10,3 h 4"
+         style="stroke:#fdfeff;stroke-width:2.44148;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="line5"
+         d="m 10,5.4000001 h 4"
+         style="stroke:#fdfeff;stroke-width:2.44148;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="line6"
+         d="m 10,7.8000002 h 4"
+         style="stroke:#fdfeff;stroke-width:2.44148;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       fill="none"
+       stroke="#0060df"
+       stroke-width="1.5"
+       stroke-linecap="round"
+       id="g3"
+       transform="matrix(1,0,0,0.9280427,-1.803467,0.00299626)"
+       style="stroke-width:1.3;stroke-dasharray:none"
+       inkscape:label="lines">
+      <line
+         x1="10"
+         y1="3"
+         x2="14"
+         y2="3"
+         id="line1"
+         style="stroke-width:1.3;stroke-dasharray:none" />
+      <line
+         x1="10"
+         y1="5.4000001"
+         x2="14"
+         y2="5.4000001"
+         id="line2"
+         style="stroke-width:1.3;stroke-dasharray:none" />
+      <line
+         x1="10"
+         y1="7.8000002"
+         x2="14"
+         y2="7.8000002"
+         id="line3"
+         style="stroke-width:1.3;stroke-dasharray:none" />
+    </g>
+  </g>
+</svg>

@@ -485,6 +485,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Wird im Vorlagen-Menü angezeigt."
   },
+  "fileTemplates.import": { "message": "Menü importieren…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Vorlagen-Einträge aus einer JSON-Datei importieren (Liste von HTML-Vorlagen, typischerweise smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Menüpunkte mit Vorlagen"
   },

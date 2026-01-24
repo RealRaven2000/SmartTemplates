@@ -492,6 +492,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "這將顯示在模板選擇菜單中。"
   },
+  "fileTemplates.import": { "message": "匯入選單…" },
+  "fileTemplates.import.tooltip": {
+    "message": "從 JSON 檔案匯入範本項目（HTML 範本列表，通常為 smartTemplates.json）。"
+  },
   "fileTemplates.listHead": {
     "message": "範本選單條目"
   },

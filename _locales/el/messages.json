@@ -492,6 +492,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Αυτό θα εμφανίζεται στο μενού επιλογής προτύπου."
   },
+  "fileTemplates.import": { "message": "Εισαγωγή μενού…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Εισαγωγή εγγραφών προτύπων από ένα αρχείο JSON (λίστα προτύπων HTML, συνήθως smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Εγγραφές μενού προτύπων"
   },

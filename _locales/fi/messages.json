@@ -492,6 +492,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "This will be displayed in the template selection menu."
   },
+  "fileTemplates.import": { "message": "Tuo valikko…" },
+  "fileTemplates.import.tooltip": {
+    "message": "Tuo mallipohjaerät JSON-tiedostosta (HTML-mallien lista, yleensä smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Mallivalikon kohteet"
   },

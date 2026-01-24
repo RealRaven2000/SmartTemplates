@@ -493,6 +493,10 @@
   "fileTemplates.file.title.tooltip": {
     "message": "这将显示在模板选择菜单中。"
   },
+  "fileTemplates.import": { "message": "导入菜单…" },
+  "fileTemplates.import.tooltip": {
+    "message": "从 JSON 文件导入模板条目（HTML 模板列表，通常为 smartTemplates.json）。"
+  },
   "fileTemplates.listHead": {
     "message": "模板菜单条目"
   },
