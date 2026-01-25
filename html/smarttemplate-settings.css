@@ -999,7 +999,6 @@ label.plain-link:hover::before {
 }
 
 .templateList #btnUpdate {
-	background-image:  url("../chrome/content/skin/icons/fugue-update.png");
 	background-image:  url("../chrome/content/skin/icons/thunderbird/update-icon.svg");
 }
 
@@ -1015,12 +1014,14 @@ label.plain-link:hover::before {
 	background-image:  url("../chrome/content/skin/icons/thunderbird/arrow-down.svg");
 }
 
+/*
 .templateList #btnUp[disabled="true"] { 
 	background-image:  url("../chrome/content/skin/icons/fugue-up-off.png");
 }
 .templateList #btnDown[disabled="true"]  {
 	background-image:  url("../chrome/content/skin/icons/fugue-down-off.png");
 }
+*/
 
 .templateList #btnEdit {
 	background-image:  url("../chrome/content/skin/icons/thunderbird/new-template.svg");
