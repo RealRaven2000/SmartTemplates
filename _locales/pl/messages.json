@@ -541,6 +541,9 @@
   "forceParagraphs.tip": {
     "message": "Zapewnia ustawienie kursora na początku akapitu. Zaleca się stosować w oknie komponowania wiadomości tworzenie nowych akapitów po naciśnięciu klawisza Enter."
   },
+  "fpJsonTemplateList": {
+    "message": "konfiguracja menu szablonów"
+  },
   "fpFilterHtmlTemplate": {
     "message": "Szablon HTML"
   },

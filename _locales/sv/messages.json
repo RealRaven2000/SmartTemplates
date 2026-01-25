@@ -544,6 +544,9 @@
   "forceParagraphs.tip": {
     "message": "Ser till att pekarpositionen börjar i en paragraf. Vi rekommendera även Thunderbirds skrivalternativ för att skapa en ny paragraf med [Enter]."
   },
+  "fpJsonTemplateList": {
+    "message": "konfiguration av mallmeny"
+  },
   "fpFilterHtmlTemplate": {
     "message": "HTML-mall"
   },

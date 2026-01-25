@@ -544,6 +544,9 @@
   "forceParagraphs.tip": {
     "message": "S'assurer que le curseur se situe dans un paragraphe. Nous demandons également la création d'un nouveau paragraphe lorsque l'on appuie sur la touche [Entrée] à l'option de composition Thunderbird."
   },
+  "fpJsonTemplateList": {
+    "message": "configuration du menu des modèles"
+  },
   "fpFilterHtmlTemplate": {
     "message": "Modèle HTML"
   },

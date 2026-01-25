@@ -534,6 +534,9 @@
   "forceParagraphs.tip": {
     "message": "Stellt sicher dass der Cursor in einem Absatz beginnt. Wir empfehlen ebenfalls in Thunderbird Einstellungen unter 'Verfassen' die Option bei Druck von [Return] einen neuen Absatz einzufügen."
   },
+  "fpJsonTemplateList": {
+    "message": "Konfigurationsdatei für Vorlagenmenü"
+  },
   "fpFilterHtmlTemplate": {
     "message": "HTML Vorlage"
   },

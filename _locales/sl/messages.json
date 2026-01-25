@@ -541,6 +541,9 @@
   "forceParagraphs.tip": {
     "message": "Zagotovi, da se položaj kazalca začne v novem odstavku. Priporočamo tudi, da možnost sestavljanja v Thunderbirdu nastavite na ustvarjanje novega odstavka ob pritisku na tipko [Enter]."
   },
+  "fpJsonTemplateList": {
+    "message": "konfiguracija menija predlog"
+  },
   "fpFilterHtmlTemplate": {
     "message": "Predloga HTML"
   },

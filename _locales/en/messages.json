@@ -500,6 +500,12 @@
   "fileTemplates.file.title.tooltip": {
     "message": "This will be displayed in the template selection menu."
   },
+  "fileTemplates.import": { 
+    "message": "Import Menu…"
+  },
+  "fileTemplates.import.tooltip": { 
+    "message": "Import template entries from a JSON file (list of HTML templates, typically smartTemplates.json)." 
+  },  
   "fileTemplates.listHead": {
     "message": "Template menu entries"
   },
@@ -544,6 +550,9 @@
   },
   "forceParagraphs.tip": {
     "message": "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key."
+  },
+  "fpJsonTemplateList": {
+    "message": "templates menu configuration"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML Template"

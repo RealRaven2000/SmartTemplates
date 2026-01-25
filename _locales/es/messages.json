@@ -541,6 +541,9 @@
   "forceParagraphs.tip": {
     "message": "Garantiza que la posición del cursor se inicia dentro de un párrafo. También recomendamos seleccionar en Opciones - Redacción de Thunderbird la opción crear un nuevo párrafo al presionar la tecla [Intro]."
   },
+  "fpJsonTemplateList": {
+    "message": "configuración del menú de plantillas"
+  },
   "fpFilterHtmlTemplate": {
     "message": "Plantilla HTML"
   },

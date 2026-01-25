@@ -535,6 +535,9 @@
   "forceParagraphs.tip": {
     "message": "Ujistise, že kurzoj je na zažátku odstavce. Také doporučujeme Thunderbird Composition volbu pro vytváření nových odstavců a stisknutí [Enter] klávesy."
   },
+  "fpJsonTemplateList": {
+    "message": "konfigurace nabídky šablon"
+  },
   "fpFilterHtmlTemplate": {
     "message": "HTML šablona"
   },

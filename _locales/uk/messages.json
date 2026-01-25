@@ -548,6 +548,9 @@
   "forceParagraphs.tip": {
     "message": "Переконайтеся, що позиція курсора починається з абзацу. Ми також рекомендуємо опцію Thunderbird Composition, щоб створити новий абзац, натиснувши клавішу [Enter]."
   },
+  "fpJsonTemplateList": {
+    "message": "налаштування меню шаблонів"
+  },
   "fpFilterHtmlTemplate": {
     "message": "HTML шаблон"
   },

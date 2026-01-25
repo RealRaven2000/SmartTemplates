@@ -541,6 +541,9 @@
   "forceParagraphs.tip": {
     "message": "確保光標位置從段落開始。 我們還推薦使用 Thunderbird 組合選項來在按下 [Enter] 鍵時創建一個新段落。"
   },
+  "fpJsonTemplateList": {
+    "message": "範本選單設定"
+  },
   "fpFilterHtmlTemplate": {
     "message": "HTML 模板"
   },

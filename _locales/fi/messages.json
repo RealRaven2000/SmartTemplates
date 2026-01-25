@@ -541,6 +541,9 @@
   "forceParagraphs.tip": {
     "message": "Varmista, että osoittimen aloitussijainti on kappaleessa. Suosittelemme Thunderbirdin kirjoitus -tilaa luodaksesi uusia kappaleita [Enter]-näppäintä painamalla."
   },
+  "fpJsonTemplateList": {
+    "message": "mallivalikon määritykset"
+  },
   "fpFilterHtmlTemplate": {
     "message": "HTML-malli"
   },

@@ -535,6 +535,9 @@
   "forceParagraphs.tip": {
     "message": "Certifique-se de que a posição do cursor comece em um parágrafo. Recomendamos também a opção compor do Thunderbird para criar um novo parágrafo ao pressionar a tecla [Enter]."
   },
+  "fpJsonTemplateList": {
+    "message": "configuração do menu de modelos"
+  },
   "fpFilterHtmlTemplate": {
     "message": "Modelo HTML"
   },

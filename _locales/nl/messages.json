@@ -538,6 +538,9 @@
   "forceParagraphs.tip": {
     "message": "Zorgt ervoor dat de cursorpositie met een alinea begint. Het gebruik van de optie voor het maken van een nieuwe alinea bij indrukken van de Enter-toets voor Opstellen in Thunderbird wordt ook aanbevolen."
   },
+  "fpJsonTemplateList": {
+    "message": "configuratie van sjablonenmenu"
+  },
   "fpFilterHtmlTemplate": {
     "message": "HTML-sjabloon"
   },

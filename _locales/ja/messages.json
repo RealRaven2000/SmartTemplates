@@ -538,6 +538,9 @@
   "forceParagraphs.tip": {
     "message": "カーソルの位置から段落を開始します。Thunderbird の編集オプションのうち「段落書式の使用中は Enter キーで新しい段落を作成する」を有効にすることを推奨します"
   },
+  "fpJsonTemplateList": {
+    "message": "テンプレートメニュー設定"
+  },
   "fpFilterHtmlTemplate": {
     "message": "HTML テンプレート"
   },

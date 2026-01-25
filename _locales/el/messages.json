@@ -541,6 +541,9 @@
   "forceParagraphs.tip": {
     "message": "Βεβαιωθείτε ότι η θέση του δρομέα ξεκινά σε μια παράγραφο. Συνιστούμε επίσης την επιλογή Σύνθεση Thunderbird για να δημιουργήσετε μια νέα παράγραφο πατώντας το πλήκτρο [Enter]."
   },
+  "fpJsonTemplateList": {
+    "message": "διαμόρφωση μενού προτύπων"
+  },
   "fpFilterHtmlTemplate": {
     "message": "Πρότυπο HTML"
   },

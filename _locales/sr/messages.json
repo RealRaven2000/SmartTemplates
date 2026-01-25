@@ -517,6 +517,9 @@
   "fontSettings": {
     "message": "Фонт у уређивачу шаблона"
   },
+  "fpJsonTemplateList": {
+    "message": "конфигурација менија шаблона"
+  },
   "fpFilterHtmlTemplate": {
     "message": "ХТМЛ предложак"
   },

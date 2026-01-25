@@ -529,6 +529,9 @@
   "forceParagraphs.tip": {
     "message": "Controlla che il cursore si posizioni all'inizio di un paragrafo. Si consiglia l'opzione Composizione di Thunderbird per creare un nuovo paragrafo premendo il tasto Invio."
   },
+  "fpJsonTemplateList": {
+    "message": "configurazione del menu dei modelli"
+  },
   "fpFilterHtmlTemplate": {
     "message": "Modello HTML"
   },

@@ -541,6 +541,9 @@
   "forceParagraphs.tip": {
     "message": "Assegureu-vos que la posició del cursor comença en un paràgraf. També recomanem l'opció de composició del Thunderbird per crear un paràgraf nou en prémer la tecla [Retorn]."
   },
+  "fpJsonTemplateList": {
+    "message": "configuració del menú de plantilles"
+  },
   "fpFilterHtmlTemplate": {
     "message": "Plantilla HTML"
   },

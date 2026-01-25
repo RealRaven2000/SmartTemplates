@@ -542,6 +542,9 @@
   "forceParagraphs.tip": {
     "message": "确保光标位置在段落开端。我们也推荐 Thunderbird 编写选项之按 [Enter] 键创建新段落。"
   },
+  "fpJsonTemplateList": {
+    "message": "模板菜单配置"
+  },
   "fpFilterHtmlTemplate": {
     "message": "HTML 模板"
   },
