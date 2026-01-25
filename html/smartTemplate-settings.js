@@ -284,6 +284,13 @@ var fileTemplates = {
     if (existingIndex !== -1) {
       entries.splice(existingIndex, 1);
     }
+    // must be same path within the same compose type array:
+    const existingFileIndex = entries.findIndex(
+      (e) => e.path === entry.path,
+    );
+    if (existingFileIndex !== -1) {
+      entries.splice(existingFileIndex, 1);
+    }    
 
     // insert new entry
     if (position === null || position >= entries.length) {
@@ -291,7 +298,6 @@ var fileTemplates = {
     } else {
       entries.splice(position, 0, entry);
     }
-    // this.updateEntry(true, data);
   },
   removeEntry: async function () {
     let currentPos = fileTemplates.activeFileList.selectedIndex;
