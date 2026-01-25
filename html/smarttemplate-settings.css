@@ -1023,7 +1023,7 @@ label.plain-link:hover::before {
 }
 
 .templateList #btnEdit {
-	background-image:  url("../chrome/content/skin/icons/thunderbird/new-msg.svg");
+	background-image:  url("../chrome/content/skin/icons/thunderbird/new-template.svg");
 }
 .templateList #btnPushUI {
 	background-image:  url("../chrome/content/skin/icons/thunderbird/reload.svg");
