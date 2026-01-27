@@ -199,13 +199,17 @@ div.btnLicenseContainer #btnLicense {
   max-height: 3em;
 }
 .templateList button.iconButton {
-  min-width: 6.2em;
+  min-width: 6.8em;
 }
 
 @media only screen and (max-width: 1024px)  {
   #preferencesContainer {
     padding-inline: 12px;
   }
+  #btnPushUI {
+    display:none !important;
+  }
+  
 }
 
 @media only screen and (max-width: 800px)  {
@@ -248,7 +252,7 @@ div.btnLicenseContainer #btnLicense {
   }
   
   .templateList button.iconButton {
-  	min-width: 6em;
+  	min-width: 5.5em;
   }
 
 }

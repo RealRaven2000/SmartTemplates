@@ -476,7 +476,9 @@ h1 a.headerLink {
 	border-bottom: 3px solid #666;
 }
 
-
+#fileControls {
+  margin-inline: 4px;
+}
 
 #new-fileTemplates select {
   background-image: url("../chrome/content/skin/icons/thunderbird/new-msg.svg") !important;
