@@ -1,22 +1,23 @@
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.17) 
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.18) 
 
 
 **Improvements**
 
-*   Set Compatibility with Thunderbird 148 - unfortunately the current review policies for Add-ons with "experimental" APIs do not allow us to remove `strict_max_version` from manifest.json
-*   Support replying to multiple selected messages with same html template. [issue #379] When multiple emails are selected, the header SmartTemplates button is hidden. Use the dropdown menu on the main SmartTemplates toolbar button to select the reply type and the corresponding template.
+*   Enhancement: Import external templates menus from other profile [issue #414]. When opening a smartTemplates.json file from another profile, which is typically stored in the profile/extensions subfolder,this will import the list from the selected compose type (write / reply / forward or snippets). 
+
+All imported menu items are moved to the top of the list in he order read from the file contents.
+
+If the an entry exists with the same name / category, or with the same file path (within the current compose type), then it will be replaced with the entry from the imported file. So this could also be used to reorganize or rename existing templates.
+*   Enhancement: Import members of a Named Mailing List from template (using %header.set%) [issue #411].
+
+Example: ``%header.set(to,"list:listName")%` this will read all standard address books (not cardbook) and searches for lists named _listName_. Uses the primary email address of all members  of the list, so you can set to, cc or bcc.
+*   Support relative file paths for `%attach()%` [issue #335]
+*   Improvements for correcting "Lastname, Firstname" [issue #305]
+*   Added documentation for setting priority to variables window. [issue #412]
+*   Modernized icons of external template toolbar. 
 
 
-**Bug Fixes**
+**Miscellaneous**
 
-*   Fixed: When set to "Use the external template last selected from the drop-down menu." SmartTemplates did not select the matching template for correct the reply type (reply all, reply list, reply to sender) [issue #409]
-*   Fixed: when replying to an email that opened from an eml file: no SmartTemplates functionality works [issue #406]
-*   Intermittently, `%spellcheck()%` switch doesn't work when loading the template during reply [issue #407]
-*   Fixed: Reply template unexpectedly removed meta info lines within quoted text [issue #408]
+*   removed Console chatter about Cardbook and any matched address book cards.
 
-
-**Codebase Improvements**
-
-*   Consolidated pseudo tags in localisation `{P}` `{/P}`, `{L}` `{/L}`  etc.
-*   Fixed mismatched closing `</div>` tags (was `</vbox>`)
-*   Trim leading spaces and fix dangling doublequotes in some variables  see: `combineEscapedParams()` c00739aa41c4f74a0a2b9bd0f255415b956f477f
