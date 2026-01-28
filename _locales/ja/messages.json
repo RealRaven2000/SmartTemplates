@@ -1925,7 +1925,7 @@
   },
   "whats-new-list": {
     "description": "🇯🇵 change log",
-    "message": "{L}複数の選択されたメッセージに同じHTMLテンプレートを使用して返信する機能をサポート。 [issue 379]{br}複数のメールが選択されている場合、ヘッダーのSmartTemplatesボタンは非表示になります。メインツールバーのSmartTemplatesボタンのドロップダウンメニューを使用して、返信タイプと対応するテンプレートを選択してください。{/L}{L}Thunderbird 148との互換性を確保。{/L}{L}修正: オプション '{+defaultTemplate.useLastTemplate}' の場合、SmartTemplatesは正しい返信タイプに対して一致するテンプレートを選択しませんでした（返信、全員に返信、リストに返信） [issue 409].{/L}{L}修正: emlファイルから開いたメールに返信する際、SmartTemplatesの機能は動作しませんでした [issue 406]{/L}{L}時々、{{%spellcheck()%}} は返信中にテンプレートを読み込む際に機能しませんでした [issue 407]{/L}{L}修正: 返信テンプレートは引用されたテキスト内の古いヘッダ情報を予期せず削除しました [issue 408].{/L}"
+    "message": "{L}別のプロファイルから外部テンプレートメニューをインポート [issue 414]{P}別のプロファイルのsmartTemplates.jsonファイルを開き、選択した編集モード({+new.tab}, {+rsp.tab}, {+fwd.tab}, {+snippets.head})用のテンプレートメニューをインポートします。{/P}{/L}{L}テンプレートからアドレス帳リストのメンバーをインポートして {{%header.set(to,\"list:{{listName}}\")%}} で設定 [issue 411]{P}リスト {{listName}} のすべてのメンバーを解決し、主要なメールアドレスを To、Cc、Bcc に割り当てます。{/P}{/L}{L}{{%attach()%}} の相対パスをサポート [issue 335]{/L}{L}表示名 \"{+names.swap}\" からの名前推測を改善 [issue 305]{P}新しいオプション \"{+names.swap.name}\" を含む{/P}{/L}{L}変数ウィンドウでの変数優先度設定のドキュメントを追加 [issue 412]{/L}{L}外部テンプレートツールバーのアイコンをモダン化{/L}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

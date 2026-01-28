@@ -500,12 +500,12 @@
   "fileTemplates.file.title.tooltip": {
     "message": "This will be displayed in the template selection menu."
   },
-  "fileTemplates.import": { 
+  "fileTemplates.import": {
     "message": "Import Menu…"
   },
-  "fileTemplates.import.tooltip": { 
-    "message": "Import template entries from a JSON file (list of HTML templates, typically smartTemplates.json)." 
-  },  
+  "fileTemplates.import.tooltip": {
+    "message": "Import template entries from a JSON file (list of HTML templates, typically smartTemplates.json)."
+  },
   "fileTemplates.listHead": {
     "message": "Template menu entries"
   },
@@ -1998,7 +1998,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{L}Support replying to multiple selected messages using the same html template. [issue 379]{br}When multiple emails are selected, the header SmartTemplates button is hidden. Use the dropdown menu on the main SmartTemplates toolbar button to select the reply type and the corresponding template.{/L}{L}Set Compatibility with Thunderbird 148.{/L}{L}Fixed: With the option '{+defaultTemplate.useLastTemplate}', SmartTemplates did not select the matching template for correct the reply type (reply all, reply list, reply to sender) [issue 409].{/L}{L}Fixed: when replying to an email that opened from an eml file no SmartTemplates functionality worked [issue 406]{/L}{L}Intermittently, {{%spellcheck()%}} switch didn't work when loading the template during reply [issue 407].{/L}{L}Fixed: Reply template removed old quote header details unexpectedly within quoted email [issue 408].{/L}"
+    "message": "{L}Import external template menus from another profile [issue 414]{P}Open a smartTemplates.json file from another profile and import the template menu for the selected editing mode ({+new.tab}, {+rsp.tab}, {+fwd.tab}, {+snippets.head}).{/P}{/L}{L}Import members of an address book mailing list from a template using {{%header.set(to,\"list:{{listName}}\")%}} [issue 411]{P}Resolves all members of the list {{listName}} and assigns their primary email addresses to To, Cc, or Bcc.{/P}{/L}{L}Support relative file paths for {{%attach()%}} [issue 335]{/L}{L}Improved name heuristics from display name \"{+names.swap}\" [issue 305]{P}Includes a new option \"{+names.swap.name}\"{/P}{/L}{L}Added documentation for setting variable priority in the Variables window [issue 412]{/L}{L}Modernized icons for the External Templates toolbar{/L}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

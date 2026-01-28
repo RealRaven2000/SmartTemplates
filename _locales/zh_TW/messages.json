@@ -1937,7 +1937,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L}支援使用相同的 HTML 範本回覆多封已選取的郵件。 [issue 379]{br}當選取多封郵件時，標題列的 SmartTemplates 按鈕會隱藏。請使用主工具列的 SmartTemplates 按鈕下拉選單來選擇回覆類型及相應的範本。{/L}{L}確保與 Thunderbird 148 相容。{/L}{L}已修正: 使用 '{+defaultTemplate.useLastTemplate}' 選項時，SmartTemplates 未為正確的回覆類型選擇匹配的範本（回覆、全部回覆、回覆列表） [issue 409]。{/L}{L}已修正: 回覆從 EML 檔案打開的郵件時，SmartTemplates 功能無法使用 [issue 406]{/L}{L}偶爾，{{%spellcheck()%}} 在回覆期間載入範本時無法運作 [issue 407]{/L}{L}已修正: 回覆範本意外刪除了引用郵件內舊的引用標頭細節 [issue 408]。{/L}"
+    "message": "{L}從其他設定檔匯入外部範本選單 [issue 414]{P}從其他設定檔打開 smartTemplates.json 檔案，並匯入所選編輯模式的範本選單 ({+new.tab}, {+rsp.tab}, {+fwd.tab}, {+snippets.head})。{/P}{/L}{L}從範本匯入通訊錄列表的成員使用 {{%header.set(to,\"list:listName\")%}} [issue 411]{P}解析列表 {{listName}} 中的所有成員，並將其主要電子郵件地址分配給 To、Cc 或 Bcc。{/P}{/L}{L}支援 {{%attach()%}} 的相對檔案路徑 [issue 335]{/L}{L}改進顯示名稱 \"{+names.swap}\" 的姓名啟發式 [issue 305]{P}包含新選項 \"{+names.swap.name}\"{/P}{/L}{L}在變數視窗中添加設定變數優先順序的文件 [issue 412]{/L}{L}外部範本工具列圖示現代化{/L}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

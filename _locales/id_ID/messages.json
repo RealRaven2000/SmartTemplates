@@ -1366,8 +1366,8 @@
     "message": "Voucher"
   },
   "whats-new-list": {
-    "description": "🇮🇩 change log",
-    "message": "{L}Mendukung membalas beberapa pesan yang dipilih menggunakan template HTML yang sama. [issue 379]{br}Saat beberapa email dipilih, tombol SmartTemplates di header tersembunyi. Gunakan menu dropdown pada tombol SmartTemplates di toolbar utama untuk memilih jenis balasan dan template yang sesuai.{/L}{L}Kompatibilitas dengan Thunderbird 148 dijamin.{/L}{L}Diperbaiki: Dengan opsi '{+defaultTemplate.useLastTemplate}', SmartTemplates tidak memilih template yang sesuai untuk jenis balasan yang benar (balas, balas semua, balas ke daftar) [issue 409].{/L}{L}Diperbaiki: Saat membalas email yang dibuka dari file eml, tidak ada fungsionalitas SmartTemplates yang bekerja [issue 406]{/L}{L}Kadang-kadang, saklar {{%spellcheck()%}} tidak berfungsi saat memuat template selama membalas [issue 407].{/L}{L}Diperbaiki: Template balasan secara tidak terduga menghapus detail header lama dalam teks yang dikutip [issue 408].{/L}"
+    "description": "🇫🇷 change log",
+    "message": "{L}Importer les menus de modèles externes depuis un autre profil [issue 414]{P}Ouvrez un fichier smartTemplates.json d’un autre profil et importez le menu des modèles pour le mode d’édition sélectionné ({+new.tab}, {+rsp.tab}, {+fwd.tab}, {+snippets.head}).{/P}{/L}{L}Importer les membres d’une liste d’adresses depuis un modèle en utilisant {{%header.set(to,\"list:{{listName}}\")%}} [issue 411]{P}Tous les membres de la liste {{listName}} sont résolus et leurs adresses e-mail principales sont assignées à To, Cc ou Bcc.{/P}{/L}{L}Prise en charge des chemins relatifs pour {{%attach()%}} [issue 335]{/L}{L}Amélioration des heuristiques de noms à partir du nom affiché \"{+names.swap}\" [issue 305]{P}Inclut une nouvelle option \"{+names.swap.name}\"{/P}{/L}{L}Ajout de documentation pour définir la priorité des variables dans la fenêtre Variables [issue 412]{/L}{L}Icônes modernisées pour la barre d’outils Modèles externes{/L}"
   },
   "xsent_long_result.label": {
     "message": "Hasil: Minggu,20/12/2011 pada pukul 16:24"

@@ -1948,9 +1948,9 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L}支持使用相同的 HTML 模板回复多个已选择的邮件。 [issue 379]{br}当选择多封邮件时，标题中的 SmartTemplates 按钮会隐藏。请使用主工具栏 SmartTemplates 按钮的下拉菜单选择回复类型和对应模板。{/L}{L}确保与 Thunderbird 148 兼容。{/L}{L}已修复: 使用 '{+defaultTemplate.useLastTemplate}' 选项时，SmartTemplates 未为正确的回复类型选择匹配模板（回复、回复全部、回复列表） [issue 409]。{/L}{L}已修复: 当回复从 EML 文件打开的邮件时，SmartTemplates 功能无法使用 [issue 406]{/L}{L}有时 {{%spellcheck()%}} 在加载模板时无法在回复中工作 [issue 407]{/L}{L}已修复: 回复模板意外删除了引用邮件中旧的引用头部详情 [issue 408]。{/L}"
+    "message": "{L}从其他配置文件导入外部模板菜单 [issue 414]{P}从其他配置文件中打开 smartTemplates.json 文件，并导入所选编辑模式的模板菜单 ({+new.tab}, {+rsp.tab}, {+fwd.tab}, {+snippets.head})。{/P}{/L}{L}从模板导入地址簿列表的成员使用 {{%header.set(to,\"list:listName\")%}} [issue 411]{P}解析列表 {{listName}} 中的所有成员，并将其主电子邮件地址分配给 To、Cc 或 Bcc。{/P}{/L}{L}支持 {{%attach()%}} 的相对文件路径 [issue 335]{/L}{L}改进显示名 \"{+names.swap}\" 的姓名启发式 [issue 305]{P}包含新选项 \"{+names.swap.name}\"{/P}{/L}{L}在变量窗口中添加设置变量优先级的文档 [issue 412]{/L}{L}外部模板工具栏图标已现代化{/L}"
   },
-  "whitespace_note": {
+ "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
   },
   "window-title": {

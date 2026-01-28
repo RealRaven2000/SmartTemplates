@@ -216,7 +216,7 @@ code {
   color: rgb(80,40,70);
   border: 1px solid #bbb;
   border-radius: 0.3em;
-  margin: 2px 4px 2px 0px;
+  margin: 2px 0px;
   cursor: pointer;
   display: inline-block;
   font-family: Consolas, 'Courier New', Geneva, sans-serif;
