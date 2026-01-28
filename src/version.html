@@ -252,6 +252,81 @@ permalink: version.html
 -->
 
 
+<a id="4.18"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.18"
+      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 4.18 - Work in Progress</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">115.0 - 149.*</span>
+		</span>
+  </h4>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li>
+      <p>
+        Enhancement: Import external templates menus from other profile.
+        When opening a smartTemplates.json file from another profile, 
+        which is typically stored in the profile/extensions subfolder,
+        this will import the list from the selected editing mode (write / reply / forward or snippets). 
+        All imported menu items are moved to the top of the list in he order read from the file contents. 
+      </p>  
+      <p>
+        If the an entry exists with the same name / category, or with the same
+        file path (within the current editing mode), then it will 
+        be replaced with the entry from the imported file. So this could also
+        be used to reorganize or rename existing templates.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/411">[issue 414]</a>
+      </p>
+      <img class="screenshot" src="img/templates-import.png" alt="Import templates" />
+    </li>
+    <li>
+      Enhancement: Import members of a Named Mailing List from template (using header.set)
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/411">[issue 411]</a>
+      Example: <code>%header.set(to,"list:listName")%</code>
+      this will read all standard address books (not cardbook) and searches
+      for lists named <i>listName</i>. Uses the primary email address of all members 
+      of the list, so you can set to, cc or bcc.
+    </li>
+    <li>
+      Support relative file paths for <code>%attach()%</code> 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/335">[issue 335]</a>
+    </li>
+    <li> 
+      Improvements for correcting "Lastname, Firstname" 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/305">[issue 305]</a> 
+      <p>
+        This is now made more robust to different name formats.
+      </p>
+      <p>
+        Can extract name (creating firstname lastname when using %from(name)% ) from:
+
+        <pre class="code">
+  Joe (Smith, John)
+  john Smith (Administrator)
+  Smith, John (CEO)
+        </pre>
+      </p>
+      <p>
+        I also added a new option <i>Also affect (name) placeholders</i>, which 
+        can extract missing first or last name from display name.
+      </p>
+      <img class="screenshot" src="img/swap-names-from-name.png" alt="Swap names from name" />
+    </li>
+    <li> 
+      Added documentation for setting priority to variables window. 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/412">[issue 412]</a>
+    </li>
+    <li> Modernized icons of external template toolbar. </li>
+    
+    <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
+    <li> removed Console chatter about Cardbook and any matched address book cards. </li>
+  </ul>
+</li> 
+
+
 <!-- LATEST RELEASE ON ATN -->
 <a id="latest"> </a>
 <a id="head"> </a>
