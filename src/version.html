@@ -255,9 +255,8 @@ permalink: version.html
 <a id="4.18"> &nbsp; </a>
 <li>
   <h4>
-		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.18"
-      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
-      Version 4.18 - 28/01/2026 (awaiting review)</a>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.18">
+      Version 4.18 - 28/01/2026</a>
 		<br>
 		<span class="appWrapper">
 			<span class="thunderbird">115.0 - 149.*</span>
@@ -285,9 +284,9 @@ permalink: version.html
     <li>
       Enhancement: Import members of a Named Mailing List from template (using header.set)
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/411">[issue 411]</a>
-      Example: <code>%header.set(to,"list:listName")%</code>
+      Example: <code>%header.set(to,"list:<span class="paramLiteral">listName</span>")%</code>
       this will read all standard address books (not cardbook) and searches
-      for lists named <i>listName</i>. Uses the primary email address of all members 
+      for lists named <span class="paramLiteral">listName</span>. Uses the primary email address of all members 
       of the list, so you can set to, cc or bcc.
     </li>
     <li>
