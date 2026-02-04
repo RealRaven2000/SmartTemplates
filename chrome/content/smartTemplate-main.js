@@ -335,7 +335,7 @@ END LICENSE BLOCK
     # [issue 407] Intermittently, %spellcheck()% switch doesn't work when loading the template during reply
     # [issue 408] Reply template unexpectedly removes meta info lines within quoted text
 
-  Version 4.18 - WIP
+  Version 4.18 - 28/01/2026
     # [issue 414] Enhancement: Import external templates from other profile
     # [issue 335] Support relative file paths for %attach()% 
     # [issue 305] Improvements for correcting "Lastname, Firstname"
@@ -345,6 +345,9 @@ END LICENSE BLOCK
     # modernized icons for external template management (svg icons)
     # Avoid message about cardbook not being enabled when cardbook support is not switched on in settings
     # removed console chatter about matched addressbook cards (use debug.adressbook switch to enable detail)
+
+  Version 4.18.1 - WIP
+    # [issue 415] Remove Misleading Warning while changing Identity (often caused by Identity Picker)
 
 
 =========================
@@ -724,7 +727,7 @@ var SmartTemplate4 = {
       util.logException("notifyComposeBodyReady", ex);
       if (isInserted) {root.setAttribute("smartTemplateInserted", "true");}
     }
-    util.logDebugOptional("composer", "notifyComposeBodyReady() ended.");
+
   },
 
   // -------------------------------------------------------------------
@@ -740,20 +743,38 @@ var SmartTemplate4 = {
     }
     SmartTemplate4.Util.logDebugOptional("functions", "SmartTemplate4.loadIdentity()");
     SmartTemplate4.Util.logHighlight("loadIdentity()", "yellow", "rgb(0,80,0)");
-    {
-      let isBodyModified = gMsgCompose.bodyModified,
-        composeType = util.getComposeType();
+    // bodyModified is unreliable in Tb131+ due to [bug 1850192] - which requested setting it 
+    // to true every time when identity is changed.
+    let isBodyModified = gMsgCompose.bodyModified,
+      composeType = util.getComposeType();
 
-      let newSig;
-      // change identity on an existing message:
-      // Check body modified or not
-      // we can only reliable roll back the previous template and insert
-      // a new one if the user did not start composing yet (otherwise danger
-      // of removing newly composed content)
-      // note I used (!isBodyModified) but this lies in Thunderbird 115 !!
-      // LoadIdentity(), before calling compose-from-changed, sets gMsgCompose.identity,
-      // which _always_ toggles the flag to true temporarily, so we cannot rely on it being correct.
-      let isOverrideBodyModified = false;
+    let newSig;
+    // change identity on an existing message:
+    // Check body modified or not
+    // we can only reliable roll back the previous template and insert
+    // a new one if the user did not start composing yet (otherwise danger
+    // of removing newly composed content)
+    // note I used (!isBodyModified) but this lies in Thunderbird 131 !!
+    // LoadIdentity(), before calling compose-from-changed, sets gMsgCompose.identity,
+    // which _always_ toggles the flag to true temporarily, so we cannot rely on it being correct.
+    let isOverrideBodyModified = false;
+    let isUserCancelled = false;
+    let isTemplateBodyModified = null; // workaround for [bug 1850192]
+    const originalT = SmartTemplate4.composer.body.querySelector(":scope > #smartTemplate4-template");
+    if (originalT) {
+      const hash = originalT.getAttribute("data-smarttemplate-hash");
+      const currentHash = util.hashElement(originalT);
+      isTemplateBodyModified = hash != currentHash;
+      if (isTemplateBodyModified) {
+        util.logDebugOptional(
+          "composer",
+          `Template body modified: original hash ${hash} vs current hash ${currentHash}`
+        );
+      }
+    }
+
+
+    try {
       if (isBodyModified) {
         let question = util.getBundleString("st.notification.bodyModified"),
           detail,
@@ -769,25 +790,26 @@ var SmartTemplate4 = {
         } else {
           detail = util.getBundleString("st.notification.bodyModified.accountTemplate");
         }
-        if (SmartTemplate4.PreprocessingFlags.isBodyUnmodified) {
+        if (SmartTemplate4.PreprocessingFlags.isBodyUnmodified || isTemplateBodyModified === false) {
           isOverrideBodyModified = true;
         } else {
-          isOverrideBodyModified = confirm(question + "\n" + detail + "\n\n" + instructions);
+          // refresh composer:
+          await new Promise((resolve) => requestAnimationFrame(resolve));
+          isUserCancelled = !confirm(question + "\n" + detail + "\n\n" + instructions);
         }
       }
 
       if (
         !isChangeFromViaSmartTemplate && // don't trigger a template reload in case header.set(from) was called!!
-        (!isBodyModified || isOverrideBodyModified)
+        (!isBodyModified || isOverrideBodyModified || !isUserCancelled)
       ) {
         // ask user it isBodyModified is really true...
         // [issue 51]
-        // this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
         // Add template message - will also remove previous template and quoteHeader.
         if (window.SmartTemplate4.CurrentTemplate) {
           //[issue 64] reload the same template if it was remembered.
           let fileTemplateSource = await SmartTemplate4.fileTemplates.retrieveTemplate(
-            window.SmartTemplate4.CurrentTemplate
+            window.SmartTemplate4.CurrentTemplate,
           );
           if (fileTemplateSource.failed) {
             // shouldn't actually happen as we just loaded it before
@@ -800,7 +822,7 @@ var SmartTemplate4 = {
             await this.smartTemplate.insertTemplate(
               false,
               window.SmartTemplate4.PreprocessingFlags,
-              fileTemplateSource
+              fileTemplateSource,
             );
           }
         } else {
@@ -819,27 +841,25 @@ var SmartTemplate4 = {
           newSig = await this.smartTemplate.extractSignature(
             gMsgCompose.identity,
             false,
-            composeType
+            composeType,
           );
         }
       }
-      // AG 31/08/2012 put this back as we need it!
-      // AG 24/08/2012 we do not call this anymore if identity is changed before body is modified!
-      //               as it messes up the signature (pulls it into the blockquote)
-      // AG 27/11/2019 [issue 7] putting condition back as it can mess up signature.
-      if (!isTemplateProcessed) {
+    } catch (ex) {
+      util.logException("loadIdentity", ex);
+    } finally {
+      if (!isUserCancelled && !isTemplateProcessed) {
         if (isBodyModified && composeType == "new") {
           // when Thunderbird changes identity, we cannot keep our JavaScript stuff / late resolved variables around.
           await util.cleanupDeferredFields(true); // remove the fields even if they can't be resolved!
         }
-        // this.original_LoadIdentity(startup);
         // try replacing the (unprocessed) signature that Thunderbird has inserted.
         if (prefs.getMyBoolPref("parseSignature") && newSig) {
           // find and replace signature node.
           let sigNode = util.findChildNode(SmartTemplate4.composer.body, "moz-signature");
           if (sigNode && newSig) {
             // sigNode.innerHTML = util.sanitizeHTML(newSig.innerHTML);
-            // [issue 393] avoid innerHTML assignments 
+            // [issue 393] avoid innerHTML assignments
             sigNode.textContent = "";
 
             // Append sanitized / cloned nodes from newSig
@@ -850,9 +870,27 @@ var SmartTemplate4 = {
           gMsgCompose.bodyModified = isBodyModified; // restore body modified flag!
         }
       }
+
       if (!isBodyModified && gMsgCompose.bodyModified) {
         gMsgCompose.editor.resetModificationCount();
-      } // for TB bug?
+        util.logDebugOptional(
+          "composer",
+          "Reset modification count after template insertion."
+        );
+      }
+
+      if (isTemplateBodyModified === false) {
+        // update original content hash to current hash after re-insertion of same template
+        const templateDivFinal =  SmartTemplate4.composer.body.querySelector(":scope > #smartTemplate4-template");
+        if (templateDivFinal) {
+          const hash = util.hashElement(templateDivFinal);
+          templateDivFinal.setAttribute("data-smarttemplate-hash", hash);
+          util.logDebugOptional(
+            "composer",
+            `Stored new body hash after template re-insertion: ${hash}`,
+          );
+        }
+      }
     }
   },
 
