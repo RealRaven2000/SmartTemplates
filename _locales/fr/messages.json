@@ -1150,6 +1150,12 @@
   "regexpAnyText": {
     "message": "Tout texte - expression régulière - doit être entre guillemets."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Remplacer la signature lors du changement d’identité (en conservant le texte saisi)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Lors du changement d’identité après la modification d’un message, SmartTemplates avertit du risque d’écrasement de vos modifications. Si vous annulez le chargement du nouveau modèle de compte, le corps du message reste inchangé, mais la signature correcte du compte sera insérée en dessous. Il peut être nécessaire de supprimer manuellement les signatures de l’ancien compte."
+  },
   "renew-your-license": {
     "message": "Renouvelez votre licence."
   },

@@ -134,6 +134,12 @@
   "purchase-heading": {
     "message": "Hỗ trợ qua giấy phép"
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Thay thế chữ ký khi đổi danh tính (giữ nguyên văn bản đã nhập)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Khi thay đổi danh tính sau khi chỉnh sửa email, SmartTemplates sẽ cảnh báo về khả năng ghi đè các thay đổi. Nếu bạn hủy việc tải mẫu tài khoản mới, nội dung email sẽ không thay đổi, nhưng chữ ký tài khoản chính xác sẽ được chèn bên dưới. Bạn có thể cần xóa chữ ký của tài khoản trước đó theo cách thủ công."
+  },
   "renew-your-license": {
     "message": "Gia hạn giấy phép của bạn."
   },

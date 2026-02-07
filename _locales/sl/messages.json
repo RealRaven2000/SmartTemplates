@@ -1162,6 +1162,12 @@
   "regexpAnyText": {
     "message": "Vsako besedilo - reden izraz - mora biti v dvojnih narekovajih."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Zamenjaj podpis ob spremembi identitete (ob ohranitvi vnesenega besedila)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Ob spremembi identitete po urejanju sporočila SmartTemplates opozori na možnost prepisovanja sprememb. Če prekličete nalaganje nove predloge računa, vsebina sporočila ostane nespremenjena, pravilni podpis računa pa bo dodan spodaj. Podpise prejšnjega računa bo morda treba odstraniti ročno."
+  },
   "renew-your-license": {
     "message": "Obnovite licenco."
   },

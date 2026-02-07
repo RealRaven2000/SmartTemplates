@@ -1140,6 +1140,12 @@
   "regexpAnyText": {
     "message": "Beliebiger Text - regulärer Ausdruck - muß in doppelten Anführungszeichen sein."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Signatur beim Wechsel der Identität ersetzen (eingegebenen Text beibehalten)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Beim Wechsel der Identität nach dem Bearbeiten einer E-Mail warnt SmartTemplates vor dem Überschreiben Ihrer Änderungen. Wenn Sie das Laden der neuen Kontovorlage abbrechen, bleibt der E-Mail-Text unverändert, aber die korrekte Kontosignatur wird darunter eingefügt. Signaturen des vorherigen Kontos müssen möglicherweise manuell entfernt werden."
+  },
   "renew-your-license": {
     "message": "Erneuern Sie Ihre Lizenz."
   },

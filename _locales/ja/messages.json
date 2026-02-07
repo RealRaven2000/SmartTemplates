@@ -1132,6 +1132,12 @@
   "regexpAnyText": {
     "message": "任意のテキスト - 正規表現 - ダブルクオートで囲まれている必要があります。"
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "ID の変更時に署名を置き換える（入力済みテキストを保持）"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "メール編集後に ID を変更すると、SmartTemplates は変更が上書きされる可能性があることを警告します。新しいアカウントテンプレートの読み込みをキャンセルすると、メール本文は変更されませんが、正しいアカウントの署名がその下に挿入されます。以前のアカウントの署名は手動で削除する必要がある場合があります。"
+  },
   "renew-your-license": {
     "message": "ライセンスを更新する。"
   },

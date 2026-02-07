@@ -1147,6 +1147,12 @@
   "regexpAnyText": {
     "message": "Każdy tekst - wyrażenie regularne - musi być w cudzysłowie."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Zastąp podpis przy zmianie tożsamości (z zachowaniem wpisanego tekstu)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Podczas zmiany tożsamości po edycji wiadomości SmartTemplates ostrzeże o możliwości nadpisania wprowadzonych zmian. Jeśli anulujesz wczytywanie nowego szablonu konta, treść wiadomości pozostanie niezmieniona, a właściwy podpis konta zostanie wstawiony poniżej. Może być konieczne ręczne usunięcie podpisów z poprzedniego konta."
+  },
   "renew-your-license": {
     "message": "Odnów licencję."
   },

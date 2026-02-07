@@ -1141,6 +1141,12 @@
   "regexpAnyText": {
     "message": "Qualquer texto - expressão regular - deve estar entre aspas duplas."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Substituir assinatura ao mudar de identidade (mantendo o texto introduzido)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Ao mudar de identidade após editar um email, o SmartTemplates avisará sobre a possível sobrescrita das alterações. Se cancelar o carregamento do novo modelo de conta, o corpo do email permanecerá inalterado, mas a assinatura correta da conta será inserida abaixo. Poderá ser necessário remover manualmente assinaturas da conta anterior."
+  },
   "renew-your-license": {
     "message": "Renove sua licença."
   },

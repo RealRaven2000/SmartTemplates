@@ -1162,6 +1162,12 @@
   "regexpAnyText": {
     "message": "Minkä tahansa tekstin - säännöllisen lausekkeen - on oltava lainausmerkeissä."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Korvaa allekirjoitus henkilöllisyyden vaihtuessa (säilytä kirjoitettu teksti)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Kun vaihdat henkilöllisyyttä sähköpostin muokkaamisen jälkeen, SmartTemplates varoittaa muutosten ylikirjoittamisesta. Jos peruutat uuden tilimallin lataamisen, viestin sisältö säilyy muuttumattomana, mutta oikea tilin allekirjoitus lisätään sen alle. Edellisen tilin allekirjoitukset saatetaan joutua poistamaan käsin."
+  },
   "renew-your-license": {
     "message": "Uusi lisenssi."
   },

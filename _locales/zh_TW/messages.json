@@ -1159,6 +1159,12 @@
   "regexpAnyText": {
     "message": "任何文本（正則表達式）都必須用雙引號引起來。"
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "變更身分時取代簽名（保留已輸入的文字）"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "在編輯郵件後變更身分時，SmartTemplates 會警告可能會覆寫您的變更。若取消載入新的帳戶範本，郵件內容將保持不變，但會在下方插入正確的帳戶簽名。您可能需要手動移除先前帳戶的簽名。"
+  },
   "renew-your-license": {
     "message": "續訂您的許可證。"
   },

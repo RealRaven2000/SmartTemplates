@@ -1168,6 +1168,12 @@
   "regexpAnyText": {
     "message": "All text - regelbundet uttryck - måste vara i dubbla citat."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Ersätt signatur vid identitetsbyte (behåll skriven text)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "När identiteten ändras efter att ett e-postmeddelande har redigerats varnar SmartTemplates för att ändringar kan skrivas över. Om du avbryter inläsningen av den nya kontomallen förblir meddelandets innehåll oförändrat, men rätt kontosignatur infogas nedanför. Du kan behöva ta bort signaturer från det tidigare kontot manuellt."
+  },
   "renew-your-license": {
     "message": "Förnya din licens."
   },

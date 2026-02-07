@@ -1153,6 +1153,12 @@
   "regexpAnyText": {
     "message": "Jakýkoli text - regulární výraz - musí být ve dvojitých uvozovkách."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Nahradit podpis při změně identity (se zachováním zadaného textu)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Při změně identity po úpravě e-mailu SmartTemplates upozorní na možné přepsání změn. Pokud zrušíte načtení nové šablony účtu, tělo e-mailu zůstane beze změny, ale pod něj se vloží správný podpis účtu. Podpisy z předchozího účtu může být nutné odstranit ručně."
+  },
   "renew-your-license": {
     "message": "Obnovte si licenci."
   },

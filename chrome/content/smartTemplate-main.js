@@ -347,7 +347,7 @@ END LICENSE BLOCK
     # removed console chatter about matched addressbook cards (use debug.adressbook switch to enable detail)
 
   Version 4.18.1 - WIP
-    # [issue 415] Remove Misleading Warning while changing Identity (often caused by Identity Picker)
+    # [issue 415] Remove unnecessary Warning when changing Identity (often caused by Identity Chooser Add-on)
 
 
 =========================
@@ -600,8 +600,10 @@ var SmartTemplate4 = {
 
     // We must make sure that Thunderbird's own  NotifyComposeBodyReady has been ran FIRST!
     // https://searchfox.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#343
-    // eslint-disable-next-line no-debugger
-    if (prefs.isDebugOption("composer")) {debugger;}
+    if (prefs.isDebugOption("composer.breakpoint")) {
+      // eslint-disable-next-line no-debugger
+      debugger;
+    }
 
     dbg += "\ngMsgCompose type: " + gMsgCompose.type;
     // see https://dxr.mozilla.org/comm-central/source/comm/mailnews/compose/public/nsIMsgComposeParams.idl
@@ -836,13 +838,25 @@ var SmartTemplate4 = {
         // we do not touch smartTemplate4-quoteHeader or smartTemplate4-template
         // as the user might have edited here already!
         // however, the signature is important as it should match the from address?
-        // removeSigOnIdChangeAfterEdits is usually false, but it's suppesa to remove any signature
+        // removeSigOnIdChangeAfterEdits is usually false, but it's supposed to 
+        // remove the Thunderbird-provided signature
+        // so a new identity-specific signature can be recalculated
         if (prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
-          newSig = await this.smartTemplate.extractSignature(
+          const { placeholder, newSig } = await this.smartTemplate.extractSignature(
             gMsgCompose.identity,
             false,
             composeType,
           );
+          SmartTemplate4.signature = newSig; // store the new signature for later insertion if user cancels
+          // handle cancel immediately while removedNode is still in scope
+          if (isUserCancelled && SmartTemplate4.signature) {
+            if (placeholder && placeholder.parentNode) {
+              placeholder.parentNode.insertBefore(
+                SmartTemplate4.signature,
+                placeholder.nextSibling,
+              );
+            } 
+          }
         }
       }
     } catch (ex) {

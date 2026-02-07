@@ -1138,6 +1138,12 @@
   "regexpAnyText": {
     "message": "Cualquier texto, expresión regular, debe estar entre comillas dobles."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Reemplazar la firma al cambiar la identidad (manteniendo el texto introducido)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Al cambiar la identidad después de editar un correo, SmartTemplates avisará sobre la posible sobrescritura de los cambios. Si cancela la carga de la nueva plantilla de la cuenta, el cuerpo del correo permanecerá sin cambios, pero se insertará debajo la firma correcta de la cuenta. Puede ser necesario eliminar manualmente las firmas de la cuenta anterior."
+  },
   "renew-your-license": {
     "message": "Renueva tu licencia."
   },

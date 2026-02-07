@@ -1182,6 +1182,12 @@
   "regexpAnyText": {
     "message": "Any text - regular expression - must be in double quotes."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Replace Thunderbird signature on identity change (while preserving typed text)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "When changing the identity after editing an email, SmartTemplates will warn of overwriting your changes. Cancel loading the new account template to keep the email body unchanged, but insert the correct account signature below it. You may need to remove signatures from the previous account manually."
+  },
   "renew-your-license": {
     "message": "Renew your license."
   },

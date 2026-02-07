@@ -282,8 +282,6 @@
         <fieldset class="transparent">
           <legend>__MSG_grpSignatures__</legend>
           <div class="vbox">
-            <label><input type="checkbox" id="chkRemoveSig"
-              data-pref-name="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits">__MSG_replaceSignature__</label>
             <span class="hasConfigEvent hbox">
               <label>
               <input type="checkbox" id="chkSignature" class="contextConfig"
@@ -306,6 +304,14 @@
               <label><input type="checkbox" title="__MSG_addSigBreakPlaintext.tip__"
                 data-pref-name="extensions.smartTemplate4.signature.insertDashes.plaintext">__MSG_addSigBreakPlaintext__</label>
             </div>
+            
+            <label><input type="checkbox" class="premiumFeature"
+              data-pref-name="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits">__MSG_removeSigOnIdChangeAfterEdits__
+              <button
+                class="toolTipButton"
+                clickyTooltip="__MSG_removeSigOnIdChangeAfterEdits.tip__"></button>            
+            </label>                      
+
           </div>									  
         </fieldset>
         

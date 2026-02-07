@@ -110,7 +110,7 @@ SmartTemplate4.classSmartTemplate = function() {
     }
     util.logDebugOptional(
       "functions.extractSignature",
-      `SmartTemplate4.readSignatureFile() ends - charset = ${sigEncoding}; htmlSigText:\n${htmlSigText}[EOF]`
+      `SmartTemplate4.readSignatureFile() ends - charset = ${sigEncoding}; htmlSigText:\n${htmlSigText}[EOF]`,
     );
     return htmlSigText;
   }
@@ -118,16 +118,18 @@ SmartTemplate4.classSmartTemplate = function() {
   /**
    * Extracts the signature from the given email identity.
    *
-   * Removes the existing signature node from the email and returns the
-   * current account signature if applicable.
+   * Removes the existing Thunderbird-inserted signature node from the email
+   * and returns the current account signature if applicable.
    *
    * @param {Identity} Ident - The email identity object to extract the signature from
    * @param {'auto'|'text'|'html'|'omit'} signatureDefined -
    *        'auto', 'text', 'html': template contains %sig%, signature must be removed
    *        'omit': suppress signature extraction; only remove existing signature
    * @param {string} composeType - Type of composition ('new', 'reply', 'forward', etc.)
-   * @returns {Node|string|null} The extracted signature as a DOM Node (HTML mode),
-   *                             string (plain text mode), or null if none
+   * @returns {{ placeholder : Node|null, newSig: Node|string|null }}
+   *          placeholder : placeholder node where the TB signature node that was removed
+   *          newSig: the extracted signature as a DOM Node (HTML mode),
+   *                  string (plain text mode), or null if none
    */
   async function extractSignature(Ident, signatureDefined, composeType) {
     let isSigInBlockquote = false;
@@ -137,45 +139,45 @@ SmartTemplate4.classSmartTemplate = function() {
       isSignatureHTML = SmartTemplate4.Sig.htmlSigFormat,
       sigPath = SmartTemplate4.Sig.htmlSigPath; // only reliable if in textbox!
     const flags = SmartTemplate4.PreprocessingFlags;
+    let placeholder = null;
 
     util.logDebugOptional(
       "functions",
-      `extractSignature()\nSTART==========  extractSignature(${Ident}, defined type=${signatureDefined}, compose type=${composeType})  ========`
+      `extractSignature()\nSTART==========  extractSignature(${Ident}, defined type=${signatureDefined}, compose type=${composeType})  ========`,
     );
-    let bodyEl = SmartTemplate4.composer.body,
-      nodes = bodyEl.childNodes;
+    let bodyEl = SmartTemplate4.composer.body;
     SmartTemplate4.signature = null;
     SmartTemplate4.sigInTemplate = false;
 
     let idKey = util.getIdentityKey(document), // util.mailDocument?
       isSignatureTb = !!htmlSigText || Ident.attachSignature,
-      sigNode = null,
       sigText;
 
-    // find signature node...
-    if (isSignatureTb) {
+    function findPreviousSignatureNode() {
       util.logDebugOptional("functions.extractSignature", "find moz-signature…");
       // try to extract already inserted signature manually - well we need the last one!!
       // get the signature straight from the bodyElement!
       //signature from top
       if (Ident.replyOnTop && !Ident.sigBottom) {
-        sigNode = findChildNode(bodyEl, "moz-signature");
+        return findChildNode(bodyEl, "moz-signature");
       }
       //signature from bottom
-      else {
-        let signatureNodes = bodyEl.getElementsByClassName("moz-signature");
-        if (signatureNodes && signatureNodes.length) {
-          sigNode = signatureNodes[signatureNodes.length - 1];
-        }
-      }
+      const signatureNodes = bodyEl.getElementsByClassName("moz-signature");
+      return signatureNodes.length ? signatureNodes[signatureNodes.length - 1] : null;
+    }
+
+    const lastSigNode = findPreviousSignatureNode();
+
+    // find signature node...
+    if (isSignatureTb) {
       // eliminate this if it is contained in BLOCKQUOTE
-      const parentNode = sigNode?.parentNode;
+      const parentNode = lastSigNode?.parentNode;
       if (parentNode?.nodeName?.toLowerCase() === "blockquote") {
         isSigInBlockquote = true;
       }
       util.logDebugOptional(
         "functions.extractSignature",
-        `signature node ${sigNode ? "was" : "not"} found${
+        `signature node ${lastSigNode ? "was" : "not"} found${
           isSigInBlockquote ? " in <blockquote>!" : "."
         }`,
       );
@@ -191,7 +193,8 @@ SmartTemplate4.classSmartTemplate = function() {
       if (Ident.attachSignature) {
         util.logDebugOptional(
           "signatures,functions.extractSignature",
-          `attachSignature is set for Identity [${Ident.key}] ${Ident.identityName}\nPath: ${sigPath}`);
+          `attachSignature is set for Identity [${Ident.key}] ${Ident.identityName}\nPath: ${sigPath}`,
+        );
         let fileSig = readSignatureFile(Ident);
         if (fileSig) {
           htmlSigText = fileSig;
@@ -230,14 +233,11 @@ SmartTemplate4.classSmartTemplate = function() {
 
       // retrieve signature Node; if it doesn't work, try from the account
       // let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
-      sigText = isSigInBlockquote
-        ? ""
-        : htmlSigText
-          ? htmlSigText
-          : sigNode && sigNode.innerHTML
-            ? sigNode.innerHTML
-            : "";
-      sigText = sigText ? sigText : "";
+      if (isSigInBlockquote) {
+        sigText = "";
+      } else {
+        sigText = htmlSigText ?? lastSigNode?.innerHTML ?? "";
+      }
     }
 
     if (
@@ -258,11 +258,12 @@ SmartTemplate4.classSmartTemplate = function() {
     let removed = false;
     // LET'S REMOVE THE SIGNATURE
     //  && signatureDefined
-    if (isSignatureTb && sigNode) {
+    const isInsertPlaceholder = prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits");
+    if (isSignatureTb && lastSigNode) {
       util.logDebugOptional("functions.extractSignature", "First attempt to remove Signature.");
       const after = 0x04;
-      let pe = sigNode.previousElementSibling, // line break
-        ps = sigNode.previousSibling; // text node
+      let pe = lastSigNode.previousElementSibling, // line break
+        ps = lastSigNode.previousSibling; // text node
       if (pe && ps && pe.compareDocumentPosition(ps) & after) {
         /* there is some text before the signature, possibly after a line break. can happen with mailto links */
       } else {
@@ -275,9 +276,16 @@ SmartTemplate4.classSmartTemplate = function() {
           }
         }
       }
+      if (isInsertPlaceholder) {
+        // create a placeholder in the same position
+        placeholder = bodyEl.ownerDocument.createElement("span");
+        placeholder.className = "smarttemplates-signature-placeholder";
+        lastSigNode.parentNode.insertBefore(placeholder, lastSigNode);
+      }
+
       // remove original signature (the one inserted by Thunderbird)
       try {
-        gMsgCompose.editor.deleteNode(sigNode);
+        gMsgCompose.editor.deleteNode(lastSigNode);
         removed = true;
       } catch (ex) {
         util.logException("extractSignature - exception removing signature!", ex);
@@ -285,27 +293,32 @@ SmartTemplate4.classSmartTemplate = function() {
       //gMsgCompose.editor.document.removeChild(sigNode);
     }
 
-    // remove previous signature (fallback).
+    // remove previous signature (fallback)
     if (!removed) {
       util.logDebugOptional(
         "functions.extractSignature",
         "Not removed. 2nd attempt to remove previous sig…",
       );
-      for (let i = 0; i < nodes.length; i++) {
-        if (nodes[i].className && nodes[i].className == "moz-signature") {
-          let pBr = nodes[i].previousElementSibling;
-          // old_sig is just to check, not used
-          // eslint-disable-next-line no-unused-vars
-          let old_sig = bodyEl.removeChild(nodes[i]);
-          removed = true;
-          // old code - remove the preceding BR that TB always inserts
-          if (pBr && pBr.tagName == "BR") {
-            bodyEl.removeChild(pBr);
-          }
-          break;
+
+      let sigNodes = bodyEl.querySelectorAll(".moz-signature");
+      for (let sigNode of sigNodes) {
+        // exclude quoted signatures
+        if (sigNode.closest("blockquote")) {
+          continue;
         }
+
+        const pBr = sigNode.previousElementSibling;
+        if (placeholder && sigNode.parentNode) { // move / insert placeholder.
+          isInsertPlaceholder && sigNode.parentNode.insertBefore(placeholder, sigNode.nextSibling);
+        }
+        sigNode.remove();
+        removed = true;
+
+        if (pBr && pBr.tagName === "BR") {
+          pBr.remove();
+        }
+        break;
       }
-      // let's discard the old signature instead.
     }
 
     // still not removed. Maybe an error happened and it slipped into the blockquote;
@@ -316,7 +329,7 @@ SmartTemplate4.classSmartTemplate = function() {
       prefs.getMyBoolPref("signature.removeBlockQuotedSig.onFail")
     ) {
       try {
-        gMsgCompose.editor.deleteNode(sigNode);
+        gMsgCompose.editor.deleteNode(lastSigNode);
         removed = true;
       } catch (ex) {
         util.logException("extractSignature - exception removing signature from blockquote!", ex);
@@ -398,8 +411,7 @@ SmartTemplate4.classSmartTemplate = function() {
       "functions.extractSignature",
       "==============  extractSignature=============END\n" + "Return Signature:\n" + sig,
     );
-
-    return sig;
+    return { placeholder, newSig: sig };
   }
 
   // -----------------------------------
@@ -444,7 +456,7 @@ SmartTemplate4.classSmartTemplate = function() {
         break;
       case "div":
         if (node.classList.contains("moz-cite-prefix")) {
-          if (prefs.isDebugOption("composer")) {
+          if (prefs.isDebugOption("composer.breakpoint")) {
             // eslint-disable-next-line no-debugger
             debugger;
           }
@@ -1166,7 +1178,7 @@ SmartTemplate4.classSmartTemplate = function() {
       return myHtml;
     };
 
-    let isDebugComposer = prefs.isDebugOption("composer");
+    let isDebugComposer = prefs.isDebugOption("composer.breakpoint");
     if (!flags) {
       // if not passed, create an empty "flags" object, and initialise it.
       flags = {};
@@ -1360,7 +1372,8 @@ SmartTemplate4.classSmartTemplate = function() {
         sigVarDefined = flags.hasSignature || sigType ? true : false;
         try {
           // get signature element and remove the one Tb has inserted
-          SmartTemplate4.signature = await extractSignature(theIdentity, sigType, st4composeType);
+          const { newSig } = await extractSignature(theIdentity, sigType, st4composeType);
+          SmartTemplate4.signature = newSig;
         } catch (ex) {
           SmartTemplate4.signature = "";
           util.logException("Could not extract signature - is your signature path correct?", ex);
@@ -1590,7 +1603,7 @@ SmartTemplate4.classSmartTemplate = function() {
               if (head?.isConnected) {
                 head.remove();
               }
-            } catch {;}
+            } catch { ; }
           });
           template = tempDiv.innerHTML;
         }

@@ -1162,6 +1162,12 @@
   "regexpAnyText": {
     "message": "Qualsevol text (expressió regular) ha d’estar entre cometes dobles."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Substitueix la signatura en canviar la identitat (preservant el text introduït)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "En canviar la identitat després d’editar un correu, SmartTemplates avisarà que els canvis poden sobreescriure’s. Si cancel·leu la càrrega de la nova plantilla del compte, el cos del correu es mantindrà sense canvis, però s’inserirà la signatura correcta del compte a sota. Pot ser necessari eliminar manualment les signatures del compte anterior."
+  },
   "renew-your-license": {
     "message": "Renoveu la llicència."
   },

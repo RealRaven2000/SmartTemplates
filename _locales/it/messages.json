@@ -1117,6 +1117,12 @@
   "regexpAnyText": {
     "message": "Qualsiasi testo - espressione regolare - deve essere racchiuso tra virgolette."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Sostituisci la firma al cambio di identità (mantenendo il testo digitato)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Quando si cambia identità dopo aver modificato un’email, SmartTemplates avvisa del possibile sovrascrivere le modifiche. Se si annulla il caricamento del nuovo modello di account, il corpo dell’email rimane invariato, ma la firma corretta dell’account verrà inserita sotto di esso. Potrebbe essere necessario rimuovere manualmente le firme dell’account precedente."
+  },
   "renew-your-license": {
     "message": "Renouvelez votre licence."
   },

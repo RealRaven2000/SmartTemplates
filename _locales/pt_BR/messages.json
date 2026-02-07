@@ -1138,6 +1138,12 @@
   "recipient.label": {
     "message": "Destinatário Final"
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Substituir assinatura ao mudar de identidade (mantendo o texto digitado)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Ao mudar a identidade após editar um email, o SmartTemplates avisará sobre a possível substituição das alterações. Se você cancelar o carregamento do novo modelo de conta, o corpo do email permanecerá inalterado, mas a assinatura correta da conta será inserida abaixo. Pode ser necessário remover manualmente assinaturas da conta anterior."
+  },
   "renew-your-license": {
     "message": "Renove sua licença."
   },

@@ -1141,6 +1141,12 @@
   "regexpAnyText": {
     "message": "Alle tekst - reguliere expressie - dient tussen dubbele aanhalingstekens te staan."
   },
+  "removeSigOnIdChangeAfterEdits": {
+    "message": "Handtekening vervangen bij identiteitswijziging (met behoud van ingevoerde tekst)"
+  },
+  "removeSigOnIdChangeAfterEdits.tip": {
+    "message": "Wanneer u na het bewerken van een e-mail van identiteit wisselt, waarschuwt SmartTemplates voor het mogelijk overschrijven van uw wijzigingen. Als u het laden van de nieuwe accounttemplate annuleert, blijft de inhoud van het bericht ongewijzigd, maar wordt de juiste accounthandtekening eronder ingevoegd. Mogelijk moet u handtekeningen van het vorige account handmatig verwijderen."
+  },
   "renew-your-license": {
     "message": "Verleng uw licentie."
   },
