@@ -298,7 +298,8 @@ function formatAll(txt) {
     .replace(/\{S2\}/g, "</h3> <ul>")
     .replace(/\[issue (\d*)\]/g, "<a class='issue' no='$1' href='#'>[issue $1]</a>")
     .replace(/\[Bugzilla (\d*)\]/g, "<a class='bugzilla' no='$1' href='#'>[Bugzilla $1]</a>")
-    .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>"); // single keys
+    .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys [A] [1]
+    .replace(/\[\[([^\]]+)\]\]/g, "<code class='keystroke'>$1</code>"); // larger keys [[Cancel]] [[Ctrl]]
     // DANGEROUS .replaceAll("''", '"');
   //{S1} new section / list with title {S2}.
 }

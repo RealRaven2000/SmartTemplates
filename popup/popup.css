@@ -231,8 +231,23 @@ code[param] {
   color: rgba(255,255,255,0.7);
 }
 
+@keyframes keystrokeColors {
+  0%   { border-color: #6aa84f; color: #6aa84f; }   /* medium green */
+  16%  { border-color: #93c47d; color: #93c47d;}   /* yellow green */
+  32%  { border-color: #ffff00; color: #ffff00;}   /* yellow */
+  48%  { border-color: #f5a802; color: #f5a802;}   /* light orange */
+  64%  { border-color: #f85d5d; color: #f85d5d;}   /* red */
+  80%  { border-color: #cd4be7; color: #cd4be7;}   /* purple */
+  100% { border-color: #6fa8dc; color: #6fa8dc}   /* blue */
+}
+
 code.keystroke {
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.9);
+  font-style: normal !important;
+  font-weight: bold;
+  animation: keystrokeColors 10s linear infinite;
+  animation-delay: 50s; /* wait 50 seconds before first cycle */
 }
 
 
