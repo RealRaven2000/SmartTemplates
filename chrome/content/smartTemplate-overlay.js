@@ -3303,7 +3303,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
           // BIG FAT SIDE EFFECT!
           // eslint-disable-next-line no-debugger
-          if (prefs.isDebugOption("composer")) {debugger;}
+          if (prefs.isDebugOption("composer.breakpoint")) {debugger;}
           let rawsig = util.getSignatureInner(SmartTemplate4.signature, isRemoveDashes),
             retVal =
               (await SmartTemplate4.smartTemplate.getProcessedText(
@@ -3393,13 +3393,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
           util.logDebugOptional(
             "timeStrings",
-            "Setting date offset to " +
-              dateOffset +
-              " days, " +
-              hourOffset +
-              ":" +
-              minOffset +
-              " hours."
+            `Setting date offset to ${dateOffset} days, ${hourOffset}:${minOffset} hours.`
           );
           return "";
         }
