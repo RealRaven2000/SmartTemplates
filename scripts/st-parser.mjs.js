@@ -1947,13 +1947,7 @@ export class Parser {
 
             Util.logDebugOptional(
               "timeStrings",
-              "Setting date offset to " +
-                dateOffset +
-                " days, " +
-                hourOffset +
-                ":" +
-                minOffset +
-                " hours."
+              `Setting date offset to ${dateOffset} days, ${hourOffset}:${minOffset} hours.`
             );
             return "";
           }
@@ -2106,63 +2100,66 @@ export class Parser {
                   return "";
               }
             }
-            let isStripQuote = Util.isAddressHeader(token),
-              theHeader = hdr.get(token),
-              isFwdArg = false;
 
-            if (composeType == "fwd") {
-              let fmt = Util.splitFormatArgs(arg); // returns array of { field: "fwd", modifier: "" }
-              // e.g. %to(firstname,fwd)%
-              for (let i = 0; i < fmt.length; i++) {
-                if (fmt[i].field == "fwd") {
-                  isFwdArg = true;
-                  break;
+            {
+              let isStripQuote = Util.isAddressHeader(token),
+                theHeader = hdr.get(token),
+                isFwdArg = false;
+
+              if (composeType == "fwd") {
+                let fmt = Util.splitFormatArgs(arg); // returns array of { field: "fwd", modifier: "" }
+                // e.g. %to(firstname,fwd)%
+                for (let i = 0; i < fmt.length; i++) {
+                  if (fmt[i].field == "fwd") {
+                    isFwdArg = true;
+                    break;
+                  }
                 }
               }
-            }
 
-            // wrap variables that can't be resolved at the moment
-            if (typeof theHeader == "undefined" || isFwdArg) {
-              if (!arg) arg = "";
+              // wrap variables that can't be resolved at the moment
+              if (typeof theHeader == "undefined" || isFwdArg) {
+                if (!arg) arg = "";
 
-              if (Util.checkIsURLencoded(dmy)) return dmy; // this is HTML: we won't escape it.
+                if (Util.checkIsURLencoded(dmy)) return dmy; // this is HTML: we won't escape it.
 
-              token = await Util.wrapDeferredHeader(
-                token + arg,
-                isStripQuote ? "" : "??",
-                !composeDetails.isPlainText,
-                composeType == "new"
-              );
-              return token;
-            }
-            // <----  early exit for non existent headers, e.g. "from" in Write case
-            else {
-              // make sure empty header stays empty for this special case
-              if (!theHeader && RegExp(" " + token + " ", "i").test(" Bcc Cc ")) return "";
-            }
-            if (token == "date" && isUTC) {
-              if (debugTimeStrings) debugger;
-              try {
-                let x = new Date(theHeader);
-                theHeader = x.toUTCString();
-              } catch (ex) {
-                Util.logException("Cannot convert date to UTC: " + token, ex);
+                token = await Util.wrapDeferredHeader(
+                  token + arg,
+                  isStripQuote ? "" : "??",
+                  !composeDetails.isPlainText,
+                  composeType == "new"
+                );
+                return token;
               }
-            }
-            let headerValue = isStripQuote
-              ? await mime.split(theHeader, charset, arg)
-              : mime.decode(theHeader, charset);
-            if (!headerValue && Util.isAddressHeader(token)) {
-              let newTok = '<span class=st4optional args="' + arg + '" empty="true" />';
-              return newTok;
-            }
-            // allow HTML as to(link) etc. builds a href with mailto
-            if (testHTML(headerValue, arg))
-              // avoid double escaping
-              return headerValue;
-            token = headerValue;
-            break;
-        }
+              // <----  early exit for non existent headers, e.g. "from" in Write case
+              else {
+                // make sure empty header stays empty for this special case
+                if (!theHeader && RegExp(" " + token + " ", "i").test(" Bcc Cc ")) return "";
+              }
+              if (token == "date" && isUTC) {
+                if (debugTimeStrings) debugger;
+                try {
+                  let x = new Date(theHeader);
+                  theHeader = x.toUTCString();
+                } catch (ex) {
+                  Util.logException("Cannot convert date to UTC: " + token, ex);
+                }
+              }
+              let headerValue = isStripQuote
+                ? await mime.split(theHeader, charset, arg)
+                : mime.decode(theHeader, charset);
+              if (!headerValue && Util.isAddressHeader(token)) {
+                let newTok = '<span class=st4optional args="' + arg + '" empty="true" />';
+                return newTok;
+              }
+              // allow HTML as to(link) etc. builds a href with mailto
+              if (testHTML(headerValue, arg))
+                // avoid double escaping
+                return headerValue;
+              token = headerValue;
+              break;
+            }  
+          }
       } catch (ex) {
         Util.logException(
           "replaceReservedWords(dmy, " + token + ", " + arg + ") failed - unknown token?",
