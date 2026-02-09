@@ -533,7 +533,7 @@
     "message": "Vynucený mód odstavce"
   },
   "forceParagraphs.tip": {
-    "message": "Ujistise, že kurzoj je na zažátku odstavce. Také doporučujeme Thunderbird Composition volbu pro vytváření nových odstavců a stisknutí [Enter] klávesy."
+    "message": "Ujistise, že kurzoj je na zažátku odstavce. Také doporučujeme Thunderbird Composition volbu pro vytváření nových odstavců a stisknutí [[Enter]]klávesy."
   },
   "fpJsonTemplateList": {
     "message": "konfigurace nabídky šablon"
@@ -1157,7 +1157,7 @@
     "message": "Nahradit podpis při změně identity (se zachováním zadaného textu)"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "Při změně identity po úpravě e-mailu SmartTemplates upozorní na možné přepsání změn. Pokud zrušíte načtení nové šablony účtu, tělo e-mailu zůstane beze změny, ale pod něj se vloží správný podpis účtu. Podpisy z předchozího účtu může být nutné odstranit ručně."
+    "message": "Při změně identity {i}po{/i} úpravě e-mailu SmartTemplates upozorní na možné přepsání změn. Pokud zrušíte načtení nové šablony účtu, tělo e-mailu zůstane beze změny, ale pod něj se vloží správný podpis účtu. Podpisy z předchozího účtu může být nutné odstranit ručně."
   },
   "renew-your-license": {
     "message": "Obnovte si licenci."
@@ -1193,7 +1193,7 @@
     "message": "Smaž e-mailovou adresu pokud formátovací parametr je uveden"
   },
   "resolveABRemoveMail.tip": {
-    "message": "Toto skryje e-mailovou adresu při použití %cc% atd., pokud byla nalezena položka v adresáři."
+    "message": "Toto skryje e-mailovou adresu při použití {{%cc%}} atd., pokud byla nalezena položka v adresáři."
   },
   "resolveNamesFromAB": {
     "message": "Získej jméno z adresáře"

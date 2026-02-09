@@ -138,7 +138,7 @@
     "message": "Thay thế chữ ký khi đổi danh tính (giữ nguyên văn bản đã nhập)"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "Khi thay đổi danh tính sau khi chỉnh sửa email, SmartTemplates sẽ cảnh báo về khả năng ghi đè các thay đổi. Nếu bạn hủy việc tải mẫu tài khoản mới, nội dung email sẽ không thay đổi, nhưng chữ ký tài khoản chính xác sẽ được chèn bên dưới. Bạn có thể cần xóa chữ ký của tài khoản trước đó theo cách thủ công."
+    "message": "Khi thay đổi danh tính {i}sau khi{/i} chỉnh sửa email, SmartTemplates sẽ cảnh báo về khả năng ghi đè các thay đổi. Nếu bạn hủy việc tải mẫu tài khoản mới, nội dung email sẽ không thay đổi, nhưng chữ ký tài khoản chính xác sẽ được chèn bên dưới. Bạn có thể cần xóa chữ ký của tài khoản trước đó theo cách thủ công."
   },
   "renew-your-license": {
     "message": "Gia hạn giấy phép của bạn."
@@ -304,7 +304,7 @@
   },
   "whats-new-list": {
     "description": "🇻🇳 change log",
-    "message": "{L}Nhập menu mẫu bên ngoài từ một hồ sơ khác [issue 414]{P}Mở tệp smartTemplates.json từ hồ sơ khác và nhập menu mẫu cho chế độ chỉnh sửa đã chọn ({+new.tab}, {+rsp.tab}, {+fwd.tab}, {+snippets.head}).{/P}{/L}{L}Nhập các thành viên của danh bạ từ mẫu sử dụng {{%header.set(to,\"list:listName\")%}} [issue 411]{P}Giải quyết tất cả các thành viên trong danh sách {{listName}} và gán địa chỉ email chính của họ cho To, Cc hoặc Bcc.{/P}{/L}{L}Hỗ trợ đường dẫn tệp tương đối cho {{%attach()%}} [issue 335]{/L}{L}Cải thiện thuật toán nhận dạng tên từ tên hiển thị \"{+names.swap}\" [issue 305]{P}Bao gồm một tùy chọn mới \"{+names.swap.name}\"{/P}{/L}{L}Đã thêm tài liệu để đặt ưu tiên biến trong cửa sổ Variables [issue 412]{/L}{L}Biểu tượng thanh công cụ Mẫu Ngoại vi được hiện đại hóa{/L}"
+    "message": "{L}{bold}Phiên bản bảo trì 4.18.1:{/bold} Ngăn mất dữ liệu khi đổi định danh trong quá trình soạn thư [issue 415]{P}SmartTemplates hiện cảnh báo trước khi ghi đè nội dung đã chỉnh sửa khi thay đổi định danh người gửi. Nhấn [[{+cancel_button}]] để không tải mẫu mới và giữ nguyên nội dung email.{/P}{P}Tùy chọn mới cho phép thêm chữ ký tài khoản đúng sau khi hủy thay đổi định danh, tránh phải thêm thủ công.{/P}{/L}{L}Nhập menu mẫu bên ngoài từ một hồ sơ khác [issue 414]{P}Mở tệp smartTemplates.json từ hồ sơ khác và nhập menu mẫu cho chế độ chỉnh sửa đã chọn ({+new.tab}, {+rsp.tab}, {+fwd.tab}, {+snippets.head}).{/P}{/L}{L}Nhập các thành viên của danh bạ từ mẫu sử dụng {{%header.set(to,\"list:listName\")%}} [issue 411]{P}Giải quyết tất cả các thành viên trong danh sách {{listName}} và gán địa chỉ email chính của họ cho To, Cc hoặc Bcc.{/P}{/L}{L}Hỗ trợ đường dẫn tệp tương đối cho {{%attach()%}} [issue 335]{/L}{L}Cải thiện thuật toán nhận dạng tên từ tên hiển thị \"{+names.swap}\" [issue 305]{P}Bao gồm một tùy chọn mới \"{+names.swap.name}\"{/P}{/L}{L}Đã thêm tài liệu để đặt ưu tiên biến trong cửa sổ Variables [issue 412]{/L}{L}Biểu tượng thanh công cụ Mẫu Ngoại vi được hiện đại hóa{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -539,7 +539,7 @@
     "message": "Vsili odstavkovni način"
   },
   "forceParagraphs.tip": {
-    "message": "Zagotovi, da se položaj kazalca začne v novem odstavku. Priporočamo tudi, da možnost sestavljanja v Thunderbirdu nastavite na ustvarjanje novega odstavka ob pritisku na tipko [Enter]."
+    "message": "Zagotovi, da se položaj kazalca začne v novem odstavku. Priporočamo tudi, da možnost sestavljanja v Thunderbirdu nastavite na ustvarjanje novega odstavka ob pritisku na tipko [[Enter]]."
   },
   "fpJsonTemplateList": {
     "message": "konfiguracija menija predlog"
@@ -1166,7 +1166,7 @@
     "message": "Zamenjaj podpis ob spremembi identitete (ob ohranitvi vnesenega besedila)"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "Ob spremembi identitete po urejanju sporočila SmartTemplates opozori na možnost prepisovanja sprememb. Če prekličete nalaganje nove predloge računa, vsebina sporočila ostane nespremenjena, pravilni podpis računa pa bo dodan spodaj. Podpise prejšnjega računa bo morda treba odstraniti ročno."
+    "message": "Ob spremembi identitete {i}po{/i} urejanju sporočila SmartTemplates opozori na možnost prepisovanja sprememb. Če prekličete nalaganje nove predloge računa, vsebina sporočila ostane nespremenjena, pravilni podpis računa pa bo dodan spodaj. Podpise prejšnjega računa bo morda treba odstraniti ročno."
   },
   "renew-your-license": {
     "message": "Obnovite licenco."
@@ -1202,7 +1202,7 @@
     "message": "Odstrani e-poštni naslov, razen če je določen parameter oblike"
   },
   "resolveABRemoveMail.tip": {
-    "message": "To bo skrilo e-poštni naslov, ko boste uporabili %cc% itd., če bo v knjigi naslovov najdena vnos."
+    "message": "To bo skrilo e-poštni naslov, ko boste uporabili {{%cc%}} itd., če bo v knjigi naslovov najdena vnos."
   },
   "resolveNamesFromAB": {
     "message": "Razreši imena iz imenika"

@@ -542,7 +542,7 @@
     "message": "Forcer le mode paragraphe"
   },
   "forceParagraphs.tip": {
-    "message": "S'assurer que le curseur se situe dans un paragraphe. Nous demandons également la création d'un nouveau paragraphe lorsque l'on appuie sur la touche [Entrée] à l'option de composition Thunderbird."
+    "message": "S'assurer que le curseur se situe dans un paragraphe. Nous demandons également la création d'un nouveau paragraphe lorsque l'on appuie sur la touche [[Entrée]] à l'option de composition Thunderbird."
   },
   "fpJsonTemplateList": {
     "message": "configuration du menu des modèles"
@@ -1154,7 +1154,7 @@
     "message": "Remplacer la signature lors du changement d’identité (en conservant le texte saisi)"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "Lors du changement d’identité après la modification d’un message, SmartTemplates avertit du risque d’écrasement de vos modifications. Si vous annulez le chargement du nouveau modèle de compte, le corps du message reste inchangé, mais la signature correcte du compte sera insérée en dessous. Il peut être nécessaire de supprimer manuellement les signatures de l’ancien compte."
+    "message": "Lors du changement d’identité {i}après{/i} la modification d’un message, SmartTemplates avertit du risque d’écrasement de vos modifications. Si vous annulez le chargement du nouveau modèle de compte, le corps du message reste inchangé, mais la signature correcte du compte sera insérée en dessous. Il peut être nécessaire de supprimer manuellement les signatures de l’ancien compte."
   },
   "renew-your-license": {
     "message": "Renouvelez votre licence."
@@ -1190,7 +1190,7 @@
     "message": "Supprimer l'adresse électronique tant que le paramètre de format n'est pas spécifié"
   },
   "resolveABRemoveMail.tip": {
-    "message": "Cela masquera l'adresse e-mail lors de l'utilisation de %cc% etc., si une entrée est trouvée dans le carnet d'adresses."
+    "message": "Cela masquera l'adresse e-mail lors de l'utilisation de {{%cc%}} etc., si une entrée est trouvée dans le carnet d'adresses."
   },
   "resolveNamesFromAB": {
     "message": "Résoudre les noms à partir du carnet d'adresses"

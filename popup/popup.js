@@ -255,7 +255,11 @@ function formatAll(txt) {
     )
     .replace(/\{\/support\}/g, "</a>");
 
-  let salesEnd = getSaleEndLabel(); // messenger.i18n.getMessage("special-offer-expiry");    
+
+  let  salesEnd =  "";
+  if (typeof getSaleEndLabel === "function") {
+    salesEnd = getSaleEndLabel();
+  } 
 
   // added simple <tag> support
   return localizedMsg

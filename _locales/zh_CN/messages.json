@@ -540,7 +540,7 @@
     "message": "强制段落模式"
   },
   "forceParagraphs.tip": {
-    "message": "确保光标位置在段落开端。我们也推荐 Thunderbird 编写选项之按 [Enter] 键创建新段落。"
+    "message": "确保光标位置在段落开端。我们也推荐 Thunderbird 编写选项之按 [[Enter]] 键创建新段落。"
   },
   "fpJsonTemplateList": {
     "message": "模板菜单配置"
@@ -1159,7 +1159,7 @@
     "message": "更改身份时替换签名（保留已输入的文本）"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "在编辑邮件后更改身份时，SmartTemplates 会警告可能会覆盖您的更改。如果您取消加载新的帐户模板，邮件正文将保持不变，但会在下方插入正确的帐户签名。您可能需要手动删除之前帐户的签名。"
+    "message": "在编辑电子邮件{i}之后{/i}更改身份时，SmartTemplates 会警告可能会覆盖您所做的更改。如果您取消加载新的帐户模板，邮件正文将保持不变，但会在其下方插入正确的帐户签名。您可能需要手动删除之前身份的签名。"
   },
   "renew-your-license": {
     "message": "续订您的许可证。"
@@ -1195,7 +1195,7 @@
     "message": "移除电子邮件地址，除非已指定格式参数"
   },
   "resolveABRemoveMail.tip": {
-    "message": "如果在地址簿中找到条目，使用 %cc% 等时将隐藏邮件地址。"
+    "message": "如果在地址簿中找到条目，使用 {{%cc%}} 等时将隐藏邮件地址。"
   },
   "resolveNamesFromAB": {
     "message": "根据通讯录解析名称"
@@ -1954,7 +1954,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L}从其他配置文件导入外部模板菜单 [issue 414]{P}从其他配置文件中打开 smartTemplates.json 文件，并导入所选编辑模式的模板菜单 ({+new.tab}, {+rsp.tab}, {+fwd.tab}, {+snippets.head})。{/P}{/L}{L}从模板导入地址簿列表的成员使用 {{%header.set(to,\"list:listName\")%}} [issue 411]{P}解析列表 {{listName}} 中的所有成员，并将其主电子邮件地址分配给 To、Cc 或 Bcc。{/P}{/L}{L}支持 {{%attach()%}} 的相对文件路径 [issue 335]{/L}{L}改进显示名 \"{+names.swap}\" 的姓名启发式 [issue 305]{P}包含新选项 \"{+names.swap.name}\"{/P}{/L}{L}在变量窗口中添加设置变量优先级的文档 [issue 412]{/L}{L}外部模板工具栏图标已现代化{/L}"
+    "message": "{L}{bold}维护版本 4.18.1:{/bold} 在邮件编辑过程中切换身份时防止数据丢失 [issue 415]{P}SmartTemplates 现在会在覆盖已编辑内容前发出警告。按 [[{+cancel_button}]] 可不加载新模板，同时保持邮件正文不变。{/P}{P}一个新选项允许在取消身份更改后追加正确的账户签名，无需手动重新插入。{/P}{/L}{L}从其他配置文件导入外部模板菜单 [issue 414]{P}从其他配置文件中打开 smartTemplates.json 文件，并导入所选编辑模式的模板菜单 ({+new.tab}, {+rsp.tab}, {+fwd.tab}, {+snippets.head})。{/P}{/L}{L}从模板导入地址簿列表的成员使用 {{%header.set(to,\"list:listName\")%}} [issue 411]{P}解析列表 {{listName}} 中的所有成员，并将其主电子邮件地址分配给 To、Cc 或 Bcc。{/P}{/L}{L}支持 {{%attach()%}} 的相对文件路径 [issue 335]{/L}{L}改进显示名 \"{+names.swap}\" 的姓名启发式 [issue 305]{P}包含新选项 \"{+names.swap.name}\"{/P}{/L}{L}在变量窗口中添加设置变量优先级的文档 [issue 412]{/L}{L}外部模板工具栏图标已现代化{/L}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

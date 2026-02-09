@@ -536,7 +536,7 @@
     "message": "Alineamodus afdwingen"
   },
   "forceParagraphs.tip": {
-    "message": "Zorgt ervoor dat de cursorpositie met een alinea begint. Het gebruik van de optie voor het maken van een nieuwe alinea bij indrukken van de Enter-toets voor Opstellen in Thunderbird wordt ook aanbevolen."
+    "message": "Zorgt ervoor dat de cursorpositie met een alinea begint. Het gebruik van de optie voor het maken van een nieuwe alinea bij indrukken van de [[Enter]]-toets voor Opstellen in Thunderbird wordt ook aanbevolen."
   },
   "fpJsonTemplateList": {
     "message": "configuratie van sjablonenmenu"
@@ -1145,7 +1145,7 @@
     "message": "Handtekening vervangen bij identiteitswijziging (met behoud van ingevoerde tekst)"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "Wanneer u na het bewerken van een e-mail van identiteit wisselt, waarschuwt SmartTemplates voor het mogelijk overschrijven van uw wijzigingen. Als u het laden van de nieuwe accounttemplate annuleert, blijft de inhoud van het bericht ongewijzigd, maar wordt de juiste accounthandtekening eronder ingevoegd. Mogelijk moet u handtekeningen van het vorige account handmatig verwijderen."
+    "message": "Wanneer u {i}na{/i} het bewerken van een e-mail van identiteit wisselt, waarschuwt SmartTemplates voor het mogelijk overschrijven van uw wijzigingen. Als u het laden van de nieuwe accounttemplate annuleert, blijft de inhoud van het bericht ongewijzigd, maar wordt de juiste accounthandtekening eronder ingevoegd. Mogelijk moet u handtekeningen van het vorige account handmatig verwijderen."
   },
   "renew-your-license": {
     "message": "Verleng uw licentie."
@@ -1181,7 +1181,7 @@
     "message": "E-mailadres verwijderen, tenzij opmaakparameter is opgegeven"
   },
   "resolveABRemoveMail.tip": {
-    "message": "Dit verbergt het e-mailadres bij het gebruik van %cc% enz., als er een adresboekvermelding wordt gevonden."
+    "message": "Dit verbergt het e-mailadres bij het gebruik van {{%cc%}} enz., als er een adresboekvermelding wordt gevonden."
   },
   "resolveNamesFromAB": {
     "message": "Namen uit adresboeken omzetten"

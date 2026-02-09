@@ -542,7 +542,7 @@
     "message": "Tvinga paragrafläge"
   },
   "forceParagraphs.tip": {
-    "message": "Ser till att pekarpositionen börjar i en paragraf. Vi rekommendera även Thunderbirds skrivalternativ för att skapa en ny paragraf med [Enter]."
+    "message": "Ser till att pekarpositionen börjar i en paragraf. Vi rekommendera även Thunderbirds skrivalternativ för att skapa en ny paragraf med [[Enter]]."
   },
   "fpJsonTemplateList": {
     "message": "konfiguration av mallmeny"
@@ -1172,7 +1172,7 @@
     "message": "Ersätt signatur vid identitetsbyte (behåll skriven text)"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "När identiteten ändras efter att ett e-postmeddelande har redigerats varnar SmartTemplates för att ändringar kan skrivas över. Om du avbryter inläsningen av den nya kontomallen förblir meddelandets innehåll oförändrat, men rätt kontosignatur infogas nedanför. Du kan behöva ta bort signaturer från det tidigare kontot manuellt."
+    "message": "När identiteten ändras {i}efter{/i} att ett e-postmeddelande har redigerats varnar SmartTemplates för att ändringar kan skrivas över. Om du avbryter inläsningen av den nya kontomallen förblir meddelandets innehåll oförändrat, men rätt kontosignatur infogas nedanför. Du kan behöva ta bort signaturer från det tidigare kontot manuellt."
   },
   "renew-your-license": {
     "message": "Förnya din licens."
@@ -1208,7 +1208,7 @@
     "message": "Ta bort e-postadresser om formatparametern anges"
   },
   "resolveABRemoveMail.tip": {
-    "message": "Detta kommer att dölja e-postadressen när du använder %cc% etc., om en post hittas i adressboken."
+    "message": "Detta kommer att dölja e-postadressen när du använder {{%cc%}} etc., om en post hittas i adressboken."
   },
   "resolveNamesFromAB": {
     "message": "Lös namn från adressböcker"

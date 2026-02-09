@@ -425,7 +425,7 @@
     "message": "Paksa Mode Paragraf"
   },
   "forceParagraphs.tip": {
-    "message": "Memastikan bahwa posisi kursor dimulai dalam paragraf. Kami juga merekomendasikan opsi Komposisi Thunderbird untuk membuat paragraf baru saat menekan tombol [Enter]."
+    "message": "Memastikan bahwa posisi kursor dimulai dalam paragraf. Kami juga merekomendasikan opsi Komposisi Thunderbird untuk membuat paragraf baru saat menekan tombol [[Enter]]."
   },
   "fpFilterName": {
     "message": "Berkas SmartTemplate4"
@@ -915,7 +915,7 @@
     "message": "Hapus alamat email kecuali format batasan ditentukan"
   },
   "resolveABRemoveMail.tip": {
-    "message": "Ini akan menyembunyikan alamat email saat menggunakan %cc% dll, jika entri buku alamat ditemukan."
+    "message": "Ini akan menyembunyikan alamat email saat menggunakan {{%cc%}} dll, jika entri buku alamat ditemukan."
   },
   "resolveNamesFromAB": {
     "message": "Pilih nama dari buku alamat"

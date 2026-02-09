@@ -539,7 +539,7 @@
     "message": "Força el mode de paràgraf"
   },
   "forceParagraphs.tip": {
-    "message": "Assegureu-vos que la posició del cursor comença en un paràgraf. També recomanem l'opció de composició del Thunderbird per crear un paràgraf nou en prémer la tecla [Retorn]."
+    "message": "Assegureu-vos que la posició del cursor comença en un paràgraf. També recomanem l'opció de composició del Thunderbird per crear un paràgraf nou en prémer la tecla [[Retorn]]."
   },
   "fpJsonTemplateList": {
     "message": "configuració del menú de plantilles"
@@ -1166,7 +1166,7 @@
     "message": "Substitueix la signatura en canviar la identitat (preservant el text introduït)"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "En canviar la identitat després d’editar un correu, SmartTemplates avisarà que els canvis poden sobreescriure’s. Si cancel·leu la càrrega de la nova plantilla del compte, el cos del correu es mantindrà sense canvis, però s’inserirà la signatura correcta del compte a sota. Pot ser necessari eliminar manualment les signatures del compte anterior."
+    "message": "En canviar la identitat {i}després{/i} d’editar un correu, SmartTemplates avisarà que els canvis poden sobreescriure’s. Si cancel·leu la càrrega de la nova plantilla del compte, el cos del correu es mantindrà sense canvis, però s’inserirà la signatura correcta del compte a sota. Pot ser necessari eliminar manualment les signatures del compte anterior."
   },
   "renew-your-license": {
     "message": "Renoveu la llicència."
@@ -1202,7 +1202,7 @@
     "message": "Elimineu l'adreça de correu electrònic tret que s'especifiqui un paràmetre de format"
   },
   "resolveABRemoveMail.tip": {
-    "message": "Això amagarà l'adreça de correu quan s'utilitzi %cc% en pla, si es troba una entrada al llibre d'adreces."
+    "message": "Això amagarà l'adreça de correu quan s'utilitzi {{%cc%}} en pla, si es troba una entrada al llibre d'adreces."
   },
   "resolveNamesFromAB": {
     "message": "Resoleu noms de llibretes d'adreces"

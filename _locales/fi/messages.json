@@ -539,7 +539,7 @@
     "message": "Pakota Kappale-tila"
   },
   "forceParagraphs.tip": {
-    "message": "Varmista, että osoittimen aloitussijainti on kappaleessa. Suosittelemme Thunderbirdin kirjoitus -tilaa luodaksesi uusia kappaleita [Enter]-näppäintä painamalla."
+    "message": "Varmista, että osoittimen aloitussijainti on kappaleessa. Suosittelemme Thunderbirdin kirjoitus -tilaa luodaksesi uusia kappaleita [[Enter]]-näppäintä painamalla."
   },
   "fpJsonTemplateList": {
     "message": "mallivalikon määritykset"
@@ -1166,7 +1166,7 @@
     "message": "Korvaa allekirjoitus henkilöllisyyden vaihtuessa (säilytä kirjoitettu teksti)"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "Kun vaihdat henkilöllisyyttä sähköpostin muokkaamisen jälkeen, SmartTemplates varoittaa muutosten ylikirjoittamisesta. Jos peruutat uuden tilimallin lataamisen, viestin sisältö säilyy muuttumattomana, mutta oikea tilin allekirjoitus lisätään sen alle. Edellisen tilin allekirjoitukset saatetaan joutua poistamaan käsin."
+    "message": "Kun vaihdat henkilöllisyyttä sähköpostin muokkaamisen {i}jälkeen{/i}, SmartTemplates varoittaa muutosten ylikirjoittamisesta. Jos peruutat uuden tilimallin lataamisen, viestin sisältö säilyy muuttumattomana, mutta oikea tilin allekirjoitus lisätään sen alle. Edellisen tilin allekirjoitukset saatetaan joutua poistamaan käsin."
   },
   "renew-your-license": {
     "message": "Uusi lisenssi."
@@ -1202,7 +1202,7 @@
     "message": "Poista sähköpostiosoite, ellei parametria ei ole eritelty"
   },
   "resolveABRemoveMail.tip": {
-    "message": "Tämä piilottaa sähköpostiosoitteen, kun käytetään %cc% jne., jos osoitekirjassa löytyy merkintä."
+    "message": "Tämä piilottaa sähköpostiosoitteen, kun käytetään {{%cc%}} jne., jos osoitekirjassa löytyy merkintä."
   },
   "resolveNamesFromAB": {
     "message": "Selvitä nimet osoitekirjasta"

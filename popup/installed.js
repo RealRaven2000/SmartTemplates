@@ -66,7 +66,7 @@ addEventListener("load", async (_event) => {
   ariaPoliteUpdate(verInfo,
     messenger.i18n.getMessage("active-version-info", [addonVer, appVer])
       .replace("{bold}","<b class='versionnumber'>")
-      .replace("{\/bold}","</b>"),
+      .replace("{/bold}","</b>"),
     true
   );   
   

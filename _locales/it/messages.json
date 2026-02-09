@@ -527,7 +527,7 @@
     "message": "Imposta la modalità Paragrafo"
   },
   "forceParagraphs.tip": {
-    "message": "Controlla che il cursore si posizioni all'inizio di un paragrafo. Si consiglia l'opzione Composizione di Thunderbird per creare un nuovo paragrafo premendo il tasto Invio."
+    "message": "Controlla che il cursore si posizioni all'inizio di un paragrafo. Si consiglia l'opzione Composizione di Thunderbird per creare un nuovo paragrafo premendo il tasto [[Invio]]."
   },
   "fpJsonTemplateList": {
     "message": "configurazione del menu dei modelli"
@@ -1121,7 +1121,7 @@
     "message": "Sostituisci la firma al cambio di identità (mantenendo il testo digitato)"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "Quando si cambia identità dopo aver modificato un’email, SmartTemplates avvisa del possibile sovrascrivere le modifiche. Se si annulla il caricamento del nuovo modello di account, il corpo dell’email rimane invariato, ma la firma corretta dell’account verrà inserita sotto di esso. Potrebbe essere necessario rimuovere manualmente le firme dell’account precedente."
+    "message": "Quando si cambia identità {i}dopo{/i} aver modificato un’email, SmartTemplates avvisa del possibile sovrascrivere le modifiche. Se si annulla il caricamento del nuovo modello di account, il corpo dell’email rimane invariato, ma la firma corretta dell’account verrà inserita sotto di esso. Potrebbe essere necessario rimuovere manualmente le firme dell’account precedente."
   },
   "renew-your-license": {
     "message": "Renouvelez votre licence."
@@ -1157,7 +1157,7 @@
     "message": "Rimuovi l'indirizzo email a meno che sia specificato il parametro di formato"
   },
   "resolveABRemoveMail.tip": {
-    "message": "Questo nasconderà l'indirizzo e-mail quando si utilizza %cc% ecc., se viene trovata una voce nella rubrica."
+    "message": "Questo nasconderà l'indirizzo e-mail quando si utilizza {{%cc%}} ecc., se viene trovata una voce nella rubrica."
   },
   "resolveNamesFromAB": {
     "message": "Individua i nomi nella rubrica"

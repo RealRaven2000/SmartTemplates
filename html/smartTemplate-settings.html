@@ -24,11 +24,12 @@
 
     <!-- our own rules -->
     <link rel="stylesheet" href="st-settings-layout.css">
-
+    <link rel="stylesheet" href="../popup/syntax.css">
 
     <script type="application/javascript" src="../chrome/content/i18n.js"></script>
 
     <script type="application/javascript" src="st-settings-main.js"></script>
+    <script type="application/javascript" src="../popup/popup.js"></script>
     <script type="module" src="../scripts/st-util.mjs.js"></script>
     <script type="module" src="st-log.mjs"></script>
     <script type="module" src="st-settings-ui.mjs"></script>
@@ -308,7 +309,8 @@
             <label><input type="checkbox" class="premiumFeature"
               data-pref-name="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits">__MSG_removeSigOnIdChangeAfterEdits__
               <button
-                class="toolTipButton"
+                class="toolTipButton containsHTML"
+                id="removeSigOnIdChangeAfterEdits-tip"
                 clickyTooltip="__MSG_removeSigOnIdChangeAfterEdits.tip__"></button>            
             </label>                      
 
@@ -322,7 +324,10 @@
                   data-pref-name="extensions.smartTemplate4.cursor.insertSpace">__MSG_insertCursor__</label>
             <label><input type="checkbox" 
                   data-pref-name="extensions.smartTemplate4.forceParagraph">__MSG_forceParagraphs__
-              <button class="toolTipButton" clickyTooltip="__MSG_forceParagraphs.tip__"></button>                
+              <button 
+                class="toolTipButton containsHTML" 
+                id="forceParagraphs-tip"
+                clickyTooltip="__MSG_forceParagraphs.tip__"></button>                
             </label>
           </div>
         </fieldset>
@@ -407,7 +412,10 @@
                   data-pref-name="extensions.smartTemplate4.mime.resolveAB.displayName">__MSG_resolveNamesFromABDisplay__</label>
                 <label><input type="checkbox" id="chkResolveABRemoveMail"
                   data-pref-name="extensions.smartTemplate4.mime.resolveAB.removeEmail">__MSG_resolveABRemoveMail__
-                  <button class="toolTipButton" clickyTooltip="__MSG_resolveABRemoveMail.tip__"></button>
+                  <button 
+                   class="toolTipButton containsHTML" 
+                   id="chkResolveAB-tip"
+                   clickyTooltip="__MSG_resolveABRemoveMail.tip__"></button>
                 </label>
                 <label><input type="checkbox" id="chkResolveABCardBook" class="premiumFeature"
                   data-pref-name="extensions.smartTemplate4.mime.resolveAB.CardBook">__MSG_resolveNamesFromCardBook__</label>

@@ -539,7 +539,7 @@
     "message": "Stosuj tryb akapitu"
   },
   "forceParagraphs.tip": {
-    "message": "Zapewnia ustawienie kursora na początku akapitu. Zaleca się stosować w oknie komponowania wiadomości tworzenie nowych akapitów po naciśnięciu klawisza Enter."
+    "message": "Zapewnia ustawienie kursora na początku akapitu. Zaleca się stosować w oknie komponowania wiadomości tworzenie nowych akapitów po naciśnięciu klawisza [[Enter]]."
   },
   "fpJsonTemplateList": {
     "message": "konfiguracja menu szablonów"
@@ -1151,7 +1151,7 @@
     "message": "Zastąp podpis przy zmianie tożsamości (z zachowaniem wpisanego tekstu)"
   },
   "removeSigOnIdChangeAfterEdits.tip": {
-    "message": "Podczas zmiany tożsamości po edycji wiadomości SmartTemplates ostrzeże o możliwości nadpisania wprowadzonych zmian. Jeśli anulujesz wczytywanie nowego szablonu konta, treść wiadomości pozostanie niezmieniona, a właściwy podpis konta zostanie wstawiony poniżej. Może być konieczne ręczne usunięcie podpisów z poprzedniego konta."
+    "message": "Podczas zmiany tożsamości {i}po{/i} edycji wiadomości SmartTemplates ostrzeże o możliwości nadpisania wprowadzonych zmian. Jeśli anulujesz wczytywanie nowego szablonu konta, treść wiadomości pozostanie niezmieniona, a właściwy podpis konta zostanie wstawiony poniżej. Może być konieczne ręczne usunięcie podpisów z poprzedniego konta."
   },
   "renew-your-license": {
     "message": "Odnów licencję."
@@ -1187,7 +1187,7 @@
     "message": "Usuń adres e-mail, jeśli nie jest określony format"
   },
   "resolveABRemoveMail.tip": {
-    "message": "To ukryje adres e-mail przy użyciu %cc% itp., jeśli zostanie znaleziona pozycja w książce adresowej."
+    "message": "To ukryje adres e-mail przy użyciu {{%cc%}} itp., jeśli zostanie znaleziona pozycja w książce adresowej."
   },
   "resolveNamesFromAB": {
     "message": "Rozpoznaj nazwy z książki adresowej"

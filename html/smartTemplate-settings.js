@@ -12,6 +12,8 @@
 /*
 	globals
 		SmartTemplates: readonly,
+    formatAll: readonly,
+    ariaPoliteUpdate: readonly,
 */
 
 // we can only do this if we load this file itself as a module.
@@ -2488,11 +2490,16 @@ async function showTooltip(evt, el) {
   tip.innerText = ""; // Clear existing text first
   tip.style.visibility = "visible"; // Ensure visibility before setting text
   tip.style.opacity = 0.05; // Ensure it's not faded out - we will set this to 1 in updateTooltipPosition!
+  const btn = tip.parentElement;
 
   setTimeout(async () => {
-
-    // Set the tooltip text (forces the aria-live announcement)
-    tip.innerText = txt;
+    if (btn.classList.contains("containsHTML")) {
+      // if the tooltip contains HTML, we need to set it as innerHTML instead of innerText
+      ariaPoliteUpdate(tip, txt, true);
+    } else {
+      // Set the tooltip text (forces the aria-live announcement)
+      tip.innerText = txt;
+    }
 
     // Wait for position to be updated before continuing
     await updateTooltipPosition(evt, el, tip);
@@ -3071,6 +3078,21 @@ async function onLoad() {
     }
 		return false;
 	});
+
+  const updateHtmlTooltips = (buttonId, bundleKey) => {
+    const btn = document.getElementById(buttonId);
+    if (!btn) {
+      return;
+    }
+
+    const txt = SmartTemplates.Util.getBundleString(bundleKey);
+    btn.setAttribute("clickyTooltip", formatAll(txt));
+  };
+  // update any tooltips that contain HTML pseudocode such as {i} [[button]] {P} etc.
+  updateHtmlTooltips("removeSigOnIdChangeAfterEdits-tip", "removeSigOnIdChangeAfterEdits.tip");
+  updateHtmlTooltips("chkResolveAB-tip", "resolveABRemoveMail.tip");
+  updateHtmlTooltips("forceParagraphs-tip", "forceParagraphs.tip");
+
 }
 
 
