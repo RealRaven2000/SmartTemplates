@@ -1392,67 +1392,80 @@ SmartTemplate4.mimeDecoder = {
 
 SmartTemplate4.MessageHdr = null; // will be overwritten
 
-SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
+SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
   const clipboardMode = firstPass ? true : false;
-  
 
   // Deals with the following match functions:
   // %matchTextFromBody("regeX"[,MatchGroup][,textTransform][,altText])%
   // %matchTextFromSubject("regeX"[,MatchGroup][,textTransform][,altText])%
-  // -- 
+  // --
   // %matchTextFromBody("regeX",MatchGroup[,textTransform],toclipboard)%
   // %matchTextFromSubject("regeX",MatchGroup[,textTransform],toclipboard)%
-	function matchTextParser(regX, fromPart) {
-	  try {
-			let matchPart = msg.match(regX);
-			if (!matchPart) {
+  function matchTextParser(regX, fromPart) {
+    try {
+      let matchPart = msg.match(regX);
+      if (!matchPart) {
         return;
       }
-			// eslint-disable-next-line no-debugger
-			if (prefs.isDebugOption("parseModifier")) {debugger;}
+      if (prefs.isDebugOption("parseModifier")) {
+        // eslint-disable-next-line no-debugger
+        debugger;
+      }
       let bodySource = "";
-      for (let i=0; i<matchPart.length; i++) {
-        let isClipboardPart =  (matchPart[i].lastIndexOf(",toclipboard")>0);
-        if (isClipboardPart && !clipboardMode || !isClipboardPart && clipboardMode) {
+      for (let i = 0; i < matchPart.length; i++) {
+        let isClipboardPart = matchPart[i].lastIndexOf(",toclipboard") > 0;
+        if ((isClipboardPart && !clipboardMode) || (!isClipboardPart && clipboardMode)) {
           continue;
         }
-        util.logDebugOptional('parseModifier','matched variable [' + i + ']: ' + matchPart[i]);
-        let patternArg = matchPart[i].match(   /("[^"].*?")/   ), // get argument (includes quotation marks) ? non greedy
-            hdr = (composeType!="new") ? new SmartTemplate4.getHeadersWrapper(gMsgCompose.originalMsgURI) : null,
-            extractSource = '',
-            rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
-        switch(fromPart) {
-          case 'subject':
+        util.logDebugOptional("parseModifier", "matched variable [" + i + "]: " + matchPart[i]);
+        let patternArg = matchPart[i].match(/("[^"].*?")/), // get argument (includes quotation marks) ? non greedy
+          hdr =
+            composeType != "new"
+              ? new SmartTemplate4.getHeadersWrapper(gMsgCompose.originalMsgURI)
+              : null,
+          extractSource = "",
+          rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ""; // pattern for searching body
+        switch (fromPart) {
+          case "subject":
             util.addUsedPremiumFunction("matchTextFromSubject");
             if (!hdr) {
               msg = msg.replace(matchPart[i], "");
-              util.logToConsole("matchTextParser() - matchTextFromSubject failed - couldn't retrieve header from Uri [" + gMsgCompose.originalMsgURI + "] - did you REPLY to a message?");
+              util.logToConsole(
+                "matchTextParser() - matchTextFromSubject failed - couldn't retrieve header from Uri [" +
+                  gMsgCompose.originalMsgURI +
+                  "] - did you REPLY to a message?",
+              );
               extractSource = gMsgCompose.compFields.subject;
-            }
-            else {
+            } else {
               let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-                  charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
+                charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
               extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("subject"), charset);
             }
-            util.logDebugOptional('parseModifier',"Extracting " + rx + " from Subject:\n" + extractSource);
+            util.logDebugOptional(
+              "parseModifier",
+              "Extracting " + rx + " from Subject:\n" + extractSource,
+            );
             break;
-          case 'body':
+          case "body":
             if (!bodySource) {
               bodySource = SmartTemplate4.Util.getBodyComposer(); // only do this once
             }
             extractSource = bodySource;
             // util.popupLicenseNotification("matchTextFromBody", true, true);
             util.addUsedPremiumFunction("matchTextFromBody");
-            util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
+            util.logDebugOptional(
+              "parseModifier",
+              "Extracting " + rx + " from editor.root:\n" + extractSource,
+            );
             break;
           default:
-            throw("Unknown source type:" + fromPart);
+            throw "Unknown source type:" + fromPart;
         }
         if (!patternArg) {
           continue;
         }
 
-        // let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ); // match group number, first instance of  ... ",1  ... 
+        // let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ); // match group number, first instance of  ... ",1  ...
         let regParams = SmartTemplate4.Util.extractParameters(matchPart[i]);
         // recombine any split regex string (first parameter)
         SmartTemplate4.Util.combineSplitStringParam(regParams);
@@ -1460,49 +1473,54 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         let formatter = util.initFormatter(matchPart[i]);
         if (!extractSource) {
           util.logDebug("pattern not found in " + fromPart + ":\n" + regX);
-          msg = msg.replace(matchPart[i],"");
+          msg = msg.replace(matchPart[i], "");
           continue;
         }
         let result = rx.exec(extractSource); // extract Pattern from body
-        if (!result || result.length==0) {       
+        if (!result || result.length == 0) {
           // not matched, insert string from third parameter
-          let alternative = matchPart[i].match( /[0-9],"(.*)"/ ); // get what's between the last double quotes
+          let alternative = matchPart[i].match(/[0-9],"(.*)"/); // get what's between the last double quotes
           if (alternative) {
             // if no match found but there is a 3rd parameter, replace with this instead.
-            msg = msg.replace(matchPart[i], alternative[1].replaceAll("\\,",","));
+            msg = msg.replace(matchPart[i], alternative[1].replaceAll("\\,", ","));
             continue;
           }
-          // [Bug 26512] - if matchText is used multiple times, the result is blank  
+          // [Bug 26512] - if matchText is used multiple times, the result is blank
           if (isClipboardPart) {
-            msg = msg.replace(matchPart[i],"%toclipboard()%"); // overwrite the clipboard with empty string!
+            msg = msg.replace(matchPart[i], "%toclipboard()%"); // overwrite the clipboard with empty string!
           } else {
-            msg = msg.replace(matchPart[i],"");
+            msg = msg.replace(matchPart[i], "");
           }
           continue;
         }
 
         // we have a match result, continue
-        let replaceGroupString = '';
-        if (group>result.length) {
-          util.logToConsole("Your group argument [" + group + "] is too high, do you have enough (round brackets) in your expression?");
+        let replaceGroupString = "";
+        if (group > result.length) {
+          util.logToConsole(
+            "Your group argument [" +
+              group +
+              "] is too high, do you have enough (round brackets) in your expression?",
+          );
         } else {
-          if (!group) { // [Bug 26634] third parameter is a replacement string
+          if (!group) {
+            // [Bug 26634] third parameter is a replacement string
             replaceGroupString = result[group]; // default
             // check for string arg - after second comma: %header.append.matchFromSubject(hdr,regex,"replaceText"])%
-            let commaPos = matchPart[i].lastIndexOf(",\""); // search for last ," ...
-            if (commaPos>0) {
+            let commaPos = matchPart[i].lastIndexOf(',"'); // search for last ," ...
+            if (commaPos > 0) {
               let thirdArg = matchPart[i].substring(commaPos), // search for end of string ... ")
-                  endPos = thirdArg.indexOf("\")");
-              if (endPos>0) {
-                replaceGroupString = thirdArg.substring(2,endPos).replaceAll("\\,",","); // [issue 280]
+                endPos = thirdArg.indexOf('")');
+              if (endPos > 0) {
+                replaceGroupString = thirdArg.substring(2, endPos).replaceAll("\\,", ","); // [issue 280]
               } else {
                 util.logToConsole("replaceText - last string parameter is not well formed.");
                 replaceGroupString = ""; // not well formed
               }
-            } 
+            }
           } else {
-            if (group>result.length-1) {
-              replaceGroupString ="";
+            if (group > result.length - 1) {
+              replaceGroupString = "";
             } else {
               replaceGroupString = result[group];
             }
@@ -1513,43 +1531,41 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         if (isClipboardPart) {
           util.clipboardWrite(replaceGroupString); // [issue 187]
           if (!replaceGroupString) {
-            msg = msg.replace(matchPart[i], ""); 
+            msg = msg.replace(matchPart[i], "");
           } else {
             let escapedGroupString = replaceGroupString.replaceAll(",", "\\,"); // [issue 344]
             msg = msg.replace(matchPart[i], `%toclipboard(${escapedGroupString})%`); // [issue 210]
           }
         } else {
-          util.logDebug('matchTextParser(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
+          util.logDebug(
+            "matchTextParser(" + fromPart + ") - Replacing Pattern with:\n" + replaceGroupString,
+          );
           msg = msg.replace(matchPart[i], replaceGroupString);
         }
-
       } // for loop of all match expressions
-    
-		}	
-		catch	(ex) {
-			util.logException('matchTextParser(' + regX + ', ' + fromPart +') failed:', ex);
-		}
-	}
-	
+    } catch (ex) {
+      util.logException("matchTextParser(" + regX + ", " + fromPart + ") failed:", ex);
+    }
+  }
+
   // parse the parameters of the following replacement commands:
   // %replaceText("find","replace"[,selection])%
   // %replaceQuotedText(searchText,replacementHTML[,quoteLevel])%
   // %replaceQuotedTags(selector,replacementHTML[,quoteLevel][,minSize])%
   function parseParams(cmd, cmdParameters, functionName) {
-    let isSelection = false;  
+    let isSelection = false;
     // get params (within a full command) - allows escaped commas within strings.
     let theStrings = SmartTemplate4.Util.extractParameters(cmd);
 
     let dText1, dText2;
-    if (theStrings.length>=2) {
-      dText1 = theStrings[0].match(   /"[^)].*"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
-      dText2 = theStrings[1].match(   /"[^)].*"/   )
-        || theStrings[1].match(   /clipboard/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
+    if (theStrings.length >= 2) {
+      dText1 = theStrings[0].match(/"[^)].*"/); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
+      dText2 = theStrings[1].match(/"[^)].*"/) || theStrings[1].match(/clipboard/); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
       // %replaceText("xxx", %matchBodyText("yyy *")%)%; // nesting to get word from replied
-    
+
       let errTxt = "Splitting " + functionName + "(a,b) arguments could not be parsed.",
-          errDetail;
-      
+        errDetail;
+
       if (!dText1) {
         errDetail = `1st argument missing or malformed: ${dText1}`;
       } else if (!dText2) {
@@ -1564,14 +1580,14 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         cmdParameters.p1 = dText1[0];
         cmdParameters.p2 = dText2[0];
 
-        if (theStrings.length>2) {
+        if (theStrings.length > 2) {
           if (theStrings[2] == "selection") {
             isSelection = true;
           } else {
             cmdParameters.p3 = parseInt(theStrings[2]); // quote level param
           }
         }
-        if (theStrings.length>3) {
+        if (theStrings.length > 3) {
           if (theStrings[3] == "selection") {
             isSelection = true;
           } else {
@@ -1582,20 +1598,27 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
         return true;
       }
       if (errDetail) {
-        util.logToConsole(errTxt
-          + '\n ' + errDetail
-          + '\n Arguments have to be enclosed in double quotes!'
-          + '\n Commas must be escaped with \\ or they will create separate parameters',
-          theStrings);
-        }
+        util.logToConsole(
+          errTxt +
+            "\n " +
+            errDetail +
+            "\n Arguments have to be enclosed in double quotes!" +
+            "\n Commas must be escaped with \\ or they will create separate parameters",
+          theStrings,
+        );
+      }
     } else {
-      util.logDebug('Splitting ' + functionName + '(a,b) did not return >= 2 arguments. '
-        + '\n Arguments may not contain double quotes.'
-        + '\n Special characters such as # and commas must be escaped with backslash.');
-    }    
+      util.logDebug(
+        "Splitting " +
+          functionName +
+          "(a,b) did not return >= 2 arguments. " +
+          "\n Arguments may not contain double quotes." +
+          "\n Special characters such as # and commas must be escaped with backslash.",
+      );
+    }
     return false;
   }
-  
+
   function quoteLevel(element, level) {
     if (!element || !element.parentNode) {
       return 0;
@@ -1603,8 +1626,11 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
     let p = element.parentNode;
     while (p) {
       if (p.tagName) {
-        if (p.tagName.toLowerCase()=="blockquote" ||
-            p.tagName.toLowerCase()=="div" && p.getAttribute("type")=="cite") { // <div type="cite" ... >
+        if (
+          p.tagName.toLowerCase() == "blockquote" ||
+          (p.tagName.toLowerCase() == "div" && p.getAttribute("type") == "cite")
+        ) {
+          // <div type="cite" ... >
           level++;
         }
       }
@@ -1612,16 +1638,16 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
     }
     return level;
   }
-  
+
   function htmlToElement(doc, html) {
     html = html.trim(); // Never return a text node of whitespace as the result
     // Create a detached container
-    let container = doc.createElement('div');
+    let container = doc.createElement("div");
     SmartTemplate4.Util.insertHtmlSafely(container, html);
 
     return container.firstElementChild;
   }
-  
+
   function displayTag(node) {
     if (!node || node.nodeType === Node.TEXT_NODE) {
       return `'${node.textContent}'`;
@@ -1636,20 +1662,21 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
           let val = a.value.toString();
           aS += ": " + val.substring(0, 20) + (val.length > 20 ? "…" : "");
         }
-      } 
+      }
     }
     return `<${aS}>`;
   }
 
   function replaceInBody(findX, replaceX) {
     // iterate all childNodes except for blockquotes.
-    const ELEMENT_NODE = 1, TEXT_NODE = 3;
+    const ELEMENT_NODE = 1,
+      TEXT_NODE = 3;
     let rootEl = SmartTemplate4.composer.body;
     for (const el of rootEl.childNodes) {
       try {
         switch (el?.nodeType) {
           case ELEMENT_NODE:
-            if (el?.tagName && el.tagName.toLowerCase()=="blockquote") {
+            if (el?.tagName && el.tagName.toLowerCase() == "blockquote") {
               continue;
             }
             if (el.innerHTML?.search(findX) >= 0) {
@@ -1663,365 +1690,388 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
             }
             break;
           case TEXT_NODE:
-            if (el.textContent.search(findX)>=0) {
+            if (el.textContent.search(findX) >= 0) {
               el.textContent = el.textContent.replace(findX, replaceX);
             }
             break;
         }
-      } catch(ex) {
-        SmartTemplate4.Util.logDebugOptional("parseModifier", 
-          `replaceInBody(${findX}, ${replaceX})`, 
-          ex);
+      } catch (ex) {
+        SmartTemplate4.Util.logDebugOptional(
+          "parseModifier",
+          `replaceInBody(${findX}, ${replaceX})`,
+          ex,
+        );
       }
     }
   }
 
-
-  
-	const util = SmartTemplate4.Util,
+  const util = SmartTemplate4.Util,
     prefs = SmartTemplate4.Preferences,
     Ci = Components.interfaces,
     Cc = Components.classes;
-	
+
   // %matchTextFromBody()% using * to generate result:
   // %matchTextFromBody(TEST *)% => returns first * match: TEST XYZ => XYZ
-	// Insert replacement from body of QUOTED email!
-	matchTextParser(/%matchTextFromBody\(.*?\)%/g, 'body'); // [bug 26688]
-	// Insert replacement from subject line
-	matchTextParser(/%matchTextFromSubject\(.*?\)%/g, 'subject');
+  // Insert replacement from body of QUOTED email!
+  matchTextParser(/%matchTextFromBody\(.*?\)%/g, "body"); // [bug 26688]
+  // Insert replacement from subject line
+  matchTextParser(/%matchTextFromSubject\(.*?\)%/g, "subject");
 
-	// make 2 arrays, words to delete and replacement pairs.
-	let matches = msg.match(/%deleteText\(.*\)%/g), // works on template only
-	    matchesR = msg.match(/%replaceText\(.*\)%/g), // works on template only
-      quoteMatches = msg.match(/%deleteQuotedText\(.*\)%/g),
-      quoteMatchesR = msg.match(/%replaceQuotedText\(.*\)%/g),
-      quoteTags = msg.match(/%deleteQuotedTags\(.*\)%/g),
-      quoteTagsR = msg.match(/%replaceQuotedTags\(.*\)%/g);
-      
+  // make 2 arrays, words to delete and replacement pairs.
+  let matches = msg.match(/%deleteText\(.*\)%/g), // works on template only
+    matchesR = msg.match(/%replaceText\(.*\)%/g), // works on template only
+    quoteMatches = msg.match(/%deleteQuotedText\(.*\)%/g),
+    quoteMatchesR = msg.match(/%replaceQuotedText\(.*\)%/g),
+    quoteTags = msg.match(/%deleteQuotedTags\(.*\)%/g),
+    quoteTagsR = msg.match(/%replaceQuotedTags\(.*\)%/g);
+
   /* delete text in template / signature itself */
-	if (!firstPass && matches) {
-		try {
-			util.addUsedPremiumFunction("deleteText");
-			for (let i=0; i<matches.length; i++) {
-				// parse out the argument (string to delete)
-				msg = msg.replace(matches[i],'');
-				let dText = matches[i].match(   /("[^)].*")/   ); // get argument (includes quotation marks)
-				if (dText) {
+  if (!firstPass && matches) {
+    try {
+      util.addUsedPremiumFunction("deleteText");
+      for (let i = 0; i < matches.length; i++) {
+        // parse out the argument (string to delete)
+        msg = msg.replace(matches[i], "");
+        let dText = matches[i].match(/("[^)].*")/); // get argument (includes quotation marks)
+        if (dText) {
           if (SmartTemplate4.PreprocessingFlags.isFragment) {
             // replace in body
             replaceInBody(util.unquotedRegex(dText[0], true), "");
           } else {
-					  msg = msg.replace(util.unquotedRegex(dText[0], true), "");
+            msg = msg.replace(util.unquotedRegex(dText[0], true), "");
           }
-				}
-			}
-		}
-		catch (ex) {
-			util.logException('%deleteText()%', ex);
-		}
-	}
-  
+        }
+      }
+    } catch (ex) {
+      util.logException("%deleteText()%", ex);
+    }
+  }
+
   /* replace texts in template / signature itself */
-	if (!firstPass && matchesR) { // replacements in place
+  if (!firstPass && matchesR) {
+    // replacements in place
     try {
       util.addUsedPremiumFunction("replaceText");
-      
-      for (let i=0; i<matchesR.length; i++) {
+
+      for (let i = 0; i < matchesR.length; i++) {
         // parse out the argument (string to delete)
-        let params = {p1: null, p2: null, p3: null, p4: 0};
-        if (parseParams(matchesR[i], params, 'replaceText')) {
+        let params = { p1: null, p2: null, p3: null, p4: 0 };
+        if (parseParams(matchesR[i], params, "replaceText")) {
           if (SmartTemplate4.PreprocessingFlags.isFragment) {
             // replace in body
             if (params.selection) {
               // replace in selection!
-              let selectionHtml = SmartTemplate4.smartTemplate.unpackSelection(gMsgCompose.editor.selection);
-              let replacedHtml = selectionHtml.replaceAll(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
+              let selectionHtml = SmartTemplate4.smartTemplate.unpackSelection(
+                gMsgCompose.editor.selection,
+              );
+              let replacedHtml = selectionHtml.replaceAll(
+                util.unquotedRegex(params.p1, true),
+                util.unquotedRegex(params.p2),
+              );
               // replace the pattern into the rest of the fragment
-              msg = msg.replace(matchesR[i],replacedHtml);
+              msg = msg.replace(matchesR[i], replacedHtml);
             } else {
-              msg = msg.replace(matchesR[i], '');
+              msg = msg.replace(matchesR[i], "");
               replaceInBody(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
             }
           } else {
-            msg = msg.replace(matchesR[i], '');
+            msg = msg.replace(matchesR[i], "");
             msg = msg.replace(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
           }
         }
       }
-    }
-    catch (ex) {
-      util.logException('%replaceText()%', ex);
+    } catch (ex) {
+      util.logException("%replaceText()%", ex);
     }
   }
-  
+
+  const MIN_QUOTELEVEL = 1;
+
   /* Remove quoted texts */
   if (quoteMatches) {
-		try {
-      util.addUsedPremiumFunction("deleteQuotedText");
-      const isHTML = IsHTMLEditor(); // editorUtilities.js
-
-
-			for (let i=0; i<quoteMatches.length; i++) {
-				// parse out the argument (string to delete)
-				msg = msg.replace(quoteMatches[i],'');  // remove from template
-        let theStrings = quoteMatches[i].split(","),
-				    dText = theStrings[0].match(   /("[^)].*")/   ), // get argument (includes quotation marks)
-            minQuoteLevel = (theStrings.length>1) ? parseInt(theStrings[1]) : 1,
-            rootEl = SmartTemplate4.composer.body;
-        const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
-        
-        if (dText && dText.length) {
-          let s = util.unquotedRegex(dText[0], true),
-              quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
-          if (isForwardInline) {
-            // [issue 172] treat forwarded text as "quote"
-            quotes = rootEl.querySelectorAll("div.moz-forward-container");
-          }
-              
-          if (!isHTML) {
-            // plain text:
-            // look for <span style="white-space: pre-wrap; display: block;">
-            quotes = Array.from(rootEl.querySelectorAll("span[style*=white-space]"))
-            for (let q of quotes) {
-              q.innerText = q.innerText.replace(s, "");
-            }
-          }
-          else {
-            for (let i=0; i<quotes.length; i++) {
-              let q = quotes.item(i),
-                  lv = isHTML ? quoteLevel(q, 1) : 1;
-              if (isForwardInline) { lv = 0; }// [issue 172]
-
-              if (lv == minQuoteLevel) {
-                util.logDebug('%deleteQuotedText% - Removing quoted text (l=' + lv + '):\n' + s.source);
-
-                // Create temporary container for safe replacement
-                let container = q.ownerDocument.createElement("div");
-                let newHtml = q.innerHTML.replace(s, "");
-                SmartTemplate4.Util.insertHtmlSafely(container, newHtml);
-
-                // Clear old content and append sanitized content
-                q.textContent = "";
-                while (container.firstChild) {
-                  q.appendChild(container.firstChild);
-                }
-              }
-            }
-          }          
-        }
-			}
-		}
-		catch (ex) {
-			util.logException('%deleteQuotedText()%', ex);
-		}
-  }
-  
-  /* Replace quoted text */
-	if (quoteMatchesR) { // replacements in quote
     try {
-      util.addUsedPremiumFunction("replaceQuotedText");
-      const isHTML = IsHTMLEditor(); 
-      
-      for (let i=0; i<quoteMatchesR.length; i++) {
-        // parse out the argument (string to delete)
-        msg = msg.replace(quoteMatchesR[i], '');  // remove from template
-        let params = {p1: null, p2: null, p3: 1, p4: 0};
-        if (parseParams(quoteMatchesR[i], params, 'replaceQuotedText')) {
-          // now replace text in quote body:
-          let minQuoteLevel = params.p3,
-              s = util.unquotedRegex(params.p1, true),
-              r = util.unquotedRegex(params.p2), 
-              rootEl = SmartTemplate4.composer.body;
-          const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
-          
-          if (!isHTML) {
-            // plain text:
-            // look for <span style="white-space: pre-wrap; display: block;">
-            let quotes = Array.from(rootEl.querySelectorAll("span[style*=white-space]"))
-            
-            if (isForwardInline) {
-              // [issue 172]
-              quotes = rootEl.querySelectorAll("div.moz-forward-container");
-            }
-            for (let q of quotes) {
-              q.innerText = q.innerText.replace(s, r);
-            }
+      util.addUsedPremiumFunction("deleteQuotedText");
+      const isHTML = IsHTMLEditor();
+      const rootEl = SmartTemplate4.composer.body;
+
+      for (let i = 0; i < quoteMatches.length; i++) {
+        msg = msg.replace(quoteMatches[i], "");
+
+        const theStrings = quoteMatches[i].split(","),
+          dText = theStrings[0].match(/("[^)].*")/),
+          minQuoteLevel = theStrings.length > 1 ? parseInt(theStrings[1]) : MIN_QUOTELEVEL;
+
+        const isForwardInline = util.isComposeTypeIsForwardInline() && minQuoteLevel == 0;
+
+        if (!(dText && dText.length)) {
+          continue;
+        }
+
+        let s = util.unquotedRegex(dText[0], true),
+          quotes = rootEl.getElementsByTagName("blockquote");
+
+        if (isForwardInline) {
+          quotes = rootEl.querySelectorAll("div.moz-forward-container");
+        }
+
+        if (!isHTML) {
+          quotes = Array.from(rootEl.querySelectorAll("span[style*=white-space]"));
+
+          for (let q of quotes) {
+            q.innerText = q.innerText.replace(s, "");
           }
-          else {
-            let quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
-            if (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0) {
-              // [issue 172] treat forwarded text as "quote"
-              quotes = rootEl.querySelectorAll("div.moz-forward-container");
-            }
-            
-            for (let i=0; i<quotes.length; i++) {
-              let q = quotes.item(i),
-                  lv = quoteLevel(q, 1);
-              if (isForwardInline) {lv=0;} // [issue 172]
-              
-              if (lv == minQuoteLevel) {
-                util.logDebug(
-                  '%replaceQuotedText% - Replacing quoted text (l=' + lv + '): ' +
-                  q.innerText + '\nWith: ' + r.source
-                );
+          continue;
+        }
 
-                // Create temporary container for safe replacement
-                let container = q.ownerDocument.createElement("div");
-                let newHtml = q.innerHTML.replace(s, r);
-                SmartTemplate4.Util.insertHtmlSafely(container, newHtml);
+        for (let j = 0; j < quotes.length; j++) {
+          let q = quotes.item(j),
+            lv = quoteLevel(q, 1);
 
-                // Clear old content and append sanitized content
-                q.textContent = "";
-                while (container.firstChild) {
-                  q.appendChild(container.firstChild);
-                }
-              }
-            }
+          if (isForwardInline) {
+            lv = 0;
+          }
+
+          if (lv != minQuoteLevel) {
+            continue;
+          }
+
+          util.logDebug(`%deleteQuotedText% - Removing quoted text (l=${lv}):\n` + `${s.source}`);
+
+          const container = q.ownerDocument.createElement("div");
+          const newHtml = q.innerHTML.replace(s, "");
+
+          SmartTemplate4.Util.insertHtmlSafely(container, newHtml);
+
+          q.textContent = "";
+          while (container.firstChild) {
+            q.appendChild(container.firstChild);
           }
         }
       }
+    } catch (ex) {
+      util.logException("%deleteQuotedText()%", ex);
     }
-    catch (ex) {
-      util.logException('%replaceQuotedText()%', ex);
+  }
+
+  /* Replace quoted text */
+  if (quoteMatchesR) {
+    try {
+      util.addUsedPremiumFunction("replaceQuotedText");
+      const isHTML = IsHTMLEditor();
+      const rootEl = SmartTemplate4.composer.body;
+
+      for (let i = 0; i < quoteMatchesR.length; i++) {
+        msg = msg.replace(quoteMatchesR[i], "");
+
+        let params = { p1: null, p2: null, p3: MIN_QUOTELEVEL, p4: 0 };
+        if (!parseParams(quoteMatchesR[i], params, "replaceQuotedText")) {
+          continue;
+        }
+
+        let minQuoteLevel = params.p3,
+          s = util.unquotedRegex(params.p1, true),
+          r = util.unquotedRegex(params.p2);
+
+        const isForwardInline = util.isComposeTypeIsForwardInline() && minQuoteLevel == 0;
+
+        if (!isHTML) {
+          let quotes = Array.from(rootEl.querySelectorAll("span[style*=white-space]"));
+
+          if (isForwardInline) {
+            quotes = rootEl.querySelectorAll("div.moz-forward-container");
+          }
+
+          for (let q of quotes) {
+            q.innerText = q.innerText.replace(s, r);
+          }
+          continue;
+        }
+
+        let quotes = rootEl.getElementsByTagName("blockquote");
+
+        if (isForwardInline) {
+          quotes = rootEl.querySelectorAll("div.moz-forward-container");
+        }
+
+        for (let j = 0; j < quotes.length; j++) {
+          let q = quotes.item(j),
+            lv = quoteLevel(q, 1);
+
+          if (isForwardInline) {
+            lv = 0;
+          }
+
+          if (lv != minQuoteLevel) {
+            continue;
+          }
+
+          util.logDebug(
+            `%replaceQuotedText% - Replacing quoted text (l=${lv}): ${q.innerText}\n` +
+              `With: ${r.source}`,
+          );
+
+          let container = q.ownerDocument.createElement("div");
+          let newHtml = q.innerHTML.replace(s, r);
+
+          SmartTemplate4.Util.insertHtmlSafely(container, newHtml);
+
+          q.textContent = "";
+          while (container.firstChild) {
+            q.appendChild(container.firstChild);
+          }
+        }
+      }
+    } catch (ex) {
+      util.logException("%replaceQuotedText()%", ex);
     }
-	}
-  
+  }
+
   /* Remove quoted tags */
   if (quoteTags) {
-		try {
+    try {
       util.addUsedPremiumFunction("deleteQuotedTags");
-			for (let i=0; i<quoteTags.length; i++) {
-				// parse out the argument (string to delete)
-				msg = msg.replace(quoteTags[i],'');  // remove from template
-        let theStrings = quoteTags[i].split(","),
-				    dText = theStrings[0].match(   /("[^)].*")/   ), // get argument (includes quotation marks)
-            minQuoteLevel = (theStrings.length>1) ? parseInt(theStrings[1]) : 1,
-            minSize = (theStrings.length>2) ? parseInt(theStrings[2]) : 0,
-            rootEl = SmartTemplate4.composer.body;
-        const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
-        
-        // [issue 172] treat forwarded text as "quote"
+      const rootElBase = SmartTemplate4.composer.body;
+
+      for (let i = 0; i < quoteTags.length; i++) {
+        msg = msg.replace(quoteTags[i], "");
+
+        const theStrings = quoteTags[i].split(","),
+          dText = theStrings[0].match(/("[^)].*")/),
+          minQuoteLevel = theStrings.length > 1 ? parseInt(theStrings[1]) : MIN_QUOTELEVEL,
+          minSize = theStrings.length > 2 ? parseInt(theStrings[2]) : 0;
+
+        if (!(dText && dText.length)) {
+          continue;
+        }
+
+        let s = util.unquotedRegex(dText[0]),
+          rootEl = rootElBase;
+
+        const isForwardInline = util.isComposeTypeIsForwardInline() && minQuoteLevel == 0;
         if (isForwardInline) {
-          let quoteForward = rootEl.querySelectorAll("div.moz-forward-container");
+          const quoteForward = rootEl.querySelectorAll("div.moz-forward-container");
           if (quoteForward.length) {
             rootEl = quoteForward.item(0);
           }
         }
-            
-        if (dText && dText.length) {
-          let s = util.unquotedRegex(dText[0]),
-              nodes = rootEl.querySelectorAll(s); // NodeList
-          for (let i=0; i<nodes.length; i++) {
-            let n = nodes.item(i),
-                lv = quoteLevel(n, 0),
-                loadingDeferred = false;
-            if (isForwardInline) {lv = 0;}
-            
-            if (lv >= minQuoteLevel) {
-              let tagSizeKB = n.outerHTML.length/1000;
-              if (n.classList.contains("loading-internal")) {
-                let src = n.getAttribute('src');
-                if (src && src.startsWith("mailbox")) {
-                  loadingDeferred = true; // we don't know it's real size - it is loaded later!
-                }
-              } 
-              
-              if (!loadingDeferred && minSize && (tagSizeKB < minSize)) {
-                util.logDebug('%deleteQuotedTags% - keeping tag: ' + displayTag(n) + " size = " + tagSizeKB + " kB");
-                continue;
-              }
-              let txtDebug = '%deleteQuotedTags% - Removing quoted tag (l=' + lv + '):\n' + 
-                            displayTag(n) + '\n';
-              if (loadingDeferred)  {
-                txtDebug += "loading deferred, cannot determine size right now.";
-              } else {
-                txtDebug += " saved " + tagSizeKB + " kByte";
-              }
-              // remove tag
-              n.remove();  // https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
-              util.logDebug(txtDebug);  
-              
-            }
-          }            
-        }
-			}
-		}
-		catch (ex) {
-			util.logException('%deleteQuotedTags()%', ex);
-		}    
-  }
-  
-  /* Replace quoted tags */  
-  if (quoteTagsR) {
-		try {
-      util.addUsedPremiumFunction("replaceQuotedTags");
-      for (let i=0; i<quoteTagsR.length; i++) {
-        let params = {p1: null, p2: null, p3: 1};        
-        // parse out the argument (string to delete)
-        msg = msg.replace(quoteTagsR[i],''); // remove from template
-        if (parseParams(quoteTagsR[i], params, "replaceQuotedTags")) {
-          let minQuoteLevel = params.p3,
-              minSize = params.p4 || 0,
-              s = util.unquotedRegex(params.p1),
-              r = util.unquotedRegex(params.p2),
-              rootEl = SmartTemplate4.composer.body;
-          const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
-          
-          // [issue 172] treat forwarded text as "quote"
-          if (isForwardInline) {
-            let quoteForward = rootEl.querySelectorAll("div.moz-forward-container");
-            if (quoteForward.length) {
-              rootEl = quoteForward.item(0);
+
+        const nodes = rootEl.querySelectorAll(s);
+
+        for (let j = 0; j < nodes.length; j++) {
+          const n = nodes.item(j),
+            lv = isForwardInline ? 0 : quoteLevel(n, 0);
+          let loadingDeferred = false;
+
+          if (lv < minQuoteLevel) {
+            continue;
+          }
+
+          let tagSizeKB = n.outerHTML.length / 1000;
+
+          if (n.classList.contains("loading-internal")) {
+            const src = n.getAttribute("src");
+            if (src && src.startsWith("mailbox")) {
+              loadingDeferred = true;
             }
           }
-          
-          if (s) {
-            let nodes = rootEl.querySelectorAll(s); // NodeList
-            let len = nodes.length
-            for (let i=len-1; i>=0; i--) {
-              let n = nodes.item(i),
-                  lv = quoteLevel(n, 0),
-                  loadingDeferred = false;
-              if (lv >= minQuoteLevel) {
-                let tagSizeKB = n.outerHTML.length/1000;
-                if (n.classList.contains("loading-internal")) {
-                  let src = n.getAttribute('src');
-                  if (src && src.startsWith("mailbox")) {
-                    loadingDeferred = true; // we don't know it's real size - it is loaded later!
-                  }
-                } 
-                
-                // replaces everything on this level and higher (all its child blockquotes)
-                if (!loadingDeferred && (minSize && (tagSizeKB < minSize))) {
-                  util.logDebug('%replaceQuotedTags% - keeping tag: ' + displayTag(n) + " size = " + tagSizeKB + " kB");
-                  continue;
-                }
-                let newEl = htmlToElement(gMsgCompose.editor.document, r),
-                    txtDebug = '%replaceQuotedTags - Replacing quoted tag (l=' + lv + '): ' + displayTag(n) +  
-                              ' with ' + displayTag(newEl) + ' \n'; // display tag + attributes
-                if (loadingDeferred) {
-                  txtDebug += "loading deferred, cannot determine size right now.";
-                } else {
-                  txtDebug += " saved " + tagSizeKB + " kByte";
-                }
-                
-                n.parentNode.insertBefore(newEl, n)
-                n.remove();  // https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
-                util.logDebug(txtDebug);  
-              }
-            }            
+
+          if (!loadingDeferred && minSize && tagSizeKB < minSize) {
+            util.logDebug(
+              `%deleteQuotedTags% - keeping tag: ${displayTag(n)} size = ${tagSizeKB} kB`,
+            );
+            continue;
           }
+
+          let txtDebug = `%deleteQuotedTags% - Removing quoted tag (l=${lv}):\n${displayTag(n)}\n`;
+          txtDebug += loadingDeferred
+            ? "loading deferred, cannot determine size right now."
+            : ` saved ${tagSizeKB} kByte`;
+          n.remove();
+          util.logDebug(txtDebug);
         }
       }
+    } catch (ex) {
+      util.logException("%deleteQuotedTags()%", ex);
     }
-		catch (ex) {
-			util.logException('%replaceQuotedTags()%', ex);
-		}  
   }
-  
-	
-	return msg;
-}
+
+  /* Replace quoted tags */
+  if (quoteTagsR) {
+    try {
+      util.addUsedPremiumFunction("replaceQuotedTags");
+      const rootElBase = SmartTemplate4.composer.body;
+
+      for (let i = 0; i < quoteTagsR.length; i++) {
+        msg = msg.replace(quoteTagsR[i], "");
+
+        const params = { p1: null, p2: null, p3: MIN_QUOTELEVEL, p4: 0 };
+        if (!parseParams(quoteTagsR[i], params, "replaceQuotedTags")) {
+          continue;
+        }
+
+        const minQuoteLevel = params.p3,
+          minSize = params.p4 || 0,
+          s = util.unquotedRegex(params.p1),
+          r = util.unquotedRegex(params.p2);
+
+        if (!s) {
+          continue;
+        }
+
+        let rootEl = rootElBase;
+        const isForwardInline = util.isComposeTypeIsForwardInline() && minQuoteLevel == 0;
+        if (isForwardInline) {
+          const quoteForward = rootEl.querySelectorAll("div.moz-forward-container");
+          if (quoteForward.length) {
+            rootEl = quoteForward.item(0);
+          }
+        }
+
+        const nodes = rootEl.querySelectorAll(s);
+        for (let j = nodes.length - 1; j >= 0; j--) {
+          const n = nodes.item(j),
+            lv = isForwardInline ? 0 : quoteLevel(n, 0);
+          let loadingDeferred = false;
+
+          if (lv < minQuoteLevel) {
+            continue;
+          }
+
+          let tagSizeKB = n.outerHTML.length / 1000;
+          if (n.classList.contains("loading-internal")) {
+            const src = n.getAttribute("src");
+            if (src && src.startsWith("mailbox")) {
+              loadingDeferred = true;
+            }
+          }
+
+          if (!loadingDeferred && minSize && tagSizeKB < minSize) {
+            util.logDebug(
+              `%replaceQuotedTags% - keeping tag: ${displayTag(n)} size = ${tagSizeKB} kB`,
+            );
+            continue;
+          }
+
+          const newEl = htmlToElement(gMsgCompose.editor.document, r);
+          let txtDebug = `%replaceQuotedTags - Replacing quoted tag (l=${lv}): ${displayTag(n)} with ${displayTag(newEl)}\n`;
+          if (loadingDeferred) {
+            txtDebug += "loading deferred, cannot determine size right now.";
+          } else {
+            txtDebug += ` saved ${tagSizeKB} kByte`;
+          }
+
+          n.parentNode.insertBefore(newEl, n);
+          n.remove();
+          util.logDebug(txtDebug);
+        }
+      }
+    } catch (ex) {
+      util.logException("%replaceQuotedTags()%", ex);
+    }
+  }
+
+  return msg;
+};
 	
 // -------------------------------------------------------------------
 // Regularize template message
