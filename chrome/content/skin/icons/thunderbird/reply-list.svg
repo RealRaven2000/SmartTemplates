@@ -4,17 +4,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16" width="16">
   <style>
     path {
-      --basiccolor: rgb(20,20,20);
+      --basiccolor: context-stroke rgb(20,20,20);
       --iconStroke: var(--basiccolor);
-      --icon-fill: #A0A0A0;
+      --icon-fill: context-fill #A0A0A0;
     }
     @media (prefers-color-scheme: dark) {
       path { 
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: context-stroke rgb(251,251,254);
         --iconStroke: var(--basiccolor);
-        --icon-fill: #606060;
+        --icon-fill: context-fill #606060;
       }
-    }        
+    }         
   </style>
   <path 
     d="M3.5 2.5c-.554 0-1 .446-1 1v9c0 .554.446 1 1 1h4.879l-1.94-1.94a1.516 1.516 0 0 1 0-2.12l3-3a1.501 1.501 0 0 1 2.122 0 1.515 1.515 0 0 1 0 2.12l-.44.44H12.5V3.5c0-.554-.446-1-1-1z" 

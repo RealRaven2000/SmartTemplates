@@ -4,20 +4,21 @@
 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
   <style>
     path {
-      --basiccolor: rgb(20,20,20);
+      --basiccolor: context-stroke rgb(20,20,20);
       --iconStroke: var(--basiccolor);
-      --icon-fill: #A0A0A0;
+      --icon-fill: context-fill #A0A0A0;
+      --fillopacity: context-fill-opacity 0.9;
     }
     @media (prefers-color-scheme: dark) {
       path { 
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: stroke rgb(251,251,254);
         --iconStroke: var(--basiccolor);
-        --icon-fill: #606060;
+        --icon-fill: context-fill #606060;
       }
     }        
   </style> 
   <path 
     d="M9 3H3v10h10V5.828L10.172 3H3v3h5a1 1 0 0 0 1-1V3zM3 1h7.172a2 2 0 0 1 1.414.586l2.828 2.828A2 2 0 0 1 15 5.828V13a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm5 11a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
-    style="fill:var(--iconStroke);"  
+    style="fill:var(--icon-fill);fill-opacity(--fillopacity);stroke: var(--iconStroke);"  
     />
 </svg>

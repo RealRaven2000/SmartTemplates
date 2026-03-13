@@ -2,17 +2,17 @@
 xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <style>
     :root {
-      --basiccolor: rgb(20,20,20);
+      --basiccolor: context-stroke rgb(20,20,20);
       --iconStroke: var(--basiccolor);
       --icon-fill: #A0A0A0;
-      --fillopacity: 0.9;
+      --fillopacity: context-fill-opacity 0.9;
     }
     @media (prefers-color-scheme: dark) {
       :root { 
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: context-stroke rgb(251,251,254);
         --iconStroke: var(--basiccolor);
         --icon-fill: #606060;
-        --fillopacity: 0.8;
+        --fillopacity: context-fill-opacity 0.8;
       }
     }        
   </style>

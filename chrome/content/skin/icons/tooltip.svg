@@ -37,11 +37,14 @@
      inkscape:current-layer="svg2" />
   <style
      id="style1">
+   :root {
+      --stroke-base: context-stroke;
+      --stroke: color-mix(in srgb,  var(--stroke-base,rgb(247, 249, 254)) 20%, transparent);
+   }
    @media (prefers-color-scheme: light) {
     :root {
         --basiccolor: rgb(0, 28, 155);
         --fill: var(--basiccolor);
-        --stroke: color-mix(in srgb, rgb(247, 249, 254); 20%, transparent);
     }
    }
 
@@ -49,7 +52,6 @@
       :root {
         --basiccolor: rgb(64, 104, 225);
         --fill: var(--basiccolor);
-        --stroke: color-mix(in srgb, rgb(247, 249, 254); 20%, transparent);
       }
    }
   </style>

@@ -4,13 +4,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill-opacity="context-fill-opacity" viewBox="0 0 16 16" height="16" width="16">
   <style>
     path {
-        --iconStroke: black;
-        --icon-fill: #A0A0A0;
+        --iconStroke: context-stroke black;
+        --icon-fill: context-fill #A0A0A0;
     }
     @media (prefers-color-scheme: dark) {
         path { 
-          --iconStroke: white; 
-          --icon-fill: #606060;
+          --iconStroke: context-stroke white; 
+          --icon-fill: context-fill #606060;
         }
     }        
   </style>

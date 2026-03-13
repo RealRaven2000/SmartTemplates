@@ -7,13 +7,13 @@
    >
   <style>
     path {
-      --basiccolor: rgb(20,20,20);
+      --basiccolor: context-stroke rgb(20,20,20);
       --iconStroke: var(--basiccolor);
       --icon-fill: #D00;
     }
     @media (prefers-color-scheme: dark) {
       path { 
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: context-stroke rgb(251,251,254);
         --iconStroke: var(--basiccolor);
         --icon-fill: #A00;
       }

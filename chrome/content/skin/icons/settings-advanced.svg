@@ -19,17 +19,17 @@
      id="defs10" />
   <style>
     path {
-      --basiccolor: rgb(20,20,20);
+      --basiccolor: context-stroke rgb(20,20,20);
       --iconStroke: var(--basiccolor);
-      --icon-fill: #A0A0A0;
-      --stroke-opacity: 0.9;
+      --icon-fill: context-fill #A0A0A0;
+      --stroke-opacity: context-fill-opacity 0.9;
     }
     @media (prefers-color-scheme: dark) {
       path { 
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: context-stroke rgb(251,251,254);
         --iconStroke: var(--basiccolor);
-        --icon-fill: #606060;
-        --stroke-opacity: 0.8;
+        --icon-fill: context-fill #606060;
+        --stroke-opacity: context-fill-opacity 0.8;
       }
     }        
   </style>

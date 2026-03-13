@@ -4,15 +4,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="context-fill" fill-opacity="context-fill-opacity">
   <style>
     path {
-      --basiccolor: rgb(20,20,20);
+      --basiccolor: context-stroke rgb(20,20,20);
       --iconStroke: var(--basiccolor);
-      --icon-fill: #A0A0A0;
+      --icon-fill: context-fill #A0A0A0;
     }
     @media (prefers-color-scheme: dark) {
       path { 
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: context-stroke rgb(251,251,254);
         --iconStroke: var(--basiccolor);
-        --icon-fill: #606060;
+        --icon-fill: context-fill  #606060;
       }
     }  
   </style>

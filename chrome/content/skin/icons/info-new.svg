@@ -42,17 +42,17 @@
        id="style1">
         :root {
             --basiccolor: rgb(20,20,20);
-            --iconStroke: var(--basiccolor);
+            --iconStroke: context-fill var(--basiccolor);
             --icon-fill: #BBB;
-            --fill-opacity: 0.8;
+            --fill-opacity: context-fill-opacity 0.8;
             --font-fill: rgb(251,251,254);
         } 
         @media (prefers-color-scheme: dark) {
          :root { 
             --basiccolor: rgb(251,251,254);
-            --iconStroke: var(--basiccolor);
+            --iconStroke: context-fill var(--basiccolor);
             --icon-fill: #606060;
-            --fill-opacity: 0.8;
+            --fill-opacity: context-fill-opacity 0.8;
             --font-fill: rgb(20,20,20);
          }
         }        

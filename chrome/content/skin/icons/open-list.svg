@@ -17,25 +17,26 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <style>
     path {
-      --basiccolor: rgb(20,20,20);
+      --basiccolor: context-stroke rgb(20,20,20);
       --iconStroke: var(--basiccolor);
-      --icon-fill: #A0A0A0;
+      --icon-fill: context-fill #A0A0A0;
+      --fillopacity: context-fill-opacity 0.9;
     }
     g {
       --linestroke: #0060df;
     }
     @media (prefers-color-scheme: dark) {
       path { 
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: context-stroke rgb(251,251,254);
         --iconStroke: var(--basiccolor);
-        --icon-fill: #606060;
+        --icon-fill: context-fill #606060;
       }
     }        
   </style>
 
   <path
      id="path1"
-     style="fill:var(--iconStroke);fill-opacity:1;stroke-width:0.6;stroke-dasharray:none;"
+     style="fill:var(--iconStroke);fill-opacity:var(--fillopacity);stroke-width:0.6;stroke-dasharray:none;"
      inkscape:label="folder"
      d="M 1.67913,1.2382812 C 0.50092363,1.2382812 0,1.6379646 0,2.8072691 V 13.450753 C 0,14.615221 0.52470119,15 1.6980334,15 H 14.434291 C 15.612497,15 16,14.620058 16,13.450753 V 5.4726562 C 16,4.3033516 15.57469,3.8660016 14.396484,3.8660016 H 8.3730469 L 6.8046875,1.8105469 C 6.4154849,1.4384065 5.8958847,1.2324654 5.3554688,1.2382812 Z M 1.5375281,2.7929688 H 5.6367188 L 6.9296875,4.4140625 H 1.5375281 Z m 6.8003625,2.6484374 c 0.0325,-0.00447 0.1025781,0.03125 0.1425782,0.03125 H 14.396484 V 13.298828 H 1.5375281 V 5.4726562 h 6.7827844 v -0.00977 c 0,-0.013232 0.00674,-0.019996 0.017578,-0.021484 z"
      sodipodi:nodetypes="sssssssscccscccccsscccccsss" />

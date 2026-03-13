@@ -1,4 +1,8 @@
 /** POPUP MENUS **/
+menupopup[id="smarttemplate4@thunderbird.extension"] menu,
+menupopup[id="smarttemplate4@thunderbird.extension"] menuitem {
+  -moz-context-properties: fill, fill-opacity, stroke;
+}
 
 #smartTemplates-settings {
 	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
