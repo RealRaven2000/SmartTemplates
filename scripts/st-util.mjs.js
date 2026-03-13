@@ -52,7 +52,7 @@ export let Util = {
       let elapsed = new String(endTime - this.lastTime); // time in milliseconds
       timePassed = "[" + elapsed + " ms]	 ";
       this.lastTime = endTime; // remember last time
-    } catch {}
+    } catch {;}
     return (
       end.getHours() +
       ":" +
@@ -86,13 +86,13 @@ export let Util = {
 
     console.log(`${errTxt}\n${srcName}:${ex.lineNumber}\n${stack}`);
   },
-  logDebug: async function (msg) {
+  logDebug: async function (_msg) {
     // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
     if ((await Preferences.isDebug) && (await Preferences.isDebugOption("default"))) {
       this.logToConsole(...arguments);
     }
   },
-  logDebugOptional: async function (optionString, msg) {
+  logDebugOptional: async function (optionString, _msg) {
     optionString = arguments[0];
     let options = optionString.split(","); // allow multiple switches
     for (let i = 0; i < options.length; i++) {
@@ -397,7 +397,7 @@ export let Util = {
   },
 
   // 1490
-  resolveDeferred: async function (editor, el, isReplaceField, nodeList) {
+  resolveDeferred: async function (_editor, _el, _isReplaceField, _nodeList) {
     Util.logIssue184("Util.resolveDeferred()");
   },
 
@@ -1317,7 +1317,7 @@ export let Util = {
     }
 
     if (languages != "off") {
-      for (let [key, item] of Object.entries(installedDics)) {
+      for (let [key, _item] of Object.entries(installedDics)) {
         // primary match (full string)
         let l = langArray.findIndex((el) => el == key);
         if (l >= 0) {

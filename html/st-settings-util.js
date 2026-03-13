@@ -8,6 +8,12 @@
   END LICENSE BLOCK 
 */
 
+/*
+	globals
+    SmartTemplates: readonly,
+		getPref: readonly,
+*/
+
 // -------------------------------------------------------
 // TO DO - REIMPLEMENT THE FOLLOWING FUNCTIONS:
 //    -   showLicenseDialog()   - go through background page, don't close tab?
@@ -19,13 +25,6 @@ import { logMissingFunction } from "./st-log.mjs";
 SmartTemplates.Util = {
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
-  __isDebug: false,
-  get isDebug() {
-    return this.__isDebug;
-  },
-  set isDebug(v) {
-    this.__isDebug = v;
-  },
   showAboutConfig: function(filter, readOnly, updateUI=false) {
     // we put the notification listener into tablistener.js - should only happen in ONE main window!
     // el - cannot be cloned! let's throw it away and get target of the event
@@ -72,27 +71,27 @@ SmartTemplates.Util = {
       }
       Util.slideAlert(title, text, icon);
 		}
-		catch(e) {
+		catch {
 			// prevents runtime error on platforms that don't implement nsIAlertsService
 		}
 	},
-
 	isDebug: async function() {
 		return await getPref("debug");
 	},
 
   isDebugOption: async function(option) { // granular debugging
-		if (!this.isDebug)
+		if (await this.isDebug()===false) {
 			return false;
+    }
 		try {
 			return getPref("debug." + option);
 		}
-		catch(e) {return false;}
+		catch {return false;}
 	},
 
-  logDebug: function (msg) {
+  logDebug: async function (_msg) {
 	  // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
-		if (this.isDebug) {
+		if (await this.isDebug()) {
       this.logToConsole(...arguments);
     }
 	},
@@ -103,7 +102,7 @@ SmartTemplates.Util = {
   * @optionString {string}: comma delimited options
   * @msg {string}: text to log 
   */   
-  logDebugOptional: async function(optionString, msg) {
+  logDebugOptional: async function(optionString, _msg) {
     let options = optionString.split(',');
     for (let i=0; i<options.length; i++) {
       let option = options[i];
@@ -127,25 +126,26 @@ SmartTemplates.Util = {
       timePassed = '[' + elapsed + ' ms]   ';
       this.lastTime = endTime; // remember last time
     }
-    catch(e) {;}
+    catch {;}
     return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
   },
 
   // first argument is the option tag
-  logWithOption: function logWithOption(a) {
+  logWithOption: function logWithOption(_a) {
     arguments[0] =  "SmartTemplates "
       +  '{' + arguments[0].toUpperCase() + '} ' 
       + this.logTime() + "\n";
     console.log(...arguments);
   },  
 
-	logToConsole: function (a) {
+	logToConsole: function (_a) {
     let msg = "SmartTemplates Settings\n";
     console.log(msg, ...arguments);
   },  
   logException: function (aMessage, ex) {
 		let stack = '';
 		if (typeof ex.stack!='undefined') {
+			// eslint-disable-next-line no-unused-vars
 			stack = ex.stack.replace("@","\n  ");
 		}
 
@@ -157,8 +157,8 @@ SmartTemplates.Util = {
 		// this.logError(aMessage + "\n" + ex.message, srcName, stack, ex.lineNumber, 0, 0x1); // use warning flag, as this is an exception we caught ourselves
 	} ,
 
-	logHighlightDebug: function(txt, color="white", background="rgb(80,0,0)", ...args) {
-		if (this.isDebug) {
+	logHighlightDebug: async function(txt, color="white", background="rgb(80,0,0)", ...args) {
+		if (await this.isDebug()) {
 			console.log(`SmartTemplates %c${txt}`, `color: ${color}; background: ${background}`, ...args);
 		}
 	},  
