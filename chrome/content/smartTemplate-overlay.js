@@ -1785,6 +1785,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
     }
   }
 
+  // quoteLevel: this optional parameter defaults to 1
   const MIN_QUOTELEVEL = 1;
 
   /* Remove quoted texts */
@@ -1878,6 +1879,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
           let quotes = Array.from(rootEl.querySelectorAll("span[style*=white-space]"));
 
           if (isForwardInline) {
+            // [issue 172] treat forwarded text as "quote" with quoteLevel=0
             quotes = rootEl.querySelectorAll("div.moz-forward-container");
           }
 
