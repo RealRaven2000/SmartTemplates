@@ -253,6 +253,7 @@ permalink: version.html
 
 
 <a id="4.18"> &nbsp; </a>
+<a id="4.18.1"> &nbsp; </a>
 <li>
   <h4>
 		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.18">
@@ -263,7 +264,7 @@ permalink: version.html
 		</span>
   </h4>
   <ul>
-    <h5 class="inList"><span class="inListTitle">Maintenance Release 4.18.1 (WIP)</span></h5>     
+    <h5 class="inList"><span class="inListTitle">Maintenance Release 4.18.1 (awaiting review)</span></h5>     
     <li>
       <p>
         Remove unnecessary Warning when changing Identity (often caused by Identity Chooser)
@@ -273,9 +274,12 @@ permalink: version.html
         will lead to SmartTemplates unnecessarily warning of potential data loss,
         even if the user hasn't typed anything.
       </p>
-      <img class="screenshot" src="img/modified-warning.png" alt="Identity change warning" />
+      <img class="screenshot" 
+           src="img/modified-warning.png" 
+           alt="Identity change warning"
+           style="max-width: 600px;" />
       <p>
-        This was especially annoying With Add-ons like 
+        This was especially jarring with Add-ons such as  
         <a href="https://addons.thunderbird.net/en-US/thunderbird/addon/identity-chooser/">identity chooser</a>, 
         which forces the user to always select an identity.
         In the new version, SmartTemplates will store a checksum of the contents of the 
@@ -286,7 +290,10 @@ permalink: version.html
         There is a new option in General >> Signatures, which allows adding the correct signature
         while keeping the text of the email unchanged to avoid work loss.
       </p>
-      <img class="screenshot" src="img/replace-signature-after-edits.png" alt="Replace signature after edits" />
+      <img class="screenshot" 
+        src="img/replace-signature-after-edits.png" 
+        alt="Replace signature after edits (option)"
+        style="max-width: 600px;" />
       
     </li>
     <li>
