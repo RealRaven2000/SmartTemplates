@@ -4,7 +4,14 @@ The full change log with screen shots [can be found here](https://smarttemplates
 
 *   Compatibility with Thunderbird 150
 *   Remove unnecessary Warning when changing Identity (often caused by Identity Chooser Add-on) [issue #415]
-*   All menu Icons should reflect the main theme color [issue #416]
+
+    Since Thunderbird 131, selecting a different identity for the from address will always set a "modified" flag that signals that the email was edited. This will lead to SmartTemplates unnecessarily warning of potential data loss, even if the user hasn't typed anything.
+
+    This was especially jarring With Add-ons like [identity chooser](https://addons.thunderbird.net/en-US/thunderbird/addon/identity-chooser/), which forces the user to always select an identity.
+
+    In the new version, SmartTemplates will store a checksum of the contents of the current template and then will compare this with the contents when a new identity is selected. If the contents are identical, then no warning will be shown.
+
+There is a new option in General >> Signatures, which allows adding the correct signature while keeping the text of the email unchanged to avoid work loss.
 
 **Improvements**
 
