@@ -1,5 +1,10 @@
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.18) 
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.18.1) 
 
+**Maintenance Release 4.18.1**
+
+*   Compatibility with Thunderbird 150
+*   Remove unnecessary Warning when changing Identity (often caused by Identity Chooser Add-on) [issue #415]
+*   All menu Icons should reflect the main theme color [issue #416]
 
 **Improvements**
 

@@ -1,28 +1,25 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-<b>This release extends compatibility to Tb148, and adds new features around external template management.</b>
+<b>This release extends compatibility to Tb150, and adds new features around external template management.</b>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.18">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.18.1">can be found here</a>
 
 
-<b>Improvements</b>
+
+**Maintenance Release 4.18.1**
+
 <ul>
-<li> Enhancement: Import external templates menus from other profile <a href="https://github.com/RealRaven2000/SmartTemplates/issues/414">[issue 414]</a>. When opening a smartTemplates.json file from another profile, which is typically stored in the profile/extensions subfolder,this will import the list from the selected editing mode (write / reply / forward or snippets). 
+<li> Compatibility with Thunderbird 150 </li>
+<li> Remove unnecessary Warning when changing Identity (often caused by Identity Chooser Add-on) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/415">[issue 415]</a> 
 
-All imported menu items are moved to the top of the list in he order read from the file contents.
+Since Thunderbird 131, selecting a different identity for the from address will always set a "modified" flag that signals that the email was edited. This will lead to SmartTemplates unnecessarily warning of potential data loss, even if the user hasn't typed anything.
 
-If the an entry exists with the same name / category, or with the same file path (within the current editing mode), then it will be replaced with the entry from the imported file. So this could also be used to reorganize or rename existing templates.</li>
-<li> Enhancement: Import members of a Named Mailing List from template (using %header.set%) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/411">[issue 411]</a>.
+This was especially annoying With Add-ons like <a href="https://addons.thunderbird.net/en-US/thunderbird/addon/identity-chooser/">identity chooser</a>, which forces the user to always select an identity.
 
-Example: <code>%header.set(to,"list:listName")%</code> this will read all standard address books (not cardbook) and searches for lists named <i>listName</i>. Uses the primary email address of all members  of the list, so you can set to, cc or bcc.</li>
-<li> Support relative file paths for <code>%attach()%</code> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/335">[issue 335]</a></li>
-<li> Improvements for correcting "Lastname, Firstname" <a href="https://github.com/RealRaven2000/SmartTemplates/issues/305">[issue 305]</a> </li>
-<li> Added documentation for setting priority to variables window. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/412">[issue 412]</a></li>
-<li> Modernized icons of external template toolbar. </li>
-</ul>
+In the new version, SmartTemplates will store a checksum of the contents of the current template and then will compare this with the contents when a new identity is selected. If the contents are identical, then no warning will be shown.
 
-<b>Miscellaneus</b>
-<ul>
-<li> removed Console chatter about Cardbook and any matched address book cards. </li>
+There is a new option in General >> Signatures, which allows adding the correct signature while keeping the text of the email unchanged to avoid work loss.
+</li>
+<li> All menu Icons should reflect the main theme color <a href="https://github.com/RealRaven2000/SmartTemplates/issues/416">[issue 416]</a> </li>
 </ul>

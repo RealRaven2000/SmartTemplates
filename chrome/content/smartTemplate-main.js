@@ -347,7 +347,9 @@ END LICENSE BLOCK
     # removed console chatter about matched addressbook cards (use debug.adressbook switch to enable detail)
 
   Version 4.18.1 - WIP
+    # Compatibility with Thunderbird 150
     # [issue 415] Remove unnecessary Warning when changing Identity (often caused by Identity Chooser Add-on)
+    # [issue 416] All menu Icons should reflect the main theme color
 
 
 =========================
