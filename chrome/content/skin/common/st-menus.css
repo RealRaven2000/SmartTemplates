@@ -7,10 +7,13 @@ menupopup[id="smarttemplate4@thunderbird.extension"] menuitem {
 #smartTemplates-settings {
 	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
   fill: currentColor;
+  -moz-context-properties: fill, fill-opacity, stroke;
 }
+
 #smartTemplates-settings-new {
 	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
   fill: red;
+  -moz-context-properties: fill, fill-opacity, stroke;  
 }
 #smartTemplates-headerMenuAPI, #smartTemplates-MruMenuAPI {
   list-style-image: url("chrome://smarttemplate4/content/skin/icons/webex.png") !important;
@@ -19,6 +22,7 @@ menupopup[id="smarttemplate4@thunderbird.extension"] menuitem {
 #smartTemplates-docs {
 	list-style-image: url("chrome://smarttemplate4/content/skin/icons/docs.svg") !important;
   stroke: currentColor;
+  -moz-context-properties: fill, fill-opacity, stroke;  
 }
 
 #smartTemplates-tests {
@@ -37,29 +41,36 @@ menupopup[id="smarttemplate4@thunderbird.extension"] menuitem {
 
 #smartTemplates-write-menu {
   list-style-image: var(--icon-new-mail);
+  fill: color-mix(in srgb, currentColor 20%, transparent) !important;
+  -moz-context-properties: fill, fill-opacity, stroke;
 }
 
 /* reply, reply to sender */
 #smartTemplates-reply-menu {
   list-style-image: var(--icon-reply);
+  -moz-context-properties: fill, fill-opacity, stroke;
 }
 
 #smartTemplates-reply-all-menu {
   list-style-image: var(--icon-reply-all);
+  -moz-context-properties: fill, fill-opacity, stroke;
 }
 
 #smartTemplates-reply-list-menu {
   list-style-image: var(--icon-reply-list);
+  -moz-context-properties: fill, fill-opacity, stroke;
 }
 
 
 #smartTemplates-forward-menu {
   list-style-image: var(--icon-forward);
+  -moz-context-properties: fill, fill-opacity, stroke;
 }
 
 /* future */
 #smartTemplates-replyall-menu {
   list-style-image: var(--icon-reply-all);
+  -moz-context-properties: fill, fill-opacity, stroke;
 }
 #smartTemplates-replylist-menu {
   list-style-image: var(--icon-reply-list);
@@ -69,10 +80,12 @@ menupopup[id="smarttemplate4@thunderbird.extension"] menuitem {
 /* test */
 #SmartTemplates-reply {
   list-style-image: var(--icon-reply);
+  -moz-context-properties: fill, fill-opacity, stroke;
 }
 
 #SmartTemplates-forward {
   list-style-image: var(--icon-forward), linear-gradient(to left bottom, red, blue);
+  -moz-context-properties: fill, fill-opacity, stroke;
 }
 
 

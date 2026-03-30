@@ -10,8 +10,7 @@
 
 /*
 	globals
-    SmartTemplates: readonly,
-		getPref: readonly,
+    SmartTemplates: readonly
 */
 
 // -------------------------------------------------------
@@ -76,7 +75,7 @@ SmartTemplates.Util = {
 		}
 	},
 	isDebug: async function() {
-		return await getPref("debug");
+    return await messenger.LegacyPrefs.getPref(`extensions.smartTemplate4.debug`);
 	},
 
   isDebugOption: async function(option) { // granular debugging
@@ -84,7 +83,7 @@ SmartTemplates.Util = {
 			return false;
     }
 		try {
-			return getPref("debug." + option);
+			return await messenger.LegacyPrefs.getPref(`extensions.smartTemplate4.debug.${option}`);
 		}
 		catch {return false;}
 	},
