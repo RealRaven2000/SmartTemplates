@@ -1,5 +1,13 @@
 The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.18.1) 
 
+
+This maintenance release extends compatibility to Thunderbird v151, and adds more theme compatibility improvements.
+
+**Maintenance Release 4.18.2**
+*   Compatibility with Thunderbird 151
+*   more theme compatibility improvements
+
+
 **Maintenance Release 4.18.1**
 
 *   Compatibility with Thunderbird 150
