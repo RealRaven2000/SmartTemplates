@@ -355,6 +355,10 @@ END LICENSE BLOCK
     # Compatibility with Thunderbird 151
     # More fixes for coloring of menu icons in dark mode [issue 416]
 
+  Version 4.18.3 - WIP
+    # [issue 417] sandbox script stops functioning in Tb 150 beta 3
+
+
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

@@ -21,6 +21,7 @@ END LICENSE BLOCK
 
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
 var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+var SmartTemplates_Sandbox_Strings = parseInt(AppConstants.MOZ_APP_VERSION, 10) <149;
 var { MailServices } = SmartTemplates_ESM
   ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
   : ChromeUtils.import("resource:///modules/MailServices.jsm");
@@ -4151,6 +4152,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     const allContextualHeaders = [...new Set([...ContextualParams, ...userDefinedHeaders])];
 
     async function replaceJavascript(dmy, script) {
+      const isDebugSandbox = prefs.isDebugOption("sandbox");
       util.logDebugOptional("sandbox", `replaceJavascript() ${script}`);
       if (!sandbox) {
         sandbox = new Cu.Sandbox(window, {
@@ -4159,31 +4161,47 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           wantXrays: true,
         });
 
+        // [issue 417] - prototype mutation not allowed from 150
+        // ST replaces String.prototype and removes all hacks.
+        // will require variable() instead of variable to use built in variables without parameters.
+        sandbox.ST = {
+          contains: (s, x, i = 0) => String(s).indexOf(x, i) >= 0,
+
+          containsSome: (s, arr) => arr.some((v) => String(s).indexOf(v) >= 0),
+
+          count: (s, x, i = 0) => {
+            s = String(s);
+            let c = 0,
+              p = s.indexOf(x, i);
+            while (p !== -1) {
+              c++;
+              p = s.indexOf(x, p + 1);
+            }
+            return c;
+          },
+        };
+
         //useful functions (especially if you want to change the template depending on the received message)
         sandbox.choose = function (a) {
           return a[Math.floor(Math.random() * a.length)];
         };
-        sandbox.String.prototype.contains = function (s, startIndex) {
-          return this.indexOf(s, startIndex) >= 0;
-        };
-        sandbox.String.prototype.containsSome = function (a) {
-          return a.some(function (s) {
-            return this.indexOf(s) >= 0;
-          }, this);
-        };
-        sandbox.String.prototype.count = function (s, startIndex) {
-          let count = 0;
-          let pos = this.indexOf(s, startIndex);
-          while (pos != -1) {
-            count += 1;
-            pos = this.indexOf(s, pos + 1);
-          }
-          return count;
-        };
+
+
+        // These are NOT string.prototype methods and cannot be chained (no prototype hacks anymore)
+        sandbox.contains = sandbox.ST.contains;
+        sandbox.containsSome = sandbox.ST.containsSome;
+        sandbox.count = sandbox.ST.count;
+
+        if (SmartTemplates_Sandbox_Strings) {
+          sandbox.String.prototype.contains = sandbox.ST.contains;
+          sandbox.String.prototype.containsSome = sandbox.ST.containsSome;
+          sandbox.String.prototype.count = sandbox.ST.count;
+        }        
+
         sandbox.variable = async function (name, arg) {
           arg = arg || "";
           // eslint-disable-next-line no-debugger
-          if (prefs.isDebugOption("sandbox")) {debugger;}
+          if (isDebugSandbox) {debugger;}
           let retVariable = await replaceReservedWords("", name, arg || "", { isEval: true });
           // await SmartTemplate4.Util.replaceAsync(str, /%([\w-]+)%/gm, replaceReservedWords)
           const retVal = removeEmptyString(retVariable);
@@ -4195,7 +4213,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         };
         // eventually, "new Function()" will be deprecated. Don't exactly know when.
         var implicitNull = {},
-          stringFunctionHack = {},
+          stringFunctionHack = {}, // obsolete from Tb150
           // overloading our strings using sandbox
           props = [
             "charAt",
@@ -4228,24 +4246,33 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             "includes",
           ];
         
-        for (let i = 0; i < props.length; i++) {
-          let s = props[i];
-          stringFunctionHack[s] = sandbox.String.prototype[s];
+        if (SmartTemplates_Sandbox_Strings) { // before Thunderbird 149, String.prototype was not frozen
+          for (let i = 0; i < props.length; i++) {
+            let s = props[i];
+            stringFunctionHack[s] = sandbox.String.prototype[s];
+          }
+          stringFunctionHack.valueOf = function () {
+            return this(implicitNull);
+          };
+          stringFunctionHack.toString = function () {
+            return this(implicitNull);
+          };          
         }
-
-        stringFunctionHack.valueOf = function () {
-          return this(implicitNull);
-        };
-        stringFunctionHack.toString = function () {
-          return this(implicitNull);
-        };
 
         for (let name in TokenMap) {
           const transposedName = name.replaceAll(".", "_"); // [349] allow composite functions
           sandbox[transposedName] = (function (aname) {
-            return async function (...args) {
+            const fn = async function (...args) {
+              if (isDebugSandbox) {
+                console.log("CALL:", aname, args);
+              }
+              const rawArgs = [...args];
               // eslint-disable-next-line no-debugger
               if (prefs.isDebugOption("sandbox")) {debugger;}
+              fn._stTraceArguments = {
+                token: aname,
+                rawArgs,
+              };              
 
               const processedArgs = args.map((arg) => {
                 if (arg === undefined || arg === null) {
@@ -4277,9 +4304,6 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               });
 
 
-              // Handle the case %%name(arg)%% and return the same as %name(arg)%
-              // arg = arg === implicitNull ? "" : "(" + [...arguments].join(",") + ")"; // []
-
               // If arguments exist, wrap them in parentheses; otherwise, no parentheses
               const finalArgs = processedArgs.length > 0 ? `(${processedArgs.join(",")})` : "";
 
@@ -4296,16 +4320,21 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               let sbVal = removeEmptyString(
                 await replaceReservedWords("", origName, finalArgs, { isEval: true })
               );
+
               return sbVal;
             };
+            fn.displayName = aname;
+            fn._stName = aname;
+
+            return fn;
           })(name);
 
-          // Complex hack so that sandbox[name] is a function that can be called with
-          // (sandbox[name]) and (sandbox[name](...))
-          // sandbox[transposedName].__proto__ = stringFunctionHack;
-
-          // Use Object.assign instead of prototype manipulation
-          Object.assign(sandbox[transposedName], stringFunctionHack);
+          if (SmartTemplates_Sandbox_Strings) { 
+            // Legacy: removed string-function mirroring; 
+            // TB150 sandbox blocks Object.assign on non-extensible function objects
+            // Previously Object.assign was used instead of prototype manipulation
+            Object.assign(sandbox[transposedName], stringFunctionHack);
+          }
 
           // does not work:( sandbox[name].__defineGetter__("length", (function(aname){return function(){return sandbox[aname].toString().length}})(name));
         } // for
@@ -4341,36 +4370,71 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         ) {
           x = x?.toString() || "";
         } else {
-          console.log("Unexpected result after Cu.evalInSandbox: ", x);
-          x = "eval Problem - see error console";
+          let hint = "";
+          // extract last bare return symbol (very lightweight, no full parsing)
+          if (typeof x === "function" && x._stName && TokenMap[x._stName]) {
+            hint =
+              `Hint: '${x._stName}' looks uncalled. ` + `Try '${x._stName}()' or 'await ${x._stName}()'.`;
+          }
+
+          console.log(
+            "%cSandbox unexpected result",
+            "background:#7a0000;color:#ffd400;padding:2px 6px;border-radius:3px;font-weight:bold;",
+            hint || "",
+            { result: x, script }
+          );
+          x = "eval Problem - Please check error console for detail";
         }
       } catch (ex) {
-        if (ex instanceof ReferenceError) {
-          SmartTemplate4.Util.logException("Sandbox Script: ReferenceError", ex);
+        if (ex instanceof SyntaxError || ex.name === "SyntaxError") {
+          SmartTemplate4.Util.logException("Sandbox Script: SyntaxError", ex);
+
           console.log(
-            "A ReferenceError occurred. It might be a mistyped variable in SmartTemplates."
+            "%cSandbox SyntaxError",
+            "background:#7a0000;color:#ffd400;padding:2px 6px;border-radius:3px;font-weight:bold;",
+            { message: ex.message, script },
           );
-          // Optionally pass the error to the user (or log it for debugging)
-          alert(
-            "ReferenceError in Sandboxed SmartTemplates script: It seems a variable was mistyped. Please check your input:\n" +
-              ex
-          );
+
+          x =
+            "<b>SANDBOX ERROR(1):</b><br>" +
+            "<pre>Syntax error in template - Please check error console for detail.</pre>";
         } else if (
-          (ex instanceof TypeError || ex.name == "TypeError")  &&
+          (ex instanceof TypeError || ex.name == "TypeError") &&
           (ex.message.includes("can't convert") || ex.message.includes("to primitive type"))
         ) {
           x =
-            "<b>SANDBOX ERROR:</b> <br>" +
-            "<pre>Possible missing 'await' when accessing a SmartTemplates variable.\n" +
+            "<b>SANDBOX ERROR(2):</b> <br>" +
+            "<tt>Possible missing 'await' when accessing a SmartTemplates variable.\n" +
             "Make sure all SmartTemplates variables that return a function are awaited.\n" +
-            "Example: Instead of `dateformat_received()`, use `await dateformat_received()`.</pre>";
-        } 
+            "Example: Instead of `dateformat_received()`, use `await dateformat_received()`.</tt>";
+        } else if (ex instanceof ReferenceError || ex.name === "ReferenceError") {
+          // "ReferenceError: mail is not defined" 
+          // - try to extract the variable name from the error message
+          const m = ex.message.match(/^([a-zA-Z_$][\w$]*)\s+is not defined/);
+          const token = m ? m[1] : null;
+
+          let hint = "";
+          if (token && sandbox.contextualHeaders["$" + token]) {
+            hint = `You could mean '$${token}' - as this exists as a contextual literal parameter.`;
+          }
+
+          console.log(
+            "%cSandbox ReferenceError",
+            "background:#7a0000;color:#ffd400;padding:2px 6px;border-radius:3px;font-weight:bold;",
+            { message: ex.message, script },
+          );
+          if (hint) {
+            console.log(hint)
+          }
+
+          x =
+            "<b>SANDBOX ERROR(4):</b>" +
+            `<tt>${ex.toString().replaceAll("\n", "<br>")}</tt> - Please check error console for detail`;
+        }
         if (!x) {
           x =
-            "<b>SANDBOX ERROR:</b><br>" +
-            "<pre>" +
-            ex.toString().replaceAll("\n", "<br>") +
-            "</pre>";
+            "<b>SANDBOX ERROR(3):</b>" +
+            `<tt>${ex.toString().replaceAll("\n", "<br>")}</tt>`;
         }
         
       }
