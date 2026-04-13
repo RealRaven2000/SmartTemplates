@@ -4355,6 +4355,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       }, {});
 
       var x;
+      const Error_Style = "background:#7a0000;color:#ffd400;padding:2px 6px;font-weight:bold;";
       try {
         // eslint-disable-next-line no-debugger
         if (prefs.isDebugOption("sandbox")) {debugger;}
@@ -4370,30 +4371,24 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         ) {
           x = x?.toString() || "";
         } else {
-          let hint = "";
+          let hint = "(no token detail available)";
           // extract last bare return symbol (very lightweight, no full parsing)
           if (typeof x === "function" && x._stName && TokenMap[x._stName]) {
             hint =
               `Hint: '${x._stName}' looks uncalled. ` + `Try '${x._stName}()' or 'await ${x._stName}()'.`;
           }
 
-          console.log(
-            "%cSandbox unexpected result",
-            "background:#7a0000;color:#ffd400;padding:2px 6px;border-radius:3px;font-weight:bold;",
-            hint || "",
-            { result: x, script }
-          );
+          console.log("%cSandbox unexpected result", Error_Style, hint || "", {
+            result: x,
+            script,
+          });
           x = "eval Problem - Please check error console for detail";
         }
       } catch (ex) {
         if (ex instanceof SyntaxError || ex.name === "SyntaxError") {
           SmartTemplate4.Util.logException("Sandbox Script: SyntaxError", ex);
 
-          console.log(
-            "%cSandbox SyntaxError",
-            "background:#7a0000;color:#ffd400;padding:2px 6px;border-radius:3px;font-weight:bold;",
-            { message: ex.message, script },
-          );
+          console.log("%cSandbox SyntaxError", Error_Style, { message: ex.message, script });
 
           x =
             "<b>SANDBOX ERROR(1):</b><br>" +
@@ -4418,11 +4413,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             hint = `You could mean '$${token}' - as this exists as a contextual literal parameter.`;
           }
 
-          console.log(
-            "%cSandbox ReferenceError",
-            "background:#7a0000;color:#ffd400;padding:2px 6px;border-radius:3px;font-weight:bold;",
-            { message: ex.message, script },
-          );
+          console.log("%cSandbox ReferenceError", Error_Style, { message: ex.message, script });
           if (hint) {
             console.log(hint)
           }
