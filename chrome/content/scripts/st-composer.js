@@ -169,10 +169,10 @@ function onUnload(isAddOnShutDown) {
       window.removeEventListener(`SmartTemplates.BackgroundUpdate.${m}`, mylisteners[m]);
     }    
     
-    window.document.getElementById('smarttemplate4-cleandeferred').remove();  
-    window.document.getElementById('smarttemplate4-changeTemplate').remove();  
-    window.document.getElementById('smarttemplate4-insertSnippet').remove();  
-    window.document.getElementById('SmartTemplate4-ComposerPopupSet').remove();
+    window.document.getElementById('smarttemplate4-cleandeferred')?.remove();  
+    window.document.getElementById('smarttemplate4-changeTemplate')?.remove();  
+    window.document.getElementById('smarttemplate4-insertSnippet')?.remove();  
+    window.document.getElementById('SmartTemplate4-ComposerPopupSet')?.remove();
     // see: SmartTemplate4.init()
   
     // deprecated test code (from 3.12.3pre***)
