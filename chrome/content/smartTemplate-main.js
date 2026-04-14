@@ -355,7 +355,9 @@ END LICENSE BLOCK
     # Compatibility with Thunderbird 151
     # More fixes for coloring of menu icons in dark mode [issue 416]
 
-  Version 4.18.3 - WIP
+  Version 4.19 - WIP
+    # [issue 418] Set Minimum Version to Thunderbird 140 to avoid problems with deprecated APIs 
+    #             and to focus on modern Thunderbird versions.
     # [issue 417] sandbox script stops functioning in Tb 150 beta 3
 
 

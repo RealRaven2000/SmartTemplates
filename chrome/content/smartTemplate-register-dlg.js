@@ -12,11 +12,7 @@
 
 
 /* [mx-l10n] This module handles front-end code for the licensing dialog  */
-var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-var { MailServices } = SmartTemplates_ESM
-  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-  : ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { MailServices } =  ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
 
 // removed UI function from SmartTemplate4.Licenser
 var Register = {

@@ -20,25 +20,15 @@ END LICENSE BLOCK
 
 
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 var SmartTemplates_Sandbox_Strings = parseInt(AppConstants.MOZ_APP_VERSION, 10) <149;
-var { MailServices } = SmartTemplates_ESM
-  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-  : ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { MailServices } =  ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
 
 // eslint-disable-next-line no-unused-vars
-var { VCardProperties } = SmartTemplates_ESM
-  ? ChromeUtils.importESModule("resource:///modules/VCardUtils.sys.mjs")
-  : ChromeUtils.import("resource:///modules/VCardUtils.jsm");
+var { VCardProperties } = ChromeUtils.importESModule("resource:///modules/VCardUtils.sys.mjs");
 // We use this as a display consumer
 // nsIStreamListener
-var { MsgHdrToMimeMessage } = SmartTemplates_ESM
-  ? ChromeUtils.importESModule("resource:///modules/gloda/MimeMessage.sys.mjs")
-  : ChromeUtils.import( "resource:///modules/gloda/MimeMessage.jsm" );
-
-var { MimeParser } = SmartTemplates_ESM
-  ? ChromeUtils.importESModule("resource:///modules/mimeParser.sys.mjs")
-  : ChromeUtils.import("resource:///modules/mimeParser.jsm");
+var { MsgHdrToMimeMessage } = ChromeUtils.importESModule("resource:///modules/gloda/MimeMessage.sys.mjs");
+var { MimeParser } = ChromeUtils.importESModule("resource:///modules/mimeParser.sys.mjs");
 
 
 //******************************************************************************
@@ -3856,9 +3846,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
   // [Bug 25871] %file()% function
   async function insertFileLink(txt, composeType) {
     util.logDebug("insertFileLink " + txt);
-		const { FileUtils } = SmartTemplates_ESM
-      ? ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs")
-      : ChromeUtils.import("resource://gre/modules/FileUtils.jsm");    
+		const { FileUtils } = ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs");
     // isFU = true; // FileUtils.File exists
 								
     // determine file type:
@@ -4063,10 +4051,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     const newPath = util.getPathFolder(currentPath, path);
 
 		try {			
-      const { FileUtils } = SmartTemplates_ESM
-        ? ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs")
-        : ChromeUtils.import("resource://gre/modules/FileUtils.jsm");    
-			
+      const { FileUtils } = ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs");
 			if (!FileUtils) {
 				alert("No FileUtils in this platform - %attach% is not supported. Are you on an old version of " + util.Application + "?");
 				return;
