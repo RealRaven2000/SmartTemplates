@@ -15,7 +15,11 @@ END LICENSE BLOCK
     SmartTemplates_Discounts: readonly
 */
 
-var { MailServices } =  ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var SmartTemplates_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+var { MailServices } = SmartTemplates_ESM
+  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+  : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 
 
@@ -31,7 +35,11 @@ SmartTemplate4.Util = {
   ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
   get isESM() {
-    return true;
+    var { AppConstants } = ChromeUtils.importESModule(
+      "resource://gre/modules/AppConstants.sys.mjs",
+    );
+    const ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+    return ESM;
   },
   mAppver: null,
   mAppName: null,
@@ -945,7 +953,7 @@ SmartTemplate4.Util = {
     return null;
   },
 
-  getTabMode: function (tabInfo) {
+  getTabMode: function getTabMode(tabInfo) {
     // Tb 115: mailMessageTab or mail3PaneTab for mail related tabs
     if (tabInfo && tabInfo.mode) {
       // Tb / Sm
@@ -3390,7 +3398,10 @@ SmartTemplate4.Util = {
       let folders = window.GetSelectedMsgFolders();
       if (folders.length == 1) {
         // select the correct server that applies to the current folder.
-        var { MailUtils } = ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs");
+        var { MailUtils } = SmartTemplates_ESM
+          ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
+          : ChromeUtils.import("resource:///modules/MailUtils.jsm");
+
         [currentServerId] = MailUtils.getIdentityForServer(folders[0].server);
       }
     }
