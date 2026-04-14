@@ -1604,7 +1604,6 @@ SmartTemplate4.fileTemplates = {
 <style>
   ${html}
 </style>
-
         `;
       } else {
         code = await SmartTemplate4.smartTemplate.getProcessedText(
@@ -1824,11 +1823,7 @@ SmartTemplate4.fileTemplates = {
 			}
 		}						
 					
-    var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-    const ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-		const { FileUtils } = ESM
-      ? ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs")
-      : ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
+    const { FileUtils } = ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs");
 				
 		try {
 			// code from template-disk.jsm readHTMLTemplateFile()
