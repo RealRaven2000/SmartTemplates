@@ -228,7 +228,7 @@ permalink: version.html
       Version 4.* - Work in Progress</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">115.0 - 148.*</span>
+			<span class="thunderbird">140.0 - 151.*</span>
 		</span>
   </h4>
   <ul>
@@ -250,6 +250,50 @@ permalink: version.html
       - Miscellaneous
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
+
+
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.19">
+      Version 4.19 - 23/04/2026</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">140.0 - 151.*</span>
+		</span>
+  </h4>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li> 
+      Set Minimum Version to Thunderbird 140 to avoid problems with deprecated APIs 
+      and to focus on modern Thunderbird versions <a href="https://github.com/RealRaven2000/SmartTemplates/issues/418">[issue 418]</a>
+      <p>
+        Future development will focus on Thunderbird ESR 140 and the upcoming 153 release. 
+        Thunderbird platform changes require replacing legacy features such as 
+        preference storage and file access with modern APIs.
+      </p>
+      <p>
+        New file access APIs are currently being implemented and may only be available in 
+        newer Thunderbird versions. Most development effort over the next three months will be dedicated to this work to future-proof SmartTemplates.
+      </p>
+    </li>
+    
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li>
+      Fixed: Sandbox script stops functioning in Tb 150 beta 3 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/417">[issue 417]</a> 
+      because the string prototype modification was deprecated in Thunderbird 150.
+      <p>
+        From version 149 forward, we require the syntax <code class="html">from()</code> when 
+        the variable has no parameters. Chaining of variables can be done using the form 
+        <code class="html">(await from()).someStringFunction()</code>.
+      </p>
+      <p>
+        Added detailed diagnostics for syntax problems with literal parameters <code class="html">($mail)</code>
+        or missing empty parameters <code class="html">()</code>.
+      </p>
+    </li>
+  </ul>
+</li> 
 
 
 <a id="4.18"> &nbsp; </a>
