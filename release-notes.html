@@ -1,22 +1,16 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-<b>This maintenance release extends compatibility to Thunderbird v151, and adds more theme compatibility improvements.</b>
-
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.18.2">can be found here</a>
-
-
 <ul>
-<li> Compatibility with Thunderbird 151 </li>
-<li> Remove unnecessary Warning when changing Identity (often caused by Identity Chooser Add-on) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/415">[issue 415]</a> 
+<li> Minimum Thunderbird Version was set to 140 to avoid problems with deprecated APIs and to focus on modern Thunderbird versions <a href="https://github.com/RealRaven2000/SmartTemplates/issues/418">[issue 418]</a>. 
 
-Since Thunderbird 131, selecting a different identity for the from address will always set a "modified" flag that signals that the email was edited. This will lead to SmartTemplates unnecessarily warning of potential data loss, even if the user hasn't typed anything.
+Future development will focus on Thunderbird ESR 140 and the upcoming 153 release. Thunderbird platform changes require replacing legacy features such as preference storage and file access with modern APIs.
 
+New file access APIs are currently being implemented and may only be available in newer Thunderbird versions. Most development effort over the next three months will be dedicated to this work to future-proof SmartTemplates.
+</li>
+<li> Fixed: Sandbox script stops functioning in Tb 150 beta 3 <a href="https://github.com/RealRaven2000/SmartTemplates/issues/417">[issue 417]</a> because string prototype modification was deprecated in Thunderbird 150.
 
-    This was especially jarring With Add-ons like <a href="https://addons.thunderbird.net/en-US/thunderbird/addon/identity-chooser/">identity chooser</a>, which forces the user to always select an identity.
+From version 149 onward, we require the syntax `from()` when the variable has no parameters. Chaining of variables can be done using the form `(await from()).someStringFunction()`.
 
-    In the new version, SmartTemplates will store a checksum of the contents of the current template and then will compare this with the contents when a new identity is selected. If the contents are identical, then no warning will be shown.
-
-There is a new option in General >> Signatures, which allows adding the correct signature while keeping the text of the email unchanged to avoid work loss.</li>
-<li> All menu Icons should reflect the main theme color <a href="https://github.com/RealRaven2000/SmartTemplates/issues/416">[issue 416]</a> </li>
+Added detailed diagnostics for syntax problems with literal parameters ($mail) or missing empty parameters `()`. </li>
 </ul>

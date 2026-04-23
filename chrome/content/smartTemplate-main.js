@@ -356,9 +356,10 @@ END LICENSE BLOCK
     # More fixes for coloring of menu icons in dark mode [issue 416]
 
   Version 4.19 - WIP
+    # new Github Default branch ESR140
     # [issue 418] Set Minimum Version to Thunderbird 140 to avoid problems with deprecated APIs 
     #             and to focus on modern Thunderbird versions.
-    # [issue 417] sandbox script stops functioning in Tb 150 beta 3
+    # [issue 417] sandbox script stopped functioning in Tb 150 beta 3
 
 
 

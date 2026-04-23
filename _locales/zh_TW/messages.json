@@ -1943,7 +1943,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L}{bold}維護版本 4.18.1:{/bold} 在郵件編輯過程中切換身份時防止資料遺失 [issue 415]{P}SmartTemplates 現在會在覆蓋已編輯內容前發出警告。按 [[{+cancel_button}]] 可不載入新模板，同時保持郵件內容不變。{/P}{P}一個新選項允許在取消身份變更後追加正確的帳戶簽名，無需手動重新插入。{/P}{/L}{L}從其他設定檔匯入外部範本選單 [issue 414]{P}從其他設定檔打開 smartTemplates.json 檔案，並匯入所選編輯模式的範本選單 ({+new.tab}, {+rsp.tab}, {+fwd.tab}, {+snippets.head})。{/P}{/L}{L}從範本匯入通訊錄列表的成員使用 {{%header.set(to,\"list:listName\")%}} [issue 411]{P}解析列表 {{listName}} 中的所有成員，並將其主要電子郵件地址分配給 To、Cc 或 Bcc。{/P}{/L}{L}支援 {{%attach()%}} 的相對檔案路徑 [issue 335]{/L}{L}改進顯示名稱 \"{+names.swap}\" 的姓名啟發式 [issue 305]{P}包含新選項 \"{+names.swap.name}\"{/P}{/L}{L}在變數視窗中添加設定變數優先順序的文件 [issue 412]{/L}{L}外部範本工具列圖示現代化{/L}"
+    "message": "{L}Thunderbird 的最低版本已設為 140，以避免已棄用 API 的問題，並專注於現代 Thunderbird 版本 [issue 418]{P}未來開發將專注於 Thunderbird ESR 140 以及即將推出的 153 版本。Thunderbird 平台的變更需要將舊功能（如偏好設定儲存與檔案存取）替換為現代 API。{/P}{P}新的檔案存取 API 正在開發中，可能僅在較新的 Thunderbird 版本中可用。未來三個月的大部分開發工作將集中於此轉換，以使 SmartTemplates 具備未來相容性。{/P}{/L}{L}已修正：Sandbox 腳本在 Tb 150 beta 3 中停止運作 [issue 417]{P}自 149 版本起，當變數沒有參數時需使用 {{from()}} 語法。可透過 {{(await from()).someStringFunction()}} 進行鏈式呼叫。{/P}{P}新增語法錯誤的詳細診斷，包括字面參數（{{$mail}}）或缺少的空括號 {{()}}。{/P}{/L}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"
