@@ -986,7 +986,6 @@ const showSTmessage = async (
         if (winRet.id) {
           try {
             await messenger.windows.remove(winRet.id);
-          // eslint-disable-next-line no-unused-vars
           } catch (_e) {
             // Window already closed, ignore
           }
@@ -995,7 +994,7 @@ const showSTmessage = async (
     };
 
     browser.runtime.onMessage.addListener(listener);
-  });
+  });  
   
 };
 

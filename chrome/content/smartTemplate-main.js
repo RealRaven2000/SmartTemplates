@@ -824,7 +824,7 @@ var SmartTemplate4 = {
         if (window.SmartTemplate4.CurrentTemplate) {
           //[issue 64] reload the same template if it was remembered.
           let fileTemplateSource = await SmartTemplate4.fileTemplates.retrieveTemplate(
-            window.SmartTemplate4.CurrentTemplate,
+            window.SmartTemplate4.CurrentTemplate
           );
           if (fileTemplateSource.failed) {
             // shouldn't actually happen as we just loaded it before
@@ -837,7 +837,7 @@ var SmartTemplate4 = {
             await this.smartTemplate.insertTemplate(
               false,
               window.SmartTemplate4.PreprocessingFlags,
-              fileTemplateSource,
+              fileTemplateSource
             );
           }
         } else {
@@ -858,7 +858,7 @@ var SmartTemplate4 = {
           const { placeholder, newSig } = await this.smartTemplate.extractSignature(
             gMsgCompose.identity,
             false,
-            composeType,
+            composeType
           );
           SmartTemplate4.signature = newSig; // store the new signature for later insertion if user cancels
           // handle cancel immediately while removedNode is still in scope
@@ -866,7 +866,7 @@ var SmartTemplate4 = {
             if (placeholder && placeholder.parentNode) {
               placeholder.parentNode.insertBefore(
                 SmartTemplate4.signature,
-                placeholder.nextSibling,
+                placeholder.nextSibling
               );
             } 
           }
@@ -914,7 +914,7 @@ var SmartTemplate4 = {
           templateDivFinal.setAttribute("data-smarttemplate-hash", hash);
           util.logDebugOptional(
             "composer",
-            `Stored new body hash after template re-insertion: ${hash}`,
+            `Stored new body hash after template re-insertion: ${hash}`
           );
         }
       }

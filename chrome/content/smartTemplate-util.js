@@ -65,7 +65,7 @@ SmartTemplate4.Util = {
         SmartTemplate4.Util.licenseInfo = data.licenseInfo;
         SmartTemplate4.Util.logDebugOptional(
           "notifications",
-          "onBackgroundUpdates - dispatching licenseInfo ",
+          "onBackgroundUpdates - dispatching licenseInfo "
         );
         const event = new CustomEvent("SmartTemplates.BackgroundUpdate");
         window.dispatchEvent(event);
@@ -80,7 +80,7 @@ SmartTemplate4.Util = {
           SmartTemplate4.Util.logDebugOptional(
             "notifications",
             `onBackgroundUpdates - dispatching custom event SmartTemplates.BackgroundUpdate.${data.event}\n` +
-              `into ${window.document?.location.href.toString()}`,
+              `into ${window.document?.location.href.toString()}`
           );
           const event = new CustomEvent(`SmartTemplates.BackgroundUpdate.${data.event}`, {
             detail: data.detail,
@@ -91,7 +91,7 @@ SmartTemplate4.Util = {
     };
     SmartTemplate4.Util.logDebugOptional(
       "notifications",
-      "Util.init() STARTS... in window " + window.location,
+      "Util.init() STARTS... in window " + window.location
     );
     SmartTemplate4.Util.notifyTools.registerListener(onBackgroundUpdates);
     SmartTemplate4.Util.logDebugOptional("notifications", "After notifyTools.registerListener.");
@@ -106,7 +106,7 @@ SmartTemplate4.Util = {
     SmartTemplate4.Util.logDebugOptional(
       "notifications",
       "After notifyTools.getLicenseInfo",
-      SmartTemplate4.Util.licenseInfo,
+      SmartTemplate4.Util.licenseInfo
     );
     SmartTemplate4.Util.platformInfo = await SmartTemplate4.Util.notifyTools.notifyBackground({
       func: "getPlatformInfo",
@@ -121,7 +121,7 @@ SmartTemplate4.Util = {
     SmartTemplate4.Util.logDebugOptional(
       "notifications",
       "After notifyTools.getAddonInfo",
-      SmartTemplate4.Util.addonInfo,
+      SmartTemplate4.Util.addonInfo
     );
     SmartTemplate4.Util.logDebugOptional("notifications", {
       platformInfo: SmartTemplate4.Util.platformInfo,
@@ -333,7 +333,7 @@ SmartTemplate4.Util = {
         {
           // composeCase = 'draft';
           let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(
-            Ci.nsIMessenger,
+            Ci.nsIMessenger
           );
           let msgDbHdr = messenger
             .msgHdrFromURI(gMsgCompose.originalMsgURI)
@@ -355,7 +355,7 @@ SmartTemplate4.Util = {
     }
     SmartTemplate4.Util.logDebugOptional(
       "functions",
-      "getComposeType: gMsgCompose.type = " + gMsgCompose.type + " (" + st4composeType + ")",
+      "getComposeType: gMsgCompose.type = " + gMsgCompose.type + " (" + st4composeType + ")"
     );
     return st4composeType;
   },
@@ -384,7 +384,7 @@ SmartTemplate4.Util = {
     Services.scriptloader.loadSubScript(
       SmartTemplate4.Util.extension.rootURI.resolve("chrome/content/i18n.js"),
       window,
-      "UTF-8",
+      "UTF-8"
     );
     window.i18n.updateDocument({ extension: SmartTemplate4.Util.extension });
     if (buttons) {
@@ -418,7 +418,7 @@ SmartTemplate4.Util = {
       case "message_action": {
         let doc = this.documentMessageBrowser;
         return doc.querySelector(
-          "#smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton",
+          "#smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton"
         );
       }
     }
@@ -554,7 +554,7 @@ SmartTemplate4.Util = {
 
     if (SmartTemplate4.Preferences.isDebugOption("premium.testNotification")) {
       util.logToConsole(
-        "Testing license warning - to restore normal validation of your license, please reset extensions.smartTemplate4.debug.premium.testNotification",
+        "Testing license warning - to restore normal validation of your license, please reset extensions.smartTemplate4.debug.premium.testNotification"
       );
       hasLicense = false;
     }
@@ -649,7 +649,7 @@ SmartTemplate4.Util = {
     if (!isProFeature && notifyBox.getNotificationWithValue(notificationKey)) {
       // notification is already shown on screen.
       util.logDebug(
-        "notifyBox for [" + notificationKey + "] is already displayed, no action necessary.",
+        "notifyBox for [" + notificationKey + "] is already displayed, no action necessary."
       );
       return;
     }
@@ -711,7 +711,7 @@ SmartTemplate4.Util = {
         label: theText,
         eventCallback: null,
       },
-      nbox_buttons,
+      nbox_buttons
     );
 
     let containerSelector; //
@@ -743,7 +743,7 @@ SmartTemplate4.Util = {
       "smarttemplate4-register",
       "chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply",
       SmartTemplate4,
-      params,
+      params
     ).focus();
   },
 
@@ -856,7 +856,7 @@ SmartTemplate4.Util = {
   logError: function (aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags) {
     let aCategory = "component javascript", // was: chrome javascript
       scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(
-        Components.interfaces.nsIScriptError,
+        Components.interfaces.nsIScriptError
       );
     scriptError.init(
       aMessage,
@@ -865,7 +865,7 @@ SmartTemplate4.Util = {
       aLineNumber,
       aColumnNumber,
       aFlags,
-      aCategory,
+      aCategory
     );
     Services.console.logMessage(scriptError);
   },
@@ -897,7 +897,7 @@ SmartTemplate4.Util = {
     console.log(
       `SmartTemplates %c[issue 213] to do: %c${txt}`,
       "color:red",
-      "background: darkblue; color:white;",
+      "background: darkblue; color:white;"
     );
   },
 
@@ -1127,17 +1127,17 @@ SmartTemplate4.Util = {
     switch (videoId) {
       case "overview":
         SmartTemplate4.Util.openLinkInBrowserForced(
-          "https://youtu.be/Rk-T465fkEw?si=Rpa3NXIKXNnMptyx",
+          "https://youtu.be/Rk-T465fkEw?si=Rpa3NXIKXNnMptyx"
         );
         break;
       case "stationery":
         SmartTemplate4.Util.openLinkInBrowserForced(
-          "https://youtu.be/HhnA3RbOgIw?si=xJS0duvw6ZSFPDgF",
+          "https://youtu.be/HhnA3RbOgIw?si=xJS0duvw6ZSFPDgF"
         );
         break;
       case "list":
         SmartTemplate4.Util.openLinkInBrowserForced(
-          "https://youtube.com/playlist?list=PLApv7QYQO9nQ2Jn9zmfh4-RS87h6Qu3wW&si=KbHmxgyYk1Se86Gl",
+          "https://youtube.com/playlist?list=PLApv7QYQO9nQ2Jn9zmfh4-RS87h6Qu3wW&si=KbHmxgyYk1Se86Gl"
         );
         break;
       default:
@@ -1188,7 +1188,7 @@ SmartTemplate4.Util = {
         uri,
         name,
         "chrome,resizable,centerscreen,width=700px,height=400px",
-        null,
+        null
       );
     }
     w.focus();
@@ -1232,7 +1232,7 @@ SmartTemplate4.Util = {
     console.warn("SmartTemplates - invalid token: " + theToken);
     let errorText = SmartTemplate4.Util.getBundleString("tokenError", theToken).replace(
       /\n/g,
-      "{br}",
+      "{br}"
     );
     await SmartTemplate4.Util.showSmartTemplatesMessage({
       msg: errorText,
@@ -1267,7 +1267,7 @@ SmartTemplate4.Util = {
     }
     SmartTemplate4.Util.logDebugOptional(
       "functions",
-      "Util.getIsoWeek(" + tm + ", " + dowOffset + ")",
+      "Util.getIsoWeek(" + tm + ", " + dowOffset + ")"
     );
 
     dowOffset = typeof dowOffset == "number" ? dowOffset : 0; //default dowOffset to zero
@@ -1280,7 +1280,7 @@ SmartTemplate4.Util = {
         (tm.getTime() -
           newYear.getTime() -
           (tm.getTimezoneOffset() - newYear.getTimezoneOffset()) * 60000) /
-          86400000,
+          86400000
       ) + 1;
     let weeknum;
     //if the year starts before the middle of a week
@@ -1299,7 +1299,7 @@ SmartTemplate4.Util = {
     }
     SmartTemplate4.Util.logDebugOptional(
       "functions",
-      "Util.getIsoWeek() returns weeknum: " + weeknum,
+      "Util.getIsoWeek() returns weeknum: " + weeknum
     );
     return weeknum;
   },
@@ -1383,7 +1383,7 @@ SmartTemplate4.Util = {
         if (!sig.children || sig.children.length == 0) {
           util.logDebugOptional(
             "regularize",
-            "getSignatureInner(): signature has no child relements.",
+            "getSignatureInner(): signature has no child relements."
           );
 
           return sig.innerHTML ? sig.innerHTML : sig.outerHTML ? sig.outerHTML : ""; // deal with DOM String sig (non html)
@@ -1403,7 +1403,7 @@ SmartTemplate4.Util = {
   getAvailableLocales: function (packageName) {
     let chromeRegService = Components.classes["@mozilla.org/chrome/chrome-registry;1"].getService();
     let toolkitChromeReg = chromeRegService.QueryInterface(
-      Components.interfaces.nsIToolkitChromeRegistry,
+      Components.interfaces.nsIToolkitChromeRegistry
     );
     let availableLocales = toolkitChromeReg.getLocalesForPackage(packageName);
     return availableLocales;
@@ -1496,14 +1496,14 @@ SmartTemplate4.Util = {
           `path: ${url.path} \n` +
           "I cannot convert this into a data URI, therefore you may get security warnings when Composer loads content.\n" +
           `returning raw URL: ${aURL}`,
-        ex,
+        ex
       );
       return aURL;
     }
     if (!contentType.startsWith("image/")) {
       util.logDebugOptional(
         "images",
-        "getFileAsDataURI()\nthe file is not an image\ncontentType = " + contentType,
+        "getFileAsDataURI()\nthe file is not an image\ncontentType = " + contentType
       );
       // non-image content-type; let Thunderbird show a warning after insertion
       return aURL;
@@ -1519,7 +1519,7 @@ SmartTemplate4.Util = {
         Services.scriptSecurityManager.getSystemPrincipal(),
         null,
         LoadInfoFlags,
-        Ci.nsIContentPolicy.TYPE_OTHER,
+        Ci.nsIContentPolicy.TYPE_OTHER
       );
       let stream = Cc["@mozilla.org/binaryinputstream;1"].createInstance(Ci.nsIBinaryInputStream);
       stream.setInputStream(channel.open());
@@ -1529,7 +1529,7 @@ SmartTemplate4.Util = {
       let encodedFileName = filename ? encodeURIComponent(filename) : "";
       util.logDebugOptional(
         "images",
-        "stream read. Adding data, including encoded filename part: " + encodedFileName,
+        "stream read. Adding data, including encoded filename part: " + encodedFileName
       );
       return `data:${contentType}${
         filename ? ";filename=" + encodedFileName : ""
@@ -1885,7 +1885,7 @@ SmartTemplate4.Util = {
                   addressValue,
                   charset,
                   argList[2],
-                  true,
+                  true
                 );
                 // if nothing is returned by mime decoder (e.g. empty name) we do not resolve the variable
                 if (token || isReplaceField) {
@@ -1916,7 +1916,7 @@ SmartTemplate4.Util = {
               el.textContent = composeDetails[generalFunction];
             } else {
               alert(
-                "NOT SUPPORTED: Replace deferred smartTemplate variable: %" + generalFunction + "%",
+                "NOT SUPPORTED: Replace deferred smartTemplate variable: %" + generalFunction + "%"
               );
             }
             break;
@@ -1948,10 +1948,10 @@ SmartTemplate4.Util = {
             `resolveDeferred(isReplaceField:${isReplaceField}) called without nodeList\n`,
             "white",
             "red",
-            el,
+            el
           );
           util.logToConsole(
-            "Did you run template variables from smart snippets menu?\nAre you composing in plaintext mode?",
+            "Did you run template variables from smart snippets menu?\nAre you composing in plaintext mode?"
           );
         }
       }
@@ -2007,7 +2007,7 @@ SmartTemplate4.Util = {
             let v = node.getAttribute("st4variable");
             if (hdr && SmartTemplate4.PreprocessingFlags.modifiedHeaders.some((e) => e == hdr)) {
               SmartTemplate4.Util.logDebug(
-                `Modified Header found. Updating deferred variable ${hdr}\nst4 var = ${v}`,
+                `Modified Header found. Updating deferred variable ${hdr}\nst4 var = ${v}`
               );
               // update content of late deferred variables and add to nodeList for deletion
               await SmartTemplate4.Util.resolveDeferred(editor, node, false);
@@ -2037,7 +2037,7 @@ SmartTemplate4.Util = {
             await util.resolveDeferred(editor, event.target, false);
             return false;
           },
-          false,
+          false
         );
 
         // add context menu
@@ -2053,7 +2053,7 @@ SmartTemplate4.Util = {
             event.preventDefault();
             return false;
           },
-          false,
+          false
         );
       }
     }
@@ -2080,13 +2080,13 @@ SmartTemplate4.Util = {
         this.logDebug(
           "checkIsURLencoded()\n" +
             "Ignoring character sequence as not a SmartTemplate because it looks like an URL encoded sequence:\n" +
-            tok,
+            tok
         );
         return true;
       }
     }
     this.logDebug(
-      "checkIsURLencoded()\nNot an encoded string,  this may be a SmartTemplates header:\n" + tok,
+      "checkIsURLencoded()\nNot an encoded string,  this may be a SmartTemplates header:\n" + tok
     );
     return false;
   },
@@ -2097,7 +2097,7 @@ SmartTemplate4.Util = {
     }
     return RegExp(" " + token + " ", "i").test(
       " bcc cc disposition-notification-to errors-to from mail-followup-to mail-reply-to reply-to" +
-        " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to recipient",
+        " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to recipient"
     ); // ALLOW recipient FOR FRAGMENTS.
   },
 
@@ -2151,7 +2151,7 @@ SmartTemplate4.Util = {
       "timeStrings",
       `dateFormat(${time}, ${timeFormat}, ${timezone})\n` +
         `Forced Timezone[${SmartTemplate4.whatIsTimezone}]= ` +
-        util.getTimezoneOffset(SmartTemplate4.whatIsTimezone),
+        util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)
     );
     util.addUsedStandardFunction("dateformat"); // [issue 391]
     if (!timezone) {
@@ -2257,7 +2257,7 @@ SmartTemplate4.Util = {
 
     util.logDebugOptional(
       "timeStrings",
-      "prTime2Str(" + time + ", " + timeType + ", " + timezone + ")",
+      "prTime2Str(" + time + ", " + timeType + ", " + timezone + ")"
     );
     try {
       let tm = new Date(),
@@ -2293,7 +2293,7 @@ SmartTemplate4.Util = {
         util.logDebugOptional(
           "timeStrings",
           `DateTimeFormat(${localeString}) resolved options: `,
-          fmt.resolvedOptions(),
+          fmt.resolvedOptions()
         );
       }
 
@@ -2301,7 +2301,7 @@ SmartTemplate4.Util = {
         time += SmartTemplate4.whatIsDateOffset * 24 * 60 * 60 * 1000; // add n days
         util.logDebugOptional(
           "timeStrings",
-          `Adding ${SmartTemplate4.whatIsDateOffset} days to time`,
+          `Adding ${SmartTemplate4.whatIsDateOffset} days to time`
         );
       }
       if (SmartTemplate4.whatIsHourOffset || SmartTemplate4.whatIsMinuteOffset) {
@@ -2311,7 +2311,7 @@ SmartTemplate4.Util = {
         util.logDebugOptional(
           "timeStrings",
           `Adding ${SmartTemplate4.whatIsHourOffset}:${SmartTemplate4.whatIsMinuteOffset}` +
-            " hours to time",
+            " hours to time"
         );
       }
 
@@ -2324,7 +2324,7 @@ SmartTemplate4.Util = {
         util.logDebug(
           "Adding timezone offsets:\n" +
             `  UTC Offset: ${nativeUtcOffset / 60}\n` +
-            `  Forced Timezone[${forceTimeZone}]: ${forceHours}`,
+            `  Forced Timezone[${forceTimeZone}]: ${forceHours}`
         );
       }
       tm.setTime(time + timezone * 60 * 1000);
@@ -2890,7 +2890,7 @@ SmartTemplate4.Util = {
     return 0;
   },
 
-  getTimeZoneAbbrev: function st4_getTimeZoneAbbrev(tm, isLongForm) {
+  getTimeZoneAbbrev: function (tm, isLongForm) {
     const util = SmartTemplate4.Util;
     function isAcronym(str) {
       return str.toUpperCase() == str; // if it is all caps we assume it is an acronym
@@ -2900,7 +2900,7 @@ SmartTemplate4.Util = {
     // e.g. "(GMT Daylight Time)"
     util.logDebugOptional(
       "timeZones",
-      `getTimeZoneAbbrev(time: ${tm.toString()}, long form: ${isLongForm}`,
+      `getTimeZoneAbbrev(time: ${tm.toString()}, long form: ${isLongForm}`
     );
     let timeString = tm.toTimeString(),
       timeZone = timeString.match(/\(.*?\)/),
@@ -2934,7 +2934,7 @@ SmartTemplate4.Util = {
       // convert to long form by using hard-coded time zones array.
       util.logDebug(
         "Cannot determine timezone string - Missed parentheses - from:\n" +
-          `${timeString} regexp guesses: ${retVal}`,
+          `${timeString} regexp guesses: ${retVal}`
       );
       if (isLongForm) {
         retVal = util.zoneFromShort(retVal);
@@ -3180,7 +3180,7 @@ SmartTemplate4.Util = {
           util.logDebug(
             "found requested language '{0}' matching partly: %language% selecting '{1}'"
               .replace("{0}", forcedLocale)
-              .replace("{1}", foundPartly),
+              .replace("{1}", foundPartly)
           );
           // we found a variation of the root language requested:
           forcedLocale = foundPartly;
@@ -3191,7 +3191,7 @@ SmartTemplate4.Util = {
             " In order to use %datelocal% or %dateshort% with the requested language," +
             " You will need the matching Language Pack [{0}]".replace(
               "{0}",
-              forcedLocale + ".xpi",
+              forcedLocale + ".xpi"
             ) +
             ` from https://ftp.mozilla.org/pub/thunderbird/releases/${util.AppverFull}/yourOS/xpi`;
           let errorText =
@@ -3203,7 +3203,7 @@ SmartTemplate4.Util = {
           util.logToConsole(errorText);
         } else {
           util.logDebug(
-            `calendar - found global locales: ${listLocales}\nconfiguring ${forcedLocale}`,
+            `calendar - found global locales: ${listLocales}\nconfiguring ${forcedLocale}`
           );
           locale = forcedLocale;
         }
@@ -3341,8 +3341,8 @@ SmartTemplate4.Util = {
       if (invalidLanguages.length) {
         util.logDebug(
           `%spellcheck%: didn't find the following language entries:\n${invalidLanguages.join(
-            ", ",
-          )}`,
+            ", "
+          )}`
         );
       }
     } catch (ex) {
@@ -3470,7 +3470,7 @@ SmartTemplate4.Util = {
       const xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
       if (!xferable) {
         SmartTemplate4.Util.logToConsole(
-          "Couldn't get the clipboard data due to an internal error (couldn't create a Transferable object).",
+          "Couldn't get the clipboard data due to an internal error (couldn't create a Transferable object)."
         );
         return "";
       }
@@ -3508,7 +3508,7 @@ SmartTemplate4.Util = {
   clipboardWrite: function (txt) {
     try {
       let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(
-        Ci.nsIClipboardHelper,
+        Ci.nsIClipboardHelper
       );
       oClipBoard.copyString(txt);
       return true;
@@ -3613,7 +3613,7 @@ SmartTemplate4.Util = {
         });
         SmartTemplate4.Util.logDebugOptional(
           "transformStrings",
-          `capitalized ${input}\n` + txtDebug,
+          `capitalized ${input}\n` + txtDebug
         );
 
         return input;
@@ -3672,7 +3672,7 @@ SmartTemplate4.Util = {
     const BULLET = "☀️"; // this could become seasonal (?)
     const SALE_TEXT = `${BULLET}${SmartTemplate4.Util.getBundleString(
       "license-discount",
-      SALE_DISCOUNT,
+      SALE_DISCOUNT
     )}`;
     return SALE_TEXT;
   },
@@ -3980,7 +3980,7 @@ SmartTemplate4.Util = {
 
     const sanitizedHTML = parserUtils.sanitize(
       htmlString,
-      parserUtils.SanitizerAllowStyle | parserUtils.SanitizerAllowImages,
+      parserUtils.SanitizerAllowStyle | parserUtils.SanitizerAllowImages
     );
 
     return sanitizedHTML;
@@ -4101,7 +4101,7 @@ SmartTemplate4.Util = {
               } catch {
                 return [];
               }
-            }),
+            })
           );
 
           const fullDuplicate = rules.every((r) => existingStyles.has(r));
@@ -4330,7 +4330,7 @@ SmartTemplate4.Util.firstRun =
 		// // fire this on application launch, which includes open-link-in-new-window
 		// window.addEventListener("load",function(){ SmartTemplate4.Util.firstRun.init(); },true);
 	
-	} 
+	}, 
 
 };  // ST4.Util.firstRun
 
@@ -5031,7 +5031,7 @@ SmartTemplate4.AB = {
       }
     }
     return r;
-  }
+  },
 }; // ST4.AB
 
 var { ExtensionParent } = ChromeUtils.importESModule(
