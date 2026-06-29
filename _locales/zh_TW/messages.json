@@ -1945,6 +1945,12 @@
     "description": "🇹🇼 change log",
     "message": "{L}Thunderbird 的最低版本已設為 140，以避免已棄用 API 的問題，並專注於現代 Thunderbird 版本 [issue 418]{P}未來開發將專注於 Thunderbird ESR 140 以及即將推出的 153 版本。Thunderbird 平台的變更需要將舊功能（如偏好設定儲存與檔案存取）替換為現代 API。{/P}{P}新的檔案存取 API 正在開發中，可能僅在較新的 Thunderbird 版本中可用。未來三個月的大部分開發工作將集中於此轉換，以使 SmartTemplates 具備未來相容性。{/P}{/L}{L}已修正：Sandbox 腳本在 Tb 150 beta 3 中停止運作 [issue 417]{P}自 149 版本起，當變數沒有參數時需使用 {{from()}} 語法。可透過 {{(await from()).someStringFunction()}} 進行鏈式呼叫。{/P}{P}新增語法錯誤的詳細診斷，包括字面參數（{{$mail}}）或缺少的空括號 {{()}}。{/P}{/L}"
   },
+  "whats-new-maintenance": {
+    "message": "維護更新 $ver$。此特定修正已包含在上一個版本之後的更新中。",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
+  },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"
   },

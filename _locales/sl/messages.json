@@ -1975,6 +1975,12 @@
     "description": "🇸🇮 change log",
     "message": "{L}Minimalna različica Thunderbirda je nastavljena na 140, da se izognemo težavam z zastarelimi API-ji in se osredotočimo na sodobne različice Thunderbirda [issue 418]{P}Prihodnji razvoj bo osredotočen na Thunderbird ESR 140 in prihajajočo različico 153. Spremembe platforme Thunderbird zahtevajo zamenjavo zastarelih funkcij, kot sta shranjevanje nastavitev in dostop do datotek, s sodobnimi API-ji.{/P}{P}Novi API-ji za dostop do datotek so trenutno v razvoju in bodo morda na voljo le v novejših različicah Thunderbirda. Večina razvojnega dela v naslednjih treh mesecih bo namenjena tej spremembi za dolgoročno pripravljenost SmartTemplates.{/P}{/L}{L}Popravljeno: Sandbox skripta preneha delovati v Tb 150 beta 3 [issue 417]{P}Od različice 149 je zahtevana sintaksa {{from()}} kadar spremenljivka nima parametrov. Veriženje je možno z {{(await from()).someStringFunction()}}.{/P}{P}Dodana podrobna diagnostika sintaksnih napak z literalnimi parametri ({{$mail}}) ali manjkajočimi praznimi oklepaji {{()}}.{/P}{/L}"
   },
+  "whats-new-maintenance": {
+    "message": "Vzdrževalna posodobitev $ver$. Ta specifičen popravek je bil dodan od prejšnje izdaje.",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
+  },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
   },

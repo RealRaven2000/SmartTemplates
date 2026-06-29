@@ -37,7 +37,7 @@ function moveImportantMessageTo(targetId) {
 function openSupportForm(topic) {
   const msg = {
     command: "openPrefs",
-    page: "supportEmail"
+    page: "supportEmail",
   };
   if (topic) {msg.topic = topic;}
   messenger.runtime.sendMessage(msg);
@@ -245,6 +245,36 @@ function replaceNested(text) {
   return result;
 }
 
+function specialAttributes(str, content) {
+  if (!str) {
+    return "";
+  }
+
+  let out = [];
+  let title;
+
+  for (const p of str.split(/\s+/)) {
+    const [k, v] = p.split("=");
+
+    if (!k || !v) {
+      continue;
+    }
+
+    if (k === "class" && v.includes("maintenance")) {
+      // for class=maintenance the tag contains the maintenance version number!
+      const tooltip = messenger.i18n.getMessage("whats-new-maintenance", [content]);
+      title = `title="${tooltip}"`;
+    }
+
+    out.push(`${k}="${v}"`);
+  }
+  if (title) {
+    out.push(title);
+  }
+
+  return out.join(" ");
+}
+
 function formatAll(txt) {
   let localizedMsg = replaceNested(txt)
     .replace(/<(.*?)>/g, "<span class='htmltag'>&lt;$1&gt;</span>")
@@ -273,6 +303,10 @@ function formatAll(txt) {
     .replace(/\{\/h3\}/g, "</h3>")
     .replace(/\{bold\}/g, "<b>")
     .replace(/\{\/bold\}/g, "</b>")
+    .replace(/\{b(?:\s+([^}]+))?\}(.*?)\{\/b\}/g, (_, attrs, content) => {
+      const attrStr = attrs ? specialAttributes(attrs, content) : "";
+      return attrStr ? `<b ${attrStr}>${content}</b>` : `<b>${content}</b>`;
+    })
     .replace(/\{hr\}/g, "<hr>")
     .replace(/\{pre\}/g, "<pre>")
     .replace(/\{preEnd\}/g, "</pre>")

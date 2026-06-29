@@ -1951,6 +1951,12 @@
     "description": "🇵🇱 change log",
     "message": "{L}Minimalna wersja Thunderbirda została ustawiona na 140, aby uniknąć problemów z przestarzałymi API i skupić się na nowoczesnych wersjach Thunderbirda [issue 418]{P}Przyszły rozwój będzie skupiony na Thunderbird ESR 140 oraz nadchodzącej wersji 153. Zmiany w platformie Thunderbird wymagają zastąpienia przestarzałych funkcji, takich jak przechowywanie preferencji i dostęp do plików, nowoczesnymi API.{/P}{P}Nowe API dostępu do plików są obecnie wdrażane i mogą być dostępne tylko w nowszych wersjach Thunderbirda. Większość prac w ciągu najbliższych trzech miesięcy zostanie poświęcona tej zmianie, aby uczynić SmartTemplates bardziej przyszłościowym.{/P}{/L}{L}Naprawiono: skrypt sandbox przestaje działać w Tb 150 beta 3 [issue 417]{P}Od wersji 149 wymagana jest składnia {{from()}}, gdy zmienna nie ma parametrów. Łańcuchowanie jest możliwe poprzez {{(await from()).someStringFunction()}}.{/P}{P}Dodano szczegółową diagnostykę błędów składni dla parametrów literalnych ({{$mail}}) oraz brakujących pustych nawiasów {{()}}.{/P}{/L}"
   },
+  "whats-new-maintenance": {
+    "message": "Aktualizacja konserwacyjna $ver$. Ta konkretna poprawka została dodana od poprzedniej wersji.",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
+  },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
   },

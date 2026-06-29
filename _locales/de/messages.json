@@ -1937,6 +1937,12 @@
     "description": "🇩🇪 change log",
     "message": "{L}Die minimale Thunderbird-Version wurde auf 140 festgelegt, um Probleme mit veralteten APIs zu vermeiden und den Fokus auf moderne Thunderbird-Versionen zu legen [issue 418]{P}Die zukünftige Entwicklung wird sich auf Thunderbird ESR 140 und die kommende Version 153 konzentrieren. Änderungen an der Thunderbird-Plattform erfordern den Ersatz veralteter Funktionen wie Einstellungs-Speicherung und Dateizugriff durch moderne APIs.{/P}{P}Neue APIs für den Dateizugriff werden derzeit implementiert und sind möglicherweise nur in neueren Thunderbird-Versionen verfügbar. Der Großteil der Entwicklungsarbeit in den nächsten drei Monaten wird sich auf diese Umstellung konzentrieren, um SmartTemplates zukunftssicher zu machen.{/P}{/L}{L}Behoben: Sandbox-Skript funktioniert in Tb 150 Beta 3 nicht mehr [issue 417]{P}Ab Version 149 ist die Syntax {{from()}} erforderlich, wenn die Variable keine Parameter hat. Verkettung ist möglich, z. B. mit {{(await from()).someStringFunction()}}.{/P}{P}Detaillierte Diagnosemeldungen für Syntaxprobleme mit literalen Parametern ({{$mail}}) oder fehlenden leeren Parametern {{()}} hinzugefügt.{/P}{/L}"
   },
+  "whats-new-maintenance": {
+    "message": "Wartungsupdate $ver$. Dieser spezifische Fix wurde seit der vorherigen Version hinzugefügt.",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
+  },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
   },

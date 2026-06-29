@@ -1956,6 +1956,12 @@
     "description": "🇨🇳 change log",
     "message": "{L}Thunderbird 的最低版本已设置为 140，以避免已弃用 API 的问题，并专注于现代 Thunderbird 版本 [issue 418]{P}未来开发将专注于 Thunderbird ESR 140 和即将发布的 153 版本。Thunderbird 平台的变化要求将旧功能（如首选项存储和文件访问）替换为现代 API。{/P}{P}新的文件访问 API 正在开发中，可能仅在较新的 Thunderbird 版本中可用。未来三个月的大部分开发工作将用于此迁移，以使 SmartTemplates 具备未来兼容性。{/P}{/L}{L}已修复：Sandbox 脚本在 Tb 150 beta 3 中停止工作 [issue 417]{P}从 149 版本开始，当变量没有参数时需要使用 {{from()}} 语法。可以使用 {{(await from()).someStringFunction()}} 进行链式调用。{/P}{P}新增针对语法问题的详细诊断，包括字面参数（{{$mail}}）或缺失的空括号 {{()}}。{/P}{/L}"
   },
+  "whats-new-maintenance": {
+    "message": "维护更新 $ver$。此特定修复已包含在上一版本之后的更新中。",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
+  },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
   },

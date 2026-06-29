@@ -1975,6 +1975,12 @@
     "description": "🇫🇮 change log",
     "message": "{L}Thunderbirdin vähimmäisversio on asetettu versioon 140, jotta vältetään vanhentuneiden API-rajapintojen ongelmat ja keskitytään nykyaikaisiin Thunderbird-versioihin [issue 418]{P}Tuleva kehitys keskittyy Thunderbird ESR 140 -versioon ja tulevaan 153-versioon. Thunderbird-alustan muutokset edellyttävät vanhojen toimintojen, kuten asetusten tallennuksen ja tiedostojen käytön, korvaamista moderneilla API-rajapinnoilla.{/P}{P}Uusia tiedostojen käyttöön liittyviä API-rajapintoja kehitetään parhaillaan, ja ne voivat olla saatavilla vain uudemmissa Thunderbird-versioissa. Suurin osa kehitystyöstä seuraavan kolmen kuukauden aikana keskittyy tähän muutokseen, jotta SmartTemplates olisi tulevaisuudenkestävä.{/P}{/L}{L}Korjattu: Sandbox-skripti lakkaa toimimasta Tb 150 beta 3:ssa [issue 417]{P}Versiosta 149 alkaen vaaditaan syntaksi {{from()}}, kun muuttujalla ei ole parametreja. Ketjutus onnistuu muodossa {{(await from()).someStringFunction()}}.{/P}{P}Lisätty yksityiskohtainen virhediagnostiikka syntaksivirheille, kuten literaaliparametrit ({{$mail}}) tai puuttuvat tyhjät sulut {{()}}.{/P}{/L}"
   },
+  "whats-new-maintenance": {
+    "message": "Huoltopäivitys $ver$. Tämä yksittäinen korjaus lisättiin edellisestä versiosta lähtien.",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
+  },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
   },

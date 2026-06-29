@@ -1960,6 +1960,12 @@
     "description": "🇫🇷 change log",
     "message": "{L}La version minimale de Thunderbird a été définie à 140 afin d'éviter les problèmes liés aux API obsolètes et de se concentrer sur les versions modernes de Thunderbird [issue 418]{P}Le développement futur se concentrera sur Thunderbird ESR 140 et la version 153 à venir. Les changements de la plateforme Thunderbird nécessitent le remplacement des fonctionnalités obsolètes telles que le stockage des préférences et l'accès aux fichiers par des API modernes.{/P}{P}Les nouvelles API d'accès aux fichiers sont actuellement en cours d'implémentation et peuvent n'être disponibles que dans les versions plus récentes de Thunderbird. La majeure partie des efforts de développement au cours des trois prochains mois sera consacrée à cette transition afin de rendre SmartTemplates pérenne.{/P}{/L}{L}Corrigé : le script sandbox cesse de fonctionner dans Tb 150 beta 3 [issue 417]{P}À partir de la version 149, la syntaxe {{from()}} est requise lorsque la variable n'a pas de paramètres. Le chaînage est possible avec {{(await from()).someStringFunction()}}.{/P}{P}Ajout de diagnostics détaillés pour les erreurs de syntaxe avec paramètres littéraux ({{$mail}}) ou parenthèses vides manquantes {{()}}.{/P}{/L}"
   },
+  "whats-new-maintenance": {
+    "message": "Mise à jour de maintenance $ver$. Ce correctif spécifique a été ajouté depuis la version précédente.",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
+  },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
   },

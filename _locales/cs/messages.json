@@ -1951,6 +1951,12 @@
     "description": "🇨🇿 change log",
     "message": "{L}Minimální verze Thunderbirdu byla nastavena na 140, aby se předešlo problémům se zastaralými API a bylo možné se zaměřit na moderní verze Thunderbirdu [issue 418]{P}Budoucí vývoj se zaměří na Thunderbird ESR 140 a připravovanou verzi 153. Změny v platformě Thunderbirdu vyžadují nahrazení zastaralých funkcí, jako je ukládání předvoleb a přístup k souborům, moderními API.{/P}{P}Nová API pro přístup k souborům se právě implementují a mohou být dostupná pouze v novějších verzích Thunderbirdu. Většina vývojového úsilí v následujících třech měsících bude věnována této změně, aby byl SmartTemplates připraven na budoucnost.{/P}{/L}{L}Opraveno: Sandbox skript přestal fungovat v Tb 150 beta 3 [issue 417]{P}Od verze 149 je vyžadována syntaxe {{from()}} v případě, že proměnná nemá žádné parametry. Řetězení proměnných je možné pomocí {{(await from()).someStringFunction()}}.{/P}{P}Přidána detailní diagnostika chyb syntaxe pro literální parametry ({{$mail}}) nebo chybějící prázdné závorky {{()}}.{/P}{/L}"
   },
+  "whats-new-maintenance": {
+    "message": "Údržbová aktualizace $ver$. Tato konkrétní oprava byla přidána od předchozí verze.",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
+  },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
   },
