@@ -62,7 +62,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           let realTabWindow = tabObject.window;
 
           let results = [];
-          if (realTabWindow.DefaultController.isCommandEnabled) {
+          if (typeof realTabWindow.getEnabledControllerForCommand == "function") {
             for (let cmd of commands) {
               let ctrl = realTabWindow.getEnabledControllerForCommand(cmd);
               if (!ctrl) {
@@ -242,8 +242,8 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         focusDocument: async function (tabId) {
           this.logDebug("Accessibility: Focus current tab document...", tabId);
           win.gTabmail.currentTabInfo.browser.focus();
-        }
-      }
+        },
+      },
     }
   };
 }
