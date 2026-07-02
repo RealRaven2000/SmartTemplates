@@ -424,23 +424,6 @@ var Register = {
     window.close();
   },
 
-  /* obsolete form submission from code */
-  postForm: function() {
-    let url = "https://sites.fastspring.com/quickfolders/product/smarttemplate4?action=order",
-      oReq;
-
-    const XMLHttpRequest = Components.Constructor(
-      "@mozilla.org/xmlextras/xmlhttprequest;1",
-      "nsIXMLHttpRequest"
-    );
-    oReq = new XMLHttpRequest();
-
-    let formData = new FormData();
-    formData.append("submit", "purchase");
-    oReq.open("POST", url, true);
-    oReq.send(formData);
-  },
-
   premiumInfo: function (event) {
     SmartTemplate4.Util.openURLWithEvent(
       "https://smarttemplates.quickfolders.org/premium.html",
