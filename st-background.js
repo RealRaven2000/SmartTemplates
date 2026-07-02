@@ -978,11 +978,8 @@ const showSTmessage = async (
   // we need to return "ok" when ok is pushed
   // we need to return "cancel" (provided the feature is requested) when "cancel" button or ESC key is pushed
   return new Promise((resolve) => {
-    const listener = async (message, sender) => {
-      if (sender.tab && sender.tab.id === tabId && message.command === "smartTemplate-message") {
-        browser.runtime.onMessage.removeListener(listener);
-        resolve(message.result);
-
+    const listener = (message, sender) => {
+      const handler = async () => {
         if (winRet.id) {
           try {
             await messenger.windows.remove(winRet.id);
@@ -990,7 +987,13 @@ const showSTmessage = async (
             // Window already closed, ignore
           }
         }
+      };
+      if (sender.tab && sender.tab.id === tabId && message.command === "smartTemplate-message") {
+        browser.runtime.onMessage.removeListener(listener);
+        resolve(message.result);
+        return handler();
       }
+      return false;
     };
 
     browser.runtime.onMessage.addListener(listener);
@@ -1419,100 +1422,119 @@ async function main() {
   if (isDebugAddon) {
     console.log("ST main(): Adding message listeners....");
   }
+
+
+  const messageHandlers = {
+    "getLicenseInfo": (_data, _sender) => {
+      return currentLicense.info;
+    },
+    "updateLicenseKey": async (data, _sender) => {
+      return await updateLicenseKey(data.key);
+    },
+    "showAboutConfig": (data, _sender) => {
+      // to do: create an API for this one
+      messenger.NotifyTools.notifyExperiment({
+        event: "showAboutConfig",
+        detail: {
+          element: null,
+          filter: data.filter,
+          readOnly: data.readOnly,
+          updateUI: data.updateUI || false,
+        },
+      });
+    },
+    "showRegistrationDialog": (data, _sender) => {
+      messenger.NotifyTools.notifyExperiment({
+        event: "doCommand",
+        detail: {
+          cmd: "smartTemplates-registration", // will be re-packaged as el.id
+          params: {
+            feature: data.addonfeatures || "",
+          },
+        },
+      });
+    },
+    "showSplashMsg": (_data, _sender) => {
+      showSplash();
+    },
+    "showHomePage": (_data, _sender) => {
+      messenger.NotifyTools.notifyExperiment({
+        event: "doCommand",
+        detail: { cmd: "smartTemplates-support" },
+      });
+    },
+    "showATNHomePage": (_data, _sender) => {
+      messenger.NotifyTools.notifyExperiment({
+        event: "doCommand",
+        detail: { cmd: "smartTemplates-home" },
+      });
+    },
+    "showIssuesPage": (_data, _sender) => {
+      messenger.NotifyTools.notifyExperiment({
+        event: "doCommand",
+        detail: { cmd: "smartTemplates-issues" },
+      });
+    },
+    "showPremiumFeaturePage": (_data, _sender) => {
+      messenger.NotifyTools.notifyExperiment({
+        event: "doCommand",
+        detail: { cmd: "smartTemplates-features" },
+      });
+    },
+    "showYouTubePage": (data, _sender) => {
+      messenger.NotifyTools.notifyExperiment({
+        event: "doCommand",
+        detail: {
+          cmd: "smartTemplates-youtube",
+          params: { videoId: data.video },
+        },
+      });
+    },
+    "showStationeryePage": (data, _sender) => {
+      messenger.NotifyTools.notifyExperiment({
+        event: "doCommand",
+        detail: {
+          cmd: "smartTemplates-stationery",
+          params: { anchor: data.topic },
+        },
+      });
+    },
+    "updateStatusbarIcon": (_data, _sender) => {
+      messenger.NotifyTools.notifyExperiment({
+        event: "doCommand",
+        detail: {
+          cmd: "smartTemplates-updatestatusbar",
+        },
+      });
+    },
+    "openPrefs": async (data, _sender) => {
+      await openPrefs(data);
+    },
+  };
+
   try {
-    messenger.runtime.onMessage.addListener(async (data, _sender) => {
-      console.log("SmartTemplates background listener: ", data);
-      if (!data?.command) {
-        return;
+    messenger.runtime.onMessage.addListener((data, sender) => {
+      if (!data?.command || !Object.hasOwn(messageHandlers, data.command)) {
+        // listener not active for this command, let other listeners handle it
+        return false;
       }
-      switch (data.command) {
-        case "getLicenseInfo":
-          return currentLicense.info;
-        case "updateLicenseKey":
-          return await updateLicenseKey(data.key);
-        case "showAboutConfig":
-          // to do: create an API for this one
-          messenger.NotifyTools.notifyExperiment({
-            event: "showAboutConfig",
-            detail: {
-              element: null,
-              filter: data.filter,
-              readOnly: data.readOnly,
-              updateUI: data.updateUI || false,
-            },
-          });
-          break;
-        case "showRegistrationDialog":
-          messenger.NotifyTools.notifyExperiment({
-            event: "doCommand",
-            detail: {
-              cmd: "smartTemplates-registration", // will be re-packaged as el.id
-              params: {
-                feature: data.addonfeatures || "",
-              },
-            },
-          });
-          break;
-        case "showSplashMsg":
-          showSplash();
-          break;
-        case "showHomePage":
-          messenger.NotifyTools.notifyExperiment({
-            event: "doCommand",
-            detail: { cmd: "smartTemplates-support" },
-          });
-          break;
-        case "showATNHomePage":
-          messenger.NotifyTools.notifyExperiment({
-            event: "doCommand",
-            detail: { cmd: "smartTemplates-home" },
-          });
-          break;
-        case "showIssuesPage":
-          messenger.NotifyTools.notifyExperiment({
-            event: "doCommand",
-            detail: { cmd: "smartTemplates-issues" },
-          });
-          break;
-        case "showPremiumFeaturePage":
-          messenger.NotifyTools.notifyExperiment({
-            event: "doCommand",
-            detail: { cmd: "smartTemplates-features" },
-          });
-          break;
-        case "showYouTubePage":
-          messenger.NotifyTools.notifyExperiment({
-            event: "doCommand",
-            detail: {
-              cmd: "smartTemplates-youtube",
-              params: { videoId: data.video },
-            },
-          });
-          break;
-        case "showStationeryePage":
-          messenger.NotifyTools.notifyExperiment({
-            event: "doCommand",
-            detail: {
-              cmd: "smartTemplates-stationery",
-              params: { anchor: data.topic },
-            },
-          });
-          break;
-        case "updateStatusbarIcon":
-          messenger.NotifyTools.notifyExperiment({
-            event: "doCommand",
-            detail: {
-              cmd: "smartTemplates-updatestatusbar",
-            },
-          });
-          break;
-        case "openPrefs":
-          await openPrefs(data);
-          break;
-      }
+      return Promise.resolve()
+        .then(() => {
+          return messageHandlers[data.command](data, sender);
+        })
+        .then((result) => {
+          if (isDebugAddon) {
+            console.log("SmartTemplates background handler completed:", data.command);
+          }
+          return result; // pass back a promisified result to the caller
+        })
+        .catch((ex) => {
+          console.error(`runtime.onMessage handler failed for '${data.command}'`, ex);
+          return undefined;
+        });
     });
     if (isDebugAddon) {
-      console.log("ST main(): After adding message listener.");
+      console.log("ST main(): runtime.onMessage listener registered.");
     }
   } catch (e) {
     console.error("Error adding listener:", e);
