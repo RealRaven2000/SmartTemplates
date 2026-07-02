@@ -288,7 +288,7 @@ var fileTemplates = {
     }
     // must be same path within the same compose type array:
     const existingFileIndex = entries.findIndex(
-      (e) => e.path === entry.path,
+      (e) => e.path === entry.path
     );
     if (existingFileIndex !== -1) {
       entries.splice(existingFileIndex, 1);
@@ -842,9 +842,9 @@ SmartTemplates.Preferences = {
         // Account specific preference
         return await this.getWithBranch(idkey + "." + pref, def);
       }
-    }  
+    },  
     
-  } // identityPrefs
+  }, // identityPrefs
     
 // OBSOLETE: existsCharPref, existsBoolPref, getBoolPrefSilent
   
@@ -885,7 +885,7 @@ SmartTemplates.Settings = {
 
   get currentListType() {
     const currentTab = document.querySelector(
-      "#fileTemplatesTabs .actionTabs ul li button.active",
+      "#fileTemplatesTabs .actionTabs ul li button.active"
     );
     if (currentTab) {
       return currentTab.getAttribute("composeType");
@@ -936,7 +936,7 @@ SmartTemplates.Settings = {
 		console.warn(aMessage + "\n", 
 		  `${srcName}:${ex.lineNumber}`, 
 			`\n${ex.message}\n`, 
-			ex.stack ? ex.stack.replace("@","\n  ") : "", );
+			ex.stack ? ex.stack.replace("@","\n  ") : "" );
 	} ,
 
 	//******************************************************************************
@@ -1135,8 +1135,7 @@ SmartTemplates.Settings = {
 					await createPref(targetKey, defaultValue);
 				}
       } catch {
-				// eslint-disable-next-line no-debugger
-				debugger; // there is no default config setting... create one!
+				// there is no default config setting... create one!
 				// [issue ]
         await createPref(targetKey,defaultValue);
       }
@@ -1805,7 +1804,7 @@ SmartTemplates.Settings = {
     // let rv = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateLicense", key: key });
 		const result = await messenger.runtime.sendMessage({ 
 			command: "updateLicenseKey", 
-			key: key
+			key: key,
 		});
 		SmartTemplates.Util.logDebug(`validateNewKey() returned ${result}`);
 		// now retrieve licenseInfo from background!
@@ -2151,7 +2150,7 @@ SmartTemplates.Settings = {
 		// sURL ="mailto:" + mailto + "?subject=" + encodeURI(subjectline);
 		messenger.compose.beginNew({
 			to: mailto,
-			subject: subjectline
+			subject: subjectline,
 		});
 
 		return;
@@ -2171,7 +2170,7 @@ SmartTemplates.Settings = {
 	updateStatusBar: async function(showStatus) {
 		await setPref("showStatusIcon", showStatus);
 		messenger.runtime.sendMessage({ 
-			command: "updateStatusbarIcon"
+			command: "updateStatusbarIcon",
 		});
 	},
 
@@ -2183,7 +2182,7 @@ SmartTemplates.Settings = {
 
   dummy: function() {
 
-  }
+  },
   
   
   // ============================== Settings Object END  
@@ -2390,7 +2389,7 @@ async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
     command: "showAboutConfig", 
     filter: filter,
     readOnly: readOnly,
-    updateUI: updateUI
+    updateUI: updateUI,
   });
 }
 
@@ -2398,7 +2397,7 @@ async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
 async function showRegistrationDlg(feature) {
 	messenger.runtime.sendMessage({ 
     command: "showRegistrationDialog", 
-    addonfeatures: feature
+    addonfeatures: feature,
   });
 }
 

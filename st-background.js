@@ -29,12 +29,12 @@ export const startupDone = new Promise((resolve) => {
 var MenuCounter = {
   MRUheader: 0,
   MRUunified: 0,
-  MRUcomposer: 0
+  MRUcomposer: 0,
 }
 
 var fileTemplates = {
   Entries: [], 
-  MRU_Entries: []
+  MRU_Entries: [],
 }; // copy of recent and configured file templates from SmartTemplate4.fileTemplates
 
 // Remove console error “receiving end does not exist”
@@ -51,7 +51,7 @@ const ControllerMap = new Map([
   ["cmd_reply", "rsp"],
   ["cmd_replyAll", "rsp.all"],
   ["cmd_replyList", "rsp.list"],
-  ["cmd_forward", "fwd"]
+  ["cmd_forward", "fwd"],
 ]);
 
 // all .last    items had classList:"menuitem-iconic st-last-<CType> st-mru"
@@ -62,9 +62,9 @@ const writeMenus = [
     controller:"cmd_newMessage", 
     popupItems: [
       { id:"smartTemplates-write-last", label:"st.menu.template.last", controller:"cmd_newMessage", ctr_type: "most-recent" },
-      { id:"smartTemplates-write-default", label:"st.menu.template.default", controller:"cmd_newMessage", ctr_type: "account" }
-    ]
-  }
+      { id:"smartTemplates-write-default", label:"st.menu.template.default", controller:"cmd_newMessage", ctr_type: "account" },
+    ],
+  },
 ];
 
 const replyMenus = [
@@ -73,24 +73,24 @@ const replyMenus = [
     controller:"cmd_reply", 
     popupItems: [
       { id:"smartTemplates-reply-last", label:"st.menu.template.last", controller:"cmd_reply", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-default", label:"st.menu.template.default", controller:"cmd_reply", ctr_type: "account" }
-    ]
+      { id:"smartTemplates-reply-default", label:"st.menu.template.default", controller:"cmd_reply", ctr_type: "account" },
+    ],
   }, 
   { type:"menu", id:"smartTemplates-reply-all-menu", classList:"menu-iconic", 
     label:"st.menu.replyAll", accesskey:"st.menuaccess.replyAll",
     controller:"cmd_replyAll", 
     popupItems: [
       { id:"smartTemplates-reply-all-last", label:"st.menu.template.last", controller:"cmd_replyAll", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", controller:"cmd_replyAll", ctr_type: "account" }
-    ]
+      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", controller:"cmd_replyAll", ctr_type: "account" },
+    ],
   }, 
   { type:"menu", id:"smartTemplates-reply-list-menu", classList:"menu-iconic", 
     label:"st.menu.replyList", accesskey:"st.menuaccess.replyList",
     controller:"cmd_replyList", 
     popupItems: [
       { id:"smartTemplates-reply-list-last", label:"st.menu.template.last", controller:"cmd_replyList", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", controller:"cmd_replyList", ctr_type: "account" }
-    ]
+      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", controller:"cmd_replyList", ctr_type: "account" },
+    ],
   }, 
 ];
 
@@ -101,9 +101,9 @@ const forwardMenus = [
     controller:"cmd_forward", 
     popupItems: [
       { id:"smartTemplates-forward-last", label:"st.menu.template.last", controller:"cmd_forward", ctr_type: "most-recent" },
-      { id:"smartTemplates-forward-default", label:"st.menu.template.default", controller:"cmd_forward", ctr_type: "account" }
-    ]
-  }  
+      { id:"smartTemplates-forward-default", label:"st.menu.template.default", controller:"cmd_forward", ctr_type: "account" },
+    ],
+  },  
 ];
 
 
@@ -207,8 +207,8 @@ async function executeFileMenu(menuObject) {
         event:"fileTemplateFromApi", 
         detail: {
           menuObject: menuObject,
-          test: "123"
-        }
+          test: "123",
+        },
       });
       break;
     default:
@@ -334,7 +334,7 @@ var MenuHelper = {
         return "new.tab";
     }
     return null;
-  }
+  },
 }
 
 
@@ -356,7 +356,7 @@ async function addMenus(menuArray, context) {
       enabled: true,
       id: m.id, // string
       title: MenuHelper.injectAccessKey(messenger.i18n.getMessage(m.label), ak),
-      visible: true  
+      visible: true,  
     }
     let icon = getIconOfController(m.controller);
     if (icon) { menuProps.icons = icon; }
@@ -406,10 +406,10 @@ async function addMenus(menuArray, context) {
                   params: {
                     entry: {
                       command: m.controller,
-                      composeType: MenuHelper.getComposeType(m)
-                    }
-                  } 
-                }
+                      composeType: MenuHelper.getComposeType(m),
+                    },
+                  }, 
+                },
               });
               return;     
             } 
@@ -417,10 +417,10 @@ async function addMenus(menuArray, context) {
             executeFileMenu( {
               controller: p?.controller,
               control_type: p?.ctr_type,
-              target: template // file template entry or mru entry - see fileTemplates.js
+              target: template, // file template entry or mru entry - see fileTemplates.js
             });
             
-          }
+          },
         }
         await messenger.menus.create(itemProps);
       }
@@ -432,7 +432,7 @@ async function addMenus(menuArray, context) {
       await messenger.menus.create({
         contexts: [context],
         parentId: popupId,
-        type: "separator"
+        type: "separator",
       });
 
       // we need to iterate categories (= submenus) first!
@@ -445,7 +445,7 @@ async function addMenus(menuArray, context) {
       // display catecory popups on top, then items without category
       let sortedTemplates = [
         ...templateList.filter(e => (e.category)),
-        ...templateList.filter(e => (!e.category))
+        ...templateList.filter(e => (!e.category)),
       ];      
 
       // check if anything had to be disabled because of license restrictions:
@@ -478,7 +478,7 @@ async function addMenus(menuArray, context) {
             catId = await messenger.menus.create({
               contexts: [context],
               parentId: popupId,
-              title: `${CA}${t.category}`
+              title: `${CA}${t.category}`,
             }); 
             catEl = {id: catId, akc: 1}
             CatMap.set(t.category.toLowerCase(), catEl); // this may lead to category maximum.
@@ -494,7 +494,7 @@ async function addMenus(menuArray, context) {
               catId = await messenger.menus.create({
                 contexts: [context],
                 parentId: popupId,
-                title: `${CA}${messenger.i18n.getMessage("template.category.other")}`
+                title: `${CA}${messenger.i18n.getMessage("template.category.other")}`,
               }); 
               catEl = {id: catId, akc: 0}
               await messenger.menus.create({
@@ -510,11 +510,11 @@ async function addMenus(menuArray, context) {
                     detail: {
                       cmd: "smartTemplates-registration", // will be re-packaged as el.id
                       params: {
-                        feature: "MAX_STANDARD_CATEGORIES"
-                      } 
+                        feature: "MAX_STANDARD_CATEGORIES",
+                      }, 
                     },
                   });              
-                }
+                },
 
               })
             } else {
@@ -548,9 +548,9 @@ async function addMenus(menuArray, context) {
             executeFileMenu( {
               controller: m.controller,
               control_type: m?.ctr_type, // optional
-              target: t // file template entry or mru entry - see fileTemplates.js
+              target: t, // file template entry or mru entry - see fileTemplates.js
             })
-          }
+          },
         }
         await messenger.menus.create(itemProps); 
         menuRestrict.addTemplateMenuItem(t?.category || null); // sum up all items {id: catId, akc: accCount}
@@ -568,10 +568,10 @@ async function addMenus(menuArray, context) {
               "st.fileTemplates.restrictTemplates",
               [
                 menuRestrict.MAX_FREE_TEMPLATES.toString(), 
-                menuRestrict.MAX_STANDARD_TEMPLATES.toString()
+                menuRestrict.MAX_STANDARD_TEMPLATES.toString(),
               ]);
             showSTmessage(null, ["ok", "licensing"], txt, "FileTemplatesRestricted");     
-          }
+          },
         });
       }
 
@@ -579,7 +579,7 @@ async function addMenus(menuArray, context) {
       await messenger.menus.create({
         contexts: [context],
         parentId: popupId,
-        type: "separator"
+        type: "separator",
       });      
     }
 
@@ -601,11 +601,11 @@ async function addMenus(menuArray, context) {
               cmd: "smartTemplates-onSelectAdhoc", // will be re-packaged as el.id
               params: {
                 controller: m.controller,
-                context: context
-              } 
-            }
+                context: context,
+              }, 
+            },
           });
-        }
+        },
       });
     }
 
@@ -625,11 +625,11 @@ async function addMenus(menuArray, context) {
               params: {
                 mode:"fileTemplates", 
                 composeType: MenuHelper.getComposeType(m),
-                tab: -1
-              }  // toggle
-            }
+                tab: -1,
+              },  // toggle
+            },
           });
-        }
+        },
       }
     );
     
@@ -663,10 +663,10 @@ async function createHeaderMenu() {
         event: "doCommand", 
         detail: {
           cmd: "smartTemplates-toggle-label", // will be re-packaged as el.id
-          params: { isHidden: !isHidden}  // toggle
-        }
+          params: { isHidden: !isHidden},  // toggle
+        },
       });
-    }
+    },
   });
 
   // SmartTemplates Settings
@@ -682,10 +682,10 @@ async function createHeaderMenu() {
         event: "doCommand", 
         detail: {
           cmd: "smartTemplates-settings", // will be re-packaged as el.id
-          params: {} 
-        }
+          params: {}, 
+        },
       });
-    }
+    },
   });
 
   // ========================================
@@ -694,7 +694,7 @@ async function createHeaderMenu() {
     contexts: [Context],
     enabled: true,
     id: "templateSeparator",
-    type: "separator"
+    type: "separator",
   });
 
   // MRU List
@@ -811,9 +811,9 @@ async function updateMruMenu(Context) {
         executeFileMenu( {
           controller: MenuHelper.getController(theTemplate), 
           composeType: theTemplate?.composeType, //  "rsp" "new" "fwd" - added for later?
-          target: theTemplate // file template entry or mru entry - see fileTemplates.js
+          target: theTemplate, // file template entry or mru entry - see fileTemplates.js
         })
-      }
+      },
     };
     if (popupId) {
       item.parentId = popupId;
@@ -851,9 +851,9 @@ async function updateMruMenu(Context) {
           executeFileMenu( {
             controller: menu.controller,
             control_type: menu.ctr_type,
-            target: template // file template entry or mru entry - see fileTemplates.js
+            target: template, // file template entry or mru entry - see fileTemplates.js
           });
-        }
+        },
       }
       if (!enableLastUpdate) {continue;}
       await messenger.menus.update(menu.id, itemProps);
@@ -1080,7 +1080,7 @@ async function displayUpdateMessage() {
   // Define a Map of silent update rules with wildcards
   const silentUpdateMap = new Map([
     ["4.10", ["4.10.1"]], // Silent updates for [issue 354]
-    ["4.16.1", ["4.16.2"]]
+    ["4.16.1", ["4.16.2"]],
   ]);
 
   // Function to check if an update is silent
@@ -1277,7 +1277,7 @@ function getAddressesFromContacts(list) {
       addresses.push({ 
         displayName: contact.properties.DisplayName || "",
         primaryEmail: contact.properties.PrimaryEmail,
-        nickName: contact.properties.NickName || ""
+        nickName: contact.properties.NickName || "",
       });
     }
   }
@@ -1559,9 +1559,7 @@ async function main() {
     if (isLog && data.func) {
       console.log(
         "=========================\n" +
-          "BACKGROUND LISTENER received: " +
-          data.func +
-          "\n" +
+          `BACKGROUND LISTENER received: ${data.func}\n` +
           "========================="
       );
     }

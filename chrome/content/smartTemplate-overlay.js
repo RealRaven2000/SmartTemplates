@@ -1378,7 +1378,7 @@ SmartTemplate4.mimeDecoder = {
 
     }
 		return addresses;
-	} // split
+	}, // split
 };
 
 SmartTemplate4.MessageHdr = null; // will be overwritten
@@ -1424,7 +1424,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
               util.logToConsole(
                 "matchTextParser() - matchTextFromSubject failed - couldn't retrieve header from Uri [" +
                   gMsgCompose.originalMsgURI +
-                  "] - did you REPLY to a message?",
+                  "] - did you REPLY to a message?"
               );
               extractSource = gMsgCompose.compFields.subject;
             } else {
@@ -1434,7 +1434,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
             }
             util.logDebugOptional(
               "parseModifier",
-              "Extracting " + rx + " from Subject:\n" + extractSource,
+              "Extracting " + rx + " from Subject:\n" + extractSource
             );
             break;
           case "body":
@@ -1446,7 +1446,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
             util.addUsedPremiumFunction("matchTextFromBody");
             util.logDebugOptional(
               "parseModifier",
-              "Extracting " + rx + " from editor.root:\n" + extractSource,
+              "Extracting " + rx + " from editor.root:\n" + extractSource
             );
             break;
           default:
@@ -1491,7 +1491,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
           util.logToConsole(
             "Your group argument [" +
               group +
-              "] is too high, do you have enough (round brackets) in your expression?",
+              "] is too high, do you have enough (round brackets) in your expression?"
           );
         } else {
           if (!group) {
@@ -1529,7 +1529,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
           }
         } else {
           util.logDebug(
-            "matchTextParser(" + fromPart + ") - Replacing Pattern with:\n" + replaceGroupString,
+            "matchTextParser(" + fromPart + ") - Replacing Pattern with:\n" + replaceGroupString
           );
           msg = msg.replace(matchPart[i], replaceGroupString);
         }
@@ -1595,7 +1595,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
             errDetail +
             "\n Arguments have to be enclosed in double quotes!" +
             "\n Commas must be escaped with \\ or they will create separate parameters",
-          theStrings,
+          theStrings
         );
       }
     } else {
@@ -1604,7 +1604,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
           functionName +
           "(a,b) did not return >= 2 arguments. " +
           "\n Arguments may not contain double quotes." +
-          "\n Special characters such as # and commas must be escaped with backslash.",
+          "\n Special characters such as # and commas must be escaped with backslash."
       );
     }
     return false;
@@ -1690,7 +1690,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
         SmartTemplate4.Util.logDebugOptional(
           "parseModifier",
           `replaceInBody(${findX}, ${replaceX})`,
-          ex,
+          ex
         );
       }
     }
@@ -1753,11 +1753,11 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
             if (params.selection) {
               // replace in selection!
               let selectionHtml = SmartTemplate4.smartTemplate.unpackSelection(
-                gMsgCompose.editor.selection,
+                gMsgCompose.editor.selection
               );
               let replacedHtml = selectionHtml.replaceAll(
                 util.unquotedRegex(params.p1, true),
-                util.unquotedRegex(params.p2),
+                util.unquotedRegex(params.p2)
               );
               // replace the pattern into the rest of the fragment
               msg = msg.replace(matchesR[i], replacedHtml);
@@ -1900,7 +1900,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
 
           util.logDebug(
             `%replaceQuotedText% - Replacing quoted text (l=${lv}): ${q.innerText}\n` +
-              `With: ${r.source}`,
+              `With: ${r.source}`
           );
 
           let container = q.ownerDocument.createElement("div");
@@ -1970,7 +1970,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
 
           if (!loadingDeferred && minSize && tagSizeKB < minSize) {
             util.logDebug(
-              `%deleteQuotedTags% - keeping tag: ${displayTag(n)} size = ${tagSizeKB} kB`,
+              `%deleteQuotedTags% - keeping tag: ${displayTag(n)} size = ${tagSizeKB} kB`
             );
             continue;
           }
@@ -2040,7 +2040,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
 
           if (!loadingDeferred && minSize && tagSizeKB < minSize) {
             util.logDebug(
-              `%replaceQuotedTags% - keeping tag: ${displayTag(n)} size = ${tagSizeKB} kB`,
+              `%replaceQuotedTags% - keeping tag: ${displayTag(n)} size = ${tagSizeKB} kB`
             );
             continue;
           }
@@ -2348,7 +2348,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     "prefix", "suffix", "chatname", "mail", "additionalmail",
     "workphone", "homephone", "fax", "pager", "mobile",
     "addressbook", "clipboard", "toclipboard", "nodefer",
-    "priority", "cc", "bcc"
+    "priority", "cc", "bcc",
   ]
   ContextualParams.push(
     "private.address1",
@@ -2876,7 +2876,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             } else {
               util.logToConsole(
                 `Invalid Priority: '${targetString}'\n` +
-                  `Must be one of [${priorities.join(", ")}]`,
+                  `Must be one of [${priorities.join(", ")}]`
               );
             }
 
@@ -3833,7 +3833,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
     let preHeader = {
       text: SmartTemplate4.Util.unquoteParam(textContent),
-      styleContent: inLineStyles
+      styleContent: inLineStyles,
     }
     if (classNames) {
       preHeader.classNames = classNames;
