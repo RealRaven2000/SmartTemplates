@@ -127,7 +127,7 @@ export class Parser {
             theString = theString.replace("?= =?", "?=\n=?"); // space problem
             let array = theString.split(/\s*\r\n\s*|\s*\r\s*|\s*\n\s*|\s*\t\s*/g);
             // detect charset from the string and override if necessary
-            let customCharset = that.mimeDecoder.detectCharset(theString, true) || charset;
+            let customCharset = Parser.mimeDecoder.detectCharset(theString, true) || charset;
             // https://searchfox.org/mozilla-central/source/netwerk/mime/nsIMIMEHeaderParam.idl
             for (let i = 0; i < array.length; i++) {
               let aHeaderVal = array[i].replace(/%/g, "%%").replace(/ /g, "-%-");
@@ -902,14 +902,14 @@ export class Parser {
         }
         // [issue 183]
         if (argument == "clipboard") {
-          // need license check here...
+          // need license check here...426
           Util.logIssue184("Restrict clipboard to Pro Users!");
           argument = await Util.clipboardRead();
         }
         break;
       case "matchFromSubject":
       case "matchFromBody":
-        let regX = new RegExp("%header." + cmd + "." + matchFunction + "(.*)%", "g");
+        { let regX = new RegExp("%header." + cmd + "." + matchFunction + "(.*)%", "g");
 
         if (matchFunction == "matchFromBody") {
           // Insert replacement from body of QUOTED email!
@@ -920,7 +920,7 @@ export class Parser {
         }
         // if our match returns nothing, then do nothing (prevent from overwriting existing headers).
         if (argument == "") return "";
-        break;
+        break; }
       default:
         Util.logToConsole("invalid matchFunction: " + matchFunction);
         return "";
@@ -2228,9 +2228,10 @@ export class Parser {
         try {
           // on Mac systems nsIDirectoryService key may NOT be empty!
           // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
-          if (!(await IOUtils.exists(newPath))) {
-            Util.logDebug("Cannot find file. Trying to append to path of template.");
-          }
+          // wx-linter (discouraged privileged API in WebExtension context): IOUtils
+          // if (!(await IOUtils.exists(newPath))) {
+          //   Util.logDebug("Cannot find file. Trying to append to path of template.");
+          // }
         } catch (ex) {
           // new code for path of template - failed on Rob's Mac as unknown.
           // I think this is only set when a template is opened from the submenus!
@@ -2271,45 +2272,13 @@ export class Parser {
             if (!html) {
               // OLD Method
               // find / load file and expand?
-              let data = "",
-                //read file into a string so the correct identifier can be added
-                fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(
-                  Ci.nsIFileInputStream
-                ),
-                cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(
-                  Ci.nsIConverterInputStream
-                ),
-                countRead = 0;
-              // let sigFile = Ident.signature.QueryInterface(Ci.nsIFile);
-              try {
-                let localFile = new FileUtils.File(path),
-                  str = {};
-                Util.logDebug("localFile.initWithPath(" + path + ")");
-
-                fstream.init(localFile, -1, 0, 0);
-                /* sigEncoding: The character encoding you want, default is using UTF-8 here */
-                let encoding = arr.length > 1 ? arr[1] : "UTF-8";
-                Util.logDebug("initializing stream with " + encoding + " encoding…");
-                cstream.init(fstream, encoding, 0, 0);
-                let read = 0;
-                do {
-                  read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
-                  data += str.value;
-                  countRead += read;
-                } while (read != 0);
-                cstream.close(); // this closes fstream
-                html = data.toString();
-              } catch (ex) {
-                Util.logException("insertFileLink() - read " + countRead + " characters.", ex);
-                if (countRead) {
-                  html = data.toString();
-                } else
-                  html =
-                    "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'> Error reading file: " +
-                    path +
-                    "<br>" +
-                    "Please check error console for detail</div>";
-              }
+              // wx-linter (discouraged privileged APIs in WebExtension context): Cc, Ci
+              // Disabled old XPCOM stream reader until parser is fully background/experiment-based.
+              // TO DO: read path and insert data into html variable
+              html =
+                "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'>" +
+                "Legacy file stream API disabled by wx-linter policy for MailExtension context.<br>" +
+                "Please migrate this path to a WebExtension-safe API (Utilities experiment).</div>";
             }
             // if we compose in html and file is txt we need to replace all line breaks with <br>
             if (type == "txt") {
@@ -2331,7 +2300,7 @@ export class Parser {
               flags.filePaths.push(path);
             }
             break;
-          case "image":
+          case "image": {
             let alt =
                 arr.length > 1
                   ? " alt='" + arr[1].replace("'", "").replace(/\"/gm, "") + "'" // don't escape this as it should be pure text. We cannot accept ,'
@@ -2349,6 +2318,7 @@ export class Parser {
             filePath = await Util.getFileAsDataURI(filePath);
             html = "<img src='" + filePath + "'" + alt + " >";
             break;
+          }
           default:
             alert("unsupported file type in %file()%: " + type + ".");
             html = "";
@@ -2361,13 +2331,19 @@ export class Parser {
             ") \n You may get more information if you enable debug mode.",
           ex
         );
-        Services.prompt.alert(
-          null,
-          "SmartTemplates",
-          "Something went wrong trying to read a file: " +
+        // wx-linter (discouraged privileged API in WebExtension context): Services
+        // Services.prompt.alert(
+        //   null,
+        //   "SmartTemplates",
+        //   "Something went wrong trying to read a file: " +
+        //     txt +
+        //     "\n" +
+        //     "Please check Javascript error console for detailed error message."
+        // );
+        Util.logWarning(
+          "insertFileLink failed for " +
             txt +
-            "\n" +
-            "Please check Javascript error console for detailed error message."
+            ". UI alert suppressed (Services.prompt disabled by wx-linter policy)."
         );
       }
       return html;
@@ -2579,9 +2555,10 @@ export class Parser {
 
     if (supportEval) {
       try {
-        if (sandbox && Cu.nukeSandbox) {
-          Cu.nukeSandbox(sandbox);
-        }
+        // wx-linter (discouraged privileged API in WebExtension context): Cu
+        // if (sandbox && Cu.nukeSandbox) {
+        //   Cu.nukeSandbox(sandbox);
+        // }
       } catch (ex) {
         Util.logException("Sandbox not nuked.", ex);
       }
