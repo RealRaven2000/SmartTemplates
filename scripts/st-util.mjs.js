@@ -22,7 +22,7 @@ export function slideAlert(title, text, icon) {
 			type: "basic",
 			title,
 			message: text,
-			iconUrl: icon || "/chrome/content/skin/icon32x32.png"
+			iconUrl: icon || "/chrome/content/skin/icon32x32.png",
 		});
   }
   catch(ex) {
@@ -1218,7 +1218,7 @@ export let Util = {
   },
 
   // 2245
-  getTimeZoneAbbrev: function st4_getTimeZoneAbbrev(tm, isLongForm) {
+  getTimeZoneAbbrev: function (tm, isLongForm) {
     function isAcronym(str) {
       return str.toUpperCase() == str; // if it is all caps we assume it is an acronym
     }
@@ -1411,13 +1411,13 @@ export let Util = {
         listLocales = "",
         found = false;
       try {
-        let platformRequestedLocale = Services.locale.requestedLocale;
-
-        locale = // get locale from Operating System. note nslocaleservice was removed in Gecko 57
-          // removed Services.locale.getLocaleComponentForUserAgent()
-          Services.locale.appLocaleAsLangTag ||
-          platformRequestedLocale ||
-          Services.locale.lastFallbackLocale; // was Services.locale.getAppLocaleAsLangTag();
+        // wx-linter (discouraged privileged API in WebExtension context): Services
+        // let platformRequestedLocale = Services.locale.requestedLocale;
+        // locale = Services.locale.appLocaleAsLangTag || platformRequestedLocale || Services.locale.lastFallbackLocale;
+        locale =
+          (messenger.i18n && messenger.i18n.getUILanguage && messenger.i18n.getUILanguage()) ||
+          (typeof navigator !== "undefined" ? navigator.language : "") ||
+          "en-US";          
       } catch (ex) {
         util.logException("getLocalePref failed - fallback to en-US", ex);
         locale = "en-US";
