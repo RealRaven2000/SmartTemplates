@@ -381,11 +381,14 @@ SmartTemplate4.Util = {
   },
 
   localize: function (window, buttons = null) {
-    Services.scriptloader.loadSubScript(
+    Services.scriptloader.loadSubScriptWithOptions(
       SmartTemplate4.Util.extension.rootURI.resolve("chrome/content/i18n.js"),
-      window,
-      "UTF-8"
-    );
+      {
+        target: window,
+        allowUnsafeURL: true,
+      }
+    );    
+
     window.i18n.updateDocument({ extension: SmartTemplate4.Util.extension });
     if (buttons) {
       for (let [name, label] of Object.entries(buttons)) {
@@ -5040,8 +5043,12 @@ var { ExtensionParent } = ChromeUtils.importESModule(
 SmartTemplate4.Util.extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
 // test:
 // console.log(`SmartTemplates %cLoading notifyTools.js`, `color: white; background: rgb(180,0,0)`);
-Services.scriptloader.loadSubScript(
-  SmartTemplate4.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
-  SmartTemplate4.Util,
-  "UTF-8"
+
+Services.scriptloader.loadSubScriptWithOptions(
+  SmartTemplate4.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"), 
+  {
+    target: SmartTemplate4.Util,
+    allowUnsafeURL: true,
+  }
 );
+
