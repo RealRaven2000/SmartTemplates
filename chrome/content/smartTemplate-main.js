@@ -355,7 +355,7 @@ END LICENSE BLOCK
     # Compatibility with Thunderbird 151
     # More fixes for coloring of menu icons in dark mode [issue 416]
 
-  Version 4.19 - WIP
+  Version 4.19 - 23/04/2926
     # new Github Default branch ESR140
     # [issue 418] Set Minimum Version to Thunderbird 140 to avoid problems with deprecated APIs 
     #             and to focus on modern Thunderbird versions.
@@ -1409,7 +1409,7 @@ var SmartTemplate4 = {
       </div>
     </toolbarbutton>
     `;
-    var WL = doc.ownerGlobal?.SmartTemplate4_WLM || this.WL;
+    var WL = doc.defaultView?.SmartTemplate4_WLM || this.WL; // replace ownerGlobal
     SmartTemplate4.Util.logDebugOptional("fileTemplates.menus", "window loader injecting...", {
       XHTML_Markup,
     });
