@@ -25,7 +25,7 @@ SmartTemplate4.fileTemplates = {
 		templatesNew : [],
 		templatesRsp : [],
 		templatesFwd : [],
-    snippets: []
+    snippets: [],
 	},
   MRU_Entries: [], // [issue 263]
 
@@ -34,7 +34,7 @@ SmartTemplate4.fileTemplates = {
     ["cmd_reply", "rsp"],
     ["cmd_replyAll", "rsp.all"],
     ["cmd_replyList", "rsp.list"],
-    ["cmd_forward", "fwd"]
+    ["cmd_forward", "fwd"],
   ]),
 
   getComposeTypeFull: function(cmd)  {
@@ -81,35 +81,35 @@ SmartTemplate4.fileTemplates = {
       id : "smartTemplates-write-menu",
       composeType : "new",
       command : "cmd_newMessage",
-      templates : "templatesNew"
+      templates : "templatesNew",
     },
     {
       id : "smartTemplates-reply-menu",
       composeType : "rsp",
       command : "cmd_reply",
-      templates : "templatesRsp"
+      templates : "templatesRsp",
     },
     {
       id : "smartTemplates-reply-all-menu",
       composeType : "rsp",
       command : "cmd_replyAll",
-      templates : "templatesRsp"
+      templates : "templatesRsp",
     },
     {
       id : "smartTemplates-reply-list-menu",
       composeType : "rsp",
       command : "cmd_replyList",
-      templates : "templatesRsp"
+      templates : "templatesRsp",
     },
     {
       id : "smartTemplates-forward-menu",
       composeType : "fwd",
       command : "cmd_forwardInline",
-      templates : "templatesFwd"
+      templates : "templatesFwd",
     },
     {
       id : "mru-smartTemplates-unified",
-    }
+    },
   ],
 	get entriesLength() {
 		let l = 0;
@@ -308,7 +308,7 @@ SmartTemplate4.fileTemplates = {
                 SmartTemplate4.Util.notifyTools.notifyBackground({ 
                   func: "updateFileTemplates",
                   Entries: fileTemplates.Entries,
-                  MRU_Entries: fileTemplates.MRU_Entries
+                  MRU_Entries: fileTemplates.MRU_Entries,
                 });
                 SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateSnippetMenus" });
               },
@@ -697,7 +697,7 @@ SmartTemplate4.fileTemplates = {
             { 
               composeType: composeType, 
               menuParent: popupParent, 
-              parentWindow: singleParentWindow
+              parentWindow: singleParentWindow,
             });
           return false; 
         }, 
@@ -723,12 +723,12 @@ SmartTemplate4.fileTemplates = {
           const win = SmartTemplate4.Util.Mail3PaneWindow;
           win.SmartTemplate4.doCommand(
             {
-              id:"smartTemplates-settings"
+              id:"smartTemplates-settings",
             },
             {
               composeType: composeType,
               mode: "fileTemplates",
-              option: "disableLicensePage"
+              option: "disableLicensePage",
             }
           );
           return false; 
@@ -833,11 +833,11 @@ SmartTemplate4.fileTemplates = {
       await SmartTemplate4.Util.notifyTools.notifyBackground({ 
         func: "updateFileTemplates",
         Entries: this.Entries,
-        MRU_Entries: this.MRU_Entries
+        MRU_Entries: this.MRU_Entries,
       });
 
       await SmartTemplate4.Util.notifyTools.notifyBackground({ 
-        func: "patchHeaderMenuAPI" 
+        func: "patchHeaderMenuAPI", 
       });
 
       // only on main toolbar item until this is converted for API!
@@ -1078,7 +1078,7 @@ SmartTemplate4.fileTemplates = {
     // we can call resolver (from a callback) to resolve the promise.
     let returnedItem = {
       path:"", 
-      name:""
+      name:"",
     }
     this.pickFile(
       async function (localFile) {
@@ -1110,7 +1110,7 @@ SmartTemplate4.fileTemplates = {
     let returnedItem = {
       path: "",
       name: "",
-      data: []
+      data: [],
     };
     SmartTemplate4.Util.logDebugOptional("fileTemplates", "openJsonFile()", params);
 
@@ -1171,7 +1171,7 @@ SmartTemplate4.fileTemplates = {
         resolver();
       },
       settingName,
-      "templateList",
+      "templateList"
     );
     await newPromise;
     return returnedItem;
@@ -1185,7 +1185,7 @@ SmartTemplate4.fileTemplates = {
       composeType: composeType.substring(0,3), 
       path: menuEntry.target.path, 
       label: menuEntry.target.label,
-      type: menuEntry.control_type
+      type: menuEntry.control_type,
     };
     // fileTemplateInstance from the "correct" window?
     try {
@@ -1206,11 +1206,11 @@ SmartTemplate4.fileTemplates = {
       await SmartTemplate4.Util.notifyTools.notifyBackground({ 
         func: "updateFileTemplates",
         Entries: this.Entries,
-        MRU_Entries: this.MRU_Entries
+        MRU_Entries: this.MRU_Entries,
       });
 
       SmartTemplate4.Util.notifyTools.notifyBackground({ 
-        func: "updateHeaderMenuMRU" 
+        func: "updateHeaderMenuMRU", 
       });
     }
 
@@ -1337,7 +1337,7 @@ SmartTemplate4.fileTemplates = {
       SmartTemplate4.Util.notifyTools.notifyBackground({ 
         func: "backgroundParser", 
         composeType, 
-        rawTemplate  // to do: read template from disk
+        rawTemplate,  // to do: read template from disk
       });
       return;
     }
@@ -1356,7 +1356,7 @@ SmartTemplate4.fileTemplates = {
 		  { 
 				composeType: composeType, 
 				path: path, 
-				label: label
+				label: label,
 			};
 
     const command = SmartTemplate4.fileTemplates.getController(menuitem);
@@ -1460,7 +1460,7 @@ SmartTemplate4.fileTemplates = {
         label: entry.label,
         path: entry.path,
         composeType: entry.composeType,
-        command: entry.command
+        command: entry.command,
       } 
     );
     }
@@ -1471,10 +1471,10 @@ SmartTemplate4.fileTemplates = {
     await SmartTemplate4.Util.notifyTools.notifyBackground({ 
       func: "updateFileTemplates",
       Entries: this.Entries,
-      MRU_Entries: this.MRU_Entries
+      MRU_Entries: this.MRU_Entries,
     });
     SmartTemplate4.Util.notifyTools.notifyBackground({ 
-      func: "updateHeaderMenuMRU" 
+      func: "updateHeaderMenuMRU", 
     });    
 
 	} ,
@@ -1487,7 +1487,7 @@ SmartTemplate4.fileTemplates = {
       const e = {
         composeType: entry.composeType,
         path: entry.path,
-        label: entry.label
+        label: entry.label,
       };
       if (entry.command) {
         e.command = entry.command;
@@ -1662,7 +1662,7 @@ SmartTemplate4.fileTemplates = {
       path: data.templateURL, 
       message: msgHeader,
       isAutoSend: true,  // new flag 
-      uri: uri
+      uri: uri,
     });
     
     SmartTemplate4.Util.logDebug("Sending SmartTemplate triggered by external Add-on", msgHeader);
@@ -1742,7 +1742,7 @@ SmartTemplate4.fileTemplates = {
 							composeType: composeType, 
 							path: localFile.path, 
 							label: name,
-              command: controller
+              command: controller,
 						};
 
           if (cmd) {
@@ -1938,7 +1938,7 @@ SmartTemplate4.fileTemplates = {
 			path: aFileTemplateArmedEntry.path, 
 			label: aFileTemplateArmedEntry.label,
       failed: false,
-      charset: null			
+      charset: null,			
 		};
 		if (await this.readHTMLTemplateFile(template)) {
       let html = "";
@@ -2059,6 +2059,6 @@ SmartTemplate4.fileTemplates = {
       // no changes to Entries array
       return false;
     }
-  }
+  },
 		
 }

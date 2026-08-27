@@ -41,7 +41,7 @@ SmartTemplate4.classSmartTemplate = function() {
         util.logDebug(
           "readSignatureFile() " +
             `\nTrying to read attached signature file: ${sigFile.leafName}` +
-            `\nat: ${fileName}`,
+            `\nat: ${fileName}`
         );
         // 					        + '\nfile size: ' + sigFile.fileSize
         // 					        + '\nReadable:  '  + sigFile.isReadable()
@@ -63,10 +63,10 @@ SmartTemplate4.classSmartTemplate = function() {
           let data = "",
             //read file into a string so the correct identifier can be added
             fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(
-              Ci.nsIFileInputStream,
+              Ci.nsIFileInputStream
             ),
             cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(
-              Ci.nsIConverterInputStream,
+              Ci.nsIConverterInputStream
             );
           fstream.init(sigFile, -1, 0, 0);
           /* sigEncoding: The character encoding you want, default is using UTF-8 here */
@@ -86,7 +86,7 @@ SmartTemplate4.classSmartTemplate = function() {
           htmlSigText = data.toString();
           util.logDebugOptional(
             "functions.extractSignature",
-            "Signature text read: (" + countRead + ") bytes.",
+            "Signature text read: (" + countRead + ") bytes."
           );
         }
       }
@@ -96,17 +96,17 @@ SmartTemplate4.classSmartTemplate = function() {
         `readSignatureFile - exception trying to read signature attachment file; expected charSet = ${sigEncoding} !\n` +
           "Either save your signature with this charset or can change it through the config setting extensions.smartTemplate4.signature.encoding\n" +
           `Also make sure this file path is correct and set: [${fileName}] \n`,
-        ex,
+        ex
       );
       if (!Ident.signature) {
         util.logToConsole(
-          "Ident.signature is null - this is usually caused by faulty / inconsistent Account Settings.",
+          "Ident.signature is null - this is usually caused by faulty / inconsistent Account Settings."
         );
       }
     }
     util.logDebugOptional(
       "functions.extractSignature",
-      `SmartTemplate4.readSignatureFile() ends - charset = ${sigEncoding}; htmlSigText:\n${htmlSigText}[EOF]`,
+      `SmartTemplate4.readSignatureFile() ends - charset = ${sigEncoding}; htmlSigText:\n${htmlSigText}[EOF]`
     );
     return htmlSigText;
   }
@@ -139,7 +139,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
     util.logDebugOptional(
       "functions",
-      `extractSignature()\nSTART==========  extractSignature(${Ident}, defined type=${signatureDefined}, compose type=${composeType})  ========`,
+      `extractSignature()\nSTART==========  extractSignature(${Ident}, defined type=${signatureDefined}, compose type=${composeType})  ========`
     );
     let bodyEl = SmartTemplate4.composer.body;
     SmartTemplate4.signature = null;
@@ -175,7 +175,7 @@ SmartTemplate4.classSmartTemplate = function() {
         "functions.extractSignature",
         `signature node ${lastSigNode ? "was" : "not"} found${
           isSigInBlockquote ? " in <blockquote>!" : "."
-        }`,
+        }`
       );
     }
 
@@ -189,7 +189,7 @@ SmartTemplate4.classSmartTemplate = function() {
       if (Ident.attachSignature) {
         util.logDebugOptional(
           "signatures,functions.extractSignature",
-          `attachSignature is set for Identity [${Ident.key}] ${Ident.identityName}\nPath: ${sigPath}`,
+          `attachSignature is set for Identity [${Ident.key}] ${Ident.identityName}\nPath: ${sigPath}`
         );
         let fileSig = readSignatureFile(Ident);
         if (fileSig) {
@@ -201,7 +201,7 @@ SmartTemplate4.classSmartTemplate = function() {
               fileSig
                 .toLowerCase()
                 .match(
-                  "<br>|<br/>|<div.*>|<span.*>|<style.*>|<table.*>|<p.*>|<u>|<b>|<i>|<pre.*>|<img.*>",
+                  "<br>|<br/>|<div.*>|<span.*>|<style.*>|<table.*>|<p.*>|<u>|<b>|<i>|<pre.*>|<img.*>"
                 )
             ) {
               isSignatureHTML = true;
@@ -224,7 +224,7 @@ SmartTemplate4.classSmartTemplate = function() {
       }
       util.logDebugOptional(
         "functions.extractSignature",
-        `Signature Type (from file) is ${sigType}`,
+        `Signature Type (from file) is ${sigType}`
       );
 
       // retrieve signature Node; if it doesn't work, try from the account
@@ -293,7 +293,7 @@ SmartTemplate4.classSmartTemplate = function() {
     if (!removed) {
       util.logDebugOptional(
         "functions.extractSignature",
-        "Not removed. 2nd attempt to remove previous sig…",
+        "Not removed. 2nd attempt to remove previous sig…"
       );
 
       let sigNodes = bodyEl.querySelectorAll(".moz-signature");
@@ -343,7 +343,7 @@ SmartTemplate4.classSmartTemplate = function() {
         // [issue 240]
         util.logDebugOptional(
           "fileTemplates",
-          `extractSignature: Add sig file to template stack: ${sigPath}`,
+          `extractSignature: Add sig file to template stack: ${sigPath}`
         );
         pathArray.push(sigPath);
       }
@@ -357,7 +357,7 @@ SmartTemplate4.classSmartTemplate = function() {
         if (last) {
           util.logDebugOptional(
             "fileTemplates",
-            `extractSignature: Removed file from template stack: ${last}`,
+            `extractSignature: Removed file from template stack: ${last}`
           );
         }
       }
@@ -376,7 +376,7 @@ SmartTemplate4.classSmartTemplate = function() {
       if (!isSignatureHTML) {
         util.logDebugOptional(
           "functions.extractSignature",
-          "Replace text sig line breaks with <br>…",
+          "Replace text sig line breaks with <br>…"
         );
         // prettify: txt -> html
         // first replace CRLF then LF
@@ -405,7 +405,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
     util.logDebugOptional(
       "functions.extractSignature",
-      "==============  extractSignature=============END\n" + "Return Signature:\n" + sig,
+      "==============  extractSignature=============END\n" + "Return Signature:\n" + sig
     );
     return { placeholder, newSig: sig };
   }
@@ -468,7 +468,7 @@ SmartTemplate4.classSmartTemplate = function() {
       util.logDebugOptional(
         "deleteNodes",
         `deleteNodeTextOrBR() - deletes node ${msg}\n` +
-          `\n_________${node.nodeName}_________${content}`,
+          `\n_________${node.nodeName}_________${content}`
       );
       if (isCitation && !SmartTemplate4.pref.isDeleteHeaders(idKey, "rsp", false)) {
         // lets not remove it if the box [x] "Use instead of default quote header" is not checked
@@ -480,7 +480,7 @@ SmartTemplate4.classSmartTemplate = function() {
     } else {
       util.logDebugOptional(
         "deleteNodes",
-        "deleteNodeTextOrBR() - ignored nonmatching " + theNodeName,
+        "deleteNodeTextOrBR() - ignored nonmatching " + theNodeName
       );
     }
     return isCitation ? "cite-prefix" : theNodeName;
@@ -511,7 +511,7 @@ SmartTemplate4.classSmartTemplate = function() {
       if (match) {
         util.logDebugOptional(
           "deleteNodes",
-          "deleteWhiteSpaceNodes() - deletes node " + "\n" + node.nodeName + "	" + node.nodeValue,
+          "deleteWhiteSpaceNodes() - deletes node " + "\n" + node.nodeName + "	" + node.nodeValue
         );
         gMsgCompose.editor.deleteNode(node);
         node = nextNode;
@@ -524,7 +524,7 @@ SmartTemplate4.classSmartTemplate = function() {
     if (node) {
       util.logDebugOptional(
         "functions",
-        "deleteHeaderNode() - deleting " + node.nodeName + "\n" + node.innerHTML,
+        "deleteHeaderNode() - deleting " + node.nodeName + "\n" + node.innerHTML
       );
       orgQuoteHeaders.push(node);
       gMsgCompose.editor.deleteNode(node);
@@ -607,14 +607,14 @@ SmartTemplate4.classSmartTemplate = function() {
         // [issue 408] do not delete quote headers that are within blockquote
         util.logDebugOptional(
           "functions.delReplyHeader",
-          "found " + quoteHeaderCls + " but it is within a blockquote, exiting.",
+          "found " + quoteHeaderCls + " but it is within a blockquote, exiting."
         );
         return;
       }
       if (node) {
         util.logDebugOptional(
           "functions.delReplyHeader",
-          "found " + quoteHeaderCls + ", calling deleteHeaderNode()…",
+          "found " + quoteHeaderCls + ", calling deleteHeaderNode()…"
         );
         deleteHeaderNode(node);
       }
@@ -730,14 +730,14 @@ SmartTemplate4.classSmartTemplate = function() {
     } catch (ex) {
       util.logException(
         "Could not retrieve forward/reply delimiter {" + used + "}, using fallback.",
-        ex,
+        ex
       );
       origMsgDelimiter = origMsgDelimiter || "--- Original Message ---"; // safe default
     }
 
     util.logDebugOptional(
       "functions.delForwardHeader",
-      "Retrieved Delimiter Token from mime properties: " + origMsgDelimiter,
+      "Retrieved Delimiter Token from mime properties: " + origMsgDelimiter
     );
 
     // Delete original headers
@@ -747,7 +747,7 @@ SmartTemplate4.classSmartTemplate = function() {
       preserve = prefs.getMyBoolPref("plainText.preserveTextNodes");
     util.logDebugOptional(
       "functions.delForwardHeader",
-      "Running Loop to remove unnecessary whitespace..",
+      "Running Loop to remove unnecessary whitespace.."
     );
 
     while (node) {
@@ -778,7 +778,7 @@ SmartTemplate4.classSmartTemplate = function() {
             }
             util.logDebugOptional(
               "functions.delForwardHeader",
-              "deleting node: " + inner.nodeValue,
+              "deleting node: " + inner.nodeValue
             );
             gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
             if (inner.nodeValue == origMsgDelimiter) {
@@ -804,7 +804,7 @@ SmartTemplate4.classSmartTemplate = function() {
     if (node) {
       util.logDebugOptional(
         "functions.delForwardHeader",
-        "found moz-email-headers-table; deleting",
+        "found moz-email-headers-table; deleting"
       );
       let nextNode = node.nextSibling;
       deleteHeaderNode(node);
@@ -813,7 +813,7 @@ SmartTemplate4.classSmartTemplate = function() {
     } else {
       util.logDebugOptional(
         "functions.delForwardHeader",
-        "Could not find moz-email-headers-table!",
+        "Could not find moz-email-headers-table!"
       );
       if (!gMsgCompose.composeHTML) {
         truncateTo2BR(rootEl.firstChild);
@@ -864,7 +864,7 @@ SmartTemplate4.classSmartTemplate = function() {
     } catch (ex) {
       util.logException(
         "removePreviousTemplate - exception trying to remove previous template:",
-        ex,
+        ex
       );
     }
   }
@@ -885,7 +885,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
     util.logDebugOptional(
       "functions.getProcessedText",
-      "START =============  getProcessedText()   ==========",
+      "START =============  getProcessedText()   =========="
     );
     util.logDebugOptional("functions.getProcessedText", "Process Text:\n" + templateText + "[END]");
     var pref = SmartTemplate4.pref;
@@ -900,7 +900,7 @@ SmartTemplate4.classSmartTemplate = function() {
       composeType,
       false, // isStationery
       ignoreHTML,
-      isDraftLike,
+      isDraftLike
     );
 
     // now that all replacements were done, lets run our global routines to replace / delete text, (such as J.B. "via Paypal")
@@ -917,7 +917,7 @@ SmartTemplate4.classSmartTemplate = function() {
       function (match) {
         util.logDebugOptional("composer", "Replacing image file as data: " + match);
         return util.getFileAsDataURI(match);
-      },
+      }
     );
 
     // find & fix relative <img> paths:
@@ -961,13 +961,13 @@ SmartTemplate4.classSmartTemplate = function() {
           }
         }
         return match;
-      },
+      }
     );
 
     util.logDebugOptional("functions.getProcessedText", "regular:\n" + regular);
     util.logDebugOptional(
       "functions.getProcessedText",
-      "=============  getProcessedText()   ========== END",
+      "=============  getProcessedText()   ========== END"
     );
     return regular;
   }
@@ -1064,7 +1064,7 @@ SmartTemplate4.classSmartTemplate = function() {
       // [issue 184] - this should never be called if this flag is set
       alert(
         "To do: insertTemplate() through background - [issue 184]\n" +
-          "This used to call ComposeMessage after adding item to SmartTemplate4.fileTemplates.armedQueue.",
+          "This used to call ComposeMessage after adding item to SmartTemplate4.fileTemplates.armedQueue."
       );
       return;
     }
@@ -1154,14 +1154,14 @@ SmartTemplate4.classSmartTemplate = function() {
           "white",
           "#8e0477a4",
           `${label}: found ${what} ${caretEl.outerHTML} after:`,
-          caretEl?.previousElementSibling,
+          caretEl?.previousElementSibling
         );
       } else {
         SmartTemplate4.Util.logHighlightDebug(
           "composer.cursor",
           "white",
           "#8e0477a4",
-          `${label}: no caret / cursor found`,
+          `${label}: no caret / cursor found`
         );
       }
     };
@@ -1194,7 +1194,7 @@ SmartTemplate4.classSmartTemplate = function() {
     util.logDebugOptional(
       "functions,functions.insertTemplate",
       `insertTemplate(startup: ${startup} , gMsgCompose.type = ${gMsgCompose.type}`,
-      flags,
+      flags
     );
     const msgComposeType = Ci.nsIMsgCompType,
       editor = util.CurrentEditor;
@@ -1229,7 +1229,7 @@ SmartTemplate4.classSmartTemplate = function() {
         (theIdentity ? theIdentity.key : "NO IDENTITY!") +
         "\n" +
         "identityName = " +
-        (theIdentity ? theIdentity.identityName : "NO IDENTITY!"),
+        (theIdentity ? theIdentity.identityName : "NO IDENTITY!")
     );
     // Switch account
     if (startup) {
@@ -1382,7 +1382,7 @@ SmartTemplate4.classSmartTemplate = function() {
             editor.rootElement.innerHTML,
             idKey,
             st4composeType,
-            true,
+            true
           ); // ignoreHTML = true ?
           // need to empty out the innerHTML if we insert this to avoid duplication.
           editor.rootElement.innerHTML = "";
@@ -1392,7 +1392,7 @@ SmartTemplate4.classSmartTemplate = function() {
           if (flags.isFileTemplate) {
             util.logDebugOptional(
               "functions.insertTemplate",
-              "processing fileTemplate(" + fileTemplateSource + ")",
+              "processing fileTemplate(" + fileTemplateSource + ")"
             );
 
             if (rawTemplate.match(/%suppressQuoteHeaders*%/gm)) {
@@ -1403,7 +1403,7 @@ SmartTemplate4.classSmartTemplate = function() {
           } else {
             util.logDebugOptional(
               "functions.insertTemplate",
-              "retrieving Template: getSmartTemplate(" + st4composeType + ", " + idKey + ")",
+              "retrieving Template: getSmartTemplate(" + st4composeType + ", " + idKey + ")"
             );
             template = await getSmartTemplate(st4composeType, idKey);
           }
@@ -1413,20 +1413,20 @@ SmartTemplate4.classSmartTemplate = function() {
 
           util.logDebugOptional(
             "functions.insertTemplate",
-            "retrieving quote Header: getQuoteHeader(" + st4composeType + ", " + idKey + ")",
+            "retrieving quote Header: getQuoteHeader(" + st4composeType + ", " + idKey + ")"
           );
           quoteHeader = await getQuoteHeader(st4composeType, idKey);
         }
 
         if (flags.suppressQuoteHeaders) {
           util.logDebug(
-            "Suppressing Quote header, as template has demanded. (%suppressQuoteHeaders%)",
+            "Suppressing Quote header, as template has demanded. (%suppressQuoteHeaders%)"
           );
           quoteHeader = "";
         }
         if (flags.deleteForwardedBody) {
           util.logDebug(
-            "Deleting Forwarded message body, as template has demanded. (%deleteForwardedBody%)",
+            "Deleting Forwarded message body, as template has demanded. (%deleteForwardedBody%)"
           );
           delForwardedBody();
         }
@@ -1503,7 +1503,7 @@ SmartTemplate4.classSmartTemplate = function() {
       } else {
         util.logDebugOptional(
           "functions.insertTemplate",
-          "insertTemplate - processing is not active for id " + idKey,
+          "insertTemplate - processing is not active for id " + idKey
         );
         // remove old signature!
         // we shouldn't do this if it is not active on account unless we inserted it just beforehand?
@@ -1512,7 +1512,7 @@ SmartTemplate4.classSmartTemplate = function() {
     } catch (ex) {
       util.logException(
         "insertTemplate - exception during parsing. Continuing with inserting template!",
-        ex,
+        ex
       );
     }
 
@@ -1545,13 +1545,13 @@ SmartTemplate4.classSmartTemplate = function() {
           bodyContent = "";
           util.logDebugOptional(
             "composer",
-            "msgComposeType.MailToUrl - injecting mailto content:\n" + bodyEl.innerHTML,
+            "msgComposeType.MailToUrl - injecting mailto content:\n" + bodyEl.innerHTML
           );
         } else {
           bodyEl.textContent = ""; // clear out body
           util.logDebugOptional(
             "composer",
-            "msgComposeType.MailToUrl - clearing template and setting to:\n" + bodyContent,
+            "msgComposeType.MailToUrl - clearing template and setting to:\n" + bodyContent
           );
           template = bodyContent; // clear template
           SmartTemplate4.sigInTemplate = false;
@@ -1589,7 +1589,7 @@ SmartTemplate4.classSmartTemplate = function() {
             util.logDebugOptional("composer", `SmartTemplates - head tag found\n${head.outerHTML}`);
             util.insertHtmlSafely(
               docHeader,
-              `\n<!-- head [${i}] from template -->\n${head.innerHTML}`,
+              `\n<!-- head [${i}] from template -->\n${head.innerHTML}`
             );
           });
 
@@ -1646,7 +1646,7 @@ SmartTemplate4.classSmartTemplate = function() {
               util.logDebugOptional(
                 "composer",
                 "Skipping tidy up body element due to removal error",
-                ex,
+                ex
               );
             }
           });
@@ -1699,13 +1699,13 @@ SmartTemplate4.classSmartTemplate = function() {
             gMsgCompose.editor.insertNode(
               util.mailDocument.createElement("br"),
               SmartTemplate4.composer.body,
-              0,
+              0
             );
           }
           // the first Child should be BLOCKQUOTE (header is inserted afterwards)
           util.logDebugOptional(
             "composer",
-            "Reply on Top - inserting template before first root child",
+            "Reply on Top - inserting template before first root child"
           );
           targetNode = editor.rootElement.insertBefore(templateDiv, editor.rootElement.firstChild);
         } else {
@@ -1714,7 +1714,7 @@ SmartTemplate4.classSmartTemplate = function() {
           }
           util.logDebugOptional(
             "composer",
-            "Reply at Botton - appending template to first root child",
+            "Reply at Botton - appending template to first root child"
           );
           targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
           editor.endOfDocument();
@@ -1803,7 +1803,7 @@ SmartTemplate4.classSmartTemplate = function() {
             styles.forEach((s) => {
               util.logDebugOptional(
                 "functions.insertTemplate",
-                "Removing style block:\n" + s.innerText.substring(0, 65) + "...",
+                "Removing style block:\n" + s.innerText.substring(0, 65) + "..."
               );
               s.parentElement.removeChild(s);
             });
@@ -1822,7 +1822,7 @@ SmartTemplate4.classSmartTemplate = function() {
         });
         if (result === "ok") {
           let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(
-            Ci.nsIClipboardHelper,
+            Ci.nsIClipboardHelper
           );
           oClipBoard.copyString(template || "");
         }
@@ -1869,7 +1869,7 @@ SmartTemplate4.classSmartTemplate = function() {
           `------------------------------------------------\n` +
           `SmartTemplates version: ${util.Version}\n` +
           `Application: ${util.Application} v${util.AppverFull}\n` +
-          `HostSystem: ${util.HostSystem}\n`,
+          `HostSystem: ${util.HostSystem}\n`
       );
     } catch (ex) {
       util.logException("Logging detail failed", ex);
@@ -1885,7 +1885,7 @@ SmartTemplate4.classSmartTemplate = function() {
         `isSignatureSetup: ${isSignatureSetup}\n` +
           `sigType: ${sigType}\n` +
           `flags.omitSignature: ${flags.omitSignature}\n` +
-          `sigVarDefined: ${sigVarDefined}`,
+          `sigVarDefined: ${sigVarDefined}`
       );
       if (
         (composeCase == "reply" && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup) ||
@@ -1908,7 +1908,7 @@ SmartTemplate4.classSmartTemplate = function() {
               if (!util.insertHtmlSafely(sn, theSignature)) {
                 console.log(
                   "insertTemplate - signature handling: insertHtmlSafely failed - we should inject it's html!",
-                  theSignature,
+                  theSignature
                 );
               }
               theSignature = sn;
@@ -1937,7 +1937,7 @@ SmartTemplate4.classSmartTemplate = function() {
                   templateDiv.parentNode.insertBefore(theSignature, templateDiv.nextSibling);
                   templateDiv.parentNode.insertBefore(
                     doc.createElement("br"),
-                    templateDiv.nextSibling,
+                    templateDiv.nextSibling
                   );
                 } else {
                   // templateDiv.parentNode.appendChild(templateDiv);
@@ -1974,7 +1974,7 @@ SmartTemplate4.classSmartTemplate = function() {
       if (SmartTemplate4.PreprocessingFlags.preHeader) {
         // [issue 274]
         preheaderEl = SmartTemplate4.composer.buildPreHeaderElement(
-          SmartTemplate4.PreprocessingFlags.preHeader,
+          SmartTemplate4.PreprocessingFlags.preHeader
         );
       }
 
@@ -2030,7 +2030,7 @@ SmartTemplate4.classSmartTemplate = function() {
           } catch (ex) {
             util.logException(
               `editor.selectionController completeMove(forward = $forward$) failed`,
-              ex,
+              ex
             );
           }
           try {
@@ -2096,7 +2096,7 @@ SmartTemplate4.classSmartTemplate = function() {
                   selCtrl.scrollSelectionIntoView(
                     selCtrl.SELECTION_NORMAL,
                     selCtrl.SELECTION_WHOLE_SELECTION,
-                    scrollFlags,
+                    scrollFlags
                   );
                   selCtrl.setDisplaySelection(selCtrl.SELECTION_ATTENTION);
                 } else {
@@ -2146,7 +2146,7 @@ SmartTemplate4.classSmartTemplate = function() {
     } catch (ex) {
       util.logException(
         "editor.selectionController command failed - editor = " + editor + "\n",
-        ex,
+        ex
       );
     }
     logCaretPosition("After moving selection to top / bottom");
@@ -2223,7 +2223,7 @@ SmartTemplate4.classSmartTemplate = function() {
     SmartTemplate4.Util.logHighlightDebug(
       `resetDocument(withUndo = ${withUndo})`,
       "yellow",
-      "rgb(0,80,0)",
+      "rgb(0,80,0)"
     );
     editor.resetModificationCount();
     if (withUndo) {
@@ -2332,7 +2332,7 @@ SmartTemplate4.classSmartTemplate = function() {
                 if (isDebug) {
                   console.log(
                     "Skipping text node inside already processed parent:",
-                    node.parentNode,
+                    node.parentNode
                   );
                 }
               }

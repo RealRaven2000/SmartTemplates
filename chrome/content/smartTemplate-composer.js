@@ -22,7 +22,7 @@ SmartTemplate4.composer = {
     // because I want to avoid polluting the markup with stuff that is strictly
     // reserved to the composing stage
     const sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-        Ci.nsIStyleSheetService,
+        Ci.nsIStyleSheetService
       ),
       ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
       uri = ios.newURI("chrome://SmartTemplate4/content/skin/compose-overlay.css", null, null);
@@ -223,12 +223,12 @@ SmartTemplate4.composer = {
       if (!isHandled) {
         SmartTemplate4.Util.popupAlert(
           "SmartTemplates",
-          "An error occured with the selected file. Either it can't be found or there was a problem accessing it.",
+          "An error occured with the selected file. Either it can't be found or there was a problem accessing it."
         );
       }
     } else {
       await SmartTemplate4.fileTemplates.insertFileEntryInComposer(
-        SmartTemplate4.fileTemplates.armedEntry,
+        SmartTemplate4.fileTemplates.armedEntry
       );
     }
   },
@@ -261,7 +261,7 @@ SmartTemplate4.composer = {
 
   get body() {
     return gMsgCompose.editor.rootElement;
-  }
+  },
 };
 
 
