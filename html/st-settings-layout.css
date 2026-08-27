@@ -270,6 +270,13 @@ div.btnLicenseContainer #btnLicense {
   #helpFrame {
     width: calc(100vw - 66px) !important;
   }
+  #pref-category-box {
+    max-width: 6em;
+  }
+  .category-name {
+    display: none !important;
+    font-size: 0.8em;
+  }
 }
 
 @media (max-width: 600px) {
@@ -289,7 +296,9 @@ div.btnLicenseContainer #btnLicense {
   #helpFrame {
     width: calc(100vw - 50px) !important;
   }
-  
+  #pref-category-box {
+    max-width: 4em;
+  }
   fieldset {
     margin-block: 0;
   }  
