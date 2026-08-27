@@ -100,7 +100,8 @@ function isVisible(el) {
 }
 
 async function isDebug() {
-  return await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+  const { debug = {} } = await browser.storage.local.get({ debug: {} });
+  return debug.debugActive ?? false;
 }
 
 async function initHTML() {
@@ -108,7 +109,7 @@ async function initHTML() {
     console.log("help-html.js init()");
   }
 
-  i18n.updateDocument(); // parent doc must have loaded ../chrome/content/i18n.js
+  i18n.updateDocument(); // parent doc must have loaded i18n.js
   // update every text that contains params
   const params = document.querySelectorAll(".containsParams");
   const reg = /\{[^}]+\}/; // {parameter}
@@ -134,7 +135,7 @@ async function initHTML() {
       container,
       values,
       values.map(() => "paramLiteral"),
-      { firstOnly: true },
+      { firstOnly: true }
     );
   });
 
