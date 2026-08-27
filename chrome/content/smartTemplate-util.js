@@ -557,7 +557,7 @@ SmartTemplate4.Util = {
 
     if (SmartTemplate4.Preferences.isDebugOption("premium.testNotification")) {
       util.logToConsole(
-        "Testing license warning - to restore normal validation of your license, please reset extensions.smartTemplate4.debug.premium.testNotification"
+        "Testing license warning - to restore normal validation of your license, please reset debug.premium.testNotification"
       );
       hasLicense = false;
     }
@@ -889,7 +889,7 @@ SmartTemplate4.Util = {
   },
 
   logDebug: function (_msg) {
-    // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
+    // to disable the standard debug log, turn off debug.default
     if (SmartTemplate4.Preferences.isDebug && SmartTemplate4.Preferences.isDebugOption("default")) {
       this.logToConsole(...arguments);
     }
@@ -1987,7 +1987,7 @@ SmartTemplate4.Util = {
       return isQuotedNode(node.parentNode); //  if node is child of a quoted parent, it is also considered to be quoted.
     }
 
-    if (SmartTemplate4.Preferences.getMyBoolPref("deferred.autoUpdate")) {
+    if (SmartTemplate4.Preferences.getBoolPref("deferred.autoUpdate")) {
       try {
         // let compType = SmartTemplate4.Util.getComposeType(); // do we need to know whether new or rsp/fwd case?
         while (treeWalker.nextNode()) {
@@ -4200,17 +4200,12 @@ SmartTemplate4.Util.firstRun =
 		      prefs = SmartTemplate4.Preferences;
 		util.logDebug("Util.firstRun.init()");
 		let prev = -1, firstRun = true,
-		    debugFirstRun = false,
-		    prefBranchString = "extensions.smartTemplate4.",
-		    ssPrefs = Services.prefs.getBranch(prefBranchString);
+		    debugFirstRun = false;
 
 		// eslint-disable-next-line no-unused-vars
-		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstRun")); } catch (_e) { debugFirstRun = false; }
+		try { debugFirstRun = Boolean(prefs.getBoolPref("debug.firstRun")); } catch (_e) { debugFirstRun = false; }
 
 		util.logDebugOptional ("firstRun","SmartTemplate4.Util.firstRun.init()");
-		if (!ssPrefs) {
-			util.logDebugOptional ("firstRun","Could not retrieve prefbranch for " + prefBranchString);
-		}
 
 		let current = util.Version;
 		util.logDebug("Current SmartTemplates Version: " + current);
@@ -4218,7 +4213,7 @@ SmartTemplate4.Util.firstRun =
 		try {
 			util.logDebugOptional ("firstRun","try to get setting: getCharPref(version)");
 			try {
-				prev = prefs.getMyStringPref("version");
+				prev = prefs.getStringPref("version");
 			}
 			catch (e) {
 				prev = "?";
@@ -4227,7 +4222,7 @@ SmartTemplate4.Util.firstRun =
 
 			util.logDebugOptional ("firstRun","try to get setting: getBoolPref(firstRun)");
 			// eslint-disable-next-line no-unused-vars
-			try { firstRun = ssPrefs.getBoolPref("firstRun"); } catch (_e) { firstRun = true; }
+			try { firstRun = prefs.getBoolPref("firstRun"); } catch (_e) { firstRun = true; }
 
 
 			if (firstRun) {
@@ -4236,7 +4231,7 @@ SmartTemplate4.Util.firstRun =
 					firstRun = false;
         }
 				util.logDebugOptional ("firstRun","setting firstRun=false");
-				prefs.setMyBoolPref("firstRun", false);
+				prefs.setBoolPref("firstRun", false);
 			}
 			else {
 				// this is an update - start license timer if license is empty.
@@ -4297,7 +4292,7 @@ SmartTemplate4.Util.firstRun =
 
 					// VERSION HISTORY PAGE
 					// display version history - disable by right-clicking label above show history panel
-          let isSilentUpdate = prefs.getMyBoolPref("silentUpdate"); // allow this flag for all.
+          let isSilentUpdate = prefs.getBoolPref("silentUpdate"); // allow this flag for all.
           if (isSilentUpdate) {
             util.logDebug("Supressing Change Log, as disabled by user.");
           } else if (!this.silentUpdate(prev,pureVersion)) {
@@ -4318,7 +4313,7 @@ SmartTemplate4.Util.firstRun =
 			if (prev != pureVersion && current != '?') {
 				// util.logDebug ("Storing new version number " + current);
 				// STORE VERSION CODE! (taken out!)
-				// prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+				// prefs.setStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
 			}
 			else {
 				util.logDebugOptional ("firstRun","No need to store current version: " + current
@@ -4414,8 +4409,8 @@ SmartTemplate4.AB = {
       // CARDBOOK
       // alternatively look at mail merge (not mail merge p) - it may do it in a different way
 
-      var isCardBookAB = SmartTemplate4.Preferences.getMyBoolPref("mime.resolveAB.CardBook"),
-        isCardBookFallback = SmartTemplate4.Preferences.getMyBoolPref(
+      var isCardBookAB = SmartTemplate4.Preferences.getBoolPref("mime.resolveAB.CardBook"),
+        isCardBookFallback = SmartTemplate4.Preferences.getBoolPref(
           "mime.resolveAB.CardBook.fallback"
         );
 

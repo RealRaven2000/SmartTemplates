@@ -9,6 +9,11 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/scripts/hackToolbarbutton.js", window.SmartTemplate4, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-util.js", window, "UTF-8");
+Services.scriptloader.loadSubScript(
+  "chrome://smarttemplate4/content/smartTemplate-storage.js",
+  window,
+  "UTF-8"
+);
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-prefs.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
@@ -114,11 +119,11 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-news": 
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashScreen" });
         // reset news flag:
-        SmartTemplates.Preferences.setMyBoolPref("hasNews", false);
+        SmartTemplates.Preferences.setBoolPref("hasNews", false);
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" });
         break;
       case "smartTemplates-setNewsFlag":
-        SmartTemplates.Preferences.setMyBoolPref("hasNews", true);
+        SmartTemplates.Preferences.setBoolPref("hasNews", true);
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" });
         break;
       case "smartTemplates-settings-legacy": // fall-through
@@ -264,9 +269,9 @@ async function onLoad(activatedWhileWindowOpen) {
             isHidden = params.isHidden;
           } else {
             // toggle existing state
-            isHidden = !SmartTemplates.Preferences.getMyBoolPref("toolbar.hideLabel");
+            isHidden = !SmartTemplates.Preferences.getBoolPref("toolbar.hideLabel");
           }
-          SmartTemplates.Preferences.setMyBoolPref("toolbar.hideLabel", isHidden);
+          SmartTemplates.Preferences.setBoolPref("toolbar.hideLabel", isHidden);
           let btn = el.parentElement
             ? el.parentElement.parentElement
             : SmartTemplates.Util.getCommandsButton("message_action");

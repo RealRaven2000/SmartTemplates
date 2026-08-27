@@ -438,7 +438,7 @@ SmartTemplate4.fileTemplates = {
     const MAX_FREE_TEMPLATES = isMRUmenu ? 3 : 5,
           MAX_STANDARD_TEMPLATES = isMRUmenu ? 5 : 25,
 					MAX_STANDARD_CATEGORIES = 3,
-          MAX_MRU_CEILING = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.mru.max"),
+          MAX_MRU_CEILING = SmartTemplate4.Preferences.getIntPref("fileTemplates.mru.max"),
           isLicensed = util.hasLicense(false);
 		let popupParent = msgPopup.parentNode, 
 				singleParentWindow = null,
@@ -1292,7 +1292,7 @@ SmartTemplate4.fileTemplates = {
 
   enterMRUitem(entry) {
     SmartTemplate4.Util.logDebug(`enterMRUitem(${this.makeLabel(entry)})`);
-    let MAX_MRU_ITEMS = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.mru.max") * 2; // default is 10 but can be raised in Pro
+    let MAX_MRU_ITEMS = SmartTemplate4.Preferences.getIntPref("fileTemplates.mru.max") * 2; // default is 10 but can be raised in Pro
     let el = SmartTemplate4.fileTemplates.MRU_Entries.find(e => 
       e.path == entry.path && 
       (e.cmd == entry.cmd ||
@@ -1615,7 +1615,7 @@ SmartTemplate4.fileTemplates = {
       }
 
       // sanitize inserted markup: remove duplicated style blocks
-      if (SmartTemplate4.Preferences.getMyBoolPref("sanitizeStyles.removeDuplicatesInFragments")) {
+      if (SmartTemplate4.Preferences.getBoolPref("sanitizeStyles.removeDuplicatesInFragments")) {
         const editor = SmartTemplate4.Util.CurrentEditor;
         const fragContainer = editor.document.createElement("div");
         SmartTemplate4.Util.insertHtmlSafely(fragContainer, code);

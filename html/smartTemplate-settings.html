@@ -246,7 +246,7 @@
               <input id="txtBreaks"
                 type="text"
                 autocomplete="off"
-                data-pref-name="extensions.smartTemplate4.breaksAtTop"
+                data-pref-name="breaksAtTop"
                 instantApply="true">
             </div>
             <div class="hbox labeledBox">
@@ -254,7 +254,7 @@
               <input id="txtCharset"
                 type="text"
                 autocomplete="off"
-                data-pref-name="extensions.smartTemplate4.defaultCharset"
+                data-pref-name="defaultCharset"
                 instantApply="true">
               <button
                 class="toolTipButton"
@@ -275,7 +275,7 @@
                 class="standardFeature"
                 value="2">__MSG_defaultTemplate.useLastTemplate__</label>
             <label><input type="checkbox" id="chkNotifyLastTemplate"
-              data-pref-name="extensions.smartTemplate4.defaultTemplate.useLastNotify">__MSG_defaultTemplate.useLastNotify__</label>
+              data-pref-name="defaultTemplate.useLastNotify">__MSG_defaultTemplate.useLastNotify__</label>
           </span>
         </fieldset>
 
@@ -286,7 +286,7 @@
             <span class="hasConfigEvent hbox">
               <label>
               <input type="checkbox" id="chkSignature" class="contextConfig"
-                data-pref-name="extensions.smartTemplate4.parseSignature">__MSG_parseSignature__
+                data-pref-name="parseSignature">__MSG_parseSignature__
               </label>
               <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
               <button
@@ -296,18 +296,18 @@
             </span>
             
             <label><input type="checkbox"
-                data-pref-name="extensions.smartTemplate4.signature.replaceLF.plaintext.br">__MSG_replaceBRinSignature.label__</label>
+                data-pref-name="signature.replaceLF.plaintext.br">__MSG_replaceBRinSignature.label__</label>
                 
             <div class="hbox">
               <label><input type="checkbox" title="__MSG_addSigBreakHTML.tip__"
-                data-pref-name="extensions.smartTemplate4.signature.insertDashes.html">__MSG_addSigBreakHTML__</label>
+                data-pref-name="signature.insertDashes.html">__MSG_addSigBreakHTML__</label>
               
               <label><input type="checkbox" title="__MSG_addSigBreakPlaintext.tip__"
-                data-pref-name="extensions.smartTemplate4.signature.insertDashes.plaintext">__MSG_addSigBreakPlaintext__</label>
+                data-pref-name="signature.insertDashes.plaintext">__MSG_addSigBreakPlaintext__</label>
             </div>
             
             <label><input type="checkbox" class="premiumFeature"
-              data-pref-name="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits">__MSG_removeSigOnIdChangeAfterEdits__
+              data-pref-name="removeSigOnIdChangeAfterEdits">__MSG_removeSigOnIdChangeAfterEdits__
               <button
                 class="toolTipButton containsHTML"
                 id="removeSigOnIdChangeAfterEdits-tip"
@@ -321,9 +321,9 @@
           <legend>__MSG_grpAdvanced__</legend>
           <div class="vbox">
             <label><input type="checkbox" 
-                  data-pref-name="extensions.smartTemplate4.cursor.insertSpace">__MSG_insertCursor__</label>
+                  data-pref-name="cursor.insertSpace">__MSG_insertCursor__</label>
             <label><input type="checkbox" 
-                  data-pref-name="extensions.smartTemplate4.forceParagraph">__MSG_forceParagraphs__
+                  data-pref-name="forceParagraph">__MSG_forceParagraphs__
               <button 
                 class="toolTipButton containsHTML" 
                 id="forceParagraphs-tip"
@@ -339,13 +339,13 @@
               <span class="hasConfigEvent hbox">
                 <label><input type="checkbox" id="chkStatusButton"
                       class="contextConfig"
-                      data-pref-name="extensions.smartTemplate4.showStatusIcon">__MSG_displayStatusIcon__
+                      data-pref-name="showStatusIcon">__MSG_displayStatusIcon__
                 </label>  
                 <span class="spacer"></span>
                 <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
               </span>
               <select id="iconType"
-                data-pref-name="extensions.smartTemplate4.statusIconLabelMode"
+                data-pref-name="statusIconLabelMode"
                 flex="5">
                 <option value="0">__MSG_statusIcon.IconOnly__</option>
                 <option value="2">__MSG_statusIcon.IconText__</option>
@@ -360,7 +360,7 @@
               <button id="fontLarger"></button>
               <input id="txtFontSize" 
                 type="text" autocomplete="off"
-                data-pref-name="extensions.smartTemplate4.font.size"
+                data-pref-name="font.size"
                 disabled="true">
             </div>
           </div>
@@ -375,54 +375,54 @@
           <legend>__MSG_grpNameRules__</legend>
           <div class="vbox">
             <label><input type="checkbox" 
-                 data-pref-name="extensions.smartTemplate4.names.capitalize">__MSG_capitalizeNames__</label>
+                 data-pref-name="names.capitalize">__MSG_capitalizeNames__</label>
             <label><input type="checkbox" id="chkFirstLastSwap"
-                  data-pref-name="extensions.smartTemplate4.firstLastSwap">__MSG_names.swap__
+                  data-pref-name="firstLastSwap">__MSG_names.swap__
               <button class="toolTipButton" clickyTooltip="__MSG_names.swap.tip__"></button>
             </label>
             <label><input type="checkbox" id="chkFirstLastSwap"
-                  data-pref-name="extensions.smartTemplate4.firstLastSwap.name">__MSG_names.swap.name__
+                  data-pref-name="firstLastSwap.name">__MSG_names.swap.name__
               <button class="toolTipButton" clickyTooltip="__MSG_names.swap.name.tip__"></button>
             </label>            
             <label><input type="checkbox" id="chkGuessName"
-                  data-pref-name="extensions.smartTemplate4.names.guessFromMail">__MSG_guessNameFromMail__</label>
+                  data-pref-name="names.guessFromMail">__MSG_guessNameFromMail__</label>
             <div class="hbox" align="center">
               <label for="default_address_format">__MSG_defaultMimeFormat__</label>
               <input id="default_address_format" type="text" size="50" autocomplete="off"
-                data-pref-name="extensions.smartTemplate4.mime.defaultFormat">
+                data-pref-name="mime.defaultFormat">
               <button class="toolTipButton" clickyTooltip="__MSG_defaultMimeFormat_tip__"></button>
             </div>
             <div class="hbox" align="center">
               <label value=""
                      for="txtNameDelimiter">__MSG_addressDelimiter__</label>
               <input id="txtNameDelimiter" type="text" autocomplete="off"
-                    data-pref-name="extensions.smartTemplate4.names.delimiter">
+                    data-pref-name="names.delimiter">
               <button class="toolTipButton" clickyTooltip="__MSG_addressDelimiter.tip__"></button>
             </div>
             <hr>		  
             <label><input type="checkbox" id="chkResolveAB"
-              data-pref-name="extensions.smartTemplate4.mime.resolveAB">__MSG_resolveNamesFromAB__
+              data-pref-name="mime.resolveAB">__MSG_resolveNamesFromAB__
               <button class="toolTipButton" clickyTooltip="__MSG_resolveNamesFromAB_tip__"></button>
             </label>
             <div class="hbox">
               <div class="vbox">
                 <label><input type="checkbox" id="chkResolveABNick"
-                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.preferNick">__MSG_resolveNamesFromABNick__</label>
+                  data-pref-name="mime.resolveAB.preferNick">__MSG_resolveNamesFromABNick__</label>
                 <label><input type="checkbox" id="chkResolveABDisplay"
-                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.displayName">__MSG_resolveNamesFromABDisplay__</label>
+                  data-pref-name="mime.resolveAB.displayName">__MSG_resolveNamesFromABDisplay__</label>
                 <label><input type="checkbox" id="chkResolveABRemoveMail"
-                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.removeEmail">__MSG_resolveABRemoveMail__
+                  data-pref-name="mime.resolveAB.removeEmail">__MSG_resolveABRemoveMail__
                   <button 
                    class="toolTipButton containsHTML" 
                    id="chkResolveAB-tip"
                    clickyTooltip="__MSG_resolveABRemoveMail.tip__"></button>
                 </label>
                 <label><input type="checkbox" id="chkResolveABCardBook" class="premiumFeature"
-                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.CardBook">__MSG_resolveNamesFromCardBook__</label>
+                  data-pref-name="mime.resolveAB.CardBook">__MSG_resolveNamesFromCardBook__</label>
                 <label style="margin-left: 2em"><input type="checkbox" id="chkCardBookFallback" class="premiumFeature"
-                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.CardBook.fallback">__MSG_resolveNamesFromCardBook.fallback__</label>
+                  data-pref-name="mime.resolveAB.CardBook.fallback">__MSG_resolveNamesFromCardBook.fallback__</label>
                 <label style="margin-left: 2em"><input type="checkbox" id="chkCardBookLowerCase" class="premiumFeature"
-                  data-pref-name="extensions.smartTemplate4.mime.resolveAB.CardBook.forceLowerCase">__MSG_resolveNamesFromCardBook.forceLowerCase__</label>
+                  data-pref-name="mime.resolveAB.CardBook.forceLowerCase">__MSG_resolveNamesFromCardBook.forceLowerCase__</label>
               </div>
             </div>
           </div>								
@@ -432,11 +432,11 @@
           <legend>__MSG_grpMiscellaneus__</legend>
           <div class="vbox">
             <label><input type="checkbox" 
-              data-pref-name="extensions.smartTemplate4.mail.suppressLink">__MSG_suppressMailToLink__</label>
+              data-pref-name="mail.suppressLink">__MSG_suppressMailToLink__</label>
             <label><input type="checkbox" class="premiumFeature"
-              data-pref-name="extensions.smartTemplate4.header.inject">__MSG_header.inject__</label>
+              data-pref-name="header.inject">__MSG_header.inject__</label>
             <span class="hasConfigEvent hbox">
-              <label id="styleSanitation" data-pref-name="extensions.smartTemplate4.sanitizeStyles" class="passivePref">__MSG_styleSanitizeSettings__</label>
+              <label id="styleSanitation" data-pref-name="sanitizeStyles" class="passivePref">__MSG_styleSanitizeSettings__</label>
               <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>
               <button class="toolTipButton" clickyTooltip="__MSG_styleSanitizeSettings.tip__"></button>
               <a href="https://github.com/RealRaven2000/SmartTemplates/issues/399#issuecomment-3503675555" 
@@ -450,7 +450,7 @@
           <div class="hbox">
             <div class="hasConfigEvent hbox">
               <label><input type="checkbox" id="chkDebug"
-                  class="contextConfig" data-pref-name="extensions.smartTemplate4.debug">
+                  class="contextConfig" data-pref-name="debug">
                 __MSG_debug.mode__
               </label>
               <span class="spacer"></span>
@@ -458,16 +458,16 @@
               <button class="toolTipButton" clickyTooltip="__MSG_debug.tip__"></button>           
             </div>
             <label><input type="checkbox" id="chkBackgroundParser"
-                  data-pref-name="extensions.smartTemplate4.BackgroundParser">API compliant parser [issue 184]</label>
+                  data-pref-name="BackgroundParser">API compliant parser [issue 184]</label>
             <label id="grpHideExamples"><input type="checkbox" id="chkHideExamples"
-                  data-pref-name="extensions.smartTemplate4.hideExamples">__MSG_hideExamplesPage__</label>
+                  data-pref-name="hideExamples">__MSG_hideExamplesPage__</label>
           </div>
         </fieldset>        
       </div>
 
       <div id="variablesPane" class="page prefpane">
         <iframe id="helpFrame"
-          src="../chrome/content/variables.html?context=html"
+          src="variables.html?context=html"
           tabindex="0">
         </iframe>
       </div>
@@ -575,7 +575,7 @@
             <legend>__MSG_updates.title__</legend>
             <div class="hbox">
               <label><input type="checkbox" id="chkSilentUpdates" 
-                data-pref-name="extensions.smartTemplate4.silentUpdate">__MSG_silentUpdates__
+                data-pref-name="silentUpdate">__MSG_silentUpdates__
               </label>
               <button
                 class="toolTipButton"
@@ -584,7 +584,7 @@
             
             <div class="hbox">
               <label><input type="checkbox" id="chkMinimalNews" 
-                data-pref-name="extensions.smartTemplate4.news.minimal">__MSG_news.minimal__
+                data-pref-name="news.minimal">__MSG_news.minimal__
               </label>
               <button
                 class="toolTipButton"
@@ -706,7 +706,7 @@
                 <div align="center" class="hbox commonContainer">
                   <label class="commonSetting">
                     <input type="checkbox" id="use_default" class="commonSwitch"
-                    data-pref-name="extensions.smartTemplate4.common.def">
+                    data-pref-name="common.def">
                     __MSG_common.use__
                   </label>
                 </div>
@@ -727,7 +727,7 @@
                           <div class="hbox">
                             <label>
                               <input type="checkbox" id="new" class="settingDisabler"
-                                data-pref-name="extensions.smartTemplate4.common.new">__MSG_new.label__
+                                data-pref-name="common.new">__MSG_new.label__
                             </label>
                             <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
                           </div>
@@ -738,17 +738,17 @@
                               class="templateBox templateWrite"
                               aria-label="__MSG_template__ - __MSG_new.tab__:"
                               multiline="true" 
-                              data-pref-name="extensions.smartTemplate4.common.newmsg"
+                              data-pref-name="common.newmsg"
                               preference-editable="true"></textarea>
                             <button class="toolTipButton" clickyTooltip="__MSG_template.tip__"></button>                                
                             <label><input type="checkbox" id="newhtml" class="settingDisabler"
                                     title="__MSG_useHTML.tip__"
-                                    data-pref-name="extensions.smartTemplate4.common.newhtml">
+                                    data-pref-name="common.newhtml">
                                 __MSG_useHTML__
                             </label>
                             <div class="hbox">
                               <label><input type="checkbox" id="newnbr" class="indent"
-                                  data-pref-name="extensions.smartTemplate4.common.newnbr">
+                                  data-pref-name="common.newnbr">
                                   __MSG_replacebr.label__
                               </label>
                               <button class="toolTipButton" clickyTooltip="__MSG_replacebr.tooltip__"></button>
@@ -763,7 +763,7 @@
                         <div flex="1" class="vfield vbox">
                           <div class="hbox">
                             <label> <input type="checkbox" id="rsp" class="settingDisabler"
-                                data-pref-name="extensions.smartTemplate4.common.rsp">
+                                data-pref-name="common.rsp">
                                 __MSG_rsp.label__
                             </label>
                             <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
@@ -777,7 +777,7 @@
                                 aria-label="__MSG_template__ - __MSG_rsp.tab__:"
                                 multiline="true"
                                 flex="1"
-                                data-pref-name="extensions.smartTemplate4.common.rspmsg"
+                                data-pref-name="common.rspmsg"
                                 preference-editable="true"></textarea>
                               <button class="toolTipButton" clickyTooltip="__MSG_template.tip__"></button>
                             </div>
@@ -785,12 +785,12 @@
 
                           <label><input type="checkbox" id="rsphtml" class="settingDisabler"
                             title="__MSG_useHTML.tip__"
-                            data-pref-name="extensions.smartTemplate4.common.rsphtml">
+                            data-pref-name="common.rsphtml">
                             __MSG_useHTML__
                           </label>
                           <label><input type="checkbox" id="rspnbr"
                             class="indent"
-                            data-pref-name="extensions.smartTemplate4.common.rspnbr">
+                            data-pref-name="common.rspnbr">
                             __MSG_replacebr.label__
                             <button class="toolTipButton" clickyTooltip="__MSG_replacebr.tooltip__"></button>
                           </label>
@@ -804,13 +804,13 @@
                                 aria-label="__MSG_template__ - __MSG_fwd.tab__:"
                                 multiline="true"
                                 flex="1"
-                                data-pref-name="extensions.smartTemplate4.common.rspheader"
+                                data-pref-name="common.rspheader"
                                 preference-editable="true"></textarea>
                               <button class="toolTipButton" clickyTooltip="__MSG_quoteHeaderBox.tip__"></button>
                             </div>
                             <div class="hbox">
                               <label> <input type="checkbox" id="rsphead"
-                                data-pref-name="extensions.smartTemplate4.common.rsphead">
+                                data-pref-name="common.rsphead">
                                 __MSG_rsphead.label__
                               </label>
                               <button class="toolTipButton" clickyTooltip="__MSG_quoteHeader.replace.tip__"></button>
@@ -824,7 +824,7 @@
                         <div flex="1" class="vfield vbox">
                           <div class="hbox">
                             <label><input type="checkbox" id="fwd" class="settingDisabler"
-                              data-pref-name="extensions.smartTemplate4.common.fwd">
+                              data-pref-name="common.fwd">
                               __MSG_fwd.label__
                             </label>
                             <button class="toolTipButton" clickyTooltip="__MSG_templateBox.tip__"></button>
@@ -837,14 +837,14 @@
                                 class="templateBox template"
                                 multiline="true"
                                 flex="1"
-                                data-pref-name="extensions.smartTemplate4.common.fwdmsg"
+                                data-pref-name="common.fwdmsg"
                                 preference-editable="true"></textarea>
                               <button class="toolTipButton" clickyTooltip="__MSG_template.tip__"></button>
                             </div>
                           </div>
                           <label><input type="checkbox" id="fwdhtml" class="settingDisabler"
                             title="__MSG_useHTML.tip__"
-                            data-pref-name="extensions.smartTemplate4.common.fwdhtml">
+                            data-pref-name="common.fwdhtml">
                             __MSG_useHTML__
                           </label>
 
@@ -852,7 +852,7 @@
                             <label><input type="checkbox" id="fwdnbr"
                               class="indent"
                               title="__MSG_replacebr.tooltip__"
-                              data-pref-name="extensions.smartTemplate4.common.fwdnbr">
+                              data-pref-name="common.fwdnbr">
                               __MSG_replacebr.label__
                             </label>
                             <button class="toolTipButton" clickyTooltip="__MSG_replacebr.tooltip__"></button>
@@ -866,13 +866,13 @@
                                 class="templateBox quote"
                                 multiline="true"
                                 flex="1"
-                                data-pref-name="extensions.smartTemplate4.common.fwdheader"
+                                data-pref-name="common.fwdheader"
                                 preference-editable="true"></textarea>
                               <button class="toolTipButton" clickyTooltip="__MSG_quoteHeaderBox.tip__"></button>
                             </div>
                             <div class="hbox">
                               <label> <input type="checkbox" id="fwdhead"
-                                data-pref-name="extensions.smartTemplate4.common.fwdhead">
+                                data-pref-name="common.fwdhead">
                                 __MSG_fwdhead.label__
                               </label>
                               <button class="toolTipButton" clickyTooltip="__MSG_quoteHeader.replace.tip__"></button>

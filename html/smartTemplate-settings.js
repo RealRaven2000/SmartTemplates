@@ -45,6 +45,92 @@ var licenseInfo;
 import { SettingsUI } from "./st-settings-ui.mjs";
 import { logMissingFunction } from "./st-log.mjs";
 
+// ========================================
+// Preferences Helper - Direct browser.storage.local Access
+// ========================================
+const PrefsHelper = {
+  // Parse account-specific pref keys
+  parseKey(key) {
+    // Check if key starts with account pattern: common.X or id1.X or id2.X etc.
+    const accountMatch = key.match(/^(common|id\d+)\.(.+)$/);
+    if (accountMatch) {
+      return {
+        isAccount: true,
+        accountId: accountMatch[1],
+        key: accountMatch[2],
+      };
+    }
+    
+    // Check if key is debug flag
+    if (key === "debug" || key.startsWith("debug.")) {
+      return {
+        isDebug: true,
+        key: key,
+      };
+    }
+    
+    return {
+      isGeneral: true,
+      key: key,
+    };
+  },
+
+  async get(key, defaultValue = null) {
+    const parsed = this.parseKey(key);
+    
+    if (parsed.isAccount) {
+      const { accounts = {} } = await browser.storage.local.get({ accounts: {} });
+      const value = accounts[parsed.accountId]?.[parsed.key];
+      return value !== undefined ? value : defaultValue;
+    }
+    
+    if (parsed.isDebug) {
+      const { debug = {} } = await browser.storage.local.get({ debug: {} });
+      const value = debug[parsed.key];
+      return value !== undefined ? value : defaultValue;
+    }
+    
+    const { settings = {} } = await browser.storage.local.get({ settings: {} });
+    const value = settings[parsed.key];
+    return value !== undefined ? value : defaultValue;
+  },
+
+  async set(key, value) {
+    const parsed = this.parseKey(key);
+    
+    if (parsed.isAccount) {
+      const { accounts = {} } = await browser.storage.local.get({ accounts: {} });
+      if (!accounts[parsed.accountId]) {
+        accounts[parsed.accountId] = {};
+      }
+      accounts[parsed.accountId][parsed.key] = value;
+      await browser.storage.local.set({ accounts });
+      return;
+    }
+    
+    if (parsed.isDebug) {
+      const { debug = {} } = await browser.storage.local.get({ debug: {} });
+      debug[parsed.key] = value;
+      await browser.storage.local.set({ debug });
+      return;
+    }
+    
+    const { settings = {} } = await browser.storage.local.get({ settings: {} });
+    settings[parsed.key] = value;
+    await browser.storage.local.set({ settings });
+  },
+
+  async isDebug(option = null) {
+    if (!option) {
+      const { debug = {} } = await browser.storage.local.get({ debug: {} });
+      return debug.debugActive ?? false;
+    }
+    const key = option.startsWith("debug.") ? option : `debug.${option}`;
+    const { debug = {} } = await browser.storage.local.get({ debug: {} });
+    return debug[key] ?? false;
+  },
+};
+
 // use a global variable, similar to background script.
 var fileTemplates = {
   Entries: {
@@ -657,9 +743,6 @@ async function initLicenseInfo() {
 		await SmartTemplates.Settings.validateLicenseInOptions(true);
   }
   
-  // add an event listener for changes:
-  // window.addEventListener("QuickFolders.BackgroundUpdate", validateLicenseInOptions);
-  
   messenger.runtime.onMessage.addListener (
     (data, _sender) => {
       if (data.msg=="updatedLicense") {
@@ -675,93 +758,66 @@ async function initLicenseInfo() {
 
 
 // namespace from settings.js - renaming SmartTemplate4 to SmartTemplates
-// var SmartTemplates = {};
-// console.log({Preferences});
-// SmartTemplates.Preferences = Preferences;
-// Uncaught SyntaxError: import declarations may only appear at top level of a module
-// COPIED CODE from st-prefs.mjs.js
+// All methods use PrefsHelper which routes to correct domain (settings/debug/accounts)
 SmartTemplates.Preferences = {
-	Prefix: "extensions.smartTemplate4.",
-  isDebug: async function() {
-    return await messenger.LegacyPrefs.getPref(this.Prefix + "debug");
+  async isDebug() {
+    return await PrefsHelper.isDebug();
   },
-	isDebugOption: async function(option) { // granular debugging
-		if (!await this.isDebug()){
-			return false;
-		}
-		try {
-			return await this.getMyBoolPref("debug." + option);
-		} catch {
+  
+  async isDebugOption(option) {
+    if (!await this.isDebug()) {
       return false;
     }
-	},  
-  isBackgroundParser: async function() {
-    return await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
+    return await PrefsHelper.isDebug(option);
   },
-	getStringPref: async function getStringPref(p) {
-    let prefString ="",
-		    key = this.Prefix + p;
+  
+  async isBackgroundParser() {
+    return await PrefsHelper.get("BackgroundParser", false);
+  },
+  
+  async getStringPref(p) {
     try {
-			prefString = await messenger.LegacyPrefs.getPref(key);
+      return await PrefsHelper.get(p, "");
     } catch(ex) {
       console.log("%cCould not find string pref: " + p, "color:red;", ex.message);
+      return "";
     }
-		return prefString;
-	},  
-	setStringPref: async function (p, v) {
-    return await messenger.LegacyPrefs.setPref(this.Prefix + p, v);
-	},
-	getIntPref: async function(p) {
-		return await messenger.LegacyPrefs.getPref(p);
-	},
-	setIntPref: async function(p, v) {
-		return await messenger.LegacyPrefs.setPref(p, v);
-	},
-	getBoolPref: async function(p) {
-		try {
-			return await messenger.LegacyPrefs.getPref(p);
-		} catch(e) {
-			let s="Err:" +e;
-			console.log("%cgetBoolPref("+p+") failed:\n" + s, "color:red;");
-			return false;
-		}
-	},
-	setBoolPref: async function(p, v) {
-		try {
-			return await messenger.LegacyPrefs.setPref(p, v);
-		} catch {
-			return false;
-		}
-	} ,  
-
-	getMyBoolPref: async function(p) {
-		return await this.getBoolPref(this.Prefix + p);
-	},
-
-	setMyBoolPref: async function(p, v) {
-		return await this.setBoolPref(this.Prefix + p, v);
-	},
-
-	getMyIntPref: async function(p) {
-		return await this.getIntPref(this.Prefix + p);
-	},
-
-	setMyIntPref: async function(p, v) {
-		return await this.setIntPref(this.Prefix + p, v);
-	},
+  },
   
-	setMyStringPref: async function(p, v) {
-		return await messenger.LegacyPrefs.setPref(this.Prefix + p, v);
-	} ,
-
-	getMyStringPref: async function(p) {
-		return await messenger.LegacyPrefs.getPref(this.Prefix + p);
-	} ,
+  async setStringPref(p, v) {
+    return await PrefsHelper.set(p, v);
+  },
+  
+  async getIntPref(p) {
+    return await PrefsHelper.get(p, 0);
+  },
+  
+  async setIntPref(p, v) {
+    return await PrefsHelper.set(p, v);
+  },
+  
+  async getBoolPref(p) {
+    try {
+      return await PrefsHelper.get(p, false);
+    } catch(e) {
+      console.log("%cgetBoolPref("+p+") failed:\n" + e, "color:red;");
+      return false;
+    }
+  },
+  
+  async setBoolPref(p, v) {
+    try {
+      return await PrefsHelper.set(p, v);
+    } catch {
+      return false;
+    }
+  },
   
   // possibly move this class (or better make an instance immediately) to st-prefs.msj.js
   // SmartTemplates.Preferences.prefs [= new classPref()] I only need a single instance??
   // so why would I need a class
   identityPrefs: { // was classPref() from smartTemplate.overlay.js
+      // use where ST4.pref is used! Preferences.identityPrefs
       // use where ST4.pref is used! Preferences.identityPrefs
       // rename to pref and add to SmartTemplates. import from st-prefs.msj.js as needed?
       // all member functions have account idKey as parameters, so I don't think this object
@@ -769,21 +825,14 @@ SmartTemplates.Preferences = {
     // -----------------------------------
     // get preference
     // returns default value if preference cannot be found.
-    getCom: async function(prefstring, defaultValue)	{
-      if (typeof defaultValue == "string") {
-        return await messenger.LegacyPrefs.getPref(prefstring, defaultValue);
-      }
-      else {
-        let v = await messenger.LegacyPrefs.getPref(prefstring);
-        if (v==null) {v = defaultValue;}
-        return v;
-      }
+    getCom: async function(prefKey, defaultValue) {
+      return await PrefsHelper.get(prefKey, defaultValue);
     },
 
     // -----------------------------------
     // get preference(branch)
     getWithBranch: async function(idKey, defaultValue) {
-      return await this.getCom(SmartTemplates.Preferences.Prefix + idKey, defaultValue); //
+      return await PrefsHelper.get(idKey, defaultValue);
     },
 
     // idKey Account
@@ -833,24 +882,17 @@ SmartTemplates.Preferences = {
         // draft etc.
         return "";
       } 
-      // extensions.smarttemplate.id8.def means account id8 uses common values.
+      // id<num>.def means account uses common values.
       if (await this.getWithBranch(idkey + ".def", true)) {
-        // "extensions.smartTemplate4." + "id12.def"
         // common preference - test with .common!!!!
         return await this.getWithBranch("common." + pref, def);
       } else {
         // Account specific preference
         return await this.getWithBranch(idkey + "." + pref, def);
       }
-    },  
-    
+    },
   }, // identityPrefs
-    
-// OBSOLETE: existsCharPref, existsBoolPref, getBoolPrefSilent
-  
 }
-
-const SMARTTEMPLATES_EXTPREFIX = SmartTemplates.Preferences.Prefix;
 
 SmartTemplates.Settings = {
   // OBSOLETE PARTS:
@@ -903,7 +945,7 @@ SmartTemplates.Settings = {
   
 
   logDebug: async function (...args) {
-	  // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
+	  // to disable the standard debug log, turn off debug.default
 		if (await SmartTemplates.Preferences .isDebug()) {
       this.logToConsole(...args);
     }
@@ -1136,8 +1178,7 @@ SmartTemplates.Settings = {
 				}
       } catch {
 				// there is no default config setting... create one!
-				// [issue ]
-        await createPref(targetKey,defaultValue);
+        await createPref(targetKey, defaultValue);
       }
     }
 
@@ -1215,7 +1256,7 @@ SmartTemplates.Settings = {
     let composeType = null;
     this.logDebug("onLoad() …");
 		// Check and set common preference
-		await this.setPref1st("extensions.smartTemplate4.common.");
+		await this.setPref1st("common.");
 		await this.disableWithCheckbox();
 
 		// Set account popup, duplicate DeckB to make account isntances
@@ -1332,7 +1373,7 @@ SmartTemplates.Settings = {
 
 		try {
 			// Add preferences, if preferences is not create.
-			let prefRoot = "extensions.smartTemplate4" + branch + ".";
+			let prefRoot = branch.substring(1) + "."; // Remove leading dot, e.g., "common." or "id1."
 			await this.setPref1st(prefRoot);
 
 			// Clone and setup a preference window tags.
@@ -1580,7 +1621,7 @@ SmartTemplates.Settings = {
 		await this.logDebugOptional("identities", "" + (searchDeckName ? "found" : "could not find") + " deck:" + searchDeckName);
     let chkUseCommon = document.getElementById('use_default' + this.currentIdSelector);
     if (chkUseCommon && found) {
-      chkUseCommon.checked = await getPref("extensions.smartTemplate4" + this.currentIdSelector + ".def");
+      chkUseCommon.checked = await getPref(this.currentId + ".def");
 		}
 
 		//reactivate the current tab: new / respond or forward!
@@ -2164,7 +2205,7 @@ SmartTemplates.Settings = {
 	},	
 
 	selectDefaultTemplates: async function(el) {
-  	await SmartTemplates.Preferences.setMyIntPref("defaultTemplateMethod", parseInt(el.value,10));
+  	await SmartTemplates.Preferences.setIntPref("defaultTemplateMethod", parseInt(el.value,10));
 	},	
 
 	updateStatusBar: async function(showStatus) {
@@ -2194,28 +2235,17 @@ SmartTemplates.Settings = {
  * UTILITY FUNCTIONS (global scope)
  */
 
-async function setPref(key,value) {
-  let target = key;
-  if (!key.startsWith(SMARTTEMPLATES_EXTPREFIX)) {
-    target = SMARTTEMPLATES_EXTPREFIX + key;
-  }
-  await messenger.LegacyPrefs.setPref(target, value);
+async function setPref(key, value) {
+  await PrefsHelper.set(key, value);
 }
 
-async function createPref(key,value) {
-  let target = key;
-  if (!key.startsWith(SMARTTEMPLATES_EXTPREFIX)) {
-    target = SMARTTEMPLATES_EXTPREFIX + key;
-  }
-  await messenger.LegacyPrefs.createPref(target, value);
+async function createPref(key, value) {
+  // In browser.storage.local, creating and setting are the same operation
+  await PrefsHelper.set(key, value);
 }
 
-async function getPref(key, defaultVal=null) {
-  let target = key;
-  if (!key.startsWith(SMARTTEMPLATES_EXTPREFIX)) {
-    target = SMARTTEMPLATES_EXTPREFIX + key;
-  }  
-  return await messenger.LegacyPrefs.getPref(target, defaultVal);
+async function getPref(key, defaultVal = null) {
+  return await PrefsHelper.get(key, defaultVal);
 }
 
 async function savePref(event) {
@@ -2224,28 +2254,28 @@ async function savePref(event) {
   
 	if (target instanceof HTMLInputElement) {
 		if (target.getAttribute("type") === "checkbox") {
-			await browser.LegacyPrefs.setPref(prefName, target.checked);
+			await PrefsHelper.set(prefName, target.checked);
 		} else if (target.getAttribute("type") === "text" ||
 			target.dataset.prefType === "string") {
-			await browser.LegacyPrefs.setPref(prefName, target.value);
+			await PrefsHelper.set(prefName, target.value);
 		} else if (target.getAttribute("type") === "number") {
-			await browser.LegacyPrefs.setPref(prefName, parseInt(target.value, 10));
+			await PrefsHelper.set(prefName, parseInt(target.value, 10));
 		} else if (target.getAttribute("type") === "radio" && target.checked) {
-      await browser.LegacyPrefs.setPref(prefName, target.value);
+      await PrefsHelper.set(prefName, target.value);
     } else if (target.getAttribute("type") === "color") {
-      await browser.LegacyPrefs.setPref(prefName, target.value);
+      await PrefsHelper.set(prefName, target.value);
     } else {
 			console.error("Received change event for input element with unexpected type", event);
 		}
 	} else if (target instanceof HTMLSelectElement) {
 		if (target.dataset.prefType === "string") {
-			await browser.LegacyPrefs.setPref(prefName, target.value);
+			await PrefsHelper.set(prefName, target.value);
 		} else {
       let v = isNaN(target.value) ? target.value : parseInt(target.value, 10);
-			await browser.LegacyPrefs.setPref(prefName, v);
+			await PrefsHelper.set(prefName, v);
 		}
 	} else if (target instanceof HTMLTextAreaElement) {
-    await browser.LegacyPrefs.setPref(prefName, target.value);
+    await PrefsHelper.set(prefName, target.value);
   } else {
 		console.error("Received change event for unexpected element", event);
 	}  
@@ -2306,12 +2336,6 @@ const activateTabEvent = (event) => {
 		// move toolbar
 		SmartTemplates.Settings.selectFileCase(section);
 	}
-
-  /*
-		// store last selected tab ??
-		browser.LegacyPrefs.setPref("extensions.quickfolders.lastSelectedOptionsTab", 
-			btn.getAttribute("tabNo"));
-	*/
 }
 
 
@@ -2325,7 +2349,7 @@ const activateTabEvent = (event) => {
 
 async function loadPrefs(parentSelector = "") {
   console.log(`loadPrefs(${parentSelector})`);
-  // use LegacyPrefs
+  // use browser.storage.local via PrefsHelper
 	const dataSelector = parentSelector ? `${parentSelector} [data-pref-name]` : "[data-pref-name]";
 	const prefElements = Array.from(document.querySelectorAll(dataSelector));
 	for (let element of prefElements) {
@@ -2336,34 +2360,31 @@ async function loadPrefs(parentSelector = "") {
 		}
 		if (element instanceof HTMLInputElement) {
       if (element.getAttribute("type") === "checkbox") {
-        element.checked = await browser.LegacyPrefs.getPref(prefName);
-        if (element.checked != await browser.LegacyPrefs.getPref(prefName)) {
-          // debugger;
-        }
+        element.checked = await PrefsHelper.get(prefName, false);
       } else if (element.getAttribute("type") === "text" ||
         element.dataset.prefType === "string"
       ) {
-        element.value = await browser.LegacyPrefs.getPref(prefName);
+        element.value = await PrefsHelper.get(prefName, "");
       }  else if (element.getAttribute("type") === "number") {
-        element.value = (await browser.LegacyPrefs.getPref(prefName)).toString();
+        element.value = (await PrefsHelper.get(prefName, 0)).toString();
       } else if (element.getAttribute("type") === "radio") {
-        let radioVal = (await browser.LegacyPrefs.getPref(prefName)).toString();
+        let radioVal = (await PrefsHelper.get(prefName, "")).toString();
         if (element.value === radioVal) {
           element.checked = true;
         }
       } else if (element.getAttribute("type") === "color") {
-        element.value = await browser.LegacyPrefs.getPref(prefName);
+        element.value = await PrefsHelper.get(prefName, "#000000");
       } else {
         console.error("Input element has unexpected type", element);
       }
 		} else if (element instanceof HTMLSelectElement) {
 			if (element.dataset.prefType === "string") {
-				element.value = await browser.LegacyPrefs.getPref(prefName);
+				element.value = await PrefsHelper.get(prefName, "");
 			} else {
-				element.value = (await browser.LegacyPrefs.getPref(prefName)).toString();
+				element.value = (await PrefsHelper.get(prefName, 0)).toString();
 			}
 		} else if (element instanceof HTMLTextAreaElement) {
-      element.value = await browser.LegacyPrefs.getPref(prefName);
+      element.value = await PrefsHelper.get(prefName, "");
     } else {
 			if (await SmartTemplates.Preferences.isDebugOption("settings")) {
 				// eslint-disable-next-line no-debugger
@@ -2383,14 +2404,19 @@ async function loadPrefs(parentSelector = "") {
 }
 
 async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
-  // we put the notification listener into quickfolders-tablistener.js - should only happen in ONE main window!
   // el - cannot be cloned! let's throw it away and get target of the event
-  messenger.runtime.sendMessage({ 
-    command: "showAboutConfig", 
-    filter: filter,
-    readOnly: readOnly,
-    updateUI: updateUI,
-  });
+  /* legacy settings
+    messenger.runtime.sendMessage({ 
+      command: "showAboutConfig", 
+      filter: filter,
+      readOnly: readOnly,
+      updateUI: updateUI,
+    });
+  */
+  await messenger.runtime.sendMessage({
+  command: "openStorageEditor",
+  filter: filter,
+});   
 }
 
 
@@ -2546,7 +2572,7 @@ function addUIListeners() {
 
   // add bool preference reactions
   for (let chk of document.querySelectorAll("input[type=checkbox]")) {
-    let dataPref = chk.getAttribute("data-pref-name").replace(SMARTTEMPLATES_EXTPREFIX, "");
+    let dataPref = chk.getAttribute("data-pref-name");
     // right-click show details from about:config
     let filterConfig = "";
     // get my bool pref:
@@ -2555,13 +2581,13 @@ function addUIListeners() {
         chk.addEventListener("change", (_event) => {
           SettingsUI.toggleBoolPreference(chk); // <== QF.Options
         });
-        filterConfig = "smartTemplate4.debug";
+        filterConfig = "debug";
         break;
       case "parseSignature":
-        filterConfig = "extensions.smartTemplate4.parseSignature";
+        filterConfig = "parseSignature";
         break;
       case "showStatusIcon":
-        filterConfig = "extensions.smartTemplate4.showStatusIcon";
+        filterConfig = "showStatusIcon";
         break;
     }
 
@@ -2597,7 +2623,7 @@ function addUIListeners() {
     }
   }
 	const styleSanitiseSection = document.getElementById("styleSanitation");
-	addConfigEvent(styleSanitiseSection, "extensions.smartTemplate4.sanitizeStyles");
+	addConfigEvent(styleSanitiseSection, "sanitizeStyles");
 	
 
   for (let chk of document.querySelectorAll(".settingDisabler")) {
@@ -2929,7 +2955,7 @@ function addUIListeners() {
   }
 
   // replace SmartTemplate4.Util.showAboutConfig command handlers
-  addConfigEvent(document.getElementById("identityLabel"), "extensions.smartTemplate4.identities");
+  addConfigEvent(document.getElementById("identityLabel"), "identities");
 
 	document.getElementById('versionBox').addEventListener('focus', function(event) {
 		var version = event.target.textContent.trim();

@@ -249,6 +249,20 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           this.logDebug("Accessibility: Focus current tab document...", tabId);
           win.gTabmail.currentTabInfo.browser.focus();
         },
+
+        updatePreferencesCache: (data) => {
+          const windowTypes = ["mail:3pane", "msgcompose", "mail:messageWindow"];
+          for (const type of windowTypes) {
+            const enumerator = Services.wm.getEnumerator(type);
+            while (enumerator.hasMoreElements()) {
+              const win = enumerator.getNext();
+              if (win.SmartTemplate4?.Preferences?.cache?.updateFromBackend) {
+                win.SmartTemplate4.Preferences.cache.updateFromBackend(data);
+              }
+            }
+          }
+          return true;
+        },
       },
     };
   };

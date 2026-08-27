@@ -44,9 +44,8 @@ function openSupportForm(topic) {
 }
 
 async function getSalesEnd() {
-  const overrideSale = await messenger.LegacyPrefs.getPref(
-    "extensions.smartTemplate4.debug.saleDate"
-  );
+  const { debug = {} } = await browser.storage.local.get({ debug: {} });
+  const overrideSale = debug.saleDate;
   if (overrideSale) {
     return new Date(overrideSale);
   }

@@ -10,130 +10,240 @@ END LICENSE BLOCK
 */
 
 SmartTemplate4.Preferences = {
-	Prefix: "extensions.smartTemplate4.",
-	service: Services.prefs,
-
-	get isDebug() {
-		return this.getMyBoolPref("debug");
-	},
-
-	isDebugOption: function(option) { // granular debugging
-		if (!this.isDebug) {
-			return false;
-		}
-		try {
-			return this.getMyBoolPref("debug." + option);
-		} catch {return false;}
-	},
-  
-  isBackgroundParser: function() {
-    // switch for [issue 184] - background parsing & composer processing [mx]
-    return SmartTemplate4.Preferences.getMyBoolPref("BackgroundParser");
+  get isDebug() {
+    return this.getBoolPref("debug");
   },
-	
-	getStringPref: function getStringPref(p) {
-    let prefString ='',
-		    key = this.Prefix + p;
+
+  isDebugOption: function (option) {
+    // granular debugging
+    if (!this.isDebug) {
+      return false;
+    }
     try {
-			prefString = 
-				Services.prefs.getStringPref ?
-				Services.prefs.getStringPref(key) :
-        Services.prefs.getCharPref(key);
+      return this.getBoolPref("debug." + option);
+    } catch {
+      return false;
     }
-    catch(ex) {
-      SmartTemplate4.Util.logDebug("Could not find string pref: " + p + "\n" + ex.message);
+  },
+
+  isBackgroundParser: function () {
+    // switch for [issue 184] - background parsing & composer processing [mx]
+    return SmartTemplate4.Preferences.getBoolPref("BackgroundParser");
+  },
+
+  getStringPref: function (p) {
+    const value = SmartTemplate4.Preferences.cache.getValue(p);
+    return value !== undefined ? value : "";
+  },
+
+  setStringPref: function setStringPref(p, v) {
+    SmartTemplate4.Preferences.cache.setValue(p, v);
+    return v;
+  },
+
+  getIntPref: function (p) {
+    const value = SmartTemplate4.Preferences.cache.getValue(p);
+    return value !== undefined ? value : 0;
+  },
+
+  setIntPref: function (p, v) {
+    SmartTemplate4.Preferences.cache.setValue(p, v);
+    return v;
+  },
+
+  getBoolPref: function (p) {
+    try {
+      const value = SmartTemplate4.Preferences.cache.getValue(p);
+      return value !== undefined ? value : false;
+    } catch (e) {
+      let s = "Err:" + e;
+      SmartTemplate4.Util.logToConsole("getBoolPref(" + p + ") failed:\n" + s);
+      return false;
     }
-		return prefString;
-	},
-	
-	setStringPref: function setStringPref(p, v) {
-    return Services.prefs.setStringPref(this.Prefix + p, v);
-	},
+  },
 
-	getIntPref: function(p) {
-		return Services.prefs.getIntPref(p);
-	},
+  setBoolPref: function (p, v) {
+    try {
+      SmartTemplate4.Preferences.cache.setValue(p, v);
+      return v;
+    } catch {
+      // let s="Err:" +e;
+      return false;
+    }
+  },
 
-	setIntPref: function(p, v) {
-		return Services.prefs.setIntPref(p, v);
-	},
+  existsCharPref: function (pref) {
+    const value = SmartTemplate4.Preferences.cache.getValue(pref);
+    return value !== undefined;
+  },
 
-	getBoolPref: function(p) {
-		try {
-			return Services.prefs.getBoolPref(p);
-		} catch(e) {
-			let s="Err:" +e;
-			SmartTemplate4.Util.logToConsole("getBoolPref("+p+") failed:\n" + s);
-			return false;
-		}
-	},
+  existsBoolPref: function (pref) {
+    const value = SmartTemplate4.Preferences.cache.getValue(pref);
+    return value !== undefined;
+  },
 
-	getMyBoolPref: function(p) {
-		return SmartTemplate4.Preferences.getBoolPref(this.Prefix + p);
-	},
+  getBoolPrefSilent: function (pref) {
+    try {
+      return SmartTemplate4.Preferences.cache.getValue(pref);
+    } catch {
+      return false;
+    }
+  },
+  ensureReady: async function () {
+    // awaitReady is a Promise object
+    await SmartTemplate4.Preferences.cache.awaitReady;
+  },
+};
 
-	setMyBoolPref: function(p, v) {
-		return SmartTemplate4.Preferences.setBoolPref(this.Prefix + p, v);
-	},
+SmartTemplate4.Preferences.cache = (() => {
+  const debugCache = false;
+  const logDebug = (...args) => {
+    if (!debugCache) {
+      return;
+    }
+    console.log("Preferences Cache:", ...args);
+  };
+  const cache = {
+    _data: {},
+    _resolveReady: null,
+    awaitReady: null /* init-only gate; NOT a lock for updates */,
+    getValue: (k) => cache._data[k],
 
-	getMyIntPref: function(p) {
-		return SmartTemplate4.Preferences.getIntPref(this.Prefix + p);
-	},
+    setValue: async (k, v) => {
+      if (v === undefined) {
+        console.error(
+          `setValue("${k}", undefined) - Cannot determine type. Missing value argument?`
+        );
+        throw new Error(`Cannot set preference "${k}" to undefined`);
+      }
+      cache._data[k] = v;
+      try {
+        const isDebug = k === "debug" || k.startsWith("debug.");
+        // Match account keys: id12.def, common.rsp, etc.
+        const accountMatch = k.match(/^(id\d+|common)\.(.+)$/);
+        
+        if (isDebug) {
+          const dataKey = k === "debug" ? "debugActive" : k;
+          const current = await SmartTemplate4.Storage.get({ debug: {} });
+          current.debug[dataKey] = v;
+          await SmartTemplate4.Storage.set(current);
+        } else if (accountMatch) {
+          const [, accountId, settingKey] = accountMatch;
+          const current = await SmartTemplate4.Storage.get({ accounts: {} });
+          if (!current.accounts[accountId]) {
+            current.accounts[accountId] = {};
+          }
+          current.accounts[accountId][settingKey] = v;
+          await SmartTemplate4.Storage.set(current);
+        } else {
+          const current = await SmartTemplate4.Storage.get({ settings: {} });
+          current.settings[k] = v;
+          await SmartTemplate4.Storage.set(current);
+        }
+      } catch (ex) {
+        console.error("Pref sync failed:", k, ex);
+      }
+    },
 
-	setMyIntPref: function(p, v) {
-		return this.setIntPref(this.Prefix + p, v);
-	},
+    setValueSet: async (prefs) => {
+      // optimized function for multiple changes.
+      if (!prefs || typeof prefs !== "object") {
+        return;
+      }
+      // 1. update local cache immediately
+      Object.assign(cache._data, prefs);
+      try {
+        const settingsChanges = {};
+        const debugChanges = {};
+        const accountsChanges = {}; // { id12: { def: true, rsp: "..." }, common: { ... } }
+        
+        for (const [k, v] of Object.entries(prefs)) {
+          if (k === "debug") {
+            debugChanges.debugActive = v;
+          } else if (k.startsWith("debug.")) {
+            debugChanges[k] = v;
+          } else {
+            // Check for account keys: id12.def, common.rsp
+            const accountMatch = k.match(/^(id\d+|common)\.(.+)$/);
+            if (accountMatch) {
+              const [, accountId, settingKey] = accountMatch;
+              if (!accountsChanges[accountId]) {
+                accountsChanges[accountId] = {};
+              }
+              accountsChanges[accountId][settingKey] = v;
+            } else {
+              settingsChanges[k] = v;
+            }
+          }
+        }
+        
+        const current = await SmartTemplate4.Storage.get({ settings: {}, debug: {}, accounts: {} });
+        if (Object.keys(settingsChanges).length) {
+          Object.assign(current.settings, settingsChanges);
+        }
+        if (Object.keys(debugChanges).length) {
+          Object.assign(current.debug, debugChanges);
+        }
+        if (Object.keys(accountsChanges).length) {
+          for (const [accountId, changes] of Object.entries(accountsChanges)) {
+            if (!current.accounts[accountId]) {
+              current.accounts[accountId] = {};
+            }
+            Object.assign(current.accounts[accountId], changes);
+          }
+        }
+        await SmartTemplate4.Storage.set(current);
+      } catch (ex) {
+        console.error("Pref set batch sync failed:", ex);
+      }
+    },
 
-	setBoolPref: function(p, v) {
-		try {
-			return Services.prefs.setBoolPref(p, v);
-		} catch {
-			// let s="Err:" +e;
-			return false;
-		}
-	} ,
+    init: async () => {
+      // create an async blocker.
+      cache.awaitReady = new Promise((resolve) => {
+        // blocks all external callers until we're done here
+        cache._resolveReady = resolve;
+      });
 
-	setMyStringPref: function(p, v) {
-		return Services.prefs.setCharPref(this.Prefix + p, v);
-	} ,
+      try {
+        logDebug(" - SmartTemplate4.Storage:", SmartTemplate4.Storage);
+        const data = await SmartTemplate4.Storage.get({
+          settings: {},
+          debug: {},
+          accounts: {},
+          model: { folders: [] },
+        });
 
-	getMyStringPref: function(p) {
-		return Services.prefs.getCharPref(this.Prefix + p);
-	} ,
+        // merge settings, debug, and accounts into flat cache
+        const prefs = { ...data.settings };
+        for (const [k, v] of Object.entries(data.debug)) {
+          prefs[k === "debugActive" ? "debug" : k] = v;
+        }
+        // flatten accounts: accounts.id12.def → id12.def
+        for (const [accountId, accountData] of Object.entries(data.accounts)) {
+          for (const [key, value] of Object.entries(accountData)) {
+            prefs[`${accountId}.${key}`] = value;
+          }
+        }
 
-	existsCharPref: function(pref) {
-		try {
-			if(Services.prefs.prefHasUserValue(pref)) {
-				return true;
-			}
-			if (Services.prefs.getCharPref(pref)){
-				return true;
-			}
-		}
-		catch {return false; }
-		return false;
-	},
+        logDebug("Received preferences:", prefs);
 
-	existsBoolPref: function(pref) {
-		try {
-			if(Services.prefs.prefHasUserValue(pref)) {
-				return true;
-			}
-			if (Services.prefs.getBoolPref(pref)){
-				return true;
-			}
-		}
-		catch {return false; }
-		return false;
-	},
+        // remove all old data
+        Object.keys(cache._data).forEach((k) => delete cache._data[k]);
+        Object.assign(cache._data, prefs);
+      } catch (ex) {
+        console.error("Cache init failed:", ex);
+      }
+      cache._resolveReady();
+    },
 
-	getBoolPrefSilent: function(pref) {
-		try {
-			return Services.prefs.getBoolPref(pref);
-		}
-		catch {
-			return false;
-		}
-	}
+    updateFromBackend: (data) => {
+      // copies all enumerable own properties
+      Object.assign(cache._data, data);
+    },
+  };
 
-}
+  return cache; 	
+})();
+
+SmartTemplate4.Preferences.cache.init();

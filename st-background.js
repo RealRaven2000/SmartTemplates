@@ -2,14 +2,19 @@
   global
     ICAL: readonly
 */
+import { Preferences } from "./scripts/preferences.mjs";
 import {Licenser, licenseValidationDescription} from "./scripts/Licenser.mjs.js";
+import * as webExtensionStorageEditor from "./scripts/webExtensionStorageEditor.mjs";
 
 import {SmartTemplates} from "./scripts/st-main.mjs.js";
 import {SmartTemplatesProcess} from "./scripts/st-process.mjs.js";
 import {compareVersions} from "./scripts/mozilla-version-comparator.js";
 // import { Util } from "./scripts/st-util.mjs.js";
 
-
+// Initialize Preferences early - this must complete before accessing any settings
+// eslint-disable-next-line no-debugger
+debugger;
+const prefsReady = Preferences.init();
 
 var stProcess = new SmartTemplatesProcess(); // use stProcess.composer
 console.log(SmartTemplates, stProcess);
@@ -17,9 +22,8 @@ SmartTemplates.Util.log("SmartTemplates Background started");
 
 var currentLicense;
 const GRACEPERIOD_DAYS = 28;
-const GRACEDATE_STORAGE = "extensions.smartTemplate4.license.gracePeriodDate";
-const DEBUGLICENSE_STORAGE = "extensions.smartTemplate4.debug.premium.licenser";
 const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
+
 
 let startupDoneResolve;
 export const startupDone = new Promise((resolve) => {
@@ -120,7 +124,8 @@ class MenuRestrictions {
     this.MAX_STANDARD_CATEGORIES = 3;
   }
   async initPrefs() {
-    this.MAX_MRU_CEILING = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.fileTemplates.mru.max");
+    await prefsReady; // ensure Preferences is initialized
+    this.MAX_MRU_CEILING = Preferences.get("fileTemplates.mru.max");
   }
 
   get countMenuItems() {
@@ -229,8 +234,8 @@ async function getTargetTemplate(controller, type) {
       case "most-recent": {
         // not from MRU list but stored separately in legacy prefs
         // ControllerMap returns the full composeType, e.g. rsp.all or rsp.list
-        let jsonTemplate = await messenger.LegacyPrefs.getPref(
-            `extensions.smartTemplate4.fileTemplates.mru.${ControllerMap.get(controller)}`
+        let jsonTemplate = Preferences.get(
+            `fileTemplates.mru.${ControllerMap.get(controller)}`
           ),
           sEmptyLabel = "(not set)";
 
@@ -340,7 +345,7 @@ var MenuHelper = {
 
 async function addMenus(menuArray, context) {
   // helper function to insert accelerator key
-  let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus");
+  let isDebug = Preferences.isDebug("API.menus");
   if (isDebug) {
     console.log("SmartTemplates addMenus()\n", {menuArray:menuArray, context:context})
   }
@@ -638,7 +643,7 @@ async function addMenus(menuArray, context) {
 }
 
 async function createHeaderMenu() {
-  let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus");
+  let isDebug = Preferences.isDebug("API.menus");
   if (isDebug) {
     console.log("SmartTemplates: createHeaderMenu (through API)")
   }
@@ -647,7 +652,7 @@ async function createHeaderMenu() {
 
   await addMenus([...replyMenus, ...forwardMenus], Context); 
   // Toggle Label (optional)
-  let isLabelHidden = (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.toolbar.hideLabel"));
+  let isLabelHidden = Preferences.get("toolbar.hideLabel");
   await messenger.menus.remove("toggleLabel");
   await messenger.menus.create({
     contexts: [Context],
@@ -658,7 +663,7 @@ async function createHeaderMenu() {
     checked: isLabelHidden,
     onclick: async (_e) => {
       // [issue 304] action button needs to be updated!
-      var isHidden = (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.toolbar.hideLabel"));
+      var isHidden = Preferences.get("toolbar.hideLabel");
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand", 
         detail: {
@@ -744,7 +749,7 @@ function versionGreater(v1, v2) {
 //
 async function updateMruMenu(Context) {
    // default is 10 but can be raised in Pro
-  let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus");
+  let isDebug = Preferences.isDebug("API.menus");
   if (isDebug) {
     console.log(`SmartTemplates updateMruMenu(${Context})\n`);
   }
@@ -983,8 +988,8 @@ const showSTmessage = async (
         if (winRet.id) {
           try {
             await messenger.windows.remove(winRet.id);
-          } catch (_e) {
-            // Window already closed, ignore
+          } catch  {
+            ; // Window already closed, ignore
           }
         }
       };
@@ -1007,7 +1012,7 @@ async function displayUpdateMessage() {
   // [issue 378]
   const messageIds = "newsMsgEsr140",
     licenseInfo = currentLicense?.info,
-    isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug"),
+    isDebug = Preferences.isDebug(),
     hasProLicense = [0, 1].includes(licenseInfo?.keyType); // 0 Pro or none depending on status, 2 std
   
   const logDebug = (...args) => {
@@ -1018,7 +1023,7 @@ async function displayUpdateMessage() {
   let features = ["ok", "licensing", "featurecomp"];
 
   // reflects last addon version installed with a msg.
-  let lastMessage = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.lastUpdateMessage") || "0";
+  let lastMessage = Preferences.get("lastUpdateMessage") || "0";
   logDebug(`Last update message version: ${lastMessage}`);
 
   if (compareVersions(lastMessage, "4.12.2") >= 0) {
@@ -1055,7 +1060,7 @@ async function displayUpdateMessage() {
     const result = await showSTmessage(transmitIds, features, "", "displayUpdateMessage");
 
     if (result) {
-      await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.lastUpdateMessage", "4.12.2");
+      await Preferences.set("lastUpdateMessage", "4.12.2");
       logDebug("Message shown successfully – version flag saved.");
     } else {
       logDebug("Message display was cancelled or failed (no result).");
@@ -1110,8 +1115,9 @@ async function displayUpdateMessage() {
  
 
   messenger.runtime.onInstalled.addListener(async ({ reason, _temporary }) => {
+    await prefsReady;
     try {
-      let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+      let isDebug = Preferences.isDebug();
       // Wait for startup to finish
       await startupDone; // promise
       if (isDebug) {
@@ -1145,10 +1151,7 @@ async function displayUpdateMessage() {
           }
 
           (async () => {
-            const origVer = await messenger.LegacyPrefs.getPref(
-              "extensions.smartTemplate4.version",
-              "0"
-            );
+            const origVer = Preferences.get("version") || "0";
             const manifest = await messenger.runtime.getManifest();
             // get pure version number / remove pre123 indicator
             let installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
@@ -1166,7 +1169,7 @@ async function displayUpdateMessage() {
               // [issue 396] if hasNews is already set before update let's try to switch
               //             to minimal news mode. (User ignores button status anyway)
               if (
-                (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.hasNews")) &&
+                Preferences.get("hasNews") &&
                 installedVersion.startsWith("4.14.1")
               ) {
                 if (isDebug) {
@@ -1174,9 +1177,9 @@ async function displayUpdateMessage() {
                     "Setting news.minimal flag, as news flag was already set / ignored."
                   );
                 }
-                await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.news.minimal", true);
+                await Preferences.set("news.minimal", true);
               }
-              await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
+              await Preferences.set("hasNews", true);
             }
             if (origVer != installedVersion) {
               if (isDebug) {
@@ -1184,10 +1187,7 @@ async function displayUpdateMessage() {
               }
               // STORE VERSION CODE!
               // prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
-              messenger.LegacyPrefs.setPref(
-                "extensions.smartTemplate4.version",
-                installedVersion
-              );
+              await Preferences.set("version", installedVersion);
             }
 
             notifyWhenUIReady({ event: "updateNewsLabels" });
@@ -1288,6 +1288,7 @@ function getAddressesFromContacts(list) {
 }
 
 async function main() {
+  await prefsReady;
   // we need these helper functions for calculating an extension to License.info
   async function getGraceDate() {
     let gracePeriodStart,
@@ -1295,8 +1296,8 @@ async function main() {
       isDebug = false;
     try {
       // the following variable records the start of the trial/grace period, it is never in the future
-      gracePeriodStart = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);
-      isDebug = await messenger.LegacyPrefs.getPref(DEBUGLICENSE_STORAGE);
+      gracePeriodStart = Preferences.get("license.gracePeriodDate");
+      isDebug = Preferences.isDebug("premium.licenser");
     } catch {
       isResetDate = true;
     }
@@ -1323,7 +1324,7 @@ async function main() {
       }
     }
     if (isResetDate) {
-      await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, gracePeriodStart);
+      await Preferences.set("license.gracePeriodDate", gracePeriodStart);
     }
     if (isDebug) {
       console.log("Returning Grace Period Date: " + gracePeriodStart);
@@ -1398,14 +1399,10 @@ async function main() {
 
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
 
-  let key = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.LicenseKey"),
-    forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(
-      "extensions.smartTemplate4.licenser.forceSecondaryIdentity"
-    ),
-    isDebugAddon = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug"),
-    isDebugLicenser = await messenger.LegacyPrefs.getPref(
-      "extensions.smartTemplate4.debug.premium.licenser"
-    );
+  let key = Preferences.get("LicenseKey"),
+    forceSecondaryIdentity = Preferences.get("licenser.forceSecondaryIdentity"),
+    isDebugAddon = Preferences.isDebug(),
+    isDebugLicenser = Preferences.isDebug("premium.licenser");
 
   currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
   await currentLicense.validate();
@@ -1441,6 +1438,14 @@ async function main() {
           readOnly: data.readOnly,
           updateUI: data.updateUI || false,
         },
+      });
+    },
+    "openStorageEditor": (data, _sender) => {
+      webExtensionStorageEditor.open({
+        storageArea: "local",
+        baseFilter: data.filter,
+        type: "popup",
+        showTopLevelKey: false,
       });
     },
     "showRegistrationDialog": (data, _sender) => {
@@ -1541,12 +1546,8 @@ async function main() {
   }
 
   async function updateLicenseKey(newLicenseKey) {
-    let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(
-        "extensions.smartTemplate4.licenser.forceSecondaryIdentity"
-      ),
-      isDebugLicenser = await messenger.LegacyPrefs.getPref(
-        "extensions.smartTemplate4.debug.premium.licenser"
-      );
+    let forceSecondaryIdentity = Preferences.get("licenser.forceSecondaryIdentity"),
+      isDebugLicenser = Preferences.isDebug("premium.licenser");
     // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
     let newLicense = new Licenser(newLicenseKey, {
       forceSecondaryIdentity,
@@ -1554,7 +1555,7 @@ async function main() {
     });
     await newLicense.validate();
     if (newLicense.isExpired) {
-      await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, newLicense.info.expiryDate);
+      await Preferences.set("license.gracePeriodDate", newLicense.info.expiryDate);
     }
     newLicense.GraceDate = await getGraceDate();
     newLicense.TrialDays = await getTrialDays();
@@ -1564,10 +1565,7 @@ async function main() {
     // return false;
 
     // Update background license.
-    await messenger.LegacyPrefs.setPref(
-      "extensions.smartTemplate4.LicenseKey",
-      newLicense.info.licenseKey
-    );
+    await Preferences.set("LicenseKey", newLicense.info.licenseKey);
     currentLicense = newLicense;
     // Broadcast
     notifyWhenUIReady({ licenseInfo: currentLicense.info }); // part of generic onBackgroundUpdates called in Util.init()
@@ -1575,9 +1573,8 @@ async function main() {
   }
 
   messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
-    let isLog = await messenger.LegacyPrefs.getPref(
-      "extensions.smartTemplate4.debug.notifications"
-    );
+    await prefsReady;
+    let isLog = Preferences.isDebug("notifications");
     if (isLog && data.func) {
       console.log(
         "=========================\n" +
@@ -1625,7 +1622,7 @@ async function main() {
           break;
 
         case "updateFileTemplates":
-          if (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus")) {
+          if (Preferences.isDebug("API.menus")) {
             console.log("SmartTemplates updateFileTemplates() [API] data\n");
           }
           fileTemplates.Entries = data.Entries;
@@ -1633,7 +1630,7 @@ async function main() {
           break;
 
         case "patchHeaderMenuAPI":
-          if (await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.API.menus")) {
+          if (Preferences.isDebug("API.menus")) {
             console.log("SmartTemplates patchHeaderMenuAPI [API] data\n");
           }
           await createHeaderMenu(); // use API to build the menu
@@ -1828,7 +1825,8 @@ async function main() {
 
   browser.runtime.onMessageExternal.addListener(async (message, _sender) => {
     // { command: "forwardMessageWithTemplate", messageHeader: msgKey, templateURL: data.fileURL }
-    let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+    await prefsReady; // ensure Preferences is initialized
+    let isDebug = Preferences.isDebug();
     switch (message.command) {
       case "forwardMessageWithTemplate":
         notifyWhenUIReady({
@@ -1941,6 +1939,7 @@ async function main() {
 
   // [issue 284] resolve all variables automatically before send
   messenger.compose.onBeforeSend.addListener(async (tab, details) => {
+    await prefsReady; // ensure Preferences is initialized
     let retVal = null;
     let isDebug;
     try {
@@ -1948,7 +1947,7 @@ async function main() {
     } catch (ex) {
       console.log(ex);
     } finally {
-      isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+      isDebug = Preferences.isDebug();
       if (isDebug) {
         console.log("after messenger.Utilities.beforeSend()", {
           returnValue: retVal,
@@ -1961,7 +1960,8 @@ async function main() {
   });
 
   messenger.messageDisplay.onMessageDisplayed.addListener(async (tab, message) => {
-    let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+    await prefsReady; // ensure Preferences is initialized
+    let isDebug = Preferences.isDebug();
     if (isDebug) {
       console.log(`Message displayed in tab ${tab.id}: ${message.subject}`);
     }
@@ -2000,4 +2000,5 @@ async function main() {
   });
 }
 
+// Start main initialization
 main();

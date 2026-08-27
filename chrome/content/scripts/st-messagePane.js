@@ -28,7 +28,7 @@ async function onLoad(activatedWhileWindowOpen) {
   window.SmartTemplate4_WLM = WL; // keep a reference to the correct WindowListener. [issue 271]
   // it can only patch stuff in its own window!
   /*
-  const WAIT_FOR_3PANE = window.SmartTemplate4.Preferences.getMyIntPref(
+  const WAIT_FOR_3PANE = window.SmartTemplate4.Preferences.getIntPref(
     "fileTemplates.menus.delayMessagePane"
   );
   */
@@ -53,7 +53,7 @@ async function onLoad(activatedWhileWindowOpen) {
   if (!headerButton) {
     return;
   }
-  if (window.SmartTemplate4.Preferences.getMyBoolPref("toolbar.hideLabel")) {
+  if (window.SmartTemplate4.Preferences.getBoolPref("toolbar.hideLabel")) {
     headerButton.classList.add("force-label-hidden");
   } else {
     headerButton.classList.remove("force-label-hidden");
@@ -79,7 +79,7 @@ async function onLoad(activatedWhileWindowOpen) {
           win.SmartTemplate4.Util.logDebug("patchHeaderPane() returned false!");
         }
         win.SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
-        if (win.SmartTemplate4.Preferences.getMyBoolPref("toolbar.hideLabel")) {
+        if (win.SmartTemplate4.Preferences.getBoolPref("toolbar.hideLabel")) {
           headerButton.classList.add("force-label-hidden");
         } else {
           headerButton.classList.remove("force-label-hidden");

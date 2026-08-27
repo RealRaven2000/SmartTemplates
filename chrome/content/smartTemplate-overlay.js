@@ -43,29 +43,27 @@ var { MimeParser } = ChromeUtils.importESModule("resource:///modules/mimeParser.
 // 1. branch = smartTemplate4  the branch from the preferences
 SmartTemplate4.classPref = function() {
   const Ci = Components.interfaces;
-	// -----------------------------------
-	// Constructor
-	let root = Services.prefs;
+	const tbPrefs = Services.prefs;
 
 	// -----------------------------------
-	// get preference
+	// get THUNDERBIRD global preference
 	// returns default value if preference cannot be found.
 	function getCom(prefstring, defaultValue)	{
 		const util = SmartTemplate4.Util;
 		try {
-			switch (root.getPrefType(prefstring)) {
+			switch (tbPrefs.getPrefType(prefstring)) {
 				case Ci.nsIPrefBranch.PREF_STRING:
           try {
-						return root.getComplexValue(prefstring, Ci.nsIPrefLocalizedString).data;
+						return tbPrefs.getComplexValue(prefstring, Ci.nsIPrefLocalizedString).data;
           } catch {
             util.logDebug("Prefstring missing: " + prefstring 
               + "\nReturning default string: [" + defaultValue + "]");
             return defaultValue;
           }
 				case Ci.nsIPrefBranch.PREF_INT:
-					return root.getIntPref(prefstring);
+					return tbPrefs.getIntPref(prefstring);
 				case Ci.nsIPrefBranch.PREF_BOOL:
-					return root.getBoolPref(prefstring);
+					return tbPrefs.getBoolPref(prefstring);
 				default:
 					break;
 			}
@@ -79,7 +77,8 @@ SmartTemplate4.classPref = function() {
 	// get preference(branch)
 	function getWithBranch(idKey, defaultValue)
 	{
-		return getCom(SmartTemplate4.Preferences.Prefix + idKey, defaultValue); //
+		const value = SmartTemplate4.Preferences.cache.getValue(idKey);
+		return value !== undefined ? value : defaultValue;
 	};
 
 	// idKey Account
@@ -129,7 +128,7 @@ SmartTemplate4.classPref = function() {
         return "";
     } // draft etc.
 		// extensions.smarttemplate.id8.def means account id8 uses common values.
-		if (getWithBranch(idkey + ".def", true)) { // "extensions.smartTemplate4." + "id12.def"
+		if (getWithBranch(idkey + ".def", true)) { // "id12.def"
 		  // common preference - test with .common!!!!
 			return getWithBranch("common." + pref, def);
 		}
@@ -500,7 +499,7 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
     let retValue = '',
 		    str = headers.extractHeader(header, false)
     // for names maybe use nsIMsgHeaderParser.extractHeaderAddressName instead?
-    if (str && SmartTemplate4.Preferences.getMyBoolPref('headers.unescape.quotes')) {
+    if (str && SmartTemplate4.Preferences.getBoolPref('headers.unescape.quotes')) {
       // if a string has nested escaped quotes in it, should we unescape them?
       // "Al \"Karsten\" Seltzer" <fxxxx@gmail.com>
       retValue = str.replace(/\\"/g, "\""); // unescape
@@ -641,7 +640,7 @@ SmartTemplate4.mimeDecoder = {
 		}
 		if (!charset) { 
       if (!supressDefault) {
-        let defaultSet = SmartTemplate4.Preferences.getMyStringPref ('defaultCharset');
+        let defaultSet = SmartTemplate4.Preferences.getStringPref('defaultCharset');
         charset = defaultSet ? defaultSet : '';  // should we take this from Thunderbird instead?
       }
 		}
@@ -831,7 +830,7 @@ SmartTemplate4.mimeDecoder = {
 		
     //  %from% and %to% default to name followed by bracketed email address
     if (typeof format=='undefined' || format == '') {
-      format =  prefs.getMyStringPref('mime.defaultFormat').replace("(","<").replace(")",">") ; // 'name,bracketMail{angle}'
+      format =  prefs.getStringPref('mime.defaultFormat').replace("(","<").replace(")",">") ; // 'name,bracketMail{angle}'
     }
     
 		util.logDebugOptional('mime.split',
@@ -876,9 +875,9 @@ SmartTemplate4.mimeDecoder = {
     }
     util.logDebugOptional('mime.split', dbgText);
     
-		const nameDelim = prefs.getMyStringPref('names.delimiter'), // Bug 26207
-      isGuessFromAddressPart = prefs.getMyBoolPref('names.guessFromMail'),
-      isReplaceNameFromParens = prefs.getMyBoolPref('names.extractNameFromParentheses'); // [Bug 26595] disable name guessing, default is false
+		const nameDelim = prefs.getStringPref('names.delimiter'), // Bug 26207
+      isGuessFromAddressPart = prefs.getBoolPref('names.guessFromMail'),
+      isReplaceNameFromParens = prefs.getBoolPref('names.extractNameFromParentheses'); // [Bug 26595] disable name guessing, default is false
 		let addresses = "",
       address,
       bracketMailParams = getBracketAddressArgs(format, 'Mail'),
@@ -921,7 +920,7 @@ SmartTemplate4.mimeDecoder = {
                                            + 'address: ' + address);
       // [Bug 25643] get name from Addressbook
       emailAddress = getEmailAddress(address); // get this always
-      const isResolveNamesAB = isForceAB || prefs.getMyBoolPref('mime.resolveAB');
+      const isResolveNamesAB = isForceAB || prefs.getBoolPref('mime.resolveAB');
       try {
         cardObj = await SmartTemplate4.AB.getCardFromAB(emailAddress); // also retrieve vCard structure [vCardJson]
       } catch(ex) {
@@ -970,7 +969,7 @@ SmartTemplate4.mimeDecoder = {
 
       firstName = (isResolveNamesAB && card) ? correctMime(cardFirstName) : '';
       if (isResolveNamesAB && card) {
-				if (prefs.getMyBoolPref('mime.resolveAB.preferNick')) {
+				if (prefs.getBoolPref('mime.resolveAB.preferNick')) {
           let nick = cardFirstName;
           if (card.getProperty) {
             nick = correctMime(card.getProperty("NickName", cardFirstName));
@@ -980,7 +979,7 @@ SmartTemplate4.mimeDecoder = {
           }
           firstName = nick || cardFirstName;
 				}
-				if (!firstName && prefs.getMyBoolPref('mime.resolveAB.displayName')) {
+				if (!firstName && prefs.getBoolPref('mime.resolveAB.displayName')) {
 					firstName = correctMime(cardFullname);
           // displayName is usually the full name, so we may have to remove that portion for firstname.
           isFirstNameFromDisplay = true;
@@ -990,7 +989,7 @@ SmartTemplate4.mimeDecoder = {
       fullName = (isResolveNamesAB && card && cardFullname) ? correctMime(cardFullname) : fullName;			
 			
 			let isNameFound = (firstName.length + lastName.length > 0); // only set if name was found in AB
-			if ((fullName || isNameFound) && prefs.getMyBoolPref('mime.resolveAB.removeEmail')) {
+			if ((fullName || isNameFound) && prefs.getBoolPref('mime.resolveAB.removeEmail')) {
 				// remove mail if name found in AB, and a name component is displayed:
 				for (let f=0; f<formatArray.length; f++) {
 					if (["name","firstname","lastname","fullname"].indexOf(formatArray[f].field)>=0) {
@@ -1003,7 +1002,7 @@ SmartTemplate4.mimeDecoder = {
         }
 			}       
 					
-      if (!isNameFound && prefs.getMyBoolPref("firstLastSwap")) {
+      if (!isNameFound && prefs.getBoolPref("firstLastSwap")) {
         // extract Name from left hand side of email address
 				
 				let regex = /\(([^)]+)\)/,
@@ -1043,7 +1042,7 @@ SmartTemplate4.mimeDecoder = {
           }
         }
         // affect the (name) part too.
-        if (prefs.getMyBoolPref("firstLastSwap.name") && isNameFound) {
+        if (prefs.getBoolPref("firstLastSwap.name") && isNameFound) {
           fullName = firstName + ' ' + lastName;
         }
       }
@@ -1093,7 +1092,7 @@ SmartTemplate4.mimeDecoder = {
         firstName = firstName.replace(lastName,"").trim();
       }
       
-      if (prefs.getMyBoolPref('names.capitalize')) {
+      if (prefs.getBoolPref('names.capitalize')) {
         fullName = util.toTitleCase(fullName);
         firstName = util.toTitleCase(firstName);
         lastName = util.toTitleCase(lastName);
@@ -1141,7 +1140,7 @@ SmartTemplate4.mimeDecoder = {
                   break;
                 default:
                   //empty anchor suppresses link; adding angle brackets as default
-                  if (!isWriteClipboard && prefs.getMyBoolPref('mail.suppressLink')) {
+                  if (!isWriteClipboard && prefs.getBoolPref('mail.suppressLink')) {
                     part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
                   }
                   else {
@@ -1163,7 +1162,7 @@ SmartTemplate4.mimeDecoder = {
                 }
               }
               // [Bug 26209] wrap name if contains comma
-              if (prefs.getMyBoolPref('names.quoteIfComma')) {
+              if (prefs.getBoolPref('names.quoteIfComma')) {
                 if (part.includes(',') || part.includes(';')) {
                   part = '"' + part + '"';
                 }
@@ -3389,7 +3388,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           
           setTimeout(() => {
             util.setSpellchecker(lang);
-          }, prefs.getMyIntPref("spellcheckDelay"));
+          }, prefs.getIntPref("spellcheckDelay"));
           return "";
         }
         case "logMsg": // For testing purposes - add a comment line to email and error console
@@ -3664,7 +3663,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 const operator = args[1]; // Is Contains Isnt
                 const fieldName = args[2]; // nickname
                 const isCardBookAB =
-                  SmartTemplate4.Preferences.getMyBoolPref("mime.resolveAB.CardBook");
+                  SmartTemplate4.Preferences.getBoolPref("mime.resolveAB.CardBook");
                 let card;
                 if (isCardBookAB) {
                   card = await SmartTemplate4.Util.notifyTools.notifyBackground({
@@ -3910,7 +3909,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "txt":
         case "css":
           //try our new method
-          if (prefs.getMyBoolPref("vars.file.fileTemplateMethod")) {
+          if (prefs.getBoolPref("vars.file.fileTemplateMethod")) {
             let tmpTemplate = await SmartTemplate4.fileTemplates.retrieveTemplate({
               composeType: composeType,
               path: newPath,
@@ -4119,7 +4118,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     return str;
   }
 
-  let supportEval = prefs.getMyBoolPref('allowScripts'), // disabled and hidden by default.
+  let supportEval = prefs.getBoolPref('allowScripts'), // disabled and hidden by default.
       sandbox,
       javascriptResults = [];
     
@@ -4420,7 +4419,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
     //process javascript insertions first, so the javascript source is not broken by the remaining processing
     //but cannot insert result now, or it would be double html escaped, so insert them later
-    if (SmartTemplate4.Preferences.getMyBoolPref("sandbox")) {
+    if (SmartTemplate4.Preferences.getBoolPref("sandbox")) {
       try {
         msg = await SmartTemplate4.Util.replaceAsync(
           msg,
@@ -4437,7 +4436,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
   }
 	
 	/*  deprecating bs code. */
-	if (prefs.getMyBoolPref('xtodaylegacy')) {
+	if (prefs.getBoolPref('xtodaylegacy')) {
 		//Now do this chaotical stuff:
 		//Reset X to Today after each newline character
 		//except for lines ending in { or }; breaks the omission of non-existent CC?

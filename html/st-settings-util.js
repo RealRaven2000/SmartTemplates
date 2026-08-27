@@ -24,15 +24,21 @@ import { logMissingFunction } from "./st-log.mjs";
 SmartTemplates.Util = {
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
-  showAboutConfig: function(filter, readOnly, updateUI=false) {
+  showAboutConfig: async function(filter, readOnly, updateUI=false) {
     // we put the notification listener into tablistener.js - should only happen in ONE main window!
     // el - cannot be cloned! let's throw it away and get target of the event
-    messenger.runtime.sendMessage({ 
-      command: "showAboutConfig", 
+    /* legacy config editor:
+      messenger.runtime.sendMessage({ 
+        command: "showAboutConfig", 
+        filter: filter,
+        readOnly: readOnly,
+        updateUI: updateUI
+      });
+    */
+    await messenger.runtime.sendMessage({
+      command: "openStorageEditor",
       filter: filter,
-      readOnly: readOnly,
-      updateUI: updateUI
-    });
+    });      
   },
   viewSplashScreen: function() {
     messenger.runtime.sendMessage({ command:"showSplashMsg" });

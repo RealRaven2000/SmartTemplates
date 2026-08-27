@@ -46,32 +46,32 @@ SmartTemplate4.composer = {
     let toolbarId = "composeToolbar2";
 
     // add toolbarbutton for changing template
-    if (prefs.getMyBoolPref("changeTemplate.button.install")) {
+    if (prefs.getBoolPref("changeTemplate.button.install")) {
       setTimeout(function st4_installChangeTemplateBtn() {
         if (util.installButton(toolbarId, "smarttemplate4-changeTemplate", "button-save")) {
           // log the fact we installed it to avoid re-adding it.
-          prefs.setMyBoolPref("changeTemplate.button.install", false);
+          prefs.setBoolPref("changeTemplate.button.install", false);
         }
       }, 1000);
     }
 
     // add toolbarbutton for deferred variables
-    if (!prefs.getMyBoolPref("cleanDeferredButton.installer")) {
+    if (!prefs.getBoolPref("cleanDeferredButton.installer")) {
       setTimeout(function st4_installCleanBtn() {
         if (util.installButton(toolbarId, "smarttemplate4-cleandeferred", "button-save")) {
           // log the fact we installed it to avoid re-adding it.
-          prefs.setMyBoolPref("cleanDeferredButton.installer", true);
+          prefs.setBoolPref("cleanDeferredButton.installer", true);
         }
       }, 4000);
     }
 
     // add toolbarbutton for insert snippet
-    if (prefs.getMyBoolPref("insertSnippet.button.install")) {
+    if (prefs.getBoolPref("insertSnippet.button.install")) {
       setTimeout(function st4_installChangeTemplateBtn() {
         util.logDebug("Adding insert Snippet button...");
         if (util.installButton(toolbarId, "smarttemplate4-insertSnippet", "button-save")) {
           // log the fact we installed it to avoid re-adding it.
-          prefs.setMyBoolPref("insertSnippet.button.install", false);
+          prefs.setBoolPref("insertSnippet.button.install", false);
         }
       }, 1000);
     }

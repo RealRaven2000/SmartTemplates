@@ -361,6 +361,14 @@ END LICENSE BLOCK
     #             and to focus on modern Thunderbird versions.
     # [issue 417] sandbox script stopped functioning in Tb 150 beta 3
 
+  Version 4.19.1 - WIP
+    # Maintenance version
+    # Compatibility with Thunderbird 155
+    # [issue 421] force unsafe URL loading to enable TB155 compatibility
+    # [issue 422] Convert storage from legacy preferences (about:config) to local storage (API compatible)
+    # Phase out reliance of ownerGlobal
+    # Theme fixes for settings (items in settings category menu, coloring adjustments)
+
 
 
 =========================
@@ -504,7 +512,7 @@ var SmartTemplate4 = {
     }
 
     // reuse last template for this specific composeType. [issue 243]
-    if (!theFileTemplate && prefs.getMyIntPref("defaultTemplateMethod") == 2) {
+    if (!theFileTemplate && prefs.getIntPref("defaultTemplateMethod") == 2) {
       // reuse last external template!
       let composeType = "";
       if (!this.smartTemplate.composeCase) {
@@ -525,7 +533,7 @@ var SmartTemplate4 = {
           [Ci.nsIMsgCompType.ReplyToSenderAndGroup]: "rsp", // 8
         };
         const mruKey = MRU_KEYS[gMsgCompose.type];
-        const isNotify = prefs.getMyBoolPref("defaultTemplate.useLastNotify");
+        const isNotify = prefs.getBoolPref("defaultTemplate.useLastNotify");
         const setting = "fileTemplates.mru." + mruKey;
         if (["new", "rsp", "fwd"].includes(composeType)) {
           theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting));
@@ -854,7 +862,7 @@ var SmartTemplate4 = {
         // removeSigOnIdChangeAfterEdits is usually false, but it's supposed to 
         // remove the Thunderbird-provided signature
         // so a new identity-specific signature can be recalculated
-        if (prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
+        if (prefs.getBoolPref("removeSigOnIdChangeAfterEdits")) {
           const { placeholder, newSig } = await this.smartTemplate.extractSignature(
             gMsgCompose.identity,
             false,
@@ -881,7 +889,7 @@ var SmartTemplate4 = {
           await util.cleanupDeferredFields(true); // remove the fields even if they can't be resolved!
         }
         // try replacing the (unprocessed) signature that Thunderbird has inserted.
-        if (prefs.getMyBoolPref("parseSignature") && newSig) {
+        if (prefs.getBoolPref("parseSignature") && newSig) {
           // find and replace signature node.
           let sigNode = util.findChildNode(SmartTemplate4.composer.body, "moz-signature");
           if (sigNode && newSig) {
@@ -965,7 +973,7 @@ var SmartTemplate4 = {
 
   setStatusIconMode: function (elem) {
     try {
-      this.Preferences.setMyIntPref("statusIconLabelMode", parseInt(elem.value));
+      this.Preferences.setIntPref("statusIconLabelMode", parseInt(elem.value));
       this.updateStatusBar(elem.parentNode.firstChild.checked);
     } catch (ex) {
       SmartTemplate4.Util.logException("setStatusIconMode", ex);
@@ -984,7 +992,7 @@ var SmartTemplate4 = {
         licenseInfo
       );
       let isDefault = typeof show == "undefined" || show == "default",
-        isVisible = isDefault ? prefs.getMyBoolPref("showStatusIcon") : show,
+        isVisible = isDefault ? prefs.getBoolPref("showStatusIcon") : show,
         doc = isDefault ? document : util.Mail3PaneWindow.document,
         btn = doc.getElementById("SmartTemplate4Messenger");
 
@@ -998,11 +1006,11 @@ var SmartTemplate4 = {
       }
 
       if (btn) {
-        let labelMode = prefs.getMyIntPref("statusIconLabelMode");
+        let labelMode = prefs.getIntPref("statusIconLabelMode");
         util.logDebugOptional("ui.statusbar", `Found toolbar button; labelMode = ${labelMode}`);
         btn.classList.remove(...btn.classList); // clear classlist array
         btn.classList.add("statusbarpanel-iconic-text");
-        if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
+        if (SmartTemplate4.Preferences.getBoolPref("hasNews")) {
           btn.classList.add("newsflash"); // this should have precedence over other settings!
           btn.classList.add("always");
           return;
@@ -1113,7 +1121,7 @@ var SmartTemplate4 = {
   updateNewsLabels: function () {
     const util = SmartTemplate4.Util,
       licenseInfo = SmartTemplate4.Util.licenseInfo;
-    const hasNews = SmartTemplate4.Preferences.getMyBoolPref("hasNews"),
+    const hasNews = SmartTemplate4.Preferences.getBoolPref("hasNews"),
       btn = document.getElementById("SmartTemplate4Button"),
       btnStatus = document.getElementById("SmartTemplate4Messenger");
     // util.logHighlight("updateNewsLabels()", "white", "rgb(194,10,110)");
@@ -1169,7 +1177,7 @@ var SmartTemplate4 = {
     }
 
     if (hasNews) {
-      const isNewsMinimal = SmartTemplate4.Preferences.getMyBoolPref("news.minimal");
+      const isNewsMinimal = SmartTemplate4.Preferences.getBoolPref("news.minimal");
       txt = util.getBundleString("SmartTemplateMainButton.updated");
       addClass(btn, "newsflash");
       tooltip = util.getBundleString("st.menu.update.tooltip", ["SmartTemplates"]);
@@ -1250,7 +1258,7 @@ var SmartTemplate4 = {
   },
 
   get XML_toggleLabelMenu() {
-    let isDisabled = window.SmartTemplate4.Preferences.getMyBoolPref("toolbar.hideLabel")
+    let isDisabled = window.SmartTemplate4.Preferences.getBoolPref("toolbar.hideLabel")
       ? `checked="true"`
       : "";
     return `

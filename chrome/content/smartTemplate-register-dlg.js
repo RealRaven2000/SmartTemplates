@@ -305,7 +305,7 @@ var Register = {
     }
 
     // iterate accounts
-    const isAllowAlias = SmartTemplate4.Preferences.getMyBoolPref(
+    const isAllowAlias = SmartTemplate4.Preferences.getBoolPref(
       "licenser.forceSecondaryIdentity"
     );
     const idSelector = getElement("mailIdentity"),

@@ -29,7 +29,7 @@ SmartTemplate4.classSmartTemplate = function() {
     prefs = SmartTemplate4.Preferences;
 
   function readSignatureFile(Ident) {
-    let sigEncoding = prefs.getMyStringPref("signature.encoding"), // usually UTF-8
+    let sigEncoding = prefs.getStringPref("signature.encoding"), // usually UTF-8
       htmlSigText = "",
       fileName = "";
     util.logDebugOptional("functions.extractSignature", "SmartTemplate4.readSignatureFile()");
@@ -94,7 +94,7 @@ SmartTemplate4.classSmartTemplate = function() {
       htmlSigText = "(problems reading signature file - see tools / error console for more detail)";
       util.logException(
         `readSignatureFile - exception trying to read signature attachment file; expected charSet = ${sigEncoding} !\n` +
-          "Either save your signature with this charset or can change it through the config setting extensions.smartTemplate4.signature.encoding\n" +
+          "Either save your signature with this charset or can change it through the config setting 'signature.encoding'\n" +
           `Also make sure this file path is correct and set: [${fileName}] \n`,
         ex
       );
@@ -238,7 +238,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
     if (
       (sigType == "plain text" || sigType == "probably not HTML") &&
-      prefs.getMyBoolPref("signature.replaceLF.plaintext.br")
+      prefs.getBoolPref("signature.replaceLF.plaintext.br")
     ) {
       sigText = sigText.replace(/\r\n/g, "<br>");
       sigText = sigText.replace(/\n/g, "<br>");
@@ -254,7 +254,7 @@ SmartTemplate4.classSmartTemplate = function() {
     let removed = false;
     // LET'S REMOVE THE SIGNATURE
     //  && signatureDefined
-    const isInsertPlaceholder = prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits");
+    const isInsertPlaceholder = prefs.getBoolPref("removeSigOnIdChangeAfterEdits");
     if (isSignatureTb && lastSigNode) {
       util.logDebugOptional("functions.extractSignature", "First attempt to remove Signature.");
       const after = 0x04;
@@ -322,7 +322,7 @@ SmartTemplate4.classSmartTemplate = function() {
     if (
       !removed &&
       isSigInBlockquote &&
-      prefs.getMyBoolPref("signature.removeBlockQuotedSig.onFail")
+      prefs.getBoolPref("signature.removeBlockQuotedSig.onFail")
     ) {
       try {
         gMsgCompose.editor.deleteNode(lastSigNode);
@@ -333,7 +333,7 @@ SmartTemplate4.classSmartTemplate = function() {
     }
 
     // okay now for the coup de grace!!
-    if (prefs.getMyBoolPref("parseSignature") && sigText) {
+    if (prefs.getBoolPref("parseSignature") && sigText) {
       if (!flags.filePaths) {
         flags.filePaths = [];
       } // make sure we have a stack for paths!
@@ -363,10 +363,10 @@ SmartTemplate4.classSmartTemplate = function() {
       }
     }
 
-    let dashesTxt = prefs.getMyBoolPref("signature.insertDashes.plaintext")
+    let dashesTxt = prefs.getBoolPref("signature.insertDashes.plaintext")
       ? SmartTemplate4.signatureDelimiter
       : "";
-    let dashesHTML = prefs.getMyBoolPref("signature.insertDashes.html")
+    let dashesHTML = prefs.getBoolPref("signature.insertDashes.html")
       ? SmartTemplate4.signatureDelimiter
       : "";
     if (gMsgCompose.composeHTML) {
@@ -564,7 +564,7 @@ SmartTemplate4.classSmartTemplate = function() {
     // if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) {
     // 	lines = 2;
     // }
-    if (prefs.getMyBoolPref("debug.functions.delReplyHeader")) {
+    if (prefs.getBoolPref("debug.functions.delReplyHeader")) {
       // eslint-disable-next-line no-debugger
       debugger;
     }
@@ -572,7 +572,7 @@ SmartTemplate4.classSmartTemplate = function() {
     let node = rootEl.firstChild,
       elType = "",
       skipInPlainText = !gMsgCompose.composeHTML,
-      preserve = prefs.getMyBoolPref("plainText.preserveTextNodes"),
+      preserve = prefs.getBoolPref("plainText.preserveTextNodes"),
       foundReplyHeader = false;
     // delete everything except (or until in plaintext?) quoted part
     while (node) {
@@ -721,6 +721,7 @@ SmartTemplate4.classSmartTemplate = function() {
         replyId = "mailnews.reply_header_originalmessage";
 
       used = fwdId;
+      // Reads Thunderbird internal settings:
       origMsgDelimiter = Services.prefs.getComplexValue(fwdId, Ci.nsIPrefLocalizedString).data;
       // fallback to replyId if it doesn't exist.
       if (!origMsgDelimiter) {
@@ -744,7 +745,7 @@ SmartTemplate4.classSmartTemplate = function() {
     let rootEl = SmartTemplate4.composer.body,
       node = rootEl.firstChild,
       skipInPlainText = !gMsgCompose.composeHTML,
-      preserve = prefs.getMyBoolPref("plainText.preserveTextNodes");
+      preserve = prefs.getBoolPref("plainText.preserveTextNodes");
     util.logDebugOptional(
       "functions.delForwardHeader",
       "Running Loop to remove unnecessary whitespace.."
@@ -1519,7 +1520,7 @@ SmartTemplate4.classSmartTemplate = function() {
     let targetNode = 0,
       templateDiv,
       // new global settings to deal with [Bug 25084]
-      breaksAtTop = prefs.getMyIntPref("breaksAtTop"),
+      breaksAtTop = prefs.getIntPref("breaksAtTop"),
       bodyEl = SmartTemplate4.composer.body,
       preheaderEl = null,
       bodyContent = "";
@@ -1563,7 +1564,7 @@ SmartTemplate4.classSmartTemplate = function() {
     // Extract <head> sections and inject into doc head.
     // merge all <body> attributes into document body (body will be converted into an attributeless div)
     try {
-      const isExtractHead = SmartTemplate4.Preferences.getMyBoolPref("header.inject");
+      const isExtractHead = SmartTemplate4.Preferences.getBoolPref("header.inject");
       if (isExtractHead) {
         let tempDiv = editor.document.createElement("div");
         tempDiv.id = "tempTemplate";
@@ -1676,7 +1677,7 @@ SmartTemplate4.classSmartTemplate = function() {
         }
         templateDiv.id = "smartTemplate4-template";
         /* TEST
-				if (prefs.getMyBoolPref('debug.composer')) {
+				if (prefs.getBoolPref('debug.composer')) {
 					// color the template part for debugging.
 					templateDiv.style.backgroundColor = "#FFF4CC";
 					templateDiv.style.border = "1px solid #FFE070";
@@ -1685,10 +1686,10 @@ SmartTemplate4.classSmartTemplate = function() {
         // This encodes "&" in href attributes to &amp;   !
 
         util.insertHtmlSafely(templateDiv, template || "");
-        if (SmartTemplate4.Preferences.getMyBoolPref("sanitizeStyles.removeDuplicatesInTemplate")) {
+        if (SmartTemplate4.Preferences.getBoolPref("sanitizeStyles.removeDuplicatesInTemplate")) {
           SmartTemplate4.Util.removeDuplicateStyleBlocks(templateDiv, bodyEl);
         }
-        if (SmartTemplate4.Preferences.getMyBoolPref("sanitizeStyles.removeDuplicatesInHead")) {
+        if (SmartTemplate4.Preferences.getBoolPref("sanitizeStyles.removeDuplicatesInHead")) {
           SmartTemplate4.Util.removeDuplicateStyleBlocks(editor.document.head);
         }
 
@@ -2038,7 +2039,7 @@ SmartTemplate4.classSmartTemplate = function() {
           } catch (ex) {
             util.logException(
               `editor.selectionController completeScroll(forward = $forward$) failed`,
-              ex,
+              ex
             );
           }
         }
@@ -2058,7 +2059,7 @@ SmartTemplate4.classSmartTemplate = function() {
                 const scrollFlags = selCtrl.SCROLL_FOR_CARET_MOVE | selCtrl.SCROLL_OVERFLOW_HIDDEN;
                 // cursorParent = caretContainer.parentNode; // usually a <p>
                 // =========== FORCE CURSOR IN <PARA> ==================================== >>>>
-                if (prefs.getMyBoolPref("forceParagraph")) {
+                if (prefs.getBoolPref("forceParagraph")) {
                   try {
                     // Apply to the cursor. will only return a paragraph
                     // if the parent was BODY or DIV
@@ -2090,7 +2091,7 @@ SmartTemplate4.classSmartTemplate = function() {
                   }
                 }
                 editor.selection.selectAllChildren(space);
-                if (prefs.getMyBoolPref("cursor.insertSpace")) {
+                if (prefs.getBoolPref("cursor.insertSpace")) {
                   editor.selection.collapseToStart(); //
                   editor.selection.modify("extend", "forward", "character");
                   selCtrl.scrollSelectionIntoView(
@@ -2201,7 +2202,7 @@ SmartTemplate4.classSmartTemplate = function() {
         // make sure all variables are resolved + removed.
         await SmartTemplate4.Util.cleanupDeferredFields(true);
         // push send button - with timeout?
-        let timeout = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.sendTimeout");
+        let timeout = SmartTemplate4.Preferences.getIntPref("fileTemplates.sendTimeout");
         setTimeout(function () {
           SendMessage();
         }, timeout);
