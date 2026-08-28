@@ -139,6 +139,10 @@ pref("extensions.smartTemplate4.debug.ui.mainbutton", false);
 pref("extensions.smartTemplate4.debug.variables.search", false);
 pref("extensions.smartTemplate4.debug.saleDate", ""); // test sales
 
+// MINIMAL flag for testing prefs:
+pref("extensions.smartTemplate4.debug.storage.cache", false);
+
+
 // SmartTemplate License specific:
 pref("extensions.smartTemplate4.license.gracePeriodDate","");
 pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
