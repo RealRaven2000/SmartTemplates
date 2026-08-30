@@ -1365,6 +1365,12 @@
   "vouchers.title": {
     "message": "Voucher"
   },
+  "newsSection.important": {
+    "message": "{P}Penting bagi pengguna kanal Release ({emph}155 dan yang lebih baru{/emph}): siklus rilis dua mingguan Thunderbird meningkatkan risiko kerusakan tak terduga. Meskipun saya rutin menguji {+extensionName} dengan build harian Thunderbird, perbaikan tepat waktu bergantung pada {b}pelaporan dini{/b}. Ikuti {a href='https://github.com/RealRaven2000/SmartTemplates/issues'}pelacak masalah{/a} dan segera laporkan regresi.{/P}"
+  },
+  "newsSection.intro": {
+    "message": "{P}Thunderbird sedang {emph}beralih ke siklus rilis dua mingguan{/emph}, sehingga pembaruan pengaya akan lebih sering. Kanal Release mungkin lebih sering mengalami kerusakan yang memerlukan perbaikan tepat waktu.{/P}"
+  },
   "whats-new-list": {
     "description": "🇮🇩 change log",
     "message": "{L} {+extensionName} kini kompatibel dengan Thunderbird 155.{/L}{L} Penyimpanan pengaturan dipindahkan dari basis data konfigurasi global Thunderbird ({{about:config}}) ke {{storage.local}} [issue 422]. Ke depannya, pengaya sebaiknya meminimalkan ketergantungan pada preferensi global. {br}{i}Catatan:{/i} Menghapus pemasangan {+extensionName} kini mengembalikan pengaturannya ke nilai bawaan.{/L}{L} Untuk memastikan kompatibilitas dengan Thunderbird 155, skrip berbasis URL kini dimuat menggunakan parameter {{allowUnsafe}} milik pemuat skrip [issue 421]. Menurut [Bugzilla 1974213], mulai Thunderbird 155 skrip pengaya tidak lagi dapat dimuat menggunakan metode standar {{scriptloader.loadSubScript()}}.{/L}{L} Berbagai perbaikan tema ditambahkan pada tab pengaturan, termasuk perbaikan item menu kategori dan penyesuaian warna lainnya.{/L}"

@@ -109,10 +109,10 @@
     "message": "Tin Mới Nhất"
   },
   "newsSection.intro": {
-    "message": "{P}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{/P}"
+    "message": "{P}Thunderbird đang {emph}chuyển sang chu kỳ phát hành hai tuần{/emph}, đồng nghĩa với việc tiện ích được cập nhật thường xuyên hơn. Kênh Release có thể gặp lỗi nhiều hơn và cần được sửa kịp thời.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{bold}Quan trọng:{/bold} Thunderbird tiếp tục chu kỳ phát hành hàng tháng. {/P}{P} Một số người dùng có thể đã thấy cảnh báo không tương thích giả sau khi nâng cấp lên Thunderbird v144. Điều này do thông tin tương thích được lưu trong bộ nhớ đệm của Thunderbird, đôi khi không được làm mới đúng cách. Phiên bản SmartTemplates trước đó đã hoàn toàn tương thích với 144. Tôi đã báo lỗi này với Thunderbird để họ khắc phục: [Bugzilla 1986027]{/P}{P} Hãy yên tâm rằng SmartTemplates hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*), và bạn có thể tiếp tục làm việc mà không bị gián đoạn. {/P}"
+    "message": "{P}Quan trọng với người dùng Release ({emph}155 trở lên{/emph}): chu kỳ mới làm tăng nguy cơ lỗi ngoài dự kiến. Dù tôi thường xuyên thử nghiệm {+extensionName} với các bản dựng hằng ngày của Thunderbird, việc sửa lỗi phụ thuộc vào {b}báo cáo sớm{/b}. Hãy theo dõi {a href='https://github.com/RealRaven2000/SmartTemplates/issues'}trình theo dõi lỗi{/a} và báo cáo hồi quy kịp thời.{/P}"
   },
   "newsSection.license": {
     "message": "Do tất cả công việc trên SmartTemplates và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ doanh số bán giấy phép, vui lòng cân nhắc mua một giấy phép hoặc gia hạn giấy phép hiện tại của bạn."

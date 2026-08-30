@@ -233,7 +233,13 @@ END LICENSE BLOCK */
     ariaPoliteUpdate(title, messenger.i18n.getMessage("window-title", addonName));
 
     updateActions(addonName);
-    hideNewsBox();
+    // list of Add-on versions that require news to be shown
+    const newsVersions = ["4.20"];
+    const manifestVersion = browser.runtime.getManifest().version;
+    const addonVersion = manifestVersion.match(/^\d+(?:\.\d+)*/)?.[0] ?? manifestVersion;
+    if (!newsVersions.includes(addonVersion)) {
+      hideNewsBox();
+    }
 
     const innerWrapper = document.getElementById("innerwrapper");
     innerWrapper.querySelectorAll("a.contactsupport").forEach((link) => {

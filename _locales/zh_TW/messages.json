@@ -1006,10 +1006,10 @@
     "message": "{P}{bold} 在下一次重大版本中 {/bold}：Thunderbird 即將提示您選擇首選的更新路徑 — 年度 ESR 跟踪版或更快速的每月發布版。{ARelease}了解有關新發佈模型的詳細資訊{/A}。{U} {L}ESR 版本將保持在 v140，只會升級次要版本，僅包含安全修復和錯誤修正，這通常更適合企業環境使用。{/L} {L}每月發布週期將在新功能開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發布模型。為此，您可以安裝 {AcompatCheck}Add‑on Compatibility Check{/A}。{/L} {/U}{/P}{P} 我們很高興地宣布，SmartTemplates 已完全相容於 Thunderbird 140 —— 下一代 Extended Support Release（ESR）。這意味著在下一個主要支援週期中將保持穩定可靠。{/P}{P} SmartTemplates 目前仍然支援 Thunderbird 115 及更高版本。在接下來的一年內，隨著我們添加新功能，對 Thunderbird 115 的支援可能會被逐步移除，改為 Thunderbird 128 及更高版本。{/P}{P} 我們持續監控 Thunderbird 的更新，以確保 SmartTemplates 始終保持相容與可靠，無論您選擇哪條更新路徑。{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{bold}重要:{/bold} Thunderbird 繼續其每月發布週期。 {/P}{P} 一些用戶在更新到 Thunderbird v144 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。SmartTemplates 之前的版本已經完全相容於 144。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{/P}{P} 請放心，SmartTemplates 完全支援每月版和 ESR (140.*) 通道，您可以繼續不間斷地工作。 {/P}"
+    "message": "{P}Release 頻道使用者請注意（{emph}155 及更新版本{/emph}）：新的發行週期提高了意外故障的風險。雖然我會使用 Thunderbird 每日組建版定期測試 {+extensionName}，但及時修正有賴使用者的{b}及早回報{/b}。請關注{a href='https://github.com/RealRaven2000/SmartTemplates/issues'}問題追蹤器{/a}並及時回報迴歸問題。{/P}"
   },
   "newsSection.intro": {
-    "message": "{P}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{/P}"
+    "message": "{P}Thunderbird 正在{emph}轉向新的兩週發行週期{/emph}，這也代表附加元件將更頻繁地更新。Release 頻道可能更常發生故障，需要及時更新和修正。{/P}"
   },
   "newsSection.license": {
     "message": "由於SmartTemplates的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"

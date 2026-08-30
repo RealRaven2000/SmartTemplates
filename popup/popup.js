@@ -171,7 +171,9 @@ function showSalesItems(isSale, licenseInfo) {
 
     // Pro users from here:
     if (licenseInfo.isValid && licenseInfo.licensedDaysLeft <= 10) {
-      showSpecialOfferItem("specialOfferRenew");
+      if (isSale) {
+        showSpecialOfferItem("specialOfferRenew");
+      }
       hide("purchaseSection");
     }
 
@@ -277,7 +279,7 @@ function specialAttributes(str, content) {
 function formatAll(txt) {
   let localizedMsg = replaceNested(txt)
     .replace(/<(.*?)>/g, "<span class='htmltag'>&lt;$1&gt;</span>")
-    .replace(
+  .replace(
       // eslint-disable-next-line no-useless-escape
       /\{support(?: ([\w\-]+))?\}/g,
       (dummy, topic) => `<a class='contactsupport' data-topic='${topic || ""}' href='#'>`
@@ -311,6 +313,8 @@ function formatAll(txt) {
     .replace(/\{preEnd\}/g, "</pre>")
     .replace(/\{i\}/g, "<i>")
     .replace(/\{\/i\}/g, "</i>")
+    .replace(/\{emph\}/g, "<span class='important'>")
+    .replace(/\{\/emph\}/g, "</span>")
     .replace(/\{\{(%.*?%)\}\}/g, "<code>$1</code>")
     .replace(/\{\{(.*?)\}\}/g, "<code param>$1</code>")
     .replace(/\{U\}/g, "<ul>")
@@ -330,6 +334,8 @@ function formatAll(txt) {
     .replace("$news.minimal$", messenger.i18n.getMessage("news.minimal"))
     .replace(/\{\/A\}/g, "</a>")
     .replace(/\{\/P\}/g, "</p>")
+    .replace(/\{a ([^}]+?)\}/g, "<a $1>")
+    .replace(/\{\/a\}/gi, "</a>")
     .replace(/\{br\}/g, "<br>")
     .replace(/\{S1\}/g, "</ul> <h3 class='section'>")
     .replace(/\{S2\}/g, "</h3> <ul>")
