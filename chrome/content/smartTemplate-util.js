@@ -382,7 +382,7 @@ SmartTemplate4.Util = {
 
   localize: function (window, buttons = null) {
     Services.scriptloader.loadSubScriptWithOptions(
-      SmartTemplate4.Util.extension.rootURI.resolve("chrome/content/i18n.js"),
+      SmartTemplate4.Util.extension.rootURI.resolve("html/i18n.js"),
       {
         target: window,
         allowUnsafeURL: true,
