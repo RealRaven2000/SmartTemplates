@@ -1,4 +1,4 @@
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.19) 
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.20) 
 
 Important for Release channel users (**154 and later**): With Thunderbird's new 2-week release cycle, there is an elevated risk of unexpected breakages. While I regularly test SmartTemplates against daily builds, timely fixes depend on **early reporting** from Release users. Please follow the <a href='https://github.com/RealRaven2000/SmartTemplates/issues'>issue tracker</a> and report any regressions promptly to help maintain compatibility.
 
