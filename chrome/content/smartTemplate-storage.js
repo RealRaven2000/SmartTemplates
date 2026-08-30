@@ -16,15 +16,30 @@ SmartTemplate4.Storage = new (class LocalStorage {
       "resource://gre/modules/ExtensionParent.sys.mjs"
     );
     const extension = ExtensionParent.GlobalManager.getExtension(extensionId);
+    if (!extension) {
+      throw new Error(`SmartTemplates extension context not found: ${extensionId}`);
+    }
     this.uniqueRandomID = "AddOnNS" + extension.instanceId;
-    this._context = window[this.uniqueRandomID].WL.context;
+
+    // Standalone chrome dialogs are not WindowListener-injected.
+    // Temporarily obtain the extension API from their injected opener.
+    // Remove when dialogs become WebExtension HTML pages.
+    const hostWindow = window[this.uniqueRandomID]?.WL ? window : window.opener;
+    const WL = hostWindow?.[this.uniqueRandomID]?.WL;
+    if (!WL) {
+      throw new Error("SmartTemplates WindowListener context unavailable");
+    }
+
+    this._context = WL.context;
     // Read debug flag once at initialization!
     try {
-      this._debugCache = Services.prefs.getBoolPref("extensions.smartTemplate4.debug.storage.cache");
+      this._debugCache = Services.prefs.getBoolPref(
+        "extensions.smartTemplate4.debug.storage.cache"
+      );
     } catch {
       // something goes wrong - then we debug!
       this._debugCache = true;
-    }    
+    }
     console.log("SmartTemplates Storage context:", this._context);
   }
 
@@ -33,7 +48,9 @@ SmartTemplate4.Storage = new (class LocalStorage {
   }
 
   logDebug(...args) {
-    if (!this._debugCache) { return; }
+    if (!this._debugCache) {
+      return;
+    }
     console.log(`[SmartTemplates Storage] [${this.getTimestamp()}]`, ...args);
   }
 
@@ -45,24 +62,28 @@ SmartTemplate4.Storage = new (class LocalStorage {
     const maxRetries = 6;
     const delays = [100, 500, 1000, 2000, 4000, 10000]; // total ~7.6s
 
+    // An Experiment runs in the parent process, where the local storage only
+    // exposes callMethodInParentProcess(). The familiar get/set/remove/clear
+    // belong to the child process implementation.
+
     for (let attempt = 0; attempt < maxRetries; attempt++) {
       try {
-        // An Experiment runs in the parent process, where the local storage only
-        // exposes callMethodInParentProcess(). The familiar get/set/remove/clear
-        // belong to the child process implementation.
         this._storage = this._context.apiCan.findAPIPath("storage");
         this._call =
           (method) =>
           (...args) =>
             this._storage.local.callMethodInParentProcess(method, args);
+
+        // Test that storage is actually accessible with a minimal call
+        await this._call("get")("dummy"); // becomes await browser.storage.local.get("dummy");
+        this.logDebug(`_init() SUCCESS after ${attempt + 1} attempt(s)`);
+        return;
       } catch (ex) {
         const isLastAttempt = attempt === maxRetries - 1;
         // Detect if it's likely an IndexedDB initialization error (for diagnostic logging)
         const isIndexedDBError =
           ex.message?.includes("database") ||
           ex.message?.includes("IndexedDB") ||
-          ex.message?.includes("operation failed") ||
-          ex.message?.includes("not covered by any other error") ||
           ex.name === "UnknownError";
 
         if (isLastAttempt) {
@@ -99,8 +120,33 @@ SmartTemplate4.Storage = new (class LocalStorage {
       this.logDebug("get() Error details:", ex.name, ex.message, ex.stack);
       throw ex;
     }
+  }
 
-
+  async getWithRetry(keys = null, timeout = 5000) {
+    const delays = [250, 1000, 5000, 8000];
+    for (let attempt = 0; ; attempt++) {
+      let timeoutId;
+      try {
+        return await Promise.race([
+          this.get(keys),
+          new Promise((_, reject) => {
+            timeoutId = setTimeout(
+              () => reject(new Error(`Storage.get() timed out after ${timeout}ms`)),
+              timeout
+            );
+          }),
+        ]);
+      } catch (ex) {
+        if (attempt >= delays.length) {
+          throw ex;
+        }
+        this._storage = null;
+        this._call = null;
+        await new Promise((resolve) => setTimeout(resolve, delays[attempt]));
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    }
   }
 
   async set(items) {

@@ -1,5 +1,5 @@
 export const Preferences = {
-  CURRENT_VERSION: 0.2,
+  CURRENT_VERSION: 0.3,
   Defaults: {
     // Core functionality
     sandbox: false,
@@ -99,7 +99,6 @@ export const Preferences = {
   DebugDefaults: {
     debugActive: false,
     "debug.default": true,
-    "debug.hideExamples": false,
     "debug.events": false,
     "debug.functions": false,
     "debug.functions.delReplyHeader": false,

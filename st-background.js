@@ -12,9 +12,6 @@ import {compareVersions} from "./scripts/mozilla-version-comparator.js";
 // import { Util } from "./scripts/st-util.mjs.js";
 
 // Initialize Preferences early - this must complete before accessing any settings
-// eslint-disable-next-line no-debugger
-debugger;
-const prefsReady = Preferences.init();
 
 var stProcess = new SmartTemplatesProcess(); // use stProcess.composer
 console.log(SmartTemplates, stProcess);
@@ -24,11 +21,12 @@ var currentLicense;
 const GRACEPERIOD_DAYS = 28;
 const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 
-
 let startupDoneResolve;
 export const startupDone = new Promise((resolve) => {
   startupDoneResolve = resolve;
 });
+
+
 
 var MenuCounter = {
   MRUheader: 0,
@@ -829,7 +827,9 @@ async function updateMruMenu(Context) {
     accelerator++; 
   }
   if (!generatedId) {
-    if (isDebug) { console.log("No MRU items were generated. "); }
+    if (isDebug) {
+      console.log("No MRU items were generated. ");
+    }
     return;
   }
 
@@ -912,7 +912,7 @@ async function updateSubMenus(messages, tab) {
     isForward =  results[2];
     gotReply = true;
   } catch (ex) {
-    console.log(ex);
+    console.error("Failed to get commands enabled flags:", ex);
   }
 
   // fallback code...
@@ -1016,7 +1016,9 @@ async function displayUpdateMessage() {
     hasProLicense = [0, 1].includes(licenseInfo?.keyType); // 0 Pro or none depending on status, 2 std
   
   const logDebug = (...args) => {
-    if (!isDebug) {return;}
+    if (!isDebug) {
+      return;
+    }
     console.log("ST displayUpdateMessage()\n", ...args);
   }
 
@@ -2000,5 +2002,9 @@ async function main() {
   });
 }
 
+// prepare a gate Promise
+const prefsReady = Preferences.init();
 // Start main initialization
-main();
+main().catch((ex) => {
+  console.error("SmartTemplates startup failed:", ex);
+});

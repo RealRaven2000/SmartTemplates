@@ -88,7 +88,6 @@ pref("extensions.smartTemplate4.spellcheckDelay", 2500); // when opening compose
 /* debug settings */
 pref("extensions.smartTemplate4.debug", false);
 pref("extensions.smartTemplate4.debug.default", true); // to disable standard log messages 
-pref("extensions.smartTemplate4.hideExamples", false);
 pref("extensions.smartTemplate4.debug.events", false);
 pref("extensions.smartTemplate4.debug.functions", false);
 pref("extensions.smartTemplate4.debug.functions.delReplyHeader", false);
@@ -140,7 +139,8 @@ pref("extensions.smartTemplate4.debug.variables.search", false);
 pref("extensions.smartTemplate4.debug.saleDate", ""); // test sales
 
 // MINIMAL flag for testing prefs:
-pref("extensions.smartTemplate4.debug.storage.cache", false);
+pref("extensions.smartTemplate4.debug.storage.cache", false); // debug the new storage migration and populating the cache
+
 
 
 // SmartTemplate License specific:

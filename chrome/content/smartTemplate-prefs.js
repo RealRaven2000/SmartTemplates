@@ -207,11 +207,10 @@ SmartTemplate4.Preferences.cache = (() => {
 
       try {
         logDebug(" - SmartTemplate4.Storage:", SmartTemplate4.Storage);
-        const data = await SmartTemplate4.Storage.get({
+        const data = await SmartTemplate4.Storage.getWithRetry({
           settings: {},
           debug: {},
           accounts: {},
-          model: { folders: [] },
         });
 
         // merge settings, debug, and accounts into flat cache
