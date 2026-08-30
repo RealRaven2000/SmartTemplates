@@ -1931,7 +1931,7 @@
   },
   "whats-new-list": {
     "description": "🇯🇵 change log",
-    "message": "{L}Thunderbirdの最小バージョンは140に設定され、非推奨APIの問題を回避し、最新のThunderbirdバージョンに集中するためのものです [issue 418]{P}今後の開発はThunderbird ESR 140および次期153リリースに焦点を当てます。Thunderbirdプラットフォームの変更により、設定ストレージやファイルアクセスなどの古い機能は最新のAPIに置き換える必要があります。{/P}{P}新しいファイルアクセスAPIは現在開発中であり、最新のThunderbirdバージョンでのみ利用可能になる可能性があります。今後3か月間の開発の大部分はこの作業に割かれ、SmartTemplatesの将来性を確保します。{/P}{/L}{L}修正: SandboxスクリプトがTb 150 beta 3で動作しなくなる問題 [issue 417]{P}バージョン149以降、変数にパラメータがない場合は{{from()}}構文が必要です。チェーンは{{(await from()).someStringFunction()}}で可能です。{/P}{P}リテラルパラメータ（{{$mail}}）や空の括弧{{()}}の欠落に対する詳細な診断を追加しました。{/P}{/L}"
+    "message": "{L} {+extensionName} は Thunderbird 155 に対応しました。{/L}{L} 設定の保存先を Thunderbird のグローバル設定データベース（{{about:config}}）から {{storage.local}} に移行しました [issue 422]。今後、アドオンはグローバル設定への依存をできるだけ減らす必要があります。{br}{i}注記:{/i} {+extensionName} をアンインストールすると、設定が既定値にリセットされるようになりました。{/L}{L} Thunderbird 155 との互換性を確保するため、URL ベースのスクリプトはスクリプトローダーの {{allowUnsafe}} パラメーターを使用して読み込まれるようになりました [issue 421]。[Bugzilla 1974213] によると、Thunderbird 155 以降では、アドオンのスクリプトを標準の {{scriptloader.loadSubScript()}} メソッドで読み込むことができなくなりました。{/L}{L} 設定タブに、カテゴリーメニュー項目の修正やその他の色調整など、さまざまなテーマ修正を追加しました。{/L}"
   },
   "whats-new-maintenance": {
     "message": "メンテナンス更新 $ver$。この特定の修正は前回のリリース以降に追加されました。",

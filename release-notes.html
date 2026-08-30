@@ -1,16 +1,17 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.20)
+
+Important for Release channel users (**155 and later**): With Thunderbird's new 2-week release cycle, there is an elevated risk of unexpected breakages. While I regularly test SmartTemplates against daily builds, timely fixes depend on **early reporting** from Release users. Please follow the <a href='https://github.com/RealRaven2000/SmartTemplates/issues'>issue tracker</a> and report any regressions promptly to help maintain compatibility.
+
+Additional regressions are expected within the Thunderbird release branch and will be addressed as they occur. Users who rely on advanced or experimental functionality may prefer the ESR channel for a more stable environment with fewer platform changes.
+
 <ul>
-<li> Minimum Thunderbird Version was set to 140 to avoid problems with deprecated APIs and to focus on modern Thunderbird versions <a href="https://github.com/RealRaven2000/SmartTemplates/issues/418">[issue 418]</a>. 
+<li>SmartTemplates is now compatible with Thunderbird 155.</li>
+<li>Moved settings storage from Thunderbird's global configuration database (`about:config`) to `storage.local` <a href="https://github.com/RealRaven2000/SmartTemplates/issues/422">[issue 422]</a>. Going forward, add-ons should minimize their reliance on global preferences.
 
-Future development will focus on Thunderbird ESR 140 and the upcoming 153 release. Thunderbird platform changes require replacing legacy features such as preference storage and file access with modern APIs.
-
-New file access APIs are currently being implemented and may only be available in newer Thunderbird versions. Most development effort over the next three months will be dedicated to this work to future-proof SmartTemplates.
-</li>
-<li> Fixed: Sandbox script stops functioning in Tb 150 beta 3 <a href="https://github.com/RealRaven2000/SmartTemplates/issues/417">[issue 417]</a> because string prototype modification was deprecated in Thunderbird 150.
-
-From version 149 onward, we require the syntax `from()` when the variable has no parameters. Chaining of variables can be done using the form `(await from()).someStringFunction()`.
-
-Added detailed diagnostics for syntax problems with literal parameters ($mail) or missing empty parameters `()`. </li>
+<i>Note:</i> Uninstalling SmartTemplates now resets its settings to their defaults.</li>
+<li>To ensure compatibility with Thunderbird 155, URL-based scripts are now loaded using the script loader's `allowUnsafe` parameter <a href="https://github.com/RealRaven2000/SmartTemplates/issues/421">[issue 421]</a>. According to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1974213">[Bugzilla 1974213]</a>, add-on scripts can no longer be loaded using the standard `scriptloader.loadSubScript()` method in Thunderbird 155.</li>
+<li>Added various theme fixes to the settings tab, including corrections to category-menu items and other color adjustments.</li>
 </ul>
