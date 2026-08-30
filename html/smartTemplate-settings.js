@@ -2954,8 +2954,7 @@ function addUIListeners() {
 		});		
   }
 
-  // replace SmartTemplate4.Util.showAboutConfig command handlers
-  addConfigEvent(document.getElementById("identityLabel"), "identities");
+  addConfigEvent(document.getElementById("identityLabel"), "identities."); // avoid showing "debug.identities"
 
 	document.getElementById('versionBox').addEventListener('focus', function(event) {
 		var version = event.target.textContent.trim();
