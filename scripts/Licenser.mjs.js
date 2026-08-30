@@ -148,7 +148,7 @@ export class Licenser {
       isValid: this.isValid,
       isExpired: this.isExpired,
       graceDate: this.GraceDate,
-      trialDays: this.TrialDays
+      trialDays: this.TrialDays,
     }
   }
   
@@ -218,7 +218,7 @@ export class Licenser {
     let Encrypted = RSA.encryptedString(key, this.LicenseKey, 'OHDave');
     this.logDebug('encryptLicense - finished encrypting registration key', {
       length: Encrypted.length,
-      Encrypted
+      Encrypted,
     });
     return Encrypted;    
   }    
@@ -405,7 +405,7 @@ export class Licenser {
           this.logDebug("Default Identity of this account matched!", {
             account: account.name, 
             identity: defaultIdentity.email,
-            status: this.ValidationStatusDescription
+            status: this.ValidationStatusDescription,
           });
           return this.info;
         }
@@ -426,7 +426,7 @@ export class Licenser {
             this.logDebug("Identity of this account matched!", {
               account: account.name, 
               identity: identity.email,
-              status: this.ValidationStatusDescription
+              status: this.ValidationStatusDescription,
             });
             return this.info;
           }
