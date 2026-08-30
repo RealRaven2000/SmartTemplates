@@ -361,13 +361,12 @@ END LICENSE BLOCK
     #             and to focus on modern Thunderbird versions.
     # [issue 417] sandbox script stopped functioning in Tb 150 beta 3
 
-  Version 4.19.1 - WIP
-    # Maintenance version
+  Version 4.20 - WIP
     # Compatibility with Thunderbird 155
-    # [issue 421] force unsafe URL loading to enable TB155 compatibility
     # [issue 422] Convert storage from legacy preferences (about:config) to local storage (API compatible)
+    # [issue 421] force unsafe URL loading to enable TB155 compatibility
+    # Various Theme fixes for settings tab (items in settings category menu, coloring adjustments)
     # Phase out reliance of ownerGlobal
-    # Theme fixes for settings (items in settings category menu, coloring adjustments)
 
 
 
