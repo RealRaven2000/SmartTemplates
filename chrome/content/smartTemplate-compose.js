@@ -1061,6 +1061,11 @@ SmartTemplate4.classSmartTemplate = function() {
   // -----------------------------------
   // Add template message
   async function insertTemplate(startup, flags, fileTemplateSource) {
+    // Account templates are loaded asynchronously from storage.local. Make sure
+    // the synchronous preference wrappers below do not see an empty cache when
+    // a composer window opens immediately after startup.
+    await SmartTemplate4.Preferences.ensureReady();
+
     if (SmartTemplate4.Preferences.isBackgroundParser()) {
       // [issue 184] - this should never be called if this flag is set
       alert(

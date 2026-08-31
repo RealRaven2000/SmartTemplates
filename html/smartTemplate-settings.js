@@ -1314,7 +1314,10 @@ SmartTemplates.Settings = {
 			try {
 				if (_el.hasAttribute("data-pref-name")) {
 					let _attr = _el.getAttribute("data-pref-name");
-          _el.setAttribute("data-pref-name", _attr.replace(".common", key));
+          const prefName = _attr.startsWith("common.")
+            ? key.substring(1) + _attr.substring("common".length)
+            : _attr.replace(".common", key); // preserve legacy prefixed names
+          _el.setAttribute("data-pref-name", prefName);
 				}
 			} catch {;}
 		}
@@ -3020,13 +3023,34 @@ async function selectComposeType(forceType=null, forceKey = null) {
 }
 
 async function onLoad() {
+	browser.runtime.onMessage.addListener((msg, _sender) => {
+		// check on the msg
+		if (msg?.command == "focusSettingsTab") {
+			const tabs = document.getElementById("categories").querySelectorAll(".category");
+			let isSelected = false;
+			for (let t of tabs) {
+        if (t.getAttribute("selected")) {
+					// select previously selected tab
+          SmartTemplates.Settings.selectCategoryMenu(t.id).focus();
+					isSelected = true;
+          break;
+        }
+      }
+			if (!isSelected) { // if nothing was preselected, let's go to file templates.
+				SmartTemplates.Settings.selectCategoryMenu("catFileTemplates").focus();
+			}
+			return Promise.resolve();
+    }
+		return false;
+	});
+
   i18n.updateDocument();
   // this api function can do replacements for us
   //  h1.innerText = messenger.i18n.getMessage('heading-installed', addonName);
 // this builds all elements of the dialog
   await SmartTemplates.Settings.onLoad();
 
-	loadPrefs(); 
+	await loadPrefs();
 	initLicenseInfo();
 
 	// now read data from Preferences
@@ -3081,27 +3105,6 @@ async function onLoad() {
 		// set focus to the document pane?
 		setTimeout(() => { selectedElement.focus(); }, 250);
 	}
-
-	browser.runtime.onMessage.addListener((msg, _sender) => {
-		// check on the msg
-		if (msg?.command == "focusSettingsTab") {
-			const tabs = document.getElementById("categories").querySelectorAll(".category"); 
-			let isSelected = false;
-			for (let t of tabs) {
-        if (t.getAttribute("selected")) {
-					// select previously selected tab
-          SmartTemplates.Settings.selectCategoryMenu(t.id).focus();
-					isSelected = true;
-          break;
-        }
-      }
-			if (!isSelected) { // if nothing was preselected, let's go to file templates.
-				SmartTemplates.Settings.selectCategoryMenu("catFileTemplates").focus();
-			}
-			return Promise.resolve();
-    }
-		return false;
-	});
 
   const updateHtmlTooltips = (buttonId, bundleKey) => {
     const btn = document.getElementById(buttonId);
