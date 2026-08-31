@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.20)
+The full change log with screen shots [can be found here](https://smarttemplates.quickfolders.org/version.html#4.20.1)
 
 Important for Release channel users (**155 and later**): With Thunderbird's new 2-week release cycle, there is an elevated risk of unexpected breakages. While I regularly test SmartTemplates against daily builds, timely fixes depend on **early reporting** from Release users. Please follow the <a href='https://github.com/RealRaven2000/SmartTemplates/issues'>issue tracker</a> and report any regressions promptly to help maintain compatibility.
 
@@ -14,4 +14,5 @@ Additional regressions are expected within the Thunderbird release branch and wi
 <i>Note:</i> Uninstalling SmartTemplates now resets its settings to their defaults.</li>
 <li>To ensure compatibility with Thunderbird 155, URL-based scripts are now loaded using the script loader's `allowUnsafe` parameter <a href="https://github.com/RealRaven2000/SmartTemplates/issues/421">[issue 421]</a>. According to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1974213">[Bugzilla 1974213]</a>, add-on scripts can no longer be loaded using the standard `scriptloader.loadSubScript()` method in Thunderbird 155.</li>
 <li>Added various theme fixes to the settings tab, including corrections to category-menu items and other color adjustments.</li>
+<li><b>Maintenance version 4.20.1</b> - v4.20 didn't load the correct Account Templates. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/423">[issue 423]</a> </li>
 </ul>

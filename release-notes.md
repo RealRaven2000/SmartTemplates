@@ -6,9 +6,10 @@ Additional regressions are expected within the Thunderbird release branch and wi
 
 **Improvements**
 
-* SmartTemplates is now compatible with Thunderbird 155.
-* Moved settings storage from Thunderbird's global configuration database (`about:config`) to `storage.local` — #422. Going forward, add-ons should minimize their reliance on global preferences.
+- SmartTemplates is now compatible with Thunderbird 155.
+- Moved settings storage from Thunderbird's global configuration database (`about:config`) to `storage.local` — #422. Going forward, add-ons should minimize their reliance on global preferences.
 
   *Note:* Uninstalling SmartTemplates now resets its settings to their defaults.
-* To ensure compatibility with Thunderbird 155, URL-based scripts are now loaded using the script loader's `allowUnsafe` parameter — #421. According to [Bugzilla 1974213](https://bugzilla.mozilla.org/show_bug.cgi?id=1974213), add-on scripts can no longer be loaded using the standard `scriptloader.loadSubScript()` method in Thunderbird 155.
-* Added various theme fixes to the settings tab, including corrections to category-menu items and other color adjustments.
+- To ensure compatibility with Thunderbird 155, URL-based scripts are now loaded using the script loader's `allowUnsafe` parameter — #421. According to [Bugzilla 1974213](https://bugzilla.mozilla.org/show_bug.cgi?id=1974213), add-on scripts can no longer be loaded using the standard `scriptloader.loadSubScript()` method in Thunderbird 155.
+- Added various theme fixes to the settings tab, including corrections to category-menu items and other color adjustments.
+- **Maintenance version 4.20.1** - v4.20 didn't load the correct Account Templates.

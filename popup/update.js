@@ -234,7 +234,7 @@ END LICENSE BLOCK */
 
     updateActions(addonName);
     // list of Add-on versions that require news to be shown
-    const newsVersions = ["4.20"];
+    const newsVersions = ["4.20", "4.20.1"];
     const manifestVersion = browser.runtime.getManifest().version;
     const addonVersion = manifestVersion.match(/^\d+(?:\.\d+)*/)?.[0] ?? manifestVersion;
     if (!newsVersions.includes(addonVersion)) {
