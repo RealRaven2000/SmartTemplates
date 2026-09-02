@@ -1,0 +1,101 @@
+09:05:53.732 window.controllers/Controllers is deprecated. Do not use it for UA detection. 2 blank
+09:05:53.965 Security Error: Content at moz-nullprincipal:{77b593ee-0798-40e3-a18b-7bdc6bd1da07} may not load or link to imap://thunderbirddaily%40gmail.com@imap.gmail.com:993/fetch%3EUID%3E/%5BGmail%5D/Google%3E48?header=quotebody&part=1.2.2&filename=thunderbird_blog2.png.
+09:05:53.965 Security Error: Content at moz-nullprincipal:{77b593ee-0798-40e3-a18b-7bdc6bd1da07} may not load or link to imap://thunderbirddaily%40gmail.com@imap.gmail.com:993/fetch%3EUID%3E/%5BGmail%5D/Google%3E48?header=quotebody&part=1.2.2&filename=thunderbird_blog2.png.
+09:05:54.002 WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 19, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+09:05:54.006 SmartTemplates Storage context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 19, unloaded: false, extension: {…}, manifestVersion: 2, … }
+smartTemplate-storage.js:43:13
+09:05:54.021 WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 18, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+09:05:54.023 [#697] About to call cache.init() at 2026-09-02T08:05:54.023Z quickfolders-preferences.js:643:9
+09:05:54.023 [#697] Cache init starting at 2026-09-02T08:05:54.023Z quickfolders-preferences.js:583:15
+09:05:54.036 Preferences onChanged: 
+Object {  }
+preferences.mjs:280:17
+09:05:54.071 Preferences onChanged: 
+Object { settings: {…}, debug: {…}, accounts: {…} }
+preferences.mjs:280:17
+09:05:54.072 Accounts data updated: 
+Object {  }
+preferences.mjs:302:19
+09:05:54.074 [#697] Cache init completed at 2026-09-02T08:05:54.074Z quickfolders-preferences.js:621:15
+09:05:54.085 SmartTemplates smartTemplate-composer.js smartTemplate-util.js:910:15
+09:05:54.116
+Object { "x-mozilla-status": (1) […], "x-mozilla-status2": (1) […], "delivered-to": (1) […], received: (3) […], "x-received": (2) […], "arc-seal": (1) […], "arc-message-signature": (1) […], "arc-authentication-results": (1) […], "return-path": (2) […], "received-spf": (1) […], … }
+smartTemplate-overlay.js:393:15
+09:05:54.117
+Object { MessageHdr: Map(26) }
+smartTemplate-composer.js:286:11
+09:05:54.118 SmartTemplates added compose-window-init listener smartTemplate-util.js:910:15
+09:05:54.118 SmartTemplates [logTime init]
+ SmartTemplate4.init() smartTemplate-util.js:846:13
+09:05:54.118 SmartTemplates 9:5:54.118  [0 ms]	 
+ SmartTemplate4.init() ends. smartTemplate-util.js:846:13
+09:05:54.118 SmartTemplates 9:5:54.118  [0 ms]	 
+ SmartTemplate4.notifyComposeBodyReady()
+gMsgCompose type: 6 smartTemplate-util.js:846:13
+09:05:54.119 SmartTemplates {SIGNATURES,FUNCTIONS.EXTRACTSIGNATURE} 9:5:54.119  [1 ms]	 
+ attachSignature is set for Identity [id6] thunderbird daily <thunderbirddaily@gmail.com>
+Path: E:\Mail\dd9jwla2n.axel\stationery\signatures\sig-ag-atn-2026.html smartTemplate-util.js:841:13
+09:05:54.119 SmartTemplates 9:5:54.119  [0 ms]	 
+ readSignatureFile() 
+Trying to read attached signature file: sig-ag-atn-2026.html
+at: E:\Mail\dd9jwla2n.axel\stationery\signatures\sig-ag-atn-2026.html smartTemplate-util.js:846:13
+09:05:54.120 SmartTemplates {FILETEMPLATES} 9:5:54.120  [1 ms]	 
+ extractSignature: Add sig file to template stack: E:\Mail\dd9jwla2n.axel\stationery\signatures\sig-ag-atn-2026.html smartTemplate-util.js:841:13
+09:05:54.121
+Object { str: "+0100", h: 1, m: 0 }
+smartTemplate-overlay.js:2335:15
+09:05:54.122 SmartTemplates ST.composer.load smartTemplate-util.js:910:15
+09:05:54.122 SmartTemplates 9:5:54.122  [2 ms]	 
+ composer.initTemplateMenu() ... smartTemplate-util.js:846:13
+09:05:54.122 SmartTemplates 9:5:54.122  [0 ms]	 
+ loadCustomMenu()... smartTemplate-util.js:846:13
+09:05:54.122 SmartTemplates 9:5:54.122  [0 ms]	 
+ composer.initSnippetMenu() ... smartTemplate-util.js:846:13
+09:05:54.122 SmartTemplates 9:5:54.122  [0 ms]	 
+ loadCustomMenu()... smartTemplate-util.js:846:13
+09:05:54.139 SmartTemplates 9:5:54.139  [17 ms]	 
+ loadCustomMenu() - data read smartTemplate-util.js:846:13
+09:05:54.139 SmartTemplates {FILETEMPLATES} 9:5:54.139  [0 ms]	 
+ Add rsp templatesList: 4 entries to [smarttemplate4-changeTemplate] smartTemplate-util.js:841:13
+09:05:54.140 SmartTemplates 9:5:54.140  [1 ms]	 
+ loadCustomMenu() - data read smartTemplate-util.js:846:13
+09:05:54.140 SmartTemplates {FILETEMPLATES} 9:5:54.140  [0 ms]	 
+ Add snippets templatesList: 0 entries to [smarttemplate4-insertSnippet] smartTemplate-util.js:841:13
+09:05:54.141 SmartTemplates 9:5:54.141  [1 ms]	 
+ replacing relative img path: E:\Mail\dd9jwla2n.axel\stationery\signatures\thunderbird_blog2.png… smartTemplate-util.js:846:13
+09:05:54.142 SmartTemplates {FILETEMPLATES} 9:5:54.142  [1 ms]	 
+ extractSignature: Removed file from template stack: E:\Mail\dd9jwla2n.axel\stationery\signatures\sig-ag-atn-2026.html smartTemplate-util.js:841:13
+09:05:54.144
+Object { str: "+0100", h: 1, m: 0 }
+smartTemplate-overlay.js:2335:15
+09:05:54.145 SmartTemplates 9:5:54.145  [3 ms]	 
+ Ignore unknown variable: %fake% smartTemplate-util.js:846:13
+09:05:54.158
+Object { str: "+0100", h: 1, m: 0 }
+smartTemplate-overlay.js:2335:15
+09:05:54.159 SmartTemplates 9:5:54.159  [14 ms]	 
+ Ignore unknown variable: %From% smartTemplate-util.js:846:13
+09:05:54.166 SmartTemplates 9:5:54.166  [7 ms]	 
+ getLocalePref() returns: en-US smartTemplate-util.js:846:13
+09:05:54.167 SmartTemplates 9:5:54.167  [1 ms]	 
+ Mailer has no manners, trying to decode string: Hello from me smartTemplate-util.js:846:13
+09:05:54.167 SmartTemplates 9:5:54.167  [0 ms]	 
+ ...decoded string: Hello from me smartTemplate-util.js:846:13
+09:05:54.171 SmartTemplates 9:5:54.171  [4 ms]	 
+ Version() getter. addonInfo: 
+Object { id: "smarttemplate4@thunderbird.extension", name: "SmartTemplates", description: "A powerful way to create customized replies by auto-inserting various mail headers. Templates can be created for every mail identity, also supports external html files and style sheets.", version: "4.20.1", mayDisable: true, enabled: true, optionsUrl: "moz-extension://9f96ba3a-7184-4581-bdf2-dc1e62d9bb57/html/smartTemplate-settings.html", installType: "normal", type: "extension", permissions: (11) […], … }
+smartTemplate-util.js:846:13
+09:05:54.172 SmartTemplates {SIGNATURES} 9:5:54.172  [1 ms]	 
+ isSignatureSetup: true
+sigType: 
+flags.omitSignature: false
+sigVarDefined: false smartTemplate-util.js:841:13
+09:05:54.192 SmartTemplates resetDocument(withUndo = true) smartTemplate-util.js:910:15
+09:05:54.192 SmartTemplates 9:5:54.192  [20 ms]	 
+ No deferred variables so we do not setup listeners... smartTemplate-util.js:846:13
+09:05:54.193 SmartTemplates resetDocument(withUndo = true) smartTemplate-util.js:910:15
