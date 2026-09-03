@@ -157,18 +157,35 @@ export const Preferences = {
   async _seedMissingDefaultsToStorage(settings, debug) {
     let hasSettingsSeed = false;
     let hasDebugSeed = false;
+    // Recover the checkbox state saved by the old settings UI under the wrong key.
+    if (Object.prototype.hasOwnProperty.call(debug, "debug")) {
+      if (typeof debug.debug === "boolean") {
+        debug.debugActive = debug.debug;
+      }
+      delete debug.debug;
+      hasDebugSeed = true;
+    }
+    // Use the loaded debug flag: the background preference cache is not ready yet.
+    const logRepair = (domain, key, value) => {
+      if (debug.debugActive === true) {
+        console.log(`Preferences repair: ${domain}.${key} default = ${JSON.stringify(value)}`);
+      }
+    };
 
     for (const [key, value] of Object.entries(Preferences.Defaults)) {
-      if (typeof settings[key] === "undefined") {
+      // Repair missing/null values without resetting valid preferences (#427).
+      if (settings[key] === undefined || settings[key] === null) {
         settings[key] = value;
         hasSettingsSeed = true;
+        logRepair("settings", key, value);
       }
     }
 
     for (const [key, value] of Object.entries(Preferences.DebugDefaults)) {
-      if (typeof debug[key] === "undefined") {
+      if (debug[key] === undefined || debug[key] === null) {
         debug[key] = value;
         hasDebugSeed = true;
+        logRepair("debug", key, value);
       }
     }
 
@@ -551,7 +568,7 @@ export const Preferences = {
         const testKey = `${legacy_root}${accountId}.${setting}`;
         try {
           const value = await messenger.LegacyPrefs.getPref(testKey);
-          if (value !== undefined) {
+          if (value !== undefined && value !== null) {
             hasAnySetting = true;
             break; // Found at least one setting, no need to check more
           }
@@ -582,7 +599,8 @@ export const Preferences = {
       try {
         const value = await messenger.LegacyPrefs.getPref(legacyKey);
 
-        if (value === undefined) {
+        // LegacyPrefs returns null when the preference does not exist.
+        if (value === undefined || value === null) {
           continue;
         }
 
