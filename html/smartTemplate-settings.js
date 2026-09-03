@@ -65,7 +65,7 @@ const PrefsHelper = {
     if (key === "debug" || key.startsWith("debug.")) {
       return {
         isDebug: true,
-        key: key,
+        key: key === "debug" ? "debugActive" : key,
       };
     }
     
@@ -111,7 +111,17 @@ const PrefsHelper = {
     if (parsed.isDebug) {
       const { debug = {} } = await browser.storage.local.get({ debug: {} });
       debug[parsed.key] = value;
+      if (parsed.key === "debugActive") {
+        delete debug.debug;
+      }
       await browser.storage.local.set({ debug });
+      if (parsed.key === "debugActive") {
+        // DELIBERATE LEGACY BACKUP: do not remove this write during storage cleanup.
+        // The master Debug mode flag must survive uninstall/reinstall, which clears
+        // WebExtension storage. Runtime/UI state uses debug.debugActive exclusively;
+        // this fully qualified legacy preference is its persistent backup, not debug.debug.
+        await messenger.LegacyPrefs.setPref("extensions.smartTemplate4.debug", value);
+      }
       return;
     }
     
@@ -2581,9 +2591,7 @@ function addUIListeners() {
     // get my bool pref:
     switch (dataPref) {
       case "debug":
-        chk.addEventListener("change", (_event) => {
-          SettingsUI.toggleBoolPreference(chk); // <== QF.Options
-        });
+        // The shared savePref handler writes debugActive AND its deliberate legacy backup.
         filterConfig = "debug";
         break;
       case "parseSignature":
