@@ -274,6 +274,26 @@ export const Preferences = {
       }
     }
 
+    function applyAccountChanges(changesObj, updates) {
+      const oldAccounts = changesObj.oldValue || {};
+      const newAccounts = changesObj.newValue || {};
+      const accountIds = new Set([...Object.keys(oldAccounts), ...Object.keys(newAccounts)]);
+
+      for (const accountId of accountIds) {
+        const oldAccount = oldAccounts[accountId] || {};
+        const newAccount = newAccounts[accountId] || {};
+        const keys = new Set([...Object.keys(oldAccount), ...Object.keys(newAccount)]);
+
+        for (const key of keys) {
+          if (oldAccount[key] !== newAccount[key]) {
+            // Legacy window caches use flattened keys such as common.newmsg.
+            // Undefined clears values removed by a full account-settings import.
+            updates[`${accountId}.${key}`] = newAccount[key];
+          }
+        }
+      }
+    }
+
     // live sync all changes to cache. do not include model / folders
     messenger.storage.onChanged.addListener((changes, area) => {
       try {
@@ -297,6 +317,7 @@ export const Preferences = {
           }
         }
         if (changes.accounts) {
+          applyAccountChanges(changes.accounts, updates);
           // Update in-memory accounts data
           Preferences._accountsData = changes.accounts.newValue || {};
           console.log("Accounts data updated:", Preferences._accountsData);

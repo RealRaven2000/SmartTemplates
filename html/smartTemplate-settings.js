@@ -1758,7 +1758,7 @@ SmartTemplates.Settings = {
 			return (el.id == s || el.id.startsWith(s + "."));
 		}
 		
-		function updateElement(settings, el, stem, targetId) {
+		async function updateElement(settings, el, stem, targetId) {
 			// id target is common, append .id#, otherwise replace the .id#
 			let oldId = targetId ? el.id.replace(targetId, stem) : el.id + stem;
 			// set element value (text / checkbox) from json data
@@ -1774,9 +1774,9 @@ SmartTemplates.Settings = {
 				default:
 					return;
 			}
-			// force preference update
-			const evt = new Event("change", {bubbles:true, cancelable:false})
-			el.dispatchEvent(evt);
+			// Persist imported values in order. Dispatching all change events at once
+			// races because each handler reads and rewrites the complete accounts object.
+			await savePref({ target: el });
 		}
 
 		let data = await this.fileAccountSettings('load', JSON.stringify({ key: this.currentId }));
@@ -1813,13 +1813,13 @@ SmartTemplates.Settings = {
 				targetId = SmartTemplates.Settings.accountId;
 			}
 			for (let i=0; i<textAreas.length; i++) {
-				updateElement(data, textAreas[i], stem, targetId);
+				await updateElement(data, textAreas[i], stem, targetId);
 				// check use_default
 			}
 			for (let i=0; i<checkboxes.length; i++) {
 				// e.g newmsg.id1
 				let el = checkboxes[i];
-				updateElement(data, el, stem, targetId);
+				await updateElement(data, el, stem, targetId);
 				// update enable / disable textboxes from checkbox data.
 				if (
           isOrStartsWith(el, "new") ||
