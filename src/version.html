@@ -251,6 +251,54 @@ permalink: version.html
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
 
+<a id="4.20"> &nbsp; </a><a id="4.20.1"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.*"
+      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 4.20.1 - Work in Progress</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">140.0 - 157.*</span>
+		</span>
+  </h4>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+
+    <li>
+      SmartTemplates is now compatible with Thunderbird 155.
+    </li>
+    <li>
+      Moved settings storage from Thunderbird's global configuration database 
+      (`about:config`) to `storage.local` 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/422">[issue 422]</a>. 
+      Going forward, add-ons should minimize their reliance on global preferences.
+
+      <p>
+        <i>Note:</i> Uninstalling SmartTemplates now resets its settings to their defaults.
+      </p>
+    </li>
+    <li>
+      To ensure compatibility with Thunderbird 155, URL-based scripts are now 
+      loaded using the script loader's <code>allowUnsafe</code> parameter
+       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/421">[issue 421]</a>. 
+       According to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1974213">[Bugzilla 
+        1974213]</a>, add-on scripts can no longer be loaded using the standard 
+        <code>scriptloader.loadSubScript()</code> method in Thunderbird 155.
+    </li>
+
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li>
+      Added various theme fixes to the settings tab, including corrections to 
+      category-menu items and other color adjustments.
+    </li>
+    <li>
+      <b>Maintenance version 4.20.1</b> - v4.20 didn't load the correct Account Templates.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/423">[issue 423]</a>
+    </li>
+  </ul>
+</li> 
+
 
 <li>
   <h4>
