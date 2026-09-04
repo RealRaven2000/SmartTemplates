@@ -829,8 +829,14 @@ SmartTemplate4.mimeDecoder = {
     }      
 		
     //  %from% and %to% default to name followed by bracketed email address
-    if (typeof format=='undefined' || format == '') {
-      format =  prefs.getStringPref('mime.defaultFormat').replace("(","<").replace(")",">") ; // 'name,bracketMail{angle}'
+    if (format == null || (typeof format === "string" && !format.trim())) {
+      const defaultFormat = prefs.getStringPref("mime.defaultFormat");
+      // No requested/default format: preserve the original address header (#427).
+      // Do not replace it with a guessed name or an implicit formatting recipe.
+      if (defaultFormat == null || !defaultFormat.trim()) {
+        return addrstr;
+      }
+      format = defaultFormat.replace("(", "<").replace(")", ">");
     }
     
 		util.logDebugOptional('mime.split',

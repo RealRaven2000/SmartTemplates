@@ -366,8 +366,13 @@ export class Parser {
         }
 
         //  %from% and %to% default to name followed by bracketed email address
-        if (typeof format == "undefined" || format == "") {
-          format = this.MimePrefs.defaultFormat.replace("(", "{").replace(")", "}"); // 'name,bracketMail<angle>'
+        if (format == null || (typeof format === "string" && !format.trim())) {
+          const defaultFormat = this.MimePrefs.defaultFormat;
+          // No requested/default format: preserve the original address header (#427).
+          if (defaultFormat == null || !defaultFormat.trim()) {
+            return addrstr;
+          }
+          format = defaultFormat.replace("(", "{").replace(")", "}");
         }
 
         Util.logDebugOptional(
