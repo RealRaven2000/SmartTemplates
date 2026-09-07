@@ -355,19 +355,27 @@ END LICENSE BLOCK
     # Compatibility with Thunderbird 151
     # More fixes for coloring of menu icons in dark mode [issue 416]
 
-  Version 4.19 - 23/04/2926
+  Version 4.19 - 23/04/2026
     # new Github Default branch ESR140
     # [issue 418] Set Minimum Version to Thunderbird 140 to avoid problems with deprecated APIs 
     #             and to focus on modern Thunderbird versions.
     # [issue 417] sandbox script stopped functioning in Tb 150 beta 3
 
-  Version 4.20.1 - WIP
+  Version 4.20.1 - 31/08/2026
     # Compatibility with Thunderbird 155
     # [issue 422] Convert storage from legacy preferences (about:config) to local storage (API compatible)
     # [issue 421] force unsafe URL loading to enable TB155 compatibility
     # Various Theme fixes for settings tab (items in settings category menu, coloring adjustments)
     # Phase out reliance of ownerGlobal
 
+  Version 4.20.2 - WIP
+    # Account template imports: await each preference save to prevent competing writes to the accounts object.
+    # Propagate account preference changes to existing legacy window caches using flattened account keys.
+    # [issue 429] Verify reliable editing/importing of Common and account templates; resolution still pending testing.
+    # [issue 427] Repair missing/null preference defaults without resetting valid values; skip absent legacy preferences.
+    # [issue 427] Preserve the original address header when both requested and default formatting are empty.
+    # [issue 422] Fix Debug mode toggle to use debug.debugActive, recover the old key, and retain the legacy backup.
+    # [issue 425] WIP: temporary storage/composer startup timing diagnostics; trim before release.
 
 
 =========================

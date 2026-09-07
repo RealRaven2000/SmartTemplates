@@ -55,12 +55,13 @@
 
 .importantInfo a
  {
-  cursor: pointer;
-  display: inline-block;
   background-color: transparent;
-  color: orange;
+  cursor: pointer;
+  color: orange !important;
+  display: inline;
   font-weight: bold;
   text-decoration: underline;
+  white-space: nowrap;
 }
 
 .importantInfo a:hover {
@@ -89,6 +90,7 @@ span.important {
   text-decoration: none !important;
   padding: 5px 8px;
   cursor: pointer;
+  border-radius: 0.2em;
 }
 
 .actionlinks div {
@@ -101,6 +103,7 @@ span.important {
 .actionlinks a:hover {
   background-image: linear-gradient(to bottom, #6d0019 0%,#8f0222 34%,#e20425 100%);
   color: lightyellow !important;
+  outline: 1px solid rgb(255, 200, 200);
 }
 
 .actionlinks a:active {
@@ -272,7 +275,6 @@ body p, body li {
 
 
 h1, h2, h3, h4 {
-  /* color: #1a566d; */
   font-family: Impact,Haettenschweiler,Franklin Gothic Bold,Charcoal,Helvetica Inserat,Bitstream Vera Sans Bold,Arial Black,sans serif;
   text-align: center;
   color: rgba(20,30,50,0.6);
@@ -293,7 +295,12 @@ h2 {
 h3 {
   font-size: 16pt;
   text-align: left !important;
-  color: rgb(113, 220, 250) !important;
+  color: rgb(60, 100, 160) !important;
+  text-shadow:
+    -1px 0 0 white,
+    1px 0 0 white,
+    0 -1px 0 white,
+    0 1px 0 white;
 }
 
 .visually-hidden {

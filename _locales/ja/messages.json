@@ -1931,7 +1931,7 @@
   },
   "whats-new-list": {
     "description": "🇯🇵 change log",
-    "message": "{L} {+extensionName} は Thunderbird 155 に対応しました。{/L}{L} 設定の保存先を Thunderbird のグローバル設定データベース（{{about:config}}）から {{storage.local}} に移行しました [issue 422]。今後、アドオンはグローバル設定への依存をできるだけ減らす必要があります。{br}{i}注記:{/i} {+extensionName} をアンインストールすると、設定が既定値にリセットされるようになりました。{/L}{L} Thunderbird 155 との互換性を確保するため、URL ベースのスクリプトはスクリプトローダーの {{allowUnsafe}} パラメーターを使用して読み込まれるようになりました [issue 421]。[Bugzilla 1974213] によると、Thunderbird 155 以降では、アドオンのスクリプトを標準の {{scriptloader.loadSubScript()}} メソッドで読み込むことができなくなりました。{/L}{L} 設定タブに、カテゴリーメニュー項目の修正やその他の色調整など、さまざまなテーマ修正を追加しました。{/L}"
+    "message": "{h3}4.20.2 メンテナンスリリース{/h3}{L} {+extensionName} が Thunderbird 157 に対応しました。{/L}{L} {b class=maintenance}4.20.2{/b} アカウントテンプレートのインポートと、変更した設定の同期を改善しました [issue 429]。{/L}{L} {b class=maintenance}4.20.2{/b} 返信・転送時の引用ヘッダーでアドレスのヘッダーが {{??}} と表示される問題を修正し、有効な設定をリセットせずに、欠落していた設定の既定値を復元しました [issue 427]。{/L}{L} {b class=maintenance}4.20.2{/b} 設定の保存先の移行後に、デバッグモードの切り替えが正しく動作しない問題を修正しました [issue 422]。{/L}{L} {b class=maintenance}4.20.2{/b} 新規メッセージ、返信、転送を開く際に長時間応答しなくなる原因となり得るログ出力を削除しました [issue 425]。{/L}{h3}4.20 の主な変更点{/h3}{L} 設定を Thunderbird のグローバル設定データベース ({{about:config}}) から拡張機能のストレージ ({{storage.local}}) に移行しました [issue 422]。{br}{i}注意:{/i} {+extensionName} をアンインストールすると、設定が既定値にリセットされるようになりました。{/L}{L} Thunderbird 155 以降に対応するため、スクリプトの読み込みを更新しました [issue 421]。{/L}"
   },
   "whats-new-maintenance": {
     "message": "メンテナンス更新 $ver$。この特定の修正は前回のリリース以降に追加されました。",

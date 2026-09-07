@@ -1943,7 +1943,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L} {+extensionName} 現已相容於 Thunderbird 155。{/L}{L} 設定儲存已從 Thunderbird 的全域組態資料庫（{{about:config}}）移至 {{storage.local}} [issue 422]。今後，附加元件應儘量減少對全域偏好設定的依賴。{br}{i}注意：{/i} 解除安裝 {+extensionName} 現在會將其設定重設為預設值。{/L}{L} 為確保與 Thunderbird 155 相容，以 URL 為基礎的指令碼現在會透過指令碼載入器的 {{allowUnsafe}} 參數載入 [issue 421]。根據 [Bugzilla 1974213]，從 Thunderbird 155 開始，附加元件指令碼將無法再使用標準的 {{scriptloader.loadSubScript()}} 方法載入。{/L}{L} 已對設定分頁進行多項佈景主題修正，包括修正類別選單項目及其他色彩調整。{/L}"
+    "message": "{h3}4.20.2 維護版本{/h3}{L} {+extensionName} 現已相容於 Thunderbird 157。{/L}{L} {b class=maintenance}4.20.2{/b} 改善了帳號範本的匯入及已變更設定的同步 [issue 429]。{/L}{L} {b class=maintenance}4.20.2{/b} 修正了回覆與轉寄時引文標頭中的地址標頭顯示為 {{??}} 的問題，並恢復遺失的偏好設定預設值，而不重設有效設定 [issue 427]。{/L}{L} {b class=maintenance}4.20.2{/b} 修正了設定儲存空間移轉後的除錯模式開關 [issue 422]。{/L}{L} {b class=maintenance}4.20.2{/b} 移除了在開啟新郵件、回覆或轉寄時可能導致長時間停頓的記錄功能 [issue 425]。{/L}{h3}4.20 的主要變更{/h3}{L} 將設定從 Thunderbird 的全域組態資料庫 ({{about:config}}) 移轉至擴充套件儲存空間 ({{storage.local}}) [issue 422]。{br}{i}注意：{/i}現在解除安裝 {+extensionName} 會將其設定重設為預設值。{/L}{L} 更新了指令碼載入方式，以支援 Thunderbird 155 及更新版本 [issue 421]。{/L}"
   },
   "whats-new-maintenance": {
     "message": "維護更新 $ver$。此特定修正已包含在上一個版本之後的更新中。",

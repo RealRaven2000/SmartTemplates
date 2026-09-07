@@ -1954,7 +1954,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L} {+extensionName} 现已兼容 Thunderbird 155。{/L}{L} 设置存储已从 Thunderbird 的全局配置数据库（{{about:config}}）迁移到 {{storage.local}} [issue 422]。今后，附加组件应尽量减少对全局首选项的依赖。{br}{i}注意：{/i} 卸载 {+extensionName} 现在会将其设置重置为默认值。{/L}{L} 为确保与 Thunderbird 155 兼容，基于 URL 的脚本现在通过脚本加载器的 {{allowUnsafe}} 参数加载 [issue 421]。根据 [Bugzilla 1974213]，从 Thunderbird 155 开始，附加组件脚本将无法再使用标准的 {{scriptloader.loadSubScript()}} 方法加载。{/L}{L} 对设置选项卡进行了多项主题修复，包括修正类别菜单项以及其他颜色调整。{/L}"
+    "message": "{h3}4.20.2 维护版本{/h3}{L} {+extensionName} 现已兼容 Thunderbird 157。{/L}{L} {b class=maintenance}4.20.2{/b} 改进了账户模板的导入和已更改设置的同步 [issue 429]。{/L}{L} {b class=maintenance}4.20.2{/b} 修复了回复和转发时引用头中的地址标头显示为 {{??}} 的问题，并恢复缺失的首选项默认值，而不重置有效设置 [issue 427]。{/L}{L} {b class=maintenance}4.20.2{/b} 修复了设置存储迁移后的调试模式开关 [issue 422]。{/L}{L} {b class=maintenance}4.20.2{/b} 移除了在打开新邮件、回复或转发时可能导致长时间卡顿的日志记录 [issue 425]。{/L}{h3}4.20 的主要变化{/h3}{L} 将设置从 Thunderbird 的全局配置数据库 ({{about:config}}) 迁移到扩展存储 ({{storage.local}}) [issue 422]。{br}{i}注意：{/i}现在卸载 {+extensionName} 会将其设置重置为默认值。{/L}{L} 更新了脚本加载方式，以支持 Thunderbird 155 及更高版本 [issue 421]。{/L}"
   },
   "whats-new-maintenance": {
     "message": "维护更新 $ver$。此特定修复已包含在上一版本之后的更新中。",
