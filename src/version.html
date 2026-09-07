@@ -110,46 +110,26 @@ permalink: version.html
 -->
 
 
-<h3>Latest News (30/08/2025) - Thunderbird 142 Compatibility</h3>
+<h3>Latest News (07/09/2025) - Thunderbird 157 Compatibility</h3>
 
-  <a name="tb142-compatibility">&nbsp;</a>
+  <a name="tb157-compatibility">&nbsp;</a>
   <div class="psa announcement">
     <p>
-      SmartTemplates is <b>fully compatible</b> with Thunderbird 142. 
-      In rare cases there may be problems when updating from older versions of Thunderbird.<br>
-      If you get a message that says otherwise after updating from earlier versions (T128 or Tb141) or 
-      <b>if SmartTemplates cannot be enabled</b> using 
-      the blue slider, then simply remove it and reinstall it via "Find more Add-ons" on the Extensions tab of Add-ons Manager:
+      The project is trying to adapt to the new fast paced 2-weeks release cycle which may mean 
+      quick fixes need to  be reviewed more frequently. Should you need a version that is 
+      currently stuck awaiting review, we usually release a tagged release directly on our GitHub repository:
+      <a href="https://github.com/RealRaven2000/SmartTemplates/releases/">SmartTemplates Releases on Github</a>.
     </p>
     <p>
-      Some users may have seen a false incompatibility warning after updating 
-      from Thunderbird to v142. This was caused by cached compatibility information 
-      in Thunderbird, which sometimes fails to refresh correctly. The previous 
-      version of SmartTemplates was already fully compatible with 142. 
+      We successfully moved SmartTemplates to use extension storage for its settings and account templates,
+      which is another step towards full mail extension compatibility and away from being a legacy "experimental"
+      add-on. 
     </p>
     <p>
-      To get this fixed I raised a bug with Thunderbird: 
-      <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>.
+      This also means that SmartTemplates settings can now be reset by removing the Add-on.
+      I am planning an additional tool to backup the complete settings in one convenient 
+      file for security and portability.
     </p>
-
-    <div class="reinstallInstructions">
-      <p>First try if you can enable SmartTemplates using the slider: <br>
-        <img class="screenshot" src="img/enable-st.png" alt="enable SmartTemplates" /> 
-      </p>
-      <p> 
-        If this doesn't work, then removing the Add-on via Thunderbird the Add-ons Manager will still retain your settings:<br>
-        <img class="screenshot" src="img/remove-st.png" alt="remove to reinstall" /> 
-      </p>
-      <p>
-        In the Search box, enter the term <i>SmartTemplates</i>, and press the Enter key:<br>
-        <img class="screenshot" src="img/search-st-addon.png" alt="force reinstallation via Addon Manager" /> 
-      </p>
-      <p>
-        Then click on the <i>Add to Thunderbird</i> button:<br>
-        <img class="screenshot" src="img/install-from-atn.png" alt="Add to Thunderbird" />
-      </p>
-    </div>
-    <div class="expandInstructions">Click to read instructions for reinstalling:</div> <br>
   </div>  
 
   <h3>Prereleases &amp; Prototypes (no warantees!)</h3>
@@ -251,7 +231,7 @@ permalink: version.html
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
 
-<a id="4.20"> &nbsp; </a><a id="4.20.1"> &nbsp; </a>
+<a id="4.20"> &nbsp; </a><a id="4.20.1"> &nbsp; </a><a id="4.20.2"> &nbsp; </a>
 <li>
   <h4>
 		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.20.1">
@@ -262,6 +242,28 @@ permalink: version.html
 		</span>
   </h4>
   <ul>
+
+    <h5 class="inList"><span class="inListTitle">Maintenance Release 4.20.2 - Work in Progress</span></h5>
+    <li>
+      Fixed address headers showing <code>??</code> in reply and forward quote headers. 
+      Missing or null preference defaults are repaired without resetting valid settings, 
+      and the original address header is preserved when both requested and default formatting are empty. 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/427">[issue 427]</a>
+    </li>
+    <li>
+      Fixed the Debug mode toggle after the settings storage migration and recovered its 
+      previously saved state. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/422">[issue 422]</a>
+    </li>
+    <li>
+      Removed storage-context console logging that could cause a long freeze when opening 
+      a new message, reply or forward. 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/425">[issue 425]</a>
+    </li>
+    <li>
+      Improved account template imports by saving settings in sequence and synchronizing account 
+      preference changes with existing windows.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/429">[issue 429]</a>
+    </li>
 
     <h5 class="inList"><span class="inListTitle">Maintenance Release 4.20.1 - 31/08/2026</span></h5>
     <li>
