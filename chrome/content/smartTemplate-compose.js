@@ -1173,6 +1173,9 @@ SmartTemplate4.classSmartTemplate = function() {
     };
 
     const cleanPlainTextNewLines = (myHtml) => {
+      if (!myHtml) {
+        return "";
+      }
       let lc = myHtml.toLocaleLowerCase();
       if (lc.includes("<br") || lc.includes("<p")) {
         return myHtml.replace(/(\r\n)+|\r+|\n+|^[ \t]+/gm, "");
