@@ -3,6 +3,7 @@
 /* globals
   pref 
   */
+pref("extensions.smartTemplate4.debug.storage.performance", false);
 pref("extensions.smartTemplate4.sandbox", false); // disable sandboxed java
 pref("extensions.smartTemplate4.firstRun", true);
 pref("extensions.smartTemplate4.deferred.autoUpdate", true);

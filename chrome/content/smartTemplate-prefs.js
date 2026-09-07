@@ -199,6 +199,7 @@ SmartTemplate4.Preferences.cache = (() => {
     },
 
     init: async () => {
+      const started = Date.now();
       // create an async blocker.
       cache.awaitReady = new Promise((resolve) => {
         // blocks all external callers until we're done here
@@ -234,6 +235,7 @@ SmartTemplate4.Preferences.cache = (() => {
         console.error("Cache init failed:", ex);
       }
       cache._resolveReady();
+      SmartTemplate4.Storage.logPerformance("preference cache init", started);
     },
 
     updateFromBackend: (data) => {

@@ -40,11 +40,17 @@ SmartTemplate4.Storage = new (class LocalStorage {
       // something goes wrong - then we debug!
       this._debugCache = true;
     }
-    console.log("SmartTemplates Storage context:", this._context);
+    this._debugPerformance = Services.prefs.getBoolPref(
+      "extensions.smartTemplate4.debug.storage.performance",
+      false
+    );
+    // Do not pass the context object to the console. DevTools may synchronously
+    // inspect its large/cyclic extension graph; this blocked compose startup for
+    // more than 50 seconds in #425.
   }
 
   getTimestamp() {
-    return (Date.now() / 100).toFixed(1) + "s";
+    return new Date().toISOString();
   }
 
   logDebug(...args) {
@@ -52,6 +58,18 @@ SmartTemplate4.Storage = new (class LocalStorage {
       return;
     }
     console.log(`[SmartTemplates Storage] [${this.getTimestamp()}]`, ...args);
+  }
+
+  // Performance logging must only receive labels and timestamps. Never pass
+  // privileged Thunderbird objects here; logging WL.context caused #425.
+  logPerformance(operation, started, detail = "") {
+    if (!this._debugPerformance) {
+      return;
+    }
+    const elapsed = Date.now() - started;
+    console.log(
+      `[SmartTemplates Storage Performance] ${operation}: ${elapsed}ms${detail ? ` (${detail})` : ""}`
+    );
   }
 
   async _init() {
@@ -68,6 +86,7 @@ SmartTemplate4.Storage = new (class LocalStorage {
 
     for (let attempt = 0; attempt < maxRetries; attempt++) {
       try {
+        const started = Date.now();
         this._storage = this._context.apiCan.findAPIPath("storage");
         this._call =
           (method) =>
@@ -76,6 +95,7 @@ SmartTemplate4.Storage = new (class LocalStorage {
 
         // Test that storage is actually accessible with a minimal call
         await this._call("get")("dummy"); // becomes await browser.storage.local.get("dummy");
+        this.logPerformance("init", started, `attempt ${attempt + 1}`);
         this.logDebug(`_init() SUCCESS after ${attempt + 1} attempt(s)`);
         return;
       } catch (ex) {
@@ -109,10 +129,12 @@ SmartTemplate4.Storage = new (class LocalStorage {
   }
 
   async get(keys = null) {
+    const started = Date.now();
     this.logDebug("get() START - keys:", keys);
     try {
       await this._init();
       const rv = await this._call("get")(keys);
+      this.logPerformance("get", started);
       this.logDebug("get() SUCCESS - returned keys:", Object.keys(rv));
       return rv;
     } catch (ex) {
@@ -126,6 +148,7 @@ SmartTemplate4.Storage = new (class LocalStorage {
     const delays = [250, 1000, 5000, 8000];
     for (let attempt = 0; ; attempt++) {
       let timeoutId;
+      const started = Date.now();
       try {
         return await Promise.race([
           this.get(keys),
@@ -137,23 +160,32 @@ SmartTemplate4.Storage = new (class LocalStorage {
           }),
         ]);
       } catch (ex) {
+        this.logDebug(
+          `getWithRetry() attempt ${attempt + 1} FAILED after ${Date.now() - started}ms:`,
+          ex.name, ex.message
+        );
         if (attempt >= delays.length) {
+          this.logDebug("getWithRetry() retries exhausted");
           throw ex;
         }
         this._storage = null;
         this._call = null;
+        this.logDebug(`getWithRetry() retry wait START: ${delays[attempt]}ms`);
         await new Promise((resolve) => setTimeout(resolve, delays[attempt]));
       } finally {
         clearTimeout(timeoutId);
+        this.logPerformance("getWithRetry", started, `attempt ${attempt + 1}`);
       }
     }
   }
 
   async set(items) {
+    const started = Date.now();
     this.logDebug("set() START - keys:", Object.keys(items));
     try {
       await this._init();
       const result = await this._call("set")(items);
+      this.logPerformance("set", started);
       this.logDebug("set() SUCCESS");
       return result;
     } catch (ex) {
@@ -164,13 +196,22 @@ SmartTemplate4.Storage = new (class LocalStorage {
   }
 
   async remove(keys) {
-    await this._init();
-    return this._call("remove")(keys);
+    const started = Date.now();
+    try {
+      await this._init();
+      return await this._call("remove")(keys);
+    } finally {
+      this.logPerformance("remove", started);
+    }
   }
 
   async clear() {
-    await this._init();
-    return this._call("clear")();
+    const started = Date.now();
+    try {
+      await this._init();
+      return await this._call("clear")();
+    } finally {
+      this.logPerformance("clear", started);
+    }
   }
 })("smarttemplate4@thunderbird.extension");
-
