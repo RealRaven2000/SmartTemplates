@@ -1,9 +1,23 @@
-/* Global Settings, stroed in legacy pref. needs migration to local storage. */
-
 /* globals
   pref 
   */
+
+/*
+ * Storage bootstrap diagnostics
+ *
+ * Keep these as legacy preferences. The storage wrapper must read them
+ * synchronously before WebExtension storage and the in-memory preference cache
+ * are available.
+ */
+pref("extensions.smartTemplate4.debug.storage.cache", false);
 pref("extensions.smartTemplate4.debug.storage.performance", false);
+
+/*
+ * Deprecated legacy defaults
+ *
+ * The settings below have moved to WebExtension storage. This section remains
+ * as migration documentation and can be removed when legacy migration support
+ * is retired.
 pref("extensions.smartTemplate4.sandbox", false); // disable sandboxed java
 pref("extensions.smartTemplate4.firstRun", true);
 pref("extensions.smartTemplate4.deferred.autoUpdate", true);
@@ -13,7 +27,7 @@ pref("extensions.smartTemplate4.breaksAtTop", 0);
 pref("extensions.smartTemplate4.forceParagraph", true);
 pref("extensions.smartTemplate4.showStatusIcon", true);
 pref("extensions.smartTemplate4.statusIconLabelMode", 2); // 0 - no label; 1 - autohide; 2 - always show 
-pref("extensions.smartTemplate4.font.size", 9); /* 8pt .templateBox font size */
+pref("extensions.smartTemplate4.font.size", 9); // 8pt .templateBox font size 
 pref("extensions.smartTemplate4.parseSignature", false);
 pref("extensions.smartTemplate4.firstLastSwap", true);
 pref("extensions.smartTemplate4.firstLastSwap.name", false); // also apply to (name) placeholder
@@ -73,20 +87,20 @@ pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-dig
 pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort
 pref("extensions.smartTemplate4.dateformat.year", "numeric"); // change to "2-digit" for forcing 2digit dateshort only
 pref("extensions.smartTemplate4.allowScripts", false); // prohibit running Javascript unless users know what they are doing and set this to true
-/* this is a convenience function - if I change from after or during composing, delete signature */
+// this is a convenience function - if I change from after or during composing, delete signature
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
-/* header replacement rules */
+// header replacement rules
 pref("extensions.smartTemplate4.headers.unescape.quotes", true);
 pref("extensions.smartTemplate4.expandSettings", false);
 
 pref("extensions.smartTemplate4.BackgroundParser", false); // [issue 184] new background processing - TEST ONLY for now
 
-pref("extensions.smartTemplate4.changeTemplate.button.install", true); /* add change template button automatically when installing for first time */
-pref("extensions.smartTemplate4.insertSnippet.button.install", true); /* add insert snippets button automatically when installing for first time */
+pref("extensions.smartTemplate4.changeTemplate.button.install", true); // add change template button automatically when installing for first time 
+pref("extensions.smartTemplate4.insertSnippet.button.install", true); // add insert snippets button automatically when installing for first time 
 pref("extensions.smartTemplate4.lastUpdateMessage", "0");
 pref("extensions.smartTemplate4.spellcheckDelay", 2500); // when opening composer, delay swtiching %spellcheck%
 
-/* debug settings */
+// debug settings
 pref("extensions.smartTemplate4.debug", false);
 pref("extensions.smartTemplate4.debug.default", true); // to disable standard log messages 
 pref("extensions.smartTemplate4.debug.events", false);
@@ -139,11 +153,6 @@ pref("extensions.smartTemplate4.debug.ui.mainbutton", false);
 pref("extensions.smartTemplate4.debug.variables.search", false);
 pref("extensions.smartTemplate4.debug.saleDate", ""); // test sales
 
-// MINIMAL flag for testing prefs:
-pref("extensions.smartTemplate4.debug.storage.cache", false); // debug the new storage migration and populating the cache
-
-
-
 // SmartTemplate License specific:
 pref("extensions.smartTemplate4.license.gracePeriodDate","");
 pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
@@ -151,3 +160,8 @@ pref("extensions.smartTemplate4.licenseType", 0); // private license, 1-domain
 pref("extensions.smartTemplate4.LicenseKey", "");
 pref("extensions.smartTemplate4.silentUpdate", true); // can be changed by everyone from now.
 pref("extensions.smartTemplate4.news.minimal", true); // remove label from button when hasNews is flagged
+
+ *
+ *
+ *
+ */
