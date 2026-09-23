@@ -1269,3 +1269,7 @@ button.toolTipButton:hover .tooltip {
 	white-space: nowrap;
 }
 
+#templateEditorPath {
+  flex: 1;
+  min-width: 0;
+}

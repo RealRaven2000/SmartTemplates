@@ -1118,7 +1118,7 @@
     "message": "Ange en e-postadress"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "Kunde inte hitta redigeraren på sökvägen: $filePath$",
+    "message": "Jag kunde inte hitta redigeraren här: $filePath$ — vill du ange sökvägen till den externa HTML-redigeraren nu?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1127,7 +1127,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Vänligen välj en extern redigerare för att redigera dina HTML-mallar. Jag rekommenderar att använda en ren text HTML-redigerare med syntaxmarkering, som notepad++ eller Visual Studio Code."
+    "message": "Konfigurera en extern redigerare för att redigera dina HTML- och CSS-mallar. Jag rekommenderar en HTML-redigerare för ren text med syntaxmarkering, till exempel Notepad++ eller Visual Studio Code."
   },
   "prompt.text": {
     "message": "Ange texten att lägg till eller ändra"
@@ -1847,6 +1847,9 @@
   },
   "templateBox.tip": {
     "message": "Du kan förbättra mallen med variabler. Öppna sidan Variabler för mer information."
+  },
+  "templateEditor.path": {
+    "message": "Sökväg till HTML-redigeraren för externa mallar."
   },
   "testDriveS": {
     "message": "Du kan provköra premiumfunktionerna med standardlicensen, men de kan vara något begränsade."

@@ -315,5 +315,20 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "prompt.fileTemplates.editor.pathError": {
+    "message": "Không tìm thấy trình soạn thảo tại đây: $filePath$ — bạn có muốn đặt đường dẫn đến trình soạn thảo HTML bên ngoài ngay bây giờ không?",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
+      }
+    }
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Thiết lập trình soạn thảo bên ngoài để chỉnh sửa các mẫu HTML và CSS của bạn. Tôi khuyên dùng trình soạn thảo HTML dạng văn bản thuần túy có tô sáng cú pháp, như Notepad++ hoặc Visual Studio Code."
+  },
+  "templateEditor.path": {
+    "message": "Đường dẫn đến trình soạn thảo HTML cho các mẫu bên ngoài."
   }
 }

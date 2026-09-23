@@ -1112,7 +1112,7 @@
     "message": "Syötä sähköpostiosoite"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "Editoria ei löytynyt polusta: $filePath$",
+    "message": "Editoria ei löytynyt tästä sijainnista: $filePath$ — haluatko määrittää ulkoisen HTML-editorin polun nyt?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1121,7 +1121,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Valitse ulkoinen editori muokataksesi HTML-malliasi. Suosittelen käyttämään vain tekstiä tukevaa HTML-editoria, kuten notepad++ tai Visual Studio Code."
+    "message": "Määritä ulkoinen editori HTML- ja CSS-mallien muokkaamiseen. Suosittelen syntaksin korostusta tukevaa pelkkään tekstiin perustuvaa HTML-editoria, kuten Notepad++ tai Visual Studio Code."
   },
   "prompt.text": {
     "message": "Syötä teksti lisättäväksi tai asettavaksi"
@@ -1835,6 +1835,9 @@
   },
   "templateBox.tip": {
     "message": "Voit parantaa mallia muuttujilla. Avaa Muuttujat-sivu saadaksesi lisätietoja."
+  },
+  "templateEditor.path": {
+    "message": "Ulkoisten mallien HTML-editorin polku."
   },
   "testDriveS": {
     "message": "Voit testata premium-ominaisuuksia tavallisella lisenssillä, mutta ne voivat olla hieman rajoitettuja."

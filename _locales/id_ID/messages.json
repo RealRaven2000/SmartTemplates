@@ -858,7 +858,7 @@
     "message": "Masukkan alamat email"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "Tidak dapat menemukan Editor di jalur: $filePath$",
+    "message": "Editor tidak ditemukan di sini: $filePath$ — apakah Anda ingin mengatur jalur editor HTML eksternal sekarang?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -867,7 +867,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Silakan pilih editor eksternal untuk mengedit template HTML Anda. Saya sarankan menggunakan editor HTML hanya teks dengan penyorotan sintaksis, seperti notepad++ atau Visual Studio Code."
+    "message": "Siapkan editor eksternal untuk mengedit templat HTML dan CSS Anda. Saya menyarankan editor HTML berbasis teks biasa dengan penyorotan sintaks, seperti Notepad++ atau Visual Studio Code."
   },
   "prompt.text": {
     "message": "Masukkan teks untuk ditambahkan atau disetel"
@@ -1416,5 +1416,8 @@
   },
   "yes_button": {
     "message": "Ya"
+  },
+  "templateEditor.path": {
+    "message": "Jalur editor HTML untuk templat eksternal."
   }
 }

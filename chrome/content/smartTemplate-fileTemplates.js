@@ -172,7 +172,11 @@ SmartTemplate4.fileTemplates = {
       });
 
       if (result === "ok") {
-        SmartTemplate4.Util.showAboutConfig(null, "smartTemplate4.fileTemplates.editor.path");
+        await SmartTemplate4.Util.notifyTools.notifyBackground({
+          func: "openPrefs",
+          page: "advanced",
+          highlight: "templateEditorPath",
+        });
       }
       return;
     }

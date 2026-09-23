@@ -1112,7 +1112,7 @@
     "message": "Introduïu una adreça de correu electrònic"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "No s'ha pogut trobar l'editor a la ruta: $filePath$",
+    "message": "No he trobat l'editor aquí: $filePath$ — voleu configurar ara el camí de l'editor HTML extern?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1121,7 +1121,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Si us plau, selecciona un editor extern per editar les teves plantilles HTML. Et recomano utilitzar un editor HTML només de text amb ressaltat de sintaxi, com ara el notepad++ o el Visual Studio Code."
+    "message": "Configureu un editor extern per editar les plantilles HTML i CSS. Recomano utilitzar un editor HTML de text pla amb ressaltat de sintaxi, com ara Notepad++ o Visual Studio Code."
   },
   "prompt.text": {
     "message": "Introduïu el text per afegir o definir"
@@ -1829,6 +1829,9 @@
   },
   "templateBox.tip": {
     "message": "Pots millorar el template amb variables. Obre la pàgina de Variables per a més informació."
+  },
+  "templateEditor.path": {
+    "message": "Camí de l'editor HTML per a plantilles externes."
   },
   "testDriveS": {
     "message": "Podeu provar les funcions premium amb la llicència estàndard, però pot ser que estiguin lleugerament restringides."

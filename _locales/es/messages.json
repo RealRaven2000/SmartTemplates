@@ -1088,7 +1088,7 @@
     "message": "Introduzca una dirección de correo"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "No se pudo encontrar el editor en la ruta: $filePath$",
+    "message": "No se ha encontrado el editor aquí: $filePath$ — ¿desea establecer ahora la ruta del editor HTML externo?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1097,7 +1097,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Por favor, selecciona un editor externo para editar tus plantillas HTML. Recomiendo usar un editor de HTML solo de texto con resaltado de sintaxis, como notepad++ o Visual Studio Code."
+    "message": "Configure un editor externo para editar sus plantillas HTML y CSS. Recomiendo utilizar un editor HTML de texto plano con resaltado de sintaxis, como Notepad++ o Visual Studio Code."
   },
   "prompt.text": {
     "message": "Introduzca el texto a añadir o cambiar"
@@ -1802,6 +1802,9 @@
   },
   "templateBox.tip": {
     "message": "Puedes mejorar el template con variables. Abre la página de Variables para más información."
+  },
+  "templateEditor.path": {
+    "message": "Ruta del editor HTML para plantillas externas."
   },
   "testDriveS": {
     "message": "Puede probar las funciones premium con la licencia estándar, pero pueden estar ligeramente restringidas."

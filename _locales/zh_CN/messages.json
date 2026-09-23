@@ -1105,7 +1105,7 @@
     "message": "请输入一个电子邮件地址"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "找不到路径上的编辑器：$filePath$",
+    "message": "无法在此处找到编辑器：$filePath$ — 是否立即设置外部 HTML 编辑器的路径？",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1114,7 +1114,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "请选择外部编辑器以编辑您的 HTML 模板。我建议使用纯文本 HTML 编辑器，带有语法高亮，如 notepad++ 或 Visual Studio Code。"
+    "message": "设置外部编辑器以编辑 HTML 和 CSS 模板。建议使用支持语法高亮的纯文本 HTML 编辑器，例如 Notepad++ 或 Visual Studio Code。"
   },
   "prompt.text": {
     "message": "请输入要添加或设置的文本"
@@ -1816,6 +1816,9 @@
   },
   "templateBox.tip": {
     "message": "您可以通过变量增强模板。打开变量页面以获取更多信息。"
+  },
+  "templateEditor.path": {
+    "message": "用于外部模板的 HTML 编辑器路径。"
   },
   "testDriveS": {
     "message": "您可以使用标准许可证测试高级功能，但可能会受到轻微限制。"

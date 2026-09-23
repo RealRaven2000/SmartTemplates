@@ -3086,6 +3086,9 @@ async function onLoad() {
 
 	let selectedElement = null; // a11y
 	switch(mode) {
+		case "advanced":
+			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catSettingsAdvanced");
+			break;
 		case "fileTemplates":
 			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catFileTemplates");
 			break;
@@ -3109,6 +3112,11 @@ async function onLoad() {
 	selectComposeType();
 	
 	SettingsUI.initVersionPanel();
+	const highlightedElement = document.getElementById(params.get("highlight"));
+	if (highlightedElement) {
+		highlightedElement.classList.add("highlighted");
+		selectedElement = highlightedElement;
+	}
 	if (selectedElement) {
 		// set focus to the document pane?
 		setTimeout(() => { selectedElement.focus(); }, 250);

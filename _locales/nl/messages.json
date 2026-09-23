@@ -1091,7 +1091,7 @@
     "message": "Voer een e-mailadres in"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "Editor niet gevonden op het pad: $filePath$",
+    "message": "Ik kon de editor hier niet vinden: $filePath$ — wilt u nu een pad voor de externe HTML-editor instellen?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1100,7 +1100,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Selecteer een externe editor om uw HTML-templates te bewerken. Ik raad aan om een teksteditor voor HTML met alleen tekst en syntaxiskleuring te gebruiken, zoals notepad++ of Visual Studio Code."
+    "message": "Stel een externe editor in om uw HTML- en CSS-sjablonen te bewerken. Ik raad een HTML-editor voor platte tekst met syntaxisaccentuering aan, zoals Notepad++ of Visual Studio Code."
   },
   "prompt.text": {
     "message": "Voer de toe te voegen of in te stellen tekst in"
@@ -1802,6 +1802,9 @@
   },
   "templateBox.tip": {
     "message": "Je kunt de template verbeteren met variabelen. Open de pagina Variabelen voor meer informatie."
+  },
+  "templateEditor.path": {
+    "message": "Pad naar de HTML-editor voor externe sjablonen."
   },
   "testDriveS": {
     "message": "U kunt de premiumfuncties met een standaardlicentie uitproberen, maar ze zijn mogelijk enigszins beperkt."

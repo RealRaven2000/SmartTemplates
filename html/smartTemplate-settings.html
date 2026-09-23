@@ -418,7 +418,7 @@
                    clickyTooltip="__MSG_resolveABRemoveMail.tip__"></button>
                 </label>
                 <label><input type="checkbox" id="chkResolveABCardBook" class="premiumFeature"
-                  data-pref-name="mime.resolveAB.CardBook">__MSG_resolveNamesFromCardBook__</label>
+                data-pref-name="mime.resolveAB.CardBook">__MSG_resolveNamesFromCardBook__</label>
                 <label style="margin-left: 2em"><input type="checkbox" id="chkCardBookFallback" class="premiumFeature"
                   data-pref-name="mime.resolveAB.CardBook.fallback">__MSG_resolveNamesFromCardBook.fallback__</label>
                 <label style="margin-left: 2em"><input type="checkbox" id="chkCardBookLowerCase" class="premiumFeature"
@@ -435,6 +435,11 @@
               data-pref-name="mail.suppressLink">__MSG_suppressMailToLink__</label>
             <label><input type="checkbox" class="premiumFeature"
               data-pref-name="header.inject">__MSG_header.inject__</label>
+            <div class="hbox labeledBox">
+              <label>__MSG_templateEditor.path__</label>
+              <input id="templateEditorPath" type="text" size="50" data-pref-name="fileTemplates.editor.path">
+              <button class="toolTipButton" clickyTooltip="__MSG_prompt.fileTemplates.editor.setup__"></button>
+            </div>
             <span class="hasConfigEvent hbox">
               <label id="styleSanitation" data-pref-name="sanitizeStyles" class="passivePref">__MSG_styleSanitizeSettings__</label>
               <button class="configSettings category-icon" aria-label="__MSG_aria.configSettings__"></button>

@@ -1363,6 +1363,9 @@ async function main() {
     if (data.topic) {
       searchParams.append("topic", data.topic);
     }
+    if (data.highlight) {
+      searchParams.append("highlight", data.highlight);
+    }
     if (data.composeType) {
       searchParams.append("composeType", data.composeType);
     }

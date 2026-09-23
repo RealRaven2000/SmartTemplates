@@ -1097,7 +1097,7 @@
     "message": "Wprowadź adres wiadomości"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "Nie można znaleźć Edytora na ścieżce: $filePath$",
+    "message": "Nie znaleziono edytora w tej lokalizacji: $filePath$ — czy chcesz teraz ustawić ścieżkę do zewnętrznego edytora HTML?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1106,7 +1106,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Wybierz zewnętrzny edytor do edycji szablonów HTML. Zalecam użycie edytora HTML zwykłego tekstu z podświetlaniem składni, takiego jak notepad++ lub Visual Studio Code."
+    "message": "Skonfiguruj zewnętrzny edytor do edycji szablonów HTML i CSS. Zalecam używanie edytora HTML pracującego na zwykłym tekście i obsługującego podświetlanie składni, takiego jak Notepad++ lub Visual Studio Code."
   },
   "prompt.text": {
     "message": "Wprowadź tekst, aby dodać lub ustawić"
@@ -1811,6 +1811,9 @@
   },
   "templateBox.tip": {
     "message": "Możesz ulepszyć szablon za pomocą zmiennych. Otwórz stronę Zmienne, aby uzyskać więcej informacji."
+  },
+  "templateEditor.path": {
+    "message": "Ścieżka do edytora HTML dla szablonów zewnętrznych."
   },
   "testDriveS": {
     "message": "Możesz przetestować funkcje premium za pomocą standardowej licencji, ale mogą one być nieco ograniczone."

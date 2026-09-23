@@ -1082,7 +1082,7 @@
     "message": "メールアドレスを入力してください"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "パスにエディターが見つかりませんでした: $filePath$",
+    "message": "ここにエディターが見つかりませんでした: $filePath$ — 外部 HTML エディターのパスを今すぐ設定しますか？",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1091,7 +1091,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "外部エディターを選択して HTML テンプレートを編集してください。notepad++ や Visual Studio Code のような、シンタックスハイライト機能を備えた純粋なテキストの HTML エディターの使用をお勧めします。"
+    "message": "HTML および CSS テンプレートを編集するための外部エディターを設定します。Notepad++ や Visual Studio Code など、構文の強調表示に対応したプレーンテキストの HTML エディターをお勧めします。"
   },
   "prompt.text": {
     "message": "置換/追記するテキストを入力してください"
@@ -1793,6 +1793,9 @@
   },
   "templateBox.tip": {
     "message": "テンプレートを変数で強化できます。詳細は「変数」ページを開いてください。"
+  },
+  "templateEditor.path": {
+    "message": "外部テンプレート用の HTML エディターのパス。"
   },
   "testDriveS": {
     "message": "Standard ライセンスでは、プレミアム機能を試しに使うことができますが、一部の機能が制限されています。"

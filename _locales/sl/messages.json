@@ -1112,7 +1112,7 @@
     "message": "Vnesite e-poštni naslov"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "Urednika ni mogoče najti na poti: $filePath$",
+    "message": "Urejevalnika ni bilo mogoče najti tukaj: $filePath$ — želite zdaj nastaviti pot do zunanjega urejevalnika HTML?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1121,7 +1121,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Izberite zunanji urejevalnik za urejanje vaših HTML predlog. Priporočam uporabo urejevalnika HTML samo besedila s poudarjanjem sintakse, kot je notepad++ ali Visual Studio Code."
+    "message": "Nastavite zunanji urejevalnik za urejanje predlog HTML in CSS. Priporočam urejevalnik HTML za navadno besedilo z označevanjem skladnje, kot sta Notepad++ ali Visual Studio Code."
   },
   "prompt.text": {
     "message": "Vnesite besedilo za dodajanje ali nastavitev"
@@ -1832,6 +1832,9 @@
   },
   "templateBox.tip": {
     "message": "Sablon lahko izboljšate z uporabo spremenljivk. Odprite stran Spremenljivke za več informacij."
+  },
+  "templateEditor.path": {
+    "message": "Pot do urejevalnika HTML za zunanje predloge."
   },
   "testDriveS": {
     "message": "Preskusno vožnjo lahko opravite s standardno licenco, vendar so lahko rahlo omejeni."

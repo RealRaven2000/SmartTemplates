@@ -1109,7 +1109,7 @@
     "message": "輸入電子郵件地址"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "找不到路徑上的編輯器：$filePath$",
+    "message": "無法在此處找到編輯器：$filePath$ — 是否立即設定外部 HTML 編輯器的路徑？",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1118,7 +1118,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "請選擇外部編輯器以編輯您的 HTML 範本。我建議使用僅支援純文字 HTML 的編輯器，具有語法突顯功能，如 notepad++ 或 Visual Studio Code。"
+    "message": "設定外部編輯器以編輯 HTML 和 CSS 範本。建議使用支援語法醒目提示的純文字 HTML 編輯器，例如 Notepad++ 或 Visual Studio Code。"
   },
   "prompt.text": {
     "message": "輸入要添加或設置的文本"
@@ -1817,6 +1817,9 @@
   },
   "templateBox.tip": {
     "message": "您可以透過變數來增強模板。請打開變數頁面以獲取更多資訊。"
+  },
+  "templateEditor.path": {
+    "message": "用於外部範本的 HTML 編輯器路徑。"
   },
   "testDriveS": {
     "message": "您可以使用標准許可證測試高級功能，但可能會受到輕微限制。"

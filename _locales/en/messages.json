@@ -1132,7 +1132,7 @@
     "message": "Enter an email address"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "Couldn't find Editor at path: $filePath$",
+    "message": "I couldn't find Editor here: $filePath$ - do you want to set a path for the external HTML editor now?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1141,7 +1141,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Please select an external editor to edit your html templates. I recommend using a text only HTML editor with syntax highlighting, such as notepad++ or Visual Studio Code."
+    "message": "Set up an external editor to edit your html and css templates. I recommend using a text only HTML editor with syntax highlighting, such as notepad++ or Visual Studio Code."
   },
   "prompt.text": {
     "message": "Enter the text to add or set"
@@ -1867,6 +1867,9 @@
   "templateBox.tip": {
     "message": "You can enhance the template with variables. Open the Variables page for more information."
   },
+  "templateEditor.path": {
+    "message": "Path to HTML editor for external Templates."
+  },
   "testDriveS": {
     "message": "You can test drive the premium features with the standard license, but they may be slightly restricted."
   },
@@ -2004,7 +2007,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{h3}4.20.2 Maintenance Release{/h3}{L} {+extensionName} is now compatible with Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Improved account template imports and synchronization of changed settings. [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Fixed address headers showing {{??}} in reply and forward quote headers, and repaired missing preference defaults without resetting valid settings [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Fixed the Debug mode toggle after the settings storage migration [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Removed logging that could cause a long freeze when opening a new message, reply or forward [issue 425].{/L}{h3}Main Changes in 4.20{/h3}{L} Moved settings from Thunderbird’s global configuration database ({{about:config}}) to extension storage ({{storage.local}}) [issue 422]. {br}{i}Note:{/i} Uninstalling {+extensionName} now resets its settings to their defaults.{/L}{L} Updated script loading to support Thunderbird 155 and later [issue 421].{/L}"
+    "message": "{h3} Maintenance Release 4.20.2{/h3}{L} {+extensionName} is now compatible with Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Improved account template imports and synchronization of changed settings. [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Fixed address headers showing {{??}} in reply and forward quote headers, and repaired missing preference defaults without resetting valid settings [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Fixed the Debug mode toggle after the settings storage migration [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Removed logging that could cause a long freeze when opening a new message, reply or forward [issue 425].{/L}{h3}Main Changes in 4.20{/h3}{L} Moved settings from Thunderbird’s global configuration database ({{about:config}}) to extension storage ({{storage.local}}) [issue 422]. {br}{i}Note:{/i} Uninstalling {+extensionName} now resets its settings to their defaults.{/L}{L} Updated script loading to support Thunderbird 155 and later [issue 421].{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This particular fix was added since the previous release.",

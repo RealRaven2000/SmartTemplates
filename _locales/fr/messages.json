@@ -1100,7 +1100,7 @@
     "message": "Indiquer une adresse électronique"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "Impossible de trouver l'éditeur à l'emplacement suivant : $filePath$",
+    "message": "Je n’ai pas trouvé l’éditeur ici : $filePath$ — souhaitez-vous définir maintenant le chemin de l’éditeur HTML externe ?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1109,7 +1109,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Veuillez sélectionner un éditeur externe pour modifier vos modèles HTML. Je recommande d'utiliser un éditeur HTML uniquement texte avec coloration syntaxique, comme notepad++ ou Visual Studio Code."
+    "message": "Configurez un éditeur externe pour modifier vos modèles HTML et CSS. Je recommande un éditeur HTML en texte brut avec coloration syntaxique, comme Notepad++ ou Visual Studio Code."
   },
   "prompt.text": {
     "message": "Indiquer le texte à ajouter ou définir"
@@ -1820,6 +1820,9 @@
   },
   "templateBox.tip": {
     "message": "Vous pouvez améliorer le modèle avec des variables. Ouvrez la page Variables pour plus d'informations."
+  },
+  "templateEditor.path": {
+    "message": "Chemin de l’éditeur HTML pour les modèles externes."
   },
   "testDriveS": {
     "message": "Vous pouvez tester les fonctionnalités premium avec la licence standard, mais elles peuvent être légèrement limitées."

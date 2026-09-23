@@ -1090,7 +1090,7 @@
     "message": "Email-Adresse eingeben"
   },
   "prompt.fileTemplates.editor.pathError": {
-    "message": "Editor konnte unter dem Pfad nicht gefunden werden: $filePath$",
+    "message": "Ich konnte den Editor hier nicht finden: $filePath$ — möchten Sie jetzt einen Pfad für den externen HTML-Editor festlegen?",
     "placeholders": {
       "filePath": {
         "content": "$1",
@@ -1099,7 +1099,7 @@
     }
   },
   "prompt.fileTemplates.editor.setup": {
-    "message": "Bitte wählen Sie einen externen Editor aus, um Ihre HTML-Vorlagen zu bearbeiten. Ich empfehle die Verwendung eines reinen Text-HTML-Editors mit Syntaxhervorhebung, wie z.B. Notepad++ oder Visual Studio Code."
+    "message": "Richten Sie einen externen Editor zum Bearbeiten Ihrer HTML- und CSS-Vorlagen ein. Ich empfehle einen reinen Texteditor für HTML mit Syntaxhervorhebung, wie Notepad++ oder Visual Studio Code."
   },
   "prompt.text": {
     "message": "Text eingeben"
@@ -1804,6 +1804,9 @@
   },
   "templateBox.tip": {
     "message": "Sie können die Vorlage mit Variablen erweitern. Öffnen Sie die Variablen-Seite für weitere Informationen."
+  },
+  "templateEditor.path": {
+    "message": "Pfad zum HTML-Editor für externe Vorlagen."
   },
   "testDriveS": {
     "message": "Premium Funktionen können in der Standardlizenz getestet werden, in manchen Fällen mit eingeschränktem Funktionsumfang."
