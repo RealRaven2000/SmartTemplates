@@ -18,8 +18,13 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash {
   background-color: #0064a7 !important; /* blue */
   background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
   color: white;
-  
 }
+
+/* Tb 157 regression */
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash button:hover  {
+	background-color: #02409f !important; 
+}
+
 /* highlight news item but only if the button is highlighted as news (hasNews pref set) */
 .newsflash menuitem#smartTemplates-news {
 	border: 1px solid transparent !important;

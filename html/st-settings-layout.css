@@ -1,6 +1,12 @@
 :root {
   --iconStroke: darkgray;
   --category-menu-width-default: 18em;
+  --category-menu-width-narrow: 6em;
+  --category-menu-width-extra-narrow: 4em;
+  --category-menu-item-size: 48px;
+  --selected-item-color: var(--sidebar-highlight-background-color, AccentColor);
+  --toolbar-field-focus-border-color: var(--selected-item-color);
+  --focus-outline-color: var(--toolbar-field-focus-border-color);
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -8,7 +14,15 @@
   }
 }
 
-
+/* themeableDialog.css */
+html|input,
+html|textarea {
+  &:focus {
+    border-color: var(--selected-item-color) !important;
+    outline: 1px solid var(--selected-item-color) !important;
+    outline-style: solid !important;
+  }
+}
 
 /**** General Layout ****/
 
@@ -259,6 +273,13 @@ div.btnLicenseContainer #btnLicense {
 
 /*smaller menus (hidden labels) */
 @media (max-width: 830px) {
+  /* Preserve theme widths; fall back to our narrow sidebar and category sizes. */
+  #categories:not(moz-page-nav) {
+    inline-size: var(--categories-width, var(--category-menu-width-narrow));
+  }
+  #categories > .category {
+    inline-size: var(--size-item-xlarge, var(--category-menu-item-size));
+  }
   #categories > .category,
   #sidebarcategories > .category {
     margin-inline: 8px;
@@ -271,7 +292,7 @@ div.btnLicenseContainer #btnLicense {
     width: calc(100vw - 66px) !important;
   }
   #pref-category-box {
-    max-width: 6em;
+    max-width: var(--category-menu-width-narrow);
   }
   .category-name {
     display: none !important;
@@ -280,6 +301,9 @@ div.btnLicenseContainer #btnLicense {
 }
 
 @media (max-width: 600px) {
+  :root {
+    --category-menu-width-narrow: var(--category-menu-width-extra-narrow);
+  }
   #categories > .category,
   #sidebarcategories > .category {
     margin-inline: 0px !important;
@@ -297,7 +321,7 @@ div.btnLicenseContainer #btnLicense {
     width: calc(100vw - 50px) !important;
   }
   #pref-category-box {
-    max-width: 4em;
+    max-width: var(--category-menu-width-extra-narrow);
   }
   fieldset {
     margin-block: 0;
@@ -390,3 +414,9 @@ div.btnLicenseContainer #btnLicense {
   flex: 1 !important;
 }
 
+.prefpane input:where([type="email"], [type="tel"], [type="text"], [type="password"], [type="url"], [type="number"]),
+.prefpane textarea {
+  border-radius: 3px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}

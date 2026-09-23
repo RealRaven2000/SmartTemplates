@@ -1,6 +1,8 @@
 :root {
   --selection-highlight: var(--button-primary-background-color,var(--selected-item-color,var(--selectedbackground,rgb(30,60,120))));
   --selection-highlight-text: var(--button-primary-text-color,var(--selected-item-text-color,#FFF));  
+  --input-text-min-height: 26px;
+  --st-min-block-height: 26px;
 }
 
 /* horizontal alignment */
@@ -8,6 +10,10 @@
   /* border: 1px solid yellow; */
   display: flex;
   flex-direction: row;
+}
+
+.hbox.labeledBox, .hbox[align=center] {
+  align-items: center;
 }
 
 .hbox.opposite-align {
@@ -18,10 +24,28 @@ fieldset.multiCol {
   column-gap: 1.5em;
 }
 
+fieldset input:where([type="email"], [type="tel"], [type="text"], [type="password"], [type="url"], [type="number"]),
+fieldset textarea {
+  border-radius: 3px  !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 select {
   padding-top: 1px !important;
   padding-bottom: 1px !important;
   line-height: 1.6em !important;;
+}
+
+select:not([multiple]):not([size]),
+select[size="1"]:not([multiple]),
+.navigateable button,
+button.configSettings,
+button.category-icon {
+  min-block-size: var(--st-min-block-height) !important;
+  min-height: var(--st-min-block-height) !important;
+  padding-block: 0;
+  align-self: center;
 }
 
 #btnPasteLicense,
@@ -65,27 +89,18 @@ fieldset {
 }
 
 fieldset legend h2 {
+  font-size: 1em;
   margin: 0;
   padding-left: 0;
-}
-
-fieldset legend, fieldset legend h2 {
-  font-size: 1em;
 }
 
 fieldset legend {
   align-items: center;
   display: flex;  
-  margin-top: 0.3em;
-  font-size: 1em;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-
-
-html|legend {
-  margin-top: 0.5em;  
+  margin: 0.3em 0 4px;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding-inline: 4px;
 }
 
 *[collapsed=true] {
@@ -100,6 +115,7 @@ html|legend {
   justify-content: left;
   line-height: 1.4em;
   margin-block-end: 0.3em;
+  margin-inline-start: 4px;
 }
 
 #supportgrid .button label {
@@ -184,7 +200,10 @@ button.active::marker {
 
 input[type=number] {
   text-align: right;
-  min-height: 22px;
+  min-height: 24px;
+  border-radius: 2px;
+  padding-block: 0;
+  padding-inline-end: 0;
 }
 
 input[type=color], select {
@@ -209,4 +228,8 @@ input[type=color], select {
   background-position: center center;
 }
 
-
+input:is([type="email"], [type="tel"], [type="text"], [type="password"], [type="url"]) {
+  padding-block: initial;
+  min-block-size: var(--st-min-block-height) !important;
+  min-height: var(--st-min-block-height) !important;
+}

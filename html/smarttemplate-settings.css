@@ -338,7 +338,7 @@ button.bugsURL:focus {
 	margin-top: 5px;
 }
 .labeledBox {
-	margin-left: 0.5em;
+	/* margin-left: 0.5em; */
 }
 
 /* ##########################M MULTILINE TEXTBOXES ################################## */
@@ -433,7 +433,7 @@ h1 a.headerLink {
 /** left hand tabs **/
 .actionTabs button {
 	background-repeat: no-repeat;
-  background-position: left 0.4em bottom 2px;
+  background-position: 0.4em center;
   padding-inline-start: 24px;
 }
 
@@ -1256,7 +1256,9 @@ button.toolTipButton:hover .tooltip {
 .highlighted *, .highlighted {
   background-color: var(--focusbackcolor) !important;
   color: var(--focuscolor) !important;
+	outline-color: color-mix(in srgb, var(--focuscolor) 46%, transparent) !important;
 }
+
 #default_address_format.highlighted {	 
   border-style: solid !important;
 	border-color: color-mix(in srgb, var(--focuscolor) 70%, transparent) !important;
