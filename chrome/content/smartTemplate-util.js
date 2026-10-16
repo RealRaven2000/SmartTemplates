@@ -332,11 +332,8 @@ SmartTemplate4.Util = {
       case msgComposeType.Draft:
         {
           // composeCase = 'draft';
-          let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(
-            Ci.nsIMessenger
-          );
-          let msgDbHdr = messenger
-            .msgHdrFromURI(gMsgCompose.originalMsgURI)
+          let msgDbHdr = MailServices.messageServiceFromURI(gMsgCompose.originalMsgURI)
+            .messageURIToMsgHdr(gMsgCompose.originalMsgURI)
             .QueryInterface(Ci.nsIMsgDBHdr);
           const nsMsgKey_None = 0xffffffff;
           if (msgDbHdr) {

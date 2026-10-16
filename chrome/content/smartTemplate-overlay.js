@@ -353,11 +353,11 @@ SmartTemplate4.getHeadersAsync = async function() {
   // gComposeType = params.type;
   let mimeMsg;
   if (!isNewMail) {
-    const Cc = Components.classes,
-      Ci = Components.interfaces;
+    const Ci = Components.interfaces;
 
-    let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
-    let msgHdr = messenger.msgHdrFromURI(params.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr);
+    let msgHdr = MailServices.messageServiceFromURI(params.originalMsgURI)
+
+      .messageURIToMsgHdr(params.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr);
     
     // get message body.
     mimeMsg = await getMimeMessage(msgHdr);
@@ -1433,8 +1433,8 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
               );
               extractSource = gMsgCompose.compFields.subject;
             } else {
-              let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-                charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
+              let charset = MailServices.messageServiceFromURI(gMsgCompose.originalMsgURI)
+                .messageURIToMsgHdr(gMsgCompose.originalMsgURI).Charset;
               extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("subject"), charset);
             }
             util.logDebugOptional(
@@ -2254,8 +2254,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 	util.logDebugOptional('regularize','SmartTemplate4.regularize(' + msg +')  STARTS...');
 	// var parent = SmartTemplate4;
 	let idkey = util.getIdentityKey(document),
-	    identity = MailServices.accounts.getIdentity(idkey),
-	    messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
+	    identity = MailServices.accounts.getIdentity(idkey);
 
 
   // THIS FAILS IF MAIL IS OPENED FROM EML FILE:
@@ -2281,7 +2280,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     try {
       msgDbHdr =
         composeType != "new" && gMsgCompose.originalMsgURI
-          ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI)
+          ? MailServices.messageServiceFromURI(gMsgCompose.originalMsgURI).messageURIToMsgHdr(gMsgCompose.originalMsgURI)
           : null;
       if (msgDbHdr) {
         charset = composeType != "new" ? msgDbHdr.Charset : null;
@@ -2295,7 +2294,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         charset = gMsgCompose.compFields.characterSet; //
       }
     } catch (ex) {
-      util.logException("messenger.msgHdrFromURI failed:", ex);
+      util.logException("messageURIToMsgHdr failed:", ex);
       // doesn't return a header but throws!
       charset = gMsgCompose.compFields.characterSet;
     }
@@ -2498,8 +2497,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                   return "";
                 }
                 util.addUsedPremiumFunction("matchTextFromSubject");
-                let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-                  charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
+                let charset = MailServices.messageServiceFromURI(gMsgCompose.originalMsgURI)
+                  .messageURIToMsgHdr(gMsgCompose.originalMsgURI).Charset;
                 extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("subject"), charset);
                 util.logDebugOptional(
                   "parseModifier",

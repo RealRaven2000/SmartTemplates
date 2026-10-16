@@ -1030,9 +1030,10 @@ SmartTemplate4.classSmartTemplate = function() {
       case msgComposeType.Draft:
         {
           this.composeCase = "draft";
-          let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-            msgDbHdr = gMsgCompose.originalMsgURI
-              ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr)
+          let msgDbHdr = gMsgCompose.originalMsgURI
+              ? MailServices.messageServiceFromURI(gMsgCompose.originalMsgURI)
+                  .messageURIToMsgHdr(gMsgCompose.originalMsgURI)
+                  .QueryInterface(Ci.nsIMsgDBHdr)
               : null;
           if (msgDbHdr) {
             const nsMsgKey_None = 0xffffffff;
@@ -1314,9 +1315,10 @@ SmartTemplate4.classSmartTemplate = function() {
         case msgComposeType.Draft:
           {
             composeCase = "draft";
-            let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-              msgDbHdr = gMsgCompose.originalMsgURI
-                ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr)
+            let msgDbHdr = gMsgCompose.originalMsgURI
+                ? MailServices.messageServiceFromURI(gMsgCompose.originalMsgURI)
+                    .messageURIToMsgHdr(gMsgCompose.originalMsgURI)
+                    .QueryInterface(Ci.nsIMsgDBHdr)
                 : null;
             if (msgDbHdr) {
               const nsMsgKey_None = 0xffffffff;
