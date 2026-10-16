@@ -1261,6 +1261,9 @@
   "sig2.label": {
     "message": "Underskrift (från TB hänsyn inställningar men utan '--')"
   },
+  "sig.none.label": {
+    "message": "Tar bort alla underskrifter. Åsidosätter kontoinställningarna."
+  },
   "silentUpdates": {
     "message": "Öppna inte fliken med versionshistorik"
   },

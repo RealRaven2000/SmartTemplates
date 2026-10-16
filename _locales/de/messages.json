@@ -1233,6 +1233,9 @@
   "sig2.label": {
     "message": "Signatur aus den Konten-Einstellungen aber ohne '--'"
   },
+  "sig.none.label": {
+    "message": "Entfernt sämtliche Signaturen. Überschreibt die Konten-Einstellungen."
+  },
   "silentUpdates": {
     "message": "Seite mit Versionsverlauf nicht anzeigen"
   },

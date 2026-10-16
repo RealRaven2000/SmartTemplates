@@ -1231,6 +1231,9 @@
   "sig2.label": {
     "message": "Firma de la Configuración de cuentas de TB pero sin '--'"
   },
+  "sig.none.label": {
+    "message": "Elimina cualquier firma. Anula la configuración de la cuenta."
+  },
   "silentUpdates": {
     "message": "No abrir página con historial de versiones"
   },

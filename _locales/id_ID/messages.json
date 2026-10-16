@@ -1419,5 +1419,8 @@
   },
   "templateEditor.path": {
     "message": "Jalur editor HTML untuk templat eksternal."
+  },
+  "sig.none.label": {
+    "message": "Menghapus semua tanda tangan. Mengesampingkan setelan akun."
   }
 }

@@ -1249,6 +1249,9 @@
   "sig2.label": {
     "message": "從賬戶設定的簽名檔但不要 '--'"
   },
+  "sig.none.label": {
+    "message": "移除所有簽名檔。覆寫帳戶設定。"
+  },
   "silentUpdates": {
     "message": "不要打開帶有版本歷史記錄的選項卡"
   },

@@ -1255,6 +1255,9 @@
   "sig2.label": {
     "message": "Signatura eissida dels paramètres del compte, mas sens '--'"
   },
+  "sig.none.label": {
+    "message": "Suprimeix qualsevol signatura. Substitueix els paràmetres del compte."
+  },
   "silentUpdates": {
     "message": "No obriu la pestanya amb l'historial de versions"
   },

@@ -1234,6 +1234,9 @@
   "sig2.label": {
     "message": "Ondertekening uit accountinstellingen maar zonder ‘--’"
   },
+  "sig.none.label": {
+    "message": "Verwijdert elke ondertekening. Negeert de accountinstellingen."
+  },
   "silentUpdates": {
     "message": "Tabblad met versiegeschiedenis niet openen"
   },

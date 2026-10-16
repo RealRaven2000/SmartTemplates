@@ -1255,6 +1255,9 @@
   "sig2.label": {
     "message": "Podpis iz nastavitev računa, toda brez '- -'"
   },
+  "sig.none.label": {
+    "message": "Odstrani vse podpise. Preglasi nastavitve računa."
+  },
   "silentUpdates": {
     "message": "Ne odpri zavihka z zgodovino različic"
   },

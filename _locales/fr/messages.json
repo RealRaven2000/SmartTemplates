@@ -1243,6 +1243,9 @@
   "sig2.label": {
     "message": "Signature issue des paramètres du compte, mais sans '--'"
   },
+  "sig.none.label": {
+    "message": "Supprime toute signature. Remplace les paramètres du compte."
+  },
   "silentUpdates": {
     "message": "Ne pas ouvrir l'onglet avec l'historique des versions"
   },

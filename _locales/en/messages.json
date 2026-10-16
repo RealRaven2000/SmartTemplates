@@ -1278,6 +1278,9 @@
   "sig2.label": {
     "message": "Signature from Account Settings but without '--'"
   },
+  "sig.none.label": {
+    "message": "Removes any signature. Overrides account settings."
+  },
   "silentUpdates": {
     "message": "Do not open tab with version history"
   },

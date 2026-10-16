@@ -1210,6 +1210,9 @@
   "sig2.label": {
     "message": "Firma da impostazioni account ma senza il '--'"
   },
+  "sig.none.label": {
+    "message": "Rimuove qualsiasi firma. Ignora le impostazioni dell’account."
+  },
   "silentUpdates": {
     "message": "Non aprire la scheda con la cronologia delle versioni"
   },

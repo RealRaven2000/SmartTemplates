@@ -1248,6 +1248,9 @@
   "sig2.label": {
     "message": "Siganture 签名（来自TB账户设置，但没有'--'"
   },
+  "sig.none.label": {
+    "message": "移除所有签名。覆盖账户设置。"
+  },
   "silentUpdates": {
     "message": "不要打开带有版本历史记录的选项卡"
   },

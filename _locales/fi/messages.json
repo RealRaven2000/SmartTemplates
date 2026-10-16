@@ -1255,6 +1255,9 @@
   "sig2.label": {
     "message": "Allekirjoitus (TB:n tilitiedoista ilman '--')"
   },
+  "sig.none.label": {
+    "message": "Poistaa kaikki allekirjoitukset. Ohittaa tilin asetukset."
+  },
   "silentUpdates": {
     "message": "Älä avaa versiohistoriaa sisältävää välilehteä"
   },

@@ -1246,6 +1246,9 @@
   "sig2.label": {
     "message": "Podpis z nastavení účtu bez '--'"
   },
+  "sig.none.label": {
+    "message": "Odstraní veškeré podpisy. Přepíše nastavení účtu."
+  },
   "silentUpdates": {
     "message": "Neotevírejte kartu s historií verzí"
   },

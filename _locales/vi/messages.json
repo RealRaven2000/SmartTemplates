@@ -330,5 +330,8 @@
   },
   "templateEditor.path": {
     "message": "Đường dẫn đến trình soạn thảo HTML cho các mẫu bên ngoài."
+  },
+  "sig.none.label": {
+    "message": "Xóa mọi chữ ký. Ghi đè cài đặt tài khoản."
   }
 }

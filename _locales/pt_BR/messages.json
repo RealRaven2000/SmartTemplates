@@ -1234,6 +1234,9 @@
   "sig2.label": {
     "message": "Assinatura das configurações da conta sem o '--'"
   },
+  "sig.none.label": {
+    "message": "Remove qualquer assinatura. Substitui as configurações da conta."
+  },
   "silentUpdates": {
     "message": "Não abra guia com histórico de versões"
   },
