@@ -342,17 +342,35 @@ To: Alex
 
 <!-- ##### Signature #### -->
 <a name="signature"> </a>
-<h3 class="helpchapter">Signature (read from Account Settings)</h3>
-<p>By Default you can place the Signature by Account Settings in Thunderbird.</p>
-<img src="/screenshots/account-settings-sig.png" alt="Account settings for signature"/>
-<p>and remove the Signature delimiters '--' by our Global settings Tab.</p>
-<img src="http://smarttemplate4.mozdev.org/screenshots/global-settings.png" alt="Signature delimiter"/>
-<p>But with follow variables you can override this positioning and use the variable with or without the delimiters.</p>
+<h3 class="helpchapter">Signatures (read from Account Settings)</h3>
+<p>
+  Thunderbird controls signature placement through 
+  <strong>Account Settings » Composition &amp; Addressing</strong>, 
+  unless SmartTemplates overrides it.
+</p>
+<img width="782" src="./screenshots/account-settings-sig-153.png" 
+      alt="Account settings for signature"/>
+<p>
+  SmartTemplates provides additional signature options in its <strong>Global Settings</strong> tab:
+</p>
+<img width="752" src="./screenshots/settings-signature.png" alt="Signature options in SmartTemplates Global Settings"/>
+<ul>
+  <li><strong>Process signature:</strong> Processes the signature supplied by Thunderbird’s account settings, replacing any SmartTemplates variables it contains with their values. Enable this to use template variables in your Thunderbird signature.</li>
+  <li><strong>Replace line breaks in plain text signature with &lt;br&gt;:</strong> Converts line breaks in a plain text signature to HTML line breaks, so its lines remain separate when inserted into an HTML message.</li>
+  <li><strong>Add -- in HTML mail:</strong> Adds the signature separator <code>-- </code> before your signature in HTML messages. Turn this off to omit the separator.</li>
+  <li><strong>Add -- in plain text mail:</strong> Controls the same separator for plain text messages, independently of the HTML setting.</li>
+  <li><strong>Replace Thunderbird signature on identity change (while preserving typed text):</strong> Thunderbird normally changes the signature when you select a different sender identity from the <strong>From</strong> dropdown. This option also updates the signature after you have started editing the message, while preserving the text you have typed. When SmartTemplates asks whether to load the new account template, cancel to preserve your message text while inserting the new identity’s signature. You may need to remove a signature left over from the previous identity manually.</li>
+</ul>
+<p>
+  By using the following variables you can override the Thunderbird default 
+  positioning and place the signature exactly where you want it within your
+  template.
+</p>
 <article>
 	<ul>
-		<li><code>%sig(html)%</code> = Signature HTML based</li>
-		<li><code>%sig(text)%</code> = Signature Text based</li>
-		<li><code>%sig(none)%</code> = To remove the signature completely, overriding account settings</li>
+		<li><code>%sig(html)%</code> = Insert the signature as HTML.</li>
+		<li><code>%sig(text)%</code> = Insert the signature as plain text.</li>
+		<li><code>%sig(none)%</code> = Omit the signature, overriding the account settings.</li>
 	</ul>
 </article>
 
@@ -750,11 +768,11 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 			<p>Note, to  insert the real recipient in a <i>forwarded</i> email, you can now use the <tt>fwd</tt> argument:
 				 e.g. <code class="deferable">%to(firstname,fwd)%</code> </p>
 			<p>The variables are shown as colored placeholder blocks and can be updated with a simple mouse-click: <br>
-				<img class="screenshot" src="/img/deferred-vars-example.png" alt="deferred variables"><br>
+				<img width="596" class="screenshot" src="./img/deferred-vars-example.png" alt="deferred variables"><br>
 				This will pull in the correct information when available and can be clicked multiple times.
 			</p>
 			<p>A new button for a final clean up - for "tidying up ALL variables" can also be added to the Composer toolbar:<br>
-				<img class="screenshot" src="/img/clean-up-button.png" alt="clean up">
+				<img width="379" class="screenshot" src="./img/clean-up-button.png" alt="clean up">
 			</p>	
 		</li>
 	</ul>
@@ -774,11 +792,11 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 <br />
 <p>First select the account you want to export in the SmartTemplates settings dropdown box.</p>
 <br />
-<img class="screenshot" alt="" src="/screenshots/identity_select.png">
+<img width="515" class="screenshot" alt="" src="./screenshots/identity_select.png">
 <br />
 <p>Next select 'File' &#8658; 'Export' &#8658; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.</p>
 <br />
-<img class="screenshot" alt="" src="/screenshots/export.png">
+<img width="514" class="screenshot" alt="" src="./screenshots/export.png">
 <br />
 ##### Import ####
 <b>Import:</b>
@@ -786,7 +804,7 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 <p>To import a file, select the account you want to import in the SmartTemplates settings dropdown box.<br>
 Next, select 'File' &#8658; 'Import' &#8658; 'Settings and Templates' from the menu bar.</p>
 <br />
-<img class="screenshot" alt="" src="/screenshots/import.png">
+<img width="515" class="screenshot" alt="" src="./screenshots/import.png">
 <br />
 <p>Select the SmartTemplates file (xxx.st4) you want to import.</p>
 <p class="attention">NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplates Options window.<br>

@@ -1579,7 +1579,7 @@ Sender: %from%
     </li>
     <li>Improved UI on Template Files page for Stationery users:<br>
         - removed irrelevant Save and Load buttons<br>
-        - added a <img src="/img/fugue-question.png" alt="question mark"/> button which links to the 
+        - added a <img src="./img/fugue-question.png" alt="question mark"/> button which links to the 
         <a href="http://smarttemplate4.mozdev.org/stationery.html" target="_blank">Stationery help page</a>.<br>
         <img class="screenshot" src="img/file-templates-help.png" />        
       </li>
@@ -1700,7 +1700,7 @@ Sender: %from%
 			</p>
 			<p><b>Important note:</b><br>
 			  In order for file templates to work correctly, you have to disable the option <i>Global Settings</i>&#xbb;<i>Global Settings</i>&#xbb;<i>Advanced Functions</i>&#xbb;<i>Support Stationery Add-on</i><br>
-				<img class="screenshot" src="/img/disable-stationery.png" alt="disable stationery support"><br>
+				<img class="screenshot" src="./img/disable-stationery.png" alt="disable stationery support"><br>
 				I have raised <a href="https://github.com/RealRaven2000/SmartTemplates/issues/13">issue 13</a> to handle this bug.
 			</p>
 		</li>
@@ -2044,12 +2044,12 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 			   e.g. <code class="deferable">%to(firstname,fwd)%</code> 
 			<p>The variables are shown as colored placeholder blocks and can be updated with a simple mouse-click:
 			<br>
-				<img class="screenshot" src="/img/deferred-vars-example.png" alt="deferred variables"><br>
+				<img class="screenshot" src="./img/deferred-vars-example.png" alt="deferred variables"><br>
 			  This will pull in the correct information when available and can be clicked multiple times.
 			<br>
 			</p>
 			<p>A new button for a final clean up - for "tidying up ALL variables" can also be added to the Composer toolbar:<br>
-				<img class="screenshot" src="/img/clean-up-button.png" alt="clean up">
+				<img class="screenshot" src="./img/clean-up-button.png" alt="clean up">
 			</p>
 		</li>
 		<li>
@@ -2391,7 +2391,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 				<iframe class="youtube" src="https://www.youtube.com/embed/xKh7FkU8A1w" frameborder="0" allowfullscreen></iframe></li>
 	  <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26207" target="_blank">[Bug 26207]</a>
 		    Add option to delimit address list with semicolons<br>
-				<img class="screenshot" src="/img/multi-correspondents-demiliter.png" alt="multi c delimiter">
+				<img class="screenshot" src="./img/multi-correspondents-demiliter.png" alt="multi c delimiter">
 				</li>
 		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26208" target="_blank">[Bug 26208]</a>
 		    Lastname and Firstname arguments omit part of the name when broken up</li>
@@ -2402,7 +2402,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		    Bad interaction between SmartTemplates and "When using paragraph format, the enter key creates a new paragraph".
 				With this new option, we can force SmartTemplates to always start in a Paragraph to better integrate
 				with the recently updated behavior of Thunderbird 45.<br>
-				<img class="screenshot" src="/img/force-paragraph.png" alt="force paragraph mode"></li>
+				<img class="screenshot" src="./img/force-paragraph.png" alt="force paragraph mode"></li>
 		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26209" target="_blank">[Bug 26209]</a>
 		    Add option to wrap full name in double quotes if it contains comma or semicolon<br>
 				Set <span class="codeLine">extensions.smartTemplate4.names.quoteIfComma = true</span> </li>
@@ -2462,14 +2462,14 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 	  <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26043" target="_blank">[Bug 26043]</a> 
 		    Save Template / Load Template feature<br>
-				<img class="screenshot" src="/img/Save-Template.png" alt="Save and Restore Templates"><br>
+				<img class="screenshot" src="./img/Save-Template.png" alt="Save and Restore Templates"><br>
 				Save / load the current template to / from a file.
 				</li>
     <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904" target="_blank">[Bug 25904]</a> Functions to Modify Mail Headers: To, Cc, Bcc, Subject and Others<br>
 		    <code>%header.set(name,"value")%</code> replaces the field of the Email.<br>
 		    <code>%header.append(name,"value")%</code> appends text or recipient to the field of the Email.<br>
 		    <code>%header.prefix(name,"value")%</code> prefixes text to the field of the Email.<br>
-				<img class="screenshot" src="/screenshots/header-function.png" alt="Change mail headers"><br>
+				<img class="screenshot" src="./screenshots/header-function.png" alt="Change mail headers"><br>
 				This currently supports the following headers: subject, to, from, cc, bcc, reply-to. 
 				For example, <code class="inline">%header.prefix(subject,"[Project 1] ")%</code>
 				will turn the subject "Re: Support Request" into "[Project 1] Re: Support Request".
@@ -2590,7 +2590,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
   <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25643" target="_blank">[Bug 25643]</a> 
         Display Names from Address book: if the email-address can be found in the Address books, use
         the name information from there for variables like <code class="inline">%from(firstname)%</code> etc.<br>
-        <img class="screenshot" src="/img/options-resolveNames.png" alt="Resolve Names from Address book">
+        <img class="screenshot" src="./img/options-resolveNames.png" alt="Resolve Names from Address book">
         </li>
   <li> Added option to use Nickname where it exists </li>
   <li> Added option to capitalize all names </li>
@@ -2619,7 +2619,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
     <li> Fixed <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25526" target="_blank">[Bug 25526]</a>  If no signature is defined, <code class="inline">%sig%</code> is not removed.</li>
     <li> Added user interface for forcing adding '-- ' delimiters before signature </li>
     <li> Redesigned Global Settings tab:<br>
-    <img class="screenshot" src="/screenshots/global-settings.png" alt="global settings tab">
+    <img class="screenshot" src="./screenshots/global-settings.png" alt="global settings tab">
     </li>
     <li> Added islinkable switch to address variables (to, from, cc, bcc, identity) to fix <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25538" target="_blank">[Bug 25538]</a></li>
     <li> Reopened <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25088" target="_blank">[Bug 25088]</a> by making status bar icon status more resilient</li>
@@ -2644,7 +2644,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
           how to use them together. <br>
           note: Template inserting is disabled if a Template of Stationery 0.7.8 or older is used.</li>
     <li> Added toolbar button<br>
-          <img class="screenshot" src="/screenshots/cutomize_toolbar_drag.png" alt="Drag &amp; Drop Toolbar Button">
+          <img class="screenshot" src="./screenshots/cutomize_toolbar_drag.png" alt="Drag &amp; Drop Toolbar Button">
     </li>
     <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=24990" target="_blank">[FR 24990]</a>  Added <code>%cursor%</code> variable</li>
     <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25083" target="_blank">[FR 25083]</a> New option "Correct Lastname, Firstname" to swap firstname to the front. </li>
@@ -2657,11 +2657,11 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
     <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25248" target="_blank">[FR 25248]</a><code>%y%</code> for two digit years</li>
     <li> added preferences textbox for default charset </li>
     <li> added Examples tab:<br>
-          <img class="screenshot" src="/screenshots/examples.png" alt="examples tab"><br>
+          <img class="screenshot" src="./screenshots/examples.png" alt="examples tab"><br>
           This tab loads examples from our support web site; they also are conveniently broken up  
           into <i>template</i> and <i>quote header</i> to show into which box the code should go.
           You can highlight the desired code and drag it into the appropriate field.<br>
-          <img class="screenshot" src="/screenshots/examples_copy-paste.png" alt="copy &amp; paste from examples Tab">
+          <img class="screenshot" src="./screenshots/examples_copy-paste.png" alt="copy &amp; paste from examples Tab">
     </li>
   </ul>
   <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
@@ -2702,22 +2702,22 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <ul>
       <li>Redesigned Settings Window to support signature settings from Thunderbird even better<br>
-      <img class="screenshot" src="/screenshots/2-box-solution.png" alt="2-box-solution"></li>
+      <img class="screenshot" src="./screenshots/2-box-solution.png" alt="2-box-solution"></li>
       <li>Added support for Seamonkey</li>
       <li>Added global settings in advanced options pane; includes new font size setting for template editor.<br/>
-          <img class="screenshot" src="/screenshots/global-settings.png" alt="Global settings">
+          <img class="screenshot" src="./screenshots/global-settings.png" alt="Global settings">
       <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25088" title="Show Details" target="_blank">[FR 25088]</a>: add option to hide status icon. You can also use right-click on the option to change label behavior through the configuration setting 
 			    <span class="codeLine">extensions.smartTemplate4.statusIconLabelMode</span> (it's not needed to change anything but you can do)<br>
         <ul>
           <li><span class="codeLine">0</span> - never show label
           <li><span class="codeLine">1</span> - expand label on hover (default)
           <li><span class="codeLine">2</span> - always show label<br>
-          <img class="screenshot" src="/screenshots/statusLabelConfig.png" alt="Status label configuration">
+          <img class="screenshot" src="./screenshots/statusLabelConfig.png" alt="Status label configuration">
         </ul>
       </li>
       <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25012" title="Show Details" target="_blank">[FR 25012]</a> Added <code>%cwIso(offset)%</code> for week # of current year</li>
       <li>Redesigned About Window (Add-On Manager &#8658; rightclick on SmartTemplates &#8658; About)<br>
-      <img class="screenshot" src="/screenshots/aboutWindow.png" alt="aboutWindow"></li>
+      <img class="screenshot" src="./screenshots/aboutWindow.png" alt="aboutWindow"></li>
     </ul>
     <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
     <ul> 
@@ -2759,11 +2759,11 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
       <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25109" title="Show Details" target="_blank">[Bug 25109]</a>: Automatically select Current Identity</li>
       <li>Integrated variables help into options dialog</li>
       <li>Statusbar button for quickly accessing template settings<br>
-      <img class="screenshot" src="/screenshots/statusbar-Button.png" alt="Statusbar Button"></li>
+      <img class="screenshot" src="./screenshots/statusbar-Button.png" alt="Statusbar Button"></li>
       <li>Added <a href="https://www.mozdev.org/bugs/buglist.cgi?product=SmartTemplate4" title="SmartTemplates Bugs on Bugzilla" target="_blank">Bugzilla support</a></li>
       <li>When switching between accounts, the current Tab (e.g. Reply to) remains selected</li>
       <li>When updating from an earlier versions, all settings and templates should be migrated automatically, this prompt should show up once:<br>
-      <img class="screenshot" src="/screenshots/conversion.png" alt="ConSmartTemplates Wizard"><br>
+      <img class="screenshot" src="./screenshots/conversion.png" alt="ConSmartTemplates Wizard"><br>
       simply press Ok to bring your old templates with you!
     </ul>
       <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
@@ -2792,7 +2792,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
       <li>Redesigned Help Window</li>
       <li>Added inserting variables/keywords using mouse click</li>
       <li>Added validation during insert (if variable cannot be used in "Write New" it will be rejected<br>
-      <img src="/screenshots/help_onclick_error.png" class="screenshot" alt="onclick error"></li>
+      <img src="./screenshots/help_onclick_error.png" class="screenshot" alt="onclick error"></li>
     </ul>
     <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
     <ul>
