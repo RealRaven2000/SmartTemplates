@@ -266,6 +266,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Nastavení psaní zpráv"
+  },
   "conditional.forwardMode": {
     "message": "Pokud je e-mail přeposlán inline, je vložen první textový parametr. Druhý textový parametr se používá, když je pošta přeposílána jako příloha."
   },
@@ -301,6 +304,9 @@
   },
   "d.label": {
     "message": "Den v měsíci uvozený nulou (01 až 31)"
+  },
+  "date.examples": {
+    "message": "Příklady data a času"
   },
   "date.label": {
     "message": "Datum / Čas (stejné jako původní 'Mailheader')"
@@ -465,6 +471,9 @@
   "fileImage.label": {
     "message": "Vloží obrázek (png, jpg, gif, bmp, svg). {imagePath} může být relativní k umístění šablony: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Soubory, obrázky a přílohy"
+  },
   "fileTemplates.add": {
     "message": "Přidat"
   },
@@ -516,9 +525,6 @@
   },
   "firstName.label": {
     "message": "Jméno:"
-  },
-  "fix_var.cap": {
-    "message": "Něměnné proměnné"
   },
   "fix_vartz_note.label": {
     "message": "Může být použito s %X:=sent%"
@@ -591,6 +597,9 @@
   },
   "fwdmsg.cap": {
     "message": "Předat"
+  },
+  "general": {
+    "message": "Obecné"
   },
   "getSmartTemplate4": {
     "message": "Získejte licenci SmartTemplates"
@@ -665,6 +674,9 @@
   "header.set.to.list": {
     "message": "nastaví hlavičku 'to' na e-mailové adresy všech členů ze seznamu adresářů s názvem \"listNamez\" – experimentální, podporuje pouze standardní adresáře. Příklad: %header.set(to,list:Přátelé)%"
   },
+  "headers.common": {
+    "message": "Běžně používané hlavičky zpráv"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Úspěšně nainstalován $addonName$",
@@ -717,6 +729,12 @@
   },
   "i.label": {
     "message": "Hodina uvozená nulami (01 až 12)"
+  },
+  "identity.chapterHead": {
+    "message": "Vaše identita"
+  },
+  "identity.concept": {
+    "message": "Poštovní účet může mít více identit odesílatele, každou s vlastním jménem a e-mailovou adresou. Tato proměnná používá identitu vybranou v poli „Od“ v okně zprávy. Při odpovídání závisí počáteční výběr na příjemci původní zprávy. Vybranou identitu můžete po otevření okna zprávy změnit."
   },
   "identity_ab": {
     "message": "Pomocí klíčového slova „addressbook“ získejte další informace o totožnosti z adresáře."
@@ -1239,6 +1257,10 @@
   },
   "showSplash": {
     "message": "Změny + zprávy (úvodní obrazovka)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird řídí umístění a obsah podpisu v **Nastavení účtu » Vytváření zpráv a adresování**. Umístění můžete přepsat pomocí proměnné %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Podpis z nastavení účtu"
@@ -1976,11 +1998,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "Příklad vlastního formátu data a času"
+  },
   "xsent_long_result.label": {
     "message": "Výsledek: Neděle 20.12.2011 v 16.24 hodin"
-  },
-  "xsent_long.cap": {
-    "message": "Příklad pro dlouhý řetězec"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%/%m%/%Y% v %H%:%M% hodin"
@@ -1988,14 +2010,14 @@
   "xsent_note.label": {
     "message": "Běžně jsou proměnné data a času nastavována podle hodnoty, kdy se odesílá mail. Pokud přidáte %X:=sent%, budou proměnné data a času nastaveny dle data a času původní zprávy."
   },
+  "xsent_short.cap": {
+    "message": "Příklad místního formátu data a času"
+  },
   "xsent_short_note.label": {
     "message": "Následující proměnné lze použít v obou variantách"
   },
   "xsent_short_result.label": {
     "message": "Výsledek: Neděle 20.12.2011 08.54.21"
-  },
-  "xsent_short.cap": {
-    "message": "Příklad krátkého řetězce"
   },
   "y.up.label": {
     "message": "Rok (1970)"

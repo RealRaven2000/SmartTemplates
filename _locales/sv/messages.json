@@ -272,6 +272,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Inställningar för att skriva meddelanden"
+  },
   "conditional.forwardMode": {
     "message": "Om e-postmeddelandet vidarebefordras infogas den första textparametern. Den andra textparametern används när mejlet vidarebefordras som en bilaga."
   },
@@ -307,6 +310,9 @@
   },
   "d.label": {
     "message": "Dag i månaden (01 till 31)"
+  },
+  "date.examples": {
+    "message": "Exempel på datum och tid"
   },
   "date.label": {
     "message": "Datum och tid (samma som originalmeddelandehuvudet)"
@@ -471,6 +477,9 @@
   "fileImage.label": {
     "message": "Infogar en bild (png, jpg, gif, bmp, svg). {imagePath} kan vara relativ till platsen för mallen: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Filer, bilder och bilagor"
+  },
   "fileTemplates.add": {
     "message": "Addera"
   },
@@ -525,9 +534,6 @@
   },
   "firstName.label": {
     "message": "Förnamn:"
-  },
-  "fix_var.cap": {
-    "message": "Fasta variabler"
   },
   "fix_vartz_note.label": {
     "message": "Kan kombineras med %X:=sent%"
@@ -604,6 +610,9 @@
   "fwdmsg.cap": {
     "message": "Vidarebefordrat meddelande"
   },
+  "general": {
+    "message": "Allmänt"
+  },
   "getSmartTemplate4": {
     "message": "Få SmartTemplates-licens"
   },
@@ -677,6 +686,9 @@
   "header.set.to.list": {
     "message": "ställer 'to'-huvudet till e-postadresserna för alla medlemmar baserat på adressbokslistan med namnet \"listName\" - experimentell, stöder endast standardadressböcker. Exempel: %header.set(to,list:Vänner)%"
   },
+  "headers.common": {
+    "message": "Vanliga meddelanderubriker"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ installerades med framgång",
@@ -729,6 +741,12 @@
   },
   "i.label": {
     "message": "Timmar, 12-timmarsformat (01 till 12)"
+  },
+  "identity.chapterHead": {
+    "message": "Din identitet"
+  },
+  "identity.concept": {
+    "message": "Ett e-postkonto kan ha flera avsändaridentiteter, var och en med eget namn och egen e-postadress. Den här variabeln använder identiteten som valts i fältet Från i skrivfönstret. När du svarar beror det ursprungliga valet på vem som tog emot det ursprungliga meddelandet. Du kan ändra den valda identiteten efter att skrivfönstret har öppnats."
   },
   "identity_ab": {
     "message": "Använd nyckelordet 'addressbook' för att hämta ytterligare identitetsinformation från adressboken."
@@ -1254,6 +1272,10 @@
   },
   "showSplash": {
     "message": "Ändringar + nyheter (Splash Screen)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird styr signaturens placering och innehåll via **Kontoinställningar » Skriva & adressera**. Du kan åsidosätta placeringen genom att använda variabeln %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Underskrift (från TB hänsyn inställningar)"
@@ -2015,11 +2037,11 @@
   "xmail.label": {
     "message": "X-Mailer-adresshuvud"
   },
+  "xsent_long.cap": {
+    "message": "Exempel på anpassat datum- och tidsformat"
+  },
   "xsent_long_result.label": {
     "message": "Resultat: 16.02.2011 kl. 12:15: "
-  },
-  "xsent_long.cap": {
-    "message": "Exempel på en långsträng:"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%.%m%.%Y% kl. %H%:%M%:"
@@ -2027,14 +2049,14 @@
   "xsent_note.label": {
     "message": "Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med %X:=sent% kommer tidigare angivna värden att användas."
   },
+  "xsent_short.cap": {
+    "message": "Exempel på datum och tid i lokalt format"
+  },
   "xsent_short_note.label": {
     "message": "Du kan dessutom använda dessa variabler:"
   },
   "xsent_short_result.label": {
     "message": "Resultat: onsdag, 16.02.2011 12:15:25"
-  },
-  "xsent_short.cap": {
-    "message": "Exempel på en kortsträng:"
   },
   "y.up.label": {
     "message": "År (1970)"

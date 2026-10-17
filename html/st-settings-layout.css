@@ -72,14 +72,21 @@ html|textarea {
 #categories > .category a {
   color: inherit;
 }
+/* Anchor the help frame to its pane, after the actual sidebar. */
+#variablesPane {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
 #helpFrame {
   border: none;
+  box-sizing: border-box;
   display: block;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: calc(100vw - 0.5em - var(--category-menu-width-default));
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
 }
 
 
@@ -216,6 +223,18 @@ div.btnLicenseContainer #btnLicense {
   min-width: 6.8em;
 }
 
+/* Extend the help background through the container's responsive padding. */
+#preferencesContainer:has(> #variablesPane.pageActive) {
+  background-color: var(--variables-background);
+}
+
+/* Add breathing room without increasing the help frame's outer width. */
+@media (min-width: 831px) {
+  #helpFrame {
+    padding-inline: 12px;
+  }
+}
+
 @media only screen and (max-width: 1024px)  {
   #preferencesContainer {
     padding-inline: 12px;
@@ -288,9 +307,6 @@ div.btnLicenseContainer #btnLicense {
   .prefpane {
     font-size: 0.95em;
   }
-  #helpFrame {
-    width: calc(100vw - 66px) !important;
-  }
   #pref-category-box {
     max-width: var(--category-menu-width-narrow);
   }
@@ -316,9 +332,6 @@ div.btnLicenseContainer #btnLicense {
   }
   button.iconLabelButton span {
     max-width: 0;
-  }
-  #helpFrame {
-    width: calc(100vw - 50px) !important;
   }
   #pref-category-box {
     max-width: var(--category-menu-width-extra-narrow);

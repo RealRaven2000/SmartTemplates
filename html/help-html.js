@@ -110,6 +110,24 @@ async function initHTML() {
   }
 
   i18n.updateDocument(); // parent doc must have loaded i18n.js
+  // Opt-in Markdown-style emphasis only: **bold**, *italic*, without nesting.
+  // Create DOM nodes without parsing HTML; other entities keep literal asterisks.
+  document.querySelectorAll(".localizedFormatting").forEach((element) => {
+    const parts = element.textContent.split(/(\*\*[^*]+\*\*|(?<!\*)\*[^*]+\*(?!\*))/);
+    element.textContent = "";
+    for (const part of parts) {
+      const bold = /^\*\*[^*]+\*\*$/.test(part);
+      const italic = /^\*[^*]+\*$/.test(part);
+      if (bold || italic) {
+        const formatted = document.createElement(bold ? "strong" : "em");
+        const markerLength = bold ? 2 : 1;
+        formatted.textContent = part.slice(markerLength, -markerLength);
+        element.appendChild(formatted);
+      } else {
+        element.appendChild(document.createTextNode(part));
+      }
+    }
+  });
   // update every text that contains params
   const params = document.querySelectorAll(".containsParams");
   const reg = /\{[^}]+\}/; // {parameter}

@@ -269,6 +269,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Ustawienia tworzenia wiadomości"
+  },
   "conditional.forwardMode": {
     "message": "Jeśli wiadomość e-mail jest przekazywana w tekście, wstawiany jest pierwszy parametr tekstowy. Drugi parametr tekstowy jest używany, gdy wiadomość jest przekazywana jako załącznik."
   },
@@ -304,6 +307,9 @@
   },
   "d.label": {
     "message": "Dzień miesiąca (01 do 31)"
+  },
+  "date.examples": {
+    "message": "Przykłady daty i czasu"
   },
   "date.label": {
     "message": "Data i czas (taki sam, jak oryginał nagłówka)"
@@ -468,6 +474,9 @@
   "fileImage.label": {
     "message": "Wstawia obraz (png, jpg, gif, bmp, svg). {imagePath} może być względny do lokalizacji szablonu: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Pliki, obrazy i załączniki"
+  },
   "fileTemplates.add": {
     "message": "Dodaj"
   },
@@ -522,9 +531,6 @@
   },
   "firstName.label": {
     "message": "Imię:"
-  },
-  "fix_var.cap": {
-    "message": "Zmienne podstawowe"
   },
   "fix_vartz_note.label": {
     "message": "Mogą być łączone z %X:=sent%"
@@ -597,6 +603,9 @@
   },
   "fwdmsg.cap": {
     "message": "Przekazywanie wiadomości"
+  },
+  "general": {
+    "message": "Ogólne"
   },
   "getSmartTemplate4": {
     "message": "Uzyskaj licencję SmartTemplates"
@@ -671,6 +680,9 @@
   "header.set.to.list": {
     "message": "ustawia nagłówek 'to' na adresy e-mail wszystkich członków na podstawie listy książki adresowej o nazwie \"listName\" - eksperymentalne, obsługiwane są tylko standardowe książki adresowe. Przykład: %header.set(to,list:Przyjaciele)%"
   },
+  "headers.common": {
+    "message": "Często używane nagłówki wiadomości"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Pomyślnie zainstalowano $addonName$",
@@ -723,6 +735,12 @@
   },
   "i.label": {
     "message": "Godzina, format 12-godzinny (01 do 12)"
+  },
+  "identity.chapterHead": {
+    "message": "Twoja tożsamość"
+  },
+  "identity.concept": {
+    "message": "Konto pocztowe może mieć wiele tożsamości nadawcy, każdą z własną nazwą i adresem e-mail. Ta zmienna używa tożsamości wybranej w polu „Od” w oknie tworzenia wiadomości. Podczas odpowiadania początkowy wybór zależy od odbiorcy oryginalnej wiadomości. Wybraną tożsamość można zmienić po otwarciu okna tworzenia wiadomości."
   },
   "identity_ab": {
     "message": "Użyj słowa kluczowego „addressbook”, aby uzyskać dodatkowe informacje o tożsamości z książki adresowej."
@@ -1233,6 +1251,10 @@
   },
   "showSplash": {
     "message": "Zmiany + aktualności (ekran powitalny)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird kontroluje położenie i treść podpisu w **Konfiguracja kont » Tworzenie i adresowanie**. Możesz zmienić położenie za pomocą zmiennej %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Podpis (z ustawień konta)"
@@ -1976,11 +1998,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "Przykład niestandardowego formatu daty i czasu"
+  },
   "xsent_long_result.label": {
     "message": "Wynik: 16.02.2011 o godz. 12:15:"
-  },
-  "xsent_long.cap": {
-    "message": "Przykład długiego formatu:"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%.%m%.%Y% o godz. %H%:%M%:"
@@ -1988,14 +2010,14 @@
   "xsent_note.label": {
     "message": "Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu. Jeśli będą łączone z %X:=sent%, będą zmiennymi dolnego poziomu."
   },
+  "xsent_short.cap": {
+    "message": "Przykład lokalnego formatu daty i czasu"
+  },
   "xsent_short_note.label": {
     "message": "Dodatkowo można również używać w obu wariantach następujących zmiennych:"
   },
   "xsent_short_result.label": {
     "message": "Wynik: Środa, 16.02.2011 12:15:25"
-  },
-  "xsent_short.cap": {
-    "message": "Przykład krótkiego formatu:"
   },
   "y.up.label": {
     "message": "Rok (1970)"

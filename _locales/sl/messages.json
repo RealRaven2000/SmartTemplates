@@ -269,6 +269,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Nastavitve sestavljanja"
+  },
   "conditional.forwardMode": {
     "message": "Če je e-poštno sporočilo posredovano v vrstici, se vstavi prvi besedilni parameter. Drugi besedilni parameter se uporablja, ko je pošta posredovana kot priloga."
   },
@@ -304,6 +307,9 @@
   },
   "d.label": {
     "message": "Dan v mesecu (01 do 31) - z vodilno ničlo"
+  },
+  "date.examples": {
+    "message": "Primeri datuma in časa"
   },
   "date.label": {
     "message": "Datum / Čas (isto kot izvirna 'glava pošte')"
@@ -468,6 +474,9 @@
   "fileImage.label": {
     "message": "Vstavi sliko (png, jpg, gif, bmp, svg). {imagePath} je lahko relativna na lokacijo predloge: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Datoteke, slike in priloge"
+  },
   "fileTemplates.add": {
     "message": "Dodaj"
   },
@@ -522,9 +531,6 @@
   },
   "firstName.label": {
     "message": "Ime:"
-  },
-  "fix_var.cap": {
-    "message": "Stalne spremenljivke"
   },
   "fix_vartz_note.label": {
     "message": "Se lahko kombinira z %X:=sent%"
@@ -597,6 +603,9 @@
   },
   "fwdmsg.cap": {
     "message": "Posreduj"
+  },
+  "general": {
+    "message": "Splošno"
   },
   "getSmartTemplate4": {
     "message": "Pridobite licenco si SmartTemplates"
@@ -671,6 +680,9 @@
   "header.set.to.list": {
     "message": "nastavi glavo 'to' na e-poštne naslove vseh članov glede na seznam imenovan \"listName\" v imeniku – eksperimentalno, podpira samo standardne imenike.Primer: %header.set(to,list:Prijatelji)%"
   },
+  "headers.common": {
+    "message": "Pogosto uporabljene glave sporočil"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Uspešno nameščen $addonName$",
@@ -723,6 +735,12 @@
   },
   "i.label": {
     "message": "Ura 12-urna oblika (01 do 12) - z vodilno ničlo"
+  },
+  "identity.chapterHead": {
+    "message": "Vaša identiteta"
+  },
+  "identity.concept": {
+    "message": "Poštni račun ima lahko več identitet pošiljatelja, vsako s svojim imenom in e-poštnim naslovom. Ta spremenljivka uporablja identiteto, izbrano v polju »Od« v oknu za sestavljanje sporočila. Pri odgovarjanju je začetna izbira odvisna od prejemnika izvirnega sporočila. Izbrano identiteto lahko spremenite po odprtju okna za sestavljanje."
   },
   "identity_ab": {
     "message": "Uporabite ključno besedo 'addressbook', da iz naslova najdete dodatne podatke o identiteti."
@@ -1248,6 +1266,10 @@
   },
   "showSplash": {
     "message": "Spremembe + novice (Začetni zaslon)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird upravlja položaj in vsebino podpisa v **Nastavitve računa » Sestavljanje in naslavljanje**. Položaj lahko preglasite s spremenljivko %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Podpis iz nastavitev računa"
@@ -2000,11 +2022,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "Primer datuma in časa po meri"
+  },
   "xsent_long_result.label": {
     "message": "Rezultat: Nedelja, 20/12/2011 ob 16:24"
-  },
-  "xsent_long.cap": {
-    "message": "Primer dolgega niza"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%/%m%/%Y% ob %H%:%M%"
@@ -2012,14 +2034,14 @@
   "xsent_note.label": {
     "message": "Privzeto bodo spremenljivke za datum/čas vedno vzpostavljene s trenutnimi vrednostmi (trenutno je ob času ustvarjanja e-pošte). Ob kombinaciji z %X:=sent% bodo spremenljivke za datum/čas odražale izvirni datum/čas sporočila."
   },
+  "xsent_short.cap": {
+    "message": "Primer datuma in časa v krajevni obliki"
+  },
   "xsent_short_note.label": {
     "message": "Naslednje spremenljivke lahko uporabljate z obema različicama"
   },
   "xsent_short_result.label": {
     "message": "Rezultat: Nedelja, 20/12/2011 08:54:21"
-  },
-  "xsent_short.cap": {
-    "message": "Primer kratkega niza"
   },
   "y.up.label": {
     "message": "Leto (1970)"

@@ -269,6 +269,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Kirjoitusasetukset"
+  },
   "conditional.forwardMode": {
     "message": "Jos sähköposti välitetään edelleen, ensimmäinen tekstiparametri lisätään. Toista tekstiparametria käytetään, kun posti välitetään edelleen liitteenä."
   },
@@ -304,6 +307,9 @@
   },
   "d.label": {
     "message": "Kuukauden päivä (01-31)"
+  },
+  "date.examples": {
+    "message": "Päivämäärän ja ajan esimerkit"
   },
   "date.label": {
     "message": "Päiväys / Aika (sama kuin alkuperäisessä viestin otsakkeessa)"
@@ -468,6 +474,9 @@
   "fileImage.label": {
     "message": "Lisää kuva (png, jpg, gif, bmp, svg). {imagePath} voi olla suhteellinen mallin sijaintiin: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Tiedostot, kuvat ja liitteet"
+  },
   "fileTemplates.add": {
     "message": "Add"
   },
@@ -522,9 +531,6 @@
   },
   "firstName.label": {
     "message": "Etunimi:"
-  },
-  "fix_var.cap": {
-    "message": "Määrätyt muuttujat"
   },
   "fix_vartz_note.label": {
     "message": "Voidaan yhdistää %X:=sent% kanssa"
@@ -601,6 +607,9 @@
   "fwdmsg.cap": {
     "message": "Viestin välittäminen"
   },
+  "general": {
+    "message": "Yleiset"
+  },
   "getSmartTemplate4": {
     "message": "Hanki SmartTemplates -lisenssi"
   },
@@ -674,6 +683,9 @@
   "header.set.to.list": {
     "message": "asettaa 'to'-otsikon kaikille jäsenille osoitteistosta nimeltä \"listName\" - kokeellinen, tukee vain standardiosoitekirjoja. Παράδειγμα: Esimerkki: %header.set(to,list:Ystävät)%"
   },
+  "headers.common": {
+    "message": "Yleisesti käytetyt viestiotsakkeet"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Asennus $addonName$ onnistui",
@@ -726,6 +738,12 @@
   },
   "i.label": {
     "message": "Tunti, 12-tuntinen muoto (01-12)"
+  },
+  "identity.chapterHead": {
+    "message": "Oma henkilöllisyys"
+  },
+  "identity.concept": {
+    "message": "Sähköpostitilillä voi olla useita lähettäjän henkilöllisyyksiä, joilla kullakin on oma nimi ja sähköpostiosoite. Tämä muuttuja käyttää kirjoitusikkunan Lähettäjä-kentässä valittua henkilöllisyyttä. Vastattaessa alkuperäinen valinta riippuu siitä, kuka vastaanotti alkuperäisen viestin. Voit vaihtaa valittua henkilöllisyyttä kirjoitusikkunan avaamisen jälkeen."
   },
   "identity_ab": {
     "message": "Käytä avainsanaa 'addressbook' hakeaksesi lisätietoja henkilöllisyydestä osoitekirjasta."
@@ -1248,6 +1266,10 @@
   },
   "showSplash": {
     "message": "Muutokset + uutiset (aloitusnäyttö)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird määrittää allekirjoituksen sijainnin ja sisällön kohdassa **Tilien asetukset » Kirjoittaminen ja osoitteet**. Voit ohittaa sijainnin käyttämällä muuttujaa %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Allekirjoitus (TB:n tilitiedoista)"
@@ -2000,11 +2022,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "Mukautetun päivämäärän ja ajan esimerkki"
+  },
   "xsent_long_result.label": {
     "message": "Lopputulos: tiistai, 20.06.2011 4:11 +0300"
-  },
-  "xsent_long.cap": {
-    "message": "Esimerkki pitkästä muotoilusta:"
   },
   "xsent_long.label": {
     "message": "%X:=sent% %A%na, %d%. %B%, %Y% klo %k%:%M%"
@@ -2012,14 +2034,14 @@
   "xsent_note.label": {
     "message": "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä %X:=sent% kanssa, käytetään alkuperäisen viestin muotoilua."
   },
+  "xsent_short.cap": {
+    "message": "Paikallisen päivämäärän ja ajan esimerkki"
+  },
   "xsent_short_note.label": {
     "message": "Lisäksi voit käyttää kummasakin tavassa seuraavia muuttujia:"
   },
   "xsent_short_result.label": {
     "message": "Lopputulos: 20. joulukuuta 2011 4:11:34"
-  },
-  "xsent_short.cap": {
-    "message": "Esimerkki lyhyestä muotoilusta:"
   },
   "y.up.label": {
     "message": "Vuosi (1970)"

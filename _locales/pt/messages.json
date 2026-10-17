@@ -266,6 +266,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Definições de composição"
+  },
   "conditional.forwardMode": {
     "message": "Se o email for encaminhado inline, o primeiro parâmetro de texto será inserido. O segundo parâmetro de texto é usado quando o e-mail é encaminhado como anexo."
   },
@@ -301,6 +304,9 @@
   },
   "d.label": {
     "message": "Dia do mês (de 01 a 31)"
+  },
+  "date.examples": {
+    "message": "Exemplos de data e hora"
   },
   "date.label": {
     "message": "Data e hora (igual ao encontrado no cabeçalho da mensagem)"
@@ -465,6 +471,9 @@
   "fileImage.label": {
     "message": "Insere uma imagem (png, jpg, gif, bmp, svg). {imagePath} pode ser relativo à localização do modelo: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Ficheiros, imagens e anexos"
+  },
   "fileTemplates.add": {
     "message": "Adicionar"
   },
@@ -516,9 +525,6 @@
   },
   "firstName.label": {
     "message": "Nome:"
-  },
-  "fix_var.cap": {
-    "message": "Variáveis básicas"
   },
   "fix_vartz_note.label": {
     "message": "Podem ser combinadas com %X:=sent%"
@@ -591,6 +597,9 @@
   },
   "fwdmsg.cap": {
     "message": "Encaminhar mensagens"
+  },
+  "general": {
+    "message": "Geral"
   },
   "getSmartTemplate4": {
     "message": "Obter licença SmartTemplates"
@@ -665,6 +674,9 @@
   "header.set.to.list": {
     "message": "define o cabeçalho 'to' com os endereços de e-mail de todos os membros com base na lista do livro de endereços chamada \"listName\" - experimental, suporta apenas livros de endereços padrão. Exemplo: %header.set(to,list:Amigos)%"
   },
+  "headers.common": {
+    "message": "Cabeçalhos de mensagem mais utilizados"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Instalado com sucesso $addonName$",
@@ -717,6 +729,12 @@
   },
   "i.label": {
     "message": "Hora, no formato de 12 horas (de 01 a 12)"
+  },
+  "identity.chapterHead": {
+    "message": "A sua identidade"
+  },
+  "identity.concept": {
+    "message": "Uma conta de correio pode ter várias identidades de remetente, cada uma com o seu próprio nome e endereço de correio. Esta variável utiliza a identidade selecionada no campo «De» da janela de composição. Ao responder, a seleção inicial depende de quem recebeu a mensagem original. Pode alterar a identidade selecionada depois de abrir a janela de composição."
   },
   "identity_ab": {
     "message": "Use a palavra-chave 'addressbook' para recuperar informações de identidade adicionais do catálogo de endereços."
@@ -1230,6 +1248,10 @@
   },
   "showSplash": {
     "message": "Mudanças + notícias (tela inicial)."
+  },
+  "sig.concept": {
+    "message": "O Thunderbird controla a posição e o conteúdo da assinatura através de **Definições da conta » Composição e endereçamento**. Pode substituir a posição utilizando a variável %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Assinatura das configurações da conta"
@@ -1967,11 +1989,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "Exemplo de data e hora personalizadas"
+  },
   "xsent_long_result.label": {
     "message": "Resultado: 20/12/2011 às 16:24"
-  },
-  "xsent_long.cap": {
-    "message": "Exemplo com variáveis personalizáveis:"
   },
   "xsent_long.label": {
     "message": "A frase %X:=sent%%d%/%m%/%Y% às %H%:%M%"
@@ -1979,14 +2001,14 @@
   "xsent_note.label": {
     "message": "As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com %X:=sent%, elas são exibidas com os valores anteriores."
   },
+  "xsent_short.cap": {
+    "message": "Exemplo de data e hora no formato local"
+  },
   "xsent_short_note.label": {
     "message": "As seguintes variáveis podem ser usadas em ambas as variantes também"
   },
   "xsent_short_result.label": {
     "message": "Resultado: Quarta-feira, 20/12/2011 08:54:21"
-  },
-  "xsent_short.cap": {
-    "message": "Exemplos com variáveis fixas:"
   },
   "y.up.label": {
     "message": "Ano (1970)"

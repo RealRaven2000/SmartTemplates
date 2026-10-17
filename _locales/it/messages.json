@@ -263,6 +263,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Impostazioni di composizione"
+  },
   "conditional.forwardMode": {
     "message": "Se l'email viene inoltrata in linea, viene inserito il primo parametro di testo. Il secondo parametro di testo viene utilizzato quando la posta viene inoltrata come allegato."
   },
@@ -298,6 +301,9 @@
   },
   "d.label": {
     "message": "Giorno del mese (da 01 a 31) espresso con due cifre"
+  },
+  "date.examples": {
+    "message": "Esempi di data e ora"
   },
   "date.label": {
     "message": "Data/ora (come nell'intestazione originaria)"
@@ -456,6 +462,9 @@
   "fileImage.label": {
     "message": "Inserisce un'immagine (png, jpg, gif, bmp, svg). {imagePath} può essere relativo alla posizione del modello: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "File, immagini e allegati"
+  },
   "fileTemplates.add": {
     "message": "Aggiungi"
   },
@@ -510,9 +519,6 @@
   },
   "firstName.label": {
     "message": "Nome:"
-  },
-  "fix_var.cap": {
-    "message": "Variabili di base"
   },
   "fix_vartz_note.label": {
     "message": "È possibile associarle con %X:=sent%"
@@ -586,6 +592,9 @@
   "fwdmsg.cap": {
     "message": "Messaggi da inoltrare"
   },
+  "general": {
+    "message": "Generale"
+  },
   "getSmartTemplate4": {
     "message": "Ottieni la licenza SmartTemplates"
   },
@@ -653,6 +662,9 @@
   "header.set.to.list": {
     "message": "imposta l'intestazione 'to' sugli indirizzi e-mail di tutti i membri della lista della rubrica denominata \"listName\" - sperimentale, supporta solo rubriche standard. Esempio: %header.set(to,list:Amici)%"
   },
+  "headers.common": {
+    "message": "Intestazioni dei messaggi più utilizzate"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ installato con successo",
@@ -705,6 +717,12 @@
   },
   "i.label": {
     "message": "Ora nel formato 12 ore (da 01 a 12) espressa con due cifre"
+  },
+  "identity.chapterHead": {
+    "message": "La propria identità"
+  },
+  "identity.concept": {
+    "message": "Un account di posta può avere più identità mittente, ciascuna con il proprio nome e indirizzo email. Questa variabile utilizza l’identità selezionata nel campo «Da» della finestra di composizione. Quando si risponde, la selezione iniziale dipende da chi ha ricevuto il messaggio originale. È possibile cambiare l’identità selezionata dopo l’apertura della finestra di composizione."
   },
   "identity_ab": {
     "message": "Utilizzare la parola chiave  'addressbook' per recuperare ulteriori informazioni sull'identità dalla rubrica."
@@ -1203,6 +1221,10 @@
   },
   "showSplash": {
     "message": "Modifiche + notizie (Schermata iniziale)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird controlla la posizione e il contenuto della firma tramite **Impostazioni account » Composizione e indirizzi**. È possibile modificare la posizione utilizzando la variabile %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Firma da impostazion account"
@@ -1943,11 +1965,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "Esempio di data e ora personalizzate"
+  },
   "xsent_long_result.label": {
     "message": "Risultato:  Domenica, 16.02.2011 alle ore 12:15"
-  },
-  "xsent_long.cap": {
-    "message": "Esempio di Longstring"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%.%m%.%Y% alle ore %H%:%M%"
@@ -1955,14 +1977,14 @@
   "xsent_note.label": {
     "message": "Le variabili per data e ora vengono sempre impostate al valore attuale, ovvero la data e ora in cui si redige il messaggio. Se associate alla variabile %X:=sent%#37; vengono utilizzati i valori di quando il messaggio è stato inviato"
   },
+  "xsent_short.cap": {
+    "message": "Esempio di data e ora nel formato locale"
+  },
   "xsent_short_note.label": {
     "message": "Le seguenti variabili si possono utilizzare in entrambe le varianti"
   },
   "xsent_short_result.label": {
     "message": "Risultato: Domenica, 16.02.2011 12:15:25"
-  },
-  "xsent_short.cap": {
-    "message": "Esempio di Shortstring:"
   },
   "y.up.label": {
     "message": "Anno (1970)"

@@ -266,6 +266,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Opstelinstellingen"
+  },
   "conditional.forwardMode": {
     "message": "Als de e-mail inline wordt doorgestuurd, wordt de eerste tekstparameter ingevoegd. De tweede tekstparameter wordt gebruikt wanneer de e-mail als bijlage wordt doorgestuurd."
   },
@@ -301,6 +304,9 @@
   },
   "d.label": {
     "message": "Dag van de maand (01 tot 31) - incl. nul"
+  },
+  "date.examples": {
+    "message": "Voorbeelden van datum en tijd"
   },
   "date.label": {
     "message": "Datum en tijd (identiek aan oorspronkelijke mailheader)"
@@ -465,6 +471,9 @@
   "fileImage.label": {
     "message": "Voegt een afbeelding in (png, jpg, gif, bmp, svg). {imagePath} kan relatief zijn ten opzichte van de locatie van de sjabloon: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Bestanden, afbeeldingen en bijlagen"
+  },
   "fileTemplates.add": {
     "message": "Toevoegen"
   },
@@ -519,9 +528,6 @@
   },
   "firstName.label": {
     "message": "Voornaam:"
-  },
-  "fix_var.cap": {
-    "message": "Vaste variabelen"
   },
   "fix_vartz_note.label": {
     "message": "Kan worden gecombineerd met %X:=sent%"
@@ -594,6 +600,9 @@
   },
   "fwdmsg.cap": {
     "message": "Doorgestuurd bericht"
+  },
+  "general": {
+    "message": "Algemeen"
   },
   "getSmartTemplate4": {
     "message": "Licentie voor SmartTemplates verkrijgen"
@@ -668,6 +677,9 @@
   "header.set.to.list": {
     "message": "Stelt de 'to'-header in op e-mailadressen van alle leden op basis van de adresboeklijst genaamd \"listName\" - experimenteel, ondersteunt alleen standaard adresboeken. Voorbeeld: %header.set(to,list:Vrienden)%"
   },
+  "headers.common": {
+    "message": "Veelgebruikte berichtkoppen"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ succesvol geïnstalleerd",
@@ -717,6 +729,12 @@
   },
   "i.label": {
     "message": "Uur, 12-uursopmaak (01 tot 12)"
+  },
+  "identity.chapterHead": {
+    "message": "Uw identiteit"
+  },
+  "identity.concept": {
+    "message": "Een e-mailaccount kan meerdere afzenderidentiteiten hebben, elk met een eigen naam en e-mailadres. Deze variabele gebruikt de identiteit die is geselecteerd in het veld Van van het opstelvenster. Bij het beantwoorden hangt de eerste selectie af van wie het oorspronkelijke bericht heeft ontvangen. U kunt de geselecteerde identiteit wijzigen nadat het opstelvenster is geopend."
   },
   "identity_ab": {
     "message": "Gebruik het trefwoord ‘addressbook’ om aanvullende identiteitsgegevens uit het adresboek op te halen."
@@ -1227,6 +1245,10 @@
   },
   "showSplash": {
     "message": "Wijzigingen + nieuws (Splash Screen)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird bepaalt de plaatsing en inhoud van de ondertekening via **Accountinstellingen » Opstellen & adressering**. U kunt de plaatsing overschrijven met de variabele %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Ondertekening uit accountinstellingen"
@@ -1967,11 +1989,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "Voorbeeld van aangepaste datum en tijd"
+  },
   "xsent_long_result.label": {
     "message": "Resultaat: Zondag, 20.12.2011 om 16:24:"
-  },
-  "xsent_long.cap": {
-    "message": "Voorbeeld van een lange zin:"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%.%m%.%Y% om %H%:%M%:"
@@ -1979,14 +2001,14 @@
   "xsent_note.label": {
     "message": "De bovenstaande variabelen zullen normaliter op de huidige waarden staan ingesteld. Wanneer u dit met %X:=sent% combineert, worden de oorspronkelijke waarden weergegeven."
   },
+  "xsent_short.cap": {
+    "message": "Voorbeeld van datum en tijd in lokale notatie"
+  },
   "xsent_short_note.label": {
     "message": "In beide varianten kunt u de volgende variabelen gebruiken:"
   },
   "xsent_short_result.label": {
     "message": "Resultaat: Woensdag, 16.02.2011 12:15:25"
-  },
-  "xsent_short.cap": {
-    "message": "Voorbeeld van een korte zin:"
   },
   "y.up.label": {
     "message": "Jaar (1970)"

@@ -263,6 +263,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Подешавања писања порука"
+  },
   "conditional.forwardMode": {
     "message": "Ако се е-пошта прослеђује у реду, убацује се први параметар текста. Други параметар текста користи се када се пошта прослеђује као прилог."
   },
@@ -295,6 +298,9 @@
   },
   "d.label": {
     "message": "Дан у месецу (од 01 до 31) са нулом на почетку"
+  },
+  "date.examples": {
+    "message": "Примери датума и времена"
   },
   "date.label": {
     "message": "Датум/време (као и заглавље е-поруке)"
@@ -450,6 +456,9 @@
   "fileImage.label": {
     "message": "Убацује слику (png, jpg, gif, bmp, svg). {imagePath} може бити релативно према локацији шаблона: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Датотеке, слике и прилози"
+  },
   "fileTemplates.add": {
     "message": "Додај"
   },
@@ -504,9 +513,6 @@
   },
   "firstName.label": {
     "message": "Име:"
-  },
-  "fix_var.cap": {
-    "message": "Контролне променљиве"
   },
   "fix_vartz_note.label": {
     "message": "Може да се комбинује са %X:=sent%"
@@ -573,6 +579,9 @@
   },
   "fwdmsg.cap": {
     "message": "Проследи"
+  },
+  "general": {
+    "message": "Опште"
   },
   "getSmartTemplate4": {
     "message": "Набавите лиценцу за СмартТемплате⁴"
@@ -647,6 +656,9 @@
   "header.set.to.list": {
     "message": "поставља заглавље 'to' на е-маил адресе свих чланова на основу листе адресара под називом \"listName\" – експериментално, подржава само стандардне адресаре. Пример: %header.set(to,list:Пријатељи)%"
   },
+  "headers.common": {
+    "message": "Често коришћена заглавља порука"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Успешно инсталиран $addonName$",
@@ -699,6 +711,12 @@
   },
   "i.label": {
     "message": "Време, 12-часовни формат (од 01 до 12) са нулом на почетку"
+  },
+  "identity.chapterHead": {
+    "message": "Ваш идентитет"
+  },
+  "identity.concept": {
+    "message": "Налог е-поште може да има више идентитета пошиљаоца, сваки са својим именом и адресом е-поште. Ова променљива користи идентитет изабран у пољу „Од” у прозору за писање поруке. При одговарању, почетни избор зависи од тога ко је примио изворну поруку. Изабрани идентитет можете променити након отварања прозора за писање."
   },
   "identity_ab": {
     "message": "Употријебите кључну ријеч  'addressbook' да бисте из адресара пронашли додатне информације о идентитету."
@@ -1215,6 +1233,10 @@
   },
   "showSplash": {
     "message": "Прикажи промене + вести (Спласх Сцреен)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird управља положајем и садржајем потписа кроз **Подешавања налога » Писање и адресирање**. Положај можете променити помоћу променљиве %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Потпис из подешавања налога"
@@ -1964,11 +1986,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "Пример прилагођеног формата датума и времена"
+  },
   "xsent_long_result.label": {
     "message": "Резултат: недеља, 20/12/2011 у 16:24 сати"
-  },
-  "xsent_long.cap": {
-    "message": "Пример LongString-а"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%/%m%/%Y% у %H%:%M% сати"
@@ -1976,14 +1998,14 @@
   "xsent_note.label": {
     "message": "По подразумеваним поставкама, променљиве за датум и време ће увек приказивати тренутно време. У комбинацији са %X:=sent%, променљиве ће одражавати датум и време оригиналних порука."
   },
+  "xsent_short.cap": {
+    "message": "Пример датума и времена у локалном формату"
+  },
   "xsent_short_note.label": {
     "message": "Следеће променљиве се могу користити у обе варијанте"
   },
   "xsent_short_result.label": {
     "message": "Резултат: недеља, 20/12/2011 08:54:21"
-  },
-  "xsent_short.cap": {
-    "message": "Пример ShortString-а"
   },
   "y.up.label": {
     "message": "Година"

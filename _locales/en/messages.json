@@ -252,6 +252,7 @@
   "close.label": {
     "message": "Collapse Dialog"
   },
+  "composer.settings": { "message": "Composer settings" },
   "common.use": {
     "message": "Use Common"
   },
@@ -308,6 +309,9 @@
   },
   "d.label": {
     "message": "Day of Month (01 to 31) - with leading zero"
+  },
+  "date.examples": {
+    "message": "Date and time examples"
   },
   "date.label": {
     "message": "Date / Time (same as original 'Mailheader')"
@@ -461,6 +465,7 @@
   "file.label": {
     "message": "File"
   },
+  "files.etc": { "message": "Files, images and attachments" },
   "fileCSS.label": {
     "message": "External style sheet (css). Include your favorite CSS rules to share between different templates."
   },
@@ -532,9 +537,6 @@
   },
   "firstName.label": {
     "message": "First Name:"
-  },
-  "fix_var.cap": {
-    "message": "Fixed variables"
   },
   "fix_vartz_note.label": {
     "message": "Can be combined with %X:=sent%"
@@ -611,6 +613,9 @@
   "fwdmsg.cap": {
     "message": "Forward"
   },
+  "general": {
+    "message": "General"
+  },
   "getSmartTemplate4": {
     "message": "SmartTemplates License"
   },
@@ -684,6 +689,7 @@
   "header.set.to.list": {
     "message": "sets the 'to' header to email addresses of all members based on the address book list named \"listName\" - experimental, only supports standard address books. Example: %header.set(to,list:Friends)%"
   },
+  "headers.common": { "message": "Commonly used message headers" },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Successfully installed $addonName$",
@@ -736,6 +742,10 @@
   },
   "i.label": {
     "message": "Hour, 12-Hour Format (01 to 12) - with leading zero"
+  },
+  "identity.chapterHead": { "message": "Your Identity" },
+  "identity.concept": {
+    "message": "A mail account can have multiple sender identities, each with its own name and email address. This variable uses the identity selected in the composer's 'From' field. When replying, the initial selection depends on who received the original message. You can change the selected identity after the compose window opens."
   },
   "identity_ab": {
     "message": "Use the 'addressbook' keyword to retrieve additional identity information from address book."
@@ -1271,6 +1281,10 @@
   },
   "showSplash": {
     "message": "Changes + news (Splash Screen)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird controls signature placement and content through **Account Settings » Composition & Addressing**. You can override the position by using the %sig% variable.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Signature from Account Settings"
@@ -2010,7 +2024,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{h3} Maintenance Release 4.20.2{/h3}{L} {+extensionName} is now compatible with Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Improved account template imports and synchronization of changed settings. [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Fixed address headers showing {{??}} in reply and forward quote headers, and repaired missing preference defaults without resetting valid settings [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Fixed the Debug mode toggle after the settings storage migration [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Removed logging that could cause a long freeze when opening a new message, reply or forward [issue 425].{/L}{h3}Main Changes in 4.20{/h3}{L} Moved settings from Thunderbird’s global configuration database ({{about:config}}) to extension storage ({{storage.local}}) [issue 422]. {br}{i}Note:{/i} Uninstalling {+extensionName} now resets its settings to their defaults.{/L}{L} Updated script loading to support Thunderbird 155 and later [issue 421].{/L}"
+    "message": "{h3}Version 4.21{/h3}{L} {b}Major enhancement:{/b} Added context menu support for smart snippets [issue 432].{/L}{L} Fixed template processing in Thunderbird 159 beta after removal of the legacy message-header lookup method; Thunderbird 140 ESR remains supported [issue 433].{/L}{L} Added documentation for {{%sig(none)%}} [issue 434].{/L}{h3}Recent Maintenance Changes in 4.20.2{/h3}{L} Improved account template imports and synchronization of changed settings. [issue 429].{/L}{L} Fixed address headers showing {{??}} in reply and forward quote headers, and repaired missing preference defaults without resetting valid settings [issue 427].{/L}{L} Fixed the Debug mode toggle after the settings storage migration [issue 422].{/L}{L} Removed logging that could cause a long freeze when opening a new message, reply or forward [issue 425].{/L}{h3}Main Changes in 4.20{/h3}{L} Moved settings from Thunderbird’s global configuration database ({{about:config}}) to extension storage ({{storage.local}}) [issue 422]. {br}{i}Note:{/i} Uninstalling {+extensionName} now resets its settings to their defaults.{/L}{L} Updated script loading to support Thunderbird 155 and later [issue 421].{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This particular fix was added since the previous release.",
@@ -2038,7 +2052,7 @@
     "message": "Result: Sunday, 20/12/2011 at 16:24 o'clock"
   },
   "xsent_long.cap": {
-    "message": "Example for a longstring"
+    "message": "Custom date and time example"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%/%m%/%Y% at %H%:%M% o'clock"
@@ -2053,7 +2067,7 @@
     "message": "Result: Sunday, 20/12/2011 08:54:21"
   },
   "xsent_short.cap": {
-    "message": "Example of a shortstring"
+    "message": "Localized date and time example"
   },
   "xsent_short.label": {
     "message": "%X:=sent% %datelocal%"

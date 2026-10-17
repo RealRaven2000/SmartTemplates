@@ -59,7 +59,7 @@
     evt.stopPropagation();
     var allchapters = Array.from(document.getElementsByClassName('chapterBody'));
     allchapters.forEach(function(el) {
-      el.classList.remove('collapsed');
+      toggleCollapseExpand(el.previousElementSibling, el, null, true);
     });
   };
   globalThis.collapseAll = (evt) => {
@@ -67,27 +67,44 @@
     evt.stopPropagation();
     var allchapters = Array.from(document.getElementsByClassName('chapterBody'));
     allchapters.forEach(function(el) {
-      el.classList.add('collapsed');
+      toggleCollapseExpand(el.previousElementSibling, el, null, false);
     });
   };
   
   // Accordion:
-  const toggleCollapseExpand = (hd, el) => {
+  const toggleCollapseExpand = (hd, el, scrollTarget = hd, expanded) => {
+    if (hd.matches("h3.subchapter")) {
+      const open = expanded ?? hd.getAttribute("aria-expanded") !== "true";
+      el.classList.add("collapsible");
+      el.classList.toggle("collapsed", !open);
+      hd.setAttribute("aria-expanded", String(open));
+      return;
+    }
     var isCollapsed = el.classList.contains("collapsed");
-    if (isCollapsed) {
-      Array.from(document.getElementsByClassName("chapterBody")).forEach((x) => {
-        if (x !== el) {
-          x.classList.add("collapsed");
-          x.previousElementSibling.classList.remove("expanded");
-        }
-      });
+    const open = expanded ?? isCollapsed;
+    el.querySelectorAll("h3.subchapter[aria-controls]").forEach((heading) => {
+      const content = document.getElementById(heading.getAttribute("aria-controls"));
+      if (content && el.contains(content)) {
+        toggleCollapseExpand(heading, content, null, open);
+      }
+    });
+    if (open) {
+      if (expanded === undefined) {
+        Array.from(document.getElementsByClassName("chapterBody")).forEach((x) => {
+          if (x !== el) {
+            toggleCollapseExpand(x.previousElementSibling, x, null, false);
+          }
+        });
+      }
       el.classList.remove("collapsed");
       // hd.scrollIntoView({ behavior: "smooth", block: "start" });
       hd.classList.add("expanded");
       hd.setAttribute("aria-expanded", "true");
-      setTimeout(() => {
-        hd.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
+      if (scrollTarget) {
+        setTimeout(() => {
+          scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
     } else {
       el.classList.add("collapsed");
       hd.classList.remove("expanded");
@@ -100,6 +117,20 @@
   mychapters.forEach(function(el) {
     var hd = el.previousElementSibling;
 
+    el.querySelectorAll("h3.subchapter[aria-controls]").forEach((heading) => {
+      const content = document.getElementById(heading.getAttribute("aria-controls"));
+      if (!content || !el.contains(content)) {return;}
+      heading.setAttribute("tabindex", "-1");
+      heading.addEventListener("click", () => toggleCollapseExpand(heading, content));
+      heading.addEventListener("keydown", (event) => {
+        if (event.target === heading && (event.key === "Enter" || event.key === " ")) {
+          event.preventDefault();
+          event.stopPropagation();
+          toggleCollapseExpand(heading, content);
+        }
+      });
+    });
+
     /* alert("adding event listener: " + el.tagName + " "  + el.textContent);  */
     // Usage
     hd.addEventListener("click", () => toggleCollapseExpand(hd, el));
@@ -108,7 +139,7 @@
         toggleCollapseExpand(hd, el);
       }
     });
-    el.classList.add("collapsed");
+    toggleCollapseExpand(hd, el, null, false);
   });
   
 
@@ -195,7 +226,7 @@
             if (tag == "tr") {
               list.push(...flattenList(child));
             }
-            if (["aside","li","p","div","code","span","th","td"].includes(tag)) {
+            if (["aside","li","p","div","code","span","th","td","h4"].includes(tag)) {
               list.push(...serialize(child));
             }
           }
@@ -218,6 +249,13 @@
     for (let el of chapterElements) {
       const tag = el.tagName?.toLowerCase();
       switch (tag) {
+        case "div": // Subchapter containers can combine explanatory text and lists.
+          if (el.id && chapter.querySelector("h3.subchapter[aria-controls='" + el.id + "']")) {
+            contentElements.push(...flattenChapter(el));
+          }
+          break;
+        case "h3":
+        case "h4": // subsection headings are searchable at their original position
         case "aside": // fall-through
         case "p":
           contentElements.push(...serialize(el));
@@ -267,7 +305,16 @@
       
       if (containerChapter.classList && containerChapter.classList.contains("collapsed")) {
         containerChapter.classList.remove("collapsed");
+        const heading = containerChapter.previousElementSibling;
+        heading.classList.add("expanded");
+        heading.setAttribute("aria-expanded", "true");
       } 
+      containerChapter.querySelectorAll("h3.subchapter[aria-controls]").forEach((heading) => {
+        const content = document.getElementById(heading.getAttribute("aria-controls"));
+        if (content && containerChapter.contains(content) && content.contains(element)) {
+          toggleCollapseExpand(heading, content, null, true);
+        }
+      });
     }
     function selectRange(element, pos, text) {
       if (element.parentElement.scrollIntoView) {
@@ -528,7 +575,9 @@
             // go to first chapter next sibling element and focus first .cursorNavigate child
             const nextChapterBody = findNextChapterBody(event.target);
             if (!nextChapterBody) {break;}
-            const firstCursorNavigate = nextChapterBody?.querySelector(".cursorNavigate");
+            const firstCursorNavigate = Array.from(
+              nextChapterBody.querySelectorAll(".cursorNavigate")
+            ).find((item) => item.getClientRects().length);
             if (!firstCursorNavigate) {break;}
             if (isDebug) {
               console.log("Focusing 1st found .cursorNavigate element:", firstCursorNavigate.textContent);

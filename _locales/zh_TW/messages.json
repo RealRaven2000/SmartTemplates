@@ -269,6 +269,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "撰寫設定"
+  },
   "conditional.forwardMode": {
     "message": "如果以內聯方式轉發電子郵件，則會插入第一個text參數。 當郵件作為附件轉發時，將使用第二個text參數。"
   },
@@ -304,6 +307,9 @@
   },
   "d.label": {
     "message": "日期(01 到 31) - 前導零"
+  },
+  "date.examples": {
+    "message": "日期與時間範例"
   },
   "date.label": {
     "message": "日期/時間(需與原來的'郵件表頭'相同)"
@@ -468,6 +474,9 @@
   "fileImage.label": {
     "message": "插入圖像 (png, jpg, gif, bmp, svg)。 {imagePath} 可以相對於模板的位置：%file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "檔案、圖片與附件"
+  },
   "fileTemplates.add": {
     "message": "添加"
   },
@@ -522,9 +531,6 @@
   },
   "firstName.label": {
     "message": "名字："
-  },
-  "fix_var.cap": {
-    "message": "固定的變數"
   },
   "fix_vartz_note.label": {
     "message": "可以跟 %X:=sent% 整合"
@@ -597,6 +603,9 @@
   },
   "fwdmsg.cap": {
     "message": "轉寄"
+  },
+  "general": {
+    "message": "一般"
   },
   "getSmartTemplate4": {
     "message": "购买SmartTemplates许可证"
@@ -671,6 +680,9 @@
   "header.set.to.list": {
     "message": "將 'to' 標頭設置為基於名為 \"listName\" 的地址簿列表的所有成員的電子郵件地址 - 實驗性功能，僅支援標準地址簿。範例: %header.set(to,list:朋友)%"
   },
+  "headers.common": {
+    "message": "常用郵件標頭"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ 已成功安裝",
@@ -723,6 +735,12 @@
   },
   "i.label": {
     "message": "小時,12小時制 (01到12) - 前面加零"
+  },
+  "identity.chapterHead": {
+    "message": "您的身分"
+  },
+  "identity.concept": {
+    "message": "一個郵件帳號可以有多個寄件者身分，每個身分都有自己的姓名與電子郵件地址。此變數使用撰寫視窗中「寄件者」欄位所選的身分。回覆時，初始選擇取決於原始郵件的收件者。撰寫視窗開啟後，您可以變更所選身分。"
   },
   "identity_ab": {
     "message": "使用“addressbook”關鍵字從地址簿中檢索其他身份信息。"
@@ -1242,6 +1260,10 @@
   },
   "showSplash": {
     "message": "顯示更改 + 新聞（啟動畫面）。"
+  },
+  "sig.concept": {
+    "message": "Thunderbird 透過**帳號設定 » 編輯與定址**控制簽名的位置與內容。您可以使用 %sig% 變數覆寫簽名位置。",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "從賬戶設定的簽名檔"
@@ -1970,23 +1992,23 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "自訂日期與時間範例"
+  },
   "xsent_long_result.label": {
     "message": "答案: 星期日, 20/12/2011 at 16:24 o'clock"
   },
-  "xsent_long.cap": {
-    "message": "長字串的範例"
-  },
   "xsent_note.label": {
     "message": "一般來說,日期/時間的變數都會設定為目前的值(目前=指當您建立這封郵件的時候).當合併了 %X:=sent%,則日期/時間變數將會對應原來郵件的日期/時間."
+  },
+  "xsent_short.cap": {
+    "message": "本地化日期與時間範例"
   },
   "xsent_short_note.label": {
     "message": "以下變量可用於兩種變體"
   },
   "xsent_short_result.label": {
     "message": "答案: 星期日, 20/12/2011 08:54:21"
-  },
-  "xsent_short.cap": {
-    "message": "短字串的範例"
   },
   "y.up.label": {
     "message": "年 (1970)"

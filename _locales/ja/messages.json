@@ -266,6 +266,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "メッセージ作成の設定"
+  },
   "conditional.forwardMode": {
     "message": "電子メールがインラインで転送される場合、最初のテキストパラメーターが挿入されます。2番目のテキストパラメーターは、メールが添付ファイルとして転送されるときに使用されます。"
   },
@@ -301,6 +304,9 @@
   },
   "d.label": {
     "message": "日 (01 から 31)"
+  },
+  "date.examples": {
+    "message": "日時の使用例"
   },
   "date.label": {
     "message": "送信日時 (メールヘッダーに記載されている形式)"
@@ -465,6 +471,9 @@
   "fileImage.label": {
     "message": "画像を挿入します (png, jpg, gif, bmp, svg)。 {imagePath} はテンプレートの場所に対して相対的である場合があります: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "ファイル、画像、添付ファイル"
+  },
   "fileTemplates.add": {
     "message": "追加"
   },
@@ -519,9 +528,6 @@
   },
   "firstName.label": {
     "message": "名:"
-  },
-  "fix_var.cap": {
-    "message": "固定変数"
   },
   "fix_vartz_note.label": {
     "message": "%X:=sent% と組み合わせることが可能"
@@ -594,6 +600,9 @@
   },
   "fwdmsg.cap": {
     "message": "転送メッセージ作成の設定"
+  },
+  "general": {
+    "message": "一般"
   },
   "getSmartTemplate4": {
     "message": "SmartTemplates ライセンスを取得する"
@@ -668,6 +677,9 @@
   "header.set.to.list": {
     "message": "アドレス帳リスト \"listName\" に基づいて、全メンバーのメールアドレスで 'to' ヘッダーを設定します - 実験的機能で、標準のアドレス帳のみ対応。例: %header.set(to,list:友達)%"
   },
+  "headers.common": {
+    "message": "よく使うメッセージヘッダー"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ が正常にインストールされました",
@@ -720,6 +732,12 @@
   },
   "i.label": {
     "message": "時 (12 時間表記、01 から 12)"
+  },
+  "identity.chapterHead": {
+    "message": "差出人情報"
+  },
+  "identity.concept": {
+    "message": "メールアカウントには、名前とメールアドレスがそれぞれ異なる複数の差出人情報を設定できます。この変数は、メッセージ作成ウィンドウの「差出人」欄で選択した差出人情報を使用します。返信時の初期選択は、元のメッセージの受信者によって決まります。作成ウィンドウを開いた後でも、選択した差出人情報を変更できます。"
   },
   "identity_ab": {
     "message": "アドレス帳から追加の情報を得るには 'addressbook' キーワードを利用してください。"
@@ -1218,6 +1236,10 @@
   },
   "showSplash": {
     "message": "変更とニュースを表示します (スプラッシュ画面)。"
+  },
+  "sig.concept": {
+    "message": "Thunderbird は、**アカウント設定 » 編集とアドレス入力**で署名の位置と内容を管理します。%sig% 変数を使用すると、挿入位置を上書きできます。",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "アカウントに設定されている署名"
@@ -1958,11 +1980,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "独自の日時書式の例"
+  },
   "xsent_long_result.label": {
     "message": "結果: Tuesday, December 20, 2011 at 4:11PM"
-  },
-  "xsent_long.cap": {
-    "message": "長い書式の例"
   },
   "xsent_long.label": {
     "message": "%X:=sent% %A%, %8% %d%, %Y% at %1%:%M%%p(3)%"
@@ -1970,14 +1992,14 @@
   "xsent_note.label": {
     "message": "日時に関する変数は通常現在の日時が反映されます。%X:=sent% と組み合わせた場合のみ、元のメッセージの日時が反映されます。"
   },
+  "xsent_short.cap": {
+    "message": "地域設定に従う日時書式の例"
+  },
   "xsent_short_note.label": {
     "message": "次の変数はどちらの形式でも使用可能です:"
   },
   "xsent_short_result.label": {
     "message": "結果: Tuesday, December 20, 2011 at 4:11PM"
-  },
-  "xsent_short.cap": {
-    "message": "短い書式の例"
   },
   "y.up.label": {
     "message": "年 (1970)"

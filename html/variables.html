@@ -27,10 +27,13 @@
       <button id="findnext" style="display: none;">Next</button>
     </div>
     <div id="searchHelpContent" class="hidden">__MSG_variable.search__</div>
-		<!-- ##### Fix Variables #### -->
-		<h1 class="helpchapter" id="startHeading">__MSG_fix_var.cap__</h1>
+		<!-- ##### General #### -->
+		<h1 class="helpchapter" id="startHeading">__MSG_general__</h1>
     <div class="chapterBody" name="fixedVariables" tabindex="-1">
-			<ul>
+      <h3 class="cursorNavigate subchapter" aria-expanded="true" aria-controls="identity-content" tabindex="-1">__MSG_identity.chapterHead__</h3>
+      <div id="identity-content">
+        <p class="cursorNavigate">__MSG_identity.concept__</p>
+        <ul>
 				<li class="cursorNavigate"><code>%identity(name)%</code> = __MSG_ownname.label__ (<code class="deprecated">%ownname%</code>)</li>
 				<li class="cursorNavigate"><code>%identity(mail)%</code> = __MSG_ownmail.label__ (<code class="deprecated">%ownmail%</code>)</li>
 				<li class="cursorNavigate"><code>%identity(firstname)%</code><code>%identity(name,link)%</code><code>%identity(firstname,link)%</code></li>
@@ -40,20 +43,29 @@
         <aside><b>__MSG_identity_ab.example__</b><br>
 					<span class="codeExample">__MSG_identity_ab.phoneno__: %identity(addressbook,workphone)%</span></aside>
         
-        <div class="chapterbreak"> </div>
+        </ul>
+      </div>
+      <h3 class="cursorNavigate subchapter" aria-expanded="true" aria-controls="message-fields-content" tabindex="-1">__MSG_headers.common__</h3>
+      <ul id="message-fields-content">
 				<li class="cursorNavigate"><code class="deferable">%date%</code> = __MSG_date.label__</li>
 				<li class="cursorNavigate"><code class="deferable">%recipient%</code> = __MSG_recipient.label__</li>
 				<li class="cursorNavigate"><code class="deferable">%to(mail)%</code> = __MSG_tomail.label__</li>
 				<li class="cursorNavigate"><code class="deferable">%from(mail)%</code> = __MSG_frommail.label__</li>
 				<li class="cursorNavigate"><code class="deferable">%cc(mail)%</code> = __MSG_ccmail.label__</li>
-        
-        <div class="chapterbreak"> </div>
-				<li class="cursorNavigate"><code>%sig%</code><code>%sig(html)%</code><code>%sig(text)%</code> = __MSG_sig.label__</li>
+      </ul>
+      <div class="chapterbreak"> </div>
+      <h3 class="cursorNavigate subchapter" aria-expanded="true" aria-controls="signatures-content" tabindex="-1">__MSG_grpSignatures__</h3>
+      <div id="signatures-content">
+        <p class="cursorNavigate localizedFormatting">__MSG_sig.concept__</p>
+        <ul>
+        <li class="cursorNavigate"><code>%sig%</code><code>%sig(html)%</code><code>%sig(text)%</code> = __MSG_sig.label__</li>
 				<li class="cursorNavigate"><code>%sig(2)%</code> = __MSG_sig2.label__</li>
 				<li class="cursorNavigate"><code>%sig(none)%</code> = __MSG_sig.none.label__</li>
-				
-        <div class="chapterbreak"> </div>
-
+        </ul>
+      </div>
+      <div class="chapterbreak"> </div>
+      <h3 class="cursorNavigate subchapter" aria-expanded="true" aria-controls="files-content" tabindex="-1">__MSG_files.etc__</h3>
+      <ul id="files-content">
 				<li class="cursorNavigate"><code>%file(filePath,encoding)%</code> = __MSG_fileHTML.label__</li>
 				<li class="containsParams cursorNavigate"><code>%file(imagePath,"altText",attributeList)%</code> = __MSG_fileImage.label__</li>
         <li class="paramList cursorNavigate"><span class="param">altText</span> : __MSG_fileImage.altText__</li>
@@ -68,7 +80,9 @@
 				<li class="cursorNavigate"><code>%basepath(folderPath)%</code> = <!-- &basepath.absolute; --></li>
       </div>
 
-        <div class="chapterbreak"> </div>
+      </ul>
+      <h3 class="cursorNavigate subchapter" aria-expanded="true" aria-controls="compose-settings-content" tabindex="-1">__MSG_composer.settings__</h3>
+      <ul id="compose-settings-content">
 				<li class="cursorNavigate"><code>%spellcheck(language)%</code> = __MSG_spellcheck.label__</li>
 				<li class="cursorNavigate"><code>%cursor%</code> = __MSG_cursor.label__</li>
 
@@ -77,7 +91,7 @@
 					__MSG_preheader__  
 					__MSG_parameter.escapeCommas__ <span class="codeExample">\,</span>
 			  </li>
-				<h4 class="cursorNavigate">__MSG_parameters__</h4>
+				<h4 class="cursorNavigate parameterHeading">__MSG_parameters__</h4>
 				<li class="paramList cursorNavigate"><span class="param">headerText</span> : 
 					<span id="preHeaderText">__MSG_preheader.text__</span></li>
 				<li class="paramList cursorNavigate"><span class="param">className</span> : __MSG_preheader.className__</li>
@@ -297,7 +311,7 @@
 			<ul>
 				<a name="textTransform"> </a>
 			  <aside><li class="cursorNavigate"><span class="param">textTransform</span> = __MSG_stringmanip.textTransform__:</li></aside>
-        <h4>textTransform __MSG_parameters__</h4>
+        <h4 class="parameterHeading">textTransform __MSG_parameters__</h4>
         <li class="paramList cursorNavigate"><span class="paramLiteral">lowercase</span> = __MSG_stringmanip.textTransform.lcase__</li>
         <li class="paramList cursorNavigate"><span class="paramLiteral">uppercase</span> = __MSG_stringmanip.textTransform.ucase__</li>
         <li class="paramList cursorNavigate"><span class="paramLiteral">capitalize</span> = __MSG_stringmanip.textTransform.capitalize__</li>
@@ -311,7 +325,7 @@
       <ul>
         <aside class="cursorNavigate">__MSG_quote_changers.desc__ <a href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation" target="_blank">Read Docs</a>.</aside>
         <li class="cursorNavigate"><code>%quotePlaceholder(<span class="param">quoteLevel</span>)</code> __MSG_quotePlaceholder__</li>
-        <h4 class="cursorNavigate">__MSG_parameters__</h4>
+        <h4 class="cursorNavigate parameterHeading">__MSG_parameters__</h4>
         <li class="paramList cursorNavigate"><span class="param">quoteLevel</span> __MSG_quotePlaceholder.level__</li>
         <li class="cursorNavigate"><code>%suppressQuoteHeaders%</code>__MSG_suppressQuoteHdr__</li>
         <li class="cursorNavigate"><code>%deleteQuotedText("<span class="param">searchText</span>",<span class="param">quoteLevel</span>)%</code> __MSG_deleteQuotedText__</li>
@@ -319,7 +333,7 @@
         <li class="cursorNavigate"><code>%deleteQuotedTags("<span class="param">selector</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> __MSG_deleteQuotedTags__ </li>
         <li class="cursorNavigate"><code>%replaceQuotedTags("<span class="param">selector</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> __MSG_replaceQuotedTags__ </li>
         
-        <h4 class="cursorNavigate">__MSG_parameters__</h4>
+        <h4 class="cursorNavigate parameterHeading">__MSG_parameters__</h4>
         <li class="paramList cursorNavigate"><span class="param">searchText</span> __MSG_regexpAnyText__
         <aside>__MSG_whitespace_note__</aside>
         </li>
@@ -342,14 +356,14 @@
 				<li class="cursorNavigate"><code>%tags%</code>__MSG_tags.plaintext__</li>
 				<li class="cursorNavigate"><code>%tags(<span class="param">__MSG_params.optional__</span>)%</code>__MSG_tags.params__</li>
 
-				<h4 class="cursorNavigate">__MSG_tags.presets__</h4>
+				<h4 class="cursorNavigate parameterHeading">__MSG_tags.presets__</h4>
 
         <li class="paramList cursorNavigate"><span class="paramLiteral">color</span> </li>
         <li class="paramList cursorNavigate"><span class="paramLiteral">color-filled</span> </li>
         <li class="paramList cursorNavigate"><span class="paramLiteral">filled</span> </li>
         <li class="paramList cursorNavigate"><span class="paramLiteral">dark-filled</span> __MSG_tags.preset.darkFilled__ </li>
 
-				<h4>__MSG_parameters__</h4>
+				<h4 class="parameterHeading">__MSG_parameters__</h4>
         <li class="paramList cursorNavigate"><span class="paramLiteral">size=<i>fontSizeValue</i></span> __MSG_tags.fontSize__ </li>
         <li class="paramList cursorNavigate"><span class="paramLiteral">delimiter="<i>delimiterString</i>"</span> __MSG_tags.delimiter__ 
 					<span class="paramLiteral">\,</span></li>
@@ -365,7 +379,7 @@
 					</li>
 			  </aside>
 
-				<h4>__MSG_examples__</h4>
+				<h4 class="parameterHeading">__MSG_examples__</h4>
 				<table class="codeTable">
 					<tr>
 						<td>%tags%</td>
@@ -533,20 +547,16 @@ style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0
     </div>
     
     
-		<!-- ##### Longstring Description #### -->
-		<h1 class="helpchapter">__MSG_xsent_long.cap__</h1>
+		<!-- ##### Date and time examples #### -->
+		<h1 class="helpchapter">__MSG_date.examples__</h1>
     <div class="chapterBody" name="long" tabindex="-1">
-			<ul>
+      <h3 class="cursorNavigate subchapter" aria-expanded="true" aria-controls="custom-date-example" tabindex="-1">__MSG_xsent_long.cap__</h3>
+      <ul id="custom-date-example">
 				<li class="cursorNavigate"><code class="noWrite">%X:=sent% %A%, %d%.%m%.%Y% %H%:%M% %date_tz%</code>
 				    <br>__MSG_xsent_long_result.label__</li>
 			</ul>
-    </div>
-    
-    
-		<!-- ##### Shortstring Description #### -->
-		<h1 class="helpchapter">__MSG_xsent_short.cap__</h1>
-    <div class="chapterBody" name="short" tabindex="-1">
-			<ul>
+      <h3 class="cursorNavigate subchapter" aria-expanded="true" aria-controls="localized-date-example" tabindex="-1">__MSG_xsent_short.cap__</h3>
+      <ul id="localized-date-example">
 				<li class="cursorNavigate"><code class="noWrite">%X:=sent% %datelocal%</code>
 				    <br>__MSG_xsent_short_result.label__</li>
 			</ul>
@@ -573,10 +583,10 @@ style="background-color:#e18700;color:white;border-radius:0.7em;padding-inline:0
 			<table id="keywords">
 				<tbody>
 					<tr class="tr-keywords cursorNavigate">
-						<th><img class="small_icon" alt="" src="skin/icons/variable-keyword.png" >__MSG_table_keyword.label__</th>
-						<th><img class="small_icon" alt="" src="skin/icons/mail-new.png" >__MSG_table_new.label__</th>
-						<th><img class="small_icon" alt="" src="skin/icons/mail-reply.png" >__MSG_table_reply.label__</th>
-						<th><img class="small_icon" alt="" src="skin/icons/mail-fwd.png" >__MSG_table_fwd.label__</th>
+						<th><img class="small_icon" alt="" src="../chrome/content/skin/icons/variable-keyword.png" >__MSG_table_keyword.label__</th>
+						<th><img class="small_icon" alt="" src="../chrome/content/skin/icons/mail-new.png" >__MSG_table_new.label__</th>
+						<th><img class="small_icon" alt="" src="../chrome/content/skin/icons/mail-reply.png" >__MSG_table_reply.label__</th>
+						<th><img class="small_icon" alt="" src="../chrome/content/skin/icons/mail-fwd.png" >__MSG_table_fwd.label__</th>
 					</tr>
 					<tr class="tr-keywords cursorNavigate">
 						<td><code>%A%</code> <code>%a%</code></td>

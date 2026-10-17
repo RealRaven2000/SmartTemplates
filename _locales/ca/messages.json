@@ -269,6 +269,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Paràmetres de redacció"
+  },
   "conditional.forwardMode": {
     "message": "Si el correu electrònic es reenvia en línia, s'insereix el primer paràmetre de text. El segon paràmetre de text s'utilitza quan el correu es reenvia com a fitxer adjunt."
   },
@@ -304,6 +307,9 @@
   },
   "d.label": {
     "message": "Jorn del mes (01 a 31)"
+  },
+  "date.examples": {
+    "message": "Exemples de data i hora"
   },
   "date.label": {
     "message": "Data e ora (las del messatge original)"
@@ -468,6 +474,9 @@
   "fileImage.label": {
     "message": "Insereix una imatge (png, jpg, gif, bmp, svg). {imagePath} pot ser relatiu a la ubicació de la plantilla: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Fitxers, imatges i adjunts"
+  },
   "fileTemplates.add": {
     "message": "Afegeix"
   },
@@ -522,9 +531,6 @@
   },
   "firstName.label": {
     "message": "Nom:"
-  },
-  "fix_var.cap": {
-    "message": "Variablas fixas"
   },
   "fix_vartz_note.label": {
     "message": "Pòt èsser combinada amb %X:=sent%"
@@ -597,6 +603,9 @@
   },
   "fwdmsg.cap": {
     "message": "Messatges transferits"
+  },
+  "general": {
+    "message": "General"
   },
   "getSmartTemplate4": {
     "message": "Obteniu SmartTemplates Pro"
@@ -671,6 +680,9 @@
   "header.set.to.list": {
     "message": "estableix l'encapçalament 'to' amb les adreces de correu de tots els membres de la llista de llibres d'adreces anomenada \"listName\" - experimental, només admet llibres d'adreces estàndard. Exemple: %header.set(to,list:Amics)%"
   },
+  "headers.common": {
+    "message": "Capçaleres de missatge més utilitzades"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ s'ha installat correctament",
@@ -723,6 +735,12 @@
   },
   "i.label": {
     "message": "Oras, format 12h (01 a 12)"
+  },
+  "identity.chapterHead": {
+    "message": "La vostra identitat"
+  },
+  "identity.concept": {
+    "message": "Un compte de correu pot tenir diverses identitats de remitent, cadascuna amb el seu nom i adreça electrònica. Aquesta variable utilitza la identitat seleccionada al camp «De» de la finestra de redacció. En respondre, la selecció inicial depèn de qui va rebre el missatge original. Podeu canviar la identitat seleccionada després d’obrir la finestra de redacció."
   },
   "identity_ab": {
     "message": "Utilitzeu la paraula clau 'llibreta d'adreces' per recuperar informació d'identitat addicional de la llibreta d'adreces."
@@ -1248,6 +1266,10 @@
   },
   "showSplash": {
     "message": "Canvis + notícies (pantalla de presentació)."
+  },
+  "sig.concept": {
+    "message": "El Thunderbird controla la posició i el contingut de la signatura mitjançant **Paràmetres del compte » Redacció i adreçament**. Podeu substituir la posició utilitzant la variable %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Signatura eissida dels paramètres del compte"
@@ -1991,11 +2013,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "Exemple de data i hora personalitzades"
+  },
   "xsent_long_result.label": {
     "message": "Resultat : Dimenge, 20/12/2011 a 12:15"
-  },
-  "xsent_long.cap": {
-    "message": "Exemple d'un format long:"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%/%m%/%Y% a %H%:%M%"
@@ -2003,14 +2025,14 @@
   "xsent_note.label": {
     "message": "Per defaut, las variablas de data e ora seràn totjorn inicializadas amb las valors correntas (al moment de la creacion del messatge). Combinat amb %X:=sent%, las variablas de data e ora seràn las del messatge original."
   },
+  "xsent_short.cap": {
+    "message": "Exemple de data i hora en format local"
+  },
   "xsent_short_note.label": {
     "message": "Amai, podètz utilizar aquelas variablas amb las doas variantas :"
   },
   "xsent_short_result.label": {
     "message": "Resultat : Dimenge, 20/12/2011 08:54:21"
-  },
-  "xsent_short.cap": {
-    "message": "Exemple de format cort:"
   },
   "y.up.label": {
     "message": "Annada (1970)"

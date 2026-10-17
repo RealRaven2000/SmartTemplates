@@ -266,6 +266,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Настройки составления сообщений"
+  },
   "conditional.forwardMode": {
     "message": "Если письмо пересылается внутри сообщения, то будет вставлен первый текстовый параметр. Второй текстовый параметр будет использован в том случае, если письмо пересылается как вложение."
   },
@@ -301,6 +304,9 @@
   },
   "d.label": {
     "message": "День месяца (01-31)"
+  },
+  "date.examples": {
+    "message": "Примеры даты и времени"
   },
   "date.label": {
     "message": "Дата / Время (из сообщения)"
@@ -465,6 +471,9 @@
   "fileImage.label": {
     "message": "Вставляет изображение (png, jpg, gif, bmp, svg). {imagePath} может быть относительно расположения шаблона: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Файлы, изображения и вложения"
+  },
   "fileTemplates.add": {
     "message": "Добавить"
   },
@@ -519,9 +528,6 @@
   },
   "firstName.label": {
     "message": "Имя:"
-  },
-  "fix_var.cap": {
-    "message": "Переменные"
   },
   "fix_vartz_note.label": {
     "message": "Может быть использована с %X:=sent%"
@@ -594,6 +600,9 @@
   },
   "fwdmsg.cap": {
     "message": "Переслать"
+  },
+  "general": {
+    "message": "Общие"
   },
   "getSmartTemplate4": {
     "message": "Получить лицензию SmartTemplates"
@@ -668,6 +677,9 @@
   "header.set.to.list": {
     "message": "устанавливает заголовок 'to' на адреса электронной почты всех участников из списка адресной книги с именем \"listName\" - экспериментально, поддерживаются только стандартные адресные книги. Пример: %header.set(to,list:Друзья)%"
   },
+  "headers.common": {
+    "message": "Часто используемые заголовки сообщений"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Успешно установлено $addonName$",
@@ -720,6 +732,12 @@
   },
   "i.label": {
     "message": "Часы (01-12)"
+  },
+  "identity.chapterHead": {
+    "message": "Ваша личность"
+  },
+  "identity.concept": {
+    "message": "У почтовой учётной записи может быть несколько личностей отправителя, каждая со своим именем и адресом электронной почты. Эта переменная использует личность, выбранную в поле «От» окна составления сообщения. При ответе первоначальный выбор зависит от того, кто получил исходное сообщение. Выбранную личность можно изменить после открытия окна составления сообщения."
   },
   "identity_ab": {
     "message": "Используйте ключевое слово «addressbook», чтобы получить дополнительную идентификационную информацию из адресной книги."
@@ -1245,6 +1263,10 @@
   },
   "showSplash": {
     "message": "Показать изменения + новости (заставка)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird управляет положением и содержимым подписи в **Параметры учётной записи » Составление и адресация**. Вы можете переопределить положение с помощью переменной %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Подпись"
@@ -1994,11 +2016,11 @@
       }
     }
   },
+  "xsent_long.cap": {
+    "message": "Пример собственного формата даты и времени"
+  },
   "xsent_long_result.label": {
     "message": "Результат: Вторник, 20 Декабря, 2011 в 4:11пп"
-  },
-  "xsent_long.cap": {
-    "message": "Пример длинной строки:"
   },
   "xsent_long.label": {
     "message": "%X:=sent% %A%, %d% %8%, %Y% в %1%:%M%%p(3)%"
@@ -2006,14 +2028,14 @@
   "xsent_note.label": {
     "message": "Дата / время имеют изначально текущие значения. В комбинации с %X:=sent% будет использовано значение из сообщения."
   },
+  "xsent_short.cap": {
+    "message": "Пример даты и времени в местном формате"
+  },
   "xsent_short_note.label": {
     "message": "Следующие переменные могут быть использованы в обоих вариантах:"
   },
   "xsent_short_result.label": {
     "message": "Результат: Вторник, 20 Декабря, 2011 в 4:11пп"
-  },
-  "xsent_short.cap": {
-    "message": "Пример короткой строки:"
   },
   "y.up.label": {
     "message": "Год (1970)"

@@ -198,6 +198,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Pengaturan penulisan pesan"
+  },
   "conditional.forwardMode": {
     "message": "Jika email diteruskan sebaris, parameter teks pertama dimasukkan. Parameter teks kedua digunakan saat email diteruskan sebagai lampiran."
   },
@@ -230,6 +233,9 @@
   },
   "d.label": {
     "message": "Hari dalam Sebulan (01 - 31) - dengan nol"
+  },
+  "date.examples": {
+    "message": "Contoh tanggal dan waktu"
   },
   "date.label": {
     "message": "Tanggal / Waktu (sama seperti 'Mailheader' asli)"
@@ -354,6 +360,9 @@
   "fileHTML.label": {
     "message": "HTML atau berkas teks biasa. Diasumsikan UTF-8 ketika menghilangkan opsi parameter charset."
   },
+  "files.etc": {
+    "message": "Berkas, gambar, dan lampiran"
+  },
   "fileTemplates.add": {
     "message": "Tambah"
   },
@@ -408,9 +417,6 @@
   },
   "firstName.label": {
     "message": "Nama Depan:"
-  },
-  "fix_var.cap": {
-    "message": "Variabel tetap"
   },
   "fix_vartz_note.label": {
     "message": "Dapat digabung dengan %X:=sent%"
@@ -471,6 +477,9 @@
   },
   "fwdmsg.cap": {
     "message": "Teruskan"
+  },
+  "general": {
+    "message": "Umum"
   },
   "getSmartTemplate4": {
     "message": "Dapatkan Lisensi SmartTemplates"
@@ -545,6 +554,9 @@
   "header.set.to.list": {
     "message": "menetapkan header 'to' ke alamat email semua anggota berdasarkan daftar buku alamat bernama \"listName\" - eksperimental, hanya mendukung buku alamat standar. Contoh: %header.set(to,list:Teman)%"
   },
+  "headers.common": {
+    "message": "Header pesan yang umum digunakan"
+  },
   "heading.click": {
     "message": "Klik sebuah tajuk atau"
   },
@@ -577,6 +589,12 @@
   },
   "i.label": {
     "message": "Jam, Format 12-Jam (1 - 12) - dengan nol"
+  },
+  "identity.chapterHead": {
+    "message": "Identitas Anda"
+  },
+  "identity.concept": {
+    "message": "Satu akun surel dapat memiliki beberapa identitas pengirim, masing-masing dengan nama dan alamat surelnya sendiri. Variabel ini menggunakan identitas yang dipilih pada kolom Dari di jendela penulisan pesan. Saat membalas, pilihan awal bergantung pada penerima pesan asli. Anda dapat mengubah identitas yang dipilih setelah jendela penulisan terbuka."
   },
   "im-ex_note1.label": {
     "message": "Anda dapat mengekspor dan mengimpor pengaturan dan template anda yang terkait dengan setiap akun."
@@ -958,6 +976,10 @@
   },
   "showSplash": {
     "message": "Perubahan + berita (Layar Splash)."
+  },
+  "sig.concept": {
+    "message": "Thunderbird mengatur posisi dan isi tanda tangan melalui **Pengaturan Akun » Penulisan & Pengalamatan**. Anda dapat mengganti posisi tersebut dengan menggunakan variabel %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Tanda tangan dari Setelan Akun"
@@ -1375,11 +1397,11 @@
     "description": "🇮🇩 change log",
     "message": "{h3}4.20.2 Rilis Pemeliharaan{/h3}{L} {+extensionName} kini kompatibel dengan Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Peningkatan impor templat akun dan sinkronisasi pengaturan yang diubah [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Memperbaiki header alamat yang menampilkan {{??}} pada header kutipan balasan dan pesan yang diteruskan, serta memulihkan nilai preferensi bawaan yang hilang tanpa mengatur ulang pengaturan yang valid [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Memperbaiki tombol mode debug setelah migrasi penyimpanan pengaturan [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Menghapus pencatatan log yang dapat menyebabkan aplikasi macet cukup lama saat membuka pesan baru, balasan, atau pesan yang diteruskan [issue 425].{/L}{h3}Perubahan Utama pada 4.20{/h3}{L} Memindahkan pengaturan dari basis data konfigurasi global Thunderbird ({{about:config}}) ke penyimpanan ekstensi ({{storage.local}}) [issue 422]. {br}{i}Catatan:{/i} Menghapus instalasi {+extensionName} kini akan mengembalikan pengaturannya ke nilai bawaan.{/L}{L} Memperbarui pemuatan skrip untuk mendukung Thunderbird 155 dan versi yang lebih baru [issue 421].{/L}"
   },
+  "xsent_long.cap": {
+    "message": "Contoh tanggal dan waktu khusus"
+  },
   "xsent_long_result.label": {
     "message": "Hasil: Minggu,20/12/2011 pada pukul 16:24"
-  },
-  "xsent_long.cap": {
-    "message": "Contoh untuk longstring"
   },
   "xsent_long.label": {
     "message": "pukul %X:=sent%%d%/%m%/%Y% at %H%:%M%"
@@ -1387,14 +1409,14 @@
   "xsent_note.label": {
     "message": "Secara Bawaan, variabel Tanggal/Waktu akan selalu diinisialisasi dengan nilai terkini (terkini = waktu saat anda membuat email). Saat digabungkan dengan %X:=sent%, variabel tanggal/waktu akan akan mencerminkan tanggal / waktu pesan asli."
   },
+  "xsent_short.cap": {
+    "message": "Contoh tanggal dan waktu dalam format lokal"
+  },
   "xsent_short_note.label": {
     "message": "Variabel berikut dapat digunakan dikedua varian"
   },
   "xsent_short_result.label": {
     "message": "Hasil: Minggu, 20/12/2011 08:54:21"
-  },
-  "xsent_short.cap": {
-    "message": "Contoh dari shortstring"
   },
   "y.up.label": {
     "message": "Tahun (1970)"

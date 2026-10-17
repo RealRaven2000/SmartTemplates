@@ -1,4 +1,10 @@
-@import url("theming.css"); /* color variables */
+@import url("../chrome/content/skin/theming.css"); /* color variables */
+
+:root {
+  --heading-radius: 0.15em;
+}
+
+
 
 /* ################################################################################### */
 /* ################################ Help Iframe CONTENT ############################## */
@@ -50,10 +56,10 @@ p#allexpander, p#collapseAll {
 }
 
 .help #findprevious {
-  background-image: url("icons/find-previous.svg");
+  background-image: url("../chrome/content/skin/icons/find-previous.svg");
 }
 .help #findnext {
-  background-image: url("icons/find-next.svg");
+  background-image: url("../chrome/content/skin/icons/find-next.svg");
 }
 
 .help #searchBox button {
@@ -144,8 +150,8 @@ p#allexpander, p#collapseAll {
   fill: #0079ef; 
 	height: 20px !important;
   width: 20px;
-  list-style-image: url("icons/help-find-in-page.svg"); 
-  background-image: url("icons/help-find-in-page.svg");
+  list-style-image: url("../chrome/content/skin/icons/help-find-in-page.svg"); 
+  background-image: url("../chrome/content/skin/icons/help-find-in-page.svg");
   margin-right: -1px;
 	min-height: 16px;
   min-width: 16px;
@@ -174,25 +180,61 @@ p#allexpander, p#collapseAll {
   scroll-margin-top: 2em;
 }
 
+*.helpchapter, *.subchapter {
+  align-items: center;
+  color: #ffffff; 
+  cursor: pointer;
+  display: flex;
+  font-weight: bold;
+  font-family: 'Poppins',Roboto,Helvetica !important;
+  line-height: 1.2;
+  text-align: left;
+  width: fit-content;
+}
+
 h1.helpchapter {
   background-image: linear-gradient(to bottom, rgb(36, 80, 190) 0%, rgb(20, 57, 105) 100%);
   border-block: 1px solid #808080;
-  border-radius: 0.25em;
-  cursor: pointer;
-  display: flex;
+  border-radius: var(--heading-radius);
   font-size: 12pt;
-  font-weight: bold;
-  font-family: 'Poppins',Roboto,Helvetica !important;
-  color: #ffffff; /* #ffffff for TT DeepDark Theme */
   padding: 4px 0.5em;
   margin: 7px 0;
-  text-align: left;
-  width: fit-content;
 }
 
 h1.helpchapter:focus {
   outline: 2px dashed #f22a2a !important;
 }
+
+h3.subchapter {
+  background-image: linear-gradient(to bottom, rgb(36, 133, 190) 0%, rgb(20, 102, 105) 100%);
+  border-block: 1px solid #808080;
+  border-radius: var(--heading-radius);  
+  font-size: 11pt;
+  padding: 4px 0.5em;
+  margin: 7px 0;
+}
+
+/* The heading already supplies the gap above a subsection's introduction. */
+h3.subchapter + div > p:first-child {
+  margin-block-start: 0;
+}
+
+
+h1.helpchapter::before,
+h3.subchapter::before {
+  content: "\25B6"; /* Filled right-pointing triangle */
+  flex-shrink: 0;
+  font-family: sans-serif;
+  font-size: 0.85em;
+  line-height: 1;
+  margin-inline-end: 0.4em;
+}
+
+h1.helpchapter[aria-expanded="true"]::before,
+h3.subchapter[aria-expanded="true"]::before {
+  content: "\25BC"; /* Filled down-pointing triangle */
+}
+
 .cursorNavigate:focus:first-child {
   border: 1px dashed pink !important;
 }
@@ -215,6 +257,15 @@ h1.helpchapter.expanded {
   background-image: linear-gradient(to bottom, rgb(44, 129, 18) 0%, rgb(14, 83, 105) 100%);
 }
 
+#helpContents h4.parameterHeading {
+  background: transparent;
+  color: inherit !important;
+  font-size: 1em;
+  margin-block: 0.4em 0.15em !important;
+  padding: 0;
+  width: auto;
+}
+
 
 .help ul.chapterBody {
   margin-top: 3px;
@@ -225,6 +276,10 @@ h1.helpchapter.expanded {
   display: none !important;
 }
 
+h3.subchapter:focus {
+  outline: 2px dashed #f22a2a;
+}
+
 .chapterBody {
   display: flex;
   max-height: 1500px;
@@ -232,24 +287,14 @@ h1.helpchapter.expanded {
   flex-direction: column;
 }
 
+/* Keep subsection controls visible while hiding the parent chapter's content.
+   A subsection can still be opened independently while its parent is collapsed. */
 .chapterBody.collapsed {
-  background-color: light-gray;
-  margin-top: -0.5em;  
-  max-height: 0;
-  transition: max-height 0.12s ease-out;
-  overflow: hidden;  
+  max-height: none;
 }
 
-.chapterBody.collapsed ul, 
-.chapterBody.collapsed li, 
-.chapterBody.collapsed aside,
-.chapterBody.collapsed table,
-.chapterBody.collapsed h4 {
-  /* display: none; */
-  visibility: hidden;
-  opacity: 0;  
-  color: #ffffff;
-  transition: visibility 0s, opacity 0.5s linear;
+.chapterBody.collapsed > :not(h3.subchapter):not(.collapsible:not(.collapsed)) {
+  display: none;
 }
 
 .chapterBody .chapterbreak {
@@ -260,7 +305,7 @@ h1.helpchapter.expanded {
 
 /* style the gear emoji to go to standard address format settings... */
 .config_default {
-  background-image: url('icons/settings-simple.svg') !important;
+  background-image: url('../chrome/content/skin/icons/settings-simple.svg') !important;
   background-repeat: no-repeat;
   background-origin: initial;
   background-position: 3px;
@@ -276,6 +321,12 @@ h1.helpchapter.expanded {
 .config_default:hover {
   background-color: rgba(80,80,80,0.15);
   border: 1px solid rgba(40,40,40,0.9);
+}
+
+.config_default:not(:hover) {
+  -moz-context-properties: fill;
+  color: white;
+  fill: white;
 }
 
 /** anchor tags */
@@ -308,9 +359,11 @@ b {
 #keywords {
   border: 0;
   border-collapse: collapse;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  align-self: flex-start;
+  width: auto;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -399,11 +452,11 @@ code .paramLiteral, code .param {
   padding-inline: 2px;  
 }
 .paramList {
-  margin: 5px 0;
+  margin: 3px 0;
 }
 .paramList .param {
   background-color: var(--paramlist-param);
-  padding: 3px;
+  padding: 1px 3px;
 }
 
 .monotype {
@@ -443,10 +496,10 @@ table div.yes, table div.no {
 	display: list-item;
 }
 table div.yes {
-	list-style-image:  url("icons/enabled.png");
+	list-style-image:  url("../chrome/content/skin/icons/enabled.png");
 }
 table div.no {
-	list-style-image:  url("icons/disabled.png");
+	list-style-image:  url("../chrome/content/skin/icons/disabled.png");
 }
 
 /* #################################### TABLE FOR VARS ############################### */
@@ -458,6 +511,11 @@ table div.no {
   vertical-align: middle;
   border-bottom: 1px solid #808080;
   padding: 0;
+}
+
+#keywords th,
+#keywords td {
+  padding-inline: 0.75em;
 }
 
 /* ################################## SCREENSHOT CLASS ############################### */

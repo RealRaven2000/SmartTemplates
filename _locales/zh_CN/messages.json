@@ -270,6 +270,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "撰写设置"
+  },
   "conditional.forwardMode": {
     "message": "如果以内联方式转发电子邮件，则会插入第一个text参数。 当邮件作为附件转发时，将使用第二个text参数。"
   },
@@ -305,6 +308,9 @@
   },
   "d.label": {
     "message": "一个月里的一天 (01 至 31)"
+  },
+  "date.examples": {
+    "message": "日期和时间示例"
   },
   "date.label": {
     "message": "日期和时间（和初始的邮件头一样）"
@@ -469,6 +475,9 @@
   "fileImage.label": {
     "message": "插入图像 (png, jpg, gif, bmp, svg)。 {imagePath} 可以相对于模板位置：%file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "文件、图像和附件"
+  },
   "fileTemplates.add": {
     "message": "添加"
   },
@@ -523,9 +532,6 @@
   },
   "firstName.label": {
     "message": "名字"
-  },
-  "fix_var.cap": {
-    "message": "基础变量"
   },
   "fix_vartz_note.label": {
     "message": "可以和 %X:=sent% 组合"
@@ -598,6 +604,9 @@
   },
   "fwdmsg.cap": {
     "message": "转发消息"
+  },
+  "general": {
+    "message": "常规"
   },
   "getSmartTemplate4": {
     "message": "获取 SmartTemplates"
@@ -672,6 +681,9 @@
   "header.set.to.list": {
     "message": "将 'to' 头设置为基于名为 \"listName\" 的地址簿列表的所有成员的电子邮件地址 - 实验性功能，仅支持标准地址簿。示例: %header.set(to,list:朋友)%"
   },
+  "headers.common": {
+    "message": "常用邮件标头"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "成功安装 $addonName$",
@@ -724,6 +736,12 @@
   },
   "i.label": {
     "message": "小时，12-小时格式 (01 至 12)"
+  },
+  "identity.chapterHead": {
+    "message": "您的身份"
+  },
+  "identity.concept": {
+    "message": "一个邮件账户可以有多个发件人身份，每个身份都有自己的姓名和电子邮件地址。此变量使用撰写窗口中“发件人”字段所选的身份。回复时，初始选择取决于原邮件的收件人。撰写窗口打开后，您可以更改所选身份。"
   },
   "identity_ab": {
     "message": "使用 'addressbook' 关键字从地址簿检索额外的身份信息。"
@@ -1241,6 +1259,10 @@
   },
   "showSplash": {
     "message": "显示更改 + 新闻（启动画面）。"
+  },
+  "sig.concept": {
+    "message": "Thunderbird 通过**账户设置 » 撰写与地址**控制签名的位置和内容。您可以使用 %sig% 变量覆盖签名位置。",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Siganture 签名（来自TB账户设置"
@@ -1982,16 +2004,16 @@
     }
   },
   "xsent_long.cap": {
-    "message": "长字符串的例子："
+    "message": "自定义日期和时间示例"
   },
   "xsent_note.label": {
     "message": "上面的变量将正常设置当前的值。当与 %X:=sent% 组合时，将设置过去的值。"
   },
+  "xsent_short.cap": {
+    "message": "本地化日期和时间示例"
+  },
   "xsent_short_note.label": {
     "message": "额外的，你可以在以下两个变种变量使用："
-  },
-  "xsent_short.cap": {
-    "message": "短字符串的例子："
   },
   "y.up.label": {
     "message": "年 (1970)"

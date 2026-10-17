@@ -34,8 +34,14 @@
   "btn-want-to-donate": {
     "message": "Tôi muốn giúp đỡ với khoản đóng góp một lần."
   },
+  "composer.settings": {
+    "message": "Cài đặt soạn thư"
+  },
   "cost-of-independence": {
     "message": "Việc phát triển phần mềm tốn kém thời gian và tiền bạc - không giống như nhiều ứng dụng nền tảng, Tiện ích bổ sung không được viết bởi các tập đoàn lớn, cũng như không được Mozilla tài trợ theo bất kỳ hình thức nào."
+  },
+  "date.examples": {
+    "message": "Ví dụ về ngày và giờ"
   },
   "donate": {
     "message": "Giúp đỡ với khoản đóng góp một lần."
@@ -50,8 +56,17 @@
     "description": "Description of the extension.",
     "message": "Một cách mạnh mẽ để tạo các thư trả lời tùy chỉnh bằng cách tự động chèn các tiêu đề thư khác nhau. Mẫu có thể được tạo cho mọi danh tính thư, cũng hỗ trợ các tệp html bên ngoài và các biểu định kiểu."
   },
+  "files.etc": {
+    "message": "Tệp, hình ảnh và tệp đính kèm"
+  },
+  "general": {
+    "message": "Chung"
+  },
   "header.set.to.list": {
     "message": "đặt tiêu đề 'to' tới địa chỉ email của tất cả thành viên dựa trên danh sách sổ địa chỉ có tên \"listName\" - thử nghiệm, chỉ hỗ trợ sổ địa chỉ tiêu chuẩn.Ví dụ: %header.set(to,list:Bạn bè)%"
+  },
+  "headers.common": {
+    "message": "Các tiêu đề thư thường dùng"
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
@@ -72,6 +87,12 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "identity.chapterHead": {
+    "message": "Danh tính của bạn"
+  },
+  "identity.concept": {
+    "message": "Một tài khoản thư có thể có nhiều danh tính người gửi, mỗi danh tính có tên và địa chỉ email riêng. Biến này sử dụng danh tính được chọn trong trường Từ của cửa sổ soạn thư. Khi trả lời, lựa chọn ban đầu phụ thuộc vào người đã nhận thư gốc. Bạn có thể thay đổi danh tính đã chọn sau khi cửa sổ soạn thư mở ra."
   },
   "label-remind-me": {
     "message": "Nhắc lại tôi sau $countDays$ ngày.",
@@ -142,6 +163,10 @@
   },
   "renew-your-license": {
     "message": "Gia hạn giấy phép của bạn."
+  },
+  "sig.concept": {
+    "message": "Thunderbird quản lý vị trí và nội dung chữ ký qua **Cài đặt tài khoản » Soạn thư & Địa chỉ**. Bạn có thể ghi đè vị trí bằng biến %sig%.",
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "SmartTemplateMainButton.expired": {
     "message": "Giấy phép đã hết hạn!"
@@ -333,5 +358,11 @@
   },
   "sig.none.label": {
     "message": "Xóa mọi chữ ký. Ghi đè cài đặt tài khoản."
+  },
+  "xsent_long.cap": {
+    "message": "Ví dụ về định dạng ngày và giờ tùy chỉnh"
+  },
+  "xsent_short.cap": {
+    "message": "Ví dụ về ngày và giờ theo định dạng địa phương"
   }
 }
