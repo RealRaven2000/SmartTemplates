@@ -1310,6 +1310,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Wat is er nieuw…"
   },
+  "snippets.contextMenu": {
+    "message": "Tonen in het contextmenu"
+  },
   "snippets.head": {
     "message": "Slimme fragmenten"
   },

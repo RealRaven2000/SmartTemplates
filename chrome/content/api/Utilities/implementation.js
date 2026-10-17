@@ -82,6 +82,21 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           return results;
         },
 
+        insertSnippet: async function (tabId, entry) {
+          const composeWindow = context.extension.tabManager.get(tabId).window;
+          if (composeWindow?.document.documentElement.getAttribute("windowtype") !== "msgcompose" ||
+              !composeWindow.gMsgCompose?.editor) {
+            throw new Error("Snippet insertion requires an open compose tab.");
+          }
+          const fileTemplates = composeWindow.SmartTemplate4?.fileTemplates;
+          if (typeof fileTemplates?.insertFileEntryInComposer !== "function") {
+            throw new Error("SmartTemplates is not ready in this compose window.");
+          }
+          await fileTemplates.insertFileEntryInComposer({
+            path: entry.path, label: entry.label, category: entry.category || "",
+          });
+        },
+
         beforeSend: async function (tabId, composeDetails) {
           // [issue 284] tidy up all fields when user hits [Send] button
           let tabObject = context.extension.tabManager.get(tabId);

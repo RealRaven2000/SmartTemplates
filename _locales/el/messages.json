@@ -1340,6 +1340,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Τι νέο…"
   },
+  "snippets.contextMenu": {
+    "message": "Εμφάνιση στο μενού περιβάλλοντος"
+  },
   "snippets.head": {
     "message": "Έξυπνα Σκορπίσματα"
   },

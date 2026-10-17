@@ -249,6 +249,7 @@ SmartTemplate4.fileTemplates = {
             path: entry.path,
             label: entry.label,
             category: entry.category || "",
+            ...(Object.hasOwn(entry, "contextMenu") ? { contextMenu: entry.contextMenu } : {}),
           });
         }
       }

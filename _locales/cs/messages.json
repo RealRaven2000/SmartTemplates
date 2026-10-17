@@ -1322,6 +1322,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Co je nového…"
   },
+  "snippets.contextMenu": {
+    "message": "Zobrazit v místní nabídce"
+  },
   "snippets.head": {
     "message": "Smart Snippets"
   },

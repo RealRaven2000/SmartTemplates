@@ -1331,6 +1331,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Mitä uutta…"
   },
+  "snippets.contextMenu": {
+    "message": "Näytä pikavalikossa"
+  },
   "snippets.head": {
     "message": "Älykkäät katkelmat"
   },

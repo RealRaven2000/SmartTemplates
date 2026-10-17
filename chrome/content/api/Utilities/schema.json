@@ -68,6 +68,25 @@
       },
 
       {
+        "name": "insertSnippet",
+        "type": "function",
+        "description": "Insert a local Smart Snippet into the specified compose tab using the legacy template processor.",
+        "async": true,
+        "parameters": [
+          { "name": "tabId", "type": "integer", "description": "Target compose tab identifier" },
+          {
+            "name": "entry",
+            "type": "object",
+            "properties": {
+              "path": { "type": "string" },
+              "label": { "type": "string" },
+              "category": { "type": "string", "optional": true }
+            }
+          }
+        ]
+      },
+
+      {
         "name": "beforeSend",
         "type": "function",
         "async": true,

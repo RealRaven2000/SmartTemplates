@@ -1355,6 +1355,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶What's new…"
   },
+  "snippets.contextMenu": {
+    "message": "Show in context menu"
+  },
   "snippets.head": {
     "message": "Smart Snippets"
   },

@@ -1286,6 +1286,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Novità…"
   },
+  "snippets.contextMenu": {
+    "message": "Mostra nel menu contestuale"
+  },
   "snippets.head": {
     "message": "Frammenti intelligenti"
   },

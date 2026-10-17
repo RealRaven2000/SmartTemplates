@@ -1291,6 +1291,7 @@ function getAddressesFromContacts(list) {
 
 async function main() {
   await prefsReady;
+
   // we need these helper functions for calculating an extension to License.info
   async function getGraceDate() {
     let gracePeriodStart,
@@ -1419,21 +1420,133 @@ async function main() {
   if (isDebugAddon) {
     console.log("ST main(): Finished setting up license startup code");
   }
+  // [issue 432] Rebuild only compose-body snippet items after saved entries arrive.
+  const snippetMenuIds = [];
+  const snippetMenuEntries = new Map();
+  let snippetMenuRefresh = Promise.resolve();
+  let snippetMenuRefreshNumber = 0;
+  let snippetMenuSignature = null;
+
+  function logSnippetMenu(message, ...details) {
+    if (Preferences.isDebug() && Preferences.isDebug("API.menus")) {
+      console.log(message, ...details);
+    }
+  }
+
+  function refreshSnippetContextMenu(entries) {
+    const refreshNumber = ++snippetMenuRefreshNumber;
+    // Snapshot each update so later edits cannot change a queued rebuild.
+    const snippets = (entries.snippets || [])
+      .filter((entry) => entry.contextMenu === true)
+      .map((entry) => ({ ...entry }));
+    const signature = JSON.stringify(snippets.map(({ path, label, category }) => ({
+      path, label, category: category || "",
+    })));
+    logSnippetMenu("[ST432] refresh requested", {
+      refreshNumber, selected: snippets.length, total: entries.snippets?.length,
+    });
+    const rebuild = async () => {
+      if (signature === snippetMenuSignature) {
+        logSnippetMenu("[ST432] unchanged menu; refresh skipped", refreshNumber);
+        return;
+      }
+      snippetMenuSignature = null;
+      logSnippetMenu("[ST432] rebuild started", {
+        refreshNumber, existingIds: [...snippetMenuIds],
+      });
+      snippetMenuEntries.clear();
+      // Children were created after parents, so remove them in reverse order.
+      while (snippetMenuIds.length) {
+        logSnippetMenu("[ST432] removing", refreshNumber, snippetMenuIds[snippetMenuIds.length - 1]);
+        await browser.menus.remove(snippetMenuIds[snippetMenuIds.length - 1]);
+        snippetMenuIds.pop();
+      }
+      const categories = new Map();
+      const createItem = (properties) => new Promise((resolve, reject) => {
+        logSnippetMenu("[ST432] creating", refreshNumber, properties.id, properties.parentId || "root");
+        browser.menus.create(properties, () => {
+          const error = browser.runtime.lastError;
+          if (error) {
+            logSnippetMenu("[ST432] creation failed", refreshNumber, properties.id, error.message);
+            reject(new Error(error.message));
+          } else {
+            snippetMenuIds.push(properties.id);
+            resolve();
+          }
+        });
+      });
+      const rootId = "smart_snippet_root";
+      const singleCategory = snippets[0]?.category || "";
+      const categoryIsRoot = !!singleCategory &&
+        snippets.every((entry) => entry.category === singleCategory);
+      if (snippets.length) {
+        await createItem({
+          id: rootId,
+          title: categoryIsRoot ? singleCategory : browser.i18n.getMessage("snippets.head"),
+          contexts: ["compose_body"],
+        });
+        if (categoryIsRoot) {
+          categories.set(singleCategory, rootId);
+        }
+      }
+      // Root entries and category parents follow their first occurrence in the
+      // saved list. Entries within each category also retain the saved order.
+      for (const [index, entry] of snippets.entries()) {
+        const category = entry.category || "";
+        if (category && !categories.has(category)) {
+          const id = "smart_snippet_cat_" + categories.size;
+          await createItem({ id, title: category, parentId: rootId, contexts: ["compose_body"] });
+          categories.set(category, id);
+        }
+        const id = "smart_snippet_" + index;
+        const properties = { id, title: entry.label, parentId: rootId, contexts: ["compose_body"] };
+        if (category) {
+          properties.parentId = categories.get(category);
+        }
+        await createItem(properties);
+        snippetMenuEntries.set(id, entry);
+      }
+      snippetMenuSignature = signature;
+      logSnippetMenu("[ST432] rebuild finished", {
+        refreshNumber, items: snippetMenuIds.length,
+      });
+    };
+    // A failed rebuild must not prevent the next saved update from retrying.
+    snippetMenuRefresh = snippetMenuRefresh.then(rebuild, rebuild);
+    return snippetMenuRefresh;
+  }
+
+  // Register once; the current map replaces closures over outdated arrays.
+  browser.menus.onClicked.addListener(async (info, tab) => {
+    const entry = snippetMenuEntries.get(info.menuItemId);
+    if (!entry) { return; }
+    logSnippetMenu("[ST432] snippet clicked", { path: entry.path, tabId: tab?.id });
+    try {
+      if (!Number.isInteger(tab?.id)) {
+        throw new Error("Snippet menu click did not identify a compose tab.");
+      }
+      await browser.Utilities.insertSnippet(tab.id, {
+        path: entry.path, label: entry.label, category: entry.category || "",
+      });
+    } catch (error) {
+      console.error("[ST432] snippet insertion failed", error);
+    }
+  });
+
   startupDoneResolve(); // <— this triggers everything that waits
 
   if (isDebugAddon) {
     console.log("ST main(): Adding message listeners....");
   }
 
-
   const messageHandlers = {
-    "getLicenseInfo": (_data, _sender) => {
+    getLicenseInfo: (_data, _sender) => {
       return currentLicense.info;
     },
-    "updateLicenseKey": async (data, _sender) => {
+    updateLicenseKey: async (data, _sender) => {
       return await updateLicenseKey(data.key);
     },
-    "showAboutConfig": (data, _sender) => {
+    showAboutConfig: (data, _sender) => {
       // to do: create an API for this one
       messenger.NotifyTools.notifyExperiment({
         event: "showAboutConfig",
@@ -1445,7 +1558,7 @@ async function main() {
         },
       });
     },
-    "openStorageEditor": (data, _sender) => {
+    openStorageEditor: (data, _sender) => {
       webExtensionStorageEditor.open({
         storageArea: "local",
         baseFilter: data.filter,
@@ -1453,7 +1566,7 @@ async function main() {
         showTopLevelKey: false,
       });
     },
-    "showRegistrationDialog": (data, _sender) => {
+    showRegistrationDialog: (data, _sender) => {
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand",
         detail: {
@@ -1464,34 +1577,34 @@ async function main() {
         },
       });
     },
-    "showSplashMsg": (_data, _sender) => {
+    showSplashMsg: (_data, _sender) => {
       showSplash();
     },
-    "showHomePage": (_data, _sender) => {
+    showHomePage: (_data, _sender) => {
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand",
         detail: { cmd: "smartTemplates-support" },
       });
     },
-    "showATNHomePage": (_data, _sender) => {
+    showATNHomePage: (_data, _sender) => {
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand",
         detail: { cmd: "smartTemplates-home" },
       });
     },
-    "showIssuesPage": (_data, _sender) => {
+    showIssuesPage: (_data, _sender) => {
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand",
         detail: { cmd: "smartTemplates-issues" },
       });
     },
-    "showPremiumFeaturePage": (_data, _sender) => {
+    showPremiumFeaturePage: (_data, _sender) => {
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand",
         detail: { cmd: "smartTemplates-features" },
       });
     },
-    "showYouTubePage": (data, _sender) => {
+    showYouTubePage: (data, _sender) => {
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand",
         detail: {
@@ -1500,7 +1613,7 @@ async function main() {
         },
       });
     },
-    "showStationeryePage": (data, _sender) => {
+    showStationeryePage: (data, _sender) => {
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand",
         detail: {
@@ -1509,7 +1622,7 @@ async function main() {
         },
       });
     },
-    "updateStatusbarIcon": (_data, _sender) => {
+    updateStatusbarIcon: (_data, _sender) => {
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand",
         detail: {
@@ -1517,7 +1630,7 @@ async function main() {
         },
       });
     },
-    "openPrefs": async (data, _sender) => {
+    openPrefs: async (data, _sender) => {
       await openPrefs(data);
     },
   };
@@ -1627,11 +1740,14 @@ async function main() {
           break;
 
         case "updateFileTemplates":
+          logSnippetMenu("[ST432] updateFileTemplates received", { time: Date.now() });
           if (Preferences.isDebug("API.menus")) {
             console.log("SmartTemplates updateFileTemplates() [API] data\n");
           }
           fileTemplates.Entries = data.Entries;
           fileTemplates.MRU_Entries = data.MRU_Entries;
+
+          await refreshSnippetContextMenu(data.Entries);
           break;
 
         case "patchHeaderMenuAPI":
@@ -1821,7 +1937,7 @@ async function main() {
               return "unknown";
           }
         }
-      } 
+      }
     } catch (ex) {
       console.error(`Error in onNotifyBackground listener - func(${data.func})`, data, ex);
       return undefined; // ERROR CASE!

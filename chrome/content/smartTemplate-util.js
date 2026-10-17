@@ -2034,7 +2034,7 @@ SmartTemplate4.Util = {
         node.addEventListener(
           "click",
           async function (event) {
-            await util.resolveDeferred(editor, event.target, false);
+            await util.resolveDeferred(editor, event.currentTarget, false);
             return false;
           },
           false
@@ -2044,14 +2044,15 @@ SmartTemplate4.Util = {
         node.addEventListener(
           "contextmenu",
           function (event) {
-            let st4element = event.originalTarget,
-              popup = document.getElementById("SmartTemplate4-ComposerPopup"); // button.ownerDocument.getElementById
-            // document.popupNode = button
-            // document.getElementById('msgcomposeWindow').ownerDocument.getElementById('SmartTemplate4-ComposerPopup')
-            popup.targetNode = event.target;
-            popup.openPopup(st4element, "after_start", 0, 0, true, false, event);
+            const st4element = event.currentTarget;
+            const popup = document.getElementById("SmartTemplate4-ComposerPopup");
+            if (!popup) { return; }
+            // Consume this field's event before opening its custom popup, so
+            // Thunderbird does not also handle it as a compose-body menu.
             event.preventDefault();
-            return false;
+            event.stopPropagation();
+            popup.targetNode = st4element;
+            popup.openPopup(st4element, "after_start", 0, 0, true, false, event);
           },
           false
         );
@@ -4068,7 +4069,9 @@ SmartTemplate4.Util = {
       if (!sanitized) {
         continue;
       }
-      frag.appendChild(sanitized);
+      // [issue 432] Create nodes in the destination document rather than adopting
+      // nodes from the privileged DOMParser document into the compose editor.
+      frag.appendChild(ownerDoc.importNode(sanitized, true));
     }
 
     // Append fragment to the container
@@ -4110,7 +4113,7 @@ SmartTemplate4.Util = {
           }
         }
 
-        container.ownerDocument.head.appendChild(sanitized);
+        container.ownerDocument.head.appendChild(ownerDoc.importNode(sanitized, true));
       }
     }
     return true;

@@ -1346,6 +1346,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Vad är nytt…"
   },
+  "snippets.contextMenu": {
+    "message": "Visa i snabbmenyn"
+  },
   "snippets.head": {
     "message": "Smarta utdrag"
   },

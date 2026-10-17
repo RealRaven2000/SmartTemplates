@@ -1347,6 +1347,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Що нового…"
   },
+  "snippets.contextMenu": {
+    "message": "Показувати в контекстному меню"
+  },
   "snippets.head": {
     "message": "Розумні фрагменти"
   },

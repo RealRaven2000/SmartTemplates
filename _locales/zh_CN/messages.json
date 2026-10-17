@@ -1324,6 +1324,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶更新内容…"
   },
+  "snippets.contextMenu": {
+    "message": "在上下文菜单中显示"
+  },
   "snippets.head": {
     "message": "智能片段"
   },

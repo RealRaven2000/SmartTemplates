@@ -1331,6 +1331,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Novosti…"
   },
+  "snippets.contextMenu": {
+    "message": "Prikaži v priročnem meniju"
+  },
   "snippets.head": {
     "message": "Pametni izrezki"
   },

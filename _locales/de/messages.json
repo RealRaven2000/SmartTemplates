@@ -1309,6 +1309,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Neuigkeiten…"
   },
+  "snippets.contextMenu": {
+    "message": "Im Kontextmenü anzeigen"
+  },
   "snippets.head": {
     "message": "Intelligente Fragmente"
   },

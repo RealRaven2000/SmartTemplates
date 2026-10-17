@@ -1301,6 +1301,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶新機能…"
   },
+  "snippets.contextMenu": {
+    "message": "コンテキストメニューに表示"
+  },
   "snippets.head": {
     "message": "スマートスニペット"
   },

@@ -186,6 +186,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Có gì mới…"
   },
+  "snippets.contextMenu": {
+    "message": "Hiển thị trong menu ngữ cảnh"
+  },
   "special-offer-content": {
     "message": "Nâng cấp các tính năng của bạn và tiết kiệm {bold} $reduction$ {/bold} bằng cách mua giấy phép {linkStartPro}SmartTemplates Pro{linkEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {bold}$salesEnd${/bold}. Hoặc chọn các chức năng tiêu chuẩn với {linkStart}Giấy phép Tiêu chuẩn{linkEnd} mới.",
     "placeholders": {

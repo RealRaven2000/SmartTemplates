@@ -1298,6 +1298,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Нове функције…"
   },
+  "snippets.contextMenu": {
+    "message": "Прикажи у контекстном менију"
+  },
   "snippets.head": {
     "message": "Паметни исечци"
   },

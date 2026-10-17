@@ -1035,6 +1035,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Apa yang baru…"
   },
+  "snippets.contextMenu": {
+    "message": "Tampilkan di menu konteks"
+  },
   "snippets.head": {
     "message": "Cuplikan Cerdas"
   },

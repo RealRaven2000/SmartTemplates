@@ -1331,6 +1331,9 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Què hi ha de nou…"
   },
+  "snippets.contextMenu": {
+    "message": "Mostra al menú contextual"
+  },
   "snippets.head": {
     "message": "Fragments intelligents"
   },
