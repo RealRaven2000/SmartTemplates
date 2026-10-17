@@ -100,9 +100,13 @@ pre.maxW {
 	</ul>
 </article>
 
-<a name="identity"> </a>
-<h3 class="helpchapter">Identity</h3>
+<!-- ##### General #### -->
+<a name="fixed"> </a>
+<h3 class="helpchapter">General</h3>
 <article>
+<a name="identity"> </a>
+<h4>Your identity</h4>
+  <p>A mail account can have multiple sender identities, each with its own name and email address. This variable uses the identity selected in the composer's 'From' field. When replying, the initial selection depends on who received the original message. You can change the selected identity after the compose window opens.</p>
 	<ul>
     <li><code>%identity%</code> = Name + Email of the current selected identity</li>
 		<li><code>%identity(name)%</code> = Name of the current selected identity</li>
@@ -113,7 +117,7 @@ pre.maxW {
       identity information from address book.</li>
       
 	</ul>
-  <p><i>fieldId</i>: For additional field values, see chapter <a href="#ab_fields">'Address Book Fields'</a> below.</li></p>
+  <p><i>fieldId</i>: For additional field values, see chapter <a href="#ab_fields">'Address Book Fields'</a> below.</p>
   <p>Example:<br>
      <pre class="code maxW">Phone No: %identity(addressbook,workphone)% </pre>
   </p>
@@ -123,30 +127,45 @@ pre.maxW {
      for the current identity.<br>
      <pre class="code maxW">[[State: <code class="inline">%identity(<i>addressbook</i>,<i>work.state</i>)%</code>]]</pre>
   </p>  
-</article>
 
 
-<!-- ##### Fixed Variables #### -->
-<a name="fixed"> </a>
-<h3 class="helpchapter">Fixed variables</h3>
-<article>
-	<ul>
-		<li><code class="deferable">%date%</code> = Date / Time (same as original 'Mailheader')</li>
-		<li><code class="deferable">%sig%</code> = Signature from account settings</li>
-		<li><code class="deferable">%cursor%</code> = Sets the cursor position.</li>
-    <li><code class="deferable">%identity(name)%</code> = Your name (also <code class="inline">%ownname%</code>) </li> 
-    <li><code class="deferable">%identity(mail)%</code> = Your email (also <code class="inline">%ownmail%</code>) </li> 
-		<li><code class="deferable">%recipient%</code> = Final Recipient's name / mail address. what exactly is shown depends on the advanced setting "Default address format"</li>
-		<li><code class="deferable">%recipient(mail)%</code> = Recipient's email address (Text only)</li>
-		<li><code class="deferable">%recipient(firstname)%</code> = Recipient's First name</li>
-    <li><code>%mailto(body)%</code> = use this to insert the body portion of a 
-      <a href="mailto:bogus@example.com?subject=test%20subject&amp;body=This%20is%20the%20body%20of%20this%20message.%0D%0ASecond%20Line..%0D%0AAnd%20another%20line!">mailto link</a>.</li>
-    <li><code>%attach()%</code>Attaches a file to the emails.</li>
-    <li><code>%spellcheck(<i>language</i>)%</code> = Sets the spell-checking language. Example values: (en, de, es, ru) - note that the dictionary must be installed.
-	</ul>
-  <p>The actual display of email addressing variables such as %to% can be configured in Advanced Settings
-    in the box <i>'Default address format'</i>.
-  </p>
+<h4>Commonly used message headers</h4>
+<ul>
+  <li><code class="deferable">%date%</code> = Date / Time (same as original 'Mailheader')</li>
+  <li><code class="deferable">%recipient%</code> = Final recipient's name / email address. The display depends on the advanced setting <i>Default address format</i>.</li>
+  <li><code class="deferable">%recipient(mail)%</code> = Final recipient's email address (text only)</li>
+  <li><code class="deferable">%recipient(firstname)%</code> = Final recipient's first name</li>
+  <li><code class="deferable">%to(mail)%</code> = Original recipient's email address</li>
+  <li><code class="deferable">%from(mail)%</code> = Sender's email address</li>
+  <li><code class="deferable">%cc(mail)%</code> = CC recipient's email address</li>
+  <li><code>%mailto(body)%</code> = Inserts the body portion of a <a href="mailto:bogus@example.com?subject=test%20subject&amp;body=This%20is%20the%20body%20of%20this%20message.%0D%0ASecond%20Line..%0D%0AAnd%20another%20line!">mailto link</a>.</li>
+</ul>
+<p>The display of email addressing variables such as <code>%to%</code> can be configured in Advanced Settings in the box <i>Default address format</i>.</p>
+
+<h4>Signatures</h4>
+<p>Thunderbird controls signature placement and content through <strong>Account Settings » Composition &amp; Addressing</strong>. You can override the position by using the %sig% variable.</p>
+<ul>
+  <li><code>%sig%</code>, <code>%sig(html)%</code>, <code>%sig(text)%</code> = Signature from Account Settings</li>
+  <li><code>%sig(2)%</code> = Signature from Account Settings without the separator <code>-- </code></li>
+  <li><code>%sig(none)%</code> = Removes any signature, overriding account settings.</li>
+</ul>
+<p>See <a href="#signature">Signatures</a> for formatting and processing options.</p>
+
+<h4>Files, images and attachments</h4>
+<ul>
+  <li><code>%file(filePath,encoding)%</code> = Inserts an HTML or plain text file. UTF-8 is assumed if the encoding is omitted.</li>
+  <li><code>%file(imagePath,"altText",attributeList)%</code> = Inserts an image. The path may be relative to the template's location.</li>
+  <li><code>%style(styleSheetPath)%</code> = Includes an external CSS style sheet.</li>
+  <li><code>%attach(filePath)%</code> = Adds a file as an attachment.</li>
+</ul>
+<p>See <a href="premium.html#fileInsert">file insertion documentation</a> for parameters and examples.</p>
+
+<h4>Composer settings</h4>
+<ul>
+  <li><code>%spellcheck(<i>language</i>)%</code> = Sets the spell-checking language, for example en, de-DE, es-ES or ru. The dictionary must be installed. See <a href="#spellcheck">Language functions</a> for more options.</li>
+  <li><code>%cursor%</code> = Sets the cursor position.</li>
+  <li><code>%preheader("headerText",<i>className</i>,<i>"inlineStyles"</i>)%</code> = Inserts preview text at the start of the email body, hidden by default. Enclose the text in double quotes; optional CSS class and inline styles control its appearance. Prefix commas in the text with a backslash: <code>\,</code>.</li>
+</ul>
 </article>
 
 <!-- ##### "To" Variables #### -->
@@ -344,9 +363,9 @@ To: Alex
 <a name="signature"> </a>
 <h3 class="helpchapter">Signatures (read from Account Settings)</h3>
 <p>
-  Thunderbird controls signature placement through 
-  <strong>Account Settings » Composition &amp; Addressing</strong>, 
-  unless SmartTemplates overrides it.
+  Thunderbird controls signature placement and content through 
+  <strong>Account Settings » Composition &amp; Addressing</strong>. 
+  You can override the position by using the %sig% variable.
 </p>
 <img width="782" src="./screenshots/account-settings-sig-153.png" 
       alt="Account settings for signature"/>
