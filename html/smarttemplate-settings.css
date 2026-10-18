@@ -534,40 +534,6 @@ select.fileTemplateList {
 	font: menu;
 }
 
-.snippetListContainer {
-  display: flex;
-  min-width: 0;
-  position: relative;
-}
-
-.snippetListContainer .snippetContextChecks {
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 1px;
-  width: 26px;
-  overflow: hidden;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.snippetContextChecks input[type="checkbox"] {
-  pointer-events: auto;
-  position: absolute;
-  inset-inline-start: 4px;
-  margin: 0;
-  width: 16px;
-  height: 16px;
-  transform: translateY(-50%);
-}
-
-#fileTemplateContainer .snippetListContainer select {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-  box-sizing: border-box;
-  padding-inline-start: 26px;
-}
-
 /* do not make children visible if they are in an unselected deck */
 .pageActive .deck-selected .tabcontent-container section.active {
   visibility: visible;

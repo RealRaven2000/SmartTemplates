@@ -151,68 +151,6 @@ var fileTemplates = {
   },
   isModified: false, // global flag to trigger saving to back end at some stage (WIP)
 
-  initSnippetContextChecks() {
-    const select = document.getElementById("templateList_snippets");
-    const column = select.parentElement.querySelector(".snippetContextChecks");
-    const checks = new Map();
-    let frame;
-    const render = () => {
-      frame = null;
-      const selectRect = select.getBoundingClientRect();
-      if (!selectRect.height) { return; } // Hidden settings tabs are laid out on activation.
-      const currentIds = new Set();
-      for (const [index, option] of Array.from(select.options).entries()) {
-        const sortId = option.dataset.sortId;
-        currentIds.add(sortId);
-        let checkbox = checks.get(sortId);
-        if (!checkbox) {
-          checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.dataset.sortId = sortId;
-          checkbox.addEventListener("change", async () => {
-            const entry = this.Entries.snippets.find(
-              (item) => String(item._sortId) === checkbox.dataset.sortId
-            );
-            if (!entry) { return; }
-            entry.contextMenu = checkbox.checked;
-            select.selectedIndex = Array.from(select.options).findIndex(
-              (item) => item.dataset.sortId === checkbox.dataset.sortId
-            );
-            this.onSelect(select);
-            await messenger.Utilities.updateTemplates(this.rawEntries);
-          });
-          checks.set(sortId, checkbox);
-          column.appendChild(checkbox);
-        }
-        const entry = this.Entries.snippets[index];
-        checkbox.checked = entry?.contextMenu === true;
-        const description = SmartTemplates.Util.getBundleString("snippets.contextMenu");
-        checkbox.title = description;
-        checkbox.setAttribute("aria-label", description + ": " + option.label);
-        const rect = option.getBoundingClientRect();
-        checkbox.style.top = (rect.top - selectRect.top + rect.height / 2) + "px";
-        checkbox.hidden = !rect.height || rect.bottom <= selectRect.top || rect.top >= selectRect.bottom;
-      }
-      for (const [id, checkbox] of checks) {
-        if (!currentIds.has(id)) {
-          checkbox.remove();
-          checks.delete(id);
-        }
-      }
-    };
-    const schedule = () => {
-      if (!frame) { frame = requestAnimationFrame(render); }
-    };
-    select.addEventListener("scroll", schedule);
-    select.addEventListener("change", schedule);
-    // Option labels, row order, and scroll position can change without a reload.
-    new MutationObserver(schedule).observe(select, {
-      childList: true, subtree: true, attributes: true, characterData: true,
-    });
-    new ResizeObserver(schedule).observe(select);
-    schedule();
-  },
-
   get rawEntries() {
     // Function to remove all _sortId members - these are not necessary for the UI / storage
     let entries = this.Entries;
@@ -379,27 +317,26 @@ var fileTemplates = {
     }
 
     if (!existingEntry) {
-      let newEntry = {
+      let entry = {
         path: path,
         label: label,
         category: category,
-        ...(entry && Object.hasOwn(entry, "contextMenu") ? { contextMenu: entry.contextMenu } : {}),
         _sortId: targetIndex >= 0 ? targetIndex + 1 : this.CurrentEntries.length + 1,
       };
       this.addItem(
         path,
-        fileTemplates.makeLabel(newEntry),
+        fileTemplates.makeLabel(entry),
         category,
         this.activeFileList,
         targetIndex,
-        newEntry._sortId
+        entry._sortId
       );
       if (targetIndex == null || targetIndex < 0) {
         // append at end
-        this.CurrentEntries.push(newEntry);
+        this.CurrentEntries.push(entry);
       } else {
         // insert new item at position!
-        this.CurrentEntries.splice(targetIndex, 0, newEntry);
+        this.CurrentEntries.splice(targetIndex, 0, entry);
       }
 
       // reindex _sortId for all entries
@@ -415,11 +352,11 @@ var fileTemplates = {
       );
       // this.activeFileList.ensureIndexIsVisible(targetIndex);
       this.CurrentEntries[selectedIndex].label = label;
-      this.activeFileList.options[selectedIndex].label = fileTemplates.makeLabel(
+      this.activeFileList.item(selectedIndex).label = fileTemplates.makeLabel(
         this.CurrentEntries[selectedIndex]
       );
       // update path!
-      this.activeFileList.options[selectedIndex].value = JSON.stringify({
+      this.activeFileList.item(selectedIndex).value = JSON.stringify({
         path: path,
         category: category,
         position: selectedIndex,
@@ -769,7 +706,6 @@ var fileTemplates = {
         path: entry.path,
         label: entry.label,
         category: entry.category || "",
-        ...(Object.hasOwn(entry, "contextMenu") ? { contextMenu: entry.contextMenu } : {}),
         _sortId: entry._sortId,
       });
     }
@@ -1371,7 +1307,6 @@ SmartTemplates.Settings = {
 		}
 		
 		await fileTemplates.loadCustomMenu(true);
-    fileTemplates.initSnippetContextChecks();
   } ,
   onUnload: async function() {
     logMissingFunction("implement onUnload!");
@@ -1755,9 +1690,8 @@ SmartTemplates.Settings = {
 			let fc = document.getElementById('fileControls'),
 			    selectInput = document.getElementById(select);
 			// move to the correct panel (if it's not already there)
-			const container = selectInput.closest(".snippetListContainer")?.parentElement || selectInput.parentNode;
-			if (container.lastChild != fc) {
-				container.appendChild(fc);
+			if (selectInput.parentNode.lastChild != fc) {
+				selectInput.parentNode.appendChild(fc);
 			}
 		}
 		if (!section) {
