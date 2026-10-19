@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Compose Context Menu Test",
+  "version": "0.1.0",
+  "description": "Minimal compose-body menu reproduction for SmartTemplates issue 432.",
+  "applications": {
+    "gecko": {
+      "id": "compose-context-menu-test@smarttemplates.quickfolders.org",
+      "strict_min_version": "140.0",
+      "strict_max_version": "159.*"
+    }
+  },
+  "permissions": ["menus", "compose"],
+  "background": {
+    "scripts": ["background.js"]
+  }
+}

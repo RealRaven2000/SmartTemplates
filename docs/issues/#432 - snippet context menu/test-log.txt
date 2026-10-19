@@ -1,0 +1,103 @@
+window.controllers/Controllers is deprecated. Do not use it for UA detection. blank
+window.controllers/Controllers is deprecated. Do not use it for UA detection. blank
+[#697] About to call cache.init() at 2026-10-17T14:22:16.356Z quickfolders-preferences.js:655:9
+[#697] Cache init starting at 2026-10-17T14:22:16.357Z quickfolders-preferences.js:588:15
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(15), checkedLastError: false, _lastError: null, contextId: 18, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+[SmartTemplates Storage] [2026-10-17T14:22:16.387Z] get() START - keys: 
+Object { settings: {}, debug: {}, accounts: {} }
+smartTemplate-storage.js:60:13
+[SmartTemplates Storage Performance] init: 22ms (attempt 1) smartTemplate-storage.js:70:13
+[SmartTemplates Storage] [2026-10-17T14:22:16.410Z] _init() SUCCESS after 1 attempt(s) smartTemplate-storage.js:60:13
+Preferences onChanged: 
+Object {  }
+preferences.mjs:320:17
+[#697] Cache init completed at 2026-10-17T14:22:16.412Z quickfolders-preferences.js:633:15
+[SmartTemplates Storage Performance] get: 28ms smartTemplate-storage.js:70:13
+[SmartTemplates Storage] [2026-10-17T14:22:16.415Z] get() SUCCESS - returned keys: 
+Array(3) [ "settings", "debug", "accounts" ]
+smartTemplate-storage.js:60:13
+[SmartTemplates Storage Performance] getWithRetry: 28ms (attempt 1) smartTemplate-storage.js:70:13
+[SmartTemplates Storage Performance] preference cache init: 29ms smartTemplate-storage.js:70:13
+Preferences onChanged: 
+Object { settings: {…}, debug: {…}, accounts: {…} }
+preferences.mjs:320:17
+Accounts data updated: 
+Object {  }
+preferences.mjs:343:19
+SmartTemplates smartTemplate-composer.js smartTemplate-util.js:907:15
+Object { MessageHdr: "" }
+smartTemplate-composer.js:371:11
+SmartTemplates added compose-window-init listener smartTemplate-util.js:907:15
+SmartTemplates [logTime init]
+ SmartTemplate4.init() smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.432  [0 ms]	 
+ SmartTemplate4.init() ends. smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.433  [1 ms]	 
+ SmartTemplate4.notifyComposeBodyReady()
+gMsgCompose type: 0 smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.433  [0 ms]	 
+ readSignatureFile() 
+Trying to read attached signature file: sig-thunderbirddaily.html
+at: N:\Mail Profiles\aj1a94hh.axel\stationery\signatures\sig-thunderbirddaily.html smartTemplate-util.js:843:13
+SmartTemplates ST.composer.load smartTemplate-util.js:907:15
+SmartTemplates 15:22:16.437  [4 ms]	 
+ composer.initTemplateMenu() ... smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.437  [0 ms]	 
+ loadCustomMenu()... smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.438  [1 ms]	 
+ composer.initSnippetMenu() ... smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.438  [0 ms]	 
+ loadCustomMenu()... smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.444  [6 ms]	 
+ loadCustomMenu() - data read smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.449  [5 ms]	 
+ loadCustomMenu() - data read smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.456  [7 ms]	 
+ insertFileLink ("thunderbird_blog2.png") smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.457  [1 ms]	 
+ insertFile - type detected: image smartTemplate-util.js:843:13
+SmartTemplates 15:22:16.460  [3 ms]	 
+ checkIsURLencoded()
+Not an encoded string,  this may be a SmartTemplates header:
+%recipient(name)% smartTemplate-util.js:843:13
+SmartTemplates {COMPOSER} 15:22:16.482  [22 ms]	 
+ isActiveOnAccount: creating template Div… smartTemplate-util.js:838:13
+SmartTemplates {COMPOSER} 15:22:16.482  [0 ms]	 
+ Generating template Div innerHTML…
+<p>Dear <smarttemplate hdr='recipient' st4variable='recipient(name)' st4title='recipient(name)' class='noWrite'>To</smarttemplate>,</p>
+<p></p>
+<p>yours sincerely,<br>
+Axel
+</p> smartTemplate-util.js:838:13
+SmartTemplates {COMPOSER} 15:22:16.483  [1 ms]	 
+ Reply on Top - inserting template before first root child smartTemplate-util.js:838:13
+SmartTemplates {COMPOSER} 15:22:16.483  [0 ms]	 
+ finding cursor node… smartTemplate-util.js:838:13
+SmartTemplates 15:22:16.483  [0 ms]	 
+ Version() getter. addonInfo: 
+Object { id: "smarttemplate4@thunderbird.extension", name: "SmartTemplates", description: "A powerful way to create customized replies by auto-inserting various mail headers. Templates can be created for every mail identity, also supports external html files and style sheets.", version: "4.21pre76", mayDisable: true, enabled: true, optionsUrl: "moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/smartTemplate-settings.html", installType: "normal", type: "extension", permissions: (11) […], … }
+smartTemplate-util.js:843:13
+SmartTemplates resetDocument(withUndo = true) smartTemplate-util.js:907:15
+SmartTemplates 15:22:16.490  [7 ms]	 
+ Setting up listeners for deferred field variables! smartTemplate-util.js:843:13
+[ST432 compose] deferred click/contextmenu listeners DISABLED for this document smartTemplate-util.js:2029:15
+SmartTemplates resetDocument(withUndo = true) smartTemplate-util.js:907:15
+Key event not available on some keyboard layouts: key=“r” modifiers=“accel,alt” id=“” messengercompose.xhtml
+[ST432 compose] blur capture {"time":1792246941866,"popupId":null,"targetId":null,"targetTag":null,"target":{"id":null,"tag":null,"document":null,"inEditorDocument":false},"originalTarget":{"id":null,"tag":null,"document":null,"inEditorDocument":false},"explicitOriginalTarget":{"id":null,"tag":null,"document":null,"inEditorDocument":false},"composedTarget":{"id":null,"tag":null,"document":null,"inEditorDocument":false},"path":[{"id":null,"tag":null,"document":null,"inEditorDocument":false}],"trusted":true,"defaultPrevented":false,"eventPhase":2,"focused":false,"activeElementId":"","editorContext":"msgComposeContext","hasContextData":false,"hasActor":false,"hasSpellInfo":false} smartTemplate-composer.js:25:17
+[ST432 compose] contextmenu capture {"time":1792246943300,"popupId":null,"targetId":null,"targetTag":"smarttemplate","target":{"id":null,"tag":"smarttemplate","document":"about:blank?compose","inEditorDocument":true},"originalTarget":{"id":null,"tag":"smarttemplate","document":"about:blank?compose","inEditorDocument":true},"explicitOriginalTarget":{"id":null,"tag":null,"document":"about:blank?compose","inEditorDocument":true},"composedTarget":{"id":null,"tag":"smarttemplate","document":"about:blank?compose","inEditorDocument":true},"path":[{"id":null,"tag":null,"document":null,"inEditorDocument":false},{"id":"messageEditor","tag":"editor","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},{"id":"messageArea","tag":"div","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},{"id":"composeContentBox","tag":"div","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},{"id":null,"tag":"body","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},{"id":"msgcomposeWindow","tag":"html","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false}],"trusted":true,"defaultPrevented":false,"eventPhase":1,"button":2,"shift":false,"ctrl":false,"alt":false,"focused":true,"activeElementId":"messageEditor","editorContext":"msgComposeContext","hasContextData":false,"hasActor":false,"hasSpellInfo":false} smartTemplate-composer.js:25:17
+[ST432 compose] openContextMenu received {"time":1792246943304,"browserId":"messageEditor","browserContext":"msgComposeContext","hasData":true,"hasSpellInfo":true,"hasActor":true,"currentGlobal":true,"contextTimeStamp":7180} smartTemplate-composer.js:51:17
+[ST432 compose] popupshowing capture {"time":1792246943313,"popupId":"msgComposeContext","targetId":"msgComposeContext","targetTag":"menupopup","target":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"originalTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"explicitOriginalTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"composedTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"path":[{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},{"id":null,"tag":"body","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},{"id":"msgcomposeWindow","tag":"html","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},{"id":null,"tag":null,"document":null,"inEditorDocument":false},{"id":null,"tag":null,"document":null,"inEditorDocument":false}],"trusted":true,"defaultPrevented":false,"eventPhase":1,"button":0,"shift":false,"ctrl":false,"alt":false,"focused":true,"activeElementId":"messageEditor","editorContext":"msgComposeContext","hasContextData":true,"hasActor":true,"hasSpellInfo":true,"contextTimeStamp":7180} smartTemplate-composer.js:25:17
+[ComposeMenuTest] shown {"time":1792246943326,"contexts":["editable","compose_body","all"],"menuIds":["test-root","test-category","test-snippet"],"tabId":7,"windowId":93} background.js:6:11
+[ST432] popup shown 
+Object { contexts: (3) […], menuIds: (12) […], tabId: 7, windowId: 93, time: 1792246943329 }
+st-background.js:1433:15
+[ST432 compose] popupshowing next task {"time":1792246943358,"popupId":"msgComposeContext","targetId":"msgComposeContext","targetTag":"menupopup","target":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"originalTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"explicitOriginalTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"composedTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"path":[],"trusted":true,"defaultPrevented":false,"eventPhase":0,"button":0,"shift":false,"ctrl":false,"alt":false,"focused":true,"activeElementId":"messageEditor","editorContext":"msgComposeContext","hasContextData":true,"hasActor":true,"hasSpellInfo":true,"contextTimeStamp":7180} smartTemplate-composer.js:25:17
+[ST432 compose] popuphiding capture {"time":1792246944896,"popupId":"msgComposeContext","targetId":"msgComposeContext","targetTag":"menupopup","target":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"originalTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"explicitOriginalTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"composedTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"path":[{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},{"id":null,"tag":"body","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},{"id":"msgcomposeWindow","tag":"html","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},{"id":null,"tag":null,"document":null,"inEditorDocument":false},{"id":null,"tag":null,"document":null,"inEditorDocument":false}],"trusted":true,"defaultPrevented":false,"eventPhase":1,"button":0,"shift":false,"ctrl":false,"alt":false,"focused":true,"activeElementId":"messageEditor","editorContext":"msgComposeContext","hasContextData":true,"hasActor":true,"hasSpellInfo":true,"contextTimeStamp":7180} smartTemplate-composer.js:25:17
+[ComposeMenuTest] hidden {"time":1792246944901} background.js:13:11
+[ST432] popup hidden 
+Object { wasShown: true, time: 1792246944901 }
+st-background.js:1433:15
+[ST432 compose] popuphiding next task {"time":1792246944929,"popupId":"msgComposeContext","targetId":"msgComposeContext","targetTag":"menupopup","target":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"originalTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"explicitOriginalTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"composedTarget":{"id":"msgComposeContext","tag":"menupopup","document":"chrome://messenger/content/messengercompose/messengercompose.xhtml","inEditorDocument":false},"path":[],"trusted":true,"defaultPrevented":false,"eventPhase":0,"button":0,"shift":false,"ctrl":false,"alt":false,"focused":false,"activeElementId":"messageEditor","editorContext":"msgComposeContext","hasContextData":false,"hasActor":false,"hasSpellInfo":false} smartTemplate-composer.js:25:17
+
