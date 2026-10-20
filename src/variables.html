@@ -143,7 +143,7 @@ pre.maxW {
 <p>The display of email addressing variables such as <code>%to%</code> can be configured in Advanced Settings in the box <i>Default address format</i>.</p>
 
 <h4>Signatures</h4>
-<p>Thunderbird controls signature placement and content through <strong>Account Settings » Composition &amp; Addressing</strong>. You can override the position by using the %sig% variable.</p>
+<p>Thunderbird controls signature placement and content through <strong>Account Settings » Composition &amp; Addressing</strong>. You can override the position by using the <code class="inline">%sig%</code> variable.</p>
 <ul>
   <li><code>%sig%</code>, <code>%sig(html)%</code>, <code>%sig(text)%</code> = Signature from Account Settings</li>
   <li><code>%sig(2)%</code> = Signature from Account Settings without the separator <code>-- </code></li>
@@ -365,7 +365,7 @@ To: Alex
 <p>
   Thunderbird controls signature placement and content through 
   <strong>Account Settings » Composition &amp; Addressing</strong>. 
-  You can override the position by using the %sig% variable.
+  You can override the position by using the <code class="inline">%sig%</code> variable.
 </p>
 <img width="782" src="./screenshots/account-settings-sig-153.png" 
       alt="Account settings for signature"/>
@@ -639,20 +639,40 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
       <p>
         <code>%deleteQuotedText("<i>searchText</i>",<i>quoteLevel</i>)%</code> Deletes quoted Text <br>
         <code>%replaceQuotedText("<i>searchText</i>","<i>replacementHTML</i>",<i>quoteLevel</i>)%</code> Replaces quoted text <br>
-        <code>%deleteQuotedTags("<i>selector</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote<br>
-        <code>%replaceQuotedTags("<i>selector</i>","<i>replacementHTML</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote<br>
+        <code>%deleteQuotedTags("<i>selector</i>",<i>quoteLevel/scope</i>,<i>minSize</i>)%</code> Deletes tags from the quote or selected scope<br>
+        <code>%replaceQuotedTags("<i>selector</i>","<i>replacementHTML</i>",<i>quoteLevel/scope</i>,<i>minSize</i>)%</code> Replaces tags in the quote or selected scope
+      </p>
+      <h4>Parameters</h4>
+      <p>
         <i>searchText</i> - must be in double quotes - the searchText argument must be a regular expression. 
         Note that whitespace can be best represented as \s because it can also contain line breaks. 
         Double quote characters and commas cannot be used.  <br>
         <i>replacementHTML</i> - must be in double quotes - text or a html tag which will be inserted in page.
-        To insert a comma in the text parameter, prefix it with a backslash like this: <span class="paramLiteral">\,</span>
-        <i>quoteLevel</i> - optional, (number) which minimal quote level to start from
+        To insert a comma in the text parameter, prefix it with a backslash like this: <span class="paramLiteral">\,</span><br>
+        <i>quoteLevel</i> - optional, numeric minimum quote level to start from; defaults to 1 (quoted content and deeper quotes).
         <br>
         <i>selector</i> -  what you would use to address the tag in css. simplest case "img", or "p" but attribute selectors 
         can be added as long as double quotes can be avoided.<br>
         <i>minSize</i> - (optional, numeric) - number of kByte, minimum size for removing the tag. This way you can 
         keep smaller images like icons / emojis while discarding large images.
       </p>
+      <p>
+        <i>scope</i> - For <code class="inline">%deleteQuotedTags()%</code> and 
+        <code class="inline">%replaceQuotedTags()%</code>, from v4.21 you will be able 
+        to use a scope literal instead of a numeric quote level:
+      </p>
+      <ul>
+        <li><span class="paramLiteral">head</span> - Search only the message head.</li>
+        <li><span class="paramLiteral">body</span> - Search the entire message body, including unquoted content.</li>
+        <li><span class="paramLiteral">all</span> / <span class="paramLiteral">-1</span> - Search both head and body.</li>
+      </ul>
+      <p>Numeric <span class="paramLiteral">0</span> includes all body quote levels, but is restricted to the forwarded content in inline forwards. Explicit <span class="paramLiteral">body</span> searches the entire body instead. Scope selection does not change the optional minimum-size parameter.</p>
+      <h4>Style cleanup examples</h4>
+      <ul>
+        <li><code>%deleteQuotedTags("style",<span class="paramLiteral">body</span>)%</code> - Remove body style blocks, including those inherited from the original message that can affect paragraph spacing in your reply. Preserve styles in the message head.</li>
+        <li><code>%deleteQuotedTags("style",<span class="paramLiteral">all</span>)%</code> - Remove style blocks from both head and body for a clean styling baseline.</li>
+      </ul>
+      <p>These examples remove <code class="inline">&lt;style&gt;</code> elements, not inline <code class="inline">style="…"</code> attributes on individual elements.</p>
       <p>
         A note on <i>quoteLevel</i>, for images I would recommend 2 if you want to 
         remove images to retain some context in your replies. This will dramatically decrease email 
