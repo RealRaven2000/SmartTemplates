@@ -2026,5 +2026,29 @@
   },
   "yes_button": {
     "message": "Sim"
+  },
+  "quotedTags.scope": {
+    "message": "Em `%deleteQuotedTags()%` e `%replaceQuotedTags()%`, é possível usar um escopo sem aspas em vez do nível de citação numérico:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Pesquisar apenas na seção head da mensagem."
+  },
+  "quotedTags.scope.body": {
+    "message": "Pesquisar em todo o corpo da mensagem, incluindo o conteúdo não citado."
+  },
+  "quotedTags.scope.all": {
+    "message": "Pesquisar na seção head e no corpo."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Se o nível de citação ou o escopo for omitido, será usado o nível 1. O valor numérico 0 inclui todos os níveis de citação do corpo, mas nos encaminhamentos em linha fica restrito ao conteúdo encaminhado; o escopo explícito body pesquisa em todo o corpo."
+  },
+  "quotedTags.styles.body": {
+    "message": "Remover os blocos de estilo do corpo, incluindo os herdados da mensagem original que podem afetar o espaçamento dos parágrafos da resposta. Manter os estilos na seção head da mensagem."
+  },
+  "quotedTags.styles.all": {
+    "message": "Remover os blocos de estilo da seção head e do corpo para obter uma base de formatação limpa."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Estes exemplos removem elementos style, não os atributos style em linha de cada elemento."
   }
 }

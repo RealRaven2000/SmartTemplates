@@ -2033,5 +2033,29 @@
   },
   "yes_button": {
     "message": "是"
+  },
+  "quotedTags.scope": {
+    "message": "對於 `%deleteQuotedTags()%` 和 `%replaceQuotedTags()%`，可以使用不加引號的範圍名稱來取代數字引用層級："
+  },
+  "quotedTags.scope.head": {
+    "message": "僅搜尋郵件的 head 區段。"
+  },
+  "quotedTags.scope.body": {
+    "message": "搜尋整個郵件本文，包括未引用的內容。"
+  },
+  "quotedTags.scope.all": {
+    "message": "搜尋 head 區段與本文。"
+  },
+  "quotedTags.scope.numeric": {
+    "message": "省略引用層級或範圍時，預設為引用層級 1。數字 0 包含本文中的所有引用層級，但在行內轉寄時僅限於轉寄的內容；明確指定 body 則搜尋整個本文。"
+  },
+  "quotedTags.styles.body": {
+    "message": "移除本文中的樣式區塊，包括繼承自原始郵件、可能影響回覆中段落間距的樣式區塊。保留郵件 head 區段的樣式。"
+  },
+  "quotedTags.styles.all": {
+    "message": "移除 head 區段與本文中的樣式區塊，以取得乾淨的格式設定基礎。"
+  },
+  "quotedTags.styles.inline": {
+    "message": "這些範例移除的是 style 元素，而非個別元素上的行內 style 屬性。"
   }
 }

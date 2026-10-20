@@ -1547,7 +1547,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
   // parse the parameters of the following replacement commands:
   // %replaceText("find","replace"[,selection])%
   // %replaceQuotedText(searchText,replacementHTML[,quoteLevel])%
-  // %replaceQuotedTags(selector,replacementHTML[,quoteLevel][,minSize])%
+  // %replaceQuotedTags(selector,replacementHTML[,quoteLevelOrScope][,minSize])%
   function parseParams(cmd, cmdParameters, functionName) {
     let isSelection = false;
     // get params (within a full command) - allows escaped commas within strings.
@@ -1577,10 +1577,13 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
         cmdParameters.p2 = dText2[0];
 
         if (theStrings.length > 2) {
-          if (theStrings[2] == "selection") {
+          if (theStrings[2] == "selection" && functionName !== "replaceQuotedTags") {
             isSelection = true;
           } else {
-            cmdParameters.p3 = parseInt(theStrings[2]); // quote level param
+            // Tag commands also accept head/body/all; validate before any DOM changes.
+            cmdParameters.p3 = functionName === "replaceQuotedTags"
+              ? theStrings[2].trim()
+              : parseInt(theStrings[2]); // quote level param
           }
         }
         if (theStrings.length > 3) {
@@ -1613,6 +1616,37 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
       );
     }
     return false;
+  }
+
+  // [issue 436] Resolve explicit message scopes without changing numeric forward handling.
+  function getQuotedTagScope(value, body, command) {
+    const scope = String(value).trim();
+    const doc = body?.ownerDocument || gMsgCompose.editor.document;
+    if (["head", "body", "all", "-1"].includes(scope)) {
+      return {
+        rootEl: scope === "head" ? doc.head : scope === "body" ? body : doc.documentElement,
+        minQuoteLevel: 0,
+        isForwardInline: false,
+      };
+    }
+    if (!/^\d+$/.test(scope)) {
+      util.logToConsole(`${command}: invalid quote level or scope "${scope}". Use a nonnegative integer, -1, head, body, or all.`);
+      return null;
+    }
+    const minQuoteLevel = Number(scope);
+    if (!Number.isSafeInteger(minQuoteLevel)) {
+      util.logToConsole(`${command}: invalid quote level "${scope}".`);
+      return null;
+    }
+    if (!body) { return null; }
+    const isForwardInline = util.isComposeTypeIsForwardInline() && minQuoteLevel === 0;
+    return {
+      rootEl: isForwardInline
+        ? body.querySelector("div.moz-forward-container") || body
+        : body,
+      minQuoteLevel,
+      isForwardInline,
+    };
   }
 
   function quoteLevel(element, level) {
@@ -1702,9 +1736,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
   }
 
   const util = SmartTemplate4.Util,
-    prefs = SmartTemplate4.Preferences,
-    Ci = Components.interfaces,
-    Cc = Components.classes;
+    prefs = SmartTemplate4.Preferences;
 
   // %matchTextFromBody()% using * to generate result:
   // %matchTextFromBody(TEST *)% => returns first * match: TEST XYZ => XYZ
@@ -1933,25 +1965,21 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
       for (let i = 0; i < quoteTags.length; i++) {
         msg = msg.replace(quoteTags[i], "");
 
-        const theStrings = quoteTags[i].split(","),
+        const theStrings = util.extractParameters(quoteTags[i]),
           dText = theStrings[0].match(/("[^)].*")/),
-          minQuoteLevel = theStrings.length > 1 ? parseInt(theStrings[1]) : MIN_QUOTELEVEL,
           minSize = theStrings.length > 2 ? parseInt(theStrings[2]) : 0;
 
         if (!(dText && dText.length)) {
           continue;
         }
 
-        let s = util.unquotedRegex(dText[0]),
-          rootEl = rootElBase;
-
-        const isForwardInline = util.isComposeTypeIsForwardInline() && minQuoteLevel == 0;
-        if (isForwardInline) {
-          const quoteForward = rootEl.querySelectorAll("div.moz-forward-container");
-          if (quoteForward.length) {
-            rootEl = quoteForward.item(0);
-          }
-        }
+        const scope = getQuotedTagScope(
+          theStrings.length > 1 ? theStrings[1] : MIN_QUOTELEVEL,
+          rootElBase, "deleteQuotedTags"
+        );
+        if (!scope?.rootEl) { continue; }
+        const { rootEl, minQuoteLevel, isForwardInline } = scope;
+        const s = util.unquotedRegex(dText[0]);
 
         const nodes = rootEl.querySelectorAll(s);
 
@@ -2007,8 +2035,7 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
           continue;
         }
 
-        const minQuoteLevel = params.p3,
-          minSize = params.p4 || 0,
+        const minSize = params.p4 || 0,
           s = util.unquotedRegex(params.p1),
           r = util.unquotedRegex(params.p2);
 
@@ -2016,14 +2043,9 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
           continue;
         }
 
-        let rootEl = rootElBase;
-        const isForwardInline = util.isComposeTypeIsForwardInline() && minQuoteLevel == 0;
-        if (isForwardInline) {
-          const quoteForward = rootEl.querySelectorAll("div.moz-forward-container");
-          if (quoteForward.length) {
-            rootEl = quoteForward.item(0);
-          }
-        }
+        const scope = getQuotedTagScope(params.p3, rootElBase, "replaceQuotedTags");
+        if (!scope?.rootEl) { continue; }
+        const { rootEl, minQuoteLevel, isForwardInline } = scope;
 
         const nodes = rootEl.querySelectorAll(s);
         for (let j = nodes.length - 1; j >= 0; j--) {

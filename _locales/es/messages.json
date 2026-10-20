@@ -2027,5 +2027,29 @@
   },
   "yes_button": {
     "message": "Sí"
+  },
+  "quotedTags.scope": {
+    "message": "En `%deleteQuotedTags()%` y `%replaceQuotedTags()%`, se puede usar un ámbito sin comillas en lugar del nivel de cita numérico:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Buscar solo en la sección head del mensaje."
+  },
+  "quotedTags.scope.body": {
+    "message": "Buscar en todo el cuerpo del mensaje, incluido el contenido no citado."
+  },
+  "quotedTags.scope.all": {
+    "message": "Buscar tanto en la sección head como en el cuerpo."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Si se omite el nivel de cita o el ámbito, se usa el nivel 1. El valor numérico 0 incluye todos los niveles de cita del cuerpo, pero en los reenvíos en línea se limita al contenido reenviado; el ámbito explícito body busca en todo el cuerpo."
+  },
+  "quotedTags.styles.body": {
+    "message": "Eliminar los bloques de estilo del cuerpo, incluidos los heredados del mensaje original que pueden afectar al espaciado de los párrafos de su respuesta. Conservar los estilos de la sección head del mensaje."
+  },
+  "quotedTags.styles.all": {
+    "message": "Eliminar los bloques de estilo de la sección head y del cuerpo para obtener una base de formato limpia."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Estos ejemplos eliminan elementos style, no los atributos style en línea de cada elemento."
   }
 }

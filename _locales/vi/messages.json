@@ -367,5 +367,29 @@
   },
   "xsent_short.cap": {
     "message": "Ví dụ về ngày và giờ theo định dạng địa phương"
+  },
+  "quotedTags.scope": {
+    "message": "Với `%deleteQuotedTags()%` và `%replaceQuotedTags()%`, có thể dùng phạm vi không đặt trong dấu ngoặc kép thay cho cấp trích dẫn dạng số:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Chỉ tìm trong phần head của thư."
+  },
+  "quotedTags.scope.body": {
+    "message": "Tìm trong toàn bộ nội dung thư, bao gồm cả phần không được trích dẫn."
+  },
+  "quotedTags.scope.all": {
+    "message": "Tìm trong cả phần head và nội dung thư."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Nếu bỏ qua cấp trích dẫn hoặc phạm vi, cấp trích dẫn 1 sẽ được dùng. Giá trị số 0 bao gồm mọi cấp trích dẫn trong nội dung thư, nhưng khi chuyển tiếp ngay trong nội dung thư thì chỉ áp dụng cho phần được chuyển tiếp; chỉ định rõ body sẽ tìm trong toàn bộ nội dung thư."
+  },
+  "quotedTags.styles.body": {
+    "message": "Xóa các khối kiểu khỏi nội dung thư, bao gồm các khối kế thừa từ thư gốc có thể ảnh hưởng đến khoảng cách giữa các đoạn trong thư trả lời. Giữ lại các kiểu trong phần head của thư."
+  },
+  "quotedTags.styles.all": {
+    "message": "Xóa các khối kiểu khỏi cả phần head và nội dung thư để có nền định dạng sạch."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Các ví dụ này xóa phần tử style, không xóa thuộc tính style được đặt trực tiếp trên từng phần tử."
   }
 }

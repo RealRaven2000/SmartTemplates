@@ -2042,5 +2042,29 @@
   },
   "yes_button": {
     "message": "Ano"
+  },
+  "quotedTags.scope": {
+    "message": "U `%deleteQuotedTags()%` a `%replaceQuotedTags()%` lze místo číselné úrovně citace použít rozsah bez uvozovek:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Prohledat pouze sekci head zprávy."
+  },
+  "quotedTags.scope.body": {
+    "message": "Prohledat celé tělo zprávy včetně necitovaného obsahu."
+  },
+  "quotedTags.scope.all": {
+    "message": "Prohledat sekci head i tělo zprávy."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Pokud úroveň citace nebo rozsah vynecháte, použije se úroveň 1. Číselná hodnota 0 zahrnuje všechny úrovně citace v těle, ale při přeposílání v těle zprávy se omezuje na přeposílaný obsah; explicitní rozsah body prohledá celé tělo."
+  },
+  "quotedTags.styles.body": {
+    "message": "Odstranit bloky stylů z těla zprávy včetně stylů převzatých z původní zprávy, které mohou ovlivnit mezery mezi odstavci odpovědi. Zachovat styly v sekci head zprávy."
+  },
+  "quotedTags.styles.all": {
+    "message": "Odstranit bloky stylů ze sekce head i z těla zprávy a získat čistý základ formátování."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Tyto příklady odstraňují prvky style, nikoli atributy style přímo u jednotlivých prvků."
   }
 }

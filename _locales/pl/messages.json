@@ -2042,5 +2042,29 @@
   },
   "yes_button": {
     "message": "Tak"
+  },
+  "quotedTags.scope": {
+    "message": "W `%deleteQuotedTags()%` i `%replaceQuotedTags()%` zamiast liczbowego poziomu cytowania można podać zakres bez cudzysłowów:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Przeszukaj tylko sekcję head wiadomości."
+  },
+  "quotedTags.scope.body": {
+    "message": "Przeszukaj całą treść wiadomości, łącznie z treścią niecytowaną."
+  },
+  "quotedTags.scope.all": {
+    "message": "Przeszukaj zarówno sekcję head, jak i treść wiadomości."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Pominięcie poziomu cytowania lub zakresu oznacza poziom cytowania 1. Wartość liczbowa 0 obejmuje wszystkie poziomy cytowania w treści, lecz przy przekazywaniu w treści wiadomości ogranicza się do przekazywanej zawartości; jawny zakres body przeszukuje całą treść."
+  },
+  "quotedTags.styles.body": {
+    "message": "Usuń bloki stylów z treści, także te odziedziczone z oryginalnej wiadomości, które mogą wpływać na odstępy między akapitami odpowiedzi. Zachowaj style w sekcji head wiadomości."
+  },
+  "quotedTags.styles.all": {
+    "message": "Usuń bloki stylów z sekcji head i treści wiadomości, aby uzyskać czystą podstawę formatowania."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Te przykłady usuwają elementy style, a nie atrybuty style przypisane bezpośrednio do poszczególnych elementów."
   }
 }

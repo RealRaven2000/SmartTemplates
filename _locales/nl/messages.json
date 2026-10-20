@@ -2033,5 +2033,29 @@
   },
   "yes_button": {
     "message": "Ja"
+  },
+  "quotedTags.scope": {
+    "message": "Voor `%deleteQuotedTags()%` en `%replaceQuotedTags()%` kan een bereik zonder aanhalingstekens worden gebruikt in plaats van het numerieke citaatniveau:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Alleen zoeken in de head-sectie van het bericht."
+  },
+  "quotedTags.scope.body": {
+    "message": "Zoeken in de volledige berichttekst, inclusief niet-geciteerde inhoud."
+  },
+  "quotedTags.scope.all": {
+    "message": "Zoeken in zowel de head-sectie als de berichttekst."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Als het citaatniveau of bereik wordt weggelaten, geldt citaatniveau 1. De numerieke waarde 0 omvat alle citaatniveaus in de berichttekst, maar is bij inline doorsturen beperkt tot de doorgestuurde inhoud; expliciet body doorzoekt de volledige berichttekst."
+  },
+  "quotedTags.styles.body": {
+    "message": "Stijlblokken uit de berichttekst verwijderen, inclusief stijlen uit het oorspronkelijke bericht die de alinea-afstand in uw antwoord kunnen beïnvloeden. Stijlen in de head-sectie behouden."
+  },
+  "quotedTags.styles.all": {
+    "message": "Stijlblokken uit de head-sectie en de berichttekst verwijderen voor een schone opmaakbasis."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Deze voorbeelden verwijderen style-elementen, niet de inline style-attributen van afzonderlijke elementen."
   }
 }

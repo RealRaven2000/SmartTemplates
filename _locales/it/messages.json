@@ -2009,5 +2009,29 @@
   },
   "yes_button": {
     "message": "Sì"
+  },
+  "quotedTags.scope": {
+    "message": "Per `%deleteQuotedTags()%` e `%replaceQuotedTags()%`, è possibile usare un ambito senza virgolette al posto del livello di citazione numerico:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Cerca solo nella sezione head del messaggio."
+  },
+  "quotedTags.scope.body": {
+    "message": "Cerca nell'intero corpo del messaggio, compresi i contenuti non citati."
+  },
+  "quotedTags.scope.all": {
+    "message": "Cerca sia nella sezione head sia nel corpo."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Se il livello di citazione o l'ambito viene omesso, si usa il livello 1. Il valore numerico 0 include tutti i livelli di citazione del corpo, ma negli inoltri in linea è limitato al contenuto inoltrato; l'ambito esplicito body cerca nell'intero corpo."
+  },
+  "quotedTags.styles.body": {
+    "message": "Rimuovi i blocchi di stile dal corpo, compresi quelli ereditati dal messaggio originale che possono influire sulla spaziatura dei paragrafi della risposta. Mantieni gli stili nella sezione head del messaggio."
+  },
+  "quotedTags.styles.all": {
+    "message": "Rimuovi i blocchi di stile dalla sezione head e dal corpo per ottenere una base di formattazione pulita."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Questi esempi rimuovono gli elementi style, non gli attributi style in linea dei singoli elementi."
   }
 }

@@ -2081,5 +2081,29 @@
   },
   "yes_button": {
     "message": "Ja"
+  },
+  "quotedTags.scope": {
+    "message": "För `%deleteQuotedTags()%` och `%replaceQuotedTags()%` kan ett sökområde utan citattecken användas i stället för en numerisk citatnivå:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Sök endast i meddelandets head-del."
+  },
+  "quotedTags.scope.body": {
+    "message": "Sök i hela meddelandetexten, även innehåll som inte är citerat."
+  },
+  "quotedTags.scope.all": {
+    "message": "Sök i både head-delen och meddelandetexten."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Om citatnivå eller sökområde utelämnas används citatnivå 1. Det numeriska värdet 0 omfattar alla citatnivåer i meddelandetexten, men begränsas till det vidarebefordrade innehållet vid infogad vidarebefordran; uttryckligt body söker i hela meddelandetexten."
+  },
+  "quotedTags.styles.body": {
+    "message": "Ta bort stilblock från meddelandetexten, även sådana från originalmeddelandet som kan påverka styckeavståndet i ditt svar. Behåll stilar i meddelandets head-del."
+  },
+  "quotedTags.styles.all": {
+    "message": "Ta bort stilblock från både head-delen och meddelandetexten för en ren formateringsgrund."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Dessa exempel tar bort style-element, inte inline-attributet style på enskilda element."
   }
 }

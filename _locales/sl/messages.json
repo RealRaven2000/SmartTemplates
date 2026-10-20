@@ -2066,5 +2066,29 @@
   },
   "yes_button": {
     "message": "Da"
+  },
+  "quotedTags.scope": {
+    "message": "Pri `%deleteQuotedTags()%` in `%replaceQuotedTags()%` lahko namesto številčne ravni citiranja uporabite obseg brez narekovajev:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Išči samo v razdelku head sporočila."
+  },
+  "quotedTags.scope.body": {
+    "message": "Išči v celotnem telesu sporočila, vključno z necitirano vsebino."
+  },
+  "quotedTags.scope.all": {
+    "message": "Išči v razdelku head in telesu sporočila."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Če raven citiranja ali obseg izpustite, se uporabi raven 1. Številčna vrednost 0 vključuje vse ravni citiranja v telesu, vendar je pri posredovanju v telesu sporočila omejena na posredovano vsebino; izrecni obseg body preišče celotno telo."
+  },
+  "quotedTags.styles.body": {
+    "message": "Odstrani bloke slogov iz telesa, tudi tiste iz izvirnega sporočila, ki lahko vplivajo na razmike med odstavki odgovora. Ohrani sloge v razdelku head sporočila."
+  },
+  "quotedTags.styles.all": {
+    "message": "Odstrani bloke slogov iz razdelka head in telesa sporočila za čisto osnovo oblikovanja."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Ti primeri odstranijo elemente style, ne pa atributov style, neposredno določenih na posameznih elementih."
   }
 }

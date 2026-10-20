@@ -2066,5 +2066,29 @@
   },
   "yes_button": {
     "message": "Kyllä"
+  },
+  "quotedTags.scope": {
+    "message": "Komennoissa `%deleteQuotedTags()%` ja `%replaceQuotedTags()%` voi käyttää lainausmerkitöntä hakualuetta numeerisen lainaustason sijaan:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Hae vain viestin head-osiosta."
+  },
+  "quotedTags.scope.body": {
+    "message": "Hae koko viestin rungosta, myös lainaamattomasta sisällöstä."
+  },
+  "quotedTags.scope.all": {
+    "message": "Hae sekä head-osiosta että viestin rungosta."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Jos lainaustaso tai hakualue jätetään pois, oletuksena on lainaustaso 1. Numeroarvo 0 kattaa kaikki rungon lainaustasot, mutta viestin rungossa edelleen lähetettäessä haku rajoittuu edelleenlähetettyyn sisältöön; nimenomainen body hakee koko rungosta."
+  },
+  "quotedTags.styles.body": {
+    "message": "Poista tyylilohkot rungosta, myös alkuperäisestä viestistä periytyvät tyylit, jotka voivat vaikuttaa vastauksesi kappaleväleihin. Säilytä viestin head-osion tyylit."
+  },
+  "quotedTags.styles.all": {
+    "message": "Poista tyylilohkot sekä head-osiosta että rungosta, jotta muotoilulle saadaan puhdas lähtökohta."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Nämä esimerkit poistavat style-elementit, eivät yksittäisten elementtien sisäisiä style-attribuutteja."
   }
 }

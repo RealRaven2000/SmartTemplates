@@ -2024,5 +2024,29 @@
   },
   "yes_button": {
     "message": "はい"
+  },
+  "quotedTags.scope": {
+    "message": "`%deleteQuotedTags()%` と `%replaceQuotedTags()%` では、数値の引用レベルの代わりに、引用符で囲まない検索範囲を指定できます:"
+  },
+  "quotedTags.scope.head": {
+    "message": "メッセージの head セクションのみを検索します。"
+  },
+  "quotedTags.scope.body": {
+    "message": "引用されていない内容を含む、メッセージ本文全体を検索します。"
+  },
+  "quotedTags.scope.all": {
+    "message": "head セクションと本文の両方を検索します。"
+  },
+  "quotedTags.scope.numeric": {
+    "message": "引用レベルまたは検索範囲を省略すると、引用レベル 1 が使用されます。数値の 0 は本文内のすべての引用レベルを対象としますが、インライン転送では転送された内容に限定されます。body を明示すると、本文全体を検索します。"
+  },
+  "quotedTags.styles.body": {
+    "message": "返信の段落間隔に影響する元のメッセージ由来のものも含め、本文内のスタイルブロックを削除します。メッセージの head セクションのスタイルは保持します。"
+  },
+  "quotedTags.styles.all": {
+    "message": "head セクションと本文の両方からスタイルブロックを削除し、書式設定を整理します。"
+  },
+  "quotedTags.styles.inline": {
+    "message": "これらの例で削除するのは style 要素です。各要素に直接指定されたインラインの style 属性は削除しません。"
   }
 }

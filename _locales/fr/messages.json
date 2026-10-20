@@ -2051,5 +2051,29 @@
   },
   "yes_button": {
     "message": "Oui"
+  },
+  "quotedTags.scope": {
+    "message": "Pour `%deleteQuotedTags()%` et `%replaceQuotedTags()%`, une portée sans guillemets peut remplacer le niveau de citation numérique :"
+  },
+  "quotedTags.scope.head": {
+    "message": "Rechercher uniquement dans la section head du message."
+  },
+  "quotedTags.scope.body": {
+    "message": "Rechercher dans tout le corps du message, y compris le contenu non cité."
+  },
+  "quotedTags.scope.all": {
+    "message": "Rechercher dans la section head et dans le corps."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Si le niveau de citation ou la portée est omis, le niveau 1 est utilisé. La valeur numérique 0 inclut tous les niveaux de citation du corps, mais se limite au contenu transféré lors d'un transfert dans le corps du message ; la portée explicite body recherche dans tout le corps."
+  },
+  "quotedTags.styles.body": {
+    "message": "Supprimer les blocs de style du corps, y compris ceux hérités du message d'origine qui peuvent modifier l'espacement des paragraphes de votre réponse. Conserver les styles de la section head du message."
+  },
+  "quotedTags.styles.all": {
+    "message": "Supprimer les blocs de style de la section head et du corps pour repartir sur une base de mise en forme propre."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Ces exemples suppriment les éléments style, et non les attributs style intégrés aux éléments individuels."
   }
 }

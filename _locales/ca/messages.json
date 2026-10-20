@@ -2057,5 +2057,29 @@
   },
   "yes_button": {
     "message": "Òc"
+  },
+  "quotedTags.scope": {
+    "message": "Per a `%deleteQuotedTags()%` i `%replaceQuotedTags()%`, es pot utilitzar un àmbit sense cometes en lloc del nivell de citació numèric:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Cerca només a la secció head del missatge."
+  },
+  "quotedTags.scope.body": {
+    "message": "Cerca a tot el cos del missatge, inclòs el contingut no citat."
+  },
+  "quotedTags.scope.all": {
+    "message": "Cerca tant a la secció head com al cos."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Si s'omet el nivell de citació o l'àmbit, s'utilitza el nivell 1. El valor numèric 0 inclou tots els nivells de citació del cos, però en els reenviaments en línia es limita al contingut reenviat; l'àmbit explícit body cerca a tot el cos."
+  },
+  "quotedTags.styles.body": {
+    "message": "Elimina els blocs d'estil del cos, inclosos els heretats del missatge original que poden afectar l'espaiat dels paràgrafs de la resposta. Conserva els estils de la secció head del missatge."
+  },
+  "quotedTags.styles.all": {
+    "message": "Elimina els blocs d'estil tant de la secció head com del cos per obtenir una base de format neta."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Aquests exemples eliminen elements style, no pas els atributs style en línia dels elements individuals."
   }
 }

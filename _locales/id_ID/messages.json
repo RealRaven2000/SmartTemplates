@@ -1447,5 +1447,29 @@
   },
   "sig.none.label": {
     "message": "Menghapus semua tanda tangan. Mengesampingkan setelan akun."
+  },
+  "quotedTags.scope": {
+    "message": "Untuk `%deleteQuotedTags()%` dan `%replaceQuotedTags()%`, cakupan tanpa tanda kutip dapat digunakan sebagai pengganti tingkat kutipan numerik:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Cari hanya di bagian head pesan."
+  },
+  "quotedTags.scope.body": {
+    "message": "Cari di seluruh isi pesan, termasuk konten yang tidak dikutip."
+  },
+  "quotedTags.scope.all": {
+    "message": "Cari di bagian head dan isi pesan."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Jika tingkat kutipan atau cakupan tidak ditentukan, tingkat kutipan 1 digunakan. Nilai numerik 0 mencakup semua tingkat kutipan dalam isi pesan, tetapi terbatas pada konten yang diteruskan saat meneruskan pesan secara sebaris; cakupan body secara eksplisit mencari di seluruh isi pesan."
+  },
+  "quotedTags.styles.body": {
+    "message": "Hapus blok gaya dari isi pesan, termasuk yang diwarisi dari pesan asli dan dapat memengaruhi jarak antarparagraf dalam balasan Anda. Pertahankan gaya di bagian head pesan."
+  },
+  "quotedTags.styles.all": {
+    "message": "Hapus blok gaya dari bagian head dan isi pesan untuk mendapatkan dasar pemformatan yang bersih."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Contoh ini menghapus elemen style, bukan atribut style sebaris pada masing-masing elemen."
   }
 }

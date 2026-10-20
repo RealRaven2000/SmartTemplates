@@ -1180,6 +1180,30 @@
   "quoteLevel": {
     "message": "[optional, numeric]:  which minimal quote level to start from"
   },
+  "quotedTags.scope": {
+    "message": "For `%deleteQuotedTags()%` and `%replaceQuotedTags()%`, an unquoted scope can be used instead of the numeric quote level:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Search only the message head."
+  },
+  "quotedTags.scope.body": {
+    "message": "Search the entire message body, including unquoted content."
+  },
+  "quotedTags.scope.all": {
+    "message": "Search both head and body."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Omitting the quote level or scope defaults to quote level 1. Numeric 0 includes all body quote levels, but is restricted to the forwarded content in inline forwards; explicit body searches the entire body."
+  },
+  "quotedTags.styles.body": {
+    "message": "Remove style blocks from the body, including those inherited from the original message that can affect paragraph spacing in your reply. Keep styles in the message head."
+  },
+  "quotedTags.styles.all": {
+    "message": "Remove style blocks from both head and body for a clean styling baseline."
+  },
+  "quotedTags.styles.inline": {
+    "message": "These examples remove style elements, not inline style attributes on individual elements."
+  },
   "quotePlaceholder": {
     "message": "This moves the quoted part into the template text itself. The quote header section from account templates will be moved to the top of this quote."
   },
@@ -1283,8 +1307,8 @@
     "message": "Changes + news (Splash Screen)."
   },
   "sig.concept": {
-    "message": "Thunderbird controls signature placement and content through **Account Settings » Composition & Addressing**. You can override the position by using the %sig% variable.",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "message": "Thunderbird controls signature placement and content through **Account Settings » Composition & Addressing**. You can override the position by using the `%sig%` variable.",
+    "description": "Use **bold** for emphasis, *italic* for Thunderbird menu items or labels, and backticks for inline code such as `%sig%`. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
     "message": "Signature from Account Settings"

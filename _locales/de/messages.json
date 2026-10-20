@@ -2028,5 +2028,29 @@
   },
   "yes_button": {
     "message": "Ja"
+  },
+  "quotedTags.scope": {
+    "message": "Für `%deleteQuotedTags()%` und `%replaceQuotedTags()%` kann statt der numerischen Zitatebene ein Bereich ohne Anführungszeichen angegeben werden:"
+  },
+  "quotedTags.scope.head": {
+    "message": "Nur den HTML-Kopfbereich (head) der Nachricht durchsuchen."
+  },
+  "quotedTags.scope.body": {
+    "message": "Den gesamten Nachrichtentext einschließlich nicht zitierter Inhalte durchsuchen."
+  },
+  "quotedTags.scope.all": {
+    "message": "HTML-Kopfbereich und Nachrichtentext durchsuchen."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Ohne Angabe einer Zitatebene oder eines Bereichs gilt Zitatebene 1. Der Zahlenwert 0 umfasst alle Zitatebenen im Nachrichtentext, ist beim Inline-Weiterleiten jedoch auf den weitergeleiteten Inhalt beschränkt; die ausdrückliche Angabe body durchsucht den gesamten Nachrichtentext."
+  },
+  "quotedTags.styles.body": {
+    "message": "Stilblöcke aus dem Nachrichtentext entfernen, einschließlich übernommener Stile der ursprünglichen Nachricht, die die Absatzabstände Ihrer Antwort beeinflussen können. Stile im HTML-Kopfbereich bleiben erhalten."
+  },
+  "quotedTags.styles.all": {
+    "message": "Stilblöcke aus HTML-Kopfbereich und Nachrichtentext entfernen, um eine saubere Ausgangsbasis für die Formatierung zu erhalten."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Diese Beispiele entfernen style-Elemente, nicht die direkt an einzelnen Elementen gesetzten style-Attribute."
   }
 }

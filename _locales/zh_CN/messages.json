@@ -2038,5 +2038,29 @@
   },
   "yes_button": {
     "message": "是"
+  },
+  "quotedTags.scope": {
+    "message": "对于 `%deleteQuotedTags()%` 和 `%replaceQuotedTags()%`，可以使用不带引号的范围名称来代替数字引用级别："
+  },
+  "quotedTags.scope.head": {
+    "message": "仅搜索邮件的 head 部分。"
+  },
+  "quotedTags.scope.body": {
+    "message": "搜索整个邮件正文，包括未引用的内容。"
+  },
+  "quotedTags.scope.all": {
+    "message": "搜索 head 部分和正文。"
+  },
+  "quotedTags.scope.numeric": {
+    "message": "省略引用级别或范围时，默认为引用级别 1。数字 0 包含正文中的所有引用级别，但在内联转发时仅限于转发的内容；明确指定 body 则搜索整个正文。"
+  },
+  "quotedTags.styles.body": {
+    "message": "删除正文中的样式块，包括继承自原始邮件、可能影响回复中段落间距的样式块。保留邮件 head 部分的样式。"
+  },
+  "quotedTags.styles.all": {
+    "message": "删除 head 部分和正文中的样式块，以获得干净的格式设置基础。"
+  },
+  "quotedTags.styles.inline": {
+    "message": "这些示例删除的是 style 元素，而不是各个元素上的内联 style 属性。"
   }
 }
