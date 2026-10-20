@@ -1223,7 +1223,7 @@
     "message": "Modifiche + notizie (Schermata iniziale)."
   },
   "sig.concept": {
-    "message": "Thunderbird controlla la posizione e il contenuto della firma tramite **Impostazioni account » Composizione e indirizzi**. È possibile modificare la posizione utilizzando la variabile %sig%.",
+    "message": "Thunderbird controlla la posizione e il contenuto della firma tramite **Impostazioni account » Composizione e indirizzi**. È possibile modificare la posizione utilizzando la variabile `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

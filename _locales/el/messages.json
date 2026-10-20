@@ -1268,7 +1268,7 @@
     "message": "Εμφάνιση αλλαγών και ειδήσεων (οθόνη εκκίνησης)."
   },
   "sig.concept": {
-    "message": "Το Thunderbird ελέγχει τη θέση και το περιεχόμενο της υπογραφής μέσω των **Ρυθμίσεων λογαριασμού » Σύνταξη και διευθυνσιοδότηση**. Μπορείτε να παρακάμψετε τη θέση χρησιμοποιώντας τη μεταβλητή %sig%.",
+    "message": "Το Thunderbird ελέγχει τη θέση και το περιεχόμενο της υπογραφής μέσω των **Ρυθμίσεων λογαριασμού » Σύνταξη και διευθυνσιοδότηση**. Μπορείτε να παρακάμψετε τη θέση χρησιμοποιώντας τη μεταβλητή `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

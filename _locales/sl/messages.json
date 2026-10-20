@@ -1268,7 +1268,7 @@
     "message": "Spremembe + novice (Začetni zaslon)."
   },
   "sig.concept": {
-    "message": "Thunderbird upravlja položaj in vsebino podpisa v **Nastavitve računa » Sestavljanje in naslavljanje**. Položaj lahko preglasite s spremenljivko %sig%.",
+    "message": "Thunderbird upravlja položaj in vsebino podpisa v **Nastavitve računa » Sestavljanje in naslavljanje**. Položaj lahko preglasite s spremenljivko `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

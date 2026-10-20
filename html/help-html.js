@@ -110,16 +110,18 @@ async function initHTML() {
   }
 
   i18n.updateDocument(); // parent doc must have loaded i18n.js
-  // Opt-in Markdown-style emphasis only: **bold**, *italic*, without nesting.
-  // Create DOM nodes without parsing HTML; other entities keep literal asterisks.
+  // Opt-in Markdown-style formatting: `inline code`, **bold**, *italic*, without nesting.
+  // Code contents stay literal. Create DOM nodes without parsing HTML.
   document.querySelectorAll(".localizedFormatting").forEach((element) => {
-    const parts = element.textContent.split(/(\*\*[^*]+\*\*|(?<!\*)\*[^*]+\*(?!\*))/);
+    const parts = element.textContent.split(/(`[^`\r\n]+`|\*\*[^*`]+\*\*|(?<!\*)\*[^*`]+\*(?!\*))/);
     element.textContent = "";
     for (const part of parts) {
       const bold = /^\*\*[^*]+\*\*$/.test(part);
       const italic = /^\*[^*]+\*$/.test(part);
-      if (bold || italic) {
-        const formatted = document.createElement(bold ? "strong" : "em");
+      const code = /^`[^`\r\n]+`$/.test(part);
+      if (code || bold || italic) {
+        const formatted = document.createElement(code ? "code" : bold ? "strong" : "em");
+        if (code) { formatted.className = "inline"; }
         const markerLength = bold ? 2 : 1;
         formatted.textContent = part.slice(markerLength, -markerLength);
         element.appendChild(formatted);

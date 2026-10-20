@@ -1246,7 +1246,7 @@
     "message": "Änderungen + Neuigkeiten (Splash Screen)."
   },
   "sig.concept": {
-    "message": "Thunderbird steuert Position und Inhalt der Signatur über **Konten-Einstellungen » Verfassen & Adressieren**. Sie können die Position mit der Variable %sig% überschreiben.",
+    "message": "Thunderbird steuert Position und Inhalt der Signatur über **Konten-Einstellungen » Verfassen & Adressieren**. Sie können die Position mit der Variable `%sig%` überschreiben.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

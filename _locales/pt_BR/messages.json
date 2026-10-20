@@ -1247,7 +1247,7 @@
     "message": "Mudanças + notícias (tela inicial)."
   },
   "sig.concept": {
-    "message": "O Thunderbird controla a posição e o conteúdo da assinatura em **Configurações de conta » Composição e endereçamento**. Você pode substituir a posição usando a variável %sig%.",
+    "message": "O Thunderbird controla a posição e o conteúdo da assinatura em **Configurações de conta » Composição e endereçamento**. Você pode substituir a posição usando a variável `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

@@ -1274,7 +1274,7 @@
     "message": "Ändringar + nyheter (Splash Screen)."
   },
   "sig.concept": {
-    "message": "Thunderbird styr signaturens placering och innehåll via **Kontoinställningar » Skriva & adressera**. Du kan åsidosätta placeringen genom att använda variabeln %sig%.",
+    "message": "Thunderbird styr signaturens placering och innehåll via **Kontoinställningar » Skriva & adressera**. Du kan åsidosätta placeringen genom att använda variabeln `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

@@ -1238,7 +1238,7 @@
     "message": "変更とニュースを表示します (スプラッシュ画面)。"
   },
   "sig.concept": {
-    "message": "Thunderbird は、**アカウント設定 » 編集とアドレス入力**で署名の位置と内容を管理します。%sig% 変数を使用すると、挿入位置を上書きできます。",
+    "message": "Thunderbird は、**アカウント設定 » 編集とアドレス入力**で署名の位置と内容を管理します。`%sig%` 変数を使用すると、挿入位置を上書きできます。",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

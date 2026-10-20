@@ -165,7 +165,7 @@
     "message": "Gia hạn giấy phép của bạn."
   },
   "sig.concept": {
-    "message": "Thunderbird quản lý vị trí và nội dung chữ ký qua **Cài đặt tài khoản » Soạn thư & Địa chỉ**. Bạn có thể ghi đè vị trí bằng biến %sig%.",
+    "message": "Thunderbird quản lý vị trí và nội dung chữ ký qua **Cài đặt tài khoản » Soạn thư & Địa chỉ**. Bạn có thể ghi đè vị trí bằng biến `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "SmartTemplateMainButton.expired": {

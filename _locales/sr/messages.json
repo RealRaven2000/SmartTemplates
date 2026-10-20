@@ -1235,7 +1235,7 @@
     "message": "Прикажи промене + вести (Спласх Сцреен)."
   },
   "sig.concept": {
-    "message": "Thunderbird управља положајем и садржајем потписа кроз **Подешавања налога » Писање и адресирање**. Положај можете променити помоћу променљиве %sig%.",
+    "message": "Thunderbird управља положајем и садржајем потписа кроз **Подешавања налога » Писање и адресирање**. Положај можете променити помоћу променљиве `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

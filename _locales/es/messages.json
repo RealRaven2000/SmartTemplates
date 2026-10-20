@@ -1244,7 +1244,7 @@
     "message": "Cambios + noticias (pantalla de bienvenida)."
   },
   "sig.concept": {
-    "message": "Thunderbird controla la posición y el contenido de la firma mediante **Configuración de la cuenta » Redacción y direcciones**. Puede cambiar la posición utilizando la variable %sig%.",
+    "message": "Thunderbird controla la posición y el contenido de la firma mediante **Configuración de la cuenta » Redacción y direcciones**. Puede cambiar la posición utilizando la variable `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

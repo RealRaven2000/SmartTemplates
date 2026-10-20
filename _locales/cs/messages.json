@@ -1259,7 +1259,7 @@
     "message": "Změny + zprávy (úvodní obrazovka)."
   },
   "sig.concept": {
-    "message": "Thunderbird řídí umístění a obsah podpisu v **Nastavení účtu » Vytváření zpráv a adresování**. Umístění můžete přepsat pomocí proměnné %sig%.",
+    "message": "Thunderbird řídí umístění a obsah podpisu v **Nastavení účtu » Vytváření zpráv a adresování**. Umístění můžete přepsat pomocí proměnné `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

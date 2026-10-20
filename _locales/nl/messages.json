@@ -1247,7 +1247,7 @@
     "message": "Wijzigingen + nieuws (Splash Screen)."
   },
   "sig.concept": {
-    "message": "Thunderbird bepaalt de plaatsing en inhoud van de ondertekening via **Accountinstellingen » Opstellen & adressering**. U kunt de plaatsing overschrijven met de variabele %sig%.",
+    "message": "Thunderbird bepaalt de plaatsing en inhoud van de ondertekening via **Accountinstellingen » Opstellen & adressering**. U kunt de plaatsing overschrijven met de variabele `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

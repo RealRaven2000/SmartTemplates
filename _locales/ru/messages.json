@@ -1265,7 +1265,7 @@
     "message": "Показать изменения + новости (заставка)."
   },
   "sig.concept": {
-    "message": "Thunderbird управляет положением и содержимым подписи в **Параметры учётной записи » Составление и адресация**. Вы можете переопределить положение с помощью переменной %sig%.",
+    "message": "Thunderbird управляет положением и содержимым подписи в **Параметры учётной записи » Составление и адресация**. Вы можете переопределить положение с помощью переменной `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

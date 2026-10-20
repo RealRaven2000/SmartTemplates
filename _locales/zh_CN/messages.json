@@ -1261,7 +1261,7 @@
     "message": "显示更改 + 新闻（启动画面）。"
   },
   "sig.concept": {
-    "message": "Thunderbird 通过**账户设置 » 撰写与地址**控制签名的位置和内容。您可以使用 %sig% 变量覆盖签名位置。",
+    "message": "Thunderbird 通过**账户设置 » 撰写与地址**控制签名的位置和内容。您可以使用 `%sig%` 变量覆盖签名位置。",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {

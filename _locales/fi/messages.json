@@ -1268,7 +1268,7 @@
     "message": "Muutokset + uutiset (aloitusnäyttö)."
   },
   "sig.concept": {
-    "message": "Thunderbird määrittää allekirjoituksen sijainnin ja sisällön kohdassa **Tilien asetukset » Kirjoittaminen ja osoitteet**. Voit ohittaa sijainnin käyttämällä muuttujaa %sig%.",
+    "message": "Thunderbird määrittää allekirjoituksen sijainnin ja sisällön kohdassa **Tilien asetukset » Kirjoittaminen ja osoitteet**. Voit ohittaa sijainnin käyttämällä muuttujaa `%sig%`.",
     "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
   },
   "sig.label": {
