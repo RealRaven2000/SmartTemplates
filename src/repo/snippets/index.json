@@ -20,7 +20,7 @@
       "category": "Layout",
       "file": "add-background-image.html",
       "description": "Example for a non-repeating background image (watermark).",
-      "preview": "previews/add-background-image.png",
+      "preview": "previews/watermark-example.png",
       "assets": ["img/Chibi-Vayne.png"]
     },
     {
