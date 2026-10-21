@@ -19,7 +19,7 @@
       "title": "🖼️ Watermark",
       "category": "Layout",
       "file": "add-background-image.html",
-      "description": "Example for a non-repeating background image (watermark).",
+      "description": "Example for a non-repeating background image (watermark). Edit the background url to include an absolute path starting with file:///.",
       "preview": "previews/watermark-example.png",
       "assets": ["img/Chibi-Vayne.png"]
     },
