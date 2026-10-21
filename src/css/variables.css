@@ -52,9 +52,10 @@ article h4::before {
 }
 
 article h4 {
-  margin-left: 2.6em;
-  font-size: 0.9em;
+  background: none;
   box-shadow: none !important;
+  font-size: 0.9em;
+  margin-left:1.2em !important;
   padding: 0.3em;
 }
 

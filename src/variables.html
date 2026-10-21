@@ -8,7 +8,7 @@ permalink: variables.html
 "use strict"; // use ECMAScript5 strict mode
   markActiveNavigation("variables.html");
   /* Apply this site specific file to <head> element */
-  loadStyleSheet("variables.css?v=3");
+  loadStyleSheet("variables.css?v=4");
   loadStyleSheet("syntax.css?v=3");
 </script>
 
@@ -639,27 +639,36 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
       <p>
         <code>%deleteQuotedText("<i>searchText</i>",<i>quoteLevel</i>)%</code> Deletes quoted Text <br>
         <code>%replaceQuotedText("<i>searchText</i>","<i>replacementHTML</i>",<i>quoteLevel</i>)%</code> Replaces quoted text <br>
-        <code>%deleteQuotedTags("<i>selector</i>",<i>quoteLevel/scope</i>,<i>minSize</i>)%</code> Deletes tags from the quote or selected scope<br>
-        <code>%replaceQuotedTags("<i>selector</i>","<i>replacementHTML</i>",<i>quoteLevel/scope</i>,<i>minSize</i>)%</code> Replaces tags in the quote or selected scope
+        <code>%deleteQuotedTags("<i>selector</i>",<i>quoteLevel / scope</i>,<i>minSize</i>)%</code> Deletes tags from the quote or selected scope<br>
+        <code>%replaceQuotedTags("<i>selector</i>","<i>replacementHTML</i>",<i>quoteLevel / scope</i>,<i>minSize</i>)%</code> Replaces tags in the quote or selected scope
       </p>
-      <h4>Parameters</h4>
+      <h5>Parameters</h5>
       <p>
         <i>searchText</i> - must be in double quotes - the searchText argument must be a regular expression. 
         Note that whitespace can be best represented as \s because it can also contain line breaks. 
-        Double quote characters and commas cannot be used.  <br>
-        <i>replacementHTML</i> - must be in double quotes - text or a html tag which will be inserted in page.
-        To insert a comma in the text parameter, prefix it with a backslash like this: <span class="paramLiteral">\,</span><br>
-        <i>quoteLevel</i> - optional, numeric minimum quote level to start from; defaults to 1 (quoted content and deeper quotes).
-        <br>
-        <i>selector</i> -  what you would use to address the tag in css. simplest case "img", or "p" but attribute selectors 
-        can be added as long as double quotes can be avoided.<br>
-        <i>minSize</i> - (optional, numeric) - number of kByte, minimum size for removing the tag. This way you can 
-        keep smaller images like icons / emojis while discarding large images.
+        Double quote characters and commas cannot be used. 
       </p>
       <p>
-        <i>scope</i> - For <code class="inline">%deleteQuotedTags()%</code> and 
+        <i>replacementHTML</i> - must be in double quotes - text or a html tag which will be 
+        inserted in page. To insert a comma in the text parameter, prefix it with a backslash 
+        like this: <span class="paramLiteral">\,</span>
+      </p>
+      <p>
+        <i>quoteLevel</i> - optional, numeric minimum quote level to start from; defaults to 1 
+        (quoted content and deeper quotes).
+      </p>
+      <p>
+        <i>scope</i> - instead of the numeric <i>quoteLevel</i> in the <code class="inline">%deleteQuotedTags()%</code> and 
         <code class="inline">%replaceQuotedTags()%</code>, from v4.21 you will be able 
         to use a scope literal instead of a numeric quote level:
+      </p>
+      <p>
+        <i>selector</i> -  what you would use to address the tag in css. simplest case "img", or "p" but attribute selectors 
+        can be added as long as double quotes can be avoided.
+      </p>
+      <p>
+        <i>minSize</i> - (optional, numeric) - number of kByte, minimum size for removing the tag. This way you can 
+        keep smaller images like icons / emojis while discarding large images.
       </p>
       <ul>
         <li><span class="paramLiteral">head</span> - Search only the message head.</li>
@@ -667,7 +676,7 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
         <li><span class="paramLiteral">all</span> / <span class="paramLiteral">-1</span> - Search both head and body.</li>
       </ul>
       <p>Numeric <span class="paramLiteral">0</span> includes all body quote levels, but is restricted to the forwarded content in inline forwards. Explicit <span class="paramLiteral">body</span> searches the entire body instead. Scope selection does not change the optional minimum-size parameter.</p>
-      <h4>Style cleanup examples</h4>
+      <h5>Style cleanup examples</h5>
       <ul>
         <li><code>%deleteQuotedTags("style",<span class="paramLiteral">body</span>)%</code> - Remove body style blocks, including those inherited from the original message that can affect paragraph spacing in your reply. Preserve styles in the message head.</li>
         <li><code>%deleteQuotedTags("style",<span class="paramLiteral">all</span>)%</code> - Remove style blocks from both head and body for a clean styling baseline.</li>
