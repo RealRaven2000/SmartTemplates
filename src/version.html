@@ -233,14 +233,116 @@ permalink: version.html
 
 <a id="4.21"> &nbsp; </a>
 <li>
-  <h4>Version 4.21 - WIP</h4>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.21*"
+      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 4.21 - Work in Progress</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">140.0 - 159.*</span>
+		</span>
+  </h4>
+
   <ul>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
-    <li><strong>Major enhancement:</strong> Added context menu support for smart snippets. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/432">[issue 432]</a></li>
+    <li>
+      <strong>Major enhancement: Smart snippets in the compose context menu.</strong>
+      Insert your frequently used snippets directly from the right-click menu while writing a message,
+      without having to return to the toolbar menu each time.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/432">[issue 432]</a>
+      <p>
+        Choose which snippets appear in the context menu using the checkboxes in Settings on the
+        Smart Snippets tab. This lets you keep a focused selection of everyday tools close at hand,
+        while retaining your other snippets in the full collection. Saved changes to snippet labels,
+        categories, and ordering automatically refresh the menu.
+      </p>
+    </li>
+    <li>
+      <strong>Online snippet repository.</strong>
+      The <a href="snippets.html">SmartTemplates snippets library</a> provides examples you can
+      explore and adapt for your own messages and templates. These include text highlighting,
+      decorative image frames, and macros for cleaning up quoted content and unwanted styles.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/437">[issue 437]</a>
+      <p>
+        Work is underway to make this collection accessible from the Smart Snippets tab through a
+        prominent <em>Download Snippets</em> button. Browsing and importing directly within the add-on
+        are still in development; the initial collection and examples are in English.
+      </p>
+    </li>
+    <li>
+      <strong>More control over where quoted-tag commands operate.</strong>
+      The <code>%deleteQuotedTags()%</code> and <code>%replaceQuotedTags()%</code> commands now accept
+      the unquoted scopes <code>head</code>, <code>body</code>, and <code>all</code> in place of a numeric
+      quote level. You can target the message head, the entire message body including unquoted content,
+      or both head and body. The value <code>-1</code> also selects both.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/436">[issue 436]</a>
+      <p>
+        For example, <code>%deleteQuotedTags("style",body)%</code> removes style blocks from the body,
+        including inherited rules that can affect paragraph spacing in your reply, while keeping styles
+        in the message head. Use <code>%deleteQuotedTags("style",all)%</code> to remove style blocks
+        from both locations. These commands remove matching elements; selecting <code>style</code>
+        does not remove inline style attributes from individual elements.
+      </p>
+      <p>
+        Existing numeric quote levels remain available. Omitting the level or scope still defaults to
+        quote level 1. Numeric <code>0</code> includes all body quote levels, but remains restricted to
+        forwarded content in inline forwards; the explicit <code>body</code> scope searches the entire
+        body in that case as well.
+      </p>
+    </li>
+    <li>
+      <strong>External template editor setup in Advanced Settings.</strong>
+      You can now enter the path to your preferred HTML editor directly in Advanced Settings.
+      When an external editor has not yet been configured, the template editor setup prompt opens
+      that page and highlights the path field, making the setting easier to find and complete.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/430">[issue 430]</a>
+    </li>
+
+    <h5 class="inList"><span class="inListTitle">Compatibility and documentation</span></h5>
+    <li>
+      <strong>Reorganized variable help.</strong>
+      The Variables page now uses collapsible subsections to make its growing collection of commands
+      easier to browse. Signature information is brought together in a consolidated Signature chapter,
+      with clearer explanations and a more consistent layout.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/435">[issue 435]</a>
+      <p>
+        Restored icons and improved formatting help distinguish commands, parameters, and explanatory
+        text. The accompanying help translations have been updated across all locales, and inline code
+        formatting makes variable names and examples easier to recognize.
+      </p>
+    </li>
+    <li>
+      <strong>Documented <code>%sig(none)%</code>.</strong>
+      The signature help now includes this option for suppressing the signature in a template,
+      so you can find it alongside the other signature commands when deciding how a message
+      should handle the signature configured for the account.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/434">[issue 434]</a>
+    </li>
+    <li>
+      Fixed intermittent missing compose context menus after inserting templates. This restores access
+      to the right-click menu during message composition, including workflows that use smart snippets.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/432">[issue 432]</a>
+    </li>
+
     <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
-    <li>Fixed template processing in Thunderbird 159 beta after removal of the legacy message-header lookup method; compatibility with Thunderbird 140 ESR is retained. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/433">[issue 433]</a></li>
-    <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
-    <li>Added documentation for <code>%sig(none)%</code>. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/434">[issue 434]</a></li>
+    <li>
+      <strong>Thunderbird 159 beta compatibility.</strong>
+      Fixed template processing after Thunderbird removed the legacy message-header lookup method.
+      SmartTemplates now uses a replacement lookup where required, allowing templates to continue
+      working on the newer Thunderbird builds while retaining compatibility with Thunderbird 140 ESR.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/433">[issue 433]</a>
+    </li>
+    <li>
+      <strong>Settings appearance and toolbar colors.</strong>
+      Corrected text box heights and rounded borders, improved the appearance of section headings,
+      and fixed the colors used for focused input fields. These changes make the settings controls
+      more consistent and their active state easier to see.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/431">[issue 431]</a>
+      <p>
+        Also corrected the hover background of the toolbar button when it is highlighted to announce
+        news, addressing a color regression in Thunderbird 157.
+      </p>
+    </li>
   </ul>
 </li>
 
