@@ -320,6 +320,7 @@ async function onLoad(activatedWhileWindowOpen) {
   // read custom templates data from disc
   await window.SmartTemplate4.fileTemplates.loadCustomMenu(false);
   await window.SmartTemplate4.fileTemplates.loadMRU();
+  // send all file template lists to background.
   await window.SmartTemplate4.Util.notifyTools.notifyBackground({
     func: "updateFileTemplates",
     Entries: window.SmartTemplate4.fileTemplates.Entries,
