@@ -330,8 +330,11 @@
         <li class="cursorNavigate"><code>%suppressQuoteHeaders%</code>__MSG_suppressQuoteHdr__</li>
         <li class="cursorNavigate"><code>%deleteQuotedText("<span class="param">searchText</span>",<span class="param">quoteLevel</span>)%</code> __MSG_deleteQuotedText__</li>
         <li class="cursorNavigate"><code>%replaceQuotedText("<span class="param">searchText</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel</span>)%</code> __MSG_replaceQuotedText__ </li>
-        <li class="cursorNavigate"><code>%deleteQuotedTags("<span class="param">selector</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> __MSG_deleteQuotedTags__ </li>
-        <li class="cursorNavigate"><code>%replaceQuotedTags("<span class="param">selector</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> __MSG_replaceQuotedTags__ </li>
+        <li class="cursorNavigate"><code>%deleteQuotedTags("<span class="param">selector</span>",<span class="param">quoteLevel/scope</span>,<span class="param">minSize</span>)%</code> __MSG_deleteQuotedTags__ </li>
+        <li class="cursorNavigate"><code>%replaceQuotedTags("<span class="param">selector</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel/scope</span>,<span class="param">minSize</span>)%</code> __MSG_replaceQuotedTags__ </li>
+        <li class="cursorNavigate"><code>%deleteQuotedTags("style",<span class="paramLiteral">body</span>)%</code> __MSG_quotedTags.styles.body__</li>
+        <li class="cursorNavigate"><code>%deleteQuotedTags("style",<span class="paramLiteral">all</span>)%</code> __MSG_quotedTags.styles.all__</li>
+        <aside>__MSG_quotedTags.styles.inline__</aside>
         
         <h4 class="cursorNavigate parameterHeading">__MSG_parameters__</h4>
         <li class="paramList cursorNavigate"><span class="param">searchText</span> __MSG_regexpAnyText__
@@ -339,6 +342,14 @@
         </li>
         <li class="paramList cursorNavigate"><span class="param">replacementHTML</span>  __MSG_replacementHTML__</li>
         <li class="paramList cursorNavigate"><span class="param">quoteLevel</span> __MSG_quoteLevel__</li>
+        <li class="paramList cursorNavigate"><span class="param">scope</span> <span class="localizedFormatting">__MSG_quotedTags.scope__</span>
+          <ul class="scopeValues">
+            <li><span class="paramLiteral">head</span> - __MSG_quotedTags.scope.head__</li>
+            <li><span class="paramLiteral">body</span> - __MSG_quotedTags.scope.body__</li>
+            <li><span class="paramLiteral">all</span> / <span class="paramLiteral">-1</span> - __MSG_quotedTags.scope.all__</li>
+          </ul>
+          <aside>__MSG_quotedTags.scope.numeric__</aside>
+        </li>
         <li class="paramList cursorNavigate"><span class="param">selector</span> __MSG_selector__</li>
         <li class="paramList cursorNavigate"><span class="param">minSize</span> __MSG_minSize__
         <aside>__MSG_minSize_detail__</aside></li>        
