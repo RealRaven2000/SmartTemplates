@@ -16,7 +16,7 @@
       "preview": "previews/Shadow-box.png"
     },
     {
-      "title": "🖼️ Background Image",
+      "title": "🖼️ Watermark",
       "category": "Layout",
       "file": "add-background-image.html",
       "description": "Example for a non-repeating background image (watermark).",
