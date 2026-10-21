@@ -1331,6 +1331,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Mitä uutta…"
   },
+  "snippets.download": {
+    "message": "Lataa katkelmia…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Valikon nimi"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Lisää pikavalikkoon"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Valitse kohdekansio"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Valitse oma valikkonimi esimerkiksi omalla kielelläsi. Muutokset säilyvät tämän paneelin ollessa auki ja niitä käytetään katkelmaa lisättäessä."
+  },
+  "snippets.browser.preview": {
+    "message": "Katkelman esikatselu"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Esikatselu ei ole käytettävissä"
+  },
+  "snippets.browser.close": {
+    "message": "Sulje"
+  },
+  "snippets.browser.add": {
+    "message": "Lisää katkelmat"
+  },
+  "snippets.browser.loading": {
+    "message": "Ladataan katkelmia…"
+  },
+  "snippets.browser.importing": {
+    "message": "Lisätään katkelmia…"
+  },
+  "snippets.browser.error": {
+    "message": "Katkelmia ei voitu lisätä tai ladata."
+  },
+  "snippets.browser.empty": {
+    "message": "Katkelmia ei ole saatavilla."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Katkelmavarasto ei ole vielä käytettävissä."
+  },
   "snippets.contextMenu": {
     "message": "Näytä pikavalikossa"
   },

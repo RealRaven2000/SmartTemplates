@@ -186,6 +186,54 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Có gì mới…"
   },
+  "snippets.download": {
+    "message": "Tải đoạn mã…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Nhãn menu"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Thêm vào menu ngữ cảnh"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Chọn thư mục đích"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Chọn nhãn menu của riêng bạn, chẳng hạn bằng ngôn ngữ của bạn. Các chỉnh sửa được giữ lại khi bảng này còn mở và được sử dụng khi thêm đoạn mã."
+  },
+  "snippets.browser.preview": {
+    "message": "Xem trước đoạn mã"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Không có bản xem trước"
+  },
+  "snippets.browser.close": {
+    "message": "Đóng"
+  },
+  "snippets.browser.add": {
+    "message": "Thêm đoạn mã"
+  },
+  "snippets.browser.loading": {
+    "message": "Đang tải đoạn mã…"
+  },
+  "snippets.browser.importing": {
+    "message": "Đang thêm đoạn mã…"
+  },
+  "snippets.browser.error": {
+    "message": "Không thể thêm hoặc tải đoạn mã."
+  },
+  "snippets.browser.empty": {
+    "message": "Không có đoạn mã nào."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Kho đoạn mã chưa khả dụng."
+  },
+  "snippets.head": {
+    "message": "Đoạn mã thông minh"
+  },
+  "snippets.label": {
+    "message": "Các đoạn HTML để chèn vào cửa sổ soạn thư"
+  },
   "snippets.contextMenu": {
     "message": "Hiển thị trong menu ngữ cảnh"
   },

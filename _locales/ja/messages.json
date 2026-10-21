@@ -1301,6 +1301,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶新機能…"
   },
+  "snippets.download": {
+    "message": "スニペットをダウンロード…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "メニューの表示名"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "コンテキストメニューに追加"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "保存先フォルダーを選択"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "自分の言語にするなど、メニューの表示名を自由に変更できます。変更内容はこのパネルを開いている間保持され、スニペットの追加時に使用されます。"
+  },
+  "snippets.browser.preview": {
+    "message": "スニペットのプレビュー"
+  },
+  "snippets.browser.noPreview": {
+    "message": "プレビューを表示できません"
+  },
+  "snippets.browser.close": {
+    "message": "閉じる"
+  },
+  "snippets.browser.add": {
+    "message": "スニペットを追加"
+  },
+  "snippets.browser.loading": {
+    "message": "スニペットを読み込み中…"
+  },
+  "snippets.browser.importing": {
+    "message": "スニペットを追加中…"
+  },
+  "snippets.browser.error": {
+    "message": "スニペットを追加または読み込めませんでした。"
+  },
+  "snippets.browser.empty": {
+    "message": "利用できるスニペットはありません。"
+  },
+  "snippets.browser.notConfigured": {
+    "message": "スニペットのリポジトリはまだ利用できません。"
+  },
   "snippets.contextMenu": {
     "message": "コンテキストメニューに表示"
   },

@@ -1319,6 +1319,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Quoi de neuf…"
   },
+  "snippets.download": {
+    "message": "Télécharger des extraits…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Libellé du menu"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Ajouter au menu contextuel"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Sélectionner le dossier de destination"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Choisissez votre propre libellé de menu, par exemple dans votre langue. Vos modifications sont conservées tant que ce panneau reste ouvert et sont utilisées lors de l'ajout de l'extrait."
+  },
+  "snippets.browser.preview": {
+    "message": "Aperçu de l'extrait"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Aperçu indisponible"
+  },
+  "snippets.browser.close": {
+    "message": "Fermer"
+  },
+  "snippets.browser.add": {
+    "message": "Ajouter les extraits"
+  },
+  "snippets.browser.loading": {
+    "message": "Chargement des extraits…"
+  },
+  "snippets.browser.importing": {
+    "message": "Ajout des extraits…"
+  },
+  "snippets.browser.error": {
+    "message": "Impossible d'ajouter ou de charger les extraits."
+  },
+  "snippets.browser.empty": {
+    "message": "Aucun extrait disponible."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Le dépôt d'extraits n'est pas encore disponible."
+  },
   "snippets.contextMenu": {
     "message": "Afficher dans le menu contextuel"
   },

@@ -139,6 +139,7 @@ export const Preferences = {
     "debug.headers": false,
     "debug.sandbox": false,
     "debug.snippets": false,
+    "debug.snippets.remote": false,
     "debug.notifications": false,
     "debug.notifications.menus": false,
     "debug.premium.licenser": false,

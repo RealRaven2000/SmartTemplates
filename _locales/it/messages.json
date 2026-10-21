@@ -1286,6 +1286,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Novità…"
   },
+  "snippets.download": {
+    "message": "Scarica frammenti…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Etichetta del menu"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Aggiungi al menu contestuale"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Seleziona la cartella di destinazione"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Scegli un'etichetta di menu personalizzata, ad esempio nella tua lingua. Le modifiche vengono conservate finché questo pannello rimane aperto e utilizzate quando aggiungi il frammento."
+  },
+  "snippets.browser.preview": {
+    "message": "Anteprima del frammento"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Anteprima non disponibile"
+  },
+  "snippets.browser.close": {
+    "message": "Chiudi"
+  },
+  "snippets.browser.add": {
+    "message": "Aggiungi frammenti"
+  },
+  "snippets.browser.loading": {
+    "message": "Caricamento dei frammenti…"
+  },
+  "snippets.browser.importing": {
+    "message": "Aggiunta dei frammenti…"
+  },
+  "snippets.browser.error": {
+    "message": "Impossibile aggiungere o caricare i frammenti."
+  },
+  "snippets.browser.empty": {
+    "message": "Nessun frammento disponibile."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Il repository dei frammenti non è ancora disponibile."
+  },
   "snippets.contextMenu": {
     "message": "Mostra nel menu contestuale"
   },

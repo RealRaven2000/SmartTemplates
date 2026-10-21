@@ -1313,6 +1313,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Novidades…"
   },
+  "snippets.download": {
+    "message": "Baixar snippets…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Nome no menu"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Adicionar ao menu de contexto"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Selecionar pasta de destino"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Escolha seu próprio nome no menu, por exemplo no seu idioma. As alterações são mantidas enquanto este painel estiver aberto e usadas ao adicionar o snippet."
+  },
+  "snippets.browser.preview": {
+    "message": "Prévia do snippet"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Prévia indisponível"
+  },
+  "snippets.browser.close": {
+    "message": "Fechar"
+  },
+  "snippets.browser.add": {
+    "message": "Adicionar snippets"
+  },
+  "snippets.browser.loading": {
+    "message": "Carregando snippets…"
+  },
+  "snippets.browser.importing": {
+    "message": "Adicionando snippets…"
+  },
+  "snippets.browser.error": {
+    "message": "Não foi possível adicionar ou carregar os snippets."
+  },
+  "snippets.browser.empty": {
+    "message": "Não há snippets disponíveis."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "O repositório de snippets ainda não está disponível."
+  },
   "snippets.contextMenu": {
     "message": "Mostrar no menu de contexto"
   },

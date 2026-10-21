@@ -1307,6 +1307,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Qué hay de nuevo…"
   },
+  "snippets.download": {
+    "message": "Descargar fragmentos…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Etiqueta del menú"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Añadir al menú contextual"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Seleccionar carpeta de destino"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Elija su propia etiqueta de menú, por ejemplo en su idioma. Los cambios se conservan mientras este panel esté abierto y se utilizan al añadir el fragmento."
+  },
+  "snippets.browser.preview": {
+    "message": "Vista previa del fragmento"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Vista previa no disponible"
+  },
+  "snippets.browser.close": {
+    "message": "Cerrar"
+  },
+  "snippets.browser.add": {
+    "message": "Añadir fragmentos"
+  },
+  "snippets.browser.loading": {
+    "message": "Cargando fragmentos…"
+  },
+  "snippets.browser.importing": {
+    "message": "Añadiendo fragmentos…"
+  },
+  "snippets.browser.error": {
+    "message": "No se han podido añadir o cargar los fragmentos."
+  },
+  "snippets.browser.empty": {
+    "message": "No hay fragmentos disponibles."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "El repositorio de fragmentos aún no está disponible."
+  },
   "snippets.contextMenu": {
     "message": "Mostrar en el menú contextual"
   },

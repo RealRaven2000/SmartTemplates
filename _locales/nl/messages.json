@@ -1310,6 +1310,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Wat is er nieuw…"
   },
+  "snippets.download": {
+    "message": "Fragmenten downloaden…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Menulabel"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Toevoegen aan contextmenu"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Doelmap selecteren"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Kies uw eigen menulabel, bijvoorbeeld in uw taal. Uw wijzigingen blijven bewaard zolang dit paneel geopend is en worden gebruikt bij het toevoegen van het fragment."
+  },
+  "snippets.browser.preview": {
+    "message": "Fragmentvoorbeeld"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Voorbeeld niet beschikbaar"
+  },
+  "snippets.browser.close": {
+    "message": "Sluiten"
+  },
+  "snippets.browser.add": {
+    "message": "Fragmenten toevoegen"
+  },
+  "snippets.browser.loading": {
+    "message": "Fragmenten laden…"
+  },
+  "snippets.browser.importing": {
+    "message": "Fragmenten toevoegen…"
+  },
+  "snippets.browser.error": {
+    "message": "Kan fragmenten niet toevoegen of laden."
+  },
+  "snippets.browser.empty": {
+    "message": "Er zijn geen fragmenten beschikbaar."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "De fragmentenopslag is nog niet beschikbaar."
+  },
   "snippets.contextMenu": {
     "message": "Tonen in het contextmenu"
   },

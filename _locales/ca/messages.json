@@ -1331,6 +1331,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Què hi ha de nou…"
   },
+  "snippets.download": {
+    "message": "Baixa fragments…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Etiqueta del menú"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Afegeix al menú contextual"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Selecciona la carpeta de destinació"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Trieu una etiqueta de menú pròpia, per exemple en la vostra llengua. Els canvis es conserven mentre aquest panell sigui obert i s'utilitzen en afegir el fragment."
+  },
+  "snippets.browser.preview": {
+    "message": "Previsualització del fragment"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Previsualització no disponible"
+  },
+  "snippets.browser.close": {
+    "message": "Tanca"
+  },
+  "snippets.browser.add": {
+    "message": "Afegeix fragments"
+  },
+  "snippets.browser.loading": {
+    "message": "S'estan carregant els fragments…"
+  },
+  "snippets.browser.importing": {
+    "message": "S'estan afegint els fragments…"
+  },
+  "snippets.browser.error": {
+    "message": "No s'han pogut afegir o carregar els fragments."
+  },
+  "snippets.browser.empty": {
+    "message": "No hi ha fragments disponibles."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "El repositori de fragments encara no està disponible."
+  },
   "snippets.contextMenu": {
     "message": "Mostra al menú contextual"
   },

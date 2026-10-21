@@ -1347,6 +1347,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Що нового…"
   },
+  "snippets.download": {
+    "message": "Завантажити фрагменти…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Назва в меню"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Додати до контекстного меню"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Виберіть цільову теку"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Виберіть власну назву в меню, наприклад своєю мовою. Зміни зберігаються, доки ця панель відкрита, і використовуються під час додавання фрагмента."
+  },
+  "snippets.browser.preview": {
+    "message": "Попередній перегляд фрагмента"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Попередній перегляд недоступний"
+  },
+  "snippets.browser.close": {
+    "message": "Закрити"
+  },
+  "snippets.browser.add": {
+    "message": "Додати фрагменти"
+  },
+  "snippets.browser.loading": {
+    "message": "Завантаження фрагментів…"
+  },
+  "snippets.browser.importing": {
+    "message": "Додавання фрагментів…"
+  },
+  "snippets.browser.error": {
+    "message": "Не вдалося додати або завантажити фрагменти."
+  },
+  "snippets.browser.empty": {
+    "message": "Немає доступних фрагментів."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Репозиторій фрагментів поки недоступний."
+  },
   "snippets.contextMenu": {
     "message": "Показувати в контекстному меню"
   },

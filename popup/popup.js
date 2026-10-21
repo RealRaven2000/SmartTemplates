@@ -276,6 +276,19 @@ function specialAttributes(str, content) {
   return out.join(" ");
 }
 
+// Delegate clicks because localized popup content is inserted after page load.
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a.snippets-settings");
+  if (!link) {return;}
+  event.preventDefault();
+  messenger.runtime.sendMessage({
+    command: "openPrefs",
+    page: "fileTemplates",
+    composeType: "snippets",
+    highlight: "snippetsHeader",
+  });
+});
+
 function formatAll(txt) {
   let localizedMsg = replaceNested(txt)
     .replace(/<(.*?)>/g, "<span class='htmltag'>&lt;$1&gt;</span>")
@@ -334,6 +347,7 @@ function formatAll(txt) {
     .replace("$news.minimal$", messenger.i18n.getMessage("news.minimal"))
     .replace(/\{\/A\}/g, "</a>")
     .replace(/\{\/P\}/g, "</p>")
+    .replace(/\{aSnippets\}/g, "<a class='snippets-settings' href='#'>")
     .replace(/\{a ([^}]+?)\}/g, "<a $1>")
     .replace(/\{\/a\}/gi, "</a>")
     .replace(/\{br\}/g, "<br>")

@@ -1346,6 +1346,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Vad är nytt…"
   },
+  "snippets.download": {
+    "message": "Hämta utdrag…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Menytext"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Lägg till i snabbmenyn"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Välj målmapp"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Välj en egen menytext, till exempel på ditt språk. Dina ändringar sparas så länge den här panelen är öppen och används när utdraget läggs till."
+  },
+  "snippets.browser.preview": {
+    "message": "Förhandsvisning av utdrag"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Förhandsvisning saknas"
+  },
+  "snippets.browser.close": {
+    "message": "Stäng"
+  },
+  "snippets.browser.add": {
+    "message": "Lägg till utdrag"
+  },
+  "snippets.browser.loading": {
+    "message": "Läser in utdrag…"
+  },
+  "snippets.browser.importing": {
+    "message": "Lägger till utdrag…"
+  },
+  "snippets.browser.error": {
+    "message": "Det gick inte att lägga till eller läsa in utdrag."
+  },
+  "snippets.browser.empty": {
+    "message": "Det finns inga tillgängliga utdrag."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Utdragsarkivet är ännu inte tillgängligt."
+  },
   "snippets.contextMenu": {
     "message": "Visa i snabbmenyn"
   },

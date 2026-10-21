@@ -1298,6 +1298,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Нове функције…"
   },
+  "snippets.download": {
+    "message": "Преузми исечке…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Назив у менију"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Додај у контекстни мени"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Изаберите одредишну фасциклу"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Изаберите сопствени назив у менију, на пример на свом језику. Измене се чувају док је овај панел отворен и користе се при додавању исечка."
+  },
+  "snippets.browser.preview": {
+    "message": "Преглед исечка"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Преглед није доступан"
+  },
+  "snippets.browser.close": {
+    "message": "Затвори"
+  },
+  "snippets.browser.add": {
+    "message": "Додај исечке"
+  },
+  "snippets.browser.loading": {
+    "message": "Учитавање исечака…"
+  },
+  "snippets.browser.importing": {
+    "message": "Додавање исечака…"
+  },
+  "snippets.browser.error": {
+    "message": "Није могуће додати или учитати исечке."
+  },
+  "snippets.browser.empty": {
+    "message": "Нема доступних исечака."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Репозиторијум исечака још није доступан."
+  },
   "snippets.contextMenu": {
     "message": "Прикажи у контекстном менију"
   },

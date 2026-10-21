@@ -1324,6 +1324,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶更新内容…"
   },
+  "snippets.download": {
+    "message": "下载片段…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "菜单标签"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "添加到上下文菜单"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "选择目标文件夹"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "您可以自定义菜单标签，例如使用您自己的语言。在此面板保持打开期间，修改会被保留，并在添加片段时使用。"
+  },
+  "snippets.browser.preview": {
+    "message": "片段预览"
+  },
+  "snippets.browser.noPreview": {
+    "message": "预览不可用"
+  },
+  "snippets.browser.close": {
+    "message": "关闭"
+  },
+  "snippets.browser.add": {
+    "message": "添加片段"
+  },
+  "snippets.browser.loading": {
+    "message": "正在加载片段…"
+  },
+  "snippets.browser.importing": {
+    "message": "正在添加片段…"
+  },
+  "snippets.browser.error": {
+    "message": "无法添加或加载片段。"
+  },
+  "snippets.browser.empty": {
+    "message": "没有可用的片段。"
+  },
+  "snippets.browser.notConfigured": {
+    "message": "片段仓库尚不可用。"
+  },
   "snippets.contextMenu": {
     "message": "在上下文菜单中显示"
   },

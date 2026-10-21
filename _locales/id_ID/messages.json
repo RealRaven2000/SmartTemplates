@@ -1035,6 +1035,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Apa yang baru…"
   },
+  "snippets.download": {
+    "message": "Unduh Cuplikan…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Label menu"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Tambahkan ke menu konteks"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Pilih folder tujuan"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Pilih label menu Anda sendiri, misalnya dalam bahasa Anda. Perubahan disimpan selama panel ini terbuka dan digunakan saat menambahkan cuplikan."
+  },
+  "snippets.browser.preview": {
+    "message": "Pratinjau cuplikan"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Pratinjau tidak tersedia"
+  },
+  "snippets.browser.close": {
+    "message": "Tutup"
+  },
+  "snippets.browser.add": {
+    "message": "Tambahkan Cuplikan"
+  },
+  "snippets.browser.loading": {
+    "message": "Memuat cuplikan…"
+  },
+  "snippets.browser.importing": {
+    "message": "Menambahkan cuplikan…"
+  },
+  "snippets.browser.error": {
+    "message": "Tidak dapat menambahkan atau memuat cuplikan."
+  },
+  "snippets.browser.empty": {
+    "message": "Tidak ada cuplikan yang tersedia."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Repositori cuplikan belum tersedia."
+  },
   "snippets.contextMenu": {
     "message": "Tampilkan di menu konteks"
   },

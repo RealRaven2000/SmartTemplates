@@ -1340,6 +1340,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Τι νέο…"
   },
+  "snippets.download": {
+    "message": "Λήψη αποσπασμάτων…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Ετικέτα μενού"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Προσθήκη στο μενού περιβάλλοντος"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Επιλογή φακέλου προορισμού"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Επιλέξτε τη δική σας ετικέτα μενού, για παράδειγμα στη γλώσσα σας. Οι αλλαγές διατηρούνται όσο αυτός ο πίνακας παραμένει ανοιχτός και χρησιμοποιούνται κατά την προσθήκη του αποσπάσματος."
+  },
+  "snippets.browser.preview": {
+    "message": "Προεπισκόπηση αποσπάσματος"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Η προεπισκόπηση δεν είναι διαθέσιμη"
+  },
+  "snippets.browser.close": {
+    "message": "Κλείσιμο"
+  },
+  "snippets.browser.add": {
+    "message": "Προσθήκη αποσπασμάτων"
+  },
+  "snippets.browser.loading": {
+    "message": "Φόρτωση αποσπασμάτων…"
+  },
+  "snippets.browser.importing": {
+    "message": "Προσθήκη αποσπασμάτων…"
+  },
+  "snippets.browser.error": {
+    "message": "Δεν ήταν δυνατή η προσθήκη ή η φόρτωση αποσπασμάτων."
+  },
+  "snippets.browser.empty": {
+    "message": "Δεν υπάρχουν διαθέσιμα αποσπάσματα."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Το αποθετήριο αποσπασμάτων δεν είναι ακόμη διαθέσιμο."
+  },
   "snippets.contextMenu": {
     "message": "Εμφάνιση στο μενού περιβάλλοντος"
   },

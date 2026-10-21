@@ -1331,6 +1331,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Novosti…"
   },
+  "snippets.download": {
+    "message": "Prenesi izrezke…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Oznaka v meniju"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Dodaj v priročni meni"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Izberite ciljno mapo"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Izberite svojo oznako v meniju, na primer v svojem jeziku. Spremembe se ohranijo, dokler je to podokno odprto, in se uporabijo ob dodajanju izrezka."
+  },
+  "snippets.browser.preview": {
+    "message": "Predogled izrezka"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Predogled ni na voljo"
+  },
+  "snippets.browser.close": {
+    "message": "Zapri"
+  },
+  "snippets.browser.add": {
+    "message": "Dodaj izrezke"
+  },
+  "snippets.browser.loading": {
+    "message": "Nalaganje izrezkov…"
+  },
+  "snippets.browser.importing": {
+    "message": "Dodajanje izrezkov…"
+  },
+  "snippets.browser.error": {
+    "message": "Izrezkov ni bilo mogoče dodati ali naložiti."
+  },
+  "snippets.browser.empty": {
+    "message": "Ni izrezkov na voljo."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Skladišče izrezkov še ni na voljo."
+  },
   "snippets.contextMenu": {
     "message": "Prikaži v priročnem meniju"
   },

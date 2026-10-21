@@ -1325,6 +1325,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶更新內容…"
   },
+  "snippets.download": {
+    "message": "下載片段…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "選單標籤"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "新增至快顯選單"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "選取目標資料夾"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "您可以自訂選單標籤，例如使用您自己的語言。在此面板保持開啟期間，修改會被保留，並在新增片段時使用。"
+  },
+  "snippets.browser.preview": {
+    "message": "片段預覽"
+  },
+  "snippets.browser.noPreview": {
+    "message": "無法預覽"
+  },
+  "snippets.browser.close": {
+    "message": "關閉"
+  },
+  "snippets.browser.add": {
+    "message": "新增片段"
+  },
+  "snippets.browser.loading": {
+    "message": "正在載入片段…"
+  },
+  "snippets.browser.importing": {
+    "message": "正在新增片段…"
+  },
+  "snippets.browser.error": {
+    "message": "無法新增或載入片段。"
+  },
+  "snippets.browser.empty": {
+    "message": "沒有可用的片段。"
+  },
+  "snippets.browser.notConfigured": {
+    "message": "片段儲存庫尚未開放。"
+  },
   "snippets.contextMenu": {
     "message": "在快顯選單中顯示"
   },

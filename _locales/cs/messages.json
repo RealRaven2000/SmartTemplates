@@ -1322,6 +1322,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Co je nového…"
   },
+  "snippets.download": {
+    "message": "Stáhnout úryvky…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Název v nabídce"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Přidat do místní nabídky"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Vyberte cílovou složku"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Zvolte vlastní název v nabídce, například ve svém jazyce. Úpravy se uchovají po dobu otevření tohoto panelu a použijí se při přidání úryvku."
+  },
+  "snippets.browser.preview": {
+    "message": "Náhled úryvku"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Náhled není k dispozici"
+  },
+  "snippets.browser.close": {
+    "message": "Zavřít"
+  },
+  "snippets.browser.add": {
+    "message": "Přidat úryvky"
+  },
+  "snippets.browser.loading": {
+    "message": "Načítání úryvků…"
+  },
+  "snippets.browser.importing": {
+    "message": "Přidávání úryvků…"
+  },
+  "snippets.browser.error": {
+    "message": "Úryvky nelze přidat nebo načíst."
+  },
+  "snippets.browser.empty": {
+    "message": "Nejsou k dispozici žádné úryvky."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Úložiště úryvků zatím není k dispozici."
+  },
   "snippets.contextMenu": {
     "message": "Zobrazit v místní nabídce"
   },

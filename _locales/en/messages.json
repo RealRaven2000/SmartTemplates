@@ -1382,6 +1382,48 @@
   "snippets.contextMenu": {
     "message": "Show in context menu"
   },
+  "snippets.download": {
+    "message": "Download Snippets…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Menu label"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Add to context menu"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Select target folder"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Choose your own menu label, for example in your language. Your edits are kept as long as this browser panel is open and used when adding the snippet."
+  },
+  "snippets.browser.preview": {
+    "message": "Snippet preview"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Preview unavailable"
+  },
+  "snippets.browser.close": {
+    "message": "Close"
+  },
+  "snippets.browser.add": {
+    "message": "Add Snippets"
+  },
+  "snippets.browser.loading": {
+    "message": "Loading snippets…"
+  },
+  "snippets.browser.importing": {
+    "message": "Adding snippets…"
+  },
+  "snippets.browser.error": {
+    "message": "Unable to add or load snippets."
+  },
+  "snippets.browser.empty": {
+    "message": "No snippets are available."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "The snippet repository is not available yet."
+  },
   "snippets.head": {
     "message": "Smart Snippets"
   },
@@ -2051,7 +2093,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{h3}Version 4.21{/h3}{L} {b}Major enhancement:{/b} Added context menu support for smart snippets [issue 432].{/L}{L} Fixed template processing in Thunderbird 159 beta after removal of the legacy message-header lookup method; Thunderbird 140 ESR remains supported [issue 433].{/L}{L} Added documentation for {{%sig(none)%}} [issue 434].{/L}{h3}Recent Maintenance Changes in 4.20.2{/h3}{L} Improved account template imports and synchronization of changed settings. [issue 429].{/L}{L} Fixed address headers showing {{??}} in reply and forward quote headers, and repaired missing preference defaults without resetting valid settings [issue 427].{/L}{L} Fixed the Debug mode toggle after the settings storage migration [issue 422].{/L}{L} Removed logging that could cause a long freeze when opening a new message, reply or forward [issue 425].{/L}{h3}Main Changes in 4.20{/h3}{L} Moved settings from Thunderbird’s global configuration database ({{about:config}}) to extension storage ({{storage.local}}) [issue 422]. {br}{i}Note:{/i} Uninstalling {+extensionName} now resets its settings to their defaults.{/L}{L} Updated script loading to support Thunderbird 155 and later [issue 421].{/L}"
+    "message": "{h3}Enhancements{/h3}{L}{b}Online snippet repository{/b}. Explore examples on the SmartTemplates support site, including text highlighting, image frames, and macros for cleaning up quoted content and unwanted styles. Adapt these examples for your own templates. Direct browsing and importing through the {+snippets.download} button are still in development; the initial examples are in English [issue 437].{/L}{L}Smart snippets can now be added into the Composer's {b}context menu{/b} via a checkbox. Set it up on the {aSnippets}{+snippets.head}{/a} page. [issue 432].{/L}{L}Expanded tag-processing scope for quotes. {{%deleteQuotedTags()%}} and {{%replaceQuotedTags()%}} now accept the literal scope parameters {{head}}, {{body}}, and {{all}} alternatively to the numeric quote level. Target the message head to remove style and meta tags, the entire body including unquoted content, or both - see variables page for examples [issue 436].{/L}{L}{b}External HTML editor setting{/b}. Configure the path to your preferred template editor directly in Advanced Settings. If no editor is configured, the template editor setup prompt opens that page and highlights the path field [issue 430].{/L}{L}Reorganized variable help with collapsible subsections, and a consolidated Signature chapter brings signature information together. Clearer explanations, improved layout, restored icons, inline code formatting, and updated translations across all locales make the help easier to follow [issue 435].{/L}{L}{b}Signature documentation{/b}. Added help for {{%sig(none)%}}, which suppresses the signature in a template, alongside the other signature commands [issue 434].{/L}{h3}Bug Fixes{/h3}{L}Thunderbird 160 beta compatibility. Fixed template processing after Thunderbird removed the legacy function {{msgHdrFromURI}} [issue 433].{/L}{L}Fixed intermittent missing right-click menus in Composer after inserting templates, restoring access to compose menu commands while writing a message [issue 432].{/L}{L}Improved Settings appearance and toolbar colors. Also corrected the hover background of the toolbar button when highlighted to announce news [issue 431].{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This particular fix was added since the previous release.",

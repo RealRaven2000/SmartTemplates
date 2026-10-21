@@ -1328,6 +1328,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Что нового…"
   },
+  "snippets.download": {
+    "message": "Скачать сниппеты…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Название в меню"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Добавить в контекстное меню"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Выберите папку назначения"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Выберите своё название в меню, например на своём языке. Изменения сохраняются, пока эта панель открыта, и используются при добавлении сниппета."
+  },
+  "snippets.browser.preview": {
+    "message": "Предпросмотр сниппета"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Предпросмотр недоступен"
+  },
+  "snippets.browser.close": {
+    "message": "Закрыть"
+  },
+  "snippets.browser.add": {
+    "message": "Добавить сниппеты"
+  },
+  "snippets.browser.loading": {
+    "message": "Загрузка сниппетов…"
+  },
+  "snippets.browser.importing": {
+    "message": "Добавление сниппетов…"
+  },
+  "snippets.browser.error": {
+    "message": "Не удалось добавить или загрузить сниппеты."
+  },
+  "snippets.browser.empty": {
+    "message": "Нет доступных сниппетов."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Репозиторий сниппетов пока недоступен."
+  },
   "snippets.contextMenu": {
     "message": "Показывать в контекстном меню"
   },

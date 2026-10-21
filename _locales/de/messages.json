@@ -1309,6 +1309,48 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Neuigkeiten…"
   },
+  "snippets.download": {
+    "message": "Fragmente herunterladen…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Menübeschriftung"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Zum Kontextmenü hinzufügen"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Zielordner auswählen"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Wählen Sie eine eigene Menübeschriftung, zum Beispiel in Ihrer Sprache. Ihre Änderungen bleiben erhalten, solange dieses Fenster geöffnet ist, und werden beim Hinzufügen des Fragments verwendet."
+  },
+  "snippets.browser.preview": {
+    "message": "Fragmentvorschau"
+  },
+  "snippets.browser.noPreview": {
+    "message": "Keine Vorschau verfügbar"
+  },
+  "snippets.browser.close": {
+    "message": "Schließen"
+  },
+  "snippets.browser.add": {
+    "message": "Fragmente hinzufügen"
+  },
+  "snippets.browser.loading": {
+    "message": "Fragmente werden geladen…"
+  },
+  "snippets.browser.importing": {
+    "message": "Fragmente werden hinzugefügt…"
+  },
+  "snippets.browser.error": {
+    "message": "Fragmente konnten nicht hinzugefügt oder geladen werden."
+  },
+  "snippets.browser.empty": {
+    "message": "Keine Fragmente verfügbar."
+  },
+  "snippets.browser.notConfigured": {
+    "message": "Das Fragment-Repository ist noch nicht verfügbar."
+  },
   "snippets.contextMenu": {
     "message": "Im Kontextmenü anzeigen"
   },
