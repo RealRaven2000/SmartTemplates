@@ -3,6 +3,33 @@
     "namespace": "Utilities",
     "functions": [
       {
+        "name": "selectSnippetFolder",
+        "type": "function",
+        "async": true,
+        "description": "Select an import folder, reusing the remembered template location. Returns an empty string on cancellation.",
+        "parameters": []
+      },
+      {
+        "name": "installSnippetFiles",
+        "type": "function",
+        "async": true,
+        "description": "Install directly in the chosen target, reuse identical files, and reject conflicting files; return local paths in input order.",
+        "parameters": [{
+          "name": "files",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": { "type": "string" },
+              "data": { "type": "string", "description": "Base64-encoded file bytes." }
+            }
+          }
+        }, {
+          "name": "targetFolder",
+          "type": "string"
+        }]
+      },
+      {
         "name": "logDebug",
         "type": "function",
         "async": true,

@@ -125,7 +125,7 @@ button.iconLabelButton.youtube span {
 }
 
 
-#helpTemplates, #helpSnippets {
+#helpTemplates, #helpSnippets, #snippetCatalogCategoryHelp {
 	/* -moz-context-properties: fill; */
 	fill: currentColor;
   background-image: url("../chrome/content/skin/icons/help.svg") !important;

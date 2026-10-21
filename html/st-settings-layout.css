@@ -342,6 +342,15 @@ div.btnLicenseContainer #btnLicense {
 }
 
 
+@media (max-width: 530px) {
+  #btnDownloadSnippets > span {
+    display: none;
+  }
+  #btnDownloadSnippets {
+    min-width: 0;
+  }
+}
+
 @media only screen and (max-height: 600px)  {
   #categories {
     margin-top: 30px;
@@ -416,6 +425,205 @@ div.btnLicenseContainer #btnLicense {
 	display: flex;
   height: calc(100vh - 45px);
   width: 100%;  
+}
+
+#snippetsHeader.highlight {
+  background-color: var(--focusbackcolor);
+  color: var(--focuscolor);
+}
+
+#snippetsHeader.highlight button span {
+  margin-left: 0;
+}
+
+#snippetsHeader.highlight > button {
+  --in-content-primary-button-background: light-dark(var(--focuscolor), var(--focusbackcolor));
+  --in-content-primary-button-background-hover: color-mix(in srgb, var(--in-content-primary-button-background) 85%, black);
+  --in-content-primary-button-background-active: color-mix(in srgb, var(--in-content-primary-button-background) 70%, black);
+  --in-content-primary-button-text-color: white;
+  --in-content-primary-button-text-color-active: var(--in-content-primary-button-text-color);
+}
+
+#snippetsHeader > button {
+  margin-inline-start: auto;
+  flex-shrink: 0;
+}
+
+#snippetBrowser {
+  width: min(920px, 90vw);
+  height: min(720px, 90vh);
+  max-width: calc(100vw - 16px);
+  max-height: 90vh;
+  box-sizing: border-box;
+  overflow: auto;
+  color: var(--in-content-page-color, CanvasText);
+  background: var(--in-content-page-background, Canvas);
+  border: 1px solid var(--in-content-box-border-color, GrayText);
+  border-radius: 8px;
+  padding: 20px;
+  padding-top: 6px;
+}
+
+#snippetBrowser[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+#snippetBrowserHeading {
+  flex: 1;
+  cursor: move;
+  touch-action: none;
+  user-select: none;
+  flex-shrink: 0;
+  margin-block: 0.3em;
+  padding-block: 0.5em;
+  text-align: center;
+}
+
+.snippetBrowserCaption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+#snippetBrowserClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  font-size: 28px;
+  line-height: 1;
+  min-width: 36px;
+  padding: 0 8px;
+}
+
+.snippetCatalogContextOption {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+#snippetBrowserHeading:hover {
+  background-color: rgba(128,128,128,0.2);
+}
+
+#snippetBrowserResize {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 18px;
+  height: 18px;
+  cursor: se-resize;
+  touch-action: none;
+  background: repeating-linear-gradient(135deg, transparent 0 4px, GrayText 4px 6px);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+#snippetBrowser::backdrop {
+  background: rgb(0 0 0 / 40%);
+}
+
+.snippetBrowserPanes {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(260px, 1.4fr);
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+#snippetCatalogList {
+  min-height: 0;
+  overflow: auto;
+}
+
+.snippetCatalogRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  padding: 4px;
+  border: 1px solid transparent;
+}
+
+.snippetCatalogRow.previewed {
+  border-color: var(--focuscolor);
+  background-color: var(--focusbackcolor);
+}
+
+.snippetCatalogRow button {
+  text-align: start;
+  white-space: normal;
+}
+
+.snippetCatalogDetails {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: auto;
+}
+
+#snippetCatalogFile {
+  overflow-wrap: anywhere;
+}
+
+.snippetCatalogCategoryRow {
+  gap: 6px;
+}
+
+#snippetCatalogCategory {
+  flex: 1;
+  min-width: 0;
+}
+
+#snippetCatalogPreview {
+  max-width: 100%;
+  max-height: 32vh;
+  object-fit: contain;
+}
+
+#snippetCatalogPlaceholder {
+  padding: 40px 16px;
+  text-align: center;
+  border: 1px dashed GrayText;
+}
+
+#snippetBrowser [hidden] {
+  display: none;
+}
+
+.snippetBrowserActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+#templateList_snippets option.snippetImported {
+  background-color: var(--focusbackcolor);
+  color: var(--focuscolor);
+  font-weight: bold;
+}
+
+@media (max-width: 650px) {
+  .snippetBrowserPanes { grid-template-columns: 1fr; }
+}
+
+#btnDownloadSnippets {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+#btnDownloadSnippets::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: inherit;
+  background-color: currentColor;
+  mask: url("../chrome/content/skin/icons/thunderbird/cloud-download.svg") center / contain no-repeat;
 }
 
 #examplesPane {

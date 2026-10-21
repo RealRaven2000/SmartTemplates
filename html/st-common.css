@@ -92,6 +92,20 @@ button:active {
   border: var(--button-hover-border);
 }
 
+button.primary:not(:disabled) {
+  background-color: var(--in-content-primary-button-background, AccentColor) !important;
+  color: var(--in-content-primary-button-text-color, AccentColorText) !important;
+}
+
+button.primary:not(:disabled):hover {
+  background-color: var(--in-content-primary-button-background-hover, AccentColor) !important;
+}
+
+button.primary:not(:disabled):active {
+  background-color: var(--in-content-primary-button-background-active, AccentColor) !important;
+  color: var(--in-content-primary-button-text-color-active, var(--in-content-primary-button-text-color, AccentColorText)) !important;
+}
+
 
 
 #categories > .category,

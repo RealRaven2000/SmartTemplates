@@ -218,9 +218,17 @@
               <!-- ######## Content [Snippets] File Tab ######## -->
               <section class="snippetsGroup fileTemplatePanel vbox" id="snippets-fileTemplates">
                 <fieldset  flex="1" class="transparent">
-                  <legend><h2 tabindex="0">__MSG_snippets.head__</h2></legend>
+                  <legend>
+                    <h2 tabindex="0">__MSG_snippets.head__</h2>
+                  </legend>
                   <div flex="1" class="vfield vbox">
-                    <label>__MSG_snippets.label__</label>
+                    <div id="snippetsHeader" class="hbox align_center">
+                      <label>__MSG_snippets.label__</label>
+                      <button id="btnDownloadSnippets" type="button" class="primary"
+                        aria-label="__MSG_snippets.download__"
+                        title="Browse examples from the SmartTemplates website and download them to your computer."
+                        ><span>__MSG_snippets.download__</span></button>
+                    </div>
                     <div class="snippetListContainer">
                       <div class="snippetContextChecks"></div>
                       <select id="templateList_snippets"
@@ -915,6 +923,40 @@
 </div>
 
 
+  <dialog id="snippetBrowser" aria-labelledby="snippetBrowserHeading">
+    <div class="snippetBrowserCaption">
+      <h2 id="snippetBrowserHeading">__MSG_snippets.download__</h2>
+      <button id="snippetBrowserClose" type="button" aria-label="__MSG_snippets.browser.close__"
+        title="__MSG_snippets.browser.close__">×</button>
+    </div>
+    <div class="snippetBrowserPanes">
+      <div id="snippetCatalogList" aria-label="__MSG_snippets.head__"></div>
+      <section class="snippetCatalogDetails">
+        <strong id="snippetCatalogFile"></strong>
+        <div class="hbox align_center">
+          <label for="snippetCatalogTitle">__MSG_snippets.browser.localTitle__</label>
+          <button type="button" class="toolTipButton" clickyTooltip="__MSG_snippets.browser.menuLabel.tip__"></button>
+        </div>
+        <input id="snippetCatalogTitle" type="text" disabled>
+        <label for="snippetCatalogCategory">__MSG_template.category__</label>
+        <div class="hbox align_center snippetCatalogCategoryRow">
+          <input id="snippetCatalogCategory" type="text" disabled>
+          <button id="snippetCatalogCategoryHelp" type="button" class="iconButton category-icon"
+            title="__MSG_template.category.docs__" aria-label="__MSG_template.category.docs__"></button>
+        </div>
+        <p id="snippetCatalogDescription"></p>
+        <img id="snippetCatalogPreview" alt="__MSG_snippets.browser.preview__" hidden>
+        <div id="snippetCatalogPlaceholder">__MSG_snippets.browser.noPreview__</div>
+      </section>
+    </div>
+    <p id="snippetCatalogStatus" role="status" aria-live="polite"></p>
+    <div class="snippetBrowserActions">
+      <label class="snippetCatalogContextOption"><input id="snippetCatalogContextMenu" type="checkbox">__MSG_snippets.browser.contextMenu__</label>
+      <button id="snippetCatalogAdd" type="button" class="primary" disabled>__MSG_snippets.browser.add__</button>
+      <button id="snippetCatalogCancel" type="button">__MSG_snippets.browser.close__</button>
+    </div>
+    <div id="snippetBrowserResize" aria-hidden="true"></div>
+  </dialog>
   </body>
 
 </html>

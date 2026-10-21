@@ -26,6 +26,97 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         collapseTimeout: null, // timeout id for gathering save timeouts
         UPDATE_INTERVAL: 2000,
 
+        async selectSnippetFolder() {
+          const parent = Services.wm.getMostRecentWindow("mail:3pane");
+          const util = parent.SmartTemplate4.Util;
+          const prefs = parent.SmartTemplate4.Preferences;
+          const picker = Components.classes["@mozilla.org/filepicker;1"]
+            .createInstance(Components.interfaces.nsIFilePicker);
+          picker.init(util.getFileInitArg(parent), util.getBundleString("snippets.browser.targetFolder"), picker.modeGetFolder);
+          const remembered = prefs.getStringPref("fileTemplates.path");
+          if (remembered) {
+            try {
+              const directory = Components.classes["@mozilla.org/file/local;1"]
+                .createInstance(Components.interfaces.nsIFile);
+              directory.initWithPath(remembered);
+              if (directory.exists() && directory.isDirectory()) { picker.displayDirectory = directory; }
+            } catch (error) {
+              util.logDebugOptional("snippets.remote", "Cannot use remembered snippet folder", remembered, error);
+            }
+          }
+          const result = await new Promise(resolve => picker.open(resolve));
+          if (result !== Components.interfaces.nsIFilePicker.returnOK || !picker.file) { return ""; }
+          prefs.setStringPref("fileTemplates.path", picker.file.path);
+          util.logDebugOptional("snippets.remote", "Selected target folder", picker.file.path);
+          return picker.file.path;
+        },
+
+        // MailExtension file downloads cannot write an arbitrary asset tree to the chosen folder.
+        // Preserve the repository layout in the chosen folder without overwriting local edits.
+        async installSnippetFiles(files, targetFolder) {
+          const { ExtensionUtils } = ChromeUtils.importESModule("resource://gre/modules/ExtensionUtils.sys.mjs");
+          const log = (...args) => win.SmartTemplate4.Util.logDebugOptional("snippets.remote", ...args);
+          let stage = "validate files";
+          const createdFiles = [];
+          try {
+            log("installSnippetFiles: start", files.map(file => file.path));
+            if (!files.length) { throw new Error("No snippet files to install."); }
+            const relativeParts = files.map(file => {
+              const parts = file.path.split("/");
+              if (parts.some(part => !part || part === "." || part === ".." ||
+                  /[\\:*?"<>|%\x00-\x1f]/.test(part) || /[. ]$/.test(part))) {
+                throw new Error("Invalid snippet asset path.");
+              }
+              return parts;
+            });
+            stage = "validate target folder";
+            const directory = Components.classes["@mozilla.org/file/local;1"]
+              .createInstance(Components.interfaces.nsIFile);
+            directory.initWithPath(targetFolder);
+            if (!directory.exists() || !directory.isDirectory()) { throw new Error("Target folder does not exist."); }
+            const root = directory.path;
+            const prepared = [];
+            // Check the entire batch before creating files, so a conflict changes nothing.
+            for (let index = 0; index < files.length; index++) {
+              const path = PathUtils.join(root, ...relativeParts[index]);
+              stage = "check " + files[index].path;
+              const binary = Services.wm.getMostRecentWindow("mail:3pane").atob(files[index].data);
+              const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
+              const exists = await IOUtils.exists(path);
+              if (exists) {
+                const existing = await IOUtils.read(path);
+                if (existing.length !== bytes.length || existing.some((value, i) => value !== bytes[i])) {
+                  throw new Error(`A different file already exists: ${path}. Nothing was overwritten. Choose another target folder to keep both versions.`);
+                }
+                log("Reusing identical file", path);
+              }
+              prepared.push({ path, bytes, exists });
+            }
+            for (const { path, bytes, exists } of prepared) {
+              if (exists) { continue; }
+              stage = "install " + path;
+              log(stage, path);
+              await IOUtils.makeDirectory(PathUtils.parent(path), { ignoreExisting: true, createAncestors: true });
+              await IOUtils.write(path, bytes, { mode: "create" });
+              createdFiles.push(path);
+              log("installed", path, bytes.length + " bytes");
+            }
+            const paths = prepared.map(file => file.path);
+            log("installSnippetFiles: complete", paths);
+            return paths;
+          } catch (error) {
+            log("installSnippetFiles: failed at " + stage, error);
+            for (const path of createdFiles.reverse()) {
+              try {
+                await IOUtils.remove(path, { ignoreAbsent: true });
+              } catch (cleanupError) {
+                log("Failed to remove incomplete download", cleanupError);
+              }
+            }
+            throw new ExtensionUtils.ExtensionError(`Snippet import (${stage}): ${error.message}`);
+          }
+        },
+
         logDebug(text) {
           win.SmartTemplate4.Util.logDebug(text);
         },

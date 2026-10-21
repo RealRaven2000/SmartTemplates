@@ -44,6 +44,7 @@ var licenseInfo;
 
 import { SettingsUI } from "./st-settings-ui.mjs";
 import { logMissingFunction } from "./st-log.mjs";
+import { initSnippetBrowser } from "./st-snippet-browser.mjs";
 
 // ========================================
 // Preferences Helper - Direct browser.storage.local Access
@@ -205,6 +206,16 @@ var fileTemplates = {
     };
     select.addEventListener("scroll", schedule);
     select.addEventListener("change", schedule);
+    const header = document.getElementById("snippetsHeader");
+    const updateEmptyEmphasis = () => {
+      const empty = select.options.length === 0;
+      if (empty || header.dataset.emptyEmphasis === "true") {
+        header.classList.toggle("highlight", empty);
+      }
+      header.dataset.emptyEmphasis = String(empty);
+    };
+    new MutationObserver(updateEmptyEmphasis).observe(select, { childList: true });
+    updateEmptyEmphasis();
     // Option labels, row order, and scroll position can change without a reload.
     new MutationObserver(schedule).observe(select, {
       childList: true, subtree: true, attributes: true, characterData: true,
@@ -706,6 +717,9 @@ var fileTemplates = {
     const option = document.createElement("option");
     option.value = JSON.stringify({ path: path, category: cat, position: pos });
     option.text = label;
+    if (this.importedSnippetPaths?.has(path) && select.id === "templateList_snippets") {
+      option.classList.add("snippetImported");
+    }
     option.setAttribute("draggable", true);
 
     if (sortId !== undefined) {
@@ -1038,7 +1052,7 @@ SmartTemplates.Settings = {
     for (let i=0; i<options.length; i++) {
       let option = options[i];
       if (await SmartTemplates.Preferences.isDebugOption(option)) {
-        this.logWithOption(...rest);
+        this.logWithOption(optionString, ...rest);
         break; // only log once, in case multiple log switches are on
       }
     }
@@ -2751,6 +2765,45 @@ function addUIListeners() {
   document.getElementById("helpSnippets").addEventListener("click", (_event) => {
     SmartTemplates.Util.showStationeryPage("snippets"); // contains an anchor
   });
+  document.getElementById("snippetCatalogCategoryHelp").addEventListener("click", () => {
+    document.getElementById("helpSnippets").click();
+  });
+  const openSnippetBrowser = initSnippetBrowser({
+    log: (...args) => SmartTemplates.Settings.logDebugOptional("snippets.remote", ...args),
+    onImport: async (items, files, targetFolder) => {
+      SmartTemplates.Settings.logDebugOptional("snippets.remote", "Installing downloaded files");
+      const paths = await messenger.Utilities.installSnippetFiles(files, targetFolder);
+      SmartTemplates.Settings.logDebugOptional("snippets.remote", "Installed snippet paths", paths);
+      const entries = fileTemplates.Entries.snippets;
+      const select = document.getElementById("templateList_snippets");
+      const selectedIndex = select.selectedIndex;
+      const start = selectedIndex >= 0 ? selectedIndex + 1 : entries.length;
+      const imported = items.map((item, index) => ({
+        path: paths[files.findIndex(file => file.path === item.file)],
+        label: item.label,
+        category: item.category,
+        contextMenu: item.contextMenu,
+        _sortId: start + index + 1,
+      }));
+      const current = fileTemplates.rawEntries;
+      const updated = { ...current, snippets: [
+        ...current.snippets.slice(0, start),
+        ...imported.map(({ _sortId, ...entry }) => entry),
+        ...current.snippets.slice(start),
+      ] };
+      SmartTemplates.Settings.logDebugOptional("snippets.remote", "Updating snippet menus", imported);
+      await messenger.Utilities.updateTemplates(updated, true);
+      SmartTemplates.Settings.logDebugOptional("snippets.remote", "Snippet menus updated; refreshing Settings list");
+      fileTemplates.importedSnippetPaths = new Set(imported.map(entry => entry.path));
+      entries.splice(start, 0, ...imported);
+      entries.forEach((entry, index) => { entry._sortId = index + 1; });
+      fileTemplates.repopulate(true);
+      select.selectedIndex = start;
+      fileTemplates.onSelect(select);
+    },
+    onImported: () => document.getElementById("templateList_snippets").focus(),
+  });
+  document.getElementById("btnDownloadSnippets").addEventListener("click", openSnippetBrowser);
 
   // command handlers for licensing
   document.getElementById("btnPasteLicense").addEventListener("click", (_event) => {
@@ -3180,8 +3233,17 @@ async function onLoad() {
 	SettingsUI.initVersionPanel();
 	const highlightedElement = document.getElementById(params.get("highlight"));
 	if (highlightedElement) {
-		highlightedElement.classList.add("highlighted");
-		selectedElement = highlightedElement;
+		highlightedElement.classList.add(highlightedElement.id === "snippetsHeader" ? "highlight" : "highlighted");
+		selectedElement = highlightedElement.id === "snippetsHeader"
+			? document.getElementById("btnDownloadSnippets")
+			: highlightedElement;
+		if (highlightedElement.id === "snippetsHeader" && selectedElement) {
+			selectedElement.addEventListener("click", () => {
+				if (document.getElementById("templateList_snippets").options.length) {
+					highlightedElement.classList.remove("highlight");
+				}
+			}, { once: true });
+		}
 	}
 	if (selectedElement) {
 		// set focus to the document pane?
