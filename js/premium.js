@@ -1,0 +1,146 @@
+
+const sales_name = "NEW YEARS SALE"; // .saleName
+const SALE_START_DATE = "2026-01-08";
+const SALE_END_DATE = "2026-01-25";
+
+// --- Helper to format dates ---
+function formatSaleDate(isoDate, includeYear = false) {
+  const date = new Date(isoDate);
+  const options = includeYear
+    ? { month: "long", day: "numeric", year: "numeric" }
+    : { month: "long", day: "numeric" };
+
+  // always use English for the website
+  return date.toLocaleDateString("en-US", options);
+}
+
+let tmp_sales_start = SALE_START_DATE; // override for testing.
+const sales_start_lbl = formatSaleDate(tmp_sales_start);
+const sales_start = new Date(tmp_sales_start);
+const sales_end_lbl = formatSaleDate(SALE_END_DATE);
+const sales_end = new Date(SALE_END_DATE);
+
+/* functions that remove elements depending on the user type (from user=pro querystring ) */
+var removableItems = [
+	"smartTemplateProUser",
+	"smartTemplateFreeUser",
+	"smartTemplateProRenew",
+	"salesNotes"
+];
+var removedItems = [];
+
+
+/* functions that remove elements depending on the user type (from user=pro querystring ) */
+
+	function getQueryVariable(variable)	{
+		var query = window.location.search.substring(1),
+				vars = query.split("&");
+		for (var i=0;i<vars.length;i++) {
+			var pair = vars[i].split("=");
+			if (pair[0] == variable) {
+				return pair[1];
+			}
+		}
+		return(null);
+	}
+
+	function removeClassItems(name, replaceItem) {
+		if (removedItems.includes(name)) { // already removed?
+			return;
+		}
+		var dbuttons = document.getElementsByClassName(name);
+		for (var i=dbuttons.length-1; i>=0; i--) {
+			if (replaceItem) {
+				var renewButton = document.createElement("a");
+				renewButton.setAttribute("href", "https://sites.fastspring.com/quickfolders/instant/smarttemplate4renew &referrer=smarttemplates-site");
+				renewButton.className = "renewButton";
+				renewButton.innerHTML = "Renew License";
+				dbuttons[i].replaceWith(renewButton); // replace anchor tag (containing donate button)
+			}
+			else {
+				dbuttons[i].parentNode.removeChild(dbuttons[i]);
+			}
+		}
+		removedItems.push(name);
+	}
+	
+	
+	document.addEventListener("DOMContentLoaded", async function(_event) { 
+		var user = getQueryVariable("user");
+		if (typeof user!='undefined') {
+			// propagate user type to all internal links
+			if (user) {
+				const navMenu = document.getElementsByClassName('navigation-list');
+				if (navMenu.length) {
+					const links = navMenu[0].children;
+					for (var i=0; i<links.length; i++) {
+						var href = links[i].getAttribute("href");
+						if (!href) {continue;}
+						if (href.includes("user")) {continue;}
+						if (href.includes("?")) {
+							links[i].setAttribute("href", href + "&user=" + user);
+						} else {
+							links[i].setAttribute("href", href + "?user=" + user);
+						}
+					}
+				}
+			}
+			
+      // new class: QuickFoldersStdUser
+			switch (user) {
+        case 'std':
+				case 'pro':
+        case 'stdRenew':
+				  removeClassItems('shilling');
+					removeClassItems('donateButton');
+          if (user == 'pro') {
+            removeClassItems('smartTemplateStdUser');
+					} else {
+            removeClassItems('smartTemplateProUser');
+					}
+					removeClassItems('smartTemplateFreeUser');
+				  removeClassItems('smartTemplateProRenew');
+					break;
+				case 'proRenew':
+					removeClassItems('smartTemplateStdUser');
+					removeClassItems('donateButton');
+					removeClassItems('smartTemplateFreeUser');
+				  break;
+				default:
+          removeClassItems('smartTemplateStdUser');
+				  removeClassItems('smartTemplateProRenew');
+				  removeClassItems('smartTemplateProUser');
+			}
+		}
+		
+		// remove sales stuff
+		const isSaleActive = (sales_start && new Date() >= sales_start) &&
+		                     (sales_end && new Date() <= sales_end);
+		if (!isSaleActive) {
+      removableItems.forEach((e) => {
+        if (!removedItems.includes(e)) {
+          removeClassItems(e);
+          removedItems.push(e);
+        }
+      });
+      return;
+    } 
+
+		// update all sales items:
+		let saleLabels = document.querySelectorAll(".saleName");
+		for (let s of saleLabels) {
+			s.textContent = sales_name; // e.g. "AUTUMN SALE"
+		}
+		let saleStarts =  document.querySelectorAll(".saleStart");
+		for (let s of saleStarts) {
+			s.textContent = sales_start_lbl; // e.g. "September 25th"
+		}			
+		let saleEnds =  document.querySelectorAll(".saleEnd");
+		for (let s of saleEnds) {
+			s.textContent = sales_end_lbl; // e.g. "October 9th"
+		}			
+	});
+	
+	
+
+	
