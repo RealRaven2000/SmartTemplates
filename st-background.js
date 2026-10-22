@@ -1476,6 +1476,13 @@ async function main() {
         });
       });
       const rootId = "smart_snippet_root";
+      if (!snippets.length) {
+        await createItem({
+          id: "smart_snippet_add",
+          title: browser.i18n.getMessage("snippets.contextMenu.add"),
+          contexts: ["compose_body"],
+        });
+      }
       const singleCategory = snippets[0]?.category || "";
       const categoryIsRoot = !!singleCategory &&
         snippets.every((entry) => entry.category === singleCategory);
@@ -1518,6 +1525,10 @@ async function main() {
 
   // Register once; the current map replaces closures over outdated arrays.
   browser.menus.onClicked.addListener(async (info, tab) => {
+    if (info.menuItemId === "smart_snippet_add") {
+      await openPrefs({ composeType: "snippets", highlight: "snippetsHeader" });
+      return;
+    }
     const entry = snippetMenuEntries.get(info.menuItemId);
     if (!entry) { return; }
     logSnippetMenu("[ST432] snippet clicked", { path: entry.path, tabId: tab?.id });
