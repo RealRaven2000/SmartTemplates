@@ -1335,7 +1335,14 @@
     "message": "Frammenti intelligenti"
   },
   "snippets.label": {
-    "message": "Frammenti HTML da inserire in Composer"
+    "message": "Tutti i frammenti possono essere inseriti tramite il pulsante $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Campi indirizzo"
@@ -1989,7 +1996,7 @@
   },
   "whats-new-list": {
     "description": "🇮🇹 change log",
-    "message": "{h3}4.20.2 Versione di manutenzione{/h3}{L} {+extensionName} è ora compatibile con Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Migliorata l’importazione dei modelli degli account e la sincronizzazione delle impostazioni modificate [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Corrette le intestazioni degli indirizzi che mostravano {{??}} nelle intestazioni delle citazioni di risposte e inoltri e ripristinati i valori predefiniti mancanti senza reimpostare le impostazioni valide [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Corretto l’interruttore della modalità debug dopo la migrazione dell’archiviazione delle impostazioni [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Rimossa la registrazione nei log che poteva causare un blocco prolungato all’apertura di un nuovo messaggio, di una risposta o di un inoltro [issue 425].{/L}{h3}Modifiche principali della versione 4.20{/h3}{L} Le impostazioni sono state spostate dal database di configurazione globale di Thunderbird ({{about:config}}) allo spazio di archiviazione dell’estensione ({{storage.local}}) [issue 422]. {br}{i}Nota:{/i} La disinstallazione di {+extensionName} ora ripristina le impostazioni ai valori predefiniti.{/L}{L} Aggiornato il caricamento degli script per supportare Thunderbird 155 e versioni successive [issue 421].{/L}"
+    "message": "{L}Scarica esempi direttamente dalla raccolta di frammenti online e aggiungi frammenti intelligenti al menu contestuale di composizione. [issue 437] [issue 432]{/L}{L}Esteso l’ambito dei comandi per i tag citati all’intestazione del messaggio, all’intero corpo o a entrambi. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Configura l’editor HTML esterno nelle impostazioni avanzate. [issue 430]{/L}{L}Riorganizzata la guida delle variabili e aggiunta documentazione sulle firme. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Aggiornata la compatibilità con Thunderbird 160 beta, mantenendo il supporto per Thunderbird 140 ESR. [issue 433]{/L}{L}Corretta la scomparsa dei menu contestuali di composizione dopo l’inserimento di modelli. [issue 432]{/L}{L}Migliorati l’aspetto delle impostazioni e i colori della barra degli strumenti. Canc rimuove la voce di modello o frammento selezionata con uno scorrimento minimo. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Aggiornamento di manutenzione $ver$. Questa correzione specifica è stata aggiunta dalla versione precedente.",
@@ -2075,5 +2082,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Questi esempi rimuovono gli elementi style, non gli attributi style in linea dei singoli elementi."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Aggiungi al menu contestuale di composizione"
+  },
+  "snippets.settingsLegend": {
+    "message": "Frammenti intelligenti (Composizione)"
   }
 }

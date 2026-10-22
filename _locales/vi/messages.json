@@ -232,7 +232,14 @@
     "message": "Đoạn mã thông minh"
   },
   "snippets.label": {
-    "message": "Các đoạn HTML để chèn vào cửa sổ soạn thư"
+    "message": "Có thể chèn tất cả đoạn mã bằng nút $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "snippets.contextMenu": {
     "message": "Hiển thị trong menu ngữ cảnh"
@@ -380,7 +387,7 @@
   },
   "whats-new-list": {
     "description": "🇻🇳 change log",
-    "message": "{h3}4.20.2 Bản phát hành bảo trì{/h3}{L} {+extensionName} hiện tương thích với Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Cải thiện việc nhập mẫu tài khoản và đồng bộ hóa các cài đặt đã thay đổi [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Sửa lỗi tiêu đề địa chỉ hiển thị {{??}} trong phần đầu trích dẫn khi trả lời và chuyển tiếp, đồng thời khôi phục các giá trị mặc định bị thiếu mà không đặt lại các cài đặt hợp lệ [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Sửa công tắc chế độ gỡ lỗi sau khi di chuyển nơi lưu trữ cài đặt [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Loại bỏ việc ghi nhật ký có thể khiến ứng dụng bị treo lâu khi mở thư mới, thư trả lời hoặc thư chuyển tiếp [issue 425].{/L}{h3}Các thay đổi chính trong 4.20{/h3}{L} Chuyển cài đặt từ cơ sở dữ liệu cấu hình chung của Thunderbird ({{about:config}}) sang bộ nhớ của tiện ích mở rộng ({{storage.local}}) [issue 422]. {br}{i}Lưu ý:{/i} Việc gỡ cài đặt {+extensionName} giờ đây sẽ đặt lại các cài đặt về giá trị mặc định.{/L}{L} Cập nhật cách tải tập lệnh để hỗ trợ Thunderbird 155 trở lên [issue 421].{/L}"
+    "message": "{L}Tải ví dụ trực tiếp từ thư viện đoạn mã trực tuyến và thêm đoạn mã thông minh vào menu chuột phải của cửa sổ soạn thư. [issue 437] [issue 432]{/L}{L}Mở rộng phạm vi lệnh xử lý thẻ trích dẫn để áp dụng cho phần đầu thư, toàn bộ nội dung hoặc cả hai. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Thiết lập trình soạn thảo HTML bên ngoài trong phần cài đặt nâng cao. [issue 430]{/L}{L}Sắp xếp lại trợ giúp về biến và bổ sung tài liệu về chữ ký. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Cập nhật khả năng tương thích với Thunderbird 160 beta, đồng thời duy trì hỗ trợ Thunderbird 140 ESR. [issue 433]{/L}{L}Sửa lỗi mất menu chuột phải trong cửa sổ soạn thư sau khi chèn mẫu. [issue 432]{/L}{L}Cải thiện giao diện cài đặt và màu thanh công cụ. Phím Delete xóa mục menu mẫu hoặc đoạn mã đang chọn với mức cuộn tối thiểu. [issue 431]{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
@@ -439,5 +446,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Các ví dụ này xóa phần tử style, không xóa thuộc tính style được đặt trực tiếp trên từng phần tử."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Thêm vào menu chuột phải của cửa sổ soạn thư"
+  },
+  "snippets.settingsLegend": {
+    "message": "Đoạn mã thông minh (Soạn thư)"
   }
 }

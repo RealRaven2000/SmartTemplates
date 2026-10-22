@@ -1380,7 +1380,14 @@
     "message": "Fragments intelligents"
   },
   "snippets.label": {
-    "message": "Fragments HTML per inserir a Composer"
+    "message": "Tots els fragments es poden inserir amb el botó $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Canviadors de camp d’adreça"
@@ -2037,7 +2044,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇦 change log",
-    "message": "{h3}4.20.2 Versió de manteniment{/h3}{L} {+extensionName} ara és compatible amb el Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} S'ha millorat la importació de plantilles de compte i la sincronització dels canvis de configuració [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} S'han corregit les capçaleres d'adreça que mostraven {{??}} a les capçaleres de citació de respostes i reenviaments, i s'han restaurat els valors predeterminats que faltaven sense restablir la configuració vàlida [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} S'ha corregit el commutador del mode de depuració després de la migració de l'emmagatzematge de la configuració [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} S'ha eliminat el registre que podia provocar un bloqueig prolongat en obrir un missatge nou, una resposta o un reenviament [issue 425].{/L}{h3}Canvis principals de la versió 4.20{/h3}{L} La configuració s'ha traslladat de la base de dades de configuració global del Thunderbird ({{about:config}}) a l'emmagatzematge de l'extensió ({{storage.local}}) [issue 422]. {br}{i}Nota:{/i} Ara, en desinstal·lar {+extensionName}, la configuració es restableix als valors predeterminats.{/L}{L} S'ha actualitzat la càrrega de scripts per admetre el Thunderbird 155 i posteriors [issue 421].{/L}"
+    "message": "{L}Baixeu exemples directament de la biblioteca de fragments en línia i afegiu fragments intel·ligents al menú contextual del redactor. [issue 437] [issue 432]{/L}{L}Ampliat l’abast de les ordres d’etiquetes citades per actuar sobre la capçalera del missatge, tot el cos o tots dos. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Configureu l’editor HTML extern a la configuració avançada. [issue 430]{/L}{L}Reorganitzada l’ajuda de variables i afegida documentació de signatures. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Actualitzada la compatibilitat amb Thunderbird 160 beta, mantenint el suport per a Thunderbird 140 ESR. [issue 433]{/L}{L}Corregida la desaparició dels menús contextuals del redactor després d’inserir plantilles. [issue 432]{/L}{L}Millorats l’aspecte de la configuració i els colors de la barra d’eines. Supr elimina l’entrada de plantilla o fragment seleccionada amb un desplaçament mínim. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Actualització de manteniment $ver$. Aquesta correcció concreta s'ha afegit des de la versió anterior.",
@@ -2123,5 +2130,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Aquests exemples eliminen elements style, no pas els atributs style en línia dels elements individuals."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Afegeix al menú contextual del redactor"
+  },
+  "snippets.settingsLegend": {
+    "message": "Fragments intelligents (Redactor)"
   }
 }

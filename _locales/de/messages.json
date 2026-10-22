@@ -1358,7 +1358,14 @@
     "message": "Intelligente Fragmente"
   },
   "snippets.label": {
-    "message": "HTML-Fragmente zum Einfügen in Composer"
+    "message": "Alle Fragmente können über die Schaltfläche $SnippetButton$ eingefügt werden",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Adressfeldschalter"
@@ -2008,7 +2015,7 @@
   },
   "whats-new-list": {
     "description": "🇩🇪 change log",
-    "message": "{h3}Wartungsversion 4.20.2{/h3}{L} {+extensionName} ist jetzt mit Thunderbird 157 kompatibel.{/L}{L} {b class=maintenance}4.20.2{/b} Import von Kontovorlagen und Synchronisierung geänderter Einstellungen verbessert [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Adresskopfzeilen korrigiert, die in Zitatkopfzeilen beim Antworten und Weiterleiten {{??}} anzeigten, und fehlende Standardwerte ergänzt, ohne gültige Einstellungen zurückzusetzen [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Den Schalter für den Debug-Modus nach der Migration des Einstellungsspeichers korrigiert [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Protokollierung entfernt, die beim Öffnen einer neuen Nachricht, Antwort oder Weiterleitung ein längeres Einfrieren verursachen konnte [issue 425].{/L}{h3}Wichtigste Änderungen in 4.20{/h3}{L} Einstellungen aus Thunderbirds globaler Konfigurationsdatenbank ({{about:config}}) in den Erweiterungsspeicher ({{storage.local}}) verschoben [issue 422]. {br}{i}Hinweis:{/i} Bei der Deinstallation von {+extensionName} werden die Einstellungen jetzt auf ihre Standardwerte zurückgesetzt.{/L}{L} Das Laden von Skripten zur Unterstützung von Thunderbird 155 und neuer aktualisiert [issue 421].{/L}"
+    "message": "{L}Beispiele direkt aus der Online-Fragmentbibliothek herunterladen und intelligente Fragmente zum Kontextmenü des Verfassen-Fensters hinzufügen. [issue 437] [issue 432]{/L}{L}Den Geltungsbereich der Befehle für zitierte Tags auf den Nachrichtenkopf, den gesamten Nachrichtentext oder beides erweitert. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Den externen HTML-Editor direkt in den erweiterten Einstellungen konfigurieren. [issue 430]{/L}{L}Variablenhilfe neu geordnet und Signaturdokumentation ergänzt. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Kompatibilität mit Thunderbird 160 Beta aktualisiert; Thunderbird 140 ESR wird weiterhin unterstützt. [issue 433]{/L}{L}Fehlende Kontextmenüs im Verfassen-Fenster nach dem Einfügen von Vorlagen korrigiert. [issue 432]{/L}{L}Darstellung der Einstellungen und Symbolleistenfarben verbessert. Entf entfernt den ausgewählten Vorlagen- oder Fragmenteintrag mit minimalem Scrollen. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Wartungsupdate $ver$. Dieser spezifische Fix wurde seit der vorherigen Version hinzugefügt.",
@@ -2094,5 +2101,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Diese Beispiele entfernen style-Elemente, nicht die direkt an einzelnen Elementen gesetzten style-Attribute."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Zum Kontextmenü des Verfassen-Fensters hinzufügen"
+  },
+  "snippets.settingsLegend": {
+    "message": "Intelligente Fragmente (Verfassen)"
   }
 }

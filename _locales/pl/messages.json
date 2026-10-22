@@ -1368,7 +1368,14 @@
     "message": "Inteligentne fragmenty"
   },
   "snippets.label": {
-    "message": "Fragmenty HTML do wstawienia w Composer"
+    "message": "Wszystkie fragmenty można wstawić przyciskiem $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Przełączniki pola adresu"
@@ -2022,7 +2029,7 @@
   },
   "whats-new-list": {
     "description": "🇵🇱 change log",
-    "message": "{h3}4.20.2 Wydanie poprawkowe{/h3}{L} {+extensionName} jest teraz zgodny z Thunderbirdem 157.{/L}{L} {b class=maintenance}4.20.2{/b} Ulepszono import szablonów kont i synchronizację zmienionych ustawień [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Naprawiono nagłówki adresowe wyświetlające {{??}} w nagłówkach cytowania odpowiedzi i przekazywanych wiadomości oraz przywrócono brakujące wartości domyślne preferencji bez resetowania prawidłowych ustawień [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Naprawiono przełącznik trybu debugowania po migracji magazynu ustawień [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Usunięto rejestrowanie w dzienniku, które mogło powodować długie zawieszenie podczas otwierania nowej wiadomości, odpowiedzi lub przekazywania [issue 425].{/L}{h3}Główne zmiany w wersji 4.20{/h3}{L} Przeniesiono ustawienia z globalnej bazy konfiguracji Thunderbirda ({{about:config}}) do magazynu rozszerzenia ({{storage.local}}) [issue 422]. {br}{i}Uwaga:{/i} Odinstalowanie {+extensionName} przywraca teraz ustawienia do wartości domyślnych.{/L}{L} Zaktualizowano ładowanie skryptów, aby obsługiwać Thunderbirda 155 i nowsze wersje [issue 421].{/L}"
+    "message": "{L}Pobieraj przykłady bezpośrednio z internetowej biblioteki fragmentów i dodawaj inteligentne fragmenty do menu kontekstowego okna tworzenia wiadomości. [issue 437] [issue 432]{/L}{L}Rozszerzono zakres poleceń znaczników cytowania na nagłówek wiadomości, całą treść lub obie części. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Skonfiguruj zewnętrzny edytor HTML w ustawieniach zaawansowanych. [issue 430]{/L}{L}Uporządkowano pomoc dotyczącą zmiennych i dodano dokumentację podpisów. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Zaktualizowano zgodność z Thunderbirdem 160 beta, zachowując obsługę Thunderbirda 140 ESR. [issue 433]{/L}{L}Naprawiono znikanie menu kontekstowych okna tworzenia wiadomości po wstawieniu szablonów. [issue 432]{/L}{L}Poprawiono wygląd ustawień i kolory paska narzędzi. Delete usuwa wybraną pozycję szablonu lub fragmentu z menu przy minimalnym przewijaniu. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Aktualizacja konserwacyjna $ver$. Ta konkretna poprawka została dodana od poprzedniej wersji.",
@@ -2108,5 +2115,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Te przykłady usuwają elementy style, a nie atrybuty style przypisane bezpośrednio do poszczególnych elementów."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Dodaj do menu kontekstowego okna tworzenia wiadomości"
+  },
+  "snippets.settingsLegend": {
+    "message": "Inteligentne fragmenty (Tworzenie wiadomości)"
   }
 }

@@ -1356,7 +1356,14 @@
     "message": "Smart Snippets"
   },
   "snippets.label": {
-    "message": "Fragmentos HTML para insertar en Composer"
+    "message": "Todos los fragmentos se pueden insertar con el botón $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Conmutadores de campo de dirección"
@@ -2007,7 +2014,7 @@
   },
   "whats-new-list": {
     "description": "🇪🇸 change log",
-    "message": "{h3}4.20.2 Versión de mantenimiento{/h3}{L} {+extensionName} ahora es compatible con Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Se ha mejorado la importación de plantillas de cuenta y la sincronización de los cambios de configuración [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Se han corregido los encabezados de dirección que mostraban {{??}} en los encabezados de cita al responder y reenviar, y se han restaurado los valores predeterminados que faltaban sin restablecer los ajustes válidos [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Se ha corregido el interruptor del modo de depuración tras la migración del almacenamiento de la configuración [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Se ha eliminado el registro que podía provocar un bloqueo prolongado al abrir un mensaje nuevo, una respuesta o un reenvío [issue 425].{/L}{h3}Cambios principales de la versión 4.20{/h3}{L} La configuración se ha trasladado de la base de datos de configuración global de Thunderbird ({{about:config}}) al almacenamiento de la extensión ({{storage.local}}) [issue 422]. {br}{i}Nota:{/i} Al desinstalar {+extensionName}, la configuración ahora se restablece a sus valores predeterminados.{/L}{L} Se ha actualizado la carga de scripts para admitir Thunderbird 155 y posteriores [issue 421].{/L}"
+    "message": "{L}Descargue ejemplos directamente de la biblioteca de fragmentos en línea y añada fragmentos inteligentes al menú contextual del redactor. [issue 437] [issue 432]{/L}{L}Ampliado el alcance de los comandos de etiquetas citadas a la cabecera del mensaje, todo el cuerpo o ambos. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Configure el editor HTML externo en los ajustes avanzados. [issue 430]{/L}{L}Reorganizada la ayuda de variables y añadida documentación de firmas. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Actualizada la compatibilidad con Thunderbird 160 beta, manteniendo el soporte para Thunderbird 140 ESR. [issue 433]{/L}{L}Corregida la desaparición de los menús contextuales del redactor tras insertar plantillas. [issue 432]{/L}{L}Mejorados el aspecto de los ajustes y los colores de la barra de herramientas. Supr elimina la entrada de plantilla o fragmento seleccionada con un desplazamiento mínimo. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Actualización de mantenimiento $ver$. Esta corrección específica se añadió desde la versión anterior.",
@@ -2093,5 +2100,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Estos ejemplos eliminan elementos style, no los atributos style en línea de cada elemento."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Añadir al menú contextual del redactor"
+  },
+  "snippets.settingsLegend": {
+    "message": "Smart Snippets (Redactor)"
   }
 }

@@ -219,11 +219,13 @@
               <section class="snippetsGroup fileTemplatePanel vbox" id="snippets-fileTemplates">
                 <fieldset  flex="1" class="transparent">
                   <legend>
-                    <h2 tabindex="0">__MSG_snippets.head__</h2>
+                    <h2 tabindex="0">__MSG_snippets.settingsLegend__</h2>
                   </legend>
                   <div flex="1" class="vfield vbox">
                     <div id="snippetsHeader" class="hbox align_center">
-                      <label>__MSG_snippets.label__</label>
+                      <label><span class="snippetContextArrow" aria-hidden="true">⇩</span><span class="snippetContextLegend">__MSG_snippets.contextMenu.legend__</span></label>
+                      <span class="snippetHeaderSeparator" aria-hidden="true">—</span>
+                      <span class="snippetInjectionLabel"></span>
                       <button id="btnDownloadSnippets" type="button" class="primary"
                         aria-label="__MSG_snippets.download__"
                         title="Browse examples from the SmartTemplates website and download them to your computer."
@@ -950,6 +952,10 @@
       </section>
     </div>
     <p id="snippetCatalogStatus" role="status" aria-live="polite"></p>
+    <section id="snippetCatalogConflicts" hidden aria-labelledby="snippetCatalogConflictsHeading">
+      <strong id="snippetCatalogConflictsHeading">__MSG_snippets.browser.conflicts__</strong>
+      <ul id="snippetCatalogConflictFiles"></ul>
+    </section>
     <div class="snippetBrowserActions">
       <label class="snippetCatalogContextOption"><input id="snippetCatalogContextMenu" type="checkbox">__MSG_snippets.browser.contextMenu__</label>
       <button id="snippetCatalogAdd" type="button" class="primary" disabled>__MSG_snippets.browser.add__</button>

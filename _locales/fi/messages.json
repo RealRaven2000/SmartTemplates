@@ -1380,7 +1380,14 @@
     "message": "Älykkäät katkelmat"
   },
   "snippets.label": {
-    "message": "HTML-fragmentit, jotka lisätään säveltäjään"
+    "message": "Kaikki katkelmat voi lisätä painikkeella $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Osoitekentän kytkimet"
@@ -2046,7 +2053,7 @@
   },
   "whats-new-list": {
     "description": "🇫🇮 change log",
-    "message": "{h3}4.20.2 Ylläpitojulkaisu{/h3}{L} {+extensionName} on nyt yhteensopiva Thunderbird 157:n kanssa.{/L}{L} {b class=maintenance}4.20.2{/b} Tilimallien tuontia ja muutettujen asetusten synkronointia on parannettu [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Korjattu osoiteotsakkeet, jotka näyttivät {{??}} vastausten ja edelleenlähetysten lainausotsakkeissa, sekä palautettu puuttuvat oletusarvot muuttamatta kelvollisia asetuksia [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Korjattu virheenjäljitystilan kytkin asetusten tallennustilan siirron jälkeen [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Poistettu lokitus, joka saattoi aiheuttaa pitkän jumiutumisen avattaessa uutta viestiä, vastausta tai edelleenlähetystä [issue 425].{/L}{h3}Version 4.20 tärkeimmät muutokset{/h3}{L} Asetukset on siirretty Thunderbirdin yleisestä asetustietokannasta ({{about:config}}) laajennuksen tallennustilaan ({{storage.local}}) [issue 422]. {br}{i}Huomautus:{/i} Laajennuksen {+extensionName} poistaminen palauttaa nyt sen asetukset oletusarvoihin.{/L}{L} Päivitetty komentosarjojen lataus tukemaan Thunderbird 155:tä ja uudempia versioita [issue 421].{/L}"
+    "message": "{L}Lataa esimerkkejä suoraan verkon katkelmakirjastosta ja lisää älykkäitä katkelmia viesti-ikkunan pikavalikkoon. [issue 437] [issue 432]{/L}{L}Lainattujen tunnisteiden komentojen kohdealueeksi voi nyt valita viestin otsakeosan, koko viestirungon tai molemmat. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Määritä ulkoinen HTML-editori lisäasetuksissa. [issue 430]{/L}{L}Muuttujien ohjeet on järjestetty uudelleen ja allekirjoitusohjeita on täydennetty. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Thunderbird 160 betan yhteensopivuutta on päivitetty, ja Thunderbird 140 ESR:n tuki säilyy. [issue 433]{/L}{L}Korjattu viesti-ikkunan pikavalikoiden katoaminen mallien lisäämisen jälkeen. [issue 432]{/L}{L}Parannettu asetusten ulkoasua ja työkalupalkin värejä. Delete poistaa valitun malli- tai katkelmavalikon kohdan mahdollisimman vähäisellä vierityksellä. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Huoltopäivitys $ver$. Tämä yksittäinen korjaus lisättiin edellisestä versiosta lähtien.",
@@ -2132,5 +2139,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Nämä esimerkit poistavat style-elementit, eivät yksittäisten elementtien sisäisiä style-attribuutteja."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Lisää viesti-ikkunan pikavalikkoon"
+  },
+  "snippets.settingsLegend": {
+    "message": "Älykkäät katkelmat (Viestin kirjoitus)"
   }
 }

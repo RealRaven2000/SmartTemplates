@@ -1380,7 +1380,14 @@
     "message": "Pametni izrezki"
   },
   "snippets.label": {
-    "message": "Odlomki HTML za vstavljanje v Composer"
+    "message": "Vse izrezke lahko vstavite z gumbom $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Stikala za naslovno polje"
@@ -2046,7 +2053,7 @@
   },
   "whats-new-list": {
     "description": "🇸🇮 change log",
-    "message": "{h3}4.20.2 Vzdrževalna izdaja{/h3}{L} {+extensionName} je zdaj združljiv s Thunderbirdom 157.{/L}{L} {b class=maintenance}4.20.2{/b} Izboljšana sta uvoz predlog računov in sinhronizacija spremenjenih nastavitev [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Popravljene so naslovne glave, ki so v glavah citatov pri odgovarjanju in posredovanju prikazovale {{??}}, ter obnovljene manjkajoče privzete vrednosti brez ponastavitve veljavnih nastavitev [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Popravljeno je stikalo načina za razhroščevanje po selitvi shrambe nastavitev [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Odstranjeno je beleženje, ki je lahko povzročilo dolgotrajno zamrznitev pri odpiranju novega sporočila, odgovora ali posredovanega sporočila [issue 425].{/L}{h3}Glavne spremembe v različici 4.20{/h3}{L} Nastavitve so bile premaknjene iz globalne konfiguracijske zbirke podatkov Thunderbirda ({{about:config}}) v shrambo razširitve ({{storage.local}}) [issue 422]. {br}{i}Opomba:{/i} Odstranitev razširitve {+extensionName} zdaj ponastavi njene nastavitve na privzete vrednosti.{/L}{L} Posodobljeno je nalaganje skriptov za podporo Thunderbirdu 155 in novejšim različicam [issue 421].{/L}"
+    "message": "{L}Prenesite primere neposredno iz spletne knjižnice izrezkov in dodajte pametne izrezke v priročni meni urejevalnika sporočil. [issue 437] [issue 432]{/L}{L}Razširjen obseg ukazov za citirane oznake omogoča obdelavo glave sporočila, celotnega telesa ali obojega. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Zunanji urejevalnik HTML nastavite v naprednih nastavitvah. [issue 430]{/L}{L}Preurejena pomoč za spremenljivke in dodana dokumentacija podpisov. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Posodobljena združljivost s Thunderbirdom 160 beta ob ohranjeni podpori za Thunderbird 140 ESR. [issue 433]{/L}{L}Odpravljeno izginjanje priročnih menijev urejevalnika sporočil po vstavljanju predlog. [issue 432]{/L}{L}Izboljšan videz nastavitev in barve orodne vrstice. Delete odstrani izbrani menijski vnos predloge ali izrezka z najmanjšim možnim pomikanjem. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Vzdrževalna posodobitev $ver$. Ta specifičen popravek je bil dodan od prejšnje izdaje.",
@@ -2132,5 +2139,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Ti primeri odstranijo elemente style, ne pa atributov style, neposredno določenih na posameznih elementih."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Dodaj v priročni meni urejevalnika sporočil"
+  },
+  "snippets.settingsLegend": {
+    "message": "Pametni izrezki (Pisanje sporočil)"
   }
 }

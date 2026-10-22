@@ -1374,7 +1374,14 @@
     "message": "智能片段"
   },
   "snippets.label": {
-    "message": "用於在 Composer 中插入的 HTML 片段"
+    "message": "所有片段皆可透過「$SnippetButton$」按鈕插入",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "地址字段變量"
@@ -2016,7 +2023,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{h3}4.20.2 維護版本{/h3}{L} {+extensionName} 現已相容於 Thunderbird 157。{/L}{L} {b class=maintenance}4.20.2{/b} 改善了帳號範本的匯入及已變更設定的同步 [issue 429]。{/L}{L} {b class=maintenance}4.20.2{/b} 修正了回覆與轉寄時引文標頭中的地址標頭顯示為 {{??}} 的問題，並恢復遺失的偏好設定預設值，而不重設有效設定 [issue 427]。{/L}{L} {b class=maintenance}4.20.2{/b} 修正了設定儲存空間移轉後的除錯模式開關 [issue 422]。{/L}{L} {b class=maintenance}4.20.2{/b} 移除了在開啟新郵件、回覆或轉寄時可能導致長時間停頓的記錄功能 [issue 425]。{/L}{h3}4.20 的主要變更{/h3}{L} 將設定從 Thunderbird 的全域組態資料庫 ({{about:config}}) 移轉至擴充套件儲存空間 ({{storage.local}}) [issue 422]。{br}{i}注意：{/i}現在解除安裝 {+extensionName} 會將其設定重設為預設值。{/L}{L} 更新了指令碼載入方式，以支援 Thunderbird 155 及更新版本 [issue 421]。{/L}"
+    "message": "{L}直接從線上片段庫下載範例，並將智慧片段加入郵件撰寫視窗的右鍵選單。 [issue 437] [issue 432]{/L}{L}擴充了引用標籤處理指令的作用範圍，可針對郵件標頭、整個內文或兩者進行處理。 {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}可在進階設定中設定外部 HTML 編輯器。 [issue 430]{/L}{L}重新整理了變數說明，並補充了簽章文件。 {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}更新了 Thunderbird 160 beta 相容性，同時保留對 Thunderbird 140 ESR 的支援。 [issue 433]{/L}{L}修正了插入範本後郵件撰寫視窗右鍵選單消失的問題。 [issue 432]{/L}{L}改善了設定介面和工具列顏色。按 Delete 可移除選取的範本或片段選單項目，並盡量減少清單捲動。 [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "維護更新 $ver$。此特定修正已包含在上一個版本之後的更新中。",
@@ -2099,5 +2106,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "這些範例移除的是 style 元素，而非個別元素上的行內 style 屬性。"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "加入郵件撰寫視窗的右鍵選單"
+  },
+  "snippets.settingsLegend": {
+    "message": "智能片段 (郵件撰寫)"
   }
 }

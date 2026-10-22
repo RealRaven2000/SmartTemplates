@@ -427,6 +427,42 @@ div.btnLicenseContainer #btnLicense {
   width: 100%;  
 }
 
+#snippetsHeader > label {
+  margin: 0;
+  line-height: 1.4;
+  flex: 0 1 auto;
+  min-width: 26px;
+  align-items: center;
+}
+
+#snippetsHeader .snippetContextLegend {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+#snippetsHeader > .snippetHeaderSeparator {
+  margin-inline: 0.5em;
+  flex-shrink: 0;
+}
+
+#snippetsHeader > .snippetInjectionLabel {
+  margin-inline-start: 0;
+  line-height: 1.4;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+#snippetsHeader .snippetContextArrow {
+  display: inline-flex;
+  flex: 0 0 26px;
+  width: 26px;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  line-height: 1;
+}
+
 #snippetsHeader.highlight {
   background-color: var(--focusbackcolor);
   color: var(--focuscolor);
@@ -591,6 +627,23 @@ div.btnLicenseContainer #btnLicense {
 
 #snippetBrowser [hidden] {
   display: none;
+}
+
+#snippetCatalogConflicts {
+  flex-shrink: 0;
+  max-height: 25%;
+  overflow: auto;
+  overflow-wrap: anywhere;
+  padding: 8px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+#snippetCatalogConflictFiles {
+  margin: 0.5em 0 0;
+  padding-inline-start: 1.5em;
+  user-select: text;
 }
 
 .snippetBrowserActions {

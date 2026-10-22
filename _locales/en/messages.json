@@ -1382,8 +1382,20 @@
   "snippets.contextMenu": {
     "message": "Show in context menu"
   },
+  "snippets.contextMenu.add": {
+    "message": "Add Smart Snippets…"
+  },
   "snippets.download": {
     "message": "Download Snippets…"
+  },
+  "snippets.browser.overwriteTitle": {
+    "message": "Overwrite existing snippet files?"
+  },
+  "snippets.browser.conflicts": {
+    "message": "Previous file conflicts:"
+  },
+  "snippets.browser.overwritePrompt": {
+    "message": "The following files differ from the downloaded versions. Overwrite them? This replaces any local edits, including changes to accompanying resources. Choose Cancel to keep your files unchanged."
   },
   "snippets.browser.localTitle": {
     "message": "Menu label"
@@ -1428,7 +1440,20 @@
     "message": "Smart Snippets"
   },
   "snippets.label": {
-    "message": "HTML Fragments for inserting in Composer"
+    "message": "All Fragments can be injected via the $SnippetButton$ button",
+    "description": "Smart Snippets header. SnippetButton is the localized insertSnippet.button label; it can be moved anywhere in the sentence.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Add to Composer right-click menu"
+  },
+  "snippets.settingsLegend": {
+    "message": "Smart Snippets (Composer)"
   },
   "spec_form.cap": {
     "message": "Address Field Switches"
@@ -2093,7 +2118,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{h3}Enhancements{/h3}{L}{b}Online snippet repository{/b}. Explore examples on the SmartTemplates support site, including text highlighting, image frames, and macros for cleaning up quoted content and unwanted styles. Adapt these examples for your own templates. Direct browsing and importing through the {+snippets.download} button are still in development; the initial examples are in English [issue 437].{/L}{L}Smart snippets can now be added into the Composer's {b}context menu{/b} via a checkbox. Set it up on the {aSnippets}{+snippets.head}{/a} page. [issue 432].{/L}{L}Expanded tag-processing scope for quotes. {{%deleteQuotedTags()%}} and {{%replaceQuotedTags()%}} now accept the literal scope parameters {{head}}, {{body}}, and {{all}} alternatively to the numeric quote level. Target the message head to remove style and meta tags, the entire body including unquoted content, or both - see variables page for examples [issue 436].{/L}{L}{b}External HTML editor setting{/b}. Configure the path to your preferred template editor directly in Advanced Settings. If no editor is configured, the template editor setup prompt opens that page and highlights the path field [issue 430].{/L}{L}Reorganized variable help with collapsible subsections, and a consolidated Signature chapter brings signature information together. Clearer explanations, improved layout, restored icons, inline code formatting, and updated translations across all locales make the help easier to follow [issue 435].{/L}{L}{b}Signature documentation{/b}. Added help for {{%sig(none)%}}, which suppresses the signature in a template, alongside the other signature commands [issue 434].{/L}{h3}Bug Fixes{/h3}{L}Thunderbird 160 beta compatibility. Fixed template processing after Thunderbird removed the legacy function {{msgHdrFromURI}} [issue 433].{/L}{L}Fixed intermittent missing right-click menus in Composer after inserting templates, restoring access to compose menu commands while writing a message [issue 432].{/L}{L}Improved Settings appearance and toolbar colors. Also corrected the hover background of the toolbar button when highlighted to announce news [issue 431].{/L}"
+    "message": "{L}Download examples directly from the online snippet library and add smart snippets to the Composer right-click menu. [issue 437] [issue 432]{/L}{L}Expanded quoted-tag command scopes to target the message head, entire body, or both. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Configure your external HTML editor in Advanced Settings. [issue 430]{/L}{L}Reorganized variable help and added signature documentation. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Updated Thunderbird 160 beta compatibility while retaining Thunderbird 140 ESR support. [issue 433]{/L}{L}Fixed missing Composer right-click menus after inserting templates. [issue 432]{/L}{L}Improved settings appearance and toolbar colors. Delete removes the selected template or snippet menu entry with minimal scrolling. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This particular fix was added since the previous release.",

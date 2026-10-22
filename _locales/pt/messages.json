@@ -1365,7 +1365,14 @@
     "message": "Snippets inteligentes"
   },
   "snippets.label": {
-    "message": "Fragmentos HTML para inserir no Composer"
+    "message": "Todos os fragmentos podem ser inseridos através do botão $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Mudanças de campo de endereço"
@@ -2013,7 +2020,7 @@
   },
   "whats-new-list": {
     "description": "🇵🇹 change log",
-    "message": "{h3}4.20.2 Versão de manutenção{/h3}{L} O {+extensionName} é agora compatível com o Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Melhorada a importação de modelos de conta e a sincronização das definições alteradas [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Corrigidos os cabeçalhos de endereço que apresentavam {{??}} nos cabeçalhos de citação de respostas e reencaminhamentos, e restaurados os valores predefinidos em falta sem repor as definições válidas [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Corrigido o interruptor do modo de depuração após a migração do armazenamento das definições [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Removido o registo que podia causar um bloqueio prolongado ao abrir uma nova mensagem, uma resposta ou um reencaminhamento [issue 425].{/L}{h3}Principais alterações na versão 4.20{/h3}{L} As definições foram movidas da base de dados de configuração global do Thunderbird ({{about:config}}) para o armazenamento da extensão ({{storage.local}}) [issue 422]. {br}{i}Nota:{/i} A desinstalação do {+extensionName} repõe agora as definições nos valores predefinidos.{/L}{L} Atualizado o carregamento de scripts para suportar o Thunderbird 155 e versões posteriores [issue 421].{/L}"
+    "message": "{L}Transfira exemplos diretamente da biblioteca de fragmentos online e adicione fragmentos inteligentes ao menu de contexto da janela de composição. [issue 437] [issue 432]{/L}{L}O âmbito dos comandos de etiquetas citadas foi alargado ao cabeçalho da mensagem, ao corpo completo ou a ambos. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Configure o editor HTML externo nas definições avançadas. [issue 430]{/L}{L}Reorganizada a ajuda das variáveis e adicionada documentação sobre assinaturas. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Atualizada a compatibilidade com o Thunderbird 160 beta, mantendo o suporte para o Thunderbird 140 ESR. [issue 433]{/L}{L}Corrigido o desaparecimento dos menus de contexto da janela de composição após inserir modelos. [issue 432]{/L}{L}Melhorados o aspeto das definições e as cores da barra de ferramentas. Delete remove a entrada de modelo ou fragmento selecionada com deslocamento mínimo. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Atualização de manutenção $ver$. Esta correção específica foi adicionada desde a versão anterior.",
@@ -2099,5 +2106,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Estes exemplos removem elementos style, não os atributos style em linha dos elementos individuais."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Adicionar ao menu de contexto da janela de composição"
+  },
+  "snippets.settingsLegend": {
+    "message": "Snippets inteligentes (Composição)"
   }
 }

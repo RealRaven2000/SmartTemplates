@@ -1368,7 +1368,14 @@
     "message": "Extraits intelligents"
   },
   "snippets.label": {
-    "message": "Fragments HTML à insérer dans Composer"
+    "message": "Tous les fragments peuvent être insérés avec le bouton $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Commutateurs de champ d'adresse"
@@ -2031,7 +2038,7 @@
   },
   "whats-new-list": {
     "description": "🇫🇷 change log",
-    "message": "{h3}4.20.2 Version de maintenance{/h3}{L} {+extensionName} est désormais compatible avec Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Amélioration de l’importation des modèles de compte et de la synchronisation des paramètres modifiés [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Correction des en-têtes d’adresse affichant {{??}} dans les en-têtes de citation des réponses et des transferts, et restauration des valeurs par défaut manquantes sans réinitialiser les paramètres valides [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Correction du bouton d’activation du mode débogage après la migration du stockage des paramètres [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Suppression de la journalisation qui pouvait provoquer un blocage prolongé à l’ouverture d’un nouveau message, d’une réponse ou d’un transfert [issue 425].{/L}{h3}Principaux changements de la version 4.20{/h3}{L} Les paramètres ont été déplacés de la base de données de configuration globale de Thunderbird ({{about:config}}) vers le stockage de l’extension ({{storage.local}}) [issue 422]. {br}{i}Remarque :{/i} La désinstallation de {+extensionName} réinitialise désormais ses paramètres à leurs valeurs par défaut.{/L}{L} Mise à jour du chargement des scripts pour prendre en charge Thunderbird 155 et les versions ultérieures [issue 421].{/L}"
+    "message": "{L}Téléchargez des exemples directement depuis la bibliothèque d’extraits en ligne et ajoutez des extraits intelligents au menu contextuel de rédaction. [issue 437] [issue 432]{/L}{L}Les commandes de balises citées peuvent désormais cibler l’en-tête du message, tout le corps ou les deux. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Configurez votre éditeur HTML externe dans les paramètres avancés. [issue 430]{/L}{L}Réorganisation de l’aide des variables et ajout de documentation sur les signatures. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Mise à jour de la compatibilité avec Thunderbird 160 bêta, tout en conservant la prise en charge de Thunderbird 140 ESR. [issue 433]{/L}{L}Correction de la disparition des menus contextuels de rédaction après l’insertion de modèles. [issue 432]{/L}{L}Amélioration de l’apparence des paramètres et des couleurs de la barre d’outils. Suppr retire l’entrée de modèle ou d’extrait sélectionnée avec un défilement minimal. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Mise à jour de maintenance $ver$. Ce correctif spécifique a été ajouté depuis la version précédente.",
@@ -2117,5 +2124,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Ces exemples suppriment les éléments style, et non les attributs style intégrés aux éléments individuels."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Ajouter au menu contextuel de rédaction"
+  },
+  "snippets.settingsLegend": {
+    "message": "Extraits intelligents (Rédaction)"
   }
 }

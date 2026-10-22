@@ -1350,7 +1350,14 @@
     "message": "スマートスニペット"
   },
   "snippets.label": {
-    "message": "編集画面に挿入するための HTML フラグメント"
+    "message": "すべてのスニペットは「$SnippetButton$」ボタンから挿入できます",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "アドレスフィールドの切り換え"
@@ -2004,7 +2011,7 @@
   },
   "whats-new-list": {
     "description": "🇯🇵 change log",
-    "message": "{h3}4.20.2 メンテナンスリリース{/h3}{L} {+extensionName} が Thunderbird 157 に対応しました。{/L}{L} {b class=maintenance}4.20.2{/b} アカウントテンプレートのインポートと、変更した設定の同期を改善しました [issue 429]。{/L}{L} {b class=maintenance}4.20.2{/b} 返信・転送時の引用ヘッダーでアドレスのヘッダーが {{??}} と表示される問題を修正し、有効な設定をリセットせずに、欠落していた設定の既定値を復元しました [issue 427]。{/L}{L} {b class=maintenance}4.20.2{/b} 設定の保存先の移行後に、デバッグモードの切り替えが正しく動作しない問題を修正しました [issue 422]。{/L}{L} {b class=maintenance}4.20.2{/b} 新規メッセージ、返信、転送を開く際に長時間応答しなくなる原因となり得るログ出力を削除しました [issue 425]。{/L}{h3}4.20 の主な変更点{/h3}{L} 設定を Thunderbird のグローバル設定データベース ({{about:config}}) から拡張機能のストレージ ({{storage.local}}) に移行しました [issue 422]。{br}{i}注意:{/i} {+extensionName} をアンインストールすると、設定が既定値にリセットされるようになりました。{/L}{L} Thunderbird 155 以降に対応するため、スクリプトの読み込みを更新しました [issue 421]。{/L}"
+    "message": "{L}オンラインのスニペットライブラリーから作例を直接ダウンロードし、スマートスニペットをメール作成画面の右クリックメニューに追加できます。 [issue 437] [issue 432]{/L}{L}引用タグの処理コマンドで、メッセージのヘッド部分、本文全体、または両方を対象にできるようになりました。 {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}詳細設定で外部HTMLエディターを設定できます。 [issue 430]{/L}{L}変数ヘルプを再構成し、署名の説明を追加しました。 {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Thunderbird 140 ESRへの対応を維持しつつ、Thunderbird 160ベータとの互換性を更新しました。 [issue 433]{/L}{L}テンプレート挿入後にメール作成画面の右クリックメニューが表示されなくなる問題を修正しました。 [issue 432]{/L}{L}設定画面の外観とツールバーの色を改善しました。Deleteキーで選択中のテンプレートまたはスニペットのメニュー項目を削除でき、スクロールを最小限に抑えます。 [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "メンテナンス更新 $ver$。この特定の修正は前回のリリース以降に追加されました。",
@@ -2090,5 +2097,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "これらの例で削除するのは style 要素です。各要素に直接指定されたインラインの style 属性は削除しません。"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "メール作成画面の右クリックメニューに追加"
+  },
+  "snippets.settingsLegend": {
+    "message": "スマートスニペット (メール作成)"
   }
 }

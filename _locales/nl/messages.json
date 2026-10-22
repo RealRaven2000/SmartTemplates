@@ -1359,7 +1359,14 @@
     "message": "Slimme fragmenten"
   },
   "snippets.label": {
-    "message": "HTML-fragmenten om in Composer in te voegen"
+    "message": "Alle fragmenten kunnen worden ingevoegd met de knop $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Adresveldschakelaars"
@@ -2013,7 +2020,7 @@
   },
   "whats-new-list": {
     "description": "🇳🇱 change log",
-    "message": "{h3}4.20.2 Onderhoudsversie{/h3}{L} {+extensionName} is nu compatibel met Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Het importeren van accountsjablonen en de synchronisatie van gewijzigde instellingen zijn verbeterd [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Adresheaders die {{??}} weergaven in citaatkoppen bij antwoorden en doorsturen zijn gecorrigeerd, en ontbrekende standaardwaarden zijn hersteld zonder geldige instellingen terug te zetten [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} De schakelaar voor de debugmodus is gerepareerd na de migratie van de instellingenopslag [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Logboekregistratie verwijderd die bij het openen van een nieuw bericht, antwoord of doorgestuurd bericht een langdurige vastloper kon veroorzaken [issue 425].{/L}{h3}Belangrijkste wijzigingen in 4.20{/h3}{L} Instellingen zijn verplaatst van de algemene configuratiedatabase van Thunderbird ({{about:config}}) naar de extensieopslag ({{storage.local}}) [issue 422]. {br}{i}Opmerking:{/i} Als u {+extensionName} verwijdert, worden de instellingen nu teruggezet naar de standaardwaarden.{/L}{L} Het laden van scripts is bijgewerkt voor ondersteuning van Thunderbird 155 en hoger [issue 421].{/L}"
+    "message": "{L}Download voorbeelden rechtstreeks uit de online fragmentenbibliotheek en voeg slimme fragmenten toe aan het contextmenu van het opstelvenster. [issue 437] [issue 432]{/L}{L}Het bereik van opdrachten voor geciteerde tags is uitgebreid naar de berichtkop, de volledige berichttekst of beide. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Stel uw externe HTML-editor in bij de geavanceerde instellingen. [issue 430]{/L}{L}De variabelenhulp is opnieuw ingedeeld en de documentatie over handtekeningen is uitgebreid. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Compatibiliteit met Thunderbird 160 bèta bijgewerkt, met behoud van ondersteuning voor Thunderbird 140 ESR. [issue 433]{/L}{L}Ontbrekende contextmenu’s in het opstelvenster na het invoegen van sjablonen verholpen. [issue 432]{/L}{L}De weergave van instellingen en werkbalkkleuren verbeterd. Delete verwijdert het geselecteerde sjabloon- of fragmentmenu-item met minimaal scrollen. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Onderhoudsupdate $ver$. Deze specifieke fix is toegevoegd sinds de vorige release.",
@@ -2099,5 +2106,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Deze voorbeelden verwijderen style-elementen, niet de inline style-attributen van afzonderlijke elementen."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Toevoegen aan het contextmenu van het opstelvenster"
+  },
+  "snippets.settingsLegend": {
+    "message": "Slimme fragmenten (Opstellen)"
   }
 }

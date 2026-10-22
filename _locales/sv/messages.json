@@ -1395,7 +1395,14 @@
     "message": "Smarta utdrag"
   },
   "snippets.label": {
-    "message": "HTML-fragment för infogning i Composer"
+    "message": "Alla utdrag kan infogas med knappen $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Adressfältväljare"
@@ -2058,7 +2065,7 @@
   },
   "whats-new-list": {
     "description": "🇸🇪 change log",
-    "message": "{h3}4.20.2 Underhållsversion{/h3}{L} {+extensionName} är nu kompatibelt med Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Förbättrad import av kontomallar och synkronisering av ändrade inställningar [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Åtgärdat adresshuvuden som visade {{??}} i citathuvuden vid svar och vidarebefordran, och återställt saknade standardvärden utan att återställa giltiga inställningar [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Åtgärdat reglaget för felsökningsläge efter flytten av inställningslagringen [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Tagit bort loggning som kunde orsaka en långvarig låsning när ett nytt meddelande, svar eller vidarebefordrat meddelande öppnades [issue 425].{/L}{h3}Viktigaste ändringarna i 4.20{/h3}{L} Inställningarna har flyttats från Thunderbirds globala konfigurationsdatabas ({{about:config}}) till tilläggets lagring ({{storage.local}}) [issue 422]. {br}{i}Obs!{/i} Om du avinstallerar {+extensionName} återställs nu inställningarna till standardvärdena.{/L}{L} Uppdaterad skriptinläsning för att stödja Thunderbird 155 och senare [issue 421].{/L}"
+    "message": "{L}Hämta exempel direkt från utdragsbiblioteket på nätet och lägg till smarta utdrag i skrivfönstrets högerklicksmeny. [issue 437] [issue 432]{/L}{L}Kommandon för citerade taggar kan nu riktas mot meddelandets huvud, hela meddelandetexten eller båda. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Ange din externa HTML-redigerare i de avancerade inställningarna. [issue 430]{/L}{L}Variabelhjälpen har organiserats om och dokumentation om signaturer har lagts till. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Kompatibiliteten med Thunderbird 160 beta har uppdaterats med bibehållet stöd för Thunderbird 140 ESR. [issue 433]{/L}{L}Åtgärdat att skrivfönstrets högerklicksmenyer försvann efter att mallar infogats. [issue 432]{/L}{L}Förbättrat inställningarnas utseende och verktygsfältets färger. Delete tar bort den markerade mall- eller utdragsposten med minimal rullning. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Underhållsuppdatering $ver$. Denna specifika fix har lagts till sedan föregående version.",
@@ -2147,5 +2154,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Dessa exempel tar bort style-element, inte inline-attributet style på enskilda element."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Lägg till i skrivfönstrets högerklicksmeny"
+  },
+  "snippets.settingsLegend": {
+    "message": "Smarta utdrag (Skrivfönster)"
   }
 }

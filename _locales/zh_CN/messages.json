@@ -1373,7 +1373,14 @@
     "message": "智能片段"
   },
   "snippets.label": {
-    "message": "用于在 Composer 中插入的 HTML 片段"
+    "message": "所有片段均可通过“$SnippetButton$”按钮插入",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "地址字段变量"
@@ -2027,7 +2034,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{h3}4.20.2 维护版本{/h3}{L} {+extensionName} 现已兼容 Thunderbird 157。{/L}{L} {b class=maintenance}4.20.2{/b} 改进了账户模板的导入和已更改设置的同步 [issue 429]。{/L}{L} {b class=maintenance}4.20.2{/b} 修复了回复和转发时引用头中的地址标头显示为 {{??}} 的问题，并恢复缺失的首选项默认值，而不重置有效设置 [issue 427]。{/L}{L} {b class=maintenance}4.20.2{/b} 修复了设置存储迁移后的调试模式开关 [issue 422]。{/L}{L} {b class=maintenance}4.20.2{/b} 移除了在打开新邮件、回复或转发时可能导致长时间卡顿的日志记录 [issue 425]。{/L}{h3}4.20 的主要变化{/h3}{L} 将设置从 Thunderbird 的全局配置数据库 ({{about:config}}) 迁移到扩展存储 ({{storage.local}}) [issue 422]。{br}{i}注意：{/i}现在卸载 {+extensionName} 会将其设置重置为默认值。{/L}{L} 更新了脚本加载方式，以支持 Thunderbird 155 及更高版本 [issue 421]。{/L}"
+    "message": "{L}直接从在线片段库下载示例，并将智能片段添加到邮件撰写窗口的右键菜单。 [issue 437] [issue 432]{/L}{L}扩展了引用标签处理命令的作用范围，可针对邮件头部、整个正文或两者进行处理。 {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}可在高级设置中配置外部 HTML 编辑器。 [issue 430]{/L}{L}重新整理了变量帮助，并补充了签名文档。 {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}更新了 Thunderbird 160 beta 兼容性，同时保留对 Thunderbird 140 ESR 的支持。 [issue 433]{/L}{L}修复了插入模板后邮件撰写窗口右键菜单消失的问题。 [issue 432]{/L}{L}改进了设置界面和工具栏颜色。按 Delete 可移除选中的模板或片段菜单项，并尽量减少列表滚动。 [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "维护更新 $ver$。此特定修复已包含在上一版本之后的更新中。",
@@ -2104,5 +2111,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "这些示例删除的是 style 元素，而不是各个元素上的内联 style 属性。"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "添加到邮件撰写窗口的右键菜单"
+  },
+  "snippets.settingsLegend": {
+    "message": "智能片段 (邮件撰写)"
   }
 }

@@ -1371,7 +1371,14 @@
     "message": "Smart Snippets"
   },
   "snippets.label": {
-    "message": "Fragmenty HTML pro vkládání do Composeru"
+    "message": "Všechny fragmenty lze vložit tlačítkem $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_form.cap": {
     "message": "Přepínače adresního pole"
@@ -2022,7 +2029,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇿 change log",
-    "message": "{h3}4.20.2 Opravné vydání{/h3}{L} {+extensionName} je nyní kompatibilní s Thunderbirdem 157.{/L}{L} {b class=maintenance}4.20.2{/b} Vylepšen import šablon účtů a synchronizace změněných nastavení [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Opraveny adresní hlavičky zobrazující {{??}} v záhlaví citace při odpovídání a přeposílání. Doplněny chybějící výchozí hodnoty předvoleb bez přepsání platných nastavení [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Opraven přepínač režimu ladění po migraci úložiště nastavení [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Odstraněno protokolování, které mohlo způsobit dlouhé zamrznutí při otevření nové zprávy, odpovědi nebo přeposílání [issue 425].{/L}{h3}Hlavní změny ve verzi 4.20{/h3}{L} Nastavení byla přesunuta z globální konfigurační databáze Thunderbirdu ({{about:config}}) do úložiště rozšíření ({{storage.local}}) [issue 422]. {br}{i}Poznámka:{/i} Odinstalováním {+extensionName} se nyní nastavení obnoví na výchozí hodnoty.{/L}{L} Aktualizováno načítání skriptů pro podporu Thunderbirdu 155 a novějších verzí [issue 421].{/L}"
+    "message": "{L}Stahujte příklady přímo z online knihovny fragmentů a přidávejte chytré fragmenty do kontextové nabídky editoru zpráv. [issue 437] [issue 432]{/L}{L}Rozšířen rozsah příkazů pro citované značky na hlavičku zprávy, celé tělo nebo obojí. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Externí HTML editor lze nastavit v pokročilém nastavení. [issue 430]{/L}{L}Přepracována nápověda proměnných a doplněna dokumentace podpisů. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Aktualizována kompatibilita s Thunderbirdem 160 beta při zachování podpory Thunderbirdu 140 ESR. [issue 433]{/L}{L}Opraveno mizení kontextových nabídek editoru zpráv po vložení šablon. [issue 432]{/L}{L}Vylepšen vzhled nastavení a barvy panelu nástrojů. Delete odstraní vybranou položku šablony nebo fragmentu s minimálním posunem seznamu. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Údržbová aktualizace $ver$. Tato konkrétní oprava byla přidána od předchozí verze.",
@@ -2108,5 +2115,11 @@
   },
   "quotedTags.styles.inline": {
     "message": "Tyto příklady odstraňují prvky style, nikoli atributy style přímo u jednotlivých prvků."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Přidat do kontextové nabídky editoru zpráv"
+  },
+  "snippets.settingsLegend": {
+    "message": "Smart Snippets (Editor zpráv)"
   }
 }

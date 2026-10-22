@@ -1084,7 +1084,14 @@
     "message": "Cuplikan Cerdas"
   },
   "snippets.label": {
-    "message": "Fragmen HTML untuk dimasukkan ke dalam Komposer"
+    "message": "Semua cuplikan dapat disisipkan melalui tombol $SnippetButton$",
+    "description": "SnippetButton is the localized insertSnippet.button label.",
+    "placeholders": {
+      "SnippetButton": {
+        "content": "$1",
+        "example": "Insert Snippet"
+      }
+    }
   },
   "spec_var.cap": {
     "message": "Khusus"
@@ -1440,7 +1447,7 @@
   },
   "whats-new-list": {
     "description": "🇮🇩 change log",
-    "message": "{h3}4.20.2 Rilis Pemeliharaan{/h3}{L} {+extensionName} kini kompatibel dengan Thunderbird 157.{/L}{L} {b class=maintenance}4.20.2{/b} Peningkatan impor templat akun dan sinkronisasi pengaturan yang diubah [issue 429].{/L}{L} {b class=maintenance}4.20.2{/b} Memperbaiki header alamat yang menampilkan {{??}} pada header kutipan balasan dan pesan yang diteruskan, serta memulihkan nilai preferensi bawaan yang hilang tanpa mengatur ulang pengaturan yang valid [issue 427].{/L}{L} {b class=maintenance}4.20.2{/b} Memperbaiki tombol mode debug setelah migrasi penyimpanan pengaturan [issue 422].{/L}{L} {b class=maintenance}4.20.2{/b} Menghapus pencatatan log yang dapat menyebabkan aplikasi macet cukup lama saat membuka pesan baru, balasan, atau pesan yang diteruskan [issue 425].{/L}{h3}Perubahan Utama pada 4.20{/h3}{L} Memindahkan pengaturan dari basis data konfigurasi global Thunderbird ({{about:config}}) ke penyimpanan ekstensi ({{storage.local}}) [issue 422]. {br}{i}Catatan:{/i} Menghapus instalasi {+extensionName} kini akan mengembalikan pengaturannya ke nilai bawaan.{/L}{L} Memperbarui pemuatan skrip untuk mendukung Thunderbird 155 dan versi yang lebih baru [issue 421].{/L}"
+    "message": "{L}Unduh contoh langsung dari pustaka cuplikan daring dan tambahkan cuplikan cerdas ke menu klik kanan penulisan pesan. [issue 437] [issue 432]{/L}{L}Cakupan perintah tag kutipan diperluas untuk menargetkan kepala pesan, seluruh isi, atau keduanya. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Atur editor HTML eksternal di Pengaturan Lanjutan. [issue 430]{/L}{L}Bantuan variabel ditata ulang dan dokumentasi tanda tangan ditambahkan. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Kompatibilitas Thunderbird 160 beta diperbarui dengan tetap mendukung Thunderbird 140 ESR. [issue 433]{/L}{L}Memperbaiki menu klik kanan penulisan pesan yang hilang setelah menyisipkan templat. [issue 432]{/L}{L}Tampilan pengaturan dan warna bilah alat ditingkatkan. Delete menghapus entri menu templat atau cuplikan yang dipilih dengan pergeseran daftar seminimal mungkin. [issue 431]{/L}"
   },
   "xsent_long.cap": {
     "message": "Contoh tanggal dan waktu khusus"
@@ -1513,5 +1520,13 @@
   },
   "quotedTags.styles.inline": {
     "message": "Contoh ini menghapus elemen style, bukan atribut style sebaris pada masing-masing elemen."
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Tambahkan ke menu klik kanan penulisan pesan"
+  },
+  "snippets.settingsLegend": {
+    "message": "Cuplikan Cerdas (Penulisan pesan)"
   }
+,
+  "whats-new-intro": { "message": "Baca catatan perubahan terperinci di sini (hanya dalam bahasa Inggris):" }
 }
