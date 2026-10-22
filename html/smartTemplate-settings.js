@@ -472,7 +472,9 @@ var fileTemplates = {
     }
   },
   removeEntry: async function () {
-    let currentPos = fileTemplates.activeFileList.selectedIndex;
+    const select = fileTemplates.activeFileList;
+    const scrollTop = select.scrollTop;
+    let currentPos = select.selectedIndex;
     if (currentPos < 0) {
       return;
     }
@@ -482,6 +484,9 @@ var fileTemplates = {
     // renumber _sortId starting from 1
     fileTemplates.CurrentEntries.forEach((entry, i) => {
       entry._sortId = i + 1;
+      const option = select.options[i];
+      option.dataset.sortId = String(entry._sortId);
+      option.value = JSON.stringify({ path: entry.path, category: entry.category || "", position: i });
     });
 
     // update backend
@@ -491,7 +496,25 @@ var fileTemplates = {
 
     // restore selection
     const newIndex = Math.min(currentPos, fileTemplates.CurrentEntries.length - 1);
-    fileTemplates.activeFileList.selectedIndex = newIndex;
+    select.selectedIndex = newIndex;
+    const restoreScroll = () => {
+      select.scrollTop = scrollTop;
+      const selected = select.options[select.selectedIndex];
+      if (selected) {
+        const row = selected.getBoundingClientRect();
+        const viewport = select.getBoundingClientRect();
+        const top = viewport.top + select.clientTop;
+        const bottom = top + select.clientHeight;
+        if (row.top < top) {
+          select.scrollTop -= top - row.top;
+        } else if (row.bottom > bottom) {
+          select.scrollTop += row.bottom - bottom;
+        }
+      }
+    };
+    restoreScroll();
+    // Native selection scrolling can be deferred until layout has run.
+    requestAnimationFrame(restoreScroll);
   },
   moveEntryUp: async function () {
     let currentPos = fileTemplates.activeFileList.selectedIndex;
@@ -2741,6 +2764,22 @@ function addUIListeners() {
   document.getElementById("btnRemove").addEventListener("click", (event) => {
     fileTemplates.removeEntry(event.target);
   });
+  for (const select of document.querySelectorAll('select[id^="templateList_"]')) {
+    select.setAttribute("aria-keyshortcuts", "Delete");
+    select.addEventListener("keydown", async (event) => {
+      if (event.key !== "Delete" || event.altKey || event.ctrlKey || event.metaKey ||
+          event.shiftKey || event.isComposing || document.activeElement !== select) {
+        return;
+      }
+      event.preventDefault();
+      event.stopPropagation();
+      if (event.repeat || select.selectedIndex < 0 || fileTemplates.activeFileList !== select) {
+        return;
+      }
+      await fileTemplates.removeEntry();
+      fileTemplates.onSelect(select);
+    });
+  }
   document.getElementById("btnUp").addEventListener("click", (event) => {
     fileTemplates.moveEntryUp(event.target);
   });
