@@ -13,7 +13,7 @@
         "name": "installSnippetFiles",
         "type": "function",
         "async": true,
-        "description": "Install directly in the chosen target, reuse identical files, and reject conflicting files; return local paths in input order.",
+        "description": "Install in the chosen target, reusing identical files and confirming overwrites. Return an object with paths in input order and conflicts; on cancellation paths is empty and conflicts lists differing local file paths.",
         "parameters": [{
           "name": "files",
           "type": "array",

@@ -52,12 +52,13 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         // MailExtension file downloads cannot write an arbitrary asset tree to the chosen folder.
-        // Preserve the repository layout in the chosen folder without overwriting local edits.
+        // Preserve the repository layout and confirm before replacing local edits.
         async installSnippetFiles(files, targetFolder) {
           const { ExtensionUtils } = ChromeUtils.importESModule("resource://gre/modules/ExtensionUtils.sys.mjs");
           const log = (...args) => win.SmartTemplate4.Util.logDebugOptional("snippets.remote", ...args);
           let stage = "validate files";
           const createdFiles = [];
+          const replacedFiles = [];
           try {
             log("installSnippetFiles: start", files.map(file => file.path));
             if (!files.length) { throw new Error("No snippet files to install."); }
@@ -83,29 +84,42 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
               const binary = Services.wm.getMostRecentWindow("mail:3pane").atob(files[index].data);
               const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
               const exists = await IOUtils.exists(path);
-              if (exists) {
-                const existing = await IOUtils.read(path);
-                if (existing.length !== bytes.length || existing.some((value, i) => value !== bytes[i])) {
-                  throw new Error(`A different file already exists: ${path}. Nothing was overwritten. Choose another target folder to keep both versions.`);
-                }
-                log("Reusing identical file", path);
-              }
-              prepared.push({ path, bytes, exists });
+              const existing = exists ? await IOUtils.read(path) : null;
+              const changed = exists && (existing.length !== bytes.length || existing.some((value, i) => value !== bytes[i]));
+              prepared.push({ path, bytes, exists, existing, changed });
             }
-            for (const { path, bytes, exists } of prepared) {
-              if (exists) { continue; }
+            const conflicts = prepared.filter(file => file.changed);
+            if (conflicts.length) {
+              const localize = key => context.extension.localeData.localizeMessage(key);
+              const approved = Services.prompt.confirm(
+                Services.wm.getMostRecentWindow("mail:3pane"),
+                localize("snippets.browser.overwriteTitle"),
+                localize("snippets.browser.overwritePrompt") + "\n\n" + conflicts.map(file => file.path).join("\n")
+              );
+              if (!approved) { return { paths: [], conflicts: conflicts.map(file => file.path) }; }
+            }
+            for (const { path, bytes, exists, existing, changed } of prepared) {
+              if (exists && !changed) { log("Reusing identical file", path); continue; }
               stage = "install " + path;
               log(stage, path);
               await IOUtils.makeDirectory(PathUtils.parent(path), { ignoreExisting: true, createAncestors: true });
-              await IOUtils.write(path, bytes, { mode: "create" });
-              createdFiles.push(path);
+              if (changed) { replacedFiles.push({ path, bytes: existing }); }
+              await IOUtils.write(path, bytes, { mode: changed ? "overwrite" : "create" });
+              if (!exists) { createdFiles.push(path); }
               log("installed", path, bytes.length + " bytes");
             }
             const paths = prepared.map(file => file.path);
             log("installSnippetFiles: complete", paths);
-            return paths;
+            return { paths, conflicts: [] };
           } catch (error) {
             log("installSnippetFiles: failed at " + stage, error);
+            for (const { path, bytes } of replacedFiles.reverse()) {
+              try {
+                await IOUtils.write(path, bytes, { mode: "overwrite" });
+              } catch (restoreError) {
+                log("Failed to restore overwritten snippet", path, restoreError);
+              }
+            }
             for (const path of createdFiles.reverse()) {
               try {
                 await IOUtils.remove(path, { ignoreAbsent: true });

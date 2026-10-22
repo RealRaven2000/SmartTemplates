@@ -116,6 +116,12 @@ export function initSnippetBrowser({ onImport, onImported, log = () => {} }) {
   });
   const list = document.getElementById("snippetCatalogList");
   const status = document.getElementById("snippetCatalogStatus");
+  const conflictsPanel = document.getElementById("snippetCatalogConflicts");
+  const conflictsList = document.getElementById("snippetCatalogConflictFiles");
+  const clearConflicts = () => {
+    conflictsList.replaceChildren();
+    conflictsPanel.hidden = true;
+  };
   const add = document.getElementById("snippetCatalogAdd");
   const cancel = document.getElementById("snippetCatalogCancel");
   const close = document.getElementById("snippetBrowserClose");
@@ -212,10 +218,21 @@ export function initSnippetBrowser({ onImport, onImported, log = () => {} }) {
       log("Add Snippets: selected files", selected.map(item => item.file));
       const files = await prepareImport(selected, indexURL, controller.signal, log);
       log("Add Snippets: downloads complete, installing", files.map(file => file.path));
-      await onImport(selected.map(item => ({
+      const imported = await onImport(selected.map(item => ({
         file: item.file, label: item.localTitle.trim(), category: item.localCategory.trim(),
         contextMenu: contextMenu.checked,
       })), files, targetFolder);
+      if (imported?.conflicts) {
+        clearConflicts();
+        for (const path of imported.conflicts) {
+          const row = document.createElement("li");
+          row.textContent = path;
+          conflictsList.appendChild(row);
+        }
+        conflictsPanel.hidden = !imported.conflicts.length;
+        status.textContent = "";
+        return;
+      }
       dialog.close();
       log("Add Snippets: complete");
       onImported?.();
@@ -235,13 +252,14 @@ export function initSnippetBrowser({ onImport, onImported, log = () => {} }) {
   });
   return async function open() {
     if (dialog.open) { return; }
+    clearConflicts();
     controller = new AbortController();
     const signal = controller.signal;
     list.replaceChildren();
     filename.textContent = "";
     description.textContent = "";
     title.value = "";
-    contextMenu.checked = false;
+    contextMenu.checked = true;
     title.disabled = true;
     category.value = "";
     category.disabled = true;
@@ -269,6 +287,7 @@ export function initSnippetBrowser({ onImport, onImported, log = () => {} }) {
         checkbox.type = "checkbox";
         checkbox.setAttribute("aria-label", item.title);
         checkbox.addEventListener("change", () => {
+          clearConflicts();
           item.checked = checkbox.checked;
           if (item.checked) { showPreview(item); }
           updateAdd();

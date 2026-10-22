@@ -486,8 +486,8 @@ var fileTemplates = {
 
     // update backend
     messenger.Utilities.updateTemplates(fileTemplates.Entries);
-    // refresh list on screen (starting from deleted position)
-    fileTemplates.repopulate(true, currentPos);
+    // Keep surviving option nodes: rebuilding temporarily selects every appended
+    // row and causes the native list to scroll away from the deleted position.
 
     // restore selection
     const newIndex = Math.min(currentPos, fileTemplates.CurrentEntries.length - 1);
@@ -2772,7 +2772,8 @@ function addUIListeners() {
     log: (...args) => SmartTemplates.Settings.logDebugOptional("snippets.remote", ...args),
     onImport: async (items, files, targetFolder) => {
       SmartTemplates.Settings.logDebugOptional("snippets.remote", "Installing downloaded files");
-      const paths = await messenger.Utilities.installSnippetFiles(files, targetFolder);
+      const { paths, conflicts } = await messenger.Utilities.installSnippetFiles(files, targetFolder);
+      if (!paths.length) { return { conflicts }; }
       SmartTemplates.Settings.logDebugOptional("snippets.remote", "Installed snippet paths", paths);
       const entries = fileTemplates.Entries.snippets;
       const select = document.getElementById("templateList_snippets");
