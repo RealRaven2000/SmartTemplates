@@ -368,14 +368,24 @@ END LICENSE BLOCK
     # Various Theme fixes for settings tab (items in settings category menu, coloring adjustments)
     # Phase out reliance of ownerGlobal
 
-  Version 4.20.2 - WIP
+  Version 4.20.2 - 08/09/2026
     # Account template imports: await each preference save to prevent competing writes to the accounts object.
     # Propagate account preference changes to existing legacy window caches using flattened account keys.
     # [issue 429] Verify reliable editing/importing of Common and account templates; resolution still pending testing.
     # [issue 427] Repair missing/null preference defaults without resetting valid values; skip absent legacy preferences.
     # [issue 427] Preserve the original address header when both requested and default formatting are empty.
     # [issue 422] Fix Debug mode toggle to use debug.debugActive, recover the old key, and retain the legacy backup.
-    # [issue 425] WIP: temporary storage/composer startup timing diagnostics; trim before release.
+    # [issue 425] temporary storage/composer startup timing diagnostics; trim before release.
+
+  Version 4.21 - WIP
+    # Features:
+    # [issue 437] Online repository of snippets hosted in on smarttemplates support site
+    # [issue 432] Add context menu support for smart snippets
+    # [issue 436] Expand scopes of deleteQuotedTags and replaceQuotedTags
+    # [issue 434] Added documentation for %sig(none)%
+    # [issue 435] Variables documentation: Consolidated Signature chapter and layout in variables page, added subchapters.
+    # Bug Fixes:
+    # [issue 433] Thunderbird 159 beta: msgHdrFromURI removed leads to templates not fully working in Composer
 
 
 =========================
@@ -445,6 +455,7 @@ var SmartTemplate4 = {
       util = SmartTemplate4.Util,
       Ci = Components.interfaces,
       msgComposeType = Ci.nsIMsgCompType;
+
 
     if (SmartTemplate4.Preferences.isBackgroundParser()) {
       // [issue 184] - this should never be called if this flag is set
