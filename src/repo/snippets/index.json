@@ -76,7 +76,7 @@
       "title": "✂️ Snipped Image Placeholder",
       "category": "Cleanup",
       "file": "snipped-image-placeholder.html",
-      "description": "Inserts a pink “IMAGE SNIPPED” notice with a tooltip; does not remove images automatically.",
+      "description": "Select any image to replace it with a pink “IMAGE SNIPPED” notice with a tooltip.",
       "preview": "previews/snipped-image-placeholder.png"
     }
   ]
