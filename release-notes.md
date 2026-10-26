@@ -16,7 +16,7 @@ Additional regressions are expected within the Thunderbird release branch and wi
 
 **Compatibility and documentation**
 
-- Fixed intermittent missing compose context menus after inserting templates. #432.
+- Fixed HTML sanitisation when inserting templates: sanitised elements are now imported into the compose document, correcting intermittent missing right-click menus after template insertion. Existing filtering of scripts and unsafe attributes is retained. #432.
 
 - Added documentation for `%sig(none)%`. #434.
 
@@ -27,3 +27,5 @@ Additional regressions are expected within the Thunderbird release branch and wi
 - Fixed text box heights, rounded borders, section headings, and focused input colors in Settings, and corrected the news toolbar button hover background in Thunderbird 157. #431.
 
 - Fixed template processing in Thunderbird 159 beta after removal of the legacy message-header lookup method; compatibility with Thunderbird 140 ESR is retained. #433.
+
+- Fixed: Conflict with LanguageTool Add-on #424 - this was fixed by using ownerDoc for inserting sanitized HTML fragments.

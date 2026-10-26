@@ -30,3 +30,12 @@ Thunderbird UI checks:
 - [ ] Empty selection removes snippet menu items without affecting other menus.
 - [ ] Click a snippet with two compose windows open; only the clicked window receives it.
 - [ ] Test insertion at the caret, selection replacement, template variables, and missing-file handling.
+
+HTML sanitisation and compose-document ownership
+------------------------------------------------
+
+Commit `ee88ba73` fixes the insertion stage of `SmartTemplate4.Util.insertHtmlSafely()`. After parsing and sanitising HTML, both body nodes and retained head nodes are deep-imported with `ownerDoc.importNode(sanitized, true)` before insertion. Previously, the code appended the parser-created nodes directly, adopting them from the privileged DOMParser document. The script and unsafe-attribute filtering is unchanged; the correction concerns how sanitised content enters the destination document.
+
+This change was made while investigating compose context-menu events that failed to reach Thunderbird's actor handoff on inserted content. It is relevant beyond the new snippet menu because it changes the shared HTML insertion helper. The same commit also uses `event.currentTarget` for deferred-field handlers and consumes a field's contextmenu event before opening its custom popup.
+
+The reported improvement for #424 may be another effect of this fix, but that attribution remains unverified. Compare the same template and Thunderbird version with and without the importNode change to isolate it from the deferred-field listener changes.

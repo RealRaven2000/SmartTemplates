@@ -6,16 +6,18 @@ Additional regressions are expected within the Thunderbird release branch and wi
 
 <strong>Enhancements</strong>
 <ul>
-<li>Download examples directly from the online snippet library. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/437">[issue 437]</a></li>
-<li>Added smart snippets to the Composer right-click menu, with checkboxes in Settings to choose which appear. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/432">[issue 432]</a></li>
-<li>Expanded the scopes of <code>deleteQuotedTags</code> and <code>replaceQuotedTags</code>. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/436">[issue 436]</a></li>
-<li>Configure the external HTML editor in Advanced Settings. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/430">[issue 430]</a></li>
-<li>Added documentation for <code>%sig(none)%</code>. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/434">[issue 434]</a></li>
-<li>Reorganized and updated variable help and translations. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/435">[issue 435]</a></li>
+<li> Download examples directly from the online snippet library. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/437">[issue 437]</a></li>
+<li> Added smart snippets to the Composer right-click menu, with checkboxes in Settings to choose which appear. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/432">[issue 432]</a></li>
+<li> Expanded the scopes of <code>deleteQuotedTags</code> and <code>replaceQuotedTags</code>. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/436">[issue 436]</a></li>
+<li> Configure the external HTML editor in Advanced Settings. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/430">[issue 430]</a></li>
+<li> Added documentation for <code>%sig(none)%</code>. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/434">[issue 434]</a></li>
+<li> Reorganized and updated variable help and translations. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/435">[issue 435]</a></li>
 </ul>
 
 <strong>Bug fixes</strong>
 <ul>
-<li>Improved template and snippet list deletion with the Delete key and minimal scrolling.</li>
-<li>Fixed template processing in Thunderbird 159 beta after removal of the legacy message-header lookup method; compatibility with Thunderbird 140 ESR is retained. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/433">[issue 433]</a></li>
+<li> Fixed HTML sanitisation when inserting templates: sanitised elements are now imported into the compose document, correcting intermittent missing right-click menus after template insertion. Existing filtering of scripts and unsafe attributes is retained. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/432">[issue 432]</a></li>
+<li> Improved template and snippet list deletion with the Delete key and minimal scrolling.</li>
+<li> Fixed template processing in Thunderbird 159 beta after removal of the legacy message-header lookup method; compatibility with Thunderbird 140 ESR is retained. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/433">[issue 433]</a></li>
+<li> Fixed: Conflict with LanguageTool Add-on <a href="https://github.com/RealRaven2000/SmartTemplates/issues/424">[issue 424]</a> - this was fixed by using ownerDoc for inserting sanitized HTML fragments.</li>
 </ul>
