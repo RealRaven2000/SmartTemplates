@@ -1367,9 +1367,11 @@ SmartTemplate4.mimeDecoder = {
 		}
     
     if (isWriteClipboard) {
-      if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+      const isProLicensed = util.hasLicense() && util.licenseInfo.keyType != 2;
+      if (!isProLicensed) { 
         util.addUsedPremiumFunction("clipboard");
-      } else {
+      }
+      if (isProLicensed || util.isTrialActive()) {
         util.logDebug("mimeDecoder.split() - copying result to clipboard:\n" + addresses);
         util.clipboardWrite(addresses);
       }
@@ -1390,7 +1392,6 @@ SmartTemplate4.MessageHdr = null; // will be overwritten
 
 SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
   const clipboardMode = firstPass ? true : false;
-
   // Deals with the following match functions:
   // %matchTextFromBody("regeX"[,MatchGroup][,textTransform][,altText])%
   // %matchTextFromSubject("regeX"[,MatchGroup][,textTransform][,altText])%
@@ -2688,9 +2689,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           for (let a of multiArgs) {
             // support adding multiple string arguments
             if (a == "clipboard") {
-              if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
+              const isProLicensed = util.hasLicense() && util.licenseInfo.keyType != 2;
+              if (!isProLicensed) {
                 util.addUsedPremiumFunction("clipboard");
-              } else {
+              }
+              if (isProLicensed || util.isTrialActive()) {
                 textParamList += util.clipboardRead("plain").replaceAll(",", "\\,"); // [issue 344]
               }
             } else {
@@ -3250,10 +3253,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           SmartTemplate4.PreprocessingFlags.suppressQuoteHeaders = true;
           return "";
         case "deleteForwardedBody":
-          if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
-            util.addUsedPremiumFunction(token);
-          } else {
-            SmartTemplate4.PreprocessingFlags.deleteForwardedBody = true;
+          {
+            const isProLicensed = util.hasLicense() && util.licenseInfo.keyType != 2;
+            if (!isProLicensed) {
+              util.addUsedPremiumFunction(token);
+            }
+            if (isProLicensed || util.isTrialActive()) {
+              SmartTemplate4.PreprocessingFlags.deleteForwardedBody = true;
+            }
           }
           return "";
         case "T": // today
@@ -3605,15 +3612,21 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "clipboard":
           if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
             util.addUsedPremiumFunction("clipboard");
-            return "";
+            if (!util.isTrialActive()) {
+              return "";
+            }
           }
           return util.clipboardRead(args);
         case "toclipboard":
-          if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
-            util.addUsedPremiumFunction("toclipboard");
-          } else {
-            let newArgs = util.combineEscapedParams(args, 0); // support (escaped) commas in string!
-            util.clipboardWrite(newArgs[0].replace(/^"(.*)"$/, "$1"));
+          {
+            const isProLicensed = util.hasLicense() && util.licenseInfo.keyType != 2;
+            if (!isProLicensed) {
+              util.addUsedPremiumFunction("toclipboard");
+            }
+            if (isProLicensed || util.isTrialActive()) {
+              let newArgs = util.combineEscapedParams(args, 0); // support (escaped) commas in string!
+              util.clipboardWrite(newArgs[0].replace(/^"(.*)"$/, "$1"));
+            }
           }
           return "";
         case "composer.composeCase": // "new" | "rsp" | "fwd"
@@ -3659,7 +3672,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             // const messageid = SmartTemplate4.MessageHdr.get("message-id");
             if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
               util.addUsedPremiumFunction("tags");
-              return "";
+              if (!util.isTrialActive()) {
+                return "";
+              }
             }
             const tags = SmartTemplate4.MessageHdr.get("tags");
             switch (token) {
@@ -3773,9 +3788,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           }
 
           if (args.includes("toclipboard")) {
-            if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
+            const isProLicensed = util.hasLicense() && util.licenseInfo.keyType != 2;
+            if (!isProLicensed) {
               util.addUsedPremiumFunction("clipboard");
-            } else {
+            }
+            if (isProLicensed || util.isTrialActive()) {
               if (headerValue.startsWith("%toclipboard")) {return "";}
               util.clipboardWrite(headerValue);
             }

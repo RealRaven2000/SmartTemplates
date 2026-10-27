@@ -1457,7 +1457,9 @@ SmartTemplate4.Util = {
       // [issue 183]
       if (!SmartTemplate4.Util.hasLicense() || SmartTemplate4.Util.licenseInfo.keyType == 2) {
         SmartTemplate4.Util.addUsedPremiumFunction("clipboard");
-        return "";
+        if (!SmartTemplate4.Util.isTrialActive()) {
+          return "";
+        }
       }
       return SmartTemplate4.Util.clipboardRead();
     }
@@ -1620,6 +1622,10 @@ SmartTemplate4.Util = {
   hasLicense: function hasLicense(_reset) {
     // ignore reset!
     return SmartTemplate4.Util.licenseInfo.status == "Valid";
+  },
+
+  isTrialActive: function () {
+    return SmartTemplate4.Util.licenseInfo.trialDays > 0;
   },
 
   get hasStandardLicense() {
@@ -2236,7 +2242,8 @@ SmartTemplate4.Util = {
       if (isClipboard) {
         if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
           util.addUsedPremiumFunction("toclipboard");
-        } else {
+        }
+        if ((util.hasLicense() && util.licenseInfo.keyType != 2) || util.isTrialActive()) {
           util.clipboardWrite(timeString);
           util.logDebugOptional("timeStrings", "Copied time to clipboard!");
         }
