@@ -510,6 +510,9 @@
   "fileImage.label": {
     "message": "Wstawia obraz (png, jpg, gif, bmp, svg). {imagePath} może być względny do lokalizacji szablonu: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Odśwież menu!"
+  },
   "files.etc": {
     "message": "Pliki, obrazy i załączniki"
   },

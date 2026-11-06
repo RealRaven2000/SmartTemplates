@@ -513,6 +513,9 @@
   "fileImage.label": {
     "message": "Insereix una imatge (png, jpg, gif, bmp, svg). {imagePath} pot ser relatiu a la ubicació de la plantilla: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Actualitza els menús!"
+  },
   "files.etc": {
     "message": "Fitxers, imatges i adjunts"
   },

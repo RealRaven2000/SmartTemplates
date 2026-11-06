@@ -513,6 +513,9 @@
   "fileImage.label": {
     "message": "Vstavi sliko (png, jpg, gif, bmp, svg). {imagePath} je lahko relativna na lokacijo predloge: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Posodobi menije!"
+  },
   "files.etc": {
     "message": "Datoteke, slike in priloge"
   },

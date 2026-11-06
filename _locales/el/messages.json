@@ -510,6 +510,9 @@
   "fileImage.label": {
     "message": "Εισάγει μια εικόνα (png, jpg, gif, bmp, svg). {imagePath} μπορεί να είναι σχετικό με την τοποθεσία του προτύπου: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Ενημέρωση μενού!"
+  },
   "files.etc": {
     "message": "Αρχεία, εικόνες και συνημμένα"
   },

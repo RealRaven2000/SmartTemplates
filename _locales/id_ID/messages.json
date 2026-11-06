@@ -361,6 +361,9 @@
   "fileHTML.label": {
     "message": "HTML atau berkas teks biasa. Diasumsikan UTF-8 ketika menghilangkan opsi parameter charset."
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Perbarui menu!"
+  },
   "files.etc": {
     "message": "Berkas, gambar, dan lampiran"
   },

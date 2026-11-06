@@ -513,6 +513,9 @@
   "fileImage.label": {
     "message": "Lisää kuva (png, jpg, gif, bmp, svg). {imagePath} voi olla suhteellinen mallin sijaintiin: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Päivitä valikot!"
+  },
   "files.etc": {
     "message": "Tiedostot, kuvat ja liitteet"
   },

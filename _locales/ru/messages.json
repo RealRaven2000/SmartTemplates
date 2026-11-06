@@ -510,6 +510,9 @@
   "fileImage.label": {
     "message": "Вставляет изображение (png, jpg, gif, bmp, svg). {imagePath} может быть относительно расположения шаблона: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Обновить меню!"
+  },
   "files.etc": {
     "message": "Файлы, изображения и вложения"
   },

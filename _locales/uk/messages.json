@@ -517,6 +517,9 @@
   "fileImage.label": {
     "message": "Файл зображення (png,jpg,gif,bmp,svg). Альтернативний текст відображається, якщо зображення не може бути знайдено."
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Оновити меню!"
+  },
   "files.etc": {
     "message": "Файли, зображення та вкладення"
   },

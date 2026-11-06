@@ -510,6 +510,9 @@
   "fileImage.label": {
     "message": "Vloží obrázek (png, jpg, gif, bmp, svg). {imagePath} může být relativní k umístění šablony: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Aktualizovat nabídky!"
+  },
   "files.etc": {
     "message": "Soubory, obrázky a přílohy"
   },

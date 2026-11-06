@@ -510,6 +510,9 @@
   "fileImage.label": {
     "message": "画像を挿入します (png, jpg, gif, bmp, svg)。 {imagePath} はテンプレートの場所に対して相対的である場合があります: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "メニューを更新！"
+  },
   "files.etc": {
     "message": "ファイル、画像、添付ファイル"
   },

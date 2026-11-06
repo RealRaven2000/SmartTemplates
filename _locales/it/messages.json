@@ -501,6 +501,9 @@
   "fileImage.label": {
     "message": "Inserisce un'immagine (png, jpg, gif, bmp, svg). {imagePath} può essere relativo alla posizione del modello: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Aggiorna i menu!"
+  },
   "files.etc": {
     "message": "File, immagini e allegati"
   },

@@ -513,6 +513,9 @@
   "fileImage.label": {
     "message": "Infogar en bild (png, jpg, gif, bmp, svg). {imagePath} kan vara relativ till platsen för mallen: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Uppdatera menyer!"
+  },
   "files.etc": {
     "message": "Filer, bilder och bilagor"
   },

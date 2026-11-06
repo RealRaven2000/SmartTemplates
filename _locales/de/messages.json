@@ -506,6 +506,9 @@
   "fileImage.label": {
     "message": "Fügt ein Bild ein (png, jpg, gif, bmp, svg). {imagePath} kann relativ zum Speicherort der Vorlage sein: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Menüs aktualisieren!"
+  },
   "files.etc": {
     "message": "Dateien, Bilder und Anhänge"
   },

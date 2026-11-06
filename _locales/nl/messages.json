@@ -510,6 +510,9 @@
   "fileImage.label": {
     "message": "Voegt een afbeelding in (png, jpg, gif, bmp, svg). {imagePath} kan relatief zijn ten opzichte van de locatie van de sjabloon: %file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "Menu’s bijwerken!"
+  },
   "files.etc": {
     "message": "Bestanden, afbeeldingen en bijlagen"
   },

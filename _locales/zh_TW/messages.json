@@ -513,6 +513,9 @@
   "fileImage.label": {
     "message": "插入圖像 (png, jpg, gif, bmp, svg)。 {imagePath} 可以相對於模板的位置：%file(images/test.jpg)%"
   },
+  "fileTemplates.refreshMenus": {
+    "message": "更新選單！"
+  },
   "files.etc": {
     "message": "檔案、圖片與附件"
   },
