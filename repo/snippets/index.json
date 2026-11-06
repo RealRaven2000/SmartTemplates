@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "snippets": [
+    {
+      "title": "🖼️ Screenshot Frame",
+      "category": "Layout",
+      "file": "Screenshot.html",
+      "description": "Wraps the selection in a rounded frame with a subtle border and drop shadow.",
+      "preview": "previews/Screenshot.png"
+    },
+    {
+      "title": "🔳 Shadow Box",
+      "category": "Layout",
+      "file": "Shadow-box.html",
+      "description": "Wraps the selection in a box with a subtle border and drop shadow.",
+      "preview": "previews/Shadow-box.png"
+    },
+    {
+      "title": "🖼️ Watermark",
+      "category": "Layout",
+      "file": "add-background-image.html",
+      "description": "Example for a non-repeating background image (watermark). Edit the background url to include an absolute path starting with file:///.",
+      "preview": "previews/watermark-example.png",
+      "assets": ["img/Chibi-Vayne.png"]
+    },
+    {
+      "title": "🟨 Text Marker",
+      "category": "Format",
+      "file": "yellow-highlighter.html",
+      "description": "Highlights selected text in translucent yellow with rounded corners.",
+      "preview": "previews/yellow-highlighter.png"
+    },
+    {
+      "title": "🅰 Keyboard Key",
+      "category": "Format",
+      "file": "key-button.html",
+      "description": "Styles selected text as a dark keyboard key with white lettering.",
+      "preview": "previews/key-button.png"
+    },
+    {
+      "title": "🔴Number Badge",
+      "category": "Format",
+      "file": "number-badge.html",
+      "description": "Displays the selection in a circular dark red badge with white lettering.",
+      "preview": "previews/number-badge.png"
+    },
+    {
+      "title": "Breadcrumb",
+      "category": "Format",
+      "file": "breadcrumbs.html",
+      "description": "Formats selected text as bold, condensed breadcrumbs, replacing `>>` with dark red `»` separators.",
+      "preview": "previews/breadcrumbs.png"
+    },
+    {
+      "title": "🧹 Clean Subject",
+      "category": "Cleanup",
+      "file": "clean-subject.html",
+      "description": "Removes repeated leading `Re:`, `Fwd:`, and `AW:` subject prefixes.",
+      "preview": "previews/clean-subject.png"
+    },
+    {
+      "title": "🧼Remove All Style Blocks",
+      "category": "Cleanup",
+      "file": "remove-all-styles.html",
+      "description": "Remove all style tags from the head and body; preserves inline style attributes.",
+      "preview": "previews/remove-all-styles.png"
+    },
+    {
+      "title": "🧼 Remove Body Style Blocks",
+      "category": "Cleanup",
+      "file": "remove-quoted-styles.html",
+      "description": "Removes body style tags, including in unquoted content; preserves head styles and inline style attributes.",
+      "preview": "previews/remove-quoted-styles.png"
+    },
+    {
+      "title": "✂️ Snipped Image Placeholder",
+      "category": "Cleanup",
+      "file": "snipped-image-placeholder.html",
+      "description": "Select any image to replace it with a pink “IMAGE SNIPPED” notice with a tooltip.",
+      "preview": "previews/snipped-image-placeholder.png"
+    }
+  ]
+}
