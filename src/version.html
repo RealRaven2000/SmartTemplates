@@ -234,9 +234,8 @@ permalink: version.html
 <a id="4.21"> &nbsp; </a>
 <li>
   <h4>
-		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.21*"
-      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
-      Version 4.21 - Work in Progress</a>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.21">
+      Version 4.21 - 22/10/2026</a>
 		<br>
 		<span class="appWrapper">
 			<span class="thunderbird">140.0 - 160.*</span>
@@ -273,6 +272,7 @@ permalink: version.html
              alt="Download Snippets button in Settings &raquo; Templates &raquo; Smart Snippets"
              style="max-width: 100%; height: auto;">
       </p>
+      <p>If no snippets are enabled for the compose context menu, right-click in the message body and choose <em>Add Smart Snippets…</em>. This opens <em>Settings &raquo; Templates &raquo; Smart Snippets</em> and highlights the Download Snippets area to help you get started.</p>
       <ol>
         <li>
           <strong>Browse and preview.</strong> Click a snippet title to read its description and see
@@ -287,9 +287,9 @@ permalink: version.html
           is open and applied when you add the snippets.
         </li>
         <li>
-          <strong>Choose context-menu access.</strong> Enable <em>Add to context menu</em> to
+          <strong>Choose context-menu access.</strong> <em>Add to context menu</em> is checked by default to
           make all snippets selected for this download available from the right-click menu
-          while writing a message. Leave it unchecked to use the regular Snippets menu.
+          while writing a message. Uncheck it to use only the regular Snippets menu.
           You can change this later using the context-menu checkboxes on the Smart Snippets tab.
         </li>
         <li>
@@ -316,7 +316,7 @@ permalink: version.html
         contents are reused. If files differ, SmartTemplates lists them and asks for confirmation.
         Click <em>OK</em> to replace all listed files with the downloaded versions, including any
         accompanying resources. Click <em>Cancel</em> to leave all files unchanged and return to
-        the download panel; you can choose another target folder to keep both versions.
+        the download panel; you can choose another target folder to keep both versions. The list remains visible below as <em>Previous file conflicts</em> until you change which snippets are selected.
       </p>
       <p>
         <img class="screenshot" src="img/templates-download-snippets-result.png"
@@ -351,6 +351,10 @@ permalink: version.html
       When an external editor has not yet been configured, the template editor setup prompt opens
       that page and highlights the path field, making the setting easier to find and complete.
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/430">[issue 430]</a>
+      <p>
+        <img class="screenshot" src="img/editor-path.png" 
+          style="max-width:90%;" alt="External template editor setup">
+      </p>
     </li>
 
     <h5 class="inList"><span class="inListTitle">Compatibility and documentation</span></h5>
@@ -374,8 +378,10 @@ permalink: version.html
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/434">[issue 434]</a>
     </li>
     <li>
-      Fixed intermittent missing compose context menus after inserting templates. This restores access
-      to the right-click menu during message composition, including workflows that use smart snippets.
+      <strong>HTML sanitisation fix when inserting templates.</strong> Sanitised elements are now imported
+      into the compose document instead of being adopted from the privileged parser document. This
+      corrects intermittent missing right-click menus after template insertion. Existing filtering
+      of scripts and unsafe attributes is retained.
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/432">[issue 432]</a>
     </li>
 
