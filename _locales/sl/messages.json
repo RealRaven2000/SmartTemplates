@@ -1,4 +1,8 @@
 {
+  "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Dan v tednu (pet.)"
   },
@@ -150,14 +154,22 @@
   },
   "btnLoadTemplate.tooltip": {
     "message": "Naloži predloge (pisanje, odgovor, posredovanje) za $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Posodobi seznam računov"
   },
   "btnSaveTemplate.tooltip": {
     "message": "Shrani predloge (novo, odgovor, posreduj) za $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnYouTube.tooltip": {
     "message": "Obiščite kanal 'Thunderbird Daily' na YouTubu za nasvete in vodnike o uporabi dodatkov Stationary in drugih"
@@ -218,6 +230,18 @@
   },
   "ccname.label": {
     "message": "Prejemnikov priimek"
+  },
+  "changeTemplate.label": {
+    "message": "Spremeni predlogo…"
+  },
+  "changeTemplate.tooltip": {
+    "message": "Izbere drugo predlogo - uporabite pred urejanjem v telesu pošte!"
+  },
+  "cleandeferred.label": {
+    "message": "Pospravi!"
+  },
+  "cleandeferred.tooltip": {
+    "message": "Očistite vse spremenljivke SmartTemplate"
   },
   "clipboard.copy": {
     "message": "kopira besedilo v odložišče."
@@ -280,6 +304,9 @@
   },
   "conditionals.note": {
     "message": "Ta razred spremenljivk lahko uporabite za vstavljanje besedila, odvisno od načina pošiljanja pošte. Za to potrebujete licenco SmartTemplates Pro."
+  },
+  "confirmVersionLink": {
+    "message": "Prikaži dnevnik sprememb za SmartTemplates?"
   },
   "contextError": {
     "message": "Spremenljivke {1} ni mogoče uporabiti za *nova* sporočila!\nPosvetujte se z dokumentacijo pomoči za dovoljene spremenljivke."
@@ -374,6 +401,15 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Uporabite zunanjo predlogo, ki je bila nazadnje izbrana v spustnem meniju."
   },
+  "deferredcontext.cleanup": {
+    "message": "Zamenjaj spremenljivko z vsebino"
+  },
+  "deferredcontext.delete": {
+    "message": "Odstranite spremenljivko SmartTemplates"
+  },
+  "deferredcontext.update": {
+    "message": "Posodobite vsebino SmartTemplates"
+  },
   "deleteForwardedBody": {
     "message": "Ta funkcija pri posredovanju v vrstici odstrani telo izvirnega e-poštnega sporočila. Uporablja se lahko za obdelavo informacij iz avtomatiziranih e-poštnih sporočil, medtem ko odstranjuje izvirne informacije."
   },
@@ -462,6 +498,9 @@
   "fileCSS.label": {
     "message": "Zunanji slog slog (css). Vključite svoja najljubša pravila CSS, ki jih želite deliti med različnimi predlogami."
   },
+  "fileFunction.notExists": {
+    "message": "Funkcija {0} ni mogla najti ali dostopati do datoteke. Preverite spodnjo pot:"
+  },
   "fileHTML.label": {
     "message": "Datoteka HTML ali z golim besedilom. Med izpustitvijo parametra za izbirni znak je predpostavljeno UTF-8."
   },
@@ -477,14 +516,35 @@
   "files.etc": {
     "message": "Datoteke, slike in priloge"
   },
+  "fileTemplates": {
+    "message": "Datoteke predloge"
+  },
   "fileTemplates.add": {
     "message": "Dodaj"
+  },
+  "fileTemplates.configureMenu": {
+    "message": "Konfiguriranje elementov menija…"
   },
   "fileTemplates.down": {
     "message": "Dol"
   },
   "fileTemplates.edit": {
     "message": "Uredi"
+  },
+  "fileTemplates.error.charSet": {
+    "message": "Težave s pretvarjanjem predloge HTML iz črtice [{1}] \nNamesto tega uporabljate neobdelane nizke podatke. \nČe v tem primeru nastanejo nadomestni znaki, poskusite v glavno poglavje dodati izrecno 'meta charset"
+  },
+  "fileTemplates.error.filePath": {
+    "message": "Datoteke predloge '{0}' ni mogoče naložiti s poti: \n{1} \nDatoteka je bila morda odstranjena ali preimenovana."
+  },
+  "fileTemplates.error.nocontroller": {
+    "message": "Funkcija $controllerName$ ni na voljo v tem kontekstu - tega ne morete storiti s izbranim e-poštnim sporočilom.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
   },
   "fileTemplates.file.open": {
     "message": "Izberite datoteko predloge z diska"
@@ -501,7 +561,9 @@
   "fileTemplates.file.title.tooltip": {
     "message": "To bo prikazano v meniju za izbiro predloge."
   },
-  "fileTemplates.import": { "message": "Uvozi meni…" },
+  "fileTemplates.import": {
+    "message": "Uvozi meni…"
+  },
   "fileTemplates.import.tooltip": {
     "message": "Uvozi vnose predlog iz JSON-datoteke (seznam HTML-predlog, običajno smartTemplates.json)."
   },
@@ -511,8 +573,39 @@
   "fileTemplates.menu": {
     "message": "Datoteke predlog"
   },
+  "fileTemplates.openFile": {
+    "message": "Odpri datoteko predloge SmartTemplates…"
+  },
   "fileTemplates.remove": {
     "message": "Odstrani"
+  },
+  "fileTemplates.restrictionQuestion": {
+    "message": "Zakaj so nekatere predloge v tem meniju onemogočene?"
+  },
+  "fileTemplates.restrictTemplateCats": {
+    "message": "Če želite konfigurirati več kot $max_Cats$ kategorij, pridobite licenco SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "fileTemplates.restrictTemplates": {
+    "message": "Število predlog na meni je omejeno. Brez licence lahko konfigurirate do $max_free$ menijskih elementov in $max_std$ menijskih postavk s standardno licenco SmartTemplates! SmartTemplates Pro je neomejen.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "fileTemplates.selectFromMenu": {
+    "message": "Izberite predlogo v spustnem meniju."
   },
   "fileTemplates.tooltips.fwd": {
     "message": "Seznam zunanjih datotek predlog, ki jih lahko zaženete iz menijev predlog 'Posreduj naprej' v SmartTemplates."
@@ -528,6 +621,18 @@
   },
   "fileTemplates.update": {
     "message": "Posodobi"
+  },
+  "fileTemplates.wrnEnterPath": {
+    "message": "Izberite datoteko, ki vsebuje html / besedilo in vaše spremenljivke SmartTemplates. Ta datoteka bo obdelana in vstavljena, ko bo izbran nov element menija. Po ustvarjanju elementa menija lahko še vedno spremenite datoteko predloge glede na vaše potrebe s klikom na Uredi."
+  },
+  "fileTemplates.wrnEnterTitle": {
+    "message": "Vnesite naslov!"
+  },
+  "fileTemplates.wrnSelectUpdateItem": {
+    "message": "Za posodobitev morate izbrati element s seznama!"
+  },
+  "fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Posodobite predloge"
   },
   "firstName.label": {
     "message": "Ime:"
@@ -547,9 +652,6 @@
   "forceParagraphs.tip": {
     "message": "Zagotovi, da se položaj kazalca začne v novem odstavku. Priporočamo tudi, da možnost sestavljanja v Thunderbirdu nastavite na ustvarjanje novega odstavka ob pritisku na tipko [[Enter]]."
   },
-  "fpJsonTemplateList": {
-    "message": "konfiguracija menija predlog"
-  },
   "fpFilterHtmlTemplate": {
     "message": "Predloga HTML"
   },
@@ -567,6 +669,9 @@
   },
   "fpJsonFile": {
     "message": "Datoteka JSON"
+  },
+  "fpJsonTemplateList": {
+    "message": "konfiguracija menija predlog"
   },
   "fpStyle": {
     "message": "List sloga"
@@ -667,7 +772,9 @@
   "header.set.from": {
     "message": "nastavi naslov 'od'. To sprejema samo e-poštne naslove s seznama identitet."
   },
-  "header.set.priority": { "message": "nastavi prednost e-pošte." },
+  "header.set.priority": {
+    "message": "nastavi prednost e-pošte."
+  },
   "header.set.priority.value": {
     "message": "Parameter za nastavitev prednosti e-pošte. Možne vrednosti: "
   },
@@ -736,12 +843,6 @@
   "i.label": {
     "message": "Ura 12-urna oblika (01 do 12) - z vodilno ničlo"
   },
-  "identity.chapterHead": {
-    "message": "Vaša identiteta"
-  },
-  "identity.concept": {
-    "message": "Poštni račun ima lahko več identitet pošiljatelja, vsako s svojim imenom in e-poštnim naslovom. Ta spremenljivka uporablja identiteto, izbrano v polju »Od« v oknu za sestavljanje sporočila. Pri odgovarjanju je začetna izbira odvisna od prejemnika izvirnega sporočila. Izbrano identiteto lahko spremenite po odprtju okna za sestavljanje."
-  },
   "identity_ab": {
     "message": "Uporabite ključno besedo 'addressbook', da iz naslova najdete dodatne podatke o identiteti."
   },
@@ -753,6 +854,12 @@
   },
   "identity_ab.phoneno": {
     "message": "Telefon št"
+  },
+  "identity.chapterHead": {
+    "message": "Vaša identiteta"
+  },
+  "identity.concept": {
+    "message": "Poštni račun ima lahko več identitet pošiljatelja, vsako s svojim imenom in e-poštnim naslovom. Ta spremenljivka uporablja identiteto, izbrano v polju »Od« v oknu za sestavljanje sporočila. Pri odgovarjanju je začetna izbira odvisna od prejemnika izvirnega sporočila. Izbrano identiteto lahko spremenite po odprtju okna za sestavljanje."
   },
   "im-ex_note1.label": {
     "message": "Svoje nastavitve in predloge za posamezni račun lahko izvozite ali uvozite."
@@ -903,8 +1010,14 @@
   "licenseValidation.expired": {
     "message": "Vneseni ključ je potekel. Za obnovitev dovoljenja pritisnite spodnji gumb."
   },
+  "licenseValidation.expiredDate": {
+    "message": "Vaše dovoljenje je poteklo:"
+  },
   "licenseValidation.failed": {
     "message": "Vneseni ključ ni veljaven. Za navodila si oglejte e-pošto od FastSpringa. Če imate še vedno težave, navežite stik z mano preko zavihka Podpora."
+  },
+  "licenseValidation.guessAddon": {
+    "message": "(vneseni ključ je lahko za {2})."
   },
   "licenseValidation.invalidAddon": {
     "message": "Vneseni ključ je lahko za drug dodatek. Ključi za {0} se začnejo s/z {1}."
@@ -948,11 +1061,74 @@
   "matchTextFromSubject": {
     "message": "Poišči vzorec RegEx v zadevi in vstavi na mestu funkcije."
   },
+  "menu.docs": {
+    "message": "Dokumentacija"
+  },
+  "menu.docs.premium": {
+    "message": "Premijske funkcije…"
+  },
+  "menu.docs.variables": {
+    "message": "Spremenljivke in ukazi…"
+  },
+  "menu.hideLabel": {
+    "message": "Skrij oznako gumba"
+  },
+  "menu.license": {
+    "message": "Preveri status licence…"
+  },
+  "menu.license.tooltip": {
+    "message": "Kliknite tukaj za preverjanje statusa licence za $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menu.replyAll": {
+    "message": "Odgovori vsem"
+  },
+  "menu.replyList": {
+    "message": "Odgovori seznamu"
+  },
+  "menu.supportSite": {
+    "message": "Podporna stran…"
+  },
   "menu.template_export.label": {
     "message": "Izvozi predlogo"
   },
   "menu.template_import.label": {
     "message": "Uvozi predlogo"
+  },
+  "menu.template.default": {
+    "message": "Privzeti predloga (račun)"
+  },
+  "menu.template.last": {
+    "message": "Zadnja predloga"
+  },
+  "menu.update.tooltip": {
+    "message": "Izberite “Najnovejše novice” iz tega menija, da preberete, kaj je novega v $addonName$.\n To bo ponastavilo gumb na privzeti izgled.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menuaccess.forward": {
+    "message": "F"
+  },
+  "menuaccess.reply": {
+    "message": "R"
+  },
+  "menuaccess.replyAll": {
+    "message": "A"
+  },
+  "menuaccess.replyList": {
+    "message": "L"
+  },
+  "menuaccess.write": {
+    "message": "W"
   },
   "message.features": {
     "message": "Primerjajte funkcije…"
@@ -1037,6 +1213,98 @@
   },
   "no_button": {
     "message": "Ne"
+  },
+  "notification.bodyModified": {
+    "message": "Thunderbird pravi, da ste že nekaj vnesli. Ali želite vseeno naložiti predlogo?"
+  },
+  "notification.bodyModified.accountTemplate": {
+    "message": "To bo zavrglo vse, kar ste vnesli, in naložilo predlogo računa."
+  },
+  "notification.bodyModified.externalTemplate": {
+    "message": "To bo zavrglo vse, kar ste vnesli, in ponovno naložilo trenutno predlogo [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "notification.bodyModified.instructions": {
+    "message": "Kliknite Prekliči, da ohranite vsebino e-pošte nespremenjeno."
+  },
+  "notification.donate": {
+    "message": "Daruj"
+  },
+  "notification.dontShowAgain": {
+    "message": "Tega sporočila ne prikažite več."
+  },
+  "notification.editedChangeChallenge": {
+    "message": "Vsako besedilo, ki ste ga vnesli ročno od odpiranja skladatelja, bo izbrisano, brez razveljavitve. Še naprej?"
+  },
+  "notification.editedChangeWarning": {
+    "message": "Besedilo ste že vnesli in želite spremeniti v predlogo {0}"
+  },
+  "notification.license.text": {
+    "message": "SmartTemplates deluje kot običajno. Licenca odstrani to obvestilo — kliknite spodaj za več informacij."
+  },
+  "notification.licensing": {
+    "message": "Več o licenciranju"
+  },
+  "notification.parsing": {
+    "message": "Analiziranje spremenljivk:"
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "Razširite licenco domene"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "Razširi licenco"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "To bo podaljšalo trenutni datum licence za 1 leto. Običajno je cenejši od nove licence."
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "Kupi dovoljenje"
+  },
+  "notification.premium.btn.hotKey": {
+    "message": "K"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "Podaljšajte licenco domene"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "Obnovi dovoljenje"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Nadgradnja na profesionalni nivo"
+  },
+  "notification.premium.btn.upgrade.hotKey": {
+    "message": "N"
+  },
+  "notification.premium.sendByFilter": {
+    "message": "Z veljavno licenco SmartTemplates Pro bi bila e-pošta zdaj samodejno poslana."
+  },
+  "notification.premium.text": {
+    "message": "{1} je Premium funkcija. Še naprej bo delovala, vendar nadgradnja na SmartTemplates Pro licenco odstrani ta obvestila in podpira dodatek."
+  },
+  "notification.premium.text.plural": {
+    "message": "{1} so Premium funkcije. Še naprej bodo delovale, vendar nadgradnja na SmartTemplates Pro licenco odstrani ta obvestila in podpira dodatek."
+  },
+  "notification.spellcheck.error": {
+    "message": "Jezika preveritelja črkovanja ni mogoče preklopiti. Ste namestili pravilen slovar?"
+  },
+  "notification.spellcheck.noDictionary": {
+    "message": "Nobenega slovarja ni nameščeno."
+  },
+  "notification.spellcheck.notFound": {
+    "message": "Slovarja '{0}' ni mogoče najti."
+  },
+  "notification.standard.text": {
+    "message": "{1} je licencirana funkcija. Še naprej bo delovala, vendar pridobitev SmartTemplates licence odstrani ta obvestila in podpira dodatek."
+  },
+  "notification.standard.text.plural": {
+    "message": "{1} so licencirane funkcije. Še naprej bodo delovale, vendar pridobitev SmartTemplates licence odstrani ta obvestila in podpira dodatek."
+  },
+  "notification.usedLastTemplate": {
+    "message": "Ponovna uporaba zadnje zunanje predloge: {template}{br}💾 glede na globalne nastavitve:"
   },
   "ongoing-work": {
     "message": "Da ohranimo $addonName$ v usklajenosti z mesečnimi izdaje Thunderbirda, moramo nenehno preverjati napake in nalagati prilagojene različice. Prosimo, pomagajte nam pri tem, ko boste preizkusili funkcionalnost in se prepričali, da izboljša vašo produktivnost!",
@@ -1141,6 +1409,9 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Nastavite zunanji urejevalnik za urejanje predlog HTML in CSS. Priporočam urejevalnik HTML za navadno besedilo z označevanjem skladnje, kot sta Notepad++ ali Visual Studio Code."
   },
+  "prompt.switchDomainLicense": {
+    "message": "Preklopi na domensko dovoljenje?"
+  },
   "prompt.text": {
     "message": "Vnesite besedilo za dodajanje ali nastavitev"
   },
@@ -1155,6 +1426,30 @@
   },
   "quote_changers.desc": {
     "message": "Premium spremenljivke za odstranjevanje besedila / oznak iz delov, ki jih citirajo, in prihranite prostor."
+  },
+  "quotedTags.scope": {
+    "message": "Pri `%deleteQuotedTags()%` in `%replaceQuotedTags()%` lahko namesto številčne ravni citiranja uporabite obseg brez narekovajev:"
+  },
+  "quotedTags.scope.all": {
+    "message": "Išči v razdelku head in telesu sporočila."
+  },
+  "quotedTags.scope.body": {
+    "message": "Išči v celotnem telesu sporočila, vključno z necitirano vsebino."
+  },
+  "quotedTags.scope.head": {
+    "message": "Išči samo v razdelku head sporočila."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Če raven citiranja ali obseg izpustite, se uporabi raven 1. Številčna vrednost 0 vključuje vse ravni citiranja v telesu, vendar je pri posredovanju v telesu sporočila omejena na posredovano vsebino; izrecni obseg body preišče celotno telo."
+  },
+  "quotedTags.styles.all": {
+    "message": "Odstrani bloke slogov iz razdelka head in telesa sporočila za čisto osnovo oblikovanja."
+  },
+  "quotedTags.styles.body": {
+    "message": "Odstrani bloke slogov iz telesa, tudi tiste iz izvirnega sporočila, ki lahko vplivajo na razmike med odstavki odgovora. Ohrani sloge v razdelku head sporočila."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Ti primeri odstranijo elemente style, ne pa atributov style, neposredno določenih na posameznih elementih."
   },
   "quoteHeader.replace.tip": {
     "message": "Onemogoči privzeto glavo navedka. Umestite svojo glavo v zgornje besedilno polje."
@@ -1261,6 +1556,9 @@
   "settings.label": {
     "message": "Nastavitve in predloge"
   },
+  "settings.tooltip": {
+    "message": "Nastavitve SmartTemplates"
+  },
   "shortdate.label": {
     "message": "Datum / Čas kratko (npr. 01.01.2000 1:23:45)"
   },
@@ -1268,50 +1566,23 @@
     "message": "Spremembe + novice (Začetni zaslon)."
   },
   "sig.concept": {
-    "message": "Thunderbird upravlja položaj in vsebino podpisa v **Nastavitve računa » Sestavljanje in naslavljanje**. Položaj lahko preglasite s spremenljivko `%sig%`.",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "Thunderbird upravlja položaj in vsebino podpisa v **Nastavitve računa » Sestavljanje in naslavljanje**. Položaj lahko preglasite s spremenljivko `%sig%`."
   },
   "sig.label": {
     "message": "Podpis iz nastavitev računa"
   },
-  "sig2.label": {
-    "message": "Podpis iz nastavitev računa, toda brez '- -'"
-  },
   "sig.none.label": {
     "message": "Odstrani vse podpise. Preglasi nastavitve računa."
+  },
+  "sig2.label": {
+    "message": "Podpis iz nastavitev računa, toda brez '- -'"
   },
   "silentUpdates": {
     "message": "Ne odpri zavihka z zgodovino različic"
   },
   "silentUpdates.tip": {
     "message": "Dnevnika sprememb ne odpirajte po posodobitvi SmartTemplates."
-  },
-  "smarttemplate4_button": {
-    "message": "Uredi predloge / glavo navedka ..."
-  },
-  "smartTemplate4.changeTemplate.label": {
-    "message": "Spremeni predlogo…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Izbere drugo predlogo - uporabite pred urejanjem v telesu pošte!"
-  },
-  "smartTemplate4.cleandeferred.label": {
-    "message": "Pospravi!"
-  },
-  "smartTemplate4.cleandeferred.tooltip": {
-    "message": "Očistite vse spremenljivke SmartTemplate"
-  },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Zamenjaj spremenljivko z vsebino"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "Odstranite spremenljivko SmartTemplates"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "Posodobite vsebino SmartTemplates"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "Nastavitve SmartTemplates"
   },
   "SmartTemplateMainButton.expired": {
     "message": "Licenca je potekla!"
@@ -1331,63 +1602,69 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Novosti…"
   },
-  "snippets.download": {
-    "message": "Prenesi izrezke…"
-  },
-  "snippets.browser.localTitle": {
-    "message": "Oznaka v meniju"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "Dodaj v priročni meni"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "Izberite ciljno mapo"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "Izberite svojo oznako v meniju, na primer v svojem jeziku. Spremembe se ohranijo, dokler je to podokno odprto, in se uporabijo ob dodajanju izrezka."
-  },
-  "snippets.browser.preview": {
-    "message": "Predogled izrezka"
-  },
-  "snippets.browser.noPreview": {
-    "message": "Predogled ni na voljo"
+  "snippets.browser.add": {
+    "message": "Dodaj izrezke"
   },
   "snippets.browser.close": {
     "message": "Zapri"
   },
-  "snippets.browser.add": {
-    "message": "Dodaj izrezke"
-  },
-  "snippets.browser.loading": {
-    "message": "Nalaganje izrezkov…"
-  },
-  "snippets.browser.importing": {
-    "message": "Dodajanje izrezkov…"
-  },
-  "snippets.browser.error": {
-    "message": "Izrezkov ni bilo mogoče dodati ali naložiti."
+  "snippets.browser.contextMenu": {
+    "message": "Dodaj v priročni meni"
   },
   "snippets.browser.empty": {
     "message": "Ni izrezkov na voljo."
   },
+  "snippets.browser.error": {
+    "message": "Izrezkov ni bilo mogoče dodati ali naložiti."
+  },
+  "snippets.browser.importing": {
+    "message": "Dodajanje izrezkov…"
+  },
+  "snippets.browser.loading": {
+    "message": "Nalaganje izrezkov…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Oznaka v meniju"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Izberite svojo oznako v meniju, na primer v svojem jeziku. Spremembe se ohranijo, dokler je to podokno odprto, in se uporabijo ob dodajanju izrezka."
+  },
+  "snippets.browser.noPreview": {
+    "message": "Predogled ni na voljo"
+  },
   "snippets.browser.notConfigured": {
     "message": "Skladišče izrezkov še ni na voljo."
   },
+  "snippets.browser.preview": {
+    "message": "Predogled izrezka"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Izberite ciljno mapo"
+  },
   "snippets.contextMenu": {
     "message": "Prikaži v priročnem meniju"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Dodaj v priročni meni urejevalnika sporočil"
+  },
+  "snippets.download": {
+    "message": "Prenesi izrezke…"
   },
   "snippets.head": {
     "message": "Pametni izrezki"
   },
   "snippets.label": {
-    "message": "Vse izrezke lahko vstavite z gumbom $SnippetButton$",
     "description": "SnippetButton is the localized insertSnippet.button label.",
+    "message": "Vse izrezke lahko vstavite z gumbom $SnippetButton$",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
         "example": "Insert Snippet"
       }
     }
+  },
+  "snippets.settingsLegend": {
+    "message": "Pametni izrezki (Pisanje sporočil)"
   },
   "spec_form.cap": {
     "message": "Stikala za naslovno polje"
@@ -1463,258 +1740,6 @@
   },
   "splashScreen.tip": {
     "message": "Skrij pogovorno okno z informacijami, ki pri posodobitvi prikaže nove funkcije in popravke napak."
-  },
-  "st.confirmVersionLink": {
-    "message": "Prikaži dnevnik sprememb za SmartTemplates?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "Funkcija {0} ni mogla najti ali dostopati do datoteke. Preverite spodnjo pot:"
-  },
-  "st.fileTemplates": {
-    "message": "Datoteke predloge"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "Konfiguriranje elementov menija…"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "Težave s pretvarjanjem predloge HTML iz črtice [{1}] \nNamesto tega uporabljate neobdelane nizke podatke. \nČe v tem primeru nastanejo nadomestni znaki, poskusite v glavno poglavje dodati izrecno 'meta charset"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "Datoteke predloge '{0}' ni mogoče naložiti s poti: \n{1} \nDatoteka je bila morda odstranjena ali preimenovana."
-  },
-  "st.fileTemplates.error.nocontroller": {
-    "message": "Funkcija $controllerName$ ni na voljo v tem kontekstu - tega ne morete storiti s izbranim e-poštnim sporočilom.",
-    "placeholders": {
-      "controllerName": {
-        "content": "$1",
-        "example": "cmd_replyList"
-      }
-    }
-  },
-  "st.fileTemplates.openFile": {
-    "message": "Odpri datoteko predloge SmartTemplates…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "Zakaj so nekatere predloge v tem meniju onemogočene?"
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "Če želite konfigurirati več kot $max_Cats$ kategorij, pridobite licenco SmartTemplates Pro…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplates": {
-    "message": "Število predlog na meni je omejeno. Brez licence lahko konfigurirate do $max_free$ menijskih elementov in $max_std$ menijskih postavk s standardno licenco SmartTemplates! SmartTemplates Pro je neomejen.",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.selectFromMenu": {
-    "message": "Izberite predlogo v spustnem meniju."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Izberite datoteko, ki vsebuje html / besedilo in vaše spremenljivke SmartTemplates. Ta datoteka bo obdelana in vstavljena, ko bo izbran nov element menija. Po ustvarjanju elementa menija lahko še vedno spremenite datoteko predloge glede na vaše potrebe s klikom na Uredi."
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Vnesite naslov!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "Za posodobitev morate izbrati element s seznama!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Posodobite predloge"
-  },
-  "st.licenseValidation.expired": {
-    "message": "Vaše dovoljenje je poteklo:"
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "(vneseni ključ je lahko za {2})."
-  },
-  "st.menu.docs": {
-    "message": "Dokumentacija"
-  },
-  "st.menu.docs.premium": {
-    "message": "Premijske funkcije…"
-  },
-  "st.menu.docs.variables": {
-    "message": "Spremenljivke in ukazi…"
-  },
-  "st.menu.hideLabel": {
-    "message": "Skrij oznako gumba"
-  },
-  "st.menu.license": {
-    "message": "Preveri status licence…"
-  },
-  "st.menu.license.tooltip": {
-    "message": "Kliknite tukaj za preverjanje statusa licence za $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menu.replyAll": {
-    "message": "Odgovori vsem"
-  },
-  "st.menu.replyList": {
-    "message": "Odgovori seznamu"
-  },
-  "st.menu.supportSite": {
-    "message": "Podporna stran…"
-  },
-  "st.menu.template.default": {
-    "message": "Privzeti predloga (račun)"
-  },
-  "st.menu.template.last": {
-    "message": "Zadnja predloga"
-  },
-  "st.menu.update.tooltip": {
-    "message": "Izberite “Najnovejše novice” iz tega menija, da preberete, kaj je novega v $addonName$.\n To bo ponastavilo gumb na privzeti izgled.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menuaccess.forward": {
-    "message": "F"
-  },
-  "st.menuaccess.reply": {
-    "message": "R"
-  },
-  "st.menuaccess.replyAll": {
-    "message": "A"
-  },
-  "st.menuaccess.replyList": {
-    "message": "L"
-  },
-  "st.menuaccess.write": {
-    "message": "W"
-  },
-  "st.notification.bodyModified": {
-    "message": "Thunderbird pravi, da ste že nekaj vnesli. Ali želite vseeno naložiti predlogo?"
-  },
-  "st.notification.bodyModified.accountTemplate": {
-    "message": "To bo zavrglo vse, kar ste vnesli, in naložilo predlogo računa."
-  },
-  "st.notification.bodyModified.externalTemplate": {
-    "message": "To bo zavrglo vse, kar ste vnesli, in ponovno naložilo trenutno predlogo [$template$].",
-    "placeholders": {
-      "template": {
-        "content": "$1"
-      }
-    }
-  },
-  "st.notification.bodyModified.instructions": {
-    "message": "Kliknite Prekliči, da ohranite vsebino e-pošte nespremenjeno."
-  },
-  "st.notification.donate": {
-    "message": "Daruj"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "Tega sporočila ne prikažite več."
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "Vsako besedilo, ki ste ga vnesli ročno od odpiranja skladatelja, bo izbrisano, brez razveljavitve. Še naprej?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "Besedilo ste že vnesli in želite spremeniti v predlogo {0}"
-  },
-  "st.notification.license.text": {
-    "message": "SmartTemplates deluje kot običajno. Licenca odstrani to obvestilo — kliknite spodaj za več informacij."
-  },
-  "st.notification.licensing": {
-    "message": "Več o licenciranju"
-  },
-  "st.notification.parsing": {
-    "message": "Analiziranje spremenljivk:"
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "Razširite licenco domene"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "Razširi licenco"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "To bo podaljšalo trenutni datum licence za 1 leto. Običajno je cenejši od nove licence."
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "Kupi dovoljenje"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "K"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "Podaljšajte licenco domene"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "Obnovi dovoljenje"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "Nadgradnja na profesionalni nivo"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "N"
-  },
-  "st.notification.premium.sendByFilter": {
-    "message": "Z veljavno licenco SmartTemplates Pro bi bila e-pošta zdaj samodejno poslana."
-  },
-  "st.notification.premium.text": {
-    "message": "{1} je Premium funkcija. Še naprej bo delovala, vendar nadgradnja na SmartTemplates Pro licenco odstrani ta obvestila in podpira dodatek."
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1} so Premium funkcije. Še naprej bodo delovale, vendar nadgradnja na SmartTemplates Pro licenco odstrani ta obvestila in podpira dodatek."
-  },
-  "st.notification.spellcheck.error": {
-    "message": "Jezika preveritelja črkovanja ni mogoče preklopiti. Ste namestili pravilen slovar?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "Nobenega slovarja ni nameščeno."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "Slovarja '{0}' ni mogoče najti."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} je licencirana funkcija. Še naprej bo delovala, vendar pridobitev SmartTemplates licence odstrani ta obvestila in podpira dodatek."
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} so licencirane funkcije. Še naprej bodo delovale, vendar pridobitev SmartTemplates licence odstrani ta obvestila in podpira dodatek."
-  },
-  "st.notification.usedLastTemplate": {
-    "message": "Ponovna uporaba zadnje zunanje predloge: {template}{br}💾 glede na globalne nastavitve:"
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "Preklopi na domensko dovoljenje?"
-  },
-  "st.trialDays": {
-    "message": "Preostali ste {0} preskusnih dni."
-  },
-  "st.trialExpiry": {
-    "message": "Poskusno obdobje se je izteklo pred {0} dnevi."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "Dragi uporabnik dodatka SmartTemplates, veseli smo, da lahko najavimo, da SmartTemplates od te različice naprej podpira uporabo zavitih oklepajev in oznake <style>, tako da lahko sedaj uporabite napredno oblikovanje slogov v predlogah."
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "Od sedaj naprej je določena skladnost za izraze v oglatih oklepajih spremenjena: namesto zavitih oklepajev {%cc(name)%} uporabite dvojne oglate oklepaje [[%cc(name)%]] - za več podrobnosti glejte pomoč."
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates bo sedaj pretvoril vaše obstoječe predloge, tako da jih lahko še naprej uporabljate v novi različici. Kliknite 'V redu' za nadaljevanje."
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates je bil uspešno nadgrajen na različico {1}!"
   },
   "standardformat.config": {
     "message": "Privzeta oblika…"
@@ -1988,6 +2013,12 @@
   "translatorNickname.label": {
     "message": "Peter Klofutar"
   },
+  "trialDays": {
+    "message": "Preostali ste {0} preskusnih dni."
+  },
+  "trialExpiry": {
+    "message": "Poskusno obdobje se je izteklo pred {0} dnevi."
+  },
   "update.tooltip": {
     "message": "Kliknite tukaj enkrat, če želite prebrati, kaj je novega v $addonName$.",
     "placeholders": {
@@ -1996,6 +2027,18 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "updateMessageNewBrackets1": {
+    "message": "Dragi uporabnik dodatka SmartTemplates, veseli smo, da lahko najavimo, da SmartTemplates od te različice naprej podpira uporabo zavitih oklepajev in oznake <style>, tako da lahko sedaj uporabite napredno oblikovanje slogov v predlogah."
+  },
+  "updateMessageNewBrackets2": {
+    "message": "Od sedaj naprej je določena skladnost za izraze v oglatih oklepajih spremenjena: namesto zavitih oklepajev {%cc(name)%} uporabite dvojne oglate oklepaje [[%cc(name)%]] - za več podrobnosti glejte pomoč."
+  },
+  "updateMessageNewBrackets3": {
+    "message": "SmartTemplates bo sedaj pretvoril vaše obstoječe predloge, tako da jih lahko še naprej uporabljate v novi različici. Kliknite 'V redu' za nadaljevanje."
+  },
+  "updateMessageVersion": {
+    "message": "SmartTemplates je bil uspešno nadgrajen na različico {1}!"
   },
   "updates.changeLog": {
     "message": "Opombe ob izdaji (angleščina)"
@@ -2058,7 +2101,10 @@
   "whats-new-maintenance": {
     "message": "Vzdrževalna posodobitev $ver$. Ta specifičen popravek je bil dodan od prejšnje izdaje.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "whitespace_note": {
@@ -2074,11 +2120,11 @@
       }
     }
   },
-  "xsent_long.cap": {
-    "message": "Primer datuma in časa po meri"
-  },
   "xsent_long_result.label": {
     "message": "Rezultat: Nedelja, 20/12/2011 ob 16:24"
+  },
+  "xsent_long.cap": {
+    "message": "Primer datuma in časa po meri"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%/%m%/%Y% ob %H%:%M%"
@@ -2086,14 +2132,14 @@
   "xsent_note.label": {
     "message": "Privzeto bodo spremenljivke za datum/čas vedno vzpostavljene s trenutnimi vrednostmi (trenutno je ob času ustvarjanja e-pošte). Ob kombinaciji z %X:=sent% bodo spremenljivke za datum/čas odražale izvirni datum/čas sporočila."
   },
-  "xsent_short.cap": {
-    "message": "Primer datuma in časa v krajevni obliki"
-  },
   "xsent_short_note.label": {
     "message": "Naslednje spremenljivke lahko uporabljate z obema različicama"
   },
   "xsent_short_result.label": {
     "message": "Rezultat: Nedelja, 20/12/2011 08:54:21"
+  },
+  "xsent_short.cap": {
+    "message": "Primer datuma in časa v krajevni obliki"
   },
   "y.up.label": {
     "message": "Leto (1970)"
@@ -2115,35 +2161,5 @@
   },
   "yes_button": {
     "message": "Da"
-  },
-  "quotedTags.scope": {
-    "message": "Pri `%deleteQuotedTags()%` in `%replaceQuotedTags()%` lahko namesto številčne ravni citiranja uporabite obseg brez narekovajev:"
-  },
-  "quotedTags.scope.head": {
-    "message": "Išči samo v razdelku head sporočila."
-  },
-  "quotedTags.scope.body": {
-    "message": "Išči v celotnem telesu sporočila, vključno z necitirano vsebino."
-  },
-  "quotedTags.scope.all": {
-    "message": "Išči v razdelku head in telesu sporočila."
-  },
-  "quotedTags.scope.numeric": {
-    "message": "Če raven citiranja ali obseg izpustite, se uporabi raven 1. Številčna vrednost 0 vključuje vse ravni citiranja v telesu, vendar je pri posredovanju v telesu sporočila omejena na posredovano vsebino; izrecni obseg body preišče celotno telo."
-  },
-  "quotedTags.styles.body": {
-    "message": "Odstrani bloke slogov iz telesa, tudi tiste iz izvirnega sporočila, ki lahko vplivajo na razmike med odstavki odgovora. Ohrani sloge v razdelku head sporočila."
-  },
-  "quotedTags.styles.all": {
-    "message": "Odstrani bloke slogov iz razdelka head in telesa sporočila za čisto osnovo oblikovanja."
-  },
-  "quotedTags.styles.inline": {
-    "message": "Ti primeri odstranijo elemente style, ne pa atributov style, neposredno določenih na posameznih elementih."
-  },
-  "snippets.contextMenu.legend": {
-    "message": "Dodaj v priročni meni urejevalnika sporočil"
-  },
-  "snippets.settingsLegend": {
-    "message": "Pametni izrezki (Pisanje sporočil)"
   }
 }

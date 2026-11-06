@@ -1,4 +1,8 @@
 {
+  "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Dia da semana (Dom.)"
   },
@@ -147,14 +151,22 @@
   },
   "btnLoadTemplate.tooltip": {
     "message": "Carregar modelos (escrever, responder, encaminhar) para $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Atualizar lista de contas"
   },
   "btnSaveTemplate.tooltip": {
     "message": "Salvar modelos (escrever, responder, encaminhar) para $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnYouTube.tooltip": {
     "message": "Visite o canal 'Thunderbird Daily' no YouTube - para dicas e tutoriais usando o SmartTemplates e outras complementos"
@@ -215,6 +227,18 @@
   },
   "ccname.label": {
     "message": "Nome do destinatário"
+  },
+  "changeTemplate.label": {
+    "message": "Alterar modelo…"
+  },
+  "changeTemplate.tooltip": {
+    "message": "Seleciona um modelo diferente - use antes de editar no corpo do email!"
+  },
+  "cleandeferred.label": {
+    "message": "Limpar!"
+  },
+  "cleandeferred.tooltip": {
+    "message": "Limpe todas as variáveis do SmartTemplate"
   },
   "clipboard.copy": {
     "message": "copia o texto para a área de transferência."
@@ -277,6 +301,9 @@
   },
   "conditionals.note": {
     "message": "Esta classe de variáveis pode ser usada para inserir texto dependendo de como você envia o e-mail. Você precisa de uma licença SmartTemplates Pro para eles."
+  },
+  "confirmVersionLink": {
+    "message": "Exibir log de alterações do SmartTemplates?"
   },
   "contextError": {
     "message": "A Variável {1} não pode ser usada para *novas* mensagens!⏎ Por favor, consulte a ajuda para uma lista de variáveis permitidas."
@@ -368,6 +395,15 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Use o modelo externo selecionado por último no menu suspenso."
   },
+  "deferredcontext.cleanup": {
+    "message": "Substituir variável por conteúdo"
+  },
+  "deferredcontext.delete": {
+    "message": "Remova essa variável SmartTemplates"
+  },
+  "deferredcontext.update": {
+    "message": "Atualize o conteúdo da variável SmartTemplates"
+  },
   "deleteForwardedBody": {
     "message": "Esta função remove o corpo do e-mail original ao encaminhar em linha. Pode ser usado para processar informações de e-mails automatizados enquanto remove as informações originais."
   },
@@ -456,6 +492,9 @@
   "fileCSS.label": {
     "message": "Folha de estilos externa (css). Inclua suas regras CSS favoritas para compartilhar entre diferentes modelos."
   },
+  "fileFunction.notExists": {
+    "message": "A função {0} não pôde encontrar ou acessar o arquivo. Verifique o caminho abaixo:"
+  },
   "fileHTML.label": {
     "message": "Arquivo HTML ou texto simples. UTF-8 é assumido ao omitir o parâmetro opcional 'charset'."
   },
@@ -471,14 +510,35 @@
   "files.etc": {
     "message": "Arquivos, imagens e anexos"
   },
+  "fileTemplates": {
+    "message": "Arquivos de modelo"
+  },
   "fileTemplates.add": {
     "message": "Adicionar"
+  },
+  "fileTemplates.configureMenu": {
+    "message": "Configurar itens de menu…"
   },
   "fileTemplates.down": {
     "message": "Baixa"
   },
   "fileTemplates.edit": {
     "message": "Editar"
+  },
+  "fileTemplates.error.charSet": {
+    "message": "Problemas ao converter um modelo HTML do conjunto de caracteres [{1}] \nEm vez disso, usando dados brutos da string. \nSe isso resultar em caracteres ilegíveis, tente adicionar um 'meta charset"
+  },
+  "fileTemplates.error.filePath": {
+    "message": "Não foi possível carregar o arquivo de modelo '{0}' do caminho: \n{1}\nO arquivo pode ter sido removido ou renomeado."
+  },
+  "fileTemplates.error.nocontroller": {
+    "message": "A função $controllerName$ não está disponível neste contexto - você não pode fazer isso com o email selecionado.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
   },
   "fileTemplates.file.open": {
     "message": "Selecionar arquivo de modelo do disco"
@@ -495,7 +555,9 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Isso será exibido no menu de seleção de modelos."
   },
-  "fileTemplates.import": { "message": "Importar menu…" },
+  "fileTemplates.import": {
+    "message": "Importar menu…"
+  },
   "fileTemplates.import.tooltip": {
     "message": "Importar entradas de templates de um arquivo JSON (lista de templates HTML, normalmente smartTemplates.json)."
   },
@@ -505,8 +567,39 @@
   "fileTemplates.menu": {
     "message": "Arquivos de Modelo"
   },
+  "fileTemplates.openFile": {
+    "message": "Abra o arquivo de modelo do SmartTemplates…"
+  },
   "fileTemplates.remove": {
     "message": "Remover"
+  },
+  "fileTemplates.restrictionQuestion": {
+    "message": "Por que alguns modelos neste menu estão desativados?"
+  },
+  "fileTemplates.restrictTemplateCats": {
+    "message": "Para configurar mais de $max_Cats$ categorias, obtenha uma licença SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "fileTemplates.restrictTemplates": {
+    "message": "O número de modelos por menu é restrito. Você pode configurar até $max_free$ itens de menu sem uma licença e $max_std$ itens de menu com uma licença SmartTemplates Standard! SmartTemplates Pro é irrestrito.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "fileTemplates.selectFromMenu": {
+    "message": "Selecione um modelo no menu suspenso."
   },
   "fileTemplates.tooltips.fwd": {
     "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir dos menus de modelo 'Encaminhar' do SmartTemplates."
@@ -522,6 +615,18 @@
   },
   "fileTemplates.update": {
     "message": "Atualizar"
+  },
+  "fileTemplates.wrnEnterPath": {
+    "message": "Selecione um arquivo que contenha o html / texto e suas variáveis ​​SmartTemplates. Este arquivo será processado e inserido quando o novo item do menu for selecionado. Ainda pode modificar o arquivo de modelo de acordo com suas necessidades após criar o item de menu clicando em Editar."
+  },
+  "fileTemplates.wrnEnterTitle": {
+    "message": "Por favor, insira um título!"
+  },
+  "fileTemplates.wrnSelectUpdateItem": {
+    "message": "Você precisa selecionar um item da lista para atualizar!"
+  },
+  "fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Atualizar modelos"
   },
   "firstName.label": {
     "message": "Nome:"
@@ -658,7 +763,9 @@
   "header.set.from": {
     "message": "define o endereço 'de'. Isso só aceita endereços de e-mail da lista de identidades."
   },
-  "header.set.priority": { "message": "define a prioridade do e-mail." },
+  "header.set.priority": {
+    "message": "define a prioridade do e-mail."
+  },
   "header.set.priority.value": {
     "message": "Parâmetro para definir a prioridade do e-mail. Valores possíveis: "
   },
@@ -727,12 +834,6 @@
   "i.label": {
     "message": "Hora, no formato de 12 horas (de 01 a 12)"
   },
-  "identity.chapterHead": {
-    "message": "Sua identidade"
-  },
-  "identity.concept": {
-    "message": "Uma conta de email pode ter várias identidades de remetente, cada uma com seu próprio nome e endereço de email. Esta variável usa a identidade selecionada no campo De da janela de composição. Ao responder, a seleção inicial depende de quem recebeu a mensagem original. Você pode alterar a identidade selecionada depois que a janela de composição for aberta."
-  },
   "identity_ab": {
     "message": "Use a palavra-chave 'addressbook' para recuperar informações de identidade adicionais do catálogo de endereços."
   },
@@ -744,6 +845,12 @@
   },
   "identity_ab.phoneno": {
     "message": "Telefone não"
+  },
+  "identity.chapterHead": {
+    "message": "Sua identidade"
+  },
+  "identity.concept": {
+    "message": "Uma conta de email pode ter várias identidades de remetente, cada uma com seu próprio nome e endereço de email. Esta variável usa a identidade selecionada no campo De da janela de composição. Ao responder, a seleção inicial depende de quem recebeu a mensagem original. Você pode alterar a identidade selecionada depois que a janela de composição for aberta."
   },
   "im-ex_note1.label": {
     "message": "Você pode exportar e importar as configurações e os modelos associados a cada conta."
@@ -894,8 +1001,14 @@
   "licenseValidation.expired": {
     "message": "A chave de licença inserida expirou. Por favor, pressione o botão abaixo para renovar sua licença."
   },
+  "licenseValidation.expiredDate": {
+    "message": "Sua licença expira em:"
+  },
   "licenseValidation.failed": {
     "message": "A chave de licença inserida não é válida. Verifique o e-mail da FastSpring para instruções. Se você ainda tiver problemas, entre em contato comigo a partir da aba Suporte."
+  },
+  "licenseValidation.guessAddon": {
+    "message": "(A chave inserida pode ser para {2})."
   },
   "licenseValidation.invalidAddon": {
     "message": "A chave de licença inserida pode ser para uma extensão diferente. A chaves de licença para o {0} começam com {1}."
@@ -939,11 +1052,74 @@
   "matchTextFromSubject": {
     "message": "Encontra um padrão RegEx no assunto e insere no local da função."
   },
+  "menu.docs": {
+    "message": "Documentação"
+  },
+  "menu.docs.premium": {
+    "message": "Recursos premium…"
+  },
+  "menu.docs.variables": {
+    "message": "Variáveis e Comandos…"
+  },
+  "menu.hideLabel": {
+    "message": "Ocultar rótulo do botão"
+  },
+  "menu.license": {
+    "message": "Verifique o status da licença…"
+  },
+  "menu.license.tooltip": {
+    "message": "Clique aqui para verificar o status da licença de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menu.replyAll": {
+    "message": "Responder todos"
+  },
+  "menu.replyList": {
+    "message": "Responder à Lista"
+  },
+  "menu.supportSite": {
+    "message": "Site de suporte…"
+  },
   "menu.template_export.label": {
     "message": "Exportar modelo"
   },
   "menu.template_import.label": {
     "message": "Importar modelo"
+  },
+  "menu.template.default": {
+    "message": "Modelo padrão (conta)"
+  },
+  "menu.template.last": {
+    "message": "Modelo padrão (conta)"
+  },
+  "menu.update.tooltip": {
+    "message": "Selecione “Últimas notícias” neste menu para ler o que há de novo em $addonName$.\n Isso redefinirá o botão para sua aparência padrão.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menuaccess.forward": {
+    "message": "E"
+  },
+  "menuaccess.reply": {
+    "message": "R"
+  },
+  "menuaccess.replyAll": {
+    "message": "T"
+  },
+  "menuaccess.replyList": {
+    "message": "L"
+  },
+  "menuaccess.write": {
+    "message": "N"
   },
   "message.features": {
     "message": "Compare recursos…"
@@ -1028,6 +1204,95 @@
   },
   "no_button": {
     "message": "Não"
+  },
+  "notification.bodyModified": {
+    "message": "O Thunderbird diz que você já digitou algo, você deseja carregar o modelo mesmo assim?"
+  },
+  "notification.bodyModified.accountTemplate": {
+    "message": "Isso descartará qualquer coisa digitada e carregará o modelo da conta."
+  },
+  "notification.bodyModified.externalTemplate": {
+    "message": "Isso descartará qualquer coisa digitada e recarregará o modelo atual [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "notification.bodyModified.instructions": {
+    "message": "Clique em Cancelar para manter o conteúdo do e-mail inalterado."
+  },
+  "notification.donate": {
+    "message": "Doar"
+  },
+  "notification.dontShowAgain": {
+    "message": "Não mostrar esta mensagem novamente."
+  },
+  "notification.editedChangeChallenge": {
+    "message": "Qualquer texto digitado manualmente desde a abertura do compositor será excluído, sem Desfazer. Continue de qualquer maneira?"
+  },
+  "notification.editedChangeWarning": {
+    "message": "Você já digitou o texto e deseja alterar para o modelo {0}"
+  },
+  "notification.license.text": {
+    "message": "O SmartTemplates continua funcionando normalmente. Uma licença remove este aviso — clique abaixo para mais informações."
+  },
+  "notification.licensing": {
+    "message": "Mais sobre licenciamento"
+  },
+  "notification.parsing": {
+    "message": "Eu estou analisando variáveis:"
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "Estender licença de domínio"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "Estender licença"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "Isso aumentará a data da licença atual em 1 ano. Geralmente é mais barato que uma nova licença."
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "Comprar licença"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "Renovar licença de domínio"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "Renovar Licença"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Atualize para o Pro"
+  },
+  "notification.premium.btn.upgrade.hotKey": {
+    "message": "A"
+  },
+  "notification.premium.sendByFilter": {
+    "message": "Com uma licença válida do SmartTemplates Pro, o e-mail agora seria enviado automaticamente."
+  },
+  "notification.premium.text": {
+    "message": "{1} é uma funcionalidade Premium. Continuará funcionando, mas atualizar para uma SmartTemplates Pro License remove estes avisos e ajuda a apoiar o complemento."
+  },
+  "notification.premium.text.plural": {
+    "message": "{1} são funcionalidades Premium. Continuarão funcionando, mas atualizar para uma SmartTemplates Pro License remove estes avisos e ajuda a apoiar o complemento."
+  },
+  "notification.spellcheck.error": {
+    "message": "Não é possível alternar o idioma do corretor ortográfico. Você instalou o dicionário correto?"
+  },
+  "notification.spellcheck.noDictionary": {
+    "message": "Não há dicionários instalados."
+  },
+  "notification.spellcheck.notFound": {
+    "message": "Dicionário '{0}' não encontrado."
+  },
+  "notification.standard.text": {
+    "message": "{1} é uma funcionalidade licenciada. Continuará funcionando, mas obter uma SmartTemplates License remove estes avisos e ajuda a apoiar o complemento."
+  },
+  "notification.standard.text.plural": {
+    "message": "{1} são funcionalidades licenciadas. Continuarão funcionando, mas obter uma SmartTemplates License remove estes avisos e ajuda a apoiar o complemento."
+  },
+  "notification.usedLastTemplate": {
+    "message": "Reutilizando o último modelo externo selecionado: {template}{br}💾 conforme as configurações globais:"
   },
   "ongoing-work": {
     "message": "Para manter o $addonName$ sincronizado com os lançamentos mensais do Thunderbird, precisamos verificar constantemente se há erros e fazer upload de versões adaptadas. Por favor, ajude-nos com isso assim que tiver testado a funcionalidade e tiver certeza de que ela melhora sua produtividade!",
@@ -1120,6 +1385,9 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Configure um editor externo para editar seus modelos HTML e CSS. Recomendo um editor HTML de texto simples com destaque de sintaxe, como o Notepad++ ou o Visual Studio Code."
   },
+  "prompt.switchDomainLicense": {
+    "message": "Mudar para a Licença de Domínio?"
+  },
   "prompt.text": {
     "message": "Digite o texto para adicionar ou definir"
   },
@@ -1134,6 +1402,30 @@
   },
   "quote_changers.desc": {
     "message": "Variáveis premium para remover texto / tags das partes citadas e economizar espaço."
+  },
+  "quotedTags.scope": {
+    "message": "Em `%deleteQuotedTags()%` e `%replaceQuotedTags()%`, é possível usar um escopo sem aspas em vez do nível de citação numérico:"
+  },
+  "quotedTags.scope.all": {
+    "message": "Pesquisar na seção head e no corpo."
+  },
+  "quotedTags.scope.body": {
+    "message": "Pesquisar em todo o corpo da mensagem, incluindo o conteúdo não citado."
+  },
+  "quotedTags.scope.head": {
+    "message": "Pesquisar apenas na seção head da mensagem."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Se o nível de citação ou o escopo for omitido, será usado o nível 1. O valor numérico 0 inclui todos os níveis de citação do corpo, mas nos encaminhamentos em linha fica restrito ao conteúdo encaminhado; o escopo explícito body pesquisa em todo o corpo."
+  },
+  "quotedTags.styles.all": {
+    "message": "Remover os blocos de estilo da seção head e do corpo para obter uma base de formatação limpa."
+  },
+  "quotedTags.styles.body": {
+    "message": "Remover os blocos de estilo do corpo, incluindo os herdados da mensagem original que podem afetar o espaçamento dos parágrafos da resposta. Manter os estilos na seção head da mensagem."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Estes exemplos removem elementos style, não os atributos style em linha de cada elemento."
   },
   "quoteHeader.replace.tip": {
     "message": "Desativar o cabeçalho da mensagem anterior padrão, substituindo pelo modelo informado."
@@ -1240,6 +1532,9 @@
   "settings.label": {
     "message": "Configurações e modelos"
   },
+  "settings.tooltip": {
+    "message": "Opções do SmartTemplates"
+  },
   "shortdate.label": {
     "message": "Data e hora curta (por exemplo, 01/01/2000 01:23:45)"
   },
@@ -1247,50 +1542,23 @@
     "message": "Mudanças + notícias (tela inicial)."
   },
   "sig.concept": {
-    "message": "O Thunderbird controla a posição e o conteúdo da assinatura em **Configurações de conta » Composição e endereçamento**. Você pode substituir a posição usando a variável `%sig%`.",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "O Thunderbird controla a posição e o conteúdo da assinatura em **Configurações de conta » Composição e endereçamento**. Você pode substituir a posição usando a variável `%sig%`."
   },
   "sig.label": {
     "message": "Assinatura das configurações da conta"
   },
-  "sig2.label": {
-    "message": "Assinatura das configurações da conta sem o '--'"
-  },
   "sig.none.label": {
     "message": "Remove qualquer assinatura. Substitui as configurações da conta."
+  },
+  "sig2.label": {
+    "message": "Assinatura das configurações da conta sem o '--'"
   },
   "silentUpdates": {
     "message": "Não abra guia com histórico de versões"
   },
   "silentUpdates.tip": {
     "message": "Não abra o log de alterações após a atualização do SmartTemplates."
-  },
-  "smarttemplate4_button": {
-    "message": "Editar modelos e cabeçalhos das mensagens anteriores…"
-  },
-  "smartTemplate4.changeTemplate.label": {
-    "message": "Alterar modelo…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Seleciona um modelo diferente - use antes de editar no corpo do email!"
-  },
-  "smartTemplate4.cleandeferred.label": {
-    "message": "Limpar!"
-  },
-  "smartTemplate4.cleandeferred.tooltip": {
-    "message": "Limpe todas as variáveis do SmartTemplate"
-  },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Substituir variável por conteúdo"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "Remova essa variável SmartTemplates"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "Atualize o conteúdo da variável SmartTemplates"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "Opções do SmartTemplates"
   },
   "SmartTemplateMainButton.expired": {
     "message": "Licença expirada!"
@@ -1313,63 +1581,69 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Novidades…"
   },
-  "snippets.download": {
-    "message": "Baixar snippets…"
-  },
-  "snippets.browser.localTitle": {
-    "message": "Nome no menu"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "Adicionar ao menu de contexto"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "Selecionar pasta de destino"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "Escolha seu próprio nome no menu, por exemplo no seu idioma. As alterações são mantidas enquanto este painel estiver aberto e usadas ao adicionar o snippet."
-  },
-  "snippets.browser.preview": {
-    "message": "Prévia do snippet"
-  },
-  "snippets.browser.noPreview": {
-    "message": "Prévia indisponível"
+  "snippets.browser.add": {
+    "message": "Adicionar snippets"
   },
   "snippets.browser.close": {
     "message": "Fechar"
   },
-  "snippets.browser.add": {
-    "message": "Adicionar snippets"
-  },
-  "snippets.browser.loading": {
-    "message": "Carregando snippets…"
-  },
-  "snippets.browser.importing": {
-    "message": "Adicionando snippets…"
-  },
-  "snippets.browser.error": {
-    "message": "Não foi possível adicionar ou carregar os snippets."
+  "snippets.browser.contextMenu": {
+    "message": "Adicionar ao menu de contexto"
   },
   "snippets.browser.empty": {
     "message": "Não há snippets disponíveis."
   },
+  "snippets.browser.error": {
+    "message": "Não foi possível adicionar ou carregar os snippets."
+  },
+  "snippets.browser.importing": {
+    "message": "Adicionando snippets…"
+  },
+  "snippets.browser.loading": {
+    "message": "Carregando snippets…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Nome no menu"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Escolha seu próprio nome no menu, por exemplo no seu idioma. As alterações são mantidas enquanto este painel estiver aberto e usadas ao adicionar o snippet."
+  },
+  "snippets.browser.noPreview": {
+    "message": "Prévia indisponível"
+  },
   "snippets.browser.notConfigured": {
     "message": "O repositório de snippets ainda não está disponível."
   },
+  "snippets.browser.preview": {
+    "message": "Prévia do snippet"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Selecionar pasta de destino"
+  },
   "snippets.contextMenu": {
     "message": "Mostrar no menu de contexto"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Adicionar ao menu de contexto da janela de composição"
+  },
+  "snippets.download": {
+    "message": "Baixar snippets…"
   },
   "snippets.head": {
     "message": "Snippets inteligentes"
   },
   "snippets.label": {
-    "message": "Todos os fragmentos podem ser inseridos pelo botão $SnippetButton$",
     "description": "SnippetButton is the localized insertSnippet.button label.",
+    "message": "Todos os fragmentos podem ser inseridos pelo botão $SnippetButton$",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
         "example": "Insert Snippet"
       }
     }
+  },
+  "snippets.settingsLegend": {
+    "message": "Snippets inteligentes (Composição)"
   },
   "spec_form.cap": {
     "message": "Mudanças de campo de endereço"
@@ -1445,255 +1719,6 @@
   },
   "splashScreen.tip": {
     "message": "Ocultar caixa de diálogo de informações que exibe novos recursos e correções de bugs durante a atualização."
-  },
-  "st.confirmVersionLink": {
-    "message": "Exibir log de alterações do SmartTemplates?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "A função {0} não pôde encontrar ou acessar o arquivo. Verifique o caminho abaixo:"
-  },
-  "st.fileTemplates": {
-    "message": "Arquivos de modelo"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "Configurar itens de menu…"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "Problemas ao converter um modelo HTML do conjunto de caracteres [{1}] \nEm vez disso, usando dados brutos da string. \nSe isso resultar em caracteres ilegíveis, tente adicionar um 'meta charset"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "Não foi possível carregar o arquivo de modelo '{0}' do caminho: \n{1}\nO arquivo pode ter sido removido ou renomeado."
-  },
-  "st.fileTemplates.error.nocontroller": {
-    "message": "A função $controllerName$ não está disponível neste contexto - você não pode fazer isso com o email selecionado.",
-    "placeholders": {
-      "controllerName": {
-        "content": "$1",
-        "example": "cmd_replyList"
-      }
-    }
-  },
-  "st.fileTemplates.openFile": {
-    "message": "Abra o arquivo de modelo do SmartTemplates…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "Por que alguns modelos neste menu estão desativados?"
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "Para configurar mais de $max_Cats$ categorias, obtenha uma licença SmartTemplates Pro…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplates": {
-    "message": "O número de modelos por menu é restrito. Você pode configurar até $max_free$ itens de menu sem uma licença e $max_std$ itens de menu com uma licença SmartTemplates Standard! SmartTemplates Pro é irrestrito.",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.selectFromMenu": {
-    "message": "Selecione um modelo no menu suspenso."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Selecione um arquivo que contenha o html / texto e suas variáveis ​​SmartTemplates. Este arquivo será processado e inserido quando o novo item do menu for selecionado. Ainda pode modificar o arquivo de modelo de acordo com suas necessidades após criar o item de menu clicando em Editar."
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Por favor, insira um título!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "Você precisa selecionar um item da lista para atualizar!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Atualizar modelos"
-  },
-  "st.licenseValidation.expired": {
-    "message": "Sua licença expira em:"
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "(A chave inserida pode ser para {2})."
-  },
-  "st.menu.docs": {
-    "message": "Documentação"
-  },
-  "st.menu.docs.premium": {
-    "message": "Recursos premium…"
-  },
-  "st.menu.docs.variables": {
-    "message": "Variáveis e Comandos…"
-  },
-  "st.menu.hideLabel": {
-    "message": "Ocultar rótulo do botão"
-  },
-  "st.menu.license": {
-    "message": "Verifique o status da licença…"
-  },
-  "st.menu.license.tooltip": {
-    "message": "Clique aqui para verificar o status da licença de $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menu.replyAll": {
-    "message": "Responder todos"
-  },
-  "st.menu.replyList": {
-    "message": "Responder à Lista"
-  },
-  "st.menu.supportSite": {
-    "message": "Site de suporte…"
-  },
-  "st.menu.template.default": {
-    "message": "Modelo padrão (conta)"
-  },
-  "st.menu.template.last": {
-    "message": "Modelo padrão (conta)"
-  },
-  "st.menu.update.tooltip": {
-    "message": "Selecione “Últimas notícias” neste menu para ler o que há de novo em $addonName$.\n Isso redefinirá o botão para sua aparência padrão.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menuaccess.forward": {
-    "message": "E"
-  },
-  "st.menuaccess.reply": {
-    "message": "R"
-  },
-  "st.menuaccess.replyAll": {
-    "message": "T"
-  },
-  "st.menuaccess.replyList": {
-    "message": "L"
-  },
-  "st.menuaccess.write": {
-    "message": "N"
-  },
-  "st.notification.bodyModified": {
-    "message": "O Thunderbird diz que você já digitou algo, você deseja carregar o modelo mesmo assim?"
-  },
-  "st.notification.bodyModified.accountTemplate": {
-    "message": "Isso descartará qualquer coisa digitada e carregará o modelo da conta."
-  },
-  "st.notification.bodyModified.externalTemplate": {
-    "message": "Isso descartará qualquer coisa digitada e recarregará o modelo atual [$template$].",
-    "placeholders": {
-      "template": {
-        "content": "$1"
-      }
-    }
-  },
-  "st.notification.bodyModified.instructions": {
-    "message": "Clique em Cancelar para manter o conteúdo do e-mail inalterado."
-  },
-  "st.notification.donate": {
-    "message": "Doar"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "Não mostrar esta mensagem novamente."
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "Qualquer texto digitado manualmente desde a abertura do compositor será excluído, sem Desfazer. Continue de qualquer maneira?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "Você já digitou o texto e deseja alterar para o modelo {0}"
-  },
-  "st.notification.license.text": {
-    "message": "O SmartTemplates continua funcionando normalmente. Uma licença remove este aviso — clique abaixo para mais informações."
-  },
-  "st.notification.licensing": {
-    "message": "Mais sobre licenciamento"
-  },
-  "st.notification.parsing": {
-    "message": "Eu estou analisando variáveis:"
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "Estender licença de domínio"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "Estender licença"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "Isso aumentará a data da licença atual em 1 ano. Geralmente é mais barato que uma nova licença."
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "Comprar licença"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "Renovar licença de domínio"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "Renovar Licença"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "Atualize para o Pro"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "A"
-  },
-  "st.notification.premium.sendByFilter": {
-    "message": "Com uma licença válida do SmartTemplates Pro, o e-mail agora seria enviado automaticamente."
-  },
-  "st.notification.premium.text": {
-    "message": "{1} é uma funcionalidade Premium. Continuará funcionando, mas atualizar para uma SmartTemplates Pro License remove estes avisos e ajuda a apoiar o complemento."
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1} são funcionalidades Premium. Continuarão funcionando, mas atualizar para uma SmartTemplates Pro License remove estes avisos e ajuda a apoiar o complemento."
-  },
-  "st.notification.spellcheck.error": {
-    "message": "Não é possível alternar o idioma do corretor ortográfico. Você instalou o dicionário correto?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "Não há dicionários instalados."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "Dicionário '{0}' não encontrado."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} é uma funcionalidade licenciada. Continuará funcionando, mas obter uma SmartTemplates License remove estes avisos e ajuda a apoiar o complemento."
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} são funcionalidades licenciadas. Continuarão funcionando, mas obter uma SmartTemplates License remove estes avisos e ajuda a apoiar o complemento."
-  },
-  "st.notification.usedLastTemplate": {
-    "message": "Reutilizando o último modelo externo selecionado: {template}{br}💾 conforme as configurações globais:"
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "Mudar para a Licença de Domínio?"
-  },
-  "st.trialDays": {
-    "message": "Você tem {0} dias de teste restantes."
-  },
-  "st.trialExpiry": {
-    "message": "Seu período de avaliação expirou {0} dias atrás."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "Caro usuário do SmartTemplates, estamos animados em anunciar que a partir desta versão, o SmartTemplates também suporta o uso de colchetes { } e a tag <style> de modo que agora você pode criar um estilo css avançado dentro do seu Modelo."
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "A partir de agora, a sintaxe específica para expressões entre colchetes foi alterada: em vez de chaves {%cc(name)%} use colchetes duplos [[%cc(name)%]] - para mais detalhes, consulte a ajuda."
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates irá converter agora os modelos existentes para que você possa continuar usando-os na nova versão. Pressione [OK] para continuar."
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates foi atualizado com sucesso para a versão {1}!"
   },
   "standardformat.config": {
     "message": "Formato padrão…"
@@ -1970,6 +1995,24 @@
   "translatorNickname.label": {
     "message": "Mauro José da Silva (BabelZilla)"
   },
+  "trialDays": {
+    "message": "Você tem {0} dias de teste restantes."
+  },
+  "trialExpiry": {
+    "message": "Seu período de avaliação expirou {0} dias atrás."
+  },
+  "updateMessageNewBrackets1": {
+    "message": "Caro usuário do SmartTemplates, estamos animados em anunciar que a partir desta versão, o SmartTemplates também suporta o uso de colchetes { } e a tag <style> de modo que agora você pode criar um estilo css avançado dentro do seu Modelo."
+  },
+  "updateMessageNewBrackets2": {
+    "message": "A partir de agora, a sintaxe específica para expressões entre colchetes foi alterada: em vez de chaves {%cc(name)%} use colchetes duplos [[%cc(name)%]] - para mais detalhes, consulte a ajuda."
+  },
+  "updateMessageNewBrackets3": {
+    "message": "SmartTemplates irá converter agora os modelos existentes para que você possa continuar usando-os na nova versão. Pressione [OK] para continuar."
+  },
+  "updateMessageVersion": {
+    "message": "SmartTemplates foi atualizado com sucesso para a versão {1}!"
+  },
   "updates.changeLog": {
     "message": "Notas de lançamento (inglês)"
   },
@@ -2028,17 +2071,20 @@
   "whats-new-maintenance": {
     "message": "Atualização de manutenção $ver$. Esta correção específica foi adicionada desde a versão anterior.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
   },
-  "xsent_long.cap": {
-    "message": "Exemplo de data e hora personalizadas"
-  },
   "xsent_long_result.label": {
     "message": "Resultado: 20/12/2011 às 16:24"
+  },
+  "xsent_long.cap": {
+    "message": "Exemplo de data e hora personalizadas"
   },
   "xsent_long.label": {
     "message": "A frase %X:=sent%%d%/%m%/%Y% às %H%:%M%"
@@ -2046,14 +2092,14 @@
   "xsent_note.label": {
     "message": "As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com %X:=sent%, elas são exibidas com os valores anteriores."
   },
-  "xsent_short.cap": {
-    "message": "Exemplo de data e hora no formato local"
-  },
   "xsent_short_note.label": {
     "message": "As seguintes variáveis podem ser usadas em ambas as variantes também"
   },
   "xsent_short_result.label": {
     "message": "Resultado: Quarta-feira, 20/12/2011 08:54:21"
+  },
+  "xsent_short.cap": {
+    "message": "Exemplo de data e hora no formato local"
   },
   "y.up.label": {
     "message": "Ano (1970)"
@@ -2075,35 +2121,5 @@
   },
   "yes_button": {
     "message": "Sim"
-  },
-  "quotedTags.scope": {
-    "message": "Em `%deleteQuotedTags()%` e `%replaceQuotedTags()%`, é possível usar um escopo sem aspas em vez do nível de citação numérico:"
-  },
-  "quotedTags.scope.head": {
-    "message": "Pesquisar apenas na seção head da mensagem."
-  },
-  "quotedTags.scope.body": {
-    "message": "Pesquisar em todo o corpo da mensagem, incluindo o conteúdo não citado."
-  },
-  "quotedTags.scope.all": {
-    "message": "Pesquisar na seção head e no corpo."
-  },
-  "quotedTags.scope.numeric": {
-    "message": "Se o nível de citação ou o escopo for omitido, será usado o nível 1. O valor numérico 0 inclui todos os níveis de citação do corpo, mas nos encaminhamentos em linha fica restrito ao conteúdo encaminhado; o escopo explícito body pesquisa em todo o corpo."
-  },
-  "quotedTags.styles.body": {
-    "message": "Remover os blocos de estilo do corpo, incluindo os herdados da mensagem original que podem afetar o espaçamento dos parágrafos da resposta. Manter os estilos na seção head da mensagem."
-  },
-  "quotedTags.styles.all": {
-    "message": "Remover os blocos de estilo da seção head e do corpo para obter uma base de formatação limpa."
-  },
-  "quotedTags.styles.inline": {
-    "message": "Estes exemplos removem elementos style, não os atributos style em linha de cada elemento."
-  },
-  "snippets.contextMenu.legend": {
-    "message": "Adicionar ao menu de contexto da janela de composição"
-  },
-  "snippets.settingsLegend": {
-    "message": "Snippets inteligentes (Composição)"
   }
 }

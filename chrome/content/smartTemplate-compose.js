@@ -2206,7 +2206,7 @@ SmartTemplate4.classSmartTemplate = function() {
     // [issue 173] - SmartTemplates Pro required.
     if (flags.isAutoSend) {
       if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
-        let msg = util.getBundleString("st.notification.premium.sendByFilter");
+        let msg = util.getBundleString("notification.premium.sendByFilter");
         util.popupLicenseNotification("filterWithTemplate", true, true, msg);
       } else {
         // make sure all variables are resolved + removed.

@@ -1,5 +1,6 @@
 {
   "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
     "message": "UI"
   },
   "a.label": {
@@ -765,9 +766,6 @@
   "menu.template_import.label": {
     "message": "Impor Template"
   },
-  "message_default_title": {
-    "message": "SmartTemplate4"
-  },
   "message.features": {
     "message": "Bandingkan Fitur…"
   },
@@ -987,34 +985,28 @@
   "sig2.label": {
     "message": "Tanda tangan dari Setelan Akun tanpa '--'"
   },
-  "smarttemplate4_button": {
-    "message": "Ubah template / kutipan tajuk…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplate4"
-  },
-  "smartTemplate4.changeTemplate.label": {
+  "changeTemplate.label": {
     "message": "Ubah template…"
   },
-  "smartTemplate4.changeTemplate.tooltip": {
+  "changeTemplate.tooltip": {
     "message": "Muat template lain - gunakan sebelum mengedit Email!"
   },
-  "smartTemplate4.cleandeferred.label": {
+  "cleandeferred.label": {
     "message": "Membersihkan!"
   },
-  "smartTemplate4.cleandeferred.tooltip": {
+  "cleandeferred.tooltip": {
     "message": "Membersihkan semua variabel SmartTemplate"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
+  "deferredcontext.cleanup": {
     "message": "Perbarui dan Ganti dengan Konten"
   },
-  "smartTemplate4.deferredcontext.delete": {
+  "deferredcontext.delete": {
     "message": "Hapus variabel SmartTemplates"
   },
-  "smartTemplate4.deferredcontext.update": {
+  "deferredcontext.update": {
     "message": "Perbarui konten SmartTemplates"
   },
-  "smartTemplate4.settings.tooltip": {
+  "settings.tooltip": {
     "message": "Setelan SmartTemplates"
   },
   "SmartTemplateMainButton.expired": {
@@ -1105,13 +1097,13 @@
   "splashScreen.tip": {
     "message": "Sembunyikan dialog informasi yang menampilkan fitur baru dan perbaikan bug saat memperbarui."
   },
-  "st.confirmVersionLink": {
+  "confirmVersionLink": {
     "message": "Menampilkan log perubahan untuk SmartTemplates?"
   },
-  "st.fileTemplates.restrictionQuestion": {
+  "fileTemplates.restrictionQuestion": {
     "message": "Mengapa beberapa template dalam menu ini dinonaktifkan?"
   },
-  "st.fileTemplates.restrictTemplateCats": {
+  "fileTemplates.restrictTemplateCats": {
     "message": "Untuk mengonfigurasi lebih dari $max_Cats$ Kategori, dapatkan lisensi SmartTemplates Pro…",
     "placeholders": {
       "max_Cats": {
@@ -1120,7 +1112,7 @@
       }
     }
   },
-  "st.fileTemplates.restrictTemplates": {
+  "fileTemplates.restrictTemplates": {
     "message": "Jumlah template per menu dibatasi. Anda dapat mengonfigurasi hingga $max_free$ item menu tanpa lisensi, dan item menu $max_std$ dengan lisensi SmartTemplates Standard! SmartTemplates Pro tidak dibatasi.",
     "placeholders": {
       "max_free": {
@@ -1133,22 +1125,22 @@
       }
     }
   },
-  "st.fileTemplates.wrnEnterPath": {
+  "fileTemplates.wrnEnterPath": {
     "message": "Pilih file yang berisi html / teks dan variabel SmartTemplates Anda. File ini akan diproses dan dimasukkan saat item menu baru dipilih. Anda masih dapat memodifikasi file template sesuai kebutuhan Anda setelah membuat item menu dengan mengklik Edit."
   },
-  "st.licenseValidation.expired": {
+  "licenseValidation.expiredDate": {
     "message": "Lisensi Anda kedaluwarsa pada:"
   },
-  "st.licenseValidation.guessAddon": {
+  "licenseValidation.guessAddon": {
     "message": "(Lisensi yang dimasukkan mungkin untuk {2})."
   },
-  "st.notification.bodyModified": {
+  "notification.bodyModified": {
     "message": "Thunderbird mengatakan Anda telah mengetik sesuatu, apakah Anda ingin memuat template ini?"
   },
-  "st.notification.bodyModified.accountTemplate": {
+  "notification.bodyModified.accountTemplate": {
     "message": "Ini akan menghapus semua yang telah Anda ketik dan memuat template akun."
   },
-  "st.notification.bodyModified.externalTemplate": {
+  "notification.bodyModified.externalTemplate": {
     "message": "Ini akan menghapus semua yang telah Anda ketik dan memuat template saat ini [$template$].",
     "placeholders": {
       "template": {
@@ -1156,64 +1148,64 @@
       }
     }
   },
-  "st.notification.bodyModified.instructions": {
+  "notification.bodyModified.instructions": {
     "message": "Klik Batal untuk tetap menjaga isi email tanpa perubahan."
   },
-  "st.notification.donate": {
+  "notification.donate": {
     "message": "Donasi"
   },
-  "st.notification.license.text": {
+  "notification.license.text": {
     "message": "SmartTemplates tetap berfungsi seperti biasa. Lisensi menghapus pengingat ini — klik di bawah untuk informasi lebih lanjut."
   },
-  "st.notification.premium.btn.extendDomainLicense": {
+  "notification.premium.btn.extendDomainLicense": {
     "message": "Perpanjang Lisensi Domain"
   },
-  "st.notification.premium.btn.extendLicense": {
+  "notification.premium.btn.extendLicense": {
     "message": "Perpanjang Lisensi"
   },
-  "st.notification.premium.btn.extendLicense.tooltip": {
+  "notification.premium.btn.extendLicense.tooltip": {
     "message": "Ini akan memperpanjang tanggal lisensi saat ini hingga 1 tahun. Ini biasanya lebih murah daripada lisensi baru."
   },
-  "st.notification.premium.btn.getLicense": {
+  "notification.premium.btn.getLicense": {
     "message": "Beli Lisensi"
   },
-  "st.notification.premium.btn.renewDomainLicense": {
+  "notification.premium.btn.renewDomainLicense": {
     "message": "Perpanjang Lisensi Domain"
   },
-  "st.notification.premium.btn.renewLicense": {
+  "notification.premium.btn.renewLicense": {
     "message": "Perbarui Lisensi"
   },
-  "st.notification.premium.sendByFilter": {
+  "notification.premium.sendByFilter": {
     "message": "Dengan lisensi SmartTemplates Pro yang valid, email sekarang akan dikirim secara otomatis."
   },
-  "st.notification.premium.text": {
+  "notification.premium.text": {
     "message": "{1} adalah fitur Premium. Fitur ini akan tetap berfungsi, tetapi meningkatkan ke SmartTemplates Pro License menghapus pemberitahuan ini dan membantu mendukung add-on."
   },
-  "st.notification.premium.text.plural": {
+  "notification.premium.text.plural": {
     "message": "{1} adalah fitur-fitur Premium. Fitur-fitur ini akan tetap berfungsi, tetapi meningkatkan ke SmartTemplates Pro License menghapus pemberitahuan ini dan membantu mendukung add-on."
   },
-  "st.notification.standard.text": {
+  "notification.standard.text": {
     "message": "{1} adalah fitur berlisensi. Fitur ini akan tetap berfungsi, tetapi mendapatkan SmartTemplates License menghapus pemberitahuan ini dan membantu mendukung add-on."
   },
-  "st.notification.standard.text.plural": {
+  "notification.standard.text.plural": {
     "message": "{1} adalah fitur-fitur berlisensi. Fitur-fitur ini akan tetap berfungsi, tetapi mendapatkan SmartTemplates License menghapus pemberitahuan ini dan membantu mendukung add-on."
   },
-  "st.notification.usedLastTemplate": {
+  "notification.usedLastTemplate": {
     "message": "Menggunakan kembali template eksternal terakhir: {template}{br}💾 sesuai pengaturan global:"
   },
-  "st.prompt.switchDomainLicense": {
+  "prompt.switchDomainLicense": {
     "message": "Beralih ke Lisensi Domain?"
   },
-  "st.updateMessageNewBrackets1": {
+  "updateMessageNewBrackets1": {
     "message": "Kepada pengguna SmartTemplates, dengan senang hati kami mengumumkan dari versi ini, SmartTemplates mendukung penggunaan kurung kurawa {} dan tanda <style> sehingga kini anda dapat menerapkan kostumisasi css dalam Template anda."
   },
-  "st.updateMessageNewBrackets2": {
+  "updateMessageNewBrackets2": {
     "message": "Dari sekarang, syntax spesifik untuk penggunaan tanda kurung diubah: Bukannya kurung kurawa {%cc(name)%} gunakan tanda kurung ganda [[%cc(name)%]] - untuk detail lebih lanjut, lihat Bantuan."
   },
-  "st.updateMessageNewBrackets3": {
+  "updateMessageNewBrackets3": {
     "message": "Sekarang SmartTemplates akan mengonversi templat yang ada sehingga Anda dapat tetap menggunakannya dalam versi baru. Tekan [OK] untuk lanjut."
   },
-  "st.updateMessageVersion": {
+  "updateMessageVersion": {
     "message": "SmartTemplates berhasil diperbarui ke versi {1}!"
   },
   "standardformat.config": {
@@ -1520,13 +1512,14 @@
   },
   "quotedTags.styles.inline": {
     "message": "Contoh ini menghapus elemen style, bukan atribut style sebaris pada masing-masing elemen."
-  },
+  },
   "snippets.contextMenu.legend": {
     "message": "Tambahkan ke menu klik kanan penulisan pesan"
-  },
+  },
   "snippets.settingsLegend": {
     "message": "Cuplikan Cerdas (Penulisan pesan)"
+  },
+  "whats-new-intro": {
+    "message": "Baca catatan perubahan terperinci di sini (hanya dalam bahasa Inggris):"
   }
-,
-  "whats-new-intro": { "message": "Baca catatan perubahan terperinci di sini (hanya dalam bahasa Inggris):" }
 }

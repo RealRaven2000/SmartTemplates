@@ -1,4 +1,8 @@
 {
+  "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Viikonpäivä (pe)"
   },
@@ -150,14 +154,22 @@
   },
   "btnLoadTemplate.tooltip": {
     "message": "Lataa mallipohjat (kirjoitus, vastaus, edelleenlähetys) tilille $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Päivitä tililuettelo"
   },
   "btnSaveTemplate.tooltip": {
     "message": "Tallenna mallipohjat (kirjoita, vastaa, lähetä edelleen) tälle tilille $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnYouTube.tooltip": {
     "message": "Käy \"Thunderbird Daily\" -Youtube-kanavalla. jotta saat vinkkejä ja ohjeita Stationaryn ja muiden lisäosien käyttämiseen"
@@ -218,6 +230,18 @@
   },
   "ccname.label": {
     "message": "Vastaanottajan nimi"
+  },
+  "changeTemplate.label": {
+    "message": "Muuta mallia…"
+  },
+  "changeTemplate.tooltip": {
+    "message": "Valitsee toisen mallin - käytä ennen muokkaamista postilaatikossa!"
+  },
+  "cleandeferred.label": {
+    "message": "Siivota!"
+  },
+  "cleandeferred.tooltip": {
+    "message": "Siivoa kaikki SmartTemplate-muuttujat"
   },
   "clipboard.copy": {
     "message": "kopioi tekstin leikepöydälle."
@@ -280,6 +304,9 @@
   },
   "conditionals.note": {
     "message": "Tätä muuttujien luokkaa voidaan käyttää tekstin lisäämiseen sen mukaan, miten lähetät sähköpostia. Tarvitset SmartTemplates Pro -lisenssin näihin."
+  },
+  "confirmVersionLink": {
+    "message": "Näytetäänkö SmartTemplates:n muutosloki?"
   },
   "contextError": {
     "message": "Muuttuujaa {1} ei voida käyttää *uusille* viesteille!\nKatso lista sallituista muuttujista ohjeesta"
@@ -374,6 +401,15 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Käytä avattavasta valikosta viimeksi valittua ulkoista mallia."
   },
+  "deferredcontext.cleanup": {
+    "message": "Korvaa muuttuja sisällöllä"
+  },
+  "deferredcontext.delete": {
+    "message": "Poista SmartTemplates-muuttuja"
+  },
+  "deferredcontext.update": {
+    "message": "Päivitä SmartTemplates -sisältö"
+  },
   "deleteForwardedBody": {
     "message": "Vertaa ominaisuuksiaTämä toiminto poistaa alkuperäisen sähköpostin tekstiosan, kun edelleenlähetetään edelleen. Voidaan käyttää automaattisten sähköpostien tietojen käsittelyyn samalla kun alkuperäiset tiedot poistetaan."
   },
@@ -462,6 +498,9 @@
   "fileCSS.label": {
     "message": "Ulkoinen tyylisivu (css). Sisällytä suosikki CSS-säännöt jaettavaksi eri mallien välillä."
   },
+  "fileFunction.notExists": {
+    "message": "Toiminto {0} ei löytänyt tiedostoa tai pääsy siihen. Tarkista alla oleva polku:"
+  },
   "fileHTML.label": {
     "message": "HTML- tai pelkkä teksti -tiedosto. Käytetään UTF-8:a, jos valinnainen merkistökoodaus parametri jätetään huomoimatta."
   },
@@ -477,14 +516,35 @@
   "files.etc": {
     "message": "Tiedostot, kuvat ja liitteet"
   },
+  "fileTemplates": {
+    "message": "Mallitiedostot"
+  },
   "fileTemplates.add": {
     "message": "Add"
+  },
+  "fileTemplates.configureMenu": {
+    "message": "Määritä valikkokohteet…"
   },
   "fileTemplates.down": {
     "message": "Down"
   },
   "fileTemplates.edit": {
     "message": "Muokkaa"
+  },
+  "fileTemplates.error.charSet": {
+    "message": "Ongelmia HTML-mallin muuntamisessa merkistöstä [{1}] \nKäytä sen sijaan raa'ita merkkijonotietoja. \nJos tämä johtaa vääristyneisiin merkkeihin, yritä lisätä otsikko-osaan nimenomainen 'meta charset"
+  },
+  "fileTemplates.error.filePath": {
+    "message": "Tiedostomallia '{0}' ei voitu ladata polusta: \n{1} \nTiedosto on ehkä poistettu tai nimetty uudelleen."
+  },
+  "fileTemplates.error.nocontroller": {
+    "message": "Toimintoa $controllerName$ ei ole saatavilla tässä yhteydessä - et voi tehdä sitä valitulla sähköpostilla.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
   },
   "fileTemplates.file.open": {
     "message": "Select template file from disk"
@@ -501,7 +561,9 @@
   "fileTemplates.file.title.tooltip": {
     "message": "This will be displayed in the template selection menu."
   },
-  "fileTemplates.import": { "message": "Tuo valikko…" },
+  "fileTemplates.import": {
+    "message": "Tuo valikko…"
+  },
   "fileTemplates.import.tooltip": {
     "message": "Tuo mallipohjaerät JSON-tiedostosta (HTML-mallien lista, yleensä smartTemplates.json)."
   },
@@ -511,8 +573,39 @@
   "fileTemplates.menu": {
     "message": "Template Files"
   },
+  "fileTemplates.openFile": {
+    "message": "Avaa SmartTemplates-mallitiedosto…"
+  },
   "fileTemplates.remove": {
     "message": "Remove"
+  },
+  "fileTemplates.restrictionQuestion": {
+    "message": "Miksi jotkin tämän valikon mallit on poistettu käytöstä?"
+  },
+  "fileTemplates.restrictTemplateCats": {
+    "message": "Jos haluat määrittää yli $max_Cats$ -luokkaa, hanki SmartTemplates Pro -lisenssi…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "fileTemplates.restrictTemplates": {
+    "message": "Mallien määrä valikkoa kohden on rajoitettu. Voit määrittää enintään $max_free$ -valikkokohteita ilman lisenssiä ja $max_std$ -valikkokohteita SmartTemplates Standard -lisenssillä! SmartTemplates Pro on rajoittamaton.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "fileTemplates.selectFromMenu": {
+    "message": "Valitse malli avattavasta valikosta."
   },
   "fileTemplates.tooltips.fwd": {
     "message": "Luettelo ulkoisista mallipohjatiedostoista, jotka voidaan avata SmartTemplatesin 'Välitä' mallipohjavalikosta."
@@ -528,6 +621,18 @@
   },
   "fileTemplates.update": {
     "message": "Update"
+  },
+  "fileTemplates.wrnEnterPath": {
+    "message": "Valitse tiedosto, joka sisältää HTML / teksti ja SmartTemplates-muuttujasi. Tämä tiedosto käsitellään ja lisätään, kun uusi valikkokohta valitaan. Voit edelleen muokata mallipohjatiedostoa tarpeidesi mukaan uuden valikkokohdan luomisen jälkeen napsauttamalla Muokkaa."
+  },
+  "fileTemplates.wrnEnterTitle": {
+    "message": "Anna otsikko!"
+  },
+  "fileTemplates.wrnSelectUpdateItem": {
+    "message": "Sinun on valittava kohde luettelosta päivittääksesi!"
+  },
+  "fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Päivitä mallit"
   },
   "firstName.label": {
     "message": "Etunimi:"
@@ -546,9 +651,6 @@
   },
   "forceParagraphs.tip": {
     "message": "Varmista, että osoittimen aloitussijainti on kappaleessa. Suosittelemme Thunderbirdin kirjoitus -tilaa luodaksesi uusia kappaleita [[Enter]]-näppäintä painamalla."
-  },
-  "fpJsonTemplateList": {
-    "message": "mallivalikon määritykset"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML-malli"
@@ -570,6 +672,9 @@
   },
   "fpJsonFile": {
     "message": "JSON-tiedosto"
+  },
+  "fpJsonTemplateList": {
+    "message": "mallivalikon määritykset"
   },
   "fpStyle": {
     "message": "Tyylisivun sivu"
@@ -670,7 +775,9 @@
   "header.set.from": {
     "message": "asettaa 'from'-osoitteen. Tämä hyväksyy vain sähköpostiosoitteet henkilöllisyysluettelosta."
   },
-  "header.set.priority": { "message": "asettaa sähköpostin prioriteetin." },
+  "header.set.priority": {
+    "message": "asettaa sähköpostin prioriteetin."
+  },
   "header.set.priority.value": {
     "message": "Parametri sähköpostin prioriteetin asettamiseen. Mahdolliset arvot: "
   },
@@ -739,12 +846,6 @@
   "i.label": {
     "message": "Tunti, 12-tuntinen muoto (01-12)"
   },
-  "identity.chapterHead": {
-    "message": "Oma henkilöllisyys"
-  },
-  "identity.concept": {
-    "message": "Sähköpostitilillä voi olla useita lähettäjän henkilöllisyyksiä, joilla kullakin on oma nimi ja sähköpostiosoite. Tämä muuttuja käyttää kirjoitusikkunan Lähettäjä-kentässä valittua henkilöllisyyttä. Vastattaessa alkuperäinen valinta riippuu siitä, kuka vastaanotti alkuperäisen viestin. Voit vaihtaa valittua henkilöllisyyttä kirjoitusikkunan avaamisen jälkeen."
-  },
   "identity_ab": {
     "message": "Käytä avainsanaa 'addressbook' hakeaksesi lisätietoja henkilöllisyydestä osoitekirjasta."
   },
@@ -756,6 +857,12 @@
   },
   "identity_ab.phoneno": {
     "message": "Puhelinnumero"
+  },
+  "identity.chapterHead": {
+    "message": "Oma henkilöllisyys"
+  },
+  "identity.concept": {
+    "message": "Sähköpostitilillä voi olla useita lähettäjän henkilöllisyyksiä, joilla kullakin on oma nimi ja sähköpostiosoite. Tämä muuttuja käyttää kirjoitusikkunan Lähettäjä-kentässä valittua henkilöllisyyttä. Vastattaessa alkuperäinen valinta riippuu siitä, kuka vastaanotti alkuperäisen viestin. Voit vaihtaa valittua henkilöllisyyttä kirjoitusikkunan avaamisen jälkeen."
   },
   "im-ex_note1.label": {
     "message": "Asetuksia ja pohjia voi viedä ja tuoda tileittän."
@@ -906,8 +1013,14 @@
   "licenseValidation.expired": {
     "message": "Syöttämäsi lisenssiavain on vanhentunut. Paina alla olevaa painiketta uusiaksesi lisenssin."
   },
+  "licenseValidation.expiredDate": {
+    "message": "Lisenssi vanhentui:"
+  },
   "licenseValidation.failed": {
     "message": "Syöttämäsi lisenssiavain ei ole voimassa. Tarkista sähköpostisi FatSpringiltä saadaksesi ohjeistusta. Jos ongelmia edelleen ilmenee, ota yhteyttä minuun Tuki-välilehdeltä."
+  },
+  "licenseValidation.guessAddon": {
+    "message": "(Syötetty avain saattaa olla ohjelmalle {2})"
   },
   "licenseValidation.invalidAddon": {
     "message": "Syöttämäsi lisenssiavain saattaa olla toiselle lisäosalle. Lisenssiavaimet lisäosalle {0} alkavat: {1}."
@@ -951,11 +1064,74 @@
   "matchTextFromSubject": {
     "message": "Etsi RegEx-kaava aiheesta ja lisää se funktioihin."
   },
+  "menu.docs": {
+    "message": "Dokumentointi"
+  },
+  "menu.docs.premium": {
+    "message": "Premium-ominaisuudet…"
+  },
+  "menu.docs.variables": {
+    "message": "Muuttujat ja komennot…"
+  },
+  "menu.hideLabel": {
+    "message": "Piilota painikkeen teksti"
+  },
+  "menu.license": {
+    "message": "Tarkista lisenssin tila…"
+  },
+  "menu.license.tooltip": {
+    "message": "Napsauta tätä tarkistaaksesi $addonName$-lisenssin tilan.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menu.replyAll": {
+    "message": "Vastaa kaikille"
+  },
+  "menu.replyList": {
+    "message": "Vastaa listaan"
+  },
+  "menu.supportSite": {
+    "message": "Tukisivusto…"
+  },
   "menu.template_export.label": {
     "message": "Vie"
   },
   "menu.template_import.label": {
     "message": "Tuo"
+  },
+  "menu.template.default": {
+    "message": "Oletusmalli (tili)"
+  },
+  "menu.template.last": {
+    "message": "Viimeinen malli"
+  },
+  "menu.update.tooltip": {
+    "message": "Valitse tästä valikosta Uusimmat uutiset lukeaksesi $addonName$:n uutuudet.\n Tämä palauttaa painikkeen oletusulkoasunsa.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menuaccess.forward": {
+    "message": "I"
+  },
+  "menuaccess.reply": {
+    "message": "V"
+  },
+  "menuaccess.replyAll": {
+    "message": "K"
+  },
+  "menuaccess.replyList": {
+    "message": "L"
+  },
+  "menuaccess.write": {
+    "message": "U"
   },
   "message.features": {
     "message": "Vertaa ominaisuuksia…"
@@ -1040,6 +1216,98 @@
   },
   "no_button": {
     "message": "Ei"
+  },
+  "notification.bodyModified": {
+    "message": "Thunderbird sanoo, että olet jo kirjoittanut jotain, haluatko ladata mallin joka tapauksessa?"
+  },
+  "notification.bodyModified.accountTemplate": {
+    "message": "Tämä hylkää kirjoitetun sisällön ja lataa tilin mallin."
+  },
+  "notification.bodyModified.externalTemplate": {
+    "message": "Tämä hylkää kirjoitetun sisällön ja lataa nykyisen mallin [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "notification.bodyModified.instructions": {
+    "message": "Napsauta Peruuta säilyttääksesi sähköpostin sisällön ennallaan."
+  },
+  "notification.donate": {
+    "message": "Lahjoita"
+  },
+  "notification.dontShowAgain": {
+    "message": "Älä näytä tätä viestiä enää."
+  },
+  "notification.editedChangeChallenge": {
+    "message": "Kaikki tekstit, jotka olet kirjoittanut säveltäjän avaamisen jälkeen manuaalisesti, poistetaan ilman Kumoa-painiketta. Jatka joka tapauksessa?"
+  },
+  "notification.editedChangeWarning": {
+    "message": "Olet jo kirjoittanut tekstiä ja haluat vaihtaa malliin {0}"
+  },
+  "notification.license.text": {
+    "message": "SmartTemplates toimii normaalisti. Lisenssi poistaa tämän muistutuksen — klikkaa alla lisätietoja varten."
+  },
+  "notification.licensing": {
+    "message": "Lisätietoja lisensoinnista"
+  },
+  "notification.parsing": {
+    "message": "Analysoin muuttujia:"
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "Laajenna verkkotunnuksen lisenssiä"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "Laajenna lisenssi"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "Tämä pidentää nykyistä lisenssipäivää yhdellä vuodella. Se on tyypillisesti halvempaa kuin uusi lisenssi."
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "Osta lisenssi"
+  },
+  "notification.premium.btn.hotKey": {
+    "message": "l"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "Uusi verkkotunnuksen lisenssi"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "Uusi lisenssi"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Päivittää Pro"
+  },
+  "notification.premium.btn.upgrade.hotKey": {
+    "message": "P"
+  },
+  "notification.premium.sendByFilter": {
+    "message": "Voimassa olevalla SmartTemplates Pro -lisenssillä sähköposti lähetetään nyt automaattisesti."
+  },
+  "notification.premium.text": {
+    "message": "{1} on Premium-toiminto. Se toimii edelleen, mutta päivittämällä SmartTemplates Pro -lisenssiin poistat nämä ilmoitukset ja tuet lisäosaa."
+  },
+  "notification.premium.text.plural": {
+    "message": "{1} ovat Premium-toimintoja. Ne toimivat edelleen, mutta päivittämällä SmartTemplates Pro -lisenssiin poistat nämä ilmoitukset ja tuet lisäosaa."
+  },
+  "notification.spellcheck.error": {
+    "message": "Oikeinkirjoituksen tarkistuskieltä ei voi vaihtaa. Oletko asentanut oikean sanakirjan?"
+  },
+  "notification.spellcheck.noDictionary": {
+    "message": "Sanakirjoja ei ole asennettu."
+  },
+  "notification.spellcheck.notFound": {
+    "message": "Sanakirjaa {0} ei löytynyt."
+  },
+  "notification.standard.text": {
+    "message": "{1} on lisensoitu toiminto. Se toimii edelleen, mutta hankkimalla SmartTemplates-lisenssin poistat nämä ilmoitukset ja tuet lisäosaa."
+  },
+  "notification.standard.text.plural": {
+    "message": "{1} ovat lisensoituja toimintoja. Ne toimivat edelleen, mutta hankkimalla SmartTemplates-lisenssin poistat nämä ilmoitukset ja tuet lisäosaa."
+  },
+  "notification.usedLastTemplate": {
+    "message": "Viimeksi käytettyä ulkoista mallia käytetään uudelleen: {template}{br}💾 järjestelmän asetusten mukaisesti:"
   },
   "ongoing-work": {
     "message": "Pysyäksemme $addonName$ yhteensopivana Thunderbirdin kuukausittaisiin julkaisuihin, meidän on jatkuvasti tarkistettava virheitä ja ladattava mukautettuja versioita. Autathan meitä tässä, kun olet kokeillut toimintoa ja olet varma, että se parantaa myös tuottavuuttasi!",
@@ -1141,6 +1409,9 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Määritä ulkoinen editori HTML- ja CSS-mallien muokkaamiseen. Suosittelen syntaksin korostusta tukevaa pelkkään tekstiin perustuvaa HTML-editoria, kuten Notepad++ tai Visual Studio Code."
   },
+  "prompt.switchDomainLicense": {
+    "message": "Vaihda toimialuelisenssiin (domain)?"
+  },
   "prompt.text": {
     "message": "Syötä teksti lisättäväksi tai asettavaksi"
   },
@@ -1155,6 +1426,30 @@
   },
   "quote_changers.desc": {
     "message": "Ensisijaiset muuttujat tekstien / tunnisteiden poistamiseksi lainatuista osista ja tilan säästämiseksi."
+  },
+  "quotedTags.scope": {
+    "message": "Komennoissa `%deleteQuotedTags()%` ja `%replaceQuotedTags()%` voi käyttää lainausmerkitöntä hakualuetta numeerisen lainaustason sijaan:"
+  },
+  "quotedTags.scope.all": {
+    "message": "Hae sekä head-osiosta että viestin rungosta."
+  },
+  "quotedTags.scope.body": {
+    "message": "Hae koko viestin rungosta, myös lainaamattomasta sisällöstä."
+  },
+  "quotedTags.scope.head": {
+    "message": "Hae vain viestin head-osiosta."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Jos lainaustaso tai hakualue jätetään pois, oletuksena on lainaustaso 1. Numeroarvo 0 kattaa kaikki rungon lainaustasot, mutta viestin rungossa edelleen lähetettäessä haku rajoittuu edelleenlähetettyyn sisältöön; nimenomainen body hakee koko rungosta."
+  },
+  "quotedTags.styles.all": {
+    "message": "Poista tyylilohkot sekä head-osiosta että rungosta, jotta muotoilulle saadaan puhdas lähtökohta."
+  },
+  "quotedTags.styles.body": {
+    "message": "Poista tyylilohkot rungosta, myös alkuperäisestä viestistä periytyvät tyylit, jotka voivat vaikuttaa vastauksesi kappaleväleihin. Säilytä viestin head-osion tyylit."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Nämä esimerkit poistavat style-elementit, eivät yksittäisten elementtien sisäisiä style-attribuutteja."
   },
   "quoteHeader.replace.tip": {
     "message": "Poistaa perusotsakeen käytöstä. Muodosta lainausotsake tekstilaatikossa."
@@ -1261,6 +1556,9 @@
   "settings.label": {
     "message": "Asetukset ja pohjat"
   },
+  "settings.tooltip": {
+    "message": "SmartTemplates - Asetukset"
+  },
   "shortdate.label": {
     "message": "Päiväys / Aika lyhyt muotoilu (esim. 01.01.2000 1:23:45)"
   },
@@ -1268,50 +1566,23 @@
     "message": "Muutokset + uutiset (aloitusnäyttö)."
   },
   "sig.concept": {
-    "message": "Thunderbird määrittää allekirjoituksen sijainnin ja sisällön kohdassa **Tilien asetukset » Kirjoittaminen ja osoitteet**. Voit ohittaa sijainnin käyttämällä muuttujaa `%sig%`.",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "Thunderbird määrittää allekirjoituksen sijainnin ja sisällön kohdassa **Tilien asetukset » Kirjoittaminen ja osoitteet**. Voit ohittaa sijainnin käyttämällä muuttujaa `%sig%`."
   },
   "sig.label": {
     "message": "Allekirjoitus (TB:n tilitiedoista)"
   },
-  "sig2.label": {
-    "message": "Allekirjoitus (TB:n tilitiedoista ilman '--')"
-  },
   "sig.none.label": {
     "message": "Poistaa kaikki allekirjoitukset. Ohittaa tilin asetukset."
+  },
+  "sig2.label": {
+    "message": "Allekirjoitus (TB:n tilitiedoista ilman '--')"
   },
   "silentUpdates": {
     "message": "Älä avaa versiohistoriaa sisältävää välilehteä"
   },
   "silentUpdates.tip": {
     "message": "Älä avaa muutoslokea SmartTemplates: n päivityksen jälkeen."
-  },
-  "smarttemplate4_button": {
-    "message": "Muokkaa pohjia / lainauksen otsakkeita…"
-  },
-  "smartTemplate4.changeTemplate.label": {
-    "message": "Muuta mallia…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Valitsee toisen mallin - käytä ennen muokkaamista postilaatikossa!"
-  },
-  "smartTemplate4.cleandeferred.label": {
-    "message": "Siivota!"
-  },
-  "smartTemplate4.cleandeferred.tooltip": {
-    "message": "Siivoa kaikki SmartTemplate-muuttujat"
-  },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Korvaa muuttuja sisällöllä"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "Poista SmartTemplates-muuttuja"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "Päivitä SmartTemplates -sisältö"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "SmartTemplates - Asetukset"
   },
   "SmartTemplateMainButton.expired": {
     "message": "Lisenssi vanhentunut!"
@@ -1331,63 +1602,69 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Mitä uutta…"
   },
-  "snippets.download": {
-    "message": "Lataa katkelmia…"
-  },
-  "snippets.browser.localTitle": {
-    "message": "Valikon nimi"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "Lisää pikavalikkoon"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "Valitse kohdekansio"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "Valitse oma valikkonimi esimerkiksi omalla kielelläsi. Muutokset säilyvät tämän paneelin ollessa auki ja niitä käytetään katkelmaa lisättäessä."
-  },
-  "snippets.browser.preview": {
-    "message": "Katkelman esikatselu"
-  },
-  "snippets.browser.noPreview": {
-    "message": "Esikatselu ei ole käytettävissä"
+  "snippets.browser.add": {
+    "message": "Lisää katkelmat"
   },
   "snippets.browser.close": {
     "message": "Sulje"
   },
-  "snippets.browser.add": {
-    "message": "Lisää katkelmat"
-  },
-  "snippets.browser.loading": {
-    "message": "Ladataan katkelmia…"
-  },
-  "snippets.browser.importing": {
-    "message": "Lisätään katkelmia…"
-  },
-  "snippets.browser.error": {
-    "message": "Katkelmia ei voitu lisätä tai ladata."
+  "snippets.browser.contextMenu": {
+    "message": "Lisää pikavalikkoon"
   },
   "snippets.browser.empty": {
     "message": "Katkelmia ei ole saatavilla."
   },
+  "snippets.browser.error": {
+    "message": "Katkelmia ei voitu lisätä tai ladata."
+  },
+  "snippets.browser.importing": {
+    "message": "Lisätään katkelmia…"
+  },
+  "snippets.browser.loading": {
+    "message": "Ladataan katkelmia…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Valikon nimi"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Valitse oma valikkonimi esimerkiksi omalla kielelläsi. Muutokset säilyvät tämän paneelin ollessa auki ja niitä käytetään katkelmaa lisättäessä."
+  },
+  "snippets.browser.noPreview": {
+    "message": "Esikatselu ei ole käytettävissä"
+  },
   "snippets.browser.notConfigured": {
     "message": "Katkelmavarasto ei ole vielä käytettävissä."
   },
+  "snippets.browser.preview": {
+    "message": "Katkelman esikatselu"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Valitse kohdekansio"
+  },
   "snippets.contextMenu": {
     "message": "Näytä pikavalikossa"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Lisää viesti-ikkunan pikavalikkoon"
+  },
+  "snippets.download": {
+    "message": "Lataa katkelmia…"
   },
   "snippets.head": {
     "message": "Älykkäät katkelmat"
   },
   "snippets.label": {
-    "message": "Kaikki katkelmat voi lisätä painikkeella $SnippetButton$",
     "description": "SnippetButton is the localized insertSnippet.button label.",
+    "message": "Kaikki katkelmat voi lisätä painikkeella $SnippetButton$",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
         "example": "Insert Snippet"
       }
     }
+  },
+  "snippets.settingsLegend": {
+    "message": "Älykkäät katkelmat (Viestin kirjoitus)"
   },
   "spec_form.cap": {
     "message": "Osoitekentän kytkimet"
@@ -1463,258 +1740,6 @@
   },
   "splashScreen.tip": {
     "message": "Piilota tiedot-valintaikkuna, joka näyttää uudet ominaisuudet ja virhekorjaukset päivitettäessä."
-  },
-  "st.confirmVersionLink": {
-    "message": "Näytetäänkö SmartTemplates:n muutosloki?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "Toiminto {0} ei löytänyt tiedostoa tai pääsy siihen. Tarkista alla oleva polku:"
-  },
-  "st.fileTemplates": {
-    "message": "Mallitiedostot"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "Määritä valikkokohteet…"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "Ongelmia HTML-mallin muuntamisessa merkistöstä [{1}] \nKäytä sen sijaan raa'ita merkkijonotietoja. \nJos tämä johtaa vääristyneisiin merkkeihin, yritä lisätä otsikko-osaan nimenomainen 'meta charset"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "Tiedostomallia '{0}' ei voitu ladata polusta: \n{1} \nTiedosto on ehkä poistettu tai nimetty uudelleen."
-  },
-  "st.fileTemplates.error.nocontroller": {
-    "message": "Toimintoa $controllerName$ ei ole saatavilla tässä yhteydessä - et voi tehdä sitä valitulla sähköpostilla.",
-    "placeholders": {
-      "controllerName": {
-        "content": "$1",
-        "example": "cmd_replyList"
-      }
-    }
-  },
-  "st.fileTemplates.openFile": {
-    "message": "Avaa SmartTemplates-mallitiedosto…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "Miksi jotkin tämän valikon mallit on poistettu käytöstä?"
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "Jos haluat määrittää yli $max_Cats$ -luokkaa, hanki SmartTemplates Pro -lisenssi…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplates": {
-    "message": "Mallien määrä valikkoa kohden on rajoitettu. Voit määrittää enintään $max_free$ -valikkokohteita ilman lisenssiä ja $max_std$ -valikkokohteita SmartTemplates Standard -lisenssillä! SmartTemplates Pro on rajoittamaton.",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.selectFromMenu": {
-    "message": "Valitse malli avattavasta valikosta."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Valitse tiedosto, joka sisältää HTML / teksti ja SmartTemplates-muuttujasi. Tämä tiedosto käsitellään ja lisätään, kun uusi valikkokohta valitaan. Voit edelleen muokata mallipohjatiedostoa tarpeidesi mukaan uuden valikkokohdan luomisen jälkeen napsauttamalla Muokkaa."
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Anna otsikko!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "Sinun on valittava kohde luettelosta päivittääksesi!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Päivitä mallit"
-  },
-  "st.licenseValidation.expired": {
-    "message": "Lisenssi vanhentui:"
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "(Syötetty avain saattaa olla ohjelmalle {2})"
-  },
-  "st.menu.docs": {
-    "message": "Dokumentointi"
-  },
-  "st.menu.docs.premium": {
-    "message": "Premium-ominaisuudet…"
-  },
-  "st.menu.docs.variables": {
-    "message": "Muuttujat ja komennot…"
-  },
-  "st.menu.hideLabel": {
-    "message": "Piilota painikkeen teksti"
-  },
-  "st.menu.license": {
-    "message": "Tarkista lisenssin tila…"
-  },
-  "st.menu.license.tooltip": {
-    "message": "Napsauta tätä tarkistaaksesi $addonName$-lisenssin tilan.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menu.replyAll": {
-    "message": "Vastaa kaikille"
-  },
-  "st.menu.replyList": {
-    "message": "Vastaa listaan"
-  },
-  "st.menu.supportSite": {
-    "message": "Tukisivusto…"
-  },
-  "st.menu.template.default": {
-    "message": "Oletusmalli (tili)"
-  },
-  "st.menu.template.last": {
-    "message": "Viimeinen malli"
-  },
-  "st.menu.update.tooltip": {
-    "message": "Valitse tästä valikosta Uusimmat uutiset lukeaksesi $addonName$:n uutuudet.\n Tämä palauttaa painikkeen oletusulkoasunsa.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menuaccess.forward": {
-    "message": "I"
-  },
-  "st.menuaccess.reply": {
-    "message": "V"
-  },
-  "st.menuaccess.replyAll": {
-    "message": "K"
-  },
-  "st.menuaccess.replyList": {
-    "message": "L"
-  },
-  "st.menuaccess.write": {
-    "message": "U"
-  },
-  "st.notification.bodyModified": {
-    "message": "Thunderbird sanoo, että olet jo kirjoittanut jotain, haluatko ladata mallin joka tapauksessa?"
-  },
-  "st.notification.bodyModified.accountTemplate": {
-    "message": "Tämä hylkää kirjoitetun sisällön ja lataa tilin mallin."
-  },
-  "st.notification.bodyModified.externalTemplate": {
-    "message": "Tämä hylkää kirjoitetun sisällön ja lataa nykyisen mallin [$template$].",
-    "placeholders": {
-      "template": {
-        "content": "$1"
-      }
-    }
-  },
-  "st.notification.bodyModified.instructions": {
-    "message": "Napsauta Peruuta säilyttääksesi sähköpostin sisällön ennallaan."
-  },
-  "st.notification.donate": {
-    "message": "Lahjoita"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "Älä näytä tätä viestiä enää."
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "Kaikki tekstit, jotka olet kirjoittanut säveltäjän avaamisen jälkeen manuaalisesti, poistetaan ilman Kumoa-painiketta. Jatka joka tapauksessa?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "Olet jo kirjoittanut tekstiä ja haluat vaihtaa malliin {0}"
-  },
-  "st.notification.license.text": {
-    "message": "SmartTemplates toimii normaalisti. Lisenssi poistaa tämän muistutuksen — klikkaa alla lisätietoja varten."
-  },
-  "st.notification.licensing": {
-    "message": "Lisätietoja lisensoinnista"
-  },
-  "st.notification.parsing": {
-    "message": "Analysoin muuttujia:"
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "Laajenna verkkotunnuksen lisenssiä"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "Laajenna lisenssi"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "Tämä pidentää nykyistä lisenssipäivää yhdellä vuodella. Se on tyypillisesti halvempaa kuin uusi lisenssi."
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "Osta lisenssi"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "l"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "Uusi verkkotunnuksen lisenssi"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "Uusi lisenssi"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "Päivittää Pro"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "P"
-  },
-  "st.notification.premium.sendByFilter": {
-    "message": "Voimassa olevalla SmartTemplates Pro -lisenssillä sähköposti lähetetään nyt automaattisesti."
-  },
-  "st.notification.premium.text": {
-    "message": "{1} on Premium-toiminto. Se toimii edelleen, mutta päivittämällä SmartTemplates Pro -lisenssiin poistat nämä ilmoitukset ja tuet lisäosaa."
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1} ovat Premium-toimintoja. Ne toimivat edelleen, mutta päivittämällä SmartTemplates Pro -lisenssiin poistat nämä ilmoitukset ja tuet lisäosaa."
-  },
-  "st.notification.spellcheck.error": {
-    "message": "Oikeinkirjoituksen tarkistuskieltä ei voi vaihtaa. Oletko asentanut oikean sanakirjan?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "Sanakirjoja ei ole asennettu."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "Sanakirjaa {0} ei löytynyt."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} on lisensoitu toiminto. Se toimii edelleen, mutta hankkimalla SmartTemplates-lisenssin poistat nämä ilmoitukset ja tuet lisäosaa."
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} ovat lisensoituja toimintoja. Ne toimivat edelleen, mutta hankkimalla SmartTemplates-lisenssin poistat nämä ilmoitukset ja tuet lisäosaa."
-  },
-  "st.notification.usedLastTemplate": {
-    "message": "Viimeksi käytettyä ulkoista mallia käytetään uudelleen: {template}{br}💾 järjestelmän asetusten mukaisesti:"
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "Vaihda toimialuelisenssiin (domain)?"
-  },
-  "st.trialDays": {
-    "message": "Sinulla on {0} kokeilupäiviä jäljellä."
-  },
-  "st.trialExpiry": {
-    "message": "Koeaikausi päättyi {0} päivää sitten."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "Hyvä SmartTemplates:n käyttäjä, voimme iloksesi ilmoittaa, että tästä versiosta lähtien SmartTemplates tukee myös aaltosulkeiden {} ja <tyyli>-tägien käyttöä. Tämän ansiosta nyt on mahdollista käyttää edistyneitä CSS-tyylejä pohjissa."
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "Tästä lähtien tietyt sulkeissa olevat lausekkeet on muutettu: Aaltosulkujen sijaan {%cc(name)%} on käytettävä tuplahakasulkeita [[%cc(name)%]] - lisätietoa ohjeessa."
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates muuntaa nykyiset pohjasi, jotta niiden käyttöä voidaan jatkaa uudessa versiossa. Paina [OK] jatkaaksesi."
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates päivitettiin onnistuneesti versioon {1}!"
   },
   "standardformat.config": {
     "message": "Oletusmuoto…"
@@ -1994,8 +2019,26 @@
   "translatorNickname.label": {
     "message": "Akilles (BabelZilla)"
   },
+  "trialDays": {
+    "message": "Sinulla on {0} kokeilupäiviä jäljellä."
+  },
+  "trialExpiry": {
+    "message": "Koeaikausi päättyi {0} päivää sitten."
+  },
   "tzname.label": {
     "message": "GMT, PST, EST, …"
+  },
+  "updateMessageNewBrackets1": {
+    "message": "Hyvä SmartTemplates:n käyttäjä, voimme iloksesi ilmoittaa, että tästä versiosta lähtien SmartTemplates tukee myös aaltosulkeiden {} ja <tyyli>-tägien käyttöä. Tämän ansiosta nyt on mahdollista käyttää edistyneitä CSS-tyylejä pohjissa."
+  },
+  "updateMessageNewBrackets2": {
+    "message": "Tästä lähtien tietyt sulkeissa olevat lausekkeet on muutettu: Aaltosulkujen sijaan {%cc(name)%} on käytettävä tuplahakasulkeita [[%cc(name)%]] - lisätietoa ohjeessa."
+  },
+  "updateMessageNewBrackets3": {
+    "message": "SmartTemplates muuntaa nykyiset pohjasi, jotta niiden käyttöä voidaan jatkaa uudessa versiossa. Paina [OK] jatkaaksesi."
+  },
+  "updateMessageVersion": {
+    "message": "SmartTemplates päivitettiin onnistuneesti versioon {1}!"
   },
   "updates.changeLog": {
     "message": "Julkaisutiedot (englanniksi)"
@@ -2058,7 +2101,10 @@
   "whats-new-maintenance": {
     "message": "Huoltopäivitys $ver$. Tämä yksittäinen korjaus lisättiin edellisestä versiosta lähtien.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "whitespace_note": {
@@ -2074,11 +2120,11 @@
       }
     }
   },
-  "xsent_long.cap": {
-    "message": "Mukautetun päivämäärän ja ajan esimerkki"
-  },
   "xsent_long_result.label": {
     "message": "Lopputulos: tiistai, 20.06.2011 4:11 +0300"
+  },
+  "xsent_long.cap": {
+    "message": "Mukautetun päivämäärän ja ajan esimerkki"
   },
   "xsent_long.label": {
     "message": "%X:=sent% %A%na, %d%. %B%, %Y% klo %k%:%M%"
@@ -2086,14 +2132,14 @@
   "xsent_note.label": {
     "message": "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä %X:=sent% kanssa, käytetään alkuperäisen viestin muotoilua."
   },
-  "xsent_short.cap": {
-    "message": "Paikallisen päivämäärän ja ajan esimerkki"
-  },
   "xsent_short_note.label": {
     "message": "Lisäksi voit käyttää kummasakin tavassa seuraavia muuttujia:"
   },
   "xsent_short_result.label": {
     "message": "Lopputulos: 20. joulukuuta 2011 4:11:34"
+  },
+  "xsent_short.cap": {
+    "message": "Paikallisen päivämäärän ja ajan esimerkki"
   },
   "y.up.label": {
     "message": "Vuosi (1970)"
@@ -2115,35 +2161,5 @@
   },
   "yes_button": {
     "message": "Kyllä"
-  },
-  "quotedTags.scope": {
-    "message": "Komennoissa `%deleteQuotedTags()%` ja `%replaceQuotedTags()%` voi käyttää lainausmerkitöntä hakualuetta numeerisen lainaustason sijaan:"
-  },
-  "quotedTags.scope.head": {
-    "message": "Hae vain viestin head-osiosta."
-  },
-  "quotedTags.scope.body": {
-    "message": "Hae koko viestin rungosta, myös lainaamattomasta sisällöstä."
-  },
-  "quotedTags.scope.all": {
-    "message": "Hae sekä head-osiosta että viestin rungosta."
-  },
-  "quotedTags.scope.numeric": {
-    "message": "Jos lainaustaso tai hakualue jätetään pois, oletuksena on lainaustaso 1. Numeroarvo 0 kattaa kaikki rungon lainaustasot, mutta viestin rungossa edelleen lähetettäessä haku rajoittuu edelleenlähetettyyn sisältöön; nimenomainen body hakee koko rungosta."
-  },
-  "quotedTags.styles.body": {
-    "message": "Poista tyylilohkot rungosta, myös alkuperäisestä viestistä periytyvät tyylit, jotka voivat vaikuttaa vastauksesi kappaleväleihin. Säilytä viestin head-osion tyylit."
-  },
-  "quotedTags.styles.all": {
-    "message": "Poista tyylilohkot sekä head-osiosta että rungosta, jotta muotoilulle saadaan puhdas lähtökohta."
-  },
-  "quotedTags.styles.inline": {
-    "message": "Nämä esimerkit poistavat style-elementit, eivät yksittäisten elementtien sisäisiä style-attribuutteja."
-  },
-  "snippets.contextMenu.legend": {
-    "message": "Lisää viesti-ikkunan pikavalikkoon"
-  },
-  "snippets.settingsLegend": {
-    "message": "Älykkäät katkelmat (Viestin kirjoitus)"
   }
 }

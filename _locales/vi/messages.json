@@ -1,5 +1,6 @@
 {
   "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
     "message": "SPLASH"
   },
   "active-version-info": {
@@ -125,21 +126,23 @@
   "message.licenseScreen": {
     "message": "Hiển thị Tùy chọn Giấy phép…"
   },
-  "message.linkInTab": { "message": "(Liên kết đã mở trong Tab)" },
+  "message.linkInTab": {
+    "message": "(Liên kết đã mở trong Tab)"
+  },
+  "mozillas-basic-platform": {
+    "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
+  },
   "newsHead": {
     "message": "Tin Mới Nhất"
-  },
-  "newsSection.intro": {
-    "message": "{P}Thunderbird đang {emph}chuyển sang chu kỳ phát hành hai tuần{/emph}, đồng nghĩa với việc tiện ích được cập nhật thường xuyên hơn. Kênh Release có thể gặp lỗi nhiều hơn và cần được sửa kịp thời.{/P}"
   },
   "newsSection.important": {
     "message": "{P}Quan trọng với người dùng Release ({emph}155 trở lên{/emph}): chu kỳ mới làm tăng nguy cơ lỗi ngoài dự kiến. Dù tôi thường xuyên thử nghiệm {+extensionName} với các bản dựng hằng ngày của Thunderbird, việc sửa lỗi phụ thuộc vào {b}báo cáo sớm{/b}. Hãy theo dõi {a href='https://github.com/RealRaven2000/SmartTemplates/issues'}trình theo dõi lỗi{/a} và báo cáo hồi quy kịp thời.{/P}"
   },
+  "newsSection.intro": {
+    "message": "{P}Thunderbird đang {emph}chuyển sang chu kỳ phát hành hai tuần{/emph}, đồng nghĩa với việc tiện ích được cập nhật thường xuyên hơn. Kênh Release có thể gặp lỗi nhiều hơn và cần được sửa kịp thời.{/P}"
+  },
   "newsSection.license": {
     "message": "Do tất cả công việc trên SmartTemplates và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ doanh số bán giấy phép, vui lòng cân nhắc mua một giấy phép hoặc gia hạn giấy phép hiện tại của bạn."
-  },
-  "mozillas-basic-platform": {
-    "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
   },
   "ongoing-work": {
     "message": "Để giữ $addonName$ đồng bộ với các phiên bản phát hành hàng tháng của Thunderbird, chúng tôi phải liên tục kiểm tra lỗi và tải lên các phiên bản điều chỉnh. Vui lòng giúp chúng tôi khi bạn đã thử nghiệm tính năng và chắc chắn rằng nó cải thiện năng suất của bạn!",
@@ -149,11 +152,47 @@
       }
     }
   },
+  "prompt.fileTemplates.editor.pathError": {
+    "message": "Không tìm thấy trình soạn thảo tại đây: $filePath$ — bạn có muốn đặt đường dẫn đến trình soạn thảo HTML bên ngoài ngay bây giờ không?",
+    "placeholders": {
+      "filePath": {
+        "content": "$1",
+        "example": "C:\\notepad++"
+      }
+    }
+  },
+  "prompt.fileTemplates.editor.setup": {
+    "message": "Thiết lập trình soạn thảo bên ngoài để chỉnh sửa các mẫu HTML và CSS của bạn. Tôi khuyên dùng trình soạn thảo HTML dạng văn bản thuần túy có tô sáng cú pháp, như Notepad++ hoặc Visual Studio Code."
+  },
   "purchase-a-license": {
     "message": "Mua giấy phép."
   },
   "purchase-heading": {
     "message": "Hỗ trợ qua giấy phép"
+  },
+  "quotedTags.scope": {
+    "message": "Với `%deleteQuotedTags()%` và `%replaceQuotedTags()%`, có thể dùng phạm vi không đặt trong dấu ngoặc kép thay cho cấp trích dẫn dạng số:"
+  },
+  "quotedTags.scope.all": {
+    "message": "Tìm trong cả phần head và nội dung thư."
+  },
+  "quotedTags.scope.body": {
+    "message": "Tìm trong toàn bộ nội dung thư, bao gồm cả phần không được trích dẫn."
+  },
+  "quotedTags.scope.head": {
+    "message": "Chỉ tìm trong phần head của thư."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Nếu bỏ qua cấp trích dẫn hoặc phạm vi, cấp trích dẫn 1 sẽ được dùng. Giá trị số 0 bao gồm mọi cấp trích dẫn trong nội dung thư, nhưng khi chuyển tiếp ngay trong nội dung thư thì chỉ áp dụng cho phần được chuyển tiếp; chỉ định rõ body sẽ tìm trong toàn bộ nội dung thư."
+  },
+  "quotedTags.styles.all": {
+    "message": "Xóa các khối kiểu khỏi cả phần head và nội dung thư để có nền định dạng sạch."
+  },
+  "quotedTags.styles.body": {
+    "message": "Xóa các khối kiểu khỏi nội dung thư, bao gồm các khối kế thừa từ thư gốc có thể ảnh hưởng đến khoảng cách giữa các đoạn trong thư trả lời. Giữ lại các kiểu trong phần head của thư."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Các ví dụ này xóa phần tử style, không xóa thuộc tính style được đặt trực tiếp trên từng phần tử."
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "Thay thế chữ ký khi đổi danh tính (giữ nguyên văn bản đã nhập)"
@@ -165,8 +204,11 @@
     "message": "Gia hạn giấy phép của bạn."
   },
   "sig.concept": {
-    "message": "Thunderbird quản lý vị trí và nội dung chữ ký qua **Cài đặt tài khoản » Soạn thư & Địa chỉ**. Bạn có thể ghi đè vị trí bằng biến `%sig%`.",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "Thunderbird quản lý vị trí và nội dung chữ ký qua **Cài đặt tài khoản » Soạn thư & Địa chỉ**. Bạn có thể ghi đè vị trí bằng biến `%sig%`."
+  },
+  "sig.none.label": {
+    "message": "Xóa mọi chữ ký. Ghi đè cài đặt tài khoản."
   },
   "SmartTemplateMainButton.expired": {
     "message": "Giấy phép đã hết hạn!"
@@ -186,54 +228,60 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Có gì mới…"
   },
-  "snippets.download": {
-    "message": "Tải đoạn mã…"
-  },
-  "snippets.browser.localTitle": {
-    "message": "Nhãn menu"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "Thêm vào menu ngữ cảnh"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "Chọn thư mục đích"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "Chọn nhãn menu của riêng bạn, chẳng hạn bằng ngôn ngữ của bạn. Các chỉnh sửa được giữ lại khi bảng này còn mở và được sử dụng khi thêm đoạn mã."
-  },
-  "snippets.browser.preview": {
-    "message": "Xem trước đoạn mã"
-  },
-  "snippets.browser.noPreview": {
-    "message": "Không có bản xem trước"
+  "snippets.browser.add": {
+    "message": "Thêm đoạn mã"
   },
   "snippets.browser.close": {
     "message": "Đóng"
   },
-  "snippets.browser.add": {
-    "message": "Thêm đoạn mã"
-  },
-  "snippets.browser.loading": {
-    "message": "Đang tải đoạn mã…"
-  },
-  "snippets.browser.importing": {
-    "message": "Đang thêm đoạn mã…"
-  },
-  "snippets.browser.error": {
-    "message": "Không thể thêm hoặc tải đoạn mã."
+  "snippets.browser.contextMenu": {
+    "message": "Thêm vào menu ngữ cảnh"
   },
   "snippets.browser.empty": {
     "message": "Không có đoạn mã nào."
   },
+  "snippets.browser.error": {
+    "message": "Không thể thêm hoặc tải đoạn mã."
+  },
+  "snippets.browser.importing": {
+    "message": "Đang thêm đoạn mã…"
+  },
+  "snippets.browser.loading": {
+    "message": "Đang tải đoạn mã…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Nhãn menu"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Chọn nhãn menu của riêng bạn, chẳng hạn bằng ngôn ngữ của bạn. Các chỉnh sửa được giữ lại khi bảng này còn mở và được sử dụng khi thêm đoạn mã."
+  },
+  "snippets.browser.noPreview": {
+    "message": "Không có bản xem trước"
+  },
   "snippets.browser.notConfigured": {
     "message": "Kho đoạn mã chưa khả dụng."
+  },
+  "snippets.browser.preview": {
+    "message": "Xem trước đoạn mã"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Chọn thư mục đích"
+  },
+  "snippets.contextMenu": {
+    "message": "Hiển thị trong menu ngữ cảnh"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Thêm vào menu chuột phải của cửa sổ soạn thư"
+  },
+  "snippets.download": {
+    "message": "Tải đoạn mã…"
   },
   "snippets.head": {
     "message": "Đoạn mã thông minh"
   },
   "snippets.label": {
-    "message": "Có thể chèn tất cả đoạn mã bằng nút $SnippetButton$",
     "description": "SnippetButton is the localized insertSnippet.button label.",
+    "message": "Có thể chèn tất cả đoạn mã bằng nút $SnippetButton$",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
@@ -241,19 +289,19 @@
       }
     }
   },
-  "snippets.contextMenu": {
-    "message": "Hiển thị trong menu ngữ cảnh"
+  "snippets.settingsLegend": {
+    "message": "Đoạn mã thông minh (Soạn thư)"
   },
   "special-offer-content": {
     "message": "Nâng cấp các tính năng của bạn và tiết kiệm {bold} $reduction$ {/bold} bằng cách mua giấy phép {linkStartPro}SmartTemplates Pro{linkEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {bold}$salesEnd${/bold}. Hoặc chọn các chức năng tiêu chuẩn với {linkStart}Giấy phép Tiêu chuẩn{linkEnd} mới.",
     "placeholders": {
-      "salesEnd": {
-        "content": "$1",
-        "example": "August 22"
-      },
       "reduction": {
         "content": "$2",
         "example": "30%"
+      },
+      "salesEnd": {
+        "content": "$1",
+        "example": "August 22"
       }
     }
   },
@@ -278,26 +326,26 @@
   "special-offer-renew": {
     "message": "Gia hạn Giấy phép của bạn ngay bây giờ và tiết kiệm {bold}$reduction${/bold}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {bold} $salesEnd$ {/bold}.",
     "placeholders": {
-      "salesEnd": {
-        "content": "$1",
-        "example": "September 11"
-      },
       "reduction": {
         "content": "$2",
         "example": "50%"
+      },
+      "salesEnd": {
+        "content": "$1",
+        "example": "September 11"
       }
     }
   },
   "special-offer-upgrade": {
     "message": "Nâng cấp ngay từ SmartTemplates Standard lên Pro và tiết kiệm {bold}$reduction${/bold}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {bold}$salesEnd${/bold}.",
     "placeholders": {
-      "salesEnd": {
-        "content": "$1",
-        "example": "September 11"
-      },
       "reduction": {
         "content": "$2",
         "example": "50%"
+      },
+      "salesEnd": {
+        "content": "$1",
+        "example": "September 11"
       }
     }
   },
@@ -327,6 +375,9 @@
   },
   "template.category.tooltip": {
     "message": "Tạo menu con để nhóm các mẫu"
+  },
+  "templateEditor.path": {
+    "message": "Đường dẫn đến trình soạn thảo HTML cho các mẫu bên ngoài."
   },
   "thanks-for-installing-intro": {
     "message": "Cảm ơn bạn đã cài đặt $addonName$.",
@@ -399,58 +450,10 @@
       }
     }
   },
-  "prompt.fileTemplates.editor.pathError": {
-    "message": "Không tìm thấy trình soạn thảo tại đây: $filePath$ — bạn có muốn đặt đường dẫn đến trình soạn thảo HTML bên ngoài ngay bây giờ không?",
-    "placeholders": {
-      "filePath": {
-        "content": "$1",
-        "example": "C:\\notepad++"
-      }
-    }
-  },
-  "prompt.fileTemplates.editor.setup": {
-    "message": "Thiết lập trình soạn thảo bên ngoài để chỉnh sửa các mẫu HTML và CSS của bạn. Tôi khuyên dùng trình soạn thảo HTML dạng văn bản thuần túy có tô sáng cú pháp, như Notepad++ hoặc Visual Studio Code."
-  },
-  "templateEditor.path": {
-    "message": "Đường dẫn đến trình soạn thảo HTML cho các mẫu bên ngoài."
-  },
-  "sig.none.label": {
-    "message": "Xóa mọi chữ ký. Ghi đè cài đặt tài khoản."
-  },
   "xsent_long.cap": {
     "message": "Ví dụ về định dạng ngày và giờ tùy chỉnh"
   },
   "xsent_short.cap": {
     "message": "Ví dụ về ngày và giờ theo định dạng địa phương"
-  },
-  "quotedTags.scope": {
-    "message": "Với `%deleteQuotedTags()%` và `%replaceQuotedTags()%`, có thể dùng phạm vi không đặt trong dấu ngoặc kép thay cho cấp trích dẫn dạng số:"
-  },
-  "quotedTags.scope.head": {
-    "message": "Chỉ tìm trong phần head của thư."
-  },
-  "quotedTags.scope.body": {
-    "message": "Tìm trong toàn bộ nội dung thư, bao gồm cả phần không được trích dẫn."
-  },
-  "quotedTags.scope.all": {
-    "message": "Tìm trong cả phần head và nội dung thư."
-  },
-  "quotedTags.scope.numeric": {
-    "message": "Nếu bỏ qua cấp trích dẫn hoặc phạm vi, cấp trích dẫn 1 sẽ được dùng. Giá trị số 0 bao gồm mọi cấp trích dẫn trong nội dung thư, nhưng khi chuyển tiếp ngay trong nội dung thư thì chỉ áp dụng cho phần được chuyển tiếp; chỉ định rõ body sẽ tìm trong toàn bộ nội dung thư."
-  },
-  "quotedTags.styles.body": {
-    "message": "Xóa các khối kiểu khỏi nội dung thư, bao gồm các khối kế thừa từ thư gốc có thể ảnh hưởng đến khoảng cách giữa các đoạn trong thư trả lời. Giữ lại các kiểu trong phần head của thư."
-  },
-  "quotedTags.styles.all": {
-    "message": "Xóa các khối kiểu khỏi cả phần head và nội dung thư để có nền định dạng sạch."
-  },
-  "quotedTags.styles.inline": {
-    "message": "Các ví dụ này xóa phần tử style, không xóa thuộc tính style được đặt trực tiếp trên từng phần tử."
-  },
-  "snippets.contextMenu.legend": {
-    "message": "Thêm vào menu chuột phải của cửa sổ soạn thư"
-  },
-  "snippets.settingsLegend": {
-    "message": "Đoạn mã thông minh (Soạn thư)"
   }
 }

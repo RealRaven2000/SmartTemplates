@@ -1,4 +1,8 @@
 {
+  "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "День недели(Пт)"
   },
@@ -147,14 +151,22 @@
   },
   "btnLoadTemplate.tooltip": {
     "message": "Загрузить шаблоны (создать, ответить, переслать) для $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Обновить список учетных записей"
   },
   "btnSaveTemplate.tooltip": {
     "message": "Сохранить шаблоны (создать, ответить, переслать) для $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnYouTube.tooltip": {
     "message": "Посетите YouTube канал 'Thunderbird ежедневно' - для советов и руководств по использованию SmartTemplates и других дополнений"
@@ -215,6 +227,18 @@
   },
   "ccname.label": {
     "message": "Фамилия получателя"
+  },
+  "changeTemplate.label": {
+    "message": "Изменить шаблон…"
+  },
+  "changeTemplate.tooltip": {
+    "message": "Выбирает другой шаблон - используйте перед редактированием в теле письма!"
+  },
+  "cleandeferred.label": {
+    "message": "Убирайся!"
+  },
+  "cleandeferred.tooltip": {
+    "message": "Очистить все переменные SmartTemplate"
   },
   "clipboard.copy": {
     "message": "копирует текст в буфер обмена."
@@ -277,6 +301,9 @@
   },
   "conditionals.note": {
     "message": "Этот класс переменных может использоваться для вставки текста в зависимости от того, как вы отправляете почту. Необходимо наличие лицензии SmartTemplates Pro."
+  },
+  "confirmVersionLink": {
+    "message": "Показать список изменений SmartTemplates?"
   },
   "contextError": {
     "message": "Переменная {1} не может быть использована для НОВЫХ сообщений!\nСписок возможных переменных указан в справке"
@@ -371,6 +398,15 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Используйте внешний шаблон, выбранный последним из раскрывающегося меню."
   },
+  "deferredcontext.cleanup": {
+    "message": "Заменить переменную содержимым"
+  },
+  "deferredcontext.delete": {
+    "message": "Удалить переменную SmartTemplates"
+  },
+  "deferredcontext.update": {
+    "message": "Обновить содержимое SmartTemplates"
+  },
   "deleteForwardedBody": {
     "message": "Эта функция удаляет текст исходного электронного письма при пересылке в режиме онлайн. Может использоваться для обработки информации из автоматических писем при удалении исходной информации."
   },
@@ -459,6 +495,9 @@
   "fileCSS.label": {
     "message": "Внешняя таблица стилей (CSS). Включите ваши любимые правила CSS для обмена между различными шаблонами."
   },
+  "fileFunction.notExists": {
+    "message": "Функция {0} не может найти или получить доступ к файлу. Проверьте путь ниже:"
+  },
   "fileHTML.label": {
     "message": "HTML или текстовый файл. Если кодировка не указана, будет использована UTF-8."
   },
@@ -474,14 +513,35 @@
   "files.etc": {
     "message": "Файлы, изображения и вложения"
   },
+  "fileTemplates": {
+    "message": "Файлы шаблонов"
+  },
   "fileTemplates.add": {
     "message": "Добавить"
+  },
+  "fileTemplates.configureMenu": {
+    "message": "Настроить пункты меню…"
   },
   "fileTemplates.down": {
     "message": "Вниз"
   },
   "fileTemplates.edit": {
     "message": "Редактировать"
+  },
+  "fileTemplates.error.charSet": {
+    "message": "Проблемы с преобразованием шаблона HTML из набора символов [{1}] \nВместо использования необработанных строковых данных. \nЕсли это приводит к искаженным символам, попробуйте добавить явный 'meta charset"
+  },
+  "fileTemplates.error.filePath": {
+    "message": "Не удалось загрузить шаблон файла '{0}' по пути: \n{1} \nФайл, возможно, был удален или переименован."
+  },
+  "fileTemplates.error.nocontroller": {
+    "message": "Функция $controllerName$ недоступна в этом контексте - вы не можете сделать это с выбранным электронным письмом.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
   },
   "fileTemplates.file.open": {
     "message": "Выбрать файл шаблона с диска"
@@ -498,7 +558,9 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Это будет отображаться в меню выбора шаблона."
   },
-  "fileTemplates.import": { "message": "Импорт меню…" },
+  "fileTemplates.import": {
+    "message": "Импорт меню…"
+  },
   "fileTemplates.import.tooltip": {
     "message": "Импортировать записи шаблонов из JSON-файла (список HTML-шаблонов, обычно smartTemplates.json)."
   },
@@ -508,8 +570,39 @@
   "fileTemplates.menu": {
     "message": "Файлы шаблонов"
   },
+  "fileTemplates.openFile": {
+    "message": "Открыть файл шаблона SmartTemplates…"
+  },
   "fileTemplates.remove": {
     "message": "Удалить"
+  },
+  "fileTemplates.restrictionQuestion": {
+    "message": "Почему некоторые шаблоны в этом меню отключены?"
+  },
+  "fileTemplates.restrictTemplateCats": {
+    "message": "Чтобы настроить более $max_Cats$ категорий, получите лицензию SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "fileTemplates.restrictTemplates": {
+    "message": "Количество шаблонов в меню ограничено. Вы можете настроить до $max_free$ пунктов меню без лицензии и до $max_std$ пунктов меню со стандартной лицензией SmartTemplates! SmartTemplates Pro не имеет ограничений.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "fileTemplates.selectFromMenu": {
+    "message": "Пожалуйста, выберите шаблон из выпадающего меню."
   },
   "fileTemplates.tooltips.fwd": {
     "message": "Список внешних файлов шаблонов, которые могут быть запущены из меню шаблонов 'Переслать' в SmartTemplates."
@@ -525,6 +618,18 @@
   },
   "fileTemplates.update": {
     "message": "Обновить"
+  },
+  "fileTemplates.wrnEnterPath": {
+    "message": "Выберите файл, содержащий HTML / текст и переменные SmartTemplates. Этот файл будет обработан и вставлен при выборе нового элемента меню. Вы все еще можете изменить файл шаблона в соответствии с вашими потребностями после создания элемента меню, нажав «Редактировать»."
+  },
+  "fileTemplates.wrnEnterTitle": {
+    "message": "Пожалуйста, введите название!"
+  },
+  "fileTemplates.wrnSelectUpdateItem": {
+    "message": "Вы должны выбрать элемент из списка для обновления!"
+  },
+  "fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Обновить шаблоны"
   },
   "firstName.label": {
     "message": "Имя:"
@@ -544,9 +649,6 @@
   "forceParagraphs.tip": {
     "message": "Курсор всегда устанавливается в пределах абзаца. Мы рекомендуем использовать настройку составления в Thunderbird, для создания нового абзаца при нажатии клавиши [[Ввод]]"
   },
-  "fpJsonTemplateList": {
-    "message": "конфигурация меню шаблонов"
-  },
   "fpFilterHtmlTemplate": {
     "message": "HTML шаблон"
   },
@@ -564,6 +666,9 @@
   },
   "fpJsonFile": {
     "message": "Файл JSON"
+  },
+  "fpJsonTemplateList": {
+    "message": "конфигурация меню шаблонов"
   },
   "fpStyle": {
     "message": "Страница таблицы стилей"
@@ -664,7 +769,9 @@
   "header.set.from": {
     "message": "устанавливает адрес отправителя. Это принимает только адреса электронной почты из списка личностей."
   },
-  "header.set.priority": { "message": "устанавливает приоритет письма." },
+  "header.set.priority": {
+    "message": "устанавливает приоритет письма."
+  },
   "header.set.priority.value": {
     "message": "Параметр для установки приоритета письма. Возможные значения: "
   },
@@ -733,12 +840,6 @@
   "i.label": {
     "message": "Часы (01-12)"
   },
-  "identity.chapterHead": {
-    "message": "Ваша личность"
-  },
-  "identity.concept": {
-    "message": "У почтовой учётной записи может быть несколько личностей отправителя, каждая со своим именем и адресом электронной почты. Эта переменная использует личность, выбранную в поле «От» окна составления сообщения. При ответе первоначальный выбор зависит от того, кто получил исходное сообщение. Выбранную личность можно изменить после открытия окна составления сообщения."
-  },
   "identity_ab": {
     "message": "Используйте ключевое слово «addressbook», чтобы получить дополнительную идентификационную информацию из адресной книги."
   },
@@ -750,6 +851,12 @@
   },
   "identity_ab.phoneno": {
     "message": "Телефонный номер"
+  },
+  "identity.chapterHead": {
+    "message": "Ваша личность"
+  },
+  "identity.concept": {
+    "message": "У почтовой учётной записи может быть несколько личностей отправителя, каждая со своим именем и адресом электронной почты. Эта переменная использует личность, выбранную в поле «От» окна составления сообщения. При ответе первоначальный выбор зависит от того, кто получил исходное сообщение. Выбранную личность можно изменить после открытия окна составления сообщения."
   },
   "im-ex_note1.label": {
     "message": "Вы можете экспортировать и импортировать настройки и шаблоны любой учетной записи."
@@ -900,8 +1007,14 @@
   "licenseValidation.expired": {
     "message": "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии."
   },
+  "licenseValidation.expiredDate": {
+    "message": "Ваша лицензия истекает:"
+  },
   "licenseValidation.failed": {
     "message": "Лицензионный ключ недействителен. Ещё раз посмотрите сообщение от FastSpring . Если их инструкции не помогут, обратитесь ко мне (см. \"Поддержка\")."
+  },
+  "licenseValidation.guessAddon": {
+    "message": "(Введённый ключ может быть для {2})."
   },
   "licenseValidation.invalidAddon": {
     "message": "Введённый лицензионный ключ может быть для другого дополнения. Лицензионные ключи для {0} начинаются с {1}."
@@ -945,11 +1058,74 @@
   "matchTextFromSubject": {
     "message": "Найти шаблон регулярного выражения в заголовке и добавить найденное в месте использования функции."
   },
+  "menu.docs": {
+    "message": "Документация"
+  },
+  "menu.docs.premium": {
+    "message": "Премиум-функции…"
+  },
+  "menu.docs.variables": {
+    "message": "Переменные и команды…"
+  },
+  "menu.hideLabel": {
+    "message": "Скрыть метку кнопки"
+  },
+  "menu.license": {
+    "message": "Проверить статус лицензии…"
+  },
+  "menu.license.tooltip": {
+    "message": "Нажмите здесь, чтобы проверить статус лицензии для $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menu.replyAll": {
+    "message": "Ответить всем"
+  },
+  "menu.replyList": {
+    "message": "Ответить на список"
+  },
+  "menu.supportSite": {
+    "message": "Сайт поддержки…"
+  },
   "menu.template_export.label": {
     "message": "Экспорт шаблона"
   },
   "menu.template_import.label": {
     "message": "Импорт шаблона"
+  },
+  "menu.template.default": {
+    "message": "Шаблон по умолчанию (учетная запись)"
+  },
+  "menu.template.last": {
+    "message": "Последний шаблон"
+  },
+  "menu.update.tooltip": {
+    "message": "Выберите «Последние новости» в этом меню, чтобы прочитать, что нового в $addonName$.\n Это вернет кнопку к ее внешнему виду по умолчанию.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menuaccess.forward": {
+    "message": "П"
+  },
+  "menuaccess.reply": {
+    "message": "О"
+  },
+  "menuaccess.replyAll": {
+    "message": "в"
+  },
+  "menuaccess.replyList": {
+    "message": "с"
+  },
+  "menuaccess.write": {
+    "message": "С"
   },
   "message.features": {
     "message": "Сравнить функции…"
@@ -1034,6 +1210,98 @@
   },
   "no_button": {
     "message": "нет"
+  },
+  "notification.bodyModified": {
+    "message": "Thunderbird говорит, что вы уже что-то ввели, хотите ли вы все равно загрузить шаблон?"
+  },
+  "notification.bodyModified.accountTemplate": {
+    "message": "Это отклонит все введенные данные и загрузит шаблон учетной записи."
+  },
+  "notification.bodyModified.externalTemplate": {
+    "message": "Это отклонит все введенные данные и повторно загрузит текущий шаблон [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "notification.bodyModified.instructions": {
+    "message": "Щелкните Отмена, чтобы сохранить содержание электронного письма без изменений."
+  },
+  "notification.donate": {
+    "message": "Пожертвовать"
+  },
+  "notification.dontShowAgain": {
+    "message": "Не показывать это сообщение снова."
+  },
+  "notification.editedChangeChallenge": {
+    "message": "Любой текст, введенный вами вручную с момента открытия композитора, будет удален без отмены. Продолжить в любом случае?"
+  },
+  "notification.editedChangeWarning": {
+    "message": "Вы уже набрали текст и хотите перейти на шаблон {0}"
+  },
+  "notification.license.text": {
+    "message": "SmartTemplates продолжает работать как обычно. Лицензия убирает это напоминание — нажмите ниже для получения дополнительной информации."
+  },
+  "notification.licensing": {
+    "message": "Подробнее о лицензировании"
+  },
+  "notification.parsing": {
+    "message": "Анализ переменных:"
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "Продлить лицензию на домен"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "Продлить лицензию"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "Продление срока действия текущей лицензии на 1 год. Обычно это дешевле, чем новая лицензия."
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "Купить лицензию!"
+  },
+  "notification.premium.btn.hotKey": {
+    "message": "л"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "Продлить лицензию на домен"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "Обновить лицензию"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Обновление до Pro"
+  },
+  "notification.premium.btn.upgrade.hotKey": {
+    "message": "P"
+  },
+  "notification.premium.sendByFilter": {
+    "message": "При наличии действующей лицензии SmartTemplates Pro электронная почта теперь будет отправляться автоматически."
+  },
+  "notification.premium.text": {
+    "message": "{1} — это функция Premium. Она продолжит работать, но обновление до лицензии SmartTemplates Pro удаляет эти уведомления и поддерживает дополнение."
+  },
+  "notification.premium.text.plural": {
+    "message": "{1} — это функции Premium. Они продолжат работать, но обновление до лицензии SmartTemplates Pro удаляет эти уведомления и поддерживает дополнение."
+  },
+  "notification.spellcheck.error": {
+    "message": "Не удается переключить язык проверки орфографии. Вы установили правильный словарь?"
+  },
+  "notification.spellcheck.noDictionary": {
+    "message": "Словари не установлены."
+  },
+  "notification.spellcheck.notFound": {
+    "message": "Словарь '{0}' не найден."
+  },
+  "notification.standard.text": {
+    "message": "{1} — это лицензированная функция. Она продолжит работать, но получение лицензии SmartTemplates удаляет эти уведомления и поддерживает дополнение."
+  },
+  "notification.standard.text.plural": {
+    "message": "{1} — это лицензированные функции. Они продолжат работать, но получение лицензии SmartTemplates удаляет эти уведомления и поддерживает дополнение."
+  },
+  "notification.usedLastTemplate": {
+    "message": "Повторное использование последнего внешнего шаблона: {template}{br}💾 согласно глобальным настройкам:"
   },
   "ongoing-work": {
     "message": "Чтобы поддерживать $addonName$ в синхронизации с ежемесячными выпусками Thunderbird, нам нужно постоянно проверять ошибки и загружать адаптированные версии. Пожалуйста, помогите нам с этим, как только вы попробуете функциональность и убедитесь, что она улучшает вашу продуктивность!",
@@ -1138,6 +1406,9 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Настройте внешний редактор для редактирования шаблонов HTML и CSS. Рекомендую использовать текстовый HTML-редактор с подсветкой синтаксиса, например Notepad++ или Visual Studio Code."
   },
+  "prompt.switchDomainLicense": {
+    "message": "SПерейти на доменную лицензию?"
+  },
   "prompt.text": {
     "message": "Введите текст"
   },
@@ -1152,6 +1423,30 @@
   },
   "quote_changers.desc": {
     "message": "Премиум переменные для удаления текста / тегов из указанных частей и экономии места."
+  },
+  "quotedTags.scope": {
+    "message": "В `%deleteQuotedTags()%` и `%replaceQuotedTags()%` вместо числового уровня цитирования можно указать область поиска без кавычек:"
+  },
+  "quotedTags.scope.all": {
+    "message": "Искать в разделе head и в теле сообщения."
+  },
+  "quotedTags.scope.body": {
+    "message": "Искать во всём теле сообщения, включая нецитируемое содержимое."
+  },
+  "quotedTags.scope.head": {
+    "message": "Искать только в разделе head сообщения."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Если уровень цитирования или область поиска не указаны, используется уровень 1. Числовое значение 0 охватывает все уровни цитирования в теле, но при пересылке в теле письма поиск ограничен пересылаемым содержимым; явное указание body позволяет искать во всём теле."
+  },
+  "quotedTags.styles.all": {
+    "message": "Удалить блоки стилей из раздела head и тела сообщения, чтобы получить чистую основу для форматирования."
+  },
+  "quotedTags.styles.body": {
+    "message": "Удалить блоки стилей из тела сообщения, включая унаследованные от исходного письма стили, которые могут влиять на интервалы между абзацами ответа. Сохранить стили в разделе head сообщения."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Эти примеры удаляют элементы style, но не атрибуты style, заданные непосредственно у отдельных элементов."
   },
   "quoteHeader.replace.tip": {
     "message": "Отключить стандартный заголовок цитат. Пожалуйста создайте свой заголовок цитат."
@@ -1258,6 +1553,9 @@
   "settings.label": {
     "message": "Настройки и Шаблоны"
   },
+  "settings.tooltip": {
+    "message": "Настройки SmartTemplates"
+  },
   "shortdate.label": {
     "message": "Дата / время кратко (01.01.2000 1:23:45)"
   },
@@ -1265,50 +1563,23 @@
     "message": "Показать изменения + новости (заставка)."
   },
   "sig.concept": {
-    "message": "Thunderbird управляет положением и содержимым подписи в **Параметры учётной записи » Составление и адресация**. Вы можете переопределить положение с помощью переменной `%sig%`.",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "Thunderbird управляет положением и содержимым подписи в **Параметры учётной записи » Составление и адресация**. Вы можете переопределить положение с помощью переменной `%sig%`."
   },
   "sig.label": {
     "message": "Подпись"
   },
-  "sig2.label": {
-    "message": "Подпись, но без '--'"
-  },
   "sig.none.label": {
     "message": "Удаляет все подписи. Переопределяет настройки учётной записи."
+  },
+  "sig2.label": {
+    "message": "Подпись, но без '--'"
   },
   "silentUpdates": {
     "message": "Не открывать вкладку с историей версий"
   },
   "silentUpdates.tip": {
     "message": "Не открывайте журнал изменений после обновления SmartTemplates."
-  },
-  "smarttemplate4_button": {
-    "message": "Правка шаблона / заголовок цитат"
-  },
-  "smartTemplate4.changeTemplate.label": {
-    "message": "Изменить шаблон…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Выбирает другой шаблон - используйте перед редактированием в теле письма!"
-  },
-  "smartTemplate4.cleandeferred.label": {
-    "message": "Убирайся!"
-  },
-  "smartTemplate4.cleandeferred.tooltip": {
-    "message": "Очистить все переменные SmartTemplate"
-  },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Заменить переменную содержимым"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "Удалить переменную SmartTemplates"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "Обновить содержимое SmartTemplates"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "Настройки SmartTemplates"
   },
   "SmartTemplateMainButton.expired": {
     "message": "Срок действия лицензии истек!"
@@ -1328,63 +1599,69 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Что нового…"
   },
-  "snippets.download": {
-    "message": "Скачать сниппеты…"
-  },
-  "snippets.browser.localTitle": {
-    "message": "Название в меню"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "Добавить в контекстное меню"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "Выберите папку назначения"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "Выберите своё название в меню, например на своём языке. Изменения сохраняются, пока эта панель открыта, и используются при добавлении сниппета."
-  },
-  "snippets.browser.preview": {
-    "message": "Предпросмотр сниппета"
-  },
-  "snippets.browser.noPreview": {
-    "message": "Предпросмотр недоступен"
+  "snippets.browser.add": {
+    "message": "Добавить сниппеты"
   },
   "snippets.browser.close": {
     "message": "Закрыть"
   },
-  "snippets.browser.add": {
-    "message": "Добавить сниппеты"
-  },
-  "snippets.browser.loading": {
-    "message": "Загрузка сниппетов…"
-  },
-  "snippets.browser.importing": {
-    "message": "Добавление сниппетов…"
-  },
-  "snippets.browser.error": {
-    "message": "Не удалось добавить или загрузить сниппеты."
+  "snippets.browser.contextMenu": {
+    "message": "Добавить в контекстное меню"
   },
   "snippets.browser.empty": {
     "message": "Нет доступных сниппетов."
   },
+  "snippets.browser.error": {
+    "message": "Не удалось добавить или загрузить сниппеты."
+  },
+  "snippets.browser.importing": {
+    "message": "Добавление сниппетов…"
+  },
+  "snippets.browser.loading": {
+    "message": "Загрузка сниппетов…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Название в меню"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Выберите своё название в меню, например на своём языке. Изменения сохраняются, пока эта панель открыта, и используются при добавлении сниппета."
+  },
+  "snippets.browser.noPreview": {
+    "message": "Предпросмотр недоступен"
+  },
   "snippets.browser.notConfigured": {
     "message": "Репозиторий сниппетов пока недоступен."
   },
+  "snippets.browser.preview": {
+    "message": "Предпросмотр сниппета"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Выберите папку назначения"
+  },
   "snippets.contextMenu": {
     "message": "Показывать в контекстном меню"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Добавить в контекстное меню редактора писем"
+  },
+  "snippets.download": {
+    "message": "Скачать сниппеты…"
   },
   "snippets.head": {
     "message": "Умные сниппеты"
   },
   "snippets.label": {
-    "message": "Все фрагменты можно вставить с помощью кнопки «$SnippetButton$»",
     "description": "SnippetButton is the localized insertSnippet.button label.",
+    "message": "Все фрагменты можно вставить с помощью кнопки «$SnippetButton$»",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
         "example": "Insert Snippet"
       }
     }
+  },
+  "snippets.settingsLegend": {
+    "message": "Умные сниппеты (Редактор писем)"
   },
   "spec_form.cap": {
     "message": "Переключатели адресного поля"
@@ -1460,258 +1737,6 @@
   },
   "splashScreen.tip": {
     "message": "Скрыть информационный диалог, в котором отображаются новые функции и исправления ошибок при обновлении."
-  },
-  "st.confirmVersionLink": {
-    "message": "Показать список изменений SmartTemplates?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "Функция {0} не может найти или получить доступ к файлу. Проверьте путь ниже:"
-  },
-  "st.fileTemplates": {
-    "message": "Файлы шаблонов"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "Настроить пункты меню…"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "Проблемы с преобразованием шаблона HTML из набора символов [{1}] \nВместо использования необработанных строковых данных. \nЕсли это приводит к искаженным символам, попробуйте добавить явный 'meta charset"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "Не удалось загрузить шаблон файла '{0}' по пути: \n{1} \nФайл, возможно, был удален или переименован."
-  },
-  "st.fileTemplates.error.nocontroller": {
-    "message": "Функция $controllerName$ недоступна в этом контексте - вы не можете сделать это с выбранным электронным письмом.",
-    "placeholders": {
-      "controllerName": {
-        "content": "$1",
-        "example": "cmd_replyList"
-      }
-    }
-  },
-  "st.fileTemplates.openFile": {
-    "message": "Открыть файл шаблона SmartTemplates…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "Почему некоторые шаблоны в этом меню отключены?"
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "Чтобы настроить более $max_Cats$ категорий, получите лицензию SmartTemplates Pro…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplates": {
-    "message": "Количество шаблонов в меню ограничено. Вы можете настроить до $max_free$ пунктов меню без лицензии и до $max_std$ пунктов меню со стандартной лицензией SmartTemplates! SmartTemplates Pro не имеет ограничений.",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.selectFromMenu": {
-    "message": "Пожалуйста, выберите шаблон из выпадающего меню."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Выберите файл, содержащий HTML / текст и переменные SmartTemplates. Этот файл будет обработан и вставлен при выборе нового элемента меню. Вы все еще можете изменить файл шаблона в соответствии с вашими потребностями после создания элемента меню, нажав «Редактировать»."
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Пожалуйста, введите название!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "Вы должны выбрать элемент из списка для обновления!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Обновить шаблоны"
-  },
-  "st.licenseValidation.expired": {
-    "message": "Ваша лицензия истекает:"
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "(Введённый ключ может быть для {2})."
-  },
-  "st.menu.docs": {
-    "message": "Документация"
-  },
-  "st.menu.docs.premium": {
-    "message": "Премиум-функции…"
-  },
-  "st.menu.docs.variables": {
-    "message": "Переменные и команды…"
-  },
-  "st.menu.hideLabel": {
-    "message": "Скрыть метку кнопки"
-  },
-  "st.menu.license": {
-    "message": "Проверить статус лицензии…"
-  },
-  "st.menu.license.tooltip": {
-    "message": "Нажмите здесь, чтобы проверить статус лицензии для $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menu.replyAll": {
-    "message": "Ответить всем"
-  },
-  "st.menu.replyList": {
-    "message": "Ответить на список"
-  },
-  "st.menu.supportSite": {
-    "message": "Сайт поддержки…"
-  },
-  "st.menu.template.default": {
-    "message": "Шаблон по умолчанию (учетная запись)"
-  },
-  "st.menu.template.last": {
-    "message": "Последний шаблон"
-  },
-  "st.menu.update.tooltip": {
-    "message": "Выберите «Последние новости» в этом меню, чтобы прочитать, что нового в $addonName$.\n Это вернет кнопку к ее внешнему виду по умолчанию.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menuaccess.forward": {
-    "message": "П"
-  },
-  "st.menuaccess.reply": {
-    "message": "О"
-  },
-  "st.menuaccess.replyAll": {
-    "message": "в"
-  },
-  "st.menuaccess.replyList": {
-    "message": "с"
-  },
-  "st.menuaccess.write": {
-    "message": "С"
-  },
-  "st.notification.bodyModified": {
-    "message": "Thunderbird говорит, что вы уже что-то ввели, хотите ли вы все равно загрузить шаблон?"
-  },
-  "st.notification.bodyModified.accountTemplate": {
-    "message": "Это отклонит все введенные данные и загрузит шаблон учетной записи."
-  },
-  "st.notification.bodyModified.externalTemplate": {
-    "message": "Это отклонит все введенные данные и повторно загрузит текущий шаблон [$template$].",
-    "placeholders": {
-      "template": {
-        "content": "$1"
-      }
-    }
-  },
-  "st.notification.bodyModified.instructions": {
-    "message": "Щелкните Отмена, чтобы сохранить содержание электронного письма без изменений."
-  },
-  "st.notification.donate": {
-    "message": "Пожертвовать"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "Не показывать это сообщение снова."
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "Любой текст, введенный вами вручную с момента открытия композитора, будет удален без отмены. Продолжить в любом случае?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "Вы уже набрали текст и хотите перейти на шаблон {0}"
-  },
-  "st.notification.license.text": {
-    "message": "SmartTemplates продолжает работать как обычно. Лицензия убирает это напоминание — нажмите ниже для получения дополнительной информации."
-  },
-  "st.notification.licensing": {
-    "message": "Подробнее о лицензировании"
-  },
-  "st.notification.parsing": {
-    "message": "Анализ переменных:"
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "Продлить лицензию на домен"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "Продлить лицензию"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "Продление срока действия текущей лицензии на 1 год. Обычно это дешевле, чем новая лицензия."
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "Купить лицензию!"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "л"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "Продлить лицензию на домен"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "Обновить лицензию"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "Обновление до Pro"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "P"
-  },
-  "st.notification.premium.sendByFilter": {
-    "message": "При наличии действующей лицензии SmartTemplates Pro электронная почта теперь будет отправляться автоматически."
-  },
-  "st.notification.premium.text": {
-    "message": "{1} — это функция Premium. Она продолжит работать, но обновление до лицензии SmartTemplates Pro удаляет эти уведомления и поддерживает дополнение."
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1} — это функции Premium. Они продолжат работать, но обновление до лицензии SmartTemplates Pro удаляет эти уведомления и поддерживает дополнение."
-  },
-  "st.notification.spellcheck.error": {
-    "message": "Не удается переключить язык проверки орфографии. Вы установили правильный словарь?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "Словари не установлены."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "Словарь '{0}' не найден."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} — это лицензированная функция. Она продолжит работать, но получение лицензии SmartTemplates удаляет эти уведомления и поддерживает дополнение."
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} — это лицензированные функции. Они продолжат работать, но получение лицензии SmartTemplates удаляет эти уведомления и поддерживает дополнение."
-  },
-  "st.notification.usedLastTemplate": {
-    "message": "Повторное использование последнего внешнего шаблона: {template}{br}💾 согласно глобальным настройкам:"
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "SПерейти на доменную лицензию?"
-  },
-  "st.trialDays": {
-    "message": "У вас осталось {0} пробных дней."
-  },
-  "st.trialExpiry": {
-    "message": "Пробный период истек {0} дней назад."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "Дорогой пользователь! С радостью сообщаем, что с этой версии поддерживаются фигурные скобки {} и тэг < style >, так что теперь можно пользоваться CSS в шаблоне."
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "Синтаксис выражений в скобках был изменен: вместо фигурных {%cc(name)%} пользуйтесь двойными квадратными скобками [[%cc(name)%]]. Подробнее в помощи."
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "Шаблоны будут конвертированы для совместимости с новой версией. Нажмите [OK] для продолжения."
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates был успешно обновлен до версии {1}!"
   },
   "standardformat.config": {
     "message": "Формат по умолчанию…"
@@ -1988,8 +2013,26 @@
   "translatorNickname.label": {
     "message": "Anton Pinsky (BabelZilla)"
   },
+  "trialDays": {
+    "message": "У вас осталось {0} пробных дней."
+  },
+  "trialExpiry": {
+    "message": "Пробный период истек {0} дней назад."
+  },
   "tzname.label": {
     "message": "GMT, PST, EST, ..."
+  },
+  "updateMessageNewBrackets1": {
+    "message": "Дорогой пользователь! С радостью сообщаем, что с этой версии поддерживаются фигурные скобки {} и тэг < style >, так что теперь можно пользоваться CSS в шаблоне."
+  },
+  "updateMessageNewBrackets2": {
+    "message": "Синтаксис выражений в скобках был изменен: вместо фигурных {%cc(name)%} пользуйтесь двойными квадратными скобками [[%cc(name)%]]. Подробнее в помощи."
+  },
+  "updateMessageNewBrackets3": {
+    "message": "Шаблоны будут конвертированы для совместимости с новой версией. Нажмите [OK] для продолжения."
+  },
+  "updateMessageVersion": {
+    "message": "SmartTemplates был успешно обновлен до версии {1}!"
   },
   "updates.changeLog": {
     "message": "Примечания к выпуску (английский)"
@@ -2052,7 +2095,10 @@
   "whats-new-maintenance": {
     "message": "Обновление обслуживания $ver$. Это конкретное исправление было добавлено с предыдущего релиза.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "whitespace_note": {
@@ -2068,11 +2114,11 @@
       }
     }
   },
-  "xsent_long.cap": {
-    "message": "Пример собственного формата даты и времени"
-  },
   "xsent_long_result.label": {
     "message": "Результат: Вторник, 20 Декабря, 2011 в 4:11пп"
+  },
+  "xsent_long.cap": {
+    "message": "Пример собственного формата даты и времени"
   },
   "xsent_long.label": {
     "message": "%X:=sent% %A%, %d% %8%, %Y% в %1%:%M%%p(3)%"
@@ -2080,14 +2126,14 @@
   "xsent_note.label": {
     "message": "Дата / время имеют изначально текущие значения. В комбинации с %X:=sent% будет использовано значение из сообщения."
   },
-  "xsent_short.cap": {
-    "message": "Пример даты и времени в местном формате"
-  },
   "xsent_short_note.label": {
     "message": "Следующие переменные могут быть использованы в обоих вариантах:"
   },
   "xsent_short_result.label": {
     "message": "Результат: Вторник, 20 Декабря, 2011 в 4:11пп"
+  },
+  "xsent_short.cap": {
+    "message": "Пример даты и времени в местном формате"
   },
   "y.up.label": {
     "message": "Год (1970)"
@@ -2109,35 +2155,5 @@
   },
   "yes_button": {
     "message": "Да"
-  },
-  "quotedTags.scope": {
-    "message": "В `%deleteQuotedTags()%` и `%replaceQuotedTags()%` вместо числового уровня цитирования можно указать область поиска без кавычек:"
-  },
-  "quotedTags.scope.head": {
-    "message": "Искать только в разделе head сообщения."
-  },
-  "quotedTags.scope.body": {
-    "message": "Искать во всём теле сообщения, включая нецитируемое содержимое."
-  },
-  "quotedTags.scope.all": {
-    "message": "Искать в разделе head и в теле сообщения."
-  },
-  "quotedTags.scope.numeric": {
-    "message": "Если уровень цитирования или область поиска не указаны, используется уровень 1. Числовое значение 0 охватывает все уровни цитирования в теле, но при пересылке в теле письма поиск ограничен пересылаемым содержимым; явное указание body позволяет искать во всём теле."
-  },
-  "quotedTags.styles.body": {
-    "message": "Удалить блоки стилей из тела сообщения, включая унаследованные от исходного письма стили, которые могут влиять на интервалы между абзацами ответа. Сохранить стили в разделе head сообщения."
-  },
-  "quotedTags.styles.all": {
-    "message": "Удалить блоки стилей из раздела head и тела сообщения, чтобы получить чистую основу для форматирования."
-  },
-  "quotedTags.styles.inline": {
-    "message": "Эти примеры удаляют элементы style, но не атрибуты style, заданные непосредственно у отдельных элементов."
-  },
-  "snippets.contextMenu.legend": {
-    "message": "Добавить в контекстное меню редактора писем"
-  },
-  "snippets.settingsLegend": {
-    "message": "Умные сниппеты (Редактор писем)"
   }
 }

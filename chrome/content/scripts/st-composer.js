@@ -75,8 +75,8 @@ async function onLoad(activatedWhileWindowOpen) {
 		<toolbarbutton 
 		  id="smarttemplate4-cleandeferred" 
 			class="toolbarbutton-1 AG"
-			label="__MSG_smartTemplate4.cleandeferred.label__"
-			tooltiptext="__MSG_smartTemplate4.cleandeferred.tooltip__"
+			label="__MSG_cleandeferred.label__"
+			tooltiptext="__MSG_cleandeferred.tooltip__"
 			context=""
 			onclick="SmartTemplate4.Util.cleanupDeferredFields();"
 			>
@@ -85,8 +85,8 @@ async function onLoad(activatedWhileWindowOpen) {
     <toolbarbutton 
 		  id="smarttemplate4-changeTemplate" 
 			class="toolbarbutton-1 AG"
-			label="__MSG_smartTemplate4.changeTemplate.label__"
-			tooltiptext="__MSG_smartTemplate4.changeTemplate.tooltip__"
+			label="__MSG_changeTemplate.label__"
+			tooltiptext="__MSG_changeTemplate.tooltip__"
       type="menu-button"
       is="toolbarbutton-menu-button"
 			oncommand="SmartTemplate4.composer.selectTemplateFromMenu(this);">
@@ -114,17 +114,17 @@ async function onLoad(activatedWhileWindowOpen) {
 			<menupopup id="SmartTemplate4-ComposerPopup" 
 			           class="SmartTemplate4-ComposerPopup">
 				<menuitem id="SmartTemplate4-replaceDeferred"
-				          label="__MSG_smartTemplate4.deferredcontext.update__"
+				          label="__MSG_deferredcontext.update__"
 				          oncommand="SmartTemplate4.Util.resolveDeferred(gMsgCompose.editor, event.originalTarget.parentElement.targetNode, false);" 
 				          class="cmd menuitem-iconic"
 				          />
 				<menuitem id="SmartTemplate4-cleanupDeferred"
-				          label="__MSG_smartTemplate4.deferredcontext.cleanup__"
+				          label="__MSG_deferredcontext.cleanup__"
 				          oncommand="SmartTemplate4.Util.resolveDeferred(gMsgCompose.editor, event.originalTarget.parentElement.targetNode, true);" 
 				          class="cmd menuitem-iconic"
 				          />
 				<menuitem id="SmartTemplate4-deleteDeferred"
-				          label="__MSG_smartTemplate4.deferredcontext.delete__"
+				          label="__MSG_deferredcontext.delete__"
 				          oncommand="SmartTemplate4.Util.removeDeferred(event.originalTarget.parentElement.targetNode);" 
 				          class="cmd menuitem-iconic"
 				          />

@@ -1,5 +1,6 @@
 {
   "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
     "message": "SPLASH+UI"
   },
   "a.label": {
@@ -153,14 +154,22 @@
   },
   "btnLoadTemplate.tooltip": {
     "message": "Load templates (write, reply, forward) for $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Update accounts list"
   },
   "btnSaveTemplate.tooltip": {
     "message": "Save templates (write, reply, forward) for $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnYouTube.tooltip": {
     "message": "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using SmartTemplates and other Addons"
@@ -222,6 +231,18 @@
   "ccname.label": {
     "message": "Recipient's name"
   },
+  "changeTemplate.label": {
+    "message": "Change template…"
+  },
+  "changeTemplate.tooltip": {
+    "message": "Load a different template - use before editing the Email!"
+  },
+  "cleandeferred.label": {
+    "message": "Clean up!"
+  },
+  "cleandeferred.tooltip": {
+    "message": "Clean up all SmartTemplate variables"
+  },
   "clipboard.copy": {
     "message": "copies text to clipboard."
   },
@@ -252,7 +273,6 @@
   "close.label": {
     "message": "Collapse Dialog"
   },
-  "composer.settings": { "message": "Composer settings" },
   "common.use": {
     "message": "Use Common"
   },
@@ -274,6 +294,9 @@
       }
     }
   },
+  "composer.settings": {
+    "message": "Composer settings"
+  },
   "conditional.forwardMode": {
     "message": "If the email is forwarded inline, the first text parameter is inserted. The second text parameter is used when the mail is forwarded as attachment."
   },
@@ -282,6 +305,9 @@
   },
   "conditionals.note": {
     "message": "This class of variables can be used to insert text depending on how you send mail. You need a SmartTemplates Pro license for these."
+  },
+  "confirmVersionLink": {
+    "message": "Display change log for SmartTemplates?"
   },
   "contextError": {
     "message": "The Variable {1} can not be used for *new* messages!\nPlease refer to help for a list of permitted variables"
@@ -376,6 +402,15 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Use the external template last selected from the drop-down menu."
   },
+  "deferredcontext.cleanup": {
+    "message": "Replace Variable with Content"
+  },
+  "deferredcontext.delete": {
+    "message": "Remove SmartTemplates variable"
+  },
+  "deferredcontext.update": {
+    "message": "Update SmartTemplates contents"
+  },
   "deleteForwardedBody": {
     "message": "This function removes the body of the original email when forwarding inline. Can be used to process information from automated mails while removing the original information."
   },
@@ -465,9 +500,11 @@
   "file.label": {
     "message": "File"
   },
-  "files.etc": { "message": "Files, images and attachments" },
   "fileCSS.label": {
     "message": "External style sheet (css). Include your favorite CSS rules to share between different templates."
+  },
+  "fileFunction.notExists": {
+    "message": "Function {0} could not find or access file. Check the path below:"
   },
   "fileHTML.label": {
     "message": "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter."
@@ -481,14 +518,38 @@
   "fileImage.label": {
     "message": "Inserts an image (png, jpg, gif, bmp, svg). {imagePath} may be relative to the location of template: %file(images/test.jpg)%"
   },
+  "files.etc": {
+    "message": "Files, images and attachments"
+  },
+  "fileTemplates": {
+    "message": "Template Files"
+  },
   "fileTemplates.add": {
     "message": "Add"
+  },
+  "fileTemplates.configureMenu": {
+    "message": "Configure menu items…"
   },
   "fileTemplates.down": {
     "message": "Down"
   },
   "fileTemplates.edit": {
     "message": "Edit"
+  },
+  "fileTemplates.error.charSet": {
+    "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
+  },
+  "fileTemplates.error.filePath": {
+    "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
+  },
+  "fileTemplates.error.nocontroller": {
+    "message": "The function  $controllerName$ is not available in this context - you cannot do that with the selected email.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
   },
   "fileTemplates.file.open": {
     "message": "Select template file from disk"
@@ -517,8 +578,42 @@
   "fileTemplates.menu": {
     "message": "Template Files"
   },
+  "fileTemplates.openFile": {
+    "message": "Open SmartTemplates template file…"
+  },
+  "fileTemplates.refreshMenus": {
+    "message": "Update Menus!"
+  },
   "fileTemplates.remove": {
     "message": "Remove"
+  },
+  "fileTemplates.restrictionQuestion": {
+    "message": "Why are some templates in this menu disabled?"
+  },
+  "fileTemplates.restrictTemplateCats": {
+    "message": "To configure more than $max_Cats$ Categories, please get a SmartTemplates Pro license…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "fileTemplates.restrictTemplates": {
+    "message": "The number of templates per menu is restricted. You can configure up to $max_free$ menu items without a license, and $max_std$ menu items with a SmartTemplates Standard license! SmartTemplates Pro is unrestricted.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "fileTemplates.selectFromMenu": {
+    "message": "Please select a template from the dropdown menu."
   },
   "fileTemplates.tooltips.fwd": {
     "message": "List of external template files that can be launched from the SmartTemplates 'Forward' template menus."
@@ -534,6 +629,18 @@
   },
   "fileTemplates.update": {
     "message": "Update"
+  },
+  "fileTemplates.wrnEnterPath": {
+    "message": "Please select a file that contains the html / text and your SmartTemplates variables. This file will be processed and inserted when the new menu item is selected. You can still modify the template file to your needs after creating the menu item by clicking Edit."
+  },
+  "fileTemplates.wrnEnterTitle": {
+    "message": "Please enter a title!"
+  },
+  "fileTemplates.wrnSelectUpdateItem": {
+    "message": "You have to select an item from the list to update!"
+  },
+  "fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Update Templates"
   },
   "firstName.label": {
     "message": "First Name:"
@@ -552,9 +659,6 @@
   },
   "forceParagraphs.tip": {
     "message": "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [[Enter]] key."
-  },
-  "fpJsonTemplateList": {
-    "message": "templates menu configuration"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML Template"
@@ -576,6 +680,9 @@
   },
   "fpJsonFile": {
     "message": "JSON File"
+  },
+  "fpJsonTemplateList": {
+    "message": "templates menu configuration"
   },
   "fpStyle": {
     "message": "Style Sheet"
@@ -676,7 +783,9 @@
   "header.set.from": {
     "message": "sets 'from' address. This only accepts mail addresses from list of identities."
   },
-  "header.set.priority": { "message": "sets the email priority. " },
+  "header.set.priority": {
+    "message": "sets the email priority. "
+  },
   "header.set.priority.value": {
     "message": "Parameter for setting email priority. Possible values: "
   },
@@ -689,7 +798,9 @@
   "header.set.to.list": {
     "message": "sets the 'to' header to email addresses of all members based on the address book list named \"listName\" - experimental, only supports standard address books. Example: %header.set(to,list:Friends)%"
   },
-  "headers.common": { "message": "Commonly used message headers" },
+  "headers.common": {
+    "message": "Commonly used message headers"
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Successfully installed $addonName$",
@@ -743,10 +854,6 @@
   "i.label": {
     "message": "Hour, 12-Hour Format (01 to 12) - with leading zero"
   },
-  "identity.chapterHead": { "message": "Your Identity" },
-  "identity.concept": {
-    "message": "A mail account can have multiple sender identities, each with its own name and email address. This variable uses the identity selected in the composer's 'From' field. When replying, the initial selection depends on who received the original message. You can change the selected identity after the compose window opens."
-  },
   "identity_ab": {
     "message": "Use the 'addressbook' keyword to retrieve additional identity information from address book."
   },
@@ -758,6 +865,12 @@
   },
   "identity_ab.phoneno": {
     "message": "Phone No"
+  },
+  "identity.chapterHead": {
+    "message": "Your Identity"
+  },
+  "identity.concept": {
+    "message": "A mail account can have multiple sender identities, each with its own name and email address. This variable uses the identity selected in the composer's 'From' field. When replying, the initial selection depends on who received the original message. You can change the selected identity after the compose window opens."
   },
   "im-ex_note1.label": {
     "message": "You can export and import your settings and templates associated with each account."
@@ -909,8 +1022,14 @@
   "licenseValidation.expired": {
     "message": "The license key you entered is expired. Please press the button below to renew your license."
   },
+  "licenseValidation.expiredDate": {
+    "message": "Your license expired on:"
+  },
   "licenseValidation.failed": {
     "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."
+  },
+  "licenseValidation.guessAddon": {
+    "message": "(The key entered may be for {2})."
   },
   "licenseValidation.invalidAddon": {
     "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
@@ -954,14 +1073,74 @@
   "matchTextFromSubject": {
     "message": "Find a RegEx pattern in subject and insert at function location."
   },
+  "menu.docs": {
+    "message": "Documentation"
+  },
+  "menu.docs.premium": {
+    "message": "Premium features…"
+  },
+  "menu.docs.variables": {
+    "message": "Variables and Commands…"
+  },
+  "menu.hideLabel": {
+    "message": "Hide button label"
+  },
+  "menu.license": {
+    "message": "Check license status…"
+  },
+  "menu.license.tooltip": {
+    "message": "Click here to the check license status for $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menu.replyAll": {
+    "message": "Reply All"
+  },
+  "menu.replyList": {
+    "message": "Reply to List"
+  },
+  "menu.supportSite": {
+    "message": "Support Site…"
+  },
   "menu.template_export.label": {
     "message": "Export Template"
   },
   "menu.template_import.label": {
     "message": "Import Template"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
+  "menu.template.default": {
+    "message": "Default Template (account)"
+  },
+  "menu.template.last": {
+    "message": "Last Template"
+  },
+  "menu.update.tooltip": {
+    "message": "Select “Latest News” from this menu to read what's new in $addonName$.\n This will reset the button to its default appearance.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menuaccess.forward": {
+    "message": "F"
+  },
+  "menuaccess.reply": {
+    "message": "R"
+  },
+  "menuaccess.replyAll": {
+    "message": "A"
+  },
+  "menuaccess.replyList": {
+    "message": "L"
+  },
+  "menuaccess.write": {
+    "message": "W"
   },
   "message.features": {
     "message": "Compare Features…"
@@ -1049,6 +1228,98 @@
   },
   "no_button": {
     "message": "No"
+  },
+  "notification.bodyModified": {
+    "message": "Thunderbird says you have already typed something, do you want to load the template anyway?"
+  },
+  "notification.bodyModified.accountTemplate": {
+    "message": "This will discard anything  typed and load the account template."
+  },
+  "notification.bodyModified.externalTemplate": {
+    "message": "This will discard anything  typed and reload the current template [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "notification.bodyModified.instructions": {
+    "message": "Click Cancel to keep email contents unchanged."
+  },
+  "notification.donate": {
+    "message": "Donate"
+  },
+  "notification.dontShowAgain": {
+    "message": "Do not show this message again."
+  },
+  "notification.editedChangeChallenge": {
+    "message": "Any text you entered manually since opening composer will be deleted, without Undo. Continue anyway?"
+  },
+  "notification.editedChangeWarning": {
+    "message": "You have already typed text and want to change to template {0}"
+  },
+  "notification.license.text": {
+    "message": "SmartTemplates keeps working as usual. A license removes this reminder — click below for more information."
+  },
+  "notification.licensing": {
+    "message": "More about licensing"
+  },
+  "notification.parsing": {
+    "message": "Parsing variables:"
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "Extend Domain License"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "Extend License"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "Buy License"
+  },
+  "notification.premium.btn.hotKey": {
+    "message": "L"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "Renew Domain License"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "Renew License"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Upgrade to Pro"
+  },
+  "notification.premium.btn.upgrade.hotKey": {
+    "message": "U"
+  },
+  "notification.premium.sendByFilter": {
+    "message": "With a valid SmartTemplates Pro license the email would now automatically be sent."
+  },
+  "notification.premium.text": {
+    "message": "{1} is a Premium feature. It will keep working, but upgrading to a SmartTemplates Pro License removes these reminders and helps support the add-on."
+  },
+  "notification.premium.text.plural": {
+    "message": "{1} are Premium features. They will keep working, but upgrading to a SmartTemplates Pro License removes these reminders and helps support the add-on."
+  },
+  "notification.spellcheck.error": {
+    "message": "Cannot switch spell checker language. Have you installed the correct dictionary?"
+  },
+  "notification.spellcheck.noDictionary": {
+    "message": "No dictionaries installed."
+  },
+  "notification.spellcheck.notFound": {
+    "message": "Dictionary '{0}' not found."
+  },
+  "notification.standard.text": {
+    "message": "{1} is a licensed feature. It will keep working, but getting a SmartTemplates License removes these reminders and helps support the add-on."
+  },
+  "notification.standard.text.plural": {
+    "message": "{1} are licensed features. They will keep working, but getting a SmartTemplates License removes these reminders and helps support the add-on."
+  },
+  "notification.usedLastTemplate": {
+    "message": "Reusing last external template: {template}{br}💾 according to global setting:"
   },
   "ongoing-work": {
     "message": "To keep $addonName$ in sync with the monthly releases of Thunderbird, we have to constantly check for breakages and upload adapted versions. Please help us with this, once you have tried out the functionality and you are sure that it improves your productivity as well!",
@@ -1153,6 +1424,9 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Set up an external editor to edit your html and css templates. I recommend using a text only HTML editor with syntax highlighting, such as notepad++ or Visual Studio Code."
   },
+  "prompt.switchDomainLicense": {
+    "message": "Switch to Domain License?"
+  },
   "prompt.text": {
     "message": "Enter the text to add or set"
   },
@@ -1168,6 +1442,30 @@
   "quote_changers.desc": {
     "message": "Premium variables to remove text / tags from quoted parts and save space."
   },
+  "quotedTags.scope": {
+    "message": "For `%deleteQuotedTags()%` and `%replaceQuotedTags()%`, an unquoted scope can be used instead of the numeric quote level:"
+  },
+  "quotedTags.scope.all": {
+    "message": "Search both head and body."
+  },
+  "quotedTags.scope.body": {
+    "message": "Search the entire message body, including unquoted content."
+  },
+  "quotedTags.scope.head": {
+    "message": "Search only the message head."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Omitting the quote level or scope defaults to quote level 1. Numeric 0 includes all body quote levels, but is restricted to the forwarded content in inline forwards; explicit body searches the entire body."
+  },
+  "quotedTags.styles.all": {
+    "message": "Remove style blocks from both head and body for a clean styling baseline."
+  },
+  "quotedTags.styles.body": {
+    "message": "Remove style blocks from the body, including those inherited from the original message that can affect paragraph spacing in your reply. Keep styles in the message head."
+  },
+  "quotedTags.styles.inline": {
+    "message": "These examples remove style elements, not inline style attributes on individual elements."
+  },
   "quoteHeader.replace.tip": {
     "message": "Disable default quote header. Please place your own header in the textbox above."
   },
@@ -1179,30 +1477,6 @@
   },
   "quoteLevel": {
     "message": "[optional, numeric]:  which minimal quote level to start from"
-  },
-  "quotedTags.scope": {
-    "message": "For `%deleteQuotedTags()%` and `%replaceQuotedTags()%`, an unquoted scope can be used instead of the numeric quote level:"
-  },
-  "quotedTags.scope.head": {
-    "message": "Search only the message head."
-  },
-  "quotedTags.scope.body": {
-    "message": "Search the entire message body, including unquoted content."
-  },
-  "quotedTags.scope.all": {
-    "message": "Search both head and body."
-  },
-  "quotedTags.scope.numeric": {
-    "message": "Omitting the quote level or scope defaults to quote level 1. Numeric 0 includes all body quote levels, but is restricted to the forwarded content in inline forwards; explicit body searches the entire body."
-  },
-  "quotedTags.styles.body": {
-    "message": "Remove style blocks from the body, including those inherited from the original message that can affect paragraph spacing in your reply. Keep styles in the message head."
-  },
-  "quotedTags.styles.all": {
-    "message": "Remove style blocks from both head and body for a clean styling baseline."
-  },
-  "quotedTags.styles.inline": {
-    "message": "These examples remove style elements, not inline style attributes on individual elements."
   },
   "quotePlaceholder": {
     "message": "This moves the quoted part into the template text itself. The quote header section from account templates will be moved to the top of this quote."
@@ -1300,6 +1574,9 @@
   "settings.label": {
     "message": "Settings and Templates"
   },
+  "settings.tooltip": {
+    "message": "SmartTemplates settings"
+  },
   "shortdate.label": {
     "message": "Date / Time short (e.g. 01.01.2000 1:23:45)"
   },
@@ -1307,56 +1584,23 @@
     "message": "Changes + news (Splash Screen)."
   },
   "sig.concept": {
-    "message": "Thunderbird controls signature placement and content through **Account Settings » Composition & Addressing**. You can override the position by using the `%sig%` variable.",
-    "description": "Use **bold** for emphasis, *italic* for Thunderbird menu items or labels, and backticks for inline code such as `%sig%`. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis, *italic* for Thunderbird menu items or labels, and backticks for inline code such as `%sig%`. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "Thunderbird controls signature placement and content through **Account Settings » Composition & Addressing**. You can override the position by using the `%sig%` variable."
   },
   "sig.label": {
     "message": "Signature from Account Settings"
   },
-  "sig2.label": {
-    "message": "Signature from Account Settings but without '--'"
-  },
   "sig.none.label": {
     "message": "Removes any signature. Overrides account settings."
+  },
+  "sig2.label": {
+    "message": "Signature from Account Settings but without '--'"
   },
   "silentUpdates": {
     "message": "Do not open tab with version history"
   },
   "silentUpdates.tip": {
     "message": "Don't open change log after SmartTemplates was updated."
-  },
-  "smarttemplate4_button": {
-    "message": "Edit templates / quote header..."
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
-  },
-  "smartTemplate4.changeTemplate.label": {
-    "message": "Change template…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Load a different template - use before editing the Email!"
-  },
-  "smartTemplate4.cleandeferred.label": {
-    "message": "Clean up!"
-  },
-  "smartTemplate4.cleandeferred.tooltip": {
-    "message": "Clean up all SmartTemplate variables"
-  },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Replace Variable with Content"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "Remove SmartTemplates variable"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "Update SmartTemplates contents"
-  },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "SmartTemplates settings"
   },
   "SmartTemplateMainButton.expired": {
     "message": "License expired!"
@@ -1379,78 +1623,78 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶What's new…"
   },
+  "snippets.browser.add": {
+    "message": "Add Snippets"
+  },
+  "snippets.browser.close": {
+    "message": "Close"
+  },
+  "snippets.browser.conflicts": {
+    "message": "Previous file conflicts:"
+  },
+  "snippets.browser.contextMenu": {
+    "message": "Add to context menu"
+  },
+  "snippets.browser.empty": {
+    "message": "No snippets are available."
+  },
+  "snippets.browser.error": {
+    "message": "Unable to add or load snippets."
+  },
+  "snippets.browser.importing": {
+    "message": "Adding snippets…"
+  },
+  "snippets.browser.loading": {
+    "message": "Loading snippets…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Menu label"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Choose your own menu label, for example in your language. Your edits are kept as long as this browser panel is open and used when adding the snippet."
+  },
+  "snippets.browser.noPreview": {
+    "message": "Preview unavailable"
+  },
+  "snippets.browser.notConfigured": {
+    "message": "The snippet repository is not available yet."
+  },
+  "snippets.browser.overwritePrompt": {
+    "message": "The following files differ from the downloaded versions. Overwrite them? This replaces any local edits, including changes to accompanying resources. Choose Cancel to keep your files unchanged."
+  },
+  "snippets.browser.overwriteTitle": {
+    "message": "Overwrite existing snippet files?"
+  },
+  "snippets.browser.preview": {
+    "message": "Snippet preview"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Select target folder"
+  },
   "snippets.contextMenu": {
     "message": "Show in context menu"
   },
   "snippets.contextMenu.add": {
     "message": "Add Smart Snippets…"
   },
+  "snippets.contextMenu.legend": {
+    "message": "Add to Composer right-click menu"
+  },
   "snippets.download": {
     "message": "Download Snippets…"
-  },
-  "snippets.browser.overwriteTitle": {
-    "message": "Overwrite existing snippet files?"
-  },
-  "snippets.browser.conflicts": {
-    "message": "Previous file conflicts:"
-  },
-  "snippets.browser.overwritePrompt": {
-    "message": "The following files differ from the downloaded versions. Overwrite them? This replaces any local edits, including changes to accompanying resources. Choose Cancel to keep your files unchanged."
-  },
-  "snippets.browser.localTitle": {
-    "message": "Menu label"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "Add to context menu"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "Select target folder"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "Choose your own menu label, for example in your language. Your edits are kept as long as this browser panel is open and used when adding the snippet."
-  },
-  "snippets.browser.preview": {
-    "message": "Snippet preview"
-  },
-  "snippets.browser.noPreview": {
-    "message": "Preview unavailable"
-  },
-  "snippets.browser.close": {
-    "message": "Close"
-  },
-  "snippets.browser.add": {
-    "message": "Add Snippets"
-  },
-  "snippets.browser.loading": {
-    "message": "Loading snippets…"
-  },
-  "snippets.browser.importing": {
-    "message": "Adding snippets…"
-  },
-  "snippets.browser.error": {
-    "message": "Unable to add or load snippets."
-  },
-  "snippets.browser.empty": {
-    "message": "No snippets are available."
-  },
-  "snippets.browser.notConfigured": {
-    "message": "The snippet repository is not available yet."
   },
   "snippets.head": {
     "message": "Smart Snippets"
   },
   "snippets.label": {
-    "message": "All Fragments can be injected via the $SnippetButton$ button",
     "description": "Smart Snippets header. SnippetButton is the localized insertSnippet.button label; it can be moved anywhere in the sentence.",
+    "message": "All Fragments can be injected via the $SnippetButton$ button",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
         "example": "Insert Snippet"
       }
     }
-  },
-  "snippets.contextMenu.legend": {
-    "message": "Add to Composer right-click menu"
   },
   "snippets.settingsLegend": {
     "message": "Smart Snippets (Composer)"
@@ -1529,258 +1773,6 @@
   },
   "splashScreen.tip": {
     "message": "Hide information dialog that displays new features and bug fixes when updating."
-  },
-  "st.confirmVersionLink": {
-    "message": "Display change log for SmartTemplates?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "Function {0} could not find or access file. Check the path below:"
-  },
-  "st.fileTemplates": {
-    "message": "Template Files"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "Configure menu items…"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
-  },
-  "st.fileTemplates.error.nocontroller": {
-    "message": "The function  $controllerName$ is not available in this context - you cannot do that with the selected email.",
-    "placeholders": {
-      "controllerName": {
-        "content": "$1",
-        "example": "cmd_replyList"
-      }
-    }
-  },
-  "st.fileTemplates.openFile": {
-    "message": "Open SmartTemplates template file…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "Why are some templates in this menu disabled?"
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "To configure more than $max_Cats$ Categories, please get a SmartTemplates Pro license…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplates": {
-    "message": "The number of templates per menu is restricted. You can configure up to $max_free$ menu items without a license, and $max_std$ menu items with a SmartTemplates Standard license! SmartTemplates Pro is unrestricted.",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.selectFromMenu": {
-    "message": "Please select a template from the dropdown menu."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Please select a file that contains the html / text and your SmartTemplates variables. This file will be processed and inserted when the new menu item is selected. You can still modify the template file to your needs after creating the menu item by clicking Edit."
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Please enter a title!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "You have to select an item from the list to update!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Update Templates"
-  },
-  "st.licenseValidation.expired": {
-    "message": "Your license expired on:"
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "(The key entered may be for {2})."
-  },
-  "st.menu.docs": {
-    "message": "Documentation"
-  },
-  "st.menu.docs.premium": {
-    "message": "Premium features…"
-  },
-  "st.menu.docs.variables": {
-    "message": "Variables and Commands…"
-  },
-  "st.menu.hideLabel": {
-    "message": "Hide button label"
-  },
-  "st.menu.license": {
-    "message": "Check license status…"
-  },
-  "st.menu.license.tooltip": {
-    "message": "Click here to the check license status for $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menu.replyAll": {
-    "message": "Reply All"
-  },
-  "st.menu.replyList": {
-    "message": "Reply to List"
-  },
-  "st.menu.supportSite": {
-    "message": "Support Site…"
-  },
-  "st.menu.template.default": {
-    "message": "Default Template (account)"
-  },
-  "st.menu.template.last": {
-    "message": "Last Template"
-  },
-  "st.menu.update.tooltip": {
-    "message": "Select “Latest News” from this menu to read what's new in $addonName$.\n This will reset the button to its default appearance.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menuaccess.forward": {
-    "message": "F"
-  },
-  "st.menuaccess.reply": {
-    "message": "R"
-  },
-  "st.menuaccess.replyAll": {
-    "message": "A"
-  },
-  "st.menuaccess.replyList": {
-    "message": "L"
-  },
-  "st.menuaccess.write": {
-    "message": "W"
-  },
-  "st.notification.bodyModified": {
-    "message": "Thunderbird says you have already typed something, do you want to load the template anyway?"
-  },
-  "st.notification.bodyModified.accountTemplate": {
-    "message": "This will discard anything  typed and load the account template."
-  },
-  "st.notification.bodyModified.externalTemplate": {
-    "message": "This will discard anything  typed and reload the current template [$template$].",
-    "placeholders": {
-      "template": {
-        "content": "$1"
-      }
-    }
-  },
-  "st.notification.bodyModified.instructions": {
-    "message": "Click Cancel to keep email contents unchanged."
-  },
-  "st.notification.donate": {
-    "message": "Donate"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "Do not show this message again."
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "Any text you entered manually since opening composer will be deleted, without Undo. Continue anyway?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "You have already typed text and want to change to template {0}"
-  },
-  "st.notification.license.text": {
-    "message": "SmartTemplates keeps working as usual. A license removes this reminder — click below for more information."
-  },
-  "st.notification.licensing": {
-    "message": "More about licensing"
-  },
-  "st.notification.parsing": {
-    "message": "Parsing variables:"
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "Extend Domain License"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "Extend License"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "Buy License"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "Renew Domain License"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "Renew License"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "Upgrade to Pro"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
-  },
-  "st.notification.premium.sendByFilter": {
-    "message": "With a valid SmartTemplates Pro license the email would now automatically be sent."
-  },
-  "st.notification.premium.text": {
-    "message": "{1} is a Premium feature. It will keep working, but upgrading to a SmartTemplates Pro License removes these reminders and helps support the add-on."
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1} are Premium features. They will keep working, but upgrading to a SmartTemplates Pro License removes these reminders and helps support the add-on."
-  },
-  "st.notification.spellcheck.error": {
-    "message": "Cannot switch spell checker language. Have you installed the correct dictionary?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "No dictionaries installed."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "Dictionary '{0}' not found."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} is a licensed feature. It will keep working, but getting a SmartTemplates License removes these reminders and helps support the add-on."
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} are licensed features. They will keep working, but getting a SmartTemplates License removes these reminders and helps support the add-on."
-  },
-  "st.notification.usedLastTemplate": {
-    "message": "Reusing last external template: {template}{br}💾 according to global setting:"
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "Switch to Domain License?"
-  },
-  "st.trialDays": {
-    "message": "You have {0} trial days left."
-  },
-  "st.trialExpiry": {
-    "message": "Your trial period expired {0} days ago."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "Dear SmartTemplates user, we are excited to announce that from this version on, SmartTemplates also supports the usage of curly braces { } and the <style> tag so that you can now do advanced css styling within your Template."
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "From now on, the specific syntax for bracketed expressions is changed: Instead of curly braces {%cc(name)%} use double square brackets [[%cc(name)%]] - for further detail, see Help."
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates will now convert your existing templates so you can keep using them in the new version. Press [OK] to continue."
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates was successfully upgraded to version {1}!"
   },
   "standardformat.config": {
     "message": "Default format…"
@@ -1932,8 +1924,12 @@
   "tags.formatString": {
     "message": "custom html snippet to format each tag. Use $label$ and $color$ to insert the text or (hexadecimal) color value of a tag.",
     "placeholders": {
-      "color": { "content": "$color$" },
-      "label": { "content": "$label$" }
+      "color": {
+        "content": "$color$"
+      },
+      "label": {
+        "content": "$label$"
+      }
     }
   },
   "tags.intro": {
@@ -2059,8 +2055,26 @@
   "translatorNickname.label": {
     "message": "Aris-T (AMO)"
   },
+  "trialDays": {
+    "message": "You have {0} trial days left."
+  },
+  "trialExpiry": {
+    "message": "Your trial period expired {0} days ago."
+  },
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
+  },
+  "updateMessageNewBrackets1": {
+    "message": "Dear SmartTemplates user, we are excited to announce that from this version on, SmartTemplates also supports the usage of curly braces { } and the <style> tag so that you can now do advanced css styling within your Template."
+  },
+  "updateMessageNewBrackets2": {
+    "message": "From now on, the specific syntax for bracketed expressions is changed: Instead of curly braces {%cc(name)%} use double square brackets [[%cc(name)%]] - for further detail, see Help."
+  },
+  "updateMessageNewBrackets3": {
+    "message": "SmartTemplates will now convert your existing templates so you can keep using them in the new version. Press [OK] to continue."
+  },
+  "updateMessageVersion": {
+    "message": "SmartTemplates was successfully upgraded to version {1}!"
   },
   "updates.changeLog": {
     "message": "Release Notes (English)"
@@ -2118,12 +2132,15 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{L}Download examples directly from the online snippet library and add smart snippets to the Composer right-click menu. [issue 437] [issue 432]{/L}{L}Expanded quoted-tag command scopes to target the message head, entire body, or both. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Configure your external HTML editor in Advanced Settings. [issue 430]{/L}{L}Reorganized variable help and added signature documentation. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Updated Thunderbird 160 beta compatibility while retaining Thunderbird 140 ESR support. [issue 433]{/L}{L}Fixed missing Composer right-click menus after inserting templates. [issue 432]{/L}{L}Improved settings appearance and toolbar colors. Delete removes the selected template or snippet menu entry with minimal scrolling. [issue 431]{/L}"
+    "message": "{L}Download examples directly from the online snippet library and add smart snippets to the Composer right-click menu. [issue 437] [issue 432]{/L}{L}Expanded quoted-tag command scopes to target the message head, entire body, or both. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Configure your external HTML editor in Advanced Settings. [issue 430]{/L}{L}Reorganized variable help and added signature documentation. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Updated Thunderbird 160 beta compatibility while retaining Thunderbird 140 ESR support. [issue 433]{/L}{L}Fixed HTML sanitisation when inserting templates: sanitised elements are now imported into the compose document, restoring missing right-click menus. Existing filtering of scripts and unsafe attributes is retained. [issue 432]{/L}{L}Improved settings appearance and toolbar colors. Delete removes the selected template or snippet menu entry with minimal scrolling. [issue 431]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This particular fix was added since the previous release.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "whitespace_note": {

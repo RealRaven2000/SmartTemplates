@@ -1,4 +1,8 @@
 {
+  "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "一周里的一天 (Fri.)"
   },
@@ -150,15 +154,22 @@
   },
   "btnLoadTemplate.tooltip": {
     "message": "加载 $identity$ 的模板（撰写、回复、转发）…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
-
   "btnRefreshAccounts.tooltip": {
     "message": "更新账户列表"
   },
   "btnSaveTemplate.tooltip": {
     "message": "保存模板（写、回复、转发）用于 $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnYouTube.tooltip": {
     "message": "访问 'Thunderbird Daily' YouTube 频道 - 使用 SmartTemplates 和其他扩展的技巧与教程"
@@ -219,6 +230,18 @@
   },
   "ccname.label": {
     "message": "抄送人姓名"
+  },
+  "changeTemplate.label": {
+    "message": "变更范本…"
+  },
+  "changeTemplate.tooltip": {
+    "message": "加载其他模板-在编辑电子邮件之前使用！"
+  },
+  "cleandeferred.label": {
+    "message": "清理！"
+  },
+  "cleandeferred.tooltip": {
+    "message": "清理所有SmartTemplate变量"
   },
   "clipboard.copy": {
     "message": "将文本复制到剪贴板。"
@@ -281,6 +304,9 @@
   },
   "conditionals.note": {
     "message": "根据您发送邮件的方式，此类变量可用于插入文本。 您需要获得SmartTemplates Pro许可证。"
+  },
+  "confirmVersionLink": {
+    "message": "显示 SmartTemplates 的更改日志?"
   },
   "contextError": {
     "message": "变量 {1} 不能对*新的*消息使用！\n请参阅帮助了解允许的变量"
@@ -375,6 +401,15 @@
   "defaultTemplate.useLastTemplate": {
     "message": "使用最后从下拉菜单中选择的外部模板。"
   },
+  "deferredcontext.cleanup": {
+    "message": "用内容替换变量"
+  },
+  "deferredcontext.delete": {
+    "message": "删除SmartTemplates变量"
+  },
+  "deferredcontext.update": {
+    "message": "更新SmartTemplates内容"
+  },
   "deleteForwardedBody": {
     "message": "此函数在内联转发时删除原始电子邮件的正文。 可用于在删除原始信息的同时处理来自自动邮件的信息。"
   },
@@ -463,6 +498,9 @@
   "fileCSS.label": {
     "message": "外部样式表 (css)。包括您最喜欢的 CSS 规则以在不同模板之间分享。"
   },
+  "fileFunction.notExists": {
+    "message": "函数 {0} 无法找到或访问文件。请检查下面的路径："
+  },
   "fileHTML.label": {
     "message": "HTML 或纯文本文件。省略可选的字符集参数时，将假定 UTF-8。"
   },
@@ -478,14 +516,35 @@
   "files.etc": {
     "message": "文件、图像和附件"
   },
+  "fileTemplates": {
+    "message": "模板文件"
+  },
   "fileTemplates.add": {
     "message": "添加"
+  },
+  "fileTemplates.configureMenu": {
+    "message": "配置菜单项…"
   },
   "fileTemplates.down": {
     "message": "向下"
   },
   "fileTemplates.edit": {
     "message": "编辑"
+  },
+  "fileTemplates.error.charSet": {
+    "message": "从字符集 [{1}]\n转换HTML模板时使用原始字符串数据出现问题。\n如果这个结果以加密字符出现，请尝试添加一个显式的 'meta 字符集"
+  },
+  "fileTemplates.error.filePath": {
+    "message": "无法从路径加载模板文件{0}':\n{1}\n文件可能已被删除或重命名。"
+  },
+  "fileTemplates.error.nocontroller": {
+    "message": "此上下文中无法使用函数 $controllerName$ - 无法使用所选电子邮件执行此操作。",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
   },
   "fileTemplates.file.open": {
     "message": "从磁盘选择模板文件"
@@ -502,7 +561,9 @@
   "fileTemplates.file.title.tooltip": {
     "message": "这将显示在模板选择菜单中。"
   },
-  "fileTemplates.import": { "message": "导入菜单…" },
+  "fileTemplates.import": {
+    "message": "导入菜单…"
+  },
   "fileTemplates.import.tooltip": {
     "message": "从 JSON 文件导入模板条目（HTML 模板列表，通常为 smartTemplates.json）。"
   },
@@ -512,8 +573,39 @@
   "fileTemplates.menu": {
     "message": "模板文件"
   },
+  "fileTemplates.openFile": {
+    "message": "打开 SmartTemplate 模板文件…"
+  },
   "fileTemplates.remove": {
     "message": "删除"
+  },
+  "fileTemplates.restrictionQuestion": {
+    "message": "为什么此菜单中的某些模板被禁用？"
+  },
+  "fileTemplates.restrictTemplateCats": {
+    "message": "要配置超过 $max_Cats$ 的类别，请获取 SmartTemplates Pro 许可证…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "fileTemplates.restrictTemplates": {
+    "message": "每个菜单的模板数量受到限制。 您可以在没有许可证的情况下配置最多 $max_free$ 菜单项，以及使用 SmartTemplates Standard 许可证配置 $max_std$ 菜单项！ SmartTemplates Pro 不受限制。",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "fileTemplates.selectFromMenu": {
+    "message": "请从下拉菜单选择模板。"
   },
   "fileTemplates.tooltips.fwd": {
     "message": "可以从SmartTemplates的‘转发’模板菜单中启动的外部模板文件列表。"
@@ -529,6 +621,18 @@
   },
   "fileTemplates.update": {
     "message": "更新"
+  },
+  "fileTemplates.wrnEnterPath": {
+    "message": "请选择包含html / 文本和SmartTemplates变量的文件。选择新菜单项时，将处理并插入此文件。创建菜单项后，您仍然可以单击“编辑”根据需要修改模板文件。"
+  },
+  "fileTemplates.wrnEnterTitle": {
+    "message": "请输入标题！"
+  },
+  "fileTemplates.wrnSelectUpdateItem": {
+    "message": "您必须从列表中选择要更新的项目！"
+  },
+  "fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "更新模板"
   },
   "firstName.label": {
     "message": "名字"
@@ -548,9 +652,6 @@
   "forceParagraphs.tip": {
     "message": "确保光标位置在段落开端。我们也推荐 Thunderbird 编写选项之按 [[Enter]] 键创建新段落。"
   },
-  "fpJsonTemplateList": {
-    "message": "模板菜单配置"
-  },
   "fpFilterHtmlTemplate": {
     "message": "HTML 模板"
   },
@@ -568,6 +669,9 @@
   },
   "fpJsonFile": {
     "message": "JSON 文件"
+  },
+  "fpJsonTemplateList": {
+    "message": "模板菜单配置"
   },
   "fpStyle": {
     "message": "样式表"
@@ -668,7 +772,9 @@
   "header.set.from": {
     "message": "设置“发件人”地址。 这仅接受身份列表中的电子邮件地址。"
   },
-  "header.set.priority": { "message": "设置邮件优先级。" },
+  "header.set.priority": {
+    "message": "设置邮件优先级。"
+  },
   "header.set.priority.value": {
     "message": "用于设置邮件优先级的参数。可用值："
   },
@@ -737,12 +843,6 @@
   "i.label": {
     "message": "小时，12-小时格式 (01 至 12)"
   },
-  "identity.chapterHead": {
-    "message": "您的身份"
-  },
-  "identity.concept": {
-    "message": "一个邮件账户可以有多个发件人身份，每个身份都有自己的姓名和电子邮件地址。此变量使用撰写窗口中“发件人”字段所选的身份。回复时，初始选择取决于原邮件的收件人。撰写窗口打开后，您可以更改所选身份。"
-  },
   "identity_ab": {
     "message": "使用 'addressbook' 关键字从地址簿检索额外的身份信息。"
   },
@@ -754,6 +854,12 @@
   },
   "identity_ab.phoneno": {
     "message": "手机号"
+  },
+  "identity.chapterHead": {
+    "message": "您的身份"
+  },
+  "identity.concept": {
+    "message": "一个邮件账户可以有多个发件人身份，每个身份都有自己的姓名和电子邮件地址。此变量使用撰写窗口中“发件人”字段所选的身份。回复时，初始选择取决于原邮件的收件人。撰写窗口打开后，您可以更改所选身份。"
   },
   "im-ex_note1.label": {
     "message": "您可以导出和导入与您的每个账户相关的设置和模板。"
@@ -904,8 +1010,14 @@
   "licenseValidation.expired": {
     "message": "您输入的许可密钥已过期。 请按下面的按钮续订许可证。"
   },
+  "licenseValidation.expiredDate": {
+    "message": "您的購買憑證將在後面的日期到期："
+  },
   "licenseValidation.failed": {
     "message": "您输入的许可证密钥无效。 有关说明，请查看FastSpring的电子邮件。 如果您仍有问题，请通过“支持”选项卡与我联系。"
+  },
+  "licenseValidation.guessAddon": {
+    "message": "輸入的金鑰或許是適用在{2}"
   },
   "licenseValidation.invalidAddon": {
     "message": "您输入的许可证密钥可能适用于其他附加组件。 {0}的许可证密钥以{1}开头。"
@@ -949,11 +1061,71 @@
   "matchTextFromSubject": {
     "message": "在主题中找到一个RegEx模式，然后将其插入功能位置。"
   },
+  "menu.docs": {
+    "message": "文档"
+  },
+  "menu.docs.premium": {
+    "message": "高级功能…"
+  },
+  "menu.docs.variables": {
+    "message": "变量和命令……"
+  },
+  "menu.hideLabel": {
+    "message": "隐藏按钮标签"
+  },
+  "menu.license": {
+    "message": "检查许可证状态..."
+  },
+  "menu.license.tooltip": {
+    "message": "单击此处检查 $addonName$ 的许可证状态。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menu.replyAll": {
+    "message": "全部回复"
+  },
+  "menu.replyList": {
+    "message": "回复清单"
+  },
+  "menu.supportSite": {
+    "message": "支持站点..."
+  },
   "menu.template_export.label": {
     "message": "导出模板"
   },
   "menu.template_import.label": {
     "message": "导入模板"
+  },
+  "menu.template.default": {
+    "message": "默认模板（账户）"
+  },
+  "menu.template.last": {
+    "message": "最后一个模板"
+  },
+  "menu.update.tooltip": {
+    "message": "从此菜单中选择“最新消息”以阅读 $addonName$ 中的新内容。\n 这会将按钮重置为其默认外观。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menuaccess.forward": {
+    "message": "F"
+  },
+  "menuaccess.reply": {
+    "message": "R"
+  },
+  "menuaccess.replyAll": {
+    "message": "A"
+  },
+  "menuaccess.replyList": {
+    "message": "L"
   },
   "message.features": {
     "message": "比较功能…"
@@ -991,7 +1163,6 @@
   "names.swap.tip": {
     "message": "尝试从“姓, 名”中猜测正确部分——这会影响 (firstname) 和 (lastname) 占位符。"
   },
-
   "new.label": {
     "message": "将以下模板应用于新消息"
   },
@@ -1039,6 +1210,92 @@
   },
   "no_button": {
     "message": "否"
+  },
+  "notification.bodyModified": {
+    "message": "Thunderbird 表示您已经输入了一些内容，您是否仍然要加载模板？"
+  },
+  "notification.bodyModified.accountTemplate": {
+    "message": "这将丢弃您输入的任何内容，并加载账户模板。"
+  },
+  "notification.bodyModified.externalTemplate": {
+    "message": "这将丢弃您输入的任何内容，并重新加载当前模板 [$template$]。",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "notification.bodyModified.instructions": {
+    "message": "单击取消以保持电子邮件内容不变。"
+  },
+  "notification.donate": {
+    "message": "捐"
+  },
+  "notification.dontShowAgain": {
+    "message": "不要再顯示此消息。"
+  },
+  "notification.editedChangeChallenge": {
+    "message": "打开作曲家后您手动输入的任何文本都将被删除，无需撤销。仍要继续吗？"
+  },
+  "notification.editedChangeWarning": {
+    "message": "您已经输入了文本并想要更改为模板 {0}"
+  },
+  "notification.license.text": {
+    "message": "SmartTemplates 照常运行。许可证可移除此提醒 — 点击下方了解更多信息。"
+  },
+  "notification.licensing": {
+    "message": "更多关于许可"
+  },
+  "notification.parsing": {
+    "message": "分析变量："
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "扩展域许可证"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "扩展许可证"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "这将使当前许可日期延长1年。 它通常比新许可证便宜。"
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "购买许可证"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "续订域许可证"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "续订许可证"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "升级到专业版"
+  },
+  "notification.premium.sendByFilter": {
+    "message": "使用有效的 SmartTemplates Pro 许可证，现在将自动发送电子邮件。"
+  },
+  "notification.premium.text": {
+    "message": "{1} 是高级功能。它将继续可用，但升级到 SmartTemplates Pro 许可证可移除此提醒并支持此插件。"
+  },
+  "notification.premium.text.plural": {
+    "message": "{1} 是高级功能。它们将继续可用，但升级到 SmartTemplates Pro 许可证可移除此提醒并支持此插件。"
+  },
+  "notification.spellcheck.error": {
+    "message": "无法切换拼写检查语言。您是否安装了正确的字典？"
+  },
+  "notification.spellcheck.noDictionary": {
+    "message": "没有安装字典。"
+  },
+  "notification.spellcheck.notFound": {
+    "message": "找不到字典{0}'."
+  },
+  "notification.standard.text": {
+    "message": "{1} 是授权功能。它将继续可用，但获取 SmartTemplates 许可证可移除此提醒并支持此插件。"
+  },
+  "notification.standard.text.plural": {
+    "message": "{1} 是授权功能。它们将继续可用，但获取 SmartTemplates 许可证可移除此提醒并支持此插件。"
+  },
+  "notification.usedLastTemplate": {
+    "message": "正在重用上次选择的外部模板: {template}{br}💾 根据全局设置："
   },
   "ongoing-work": {
     "message": "为了保持 $addonName$ 与 Thunderbird 每月的发布版本同步，我们必须不断检查错误并上传适配版本。请在您试用功能并确定它能提高您的生产力后帮助我们！",
@@ -1134,6 +1391,9 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "设置外部编辑器以编辑 HTML 和 CSS 模板。建议使用支持语法高亮的纯文本 HTML 编辑器，例如 Notepad++ 或 Visual Studio Code。"
   },
+  "prompt.switchDomainLicense": {
+    "message": "切换到域许可证？"
+  },
   "prompt.text": {
     "message": "请输入要添加或设置的文本"
   },
@@ -1148,6 +1408,30 @@
   },
   "quote_changers.desc": {
     "message": "高级变量，用于从引用的零件中删除文本/标签并节省空间。"
+  },
+  "quotedTags.scope": {
+    "message": "对于 `%deleteQuotedTags()%` 和 `%replaceQuotedTags()%`，可以使用不带引号的范围名称来代替数字引用级别："
+  },
+  "quotedTags.scope.all": {
+    "message": "搜索 head 部分和正文。"
+  },
+  "quotedTags.scope.body": {
+    "message": "搜索整个邮件正文，包括未引用的内容。"
+  },
+  "quotedTags.scope.head": {
+    "message": "仅搜索邮件的 head 部分。"
+  },
+  "quotedTags.scope.numeric": {
+    "message": "省略引用级别或范围时，默认为引用级别 1。数字 0 包含正文中的所有引用级别，但在内联转发时仅限于转发的内容；明确指定 body 则搜索整个正文。"
+  },
+  "quotedTags.styles.all": {
+    "message": "删除 head 部分和正文中的样式块，以获得干净的格式设置基础。"
+  },
+  "quotedTags.styles.body": {
+    "message": "删除正文中的样式块，包括继承自原始邮件、可能影响回复中段落间距的样式块。保留邮件 head 部分的样式。"
+  },
+  "quotedTags.styles.inline": {
+    "message": "这些示例删除的是 style 元素，而不是各个元素上的内联 style 属性。"
   },
   "quoteHeader.replace.tip": {
     "message": "禁用标准引用头文件。请将你的引用头文件填入文本框。"
@@ -1254,6 +1538,9 @@
   "settings.label": {
     "message": "设置和模板"
   },
+  "settings.tooltip": {
+    "message": "SmartTemplates 选项"
+  },
   "shortdate.label": {
     "message": "日期和时间的简写 (e.g. 01.01.2000 1:23:45)"
   },
@@ -1261,50 +1548,23 @@
     "message": "显示更改 + 新闻（启动画面）。"
   },
   "sig.concept": {
-    "message": "Thunderbird 通过**账户设置 » 撰写与地址**控制签名的位置和内容。您可以使用 `%sig%` 变量覆盖签名位置。",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "Thunderbird 通过**账户设置 » 撰写与地址**控制签名的位置和内容。您可以使用 `%sig%` 变量覆盖签名位置。"
   },
   "sig.label": {
     "message": "Siganture 签名（来自TB账户设置"
   },
-  "sig2.label": {
-    "message": "Siganture 签名（来自TB账户设置，但没有'--'"
-  },
   "sig.none.label": {
     "message": "移除所有签名。覆盖账户设置。"
+  },
+  "sig2.label": {
+    "message": "Siganture 签名（来自TB账户设置，但没有'--'"
   },
   "silentUpdates": {
     "message": "不要打开带有版本历史记录的选项卡"
   },
   "silentUpdates.tip": {
     "message": "SmartTemplates更新後，請勿打開更改日誌。"
-  },
-  "smarttemplate4_button": {
-    "message": "编辑模板 / 引用头文件…"
-  },
-  "smartTemplate4.changeTemplate.label": {
-    "message": "变更范本…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "加载其他模板-在编辑电子邮件之前使用！"
-  },
-  "smartTemplate4.cleandeferred.label": {
-    "message": "清理！"
-  },
-  "smartTemplate4.cleandeferred.tooltip": {
-    "message": "清理所有SmartTemplate变量"
-  },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "用内容替换变量"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "删除SmartTemplates变量"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "更新SmartTemplates内容"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "SmartTemplates 选项"
   },
   "SmartTemplateMainButton.expired": {
     "message": "证件过期！"
@@ -1324,63 +1584,69 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶更新内容…"
   },
-  "snippets.download": {
-    "message": "下载片段…"
-  },
-  "snippets.browser.localTitle": {
-    "message": "菜单标签"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "添加到上下文菜单"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "选择目标文件夹"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "您可以自定义菜单标签，例如使用您自己的语言。在此面板保持打开期间，修改会被保留，并在添加片段时使用。"
-  },
-  "snippets.browser.preview": {
-    "message": "片段预览"
-  },
-  "snippets.browser.noPreview": {
-    "message": "预览不可用"
+  "snippets.browser.add": {
+    "message": "添加片段"
   },
   "snippets.browser.close": {
     "message": "关闭"
   },
-  "snippets.browser.add": {
-    "message": "添加片段"
-  },
-  "snippets.browser.loading": {
-    "message": "正在加载片段…"
-  },
-  "snippets.browser.importing": {
-    "message": "正在添加片段…"
-  },
-  "snippets.browser.error": {
-    "message": "无法添加或加载片段。"
+  "snippets.browser.contextMenu": {
+    "message": "添加到上下文菜单"
   },
   "snippets.browser.empty": {
     "message": "没有可用的片段。"
   },
+  "snippets.browser.error": {
+    "message": "无法添加或加载片段。"
+  },
+  "snippets.browser.importing": {
+    "message": "正在添加片段…"
+  },
+  "snippets.browser.loading": {
+    "message": "正在加载片段…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "菜单标签"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "您可以自定义菜单标签，例如使用您自己的语言。在此面板保持打开期间，修改会被保留，并在添加片段时使用。"
+  },
+  "snippets.browser.noPreview": {
+    "message": "预览不可用"
+  },
   "snippets.browser.notConfigured": {
     "message": "片段仓库尚不可用。"
   },
+  "snippets.browser.preview": {
+    "message": "片段预览"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "选择目标文件夹"
+  },
   "snippets.contextMenu": {
     "message": "在上下文菜单中显示"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "添加到邮件撰写窗口的右键菜单"
+  },
+  "snippets.download": {
+    "message": "下载片段…"
   },
   "snippets.head": {
     "message": "智能片段"
   },
   "snippets.label": {
-    "message": "所有片段均可通过“$SnippetButton$”按钮插入",
     "description": "SnippetButton is the localized insertSnippet.button label.",
+    "message": "所有片段均可通过“$SnippetButton$”按钮插入",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
         "example": "Insert Snippet"
       }
     }
+  },
+  "snippets.settingsLegend": {
+    "message": "智能片段 (邮件撰写)"
   },
   "spec_form.cap": {
     "message": "地址字段变量"
@@ -1456,249 +1722,6 @@
   },
   "splashScreen.tip": {
     "message": "隐藏信息对话框，在更新时显示新功能和错误修复。"
-  },
-  "st.confirmVersionLink": {
-    "message": "显示 SmartTemplates 的更改日志?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "函数 {0} 无法找到或访问文件。请检查下面的路径："
-  },
-  "st.fileTemplates": {
-    "message": "模板文件"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "配置菜单项…"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "从字符集 [{1}]\n转换HTML模板时使用原始字符串数据出现问题。\n如果这个结果以加密字符出现，请尝试添加一个显式的 'meta 字符集"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "无法从路径加载模板文件{0}':\n{1}\n文件可能已被删除或重命名。"
-  },
-  "st.fileTemplates.error.nocontroller": {
-    "message": "此上下文中无法使用函数 $controllerName$ - 无法使用所选电子邮件执行此操作。",
-    "placeholders": {
-      "controllerName": {
-        "content": "$1",
-        "example": "cmd_replyList"
-      }
-    }
-  },
-  "st.fileTemplates.openFile": {
-    "message": "打开 SmartTemplate 模板文件…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "为什么此菜单中的某些模板被禁用？"
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "要配置超过 $max_Cats$ 的类别，请获取 SmartTemplates Pro 许可证…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplates": {
-    "message": "每个菜单的模板数量受到限制。 您可以在没有许可证的情况下配置最多 $max_free$ 菜单项，以及使用 SmartTemplates Standard 许可证配置 $max_std$ 菜单项！ SmartTemplates Pro 不受限制。",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.selectFromMenu": {
-    "message": "请从下拉菜单选择模板。"
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "请选择包含html / 文本和SmartTemplates变量的文件。选择新菜单项时，将处理并插入此文件。创建菜单项后，您仍然可以单击“编辑”根据需要修改模板文件。"
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "请输入标题！"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "您必须从列表中选择要更新的项目！"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "更新模板"
-  },
-  "st.licenseValidation.expired": {
-    "message": "您的購買憑證將在後面的日期到期："
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "輸入的金鑰或許是適用在{2}"
-  },
-  "st.menu.docs": {
-    "message": "文档"
-  },
-  "st.menu.docs.premium": {
-    "message": "高级功能…"
-  },
-  "st.menu.docs.variables": {
-    "message": "变量和命令……"
-  },
-  "st.menu.hideLabel": {
-    "message": "隐藏按钮标签"
-  },
-  "st.menu.license": {
-    "message": "检查许可证状态..."
-  },
-  "st.menu.license.tooltip": {
-    "message": "单击此处检查 $addonName$ 的许可证状态。",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menu.replyAll": {
-    "message": "全部回复"
-  },
-  "st.menu.replyList": {
-    "message": "回复清单"
-  },
-  "st.menu.supportSite": {
-    "message": "支持站点..."
-  },
-  "st.menu.template.default": {
-    "message": "默认模板（账户）"
-  },
-  "st.menu.template.last": {
-    "message": "最后一个模板"
-  },
-  "st.menu.update.tooltip": {
-    "message": "从此菜单中选择“最新消息”以阅读 $addonName$ 中的新内容。\n 这会将按钮重置为其默认外观。",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menuaccess.forward": {
-    "message": "F"
-  },
-  "st.menuaccess.reply": {
-    "message": "R"
-  },
-  "st.menuaccess.replyAll": {
-    "message": "A"
-  },
-  "st.menuaccess.replyList": {
-    "message": "L"
-  },
-  "st.notification.bodyModified": {
-    "message": "Thunderbird 表示您已经输入了一些内容，您是否仍然要加载模板？"
-  },
-  "st.notification.bodyModified.accountTemplate": {
-    "message": "这将丢弃您输入的任何内容，并加载账户模板。"
-  },
-  "st.notification.bodyModified.externalTemplate": {
-    "message": "这将丢弃您输入的任何内容，并重新加载当前模板 [$template$]。",
-    "placeholders": {
-      "template": {
-        "content": "$1"
-      }
-    }
-  },
-  "st.notification.bodyModified.instructions": {
-    "message": "单击取消以保持电子邮件内容不变。"
-  },
-  "st.notification.donate": {
-    "message": "捐"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "不要再顯示此消息。"
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "打开作曲家后您手动输入的任何文本都将被删除，无需撤销。仍要继续吗？"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "您已经输入了文本并想要更改为模板 {0}"
-  },
-  "st.notification.license.text": {
-    "message": "SmartTemplates 照常运行。许可证可移除此提醒 — 点击下方了解更多信息。"
-  },
-  "st.notification.licensing": {
-    "message": "更多关于许可"
-  },
-  "st.notification.parsing": {
-    "message": "分析变量："
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "扩展域许可证"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "扩展许可证"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "这将使当前许可日期延长1年。 它通常比新许可证便宜。"
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "购买许可证"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "续订域许可证"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "续订许可证"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "升级到专业版"
-  },
-  "st.notification.premium.sendByFilter": {
-    "message": "使用有效的 SmartTemplates Pro 许可证，现在将自动发送电子邮件。"
-  },
-  "st.notification.premium.text": {
-    "message": "{1} 是高级功能。它将继续可用，但升级到 SmartTemplates Pro 许可证可移除此提醒并支持此插件。"
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1} 是高级功能。它们将继续可用，但升级到 SmartTemplates Pro 许可证可移除此提醒并支持此插件。"
-  },
-  "st.notification.spellcheck.error": {
-    "message": "无法切换拼写检查语言。您是否安装了正确的字典？"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "没有安装字典。"
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "找不到字典{0}'."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} 是授权功能。它将继续可用，但获取 SmartTemplates 许可证可移除此提醒并支持此插件。"
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} 是授权功能。它们将继续可用，但获取 SmartTemplates 许可证可移除此提醒并支持此插件。"
-  },
-  "st.notification.usedLastTemplate": {
-    "message": "正在重用上次选择的外部模板: {template}{br}💾 根据全局设置："
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "切换到域许可证？"
-  },
-  "st.trialDays": {
-    "message": "您还剩{0}个试用期。"
-  },
-  "st.trialExpiry": {
-    "message": "您的试用期在 {0} 天前到期。"
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "尊敬的 SmartTemplates 用户，我们很高兴地宣布，从这个版本开始，SmartTemplates 开始支持大括号 { } 和 <style> 标签的使用，所以您现在可以在您的模板中做高级CSS样式了。"
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "从现在起，括号表达式内的特定语法已改变：使用两个方括号 [[%cc(name)%]] 代替圆括号 {%cc(name)%} - 进一步信息请参阅帮助。"
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates 现在将转换您现有的模板，以便您能在新版本中继续使用它们。请按确定继续。"
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates 成功升级到了 {1} 版本!"
   },
   "standardformat.config": {
     "message": "默认格式…"
@@ -1975,8 +1998,26 @@
   "translatorNickname.label": {
     "message": "yliu & yfdyh000 (BabelZilla)"
   },
+  "trialDays": {
+    "message": "您还剩{0}个试用期。"
+  },
+  "trialExpiry": {
+    "message": "您的试用期在 {0} 天前到期。"
+  },
   "tzname.label": {
     "message": "GMT, PST, EST, …"
+  },
+  "updateMessageNewBrackets1": {
+    "message": "尊敬的 SmartTemplates 用户，我们很高兴地宣布，从这个版本开始，SmartTemplates 开始支持大括号 { } 和 <style> 标签的使用，所以您现在可以在您的模板中做高级CSS样式了。"
+  },
+  "updateMessageNewBrackets2": {
+    "message": "从现在起，括号表达式内的特定语法已改变：使用两个方括号 [[%cc(name)%]] 代替圆括号 {%cc(name)%} - 进一步信息请参阅帮助。"
+  },
+  "updateMessageNewBrackets3": {
+    "message": "SmartTemplates 现在将转换您现有的模板，以便您能在新版本中继续使用它们。请按确定继续。"
+  },
+  "updateMessageVersion": {
+    "message": "SmartTemplates 成功升级到了 {1} 版本!"
   },
   "updates.changeLog": {
     "message": "发行说明（英文）"
@@ -2039,7 +2080,10 @@
   "whats-new-maintenance": {
     "message": "维护更新 $ver$。此特定修复已包含在上一版本之后的更新中。",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "whitespace_note": {
@@ -2061,11 +2105,11 @@
   "xsent_note.label": {
     "message": "上面的变量将正常设置当前的值。当与 %X:=sent% 组合时，将设置过去的值。"
   },
-  "xsent_short.cap": {
-    "message": "本地化日期和时间示例"
-  },
   "xsent_short_note.label": {
     "message": "额外的，你可以在以下两个变种变量使用："
+  },
+  "xsent_short.cap": {
+    "message": "本地化日期和时间示例"
   },
   "y.up.label": {
     "message": "年 (1970)"
@@ -2087,35 +2131,5 @@
   },
   "yes_button": {
     "message": "是"
-  },
-  "quotedTags.scope": {
-    "message": "对于 `%deleteQuotedTags()%` 和 `%replaceQuotedTags()%`，可以使用不带引号的范围名称来代替数字引用级别："
-  },
-  "quotedTags.scope.head": {
-    "message": "仅搜索邮件的 head 部分。"
-  },
-  "quotedTags.scope.body": {
-    "message": "搜索整个邮件正文，包括未引用的内容。"
-  },
-  "quotedTags.scope.all": {
-    "message": "搜索 head 部分和正文。"
-  },
-  "quotedTags.scope.numeric": {
-    "message": "省略引用级别或范围时，默认为引用级别 1。数字 0 包含正文中的所有引用级别，但在内联转发时仅限于转发的内容；明确指定 body 则搜索整个正文。"
-  },
-  "quotedTags.styles.body": {
-    "message": "删除正文中的样式块，包括继承自原始邮件、可能影响回复中段落间距的样式块。保留邮件 head 部分的样式。"
-  },
-  "quotedTags.styles.all": {
-    "message": "删除 head 部分和正文中的样式块，以获得干净的格式设置基础。"
-  },
-  "quotedTags.styles.inline": {
-    "message": "这些示例删除的是 style 元素，而不是各个元素上的内联 style 属性。"
-  },
-  "snippets.contextMenu.legend": {
-    "message": "添加到邮件撰写窗口的右键菜单"
-  },
-  "snippets.settingsLegend": {
-    "message": "智能片段 (邮件撰写)"
   }
 }

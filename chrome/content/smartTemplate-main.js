@@ -576,7 +576,7 @@ var SmartTemplate4 = {
           };
           const fileName = theFileTemplate.path.split("\\").pop();
           let truncLen = 30;
-          const msg = util.getBundleString("st.notification.usedLastTemplate");
+          const msg = util.getBundleString("notification.usedLastTemplate");
           util.popupAlert(
             util.ADDON_TITLE,
             msg.replace("{template}", theFileTemplate.label).replaceAll("{br}", "\n") +
@@ -611,7 +611,7 @@ var SmartTemplate4 = {
       fileTemplateSource = await SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
       if (fileTemplateSource.failed) {
         let text = util
-          .getBundleString("st.fileTemplates.error.filePath")
+          .getBundleString("fileTemplates.error.filePath")
           .replace(/\n/g, "{br}")
           .replace("{0}", theFileTemplate.label)
           .replace("{1}", theFileTemplate.path);
@@ -694,8 +694,8 @@ var SmartTemplate4 = {
         // if insertTemplate throws, we avoid calling it again
         let isStartup = isChangeTemplate ? false : !flags.isThunderbirdTemplate;
         if (isChangeTemplate && gMsgCompose.bodyModified) {
-          let w1 = util.getBundleString("st.notification.editedChangeWarning");
-          let q1 = util.getBundleString("st.notification.editedChangeChallenge");
+          let w1 = util.getBundleString("notification.editedChangeWarning");
+          let q1 = util.getBundleString("notification.editedChangeChallenge");
 
           const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
             msg: w1.replace("{0}", fileTemplateSource.label) + "{br}" + q1,
@@ -817,19 +817,19 @@ var SmartTemplate4 = {
 
     try {
       if (isBodyModified) {
-        let question = util.getBundleString("st.notification.bodyModified"),
+        let question = util.getBundleString("notification.bodyModified"),
           detail,
-          instructions = util.getBundleString("st.notification.bodyModified.instructions");
+          instructions = util.getBundleString("notification.bodyModified.instructions");
 
         if (window.SmartTemplate4.CurrentTemplate) {
           let templateName =
             window.SmartTemplate4.CurrentTemplate.label ||
             window.SmartTemplate4.CurrentTemplate.path;
-          detail = util.getBundleString("st.notification.bodyModified.externalTemplate", [
+          detail = util.getBundleString("notification.bodyModified.externalTemplate", [
             templateName,
           ]);
         } else {
-          detail = util.getBundleString("st.notification.bodyModified.accountTemplate");
+          detail = util.getBundleString("notification.bodyModified.accountTemplate");
         }
         if (SmartTemplate4.PreprocessingFlags.isBodyUnmodified || isTemplateBodyModified === false) {
           isOverrideBodyModified = true;
@@ -854,7 +854,7 @@ var SmartTemplate4 = {
           );
           if (fileTemplateSource.failed) {
             // shouldn't actually happen as we just loaded it before
-            let text = util.getBundleString("st.fileTemplates.error.filePath");
+            let text = util.getBundleString("fileTemplates.error.filePath");
             alert(text);
           } else {
             if (isOverrideBodyModified) {
@@ -1182,7 +1182,7 @@ var SmartTemplate4 = {
         wrn = util.getBundleString("SmartTemplateMainButton.renew", [days]);
         removeClass(btn, "expired");
         addClass(btn, "renew");
-        tooltip = SmartTemplate4.Util.getBundleString("st.menu.license.tooltip", [
+        tooltip = SmartTemplate4.Util.getBundleString("menu.license.tooltip", [
           "SmartTemplates",
         ]);
       } else {
@@ -1198,7 +1198,7 @@ var SmartTemplate4 = {
       const isNewsMinimal = SmartTemplate4.Preferences.getBoolPref("news.minimal");
       txt = util.getBundleString("SmartTemplateMainButton.updated");
       addClass(btn, "newsflash");
-      tooltip = util.getBundleString("st.menu.update.tooltip", ["SmartTemplates"]);
+      tooltip = util.getBundleString("menu.update.tooltip", ["SmartTemplates"]);
       btnStatus.classList.add("newsflash");
       if (isNewsMinimal) {
         addClass(btn, "news-minimal");
@@ -1220,7 +1220,7 @@ var SmartTemplate4 = {
       btnStatus.classList.remove("newsflash");
     }
     if (!txt) {
-      txt = util.getBundleString("smartTemplate4.settings.label");
+      txt = util.getBundleString("extensionName");
       btnStatus.classList.remove("newsflash");
     }
     let newsMenu = document.getElementById("smartTemplates-news");
@@ -1243,22 +1243,22 @@ var SmartTemplate4 = {
 
   get XML_replyMenus() {
     return `
-      <menu label="__MSG_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic" controller="cmd_reply" accesskey="__MSG_st.menuaccess.reply__">
+      <menu label="__MSG_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic" controller="cmd_reply" accesskey="__MSG_menuaccess.reply__">
         <menupopup>
-          <menuitem id="smartTemplates-reply-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-reply-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-reply-last" label="__MSG_menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-reply-default" label="__MSG_menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         </menupopup>
       </menu>
-      <menu label="__MSG_st.menu.replyAll__" id="smartTemplates-reply-all-menu" class="menu-iconic" controller="cmd_replyAll" accesskey="__MSG_st.menuaccess.replyAll__">
+      <menu label="__MSG_menu.replyAll__" id="smartTemplates-reply-all-menu" class="menu-iconic" controller="cmd_replyAll" accesskey="__MSG_menuaccess.replyAll__">
         <menupopup>
-          <menuitem id="smartTemplates-reply-all-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-reply-all-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-reply-all-last" label="__MSG_menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-reply-all-default" label="__MSG_menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         </menupopup>
       </menu>
-      <menu label="__MSG_st.menu.replyList__" id="smartTemplates-reply-list-menu" class="menu-iconic" controller="cmd_replyList" accesskey="__MSG_st.menuaccess.replyList__">
+      <menu label="__MSG_menu.replyList__" id="smartTemplates-reply-list-menu" class="menu-iconic" controller="cmd_replyList" accesskey="__MSG_menuaccess.replyList__">
         <menupopup>
-          <menuitem id="smartTemplates-reply-list-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-reply-list-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-reply-list-last" label="__MSG_menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-reply-list-default" label="__MSG_menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         </menupopup>
       </menu>
     `;
@@ -1266,10 +1266,10 @@ var SmartTemplate4 = {
 
   get XML_forwardMenus() {
     return `
-            <menu label="__MSG_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic" controller="cmd_forward"  accesskey="__MSG_st.menuaccess.forward__">
+            <menu label="__MSG_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic" controller="cmd_forward"  accesskey="__MSG_menuaccess.forward__">
               <menupopup>
-                <menuitem id="smartTemplates-forward-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-fwd st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-forward-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-forward-last" label="__MSG_menu.template.last__" class="menuitem-iconic st-last-fwd st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-forward-default" label="__MSG_menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               </menupopup>
             </menu>
     `;
@@ -1280,7 +1280,7 @@ var SmartTemplate4 = {
       ? `checked="true"`
       : "";
     return `
-      <menuitem id="smartTemplates-toggle-label" label="__MSG_st.menu.hideLabel__" class="menuitem-iconic st-toggle-label" oncommand="window.SmartTemplate4.doCommand(this);" type="checkbox" ${isDisabled} onclick="event.stopPropagation();" />
+      <menuitem id="smartTemplates-toggle-label" label="__MSG_menu.hideLabel__" class="menuitem-iconic st-toggle-label" oncommand="window.SmartTemplate4.doCommand(this);" type="checkbox" ${isDisabled} onclick="event.stopPropagation();" />
     `;
   },
 
@@ -1333,11 +1333,11 @@ var SmartTemplate4 = {
 
     var XHTML_Markup = `<vbox id="titlebar">
   <div id="smartTemplatesMainPopup" style="display:none;">
-    <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-    <menu label="__MSG_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic" controller="cmd_newMessage" accesskey="__MSG_st.menuaccess.write__">
+    <menuitem id="smartTemplates-checklicense" label="__MSG_menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+    <menu label="__MSG_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic" controller="cmd_newMessage" accesskey="__MSG_menuaccess.write__">
       <menupopup>
-        <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-write-last" label="__MSG_menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-write-default" label="__MSG_menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
       </menupopup>
     </menu>
     ${this.XML_replyMenus}
@@ -1345,11 +1345,11 @@ var SmartTemplate4 = {
     <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
     <menuitem id="smartTemplates-settings" label="__MSG_preferences.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
 
-    <menu id="smartTemplates-docs" label="__MSG_st.menu.docs__" class="menu-iconic">
+    <menu id="smartTemplates-docs" label="__MSG_menu.docs__" class="menu-iconic">
       <menupopup>
-        <menuitem id="smartTemplates-support" label="__MSG_st.menu.supportSite__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-variables" label="__MSG_st.menu.docs.variables__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-premium" label="__MSG_st.menu.docs.premium__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-support" label="__MSG_menu.supportSite__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-variables" label="__MSG_menu.docs.variables__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-premium" label="__MSG_menu.docs.premium__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
       </menupopup>
     </menu>
 

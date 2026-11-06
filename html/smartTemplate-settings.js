@@ -347,14 +347,14 @@ var fileTemplates = {
       category = getData("txtTemplateCategory", entry?.category);
 
     if (!path.trim() && !entry) {
-      alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnEnterPath"));
+      alert(SmartTemplates.Util.getBundleString("fileTemplates.wrnEnterPath"));
       const pickRow = document.querySelector(".templateFilePicker");
       pickRow.classList.add("highlight");
       return;
     }
 
     if (!label.trim() && !entry) {
-      alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnEnterTitle"));
+      alert(SmartTemplates.Util.getBundleString("fileTemplates.wrnEnterTitle"));
       return;
     }
 
@@ -365,7 +365,7 @@ var fileTemplates = {
       // update case
       selectedIndex = this.activeFileList.selectedIndex;
       if (selectedIndex < 0) {
-        alert(SmartTemplates.Util.getBundleString("st.fileTemplates.wrnSelectUpdateItem"));
+        alert(SmartTemplates.Util.getBundleString("fileTemplates.wrnSelectUpdateItem"));
         return;
       }
       existingEntry = this.CurrentEntries[selectedIndex];
@@ -1587,7 +1587,7 @@ SmartTemplates.Settings = {
     /* 
      ***  TO DO: 
      ***      we will handle these via the category switch catFileTemplates instead!
-		const label = messenger.i18n.getMessage(("st.fileTemplates");
+		const label = messenger.i18n.getMessage(("fileTemplates");
 		theMenu.appendItem(label, "fileTemplates", "file templates: to replace Stationery");
     */
 		for (let idx = 0; idx < iAccounts; idx++) {
@@ -2045,27 +2045,27 @@ SmartTemplates.Settings = {
 		switch(validStatus) {
 			case  "extend": {
 				const txtExtend = SmartTemplates.Util.getBundleString(
-          "st.notification.premium.btn.extendLicense"
+          "notification.premium.btn.extendLicense"
         );
 				btnLicense.setAttribute("collapsed", false);
 				btnLicense.textContent = txtExtend; // text should be extend not renew
 				btnLicense.setAttribute('tooltiptext',
-					SmartTemplates.Util.getBundleString("st.notification.premium.btn.extendLicense.tooltip"));
+					SmartTemplates.Util.getBundleString("notification.premium.btn.extendLicense.tooltip"));
 				return txtExtend;
 			}
 			case "renew": {
-				const txtRenew = SmartTemplates.Util.getBundleString("st.notification.premium.btn.renewLicense");
+				const txtRenew = SmartTemplates.Util.getBundleString("notification.premium.btn.renewLicense");
 				btnLicense.textContent = txtRenew;
 			  return txtRenew;
 			}
 			case "buy": {
-				const buyLabel = SmartTemplates.Util.getBundleString("st.notification.premium.btn.getLicense");
+				const buyLabel = SmartTemplates.Util.getBundleString("notification.premium.btn.getLicense");
 				btnLicense.textContent = buyLabel;
 			  return buyLabel;
 			}
 			case "upgrade": {
 				const upgradeLabel = SmartTemplates.Util.getBundleString(
-          "st.notification.premium.btn.upgrade"
+          "notification.premium.btn.upgrade"
         );
 				btnLicense.textContent = upgradeLabel;
 				btnLicense.classList.add('upgrade'); // stop flashing
@@ -2152,7 +2152,7 @@ SmartTemplates.Settings = {
 						let txt = validationInvalidAddon.textContent;
 						txt = txt.replace('{0}','SmartTemplates').replace('{1}','ST'); // keys for {0} start with {1}
 						if (txt.indexOf(addonName) < 0) {
-							txt += " " + SmartTemplates.Util.getBundleString("st.licenseValidation.guessAddon").replace('{2}',addonName);
+							txt += " " + SmartTemplates.Util.getBundleString("licenseValidation.guessAddon").replace('{2}',addonName);
 						}
 						validationInvalidAddon.textContent = txt;
 						this.showValidationMessage(validationInvalidAddon, silent);
@@ -2160,7 +2160,7 @@ SmartTemplates.Settings = {
 				} break;
         case "Expired":
 					logo.classList.add("standard");
-          licenseDateLabel.textContent = SmartTemplates.Util.getBundleString("st.licenseValidation.expired");
+          licenseDateLabel.textContent = SmartTemplates.Util.getBundleString("licenseValidation.expiredDate");
           licenseDate.value = niceDate;
           this.showValidationMessage(validationExpired, false); // always show
           break;

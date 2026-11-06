@@ -60,38 +60,38 @@ const ControllerMap = new Map([
 // all .default items had classList:"menuitem-iconic"
 const writeMenus = [
   { type:"menu", id:"smartTemplates-write-menu", classList:"menu-iconic", 
-    label:"new.tab", accesskey:"st.menuaccess.write",
+    label:"new.tab", accesskey:"menuaccess.write",
     controller:"cmd_newMessage", 
     popupItems: [
-      { id:"smartTemplates-write-last", label:"st.menu.template.last", controller:"cmd_newMessage", ctr_type: "most-recent" },
-      { id:"smartTemplates-write-default", label:"st.menu.template.default", controller:"cmd_newMessage", ctr_type: "account" },
+      { id:"smartTemplates-write-last", label:"menu.template.last", controller:"cmd_newMessage", ctr_type: "most-recent" },
+      { id:"smartTemplates-write-default", label:"menu.template.default", controller:"cmd_newMessage", ctr_type: "account" },
     ],
   },
 ];
 
 const replyMenus = [
   { type:"menu", id:"smartTemplates-reply-menu", classList:"menu-iconic", 
-    label:"rsp.tab", accesskey:"st.menuaccess.reply",
+    label:"rsp.tab", accesskey:"menuaccess.reply",
     controller:"cmd_reply", 
     popupItems: [
-      { id:"smartTemplates-reply-last", label:"st.menu.template.last", controller:"cmd_reply", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-default", label:"st.menu.template.default", controller:"cmd_reply", ctr_type: "account" },
+      { id:"smartTemplates-reply-last", label:"menu.template.last", controller:"cmd_reply", ctr_type: "most-recent" },
+      { id:"smartTemplates-reply-default", label:"menu.template.default", controller:"cmd_reply", ctr_type: "account" },
     ],
   }, 
   { type:"menu", id:"smartTemplates-reply-all-menu", classList:"menu-iconic", 
-    label:"st.menu.replyAll", accesskey:"st.menuaccess.replyAll",
+    label:"menu.replyAll", accesskey:"menuaccess.replyAll",
     controller:"cmd_replyAll", 
     popupItems: [
-      { id:"smartTemplates-reply-all-last", label:"st.menu.template.last", controller:"cmd_replyAll", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", controller:"cmd_replyAll", ctr_type: "account" },
+      { id:"smartTemplates-reply-all-last", label:"menu.template.last", controller:"cmd_replyAll", ctr_type: "most-recent" },
+      { id:"smartTemplates-reply-all-default", label:"menu.template.default", controller:"cmd_replyAll", ctr_type: "account" },
     ],
   }, 
   { type:"menu", id:"smartTemplates-reply-list-menu", classList:"menu-iconic", 
-    label:"st.menu.replyList", accesskey:"st.menuaccess.replyList",
+    label:"menu.replyList", accesskey:"menuaccess.replyList",
     controller:"cmd_replyList", 
     popupItems: [
-      { id:"smartTemplates-reply-list-last", label:"st.menu.template.last", controller:"cmd_replyList", ctr_type: "most-recent" },
-      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", controller:"cmd_replyList", ctr_type: "account" },
+      { id:"smartTemplates-reply-list-last", label:"menu.template.last", controller:"cmd_replyList", ctr_type: "most-recent" },
+      { id:"smartTemplates-reply-list-default", label:"menu.template.default", controller:"cmd_replyList", ctr_type: "account" },
     ],
   }, 
 ];
@@ -99,11 +99,11 @@ const replyMenus = [
 
 const forwardMenus = [
   { type:"menu", id:"smartTemplates-forward-menu", classList:"menu-iconic", 
-    label:"fwd.tab", accesskey:"st.menuaccess.forward",
+    label:"fwd.tab", accesskey:"menuaccess.forward",
     controller:"cmd_forward", 
     popupItems: [
-      { id:"smartTemplates-forward-last", label:"st.menu.template.last", controller:"cmd_forward", ctr_type: "most-recent" },
-      { id:"smartTemplates-forward-default", label:"st.menu.template.default", controller:"cmd_forward", ctr_type: "account" },
+      { id:"smartTemplates-forward-last", label:"menu.template.last", controller:"cmd_forward", ctr_type: "most-recent" },
+      { id:"smartTemplates-forward-default", label:"menu.template.default", controller:"cmd_forward", ctr_type: "account" },
     ],
   },  
 ];
@@ -330,9 +330,9 @@ var MenuHelper = {
       case "reply":
         return "rsp.tab";
       case "replyAll":
-        return "st.menu.replyAll";
+        return "menu.replyAll";
       case "replyList":
-        return "st.menu.replyList";
+        return "menu.replyList";
       case "write":
         return "new.tab";
     }
@@ -505,7 +505,7 @@ async function addMenus(menuArray, context) {
                 parentId: catId,
                 icons:  "../chrome/content/skin/icons/warning.svg",
                 title: messenger.i18n.getMessage(
-                  "st.fileTemplates.restrictTemplateCats", 
+                  "fileTemplates.restrictTemplateCats", 
                   [menuRestrict.maxCategories.toString()]),
                 onclick: (_e) => {
                   messenger.NotifyTools.notifyExperiment({
@@ -564,11 +564,11 @@ async function addMenus(menuArray, context) {
         await messenger.menus.create({
           contexts: [context],
           icons:  "../chrome/content/skin/icons/warning.svg",
-          title: messenger.i18n.getMessage("st.fileTemplates.restrictionQuestion"),
+          title: messenger.i18n.getMessage("fileTemplates.restrictionQuestion"),
           parentId: parentPopupId,
           onclick: (_e) => {
             let txt = messenger.i18n.getMessage(
-              "st.fileTemplates.restrictTemplates",
+              "fileTemplates.restrictTemplates",
               [
                 menuRestrict.MAX_FREE_TEMPLATES.toString(), 
                 menuRestrict.MAX_STANDARD_TEMPLATES.toString(),
@@ -596,7 +596,7 @@ async function addMenus(menuArray, context) {
         parentId: popupId,
         id: `${m.controller}-openTemplate`,
         icons: "../chrome/content/skin/icons/template-load.png",
-        title: messenger.i18n.getMessage("st.fileTemplates.openFile"),
+        title: messenger.i18n.getMessage("fileTemplates.openFile"),
         onclick: (_e) => {
           messenger.NotifyTools.notifyExperiment({
             event: "doCommand", 
@@ -619,7 +619,7 @@ async function addMenus(menuArray, context) {
         id: `configure-${m.controller}`,
         icons: "../chrome/content/skin/icons/settings.svg",
         parentId: popupId,
-        title: messenger.i18n.getMessage("st.fileTemplates.configureMenu"),
+        title: messenger.i18n.getMessage("fileTemplates.configureMenu"),
         onclick: (_e) => {
           messenger.NotifyTools.notifyExperiment({
             event: "doCommand", 
@@ -656,7 +656,7 @@ async function createHeaderMenu() {
     contexts: [Context],
     enabled: true,
     id: "toggleLabel",
-    title: messenger.i18n.getMessage("st.menu.hideLabel"),
+    title: messenger.i18n.getMessage("menu.hideLabel"),
     type: "checkbox",
     checked: isLabelHidden,
     onclick: async (_e) => {
@@ -2029,8 +2029,6 @@ async function main() {
           Your own options have to go in your own options dialog."
     NICE TO HAVE: A panel under Composition & addressing going to 
   
-    messenger.WindowListener.registerWindow("chrome://messenger/content/am-addressing.xhtml", "chrome/content/scripts/st-am-adressing.js");
-    messenger.WindowListener.registerWindow("chrome://messenger/content/am-identity-edit.xhtml", "chrome/content/scripts/st-am-adressing.js");
   */
 
   /*

@@ -160,24 +160,24 @@ var Register = {
           switch (licenseInfo.keyType) {
             case 0: // Pro
               btnProLicense.label = util.getBundleString(
-                "st.notification.premium.btn.renewLicense"
+                "notification.premium.btn.renewLicense"
               );
               Register.addRegisterEventListener(btnProLicense, 0, true);
               break;
             case 1: // Domain
               btnDomainLicense.label = util.getBundleString(
-                "st.notification.premium.btn.renewDomainLicense"
+                "notification.premium.btn.renewDomainLicense"
               );
               Register.addRegisterEventListener(btnDomainLicense, 1, true);
               btnDomainLicense.classList.add("register");
               btnProLicense.classList.remove("register");
               break;
             case 2: // Standard
-              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade");
+              btnProLicense.label = util.getBundleString("notification.premium.btn.upgrade");
               Register.addRegisterEventListener(btnProLicense, 3); // upgrade from standard
               btnProLicense.classList.add("upgrade"); // no flashing
               btnStdLicense.label = util.getBundleString(
-                "st.notification.premium.btn.renewLicense"
+                "notification.premium.btn.renewLicense"
               );
               break;
           }
@@ -186,13 +186,13 @@ var Register = {
           switch (licenseInfo.keyType) {
             case 0:
               btnProLicense.label = util.getBundleString(
-                "st.notification.premium.btn.extendLicense"
+                "notification.premium.btn.extendLicense"
               );
               Register.addRegisterEventListener(btnProLicense, 0, true);
               btnProLicense.classList.add("register");
               btnProLicense.setAttribute(
                 "tooltiptext",
-                util.getBundleString("st.notification.premium.btn.extendLicense.tooltip")
+                util.getBundleString("notification.premium.btn.extendLicense.tooltip")
               );
 
               break;
@@ -200,21 +200,21 @@ var Register = {
               btnProLicense.classList.remove("register"); // not flashing
               Register.addRegisterEventListener(btnDomainLicense, 1, true);
               btnDomainLicense.label = util.getBundleString(
-                "st.notification.premium.btn.extendDomainLicense"
+                "notification.premium.btn.extendDomainLicense"
               );
               btnDomainLicense.classList.add("register");
               break;
             case 2:
-              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade");
+              btnProLicense.label = util.getBundleString("notification.premium.btn.upgrade");
               Register.addRegisterEventListener(btnProLicense, 3, true); // upgrade from standard
               btnProLicense.classList.add("register");
               // we suggest an upgrade (no extension before std license is expired!!)
               btnStdLicense.label = util.getBundleString(
-                "st.notification.premium.btn.extendLicense"
+                "notification.premium.btn.extendLicense"
               );
               Register.addRegisterEventListener(btnStdLicense, 2, true);
 
-              // extText = util.getBundleString("st.notification.premium.btn.extendLicense");
+              // extText = util.getBundleString("notification.premium.btn.extendLicense");
               // check whether renewal is up within 30 days
               {
                 let today = new Date(),
@@ -244,7 +244,7 @@ var Register = {
     switch (licenseInfo.status) {
       case "Expired":
         getElement("licenseDateLabel").textContent = util.getBundleString(
-          "st.licenseValidation.expired"
+          "licenseValidation.expiredDate"
         );
         getElement("LicenseTerm").classList.add("expired");
         break;

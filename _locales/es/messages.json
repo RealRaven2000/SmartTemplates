@@ -1,4 +1,8 @@
 {
+  "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Día de la semana (Vie.)"
   },
@@ -1262,31 +1266,28 @@
   "silentUpdates.tip": {
     "message": "No abra el registro de cambios después de actualizar SmartTemplates."
   },
-  "smarttemplate4_button": {
-    "message": "Editar plantillas y encabezados de respuesta"
-  },
-  "smartTemplate4.changeTemplate.label": {
+  "changeTemplate.label": {
     "message": "Cambiar plantilla…"
   },
-  "smartTemplate4.changeTemplate.tooltip": {
+  "changeTemplate.tooltip": {
     "message": "Selecciona una plantilla diferente: ¡úsela antes de editar en el cuerpo del correo!"
   },
-  "smartTemplate4.cleandeferred.label": {
+  "cleandeferred.label": {
     "message": "¡Limpiar!"
   },
-  "smartTemplate4.cleandeferred.tooltip": {
+  "cleandeferred.tooltip": {
     "message": "Limpiar todas las variables de SmartTemplate"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
+  "deferredcontext.cleanup": {
     "message": "Reemplazar variable con contenido"
   },
-  "smartTemplate4.deferredcontext.delete": {
+  "deferredcontext.delete": {
     "message": "Eliminar la variable SmartTemplates"
   },
-  "smartTemplate4.deferredcontext.update": {
+  "deferredcontext.update": {
     "message": "Actualizar contenido de SmartTemplates"
   },
-  "smartTemplate4.settings.tooltip": {
+  "settings.tooltip": {
     "message": "Opciones de SmartTemplates"
   },
   "SmartTemplateMainButton.expired": {
@@ -1440,25 +1441,25 @@
   "splashScreen.tip": {
     "message": "Ocultar diálogo de información que muestra nuevas funciones y correcciones de errores al actualizar."
   },
-  "st.confirmVersionLink": {
+  "confirmVersionLink": {
     "message": "¿Quiere que se muestre la lista de cambios de SmartTemplates?"
   },
-  "st.fileFunction.notExists": {
+  "fileFunction.notExists": {
     "message": "La función {0} no pudo encontrar o acceder al archivo. Verifique la ruta a continuación:"
   },
-  "st.fileTemplates": {
+  "fileTemplates": {
     "message": "Archivos de plantilla"
   },
-  "st.fileTemplates.configureMenu": {
+  "fileTemplates.configureMenu": {
     "message": "Configurar elementos de menú…"
   },
-  "st.fileTemplates.error.charSet": {
+  "fileTemplates.error.charSet": {
     "message": "Problemas al convertir una plantilla HTML del juego de caracteres [{1}] \nUsando datos de cadena sin formato en su lugar. \nSi esto da como resultado caracteres ilegibles, intente agregar un 'meta charset"
   },
-  "st.fileTemplates.error.filePath": {
+  "fileTemplates.error.filePath": {
     "message": "No se pudo cargar la plantilla de archivo '{0}' desde la ruta: \n{1}\nEl archivo puede haber sido eliminado o renombrado."
   },
-  "st.fileTemplates.error.nocontroller": {
+  "fileTemplates.error.nocontroller": {
     "message": "La función $controllerName$ no está disponible en este contexto; no puedes hacer eso con el correo electrónico seleccionado.",
     "placeholders": {
       "controllerName": {
@@ -1467,13 +1468,13 @@
       }
     }
   },
-  "st.fileTemplates.openFile": {
+  "fileTemplates.openFile": {
     "message": "Abra el archivo de plantilla SmartTemplates ..."
   },
-  "st.fileTemplates.restrictionQuestion": {
+  "fileTemplates.restrictionQuestion": {
     "message": "¿Por qué algunas plantillas de este menú están deshabilitadas?"
   },
-  "st.fileTemplates.restrictTemplateCats": {
+  "fileTemplates.restrictTemplateCats": {
     "message": "Para configurar más de $max_Cats$ Categorías, obtenga una licencia SmartTemplates Pro…",
     "placeholders": {
       "max_Cats": {
@@ -1482,7 +1483,7 @@
       }
     }
   },
-  "st.fileTemplates.restrictTemplates": {
+  "fileTemplates.restrictTemplates": {
     "message": "El número de plantillas por menú está restringido. Puede configurar hasta $max_free$ elementos del menú sin una licencia, y $max_std$ elementos del menú con una licencia de SmartTemplates Standard. SmartTemplates Pro no tiene restricciones.",
     "placeholders": {
       "max_free": {
@@ -1495,43 +1496,43 @@
       }
     }
   },
-  "st.fileTemplates.selectFromMenu": {
+  "fileTemplates.selectFromMenu": {
     "message": "Seleccione una plantilla del menú desplegable."
   },
-  "st.fileTemplates.wrnEnterPath": {
+  "fileTemplates.wrnEnterPath": {
     "message": "Seleccione un archivo que contenga el html / texto y sus variables de SmartTemplates. Este archivo se procesará e insertará cuando se seleccione el nuevo elemento del menú. Aún puede modificar el archivo de plantilla según sus necesidades después de crear el elemento del menú haciendo clic en Editar."
   },
-  "st.fileTemplates.wrnEnterTitle": {
+  "fileTemplates.wrnEnterTitle": {
     "message": "Por favor ingrese un título!"
   },
-  "st.fileTemplates.wrnSelectUpdateItem": {
+  "fileTemplates.wrnSelectUpdateItem": {
     "message": "¡Debe seleccionar un elemento de la lista para actualizar!"
   },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
+  "fileTemplates.wrnSelectUpdateItem.caption": {
     "message": "Actualizar plantillas"
   },
-  "st.licenseValidation.expired": {
+  "licenseValidation.expiredDate": {
     "message": "Su licencia expiró el:"
   },
-  "st.licenseValidation.guessAddon": {
+  "licenseValidation.guessAddon": {
     "message": "(La clave introducida puede ser para {2})."
   },
-  "st.menu.docs": {
+  "menu.docs": {
     "message": "Documentación"
   },
-  "st.menu.docs.premium": {
+  "menu.docs.premium": {
     "message": "Características premium…"
   },
-  "st.menu.docs.variables": {
+  "menu.docs.variables": {
     "message": "Variables y Comandos…"
   },
-  "st.menu.hideLabel": {
+  "menu.hideLabel": {
     "message": "Ocultar etiqueta del botón"
   },
-  "st.menu.license": {
+  "menu.license": {
     "message": "Verifique el estado de la licencia …"
   },
-  "st.menu.license.tooltip": {
+  "menu.license.tooltip": {
     "message": "Haga clic aquí para comprobar el estado de la licencia de $addonName$.",
     "placeholders": {
       "addonName": {
@@ -1540,22 +1541,22 @@
       }
     }
   },
-  "st.menu.replyAll": {
+  "menu.replyAll": {
     "message": "Responder a todos"
   },
-  "st.menu.replyList": {
+  "menu.replyList": {
     "message": "Responder a la lista"
   },
-  "st.menu.supportSite": {
+  "menu.supportSite": {
     "message": "Sitio de soporte…"
   },
-  "st.menu.template.default": {
+  "menu.template.default": {
     "message": "Plantilla predeterminada (cuenta)"
   },
-  "st.menu.template.last": {
+  "menu.template.last": {
     "message": "Última plantilla"
   },
-  "st.menu.update.tooltip": {
+  "menu.update.tooltip": {
     "message": "Seleccione «Últimas noticias» en este menú para leer las novedades en $addonName$.\n Esto restablecerá el botón a su apariencia predeterminada.",
     "placeholders": {
       "addonName": {
@@ -1564,28 +1565,28 @@
       }
     }
   },
-  "st.menuaccess.forward": {
+  "menuaccess.forward": {
     "message": "E"
   },
-  "st.menuaccess.reply": {
+  "menuaccess.reply": {
     "message": "R"
   },
-  "st.menuaccess.replyAll": {
+  "menuaccess.replyAll": {
     "message": "T"
   },
-  "st.menuaccess.replyList": {
+  "menuaccess.replyList": {
     "message": "L"
   },
-  "st.menuaccess.write": {
+  "menuaccess.write": {
     "message": "R"
   },
-  "st.notification.bodyModified": {
+  "notification.bodyModified": {
     "message": "Thunderbird dice que ya has escrito algo, ¿quieres cargar la plantilla de todos modos?"
   },
-  "st.notification.bodyModified.accountTemplate": {
+  "notification.bodyModified.accountTemplate": {
     "message": "Esto descartará cualquier cosa escrita y cargará la plantilla de la cuenta."
   },
-  "st.notification.bodyModified.externalTemplate": {
+  "notification.bodyModified.externalTemplate": {
     "message": "Esto descartará cualquier cosa escrita y recargará la plantilla actual [$template$].",
     "placeholders": {
       "template": {
@@ -1593,100 +1594,100 @@
       }
     }
   },
-  "st.notification.bodyModified.instructions": {
+  "notification.bodyModified.instructions": {
     "message": "Haz clic en Cancelar para mantener el contenido del correo electrónico sin cambios."
   },
-  "st.notification.donate": {
+  "notification.donate": {
     "message": "Donar"
   },
-  "st.notification.dontShowAgain": {
+  "notification.dontShowAgain": {
     "message": "No mostrar este mensaje de nuevo."
   },
-  "st.notification.editedChangeChallenge": {
+  "notification.editedChangeChallenge": {
     "message": "Cualquier texto que haya ingresado manualmente desde que abrió Composer será eliminado, sin Deshacer. ¿De todas maneras, continúe?"
   },
-  "st.notification.editedChangeWarning": {
+  "notification.editedChangeWarning": {
     "message": "Ya ha escrito texto y desea cambiar a la plantilla {0}"
   },
-  "st.notification.license.text": {
+  "notification.license.text": {
     "message": "SmartTemplates sigue funcionando como siempre. Una licencia elimina este recordatorio — haz clic abajo para más información."
   },
-  "st.notification.licensing": {
+  "notification.licensing": {
     "message": "Más sobre licencias"
   },
-  "st.notification.parsing": {
+  "notification.parsing": {
     "message": "Estoy analizando variables:"
   },
-  "st.notification.premium.btn.extendDomainLicense": {
+  "notification.premium.btn.extendDomainLicense": {
     "message": "Ampliar licencia de dominio"
   },
-  "st.notification.premium.btn.extendLicense": {
+  "notification.premium.btn.extendLicense": {
     "message": "Extender licencia"
   },
-  "st.notification.premium.btn.extendLicense.tooltip": {
+  "notification.premium.btn.extendLicense.tooltip": {
     "message": "Esto ampliará la fecha actual de la licencia en 1 año. Es típicamente más barato que una nueva licencia."
   },
-  "st.notification.premium.btn.getLicense": {
+  "notification.premium.btn.getLicense": {
     "message": "Comprar Licencia"
   },
-  "st.notification.premium.btn.renewDomainLicense": {
+  "notification.premium.btn.renewDomainLicense": {
     "message": "Renovar licencia de dominio"
   },
-  "st.notification.premium.btn.renewLicense": {
+  "notification.premium.btn.renewLicense": {
     "message": "Renovar Licencia"
   },
-  "st.notification.premium.btn.upgrade": {
+  "notification.premium.btn.upgrade": {
     "message": "Actualizar a Pro"
   },
-  "st.notification.premium.btn.upgrade.hotKey": {
+  "notification.premium.btn.upgrade.hotKey": {
     "message": "A"
   },
-  "st.notification.premium.sendByFilter": {
+  "notification.premium.sendByFilter": {
     "message": "Con una licencia válida de SmartTemplates Pro, el correo electrónico ahora se enviará automáticamente."
   },
-  "st.notification.premium.text": {
+  "notification.premium.text": {
     "message": "{1} es una función Premium. Seguirá funcionando, pero actualizar a una licencia SmartTemplates Pro eliminará estos recordatorios y ayudará a apoyar el complemento."
   },
-  "st.notification.premium.text.plural": {
+  "notification.premium.text.plural": {
     "message": "{1} son funciones Premium. Seguirán funcionando, pero actualizar a una licencia SmartTemplates Pro eliminará estos recordatorios y ayudará a apoyar el complemento."
   },
-  "st.notification.spellcheck.error": {
+  "notification.spellcheck.error": {
     "message": "No se puede cambiar el idioma del corrector ortográfico. ¿Has instalado el diccionario correcto?"
   },
-  "st.notification.spellcheck.noDictionary": {
+  "notification.spellcheck.noDictionary": {
     "message": "No hay diccionarios instalados."
   },
-  "st.notification.spellcheck.notFound": {
+  "notification.spellcheck.notFound": {
     "message": "Diccionario '{0}' no encontrado."
   },
-  "st.notification.standard.text": {
+  "notification.standard.text": {
     "message": "{1} es una función con licencia. Seguirá funcionando, pero obtener una licencia SmartTemplates eliminará estos recordatorios y ayudará a apoyar el complemento."
   },
-  "st.notification.standard.text.plural": {
+  "notification.standard.text.plural": {
     "message": "{1} son funciones con licencia. Seguirán funcionando, pero obtener una licencia SmartTemplates eliminará estos recordatorios y ayudará a apoyar el complemento."
   },
-  "st.notification.usedLastTemplate": {
+  "notification.usedLastTemplate": {
     "message": "Se está reutilizando la última plantilla externa: {template}{br}💾 según la configuración global:"
   },
-  "st.prompt.switchDomainLicense": {
+  "prompt.switchDomainLicense": {
     "message": "¿Cambiar a Licencia de Dominio?"
   },
-  "st.trialDays": {
+  "trialDays": {
     "message": "Te quedan {0} días de prueba."
   },
-  "st.trialExpiry": {
+  "trialExpiry": {
     "message": "Su período de prueba expiró hace {0} días."
   },
-  "st.updateMessageNewBrackets1": {
+  "updateMessageNewBrackets1": {
     "message": "Querido usuario de SmartTemplate4, nos complace anunciar que a partir de esta versión SmartTemplates también soporta el uso de llaves {} y la etiqueta <style>, así que podrá usar estilos avanzados con CSS en su plantilla."
   },
-  "st.updateMessageNewBrackets2": {
+  "updateMessageNewBrackets2": {
     "message": "A partir de ahora, se ha modificado la sintaxis específica para expresiones con corchetes: en vez de llaves, {%cc(name)%} debe usar corchetes dobles [[%cc(name)%]]. Consulte la ayuda para más información."
   },
-  "st.updateMessageNewBrackets3": {
+  "updateMessageNewBrackets3": {
     "message": "SmartTemplates va a modificar sus plantillas ya existentes para que pueda seguir usándolas es la nueva versión. Pulse [Aceptar] para continuar."
   },
-  "st.updateMessageVersion": {
+  "updateMessageVersion": {
     "message": "SmartTemplates se ha actualizado correctamente a la versión {1}."
   },
   "standardformat.config": {
@@ -2100,10 +2101,10 @@
   },
   "quotedTags.styles.inline": {
     "message": "Estos ejemplos eliminan elementos style, no los atributos style en línea de cada elemento."
-  },
+  },
   "snippets.contextMenu.legend": {
     "message": "Añadir al menú contextual del redactor"
-  },
+  },
   "snippets.settingsLegend": {
     "message": "Smart Snippets (Redactor)"
   }

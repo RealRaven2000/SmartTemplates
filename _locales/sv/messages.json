@@ -1,5 +1,6 @@
 {
   "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
     "message": "SPLASH+UI"
   },
   "a.label": {
@@ -153,14 +154,22 @@
   },
   "btnLoadTemplate.tooltip": {
     "message": "Ladda mallar (skriv, svara, vidarebefordra) för $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Uppdatera kontolistan"
   },
   "btnSaveTemplate.tooltip": {
     "message": "Spara mallar (ny, svara, vidarebefordra) för $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnYouTube.tooltip": {
     "message": "Besök YouTube-kanalen \"Thunderbird Daily\" - för tips och guider om hur man använder SmartTemplates och andra tillägg"
@@ -221,6 +230,18 @@
   },
   "ccname.label": {
     "message": "Mottagarens namn"
+  },
+  "changeTemplate.label": {
+    "message": "Ändra mall…"
+  },
+  "changeTemplate.tooltip": {
+    "message": "Väljer en annan mall - använd innan du redigerar i e-postkroppen!"
+  },
+  "cleandeferred.label": {
+    "message": "Städa!"
+  },
+  "cleandeferred.tooltip": {
+    "message": "Städa upp alla SmartTemplate-variabler"
   },
   "clipboard.copy": {
     "message": "kopierar text till urklipp."
@@ -283,6 +304,9 @@
   },
   "conditionals.note": {
     "message": "Denna klass av variabler kan användas för att infoga text beroende på hur du skickar e-post. Du behöver en SmartTemplates Pro-licens för dessa."
+  },
+  "confirmVersionLink": {
+    "message": "Visa ändringslogg för SmartTemplates?"
   },
   "contextError": {
     "message": "Variabeln {1} kan inte användas för *nya* meddelanden!\nSe hjälp för en lista med tillåtna variabler"
@@ -377,6 +401,15 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Använd den externa mallen som senast valdes från rullgardinsmenyn."
   },
+  "deferredcontext.cleanup": {
+    "message": "Ersätt variabel med innehåll"
+  },
+  "deferredcontext.delete": {
+    "message": "Ta bort SmartTemplates-variabel"
+  },
+  "deferredcontext.update": {
+    "message": "Uppdatera SmartTemplates-innehåll"
+  },
   "deleteForwardedBody": {
     "message": "Den här funktionen tar bort brödtexten i det ursprungliga e-postmeddelandet vid vidarebefordran inline. Kan användas för att behandla information från automatiserade e-postmeddelanden samtidigt som den ursprungliga informationen tas bort."
   },
@@ -465,6 +498,9 @@
   "fileCSS.label": {
     "message": "Externt formatmall (css). Inkludera dina favorit CSS-regler för att dela mellan olika mallar."
   },
+  "fileFunction.notExists": {
+    "message": "Funktion {0} kunde inte hitta eller komma åt filen. Kolla vägen nedan:"
+  },
   "fileHTML.label": {
     "message": "Fil med HTML eller vanlig text. UTF-8 antas när den valfria teckenkodningsparametern utesluts."
   },
@@ -480,14 +516,35 @@
   "files.etc": {
     "message": "Filer, bilder och bilagor"
   },
+  "fileTemplates": {
+    "message": "Mallfiler"
+  },
   "fileTemplates.add": {
     "message": "Addera"
+  },
+  "fileTemplates.configureMenu": {
+    "message": "Konfigurera menyalternativ…"
   },
   "fileTemplates.down": {
     "message": "Ner"
   },
   "fileTemplates.edit": {
     "message": "Redigera"
+  },
+  "fileTemplates.error.charSet": {
+    "message": "Problem som konverterar en HTML-mall från charset [{1}] \nAnvänder rå strängdata istället. \nOm detta resulterar i förvirrade tecken kan du försöka lägga till ett uttryckligt 'meta charset"
+  },
+  "fileTemplates.error.filePath": {
+    "message": "Det gick inte att ladda filmallen '{0}' från sökvägen: \n{1} \nFilen kan ha tagits bort eller bytt namn."
+  },
+  "fileTemplates.error.nocontroller": {
+    "message": "Funktionen $controllerName$ är inte tillgänglig i detta sammanhang - du kan inte göra det med den valda e-posten.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
   },
   "fileTemplates.file.open": {
     "message": "Välj mallfil från disk"
@@ -504,7 +561,9 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Detta kommer att visas i mallvalsmenyn."
   },
-  "fileTemplates.import": { "message": "Importera meny…" },
+  "fileTemplates.import": {
+    "message": "Importera meny…"
+  },
   "fileTemplates.import.tooltip": {
     "message": "Importera mallposter från en JSON-fil (lista med HTML-mallar, normalt smartTemplates.json)."
   },
@@ -514,8 +573,39 @@
   "fileTemplates.menu": {
     "message": "Mallfiler"
   },
+  "fileTemplates.openFile": {
+    "message": "Öppna SmartTemplates-mallfilen…"
+  },
   "fileTemplates.remove": {
     "message": "Radera"
+  },
+  "fileTemplates.restrictionQuestion": {
+    "message": "Varför är vissa mallar i den här menyn inaktiverade?"
+  },
+  "fileTemplates.restrictTemplateCats": {
+    "message": "För att konfigurera mer än $max_Cats$ -kategorier, skaffa en SmartTemplates Pro -licens…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "fileTemplates.restrictTemplates": {
+    "message": "Antalet mallar per meny är begränsat. Du kan konfigurera upp till $max_free$ menyalternativ utan licens och $max_std$ menyalternativ med en SmartTemplates Standardlicens! SmartTemplates Pro är obegränsat.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "fileTemplates.selectFromMenu": {
+    "message": "Välj en mall från rullgardinsmenyn."
   },
   "fileTemplates.tooltips.fwd": {
     "message": "Lista över externa mallfiler som kan startas från SmartTemplates 'Vidarebefordra' mallmenyer."
@@ -531,6 +621,18 @@
   },
   "fileTemplates.update": {
     "message": "Uppdatering"
+  },
+  "fileTemplates.wrnEnterPath": {
+    "message": "Välj en fil som innehåller HTML / text och dina SmartTemplates-variabler. Denna fil kommer att bearbetas och infogas när det nya menyobjektet väljs. Du kan fortfarande ändra mallfilen efter dina behov efter att ha skapat menyobjektet genom att klicka på Redigera."
+  },
+  "fileTemplates.wrnEnterTitle": {
+    "message": "Ange en titel!"
+  },
+  "fileTemplates.wrnSelectUpdateItem": {
+    "message": "Du måste välja ett objekt från listan för att uppdatera!"
+  },
+  "fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Uppdatera mallarna"
   },
   "firstName.label": {
     "message": "Förnamn:"
@@ -549,9 +651,6 @@
   },
   "forceParagraphs.tip": {
     "message": "Ser till att pekarpositionen börjar i en paragraf. Vi rekommendera även Thunderbirds skrivalternativ för att skapa en ny paragraf med [[Enter]]."
-  },
-  "fpJsonTemplateList": {
-    "message": "konfiguration av mallmeny"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML-mall"
@@ -573,6 +672,9 @@
   },
   "fpJsonFile": {
     "message": "JSON-fil"
+  },
+  "fpJsonTemplateList": {
+    "message": "konfiguration av mallmeny"
   },
   "fpStyle": {
     "message": "Stilblad"
@@ -673,7 +775,9 @@
   "header.set.from": {
     "message": "ställer in 'från' -adressen. Detta accepterar endast e-postadresser från listan över identiteter."
   },
-  "header.set.priority": { "message": "anger e-postens prioritet." },
+  "header.set.priority": {
+    "message": "anger e-postens prioritet."
+  },
   "header.set.priority.value": {
     "message": "Parameter för att ange e-postens prioritet. Möjliga värden är: "
   },
@@ -742,12 +846,6 @@
   "i.label": {
     "message": "Timmar, 12-timmarsformat (01 till 12)"
   },
-  "identity.chapterHead": {
-    "message": "Din identitet"
-  },
-  "identity.concept": {
-    "message": "Ett e-postkonto kan ha flera avsändaridentiteter, var och en med eget namn och egen e-postadress. Den här variabeln använder identiteten som valts i fältet Från i skrivfönstret. När du svarar beror det ursprungliga valet på vem som tog emot det ursprungliga meddelandet. Du kan ändra den valda identiteten efter att skrivfönstret har öppnats."
-  },
   "identity_ab": {
     "message": "Använd nyckelordet 'addressbook' för att hämta ytterligare identitetsinformation från adressboken."
   },
@@ -759,6 +857,12 @@
   },
   "identity_ab.phoneno": {
     "message": "Telefonnr"
+  },
+  "identity.chapterHead": {
+    "message": "Din identitet"
+  },
+  "identity.concept": {
+    "message": "Ett e-postkonto kan ha flera avsändaridentiteter, var och en med eget namn och egen e-postadress. Den här variabeln använder identiteten som valts i fältet Från i skrivfönstret. När du svarar beror det ursprungliga valet på vem som tog emot det ursprungliga meddelandet. Du kan ändra den valda identiteten efter att skrivfönstret har öppnats."
   },
   "im-ex_note1.label": {
     "message": "Du kan exportera och importera dina inställningar och mallar som associeras med varje konto."
@@ -909,8 +1013,14 @@
   "licenseValidation.expired": {
     "message": "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens."
   },
+  "licenseValidation.expiredDate": {
+    "message": "Din licens löpte ut:"
+  },
   "licenseValidation.failed": {
     "message": "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår."
+  },
+  "licenseValidation.guessAddon": {
+    "message": "(Den angivna nyckeln kan vara för {2})."
   },
   "licenseValidation.invalidAddon": {
     "message": "Licensnyckeln du angav kanske är till ett annat tillägg. Licensnycklar för {0} börjar med {1}."
@@ -954,14 +1064,74 @@
   "matchTextFromSubject": {
     "message": "Hitta ett RegEx-mönster i ämnet och infoga i funktionsplatsen."
   },
+  "menu.docs": {
+    "message": "Dokumentation"
+  },
+  "menu.docs.premium": {
+    "message": "Premiumfunktioner…"
+  },
+  "menu.docs.variables": {
+    "message": "Variabler och kommandon…"
+  },
+  "menu.hideLabel": {
+    "message": "Dölj knappetikett"
+  },
+  "menu.license": {
+    "message": "Kontrollera licensstatus…"
+  },
+  "menu.license.tooltip": {
+    "message": "Klicka här för att kontrollera licensstatus för $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menu.replyAll": {
+    "message": "Svara alla"
+  },
+  "menu.replyList": {
+    "message": "Svara på Lista"
+  },
+  "menu.supportSite": {
+    "message": "Supportwebbplats…"
+  },
   "menu.template_export.label": {
     "message": "Exportera mall"
   },
   "menu.template_import.label": {
     "message": "Importera mall"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
+  "menu.template.default": {
+    "message": "Standardmall (konto)"
+  },
+  "menu.template.last": {
+    "message": "Sista mallen"
+  },
+  "menu.update.tooltip": {
+    "message": "Välj ”Senaste nyheter” från den här menyn för att läsa vad som är nytt i $addonName$.\n Detta återställer knappen till dess standardutseende.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menuaccess.forward": {
+    "message": "F"
+  },
+  "menuaccess.reply": {
+    "message": "S"
+  },
+  "menuaccess.replyAll": {
+    "message": "A"
+  },
+  "menuaccess.replyList": {
+    "message": "L"
+  },
+  "menuaccess.write": {
+    "message": "N"
   },
   "message.features": {
     "message": "Jämför funktioner…"
@@ -1046,6 +1216,95 @@
   },
   "no_button": {
     "message": "Ingen"
+  },
+  "notification.bodyModified": {
+    "message": "Thunderbird säger att du redan har skrivit något. Vill du ändå ladda in mallen?"
+  },
+  "notification.bodyModified.accountTemplate": {
+    "message": "Detta kommer att kasta bort allt du har skrivit och ladda in kontomallen."
+  },
+  "notification.bodyModified.externalTemplate": {
+    "message": "Detta kommer att kasta bort allt du har skrivit och ladda om den aktuella mallen [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "notification.bodyModified.instructions": {
+    "message": "Klicka på Avbryt för att behålla e-postinnehållet oförändrat."
+  },
+  "notification.donate": {
+    "message": "Donera"
+  },
+  "notification.dontShowAgain": {
+    "message": "Visa inte detta meddelande igen."
+  },
+  "notification.editedChangeChallenge": {
+    "message": "All text du har matat in manuellt sedan kompositören öppnas kommer att raderas utan Ångra. Fortsätt ändå?"
+  },
+  "notification.editedChangeWarning": {
+    "message": "Du har redan skrivit text och vill ändra till mall {0}"
+  },
+  "notification.license.text": {
+    "message": "SmartTemplates fortsätter fungera som vanligt. En licens tar bort denna påminnelse — klicka nedan för mer information."
+  },
+  "notification.licensing": {
+    "message": "Mer om licensiering"
+  },
+  "notification.parsing": {
+    "message": "Analysera variabler:"
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "Utöka domänlicensen"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "Förläng licens"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "Detta förlänger datumet för den nuvarande licensen med 1 år. Det är vanligtvis billigare än en ny licens."
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "Skaffa en licens!"
+  },
+  "notification.premium.btn.hotKey": {
+    "message": "l"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "Förnya domänlicens"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "Förnya licens"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Uppgradera till PRO"
+  },
+  "notification.premium.sendByFilter": {
+    "message": "Med en giltig SmartTemplates Pro-licens skulle e-postmeddelandet nu skickas automatiskt."
+  },
+  "notification.premium.text": {
+    "message": "{1} är en Premium-funktion. Den kommer fortsätta fungera, men uppgradering till en SmartTemplates Pro-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
+  },
+  "notification.premium.text.plural": {
+    "message": "{1} är Premium-funktioner. De kommer fortsätta fungera, men uppgradering till en SmartTemplates Pro-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
+  },
+  "notification.spellcheck.error": {
+    "message": "Det går inte att byta språk för stavkontroll. Har du installerat rätt ordbok?"
+  },
+  "notification.spellcheck.noDictionary": {
+    "message": "Inga ordböcker installerade."
+  },
+  "notification.spellcheck.notFound": {
+    "message": "Ordbok '{0}' hittades inte."
+  },
+  "notification.standard.text": {
+    "message": "{1} är en licensierad funktion. Den kommer fortsätta fungera, men att skaffa en SmartTemplates-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
+  },
+  "notification.standard.text.plural": {
+    "message": "{1} är licensierade funktioner. De kommer fortsätta fungera, men att skaffa en SmartTemplates-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
+  },
+  "notification.usedLastTemplate": {
+    "message": "Återanvänder den senaste externa mallen: {template}{br}💾 enligt globala inställningar:"
   },
   "ongoing-work": {
     "message": "För att hålla $addonName$ synkroniserad med Thunderbirds månatliga utgåvor måste vi ständigt kontrollera fel och ladda upp anpassade versioner. Hjälp oss gärna med detta när du har testat funktionaliteten och är säker på att den förbättrar din produktivitet!",
@@ -1147,6 +1406,9 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Konfigurera en extern redigerare för att redigera dina HTML- och CSS-mallar. Jag rekommenderar en HTML-redigerare för ren text med syntaxmarkering, till exempel Notepad++ eller Visual Studio Code."
   },
+  "prompt.switchDomainLicense": {
+    "message": "Byt till domänlicens?"
+  },
   "prompt.text": {
     "message": "Ange texten att lägg till eller ändra"
   },
@@ -1161,6 +1423,30 @@
   },
   "quote_changers.desc": {
     "message": "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme."
+  },
+  "quotedTags.scope": {
+    "message": "För `%deleteQuotedTags()%` och `%replaceQuotedTags()%` kan ett sökområde utan citattecken användas i stället för en numerisk citatnivå:"
+  },
+  "quotedTags.scope.all": {
+    "message": "Sök i både head-delen och meddelandetexten."
+  },
+  "quotedTags.scope.body": {
+    "message": "Sök i hela meddelandetexten, även innehåll som inte är citerat."
+  },
+  "quotedTags.scope.head": {
+    "message": "Sök endast i meddelandets head-del."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Om citatnivå eller sökområde utelämnas används citatnivå 1. Det numeriska värdet 0 omfattar alla citatnivåer i meddelandetexten, men begränsas till det vidarebefordrade innehållet vid infogad vidarebefordran; uttryckligt body söker i hela meddelandetexten."
+  },
+  "quotedTags.styles.all": {
+    "message": "Ta bort stilblock från både head-delen och meddelandetexten för en ren formateringsgrund."
+  },
+  "quotedTags.styles.body": {
+    "message": "Ta bort stilblock från meddelandetexten, även sådana från originalmeddelandet som kan påverka styckeavståndet i ditt svar. Behåll stilar i meddelandets head-del."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Dessa exempel tar bort style-element, inte inline-attributet style på enskilda element."
   },
   "quoteHeader.replace.tip": {
     "message": "Inaktivera standardcitathuvudet. Formulera ditt citathuvud i textrutan."
@@ -1267,6 +1553,9 @@
   "settings.label": {
     "message": "Inställningar och mallar"
   },
+  "settings.tooltip": {
+    "message": "Inställningar för SmartTemplates"
+  },
   "shortdate.label": {
     "message": "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)"
   },
@@ -1274,56 +1563,23 @@
     "message": "Ändringar + nyheter (Splash Screen)."
   },
   "sig.concept": {
-    "message": "Thunderbird styr signaturens placering och innehåll via **Kontoinställningar » Skriva & adressera**. Du kan åsidosätta placeringen genom att använda variabeln `%sig%`.",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "Thunderbird styr signaturens placering och innehåll via **Kontoinställningar » Skriva & adressera**. Du kan åsidosätta placeringen genom att använda variabeln `%sig%`."
   },
   "sig.label": {
     "message": "Underskrift (från TB hänsyn inställningar)"
   },
-  "sig2.label": {
-    "message": "Underskrift (från TB hänsyn inställningar men utan '--')"
-  },
   "sig.none.label": {
     "message": "Tar bort alla underskrifter. Åsidosätter kontoinställningarna."
+  },
+  "sig2.label": {
+    "message": "Underskrift (från TB hänsyn inställningar men utan '--')"
   },
   "silentUpdates": {
     "message": "Öppna inte fliken med versionshistorik"
   },
   "silentUpdates.tip": {
     "message": "Öppna inte ändringsloggen efter att SmartTemplates har uppdaterats."
-  },
-  "smarttemplate4_button": {
-    "message": "Redigera mallar och citathuvuden…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
-  },
-  "smartTemplate4.changeTemplate.label": {
-    "message": "Ändra mall…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Väljer en annan mall - använd innan du redigerar i e-postkroppen!"
-  },
-  "smartTemplate4.cleandeferred.label": {
-    "message": "Städa!"
-  },
-  "smartTemplate4.cleandeferred.tooltip": {
-    "message": "Städa upp alla SmartTemplate-variabler"
-  },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Ersätt variabel med innehåll"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "Ta bort SmartTemplates-variabel"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "Uppdatera SmartTemplates-innehåll"
-  },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "Inställningar för SmartTemplates"
   },
   "SmartTemplateMainButton.expired": {
     "message": "Licens har gått ut!"
@@ -1346,63 +1602,69 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Vad är nytt…"
   },
-  "snippets.download": {
-    "message": "Hämta utdrag…"
-  },
-  "snippets.browser.localTitle": {
-    "message": "Menytext"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "Lägg till i snabbmenyn"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "Välj målmapp"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "Välj en egen menytext, till exempel på ditt språk. Dina ändringar sparas så länge den här panelen är öppen och används när utdraget läggs till."
-  },
-  "snippets.browser.preview": {
-    "message": "Förhandsvisning av utdrag"
-  },
-  "snippets.browser.noPreview": {
-    "message": "Förhandsvisning saknas"
+  "snippets.browser.add": {
+    "message": "Lägg till utdrag"
   },
   "snippets.browser.close": {
     "message": "Stäng"
   },
-  "snippets.browser.add": {
-    "message": "Lägg till utdrag"
-  },
-  "snippets.browser.loading": {
-    "message": "Läser in utdrag…"
-  },
-  "snippets.browser.importing": {
-    "message": "Lägger till utdrag…"
-  },
-  "snippets.browser.error": {
-    "message": "Det gick inte att lägga till eller läsa in utdrag."
+  "snippets.browser.contextMenu": {
+    "message": "Lägg till i snabbmenyn"
   },
   "snippets.browser.empty": {
     "message": "Det finns inga tillgängliga utdrag."
   },
+  "snippets.browser.error": {
+    "message": "Det gick inte att lägga till eller läsa in utdrag."
+  },
+  "snippets.browser.importing": {
+    "message": "Lägger till utdrag…"
+  },
+  "snippets.browser.loading": {
+    "message": "Läser in utdrag…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Menytext"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Välj en egen menytext, till exempel på ditt språk. Dina ändringar sparas så länge den här panelen är öppen och används när utdraget läggs till."
+  },
+  "snippets.browser.noPreview": {
+    "message": "Förhandsvisning saknas"
+  },
   "snippets.browser.notConfigured": {
     "message": "Utdragsarkivet är ännu inte tillgängligt."
   },
+  "snippets.browser.preview": {
+    "message": "Förhandsvisning av utdrag"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Välj målmapp"
+  },
   "snippets.contextMenu": {
     "message": "Visa i snabbmenyn"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Lägg till i skrivfönstrets högerklicksmeny"
+  },
+  "snippets.download": {
+    "message": "Hämta utdrag…"
   },
   "snippets.head": {
     "message": "Smarta utdrag"
   },
   "snippets.label": {
-    "message": "Alla utdrag kan infogas med knappen $SnippetButton$",
     "description": "SnippetButton is the localized insertSnippet.button label.",
+    "message": "Alla utdrag kan infogas med knappen $SnippetButton$",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
         "example": "Insert Snippet"
       }
     }
+  },
+  "snippets.settingsLegend": {
+    "message": "Smarta utdrag (Skrivfönster)"
   },
   "spec_form.cap": {
     "message": "Adressfältväljare"
@@ -1478,255 +1740,6 @@
   },
   "splashScreen.tip": {
     "message": "Dölj informationsdialogruta som visar nya funktioner och buggfixar när du uppdaterar."
-  },
-  "st.confirmVersionLink": {
-    "message": "Visa ändringslogg för SmartTemplates?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "Funktion {0} kunde inte hitta eller komma åt filen. Kolla vägen nedan:"
-  },
-  "st.fileTemplates": {
-    "message": "Mallfiler"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "Konfigurera menyalternativ…"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "Problem som konverterar en HTML-mall från charset [{1}] \nAnvänder rå strängdata istället. \nOm detta resulterar i förvirrade tecken kan du försöka lägga till ett uttryckligt 'meta charset"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "Det gick inte att ladda filmallen '{0}' från sökvägen: \n{1} \nFilen kan ha tagits bort eller bytt namn."
-  },
-  "st.fileTemplates.error.nocontroller": {
-    "message": "Funktionen $controllerName$ är inte tillgänglig i detta sammanhang - du kan inte göra det med den valda e-posten.",
-    "placeholders": {
-      "controllerName": {
-        "content": "$1",
-        "example": "cmd_replyList"
-      }
-    }
-  },
-  "st.fileTemplates.openFile": {
-    "message": "Öppna SmartTemplates-mallfilen…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "Varför är vissa mallar i den här menyn inaktiverade?"
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "För att konfigurera mer än $max_Cats$ -kategorier, skaffa en SmartTemplates Pro -licens…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplates": {
-    "message": "Antalet mallar per meny är begränsat. Du kan konfigurera upp till $max_free$ menyalternativ utan licens och $max_std$ menyalternativ med en SmartTemplates Standardlicens! SmartTemplates Pro är obegränsat.",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.selectFromMenu": {
-    "message": "Välj en mall från rullgardinsmenyn."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Välj en fil som innehåller HTML / text och dina SmartTemplates-variabler. Denna fil kommer att bearbetas och infogas när det nya menyobjektet väljs. Du kan fortfarande ändra mallfilen efter dina behov efter att ha skapat menyobjektet genom att klicka på Redigera."
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Ange en titel!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "Du måste välja ett objekt från listan för att uppdatera!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Uppdatera mallarna"
-  },
-  "st.licenseValidation.expired": {
-    "message": "Din licens löpte ut:"
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "(Den angivna nyckeln kan vara för {2})."
-  },
-  "st.menu.docs": {
-    "message": "Dokumentation"
-  },
-  "st.menu.docs.premium": {
-    "message": "Premiumfunktioner…"
-  },
-  "st.menu.docs.variables": {
-    "message": "Variabler och kommandon…"
-  },
-  "st.menu.hideLabel": {
-    "message": "Dölj knappetikett"
-  },
-  "st.menu.license": {
-    "message": "Kontrollera licensstatus…"
-  },
-  "st.menu.license.tooltip": {
-    "message": "Klicka här för att kontrollera licensstatus för $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menu.replyAll": {
-    "message": "Svara alla"
-  },
-  "st.menu.replyList": {
-    "message": "Svara på Lista"
-  },
-  "st.menu.supportSite": {
-    "message": "Supportwebbplats…"
-  },
-  "st.menu.template.default": {
-    "message": "Standardmall (konto)"
-  },
-  "st.menu.template.last": {
-    "message": "Sista mallen"
-  },
-  "st.menu.update.tooltip": {
-    "message": "Välj ”Senaste nyheter” från den här menyn för att läsa vad som är nytt i $addonName$.\n Detta återställer knappen till dess standardutseende.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menuaccess.forward": {
-    "message": "F"
-  },
-  "st.menuaccess.reply": {
-    "message": "S"
-  },
-  "st.menuaccess.replyAll": {
-    "message": "A"
-  },
-  "st.menuaccess.replyList": {
-    "message": "L"
-  },
-  "st.menuaccess.write": {
-    "message": "N"
-  },
-  "st.notification.bodyModified": {
-    "message": "Thunderbird säger att du redan har skrivit något. Vill du ändå ladda in mallen?"
-  },
-  "st.notification.bodyModified.accountTemplate": {
-    "message": "Detta kommer att kasta bort allt du har skrivit och ladda in kontomallen."
-  },
-  "st.notification.bodyModified.externalTemplate": {
-    "message": "Detta kommer att kasta bort allt du har skrivit och ladda om den aktuella mallen [$template$].",
-    "placeholders": {
-      "template": {
-        "content": "$1"
-      }
-    }
-  },
-  "st.notification.bodyModified.instructions": {
-    "message": "Klicka på Avbryt för att behålla e-postinnehållet oförändrat."
-  },
-  "st.notification.donate": {
-    "message": "Donera"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "Visa inte detta meddelande igen."
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "All text du har matat in manuellt sedan kompositören öppnas kommer att raderas utan Ångra. Fortsätt ändå?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "Du har redan skrivit text och vill ändra till mall {0}"
-  },
-  "st.notification.license.text": {
-    "message": "SmartTemplates fortsätter fungera som vanligt. En licens tar bort denna påminnelse — klicka nedan för mer information."
-  },
-  "st.notification.licensing": {
-    "message": "Mer om licensiering"
-  },
-  "st.notification.parsing": {
-    "message": "Analysera variabler:"
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "Utöka domänlicensen"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "Förläng licens"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "Detta förlänger datumet för den nuvarande licensen med 1 år. Det är vanligtvis billigare än en ny licens."
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "Skaffa en licens!"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "l"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "Förnya domänlicens"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "Förnya licens"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "Uppgradera till PRO"
-  },
-  "st.notification.premium.sendByFilter": {
-    "message": "Med en giltig SmartTemplates Pro-licens skulle e-postmeddelandet nu skickas automatiskt."
-  },
-  "st.notification.premium.text": {
-    "message": "{1} är en Premium-funktion. Den kommer fortsätta fungera, men uppgradering till en SmartTemplates Pro-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1} är Premium-funktioner. De kommer fortsätta fungera, men uppgradering till en SmartTemplates Pro-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
-  },
-  "st.notification.spellcheck.error": {
-    "message": "Det går inte att byta språk för stavkontroll. Har du installerat rätt ordbok?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "Inga ordböcker installerade."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "Ordbok '{0}' hittades inte."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} är en licensierad funktion. Den kommer fortsätta fungera, men att skaffa en SmartTemplates-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} är licensierade funktioner. De kommer fortsätta fungera, men att skaffa en SmartTemplates-licens tar bort dessa meddelanden och hjälper till att stödja tillägget."
-  },
-  "st.notification.usedLastTemplate": {
-    "message": "Återanvänder den senaste externa mallen: {template}{br}💾 enligt globala inställningar:"
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "Byt till domänlicens?"
-  },
-  "st.trialDays": {
-    "message": "Du har {0} testdagar kvar."
-  },
-  "st.trialExpiry": {
-    "message": "Din provperiod löpt ut för {0} dagar sedan."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "Kära SmartTemplates användare, vi är glada att meddela att från denna version vidare, SmartTemplates stöder också användningen av lockiga hängslen { } och <style> taggen så att du nu kan göra avancerad css-styling i din mall."
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "Från och med nu den specifika syntaxen för parenteserade uttryck ändras: Istället för lockiga hängslen {%cc(name)%} använder dubbla hakparenteser [[%cc(name)%]] - för ytterligare detaljer, se Hjälp."
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates konverterar nu befintliga mallar så att du kan fortsätta använda dem i den nya versionen. Tryck på [OK] för att fortsätta."
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates har uppgraderats till version {1}!"
   },
   "standardformat.config": {
     "message": "Standardformat…"
@@ -2006,8 +2019,26 @@
   "translatorNickname.label": {
     "message": "Lakrits (BabelZilla)"
   },
+  "trialDays": {
+    "message": "Du har {0} testdagar kvar."
+  },
+  "trialExpiry": {
+    "message": "Din provperiod löpt ut för {0} dagar sedan."
+  },
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
+  },
+  "updateMessageNewBrackets1": {
+    "message": "Kära SmartTemplates användare, vi är glada att meddela att från denna version vidare, SmartTemplates stöder också användningen av lockiga hängslen { } och <style> taggen så att du nu kan göra avancerad css-styling i din mall."
+  },
+  "updateMessageNewBrackets2": {
+    "message": "Från och med nu den specifika syntaxen för parenteserade uttryck ändras: Istället för lockiga hängslen {%cc(name)%} använder dubbla hakparenteser [[%cc(name)%]] - för ytterligare detaljer, se Hjälp."
+  },
+  "updateMessageNewBrackets3": {
+    "message": "SmartTemplates konverterar nu befintliga mallar så att du kan fortsätta använda dem i den nya versionen. Tryck på [OK] för att fortsätta."
+  },
+  "updateMessageVersion": {
+    "message": "SmartTemplates har uppgraderats till version {1}!"
   },
   "updates.changeLog": {
     "message": "Release Notes (engelska)"
@@ -2070,7 +2101,10 @@
   "whats-new-maintenance": {
     "message": "Underhållsuppdatering $ver$. Denna specifika fix har lagts till sedan föregående version.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "whitespace_note": {
@@ -2089,11 +2123,11 @@
   "xmail.label": {
     "message": "X-Mailer-adresshuvud"
   },
-  "xsent_long.cap": {
-    "message": "Exempel på anpassat datum- och tidsformat"
-  },
   "xsent_long_result.label": {
     "message": "Resultat: 16.02.2011 kl. 12:15: "
+  },
+  "xsent_long.cap": {
+    "message": "Exempel på anpassat datum- och tidsformat"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%.%m%.%Y% kl. %H%:%M%:"
@@ -2101,14 +2135,14 @@
   "xsent_note.label": {
     "message": "Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med %X:=sent% kommer tidigare angivna värden att användas."
   },
-  "xsent_short.cap": {
-    "message": "Exempel på datum och tid i lokalt format"
-  },
   "xsent_short_note.label": {
     "message": "Du kan dessutom använda dessa variabler:"
   },
   "xsent_short_result.label": {
     "message": "Resultat: onsdag, 16.02.2011 12:15:25"
+  },
+  "xsent_short.cap": {
+    "message": "Exempel på datum och tid i lokalt format"
   },
   "y.up.label": {
     "message": "År (1970)"
@@ -2130,35 +2164,5 @@
   },
   "yes_button": {
     "message": "Ja"
-  },
-  "quotedTags.scope": {
-    "message": "För `%deleteQuotedTags()%` och `%replaceQuotedTags()%` kan ett sökområde utan citattecken användas i stället för en numerisk citatnivå:"
-  },
-  "quotedTags.scope.head": {
-    "message": "Sök endast i meddelandets head-del."
-  },
-  "quotedTags.scope.body": {
-    "message": "Sök i hela meddelandetexten, även innehåll som inte är citerat."
-  },
-  "quotedTags.scope.all": {
-    "message": "Sök i både head-delen och meddelandetexten."
-  },
-  "quotedTags.scope.numeric": {
-    "message": "Om citatnivå eller sökområde utelämnas används citatnivå 1. Det numeriska värdet 0 omfattar alla citatnivåer i meddelandetexten, men begränsas till det vidarebefordrade innehållet vid infogad vidarebefordran; uttryckligt body söker i hela meddelandetexten."
-  },
-  "quotedTags.styles.body": {
-    "message": "Ta bort stilblock från meddelandetexten, även sådana från originalmeddelandet som kan påverka styckeavståndet i ditt svar. Behåll stilar i meddelandets head-del."
-  },
-  "quotedTags.styles.all": {
-    "message": "Ta bort stilblock från både head-delen och meddelandetexten för en ren formateringsgrund."
-  },
-  "quotedTags.styles.inline": {
-    "message": "Dessa exempel tar bort style-element, inte inline-attributet style på enskilda element."
-  },
-  "snippets.contextMenu.legend": {
-    "message": "Lägg till i skrivfönstrets högerklicksmeny"
-  },
-  "snippets.settingsLegend": {
-    "message": "Smarta utdrag (Skrivfönster)"
   }
 }

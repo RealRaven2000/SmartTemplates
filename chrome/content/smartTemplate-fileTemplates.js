@@ -185,7 +185,8 @@ SmartTemplate4.fileTemplates = {
     let theProcess = Cc["@mozilla.org/process/util;1"].createInstance(Ci.nsIProcess);
     theProcess.init(file);
     let parameters = [item.path];
-    theProcess.run(false, parameters, parameters.length);
+    // Preserve Unicode template paths in external editor arguments (#438).
+    theProcess.runw(false, parameters, parameters.length);
   },
 	
 	// =====================   FILES   ===================== //	
@@ -367,7 +368,7 @@ SmartTemplate4.fileTemplates = {
   lastTemplateLabel: function(template) {
     let noTemplate = `(not set)`;
     let mnuTemplateTitle = template ? `${template.label}` :  noTemplate;
-    let finalLabel = `${SmartTemplate4.Util.getBundleString("st.menu.template.last")}: ${mnuTemplateTitle}`;
+    let finalLabel = `${SmartTemplate4.Util.getBundleString("menu.template.last")}: ${mnuTemplateTitle}`;
     return finalLabel;
   },
 
@@ -532,7 +533,7 @@ SmartTemplate4.fileTemplates = {
         menupopup.setAttribute("templateCategory", cat);
         menupopup.setAttribute("st4uiElement", "true");
         if (isAddMaxCategoriesWarning) {
-          let wrn = util.getBundleString("st.fileTemplates.restrictTemplateCats", [MAX_STANDARD_CATEGORIES.toString()]);
+          let wrn = util.getBundleString("fileTemplates.restrictTemplateCats", [MAX_STANDARD_CATEGORIES.toString()]);
           let menuitem = doc.createXULElement("menuitem");
           menuitem.classList.add("st4template_entry");
           menuitem.classList.add("menuitem-iconic");
@@ -618,11 +619,11 @@ SmartTemplate4.fileTemplates = {
               controller = "cmd_reply"; 
               break;
             case "replyAll":
-              actionId = "st.menu.replyAll";
+              actionId = "menu.replyAll";
               controller = "cmd_replyAll"; 
               break;
             case "replyList":
-              actionId = "st.menu.replyList";
+              actionId = "menu.replyList";
               controller = "cmd_replyList"; 
               break;
             case "write":
@@ -647,7 +648,7 @@ SmartTemplate4.fileTemplates = {
     if (menuHasRestrictions) {
       // add an explanation about why some template items are disabled.
       let menuItem = doc.createXULElement ? doc.createXULElement("menuitem") : doc.createElement("menuitem");
-      menuItem.setAttribute("label", util.getBundleString("st.fileTemplates.restrictionQuestion"));
+      menuItem.setAttribute("label", util.getBundleString("fileTemplates.restrictionQuestion"));
       menuItem.setAttribute("st4uiElement", "true");
       menuItem.setAttribute("st4composeType", composeType);
       menuItem.classList.add("menuItem-iconic");
@@ -656,7 +657,7 @@ SmartTemplate4.fileTemplates = {
         "command",
         async (event) => {
           event.stopImmediatePropagation();
-          const txt = util.getBundleString("st.fileTemplates.restrictTemplates", [
+          const txt = util.getBundleString("fileTemplates.restrictTemplates", [
             MAX_FREE_TEMPLATES.toString(),
             MAX_STANDARD_TEMPLATES.toString(),
           ]);
@@ -685,7 +686,7 @@ SmartTemplate4.fileTemplates = {
     
     if (hasOpenFileItem) {
       menuitem = doc.createXULElement ? doc.createXULElement("menuitem") : doc.createElement("menuitem");
-      menuTitle = util.getBundleString("st.fileTemplates.openFile");		
+      menuTitle = util.getBundleString("fileTemplates.openFile");		
       menuitem.setAttribute("label", menuTitle);
       menuitem.setAttribute("st4uiElement", "true");
       menuitem.setAttribute("st4composeType", composeType);
@@ -715,7 +716,7 @@ SmartTemplate4.fileTemplates = {
 		/* [item 29]  Add configuration item to file template menus. */
     if (showConfigureItem) {
       menuitem = doc.createXULElement ? doc.createXULElement("menuitem") : doc.createElement("menuitem");
-      menuTitle = util.getBundleString("st.fileTemplates.configureMenu");
+      menuTitle = util.getBundleString("fileTemplates.configureMenu");
       menuitem.setAttribute("label", menuTitle);
 			menuitem.setAttribute("st4uiElement", "true");
       menuitem.setAttribute("st4composeType", composeType);
@@ -1281,7 +1282,7 @@ SmartTemplate4.fileTemplates = {
       SmartTemplate4.Util.logDebug(`No controller exists for the command ${command} `);  
       // async!
       SmartTemplate4.Util.showSmartTemplatesMessage({
-        msg: SmartTemplate4.Util.getBundleString("st.fileTemplates.error.nocontroller", [command]),
+        msg: SmartTemplate4.Util.getBundleString("fileTemplates.error.nocontroller", [command]),
         features: ["ok"],
       });
       return false;
@@ -1575,7 +1576,7 @@ SmartTemplate4.fileTemplates = {
     let flags = SmartTemplate4.PreprocessingFlags;
     SmartTemplate4.initFlags(flags);
     if (fileTemplateSource.failed) {
-      let text = SmartTemplate4.Util.getBundleString("st.fileTemplates.error.filePath");
+      let text = SmartTemplate4.Util.getBundleString("fileTemplates.error.filePath");
       await SmartTemplate4.Util.showSmartTemplatesMessage({
         msg: text.replace("{0}", theFileTemplate.label).replace("{1}", `{P1}${theFileTemplate.path}{P2}`),
         features: ["ok"],
@@ -1814,7 +1815,7 @@ SmartTemplate4.fileTemplates = {
 				return converter.ConvertToUnicode(data);
 			}
 			catch {
-        const errText = util.getBundleString("st.fileTemplates.error.charSet").replace("{1}", charset);
+        const errText = util.getBundleString("fileTemplates.error.charSet").replace("{1}", charset);
       
         await SmartTemplate4.Util.showSmartTemplatesMessage({
           msg: errText,
@@ -1839,7 +1840,7 @@ SmartTemplate4.fileTemplates = {
 			try {
 				const localFile	=	new FileUtils.File(template.path);
 				if (!localFile.exists()) {
-					let text = util.getBundleString("st.fileTemplates.error.filePath");
+					let text = util.getBundleString("fileTemplates.error.filePath");
 					this.lastError = text.replace('{0}', template.label).replace('{1}', template.path);
 					return false;
 				}

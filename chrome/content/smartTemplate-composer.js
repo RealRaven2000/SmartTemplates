@@ -192,7 +192,7 @@ SmartTemplate4.composer = {
       }
       if (!isHandled) {
         const result = await SmartTemplate4.Util.showSmartTemplatesMessage({
-          msgIds: "st.fileTemplates.selectFromMenu", // pass a string or an array of message IDs
+          msgIds: "fileTemplates.selectFromMenu", // pass a string or an array of message IDs
           features: ["ok"], // buttons to display
           addonfeatures: [], // optional addon features array
         });

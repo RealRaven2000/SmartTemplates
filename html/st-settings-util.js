@@ -185,8 +185,8 @@ SmartTemplates.Util = {
 
   gracePeriodText: function (days) {
     let txt = (days>=0) ?
-      this.getBundleString("st.trialDays").replace("{0}", days) :
-      this.getBundleString("st.trialExpiry").replace("{0}", -days);
+      this.getBundleString("trialDays").replace("{0}", days) :
+      this.getBundleString("trialExpiry").replace("{0}", -days);
     return txt;
   },
   

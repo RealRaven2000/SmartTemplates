@@ -4102,7 +4102,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       const localFile = new FileUtils.File(newPath);				
 			
 			if (!localFile.exists()) {
-        let wrn = util.getBundleString("st.fileFunction.notExists");
+        let wrn = util.getBundleString("fileFunction.notExists");
 				alert(wrn.replace("{0}", "'attachFile()'") + "\n" + newPath);
 				return;
 			}

@@ -1,4 +1,8 @@
 {
+  "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Jorn de la setmana (Ven.)"
   },
@@ -150,14 +154,22 @@
   },
   "btnLoadTemplate.tooltip": {
     "message": "Carregar plantilles (escriure, respondre, reenviar) per a $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Actualitza la llista de comptes"
   },
   "btnSaveTemplate.tooltip": {
     "message": "Desa plantilles (escriure, respondre, reenviar) per a $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnYouTube.tooltip": {
     "message": "Visiteu el canal de YouTube 'Thunderbird Daily' - per obtenir consells i tutorials per utilitzar Papereria i altres complements"
@@ -218,6 +230,18 @@
   },
   "ccname.label": {
     "message": "Noms dels destinataris en còpia"
+  },
+  "changeTemplate.label": {
+    "message": "Canvia la plantilla…"
+  },
+  "changeTemplate.tooltip": {
+    "message": "Carregueu una plantilla diferent: utilitzeu-la abans d'editar el correu electrònic."
+  },
+  "cleandeferred.label": {
+    "message": "Netejar!"
+  },
+  "cleandeferred.tooltip": {
+    "message": "Neteja totes les variables SmartTemplate"
   },
   "clipboard.copy": {
     "message": "copia el text al porta-retalls."
@@ -280,6 +304,9 @@
   },
   "conditionals.note": {
     "message": "Aquesta classe de variables es pot utilitzar per inserir text en funció de com envieu el correu. Per a això, necessiteu una llicència SmartTemplates Pro."
+  },
+  "confirmVersionLink": {
+    "message": "Afichar la lista de las modificacions per SmartTemplates ?"
   },
   "contextError": {
     "message": "La variabla {1} pòt pas èsser utilizada per de messatges *novèls* !\nReferissètz-vos a l'ajuda pr'amor d'obténer una lista de variablas autorizadas."
@@ -374,6 +401,15 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Utilitzeu la plantilla externa seleccionada per darrera vegada al menú desplegable."
   },
+  "deferredcontext.cleanup": {
+    "message": "Substitueix la variable per contingut"
+  },
+  "deferredcontext.delete": {
+    "message": "Elimineu la variable SmartTemplates"
+  },
+  "deferredcontext.update": {
+    "message": "Actualitzeu el contingut de SmartTemplates"
+  },
   "deleteForwardedBody": {
     "message": "Aquesta funció elimina el cos del correu electrònic original quan es reenvia en línia. Es pot utilitzar per processar informació de correus automatitzats mentre s'elimina la informació original."
   },
@@ -462,6 +498,9 @@
   "fileCSS.label": {
     "message": "Full d'estil extern (css). Inclou les teves regles CSS preferides per compartir-les entre diferents plantilles."
   },
+  "fileFunction.notExists": {
+    "message": "La funció {0} no ha pogut trobar ni accedir al fitxer. Comproveu el camí següent:"
+  },
   "fileHTML.label": {
     "message": "Fitxer HTML o text sense format. S'assumeix UTF-8 quan s'omet el paràmetre de conjunt de caràcters opcional."
   },
@@ -477,14 +516,35 @@
   "files.etc": {
     "message": "Fitxers, imatges i adjunts"
   },
+  "fileTemplates": {
+    "message": "Fitxers de plantilla"
+  },
   "fileTemplates.add": {
     "message": "Afegeix"
+  },
+  "fileTemplates.configureMenu": {
+    "message": "Configura els elements del menú …"
   },
   "fileTemplates.down": {
     "message": "A baix"
   },
   "fileTemplates.edit": {
     "message": "Editar"
+  },
+  "fileTemplates.error.charSet": {
+    "message": "Problemes en convertir una plantilla HTML des del conjunt de caràcters [{1}]\nUtilitzant dades de cadena en brut.\nSi això provoca caràcters confusos, proveu d'afegir un 'metaconjunt de caràcters' explícit"
+  },
+  "fileTemplates.error.filePath": {
+    "message": "No s'ha pogut carregar el fitxer de plantilla '{0}' des del camí:\n{1}\nÉs possible que el fitxer s'hagi eliminat o canviat de nom."
+  },
+  "fileTemplates.error.nocontroller": {
+    "message": "La funció $controllerName$ no està disponible en aquest context; no podeu fer això amb el correu electrònic seleccionat.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
   },
   "fileTemplates.file.open": {
     "message": "Seleccioneu el fitxer de plantilla del disc"
@@ -501,7 +561,9 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Es mostrarà al menú de selecció de plantilles."
   },
-  "fileTemplates.import": { "message": "Importa menú…" },
+  "fileTemplates.import": {
+    "message": "Importa menú…"
+  },
   "fileTemplates.import.tooltip": {
     "message": "Importa les entrades de plantilla des d'un fitxer JSON (llista de plantilles HTML, normalment smartTemplates.json)."
   },
@@ -511,8 +573,39 @@
   "fileTemplates.menu": {
     "message": "Arxius de plantilla"
   },
+  "fileTemplates.openFile": {
+    "message": "Obriu el fitxer de plantilla SmartTemplates…"
+  },
   "fileTemplates.remove": {
     "message": "Elimina"
+  },
+  "fileTemplates.restrictionQuestion": {
+    "message": "Per què estan desactivades algunes plantilles d’aquest menú?"
+  },
+  "fileTemplates.restrictTemplateCats": {
+    "message": "Per configurar més de $max_Cats$ Categories, obtingueu una llicència SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "fileTemplates.restrictTemplates": {
+    "message": "El nombre de plantilles per menú està restringit. Podeu configurar fins a $max_free$ elements de menú sense llicència i $max_std$ elements de menú amb una llicència SmartTemplates Standard. SmartTemplates Pro no té restriccions.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "fileTemplates.selectFromMenu": {
+    "message": "Seleccioneu una plantilla al menú desplegable."
   },
   "fileTemplates.tooltips.fwd": {
     "message": "Llista de fitxers de plantilles externes que es poden obrir des dels menús de plantilles 'Reenviar' de SmartTemplates."
@@ -528,6 +621,18 @@
   },
   "fileTemplates.update": {
     "message": "Actualització"
+  },
+  "fileTemplates.wrnEnterPath": {
+    "message": "Seleccioneu un fitxer que contingui el codi html / text i les variables SmartTemplates. Aquest fitxer es processarà i s'inserirà quan es selecciona el nou element del menú. Encara podeu modificar el fitxer de plantilla segons les vostres necessitats després de crear l'element del menú fent clic a Edita."
+  },
+  "fileTemplates.wrnEnterTitle": {
+    "message": "Introduïu un títol."
+  },
+  "fileTemplates.wrnSelectUpdateItem": {
+    "message": "Heu de seleccionar un element de la llista per actualitzar-lo."
+  },
+  "fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Actualització de plantilles"
   },
   "firstName.label": {
     "message": "Nom:"
@@ -547,9 +652,6 @@
   "forceParagraphs.tip": {
     "message": "Assegureu-vos que la posició del cursor comença en un paràgraf. També recomanem l'opció de composició del Thunderbird per crear un paràgraf nou en prémer la tecla [[Retorn]]."
   },
-  "fpJsonTemplateList": {
-    "message": "configuració del menú de plantilles"
-  },
   "fpFilterHtmlTemplate": {
     "message": "Plantilla HTML"
   },
@@ -567,6 +669,9 @@
   },
   "fpJsonFile": {
     "message": "Fitxer JSON"
+  },
+  "fpJsonTemplateList": {
+    "message": "configuració del menú de plantilles"
   },
   "fpStyle": {
     "message": "Full d'estil"
@@ -667,7 +772,9 @@
   "header.set.from": {
     "message": "defineix l'adreça 'de'. Això només accepta adreces de correu electrònic de la llista d'identitats configurades."
   },
-  "header.set.priority": { "message": "estableix la prioritat del correu." },
+  "header.set.priority": {
+    "message": "estableix la prioritat del correu."
+  },
   "header.set.priority.value": {
     "message": "Paràmetre per establir la prioritat del correu. Valors possibles: "
   },
@@ -736,12 +843,6 @@
   "i.label": {
     "message": "Oras, format 12h (01 a 12)"
   },
-  "identity.chapterHead": {
-    "message": "La vostra identitat"
-  },
-  "identity.concept": {
-    "message": "Un compte de correu pot tenir diverses identitats de remitent, cadascuna amb el seu nom i adreça electrònica. Aquesta variable utilitza la identitat seleccionada al camp «De» de la finestra de redacció. En respondre, la selecció inicial depèn de qui va rebre el missatge original. Podeu canviar la identitat seleccionada després d’obrir la finestra de redacció."
-  },
   "identity_ab": {
     "message": "Utilitzeu la paraula clau 'llibreta d'adreces' per recuperar informació d'identitat addicional de la llibreta d'adreces."
   },
@@ -753,6 +854,12 @@
   },
   "identity_ab.phoneno": {
     "message": "Telèfon no"
+  },
+  "identity.chapterHead": {
+    "message": "La vostra identitat"
+  },
+  "identity.concept": {
+    "message": "Un compte de correu pot tenir diverses identitats de remitent, cadascuna amb el seu nom i adreça electrònica. Aquesta variable utilitza la identitat seleccionada al camp «De» de la finestra de redacció. En respondre, la selecció inicial depèn de qui va rebre el missatge original. Podeu canviar la identitat seleccionada després d’obrir la finestra de redacció."
   },
   "im-ex_note1.label": {
     "message": "Podètz exportar e importar vòstres reglatges e modèls associats a cada compte."
@@ -903,8 +1010,14 @@
   "licenseValidation.expired": {
     "message": "La clau de llicència que heu introduït ha caducat. Si us plau, premeu el botó següent per renovar la vostra llicència."
   },
+  "licenseValidation.expiredDate": {
+    "message": "La vostra llicència va caducar el:"
+  },
   "licenseValidation.failed": {
     "message": "La clau de llicència que heu introduït no és vàlida. Consulteu el vostre correu electrònic de FastSpring per obtenir instruccions. Si encara teniu problemes, poseu-vos en contacte amb mi des de la pestanya Assistència."
+  },
+  "licenseValidation.guessAddon": {
+    "message": "(La clau introduïda pot ser per a {2})."
   },
   "licenseValidation.invalidAddon": {
     "message": "La clau de llicència que heu introduït pot ser per a un complement diferent. Les claus de llicència per a {0} comencen per {1}."
@@ -948,11 +1061,74 @@
   "matchTextFromSubject": {
     "message": "Trobeu un patró RegEx a l'assumpte i inseriu-lo a la ubicació de la funció."
   },
+  "menu.docs": {
+    "message": "Documentació"
+  },
+  "menu.docs.premium": {
+    "message": "Funcions Premium…"
+  },
+  "menu.docs.variables": {
+    "message": "Variables i ordres…"
+  },
+  "menu.hideLabel": {
+    "message": "Amaga l'etiqueta del botó"
+  },
+  "menu.license": {
+    "message": "Comprova l'estat de la llicència…"
+  },
+  "menu.license.tooltip": {
+    "message": "Feu clic aquí per comprovar l'estat de la llicència de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menu.replyAll": {
+    "message": "Respondre a tots"
+  },
+  "menu.replyList": {
+    "message": "Respon a la llista"
+  },
+  "menu.supportSite": {
+    "message": "Lloc de suport…"
+  },
   "menu.template_export.label": {
     "message": "Exportar lo modèl"
   },
   "menu.template_import.label": {
     "message": "Importar un modèl"
+  },
+  "menu.template.default": {
+    "message": "Plantilla predeterminada (compte)"
+  },
+  "menu.template.last": {
+    "message": "Última plantilla"
+  },
+  "menu.update.tooltip": {
+    "message": "Seleccioneu «Últimes notícies» d'aquest menú per llegir les novetats de $addonName$.\n Això restablirà el botó a la seva aparença predeterminada.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menuaccess.forward": {
+    "message": "T"
+  },
+  "menuaccess.reply": {
+    "message": "R"
+  },
+  "menuaccess.replyAll": {
+    "message": "A"
+  },
+  "menuaccess.replyList": {
+    "message": "L"
+  },
+  "menuaccess.write": {
+    "message": "N"
   },
   "message.features": {
     "message": "Compareu les funcions…"
@@ -1037,6 +1213,95 @@
   },
   "no_button": {
     "message": "Non"
+  },
+  "notification.bodyModified": {
+    "message": "Thunderbird diu que ja has escrit alguna cosa. Vols carregar la plantilla de totes maneres?"
+  },
+  "notification.bodyModified.accountTemplate": {
+    "message": "Això descartarà qualsevol cosa escrita i carregarà la plantilla del compte."
+  },
+  "notification.bodyModified.externalTemplate": {
+    "message": "Això descartarà qualsevol cosa escrita i recarregarà la plantilla actual [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "notification.bodyModified.instructions": {
+    "message": "Feu clic a Cancel·la per mantenir el contingut del correu electrònic sense canvis."
+  },
+  "notification.donate": {
+    "message": "Donar"
+  },
+  "notification.dontShowAgain": {
+    "message": "No tornis a mostrar aquest missatge."
+  },
+  "notification.editedChangeChallenge": {
+    "message": "Qualsevol text que hàgiu introduït manualment des que vau obrir el compositor se suprimirà sense desfer. Voleu continuar igualment?"
+  },
+  "notification.editedChangeWarning": {
+    "message": "Ja heu escrit text i voleu canviar a plantilla {0}"
+  },
+  "notification.license.text": {
+    "message": "SmartTemplates continua funcionant com sempre. Una llicència elimina aquest recordatori — fes clic a continuació per a més informació."
+  },
+  "notification.licensing": {
+    "message": "Més informació sobre llicències"
+  },
+  "notification.parsing": {
+    "message": "Anàlisi de variables:"
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "Amplieu la llicència de domini"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "Amplieu la llicència"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "Això ampliarà la data de llicència actual un any. Normalment és més barat que una llicència nova."
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "Comprar llicència"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "Renova la llicència de domini"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "Renova la llicència"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Actualitza a pro"
+  },
+  "notification.premium.btn.upgrade.hotKey": {
+    "message": "A"
+  },
+  "notification.premium.sendByFilter": {
+    "message": "Amb una llicència SmartTemplates Pro vàlida, el correu electrònic s'enviaria automàticament."
+  },
+  "notification.premium.text": {
+    "message": "{1} és una funció Premium. Seguirà funcionant, però actualitzar a una llicència SmartTemplates Pro eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
+  },
+  "notification.premium.text.plural": {
+    "message": "{1} són funcions Premium. Seguiran funcionant, però actualitzar a una llicència SmartTemplates Pro eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
+  },
+  "notification.spellcheck.error": {
+    "message": "No es pot canviar l'idioma del corrector ortogràfic. Heu instal·lat el diccionari correcte?"
+  },
+  "notification.spellcheck.noDictionary": {
+    "message": "No hi ha diccionaris installats."
+  },
+  "notification.spellcheck.notFound": {
+    "message": "No s'ha trobat el diccionari '{0}'."
+  },
+  "notification.standard.text": {
+    "message": "{1} és una funció amb llicència. Seguirà funcionant, però obtenir una llicència SmartTemplates eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
+  },
+  "notification.standard.text.plural": {
+    "message": "{1} són funcions amb llicència. Seguiran funcionant, però obtenir una llicència SmartTemplates eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
+  },
+  "notification.usedLastTemplate": {
+    "message": "S’està reutilitzant la darrera plantilla externa: {template}{br}💾 segons la configuració global:"
   },
   "ongoing-work": {
     "message": "Per mantenir $addonName$ sincronitzat amb les actualitzacions mensuals de Thunderbird, hem de comprovar constantment que no hi hagi errors i pujar versions adaptades. Si us plau, ajuda'ns amb això un cop hagis provat la funcionalitat i estiguis segur que millora la teva productivitat!",
@@ -1141,6 +1406,9 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Configureu un editor extern per editar les plantilles HTML i CSS. Recomano utilitzar un editor HTML de text pla amb ressaltat de sintaxi, com ara Notepad++ o Visual Studio Code."
   },
+  "prompt.switchDomainLicense": {
+    "message": "Canviar a la llicència de domini?"
+  },
   "prompt.text": {
     "message": "Introduïu el text per afegir o definir"
   },
@@ -1155,6 +1423,30 @@
   },
   "quote_changers.desc": {
     "message": "Variables premium per eliminar text / etiquetes de les parts citades i estalviar espai."
+  },
+  "quotedTags.scope": {
+    "message": "Per a `%deleteQuotedTags()%` i `%replaceQuotedTags()%`, es pot utilitzar un àmbit sense cometes en lloc del nivell de citació numèric:"
+  },
+  "quotedTags.scope.all": {
+    "message": "Cerca tant a la secció head com al cos."
+  },
+  "quotedTags.scope.body": {
+    "message": "Cerca a tot el cos del missatge, inclòs el contingut no citat."
+  },
+  "quotedTags.scope.head": {
+    "message": "Cerca només a la secció head del missatge."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Si s'omet el nivell de citació o l'àmbit, s'utilitza el nivell 1. El valor numèric 0 inclou tots els nivells de citació del cos, però en els reenviaments en línia es limita al contingut reenviat; l'àmbit explícit body cerca a tot el cos."
+  },
+  "quotedTags.styles.all": {
+    "message": "Elimina els blocs d'estil tant de la secció head com del cos per obtenir una base de format neta."
+  },
+  "quotedTags.styles.body": {
+    "message": "Elimina els blocs d'estil del cos, inclosos els heretats del missatge original que poden afectar l'espaiat dels paràgrafs de la resposta. Conserva els estils de la secció head del missatge."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Aquests exemples eliminen elements style, no pas els atributs style en línia dels elements individuals."
   },
   "quoteHeader.replace.tip": {
     "message": "Desactiva l'entèsta per defaut. Mercé d'indicar vòstra entèsta dins la zòna de tèxte."
@@ -1261,6 +1553,9 @@
   "settings.label": {
     "message": "Reglatges e Modèls"
   },
+  "settings.tooltip": {
+    "message": "Opcions de SmartTemplates"
+  },
   "shortdate.label": {
     "message": "Data e ora cortas (ex. : 01.01.2000 1:23:45)"
   },
@@ -1268,50 +1563,23 @@
     "message": "Canvis + notícies (pantalla de presentació)."
   },
   "sig.concept": {
-    "message": "El Thunderbird controla la posició i el contingut de la signatura mitjançant **Paràmetres del compte » Redacció i adreçament**. Podeu substituir la posició utilitzant la variable `%sig%`.",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "El Thunderbird controla la posició i el contingut de la signatura mitjançant **Paràmetres del compte » Redacció i adreçament**. Podeu substituir la posició utilitzant la variable `%sig%`."
   },
   "sig.label": {
     "message": "Signatura eissida dels paramètres del compte"
   },
-  "sig2.label": {
-    "message": "Signatura eissida dels paramètres del compte, mas sens '--'"
-  },
   "sig.none.label": {
     "message": "Suprimeix qualsevol signatura. Substitueix els paràmetres del compte."
+  },
+  "sig2.label": {
+    "message": "Signatura eissida dels paramètres del compte, mas sens '--'"
   },
   "silentUpdates": {
     "message": "No obriu la pestanya amb l'historial de versions"
   },
   "silentUpdates.tip": {
     "message": "No obriu el registre de canvis després que s'hagi actualitzat SmartTemplates."
-  },
-  "smarttemplate4_button": {
-    "message": "Modificar los modèls/las entèstas…"
-  },
-  "smartTemplate4.changeTemplate.label": {
-    "message": "Canvia la plantilla…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Carregueu una plantilla diferent: utilitzeu-la abans d'editar el correu electrònic."
-  },
-  "smartTemplate4.cleandeferred.label": {
-    "message": "Netejar!"
-  },
-  "smartTemplate4.cleandeferred.tooltip": {
-    "message": "Neteja totes les variables SmartTemplate"
-  },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Substitueix la variable per contingut"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "Elimineu la variable SmartTemplates"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "Actualitzeu el contingut de SmartTemplates"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "Opcions de SmartTemplates"
   },
   "SmartTemplateMainButton.expired": {
     "message": "Llicència caducada!"
@@ -1331,63 +1599,69 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Què hi ha de nou…"
   },
-  "snippets.download": {
-    "message": "Baixa fragments…"
-  },
-  "snippets.browser.localTitle": {
-    "message": "Etiqueta del menú"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "Afegeix al menú contextual"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "Selecciona la carpeta de destinació"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "Trieu una etiqueta de menú pròpia, per exemple en la vostra llengua. Els canvis es conserven mentre aquest panell sigui obert i s'utilitzen en afegir el fragment."
-  },
-  "snippets.browser.preview": {
-    "message": "Previsualització del fragment"
-  },
-  "snippets.browser.noPreview": {
-    "message": "Previsualització no disponible"
+  "snippets.browser.add": {
+    "message": "Afegeix fragments"
   },
   "snippets.browser.close": {
     "message": "Tanca"
   },
-  "snippets.browser.add": {
-    "message": "Afegeix fragments"
-  },
-  "snippets.browser.loading": {
-    "message": "S'estan carregant els fragments…"
-  },
-  "snippets.browser.importing": {
-    "message": "S'estan afegint els fragments…"
-  },
-  "snippets.browser.error": {
-    "message": "No s'han pogut afegir o carregar els fragments."
+  "snippets.browser.contextMenu": {
+    "message": "Afegeix al menú contextual"
   },
   "snippets.browser.empty": {
     "message": "No hi ha fragments disponibles."
   },
+  "snippets.browser.error": {
+    "message": "No s'han pogut afegir o carregar els fragments."
+  },
+  "snippets.browser.importing": {
+    "message": "S'estan afegint els fragments…"
+  },
+  "snippets.browser.loading": {
+    "message": "S'estan carregant els fragments…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Etiqueta del menú"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Trieu una etiqueta de menú pròpia, per exemple en la vostra llengua. Els canvis es conserven mentre aquest panell sigui obert i s'utilitzen en afegir el fragment."
+  },
+  "snippets.browser.noPreview": {
+    "message": "Previsualització no disponible"
+  },
   "snippets.browser.notConfigured": {
     "message": "El repositori de fragments encara no està disponible."
   },
+  "snippets.browser.preview": {
+    "message": "Previsualització del fragment"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Selecciona la carpeta de destinació"
+  },
   "snippets.contextMenu": {
     "message": "Mostra al menú contextual"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Afegeix al menú contextual del redactor"
+  },
+  "snippets.download": {
+    "message": "Baixa fragments…"
   },
   "snippets.head": {
     "message": "Fragments intelligents"
   },
   "snippets.label": {
-    "message": "Tots els fragments es poden inserir amb el botó $SnippetButton$",
     "description": "SnippetButton is the localized insertSnippet.button label.",
+    "message": "Tots els fragments es poden inserir amb el botó $SnippetButton$",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
         "example": "Insert Snippet"
       }
     }
+  },
+  "snippets.settingsLegend": {
+    "message": "Fragments intelligents (Redactor)"
   },
   "spec_form.cap": {
     "message": "Canviadors de camp d’adreça"
@@ -1463,255 +1737,6 @@
   },
   "splashScreen.tip": {
     "message": "Amaga el quadre de diàleg d'informació que mostra noves funcions i correccions d'errors quan s'actualitza."
-  },
-  "st.confirmVersionLink": {
-    "message": "Afichar la lista de las modificacions per SmartTemplates ?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "La funció {0} no ha pogut trobar ni accedir al fitxer. Comproveu el camí següent:"
-  },
-  "st.fileTemplates": {
-    "message": "Fitxers de plantilla"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "Configura els elements del menú …"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "Problemes en convertir una plantilla HTML des del conjunt de caràcters [{1}]\nUtilitzant dades de cadena en brut.\nSi això provoca caràcters confusos, proveu d'afegir un 'metaconjunt de caràcters' explícit"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "No s'ha pogut carregar el fitxer de plantilla '{0}' des del camí:\n{1}\nÉs possible que el fitxer s'hagi eliminat o canviat de nom."
-  },
-  "st.fileTemplates.error.nocontroller": {
-    "message": "La funció $controllerName$ no està disponible en aquest context; no podeu fer això amb el correu electrònic seleccionat.",
-    "placeholders": {
-      "controllerName": {
-        "content": "$1",
-        "example": "cmd_replyList"
-      }
-    }
-  },
-  "st.fileTemplates.openFile": {
-    "message": "Obriu el fitxer de plantilla SmartTemplates…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "Per què estan desactivades algunes plantilles d’aquest menú?"
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "Per configurar més de $max_Cats$ Categories, obtingueu una llicència SmartTemplates Pro…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplates": {
-    "message": "El nombre de plantilles per menú està restringit. Podeu configurar fins a $max_free$ elements de menú sense llicència i $max_std$ elements de menú amb una llicència SmartTemplates Standard. SmartTemplates Pro no té restriccions.",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.selectFromMenu": {
-    "message": "Seleccioneu una plantilla al menú desplegable."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Seleccioneu un fitxer que contingui el codi html / text i les variables SmartTemplates. Aquest fitxer es processarà i s'inserirà quan es selecciona el nou element del menú. Encara podeu modificar el fitxer de plantilla segons les vostres necessitats després de crear l'element del menú fent clic a Edita."
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Introduïu un títol."
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "Heu de seleccionar un element de la llista per actualitzar-lo."
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Actualització de plantilles"
-  },
-  "st.licenseValidation.expired": {
-    "message": "La vostra llicència va caducar el:"
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "(La clau introduïda pot ser per a {2})."
-  },
-  "st.menu.docs": {
-    "message": "Documentació"
-  },
-  "st.menu.docs.premium": {
-    "message": "Funcions Premium…"
-  },
-  "st.menu.docs.variables": {
-    "message": "Variables i ordres…"
-  },
-  "st.menu.hideLabel": {
-    "message": "Amaga l'etiqueta del botó"
-  },
-  "st.menu.license": {
-    "message": "Comprova l'estat de la llicència…"
-  },
-  "st.menu.license.tooltip": {
-    "message": "Feu clic aquí per comprovar l'estat de la llicència de $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menu.replyAll": {
-    "message": "Respondre a tots"
-  },
-  "st.menu.replyList": {
-    "message": "Respon a la llista"
-  },
-  "st.menu.supportSite": {
-    "message": "Lloc de suport…"
-  },
-  "st.menu.template.default": {
-    "message": "Plantilla predeterminada (compte)"
-  },
-  "st.menu.template.last": {
-    "message": "Última plantilla"
-  },
-  "st.menu.update.tooltip": {
-    "message": "Seleccioneu «Últimes notícies» d'aquest menú per llegir les novetats de $addonName$.\n Això restablirà el botó a la seva aparença predeterminada.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menuaccess.forward": {
-    "message": "T"
-  },
-  "st.menuaccess.reply": {
-    "message": "R"
-  },
-  "st.menuaccess.replyAll": {
-    "message": "A"
-  },
-  "st.menuaccess.replyList": {
-    "message": "L"
-  },
-  "st.menuaccess.write": {
-    "message": "N"
-  },
-  "st.notification.bodyModified": {
-    "message": "Thunderbird diu que ja has escrit alguna cosa. Vols carregar la plantilla de totes maneres?"
-  },
-  "st.notification.bodyModified.accountTemplate": {
-    "message": "Això descartarà qualsevol cosa escrita i carregarà la plantilla del compte."
-  },
-  "st.notification.bodyModified.externalTemplate": {
-    "message": "Això descartarà qualsevol cosa escrita i recarregarà la plantilla actual [$template$].",
-    "placeholders": {
-      "template": {
-        "content": "$1"
-      }
-    }
-  },
-  "st.notification.bodyModified.instructions": {
-    "message": "Feu clic a Cancel·la per mantenir el contingut del correu electrònic sense canvis."
-  },
-  "st.notification.donate": {
-    "message": "Donar"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "No tornis a mostrar aquest missatge."
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "Qualsevol text que hàgiu introduït manualment des que vau obrir el compositor se suprimirà sense desfer. Voleu continuar igualment?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "Ja heu escrit text i voleu canviar a plantilla {0}"
-  },
-  "st.notification.license.text": {
-    "message": "SmartTemplates continua funcionant com sempre. Una llicència elimina aquest recordatori — fes clic a continuació per a més informació."
-  },
-  "st.notification.licensing": {
-    "message": "Més informació sobre llicències"
-  },
-  "st.notification.parsing": {
-    "message": "Anàlisi de variables:"
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "Amplieu la llicència de domini"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "Amplieu la llicència"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "Això ampliarà la data de llicència actual un any. Normalment és més barat que una llicència nova."
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "Comprar llicència"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "Renova la llicència de domini"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "Renova la llicència"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "Actualitza a pro"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "A"
-  },
-  "st.notification.premium.sendByFilter": {
-    "message": "Amb una llicència SmartTemplates Pro vàlida, el correu electrònic s'enviaria automàticament."
-  },
-  "st.notification.premium.text": {
-    "message": "{1} és una funció Premium. Seguirà funcionant, però actualitzar a una llicència SmartTemplates Pro eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1} són funcions Premium. Seguiran funcionant, però actualitzar a una llicència SmartTemplates Pro eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
-  },
-  "st.notification.spellcheck.error": {
-    "message": "No es pot canviar l'idioma del corrector ortogràfic. Heu instal·lat el diccionari correcte?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "No hi ha diccionaris installats."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "No s'ha trobat el diccionari '{0}'."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} és una funció amb llicència. Seguirà funcionant, però obtenir una llicència SmartTemplates eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} són funcions amb llicència. Seguiran funcionant, però obtenir una llicència SmartTemplates eliminarà aquests avisos i ajudarà a donar suport a l'add-on."
-  },
-  "st.notification.usedLastTemplate": {
-    "message": "S’està reutilitzant la darrera plantilla externa: {template}{br}💾 segons la configuració global:"
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "Canviar a la llicència de domini?"
-  },
-  "st.trialDays": {
-    "message": "Us queden {0} dies de prova."
-  },
-  "st.trialExpiry": {
-    "message": "El període de prova va caducar fa {0} dies."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "Cars utilizaires de SmartTemplate4, sèm tot excitats de vos anonciar qu'a partir d'aquesta version, SmartTemplates pren tanben en carga l'utilizacion d'acoladas {} e de la balisa <style> per qu'ara poscatz definir l'estil css d'un biais avançat dins vòstres modèls."
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "A partir d'ara, la sintaxi especifica per las expressions es estada modificada : al luòc d'utilizar d'acoladas {%cc(name)%}, utilizatz de croquets dobles [[%cc(name)%]] - per mai d'informacions, rendètz-vos a l'ajuda."
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates ara va procedir a la conversion de vòstres modèls existent pr'amor que los poscatz utilizar dins la novèla version. Quichatz sus [OK] per contunhar."
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates es estada mesa al nivèl a la version {1} amb succès !"
   },
   "standardformat.config": {
     "message": "Format estàndard…"
@@ -1985,8 +2010,26 @@
   "translatorNickname.label": {
     "message": "Cédric Valmary (totenoc.org)"
   },
+  "trialDays": {
+    "message": "Us queden {0} dies de prova."
+  },
+  "trialExpiry": {
+    "message": "El període de prova va caducar fa {0} dies."
+  },
   "tzname.label": {
     "message": "GMT, PST, EST,…"
+  },
+  "updateMessageNewBrackets1": {
+    "message": "Cars utilizaires de SmartTemplate4, sèm tot excitats de vos anonciar qu'a partir d'aquesta version, SmartTemplates pren tanben en carga l'utilizacion d'acoladas {} e de la balisa <style> per qu'ara poscatz definir l'estil css d'un biais avançat dins vòstres modèls."
+  },
+  "updateMessageNewBrackets2": {
+    "message": "A partir d'ara, la sintaxi especifica per las expressions es estada modificada : al luòc d'utilizar d'acoladas {%cc(name)%}, utilizatz de croquets dobles [[%cc(name)%]] - per mai d'informacions, rendètz-vos a l'ajuda."
+  },
+  "updateMessageNewBrackets3": {
+    "message": "SmartTemplates ara va procedir a la conversion de vòstres modèls existent pr'amor que los poscatz utilizar dins la novèla version. Quichatz sus [OK] per contunhar."
+  },
+  "updateMessageVersion": {
+    "message": "SmartTemplates es estada mesa al nivèl a la version {1} amb succès !"
   },
   "updates.changeLog": {
     "message": "Notes de la versió (anglès)"
@@ -2049,7 +2092,10 @@
   "whats-new-maintenance": {
     "message": "Actualització de manteniment $ver$. Aquesta correcció concreta s'ha afegit des de la versió anterior.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "whitespace_note": {
@@ -2065,11 +2111,11 @@
       }
     }
   },
-  "xsent_long.cap": {
-    "message": "Exemple de data i hora personalitzades"
-  },
   "xsent_long_result.label": {
     "message": "Resultat : Dimenge, 20/12/2011 a 12:15"
+  },
+  "xsent_long.cap": {
+    "message": "Exemple de data i hora personalitzades"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%/%m%/%Y% a %H%:%M%"
@@ -2077,14 +2123,14 @@
   "xsent_note.label": {
     "message": "Per defaut, las variablas de data e ora seràn totjorn inicializadas amb las valors correntas (al moment de la creacion del messatge). Combinat amb %X:=sent%, las variablas de data e ora seràn las del messatge original."
   },
-  "xsent_short.cap": {
-    "message": "Exemple de data i hora en format local"
-  },
   "xsent_short_note.label": {
     "message": "Amai, podètz utilizar aquelas variablas amb las doas variantas :"
   },
   "xsent_short_result.label": {
     "message": "Resultat : Dimenge, 20/12/2011 08:54:21"
+  },
+  "xsent_short.cap": {
+    "message": "Exemple de data i hora en format local"
   },
   "y.up.label": {
     "message": "Annada (1970)"
@@ -2106,35 +2152,5 @@
   },
   "yes_button": {
     "message": "Òc"
-  },
-  "quotedTags.scope": {
-    "message": "Per a `%deleteQuotedTags()%` i `%replaceQuotedTags()%`, es pot utilitzar un àmbit sense cometes en lloc del nivell de citació numèric:"
-  },
-  "quotedTags.scope.head": {
-    "message": "Cerca només a la secció head del missatge."
-  },
-  "quotedTags.scope.body": {
-    "message": "Cerca a tot el cos del missatge, inclòs el contingut no citat."
-  },
-  "quotedTags.scope.all": {
-    "message": "Cerca tant a la secció head com al cos."
-  },
-  "quotedTags.scope.numeric": {
-    "message": "Si s'omet el nivell de citació o l'àmbit, s'utilitza el nivell 1. El valor numèric 0 inclou tots els nivells de citació del cos, però en els reenviaments en línia es limita al contingut reenviat; l'àmbit explícit body cerca a tot el cos."
-  },
-  "quotedTags.styles.body": {
-    "message": "Elimina els blocs d'estil del cos, inclosos els heretats del missatge original que poden afectar l'espaiat dels paràgrafs de la resposta. Conserva els estils de la secció head del missatge."
-  },
-  "quotedTags.styles.all": {
-    "message": "Elimina els blocs d'estil tant de la secció head com del cos per obtenir una base de format neta."
-  },
-  "quotedTags.styles.inline": {
-    "message": "Aquests exemples eliminen elements style, no pas els atributs style en línia dels elements individuals."
-  },
-  "snippets.contextMenu.legend": {
-    "message": "Afegeix al menú contextual del redactor"
-  },
-  "snippets.settingsLegend": {
-    "message": "Fragments intelligents (Redactor)"
   }
 }

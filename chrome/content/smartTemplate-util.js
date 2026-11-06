@@ -595,8 +595,8 @@ SmartTemplate4.Util = {
       featureTitle = "";
     if (isProFeature) {
       theText = isList
-        ? util.getBundleString("st.notification.premium.text.plural")
-        : util.getBundleString("st.notification.premium.text");
+        ? util.getBundleString("notification.premium.text.plural")
+        : util.getBundleString("notification.premium.text");
       featureTitle = isList ? featureList.join(", ") : featureName; // nice l10n name for pro features
 
       theText = theText.replace("{1}", "'" + featureTitle + "'");
@@ -607,13 +607,13 @@ SmartTemplate4.Util = {
     }
     if (!showedWarning && !isProFeature) {
       if (!featureList) {
-        theText = util.getBundleString("st.notification.license.text");
+        theText = util.getBundleString("notification.license.text");
         let txtGracePeriod = util.gracePeriodText(util.licenseInfo.trialDays);
         theText = theText + "  " + txtGracePeriod;
       } else {
         theText = isList
-          ? util.getBundleString("st.notification.standard.text.plural")
-          : util.getBundleString("st.notification.standard.text");
+          ? util.getBundleString("notification.standard.text.plural")
+          : util.getBundleString("notification.standard.text");
         featureTitle = isList ? featureList.join(", ") : featureName; // nice l10n name for std features
         theText = theText.replace("{1}", "'" + featureTitle + "'");
         if (additionalText) {
@@ -623,20 +623,20 @@ SmartTemplate4.Util = {
     }
 
     let regBtn,
-      hotKey = util.getBundleString("st.notification.premium.btn.hotKey"),
+      hotKey = util.getBundleString("notification.premium.btn.hotKey"),
       nbox_buttons = [];
 
     switch (SmartTemplate4.Util.licenseInfo.status) {
       case "Expired":
-        regBtn = util.getBundleString("st.notification.premium.btn.renewLicense");
+        regBtn = util.getBundleString("notification.premium.btn.renewLicense");
         break;
       default:
         if (SmartTemplate4.Util.licenseInfo.keyType == 2) {
           // standard license
-          regBtn = util.getBundleString("st.notification.premium.btn.upgrade");
-          hotKey = util.getBundleString("st.notification.premium.btn.upgrade.hotKey");
+          regBtn = util.getBundleString("notification.premium.btn.upgrade");
+          hotKey = util.getBundleString("notification.premium.btn.upgrade.hotKey");
         } else {
-          regBtn = util.getBundleString("st.notification.premium.btn.getLicense");
+          regBtn = util.getBundleString("notification.premium.btn.getLicense");
         }
     }
 
@@ -669,7 +669,7 @@ SmartTemplate4.Util = {
 
     // licensing buttons
     if (!isProFeature) {
-      let donateMsg = util.getBundleString("st.notification.licensing");
+      let donateMsg = util.getBundleString("notification.licensing");
       nbox_buttons.push({
         label: donateMsg,
         accessKey: null,
@@ -778,8 +778,8 @@ SmartTemplate4.Util = {
   gracePeriodText: function (days) {
     let txt =
       days >= 0
-        ? this.getBundleString("st.trialDays").replace("{0}", days)
-        : this.getBundleString("st.trialExpiry").replace("{0}", -days);
+        ? this.getBundleString("trialDays").replace("{0}", days)
+        : this.getBundleString("trialExpiry").replace("{0}", -days);
     return txt;
   },
 
@@ -1095,7 +1095,7 @@ SmartTemplate4.Util = {
     let mainWindow = SmartTemplate4.Util.Mail3PaneWindow,
       util = mainWindow.SmartTemplate4.Util,
       version = util.VersionSanitized,
-      sPrompt = util.getBundleString("st.confirmVersionLink") + " [version {1}]";
+      sPrompt = util.getBundleString("confirmVersionLink") + " [version {1}]";
     sPrompt = sPrompt.replace("{1}", version);
     if (!ask || confirm(sPrompt)) {
       util.openURL(util.VersionPage + "#" + version);
@@ -3252,7 +3252,7 @@ SmartTemplate4.Util = {
       util.retrySpellCheck = 0;
       return util.showSmartTemplatesMessage({
         msg:
-          util.getBundleString("st.notification.spellcheck.error") +
+          util.getBundleString("notification.spellcheck.error") +
           "\nCould not access spellChecker.",
         features: ["ok"],
       });
@@ -3297,7 +3297,7 @@ SmartTemplate4.Util = {
       // ──────────────────────────────────────────────
       let dictList = spellChecker.GetDictionaryList();
       if (!dictList?.length) {
-        throw util.getBundleString("st.notification.spellcheck.noDictionary");
+        throw util.getBundleString("notification.spellcheck.noDictionary");
       }
 
       const valid = [];
@@ -3335,7 +3335,7 @@ SmartTemplate4.Util = {
         await ComposeChangeLanguage(valid); // Since Tb102: multiple spellcheck langauges allowed
       } else {
         // no match at all → throw error
-        let wrn = util.getBundleString("st.notification.spellcheck.notFound");
+        let wrn = util.getBundleString("notification.spellcheck.notFound");
         throw wrn.replace("{0}", langArray.join(", "));
       }
 
@@ -3354,7 +3354,7 @@ SmartTemplate4.Util = {
         );
       }
     } catch (ex) {
-      let msg = util.getBundleString("st.notification.spellcheck.error");
+      let msg = util.getBundleString("notification.spellcheck.error");
       await SmartTemplate4.Util.showSmartTemplatesMessage({
         msg: msg + "\n" + ex,
         features: ["ok"],
@@ -4270,7 +4270,7 @@ SmartTemplate4.Util.firstRun =
 			util.logDebugOptional ("firstRun","finally - versionPage=" + util.VersionPage + "#" + pureVersion);
 			
 			let isPremium = util.hasLicense(true),
-			    updateVersionMessage = util.getBundleString ("st.updateMessageVersion").replace("{1}",current);
+			    updateVersionMessage = util.getBundleString ("updateMessageVersion").replace("{1}",current);
 
 			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
 			if (firstRun){

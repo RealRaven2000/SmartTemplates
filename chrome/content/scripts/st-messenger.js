@@ -42,8 +42,8 @@ async function onLoad(activatedWhileWindowOpen) {
   WL.injectElements(`<hbox id="status-bar">
     <toolbarbutton id="SmartTemplate4Messenger"
       class="statusbarpanel-iconic"
-      label="__MSG_smartTemplate4.settings.label__"
-      tooltiptext="__MSG_smartTemplate4.settings.tooltip__"/>
+      label="__MSG_extensionName__"
+      tooltiptext="__MSG_settings.tooltip__"/>
     </hbox>
   `);
 

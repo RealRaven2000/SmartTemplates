@@ -1,5 +1,6 @@
 {
   "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
     "message": "UI"
   },
   "a.label": {
@@ -153,14 +154,22 @@
   },
   "btnLoadTemplate.tooltip": {
     "message": "Завантажити шаблони (створити, відповісти, переслати) для $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "更新帳戶列表"
   },
   "btnSaveTemplate.tooltip": {
     "message": "Зберегти шаблони (створити, відповісти, переслати) для $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnYouTube.tooltip": {
     "message": "Відвідайте YouTube канал \"Thunderbird Daily\" - для поради та навчальні посібників з використання додатків"
@@ -221,6 +230,18 @@
   },
   "ccname.label": {
     "message": "Прізвище отримувача копії повідомлення"
+  },
+  "changeTemplate.label": {
+    "message": "Змінити шаблон…"
+  },
+  "changeTemplate.tooltip": {
+    "message": "Завантажте інший шаблон - використовуйте перед редагуванням електронного листа!"
+  },
+  "cleandeferred.label": {
+    "message": "прибирати!"
+  },
+  "cleandeferred.tooltip": {
+    "message": "Очистіть усі змінні SmartTemplate"
   },
   "clipboard.copy": {
     "message": "копіює текст у буфер обміну."
@@ -283,6 +304,9 @@
   },
   "conditionals.note": {
     "message": "Цей клас змінних можна використовувати для вставки тексту залежно від способу надсилання пошти. Для них вам потрібна ліцензія SmartTemplates Pro."
+  },
+  "confirmVersionLink": {
+    "message": "Відображати журнал змін для SmartTemplates?"
   },
   "contextError": {
     "message": "Змінна {1} не може бути використана для *нових* повідомлень!\nБудь ласка, зверніться до довідки з переліком дозволених змінних"
@@ -377,6 +401,15 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Використовуйте останній зовнішній шаблон, вибраний у спадному меню."
   },
+  "deferredcontext.cleanup": {
+    "message": "Замінити змінну вмістом"
+  },
+  "deferredcontext.delete": {
+    "message": "Видалити змінну SmartTemplates"
+  },
+  "deferredcontext.update": {
+    "message": "Оновити вміст SmartTemplates"
+  },
   "deleteForwardedBody": {
     "message": "Ця функція видаляє текст оригінального електронного листа під час внутрішнього пересилання. Може використовуватися для обробки інформації з автоматизованої пошти, одночасно видаляючи вихідну інформацію."
   },
@@ -469,6 +502,9 @@
   "fileCSS.label": {
     "message": "Зовнішня таблиця стилів (css). Включити ваші улюблені правила CSS для спільного використання між різними шаблонами."
   },
+  "fileFunction.notExists": {
+    "message": "Функції {0} не вдалося знайти файл або отримати доступ до нього. Перевірте шлях нижче:"
+  },
   "fileHTML.label": {
     "message": "HTML або звичайний текстовий файл. UTF-8 передбачається, як додатковий параметр кодування символів."
   },
@@ -484,14 +520,35 @@
   "files.etc": {
     "message": "Файли, зображення та вкладення"
   },
+  "fileTemplates": {
+    "message": "Файли шаблонів"
+  },
   "fileTemplates.add": {
     "message": "Додати"
+  },
+  "fileTemplates.configureMenu": {
+    "message": "Налаштування пунктів меню…"
   },
   "fileTemplates.down": {
     "message": "Донизу"
   },
   "fileTemplates.edit": {
     "message": "Редагувати"
+  },
+  "fileTemplates.error.charSet": {
+    "message": "Виникла проблема з перетворенням шаблону HTML з символу [{1}]\nВикористання необроблених значень рядка.\nЯкщо це результати у зміненому символі, спробуйте додати явну 'meta charset"
+  },
+  "fileTemplates.error.filePath": {
+    "message": "Не можу завантажити файл шаблону '{0}' за шляхом:\n{1}\nФайл можливо був видалений або переміщений."
+  },
+  "fileTemplates.error.nocontroller": {
+    "message": "Функція $controllerName$ недоступна в цьому контексті - ви не можете це зробити з вибраним електронним листом.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
   },
   "fileTemplates.file.open": {
     "message": "Виберіть файл шаблону з диска"
@@ -508,7 +565,9 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Це буде показано в меню вибору шаблону."
   },
-  "fileTemplates.import": { "message": "Імпортувати меню…" },
+  "fileTemplates.import": {
+    "message": "Імпортувати меню…"
+  },
   "fileTemplates.import.tooltip": {
     "message": "Імпортувати записи шаблонів з JSON-файлу (список HTML-шаблонів, зазвичай smartTemplates.json)."
   },
@@ -518,8 +577,39 @@
   "fileTemplates.menu": {
     "message": "Файли шаблонів"
   },
+  "fileTemplates.openFile": {
+    "message": "Відкрийте файл шаблону SmartTemplates…"
+  },
   "fileTemplates.remove": {
     "message": "Видалити"
+  },
+  "fileTemplates.restrictionQuestion": {
+    "message": "Чому деякі шаблони в цьому меню відключені?"
+  },
+  "fileTemplates.restrictTemplateCats": {
+    "message": "Щоб налаштувати більше ніж $max_Cats$ Категорії, будь ласка, отримайте ліцензію SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "fileTemplates.restrictTemplates": {
+    "message": "Кількість шаблонів у меню обмежена. Ви можете налаштувати до $max_free$ пунктів меню без ліцензії та $max_std$ пунктів меню зі стандартною ліцензією SmartTemplates! SmartTemplates Pro є необмеженим.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "fileTemplates.selectFromMenu": {
+    "message": "Будь ласка, виберіть шаблон із випадаючого меню."
   },
   "fileTemplates.tooltips.fwd": {
     "message": "Список зовнішніх файлів шаблонів, які можна запустити з меню шаблонів 'Переслати' в SmartTemplates."
@@ -535,6 +625,18 @@
   },
   "fileTemplates.update": {
     "message": "Оновити"
+  },
+  "fileTemplates.wrnEnterPath": {
+    "message": "Виберіть файл, який містить HTML / текст і ваші змінні SmartTemplates. Цей файл буде оброблено та вставлено після вибору нового елемента меню. Ви все ще можете змінити файл шаблону відповідно до ваших потреб після створення елемента меню, натиснувши Редагувати."
+  },
+  "fileTemplates.wrnEnterTitle": {
+    "message": "Будь ласка, введіть назву!"
+  },
+  "fileTemplates.wrnSelectUpdateItem": {
+    "message": "Ви повинні обрати елемент зі списку для оновлення!"
+  },
+  "fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Оновити шаблони"
   },
   "firstName.label": {
     "message": "Ім'я:"
@@ -553,9 +655,6 @@
   },
   "forceParagraphs.tip": {
     "message": "Переконайтеся, що позиція курсора починається з абзацу. Ми також рекомендуємо опцію Thunderbird Composition, щоб створити новий абзац, натиснувши клавішу [[Enter]]."
-  },
-  "fpJsonTemplateList": {
-    "message": "налаштування меню шаблонів"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML шаблон"
@@ -577,6 +676,9 @@
   },
   "fpJsonFile": {
     "message": "JSON файл"
+  },
+  "fpJsonTemplateList": {
+    "message": "налаштування меню шаблонів"
   },
   "fpStyle": {
     "message": "Таблиця стилів"
@@ -677,7 +779,9 @@
   "header.set.from": {
     "message": "встановлює адресу 'з'. Це приймає лише адреси електронної пошти зі списку ідентифікаційних даних."
   },
-  "header.set.priority": { "message": "встановлює пріоритет електронного листа." },
+  "header.set.priority": {
+    "message": "встановлює пріоритет електронного листа."
+  },
   "header.set.priority.value": {
     "message": "Параметр для встановлення пріоритету електронного листа. Можливі значення: "
   },
@@ -746,12 +850,6 @@
   "i.label": {
     "message": "Година, 12-годнинй формат (від 01 до 12) - з попереднім нулем"
   },
-  "identity.chapterHead": {
-    "message": "Ваша особистість"
-  },
-  "identity.concept": {
-    "message": "Обліковий запис пошти може мати кілька особистостей відправника, кожна з власним ім’ям та адресою електронної пошти. Ця змінна використовує особистість, вибрану в полі «Від» вікна створення повідомлення. Під час відповіді початковий вибір залежить від того, хто отримав оригінальне повідомлення. Вибрану особистість можна змінити після відкриття вікна створення повідомлення."
-  },
   "identity_ab": {
     "message": "Використовуйте ключове слово 'addressbook' для отримання додаткової особистої інформації з адресної книги."
   },
@@ -763,6 +861,12 @@
   },
   "identity_ab.phoneno": {
     "message": "Номер телефону"
+  },
+  "identity.chapterHead": {
+    "message": "Ваша особистість"
+  },
+  "identity.concept": {
+    "message": "Обліковий запис пошти може мати кілька особистостей відправника, кожна з власним ім’ям та адресою електронної пошти. Ця змінна використовує особистість, вибрану в полі «Від» вікна створення повідомлення. Під час відповіді початковий вибір залежить від того, хто отримав оригінальне повідомлення. Вибрану особистість можна змінити після відкриття вікна створення повідомлення."
   },
   "im-ex_note1.label": {
     "message": "Ви можете експортувати та імпортувати налаштування і шаблони, пов'язані з кожного запису."
@@ -913,8 +1017,14 @@
   "licenseValidation.expired": {
     "message": "Термін дії ліцензійного ключа закінчився. Будь ласка, натисніть кнопку нижче, щоб оновити свою ліцензію."
   },
+  "licenseValidation.expiredDate": {
+    "message": "Термін дії вашої ліцензії минув:"
+  },
   "licenseValidation.failed": {
     "message": "Введений ліцензійний ключ недійсний. Перевірте свою електронну пошту з FastSpring за інструкціями. Якщо у вас все ще є проблеми, зв'яжіться зі мною на вкладці Підтримка."
+  },
+  "licenseValidation.guessAddon": {
+    "message": "(Введений ключ може бути для {2})."
   },
   "licenseValidation.invalidAddon": {
     "message": "Введений ліцензійний ключ може бути для іншого надбудови. Ліцензійні ключі для {0} починаються з {1}."
@@ -958,11 +1068,74 @@
   "matchTextFromSubject": {
     "message": "Знайти за шаблоном RegEx у темі та вставити результат в місце розташування функції."
   },
+  "menu.docs": {
+    "message": "Документація"
+  },
+  "menu.docs.premium": {
+    "message": "Преміум функції…"
+  },
+  "menu.docs.variables": {
+    "message": "Змінні та команди…"
+  },
+  "menu.hideLabel": {
+    "message": "Сховати мітку кнопки"
+  },
+  "menu.license": {
+    "message": "Перевірте статус ліцензії…"
+  },
+  "menu.license.tooltip": {
+    "message": "Натисніть тут, щоб перевірити статус ліцензії для $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menu.replyAll": {
+    "message": "Відповісти всім"
+  },
+  "menu.replyList": {
+    "message": "Відповісти списку"
+  },
+  "menu.supportSite": {
+    "message": "Сайт підтримки…"
+  },
   "menu.template_export.label": {
     "message": "Експорт шаблону"
   },
   "menu.template_import.label": {
     "message": "Імпорт шаблону"
+  },
+  "menu.template.default": {
+    "message": "Шаблон за умовчанням (обліковий запис)"
+  },
+  "menu.template.last": {
+    "message": "Останній шаблон"
+  },
+  "menu.update.tooltip": {
+    "message": "Виберіть «Останні новини» в цьому меню, щоб прочитати, що нового в $addonName$.\n Це призведе до повернення кнопки до її типового вигляду.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menuaccess.forward": {
+    "message": "П"
+  },
+  "menuaccess.reply": {
+    "message": "В"
+  },
+  "menuaccess.replyAll": {
+    "message": "м"
+  },
+  "menuaccess.replyList": {
+    "message": "с"
+  },
+  "menuaccess.write": {
+    "message": "З"
   },
   "message.features": {
     "message": "Порівняйте функції…"
@@ -1047,6 +1220,98 @@
   },
   "no_button": {
     "message": "Ні"
+  },
+  "notification.bodyModified": {
+    "message": "Thunderbird каже, що ви вже ввели щось. Чи хочете ви все одно завантажити шаблон?"
+  },
+  "notification.bodyModified.accountTemplate": {
+    "message": "Це відкине все введене і завантажить шаблон облікового запису."
+  },
+  "notification.bodyModified.externalTemplate": {
+    "message": "Це відкине все введене і знову завантажить поточний шаблон [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "notification.bodyModified.instructions": {
+    "message": "Клацніть Скасувати, щоб залишити вміст електронної пошти без змін."
+  },
+  "notification.donate": {
+    "message": "Пожертвувати"
+  },
+  "notification.dontShowAgain": {
+    "message": "Більше не показувати це повідомлення."
+  },
+  "notification.editedChangeChallenge": {
+    "message": "Будь-який текст, введений вручну з моменту відкриття редактора, буде видалено, без скасування. Продовжити?"
+  },
+  "notification.editedChangeWarning": {
+    "message": "Ви вже ввели текст і хочете змінити шаблон {0}"
+  },
+  "notification.license.text": {
+    "message": "SmartTemplates продовжує працювати як зазвичай. Ліцензія прибирає це нагадування — натисніть нижче для отримання додаткової інформації."
+  },
+  "notification.licensing": {
+    "message": "Детальніше про ліцензування"
+  },
+  "notification.parsing": {
+    "message": "Розбір змінних:"
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "Розширити ліцензію домену"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "Продовжити ліцензію"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "Це продовжить поточну дату на 1 рік. Зазвичай вона дешевша за нову ліцензію."
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "Купити ліцензію"
+  },
+  "notification.premium.btn.hotKey": {
+    "message": "L"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "Поновити ліцензію на домен"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "Оновити ліцензію"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Оновити до Pro"
+  },
+  "notification.premium.btn.upgrade.hotKey": {
+    "message": "U"
+  },
+  "notification.premium.sendByFilter": {
+    "message": "З дійсною ліцензією SmartTemplates Pro тепер електронний лист надсилатиметься автоматично."
+  },
+  "notification.premium.text": {
+    "message": "{1} — це преміум-функція. Вона продовжить працювати, але оновлення до ліцензії SmartTemplates Pro видаляє ці повідомлення та підтримує додаток."
+  },
+  "notification.premium.text.plural": {
+    "message": "{1} — це преміум-функції. Вони продовжать працювати, але оновлення до ліцензії SmartTemplates Pro видаляє ці повідомлення та підтримує додаток."
+  },
+  "notification.spellcheck.error": {
+    "message": "Неможливо перемкнути мову для перевірки орфографії. Ви встановили правильний словник?"
+  },
+  "notification.spellcheck.noDictionary": {
+    "message": "Жодного словника не встановлено."
+  },
+  "notification.spellcheck.notFound": {
+    "message": "Словник '{0}' не знайдено."
+  },
+  "notification.standard.text": {
+    "message": "{1} — це ліцензована функція. Вона продовжить працювати, але отримання ліцензії SmartTemplates видаляє ці повідомлення та підтримує додаток."
+  },
+  "notification.standard.text.plural": {
+    "message": "{1} — це ліцензовані функції. Вони продовжать працювати, але отримання ліцензії SmartTemplates видаляє ці повідомлення та підтримує додаток."
+  },
+  "notification.usedLastTemplate": {
+    "message": "Повторне використання останнього зовнішнього шаблону: {template}{br}💾 відповідно до глобальних налаштувань:"
   },
   "ongoing-work": {
     "message": "Щоб утримувати $addonName$ в синхронізації з місячними випусками Thunderbird, нам потрібно постійно перевіряти на помилки і завантажувати адаптовані версії. Будь ласка, допоможіть нам з цим, як тільки ви протестуєте функціональність і переконаєтеся, що вона покращує вашу продуктивність!",
@@ -1151,6 +1416,9 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Налаштуйте зовнішній редактор для редагування шаблонів HTML і CSS. Рекомендую використовувати текстовий HTML-редактор із підсвічуванням синтаксису, наприклад Notepad++ або Visual Studio Code."
   },
+  "prompt.switchDomainLicense": {
+    "message": "Перейти до ліцензії на домен?"
+  },
   "prompt.text": {
     "message": "Введіть текст для додавання або встановлення"
   },
@@ -1165,6 +1433,30 @@
   },
   "quote_changers.desc": {
     "message": "Преміум змінні для видалення тексту/тегів з цитованих частин і збереження місця."
+  },
+  "quotedTags.scope": {
+    "message": "Для `%deleteQuotedTags()%` і `%replaceQuotedTags()%` замість числового рівня цитування можна вказати область пошуку без лапок:"
+  },
+  "quotedTags.scope.all": {
+    "message": "Шукати в розділі head і в тілі повідомлення."
+  },
+  "quotedTags.scope.body": {
+    "message": "Шукати в усьому тілі повідомлення, включно з нецитованим вмістом."
+  },
+  "quotedTags.scope.head": {
+    "message": "Шукати лише в розділі head повідомлення."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Якщо рівень цитування або область пошуку не вказано, використовується рівень 1. Числове значення 0 охоплює всі рівні цитування в тілі, але під час пересилання в тілі листа пошук обмежено пересланим вмістом; явне значення body дає змогу шукати в усьому тілі."
+  },
+  "quotedTags.styles.all": {
+    "message": "Видалити блоки стилів із розділу head і тіла повідомлення, щоб отримати чисту основу для форматування."
+  },
+  "quotedTags.styles.body": {
+    "message": "Видалити блоки стилів із тіла, зокрема успадковані з початкового повідомлення, які можуть впливати на інтервали між абзацами відповіді. Зберегти стилі в розділі head повідомлення."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Ці приклади видаляють елементи style, а не атрибути style, задані безпосередньо в окремих елементах."
   },
   "quoteHeader.replace.tip": {
     "message": "Відключення заголовку за замовчуванням. Будь ласка, сформуйте свій заголовок всередині текстового поля."
@@ -1274,6 +1566,9 @@
   "settings.label": {
     "message": "Налаштування та шаблони"
   },
+  "settings.tooltip": {
+    "message": "SmartTemplates налаштування"
+  },
   "shortdate.label": {
     "message": "Дата / Час короткий запис (e.g. 01.01.2000 1:23:45)"
   },
@@ -1281,50 +1576,23 @@
     "message": "Показати зміни + новини (Заставний екран)."
   },
   "sig.concept": {
-    "message": "Thunderbird керує розташуванням і вмістом підпису через **Налаштування облікового запису » Створення та адресування**. Ви можете змінити розташування за допомогою змінної `%sig%`.",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "Thunderbird керує розташуванням і вмістом підпису через **Налаштування облікового запису » Створення та адресування**. Ви можете змінити розташування за допомогою змінної `%sig%`."
   },
   "sig.label": {
     "message": "Підпис з налаштувань запису"
   },
-  "sig2.label": {
-    "message": "Підпис з налаштувань запису але без '--'"
-  },
   "sig.none.label": {
     "message": "Видаляє всі підписи. Перевизначає налаштування облікового запису."
+  },
+  "sig2.label": {
+    "message": "Підпис з налаштувань запису але без '--'"
   },
   "silentUpdates": {
     "message": "Не відкривати вкладку з історією версій"
   },
   "silentUpdates.tip": {
     "message": "Не відкривати зміну журналу після оновлення SmartTemplates."
-  },
-  "smarttemplate4_button": {
-    "message": "Редагувати шаблони / цитати заголовків …"
-  },
-  "smartTemplate4.changeTemplate.label": {
-    "message": "Змінити шаблон…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Завантажте інший шаблон - використовуйте перед редагуванням електронного листа!"
-  },
-  "smartTemplate4.cleandeferred.label": {
-    "message": "прибирати!"
-  },
-  "smartTemplate4.cleandeferred.tooltip": {
-    "message": "Очистіть усі змінні SmartTemplate"
-  },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Замінити змінну вмістом"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "Видалити змінну SmartTemplates"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "Оновити вміст SmartTemplates"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "SmartTemplates налаштування"
   },
   "SmartTemplateMainButton.expired": {
     "message": "Термін дії ліцензії закінчився!"
@@ -1347,63 +1615,69 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Що нового…"
   },
-  "snippets.download": {
-    "message": "Завантажити фрагменти…"
-  },
-  "snippets.browser.localTitle": {
-    "message": "Назва в меню"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "Додати до контекстного меню"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "Виберіть цільову теку"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "Виберіть власну назву в меню, наприклад своєю мовою. Зміни зберігаються, доки ця панель відкрита, і використовуються під час додавання фрагмента."
-  },
-  "snippets.browser.preview": {
-    "message": "Попередній перегляд фрагмента"
-  },
-  "snippets.browser.noPreview": {
-    "message": "Попередній перегляд недоступний"
+  "snippets.browser.add": {
+    "message": "Додати фрагменти"
   },
   "snippets.browser.close": {
     "message": "Закрити"
   },
-  "snippets.browser.add": {
-    "message": "Додати фрагменти"
-  },
-  "snippets.browser.loading": {
-    "message": "Завантаження фрагментів…"
-  },
-  "snippets.browser.importing": {
-    "message": "Додавання фрагментів…"
-  },
-  "snippets.browser.error": {
-    "message": "Не вдалося додати або завантажити фрагменти."
+  "snippets.browser.contextMenu": {
+    "message": "Додати до контекстного меню"
   },
   "snippets.browser.empty": {
     "message": "Немає доступних фрагментів."
   },
+  "snippets.browser.error": {
+    "message": "Не вдалося додати або завантажити фрагменти."
+  },
+  "snippets.browser.importing": {
+    "message": "Додавання фрагментів…"
+  },
+  "snippets.browser.loading": {
+    "message": "Завантаження фрагментів…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Назва в меню"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Виберіть власну назву в меню, наприклад своєю мовою. Зміни зберігаються, доки ця панель відкрита, і використовуються під час додавання фрагмента."
+  },
+  "snippets.browser.noPreview": {
+    "message": "Попередній перегляд недоступний"
+  },
   "snippets.browser.notConfigured": {
     "message": "Репозиторій фрагментів поки недоступний."
   },
+  "snippets.browser.preview": {
+    "message": "Попередній перегляд фрагмента"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Виберіть цільову теку"
+  },
   "snippets.contextMenu": {
     "message": "Показувати в контекстному меню"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Додати до контекстного меню редактора листів"
+  },
+  "snippets.download": {
+    "message": "Завантажити фрагменти…"
   },
   "snippets.head": {
     "message": "Розумні фрагменти"
   },
   "snippets.label": {
-    "message": "Усі фрагменти можна вставити за допомогою кнопки «$SnippetButton$»",
     "description": "SnippetButton is the localized insertSnippet.button label.",
+    "message": "Усі фрагменти можна вставити за допомогою кнопки «$SnippetButton$»",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
         "example": "Insert Snippet"
       }
     }
+  },
+  "snippets.settingsLegend": {
+    "message": "Розумні фрагменти (Редактор листів)"
   },
   "spec_form.cap": {
     "message": "Перемикачі полів адреси"
@@ -1479,258 +1753,6 @@
   },
   "splashScreen.tip": {
     "message": "Приховати інформаційне діалогове вікно, яке відображає нові функції та виправлення помилок під час оновлення."
-  },
-  "st.confirmVersionLink": {
-    "message": "Відображати журнал змін для SmartTemplates?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "Функції {0} не вдалося знайти файл або отримати доступ до нього. Перевірте шлях нижче:"
-  },
-  "st.fileTemplates": {
-    "message": "Файли шаблонів"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "Налаштування пунктів меню…"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "Виникла проблема з перетворенням шаблону HTML з символу [{1}]\nВикористання необроблених значень рядка.\nЯкщо це результати у зміненому символі, спробуйте додати явну 'meta charset"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "Не можу завантажити файл шаблону '{0}' за шляхом:\n{1}\nФайл можливо був видалений або переміщений."
-  },
-  "st.fileTemplates.error.nocontroller": {
-    "message": "Функція $controllerName$ недоступна в цьому контексті - ви не можете це зробити з вибраним електронним листом.",
-    "placeholders": {
-      "controllerName": {
-        "content": "$1",
-        "example": "cmd_replyList"
-      }
-    }
-  },
-  "st.fileTemplates.openFile": {
-    "message": "Відкрийте файл шаблону SmartTemplates…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "Чому деякі шаблони в цьому меню відключені?"
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "Щоб налаштувати більше ніж $max_Cats$ Категорії, будь ласка, отримайте ліцензію SmartTemplates Pro…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplates": {
-    "message": "Кількість шаблонів у меню обмежена. Ви можете налаштувати до $max_free$ пунктів меню без ліцензії та $max_std$ пунктів меню зі стандартною ліцензією SmartTemplates! SmartTemplates Pro є необмеженим.",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.selectFromMenu": {
-    "message": "Будь ласка, виберіть шаблон із випадаючого меню."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Виберіть файл, який містить HTML / текст і ваші змінні SmartTemplates. Цей файл буде оброблено та вставлено після вибору нового елемента меню. Ви все ще можете змінити файл шаблону відповідно до ваших потреб після створення елемента меню, натиснувши Редагувати."
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Будь ласка, введіть назву!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "Ви повинні обрати елемент зі списку для оновлення!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Оновити шаблони"
-  },
-  "st.licenseValidation.expired": {
-    "message": "Термін дії вашої ліцензії минув:"
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "(Введений ключ може бути для {2})."
-  },
-  "st.menu.docs": {
-    "message": "Документація"
-  },
-  "st.menu.docs.premium": {
-    "message": "Преміум функції…"
-  },
-  "st.menu.docs.variables": {
-    "message": "Змінні та команди…"
-  },
-  "st.menu.hideLabel": {
-    "message": "Сховати мітку кнопки"
-  },
-  "st.menu.license": {
-    "message": "Перевірте статус ліцензії…"
-  },
-  "st.menu.license.tooltip": {
-    "message": "Натисніть тут, щоб перевірити статус ліцензії для $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menu.replyAll": {
-    "message": "Відповісти всім"
-  },
-  "st.menu.replyList": {
-    "message": "Відповісти списку"
-  },
-  "st.menu.supportSite": {
-    "message": "Сайт підтримки…"
-  },
-  "st.menu.template.default": {
-    "message": "Шаблон за умовчанням (обліковий запис)"
-  },
-  "st.menu.template.last": {
-    "message": "Останній шаблон"
-  },
-  "st.menu.update.tooltip": {
-    "message": "Виберіть «Останні новини» в цьому меню, щоб прочитати, що нового в $addonName$.\n Це призведе до повернення кнопки до її типового вигляду.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menuaccess.forward": {
-    "message": "П"
-  },
-  "st.menuaccess.reply": {
-    "message": "В"
-  },
-  "st.menuaccess.replyAll": {
-    "message": "м"
-  },
-  "st.menuaccess.replyList": {
-    "message": "с"
-  },
-  "st.menuaccess.write": {
-    "message": "З"
-  },
-  "st.notification.bodyModified": {
-    "message": "Thunderbird каже, що ви вже ввели щось. Чи хочете ви все одно завантажити шаблон?"
-  },
-  "st.notification.bodyModified.accountTemplate": {
-    "message": "Це відкине все введене і завантажить шаблон облікового запису."
-  },
-  "st.notification.bodyModified.externalTemplate": {
-    "message": "Це відкине все введене і знову завантажить поточний шаблон [$template$].",
-    "placeholders": {
-      "template": {
-        "content": "$1"
-      }
-    }
-  },
-  "st.notification.bodyModified.instructions": {
-    "message": "Клацніть Скасувати, щоб залишити вміст електронної пошти без змін."
-  },
-  "st.notification.donate": {
-    "message": "Пожертвувати"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "Більше не показувати це повідомлення."
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "Будь-який текст, введений вручну з моменту відкриття редактора, буде видалено, без скасування. Продовжити?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "Ви вже ввели текст і хочете змінити шаблон {0}"
-  },
-  "st.notification.license.text": {
-    "message": "SmartTemplates продовжує працювати як зазвичай. Ліцензія прибирає це нагадування — натисніть нижче для отримання додаткової інформації."
-  },
-  "st.notification.licensing": {
-    "message": "Детальніше про ліцензування"
-  },
-  "st.notification.parsing": {
-    "message": "Розбір змінних:"
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "Розширити ліцензію домену"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "Продовжити ліцензію"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "Це продовжить поточну дату на 1 рік. Зазвичай вона дешевша за нову ліцензію."
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "Купити ліцензію"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "Поновити ліцензію на домен"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "Оновити ліцензію"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "Оновити до Pro"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
-  },
-  "st.notification.premium.sendByFilter": {
-    "message": "З дійсною ліцензією SmartTemplates Pro тепер електронний лист надсилатиметься автоматично."
-  },
-  "st.notification.premium.text": {
-    "message": "{1} — це преміум-функція. Вона продовжить працювати, але оновлення до ліцензії SmartTemplates Pro видаляє ці повідомлення та підтримує додаток."
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1} — це преміум-функції. Вони продовжать працювати, але оновлення до ліцензії SmartTemplates Pro видаляє ці повідомлення та підтримує додаток."
-  },
-  "st.notification.spellcheck.error": {
-    "message": "Неможливо перемкнути мову для перевірки орфографії. Ви встановили правильний словник?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "Жодного словника не встановлено."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "Словник '{0}' не знайдено."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} — це ліцензована функція. Вона продовжить працювати, але отримання ліцензії SmartTemplates видаляє ці повідомлення та підтримує додаток."
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} — це ліцензовані функції. Вони продовжать працювати, але отримання ліцензії SmartTemplates видаляє ці повідомлення та підтримує додаток."
-  },
-  "st.notification.usedLastTemplate": {
-    "message": "Повторне використання останнього зовнішнього шаблону: {template}{br}💾 відповідно до глобальних налаштувань:"
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "Перейти до ліцензії на домен?"
-  },
-  "st.trialDays": {
-    "message": "У вас залишилося {0} пробних днів."
-  },
-  "st.trialExpiry": {
-    "message": "Ваш пробний період закінчився {0} днів тому назад."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "Шановні користувачі SmartTemplates, ми раді повідомити, що починаючи з цієї версії, SmartTemplates також підтримує використання фігурних дужок {} і <style> тегів, так що тепер ви можете робити записи у Вашому шаблоні використовуючи стилі CSS."
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "З цього моменту, особливий синтаксис для виразів у дужках змінюється: замість запису у фігурних дужках {%сс(name)%} використовується запис у подвійних квадратних дужках [[%сс(name)%]] - докладніше див в довідці."
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates тепер може перетворювати існуючі шаблони, так що ви можете продовжувати використовувати їх в новій версії. Натисніть [OK], щоб продовжити."
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates був успішно оновлений до версії {1}!"
   },
   "standardformat.config": {
     "message": "Формат за умовчанням…"
@@ -2013,8 +2035,26 @@
   "translatorNickname.label": {
     "message": "tymofiy (BabelZilla)"
   },
+  "trialDays": {
+    "message": "У вас залишилося {0} пробних днів."
+  },
+  "trialExpiry": {
+    "message": "Ваш пробний період закінчився {0} днів тому назад."
+  },
   "tzname.label": {
     "message": "GMT, PST, EST, …"
+  },
+  "updateMessageNewBrackets1": {
+    "message": "Шановні користувачі SmartTemplates, ми раді повідомити, що починаючи з цієї версії, SmartTemplates також підтримує використання фігурних дужок {} і <style> тегів, так що тепер ви можете робити записи у Вашому шаблоні використовуючи стилі CSS."
+  },
+  "updateMessageNewBrackets2": {
+    "message": "З цього моменту, особливий синтаксис для виразів у дужках змінюється: замість запису у фігурних дужках {%сс(name)%} використовується запис у подвійних квадратних дужках [[%сс(name)%]] - докладніше див в довідці."
+  },
+  "updateMessageNewBrackets3": {
+    "message": "SmartTemplates тепер може перетворювати існуючі шаблони, так що ви можете продовжувати використовувати їх в новій версії. Натисніть [OK], щоб продовжити."
+  },
+  "updateMessageVersion": {
+    "message": "SmartTemplates був успішно оновлений до версії {1}!"
   },
   "updates.changeLog": {
     "message": "Примітки до випуску (англійською)"
@@ -2077,7 +2117,10 @@
   "whats-new-maintenance": {
     "message": "Оновлення обслуговування $ver$. Це конкретне виправлення було додано з моменту попереднього випуску.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "whitespace_note": {
@@ -2096,11 +2139,11 @@
   "xmail.label": {
     "message": "X-Mailer"
   },
-  "xsent_long.cap": {
-    "message": "Приклад власного формату дати й часу"
-  },
   "xsent_long_result.label": {
     "message": "Результат: Неділя, 20/12/2011 о 16:24 годині"
+  },
+  "xsent_long.cap": {
+    "message": "Приклад власного формату дати й часу"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%/%m%/%Y% о %H%:%M% годині"
@@ -2108,14 +2151,14 @@
   "xsent_note.label": {
     "message": "За замовчуванням, змінні дата / час завжди ініціалізувалися за поточними значеннями (час, коли ви створюєте електронну пошту). У поєднанні з %X:=sent%, дата / час змінні відображають первісну дату або час повідомлень."
   },
-  "xsent_short.cap": {
-    "message": "Приклад дати й часу в місцевому форматі"
-  },
   "xsent_short_note.label": {
     "message": "Наступні змінні можуть бути використані в обох варіантах"
   },
   "xsent_short_result.label": {
     "message": "Результат: Неділя, 20/12/2011 08:54:21"
+  },
+  "xsent_short.cap": {
+    "message": "Приклад дати й часу в місцевому форматі"
   },
   "y.up.label": {
     "message": "Рік (1970)"
@@ -2137,35 +2180,5 @@
   },
   "yes_button": {
     "message": "Так"
-  },
-  "quotedTags.scope": {
-    "message": "Для `%deleteQuotedTags()%` і `%replaceQuotedTags()%` замість числового рівня цитування можна вказати область пошуку без лапок:"
-  },
-  "quotedTags.scope.head": {
-    "message": "Шукати лише в розділі head повідомлення."
-  },
-  "quotedTags.scope.body": {
-    "message": "Шукати в усьому тілі повідомлення, включно з нецитованим вмістом."
-  },
-  "quotedTags.scope.all": {
-    "message": "Шукати в розділі head і в тілі повідомлення."
-  },
-  "quotedTags.scope.numeric": {
-    "message": "Якщо рівень цитування або область пошуку не вказано, використовується рівень 1. Числове значення 0 охоплює всі рівні цитування в тілі, але під час пересилання в тілі листа пошук обмежено пересланим вмістом; явне значення body дає змогу шукати в усьому тілі."
-  },
-  "quotedTags.styles.body": {
-    "message": "Видалити блоки стилів із тіла, зокрема успадковані з початкового повідомлення, які можуть впливати на інтервали між абзацами відповіді. Зберегти стилі в розділі head повідомлення."
-  },
-  "quotedTags.styles.all": {
-    "message": "Видалити блоки стилів із розділу head і тіла повідомлення, щоб отримати чисту основу для форматування."
-  },
-  "quotedTags.styles.inline": {
-    "message": "Ці приклади видаляють елементи style, а не атрибути style, задані безпосередньо в окремих елементах."
-  },
-  "snippets.contextMenu.legend": {
-    "message": "Додати до контекстного меню редактора листів"
-  },
-  "snippets.settingsLegend": {
-    "message": "Розумні фрагменти (Редактор листів)"
   }
 }

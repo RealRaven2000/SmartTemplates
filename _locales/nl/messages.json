@@ -1,4 +1,8 @@
 {
+  "_l10nstatus": {
+    "description": "Per language status tracker do not delete!",
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Weekdag (Vrij)"
   },
@@ -147,14 +151,22 @@
   },
   "btnLoadTemplate.tooltip": {
     "message": "Laad sjablonen (schrijven, beantwoorden, doorsturen) voor $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnRefreshAccounts.tooltip": {
     "message": "Accountlijst bijwerken"
   },
   "btnSaveTemplate.tooltip": {
     "message": "Sjablonen opslaan (nieuw, beantwoorden, doorsturen) voor $identity$…",
-    "placeholders": { "identity": { "content": "$1" } }
+    "placeholders": {
+      "identity": {
+        "content": "$1"
+      }
+    }
   },
   "btnYouTube.tooltip": {
     "message": "Bezoek het YouTube-kanaal ‘Thunderbird Daily’ voor tips en handleidingen voor het gebruik van SmartTemplates en andere add-ons"
@@ -215,6 +227,18 @@
   },
   "ccname.label": {
     "message": "Achternaam van ontvanger"
+  },
+  "changeTemplate.label": {
+    "message": "Sjabloon wisselen…"
+  },
+  "changeTemplate.tooltip": {
+    "message": "Selecteert een andere sjabloon - gebruik dit vóór bewerking in de berichttekst!"
+  },
+  "cleandeferred.label": {
+    "message": "Opschonen!"
+  },
+  "cleandeferred.tooltip": {
+    "message": "Alle SmartTemplate-variabelen opschonen"
   },
   "clipboard.copy": {
     "message": "kopieert tekst naar het klembord."
@@ -277,6 +301,9 @@
   },
   "conditionals.note": {
     "message": "Deze klasse variabelen kan worden gebruikt om tekst in te voegen, afhankelijk van hoe u e-mail verzendt. Hiervoor heeft u een SmartTemplates Pro-licentie nodig."
+  },
+  "confirmVersionLink": {
+    "message": "Wijzigingslijst voor SmartTemplates weergeven?"
   },
   "contextError": {
     "message": "De variabele {1} mag niet worden gebruikt voor *nieuwe* berichten!\nKijk in de helptekst voor toegestane variabelen"
@@ -371,6 +398,15 @@
   "defaultTemplate.useLastTemplate": {
     "message": "Gebruik de laatst geselecteerde externe sjabloon in het vervolgkeuzemenu."
   },
+  "deferredcontext.cleanup": {
+    "message": "Variabele vervangen door inhoud"
+  },
+  "deferredcontext.delete": {
+    "message": "SmartTemplates-variabele verwijderen"
+  },
+  "deferredcontext.update": {
+    "message": "SmartTemplates-inhoud bijwerken"
+  },
   "deleteForwardedBody": {
     "message": "Deze functie verwijdert de hoofdtekst van de originele e-mail bij inline doorsturen. Kan worden gebruikt om informatie uit geautomatiseerde mails te verwerken terwijl de originele informatie wordt verwijderd."
   },
@@ -459,6 +495,9 @@
   "fileCSS.label": {
     "message": "Extern stijlblad (CSS). Voeg uw favoriete CSS-regels toe om tussen verschillende sjablonen te delen."
   },
+  "fileFunction.notExists": {
+    "message": "Functie {0} kon geen bestand vinden of openen. Controleer het onderstaande pad:"
+  },
   "fileHTML.label": {
     "message": "HTML of platte tekst. Bij ontbreken van een optionele tekensetparameter wordt UTF-8 aangenomen."
   },
@@ -474,14 +513,35 @@
   "files.etc": {
     "message": "Bestanden, afbeeldingen en bijlagen"
   },
+  "fileTemplates": {
+    "message": "Sjabloonbestanden"
+  },
   "fileTemplates.add": {
     "message": "Toevoegen"
+  },
+  "fileTemplates.configureMenu": {
+    "message": "Menu-items configureren…"
   },
   "fileTemplates.down": {
     "message": "Omlaag"
   },
   "fileTemplates.edit": {
     "message": "Bewerken"
+  },
+  "fileTemplates.error.charSet": {
+    "message": "Problemen bij het converteren van een HTML-sjabloon vanuit tekenset [{1}]\nRuwe stringgegevens worden gebruikt.\nAls dit resulteert in verhaspelde tekens, probeer dan een expliciet ‘meta charset"
+  },
+  "fileTemplates.error.filePath": {
+    "message": "Kon de bestandssjabloon ‘{0}’ niet laden vanuit pad:\n{1}\nHet bestand is mogelijk verplaatst of hernoemd."
+  },
+  "fileTemplates.error.nocontroller": {
+    "message": "De functie $controllerName$ is niet beschikbaar in deze context - u kunt dit niet doen met de geselecteerde e-mail.",
+    "placeholders": {
+      "controllerName": {
+        "content": "$1",
+        "example": "cmd_replyList"
+      }
+    }
   },
   "fileTemplates.file.open": {
     "message": "Sjabloonbestand van schijf selecteren"
@@ -498,7 +558,9 @@
   "fileTemplates.file.title.tooltip": {
     "message": "Dit wordt in het sjabloonselectiemenu weergegeven."
   },
-  "fileTemplates.import": { "message": "Menu importeren…" },
+  "fileTemplates.import": {
+    "message": "Menu importeren…"
+  },
   "fileTemplates.import.tooltip": {
     "message": "Importeer sjabloonitems vanuit een JSON-bestand (lijst van HTML-sjablonen, meestal smartTemplates.json)."
   },
@@ -508,8 +570,39 @@
   "fileTemplates.menu": {
     "message": "Sjabloonbestanden"
   },
+  "fileTemplates.openFile": {
+    "message": "SmartTemplates-bestandssjabloon openen…"
+  },
   "fileTemplates.remove": {
     "message": "Verwijderen"
+  },
+  "fileTemplates.restrictionQuestion": {
+    "message": "Waarom zijn sommige sjablonen in dit menu uitgeschakeld?"
+  },
+  "fileTemplates.restrictTemplateCats": {
+    "message": "Als u meer dan $max_Cats$ categorieën wilt configureren, moet u een SmartTemplates Pro-licentie aanschaffen…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "fileTemplates.restrictTemplates": {
+    "message": "Het aantal sjablonen per menu is beperkt. U kunt tot $max_free$ menu-items configureren zonder licentie, en $max_std$ menu-items met een SmartTemplates Standard-licentie! SmartTemplates Pro is onbeperkt.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "fileTemplates.selectFromMenu": {
+    "message": "Selecteer een sjabloon in het vervolgkeuzemenu."
   },
   "fileTemplates.tooltips.fwd": {
     "message": "Lijst van externe sjabloonbestanden die gestart kunnen worden vanuit de 'Doorstuur' sjabloonmenu's van SmartTemplates."
@@ -525,6 +618,18 @@
   },
   "fileTemplates.update": {
     "message": "Bijwerken"
+  },
+  "fileTemplates.wrnEnterPath": {
+    "message": "Selecteer een bestand dat de html / tekst en uw SmartTemplates-variabelen bevat. Dit bestand wordt verwerkt en ingevoegd wanneer het nieuwe menu-item is geselecteerd. U kunt het sjabloonbestand nog steeds naar uw wensen aanpassen nadat u het menu-item hebt gemaakt door op Bewerken te klikken."
+  },
+  "fileTemplates.wrnEnterTitle": {
+    "message": "Voer een titel in!"
+  },
+  "fileTemplates.wrnSelectUpdateItem": {
+    "message": "U dient een bij te werken item uit de lijst te selecteren!"
+  },
+  "fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Sjablonen bijwerken"
   },
   "firstName.label": {
     "message": "Voornaam:"
@@ -544,9 +649,6 @@
   "forceParagraphs.tip": {
     "message": "Zorgt ervoor dat de cursorpositie met een alinea begint. Het gebruik van de optie voor het maken van een nieuwe alinea bij indrukken van de [[Enter]]-toets voor Opstellen in Thunderbird wordt ook aanbevolen."
   },
-  "fpJsonTemplateList": {
-    "message": "configuratie van sjablonenmenu"
-  },
   "fpFilterHtmlTemplate": {
     "message": "HTML-sjabloon"
   },
@@ -564,6 +666,9 @@
   },
   "fpJsonFile": {
     "message": "JSON-bestand"
+  },
+  "fpJsonTemplateList": {
+    "message": "configuratie van sjablonenmenu"
   },
   "fpStyle": {
     "message": "Stijlblad"
@@ -664,7 +769,9 @@
   "header.set.from": {
     "message": "sets 'van'-adres. Dit accepteert alleen e-mailadressen uit een lijst met identiteiten."
   },
-  "header.set.priority": { "message": "stelt de e-mailprioriteit in." },
+  "header.set.priority": {
+    "message": "stelt de e-mailprioriteit in."
+  },
   "header.set.priority.value": {
     "message": "Parameter voor het instellen van de e-mailprioriteit. Mogelijke waarden zijn: "
   },
@@ -730,12 +837,6 @@
   "i.label": {
     "message": "Uur, 12-uursopmaak (01 tot 12)"
   },
-  "identity.chapterHead": {
-    "message": "Uw identiteit"
-  },
-  "identity.concept": {
-    "message": "Een e-mailaccount kan meerdere afzenderidentiteiten hebben, elk met een eigen naam en e-mailadres. Deze variabele gebruikt de identiteit die is geselecteerd in het veld Van van het opstelvenster. Bij het beantwoorden hangt de eerste selectie af van wie het oorspronkelijke bericht heeft ontvangen. U kunt de geselecteerde identiteit wijzigen nadat het opstelvenster is geopend."
-  },
   "identity_ab": {
     "message": "Gebruik het trefwoord ‘addressbook’ om aanvullende identiteitsgegevens uit het adresboek op te halen."
   },
@@ -747,6 +848,12 @@
   },
   "identity_ab.phoneno": {
     "message": "Telefoonnr"
+  },
+  "identity.chapterHead": {
+    "message": "Uw identiteit"
+  },
+  "identity.concept": {
+    "message": "Een e-mailaccount kan meerdere afzenderidentiteiten hebben, elk met een eigen naam en e-mailadres. Deze variabele gebruikt de identiteit die is geselecteerd in het veld Van van het opstelvenster. Bij het beantwoorden hangt de eerste selectie af van wie het oorspronkelijke bericht heeft ontvangen. U kunt de geselecteerde identiteit wijzigen nadat het opstelvenster is geopend."
   },
   "im-ex_note1.label": {
     "message": "U kunt uw aan elke account verbonden instellingen en sjablonen exporteren en importeren."
@@ -897,8 +1004,14 @@
   "licenseValidation.expired": {
     "message": "De ingevoerde licentiesleutel is verlopen. Klik op de onderstaande knop om uw licentie te vernieuwen."
   },
+  "licenseValidation.expiredDate": {
+    "message": "Uw licentie is verlopen op:"
+  },
   "licenseValidation.failed": {
     "message": "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met mij op via het tabblad Ondersteuning."
+  },
+  "licenseValidation.guessAddon": {
+    "message": "(De ingevoerde sleutel is mogelijk voor {2})."
   },
   "licenseValidation.invalidAddon": {
     "message": "De door u ingevoerde licentiesleutel dient mogelijk voor een andere add-on. Licentiesleutels voor {0} beginnen met {1}."
@@ -942,11 +1055,74 @@
   "matchTextFromSubject": {
     "message": "Een RexEx-patroon in het onderwerp zoeken en invoegen op de functielocatie."
   },
+  "menu.docs": {
+    "message": "Documentatie"
+  },
+  "menu.docs.premium": {
+    "message": "Premium eigenschappen…"
+  },
+  "menu.docs.variables": {
+    "message": "Variabelen en opdrachten…"
+  },
+  "menu.hideLabel": {
+    "message": "Knoplabel verbergen"
+  },
+  "menu.license": {
+    "message": "Licentiestatus controleren…"
+  },
+  "menu.license.tooltip": {
+    "message": "Klik hier om de licentiestatus voor $addonName$ te controleren.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menu.replyAll": {
+    "message": "Allen beantwoorden"
+  },
+  "menu.replyList": {
+    "message": "Antwoord op lijst"
+  },
+  "menu.supportSite": {
+    "message": "Ondersteuningssite…"
+  },
   "menu.template_export.label": {
     "message": "Sjabloon exporteren"
   },
   "menu.template_import.label": {
     "message": "Sjabloon importeren"
+  },
+  "menu.template.default": {
+    "message": "Standaardsjabloon (account)"
+  },
+  "menu.template.last": {
+    "message": "Laatste sjabloon"
+  },
+  "menu.update.tooltip": {
+    "message": "Selecteer “Laatste nieuws” in dit menu om te lezen wat er nieuw is in $addonName$.\n Hierdoor wordt de knop teruggezet naar zijn standaarduiterlijk.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "menuaccess.forward": {
+    "message": "D"
+  },
+  "menuaccess.reply": {
+    "message": "A"
+  },
+  "menuaccess.replyAll": {
+    "message": "B"
+  },
+  "menuaccess.replyList": {
+    "message": "L"
+  },
+  "menuaccess.write": {
+    "message": "N"
   },
   "message.features": {
     "message": "Vergelijk functies…"
@@ -1031,6 +1207,92 @@
   },
   "no_button": {
     "message": "Nee"
+  },
+  "notification.bodyModified": {
+    "message": "Thunderbird zegt dat je al iets hebt getypt, wil je toch de sjabloon laden?"
+  },
+  "notification.bodyModified.accountTemplate": {
+    "message": "Dit zal alles wat is getypt verwijderen en de accountsjabloon laden."
+  },
+  "notification.bodyModified.externalTemplate": {
+    "message": "Dit zal alles wat is getypt verwijderen en de huidige sjabloon [$template$] opnieuw laden.",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "notification.bodyModified.instructions": {
+    "message": "Klik op Annuleren om de inhoud van de e-mail ongewijzigd te houden."
+  },
+  "notification.donate": {
+    "message": "Doneren"
+  },
+  "notification.dontShowAgain": {
+    "message": "Dit bericht niet meer tonen"
+  },
+  "notification.editedChangeChallenge": {
+    "message": "Tekst die u sinds het openen van het opstelvenster handmatig hebt ingevoerd wordt verwijderd, zonder Ongedaan maken. Toch doorgaan?"
+  },
+  "notification.editedChangeWarning": {
+    "message": "U hebt al tekst ingetypt en wilt naar sjabloon {0} wisselen"
+  },
+  "notification.license.text": {
+    "message": "SmartTemplates blijft normaal functioneren. Een licentie verwijdert deze melding — klik hieronder voor meer informatie."
+  },
+  "notification.licensing": {
+    "message": "Meer over licenties"
+  },
+  "notification.parsing": {
+    "message": "Parse-variabelen:"
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "Verleng de domeinlicentie"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "Licentie verlengen"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "Hierdoor wordt de huidige licentiedatum met 1 jaar verlengd. Dit is doorgaans goedkoper dan een nieuwe licentie."
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "Licentie kopen"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "Verleng de domeinlicentie"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "Licentie vernieuwen"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Upgraden naar Pro"
+  },
+  "notification.premium.sendByFilter": {
+    "message": "Met een geldige SmartTemplates Pro-licentie zou de e-mail nu automatisch worden verzonden."
+  },
+  "notification.premium.text": {
+    "message": "{1} is een Premium-functie. Het blijft werken, maar upgraden naar een SmartTemplates Pro-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
+  },
+  "notification.premium.text.plural": {
+    "message": "{1} zijn Premium-functies. Ze blijven werken, maar upgraden naar een SmartTemplates Pro-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
+  },
+  "notification.spellcheck.error": {
+    "message": "Kan niet wisselen van spellingcontrole. Hebt u het juiste woordenboek geïnstalleerd?"
+  },
+  "notification.spellcheck.noDictionary": {
+    "message": "Geen woordenboeken geïnstalleerd."
+  },
+  "notification.spellcheck.notFound": {
+    "message": "Woordenboek ‘{0}’ niet gevonden."
+  },
+  "notification.standard.text": {
+    "message": "{1} is een gelicentieerde functie. Het blijft werken, maar het verkrijgen van een SmartTemplates-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
+  },
+  "notification.standard.text.plural": {
+    "message": "{1} zijn gelicentieerde functies. Ze blijven werken, maar het verkrijgen van een SmartTemplates-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
+  },
+  "notification.usedLastTemplate": {
+    "message": "De laatst geselecteerde externe sjabloon wordt opnieuw gebruikt: {template}{br}💾 volgens de globale instellingen:"
   },
   "ongoing-work": {
     "message": "Om $addonName$ gesynchroniseerd te houden met de maandelijkse releases van Thunderbird, moeten we constant op zoek naar fouten en aangepaste versies uploaden. Help ons alstublieft hiermee, zodra je de functionaliteit hebt geprobeerd en zeker weet dat het je productiviteit verbetert!",
@@ -1120,6 +1382,9 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Stel een externe editor in om uw HTML- en CSS-sjablonen te bewerken. Ik raad een HTML-editor voor platte tekst met syntaxisaccentuering aan, zoals Notepad++ of Visual Studio Code."
   },
+  "prompt.switchDomainLicense": {
+    "message": "Wisselen naar domeinlicentie?"
+  },
   "prompt.text": {
     "message": "Voer de toe te voegen of in te stellen tekst in"
   },
@@ -1134,6 +1399,30 @@
   },
   "quote_changers.desc": {
     "message": "Premiumvariabelen om tekst/labels uit aangehaalde delen te verwijderen en ruimte te besparen."
+  },
+  "quotedTags.scope": {
+    "message": "Voor `%deleteQuotedTags()%` en `%replaceQuotedTags()%` kan een bereik zonder aanhalingstekens worden gebruikt in plaats van het numerieke citaatniveau:"
+  },
+  "quotedTags.scope.all": {
+    "message": "Zoeken in zowel de head-sectie als de berichttekst."
+  },
+  "quotedTags.scope.body": {
+    "message": "Zoeken in de volledige berichttekst, inclusief niet-geciteerde inhoud."
+  },
+  "quotedTags.scope.head": {
+    "message": "Alleen zoeken in de head-sectie van het bericht."
+  },
+  "quotedTags.scope.numeric": {
+    "message": "Als het citaatniveau of bereik wordt weggelaten, geldt citaatniveau 1. De numerieke waarde 0 omvat alle citaatniveaus in de berichttekst, maar is bij inline doorsturen beperkt tot de doorgestuurde inhoud; expliciet body doorzoekt de volledige berichttekst."
+  },
+  "quotedTags.styles.all": {
+    "message": "Stijlblokken uit de head-sectie en de berichttekst verwijderen voor een schone opmaakbasis."
+  },
+  "quotedTags.styles.body": {
+    "message": "Stijlblokken uit de berichttekst verwijderen, inclusief stijlen uit het oorspronkelijke bericht die de alinea-afstand in uw antwoord kunnen beïnvloeden. Stijlen in de head-sectie behouden."
+  },
+  "quotedTags.styles.inline": {
+    "message": "Deze voorbeelden verwijderen style-elementen, niet de inline style-attributen van afzonderlijke elementen."
   },
   "quoteHeader.replace.tip": {
     "message": "Standaard aanhalingskoptekst uitschakelen. Schrijf uw aanhalingskoptekst in het tekstveld."
@@ -1240,6 +1529,9 @@
   "settings.label": {
     "message": "Instellingen en sjablonen"
   },
+  "settings.tooltip": {
+    "message": "SmartTemplates-instellingen"
+  },
   "shortdate.label": {
     "message": "Datum en tijd kort (bv. 01.01.2000 1:23:45)"
   },
@@ -1247,50 +1539,23 @@
     "message": "Wijzigingen + nieuws (Splash Screen)."
   },
   "sig.concept": {
-    "message": "Thunderbird bepaalt de plaatsing en inhoud van de ondertekening via **Accountinstellingen » Opstellen & adressering**. U kunt de plaatsing overschrijven met de variabele `%sig%`.",
-    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup."
+    "description": "Use **bold** for emphasis and *italic* for Thunderbird menu items or labels. Keep markers paired; nesting is not supported. Do not add HTML markup.",
+    "message": "Thunderbird bepaalt de plaatsing en inhoud van de ondertekening via **Accountinstellingen » Opstellen & adressering**. U kunt de plaatsing overschrijven met de variabele `%sig%`."
   },
   "sig.label": {
     "message": "Ondertekening uit accountinstellingen"
   },
-  "sig2.label": {
-    "message": "Ondertekening uit accountinstellingen maar zonder ‘--’"
-  },
   "sig.none.label": {
     "message": "Verwijdert elke ondertekening. Negeert de accountinstellingen."
+  },
+  "sig2.label": {
+    "message": "Ondertekening uit accountinstellingen maar zonder ‘--’"
   },
   "silentUpdates": {
     "message": "Tabblad met versiegeschiedenis niet openen"
   },
   "silentUpdates.tip": {
     "message": "Geen wijzigingslijst openen nadat SmartTemplates is bijgewerkt"
-  },
-  "smarttemplate4_button": {
-    "message": "Sjablonen en aanhalingskoptekst bewerken…"
-  },
-  "smartTemplate4.changeTemplate.label": {
-    "message": "Sjabloon wisselen…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Selecteert een andere sjabloon - gebruik dit vóór bewerking in de berichttekst!"
-  },
-  "smartTemplate4.cleandeferred.label": {
-    "message": "Opschonen!"
-  },
-  "smartTemplate4.cleandeferred.tooltip": {
-    "message": "Alle SmartTemplate-variabelen opschonen"
-  },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Variabele vervangen door inhoud"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "SmartTemplates-variabele verwijderen"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "SmartTemplates-inhoud bijwerken"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "SmartTemplates-instellingen"
   },
   "SmartTemplateMainButton.expired": {
     "message": "Licentie verlopen!"
@@ -1310,63 +1575,69 @@
   "SmartTemplateMainButton.updated.read": {
     "message": "🔶Wat is er nieuw…"
   },
-  "snippets.download": {
-    "message": "Fragmenten downloaden…"
-  },
-  "snippets.browser.localTitle": {
-    "message": "Menulabel"
-  },
-  "snippets.browser.contextMenu": {
-    "message": "Toevoegen aan contextmenu"
-  },
-  "snippets.browser.targetFolder": {
-    "message": "Doelmap selecteren"
-  },
-  "snippets.browser.menuLabel.tip": {
-    "message": "Kies uw eigen menulabel, bijvoorbeeld in uw taal. Uw wijzigingen blijven bewaard zolang dit paneel geopend is en worden gebruikt bij het toevoegen van het fragment."
-  },
-  "snippets.browser.preview": {
-    "message": "Fragmentvoorbeeld"
-  },
-  "snippets.browser.noPreview": {
-    "message": "Voorbeeld niet beschikbaar"
+  "snippets.browser.add": {
+    "message": "Fragmenten toevoegen"
   },
   "snippets.browser.close": {
     "message": "Sluiten"
   },
-  "snippets.browser.add": {
-    "message": "Fragmenten toevoegen"
-  },
-  "snippets.browser.loading": {
-    "message": "Fragmenten laden…"
-  },
-  "snippets.browser.importing": {
-    "message": "Fragmenten toevoegen…"
-  },
-  "snippets.browser.error": {
-    "message": "Kan fragmenten niet toevoegen of laden."
+  "snippets.browser.contextMenu": {
+    "message": "Toevoegen aan contextmenu"
   },
   "snippets.browser.empty": {
     "message": "Er zijn geen fragmenten beschikbaar."
   },
+  "snippets.browser.error": {
+    "message": "Kan fragmenten niet toevoegen of laden."
+  },
+  "snippets.browser.importing": {
+    "message": "Fragmenten toevoegen…"
+  },
+  "snippets.browser.loading": {
+    "message": "Fragmenten laden…"
+  },
+  "snippets.browser.localTitle": {
+    "message": "Menulabel"
+  },
+  "snippets.browser.menuLabel.tip": {
+    "message": "Kies uw eigen menulabel, bijvoorbeeld in uw taal. Uw wijzigingen blijven bewaard zolang dit paneel geopend is en worden gebruikt bij het toevoegen van het fragment."
+  },
+  "snippets.browser.noPreview": {
+    "message": "Voorbeeld niet beschikbaar"
+  },
   "snippets.browser.notConfigured": {
     "message": "De fragmentenopslag is nog niet beschikbaar."
   },
+  "snippets.browser.preview": {
+    "message": "Fragmentvoorbeeld"
+  },
+  "snippets.browser.targetFolder": {
+    "message": "Doelmap selecteren"
+  },
   "snippets.contextMenu": {
     "message": "Tonen in het contextmenu"
+  },
+  "snippets.contextMenu.legend": {
+    "message": "Toevoegen aan het contextmenu van het opstelvenster"
+  },
+  "snippets.download": {
+    "message": "Fragmenten downloaden…"
   },
   "snippets.head": {
     "message": "Slimme fragmenten"
   },
   "snippets.label": {
-    "message": "Alle fragmenten kunnen worden ingevoegd met de knop $SnippetButton$",
     "description": "SnippetButton is the localized insertSnippet.button label.",
+    "message": "Alle fragmenten kunnen worden ingevoegd met de knop $SnippetButton$",
     "placeholders": {
       "SnippetButton": {
         "content": "$1",
         "example": "Insert Snippet"
       }
     }
+  },
+  "snippets.settingsLegend": {
+    "message": "Slimme fragmenten (Opstellen)"
   },
   "spec_form.cap": {
     "message": "Adresveldschakelaars"
@@ -1442,252 +1713,6 @@
   },
   "splashScreen.tip": {
     "message": "Dialoogvenster met informatie verbergen dat nieuwe functies en bugfixes weergeeft tijdens het updaten."
-  },
-  "st.confirmVersionLink": {
-    "message": "Wijzigingslijst voor SmartTemplates weergeven?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "Functie {0} kon geen bestand vinden of openen. Controleer het onderstaande pad:"
-  },
-  "st.fileTemplates": {
-    "message": "Sjabloonbestanden"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "Menu-items configureren…"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "Problemen bij het converteren van een HTML-sjabloon vanuit tekenset [{1}]\nRuwe stringgegevens worden gebruikt.\nAls dit resulteert in verhaspelde tekens, probeer dan een expliciet ‘meta charset"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "Kon de bestandssjabloon ‘{0}’ niet laden vanuit pad:\n{1}\nHet bestand is mogelijk verplaatst of hernoemd."
-  },
-  "st.fileTemplates.error.nocontroller": {
-    "message": "De functie $controllerName$ is niet beschikbaar in deze context - u kunt dit niet doen met de geselecteerde e-mail.",
-    "placeholders": {
-      "controllerName": {
-        "content": "$1",
-        "example": "cmd_replyList"
-      }
-    }
-  },
-  "st.fileTemplates.openFile": {
-    "message": "SmartTemplates-bestandssjabloon openen…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "Waarom zijn sommige sjablonen in dit menu uitgeschakeld?"
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "Als u meer dan $max_Cats$ categorieën wilt configureren, moet u een SmartTemplates Pro-licentie aanschaffen…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "st.fileTemplates.restrictTemplates": {
-    "message": "Het aantal sjablonen per menu is beperkt. U kunt tot $max_free$ menu-items configureren zonder licentie, en $max_std$ menu-items met een SmartTemplates Standard-licentie! SmartTemplates Pro is onbeperkt.",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }
-  },
-  "st.fileTemplates.selectFromMenu": {
-    "message": "Selecteer een sjabloon in het vervolgkeuzemenu."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Selecteer een bestand dat de html / tekst en uw SmartTemplates-variabelen bevat. Dit bestand wordt verwerkt en ingevoegd wanneer het nieuwe menu-item is geselecteerd. U kunt het sjabloonbestand nog steeds naar uw wensen aanpassen nadat u het menu-item hebt gemaakt door op Bewerken te klikken."
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Voer een titel in!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "U dient een bij te werken item uit de lijst te selecteren!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Sjablonen bijwerken"
-  },
-  "st.licenseValidation.expired": {
-    "message": "Uw licentie is verlopen op:"
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "(De ingevoerde sleutel is mogelijk voor {2})."
-  },
-  "st.menu.docs": {
-    "message": "Documentatie"
-  },
-  "st.menu.docs.premium": {
-    "message": "Premium eigenschappen…"
-  },
-  "st.menu.docs.variables": {
-    "message": "Variabelen en opdrachten…"
-  },
-  "st.menu.hideLabel": {
-    "message": "Knoplabel verbergen"
-  },
-  "st.menu.license": {
-    "message": "Licentiestatus controleren…"
-  },
-  "st.menu.license.tooltip": {
-    "message": "Klik hier om de licentiestatus voor $addonName$ te controleren.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menu.replyAll": {
-    "message": "Allen beantwoorden"
-  },
-  "st.menu.replyList": {
-    "message": "Antwoord op lijst"
-  },
-  "st.menu.supportSite": {
-    "message": "Ondersteuningssite…"
-  },
-  "st.menu.template.default": {
-    "message": "Standaardsjabloon (account)"
-  },
-  "st.menu.template.last": {
-    "message": "Laatste sjabloon"
-  },
-  "st.menu.update.tooltip": {
-    "message": "Selecteer “Laatste nieuws” in dit menu om te lezen wat er nieuw is in $addonName$.\n Hierdoor wordt de knop teruggezet naar zijn standaarduiterlijk.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "st.menuaccess.forward": {
-    "message": "D"
-  },
-  "st.menuaccess.reply": {
-    "message": "A"
-  },
-  "st.menuaccess.replyAll": {
-    "message": "B"
-  },
-  "st.menuaccess.replyList": {
-    "message": "L"
-  },
-  "st.menuaccess.write": {
-    "message": "N"
-  },
-  "st.notification.bodyModified": {
-    "message": "Thunderbird zegt dat je al iets hebt getypt, wil je toch de sjabloon laden?"
-  },
-  "st.notification.bodyModified.accountTemplate": {
-    "message": "Dit zal alles wat is getypt verwijderen en de accountsjabloon laden."
-  },
-  "st.notification.bodyModified.externalTemplate": {
-    "message": "Dit zal alles wat is getypt verwijderen en de huidige sjabloon [$template$] opnieuw laden.",
-    "placeholders": {
-      "template": {
-        "content": "$1"
-      }
-    }
-  },
-  "st.notification.bodyModified.instructions": {
-    "message": "Klik op Annuleren om de inhoud van de e-mail ongewijzigd te houden."
-  },
-  "st.notification.donate": {
-    "message": "Doneren"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "Dit bericht niet meer tonen"
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "Tekst die u sinds het openen van het opstelvenster handmatig hebt ingevoerd wordt verwijderd, zonder Ongedaan maken. Toch doorgaan?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "U hebt al tekst ingetypt en wilt naar sjabloon {0} wisselen"
-  },
-  "st.notification.license.text": {
-    "message": "SmartTemplates blijft normaal functioneren. Een licentie verwijdert deze melding — klik hieronder voor meer informatie."
-  },
-  "st.notification.licensing": {
-    "message": "Meer over licenties"
-  },
-  "st.notification.parsing": {
-    "message": "Parse-variabelen:"
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "Verleng de domeinlicentie"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "Licentie verlengen"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "Hierdoor wordt de huidige licentiedatum met 1 jaar verlengd. Dit is doorgaans goedkoper dan een nieuwe licentie."
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "Licentie kopen"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "Verleng de domeinlicentie"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "Licentie vernieuwen"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "Upgraden naar Pro"
-  },
-  "st.notification.premium.sendByFilter": {
-    "message": "Met een geldige SmartTemplates Pro-licentie zou de e-mail nu automatisch worden verzonden."
-  },
-  "st.notification.premium.text": {
-    "message": "{1} is een Premium-functie. Het blijft werken, maar upgraden naar een SmartTemplates Pro-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1} zijn Premium-functies. Ze blijven werken, maar upgraden naar een SmartTemplates Pro-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
-  },
-  "st.notification.spellcheck.error": {
-    "message": "Kan niet wisselen van spellingcontrole. Hebt u het juiste woordenboek geïnstalleerd?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "Geen woordenboeken geïnstalleerd."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "Woordenboek ‘{0}’ niet gevonden."
-  },
-  "st.notification.standard.text": {
-    "message": "{1} is een gelicentieerde functie. Het blijft werken, maar het verkrijgen van een SmartTemplates-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
-  },
-  "st.notification.standard.text.plural": {
-    "message": "{1} zijn gelicentieerde functies. Ze blijven werken, maar het verkrijgen van een SmartTemplates-licentie verwijdert deze meldingen en helpt de add-on te ondersteunen."
-  },
-  "st.notification.usedLastTemplate": {
-    "message": "De laatst geselecteerde externe sjabloon wordt opnieuw gebruikt: {template}{br}💾 volgens de globale instellingen:"
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "Wisselen naar domeinlicentie?"
-  },
-  "st.trialDays": {
-    "message": "U hebt nog {0} probeerdagen over."
-  },
-  "st.trialExpiry": {
-    "message": "Uw proefperiode is {0} dagen geleden verlopen."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "Geachte gebruiker van SmartTemplates. We zijn blij te kunnen aankondigen dat SmartTemplates vanaf deze versie ook het gebruik van accolades {} en het label <style> ondersteunt, zodat u nu geavanceerde CSS-stijlen in uw sjabloon kunt gebruiken."
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "Vanaf nu is de specifieke syntaxis voor uitdrukkingen tussen haakjes gewijzigd: gebruik in plaats van accolades {%cc(name)%} voortaan rechte haakjes [[%cc(name)%]] - lees de helptekst voor meer informatie."
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates zal nu uw bestaande sjablonen converteren, zodat u ze in de nieuwe versie kunt blijven gebruiken. Klik op [OK] om door te gaan."
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates is met succes bijgewerkt naar versie {1}!"
   },
   "standardformat.config": {
     "message": "Standaard formaat…"
@@ -1961,8 +1986,26 @@
   "translatorNickname.label": {
     "message": "markh (BabelZilla)"
   },
+  "trialDays": {
+    "message": "U hebt nog {0} probeerdagen over."
+  },
+  "trialExpiry": {
+    "message": "Uw proefperiode is {0} dagen geleden verlopen."
+  },
   "tzname.label": {
     "message": "GMT, PST, EST, …"
+  },
+  "updateMessageNewBrackets1": {
+    "message": "Geachte gebruiker van SmartTemplates. We zijn blij te kunnen aankondigen dat SmartTemplates vanaf deze versie ook het gebruik van accolades {} en het label <style> ondersteunt, zodat u nu geavanceerde CSS-stijlen in uw sjabloon kunt gebruiken."
+  },
+  "updateMessageNewBrackets2": {
+    "message": "Vanaf nu is de specifieke syntaxis voor uitdrukkingen tussen haakjes gewijzigd: gebruik in plaats van accolades {%cc(name)%} voortaan rechte haakjes [[%cc(name)%]] - lees de helptekst voor meer informatie."
+  },
+  "updateMessageNewBrackets3": {
+    "message": "SmartTemplates zal nu uw bestaande sjablonen converteren, zodat u ze in de nieuwe versie kunt blijven gebruiken. Klik op [OK] om door te gaan."
+  },
+  "updateMessageVersion": {
+    "message": "SmartTemplates is met succes bijgewerkt naar versie {1}!"
   },
   "updates.changeLog": {
     "message": "Release-opmerkingen (Engels)"
@@ -2025,7 +2068,10 @@
   "whats-new-maintenance": {
     "message": "Onderhoudsupdate $ver$. Deze specifieke fix is toegevoegd sinds de vorige release.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "whitespace_note": {
@@ -2041,11 +2087,11 @@
       }
     }
   },
-  "xsent_long.cap": {
-    "message": "Voorbeeld van aangepaste datum en tijd"
-  },
   "xsent_long_result.label": {
     "message": "Resultaat: Zondag, 20.12.2011 om 16:24:"
+  },
+  "xsent_long.cap": {
+    "message": "Voorbeeld van aangepaste datum en tijd"
   },
   "xsent_long.label": {
     "message": "%X:=sent%%d%.%m%.%Y% om %H%:%M%:"
@@ -2053,14 +2099,14 @@
   "xsent_note.label": {
     "message": "De bovenstaande variabelen zullen normaliter op de huidige waarden staan ingesteld. Wanneer u dit met %X:=sent% combineert, worden de oorspronkelijke waarden weergegeven."
   },
-  "xsent_short.cap": {
-    "message": "Voorbeeld van datum en tijd in lokale notatie"
-  },
   "xsent_short_note.label": {
     "message": "In beide varianten kunt u de volgende variabelen gebruiken:"
   },
   "xsent_short_result.label": {
     "message": "Resultaat: Woensdag, 16.02.2011 12:15:25"
+  },
+  "xsent_short.cap": {
+    "message": "Voorbeeld van datum en tijd in lokale notatie"
   },
   "y.up.label": {
     "message": "Jaar (1970)"
@@ -2082,35 +2128,5 @@
   },
   "yes_button": {
     "message": "Ja"
-  },
-  "quotedTags.scope": {
-    "message": "Voor `%deleteQuotedTags()%` en `%replaceQuotedTags()%` kan een bereik zonder aanhalingstekens worden gebruikt in plaats van het numerieke citaatniveau:"
-  },
-  "quotedTags.scope.head": {
-    "message": "Alleen zoeken in de head-sectie van het bericht."
-  },
-  "quotedTags.scope.body": {
-    "message": "Zoeken in de volledige berichttekst, inclusief niet-geciteerde inhoud."
-  },
-  "quotedTags.scope.all": {
-    "message": "Zoeken in zowel de head-sectie als de berichttekst."
-  },
-  "quotedTags.scope.numeric": {
-    "message": "Als het citaatniveau of bereik wordt weggelaten, geldt citaatniveau 1. De numerieke waarde 0 omvat alle citaatniveaus in de berichttekst, maar is bij inline doorsturen beperkt tot de doorgestuurde inhoud; expliciet body doorzoekt de volledige berichttekst."
-  },
-  "quotedTags.styles.body": {
-    "message": "Stijlblokken uit de berichttekst verwijderen, inclusief stijlen uit het oorspronkelijke bericht die de alinea-afstand in uw antwoord kunnen beïnvloeden. Stijlen in de head-sectie behouden."
-  },
-  "quotedTags.styles.all": {
-    "message": "Stijlblokken uit de head-sectie en de berichttekst verwijderen voor een schone opmaakbasis."
-  },
-  "quotedTags.styles.inline": {
-    "message": "Deze voorbeelden verwijderen style-elementen, niet de inline style-attributen van afzonderlijke elementen."
-  },
-  "snippets.contextMenu.legend": {
-    "message": "Toevoegen aan het contextmenu van het opstelvenster"
-  },
-  "snippets.settingsLegend": {
-    "message": "Slimme fragmenten (Opstellen)"
   }
 }
