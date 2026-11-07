@@ -1,8 +1,8 @@
 # Consolidate licensing and feature notifications
 
-Status: consolidated requirements draft, ready for GitHub issue creation; issue number pending. Open policy decisions are explicitly listed below. No runtime implementation changes are authorized by this document.
+Status: consolidated requirements draft for #441. Open policy decisions are explicitly listed below. No runtime implementation changes are authorized by this document.
 
-Design reference: [interactive HTML prototype](notification-prototype.html). The prototype demonstrates presentation, not production trial accounting or suppression. Its sample 28-day value is not a decision on the new allowance length.
+Design reference: [HTML prototype source](https://github.com/RealRaven2000/SmartTemplates/blob/ESR140/docs/issues/%23441%20-%20Consolidate%20Notifications/notification-prototype.html) (download and open locally to interact). The prototype demonstrates presentation, not production trial accounting or suppression. Its sample 28-day value is not a decision on the new allowance length.
 
 ## Goals
 
@@ -13,7 +13,7 @@ Design reference: [interactive HTML prototype](notification-prototype.html). The
 
 ## Current problems
 
-See [the current feature inventory](feature-inventory.md) for existing gates, fixed limits, reminder-only features, and implementation discrepancies. The current shared 28-day trial is elapsed calendar time, not a per-feature session/day allowance.
+See [the current feature inventory](https://github.com/RealRaven2000/SmartTemplates/blob/ESR140/docs/issues/%23441%20-%20Consolidate%20Notifications/feature-inventory.md) for existing gates, fixed limits, reminder-only features, and implementation discrepancies. The current shared 28-day trial is elapsed calendar time, not a per-feature session/day allowance.
 
 One template insertion can produce three visible bars: general licensing/trial information, a Pro feature list, and a Standard feature list. These messages compete for attention and reduce the space available for writing email.
 

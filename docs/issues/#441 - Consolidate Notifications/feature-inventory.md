@@ -1,5 +1,7 @@
 # Licensed feature inventory
 
+Supporting audit for #441. See the [notification requirements](https://github.com/RealRaven2000/SmartTemplates/blob/ESR140/docs/issues/%23441%20-%20Consolidate%20Notifications/requirements.md).
+
 This is an audit of current code, not approval to introduce new gates. Pro below includes Domain licenses. License entitlements and actual enforcement are distinct.
 
 ## Existing counters and gates
