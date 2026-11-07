@@ -1237,6 +1237,15 @@
   "notification.bodyModified.instructions": {
     "message": "Klicka på Avbryt för att behålla e-postinnehållet oförändrat."
   },
+  "notification.compose.details": {
+    "message": "Licenskrävande funktioner används"
+  },
+  "notification.compose.learnMore": {
+    "message": "Läs mer"
+  },
+  "notification.compose.remindLater": {
+    "message": "Påminn mig senare"
+  },
   "notification.donate": {
     "message": "Donera"
   },

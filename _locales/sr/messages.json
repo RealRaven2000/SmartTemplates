@@ -1210,6 +1210,15 @@
   "notification.bodyModified.instructions": {
     "message": "Кликните на Откажи да бисте задржали садржај е-поште без измена."
   },
+  "notification.compose.details": {
+    "message": "Коришћене су лиценциране функције"
+  },
+  "notification.compose.learnMore": {
+    "message": "Сазнајте више"
+  },
+  "notification.compose.remindLater": {
+    "message": "Подсети ме касније"
+  },
   "notification.donate": {
     "message": "Донирајте"
   },

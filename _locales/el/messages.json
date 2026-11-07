@@ -1225,6 +1225,15 @@
   "notification.bodyModified.instructions": {
     "message": "Κάντε κλικ σε Ακύρωση για να διατηρήσετε το περιεχόμενο του email χωρίς αλλαγές."
   },
+  "notification.compose.details": {
+    "message": "Χρησιμοποιήθηκαν λειτουργίες με άδεια χρήσης"
+  },
+  "notification.compose.learnMore": {
+    "message": "Μάθετε περισσότερα"
+  },
+  "notification.compose.remindLater": {
+    "message": "Υπενθύμιση αργότερα"
+  },
   "notification.donate": {
     "message": "Δωρίστε"
   },

@@ -1228,6 +1228,15 @@
   "notification.bodyModified.instructions": {
     "message": "按一下取消以保持電子郵件內容不變。"
   },
+  "notification.compose.details": {
+    "message": "使用了需授權的功能"
+  },
+  "notification.compose.learnMore": {
+    "message": "瞭解更多"
+  },
+  "notification.compose.remindLater": {
+    "message": "稍後提醒我"
+  },
   "notification.donate": {
     "message": "捐"
   },

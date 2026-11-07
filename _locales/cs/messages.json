@@ -1225,6 +1225,15 @@
   "notification.bodyModified.instructions": {
     "message": "Klikněte na Zrušit pro zachování obsahu e-mailu beze změn."
   },
+  "notification.compose.details": {
+    "message": "Použité licencované funkce"
+  },
+  "notification.compose.learnMore": {
+    "message": "Další informace"
+  },
+  "notification.compose.remindLater": {
+    "message": "Připomenout později"
+  },
   "notification.donate": {
     "message": "Darovat"
   },

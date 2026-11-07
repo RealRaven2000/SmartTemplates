@@ -1222,6 +1222,15 @@
   "notification.bodyModified.instructions": {
     "message": "メールの内容を変更せずに保持するにはキャンセルをクリックしてください。"
   },
+  "notification.compose.details": {
+    "message": "ライセンス対象の機能を使用しています"
+  },
+  "notification.compose.learnMore": {
+    "message": "詳しく見る"
+  },
+  "notification.compose.remindLater": {
+    "message": "後で通知する"
+  },
   "notification.donate": {
     "message": "寄付"
   },

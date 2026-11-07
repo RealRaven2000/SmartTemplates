@@ -6,7 +6,7 @@ Existing composer licensing calls now use the existing NotifyTools listener to r
 
 `compose.js` creates one host outside the editor body. All notification text, controls, and the stylesheet link live in an open ShadowRoot. `notification.css` is loaded inside that root and does not style email content. The host is removed on legacy composer teardown; an empty host from a previously saved draft is replaced when the script initializes. Per-tab state is discarded when the tab closes. Successful license validation removes covered feature sections.
 
-The frontend uses existing localized licensing/feature text and `message.features`. Three new labels are in the English default catalog and currently fall back to English in other locales; translate these after the initial frontend review. No catalogs were bulk-reformatted.
+The frontend uses existing localized licensing/feature text and `message.features`. The three new labels (`notification.compose.details`, `notification.compose.learnMore`, and `notification.compose.remindLater`) are translated in all 21 non-English UI locales. The SPLASH-only Vietnamese locale retains the English fallback. UTF-8 text and existing catalog entries are preserved; no catalogs were bulk-reformatted.
 
 Trial rules, gate behavior, daily suppression, and trial consumption are unchanged. Remind me later only collapses the bubble; it does not implement a persisted snooze. Final message-copy changes and responsive spacing refinements remain separate work.
 

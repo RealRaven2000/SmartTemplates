@@ -1231,6 +1231,15 @@
   "notification.bodyModified.instructions": {
     "message": "Щелкните Отмена, чтобы сохранить содержание электронного письма без изменений."
   },
+  "notification.compose.details": {
+    "message": "Использованы лицензируемые функции"
+  },
+  "notification.compose.learnMore": {
+    "message": "Подробнее"
+  },
+  "notification.compose.remindLater": {
+    "message": "Напомнить позже"
+  },
   "notification.donate": {
     "message": "Пожертвовать"
   },

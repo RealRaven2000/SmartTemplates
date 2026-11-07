@@ -1234,6 +1234,15 @@
   "notification.bodyModified.instructions": {
     "message": "Cliquez sur Annuler pour conserver le contenu du courrier électronique tel quel."
   },
+  "notification.compose.details": {
+    "message": "Fonctionnalités sous licence utilisées"
+  },
+  "notification.compose.learnMore": {
+    "message": "En savoir plus"
+  },
+  "notification.compose.remindLater": {
+    "message": "Me le rappeler plus tard"
+  },
   "notification.donate": {
     "message": "Faire un don"
   },

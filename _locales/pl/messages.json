@@ -1231,6 +1231,15 @@
   "notification.bodyModified.instructions": {
     "message": "Kliknij Anuluj, aby zachować treść e-maila bez zmian."
   },
+  "notification.compose.details": {
+    "message": "Użyto funkcji wymagających licencji"
+  },
+  "notification.compose.learnMore": {
+    "message": "Dowiedz się więcej"
+  },
+  "notification.compose.remindLater": {
+    "message": "Przypomnij mi później"
+  },
   "notification.donate": {
     "message": "Dotacja"
   },

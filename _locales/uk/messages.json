@@ -1241,6 +1241,15 @@
   "notification.bodyModified.instructions": {
     "message": "Клацніть Скасувати, щоб залишити вміст електронної пошти без змін."
   },
+  "notification.compose.details": {
+    "message": "Використано ліцензовані функції"
+  },
+  "notification.compose.learnMore": {
+    "message": "Докладніше"
+  },
+  "notification.compose.remindLater": {
+    "message": "Нагадати пізніше"
+  },
   "notification.donate": {
     "message": "Пожертвувати"
   },

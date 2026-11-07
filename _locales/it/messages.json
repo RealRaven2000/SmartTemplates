@@ -1207,6 +1207,15 @@
   "notification.bodyModified.instructions": {
     "message": "Clicca su Annulla per mantenere il contenuto dell'email invariato."
   },
+  "notification.compose.details": {
+    "message": "Funzioni con licenza utilizzate"
+  },
+  "notification.compose.learnMore": {
+    "message": "Ulteriori informazioni"
+  },
+  "notification.compose.remindLater": {
+    "message": "Ricordamelo più tardi"
+  },
   "notification.donate": {
     "message": "Dona"
   },

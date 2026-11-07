@@ -1237,6 +1237,15 @@
   "notification.bodyModified.instructions": {
     "message": "Napsauta Peruuta säilyttääksesi sähköpostin sisällön ennallaan."
   },
+  "notification.compose.details": {
+    "message": "Käytetyt lisensoidut ominaisuudet"
+  },
+  "notification.compose.learnMore": {
+    "message": "Lisätietoja"
+  },
+  "notification.compose.remindLater": {
+    "message": "Muistuta myöhemmin"
+  },
   "notification.donate": {
     "message": "Lahjoita"
   },

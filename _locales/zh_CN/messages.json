@@ -1231,6 +1231,15 @@
   "notification.bodyModified.instructions": {
     "message": "单击取消以保持电子邮件内容不变。"
   },
+  "notification.compose.details": {
+    "message": "使用了需许可证的功能"
+  },
+  "notification.compose.learnMore": {
+    "message": "了解更多"
+  },
+  "notification.compose.remindLater": {
+    "message": "稍后提醒我"
+  },
   "notification.donate": {
     "message": "捐"
   },

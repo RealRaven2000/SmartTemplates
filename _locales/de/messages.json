@@ -1224,6 +1224,15 @@
   "notification.bodyModified.instructions": {
     "message": "Klicken Sie auf „Abbrechen“, um den E-Mail-Inhalt unverändert zu lassen."
   },
+  "notification.compose.details": {
+    "message": "Lizenzpflichtige Funktionen verwendet"
+  },
+  "notification.compose.learnMore": {
+    "message": "Mehr erfahren"
+  },
+  "notification.compose.remindLater": {
+    "message": "Später erinnern"
+  },
   "notification.donate": {
     "message": "Spenden"
   },

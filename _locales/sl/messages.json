@@ -1234,6 +1234,15 @@
   "notification.bodyModified.instructions": {
     "message": "Kliknite Prekliči, da ohranite vsebino e-pošte nespremenjeno."
   },
+  "notification.compose.details": {
+    "message": "Uporabljene licenčne funkcije"
+  },
+  "notification.compose.learnMore": {
+    "message": "Več informacij"
+  },
+  "notification.compose.remindLater": {
+    "message": "Opomni me pozneje"
+  },
   "notification.donate": {
     "message": "Daruj"
   },

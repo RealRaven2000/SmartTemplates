@@ -1228,6 +1228,15 @@
   "notification.bodyModified.instructions": {
     "message": "Klik op Annuleren om de inhoud van de e-mail ongewijzigd te houden."
   },
+  "notification.compose.details": {
+    "message": "Functies waarvoor een licentie nodig is gebruikt"
+  },
+  "notification.compose.learnMore": {
+    "message": "Meer informatie"
+  },
+  "notification.compose.remindLater": {
+    "message": "Later herinneren"
+  },
   "notification.donate": {
     "message": "Doneren"
   },

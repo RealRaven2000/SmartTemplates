@@ -1042,6 +1042,15 @@
   "newsSection.license": {
     "message": "Como este trabajo es exclusivamente financiado por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar SmartTemplates en el futuro."
   },
+  "notification.compose.details": {
+    "message": "Funciones con licencia utilizadas"
+  },
+  "notification.compose.learnMore": {
+    "message": "Más información"
+  },
+  "notification.compose.remindLater": {
+    "message": "Recordármelo más tarde"
+  },
   "ongoing-work": {
     "message": "Para mantener $addonName$ sincronizado con las actualizaciones mensuales de Thunderbird, tenemos que estar revisando constantemente si hay fallos y subir versiones adaptadas. ¡Por favor ayúdanos con esto una vez que hayas probado la funcionalidad y estés seguro de que mejora tu productividad!",
     "placeholders": {

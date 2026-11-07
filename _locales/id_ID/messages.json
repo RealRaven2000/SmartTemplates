@@ -817,6 +817,15 @@
   "no_button": {
     "message": "Tidak"
   },
+  "notification.compose.details": {
+    "message": "Fitur berlisensi digunakan"
+  },
+  "notification.compose.learnMore": {
+    "message": "Pelajari lebih lanjut"
+  },
+  "notification.compose.remindLater": {
+    "message": "Ingatkan saya nanti"
+  },
   "openInBrowser": {
     "message": "buka di browser"
   },

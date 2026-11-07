@@ -1234,6 +1234,15 @@
   "notification.bodyModified.instructions": {
     "message": "Feu clic a Cancel·la per mantenir el contingut del correu electrònic sense canvis."
   },
+  "notification.compose.details": {
+    "message": "Funcions amb llicència utilitzades"
+  },
+  "notification.compose.learnMore": {
+    "message": "Més informació"
+  },
+  "notification.compose.remindLater": {
+    "message": "Recorda-m’ho més tard"
+  },
   "notification.donate": {
     "message": "Donar"
   },

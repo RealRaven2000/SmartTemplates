@@ -1228,6 +1228,15 @@
   "notification.bodyModified.instructions": {
     "message": "Clique em Cancelar para manter o conteúdo do e-mail inalterado."
   },
+  "notification.compose.details": {
+    "message": "Funcionalidades licenciadas utilizadas"
+  },
+  "notification.compose.learnMore": {
+    "message": "Saber mais"
+  },
+  "notification.compose.remindLater": {
+    "message": "Lembrar-me mais tarde"
+  },
   "notification.donate": {
     "message": "Doar"
   },
