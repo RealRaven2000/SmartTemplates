@@ -20,9 +20,22 @@ var win = Services.wm.getMostRecentWindow("mail:3pane");
 
 var Utilities = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {    
+    const usageScope = { SmartTemplatesUsage: {} };
+    for (const path of ["scripts/premium/usage-policy.js", "scripts/premium/usage-store.js"]) {
+      Services.scriptloader.loadSubScriptWithOptions(context.extension.rootURI.resolve(path), {
+        target: usageScope, charset: "UTF-8", ignoreCache: true, allowUnsafeURL: true,
+      });
+    }
+    const featureUsage = usageScope.SmartTemplatesUsage.createStore(Services.prefs);
 
     return {
       Utilities: {
+        getComposeFeatureUsage: async function (feature, license) {
+          return featureUsage(feature, license, false);
+        },
+        checkComposeFeatureUsage: function (feature, license, consume) {
+          return featureUsage(feature, license, consume);
+        },
         showComposeLicenseDialog: async function (tabId, feature) {
           const composeWindow = context.extension.tabManager.get(tabId).window;
           if (composeWindow?.document.documentElement.getAttribute("windowtype") !== "msgcompose") {

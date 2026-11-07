@@ -1246,14 +1246,47 @@
   "notification.bodyModified.instructions": {
     "message": "Click Cancel to keep email contents unchanged."
   },
+  "notification.compose.allUsed": {
+    "message": "All used"
+  },
+  "notification.compose.blocked": {
+    "message": "Some features blocked"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "Unresolved variables may remain in your email. Please remove them before sending."
+  },
+  "notification.compose.blockedPro": {
+    "message": "To use this feature, please get a SmartTemplates Pro license."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "To use this feature, please get a SmartTemplates Standard or Pro license."
+  },
+  "notification.compose.countedToday": {
+    "message": "Today is already counted. Further uses today do not reduce your remaining allowance."
+  },
+  "notification.compose.countingRule": {
+    "message": "Only the first use each day counts, so you can fully test this feature throughout the day."
+  },
   "notification.compose.details": {
     "message": "Licensed features used"
   },
   "notification.compose.learnMore": {
     "message": "Learn more"
   },
+  "notification.compose.proFeatures": {
+    "message": "These features are included with SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "{1} of {2} free uses remaining."
+  },
   "notification.compose.remindLater": {
     "message": "Remind me later"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "These features are included with SmartTemplates Standard and Pro."
+  },
+  "notification.compose.usageHint": {
+    "message": "Numbers show free uses remaining. Only the first use each day counts, so you can fully test each feature throughout the day. Hover over or select a number for details."
   },
   "notification.donate": {
     "message": "Donate"

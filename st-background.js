@@ -19,7 +19,16 @@ console.log(SmartTemplates, stProcess);
 SmartTemplates.Util.log("SmartTemplates Background started");
 
 var currentLicense;
-const composeNotifications = createComposeNotifications(browser);
+const composeNotifications = createComposeNotifications(browser, {
+  async getFeatureUsage(features) {
+    const license = currentLicense.info;
+    if (license.status !== "Valid" && license.trialDays > 0) {
+      return {};
+    }
+    return Object.fromEntries(await Promise.all(features.map(async feature => [feature,
+      await browser.Utilities.getComposeFeatureUsage(feature, license)])));
+  },
+});
 const GRACEPERIOD_DAYS = 28;
 const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 

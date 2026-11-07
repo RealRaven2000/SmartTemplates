@@ -4,6 +4,8 @@ Supporting audit for #441. See the [notification requirements](https://github.co
 
 This is an audit of current code, not approval to introduce new gates. Pro below includes Domain licenses. License entitlements and actual enforcement are distinct.
 
+Historical baseline: the audit below predates the per-feature usage implementation. For the new 12-use, once-per-day token gates and remaining strict Pro-only exceptions, see [implementation.md](implementation.md). The original reminder-only behavior described below is no longer the current behavior of the tracked token paths.
+
 ## Existing counters and gates
 
 There are no per-feature attempt/session counters comparable to quickFilters. The shared trial is 28 elapsed calendar days, calculated from `license.gracePeriodDate` in `st-background.js` (`GRACEPERIOD_DAYS`, `getGraceDate`, `getTrialDays`). It is not a count of active days or emails. Valid licenses refresh the grace date; expiry can restart the grace period from the license expiry date.

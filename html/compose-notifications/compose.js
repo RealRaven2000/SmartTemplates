@@ -49,10 +49,12 @@
   panel.id = "details";
   summary.setAttribute("aria-controls", panel.id);
   const trial = make("div", "row");
+  const usageHint = make("p", "usage-hint");
+  const blockedExplanation = make("p", "blocked-explanation");
   const pro = make("div", "row");
   const standard = make("div", "row");
   const actions = make("div", "actions");
-  panel.append(trial, pro, standard, actions);
+  panel.append(usageHint, trial, pro, standard, actions);
   bubble.append(summary, panel);
   root.append(bubble);
   const positionStyle = document.createElement("style");
@@ -218,7 +220,50 @@
     return content;
   }
 
+  function featureRow(element, label, className, features, description, notes, allUsed) {
+    element.toggleAttribute("data-blocked", !!features?.some(feature => feature.blocked));
+    const content = row(element, label, className, features?.length ? " " : "");
+    if (!content) {
+      return;
+    }
+    content.replaceChildren();
+    [...features].sort((a, b) => Number(!!b.blocked) - Number(!!a.blocked)).forEach((feature, index) => {
+      if (index) {
+        content.append(document.createTextNode(", "));
+      }
+      const item = make("span", "feature-item" + (feature.blocked ? " is-blocked" : ""));
+      item.append(make("code", "", `%${feature.name}%`));
+      if (feature.remaining !== undefined && feature.explanation) {
+        const count = make("button", "trial-count", feature.blocked
+          ? allUsed : `(${feature.remaining})`);
+        count.type = "button";
+        count.title = feature.explanation;
+        count.setAttribute("aria-label", feature.name + ": " + feature.explanation);
+        count.addEventListener("click", () => {
+          const variable = make("span", "feature-item" + (feature.blocked ? " is-blocked" : ""));
+          variable.append(make("code", "", `%${feature.name}%`));
+          explanation.replaceChildren(variable, document.createTextNode(" " + feature.explanation));
+          explanation.hidden = false;
+          schedulePosition();
+        });
+        item.append(document.createTextNode(" "), count);
+      }
+      content.append(item);
+    });
+    content.append(document.createTextNode(" — " + description));
+    if (notes) {
+      content.append(document.createTextNode(" " + notes));
+    }
+  }
+
+  const explanation = make("p", "usage-explanation");
+  explanation.setAttribute("role", "status");
+  explanation.hidden = true;
+  panel.append(explanation);
+  panel.append(blockedExplanation);
+
   let revision = -1;
+  let generation = 0;
   function render(model) {
     if (!model) {
       return;
@@ -227,6 +272,11 @@
       return;
     }
     revision = model.revision;
+    if ((model.generation || 0) !== generation) {
+      generation = model.generation || 0;
+      bubble.open = false;
+      host.removeAttribute("data-expanded");
+    }
     if (model.visible === false) {
       stopPositioning();
       host.remove();
@@ -235,6 +285,9 @@
     compact.textContent = model.compact;
     hint.textContent = model.learnMore;
     title.textContent = model.title;
+    bubble.toggleAttribute("data-blocked", !!model.blocked);
+    blockedExplanation.textContent = model.blockedExplanation || "";
+    blockedExplanation.hidden = !model.blocked;
     const licenseContent = row(trial, "licence", "license", model.trial);
     if (licenseContent) {
       licenseContent.replaceChildren(
@@ -249,8 +302,12 @@
       });
       licenseContent.append(link);
     }
-    row(pro, "PRO", "pro", model.proText);
-    row(standard, "STD", "standard", model.standardText);
+    usageHint.textContent = model.usageHint;
+    usageHint.hidden = !model.usageHint;
+    explanation.hidden = true;
+    explanation.textContent = "";
+    featureRow(pro, "PRO", "pro", model.proFeatures, model.proDescription, model.proNotes, model.allUsed);
+    featureRow(standard, "STD", "standard", model.standardFeatures, model.standardDescription, model.standardNotes, model.allUsed);
     actions.replaceChildren();
     actions.hidden = !model.buttons?.length;
     for (const item of model.buttons || []) {

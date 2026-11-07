@@ -25,9 +25,9 @@ Current messaging says features will keep working. Repeated reminders therefore 
 
 ### Frequency and trial accounting
 
-- Use one shared trial countdown across Standard and Pro features, initialized at installation. Do not maintain separate allowances for tiers or individual features.
-- Consume one trial day only when a special licensed feature is used in a composer on a local calendar day. Basic free template usage and days without licensed-feature usage consume nothing. Installation initializes the allowance; elapsed time alone does not consume it.
-- Further emails, feature uses, and Thunderbird restarts on the same local date consume no additional trial days. A session spanning midnight can consume another day only on qualifying feature use on the new date.
+- Keep the existing general trial. After it ends, each tracked licensed feature has its own allowance of **12 free uses**, with maximums defined centrally in code. This supersedes the earlier shared active-use-day countdown proposal.
+- Store `{ usage, lastUsedDate }` per feature in a JSON string preference under `extensions.smarttemplates.<feature>`. Only the first qualifying use on a local calendar date increments that feature's count; further emails, uses, and Thunderbird restarts that day consume nothing extra. Inactive days and features covered by the license consume nothing.
+- New features start with their own full allowance without resetting other features. The final included day remains available at zero additional uses remaining; blocking begins on a later day. A valid Standard license must not consume Standard allowances or grant unlimited Pro evaluation through its refreshed legacy grace date.
 - A specific informational notice about missing licensing or gated features should appear only once per day, in the first composer for that day. Features encountered later that day must not trigger additional informational reminders; defer their reporting to the next daily notice. Actual blocking warnings are a separate policy decision.
 - Reminder frequency must be coordinated across composer windows and notification sources; opening another composer must not independently restart the reminders.
 - Trial allowance consumption and notification display frequency are separate concerns. An active trial session must not imply showing a reminder on every use.
@@ -36,6 +36,7 @@ Current messaging says features will keep working. Repeated reminders therefore 
 
 - General trial-day information is informational.
 - Pro and Standard feature usage is informational while the features remain available.
+- When a tracked feature is exhausted, skip execution and retain its original token in the message. Mark actual blocking explicitly with a restrained pink bubble, highlighted feature names, and the **Some features blocked** summary. A zero remaining count on the final included day is not a blocked operation.
 - A yellow warning is warranted only when a feature was actually blocked.
 - Messages must distinguish available trial usage, an active trial session, exhausted allowances, and an operation that was actually blocked.
 - Consolidate the competing licensing sources into one compact, expandable composer notification, as specified below.
@@ -52,6 +53,7 @@ Current messaging says features will keep working. Repeated reminders therefore 
   1. **licence:** available trial data and concise licensing information. Omit the trial section when no trial data remains or it is unavailable. End this field with a normal **More about licensing** hyperlink to `https://smarttemplates.quickfolders.org/contribute.html`, not a separate footer button.
   2. **PRO:** one feature-summary row for previously flagged Pro features; omit it when there are none. Text may wrap naturally.
   3. **STD:** one feature-summary row for previously flagged Standard features; omit it when there are none. Text may wrap naturally.
+- List feature names with red, focusable `(number)` controls for their real remaining allowances. Hovering shows a tooltip; selecting the count reveals the explanation. Use **free uses remaining** and explain that only the first use each day counts, so the feature can be fully tested throughout that day. Append the friendly license-fit sentence: PRO features are included with SmartTemplates Pro; STD features are included with SmartTemplates Standard or Pro. Omit counts when usage data is unavailable and never display prototype sample values as real counters.
 - Build badges as styled text rather than prerendered `licensing.png` / `proFeature.png`: orange **licence**, cyan **PRO** inspired by `pro-paid.svg`, and a less saturated **STD** badge. Keep explicit text labels so color alone is not the indicator.
 - Buttons below the sections are independently parameter-driven. Supported actions include **Buy License**, **Compare Features…**, and **Remind me later**; omit actions that are not applicable.
 - Reuse the existing localization entity `message.features` (English: "Compare Features…") for the comparison button. Link to `https://smarttemplates.quickfolders.org/premium.html#featureComparison`. Show it when PRO or STD feature information is present and the action is enabled.
@@ -84,7 +86,7 @@ These are proposals for implementation planning, not authorization to change run
 
 1. Coordinate the general licensing, Standard-feature, and Pro-feature notification sources, preventing duplicate bars and reducing occupied composer space.
 2. Add shared daily reminder tracking across composers, with informational notices shown only under the agreed once-daily policy.
-3. Introduce one shared active-use-day trial countdown, consumed only by licensed-feature usage in a composer, independently of notification frequency. Decide the allowance length and migration from the existing 28-day elapsed-time trial before implementation.
+3. Introduce per-feature 12-use allowances after the existing general trial, consumed at most once per local day, independently of notification frequency. Preserve original tokens when an exhausted feature is skipped.
 4. Reserve yellow warnings for features that were actually blocked; distinguish those from informational licensing and trial messages.
 5. Provide a meaningful Remind me later action once its quiet-period and persistence policies are settled.
 6. Replace the existing menu-limit question with **Remove menu limits…** and the PRO icon, retaining an explanation dialog with accurate tier limits.
@@ -110,11 +112,11 @@ Onboarding should help users reach a working template or snippet quickly. Detail
 
 ## Open decisions
 
-- Define the length of the shared active-use-day trial and enumerate which licensed features participate, including treatment of licensed users evaluating a higher tier.
+- Review grouping and future per-feature maximum adjustments; the initial default is 12. Existing strict Pro-only CardBook and auto-send actions remain unchanged; review them separately before offering trials for those non-token operations.
 - Finalize concise collapsed status and section wording, including how the first daily notice summarizes features deferred from the previous day. Feature names appear in the expanded view; later feature use stays quiet informationally.
 - Decide whether an actual blocked operation must always produce an immediate warning, including after the daily informational notice or a Remind me later action.
 - Define treatment of existing users and existing templates when introducing gates.
-- Define blocked-feature behavior. Silently omitting template commands can produce incorrect email; blocking composition can interrupt established workflows. Neither behavior is agreed.
+- Review the retained-token behavior during native tests, including side-effect commands and nested templates. The agreed initial behavior is to skip the exhausted feature and keep its original token visible, rather than stop composition.
 - Define dismissal, snooze duration, restart persistence, and reset behavior after licensing changes.
 - Optional sections must not leave empty rows or separators. Final blocked-feature details depend on the outstanding blocking policy; the collapsed used/blocked distinction is agreed above.
 
@@ -131,7 +133,7 @@ Onboarding should help users reach a working template or snippet quickly. Detail
 - Exercise multiple emails and overlapping composer windows on the same day.
 - Verify informational notices do not repeat beyond the agreed daily policy.
 - Verify trial use does not decrement per email within an included session/day.
-- Verify basic free usage and inactive days consume no trial allowance; licensed-feature use consumes at most one shared day across features, composers, and restarts on the same local date.
+- Verify basic free usage, the general trial, covered licensed usage, and inactive days consume no per-feature allowance; each feature consumes at most one use across composers and restarts on the same local date.
 - Verify yellow warnings correspond to an actually blocked operation.
 - Cover restart, day rollover, license transitions, dismissal, and snooze after their policies are agreed.
 - Verify the consolidated presentation preserves useful writing space and accurately reports the affected features.

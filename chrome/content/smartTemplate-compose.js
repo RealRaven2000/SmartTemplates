@@ -879,6 +879,7 @@ SmartTemplate4.classSmartTemplate = function() {
   // -----------------------------------
   // Get processed template
   async function getProcessedText(templateText, idKey, composeType, ignoreHTML) {
+    await util.initFeatureUsage();
     if (!templateText) {
       return "";
     }
@@ -1261,6 +1262,10 @@ SmartTemplate4.classSmartTemplate = function() {
         // Undo template messages (does _not_ remove signature!)
         removePreviousTemplate();
       }
+    }
+
+    if (flags.isChangeTemplate) {
+      await util.resetComposeFeatureEvaluation();
     }
 
     // is the %sig% variable used?

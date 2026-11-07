@@ -8,11 +8,31 @@ Existing composer licensing calls now use the existing NotifyTools listener to r
 
 The frontend uses existing localized licensing/feature text and `message.features`. The three new labels (`notification.compose.details`, `notification.compose.learnMore`, and `notification.compose.remindLater`) are translated in all 21 non-English UI locales. The SPLASH-only Vietnamese locale retains the English fallback. UTF-8 text and existing catalog entries are preserved; no catalogs were bulk-reformatted.
 
-Trial rules, gate behavior, daily suppression, and trial consumption are unchanged. Remind me later only collapses the bubble; it does not implement a persisted snooze. Final message-copy changes and responsive spacing refinements remain separate work.
+The existing general trial remains in place. After it ends, tracked template features now have independent 12-use allowances, counted once per local day. Remind me later still only collapses the bubble; daily suppression and a persisted snooze are not implemented yet.
 
 ## Automated checks
 
-Run `node --test "docs/issues/#441 - Consolidate Notifications/test-compose-notifications.mjs"`.
+### Per-feature display integration
+
+The live renderer now uses structured PRO/STD feature lists and the approved friendly license descriptions. Optional numeric counts are rendered as focusable red `(number)` controls, with native hover tooltips and a clicked explanation below the actions. The shared counting explanation appears only when at least one feature has valid usage data. Feature names and license descriptions remain visible without counters.
+
+The controller's `getFeatureUsage(features, request)` provider is wired to an explicit Utilities API. It returns real remaining-use counts without consuming another use. Eight additional display/explanation strings are in the English catalog, with default-locale fallback elsewhere pending localization.
+
+### Per-feature counting and gates
+
+- `scripts/premium/usage-policy.js` defines the tracked Standard and Pro template features and their maximum allowances (12 each). It is loaded with the store into a private API scope, not a legacy window global.
+- `scripts/premium/usage-store.js` stores each feature's JSON `{ usage, lastUsedDate }` in a string preference named `extensions.smarttemplates.<feature>`. The existing `extensions.smartTemplate4.*` preferences retain their names. No usage is consumed during the general trial or for features covered by a valid license.
+- Once-per-local-day accounting survives composer changes, add-on reloads, and Thunderbird restarts. The last included day remains usable even at zero remaining; the next day's attempt is denied. No license event resets unrelated counters.
+- The Utilities method is synchronous so legacy modifier functions can check/consume atomically before side effects. The legacy namespace loads its callable through the existing WindowListener API context. No new NotifyTools listener is introduced.
+- A valid Standard license's refreshed legacy grace date does not provide an unlimited Pro trial. Covered Standard features bypass counting; uncovered Pro features use their own allowance.
+- Exhausted template commands are skipped and their original tokens remain in the message. Modifier tokens are protected from the later modification pass as well. Dependency checks avoid running a header command with an unavailable clipboard argument.
+- Actually blocked features get a pink bubble, a **Some features blocked** summary, and individually highlighted feature names. A count of zero alone does not imply blocking while the last included day is still active.
+- Existing strict Pro-only CardBook contact lookup and filter auto-send checks are unchanged. Their non-token actions are not converted into 12-use trials by this implementation. Existing menu entry/category limits are unchanged.
+- No general-trial-date reset, rollout notice, or migration to a different initial trial period is included. Existing users with an expired general trial start with fresh per-feature allowances when no new usage preference exists.
+
+To test exhaustion, after expiring the general trial set a feature preference such as `extensions.smarttemplates.file` to `{"usage":12,"lastUsedDate":"2026-10-01"}` in Config Editor. Its next attempted use should remain as `%file(...)%` and produce the pink warning. Reset that preference to restore its full allowance. With today's date instead, the final included day should remain usable at zero remaining. Test on a disposable compose message and review tokens before sending.
+
+Run `node --test "docs/issues/#441 - Consolidate Notifications/test-compose-notifications.mjs" "docs/issues/#441 - Consolidate Notifications/test-feature-usage.mjs"`.
 
 Tests cover concurrent reports in separate composers, feature deduplication, pending delivery, optional sections, action routing, license transitions, renderer reinjection, stale model rejection, and the UI's placement entirely inside shadow DOM. The DOM harness does not verify Thunderbird serialization or native rendering.
 

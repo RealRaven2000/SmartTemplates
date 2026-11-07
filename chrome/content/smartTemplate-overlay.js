@@ -1371,7 +1371,7 @@ SmartTemplate4.mimeDecoder = {
       if (!isProLicensed) { 
         util.addUsedPremiumFunction("clipboard");
       }
-      if (isProLicensed || util.isTrialActive()) {
+      if (util.useFeature("toclipboard")) {
         util.logDebug("mimeDecoder.split() - copying result to clipboard:\n" + addresses);
         util.clipboardWrite(addresses);
       }
@@ -1739,6 +1739,24 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
   const util = SmartTemplate4.Util,
     prefs = SmartTemplate4.Preferences;
 
+  const blockedTokens = [];
+  msg = msg.replace(/%((?:delete|replace)(?:Quoted)?(?:Text|Tags)|matchTextFrom(?:Body|Subject))(\(.*?\))%/g,
+    (original, feature, args) => {
+      const clipboardFeature = /toclipboard/.test(args) ? "toclipboard" : "clipboard";
+      const needsClipboard = /(?:\(|,)\s*(?:to)?clipboard\s*(?:,|\))/.test(args);
+      const clipboardAllowed = !needsClipboard || util.useFeature(clipboardFeature, false);
+      if (util.useFeature(feature, false) && clipboardAllowed) {
+        util.useFeature(feature);
+        if (needsClipboard) {
+          util.useFeature(clipboardFeature);
+        }
+        return original;
+      }
+      const marker = "\uE000ST441_" + blockedTokens.length + "\uE001";
+      blockedTokens.push(original);
+      return marker;
+    });
+
   // %matchTextFromBody()% using * to generate result:
   // %matchTextFromBody(TEST *)% => returns first * match: TEST XYZ => XYZ
   // Insert replacement from body of QUOTED email!
@@ -2091,13 +2109,14 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
     }
   }
 
-  return msg;
+  return msg.replace(/\uE000ST441_(\d+)\uE001/g, (_marker, index) => blockedTokens[Number(index)]);
 };
 	
 // -------------------------------------------------------------------
 // Regularize template message
 // -------------------------------------------------------------------
 SmartTemplate4.regularize = async function regularize(msg, composeType, isStationery, ignoreHTML, isDraftLike) {
+  await SmartTemplate4.Util.initFeatureUsage();
   const Ci = Components.interfaces,
     Cc = Components.classes,
     Cu = Components.utils,
@@ -2462,6 +2481,26 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 	
 	// Replace reserved words
 	async function replaceReservedWords(dmy, token, arg, options = {isEval : false})	{
+    const usageFeature = token.startsWith("header.")
+      ? token.split(".").slice(0, 2).join(".")
+      : token.startsWith("dateformat") ? "dateformat" : token;
+    const originalUsageToken = dmy || ("%" + token + (arg || "") + "%");
+    if (!util.useFeature(usageFeature, false)) {
+      return originalUsageToken;
+    }
+    if (/(?:\(|,)\s*(?:to)?clipboard\s*(?:,|\))/.test(arg || "") &&
+        !util.useFeature(/toclipboard/.test(arg) ? "toclipboard" : "clipboard", false)) {
+      return originalUsageToken;
+    }
+    const matchFeature = token.endsWith(".matchFromSubject") ? "matchTextFromSubject"
+      : token.endsWith(".matchFromBody") ? "matchTextFromBody" : null;
+    if (matchFeature && !util.useFeature(matchFeature, false)) {
+      return originalUsageToken;
+    }
+    util.useFeature(usageFeature);
+    if (matchFeature) {
+      util.useFeature(matchFeature);
+    }
     // calling this function just for logging purposes
     function finalize(tok, s, comment) {
       if (s) {
@@ -2693,7 +2732,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               if (!isProLicensed) {
                 util.addUsedPremiumFunction("clipboard");
               }
-              if (isProLicensed || util.isTrialActive()) {
+              if (util.useFeature("clipboard")) {
                 textParamList += util.clipboardRead("plain").replaceAll(",", "\\,"); // [issue 344]
               }
             } else {
@@ -3258,7 +3297,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             if (!isProLicensed) {
               util.addUsedPremiumFunction(token);
             }
-            if (isProLicensed || util.isTrialActive()) {
+            if (util.useFeature("deleteForwardedBody")) {
               SmartTemplate4.PreprocessingFlags.deleteForwardedBody = true;
             }
           }
@@ -3612,8 +3651,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "clipboard":
           if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
             util.addUsedPremiumFunction("clipboard");
-            if (!util.isTrialActive()) {
-              return "";
+            if (!util.useFeature("clipboard")) {
+                return originalUsageToken;
             }
           }
           return util.clipboardRead(args);
@@ -3623,7 +3662,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             if (!isProLicensed) {
               util.addUsedPremiumFunction("toclipboard");
             }
-            if (isProLicensed || util.isTrialActive()) {
+            if (util.useFeature("toclipboard")) {
               let newArgs = util.combineEscapedParams(args, 0); // support (escaped) commas in string!
               util.clipboardWrite(newArgs[0].replace(/^"(.*)"$/, "$1"));
             }
@@ -3672,8 +3711,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             // const messageid = SmartTemplate4.MessageHdr.get("message-id");
             if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
               util.addUsedPremiumFunction("tags");
-              if (!util.isTrialActive()) {
-                return "";
+              if (!util.useFeature("tags")) {
+              return originalUsageToken;
               }
             }
             const tags = SmartTemplate4.MessageHdr.get("tags");
@@ -3792,7 +3831,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             if (!isProLicensed) {
               util.addUsedPremiumFunction("clipboard");
             }
-            if (isProLicensed || util.isTrialActive()) {
+            if (util.useFeature("toclipboard")) {
               if (headerValue.startsWith("%toclipboard")) {return "";}
               util.clipboardWrite(headerValue);
             }

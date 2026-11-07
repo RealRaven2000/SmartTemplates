@@ -111,7 +111,34 @@ button:focus-visible {
   border-top: 1px solid light-dark(#e0e6ed, #465260);
   align-items: start;
 }
+.usage-hint, .usage-explanation {
+  margin: 0;
+  padding: 12px 0;
+  font-size: 13px;
+  color: light-dark(#596777, #b5c1d0);
+}
+.feature-item {
+  display: inline-block;
+  white-space: nowrap;
+}
+.feature-item code {
+  font: 13px Consolas, monospace;
+}
+button.trial-count {
+  border: 0;
+  background: transparent;
+  padding: 0 2px;
+  color: light-dark(#a42e35, #ffadb3);
+  font: 600 13px "Segoe UI", sans-serif;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+button.trial-count:hover, button.trial-count:focus-visible {
+  color: light-dark(#761b23, #ffd3d7);
+  background: light-dark(#fcecef, #49343c);
+}
 .text {
+  /* Feature names and their counters stay together as they wrap. */
   margin: 0;
   overflow-wrap: anywhere;
 }
@@ -132,17 +159,17 @@ button:focus-visible {
 }
 .license {
   color: white;
-  background: linear-gradient(#f6a13b, #cf5b0c);
+  background: #cc600f;
   border-color: #bc570f;
 }
 .pro {
   color: white;
-  background: linear-gradient(#36afd0, #137c9b);
+  background: #137f9b;
   border-color: #197f9c;
 }
 .standard {
   color: #586976;
-  background: linear-gradient(#f0f4f6, #dfe7eb);
+  background: #e5ebef;
   border-color: #c5d1d8;
 }
 a {
@@ -175,6 +202,28 @@ button:hover {
 }
 .primary:hover {
   background: #71940a;
+}
+.bubble[data-blocked]:not([open]) {
+  background: light-dark(#fff3f6, #392a32);
+  border-color: light-dark(#dca6b7, #986376);
+}
+.row[data-blocked] {
+  background: light-dark(#fff3f6, #392a32);
+  border-radius: 5px;
+}
+.is-blocked code {
+  color: light-dark(#781c43, #ffe0ed);
+  background: light-dark(#f5c5dc, #71334f);
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+.is-blocked .trial-count {
+  font-weight: 600;
+  text-decoration: none;
+}
+.blocked-explanation {
+  margin: 12px 0 0;
+  color: light-dark(#8b2949, #ffc2d5);
 }
 @media (max-width: 650px) {
   :host([data-expanded]) {

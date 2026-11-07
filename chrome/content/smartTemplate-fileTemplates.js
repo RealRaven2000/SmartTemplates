@@ -1527,6 +1527,8 @@ SmartTemplate4.fileTemplates = {
   } ,
 	
   insertFileEntryInComposer: async function (entry) {
+    await SmartTemplate4.Util.initFeatureUsage();
+    await SmartTemplate4.Util.resetComposeFeatureEvaluation();
     let theFileTemplate = entry;
     let fileTemplateSource = await SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
     let html = fileTemplateSource.HTML;
@@ -1555,7 +1557,9 @@ SmartTemplate4.fileTemplates = {
         if (selectedText && selectedText.length) {
           // html = html.replaceAll(",","\\,"); // replacing the commas will only work if snippet has no binary data in it
           // should only do this within ".." we need to investigate how...
-          html = html.replace("*selection*", selectedText); 
+          if (SmartTemplate4.Util.useFeature("snippetSelection")) {
+            html = html.replace("*selection*", selectedText);
+          }
         } else {
           html = html.replace("*selection*", "%cursor%");
         }

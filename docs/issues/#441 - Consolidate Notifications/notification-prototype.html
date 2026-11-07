@@ -52,6 +52,11 @@
     .trial-heading { display: block; font-size: 16px; font-weight: 600; }
     .feature .badge { justify-self: start; margin-top: 2px; min-width: 45px; }
     .feature p { margin: 0; }
+    .trial-explanation { margin: 0; padding: 12px 0; font-size: 13px; color: #596777; }
+    .feature-item { display: inline-block; white-space: nowrap; }
+    .feature-item code { font: 13px Consolas, monospace; }
+    button.trial-count { border: 0; background: transparent; padding: 0 2px; color: #a42e35; font: 600 13px "Segoe UI", sans-serif; text-decoration: underline dotted; text-underline-offset: 3px; }
+    button.trial-count:hover, button.trial-count:focus-visible { color: #761b23; background: #fcecef; border-radius: 3px; }
     a { color: #256398; text-underline-offset: 3px; }
     a:hover { color: #16436d; }
     .button-link { display: inline-flex; align-items: center; font: inherit; padding: 9px 18px; border: 1px solid #bcc5d1; border-radius: 5px; background: #fff; color: #344960; text-decoration: none; }
@@ -93,6 +98,7 @@
           <span class="chevron" aria-hidden="true">›</span>
         </summary>
         <div class="panel" id="notification-details">
+          <p class="trial-explanation" id="feature-trial-explanation">Numbers show free uses remaining. Only the first use each day counts, so you can fully test each feature throughout the day. Hover over or select a number for details.</p>
           <div class="feature" id="trial-row"><span class="badge badge-license">licence</span><p><strong class="trial-heading" id="trial-status"></strong><span id="trial-description"></span> <a id="licensing-link" href="https://smarttemplates.quickfolders.org/contribute.html" target="_blank" rel="noopener noreferrer">More about licensing</a></p></div>
           <div class="feature" id="pro-row"><span class="badge badge-pro" aria-label="Pro features">PRO</span><p id="pro-description"></p></div>
           <div class="feature" id="standard-row"><span class="badge badge-std" aria-label="Standard features">STD</span><p id="standard-description"></p></div>
@@ -107,17 +113,56 @@
     // Standalone prototype parameters. Null/zero trial days, empty feature arrays,
     // and an empty buttons array independently omit their respective sections.
     const notificationOptions = {
-      trialDays: 28,
+      trialDays: null,
       trialText: 'SmartTemplates keeps working as usual. A license removes this reminder.',
       licensingUrl: 'https://smarttemplates.quickfolders.org/contribute.html',
-      proFeatures: ['replaceQuotedTags', 'header.prefix'],
-      standardFeatures: ['file', 'style'],
+      // Illustrative allowances only; no trial policy or stored usage is changed.
+      proFeatures: [
+        { name: 'replaceQuotedTags', remaining: 12, maximum: 15, usedToday: true },
+        { name: 'header.prefix', remaining: 3, maximum: 10, usedToday: true }
+      ],
+      standardFeatures: [
+        { name: 'file', remaining: 8, maximum: 20, usedToday: true },
+        { name: 'style', remaining: 5, maximum: 20, usedToday: true }
+      ],
       buttons: [
         { label: 'Buy License', action: 'buy', primary: true },
         { label: 'Compare features', href: 'https://smarttemplates.quickfolders.org/premium.html#featureComparison', requiresFeatures: true },
         { label: 'Remind me later', action: 'later' }
       ]
     };
+
+    function renderFeatureTrials(selector, features, licenseDescription) {
+      const container = document.querySelector(selector);
+      container.replaceChildren();
+      features.forEach((feature, index) => {
+        if (index) {
+          container.append(document.createTextNode(', '));
+        }
+        const item = document.createElement('span');
+        item.className = 'feature-item';
+        const name = document.createElement('code');
+        name.textContent = feature.name;
+        const count = document.createElement('button');
+        count.type = 'button';
+        count.className = 'trial-count';
+        count.textContent = `(${feature.remaining})`;
+        const today = feature.usedToday
+          ? 'Today is already counted. Further uses today do not reduce your remaining allowance.'
+          : 'Only the first use each day counts.';
+        const explanation = `${feature.name}: ${feature.remaining} free uses remaining out of ${feature.maximum}. ${today} You can fully test this feature throughout the day.`;
+        count.title = explanation;
+        count.setAttribute('aria-label', explanation);
+        count.addEventListener('click', () => {
+          document.querySelector('.feedback').textContent = explanation;
+        });
+        item.append(name, document.createTextNode(' '), count);
+        container.append(item);
+      });
+      if (features.length) {
+        container.append(document.createTextNode(` — ${licenseDescription}`));
+      }
+    }
 
     function renderNotification(options) {
       const trialAvailable = Number.isFinite(options.trialDays) && options.trialDays > 0;
@@ -127,16 +172,17 @@
       document.querySelector('#trial-description').textContent = options.trialText || '';
       const licensingLink = document.querySelector('#licensing-link');
       licensingLink.hidden = !options.licensingUrl;
-      if (options.licensingUrl) licensingLink.href = options.licensingUrl;
-      document.querySelector('#compact-status').textContent = trialStatus || 'Template feature information';
+      if (options.licensingUrl) {
+        licensingLink.href = options.licensingUrl;
+      }
+      document.querySelector('#compact-status').textContent = trialStatus || 'Licensed features used';
       const pro = options.proFeatures || [];
       const standard = options.standardFeatures || [];
       document.querySelector('#pro-row').hidden = !pro.length;
       document.querySelector('#standard-row').hidden = !standard.length;
-      document.querySelector('#pro-description').textContent = pro.length
-        ? `'${pro.join(', ')}' ${pro.length === 1 ? 'is a Premium feature. It' : 'are Premium features. They'} will keep working, but upgrading to a SmartTemplates Pro License removes these reminders and helps support the add-on.` : '';
-      document.querySelector('#standard-description').textContent = standard.length
-        ? `'${standard.join(', ')}' ${standard.length === 1 ? 'is a licensed feature. It' : 'are licensed features. They'} will keep working, but getting a SmartTemplates License removes these reminders and helps support the add-on.` : '';
+      document.querySelector('#feature-trial-explanation').hidden = !pro.length && !standard.length;
+      renderFeatureTrials('#pro-description', pro, 'These features are included with SmartTemplates Pro.');
+      renderFeatureTrials('#standard-description', standard, 'These features are included with SmartTemplates Standard or Pro.');
       const actions = document.querySelector('#notification-actions');
       actions.replaceChildren();
       const buttons = (options.buttons || []).filter(item => !item.requiresFeatures || pro.length || standard.length);
@@ -154,13 +200,15 @@
         }
         button.textContent = item.label;
         button.classList.toggle('buy', !!item.primary);
-        if (!item.href) button.addEventListener('click', () => {
+        if (!item.href) {
+          button.addEventListener('click', () => {
           if (item.action === 'later') {
             document.querySelector('.bubble').open = false;
           } else {
             document.querySelector('.feedback').textContent = item.label + ' — preview only; no purchase or navigation is performed.';
           }
-        });
+          });
+        }
         actions.append(button);
       }
     }

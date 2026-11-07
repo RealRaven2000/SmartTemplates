@@ -118,6 +118,7 @@ SmartTemplate4.Util = {
     SmartTemplate4.Util.addonInfo = await SmartTemplate4.Util.notifyTools.notifyBackground({
       func: "getAddonInfo",
     });
+    await this.initFeatureUsage();
     SmartTemplate4.Util.logDebugOptional(
       "notifications",
       "After notifyTools.getAddonInfo",
@@ -268,6 +269,51 @@ SmartTemplate4.Util = {
    */
   premiumFeatures: new Array(), // only the array in the main instance Util will be used
   standardFeatures: new Array(), // only the array in the main instance Util will be used
+  blockedFeatures: [],
+
+  async resetComposeFeatureEvaluation() {
+    this.clearUsedPremiumFunctions();
+    try {
+      await this.notifyTools.notifyBackground({
+        func: "composeLicenseNotification",
+        windowId: this.extension.windowManager.getWrapper(window).id,
+        reset: true,
+      });
+    } catch (error) {
+      this.logException("Could not reset composer feature evaluation", error);
+    }
+  },
+
+  async initFeatureUsage() {
+    if (!this._featureUsage) {
+      this._featureUsage = await SmartTemplate4.Storage._context.apiCan
+        .asyncFindAPIPath("Utilities.checkComposeFeatureUsage");
+    }
+  },
+
+  useFeature(feature, consume = true) {
+    const result = this._featureUsage(feature, {
+      status: this.licenseInfo.status, keyType: this.licenseInfo.keyType,
+      trialDays: this.licenseInfo.trialDays,
+    }, consume);
+    if (result?.then) {
+      throw new Error("Feature usage API must be synchronous in the legacy parser");
+    }
+    if (!result) {
+      return true;
+    }
+    if (!result.covered && (consume || !result.allowed)) {
+      if (result.tier === "standard") {
+        this.addUsedStandardFunction(feature);
+      } else {
+        this.addUsedPremiumFunction(feature);
+      }
+    }
+    if (!result.allowed && !this.blockedFeatures.includes(feature)) {
+      this.blockedFeatures.push(feature);
+    }
+    return result.allowed;
+  },
 
   addUsedStandardFunction: function (f) {
     if (!SmartTemplate4.Util.standardFeatures.some((e) => e == f)) {
@@ -285,6 +331,7 @@ SmartTemplate4.Util = {
     // resets all restricted functions
     SmartTemplate4.Util.premiumFeatures.length = 0;
     SmartTemplate4.Util.standardFeatures.length = 0;
+    SmartTemplate4.Util.blockedFeatures.length = 0;
   },
 
   get mailDocument() {
@@ -598,6 +645,7 @@ SmartTemplate4.Util = {
           additionalText: additionalText || "",
           trialDays: util.licenseInfo.trialDays,
           buttonKey,
+          blockedFeatures: [...util.blockedFeatures],
         });
         if (shown) return;
       } catch (error) {
@@ -1482,7 +1530,7 @@ SmartTemplate4.Util = {
       // [issue 183]
       if (!SmartTemplate4.Util.hasLicense() || SmartTemplate4.Util.licenseInfo.keyType == 2) {
         SmartTemplate4.Util.addUsedPremiumFunction("clipboard");
-        if (!SmartTemplate4.Util.isTrialActive()) {
+        if (!SmartTemplate4.Util.useFeature("clipboard")) {
           return "";
         }
       }
@@ -2149,6 +2197,13 @@ SmartTemplate4.Util = {
    */
   dateFormat: function (time, argument, timezone) {
     const util = SmartTemplate4.Util;
+    if (!util.useFeature("dateformat", false)) {
+      return `%dateformat(${argument})%`;
+    }
+    if (argument.includes("toclipboard") && !util.useFeature("toclipboard", false)) {
+      return `%dateformat(${argument})%`;
+    }
+    util.useFeature("dateformat");
     let timeFormat,
       isClipboard = false;
     let formatter;
@@ -2268,7 +2323,7 @@ SmartTemplate4.Util = {
         if (!util.hasLicense() || util.licenseInfo.keyType == 2) {
           util.addUsedPremiumFunction("toclipboard");
         }
-        if ((util.hasLicense() && util.licenseInfo.keyType != 2) || util.isTrialActive()) {
+        if (util.useFeature("toclipboard")) {
           util.clipboardWrite(timeString);
           util.logDebugOptional("timeStrings", "Copied time to clipboard!");
         }
