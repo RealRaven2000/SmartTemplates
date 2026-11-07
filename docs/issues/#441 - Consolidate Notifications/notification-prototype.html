@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SmartTemplates — composer notification prototype</title>
+  <style>
+    :root { font-family: "Segoe UI", system-ui, sans-serif; color: #25272b; background: #e9eaee; color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    .preview-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 24px; background: #fff; border-bottom: 1px solid #d5d7de; }
+    .preview-header strong { font-size: 14px; font-weight: 600; }
+    .preview-header span { font-size: 12px; color: #636873; }
+    .composer { margin: 24px auto; width: calc(100% - 48px); max-width: 1500px; border: 1px solid #c7c9d1; border-radius: 9px; overflow: hidden; background: #fff; box-shadow: 0 12px 40px #20263712; }
+    .titlebar { display: flex; gap: 9px; align-items: center; background: #f1f2f6; padding: 12px 18px; font-size: 13px; }
+    .titlebar img { width: 22px; height: 22px; object-fit: contain; }
+    .toolbar { padding: 12px 18px; border-bottom: 1px solid #dddfe6; display: flex; gap: 20px; align-items: center; font-size: 13px; }
+    .send { background: #e3e8f6; color: #263b6a; border-radius: 5px; padding: 6px 18px; font-weight: 600; }
+    .fields { padding: 0 24px; }
+    .field { display: flex; gap: 18px; padding: 13px 0; border-bottom: 1px solid #e4e5ea; font-size: 14px; }
+    .field span:first-child { width: 60px; color: #6b707c; }
+    .editor { position: relative; min-height: 530px; height: calc(100vh - 285px); overflow: hidden; }
+    .letter { padding: 32px 38px; font: 18px/1.65 Georgia, serif; max-width: 780px; }
+    .letter p { margin: 0 0 24px; }
+    .signature { font-family: "Segoe UI", sans-serif; padding-left: 16px; border-left: 3px solid #5d8ea1; font-size: 14px; color: #50707e; }
+    .signature strong { color: #244754; }
+    .statusbar { border-top: 1px solid #dddfe6; padding: 6px 18px; text-align: right; font-size: 11px; color: #656b76; background: #f7f7f9; }
+    .bubble { position: absolute; bottom: 20px; right: 20px; width: min(440px, 46%); border: 1px solid #cbd3dc; border-radius: 13px; background: #fafcffff; box-shadow: 0 5px 22px #23384f20; overflow: hidden; }
+    .bubble[open] { width: min(66%, 1000px); }
+    summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 13px 16px; min-height: 62px; user-select: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background: #edf3fa; }
+    summary:focus-visible { outline: 2px solid #2277bd; outline-offset: -4px; border-radius: 12px; }
+    .badge { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 2px 8px; border-radius: 5px; font-size: 12px; line-height: 1.5; font-weight: 750; letter-spacing: .035em; border: 1px solid transparent; }
+    .badge-license { color: #fff; background: linear-gradient(#f6a13b, #cf5b0c); border-color: #bc570f; text-shadow: 0 1px 1px #74360066; }
+    .summary-icon { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
+    .badge-pro { color: #fff; background: linear-gradient(#36afd0, #137c9b); border-color: #197f9c; text-shadow: 0 1px 1px #12465b55; }
+    .badge-std { color: #586976; background: linear-gradient(#f0f4f6, #dfe7eb); border-color: #c5d1d8; }
+    .expanded-title { display: none; }
+    [open] .expanded-title { display: block; font-size: 18px; font-weight: 650; }
+    [open] .collapsed-title { display: none; }
+    [open] summary { padding: 22px 25px; min-height: 82px; }
+    [open] .summary-icon { width: 40px; height: 40px; }
+    .summary-text { flex: 1; min-width: 0; font-size: 13px; line-height: 1.5; }
+    .summary-text strong { display: block; font-size: 14px; font-weight: 600; }
+    .summary-text span { color: #68717c; }
+    .chevron { font-size: 27px; font-weight: 300; color: #56738f; line-height: 1; transition: transform .15s; }
+    [open] .chevron { transform: rotate(90deg); }
+    .panel { padding: 0 25px 22px; max-height: min(60vh, 560px); overflow-y: auto; font-size: 14px; line-height: 1.8; }
+    .feature { display: grid; grid-template-columns: 104px 1fr; gap: 16px; padding: 20px 0; border-top: 1px solid #e0e6ed; align-items: start; }
+    [hidden] { display: none !important; }
+    .trial-heading { display: block; font-size: 16px; font-weight: 600; }
+    .feature .badge { justify-self: start; margin-top: 2px; min-width: 45px; }
+    .feature p { margin: 0; }
+    a { color: #256398; text-underline-offset: 3px; }
+    a:hover { color: #16436d; }
+    .button-link { display: inline-flex; align-items: center; font: inherit; padding: 9px 18px; border: 1px solid #bcc5d1; border-radius: 5px; background: #fff; color: #344960; text-decoration: none; }
+    .button-link:hover { background: #edf2f7; color: #344960; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 18px; }
+    button { font: inherit; padding: 9px 18px; border: 1px solid #bcc5d1; border-radius: 5px; background: #fff; color: #344960; cursor: pointer; }
+    button:hover { background: #edf2f7; }
+    .buy { background: linear-gradient(#a8c725, #71940a); border-color: #779713; color: #fff; font-weight: 600; }
+    .buy:hover { background: #71940a; }
+    .feedback { margin: 12px 0 0; color: #52677c; }
+    .feedback:empty { display: none; }
+    @media (max-width: 650px) {
+      .preview-header { padding: 12px; flex-wrap: wrap; gap: 4px; }
+      .composer { margin: 12px; width: calc(100% - 24px); }
+      .bubble { right: 12px; bottom: 12px; width: 46%; }
+      .bubble[open] { width: calc(100% - 24px); }
+      summary { padding: 10px; gap: 8px; }
+      summary > .badge { padding: 2px 5px; font-size: 10px; }
+      .summary-text, .summary-text strong { font-size: 12px; }
+      .summary-text span { display: none; }
+      .letter { padding: 24px; }
+      .feature { grid-template-columns: 60px 1fr; gap: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .chevron { transition: none; } }
+  </style>
+</head>
+<body>
+  <header class="preview-header"><strong>SmartTemplates · Notification concept</strong><span>Click the chevron to expand · Licensing buttons are demonstrations</span></header>
+  <main class="composer" aria-label="Example email composer">
+    <div class="titlebar"><img src="../../../chrome/content/skin/icon32x32.png" alt="">Write: Re: Project update</div>
+    <div class="toolbar"><span class="send">Send</span><span>Attach</span><span>Insert Snippet ▾</span><span>Clean up!</span></div>
+    <div class="fields"><div class="field"><span>To</span><span>Alex Morgan &lt;alex@example.com&gt;</span></div><div class="field"><span>Subject</span><span>Re: Project update</span></div></div>
+    <section class="editor" aria-label="Message area">
+      <div class="letter"><p>Hello Alex,</p><p>Thank you for the update. I have reviewed the changes and will send you my notes later today.</p><p>Best regards,<br>Axel</p><div class="signature"><strong>Axel Grude</strong><br>Thunderbird Daily<br>SmartTemplates · Templates that work for you</div></div>
+      <details class="bubble">
+        <summary aria-controls="notification-details">
+          <img class="summary-icon" src="../../../chrome/content/skin/icon32x32.png" alt="SmartTemplates">
+          <span class="summary-text"><span class="collapsed-title"><strong id="compact-status">You have 28 trial days left.</strong><span>SmartTemplates · Learn more</span></span><span class="expanded-title">SmartTemplates</span></span>
+          <span class="chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="panel" id="notification-details">
+          <div class="feature" id="trial-row"><span class="badge badge-license">licence</span><p><strong class="trial-heading" id="trial-status"></strong><span id="trial-description"></span> <a id="licensing-link" href="https://smarttemplates.quickfolders.org/contribute.html" target="_blank" rel="noopener noreferrer">More about licensing</a></p></div>
+          <div class="feature" id="pro-row"><span class="badge badge-pro" aria-label="Pro features">PRO</span><p id="pro-description"></p></div>
+          <div class="feature" id="standard-row"><span class="badge badge-std" aria-label="Standard features">STD</span><p id="standard-description"></p></div>
+          <div class="actions" id="notification-actions"></div>
+          <p class="feedback" role="status"></p>
+        </div>
+      </details>
+    </section>
+    <footer class="statusbar">English (United States)</footer>
+  </main>
+  <script>
+    // Standalone prototype parameters. Null/zero trial days, empty feature arrays,
+    // and an empty buttons array independently omit their respective sections.
+    const notificationOptions = {
+      trialDays: 28,
+      trialText: 'SmartTemplates keeps working as usual. A license removes this reminder.',
+      licensingUrl: 'https://smarttemplates.quickfolders.org/contribute.html',
+      proFeatures: ['replaceQuotedTags', 'header.prefix'],
+      standardFeatures: ['file', 'style'],
+      buttons: [
+        { label: 'Buy License', action: 'buy', primary: true },
+        { label: 'Compare features', href: 'https://smarttemplates.quickfolders.org/premium.html#featureComparison', requiresFeatures: true },
+        { label: 'Remind me later', action: 'later' }
+      ]
+    };
+
+    function renderNotification(options) {
+      const trialAvailable = Number.isFinite(options.trialDays) && options.trialDays > 0;
+      const trialStatus = trialAvailable ? `You have ${options.trialDays} trial days left.` : '';
+      document.querySelector('#trial-row').hidden = !trialAvailable;
+      document.querySelector('#trial-status').textContent = trialStatus;
+      document.querySelector('#trial-description').textContent = options.trialText || '';
+      const licensingLink = document.querySelector('#licensing-link');
+      licensingLink.hidden = !options.licensingUrl;
+      if (options.licensingUrl) licensingLink.href = options.licensingUrl;
+      document.querySelector('#compact-status').textContent = trialStatus || 'Template feature information';
+      const pro = options.proFeatures || [];
+      const standard = options.standardFeatures || [];
+      document.querySelector('#pro-row').hidden = !pro.length;
+      document.querySelector('#standard-row').hidden = !standard.length;
+      document.querySelector('#pro-description').textContent = pro.length
+        ? `'${pro.join(', ')}' ${pro.length === 1 ? 'is a Premium feature. It' : 'are Premium features. They'} will keep working, but upgrading to a SmartTemplates Pro License removes these reminders and helps support the add-on.` : '';
+      document.querySelector('#standard-description').textContent = standard.length
+        ? `'${standard.join(', ')}' ${standard.length === 1 ? 'is a licensed feature. It' : 'are licensed features. They'} will keep working, but getting a SmartTemplates License removes these reminders and helps support the add-on.` : '';
+      const actions = document.querySelector('#notification-actions');
+      actions.replaceChildren();
+      const buttons = (options.buttons || []).filter(item => !item.requiresFeatures || pro.length || standard.length);
+      actions.hidden = !buttons.length;
+      document.querySelector('.feedback').textContent = '';
+      for (const item of buttons) {
+        const button = document.createElement(item.href ? 'a' : 'button');
+        if (item.href) {
+          button.href = item.href;
+          button.target = '_blank';
+          button.rel = 'noopener noreferrer';
+          button.classList.add('button-link');
+        } else {
+          button.type = 'button';
+        }
+        button.textContent = item.label;
+        button.classList.toggle('buy', !!item.primary);
+        if (!item.href) button.addEventListener('click', () => {
+          if (item.action === 'later') {
+            document.querySelector('.bubble').open = false;
+          } else {
+            document.querySelector('.feedback').textContent = item.label + ' — preview only; no purchase or navigation is performed.';
+          }
+        });
+        actions.append(button);
+      }
+    }
+    renderNotification(notificationOptions);
+  </script>
+</body>
+</html>
