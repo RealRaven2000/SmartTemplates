@@ -54,6 +54,6 @@ module.exports = {
     "no-undef": "error",
     "no-redeclare": "error",
     eqeqeq: "off",
-    curly: "warn",
+    curly: ["error", "all"],
   },
 };

@@ -23,6 +23,13 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
     return {
       Utilities: {
+        showComposeLicenseDialog: async function (tabId, feature) {
+          const composeWindow = context.extension.tabManager.get(tabId).window;
+          if (composeWindow?.document.documentElement.getAttribute("windowtype") !== "msgcompose") {
+            throw new Error("Licensing action requires a compose window");
+          }
+          composeWindow.SmartTemplate4.Util.showLicenseDialog(feature);
+        },
         collapseTimeout: null, // timeout id for gathering save timeouts
         UPDATE_INTERVAL: 2000,
 

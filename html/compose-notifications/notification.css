@@ -1,0 +1,248 @@
+:host {
+  all: initial;
+  position: fixed !important;
+  right: 16px !important;
+  bottom: var(--notification-bottom, 16px) !important;
+  width: max-content !important;
+  max-width: min(440px, 46vw) !important;
+  z-index: 2147483000 !important;
+  color-scheme: light dark;
+  font:
+    14px/1.7 "Segoe UI",
+    system-ui,
+    sans-serif;
+  color: light-dark(#25272b, #e4e8ee);
+}
+:host([data-expanded]) {
+  width: min(75vw, 1000px) !important;
+  max-width: calc(100vw - 32px) !important;
+}
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+.bubble {
+  background: light-dark(#fafcff, #252b34);
+  border: 1px solid light-dark(#cbd3dc, #536071);
+  border-radius: 14px;
+  box-shadow: 0 5px 22px #23384f25;
+  overflow: hidden;
+  max-height: 80vh;
+}
+summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary:hover {
+  background: light-dark(#edf3fa, #303b49);
+}
+summary:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #3d8bd2;
+  outline-offset: -3px;
+}
+.brand {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.heading {
+  flex: 1;
+  min-width: 0;
+}
+.compact,
+.hint {
+  display: block;
+}
+.compact {
+  font-weight: 600;
+}
+.hint {
+  font-size: 12px;
+  color: light-dark(#68717c, #b5c1d0);
+}
+.title {
+  display: none;
+}
+[open] .compact,
+[open] .hint {
+  display: none;
+}
+[open] .title {
+  display: block;
+  font-size: 18px;
+}
+[open] summary {
+  padding: 22px 25px;
+}
+[open] .brand {
+  width: 40px;
+  height: 40px;
+}
+.chevron {
+  font-size: 27px;
+  line-height: 1;
+  color: light-dark(#56738f, #b4c9df);
+}
+[open] .chevron {
+  transform: rotate(90deg);
+}
+.panel {
+  padding: 0 25px 22px;
+  max-height: calc(80vh - var(--notification-header-height, 86px));
+  overflow-y: auto;
+}
+.row {
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid light-dark(#e0e6ed, #465260);
+  align-items: start;
+}
+.text {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.trial {
+  display: block;
+  font-size: 16px;
+}
+.badge {
+  justify-self: start;
+  margin-top: 2px;
+  padding: 2px 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  font:
+    750 13px/1.5 "Segoe UI",
+    system-ui,
+    sans-serif;
+}
+.license {
+  color: white;
+  background: linear-gradient(#f6a13b, #cf5b0c);
+  border-color: #bc570f;
+}
+.pro {
+  color: white;
+  background: linear-gradient(#36afd0, #137c9b);
+  border-color: #197f9c;
+}
+.standard {
+  color: #586976;
+  background: linear-gradient(#f0f4f6, #dfe7eb);
+  border-color: #c5d1d8;
+}
+a {
+  color: light-dark(#256398, #94cafa);
+  text-underline-offset: 3px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 18px;
+}
+button {
+  font: inherit;
+  padding: 9px 18px;
+  border: 1px solid light-dark(#bcc5d1, #697b90);
+  border-radius: 5px;
+  background: light-dark(white, #303b49);
+  color: inherit;
+  cursor: pointer;
+}
+button:hover {
+  background: light-dark(#edf2f7, #405064);
+}
+.primary {
+  background: linear-gradient(#a8c725, #71940a);
+  color: white;
+  border-color: #779713;
+  font-weight: 600;
+}
+.primary:hover {
+  background: #71940a;
+}
+@media (max-width: 650px) {
+  :host([data-expanded]) {
+    width: calc(100vw - 32px) !important;
+  }
+  .row {
+    grid-template-columns: 62px 1fr;
+    gap: 10px;
+  }
+  .panel {
+    padding: 0 16px 16px;
+  }
+  summary {
+    padding: 10px;
+    gap: 8px;
+  }
+}
+
+/* Heights refer to the editor viewport, not the full Thunderbird window. */
+@media (max-height: 800px) {
+  :host {
+    --notification-header-height: 66px;
+  }
+  [open] summary {
+    padding-block: 12px;
+  }
+  .panel {
+    padding-bottom: 14px;
+  }
+  .row {
+    padding-block: 12px;
+  }
+  .actions {
+    padding-top: 12px;
+    gap: 10px;
+  }
+  button {
+    padding-block: 7px;
+  }
+}
+
+@media (max-height: 550px) {
+  :host {
+    --notification-header-height: 58px;
+  }
+  [open] summary {
+    padding-block: 8px;
+  }
+  .panel {
+    padding-bottom: 10px;
+  }
+  .row {
+    grid-template-columns: 88px 1fr;
+    gap: 12px;
+    padding-block: 6px;
+  }
+  .actions {
+    padding-top: 8px;
+    gap: 8px;
+  }
+  button {
+    padding: 5px 14px;
+  }
+}
+
+@media (max-width: 650px) and (max-height: 550px) {
+  .row {
+    grid-template-columns: 62px 1fr;
+    gap: 10px;
+  }
+}

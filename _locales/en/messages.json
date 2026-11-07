@@ -1246,6 +1246,15 @@
   "notification.bodyModified.instructions": {
     "message": "Click Cancel to keep email contents unchanged."
   },
+  "notification.compose.details": {
+    "message": "Licensed features used"
+  },
+  "notification.compose.learnMore": {
+    "message": "Learn more"
+  },
+  "notification.compose.remindLater": {
+    "message": "Remind me later"
+  },
   "notification.donate": {
     "message": "Donate"
   },

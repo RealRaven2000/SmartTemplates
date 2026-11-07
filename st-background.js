@@ -3,6 +3,7 @@
     ICAL: readonly
 */
 import { Preferences } from "./scripts/preferences.mjs";
+import { createComposeNotifications } from "./html/compose-notifications/controller.mjs";
 import {Licenser, licenseValidationDescription} from "./scripts/Licenser.mjs.js";
 import * as webExtensionStorageEditor from "./scripts/webExtensionStorageEditor.mjs";
 
@@ -18,6 +19,7 @@ console.log(SmartTemplates, stProcess);
 SmartTemplates.Util.log("SmartTemplates Background started");
 
 var currentLicense;
+const composeNotifications = createComposeNotifications(browser);
 const GRACEPERIOD_DAYS = 28;
 const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 
@@ -1249,6 +1251,9 @@ const uiReadyPromise = new Promise((resolve) => {
 // Wrapper that supports multiple args
 async function notifyWhenUIReady(...args) {
   try {
+    if (args[0]?.licenseInfo) {
+      await composeNotifications.updateLicense(args[0].licenseInfo);
+    }
     // Wait until st-messenger signals that all listeners are ready
     await uiReadyPromise;
 
@@ -1713,6 +1718,8 @@ async function main() {
     }
     try {
       switch (data.func) {
+        case "composeLicenseNotification":
+          return await composeNotifications.show(data);
         case "UIListenersReady":
           // makes sure all event listeners in st-messenger.js are set up and ready to receive
           uiResolve(); // resolve the promise
@@ -2038,6 +2045,7 @@ async function main() {
    * the parameter of startListening(). This object also contains an extension member.
    */
 
+  await composeNotifications.start();
   messenger.WindowListener.startListening();
 
   // [issue 209] Exchange account validation

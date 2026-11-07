@@ -580,6 +580,31 @@ SmartTemplate4.Util = {
 
     util.logDebug("popupLicenseNotification(" + featureName + ")");
 
+    if (window.document.documentElement.getAttribute("windowtype") === "msgcompose") {
+      try {
+        // Snapshot the arrays before the parser clears its per-insertion lists.
+        const features = typeof featureList === "string"
+          ? (featureList ? [featureList] : []) : [...featureList];
+        const buttonKey = util.licenseInfo.status === "Expired"
+          ? "notification.premium.btn.renewLicense"
+          : util.licenseInfo.keyType === 2
+            ? "notification.premium.btn.upgrade" : "notification.premium.btn.getLicense";
+        const shown = await util.notifyTools.notifyBackground({
+          func: "composeLicenseNotification",
+          windowId: util.extension.windowManager.getWrapper(window).id,
+          features,
+          isRegister,
+          isProFeature,
+          additionalText: additionalText || "",
+          trialDays: util.licenseInfo.trialDays,
+          buttonKey,
+        });
+        if (shown) return;
+      } catch (error) {
+        util.logException("Composer notification failed; using native notification", error);
+      }
+    }
+
     if (typeof specialTabs == "object" && specialTabs.msgNotificationBar) {
       notifyBox = specialTabs.msgNotificationBar;
     } else {

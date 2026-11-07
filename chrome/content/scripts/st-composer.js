@@ -172,6 +172,8 @@ async function onLoad(activatedWhileWindowOpen) {
 function onUnload(isAddOnShutDown) {
   try {
     window.SmartTemplate4.Util.logDebug("st-composer.js - onUnload()");
+    window.gMsgCompose?.editor?.document
+      ?.getElementById("smarttemplates-compose-notification")?.remove();
     window.SmartTemplate4.Util.notifyTools.disable();
     window.removeEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.composer.initLicensedUI);
     for (let m in mylisteners) {

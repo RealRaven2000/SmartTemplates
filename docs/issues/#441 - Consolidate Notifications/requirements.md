@@ -2,7 +2,7 @@
 
 Status: consolidated requirements draft for #441. Open policy decisions are explicitly listed below. No runtime implementation changes are authorized by this document.
 
-Design reference: [HTML prototype source](https://github.com/RealRaven2000/SmartTemplates/blob/ESR140/docs/issues/%23441%20-%20Consolidate%20Notifications/notification-prototype.html) (download and open locally to interact). The prototype demonstrates presentation, not production trial accounting or suppression. Its sample 28-day value is not a decision on the new allowance length.
+Design reference: [HTML prototype source](../blob/ESR140/docs/issues/%23441%20-%20Consolidate%20Notifications/notification-prototype.html) (download and open locally to interact). The prototype demonstrates presentation, not production trial accounting or suppression. Its sample 28-day value is not a decision on the new allowance length.
 
 ## Goals
 
@@ -13,7 +13,7 @@ Design reference: [HTML prototype source](https://github.com/RealRaven2000/Smart
 
 ## Current problems
 
-See [the current feature inventory](https://github.com/RealRaven2000/SmartTemplates/blob/ESR140/docs/issues/%23441%20-%20Consolidate%20Notifications/feature-inventory.md) for existing gates, fixed limits, reminder-only features, and implementation discrepancies. The current shared 28-day trial is elapsed calendar time, not a per-feature session/day allowance.
+See [the current feature inventory](../blob/ESR140/docs/issues/%23441%20-%20Consolidate%20Notifications/feature-inventory.md) for existing gates, fixed limits, reminder-only features, and implementation discrepancies. The current shared 28-day trial is elapsed calendar time, not a per-feature session/day allowance.
 
 One template insertion can produce three visible bars: general licensing/trial information, a Pro feature list, and a Standard feature list. These messages compete for attention and reduce the space available for writing email.
 
@@ -45,7 +45,8 @@ Current messaging says features will keep working. Repeated reminders therefore 
 
 - Use a right-aligned bubble over the composer editor rather than stacked full-width bars that reduce vertical writing space. A toolbar action is not the information surface for this design.
 - Initially show the SmartTemplates icon, a short text status, and a right-facing disclosure chevron. Do not use an icon-only reminder or show purchase buttons in the collapsed state.
-- Keep the collapsed bubble below 50% of the available editor width. On expansion, retain right alignment and expand upward to approximately 66% width, capped at 1,000 px. On narrow screens, allow the expanded panel to use the available width with margins.
+- When trial information is absent, use **Licensed features used** as the collapsed summary for available licensed features. Use **Some features blocked** when an actual blocked operation is explicitly reported; expiry alone must not imply blocking. If both apply, the blocked summary takes precedence. The current frontend reports usage only; explicit blocking reports are future integration work.
+- Keep the collapsed bubble below 50% of the available editor width. On expansion, retain right alignment and expand upward to approximately 75% width, capped at 1,000 px. On narrow screens, allow the expanded panel to use the available width with margins. Cap the total bubble height at 80% of the editor viewport so composer context remains visible; scroll details only when they exceed the available height, without an additional fixed pixel-height cap.
 - The expanded header contains exactly one SmartTemplates branding icon at the top left, the add-on name, and a collapse chevron. Replace the collapsed status with this header; do not repeat branding or "Learn more" inside the expanded panel.
 - Below the header, render independently optional, parameter-driven sections in this order:
   1. **licence:** available trial data and concise licensing information. Omit the trial section when no trial data remains or it is unavailable. End this field with a normal **More about licensing** hyperlink to `https://smarttemplates.quickfolders.org/contribute.html`, not a separate footer button.
@@ -115,7 +116,7 @@ Onboarding should help users reach a working template or snippet quickly. Detail
 - Define treatment of existing users and existing templates when introducing gates.
 - Define blocked-feature behavior. Silently omitting template commands can produce incorrect email; blocking composition can interrupt established workflows. Neither behavior is agreed.
 - Define dismissal, snooze duration, restart persistence, and reset behavior after licensing changes.
-- Decide the collapsed status when trial information is absent, and whether different wording is needed for blocked operations. Optional sections must not leave empty rows or separators.
+- Optional sections must not leave empty rows or separators. Final blocked-feature details depend on the outstanding blocking policy; the collapsed used/blocked distinction is agreed above.
 
 ## Implementation constraints
 

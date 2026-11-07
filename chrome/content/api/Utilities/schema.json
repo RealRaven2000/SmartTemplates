@@ -3,6 +3,16 @@
     "namespace": "Utilities",
     "functions": [
       {
+        "name": "showComposeLicenseDialog",
+        "type": "function",
+        "async": true,
+        "description": "Open the licensing dialog from the originating compose tab.",
+        "parameters": [
+          { "name": "tabId", "type": "integer" },
+          { "name": "feature", "type": "string" }
+        ]
+      },
+      {
         "name": "selectSnippetFolder",
         "type": "function",
         "async": true,
