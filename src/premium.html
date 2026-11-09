@@ -229,6 +229,22 @@ permalink: premium.html
   </tr>
 </table>
       
+<h3 id="currentRestrictions">Current trial and license restrictions</h3>
+<p>
+  The comparison above describes license entitlements. Not every paid feature is currently blocked without a license:
+  some remain available with a licensing reminder. SmartTemplates currently uses a shared 28-day trial for certain
+  features, not separate counters for emails, feature uses, or active sessions.
+</p>
+<ul>
+  <li><strong>Template and snippet menus:</strong> unlicensed users can access up to 5 entries per list, Standard users up to 25, and Pro users have no license-tier entry limit. Recent-template menus allow 3 entries without a license and 5 with Standard; Pro uses the configured recent-menu limit.</li>
+  <li><strong>Categories:</strong> the license tiers provide 3 named categories without Pro; additional categories are grouped under Other.</li>
+  <li><strong>Available with Pro or during the shared trial:</strong> clipboard input and output, mail-tag formatting, and <code>%deleteForwardedBody%</code>. After the trial, their clipboard operations, tag output, or forwarded-body deletion are skipped without Pro.</li>
+  <li><strong>Pro license checks:</strong> the main CardBook contact lookup and filter-triggered automatic sending require a valid Pro license, without a trial exception in those checks. A blocked automatic send does not prevent the template itself from being prepared.</li>
+  <li><strong>Standard features that currently continue with reminders:</strong> <code>%file()%</code>, <code>%style()%</code>, and <code>%dateformat()%</code>. Clipboard output from date formatting is subject to the separate Pro/trial restriction.</li>
+  <li><strong>Pro features that currently continue with reminders:</strong> preheaders, snippet wrapping with <code>*selection*</code>, text matching and replacement, quoted-text and quoted-tag modification, header modification (including priority), <code>%conditionalText()%</code>, and <code>%attach()%</code>. Clipboard arguments within these features are subject to the separate Pro/trial restriction.</li>
+</ul>
+<p>Pro entitlements also apply to Domain licenses. Date/time offsets are listed as Pro features above, but currently have no separate usage counter or blocking check.</p>
+
 <!-- ##### HTML Snippets -->
 <a name="snippets"> </a>
 <h3 class="helpchapter">Insert Snippets in Composer</h3>

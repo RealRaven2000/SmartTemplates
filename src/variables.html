@@ -701,6 +701,29 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
    </ul>
 </article>
 
+<!-- ##### Interactive Prompts #### -->
+<a id="prompt" name="prompt"> </a>
+<h3 class="helpchapter">Interactive prompts (Pro Function, from v4.22)</h3>
+<article>
+  <p><code>%prompt()%</code> asks for free text entry or a selection when inserting a template or Smart Fragment. This is a Pro feature, which can be tested during the trial period.</p>
+  <p><code>%prompt("<i>explanation</i>",<i>defaultValue</i>,"<i>choices</i>",<span class="paramLiteral">toclipboard</span>)%</code></p>
+  <h4>Parameters</h4>
+  <ul>
+    <li><span class="param"><i>explanation</i></span>: Required quoted text explaining what the user should enter or select.</li>
+    <li><span class="param"><i>defaultValue</i></span>: Optional quoted initial value, or the literal keyword <span class="paramLiteral">clipboard</span> to read the clipboard. Use <span class="paramLiteral">""</span> for no initial value or preselection.</li>
+    <li><span class="param"><i>choices</i></span>: Optional quoted, comma-separated list displayed as expanded radio buttons. The default is matched case-insensitively and selected if found. An empty or unmatched default leaves no preselection. Without choices, the prompt shows the default value in an editable field.</li>
+    <li><span class="paramLiteral">toclipboard</span>: Optional unquoted final parameter. Copies the confirmed answer instead of inserting it; subsequent <code class="inline">%clipboard%</code> variables can be used to insert this answer in the email.</li>
+  </ul>
+  <p>Click OK or press Enter to confirm your answer. Click Cancel, use the close button, or press Escape to abort insertion without changing the message or clipboard.</p>
+  <h4>Examples</h4>
+  <ul>
+    <li><code>%prompt("Enter the tea variety","Darjeeling")%</code></li>
+    <li><code>%prompt("Select a tea","","Darjeeling,Ceylon,Assam")%</code></li>
+    <li><code>%prompt("Select a tea",<span class="paramLiteral">clipboard</span>,"Darjeeling,Ceylon,Assam",<span class="paramLiteral">toclipboard</span>)%</code></li>
+  </ul>
+  <p>The first example requests free text with an initial value. The second shows choices without a preselection. The third uses the clipboard to preselect a matching choice and copies the confirmed answer back to the clipboard.</p>
+</article>
+
 <!-- ##### Header Functions #### -->
 <a name="headerManipulation"> </a>
 <h3 class="helpchapter">Mail Header Manipulation (Pro Functions)</h3>

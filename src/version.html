@@ -208,7 +208,7 @@ permalink: version.html
       Version 4.* - Work in Progress</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">140.0 - 151.*</span>
+			<span class="thunderbird">140.0 - 161.*</span>
 		</span>
   </h4>
   <ul>
@@ -230,6 +230,69 @@ permalink: version.html
       - Miscellaneous
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
+
+<a id="4.22"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.22"
+      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 4.22 - Work in Progress</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">140.0 - 161.*</span>
+		</span>
+  </h4>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li>
+      <strong>Interactive prompts in templates and Smart Fragments (Pro).</strong>
+      The new <a href="variables.html#prompt"><code>%prompt()%</code> function</a> asks for free text
+      or presents a list of radio-button choices directly in the composer.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/443">[issue 443]</a>
+      <p>
+        Supply a default value, use the clipboard as the default, or start without a preselection.
+        Choice defaults are matched without distinguishing uppercase and lowercase letters.
+        Add <span class="paramLiteral">toclipboard</span> to copy the answer instead of inserting it,
+        then reuse it throughout the fragment with <code>%clipboard%</code>.
+        Cancel, the close button, or Escape aborts insertion without changing the message or clipboard.
+      </p>
+      <p><code>%prompt("Select a tea","","Darjeeling,Ceylon,Assam",<span class="paramLiteral">toclipboard</span>)%</code></p>
+      <p>
+        Prompts support light and dark themes, adapt to smaller composer sizes, and can be confirmed with Enter.
+        This Pro feature is also available during the trial and through the limited evaluation allowance.
+        See the <a href="variables.html#prompt">parameters and examples</a> for free-text and clipboard defaults.
+      </p>
+    </li>
+    <li>
+      <strong>Compact licensing information inside the composer.</strong>
+      Trial, Pro, and Standard feature notices are combined into one expandable bubble,
+      keeping licensing information close at hand without repeated separate notifications.
+      Expand it to see the features used, their applicable license, and remaining evaluation uses.
+      Licensing and feature-comparison links open in your external browser.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/441">[issue 441]</a>
+    </li>
+    <li>
+      <strong>Try individual licensed features after the general trial.</strong>
+      Each tracked feature has its own allowance of 12 evaluation days.
+      Only the first use of a feature on each local calendar day counts; further emails,
+      repeated use, and Thunderbird restarts that day do not consume additional uses.
+      Features covered by your license do not consume an allowance.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/441">[issue 441]</a>
+      <p>
+        The licensing bubble explains how uses are counted and shows the remaining allowance beside each feature.
+        When an allowance is exhausted, a pink notification highlights the blocked features.
+        Blocked template variables retain their original tokens; a blocked prompt cancels insertion before opening a dialog.
+      </p>
+    </li>
+    <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
+    <li>
+      Simplified localization message names, updated their references, and sorted translation catalogs
+      to make ongoing translation work easier to maintain.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/440">[issue 440]</a>
+    </li>
+  </ul>
+</li> 
+
 
 <a id="4.21"> &nbsp; </a>
 <li>
@@ -473,7 +536,6 @@ permalink: version.html
       (`about:config`) to `storage.local` 
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/422">[issue 422]</a>. 
       Going forward, add-ons should minimize their reliance on global preferences.
-
       <p>
         <i>Note:</i> Uninstalling SmartTemplates now resets its settings to their defaults.
       </p>
