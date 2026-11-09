@@ -1424,6 +1424,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Nastavite zunanji urejevalnik za urejanje predlog HTML in CSS. Priporočam urejevalnik HTML za navadno besedilo z označevanjem skladnje, kot sta Notepad++ ali Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Neobvezno) seznam v narekovajih, ločen z vejicami in prikazan kot izbirni gumbi. Privzeta vrednost se poišče brez razlikovanja velikosti črk in izbere, če je najdena. Brez možnosti se prikaže v polju za urejanje."
+  },
+  "prompt.help.confirm": {
+    "message": "Kliknite V redu za potrditev odgovora. Kliknite Prekliči ali zaprite okno za prekinitev vstavljanja podatkov."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Neobvezno) začetna vrednost v narekovajih ali dobesedna ključna beseda {clipboard} za branje odložišča. Uporabite {\"\"}, če ne želite začetne vrednosti ali vnaprejšnje izbire."
+  },
+  "prompt.help.description": {
+    "message": "Ob vstavljanju predloge ali Smart Fragmenta zahteva poljubno besedilo ali izbiro. To funkcijo Pro lahko preizkusite v preizkusnem obdobju."
+  },
+  "prompt.help.enterTea": {
+    "message": "Vnesite vrsto čaja"
+  },
+  "prompt.help.explanation": {
+    "message": "Obvezno besedilo v narekovajih, ki pojasnjuje, kaj naj uporabnik vnese ali izbere."
+  },
+  "prompt.help.selectTea": {
+    "message": "Izberite čaj"
+  },
+  "prompt.help.title": {
+    "message": "Interaktivni pozivi"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Neobvezno) zadnji parameter brez narekovajev. Kopira potrjeni odgovor namesto vstavljanja; naslednje spremenljivke `%clipboard%` lahko uporabite za vstavljanje tega odgovora v e-pošto."
+  },
   "prompt.switchDomainLicense": {
     "message": "Preklopi na domensko dovoljenje?"
   },

@@ -1396,6 +1396,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Richten Sie einen externen Editor zum Bearbeiten Ihrer HTML- und CSS-Vorlagen ein. Ich empfehle einen reinen Texteditor für HTML mit Syntaxhervorhebung, wie Notepad++ oder Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Optional) Kommagetrennte Liste in Anführungszeichen, die als Optionsfelder angezeigt wird. Der Standardwert wird ohne Beachtung der Groß-/Kleinschreibung gesucht und bei Übereinstimmung ausgewählt. Ohne Auswahlliste erscheint der Standardwert in einem bearbeitbaren Textfeld."
+  },
+  "prompt.help.confirm": {
+    "message": "Klicken Sie auf OK, um Ihre Antwort zu bestätigen. Mit Abbrechen oder durch Schließen des Fensters brechen Sie das Einfügen der Daten ab."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Optional) Anfangswert in Anführungszeichen oder das literale Schlüsselwort {clipboard}, um die Zwischenablage zu lesen. Mit {\"\"} gibt es keinen Anfangswert und keine Vorauswahl."
+  },
+  "prompt.help.description": {
+    "message": "Fragt beim Einfügen einer Vorlage oder eines Smart Fragments nach freiem Text oder einer Auswahl. Diese Pro-Funktion kann während des Testzeitraums ausprobiert werden."
+  },
+  "prompt.help.enterTea": {
+    "message": "Teesorte eingeben"
+  },
+  "prompt.help.explanation": {
+    "message": "Erforderlicher Text in Anführungszeichen, der erklärt, was eingegeben oder ausgewählt werden soll."
+  },
+  "prompt.help.selectTea": {
+    "message": "Tee auswählen"
+  },
+  "prompt.help.title": {
+    "message": "Interaktive Eingaben"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Optional) Letzter Parameter ohne Anführungszeichen. Kopiert die bestätigte Antwort, statt sie einzufügen; nachfolgende `%clipboard%`-Variablen können diese Antwort in die E-Mail einfügen."
+  },
   "prompt.switchDomainLicense": {
     "message": "Domänenlizenz aktivieren?"
   },

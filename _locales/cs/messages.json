@@ -1409,6 +1409,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Nastavte externí editor pro úpravu šablon HTML a CSS. Doporučuji používat textový editor HTML se zvýrazňováním syntaxe, například Notepad++ nebo Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Volitelné) seznam v uvozovkách oddělený čárkami, zobrazený jako přepínače. Výchozí hodnota se hledá bez rozlišení velikosti písmen a při nalezení se vybere. Bez možností se zobrazí v upravitelném poli."
+  },
+  "prompt.help.confirm": {
+    "message": "Odpověď potvrďte tlačítkem OK. Tlačítkem Zrušit nebo zavřením okna přerušíte vkládání dat."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Volitelné) počáteční hodnota v uvozovkách nebo doslovné klíčové slovo {clipboard} pro načtení schránky. Pomocí {\"\"} neurčíte žádnou počáteční hodnotu ani předvýběr."
+  },
+  "prompt.help.description": {
+    "message": "Při vložení šablony nebo Smart Fragmentu požádá o zadání textu nebo výběr z možností. Tuto funkci Pro lze vyzkoušet během zkušebního období."
+  },
+  "prompt.help.enterTea": {
+    "message": "Zadejte druh čaje"
+  },
+  "prompt.help.explanation": {
+    "message": "Povinný text v uvozovkách vysvětlující, co má uživatel zadat nebo vybrat."
+  },
+  "prompt.help.selectTea": {
+    "message": "Vyberte čaj"
+  },
+  "prompt.help.title": {
+    "message": "Interaktivní zadávání"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Volitelné) poslední parametr bez uvozovek. Zkopíruje potvrzenou odpověď místo jejího vložení; následující proměnné `%clipboard%` lze použít k vložení této odpovědi do e-mailu."
+  },
   "prompt.switchDomainLicense": {
     "message": "Přepnout na licenci domény?"
   },

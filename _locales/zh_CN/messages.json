@@ -1406,6 +1406,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "设置外部编辑器以编辑 HTML 和 CSS 模板。建议使用支持语法高亮的纯文本 HTML 编辑器，例如 Notepad++ 或 Visual Studio Code。"
   },
+  "prompt.help.choices": {
+    "message": "(可选) 带引号的逗号分隔列表，以展开的单选按钮显示。默认值不区分大小写进行匹配，找到后自动选中。未提供选项时，默认值显示在可编辑的文本框中。"
+  },
+  "prompt.help.confirm": {
+    "message": "点击“确定”确认答案。点击“取消”或关闭窗口可中止数据插入。"
+  },
+  "prompt.help.defaultValue": {
+    "message": "(可选) 带引号的初始值，或使用字面关键字 {clipboard} 读取剪贴板。使用 {\"\"} 表示没有初始值或预选项。"
+  },
+  "prompt.help.description": {
+    "message": "插入模板或 Smart Fragment 时，要求输入自由文本或从选项中选择。这是 Pro 功能，可在试用期内测试。"
+  },
+  "prompt.help.enterTea": {
+    "message": "输入茶叶品种"
+  },
+  "prompt.help.explanation": {
+    "message": "必填的带引号文本，用于说明用户应输入或选择什么。"
+  },
+  "prompt.help.selectTea": {
+    "message": "选择一种茶"
+  },
+  "prompt.help.title": {
+    "message": "交互式输入"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(可选) 不带引号的最后一个参数。复制确认后的答案而不是插入；后续的 `%clipboard%` 变量可用于将此答案插入电子邮件。"
+  },
   "prompt.switchDomainLicense": {
     "message": "切换到域许可证？"
   },

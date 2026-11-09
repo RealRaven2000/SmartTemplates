@@ -69,12 +69,26 @@ test("answers remain literal markup and variables, including replacement dollar 
 test("clipboard permission denial and read failure stop before asking", async () => {
   let asked = false;
   const callbacks = options([], { ask: () => { asked = true; } });
-  await assert.rejects(prompts.preparePrompts([tea], { ...callbacks, allowFeature: () => false }),
+  await assert.rejects(prompts.preparePrompts([tea], { ...callbacks, allowFeature: feature => feature !== "clipboard" }),
     error => error.name === "PromptCancelled");
   await assert.rejects(prompts.preparePrompts([tea], {
     ...callbacks, readClipboard: async () => { throw new Error("read failed"); },
   }), /read failed/);
   assert.equal(asked, false);
+});
+
+test("plain prompts require the Pro prompt allowance before any UI or clipboard access", async () => {
+  const checked = [];
+  let asked = false;
+  let read = false;
+  await assert.rejects(prompts.preparePrompts(['%prompt("Enter tea")%'], options([], {
+    allowFeature: feature => { checked.push(feature); return false; },
+    ask: () => { asked = true; },
+    readClipboard: () => { read = true; },
+  })), error => error.name === "PromptCancelled");
+  assert.deepEqual(checked, ["prompt"]);
+  assert.equal(asked, false);
+  assert.equal(read, false);
 });
 
 test("empty clipboard allows selecting a choice; answers outside the list are rejected", async () => {

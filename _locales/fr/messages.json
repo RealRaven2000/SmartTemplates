@@ -1409,6 +1409,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Configurez un éditeur externe pour modifier vos modèles HTML et CSS. Je recommande un éditeur HTML en texte brut avec coloration syntaxique, comme Notepad++ ou Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Facultatif) liste entre guillemets, séparée par des virgules et affichée sous forme de boutons radio. La valeur par défaut est recherchée sans tenir compte de la casse et sélectionnée si elle est trouvée. Sans liste de choix, elle apparaît dans un champ modifiable."
+  },
+  "prompt.help.confirm": {
+    "message": "Cliquez sur OK pour confirmer votre réponse. Cliquez sur Annuler ou fermez la fenêtre pour abandonner l’insertion des données."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Facultatif) valeur initiale entre guillemets, ou mot-clé littéral {clipboard} pour lire le presse-papiers. Utilisez {\"\"} pour ne définir aucune valeur initiale ni présélection."
+  },
+  "prompt.help.description": {
+    "message": "Demande un texte libre ou un choix lors de l’insertion d’un modèle ou d’un Smart Fragment. Cette fonction Pro peut être testée pendant la période d’essai."
+  },
+  "prompt.help.enterTea": {
+    "message": "Saisissez la variété de thé"
+  },
+  "prompt.help.explanation": {
+    "message": "Texte obligatoire entre guillemets expliquant ce que l’utilisateur doit saisir ou sélectionner."
+  },
+  "prompt.help.selectTea": {
+    "message": "Sélectionnez un thé"
+  },
+  "prompt.help.title": {
+    "message": "Saisies interactives"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Facultatif) dernier paramètre, sans guillemets. Copie la réponse confirmée au lieu de l’insérer ; les variables `%clipboard%` suivantes peuvent être utilisées pour insérer cette réponse dans le courriel."
+  },
   "prompt.switchDomainLicense": {
     "message": "Passer à une licence de Domaine ?"
   },

@@ -147,6 +147,12 @@ async function initHTML() {
   let fs = document.getElementById("tagFormatString");
   replacePlaceholdersWithSpans(fs, ["$label$", "$color$"], ["paramLiteral", "paramLiteral"]);
 
+  document.querySelectorAll("#prompt-content .promptHelpText").forEach((element) => {
+    replacePlaceholdersWithSpans(element,
+      ["{clipboard}", '{""}'],
+      ["paramLiteral", "paramLiteral"]);
+  });
+
   // style lists of literal parameters
   document.querySelectorAll(".literalParamList").forEach((container) => {
     // Only wrap text nodes, skip existing spans

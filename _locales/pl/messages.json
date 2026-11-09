@@ -1403,6 +1403,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Skonfiguruj zewnętrzny edytor do edycji szablonów HTML i CSS. Zalecam używanie edytora HTML pracującego na zwykłym tekście i obsługującego podświetlanie składni, takiego jak Notepad++ lub Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Opcjonalnie) lista w cudzysłowie rozdzielona przecinkami, wyświetlana jako przyciski opcji. Wartość domyślna jest dopasowywana bez rozróżniania wielkości liter i zaznaczana, jeśli zostanie znaleziona. Bez listy opcji pojawia się w edytowalnym polu."
+  },
+  "prompt.help.confirm": {
+    "message": "Kliknij OK, aby potwierdzić odpowiedź. Kliknij Anuluj lub zamknij okno, aby przerwać wstawianie danych."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Opcjonalnie) wartość początkowa w cudzysłowie lub dosłowne słowo kluczowe {clipboard}, aby odczytać schowek. Użyj {\"\"}, aby nie ustawiać wartości początkowej ani wstępnego wyboru."
+  },
+  "prompt.help.description": {
+    "message": "Prosi o wpisanie tekstu lub dokonanie wyboru podczas wstawiania szablonu lub Smart Fragmentu. Tę funkcję Pro można przetestować w okresie próbnym."
+  },
+  "prompt.help.enterTea": {
+    "message": "Wpisz odmianę herbaty"
+  },
+  "prompt.help.explanation": {
+    "message": "Wymagany tekst w cudzysłowie wyjaśniający, co użytkownik ma wpisać lub wybrać."
+  },
+  "prompt.help.selectTea": {
+    "message": "Wybierz herbatę"
+  },
+  "prompt.help.title": {
+    "message": "Interaktywne monity"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Opcjonalnie) ostatni parametr bez cudzysłowu. Kopiuje potwierdzoną odpowiedź zamiast ją wstawiać; kolejne zmienne `%clipboard%` można wykorzystać do wstawienia tej odpowiedzi do wiadomości e-mail."
+  },
   "prompt.switchDomainLicense": {
     "message": "Przełączyć do strony licencji?"
   },

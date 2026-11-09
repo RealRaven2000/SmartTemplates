@@ -899,7 +899,15 @@ SmartTemplate4.classSmartTemplate = function() {
           });
         },
         readClipboard: () => util.clipboardRead(["text", "plain"], { strictText: true }),
-        allowFeature: feature => util.useFeature(feature),
+        allowFeature(feature) {
+          const allowed = util.useFeature(feature);
+          if (feature === "prompt" && util.premiumFeatures?.includes("prompt")) {
+            // Fragment processing and cancelled/blocked prompts do not reach the
+            // template's final licensing report. Show their allowance here too.
+            void util.popupLicenseNotification(["prompt"], true, true);
+          }
+          return allowed;
+        },
       });
     } catch (error) {
       error.smartTemplatesPrompt = true;

@@ -1397,6 +1397,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Stel een externe editor in om uw HTML- en CSS-sjablonen te bewerken. Ik raad een HTML-editor voor platte tekst met syntaxisaccentuering aan, zoals Notepad++ of Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Optioneel) een door komma’s gescheiden lijst tussen aanhalingstekens, weergegeven als keuzerondjes. De standaardwaarde wordt hoofdletterongevoelig gezocht en geselecteerd als deze wordt gevonden. Zonder keuzes wordt de standaardwaarde in een bewerkbaar veld getoond."
+  },
+  "prompt.help.confirm": {
+    "message": "Klik op OK om uw antwoord te bevestigen. Klik op Annuleren of sluit het venster om het invoegen van gegevens af te breken."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Optioneel) beginwaarde tussen aanhalingstekens, of het letterlijke sleutelwoord {clipboard} om het klembord te lezen. Gebruik {\"\"} voor geen beginwaarde of voorselectie."
+  },
+  "prompt.help.description": {
+    "message": "Vraagt om vrije tekst of een keuze bij het invoegen van een sjabloon of Smart Fragment. Deze Pro-functie kan tijdens de proefperiode worden getest."
+  },
+  "prompt.help.enterTea": {
+    "message": "Voer de theesoort in"
+  },
+  "prompt.help.explanation": {
+    "message": "Verplichte tekst tussen aanhalingstekens die uitlegt wat de gebruiker moet invoeren of selecteren."
+  },
+  "prompt.help.selectTea": {
+    "message": "Selecteer een thee"
+  },
+  "prompt.help.title": {
+    "message": "Interactieve invoer"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Optioneel) laatste parameter zonder aanhalingstekens. Kopieert het bevestigde antwoord in plaats van het in te voegen; volgende `%clipboard%`-variabelen kunnen worden gebruikt om dit antwoord in de e-mail in te voegen."
+  },
   "prompt.switchDomainLicense": {
     "message": "Wisselen naar domeinlicentie?"
   },

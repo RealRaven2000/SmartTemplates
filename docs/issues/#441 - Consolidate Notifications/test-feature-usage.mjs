@@ -21,6 +21,27 @@ function fixture() {
 }
 const unlicensed = { status: "Empty", keyType: 0, trialDays: 0 };
 
+test("prompt is Pro-only with general-trial access and an independent 12-day evaluation", () => {
+  const f = fixture(), check = f.load();
+  assert.equal(check("prompt", { ...unlicensed, trialDays: 1 }, true).trial, true);
+  assert.equal(check("prompt", { status: "Valid", keyType: 0, trialDays: 0 }, true).covered, true);
+  assert.equal(f.values.size, 0);
+  const standard = { status: "Valid", keyType: 2, trialDays: 28 };
+  for (let day = 1; day <= 12; day++) {
+    const result = check("prompt", standard, true);
+    assert.equal(result.tier, "pro");
+    assert.equal(result.covered, false);
+    assert.equal(result.trial, false);
+    assert.equal(result.allowed, true);
+    assert.equal(result.remaining, 12 - day);
+    assert.equal(check("prompt", standard, true).remaining, 12 - day);
+    f.nextDay();
+  }
+  assert.equal(check("prompt", standard, true).allowed, false);
+  assert.equal(check("clipboard", standard, false).remaining, 12);
+  assert.equal(check("prompt", { status: "Valid", keyType: 0, trialDays: 0 }, true).allowed, true);
+});
+
 test("general trial and covered license usage do not create counters", () => {
   const f = fixture(), check = f.load();
   assert.equal(check("file", { ...unlicensed, trialDays: 1 }, true).remaining, 12);

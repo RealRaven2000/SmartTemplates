@@ -1400,6 +1400,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Configure um editor externo para editar seus modelos HTML e CSS. Recomendo um editor HTML de texto simples com destaque de sintaxe, como o Notepad++ ou o Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Opcional) lista entre aspas, separada por vírgulas e exibida como botões de opção. O valor padrão é procurado sem diferenciar maiúsculas de minúsculas e selecionado se for encontrado. Sem opções, é exibido em um campo editável."
+  },
+  "prompt.help.confirm": {
+    "message": "Clique em OK para confirmar sua resposta. Clique em Cancelar ou feche a janela para interromper a inserção de dados."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Opcional) valor inicial entre aspas, ou a palavra-chave literal {clipboard} para ler a área de transferência. Use {\"\"} para não definir um valor inicial nem uma pré-seleção."
+  },
+  "prompt.help.description": {
+    "message": "Solicita texto livre ou uma escolha ao inserir um modelo ou Smart Fragment. Este recurso Pro pode ser testado durante o período de avaliação."
+  },
+  "prompt.help.enterTea": {
+    "message": "Digite a variedade de chá"
+  },
+  "prompt.help.explanation": {
+    "message": "Texto obrigatório entre aspas que explica o que o usuário deve digitar ou selecionar."
+  },
+  "prompt.help.selectTea": {
+    "message": "Selecione um chá"
+  },
+  "prompt.help.title": {
+    "message": "Solicitações interativas"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Opcional) último parâmetro sem aspas. Copia a resposta confirmada em vez de inseri-la; as variáveis `%clipboard%` seguintes podem ser usadas para inserir essa resposta no email."
+  },
   "prompt.switchDomainLicense": {
     "message": "Mudar para a Licença de Domínio?"
   },

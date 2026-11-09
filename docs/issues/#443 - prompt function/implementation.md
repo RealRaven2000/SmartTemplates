@@ -8,7 +8,7 @@ The renderer keeps its UI in a shadow root on a host outside the message body, f
 
 Prompt arguments are validated before opening dialogs. Answers and following plain `%clipboard%` references are protected through the template processing passes and restored as escaped text afterwards. Clipboard writes are staged until all prompts in the source have been confirmed. Main template and custom quote-header prompts are prepared together before removing the existing template. Signature prompts are resolved before signature removal.
 
-Prompting itself currently has no separate license restriction. Clipboard reads and writes use the existing respective feature allowances. A final license tier for prompting remains a product decision.
+Prompting is registered as a Pro feature with the existing general trial and a separate 12-active-day evaluation allowance. Valid Pro licenses do not consume the allowance; Standard licenses use the limited Pro evaluation. Repeated prompts on the same local calendar day consume only one use. Clipboard reads and writes retain their existing respective feature allowances. A blocked prompt aborts insertion before displaying a dialog or reading/writing the clipboard; the existing composer licensing notification explains its allowance or blocked status.
 
 ## Automated verification
 
@@ -19,6 +19,7 @@ Run from the repository root:
 ```powershell
 node --test 'docs/issues/#443 - prompt function/test-prompt.mjs'
 node --test 'docs/issues/#443 - prompt function/test-compose-prompts.mjs'
+node --test 'docs/issues/#443 - prompt function/test-prompt-help.mjs'
 ```
 
 Tests cover argument parsing, escaping, list choices, quoted keywords, malformed input, sequential clipboard values, cancellation, clipboard failures and feature blocking, custom answers, the compose text-processing entry point, composer routing, startup readiness, stale answers, content-script reinjection, UI isolation, and editor selection restoration. The DOM harness does not replace actual Thunderbird testing.

@@ -1684,6 +1684,33 @@
   "notification.usedLastTemplate": {
     "message": "Se está reutilizando la última plantilla externa: {template}{br}💾 según la configuración global:"
   },
+  "prompt.help.choices": {
+    "message": "(Opcional) lista entre comillas, separada por comas y mostrada como botones de opción. El valor predeterminado se busca sin distinguir mayúsculas de minúsculas y se selecciona si se encuentra. Sin opciones, se muestra en un campo editable."
+  },
+  "prompt.help.confirm": {
+    "message": "Pulse Aceptar para confirmar su respuesta. Pulse Cancelar o cierre la ventana para cancelar la inserción de datos."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Opcional) valor inicial entre comillas, o la palabra clave literal {clipboard} para leer el portapapeles. Use {\"\"} para no tener valor inicial ni selección previa."
+  },
+  "prompt.help.description": {
+    "message": "Solicita texto libre o una selección al insertar una plantilla o un Smart Fragment. Esta función Pro se puede probar durante el período de prueba."
+  },
+  "prompt.help.enterTea": {
+    "message": "Introduzca la variedad de té"
+  },
+  "prompt.help.explanation": {
+    "message": "Texto obligatorio entre comillas que explica lo que el usuario debe introducir o seleccionar."
+  },
+  "prompt.help.selectTea": {
+    "message": "Seleccione un té"
+  },
+  "prompt.help.title": {
+    "message": "Solicitudes interactivas"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Opcional) parámetro final sin comillas. Copia la respuesta confirmada en lugar de insertarla; las variables `%clipboard%` posteriores se pueden usar para insertar esta respuesta en el correo."
+  },
   "prompt.switchDomainLicense": {
     "message": "¿Cambiar a Licencia de Dominio?"
   },

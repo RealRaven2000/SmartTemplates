@@ -1424,6 +1424,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Määritä ulkoinen editori HTML- ja CSS-mallien muokkaamiseen. Suosittelen syntaksin korostusta tukevaa pelkkään tekstiin perustuvaa HTML-editoria, kuten Notepad++ tai Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Valinnainen) lainausmerkeissä oleva pilkuin erotettu luettelo, joka näytetään valintanappeina. Oletusarvoa etsitään kirjainkoosta riippumatta ja se valitaan, jos se löytyy. Ilman vaihtoehtoja oletusarvo näytetään muokattavassa kentässä."
+  },
+  "prompt.help.confirm": {
+    "message": "Vahvista vastaus napsauttamalla OK. Peruuta tietojen lisääminen napsauttamalla Peruuta tai sulkemalla ikkuna."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Valinnainen) lainausmerkeissä oleva alkuarvo tai avainsana {clipboard}, joka lukee leikepöydän. Käytä arvoa {\"\"}, jos et halua alkuarvoa tai esivalintaa."
+  },
+  "prompt.help.description": {
+    "message": "Pyytää vapaata tekstiä tai valintaa mallia tai Smart Fragmentia lisättäessä. Tätä Pro-toimintoa voi kokeilla kokeilujakson aikana."
+  },
+  "prompt.help.enterTea": {
+    "message": "Anna teelajike"
+  },
+  "prompt.help.explanation": {
+    "message": "Pakollinen lainausmerkeissä oleva teksti, joka selittää, mitä käyttäjän tulee kirjoittaa tai valita."
+  },
+  "prompt.help.selectTea": {
+    "message": "Valitse tee"
+  },
+  "prompt.help.title": {
+    "message": "Vuorovaikutteiset kyselyt"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Valinnainen) viimeinen parametri ilman lainausmerkkejä. Kopioi vahvistetun vastauksen lisäämisen sijaan; seuraavilla `%clipboard%`-muuttujilla vastauksen voi lisätä sähköpostiin."
+  },
   "prompt.switchDomainLicense": {
     "message": "Vaihda toimialuelisenssiin (domain)?"
   },

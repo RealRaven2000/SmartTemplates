@@ -1412,6 +1412,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "設定外部編輯器以編輯 HTML 和 CSS 範本。建議使用支援語法醒目提示的純文字 HTML 編輯器，例如 Notepad++ 或 Visual Studio Code。"
   },
+  "prompt.help.choices": {
+    "message": "(選填) 引號內以逗號分隔的清單，以展開的單選按鈕顯示。預設值不區分大小寫進行比對，找到後自動選取。未提供選項時，預設值顯示在可編輯的文字欄位中。"
+  },
+  "prompt.help.confirm": {
+    "message": "按一下「確定」確認答案。按一下「取消」或關閉視窗可中止資料插入。"
+  },
+  "prompt.help.defaultValue": {
+    "message": "(選填) 引號內的初始值，或使用字面關鍵字 {clipboard} 讀取剪貼簿。使用 {\"\"} 表示沒有初始值或預選項目。"
+  },
+  "prompt.help.description": {
+    "message": "插入範本或 Smart Fragment 時，要求輸入自由文字或從選項中選擇。這是 Pro 功能，可在試用期間測試。"
+  },
+  "prompt.help.enterTea": {
+    "message": "輸入茶葉品種"
+  },
+  "prompt.help.explanation": {
+    "message": "必填的引號內文字，用於說明使用者應輸入或選擇什麼。"
+  },
+  "prompt.help.selectTea": {
+    "message": "選擇一種茶"
+  },
+  "prompt.help.title": {
+    "message": "互動式輸入"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(選填) 不含引號的最後一個參數。複製確認後的答案而非插入；後續的 `%clipboard%` 變數可用於將此答案插入電子郵件。"
+  },
   "prompt.switchDomainLicense": {
     "message": "切換到域許可證？"
   },

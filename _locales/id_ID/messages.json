@@ -1208,6 +1208,33 @@
   "notification.usedLastTemplate": {
     "message": "Menggunakan kembali template eksternal terakhir: {template}{br}💾 sesuai pengaturan global:"
   },
+  "prompt.help.choices": {
+    "message": "(Opsional) daftar dalam tanda kutip yang dipisahkan koma dan ditampilkan sebagai tombol radio. Nilai bawaan dicocokkan tanpa membedakan huruf besar dan kecil, lalu dipilih jika ditemukan. Tanpa pilihan, nilai bawaan ditampilkan dalam kolom yang dapat diedit."
+  },
+  "prompt.help.confirm": {
+    "message": "Klik OK untuk mengonfirmasi jawaban. Klik Batal atau tutup jendela untuk membatalkan penyisipan data."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Opsional) nilai awal dalam tanda kutip, atau kata kunci literal {clipboard} untuk membaca papan klip. Gunakan {\"\"} agar tidak ada nilai awal atau pilihan awal."
+  },
+  "prompt.help.description": {
+    "message": "Meminta teks bebas atau pilihan saat menyisipkan templat atau Smart Fragment. Fitur Pro ini dapat dicoba selama masa uji coba."
+  },
+  "prompt.help.enterTea": {
+    "message": "Masukkan jenis teh"
+  },
+  "prompt.help.explanation": {
+    "message": "Teks wajib dalam tanda kutip yang menjelaskan apa yang harus dimasukkan atau dipilih pengguna."
+  },
+  "prompt.help.selectTea": {
+    "message": "Pilih teh"
+  },
+  "prompt.help.title": {
+    "message": "Permintaan interaktif"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Opsional) parameter terakhir tanpa tanda kutip. Menyalin jawaban yang dikonfirmasi alih-alih menyisipkannya; variabel `%clipboard%` berikutnya dapat digunakan untuk menyisipkan jawaban ini ke dalam email."
+  },
   "prompt.switchDomainLicense": {
     "message": "Beralih ke Lisensi Domain?"
   },

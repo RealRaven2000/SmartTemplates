@@ -1,7 +1,7 @@
 /* global SmartTemplatesUsage */
 (function (usage) {
   const standard = ["file", "style", "dateformat"];
-  const pro = ["preheader", "snippetSelection", "clipboard", "toclipboard", "tags",
+  const pro = ["preheader", "snippetSelection", "clipboard", "toclipboard", "prompt", "tags",
     "deleteForwardedBody", "attach", "conditionalText", "X:=calculated", "X:=timezone",
     "matchTextFromSubject", "matchTextFromBody", "deleteText", "replaceText",
     "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",

@@ -1421,6 +1421,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Konfigurera en extern redigerare för att redigera dina HTML- och CSS-mallar. Jag rekommenderar en HTML-redigerare för ren text med syntaxmarkering, till exempel Notepad++ eller Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Valfritt) en kommaseparerad lista inom citattecken som visas som alternativknappar. Standardvärdet söks utan hänsyn till stora och små bokstäver och väljs om det hittas. Utan alternativ visas det i ett redigerbart fält."
+  },
+  "prompt.help.confirm": {
+    "message": "Klicka på OK för att bekräfta svaret. Klicka på Avbryt eller stäng fönstret för att avbryta infogningen av data."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Valfritt) startvärde inom citattecken, eller det bokstavliga nyckelordet {clipboard} för att läsa urklipp. Använd {\"\"} för inget startvärde eller förval."
+  },
+  "prompt.help.description": {
+    "message": "Ber om fritext eller ett val när en mall eller ett Smart Fragment infogas. Denna Pro-funktion kan testas under provperioden."
+  },
+  "prompt.help.enterTea": {
+    "message": "Ange tesorten"
+  },
+  "prompt.help.explanation": {
+    "message": "Obligatorisk text inom citattecken som förklarar vad användaren ska ange eller välja."
+  },
+  "prompt.help.selectTea": {
+    "message": "Välj ett te"
+  },
+  "prompt.help.title": {
+    "message": "Interaktiva frågor"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Valfritt) sista parameter utan citattecken. Kopierar det bekräftade svaret i stället för att infoga det; efterföljande `%clipboard%`-variabler kan användas för att infoga svaret i e-postmeddelandet."
+  },
   "prompt.switchDomainLicense": {
     "message": "Byt till domänlicens?"
   },

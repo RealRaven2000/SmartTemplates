@@ -1421,6 +1421,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Configureu un editor extern per editar les plantilles HTML i CSS. Recomano utilitzar un editor HTML de text pla amb ressaltat de sintaxi, com ara Notepad++ o Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Opcional) llista entre cometes, separada per comes i mostrada com a botons d’opció. El valor per defecte es cerca sense distingir majúscules de minúscules i se selecciona si es troba. Sense opcions, es mostra en un camp editable."
+  },
+  "prompt.help.confirm": {
+    "message": "Feu clic a D’acord per confirmar la resposta. Feu clic a Cancel·la o tanqueu la finestra per cancel·lar la inserció de dades."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Opcional) valor inicial entre cometes, o la paraula clau literal {clipboard} per llegir el porta-retalls. Feu servir {\"\"} per no tenir valor inicial ni selecció prèvia."
+  },
+  "prompt.help.description": {
+    "message": "Demana text lliure o una selecció en inserir una plantilla o un Smart Fragment. Aquesta funció Pro es pot provar durant el període de prova."
+  },
+  "prompt.help.enterTea": {
+    "message": "Introduïu la varietat de te"
+  },
+  "prompt.help.explanation": {
+    "message": "Text obligatori entre cometes que explica què ha d’introduir o seleccionar l’usuari."
+  },
+  "prompt.help.selectTea": {
+    "message": "Seleccioneu un te"
+  },
+  "prompt.help.title": {
+    "message": "Entrades interactives"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Opcional) paràmetre final sense cometes. Copia la resposta confirmada en lloc d’inserir-la; les variables `%clipboard%` següents es poden utilitzar per inserir aquesta resposta al correu."
+  },
   "prompt.switchDomainLicense": {
     "message": "Canviar a la llicència de domini?"
   },

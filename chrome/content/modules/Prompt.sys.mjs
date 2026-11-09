@@ -114,9 +114,12 @@ export async function preparePrompts(sources, { ask, readClipboard, allowFeature
     }
     return tokens;
   });
-  // Check all clipboard entitlements before asking or reading any data.
+  // Check prompting and clipboard entitlements before asking or reading any data.
   for (const tokens of parsed) {
     for (const token of tokens) {
+      if (!token.clipboard && !allowFeature("prompt")) {
+        throw new PromptCancelled();
+      }
       if ((token.fromClipboard || token.clipboard) && !allowFeature("clipboard")) {
         throw new PromptCancelled();
       }

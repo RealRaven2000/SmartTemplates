@@ -1376,6 +1376,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Configura un editor esterno per modificare i tuoi modelli HTML e CSS. Consiglio un editor HTML di testo semplice con evidenziazione della sintassi, come Notepad++ o Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Facoltativo) elenco tra virgolette, separato da virgole e visualizzato come pulsanti di scelta. Il valore predefinito viene cercato senza distinguere maiuscole e minuscole e selezionato se trovato. Senza scelte, viene mostrato in un campo modificabile."
+  },
+  "prompt.help.confirm": {
+    "message": "Fare clic su OK per confermare la risposta. Fare clic su Annulla o chiudere la finestra per interrompere l’inserimento dei dati."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Facoltativo) valore iniziale tra virgolette, oppure la parola chiave letterale {clipboard} per leggere gli appunti. Usare {\"\"} per non impostare un valore iniziale o una preselezione."
+  },
+  "prompt.help.description": {
+    "message": "Richiede testo libero o una scelta quando si inserisce un modello o uno Smart Fragment. Questa funzione Pro può essere provata durante il periodo di prova."
+  },
+  "prompt.help.enterTea": {
+    "message": "Inserisci la varietà di tè"
+  },
+  "prompt.help.explanation": {
+    "message": "Testo obbligatorio tra virgolette che spiega cosa deve inserire o selezionare l’utente."
+  },
+  "prompt.help.selectTea": {
+    "message": "Seleziona un tè"
+  },
+  "prompt.help.title": {
+    "message": "Richieste interattive"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Facoltativo) ultimo parametro senza virgolette. Copia la risposta confermata anziché inserirla; le successive variabili `%clipboard%` possono essere usate per inserire questa risposta nell’email."
+  },
   "prompt.switchDomainLicense": {
     "message": "Si vuol passare alla licenza di dominio?"
   },

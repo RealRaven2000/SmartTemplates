@@ -1385,6 +1385,33 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "HTML および CSS テンプレートを編集するための外部エディターを設定します。Notepad++ や Visual Studio Code など、構文の強調表示に対応したプレーンテキストの HTML エディターをお勧めします。"
   },
+  "prompt.help.choices": {
+    "message": "(省略可) 引用符で囲まれたカンマ区切りのリストで、ラジオボタンとして表示されます。既定値は大文字と小文字を区別せずに照合され、一致すれば選択されます。選択肢がない場合は、編集可能な欄に既定値が表示されます。"
+  },
+  "prompt.help.confirm": {
+    "message": "OK をクリックして回答を確定します。キャンセルをクリックするかウィンドウを閉じると、データの挿入を中止します。"
+  },
+  "prompt.help.defaultValue": {
+    "message": "(省略可) 引用符で囲まれた初期値、またはクリップボードを読み取るリテラルキーワード {clipboard} です。初期値や事前選択を指定しない場合は {\"\"} を使用します。"
+  },
+  "prompt.help.description": {
+    "message": "テンプレートや Smart Fragment の挿入時に、自由なテキスト入力または選択を求めます。この Pro 機能は試用期間中にお試しいただけます。"
+  },
+  "prompt.help.enterTea": {
+    "message": "お茶の種類を入力してください"
+  },
+  "prompt.help.explanation": {
+    "message": "入力または選択する内容を説明する、引用符で囲まれた必須のテキストです。"
+  },
+  "prompt.help.selectTea": {
+    "message": "お茶を選択してください"
+  },
+  "prompt.help.title": {
+    "message": "対話式入力"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(省略可) 引用符で囲まない最後のパラメーターです。確定した回答を挿入する代わりにコピーし、後続の `%clipboard%` 変数を使用して、その回答をメールに挿入できます。"
+  },
   "prompt.switchDomainLicense": {
     "message": "ドメインライセンスに切り替えますか？"
   },

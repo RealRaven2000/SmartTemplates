@@ -1478,6 +1478,37 @@
   "prompt.fileTemplates.editor.setup": {
     "message": "Set up an external editor to edit your html and css templates. I recommend using a text only HTML editor with syntax highlighting, such as notepad++ or Visual Studio Code."
   },
+  "prompt.help.choices": {
+    "message": "(Optional) quoted, comma-separated list displayed as expanded radio buttons. The default is matched case-insensitively and selected if found. Without choices, the prompt shows the default value in an editable field."
+  },
+  "prompt.help.confirm": {
+    "message": "Click OK to confirm your answer. Click Cancel or close the window to abort the insertion of data."
+  },
+  "prompt.help.defaultValue": {
+    "message": "(Optional) quoted initial value, or the literal keyword {clipboard} to read the clipboard. Use {\"\"} for no initial value or preselection.",
+    "description": "Keep brace markers unchanged: {clipboard} and {\"\"} are literal parameters; {%clipboard%} is a SmartTemplates variable."
+  },
+  "prompt.help.description": {
+    "message": "Ask for free text entry or choose from a selection when inserting a template or Smart Fragment. This is a Pro feature, which can be tested in the trial period."
+  },
+  "prompt.help.enterTea": {
+    "message": "Enter the tea variety",
+    "description": "Text inside a working %prompt()% example."
+  },
+  "prompt.help.explanation": {
+    "message": "Required quoted text explaining what the user should enter or select."
+  },
+  "prompt.help.selectTea": {
+    "message": "Select a tea",
+    "description": "Text inside a working %prompt()% example."
+  },
+  "prompt.help.title": {
+    "message": "Interactive prompts"
+  },
+  "prompt.help.toclipboard": {
+    "message": "(Optional) unquoted final parameter. Copies the confirmed answer instead of inserting it; subsequent `%clipboard%` variables can be used to insert this answer in the email.",
+    "description": "Use paired backticks for inline SmartTemplates variables, such as `%clipboard%` - requires localizedFormatting class. Do not translate variable names or add HTML markup."
+  },
   "prompt.switchDomainLicense": {
     "message": "Switch to Domain License?"
   },

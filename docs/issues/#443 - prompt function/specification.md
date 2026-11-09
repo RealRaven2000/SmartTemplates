@@ -50,7 +50,7 @@ To reuse the selected tea variety throughout a fragment, put the clipboard promp
 - Resolve a `clipboard` default when its prompt is reached, using the clipboard value in effect at that source position, including any earlier confirmed `toclipboard` prompt. An empty clipboard supplies an empty initial value; a clipboard read failure reports an error and aborts insertion without changing the message or clipboard. Combining `clipboard` and `toclipboard` lets the user edit the clipboard contents before reusing them.
 - Treat answers as literal text, never as executable SmartTemplates variables or HTML. Escape inserted answers for their HTML context; preserve plain text for clipboard output.
 - Validate prompt syntax before showing dialogs or changing the message or clipboard. Report malformed arguments instead of silently producing incomplete content.
-- Apply the existing clipboard read entitlement rules to a `clipboard` default and the existing clipboard write entitlement rules to `toclipboard`. The licensing tier for prompting itself remains to be decided.
+- Prompting is a Pro feature. Apply the existing general trial and per-feature evaluation allowance (12 active days after the trial; at most one use charged per local calendar day). Standard licenses do not cover prompting. Apply the existing clipboard read entitlement rules to a `clipboard` default and the existing clipboard write entitlement rules to `toclipboard`.
 
 ## Acceptance checks
 
