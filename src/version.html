@@ -239,14 +239,14 @@ permalink: version.html
       Version 4.22 - Work in Progress</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">140.0 - 161.*</span>
+			<span class="thunderbird">140.0 - 162.*</span>
 		</span>
   </h4>
   <ul>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li>
       <strong>Interactive prompts in templates and Smart Fragments (Pro).</strong>
-      The new <a href="variables.html#prompt"><code>%prompt()%</code> function</a> asks for free text
+      The new <code>%prompt()%</code> function asks for free text
       or presents a list of radio-button choices directly in the composer.
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/443">[issue 443]</a>
       <p>
@@ -258,7 +258,6 @@ permalink: version.html
       </p>
       <p><code>%prompt("Select a tea","","Darjeeling,Ceylon,Assam",<span class="paramLiteral">toclipboard</span>)%</code></p>
       <p>
-        Prompts support light and dark themes, adapt to smaller composer sizes, and can be confirmed with Enter.
         This Pro feature is also available during the trial and through the limited evaluation allowance.
         See the <a href="variables.html#prompt">parameters and examples</a> for free-text and clipboard defaults.
       </p>
@@ -279,9 +278,11 @@ permalink: version.html
       Features covered by your license do not consume an allowance.
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/441">[issue 441]</a>
       <p>
-        The licensing bubble explains how uses are counted and shows the remaining allowance beside each feature.
+        The licensing bubble explains how uses are counted and shows the remaining allowance 
+        beside each feature.
         When an allowance is exhausted, a pink notification highlights the blocked features.
-        Blocked template variables retain their original tokens; a blocked prompt cancels insertion before opening a dialog.
+        Blocked template variables retain their original tokens; a blocked prompt cancels 
+        insertion before opening a dialog.
       </p>
     </li>
     <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
