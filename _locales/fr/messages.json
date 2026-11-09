@@ -1391,6 +1391,9 @@
   "premiumConfig": {
     "message": "Fonctionnalités Premium"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Saisie"
+  },
   "prompt.email": {
     "message": "Indiquer une adresse électronique"
   },

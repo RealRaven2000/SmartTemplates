@@ -1403,6 +1403,9 @@
   "pricing.title": {
     "message": "Preus"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Entrada"
+  },
   "prompt.email": {
     "message": "Introduïu una adreça de correu electrònic"
   },

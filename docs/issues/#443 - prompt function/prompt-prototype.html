@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SmartTemplates prompt — styling prototype</title>
+    <!-- Share the actual prompt styles so changes can be previewed by refreshing. -->
+    <link rel="stylesheet" href="../../../html/prompt/prompt.css">
+    <style>
+      :root {
+        color-scheme: light dark;
+        font: menu;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: color-mix(in srgb, CanvasText 20%, Canvas);
+      }
+
+      /* A static open dialog needs no extension APIs or script to preview it. */
+      dialog {
+        position: relative;
+        margin: 16px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <dialog open aria-labelledby="explanation">
+      <div class="prompt-header">
+        <img src="../../../chrome/content/skin/icon32x32.png" alt="SmartTemplates">
+        <span class="prompt-caption">SmartTemplates · Prompt</span>
+        <button class="close" type="button" title="Cancel" aria-label="Cancel">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <form>
+        <label id="explanation">Select the add-on</label>
+        <div id="choices" role="radiogroup" aria-labelledby="explanation">
+          <label class="choice">
+            <input type="radio" name="prompt-choice" value="quickFilters" checked required>
+            <span>quickFilters</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="prompt-choice" value="QuickFolders" required>
+            <span>QuickFolders</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="prompt-choice" value="SmartTemplates" required>
+            <span>SmartTemplates</span>
+          </label>
+        </div>
+        <div class="buttons">
+          <!-- Buttons are intentionally inert in this static styling prototype. -->
+          <button class="primary" type="button">OK</button>
+          <button type="button">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

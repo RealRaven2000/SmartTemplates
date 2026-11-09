@@ -4,6 +4,7 @@
 */
 import { Preferences } from "./scripts/preferences.mjs";
 import { createComposeNotifications } from "./html/compose-notifications/controller.mjs";
+import { createComposePrompts } from "./scripts/prompt/controller.mjs";
 import {Licenser, licenseValidationDescription} from "./scripts/Licenser.mjs.js";
 import * as webExtensionStorageEditor from "./scripts/webExtensionStorageEditor.mjs";
 
@@ -19,6 +20,7 @@ console.log(SmartTemplates, stProcess);
 SmartTemplates.Util.log("SmartTemplates Background started");
 
 var currentLicense;
+const composePrompts = createComposePrompts(browser);
 const composeNotifications = createComposeNotifications(browser, {
   async getFeatureUsage(features) {
     const license = currentLicense.info;
@@ -1727,6 +1729,8 @@ async function main() {
     }
     try {
       switch (data.func) {
+          case "templatePrompt":
+            return await composePrompts.show(data);
         case "composeLicenseNotification":
           return await composeNotifications.show(data);
         case "UIListenersReady":
@@ -2054,6 +2058,7 @@ async function main() {
    * the parameter of startListening(). This object also contains an extension member.
    */
 
+  await composePrompts.start();
   await composeNotifications.start();
   messenger.WindowListener.startListening();
 

@@ -1616,12 +1616,22 @@ SmartTemplate4.fileTemplates = {
 </style>
         `;
       } else {
-        code = await SmartTemplate4.smartTemplate.getProcessedText(
-          html,
-          idkey,
-          SmartTemplate4.Util.getComposeType(),
-          ignoreHTML
-        );
+        try {
+          code = await SmartTemplate4.smartTemplate.getProcessedText(
+            html,
+            idkey,
+            SmartTemplate4.Util.getComposeType(),
+            ignoreHTML
+          );
+        } catch (error) {
+          if (error.name !== "PromptCancelled") {
+            SmartTemplate4.Util.logException("Fragment processing failed", error);
+            Services.prompt.alert(window, "SmartTemplates", error.message);
+          }
+          return;
+        } finally {
+          flags.filePaths.pop();
+        }
       }
 
       // sanitize inserted markup: remove duplicated style blocks
@@ -1636,7 +1646,7 @@ SmartTemplate4.fileTemplates = {
       
       // we should probably place the cursor at the end of the inserted HTML afterwards!
 
-      let popped = flags.filePaths.pop();
+      let popped = isFormatCSS ? flags.filePaths.pop() : theFileTemplate.path;
       SmartTemplate4.Util.logDebugOptional(
         "fileTemplates",
         `insertFileEntryInComposer: Removed file from template stack: ${popped}`

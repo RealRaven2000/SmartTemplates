@@ -1406,6 +1406,9 @@
   "pricing.title": {
     "message": "Hinnoittelu"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Syöte"
+  },
   "prompt.email": {
     "message": "Syötä sähköpostiosoite"
   },

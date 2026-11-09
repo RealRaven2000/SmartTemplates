@@ -1,0 +1,175 @@
+:host {
+  all: initial;
+  color-scheme: light dark;
+}
+
+dialog {
+  box-sizing: border-box;
+  font: 16px/1.5 "Segoe UI", system-ui, sans-serif;
+  background: Canvas;
+  color: CanvasText;
+  border: 1px solid GrayText;
+  border-radius: 8px;
+  padding: 20px;
+  width: min(482px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  box-shadow: 0 8px 30px #0004;
+}
+
+dialog::backdrop {
+  background: #0003;
+}
+
+.prompt-header {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 10px;
+  margin-block-end: 12px;
+}
+
+.prompt-caption {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 600;
+  color: color-mix(in srgb, CanvasText 70%, Canvas);
+  overflow-wrap: anywhere;
+}
+
+.prompt-header img {
+  width: 40px;
+  height: 40px;
+}
+
+button.close {
+  position: absolute;
+  inset-block-start: 1em;
+  inset-inline-end: 1em;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.close svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+button.close:hover {
+  background: color-mix(in srgb, CanvasText 12%, Canvas);
+}
+
+form {
+  /* Thunderbird's editorContent.css draws green borders around mail form markup,
+     including these controls. Keep that editing aid out of the prompt UI. */
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+label {
+  border: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+input, button {
+  font: inherit;
+  padding: 6px 10px;
+}
+
+input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#choices {
+  display: grid;
+  gap: 8px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.buttons button {
+  min-width: 100px;
+  padding: 7px 13px;
+  background: ButtonFace;
+  color: ButtonText;
+  border: 1px solid GrayText;
+  border-radius: 4px;
+}
+
+.buttons button.primary:not(:disabled) {
+  background: AccentColor;
+  color: AccentColorText;
+  border-color: AccentColor;
+}
+
+.buttons button:disabled {
+  color: GrayText;
+}
+
+@media (max-width: 480px), (max-height: 420px) {
+  dialog {
+    font-size: 15px;
+    line-height: 1.4;
+    padding: 16px;
+  }
+
+  .prompt-header {
+    margin-block-end: 8px;
+  }
+
+  form {
+    gap: 12px;
+  }
+
+  #choices {
+    gap: 4px;
+  }
+
+  .choice {
+    padding-block: 4px;
+  }
+
+  .buttons button {
+    padding-block: 5px;
+  }
+}
+

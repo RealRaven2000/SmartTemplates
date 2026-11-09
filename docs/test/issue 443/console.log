@@ -1,0 +1,39 @@
+Preferences onChanged: 
+Object { settings: {…} }
+​
+settings: Object { allowScripts: true, BackgroundParser: false, breaksAtTop: 0, … }
+​
+<prototype>: Object { … }
+​
+<global>: Window moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/st-background.html
+preferences.mjs:318:17
+
+
+[Storage.set] FAILED: 
+Object { message: "An unexpected error occurred" }
+smartTemplate-storage.js:192:15
+    set chrome://smarttemplate4/content/smartTemplate-storage.js:192
+    openWindowPrompt resource:///actors/PromptParent.sys.mjs:74
+    receiveMessage resource:///actors/PromptParent.sys.mjs:17
+    openPrompt resource://gre/modules/Prompter.sys.mjs:1196
+    openPromptSync resource://gre/modules/Prompter.sys.mjs:1031
+    alert resource://gre/modules/Prompter.sys.mjs:1345
+    alert resource://gre/modules/Prompter.sys.mjs:76
+    insertFileEntryInComposer chrome://smarttemplate4/content/smartTemplate-fileTemplates.js:1629
+
+[SmartTemplates Storage] [2026-11-09T13:42:43.522Z] set() Error details: undefined An unexpected error occurred undefined smartTemplate-storage.js:60:13
+
+
+Pref sync failed: fileTemplates.instantPath 
+Object { message: "An unexpected error occurred" }
+smartTemplate-prefs.js:144:17
+    setValue chrome://smarttemplate4/content/smartTemplate-prefs.js:144
+    openWindowPrompt resource:///actors/PromptParent.sys.mjs:74
+    receiveMessage resource:///actors/PromptParent.sys.mjs:17
+    openPrompt resource://gre/modules/Prompter.sys.mjs:1196
+    openPromptSync resource://gre/modules/Prompter.sys.mjs:1031
+    alert resource://gre/modules/Prompter.sys.mjs:1345
+    alert resource://gre/modules/Prompter.sys.mjs:76
+    insertFileEntryInComposer chrome://smarttemplate4/content/smartTemplate-fileTemplates.js:1629
+
+<Provider> does not support changing `store` on the fly. It is most likely that you see this error because you updated to Redux 2.x and React Redux 2.x which no longer hot reload reducers automatically. See https://github.com/reactjs/react-redux/releases/tag/v2.0.0 for the migration instructions. react-redux.js:881:13

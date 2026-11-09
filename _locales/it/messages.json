@@ -1358,6 +1358,9 @@
   "premiumConfig": {
     "message": "Caratteristiche Premium"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Inserimento"
+  },
   "prompt.email": {
     "message": "Inserire un indirizzo di posta elettronica"
   },

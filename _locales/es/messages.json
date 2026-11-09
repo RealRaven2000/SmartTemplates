@@ -1118,6 +1118,9 @@
   "premiumConfig": {
     "message": "Funcionalidades premium"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Solicitud de datos"
+  },
   "prompt.email": {
     "message": "Introduzca una dirección de correo"
   },

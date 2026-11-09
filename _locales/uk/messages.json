@@ -1413,6 +1413,9 @@
   "pricing.title": {
     "message": "Ціноутворення"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Введення"
+  },
   "prompt.email": {
     "message": "Введіть адресу електронної пошти"
   },

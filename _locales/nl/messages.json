@@ -1379,6 +1379,9 @@
   "pricing.title": {
     "message": "Prijzen"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Invoer"
+  },
   "prompt.email": {
     "message": "Voer een e-mailadres in"
   },

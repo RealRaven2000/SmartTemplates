@@ -1391,6 +1391,9 @@
   "pricing.title": {
     "message": "Ceny"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Zadání"
+  },
   "prompt.email": {
     "message": "Vlož e-mail"
   },

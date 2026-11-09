@@ -1460,6 +1460,9 @@
   "pricing.title": {
     "message": "Pricing"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Prompt"
+  },
   "prompt.email": {
     "message": "Enter an email address"
   },

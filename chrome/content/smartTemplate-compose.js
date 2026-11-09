@@ -251,6 +251,41 @@ SmartTemplate4.classSmartTemplate = function() {
       });
     }
 
+    // Resolve signature prompts before removing any existing signature nodes.
+    if (prefs.getBoolPref("parseSignature") && sigText) {
+      if (!flags.filePaths) {
+        flags.filePaths = [];
+      } // make sure we have a stack for paths!
+      let pathArray = flags.filePaths;
+      // if this has a path - put it on the stack so we can process %file()% variables within
+      if (isSignatureTb && sigPath) {
+        // [issue 240]
+        util.logDebugOptional(
+          "fileTemplates",
+          `extractSignature: Add sig file to template stack: ${sigPath}`
+        );
+        pathArray.push(sigPath);
+      }
+      try {
+        sigText = await getProcessedText(sigText, idKey, composeType, true);
+      } catch (ex) {
+        if (ex.smartTemplatesPrompt) {
+          throw ex;
+        }
+        util.logException(ex, "getProcessedText(signature) failed.");
+      } finally {
+        if (isSignatureTb && sigPath) {
+          let last = pathArray.pop();
+          if (last) {
+            util.logDebugOptional(
+              "fileTemplates",
+              `extractSignature: Removed file from template stack: ${last}`
+            );
+          }
+        }
+      }
+    }
+
     let removed = false;
     // LET'S REMOVE THE SIGNATURE
     //  && signatureDefined
@@ -329,37 +364,6 @@ SmartTemplate4.classSmartTemplate = function() {
         removed = true;
       } catch (ex) {
         util.logException("extractSignature - exception removing signature from blockquote!", ex);
-      }
-    }
-
-    // okay now for the coup de grace!!
-    if (prefs.getBoolPref("parseSignature") && sigText) {
-      if (!flags.filePaths) {
-        flags.filePaths = [];
-      } // make sure we have a stack for paths!
-      let pathArray = flags.filePaths;
-      // if this has a path - put it on the stack so we can process %file()% variables within
-      if (isSignatureTb && sigPath) {
-        // [issue 240]
-        util.logDebugOptional(
-          "fileTemplates",
-          `extractSignature: Add sig file to template stack: ${sigPath}`
-        );
-        pathArray.push(sigPath);
-      }
-      try {
-        sigText = await getProcessedText(sigText, idKey, composeType, true);
-      } catch (ex) {
-        util.logException(ex, "getProcessedText(signature) failed.");
-      }
-      if (isSignatureTb && sigPath) {
-        let last = pathArray.pop();
-        if (last) {
-          util.logDebugOptional(
-            "fileTemplates",
-            `extractSignature: Removed file from template stack: ${last}`
-          );
-        }
       }
     }
 
@@ -878,10 +882,50 @@ SmartTemplate4.classSmartTemplate = function() {
 
   // -----------------------------------
   // Get processed template
-  async function getProcessedText(templateText, idKey, composeType, ignoreHTML) {
+  async function preparePromptText(sources) {
+    if (!sources.some(source => /%prompt(?=\(|%|\s)/.test(source))) {
+      return null;
+    }
+    const { preparePrompts } = ChromeUtils.importESModule(
+      "chrome://smarttemplate4/content/modules/Prompt.sys.mjs"
+    );
+    try {
+      return await preparePrompts(sources, {
+        async ask(data) {
+          return util.notifyTools.notifyBackground({
+            func: "templatePrompt",
+            windowId: util.extension.windowManager.getWrapper(window).id,
+            prompt: data,
+          });
+        },
+        readClipboard: () => util.clipboardRead(["text", "plain"], { strictText: true }),
+        allowFeature: feature => util.useFeature(feature),
+      });
+    } catch (error) {
+      error.smartTemplatesPrompt = true;
+      throw error;
+    }
+  }
+
+  function commitPromptClipboard(plan) {
+    if (plan?.writeClipboard && !util.clipboardWrite(plan.clipboard)) {
+      const error = new Error("%prompt(): Could not write the clipboard");
+      error.smartTemplatesPrompt = true;
+      throw error;
+    }
+  }
+
+  async function getProcessedText(templateText, idKey, composeType, ignoreHTML, promptPlan = null) {
     await util.initFeatureUsage();
     if (!templateText) {
       return "";
+    }
+    if (!promptPlan) {
+      promptPlan = await preparePromptText([templateText]);
+      if (promptPlan) {
+        templateText = promptPlan.texts[0];
+        commitPromptClipboard(promptPlan);
+      }
     }
     const flags = SmartTemplate4.PreprocessingFlags;
 
@@ -971,15 +1015,15 @@ SmartTemplate4.classSmartTemplate = function() {
       "functions.getProcessedText",
       "=============  getProcessedText()   ========== END"
     );
-    return regular;
+    return promptPlan ? promptPlan.restore(regular) : regular;
   }
 
   // new function to retrieve quote header separately [Bug 25099]
   // in order to fix bottom-reply
-  async function getQuoteHeader(composeType, idKey) {
-    let quoteHdr = SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
+  async function getQuoteHeader(composeType, idKey, promptPlan = null) {
+    let quoteHdr = promptPlan ? promptPlan.texts[1] : SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
     let ignoreHTML = false; // was false always
-    return await getProcessedText(quoteHdr, idKey, composeType, ignoreHTML);
+    return await getProcessedText(quoteHdr, idKey, composeType, ignoreHTML, promptPlan);
   }
 
   // -----------------------------------
@@ -1259,8 +1303,7 @@ SmartTemplate4.classSmartTemplate = function() {
           SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
           return;
         }
-        // Undo template messages (does _not_ remove signature!)
-        removePreviousTemplate();
+        // Defer removing the previous template until prompts have been confirmed.
       }
     }
 
@@ -1378,6 +1421,11 @@ SmartTemplate4.classSmartTemplate = function() {
             : pref.getTemplate(idKey, st4composeType, "");
         }
 
+        const promptPlan = await preparePromptText([
+          rawTemplate,
+          flags.isThunderbirdTemplate ? "" : pref.getQuoteHeader(idKey, st4composeType, ""),
+        ]);
+        const promptTemplate = promptPlan ? promptPlan.texts[0] : rawTemplate;
         sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
 
         // if Stationery has %sig(none)% then flags.omitSignature == true
@@ -1387,18 +1435,27 @@ SmartTemplate4.classSmartTemplate = function() {
           const { newSig } = await extractSignature(theIdentity, sigType, st4composeType);
           SmartTemplate4.signature = newSig;
         } catch (ex) {
+          if (ex.smartTemplatesPrompt) {
+            throw ex;
+          }
           SmartTemplate4.signature = "";
           util.logException("Could not extract signature - is your signature path correct?", ex);
+        }
+
+        commitPromptClipboard(promptPlan);
+        if (!startup && gMsgCompose.type != msgComposeType.Template) {
+          removePreviousTemplate();
         }
 
         if (flags.isThunderbirdTemplate) {
           // use innerHTML instead of outer (we do not want to replace the "body" part)
           // if %sig% variable is in Tb Template it is going to be expanded at this step.
           template = await getProcessedText(
-            editor.rootElement.innerHTML,
+            promptTemplate,
             idKey,
             st4composeType,
-            true
+            true,
+            promptPlan
           ); // ignoreHTML = true ?
           // need to empty out the innerHTML if we insert this to avoid duplication.
           editor.rootElement.innerHTML = "";
@@ -1415,13 +1472,15 @@ SmartTemplate4.classSmartTemplate = function() {
               flags.suppressQuoteHeaders = true;
             }
             // [issue 19] switch on ignoreHTML to avoid unneccessarily replacing line breaks with <br>
-            template = await getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
+            template = await getProcessedText(promptTemplate, idKey, st4composeType, true, promptPlan); // ignoreHTML
           } else {
             util.logDebugOptional(
               "functions.insertTemplate",
               "retrieving Template: getSmartTemplate(" + st4composeType + ", " + idKey + ")"
             );
-            template = await getSmartTemplate(st4composeType, idKey);
+            template = promptPlan
+              ? await getProcessedText(promptTemplate, idKey, st4composeType, false, promptPlan)
+              : await getSmartTemplate(st4composeType, idKey);
           }
           if (template.match(/%deleteForwardedBody%/gm)) {
             flags.deleteForwardedBody = true;
@@ -1431,7 +1490,7 @@ SmartTemplate4.classSmartTemplate = function() {
             "functions.insertTemplate",
             "retrieving quote Header: getQuoteHeader(" + st4composeType + ", " + idKey + ")"
           );
-          quoteHeader = await getQuoteHeader(st4composeType, idKey);
+          quoteHeader = await getQuoteHeader(st4composeType, idKey, promptPlan);
         }
 
         if (flags.suppressQuoteHeaders) {
@@ -1517,6 +1576,9 @@ SmartTemplate4.classSmartTemplate = function() {
           // delete all <br> before quote!
         }
       } else {
+        if (!startup && gMsgCompose.type != msgComposeType.Template) {
+          removePreviousTemplate();
+        }
         util.logDebugOptional(
           "functions.insertTemplate",
           "insertTemplate - processing is not active for id " + idKey
@@ -1526,6 +1588,13 @@ SmartTemplate4.classSmartTemplate = function() {
         // extractSignature(theIdentity, false, st4composeType);
       }
     } catch (ex) {
+      if (ex.smartTemplatesPrompt) {
+        SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
+        if (ex.name !== "PromptCancelled") {
+          Services.prompt.alert(window, "SmartTemplates", ex.message);
+        }
+        return;
+      }
       util.logException(
         "insertTemplate - exception during parsing. Continuing with inserting template!",
         ex

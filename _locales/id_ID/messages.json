@@ -882,6 +882,9 @@
   "premiumConfig": {
     "message": "Fitur Premium"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Input"
+  },
   "prompt.email": {
     "message": "Masukkan alamat email"
   },

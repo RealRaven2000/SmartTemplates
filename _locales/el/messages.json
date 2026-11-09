@@ -1394,6 +1394,9 @@
   "pricing.title": {
     "message": "Τιμολόγηση"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Εισαγωγή"
+  },
   "prompt.email": {
     "message": "Εισάγετε μια διεύθυνση email"
   },

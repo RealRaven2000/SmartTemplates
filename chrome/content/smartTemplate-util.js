@@ -3515,11 +3515,13 @@ SmartTemplate4.Util = {
    * args: [] optional string array of preferred flavors, see:
    * https://github.com/RealRaven2000/SmartTemplates/issues/330#issuecomment-2439671613
    */
-  clipboardRead: function (args) {
+  clipboardRead: function (args, options = {}) {
     const Ci = Components.interfaces,
       Cc = Components.classes;
     function testFlavors(ar) {
-      const defaultFlavors = ["text/html", "text/unicode", "text/plain"]; // "text/rtf"
+      const defaultFlavors = options.strictText
+        ? ["text/unicode", "text/plain"]
+        : ["text/html", "text/unicode", "text/plain"]; // "text/rtf"
       let supportedFlavors = []; // "text/rtf"
       // [issue 330] - allow filtering flavor, e.g. %clipboard(text)%
       for (let f of ar) {
@@ -3557,6 +3559,9 @@ SmartTemplate4.Util = {
     try {
       const xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
       if (!xferable) {
+        if (options.strictText) {
+          throw new Error("%prompt(): Could not read the clipboard");
+        }
         SmartTemplate4.Util.logToConsole(
           "Couldn't get the clipboard data due to an internal error (couldn't create a Transferable object)."
         );
@@ -3576,6 +3581,9 @@ SmartTemplate4.Util = {
         xferable.getTransferData(finalFlavor, data);
         // eslint-disable-next-line no-unused-vars
       } catch (e) {
+        if (options.strictText) {
+          throw e;
+        }
         // Clipboard doesn't contain data in flavor, return null.
         SmartTemplate4.Util.logDebug(`No data with flavor ${finalFlavor} in clipboard! `);
         return "";
@@ -3588,6 +3596,9 @@ SmartTemplate4.Util = {
       }
       cp = data.value.QueryInterface(Ci.nsISupportsString).data;
     } catch (ex) {
+      if (options.strictText) {
+        throw ex;
+      }
       SmartTemplate4.Util.logException("util.clipboardRead() failed", ex);
     }
     return cp;

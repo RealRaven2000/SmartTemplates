@@ -1403,6 +1403,9 @@
   "pricing.title": {
     "message": "Prissättning"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Inmatning"
+  },
   "prompt.email": {
     "message": "Ange en e-postadress"
   },

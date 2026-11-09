@@ -1406,6 +1406,9 @@
   "pricing.title": {
     "message": "Cenitev"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Vnos"
+  },
   "prompt.email": {
     "message": "Vnesite e-poštni naslov"
   },

@@ -1382,6 +1382,9 @@
   "pricing.title": {
     "message": "Preços"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Introdução de dados"
+  },
   "prompt.email": {
     "message": "Digite um endereço de email"
   },

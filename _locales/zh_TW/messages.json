@@ -1394,6 +1394,9 @@
   "pricing.title": {
     "message": "價錢"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · 輸入提示"
+  },
   "prompt.email": {
     "message": "輸入電子郵件地址"
   },

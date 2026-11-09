@@ -1373,6 +1373,9 @@
   "pricing.title": {
     "message": "Прицинг"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · Унос"
+  },
   "prompt.email": {
     "message": "Унесите емаил адресу"
   },

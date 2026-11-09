@@ -1388,6 +1388,9 @@
   "pricing.title": {
     "message": "价钱"
   },
+  "prompt.caption": {
+    "message": "SmartTemplates · 输入提示"
+  },
   "prompt.email": {
     "message": "请输入一个电子邮件地址"
   },
