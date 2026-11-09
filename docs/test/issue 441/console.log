@@ -1,0 +1,54 @@
+TransactionInactiveError: A request was placed against a transaction which is currently not active, or which is finished. IndexedDB.sys.mjs:93:46
+NotFoundError: No such JSProcessActor 'BrowserToolboxDevToolsProcess'
+Missing resource in locale de: devtools/client/toolbox.ftl
+Missing resource in locale ja: devtools/client/toolbox.ftl
+Missing resource in locale el: devtools/client/toolbox.ftl
+Missing resource in locale nl: devtools/client/toolbox.ftl
+Missing resource in locale fr: devtools/client/toolbox.ftl
+Missing resource in locale it: devtools/client/toolbox.ftl
+Missing resource in locale nb-NO: devtools/client/toolbox.ftl
+NotFoundError: No such JSProcessActor 'BrowserToolboxDevToolsProcess'
+uncaught exception: Object { message }
+Error: Not implemented ExtensionCommon.sys.mjs:1004:11
+    callFunction resource://gre/modules/ExtensionCommon.sys.mjs:1004
+    stub resource://gre/modules/Schemas.sys.mjs:3119
+    getFeatureUsage moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/st-background.js:29
+    map self-hosted:125
+    getFeatureUsage moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/st-background.js:28
+    show moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/compose-notifications/controller.mjs:93
+Error in onNotifyBackground listener - func(composeLicenseNotification) 
+Object { func: "composeLicenseNotification", windowId: 109, features: (2) […], isRegister: true, isProFeature: true, additionalText: "", trialDays: -9, buttonKey: "notification.premium.btn.getLicense", blockedFeatures: [] }
+ DOMException: An exception was thrown
+    getFeatureUsage moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/st-background.js:29
+    getFeatureUsage moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/st-background.js:28
+    show moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/compose-notifications/controller.mjs:93
+st-background.js:1969:15
+Error: Not implemented ExtensionCommon.sys.mjs:1004:11
+    callFunction resource://gre/modules/ExtensionCommon.sys.mjs:1004
+    stub resource://gre/modules/Schemas.sys.mjs:3119
+    getFeatureUsage moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/st-background.js:29
+    map self-hosted:125
+    getFeatureUsage moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/st-background.js:28
+    show moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/compose-notifications/controller.mjs:93
+Error in onNotifyBackground listener - func(composeLicenseNotification) 
+Object { func: "composeLicenseNotification", windowId: 109, features: (3) […], isRegister: true, isProFeature: false, additionalText: "", trialDays: -9, buttonKey: "notification.premium.btn.getLicense", blockedFeatures: [] }
+ DOMException: An exception was thrown
+    getFeatureUsage moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/st-background.js:29
+    getFeatureUsage moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/st-background.js:28
+    show moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/compose-notifications/controller.mjs:93
+st-background.js:1969:15
+Security Error: Content at moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/smartTemplate-settings.html?id=id1 may not load or link to chrome://messenger/skin/variables.css.
+Security Error: Content at moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/smartTemplate-settings.html?id=id1 may not load or link to chrome://messenger/skin/preferences/preferences.css.
+Security Error: Content at moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/smartTemplate-settings.html?id=id1 may not load or link to chrome://messenger/skin/shared/themeableDialog.css.
+Security Error: Content at moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/smartTemplate-settings.html?id=id1 may not load or link to chrome://messenger/skin/variables.css.
+Security Error: Content at moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/smartTemplate-settings.html?id=id1 may not load or link to chrome://messenger/skin/preferences/preferences.css.
+Security Error: Content at moz-extension://58152093-afe7-49fb-91f2-f956a5e05c59/html/smartTemplate-settings.html?id=id1 may not load or link to chrome://messenger/skin/shared/themeableDialog.css.
+Loading failed for the <script> with source “https://smarttemplates.quickfolders.org/js/?v=2”. templates.html:46:27
+Loading failed for the <script> with source “https://smarttemplates.quickfolders.org/script/ga.js”. templates.html:54:32
+Missing resource in locale de: devtools/client/toolbox.ftl
+Missing resource in locale ja: devtools/client/toolbox.ftl
+Missing resource in locale el: devtools/client/toolbox.ftl
+Missing resource in locale nl: devtools/client/toolbox.ftl
+Missing resource in locale fr: devtools/client/toolbox.ftl
+Missing resource in locale it: devtools/client/toolbox.ftl
+Missing resource in locale nb-NO: devtools/client/toolbox.ftl

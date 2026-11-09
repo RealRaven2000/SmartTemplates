@@ -4,7 +4,7 @@
   right: 16px !important;
   bottom: var(--notification-bottom, 16px) !important;
   width: max-content !important;
-  max-width: min(440px, 46vw) !important;
+  max-width: calc(100vw - 32px) !important;
   z-index: 2147483000 !important;
   color-scheme: light dark;
   font:
@@ -32,10 +32,12 @@
   max-height: 80vh;
 }
 summary {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 12px 84px 12px 16px;
+  min-height: 60px;
   cursor: pointer;
   list-style: none;
   user-select: none;
@@ -84,19 +86,46 @@ button:focus-visible {
   font-size: 18px;
 }
 [open] summary {
-  padding: 22px 25px;
+  padding: 22px 84px 22px 25px;
 }
 [open] .brand {
   width: 40px;
   height: 40px;
 }
-.chevron {
-  font-size: 27px;
-  line-height: 1;
+summary .header-control {
+  position: absolute;
+  top: 18px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  color: light-dark(#596777, #b4c9df);
+}
+summary .close {
+  right: 16px;
+  background: light-dark(#e9edf1, #35404c);
+  border: 1px solid light-dark(#cdd4dc, #596b7e);
+}
+.close svg { width: 14px; height: 14px; }
+summary .chevron {
+  right: 46px;
+  background: transparent;
+  border: 0;
   color: light-dark(#56738f, #b4c9df);
 }
-[open] .chevron {
-  transform: rotate(90deg);
+.chevron svg { width: 16px; height: 16px; }
+[open] .chevron svg { transform: rotate(180deg); }
+summary .close:hover {
+  background: light-dark(#dce2e9, #455366);
+}
+summary:hover .chevron {
+  color: light-dark(#256398, #94cafa);
+}
+summary:focus-visible .chevron {
+  outline: 2px solid #3d8bd2;
+  outline-offset: 2px;
 }
 .panel {
   padding: 0 25px 22px;
@@ -237,7 +266,7 @@ button:hover {
     padding: 0 16px 16px;
   }
   summary {
-    padding: 10px;
+    padding: 10px 84px 10px 10px;
     gap: 8px;
   }
 }

@@ -1250,7 +1250,7 @@
     "message": "All used"
   },
   "notification.compose.blocked": {
-    "message": "Some features blocked"
+    "message": "Some features were blocked"
   },
   "notification.compose.blockedExplanation": {
     "message": "Unresolved variables may remain in your email. Please remove them before sending."
@@ -1263,6 +1263,15 @@
   },
   "notification.compose.countedToday": {
     "message": "Today is already counted. Further uses today do not reduce your remaining allowance."
+  },
+  "notification.compose.collapse": {
+    "message": "Collapse"
+  },
+  "notification.compose.dismiss": {
+    "message": "Dismiss notification"
+  },
+  "notification.compose.expand": {
+    "message": "Expand"
   },
   "notification.compose.countingRule": {
     "message": "Only the first use each day counts, so you can fully test this feature throughout the day."
@@ -1277,7 +1286,7 @@
     "message": "These features are included with SmartTemplates Pro."
   },
   "notification.compose.remainingUses": {
-    "message": "{1} of {2} free uses remaining."
+    "message": "{1} free uses remaining."
   },
   "notification.compose.remindLater": {
     "message": "Remind me later"

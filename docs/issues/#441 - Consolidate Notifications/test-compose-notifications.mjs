@@ -106,7 +106,7 @@ test("usage provider supplies independent counts and explanations; invalid count
   const model = await f.send("ready");
   assert.deepEqual(calls, [["file", "style", "dateformat"]]);
   assert.equal(model.standardFeatures[0].remaining, 8);
-  assert.match(model.standardFeatures[0].explanation, /8 of 20 free uses remaining/);
+  assert.match(model.standardFeatures[0].explanation, /8 free uses remaining/);
   assert.match(model.standardFeatures[0].explanation, /Today is already counted/);
   assert.equal(model.standardFeatures[1].remaining, 0);
   assert.doesNotMatch(model.standardFeatures[1].explanation, /Today is already counted/);
@@ -126,7 +126,7 @@ test("zero remaining uses is only a blocked warning after an actual denied opera
   await f.controller.show(f.request({ features: ["file"], trialDays: 0, blockedFeatures: ["file"] }));
   const blocked = await f.send("ready");
   assert.equal(blocked.blocked, true);
-  assert.equal(blocked.compact, "Some features blocked");
+  assert.equal(blocked.compact, "Some features were blocked");
   assert.match(blocked.standardFeatures[0].explanation, /Standard or Pro license/);
   assert.match(blocked.standardFeatures[0].explanation, /remove them before sending/);
   assert.doesNotMatch(blocked.standardFeatures[0].explanation, /first use each day|free uses remaining/);
@@ -193,6 +193,7 @@ class Element {
   append(...children) { this.children.push(...children); for (const child of children) if (child && typeof child === "object") child.isConnected = true; }
   replaceChildren(...children) { this.children = []; this.append(...children); }
   setAttribute(name, value) { this[name] = value; }
+  remove() { this.isConnected = false; }
   toggleAttribute(name, value) { if (value) this[name] = ""; else delete this[name]; }
   addEventListener(name, fn) { this.events[name] = fn; }
   attachShadow() { return this.shadowRoot = new Element("shadow-root"); }
@@ -212,6 +213,7 @@ function rendererFixture(containers = []) {
   const context = vm.createContext({
     document: { documentElement, getElementById: () => null,
       querySelectorAll: () => containers,
+      createElementNS: (_namespace, tag) => new Element(tag),
       createElement: tag => new Element(tag), createTextNode: text => ({ textContent: text }) },
     window: { innerHeight: 600, addEventListener() {}, removeEventListener() {} },
     ResizeObserver: Observer, MutationObserver: Observer,
@@ -281,4 +283,10 @@ test("compose renderer keeps UI in shadow DOM, omits empty rows, and ignores sta
   panel.children[2].children[1].children[0].children[2].events.click();
   assert.match(panel.children[5].children[0].className, /is-blocked/);
   assert.equal(panel.children[6].hidden, false);
+  const close = bubble.children[0].children[3];
+  let prevented = false, stopped = false;
+  close.events.click({ preventDefault() { prevented = true; }, stopPropagation() { stopped = true; } });
+  assert.equal(prevented, true);
+  assert.equal(stopped, true);
+  assert.equal(host.isConnected, false);
 });

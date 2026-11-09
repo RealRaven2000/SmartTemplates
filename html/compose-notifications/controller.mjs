@@ -15,7 +15,7 @@ export function createComposeNotifications(api, { getFeatureUsage } = {}) {
         feature.remaining = usage.remaining;
         feature.maximum = usage.maximum;
         feature.explanation = msg("notification.compose.remainingUses")
-          .replace("{1}", usage.remaining).replace("{2}", usage.maximum);
+          .replace("{1}", usage.remaining);
         feature.explanation += " " + msg("notification.compose.countingRule");
         if (usage.usedToday) {
           feature.explanation += " " + msg("notification.compose.countedToday");
@@ -38,6 +38,9 @@ export function createComposeNotifications(api, { getFeatureUsage } = {}) {
       title: msg("extensionName"),
       blocked,
       allUsed: msg("notification.compose.allUsed"),
+      expand: msg("notification.compose.expand"),
+      collapse: msg("notification.compose.collapse"),
+      dismiss: msg("notification.compose.dismiss"),
       blockedExplanation: blocked ? msg("notification.compose.blockedExplanation") : "",
       compact:
         blocked ? msg("notification.compose.blocked") : state.showTrial && state.trialDays > 0

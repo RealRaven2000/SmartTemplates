@@ -30,6 +30,7 @@
   bubble.addEventListener("toggle", () => {
     // :has() cannot inspect children across a shadow boundary.
     host.toggleAttribute("data-expanded", bubble.open);
+    updateToggleLabel();
     schedulePosition();
   });
   
@@ -42,9 +43,39 @@
   const hint = make("span", "hint");
   const title = make("strong", "title");
   heading.append(compact, hint, title);
-  const chevron = make("span", "chevron", "›");
+  const drawIcon = (path, strokeWidth) => {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 20 20");
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("aria-hidden", "true");
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    line.setAttribute("d", path);
+    line.setAttribute("stroke", "currentColor");
+    line.setAttribute("stroke-width", strokeWidth);
+    line.setAttribute("stroke-linecap", "round");
+    line.setAttribute("stroke-linejoin", "round");
+    svg.append(line);
+    return svg;
+  };
+  const chevron = make("span", "chevron header-control");
+  chevron.append(drawIcon("m5 7.5 5 5 5-5", "1.8"));
   chevron.setAttribute("aria-hidden", "true");
-  summary.append(icon, heading, chevron);
+  const close = make("button", "close header-control");
+  close.type = "button";
+  close.append(drawIcon("m5 5 10 10M15 5 5 15", "2.4"));
+  close.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    stopPositioning();
+    host.remove();
+  });
+  function updateToggleLabel() {
+    const label = bubble.open ? labels.collapse : labels.expand;
+    summary.title = label;
+    chevron.title = label;
+  }
+  let labels = {};
+  summary.append(icon, heading, chevron, close);
   const panel = make("section", "panel");
   panel.id = "details";
   summary.setAttribute("aria-controls", panel.id);
@@ -272,11 +303,15 @@
       return;
     }
     revision = model.revision;
+    labels = model;
+    close.title = model.dismiss;
+    close.setAttribute("aria-label", model.dismiss);
     if ((model.generation || 0) !== generation) {
       generation = model.generation || 0;
       bubble.open = false;
       host.removeAttribute("data-expanded");
     }
+    updateToggleLabel();
     if (model.visible === false) {
       stopPositioning();
       host.remove();
