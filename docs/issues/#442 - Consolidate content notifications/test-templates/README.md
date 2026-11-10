@@ -20,6 +20,10 @@ External editor setup/path dialogs, menu licensing restrictions, and the no-temp
 
 The minimal template tests below are being run through Insert Snippet, rather than replacing the main template.
 
+- 2026-11-10, Standard license with Pro-feature notices: `%replaceQuotedTags%` and `%header.prefix%` appeared first in the licensing section, then the delayed `%spellcheck(en,de)%` issue joined the same bubble. The issue is above licensing with one full-width divider, and Pro-feature counts/actions remain visible. Combined incremental presentation and dismissal passed: after dismissing the spellcheck issue, the full-width section divider disappears while the Pro notices, counts, usage hint, and licensing actions remain visible.
+
+- 2026-11-10, two-Composer isolation: tested with two open Composers; no interaction between their issue sessions was observed. Manual isolation check passed. The combined licensing-and-issues case was subsequently tested successfully; see the Standard-license result above.
+
 - 2026-11-10, Copy template source: clicking the synthetic issue's action copies exactly `<p>ST442 clipboard verification</p>` to the clipboard. Manual clipboard verification passed.
 
 - 2026-11-10, follow-up: Change Template successfully suppresses an earlier deferred/timeout spellcheck result. The updated multiprocess Browser Console helper creates both synthetic issue rows in the Composer, including diagnostic details, independent Dismiss buttons, and Copy template source. Clipboard contents after clicking Copy template source still need confirmation.

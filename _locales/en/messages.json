@@ -1307,7 +1307,7 @@
     "message": "These features are included with SmartTemplates Standard and Pro."
   },
   "notification.compose.usageHint": {
-    "message": "Numbers show free uses remaining. Only the first use each day counts, so you can fully test each feature throughout the day. Hover over or select a number for details."
+    "message": "Each number shows how many free uses remain. Each feature is counted only once per day; using it again on the same day does not reduce the remaining number. Hover over or click a number for details."
   },
   "notification.donate": {
     "message": "Donate"

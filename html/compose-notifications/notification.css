@@ -116,7 +116,7 @@ summary .chevron {
   color: light-dark(#56738f, #b4c9df);
 }
 .chevron svg { width: 16px; height: 16px; }
-[open] .chevron svg { transform: rotate(180deg); }
+[open] .chevron svg { transform: rotate(90deg); }
 summary .close:hover {
   background: light-dark(#dce2e9, #455366);
 }
