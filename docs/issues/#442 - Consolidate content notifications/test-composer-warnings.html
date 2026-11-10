@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartTemplates — combined composer warnings</title>
+  <style>
+    :root { font: 15px/1.65 "Segoe UI", system-ui, sans-serif; color: #25272b; background: #eceef2; }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; }
+    .preview { padding: 10px 20px; background: #fff; border-bottom: 1px solid #ccd3dc; color: #596777; font-size: 13px; }
+    .toolbar { padding: 10px 24px; background: #f6f7fa; border-bottom: 1px solid #ccd3dc; }
+    .editor { background: white; margin: 20px; min-height: calc(100vh - 145px); padding: 30px; font: 20px/1.6 Georgia, serif; border: 1px solid #cbd3dc; }
+    .editor p { margin: 0 0 24px; }
+    .signature { border-left: 4px solid #78b7cc; padding-left: 18px; color: #365d70; }
+    .bubble { position: fixed; right: 24px; bottom: 24px; width: max-content; max-width: calc(100vw - 48px); background: #fafcff; border: 1px solid #cbd3dc; border-radius: 14px; box-shadow: 0 5px 22px #23384f25; overflow: hidden; max-height: 80vh; }
+    .bubble[open] { width: min(75vw, 1000px); max-width: calc(100vw - 48px); }
+    summary { display: flex; align-items: center; gap: 14px; padding: 14px 84px 14px 20px; cursor: pointer; list-style: none; min-height: 68px; }
+    .close, .chevron { position: absolute; top: 18px; width: 24px; height: 24px; padding: 0; display: grid; place-items: center; background: #e9edf1; border: 1px solid #cdd4dc; border-radius: 5px; color: #596777; }
+    .close { right: 16px; }
+    .close svg { width: 14px; height: 14px; }
+    .close:hover { background: #dce2e9; color: #25272b; }
+    summary:hover .chevron { color: #256398; }
+    summary:focus-visible .chevron { outline: 2px solid #2277bd; outline-offset: 2px; }
+    .preview label { margin-inline-start: 16px; white-space: nowrap; }
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background: #edf3fa; }
+    summary img { width: 40px; height: 40px; }
+    .heading { flex: 1; }
+    .heading strong { display: block; font-size: 16px; }
+    .heading small { display: block; color: #596777; }
+    .template-issues { display: inline-block; white-space: nowrap; color: #a42e35; border-radius: 4px; padding: 1px 3px; }
+    .bubble:not([open]) .template-issues { animation: issue-pulse 2s ease-in-out 3; }
+    @keyframes issue-pulse {
+      0%, 100% { background-color: transparent; }
+      50% { background-color: #f5c5dc; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bubble:not([open]) .template-issues { animation: none; }
+    }
+    .heading .expanded { display: none; }
+    [open] .expanded { display: block; font-size: 21px; }
+    [open] .collapsed { display: none; }
+    .chevron { right: 46px; background: transparent; border: 0; color: #56738f; }
+    .chevron svg { width: 16px; height: 16px; }
+    [open] .chevron svg { transform: rotate(180deg); }
+    .panel { --panel-padding: 24px; padding: 0 var(--panel-padding) 20px; overflow-y: auto; max-height: calc(80vh - 80px); }
+    .row { display: grid; grid-template-columns: 105px 1fr; gap: 18px; border-top: 1px solid #dde4ec; padding: 16px 0; align-items: start; }
+    .issue-row { grid-template-columns: 80px minmax(0, 1fr) auto; }
+    .diagnostics { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 Consolas, monospace; margin: 8px 0; }
+    .preview { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .preview button, .issue-row button { padding: 4px 10px; }
+    @media (max-width: 650px) { .row.issue-row { grid-template-columns: 55px minmax(0, 1fr); } .issue-dismiss { grid-column: 2; justify-self: end; } }
+    .row p { margin: 0; }
+    .error-badge { background: #e8edf3; color: #4c5d70; border: 1px solid #cad3dd; }
+    .row > div { min-width: 0; }
+    .error-token { display: inline-block; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; background: #f5c5dc; color: #781c43; padding: 1px 6px; border-radius: 4px; margin-bottom: 5px; }
+    .section-divider { border: 0; border-top: 1px solid #cbd3dc; margin: 0 calc(-1 * var(--panel-padding)); }
+    .section-divider + .row { border-top: 0; }
+    code { font: 14px/1.6 Consolas, monospace; }
+    .usage-hint, .cleanup { color: #596777; font-size: 13px; }
+    .usage-hint { margin: 16px 0; }
+    .badge { justify-self: start; padding: 2px 12px; border-radius: 4px; font-size: 13px; font-weight: 750; }
+    .pro { background: #137f9b; color: #fff; }
+    .std { background: #e5ebef; border: 1px solid #c5d1d8; color: #586976; }
+    .blocked-row { background: #fff3f6; border-radius: 5px; }
+    .blocked-token { background: #f5c5dc; color: #781c43; padding: 2px 5px; border-radius: 4px; }
+    .feature { display: inline-block; white-space: nowrap; }
+    .remaining { color: #a42e35; text-decoration: underline dotted; text-underline-offset: 3px; }
+    .all-used { color: #a42e35; font-weight: 600; font-size: 14px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    button, .button { font: inherit; font-size: 14px; padding: 8px 17px; border: 1px solid #bcc5d1; border-radius: 5px; color: #304b67; background: #fff; text-decoration: none; cursor: pointer; }
+    .primary { background: #86a20d; border-color: #78930a; color: white; font-weight: 650; }
+    .cleanup { color: #8b2949; margin: 16px 0 0; }
+    :focus-visible { outline: 2px solid #2277bd; outline-offset: 2px; }
+    @media (max-height: 800px) { .row { padding: 10px 0; } .usage-hint { margin: 10px 0; } }
+    @media (max-height: 550px) { summary { padding: 8px 84px 8px 16px; } .row { padding: 6px 0; } .panel { --panel-padding: 16px; padding-bottom: 12px; } }
+    @media (max-width: 650px) { .bubble, .bubble[open] { max-width: calc(100vw - 24px); right: 12px; bottom: 12px; } .bubble[open] { width: calc(100vw - 24px); } .row { grid-template-columns: 55px 1fr; gap: 10px; } .panel { --panel-padding: 16px; } }
+  </style>
+</head>
+<body>
+  <div class="preview">Interactive prototype ? Composer template and fragment issues only
+    <label><input id="show-warnings" type="checkbox" checked> Template issues</label>
+    <label><input id="show-licensing" type="checkbox" checked> Licensing</label>
+    <button id="add-issue" type="button">Report next example issue</button>
+    <button id="reset" type="button">New evaluation (clear issues)</button>
+    <span id="preview-status" role="status"></span>
+    <button id="reopen" type="button" hidden>Show notification</button>
+  </div>
+  <div class="toolbar">Send &nbsp; │ &nbsp; Change template… &nbsp; │ &nbsp; Insert Snippet</div>
+  <main class="editor" contenteditable="true" aria-label="Editable example email">
+    <p>%file("snippets/cleanQuotedSpace.html")%</p>
+    <p>Ireland, 7 November 2026</p>
+    <p>Dear Axel,</p>
+    <p>You can keep editing this email while inspecting or dismissing the reported problems.</p>
+    <p>Yours sincerely,<br>Axel Grude</p>
+    <div class="signature">Thunderbird Daily<br>SmartTemplates</div>
+  </main>
+  <details class="bubble" open>
+    <summary>
+      <img src="../../../chrome/content/skin/icon32x32.png" alt="">
+      <div class="heading">
+        <strong class="expanded">SmartTemplates</strong>
+        <div class="collapsed"><strong>Features blocked · <span class="template-issues">Template issues</span></strong><small>Learn more</small></div>
+      </div>
+      <span class="chevron" aria-hidden="true" title="Expand"><svg viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <button class="close" type="button" aria-label="Dismiss notification" title="Dismiss notification"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+    </summary>
+    <section class="panel" aria-label="Template feedback">
+      <div id="issues"></div>
+      <hr class="section-divider" aria-label="Licensing information">
+      <div class="row" data-section="licensing">
+        <span class="badge pro">PRO</span>
+        <p><span class="feature"><code>%replaceQuotedTags%</code> <span class="remaining" title="11 free uses remaining. Only the first use each day counts.">(11)</span></span>, <span class="feature"><code>%header.prefix%</code> <span class="remaining" title="11 free uses remaining. Only the first use each day counts.">(11)</span></span> — These features are included with SmartTemplates Pro.</p>
+      </div>
+      <div class="row blocked-row" data-section="licensing">
+        <span class="badge std">STD</span>
+        <p><span class="feature"><code class="blocked-token">%file%</code> <span class="all-used" title="To use this feature, please get a SmartTemplates Standard or Pro license.">All used</span></span>, <span class="feature"><code>%style%</code> <span class="remaining" title="11 free uses remaining. Only the first use each day counts.">(11)</span></span>, <span class="feature"><code>%dateformat%</code> <span class="remaining" title="11 free uses remaining. Only the first use each day counts.">(11)</span></span> — These features are included with SmartTemplates Standard and Pro.</p>
+      </div>
+      <div class="actions" aria-label="Licensing actions" data-section="licensing">
+        <a class="button primary" href="https://smarttemplates.quickfolders.org/contribute.html" target="_blank" rel="noopener">Buy License</a>
+        <a class="button" href="https://smarttemplates.quickfolders.org/premium.html#featureComparison" target="_blank" rel="noopener">Compare Features…</a>
+        <button type="button" onclick="this.closest('details').open = false">Remind me later</button>
+      </div>
+      <p class="cleanup" data-section="licensing">Unresolved variables may remain in your email. Please remove them before sending.</p>
+    </section>
+  </details>
+  <script>
+    // Standalone prototype; no legacy chrome script globals or production APIs.
+    const bubble = document.querySelector('.bubble');
+    const summary = bubble.querySelector('summary');
+    const reopen = document.querySelector('#reopen');
+    const issues = document.querySelector('#issues');
+    const examples = [
+      { token: '%spellcheck(de,en)%', message: 'Cannot switch spell checker language. Have you installed the correct dictionary?', details: 'Dictionary not found: de' },
+      { token: '%header.set(subject,"A very long subject",unexpectedParameter)%', message: 'Invalid variable or parameters. Please check the expression and its arguments.' },
+      { token: '%file("snippets/customer-follow-up.html")%', message: 'Could not load the snippet file.', details: 'File: snippets/customer-follow-up.html\nThe file could not be found. Check its path and try inserting the fragment again.' },
+      { token: 'customer-template.html', message: 'Could not convert the template character set. Processing continued using the original data.', details: 'Character set: windows-1252' },
+      { token: 'customer-template.html', message: 'Could not insert Template as HTML; please check for syntax errors.', details: 'Example diagnostic: unclosed tag bracket near the signature.', source: '<p>Dear %to(firstname)%,</p>\n<div class="signature"' },
+    ];
+    let nextExample = 0;
+    let dismissed = false;
+    function updateToggleLabel() {
+      const label = bubble.open ? 'Collapse' : 'Expand';
+      summary.title = label;
+      bubble.querySelector('.chevron').title = label;
+    }
+    function updateSections() {
+      const warnings = document.querySelector('#show-warnings').checked && issues.children.length > 0;
+      const licensing = document.querySelector('#show-licensing').checked;
+      issues.hidden = !warnings;
+      for (const row of document.querySelectorAll('[data-section="licensing"]')) {
+        row.hidden = !licensing;
+      }
+      document.querySelector('.section-divider').hidden = !warnings || !licensing;
+      const compact = document.querySelector('.collapsed strong');
+      compact.replaceChildren();
+      if (licensing) {
+        compact.append(document.createTextNode('Features blocked'));
+      }
+      if (warnings) {
+        if (licensing) {
+          compact.append(document.createTextNode(' ? '));
+        }
+        const status = document.createElement('span');
+        status.className = 'template-issues';
+        status.textContent = 'Template issues (' + issues.children.length + ')';
+        compact.append(status);
+      }
+      bubble.hidden = dismissed || (!warnings && !licensing);
+      reopen.hidden = !dismissed || (!warnings && !licensing);
+      document.querySelector('#preview-status').textContent = issues.children.length + ' issue(s) retained in this evaluation';
+    }
+    function addIssue() {
+      const example = examples[nextExample++ % examples.length];
+      const row = document.createElement('div');
+      row.className = 'row issue-row';
+      const badge = document.createElement('span');
+      badge.className = 'badge error-badge';
+      badge.textContent = 'Issue';
+      const content = document.createElement('div');
+      const token = document.createElement('code');
+      token.className = 'error-token';
+      token.title = example.token;
+      token.setAttribute('aria-label', example.token);
+      token.tabIndex = 0;
+      const characters = Array.from(example.token);
+      token.textContent = characters.length > 45 ? characters.slice(0, 44).join('') + '?' : example.token;
+      const message = document.createElement('p');
+      message.textContent = example.message;
+      content.append(token, message);
+      if (example.details) {
+        const details = document.createElement('pre');
+        details.className = 'diagnostics';
+        details.textContent = example.details;
+        content.append(details);
+      }
+      if (example.source) {
+        const copy = document.createElement('button');
+        copy.type = 'button';
+        copy.textContent = 'Copy template source';
+        const fallback = document.createElement('textarea');
+        fallback.value = example.source;
+        fallback.readOnly = true;
+        fallback.hidden = true;
+        fallback.setAttribute('aria-label', 'Template source to copy');
+        copy.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(example.source);
+            copy.textContent = 'Copied';
+          } catch (error) {
+            fallback.hidden = false;
+            fallback.focus();
+            fallback.select();
+            copy.textContent = 'Select source and copy manually';
+          }
+        });
+        content.append(copy, fallback);
+      }
+      const dismiss = document.createElement('button');
+      dismiss.type = 'button';
+      dismiss.className = 'issue-dismiss';
+      dismiss.textContent = 'Dismiss';
+      dismiss.setAttribute('aria-label', 'Dismiss issue: ' + example.token);
+      dismiss.addEventListener('click', () => {
+        const nextFocus = row.nextElementSibling?.querySelector('.issue-dismiss') || row.previousElementSibling?.querySelector('.issue-dismiss') || document.querySelector('#add-issue');
+        row.remove();
+        updateSections();
+        nextFocus.focus();
+      });
+      row.append(badge, content, dismiss);
+      issues.append(row);
+      dismissed = false;
+      document.querySelector('#show-warnings').checked = true;
+      updateSections();
+    }
+    bubble.addEventListener('toggle', updateToggleLabel);
+    document.querySelector('.close').addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      dismissed = true;
+      updateSections();
+    });
+    reopen.addEventListener('click', () => {
+      dismissed = false;
+      updateSections();
+    });
+    document.querySelector('#show-warnings').addEventListener('change', updateSections);
+    document.querySelector('#show-licensing').addEventListener('change', updateSections);
+    document.querySelector('#add-issue').addEventListener('click', addIssue);
+    document.querySelector('#reset').addEventListener('click', () => {
+      issues.replaceChildren();
+      nextExample = 0;
+      dismissed = false;
+      bubble.open = false;
+      updateSections();
+    });
+    // Preload representative examples; the report button demonstrates later arrivals.
+    for (let index = 0; index < examples.length; index++) {
+      addIssue();
+    }
+    updateToggleLabel();
+  </script>
+</body>
+</html>
