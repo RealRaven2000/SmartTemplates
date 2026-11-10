@@ -1042,8 +1042,20 @@
   "newsSection.license": {
     "message": "Como este trabajo es exclusivamente financiado por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar SmartTemplates en el futuro."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Copiar el código fuente de la plantilla"
+  },
   "notification.compose.details": {
     "message": "Funciones con licencia utilizadas"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Descartar"
+  },
+  "notification.compose.issue": {
+    "message": "Problema"
+  },
+  "notification.compose.issues": {
+    "message": "Problemas de la plantilla"
   },
   "notification.compose.learnMore": {
     "message": "Más información"

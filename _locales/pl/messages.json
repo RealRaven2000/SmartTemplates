@@ -1231,8 +1231,20 @@
   "notification.bodyModified.instructions": {
     "message": "Kliknij Anuluj, aby zachować treść e-maila bez zmian."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Kopiuj źródło szablonu"
+  },
   "notification.compose.details": {
     "message": "Użyto funkcji wymagających licencji"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Odrzuć"
+  },
+  "notification.compose.issue": {
+    "message": "Problem"
+  },
+  "notification.compose.issues": {
+    "message": "Problemy z szablonem"
   },
   "notification.compose.learnMore": {
     "message": "Dowiedz się więcej"

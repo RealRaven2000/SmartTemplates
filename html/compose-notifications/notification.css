@@ -128,7 +128,8 @@ summary:focus-visible .chevron {
   outline-offset: 2px;
 }
 .panel {
-  padding: 0 25px 22px;
+  --panel-padding: 25px;
+  padding: 0 var(--panel-padding) 22px;
   max-height: calc(80vh - var(--notification-header-height, 86px));
   overflow-y: auto;
 }
@@ -263,12 +264,74 @@ button:hover {
     gap: 10px;
   }
   .panel {
+    --panel-padding: 16px;
     padding: 0 16px 16px;
   }
   summary {
     padding: 10px 84px 10px 10px;
     gap: 8px;
   }
+}
+
+/* Template diagnostics share the bubble with, but are independent of, licensing. */
+.row.issue-row {
+  grid-template-columns: 80px minmax(0, 1fr) auto;
+}
+.issue-content {
+  min-width: 0;
+}
+.issue-badge {
+  background: light-dark(#e8edf3, #35404c);
+  color: light-dark(#4c5d70, #d0dce9);
+  border-color: light-dark(#cad3dd, #697b90);
+}
+.error-token {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: light-dark(#f5c5dc, #71334f);
+  color: light-dark(#781c43, #ffe0ed);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font: 13px/1.7 Consolas, monospace;
+}
+.issue-details, .issue-message {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.issue-details {
+  font: 13px/1.5 Consolas, monospace;
+  margin: 8px 0;
+}
+.issue-dismiss, .issue-copy {
+  padding: 4px 10px;
+}
+.section-divider {
+  border: 0;
+  border-top: 1px solid light-dark(#cbd3dc, #536071);
+  margin: 0 calc(-1 * var(--panel-padding));
+}
+.section-divider:not([hidden]) ~ .row[data-section-first] {
+  border-top: 0;
+}
+.template-issues {
+  color: light-dark(#a42e35, #ffadb3);
+  border-radius: 4px;
+}
+.bubble:not([open]) .template-issues {
+  animation: issue-pulse 2s ease-in-out 3;
+}
+@keyframes issue-pulse {
+  50% { background: light-dark(#f5c5dc, #71334f); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bubble:not([open]) .template-issues { animation: none; }
+}
+@media (max-width: 650px) {
+  .row.issue-row { grid-template-columns: 55px minmax(0, 1fr); }
+  .issue-dismiss { grid-column: 2; justify-self: end; }
 }
 
 /* Heights refer to the editor viewport, not the full Thunderbird window. */

@@ -456,6 +456,9 @@ var SmartTemplate4 = {
       Ci = Components.interfaces,
       msgComposeType = Ci.nsIMsgCompType;
 
+    // Only an explicit Change Template invocation clears issues. Forwarding
+    // handling below can also set isChangeTemplate for insertion behavior.
+    const clearComposeIssues = isChangeTemplate;
 
     if (SmartTemplate4.Preferences.isBackgroundParser()) {
       // [issue 184] - this should never be called if this flag is set
@@ -593,6 +596,8 @@ var SmartTemplate4 = {
     }
 
     if (theFileTemplate) {
+      // Begin before file loading so loading/conversion issues survive insertion.
+      await util.resetComposeFeatureEvaluation({ clearIssues: clearComposeIssues });
       // [issue 173]
       if (theFileTemplate.isAutoSend) {
         flags.isAutoSend = true;
@@ -616,13 +621,11 @@ var SmartTemplate4 = {
           .replace("{0}", theFileTemplate.label)
           .replace("{1}", theFileTemplate.path);
 
-        await SmartTemplate4.Util.showSmartTemplatesMessage({
-          msg: text,
-          features: ["ok"],
+        await util.reportComposeIssue({
+          message: text.replaceAll("{br}", "\n"),
+          expression: theFileTemplate.label,
+          details: theFileTemplate.path,
         });
-
-        let composerWin = Services.wm.getMostRecentWindow("msgcompose");
-        if (composerWin) {composerWin.focus();}
       } else {
         flags.isFileTemplate = true; // !!! new Stationery substitution
         if (!flags.filePaths) {flags.filePaths = [];}
@@ -710,6 +713,9 @@ var SmartTemplate4 = {
             );
             return;
           }
+        }
+        if (!theFileTemplate) {
+          await util.resetComposeFeatureEvaluation({ clearIssues: clearComposeIssues });
         }
         flags.isChangeTemplate = isChangeTemplate;
         await this.smartTemplate.insertTemplate(isStartup, flags, fileTemplateSource); // if a Tb template is opened, process without removal
@@ -847,6 +853,7 @@ var SmartTemplate4 = {
         // ask user it isBodyModified is really true...
         // [issue 51]
         // Add template message - will also remove previous template and quoteHeader.
+        await util.resetComposeFeatureEvaluation();
         if (window.SmartTemplate4.CurrentTemplate) {
           //[issue 64] reload the same template if it was remembered.
           let fileTemplateSource = await SmartTemplate4.fileTemplates.retrieveTemplate(
@@ -855,7 +862,12 @@ var SmartTemplate4 = {
           if (fileTemplateSource.failed) {
             // shouldn't actually happen as we just loaded it before
             let text = util.getBundleString("fileTemplates.error.filePath");
-            alert(text);
+            await util.reportComposeIssue({
+              message: text.replace("{0}", window.SmartTemplate4.CurrentTemplate.label)
+                .replace("{1}", window.SmartTemplate4.CurrentTemplate.path),
+              expression: window.SmartTemplate4.CurrentTemplate.label,
+              details: window.SmartTemplate4.CurrentTemplate.path,
+            });
           } else {
             if (isOverrideBodyModified) {
               window.SmartTemplate4.PreprocessingFlags.identitySwitched = true;

@@ -1731,6 +1731,8 @@ async function main() {
       switch (data.func) {
           case "templatePrompt":
             return await composePrompts.show(data);
+        case "composeIssue":
+          return await composeNotifications.reportIssue(data);
         case "composeLicenseNotification":
           return await composeNotifications.show(data);
         case "UIListenersReady":

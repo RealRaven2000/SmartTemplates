@@ -1231,8 +1231,20 @@
   "notification.bodyModified.instructions": {
     "message": "Щелкните Отмена, чтобы сохранить содержание электронного письма без изменений."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Копировать исходный код шаблона"
+  },
   "notification.compose.details": {
     "message": "Использованы лицензируемые функции"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Скрыть"
+  },
+  "notification.compose.issue": {
+    "message": "Проблема"
+  },
+  "notification.compose.issues": {
+    "message": "Проблемы шаблона"
   },
   "notification.compose.learnMore": {
     "message": "Подробнее"

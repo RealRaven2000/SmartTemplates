@@ -271,13 +271,58 @@ SmartTemplate4.Util = {
   standardFeatures: new Array(), // only the array in the main instance Util will be used
   blockedFeatures: [],
 
-  async resetComposeFeatureEvaluation() {
+  /**
+   * Temporary legacy-parser transport for Composer issues (#442).
+   * Keep parser callers independent of NotifyTools and presentation. Recreate
+   * this utility in background when the parser migrates, forwarding the same
+   * plain-data payload directly to the notification controller and removing
+   * the parser's NotifyTools calls. Plan that migration within the remaining
+   * Thunderbird ESR period: componentize parsing and host-specific services
+   * so they can also support a possible Firefox add-on for Gmail templates.
+   *
+   * action is null or { type: "copyTemplateSource", source: string }; never a
+   * callback. Prefer standard MX/Web APIs for actions; use an experimental API
+   * only when privileged Thunderbird access is actually required.
+   * Delayed work must capture evaluationId before scheduling and pass it back.
+   * This issue-session ID survives snippet insertions and identity changes;
+   * only Change Template explicitly clears issues and supersedes delayed work.
+   * Messages/details are plain text; the renderer must not interpret HTML.
+   */
+  async reportComposeIssue({
+    message, expression = "", details = "", action = null,
+    evaluationId = this._composeIssueEvaluation || 0,
+  }) {
+    if (document.documentElement.getAttribute("windowtype") !== "msgcompose") {
+      return false;
+    }
+    try {
+      return await this.notifyTools.notifyBackground({
+        func: "composeIssue",
+        windowId: this.extension.windowManager.getWrapper(window).id,
+        evaluationId,
+        message: String(message),
+        expression: String(expression),
+        details: String(details),
+        action,
+      });
+    } catch (error) {
+      this.logException("Could not report Composer issue", error);
+      return false;
+    }
+  },
+
+  async resetComposeFeatureEvaluation({ clearIssues = false } = {}) {
+    if (clearIssues || !this._composeIssueEvaluation) {
+      this._composeIssueEvaluation = (this._composeIssueEvaluation || 0) + 1;
+    }
     this.clearUsedPremiumFunctions();
     try {
       await this.notifyTools.notifyBackground({
         func: "composeLicenseNotification",
         windowId: this.extension.windowManager.getWrapper(window).id,
         reset: true,
+        clearIssues,
+        evaluationId: this._composeIssueEvaluation,
       });
     } catch (error) {
       this.logException("Could not reset composer feature evaluation", error);
@@ -1293,9 +1338,9 @@ SmartTemplate4.Util = {
     const ErrorString1 = SmartTemplate4.Util.getBundleString("contextError").replace(/\n/g, "{br}");
     const errorText = ErrorString1.replace("{1}", decoratedWord);
 
-    await SmartTemplate4.Util.showSmartTemplatesMessage({
-      msg: errorText,
-      features: ["ok"],
+    await this.reportComposeIssue({
+      message: errorText.replaceAll("{br}", "\n"),
+      expression: decoratedWord,
     });
     this.logDebug(errorText);
   },
@@ -1307,9 +1352,9 @@ SmartTemplate4.Util = {
       /\n/g,
       "{br}"
     );
-    await SmartTemplate4.Util.showSmartTemplatesMessage({
-      msg: errorText,
-      features: ["ok"],
+    await this.reportComposeIssue({
+      message: errorText.replaceAll("{br}", "\n"),
+      expression: theToken,
     });
   },
 
@@ -3310,10 +3355,14 @@ SmartTemplate4.Util = {
      when the function was called. It's mainly used to temporarily override the 
      current state, then restore it later.
      */
-  setSpellchecker: async function (languages, isDisabled) {
+  setSpellchecker: async function (
+    languages, isDisabled,
+    evaluationId = SmartTemplate4.Util._composeIssueEvaluation || 0, retry = 0
+  ) {
     const util = SmartTemplate4.Util;
-
-    let retry = util?.retrySpellCheck || 0;
+    if (evaluationId !== (util._composeIssueEvaluation || 0)) {
+      return;
+    }
 
     // ──────────────────────────────────────────────
     // 1. GET SPELLCHECKER OR RETRY
@@ -3324,20 +3373,18 @@ SmartTemplate4.Util = {
 
     if (!spellChecker) {
       if (retry < 5) {
-        util.retrySpellCheck = ++retry;
+        retry++;
         util.logDebug(`spellChecker not ready – retry ${retry}`);
-        setTimeout(() => SmartTemplate4.Util.setSpellchecker(languages, isDisabled), 2000);
+        setTimeout(() => util.setSpellchecker(languages, isDisabled, evaluationId, retry), 2000);
         return;
       }
-      util.retrySpellCheck = 0;
-      return util.showSmartTemplatesMessage({
-        msg:
-          util.getBundleString("notification.spellcheck.error") +
-          "\nCould not access spellChecker.",
-        features: ["ok"],
+      return util.reportComposeIssue({
+        message: util.getBundleString("notification.spellcheck.error"),
+        expression: "%spellcheck(" + languages + ")%",
+        details: "Could not access spellChecker.",
+        evaluationId,
       });
     }
-    util.retrySpellCheck = 0;
 
     // ──────────────────────────────────────────────
     // 2. NORMALIZE INPUT
@@ -3435,9 +3482,11 @@ SmartTemplate4.Util = {
       }
     } catch (ex) {
       let msg = util.getBundleString("notification.spellcheck.error");
-      await SmartTemplate4.Util.showSmartTemplatesMessage({
-        msg: msg + "\n" + ex,
-        features: ["ok"],
+      await util.reportComposeIssue({
+        message: msg,
+        expression: "%spellcheck(" + languages + ")%",
+        details: String(ex),
+        evaluationId,
       });
     }
   },

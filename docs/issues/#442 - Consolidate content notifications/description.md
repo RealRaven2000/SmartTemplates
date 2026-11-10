@@ -3,19 +3,20 @@ Follow-up to #441: move suitable `showSmartTemplatesMessage()` workflows trigger
 Scope is limited to problems raised while Composer processes a template or inserts/processes a fragment. External template editor problems, menu restrictions, and other messages unrelated to that processing remain in their existing UI. The aim is modeless email editing: users can continue editing and correcting their email while the reported problems remain available in the bubble.
 
 - Show informational errors as Issue rows, alongside any licensing notices.
-- The first error in the current evaluation must show the notification bubble if it is not already displayed, even when there are no licensing notices. Subsequent errors must update the same bubble's contents as they arrive, retaining earlier issues from that evaluation and any licensing notices. Update the bubble's summary/status whenever the accumulated issues require it; do not create a separate bubble for each error or wait until evaluation completes to display them.
-- Highlight the triggering variable; truncate long expressions to 45 characters with the full text available on hover.
+- The first error must show the notification bubble if it is not already displayed, even when there are no licensing notices. Subsequent errors must update the same bubble's contents as they arrive, retaining earlier issues from the current template session and any licensing notices. Update the bubble's summary/status whenever the accumulated issues require it; do not create a separate bubble for each error or wait until processing completes to display them.
+- Highlight the triggering variable; truncate long expressions to 45 characters. Hover and accessibility text show up to 250 characters, including a final ellipsis when truncated, so embedded image data or other huge arguments cannot produce enormous tooltips. Keep the full diagnostic/source data separate from this display limit.
 - Separate issues from licensing with one edge-to-edge divider, shown only when both sections exist.
-- Allow delayed results, such as spellcheck failures, to join the current evaluation; discard results from superseded evaluations.
+- Retain issues across Insert Snippet operations, including snippets with no errors. Only the dedicated Change Template flow clears all issues because it replaces/rebuilds the email. Identity changes do not clear issues. Individual rows remain dismissible while editing.
+- Allow delayed results, such as spellcheck failures, to join the current issue session even after another snippet is inserted. Change Template starts a new session; discard delayed results from the superseded template session.
 - Reuse existing localized messages.
 - Preserve diagnostic details and actions, including copying template source after HTML insertion failures.
 - Keep confirmation dialogs where a response determines whether processing continues or existing content is replaced.
 - Agreed button handling: for in-scope messages where OK only closes the dialog, replace the dialog with an Issue row and a per-row Dismiss button. No replacement OK action is needed. Review callers with other effects individually: preserve actions such as copying template source, and keep confirmations that control processing.
-- Optional UI addition: a Dismiss button in the last column of each Issue row, allowing users to remove individual reported problems after addressing them without clearing the other rows. This is separate from dismissing the entire bubble.
+- Each Issue row has a Dismiss button in its last column, allowing users to remove individual reported problems after addressing them without changing email content or clearing the other rows. This is separate from dismissing the entire bubble.
 
 Review callers individually, including invalid variables, spellcheck failures, file-loading errors, and character-set conversion warnings. Do not redirect the general message helper globally.
 
-The interactive prototype is in [test-composer-warnings.html](test-composer-warnings.html) beside this description. It includes template/fragment error examples, per-row dismissal, incremental reporting, a new-evaluation reset, and editable email content. The original mockup remains in `docs/test/issue 442/test-composer-warnings.html`.
+The interactive prototype is in [test-composer-warnings.html](test-composer-warnings.html) beside this description. It includes template/fragment error examples, per-row dismissal, incremental reporting, a Change Template reset, and editable email content. The original mockup remains in `docs/test/issue 442/test-composer-warnings.html`.
 
 ## Existing message callers
 
@@ -39,3 +40,13 @@ The table below inventories the current calls to `SmartTemplate4.Util.showSmartT
 | `smartTemplate-fileTemplates.js:1284` — `fireComposeCommand()` | No Thunderbird controller exists for the requested compose command (`fileTemplates.error.nocontroller`). | Keep the existing message: the command may fail before a Composer exists to host a bubble. |
 
 Do not redirect `showSmartTemplatesMessage()` globally. Route eligible callers explicitly, keeping issue state independent of licensing so licensed users also receive template diagnostics and license updates do not clear issues. Use the initiating Composer rather than the most recently focused Composer when associating messages and actions.
+
+## Implementation and testing
+
+The legacy parser reports through `SmartTemplate4.Util.reportComposeIssue()` using the existing NotifyTools background listener. The wrapper sends plain-text `message`, `expression`, `details`, an optional named `action`, and the originating Composer/evaluation IDs. Background owns retained issue state and dispatches models to the existing MailExtension compose script. Copy template source uses the standard clipboard API and the existing permission; no new experimental API is needed.
+
+The wrapper comment records the intent to recreate this utility in background and remove parser NotifyTools calls when parsing migrates during the remaining ESR period. Parsing and host services should become separate components to allow a possible Firefox add-on for Gmail templates.
+
+The implementation also routes existing processing alerts for prompt validation, unavailable sent dates, unsupported or unreadable nested files, missing attachments, and identity-switch file-loading failures through the wrapper. User cancellation still aborts the relevant operation without adding an issue. Existing processing/fallback decisions are preserved.
+
+See [manual test templates and checks](test-templates/README.md). Automated controller/transport checks are in `test-compose-issues.mjs`; renderer regression checks remain with the existing #441 notification tests.

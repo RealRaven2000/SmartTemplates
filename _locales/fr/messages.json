@@ -1234,8 +1234,20 @@
   "notification.bodyModified.instructions": {
     "message": "Cliquez sur Annuler pour conserver le contenu du courrier électronique tel quel."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Copier le code source du modèle"
+  },
   "notification.compose.details": {
     "message": "Fonctionnalités sous licence utilisées"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Fermer"
+  },
+  "notification.compose.issue": {
+    "message": "Problème"
+  },
+  "notification.compose.issues": {
+    "message": "Problèmes du modèle"
   },
   "notification.compose.learnMore": {
     "message": "En savoir plus"

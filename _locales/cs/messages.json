@@ -1225,8 +1225,20 @@
   "notification.bodyModified.instructions": {
     "message": "Klikněte na Zrušit pro zachování obsahu e-mailu beze změn."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Kopírovat zdroj šablony"
+  },
   "notification.compose.details": {
     "message": "Použité licencované funkce"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Zavřít"
+  },
+  "notification.compose.issue": {
+    "message": "Problém"
+  },
+  "notification.compose.issues": {
+    "message": "Problémy šablony"
   },
   "notification.compose.learnMore": {
     "message": "Další informace"

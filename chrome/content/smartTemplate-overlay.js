@@ -3092,7 +3092,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 
       if (SmartTemplate4.whatIsX == SmartTemplate4.XisSent && !date) {
         //
-        alert("There is no sent date. You cannot use the X:=Sent switch in this case!");
+        util.reportComposeIssue({
+          message: "There is no sent date. You cannot use the X:=Sent switch in this case!",
+          expression: "%X:=sent%",
+        });
         SmartTemplate4.whatIsX = SmartTemplate4.XisToday;
       }
 
@@ -3454,13 +3457,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "spellcheck": {
           // use first argument to switch dictionary language.
           let lang = removeParentheses(arg);
+          const evaluationId = util._composeIssueEvaluation || 0;
           if (!SmartTemplate4.PreprocessingFlags.isStartup) {
-            util.setSpellchecker(lang);
+            util.setSpellchecker(lang, undefined, evaluationId);
             return "";
           }
           
           setTimeout(() => {
-            util.setSpellchecker(lang);
+            util.setSpellchecker(lang, undefined, evaluationId);
           }, prefs.getIntPref("spellcheckDelay"));
           return "";
         }
@@ -4038,6 +4042,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               html = data.toString();
             } catch (ex) {
               util.logException("insertFileLink() - read " + countRead + " characters.", ex);
+              await util.reportComposeIssue({
+                message: "Error reading file: " + path,
+                expression: "%file" + txt + "%",
+                details: String(ex),
+              });
               if (countRead) {
                 html = data.toString();
               } else {
@@ -4092,9 +4101,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           html = "<img src='" + imgPath + "'" + alt + imageAttributes + " >";
         } break;
         default:
-          alert(
-            `Unsupported file type in %file()%.\nFilepath: '${path}' \nYou can see more detail in error console.`
-          );
+          await util.reportComposeIssue({
+            message: "Unsupported file type in %file()%. You can see more detail in error console.",
+            expression: "%file" + txt + "%",
+            details: newPath,
+          });
           util.logHighlight(
             "\nError in loading file due to unknown type.",
             "yellow",
@@ -4106,8 +4117,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       }
     } catch(ex) {
       util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more info if you enable debug mode.",ex );
-      Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +
-        "Please check Javascript error console for detailed error message.");
+      await util.reportComposeIssue({
+        message: "Something went wrong trying to read a file: " + txt + "\n" +
+          "Please check Javascript error console for detailed error message.",
+        expression: "%file" + txt + "%",
+        details: String(ex),
+      });
     }
     return html;
   } 
@@ -4135,14 +4150,21 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 		try {			
       const { FileUtils } = ChromeUtils.importESModule("resource://gre/modules/FileUtils.sys.mjs");
 			if (!FileUtils) {
-				alert("No FileUtils in this platform - %attach% is not supported. Are you on an old version of " + util.Application + "?");
+				util.reportComposeIssue({
+          message: "No FileUtils in this platform - %attach% is not supported. Are you on an old version of " + util.Application + "?",
+          expression: "%attach" + args + "%",
+        });
 				return;
 			}
       const localFile = new FileUtils.File(newPath);				
 			
 			if (!localFile.exists()) {
         let wrn = util.getBundleString("fileFunction.notExists");
-				alert(wrn.replace("{0}", "'attachFile()'") + "\n" + newPath);
+				util.reportComposeIssue({
+          message: wrn.replace("{0}", "'attachFile()'"),
+          expression: "%attach" + args + "%",
+          details: newPath,
+        });
 				return;
 			}
 			

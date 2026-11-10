@@ -80,11 +80,11 @@
   </style>
 </head>
 <body>
-  <div class="preview">Interactive prototype ? Composer template and fragment issues only
+  <div class="preview">Interactive prototype · Composer template and fragment issues only
     <label><input id="show-warnings" type="checkbox" checked> Template issues</label>
     <label><input id="show-licensing" type="checkbox" checked> Licensing</label>
     <button id="add-issue" type="button">Report next example issue</button>
-    <button id="reset" type="button">New evaluation (clear issues)</button>
+    <button id="reset" type="button">Change template (clear issues)</button>
     <span id="preview-status" role="status"></span>
     <button id="reopen" type="button" hidden>Show notification</button>
   </div>
@@ -161,7 +161,7 @@
       }
       if (warnings) {
         if (licensing) {
-          compact.append(document.createTextNode(' ? '));
+          compact.append(document.createTextNode(' · '));
         }
         const status = document.createElement('span');
         status.className = 'template-issues';
@@ -182,11 +182,13 @@
       const content = document.createElement('div');
       const token = document.createElement('code');
       token.className = 'error-token';
-      token.title = example.token;
-      token.setAttribute('aria-label', example.token);
+      // Limit allocation and tooltip/accessibility text for huge arguments.
+      const characters = Array.from(example.token.slice(0, 502));
+      const preview = characters.length > 250 ? characters.slice(0, 249).join('') + '…' : example.token;
+      token.title = preview;
+      token.setAttribute('aria-label', preview);
       token.tabIndex = 0;
-      const characters = Array.from(example.token);
-      token.textContent = characters.length > 45 ? characters.slice(0, 44).join('') + '?' : example.token;
+      token.textContent = characters.length > 45 ? characters.slice(0, 44).join('') + '…' : example.token;
       const message = document.createElement('p');
       message.textContent = example.message;
       content.append(token, message);
@@ -222,7 +224,7 @@
       dismiss.type = 'button';
       dismiss.className = 'issue-dismiss';
       dismiss.textContent = 'Dismiss';
-      dismiss.setAttribute('aria-label', 'Dismiss issue: ' + example.token);
+      dismiss.setAttribute('aria-label', 'Dismiss issue: ' + preview);
       dismiss.addEventListener('click', () => {
         const nextFocus = row.nextElementSibling?.querySelector('.issue-dismiss') || row.previousElementSibling?.querySelector('.issue-dismiss') || document.querySelector('#add-issue');
         row.remove();

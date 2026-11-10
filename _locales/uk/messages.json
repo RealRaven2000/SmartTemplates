@@ -1241,8 +1241,20 @@
   "notification.bodyModified.instructions": {
     "message": "Клацніть Скасувати, щоб залишити вміст електронної пошти без змін."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Копіювати вихідний код шаблону"
+  },
   "notification.compose.details": {
     "message": "Використано ліцензовані функції"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Приховати"
+  },
+  "notification.compose.issue": {
+    "message": "Проблема"
+  },
+  "notification.compose.issues": {
+    "message": "Проблеми шаблону"
   },
   "notification.compose.learnMore": {
     "message": "Докладніше"

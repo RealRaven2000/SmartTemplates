@@ -1581,16 +1581,11 @@ SmartTemplate4.fileTemplates = {
     SmartTemplate4.initFlags(flags);
     if (fileTemplateSource.failed) {
       let text = SmartTemplate4.Util.getBundleString("fileTemplates.error.filePath");
-      await SmartTemplate4.Util.showSmartTemplatesMessage({
-        msg: text.replace("{0}", theFileTemplate.label).replace("{1}", `{P1}${theFileTemplate.path}{P2}`),
-        features: ["ok"],
-        // no direct callback support, so after awaiting, do the focus:
+      await SmartTemplate4.Util.reportComposeIssue({
+        message: text.replace("{0}", theFileTemplate.label).replace("{1}", theFileTemplate.path),
+        expression: theFileTemplate.label,
+        details: theFileTemplate.path,
       });
-
-      let composerWin = Services.wm.getMostRecentWindow("msgcompose");
-      if (composerWin) {
-        composerWin.focus();
-      }      
     } else {
       flags.isFragment = true;
       flags.isFileTemplate = true;
@@ -1626,7 +1621,11 @@ SmartTemplate4.fileTemplates = {
         } catch (error) {
           if (error.name !== "PromptCancelled") {
             SmartTemplate4.Util.logException("Fragment processing failed", error);
-            Services.prompt.alert(window, "SmartTemplates", error.message);
+            await SmartTemplate4.Util.reportComposeIssue({
+              message: error.message,
+              expression: theFileTemplate.label,
+              details: error.stack || String(error),
+            });
           }
           return;
         } finally {
@@ -1831,13 +1830,15 @@ SmartTemplate4.fileTemplates = {
 			catch {
         const errText = util.getBundleString("fileTemplates.error.charSet").replace("{1}", charset);
       
-        await SmartTemplate4.Util.showSmartTemplatesMessage({
-          msg: errText,
-          features: ["ok"],
-        });
-      
-        const composerWin = Services.wm.getMostRecentWindow("msgcompose");
-        if (composerWin) {composerWin.focus();}
+        if (document.documentElement.getAttribute("windowtype") === "msgcompose") {
+          await util.reportComposeIssue({
+            message: errText,
+            expression: template.label,
+            details: template.path,
+          });
+        } else {
+          await util.showSmartTemplatesMessage({ msg: errText, features: ["ok"] });
+        }
       
         return data.toString();
 			}

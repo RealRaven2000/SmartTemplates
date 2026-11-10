@@ -817,8 +817,20 @@
   "no_button": {
     "message": "Tidak"
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Salin sumber templat"
+  },
   "notification.compose.details": {
     "message": "Fitur berlisensi digunakan"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Tutup"
+  },
+  "notification.compose.issue": {
+    "message": "Masalah"
+  },
+  "notification.compose.issues": {
+    "message": "Masalah templat"
   },
   "notification.compose.learnMore": {
     "message": "Pelajari lebih lanjut"

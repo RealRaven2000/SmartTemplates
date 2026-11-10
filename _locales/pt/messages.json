@@ -1228,8 +1228,20 @@
   "notification.bodyModified.instructions": {
     "message": "Clique em Cancelar para manter o conteúdo do e-mail inalterado."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Copiar o código-fonte do modelo"
+  },
   "notification.compose.details": {
     "message": "Funcionalidades licenciadas utilizadas"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Dispensar"
+  },
+  "notification.compose.issue": {
+    "message": "Problema"
+  },
+  "notification.compose.issues": {
+    "message": "Problemas do modelo"
   },
   "notification.compose.learnMore": {
     "message": "Saber mais"

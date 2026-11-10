@@ -1231,8 +1231,20 @@
   "notification.bodyModified.instructions": {
     "message": "单击取消以保持电子邮件内容不变。"
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "复制模板源代码"
+  },
   "notification.compose.details": {
     "message": "使用了需许可证的功能"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "关闭"
+  },
+  "notification.compose.issue": {
+    "message": "问题"
+  },
+  "notification.compose.issues": {
+    "message": "模板问题"
   },
   "notification.compose.learnMore": {
     "message": "了解更多"

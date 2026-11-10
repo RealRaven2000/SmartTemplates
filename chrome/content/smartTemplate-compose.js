@@ -1315,7 +1315,7 @@ SmartTemplate4.classSmartTemplate = function() {
       }
     }
 
-    if (flags.isChangeTemplate) {
+    if (!util._composeIssueEvaluation) {
       await util.resetComposeFeatureEvaluation();
     }
 
@@ -1599,7 +1599,10 @@ SmartTemplate4.classSmartTemplate = function() {
       if (ex.smartTemplatesPrompt) {
         SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
         if (ex.name !== "PromptCancelled") {
-          Services.prompt.alert(window, "SmartTemplates", ex.message);
+          await util.reportComposeIssue({
+            message: ex.message,
+            details: ex.stack || String(ex),
+          });
         }
         return;
       }
@@ -1903,22 +1906,13 @@ SmartTemplate4.classSmartTemplate = function() {
           }
         }
       } catch (ex) {
-        let errorText =
-          "{P1}Could not insert Template as HTML; please check for syntax errors.{br}" +
-          "This might be caused by html comments <!-- or unclosed tag brackets <...>{P2}" +
-          `{pre}${ex}{preEnd}` +
-          "{br}Copy template contents to clipboard?";
-
-        let result = await SmartTemplate4.Util.showSmartTemplatesMessage({
-          msg: errorText,
-          features: ["ok", "cancel"],
+        await util.reportComposeIssue({
+          message: "Could not insert Template as HTML; please check for syntax errors.\n" +
+            "This might be caused by html comments <!-- or unclosed tag brackets <...>",
+          expression: fileTemplateSource?.label || "",
+          details: String(ex),
+          action: { type: "copyTemplateSource", source: template || "" },
         });
-        if (result === "ok") {
-          let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(
-            Ci.nsIClipboardHelper
-          );
-          oClipBoard.copyString(template || "");
-        }
       }
     }
 

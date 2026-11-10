@@ -1237,8 +1237,20 @@
   "notification.bodyModified.instructions": {
     "message": "Napsauta Peruuta säilyttääksesi sähköpostin sisällön ennallaan."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Kopioi mallin lähdekoodi"
+  },
   "notification.compose.details": {
     "message": "Käytetyt lisensoidut ominaisuudet"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Hylkää"
+  },
+  "notification.compose.issue": {
+    "message": "Ongelma"
+  },
+  "notification.compose.issues": {
+    "message": "Mallin ongelmat"
   },
   "notification.compose.learnMore": {
     "message": "Lisätietoja"

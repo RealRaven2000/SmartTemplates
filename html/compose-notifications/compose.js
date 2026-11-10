@@ -85,7 +85,9 @@
   const pro = make("div", "row");
   const standard = make("div", "row");
   const actions = make("div", "actions");
-  panel.append(usageHint, trial, pro, standard, actions);
+  const issues = make("div", "issues");
+  const divider = make("hr", "section-divider");
+  panel.append(issues, divider, usageHint, trial, pro, standard, actions);
   bubble.append(summary, panel);
   root.append(bubble);
   const positionStyle = document.createElement("style");
@@ -293,6 +295,76 @@
   panel.append(explanation);
   panel.append(blockedExplanation);
 
+  // Issue rows are keyed so incremental reports do not replace focused controls.
+  const issueRows = new Map();
+  function renderIssues(model) {
+    const currentIds = new Set((model.issues || []).map(issue => issue.id));
+    for (const [id, element] of issueRows) {
+      if (!currentIds.has(id) || element.dataset.evaluation !== String(model.evaluationId)) {
+        element.remove();
+        issueRows.delete(id);
+      }
+    }
+    for (const issue of model.issues || []) {
+      if (issueRows.has(issue.id)) {
+        continue;
+      }
+      const element = make("div", "row issue-row");
+      element.dataset.evaluation = String(model.evaluationId);
+      const content = make("div", "issue-content");
+      if (issue.expression) {
+        const characters = Array.from(issue.expression);
+        const token = make("code", "error-token", characters.length > 45
+          ? characters.slice(0, 44).join("") + "…" : issue.expression);
+        token.title = issue.expression;
+        token.setAttribute("aria-label", issue.expression);
+        token.tabIndex = 0;
+        content.append(token);
+      }
+      content.append(make("p", "text issue-message", issue.message));
+      if (issue.details) {
+        content.append(make("pre", "issue-details", issue.details));
+      }
+      const send = action => browser.runtime.sendMessage({
+        command: "composeNotifications", action,
+        issueId: issue.id, evaluationId: model.evaluationId,
+      });
+      if (issue.action?.type === "copyTemplateSource") {
+        const copy = make("button", "issue-copy", model.copyTemplateSource);
+        copy.type = "button";
+        copy.addEventListener("click", async () => {
+          try {
+            if (await send("copyTemplateSource")) {
+              copy.textContent = model.copyTemplateSource + " ✓";
+            }
+          } catch (error) {
+            content.append(make("pre", "issue-details", error.message));
+          }
+        });
+        content.append(copy);
+      }
+      const dismiss = make("button", "issue-dismiss", model.dismissIssue);
+      dismiss.type = "button";
+      dismiss.setAttribute("aria-label", model.dismissIssue + ": " + (issue.expression || issue.message));
+      dismiss.addEventListener("click", async () => {
+        try {
+          const focus = element.nextElementSibling?.querySelector(".issue-dismiss") ||
+            element.previousElementSibling?.querySelector(".issue-dismiss") || summary;
+          if (await send("dismissIssue")) {
+            focus.focus();
+          }
+        } catch (error) {
+          content.append(make("pre", "issue-details", error.message));
+        }
+      });
+      element.append(make("span", "badge issue-badge", model.issueLabel), content, dismiss);
+      issues.append(element);
+      issueRows.set(issue.id, element);
+    }
+    issues.hidden = !currentIds.size;
+    divider.hidden = !currentIds.size || !model.hasLicensing;
+  }
+
   let revision = -1;
   let generation = 0;
   function render(model) {
@@ -317,7 +389,17 @@
       host.remove();
       return;
     }
-    compact.textContent = model.compact;
+    compact.replaceChildren();
+    if (model.hasLicensing) {
+      compact.append(document.createTextNode(model.compact));
+    }
+    if (model.issues?.length) {
+      if (model.hasLicensing) {
+        compact.append(document.createTextNode(" · "));
+      }
+      compact.append(make("span", "template-issues", model.issuesLabel + " (" + model.issues.length + ")"));
+    }
+    renderIssues(model);
     hint.textContent = model.learnMore;
     title.textContent = model.title;
     bubble.toggleAttribute("data-blocked", !!model.blocked);
@@ -343,8 +425,12 @@
     explanation.textContent = "";
     featureRow(pro, "PRO", "pro", model.proFeatures, model.proDescription, model.proNotes, model.allUsed);
     featureRow(standard, "STD", "standard", model.standardFeatures, model.standardDescription, model.standardNotes, model.allUsed);
+    const firstLicenseRow = [trial, pro, standard].find(element => !element.hidden);
+    for (const element of [trial, pro, standard]) {
+      element.toggleAttribute("data-section-first", element === firstLicenseRow);
+    }
     actions.replaceChildren();
-    actions.hidden = !model.buttons?.length;
+    actions.hidden = !model.hasLicensing || !model.buttons?.length;
     for (const item of model.buttons || []) {
       const button = make("button", item.primary ? "primary" : "", item.label);
       button.type = "button";

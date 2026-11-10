@@ -1234,8 +1234,20 @@
   "notification.bodyModified.instructions": {
     "message": "Feu clic a Cancel·la per mantenir el contingut del correu electrònic sense canvis."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Copia el codi font de la plantilla"
+  },
   "notification.compose.details": {
     "message": "Funcions amb llicència utilitzades"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Descarta"
+  },
+  "notification.compose.issue": {
+    "message": "Problema"
+  },
+  "notification.compose.issues": {
+    "message": "Problemes de la plantilla"
   },
   "notification.compose.learnMore": {
     "message": "Més informació"

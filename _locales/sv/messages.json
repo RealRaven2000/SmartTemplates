@@ -1237,8 +1237,20 @@
   "notification.bodyModified.instructions": {
     "message": "Klicka på Avbryt för att behålla e-postinnehållet oförändrat."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Kopiera mallens källkod"
+  },
   "notification.compose.details": {
     "message": "Licenskrävande funktioner används"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Avvisa"
+  },
+  "notification.compose.issue": {
+    "message": "Problem"
+  },
+  "notification.compose.issues": {
+    "message": "Mallproblem"
   },
   "notification.compose.learnMore": {
     "message": "Läs mer"

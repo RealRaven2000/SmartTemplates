@@ -1228,8 +1228,20 @@
   "notification.bodyModified.instructions": {
     "message": "Klik op Annuleren om de inhoud van de e-mail ongewijzigd te houden."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Sjabloonbron kopiëren"
+  },
   "notification.compose.details": {
     "message": "Functies waarvoor een licentie nodig is gebruikt"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Sluiten"
+  },
+  "notification.compose.issue": {
+    "message": "Probleem"
+  },
+  "notification.compose.issues": {
+    "message": "Sjabloonproblemen"
   },
   "notification.compose.learnMore": {
     "message": "Meer informatie"

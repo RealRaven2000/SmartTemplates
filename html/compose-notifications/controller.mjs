@@ -1,9 +1,44 @@
 // Background-only controller. Usage is supplied by the explicit Utilities API;
 // daily reminder suppression and persistent snooze remain separate work.
-export function createComposeNotifications(api, { getFeatureUsage } = {}) {
+export function createComposeNotifications(api, {
+  getFeatureUsage, copyText = text => navigator.clipboard.writeText(text),
+} = {}) {
   const states = new Map();
   const command = "composeNotifications";
   const msg = (key) => api.i18n.getMessage(key);
+
+  function expressionPreview(expression) {
+    // Bound tooltip/accessibility text before sending it to the compose script.
+    // Stop early: an expression can contain megabytes of inline image data.
+    const characters = [];
+    for (const character of expression) {
+      if (characters.length === 250) {
+        characters[249] = "…";
+        return characters.join("");
+      }
+      characters.push(character);
+    }
+    return expression;
+  }
+
+  function emptyState() {
+    return {
+      pro: [], standard: [], proNotes: [], standardNotes: [],
+      showTrial: false, register: false, issues: [], nextIssueId: 0,
+      evaluationId: 0, generation: 0, revision: 0,
+    };
+  }
+
+  async function composeTab(windowId) {
+    if (!Number.isInteger(windowId)) {
+      throw new Error("Missing composer window ID");
+    }
+    const tabs = await api.tabs.query({ windowId, type: "messageCompose" });
+    if (tabs.length !== 1) {
+      throw new Error("Could not uniquely identify the notification composer");
+    }
+    return tabs[0].id;
+  }
 
   function model(state) {
     const featureList = (features, tier) => features.map((name) => {
@@ -34,7 +69,17 @@ export function createComposeNotifications(api, { getFeatureUsage } = {}) {
     return {
       revision: state.revision,
       generation: state.generation || 0,
-      visible: (state.showTrial && state.trialDays > 0) || !!state.pro.length || !!state.standard.length,
+      visible: !!state.issues.length || (state.showTrial && state.trialDays > 0) || !!state.pro.length || !!state.standard.length,
+      evaluationId: state.evaluationId,
+      issues: state.issues.map(({ id, expression, message, details, action }) => ({
+        id, expression: expressionPreview(expression), message, details,
+        action: action ? { type: action.type } : null,
+      })),
+      issueLabel: msg("notification.compose.issue"),
+      issuesLabel: msg("notification.compose.issues"),
+      dismissIssue: msg("notification.compose.dismissIssue"),
+      copyTemplateSource: msg("notification.compose.copyTemplateSource"),
+      hasLicensing: !!state.pro.length || !!state.standard.length || (state.showTrial && state.trialDays > 0),
       title: msg("extensionName"),
       blocked,
       allUsed: msg("notification.compose.allUsed"),
@@ -83,25 +128,29 @@ export function createComposeNotifications(api, { getFeatureUsage } = {}) {
   }
 
   async function show(request) {
-    if (!Number.isInteger(request.windowId)) {
-      throw new Error("Missing composer window ID");
-    }
-    const tabs = await api.tabs.query({ windowId: request.windowId, type: "messageCompose" });
-    if (tabs.length !== 1) {
-      throw new Error("Could not uniquely identify the notification composer");
-    }
-    const tabId = tabs[0].id;
+    const tabId = await composeTab(request.windowId);
     if (request.reset) {
       const previous = states.get(tabId);
+      const clearIssues = request.clearIssues === true;
+      if (request.evaluationId !== undefined && previous &&
+          request.evaluationId < previous.evaluationId) {
+        return false;
+      }
       states.set(tabId, {
-        pro: [], standard: [], proNotes: [], standardNotes: [],
-        showTrial: false, register: false,
-        generation: (previous?.generation || 0) + 1,
+        ...emptyState(),
+        // Feature accounting restarts for snippets; retained issues do not.
+        issues: clearIssues ? [] : previous?.issues || [],
+        nextIssueId: clearIssues ? 0 : previous?.nextIssueId || 0,
+        evaluationId: request.evaluationId ??
+          (previous?.evaluationId || 0) + (clearIssues || !previous ? 1 : 0),
+        generation: (previous?.generation || 0) + (clearIssues || !previous ? 1 : 0),
         revision: (previous?.revision || 0) + 1,
       });
       await deliver(tabId);
       return true;
     }
+    const state = states.get(tabId) || emptyState();
+    states.set(tabId, state);
     const features = Array.isArray(request.features)
       ? request.features.filter((f) => typeof f === "string" && f)
       : [];
@@ -109,14 +158,10 @@ export function createComposeNotifications(api, { getFeatureUsage } = {}) {
     // independently of the parser and of any future enforcement policy.
     const usage = getFeatureUsage && features.length
       ? await getFeatureUsage(features, request) : {};
-    const state = states.get(tabId) || {
-      pro: [],
-      standard: [],
-      proNotes: [],
-      standardNotes: [],
-      showTrial: false,
-      register: false,
-    };
+    // A reset during the asynchronous usage lookup supersedes this report.
+    if (states.get(tabId) !== state) {
+      return false;
+    }
     state.usage = { ...state.usage, ...usage };
     state.blocked = [...new Set([...(state.blocked || []), ...(request.blockedFeatures || [])])];
     state.blocked = state.blocked.filter(name => state.usage[name]?.allowed !== true);
@@ -135,6 +180,54 @@ export function createComposeNotifications(api, { getFeatureUsage } = {}) {
     return true;
   }
 
+  async function reportIssue(request) {
+    const tabId = await composeTab(request.windowId);
+    const state = states.get(tabId) || emptyState();
+    if (request.evaluationId !== state.evaluationId) {
+      return false;
+    }
+    if (typeof request.message !== "string" || !request.message.trim()) {
+      throw new Error("Missing Composer issue message");
+    }
+    const action = request.action;
+    if (action != null && (action.type !== "copyTemplateSource" || typeof action.source !== "string")) {
+      throw new Error("Unsupported Composer issue action");
+    }
+    state.issues.push({
+      id: ++state.nextIssueId,
+      expression: typeof request.expression === "string" ? request.expression : "",
+      message: request.message,
+      details: typeof request.details === "string" ? request.details : "",
+      action: action ? { type: action.type, source: action.source } : null,
+    });
+    state.revision++;
+    states.set(tabId, state);
+    await deliver(tabId);
+    return true;
+  }
+
+  async function issueAction(tabId, data) {
+    const state = states.get(tabId);
+    if (data.evaluationId !== state.evaluationId) {
+      return false;
+    }
+    const issue = state.issues.find(item => item.id === data.issueId);
+    if (!issue) {
+      return false;
+    }
+    if (data.action === "dismissIssue") {
+      state.issues = state.issues.filter(item => item.id !== issue.id);
+      state.revision++;
+      await deliver(tabId);
+      return true;
+    }
+    if (issue.action?.type === "copyTemplateSource") {
+      await copyText(issue.action.source);
+      return true;
+    }
+    return false;
+  }
+
   function onMessage(data, sender) {
     if (data?.command !== command || sender.tab?.type !== "messageCompose") {
       return false;
@@ -147,6 +240,9 @@ export function createComposeNotifications(api, { getFeatureUsage } = {}) {
       return false;
     }
     switch (data.action) {
+      case "dismissIssue":
+      case "copyTemplateSource":
+        return issueAction(tabId, data);
       case "buy":
         return api.Utilities.showComposeLicenseDialog(
           tabId,
@@ -170,6 +266,7 @@ export function createComposeNotifications(api, { getFeatureUsage } = {}) {
 
   return {
     show,
+    reportIssue,
     async updateLicense(info) {
       if (info.status !== "Valid") {
         return;

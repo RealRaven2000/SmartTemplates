@@ -1222,8 +1222,20 @@
   "notification.bodyModified.instructions": {
     "message": "メールの内容を変更せずに保持するにはキャンセルをクリックしてください。"
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "テンプレートのソースをコピー"
+  },
   "notification.compose.details": {
     "message": "ライセンス対象の機能を使用しています"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "閉じる"
+  },
+  "notification.compose.issue": {
+    "message": "問題"
+  },
+  "notification.compose.issues": {
+    "message": "テンプレートの問題"
   },
   "notification.compose.learnMore": {
     "message": "詳しく見る"

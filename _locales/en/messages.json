@@ -1261,6 +1261,9 @@
   "notification.compose.blockedStandard": {
     "message": "To use this feature, please get a SmartTemplates Standard or Pro license."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Copy template source"
+  },
   "notification.compose.countedToday": {
     "message": "Today is already counted. Further uses today do not reduce your remaining allowance."
   },
@@ -1270,6 +1273,9 @@
   "notification.compose.dismiss": {
     "message": "Dismiss notification"
   },
+  "notification.compose.dismissIssue": {
+    "message": "Dismiss"
+  },
   "notification.compose.expand": {
     "message": "Expand"
   },
@@ -1278,6 +1284,12 @@
   },
   "notification.compose.details": {
     "message": "Licensed features used"
+  },
+  "notification.compose.issue": {
+    "message": "Issue"
+  },
+  "notification.compose.issues": {
+    "message": "Template issues"
   },
   "notification.compose.learnMore": {
     "message": "Learn more"
@@ -2217,7 +2229,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{L}Download examples directly from the online snippet library and add smart snippets to the Composer right-click menu. [issue 437] [issue 432]{/L}{L}Expanded quoted-tag command scopes to target the message head, entire body, or both. {{%deleteQuotedTags()%}} / {{%replaceQuotedTags()%}}: {{head}}, {{body}}, {{all}} [issue 436]{/L}{L}Configure your external HTML editor in Advanced Settings. [issue 430]{/L}{L}Reorganized variable help and added signature documentation. {{%sig(none)%}} [issue 435] [issue 434]{/L}{L}Updated Thunderbird 160 beta compatibility while retaining Thunderbird 140 ESR support. [issue 433]{/L}{L}Fixed HTML sanitisation when inserting templates: sanitised elements are now imported into the compose document, restoring missing right-click menus. Existing filtering of scripts and unsafe attributes is retained. [issue 432]{/L}{L}Improved settings appearance and toolbar colors. Delete removes the selected template or snippet menu entry with minimal scrolling. [issue 431]{/L}"
+    "message": "{L}Added the Pro feature {{%prompt()%}} to request free text or radio-button choices when processing templates and Smart Fragments. Use clipboard contents as the default, insert the answer into the email, or copy it to the clipboard for reuse. Limited evaluation access is available. [issue 443]{/L}{L}Consolidated Composer licensing notices into a compact, expandable notification bubble with trial, Pro, and Standard feature information. Licensing and feature-comparison links open in your external browser. [issue 441]{/L}{L}After the general trial, tracked licensed features each receive an independent allowance of 12 free uses. Only the first use of each feature per calendar day counts; further emails and Thunderbird restarts that day do not consume more uses. Features covered by your license do not consume an allowance. [issue 441]{/L}{L}Remaining uses appear beside each feature with an explanation of daily counting and the required license. Exhausted features are skipped while their original variables remain in the email; blocked features are highlighted in pink. [issue 441]{/L}{L}Template and Smart Fragment processing problems now appear in the Composer notification bubble, with diagnostic details and individual Dismiss buttons, so you can keep editing without losing the errors. New issues join the same bubble as they arrive. Insert Snippet preserves earlier issues; Change Template clears them. HTML insertion failures also offer Copy template source. [issue 442]{/L}{L}Fixed trial access to clipboard operations, tags, and {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Simplified localization entity names, updated their references, and sorted locale catalogs. Added translations for the Refresh UI action. [issue 440]{/L}{L}Compatible with Thunderbird 162, while retaining Thunderbird 140 ESR support.{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This particular fix was added since the previous release.",

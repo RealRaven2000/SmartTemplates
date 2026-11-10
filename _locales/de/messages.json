@@ -1224,8 +1224,20 @@
   "notification.bodyModified.instructions": {
     "message": "Klicken Sie auf „Abbrechen“, um den E-Mail-Inhalt unverändert zu lassen."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Vorlagenquelltext kopieren"
+  },
   "notification.compose.details": {
     "message": "Lizenzpflichtige Funktionen verwendet"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Ausblenden"
+  },
+  "notification.compose.issue": {
+    "message": "Problem"
+  },
+  "notification.compose.issues": {
+    "message": "Vorlagenprobleme"
   },
   "notification.compose.learnMore": {
     "message": "Mehr erfahren"

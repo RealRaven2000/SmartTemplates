@@ -1225,8 +1225,20 @@
   "notification.bodyModified.instructions": {
     "message": "Κάντε κλικ σε Ακύρωση για να διατηρήσετε το περιεχόμενο του email χωρίς αλλαγές."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Αντιγραφή πηγαίου κώδικα προτύπου"
+  },
   "notification.compose.details": {
     "message": "Χρησιμοποιήθηκαν λειτουργίες με άδεια χρήσης"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Απόρριψη"
+  },
+  "notification.compose.issue": {
+    "message": "Πρόβλημα"
+  },
+  "notification.compose.issues": {
+    "message": "Προβλήματα προτύπου"
   },
   "notification.compose.learnMore": {
     "message": "Μάθετε περισσότερα"

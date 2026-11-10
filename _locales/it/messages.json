@@ -1207,8 +1207,20 @@
   "notification.bodyModified.instructions": {
     "message": "Clicca su Annulla per mantenere il contenuto dell'email invariato."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Copia il codice sorgente del modello"
+  },
   "notification.compose.details": {
     "message": "Funzioni con licenza utilizzate"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Ignora"
+  },
+  "notification.compose.issue": {
+    "message": "Problema"
+  },
+  "notification.compose.issues": {
+    "message": "Problemi del modello"
   },
   "notification.compose.learnMore": {
     "message": "Ulteriori informazioni"

@@ -1228,8 +1228,20 @@
   "notification.bodyModified.instructions": {
     "message": "按一下取消以保持電子郵件內容不變。"
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "複製範本原始碼"
+  },
   "notification.compose.details": {
     "message": "使用了需授權的功能"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "關閉"
+  },
+  "notification.compose.issue": {
+    "message": "問題"
+  },
+  "notification.compose.issues": {
+    "message": "範本問題"
   },
   "notification.compose.learnMore": {
     "message": "瞭解更多"

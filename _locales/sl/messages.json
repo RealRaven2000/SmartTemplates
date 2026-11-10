@@ -1234,8 +1234,20 @@
   "notification.bodyModified.instructions": {
     "message": "Kliknite Prekliči, da ohranite vsebino e-pošte nespremenjeno."
   },
+  "notification.compose.copyTemplateSource": {
+    "message": "Kopiraj izvorno kodo predloge"
+  },
   "notification.compose.details": {
     "message": "Uporabljene licenčne funkcije"
+  },
+  "notification.compose.dismissIssue": {
+    "message": "Opusti"
+  },
+  "notification.compose.issue": {
+    "message": "Težava"
+  },
+  "notification.compose.issues": {
+    "message": "Težave s predlogo"
   },
   "notification.compose.learnMore": {
     "message": "Več informacij"
