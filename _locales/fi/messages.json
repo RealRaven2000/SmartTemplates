@@ -1258,6 +1258,9 @@
   "notification.compose.remindLater": {
     "message": "Muistuta myöhemmin"
   },
+  "notification.compose.usageHint": {
+    "message": "Kukin numero näyttää, kuinka monta ilmaista käyttökertaa on jäljellä. Kukin toiminto lasketaan vain kerran päivässä; sen käyttäminen uudelleen samana päivänä ei pienennä jäljellä olevaa määrää. Näet lisätietoja viemällä osoittimen numeron päälle tai napsauttamalla sitä."
+  },
   "notification.donate": {
     "message": "Lahjoita"
   },

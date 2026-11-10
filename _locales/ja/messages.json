@@ -1243,6 +1243,9 @@
   "notification.compose.remindLater": {
     "message": "後で通知する"
   },
+  "notification.compose.usageHint": {
+    "message": "各数値は、無料で利用できる残り回数を示します。各機能は1日に1回だけカウントされ、同じ日に再び利用しても残り回数は減りません。詳細を表示するには、数値にマウスポインターを合わせるか、クリックしてください。"
+  },
   "notification.donate": {
     "message": "寄付"
   },

@@ -1178,6 +1178,9 @@
   "notification.bodyModified.instructions": {
     "message": "Klik Batal untuk tetap menjaga isi email tanpa perubahan."
   },
+  "notification.compose.usageHint": {
+    "message": "Setiap angka menunjukkan berapa kali penggunaan gratis yang tersisa. Setiap fitur hanya dihitung sekali sehari; menggunakannya lagi pada hari yang sama tidak mengurangi angka yang tersisa. Arahkan penunjuk ke angka atau klik angka tersebut untuk melihat detail."
+  },
   "notification.donate": {
     "message": "Donasi"
   },

@@ -1258,6 +1258,9 @@
   "notification.compose.remindLater": {
     "message": "Påminn mig senare"
   },
+  "notification.compose.usageHint": {
+    "message": "Varje tal visar hur många kostnadsfria användningar som återstår. Varje funktion räknas bara en gång per dag; att använda den igen samma dag minskar inte det återstående antalet. Håll pekaren över ett tal eller klicka på det för mer information."
+  },
   "notification.donate": {
     "message": "Donera"
   },

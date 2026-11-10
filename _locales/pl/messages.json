@@ -1252,6 +1252,9 @@
   "notification.compose.remindLater": {
     "message": "Przypomnij mi później"
   },
+  "notification.compose.usageHint": {
+    "message": "Każda liczba pokazuje, ile bezpłatnych użyć pozostało. Każda funkcja jest zliczana tylko raz dziennie; ponowne użycie tego samego dnia nie zmniejsza pozostałej liczby. Najedź wskaźnikiem na liczbę lub kliknij ją, aby wyświetlić szczegóły."
+  },
   "notification.donate": {
     "message": "Dotacja"
   },

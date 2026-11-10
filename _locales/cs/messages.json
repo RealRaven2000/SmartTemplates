@@ -1246,6 +1246,9 @@
   "notification.compose.remindLater": {
     "message": "Připomenout později"
   },
+  "notification.compose.usageHint": {
+    "message": "Každé číslo ukazuje, kolik bezplatných použití zbývá. Každá funkce se započítává pouze jednou denně; její další použití ve stejný den zbývající počet nesnižuje. Podrobnosti zobrazíte najetím ukazatele na číslo nebo kliknutím na něj."
+  },
   "notification.donate": {
     "message": "Darovat"
   },

@@ -1255,6 +1255,9 @@
   "notification.compose.remindLater": {
     "message": "Opomni me pozneje"
   },
+  "notification.compose.usageHint": {
+    "message": "Vsaka številka prikazuje, koliko brezplačnih uporab je še na voljo. Vsaka funkcija se šteje samo enkrat na dan; ponovna uporaba istega dne ne zmanjša preostalega števila. Za podrobnosti premaknite kazalec nad številko ali jo kliknite."
+  },
   "notification.donate": {
     "message": "Daruj"
   },

@@ -1255,6 +1255,9 @@
   "notification.compose.remindLater": {
     "message": "Me le rappeler plus tard"
   },
+  "notification.compose.usageHint": {
+    "message": "Chaque nombre indique combien d’utilisations gratuites restent disponibles. Chaque fonctionnalité n’est comptée qu’une fois par jour ; la réutiliser le même jour ne réduit pas le nombre restant. Survolez un nombre ou cliquez dessus pour afficher les détails."
+  },
   "notification.donate": {
     "message": "Faire un don"
   },

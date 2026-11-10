@@ -1249,6 +1249,9 @@
   "notification.compose.remindLater": {
     "message": "Later herinneren"
   },
+  "notification.compose.usageHint": {
+    "message": "Elk getal geeft aan hoeveel gratis gebruiksbeurten er over zijn. Elke functie wordt slechts één keer per dag geteld; opnieuw gebruiken op dezelfde dag verlaagt het resterende aantal niet. Beweeg de muisaanwijzer over een getal of klik erop voor meer informatie."
+  },
   "notification.donate": {
     "message": "Doneren"
   },

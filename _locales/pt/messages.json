@@ -1249,6 +1249,9 @@
   "notification.compose.remindLater": {
     "message": "Lembrar-me mais tarde"
   },
+  "notification.compose.usageHint": {
+    "message": "Cada número indica quantas utilizações gratuitas restam. Cada funcionalidade é contabilizada apenas uma vez por dia; voltar a utilizá-la no mesmo dia não reduz o número restante. Passe o cursor sobre um número ou clique nele para ver os detalhes."
+  },
   "notification.donate": {
     "message": "Doar"
   },

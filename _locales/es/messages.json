@@ -1624,6 +1624,9 @@
   "notification.bodyModified.instructions": {
     "message": "Haz clic en Cancelar para mantener el contenido del correo electrónico sin cambios."
   },
+  "notification.compose.usageHint": {
+    "message": "Cada número indica cuántos usos gratuitos quedan. Cada función solo se cuenta una vez al día; volver a utilizarla el mismo día no reduce el número restante. Pase el cursor sobre un número o haga clic en él para ver los detalles."
+  },
   "notification.donate": {
     "message": "Donar"
   },

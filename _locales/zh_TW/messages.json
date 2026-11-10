@@ -1249,6 +1249,9 @@
   "notification.compose.remindLater": {
     "message": "稍後提醒我"
   },
+  "notification.compose.usageHint": {
+    "message": "每個數字表示剩餘的免費使用次數。每項功能每天只計數一次；在同一天再次使用該功能不會減少剩餘次數。將滑鼠指標停留在數字上或點選數字即可查看詳細資訊。"
+  },
   "notification.donate": {
     "message": "捐"
   },
