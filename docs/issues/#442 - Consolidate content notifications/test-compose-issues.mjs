@@ -27,6 +27,7 @@ function fixture(options = {}) {
   let receive, removed;
   const deliveries = [], copies = [];
   const api = {
+    storage: { local: { get: async () => ({}), set: async () => {} } },
     i18n: { getMessage: key => key },
     runtime: { onMessage: { addListener: listener => { receive = listener; } } },
     tabs: {
