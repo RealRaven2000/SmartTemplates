@@ -632,17 +632,24 @@ SmartTemplate4.Util = {
     }
   },
 
-  /* SmartTemplate4 Pro / licensing features */
-  // default to isRegister from now = show button for buying a license.
-  // isProFeature = true - show notification based on function used
-  //              = false - show fact that a license is needed.
+  /**
+   * Reports licensing information to the Composer notification bubble.
+   * Routing failures are logged without interrupting composition.
+   *
+   * @param {string|string[]} featureList - Feature name or array of feature names;
+   *   an empty string requests general licensing/trial information.
+   * @param {boolean} isRegister - Whether to offer the applicable Buy, Renew,
+   *   or Upgrade action.
+   * @param {boolean} isProFeature - True for Pro features; false for Standard
+   *   features or general licensing/trial information.
+   * @param {string} [additionalText] - Extra explanatory text for the feature tier.
+   * @returns {Promise<void>} Resolves after reporting or logging a routing failure;
+   *   does not guarantee that the bubble is visible.
+   */
   popupLicenseNotification: async function (featureList, isRegister, isProFeature, additionalText) {
     const util = SmartTemplate4.Util;
-    let notifyBox,
-      featureName = "",
-      isList = false,
-      hasLicense = util.hasLicense(), // validation=false
-      showedWarning = false;
+    let featureName = "",
+      hasLicense = util.hasLicense(); // validation=false
 
     if (SmartTemplate4.Preferences.isDebugOption("premium.testNotification")) {
       util.logToConsole(
@@ -665,9 +672,6 @@ SmartTemplate4.Util = {
     } else {
       // Array
       featureName = featureList.join("|"); // we use this in the referrer URL, but might need to concatenate.
-      if (featureList.length > 1) {
-        isList = true;
-      }
     }
 
     util.logDebug("popupLicenseNotification(" + featureName + ")");
@@ -675,12 +679,25 @@ SmartTemplate4.Util = {
     if (window.document.documentElement.getAttribute("windowtype") === "msgcompose") {
       try {
         // Snapshot the arrays before the parser clears its per-insertion lists.
-        const features = typeof featureList === "string"
-          ? (featureList ? [featureList] : []) : [...featureList];
-        const buttonKey = util.licenseInfo.status === "Expired"
-          ? "notification.premium.btn.renewLicense"
-          : util.licenseInfo.keyType === 2
-            ? "notification.premium.btn.upgrade" : "notification.premium.btn.getLicense";
+        let features = [];
+        if (typeof featureList === "string") {
+          if (featureList) {
+            features.push(featureList);
+          }
+        } else {
+          features = [...featureList];
+        }
+        let buttonKey;
+        switch (util.licenseInfo.status) {
+          case "Expired":
+            buttonKey = "notification.premium.btn.renewLicense";
+            break;
+          default:
+            buttonKey = util.licenseInfo.keyType === 2
+              ? "notification.premium.btn.upgrade"
+              : "notification.premium.btn.getLicense";
+            break;
+        }
         const shown = await util.notifyTools.notifyBackground({
           func: "composeLicenseNotification",
           windowId: util.extension.windowManager.getWrapper(window).id,
@@ -692,165 +709,18 @@ SmartTemplate4.Util = {
           buttonKey,
           blockedFeatures: [...util.blockedFeatures],
         });
-        if (shown) return;
+        if (!shown) {
+          util.logDebug("Composer licensing notification report was not accepted (it may have been superseded)");
+        }
       } catch (error) {
-        util.logException("Composer notification failed; using native notification", error);
+        util.logException("Composer licensing notification failed", error);
       }
-    }
-
-    if (typeof specialTabs == "object" && specialTabs.msgNotificationBar) {
-      notifyBox = specialTabs.msgNotificationBar;
     } else {
-      if (window.location.toString().endsWith("messengercompose.xhtml")) {
-        notifyBox = gComposeNotification || document.getElementById("attachmentNotificationBox"); // Tb91 vs 78
-      }
-      // composer/dialog windows fallback - show in main window if notification is not available in this window
-      if (!notifyBox) {
-        notifyBox = util.Mail3PaneWindow.specialTabs.msgNotificationBar;
-      }
-    }
-    let theText,
-      featureTitle = "";
-    if (isProFeature) {
-      theText = isList
-        ? util.getBundleString("notification.premium.text.plural")
-        : util.getBundleString("notification.premium.text");
-      featureTitle = isList ? featureList.join(", ") : featureName; // nice l10n name for pro features
-
-      theText = theText.replace("{1}", "'" + featureTitle + "'");
-      if (additionalText) {
-        theText = theText + "  " + additionalText;
-      }
-      showedWarning = true;
-    }
-    if (!showedWarning && !isProFeature) {
-      if (!featureList) {
-        theText = util.getBundleString("notification.license.text");
-        let txtGracePeriod = util.gracePeriodText(util.licenseInfo.trialDays);
-        theText = theText + "  " + txtGracePeriod;
-      } else {
-        theText = isList
-          ? util.getBundleString("notification.standard.text.plural")
-          : util.getBundleString("notification.standard.text");
-        featureTitle = isList ? featureList.join(", ") : featureName; // nice l10n name for std features
-        theText = theText.replace("{1}", "'" + featureTitle + "'");
-        if (additionalText) {
-          theText = theText + "  " + additionalText;
-        }
-      }
-    }
-
-    let regBtn,
-      hotKey = util.getBundleString("notification.premium.btn.hotKey"),
-      nbox_buttons = [];
-
-    switch (SmartTemplate4.Util.licenseInfo.status) {
-      case "Expired":
-        regBtn = util.getBundleString("notification.premium.btn.renewLicense");
-        break;
-      default:
-        if (SmartTemplate4.Util.licenseInfo.keyType == 2) {
-          // standard license
-          regBtn = util.getBundleString("notification.premium.btn.upgrade");
-          hotKey = util.getBundleString("notification.premium.btn.upgrade.hotKey");
-        } else {
-          regBtn = util.getBundleString("notification.premium.btn.getLicense");
-        }
-    }
-
-    if (!notifyBox) {
-      alert("no notification");
-      return;
-    }
-    let notificationKey = isProFeature ? "SmartTemplate4-proFeature" : "SmartTemplate4-license";
-    // let's force additional notifications for Pro features
-    if (!isProFeature && notifyBox.getNotificationWithValue(notificationKey)) {
-      // notification is already shown on screen.
-      util.logDebug(
-        "notifyBox for [" + notificationKey + "] is already displayed, no action necessary."
-      );
-      return;
-    }
-    util.logDebug("Showing notifyBox for [" + notificationKey + "]...");
-
-    // registration button
-    if (isRegister) {
-      nbox_buttons.push({
-        label: regBtn,
-        accessKey: hotKey,
-        callback: function () {
-          util.showLicenseDialog(featureName);
-        },
-        popup: null,
+      console.warn("SmartTemplates: licensing notification requested outside a Composer window", {
+        featureName, isProFeature,
       });
     }
 
-    // licensing buttons
-    if (!isProFeature) {
-      let donateMsg = util.getBundleString("notification.licensing");
-      nbox_buttons.push({
-        label: donateMsg,
-        accessKey: null,
-        callback: function () {
-          const theUtil = util.mainInstance.Util;
-          theUtil.showLicensePage();
-          // remove this message?
-          // let item = notifyBox.getNotificationWithValue(notificationKey);
-          // notifyBox.removeNotification(item, false);
-        },
-        popup: null,
-      });
-    }
-
-    if (notifyBox) {
-      let item = notifyBox.getNotificationWithValue(notificationKey);
-      if (item) {
-        notifyBox.removeNotification(item, false);
-      }
-    }
-
-    // the standard license warning will be always shown on top of the other ones [PRIORITY_WARNING_HIGH]
-    // it contains the number of free / trial days left
-    const imgSrc = isProFeature
-      ? "chrome://smarttemplate4/content/skin/proFeature.png"
-      : "chrome://smarttemplate4/content/skin/licensing.png";
-
-    let priority = notifyBox.PRIORITY_WARNING_HIGH; // expired / no license
-    if (isProFeature) {
-      priority = notifyBox.PRIORITY_INFO_HIGH; // pro feature used
-    } else if (!featureList && util.licenseInfo.trialDays > 0) {
-      priority = notifyBox.PRIORITY_INFO_MEDIUM; // trial period
-    }
-
-    let newNotification = await notifyBox.appendNotification(
-      notificationKey, // "String identifier that can uniquely identify the type of the notification."
-      {
-        priority: priority,
-        label: theText,
-        eventCallback: null,
-      },
-      nbox_buttons
-    );
-
-    let containerSelector; //
-    switch (newNotification?.messageImage?.tagName) {
-      case "span":
-        containerSelector = ".container"; // Tb 115
-        break;
-      case "img":
-        containerSelector = ".icon-container"; // Tb 128
-        break;
-    }
-
-    // setting img was removed in Tb91
-    if (containerSelector) {
-      let container = newNotification.shadowRoot.querySelector(containerSelector);
-      if (container) {
-        let im = document.createElement("img");
-        im.setAttribute("src", imgSrc);
-        container.insertBefore(im, newNotification.shadowRoot.querySelector(".icon"));
-      }
-    }
   },
 
   // replaces Util.Licenser.showDialog(featureName);

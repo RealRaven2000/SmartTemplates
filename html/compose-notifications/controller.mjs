@@ -1,9 +1,12 @@
 // Background-only controller. Usage is supplied by the explicit Utilities API;
-// daily reminder suppression and persistent snooze remain separate work.
+// reminder snoozing affects feature notices, never accounting or blocked operations.
 export function createComposeNotifications(api, {
   getFeatureUsage, copyText = text => navigator.clipboard.writeText(text),
+  now = () => new Date(),
 } = {}) {
   const states = new Map();
+  const snoozeKey = "licenseReminderSnoozedUntil";
+  let snoozedUntil = 0;
   const command = "composeNotifications";
   const msg = (key) => api.i18n.getMessage(key);
 
@@ -26,6 +29,7 @@ export function createComposeNotifications(api, {
       pro: [], standard: [], proNotes: [], standardNotes: [],
       showTrial: false, register: false, issues: [], nextIssueId: 0,
       evaluationId: 0, generation: 0, revision: 0,
+      featureRemindersHidden: now().getTime() < snoozedUntil,
     };
   }
 
@@ -41,7 +45,9 @@ export function createComposeNotifications(api, {
   }
 
   function model(state) {
-    const featureList = (features, tier) => features.map((name) => {
+    const featureList = (features, tier) => features
+      .filter(name => !state.featureRemindersHidden || state.blocked?.includes(name))
+      .map((name) => {
       const usage = state.usage?.[name];
       const feature = { name };
       feature.blocked = state.blocked?.includes(name) || false;
@@ -66,10 +72,14 @@ export function createComposeNotifications(api, {
     const proFeatures = featureList(state.pro, "pro");
     const standardFeatures = featureList(state.standard, "standard");
     const blocked = [...proFeatures, ...standardFeatures].some(feature => feature.blocked);
+    const hasFeatures = !!proFeatures.length || !!standardFeatures.length;
+    const hasTrial = state.showTrial && state.trialDays > 0;
+    const canSnooze = !state.featureRemindersHidden && [...state.pro, ...state.standard]
+      .some(name => !state.blocked?.includes(name));
     return {
       revision: state.revision,
       generation: state.generation || 0,
-      visible: !!state.issues.length || (state.showTrial && state.trialDays > 0) || !!state.pro.length || !!state.standard.length,
+      visible: !!state.issues.length || hasTrial || hasFeatures,
       evaluationId: state.evaluationId,
       issues: state.issues.map(({ id, expression, message, details, action }) => ({
         id, expression: expressionPreview(expression), message, details,
@@ -79,7 +89,7 @@ export function createComposeNotifications(api, {
       issuesLabel: msg("notification.compose.issues"),
       dismissIssue: msg("notification.compose.dismissIssue"),
       copyTemplateSource: msg("notification.compose.copyTemplateSource"),
-      hasLicensing: !!state.pro.length || !!state.standard.length || (state.showTrial && state.trialDays > 0),
+      hasLicensing: hasFeatures || hasTrial,
       title: msg("extensionName"),
       blocked,
       allUsed: msg("notification.compose.allUsed"),
@@ -95,7 +105,6 @@ export function createComposeNotifications(api, {
         state.showTrial && state.trialDays > 0
           ? msg("trialDays").replace("{0}", state.trialDays)
           : "",
-      licenseText: msg("notification.license.text"),
       licensingLabel: msg("notification.licensing"),
       proFeatures,
       standardFeatures,
@@ -107,10 +116,10 @@ export function createComposeNotifications(api, {
         ? msg("notification.compose.usageHint") : "",
       buttons: [
         ...(state.register ? [{ action: "buy", label: msg(state.buttonKey), primary: true }] : []),
-        ...(state.pro.length || state.standard.length
+        ...(hasFeatures
           ? [{ action: "compare", label: msg("message.features") }]
           : []),
-        { action: "later", label: msg("notification.compose.remindLater") },
+        ...(canSnooze ? [{ action: "later", label: msg("notification.compose.remindLater") }] : []),
       ],
       learnMore: msg("notification.compose.learnMore"),
     };
@@ -138,6 +147,7 @@ export function createComposeNotifications(api, {
       }
       states.set(tabId, {
         ...emptyState(),
+        featureRemindersHidden: previous?.featureRemindersHidden || now().getTime() < snoozedUntil,
         // Feature accounting restarts for snippets; retained issues do not.
         issues: clearIssues ? [] : previous?.issues || [],
         nextIssueId: clearIssues ? 0 : previous?.nextIssueId || 0,
@@ -256,12 +266,25 @@ export function createComposeNotifications(api, {
         return api.windows.openDefaultBrowser(
           "https://smarttemplates.quickfolders.org/premium.html#featureComparison"
         );
-      // Prototype only: no persistent snooze, trial changes, or daily suppression.
       case "later":
-        return Promise.resolve(true);
+        return snoozeFeatureReminders();
       default:
         return false;
     }
+  }
+
+  async function snoozeFeatureReminders() {
+    const midnight = new Date(now().getTime());
+    midnight.setHours(24, 0, 0, 0);
+    // Persist before changing the UI so a storage failure cannot imply success.
+    await api.storage.local.set({ [snoozeKey]: midnight.getTime() });
+    snoozedUntil = midnight.getTime();
+    for (const [tabId, state] of states) {
+      state.featureRemindersHidden = true;
+      state.revision++;
+      await deliver(tabId);
+    }
+    return true;
   }
 
   return {
@@ -286,6 +309,8 @@ export function createComposeNotifications(api, {
       }
     },
     async start() {
+      const stored = await api.storage.local.get(snoozeKey);
+      snoozedUntil = Number.isFinite(stored[snoozeKey]) ? stored[snoozeKey] : 0;
       api.runtime.onMessage.addListener(onMessage);
       api.tabs.onRemoved.addListener((tabId) => states.delete(tabId));
       await api.composeScripts.register({

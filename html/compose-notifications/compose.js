@@ -409,7 +409,7 @@
     if (licenseContent) {
       licenseContent.replaceChildren(
         make("strong", "trial", model.trial),
-        document.createTextNode(model.licenseText + " ")
+        document.createTextNode(" ")
       );
       const link = make("a", "", model.licensingLabel);
       link.href = "https://smarttemplates.quickfolders.org/contribute.html";
@@ -435,9 +435,6 @@
       const button = make("button", item.primary ? "primary" : "", item.label);
       button.type = "button";
       button.addEventListener("click", () => {
-        if (item.action === "later") {
-          bubble.open = false;
-        } // Dummy; does not persist a snooze.
         act(item.action);
       });
       actions.append(button);

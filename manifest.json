@@ -5,6 +5,11 @@
 	"description": "__MSG_extensionDescription__",
   "version": "4.21",
   "default_locale": "en",
+  "web_accessible_resources": [
+    "html/compose-notifications/notification.css",
+    "html/prompt/prompt.css",
+    "chrome/content/skin/icon32x32.png"
+  ],
   "developer": {
 	  "name": "Axel Grude (author)",
     "url": "https://smarttemplates.quickfolders.org/index.html"
