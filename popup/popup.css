@@ -303,6 +303,15 @@ h3 {
     0 1px 0 white;
 }
 
+.importantInfo h3.section {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #9cc9ff !important;
+  text-shadow: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

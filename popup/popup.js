@@ -351,14 +351,14 @@ function formatAll(txt) {
     .replace(/\{a ([^}]+?)\}/g, "<a $1>")
     .replace(/\{\/a\}/gi, "</a>")
     .replace(/\{br\}/g, "<br>")
-    .replace(/\{S1\}/g, "</ul> <h3 class='section'>")
-    .replace(/\{S2\}/g, "</h3> <ul>")
+    .replace(/\{sect\}/g, "</ul> <h3 class='section'>")
+    .replace(/\{\/sect\}/g, "</h3> <ul>")
     .replace(/\[issue (\d*)\]/g, "<a class='issue' no='$1' href='#'>[issue $1]</a>")
     .replace(/\[Bugzilla (\d*)\]/g, "<a class='bugzilla' no='$1' href='#'>[Bugzilla $1]</a>")
     .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys [A] [1]
     .replace(/\[\[([^\]]+)\]\]/g, "<code class='keystroke'>$1</code>"); // larger keys [[Cancel]] [[Ctrl]]
     // DANGEROUS .replaceAll("''", '"');
-  //{S1} new section / list with title {S2}.
+  // {sect}Section title{/sect} starts a new section and list.
 }
 
 // eslint-disable-next-line no-unused-vars
