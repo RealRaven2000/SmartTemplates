@@ -31,6 +31,12 @@ h5.inList {
   background: transparent;
 }
 
+h6.inList {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1em 0 0.5em;
+}
+
 h5.inList > .inListTitle {
   margin-left: 0.5em;
   background-color: rgb(247,251,199);

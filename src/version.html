@@ -8,7 +8,7 @@ permalink: version.html
 "use strict"; // use ECMAScript5 strict mode
   markActiveNavigation("version.html");
   /* Apply this site specific files to <head> element */
-  loadStyleSheet('version.css?v=3');
+  loadStyleSheet('version.css?v=4');
   loadStyleSheet('infoBox.css?v=2');
   loadStyleSheet('myProjects.css');
 	loadStyleSheet('smarttemplate-pro.css');
@@ -243,6 +243,7 @@ permalink: version.html
 		</span>
   </h4>
   <ul>
+
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li>
       <strong>Interactive prompts in templates and Smart Fragments (Pro).</strong>
@@ -262,17 +263,29 @@ permalink: version.html
         See the <a href="variables.html#prompt">parameters and examples</a> for free-text and clipboard defaults.
       </p>
     </li>
+
+    <h6 class="inList">Composer notifications and feature trials</h6>
     <li>
       <strong>Compact licensing information inside the composer.</strong>
       Trial, Pro, and Standard feature notices are combined into one expandable bubble,
       keeping licensing information close at hand without repeated separate notifications.
       Expand it to see the features used, their applicable license, and remaining evaluation uses.
       Licensing and feature-comparison links open in your external browser.
+      Use <strong>Remind me later</strong> to hide Standard and Pro feature countdown reminders
+      for today across composers and Thunderbird restarts. Template errors and actual blocked
+      features remain visible.
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/441">[issue 441]</a>
     </li>
     <li>
+      <strong>Trial and renewal grace periods.</strong>
+      New users have 28 trial days without consuming individual feature allowances.
+      Users with an expired license have 7 grace days from license expiry to renew
+      while retaining access to licensed template features.
+      Previous feature usage is preserved through licensed and grace periods.
+    </li>
+    <li>
       <strong>Try individual licensed features after the general trial.</strong>
-      Each tracked feature has its own allowance of 12 evaluation days.
+      Outside the trial or grace period, each tracked licensed feature uses its own remaining free allowance.
       Only the first use of a feature on each local calendar day counts; further emails,
       repeated use, and Thunderbird restarts that day do not consume additional uses.
       Features covered by your license do not consume an allowance.
@@ -284,6 +297,17 @@ permalink: version.html
         Blocked template variables retain their original tokens; a blocked prompt cancels 
         insertion before opening a dialog.
       </p>
+    </li>
+    <li>
+      <strong>Template and Smart Fragment errors in the notification bubble.</strong>
+      Keep editing while processing issues remain available, and dismiss errors individually.
+      HTML insertion failures offer a Copy template source action.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/442">[issue 442]</a>
+    </li>
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li>
+      Fixed trial access to clipboard operations, tags, and <code>%deleteForwardedBody%</code>.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/439">[issue 439]</a>
     </li>
     <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
     <li>
