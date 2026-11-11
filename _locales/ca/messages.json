@@ -1234,6 +1234,9 @@
   "notification.bodyModified.instructions": {
     "message": "Feu clic a Cancel·la per mantenir el contingut del correu electrònic sense canvis."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Cada funció ofereix fins a 12 dies d’ús gratuït. Només compta el primer ús de cada dia. Es conserven els usos anteriors."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Copia el codi font de la plantilla"
   },
@@ -1242,6 +1245,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Descarta"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "La llicència ha caducat."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Us queden {0} dies de gràcia abans que s’apliquin les quotes restants de les funcions."
   },
   "notification.compose.issue": {
     "message": "Problema"
@@ -1254,6 +1263,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Recorda-m’ho més tard"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Després, cada funció amb llicència utilitza la seva pròpia quota gratuïta restant."
   },
   "notification.compose.usageHint": {
     "message": "Cada número indica quants usos gratuïts queden. Cada funció només es compta una vegada al dia; tornar-la a utilitzar el mateix dia no redueix el nombre restant. Passeu el cursor per sobre d'un número o feu-hi clic per veure'n els detalls."

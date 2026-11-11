@@ -409,6 +409,7 @@
     if (licenseContent) {
       licenseContent.replaceChildren(
         make("strong", "trial", model.trial),
+        make("span", "trial-explanation", model.trialExplanation || ""),
         document.createTextNode(" ")
       );
       const link = make("a", "", model.licensingLabel);

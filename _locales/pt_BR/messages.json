@@ -1225,6 +1225,9 @@
   "notification.bodyModified.instructions": {
     "message": "Clique em Cancelar para manter o conteúdo do e-mail inalterado."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Cada recurso oferece até 12 dias de uso gratuito. Só o primeiro uso de cada dia conta. Os usos anteriores são mantidos."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Copiar o código-fonte do modelo"
   },
@@ -1233,6 +1236,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Dispensar"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Sua licença expirou."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Restam {0} dias de tolerância antes de serem aplicados os usos restantes de cada recurso."
   },
   "notification.compose.issue": {
     "message": "Problema"
@@ -1245,6 +1254,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Lembrar mais tarde"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Depois, cada recurso licenciado usa sua própria cota gratuita restante."
   },
   "notification.compose.usageHint": {
     "message": "Cada número indica quantas utilizações gratuitas restam. Cada recurso é contabilizado apenas uma vez por dia; usá-lo novamente no mesmo dia não reduz o número restante. Passe o cursor sobre um número ou clique nele para ver os detalhes."

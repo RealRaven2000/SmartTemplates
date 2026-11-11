@@ -1234,6 +1234,9 @@
   "notification.bodyModified.instructions": {
     "message": "Kliknite Prekliči, da ohranite vsebino e-pošte nespremenjeno."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Vsaka funkcija omogoča do 12 dni brezplačne uporabe. Šteje le prva uporaba na dan. Prejšnja uporaba se ohrani."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Kopiraj izvorno kodo predloge"
   },
@@ -1242,6 +1245,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Opusti"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Vaša licenca je potekla."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Preostalo je {0} dni prehodnega obdobja, preden začnejo veljati preostale omejitve funkcij."
   },
   "notification.compose.issue": {
     "message": "Težava"
@@ -1254,6 +1263,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Opomni me pozneje"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Nato vsaka licenčna funkcija uporablja svojo preostalo brezplačno kvoto."
   },
   "notification.compose.usageHint": {
     "message": "Vsaka številka prikazuje, koliko brezplačnih uporab je še na voljo. Vsaka funkcija se šteje samo enkrat na dan; ponovna uporaba istega dne ne zmanjša preostalega števila. Za podrobnosti premaknite kazalec nad številko ali jo kliknite."

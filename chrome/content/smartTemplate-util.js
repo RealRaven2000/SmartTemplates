@@ -706,6 +706,7 @@ SmartTemplate4.Util = {
           isProFeature,
           additionalText: additionalText || "",
           trialDays: util.licenseInfo.trialDays,
+          licenseStatus: util.licenseInfo.status,
           buttonKey,
           blockedFeatures: [...util.blockedFeatures],
         });

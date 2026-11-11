@@ -1042,6 +1042,9 @@
   "newsSection.license": {
     "message": "Como este trabajo es exclusivamente financiado por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar SmartTemplates en el futuro."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Cada función ofrece hasta 12 días de uso gratuito. Solo cuenta el primer uso de cada día. Se conserva el uso anterior."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Copiar el código fuente de la plantilla"
   },
@@ -1050,6 +1053,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Descartar"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Su licencia ha caducado."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Le quedan {0} días de gracia antes de que se apliquen los usos restantes de cada función."
   },
   "notification.compose.issue": {
     "message": "Problema"
@@ -1623,6 +1632,9 @@
   },
   "notification.bodyModified.instructions": {
     "message": "Haz clic en Cancelar para mantener el contenido del correo electrónico sin cambios."
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Después, cada función con licencia utiliza su propio cupo gratuito restante."
   },
   "notification.compose.usageHint": {
     "message": "Cada número indica cuántos usos gratuitos quedan. Cada función solo se cuenta una vez al día; volver a utilizarla el mismo día no reduce el número restante. Pase el cursor sobre un número o haga clic en él para ver los detalles."

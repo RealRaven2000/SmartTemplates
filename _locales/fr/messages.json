@@ -1234,6 +1234,9 @@
   "notification.bodyModified.instructions": {
     "message": "Cliquez sur Annuler pour conserver le contenu du courrier électronique tel quel."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Chaque fonction offre jusqu’à 12 jours d’utilisation gratuite. Seule la première utilisation quotidienne compte. Les utilisations précédentes sont conservées."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Copier le code source du modèle"
   },
@@ -1242,6 +1245,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Fermer"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Votre licence a expiré."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Il vous reste {0} jours de grâce avant que les quotas de fonctions restants ne s’appliquent."
   },
   "notification.compose.issue": {
     "message": "Problème"
@@ -1254,6 +1263,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Me le rappeler plus tard"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Ensuite, chaque fonction sous licence utilise son propre quota gratuit restant."
   },
   "notification.compose.usageHint": {
     "message": "Chaque nombre indique combien d’utilisations gratuites restent disponibles. Chaque fonctionnalité n’est comptée qu’une fois par jour ; la réutiliser le même jour ne réduit pas le nombre restant. Survolez un nombre ou cliquez dessus pour afficher les détails."

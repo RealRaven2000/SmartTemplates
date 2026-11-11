@@ -1241,6 +1241,9 @@
   "notification.bodyModified.instructions": {
     "message": "Клацніть Скасувати, щоб залишити вміст електронної пошти без змін."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Кожна функція надає до 12 безкоштовних днів використання. Враховується лише перше використання за день. Попереднє використання зберігається."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Копіювати вихідний код шаблону"
   },
@@ -1249,6 +1252,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Приховати"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Термін дії вашої ліцензії минув."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Залишилося {0} днів пільгового періоду, після чого діятимуть залишкові ліміти функцій."
   },
   "notification.compose.issue": {
     "message": "Проблема"
@@ -1261,6 +1270,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Нагадати пізніше"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Після цього кожна ліцензована функція використовує власний залишок безкоштовного ліміту."
   },
   "notification.compose.usageHint": {
     "message": "Кожне число показує, скільки безкоштовних використань залишилося. Кожна функція враховується лише раз на день; повторне використання того самого дня не зменшує залишок. Наведіть вказівник на число або натисніть його, щоб переглянути подробиці."

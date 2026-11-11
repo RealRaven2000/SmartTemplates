@@ -74,6 +74,12 @@ export function createComposeNotifications(api, {
     const blocked = [...proFeatures, ...standardFeatures].some(feature => feature.blocked);
     const hasFeatures = !!proFeatures.length || !!standardFeatures.length;
     const hasTrial = state.showTrial && state.trialDays > 0;
+    const expired = state.licenseStatus === "Expired";
+    let trialText = "";
+    if (hasTrial) {
+      const key = expired ? "notification.compose.expiredGrace" : "trialDays";
+      trialText = msg(key).replace("{0}", state.trialDays);
+    }
     const canSnooze = !state.featureRemindersHidden && [...state.pro, ...state.standard]
       .some(name => !state.blocked?.includes(name));
     return {
@@ -98,13 +104,13 @@ export function createComposeNotifications(api, {
       dismiss: msg("notification.compose.dismiss"),
       blockedExplanation: blocked ? msg("notification.compose.blockedExplanation") : "",
       compact:
-        blocked ? msg("notification.compose.blocked") : state.showTrial && state.trialDays > 0
-          ? msg("trialDays").replace("{0}", state.trialDays)
+        blocked ? msg("notification.compose.blocked") : hasTrial
+          ? trialText
           : msg("notification.compose.details"),
-      trial:
-        state.showTrial && state.trialDays > 0
-          ? msg("trialDays").replace("{0}", state.trialDays)
-          : "",
+      trial: trialText,
+      trialExplanation: hasTrial ? msg(expired
+        ? "notification.compose.graceExplanation" : "notification.compose.trialExplanation")
+        .replace("{0}", state.trialDays) + " " + msg("notification.compose.allowanceExplanation") : "",
       licensingLabel: msg("notification.licensing"),
       proFeatures,
       standardFeatures,
@@ -182,6 +188,7 @@ export function createComposeNotifications(api, {
     }
     state.showTrial ||= !features.length;
     state.trialDays = request.trialDays;
+    state.licenseStatus = request.licenseStatus;
     state.register ||= !!request.isRegister;
     state.buttonKey = request.buttonKey;
     state.revision = (state.revision || 0) + 1;

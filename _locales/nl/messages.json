@@ -1228,6 +1228,9 @@
   "notification.bodyModified.instructions": {
     "message": "Klik op Annuleren om de inhoud van de e-mail ongewijzigd te houden."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Elke functie biedt maximaal 12 gratis gebruiksdagen. Alleen het eerste gebruik per dag telt. Eerder gebruik blijft bewaard."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Sjabloonbron kopiëren"
   },
@@ -1236,6 +1239,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Sluiten"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Uw licentie is verlopen."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "U heeft nog {0} dagen respijt voordat de resterende functietegoeden gelden."
   },
   "notification.compose.issue": {
     "message": "Probleem"
@@ -1248,6 +1257,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Later herinneren"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Daarna gebruikt elke licentiefunctie haar eigen resterende gratis tegoed."
   },
   "notification.compose.usageHint": {
     "message": "Elk getal geeft aan hoeveel gratis gebruiksbeurten er over zijn. Elke functie wordt slechts één keer per dag geteld; opnieuw gebruiken op dezelfde dag verlaagt het resterende aantal niet. Beweeg de muisaanwijzer over een getal of klik erop voor meer informatie."

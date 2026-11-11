@@ -5,10 +5,14 @@ import vm from "node:vm";
 import { createComposeNotifications } from "../../../html/compose-notifications/controller.mjs";
 
 const catalog = JSON.parse(fs.readFileSync(new URL("../../../_locales/en/messages.json", import.meta.url), "utf8"));
-function fixture(options) {
+function fixture(options, storage = {}) {
   let onMessage, onRemoved;
   const deliveries = [], actions = [];
   const api = {
+    storage: { local: {
+      get: async () => ({ ...storage }),
+      set: async values => { Object.assign(storage, values); },
+    } },
     i18n: { getMessage: key => catalog[key]?.message || key },
     runtime: { onMessage: { addListener: fn => { onMessage = fn; } } },
     tabs: {
@@ -54,7 +58,7 @@ test("changing template clears previous features and starts a new collapsed gene
   const f = fixture();
   await f.controller.start();
   await f.controller.show(f.request({ features: ["file"], blockedFeatures: ["file"] }));
-  await f.controller.show(f.request({ reset: true }));
+  await f.controller.show(f.request({ reset: true, clearIssues: true }));
   const reset = await f.send("ready");
   assert.equal(reset.visible, false);
   assert.equal(reset.generation, 1);
@@ -63,6 +67,26 @@ test("changing template clears previous features and starts a new collapsed gene
   assert.deepEqual(updated.standardFeatures.map(feature => feature.name), ["style"]);
   assert.equal(updated.blocked, false);
   assert.equal(updated.generation, 1);
+});
+
+test("trial and expired-license grace have distinct headings and allowance explanations", async () => {
+  const f = fixture();
+  await f.controller.start();
+  await f.controller.show(f.request({ licenseStatus: "Empty" }));
+  const trial = await f.send("ready");
+  assert.match(trial.trial, /28 trial days/);
+  assert.match(trial.trialExplanation, /Afterwards/);
+  assert.match(trial.trialExplanation, /up to 12 free use days/);
+  await f.controller.show(f.request({ licenseStatus: "Expired", trialDays: 7,
+    buttonKey: "notification.premium.btn.renewLicense" }));
+  const grace = await f.send("ready");
+  assert.equal(grace.trial, "Your license has expired.");
+  assert.equal(grace.compact, grace.trial);
+  assert.match(grace.trialExplanation, /7 grace days/);
+  assert.match(grace.trialExplanation, /Previous usage is retained/);
+  assert.equal(grace.buttons[0].label, "Renew License");
+  await f.controller.show(f.request({ licenseStatus: "Expired", trialDays: 0 }));
+  assert.equal((await f.send("ready")).trial, "");
 });
 
 test("pending state survives missing receivers; trial omission and actions remain independent", async () => {
@@ -85,7 +109,7 @@ test("pending state survives missing receivers; trial omission and actions remai
   assert.match(f.actions[1][1], /premium\.html#featureComparison$/);
   assert.match(f.actions[2][1], /contribute\.html$/);
   await f.send("later");
-  assert.deepEqual(await f.send("ready"), model); // No snooze or accounting yet.
+  assert.equal((await f.send("ready")).visible, false);
   await assert.rejects(f.controller.show(f.request({ windowId: undefined })), /window ID/);
   await f.controller.show(f.request({ windowId: 3, trialDays: 0 }));
   assert.equal((await f.send("ready", 30)).visible, false);
@@ -111,7 +135,42 @@ test("usage provider supplies independent counts and explanations; invalid count
   assert.equal(model.standardFeatures[1].remaining, 0);
   assert.doesNotMatch(model.standardFeatures[1].explanation, /Today is already counted/);
   assert.equal(model.standardFeatures[2].remaining, undefined);
-  assert.match(model.usageHint, /first use each day/);
+  assert.match(model.usageHint, /counted only once per day/);
+});
+
+test("feature snooze spans composers and restarts, but never hides trial, blocks or issues", async () => {
+  let date = new Date(2026, 10, 11, 23, 50);
+  const storage = {};
+  const options = { now: () => date };
+  const f = fixture(options, storage);
+  await f.controller.start();
+  await f.controller.show(f.request({ features: ["header.prefix"], isProFeature: true }));
+  await f.controller.show(f.request({ windowId: 2, features: ["file"], trialDays: 0 }));
+  await f.controller.show(f.request({}));
+  await f.controller.reportIssue({ windowId: 1, evaluationId: 0, message: "Template error" });
+  await f.send("later");
+  assert.equal(storage.licenseReminderSnoozedUntil, new Date(2026, 10, 12).getTime());
+  const quiet = await f.send("ready");
+  assert.deepEqual(quiet.proFeatures, []);
+  assert.match(quiet.trial, /28/);
+  assert.equal(quiet.issues.length, 1);
+  assert.equal(quiet.buttons.some(button => button.action === "later"), false);
+  assert.equal((await f.send("ready", 20)).visible, false);
+  await f.controller.show(f.request({ windowId: 3, features: ["style"], trialDays: 0 }));
+  assert.equal((await f.send("ready", 30)).visible, false);
+  const restarted = fixture(options, storage);
+  await restarted.controller.start();
+  await restarted.controller.show(restarted.request({ features: ["file"], trialDays: 0 }));
+  assert.equal((await restarted.send("ready")).visible, false);
+  date = new Date(2026, 10, 12, 0, 1);
+  await f.controller.show(f.request({ reset: true, clearIssues: true }));
+  await f.controller.show(f.request({ features: ["header.prefix"], isProFeature: true, trialDays: 0 }));
+  assert.equal((await f.send("ready")).visible, false);
+  await f.controller.show(f.request({ features: ["header.prefix"], isProFeature: true,
+    blockedFeatures: ["header.prefix"], trialDays: 0 }));
+  assert.equal((await f.send("ready")).blocked, true);
+  await f.controller.show(f.request({ windowId: 4, features: ["file"], trialDays: 0 }));
+  assert.equal((await f.send("ready", 40)).standardFeatures.length, 1);
 });
 
 test("zero remaining uses is only a blocked warning after an actual denied operation", async () => {
@@ -187,12 +246,14 @@ test("collapsed bubble avoids visible LanguageTool controls and restores its def
 class Element {
   constructor(tag) {
     this.tagName = tag; this.children = []; this.events = {}; this.hidden = false; this.isConnected = false;
+    this.dataset = {};
     this.properties = new Map();
     this.style = { setProperty: (key, value) => this.properties.set(key, value), removeProperty: key => this.properties.delete(key) };
   }
   append(...children) { this.children.push(...children); for (const child of children) if (child && typeof child === "object") child.isConnected = true; }
   replaceChildren(...children) { this.children = []; this.append(...children); }
   setAttribute(name, value) { this[name] = value; }
+  removeAttribute(name) { delete this[name]; }
   remove() { this.isConnected = false; }
   toggleAttribute(name, value) { if (value) this[name] = ""; else delete this[name]; }
   addEventListener(name, fn) { this.events[name] = fn; }
@@ -236,7 +297,7 @@ function rendererFixture(containers = []) {
 test("compose renderer keeps UI in shadow DOM, omits empty rows, and ignores stale readiness data", async () => {
   const { documentElement, body, listeners, sent } = rendererFixture();
   assert.equal(listeners.length, 1);
-  const model = { revision: 2, compact: "Trial", title: "SmartTemplates", learnMore: "More",
+  const model = { revision: 2, hasLicensing: true, compact: "Trial", title: "SmartTemplates", learnMore: "More",
     trial: "", proFeatures: [{ name: "header.prefix", remaining: 3,
       explanation: "3 free uses remaining. Only the first use each day counts." }],
     standardFeatures: [], proDescription: "These features are included with SmartTemplates Pro.",
@@ -246,47 +307,87 @@ test("compose renderer keeps UI in shadow DOM, omits empty rows, and ignores sta
   assert.equal(body.children.length, 0);
   assert.equal(host.children.length, 0);
   const bubble = host.shadowRoot.children[1], panel = bubble.children[1];
-  assert.equal(panel.children[0].hidden, false);
-  assert.equal(panel.children[1].hidden, true);
   assert.equal(panel.children[2].hidden, false);
   assert.equal(panel.children[3].hidden, true);
-  const featureContent = panel.children[2].children[1];
+  assert.equal(panel.children[4].hidden, false);
+  assert.equal(panel.children[5].hidden, true);
+  const featureContent = panel.children[4].children[1];
   assert.equal(featureContent.children[0].children[0].textContent, "%header.prefix%");
   const counter = featureContent.children[0].children[2];
   assert.equal(counter.textContent, "(3)");
   assert.match(counter.title, /first use each day/);
   counter.events.click();
-  assert.match(panel.children[5].children[1].textContent, /3 free uses remaining/);
-  assert.equal(panel.children[5].children[0].children[0].textContent, "%header.prefix%");
-  assert.equal(panel.children[5].hidden, false);
+  assert.match(panel.children[7].children[1].textContent, /3 free uses remaining/);
+  assert.equal(panel.children[7].children[0].children[0].textContent, "%header.prefix%");
+  assert.equal(panel.children[7].hidden, false);
   bubble.open = true;
   bubble.events.toggle();
   assert.equal(host["data-expanded"], "");
-  panel.children[4].children[0].events.click();
-  assert.equal(bubble.open, false);
+  panel.children[6].children[0].events.click();
+  // Wait for the background model rather than hiding issues locally.
+  assert.equal(bubble.open, true);
+  bubble.open = false;
   bubble.events.toggle();
   assert.equal(host["data-expanded"], undefined);
   await listeners[0]({ command: "composeNotifications", model: { ...model, revision: 1, compact: "stale" } });
-  assert.equal(bubble.children[0].children[1].children[0].textContent, "Trial");
+  assert.equal(bubble.children[0].children[1].children[0].children[0].textContent, "Trial");
   assert.equal(sent.at(-1).action, "later");
   await listeners[0]({ command: "composeNotifications", model: { ...model, revision: 3,
     blocked: true, allUsed: "All used", blockedExplanation: "The original token remains.",
     proFeatures: [{ name: "allowed", remaining: 4, explanation: "Four remaining" },
       { ...model.proFeatures[0], remaining: 0, blocked: true }] } });
   assert.equal(bubble["data-blocked"], "");
-  assert.equal(panel.children[2]["data-blocked"], "");
-  assert.equal(panel.children[3]["data-blocked"], undefined);
-  assert.match(panel.children[2].children[1].children[0].className, /is-blocked/);
-  assert.equal(panel.children[2].children[1].children[0].children[0].textContent,
+  assert.equal(panel.children[4]["data-blocked"], "");
+  assert.equal(panel.children[5]["data-blocked"], undefined);
+  assert.match(panel.children[4].children[1].children[0].className, /is-blocked/);
+  assert.equal(panel.children[4].children[1].children[0].children[0].textContent,
     `%${model.proFeatures[0].name}%`);
-  assert.equal(panel.children[2].children[1].children[0].children[2].textContent, "All used");
-  panel.children[2].children[1].children[0].children[2].events.click();
-  assert.match(panel.children[5].children[0].className, /is-blocked/);
-  assert.equal(panel.children[6].hidden, false);
+  assert.equal(panel.children[4].children[1].children[0].children[2].textContent, "All used");
+  panel.children[4].children[1].children[0].children[2].events.click();
+  assert.match(panel.children[7].children[0].className, /is-blocked/);
+  assert.equal(panel.children[8].hidden, false);
   const close = bubble.children[0].children[3];
   let prevented = false, stopped = false;
   close.events.click({ preventDefault() { prevented = true; }, stopPropagation() { stopped = true; } });
   assert.equal(prevented, true);
   assert.equal(stopped, true);
   assert.equal(host.isConnected, false);
+});
+
+
+test("issue renderer retains rows during incremental updates and sends scoped actions", async () => {
+  const { documentElement, listeners, sent } = rendererFixture();
+  const expression = "%file(\"" + "😀".repeat(50) + "\")%";
+  const first = { id: 1, expression, message: "<b>plain diagnostic</b>", details: "Line 1\nLine 2",
+    action: { type: "copyTemplateSource" } };
+  const model = { revision: 1, evaluationId: 3, generation: 1, visible: true,
+    hasLicensing: false, issues: [first], issuesLabel: "Template issues", issueLabel: "Issue",
+    dismissIssue: "Dismiss", copyTemplateSource: "Copy template source", title: "SmartTemplates",
+    proFeatures: [], standardFeatures: [], buttons: [] };
+  await listeners[0]({ command: "composeNotifications", model });
+  const host = documentElement.children[1];
+  const bubble = host.shadowRoot.children[1], panel = bubble.children[1];
+  const issues = panel.children[0], divider = panel.children[1];
+  const row = issues.children[0], content = row.children[1], token = content.children[0];
+  assert.equal(host.isConnected, true);
+  assert.equal(divider.hidden, true);
+  assert.equal(Array.from(token.textContent).length, 45);
+  assert.equal(token.textContent.endsWith("…"), true);
+  assert.equal(token.title, expression);
+  assert.equal(content.children[1].textContent, "<b>plain diagnostic</b>");
+  await content.children[3].events.click();
+  assert.equal(sent.at(-1).action, "copyTemplateSource");
+  assert.equal(sent.at(-1).evaluationId, 3);
+  const second = { id: 2, expression: "%spellcheck(zz)%", message: "Missing dictionary" };
+  await listeners[0]({ command: "composeNotifications", model: { ...model,
+    revision: 2, issues: [first, second], hasLicensing: true } });
+  assert.equal(issues.children[0], row);
+  assert.equal(issues.children.length, 2);
+  assert.equal(divider.hidden, false);
+  await row.children[2].events.click();
+  assert.equal(sent.at(-1).action, "dismissIssue");
+  assert.equal(sent.at(-1).issueId, 1);
+  await listeners[0]({ command: "composeNotifications", model: { ...model,
+    revision: 3, issues: [second] } });
+  assert.equal(row.isConnected, false);
 });

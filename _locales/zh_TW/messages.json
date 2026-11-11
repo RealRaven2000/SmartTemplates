@@ -1228,6 +1228,9 @@
   "notification.bodyModified.instructions": {
     "message": "按一下取消以保持電子郵件內容不變。"
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "每項功能最多可免費使用12天。每天只計算首次使用。先前的使用紀錄會保留。"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "複製範本原始碼"
   },
@@ -1236,6 +1239,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "關閉"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "您的授權已到期。"
+  },
+  "notification.compose.graceExplanation": {
+    "message": "寬限期還剩 {0} 天，之後將套用各功能的剩餘免費使用額度。"
   },
   "notification.compose.issue": {
     "message": "問題"
@@ -1248,6 +1257,9 @@
   },
   "notification.compose.remindLater": {
     "message": "稍後提醒我"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "之後，每項需授權的功能將使用各自剩餘的免費額度。"
   },
   "notification.compose.usageHint": {
     "message": "每個數字表示剩餘的免費使用次數。每項功能每天只計數一次；在同一天再次使用該功能不會減少剩餘次數。將滑鼠指標停留在數字上或點選數字即可查看詳細資訊。"

@@ -1225,6 +1225,9 @@
   "notification.bodyModified.instructions": {
     "message": "Klikněte na Zrušit pro zachování obsahu e-mailu beze změn."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Každá funkce nabízí až 12 dní bezplatného používání. Počítá se pouze první použití za den. Předchozí využití se zachovává."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Kopírovat zdroj šablony"
   },
@@ -1233,6 +1236,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Zavřít"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Platnost vaší licence vypršela."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Zbývá {0} dní ochranné lhůty, než se uplatní zbývající limity funkcí."
   },
   "notification.compose.issue": {
     "message": "Problém"
@@ -1245,6 +1254,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Připomenout později"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Poté každá licencovaná funkce využívá vlastní zbývající bezplatný limit."
   },
   "notification.compose.usageHint": {
     "message": "Každé číslo ukazuje, kolik bezplatných použití zbývá. Každá funkce se započítává pouze jednou denně; její další použití ve stejný den zbývající počet nesnižuje. Podrobnosti zobrazíte najetím ukazatele na číslo nebo kliknutím na něj."

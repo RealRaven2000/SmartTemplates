@@ -1210,6 +1210,9 @@
   "notification.bodyModified.instructions": {
     "message": "Кликните на Откажи да бисте задржали садржај е-поште без измена."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Свака функција нуди до 12 дана бесплатног коришћења. Рачуна се само прво коришћење сваког дана. Претходно коришћење се задржава."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Копирај изворни код шаблона"
   },
@@ -1218,6 +1221,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Одбаци"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Ваша лиценца је истекла."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Преостало је {0} дана прелазног периода пре примене преосталих квота функција."
   },
   "notification.compose.issue": {
     "message": "Проблем"
@@ -1230,6 +1239,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Подсети ме касније"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Након тога, свака лиценцирана функција користи сопствену преосталу бесплатну квоту."
   },
   "notification.compose.usageHint": {
     "message": "Сваки број показује колико је бесплатних коришћења преостало. Свака функција се рачуна само једном дневно; поновно коришћење истог дана не смањује преостали број. Пређите показивачем преко броја или кликните на њега за детаље."

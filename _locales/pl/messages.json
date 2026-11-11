@@ -1231,6 +1231,9 @@
   "notification.bodyModified.instructions": {
     "message": "Kliknij Anuluj, aby zachować treść e-maila bez zmian."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Każda funkcja oferuje do 12 dni bezpłatnego używania. Liczy się tylko pierwsze użycie danego dnia. Wcześniejsze użycie jest zachowywane."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Kopiuj źródło szablonu"
   },
@@ -1239,6 +1242,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Odrzuć"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Twoja licencja wygasła."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Pozostało {0} dni okresu karencji, zanim zaczną obowiązywać pozostałe limity funkcji."
   },
   "notification.compose.issue": {
     "message": "Problem"
@@ -1251,6 +1260,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Przypomnij mi później"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Następnie każda licencjonowana funkcja korzysta z własnego pozostałego bezpłatnego limitu."
   },
   "notification.compose.usageHint": {
     "message": "Każda liczba pokazuje, ile bezpłatnych użyć pozostało. Każda funkcja jest zliczana tylko raz dziennie; ponowne użycie tego samego dnia nie zmniejsza pozostałej liczby. Najedź wskaźnikiem na liczbę lub kliknij ją, aby wyświetlić szczegóły."

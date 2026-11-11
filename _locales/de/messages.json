@@ -1224,6 +1224,9 @@
   "notification.bodyModified.instructions": {
     "message": "Klicken Sie auf „Abbrechen“, um den E-Mail-Inhalt unverändert zu lassen."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Jede Funktion kann an bis zu 12 Tagen kostenlos genutzt werden. Nur die erste Nutzung pro Tag zählt. Bisherige Nutzungen bleiben gespeichert."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Vorlagenquelltext kopieren"
   },
@@ -1232,6 +1235,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Ausblenden"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Ihre Lizenz ist abgelaufen."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Sie haben noch {0} Tage Kulanzzeit, bevor die verbleibenden Funktionskontingente gelten."
   },
   "notification.compose.issue": {
     "message": "Problem"
@@ -1244,6 +1253,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Später erinnern"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Danach nutzt jede lizenzpflichtige Funktion ihr eigenes verbleibendes Freikontingent."
   },
   "notification.compose.usageHint": {
     "message": "Jede Zahl zeigt, wie viele kostenlose Nutzungen verbleiben. Jede Funktion wird nur einmal pro Tag gezählt; weitere Nutzungen am selben Tag verringern die verbleibende Zahl nicht. Bewegen Sie den Mauszeiger über eine Zahl oder klicken Sie darauf, um Details anzuzeigen."

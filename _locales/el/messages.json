@@ -1225,6 +1225,9 @@
   "notification.bodyModified.instructions": {
     "message": "Κάντε κλικ σε Ακύρωση για να διατηρήσετε το περιεχόμενο του email χωρίς αλλαγές."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Κάθε λειτουργία προσφέρει έως 12 ημέρες δωρεάν χρήσης. Μετρά μόνο η πρώτη χρήση κάθε ημέρας. Η προηγούμενη χρήση διατηρείται."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Αντιγραφή πηγαίου κώδικα προτύπου"
   },
@@ -1233,6 +1236,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Απόρριψη"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Η άδειά σας έχει λήξει."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Απομένουν {0} ημέρες χάριτος πριν εφαρμοστούν τα υπόλοιπα όρια των λειτουργιών."
   },
   "notification.compose.issue": {
     "message": "Πρόβλημα"
@@ -1245,6 +1254,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Υπενθύμιση αργότερα"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Στη συνέχεια, κάθε λειτουργία με άδεια χρησιμοποιεί το δικό της υπόλοιπο δωρεάν όριο."
   },
   "notification.compose.usageHint": {
     "message": "Κάθε αριθμός δείχνει πόσες δωρεάν χρήσεις απομένουν. Κάθε λειτουργία υπολογίζεται μόνο μία φορά την ημέρα· η επαναχρησιμοποίησή της την ίδια ημέρα δεν μειώνει τον αριθμό που απομένει. Τοποθετήστε τον δείκτη πάνω από έναν αριθμό ή κάντε κλικ σε αυτόν για λεπτομέρειες."

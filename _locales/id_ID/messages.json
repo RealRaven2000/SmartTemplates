@@ -817,6 +817,9 @@
   "no_button": {
     "message": "Tidak"
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Setiap fitur menyediakan hingga 12 hari penggunaan gratis. Hanya penggunaan pertama setiap hari yang dihitung. Penggunaan sebelumnya tetap disimpan."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Salin sumber templat"
   },
@@ -825,6 +828,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Tutup"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Lisensi Anda telah kedaluwarsa."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Tersisa {0} hari masa tenggang sebelum sisa kuota fitur diberlakukan."
   },
   "notification.compose.issue": {
     "message": "Masalah"
@@ -1177,6 +1186,9 @@
   },
   "notification.bodyModified.instructions": {
     "message": "Klik Batal untuk tetap menjaga isi email tanpa perubahan."
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Setelah itu, setiap fitur berlisensi menggunakan sisa kuota gratisnya sendiri."
   },
   "notification.compose.usageHint": {
     "message": "Setiap angka menunjukkan berapa kali penggunaan gratis yang tersisa. Setiap fitur hanya dihitung sekali sehari; menggunakannya lagi pada hari yang sama tidak mengurangi angka yang tersisa. Arahkan penunjuk ke angka atau klik angka tersebut untuk melihat detail."

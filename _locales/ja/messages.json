@@ -1222,6 +1222,9 @@
   "notification.bodyModified.instructions": {
     "message": "メールの内容を変更せずに保持するにはキャンセルをクリックしてください。"
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "各機能は最大12日間無料で利用できます。毎日の最初の利用だけが数えられます。以前の利用回数は保持されます。"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "テンプレートのソースをコピー"
   },
@@ -1230,6 +1233,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "閉じる"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "ライセンスの有効期限が切れました。"
+  },
+  "notification.compose.graceExplanation": {
+    "message": "残りの機能利用枠が適用されるまで、猶予期間はあと {0} 日です。"
   },
   "notification.compose.issue": {
     "message": "問題"
@@ -1242,6 +1251,9 @@
   },
   "notification.compose.remindLater": {
     "message": "後で通知する"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "その後、ライセンス対象の各機能は、それぞれの残りの無料利用枠を使用します。"
   },
   "notification.compose.usageHint": {
     "message": "各数値は、無料で利用できる残り回数を示します。各機能は1日に1回だけカウントされ、同じ日に再び利用しても残り回数は減りません。詳細を表示するには、数値にマウスポインターを合わせるか、クリックしてください。"

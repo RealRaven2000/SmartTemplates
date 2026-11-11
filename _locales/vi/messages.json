@@ -144,6 +144,18 @@
   "newsSection.license": {
     "message": "Do tất cả công việc trên SmartTemplates và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ doanh số bán giấy phép, vui lòng cân nhắc mua một giấy phép hoặc gia hạn giấy phép hiện tại của bạn."
   },
+  "notification.compose.expiredGrace": {
+    "message": "Giấy phép của bạn đã hết hạn."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Bạn còn {0} ngày gia hạn trước khi áp dụng hạn mức tính năng còn lại."
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Sau đó, mỗi tính năng cần giấy phép sử dụng hạn mức miễn phí còn lại của riêng mình."
+  },
+  "notification.compose.allowanceExplanation": {
+    "message": "Mỗi tính năng có tối đa 12 ngày sử dụng miễn phí. Chỉ lần sử dụng đầu tiên mỗi ngày được tính. Mức sử dụng trước đó được giữ lại."
+  },
   "ongoing-work": {
     "message": "Để giữ $addonName$ đồng bộ với các phiên bản phát hành hàng tháng của Thunderbird, chúng tôi phải liên tục kiểm tra lỗi và tải lên các phiên bản điều chỉnh. Vui lòng giúp chúng tôi khi bạn đã thử nghiệm tính năng và chắc chắn rằng nó cải thiện năng suất của bạn!",
     "placeholders": {

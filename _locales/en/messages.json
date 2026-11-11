@@ -1249,6 +1249,9 @@
   "notification.compose.allUsed": {
     "message": "All used"
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Each feature has up to 12 free use days. Only the first use each day counts. Previous usage is retained."
+  },
   "notification.compose.blocked": {
     "message": "Some features were blocked"
   },
@@ -1285,6 +1288,12 @@
   "notification.compose.details": {
     "message": "Licensed features used"
   },
+  "notification.compose.expiredGrace": {
+    "message": "Your license has expired."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "You have {0} grace days left before remaining feature allowances apply."
+  },
   "notification.compose.issue": {
     "message": "Issue"
   },
@@ -1305,6 +1314,9 @@
   },
   "notification.compose.standardFeatures": {
     "message": "These features are included with SmartTemplates Standard and Pro."
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Afterwards, each licensed feature uses its own remaining free allowance."
   },
   "notification.compose.usageHint": {
     "message": "Each number shows how many free uses remain. Each feature is counted only once per day; using it again on the same day does not reduce the remaining number. Hover over or click a number for details."
@@ -2229,7 +2241,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{L}Added the Pro feature {{%prompt()%}} to request free text or radio-button choices when processing templates and Smart Fragments. Use clipboard contents as the default, insert the answer into the email, or copy it to the clipboard for reuse. Limited evaluation access is available. [issue 443]{/L}{L}Consolidated Composer licensing notices into a compact, expandable notification bubble with trial, Pro, and Standard feature information. Licensing and feature-comparison links open in your external browser. [issue 441]{/L}{L}After the general trial, tracked licensed features each receive an independent allowance of 12 free uses. Only the first use of each feature per calendar day counts; further emails and Thunderbird restarts that day do not consume more uses. Features covered by your license do not consume an allowance. [issue 441]{/L}{L}Remaining uses appear beside each feature with an explanation of daily counting and the required license. Exhausted features are skipped while their original variables remain in the email; blocked features are highlighted in pink. [issue 441]{/L}{L}Template and Smart Fragment processing problems now appear in the Composer notification bubble, with diagnostic details and individual Dismiss buttons, so you can keep editing without losing the errors. New issues join the same bubble as they arrive. Insert Snippet preserves earlier issues; Change Template clears them. HTML insertion failures also offer Copy template source. [issue 442]{/L}{L}Fixed trial access to clipboard operations, tags, and {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Simplified localization entity names, updated their references, and sorted locale catalogs. Added translations for the Refresh UI action. [issue 440]{/L}{L}Compatible with Thunderbird 162, while retaining Thunderbird 140 ESR support.{/L}"
+    "message": "{L}{+extensionName} is now compatible with Thunderbird 162.{/L}{L}Added the Pro feature {{%prompt()%}} for text entered by the user or selected from a list of choices. Supports the clipboard for default input and as a target for the data. [issue 443]{/L}{L}Licensing notices now appear in a compact, notification bubble - which now removes the annoying sliding notification bars. Added a number of free uses per licensed feature after the general trial, with remaining uses shown beside each feature. [issue 441]{/L}{L}Any Template and Smart Fragment errors will also be listed in the notification bubble, so you can keep editing and dismiss errors individually. [issue 442]{/L}{L}Fixed trial access to clipboard operations, tags, and {{%deleteForwardedBody%}}. [issue 439].{/L}{L}Updated translations, including the Refresh UI action, and simplified localization resources. [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This particular fix was added since the previous release.",

@@ -1207,6 +1207,9 @@
   "notification.bodyModified.instructions": {
     "message": "Clicca su Annulla per mantenere il contenuto dell'email invariato."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Ogni funzione offre fino a 12 giorni di utilizzo gratuito. Conta solo il primo utilizzo giornaliero. Gli utilizzi precedenti vengono conservati."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Copia il codice sorgente del modello"
   },
@@ -1215,6 +1218,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Ignora"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "La licenza è scaduta."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Restano {0} giorni di tolleranza prima che si applichino le quote residue delle funzioni."
   },
   "notification.compose.issue": {
     "message": "Problema"
@@ -1227,6 +1236,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Ricordamelo più tardi"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "In seguito, ogni funzione su licenza utilizza la propria quota gratuita residua."
   },
   "notification.compose.usageHint": {
     "message": "Ogni numero indica quanti utilizzi gratuiti rimangono. Ogni funzione viene conteggiata solo una volta al giorno; riutilizzarla lo stesso giorno non riduce il numero rimanente. Passa il puntatore su un numero o fai clic su di esso per visualizzare i dettagli."

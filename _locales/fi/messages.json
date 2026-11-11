@@ -1237,6 +1237,9 @@
   "notification.bodyModified.instructions": {
     "message": "Napsauta Peruuta säilyttääksesi sähköpostin sisällön ennallaan."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Kullakin toiminnolla on enintään 12 maksutonta käyttöpäivää. Vain päivän ensimmäinen käyttö lasketaan. Aiempi käyttö säilytetään."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Kopioi mallin lähdekoodi"
   },
@@ -1245,6 +1248,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Hylkää"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Lisenssisi on vanhentunut."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Siirtymäaikaa on jäljellä {0} päivää, minkä jälkeen toimintojen jäljellä olevat käyttökiintiöt tulevat voimaan."
   },
   "notification.compose.issue": {
     "message": "Ongelma"
@@ -1257,6 +1266,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Muistuta myöhemmin"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Sen jälkeen kukin lisensoitu toiminto käyttää omaa jäljellä olevaa maksutonta kiintiötään."
   },
   "notification.compose.usageHint": {
     "message": "Kukin numero näyttää, kuinka monta ilmaista käyttökertaa on jäljellä. Kukin toiminto lasketaan vain kerran päivässä; sen käyttäminen uudelleen samana päivänä ei pienennä jäljellä olevaa määrää. Näet lisätietoja viemällä osoittimen numeron päälle tai napsauttamalla sitä."

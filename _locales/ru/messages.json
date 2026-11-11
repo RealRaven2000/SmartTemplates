@@ -1231,6 +1231,9 @@
   "notification.bodyModified.instructions": {
     "message": "Щелкните Отмена, чтобы сохранить содержание электронного письма без изменений."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Для каждой функции доступно до 12 бесплатных дней использования. Учитывается только первое использование за день. Предыдущее использование сохраняется."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Копировать исходный код шаблона"
   },
@@ -1239,6 +1242,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Скрыть"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Срок действия вашей лицензии истёк."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Осталось {0} дней льготного периода, после чего начнут действовать оставшиеся лимиты функций."
   },
   "notification.compose.issue": {
     "message": "Проблема"
@@ -1251,6 +1260,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Напомнить позже"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Затем каждая лицензируемая функция использует собственный оставшийся бесплатный лимит."
   },
   "notification.compose.usageHint": {
     "message": "Каждое число показывает, сколько бесплатных использований осталось. Каждая функция учитывается только один раз в день; повторное использование в тот же день не уменьшает оставшееся число. Наведите указатель на число или нажмите на него, чтобы узнать подробности."

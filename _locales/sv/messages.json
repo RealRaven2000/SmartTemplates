@@ -1237,6 +1237,9 @@
   "notification.bodyModified.instructions": {
     "message": "Klicka på Avbryt för att behålla e-postinnehållet oförändrat."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Varje funktion erbjuder upp till 12 kostnadsfria användningsdagar. Endast dagens första användning räknas. Tidigare användning behålls."
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Kopiera mallens källkod"
   },
@@ -1245,6 +1248,12 @@
   },
   "notification.compose.dismissIssue": {
     "message": "Avvisa"
+  },
+  "notification.compose.expiredGrace": {
+    "message": "Din licens har löpt ut."
+  },
+  "notification.compose.graceExplanation": {
+    "message": "Du har {0} dagars respit kvar innan funktionernas återstående kvoter börjar gälla."
   },
   "notification.compose.issue": {
     "message": "Problem"
@@ -1257,6 +1266,9 @@
   },
   "notification.compose.remindLater": {
     "message": "Påminn mig senare"
+  },
+  "notification.compose.trialExplanation": {
+    "message": "Därefter använder varje licensierad funktion sin egen återstående kostnadsfria kvot."
   },
   "notification.compose.usageHint": {
     "message": "Varje tal visar hur många kostnadsfria användningar som återstår. Varje funktion räknas bara en gång per dag; att använda den igen samma dag minskar inte det återstående antalet. Håll pekaren över ett tal eller klicka på det för mer information."

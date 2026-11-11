@@ -176,6 +176,9 @@ button.trial-count:hover, button.trial-count:focus-visible {
   display: block;
   font-size: 16px;
 }
+.trial-explanation {
+  display: block;
+}
 .badge {
   justify-self: start;
   margin-top: 2px;

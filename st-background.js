@@ -32,6 +32,7 @@ const composeNotifications = createComposeNotifications(browser, {
   },
 });
 const GRACEPERIOD_DAYS = 28;
+const EXPIRED_LICENSE_GRACE_DAYS = 7;
 const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 
 let startupDoneResolve;
@@ -1309,7 +1310,7 @@ async function main() {
   await prefsReady;
 
   // we need these helper functions for calculating an extension to License.info
-  async function getGraceDate() {
+  async function getGraceDate(licenseInfo = currentLicense.info) {
     let gracePeriodStart,
       isResetDate = false,
       isDebug = false;
@@ -1322,19 +1323,16 @@ async function main() {
     }
     let today = new Date().toISOString().substring(0, 10); // e.g. "2019-07-18"
 
-    if (!gracePeriodStart || gracePeriodStart > today) {
+    if (licenseInfo.status === "Expired") {
+      // Expiry anchors the seven-day grace period, even if preferences are missing
+      // or were refreshed more recently while the license was still valid.
+      isResetDate = gracePeriodStart !== licenseInfo.expiryDate;
+      gracePeriodStart = licenseInfo.expiryDate;
+    } else if (!gracePeriodStart || gracePeriodStart > today) {
       gracePeriodStart = today; // cannot be in the future
       isResetDate = true;
     } else {
-      switch (currentLicense.info.status) {
-        case "Expired":
-          // if a license exists & is expired long ago, use the last day of expiration date.
-          if (gracePeriodStart < currentLicense.info.expiryDate) {
-            // [issue 100] Trial period should restart on license expiry
-            gracePeriodStart = currentLicense.info.expiryDate;
-            isResetDate = true;
-          }
-          break;
+      switch (licenseInfo.status) {
         case "Valid":
           gracePeriodStart = today; // refresh to keep trialDays positive
           isResetDate = true;
@@ -1351,12 +1349,13 @@ async function main() {
     return gracePeriodStart;
   }
 
-  async function getTrialDays() {
-    const period = GRACEPERIOD_DAYS,
+  async function getTrialDays(licenseInfo = currentLicense.info) {
+    const period = licenseInfo.status === "Expired"
+        ? EXPIRED_LICENSE_GRACE_DAYS : GRACEPERIOD_DAYS,
       SINGLE_DAY = 1000 * 60 * 60 * 24;
 
     // always get current grace period start (updates for valid licenses)
-    let gracePeriodStart = await getGraceDate();
+    let gracePeriodStart = await getGraceDate(licenseInfo);
 
     let today = new Date(),
       installDate = new Date(gracePeriodStart),
@@ -1702,8 +1701,8 @@ async function main() {
     if (newLicense.isExpired) {
       await Preferences.set("license.gracePeriodDate", newLicense.info.expiryDate);
     }
-    newLicense.GraceDate = await getGraceDate();
-    newLicense.TrialDays = await getTrialDays();
+    newLicense.GraceDate = await getGraceDate(newLicense.info);
+    newLicense.TrialDays = await getTrialDays(newLicense.info);
 
     // Check new license and accept if ok.
     // You may return values here, which will be send back to the caller.
