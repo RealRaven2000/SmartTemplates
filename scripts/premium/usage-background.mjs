@@ -28,7 +28,16 @@ export function createBackgroundUsage(prefs, getLicense, now = () => new Date())
       return ready;
     },
     snapshot() {
-      return { values: { ...values }, timestamp: now().getTime() };
+      const timestamp = now().getTime();
+      const sessionCheck = createStore(adapter, () => new Date(timestamp));
+      // Supply raw evaluation allowances independently of the current licence;
+      // the legacy window can then react to licence updates without reloading.
+      const license = { status: "Invalid", trialDays: 0 };
+      return {
+        timestamp,
+        allowances: Object.fromEntries(Object.keys(POLICY).map(feature =>
+          [feature, sessionCheck(feature, license)])),
+      };
     },
     check(feature, consume = false, timestamp = now().getTime()) {
       // A composer keeps its startup date for the whole composition session.

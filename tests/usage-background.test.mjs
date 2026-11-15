@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { createBackgroundUsage } from "../scripts/premium/usage-background.mjs";
-import { createStore } from "../scripts/premium/usage-store.js";
 import { POLICY } from "../scripts/premium/usage-policy.js";
 import { createComposeNotifications } from "../html/compose-notifications/controller.mjs";
 
@@ -42,25 +41,19 @@ test("loads counters once and updates the authoritative cache before persistence
   assert.equal(f.reads(), Object.keys(POLICY).length);
 });
 
-test("composer snapshot stays synchronous and freezes its startup date across midnight", async () => {
+test("prepared allowances are detached and session consumption keeps its startup date", async () => {
   const f = fixture();
   await f.store.init();
   const snapshot = f.store.snapshot();
-  const deliveries = [];
-  const local = createStore({
-    getStringPref: (key, fallback) => snapshot.values[key] ?? fallback,
-    setStringPref(key, value) {
-      snapshot.values[key] = value;
-      deliveries.push(f.store.check(key.substring("extensions.smarttemplates.".length), true, snapshot.timestamp));
-    },
-  }, () => new Date(snapshot.timestamp));
-  assert.equal(local("prompt", f.license, true).remaining, 11);
+  assert.equal(snapshot.allowances.prompt.remaining, 12);
+  snapshot.allowances.prompt.remaining = 0;
+  assert.equal(f.store.snapshot().allowances.prompt.remaining, 12);
+  assert.equal(f.store.check("prompt", true, snapshot.timestamp).remaining, 11);
   f.setDate(new Date(2026, 10, 16, 0, 1));
-  assert.equal(local("prompt", f.license, true).remaining, 11);
-  assert.equal(deliveries.length, 1);
-  // A different feature first used after midnight is still charged to the session date.
-  assert.equal(local("clipboard", f.license, true).remaining, 11);
+  assert.equal(f.store.check("prompt", true, snapshot.timestamp).remaining, 11);
+  assert.equal(f.store.check("clipboard", true, snapshot.timestamp).remaining, 11);
   await f.store.flush();
+  assert.equal(f.writes.length, 2);
   assert.equal(JSON.parse(f.disk["extensions.smarttemplates.clipboard"]).lastUsedDate, "2026-11-15");
   assert.equal(f.store.check("prompt", true).remaining, 10);
   await f.store.flush();

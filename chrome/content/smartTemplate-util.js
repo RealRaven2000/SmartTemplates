@@ -332,28 +332,37 @@ SmartTemplate4.Util = {
   async initFeatureUsage() {
     if (!this._featureUsageReady) {
       this._featureUsageReady = (async () => {
-        const { createStore } = await import(
-          this.extension.rootURI.resolve("scripts/premium/usage-store.js")
-        );
         // Temporary bridge while the parser runs in the legacy window. Once it
         // moves to the background, remove these usage notification calls and
         // the window snapshot, and use the background usage module directly.
         // Only the background usage module may access LegacyPrefs for counters.
         const snapshot = await this.notifyTools.notifyBackground({ func: "getFeatureUsageSnapshot" });
-        const values = snapshot.values;
-        this._featureUsage = createStore({
-          getStringPref: (key, fallback) => values[key] ?? fallback,
-          setStringPref: (key, value) => {
-            values[key] = value;
+        const allowances = snapshot.allowances;
+        this._featureUsage = (feature, license, consume) => {
+          if (!Object.hasOwn(allowances, feature)) {
+            return null;
+          }
+          const allowance = allowances[feature];
+          const covered = license.status === "Valid" &&
+            (allowance.tier === "standard" || license.keyType !== 2);
+          const trial = license.status !== "Valid" && license.trialDays > 0;
+          if (covered || trial) {
+            return { ...allowance, covered, trial, allowed: true,
+              remaining: allowance.maximum, usedToday: false };
+          }
+          if (consume && allowance.allowed && !allowance.usedToday) {
+            allowance.remaining = Math.max(0, allowance.remaining - 1);
+            allowance.usedToday = true;
             // Parsing stays synchronous; the background owns and persists usage.
             // Remove this bridge when the parser uses that module directly.
             void this.notifyTools.notifyBackground({
               func: "consumeFeatureUsage",
-              feature: key.substring("extensions.smarttemplates.".length),
+              feature,
               timestamp: snapshot.timestamp,
             }).catch(error => this.logException("Could not record feature usage", error));
-          },
-        }, () => new Date(snapshot.timestamp));
+          }
+          return { ...allowance };
+        };
       })().catch(error => {
         this._featureUsageReady = null;
         throw error;
