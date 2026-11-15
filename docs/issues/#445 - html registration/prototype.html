@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>SmartTemplates · Your license</title>
+  <link rel="stylesheet" href="prototype.css">
+  <script src="prototype.js" defer></script>
+</head>
+<body>
+  <header class="brand"><img src="../../../chrome/content/skin/icon32x32.png" width="32" height="32" alt=""><span>SmartTemplates</span><span class="prototype-badge">UI prototype</span></header>
+  <main>
+    <header class="page-heading"><p class="eyebrow">YOUR LICENSE</p><h1>Keep good emails flowing.</h1><p>Choose the license that fits the way you work.</p></header>
+    <section class="license-summary" aria-labelledby="current-license">
+      <div><div class="summary-title"><h2 id="current-license">Standard license</h2><span class="status">Expired</span></div><p>Your license expired on <strong><time datetime="2026-11-11">11 November 2026</time></strong>.</p></div>
+      <button type="button" class="button secondary" id="enter-key">Enter license key…</button>
+    </section>
+    <section class="workspace" aria-label="License options">
+      <div class="section-heading"><div><p class="eyebrow" id="step-label">LICENSE SELECTION</p><h2 id="view-title">A fresh year, your way.</h2></div><span class="annual-note">Annual licenses</span></div>
+      <div id="selection-panel" aria-labelledby="view-title">
+        <p class="intro">Renew Standard, move up to Pro, or cover your team with a Domain license.</p>
+        <fieldset class="contact"><legend>Who is this license for?</legend><div class="contact-grid">
+          <label class="account-field">Mail account<select id="identity"><option value="personal">Alex Morgan · alex@example.com</option><option value="work">Alex Morgan · alex@studio.example</option></select></label>
+          <div class="email-field">
+            <div class="email-label-row"><label for="email">Email address</label><button type="button" class="email-help-button" id="email-help-button" aria-label="About licensed email addresses" aria-expanded="false" aria-controls="email-help"><img src="../../../chrome/content/skin/icons/info-new.svg" width="16" height="16" alt=""></button></div>
+            <input id="email" type="email" value="alex@example.com" autocomplete="off" aria-describedby="email-hint">
+            <p class="email-hint" id="email-hint">Your personal license works across multiple devices.</p>
+            <aside class="email-help" id="email-help" aria-label="Licensed email address rules" hidden>
+              <div class="email-help-heading"><h3>Your email is your license</h3><button type="button" class="email-help-close" id="email-help-close" aria-label="Close email help">×</button></div>
+              <h4>Standard and Pro licenses</h4><p>Your license is tied to this email address. You can use it on multiple devices—configure this address as an account’s default identity in Thunderbird on each device.</p>
+              <h4>Domain licenses</h4><p>Different rules apply: the configured email address must belong to the licensed domain.</p>
+            </aside>
+          </div>
+          <label>First name<input id="first-name" value="Alex" autocomplete="off"></label>
+          <label>Last name<input id="last-name" value="Morgan" autocomplete="off"></label>
+        </div><p class="field-note">These details will prefill checkout. You can edit them here.</p></fieldset>
+        <div class="plans">
+          <article class="plan"><p class="plan-kicker">THE FAMILIAR CHOICE</p><h3>Standard</h3><p>Keep your Standard license for another year.</p><div class="plan-bottom"><span>For your own email</span><button class="button secondary purchase" data-plan="Standard renewal" type="button">Renew Standard <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4 10 14M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg></button></div></article>
+          <article class="plan featured"><p class="plan-kicker">MORE POSSIBILITIES</p><h3>Pro</h3><p>Upgrade to the full Pro feature set.</p><div class="plan-bottom"><span>For your own email</span><button class="button primary purchase" data-plan="Standard to Pro upgrade" type="button">Upgrade to Pro <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4 10 14M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg></button></div></article>
+          <article class="plan"><p class="plan-kicker">FOR YOUR TEAM</p><h3>Domain</h3><p>Bring Pro to users sharing your company’s email domain.</p><div class="plan-bottom"><span>For a shared domain</span><button class="button secondary purchase" data-plan="Domain purchase" type="button">Explore Domain <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4 10 14M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg></button></div></article>
+        </div>
+        <p class="checkout-note">Prices, tax, and available discounts are shown in the shop.</p>
+      </div>
+      <section id="terms-panel" aria-labelledby="view-title" hidden>
+        <p class="intro">A little context before you choose.</p>
+        <div class="terms-grid">
+          <article><span class="term-number">01</span><h3>One year at a time</h3><p>A license covers one year. Renew an expired license or extend a current one to continue with your chosen edition.</p><p>Your support helps fund development, compatibility updates, and repairs.</p></article>
+          <article><span class="term-number">02</span><h3>Your email, your license</h3><p>A personal license is tied to your email address. You can use it on multiple Thunderbird installations configured with that address.</p><p>A Domain license covers users with matching addresses under the licensed domain.</p></article>
+          <article><span class="term-number">03</span><h3>Choose your edition</h3><p>Standard and Pro offer different levels of functionality. Compare the editions to find the right fit.</p><p><a href="https://smarttemplates.quickfolders.org/premium.html#featureComparison" target="_blank" rel="noopener noreferrer">Compare Standard and Pro <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4 10 14M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg></a></p></article>
+          <article><span class="term-number">04</span><h3>Checkout in your browser</h3><p>Select a license to continue to the shop. Your price depends on the edition, country, tax, and any applicable discounts.</p><p>Renewals and upgrades pass your previous license to the shop for eligibility checks.</p></article>
+        </div>
+        <aside class="review-note">Draft terms: detailed trial and post-expiry feature behavior will be reviewed before release.</aside>
+      </section>
+      <div class="view-switcher"><button type="button" class="toggle" id="toggle-terms" aria-expanded="false" aria-controls="terms-panel">Show license terms <span aria-hidden="true">🡇</span></button></div>
+    </section>
+    <footer><span>Made for Thunderbird. Supported by you.</span><span>Sample data · checkout is disabled</span></footer>
+    <p id="feedback" class="feedback" role="status" hidden></p>
+  </main>
+</body>
+</html>
