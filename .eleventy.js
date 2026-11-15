@@ -10,6 +10,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/preloader");
   eleventyConfig.addPassthroughCopy("src/screenshots");
   eleventyConfig.addPassthroughCopy("src/repo");
+  eleventyConfig.addPassthroughCopy("src/staging");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/CNAME");
 
