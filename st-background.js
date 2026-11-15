@@ -3,6 +3,7 @@
     ICAL: readonly
 */
 import { Preferences } from "./scripts/preferences.mjs";
+import { createBackgroundUsage } from "./scripts/premium/usage-background.mjs";
 import { createComposeNotifications } from "./html/compose-notifications/controller.mjs";
 import { createComposePrompts } from "./scripts/prompt/controller.mjs";
 import {Licenser, licenseValidationDescription} from "./scripts/Licenser.mjs.js";
@@ -20,6 +21,7 @@ console.log(SmartTemplates, stProcess);
 SmartTemplates.Util.log("SmartTemplates Background started");
 
 var currentLicense;
+const featureUsage = createBackgroundUsage(browser.LegacyPrefs, () => currentLicense.info);
 const composePrompts = createComposePrompts(browser);
 const composeNotifications = createComposeNotifications(browser, {
   async getFeatureUsage(features) {
@@ -27,9 +29,14 @@ const composeNotifications = createComposeNotifications(browser, {
     if (license.status !== "Valid" && license.trialDays > 0) {
       return {};
     }
-    return Object.fromEntries(await Promise.all(features.map(async feature => [feature,
-      await browser.Utilities.getComposeFeatureUsage(feature, license)])));
+    return Object.fromEntries(features.map(feature => [feature, featureUsage.check(feature)]));
   },
+  // Temporary legacy registration route. Replace with an HTML WebExtension
+  // registration page in the next minor version.
+  showRegistrationDialog: feature => notifyWhenUIReady({
+    event: "doCommand",
+    detail: { cmd: "smartTemplates-registration", params: { feature } },
+  }),
 });
 const GRACEPERIOD_DAYS = 28;
 const EXPIRED_LICENSE_GRACE_DAYS = 7;
@@ -1308,6 +1315,7 @@ function getAddressesFromContacts(list) {
 
 async function main() {
   await prefsReady;
+  await featureUsage.init();
 
   // we need these helper functions for calculating an extension to License.info
   async function getGraceDate(licenseInfo = currentLicense.info) {
@@ -1728,6 +1736,10 @@ async function main() {
     }
     try {
       switch (data.func) {
+        case "getFeatureUsageSnapshot":
+          return featureUsage.snapshot();
+        case "consumeFeatureUsage":
+          return featureUsage.check(data.feature, true, data.timestamp);
           case "templatePrompt":
             return await composePrompts.show(data);
         case "composeIssue":
@@ -1976,38 +1988,44 @@ async function main() {
     }
   });
 
-  browser.runtime.onMessageExternal.addListener(async (message, _sender) => {
-    // { command: "forwardMessageWithTemplate", messageHeader: msgKey, templateURL: data.fileURL }
-    await prefsReady; // ensure Preferences is initialized
-    let isDebug = Preferences.isDebug();
-    switch (message.command) {
-      case "forwardMessageWithTemplate":
-        notifyWhenUIReady({
-          event: "forwardWithTemplate",
-          detail: { messageHeader: message.messageHeader, templateURL: message.templateURL },
-        }).then((_data) => {
-          if (isDebug) {
-            console.log(
-              `SmartTemplates forwarded '${message.messageHeader.subject}' successfully.`
-            );
-          }
-          return true;
-        });
-        break;
-      case "replyMessageWithTemplate":
-        notifyWhenUIReady({
-          event: "replyWithTemplate",
-          detail: { messageHeader: message.messageHeader, templateURL: message.templateURL },
-        }).then((_data) => {
-          if (isDebug) {
-            console.log(
-              `SmartTemplates replied to '${message.messageHeader.subject}' successfully.`
-            );
-          }
-          return true;
-        });
-        break;
+  browser.runtime.onMessageExternal.addListener((message, _sender) => {
+    // Decline unrelated messages synchronously so other listeners can respond.
+    if (
+      message?.command !== "forwardMessageWithTemplate" &&
+      message?.command !== "replyMessageWithTemplate"
+    ) {
+      return undefined;
     }
+    // Initialize preferences before dispatching a recognized command.
+    return prefsReady.then(() => {
+      let isDebug = Preferences.isDebug();
+      switch (message.command) {
+        case "forwardMessageWithTemplate":
+          return notifyWhenUIReady({
+            event: "forwardWithTemplate",
+            detail: { messageHeader: message.messageHeader, templateURL: message.templateURL },
+          }).then((_data) => {
+            if (isDebug) {
+              console.log(
+                `SmartTemplates forwarded '${message.messageHeader.subject}' successfully.`
+              );
+            }
+            return true;
+          });
+        case "replyMessageWithTemplate":
+          return notifyWhenUIReady({
+            event: "replyWithTemplate",
+            detail: { messageHeader: message.messageHeader, templateURL: message.templateURL },
+          }).then((_data) => {
+            if (isDebug) {
+              console.log(
+                `SmartTemplates replied to '${message.messageHeader.subject}' successfully.`
+              );
+            }
+            return true;
+          });
+      }
+    });
   });
 
   messenger.WindowListener.registerChromeUrl([
@@ -2136,7 +2154,9 @@ async function main() {
     const tab = await browser.tabs.get(tabId);
     const url = browser.runtime.getURL("html/smartTemplate-settings.html");
     if (tab.url && tab.url.startsWith(url)) {
-      console.log("SmartTemplates options tab detected. Now focusing the navigation element!");
+      if (Preferences.isDebug()) {
+        console.log("SmartTemplates options tab detected. Now focusing the navigation element!");
+      }
       await messenger.Utilities.focusDocument(tabId);
       setTimeout(async () => {
         try {

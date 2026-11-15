@@ -1,0 +1,120 @@
+
+
+Hello,
+
+
+Your add-on, SmartTemplates 4.22, has been reviewed and did not meet the criteria for being hosted in our gallery.
+
+
+Reviewer:
+John Bieling
+
+Comments:
+Thank you for your submission. We appreciate the effort you’ve put into creating this add-on. However, it cannot be accepted and hosted on addons.thunderbird.net in its current form. The following findings caused the submission to be rejected:
+
+1) This add-on ships an Experiment, which runs with full access to Thunderbird's internals. 
+Its Experiment surface must be kept to what the add-on actually needs, and must not 
+affect Thunderbird's usability, stability, performance or security. 
+
+The following need to be addressed:
+
+ - The Utilities Experiment API functions getComposeFeatureUsage, checkComposeFeatureUsage and showComposeLicenseDialog do not need to be Experiment APIs. 
+ 
+ The two usage functions only read and write the pref extensions.smarttemplates.[feature] through usage-store.js, so they can move into the background code (storage.local or LegacyPrefs). 
+ 
+ showComposeLicenseDialog only opens the legacy chrome dialog chrome://SmartTemplate4/content/register.xhtml. Please convert the licence dialog to a WebExtension page, open it with windows.create or tabs.create, and remove these three functions from the Experiment.
+
+2) The following referenced file(s) are not bundled with the add-on, or the path may be wrongly specified. Please include every referenced file in the package, and check that the used paths are correct.
+ - manifest.json:54 - chrome/content/skin/icon16x16.png
+
+3) Debugger statement left in shipped code. Please remove it or move it behind a build or configuration flag.
+ - scripts/st-parser.mjs.js:975
+ - scripts/st-parser.mjs.js:2253
+
+We kindly ask you to resolve the following issues with your next release:
+
+4) One or more resources are registered as web_accessible_resources but may not need to be exposed. List files there only if a web page or content script must access them. Otherwise, remove these entries to reduce the add-on’s exposed surface.
+ - manifest.json:11 - chrome/content/skin/icon32x32.png
+
+5) Data is sent over an unencrypted connection. All data must travel over an encrypted channel - use https:// (or wss:// for sockets), never http://, ws:// or ftp://, and refuse or upgrade such a URL where the user enters one.
+ - popup/update.js:42 - The upgrade link opens the plain http:// URL `http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?` in the default browser. Its query string carries `contact_email` and the licence key as `referrer`, all unencrypted.
+
+6) An asynchronous listener is attached to the following runtime message event(s). An async listener always returns a Promise, which claims the response for every message it sees - including the ones it declines - so the other listeners never get to answer. This is error-prone and must be avoided.
+Read more: https://webextension-api.thunderbird.net/en/mv3/guides/runtimeMessaging.html
+ - st-background.js:1979 - runtime.onMessageExternal
+
+We would like to share the following information with you:
+
+7) The following bundled files were recognized as third-party libraries (via a jsDelivr CDN hash lookup) but are not declared as such. Declare each so the (unmodified) copy can be verified against the release it came from - a VENDOR.md file at the add-on root is common practice.
+Read more: https://webextension-api.thunderbird.net/en/mv3/guides/vendoring.html.
+ - scripts/ical.js - ical.js 1.5.0 - https://cdn.jsdelivr.net/npm/ical.js@1.5.0/build/ical.js
+
+You can run an automated review yourself before submitting:
+https://github.com/thunderbird/webext-linter
+
+
+
+This version of your add-on has been disabled. You may re-request review by addressing the reviewer's comments and uploading a new version at https://addons.thunderbird.net/en-GB/developers/addon/smarttemplate4/versions
+
+
+********
+Developer Resources
+********
+
+To respond, please reply to this email or visit: https://addons.thunderbird.net/en-GB/developers/addon/smarttemplate4/versions
+
+You can also get in touch with the Thunderbird Add-on Reviewer Team via Matrix at https://chat.mozilla.org/#/room/#tb-addon-reviewers:mozilla.org or by Emailing us at: Tb-addon-reviewers@lists.thunderbird.net
+
+For more information about the review process and policies, please visit https://thunderbird.github.io/atn-review-policy/
+
+-- 
+Thunderbird Team
+https://addons.thunderbird.net
+
+
+===================================================================
+You received this email because you're subscribed to:
+   * email me when my add-on is reviewed by a reviewer
+
+
+You can't unsubscribe from this type of email.
+
+Manage email notifications: https://addons.thunderbird.net/users/edit#acct-notify
+
+=======================================
+
+CODEX ANALYSIS
+
+The review identifies three rejection blockers, followed by three requested fixes and one advisory item. The main architectural issue is #1: unnecessary privileged Experiment APIs.
+1. Feature usage and licensing APIs — rejection blocker. The reviewer wants 
+getComposeFeatureUsage, checkComposeFeatureUsage, and showComposeLicenseDialog 
+removed from the Utilities Experiment. 
+Usage tracking should move into background code using storage.local or the existing 
+LegacyPrefs API. The licence dialog must become a WebExtension page opened through 
+windows.create or tabs.create.
+
+The important complication is in 
+[smartTemplate-util.js (line 332)](/chrome/content/smartTemplate-util.js:332): 
+the legacy parser deliberately requires synchronous usage checks and throws if it receives a Promise. Moving storage into the background therefore requires redesigning that interaction; simply replacing the API call with messaging would break it.
+
+The existing store also relies on synchronous read/check/write to prevent competing calls from charging usage incorrectly. Any asynchronous replacement needs to preserve counters, the once-per-local-day rule, and coordination across compose windows.
+
+The dialog change is also substantive: register.xhtml is a XUL dialog loading legacy scripts. Wrapping its existing opener in another Experiment method would not address the reviewer’s request.
+
+2. Missing icon — rejection blocker. 
+The manifest references chrome/content/skin/icon16x16.png; that file is absent from the current checkout too.
+
+3. Unconditional debugger statements — rejection blocker. 
+Both cited statements remain at parser lines 975 and 2253. Other statements have debug guards; these two do not.
+
+===============
+
+The remaining findings are:
+Item	Review wording	Assessment
+#4: exposed icon	Address in next release	Check whether any web page or content script actually needs the icon exposed before removing its entry.
+#5: HTTP upgrade link	Address in next release	The current URL sends email and licence key over HTTP. I would include this in the resubmission fixes despite its placement below the blockers.
+#6: async external listener	Address in next release	The listener remains async. It should claim responses only for messages it handles, returning a Promise selectively.
+#7: undeclared ical.js	Informational	Add provenance/version information for the bundled library, normally in VENDOR.md.
+
+
+My reading is that this is not a rejection of Experiments generally: it specifically challenges using privileged APIs for functionality that can live in ordinary extension code. The synchronous parser dependency explains the current design, but addressing that dependency is the central work needed for compliance.

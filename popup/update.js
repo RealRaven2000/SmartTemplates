@@ -39,7 +39,7 @@ END LICENSE BLOCK */
         if (event.target.classList.contains("upgrade")) {
           let licenseInfo = await messenger.runtime.sendMessage({ command: "getLicenseInfo" });
           messenger.windows.openDefaultBrowser(
-            "http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?" +
+            "https://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?" +
               `contact_email=${licenseInfo.email}` +
               `&referrer=${licenseInfo.licenseKey}`
           );

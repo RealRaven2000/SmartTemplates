@@ -52,9 +52,9 @@ SmartTemplate4.Util = {
   MarkyAMOPage: "https://addons.thunderbird.net/thunderbird/user/2448736/",
   ArisAMOPage: "https://addons.thunderbird.net/firefox/user/5641642/",
   Tool8AMOPage: "https://addons.thunderbird.net/thunderbird/user/5843412/",
-  NoiaHomepage: "http://carlitus.deviantart.com/",
-  FlagsHomepage: "http://flags.blogpotato.de/",
-  BeniBelaHomepage: "http://www.benibela.de/",
+  NoiaHomepage: "https://carlitus.deviantart.com/",
+  FlagsHomepage: "https://flags.blogpotato.de/",
+  BeniBelaHomepage: "https://www.benibela.de/",
   YouTubePage: "https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A",
 
   // Utils is used to keep contact with the background and will request the current state of
@@ -330,10 +330,36 @@ SmartTemplate4.Util = {
   },
 
   async initFeatureUsage() {
-    if (!this._featureUsage) {
-      this._featureUsage = await SmartTemplate4.Storage._context.apiCan
-        .asyncFindAPIPath("Utilities.checkComposeFeatureUsage");
+    if (!this._featureUsageReady) {
+      this._featureUsageReady = (async () => {
+        const { createStore } = await import(
+          this.extension.rootURI.resolve("scripts/premium/usage-store.js")
+        );
+        // Temporary bridge while the parser runs in the legacy window. Once it
+        // moves to the background, remove these usage notification calls and
+        // the window snapshot, and use the background usage module directly.
+        // Only the background usage module may access LegacyPrefs for counters.
+        const snapshot = await this.notifyTools.notifyBackground({ func: "getFeatureUsageSnapshot" });
+        const values = snapshot.values;
+        this._featureUsage = createStore({
+          getStringPref: (key, fallback) => values[key] ?? fallback,
+          setStringPref: (key, value) => {
+            values[key] = value;
+            // Parsing stays synchronous; the background owns and persists usage.
+            // Remove this bridge when the parser uses that module directly.
+            void this.notifyTools.notifyBackground({
+              func: "consumeFeatureUsage",
+              feature: key.substring("extensions.smarttemplates.".length),
+              timestamp: snapshot.timestamp,
+            }).catch(error => this.logException("Could not record feature usage", error));
+          },
+        }, () => new Date(snapshot.timestamp));
+      })().catch(error => {
+        this._featureUsageReady = null;
+        throw error;
+      });
     }
+    await this._featureUsageReady;
   },
 
   useFeature(feature, consume = true) {
@@ -341,9 +367,6 @@ SmartTemplate4.Util = {
       status: this.licenseInfo.status, keyType: this.licenseInfo.keyType,
       trialDays: this.licenseInfo.trialDays,
     }, consume);
-    if (result?.then) {
-      throw new Error("Feature usage API must be synchronous in the legacy parser");
-    }
     if (!result) {
       return true;
     }
@@ -879,15 +902,6 @@ SmartTemplate4.Util = {
     if (SmartTemplate4.Preferences.isDebug && SmartTemplate4.Preferences.isDebugOption("default")) {
       this.logToConsole(...arguments);
     }
-  },
-
-  logIssue213: function (txt) {
-    // Log missing items for Conversion to Thunderbird 115
-    console.log(
-      `SmartTemplates %c[issue 213] to do: %c${txt}`,
-      "color:red",
-      "background: darkblue; color:white;"
-    );
   },
 
   // optional logging for important points in flow.
@@ -3413,7 +3427,6 @@ SmartTemplate4.Util = {
     if (el.classList.contains("alert") || el.classList.contains("alertExpired")) {
       isLicenseWarning = true;
     }
-    SmartTemplate4.Util.logIssue213("Show new HTML help dialog.");
     let serverKey = this.currentServerInfo();
     let prefsObject = {
       func: "openPrefs",

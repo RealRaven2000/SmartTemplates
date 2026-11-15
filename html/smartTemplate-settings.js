@@ -557,7 +557,7 @@ var fileTemplates = {
       path: "",
       filter: "*.html;*.css",
     });
-    console.log("Returned file info", result);
+    await logDebugPrefs("Returned file info", result);
     if (result.path) {
       const pickRow = document.querySelector(".templateFilePicker");
       pickRow.classList.remove("highlight");
@@ -591,9 +591,9 @@ var fileTemplates = {
     if (!result.data) {
       return; // do nothing
     }
-    console.log(`import ${result.data.length} entries...`);
+    await logDebugPrefs(`import ${result.data.length} entries...`);
     for (const entry of result.data) {
-      console.log(entry);
+      await logDebugPrefs(entry);
       // entry = { __sortId, category, label, path }
       fileTemplates.importEntry(entry);
     }
@@ -604,7 +604,7 @@ var fileTemplates = {
     fileTemplates.repopulate(true, 0);
     
   },
-  dropFiles: function (event) {
+  dropFiles: async function (event) {
     if (event.dataTransfer.files.length == 0) {
       return false;
     }
@@ -612,8 +612,8 @@ var fileTemplates = {
       target = JSON.parse(option.value);
 
     logMissingFunction("fileTemplates.dropFiles");
-    console.log(event.dataTransfer.files);
-    console.log(`target[${target.position}]:\npath=${target.path}\nvategory=${target.category}`);
+    await logDebugPrefs(event.dataTransfer.files);
+    await logDebugPrefs(`target[${target.position}]:\npath=${target.path}\nvategory=${target.category}`);
     // we cannot determine the path, but we could send a message to the backgrouound page tp:
     // - look for the file in the last location (or a root folder for templates)
     // - when a file of matching name is found:
@@ -680,7 +680,7 @@ var fileTemplates = {
   onDrop: async function (event) {
     let dataString = event.dataTransfer.getData("text/plain");
     if (!dataString && event.dataTransfer.files) {
-      if (fileTemplates.dropFiles(event)) {
+      if (await fileTemplates.dropFiles(event)) {
         return false;
       }
     }
@@ -702,7 +702,7 @@ var fileTemplates = {
     if (sourceIndex < 0 || targetIndex < 0) {
       return false;
     }
-    if (await SmartTemplates.Preferences .isDebug()) {
+    if (await SmartTemplates.Preferences.isDebug()) {
       console.log(`dropped[${sourceIndex}]:\npath=${data.path}\ncategory=${data.category} `);
       console.log(`target[${targetIndex}]:\npath=${target.path}\ncategory=${target.category}`);
     }
@@ -774,14 +774,14 @@ var fileTemplates = {
     // select.ensureIndexIsVisible(newIndex);
   },
 
-  fillEntries: function (Entries, T, selectId) {
+  fillEntries: async function (Entries, T, selectId) {
     const select = document.getElementById(selectId);
     if (!select) {
-      console.log(`fillEntries fails - can't find select input ${selectId}`);
+      await logDebugPrefs(`fillEntries fails - can't find select input ${selectId}`);
       return false;
     }
     if (!Entries) {
-      console.log("missing Entries param");
+      await logDebugPrefs("missing Entries param");
       return false;
     }
     while (T.length) {
@@ -833,11 +833,11 @@ var fileTemplates = {
     // moved SmartTemplate4.fileTemplates.readStringFile() to experiment
     // This reads the menus directly from File!
     let data = await messenger.Utilities.readTemplateMenus();
-    SmartTemplates.Settings.logDebug("after reading smartTemplates.json:", data);
-    this.fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, "templateList_new");
-    this.fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, "templateList_rsp");
-    this.fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd, "templateList_fwd");
-    this.fillEntries(data.snippets, fileTemplates.Entries.snippets, "templateList_snippets");
+    await SmartTemplates.Settings.logDebug("after reading smartTemplates.json:", data);
+    await this.fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, "templateList_new");
+    await this.fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, "templateList_rsp");
+    await this.fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd, "templateList_fwd");
+    await this.fillEntries(data.snippets, fileTemplates.Entries.snippets, "templateList_snippets");
   },
 
   // save to file
@@ -1057,7 +1057,7 @@ SmartTemplates.Settings = {
 
   logDebug: async function (...args) {
 	  // to disable the standard debug log, turn off debug.default
-		if (await SmartTemplates.Preferences .isDebug()) {
+		if (await SmartTemplates.Preferences.isDebug()) {
       this.logToConsole(...args);
     }
 	},
@@ -1411,7 +1411,7 @@ SmartTemplates.Settings = {
     fileTemplates.initSnippetContextChecks();
   } ,
   onUnload: async function() {
-    logMissingFunction("implement onUnload!");
+    console.log("SmartTemplates settings unloaded");
   } ,
 
 
@@ -1896,7 +1896,7 @@ SmartTemplates.Settings = {
 		if (!data) {
 			return;
 		}
-		console.log("Successfully read json data", data);
+		await logDebugPrefs("Successfully read json data", data);
     const currentDeck = this.getCurrentDeck(SmartTemplates.Settings.accountId),
 					tabbox = document.getElementById(currentDeck),
 					textAreas = tabbox.getElementsByTagName('textarea'), // html collection
@@ -2456,6 +2456,12 @@ const activateTabEvent = (event) => {
 
 
 
+async function logDebugPrefs(_args) {
+  const { debug = {} } = await browser.storage.local.get("debug");
+  if (debug.debugActive && debug["debug.settings.prefs"]) {
+    console.log(...arguments);
+  }
+}
 
 
 /********** 
@@ -2464,7 +2470,8 @@ const activateTabEvent = (event) => {
 
 
 async function loadPrefs(parentSelector = "") {
-  console.log(`loadPrefs(${parentSelector})`);
+  await logDebugPrefs(`loadPrefs(${parentSelector})`);
+  
   // use browser.storage.local via PrefsHelper
 	const dataSelector = parentSelector ? `${parentSelector} [data-pref-name]` : "[data-pref-name]";
 	const prefElements = Array.from(document.querySelectorAll(dataSelector));
@@ -2709,13 +2716,6 @@ function addUIListeners() {
       case "chkResolveAB":
         chk.addEventListener("click", (_event) => {
           SmartTemplates.Settings.resolveAB_onClick(chk);
-        });
-        break;
-      case "chkBackgroundParser":
-        chk.addEventListener("click", (_event) => {
-          alert(
-            "The mx parser is experimental\nPlease reload SmartTemplates to effect this change!"
-          );
         });
         break;
       case "chkHideExamples":
@@ -3315,13 +3315,12 @@ addEventListener("load", async (_event) => {
 });  
 
 addEventListener("unload", async (_event) => {
-	console.log("settings - UNLOAD!");
   SmartTemplates.Settings.onUnload();
 
 });  
 
 addEventListener("keydown", (event) => {
-	console.log(event);
+	logDebugPrefs(event);
 	if (event.code == "F4") {
 		// forward event to help
 		console.log("smartTemplate-settings.html keydown", event);

@@ -17,6 +17,11 @@ END LICENSE BLOCK
 import {Preferences} from "./st-prefs.mjs.js"; // we need this.
 import {Util} from "./st-util.mjs.js";
 
+function matchText() {
+  Util.logIssue184("Implement matchText() in the experimental background parser.");
+  return "";
+}
+
 function escapeHtml(str) {
   return str.replace(/&/gm, "&amp;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>"); // remove quote replacements
 }
@@ -972,7 +977,6 @@ export class Parser {
           break;
         default:
           if (isClobberHeader) {
-            debugger;
             modType = "string";
             targetString = gMsgCompose.compFields.getHeader(hdr) || "";
           } else modType = "";
@@ -986,35 +990,41 @@ export class Parser {
               targetString = argument;
               break;
             case "prefix":
-              let replyPrefix = targetString.lastIndexOf(":"),
-                testSubject = targetString;
-              if (replyPrefix > 0) {
-                // caveat: won't work well if subject also contains a ':'
-                // cut off Re: Fwd: etc.
-                testSubject = targetString.substr(0, replyPrefix).trim();
-                if (testSubject.indexOf(argument) >= 0) break; // keyword is (anywhere) before colon?
-                // cut off string after last prefix to restore original subject
-                testSubject = targetString.substr(replyPrefix + 1).trim(); // where we can check at the start...
-              }
-              // keyword is immediately after last colon, or start of original subject
-              if (testSubject.indexOf(argument) != 0) {
-                // avoid duplication!
-                targetString = argument + targetString;
+              {
+                let replyPrefix = targetString.lastIndexOf(":"),
+                  testSubject = targetString;
+                if (replyPrefix > 0) {
+                  // caveat: won't work well if subject also contains a ':'
+                  // cut off Re: Fwd: etc.
+                  testSubject = targetString.substr(0, replyPrefix).trim();
+                  if (testSubject.indexOf(argument) >= 0) break; // keyword is (anywhere) before colon?
+                  // cut off string after last prefix to restore original subject
+                  testSubject = targetString.substr(replyPrefix + 1).trim(); // where we can check at the start...
+                }
+                // keyword is immediately after last colon, or start of original subject
+                if (testSubject.indexOf(argument) != 0) {
+                  // avoid duplication!
+                  targetString = argument + targetString;
+                }
               }
               break;
             case "append":
               // problem - if there are encoding breaks, will this comparison fail?
-              let argPos = targetString
-                .toLowerCase()
-                .trim()
-                .lastIndexOf(argument.toLowerCase().trim()); // avoid duplication
-              if (argPos < 0 || argPos < targetString.length - argument.length)
-                targetString = targetString + argument;
+              {
+                let argPos = targetString
+                  .toLowerCase()
+                  .trim()
+                  .lastIndexOf(argument.toLowerCase().trim()); // avoid duplication
+                if (argPos < 0 || argPos < targetString.length - argument.length)
+                  targetString = targetString + argument;
+              }
               break;
             case "delete": // remove a substring, e.g. header.delete(subject,"re: | Fwd: ")
             case "deleteFromSubject":
-              let pattern = new RegExp(argument, "gm");
-              targetString = targetString.replace(pattern, "").replace(/\s+/g, " "); // remove and then collapse multiple white spaces
+              {
+                let pattern = new RegExp(argument, "gm");
+                targetString = targetString.replace(pattern, "").replace(/\s+/g, " "); // remove and then collapse multiple white spaces
+              }
               break;
           }
           break;
@@ -1051,12 +1061,13 @@ export class Parser {
       // set
       // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/NsIMsgCompFields
       switch (hdr) {
-        case "subject":
+        case "subject": {
           // replace newline characters with spaces and trim result!
           let subjectString = targetString.replace(new RegExp("[\t\r\n]+", "g"), " ").trim();
           document.getElementById("msgSubject").value = subjectString;
           composeDetails.subject = subjectString;
           break;
+        }
         case "to":
           composeDetails.to = targetString;
           break;
@@ -1072,7 +1083,7 @@ export class Parser {
         case "reply-to":
           composeDetails.replyTo = targetString;
           break;
-        case "priority":
+        case "priority": {
           const validVals = ["Highest", "High", "Normal", "Low", "Lowest"];
           let found = validVals.find((f) => f.toLowerCase() == argument);
           if (found) {
@@ -1082,7 +1093,7 @@ export class Parser {
             } catch (ex) {
               Util.logException("set priority ", ex);
             }
-          } else
+          } else {
             Util.logDebug(
               "Invalid Priority: '" +
                 targetString +
@@ -1091,8 +1102,10 @@ export class Parser {
                 validVals.join() +
                 "]"
             );
+          }
 
           break;
+        }
         default:
           if (isClobberHeader) {
             if (targetString) {
@@ -2250,7 +2263,7 @@ export class Parser {
                 path = newPath; // fix path and make absolute
               }
             } catch (ex) {
-              debugger;
+              // Keep the original path if resolving a relative file fails.
             }
           }
         }

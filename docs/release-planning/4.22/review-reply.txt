@@ -1,0 +1,28 @@
+Hi John,
+
+Thank you for the detailed review. I will address the other findings and remove all three named functions from the Utilities Experiment. I am eager to bring the new, less obtrusive notification interface to users as soon as possible and will make the changes needed to remain compliant. My request below concerns staging the registration UI conversion safely.
+
+For usage tracking, I will move the logic into a background module. It will load the existing counters through LegacyPrefs once at Thunderbird startup, maintain an authoritative in-memory cache, and persist subsequent changes through LegacyPrefs. This removes the two dedicated usage Experiment APIs.
+
+For findings 2 and 3, I will correct the missing icon reference in the manifest and remove the two unguarded debugger statements from the shipped parser code.
+
+Could we stage the registration dialog migration separately? For this corrective release, I propose removing showComposeLicenseDialog and restoring the previous notification-based caller to open the existing registration dialog. I would then replace that path with a WebExtension HTML page opened through windows.create() or tabs.create() in the next minor version (4.23).
+
+I agree with the intended direction, but the registration dialog is vital to purchasing, renewal, extension, upgrading and licence entry. Converting it requires a careful rewrite and potentially a manual redesign, with thorough testing to ensure all flows remain reliable. This work also needs to cover registration dialogs across three add-ons with different licensing models, including harmonizing their localization to keep the implementation and translations maintainable.
+
+A rushed conversion risks disrupting registration and revenue, as well as further undermining users’ trust. Staging the work would let me resolve the other review findings promptly while keeping the established registration flow working during the migration.
+
+I can prioritize converting my registration dialogs to HTML as my next major task. However, I had planned to prioritize the parser migration to compose content scripts, as we discussed on the last Add-on Developers call, because it removes a larger dependency on privileged experimental code.
+
+Would you accept this interim approach for the corrective release, with the HTML conversion planned for the next minor version?
+
+--------------------
+
+Regarding finding 4, chrome/content/skin/icon32x32.png is used by the compose content script to display the branding icon in the new notification interface demonstrated last Thursday. It is loaded into an <img> inside the notification’s shadow DOM, which is why it is listed in web_accessible_resources.
+
+For findings 5 and 6, I will replace all remaining HTTP links with secure HTTPS URLs. I have also replaced the async external message listener with a synchronous listener that returns a Promise only for commands it handles, leaving unrelated messages available to other listeners.
+
+For finding 7, I have added VENDOR.md at the add-on root, declaring the bundled ical.js version 1.5.0, its exact upstream download URL, licence, and purpose. It is used to parse address-book vCards for contact lookups. The declaration will be included in the submitted XPI.
+
+Best regards,
+Axel

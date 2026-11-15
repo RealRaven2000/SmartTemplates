@@ -1,5 +1,10 @@
 # Repository working agreements
 
+## Runtime message listeners across all add-ons
+
+- Never register an `async` listener for `runtime.onMessage` or `runtime.onMessageExternal` in any add-on. An async listener always returns a Promise, including for messages it does not handle, and can prevent other listeners from responding.
+- Keep the listener synchronous. Return `undefined` (or `false`) immediately for unhandled messages, and return a Promise only for a message the listener actually handles. Use promise chaining when asynchronous work is needed.
+
 ## Template insertion and test fixtures
 
 - SmartTemplates injects template content into the Composer document's existing body. Thunderbird strips template `<body>` tags; do not assume a template replaces the entire document.

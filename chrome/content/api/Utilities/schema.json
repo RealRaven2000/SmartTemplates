@@ -3,37 +3,6 @@
     "namespace": "Utilities",
     "functions": [
       {
-        "name": "getComposeFeatureUsage",
-        "type": "function",
-        "async": true,
-        "description": "Read a feature allowance from the background without consuming a use.",
-        "parameters": [
-          { "name": "feature", "type": "string" },
-          { "name": "license", "type": "object", "additionalProperties": { "type": "any" } }
-        ]
-      },
-      {
-        "name": "checkComposeFeatureUsage",
-        "type": "function",
-        "description": "Synchronously read or consume a licensed feature allowance, once per local day after the general trial.",
-        "parameters": [
-          { "name": "feature", "type": "string" },
-          { "name": "license", "type": "object", "additionalProperties": { "type": "any" } },
-          { "name": "consume", "type": "boolean" }
-        ],
-        "returns": { "type": "any" }
-      },
-      {
-        "name": "showComposeLicenseDialog",
-        "type": "function",
-        "async": true,
-        "description": "Open the licensing dialog from the originating compose tab.",
-        "parameters": [
-          { "name": "tabId", "type": "integer" },
-          { "name": "feature", "type": "string" }
-        ]
-      },
-      {
         "name": "selectSnippetFolder",
         "type": "function",
         "async": true,

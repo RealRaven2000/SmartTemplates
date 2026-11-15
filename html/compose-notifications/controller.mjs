@@ -1,7 +1,7 @@
-// Background-only controller. Usage is supplied by the explicit Utilities API;
+// Background-only controller. Usage is supplied by the background cache;
 // reminder snoozing affects feature notices, never accounting or blocked operations.
 export function createComposeNotifications(api, {
-  getFeatureUsage, copyText = text => navigator.clipboard.writeText(text),
+  getFeatureUsage, showRegistrationDialog, copyText = text => navigator.clipboard.writeText(text),
   now = () => new Date(),
 } = {}) {
   const states = new Map();
@@ -261,8 +261,7 @@ export function createComposeNotifications(api, {
       case "copyTemplateSource":
         return issueAction(tabId, data);
       case "buy":
-        return api.Utilities.showComposeLicenseDialog(
-          tabId,
+        return showRegistrationDialog(
           [...states.get(tabId).pro, ...states.get(tabId).standard].join("|")
         );
       case "licensing":
