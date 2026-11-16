@@ -85,7 +85,16 @@
 
   document.querySelectorAll(".purchase").forEach((button) => {
     button.addEventListener("click", () => {
-      feedback.textContent = `Preview: ${button.dataset.plan} for ${document.getElementById("email").value}. Live checkout would receive the contact details and previous license as referrer. No shop was opened.`;
+      const preview = document.createElement("p");
+      preview.className = "checkout-preview-note";
+      preview.textContent = "Prototype preview only. No shop was opened.";
+      const confirmation = document.createElement("p");
+      confirmation.textContent = "The shop has opened in your browser. You can keep this tab open.";
+      const guidance = document.createElement("p");
+      const emphasis = document.createElement("strong");
+      emphasis.textContent = "To retain your renewal or upgrade benefits, continue with the product opened from this page.";
+      guidance.append(emphasis, " For choosing a different license, simply start from here again.");
+      feedback.replaceChildren(preview, confirmation, guidance);
       feedback.hidden = false;
       feedback.scrollIntoView({ behavior: "auto", block: "nearest" });
     });
