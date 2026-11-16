@@ -112,3 +112,12 @@ footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 2
 .breadcrumb-separator { color: var(--muted); font-size: 11px; }
 
 .terms-back:hover { text-decoration: underline; }
+
+/* Inline arrows inherit the label color without relying on platform fonts. */
+.has-glyphs .label-arrow {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+}

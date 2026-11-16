@@ -2,6 +2,41 @@
 
 // Standalone fixture only: no add-on APIs, real licenses, or checkout effects.
 (() => {
+  // Replace only marked text labels, retaining translated arrow positions.
+  function replaceLabelGlyphs(root = document) {
+    const labels = root.matches?.(".has-glyphs") ? [root] : root.querySelectorAll(".has-glyphs");
+    function replaceText(parent) {
+      for (const node of [...parent.childNodes]) {
+        if (node.nodeType === 3 && node.nodeValue.includes("🡇")) {
+          const parts = node.nodeValue.split("🡇");
+          const fragment = document.createDocumentFragment();
+          parts.forEach((part, index) => {
+            if (index) {
+              const arrow = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+              arrow.setAttribute("class", "label-arrow");
+              arrow.setAttribute("viewBox", "0 0 24 24");
+              arrow.setAttribute("fill", "currentColor");
+              arrow.setAttribute("aria-hidden", "true");
+              arrow.setAttribute("focusable", "false");
+              const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+              path.setAttribute("d", "M7 2h10v10h6L12 23 1 12h6Z");
+              arrow.appendChild(path);
+              fragment.appendChild(arrow);
+            }
+            fragment.appendChild(document.createTextNode(part));
+          });
+          node.replaceWith(fragment);
+        } else if (node.nodeType === 1 && node.namespaceURI !== "http://www.w3.org/2000/svg") {
+          replaceText(node);
+        }
+      }
+    }
+    for (const label of labels) {
+      replaceText(label);
+    }
+  }
+
+  replaceLabelGlyphs();
   const selection = document.getElementById("selection-panel");
   const terms = document.getElementById("terms-panel");
   const toggle = document.getElementById("toggle-terms");
@@ -50,6 +85,7 @@
     document.getElementById("step-label").textContent = showingTerms ? "LICENSE TERMS" : "LICENSE SELECTION";
     document.getElementById("view-title").textContent = showingTerms ? "How your license works." : "A year of easier email.";
     toggle.replaceChildren(document.createTextNode(showingTerms ? "🡇 Continue to License Selection 🡇" : "Show license terms 🡇"));
+    replaceLabelGlyphs(toggle);
     feedback.hidden = true;
     document.getElementById("personal-license-details").classList.remove("license-detail-highlight");
   }
