@@ -1,5 +1,11 @@
 # Registration localization audit
 
+## Initial implementation
+
+Registration now uses the established `__MSG_entity__` mechanism through `html/i18n.js` for static text and attributes, followed by shared formatting of dedicated rich-text leaves. Runtime code does not read `data-l10n-id`: retained attributes identify legacy source entities solely as cleanup/transfer hints. They do not prove an entity is unused; Settings and other remaining consumers must be checked before removal.
+
+The independent page now lives under `html/registration/`. All its entities use `registration.*`, in `_locales/en/messages.json` only, per the maintainer's subsequent implementation decision. Where existing dialog wording was adapted, the entity's `description` records the original ID. This supersedes reuse of the original keys for the new page; the standalone prototype annotations below remain the source inventory. Legacy catalog entities and the original dialog are unchanged. English fallback supplies the new page until translations are reviewed. The existing formatter is shared through `html/localized-format.js`, with explicit formatting only.
+
 ## Prototype implementation annotations
 
 The prototype's `data-l10n-id` attributes identify existing English `messages.json` entities to reuse or revise during implementation. They are planning annotations, not active localization bindings or a claim that the current translations already match the draft. Unmarked new copy needs new entities. Preserve nested inputs, links, icons, emphasis, and dynamic dates when implementing localization; do not replace an annotated element's entire contents blindly. The terms toggle switches its annotation between `licenseTerms.show` and `licenseTerms.hide` with its text.

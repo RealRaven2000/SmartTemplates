@@ -92,3 +92,7 @@ footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 2
 #selection-panel:has(.purchase[data-plan$="renewal"]:focus) .renewal-hint,
 #selection-panel:has(.purchase[data-plan$="extension"]:hover) .renewal-hint,
 #selection-panel:has(.purchase[data-plan$="extension"]:focus) .renewal-hint { visibility: visible; }
+
+.feedback p { margin: 0 0 12px; }
+.feedback p:last-child { margin-bottom: 0; }
+.checkout-preview-note { font-size: 11px; color: var(--muted); }
