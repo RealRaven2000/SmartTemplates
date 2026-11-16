@@ -54,6 +54,9 @@
 
   toggle.addEventListener("click", () => {
     showTerms(terms.hidden);
+    const heading = document.getElementById("license-section-heading");
+    heading.focus({ preventScroll: true });
+    window.scrollTo({ top: Math.max(0, window.scrollY + workspace.getBoundingClientRect().top - 24), behavior: "auto" });
   });
 
   document.getElementById("email-learn-more").addEventListener("click", (event) => {
