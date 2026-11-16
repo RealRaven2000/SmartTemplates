@@ -216,6 +216,7 @@ function showSalesItems(isSale, licenseInfo) {
  * localized messages from `messenger.i18n.getMessage(id)`.  
  * Supports nested placeholders by repeatedly resolving until no more changes occur,
  * with a maximum loop limit to avoid infinite recursion.
+ * Substitutions inherit surrounding formatting; use explicit tags for emphasis.
  *
  * @param {string} text - The input string containing `{+id}` placeholders.
  * @returns {string} - The string with all `{+id}` placeholders replaced.
@@ -235,7 +236,7 @@ function replaceNested(text) {
       if (replacement !== `{+${id}}`) {
         changed = true;
       }
-      return `{i}${replacement}{/i}`;
+      return replacement;
     });
 
     if (!changed) {

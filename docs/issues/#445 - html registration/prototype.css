@@ -6,7 +6,7 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
 button { cursor: pointer; }
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #438469; outline-offset: 4px; }
 [hidden] { display: none !important; }
-.brand { max-width: 1160px; margin: auto; padding: 28px 32px; display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 18px; }
+.brand { max-width: 1160px; margin: auto; padding: 28px 32px; display: flex; align-items: center; gap: 14px; font-weight: 650; font-size: 28px; }
 .prototype-badge { margin-left: auto; font-size: 11px; font-weight: 500; color: var(--muted); border: 1px solid #d6ddd5; padding: 5px 9px; border-radius: 6px; }
 main { max-width: 1096px; margin: auto; padding: 24px 32px 40px; }
 .page-heading { margin-bottom: 32px; }
@@ -21,7 +21,7 @@ h2, h3, p { margin-top: 0; }
 .license-summary p { font-size: 14px; margin: 0; color: #74604e; }
 .license-summary strong { font-weight: 600; }
 .workspace { background: #fff; border: 1px solid #dfe5dc; border-radius: 16px; padding: 32px 32px 0; overflow: hidden; box-shadow: 0 5px 18px #26363205; }
-.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.section-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .section-heading h2 { font-size: 25px; letter-spacing: -.025em; margin: 0; font-weight: 650; }
 .annual-note { font-size: 12px; color: var(--muted); white-space: nowrap; }
 .intro { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 12px 0 26px; }
@@ -36,7 +36,7 @@ input, select { color: #263632; background: #fff; border: 1px solid #cfd8ce; bor
 .email-label-row > label { display: inline; margin: 0; }
 .email-help-button { display: inline-flex; flex: 0 0 16px; align-items: center; justify-content: center; width: 16px; height: 16px; margin: 0; padding: 0; border: 0; border-radius: 0; color: var(--green); background: transparent; }
 .email-help-button img { display: block; width: 16px; height: 16px; }
-.email-help-button:hover img, .email-help-button:focus-visible img, .email-help-button[aria-expanded="true"] img { filter: sepia(1) saturate(3) hue-rotate(85deg); }
+.email-help-button:hover img, .email-help-button:focus-visible img, .email-help-button[aria-expanded="true"] img { filter: brightness(.85); }
 .email-field .email-hint { font-size: 11px; font-weight: 400; color: #778174; line-height: 1.45; margin: 6px 0 0; }
 .email-help { position: absolute; top: 28px; right: 0; width: min(360px, 100%); z-index: 2; background: #fff; border: 1px solid #afc3af; border-radius: 10px; box-shadow: 0 8px 28px #26363226; padding: 18px; }
 .email-help-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
@@ -70,7 +70,6 @@ a .external-icon { margin-left: 5px; }
 .toggle { border: 1px solid #cad5c6; color: #345240; border-radius: 7px; background: #fff; padding: 10px 18px; font-size: 13px; font-weight: 650; }
 .toggle span { margin-left: 10px; }
 .terms-open .toggle { background: var(--green); color: #fff; border-color: var(--green); }
-.workspace.terms-open:has(.toggle:hover) #terms-panel, .workspace.terms-open:has(.toggle:focus-visible) #terms-panel { background: repeating-linear-gradient(135deg, #f4f6f1 0, #f4f6f1 6px, #fff 6px, #fff 12px); }
 .terms-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 38px; }
 .terms-grid article { padding: 8px 0; }
 .term-number { font-size: 12px; font-weight: 700; color: #6c8866; display: block; margin-bottom: 12px; }
@@ -83,3 +82,13 @@ footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 2
 @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } .plan { padding: 22px; } .plan > p:not(.plan-kicker) { margin-bottom: 18px; } .plan-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; } .plan-bottom > span { margin: 0; } .purchase { width: auto; min-width: 170px; } .terms-grid { gap: 20px; } }
 @media (max-width: 520px) { .brand { padding: 20px; } main { padding: 16px 16px 28px; } .license-summary { align-items: flex-start; flex-direction: column; padding: 20px; } .workspace { padding: 24px 20px 0; } .view-switcher { margin-inline: -20px; } .contact { padding: 16px; } .contact-grid, .terms-grid { grid-template-columns: 1fr; } .annual-note { display: none; } .section-heading h2 { font-size: 23px; } footer { flex-direction: column; gap: 8px; } .plan-bottom { align-items: stretch; flex-direction: column; } .purchase { width: 100%; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+.terms-grid p.license-detail-highlight { background: #e7f2ff; outline: 2px solid #087bd8; outline-offset: 0; border-radius: 3px; padding: 5px; margin: -5px -5px 7px; }
+
+.renewal-hint { visibility: hidden; margin: 12px 0 0; font-size: 12px; line-height: 1.6; color: var(--green); }
+.renewal-details { padding: 14px 16px; margin-bottom: 16px; background: #f2f7f1; border-left: 3px solid #9db69e; border-radius: 3px; }
+.renewal-details p:last-child { margin-bottom: 0; }
+#selection-panel:has(.purchase[data-plan$="renewal"]:hover) .renewal-hint,
+#selection-panel:has(.purchase[data-plan$="renewal"]:focus) .renewal-hint,
+#selection-panel:has(.purchase[data-plan$="extension"]:hover) .renewal-hint,
+#selection-panel:has(.purchase[data-plan$="extension"]:focus) .renewal-hint { visibility: visible; }
