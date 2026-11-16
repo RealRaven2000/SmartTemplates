@@ -6,6 +6,7 @@ import { Preferences } from "./scripts/preferences.mjs";
 import { createBackgroundUsage } from "./scripts/premium/usage-background.mjs";
 import { createComposeNotifications } from "./html/compose-notifications/controller.mjs";
 import { createComposePrompts } from "./scripts/prompt/controller.mjs";
+import { openRegistrationTab } from "./html/registration/open-tab.mjs";
 import {Licenser, licenseValidationDescription} from "./scripts/Licenser.mjs.js";
 import * as webExtensionStorageEditor from "./scripts/webExtensionStorageEditor.mjs";
 
@@ -1397,7 +1398,7 @@ async function main() {
       queryString = "?" + searchParams.toString();
     }
     if (oldTab) {
-      await browser.tabs.update(oldTab.id, {
+      const settingsTab = await browser.tabs.update(oldTab.id, {
         active: true,
         url: browser.runtime.getURL(settingsUrl + queryString),
       });
@@ -1410,9 +1411,10 @@ async function main() {
         data
       );
       // await browser.windows.update(oldTab.windowId, {focused:true});
+      return settingsTab;
     } else {
       // open a new tab with settings
-      browser.tabs.create({
+      return browser.tabs.create({
         active: true,
         url: browser.runtime.getURL(settingsUrl + queryString),
       });
@@ -1600,6 +1602,7 @@ async function main() {
         showTopLevelKey: false,
       });
     },
+    openRegistrationTab: (data, _sender) => openRegistrationTab(browser, data),
     showRegistrationDialog: (data, _sender) => {
       messenger.NotifyTools.notifyExperiment({
         event: "doCommand",
@@ -1665,7 +1668,7 @@ async function main() {
       });
     },
     openPrefs: async (data, _sender) => {
-      await openPrefs(data);
+      return openPrefs(data);
     },
   };
 
@@ -1946,6 +1949,8 @@ async function main() {
         case "patchUnifiedToolbar":
           return await notifyWhenUIReady({ event: "patchUnifiedToolbar" });
 
+        case "openRegistrationTab":
+          return openRegistrationTab(browser);
         case "openLinkInTab":
           // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
           {

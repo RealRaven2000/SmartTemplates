@@ -1,0 +1,225 @@
+/* Scoped to HTML Settings; legacy dialogs and the lower fieldsets keep their styles. */
+#licensePane {
+  --license-notice-background: #fff7e6;
+  --license-notice-color: #72511f;
+  --license-notice-border: #dfbd7f;
+  --license-error-background: #fff0f1;
+  --license-error-color: #923341;
+  --license-error-border: #dba1aa;
+}
+
+#licensePane #licenseKeyDescription {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--layout-color-1);
+}
+
+#licensePane #licenseContainer {
+  min-width: 0;
+}
+
+#licensePane #txtLicenseKey {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 8em;
+  margin: 0;
+  padding: 12px 14px !important;
+  border: 1px solid var(--layout-border-1);
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+#licensePane #txtLicenseKey.license-entry-target:focus {
+  outline-width: 2px;
+  background-color: #f1f7ff !important;
+}
+
+#licensePane #licenseContainer + .opposite-align {
+  gap: 8px;
+  margin-top: 12px;
+}
+
+#licensePane #btnPasteLicense,
+#licensePane #btnValidateLicense {
+  margin: 0;
+  padding: 8px 16px;
+  border: 1px solid var(--layout-border-1);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+#licensePane .licenseSeparator {
+  border: 0;
+  margin-block: 10px;
+}
+
+#licensePane #validationDate {
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-block: 6px;
+}
+
+#licensePane #licenseDateLabel {
+  margin: 0;
+  color: var(--layout-color-2);
+}
+
+#licensePane #licenseDate {
+  width: 12em;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+}
+
+#licensePane #validationResults,
+#licensePane #validationResults:hover {
+  background: transparent;
+}
+
+#licensePane #validationResults .niceFont,
+#licensePane #validationResults .niceFont * {
+  font-family: inherit;
+  font-size: 0.95rem !important;
+  line-height: 1.5;
+}
+
+#licensePane #validationResults description {
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-align: left;
+  white-space: normal;
+}
+
+#licensePane #validationResults .licenseWarning {
+  border: 1px solid var(--license-notice-border);
+  border-inline-start-width: 3px;
+  background: var(--license-notice-background) !important;
+  color: var(--license-notice-color) !important;
+}
+
+#licensePane #validationResults .licenseError {
+  border: 1px solid var(--license-error-border);
+  border-inline-start-width: 3px;
+  background: var(--license-error-background) !important;
+  color: var(--license-error-color) !important;
+}
+
+#licensePane .btnLicenseContainer {
+  height: auto;
+  flex-grow: 0;
+  justify-content: center;
+  padding-block: 16px 24px;
+}
+
+/* Clip the contracting shade to the key/status/action area, never navigation. */
+#licensePane .license-stage {
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  min-width: 0;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  margin: -8px -8px 0;
+  padding: 8px 8px 0;
+}
+
+#licensePane #btnLicense,
+#licensePane #btnLicense:hover,
+#licensePane #btnLicense:active {
+  margin: 0 !important;
+  padding: 10px 20px;
+  border: 1px solid #709b08;
+  border-radius: 7px;
+  background: linear-gradient(to bottom, #a8d51c 0%, #89b509 48%, #78a300 100%) !important;
+  color: #fff !important;
+  text-shadow: 0 1px 1px #385300;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: none;
+  animation: license-action-pulse 2.8s ease-in-out infinite;
+  transition: border-color 0.15s;
+  position: relative;
+  z-index: 1;
+}
+
+#licensePane #btnLicense::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+  box-shadow: 0 0 0 0 #18282000;
+  transition: box-shadow 0.8s ease-in-out;
+}
+
+#licensePane #btnLicense:hover:not(:disabled)::before {
+  box-shadow: 0 0 0 100vmax #18282014;
+  transition-duration: 0.4s;
+}
+
+#licensePane #btnLicense:hover {
+  border-color: #5f8905;
+  background: linear-gradient(to bottom, #b4df2a 0%, #96c210 48%, #82ad03 100%) !important;
+}
+
+#licensePane #btnLicense:active {
+  background: #78a300 !important;
+  animation: none;
+}
+
+#licensePane #btnLicense:focus-visible {
+  outline: 2px solid #087bd8;
+  outline-offset: 3px;
+}
+
+#licensePane #btnLicense:disabled {
+  opacity: 0.6;
+  cursor: default;
+  animation: none;
+}
+
+@keyframes license-action-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 #96bd1700; }
+  50% { box-shadow: 0 0 0 6px #96bd171c; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #licensePane #btnLicense,
+  #licensePane #btnLicense:hover,
+  #licensePane #btnLicense:active {
+    animation: none;
+    transition: none;
+  }
+
+  #licensePane #btnLicense::before,
+  #licensePane #btnLicense:hover:not(:disabled)::before {
+    box-shadow: none;
+    transition: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #licensePane {
+    --license-notice-background: #382f20;
+    --license-notice-color: #f1d39e;
+    --license-notice-border: #80673d;
+    --license-error-background: #3e252c;
+    --license-error-color: #ffc1cb;
+    --license-error-border: #8e535f;
+  }
+
+  #licensePane #txtLicenseKey.license-entry-target:focus {
+    background-color: #19354e !important;
+  }
+}

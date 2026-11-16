@@ -43,6 +43,7 @@
 var licenseInfo;
 
 import { SettingsUI } from "./st-settings-ui.mjs";
+import { openRegistrationFromSettings } from "./registration/open-tab.mjs";
 import { logMissingFunction } from "./st-log.mjs";
 import { initSnippetBrowser } from "./st-snippet-browser.mjs";
 
@@ -2035,13 +2036,14 @@ SmartTemplates.Settings = {
         let btnLicense = document.getElementById("btnLicense");
         SmartTemplates.Settings.labelLicenseBtn(btnLicense, "extend");
       } else { // standard function - go to License screen to upgrade!
-        SmartTemplates.Util.showLicenseDialog("licenseTab");  
+        void showRegistrationDlg("licenseTab", "extend");
       }
     }
   } ,
 
 	// put appropriate label on the license button and pass back the label text as well
 	labelLicenseBtn: function(btnLicense, validStatus) {
+		btnLicense.dataset.registrationIntent = validStatus === "extend" ? "extend" : "";
 		switch(validStatus) {
 			case  "extend": {
 				const txtExtend = SmartTemplates.Util.getBundleString(
@@ -2543,11 +2545,16 @@ async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
 }
 
 
-async function showRegistrationDlg(feature) {
-	messenger.runtime.sendMessage({ 
-    command: "showRegistrationDialog", 
-    addonfeatures: feature,
-  });
+async function showRegistrationDlg(feature, intent = "") {
+  const button = document.getElementById("btnLicense");
+  button.disabled = true;
+  try {
+    await openRegistrationFromSettings(messenger, { feature, intent });
+  } catch (error) {
+    console.error("Unable to open registration tab", error);
+  } finally {
+    button.disabled = false;
+  }
 }
 
 
@@ -2853,10 +2860,7 @@ function addUIListeners() {
     SmartTemplates.Settings.validateNewKey(event.target);
   });
   document.getElementById("btnLicense").addEventListener("click", (_event) => {
-    // oncommand="
-    //    SmartTemplate4.Util.showLicenseDialog('licenseTab');
-    //    setTimeout( function() {window.close();}, 500 );"
-    showRegistrationDlg("licenseTab"); // do we need to close the settings tab??
+    void showRegistrationDlg("licenseTab", _event.currentTarget.dataset.registrationIntent || "");
   });
 
   // select elements
@@ -3260,7 +3264,8 @@ async function onLoad() {
 			selectedElement = SmartTemplates.Settings.selectCategoryMenu("catLicense");
 			const txtLicense = getElement('txtLicenseKey');
 			if (txtLicense) {
-				setTimeout(() => txtLicense.focus(), 200);
+				txtLicense.classList.add("license-entry-target");
+				selectedElement = txtLicense;
 			}
 		} break;
 		case "supportEmail":
@@ -3311,7 +3316,16 @@ async function onLoad() {
 
 
 addEventListener("load", async (_event) => {
-  onLoad();
+  try {
+    await onLoad();
+  } catch (error) {
+    console.error("Settings initialization failed", error);
+  } finally {
+    const stack = document.getElementById("preferences-stack");
+    stack.inert = false;
+    stack.removeAttribute("aria-busy");
+    document.documentElement.classList.remove("settings-loading");
+  }
 });  
 
 addEventListener("unload", async (_event) => {

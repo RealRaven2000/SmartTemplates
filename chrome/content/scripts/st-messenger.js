@@ -280,6 +280,9 @@ async function onLoad(activatedWhileWindowOpen) {
           }
         }
         break;
+      case "smartTemplates-registration-tab":
+        await SmartTemplates.Util.notifyTools.notifyBackground({ func: "openRegistrationTab" });
+        break;
       case "smartTemplates-registration":
         {
           let featureName = params?.feature || "";

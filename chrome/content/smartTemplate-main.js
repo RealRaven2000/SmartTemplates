@@ -386,6 +386,7 @@ END LICENSE BLOCK
     # [issue 435] Variables documentation: Consolidated Signature chapter and layout in variables page, added subchapters.
     # Bug Fixes:
     # [issue 433] Thunderbird 159 beta: msgHdrFromURI removed leads to templates not fully working in Composer
+    # Fixed plain-text and empty replacements in HTML tag modifiers.
 
 
 =========================
@@ -1367,6 +1368,7 @@ var SmartTemplate4 = {
 
     <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
       <menupopup>
+        <menuitem id="smartTemplates-registration-tab" label="__MSG_registration.test.menu__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);" onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-message" label="Test Message class" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-setNewsFlag" label="Set News Flag!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>

@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "SmartTemplates",
 	"description": "__MSG_extensionDescription__",
-  "version": "4.22.1pre8",
+  "version": "4.22.1pre32",
   "default_locale": "en",
   "web_accessible_resources": [
     "html/compose-notifications/notification.css",

@@ -8,7 +8,8 @@ END LICENSE BLOCK */
 /*
   globals
     SALE_END_DATE,
-    getSaleEndLabel,
+    formatAll,
+    parseHTMLFragment,
 */
 
 
@@ -210,73 +211,6 @@ function showSalesItems(isSale, licenseInfo) {
   return isActionList;
 }
 
-/**
- * replaceNested
- * Replaces all `{+id}` placeholders in a string with their corresponding
- * localized messages from `messenger.i18n.getMessage(id)`.  
- * Supports nested placeholders by repeatedly resolving until no more changes occur,
- * with a maximum loop limit to avoid infinite recursion.
- * Substitutions inherit surrounding formatting; use explicit tags for emphasis.
- *
- * @param {string} text - The input string containing `{+id}` placeholders.
- * @returns {string} - The string with all `{+id}` placeholders replaced.
- */
-function replaceNested(text) {
-  let result = text;
-  const maxLoops = 5; // prevent infinite recursion
-
-  for (let i = 0; i < maxLoops; i++) {
-    let changed = false;
-
-    result = result.replace(/\{\+([\w.]+)\}/g, (_, id) => {
-      // replace is streaming results from 1st capturing group:
-      // (fullMatch, group1, index, originalString)
-      const replacement = messenger.i18n.getMessage(id) || `{+${id}}`;
-      console.log("replaceNested callback called:", { id, replacement });
-      if (replacement !== `{+${id}}`) {
-        changed = true;
-      }
-      return replacement;
-    });
-
-    if (!changed) {
-      break;
-    }
-  }
-
-  return result;
-}
-
-function specialAttributes(str, content) {
-  if (!str) {
-    return "";
-  }
-
-  let out = [];
-  let title;
-
-  for (const p of str.split(/\s+/)) {
-    const [k, v] = p.split("=");
-
-    if (!k || !v) {
-      continue;
-    }
-
-    if (k === "class" && v.includes("maintenance")) {
-      // for class=maintenance the tag contains the maintenance version number!
-      const tooltip = messenger.i18n.getMessage("whats-new-maintenance", [content]);
-      title = `title="${tooltip}"`;
-    }
-
-    out.push(`${k}="${v}"`);
-  }
-  if (title) {
-    out.push(title);
-  }
-
-  return out.join(" ");
-}
-
 // Delegate clicks because localized popup content is inserted after page load.
 document.addEventListener("click", (event) => {
   const link = event.target.closest("a.snippets-settings");
@@ -289,78 +223,6 @@ document.addEventListener("click", (event) => {
     highlight: "snippetsHeader",
   });
 });
-
-function formatAll(txt) {
-  let localizedMsg = replaceNested(txt)
-    .replace(/<(.*?)>/g, "<span class='htmltag'>&lt;$1&gt;</span>")
-  .replace(
-      // eslint-disable-next-line no-useless-escape
-      /\{support(?: ([\w\-]+))?\}/g,
-      (dummy, topic) => `<a class='contactsupport' data-topic='${topic || ""}' href='#'>`
-    )
-    .replace(/\{\/support\}/g, "</a>");
-
-
-  let  salesEnd =  "";
-  if (typeof getSaleEndLabel === "function") {
-    salesEnd = getSaleEndLabel();
-  } 
-
-  // added simple <tag> support
-  return localizedMsg
-    .replace(/\{L(?:\s+([^}]+))?\}/g, (_, attrs) => {
-      // attrs will be undefined if no class specified
-      return attrs ? `<li ${attrs}>` : "<li>";
-    })
-    .replace(/\{\/L\}/g, "</li>")
-    .replace(/\{salesEnd\}/g, salesEnd)
-    .replace(/\{h3\}/g, "<h3>")
-    .replace(/\{\/h3\}/g, "</h3>")
-    .replace(/\{bold\}/g, "<b>")
-    .replace(/\{\/bold\}/g, "</b>")
-    .replace(/\{b(?:\s+([^}]+))?\}(.*?)\{\/b\}/g, (_, attrs, content) => {
-      const attrStr = attrs ? specialAttributes(attrs, content) : "";
-      return attrStr ? `<b ${attrStr}>${content}</b>` : `<b>${content}</b>`;
-    })
-    .replace(/\{hr\}/g, "<hr>")
-    .replace(/\{pre\}/g, "<pre>")
-    .replace(/\{preEnd\}/g, "</pre>")
-    .replace(/\{i\}/g, "<i>")
-    .replace(/\{\/i\}/g, "</i>")
-    .replace(/\{emph\}/g, "<span class='important'>")
-    .replace(/\{\/emph\}/g, "</span>")
-    .replace(/\{\{(%.*?%)\}\}/g, "<code>$1</code>")
-    .replace(/\{\{(.*?)\}\}/g, "<code param>$1</code>")
-    .replace(/\{U\}/g, "<ul>")
-    .replace(/\{\/U\}/g, "</ul>")
-    .replace(/\{P(?:\s+([^}]+))?\}/g, (_, attrs) => {
-      // attrs will be undefined if no class specified
-      return attrs ? `<p ${attrs}>` : "<p>";
-    })
-    .replace(
-      /\{ARelease\}/g,
-      "<a href='https://blog.thunderbird.net/2025/03/thunderbird-release-channel-update/'>"
-    )
-    .replace(
-      /\{AcompatCheck\}/g,
-      "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-compatibility-check/' class='native'>"
-    )
-    .replace("$news.minimal$", messenger.i18n.getMessage("news.minimal"))
-    .replace(/\{\/A\}/g, "</a>")
-    .replace(/\{\/P\}/g, "</p>")
-    .replace(/\{aSnippets\}/g, "<a class='snippets-settings' href='#'>")
-    .replace(/\{a ([^}]+?)\}/g, "<a $1>")
-    .replace(/\{\/a\}/gi, "</a>")
-    .replace(/\{br\}/g, "<br>")
-    .replace(/\{sect\}/g, "</ul> <h3 class='section'>")
-    .replace(/\{\/sect\}/g, "</h3> <ul>")
-    .replace(/\[issue (\d*)\]/g, "<a class='issue' no='$1' href='#'>[issue $1]</a>")
-    .replace(/\[Bugzilla (\d*)\]/g, "<a class='bugzilla' no='$1' href='#'>[Bugzilla $1]</a>")
-    .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys [A] [1]
-    .replace(/\[\[([^\]]+)\]\]/g, "<code class='keystroke'>$1</code>"); // larger keys [[Cancel]] [[Ctrl]]
-    // DANGEROUS .replaceAll("''", '"');
-  // {sect}Section title{/sect} starts a new section and list.
-}
 
 // eslint-disable-next-line no-unused-vars
 async function insertLocalizedMessage(element, rawMessage) {
@@ -381,20 +243,6 @@ async function insertLocalizedMessage(element, rawMessage) {
     console.error("Failed to parse localized message:", ex);
     element.textContent = rawMessage; // Fallback: insert raw text only
   }
-}
-
-// replace unsafe innerHTML injections
-// note: this will add closing tags and other markup ,e.g. <tr> or <table>
-function parseHTMLFragment(htmlString) {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(htmlString, "text/html");
-
-  // Spread childNodes to an array to avoid live list mutation issues
-  const nodes = [...doc.body.childNodes];
-  const fragment = document.createDocumentFragment();
-  // appendChild moves nodes from doc.body to fragment (not cloned)
-  nodes.forEach((node) => fragment.appendChild(node));
-  return fragment;
 }
 
 // copy a html structure into [multiple] elements

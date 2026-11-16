@@ -42,6 +42,8 @@
     closeEmailHelp();
     terms.hidden = !showingTerms;
     selection.hidden = showingTerms;
+    document.querySelector(".license-summary").hidden = showingTerms;
+    document.getElementById("terms-breadcrumb").hidden = !showingTerms;
     toggle.setAttribute("aria-expanded", String(showingTerms));
     toggle.dataset.l10nId = showingTerms ? "licenseTerms.hide" : "licenseTerms.show";
     workspace.classList.toggle("terms-open", showingTerms);
@@ -58,6 +60,8 @@
     heading.focus({ preventScroll: true });
     window.scrollTo({ top: Math.max(0, window.scrollY + workspace.getBoundingClientRect().top - 24), behavior: "auto" });
   });
+
+  document.getElementById("terms-back").addEventListener("click", () => toggle.click());
 
   document.getElementById("email-learn-more").addEventListener("click", (event) => {
     event.preventDefault();
@@ -92,12 +96,20 @@
       confirmation.textContent = "The shop has opened in your browser. You can keep this tab open.";
       const guidance = document.createElement("p");
       const emphasis = document.createElement("strong");
-      emphasis.textContent = "To retain your renewal or upgrade benefits, continue with the product opened from this page.";
-      guidance.append(emphasis, " For choosing a different license, simply start from here again.");
-      feedback.replaceChildren(preview, confirmation, guidance);
-      feedback.hidden = false;
-      feedback.scrollIntoView({ behavior: "auto", block: "nearest" });
+      emphasis.textContent = "To keep your renewal or upgrade benefits, continue with the product opened from this page.";
+      const differentLicense = document.createElement("i");
+      differentLicense.textContent = "different license";
+      guidance.append(emphasis, " For choosing a ", differentLicense, ", simply start from here again.");
+      document.getElementById("checkout-notice-content").replaceChildren(preview, confirmation, guidance);
+      const notice = document.getElementById("checkout-notice");
+      notice.hidden = false;
+      notice.scrollIntoView({ behavior: "auto", block: "nearest" });
+      feedback.hidden = true;
     });
+  });
+
+  document.getElementById("checkout-notice-close").addEventListener("click", () => {
+    document.getElementById("checkout-notice").hidden = true;
   });
 
   document.getElementById("enter-key").addEventListener("click", () => {

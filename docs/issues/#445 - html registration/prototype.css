@@ -96,3 +96,19 @@ footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 2
 .feedback p { margin: 0 0 12px; }
 .feedback p:last-child { margin-bottom: 0; }
 .checkout-preview-note { font-size: 11px; color: var(--muted); }
+
+.checkout-notice { position: relative; padding-right: 48px; margin-top: 18px; background: #fff7e6; border: 1px solid #e2b75d; color: #634d20; }
+.checkout-notice-close { position: absolute; top: 8px; right: 10px; background: transparent; border: 0; color: inherit; font-size: 24px; line-height: 1; padding: 4px; }
+.checkout-notice-close:hover { background: #634d2014; border-radius: 4px; }
+.terms-back { border: 0; background: transparent; color: var(--green); font-size: 11px; font-weight: 500; padding: 0; margin: 0; text-decoration: none; text-underline-offset: 3px; }
+@media (max-height: 800px) {
+  .license-summary { margin-bottom: 16px; }
+  .brand { padding-block: 12px; }
+  .page-heading { margin-bottom: 20px; }
+}
+.section-path { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.section-path .eyebrow { margin: 0; }
+#terms-breadcrumb { display: inline-flex; align-items: baseline; gap: 8px; }
+.breadcrumb-separator { color: var(--muted); font-size: 11px; }
+
+.terms-back:hover { text-decoration: underline; }

@@ -211,6 +211,12 @@ fieldset {
   display: flex;
 }
 
+/* Keep the default account pane out of the first paint during async startup. */
+html.settings-loading #preferences-stack {
+  opacity: 0;
+  pointer-events: none;
+}
+
 div.btnLicenseContainer {
   flex-grow: 1;
   align-content: center center;
@@ -681,6 +687,24 @@ div.btnLicenseContainer #btnLicense {
 
 #examplesPane {
   overflow: hidden;
+}
+
+/* Direct license-entry navigation: make the focused destination unmistakable. */
+#txtLicenseKey.license-entry-target:focus {
+  outline: 3px solid #087bd8;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #087bd826;
+  background-color: #e7f2ff !important;
+  color: #172b45 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  #txtLicenseKey.license-entry-target:focus {
+    outline-color: #68b5ff;
+    box-shadow: 0 0 0 6px #68b5ff33;
+    background-color: #19354e !important;
+    color: #f1f7ff !important;
+  }
 }
 
 

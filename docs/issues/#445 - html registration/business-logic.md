@@ -118,7 +118,53 @@ Both compute the future date with local `setDate()` and then take the UTC date t
 
 The replacement must preserve this explicit early-extension entry point. Model the request separately from the originating feature, for example as `intent: "extend"`. For valid Standard, an explicit extension request reveals the Standard extension action even outside the default window, alongside the Pro upgrade action. Extension still uses the edition's renewal product and passes the previous key as referrer.
 
-Source caveat: `html/smartTemplate-settings.js` currently handles the date through `showExtensionButton()`. For a valid Pro or Domain license, it relabels the Settings purchase button to Extend; for Standard, it calls `showLicenseDialog("licenseTab")`. The registration controller then applies its usual Standard 30-day filter without a separate force flag. Thus the visible source does not fully express the confirmed Standard early-extension behavior. Verify that flow at runtime and preserve the maintainer-confirmed intent in the replacement rather than copying this apparent gap. No existing code is changed by this specification.
+Historical source caveat: before the HTML handoff was implemented, `showExtensionButton()` relabeled the Settings purchase button to Extend for valid Pro/Domain licenses, but called the legacy dialog for Standard without a force flag. The implemented HTML path now passes `intent: "extend"` for Standard date-clicks and Settings buttons labeled Extend. The confirmed behavior below supersedes that earlier gap; verify it end to end in Thunderbird.
+
+## Between-tab navigation contract
+
+Maintainer-approved behavior, implemented for the HTML conversion on 2026-11-16. Replicate this interaction contract in QuickFolders and quickFilters, adapting edition availability and existing Settings routing. The registration page is a Thunderbird tab rather than a floating dialog, so Settings and registration hand control to each other instead of accumulating tabs.
+
+Design intent: registration proceeds through connected add-on pages inside Thunderbird, with cohesive navigation between license selection and Settings. Checkout is a deliberate boundary: the web shop opens outside Thunderbird in the user's default browser. The interface should make that handoff clear. Do not embed the shop in a Thunderbird tab or frame when replicating this conversion. The maintainer chose the external browser to avoid potential password-manager, checkout, and fulfillment problems in Thunderbird's embedded browsing environment. This is an intentional product decision, not a temporary implementation limitation.
+
+### Entry points and destinations
+
+| Starting page and action | Destination | Source-page behavior | Context passed |
+| --- | --- | --- | --- |
+| Settings → Licenses: Buy, Renew, Upgrade, or Extend button | New HTML registration tab, selection view | Close the initiating Settings tab only after the destination opens successfully | `feature=licenseTab`; also `intent=extend` when the button is labeled Extend |
+| Settings → Licenses: click a valid Standard license date | New HTML registration tab, selection view with Standard extension available even outside its prompt window | Same successful-open-before-close rule | `feature=licenseTab&intent=extend` |
+| Settings → Licenses: click a valid Pro/Domain license date | Remain in Settings and reveal/relabel its Extend button | No tab handoff until the user clicks that button | The subsequent button click passes extension intent |
+| HTML registration: Enter license key… | Settings on its Licenses page, in `licenseKey` mode | Close the initiating registration tab only after Settings opens successfully | Existing `openPrefs` request with `page: "licenseKey"`, resulting in `mode=licenseKey` |
+| Test menu: New registration tab | New HTML registration tab, selection view | Leave the Thunderbird window and other tabs open | No purchase feature or extension intent by default |
+| HTML registration: purchase card | Appropriate product in the default external browser | Keep registration open, retain editable contact details, and show the dismissible checkout guidance beneath the cards | Contact details and the action-specific referrer described below |
+
+The key-entry handoff assumes the user already has a key, usually received by email. Leaving registration open beside Settings can invite an unnecessary second order. Key entry and validation therefore remain in Settings; do not duplicate that workflow in registration. Settings focuses and highlights the key field in `licenseKey` mode. Validation continues to use the existing license handler and persistence behavior.
+
+### Reuse, success, and failure rules
+
+1. Resolve the destination with `runtime.getURL()` in the background context. Do not derive an internal page URL from the package `rootURI`, which can yield a disallowed `jar:` URL in an installed XPI.
+2. Query for an existing destination tab by the page's base URL, including its query-string variants. If found, activate it and update its URL with the current mode, feature, and intent; otherwise create an active tab. Reusing registration must not retain a previous synthetic `scenario=` parameter or an unrelated old feature/intent.
+3. Await the create/update operation and return its Tab object through the handled runtime request. The initiating page must receive a valid numeric destination tab ID before attempting to close itself. Here, successful open means the tabs API accepted creation/navigation; it is not a claim that every destination resource has finished loading.
+4. Close only the initiating tab, using the ID obtained from `tabs.getCurrent()` before navigation. Never close the destination if the IDs match; never close all Settings/registration tabs or unrelated Thunderbird tabs. If the source ID is unavailable, leave it open.
+5. If opening fails, rejects, or returns no valid destination ID, leave the source open and usable. Registration displays its existing Settings-open error; Settings currently logs the registration-open failure and re-enables its purchase button. If closing the source fails after the destination opened, retain the destination and tolerate both tabs rather than undoing the successful navigation.
+6. Tab closure does not accept terms, purchase anything, clear a key, or change a license. Do not assume transient contact-field edits are transferred between registration and Settings. Authoritative license/account state is read again when a registration page opens; an existing registration tab also refreshes when it regains focus while retaining its contact edits.
+
+### Background/API boundary and migration scope
+
+Settings calls the direct `openRegistrationTab` runtime handler. It forwards `feature` and the explicit `extend` intent to `html/registration/open-tab.mjs`; the background resolves the extension URL and opens/reuses the tab. `openRegistrationFromSettings()` waits for that result before closing Settings. Registration's `openLicenseSettings()` uses the existing `openPrefs` runtime handler, which now returns the created/updated Settings Tab before registration closes. Runtime listeners stay synchronous for unhandled messages and return a Promise only for handled work.
+
+The Test menu uses its existing menu-command/background transport to reach the same registration opener. No new notification listener is introduced. The original `register.xhtml` and its controller remain unchanged, and other legacy registration entry points still use that dialog until individually migrated. Do not redirect every old caller as an incidental consequence of the Settings migration.
+
+### Cross-add-on acceptance checks
+
+- Buy/Renew from Settings opens registration and closes just the source Settings tab.
+- A pre-existing registration tab is reused, receives the latest parameters, and starts in selection view.
+- Explicit early extension remains available for every supported personal edition, even before the usual prompt window; quickFilters must not acquire a Standard edition through shared code.
+- Enter license key opens/reuses Settings, selects Licenses, focuses/highlights the key field, and closes registration.
+- Repeating the round trip does not accumulate Settings/registration tabs or trigger any automatic order.
+- Failed destination opening leaves the source available. No valid target ID means no source closure.
+- Purchase cards leave registration open after external checkout opens; switching products should start from the relevant registration card to preserve entitlement parameters.
+
+Automated tests cover the tab API result/order checks, reuse, feature/intent transport, and failure cases. These are not substitutes for the outstanding full license-state round in Thunderbird and the shop; record manual outcomes in [the test matrix](test-matrix.md).
 
 ## Two registration views and toggle behavior
 
@@ -275,7 +321,7 @@ Contact parameters are `contact_fname`, `contact_lname`, and `contact_email`. Th
 
 Build URLs with `URL` and `URLSearchParams`, supplying raw values exactly once. The legacy code concatenates contact values directly and sometimes applies `encodeURI` to a license key. That can mishandle reserved characters and should not become a compatibility requirement. Keep real keys and personal data out of fixtures and diagnostic logs.
 
-The current dialog opens checkout in the browser and closes itself immediately. Decide whether the new page should close after a successful open or remain available. A failed open should leave the new page usable.
+The legacy dialog opens checkout in the browser and closes itself immediately. The HTML page deliberately stays open after external checkout opens, retains contact edits, and shows checkout guidance beneath the purchase cards. A failed open leaves the page usable for another attempt. This differs from the Settings/registration handoffs, where the initiating tab closes only after a successful destination open, as specified above.
 
 ## Legacy discrepancies to resolve
 

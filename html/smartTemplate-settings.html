@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="settings-loading">
   <head>
     <meta charset="UTF-8">
     <!-- theme support -->
@@ -21,11 +21,13 @@
 
     <!-- our own rules -->
     <link rel="stylesheet" href="st-settings-layout.css">
+    <link rel="stylesheet" href="registration/settings-license.css">
     <link rel="stylesheet" href="../popup/syntax.css">
 
     <script type="application/javascript" src="i18n.js"></script>
 
     <script type="application/javascript" src="st-settings-main.js"></script>
+    <script type="application/javascript" src="localized-format.js"></script>
     <script type="application/javascript" src="../popup/popup.js"></script>
     <script type="module" src="../scripts/st-util.mjs.js"></script>
     <script type="module" src="st-log.mjs"></script>
@@ -42,7 +44,7 @@
   </head>
   <body>
 
-<div id="preferences-stack" flex="1">
+<div id="preferences-stack" flex="1" inert aria-busy="true">
 
   <div class="hbox" id="prefBox" class="mainContent">
     <div class="vbox" id="pref-category-box">
@@ -545,6 +547,7 @@
       <div id="licensePane" class="page prefpane">
         <h1 tabindex="-1">__MSG_license-tab__</h1>
 
+        <div class="license-stage">
         <description id="licenseKeyDescription">__MSG_label.insertLicense__</description>
         <div class="hbox" id="licenseContainer" align="start">
           <textarea id="txtLicenseKey" class="licenseKey" aria-labelledby="licenseKeyDescription"
@@ -573,7 +576,8 @@
         </div>
         <div class="hbox btnLicenseContainer">
           <button id="btnLicense">Buy License</button>
-        </div>				
+        </div>
+        </div>
         <div class="hbox">
           <fieldset id="premiumConfig" >
             <legend>__MSG_premiumConfig__</legend>

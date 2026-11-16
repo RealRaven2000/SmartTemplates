@@ -2,6 +2,16 @@
 
 Manual test plan for #445. Open **SmartTemplates → Test → New registration tab** with the starting license installed. Results below are expectations, not completed tests.
 
+Current manual testing has concentrated on expired Standard. A full round remains pending for no license (P01–P03), valid Standard (S01–S06, including explicit early extension), valid/expired Pro (R01–R04), valid/expired Domain (D01–D03), and invalid/mismatched licenses. Also test Buy Domain from valid and expired personal licenses. Automated model tests do not replace these Thunderbird/shop checks; do not mark individual cases passed without recording their results.
+
+## Recorded manual results
+
+| Date | Check | Result | Maintainer feedback |
+| --- | --- | --- | --- |
+| 2026-11-16 | Settings ↔ registration between-tab handoff | Passed | Feels more connected and responsive; registration feels more like part of the add-on than a separate web page. |
+
+This confirms the reported tab handoff, not every license/product case or simulated failure path.
+
 Use normal mode for real shop checks. URLs containing `scenario=` use synthetic data and never open checkout. `?intent=extend` in normal mode uses the actual license and explicitly reveals early Standard extension. Save your previous license before replacing it: validation saves the entered key, including an invalid one.
 
 ## Products to click
