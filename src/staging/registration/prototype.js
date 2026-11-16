@@ -92,12 +92,20 @@
       confirmation.textContent = "The shop has opened in your browser. You can keep this tab open.";
       const guidance = document.createElement("p");
       const emphasis = document.createElement("strong");
-      emphasis.textContent = "To retain your renewal or upgrade benefits, continue with the product opened from this page.";
-      guidance.append(emphasis, " For choosing a different license, simply start from here again.");
-      feedback.replaceChildren(preview, confirmation, guidance);
-      feedback.hidden = false;
-      feedback.scrollIntoView({ behavior: "auto", block: "nearest" });
+      emphasis.textContent = "To keep your renewal or upgrade benefits, continue with the product opened from this page.";
+      const differentLicense = document.createElement("i");
+      differentLicense.textContent = "different license";
+      guidance.append(emphasis, " For choosing a ", differentLicense, ", simply start from here again.");
+      document.getElementById("checkout-notice-content").replaceChildren(preview, confirmation, guidance);
+      const notice = document.getElementById("checkout-notice");
+      notice.hidden = false;
+      notice.scrollIntoView({ behavior: "auto", block: "nearest" });
+      feedback.hidden = true;
     });
+  });
+
+  document.getElementById("checkout-notice-close").addEventListener("click", () => {
+    document.getElementById("checkout-notice").hidden = true;
   });
 
   document.getElementById("enter-key").addEventListener("click", () => {
