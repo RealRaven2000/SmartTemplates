@@ -42,6 +42,8 @@
     closeEmailHelp();
     terms.hidden = !showingTerms;
     selection.hidden = showingTerms;
+    document.querySelector(".license-summary").hidden = showingTerms;
+    document.getElementById("terms-breadcrumb").hidden = !showingTerms;
     toggle.setAttribute("aria-expanded", String(showingTerms));
     toggle.dataset.l10nId = showingTerms ? "licenseTerms.hide" : "licenseTerms.show";
     workspace.classList.toggle("terms-open", showingTerms);
@@ -58,6 +60,8 @@
     heading.focus({ preventScroll: true });
     window.scrollTo({ top: Math.max(0, window.scrollY + workspace.getBoundingClientRect().top - 24), behavior: "auto" });
   });
+
+  document.getElementById("terms-back").addEventListener("click", () => toggle.click());
 
   document.getElementById("email-learn-more").addEventListener("click", (event) => {
     event.preventDefault();
