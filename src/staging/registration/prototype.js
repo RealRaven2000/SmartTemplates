@@ -38,23 +38,46 @@
     }
   });
 
-  toggle.addEventListener("click", () => {
+  function showTerms(showingTerms) {
     closeEmailHelp();
-    const showingTerms = terms.hidden;
     terms.hidden = !showingTerms;
     selection.hidden = showingTerms;
     toggle.setAttribute("aria-expanded", String(showingTerms));
+    toggle.dataset.l10nId = showingTerms ? "licenseTerms.hide" : "licenseTerms.show";
     workspace.classList.toggle("terms-open", showingTerms);
     document.getElementById("step-label").textContent = showingTerms ? "LICENSE TERMS" : "LICENSE SELECTION";
-    document.getElementById("view-title").textContent = showingTerms ? "Know what you’re choosing." : "A fresh year, your way.";
+    document.getElementById("view-title").textContent = showingTerms ? "How your license works." : "A year of easier email.";
     toggle.replaceChildren(document.createTextNode(showingTerms ? "🡇 Continue to License Selection 🡇" : "Show license terms 🡇"));
     feedback.hidden = true;
+    document.getElementById("personal-license-details").classList.remove("license-detail-highlight");
+  }
+
+  toggle.addEventListener("click", () => {
+    showTerms(terms.hidden);
+  });
+
+  document.getElementById("email-learn-more").addEventListener("click", (event) => {
+    event.preventDefault();
+    showTerms(true);
+    const details = document.getElementById("personal-license-details");
+    details.classList.add("license-detail-highlight");
+    details.focus({ preventScroll: true });
+    details.scrollIntoView({ behavior: "auto", block: "center" });
   });
 
   document.getElementById("identity").addEventListener("change", (event) => {
     document.getElementById("email").value = event.target.value === "work" ? "alex@studio.example" : "alex@example.com";
     document.getElementById("first-name").value = "Alex";
     document.getElementById("last-name").value = "Morgan";
+  });
+
+  document.getElementById("renewal-learn-more").addEventListener("click", (event) => {
+    event.preventDefault();
+    const details = document.getElementById("renewal-details");
+    const opening = details.hidden;
+    details.hidden = !opening;
+    event.currentTarget.setAttribute("aria-expanded", String(opening));
+    event.currentTarget.textContent = opening ? "Show less" : "Learn more…";
   });
 
   document.querySelectorAll(".purchase").forEach((button) => {
