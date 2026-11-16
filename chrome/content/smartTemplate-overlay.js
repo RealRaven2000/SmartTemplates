@@ -1676,11 +1676,14 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
     let container = doc.createElement("div");
     SmartTemplate4.Util.insertHtmlSafely(container, html);
 
-    return container.firstElementChild;
+    return container.firstElementChild || container.firstChild;
   }
 
   function displayTag(node) {
-    if (!node || node.nodeType === Node.TEXT_NODE) {
+    if (!node) {
+      return "(empty replacement)";
+    }
+    if (node.nodeType === Node.TEXT_NODE) {
       return `'${node.textContent}'`;
     }
     const att = node.attributes;
@@ -2099,7 +2102,9 @@ SmartTemplate4.parseModifier = function (msg, composeType, firstPass = false) {
             txtDebug += ` saved ${tagSizeKB} kByte`;
           }
 
-          n.parentNode.insertBefore(newEl, n);
+          if (newEl) {
+            n.parentNode.insertBefore(newEl, n);
+          }
           n.remove();
           util.logDebug(txtDebug);
         }
