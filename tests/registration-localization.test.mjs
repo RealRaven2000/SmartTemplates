@@ -68,6 +68,19 @@ test("German registration covers the final English keys and preserves substituti
   assert.equal(de["registration.action.buyDomain"].message, "Domänenlizenz erwerben");
 });
 
+test("German composer notifications cover the English entities without fallback", () => {
+  const en = catalog("en");
+  const de = catalog("de");
+  const keys = Object.keys(en).filter((key) => key.startsWith("notification.compose."));
+  for (const key of keys) {
+    assert.ok(de[key]?.message, `Missing German translation: ${key}`);
+    assert.deepEqual(tokens(de[key].message), tokens(en[key].message), key);
+    assert.deepEqual(de[key].placeholders, en[key].placeholders, key);
+  }
+  const actualOrder = Object.keys(de).filter((key) => key.startsWith("notification.compose."));
+  assert.deepEqual(actualOrder, [...keys].sort((a, b) => a.localeCompare(b, "en")));
+});
+
 test("German rich-text formatting retains Unicode and resolves the add-on name", () => {
   const de = catalog("de");
   const context = {

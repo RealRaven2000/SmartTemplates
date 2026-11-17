@@ -1,11 +1,61 @@
-While localization proceeds, these are the useful Thunderbird checks:
-- Settings → Licenses: open registration using Buy, Upgrade, Extend, or Renew as available. Confirm the correct edition and action are highlighted.
-- Notification bubbles: click their license action. It should open the modern registration page and leave the composer open.
-- Premium feature/category-limit warnings: follow the registration action and confirm it opens the modern page.
-- Installed/updated welcome pages: test their renewal, extension, upgrade, and promotional actions. The welcome page should close after registration opens successfully.
-- Tab reuse: leave registration open, then trigger another entry point. It should reuse that tab and refresh its action/context.
-- Emergency legacy menu: confirm Legacy License Registration still opens the old XHTML dialog.
+# Registration end-to-end tests
 
-Please specifically test Domain renewal: Domain should be highlighted, the button should say Renew License, and Pro should remain a secondary purchase option.
+Manual checks for #445. Unchecked items are pending; automated tests do not establish a Thunderbird or shop pass. The longer [checkout test matrix](../../issues/%23445%20-%20html%20registration/test-matrix.md) lists individual products, routes, date rules and boundary cases.
 
-The automated routing tests pass; these checks cover Thunderbird’s actual window and tab behavior.
+## Entry points and window behavior
+
+- [x] Settings → Licenses: open registration using Buy, Upgrade, Extend or Renew as available. Confirm the correct edition and action are highlighted. Passed in German on 2026-11-17: all reported Settings scenarios with valid, soon-to-expire and expired licenses, including Standard upgrade.
+- [ ] Notification bubbles: click their license action. Registration should open in front, with its owning Thunderbird window focused, while the composer remains open and its draft unchanged. Repeat with an existing registration tab in another main window.
+
+  Passed in German on 2026-11-17: a Standard license using Pro features offers the upgrade action and opens registration with Pro highlighted and Upgrade auf Pro. Other bubble states and the multi-window case remain pending. The screenshot also exposed English fallback text for feature descriptions; the missing German composer-notification entities were added afterward and need a visual recheck.
+
+- [ ] Premium-feature and both template category-limit warnings: follow the registration action and confirm it opens the modern page.
+- [ ] General message dialog: its license button opens the modern page.
+- [ ] Installed/updated welcome pages: test renewal, extension, upgrade and promotional actions. The welcome page closes only after registration opens successfully.
+- [ ] What's New: “I want to buy a license” and the sale icon open registration rather than going straight to the shop.
+- [ ] Tab reuse: leave registration open, then trigger another entry point. It should reuse that tab and refresh its action/context, including clearing an earlier explicit extension intent or synthetic test case.
+- [ ] Emergency legacy menu: Legacy License Registration still opens the old XHTML dialog.
+
+Reported on 2026-11-17: the maintainer tested focusing registration from the composer bubble and found the focus change natural. The multi-window case above remains a separate check.
+
+## License validation with real keys
+
+Test through Settings → Licenses → Validate, using copies of genuine keys. Save the original key first: validation stores the entered key even when it is invalid. Start each alteration from the untouched original, and restore it afterward. Do not include real keys in committed results or screenshots.
+
+The production validator is `scripts/Licenser.mjs.js`. Automated tests cover date, email and prefix comparisons, but supply a synthetic RSA decryption result. These checks verify the real decryption and Settings/background integration.
+
+| Check | Expected result | Result / notes |
+| --- | --- | --- |
+| Untouched current Pro key (`ST-`) | Valid, correct edition and actual expiry date | |
+| Untouched current Standard key (`S1-`) | Valid, correct edition and actual expiry date | |
+| Untouched current Domain key (`STD-`) with an eligible configured domain account | Valid, correct edition and actual expiry date | |
+| Untouched expired genuine key with a matching account | Expired, not Invalid; renewal remains available | |
+| Change only the readable expiry date before `;`, leaving encrypted text untouched | Invalid; the altered date does not grant or extend licensed access. Unlike the old behavior, a mismatch is now explicitly rejected | |
+| Change only the readable email address | Email mismatch (`MailDifferent`), not Valid | |
+| Change only a genuine Pro key's prefix from `ST-` to `S1-`, or a Standard key's prefix from `S1-` to `ST-` | Invalid; an edition cannot be changed by editing its readable prefix | |
+| Change only the prefix to `QF-` | Invalid; a foreign product prefix is rejected even if the encrypted portion came from SmartTemplates | |
+| Enter an actual QuickFolders key | Invalid; Settings shows its different-add-on explanation | |
+| Change a character in the encrypted portion | Invalid, with a visible validation message | |
+| Use an otherwise genuine key whose licensed account is not configured in the test profile | Licensed address not configured (`MailNotConfigured`), not Valid | |
+| Restore the untouched valid key after a failure, then restart Thunderbird | Valid again; status, expiry and edition remain correct after restart, without stale errors | |
+
+Prioritize acceptance of all three genuine license types, date tampering and the Pro/Standard prefix swap. Repeat the readable-date check with each edition when matching real test keys are available. If testing an existing supported alias-license setup, confirm it still validates without changing that setup.
+
+## Sales flow and checkout
+
+- [ ] Fresh Standard: Standard card hidden, Upgrade to Pro available. Near expiry, Standard extension becomes actionable; an expired Standard offers renewal.
+- [ ] Valid and expired Pro: appropriate Extend License or Renew License action; Standard hidden.
+- [ ] Valid and expired Domain: Domain is highlighted and always says Renew License. Standard is hidden; Pro is an unhighlighted separate personal purchase with the coverage explanation. This final-build check is especially important because Domain users have previously bought Pro unintentionally.
+- [ ] Domain Add users link opens the additional-seats product.
+- [ ] No license: Free edition badge and fresh purchase choices, without a previous license key passed as a renewal referrer.
+- [ ] Open the relevant purchase, renewal and upgrade products without completing payment. Verify the selected product, contact prefill and existing-key referrer where applicable. Do not rely solely on prototype scenarios: their checkout is deliberately simulated.
+- [ ] Include a Unicode name and an address containing `+` in a contact-prefill check. Switching accounts updates the contact fields correctly; manual edits survive switching between selection and terms.
+- [ ] Registration → Enter license key returns to Settings → Licenses. After successful validation, reopen registration and confirm the new state.
+
+## Messages, localization and layout
+
+- [ ] Orange expiry badge appears in the intended pre-expiry period and is absent for a fresh one-year license and an expired license.
+- [ ] Check both the invalid-key message plus email-mismatch warning and the longer wrong-add-on message. They wrap without overlapping the action button; when the action wraps below, it is centered. Messages use the full width when there is no action.
+- [ ] Try a language with long labels and a CJK language at normal and narrow widths. Check headings, buttons, Domain warnings, the seats link, email help, localized dates and expanded license terms for wrapping and intact characters.
+- [ ] Expanded terms distinguish new personal licenses, same-edition renewal/extension and Standard → Pro upgrades. New licenses and upgrades run from payment; remaining Standard time does not extend the one-year Pro upgrade period.
+- [ ] Close/reopen the terms and email-help panel, including Escape and keyboard navigation. Contact entries are retained.

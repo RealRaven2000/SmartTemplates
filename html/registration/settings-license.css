@@ -209,8 +209,8 @@
 
 #licensePane .btnLicenseContainer {
   height: auto;
-  min-width: 0;
-  flex: 1 0 150px;
+  min-width: max-content;
+  flex: 1 0 auto;
   align-items: center;
   justify-content: center;
   padding: 0;
@@ -239,6 +239,15 @@
 #licensePane #btnLicense,
 #licensePane #btnLicense:hover,
 #licensePane #btnLicense:active {
+  box-sizing: border-box;
+  width: max-content;
+  min-width: 150px;
+  max-width: none;
+  height: auto;
+  max-height: none;
+  flex: none;
+  white-space: nowrap;
+  text-align: center;
   margin: 0 !important;
   padding: 10px 20px;
   border: 1px solid #709b08;

@@ -2,7 +2,7 @@
 
 Manual test plan for #445. Open **SmartTemplates → Test → New registration tab** with the starting license installed. Results below are expectations, not completed tests.
 
-Current manual testing has concentrated on expired Standard. A full round remains pending for no license (P01–P03), valid Standard (S01–S06, including explicit early extension), valid/expired Pro (R01–R04), valid/expired Domain (D01–D03), and invalid/mismatched licenses. Also test Buy Domain from valid and expired personal licenses. Automated model tests do not replace these Thunderbird/shop checks; do not mark individual cases passed without recording their results.
+The maintainer reports that all Settings → Licenses scenarios pass in German with valid, soon-to-expire and expired licenses, including Standard upgrade. This confirms the Settings entry point and its available actions. Individual shop routes, referrers, date boundaries, no-license purchases and invalid/mismatched-key tests remain separately recorded below; the Settings report does not establish those results. Automated model tests do not replace these Thunderbird/shop checks.
 
 ## Required final-build check: Domain renewal emphasis
 
@@ -19,8 +19,10 @@ Pending Thunderbird checks for the other migrated callers: installation/update s
 | Date | Check | Result | Maintainer feedback |
 | --- | --- | --- | --- |
 | 2026-11-16 | Settings ↔ registration between-tab handoff | Passed | Feels more connected and responsive; registration feels more like part of the add-on than a separate web page. |
+| 2026-11-17 | Settings → Licenses scenarios in German | Passed | Valid, soon-to-expire and expired licenses, including Standard upgrade. |
+| 2026-11-17 | Composer bubble: Standard license using Pro features | Passed | Upgrade action opens modern registration with Pro highlighted. Missing German notification text found in the screenshot was translated afterward; visual recheck pending. |
 
-This confirms the reported tab handoff, not every license/product case or simulated failure path.
+These results confirm the reported tab handoff and Settings scenarios, not every checkout destination, validation failure or simulated failure path.
 
 Use normal mode for real shop checks. URLs containing `scenario=` use synthetic data and never open checkout. `?intent=extend` in normal mode uses the actual license and explicitly reveals early Standard extension. Save your previous license before replacing it: validation saves the entered key, including an invalid one.
 
