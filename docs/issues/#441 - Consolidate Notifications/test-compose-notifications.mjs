@@ -22,10 +22,12 @@ function fixture(options, storage = {}) {
       executeScript: async () => {},
     },
     composeScripts: { register: async () => ({}) },
-    Utilities: { showComposeLicenseDialog: async (...args) => actions.push(["buy", ...args]) },
     windows: { openDefaultBrowser: async url => actions.push(["browser", url]) },
   };
-  const controller = createComposeNotifications(api, options);
+  const controller = createComposeNotifications(api, {
+    showRegistrationDialog: async feature => actions.push(["buy", feature]),
+    ...options,
+  });
   const request = overrides => ({ windowId: 1, features: [], trialDays: 28,
     buttonKey: "notification.premium.btn.getLicense", isRegister: true, ...overrides });
   const send = (action, id = 10) => onMessage({ command: "composeNotifications", action }, { tab: { id, type: "messageCompose" } });
@@ -105,7 +107,7 @@ test("pending state survives missing receivers; trial omission and actions remai
   await f.send("buy");
   await f.send("compare");
   await f.send("licensing");
-  assert.deepEqual(f.actions[0], ["buy", 10, "file"]);
+  assert.deepEqual(f.actions[0], ["buy", "file"]);
   assert.match(f.actions[1][1], /premium\.html#featureComparison$/);
   assert.match(f.actions[2][1], /contribute\.html$/);
   await f.send("later");
