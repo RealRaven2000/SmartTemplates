@@ -293,7 +293,13 @@ export class Licenser {
       return [this.ValidationStatus, ''];
     }    
 
-    let encrypted = this.getCrypto();  
+    // Only SmartTemplates product prefixes may enter RSA validation.
+    if (!/^(ST|S1|STD)-/.test(this.LicenseKey)) {
+      this.ValidationStatus = LicenseStates.Invalid;
+      return this.info;
+    }
+
+    let encrypted = this.getCrypto();
     if (!encrypted) {
       this.ValidationStatus = LicenseStates.Invalid;
       this.logDebug('validateLicense()\n returns ', [
@@ -326,6 +332,12 @@ export class Licenser {
       return [this.ValidationStatus, ''];
     }
     
+    // Pro and Standard share RSA parameters, so also authenticate the edition.
+    if (this.LicenseKey.split("-")[0] !== this.RealLicense.split("-")[0]) {
+      this.ValidationStatus = LicenseStates.Invalid;
+      return this.info;
+    }
+
     this.decryptedDate = this.getDecryptedDate();
     // check ISO format YYYY-MM-DD
     let regEx = /^\d{4}-\d{2}-\d{2}$/;
@@ -337,6 +349,13 @@ export class Licenser {
         this.ValidationStatus,
       ]);
       this.decryptedDate = ""; // throw it away!
+      return this.info;
+    }
+
+    // The displayed date must agree with the authenticated RSA payload.
+    if (getDate(this.LicenseKey) !== this.decryptedDate) {
+      this.ValidationStatus = LicenseStates.Invalid;
+      this.logDebug("Clear-text expiry date does not match decrypted license date");
       return this.info;
     }
 

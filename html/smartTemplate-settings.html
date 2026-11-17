@@ -22,6 +22,7 @@
     <!-- our own rules -->
     <link rel="stylesheet" href="st-settings-layout.css">
     <link rel="stylesheet" href="registration/settings-license.css">
+    <link rel="stylesheet" href="account-settings.css">
     <link rel="stylesheet" href="../popup/syntax.css">
 
     <script type="application/javascript" src="i18n.js"></script>
@@ -563,8 +564,10 @@
           <label id="licenseDateLabel" for="licenseDate">__MSG_label.licenseValid__</label>
           <input id="licenseDate" type="text" autocomplete="off" readonly aria-readonly="true" tabindex="0" 
             aria-describedby="licenseDateLabel" role="representation">
+          <span id="licenseExpiryWarning" hidden></span>
         </div>
         <hr id="validationDateSpace" class="licenseSeparator">
+        <div class="license-status-action">
         <div class="vbox" id="validationResults"  aria-live="assertive" role="region" tabindex="0">
           <description id="validationPassed" class="niceFont" collapsed="true">__MSG_licenseValidation.passed__</description>
           <description id="validationStandard" class="niceFont" collapsed="true">__MSG_licenseValidation.standard__</description>
@@ -576,6 +579,7 @@
         </div>
         <div class="hbox btnLicenseContainer">
           <button id="btnLicense">Buy License</button>
+        </div>
         </div>
         </div>
         <div class="hbox">
@@ -671,7 +675,7 @@
       </div>
 
       <div id="smartTemplatePane" orient="vertical" flex="1" class="page prefpane pageActive">
-        <h1 tabindex="-1">__MSG_account.templates__ <a class="headerLink" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_examples.openBrowser__</a></h1>
+        <h1 tabindex="-1">__MSG_account.templates__ <a class="headerLink plain-link" href="https://smarttemplates.quickfolders.org/templates.html">__MSG_examples.openBrowser__</a></h1>
         <div id="decksContainer" flex="1" class="vbox">
 
           <!-- ######## Creating Identity Dropdown Box ######## --> 

@@ -1,4 +1,39 @@
-// Called in the background context, where runtime.getURL yields moz-extension:.
+/**
+ * Open or reuse the modern license-registration tab from the background context.
+ *
+ * All normal registration entry points should use this helper, directly from
+ * background code or through the openRegistrationTab runtime request. Legacy
+ * chrome callers use the existing background bridge for the same operation.
+ * The emergency legacy menu intentionally opens register.xhtml instead.
+ *
+ * Build the page URL with runtime.getURL() here so installed extensions use a
+ * moz-extension: URL rather than a privileged chrome: or jar: package URL.
+ * Find an existing registration tab regardless of its previous query string,
+ * then activate and navigate it with the current options. This replaces stale
+ * feature, intent and synthetic-scenario parameters. Otherwise create a tab.
+ *
+ * @param {object} api - Thunderbird MailExtension API (browser or messenger).
+ *   Requires runtime.getURL and tabs.query/create/update.
+ *   Passed explicitly so unit tests can supply a fake API without Thunderbird;
+ *   production code could otherwise use the background's browser global.
+ * @param {object} [options={}] - Context for this registration visit.
+ * @param {string} [options.feature=""] - Originating feature or entry point,
+ *   such as "licenseTab", "MAX_STANDARD_CATEGORIES", "landing-update", or a
+ *   pipe-separated list of composer features. Passed as the feature query
+ *   parameter; new-license checkout may use it as the shop referrer. Renewals
+ *   and upgrades use the existing license key instead. Empty/non-string values
+ *   are omitted. URLSearchParams handles encoding; supply the raw string.
+ * @param {string} [options.intent=""] - Explicit purchase intent. Only "extend"
+ *   is forwarded, revealing Standard extension even outside its default offer
+ *   window. This does not purchase anything or change license eligibility.
+ *   Empty or unsupported values leave normal action selection in effect.
+ * @returns {Promise<object>} The created or updated Thunderbird Tab object.
+ *   The caller may close its initiating Settings/splash page after receiving a
+ *   valid tab ID. This helper never closes the source page or the composer.
+ * @throws {Error} Propagates URL or tabs-API failures. Callers must retain their
+ *   source page if opening fails. Success confirms tab creation/navigation,
+ *   not completion of page loading or checkout.
+ */
 export async function openRegistrationTab(api, { feature = "", intent = "" } = {}) {
   const baseURL = api.runtime.getURL("html/registration/registration.html");
   const destination = new URL(baseURL);

@@ -12,6 +12,17 @@
 - Exhausted features are skipped with their original tokens retained. A pink notification highlights features that were actually blocked and warns that unresolved variables may remain in the email. #441.
 - Template and Smart Fragment errors now appear in the notification bubble, so editing can continue and errors can be dismissed individually. Diagnostic details remain available; HTML insertion failures offer a Copy template source action. #442.
 
+**Registration and Settings**
+
+- Redesigned license registration as a responsive Thunderbird tab, with clearer edition choices, renewal and upgrade actions, editable checkout details, and explanations of license coverage and payment-based expiry dates. Existing shop rules are clarified, not changed. #445.
+- Improved the Licenses settings page with clearer status messages, an impending-expiry badge, and a compact layout that keeps the relevant purchase action beside the messages. #445.
+- Highlighted Domain renewal, explained the separate personal Pro purchase option, and added a direct additional-seats link for existing Domain customers. #445.
+- Refreshed Account templates settings with consistent text sizes, better alignment, and clearer external links. #445.
+
+**Fixes**
+
+- Improved license-key validation: keys are rejected when the visible product prefix or expiry date does not match the encrypted license data.
+
 **Other improvements**
 
 - Fixed trial access to clipboard operations, tags, and `%deleteForwardedBody%`. #439.

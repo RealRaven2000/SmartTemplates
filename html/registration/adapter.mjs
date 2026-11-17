@@ -4,7 +4,10 @@ export async function loadRegistrationData() {
   const [license, accounts, forceSecondaryIdentity] = await Promise.all([
     messenger.runtime.sendMessage({ command: "getLicenseInfo" }),
     messenger.accounts.list(false),
-    messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
+    messenger.LegacyPrefs.getPref(
+      "extensions.smartTemplate4.licenser.forceSecondaryIdentity",
+      false
+    ).catch(() => false),
   ]);
   if (!license || typeof license.status !== "string") {
     throw new Error("License information unavailable");

@@ -26,8 +26,14 @@ addEventListener("click", async (event) => {
     event.target.id.startsWith("renew") ||
     event.target.id.startsWith("upgrade")
   ) {
-    messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
-    window.close();
+    const registrationTab = await messenger.runtime.sendMessage({
+      command: "openRegistrationTab",
+      feature: "landing-install",
+      intent: event.target.id.startsWith("extend") ? "extend" : "",
+    });
+    if (Number.isInteger(registrationTab?.id)) {
+      window.close();
+    }
   }
 	if (event.target.id.startsWith("donate")) {
 	  messenger.windows.openDefaultBrowser("https://smarttemplates.quickfolders.org/contribute.html#donate");

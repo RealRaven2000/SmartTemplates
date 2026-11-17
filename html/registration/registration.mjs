@@ -1,10 +1,10 @@
 /* globals formatAll, parseHTMLFragment */
 import { registrationConfig } from "./config.mjs";
-import { contactFromIdentity, deriveActions, licenseEdition } from "./model.mjs";
+import { contactFromIdentity, deriveActions, identityOptionLabels, licenseEdition } from "./model.mjs";
 import { openCheckout } from "./checkout.mjs";
 import { loadRegistrationData, openLicenseSettings } from "./adapter.mjs";
 import { fixtureData } from "./fixtures.mjs";
-import { localizePage, message } from "./localization.mjs";
+import { localizePage, message, replaceLabelGlyphs } from "./localization.mjs";
 
 const byId = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
@@ -46,6 +46,7 @@ function showTerms(showingTerms) {
   byId("view-title").textContent = message(showingTerms ? "terms.heading" : "selection.heading");
   const key = showingTerms ? "terms.hide" : "terms.show";
   toggle.textContent = message(key);
+  replaceLabelGlyphs(toggle);
   feedback.hidden = true;
   byId("personal-license-details").classList.remove("license-detail-highlight");
 }
@@ -64,11 +65,12 @@ function selectIdentity() {
 function renderIdentities(fillContact) {
   const select = byId("identity");
   const previous = select.value;
+  const labels = identityOptionLabels(data.identities);
   select.replaceChildren();
-  for (const identity of data.identities) {
+  for (const [index, identity] of data.identities.entries()) {
     select.add(
       new Option(
-        `${identity.accountName} · ${identity.name || identity.email} · ${identity.email}`,
+        labels[index],
         identity.id
       )
     );
@@ -91,10 +93,20 @@ function renderLicense() {
   const edition = licenseEdition(license);
   const recognized = ["Valid", "Expired"].includes(license.status) && edition;
   byId("current-license").textContent = recognized
-    ? message("license.edition", [message("edition." + edition)])
+    ? edition === "domain"
+      ? message("license.domain")
+      : message("license.edition", [message("edition." + edition)])
     : message("license.none");
   byId("license-status").textContent =
     message("status." + license.status) || message("status.Unknown");
+  const expiryWarning = byId("license-expiry-warning");
+  // Match the toolbar's impending-expiry warning window and localized label.
+  const showExpiryWarning =
+    license.status === "Valid" && license.licensedDaysLeft < 15;
+  expiryWarning.hidden = !showExpiryWarning;
+  expiryWarning.textContent = showExpiryWarning
+    ? messenger.i18n.getMessage("SmartTemplateMainButton.renew", [String(license.licensedDaysLeft)])
+    : "";
   document
     .querySelector(".license-summary")
     .classList.toggle("valid-license", license.status === "Valid");
@@ -110,18 +122,31 @@ function renderLicense() {
       ? message(license.status === "Expired" ? "date.expired" : "date.valid", [formatted])
       : message("date.none");
   actions = deriveActions(license, registrationConfig, { intent: params.get("intent") || "" });
+  const domainHolder = recognized && edition === "domain";
+  byId("domain-pro-warning").hidden = !domainHolder;
+  byId("domain-seats-note").hidden = !domainHolder;
   for (const action of actions) {
     const card = document.querySelector(`.plan[data-edition="${action.edition}"]`);
     card.hidden = action.hidden;
     const button = card.querySelector(".purchase");
+    const primary = action.edition === (domainHolder ? "domain" : "pro");
+    card.classList.toggle("featured", primary);
+    button.classList.toggle("primary", primary);
+    button.classList.toggle("secondary", !primary);
+    if (domainHolder && action.edition === "pro") {
+      button.setAttribute("aria-describedby", "domain-pro-warning");
+    }
     button.dataset.action = action.kind;
     button.disabled = loading || !action.available;
-    button.querySelector(".action-label").textContent = message("action." + action.kind, [
-      message("edition." + action.edition),
-    ]);
+    button.querySelector(".action-label").textContent = action.kind === "buy" && action.edition === "domain"
+      ? message("action.buyDomain")
+      : message(
+      "action." + action.kind,
+      ["renew", "extend"].includes(action.kind) ? [] : [message("edition." + action.edition)]
+    );
     if (["renew", "extend"].includes(action.kind)) {
       button.setAttribute("aria-describedby", "renewal-hint");
-    } else {
+    } else if (!(domainHolder && action.edition === "pro")) {
       button.removeAttribute("aria-describedby");
     }
   }

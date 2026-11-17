@@ -542,8 +542,10 @@ SmartTemplate4.fileTemplates = {
             function(event) { 
               event.stopImmediatePropagation();
               // event.preventDefault();
-              // open licenser
-              util.showLicenseDialog("MAX_STANDARD_CATEGORIES"); 
+              util.notifyTools.notifyBackground({
+                func: "openRegistrationTab",
+                feature: "MAX_STANDARD_CATEGORIES",
+              });
               return false; 
             }, 
             {capture:true } ,  

@@ -2097,6 +2097,14 @@ SmartTemplates.Settings = {
       decryptedMail = licenseInfo.email,
       decryptedDate = licenseInfo.expiryDate,
       result = licenseInfo.status;
+    const expiryWarning = getElement("licenseExpiryWarning");
+    const showExpiryWarning = result === "Valid" && licenseInfo.licensedDaysLeft < 15;
+    expiryWarning.hidden = !showExpiryWarning;
+    expiryWarning.textContent = showExpiryWarning
+      ? SmartTemplates.Util.getBundleString("SmartTemplateMainButton.renew", [
+          licenseInfo.licensedDaysLeft,
+        ])
+      : "";
 		validationStandard.setAttribute("collapsed", true);
     validationPassed.setAttribute("collapsed", true);
     validationFailed.setAttribute("collapsed", true);

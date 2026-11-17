@@ -32,12 +32,7 @@ const composeNotifications = createComposeNotifications(browser, {
     }
     return Object.fromEntries(features.map(feature => [feature, featureUsage.check(feature)]));
   },
-  // Temporary legacy registration route. Replace with an HTML WebExtension
-  // registration page in the next minor version.
-  showRegistrationDialog: feature => notifyWhenUIReady({
-    event: "doCommand",
-    detail: { cmd: "smartTemplates-registration", params: { feature } },
-  }),
+  showRegistrationDialog: feature => openRegistrationTab(browser, { feature }),
 });
 const GRACEPERIOD_DAYS = 28;
 const EXPIRED_LICENSE_GRACE_DAYS = 7;
@@ -529,17 +524,9 @@ async function addMenus(menuArray, context) {
                 title: messenger.i18n.getMessage(
                   "fileTemplates.restrictTemplateCats", 
                   [menuRestrict.maxCategories.toString()]),
-                onclick: (_e) => {
-                  messenger.NotifyTools.notifyExperiment({
-                    event: "doCommand", 
-                    detail: {
-                      cmd: "smartTemplates-registration", // will be re-packaged as el.id
-                      params: {
-                        feature: "MAX_STANDARD_CATEGORIES",
-                      }, 
-                    },
-                  });              
-                },
+                onclick: (_e) => openRegistrationTab(browser, {
+                  feature: "MAX_STANDARD_CATEGORIES",
+                }),
 
               })
             } else {
@@ -1603,17 +1590,11 @@ async function main() {
       });
     },
     openRegistrationTab: (data, _sender) => openRegistrationTab(browser, data),
-    showRegistrationDialog: (data, _sender) => {
-      messenger.NotifyTools.notifyExperiment({
-        event: "doCommand",
-        detail: {
-          cmd: "smartTemplates-registration", // will be re-packaged as el.id
-          params: {
-            feature: data.addonfeatures || "",
-          },
-        },
-      });
-    },
+    // Compatibility for older message-dialog callers; always use the modern tab.
+    showRegistrationDialog: (data, _sender) => openRegistrationTab(browser, {
+      feature: data.feature || data.addonfeatures || "",
+      intent: data.intent || "",
+    }),
     showSplashMsg: (_data, _sender) => {
       showSplash();
     },
@@ -1950,7 +1931,7 @@ async function main() {
           return await notifyWhenUIReady({ event: "patchUnifiedToolbar" });
 
         case "openRegistrationTab":
-          return openRegistrationTab(browser);
+          return openRegistrationTab(browser, data);
         case "openLinkInTab":
           // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
           {

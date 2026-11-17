@@ -1368,11 +1368,10 @@ var SmartTemplate4 = {
 
     <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
       <menupopup>
-        <menuitem id="smartTemplates-registration-tab" label="__MSG_registration.test.menu__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);" onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-registration" label="__MSG_registration.legacy.menu__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-message" label="Test Message class" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-setNewsFlag" label="Set News Flag!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-        <menuitem id="smartTemplates-registration" label="License Screen" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuseparator class="st4templateSeparator"></menuseparator>
         <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         <menuitem id="smartTemplates-headerMenuAPI" label="Create message Actions (API)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>

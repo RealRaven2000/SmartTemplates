@@ -939,7 +939,7 @@
     "message": "Your license is valid until:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Read more about Premium Features on our Website…"
+    "message": "Read more about Premium Features on our Website"
   },
   "lastName.label": {
     "message": "Last Name:"
@@ -1246,11 +1246,11 @@
   "notification.bodyModified.instructions": {
     "message": "Click Cancel to keep email contents unchanged."
   },
-  "notification.compose.allUsed": {
-    "message": "All used"
-  },
   "notification.compose.allowanceExplanation": {
     "message": "Each feature has up to 12 free use days. Only the first use each day counts. Previous usage is retained."
+  },
+  "notification.compose.allUsed": {
+    "message": "All used"
   },
   "notification.compose.blocked": {
     "message": "Some features were blocked"
@@ -1264,14 +1264,20 @@
   "notification.compose.blockedStandard": {
     "message": "To use this feature, please get a SmartTemplates Standard or Pro license."
   },
+  "notification.compose.collapse": {
+    "message": "Collapse"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Copy template source"
   },
   "notification.compose.countedToday": {
     "message": "Today is already counted. Further uses today do not reduce your remaining allowance."
   },
-  "notification.compose.collapse": {
-    "message": "Collapse"
+  "notification.compose.countingRule": {
+    "message": "Only the first use each day counts, so you can fully test this feature throughout the day."
+  },
+  "notification.compose.details": {
+    "message": "Licensed features used"
   },
   "notification.compose.dismiss": {
     "message": "Dismiss notification"
@@ -1281,12 +1287,6 @@
   },
   "notification.compose.expand": {
     "message": "Expand"
-  },
-  "notification.compose.countingRule": {
-    "message": "Only the first use each day counts, so you can fully test this feature throughout the day."
-  },
-  "notification.compose.details": {
-    "message": "Licensed features used"
   },
   "notification.compose.expiredGrace": {
     "message": "Your license has expired."
@@ -1509,29 +1509,29 @@
     "message": "Click OK to confirm your answer. Click Cancel or close the window to abort the insertion of data."
   },
   "prompt.help.defaultValue": {
-    "message": "(Optional) quoted initial value, or the literal keyword {clipboard} to read the clipboard. Use {\"\"} for no initial value or preselection.",
-    "description": "Keep brace markers unchanged: {clipboard} and {\"\"} are literal parameters; {%clipboard%} is a SmartTemplates variable."
+    "description": "Keep brace markers unchanged: {clipboard} and {\"\"} are literal parameters; {%clipboard%} is a SmartTemplates variable.",
+    "message": "(Optional) quoted initial value, or the literal keyword {clipboard} to read the clipboard. Use {\"\"} for no initial value or preselection."
   },
   "prompt.help.description": {
     "message": "Ask for free text entry or choose from a selection when inserting a template or Smart Fragment. This is a Pro feature, which can be tested in the trial period."
   },
   "prompt.help.enterTea": {
-    "message": "Enter the tea variety",
-    "description": "Text inside a working %prompt()% example."
+    "description": "Text inside a working %prompt()% example.",
+    "message": "Enter the tea variety"
   },
   "prompt.help.explanation": {
     "message": "Required quoted text explaining what the user should enter or select."
   },
   "prompt.help.selectTea": {
-    "message": "Select a tea",
-    "description": "Text inside a working %prompt()% example."
+    "description": "Text inside a working %prompt()% example.",
+    "message": "Select a tea"
   },
   "prompt.help.title": {
     "message": "Interactive prompts"
   },
   "prompt.help.toclipboard": {
-    "message": "(Optional) unquoted final parameter. Copies the confirmed answer instead of inserting it; subsequent `%clipboard%` variables can be used to insert this answer in the email.",
-    "description": "Use paired backticks for inline SmartTemplates variables, such as `%clipboard%` - requires localizedFormatting class. Do not translate variable names or add HTML markup."
+    "description": "Use paired backticks for inline SmartTemplates variables, such as `%clipboard%` - requires localizedFormatting class. Do not translate variable names or add HTML markup.",
+    "message": "(Optional) unquoted final parameter. Copies the confirmed answer instead of inserting it; subsequent `%clipboard%` variables can be used to insert this answer in the email."
   },
   "prompt.switchDomainLicense": {
     "message": "Switch to Domain License?"
@@ -1598,6 +1598,365 @@
   },
   "regexpAnyText": {
     "message": "Any text - regular expression - must be in double quotes."
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "Mail account"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "Buy $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Buy Domain License"
+  },
+  "registration.action.current": {
+    "message": "Current edition"
+  },
+  "registration.action.extend": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.",
+    "message": "Extend License"
+  },
+  "registration.action.renew": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.renewLicense.",
+    "message": "Renew License"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Upgrade to Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Annual licenses"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Dismiss checkout notice"
+  },
+  "registration.checkout.error": {
+    "message": "Unable to open the shop. Please try again."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}To keep your renewal or upgrade benefits, continue with the product opened from this page.{/bold} For choosing a {i}different license{/i}, simply start from here again."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Prices, tax, and available discounts are shown in the shop."
+  },
+  "registration.checkout.opened": {
+    "message": "The shop has opened in your browser. You can keep this tab open."
+  },
+  "registration.checkout.preview": {
+    "message": "Test preview: $1 for $2. No shop was opened."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "This upgrade route needs confirmation before checkout can be enabled. No shop was opened."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Compare Standard and Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Who is this license for?"
+  },
+  "registration.contact.note": {
+    "message": "These details will prefill checkout. You can edit them here."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "Your license expired on $1."
+  },
+  "registration.date.none": {
+    "message": "Choose a license below or enter your existing key."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "Your license is valid until $1."
+  },
+  "registration.development": {
+    "message": "Registration test"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro is a separate personal license, not a Domain renewal. Your Domain license covers you on installations with a mail account using your registered company domain, within your purchased seats. A separate Pro license can cover a home installation where you cannot use that account. To continue your team's coverage, choose Renew License in the Domain panel."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Add users"
+  },
+  "registration.domain.seatsNote": {
+    "message": "to your existing Domain license."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Need more seats?"
+  },
+  "registration.edition.domain": {
+    "message": "Domain"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "Email address"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Different rules apply: the configured email address must belong to the licensed domain."
+  },
+  "registration.email.domain.heading": {
+    "message": "Domain licenses"
+  },
+  "registration.email.help": {
+    "message": "About licensed email addresses"
+  },
+  "registration.email.help.close": {
+    "message": "Close email help"
+  },
+  "registration.email.help.heading": {
+    "message": "Your email is your license"
+  },
+  "registration.email.hint": {
+    "message": "Your personal license works across multiple devices."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Your license is tied to this email address. You can use it on multiple devices. Configure this address as an account’s {bold}default identity{/bold} in Thunderbird on each device."
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard and Pro licenses"
+  },
+  "registration.email.rules": {
+    "message": "Licensed email address rules"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Enter license key…"
+  },
+  "registration.eyebrow": {
+    "message": "Your license"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "First name"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Synthetic data: checkout opens a preview only."
+  },
+  "registration.footer": {
+    "message": "Made for Thunderbird. Supported by you."
+  },
+  "registration.heading": {
+    "message": "Your style. Less effort."
+  },
+  "registration.identity.empty": {
+    "message": "Enter details manually"
+  },
+  "registration.identity.none": {
+    "message": "No eligible mail accounts found. You can enter your contact details manually."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Last name"
+  },
+  "registration.learnMore": {
+    "message": "Learn more…"
+  },
+  "registration.legacy.menu": {
+    "message": "Legacy License Registration"
+  },
+  "registration.license.domain": {
+    "message": "Domain license"
+  },
+  "registration.license.edition": {
+    "message": "$1 license"
+  },
+  "registration.license.none": {
+    "message": "No license configured"
+  },
+  "registration.load.error": {
+    "message": "Unable to load your license or accounts. Reload this tab to try again."
+  },
+  "registration.navigation": {
+    "message": "License navigation"
+  },
+  "registration.options": {
+    "message": "License options"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "All features for your whole team, under one license."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "For your team"
+  },
+  "registration.plan.domain.scope": {
+    "message": "For a shared domain"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "You put email to work. Save time every day."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "All the features"
+  },
+  "registration.plan.pro.scope": {
+    "message": "For your own email"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Make everyday emails your own."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Everyday essentials"
+  },
+  "registration.plan.standard.scope": {
+    "message": "For your own email"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Domain licenses{/bold}{br}Renewal normally adds one year to the previous expiry date, including when ordering or payment is late."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Renewal and upgrade benefits depend on license information passed to the shop. Switching products in the shop or security software removing that information can prevent the shop from applying your existing entitlement."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Renewing or extending your license adds another year and typically costs less than buying a new license."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Personal licenses{/bold}{br}A new license runs for one year from payment. When renewing or extending the same edition, you receive a full year from payment or one year beyond your existing expiry date, whichever gives you more time."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Existing license{/bold}{br}Your current license is passed to the shop so the new expiry date can be calculated."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Standard → Pro upgrades{/bold}{br}Your Pro license runs for one year from the upgrade payment date. Remaining time on your Standard license does not extend that period."
+  },
+  "registration.selection.heading": {
+    "message": "A year of easier email."
+  },
+  "registration.selection.intro": {
+    "message": "Choose Standard for everyday email, Pro for all features, or Domain for your team."
+  },
+  "registration.selection.label": {
+    "message": "License selection"
+  },
+  "registration.settings.error": {
+    "message": "Unable to open license settings. Please try again."
+  },
+  "registration.showLess": {
+    "message": "Show less"
+  },
+  "registration.status.Empty": {
+    "message": "Free edition"
+  },
+  "registration.status.Expired": {
+    "message": "Expired"
+  },
+  "registration.status.Invalid": {
+    "message": "Invalid license"
+  },
+  "registration.status.MailDifferent": {
+    "message": "License email mismatch"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Licensed address not configured"
+  },
+  "registration.status.NotValidated": {
+    "message": "Not validated"
+  },
+  "registration.status.Unknown": {
+    "message": "License unavailable"
+  },
+  "registration.status.Valid": {
+    "message": "Valid"
+  },
+  "registration.subtitle": {
+    "message": "Choose the right license for your workflow."
+  },
+  "registration.terms.annual": {
+    "message": "A license covers one year. Renew an expired license or extend a current one to continue with your chosen edition."
+  },
+  "registration.terms.annual.heading": {
+    "message": "One year at a time"
+  },
+  "registration.terms.back": {
+    "message": "License selection"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Select a license to continue to the shop. Your price depends on the edition, country, tax, and any applicable discounts."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Checkout in your browser"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "A Domain license covers users with matching addresses under the licensed domain."
+  },
+  "registration.terms.draft": {
+    "message": "Draft terms: detailed trial and post-expiry feature behavior will be reviewed before release."
+  },
+  "registration.terms.edition": {
+    "message": "Standard and Pro offer different levels of functionality. Compare the editions to find the right fit."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Choose your edition"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "A personal license is tied to your email address. You can use it on multiple Thunderbird installations when the licensed address is configured as the {bold}default identity{/bold} of an account in each installation."
+  },
+  "registration.terms.email.heading": {
+    "message": "Your email, your license"
+  },
+  "registration.terms.heading": {
+    "message": "How your license works."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Continue to License Selection 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} has kept pace with Thunderbird since $1. {+extensionName} licenses fund ongoing development, new features, and compatibility updates. Each license lasts one year, helping support the work needed to keep pace with Thunderbird."
+  },
+  "registration.terms.label": {
+    "message": "License terms"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Licenses {bold}do not renew automatically{/bold}. {+extensionName} will remind you before your license expires."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "The licensed features also work with all your other email accounts in Thunderbird. No separate licenses needed."
+  },
+  "registration.terms.referrer": {
+    "message": "Renewals and upgrades pass your previous license to the shop for eligibility checks."
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Start with Pro, then save on future years.{/bold} Renewing or extending your Pro license costs substantially less than buying a new one."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Show license terms 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "Your support helps fund development, compatibility updates, and repairs."
+  },
+  "registration.test.menu": {
+    "message": "Registration to Web Shop"
+  },
+  "registration.test.note": {
+    "message": "Checkout opens in your browser."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · Your license"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "Replace Thunderbird signature on identity change (while preserving typed text)"
@@ -2241,7 +2600,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{L}{+extensionName} is now compatible with Thunderbird 162.{/L}{sect}New features{/sect}{L}Added the Pro feature {{%prompt()%}} for text entered by the user or selected from a list of choices. Supports the clipboard for default input and as a target for the data. [issue 443]{/L}{sect}Composer notifications and feature trials{/sect}{L}Licensing notices now appear in a compact, expandable notification bubble instead of sliding notification bars, with remaining uses shown beside each licensed feature. [issue 441]{/L}{L}New users have 28 trial days without consuming individual feature allowances. Users with an expired license have 7 grace days to renew while retaining access to licensed template features.{/L}{L}Outside the trial or grace period, each licensed feature uses its own remaining free allowance. Only the first use each day counts.{/L}{L}Template and Smart Fragment errors now appear in the notification bubble, so you can keep editing and dismiss errors individually. [issue 442]{/L}{sect}Other improvements{/sect}{L}Fixed trial access to clipboard operations, tags, and {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Updated translations, including the Refresh UI action, and simplified localization resources. [issue 440]{/L}"
+    "message": "{L}{+extensionName} is now compatible with Thunderbird 162.{/L}{sect}New features{/sect}{L}Added the Pro feature {{%prompt()%}} for text entered by the user or selected from a list of choices. Supports the clipboard for default input and as a target for the data. [issue 443]{/L}{sect}Composer notifications and feature trials{/sect}{L}Licensing notices now appear in a compact, expandable notification bubble instead of sliding notification bars, with remaining uses shown beside each licensed feature. [issue 441]{/L}{L}New users have 28 trial days without consuming individual feature allowances. Users with an expired license have 7 grace days to renew while retaining access to licensed template features.{/L}{L}Outside the trial or grace period, each licensed feature uses its own remaining free allowance. Only the first use each day counts.{/L}{L}Template and Smart Fragment errors now appear in the notification bubble, so you can keep editing and dismiss errors individually. [issue 442]{/L}{sect}Registration and Settings{/sect}{L}A clearer path to your license: registration now opens in a responsive Thunderbird tab, with clearer purchase, renewal and upgrade choices, plus explanations of how your license works. [issue 445]{/L}{L}Refreshed Settings: improved layouts for Licenses and Account templates, clearer license messages, and a warning badge when expiry approaches. [issue 445]{/L}{sect}Other improvements{/sect}{L}Fixed trial access to clipboard operations, tags, and {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Updated translations, including the Refresh UI action, and simplified localization resources. [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This particular fix was added since the previous release.",
@@ -2312,340 +2671,5 @@
   },
   "yes_button": {
     "message": "Yes"
-  },
-  "registration.title": {
-    "message": "{+extensionName} · Your license",
-    "description": "Adapted from legacy registration entity: licenseWindow.title."
-  },
-  "registration.brand": {
-    "message": "{+extensionName}"
-  },
-  "registration.development": {
-    "message": "Registration test"
-  },
-  "registration.eyebrow": {
-    "message": "Your license"
-  },
-  "registration.heading": {
-    "message": "Your style. Less effort."
-  },
-  "registration.subtitle": {
-    "message": "Choose the right license for your workflow."
-  },
-  "registration.enterKey": {
-    "message": "Enter license key…",
-    "description": "Adapted from legacy registration entity: enterLicenseKey.button."
-  },
-  "registration.options": {
-    "message": "License options"
-  },
-  "registration.annual": {
-    "message": "Annual licenses",
-    "description": "Adapted from legacy registration entity: yearlyLicense.title."
-  },
-  "registration.selection.intro": {
-    "message": "Choose Standard for everyday email, Pro for all features, or Domain for your team."
-  },
-  "registration.contact.heading": {
-    "message": "Who is this license for?"
-  },
-  "registration.account": {
-    "message": "Mail account",
-    "description": "Adapted from legacy registration entity: account.label."
-  },
-  "registration.email": {
-    "message": "Email address",
-    "description": "Adapted from legacy registration entity: email.label."
-  },
-  "registration.email.help": {
-    "message": "About licensed email addresses"
-  },
-  "registration.email.hint": {
-    "message": "Your personal license works across multiple devices."
-  },
-  "registration.email.rules": {
-    "message": "Licensed email address rules"
-  },
-  "registration.email.help.heading": {
-    "message": "Your email is your license"
-  },
-  "registration.email.help.close": {
-    "message": "Close email help"
-  },
-  "registration.email.personal.heading": {
-    "message": "Standard and Pro licenses"
-  },
-  "registration.email.personal": {
-    "message": "Your license is tied to this email address. You can use it on multiple devices. Configure this address as an account’s {bold}default identity{/bold} in Thunderbird on each device.",
-    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm."
-  },
-  "registration.learnMore": {
-    "message": "Learn more…"
-  },
-  "registration.email.domain.heading": {
-    "message": "Domain licenses"
-  },
-  "registration.email.domain": {
-    "message": "Different rules apply: the configured email address must belong to the licensed domain.",
-    "description": "Adapted from legacy registration entity: domainLicense.instruct."
-  },
-  "registration.firstName": {
-    "message": "First name",
-    "description": "Adapted from legacy registration entity: firstName.label."
-  },
-  "registration.lastName": {
-    "message": "Last name",
-    "description": "Adapted from legacy registration entity: lastName.label."
-  },
-  "registration.contact.note": {
-    "message": "These details will prefill checkout. You can edit them here."
-  },
-  "registration.plan.standard.kicker": {
-    "message": "Everyday essentials"
-  },
-  "registration.edition.standard": {
-    "message": "Standard"
-  },
-  "registration.plan.standard.description": {
-    "message": "Make everyday emails your own.",
-    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct."
-  },
-  "registration.plan.standard.scope": {
-    "message": "For your own email"
-  },
-  "registration.plan.pro.kicker": {
-    "message": "All the features"
-  },
-  "registration.edition.pro": {
-    "message": "Pro"
-  },
-  "registration.plan.pro.description": {
-    "message": "For people who put email to work.",
-    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive."
-  },
-  "registration.plan.pro.scope": {
-    "message": "For your own email"
-  },
-  "registration.plan.domain.kicker": {
-    "message": "For your team"
-  },
-  "registration.edition.domain": {
-    "message": "Domain"
-  },
-  "registration.plan.domain.description": {
-    "message": "All features for your whole team, under one license.",
-    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct."
-  },
-  "registration.plan.domain.scope": {
-    "message": "For a shared domain"
-  },
-  "registration.renewal.hint": {
-    "message": "Renewing or extending your license adds another year and typically costs less than buying a new license.",
-    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip."
-  },
-  "registration.checkout.note": {
-    "message": "Prices, tax, and available discounts are shown in the shop.",
-    "description": "Adapted from legacy registration entity: pricing.section.hint."
-  },
-  "registration.terms.intro": {
-    "message": "{+extensionName} has kept pace with Thunderbird since $1. {+extensionName} licenses fund ongoing development, new features, and compatibility updates. Each license lasts one year, helping support the work needed to keep pace with Thunderbird.",
-    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity."
-  },
-  "registration.terms.annual.heading": {
-    "message": "One year at a time"
-  },
-  "registration.terms.annual": {
-    "message": "A license covers one year. Renew an expired license or extend a current one to continue with your chosen edition."
-  },
-  "registration.renewal.personal": {
-    "message": "{bold}Personal licenses{/bold}{br}You receive a full year from purchase or one year beyond your existing expiry date, whichever gives you more time."
-  },
-  "registration.renewal.domain": {
-    "message": "{bold}Domain licenses{/bold}{br}Renewal normally adds one year to the previous expiry date, including when ordering or payment is late."
-  },
-  "registration.renewal.previous": {
-    "message": "{bold}Existing license{/bold}{br}Your current license is passed to the shop so the new expiry date can be calculated."
-  },
-  "registration.terms.manualRenewal": {
-    "message": "Licenses {bold}do not renew automatically{/bold}. {+extensionName} will remind you before your license expires."
-  },
-  "registration.terms.savings": {
-    "message": "{bold}Start with Pro, then save on future years.{/bold} Renewing or extending your Pro license costs substantially less than buying a new one."
-  },
-  "registration.terms.support": {
-    "message": "Your support helps fund development, compatibility updates, and repairs.",
-    "description": "Adapted from legacy registration entity: licenseTypes."
-  },
-  "registration.terms.email.heading": {
-    "message": "Your email, your license"
-  },
-  "registration.terms.email": {
-    "message": "A personal license is tied to your email address. You can use it on multiple Thunderbird installations when the licensed address is configured as the {bold}default identity{/bold} of an account in each installation.",
-    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm."
-  },
-  "registration.terms.otherAccounts": {
-    "message": "The licensed features also work with all your other email accounts in Thunderbird. No separate licenses needed.",
-    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1."
-  },
-  "registration.terms.domain": {
-    "message": "A Domain license covers users with matching addresses under the licensed domain.",
-    "description": "Adapted from legacy registration entity: domainLicense.instruct."
-  },
-  "registration.terms.edition.heading": {
-    "message": "Choose your edition"
-  },
-  "registration.terms.edition": {
-    "message": "Standard and Pro offer different levels of functionality. Compare the editions to find the right fit."
-  },
-  "registration.compare": {
-    "message": "Compare Standard and Pro",
-    "description": "Adapted from legacy registration entity: licenseComparison."
-  },
-  "registration.terms.checkout.heading": {
-    "message": "Checkout in your browser"
-  },
-  "registration.terms.checkout": {
-    "message": "Select a license to continue to the shop. Your price depends on the edition, country, tax, and any applicable discounts.",
-    "description": "Adapted from legacy registration entity: pricing.section."
-  },
-  "registration.terms.referrer": {
-    "message": "Renewals and upgrades pass your previous license to the shop for eligibility checks."
-  },
-  "registration.terms.draft": {
-    "message": "Draft terms: detailed trial and post-expiry feature behavior will be reviewed before release."
-  },
-  "registration.footer": {
-    "message": "Made for Thunderbird. Supported by you."
-  },
-  "registration.test.note": {
-    "message": "Checkout opens in your browser."
-  },
-  "registration.selection.label": {
-    "message": "License selection"
-  },
-  "registration.selection.heading": {
-    "message": "A year of easier email."
-  },
-  "registration.terms.label": {
-    "message": "License terms"
-  },
-  "registration.terms.heading": {
-    "message": "How your license works."
-  },
-  "registration.terms.show": {
-    "message": "Show license terms 🡇",
-    "description": "Adapted from legacy registration entity: licenseTerms.show."
-  },
-  "registration.terms.hide": {
-    "message": "🡇 Continue to License Selection 🡇",
-    "description": "Adapted from legacy registration entity: licenseTerms.hide."
-  },
-  "registration.showLess": {
-    "message": "Show less"
-  },
-  "registration.status.Valid": {
-    "message": "Valid"
-  },
-  "registration.status.Expired": {
-    "message": "Expired"
-  },
-  "registration.status.Empty": {
-    "message": "No license"
-  },
-  "registration.status.Invalid": {
-    "message": "Invalid license"
-  },
-  "registration.status.NotValidated": {
-    "message": "Not validated"
-  },
-  "registration.status.MailNotConfigured": {
-    "message": "Licensed address not configured"
-  },
-  "registration.status.MailDifferent": {
-    "message": "License email mismatch"
-  },
-  "registration.status.Unknown": {
-    "message": "License unavailable"
-  },
-  "registration.license.none": {
-    "message": "No license configured"
-  },
-  "registration.license.edition": {
-    "message": "$1 license"
-  },
-  "registration.date.valid": {
-    "message": "Your license is valid until $1.",
-    "description": "Adapted from legacy registration entity: label.licenseValid."
-  },
-  "registration.date.expired": {
-    "message": "Your license expired on $1.",
-    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate."
-  },
-  "registration.date.none": {
-    "message": "Choose a license below or enter your existing key."
-  },
-  "registration.action.buy": {
-    "message": "Buy $1",
-    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI."
-  },
-  "registration.action.renew": {
-    "message": "Renew $1",
-    "description": "Adapted from legacy registration entity: notification.premium.btn.renewLicense."
-  },
-  "registration.action.extend": {
-    "message": "Extend $1",
-    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense."
-  },
-  "registration.action.upgrade": {
-    "message": "Upgrade to Pro",
-    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade."
-  },
-  "registration.action.current": {
-    "message": "Current edition"
-  },
-  "registration.identity.none": {
-    "message": "No eligible mail accounts found. You can enter your contact details manually."
-  },
-  "registration.identity.empty": {
-    "message": "Enter details manually"
-  },
-  "registration.load.error": {
-    "message": "Unable to load your license or accounts. Reload this tab to try again."
-  },
-  "registration.checkout.preview": {
-    "message": "Test preview: $1 for $2. No shop was opened."
-  },
-  "registration.checkout.unconfirmed": {
-    "message": "This upgrade route needs confirmation before checkout can be enabled. No shop was opened."
-  },
-  "registration.test.menu": {
-    "message": "Registration to Web Shop"
-  },
-  "registration.fixture.checkoutNote": {
-    "message": "Synthetic data: checkout opens a preview only."
-  },
-  "registration.checkout.opened": {
-    "message": "The shop has opened in your browser. You can keep this tab open."
-  },
-  "registration.checkout.error": {
-    "message": "Unable to open the shop. Please try again."
-  },
-  "registration.settings.error": {
-    "message": "Unable to open license settings. Please try again."
-  },
-  "registration.checkout.guidance": {
-    "message": "{bold}To keep your renewal or upgrade benefits, continue with the product opened from this page.{/bold} For choosing a {i}different license{/i}, simply start from here again."
-  },
-  "registration.renewal.entitlements": {
-    "message": "Renewal and upgrade benefits depend on license information passed to the shop. Switching products in the shop or security software removing that information can prevent the shop from applying your existing entitlement."
-  },
-  "registration.checkout.dismiss": {
-    "message": "Dismiss checkout notice"
-  },
-  "registration.terms.back": {
-    "message": "License selection"
-  },
-  "registration.navigation": {
-    "message": "License navigation"
   }
 }

@@ -6,10 +6,28 @@ import { loadRegistrationData, openLicenseSettings } from "../html/registration/
 import { openRegistrationTab, openRegistrationFromSettings } from "../html/registration/open-tab.mjs";
 import { openCheckout } from "../html/registration/checkout.mjs";
 import { registrationConfig as config } from "../html/registration/config.mjs";
-import { buildCheckoutURL, contactFromIdentity, deriveActions, selectIdentities } from "../html/registration/model.mjs";
+import { buildCheckoutURL, contactFromIdentity, deriveActions, identityOptionLabels, selectIdentities } from "../html/registration/model.mjs";
 
 const license = (status, keyType, extra = {}) => ({ status, keyType, licenseKey: "TEST + & %", licensedDaysLeft: 360, ...extra });
 const actionFor = (state, edition, options) => deriveActions(state, config, options).find((action) => action.edition === edition);
+
+test("identity labels add names only for ambiguous account/email pairs", () => {
+  const identities = [
+    { id: "id1", accountName: "Work", email: "alex@example.com", name: "Alex" },
+    { id: "id2", accountName: "Home", email: "alex@example.com", name: "Alex" },
+    { id: "id3", accountName: "Work", email: "alex@example.com", name: "Alex Support" },
+    { id: "id4", accountName: "Other", email: "other@example.com", name: "Other" },
+  ];
+  assert.deepEqual(identityOptionLabels(identities), [
+    "Work · alex@example.com (Alex)",
+    "Home · alex@example.com",
+    "Work · alex@example.com (Alex Support)",
+    "Other · other@example.com",
+  ]);
+  const sameName = [{ ...identities[0] }, { ...identities[0], id: "id5" }];
+  assert.equal(new Set(identityOptionLabels(sameName)).size, 2);
+  assert.deepEqual(identityOptionLabels([]), []);
+});
 
 test("background opens the extension URL and reuses an existing registration tab", async () => {
   const url = "moz-extension://test-id/html/registration/registration.html";
@@ -39,7 +57,8 @@ test("current edition uses renewal route and explicit extension preserves Standa
   for (const [keyType, edition] of [[0, "pro"], [1, "domain"], [2, "standard"]]) {
     assert.equal(actionFor(license("Expired", keyType), edition).kind, "renew");
     assert.equal(actionFor(license("Expired", keyType), edition).route, config.products[edition].renew);
-    assert.equal(actionFor(license("Valid", keyType), edition, { intent: "extend" }).kind, "extend");
+    assert.equal(actionFor(license("Valid", keyType), edition, { intent: "extend" }).kind,
+      edition === "domain" ? "renew" : "extend");
   }
   assert.equal(actionFor(license("Valid", 2), "standard").available, false);
   assert.equal(actionFor(license("Valid", 2, { licensedDaysLeft: 29 }), "standard").kind, "extend");
@@ -101,8 +120,32 @@ test("new users buy; unavailable downgrade actions never become checkout URLs", 
   assert.ok(deriveActions({ status: "Empty" }, config).every((action) => action.kind === "buy" && action.available));
   assert.equal(actionFor(license("Expired", 2), "pro").available, true);
   assert.equal(actionFor(license("Valid", 0), "domain").available, true);
-  assert.equal(actionFor(license("Valid", 1), "pro").hidden, true);
-  assert.throws(() => buildCheckoutURL(actionFor(license("Valid", 1), "pro"), {}, {}, config));
+  assert.equal(actionFor(license("Valid", 1), "standard").hidden, true);
+  assert.throws(() => buildCheckoutURL(actionFor(license("Valid", 1), "standard"), {}, {}, config));
+});
+
+test("Domain holders renew before or after expiry; personal Pro is a separate new purchase", () => {
+  for (const status of ["Valid", "Expired"]) {
+    const state = license(status, 1);
+    const renewal = actionFor(state, "domain");
+    assert.equal(renewal.kind, "renew");
+    const renewalURL = buildCheckoutURL(renewal, {}, state, config);
+    assert.equal(renewalURL.pathname, "/quickfolders/product/smarttemplatesdomainrenewal");
+    assert.equal(renewalURL.searchParams.get("referrer"), state.licenseKey);
+    const personal = actionFor(state, "pro");
+    assert.equal(personal.hidden, false);
+    assert.equal(personal.kind, "buy");
+    const personalURL = buildCheckoutURL(personal, {}, state, config);
+    assert.equal(personalURL.pathname, "/quickfolders/instant/smarttemplate4");
+    assert.equal(personalURL.searchParams.has("referrer"), false);
+  }
+});
+
+test("fresh Standard hides its card until near expiry or an explicit extension request", () => {
+  const state = license("Valid", 2);
+  assert.equal(actionFor(state, "standard").hidden, true);
+  assert.equal(actionFor({ ...state, licensedDaysLeft: 6 }, "standard").hidden, false);
+  assert.equal(deriveActions(state, config, { intent: "extend" })[0].hidden, false);
 });
 
 test("personal-license holders buy Domain through the new-license product regardless of expiry", () => {
@@ -212,8 +255,9 @@ test("live adapter uses existing license handler and account APIs without traver
       assert.equal(id, "account");
       return identity;
     } },
-    LegacyPrefs: { getPref: async (key) => {
+    LegacyPrefs: { getPref: async (key, fallback) => {
       assert.equal(key, "extensions.smartTemplate4.licenser.forceSecondaryIdentity");
+      assert.equal(fallback, false);
       return false;
     } },
   };
@@ -222,6 +266,12 @@ test("live adapter uses existing license handler and account APIs without traver
     assert.equal(result.license.status, "Valid");
     assert.equal(result.identities[0].id, identity.id);
     assert.deepEqual(calls, [{ command: "getLicenseInfo" }]);
+    globalThis.messenger.LegacyPrefs.getPref = async () => {
+      throw new Error("Preference read failed");
+    };
+    const fallbackResult = await loadRegistrationData();
+    assert.equal(fallbackResult.license.status, "Valid");
+    assert.equal(fallbackResult.identities[0].id, identity.id);
   } finally {
     delete globalThis.messenger;
   }

@@ -983,16 +983,30 @@ tab#SmartTemplate4-Pro.expired {
 	white-space: normal balance;
 }
 
-label.plain-link::before, 
-a.plain-link::before {
-  content: "🔗 ";
+label.plain-link::after,
+a.plain-link::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  aspect-ratio: 1;
+  margin-inline-start: 5px;
+  vertical-align: -0.15em;
+  background-color: #b34e23;
+  mask: url("registration/icons/external-link.svg") center / contain no-repeat;
+  transition: background-color 0.18s;
 }
 label.plain-link:hover {
 	text-decoration: underline;
   cursor: pointer;
 }
-label.plain-link:hover::before {
+label.plain-link:hover::after,
+label.plain-link:focus-visible::after,
+a.plain-link:hover::after,
+a.plain-link:focus-visible::after {
 	text-decoration: none;
+  background-color: #a12d54;
 }
 
 #fileTemplateToolbar.templateList > button {

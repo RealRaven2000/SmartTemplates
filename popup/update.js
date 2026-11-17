@@ -30,8 +30,15 @@ END LICENSE BLOCK */
       event.target.id.startsWith("renew") ||
       event.target.id == "upgrade"
     ) {
-      messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
-      window.close();
+      const registrationTab = await messenger.runtime.sendMessage({
+        command: "openRegistrationTab",
+        feature: "landing-update",
+        intent: event.target.id.startsWith("extend") ? "extend" : "",
+      });
+      if (Number.isInteger(registrationTab?.id)) {
+        window.close();
+      }
+      return;
     }    
     switch (event.target.id) {
       case "register": // fall-through
@@ -50,10 +57,16 @@ END LICENSE BLOCK */
         }
         break;
       case "bargainRenewIcon":
-      case "bargainUpgradeIcon":
-        messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
-        window.close();
+      case "bargainUpgradeIcon": {
+        const registrationTab = await messenger.runtime.sendMessage({
+          command: "openRegistrationTab",
+          feature: "landing-update",
+        });
+        if (Number.isInteger(registrationTab?.id)) {
+          window.close();
+        }
         break;
+      }
       case "stdLink":
         messenger.windows.openDefaultBrowser(
           "https://sites.fastspring.com/quickfolders/product/smarttemplatestandard?referrer=splashScreen-standard"

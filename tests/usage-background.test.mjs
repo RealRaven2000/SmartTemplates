@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { readFileSync } from "node:fs";
+import vm from "node:vm";
 import { createBackgroundUsage } from "../scripts/premium/usage-background.mjs";
 import { POLICY } from "../scripts/premium/usage-policy.js";
 import { createComposeNotifications } from "../html/compose-notifications/controller.mjs";
+import { openRegistrationTab } from "../html/registration/open-tab.mjs";
 
 function fixture(saved = {}) {
   const disk = { ...saved };
@@ -83,33 +86,44 @@ test("preserves legacy counters, last-use allowance, limits and licence tiers", 
   assert.equal(f.writes.length, 1);
 });
 
-test("notification registration uses the supplied legacy caller with feature context", async () => {
+test("notification registration opens the modern tab through the background callback with feature context", async () => {
   let listener;
   const registrations = [];
-  // Deliberately no Utilities API: registration must use the existing caller.
+  // No legacy/experimental bridge: exercise the actual background callback.
   const api = {
-    runtime: { onMessage: { addListener(fn) { listener = fn; } } },
+    runtime: {
+      getURL: path => "moz-extension://test-id/" + path,
+      onMessage: { addListener(fn) { listener = fn; } },
+    },
     i18n: { getMessage: key => key },
     storage: { local: { get: async () => ({}) } },
     tabs: {
       query: async query => query.windowId ? [{ id: 1 }] : [],
+      create: async options => {
+        registrations.push(options);
+        return { id: 42 };
+      },
       sendMessage: async () => {},
       onRemoved: { addListener() {} },
     },
     composeScripts: { register: async () => {} },
   };
-  const controller = createComposeNotifications(api, {
-    showRegistrationDialog: feature => {
-      registrations.push(feature);
-      return Promise.resolve(true);
-    },
+  const background = readFileSync(new URL("../st-background.js", import.meta.url), "utf8");
+  const callback = background.match(/showRegistrationDialog: (feature => [^\r\n]+),/)[1];
+  const showRegistrationDialog = vm.runInNewContext("(" + callback + ")", {
+    browser: api, openRegistrationTab,
   });
+  const controller = createComposeNotifications(api, { showRegistrationDialog });
   await controller.start();
   await controller.show({ windowId: 1, features: ["prompt"], isProFeature: true });
   await controller.show({ windowId: 1, features: ["dateformat"] });
   assert.equal(listener({ command: "unrelated" }, {}), false);
-  assert.equal(await listener({ command: "composeNotifications", action: "buy" }, {
+  assert.deepEqual(await listener({ command: "composeNotifications", action: "buy" }, {
     tab: { id: 1, type: "messageCompose" },
-  }), true);
-  assert.deepEqual(registrations, ["prompt|dateformat"]);
+  }), { id: 42 });
+  assert.equal(registrations.length, 1);
+  const destination = new URL(registrations[0].url);
+  assert.equal(destination.pathname, "/html/registration/registration.html");
+  assert.equal(destination.searchParams.get("feature"), "prompt|dateformat");
+  assert.equal(registrations[0].active, true);
 });

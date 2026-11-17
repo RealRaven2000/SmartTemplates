@@ -18,7 +18,6 @@
         class="localized-markup"
         >__MSG_registration.brand__</span
       >
-      <span class="prototype-badge">__MSG_registration.development__</span>
     </header>
     <main>
       <header class="page-heading">
@@ -31,6 +30,7 @@
           <div class="summary-title">
             <h2 id="current-license"></h2>
             <span class="status" id="license-status"></span>
+            <span class="expiry-warning" id="license-expiry-warning" hidden></span>
           </div>
           <p id="license-date"></p>
         </div>
@@ -177,6 +177,7 @@
               </p>
               <div class="plan-bottom">
                 <span>__MSG_registration.plan.pro.scope__</span>
+                <p id="domain-pro-warning" class="domain-pro-warning" hidden>__MSG_registration.domain.proWarning__</p>
                 <button class="button primary purchase" data-edition="pro" type="button" disabled>
                   <span class="action-label"></span
                   ><svg
@@ -204,6 +205,11 @@
               <h3>__MSG_registration.edition.domain__</h3>
               <p data-l10n-id="buyDomainLicense.instruct">
                 __MSG_registration.plan.domain.description__
+              </p>
+              <p id="domain-seats-note" class="domain-seats-note" hidden>
+                <span>__MSG_registration.domain.seatsQuestion__</span>
+                <a href="https://sites.fastspring.com/quickfolders/product/smarttemplate_domainseat" target="_blank" rel="noopener noreferrer">__MSG_registration.domain.seatsLink__<img src="icons/external-link.svg" width="14" height="14" alt="" /></a>
+                <span>__MSG_registration.domain.seatsNote__</span>
               </p>
               <div class="plan-bottom">
                 <span>__MSG_registration.plan.domain.scope__</span>
@@ -269,6 +275,7 @@
               </p>
               <div id="renewal-details" class="renewal-details" hidden>
                 <p class="localized-markup">__MSG_registration.renewal.personal__</p>
+                <p class="localized-markup">__MSG_registration.renewal.upgrade__</p>
                 <p class="localized-markup">__MSG_registration.renewal.domain__</p>
                 <p class="localized-markup">__MSG_registration.renewal.previous__</p>
                 <p>__MSG_registration.renewal.entitlements__</p>
@@ -324,12 +331,11 @@
               <p>__MSG_registration.terms.referrer__</p>
             </article>
           </div>
-          <aside class="review-note">__MSG_registration.terms.draft__</aside>
         </section>
         <div class="view-switcher">
           <button
             type="button"
-            class="toggle"
+            class="toggle has-glyphs"
             id="toggle-terms"
             aria-expanded="false"
             aria-controls="terms-panel"

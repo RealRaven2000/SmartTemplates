@@ -49,15 +49,6 @@ select:focus-visible {
   font-weight: 650;
   font-size: 28px;
 }
-.prototype-badge {
-  margin-left: auto;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--muted);
-  border: 1px solid #d6ddd5;
-  padding: 5px 9px;
-  border-radius: 6px;
-}
 main {
   max-width: 1096px;
   margin: auto;
@@ -114,7 +105,8 @@ p {
   margin: 0;
   font-size: 17px;
 }
-.status {
+.status,
+.expiry-warning {
   font-size: 11px;
   font-weight: 700;
   border-radius: 20px;
@@ -126,6 +118,10 @@ p {
   font-size: 14px;
   margin: 0;
   color: #74604e;
+}
+.expiry-warning {
+  color: #fff;
+  background: linear-gradient(#d85b00, #a43e00);
 }
 .license-summary strong {
   font-weight: 600;
@@ -334,6 +330,28 @@ select {
 .plan-bottom {
   margin-top: auto;
 }
+.domain-pro-warning {
+  padding: 12px;
+  border-inline-start: 3px solid #dfbd7f;
+  border-radius: 7px;
+  background: #fff7e6;
+  color: #72511f;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.plan > p.domain-seats-note {
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: -14px;
+  margin-bottom: 24px;
+}
+.domain-seats-note a {
+  color: #526777;
+}
+.domain-seats-note img {
+  margin-inline-start: 5px;
+  vertical-align: -0.15em;
+}
 .plan-bottom > span {
   color: var(--muted);
   display: block;
@@ -467,14 +485,6 @@ a:focus-visible .external-icon {
 a {
   color: var(--green);
   text-underline-offset: 3px;
-}
-.review-note {
-  border-top: 1px solid #e6ebe2;
-  padding: 18px 0 24px;
-  margin-top: 20px;
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.6;
 }
 footer {
   display: flex;
@@ -642,4 +652,13 @@ footer {
   .license-summary { margin-bottom: 16px; }
   .brand { padding-block: 12px; }
   .page-heading { margin-bottom: 20px; }
+}
+
+/* Inline arrows inherit the label color without relying on platform fonts. */
+.has-glyphs .label-arrow {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
 }

@@ -12,17 +12,22 @@ export function deriveActions(license, config, { intent = "" } = {}) {
     let route = config.products[edition].buy;
     let available = true;
     if (recognized && edition === current) {
-      kind = license.status === "Expired" ? "renew" : "extend";
+      kind = license.status === "Expired" || edition === "domain" ? "renew" : "extend";
       route = config.products[edition].renew;
       if (edition === "standard" && kind === "extend" &&
           license.licensedDaysLeft >= config.extensionPromptDays && intent !== "extend") {
         kind = "current";
         available = false;
+        return { edition, kind, route: null, available, hidden: true };
       }
     } else if (recognized && current === "standard" && edition === "pro") {
       kind = "upgrade";
       route = config.products.upgrade;
       // Match the existing dialog: valid and expired Standard use this product.
+    } else if (recognized && current === "domain" && edition === "pro") {
+      // A separate personal license, never a renewal using the Domain key.
+      kind = "buy";
+      route = config.products.pro.buy;
     } else if (recognized && edition === "domain") {
       // Personal-license holders buy a new Domain license, even when expired.
       kind = "buy";
@@ -57,6 +62,19 @@ export function selectIdentities(accounts, defaults, license, forceSecondaryIden
     }
   }
   return choices;
+}
+
+export function identityOptionLabels(identities) {
+  const bases = identities.map((identity) => `${identity.accountName} · ${identity.email}`);
+  const keys = bases.map((base) => base.toLowerCase());
+  const labels = identities.map((identity, index) => {
+    const duplicated = keys.some((key, other) => other !== index && key === keys[index]);
+    return duplicated ? `${bases[index]} (${identity.name?.trim() || identity.id})` : bases[index];
+  });
+  return labels.map((label, index) => {
+    const duplicated = labels.some((other, otherIndex) => otherIndex !== index && other === label);
+    return duplicated ? `${bases[index]} (${identities[index].name?.trim() || ""} · ${identities[index].id})` : label;
+  });
 }
 
 export function contactFromIdentity(identity) {
