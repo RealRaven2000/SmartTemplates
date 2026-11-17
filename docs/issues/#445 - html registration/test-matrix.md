@@ -4,7 +4,17 @@ Manual test plan for #445. Open **SmartTemplates → Test → New registration t
 
 Current manual testing has concentrated on expired Standard. A full round remains pending for no license (P01–P03), valid Standard (S01–S06, including explicit early extension), valid/expired Pro (R01–R04), valid/expired Domain (D01–D03), and invalid/mismatched licenses. Also test Buy Domain from valid and expired personal licenses. Automated model tests do not replace these Thunderbird/shop checks; do not mark individual cases passed without recording their results.
 
+## Required final-build check: Domain renewal emphasis
+
+Pending maintainer test on the final build: install a real expired Domain license, open registration through Renew License, and verify that Renew Domain is the highlighted primary action. Standard must be hidden. Buy Pro may appear only as an unhighlighted separate personal-license purchase, with a warning about downgrade in coverage and possible existing Domain coverage; it must not look like a Domain renewal alternative. Check the Domain renewal checkout destination and existing Domain key referrer without completing a purchase. Repeat with a valid Domain license: the highlighted action must still say Renew Domain, never Extend Domain. Do not mark this passed from the prototype alone.
+
+The maintainer reports that Domain users accidentally buying Pro instead of renewing is a recurring problem. The legacy XHTML dialog highlighted the Domain button for this case; preserve that product guidance in the replacement.
+
 ## Recorded manual results
+
+Pending Thunderbird check: click Buy/Renew/Upgrade in a composer notification bubble. It must open the modern registration tab, preserve the feature context, reuse an existing registration tab, and leave the composer open. The legacy XHTML menu entry remains an independent emergency fallback.
+
+Pending Thunderbird checks for the other migrated callers: installation/update splash Extend/Renew/Upgrade buttons and renewal/upgrade promotional icons, both template category-limit warnings, and the general message dialog's license button. Each must open/reuse modern registration with its originating feature preserved. Explicit Extend actions must reveal early Standard extension. Splash pages close only after registration opens successfully and remain open on failure; the composer and main Thunderbird window remain open. Confirm the emergency test-menu entry still opens XHTML independently.
 
 | Date | Check | Result | Maintainer feedback |
 | --- | --- | --- | --- |
@@ -35,7 +45,7 @@ Use normal mode for real shop checks. URLs containing `scenario=` use synthetic 
 | R02 | Valid Pro, well before expiry | Extend Pro | `instant/smarttemplate4renew` | Existing Pro key | |
 | R03 | Expired Pro, recently expired | Renew Pro | `instant/smarttemplate4renew` | Existing Pro key | |
 | R04 | Expired Pro, long expired | Renew Pro | `instant/smarttemplate4renew` | Existing Pro key | |
-| D01 | Valid Domain | Extend Domain | `product/smarttemplatesdomainrenewal` | Existing Domain key | |
+| D01 | Valid Domain | Renew Domain | `product/smarttemplatesdomainrenewal` | Existing Domain key | |
 | D02 | Expired Domain, recently expired | Renew Domain | `product/smarttemplatesdomainrenewal` | Existing Domain key | |
 | D03 | Expired Domain, long expired | Renew Domain | `product/smarttemplatesdomainrenewal` | Existing Domain key | |
 

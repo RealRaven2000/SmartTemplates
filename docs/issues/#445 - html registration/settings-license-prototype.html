@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>License settings — layout prototype</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: #202124; font: 14px/1.5 "Segoe UI", system-ui, sans-serif; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 32px 40px; }
+    h1 { margin: 0 0 24px; font-size: 22px; line-height: 1.3; font-weight: 650; }
+    p { margin: 0; }
+    label { display: block; margin-bottom: 8px; }
+    textarea { display: block; width: 100%; min-height: 130px; resize: vertical; border: 1px solid #a7abb2; border-radius: 8px; padding: 14px 16px; background: #fff; color: inherit; font: 14px/1.65 Consolas, "Courier New", monospace; overflow-wrap: anywhere; }
+    textarea:focus-visible, button:focus-visible { outline: 2px solid #087bd8; outline-offset: 3px; }
+    .key-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+    button { font: inherit; font-weight: 600; padding: 8px 20px; border: 1px solid #a7abb2; border-radius: 6px; background: #f4f4f5; color: inherit; cursor: pointer; }
+    button:hover { background: #eaeaec; }
+    .status { margin-top: 28px; padding: 20px 0; border-top: 1px solid #e4e6e8; border-bottom: 1px solid #e4e6e8; }
+    .date-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; }
+    .date { font-weight: 600; white-space: nowrap; }
+    .expiry { display: inline-block; padding: 4px 9px; border-radius: 20px; color: #fff; background: linear-gradient(#d85b00, #a43e00); font-size: 11px; font-weight: 700; }
+    .confirmation { color: #267235; }
+    .renewal { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px 24px; margin-top: 24px; }
+    .messages { flex: 999 1 360px; min-width: 0; overflow-wrap: anywhere; }
+    .license-action { display: flex; justify-content: center; flex: 1 0 150px; }
+    .messages p + p { margin-top: 8px; }
+    .error, .warning { padding: 12px 16px; border: 1px solid #dba1aa; border-left-width: 3px; border-radius: 8px; background: #fff0f1; color: #923341; }
+    .warning { border-color: #dfbd7f; background: #fff7e6; color: #72511f; }
+    .preview-controls { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 24px; padding: 12px; background: #f4f4f5; }
+    .preview-controls label { display: inline-flex; align-items: center; gap: 5px; margin: 0; }
+    .scenario { display: none; }
+    main:has(#preview-valid:checked) .scenario-valid,
+    main:has(#preview-invalid:checked) .scenario-invalid,
+    main:has(#preview-email:checked) .scenario-email,
+    main:has(#preview-addon:checked) .scenario-addon { display: block; }
+    main:not(:has(#preview-valid:checked)) .status { display: none; }
+    main:not(:has(#preview-valid:checked)) .renewal { border-top: 1px solid #e4e6e8; padding-top: 24px; }
+    .extend { flex: 0 0 auto; color: #fff; border-color: #709b08; background: linear-gradient(#a8d51c, #78a300); padding: 10px 22px; text-shadow: 0 1px 1px #385300; }
+    .extend:hover { background: linear-gradient(#b4df2a, #82ad03); }
+    .lower-settings { margin-top: 28px; }
+    .lower-settings fieldset { min-width: 0; margin: 0 0 16px; padding: 0 12px 14px; border: 1px solid #c7cbd0; border-radius: 4px; }
+    /* Keep the live Settings typography: inherited body size, 1.1em legends. */
+    .lower-settings legend { margin: 0.3em 0 4px; padding-inline: 4px; font-size: 1.1em; font-weight: 600; }
+    .lower-settings a { color: #0060df; text-decoration: none; }
+    .lower-settings a:hover { text-decoration: underline; }
+    .update-option { display: flex; align-items: center; gap: 6px; margin: 6px 0; }
+    .update-option label { display: inline-flex; align-items: center; gap: 6px; margin: 0; }
+    .update-option input { margin: 0; }
+    .help-icon { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border: 1px solid #687783; border-radius: 50%; color: #526777; font: 600 11px/1 "Segoe UI", sans-serif; cursor: help; }
+    .update-actions { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .update-actions button { font-size: inherit; font-weight: 400; }
+    .update-actions .latest-news { background: #0060df; border-color: #0060df; color: #fff; }
+    .update-actions .latest-news:hover { background: #0250bb; }
+    .prototype-note { margin-top: 36px; color: #62666b; border-top: 1px dashed #d5d8dc; padding-top: 16px; }
+    @media (max-width: 520px) { main { padding: 24px 20px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Licenses</h1>
+    <div class="preview-controls" role="group" aria-label="Preview license state">
+      <label><input id="preview-valid" type="radio" name="preview">Valid</label>
+      <label><input id="preview-invalid" type="radio" name="preview">Invalid key</label>
+      <label><input id="preview-email" type="radio" name="preview" checked>Email mismatch (two messages)</label>
+      <label><input id="preview-addon" type="radio" name="preview">Wrong add-on</label>
+    </div>
+    <label for="license-key">Insert your personal license key here:</label>
+    <textarea id="license-key" spellcheck="false">ST-alex@example.com:2026-11-22;SYNTHETIC-EXAMPLE-KEY
+0123456789abcdef0123456789abcdef0123456789abcdef
+abcdef0123456789abcdef0123456789abcdef0123456789</textarea>
+    <div class="key-actions">
+      <button type="button">Paste</button>
+      <button type="button">Validate</button>
+    </div>
+    <section class="status" aria-label="License status">
+      <div class="date-row">
+        <span>Your license is valid until:</span>
+        <span class="date">22/11/2026</span>
+        <span class="expiry">License expires in 6 days</span>
+      </div>
+    </section>
+    <div class="renewal">
+      <div class="messages">
+        <p class="confirmation scenario scenario-valid">Thanks for registering SmartTemplates Pro! All premium features are now unlocked.</p>
+        <p class="error scenario scenario-invalid scenario-email">The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.</p>
+        <p class="warning scenario scenario-email">Encrypted Email address does not match readable one.</p>
+        <p class="error scenario scenario-addon">The license key you entered may be for a different Add-on. License keys for SmartTemplates start with ST. (The key entered may be for QuickFolders).</p>
+      </div>
+      <div class="license-action">
+        <button type="button" class="extend"><span class="scenario scenario-valid">Extend License</span><span class="scenario scenario-invalid scenario-email scenario-addon">Buy License</span></button>
+      </div>
+    </div>
+    <div class="lower-settings">
+      <fieldset>
+        <legend>Premium Features</legend>
+        <a href="https://smarttemplates.quickfolders.org/" target="_blank" rel="noopener noreferrer">Read more about Premium Features on our Website…</a>
+      </fieldset>
+      <fieldset>
+        <legend>Updates</legend>
+        <div class="update-option">
+          <label><input type="checkbox">Do not open tab with version history</label>
+          <span class="help-icon" title="Don't open change log after SmartTemplates was updated." aria-label="Don't open change log after SmartTemplates was updated.">?</span>
+        </div>
+        <div class="update-option">
+          <label><input type="checkbox">Do not display news label on update</label>
+          <span class="help-icon" title="If checked, SmartTemplates will not modify the button label. Only a small orange badge 🟠 will appear instead." aria-label="If checked, SmartTemplates will not modify the button label. Only a small orange badge will appear instead.">?</span>
+        </div>
+        <div class="update-actions">
+          <button type="button" class="latest-news">Latest News</button>
+          <button type="button">Release Notes (English)</button>
+        </div>
+      </fieldset>
+    </div>
+    <p class="prototype-note">Layout preview · Synthetic license data · Buttons are inactive</p>
+  </main>
+</body>
+</html>

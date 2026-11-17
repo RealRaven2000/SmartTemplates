@@ -1,5 +1,13 @@
 # Registration localization audit
 
+## German-first review pass, 2026-11-17
+
+The maintainer requested German first for wording and Unicode review before propagation to other locales. `_locales/de/messages.json` now translates all 109 current `registration.*` entities, including explicit Domain purchase and license-summary labels. German uses Domäne/Domänenlizenz and the purchase button Domänenlizenz erwerben. The English source and live terms also include the approved payment-based personal-license rules and separate Standard → Pro upgrade rule: upgrades run for one year from payment without adding remaining Standard time.
+
+See [German wording review](registration-de-review.md) for the English/German comparison. The live locale catalog is authoritative; the table is a review snapshot. Existing non-registration German entities, locale scope, placeholders and parser formatting are preserved. No other locale was expanded in this pass. `UI` locales remain eligible for later UI translation; Vietnamese retains its established `SPLASH` scope and shop fallback.
+
+Automated checks cover complete German registration keys, strict UTF-8 decoding, absence of replacement characters, matching substitution and rich-text tokens, add-on-name expansion, umlauts, ß, ellipses, en dashes and the 🡇 controls. Visual checks in Thunderbird remain pending: headings and long purchase buttons, Domain warnings and seats links, the email-help popup, expanded terms, checkout notices, narrow layouts and locale-formatted dates. Translating the add-on page does not select or promise a German shop checkout.
+
 ## Initial implementation
 
 Registration now uses the established `__MSG_entity__` mechanism through `html/i18n.js` for static text and attributes, followed by shared formatting of dedicated rich-text leaves. Runtime code does not read `data-l10n-id`: retained attributes identify legacy source entities solely as cleanup/transfer hints. They do not prove an entity is unused; Settings and other remaining consumers must be checked before removal.

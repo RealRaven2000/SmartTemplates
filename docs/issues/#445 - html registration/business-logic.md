@@ -1,5 +1,9 @@
 # HTML registration: business logic and implementation plan
 
+## Release preparation: 4.22.1
+
+Maintainer clarification, 2026-11-17: ATN rejected 4.22 and it was never delivered to users. Treat 4.22.1 as the new minor release; the extra version component is required by ATN, not a maintenance-release designation. Combine the unpublished 4.22 work and registration/Settings changes into one set of release notes and What's New entries, without maintenance badges or a separate 4.22 history section. Keep the prerelease suffix and cumulative testing revision until final release preparation is complete. The website version history remains Work in Progress until publication is live.
+
 Working specification for #445. This document separates requirements from observed legacy behavior and proposed decisions. It does not change the current registration dialog.
 
 ## Scope and sources
@@ -120,6 +124,29 @@ The replacement must preserve this explicit early-extension entry point. Model t
 
 Historical source caveat: before the HTML handoff was implemented, `showExtensionButton()` relabeled the Settings purchase button to Extend for valid Pro/Domain licenses, but called the legacy dialog for Standard without a force flag. The implemented HTML path now passes `intent: "extend"` for Standard date-clicks and Settings buttons labeled Extend. The confirmed behavior below supersedes that earlier gap; verify it end to end in Thunderbird.
 
+### Settings license action priority (maintainer-confirmed)
+
+For existing Domain holders, place a small-font additional-seats link immediately beneath the Domain plan description, above the purchase-action area. Maintainer-confirmed fulfillment URL: `https://sites.fastspring.com/quickfolders/product/smarttemplate_domainseat`. This purchases additional seats during the existing license term; it is separate from renewal. Domain coverage requires at least one configured mail account whose email ends in the registered domain, within the purchased seats. A separate personal Pro license can be useful where that company account cannot be configured, for example at home. Do not imply that all Domain holders need an additional Pro license. Seat counts are contractual and company-managed, not directly enforced by the add-on.
+
+For a fresh valid Standard license opened through Upgrade to Pro, show only Pro and Domain purchase panels. Hide Standard entirely while its extension action is date-gated; do not show a disabled Current edition button or an explanatory Standard panel. The maintainer prefers the simpler two-panel layout. Remove the alternate explanatory Standard panel and its comparison/close controls from the review prototype as well. Standard is shown only for an actionable purchase, extension, or renewal. Near expiry, Settings switches its single action from Upgrade to Pro to Extend License; that explicit extension entry point must reveal the Standard extension panel as described above.
+
+Domain renewal/extension must highlight the Domain action, following the legacy XHTML behavior. Never highlight Buy Pro for an existing Domain holder: accidental Pro purchases instead of Domain renewal are a recurring maintainer-reported problem. Keep Standard hidden for recognized Domain licenses. Buy Pro may remain as a secondary, unhighlighted new personal-license purchase with a clear warning: it does not renew Domain, Domain may already cover the purchaser, and replacing Domain with Pro is a downgrade in user coverage. Always label the Domain action Renew Domain, including before expiry; do not use Extend Domain in user-facing labels. This changes the wording, not the renewal product or remaining-time entitlement. Verify both expired Domain renewal and valid Domain extension in the final build; see the required check in [test matrix](test-matrix.md).
+
+Settings → Licenses displays at most one purchase action beside the status messages. Do not show Extend License and Upgrade to Pro simultaneously in Settings. Apply this rule to QuickFolders as well, which also offers Standard and Pro licenses; the QuickFolders implementation has not been verified here.
+
+| Current license | Default Settings action |
+| --- | --- |
+| Valid Standard, outside the Settings extension window | Upgrade to Pro |
+| Valid Standard, within the Settings extension window | Extend License; takes precedence over Upgrade to Pro |
+| Valid Pro or Domain, within the Settings extension window | Extend License |
+| Valid Pro or Domain, outside the Settings extension window | No action button; status messages use the full available width |
+| Expired recognized license | Renew License |
+| Missing or invalid license | Buy License |
+
+Use the exact Settings date comparison documented above for the extension window. An explicit valid-date click retains the early-extension behavior described above. The registration page may offer multiple eligible actions, including Standard extension and Pro upgrade together; the single-action rule applies to Settings.
+
+Keep status messages grouped to the left of the action. If the action wraps beneath the messages, center it. Latest News and Release Notes remain left-aligned in the Updates section.
+
 ## Between-tab navigation contract
 
 Maintainer-approved behavior, implemented for the HTML conversion on 2026-11-16. Replicate this interaction contract in QuickFolders and quickFilters, adapting edition availability and existing Settings routing. The registration page is a Thunderbird tab rather than a floating dialog, so Settings and registration hand control to each other instead of accumulating tabs.
@@ -130,6 +157,11 @@ Design intent: registration proceeds through connected add-on pages inside Thund
 
 | Starting page and action | Destination | Source-page behavior | Context passed |
 | --- | --- | --- | --- |
+| Composer notification bubble: Buy, Renew, or Upgrade license action | Modern HTML registration tab via the shared background `openRegistrationTab()` helper | Keep the composer open; reuse an existing registration tab when present | Pro and Standard feature identifiers joined with `\|` as the originating feature; no legacy notification bridge |
+| Installation/update splash: Extend, Renew, Upgrade and renewal/upgrade promotional icons | Modern HTML registration tab through the shared background request | Close the splash only after a valid destination tab ID is returned; retain it on failure | `feature=landing-install` or `feature=landing-update`; explicit Extend actions also pass `intent=extend` |
+| Template category-limit warning, both background and legacy menus | Modern HTML registration tab via the shared background helper | Keep the initiating Thunderbird window open | `feature=MAX_STANDARD_CATEGORIES`; legacy chrome uses the existing background bridge |
+| General message dialog: license action | Modern HTML registration tab through the shared background request | Preserve the existing message-dialog behavior | Original `addonfeatures` value forwarded as `feature` |
+| Test menu: Legacy License Registration | Original XHTML registration dialog via `window.SmartTemplate4.doCommand` and its legacy handler | Retain the emergency fallback | Only the test-menu entry uses `smartTemplates-registration`; normal callers must not invoke the XHTML route |
 | Settings → Licenses: Buy, Renew, Upgrade, or Extend button | New HTML registration tab, selection view | Close the initiating Settings tab only after the destination opens successfully | `feature=licenseTab`; also `intent=extend` when the button is labeled Extend |
 | Settings → Licenses: click a valid Standard license date | New HTML registration tab, selection view with Standard extension available even outside its prompt window | Same successful-open-before-close rule | `feature=licenseTab&intent=extend` |
 | Settings → Licenses: click a valid Pro/Domain license date | Remain in Settings and reveal/relabel its Extend button | No tab handoff until the user clicks that button | The subsequent button click passes extension intent |
@@ -376,3 +408,7 @@ Pending business answers:
 - Other proposals in the action matrix remain unconfirmed, including downgrade visibility and purchases from invalid/unvalidated states.
 
 If the observed top caption changes by edition in a runtime test, capture that state: this SmartTemplates registration controller only changes the status/date area. This may identify behavior elsewhere or a difference from another add-on.
+
+### Purchase button wording (approved)
+
+Registration cards use Renew License and Extend License; their edition heading supplies the product name. Standard and Pro use Extend License before expiry and Renew License after expiry. Domain uses Renew License both before and after expiry. Upgrade to Pro remains explicit. Test-case selector names retain edition names to identify the scenario.

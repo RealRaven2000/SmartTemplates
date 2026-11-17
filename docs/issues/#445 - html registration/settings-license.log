@@ -1,0 +1,11 @@
+key
+"ST-thunderbirddaily67@gmail.com:2026-12-22;2f937a67dfe48a033cf9365a9f41a09d8184955c34f4cd02494d82aca04f5f0a 3c6add303127f7f5ae5451c2a07397ae97bd6d7ef3216229469f5e5a60e9a350"
+Preferences onChanged: 
+Object { settings: {…} }
+preferences.mjs:318:17
+Preferences updates: 
+Object { LicenseKey: "ST-thunderbirddaily67@gmail.com:2026-12-22;2f937a67dfe48a033cf9365a9f41a09d8184955c34f4cd02494d82aca04f5f0a 3c6add303127f7f5ae5451c2a07397ae97bd6d7ef3216229469f5e5a60e9a350" }
+preferences.mjs:347:17
+licenseInfo
+Object { status: "Valid", description: "Valid until n/a", licensedDaysLeft: 6, expiredDays: 0, expiryDate: "2026-11-22", email: "thunderbirddaily67@gmail.com", licenseKey: "ST-thunderbirddaily67@gmail.com:2026-12-22;2f937a67dfe48a033cf9365a9f41a09d8184955c34f4cd02494d82aca04f5f0a 3c6add303127f7f5ae5451c2a07397ae97bd6d7ef3216229469f5e5a60e9a350", decryptedPart: "ST-thunderbirddaily67@gmail.com:2026-11-22", keyType: 0, isValid: true, … }
+
