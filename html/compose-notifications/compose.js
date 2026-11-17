@@ -405,7 +405,7 @@
     bubble.toggleAttribute("data-blocked", !!model.blocked);
     blockedExplanation.textContent = model.blockedExplanation || "";
     blockedExplanation.hidden = !model.blocked;
-    const licenseContent = row(trial, "licence", "license", model.trial);
+    const licenseContent = row(trial, model.licenseLabel, "license", model.trial);
     if (licenseContent) {
       licenseContent.replaceChildren(
         make("strong", "trial", model.trial),

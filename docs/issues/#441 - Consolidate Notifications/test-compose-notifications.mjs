@@ -77,6 +77,7 @@ test("trial and expired-license grace have distinct headings and allowance expla
   await f.controller.show(f.request({ licenseStatus: "Empty" }));
   const trial = await f.send("ready");
   assert.match(trial.trial, /28 trial days/);
+  assert.equal(trial.licenseLabel, "License");
   assert.match(trial.trialExplanation, /Afterwards/);
   assert.match(trial.trialExplanation, /up to 12 free use days/);
   await f.controller.show(f.request({ licenseStatus: "Expired", trialDays: 7,

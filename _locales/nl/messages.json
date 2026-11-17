@@ -1285,6 +1285,9 @@
   "notification.compose.learnMore": {
     "message": "Meer informatie"
   },
+  "notification.compose.license": {
+    "message": "Licentie"
+  },
   "notification.compose.proFeatures": {
     "message": "Deze functies zijn inbegrepen bij SmartTemplates Pro."
   },

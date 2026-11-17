@@ -1298,6 +1298,9 @@
   "notification.compose.learnMore": {
     "message": "Докладніше"
   },
+  "notification.compose.license": {
+    "message": "Ліцензія"
+  },
   "notification.compose.proFeatures": {
     "message": "Ці функції входять до SmartTemplates Pro."
   },

@@ -108,6 +108,7 @@ export function createComposeNotifications(api, {
           ? trialText
           : msg("notification.compose.details"),
       trial: trialText,
+      licenseLabel: msg("notification.compose.license"),
       trialExplanation: hasTrial ? msg(expired
         ? "notification.compose.graceExplanation" : "notification.compose.trialExplanation")
         .replace("{0}", state.trialDays) + " " + msg("notification.compose.allowanceExplanation") : "",

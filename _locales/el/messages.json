@@ -1282,6 +1282,9 @@
   "notification.compose.learnMore": {
     "message": "Μάθετε περισσότερα"
   },
+  "notification.compose.license": {
+    "message": "Άδεια"
+  },
   "notification.compose.proFeatures": {
     "message": "Αυτές οι λειτουργίες περιλαμβάνονται στο SmartTemplates Pro."
   },

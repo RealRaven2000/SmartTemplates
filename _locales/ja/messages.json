@@ -1279,6 +1279,9 @@
   "notification.compose.learnMore": {
     "message": "詳しく見る"
   },
+  "notification.compose.license": {
+    "message": "ライセンス"
+  },
   "notification.compose.proFeatures": {
     "message": "これらの機能は SmartTemplates Pro に含まれます。"
   },

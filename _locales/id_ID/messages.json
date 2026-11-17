@@ -874,6 +874,9 @@
   "notification.compose.learnMore": {
     "message": "Pelajari lebih lanjut"
   },
+  "notification.compose.license": {
+    "message": "Lisensi"
+  },
   "notification.compose.proFeatures": {
     "message": "Fitur-fitur ini disertakan dalam SmartTemplates Pro."
   },
