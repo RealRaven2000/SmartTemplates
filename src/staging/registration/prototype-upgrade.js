@@ -63,16 +63,16 @@
       note.hidden = !separatePro;
       note.classList.toggle("separate-pro-warning", separatePro);
       note.textContent = separatePro
-        ? "Pro is a separate personal license, not a Domain renewal. Your Domain license covers you on installations with a mail account using your registered company domain, within your purchased seats. A separate Pro license can cover a home installation where you cannot use that account. To continue your team's coverage, choose Renew Domain."
+        ? "Pro is a separate personal license, not a Domain renewal. Your Domain license covers you on installations with a mail account using your registered company domain, within your purchased seats. A separate Pro license can cover a home installation where you cannot use that account. To continue your team's coverage, choose Renew License in the Domain panel."
         : "";
       if (separatePro) {
         button.before(note);
       } else {
         plan.querySelector(".plan-bottom").appendChild(note);
       }
-      let label = `Buy ${editions[index]}`;
+      let label = index === 2 ? "Buy Domain License" : `Buy ${editions[index]}`;
       if (!buying && !upgrade && index === currentIndex) {
-        label = `${extending && !domain ? "Extend" : "Renew"} ${editions[index]}`;
+        label = extending && !domain ? "Extend License" : "Renew License";
       } else if (!buying && currentIndex === 0 && index === 1) {
         label = "Upgrade to Pro";
       }

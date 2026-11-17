@@ -231,12 +231,13 @@ permalink: version.html
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
 
+<a id="4.22.1"> &nbsp; </a>
 <a id="4.22"> &nbsp; </a>
 <li>
   <h4>
-		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.22"
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.22.1"
       onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
-      Version 4.22 - Work in Progress</a>
+      Version 4.22.1 - Work in Progress</a>
 		<br>
 		<span class="appWrapper">
 			<span class="thunderbird">140.0 - 162.*</span>
@@ -324,6 +325,37 @@ permalink: version.html
           alt="Expanded issues notification">
       </p>
     </li>
+
+    <h5 class="inList"><span class="inListTitle">Registration and Settings</span></h5>
+    <li>
+      <strong>Redesigned license registration.</strong> 
+      A responsive Thunderbird tab provides clearer edition choices, renewal 
+      and upgrade actions, editable checkout details, and explanations of license 
+      coverage and payment-based expiry dates. Existing shop rules are clarified,
+      not changed. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/445">[issue 445]</a>
+    </li>
+    <li>
+      <strong>Clearer license settings.</strong> 
+      Status messages and the relevant purchase action stay together, with 
+      a warning badge when expiry approaches and responsive wrapping for 
+      longer messages. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/445">[issue 445]</a>
+    </li>
+    <li>
+      <strong>Clearer Domain purchases.</strong> 
+      Domain renewal is highlighted, the separate personal Pro option is explained, 
+      and existing Domain customers have a direct link to buy additional seats. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/445">[issue 445]</a>
+    </li>
+    <li>
+      <strong>Refreshed Account templates settings.</strong> 
+      Consistent text sizes, better alignment, and clearer external links. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/445">[issue 445]</a>
+    </li>
+    <li>
+      <strong>License-key validation.</strong> 
+      Keys are rejected when the visible product prefix or expiry date does not 
+      match the encrypted license data.
+    </li>
+
+
     <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
     <li>
       Fixed trial access to clipboard operations, tags, and <code>%deleteForwardedBody%</code>.
