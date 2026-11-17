@@ -1213,14 +1213,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Свака функција нуди до 12 дана бесплатног коришћења. Рачуна се само прво коришћење сваког дана. Претходно коришћење се задржава."
   },
+  "notification.compose.allUsed": {
+    "message": "Потрошено"
+  },
+  "notification.compose.blocked": {
+    "message": "Неке функције су блокиране"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "У е-пошти могу остати неразрешене променљиве. Уклоните их пре слања."
+  },
+  "notification.compose.blockedPro": {
+    "message": "За коришћење ове функције набавите лиценцу SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "За коришћење ове функције набавите лиценцу SmartTemplates Standard или Pro."
+  },
+  "notification.compose.collapse": {
+    "message": "Скупи"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Копирај изворни код шаблона"
+  },
+  "notification.compose.countedToday": {
+    "message": "Данашњи дан је већ урачунат. Даља коришћења данас не смањују преостали број."
+  },
+  "notification.compose.countingRule": {
+    "message": "Рачуна се само прво коришћење сваког дана, па функцију можете темељно испробавати целог дана."
   },
   "notification.compose.details": {
     "message": "Коришћене су лиценциране функције"
   },
+  "notification.compose.dismiss": {
+    "message": "Затвори обавештење"
+  },
   "notification.compose.dismissIssue": {
     "message": "Одбаци"
+  },
+  "notification.compose.expand": {
+    "message": "Прошири"
   },
   "notification.compose.expiredGrace": {
     "message": "Ваша лиценца је истекла."
@@ -1237,8 +1267,17 @@
   "notification.compose.learnMore": {
     "message": "Сазнајте више"
   },
+  "notification.compose.proFeatures": {
+    "message": "Ове функције су укључене у SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Преостало бесплатних коришћења: {1}."
+  },
   "notification.compose.remindLater": {
     "message": "Подсети ме касније"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Ове функције су укључене у SmartTemplates Standard и Pro."
   },
   "notification.compose.trialExplanation": {
     "message": "Након тога, свака лиценцирана функција користи сопствену преосталу бесплатну квоту."

@@ -1237,14 +1237,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Vsaka funkcija omogoča do 12 dni brezplačne uporabe. Šteje le prva uporaba na dan. Prejšnja uporaba se ohrani."
   },
+  "notification.compose.allUsed": {
+    "message": "Porabljeno"
+  },
+  "notification.compose.blocked": {
+    "message": "Nekatere funkcije so bile blokirane"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "V e-pošti lahko ostanejo nerazrešene spremenljivke. Pred pošiljanjem jih odstranite."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Za uporabo te funkcije pridobite licenco SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Za uporabo te funkcije pridobite licenco SmartTemplates Standard ali Pro."
+  },
+  "notification.compose.collapse": {
+    "message": "Strni"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Kopiraj izvorno kodo predloge"
+  },
+  "notification.compose.countedToday": {
+    "message": "Današnji dan je že upoštevan. Dodatne uporabe danes ne zmanjšajo preostalega števila uporab."
+  },
+  "notification.compose.countingRule": {
+    "message": "Šteje samo prva uporaba na dan, zato lahko funkcijo temeljito preizkušate ves dan."
   },
   "notification.compose.details": {
     "message": "Uporabljene licenčne funkcije"
   },
+  "notification.compose.dismiss": {
+    "message": "Zapri obvestilo"
+  },
   "notification.compose.dismissIssue": {
     "message": "Opusti"
+  },
+  "notification.compose.expand": {
+    "message": "Razširi"
   },
   "notification.compose.expiredGrace": {
     "message": "Vaša licenca je potekla."
@@ -1261,8 +1291,17 @@
   "notification.compose.learnMore": {
     "message": "Več informacij"
   },
+  "notification.compose.proFeatures": {
+    "message": "Te funkcije so vključene v SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Preostale brezplačne uporabe: {1}."
+  },
   "notification.compose.remindLater": {
     "message": "Opomni me pozneje"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Te funkcije so vključene v SmartTemplates Standard in Pro."
   },
   "notification.compose.trialExplanation": {
     "message": "Nato vsaka licenčna funkcija uporablja svojo preostalo brezplačno kvoto."

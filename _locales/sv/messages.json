@@ -1240,14 +1240,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Varje funktion erbjuder upp till 12 kostnadsfria användningsdagar. Endast dagens första användning räknas. Tidigare användning behålls."
   },
+  "notification.compose.allUsed": {
+    "message": "Förbrukat"
+  },
+  "notification.compose.blocked": {
+    "message": "Vissa funktioner blockerades"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "Obehandlade variabler kan finnas kvar i ditt mejl. Ta bort dem innan du skickar."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Skaffa en SmartTemplates Pro-licens för att använda den här funktionen."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Skaffa en SmartTemplates Standard- eller Pro-licens för att använda den här funktionen."
+  },
+  "notification.compose.collapse": {
+    "message": "Fäll ihop"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Kopiera mallens källkod"
+  },
+  "notification.compose.countedToday": {
+    "message": "Idag har redan räknats. Ytterligare användning idag minskar inte din återstående kvot."
+  },
+  "notification.compose.countingRule": {
+    "message": "Bara den första användningen varje dag räknas, så att du kan testa funktionen ordentligt hela dagen."
   },
   "notification.compose.details": {
     "message": "Licenskrävande funktioner används"
   },
+  "notification.compose.dismiss": {
+    "message": "Stäng avisering"
+  },
   "notification.compose.dismissIssue": {
     "message": "Avvisa"
+  },
+  "notification.compose.expand": {
+    "message": "Fäll ut"
   },
   "notification.compose.expiredGrace": {
     "message": "Din licens har löpt ut."
@@ -1264,8 +1294,17 @@
   "notification.compose.learnMore": {
     "message": "Läs mer"
   },
+  "notification.compose.proFeatures": {
+    "message": "Dessa funktioner ingår i SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "{1} kostnadsfria användningar återstår."
+  },
   "notification.compose.remindLater": {
     "message": "Påminn mig senare"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Dessa funktioner ingår i SmartTemplates Standard och Pro."
   },
   "notification.compose.trialExplanation": {
     "message": "Därefter använder varje licensierad funktion sin egen återstående kostnadsfria kvot."

@@ -1244,14 +1244,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Кожна функція надає до 12 безкоштовних днів використання. Враховується лише перше використання за день. Попереднє використання зберігається."
   },
+  "notification.compose.allUsed": {
+    "message": "Вичерпано"
+  },
+  "notification.compose.blocked": {
+    "message": "Деякі функції заблоковано"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "У листі можуть залишитися необроблені змінні. Видаліть їх перед надсиланням."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Щоб користуватися цією функцією, придбайте ліцензію SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Щоб користуватися цією функцією, придбайте ліцензію SmartTemplates Standard або Pro."
+  },
+  "notification.compose.collapse": {
+    "message": "Згорнути"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Копіювати вихідний код шаблону"
+  },
+  "notification.compose.countedToday": {
+    "message": "Сьогоднішній день уже враховано. Повторне використання сьогодні не зменшує залишок безплатних використань."
+  },
+  "notification.compose.countingRule": {
+    "message": "Враховується лише перше використання за день, тож ви можете повноцінно випробовувати функцію весь день."
   },
   "notification.compose.details": {
     "message": "Використано ліцензовані функції"
   },
+  "notification.compose.dismiss": {
+    "message": "Закрити сповіщення"
+  },
   "notification.compose.dismissIssue": {
     "message": "Приховати"
+  },
+  "notification.compose.expand": {
+    "message": "Розгорнути"
   },
   "notification.compose.expiredGrace": {
     "message": "Термін дії вашої ліцензії минув."
@@ -1268,8 +1298,17 @@
   "notification.compose.learnMore": {
     "message": "Докладніше"
   },
+  "notification.compose.proFeatures": {
+    "message": "Ці функції входять до SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Залишилося безплатних використань: {1}."
+  },
   "notification.compose.remindLater": {
     "message": "Нагадати пізніше"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Ці функції входять до SmartTemplates Standard і Pro."
   },
   "notification.compose.trialExplanation": {
     "message": "Після цього кожна ліцензована функція використовує власний залишок безкоштовного ліміту."

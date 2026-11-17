@@ -1228,14 +1228,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Každá funkce nabízí až 12 dní bezplatného používání. Počítá se pouze první použití za den. Předchozí využití se zachovává."
   },
+  "notification.compose.allUsed": {
+    "message": "Vyčerpáno"
+  },
+  "notification.compose.blocked": {
+    "message": "Některé funkce byly zablokovány"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "V e-mailu mohou zůstat nevyřešené proměnné. Před odesláním je odstraňte."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Pro použití této funkce si pořiďte licenci SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Pro použití této funkce si pořiďte licenci SmartTemplates Standard nebo Pro."
+  },
+  "notification.compose.collapse": {
+    "message": "Sbalit"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Kopírovat zdroj šablony"
+  },
+  "notification.compose.countedToday": {
+    "message": "Dnešek je již započítán. Další použití dnes nesnižuje zbývající počet použití."
+  },
+  "notification.compose.countingRule": {
+    "message": "Počítá se pouze první použití každý den, takže funkci můžete důkladně zkoušet po celý den."
   },
   "notification.compose.details": {
     "message": "Použité licencované funkce"
   },
+  "notification.compose.dismiss": {
+    "message": "Zavřít oznámení"
+  },
   "notification.compose.dismissIssue": {
     "message": "Zavřít"
+  },
+  "notification.compose.expand": {
+    "message": "Rozbalit"
   },
   "notification.compose.expiredGrace": {
     "message": "Platnost vaší licence vypršela."
@@ -1252,8 +1282,17 @@
   "notification.compose.learnMore": {
     "message": "Další informace"
   },
+  "notification.compose.proFeatures": {
+    "message": "Tyto funkce jsou součástí SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Zbývající bezplatná použití: {1}."
+  },
   "notification.compose.remindLater": {
     "message": "Připomenout později"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Tyto funkce jsou součástí SmartTemplates Standard a Pro."
   },
   "notification.compose.trialExplanation": {
     "message": "Poté každá licencovaná funkce využívá vlastní zbývající bezplatný limit."

@@ -1228,14 +1228,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Κάθε λειτουργία προσφέρει έως 12 ημέρες δωρεάν χρήσης. Μετρά μόνο η πρώτη χρήση κάθε ημέρας. Η προηγούμενη χρήση διατηρείται."
   },
+  "notification.compose.allUsed": {
+    "message": "Εξαντλήθηκαν"
+  },
+  "notification.compose.blocked": {
+    "message": "Ορισμένες λειτουργίες αποκλείστηκαν"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "Ενδέχεται να παραμένουν μη επιλυμένες μεταβλητές στο email σας. Αφαιρέστε τις πριν από την αποστολή."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Για να χρησιμοποιήσετε αυτή τη λειτουργία, αποκτήστε άδεια SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Για να χρησιμοποιήσετε αυτή τη λειτουργία, αποκτήστε άδεια SmartTemplates Standard ή Pro."
+  },
+  "notification.compose.collapse": {
+    "message": "Σύμπτυξη"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Αντιγραφή πηγαίου κώδικα προτύπου"
+  },
+  "notification.compose.countedToday": {
+    "message": "Η σημερινή ημέρα έχει ήδη καταμετρηθεί. Περαιτέρω χρήσεις σήμερα δεν μειώνουν το υπόλοιπό σας."
+  },
+  "notification.compose.countingRule": {
+    "message": "Μετρά μόνο η πρώτη χρήση κάθε ημέρας, ώστε να μπορείτε να δοκιμάσετε πλήρως τη λειτουργία όλη την ημέρα."
   },
   "notification.compose.details": {
     "message": "Χρησιμοποιήθηκαν λειτουργίες με άδεια χρήσης"
   },
+  "notification.compose.dismiss": {
+    "message": "Κλείσιμο ειδοποίησης"
+  },
   "notification.compose.dismissIssue": {
     "message": "Απόρριψη"
+  },
+  "notification.compose.expand": {
+    "message": "Ανάπτυξη"
   },
   "notification.compose.expiredGrace": {
     "message": "Η άδειά σας έχει λήξει."
@@ -1252,8 +1282,17 @@
   "notification.compose.learnMore": {
     "message": "Μάθετε περισσότερα"
   },
+  "notification.compose.proFeatures": {
+    "message": "Αυτές οι λειτουργίες περιλαμβάνονται στο SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Απομένουν {1} δωρεάν χρήσεις."
+  },
   "notification.compose.remindLater": {
     "message": "Υπενθύμιση αργότερα"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Αυτές οι λειτουργίες περιλαμβάνονται στα SmartTemplates Standard και Pro."
   },
   "notification.compose.trialExplanation": {
     "message": "Στη συνέχεια, κάθε λειτουργία με άδεια χρησιμοποιεί το δικό της υπόλοιπο δωρεάν όριο."

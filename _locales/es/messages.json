@@ -1045,14 +1045,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Cada función ofrece hasta 12 días de uso gratuito. Solo cuenta el primer uso de cada día. Se conserva el uso anterior."
   },
+  "notification.compose.allUsed": {
+    "message": "Agotado"
+  },
+  "notification.compose.blocked": {
+    "message": "Se han bloqueado algunas funciones"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "Puede que queden variables sin resolver en su correo. Elimínelas antes de enviarlo."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Para usar esta función, adquiera una licencia de SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Para usar esta función, adquiera una licencia de SmartTemplates Standard o Pro."
+  },
+  "notification.compose.collapse": {
+    "message": "Contraer"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Copiar el código fuente de la plantilla"
+  },
+  "notification.compose.countedToday": {
+    "message": "Hoy ya se ha contabilizado. Los usos adicionales de hoy no reducen su cupo restante."
+  },
+  "notification.compose.countingRule": {
+    "message": "Solo cuenta el primer uso de cada día, para que pueda probar esta función durante todo el día."
   },
   "notification.compose.details": {
     "message": "Funciones con licencia utilizadas"
   },
+  "notification.compose.dismiss": {
+    "message": "Cerrar notificación"
+  },
   "notification.compose.dismissIssue": {
     "message": "Descartar"
+  },
+  "notification.compose.expand": {
+    "message": "Expandir"
   },
   "notification.compose.expiredGrace": {
     "message": "Su licencia ha caducado."
@@ -1069,8 +1099,17 @@
   "notification.compose.learnMore": {
     "message": "Más información"
   },
+  "notification.compose.proFeatures": {
+    "message": "Estas funciones están incluidas en SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Quedan {1} usos gratuitos."
+  },
   "notification.compose.remindLater": {
     "message": "Recordármelo más tarde"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Estas funciones están incluidas en SmartTemplates Standard y Pro."
   },
   "ongoing-work": {
     "message": "Para mantener $addonName$ sincronizado con las actualizaciones mensuales de Thunderbird, tenemos que estar revisando constantemente si hay fallos y subir versiones adaptadas. ¡Por favor ayúdanos con esto una vez que hayas probado la funcionalidad y estés seguro de que mejora tu productividad!",

@@ -820,14 +820,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Setiap fitur menyediakan hingga 12 hari penggunaan gratis. Hanya penggunaan pertama setiap hari yang dihitung. Penggunaan sebelumnya tetap disimpan."
   },
+  "notification.compose.allUsed": {
+    "message": "Habis"
+  },
+  "notification.compose.blocked": {
+    "message": "Beberapa fitur diblokir"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "Variabel yang belum diproses mungkin masih ada dalam email Anda. Hapus variabel tersebut sebelum mengirim."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Untuk menggunakan fitur ini, dapatkan lisensi SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Untuk menggunakan fitur ini, dapatkan lisensi SmartTemplates Standard atau Pro."
+  },
+  "notification.compose.collapse": {
+    "message": "Ciutkan"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Salin sumber templat"
+  },
+  "notification.compose.countedToday": {
+    "message": "Hari ini sudah dihitung. Penggunaan berikutnya hari ini tidak mengurangi sisa kuota Anda."
+  },
+  "notification.compose.countingRule": {
+    "message": "Hanya penggunaan pertama setiap hari yang dihitung, sehingga Anda dapat menguji fitur ini sepanjang hari."
   },
   "notification.compose.details": {
     "message": "Fitur berlisensi digunakan"
   },
+  "notification.compose.dismiss": {
+    "message": "Tutup pemberitahuan"
+  },
   "notification.compose.dismissIssue": {
     "message": "Tutup"
+  },
+  "notification.compose.expand": {
+    "message": "Perluas"
   },
   "notification.compose.expiredGrace": {
     "message": "Lisensi Anda telah kedaluwarsa."
@@ -844,8 +874,23 @@
   "notification.compose.learnMore": {
     "message": "Pelajari lebih lanjut"
   },
+  "notification.compose.proFeatures": {
+    "message": "Fitur-fitur ini disertakan dalam SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Tersisa {1} penggunaan gratis."
+  },
   "notification.compose.remindLater": {
     "message": "Ingatkan saya nanti"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Fitur-fitur ini disertakan dalam SmartTemplates Standard dan Pro."
+  },
+  "notification.licensing": {
+    "message": "Informasi lebih lanjut tentang lisensi"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Tingkatkan ke Pro"
   },
   "openInBrowser": {
     "message": "buka di browser"
@@ -1623,6 +1668,9 @@
   },
   "prompt.switchDomainLicense": {
     "message": "Beralih ke Lisensi Domain?"
+  },
+  "trialDays": {
+    "message": "Anda memiliki {0} hari uji coba tersisa."
   },
   "updateMessageNewBrackets1": {
     "message": "Kepada pengguna SmartTemplates, dengan senang hati kami mengumumkan dari versi ini, SmartTemplates mendukung penggunaan kurung kurawa {} dan tanda <style> sehingga kini anda dapat menerapkan kostumisasi css dalam Template anda."

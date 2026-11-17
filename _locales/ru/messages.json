@@ -1234,14 +1234,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Для каждой функции доступно до 12 бесплатных дней использования. Учитывается только первое использование за день. Предыдущее использование сохраняется."
   },
+  "notification.compose.allUsed": {
+    "message": "Исчерпано"
+  },
+  "notification.compose.blocked": {
+    "message": "Некоторые функции заблокированы"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "В письме могут остаться необработанные переменные. Удалите их перед отправкой."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Для использования этой функции приобретите лицензию SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Для использования этой функции приобретите лицензию SmartTemplates Standard или Pro."
+  },
+  "notification.compose.collapse": {
+    "message": "Свернуть"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Копировать исходный код шаблона"
+  },
+  "notification.compose.countedToday": {
+    "message": "Сегодняшний день уже учтён. Повторное использование сегодня не уменьшает остаток бесплатных использований."
+  },
+  "notification.compose.countingRule": {
+    "message": "Учитывается только первое использование за день, поэтому вы можете полноценно тестировать функцию весь день."
   },
   "notification.compose.details": {
     "message": "Использованы лицензируемые функции"
   },
+  "notification.compose.dismiss": {
+    "message": "Закрыть уведомление"
+  },
   "notification.compose.dismissIssue": {
     "message": "Скрыть"
+  },
+  "notification.compose.expand": {
+    "message": "Развернуть"
   },
   "notification.compose.expiredGrace": {
     "message": "Срок действия вашей лицензии истёк."
@@ -1258,8 +1288,17 @@
   "notification.compose.learnMore": {
     "message": "Подробнее"
   },
+  "notification.compose.proFeatures": {
+    "message": "Эти функции входят в SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Осталось бесплатных использований: {1}."
+  },
   "notification.compose.remindLater": {
     "message": "Напомнить позже"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Эти функции входят в SmartTemplates Standard и Pro."
   },
   "notification.compose.trialExplanation": {
     "message": "Затем каждая лицензируемая функция использует собственный оставшийся бесплатный лимит."

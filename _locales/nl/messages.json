@@ -1231,14 +1231,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Elke functie biedt maximaal 12 gratis gebruiksdagen. Alleen het eerste gebruik per dag telt. Eerder gebruik blijft bewaard."
   },
+  "notification.compose.allUsed": {
+    "message": "Opgebruikt"
+  },
+  "notification.compose.blocked": {
+    "message": "Sommige functies zijn geblokkeerd"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "Er kunnen onverwerkte variabelen in uw e-mail staan. Verwijder deze voordat u de e-mail verstuurt."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Schaf een SmartTemplates Pro-licentie aan om deze functie te gebruiken."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Schaf een SmartTemplates Standard- of Pro-licentie aan om deze functie te gebruiken."
+  },
+  "notification.compose.collapse": {
+    "message": "Inklappen"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Sjabloonbron kopiëren"
+  },
+  "notification.compose.countedToday": {
+    "message": "Vandaag is al meegeteld. Verder gebruik vandaag vermindert uw resterende tegoed niet."
+  },
+  "notification.compose.countingRule": {
+    "message": "Alleen het eerste gebruik per dag telt, zodat u deze functie de hele dag uitgebreid kunt testen."
   },
   "notification.compose.details": {
     "message": "Functies waarvoor een licentie nodig is gebruikt"
   },
+  "notification.compose.dismiss": {
+    "message": "Melding sluiten"
+  },
   "notification.compose.dismissIssue": {
     "message": "Sluiten"
+  },
+  "notification.compose.expand": {
+    "message": "Uitklappen"
   },
   "notification.compose.expiredGrace": {
     "message": "Uw licentie is verlopen."
@@ -1255,8 +1285,17 @@
   "notification.compose.learnMore": {
     "message": "Meer informatie"
   },
+  "notification.compose.proFeatures": {
+    "message": "Deze functies zijn inbegrepen bij SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Nog {1} gratis gebruiken over."
+  },
   "notification.compose.remindLater": {
     "message": "Later herinneren"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Deze functies zijn inbegrepen bij SmartTemplates Standard en Pro."
   },
   "notification.compose.trialExplanation": {
     "message": "Daarna gebruikt elke licentiefunctie haar eigen resterende gratis tegoed."

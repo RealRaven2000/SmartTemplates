@@ -1234,14 +1234,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Każda funkcja oferuje do 12 dni bezpłatnego używania. Liczy się tylko pierwsze użycie danego dnia. Wcześniejsze użycie jest zachowywane."
   },
+  "notification.compose.allUsed": {
+    "message": "Wyczerpano"
+  },
+  "notification.compose.blocked": {
+    "message": "Niektóre funkcje zostały zablokowane"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "W wiadomości mogą pozostać nierozwiązane zmienne. Usuń je przed wysłaniem."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Aby korzystać z tej funkcji, kup licencję SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Aby korzystać z tej funkcji, kup licencję SmartTemplates Standard lub Pro."
+  },
+  "notification.compose.collapse": {
+    "message": "Zwiń"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Kopiuj źródło szablonu"
+  },
+  "notification.compose.countedToday": {
+    "message": "Dzisiejszy dzień został już policzony. Kolejne użycia dzisiaj nie zmniejszają pozostałego limitu."
+  },
+  "notification.compose.countingRule": {
+    "message": "Liczy się tylko pierwsze użycie każdego dnia, więc możesz dokładnie testować tę funkcję przez cały dzień."
   },
   "notification.compose.details": {
     "message": "Użyto funkcji wymagających licencji"
   },
+  "notification.compose.dismiss": {
+    "message": "Zamknij powiadomienie"
+  },
   "notification.compose.dismissIssue": {
     "message": "Odrzuć"
+  },
+  "notification.compose.expand": {
+    "message": "Rozwiń"
   },
   "notification.compose.expiredGrace": {
     "message": "Twoja licencja wygasła."
@@ -1258,8 +1288,17 @@
   "notification.compose.learnMore": {
     "message": "Dowiedz się więcej"
   },
+  "notification.compose.proFeatures": {
+    "message": "Te funkcje są dostępne w SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Pozostałe bezpłatne użycia: {1}."
+  },
   "notification.compose.remindLater": {
     "message": "Przypomnij mi później"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Te funkcje są dostępne w SmartTemplates Standard i Pro."
   },
   "notification.compose.trialExplanation": {
     "message": "Następnie każda licencjonowana funkcja korzysta z własnego pozostałego bezpłatnego limitu."

@@ -1240,14 +1240,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Kullakin toiminnolla on enintään 12 maksutonta käyttöpäivää. Vain päivän ensimmäinen käyttö lasketaan. Aiempi käyttö säilytetään."
   },
+  "notification.compose.allUsed": {
+    "message": "Käytetty loppuun"
+  },
+  "notification.compose.blocked": {
+    "message": "Joitakin toimintoja estettiin"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "Sähköpostiisi saattaa jäädä käsittelemättömiä muuttujia. Poista ne ennen lähettämistä."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Tämän toiminnon käyttöön tarvitset SmartTemplates Pro -lisenssin."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Tämän toiminnon käyttöön tarvitset SmartTemplates Standard- tai Pro-lisenssin."
+  },
+  "notification.compose.collapse": {
+    "message": "Pienennä"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Kopioi mallin lähdekoodi"
+  },
+  "notification.compose.countedToday": {
+    "message": "Tämä päivä on jo laskettu. Muut käyttökerrat tänään eivät vähennä jäljellä olevaa kiintiötä."
+  },
+  "notification.compose.countingRule": {
+    "message": "Vain päivän ensimmäinen käyttökerta lasketaan, joten voit kokeilla toimintoa koko päivän ajan."
   },
   "notification.compose.details": {
     "message": "Käytetyt lisensoidut ominaisuudet"
   },
+  "notification.compose.dismiss": {
+    "message": "Sulje ilmoitus"
+  },
   "notification.compose.dismissIssue": {
     "message": "Hylkää"
+  },
+  "notification.compose.expand": {
+    "message": "Laajenna"
   },
   "notification.compose.expiredGrace": {
     "message": "Lisenssisi on vanhentunut."
@@ -1264,8 +1294,17 @@
   "notification.compose.learnMore": {
     "message": "Lisätietoja"
   },
+  "notification.compose.proFeatures": {
+    "message": "Nämä toiminnot sisältyvät SmartTemplates Prohon."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Ilmaisia käyttökertoja jäljellä: {1}."
+  },
   "notification.compose.remindLater": {
     "message": "Muistuta myöhemmin"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Nämä toiminnot sisältyvät SmartTemplates Standardiin ja Prohon."
   },
   "notification.compose.trialExplanation": {
     "message": "Sen jälkeen kukin lisensoitu toiminto käyttää omaa jäljellä olevaa maksutonta kiintiötään."

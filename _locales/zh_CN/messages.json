@@ -1234,14 +1234,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "每项功能最多可免费使用12天。每天只计算首次使用。之前的使用记录会保留。"
   },
+  "notification.compose.allUsed": {
+    "message": "已用完"
+  },
+  "notification.compose.blocked": {
+    "message": "部分功能已被阻止"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "邮件中可能仍有未处理的变量。请在发送前将其删除。"
+  },
+  "notification.compose.blockedPro": {
+    "message": "要使用此功能，请购买 SmartTemplates Pro 许可证。"
+  },
+  "notification.compose.blockedStandard": {
+    "message": "要使用此功能，请购买 SmartTemplates Standard 或 Pro 许可证。"
+  },
+  "notification.compose.collapse": {
+    "message": "收起"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "复制模板源代码"
+  },
+  "notification.compose.countedToday": {
+    "message": "今天已经计数。今天继续使用不会减少剩余免费次数。"
+  },
+  "notification.compose.countingRule": {
+    "message": "每天只计算首次使用，因此您可以在当天充分测试此功能。"
   },
   "notification.compose.details": {
     "message": "使用了需许可证的功能"
   },
+  "notification.compose.dismiss": {
+    "message": "关闭通知"
+  },
   "notification.compose.dismissIssue": {
     "message": "关闭"
+  },
+  "notification.compose.expand": {
+    "message": "展开"
   },
   "notification.compose.expiredGrace": {
     "message": "您的许可证已过期。"
@@ -1258,8 +1288,17 @@
   "notification.compose.learnMore": {
     "message": "了解更多"
   },
+  "notification.compose.proFeatures": {
+    "message": "这些功能包含在 SmartTemplates Pro 中。"
+  },
+  "notification.compose.remainingUses": {
+    "message": "剩余 {1} 次免费使用。"
+  },
   "notification.compose.remindLater": {
     "message": "稍后提醒我"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "这些功能包含在 SmartTemplates Standard 和 Pro 中。"
   },
   "notification.compose.trialExplanation": {
     "message": "之后，每项需许可证的功能将使用各自剩余的免费额度。"

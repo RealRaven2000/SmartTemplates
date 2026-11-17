@@ -1210,14 +1210,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "Ogni funzione offre fino a 12 giorni di utilizzo gratuito. Conta solo il primo utilizzo giornaliero. Gli utilizzi precedenti vengono conservati."
   },
+  "notification.compose.allUsed": {
+    "message": "Esauriti"
+  },
+  "notification.compose.blocked": {
+    "message": "Alcune funzioni sono state bloccate"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "Nell’email potrebbero rimanere variabili non risolte. Rimuovile prima dell’invio."
+  },
+  "notification.compose.blockedPro": {
+    "message": "Per usare questa funzione, acquista una licenza SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Per usare questa funzione, acquista una licenza SmartTemplates Standard o Pro."
+  },
+  "notification.compose.collapse": {
+    "message": "Comprimi"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "Copia il codice sorgente del modello"
+  },
+  "notification.compose.countedToday": {
+    "message": "La giornata di oggi è già stata conteggiata. Gli altri utilizzi di oggi non riducono la quota rimanente."
+  },
+  "notification.compose.countingRule": {
+    "message": "Conta solo il primo utilizzo di ogni giorno, così puoi provare a fondo questa funzione per tutta la giornata."
   },
   "notification.compose.details": {
     "message": "Funzioni con licenza utilizzate"
   },
+  "notification.compose.dismiss": {
+    "message": "Chiudi notifica"
+  },
   "notification.compose.dismissIssue": {
     "message": "Ignora"
+  },
+  "notification.compose.expand": {
+    "message": "Espandi"
   },
   "notification.compose.expiredGrace": {
     "message": "La licenza è scaduta."
@@ -1234,8 +1264,17 @@
   "notification.compose.learnMore": {
     "message": "Ulteriori informazioni"
   },
+  "notification.compose.proFeatures": {
+    "message": "Queste funzioni sono incluse in SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Restano {1} utilizzi gratuiti."
+  },
   "notification.compose.remindLater": {
     "message": "Ricordamelo più tardi"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Queste funzioni sono incluse in SmartTemplates Standard e Pro."
   },
   "notification.compose.trialExplanation": {
     "message": "In seguito, ogni funzione su licenza utilizza la propria quota gratuita residua."

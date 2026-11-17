@@ -1225,14 +1225,44 @@
   "notification.compose.allowanceExplanation": {
     "message": "各機能は最大12日間無料で利用できます。毎日の最初の利用だけが数えられます。以前の利用回数は保持されます。"
   },
+  "notification.compose.allUsed": {
+    "message": "使い切りました"
+  },
+  "notification.compose.blocked": {
+    "message": "一部の機能がブロックされました"
+  },
+  "notification.compose.blockedExplanation": {
+    "message": "メールに未処理の変数が残っている可能性があります。送信前に削除してください。"
+  },
+  "notification.compose.blockedPro": {
+    "message": "この機能を使用するには、SmartTemplates Pro ライセンスをお求めください。"
+  },
+  "notification.compose.blockedStandard": {
+    "message": "この機能を使用するには、SmartTemplates Standard または Pro ライセンスをお求めください。"
+  },
+  "notification.compose.collapse": {
+    "message": "折りたたむ"
+  },
   "notification.compose.copyTemplateSource": {
     "message": "テンプレートのソースをコピー"
+  },
+  "notification.compose.countedToday": {
+    "message": "今日はすでにカウントされています。本日中に再び使用しても残り回数は減りません。"
+  },
+  "notification.compose.countingRule": {
+    "message": "毎日最初の使用だけをカウントするので、その日はこの機能を十分に試すことができます。"
   },
   "notification.compose.details": {
     "message": "ライセンス対象の機能を使用しています"
   },
+  "notification.compose.dismiss": {
+    "message": "通知を閉じる"
+  },
   "notification.compose.dismissIssue": {
     "message": "閉じる"
+  },
+  "notification.compose.expand": {
+    "message": "展開する"
   },
   "notification.compose.expiredGrace": {
     "message": "ライセンスの有効期限が切れました。"
@@ -1249,8 +1279,17 @@
   "notification.compose.learnMore": {
     "message": "詳しく見る"
   },
+  "notification.compose.proFeatures": {
+    "message": "これらの機能は SmartTemplates Pro に含まれます。"
+  },
+  "notification.compose.remainingUses": {
+    "message": "無料で使用できる残り回数：{1}。"
+  },
   "notification.compose.remindLater": {
     "message": "後で通知する"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "これらの機能は SmartTemplates Standard と Pro に含まれます。"
   },
   "notification.compose.trialExplanation": {
     "message": "その後、ライセンス対象の各機能は、それぞれの残りの無料利用枠を使用します。"

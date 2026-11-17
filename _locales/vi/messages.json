@@ -144,17 +144,77 @@
   "newsSection.license": {
     "message": "Do tất cả công việc trên SmartTemplates và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ doanh số bán giấy phép, vui lòng cân nhắc mua một giấy phép hoặc gia hạn giấy phép hiện tại của bạn."
   },
+  "notification.compose.allowanceExplanation": {
+    "message": "Mỗi tính năng có tối đa 12 ngày sử dụng miễn phí. Chỉ lần sử dụng đầu tiên mỗi ngày được tính. Mức sử dụng trước đó được giữ lại."
+  },
+  "notification.compose.allUsed": {
+    "message": "Đã dùng hết"
+  },
+  "notification.compose.blockedPro": {
+    "message": "Để sử dụng tính năng này, vui lòng mua giấy phép SmartTemplates Pro."
+  },
+  "notification.compose.blockedStandard": {
+    "message": "Để sử dụng tính năng này, vui lòng mua giấy phép SmartTemplates Standard hoặc Pro."
+  },
+  "notification.compose.countedToday": {
+    "message": "Hôm nay đã được tính. Các lần sử dụng tiếp theo hôm nay không làm giảm hạn mức còn lại."
+  },
+  "notification.compose.countingRule": {
+    "message": "Chỉ lần sử dụng đầu tiên mỗi ngày được tính, nên bạn có thể thử đầy đủ tính năng này suốt cả ngày."
+  },
+  "notification.compose.details": {
+    "message": "Các tính năng cần giấy phép đã sử dụng"
+  },
   "notification.compose.expiredGrace": {
     "message": "Giấy phép của bạn đã hết hạn."
   },
   "notification.compose.graceExplanation": {
     "message": "Bạn còn {0} ngày gia hạn trước khi áp dụng hạn mức tính năng còn lại."
   },
+  "notification.compose.learnMore": {
+    "message": "Tìm hiểu thêm"
+  },
+  "notification.compose.proFeatures": {
+    "message": "Các tính năng này có trong SmartTemplates Pro."
+  },
+  "notification.compose.remainingUses": {
+    "message": "Còn {1} lượt sử dụng miễn phí."
+  },
+  "notification.compose.remindLater": {
+    "message": "Nhắc tôi sau"
+  },
+  "notification.compose.standardFeatures": {
+    "message": "Các tính năng này có trong SmartTemplates Standard và Pro."
+  },
   "notification.compose.trialExplanation": {
     "message": "Sau đó, mỗi tính năng cần giấy phép sử dụng hạn mức miễn phí còn lại của riêng mình."
   },
-  "notification.compose.allowanceExplanation": {
-    "message": "Mỗi tính năng có tối đa 12 ngày sử dụng miễn phí. Chỉ lần sử dụng đầu tiên mỗi ngày được tính. Mức sử dụng trước đó được giữ lại."
+  "notification.compose.usageHint": {
+    "message": "Mỗi con số cho biết còn bao nhiêu lượt dùng miễn phí. Mỗi tính năng chỉ được tính một lần mỗi ngày; sử dụng lại trong cùng ngày không làm giảm số lượt còn lại. Di chuột lên hoặc nhấp vào con số để xem chi tiết."
+  },
+  "notification.licensing": {
+    "message": "Tìm hiểu thêm về giấy phép"
+  },
+  "notification.premium.btn.extendDomainLicense": {
+    "message": "Gia hạn giấy phép tên miền"
+  },
+  "notification.premium.btn.extendLicense": {
+    "message": "Gia hạn giấy phép"
+  },
+  "notification.premium.btn.extendLicense.tooltip": {
+    "message": "Thao tác này kéo dài ngày hết hạn của giấy phép hiện tại thêm 1 năm. Thường rẻ hơn mua giấy phép mới."
+  },
+  "notification.premium.btn.getLicense": {
+    "message": "Mua giấy phép"
+  },
+  "notification.premium.btn.renewDomainLicense": {
+    "message": "Gia hạn giấy phép tên miền"
+  },
+  "notification.premium.btn.renewLicense": {
+    "message": "Gia hạn giấy phép"
+  },
+  "notification.premium.btn.upgrade": {
+    "message": "Nâng cấp lên Pro"
   },
   "ongoing-work": {
     "message": "Để giữ $addonName$ đồng bộ với các phiên bản phát hành hàng tháng của Thunderbird, chúng tôi phải liên tục kiểm tra lỗi và tải lên các phiên bản điều chỉnh. Vui lòng giúp chúng tôi khi bạn đã thử nghiệm tính năng và chắc chắn rằng nó cải thiện năng suất của bạn!",
@@ -429,6 +489,9 @@
   "translated-by-google": {
     "description": "disclaimer.",
     "message": "bản dịch do google cung cấp"
+  },
+  "trialDays": {
+    "message": "Bạn còn {0} ngày dùng thử."
   },
   "updates.changeLog": {
     "message": "Ghi chú phát hành (tiếng Anh)"
