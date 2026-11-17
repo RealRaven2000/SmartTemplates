@@ -89,6 +89,7 @@ test("preserves legacy counters, last-use allowance, limits and licence tiers", 
 test("notification registration opens the modern tab through the background callback with feature context", async () => {
   let listener;
   const registrations = [];
+  const focusedWindows = [];
   // No legacy/experimental bridge: exercise the actual background callback.
   const api = {
     runtime: {
@@ -101,12 +102,13 @@ test("notification registration opens the modern tab through the background call
       query: async query => query.windowId ? [{ id: 1 }] : [],
       create: async options => {
         registrations.push(options);
-        return { id: 42 };
+        return { id: 42, windowId: 7 };
       },
       sendMessage: async () => {},
       onRemoved: { addListener() {} },
     },
     composeScripts: { register: async () => {} },
+    windows: { update: async (id, options) => { focusedWindows.push({ id, ...options }); } },
   };
   const background = readFileSync(new URL("../st-background.js", import.meta.url), "utf8");
   const callback = background.match(/showRegistrationDialog: (feature => [^\r\n]+),/)[1];
@@ -120,10 +122,11 @@ test("notification registration opens the modern tab through the background call
   assert.equal(listener({ command: "unrelated" }, {}), false);
   assert.deepEqual(await listener({ command: "composeNotifications", action: "buy" }, {
     tab: { id: 1, type: "messageCompose" },
-  }), { id: 42 });
+  }), { id: 42, windowId: 7 });
   assert.equal(registrations.length, 1);
   const destination = new URL(registrations[0].url);
   assert.equal(destination.pathname, "/html/registration/registration.html");
   assert.equal(destination.searchParams.get("feature"), "prompt|dateformat");
   assert.equal(registrations[0].active, true);
+  assert.deepEqual(focusedWindows, [{ id: 7, focused: true }]);
 });

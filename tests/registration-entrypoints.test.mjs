@@ -9,6 +9,7 @@ function popup(file, { existing = false, fail = false, response } = {}) {
   let closes = 0;
   const requests = [];
   const tabs = [];
+  const focusedWindows = [];
   const api = {
     runtime: {
       getURL: path => "moz-extension://test-id/" + path,
@@ -22,9 +23,10 @@ function popup(file, { existing = false, fail = false, response } = {}) {
     },
     tabs: {
       query: async () => existing ? [{ id: 42 }] : [],
-      create: async options => { tabs.push(options); return { id: 43 }; },
-      update: async (id, options) => { tabs.push({ id, ...options }); return { id }; },
+      create: async options => { tabs.push(options); return { id: 43, windowId: 7 }; },
+      update: async (id, options) => { tabs.push({ id, ...options }); return { id, windowId: 8 }; },
     },
+    windows: { update: async (id, options) => { focusedWindows.push({ id, ...options }); } },
   };
   vm.runInNewContext(readFileSync(new URL(`../popup/${file}.js`, import.meta.url), "utf8"), {
     addEventListener(type, handler) { if (type === "click") { click = handler; } },
@@ -32,15 +34,15 @@ function popup(file, { existing = false, fail = false, response } = {}) {
     messenger: api,
   });
   return {
-    click: id => click({ target: { id, classList: { contains: () => false } } }),
-    requests, tabs, closes: () => closes,
+    click: id => click({ preventDefault() {}, target: { id, classList: { contains: () => false } } }),
+    requests, tabs, focusedWindows, closes: () => closes,
   };
 }
 
-test("splash renewal, upgrade and extension actions open/reuse modern registration before closing", async () => {
+test("splash purchase, renewal, upgrade and extension actions open/reuse modern registration before closing", async () => {
   for (const [file, ids] of [
     ["installed", ["extend", "renew", "upgrade"]],
-    ["update", ["extend", "renew", "upgrade", "bargainRenewIcon", "bargainUpgradeIcon"]],
+    ["update", ["register", "extend", "renew", "upgrade", "bargainIcon", "bargainRenewIcon", "bargainUpgradeIcon"]],
   ]) {
     for (const id of ids) {
       for (const existing of [false, true]) {
@@ -55,6 +57,7 @@ test("splash renewal, upgrade and extension actions open/reuse modern registrati
         assert.equal(url.searchParams.get("feature"), file === "installed" ? "landing-install" : "landing-update");
         assert.equal(url.searchParams.get("intent"), id.startsWith("extend") ? "extend" : null);
         assert.equal(f.tabs[0].active, true);
+        assert.deepEqual(f.focusedWindows, [{ id: existing ? 8 : 7, focused: true }]);
         if (existing) { assert.equal(f.tabs[0].id, 42); }
       }
     }
@@ -62,7 +65,7 @@ test("splash renewal, upgrade and extension actions open/reuse modern registrati
 });
 
 test("splash pages remain open when registration fails or returns no tab", async () => {
-  for (const [file, id] of [["installed", "extend"], ["update", "renew"], ["update", "bargainUpgradeIcon"]]) {
+  for (const [file, id] of [["installed", "extend"], ["update", "register"], ["update", "renew"], ["update", "bargainIcon"], ["update", "bargainUpgradeIcon"]]) {
     const failed = popup(file, { fail: true });
     await assert.rejects(failed.click(id), /Registration unavailable/);
     assert.equal(failed.closes(), 0);
@@ -76,7 +79,8 @@ test("legacy category bridge and compatibility message handler preserve modern r
   const background = readFileSync(new URL("../st-background.js", import.meta.url), "utf8");
   const browser = {
     runtime: { getURL: path => "moz-extension://test-id/" + path },
-    tabs: { query: async () => [], create: async options => options },
+    tabs: { query: async () => [], create: async options => ({ ...options, windowId: 7 }) },
+    windows: { update: async () => {} },
   };
   const context = { browser, openRegistrationTab };
   const compatibility = background.match(/showRegistrationDialog: \(data, _sender\) => openRegistrationTab\(browser, \{[\s\S]*?\}\)/)[0];

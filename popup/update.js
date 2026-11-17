@@ -43,21 +43,9 @@ END LICENSE BLOCK */
     switch (event.target.id) {
       case "register": // fall-through
       case "bargainIcon":
-        if (event.target.classList.contains("upgrade")) {
-          let licenseInfo = await messenger.runtime.sendMessage({ command: "getLicenseInfo" });
-          messenger.windows.openDefaultBrowser(
-            "https://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?" +
-              `contact_email=${licenseInfo.email}` +
-              `&referrer=${licenseInfo.licenseKey}`
-          );
-        } else {
-          messenger.windows.openDefaultBrowser(
-            "https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update"
-          );
-        }
-        break;
       case "bargainRenewIcon":
       case "bargainUpgradeIcon": {
+        event.preventDefault();
         const registrationTab = await messenger.runtime.sendMessage({
           command: "openRegistrationTab",
           feature: "landing-update",

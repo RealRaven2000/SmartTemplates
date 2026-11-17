@@ -11,9 +11,11 @@
  * Find an existing registration tab regardless of its previous query string,
  * then activate and navigate it with the current options. This replaces stale
  * feature, intent and synthetic-scenario parameters. Otherwise create a tab.
+ * Focus the tab's owning window as well: activating a tab alone does not bring
+ * Thunderbird's main window in front of a separate composer window.
  *
  * @param {object} api - Thunderbird MailExtension API (browser or messenger).
- *   Requires runtime.getURL and tabs.query/create/update.
+ *   Requires runtime.getURL, tabs.query/create/update and windows.update.
  *   Passed explicitly so unit tests can supply a fake API without Thunderbird;
  *   production code could otherwise use the background's browser global.
  * @param {object} [options={}] - Context for this registration visit.
@@ -30,7 +32,7 @@
  * @returns {Promise<object>} The created or updated Thunderbird Tab object.
  *   The caller may close its initiating Settings/splash page after receiving a
  *   valid tab ID. This helper never closes the source page or the composer.
- * @throws {Error} Propagates URL or tabs-API failures. Callers must retain their
+ * @throws {Error} Propagates URL, tab or window-focus failures. Callers must retain their
  *   source page if opening fails. Success confirms tab creation/navigation,
  *   not completion of page loading or checkout.
  */
@@ -45,10 +47,11 @@ export async function openRegistrationTab(api, { feature = "", intent = "" } = {
   }
   const url = destination.href;
   const [existing] = await api.tabs.query({ url: baseURL + "*" });
-  if (existing) {
-    return api.tabs.update(existing.id, { active: true, url });
-  }
-  return api.tabs.create({ active: true, url });
+  const tab = existing
+    ? await api.tabs.update(existing.id, { active: true, url })
+    : await api.tabs.create({ active: true, url });
+  await api.windows.update(tab.windowId, { focused: true });
+  return tab;
 }
 
 // Run in Settings: retain the source tab if opening registration fails.

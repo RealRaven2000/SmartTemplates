@@ -29,10 +29,11 @@ test("identity labels add names only for ambiguous account/email pairs", () => {
   assert.deepEqual(identityOptionLabels([]), []);
 });
 
-test("background opens the extension URL and reuses an existing registration tab", async () => {
+test("background creates/reuses registration then focuses its owning window", async () => {
   const url = "moz-extension://test-id/html/registration/registration.html";
   for (const existing of [[], [{ id: 42 }]]) {
     const calls = [];
+    const tab = { id: 42, windowId: 7 };
     const api = {
       runtime: { getURL: (path) => {
         assert.equal(path, "html/registration/registration.html");
@@ -43,13 +44,16 @@ test("background opens the extension URL and reuses an existing registration tab
           assert.deepEqual(query, { url: url + "*" });
           return existing;
         },
-        create: async (options) => calls.push(["create", options]),
-        update: async (id, options) => calls.push(["update", id, options]),
+        create: async (options) => { calls.push(["create", options]); return tab; },
+        update: async (id, options) => { calls.push(["update", id, options]); return tab; },
       },
+      windows: { update: async (id, options) => calls.push(["focus", id, options]) },
     };
-    await openRegistrationTab(api);
-    assert.deepEqual(calls, existing.length
-      ? [["update", 42, { active: true, url }]] : [["create", { active: true, url }]]);
+    assert.equal(await openRegistrationTab(api), tab);
+    assert.deepEqual(calls, [
+      existing.length ? ["update", 42, { active: true, url }] : ["create", { active: true, url }],
+      ["focus", 7, { focused: true }],
+    ]);
   }
 });
 
@@ -107,8 +111,9 @@ test("background preserves feature and explicit intent when reusing registration
         assert.equal(url, "moz-extension://test-id/html/registration/registration.html*");
         return [{ id: 22 }];
       },
-      update: async (id, options) => { opened = { id, ...options }; return opened; },
+      update: async (id, options) => { opened = { id, windowId: 7, ...options }; return opened; },
     },
+    windows: { update: async () => {} },
   };
   await openRegistrationTab(api, { feature: "licenseTab & other", intent: "extend" });
   const url = new URL(opened.url);
