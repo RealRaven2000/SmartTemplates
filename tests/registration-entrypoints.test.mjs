@@ -93,19 +93,21 @@ test("legacy category bridge and compatibility message handler preserve modern r
 
 test("only the emergency menu and its legacy handler retain the XHTML registration route", () => {
   const references = [];
+  // Match route literals, not documentation mentioning the emergency dialog.
+  const legacyRoute = /["']smartTemplates-registration["']|["'][^"'\r\n]*register\.xhtml(?:[?#][^"'\r\n]*)?["']/;
   function inspect(directory) {
     for (const entry of readdirSync(new URL("../" + directory, import.meta.url), { withFileTypes: true })) {
       const path = directory + "/" + entry.name;
       if (entry.isDirectory()) { inspect(path); }
       else if (/\.(?:js|mjs|html|xhtml)$/.test(entry.name)) {
         const source = readFileSync(new URL("../" + path, import.meta.url), "utf8");
-        if (/"smartTemplates-registration"|register\.xhtml/.test(source)) { references.push(path); }
+        if (legacyRoute.test(source)) { references.push(path); }
       }
     }
   }
   for (const directory of ["chrome", "html", "scripts", "popup"]) { inspect(directory); }
   const background = readFileSync(new URL("../st-background.js", import.meta.url), "utf8");
-  assert.doesNotMatch(background, /"smartTemplates-registration"|register\.xhtml/);
+  assert.doesNotMatch(background, legacyRoute);
   assert.deepEqual(references.sort(), [
     "chrome/content/scripts/st-messenger.js",
     "chrome/content/smartTemplate-main.js",

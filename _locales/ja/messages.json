@@ -928,7 +928,7 @@
     "message": "ライセンスの有効期限:"
   },
   "label.premiumFeaturesSite": {
-    "message": "プレミアム機能についての詳細はウェブサイトをご覧ください…"
+    "message": "プレミアム機能についての詳細はウェブサイトをご覧ください"
   },
   "lastName.label": {
     "message": "姓:"
@@ -1504,6 +1504,363 @@
   },
   "regexpAnyText": {
     "message": "任意のテキスト - 正規表現 - ダブルクオートで囲まれている必要があります。"
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "メールアカウント"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "$1 を購入"
+  },
+  "registration.action.buyDomain": {
+    "message": "ドメインライセンスを購入"
+  },
+  "registration.action.current": {
+    "message": "現在のエディション"
+  },
+  "registration.action.extend": {
+    "message": "ライセンスを延長"
+  },
+  "registration.action.renew": {
+    "message": "ライセンスを更新"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Pro にアップグレード"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "年間ライセンス"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "購入通知を閉じる"
+  },
+  "registration.checkout.error": {
+    "message": "ショップを開けませんでした。もう一度お試しください。"
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}更新やアップグレードの特典を維持するため、このページから開いた商品で手続きを続けてください。{/bold}{i}別のライセンス{/i}を選ぶ場合は、ここからやり直してください。"
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "価格、税金、利用可能な割引はショップに表示されます。"
+  },
+  "registration.checkout.opened": {
+    "message": "ブラウザーでショップを開きました。このタブは開いたままにできます。"
+  },
+  "registration.checkout.preview": {
+    "message": "テストプレビュー：$2 の $1。ショップは開いていません。"
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "このアップグレード経路は確認が必要なため、購入手続きを有効にできません。ショップは開いていません。"
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Standard と Pro を比較"
+  },
+  "registration.contact.heading": {
+    "message": "どなたが使用するライセンスですか？"
+  },
+  "registration.contact.note": {
+    "message": "これらの情報は購入時に自動入力されます。ここで編集できます。"
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "ライセンスは $1 に期限切れになりました。"
+  },
+  "registration.date.none": {
+    "message": "以下でライセンスを選ぶか、お持ちのキーを入力してください。"
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "ライセンスは $1 まで有効です。"
+  },
+  "registration.development": {
+    "message": "登録テスト"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro は別個の個人用ライセンスであり、ドメインライセンスの更新ではありません。ドメインライセンスは、登録済みの会社ドメインのメールアカウントが設定された環境を、購入済みのユーザー数の範囲で対象とします。そのアカウントを使えない自宅の環境には、別途 Pro ライセンスを使用できます。チームの利用を継続するには、ドメイン欄の「ライセンスを更新」を選んでください。"
+  },
+  "registration.domain.seatsLink": {
+    "message": "ユーザーを追加"
+  },
+  "registration.domain.seatsNote": {
+    "message": "して、現在のドメインライセンスの利用人数を増やせます。"
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "利用人数を増やしますか？"
+  },
+  "registration.edition.domain": {
+    "message": "ドメイン"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "メールアドレス"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "異なるルールが適用されます。設定するメールアドレスは、ライセンス対象のドメインに属している必要があります。"
+  },
+  "registration.email.domain.heading": {
+    "message": "ドメインライセンス"
+  },
+  "registration.email.help": {
+    "message": "ライセンス対象のメールアドレスについて"
+  },
+  "registration.email.help.close": {
+    "message": "メールアドレスのヘルプを閉じる"
+  },
+  "registration.email.help.heading": {
+    "message": "メールアドレスがライセンスになります"
+  },
+  "registration.email.hint": {
+    "message": "個人用ライセンスは複数の端末で使用できます。"
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "ライセンスはこのメールアドレスに紐付けられています。複数の端末で使用できます。各端末の Thunderbird で、このアドレスをアカウントの{bold}既定の差出人情報{/bold}に設定してください。"
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard と Pro のライセンス"
+  },
+  "registration.email.rules": {
+    "message": "ライセンス対象アドレスのルール"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "ライセンスキーを入力…"
+  },
+  "registration.eyebrow": {
+    "message": "お使いのライセンス"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "名"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "テスト用データ：購入操作ではプレビューのみ開きます。"
+  },
+  "registration.footer": {
+    "message": "Thunderbird のために。皆様の支援で。"
+  },
+  "registration.heading": {
+    "message": "自分らしく。手間を少なく。"
+  },
+  "registration.identity.empty": {
+    "message": "情報を手動で入力"
+  },
+  "registration.identity.none": {
+    "message": "対象のメールアカウントが見つかりません。連絡先情報を手動で入力できます。"
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "姓"
+  },
+  "registration.learnMore": {
+    "message": "詳細…"
+  },
+  "registration.legacy.menu": {
+    "message": "旧ライセンス登録"
+  },
+  "registration.license.domain": {
+    "message": "ドメインライセンス"
+  },
+  "registration.license.edition": {
+    "message": "$1 ライセンス"
+  },
+  "registration.license.none": {
+    "message": "ライセンスが設定されていません"
+  },
+  "registration.load.error": {
+    "message": "ライセンスまたはアカウントを読み込めませんでした。このタブを再読み込みしてください。"
+  },
+  "registration.navigation": {
+    "message": "ライセンスのナビゲーション"
+  },
+  "registration.options": {
+    "message": "ライセンスの選択肢"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "チーム全員にすべての機能を、1 つのライセンスで。"
+  },
+  "registration.plan.domain.kicker": {
+    "message": "チーム向け"
+  },
+  "registration.plan.domain.scope": {
+    "message": "共通のドメイン向け"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "メールを仕事の力に。毎日の時間を節約。"
+  },
+  "registration.plan.pro.kicker": {
+    "message": "すべての機能"
+  },
+  "registration.plan.pro.scope": {
+    "message": "ご自身のメール向け"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "毎日のメールを自分らしく。"
+  },
+  "registration.plan.standard.kicker": {
+    "message": "日常に必要な機能"
+  },
+  "registration.plan.standard.scope": {
+    "message": "ご自身のメール向け"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}ドメインライセンス{/bold}{br}通常、更新では前回の有効期限に 1 年が追加されます。注文や支払いが遅れた場合も同様です。"
+  },
+  "registration.renewal.entitlements": {
+    "message": "更新やアップグレードの特典は、ショップに渡されるライセンス情報に基づきます。ショップで商品を変更したり、セキュリティソフトがこの情報を削除したりすると、既存の権利が反映されない場合があります。"
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "ライセンスの更新や延長では 1 年が追加され、通常は新規購入よりも安くなります。"
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}個人用ライセンス{/bold}{br}新しいライセンスは支払いから 1 年間有効です。同じエディションを更新または延長すると、支払いから 1 年間、または現在の有効期限から 1 年間のうち、長い方の期間が適用されます。"
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}既存のライセンス{/bold}{br}新しい有効期限を計算するため、現在のライセンスがショップに渡されます。"
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Standard から Pro へのアップグレード{/bold}{br}Pro ライセンスはアップグレードの支払い日から 1 年間有効です。Standard ライセンスの残り期間は加算されません。"
+  },
+  "registration.selection.heading": {
+    "message": "メールがもっと楽になる 1 年。"
+  },
+  "registration.selection.intro": {
+    "message": "毎日のメールには Standard、すべての機能には Pro、チームにはドメインをお選びください。"
+  },
+  "registration.selection.label": {
+    "message": "ライセンスの選択"
+  },
+  "registration.settings.error": {
+    "message": "ライセンス設定を開けませんでした。もう一度お試しください。"
+  },
+  "registration.showLess": {
+    "message": "折りたたむ"
+  },
+  "registration.status.Empty": {
+    "message": "無料エディション"
+  },
+  "registration.status.Expired": {
+    "message": "期限切れ"
+  },
+  "registration.status.Invalid": {
+    "message": "無効なライセンス"
+  },
+  "registration.status.MailDifferent": {
+    "message": "ライセンスのメールアドレスが一致しません"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "ライセンス対象アドレスが未設定"
+  },
+  "registration.status.NotValidated": {
+    "message": "未検証"
+  },
+  "registration.status.Unknown": {
+    "message": "ライセンスを取得できません"
+  },
+  "registration.status.Valid": {
+    "message": "有効"
+  },
+  "registration.subtitle": {
+    "message": "使い方に合ったライセンスをお選びください。"
+  },
+  "registration.terms.annual": {
+    "message": "ライセンスの有効期間は 1 年です。期限切れのライセンスを更新、または有効なライセンスを延長して、選んだエディションを引き続き使用できます。"
+  },
+  "registration.terms.annual.heading": {
+    "message": "1 年ずつ"
+  },
+  "registration.terms.back": {
+    "message": "ライセンスの選択"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "ライセンスを選ぶとショップへ進みます。価格はエディション、国、税金、適用される割引によって異なります。"
+  },
+  "registration.terms.checkout.heading": {
+    "message": "ブラウザーで購入"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "ドメインライセンスは、ライセンス対象ドメインに属するメールアドレスを持つユーザーを対象とします。"
+  },
+  "registration.terms.draft": {
+    "message": "規約の草案：試用と期限切れ後の機能動作の詳細は、リリース前に確認します。"
+  },
+  "registration.terms.edition": {
+    "message": "Standard と Pro は利用できる機能が異なります。エディションを比較してお選びください。"
+  },
+  "registration.terms.edition.heading": {
+    "message": "エディションを選択"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "個人用ライセンスはメールアドレスに紐付けられています。各 Thunderbird 環境で、ライセンス対象アドレスがアカウントの{bold}既定の差出人情報{/bold}として設定されていれば、複数の環境で使用できます。"
+  },
+  "registration.terms.email.heading": {
+    "message": "あなたのメール、あなたのライセンス"
+  },
+  "registration.terms.heading": {
+    "message": "ライセンスの仕組み。"
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 ライセンスの選択に進む 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} は $1 年から Thunderbird の進化に対応してきました。{+extensionName} のライセンスは、継続的な開発、新機能、互換性の更新を支えています。各ライセンスは 1 年間有効で、Thunderbird に対応し続けるための作業を支援します。"
+  },
+  "registration.terms.label": {
+    "message": "ライセンス規約"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "ライセンスは{bold}自動更新されません{/bold}。有効期限が近づくと {+extensionName} がお知らせします。"
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "ライセンス対象の機能は、Thunderbird の他のすべてのメールアカウントでも使えます。別のライセンスは不要です。"
+  },
+  "registration.terms.referrer": {
+    "message": "更新やアップグレードでは、適用条件を確認するため、以前のライセンスがショップに渡されます。"
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Pro で始めて、翌年からお得に。{/bold}Pro ライセンスの更新や延長は、新規購入よりも大幅に安くなります。"
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "ライセンス規約を表示 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "皆様の支援が、開発、互換性の更新、修正を支えます。"
+  },
+  "registration.test.menu": {
+    "message": "ウェブショップでライセンス登録"
+  },
+  "registration.test.note": {
+    "message": "購入手続きはブラウザーで開きます。"
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · お使いのライセンス"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "ID の変更時に署名を置き換える（入力済みテキストを保持）"
@@ -2123,7 +2480,7 @@
   },
   "whats-new-list": {
     "description": "🇯🇵 change log",
-    "message": "{L}{+extensionName} は Thunderbird 162 に対応しました。{/L}{sect}新機能{/sect}{L}テキスト入力や選択肢の一覧からの選択に使える Pro 機能 {{%prompt()%}} を追加しました。クリップボードを既定の入力元やデータの出力先として使用できます。 [issue 443]{/L}{sect}メール作成画面の通知と機能の試用{/sect}{L}ライセンス通知はスライド式の通知バーではなく、コンパクトで展開可能な通知パネルに表示されるようになりました。ライセンス対象の各機能の横に残りの利用回数が表示されます。 [issue 441]{/L}{L}新規ユーザーは、各機能の利用枠を消費せずに28日間試用できます。ライセンスの期限が切れたユーザーには、ライセンス対象のテンプレート機能を引き続き使用しながら更新できる7日間の猶予期間があります。{/L}{L}試用期間または猶予期間の終了後は、ライセンス対象の各機能がそれぞれの残りの無料利用枠を使用します。毎日の最初の利用だけが数えられます。{/L}{L}テンプレートとスマートフラグメントのエラーが通知パネルに表示されるようになり、編集を続けながらエラーを個別に閉じることができます。 [issue 442]{/L}{sect}その他の改善{/sect}{L}クリップボード操作、タグ、および {{%deleteForwardedBody%}} の試用時のアクセスを修正しました。 [issue 439]{/L}{L}UI の再読み込み操作を含む翻訳を更新し、ローカライズ用リソースを簡素化しました。 [issue 440]{/L}"
+    "message": "{L}{+extensionName} は Thunderbird 162 に対応しました。{/L}{sect}新機能{/sect}{L}テキスト入力や選択肢の一覧からの選択に使える Pro 機能 {{%prompt()%}} を追加しました。クリップボードを既定の入力元やデータの出力先として使用できます。 [issue 443]{/L}{sect}メール作成画面の通知と機能の試用{/sect}{L}ライセンス通知はスライド式の通知バーではなく、コンパクトで展開可能な通知パネルに表示されるようになりました。ライセンス対象の各機能の横に残りの利用回数が表示されます。 [issue 441]{/L}{L}新規ユーザーは、各機能の利用枠を消費せずに28日間試用できます。ライセンスの期限が切れたユーザーには、ライセンス対象のテンプレート機能を引き続き使用しながら更新できる7日間の猶予期間があります。{/L}{L}試用期間または猶予期間の終了後は、ライセンス対象の各機能がそれぞれの残りの無料利用枠を使用します。毎日の最初の利用だけが数えられます。{/L}{L}テンプレートとスマートフラグメントのエラーが通知パネルに表示されるようになり、編集を続けながらエラーを個別に閉じることができます。 [issue 442]{/L}{sect}登録と設定{/sect}{L}ライセンスへの道筋をわかりやすくしました。登録は画面幅に対応する Thunderbird のタブで開き、購入、更新、アップグレードの選択肢や、ライセンスの仕組みをより明確に案内します。 [issue 445]{/L}{L}設定を改善しました。ライセンスとアカウント別テンプレートの配置を整え、ライセンスのメッセージを明確にし、有効期限が近づくと警告バッジを表示します。 [issue 445]{/L}{sect}その他の改善{/sect}{L}クリップボード操作、タグ、および {{%deleteForwardedBody%}} の試用時のアクセスを修正しました。 [issue 439]{/L}{L}UI の再読み込み操作を含む翻訳を更新し、ローカライズ用リソースを簡素化しました。 [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "メンテナンス更新 $ver$。この特定の修正は前回のリリース以降に追加されました。",

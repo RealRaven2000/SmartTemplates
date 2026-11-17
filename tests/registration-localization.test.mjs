@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
 
@@ -14,6 +14,39 @@ function catalog(locale) {
 function tokens(text) {
   return [...text.matchAll(/\$\d+|\$[a-zA-Z_][\w]*\$|\{[^}]+\}/g)]
     .map((match) => match[0]).sort();
+}
+
+for (const locale of readdirSync(new URL("../_locales/", import.meta.url))) {
+  test(`${locale}: registration scope, substitutions and release-news markup`, () => {
+    const en = catalog("en");
+    const localized = catalog(locale);
+    const registrationKeys = Object.keys(en).filter((key) => key.startsWith("registration."));
+    if (localized._l10nstatus.message === "SPLASH") {
+      // Vietnamese intentionally uses default-English registration/shop UI.
+      assert.equal(locale, "vi");
+      assert.deepEqual(Object.keys(localized).filter((key) => key.startsWith("registration.")), []);
+    } else {
+      assert.ok(["SPLASH+UI", "UI"].includes(localized._l10nstatus.message), `${locale}: unknown scope`);
+      for (const key of registrationKeys) {
+        assert.ok(localized[key]?.message, `${locale}: missing ${key}`);
+        assert.deepEqual(tokens(localized[key].message), tokens(en[key].message), `${locale}: ${key}`);
+        assert.deepEqual(localized[key].placeholders, en[key].placeholders, `${locale}: ${key}`);
+      }
+      const actualOrder = Object.keys(localized).filter((key) => key.startsWith("registration."));
+      assert.deepEqual(actualOrder, [...registrationKeys].sort((a, b) => a.localeCompare(b, "en")));
+      if (locale !== "en") {
+        for (const key of ["registration.domain.proWarning", "registration.renewal.personal", "registration.renewal.upgrade"]) {
+          assert.notEqual(localized[key].message, en[key].message, `${locale}: untranslated ${key}`);
+        }
+      }
+    }
+    const news = localized["whats-new-list"].message;
+    assert.deepEqual(tokens(news), tokens(en["whats-new-list"].message), `${locale}: news parser tokens`);
+    assert.deepEqual([...news.matchAll(/\[issue \d+\]/g)].map((match) => match[0]),
+      [...en["whats-new-list"].message.matchAll(/\[issue \d+\]/g)].map((match) => match[0]),
+      `${locale}: issue references and section order`);
+    assert.equal(news.match(/\[issue 445\]/g).length, 2);
+  });
 }
 
 test("German registration covers the final English keys and preserves substitutions and markup", () => {

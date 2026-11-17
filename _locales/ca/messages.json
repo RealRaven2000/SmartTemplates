@@ -931,7 +931,7 @@
     "message": "La vostra llicència és vàlida fins al:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Llegiu més informació sobre les funcions premium al nostre lloc web…"
+    "message": "Llegiu més informació sobre les funcions premium al nostre lloc web"
   },
   "lastName.label": {
     "message": "Cognom:"
@@ -1540,6 +1540,363 @@
   },
   "regexpAnyText": {
     "message": "Qualsevol text (expressió regular) ha d’estar entre cometes dobles."
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "Compte de correu"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "Compra $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Compra una llicència de domini"
+  },
+  "registration.action.current": {
+    "message": "Edició actual"
+  },
+  "registration.action.extend": {
+    "message": "Amplia la llicència"
+  },
+  "registration.action.renew": {
+    "message": "Renova la llicència"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Actualitza a Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Llicències anuals"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Tanca l’avís de compra"
+  },
+  "registration.checkout.error": {
+    "message": "No s’ha pogut obrir la botiga. Torna-ho a provar."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Per conservar els avantatges de renovació o actualització, continua amb el producte obert des d’aquesta pàgina.{/bold} Per triar una {i}llicència diferent{/i}, torna a començar aquí."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Els preus, impostos i descomptes disponibles es mostren a la botiga."
+  },
+  "registration.checkout.opened": {
+    "message": "La botiga s’ha obert al navegador. Pots mantenir aquesta pestanya oberta."
+  },
+  "registration.checkout.preview": {
+    "message": "Previsualització de prova: $1 per a $2. No s’ha obert cap botiga."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Aquesta via d’actualització requereix confirmació abans d’habilitar la compra. No s’ha obert cap botiga."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Compara Standard i Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Per a qui és aquesta llicència?"
+  },
+  "registration.contact.note": {
+    "message": "Aquestes dades s’emplenaran a la compra. Les pots editar aquí."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "La llicència va caducar el $1."
+  },
+  "registration.date.none": {
+    "message": "Tria una llicència a sota o introdueix la clau existent."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "La llicència és vàlida fins al $1."
+  },
+  "registration.development": {
+    "message": "Prova de registre"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro és una llicència personal independent, no una renovació de domini. La llicència de domini et cobreix en instal·lacions amb un compte de correu del domini empresarial registrat, dins del nombre de places adquirides. Una llicència Pro independent pot cobrir una instal·lació domèstica on no puguis utilitzar aquest compte. Per mantenir la cobertura de l’equip, tria Renova la llicència al tauler Domini."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Afegeix usuaris"
+  },
+  "registration.domain.seatsNote": {
+    "message": "a la llicència de domini existent."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Necessites més places?"
+  },
+  "registration.edition.domain": {
+    "message": "Domini"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "Adreça electrònica"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "S’hi apliquen altres regles: l’adreça configurada ha de pertànyer al domini amb llicència."
+  },
+  "registration.email.domain.heading": {
+    "message": "Llicències de domini"
+  },
+  "registration.email.help": {
+    "message": "Sobre les adreces amb llicència"
+  },
+  "registration.email.help.close": {
+    "message": "Tanca l’ajuda del correu"
+  },
+  "registration.email.help.heading": {
+    "message": "El teu correu és la teva llicència"
+  },
+  "registration.email.hint": {
+    "message": "La llicència personal funciona en diversos dispositius."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "La llicència està vinculada a aquesta adreça electrònica. La pots utilitzar en diversos dispositius. Configura aquesta adreça com a {bold}identitat per defecte{/bold} d’un compte del Thunderbird a cada dispositiu."
+  },
+  "registration.email.personal.heading": {
+    "message": "Llicències Standard i Pro"
+  },
+  "registration.email.rules": {
+    "message": "Regles de l’adreça amb llicència"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Introdueix la clau de llicència…"
+  },
+  "registration.eyebrow": {
+    "message": "La teva llicència"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "Nom"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Dades fictícies: la compra només obre una previsualització."
+  },
+  "registration.footer": {
+    "message": "Creat per al Thunderbird. Amb el teu suport."
+  },
+  "registration.heading": {
+    "message": "El teu estil. Menys esforç."
+  },
+  "registration.identity.empty": {
+    "message": "Introdueix les dades manualment"
+  },
+  "registration.identity.none": {
+    "message": "No s’han trobat comptes aptes. Pots introduir les dades de contacte manualment."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Cognoms"
+  },
+  "registration.learnMore": {
+    "message": "Més informació…"
+  },
+  "registration.legacy.menu": {
+    "message": "Registre de llicència antic"
+  },
+  "registration.license.domain": {
+    "message": "Llicència de domini"
+  },
+  "registration.license.edition": {
+    "message": "Llicència $1"
+  },
+  "registration.license.none": {
+    "message": "Cap llicència configurada"
+  },
+  "registration.load.error": {
+    "message": "No s’han pogut carregar la llicència o els comptes. Recarrega aquesta pestanya per tornar-ho a provar."
+  },
+  "registration.navigation": {
+    "message": "Navegació de llicències"
+  },
+  "registration.options": {
+    "message": "Opcions de llicència"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "Totes les funcions per a tot l’equip, amb una sola llicència."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Per al teu equip"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Per a un domini compartit"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "Posa el correu a treballar. Estalvia temps cada dia."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Totes les funcions"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Per al teu correu"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Personalitza els correus de cada dia."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "L’essencial de cada dia"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Per al teu correu"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Llicències de domini{/bold}{br}La renovació normalment afegeix un any a la data de caducitat anterior, encara que la comanda o el pagament es retardin."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Els avantatges de renovació i actualització depenen de les dades de llicència enviades a la botiga. Canviar de producte a la botiga o un programa de seguretat que elimini aquestes dades pot impedir l’aplicació dels drets existents."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Renovar o ampliar la llicència afegeix un any més i normalment costa menys que comprar-ne una de nova."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Llicències personals{/bold}{br}Una llicència nova dura un any des del pagament. En renovar o ampliar la mateixa edició, reps un any des del pagament o un any després de la caducitat actual, segons què et doni més temps."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Llicència existent{/bold}{br}La llicència actual s’envia a la botiga per calcular la nova data de caducitat."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Actualitzacions de Standard a Pro{/bold}{br}La llicència Pro dura un any des del pagament de l’actualització. El temps restant de la llicència Standard no amplia aquest període."
+  },
+  "registration.selection.heading": {
+    "message": "Un any de correu més fàcil."
+  },
+  "registration.selection.intro": {
+    "message": "Tria Standard per al correu diari, Pro per a totes les funcions o Domini per a l’equip."
+  },
+  "registration.selection.label": {
+    "message": "Selecció de llicència"
+  },
+  "registration.settings.error": {
+    "message": "No s’ha pogut obrir la configuració de llicències. Torna-ho a provar."
+  },
+  "registration.showLess": {
+    "message": "Mostra’n menys"
+  },
+  "registration.status.Empty": {
+    "message": "Edició gratuïta"
+  },
+  "registration.status.Expired": {
+    "message": "Caducada"
+  },
+  "registration.status.Invalid": {
+    "message": "Llicència no vàlida"
+  },
+  "registration.status.MailDifferent": {
+    "message": "El correu de la llicència no coincideix"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Adreça amb llicència no configurada"
+  },
+  "registration.status.NotValidated": {
+    "message": "Sense validar"
+  },
+  "registration.status.Unknown": {
+    "message": "Llicència no disponible"
+  },
+  "registration.status.Valid": {
+    "message": "Vàlida"
+  },
+  "registration.subtitle": {
+    "message": "Tria la llicència adequada per a la teva manera de treballar."
+  },
+  "registration.terms.annual": {
+    "message": "Una llicència cobreix un any. Renova una llicència caducada o amplia’n una de vigent per continuar amb l’edició escollida."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Un any cada vegada"
+  },
+  "registration.terms.back": {
+    "message": "Selecció de llicència"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Selecciona una llicència per anar a la botiga. El preu depèn de l’edició, el país, els impostos i els descomptes aplicables."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Compra al navegador"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Una llicència de domini cobreix els usuaris amb adreces pertanyents al domini amb llicència."
+  },
+  "registration.terms.draft": {
+    "message": "Condicions provisionals: els detalls de les proves i les funcions després de la caducitat es revisaran abans de publicar."
+  },
+  "registration.terms.edition": {
+    "message": "Standard i Pro ofereixen nivells de funcionalitat diferents. Compara les edicions per trobar la més adequada."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Tria la teva edició"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Una llicència personal està vinculada a la teva adreça electrònica. La pots utilitzar en diverses instal·lacions del Thunderbird si l’adreça amb llicència està configurada com a {bold}identitat per defecte{/bold} d’un compte en cadascuna."
+  },
+  "registration.terms.email.heading": {
+    "message": "El teu correu, la teva llicència"
+  },
+  "registration.terms.heading": {
+    "message": "Com funciona la teva llicència."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Continua a la selecció de llicència 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} segueix l’evolució del Thunderbird des de $1. Les llicències de {+extensionName} financen el desenvolupament continu, noves funcions i actualitzacions de compatibilitat. Cada llicència dura un any i dona suport a la feina necessària per seguir el ritme del Thunderbird."
+  },
+  "registration.terms.label": {
+    "message": "Condicions de llicència"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Les llicències {bold}no es renoven automàticament{/bold}. {+extensionName} t’avisarà abans que caduqui la llicència."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "Les funcions amb llicència també funcionen amb tots els altres comptes del Thunderbird. No calen llicències addicionals."
+  },
+  "registration.terms.referrer": {
+    "message": "Les renovacions i actualitzacions envien la llicència anterior a la botiga per comprovar-ne els requisits."
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Comença amb Pro i estalvia els anys següents.{/bold} Renovar o ampliar la llicència Pro costa molt menys que comprar-ne una de nova."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Mostra les condicions de llicència 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "El teu suport ajuda a finançar el desenvolupament, les actualitzacions de compatibilitat i les correccions."
+  },
+  "registration.test.menu": {
+    "message": "Registre a la botiga web"
+  },
+  "registration.test.note": {
+    "message": "La compra s’obre al navegador."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · La teva llicència"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "Substitueix la signatura en canviar la identitat (preservant el text introduït)"
@@ -2156,7 +2513,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇦 change log",
-    "message": "{L}{+extensionName} ara és compatible amb el Thunderbird 162.{/L}{sect}Funcions noves{/sect}{L}S’ha afegit la funció Pro {{%prompt()%}} per introduir text o seleccionar una opció d’una llista. Admet el porta-retalls com a entrada predeterminada i com a destinació de les dades. [issue 443]{/L}{sect}Notificacions de redacció i proves de funcions{/sect}{L}Els avisos de llicència ara apareixen en una bombolla compacta i desplegable en lloc de barres lliscants, amb els usos restants al costat de cada funció amb llicència. [issue 441]{/L}{L}Els usuaris nous disposen de 28 dies de prova sense consumir les quotes de les funcions individuals. Els usuaris amb una llicència caducada tenen 7 dies de gràcia per renovar-la mantenint l’accés a les funcions de plantilla amb llicència.{/L}{L}Fora del període de prova o de gràcia, cada funció amb llicència utilitza la seva pròpia quota gratuïta restant. Només compta el primer ús de cada dia.{/L}{L}Els errors de plantilles i fragments intel·ligents ara apareixen a la bombolla de notificacions, perquè pugueu continuar editant i descartar els errors individualment. [issue 442]{/L}{sect}Altres millores{/sect}{L}S’ha corregit l’accés de prova a les operacions del porta-retalls, les etiquetes i {{%deleteForwardedBody%}}. [issue 439]{/L}{L}S’han actualitzat les traduccions, inclosa l’acció d’actualitzar la interfície, i s’han simplificat els recursos de localització. [issue 440]{/L}"
+    "message": "{L}{+extensionName} ara és compatible amb el Thunderbird 162.{/L}{sect}Funcions noves{/sect}{L}S’ha afegit la funció Pro {{%prompt()%}} per introduir text o seleccionar una opció d’una llista. Admet el porta-retalls com a entrada predeterminada i com a destinació de les dades. [issue 443]{/L}{sect}Notificacions de redacció i proves de funcions{/sect}{L}Els avisos de llicència ara apareixen en una bombolla compacta i desplegable en lloc de barres lliscants, amb els usos restants al costat de cada funció amb llicència. [issue 441]{/L}{L}Els usuaris nous disposen de 28 dies de prova sense consumir les quotes de les funcions individuals. Els usuaris amb una llicència caducada tenen 7 dies de gràcia per renovar-la mantenint l’accés a les funcions de plantilla amb llicència.{/L}{L}Fora del període de prova o de gràcia, cada funció amb llicència utilitza la seva pròpia quota gratuïta restant. Només compta el primer ús de cada dia.{/L}{L}Els errors de plantilles i fragments intel·ligents ara apareixen a la bombolla de notificacions, perquè pugueu continuar editant i descartar els errors individualment. [issue 442]{/L}{sect}Registre i configuració{/sect}{L}Un camí més clar cap a la teva llicència: el registre ara s’obre en una pestanya adaptable del Thunderbird, amb opcions més clares de compra, renovació i actualització, i explicacions sobre com funciona la llicència. [issue 445]{/L}{L}Configuració renovada: millor distribució a Llicències i Plantilles de compte, missatges de llicència més clars i un distintiu d’avís quan s’apropa la caducitat. [issue 445]{/L}{sect}Altres millores{/sect}{L}S’ha corregit l’accés de prova a les operacions del porta-retalls, les etiquetes i {{%deleteForwardedBody%}}. [issue 439]{/L}{L}S’han actualitzat les traduccions, inclosa l’acció d’actualitzar la interfície, i s’han simplificat els recursos de localització. [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Actualització de manteniment $ver$. Aquesta correcció concreta s'ha afegit des de la versió anterior.",

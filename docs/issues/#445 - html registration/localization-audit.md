@@ -1,5 +1,15 @@
 # Registration localization audit
 
+## Remaining locales completed, 2026-11-17
+
+All 110 `registration.*` entities are now translated in the 20 remaining UI locales: Catalan, Czech, Greek, Spanish, Finnish, French, Indonesian, Italian, Japanese, Dutch, Polish, Portuguese, Brazilian Portuguese, Russian, Slovenian, Serbian, Swedish, Ukrainian, Simplified Chinese and Traditional Chinese. Together with the approved English and German catalogs, 22 locales have complete registration coverage. The English and German catalogs were not edited during this pass.
+
+Vietnamese retains its documented default-English registration/shop UI fallback and has no new registration entities. Its existing licensing/onboarding translations remain intact. The Registration and Settings section of `whats-new-list` is translated in all 21 remaining non-English/German locales, including Vietnamese, in the same position and with the same issue references as the approved source.
+
+New registration entries are alphabetically ordered. Existing entries outside registration retain their order, formatting, metadata and values, apart from the added release-news section. The previously translated registration menu is preserved; Renew/Extend action translations are harmonized with the new terms and Domain warnings, distinguishing an extension of time from an expansion of functionality. UTF-8 is read and written directly, with placeholders, substitution definitions, rich-text tokens and parser issue references preserved.
+
+Automated checks now cover every catalog's scope, registration completeness, registration entity order, strict UTF-8, replacement characters, substitutions, rich-text tokens and release-news section/issue order. These are structural checks, not a substitute for native-speaker review. Thunderbird visual review remains pending, particularly long buttons and headings, two-line slogans, Domain warnings and seats links, expanded terms, email help, localized dates and narrow-window wrapping. Checkout language remains independent of add-on localization.
+
 ## German-first review pass, 2026-11-17
 
 The maintainer requested German first for wording and Unicode review before propagation to other locales. `_locales/de/messages.json` now translates all 109 current `registration.*` entities, including explicit Domain purchase and license-summary labels. German uses Domäne/Domänenlizenz and the purchase button Domänenlizenz erwerben. The English source and live terms also include the approved payment-based personal-license rules and separate Standard → Pro upgrade rule: upgrades run for one year from payment without adding remaining Standard time.

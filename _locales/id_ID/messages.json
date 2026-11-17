@@ -655,7 +655,7 @@
     "message": "Lisensi Anda berlaku hingga:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Baca selengkapnya tentang Fitur Premium di Situs Web kami…"
+    "message": "Baca selengkapnya tentang Fitur Premium di Situs Web kami"
   },
   "lastName.label": {
     "message": "Nama Belakang:"
@@ -944,6 +944,365 @@
   },
   "recipient.label": {
     "message": "Penerima Akhir"
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "Akun email"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "Beli $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Beli Lisensi Domain"
+  },
+  "registration.action.current": {
+    "message": "Edisi saat ini"
+  },
+  "registration.action.extend": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.",
+    "message": "Perpanjang Lisensi"
+  },
+  "registration.action.renew": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.renewLicense.",
+    "message": "Perbarui Lisensi"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Tingkatkan ke Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Lisensi tahunan"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Tutup pemberitahuan pembelian"
+  },
+  "registration.checkout.error": {
+    "message": "Tidak dapat membuka toko. Silakan coba lagi."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Untuk mempertahankan manfaat pembaruan atau peningkatan, lanjutkan dengan produk yang dibuka dari halaman ini.{/bold} Untuk memilih {i}lisensi lain{/i}, mulai lagi dari sini."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Harga, pajak, dan diskon yang tersedia ditampilkan di toko."
+  },
+  "registration.checkout.opened": {
+    "message": "Toko telah dibuka di peramban. Anda dapat membiarkan tab ini terbuka."
+  },
+  "registration.checkout.preview": {
+    "message": "Pratinjau uji: $1 untuk $2. Toko tidak dibuka."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Jalur peningkatan ini perlu dikonfirmasi sebelum pembelian dapat diaktifkan. Toko tidak dibuka."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Bandingkan Standard dan Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Untuk siapa lisensi ini?"
+  },
+  "registration.contact.note": {
+    "message": "Data ini akan diisi otomatis saat pembayaran. Anda dapat mengubahnya di sini."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "Lisensi Anda kedaluwarsa pada $1."
+  },
+  "registration.date.none": {
+    "message": "Pilih lisensi di bawah atau masukkan kunci yang sudah dimiliki."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "Lisensi Anda berlaku hingga $1."
+  },
+  "registration.development": {
+    "message": "Uji pendaftaran"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro adalah lisensi pribadi terpisah, bukan pembaruan Domain. Lisensi Domain mencakup instalasi dengan akun email yang menggunakan domain perusahaan terdaftar, sesuai jumlah pengguna yang dibeli. Lisensi Pro terpisah dapat mencakup instalasi di rumah yang tidak dapat menggunakan akun tersebut. Untuk melanjutkan cakupan tim, pilih Perbarui Lisensi di panel Domain."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Tambah pengguna"
+  },
+  "registration.domain.seatsNote": {
+    "message": "ke lisensi Domain yang sudah dimiliki."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Perlu lebih banyak slot pengguna?"
+  },
+  "registration.edition.domain": {
+    "message": "Domain"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "Alamat email"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Aturan berbeda berlaku: alamat yang dikonfigurasi harus berada di domain berlisensi."
+  },
+  "registration.email.domain.heading": {
+    "message": "Lisensi Domain"
+  },
+  "registration.email.help": {
+    "message": "Tentang alamat email berlisensi"
+  },
+  "registration.email.help.close": {
+    "message": "Tutup bantuan email"
+  },
+  "registration.email.help.heading": {
+    "message": "Email Anda adalah lisensi Anda"
+  },
+  "registration.email.hint": {
+    "message": "Lisensi pribadi Anda berfungsi di beberapa perangkat."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Lisensi terikat pada alamat email ini. Anda dapat menggunakannya di beberapa perangkat. Atur alamat ini sebagai {bold}identitas bawaan{/bold} akun Thunderbird di setiap perangkat."
+  },
+  "registration.email.personal.heading": {
+    "message": "Lisensi Standard dan Pro"
+  },
+  "registration.email.rules": {
+    "message": "Aturan alamat email berlisensi"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Masukkan kunci lisensi…"
+  },
+  "registration.eyebrow": {
+    "message": "Lisensi Anda"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "Nama depan"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Data simulasi: pembelian hanya membuka pratinjau."
+  },
+  "registration.footer": {
+    "message": "Dibuat untuk Thunderbird. Didukung oleh Anda."
+  },
+  "registration.heading": {
+    "message": "Gaya Anda. Lebih sedikit usaha."
+  },
+  "registration.identity.empty": {
+    "message": "Masukkan data secara manual"
+  },
+  "registration.identity.none": {
+    "message": "Tidak ditemukan akun email yang memenuhi syarat. Anda dapat memasukkan data kontak secara manual."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Nama belakang"
+  },
+  "registration.learnMore": {
+    "message": "Pelajari lebih lanjut…"
+  },
+  "registration.legacy.menu": {
+    "message": "Pendaftaran Lisensi Lama"
+  },
+  "registration.license.domain": {
+    "message": "Lisensi Domain"
+  },
+  "registration.license.edition": {
+    "message": "Lisensi $1"
+  },
+  "registration.license.none": {
+    "message": "Belum ada lisensi yang dikonfigurasi"
+  },
+  "registration.load.error": {
+    "message": "Tidak dapat memuat lisensi atau akun Anda. Muat ulang tab ini untuk mencoba lagi."
+  },
+  "registration.navigation": {
+    "message": "Navigasi lisensi"
+  },
+  "registration.options": {
+    "message": "Pilihan lisensi"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "Semua fitur untuk seluruh tim dalam satu lisensi."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Untuk tim Anda"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Untuk domain bersama"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "Manfaatkan email untuk bekerja. Hemat waktu setiap hari."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Semua fitur"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Untuk email Anda sendiri"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Beri sentuhan pribadi pada email sehari-hari."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Kebutuhan sehari-hari"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Untuk email Anda sendiri"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Lisensi Domain{/bold}{br}Pembaruan biasanya menambah satu tahun dari tanggal kedaluwarsa sebelumnya, termasuk jika pesanan atau pembayaran terlambat."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Manfaat pembaruan dan peningkatan bergantung pada informasi lisensi yang dikirim ke toko. Mengganti produk di toko atau perangkat lunak keamanan yang menghapus informasi tersebut dapat menghalangi penerapan hak yang sudah Anda miliki."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Memperbarui atau memperpanjang lisensi menambah satu tahun dan biasanya lebih murah daripada membeli lisensi baru."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Lisensi pribadi{/bold}{br}Lisensi baru berlaku satu tahun sejak pembayaran. Saat memperbarui atau memperpanjang edisi yang sama, Anda memperoleh satu tahun penuh sejak pembayaran atau satu tahun setelah tanggal kedaluwarsa saat ini, mana yang memberi waktu lebih lama."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Lisensi yang sudah dimiliki{/bold}{br}Lisensi saat ini dikirim ke toko untuk menghitung tanggal kedaluwarsa yang baru."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Peningkatan Standard ke Pro{/bold}{br}Lisensi Pro berlaku satu tahun sejak tanggal pembayaran peningkatan. Sisa waktu lisensi Standard tidak memperpanjang periode tersebut."
+  },
+  "registration.selection.heading": {
+    "message": "Setahun berkirim email dengan lebih mudah."
+  },
+  "registration.selection.intro": {
+    "message": "Pilih Standard untuk email sehari-hari, Pro untuk semua fitur, atau Domain untuk tim Anda."
+  },
+  "registration.selection.label": {
+    "message": "Pemilihan lisensi"
+  },
+  "registration.settings.error": {
+    "message": "Tidak dapat membuka pengaturan lisensi. Silakan coba lagi."
+  },
+  "registration.showLess": {
+    "message": "Tampilkan lebih sedikit"
+  },
+  "registration.status.Empty": {
+    "message": "Edisi gratis"
+  },
+  "registration.status.Expired": {
+    "message": "Kedaluwarsa"
+  },
+  "registration.status.Invalid": {
+    "message": "Lisensi tidak valid"
+  },
+  "registration.status.MailDifferent": {
+    "message": "Email lisensi tidak cocok"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Alamat berlisensi belum dikonfigurasi"
+  },
+  "registration.status.NotValidated": {
+    "message": "Belum divalidasi"
+  },
+  "registration.status.Unknown": {
+    "message": "Lisensi tidak tersedia"
+  },
+  "registration.status.Valid": {
+    "message": "Valid"
+  },
+  "registration.subtitle": {
+    "message": "Pilih lisensi yang sesuai dengan alur kerja Anda."
+  },
+  "registration.terms.annual": {
+    "message": "Lisensi berlaku satu tahun. Perbarui lisensi yang kedaluwarsa atau perpanjang lisensi aktif untuk melanjutkan edisi pilihan Anda."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Satu tahun setiap kali"
+  },
+  "registration.terms.back": {
+    "message": "Pemilihan lisensi"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Pilih lisensi untuk melanjutkan ke toko. Harga bergantung pada edisi, negara, pajak, dan diskon yang berlaku."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Pembayaran di peramban"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Lisensi Domain mencakup pengguna dengan alamat yang sesuai di domain berlisensi."
+  },
+  "registration.terms.draft": {
+    "message": "Draf ketentuan: rincian uji coba dan perilaku fitur setelah kedaluwarsa akan ditinjau sebelum rilis."
+  },
+  "registration.terms.edition": {
+    "message": "Standard dan Pro menawarkan tingkat fitur yang berbeda. Bandingkan edisi untuk menemukan yang sesuai."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Pilih edisi Anda"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Lisensi pribadi terikat pada alamat email Anda. Anda dapat menggunakannya di beberapa instalasi Thunderbird jika alamat berlisensi diatur sebagai {bold}identitas bawaan{/bold} akun di setiap instalasi."
+  },
+  "registration.terms.email.heading": {
+    "message": "Email Anda, lisensi Anda"
+  },
+  "registration.terms.heading": {
+    "message": "Cara kerja lisensi Anda."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Lanjutkan ke Pemilihan Lisensi 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} mengikuti perkembangan Thunderbird sejak $1. Lisensi {+extensionName} mendanai pengembangan berkelanjutan, fitur baru, dan pembaruan kompatibilitas. Setiap lisensi berlaku satu tahun dan mendukung pekerjaan untuk mengikuti perkembangan Thunderbird."
+  },
+  "registration.terms.label": {
+    "message": "Ketentuan lisensi"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Lisensi {bold}tidak diperbarui secara otomatis{/bold}. {+extensionName} akan mengingatkan Anda sebelum lisensi kedaluwarsa."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "Fitur berlisensi juga berfungsi dengan semua akun email Thunderbird Anda yang lain. Tidak perlu lisensi terpisah."
+  },
+  "registration.terms.referrer": {
+    "message": "Pembaruan dan peningkatan mengirim lisensi sebelumnya ke toko untuk pemeriksaan kelayakan."
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Mulai dengan Pro, lalu hemat di tahun berikutnya.{/bold} Memperbarui atau memperpanjang lisensi Pro jauh lebih murah daripada membeli yang baru."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Tampilkan ketentuan lisensi 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "Dukungan Anda membantu mendanai pengembangan, pembaruan kompatibilitas, dan perbaikan."
+  },
+  "registration.test.menu": {
+    "message": "Pendaftaran ke Toko Web"
+  },
+  "registration.test.note": {
+    "message": "Pembayaran dibuka di peramban."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · Lisensi Anda"
   },
   "replacebr.label": {
     "message": "Ganti pemutusan baris dengan <br>"
@@ -1508,7 +1867,7 @@
   },
   "whats-new-list": {
     "description": "🇮🇩 change log",
-    "message": "{L}{+extensionName} kini kompatibel dengan Thunderbird 162.{/L}{sect}Fitur baru{/sect}{L}Menambahkan fitur Pro {{%prompt()%}} untuk memasukkan teks atau memilih dari daftar pilihan. Mendukung papan klip sebagai masukan bawaan dan sebagai tujuan data. [issue 443]{/L}{sect}Notifikasi penulisan pesan dan uji coba fitur{/sect}{L}Pemberitahuan lisensi kini muncul dalam gelembung notifikasi ringkas yang dapat diperluas, menggantikan bilah geser. Sisa penggunaan ditampilkan di samping setiap fitur berlisensi. [issue 441]{/L}{L}Pengguna baru mendapat 28 hari uji coba tanpa mengurangi kuota masing-masing fitur. Pengguna dengan lisensi kedaluwarsa mendapat masa tenggang 7 hari untuk memperpanjang lisensi sambil tetap menggunakan fitur templat berlisensi.{/L}{L}Di luar masa uji coba atau tenggang, setiap fitur berlisensi menggunakan sisa kuota gratisnya sendiri. Hanya penggunaan pertama setiap hari yang dihitung.{/L}{L}Kesalahan templat dan cuplikan cerdas kini muncul dalam gelembung notifikasi, sehingga Anda dapat terus mengedit dan menutup setiap kesalahan secara terpisah. [issue 442]{/L}{sect}Peningkatan lainnya{/sect}{L}Memperbaiki akses uji coba ke operasi papan klip, tag, dan {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Memperbarui terjemahan, termasuk tindakan penyegaran antarmuka, dan menyederhanakan sumber daya pelokalan. [issue 440]{/L}"
+    "message": "{L}{+extensionName} kini kompatibel dengan Thunderbird 162.{/L}{sect}Fitur baru{/sect}{L}Menambahkan fitur Pro {{%prompt()%}} untuk memasukkan teks atau memilih dari daftar pilihan. Mendukung papan klip sebagai masukan bawaan dan sebagai tujuan data. [issue 443]{/L}{sect}Notifikasi penulisan pesan dan uji coba fitur{/sect}{L}Pemberitahuan lisensi kini muncul dalam gelembung notifikasi ringkas yang dapat diperluas, menggantikan bilah geser. Sisa penggunaan ditampilkan di samping setiap fitur berlisensi. [issue 441]{/L}{L}Pengguna baru mendapat 28 hari uji coba tanpa mengurangi kuota masing-masing fitur. Pengguna dengan lisensi kedaluwarsa mendapat masa tenggang 7 hari untuk memperpanjang lisensi sambil tetap menggunakan fitur templat berlisensi.{/L}{L}Di luar masa uji coba atau tenggang, setiap fitur berlisensi menggunakan sisa kuota gratisnya sendiri. Hanya penggunaan pertama setiap hari yang dihitung.{/L}{L}Kesalahan templat dan cuplikan cerdas kini muncul dalam gelembung notifikasi, sehingga Anda dapat terus mengedit dan menutup setiap kesalahan secara terpisah. [issue 442]{/L}{sect}Pendaftaran dan Pengaturan{/sect}{L}Jalur yang lebih jelas menuju lisensi Anda: pendaftaran kini dibuka di tab Thunderbird yang responsif, dengan pilihan pembelian, pembaruan, dan peningkatan yang lebih jelas, serta penjelasan cara kerja lisensi. [issue 445]{/L}{L}Pengaturan diperbarui: tata letak Lisensi dan Templat akun ditingkatkan, pesan lisensi diperjelas, dan lencana peringatan ditampilkan saat mendekati kedaluwarsa. [issue 445]{/L}{sect}Peningkatan lainnya{/sect}{L}Memperbaiki akses uji coba ke operasi papan klip, tag, dan {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Memperbarui terjemahan, termasuk tindakan penyegaran antarmuka, dan menyederhanakan sumber daya pelokalan. [issue 440]{/L}"
   },
   "xsent_long.cap": {
     "message": "Contoh tanggal dan waktu khusus"

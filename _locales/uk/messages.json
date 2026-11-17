@@ -938,7 +938,7 @@
     "message": "Ваша ліцензія дійсна до:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Дізнайтеся більше про преміум-функції на нашому веб-сайті…"
+    "message": "Дізнайтеся більше про преміум-функції на нашому веб-сайті"
   },
   "lastName.label": {
     "message": "Прізвище:"
@@ -1550,6 +1550,365 @@
   },
   "regexpAnyText": {
     "message": "Будь-який текст - регулярний вираз - повинен бути в подвійних лапках."
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "Поштовий обліковий запис"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "Придбати $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Придбати доменну ліцензію"
+  },
+  "registration.action.current": {
+    "message": "Поточна редакція"
+  },
+  "registration.action.extend": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.",
+    "message": "Подовжити ліцензію"
+  },
+  "registration.action.renew": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.renewLicense.",
+    "message": "Поновити ліцензію"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Перейти на Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Річні ліцензії"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Закрити повідомлення про придбання"
+  },
+  "registration.checkout.error": {
+    "message": "Не вдалося відкрити магазин. Спробуйте ще раз."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Щоб зберегти переваги поновлення або переходу, продовжуйте з товаром, відкритим із цієї сторінки.{/bold} Щоб вибрати {i}іншу ліцензію{/i}, почніть звідси знову."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Ціни, податки й доступні знижки вказано в магазині."
+  },
+  "registration.checkout.opened": {
+    "message": "Магазин відкрито в браузері. Цю вкладку можна залишити відкритою."
+  },
+  "registration.checkout.preview": {
+    "message": "Тестовий перегляд: $1 для $2. Магазин не відкривався."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Цей шлях переходу потребує підтвердження перед увімкненням придбання. Магазин не відкривався."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Порівняти Standard і Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Для кого ця ліцензія?"
+  },
+  "registration.contact.note": {
+    "message": "Ці дані буде підставлено під час придбання. Тут їх можна змінити."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "Термін вашої ліцензії закінчився $1."
+  },
+  "registration.date.none": {
+    "message": "Виберіть ліцензію нижче або введіть наявний ключ."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "Ваша ліцензія чинна до $1."
+  },
+  "registration.development": {
+    "message": "Перевірка реєстрації"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro — окрема особиста ліцензія, а не поновлення доменної. Доменна ліцензія охоплює встановлення з поштовим обліковим записом у зареєстрованому домені компанії в межах придбаної кількості місць. Окрема ліцензія Pro може охоплювати домашнє встановлення, де неможливо використовувати цей обліковий запис. Щоб зберегти ліцензію для команди, виберіть «Поновити ліцензію» на панелі «Домен»."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Додати користувачів"
+  },
+  "registration.domain.seatsNote": {
+    "message": "до наявної доменної ліцензії."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Потрібно більше місць?"
+  },
+  "registration.edition.domain": {
+    "message": "Домен"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "Адреса електронної пошти"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Діють інші правила: налаштована адреса має належати ліцензованому домену."
+  },
+  "registration.email.domain.heading": {
+    "message": "Доменні ліцензії"
+  },
+  "registration.email.help": {
+    "message": "Про ліцензовані адреси"
+  },
+  "registration.email.help.close": {
+    "message": "Закрити довідку про адреси"
+  },
+  "registration.email.help.heading": {
+    "message": "Ваша адреса — ваша ліцензія"
+  },
+  "registration.email.hint": {
+    "message": "Особиста ліцензія працює на кількох пристроях."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Ліцензію прив’язано до цієї адреси. Її можна використовувати на кількох пристроях. На кожному пристрої налаштуйте цю адресу як {bold}типову ідентичність{/bold} облікового запису Thunderbird."
+  },
+  "registration.email.personal.heading": {
+    "message": "Ліцензії Standard і Pro"
+  },
+  "registration.email.rules": {
+    "message": "Правила ліцензованої адреси"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Ввести ліцензійний ключ…"
+  },
+  "registration.eyebrow": {
+    "message": "Ваша ліцензія"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "Ім’я"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Тестові дані: придбання відкриває лише попередній перегляд."
+  },
+  "registration.footer": {
+    "message": "Створено для Thunderbird. За вашої підтримки."
+  },
+  "registration.heading": {
+    "message": "Ваш стиль. Менше зусиль."
+  },
+  "registration.identity.empty": {
+    "message": "Ввести дані вручну"
+  },
+  "registration.identity.none": {
+    "message": "Придатних поштових облікових записів не знайдено. Контактні дані можна ввести вручну."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Прізвище"
+  },
+  "registration.learnMore": {
+    "message": "Докладніше…"
+  },
+  "registration.legacy.menu": {
+    "message": "Попередня реєстрація ліцензії"
+  },
+  "registration.license.domain": {
+    "message": "Доменна ліцензія"
+  },
+  "registration.license.edition": {
+    "message": "Ліцензія $1"
+  },
+  "registration.license.none": {
+    "message": "Ліцензію не налаштовано"
+  },
+  "registration.load.error": {
+    "message": "Не вдалося завантажити ліцензію чи облікові записи. Перезавантажте вкладку, щоб спробувати ще раз."
+  },
+  "registration.navigation": {
+    "message": "Навігація ліцензіями"
+  },
+  "registration.options": {
+    "message": "Варіанти ліцензій"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "Усі функції для всієї команди за однією ліцензією."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Для вашої команди"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Для спільного домену"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "Нехай пошта працює на вас. Заощаджуйте час щодня."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Усі функції"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Для вашої пошти"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Додайте щоденним листам власного стилю."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Найнеобхідніше щодня"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Для вашої пошти"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Доменні ліцензії{/bold}{br}Поновлення зазвичай додає рік до попередньої дати завершення, навіть за пізнього замовлення або оплати."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Переваги поновлення й переходу залежать від даних ліцензії, переданих магазину. Зміна товару в магазині або видалення цих даних захисною програмою може завадити врахуванню наявних прав."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Поновлення чи подовження ліцензії додає рік і зазвичай коштує менше за нову ліцензію."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Особисті ліцензії{/bold}{br}Нова ліцензія діє рік від оплати. Поновлюючи чи подовжуючи ту саму редакцію, ви отримуєте повний рік від оплати або рік після поточної дати завершення — залежно від того, що дає більше часу."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Наявна ліцензія{/bold}{br}Поточна ліцензія передається магазину для розрахунку нової дати завершення."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Перехід зі Standard на Pro{/bold}{br}Ліцензія Pro діє рік від дати оплати переходу. Залишок часу ліцензії Standard не подовжує цей період."
+  },
+  "registration.selection.heading": {
+    "message": "Рік простішої роботи з поштою."
+  },
+  "registration.selection.intro": {
+    "message": "Виберіть Standard для щоденної пошти, Pro для всіх функцій або Домен для команди."
+  },
+  "registration.selection.label": {
+    "message": "Вибір ліцензії"
+  },
+  "registration.settings.error": {
+    "message": "Не вдалося відкрити налаштування ліцензії. Спробуйте ще раз."
+  },
+  "registration.showLess": {
+    "message": "Показати менше"
+  },
+  "registration.status.Empty": {
+    "message": "Безплатна редакція"
+  },
+  "registration.status.Expired": {
+    "message": "Термін закінчився"
+  },
+  "registration.status.Invalid": {
+    "message": "Недійсна ліцензія"
+  },
+  "registration.status.MailDifferent": {
+    "message": "Адреса ліцензії не збігається"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Ліцензовану адресу не налаштовано"
+  },
+  "registration.status.NotValidated": {
+    "message": "Не перевірено"
+  },
+  "registration.status.Unknown": {
+    "message": "Ліцензія недоступна"
+  },
+  "registration.status.Valid": {
+    "message": "Чинна"
+  },
+  "registration.subtitle": {
+    "message": "Виберіть ліцензію для свого способу роботи."
+  },
+  "registration.terms.annual": {
+    "message": "Ліцензія охоплює рік. Поновіть прострочену ліцензію або подовжте чинну, щоб і далі користуватися вибраною редакцією."
+  },
+  "registration.terms.annual.heading": {
+    "message": "По одному року"
+  },
+  "registration.terms.back": {
+    "message": "Вибір ліцензії"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Виберіть ліцензію для переходу в магазин. Ціна залежить від редакції, країни, податків і застосовних знижок."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Придбання в браузері"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Доменна ліцензія охоплює користувачів з адресами в ліцензованому домені."
+  },
+  "registration.terms.draft": {
+    "message": "Проєкт умов: подробиці пробного використання й функцій після завершення ліцензії буде перевірено до випуску."
+  },
+  "registration.terms.edition": {
+    "message": "Standard і Pro пропонують різні рівні функцій. Порівняйте редакції та виберіть відповідну."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Виберіть редакцію"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Особиста ліцензія прив’язана до вашої адреси. Її можна використовувати в кількох встановленнях Thunderbird, якщо ліцензовану адресу налаштовано як {bold}типову ідентичність{/bold} облікового запису в кожному встановленні."
+  },
+  "registration.terms.email.heading": {
+    "message": "Ваша пошта, ваша ліцензія"
+  },
+  "registration.terms.heading": {
+    "message": "Як працює ваша ліцензія."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Перейти до вибору ліцензії 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} розвивається разом із Thunderbird з $1 року. Ліцензії {+extensionName} фінансують подальшу розробку, нові функції й оновлення сумісності. Кожна ліцензія діє рік і підтримує роботу, потрібну для сумісності з Thunderbird."
+  },
+  "registration.terms.label": {
+    "message": "Умови ліцензії"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Ліцензії {bold}не поновлюються автоматично{/bold}. {+extensionName} нагадає вам до завершення терміну ліцензії."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "Ліцензовані функції також працюють з усіма іншими поштовими обліковими записами Thunderbird. Окремі ліцензії не потрібні."
+  },
+  "registration.terms.referrer": {
+    "message": "Під час поновлення й переходу попередня ліцензія передається магазину для перевірки прав."
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Почніть із Pro й заощаджуйте в наступні роки.{/bold} Поновлення чи подовження ліцензії Pro коштує значно менше за нову."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Показати умови ліцензії 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "Ваша підтримка фінансує розробку, оновлення сумісності й виправлення."
+  },
+  "registration.test.menu": {
+    "message": "Реєстрація в інтернет-магазині"
+  },
+  "registration.test.note": {
+    "message": "Придбання відкривається в браузері."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · Ваша ліцензія"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "Замінювати підпис під час зміни облікового запису (із збереженням введеного тексту)"
@@ -2181,7 +2540,7 @@
   },
   "whats-new-list": {
     "description": "🇺🇦 change log",
-    "message": "{L}{+extensionName} тепер сумісний із Thunderbird 162.{/L}{sect}Нові функції{/sect}{L}Додано функцію Pro {{%prompt()%}} для введення тексту або вибору зі списку варіантів. Буфер обміну можна використовувати як джерело типового значення та як місце збереження даних. [issue 443]{/L}{sect}Сповіщення редактора та пробне використання функцій{/sect}{L}Ліцензійні сповіщення тепер з’являються в компактній розгортаній панелі замість висувних смуг. Залишок використань показано біля кожної ліцензованої функції. [issue 441]{/L}{L}Нові користувачі отримують 28 пробних днів без витрачання лімітів окремих функцій. Користувачі з простроченою ліцензією мають 7 днів пільгового періоду для поновлення зі збереженням доступу до ліцензованих функцій шаблонів.{/L}{L}Поза пробним або пільговим періодом кожна ліцензована функція використовує власний залишок безкоштовного ліміту. Враховується лише перше використання за день.{/L}{L}Помилки шаблонів і розумних фрагментів тепер відображаються в панелі сповіщень, щоб можна було продовжувати редагування й закривати помилки окремо. [issue 442]{/L}{sect}Інші покращення{/sect}{L}Виправлено пробний доступ до операцій із буфером обміну, міток і {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Оновлено переклади, зокрема дію оновлення інтерфейсу, і спрощено ресурси локалізації. [issue 440]{/L}"
+    "message": "{L}{+extensionName} тепер сумісний із Thunderbird 162.{/L}{sect}Нові функції{/sect}{L}Додано функцію Pro {{%prompt()%}} для введення тексту або вибору зі списку варіантів. Буфер обміну можна використовувати як джерело типового значення та як місце збереження даних. [issue 443]{/L}{sect}Сповіщення редактора та пробне використання функцій{/sect}{L}Ліцензійні сповіщення тепер з’являються в компактній розгортаній панелі замість висувних смуг. Залишок використань показано біля кожної ліцензованої функції. [issue 441]{/L}{L}Нові користувачі отримують 28 пробних днів без витрачання лімітів окремих функцій. Користувачі з простроченою ліцензією мають 7 днів пільгового періоду для поновлення зі збереженням доступу до ліцензованих функцій шаблонів.{/L}{L}Поза пробним або пільговим періодом кожна ліцензована функція використовує власний залишок безкоштовного ліміту. Враховується лише перше використання за день.{/L}{L}Помилки шаблонів і розумних фрагментів тепер відображаються в панелі сповіщень, щоб можна було продовжувати редагування й закривати помилки окремо. [issue 442]{/L}{sect}Реєстрація й налаштування{/sect}{L}Зрозуміліший шлях до ліцензії: реєстрація тепер відкривається в адаптивній вкладці Thunderbird із чіткішими варіантами придбання, поновлення й переходу та поясненнями роботи ліцензії. [issue 445]{/L}{L}Оновлені налаштування: поліпшено розташування елементів у розділах ліцензій і шаблонів облікових записів, уточнено повідомлення про ліцензію та додано попереджувальний значок перед завершенням терміну. [issue 445]{/L}{sect}Інші покращення{/sect}{L}Виправлено пробний доступ до операцій із буфером обміну, міток і {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Оновлено переклади, зокрема дію оновлення інтерфейсу, і спрощено ресурси локалізації. [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Оновлення обслуговування $ver$. Це конкретне виправлення було додано з моменту попереднього випуску.",

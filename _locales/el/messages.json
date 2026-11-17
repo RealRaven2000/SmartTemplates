@@ -928,7 +928,7 @@
     "message": "Η άδειά σας είναι έγκυρη μέχρι:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Διαβάστε περισσότερα σχετικά με τις Premium δυνατότητες στην ιστοσελίδα μας…"
+    "message": "Διαβάστε περισσότερα σχετικά με τις Premium δυνατότητες στην ιστοσελίδα μας"
   },
   "lastName.label": {
     "message": "Επώνυμο:"
@@ -1531,6 +1531,363 @@
   },
   "regexpAnyText": {
     "message": "Οποιοδήποτε κείμενο - κανονική έκφραση - πρέπει να είναι σε διπλά εισαγωγικά."
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "Λογαριασμός αλληλογραφίας"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "Αγορά $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Αγορά άδειας τομέα"
+  },
+  "registration.action.current": {
+    "message": "Τρέχουσα έκδοση"
+  },
+  "registration.action.extend": {
+    "message": "Παράταση άδειας"
+  },
+  "registration.action.renew": {
+    "message": "Ανανέωση άδειας"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Αναβάθμιση σε Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Ετήσιες άδειες"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Κλείσιμο ειδοποίησης αγοράς"
+  },
+  "registration.checkout.error": {
+    "message": "Δεν ήταν δυνατό το άνοιγμα του καταστήματος. Δοκιμάστε ξανά."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Για να διατηρήσετε τα οφέλη ανανέωσης ή αναβάθμισης, συνεχίστε με το προϊόν που άνοιξε από αυτή τη σελίδα.{/bold} Για να επιλέξετε {i}διαφορετική άδεια{/i}, ξεκινήστε ξανά από εδώ."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Οι τιμές, οι φόροι και οι διαθέσιμες εκπτώσεις εμφανίζονται στο κατάστημα."
+  },
+  "registration.checkout.opened": {
+    "message": "Το κατάστημα άνοιξε στο πρόγραμμα περιήγησής σας. Μπορείτε να αφήσετε αυτή την καρτέλα ανοιχτή."
+  },
+  "registration.checkout.preview": {
+    "message": "Δοκιμαστική προεπισκόπηση: $1 για $2. Δεν άνοιξε κατάστημα."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Αυτή η διαδρομή αναβάθμισης χρειάζεται επιβεβαίωση πριν ενεργοποιηθεί η αγορά. Δεν άνοιξε κατάστημα."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Σύγκριση Standard και Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Για ποιον προορίζεται αυτή η άδεια;"
+  },
+  "registration.contact.note": {
+    "message": "Αυτά τα στοιχεία θα προσυμπληρωθούν κατά την αγορά. Μπορείτε να τα αλλάξετε εδώ."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "Η άδειά σας έληξε στις $1."
+  },
+  "registration.date.none": {
+    "message": "Επιλέξτε άδεια παρακάτω ή εισαγάγετε το υπάρχον κλειδί."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "Η άδειά σας ισχύει έως τις $1."
+  },
+  "registration.development": {
+    "message": "Δοκιμή εγγραφής"
+  },
+  "registration.domain.proWarning": {
+    "message": "Η Pro είναι ξεχωριστή προσωπική άδεια, όχι ανανέωση άδειας τομέα. Η άδεια τομέα σάς καλύπτει σε εγκαταστάσεις με λογαριασμό αλληλογραφίας στον καταχωρισμένο εταιρικό τομέα, εντός των αγορασμένων θέσεων. Μια ξεχωριστή άδεια Pro μπορεί να καλύπτει οικιακή εγκατάσταση όπου δεν μπορείτε να χρησιμοποιήσετε αυτόν τον λογαριασμό. Για να συνεχιστεί η κάλυψη της ομάδας σας, επιλέξτε Ανανέωση άδειας στο πλαίσιο Τομέας."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Προσθήκη χρηστών"
+  },
+  "registration.domain.seatsNote": {
+    "message": "στην υπάρχουσα άδεια τομέα."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Χρειάζεστε περισσότερες θέσεις;"
+  },
+  "registration.edition.domain": {
+    "message": "Τομέας"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "Διεύθυνση email"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Ισχύουν διαφορετικοί κανόνες: η ρυθμισμένη διεύθυνση πρέπει να ανήκει στον αδειοδοτημένο τομέα."
+  },
+  "registration.email.domain.heading": {
+    "message": "Άδειες τομέα"
+  },
+  "registration.email.help": {
+    "message": "Σχετικά με τις αδειοδοτημένες διευθύνσεις"
+  },
+  "registration.email.help.close": {
+    "message": "Κλείσιμο βοήθειας email"
+  },
+  "registration.email.help.heading": {
+    "message": "Το email σας είναι η άδειά σας"
+  },
+  "registration.email.hint": {
+    "message": "Η προσωπική άδεια λειτουργεί σε πολλές συσκευές."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Η άδειά σας συνδέεται με αυτή τη διεύθυνση email. Μπορείτε να τη χρησιμοποιείτε σε πολλές συσκευές. Ρυθμίστε τη διεύθυνση ως {bold}προεπιλεγμένη ταυτότητα{/bold} λογαριασμού Thunderbird σε κάθε συσκευή."
+  },
+  "registration.email.personal.heading": {
+    "message": "Άδειες Standard και Pro"
+  },
+  "registration.email.rules": {
+    "message": "Κανόνες αδειοδοτημένης διεύθυνσης"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Εισαγωγή κλειδιού άδειας…"
+  },
+  "registration.eyebrow": {
+    "message": "Η άδειά σας"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "Όνομα"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Εικονικά δεδομένα: η αγορά ανοίγει μόνο προεπισκόπηση."
+  },
+  "registration.footer": {
+    "message": "Φτιαγμένο για το Thunderbird. Με τη δική σας υποστήριξη."
+  },
+  "registration.heading": {
+    "message": "Το στιλ σας. Λιγότερος κόπος."
+  },
+  "registration.identity.empty": {
+    "message": "Χειροκίνητη εισαγωγή στοιχείων"
+  },
+  "registration.identity.none": {
+    "message": "Δεν βρέθηκαν κατάλληλοι λογαριασμοί. Μπορείτε να εισαγάγετε τα στοιχεία επικοινωνίας χειροκίνητα."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Επώνυμο"
+  },
+  "registration.learnMore": {
+    "message": "Μάθετε περισσότερα…"
+  },
+  "registration.legacy.menu": {
+    "message": "Παλαιά εγγραφή άδειας χρήσης"
+  },
+  "registration.license.domain": {
+    "message": "Άδεια τομέα"
+  },
+  "registration.license.edition": {
+    "message": "Άδεια $1"
+  },
+  "registration.license.none": {
+    "message": "Δεν έχει ρυθμιστεί άδεια"
+  },
+  "registration.load.error": {
+    "message": "Δεν ήταν δυνατή η φόρτωση της άδειας ή των λογαριασμών. Φορτώστε ξανά την καρτέλα."
+  },
+  "registration.navigation": {
+    "message": "Πλοήγηση αδειών"
+  },
+  "registration.options": {
+    "message": "Επιλογές άδειας"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "Όλες οι λειτουργίες για όλη την ομάδα, με μία άδεια."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Για την ομάδα σας"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Για κοινό τομέα"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "Βάλτε το email να δουλέψει για εσάς. Κερδίστε χρόνο κάθε μέρα."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Όλες οι λειτουργίες"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Για το δικό σας email"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Δώστε το στιλ σας στα καθημερινά email."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Τα απαραίτητα της καθημερινότητας"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Για το δικό σας email"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Άδειες τομέα{/bold}{br}Η ανανέωση συνήθως προσθέτει ένα έτος στην προηγούμενη ημερομηνία λήξης, ακόμα και αν η παραγγελία ή η πληρωμή καθυστερήσει."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Τα οφέλη ανανέωσης και αναβάθμισης εξαρτώνται από τα στοιχεία άδειας που αποστέλλονται στο κατάστημα. Η αλλαγή προϊόντος στο κατάστημα ή η αφαίρεση αυτών των στοιχείων από λογισμικό ασφαλείας μπορεί να εμποδίσει την εφαρμογή των υφιστάμενων δικαιωμάτων σας."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Η ανανέωση ή παράταση της άδειας προσθέτει άλλο ένα έτος και συνήθως κοστίζει λιγότερο από νέα άδεια."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Προσωπικές άδειες{/bold}{br}Μια νέα άδεια ισχύει για ένα έτος από την πληρωμή. Όταν ανανεώνετε ή παρατείνετε την ίδια έκδοση, λαμβάνετε ένα πλήρες έτος από την πληρωμή ή ένα έτος μετά την τρέχουσα λήξη, όποιο σας δίνει περισσότερο χρόνο."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Υπάρχουσα άδεια{/bold}{br}Η τρέχουσα άδειά σας αποστέλλεται στο κατάστημα για να υπολογιστεί η νέα ημερομηνία λήξης."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Αναβαθμίσεις από Standard σε Pro{/bold}{br}Η άδεια Pro ισχύει για ένα έτος από την πληρωμή της αναβάθμισης. Ο χρόνος που απομένει στην άδεια Standard δεν παρατείνει αυτή την περίοδο."
+  },
+  "registration.selection.heading": {
+    "message": "Ένας χρόνος ευκολότερης αλληλογραφίας."
+  },
+  "registration.selection.intro": {
+    "message": "Επιλέξτε Standard για καθημερινά email, Pro για όλες τις λειτουργίες ή Τομέας για την ομάδα σας."
+  },
+  "registration.selection.label": {
+    "message": "Επιλογή άδειας"
+  },
+  "registration.settings.error": {
+    "message": "Δεν ήταν δυνατό το άνοιγμα των ρυθμίσεων άδειας. Δοκιμάστε ξανά."
+  },
+  "registration.showLess": {
+    "message": "Εμφάνιση λιγότερων"
+  },
+  "registration.status.Empty": {
+    "message": "Δωρεάν έκδοση"
+  },
+  "registration.status.Expired": {
+    "message": "Έληξε"
+  },
+  "registration.status.Invalid": {
+    "message": "Μη έγκυρη άδεια"
+  },
+  "registration.status.MailDifferent": {
+    "message": "Το email της άδειας δεν ταιριάζει"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Η αδειοδοτημένη διεύθυνση δεν έχει ρυθμιστεί"
+  },
+  "registration.status.NotValidated": {
+    "message": "Δεν έχει επικυρωθεί"
+  },
+  "registration.status.Unknown": {
+    "message": "Μη διαθέσιμη άδεια"
+  },
+  "registration.status.Valid": {
+    "message": "Έγκυρη"
+  },
+  "registration.subtitle": {
+    "message": "Επιλέξτε τη σωστή άδεια για τον τρόπο εργασίας σας."
+  },
+  "registration.terms.annual": {
+    "message": "Μια άδεια καλύπτει ένα έτος. Ανανεώστε μια ληγμένη άδεια ή παρατείνετε μια ενεργή για να συνεχίσετε με την επιλεγμένη έκδοση."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Ένα έτος κάθε φορά"
+  },
+  "registration.terms.back": {
+    "message": "Επιλογή άδειας"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Επιλέξτε άδεια για μετάβαση στο κατάστημα. Η τιμή εξαρτάται από την έκδοση, τη χώρα, τους φόρους και τις ισχύουσες εκπτώσεις."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Αγορά στο πρόγραμμα περιήγησης"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Μια άδεια τομέα καλύπτει χρήστες με αντίστοιχες διευθύνσεις στον αδειοδοτημένο τομέα."
+  },
+  "registration.terms.draft": {
+    "message": "Προσχέδιο όρων: οι λεπτομέρειες δοκιμής και λειτουργιών μετά τη λήξη θα ελεγχθούν πριν την κυκλοφορία."
+  },
+  "registration.terms.edition": {
+    "message": "Οι Standard και Pro προσφέρουν διαφορετικά επίπεδα λειτουργιών. Συγκρίνετε τις εκδόσεις για να βρείτε την κατάλληλη."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Επιλέξτε την έκδοσή σας"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Μια προσωπική άδεια συνδέεται με τη διεύθυνση email σας. Μπορείτε να τη χρησιμοποιείτε σε πολλές εγκαταστάσεις Thunderbird, όταν η αδειοδοτημένη διεύθυνση έχει ρυθμιστεί ως {bold}προεπιλεγμένη ταυτότητα{/bold} λογαριασμού σε κάθε εγκατάσταση."
+  },
+  "registration.terms.email.heading": {
+    "message": "Το email σας, η άδειά σας"
+  },
+  "registration.terms.heading": {
+    "message": "Πώς λειτουργεί η άδειά σας."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Συνέχεια στην επιλογή άδειας 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "Το {+extensionName} ακολουθεί την εξέλιξη του Thunderbird από το $1. Οι άδειες {+extensionName} χρηματοδοτούν συνεχή ανάπτυξη, νέες λειτουργίες και ενημερώσεις συμβατότητας. Κάθε άδεια διαρκεί ένα έτος και στηρίζει την εργασία που απαιτείται για να συμβαδίζουμε με το Thunderbird."
+  },
+  "registration.terms.label": {
+    "message": "Όροι άδειας"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Οι άδειες {bold}δεν ανανεώνονται αυτόματα{/bold}. Το {+extensionName} θα σας υπενθυμίσει πριν λήξει η άδειά σας."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "Οι αδειοδοτημένες λειτουργίες λειτουργούν και με όλους τους άλλους λογαριασμούς Thunderbird. Δεν χρειάζονται ξεχωριστές άδειες."
+  },
+  "registration.terms.referrer": {
+    "message": "Οι ανανεώσεις και αναβαθμίσεις στέλνουν την προηγούμενη άδειά σας στο κατάστημα για έλεγχο δικαιωμάτων."
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Ξεκινήστε με Pro και εξοικονομήστε τα επόμενα χρόνια.{/bold} Η ανανέωση ή παράταση της άδειας Pro κοστίζει σημαντικά λιγότερο από νέα αγορά."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Εμφάνιση όρων άδειας 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "Η υποστήριξή σας χρηματοδοτεί ανάπτυξη, ενημερώσεις συμβατότητας και διορθώσεις."
+  },
+  "registration.test.menu": {
+    "message": "Εγγραφή στο ηλεκτρονικό κατάστημα"
+  },
+  "registration.test.note": {
+    "message": "Η αγορά ανοίγει στο πρόγραμμα περιήγησης."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · Η άδειά σας"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "Αντικατάσταση υπογραφής κατά την αλλαγή ταυτότητας (με διατήρηση του πληκτρολογημένου κειμένου)"
@@ -2153,7 +2510,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇷 change log",
-    "message": "{L}Το {+extensionName} είναι πλέον συμβατό με το Thunderbird 162.{/L}{sect}Νέες λειτουργίες{/sect}{L}Προστέθηκε η λειτουργία Pro {{%prompt()%}} για εισαγωγή κειμένου ή επιλογή από λίστα. Υποστηρίζει το πρόχειρο ως προεπιλεγμένη είσοδο και ως προορισμό των δεδομένων. [issue 443]{/L}{sect}Ειδοποιήσεις σύνταξης και δοκιμές λειτουργιών{/sect}{L}Οι ειδοποιήσεις αδειοδότησης εμφανίζονται πλέον σε μια συμπαγή, επεκτάσιμη φυσαλίδα αντί για συρόμενες γραμμές, με τις υπόλοιπες χρήσεις δίπλα σε κάθε λειτουργία με άδεια. [issue 441]{/L}{L}Οι νέοι χρήστες έχουν 28 ημέρες δοκιμής χωρίς να καταναλώνουν τα όρια των μεμονωμένων λειτουργιών. Οι χρήστες με ληγμένη άδεια έχουν 7 ημέρες χάριτος για ανανέωση, διατηρώντας την πρόσβαση στις λειτουργίες προτύπων με άδεια.{/L}{L}Εκτός της περιόδου δοκιμής ή χάριτος, κάθε λειτουργία με άδεια χρησιμοποιεί το δικό της υπόλοιπο δωρεάν όριο. Μετρά μόνο η πρώτη χρήση κάθε ημέρας.{/L}{L}Τα σφάλματα προτύπων και έξυπνων αποσπασμάτων εμφανίζονται πλέον στη φυσαλίδα ειδοποιήσεων, ώστε να συνεχίζετε την επεξεργασία και να απορρίπτετε κάθε σφάλμα ξεχωριστά. [issue 442]{/L}{sect}Άλλες βελτιώσεις{/sect}{L}Διορθώθηκε η δοκιμαστική πρόσβαση σε λειτουργίες προχείρου, ετικέτες και {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Ενημερώθηκαν οι μεταφράσεις, συμπεριλαμβανομένης της ενέργειας ανανέωσης διεπαφής, και απλοποιήθηκαν οι πόροι τοπικοποίησης. [issue 440]{/L}"
+    "message": "{L}Το {+extensionName} είναι πλέον συμβατό με το Thunderbird 162.{/L}{sect}Νέες λειτουργίες{/sect}{L}Προστέθηκε η λειτουργία Pro {{%prompt()%}} για εισαγωγή κειμένου ή επιλογή από λίστα. Υποστηρίζει το πρόχειρο ως προεπιλεγμένη είσοδο και ως προορισμό των δεδομένων. [issue 443]{/L}{sect}Ειδοποιήσεις σύνταξης και δοκιμές λειτουργιών{/sect}{L}Οι ειδοποιήσεις αδειοδότησης εμφανίζονται πλέον σε μια συμπαγή, επεκτάσιμη φυσαλίδα αντί για συρόμενες γραμμές, με τις υπόλοιπες χρήσεις δίπλα σε κάθε λειτουργία με άδεια. [issue 441]{/L}{L}Οι νέοι χρήστες έχουν 28 ημέρες δοκιμής χωρίς να καταναλώνουν τα όρια των μεμονωμένων λειτουργιών. Οι χρήστες με ληγμένη άδεια έχουν 7 ημέρες χάριτος για ανανέωση, διατηρώντας την πρόσβαση στις λειτουργίες προτύπων με άδεια.{/L}{L}Εκτός της περιόδου δοκιμής ή χάριτος, κάθε λειτουργία με άδεια χρησιμοποιεί το δικό της υπόλοιπο δωρεάν όριο. Μετρά μόνο η πρώτη χρήση κάθε ημέρας.{/L}{L}Τα σφάλματα προτύπων και έξυπνων αποσπασμάτων εμφανίζονται πλέον στη φυσαλίδα ειδοποιήσεων, ώστε να συνεχίζετε την επεξεργασία και να απορρίπτετε κάθε σφάλμα ξεχωριστά. [issue 442]{/L}{sect}Εγγραφή και ρυθμίσεις{/sect}{L}Πιο ξεκάθαρη διαδρομή προς την άδειά σας: η εγγραφή ανοίγει πλέον σε προσαρμοζόμενη καρτέλα του Thunderbird, με σαφέστερες επιλογές αγοράς, ανανέωσης και αναβάθμισης, καθώς και εξηγήσεις για τη λειτουργία της άδειας. [issue 445]{/L}{L}Ανανεωμένες ρυθμίσεις: βελτιωμένη διάταξη για άδειες και πρότυπα λογαριασμών, σαφέστερα μηνύματα άδειας και προειδοποιητική ένδειξη όταν πλησιάζει η λήξη. [issue 445]{/L}{sect}Άλλες βελτιώσεις{/sect}{L}Διορθώθηκε η δοκιμαστική πρόσβαση σε λειτουργίες προχείρου, ετικέτες και {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Ενημερώθηκαν οι μεταφράσεις, συμπεριλαμβανομένης της ενέργειας ανανέωσης διεπαφής, και απλοποιήθηκαν οι πόροι τοπικοποίησης. [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Ενημέρωση συντήρησης $ver$. Αυτή η συγκεκριμένη διόρθωση προστέθηκε από την προηγούμενη έκδοση.",

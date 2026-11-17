@@ -828,7 +828,7 @@
     "message": "Su licencia tiene validez hasta:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Para saber más sobre las funcionalidades premium visite nuestre página web…"
+    "message": "Para saber más sobre las funcionalidades premium visite nuestre página web"
   },
   "lastName.label": {
     "message": "Apellidos:"
@@ -1195,6 +1195,363 @@
   },
   "regexpAnyText": {
     "message": "Cualquier texto, expresión regular, debe estar entre comillas dobles."
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "Cuenta de correo"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "Comprar $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Comprar licencia de dominio"
+  },
+  "registration.action.current": {
+    "message": "Edición actual"
+  },
+  "registration.action.extend": {
+    "message": "Ampliar licencia"
+  },
+  "registration.action.renew": {
+    "message": "Renovar licencia"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Actualizar a Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Licencias anuales"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Cerrar aviso de compra"
+  },
+  "registration.checkout.error": {
+    "message": "No se pudo abrir la tienda. Inténtelo de nuevo."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Para conservar las ventajas de renovación o actualización, continúe con el producto abierto desde esta página.{/bold} Para elegir una {i}licencia diferente{/i}, vuelva a empezar desde aquí."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Los precios, impuestos y descuentos disponibles se muestran en la tienda."
+  },
+  "registration.checkout.opened": {
+    "message": "La tienda se ha abierto en su navegador. Puede mantener esta pestaña abierta."
+  },
+  "registration.checkout.preview": {
+    "message": "Vista previa de prueba: $1 para $2. No se ha abierto ninguna tienda."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Esta vía de actualización requiere confirmación antes de habilitar la compra. No se ha abierto ninguna tienda."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Comparar Standard y Pro"
+  },
+  "registration.contact.heading": {
+    "message": "¿Para quién es esta licencia?"
+  },
+  "registration.contact.note": {
+    "message": "Estos datos se rellenarán en la compra. Puede modificarlos aquí."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "Su licencia caducó el $1."
+  },
+  "registration.date.none": {
+    "message": "Elija una licencia abajo o introduzca su clave actual."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "Su licencia es válida hasta el $1."
+  },
+  "registration.development": {
+    "message": "Prueba de registro"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro es una licencia personal independiente, no una renovación de dominio. Su licencia de dominio le cubre en instalaciones con una cuenta de correo del dominio registrado de su empresa, dentro del número de puestos adquiridos. Una licencia Pro independiente puede cubrir una instalación doméstica donde no pueda usar esa cuenta. Para mantener la cobertura de su equipo, elija Renovar licencia en el panel Dominio."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Añadir usuarios"
+  },
+  "registration.domain.seatsNote": {
+    "message": "a su licencia de dominio actual."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "¿Necesita más puestos?"
+  },
+  "registration.edition.domain": {
+    "message": "Dominio"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "Dirección de correo"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Se aplican otras reglas: la dirección configurada debe pertenecer al dominio con licencia."
+  },
+  "registration.email.domain.heading": {
+    "message": "Licencias de dominio"
+  },
+  "registration.email.help": {
+    "message": "Acerca de las direcciones con licencia"
+  },
+  "registration.email.help.close": {
+    "message": "Cerrar ayuda del correo"
+  },
+  "registration.email.help.heading": {
+    "message": "Su correo es su licencia"
+  },
+  "registration.email.hint": {
+    "message": "Su licencia personal funciona en varios dispositivos."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Su licencia está vinculada a esta dirección de correo. Puede usarla en varios dispositivos. Configure esta dirección como {bold}identidad predeterminada{/bold} de una cuenta de Thunderbird en cada dispositivo."
+  },
+  "registration.email.personal.heading": {
+    "message": "Licencias Standard y Pro"
+  },
+  "registration.email.rules": {
+    "message": "Reglas de la dirección con licencia"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Introducir clave de licencia…"
+  },
+  "registration.eyebrow": {
+    "message": "Su licencia"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "Nombre"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Datos ficticios: la compra solo abre una vista previa."
+  },
+  "registration.footer": {
+    "message": "Creado para Thunderbird. Financiado por usted."
+  },
+  "registration.heading": {
+    "message": "Su estilo. Menos esfuerzo."
+  },
+  "registration.identity.empty": {
+    "message": "Introducir datos manualmente"
+  },
+  "registration.identity.none": {
+    "message": "No se encontraron cuentas aptas. Puede introducir sus datos de contacto manualmente."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Apellidos"
+  },
+  "registration.learnMore": {
+    "message": "Más información…"
+  },
+  "registration.legacy.menu": {
+    "message": "Registro de licencia anterior"
+  },
+  "registration.license.domain": {
+    "message": "Licencia de dominio"
+  },
+  "registration.license.edition": {
+    "message": "Licencia $1"
+  },
+  "registration.license.none": {
+    "message": "Ninguna licencia configurada"
+  },
+  "registration.load.error": {
+    "message": "No se pudo cargar su licencia o sus cuentas. Recargue esta pestaña para intentarlo de nuevo."
+  },
+  "registration.navigation": {
+    "message": "Navegación de licencias"
+  },
+  "registration.options": {
+    "message": "Opciones de licencia"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "Todas las funciones para su equipo, con una sola licencia."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Para su equipo"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Para un dominio compartido"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "Ponga el correo a trabajar. Ahorre tiempo cada día."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Todas las funciones"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Para su propio correo"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Dé su toque a los correos de cada día."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Lo esencial para cada día"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Para su propio correo"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Licencias de dominio{/bold}{br}La renovación normalmente añade un año a la fecha de caducidad anterior, incluso si el pedido o el pago se retrasan."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Las ventajas de renovación y actualización dependen de los datos de licencia enviados a la tienda. Cambiar de producto en la tienda o un programa de seguridad que elimine esos datos puede impedir que se apliquen sus derechos actuales."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Renovar o ampliar su licencia añade otro año y suele costar menos que comprar una licencia nueva."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Licencias personales{/bold}{br}Una licencia nueva dura un año desde el pago. Al renovar o ampliar la misma edición, obtiene un año desde el pago o un año después de su caducidad actual, lo que le dé más tiempo."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Licencia actual{/bold}{br}Su licencia actual se envía a la tienda para calcular la nueva fecha de caducidad."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Actualizaciones de Standard a Pro{/bold}{br}Su licencia Pro dura un año desde el pago de la actualización. El tiempo restante de su licencia Standard no amplía ese período."
+  },
+  "registration.selection.heading": {
+    "message": "Un año de correo más fácil."
+  },
+  "registration.selection.intro": {
+    "message": "Elija Standard para el correo diario, Pro para todas las funciones o Dominio para su equipo."
+  },
+  "registration.selection.label": {
+    "message": "Selección de licencia"
+  },
+  "registration.settings.error": {
+    "message": "No se pudo abrir la configuración de licencias. Inténtelo de nuevo."
+  },
+  "registration.showLess": {
+    "message": "Mostrar menos"
+  },
+  "registration.status.Empty": {
+    "message": "Edición gratuita"
+  },
+  "registration.status.Expired": {
+    "message": "Caducada"
+  },
+  "registration.status.Invalid": {
+    "message": "Licencia no válida"
+  },
+  "registration.status.MailDifferent": {
+    "message": "El correo de la licencia no coincide"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Dirección con licencia sin configurar"
+  },
+  "registration.status.NotValidated": {
+    "message": "Sin validar"
+  },
+  "registration.status.Unknown": {
+    "message": "Licencia no disponible"
+  },
+  "registration.status.Valid": {
+    "message": "Válida"
+  },
+  "registration.subtitle": {
+    "message": "Elija la licencia adecuada para su forma de trabajar."
+  },
+  "registration.terms.annual": {
+    "message": "Una licencia cubre un año. Renueve una licencia caducada o amplíe una vigente para continuar con la edición elegida."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Un año cada vez"
+  },
+  "registration.terms.back": {
+    "message": "Selección de licencia"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Seleccione una licencia para ir a la tienda. El precio depende de la edición, el país, los impuestos y los descuentos aplicables."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Compra en su navegador"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Una licencia de dominio cubre a los usuarios cuyas direcciones pertenecen al dominio con licencia."
+  },
+  "registration.terms.draft": {
+    "message": "Condiciones provisionales: los detalles de las pruebas y las funciones tras la caducidad se revisarán antes de publicar."
+  },
+  "registration.terms.edition": {
+    "message": "Standard y Pro ofrecen distintos niveles de funciones. Compare las ediciones para encontrar la más adecuada."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Elija su edición"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Una licencia personal está vinculada a su dirección de correo. Puede usarla en varias instalaciones de Thunderbird si la dirección con licencia está configurada como {bold}identidad predeterminada{/bold} de una cuenta en cada instalación."
+  },
+  "registration.terms.email.heading": {
+    "message": "Su correo, su licencia"
+  },
+  "registration.terms.heading": {
+    "message": "Cómo funciona su licencia."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Continuar a la selección de licencia 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} se adapta a Thunderbird desde $1. Las licencias de {+extensionName} financian el desarrollo continuo, nuevas funciones y actualizaciones de compatibilidad. Cada licencia dura un año y ayuda a sostener el trabajo necesario para seguir el ritmo de Thunderbird."
+  },
+  "registration.terms.label": {
+    "message": "Condiciones de licencia"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Las licencias {bold}no se renuevan automáticamente{/bold}. {+extensionName} le avisará antes de que caduque su licencia."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "Las funciones con licencia también funcionan con todas sus demás cuentas de Thunderbird. No necesita licencias adicionales."
+  },
+  "registration.terms.referrer": {
+    "message": "Las renovaciones y actualizaciones envían su licencia anterior a la tienda para comprobar los requisitos."
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Empiece con Pro y ahorre los próximos años.{/bold} Renovar o ampliar su licencia Pro cuesta mucho menos que comprar una nueva."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Mostrar condiciones de licencia 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "Su apoyo ayuda a financiar el desarrollo, las actualizaciones de compatibilidad y las reparaciones."
+  },
+  "registration.test.menu": {
+    "message": "Registro en la tienda web"
+  },
+  "registration.test.note": {
+    "message": "La compra se abre en su navegador."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · Su licencia"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "Reemplazar la firma al cambiar la identidad (manteniendo el texto introducido)"
@@ -2084,7 +2441,7 @@
   },
   "whats-new-list": {
     "description": "🇪🇸 change log",
-    "message": "{L}{+extensionName} ahora es compatible con Thunderbird 162.{/L}{sect}Nuevas funciones{/sect}{L}Se añadió la función Pro {{%prompt()%}} para introducir texto o seleccionar una opción de una lista. Admite el portapapeles como entrada predeterminada y como destino de los datos. [issue 443]{/L}{sect}Notificaciones de redacción y pruebas de funciones{/sect}{L}Los avisos de licencia ahora aparecen en una burbuja compacta y desplegable en lugar de barras deslizantes, con los usos restantes junto a cada función con licencia. [issue 441]{/L}{L}Los nuevos usuarios disponen de 28 días de prueba sin consumir los cupos de las funciones individuales. Los usuarios con una licencia caducada tienen 7 días de gracia para renovarla manteniendo el acceso a las funciones de plantilla con licencia.{/L}{L}Fuera del período de prueba o de gracia, cada función con licencia utiliza su propio cupo gratuito restante. Solo cuenta el primer uso de cada día.{/L}{L}Los errores de plantillas y fragmentos inteligentes ahora aparecen en la burbuja de notificaciones, para que pueda seguir editando y descartar los errores individualmente. [issue 442]{/L}{sect}Otras mejoras{/sect}{L}Se corrigió el acceso de prueba a las operaciones del portapapeles, las etiquetas y {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Se actualizaron las traducciones, incluida la acción de actualizar la interfaz, y se simplificaron los recursos de localización. [issue 440]{/L}"
+    "message": "{L}{+extensionName} ahora es compatible con Thunderbird 162.{/L}{sect}Nuevas funciones{/sect}{L}Se añadió la función Pro {{%prompt()%}} para introducir texto o seleccionar una opción de una lista. Admite el portapapeles como entrada predeterminada y como destino de los datos. [issue 443]{/L}{sect}Notificaciones de redacción y pruebas de funciones{/sect}{L}Los avisos de licencia ahora aparecen en una burbuja compacta y desplegable en lugar de barras deslizantes, con los usos restantes junto a cada función con licencia. [issue 441]{/L}{L}Los nuevos usuarios disponen de 28 días de prueba sin consumir los cupos de las funciones individuales. Los usuarios con una licencia caducada tienen 7 días de gracia para renovarla manteniendo el acceso a las funciones de plantilla con licencia.{/L}{L}Fuera del período de prueba o de gracia, cada función con licencia utiliza su propio cupo gratuito restante. Solo cuenta el primer uso de cada día.{/L}{L}Los errores de plantillas y fragmentos inteligentes ahora aparecen en la burbuja de notificaciones, para que pueda seguir editando y descartar los errores individualmente. [issue 442]{/L}{sect}Registro y configuración{/sect}{L}Una forma más clara de obtener su licencia: el registro ahora se abre en una pestaña adaptable de Thunderbird, con opciones más claras de compra, renovación y actualización, y explicaciones sobre cómo funciona su licencia. [issue 445]{/L}{L}Configuración renovada: mejor distribución de Licencias y Plantillas de cuenta, mensajes de licencia más claros y un indicador de aviso cuando se acerca la caducidad. [issue 445]{/L}{sect}Otras mejoras{/sect}{L}Se corrigió el acceso de prueba a las operaciones del portapapeles, las etiquetas y {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Se actualizaron las traducciones, incluida la acción de actualizar la interfaz, y se simplificaron los recursos de localización. [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Actualización de mantenimiento $ver$. Esta corrección específica se añadió desde la versión anterior.",

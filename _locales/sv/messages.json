@@ -934,7 +934,7 @@
     "message": "Din licens är giltig t.o.m.:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Läs mer om premiumfunktioner på vår webbplats…"
+    "message": "Läs mer om premiumfunktioner på vår webbplats"
   },
   "lastName.label": {
     "message": "Efternamn:"
@@ -1540,6 +1540,363 @@
   },
   "regexpAnyText": {
     "message": "All text - regelbundet uttryck - måste vara i dubbla citat."
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "E-postkonto"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "Köp $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Köp domänlicens"
+  },
+  "registration.action.current": {
+    "message": "Nuvarande utgåva"
+  },
+  "registration.action.extend": {
+    "message": "Förläng licens"
+  },
+  "registration.action.renew": {
+    "message": "Förnya licens"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Uppgradera till Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Årslicenser"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Stäng köpmeddelande"
+  },
+  "registration.checkout.error": {
+    "message": "Det gick inte att öppna butiken. Försök igen."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Fortsätt med produkten som öppnades från den här sidan för att behålla dina förnyelse- eller uppgraderingsförmåner.{/bold} Vill du välja en {i}annan licens{/i}, börja om härifrån."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Priser, skatter och tillgängliga rabatter visas i butiken."
+  },
+  "registration.checkout.opened": {
+    "message": "Butiken har öppnats i din webbläsare. Du kan låta den här fliken vara öppen."
+  },
+  "registration.checkout.preview": {
+    "message": "Testförhandsvisning: $1 för $2. Ingen butik öppnades."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Denna uppgraderingsväg måste bekräftas innan köp kan aktiveras. Ingen butik öppnades."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Jämför Standard och Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Vem är licensen till för?"
+  },
+  "registration.contact.note": {
+    "message": "Uppgifterna förifylls i kassan. Du kan ändra dem här."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "Din licens gick ut $1."
+  },
+  "registration.date.none": {
+    "message": "Välj en licens nedan eller ange din befintliga nyckel."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "Din licens gäller till $1."
+  },
+  "registration.development": {
+    "message": "Registreringstest"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro är en separat personlig licens, inte en förnyelse av en domänlicens. Din domänlicens täcker installationer med ett e-postkonto på företagets registrerade domän, inom antalet köpta användarplatser. En separat Pro-licens kan täcka en heminstallation där du inte kan använda det kontot. Välj Förnya licens i panelen Domän för att fortsätta teamets täckning."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Lägg till användare"
+  },
+  "registration.domain.seatsNote": {
+    "message": "till din befintliga domänlicens."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Behöver du fler platser?"
+  },
+  "registration.edition.domain": {
+    "message": "Domän"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "E-postadress"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Andra regler gäller: den konfigurerade adressen måste tillhöra den licensierade domänen."
+  },
+  "registration.email.domain.heading": {
+    "message": "Domänlicenser"
+  },
+  "registration.email.help": {
+    "message": "Om licensierade e-postadresser"
+  },
+  "registration.email.help.close": {
+    "message": "Stäng e-posthjälpen"
+  },
+  "registration.email.help.heading": {
+    "message": "Din e-postadress är din licens"
+  },
+  "registration.email.hint": {
+    "message": "Din personliga licens fungerar på flera enheter."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Licensen är knuten till den här e-postadressen. Du kan använda den på flera enheter. Konfigurera adressen som ett kontos {bold}standardidentitet{/bold} i Thunderbird på varje enhet."
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard- och Pro-licenser"
+  },
+  "registration.email.rules": {
+    "message": "Regler för licensierade e-postadresser"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Ange licensnyckel…"
+  },
+  "registration.eyebrow": {
+    "message": "Din licens"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "Förnamn"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Testdata: kassan öppnar endast en förhandsvisning."
+  },
+  "registration.footer": {
+    "message": "Skapat för Thunderbird. Med ditt stöd."
+  },
+  "registration.heading": {
+    "message": "Din stil. Mindre arbete."
+  },
+  "registration.identity.empty": {
+    "message": "Ange uppgifter manuellt"
+  },
+  "registration.identity.none": {
+    "message": "Inga lämpliga e-postkonton hittades. Du kan ange kontaktuppgifterna manuellt."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Efternamn"
+  },
+  "registration.learnMore": {
+    "message": "Läs mer…"
+  },
+  "registration.legacy.menu": {
+    "message": "Äldre licensregistrering"
+  },
+  "registration.license.domain": {
+    "message": "Domänlicens"
+  },
+  "registration.license.edition": {
+    "message": "$1-licens"
+  },
+  "registration.license.none": {
+    "message": "Ingen licens konfigurerad"
+  },
+  "registration.load.error": {
+    "message": "Det gick inte att läsa in licensen eller kontona. Ladda om fliken för att försöka igen."
+  },
+  "registration.navigation": {
+    "message": "Licensnavigering"
+  },
+  "registration.options": {
+    "message": "Licensalternativ"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "Alla funktioner för hela teamet, med en enda licens."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "För ditt team"
+  },
+  "registration.plan.domain.scope": {
+    "message": "För en gemensam domän"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "Du sätter e-posten i arbete. Spara tid varje dag."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Alla funktioner"
+  },
+  "registration.plan.pro.scope": {
+    "message": "För din egen e-post"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Ge vardagens e-post din egen stil."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Det viktigaste i vardagen"
+  },
+  "registration.plan.standard.scope": {
+    "message": "För din egen e-post"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Domänlicenser{/bold}{br}En förnyelse lägger normalt till ett år till det tidigare utgångsdatumet, även vid sen beställning eller betalning."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Förnyelse- och uppgraderingsförmåner beror på licensinformationen som skickas till butiken. Att byta produkt i butiken, eller säkerhetsprogram som tar bort informationen, kan hindra butiken från att tillämpa dina befintliga rättigheter."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Att förnya eller förlänga licensen lägger till ett år och kostar oftast mindre än en ny licens."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Personliga licenser{/bold}{br}En ny licens gäller ett år från betalningen. När du förnyar eller förlänger samma utgåva får du ett helt år från betalningen eller ett år efter nuvarande utgångsdatum, beroende på vilket som ger mest tid."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Befintlig licens{/bold}{br}Din nuvarande licens skickas till butiken så att det nya utgångsdatumet kan beräknas."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Uppgraderingar från Standard till Pro{/bold}{br}Din Pro-licens gäller ett år från betalningen av uppgraderingen. Återstående tid på Standard-licensen förlänger inte perioden."
+  },
+  "registration.selection.heading": {
+    "message": "Ett år med enklare e-post."
+  },
+  "registration.selection.intro": {
+    "message": "Välj Standard för vardagens e-post, Pro för alla funktioner eller Domän för teamet."
+  },
+  "registration.selection.label": {
+    "message": "Licensval"
+  },
+  "registration.settings.error": {
+    "message": "Det gick inte att öppna licensinställningarna. Försök igen."
+  },
+  "registration.showLess": {
+    "message": "Visa mindre"
+  },
+  "registration.status.Empty": {
+    "message": "Gratisutgåva"
+  },
+  "registration.status.Expired": {
+    "message": "Utgången"
+  },
+  "registration.status.Invalid": {
+    "message": "Ogiltig licens"
+  },
+  "registration.status.MailDifferent": {
+    "message": "Licensens e-postadress stämmer inte"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Licensierad adress inte konfigurerad"
+  },
+  "registration.status.NotValidated": {
+    "message": "Inte validerad"
+  },
+  "registration.status.Unknown": {
+    "message": "Licens inte tillgänglig"
+  },
+  "registration.status.Valid": {
+    "message": "Giltig"
+  },
+  "registration.subtitle": {
+    "message": "Välj rätt licens för ditt arbetssätt."
+  },
+  "registration.terms.annual": {
+    "message": "En licens gäller ett år. Förnya en utgången licens eller förläng en aktuell för att fortsätta med vald utgåva."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Ett år i taget"
+  },
+  "registration.terms.back": {
+    "message": "Licensval"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Välj en licens för att gå till butiken. Priset beror på utgåva, land, skatter och tillämpliga rabatter."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Köp i din webbläsare"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "En domänlicens täcker användare med adresser inom den licensierade domänen."
+  },
+  "registration.terms.draft": {
+    "message": "Preliminära villkor: detaljer om provanvändning och funktioner efter utgångsdatum granskas före lanseringen."
+  },
+  "registration.terms.edition": {
+    "message": "Standard och Pro erbjuder olika funktionsnivåer. Jämför utgåvorna för att hitta rätt."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Välj utgåva"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "En personlig licens är knuten till din e-postadress. Du kan använda den på flera Thunderbird-installationer när den licensierade adressen är konfigurerad som ett kontos {bold}standardidentitet{/bold} i varje installation."
+  },
+  "registration.terms.email.heading": {
+    "message": "Din e-postadress, din licens"
+  },
+  "registration.terms.heading": {
+    "message": "Så fungerar din licens."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Fortsätt till licensval 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} har följt Thunderbirds utveckling sedan $1. Licenser för {+extensionName} finansierar fortsatt utveckling, nya funktioner och kompatibilitetsuppdateringar. Varje licens gäller ett år och stöder arbetet som behövs för att hålla jämna steg med Thunderbird."
+  },
+  "registration.terms.label": {
+    "message": "Licensvillkor"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Licenser {bold}förnyas inte automatiskt{/bold}. {+extensionName} påminner dig innan licensen går ut."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "De licensierade funktionerna fungerar också med alla dina andra e-postkonton i Thunderbird. Inga separata licenser behövs."
+  },
+  "registration.terms.referrer": {
+    "message": "Vid förnyelser och uppgraderingar skickas din tidigare licens till butiken för behörighetskontroll."
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Börja med Pro och spara under kommande år.{/bold} Att förnya eller förlänga Pro-licensen kostar betydligt mindre än att köpa en ny."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Visa licensvillkor 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "Ditt stöd finansierar utveckling, kompatibilitetsuppdateringar och rättningar."
+  },
+  "registration.test.menu": {
+    "message": "Registrering i webbutiken"
+  },
+  "registration.test.note": {
+    "message": "Kassan öppnas i din webbläsare."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · Din licens"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "Ersätt signatur vid identitetsbyte (behåll skriven text)"
@@ -2165,7 +2522,7 @@
   },
   "whats-new-list": {
     "description": "🇸🇪 change log",
-    "message": "{L}{+extensionName} är nu kompatibelt med Thunderbird 162.{/L}{sect}Nya funktioner{/sect}{L}Pro-funktionen {{%prompt()%}} har lagts till för textinmatning eller val från en lista. Urklipp kan användas som standardinmatning och som mål för data. [issue 443]{/L}{sect}Meddelanden i skrivfönstret och funktionsutvärdering{/sect}{L}Licensmeddelanden visas nu i en kompakt, utfällbar meddelandebubbla i stället för glidande fält. Återstående användningar visas bredvid varje licensierad funktion. [issue 441]{/L}{L}Nya användare får 28 provdagar utan att förbruka kvoterna för enskilda funktioner. Användare med utgången licens får 7 dagars respit för att förnya den och behåller under tiden tillgången till licensierade mallfunktioner.{/L}{L}Utanför prov- eller respitperioden använder varje licensierad funktion sin egen återstående kostnadsfria kvot. Endast dagens första användning räknas.{/L}{L}Fel i mallar och smarta fragment visas nu i meddelandebubblan, så att du kan fortsätta redigera och stänga felmeddelanden ett i taget. [issue 442]{/L}{sect}Andra förbättringar{/sect}{L}Åtgärdad provåtkomst till urklippsåtgärder, etiketter och {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Uppdaterade översättningar, inklusive åtgärden för att uppdatera gränssnittet, och förenklade lokaliseringsresurser. [issue 440]{/L}"
+    "message": "{L}{+extensionName} är nu kompatibelt med Thunderbird 162.{/L}{sect}Nya funktioner{/sect}{L}Pro-funktionen {{%prompt()%}} har lagts till för textinmatning eller val från en lista. Urklipp kan användas som standardinmatning och som mål för data. [issue 443]{/L}{sect}Meddelanden i skrivfönstret och funktionsutvärdering{/sect}{L}Licensmeddelanden visas nu i en kompakt, utfällbar meddelandebubbla i stället för glidande fält. Återstående användningar visas bredvid varje licensierad funktion. [issue 441]{/L}{L}Nya användare får 28 provdagar utan att förbruka kvoterna för enskilda funktioner. Användare med utgången licens får 7 dagars respit för att förnya den och behåller under tiden tillgången till licensierade mallfunktioner.{/L}{L}Utanför prov- eller respitperioden använder varje licensierad funktion sin egen återstående kostnadsfria kvot. Endast dagens första användning räknas.{/L}{L}Fel i mallar och smarta fragment visas nu i meddelandebubblan, så att du kan fortsätta redigera och stänga felmeddelanden ett i taget. [issue 442]{/L}{sect}Registrering och inställningar{/sect}{L}En tydligare väg till din licens: registreringen öppnas nu i en anpassningsbar Thunderbird-flik, med tydligare val för köp, förnyelse och uppgradering samt förklaringar av hur licensen fungerar. [issue 445]{/L}{L}Förnyade inställningar: bättre layout för licenser och kontomallar, tydligare licensmeddelanden och en varningsmarkering när utgångsdatumet närmar sig. [issue 445]{/L}{sect}Andra förbättringar{/sect}{L}Åtgärdad provåtkomst till urklippsåtgärder, etiketter och {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Uppdaterade översättningar, inklusive åtgärden för att uppdatera gränssnittet, och förenklade lokaliseringsresurser. [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Underhållsuppdatering $ver$. Denna specifika fix har lagts till sedan föregående version.",

@@ -931,7 +931,7 @@
     "message": "您的许可有效期至："
   },
   "label.premiumFeaturesSite": {
-    "message": "详细了解我们网站上的高级功能…"
+    "message": "详细了解我们网站上的高级功能"
   },
   "lastName.label": {
     "message": "姓氏"
@@ -1525,6 +1525,363 @@
   },
   "regexpAnyText": {
     "message": "任何文本（正则表达式）都必须用双引号引起来。"
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "邮件账户"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "购买 $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "购买域名许可证"
+  },
+  "registration.action.current": {
+    "message": "当前版本"
+  },
+  "registration.action.extend": {
+    "message": "延长许可证"
+  },
+  "registration.action.renew": {
+    "message": "续订许可证"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "升级到 Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "年度许可证"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "关闭购买提示"
+  },
+  "registration.checkout.error": {
+    "message": "无法打开商店。请重试。"
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}为保留续订或升级优惠，请继续购买从此页面打开的产品。{/bold}若要选择{i}其他许可证{/i}，请从这里重新开始。"
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "价格、税费和可用折扣将在商店中显示。"
+  },
+  "registration.checkout.opened": {
+    "message": "已在浏览器中打开商店。您可以保留此标签页。"
+  },
+  "registration.checkout.preview": {
+    "message": "测试预览：$2 的 $1。未打开商店。"
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "此升级途径需要确认后才能启用购买。未打开商店。"
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "比较 Standard 和 Pro"
+  },
+  "registration.contact.heading": {
+    "message": "此许可证供谁使用？"
+  },
+  "registration.contact.note": {
+    "message": "这些信息将在结账时自动填写。您可以在此修改。"
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "您的许可证已于 $1 到期。"
+  },
+  "registration.date.none": {
+    "message": "请在下方选择许可证，或输入已有的密钥。"
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "您的许可证有效期至 $1。"
+  },
+  "registration.development": {
+    "message": "注册测试"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro 是单独的个人许可证，不是域名许可证的续订。域名许可证适用于已配置您所注册公司域名邮箱账户的安装环境，人数不超过已购买的席位。若家中的安装环境无法使用该账户，可以另行使用 Pro 许可证。要继续保障团队使用，请在“域名”面板中选择“续订许可证”。"
+  },
+  "registration.domain.seatsLink": {
+    "message": "添加用户"
+  },
+  "registration.domain.seatsNote": {
+    "message": "到您现有的域名许可证。"
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "需要更多席位？"
+  },
+  "registration.edition.domain": {
+    "message": "域名"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "电子邮件地址"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "适用规则不同：配置的邮箱地址必须属于已获许可的域名。"
+  },
+  "registration.email.domain.heading": {
+    "message": "域名许可证"
+  },
+  "registration.email.help": {
+    "message": "关于许可证绑定的邮箱地址"
+  },
+  "registration.email.help.close": {
+    "message": "关闭邮箱帮助"
+  },
+  "registration.email.help.heading": {
+    "message": "您的邮箱就是您的许可证"
+  },
+  "registration.email.hint": {
+    "message": "个人许可证可在多台设备上使用。"
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "许可证与此邮箱地址绑定。您可以在多台设备上使用。请在每台设备的 Thunderbird 中，将此地址设置为账户的{bold}默认身份{/bold}。"
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard 和 Pro 许可证"
+  },
+  "registration.email.rules": {
+    "message": "许可证邮箱规则"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "输入许可证密钥…"
+  },
+  "registration.eyebrow": {
+    "message": "您的许可证"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "名"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "模拟数据：购买操作仅打开预览。"
+  },
+  "registration.footer": {
+    "message": "为 Thunderbird 而造。由您支持。"
+  },
+  "registration.heading": {
+    "message": "您的风格。更少的精力。"
+  },
+  "registration.identity.empty": {
+    "message": "手动输入信息"
+  },
+  "registration.identity.none": {
+    "message": "未找到符合条件的邮件账户。您可以手动输入联系信息。"
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "姓"
+  },
+  "registration.learnMore": {
+    "message": "了解更多…"
+  },
+  "registration.legacy.menu": {
+    "message": "旧版许可证注册"
+  },
+  "registration.license.domain": {
+    "message": "域名许可证"
+  },
+  "registration.license.edition": {
+    "message": "$1 许可证"
+  },
+  "registration.license.none": {
+    "message": "未配置许可证"
+  },
+  "registration.load.error": {
+    "message": "无法加载许可证或账户。请重新加载此标签页再试。"
+  },
+  "registration.navigation": {
+    "message": "许可证导航"
+  },
+  "registration.options": {
+    "message": "许可证选项"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "全体团队成员，所有功能，一个许可证。"
+  },
+  "registration.plan.domain.kicker": {
+    "message": "适合您的团队"
+  },
+  "registration.plan.domain.scope": {
+    "message": "适用于共用域名"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "让邮件为您工作。每天节省时间。"
+  },
+  "registration.plan.pro.kicker": {
+    "message": "所有功能"
+  },
+  "registration.plan.pro.scope": {
+    "message": "适用于您自己的邮箱"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "让日常邮件展现您的风格。"
+  },
+  "registration.plan.standard.kicker": {
+    "message": "日常必备功能"
+  },
+  "registration.plan.standard.scope": {
+    "message": "适用于您自己的邮箱"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}域名许可证{/bold}{br}续订通常会在原到期日上增加一年，即使下单或付款较晚也是如此。"
+  },
+  "registration.renewal.entitlements": {
+    "message": "续订和升级优惠取决于传递给商店的许可证信息。在商店中切换产品，或安全软件删除这些信息，都可能导致商店无法应用您的现有权益。"
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "续订或延长许可证可增加一年，通常比购买新许可证便宜。"
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}个人许可证{/bold}{br}新许可证从付款起有效一年。续订或延长同一版本时，将从付款起算一年，或在当前到期日上增加一年，以有效期较长者为准。"
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}现有许可证{/bold}{br}您当前的许可证将传递给商店，以计算新的到期日。"
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}从 Standard 升级到 Pro{/bold}{br}Pro 许可证自升级付款之日起有效一年。Standard 许可证的剩余时间不会延长此期限。"
+  },
+  "registration.selection.heading": {
+    "message": "一年的轻松邮件体验。"
+  },
+  "registration.selection.intro": {
+    "message": "日常邮件选择 Standard，完整功能选择 Pro，团队选择域名许可证。"
+  },
+  "registration.selection.label": {
+    "message": "选择许可证"
+  },
+  "registration.settings.error": {
+    "message": "无法打开许可证设置。请重试。"
+  },
+  "registration.showLess": {
+    "message": "收起"
+  },
+  "registration.status.Empty": {
+    "message": "免费版"
+  },
+  "registration.status.Expired": {
+    "message": "已到期"
+  },
+  "registration.status.Invalid": {
+    "message": "许可证无效"
+  },
+  "registration.status.MailDifferent": {
+    "message": "许可证邮箱不匹配"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "未配置许可证邮箱"
+  },
+  "registration.status.NotValidated": {
+    "message": "未验证"
+  },
+  "registration.status.Unknown": {
+    "message": "许可证不可用"
+  },
+  "registration.status.Valid": {
+    "message": "有效"
+  },
+  "registration.subtitle": {
+    "message": "选择适合您工作方式的许可证。"
+  },
+  "registration.terms.annual": {
+    "message": "许可证有效期为一年。续订已到期的许可证或延长当前许可证，即可继续使用所选版本。"
+  },
+  "registration.terms.annual.heading": {
+    "message": "每次一年"
+  },
+  "registration.terms.back": {
+    "message": "选择许可证"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "选择许可证以进入商店。价格取决于版本、国家、税费和适用折扣。"
+  },
+  "registration.terms.checkout.heading": {
+    "message": "在浏览器中结账"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "域名许可证适用于邮箱地址属于获许可域名的用户。"
+  },
+  "registration.terms.draft": {
+    "message": "条款草案：试用和到期后功能的具体行为将在发布前审核。"
+  },
+  "registration.terms.edition": {
+    "message": "Standard 和 Pro 提供不同级别的功能。请比较版本，找到适合您的选择。"
+  },
+  "registration.terms.edition.heading": {
+    "message": "选择您的版本"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "个人许可证与您的邮箱地址绑定。只要在每个 Thunderbird 安装环境中，将该地址配置为账户的{bold}默认身份{/bold}，就可以在多个安装环境中使用。"
+  },
+  "registration.terms.email.heading": {
+    "message": "您的邮箱，您的许可证"
+  },
+  "registration.terms.heading": {
+    "message": "许可证如何运作。"
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 继续选择许可证 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "自 $1 年起，{+extensionName} 一直紧随 Thunderbird 的发展。{+extensionName} 许可证为持续开发、新功能和兼容性更新提供资金。每份许可证有效一年，帮助支持跟进 Thunderbird 所需的工作。"
+  },
+  "registration.terms.label": {
+    "message": "许可条款"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "许可证{bold}不会自动续订{/bold}。{+extensionName} 会在许可证到期前提醒您。"
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "获许可的功能同样适用于您在 Thunderbird 中的所有其他邮件账户，无需单独购买许可证。"
+  },
+  "registration.terms.referrer": {
+    "message": "续订和升级时，会将您原来的许可证传递给商店以核查资格。"
+  },
+  "registration.terms.savings": {
+    "message": "{bold}从 Pro 开始，以后每年更省钱。{/bold}续订或延长 Pro 许可证远比购买新许可证便宜。"
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "显示许可条款 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "您的支持帮助资助开发、兼容性更新和问题修复。"
+  },
+  "registration.test.menu": {
+    "message": "前往网店注册"
+  },
+  "registration.test.note": {
+    "message": "结账将在浏览器中打开。"
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · 您的许可证"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "更改身份时替换签名（保留已输入的文本）"
@@ -2144,7 +2501,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L}{+extensionName} 现已兼容 Thunderbird 162。{/L}{sect}新功能{/sect}{L}新增 Pro 功能 {{%prompt()%}}，支持输入文本或从选项列表中选择。可将剪贴板用作默认输入来源和数据输出目标。 [issue 443]{/L}{sect}撰写窗口通知与功能试用{/sect}{L}许可证提示现在显示在紧凑、可展开的通知气泡中，取代滑动通知栏。每项需许可证的功能旁边会显示剩余使用次数。 [issue 441]{/L}{L}新用户拥有28天试用期，期间不消耗各项功能的使用额度。许可证过期的用户有7天宽限期，可在续订前继续使用需许可证的模板功能。{/L}{L}试用期或宽限期结束后，每项需许可证的功能将使用各自剩余的免费额度。每天只计算首次使用。{/L}{L}模板和智能片段错误现在显示在通知气泡中，您可以继续编辑并逐一关闭错误提示。 [issue 442]{/L}{sect}其他改进{/sect}{L}修复了剪贴板操作、标签和 {{%deleteForwardedBody%}} 的试用访问权限。 [issue 439]{/L}{L}更新了翻译（包括刷新界面操作），并简化了本地化资源。 [issue 440]{/L}"
+    "message": "{L}{+extensionName} 现已兼容 Thunderbird 162。{/L}{sect}新功能{/sect}{L}新增 Pro 功能 {{%prompt()%}}，支持输入文本或从选项列表中选择。可将剪贴板用作默认输入来源和数据输出目标。 [issue 443]{/L}{sect}撰写窗口通知与功能试用{/sect}{L}许可证提示现在显示在紧凑、可展开的通知气泡中，取代滑动通知栏。每项需许可证的功能旁边会显示剩余使用次数。 [issue 441]{/L}{L}新用户拥有28天试用期，期间不消耗各项功能的使用额度。许可证过期的用户有7天宽限期，可在续订前继续使用需许可证的模板功能。{/L}{L}试用期或宽限期结束后，每项需许可证的功能将使用各自剩余的免费额度。每天只计算首次使用。{/L}{L}模板和智能片段错误现在显示在通知气泡中，您可以继续编辑并逐一关闭错误提示。 [issue 442]{/L}{sect}注册与设置{/sect}{L}更清晰的许可证流程：注册现在会在自适应的 Thunderbird 标签页中打开，提供更明确的购买、续订和升级选项，并解释许可证的运作方式。 [issue 445]{/L}{L}设置界面焕新：改进了许可证与账户模板的布局，许可证提示更加清晰，并会在即将到期时显示警告标记。 [issue 445]{/L}{sect}其他改进{/sect}{L}修复了剪贴板操作、标签和 {{%deleteForwardedBody%}} 的试用访问权限。 [issue 439]{/L}{L}更新了翻译（包括刷新界面操作），并简化了本地化资源。 [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "维护更新 $ver$。此特定修复已包含在上一版本之后的更新中。",

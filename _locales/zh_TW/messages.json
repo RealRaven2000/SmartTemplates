@@ -931,7 +931,7 @@
     "message": "您的許可證有效期至："
   },
   "label.premiumFeaturesSite": {
-    "message": "在我們的網站上了解有關高級功能的更多信息…"
+    "message": "在我們的網站上了解有關高級功能的更多信息"
   },
   "lastName.label": {
     "message": "姓："
@@ -1531,6 +1531,363 @@
   },
   "regexpAnyText": {
     "message": "任何文本（正則表達式）都必須用雙引號引起來。"
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "郵件帳號"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "購買 $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "購買網域授權"
+  },
+  "registration.action.current": {
+    "message": "目前版本"
+  },
+  "registration.action.extend": {
+    "message": "延長授權"
+  },
+  "registration.action.renew": {
+    "message": "續購授權"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "升級至 Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "年度授權"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "關閉購買通知"
+  },
+  "registration.checkout.error": {
+    "message": "無法開啟商店。請再試一次。"
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}為保留續購或升級優惠，請繼續購買從此頁面開啟的產品。{/bold}若要選擇{i}其他授權{/i}，請從這裡重新開始。"
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "價格、稅金與可用折扣將顯示於商店中。"
+  },
+  "registration.checkout.opened": {
+    "message": "已在瀏覽器中開啟商店。您可以保留此分頁。"
+  },
+  "registration.checkout.preview": {
+    "message": "測試預覽：$2 的 $1。未開啟商店。"
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "此升級途徑需要確認後才能啟用購買。未開啟商店。"
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "比較 Standard 與 Pro"
+  },
+  "registration.contact.heading": {
+    "message": "此授權供誰使用？"
+  },
+  "registration.contact.note": {
+    "message": "這些資料將在結帳時自動填入。您可以在此修改。"
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "您的授權已於 $1 到期。"
+  },
+  "registration.date.none": {
+    "message": "請在下方選擇授權，或輸入現有金鑰。"
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "您的授權有效期限至 $1。"
+  },
+  "registration.development": {
+    "message": "註冊測試"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro 是獨立的個人授權，不是網域授權的續購。網域授權適用於已設定您所註冊公司網域郵件帳號的安裝環境，人數不超過已購買的名額。若家中的安裝環境無法使用該帳號，可以另行使用 Pro 授權。若要繼續保障團隊使用，請在「網域」面板中選擇「續購授權」。"
+  },
+  "registration.domain.seatsLink": {
+    "message": "新增使用者"
+  },
+  "registration.domain.seatsNote": {
+    "message": "至您現有的網域授權。"
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "需要更多名額？"
+  },
+  "registration.edition.domain": {
+    "message": "網域"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "電子郵件地址"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "適用規則不同：設定的郵件地址必須屬於已授權的網域。"
+  },
+  "registration.email.domain.heading": {
+    "message": "網域授權"
+  },
+  "registration.email.help": {
+    "message": "關於授權綁定的郵件地址"
+  },
+  "registration.email.help.close": {
+    "message": "關閉郵件地址說明"
+  },
+  "registration.email.help.heading": {
+    "message": "您的郵件地址就是您的授權"
+  },
+  "registration.email.hint": {
+    "message": "個人授權可在多部裝置上使用。"
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "授權與此郵件地址綁定。您可以在多部裝置上使用。請在每部裝置的 Thunderbird 中，將此地址設為帳號的{bold}預設身分{/bold}。"
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard 與 Pro 授權"
+  },
+  "registration.email.rules": {
+    "message": "授權郵件地址規則"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "輸入授權金鑰…"
+  },
+  "registration.eyebrow": {
+    "message": "您的授權"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "名字"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "模擬資料：購買操作只會開啟預覽。"
+  },
+  "registration.footer": {
+    "message": "為 Thunderbird 打造。由您支持。"
+  },
+  "registration.heading": {
+    "message": "您的風格。更省心力。"
+  },
+  "registration.identity.empty": {
+    "message": "手動輸入資料"
+  },
+  "registration.identity.none": {
+    "message": "找不到符合條件的郵件帳號。您可以手動輸入聯絡資料。"
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "姓氏"
+  },
+  "registration.learnMore": {
+    "message": "瞭解更多…"
+  },
+  "registration.legacy.menu": {
+    "message": "舊版授權註冊"
+  },
+  "registration.license.domain": {
+    "message": "網域授權"
+  },
+  "registration.license.edition": {
+    "message": "$1 授權"
+  },
+  "registration.license.none": {
+    "message": "尚未設定授權"
+  },
+  "registration.load.error": {
+    "message": "無法載入授權或帳號。請重新載入此分頁再試一次。"
+  },
+  "registration.navigation": {
+    "message": "授權導覽"
+  },
+  "registration.options": {
+    "message": "授權選項"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "整個團隊，所有功能，一份授權。"
+  },
+  "registration.plan.domain.kicker": {
+    "message": "適合您的團隊"
+  },
+  "registration.plan.domain.scope": {
+    "message": "適用於共用網域"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "讓郵件為您工作。每天節省時間。"
+  },
+  "registration.plan.pro.kicker": {
+    "message": "所有功能"
+  },
+  "registration.plan.pro.scope": {
+    "message": "適用於您自己的郵件"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "讓日常郵件展現您的風格。"
+  },
+  "registration.plan.standard.kicker": {
+    "message": "日常必備功能"
+  },
+  "registration.plan.standard.scope": {
+    "message": "適用於您自己的郵件"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}網域授權{/bold}{br}續購通常會在原到期日上增加一年，即使訂購或付款較晚也是如此。"
+  },
+  "registration.renewal.entitlements": {
+    "message": "續購與升級優惠取決於傳送給商店的授權資料。在商店中切換產品，或安全軟體移除這些資料，都可能導致商店無法套用您現有的權益。"
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "續購或延長授權可增加一年，通常比購買新授權便宜。"
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}個人授權{/bold}{br}新授權從付款起有效一年。續購或延長同一版本時，將從付款起算一年，或在目前到期日上增加一年，以有效期限較長者為準。"
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}現有授權{/bold}{br}您目前的授權將傳送給商店，以計算新的到期日。"
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}從 Standard 升級至 Pro{/bold}{br}Pro 授權自升級付款日起有效一年。Standard 授權的剩餘時間不會延長此期限。"
+  },
+  "registration.selection.heading": {
+    "message": "一年的輕鬆郵件體驗。"
+  },
+  "registration.selection.intro": {
+    "message": "日常郵件選擇 Standard，完整功能選擇 Pro，團隊選擇網域授權。"
+  },
+  "registration.selection.label": {
+    "message": "選擇授權"
+  },
+  "registration.settings.error": {
+    "message": "無法開啟授權設定。請再試一次。"
+  },
+  "registration.showLess": {
+    "message": "顯示較少"
+  },
+  "registration.status.Empty": {
+    "message": "免費版"
+  },
+  "registration.status.Expired": {
+    "message": "已到期"
+  },
+  "registration.status.Invalid": {
+    "message": "無效的授權"
+  },
+  "registration.status.MailDifferent": {
+    "message": "授權郵件地址不符"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "尚未設定授權郵件地址"
+  },
+  "registration.status.NotValidated": {
+    "message": "尚未驗證"
+  },
+  "registration.status.Unknown": {
+    "message": "授權無法使用"
+  },
+  "registration.status.Valid": {
+    "message": "有效"
+  },
+  "registration.subtitle": {
+    "message": "選擇適合您工作方式的授權。"
+  },
+  "registration.terms.annual": {
+    "message": "授權有效期限為一年。續購已到期的授權或延長目前授權，即可繼續使用所選版本。"
+  },
+  "registration.terms.annual.heading": {
+    "message": "每次一年"
+  },
+  "registration.terms.back": {
+    "message": "選擇授權"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "選擇授權以前往商店。價格取決於版本、國家、稅金與適用折扣。"
+  },
+  "registration.terms.checkout.heading": {
+    "message": "在瀏覽器中結帳"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "網域授權適用於郵件地址屬於已授權網域的使用者。"
+  },
+  "registration.terms.draft": {
+    "message": "條款草案：試用與到期後功能的詳細行為將在發布前審核。"
+  },
+  "registration.terms.edition": {
+    "message": "Standard 與 Pro 提供不同等級的功能。請比較版本，找出適合您的選擇。"
+  },
+  "registration.terms.edition.heading": {
+    "message": "選擇您的版本"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "個人授權與您的郵件地址綁定。只要在每個 Thunderbird 安裝環境中，將該地址設為帳號的{bold}預設身分{/bold}，即可在多個安裝環境中使用。"
+  },
+  "registration.terms.email.heading": {
+    "message": "您的郵件，您的授權"
+  },
+  "registration.terms.heading": {
+    "message": "授權如何運作。"
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 繼續選擇授權 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "自 $1 年起，{+extensionName} 一直跟隨 Thunderbird 的發展。{+extensionName} 授權為持續開發、新功能與相容性更新提供資金。每份授權有效一年，協助支持跟上 Thunderbird 所需的工作。"
+  },
+  "registration.terms.label": {
+    "message": "授權條款"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "授權{bold}不會自動續購{/bold}。{+extensionName} 會在授權到期前提醒您。"
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "已授權的功能同樣適用於您在 Thunderbird 中的所有其他郵件帳號，不需要另外購買授權。"
+  },
+  "registration.terms.referrer": {
+    "message": "續購與升級時，會將您原有的授權傳送給商店以檢查資格。"
+  },
+  "registration.terms.savings": {
+    "message": "{bold}從 Pro 開始，之後每年更省錢。{/bold}續購或延長 Pro 授權遠比購買新授權便宜。"
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "顯示授權條款 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "您的支持協助資助開發、相容性更新與問題修正。"
+  },
+  "registration.test.menu": {
+    "message": "前往網路商店註冊"
+  },
+  "registration.test.note": {
+    "message": "結帳將在瀏覽器中開啟。"
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · 您的授權"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "變更身分時取代簽名（保留已輸入的文字）"
@@ -2135,7 +2492,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L}{+extensionName} 現已相容於 Thunderbird 162。{/L}{sect}新功能{/sect}{L}新增 Pro 功能 {{%prompt()%}}，支援輸入文字或從選項清單中選擇。可將剪貼簿作為預設輸入來源和資料輸出目標。 [issue 443]{/L}{sect}撰寫視窗通知與功能試用{/sect}{L}授權提示現在顯示於精簡、可展開的通知氣泡中，取代滑動通知列。每項需授權的功能旁邊會顯示剩餘使用次數。 [issue 441]{/L}{L}新使用者擁有28天試用期，期間不消耗各項功能的使用額度。授權到期的使用者有7天寬限期，可在續訂前繼續使用需授權的範本功能。{/L}{L}試用期或寬限期結束後，每項需授權的功能將使用各自剩餘的免費額度。每天只計算首次使用。{/L}{L}範本和智慧片段錯誤現在顯示於通知氣泡中，您可以繼續編輯並逐一關閉錯誤提示。 [issue 442]{/L}{sect}其他改善{/sect}{L}修正了剪貼簿操作、標籤和 {{%deleteForwardedBody%}} 的試用存取權限。 [issue 439]{/L}{L}更新了翻譯（包括重新整理介面操作），並簡化了在地化資源。 [issue 440]{/L}"
+    "message": "{L}{+extensionName} 現已相容於 Thunderbird 162。{/L}{sect}新功能{/sect}{L}新增 Pro 功能 {{%prompt()%}}，支援輸入文字或從選項清單中選擇。可將剪貼簿作為預設輸入來源和資料輸出目標。 [issue 443]{/L}{sect}撰寫視窗通知與功能試用{/sect}{L}授權提示現在顯示於精簡、可展開的通知氣泡中，取代滑動通知列。每項需授權的功能旁邊會顯示剩餘使用次數。 [issue 441]{/L}{L}新使用者擁有28天試用期，期間不消耗各項功能的使用額度。授權到期的使用者有7天寬限期，可在續訂前繼續使用需授權的範本功能。{/L}{L}試用期或寬限期結束後，每項需授權的功能將使用各自剩餘的免費額度。每天只計算首次使用。{/L}{L}範本和智慧片段錯誤現在顯示於通知氣泡中，您可以繼續編輯並逐一關閉錯誤提示。 [issue 442]{/L}{sect}註冊與設定{/sect}{L}更清楚的授權流程：註冊現在會在自適應的 Thunderbird 分頁中開啟，提供更明確的購買、續購與升級選項，並說明授權的運作方式。 [issue 445]{/L}{L}設定介面更新：改善了授權與帳號範本的配置，授權訊息更加清楚，並會在即將到期時顯示警告標記。 [issue 445]{/L}{sect}其他改善{/sect}{L}修正了剪貼簿操作、標籤和 {{%deleteForwardedBody%}} 的試用存取權限。 [issue 439]{/L}{L}更新了翻譯（包括重新整理介面操作），並簡化了在地化資源。 [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "維護更新 $ver$。此特定修正已包含在上一個版本之後的更新中。",

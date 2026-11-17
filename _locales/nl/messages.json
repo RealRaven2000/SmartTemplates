@@ -925,7 +925,7 @@
     "message": "Uw licentie is geldig tot:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Lees meer over Premium-functies op onze website…"
+    "message": "Lees meer over Premium-functies op onze website"
   },
   "lastName.label": {
     "message": "Achternaam:"
@@ -1516,6 +1516,363 @@
   },
   "regexpAnyText": {
     "message": "Alle tekst - reguliere expressie - dient tussen dubbele aanhalingstekens te staan."
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "E-mailaccount"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "$1 kopen"
+  },
+  "registration.action.buyDomain": {
+    "message": "Domeinlicentie kopen"
+  },
+  "registration.action.current": {
+    "message": "Huidige editie"
+  },
+  "registration.action.extend": {
+    "message": "Licentie verlengen"
+  },
+  "registration.action.renew": {
+    "message": "Licentie vernieuwen"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Upgraden naar Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Jaarlicenties"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Winkelmelding sluiten"
+  },
+  "registration.checkout.error": {
+    "message": "De winkel kan niet worden geopend. Probeer het opnieuw."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Ga verder met het product dat vanaf deze pagina is geopend om uw verlengings- of upgradevoordelen te behouden.{/bold} Wilt u een {i}andere licentie{/i}, begin dan opnieuw vanaf hier."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Prijzen, belastingen en beschikbare kortingen staan in de winkel."
+  },
+  "registration.checkout.opened": {
+    "message": "De winkel is geopend in uw browser. U kunt dit tabblad openlaten."
+  },
+  "registration.checkout.preview": {
+    "message": "Testvoorbeeld: $1 voor $2. Er is geen winkel geopend."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Deze upgraderoute moet worden bevestigd voordat bestellen mogelijk is. Er is geen winkel geopend."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Standard en Pro vergelijken"
+  },
+  "registration.contact.heading": {
+    "message": "Voor wie is deze licentie?"
+  },
+  "registration.contact.note": {
+    "message": "Deze gegevens worden bij het afrekenen ingevuld. U kunt ze hier wijzigen."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "Uw licentie is verlopen op $1."
+  },
+  "registration.date.none": {
+    "message": "Kies hieronder een licentie of voer uw bestaande sleutel in."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "Uw licentie is geldig tot $1."
+  },
+  "registration.development": {
+    "message": "Registratietest"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro is een aparte persoonlijke licentie, geen vernieuwing van een domeinlicentie. Uw domeinlicentie dekt installaties met een e-mailaccount op uw geregistreerde bedrijfsdomein, binnen het gekochte aantal gebruikers. Een aparte Pro-licentie kan een thuisinstallatie dekken waarop u dat account niet kunt gebruiken. Kies Licentie vernieuwen in het paneel Domein om de dekking van uw team voort te zetten."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Gebruikers toevoegen"
+  },
+  "registration.domain.seatsNote": {
+    "message": "aan uw bestaande domeinlicentie."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Meer gebruikersplaatsen nodig?"
+  },
+  "registration.edition.domain": {
+    "message": "Domein"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "E-mailadres"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Er gelden andere regels: het ingestelde e-mailadres moet bij het gelicentieerde domein horen."
+  },
+  "registration.email.domain.heading": {
+    "message": "Domeinlicenties"
+  },
+  "registration.email.help": {
+    "message": "Over gelicentieerde e-mailadressen"
+  },
+  "registration.email.help.close": {
+    "message": "E-mailhulp sluiten"
+  },
+  "registration.email.help.heading": {
+    "message": "Uw e-mailadres is uw licentie"
+  },
+  "registration.email.hint": {
+    "message": "Uw persoonlijke licentie werkt op meerdere apparaten."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Uw licentie is gekoppeld aan dit e-mailadres. U kunt deze op meerdere apparaten gebruiken. Stel dit adres op elk apparaat in als de {bold}standaardidentiteit{/bold} van een Thunderbird-account."
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard- en Pro-licenties"
+  },
+  "registration.email.rules": {
+    "message": "Regels voor het gelicentieerde e-mailadres"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Licentiesleutel invoeren…"
+  },
+  "registration.eyebrow": {
+    "message": "Uw licentie"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "Voornaam"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Fictieve gegevens: bestellen opent alleen een voorbeeld."
+  },
+  "registration.footer": {
+    "message": "Gemaakt voor Thunderbird. Gesteund door u."
+  },
+  "registration.heading": {
+    "message": "Uw stijl. Minder moeite."
+  },
+  "registration.identity.empty": {
+    "message": "Gegevens handmatig invoeren"
+  },
+  "registration.identity.none": {
+    "message": "Geen geschikte e-mailaccounts gevonden. U kunt uw contactgegevens handmatig invoeren."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Achternaam"
+  },
+  "registration.learnMore": {
+    "message": "Meer informatie…"
+  },
+  "registration.legacy.menu": {
+    "message": "Oude licentieregistratie"
+  },
+  "registration.license.domain": {
+    "message": "Domeinlicentie"
+  },
+  "registration.license.edition": {
+    "message": "$1-licentie"
+  },
+  "registration.license.none": {
+    "message": "Geen licentie ingesteld"
+  },
+  "registration.load.error": {
+    "message": "Uw licentie of accounts kunnen niet worden geladen. Herlaad dit tabblad om het opnieuw te proberen."
+  },
+  "registration.navigation": {
+    "message": "Licentienavigatie"
+  },
+  "registration.options": {
+    "message": "Licentieopties"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "Alle functies voor uw hele team, onder één licentie."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Voor uw team"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Voor een gedeeld domein"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "U zet e-mail aan het werk. Bespaar elke dag tijd."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Alle functies"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Voor uw eigen e-mail"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Geef dagelijkse e-mails uw eigen stijl."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Dagelijkse basisfuncties"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Voor uw eigen e-mail"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Domeinlicenties{/bold}{br}Vernieuwen voegt normaal één jaar toe aan de vorige vervaldatum, ook bij een late bestelling of betaling."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Voordelen voor vernieuwing en upgrades hangen af van de licentiegegevens die naar de winkel worden gestuurd. Een ander product kiezen in de winkel, of beveiligingssoftware die deze gegevens verwijdert, kan verhinderen dat uw bestaande rechten worden toegepast."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Uw licentie vernieuwen of verlengen voegt een jaar toe en kost doorgaans minder dan een nieuwe licentie."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Persoonlijke licenties{/bold}{br}Een nieuwe licentie loopt één jaar vanaf betaling. Bij vernieuwen of verlengen van dezelfde editie krijgt u een volledig jaar vanaf betaling of één jaar na uw huidige vervaldatum, afhankelijk van wat u meer tijd geeft."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Bestaande licentie{/bold}{br}Uw huidige licentie wordt naar de winkel gestuurd om de nieuwe vervaldatum te berekenen."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Upgrades van Standard naar Pro{/bold}{br}Uw Pro-licentie loopt één jaar vanaf de betaling van de upgrade. Resterende tijd op uw Standard-licentie verlengt die periode niet."
+  },
+  "registration.selection.heading": {
+    "message": "Een jaar gemakkelijker e-mailen."
+  },
+  "registration.selection.intro": {
+    "message": "Kies Standard voor dagelijkse e-mail, Pro voor alle functies of Domein voor uw team."
+  },
+  "registration.selection.label": {
+    "message": "Licentiekeuze"
+  },
+  "registration.settings.error": {
+    "message": "De licentie-instellingen kunnen niet worden geopend. Probeer het opnieuw."
+  },
+  "registration.showLess": {
+    "message": "Minder tonen"
+  },
+  "registration.status.Empty": {
+    "message": "Gratis editie"
+  },
+  "registration.status.Expired": {
+    "message": "Verlopen"
+  },
+  "registration.status.Invalid": {
+    "message": "Ongeldige licentie"
+  },
+  "registration.status.MailDifferent": {
+    "message": "E-mailadres van licentie komt niet overeen"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Gelicentieerd adres niet ingesteld"
+  },
+  "registration.status.NotValidated": {
+    "message": "Niet gevalideerd"
+  },
+  "registration.status.Unknown": {
+    "message": "Licentie niet beschikbaar"
+  },
+  "registration.status.Valid": {
+    "message": "Geldig"
+  },
+  "registration.subtitle": {
+    "message": "Kies de juiste licentie voor uw manier van werken."
+  },
+  "registration.terms.annual": {
+    "message": "Een licentie dekt één jaar. Vernieuw een verlopen licentie of verleng een huidige om uw gekozen editie te blijven gebruiken."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Eén jaar tegelijk"
+  },
+  "registration.terms.back": {
+    "message": "Licentiekeuze"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Selecteer een licentie om naar de winkel te gaan. Uw prijs hangt af van de editie, het land, belastingen en toepasselijke kortingen."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Afrekenen in uw browser"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Een domeinlicentie dekt gebruikers met passende adressen binnen het gelicentieerde domein."
+  },
+  "registration.terms.draft": {
+    "message": "Voorlopige voorwaarden: details over proefgebruik en functies na afloop worden vóór publicatie beoordeeld."
+  },
+  "registration.terms.edition": {
+    "message": "Standard en Pro bieden verschillende functieniveaus. Vergelijk de edities om de juiste te vinden."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Kies uw editie"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Een persoonlijke licentie is gekoppeld aan uw e-mailadres. U kunt deze in meerdere Thunderbird-installaties gebruiken als het gelicentieerde adres in elke installatie is ingesteld als de {bold}standaardidentiteit{/bold} van een account."
+  },
+  "registration.terms.email.heading": {
+    "message": "Uw e-mailadres, uw licentie"
+  },
+  "registration.terms.heading": {
+    "message": "Zo werkt uw licentie."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Verder naar licentiekeuze 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} houdt Thunderbird bij sinds $1. Licenties voor {+extensionName} financieren verdere ontwikkeling, nieuwe functies en compatibiliteitsupdates. Elke licentie duurt één jaar en steunt het werk dat nodig is om Thunderbird bij te houden."
+  },
+  "registration.terms.label": {
+    "message": "Licentievoorwaarden"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Licenties {bold}worden niet automatisch vernieuwd{/bold}. {+extensionName} herinnert u eraan voordat uw licentie verloopt."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "De gelicentieerde functies werken ook met al uw andere Thunderbird-accounts. Aparte licenties zijn niet nodig."
+  },
+  "registration.terms.referrer": {
+    "message": "Bij vernieuwingen en upgrades wordt uw vorige licentie naar de winkel gestuurd om uw rechten te controleren."
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Begin met Pro en bespaar in de volgende jaren.{/bold} Uw Pro-licentie vernieuwen of verlengen kost aanzienlijk minder dan een nieuwe kopen."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Licentievoorwaarden tonen 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "Uw steun helpt ontwikkeling, compatibiliteitsupdates en reparaties te financieren."
+  },
+  "registration.test.menu": {
+    "message": "Registreren via de webwinkel"
+  },
+  "registration.test.note": {
+    "message": "Afrekenen opent in uw browser."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · Uw licentie"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "Handtekening vervangen bij identiteitswijziging (met behoud van ingevoerde tekst)"
@@ -2132,7 +2489,7 @@
   },
   "whats-new-list": {
     "description": "🇳🇱 change log",
-    "message": "{L}{+extensionName} is nu compatibel met Thunderbird 162.{/L}{sect}Nieuwe functies{/sect}{L}De Pro-functie {{%prompt()%}} is toegevoegd voor tekstinvoer of een keuze uit een lijst. Het klembord kan als standaardinvoer en als bestemming voor de gegevens worden gebruikt. [issue 443]{/L}{sect}Meldingen in het opstelvenster en functieproeven{/sect}{L}Licentiemeldingen verschijnen nu in een compacte, uitklapbare meldingsballon in plaats van schuivende balken. Het resterende aantal gebruiken staat naast elke licentiefunctie. [issue 441]{/L}{L}Nieuwe gebruikers krijgen 28 proefdagen zonder de tegoeden van afzonderlijke functies te verbruiken. Gebruikers met een verlopen licentie krijgen 7 dagen respijt om te verlengen, met behoud van toegang tot gelicentieerde sjabloonfuncties.{/L}{L}Buiten de proef- of respijtperiode gebruikt elke licentiefunctie haar eigen resterende gratis tegoed. Alleen het eerste gebruik per dag telt.{/L}{L}Fouten in sjablonen en slimme fragmenten verschijnen nu in de meldingsballon, zodat u kunt blijven bewerken en fouten afzonderlijk kunt sluiten. [issue 442]{/L}{sect}Andere verbeteringen{/sect}{L}Proeftoegang tot klembordbewerkingen, labels en {{%deleteForwardedBody%}} hersteld. [issue 439]{/L}{L}Vertalingen bijgewerkt, waaronder de actie om de interface te vernieuwen, en lokalisatiebronnen vereenvoudigd. [issue 440]{/L}"
+    "message": "{L}{+extensionName} is nu compatibel met Thunderbird 162.{/L}{sect}Nieuwe functies{/sect}{L}De Pro-functie {{%prompt()%}} is toegevoegd voor tekstinvoer of een keuze uit een lijst. Het klembord kan als standaardinvoer en als bestemming voor de gegevens worden gebruikt. [issue 443]{/L}{sect}Meldingen in het opstelvenster en functieproeven{/sect}{L}Licentiemeldingen verschijnen nu in een compacte, uitklapbare meldingsballon in plaats van schuivende balken. Het resterende aantal gebruiken staat naast elke licentiefunctie. [issue 441]{/L}{L}Nieuwe gebruikers krijgen 28 proefdagen zonder de tegoeden van afzonderlijke functies te verbruiken. Gebruikers met een verlopen licentie krijgen 7 dagen respijt om te verlengen, met behoud van toegang tot gelicentieerde sjabloonfuncties.{/L}{L}Buiten de proef- of respijtperiode gebruikt elke licentiefunctie haar eigen resterende gratis tegoed. Alleen het eerste gebruik per dag telt.{/L}{L}Fouten in sjablonen en slimme fragmenten verschijnen nu in de meldingsballon, zodat u kunt blijven bewerken en fouten afzonderlijk kunt sluiten. [issue 442]{/L}{sect}Registratie en instellingen{/sect}{L}Een duidelijkere weg naar uw licentie: registratie opent nu in een aanpasbaar Thunderbird-tabblad, met duidelijkere keuzes voor aankoop, vernieuwing en upgrades, plus uitleg over de werking van uw licentie. [issue 445]{/L}{L}Vernieuwde instellingen: betere indeling voor Licenties en Accountsjablonen, duidelijkere licentiemeldingen en een waarschuwingsbadge wanneer de vervaldatum nadert. [issue 445]{/L}{sect}Andere verbeteringen{/sect}{L}Proeftoegang tot klembordbewerkingen, labels en {{%deleteForwardedBody%}} hersteld. [issue 439]{/L}{L}Vertalingen bijgewerkt, waaronder de actie om de interface te vernieuwen, en lokalisatiebronnen vereenvoudigd. [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Onderhoudsupdate $ver$. Deze specifieke fix is toegevoegd sinds de vorige release.",

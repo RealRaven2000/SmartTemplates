@@ -934,7 +934,7 @@
     "message": "Lisenssi on vanhenee:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Lisätietoja maksullisista lisätoiminnoista saat verkkosivuiltamme…"
+    "message": "Lisätietoja maksullisista lisätoiminnoista saat verkkosivuiltamme"
   },
   "lastName.label": {
     "message": "Sukunimi:"
@@ -1543,6 +1543,363 @@
   },
   "regexpAnyText": {
     "message": "Minkä tahansa tekstin - säännöllisen lausekkeen - on oltava lainausmerkeissä."
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "Sähköpostitili"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "Osta $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Osta verkkotunnuslisenssi"
+  },
+  "registration.action.current": {
+    "message": "Nykyinen versio"
+  },
+  "registration.action.extend": {
+    "message": "Jatka lisenssiä"
+  },
+  "registration.action.renew": {
+    "message": "Uusi lisenssi"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Päivitä Pro-versioon"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Vuosilisenssit"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Sulje ostoilmoitus"
+  },
+  "registration.checkout.error": {
+    "message": "Kauppaa ei voitu avata. Yritä uudelleen."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Säilytä uusimisen tai päivityksen edut jatkamalla tällä sivulla avatulla tuotteella.{/bold} Jos haluat {i}toisen lisenssin{/i}, aloita uudelleen täältä."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Hinnat, verot ja saatavilla olevat alennukset näkyvät kaupassa."
+  },
+  "registration.checkout.opened": {
+    "message": "Kauppa on avattu selaimeesi. Voit pitää tämän välilehden auki."
+  },
+  "registration.checkout.preview": {
+    "message": "Testiesikatselu: $1 tuotteelle $2. Kauppaa ei avattu."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Tämä päivitysreitti on vahvistettava ennen ostamisen käyttöönottoa. Kauppaa ei avattu."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Vertaa Standard- ja Pro-versioita"
+  },
+  "registration.contact.heading": {
+    "message": "Kenelle tämä lisenssi on?"
+  },
+  "registration.contact.note": {
+    "message": "Nämä tiedot täytetään valmiiksi kassalla. Voit muokata niitä täällä."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "Lisenssisi vanheni $1."
+  },
+  "registration.date.none": {
+    "message": "Valitse lisenssi alta tai anna nykyinen avaimesi."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "Lisenssisi on voimassa $1 asti."
+  },
+  "registration.development": {
+    "message": "Rekisteröintitesti"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro on erillinen henkilökohtainen lisenssi, ei verkkotunnuslisenssin uusinta. Verkkotunnuslisenssi kattaa asennukset, joissa on rekisteröityä yritysverkkotunnusta käyttävä sähköpostitili, ostettujen käyttäjäpaikkojen rajoissa. Erillinen Pro-lisenssi voi kattaa kotiasennuksen, jossa et voi käyttää kyseistä tiliä. Jatka tiimin kattavuutta valitsemalla Uusi lisenssi Verkkotunnus-paneelista."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Lisää käyttäjiä"
+  },
+  "registration.domain.seatsNote": {
+    "message": "nykyiseen verkkotunnuslisenssiisi."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Tarvitsetko lisää käyttäjäpaikkoja?"
+  },
+  "registration.edition.domain": {
+    "message": "Verkkotunnus"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "Sähköpostiosoite"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Säännöt ovat erilaiset: määritetyn osoitteen on kuuluttava lisensoituun verkkotunnukseen."
+  },
+  "registration.email.domain.heading": {
+    "message": "Verkkotunnuslisenssit"
+  },
+  "registration.email.help": {
+    "message": "Tietoja lisensoiduista sähköpostiosoitteista"
+  },
+  "registration.email.help.close": {
+    "message": "Sulje osoiteohje"
+  },
+  "registration.email.help.heading": {
+    "message": "Sähköpostiosoitteesi on lisenssisi"
+  },
+  "registration.email.hint": {
+    "message": "Henkilökohtainen lisenssisi toimii useilla laitteilla."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Lisenssi on sidottu tähän sähköpostiosoitteeseen. Voit käyttää sitä useilla laitteilla. Määritä osoite Thunderbird-tilin {bold}oletusidentiteetiksi{/bold} jokaisella laitteella."
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard- ja Pro-lisenssit"
+  },
+  "registration.email.rules": {
+    "message": "Lisensoidun osoitteen säännöt"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Anna lisenssiavain…"
+  },
+  "registration.eyebrow": {
+    "message": "Lisenssisi"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "Etunimi"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Testitiedot: ostaminen avaa vain esikatselun."
+  },
+  "registration.footer": {
+    "message": "Tehty Thunderbirdille. Sinun tukemasi."
+  },
+  "registration.heading": {
+    "message": "Oma tyylisi. Vähemmän vaivaa."
+  },
+  "registration.identity.empty": {
+    "message": "Anna tiedot käsin"
+  },
+  "registration.identity.none": {
+    "message": "Sopivia sähköpostitilejä ei löytynyt. Voit antaa yhteystiedot käsin."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Sukunimi"
+  },
+  "registration.learnMore": {
+    "message": "Lue lisää…"
+  },
+  "registration.legacy.menu": {
+    "message": "Vanha lisenssin rekisteröinti"
+  },
+  "registration.license.domain": {
+    "message": "Verkkotunnuslisenssi"
+  },
+  "registration.license.edition": {
+    "message": "$1-lisenssi"
+  },
+  "registration.license.none": {
+    "message": "Lisenssiä ei ole määritetty"
+  },
+  "registration.load.error": {
+    "message": "Lisenssiä tai tilejä ei voitu ladata. Yritä uudelleen lataamalla välilehti uudestaan."
+  },
+  "registration.navigation": {
+    "message": "Lisenssien navigointi"
+  },
+  "registration.options": {
+    "message": "Lisenssivaihtoehdot"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "Kaikki ominaisuudet koko tiimille yhdellä lisenssillä."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Tiimillesi"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Yhteiselle verkkotunnukselle"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "Laita sähköposti töihin. Säästä aikaa joka päivä."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Kaikki ominaisuudet"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Omalle sähköpostillesi"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Tee arjen sähköposteista omannäköisiäsi."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Arjen tärkeimmät toiminnot"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Omalle sähköpostillesi"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Verkkotunnuslisenssit{/bold}{br}Uusiminen lisää tavallisesti vuoden aiempaan päättymispäivään, vaikka tilaus tai maksu myöhästyisi."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Uusimis- ja päivitysedut riippuvat kauppaan välitetyistä lisenssitiedoista. Tuotteen vaihtaminen kaupassa tai tietojen poistuminen tietoturvaohjelman vuoksi voi estää aiempien oikeuksiesi huomioimisen."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Lisenssin uusiminen tai jatkaminen lisää vuoden ja maksaa yleensä vähemmän kuin uusi lisenssi."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Henkilökohtaiset lisenssit{/bold}{br}Uusi lisenssi on voimassa vuoden maksusta. Kun uusit tai jatkat samaa versiota, saat täyden vuoden maksusta tai vuoden nykyisen päättymispäivän jälkeen sen mukaan, kumpi antaa enemmän aikaa."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Nykyinen lisenssi{/bold}{br}Nykyinen lisenssisi välitetään kauppaan uuden päättymispäivän laskemiseksi."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Päivitykset Standardista Prohon{/bold}{br}Pro-lisenssi on voimassa vuoden päivityksen maksupäivästä. Standard-lisenssin jäljellä oleva aika ei pidennä tätä jaksoa."
+  },
+  "registration.selection.heading": {
+    "message": "Vuosi helpompaa sähköpostia."
+  },
+  "registration.selection.intro": {
+    "message": "Valitse Standard arjen sähköpostiin, Pro kaikille ominaisuuksille tai Verkkotunnus tiimillesi."
+  },
+  "registration.selection.label": {
+    "message": "Lisenssin valinta"
+  },
+  "registration.settings.error": {
+    "message": "Lisenssiasetuksia ei voitu avata. Yritä uudelleen."
+  },
+  "registration.showLess": {
+    "message": "Näytä vähemmän"
+  },
+  "registration.status.Empty": {
+    "message": "Ilmaisversio"
+  },
+  "registration.status.Expired": {
+    "message": "Vanhentunut"
+  },
+  "registration.status.Invalid": {
+    "message": "Virheellinen lisenssi"
+  },
+  "registration.status.MailDifferent": {
+    "message": "Lisenssin sähköpostiosoite ei täsmää"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Lisensoitua osoitetta ei ole määritetty"
+  },
+  "registration.status.NotValidated": {
+    "message": "Ei vahvistettu"
+  },
+  "registration.status.Unknown": {
+    "message": "Lisenssi ei ole saatavilla"
+  },
+  "registration.status.Valid": {
+    "message": "Voimassa"
+  },
+  "registration.subtitle": {
+    "message": "Valitse työskentelytapaasi sopiva lisenssi."
+  },
+  "registration.terms.annual": {
+    "message": "Lisenssi kattaa yhden vuoden. Uusi vanhentunut lisenssi tai jatka nykyistä käyttääksesi valitsemaasi versiota edelleen."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Vuosi kerrallaan"
+  },
+  "registration.terms.back": {
+    "message": "Lisenssin valinta"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Valitse lisenssi siirtyäksesi kauppaan. Hinta riippuu versiosta, maasta, veroista ja sovellettavista alennuksista."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Ostaminen selaimessa"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Verkkotunnuslisenssi kattaa käyttäjät, joiden osoitteet kuuluvat lisensoituun verkkotunnukseen."
+  },
+  "registration.terms.draft": {
+    "message": "Alustavat ehdot: kokeilun ja vanhenemisen jälkeisten ominaisuuksien yksityiskohdat tarkistetaan ennen julkaisua."
+  },
+  "registration.terms.edition": {
+    "message": "Standard ja Pro tarjoavat eri toimintotasot. Vertaa versioita löytääksesi sopivan."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Valitse versiosi"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Henkilökohtainen lisenssi on sidottu sähköpostiosoitteeseesi. Voit käyttää sitä useissa Thunderbird-asennuksissa, kun lisensoitu osoite on määritetty tilin {bold}oletusidentiteetiksi{/bold} jokaisessa asennuksessa."
+  },
+  "registration.terms.email.heading": {
+    "message": "Sähköpostisi, lisenssisi"
+  },
+  "registration.terms.heading": {
+    "message": "Näin lisenssisi toimii."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Jatka lisenssin valintaan 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} on seurannut Thunderbirdin kehitystä vuodesta $1. {+extensionName}-lisenssit rahoittavat jatkuvaa kehitystä, uusia ominaisuuksia ja yhteensopivuuspäivityksiä. Kukin lisenssi on voimassa vuoden ja tukee Thunderbirdin kehityksen mukana pysymiseen tarvittavaa työtä."
+  },
+  "registration.terms.label": {
+    "message": "Lisenssiehdot"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Lisenssit {bold}eivät uusiudu automaattisesti{/bold}. {+extensionName} muistuttaa ennen lisenssisi vanhenemista."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "Lisensoidut ominaisuudet toimivat myös kaikkien muiden Thunderbird-sähköpostitiliesi kanssa. Erillisiä lisenssejä ei tarvita."
+  },
+  "registration.terms.referrer": {
+    "message": "Uusimiset ja päivitykset välittävät aiemman lisenssisi kauppaan kelpoisuuden tarkistamiseksi."
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Aloita Prolla ja säästä tulevina vuosina.{/bold} Pro-lisenssin uusiminen tai jatkaminen maksaa selvästi vähemmän kuin uuden ostaminen."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Näytä lisenssiehdot 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "Tukesi auttaa rahoittamaan kehitystä, yhteensopivuuspäivityksiä ja korjauksia."
+  },
+  "registration.test.menu": {
+    "message": "Rekisteröinti verkkokauppaan"
+  },
+  "registration.test.note": {
+    "message": "Kassa avautuu selaimessa."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · Lisenssisi"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "Korvaa allekirjoitus henkilöllisyyden vaihtuessa (säilytä kirjoitettu teksti)"
@@ -2165,7 +2522,7 @@
   },
   "whats-new-list": {
     "description": "🇫🇮 change log",
-    "message": "{L}{+extensionName} on nyt yhteensopiva Thunderbird 162:n kanssa.{/L}{sect}Uudet toiminnot{/sect}{L}Lisätty Pro-toiminto {{%prompt()%}} tekstin syöttämiseen tai vaihtoehdon valitsemiseen luettelosta. Leikepöytää voi käyttää oletussyötteenä ja tietojen kohteena. [issue 443]{/L}{sect}Viestin kirjoitusikkunan ilmoitukset ja toimintojen kokeilu{/sect}{L}Lisenssi-ilmoitukset näkyvät nyt pienessä laajennettavassa ilmoituskuplassa liukuvien palkkien sijaan. Jäljellä olevat käyttökerrat näkyvät kunkin lisensoidun toiminnon vieressä. [issue 441]{/L}{L}Uusilla käyttäjillä on 28 kokeilupäivää, jotka eivät kuluta yksittäisten toimintojen kiintiöitä. Vanhentuneen lisenssin käyttäjillä on 7 päivän siirtymäaika lisenssin uusimiseen, ja lisensoidut mallitoiminnot pysyvät käytettävissä sen ajan.{/L}{L}Kokeilu- tai siirtymäajan ulkopuolella kukin lisensoitu toiminto käyttää omaa jäljellä olevaa maksutonta kiintiötään. Vain päivän ensimmäinen käyttö lasketaan.{/L}{L}Mallien ja älykkäiden katkelmien virheet näkyvät nyt ilmoituskuplassa, joten voit jatkaa muokkaamista ja sulkea virheet yksitellen. [issue 442]{/L}{sect}Muut parannukset{/sect}{L}Korjattu leikepöytätoimintojen, tunnisteiden ja {{%deleteForwardedBody%}}-toiminnon kokeilukäyttö. [issue 439]{/L}{L}Päivitetty käännöksiä, myös käyttöliittymän päivitystoiminto, ja yksinkertaistettu lokalisointiresursseja. [issue 440]{/L}"
+    "message": "{L}{+extensionName} on nyt yhteensopiva Thunderbird 162:n kanssa.{/L}{sect}Uudet toiminnot{/sect}{L}Lisätty Pro-toiminto {{%prompt()%}} tekstin syöttämiseen tai vaihtoehdon valitsemiseen luettelosta. Leikepöytää voi käyttää oletussyötteenä ja tietojen kohteena. [issue 443]{/L}{sect}Viestin kirjoitusikkunan ilmoitukset ja toimintojen kokeilu{/sect}{L}Lisenssi-ilmoitukset näkyvät nyt pienessä laajennettavassa ilmoituskuplassa liukuvien palkkien sijaan. Jäljellä olevat käyttökerrat näkyvät kunkin lisensoidun toiminnon vieressä. [issue 441]{/L}{L}Uusilla käyttäjillä on 28 kokeilupäivää, jotka eivät kuluta yksittäisten toimintojen kiintiöitä. Vanhentuneen lisenssin käyttäjillä on 7 päivän siirtymäaika lisenssin uusimiseen, ja lisensoidut mallitoiminnot pysyvät käytettävissä sen ajan.{/L}{L}Kokeilu- tai siirtymäajan ulkopuolella kukin lisensoitu toiminto käyttää omaa jäljellä olevaa maksutonta kiintiötään. Vain päivän ensimmäinen käyttö lasketaan.{/L}{L}Mallien ja älykkäiden katkelmien virheet näkyvät nyt ilmoituskuplassa, joten voit jatkaa muokkaamista ja sulkea virheet yksitellen. [issue 442]{/L}{sect}Rekisteröinti ja asetukset{/sect}{L}Selkeämpi tie lisenssiisi: rekisteröinti avautuu nyt mukautuvaan Thunderbird-välilehteen, jossa on selkeämmät osto-, uusimis- ja päivitysvaihtoehdot sekä tietoa lisenssin toiminnasta. [issue 445]{/L}{L}Uudistetut asetukset: parempi asettelu lisensseille ja tilien malleille, selkeämmät lisenssiviestit ja varoitusmerkki vanhenemisen lähestyessä. [issue 445]{/L}{sect}Muut parannukset{/sect}{L}Korjattu leikepöytätoimintojen, tunnisteiden ja {{%deleteForwardedBody%}}-toiminnon kokeilukäyttö. [issue 439]{/L}{L}Päivitetty käännöksiä, myös käyttöliittymän päivitystoiminto, ja yksinkertaistettu lokalisointiresursseja. [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Huoltopäivitys $ver$. Tämä yksittäinen korjaus lisättiin edellisestä versiosta lähtien.",

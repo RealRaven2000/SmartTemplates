@@ -907,7 +907,7 @@
     "message": "Ваша лиценца важи до:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Прочитајте више о Премиум могућностима на нашој веб локацији…"
+    "message": "Прочитајте више о Премиум могућностима на нашој веб локацији"
   },
   "lastName.label": {
     "message": "Презиме:"
@@ -1510,6 +1510,363 @@
   },
   "regexpAnyText": {
     "message": "Било који текст - регуларни израз - мора бити у двоструким наводницима."
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "Налог е-поште"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "Купи $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Купи доменску лиценцу"
+  },
+  "registration.action.current": {
+    "message": "Тренутно издање"
+  },
+  "registration.action.extend": {
+    "message": "Продужи лиценцу"
+  },
+  "registration.action.renew": {
+    "message": "Обнови лиценцу"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Надогради на Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Годишње лиценце"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Затвори обавештење о куповини"
+  },
+  "registration.checkout.error": {
+    "message": "Продавница се не може отворити. Покушајте поново."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Да бисте задржали погодности обнове или надоградње, наставите са производом отвореним са ове странице.{/bold} За избор {i}друге лиценце{/i}, почните поново одавде."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Цене, порези и доступни попусти приказани су у продавници."
+  },
+  "registration.checkout.opened": {
+    "message": "Продавница је отворена у прегледачу. Ова картица може остати отворена."
+  },
+  "registration.checkout.preview": {
+    "message": "Пробни преглед: $1 за $2. Продавница није отворена."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Овај пут надоградње захтева потврду пре омогућавања куповине. Продавница није отворена."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Упореди Standard и Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Коме је намењена ова лиценца?"
+  },
+  "registration.contact.note": {
+    "message": "Ови подаци ће бити унапред попуњени при куповини. Овде их можете изменити."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "Ваша лиценца је истекла $1."
+  },
+  "registration.date.none": {
+    "message": "Изаберите лиценцу испод или унесите постојећи кључ."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "Ваша лиценца важи до $1."
+  },
+  "registration.development": {
+    "message": "Проба регистрације"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro је засебна лична лиценца, а не обнова доменске лиценце. Доменска лиценца покрива инсталације са налогом е-поште на регистрованом домену предузећа, у оквиру купљеног броја места. Засебна лиценца Pro може покрити кућну инсталацију на којој не можете користити тај налог. За наставак покривености тима изаберите Обнови лиценцу на панелу Домен."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Додај кориснике"
+  },
+  "registration.domain.seatsNote": {
+    "message": "постојећој доменској лиценци."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Треба вам више места?"
+  },
+  "registration.edition.domain": {
+    "message": "Домен"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "Адреса е-поште"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Важе друга правила: подешена адреса мора припадати лиценцираном домену."
+  },
+  "registration.email.domain.heading": {
+    "message": "Доменске лиценце"
+  },
+  "registration.email.help": {
+    "message": "О лиценцираним адресама"
+  },
+  "registration.email.help.close": {
+    "message": "Затвори помоћ за адресе"
+  },
+  "registration.email.help.heading": {
+    "message": "Ваша адреса је ваша лиценца"
+  },
+  "registration.email.hint": {
+    "message": "Лична лиценца ради на више уређаја."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Лиценца је везана за ову адресу е-поште. Можете је користити на више уређаја. На сваком уређају подесите адресу као {bold}подразумевани идентитет{/bold} налога у Thunderbird-у."
+  },
+  "registration.email.personal.heading": {
+    "message": "Лиценце Standard и Pro"
+  },
+  "registration.email.rules": {
+    "message": "Правила лиценциране адресе"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Унеси лиценцни кључ…"
+  },
+  "registration.eyebrow": {
+    "message": "Ваша лиценца"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "Име"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Пробни подаци: куповина отвара само преглед."
+  },
+  "registration.footer": {
+    "message": "Направљено за Thunderbird. Уз вашу подршку."
+  },
+  "registration.heading": {
+    "message": "Ваш стил. Мање труда."
+  },
+  "registration.identity.empty": {
+    "message": "Унеси податке ручно"
+  },
+  "registration.identity.none": {
+    "message": "Нису пронађени одговарајући налози. Контакт податке можете унети ручно."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Презиме"
+  },
+  "registration.learnMore": {
+    "message": "Сазнајте више…"
+  },
+  "registration.legacy.menu": {
+    "message": "Претходна регистрација лиценце"
+  },
+  "registration.license.domain": {
+    "message": "Доменска лиценца"
+  },
+  "registration.license.edition": {
+    "message": "Лиценца $1"
+  },
+  "registration.license.none": {
+    "message": "Лиценца није подешена"
+  },
+  "registration.load.error": {
+    "message": "Лиценца или налози се не могу учитати. Поново учитајте картицу."
+  },
+  "registration.navigation": {
+    "message": "Навигација лиценци"
+  },
+  "registration.options": {
+    "message": "Опције лиценце"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "Све функције за цео тим, под једном лиценцом."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "За ваш тим"
+  },
+  "registration.plan.domain.scope": {
+    "message": "За заједнички домен"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "Нека е-пошта ради за вас. Штедите време сваког дана."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Све функције"
+  },
+  "registration.plan.pro.scope": {
+    "message": "За вашу е-пошту"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Дајте свакодневној е-пошти свој стил."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Основно за сваки дан"
+  },
+  "registration.plan.standard.scope": {
+    "message": "За вашу е-пошту"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Доменске лиценце{/bold}{br}Обнова обично додаје годину дана претходном датуму истека, чак и ако наручивање или плаћање касне."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Погодности обнове и надоградње зависе од података лиценце послатих продавници. Промена производа у продавници или уклањање ових података безбедносним софтвером може спречити примену постојећих права."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Обнова или продужење лиценце додаје годину дана и обично кошта мање од нове лиценце."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Личне лиценце{/bold}{br}Нова лиценца важи годину дана од плаћања. При обнови или продужењу истог издања добијате целу годину од плаћања или годину после тренутног истека, шта год даје више времена."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Постојећа лиценца{/bold}{br}Тренутна лиценца се шаље продавници ради израчунавања новог датума истека."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Надоградње са Standard на Pro{/bold}{br}Лиценца Pro важи годину дана од плаћања надоградње. Преостало време лиценце Standard не продужава тај период."
+  },
+  "registration.selection.heading": {
+    "message": "Година лакше е-поште."
+  },
+  "registration.selection.intro": {
+    "message": "Изаберите Standard за свакодневну е-пошту, Pro за све функције или Домен за тим."
+  },
+  "registration.selection.label": {
+    "message": "Избор лиценце"
+  },
+  "registration.settings.error": {
+    "message": "Подешавања лиценце се не могу отворити. Покушајте поново."
+  },
+  "registration.showLess": {
+    "message": "Прикажи мање"
+  },
+  "registration.status.Empty": {
+    "message": "Бесплатно издање"
+  },
+  "registration.status.Expired": {
+    "message": "Истекла"
+  },
+  "registration.status.Invalid": {
+    "message": "Неважећа лиценца"
+  },
+  "registration.status.MailDifferent": {
+    "message": "Адреса лиценце се не подудара"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Лиценцирана адреса није подешена"
+  },
+  "registration.status.NotValidated": {
+    "message": "Није проверена"
+  },
+  "registration.status.Unknown": {
+    "message": "Лиценца није доступна"
+  },
+  "registration.status.Valid": {
+    "message": "Важећа"
+  },
+  "registration.subtitle": {
+    "message": "Изаберите лиценцу за свој начин рада."
+  },
+  "registration.terms.annual": {
+    "message": "Лиценца покрива годину дана. Обновите истеклу лиценцу или продужите важећу да наставите са изабраним издањем."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Годину по годину"
+  },
+  "registration.terms.back": {
+    "message": "Избор лиценце"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Изаберите лиценцу за одлазак у продавницу. Цена зависи од издања, земље, пореза и примењивих попуста."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Куповина у прегледачу"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Доменска лиценца покрива кориснике са одговарајућим адресама у лиценцираном домену."
+  },
+  "registration.terms.draft": {
+    "message": "Нацрт услова: детаљи пробног коришћења и функција после истека биће прегледани пре објављивања."
+  },
+  "registration.terms.edition": {
+    "message": "Standard и Pro нуде различите нивое функција. Упоредите издања и изаберите одговарајуће."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Изаберите издање"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Лична лиценца је везана за вашу адресу е-поште. Можете је користити у више инсталација Thunderbird-а ако је лиценцирана адреса у свакој подешена као {bold}подразумевани идентитет{/bold} налога."
+  },
+  "registration.terms.email.heading": {
+    "message": "Ваша е-пошта, ваша лиценца"
+  },
+  "registration.terms.heading": {
+    "message": "Како ваша лиценца ради."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Настави на избор лиценце 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} прати развој Thunderbird-а од $1. Лиценце {+extensionName} финансирају даљи развој, нове функције и ажурирања компатибилности. Свака лиценца траје годину дана и подржава рад потребан за праћење Thunderbird-а."
+  },
+  "registration.terms.label": {
+    "message": "Услови лиценце"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Лиценце {bold}се не обнављају аутоматски{/bold}. {+extensionName} ће вас подсетити пре истека лиценце."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "Лиценциране функције раде и са свим другим налозима у Thunderbird-у. Засебне лиценце нису потребне."
+  },
+  "registration.terms.referrer": {
+    "message": "Обнове и надоградње шаљу претходну лиценцу продавници ради провере права."
+  },
+  "registration.terms.savings": {
+    "message": "{bold}Почните са Pro и уштедите наредних година.{/bold} Обнова или продужење лиценце Pro кошта знатно мање од куповине нове."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Прикажи услове лиценце 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "Ваша подршка финансира развој, ажурирања компатибилности и исправке."
+  },
+  "registration.test.menu": {
+    "message": "Регистрација у веб-продавници"
+  },
+  "registration.test.note": {
+    "message": "Куповина се отвара у прегледачу."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · Ваша лиценца"
   },
   "removeSigOnIdChangeAfterEdits": {
     "message": "Замени потпис при промени идентитета (уз задржавање унетог текста)"
@@ -2129,7 +2486,7 @@
   },
   "whats-new-list": {
     "description": "🇷🇸 change log",
-    "message": "{L}{+extensionName} је сада компатибилан са Thunderbird-ом 162.{/L}{sect}Нове функције{/sect}{L}Додата је Pro функција {{%prompt()%}} за унос текста или избор са списка опција. Подржава оставу као подразумевани унос и као одредиште података. [issue 443]{/L}{sect}Обавештења при писању и испробавање функција{/sect}{L}Обавештења о лиценци сада се приказују у сажетом проширивом облачићу уместо у клизним тракама. Преостала коришћења приказана су поред сваке лиценциране функције. [issue 441]{/L}{L}Нови корисници имају 28 пробних дана без трошења квота појединачних функција. Корисници са истеклом лиценцом имају 7 дана прелазног периода за обнову, уз задржавање приступа лиценцираним функцијама шаблона.{/L}{L}Ван пробног или прелазног периода свака лиценцирана функција користи сопствену преосталу бесплатну квоту. Рачуна се само прво коришћење сваког дана.{/L}{L}Грешке шаблона и паметних исечака сада се приказују у облачићу са обавештењима, тако да можете наставити уређивање и затварати грешке појединачно. [issue 442]{/L}{sect}Остала побољшања{/sect}{L}Исправљен је пробни приступ операцијама оставе, ознакама и {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Ажурирани су преводи, укључујући радњу освежавања интерфејса, и поједностављени ресурси локализације. [issue 440]{/L}"
+    "message": "{L}{+extensionName} је сада компатибилан са Thunderbird-ом 162.{/L}{sect}Нове функције{/sect}{L}Додата је Pro функција {{%prompt()%}} за унос текста или избор са списка опција. Подржава оставу као подразумевани унос и као одредиште података. [issue 443]{/L}{sect}Обавештења при писању и испробавање функција{/sect}{L}Обавештења о лиценци сада се приказују у сажетом проширивом облачићу уместо у клизним тракама. Преостала коришћења приказана су поред сваке лиценциране функције. [issue 441]{/L}{L}Нови корисници имају 28 пробних дана без трошења квота појединачних функција. Корисници са истеклом лиценцом имају 7 дана прелазног периода за обнову, уз задржавање приступа лиценцираним функцијама шаблона.{/L}{L}Ван пробног или прелазног периода свака лиценцирана функција користи сопствену преосталу бесплатну квоту. Рачуна се само прво коришћење сваког дана.{/L}{L}Грешке шаблона и паметних исечака сада се приказују у облачићу са обавештењима, тако да можете наставити уређивање и затварати грешке појединачно. [issue 442]{/L}{sect}Регистрација и подешавања{/sect}{L}Јаснији пут до лиценце: регистрација се сада отвара у прилагодљивој картици Thunderbird-а, са јаснијим изборима куповине, обнове и надоградње, као и објашњењима о раду лиценце. [issue 445]{/L}{L}Освежена подешавања: бољи распоред лиценци и шаблона налога, јасније поруке о лиценци и ознака упозорења када се приближава истек. [issue 445]{/L}{sect}Остала побољшања{/sect}{L}Исправљен је пробни приступ операцијама оставе, ознакама и {{%deleteForwardedBody%}}. [issue 439]{/L}{L}Ажурирани су преводи, укључујући радњу освежавања интерфејса, и поједностављени ресурси локализације. [issue 440]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Одржавајуће ажурирање $ver$. Ова конкретна исправка је додата од претходног издања.",

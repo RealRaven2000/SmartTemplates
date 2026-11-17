@@ -6,7 +6,7 @@ Current manual testing has concentrated on expired Standard. A full round remain
 
 ## Required final-build check: Domain renewal emphasis
 
-Pending maintainer test on the final build: install a real expired Domain license, open registration through Renew License, and verify that Renew Domain is the highlighted primary action. Standard must be hidden. Buy Pro may appear only as an unhighlighted separate personal-license purchase, with a warning about downgrade in coverage and possible existing Domain coverage; it must not look like a Domain renewal alternative. Check the Domain renewal checkout destination and existing Domain key referrer without completing a purchase. Repeat with a valid Domain license: the highlighted action must still say Renew Domain, never Extend Domain. Do not mark this passed from the prototype alone.
+Pending maintainer test on the final build: install a real expired Domain license, open registration through Renew License, and verify that Renew License in the Domain card is the highlighted primary action. Standard must be hidden. Buy Pro may appear only as an unhighlighted separate personal-license purchase, with the Domain coverage explanation; it must not look like a Domain renewal alternative. Check the Domain renewal checkout destination and existing Domain key referrer without completing a purchase. Repeat with a valid Domain license: the highlighted action must still say Renew License, never Extend License. Do not mark this passed from the prototype alone.
 
 The maintainer reports that Domain users accidentally buying Pro instead of renewing is a recurring problem. The legacy XHTML dialog highlighted the Domain button for this case; preserve that product guidance in the replacement.
 
@@ -31,23 +31,23 @@ Use normal mode for real shop checks. URLs containing `scenario=` use synthetic 
 | P01 | No license | Buy Standard | `product/smarttemplatestandard` | Originating feature, if supplied; otherwise absent | |
 | P02 | No license | Buy Pro | `instant/smarttemplate4` | Originating feature, if supplied; otherwise absent | |
 | P03 | No license | Buy Domain | `product/smarttemplate4domain` | Originating feature, if supplied; otherwise absent | |
-| S01 | Valid Standard, fewer than 30 days left | Extend Standard | `instant/smarttemplateStdrenew` | Existing Standard key | |
-| S02 | Valid Standard, exactly 30 days left | Current edition | No checkout; Standard action disabled | None sent | |
-| S03 | Valid Standard, more than 30 days left | Current edition | No checkout; Standard action disabled | None sent | |
-| S04 | Valid Standard, 30+ days left; open with `?intent=extend` | Extend Standard | `instant/smarttemplateStdrenew` | Existing Standard key | |
+| S01 | Valid Standard, fewer than 30 days left | Standard: Extend License | `instant/smarttemplateStdrenew` | Existing Standard key | |
+| S02 | Valid Standard, exactly 30 days left | Standard card hidden | No checkout action | None sent | |
+| S03 | Valid Standard, more than 30 days left | Standard card hidden | No checkout action | None sent | |
+| S04 | Valid Standard, 30+ days left; open with `?intent=extend` | Standard: Extend License | `instant/smarttemplateStdrenew` | Existing Standard key | |
 | S05 | Valid Standard, near expiry | Upgrade to Pro | `product/smarttemplateupgrade` | Existing Standard key | |
 | S06 | Valid Standard, well before expiry | Upgrade to Pro | `product/smarttemplateupgrade` | Existing Standard key | |
-| S07 | Expired Standard, recently expired | Renew Standard | `instant/smarttemplateStdrenew` | Existing Standard key | |
-| S08 | Expired Standard, long expired | Renew Standard | `instant/smarttemplateStdrenew` | Existing Standard key | |
+| S07 | Expired Standard, recently expired | Standard: Renew License | `instant/smarttemplateStdrenew` | Existing Standard key | |
+| S08 | Expired Standard, long expired | Standard: Renew License | `instant/smarttemplateStdrenew` | Existing Standard key | |
 | S09 | Expired Standard, recently expired | Upgrade to Pro | `product/smarttemplateupgrade` | Existing Standard key | |
 | S10 | Expired Standard, long expired | Upgrade to Pro | `product/smarttemplateupgrade` | Existing Standard key | |
-| R01 | Valid Pro, near expiry | Extend Pro | `instant/smarttemplate4renew` | Existing Pro key | |
-| R02 | Valid Pro, well before expiry | Extend Pro | `instant/smarttemplate4renew` | Existing Pro key | |
-| R03 | Expired Pro, recently expired | Renew Pro | `instant/smarttemplate4renew` | Existing Pro key | |
-| R04 | Expired Pro, long expired | Renew Pro | `instant/smarttemplate4renew` | Existing Pro key | |
-| D01 | Valid Domain | Renew Domain | `product/smarttemplatesdomainrenewal` | Existing Domain key | |
-| D02 | Expired Domain, recently expired | Renew Domain | `product/smarttemplatesdomainrenewal` | Existing Domain key | |
-| D03 | Expired Domain, long expired | Renew Domain | `product/smarttemplatesdomainrenewal` | Existing Domain key | |
+| R01 | Valid Pro, near expiry | Pro: Extend License | `instant/smarttemplate4renew` | Existing Pro key | |
+| R02 | Valid Pro, well before expiry | Pro: Extend License | `instant/smarttemplate4renew` | Existing Pro key | |
+| R03 | Expired Pro, recently expired | Pro: Renew License | `instant/smarttemplate4renew` | Existing Pro key | |
+| R04 | Expired Pro, long expired | Pro: Renew License | `instant/smarttemplate4renew` | Existing Pro key | |
+| D01 | Valid Domain | Domain: Renew License | `product/smarttemplatesdomainrenewal` | Existing Domain key | |
+| D02 | Expired Domain, recently expired | Domain: Renew License | `product/smarttemplatesdomainrenewal` | Existing Domain key | |
+| D03 | Expired Domain, long expired | Domain: Renew License | `product/smarttemplatesdomainrenewal` | Existing Domain key | |
 
 For a short first pass, run P01–P03, S01, S05, S07, S09, R01, R03, and D01–D02. Then check long-expired licenses, the Standard 30-day boundary, and explicit early extension.
 
@@ -57,11 +57,11 @@ These are shop/license-generator checks. Opening a product page alone does not p
 
 | Action | Expected date rule | Result / notes |
 | --- | --- | --- |
-| Buy a new personal license | Full year from purchase | |
-| Extend a valid Standard or Pro license | One year beyond the existing expiry date | |
-| Renew an expired Standard or Pro license | Full year from purchase | |
-| Upgrade valid Standard to Pro | Shop upgrade calculation, capped at one year after purchase | |
-| Upgrade expired Standard to Pro | Same product and shop rule as valid Standard; capped at one year after purchase | |
+| Buy a new personal license | Full year from payment | |
+| Extend a valid Standard or Pro license | Later of one year from payment or one year beyond the existing expiry date | |
+| Renew an expired Standard or Pro license | Later of one year from payment or one year beyond the existing expiry date | |
+| Upgrade valid Standard to Pro | One year from upgrade payment; remaining Standard time is not added | |
+| Upgrade expired Standard to Pro | One year from upgrade payment; same rule as valid Standard | |
 | Extend/renew Domain | Normally one year beyond the previous expiry date; late ordering/payment does not restart the term | |
 
 Check that renewal/extension products show their intended reduced pricing rather than new-license pricing. Record currency, tax treatment, and any active promotion when comparing. No fixed prices are embedded in the registration page.
@@ -81,9 +81,13 @@ Check that renewal/extension products show their intended reduced pricing rather
 | --- | --- | --- |
 | Valid or expired Standard/Pro | Buy Domain opens `product/smarttemplate4domain` as a new purchase; do not pass the personal key as a renewal referrer | |
 | Valid or expired Pro | Standard card hidden; no downgrade purchase | |
-| Valid or expired Domain | Standard and Pro cards hidden | |
+| Valid or expired Domain | Standard hidden; Domain renewal highlighted; Pro is an unhighlighted new purchase with coverage explanation | |
 | Invalid key, missing licensed account, or email mismatch | Show the corresponding state; offer fresh purchases without passing the invalid key | |
 | No eligible identities | Permit manual contact entry; require a valid email before opening checkout | |
 | Synthetic `scenario=` URL | Preview only, no external shop and no saved-key changes | |
 
 Hidden downgrade cards and the early-extension prompt are current implementation behavior; record any desired policy adjustments separately from product-routing defects.
+
+## Localized layout review
+
+Pending Thunderbird review after the localization pass: try a language with long labels and one CJK language at normal and narrow widths. Check selection and terms headings, purchase buttons, the expiry badge, Domain coverage and Add users text, email help, validation errors and the checkout notice. Names and email addresses must remain unchanged when switching identities. Verify locale-formatted dates. Vietnamese should use the established English registration fallback while its What's New section remains translated.
