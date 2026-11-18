@@ -3,6 +3,10 @@
 // Isolated layout experiment: synthetic states and no real checkout effects.
 (() => {
   const scenario = document.getElementById("preview-scenario");
+  const theme = document.getElementById("preview-theme");
+  theme.addEventListener("change", () => {
+    document.documentElement.dataset.previewTheme = theme.value;
+  });
   const plans = [...document.querySelectorAll(".plan")];
   const editions = ["Standard", "Pro", "Domain"];
   const seats = document.createElement("p");
@@ -50,14 +54,28 @@
         : "Your license expired on November 11, 2026.";
     document.getElementById("checkout-notice").hidden = true;
     document.getElementById("feedback").hidden = true;
+    const hint = document.getElementById("renewal-hint");
+    hint.textContent = "Renewing or extending your license adds another year and typically costs less than buying a new license.";
+    const standardUpgradeTip = !buying && currentIndex === 0;
+    document.getElementById("selection-panel").classList.toggle("standard-upgrade-tip", standardUpgradeTip);
+    if (standardUpgradeTip) {
+      hint.replaceChildren("Upgrade to Pro and pay ");
+      const emphasis = document.createElement("strong");
+      emphasis.textContent = "only the difference";
+      hint.append(emphasis, valid
+        ? " between the Standard and Pro prices. You get a full year from the day you pay."
+        : " between the Standard and Pro prices - we give you a full year from the day you pay, even if your Standard license already expired.");
+    }
 
     plans.forEach((plan, index) => {
       plan.hidden = (!buying && index === 0 && currentIndex > 0) || (upgrade && index === 0);
       const button = plan.querySelector(".purchase");
       const primary = index === (domain ? 2 : 1);
+      const renewStandard = state === "renew-standard" && index === 0;
       plan.classList.toggle("featured", primary);
-      button.classList.toggle("primary", primary);
-      button.classList.toggle("secondary", !primary);
+      button.classList.toggle("primary", primary || renewStandard);
+      button.classList.toggle("secondary", !primary && !renewStandard);
+      button.classList.toggle("renewal-emphasis", renewStandard);
       const note = plan.querySelector(".current-edition-note");
       const separatePro = domain && index === 1;
       note.hidden = !separatePro;
@@ -79,6 +97,7 @@
       // Retain the SVG and the existing prototype-only click listener.
       button.firstChild.textContent = label + " ";
       button.dataset.plan = label;
+      button.dataset.action = label === "Renew License" ? "renew" : label === "Extend License" ? "extend" : label === "Upgrade to Pro" ? "upgrade" : "buy";
     });
     document.querySelector(".plans").style.setProperty("--preview-columns", plans.filter((plan) => !plan.hidden).length);
   }
