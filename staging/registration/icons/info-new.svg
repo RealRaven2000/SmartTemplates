@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="info-new.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="5.6568543"
+     inkscape:cx="22.892582"
+     inkscape:cy="40.12831"
+     inkscape:window-width="1764"
+     inkscape:window-height="1278"
+     inkscape:window-x="457"
+     inkscape:window-y="1494"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <style
+       id="style1">
+        :root {
+            --basiccolor: rgb(20,20,20);
+            --iconStroke: context-fill var(--basiccolor);
+            --icon-fill: #BBB;
+            --fill-opacity: context-fill-opacity 0.8;
+            --font-fill: rgb(251,251,254);
+        } 
+        @media (prefers-color-scheme: dark) {
+         :root { 
+            --basiccolor: rgb(251,251,254);
+            --iconStroke: context-fill var(--basiccolor);
+            --icon-fill: #606060;
+            --fill-opacity: context-fill-opacity 0.8;
+            --font-fill: rgb(20,20,20);
+         }
+        }        
+     </style>
+    <path
+       id="path1"
+       style="stroke:var(--iconStroke);fill-opacity:var(--fill-opacity);fill:var(--icon-fill);stroke-width:2px;"
+       stroke-width="3.1"
+       sodipodi:type="arc"
+       sodipodi:cx="16.117786"
+       sodipodi:cy="15.882758"
+       sodipodi:rx="14.462544"
+       sodipodi:ry="14.462557"
+       sodipodi:start="0"
+       sodipodi:end="6.2744843"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="M 30.580331,15.882758 A 14.462544,14.462557 0 0 1 16.149246,30.345281 14.462544,14.462557 0 0 1 1.6553788,15.945677 14.462544,14.462557 0 0 1 16.023408,1.4205092 14.462544,14.462557 0 0 1 30.579783,15.756921"
+       transform="matrix(0.99997335,0.00730085,-0.00738854,0.9999727,0,0)" />
+    <path
+       style="fill:var(--iconStroke);font-weight:bold;font-size:26.0558px;font-family:Georgia;-inkscape-font-specification:'Georgia, Bold';stroke-width:0.259201;"
+       d="m 20.444434,25.586515 h -8.040657 v -0.928746 q 0.330787,-0.02544 0.648851,-0.06361 0.318064,-0.03817 0.54707,-0.127226 0.407121,-0.15267 0.572515,-0.432567 0.165393,-0.292619 0.165393,-0.763353 v -7.404529 q 0,-0.44529 -0.203561,-0.776076 -0.203561,-0.343509 -0.508902,-0.54707 Q 13.396137,14.390664 12.925402,14.250716 12.46739,14.110768 12.085713,14.0726 v -0.928747 l 6.234054,-0.330786 0.190838,0.190838 v 10.101712 q 0,0.445289 0.190839,0.763353 0.190838,0.305341 0.54707,0.458012 0.254451,0.114503 0.559792,0.203561 0.305341,0.08906 0.636128,0.127226 z M 18.58694,8.2329458 q 0,0.9669145 -0.75063,1.6539326 -0.737909,0.6742956 -1.755713,0.6742956 -1.030528,0 -1.781159,-0.6742956 -0.737908,-0.6870181 -0.737908,-1.6539326 0,-0.9669144 0.737908,-1.6539325 0.750631,-0.6870182 1.781159,-0.6870182 1.030527,0 1.768435,0.6870182 0.737908,0.6870181 0.737908,1.6539325 z"
+       id="text1"
+       transform="scale(0.98370243,1.0165676)"
+       aria-label="i" />
+  </g>
+</svg>

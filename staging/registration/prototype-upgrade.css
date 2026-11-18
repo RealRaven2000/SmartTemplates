@@ -1,0 +1,49 @@
+.brand { flex-wrap: wrap; }
+.prototype-switches { margin-inline-start: auto; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.prototype-switches .prototype-badge { margin: 0; }
+.prototype-switches label { gap: 3px; font-size: 11px; font-weight: 500; }
+.prototype-switches select { padding: 5px 8px; font-size: 12px; }
+.plans { grid-template-columns: repeat(var(--preview-columns, 3), minmax(0, 1fr)); }
+.purchase.renewal-emphasis { background: #b85616; color: #fff; }
+.purchase.renewal-emphasis:hover { background: #94410d; }
+.purchase.renewal-emphasis .external-icon { color: #fff; }
+.current-edition-note { padding: 12px; border-radius: 7px; background: #f4f6f3; color: #52645a; font-size: 13px; line-height: 1.6; }
+.separate-pro-warning { border-inline-start: 3px solid #dfbd7f; background: #fff7e6; color: #72511f; }
+.plan > p.domain-seats-note { font-size: 11px; line-height: 1.6; margin-top: -14px; margin-bottom: 24px; }
+.domain-seats-note a { color: #526777; }
+.license-summary.valid-license { background: #f2f7f1; border-color: #9db69e; }
+.valid-license .status { background: #e0eddf; color: #245e48; }
+.expiry-warning { font-size: 11px; font-weight: 700; border-radius: 20px; padding: 4px 9px; color: #fff; background: linear-gradient(#d85b00, #a43e00); }
+@media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+
+/* Prototype-only dark palette, selectable independently of Thunderbird's theme. */
+html[data-preview-theme="dark"] { color-scheme: dark; --green: #a3ce83; --muted: #b8c0c7; background: #25292e; color: #e9edf0; }
+html[data-preview-theme="dark"] body { background: #25292e; color: #e9edf0; }
+html[data-preview-theme="dark"] .workspace { background: #32383e; border-color: #59636b; box-shadow: 0 5px 20px #0003; }
+html[data-preview-theme="dark"] .contact { background: #2c3238; border-color: #59636b; }
+html[data-preview-theme="dark"] input, html[data-preview-theme="dark"] select { background: #242a30; color: #eef2f4; border-color: #74808a; }
+html[data-preview-theme="dark"] .plan { background: #32383e; border-color: #69747c; }
+html[data-preview-theme="dark"] .plan.featured { background: #394c38; border-color: #84a779; }
+html[data-preview-theme="dark"] .license-summary { background: #40372c; border-color: #a77d4f; }
+html[data-preview-theme="dark"] .license-summary.valid-license { background: #344638; border-color: #84a779; }
+html[data-preview-theme="dark"] .license-summary p { color: #d7dfd4; }
+html[data-preview-theme="dark"] .status { background: #72502e; color: #ffdfb4; }
+html[data-preview-theme="dark"] .valid-license .status { background: #496849; color: #e6f4de; }
+html[data-preview-theme="dark"] .secondary, html[data-preview-theme="dark"] .toggle { background: #3b4840; color: #f1f6ed; border-color: #758976; }
+html[data-preview-theme="dark"] .secondary:hover, html[data-preview-theme="dark"] .toggle:hover { background: #4a5b4e; }
+html[data-preview-theme="dark"] .primary { background: #477d35; color: #fff; }
+html[data-preview-theme="dark"] .primary:hover { background: #386b2a; }
+html[data-preview-theme="dark"] .purchase.renewal-emphasis { background: #b85616; }
+html[data-preview-theme="dark"] .purchase.renewal-emphasis:hover { background: #94410d; }
+html[data-preview-theme="dark"] .view-switcher { border-color: #536356; }
+html[data-preview-theme="dark"] .view-switcher:has(.toggle:hover), html[data-preview-theme="dark"] .view-switcher:has(.toggle:focus-visible) { background: repeating-linear-gradient(135deg, #3b4740 0, #3b4740 6px, #32383e 6px, #32383e 12px); }
+html[data-preview-theme="dark"] .email-help { background: #32383e; border-color: #71808b; box-shadow: 0 8px 28px #0008; }
+html[data-preview-theme="dark"] .email-help p, html[data-preview-theme="dark"] .terms-grid p, html[data-preview-theme="dark"] .email-field .email-hint { color: #c2cec2; }
+html[data-preview-theme="dark"] .email-help-close { color: #e8eee8; }
+html[data-preview-theme="dark"] .renewal-details, html[data-preview-theme="dark"] .feedback { background: #394b3a; color: #e3eee0; border-color: #86a781; }
+html[data-preview-theme="dark"] .separate-pro-warning, html[data-preview-theme="dark"] .checkout-notice { background: #55442e; color: #ffe2b9; border-color: #bf965d; }
+html[data-preview-theme="dark"] .plan > p.domain-seats-note { color: #c2cec2; }
+html[data-preview-theme="dark"] .domain-seats-note a { color: #b4d5ae; }
+html[data-preview-theme="dark"] .review-note, html[data-preview-theme="dark"] .prototype-badge { border-color: #657568; }
+html[data-preview-theme="dark"] footer { color: #b2bdb3; }
+html[data-preview-theme="dark"] .terms-grid p.license-detail-highlight { background: #304c60; }
