@@ -4,6 +4,7 @@
 "use strict";
 
 // Format only explicitly selected text leaves; code contents remain literal.
+// eslint-disable-next-line no-unused-vars
 function formatLocalizedMarkdown(element) {
   const parts = replaceNested(element.textContent).split(/(`[^`\r\n]+`|\*\*[^*`]+\*\*|(?<!\*)\*[^*`]+\*(?!\*))/);
   const fragment = document.createDocumentFragment();

@@ -1216,6 +1216,12 @@
   "registration.renewal.entitlements": {
     "message": "Manfaat pembaruan dan peningkatan bergantung pada informasi lisensi yang dikirim ke toko. Mengganti produk di toko atau perangkat lunak keamanan yang menghapus informasi tersebut dapat menghalangi penerapan hak yang sudah Anda miliki."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Tingkatkan ke Pro dan bayar **hanya selisih** antara harga Standard dan Pro — Anda mendapatkan satu tahun penuh sejak hari pembayaran, meskipun lisensi Standard Anda sudah kedaluwarsa."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Tingkatkan ke Pro dan bayar **hanya selisih** antara harga Standard dan Pro. Anda mendapatkan satu tahun penuh sejak hari pembayaran."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Memperbarui atau memperpanjang lisensi menambah satu tahun dan biasanya lebih murah daripada membeli lisensi baru."

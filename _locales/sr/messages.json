@@ -1774,6 +1774,12 @@
   "registration.renewal.entitlements": {
     "message": "Погодности обнове и надоградње зависе од података лиценце послатих продавници. Промена производа у продавници или уклањање ових података безбедносним софтвером може спречити примену постојећих права."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Надоградите на Pro и платите **само разлику** између цена Standard и Pro — добијате пуну годину од дана плаћања, чак и ако је лиценца Standard већ истекла."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Надоградите на Pro и платите **само разлику** између цена Standard и Pro. Добијате пуну годину од дана плаћања."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Обнова или продужење лиценце додаје годину дана и обично кошта мање од нове лиценце."

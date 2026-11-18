@@ -1792,6 +1792,12 @@
   "registration.renewal.entitlements": {
     "message": "Les avantages de renouvellement et de mise à niveau dépendent des informations de licence transmises à la boutique. Changer de produit dans la boutique, ou un logiciel de sécurité supprimant ces informations, peut empêcher leur application."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Passez à Pro et ne payez **que la différence** entre les prix Standard et Pro : nous vous offrons une année complète à partir du jour du paiement, même si votre licence Standard a déjà expiré."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Passez à Pro et ne payez **que la différence** entre les prix Standard et Pro. Vous bénéficiez d’une année complète à partir du jour du paiement."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Renouveler ou prolonger votre licence ajoute un an et coûte généralement moins cher qu’une nouvelle licence."

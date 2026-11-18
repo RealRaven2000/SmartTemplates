@@ -1789,6 +1789,12 @@
   "registration.renewal.entitlements": {
     "message": "续订和升级优惠取决于传递给商店的许可证信息。在商店中切换产品，或安全软件删除这些信息，都可能导致商店无法应用您的现有权益。"
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "升级到 Pro，**只需支付 Standard 与 Pro 的差价**——即使您的 Standard 许可证已经过期，我们也会从付款当天起为您提供完整的一年。"
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "升级到 Pro，**只需支付 Standard 与 Pro 的差价**。您将从付款当天起享有完整的一年。"
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "续订或延长许可证可增加一年，通常比购买新许可证便宜。"

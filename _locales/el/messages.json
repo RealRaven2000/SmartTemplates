@@ -1795,6 +1795,12 @@
   "registration.renewal.entitlements": {
     "message": "Τα οφέλη ανανέωσης και αναβάθμισης εξαρτώνται από τα στοιχεία άδειας που αποστέλλονται στο κατάστημα. Η αλλαγή προϊόντος στο κατάστημα ή η αφαίρεση αυτών των στοιχείων από λογισμικό ασφαλείας μπορεί να εμποδίσει την εφαρμογή των υφιστάμενων δικαιωμάτων σας."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Αναβαθμίστε σε Pro και πληρώστε **μόνο τη διαφορά** μεταξύ των τιμών Standard και Pro — σας δίνουμε έναν πλήρη χρόνο από την ημέρα πληρωμής, ακόμη κι αν η άδεια Standard έχει ήδη λήξει."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Αναβαθμίστε σε Pro και πληρώστε **μόνο τη διαφορά** μεταξύ των τιμών Standard και Pro. Θα έχετε έναν πλήρη χρόνο από την ημέρα πληρωμής."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Η ανανέωση ή παράταση της άδειας προσθέτει άλλο ένα έτος και συνήθως κοστίζει λιγότερο από νέα άδεια."

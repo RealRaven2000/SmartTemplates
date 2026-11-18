@@ -1804,6 +1804,12 @@
   "registration.renewal.entitlements": {
     "message": "Els avantatges de renovació i actualització depenen de les dades de llicència enviades a la botiga. Canviar de producte a la botiga o un programa de seguretat que elimini aquestes dades pot impedir l’aplicació dels drets existents."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Actualitzeu a Pro i pagueu **només la diferència** entre els preus de Standard i Pro: us donem un any complet des del dia del pagament, encara que la llicència Standard ja hagi caducat."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Actualitzeu a Pro i pagueu **només la diferència** entre els preus de Standard i Pro. Obtindreu un any complet des del dia del pagament."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Renovar o ampliar la llicència afegeix un any més i normalment costa menys que comprar-ne una de nova."

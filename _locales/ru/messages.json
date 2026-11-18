@@ -1804,6 +1804,12 @@
   "registration.renewal.entitlements": {
     "message": "Преимущества продления и перехода зависят от данных лицензии, переданных магазину. Смена товара в магазине или удаление этих данных защитным ПО может помешать учесть ваши имеющиеся права."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Перейдите на Pro и заплатите **только разницу** между ценами Standard и Pro — вы получите полный год со дня оплаты, даже если срок действия лицензии Standard уже истёк."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Перейдите на Pro и заплатите **только разницу** между ценами Standard и Pro. Вы получите полный год со дня оплаты."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Возобновление или продление лицензии добавляет год и обычно стоит меньше новой лицензии."

@@ -1792,6 +1792,12 @@
   "registration.renewal.entitlements": {
     "message": "Výhody obnovení a upgradu závisejí na údajích licence předaných obchodu. Změna produktu v obchodě nebo odstranění těchto údajů bezpečnostním softwarem může zabránit uplatnění vašich stávajících nároků."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Přejděte na Pro a zaplaťte **pouze rozdíl** mezi cenami Standard a Pro – získáte celý rok ode dne zaplacení, i když vaše licence Standard již vypršela."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Přejděte na Pro a zaplaťte **pouze rozdíl** mezi cenami Standard a Pro. Získáte celý rok ode dne zaplacení."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Obnovení nebo prodloužení licence přidá další rok a obvykle stojí méně než nová licence."

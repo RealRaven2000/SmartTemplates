@@ -1759,6 +1759,12 @@
   "registration.renewal.entitlements": {
     "message": "I vantaggi di rinnovo e aggiornamento dipendono dai dati di licenza inviati al negozio. Cambiare prodotto nel negozio, o un software di sicurezza che rimuove tali dati, può impedire l’applicazione dei diritti esistenti."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Passa a Pro e paga **solo la differenza** tra i prezzi Standard e Pro: ti diamo un anno completo dal giorno del pagamento, anche se la tua licenza Standard è già scaduta."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Passa a Pro e paga **solo la differenza** tra i prezzi Standard e Pro. Ottieni un anno completo dal giorno del pagamento."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Rinnovare o estendere la licenza aggiunge un altro anno e di solito costa meno di una nuova licenza."

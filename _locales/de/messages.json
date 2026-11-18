@@ -1781,6 +1781,12 @@
   "registration.renewal.entitlements": {
     "message": "Erneuerungs- und Upgrade-Vorteile hängen von den Lizenzinformationen ab, die an den Shop übergeben werden. Wenn Sie im Shop das Produkt wechseln oder Sicherheitssoftware diese Informationen entfernt, kann der Shop Ihre bestehende Berechtigung möglicherweise nicht berücksichtigen."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Steigen Sie auf Pro um und zahlen Sie **nur die Differenz** zwischen dem Standard- und dem Pro-Preis – Sie erhalten ein volles Jahr ab dem Zahlungstag, auch wenn Ihre Standard-Lizenz bereits abgelaufen ist."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Steigen Sie auf Pro um und zahlen Sie **nur die Differenz** zwischen dem Standard- und dem Pro-Preis. Sie erhalten ein volles Jahr ab dem Zahlungstag."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Die Erneuerung oder Verlängerung Ihrer Lizenz fügt ein weiteres Jahr hinzu und kostet in der Regel weniger als eine neue Lizenz."

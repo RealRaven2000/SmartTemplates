@@ -1804,6 +1804,12 @@
   "registration.renewal.entitlements": {
     "message": "Förnyelse- och uppgraderingsförmåner beror på licensinformationen som skickas till butiken. Att byta produkt i butiken, eller säkerhetsprogram som tar bort informationen, kan hindra butiken från att tillämpa dina befintliga rättigheter."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Uppgradera till Pro och betala **bara skillnaden** mellan priserna för Standard och Pro – du får ett helt år från betalningsdagen, även om din Standard-licens redan har gått ut."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Uppgradera till Pro och betala **bara skillnaden** mellan priserna för Standard och Pro. Du får ett helt år från betalningsdagen."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Att förnya eller förlänga licensen lägger till ett år och kostar oftast mindre än en ny licens."

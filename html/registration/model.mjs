@@ -4,7 +4,7 @@ export function licenseEdition(license) {
   return editionsByKey[license.keyType] || null;
 }
 
-export function deriveActions(license, config, { intent = "" } = {}) {
+export function deriveActions(license, config) {
   const current = licenseEdition(license);
   const recognized = ["Valid", "Expired"].includes(license.status) && current;
   return config.editions.map((edition) => {
@@ -15,7 +15,7 @@ export function deriveActions(license, config, { intent = "" } = {}) {
       kind = license.status === "Expired" || edition === "domain" ? "renew" : "extend";
       route = config.products[edition].renew;
       if (edition === "standard" && kind === "extend" &&
-          license.licensedDaysLeft >= config.extensionPromptDays && intent !== "extend") {
+          license.licensedDaysLeft >= config.extensionPromptDays) {
         kind = "current";
         available = false;
         return { edition, kind, route: null, available, hidden: true };

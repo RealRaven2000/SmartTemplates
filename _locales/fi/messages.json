@@ -1807,6 +1807,12 @@
   "registration.renewal.entitlements": {
     "message": "Uusimis- ja päivitysedut riippuvat kauppaan välitetyistä lisenssitiedoista. Tuotteen vaihtaminen kaupassa tai tietojen poistuminen tietoturvaohjelman vuoksi voi estää aiempien oikeuksiesi huomioimisen."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Päivitä Pro-versioon ja maksa **vain Standard- ja Pro-hinnan erotus** – saat täyden vuoden maksupäivästä, vaikka Standard-lisenssisi olisi jo vanhentunut."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Päivitä Pro-versioon ja maksa **vain Standard- ja Pro-hinnan erotus**. Saat täyden vuoden maksupäivästä."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Lisenssin uusiminen tai jatkaminen lisää vuoden ja maksaa yleensä vähemmän kuin uusi lisenssi."

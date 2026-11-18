@@ -1827,6 +1827,14 @@
   "registration.renewal.entitlements": {
     "message": "Renewal and upgrade benefits depend on license information passed to the shop. Switching products in the shop or security software removing that information can prevent the shop from applying your existing entitlement."
   },
+  "registration.renewal.expiredStandardHint": {
+    "description": "requires .localizedFormatting",
+    "message": "Upgrade to Pro and pay **only the difference** between the Standard and Pro prices - we give you a full year from the day you pay, even if your Standard license already expired."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "description": "requires .localizedFormatting",
+    "message": "Upgrade to Pro and pay **only the difference** between the Standard and Pro prices. You get a full year from the day you pay."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Renewing or extending your license adds another year and typically costs less than buying a new license."

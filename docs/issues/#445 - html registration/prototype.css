@@ -47,7 +47,7 @@ input, select { color: #263632; background: #fff; border: 1px solid #cfd8ce; bor
 .email-help-close { background: transparent; border: 0; color: #546850; font-size: 22px; line-height: 1; padding: 0 3px; }
 .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .plan { border: 1px solid #dce3d9; border-radius: 12px; padding: 23px 20px 20px; display: flex; flex-direction: column; }
-.featured { background: #f2f7f1; border-color: #9db69e; }
+.featured { background: #f2fbf7; border-color: #9db69e; }
 .plan-kicker { font-size: 9px; letter-spacing: .11em; font-weight: 750; color: var(--green); margin-bottom: 12px; }
 .plan h3 { font-size: 24px; letter-spacing: -.025em; margin-bottom: 12px; }
 .plan > p:not(.plan-kicker) { color: var(--muted); font-size: 14px; line-height: 1.65; margin-bottom: 26px; }
@@ -56,8 +56,8 @@ input, select { color: #263632; background: #fff; border: 1px solid #cfd8ce; bor
 .button { border-radius: 7px; border: 1px solid transparent; padding: 11px 15px; font-size: 13px; font-weight: 650; line-height: 1.4; }
 .secondary { background: #fff; border-color: #cdd8cc; color: #2d4939; }
 .secondary:hover { background: #f1f5ee; border-color: #92a98f; }
-.primary { background: var(--green); color: #fff; }
-.primary:hover { background: #174c38; }
+.primary { background: #386f28; color: #fff; }
+.primary:hover { background: #3c551d; }
 .purchase { width: 100%; display: flex; justify-content: space-between; gap: 6px; align-items: center; white-space: nowrap; padding-inline: 12px; }
 .external-icon { width: 14px; height: 14px; max-width: 14px; max-height: 14px; flex: 0 0 14px; vertical-align: -.15em; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; color: #b34e23; transition: color .18s; }
 a .external-icon { margin-left: 5px; }
@@ -88,10 +88,12 @@ footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 2
 .renewal-hint { visibility: hidden; margin: 12px 0 0; font-size: 12px; line-height: 1.6; color: var(--green); }
 .renewal-details { padding: 14px 16px; margin-bottom: 16px; background: #f2f7f1; border-left: 3px solid #9db69e; border-radius: 3px; }
 .renewal-details p:last-child { margin-bottom: 0; }
-#selection-panel:has(.purchase[data-plan$="renewal"]:hover) .renewal-hint,
-#selection-panel:has(.purchase[data-plan$="renewal"]:focus) .renewal-hint,
-#selection-panel:has(.purchase[data-plan$="extension"]:hover) .renewal-hint,
-#selection-panel:has(.purchase[data-plan$="extension"]:focus) .renewal-hint { visibility: visible; }
+#selection-panel:has(.purchase[data-action="renew"]:hover) .renewal-hint,
+#selection-panel:has(.purchase[data-action="renew"]:focus) .renewal-hint,
+#selection-panel:has(.purchase[data-action="extend"]:hover) .renewal-hint,
+#selection-panel:has(.purchase[data-action="extend"]:focus) .renewal-hint,
+#selection-panel.standard-upgrade-tip:has(.purchase[data-action="upgrade"]:hover) .renewal-hint,
+#selection-panel.standard-upgrade-tip:has(.purchase[data-action="upgrade"]:focus) .renewal-hint { visibility: visible; }
 
 .feedback p { margin: 0 0 12px; }
 .feedback p:last-child { margin-bottom: 0; }

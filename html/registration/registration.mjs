@@ -1,4 +1,4 @@
-/* globals formatAll, parseHTMLFragment */
+/* globals formatAll, parseHTMLFragment, formatLocalizedMarkdown */
 import { registrationConfig } from "./config.mjs";
 import { contactFromIdentity, deriveActions, identityOptionLabels, licenseEdition } from "./model.mjs";
 import { openCheckout } from "./checkout.mjs";
@@ -121,7 +121,15 @@ function renderLicense() {
     recognized && formatted
       ? message(license.status === "Expired" ? "date.expired" : "date.valid", [formatted])
       : message("date.none");
-  actions = deriveActions(license, registrationConfig, { intent: params.get("intent") || "" });
+  actions = deriveActions(license, registrationConfig);
+  const expiredStandard = recognized && edition === "standard" && license.status === "Expired";
+  const validStandard = recognized && edition === "standard" && license.status === "Valid";
+  selection.classList.toggle("standard-upgrade-tip", !!(expiredStandard || validStandard));
+  byId("renewal-hint").classList.toggle("localizedFormatting", !!(expiredStandard || validStandard));
+  byId("renewal-hint").textContent = message(expiredStandard ? "renewal.expiredStandardHint" : validStandard ? "renewal.standardUpgradeHint" : "renewal.hint");
+  if (expiredStandard || validStandard) {
+    formatLocalizedMarkdown(byId("renewal-hint"));
+  }
   const domainHolder = recognized && edition === "domain";
   byId("domain-pro-warning").hidden = !domainHolder;
   byId("domain-seats-note").hidden = !domainHolder;
@@ -130,9 +138,11 @@ function renderLicense() {
     card.hidden = action.hidden;
     const button = card.querySelector(".purchase");
     const primary = action.edition === (domainHolder ? "domain" : "pro");
+    const renewStandard = action.edition === "standard" && action.kind === "renew";
     card.classList.toggle("featured", primary);
-    button.classList.toggle("primary", primary);
-    button.classList.toggle("secondary", !primary);
+    button.classList.toggle("primary", primary || renewStandard);
+    button.classList.toggle("secondary", !primary && !renewStandard);
+    button.classList.toggle("renewal-emphasis", renewStandard);
     if (domainHolder && action.edition === "pro") {
       button.setAttribute("aria-describedby", "domain-pro-warning");
     }
@@ -144,7 +154,7 @@ function renderLicense() {
       "action." + action.kind,
       ["renew", "extend"].includes(action.kind) ? [] : [message("edition." + action.edition)]
     );
-    if (["renew", "extend"].includes(action.kind)) {
+    if (["renew", "extend"].includes(action.kind) || ((expiredStandard || validStandard) && action.kind === "upgrade")) {
       button.setAttribute("aria-describedby", "renewal-hint");
     } else if (!(domainHolder && action.edition === "pro")) {
       button.removeAttribute("aria-describedby");

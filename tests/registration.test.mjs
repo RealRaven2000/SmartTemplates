@@ -57,11 +57,11 @@ test("background creates/reuses registration then focuses its owning window", as
   }
 });
 
-test("current edition uses renewal route and explicit extension preserves Standard eligibility", () => {
+test("current edition uses renewal route and Standard extension respects the expiry window", () => {
   for (const [keyType, edition] of [[0, "pro"], [1, "domain"], [2, "standard"]]) {
     assert.equal(actionFor(license("Expired", keyType), edition).kind, "renew");
     assert.equal(actionFor(license("Expired", keyType), edition).route, config.products[edition].renew);
-    assert.equal(actionFor(license("Valid", keyType), edition, { intent: "extend" }).kind,
+    assert.equal(actionFor(license("Valid", keyType, { licensedDaysLeft: 29 }), edition, { intent: "extend" }).kind,
       edition === "domain" ? "renew" : "extend");
   }
   assert.equal(actionFor(license("Valid", 2), "standard").available, false);
@@ -146,11 +146,11 @@ test("Domain holders renew before or after expiry; personal Pro is a separate ne
   }
 });
 
-test("fresh Standard hides its card until near expiry or an explicit extension request", () => {
+test("fresh Standard hides its card until near expiry, including for an extension request", () => {
   const state = license("Valid", 2);
   assert.equal(actionFor(state, "standard").hidden, true);
   assert.equal(actionFor({ ...state, licensedDaysLeft: 6 }, "standard").hidden, false);
-  assert.equal(deriveActions(state, config, { intent: "extend" })[0].hidden, false);
+  assert.equal(deriveActions(state, config, { intent: "extend" })[0].hidden, true);
 });
 
 test("personal-license holders buy Domain through the new-license product regardless of expiry", () => {

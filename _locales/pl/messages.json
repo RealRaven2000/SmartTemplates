@@ -1786,6 +1786,12 @@
   "registration.renewal.entitlements": {
     "message": "Korzyści odnowienia i aktualizacji zależą od danych licencji przekazanych do sklepu. Zmiana produktu w sklepie lub usunięcie tych danych przez oprogramowanie zabezpieczające może uniemożliwić zastosowanie posiadanych uprawnień."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Przejdź na Pro i zapłać **tylko różnicę** między cenami Standard i Pro — otrzymasz pełny rok od dnia płatności, nawet jeśli Twoja licencja Standard już wygasła."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Przejdź na Pro i zapłać **tylko różnicę** między cenami Standard i Pro. Otrzymasz pełny rok od dnia płatności."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Odnowienie lub przedłużenie licencji dodaje kolejny rok i zwykle kosztuje mniej niż nowa licencja."

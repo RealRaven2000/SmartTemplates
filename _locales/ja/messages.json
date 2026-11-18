@@ -1768,6 +1768,12 @@
   "registration.renewal.entitlements": {
     "message": "更新やアップグレードの特典は、ショップに渡されるライセンス情報に基づきます。ショップで商品を変更したり、セキュリティソフトがこの情報を削除したりすると、既存の権利が反映されない場合があります。"
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Pro へのアップグレードでは、Standard と Pro の価格の**差額だけ**をお支払いください。Standard ライセンスの期限がすでに切れていても、お支払日から丸1年間ご利用いただけます。"
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Pro へのアップグレードでは、Standard と Pro の価格の**差額だけ**をお支払いください。お支払日から丸1年間ご利用いただけます。"
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "ライセンスの更新や延長では 1 年が追加され、通常は新規購入よりも安くなります。"

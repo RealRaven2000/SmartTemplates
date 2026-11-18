@@ -30,9 +30,9 @@ The production validator is `scripts/Licenser.mjs.js`. Automated tests cover dat
 | Check | Expected result | Result / notes |
 | --- | --- | --- |
 | Untouched current Pro key (`ST-`) | Valid, correct edition and actual expiry date | |
-| Untouched current Standard key (`S1-`) | Valid, correct edition and actual expiry date | |
+| Untouched current Standard key (`S1-`) | Valid, correct edition and actual expiry date | Passed, 2026-11-18: pasting the key also validated it and displayed the valid-until date. |
 | Untouched current Domain key (`STD-`) with an eligible configured domain account | Valid, correct edition and actual expiry date | |
-| Untouched expired genuine key with a matching account | Expired, not Invalid; renewal remains available | |
+| Untouched expired genuine key with a matching account | Expired, not Invalid; renewal remains available | Passed with a Standard key, 2026-11-18. |
 | Change only the readable expiry date before `;`, leaving encrypted text untouched | Invalid; the altered date does not grant or extend licensed access. Unlike the old behavior, a mismatch is now explicitly rejected | |
 | Change only the readable email address | Email mismatch (`MailDifferent`), not Valid | |
 | Change only a genuine Pro key's prefix from `ST-` to `S1-`, or a Standard key's prefix from `S1-` to `ST-` | Invalid; an edition cannot be changed by editing its readable prefix | |
@@ -46,10 +46,10 @@ Prioritize acceptance of all three genuine license types, date tampering and the
 
 ## Sales flow and checkout
 
-- [ ] Fresh Standard: Standard card hidden, Upgrade to Pro available. Near expiry, Standard extension becomes actionable; an expired Standard offers renewal.
-- [ ] Valid and expired Pro: appropriate Extend License or Renew License action; Standard hidden.
-- [ ] Valid and expired Domain: Domain is highlighted and always says Renew License. Standard is hidden; Pro is an unhighlighted separate personal purchase with the coverage explanation. This final-build check is especially important because Domain users have previously bought Pro unintentionally.
-- [ ] Domain Add users link opens the additional-seats product.
+- [ ] Fresh Standard: Standard card hidden, Upgrade to Pro available. Near expiry, Standard extension becomes actionable; an expired Standard offers renewal. Near-expiry extension and expired renewal, plus both Pro upgrade destinations and referrers, passed on 2026-11-18; fresh Standard remains pending.
+- [x] Valid and expired Pro: appropriate Extend License or Renew License action; Standard hidden. Both passed on 2026-11-18, including the shop destination and existing-key referrer.
+- [x] Valid and expired Domain: Domain is highlighted and always says Renew License. Standard is hidden; Pro is an unhighlighted separate personal purchase with the coverage explanation. Both passed on 2026-11-18, including the renewal destination and existing-key referrer.
+- [x] Domain Add users link opens the additional-seats product. Passed on 2026-11-18: opens `product/smarttemplate_domainseat` without a referrer.
 - [ ] No license: Free edition badge and fresh purchase choices, without a previous license key passed as a renewal referrer.
 - [ ] Open the relevant purchase, renewal and upgrade products without completing payment. Verify the selected product, contact prefill and existing-key referrer where applicable. Do not rely solely on prototype scenarios: their checkout is deliberately simulated.
 - [ ] Include a Unicode name and an address containing `+` in a contact-prefill check. Switching accounts updates the contact fields correctly; manual edits survive switching between selection and terms.

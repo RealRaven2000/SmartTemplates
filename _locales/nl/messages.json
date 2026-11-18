@@ -1780,6 +1780,12 @@
   "registration.renewal.entitlements": {
     "message": "Voordelen voor vernieuwing en upgrades hangen af van de licentiegegevens die naar de winkel worden gestuurd. Een ander product kiezen in de winkel, of beveiligingssoftware die deze gegevens verwijdert, kan verhinderen dat uw bestaande rechten worden toegepast."
   },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Upgrade naar Pro en betaal **alleen het verschil** tussen de Standard- en Pro-prijzen. U krijgt een volledig jaar vanaf de dag van betaling, ook als uw Standard-licentie al is verlopen."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Upgrade naar Pro en betaal **alleen het verschil** tussen de Standard- en Pro-prijzen. U krijgt een volledig jaar vanaf de dag van betaling."
+  },
   "registration.renewal.hint": {
     "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Uw licentie vernieuwen of verlengen voegt een jaar toe en kost doorgaans minder dan een nieuwe licentie."
