@@ -7,16 +7,19 @@ Manual checks for #445. Unchecked items are pending; automated tests do not esta
 - [x] Settings → Licenses: open registration using Buy, Upgrade, Extend or Renew as available. Confirm the correct edition and action are highlighted. Passed in German on 2026-11-17: all reported Settings scenarios with valid, soon-to-expire and expired licenses, including Standard upgrade.
 - [ ] Notification bubbles: click their license action. Registration should open in front, with its owning Thunderbird window focused, while the composer remains open and its draft unchanged. Repeat with an existing registration tab in another main window.
 
-  Passed in German on 2026-11-17: a Standard license using Pro features offers the upgrade action and opens registration with Pro highlighted and Upgrade auf Pro. Other bubble states and the multi-window case remain pending. The screenshot also exposed English fallback text for feature descriptions; the missing German composer-notification entities were added afterward and need a visual recheck.
+  Passed in German on 2026-11-17: a Standard license using Pro features offers the upgrade action and opens registration with Pro highlighted and Upgrade auf Pro. Other bubble states and the multi-window case remain pending. The screenshot also exposed English fallback text for feature descriptions; the missing German composer-notification entities were added afterward and their displayed translations were subsequently verified with Standard and no license.
 
 - [ ] Premium-feature and both template category-limit warnings: follow the registration action and confirm it opens the modern page.
 - [ ] General message dialog: its license button opens the modern page.
 - [ ] Installed/updated welcome pages: test renewal, extension, upgrade and promotional actions. The welcome page closes only after registration opens successfully.
-- [ ] What's New: “I want to buy a license” and the sale icon open registration rather than going straight to the shop.
-- [ ] Tab reuse: leave registration open, then trigger another entry point. It should reuse that tab and refresh its action/context, including clearing an earlier explicit extension intent or synthetic test case.
-- [ ] Emergency legacy menu: Legacy License Registration still opens the old XHTML dialog.
+- [x] What's New: “I want to buy a license” and the sale icon open registration rather than going straight to the shop. Passed on 2026-11-17: opens the new registration page.
+- [x] Tab reuse: leave registration open, then trigger another entry point. Passed on 2026-11-17: the existing registration tab is reused.
+- [ ] Tab context reset: specifically verify that a later visit clears an earlier explicit extension intent or synthetic test case and selects the appropriate actions for the new entry point.
+- [x] Emergency legacy menu: Legacy License Registration still opens the old XHTML dialog. Passed on 2026-11-17.
 
 Reported on 2026-11-17: the maintainer tested focusing registration from the composer bubble and found the focus change natural. The multi-window case above remains a separate check.
+
+German notification localization was also tested with a Standard license and without a license on 2026-11-17: displayed body text and actions passed. The screenshot exposed the remaining hardcoded “licence” badge; it was subsequently localized to Lizenz and confirmed fixed in a follow-up screenshot on the same day. This localization result does not mark the remaining registration routes or multi-window behavior passed.
 
 ## License validation with real keys
 
@@ -36,7 +39,7 @@ The production validator is `scripts/Licenser.mjs.js`. Automated tests cover dat
 | Change only the prefix to `QF-` | Invalid; a foreign product prefix is rejected even if the encrypted portion came from SmartTemplates | |
 | Enter an actual QuickFolders key | Invalid; Settings shows its different-add-on explanation | |
 | Change a character in the encrypted portion | Invalid, with a visible validation message | |
-| Use an otherwise genuine key whose licensed account is not configured in the test profile | Licensed address not configured (`MailNotConfigured`), not Valid | |
+| Use an otherwise genuine key whose licensed account is not configured in the test profile | Licensed address not configured (`MailNotConfigured`), not Valid | Passed, 2026-11-17: missing-account warning displayed with Buy License action. |
 | Restore the untouched valid key after a failure, then restart Thunderbird | Valid again; status, expiry and edition remain correct after restart, without stale errors | |
 
 Prioritize acceptance of all three genuine license types, date tampering and the Pro/Standard prefix swap. Repeat the readable-date check with each edition when matching real test keys are available. If testing an existing supported alias-license setup, confirm it still validates without changing that setup.

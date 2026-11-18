@@ -1802,7 +1802,7 @@
     "message": "Za vašo e-pošto"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Domenske licence{/bold}{br}Obnova običajno doda eno leto prejšnjemu datumu poteka, tudi ob poznem naročilu ali plačilu."
+    "message": "{bold}Domenske licence{/bold}{br}Domenske licence se {bold}pregledajo in izdajo ročno{/bold}. Obnova doda eno leto obstoječemu datumu poteka, tudi če je licenca že potekla. To spodbuja pravočasno obnovo; končno obdobje se potrdi med pregledom."
   },
   "registration.renewal.entitlements": {
     "message": "Ugodnosti obnove in nadgradnje so odvisne od podatkov licence, poslanih trgovini. Menjava izdelka v trgovini ali varnostna programska oprema, ki te podatke odstrani, lahko prepreči upoštevanje obstoječih pravic."
@@ -1893,7 +1893,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "Osebna licenca je vezana na vaš e-poštni naslov. Uporabljate jo lahko v več namestitvah Thunderbirda, če je licencirani naslov v vsaki nastavljen kot {bold}privzeta identiteta{/bold} računa."
+    "message": "Osebna licenca je vezana na vaš e-poštni naslov. Uporabljate jo lahko v več namestitvah Thunderbirda, če je licencirani naslov v vsaki nastavljen kot **privzeta identiteta** računa."
   },
   "registration.terms.email.heading": {
     "message": "Vaša e-pošta, vaša licenca"
@@ -1913,7 +1913,7 @@
     "message": "Licenčni pogoji"
   },
   "registration.terms.manualRenewal": {
-    "message": "Licence {bold}se ne obnavljajo samodejno{/bold}. {+extensionName} vas opomni pred potekom licence."
+    "message": "Licence **se ne obnavljajo samodejno**. {+extensionName} vas opomni pred potekom licence."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1923,7 +1923,7 @@
     "message": "Obnove in nadgradnje pošljejo prejšnjo licenco trgovini za preverjanje upravičenosti."
   },
   "registration.terms.savings": {
-    "message": "{bold}Začnite s Pro in prihranite v naslednjih letih.{/bold} Obnova ali podaljšanje licence Pro stane občutno manj kot nakup nove."
+    "message": "**Začnite s Pro in prihranite v naslednjih letih.** Obnova ali podaljšanje licence Pro stane občutno manj kot nakup nove."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

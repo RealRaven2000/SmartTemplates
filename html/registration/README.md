@@ -30,4 +30,6 @@ Static content and accessibility attributes use the normal `__MSG_registration.*
 
 `../localized-format.js` contains the formatter extracted from `popup/popup.js`, shared with the popup/update/settings/message pages. It keeps the established custom markup syntax and nested substitutions, without automatic italics. Localize dedicated text spans rather than replacing form controls or links. No legacy registration scripts are loaded.
 
+For standalone text leaves, `.localizedFormatting` opts into Markdown-style `**bold**`, `*italic*`, and ` `inline code` ` formatting. Keep complete sentences together in each translated message. Use this class separately from `.localized-markup`.
+
 Validation: `node --test tests/registration.test.mjs` from the repository root. Lint uses the repository's legacy ESLint configuration (`ESLINT_USE_FLAT_CONFIG=false` with ESLint 9).

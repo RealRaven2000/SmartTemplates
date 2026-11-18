@@ -1,4 +1,4 @@
-/* globals formatAll, parseHTMLFragment */
+/* globals formatAll, parseHTMLFragment, formatLocalizedMarkdown */
 import { registrationConfig } from "./config.mjs";
 
 export function message(key, substitutions = []) {
@@ -49,6 +49,9 @@ export function localizePage() {
   // data-l10n-id records legacy source entities and has no runtime role.
   for (const element of document.querySelectorAll(".localized-markup")) {
     element.replaceChildren(parseHTMLFragment(formatAll(element.textContent)));
+  }
+  for (const element of document.querySelectorAll(".localizedFormatting")) {
+    formatLocalizedMarkdown(element);
   }
   replaceLabelGlyphs();
 }

@@ -1790,7 +1790,7 @@
     "message": "適用於您自己的郵件"
   },
   "registration.renewal.domain": {
-    "message": "{bold}網域授權{/bold}{br}續購通常會在原到期日上增加一年，即使訂購或付款較晚也是如此。"
+    "message": "{bold}網域授權{/bold}{br}網域授權{bold}由人工審核並核發{/bold}。續購會在現有到期日上增加一年，即使授權已過期也是如此。這鼓勵及時續購；最終期限將在審核時確認。"
   },
   "registration.renewal.entitlements": {
     "message": "續購與升級優惠取決於傳送給商店的授權資料。在商店中切換產品，或安全軟體移除這些資料，都可能導致商店無法套用您現有的權益。"
@@ -1881,7 +1881,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "個人授權與您的郵件地址綁定。只要在每個 Thunderbird 安裝環境中，將該地址設為帳號的{bold}預設身分{/bold}，即可在多個安裝環境中使用。"
+    "message": "個人授權與您的郵件地址綁定。只要在每個 Thunderbird 安裝環境中，將該地址設為帳號的**預設身分**，即可在多個安裝環境中使用。"
   },
   "registration.terms.email.heading": {
     "message": "您的郵件，您的授權"
@@ -1901,7 +1901,7 @@
     "message": "授權條款"
   },
   "registration.terms.manualRenewal": {
-    "message": "授權{bold}不會自動續購{/bold}。{+extensionName} 會在授權到期前提醒您。"
+    "message": "授權**不會自動續購**。{+extensionName} 會在授權到期前提醒您。"
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1911,7 +1911,7 @@
     "message": "續購與升級時，會將您原有的授權傳送給商店以檢查資格。"
   },
   "registration.terms.savings": {
-    "message": "{bold}從 Pro 開始，之後每年更省錢。{/bold}續購或延長 Pro 授權遠比購買新授權便宜。"
+    "message": "**從 Pro 開始，之後每年更省錢。**續購或延長 Pro 授權遠比購買新授權便宜。"
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

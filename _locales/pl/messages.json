@@ -1781,7 +1781,7 @@
     "message": "Dla twojej poczty"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Licencje domenowe{/bold}{br}Odnowienie zwykle dodaje rok do poprzedniej daty wygaśnięcia, także gdy zamówienie lub płatność są spóźnione."
+    "message": "{bold}Licencje domenowe{/bold}{br}Licencje domenowe są {bold}sprawdzane i wystawiane ręcznie{/bold}. Odnowienie dodaje rok do obecnej daty wygaśnięcia, nawet jeśli licencja już wygasła. Zachęca to do terminowego odnowienia; ostateczny okres jest potwierdzany podczas weryfikacji."
   },
   "registration.renewal.entitlements": {
     "message": "Korzyści odnowienia i aktualizacji zależą od danych licencji przekazanych do sklepu. Zmiana produktu w sklepie lub usunięcie tych danych przez oprogramowanie zabezpieczające może uniemożliwić zastosowanie posiadanych uprawnień."
@@ -1872,7 +1872,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "Licencja osobista jest powiązana z adresem e-mail. Możesz jej używać w wielu instalacjach Thunderbirda, jeśli licencjonowany adres jest w każdej ustawiony jako {bold}domyślna tożsamość{/bold} konta."
+    "message": "Licencja osobista jest powiązana z adresem e-mail. Możesz jej używać w wielu instalacjach Thunderbirda, jeśli licencjonowany adres jest w każdej ustawiony jako **domyślna tożsamość** konta."
   },
   "registration.terms.email.heading": {
     "message": "Twój e-mail, twoja licencja"
@@ -1892,7 +1892,7 @@
     "message": "Warunki licencji"
   },
   "registration.terms.manualRenewal": {
-    "message": "Licencje {bold}nie odnawiają się automatycznie{/bold}. {+extensionName} przypomni ci przed wygaśnięciem licencji."
+    "message": "Licencje **nie odnawiają się automatycznie**. {+extensionName} przypomni ci przed wygaśnięciem licencji."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1902,7 +1902,7 @@
     "message": "Przy odnowieniu i aktualizacji poprzednia licencja jest przekazywana do sklepu w celu sprawdzenia uprawnień."
   },
   "registration.terms.savings": {
-    "message": "{bold}Zacznij od Pro i oszczędzaj w kolejnych latach.{/bold} Odnowienie lub przedłużenie licencji Pro kosztuje znacznie mniej niż zakup nowej."
+    "message": "**Zacznij od Pro i oszczędzaj w kolejnych latach.** Odnowienie lub przedłużenie licencji Pro kosztuje znacznie mniej niż zakup nowej."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

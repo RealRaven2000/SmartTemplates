@@ -1802,7 +1802,7 @@
     "message": "Omalle sähköpostillesi"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Verkkotunnuslisenssit{/bold}{br}Uusiminen lisää tavallisesti vuoden aiempaan päättymispäivään, vaikka tilaus tai maksu myöhästyisi."
+    "message": "{bold}Verkkotunnuslisenssit{/bold}{br}Verkkotunnuslisenssit {bold}tarkistetaan ja myönnetään manuaalisesti{/bold}. Uusiminen lisää vuoden nykyiseen päättymispäivään, vaikka lisenssi olisi jo vanhentunut. Tämä kannustaa uusimaan ajoissa; lopullinen voimassaoloaika vahvistetaan tarkistuksen yhteydessä."
   },
   "registration.renewal.entitlements": {
     "message": "Uusimis- ja päivitysedut riippuvat kauppaan välitetyistä lisenssitiedoista. Tuotteen vaihtaminen kaupassa tai tietojen poistuminen tietoturvaohjelman vuoksi voi estää aiempien oikeuksiesi huomioimisen."
@@ -1893,7 +1893,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "Henkilökohtainen lisenssi on sidottu sähköpostiosoitteeseesi. Voit käyttää sitä useissa Thunderbird-asennuksissa, kun lisensoitu osoite on määritetty tilin {bold}oletusidentiteetiksi{/bold} jokaisessa asennuksessa."
+    "message": "Henkilökohtainen lisenssi on sidottu sähköpostiosoitteeseesi. Voit käyttää sitä useissa Thunderbird-asennuksissa, kun lisensoitu osoite on määritetty tilin **oletusidentiteetiksi** jokaisessa asennuksessa."
   },
   "registration.terms.email.heading": {
     "message": "Sähköpostisi, lisenssisi"
@@ -1913,7 +1913,7 @@
     "message": "Lisenssiehdot"
   },
   "registration.terms.manualRenewal": {
-    "message": "Lisenssit {bold}eivät uusiudu automaattisesti{/bold}. {+extensionName} muistuttaa ennen lisenssisi vanhenemista."
+    "message": "Lisenssit **eivät uusiudu automaattisesti**. {+extensionName} muistuttaa ennen lisenssisi vanhenemista."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1923,7 +1923,7 @@
     "message": "Uusimiset ja päivitykset välittävät aiemman lisenssisi kauppaan kelpoisuuden tarkistamiseksi."
   },
   "registration.terms.savings": {
-    "message": "{bold}Aloita Prolla ja säästä tulevina vuosina.{/bold} Pro-lisenssin uusiminen tai jatkaminen maksaa selvästi vähemmän kuin uuden ostaminen."
+    "message": "**Aloita Prolla ja säästä tulevina vuosina.** Pro-lisenssin uusiminen tai jatkaminen maksaa selvästi vähemmän kuin uuden ostaminen."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

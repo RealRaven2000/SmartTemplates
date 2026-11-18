@@ -1799,7 +1799,7 @@
     "message": "För din egen e-post"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Domänlicenser{/bold}{br}En förnyelse lägger normalt till ett år till det tidigare utgångsdatumet, även vid sen beställning eller betalning."
+    "message": "{bold}Domänlicenser{/bold}{br}Domänlicenser {bold}granskas och utfärdas manuellt{/bold}. En förnyelse lägger till ett år till det befintliga utgångsdatumet, även om licensen redan har gått ut. Det uppmuntrar förnyelse i tid; den slutliga perioden bekräftas vid granskningen."
   },
   "registration.renewal.entitlements": {
     "message": "Förnyelse- och uppgraderingsförmåner beror på licensinformationen som skickas till butiken. Att byta produkt i butiken, eller säkerhetsprogram som tar bort informationen, kan hindra butiken från att tillämpa dina befintliga rättigheter."
@@ -1890,7 +1890,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "En personlig licens är knuten till din e-postadress. Du kan använda den på flera Thunderbird-installationer när den licensierade adressen är konfigurerad som ett kontos {bold}standardidentitet{/bold} i varje installation."
+    "message": "En personlig licens är knuten till din e-postadress. Du kan använda den på flera Thunderbird-installationer när den licensierade adressen är konfigurerad som ett kontos **standardidentitet** i varje installation."
   },
   "registration.terms.email.heading": {
     "message": "Din e-postadress, din licens"
@@ -1910,7 +1910,7 @@
     "message": "Licensvillkor"
   },
   "registration.terms.manualRenewal": {
-    "message": "Licenser {bold}förnyas inte automatiskt{/bold}. {+extensionName} påminner dig innan licensen går ut."
+    "message": "Licenser **förnyas inte automatiskt**. {+extensionName} påminner dig innan licensen går ut."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1920,7 +1920,7 @@
     "message": "Vid förnyelser och uppgraderingar skickas din tidigare licens till butiken för behörighetskontroll."
   },
   "registration.terms.savings": {
-    "message": "{bold}Börja med Pro och spara under kommande år.{/bold} Att förnya eller förlänga Pro-licensen kostar betydligt mindre än att köpa en ny."
+    "message": "**Börja med Pro och spara under kommande år.** Att förnya eller förlänga Pro-licensen kostar betydligt mindre än att köpa en ny."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

@@ -1799,7 +1799,7 @@
     "message": "Per al teu correu"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Llicències de domini{/bold}{br}La renovació normalment afegeix un any a la data de caducitat anterior, encara que la comanda o el pagament es retardin."
+    "message": "{bold}Llicències de domini{/bold}{br}Les llicències de domini es {bold}revisen i emeten manualment{/bold}. La renovació afegeix un any a la data de caducitat existent, encara que la llicència ja hagi caducat. Això fomenta la renovació puntual; el termini definitiu es confirma durant la revisió."
   },
   "registration.renewal.entitlements": {
     "message": "Els avantatges de renovació i actualització depenen de les dades de llicència enviades a la botiga. Canviar de producte a la botiga o un programa de seguretat que elimini aquestes dades pot impedir l’aplicació dels drets existents."
@@ -1890,7 +1890,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "Una llicència personal està vinculada a la teva adreça electrònica. La pots utilitzar en diverses instal·lacions del Thunderbird si l’adreça amb llicència està configurada com a {bold}identitat per defecte{/bold} d’un compte en cadascuna."
+    "message": "Una llicència personal està vinculada a la teva adreça electrònica. La pots utilitzar en diverses instal·lacions del Thunderbird si l’adreça amb llicència està configurada com a **identitat per defecte** d’un compte en cadascuna."
   },
   "registration.terms.email.heading": {
     "message": "El teu correu, la teva llicència"
@@ -1910,7 +1910,7 @@
     "message": "Condicions de llicència"
   },
   "registration.terms.manualRenewal": {
-    "message": "Les llicències {bold}no es renoven automàticament{/bold}. {+extensionName} t’avisarà abans que caduqui la llicència."
+    "message": "Les llicències **no es renoven automàticament**. {+extensionName} t’avisarà abans que caduqui la llicència."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1920,7 +1920,7 @@
     "message": "Les renovacions i actualitzacions envien la llicència anterior a la botiga per comprovar-ne els requisits."
   },
   "registration.terms.savings": {
-    "message": "{bold}Comença amb Pro i estalvia els anys següents.{/bold} Renovar o ampliar la llicència Pro costa molt menys que comprar-ne una de nova."
+    "message": "**Comença amb Pro i estalvia els anys següents.** Renovar o ampliar la llicència Pro costa molt menys que comprar-ne una de nova."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

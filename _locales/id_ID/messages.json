@@ -1211,7 +1211,7 @@
     "message": "Untuk email Anda sendiri"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Lisensi Domain{/bold}{br}Pembaruan biasanya menambah satu tahun dari tanggal kedaluwarsa sebelumnya, termasuk jika pesanan atau pembayaran terlambat."
+    "message": "{bold}Lisensi Domain{/bold}{br}Lisensi domain {bold}ditinjau dan diterbitkan secara manual{/bold}. Pembaruan menambahkan satu tahun ke tanggal kedaluwarsa yang ada, meskipun lisensi sudah kedaluwarsa. Ini mendorong pembaruan tepat waktu; masa berlaku akhir dikonfirmasi saat peninjauan."
   },
   "registration.renewal.entitlements": {
     "message": "Manfaat pembaruan dan peningkatan bergantung pada informasi lisensi yang dikirim ke toko. Mengganti produk di toko atau perangkat lunak keamanan yang menghapus informasi tersebut dapat menghalangi penerapan hak yang sudah Anda miliki."
@@ -1302,7 +1302,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "Lisensi pribadi terikat pada alamat email Anda. Anda dapat menggunakannya di beberapa instalasi Thunderbird jika alamat berlisensi diatur sebagai {bold}identitas bawaan{/bold} akun di setiap instalasi."
+    "message": "Lisensi pribadi terikat pada alamat email Anda. Anda dapat menggunakannya di beberapa instalasi Thunderbird jika alamat berlisensi diatur sebagai **identitas bawaan** akun di setiap instalasi."
   },
   "registration.terms.email.heading": {
     "message": "Email Anda, lisensi Anda"
@@ -1322,7 +1322,7 @@
     "message": "Ketentuan lisensi"
   },
   "registration.terms.manualRenewal": {
-    "message": "Lisensi {bold}tidak diperbarui secara otomatis{/bold}. {+extensionName} akan mengingatkan Anda sebelum lisensi kedaluwarsa."
+    "message": "Lisensi **tidak diperbarui secara otomatis**. {+extensionName} akan mengingatkan Anda sebelum lisensi kedaluwarsa."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1332,7 +1332,7 @@
     "message": "Pembaruan dan peningkatan mengirim lisensi sebelumnya ke toko untuk pemeriksaan kelayakan."
   },
   "registration.terms.savings": {
-    "message": "{bold}Mulai dengan Pro, lalu hemat di tahun berikutnya.{/bold} Memperbarui atau memperpanjang lisensi Pro jauh lebih murah daripada membeli yang baru."
+    "message": "**Mulai dengan Pro, lalu hemat di tahun berikutnya.** Memperbarui atau memperpanjang lisensi Pro jauh lebih murah daripada membeli yang baru."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

@@ -1775,7 +1775,7 @@
     "message": "Voor uw eigen e-mail"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Domeinlicenties{/bold}{br}Vernieuwen voegt normaal één jaar toe aan de vorige vervaldatum, ook bij een late bestelling of betaling."
+    "message": "{bold}Domeinlicenties{/bold}{br}Domeinlicenties worden {bold}handmatig beoordeeld en uitgegeven{/bold}. Bij verlenging wordt één jaar toegevoegd aan uw bestaande vervaldatum, ook als de licentie al is verlopen. Dit stimuleert tijdige verlenging; de definitieve looptijd wordt tijdens de beoordeling bevestigd."
   },
   "registration.renewal.entitlements": {
     "message": "Voordelen voor vernieuwing en upgrades hangen af van de licentiegegevens die naar de winkel worden gestuurd. Een ander product kiezen in de winkel, of beveiligingssoftware die deze gegevens verwijdert, kan verhinderen dat uw bestaande rechten worden toegepast."
@@ -1866,7 +1866,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "Een persoonlijke licentie is gekoppeld aan uw e-mailadres. U kunt deze in meerdere Thunderbird-installaties gebruiken als het gelicentieerde adres in elke installatie is ingesteld als de {bold}standaardidentiteit{/bold} van een account."
+    "message": "Een persoonlijke licentie is gekoppeld aan uw e-mailadres. U kunt deze in meerdere Thunderbird-installaties gebruiken als het gelicentieerde adres in elke installatie is ingesteld als de **standaardidentiteit** van een account."
   },
   "registration.terms.email.heading": {
     "message": "Uw e-mailadres, uw licentie"
@@ -1886,7 +1886,7 @@
     "message": "Licentievoorwaarden"
   },
   "registration.terms.manualRenewal": {
-    "message": "Licenties {bold}worden niet automatisch vernieuwd{/bold}. {+extensionName} herinnert u eraan voordat uw licentie verloopt."
+    "message": "Licenties **worden niet automatisch vernieuwd**. {+extensionName} herinnert u eraan voordat uw licentie verloopt."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1896,7 +1896,7 @@
     "message": "Bij vernieuwingen en upgrades wordt uw vorige licentie naar de winkel gestuurd om uw rechten te controleren."
   },
   "registration.terms.savings": {
-    "message": "{bold}Begin met Pro en bespaar in de volgende jaren.{/bold} Uw Pro-licentie vernieuwen of verlengen kost aanzienlijk minder dan een nieuwe kopen."
+    "message": "**Begin met Pro en bespaar in de volgende jaren.** Uw Pro-licentie vernieuwen of verlengen kost aanzienlijk minder dan een nieuwe kopen."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

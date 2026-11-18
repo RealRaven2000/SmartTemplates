@@ -1784,7 +1784,7 @@
     "message": "适用于您自己的邮箱"
   },
   "registration.renewal.domain": {
-    "message": "{bold}域名许可证{/bold}{br}续订通常会在原到期日上增加一年，即使下单或付款较晚也是如此。"
+    "message": "{bold}域名许可证{/bold}{br}域名许可证{bold}由人工审核和签发{/bold}。续订会在现有到期日上增加一年，即使许可证已经过期也是如此。这鼓励及时续订；最终期限将在审核时确认。"
   },
   "registration.renewal.entitlements": {
     "message": "续订和升级优惠取决于传递给商店的许可证信息。在商店中切换产品，或安全软件删除这些信息，都可能导致商店无法应用您的现有权益。"
@@ -1875,7 +1875,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "个人许可证与您的邮箱地址绑定。只要在每个 Thunderbird 安装环境中，将该地址配置为账户的{bold}默认身份{/bold}，就可以在多个安装环境中使用。"
+    "message": "个人许可证与您的邮箱地址绑定。只要在每个 Thunderbird 安装环境中，将该地址配置为账户的**默认身份**，就可以在多个安装环境中使用。"
   },
   "registration.terms.email.heading": {
     "message": "您的邮箱，您的许可证"
@@ -1895,7 +1895,7 @@
     "message": "许可条款"
   },
   "registration.terms.manualRenewal": {
-    "message": "许可证{bold}不会自动续订{/bold}。{+extensionName} 会在许可证到期前提醒您。"
+    "message": "许可证**不会自动续订**。{+extensionName} 会在许可证到期前提醒您。"
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1905,7 +1905,7 @@
     "message": "续订和升级时，会将您原来的许可证传递给商店以核查资格。"
   },
   "registration.terms.savings": {
-    "message": "{bold}从 Pro 开始，以后每年更省钱。{/bold}续订或延长 Pro 许可证远比购买新许可证便宜。"
+    "message": "**从 Pro 开始，以后每年更省钱。**续订或延长 Pro 许可证远比购买新许可证便宜。"
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

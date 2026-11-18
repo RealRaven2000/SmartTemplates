@@ -1763,7 +1763,7 @@
     "message": "ご自身のメール向け"
   },
   "registration.renewal.domain": {
-    "message": "{bold}ドメインライセンス{/bold}{br}通常、更新では前回の有効期限に 1 年が追加されます。注文や支払いが遅れた場合も同様です。"
+    "message": "{bold}ドメインライセンス{/bold}{br}ドメインライセンスは{bold}手動で審査・発行されます{/bold}。更新すると、ライセンスがすでに期限切れの場合も、現在の有効期限に1年が追加されます。早めの更新を促すための仕組みで、最終的な有効期間は審査時に確認されます。"
   },
   "registration.renewal.entitlements": {
     "message": "更新やアップグレードの特典は、ショップに渡されるライセンス情報に基づきます。ショップで商品を変更したり、セキュリティソフトがこの情報を削除したりすると、既存の権利が反映されない場合があります。"
@@ -1854,7 +1854,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "個人用ライセンスはメールアドレスに紐付けられています。各 Thunderbird 環境で、ライセンス対象アドレスがアカウントの{bold}既定の差出人情報{/bold}として設定されていれば、複数の環境で使用できます。"
+    "message": "個人用ライセンスはメールアドレスに紐付けられています。各 Thunderbird 環境で、ライセンス対象アドレスがアカウントの**既定の差出人情報**として設定されていれば、複数の環境で使用できます。"
   },
   "registration.terms.email.heading": {
     "message": "あなたのメール、あなたのライセンス"
@@ -1874,7 +1874,7 @@
     "message": "ライセンス規約"
   },
   "registration.terms.manualRenewal": {
-    "message": "ライセンスは{bold}自動更新されません{/bold}。有効期限が近づくと {+extensionName} がお知らせします。"
+    "message": "ライセンスは**自動更新されません**。有効期限が近づくと {+extensionName} がお知らせします。"
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1884,7 +1884,7 @@
     "message": "更新やアップグレードでは、適用条件を確認するため、以前のライセンスがショップに渡されます。"
   },
   "registration.terms.savings": {
-    "message": "{bold}Pro で始めて、翌年からお得に。{/bold}Pro ライセンスの更新や延長は、新規購入よりも大幅に安くなります。"
+    "message": "**Pro で始めて、翌年からお得に。**Pro ライセンスの更新や延長は、新規購入よりも大幅に安くなります。"
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

@@ -1,7 +1,30 @@
 /* Shared localized markup formatter for extension HTML pages. */
 /* globals getSaleEndLabel */
-/* exported formatAll, parseHTMLFragment */
+/* exported formatAll, parseHTMLFragment, formatLocalizedMarkdown */
 "use strict";
+
+// Format only explicitly selected text leaves; code contents remain literal.
+function formatLocalizedMarkdown(element) {
+  const parts = replaceNested(element.textContent).split(/(`[^`\r\n]+`|\*\*[^*`]+\*\*|(?<!\*)\*[^*`]+\*(?!\*))/);
+  const fragment = document.createDocumentFragment();
+  for (const part of parts) {
+    const bold = /^\*\*[^*]+\*\*$/.test(part);
+    const italic = /^\*[^*]+\*$/.test(part);
+    const code = /^`[^`\r\n]+`$/.test(part);
+    if (code || bold || italic) {
+      const formatted = document.createElement(code ? "code" : bold ? "strong" : "em");
+      if (code) {
+        formatted.className = "inline";
+      }
+      const markerLength = bold ? 2 : 1;
+      formatted.textContent = part.slice(markerLength, -markerLength);
+      fragment.appendChild(formatted);
+    } else {
+      fragment.appendChild(document.createTextNode(part));
+    }
+  }
+  element.replaceChildren(fragment);
+}
 
 /**
  * replaceNested

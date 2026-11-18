@@ -1754,7 +1754,7 @@
     "message": "Per la tua email"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Licenze di dominio{/bold}{br}Il rinnovo aggiunge normalmente un anno alla scadenza precedente, anche se l’ordine o il pagamento arrivano in ritardo."
+    "message": "{bold}Licenze di dominio{/bold}{br}Le licenze di dominio vengono {bold}verificate ed emesse manualmente{/bold}. Il rinnovo aggiunge un anno alla data di scadenza esistente, anche se la licenza è già scaduta. Questo incoraggia il rinnovo tempestivo; la durata definitiva viene confermata durante la verifica."
   },
   "registration.renewal.entitlements": {
     "message": "I vantaggi di rinnovo e aggiornamento dipendono dai dati di licenza inviati al negozio. Cambiare prodotto nel negozio, o un software di sicurezza che rimuove tali dati, può impedire l’applicazione dei diritti esistenti."
@@ -1845,7 +1845,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "Una licenza personale è legata al tuo indirizzo email. Puoi usarla su più installazioni di Thunderbird se l’indirizzo con licenza è configurato come {bold}identità predefinita{/bold} di un account in ciascuna installazione."
+    "message": "Una licenza personale è legata al tuo indirizzo email. Puoi usarla su più installazioni di Thunderbird se l’indirizzo con licenza è configurato come **identità predefinita** di un account in ciascuna installazione."
   },
   "registration.terms.email.heading": {
     "message": "La tua email, la tua licenza"
@@ -1865,7 +1865,7 @@
     "message": "Condizioni di licenza"
   },
   "registration.terms.manualRenewal": {
-    "message": "Le licenze {bold}non si rinnovano automaticamente{/bold}. {+extensionName} ti avviserà prima della scadenza."
+    "message": "Le licenze **non si rinnovano automaticamente**. {+extensionName} ti avviserà prima della scadenza."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1875,7 +1875,7 @@
     "message": "Rinnovi e aggiornamenti inviano la licenza precedente al negozio per verificare l’idoneità."
   },
   "registration.terms.savings": {
-    "message": "{bold}Inizia con Pro e risparmia negli anni successivi.{/bold} Rinnovare o estendere la licenza Pro costa molto meno di acquistarne una nuova."
+    "message": "**Inizia con Pro e risparmia negli anni successivi.** Rinnovare o estendere la licenza Pro costa molto meno di acquistarne una nuova."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

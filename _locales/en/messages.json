@@ -1633,6 +1633,7 @@
     "message": "Annual licenses"
   },
   "registration.brand": {
+    "description": "requires .localized-markup",
     "message": "{+extensionName}"
   },
   "registration.checkout.dismiss": {
@@ -1726,7 +1727,7 @@
     "message": "Your personal license works across multiple devices."
   },
   "registration.email.personal": {
-    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm. requires .localized-markup",
     "message": "Your license is tied to this email address. You can use it on multiple devices. Configure this address as an account’s {bold}default identity{/bold} in Thunderbird on each device."
   },
   "registration.email.personal.heading": {
@@ -1820,7 +1821,8 @@
     "message": "For your own email"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Domain licenses{/bold}{br}Renewal normally adds one year to the previous expiry date, including when ordering or payment is late."
+    "description": "requires .localized-markup",
+    "message": "{bold}Domain licenses{/bold}{br}Domain licenses are {bold}reviewed and issued manually{/bold}. Renewal adds one year to your existing expiry date, even if the license has already expired. This encourages timely renewal; the final term is confirmed during review."
   },
   "registration.renewal.entitlements": {
     "message": "Renewal and upgrade benefits depend on license information passed to the shop. Switching products in the shop or security software removing that information can prevent the shop from applying your existing entitlement."
@@ -1830,12 +1832,15 @@
     "message": "Renewing or extending your license adds another year and typically costs less than buying a new license."
   },
   "registration.renewal.personal": {
+    "description": "requires .localized-markup",
     "message": "{bold}Personal licenses{/bold}{br}A new license runs for one year from payment. When renewing or extending the same edition, you receive a full year from payment or one year beyond your existing expiry date, whichever gives you more time."
   },
   "registration.renewal.previous": {
+    "description": "requires .localized-markup",
     "message": "{bold}Existing license{/bold}{br}Your current license is passed to the shop so the new expiry date can be calculated."
   },
   "registration.renewal.upgrade": {
+    "description": "requires .localized-markup",
     "message": "{bold}Standard → Pro upgrades{/bold}{br}Your Pro license runs for one year from the upgrade payment date. Remaining time on your Standard license does not extend that period."
   },
   "registration.selection.heading": {
@@ -1910,8 +1915,8 @@
     "message": "Choose your edition"
   },
   "registration.terms.email": {
-    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "A personal license is tied to your email address. You can use it on multiple Thunderbird installations when the licensed address is configured as the {bold}default identity{/bold} of an account in each installation."
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm. requires .localizedFormatting",
+    "message": "A personal license is tied to your email address. You can use it on multiple Thunderbird installations when the licensed address is configured as the **default identity** of an account in each installation."
   },
   "registration.terms.email.heading": {
     "message": "Your email, your license"
@@ -1924,14 +1929,15 @@
     "message": "🡇 Continue to License Selection 🡇"
   },
   "registration.terms.intro": {
-    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity. requires .localized-markup",
     "message": "{+extensionName} has kept pace with Thunderbird since $1. {+extensionName} licenses fund ongoing development, new features, and compatibility updates. Each license lasts one year, helping support the work needed to keep pace with Thunderbird."
   },
   "registration.terms.label": {
     "message": "License terms"
   },
   "registration.terms.manualRenewal": {
-    "message": "Licenses {bold}do not renew automatically{/bold}. {+extensionName} will remind you before your license expires."
+    "description": "requires .localizedFormatting",
+    "message": "Licenses **do not renew automatically**. {+extensionName} will remind you before your license expires."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1941,7 +1947,8 @@
     "message": "Renewals and upgrades pass your previous license to the shop for eligibility checks."
   },
   "registration.terms.savings": {
-    "message": "{bold}Start with Pro, then save on future years.{/bold} Renewing or extending your Pro license costs substantially less than buying a new one."
+    "description": "requires .localizedFormatting",
+    "message": "**Start with Pro, then save on future years.** Renewing or extending your Pro license costs substantially less than buying a new one."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",
@@ -1958,7 +1965,7 @@
     "message": "Checkout opens in your browser."
   },
   "registration.title": {
-    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "description": "Adapted from legacy registration entity: licenseWindow.title. requires .localized-markup",
     "message": "{+extensionName} · Your license"
   },
   "removeSigOnIdChangeAfterEdits": {

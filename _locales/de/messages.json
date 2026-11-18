@@ -1776,7 +1776,7 @@
     "message": "Für Ihre eigenen E-Mails"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Domänenlizenzen{/bold}{br}Eine Erneuerung fügt normalerweise ein Jahr zum bisherigen Ablaufdatum hinzu, auch bei verspäteter Bestellung oder Zahlung."
+    "message": "{bold}Domänenlizenzen{/bold}{br}Domänenlizenzen werden {bold}manuell geprüft und ausgestellt{/bold}. Eine Erneuerung verlängert das bestehende Ablaufdatum um ein Jahr, auch wenn die Lizenz bereits abgelaufen ist. Dies fördert eine rechtzeitige Erneuerung; die endgültige Laufzeit wird bei der Prüfung bestätigt."
   },
   "registration.renewal.entitlements": {
     "message": "Erneuerungs- und Upgrade-Vorteile hängen von den Lizenzinformationen ab, die an den Shop übergeben werden. Wenn Sie im Shop das Produkt wechseln oder Sicherheitssoftware diese Informationen entfernt, kann der Shop Ihre bestehende Berechtigung möglicherweise nicht berücksichtigen."
@@ -1867,7 +1867,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "Eine persönliche Lizenz ist an Ihre E-Mail-Adresse gebunden. Sie können sie in mehreren Thunderbird-Installationen verwenden, wenn die lizenzierte Adresse in jeder Installation als {bold}Standardidentität{/bold} eines Kontos eingerichtet ist."
+    "message": "Eine persönliche Lizenz ist an Ihre E-Mail-Adresse gebunden. Sie können sie in mehreren Thunderbird-Installationen verwenden, wenn die lizenzierte Adresse in jeder Installation als **Standardidentität** eines Kontos eingerichtet ist."
   },
   "registration.terms.email.heading": {
     "message": "Ihre E-Mail-Adresse, Ihre Lizenz"
@@ -1887,7 +1887,7 @@
     "message": "Lizenzbedingungen"
   },
   "registration.terms.manualRenewal": {
-    "message": "Lizenzen werden {bold}nicht automatisch erneuert{/bold}. {+extensionName} erinnert Sie vor Ablauf Ihrer Lizenz."
+    "message": "Lizenzen werden **nicht automatisch erneuert**. {+extensionName} erinnert Sie vor Ablauf Ihrer Lizenz."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1897,7 +1897,7 @@
     "message": "Bei Erneuerungen und Upgrades wird Ihre bisherige Lizenz zur Prüfung Ihrer Berechtigung an den Shop übergeben."
   },
   "registration.terms.savings": {
-    "message": "{bold}Starten Sie mit Pro und sparen Sie in den Folgejahren.{/bold} Die Erneuerung oder Verlängerung Ihrer Pro-Lizenz kostet deutlich weniger als eine neue Lizenz."
+    "message": "**Starten Sie mit Pro und sparen Sie in den Folgejahren.** Die Erneuerung oder Verlängerung Ihrer Pro-Lizenz kostet deutlich weniger als eine neue Lizenz."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

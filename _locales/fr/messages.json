@@ -1787,7 +1787,7 @@
     "message": "Pour votre adresse personnelle"
   },
   "registration.renewal.domain": {
-    "message": "{bold}Licences de domaine{/bold}{br}Le renouvellement ajoute normalement un an à l’ancienne date d’expiration, même si la commande ou le paiement est tardif."
+    "message": "{bold}Licences de domaine{/bold}{br}Les licences de domaine sont {bold}examinées et délivrées manuellement{/bold}. Le renouvellement ajoute un an à votre date d’expiration actuelle, même si la licence a déjà expiré. Cela encourage un renouvellement dans les délais ; la durée définitive est confirmée lors de l’examen."
   },
   "registration.renewal.entitlements": {
     "message": "Les avantages de renouvellement et de mise à niveau dépendent des informations de licence transmises à la boutique. Changer de produit dans la boutique, ou un logiciel de sécurité supprimant ces informations, peut empêcher leur application."
@@ -1878,7 +1878,7 @@
   },
   "registration.terms.email": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
-    "message": "Une licence personnelle est liée à votre adresse électronique. Vous pouvez l’utiliser sur plusieurs installations de Thunderbird si l’adresse sous licence est configurée comme {bold}identité par défaut{/bold} d’un compte sur chacune d’elles."
+    "message": "Une licence personnelle est liée à votre adresse électronique. Vous pouvez l’utiliser sur plusieurs installations de Thunderbird si l’adresse sous licence est configurée comme **identité par défaut** d’un compte sur chacune d’elles."
   },
   "registration.terms.email.heading": {
     "message": "Votre adresse, votre licence"
@@ -1898,7 +1898,7 @@
     "message": "Conditions de licence"
   },
   "registration.terms.manualRenewal": {
-    "message": "Les licences {bold}ne se renouvellent pas automatiquement{/bold}. {+extensionName} vous avertira avant leur expiration."
+    "message": "Les licences **ne se renouvellent pas automatiquement**. {+extensionName} vous avertira avant leur expiration."
   },
   "registration.terms.otherAccounts": {
     "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
@@ -1908,7 +1908,7 @@
     "message": "Les renouvellements et mises à niveau transmettent votre ancienne licence à la boutique pour vérifier votre admissibilité."
   },
   "registration.terms.savings": {
-    "message": "{bold}Commencez avec Pro, puis économisez les années suivantes.{/bold} Renouveler ou prolonger votre licence Pro coûte nettement moins cher qu’une nouvelle licence."
+    "message": "**Commencez avec Pro, puis économisez les années suivantes.** Renouveler ou prolonger votre licence Pro coûte nettement moins cher qu’une nouvelle licence."
   },
   "registration.terms.show": {
     "description": "Adapted from legacy registration entity: licenseTerms.show.",

@@ -20,7 +20,11 @@ Pending Thunderbird checks for the other migrated callers: installation/update s
 | --- | --- | --- | --- |
 | 2026-11-16 | Settings ↔ registration between-tab handoff | Passed | Feels more connected and responsive; registration feels more like part of the add-on than a separate web page. |
 | 2026-11-17 | Settings → Licenses scenarios in German | Passed | Valid, soon-to-expire and expired licenses, including Standard upgrade. |
-| 2026-11-17 | Composer bubble: Standard license using Pro features | Passed | Upgrade action opens modern registration with Pro highlighted. Missing German notification text found in the screenshot was translated afterward; visual recheck pending. |
+| 2026-11-17 | Composer bubble: Standard license using Pro features | Passed | Upgrade action opens modern registration with Pro highlighted. German notification text and the Lizenz badge were subsequently verified after localization fixes. |
+| 2026-11-17 | What's New purchase button and sale icon | Passed | Opens the new registration page instead of the shop directly. |
+| 2026-11-17 | Registration tab reuse from another entry point | Passed | Existing registration tab is reused. Explicit intent and synthetic-scenario reset remain separate checks. |
+| 2026-11-17 | Emergency legacy registration test-menu entry | Passed | Opens the legacy XHTML registration dialog. |
+| 2026-11-17 | Licensed email address not configured in any account | Passed | Settings shows the missing-account warning and Buy License action. |
 
 These results confirm the reported tab handoff and Settings scenarios, not every checkout destination, validation failure or simulated failure path.
 
