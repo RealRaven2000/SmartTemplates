@@ -1,0 +1,14 @@
+Hi John,
+
+Thank you for your detailed review. This took some time, but I decided to complete the registration dialog conversion to an HTML page, which I had planned for a long time. The three identified Utilities Experiment functions have been removed, and usage tracking now runs in the background. I hope this approach meets your requirements.
+
+The staged prototype illustrates the complexity of the registration and licensing flows: https://smarttemplates.quickfolders.org/staging/registration/
+
+The missing icon reference and debugger statements have been fixed. The st-parser files are currently unused; these fixes are temporary, and the files will be rewritten or removed during the parser's migration to the background. I also removed the experimental settings switch so the alternative parser cannot be enabled accidentally.
+
+The exposed icon is needed by the compose notification content script. The upgrade link now uses HTTPS, and the external message listener no longer claims unhandled messages.
+
+For now, I would like to keep ical.js. I have added the vendor information and files needed to identify it; I hope these are sufficient for review. Otherwise, I would like to revisit replacing it in the future.
+
+Best regards,
+Axel

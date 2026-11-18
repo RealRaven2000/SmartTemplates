@@ -19,11 +19,12 @@
 - Highlighted Domain renewal, explained the separate personal Pro purchase option, and added a direct additional-seats link for existing Domain customers. #445.
 - Refreshed Account templates settings with consistent text sizes, better alignment, and clearer external links. #445.
 
-**Fixes**
-
-- Improved license-key validation: keys are rejected when the visible product prefix or expiry date does not match the encrypted license data.
-
 **Other improvements**
 
 - Fixed trial access to clipboard operations, tags, and `%deleteForwardedBody%`. #439.
 - Updated translations, including the Refresh UI action and the structured What's New information in all locales. Simplified localization entity names and sorted locale catalogs alphabetically. #440.
+
+**Miscellaneous**
+
+- Improved license-key validation: keys are rejected when the visible product prefix or expiry date does not match the encrypted license data.
+- Fixed plain-text and empty replacements in HTML tag modifiers.

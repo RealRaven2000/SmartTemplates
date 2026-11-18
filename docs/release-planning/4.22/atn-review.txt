@@ -22,7 +22,10 @@ The following need to be addressed:
  
  The two usage functions only read and write the pref extensions.smarttemplates.[feature] through usage-store.js, so they can move into the background code (storage.local or LegacyPrefs). 
  
- showComposeLicenseDialog only opens the legacy chrome dialog chrome://SmartTemplate4/content/register.xhtml. Please convert the licence dialog to a WebExtension page, open it with windows.create or tabs.create, and remove these three functions from the Experiment.
+ showComposeLicenseDialog only opens the legacy chrome dialog 
+ chrome://SmartTemplate4/content/register.xhtml. Please convert the licence dialog to a 
+ WebExtension page, open it with windows.create or tabs.create, and remove these 
+ three functions from the Experiment.
 
 2) The following referenced file(s) are not bundled with the add-on, or the path may be wrongly specified. Please include every referenced file in the package, and check that the used paths are correct.
  - manifest.json:54 - chrome/content/skin/icon16x16.png
