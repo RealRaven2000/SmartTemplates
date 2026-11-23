@@ -235,9 +235,8 @@ permalink: version.html
 <a id="4.22"> &nbsp; </a>
 <li>
   <h4>
-		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.22.1"
-      onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
-      Version 4.22.1 - Work in Progress</a>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.22.1">
+      Version 4.22.1 - 23/11/2026</a>
 		<br>
 		<span class="appWrapper">
 			<span class="thunderbird">140.0 - 162.*</span>
@@ -252,7 +251,7 @@ permalink: version.html
       or presents a list of radio-button choices directly in the composer.
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/443">[issue 443]</a>
       <p>
-        <img src="img/prompt-example.png" class="screenshot" style="max-width: 450px;"
+        <img src="img/prompt-example-tea.png" class="screenshot" style="max-width: 450px;"
           alt="Prompt dialog with 3 choices">
       </p>
       <p>
@@ -349,19 +348,20 @@ permalink: version.html
       <strong>Refreshed Account templates settings.</strong> 
       Consistent text sizes, better alignment, and clearer external links. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/445">[issue 445]</a>
     </li>
-    <li>
-      <strong>License-key validation.</strong> 
-      Keys are rejected when the visible product prefix or expiry date does not 
-      match the encrypted license data.
-    </li>
-
-
     <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
     <li>
       Fixed trial access to clipboard operations, tags, and <code>%deleteForwardedBody%</code>.
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/439">[issue 439]</a>
     </li>
     <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
+    <li>
+      <strong>License-key validation.</strong>
+      Keys are rejected when the visible product prefix or expiry date does not
+      match the encrypted license data.
+    </li>
+    <li>
+      Fixed plain-text and empty replacements in HTML tag modifiers.
+    </li>
     <li>
       Simplified localization message names, updated their references, and sorted translation catalogs
       to make ongoing translation work easier to maintain.
