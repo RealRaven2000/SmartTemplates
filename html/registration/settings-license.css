@@ -1,3 +1,27 @@
+@media only screen and (max-height: 650px) {
+  #licensePane {
+    padding-block: 10px !important;
+  }
+  #licensePane h1 {
+    font-size: 16px !important;
+    line-height: 1.1 !important;
+    margin-block-end: 8px !important;
+  }
+  #licensePane #txtLicenseKey {
+    padding-block: 6px !important;
+  }
+  #licensePane #txtLicenseKey {
+    padding-block: 4px !important;
+    min-height: 4em !important;
+  }
+  #licensePane #btnPasteLicense, #licensePane #btnValidateLicense {
+    padding-block: 0 !important;
+  }
+  #licensePane #txtLicenseKey {
+    line-height: 1.35 !important;
+  }
+}
+
 /* Scoped to HTML Settings; legacy dialogs and lower-fieldset typography keep their styles. */
 #licensePane {
   box-sizing: border-box;
@@ -81,7 +105,8 @@
   width: 100%;
   min-height: 130px;
   margin: 0;
-  padding: 12px 14px !important;
+  padding-block: 12px;
+  padding-inline: 14px;
   border: 1px solid var(--layout-border-1);
   border-radius: 8px;
   font-family: Consolas, "Courier New", monospace;

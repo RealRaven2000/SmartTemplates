@@ -517,6 +517,13 @@ h1 a.headerLink {
 	visibility: visible;
 }
 
+/* avoid overflows in account templates pane (test)
+#smartTemplatePane.pageActive {
+  min-height: 0;
+  overflow-y: auto;
+}
+	 */
+
 /************************ 
  **   file templates   **
  ***********************/
@@ -623,7 +630,7 @@ select.fileTemplateList {
 /* height of flexible textboxes */
 .templateWrite.templateBox {
 	min-height: 9em;
-	height: calc(75vh - 11em) !important;
+	height: calc(65vh - 11em);
 }
 
 .fileTemplatePanel richlistbox {
@@ -1203,16 +1210,23 @@ button {
 	width: max-content; 
 }
 
+@media (max-height:  650px) {
+  label {
+    font-size: 0.9em;
+    line-height: 1.2;
+    margin-block-end: 0.1em;
+  }
+}
+
+
 .areaQuoteParent textarea {
 	display: flex;
-	min-height: 10vh;
-	height: 18vh;
+	height: clamp(3.5em,calc(50vh - 16em),40vh);
 }
 
 .areaTemplateParent textarea {
 	display: flex;
-	min-height: 10vh !important;
-  height: 30vh;
+	min-height: clamp(3.5em,calc(50vh - 16em),40vh);
 }
 
 .areaQuoteParent,

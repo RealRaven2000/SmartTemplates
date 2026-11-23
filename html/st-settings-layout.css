@@ -253,7 +253,7 @@ div.btnLicenseContainer #btnLicense {
 
 @media only screen and (max-width: 800px)  {
   #preferencesContainer {
-    padding-inline: 2px;
+    padding-inline: 1em;
     border: 1px solid rgba(0,0,0,0.1);
   }
   #identityLabel {
@@ -365,6 +365,15 @@ div.btnLicenseContainer #btnLicense {
     margin-block: 2px;
     text-align: center;
     font-size: 1.1em;
+  }
+  #smartTemplatePane {
+    font-size: 13px;
+  }
+  #smartTemplatePane > h1 {
+    margin-block: 2px 10px;
+  }
+  #preferencesContainer .actionTabs button {
+    padding-block: 0.2em;
   }
   fieldset {
     margin-block: 0;
