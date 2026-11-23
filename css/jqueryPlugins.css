@@ -1,0 +1,54 @@
+/******************************************************************/
+/*********************** Toggle Screenshots ***********************/
+/******************************************************************/
+.popupBackground {
+  opacity: 10%; 
+  filter: alpha(opacity=75); 
+  background-color: rgba(0,0,0,0.90);
+  z-index: 10;
+  background-color: black;
+  display: none;
+  width: 100%; 
+  min-height: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  color: white;
+}
+.popupSelf{ 
+  z-index: 900;
+  border: 1px solid #808080; 
+  display: none; 
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  left: 50%;
+  top: 50%;
+  max-width: 550px;
+  max-height: 655px;
+  margin-top: -328px;
+  margin-left: -275px;
+  box-shadow: rgba(0,0,0,0.5) 7px 7px 2px;
+}
+.closeButton {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  cursor: pointer;
+}
+.popupSelf .closeButton:hover,
+.popupSelf:hover .closeButton:hover {
+  opacity: 1;
+  filter: alpha(opacity=10);
+}
+.popupSelf .closeButton {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+.popupSelf:hover .closeButton {
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+
