@@ -951,6 +951,9 @@
   "premiumConfig": {
     "message": "Fitur Premium"
   },
+  "prompt.cancelled": {
+    "message": "Prompt “$1” dibatalkan; tidak ada satu pun dari $2 pilihan yang dipilih."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Input"
   },

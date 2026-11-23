@@ -1454,6 +1454,9 @@
   "pricing.title": {
     "message": "cennik"
   },
+  "prompt.cancelled": {
+    "message": "Anulowano pytanie „$1”; nie wybrano żadnej z $2 opcji."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Wprowadzanie danych"
   },

@@ -1460,6 +1460,9 @@
   "premiumConfig": {
     "message": "Fonctionnalités Premium"
   },
+  "prompt.cancelled": {
+    "message": "La question « $1 » a été annulée ; aucun des $2 choix n’a été sélectionné."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Saisie"
   },

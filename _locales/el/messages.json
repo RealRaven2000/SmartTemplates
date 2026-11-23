@@ -1463,6 +1463,9 @@
   "pricing.title": {
     "message": "Τιμολόγηση"
   },
+  "prompt.cancelled": {
+    "message": "Η ερώτηση «$1» ακυρώθηκε· δεν επιλέχθηκε καμία από τις $2 επιλογές."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Εισαγωγή"
   },

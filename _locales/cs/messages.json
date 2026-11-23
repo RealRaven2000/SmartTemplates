@@ -1460,6 +1460,9 @@
   "pricing.title": {
     "message": "Ceny"
   },
+  "prompt.cancelled": {
+    "message": "Výzva „$1“ byla zrušena; nebyla vybrána žádná z $2 možností."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Zadání"
   },

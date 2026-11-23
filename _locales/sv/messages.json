@@ -1472,6 +1472,9 @@
   "pricing.title": {
     "message": "Prissättning"
   },
+  "prompt.cancelled": {
+    "message": "Frågan ”$1” avbröts; inget av de $2 alternativen valdes."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Inmatning"
   },

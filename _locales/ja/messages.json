@@ -1436,6 +1436,9 @@
   "premiumConfig": {
     "message": "プレミアム機能"
   },
+  "prompt.cancelled": {
+    "message": "「$1」の入力をキャンセルしました。$2 個の選択肢から何も選択されませんでした。"
+  },
   "prompt.caption": {
     "message": "SmartTemplates · 入力"
   },

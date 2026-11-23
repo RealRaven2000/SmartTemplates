@@ -1181,6 +1181,9 @@
   "premiumConfig": {
     "message": "Funcionalidades premium"
   },
+  "prompt.cancelled": {
+    "message": "Se canceló la pregunta «$1»; no se seleccionó ninguna de las $2 opciones."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Solicitud de datos"
   },

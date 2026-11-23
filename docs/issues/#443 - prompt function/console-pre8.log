@@ -1,0 +1,54 @@
+[SmartTemplates Storage] [2026-11-23T11:31:43.099Z] get() START - keys: 
+Object { settings: {} }
+smartTemplate-storage.js:60:13
+[SmartTemplates Storage Performance] get: 12ms smartTemplate-storage.js:70:13
+[SmartTemplates Storage] [2026-11-23T11:31:43.111Z] get() SUCCESS - returned keys: 
+Array [ "settings" ]
+smartTemplate-storage.js:60:13
+[SmartTemplates Storage] [2026-11-23T11:31:43.111Z] set() START - keys: 
+Array [ "settings" ]
+smartTemplate-storage.js:60:13
+Preferences onChanged: 
+Object { settings: {…} }
+preferences.mjs:318:17
+SmartTemplates {FUNCTIONS} 11:31:43.119  [49652 ms]	 
+ getComposeType: gMsgCompose.type = 6 (rsp) smartTemplate-util.js:859:13
+[SmartTemplates Storage Performance] set: 37ms smartTemplate-storage.js:70:13
+[SmartTemplates Storage] [2026-11-23T11:31:43.148Z] set() SUCCESS smartTemplate-storage.js:60:13
+Preferences onChanged: 
+Object { settings: {…} }
+preferences.mjs:318:17
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 11:31:45.547  [2428 ms]	 
+ %prompt() prompt-answer 
+Object { cancelled: false, empty: false, answerType: "undefined", toClipboard: true, choiceCount: 3 }
+smartTemplate-util.js:859:13
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 11:31:45.548  [1 ms]	 
+ %prompt() clipboard-token 
+Object { source: "system", valueLength: 5 }
+smartTemplate-util.js:859:13
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 11:31:45.549  [1 ms]	 
+ %prompt() clipboard-token 
+Object { source: "staged", valueLength: 5 }
+smartTemplate-util.js:859:13
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 11:31:45.549  [0 ms]	 
+ %prompt() plan-ready 
+Object { writeClipboard: false, clipboardLength: 5, sourceCount: 1 }
+smartTemplate-util.js:859:13
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 11:31:45.549  [0 ms]	 
+ START =============  getProcessedText()   ========== smartTemplate-util.js:859:13
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 11:31:45.550  [1 ms]	 
+ Process Text:
+ST443_2_0
+<p>Thank you for ordering ST443_2_1 tea.</p>
+<p>We will let you know when your ST443_2_2 order is ready.</p>
+[END] smartTemplate-util.js:859:13
+Object { str: "+0100", h: 1, m: 0 }
+smartTemplate-overlay.js:2387:15
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 11:31:45.551  [1 ms]	 
+ regular:
+ST443_2_0
+<p>Thank you for ordering ST443_2_1 tea.</p>
+<p>We will let you know when your ST443_2_2 order is ready.</p>
+smartTemplate-util.js:859:13
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 11:31:45.552  [1 ms]	 
+ =============  getProcessedText()   ========== END smartTemplate-util.js:859:13

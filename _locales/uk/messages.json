@@ -1482,6 +1482,9 @@
   "pricing.title": {
     "message": "Ціноутворення"
   },
+  "prompt.cancelled": {
+    "message": "Запит «$1» скасовано; не вибрано жодного з $2 варіантів."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Введення"
   },

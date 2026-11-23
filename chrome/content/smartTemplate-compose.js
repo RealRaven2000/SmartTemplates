@@ -892,13 +892,27 @@ SmartTemplate4.classSmartTemplate = function() {
     try {
       return await preparePrompts(sources, {
         async ask(data) {
-          return util.notifyTools.notifyBackground({
+          const answer = await util.notifyTools.notifyBackground({
             func: "templatePrompt",
             windowId: util.extension.windowManager.getWrapper(window).id,
             prompt: data,
           });
+          if ((answer === null || answer === undefined) && data.choices.length) {
+            await util.reportComposeIssue({
+              message: util.getBundleString("prompt.cancelled", [
+                data.explanation,
+                data.choices.length,
+              ]),
+              expression: "%prompt()%",
+            });
+          }
+          return answer;
         },
         readClipboard: () => util.clipboardRead(["text", "plain"], { strictText: true }),
+        trace(event, details) {
+          // Log only types, flags and lengths; never expose clipboard contents.
+          util.logDebugOptional("functions.getProcessedText", `%prompt() ${event}`, details);
+        },
         allowFeature(feature) {
           const allowed = util.useFeature(feature);
           if (feature === "prompt" && util.premiumFeatures?.includes("prompt")) {

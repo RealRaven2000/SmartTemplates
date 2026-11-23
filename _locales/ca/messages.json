@@ -1472,6 +1472,9 @@
   "pricing.title": {
     "message": "Preus"
   },
+  "prompt.cancelled": {
+    "message": "S'ha cancel·lat el missatge «$1»; no s'ha seleccionat cap opció (se n'oferien $2)."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Entrada"
   },

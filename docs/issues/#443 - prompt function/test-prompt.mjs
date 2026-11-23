@@ -54,9 +54,14 @@ test("stages clipboard writes and resolves later references in source order", as
   assert.equal(plan.writeClipboard, true);
 });
 
-test("a later cancellation returns no plan or clipboard write", async () => {
-  await assert.rejects(prompts.preparePrompts([tea + tea], options(["Assam", null])),
-    error => error.name === "PromptCancelled");
+test("cancelling a toclipboard prompt clears later clipboard tokens and stages an empty write", async () => {
+  const plan = await prompts.preparePrompts(
+    ["before " + tea + " %clipboard% middle " + tea + " after %clipboard%"],
+    options(["Assam", undefined], { readClipboard: async () => "existing clipboard" })
+  );
+  assert.equal(plan.restore(plan.texts[0]), "before  Assam middle  after ");
+  assert.equal(plan.writeClipboard, true);
+  assert.equal(plan.clipboard, "");
 });
 
 test("answers remain literal markup and variables, including replacement dollar syntax", async () => {
@@ -97,16 +102,20 @@ test("empty clipboard allows selecting a choice; answers outside the list are re
     ask: async data => { assert.equal(data.defaultValue, ""); return "Darjeeling"; },
   }));
   assert.equal(plan.clipboard, "Darjeeling");
-  await assert.rejects(prompts.preparePrompts([tea], options(["Oolong"])), /supplied choices/);
+  const invalidChoice = await prompts.preparePrompts(["before " + tea + " after"], options(["Oolong"]));
+  assert.equal(invalidChoice.restore(invalidChoice.texts[0]), "before  after");
   assert.equal(prompts.parsePrompt('%prompt("Tea","Oolong","Darjeeling,Ceylon")%').defaultValue, "Oolong");
 });
 
 test("compose processing resolves prompts before modifiers and restores literals last", async () => {
   let writes = [];
   let dialogs = 0;
+  const issues = [];
   const util = {
     initFeatureUsage: async () => {}, logDebugOptional() {}, useFeature: () => true,
     clipboardRead: () => "Ceylon", clipboardWrite: value => { writes.push(value); return true; },
+    getBundleString: key => key,
+    reportComposeIssue: async issue => { issues.push(issue); },
     extension: { windowManager: { getWrapper: () => ({ id: 12 }) } },
     notifyTools: { notifyBackground: async request => {
       assert.equal(request.func, "templatePrompt");
@@ -139,8 +148,11 @@ test("compose processing resolves prompts before modifiers and restores literals
   assert.deepEqual(writes, ["%from% & tea"]);
   assert.equal(dialogs, 1);
   writes = [];
-  util.notifyTools.notifyBackground = async () => null;
-  await assert.rejects(composer.getProcessedText(tea, "id", "new", true),
-    error => error.name === "PromptCancelled");
-  assert.deepEqual(writes, []);
+  util.notifyTools.notifyBackground = async () => undefined;
+  const cancelled = await composer.getProcessedText("before " + tea + " after", "id", "new", true);
+  assert.equal(cancelled, "before  after");
+  assert.deepEqual(writes, [""]);
+  assert.equal(issues.length, 1);
+  assert.equal(issues[0].message, "prompt.cancelled");
+  assert.equal(issues[0].expression, "%prompt()%");
 });

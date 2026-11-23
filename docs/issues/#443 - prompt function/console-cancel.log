@@ -1,0 +1,38 @@
+[SmartTemplates Storage] [2026-11-23T10:49:43.041Z] get() START - keys: 
+Object { settings: {} }
+smartTemplate-storage.js:60:13
+[SmartTemplates Storage Performance] get: 15ms smartTemplate-storage.js:70:13
+[SmartTemplates Storage] [2026-11-23T10:49:43.056Z] get() SUCCESS - returned keys: 
+Array [ "settings" ]
+smartTemplate-storage.js:60:13
+[SmartTemplates Storage] [2026-11-23T10:49:43.056Z] set() START - keys: 
+Array [ "settings" ]
+smartTemplate-storage.js:60:13
+Preferences onChanged: 
+Object { settings: {…} }
+preferences.mjs:318:17
+SmartTemplates {FUNCTIONS} 10:49:43.64  [15868 ms]	 
+ getComposeType: gMsgCompose.type = 6 (rsp) smartTemplate-util.js:859:13
+[SmartTemplates Storage Performance] set: 35ms smartTemplate-storage.js:70:13
+[SmartTemplates Storage] [2026-11-23T10:49:43.092Z] set() SUCCESS smartTemplate-storage.js:60:13
+Preferences onChanged: 
+Object { settings: {…} }
+preferences.mjs:318:17
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 10:49:44.742  [1678 ms]	 
+ START =============  getProcessedText()   ========== smartTemplate-util.js:859:13
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 10:49:44.743  [1 ms]	 
+ Process Text:
+ST443_4_0
+<p>Thank you for ordering ST443_4_1 tea.</p>
+<p>We will let you know when your ST443_4_2 order is ready.</p>
+[END] smartTemplate-util.js:859:13
+Object { str: "+0100", h: 1, m: 0 }
+smartTemplate-overlay.js:2387:15
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 10:49:44.746  [3 ms]	 
+ regular:
+ST443_4_0
+<p>Thank you for ordering ST443_4_1 tea.</p>
+<p>We will let you know when your ST443_4_2 order is ready.</p>
+smartTemplate-util.js:859:13
+SmartTemplates {FUNCTIONS.GETPROCESSEDTEXT} 10:49:44.747  [1 ms]	 
+ =============  getProcessedText()   ========== END smartTemplate-util.js:859:13

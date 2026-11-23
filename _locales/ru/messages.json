@@ -1472,6 +1472,9 @@
   "pricing.title": {
     "message": "Цены"
   },
+  "prompt.cancelled": {
+    "message": "Запрос «$1» отменён; не выбран ни один из $2 вариантов."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Ввод"
   },

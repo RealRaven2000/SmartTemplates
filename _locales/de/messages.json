@@ -1447,6 +1447,9 @@
   "pricing.title": {
     "message": "Preise"
   },
+  "prompt.cancelled": {
+    "message": "Die Abfrage „$1“ wurde abgebrochen; keine der $2 Auswahlmöglichkeiten wurde ausgewählt."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Eingabe"
   },

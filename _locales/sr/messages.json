@@ -1442,6 +1442,9 @@
   "pricing.title": {
     "message": "Прицинг"
   },
+  "prompt.cancelled": {
+    "message": "Упит „$1“ је отказан; није изабрана ниједна од $2 опција."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Унос"
   },

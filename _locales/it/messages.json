@@ -1427,6 +1427,9 @@
   "premiumConfig": {
     "message": "Caratteristiche Premium"
   },
+  "prompt.cancelled": {
+    "message": "La richiesta «$1» è stata annullata; non è stata selezionata nessuna delle $2 opzioni."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Inserimento"
   },

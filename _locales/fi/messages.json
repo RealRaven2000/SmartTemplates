@@ -1475,6 +1475,9 @@
   "pricing.title": {
     "message": "Hinnoittelu"
   },
+  "prompt.cancelled": {
+    "message": "Kehote ”$1” peruutettiin; yhtäkään $2 vaihtoehdosta ei valittu."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Syöte"
   },

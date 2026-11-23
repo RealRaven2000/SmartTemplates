@@ -1487,6 +1487,9 @@
   "pricing.title": {
     "message": "Pricing"
   },
+  "prompt.cancelled": {
+    "message": "Prompt “$1” was cancelled; no choice was selected ($2 offered)."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Prompt"
   },

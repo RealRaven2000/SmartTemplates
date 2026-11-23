@@ -1448,6 +1448,9 @@
   "pricing.title": {
     "message": "Prijzen"
   },
+  "prompt.cancelled": {
+    "message": "Prompt ‘$1’ is geannuleerd; er is geen keuze gemaakt uit de $2 opties."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Invoer"
   },

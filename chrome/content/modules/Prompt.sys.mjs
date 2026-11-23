@@ -99,7 +99,10 @@ export function parsePrompt(source, start = 0) {
 }
 
 // Validate every source before opening the first dialog. Clipboard writes are staged.
-export async function preparePrompts(sources, { ask, readClipboard, allowFeature }) {
+export async function preparePrompts(
+  sources,
+  { ask, readClipboard, allowFeature, trace = () => {} }
+) {
   const parsed = sources.map((source) => {
     const tokens = [];
     const matcher = /%prompt(?=\(|%|\s)|%clipboard%/g;
@@ -148,9 +151,14 @@ export async function preparePrompts(sources, { ask, readClipboard, allowFeature
     for (const token of parsed[index]) {
       text += source.slice(position, token.start);
       if (token.clipboard) {
+        const clipboardSource = clipboard === undefined ? "system" : "staged";
         if (clipboard === undefined) {
           clipboard = await readClipboard();
         }
+        trace("clipboard-token", {
+          source: clipboardSource,
+          valueLength: typeof clipboard === "string" ? clipboard.length : null,
+        });
         text += protect(clipboard);
       } else {
         if (token.fromClipboard && clipboard === undefined) {
@@ -161,18 +169,41 @@ export async function preparePrompts(sources, { ask, readClipboard, allowFeature
           defaultValue: token.fromClipboard ? clipboard : token.defaultValue,
           choices: token.choices,
         });
-        if (answer === null) {
-          throw new PromptCancelled();
+        trace("prompt-answer", {
+          cancelled: answer === null || answer === undefined,
+          empty: answer === "",
+          answerType: typeof answer,
+          toClipboard: token.toClipboard,
+          choiceCount: token.choices.length,
+        });
+        // Cancellation and an empty accepted value both resolve this token to
+        // an empty literal. A token must never abort the containing template.
+        if (answer === null || answer === undefined || answer === "") {
+          if (token.toClipboard) {
+            // Cancellation resolves a toclipboard prompt to an empty value.
+            // Commit it so stale clipboard contents cannot leak into the email.
+            clipboard = "";
+            writeClipboard = true;
+            trace("clipboard-staged", { valueLength: 0, writeClipboard: true });
+          }
+          text += protect("");
+          position = token.end;
+          continue;
         }
-        if (typeof answer !== "string" || !answer.length) {
-          throw new Error("A prompt requires a nonempty text answer");
+        if (typeof answer !== "string") {
+          text += protect("");
+          position = token.end;
+          continue;
         }
         if (token.choices.length && !token.choices.includes(answer)) {
-          throw new Error("A prompt answer must be one of its supplied choices");
+          text += protect("");
+          position = token.end;
+          continue;
         }
         if (token.toClipboard) {
           clipboard = answer;
           writeClipboard = true;
+          trace("clipboard-staged", { valueLength: answer.length, writeClipboard: true });
         } else {
           text += protect(answer);
         }
@@ -181,6 +212,11 @@ export async function preparePrompts(sources, { ask, readClipboard, allowFeature
     }
     texts.push(text + source.slice(position));
   }
+  trace("plan-ready", {
+    writeClipboard,
+    clipboardLength: typeof clipboard === "string" ? clipboard.length : null,
+    sourceCount: texts.length,
+  });
   return {
     texts,
     clipboard,

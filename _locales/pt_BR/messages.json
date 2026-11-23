@@ -1451,6 +1451,9 @@
   "pricing.title": {
     "message": "Preços"
   },
+  "prompt.cancelled": {
+    "message": "A pergunta “$1” foi cancelada; nenhuma das $2 opções foi selecionada."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Introdução de dados"
   },

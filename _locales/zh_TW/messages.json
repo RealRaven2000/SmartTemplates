@@ -1463,6 +1463,9 @@
   "pricing.title": {
     "message": "價錢"
   },
+  "prompt.cancelled": {
+    "message": "已取消提示「$1」，未選取提供的 $2 個選項。"
+  },
   "prompt.caption": {
     "message": "SmartTemplates · 輸入提示"
   },

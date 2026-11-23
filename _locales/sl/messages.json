@@ -1475,6 +1475,9 @@
   "pricing.title": {
     "message": "Cenitev"
   },
+  "prompt.cancelled": {
+    "message": "Poziv »$1« je bil preklican; ni bila izbrana nobena od $2 možnosti."
+  },
   "prompt.caption": {
     "message": "SmartTemplates · Vnos"
   },
